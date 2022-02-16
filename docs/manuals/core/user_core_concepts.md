@@ -1,15 +1,26 @@
 Taipy core is made for data scientists to turn their algorithms into real applications. Taipy core provides
 the necessary concepts for modeling, executing, and monitoring such algorithms.
 
-In this section, we define the following concepts :
+In this section, the following concepts are defined:
 
-- Data node
-- Task
-- Job
-- Pipeline
-- Scenario
-- Cycle
+- [Data node](#data-node)
+- [Task](#task)
+- [Job](#job)
+- [Pipeline](#pipeline)
+- [Scenario](#Scenario)
+- [Cycle](#Cycle)
+- [Scope](#Scope)
 
+!!! definition "Config vs Entities"
+    Among the previous concepts, the data nodes, the tasks, the pipelines, and the scenarios are created by providing
+    configuration objects.
+
+    To differentiate the configuration objects from their runtime concepts, they are named **_configs_**
+    (`DataNodeConfig`, `TaskConfig`, `PipelineConfig`, and `ScenarioConfig`) while the runtime objects
+    (`DataNode`, `Task`, `Pipeline`, and `Scenario`) are called **_entities_**.
+
+    On this page, we provide information on the **_entities_**. More details on how the configuration objects
+    are available on the [configuration documenation](user_core_configuration.md).
 
 # Data node
 
@@ -37,6 +48,11 @@ file and the python class used for the deserialization.
     trained model, one for the current month, one for the sales predictions, one for the capacity of production,
     and one for the production orders.
 
+The various attributes that depend on the storage type (like sql query, file path, credentials, ...) are populated based
+on the data node configuration ([`DataNodeConfig`](../../reference/#taipy.config.data_node_config.DataNodeConfig)) that
+must be provided when instantiating a new data node. (Please refer to the
+[`configuration details`](user_core_configuration.md#data-node-configuration) documentation for more
+details on configuration).
 
 ## Storage type
 Taipy proposes various predefined _data nodes_ corresponding to the most popular _storage types_. Thanks to predefined
@@ -49,9 +65,9 @@ Here is the list of predefined _data nodes storage types_:
 - [Pickle](../../reference/#taipy.data.pickle.PickleDataNode) (Default storage type)
 - [CSV](../../reference/#taipy.data.csv.CSVDataNode)
 - [Excel](../../reference/#taipy.data.excel.ExcelDataNode)
-- [Generic](../../reference/#taipy.data.generic.GenericDataNode) (Work In Progress)
-- [In memory](../../reference/#taipy.data.in_memory.InMemoryDataNode) (For development purposes only. Not recommended
-for production deployment)
+- [Generic](../../reference/#taipy.data.generic.GenericDataNode)
+- [In memory](../../reference/#taipy.data.in_memory.InMemoryDataNode) (For synchronous job execution only. Not
+recommended in a production environment)
 - [SQL](../../reference/#taipy.data.sql.SQLDataNode)
 
 The various predefined _storage types_ are mainly used for input data. Indeed, the input data is usually provided by an
@@ -80,7 +96,7 @@ functions, one for reading and one for writing the data.
 
 ## Exposed type
 As explained before, a _data node_ may represent any data. For _data nodes_ representing a collection of entities
-(like CSV files, SQL table, Excel sheet), the default _exposed type_ is pandas dataframe. A numpy format is also
+(like CSV file, SQL table, Excel sheet), the default _exposed type_ is pandas dataframe. A numpy format is also
 available.
 
 If needed, the user can specify a Python _Custom Class_ as _exposed type_. When reading the data, Taipy will return
@@ -91,15 +107,21 @@ object. Then, the complete CSV file data corresponds to a _Custom Class_ list.
 
 # Task
 
-A [Task](../../reference/#taipy.task.task.Task) is a runnable piece of code written by the developer user (typically a data scientist). It represents one step
-among the various data processing steps the user is working on. Concretely, a _task_ means a python function that can be
-executed.
+A [Task](../../reference/#taipy.task.task.Task) is a runnable python code provided by the developer user (typically
+a data scientist). It represents one step among the various data processing steps the user is working on. Concretely, a
+_task_ means a python function that can be executed.
 
 For example, a _task_ could be a preprocessing step to prepare some data. It could also be a more complex step that
 computes a whole training model using a machine learning algorithm.
 
 Since a _task_ represents a function, it can take a set of parameters as input and return a set of results as output.
 Each parameter and each result is modeled as a data node.
+
+The attributes of a task (the input data nodes, the output data nodes, the python function) are populated based on
+the task configuration ([`TaskConfig`](../../reference/#taipy.config.task_config.TaskConfig)) that
+must be provided when instantiating a new task. (Please refer to the
+[`configuration details`](user_core_configuration.md#task-configuration) documentation for more
+details on configuration).
 
 !!! example "In our example"
     We create three tasks:
@@ -118,7 +140,7 @@ Each parameter and each result is modeled as a data node.
 
 !!! Remark
     Since no task computes them, we can consider sales history, current month, and capacity as input data nodes.
-    The data nodes trained model and sales predictions can be considered intermediate data nodes, and the
+    The data nodes trained model and sales predictions can be considered as intermediate data nodes, and the
     production orders as an output data node since no task is reading it.
 
 # Job
@@ -151,6 +173,11 @@ _pipeline_ for computing a training model, and a _pipeline_ dedicated to scoring
 
 Note that the various pipelines do not require to be disjointed.
 
+The attributes of a pipeline (the set of tasks) are populated based on the pipeline configuration
+([`PipelineConfig`](../../reference/#taipy.config.pipeline_config.PipelineConfig)) that
+must be provided when instantiating a new pipeline. (Please refer to the
+[`configuration details`](user_core_configuration.md#pipeline-configuration) documentation for more
+details on configuration).
 
 # Scenario
 
@@ -158,6 +185,17 @@ A [Scenario](../../reference/#taipy.scenario.scenario.Scenario) is made to model
 instance of a business problem to solve on consistent data and parameter sets. In other words, when an end user select
 a _scenario_, he/she should have access to all the information and data needed to understand the business case he/she
 is working on and to make the right decisions.
+
+!!! example "In the example"
+
+    In our example, we want our scenario to have the two pipelines described before. The external blue frame represents
+    my scenario that contains both pipelines.
+
+    ![scenarios](scenarios.svg){ align=left }
+
+A scenario represents one instance of a business problem to solve. In other words, each new business problem instance
+is represented by a new scenario. The end user can manage the various multiple scenarios in the same Taipy application.
+He or she can retrieve, edit and execute the various existing scenarios.
 
 !!! example
 
@@ -185,8 +223,13 @@ assumptions.
 Business problems are often recurrent. A _cycle_ (or work cycle) represents an iteration of such a recurrent work
 pattern. Each _cycle_ has a start date and a duration that depends on the frequency on which a user must publish
 a scenario in production. In Taipy, a _cycle_ duration depends on the
-[Frequency](../../reference/#taipy.common.frequency.Frequency) of the scenarios, which is among
-**daily**, **weekly**, **monthly**, **quarterly**, or **yearly**.
+[Frequency](../../reference/#taipy.common.frequency.Frequency) of the scenarios, which is among :
+
+- `Frequency.DAILY`
+- `Frequency.WEEKLY`
+- `Frequency.MONTHLY`
+- `Frequency.QUATERLY`
+- `Frequency.YEARLY`
 
 Each recurrent scenario is attached to a _cycle_. In other words, each _cycle_ contains multiple scenarios. At the end
 of a cycle (start date + duration), only one of the scenarios can be applied in production. This scenario is
@@ -202,6 +245,66 @@ called _master scenario_. There is only one _master scenario_ per cycle.
     As a user of the application, I can decide to apply the low capacity scenario in production for February.
     For that, I promote my low capacity scenario as master for the February cycle.
 
-    ![cycles](cycles.svg){ width="500" }
+    The tree of entities resulting from the various scenarios created is represented on the following picture.
+    ![cycles](cycles_grey.svg){ width="250" }
+
+
+The attributes of a scenario (the set of pipelines, the cycle, ... ) are populated based on the scenario configuration
+([`ScenarioConfig`](../../reference/#taipy.config.scenario_config.ScenarioConfig)) that
+must be provided when instantiating a new scenario. (Please refer to the
+[`configuration details`](user_core_configuration.md#scenario-configuration) documentation for more
+details on configuration).
 
 # Scope
+
+The [Scope](../../reference/#taipy.data.scope.Scope) of a data node is an enum among the following values :
+
+- `Scope.PIPELINE`
+- `Scope.SCENARIO` (Default value)
+- `Scope.CYCLE`
+- `Scope.GLOBAL`
+
+Each data node has a scope. It is an attribute provided by the
+([`DataNodeConfig`](../../reference/#taipy.config.data_node_config.DataNodeConfig)).
+It represents the _visibility_ of the data node in the graph of entities. Indeed,
+the entities can be represented as a graph where each node belongs to one or multiple upper nodes. A data node 'belongs'
+to at least one task which belongs to at least one pipeline which belongs to at least one scenario which belongs to a
+single cycle.
+
+In other words :
+
+- A data node with the scope equals to `Scope.PIPELINE`, can only be shared by multiple tasks among the same pipeline.
+- A data node with the scope equals to `Scope.SCENARIO`, can be shared by multiple tasks and pipelines within a unique
+scenario, but it cannot belong to other tasks or pipelines from another scenario.
+- A data node with the scope equals to `Scope.CYCLE`, can be shared by all the tasks, pipelines and scenarios from one
+cycle, but cannot be shared with tasks, pipelines, scenarios from another cycle.
+- A data node with the scope equals to `Scope.GLOBAL`, can be shared by any task, pipeline, scenario, whatever their
+cycles.
+
+!!! example
+
+    In our example with two pipelines, we have multiple possibilities. The following pictures represent two examples.
+    The scopes are written in green at the bottom of each data node.
+
+    ![scopes](storage_types and scopes_basic_possibility.svg){ align=left }
+
+    The first picture represents the basic case. We let Taipy apply the default scope (`Scope.PIPELINE`) for most
+    data nodes. However, as you can see, the `sales predictions` data node is shared by the two pipelines
+    of my scenario. Consequently, its scope cannot be __pipeline__, but must be at least __scenario__.
+    In this case, my various scenarios do not share any data node.
+
+    In the second picture, we have a second use case. In this example, we make several changes :
+
+    - The first assumption is that the historical sales are stored in a single system of records. The sales history
+    becomes a data node shared by all the tasks, pipelines, scenarios, and cycles. Its scope is `Scope.GLOBAL`. That
+    means there will be only one Sales history data node, whatever the number of cycles or scenarios. All the
+    scenarios will share the same data pointed by the same data node.
+    - The sales pipeline execution only depends on the current month (i.e., the cycle). The `trained model`,
+    the `current month`, and the `sales predictions` data nodes have a `Scope.CYCLE` scope. In other words, all the
+    scenarios from the same cycle will share the three data nodes. For example, for the February cycle, both
+    scenarios with low capacity and high capacity share the three data nodes. The linked tasks (training and predict)
+    can only be executed once for both scenarios.
+    - Finally, since I have multiple scenarios to simulate various capacities for a single cycle, the capacity
+    and the production orders data nodes must have a `Scope.SCENARIO` scope, so multiple scenarios do not share them.
+
+    ![scopes](storage_types_and_scopes.svg){ align=left }

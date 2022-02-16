@@ -10,29 +10,19 @@ in order to see a complete example of a complete Taipy application, described st
 ## Taipy Core
 
 The Taipy core package is a python library made to create complete back-end applications around decision-making
-algorithms. It provides back-end capabilities to help data scientists transform their algorithms into a
-back-end application, so they can quickly and easily put them into their end user's hands. Thanks to Taipy core, data
+algorithms. It provides the necessary tools to help data scientists transform their algorithms into a complete
+back-end application, so they can quickly and easily put it into their end user's hands. Thanks to Taipy core, data
 scientists are more autonomous. They can focus on their core skills: building the best algorithms to solve their
 business problems.
 
-Once data scientist developers have implemented suitable algorithms, they can easily configure their Taipy application
-to use core features, including:
+[:material-arrow-right: Definition of Taipy core concepts](core/user_core_concepts.md),
 
-- work cycle and scenario management,
-- scheduling,
-- job monitoring,
-- performance analysis.
+[:material-arrow-right: Documentation on the python configuration](core/user_core_configuration.md),
 
-On this documentation, you will find the definitions of the [core concepts](core/user_core_concepts.md), a description
-of the [core features](core/user_core_features.md), and the documentation of the
-[core configuration](core/user_core_configuration.md)
+[:material-arrow-right: Documentation on toml configuration](core/user_core_toml_configuration.md),
 
+[:material-arrow-right: Description of Taipy core features](core/user_core_features.md)
 
-[:material-arrow-right: Taipy core concepts](core/user_core_concepts.md)
-
-[:material-arrow-right: Taipy core features](core/user_core_features.md)
-
-[:material-arrow-right: Configuring an application](core/user_core_configuration.md)
 
 ## Graphical User Interface
 
