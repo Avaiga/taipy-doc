@@ -197,8 +197,6 @@ scenario it will be demoted, and it will no longer be master for the cycle.
 
 => scenario.pipeline_config_name
 
-## Get all pipelines
-
 => tp.get_pipelines
 
 ## delete pipeline
@@ -229,6 +227,8 @@ scenario it will be demoted, and it will no longer be master for the cycle.
 
 => tp.get
 
+=> tp.get_latest_job(task)
+
 => tp.get_jobs
 
 ## delete jobs
@@ -241,15 +241,13 @@ scenario it will be demoted, and it will no longer be master for the cycle.
 
 => list attributes and properties
 
-## Get Task
+## Get Tasks
 
 => tp.get
 
 => scenario.task_config_name
 
 => pipeline.task_config_name
-
-## Get all tasks
 
 => tp.get_tasks
 
@@ -266,8 +264,6 @@ scenario it will be demoted, and it will no longer be master for the cycle.
 => scenario.data_node_config_name
 
 => pipeline.data_node_config_name
-
-## Get all data nodes
 
 => tp.get_data_nodes
 
