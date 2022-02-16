@@ -9,13 +9,18 @@ on:
 jobs:
   standard-packages:
     timeout-minutes: 10
-    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        python-versions: [ 3.8, 3.9, '3.10' ]
+        os: [ubuntu-18.04]
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: ${{ matrix.python-versions }}
 
       - name: Install Taipy without dependencies
         run: |
@@ -27,13 +32,18 @@ jobs:
 
   optionals-packages:
     timeout-minutes: 10
-    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        python-versions: [ 3.8, 3.9, '3.10' ]
+        os: [ ubuntu-18.04 ]
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: ${{ matrix.python-versions }}
 
       - name: Add an ssh key for cloning
         run: |
@@ -50,19 +60,15 @@ jobs:
           echo "[print(k) for k in extras_require.keys()]" >> setup_packages.py
           python setup_packages.py | xargs -I% bash -c "pip install .[%]"
 
-          rm -r taipy gui  # Removal of Taipy code to ensure the use of the installed package
+          rm -r taipy gui  # Removal of Taipy code to ensure the use of the installed package.
 
           # Run test with optionals packages installed
           pip install pytest pytest-mock
           pytest > pytest_res
           cat pytest_res
 
-          # Ensure that no tests are skipped
           echo "Ensure that no tests are skipped"
           tail -n1 pytest_res | grep --invert-match "skipped"
-          echo "OK"
 
-          # Ensure no warnings
           echo "Ensure that no warnings are issued"
           tail -n1 pytest_res | grep --invert-match "warning"
-          echo "OK"
