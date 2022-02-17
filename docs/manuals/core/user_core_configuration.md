@@ -108,6 +108,52 @@ value. Any serializable python object can be used.
 
 # Task configuration
 
+Definition of a [Task](user_core_concepts.md#task).
+
+Properties:
+
+- `name` the name of this configuration should be unique.
+- `inputs` argument(s) sent to the function.
+- `function` function to execute.
+- `outputs` function result(s).
+
+Basic example:
+```python
+import taipy as tp
+
+def bar(nb):
+    return nb * 2
+
+# Function argument.
+input_config = tp.configure_data_node("input", default_value=21)
+# Function result.
+output_config = tp.configure_data_node("output")
+
+# Create the configuration 'foo' that will call the function 'bar' with the value of
+# 'arguments_config' as function arguments and will write the output in `results_config`.
+# To schematize, we are asking Taipy to configure a Task to execute:
+# output = bar(21)
+task_config = tp.configure_task("foo", input_config, bar, output_config)
+```
+
+Because a Task can have multiple inputs and outputs, `tp.configure_task` can also take `list` as `DataNodeConfig`.
+
+We can have the same behaviour by doing:
+```python
+import taipy as tp
+
+def mult_by(nb, by):
+    return nb * by
+
+nb_to_multiple = tp.configure_data_node("nb_to_multiple", default_value=21)
+multiply_by = tp.configure_data_node("multiply_by", default_value=2)
+
+output_config = tp.configure_data_node("output")
+
+task_config = tp.configure_task("foo", [nb_to_multiple, multiply_by], mult_by, output_config)
+```
+
+
 # Pipeline configuration
 
 # Scenario configuration
