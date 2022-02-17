@@ -18,14 +18,17 @@ jobs:
           python -m pip install pipenv
           python -m pipenv install --dev
       - name: Fetch Taipy Core code
+        uses: actions/checkout@v2
+        with:
+          repository: Avaiga/taipy
+          ref: develop
+      - name: Save Taipy Core code
         run: |
-          mkdir tmp
-          cd tmp
-          git clone -b develop https://github.com/Avaiga/taipy.git
-          mv taipy/taipy ..
-          rm -rf taipy
-        env:
-          GITHUB_TOKEN: ${{ secrets.TAIPY_REPOS_ACCESS_TOKEN }}
+          ls
+          mv taipy taipy.save
+          mv taipy.save/taipy .
+          rm -rf taipy.save
+          ls
       - name: Fetch Taipy Gui code and elements doc
         run: |
           cd tmp
