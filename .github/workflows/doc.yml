@@ -25,7 +25,7 @@ jobs:
           mv taipy/taipy ..
           rm -rf taipy
         env:
-          GITHUB_TOKEN: ${{ secrets.TAIPY_REPOS_ACCESS }}
+          GITHUB_TOKEN: ${{ secrets.TAIPY_REPOS_ACCESS_TOKEN }}
       - name: Fetch Taipy Gui code and elements doc
         run: |
           cd tmp
@@ -33,7 +33,7 @@ jobs:
           (cd taipy-gui;tar cf - taipy gui)|(cd ..;tar xf -)
           rm -rf taipy-gui
         env:
-          GITHUB_TOKEN: ${{ secrets.TAIPY_REPOS_ACCESS }}
+          GITHUB_TOKEN: ${{ secrets.TAIPY_REPOS_ACCESS_TOKEN }}
       - name: Clean up
         run: rm -rf taipy
       - name: Generate Visual Elements doc
