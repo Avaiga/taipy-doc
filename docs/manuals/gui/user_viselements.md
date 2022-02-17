@@ -18,10 +18,13 @@ can use, listed in the documentation page for that control type.
 ## Property value
 
 Every property value can be set to a given value, that depends on the property type, or a
-formatted string literal, also known as a _f-string_. This string may reference variable
-names defined in your code, and the evaluated string is used as the property value.
+formatted string literal, also known as an _f-string_. This string may reference variable
+names defined in your code, and the property value becomes the evaluated string.
 
-!!! info "The property value is also updated when your Python variable is modified."
+!!! note "Dynamic properties"
+    When a property is listed as _dynamic_, this means that if the code changes the
+    value of any variable in the expression, it will be sent automatically to the
+    visual element that uses it.
 
 ## Property name
 
@@ -82,15 +85,15 @@ is equivalent to
 !!! info "HTML syntax extensions"
 
     The HTML text that is given to the [HTML](../../reference/#taipy.gui.renderers.Html)
-    page renderer is **not** parsed as pure HTML. Instead, it is transformed before
-    it is sent as HTML to be rendered. Therefore, Taipy was able to introduce a few changes
-    to the pure HTML syntax that make it easier to use in the context of describing Taipy
-    pages.
+    page renderer is **not** parsed as pure HTML. Instead, the page is transformed before
+    it is rendered to HTML and delivered to the client. Therefore, Taipy was able to
+    introduce a few changes to the pure HTML syntax that make it easier to use in the
+    context of describing Taipy pages.
 
     - Attribute names that be array elements.
       Some visual elements (such as the [`chart`](viselements/chart.md) control) need
       indexed properties. An attribute name such as _y[1]_ is valid in the Taipy context,
-      where it would not be in raw HTML.
+      where it would not be in the raw HTML grammar.
 
     - Empty attribute value.
       In the HTML used by Taipy, you can mention an attribute with no value. It would
@@ -100,9 +103,9 @@ is equivalent to
 
 Every visual element type has the following properties:
 
--   `id`: The identifier of the element, generated in the HTML component.
+-   `id`: The identifier of the element, that gets generated in the HTML component.
 -   `class_name`: An additional CSS class that is added to the generated HTML component.
-    Note that all visual element are generated with the "taipy-_visual_element_type_" CSS
+    Note that all visual elements are generated with the "taipy-_visual_element_type_" CSS
     class set (ie. the `button` control generates an HTML element that has the
     _taipy-button_ CSS class).
 -   `properties`: The name of a variable that holds a dictionary where all property
@@ -126,17 +129,17 @@ There are situations where your visual element may need a lot of different prope
 This is typically the case for complex visual elements like the
 [`chart`](viselements/chart.md) or the [`table`](viselements/table.md) controls.
 
-Instead of having to list all the properties with their appropriate value, potentially
-making the reading of the content difficult, you can create a Python dictionary, that
-contains all the required key-value pair, and use the name of the variable that holds
-that dictionary as the value of the `properties` property.
+When an element needs many properties and property values, the content may become
+difficult to read. Something you can do about this is create a Python dictionary that
+contains all the key-value pairs for your properties (name and value) then use the name
+of the variable that holds that dictionary as the value of the `properties` property.
 
 !!! Example
 
     Say your Markdown content needs the following control:
     `<|dialog|title=Dialog Title|open={show_dialog}|page_id=page|validate_action=validate_action|cancel_action=cancel_action||validate_action_text=Validate|cancel_action_text=Cancel|>`
 
-    You can argue that this is pretty long, and could be improved. In this situation, you might
+    You can argue that this is pretty long and could be improved. In this situation, you might
     prefer to declare a simple Python dictionary in your code:
 
     ```py linenums="1"

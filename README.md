@@ -3,8 +3,8 @@
         <img src="https://img.shields.io/pypi/v/taipy.svg" alt = "Release Status">
     </a>
 
-    <!-- a href="https://github.com/avaiga/taipy/actions">
-        <img src="https://github.com/avaiga/taipy/actions/workflows/dev.yml/badge.svg" alt="CI Status">
+    <!-- a href="https://github.com/avaiga/taipy-doc/actions">
+        <img src="https://github.com/avaiga/taipy-doc/actions/workflows/dev.yml/badge.svg" alt="CI Status">
     </a -->
 
 </p>
@@ -15,31 +15,18 @@
 
 !!! abstract "TODO: fix PYPI package or version link"
 
-# Overview
+# Taipy Documentation
 
-## What is Taipy
+The Taipy documentation set uses [MkDocs](https://www.mkdocs.org/) to generate its entire
+content.
 
-Taipy is a framework for creating AI Business Applications.
+# How to contribute
 
-## What it does
+## Code documentation (Reference Manual)
 
-Taipy allows you to automatize machine learning pipelines by running them onto scenarios.
+Code is copied from different repositories in order to be processed.
 
-## For who
+## User documentation (User Manuals)
 
-Taipy is mostly used by data scientists.
+## Other manuals
 
-## Features
-
-!!! abstract "TODO: Detail features"
-
-# Directory Structure
-
-The files needed to build _Taipy_ are located in sub-directories that
-store files as follows:
-
--   `taipy`: Python source files
--   `gui`: Graphical user interface related files
--   `docs`: The current documentation
-
-!!! abstract "TODO: complete the directory structure"

@@ -2,35 +2,41 @@ name: Documentation Generation
 
 on:
   push:
-    branches:
-      - develop
+    branches: [doc/#529-gui-improvements]
 
 jobs:
-    Deploy-Doc:
-        runs-on: ubuntu-18.04
-        steps:
-            -   uses: actions/checkout@v2
-            -   name: Set up Python
-                uses: actions/setup-python@v2
-                with:
-                    python-version: 3.9
-            -   name: Install pipenv and dependancies
-                run: |
-                    python -m pip install pipenv
-                    # Hiding pyodbc (if it does not install for some reason)
-                    ##sed -i.BK -e '/pyodbc/d' Pipfile
-                    ##mv taipy/data/sql.py taipy/data/sql.py.BK
-                    ##sed -i.BK -e '/\.sql/d' taipy/data/__init__.py
-                    ##sed -i.BK -e 's/, SQLDataSource//g' taipy/data/manager/data_manager.py
-                    # Installing unixodbc if needed
-                    if (apt list --installed | grep unixodbc) && (apt list --installed | grep unixodbc-dev); then echo unixodbc ok; else apt-get -y update; apt-get -y install unixodbc unixodbc-dev; fi
-                    python -m pipenv install --dev
-            -   name: Set up Node.JS
-                uses: actions/setup-node@v1
-            -   name: Build controls doc
-                working-directory: ./gui
-                run: |
-                    pipenv run python ../tools/mkdocs/generate_viselements.py
-            -   name: Build doc and deploy
-                run: |
-                    pipenv run mkdocs gh-deploy --force
+  Deploy-Doc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install pipenv and dependencies
+          run: |
+            python -m pip install pipenv
+            python -m pipenv install --dev
+      - name: Fetch Taipy Core code
+          run: |
+            mkdir tmp
+            cd tmp
+            git clone -b develop https://github.com/Avaiga/taipy.git
+            mv taipy/taipy ..
+            rm -rf taipy
+          env:
+            GITHUB_TOKEN: ${{ secrets.TAIPY_REPOS_ACCESS }}
+      - name: Fetch Taipy Gui code and elements doc
+          run: |
+            cd tmp
+            git clone -b develop https://github.com/Avaiga/taipy-gui.git
+            (cd taipy-gui;tar cf - taipy gui)|(cd ..;tar xf -)
+            rm -rf taipy-gui
+      - name: Clean up
+        run: rm -rf taipy
+      - name: Generate Visual Elements doc
+        run: |
+          pipenv run python tools/mkdocs/generate_viselements.py
+      - name: Build doc and deploy
+        run: |
+          pipenv run mkdocs gh-deploy --force
