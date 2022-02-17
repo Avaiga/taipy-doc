@@ -43,7 +43,7 @@ jobs:
           token: ${{ secrets.TAIPY_REPOS_ACCESS_TOKEN }}
       - name: Save Taipy Gui code
         run: |
-          (cd taipy-gui;tar cf - taipy gui)|(cd ..;tar xf -)
+          (cd taipy-gui;tar cf - taipy gui)|tar xf -
           rm -rf taipy-gui
           echo Again again in current dir `pwd`:
           ls
