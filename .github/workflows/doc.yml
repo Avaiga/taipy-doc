@@ -2,7 +2,7 @@ name: Documentation Generation
 
 on:
   push:
-    branches: [doc/#529-gui-improvements]
+    branches: [develop]
 
 jobs:
   Deploy-Doc:
@@ -41,7 +41,7 @@ jobs:
           rm -rf taipy-gui
       - name: Generate Visual Elements doc
         run: |
-          pipenv run python tools/mkdocs/generate_viselements.py
+          pipenv run python tools/generate_viselements.py
       - name: Build doc and deploy
         run: |
           pipenv run mkdocs gh-deploy --force
