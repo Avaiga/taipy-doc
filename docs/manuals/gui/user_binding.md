@@ -10,17 +10,13 @@ Consider the following application:
 ```py linenums="1"
 from taipy.gui import Gui
 
-page = """
+x = 1234
+
+Gui(page="""
 # Hello Taipy
 
 The variable `x` contains the value <|{x}|>.
-"""
-
-x = 1234
-
-gui = Gui(page)
-if __name__ == '__main__':
-    gui.run()
+""").run()
 ```
 
 When this program runs (and a Web browser is directed to the running server), the

@@ -42,7 +42,7 @@ def read_skeleton(name):
 controls_md_template = read_skeleton("controls")
 blocks_md_template = read_skeleton("blocks")
 
-controls_list = ["text", "button", "input", "number", "slider", "toggle", "date_selector", "chart", "file_download", "file_selector", "image",
+controls_list = ["text", "button", "input", "number", "slider", "toggle", "date", "chart", "file_download", "file_selector", "image",
                  "indicator", "menu", "navbar", "selector", "status", "table", "dialog", "tree"]
 blocks_list = ["part", "expandable", "layout", "pane"]
 # -----------------------------------------------------------------------------
@@ -54,7 +54,10 @@ element_documentation = {}
 
 for current_file in os.listdir(VELEMENTS_SOURCE_PATH):
     def read_properties(path_name, element_name):
-        df = pd.read_csv(path_name, encoding='utf-8')
+        try:
+            df = pd.read_csv(path_name, encoding='utf-8')
+        except Exception as e:
+            raise RuntimeError(f"{path_name}: {e}")
         properties = []
         # Row fields: name, type, default_value, doc
         for row in list(df.to_records(index=False)):
@@ -174,17 +177,18 @@ def generate_element_doc(element_name: str, toc):
         raise ValueError(f"Couldn't locate first header2 in documentation for element '{element_name}'")
     output_path = os.path.join(VELEMENTS_DIR_PATH, element_name + ".md")
     with open(output_path, "w") as output_file:
-        output_file.write(f"# `{element_name}`\n\n"
+        output_file.write("---\nhide:\n  - navigation\n---\n\n"
+                          + f"# <tt>{element_name}</tt>\n\n"
                           + match.group(1)
                           + properties_table
                           + match.group(2) + documentation[match.end():])
     e = element_name  # Shortcut
     return (f"<a class=\"tp-ve-card\" href=\"../viselements/{e}/\">\n"
             + f"<div>{e}</div>\n"
-            + f"<img class=\"tp-ve-l\" src=\"/assets/images/gui-ve/{e}-l.png\"/>\n"
-            + f"<img class=\"tp-ve-lh\" src=\"/assets/images/gui-ve/{e}-lh.png\"/>\n"
-            + f"<img class=\"tp-ve-d\" src=\"/assets/images/gui-ve/{e}-d.png\"/>\n"
-            + f"<img class=\"tp-ve-dh\" src=\"/assets/images/gui-ve/{e}-dh.png\"/>\n"
+            + f"<img class=\"tp-ve-l\" src=\"../viselements/{e}-l.png\"/>\n"
+            + f"<img class=\"tp-ve-lh\" src=\"../viselements/{e}-lh.png\"/>\n"
+            + f"<img class=\"tp-ve-d\" src=\"../viselements/{e}-d.png\"/>\n"
+            + f"<img class=\"tp-ve-dh\" src=\"../viselements/{e}-dh.png\"/>\n"
             + f"<p>{first_documentation_paragraph}</p>\n"
             + "</a>\n")
     # If you want a simple list, use
