@@ -26,14 +26,8 @@ jobs:
           token: ${{ secrets.TAIPY_REPOS_ACCESS_TOKEN }}
       - name: Save Taipy Core code
         run: |
-          echo In current dir `pwd`:
-          ls
-          echo In taipy-core:
-          ls taipy-core
           mv taipy-core/taipy .
           rm -rf taipy-core
-          echo Again in current dir `pwd`:
-          ls
       - name: Fetch Taipy Gui code and elements doc
         uses: actions/checkout@v2
         with:
@@ -45,12 +39,6 @@ jobs:
         run: |
           (cd taipy-gui;tar cf - taipy gui)|tar xf -
           rm -rf taipy-gui
-          echo Again again in current dir `pwd`:
-          ls
-          echo taipy:
-          ls taipy
-          echo gui:
-          ls gui
       - name: Generate Visual Elements doc
         run: |
           pipenv run python tools/mkdocs/generate_viselements.py
