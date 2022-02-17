@@ -19,8 +19,8 @@ import shutil
 import pandas as pd
 import math
 
-# Assuming that this script is located in TaipyHome/tools/mkdocs
-taipy_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+# Assuming that this script is located in TaipyHome/tools
+taipy_dir = os.path.dirname(os.path.dirname(__file__))
 
 GUI_DOC_PATH = taipy_dir + "/docs/manuals/gui/"
 VELEMENTS_DIR_PATH = taipy_dir + "/docs/manuals/gui/viselements"
