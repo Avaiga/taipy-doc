@@ -23,6 +23,7 @@ jobs:
           repository: Avaiga/taipy
           ref: develop
           path: taipy-core
+          token: ${{ secrets.TAIPY_REPOS_ACCESS_TOKEN }}
       - name: Save Taipy Core code
         run: |
           ls
