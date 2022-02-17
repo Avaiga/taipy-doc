@@ -51,7 +51,7 @@ nav:
 theme:
   name: material
   language: en
-  custom_dir: tools/mkdocs
+  custom_dir: tools
   logo: assets/images/logo.png
   font:
     text: Lato
@@ -115,7 +115,7 @@ plugins:
       watch:
         - taipy
   - macros:
-      module_name: tools/mkdocs/postprocess
+      module_name: tools/postprocess
 extra:
   social:
     - icon: fontawesome/brands/twitter

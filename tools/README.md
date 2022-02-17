@@ -1,9 +1,10 @@
-# Taipy tools
+# Taipy Documentation tools
 
-This directory contains files that are consumed by tools that are used to
-build, test or document Taipy.
+This directory contains the files used by [mkdocs](https://www.mkdocs.org/)
+to generate the documentation set.
 
-- `mkdocs`: is the directory where mkdoc-specific files are located.
-   This is what is used to build Taipy's documentation
-- `generate_controls_ref.py`: a Python script that merges the reference
-  documentation for Taipy controls, that can be found in <taipy>/gui/doc.
+   - `assets`: stores MkDocs items that are used during the build process.
+   - `generate_viselements.py`: Python script that translates the visual elements
+      documentation from `taipy-gui` to formats that MkDocs can use.
+   - `postprocess.py`: Python post-processor that runs after MkDocs has generated
+      the documentation, to fix ultimate small issues.
