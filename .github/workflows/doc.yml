@@ -22,9 +22,11 @@ jobs:
         with:
           repository: Avaiga/taipy
           ref: develop
+          path: taipy-core
       - name: Save Taipy Core code
         run: |
           ls
+          ls taipy-core
           mv taipy taipy.save
           mv taipy.save/taipy .
           rm -rf taipy.save
