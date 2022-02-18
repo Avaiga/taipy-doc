@@ -93,18 +93,172 @@ value. Any serializable python object can be used.
 !!! Note
 
     To configure a pickle data node, it is equivalent to use the method `taipy.configure_pickle_data_node` or
-    the method `taipy.configure_data_node` with parameter `storage_type="pickle`.
+    the method `taipy.configure_data_node` with parameter `storage_type="pickle"`.
 
 ### Csv
 
+A Csv data node is a specific data node used to model csv file data. To add a new _csv_ data node
+configuration, the `taipy.configure_csv_data_node` method can be used. In addition to the generic
+parameters described in the previous section
+[Data node configuration](user_core_configuration.md#data-node-configuration), three optional
+parameters can be provided.
+
+- The `path` parameter represents the csv file path used by Taipy to read and write the data.
+- The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`, Taipy will use the 1st row in the csv file as the header. By default, `has_header` is `True`.
+- When the `exposed_type` is given as parameter, if the `exposed_type` value provided is `numpy`, the data node will read the csv file to a numpy array. If the provided value is a custom class, data node will create a list of custom object with the given custom class, each object will represent a row in the csv file.If `exposed_type` is not provided, the data node will read the csv file as a pandas DataFrame.
+
+!!! example
+
+    ```python
+    import taipy as tp
+    from taipy import Scope
+
+    # We configure a simple csv data node. The name identifier is "historical_temperature",
+    # the scope is "SCENARIO" (default value), and the path is the file hist_temp.csv 
+    # with `has_header` being True, representing the csv file has a header.
+    date_cfg = tp.configure_csv_data_node(name="historical_temperature", path="path/hist_temp.csv", has_header=True, exposed_type="numpy")
+
+    # We then add another csv data node configuration. The name identifier is "sale_history", the 
+    # default SCENARIO scope is used. Since we have a custom class pre-defined for this csv file, we 
+    # will provide it in the `exposed_type`.
+    model_cfg = tp.configure_pickle_data_node(name="sale_history",
+                                              path="path/sale_history.csv",
+                                              exposed_type=SaleRow)
+    ```
+
+!!! Note
+
+    To configure a csv data node, it is equivalent to use the method `taipy.configure_csv_data_node` or
+    the method `taipy.configure_data_node` with parameter `storage_type="csv"`.
+
 ### Excel
+
+An Excel data node is a specific data node used to model xlsx file data. To add a new _excel_ data node
+configuration, the `taipy.configure_excel_data_node` method can be used. In addition to the generic
+parameters described in the previous section
+[Data node configuration](user_core_configuration.md#data-node-configuration), four optional
+parameters can be provided.
+
+- The `path` parameter represents the excel file path used by Taipy to read and write the data.
+- The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`, Taipy will use the 1st row in the excel file as the header. By default, `has_header` is `True`.
+- The `sheet_name` parameter represents which specific sheet in the excel file to read. If `sheet_name` is provided with a list of sheet names, it will return a dictionary with the key being the sheet name and the value being the data of the corresponding sheet. If a string is provided, data node will read only the data of the coressponding sheet. The default value of `sheet_name` is "Sheet1"
+- When the `exposed_type` is given as parameter, if the `exposed_type` value provided is `numpy`, the data node will read the excel file to a numpy array. If the provided value is a custom class, data node will create a list of custom object with the given custom class, each object will represent a row in the excel file.If `exposed_type` is not provided, the data node will read the excel file as a pandas DataFrame.
+
+!!! example
+
+    ```python
+    import taipy as tp
+    from taipy import Scope
+
+    # We configure a simple excel data node. The name identifier is "historical_temperature",
+    # the scope is "SCENARIO" (default value), and the path is the file hist_temp.csv 
+    # with `has_header` being True, representing the csv file has a header.
+    # The sheet_name is not provided so Taipy will use the default value "Sheet1" 
+    date_cfg = tp.configure_excel_data_node(name="historical_temperature", path="path/hist_temp.xlsx", has_header=True, exposed_type="numpy")
+
+    # We then add another csv data node configuration. The name identifier is "sale_history", the default
+    # SCENARIO scope is used. Since we have a custom class pre-defined for this csv file, we will provide it in the `exposed_type`.
+    # We will provide the specific sheet names of the sheets we want to read
+    model_cfg = tp.configure_pickle_data_node(name="sale_history",
+                                              path="path/sale_history.csv",
+                                              sheet_names=["January", "February"]
+                                              exposed_type=SaleRow)
+    ```
+
+!!! Note
+
+    To configure an excel data node, it is equivalent to use the method `taipy.configure_excel_data_node` or
+    the method `taipy.configure_data_node` with parameter `storage_type="excel"`.
 
 ### Generic
 
+An Generic data node is a specific data node used to model generic data type. To add a new _generic_ data node
+configuration, the `taipy.configure_generic_data_node` method can be used. In addition to the generic
+parameters described in the previous section
+[Data node configuration](user_core_configuration.md#data-node-configuration), two optional
+parameters can be provided.
+
+- The `read_fct` parameter represents the function, provided by the user, will be used to read  the data.
+- The `write_fct` parameter represents the function, provided by the user, will be used to write the data.
+
+!!! example
+
+    ```python
+    import taipy as tp
+    from taipy import Scope
+
+    # We configure a simple generic data node. The name identifier is "historical_data".
+    # The `read_fct` and `write_fct` parameters are provided to read and write the data.
+    date_cfg = tp.configure_generic_data_node(name="historical_data", read_fct=read_data, write_fct=write_data)
+    ```
+
+!!! Note
+
+    To configure a generic data node, it is equivalent to use the method `taipy.configure_generic_data_node` or
+    the method `taipy.configure_data_node` with parameter `storage_type="generic"`.
+
 ### In memory
+
+An in_memory data node is a specific data node used to model  data. To add a new _in_memory_ data node
+configuration, the `taipy.configure_in_memory_data_node` method can be used. In addition to the generic
+parameters described in the previous section
+[Data node configuration](user_core_configuration.md#data-node-configuration), two optional
+parameters can be provided.
+
+- If the `default_data` is given as parameter, the data node is automatically written with the corresponding
+value. Any python object can be used.
+
+!!! example
+
+    ```python
+    import taipy as tp
+    from taipy import Scope
+
+    # We configure a simple in_memory data node. The name identifier is "date_cfg",
+    # the scope is "SCENARIO" (default value), and a default data is provided.
+    date_cfg = tp.configure_in_memory_data_node(name="date_cfg", default_data=datetime(2022, 1, 25))
+    ```
+
+!!! Note
+
+    To configure an in_memory data node, it is equivalent to use the method `taipy.configure_in_memory_data_node` or
+    the method `taipy.configure_data_node` with parameter `storage_type="in_memory"`.
 
 ### Sql
 
+A Sql data node is a specific data node used to model Sql data. To add a new _sql_ data node
+configuration, the `taipy.configure_sql_data_node` method can be used. In addition to the generic
+parameters described in the previous section
+[Data node configuration](user_core_configuration.md#data-node-configuration), four optional
+parameters can be provided.
+
+- The `db_username` parameter represents the database username that will be used by Taipy to access the database.
+- The `db_password` parameter represents the database user's password that will be used by Taipy to access the database.
+- The `db_name` parameter represents the name of the database.
+- The `db_engine` parameter represents the engine of the database.
+- The `read_query` parameter represents the SQL query that will be used by Taipy to read the data from the database.
+- The `write_table` parameter represents the name of the table in the database that Taipy will be writing the data to.
+- The `db_port` parameter represents the database port that will be used by Taipy to access the database. The default value of `db_port` is 1433
+
+
+!!! example
+
+    ```python
+    import taipy as tp
+    from taipy import Scope
+
+    # We configure a simple sql data node. The name identifier is "historical_temperature",
+    # the scope is "SCENARIO" (default value), and the database username is "admin" 
+    # The user's password is "password", the database name is "taipy". The database engine will # be mssql short for Microsoft SQL. The read query will be "SELECT * from daily_temp"
+    # The table the data will be written to is "forecast_table"
+    date_cfg = tp.configure_sql_data_node(name="historical_temperature", db_username="admin", 
+    db_password="password", db_name="taipy", db_engine="mssql", 
+    read_query="SELECT * from daily_min_example", "write_table"= "forecast_table")
+
+!!! Note
+
+    To configure a sql data node, it is equivalent to use the method `taipy.configure_sql_data_node` or
+    the method `taipy.configure_data_node` with parameter `storage_type="sql"`.
 
 # Task configuration
 
