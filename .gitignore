@@ -112,3 +112,6 @@ site/
 docs/manuals/gui/user_controls.md
 docs/manuals/gui/user_blocks.md
 docs/manuals/gui/viselements/*.md
+/taipy
+/gui
+
