@@ -20,7 +20,7 @@ jobs:
       - name: Fetch Taipy Core code
         uses: actions/checkout@v2
         with:
-          repository: Avaiga/taipy
+          repository: Avaiga/taipy-core
           ref: develop
           path: taipy-core
           token: ${{ secrets.TAIPY_REPOS_ACCESS_TOKEN }}
