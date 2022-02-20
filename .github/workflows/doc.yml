@@ -2,7 +2,7 @@ name: Documentation Generation
 
 on:
   push:
-    branches: [doc/#20-use-taipy-core]
+    branches: [develop]
 
 jobs:
   Deploy-Doc:
