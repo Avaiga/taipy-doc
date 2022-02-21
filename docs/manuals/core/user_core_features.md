@@ -205,35 +205,31 @@ of the nested entity.
 
 !!! Example
 
-    ````python linenums="1"
+````python linenums="1"
     import taipy as tp
     from datetime import datetime
     from config import *
 
-    scenario = tp.create_pipeline(monthly_scenario_cfg, creation_date=datetime(2022, 1, 1), name="Scenario for January")
+    pipeline = tp.create_pipeline(sales_pipeline_cfg,name="Pipeline for sales prediction")
 
-    # the config_name is an attribute of the scenario and equals "scenario_configuration"
-    scenario.config_name
-    # The creation date is the date-time provided at the creation. It equals datetime(2022, 1, 1)
-    scenario.creation_date
-    # Is_master property equals `True` since it is the only scenario of the cycle.
-    scenario.is_master
+    # the config_name is an attribute of the pipeline and equals "pipeline_configuration"
+    pipeline.config_name
     # There was no subscription, so subscribers is an empty list
-    scenario.subscribers # []
-    # The properties dictionary equals {"name": "Scenario for January"}. It contains all the properties,
+    pipeline.subscribers # []
+    # The properties dictionary equals {"name": "Pipeline for sales prediction"}. It contains all the properties,
     # including the `name` provided at the creation
-    scenario.properties # {"name": "Scenario for January"}
-    # The `name` property is also exposed directly as an attribute. It equals "Scenario for January"
-    scenario.name
-    # the sales pipeline entity is exposed as an attribute of the scenario
-    sales_pipeline = scenario.sales
-    # the production pipeline entity as well
-    production_pipeline = scenario.production
+    pipeline.properties # {"name": "Pipeline for sales prediction"}
+    # The `name` property is also exposed directly as an attribute. It equals "Pipeline for sales prediction"
+    pipeline.name
+    # the training task entity is exposed as an attribute of the pipeline
+    training_task = pipeline.training
+    # the predicting task entity as well
+    predicting_task = pipeline.predicting
     # All the tasks are also exposed as attributes, including the training task entity
-    training_task = scenario.training
-    # The six data nodes are also exposed as attributes of the scenario.
-    current_month_data_node = scenario.current_month
-    ````
+    training_task = pipeline.training
+    # The data nodes are also exposed as attributes of the pipeline.
+    current_month_data_node = pipeline.current_month
+````
 
 ## Get pipeline by id
 The method to get a pipeline is from its id by using the [`taipy.get`](../../reference/#taipy.get) method :
@@ -241,18 +237,28 @@ The method to get a pipeline is from its id by using the [`taipy.get`](../../ref
 import taipy as tp
 from config import *
 
-scenario = tp.create_scenario(monthly_scenario_cfg)
-scenario_retrieved = tp.get(scenario.id)
-scenario == scenario_retrieved
+pipeline = tp.create_pipeline(sales_pipeline_cfg)
+pipeline_retrieved = tp.get(pipeline.id)
+pipeline == pipeline_retrieved
 ````
 On the previous code, the two variables `pipeline` and `pipeline_retrieved` are equals.
 
 ## Get pipeline by config name
 A pipeline can also be retrieved by accessing the {config_name} attribute of the scenario
 
-```
+````python linenums="1"
+# Configure the two pipelines
+sales_pipeline_cfg = tp.configure_pipeline(name="sales", tasks=[training_cfg, predicting_cfg])
+production_pipeline_cfg = tp.configure_pipeline(name="production", tasks=[planning_cfg])
 
-```
+# Configure and create the scenario
+monthly_scenario_cfg = tp.configure_scenario(name="scenario_configuration",             pipelines=[sales_pipeline_cfg, production_pipeline_cfg]))
+scenario = tp.create_scenario(monthly_scenario_cfg)
+
+# Get the pipelines by config name
+sales_pipeline = scenario.sales
+production_pipeline = scenario.production
+````
 
 ## Get all pipelines
 All the pipelines can be retrieved using the method [``taipy.get_pipelines``](../../reference/#taipy.get_pipelines).
