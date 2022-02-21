@@ -151,16 +151,16 @@ parameters can be provided.
     from taipy import Scope
 
     # We configure a simple excel data node. The name identifier is "historical_temperature",
-    # the scope is "SCENARIO" (default value), and the path is the file hist_temp.csv 
-    # with `has_header` being True, representing the csv file has a header.
+    # the scope is "SCENARIO" (default value), and the path is the file hist_temp.xlsx 
+    # with `has_header` being True, representing the exceo file has a header.
     # The sheet_name is not provided so Taipy will use the default value "Sheet1" 
     date_cfg = tp.configure_excel_data_node(name="historical_temperature", path="path/hist_temp.xlsx", has_header=True, exposed_type="numpy")
 
     # We then add another csv data node configuration. The name identifier is "sale_history", the default
-    # SCENARIO scope is used. Since we have a custom class pre-defined for this csv file, we will provide it in the `exposed_type`.
+    # SCENARIO scope is used. Since we have a custom class pre-defined for this excel file, we will provide it in the `exposed_type`.
     # We will provide the specific sheet names of the sheets we want to read
-    model_cfg = tp.configure_pickle_data_node(name="sale_history",
-                                              path="path/sale_history.csv",
+    model_cfg = tp.configure_excel_data_node(name="sale_history",
+                                              path="path/sale_history.xlsx",
                                               sheet_names=["January", "February"]
                                               exposed_type=SaleRow)
     ```
@@ -199,7 +199,7 @@ parameters can be provided.
 
 ### In memory
 
-An in_memory data node is a specific data node used to model  data. To add a new _in_memory_ data node
+An in_memory data node is a specific data node used to model any data in the RAM. To add a new _in_memory_ data node
 configuration, the `taipy.configure_in_memory_data_node` method can be used. In addition to the generic
 parameters described in the previous section
 [Data node configuration](user_core_configuration.md#data-node-configuration), two optional
