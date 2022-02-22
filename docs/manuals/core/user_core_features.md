@@ -338,26 +338,26 @@ A task also holds various properties accessible as an attribute of the task:
 !!! Example
 
 ```python linenums="1"
-    import taipy as tp
-    from config import *
+import taipy as tp
+from config import *
 
-    scenario = tp.create_scenario(monthly_scenario_cfg)
-    task = scenario.predicting
+scenario = tp.create_scenario(monthly_scenario_cfg)
+task = scenario.predicting
 
-    # the config_name is an attribute of the task and equals "task_configuration"
-    task.config_name
+# the config_name is an attribute of the task and equals "task_configuration"
+task.config_name
 
-    # the function which is going to be executed with input data nodes and return value on output data nodes.
-    task.function # predict
+# the function which is going to be executed with input data nodes and return value on output data nodes.
+task.function # predict
 
-    # input is the list of input data nodes of the task
-    task.input # [trained_model_cfg, current_month_cfg]
+# input is the list of input data nodes of the task
+task.input # [trained_model_cfg, current_month_cfg]
 
-    # output is the list of input data nodes of the task
-    task.output # [trained_model_cfg]
+# output is the list of input data nodes of the task
+task.output # [trained_model_cfg]
 
-    # the current_month data node entity is exposed as an attribute of the task
-    current_month_data_node = task.current_month
+# the current_month data node entity is exposed as an attribute of the task
+current_month_data_node = task.current_month
 ```
 
 Taipy exposes multiple methods to manage the various tasks.
@@ -410,48 +410,76 @@ A pipeline also holds various properties and attributes that are accessible thro
 -   `datanode.edition_in_progress` flag that signals if a task is currently computing this data node
 -   `datanode.properties` dict of additional arguments
 
-!!! Example
-```python linenums="1"
-    import taipy as tp
-    from datetime import datetime
-    from config import *
-    
-    
-    datanode = tp.configure_data_node(sales_pipeline_cfg,name="Pipeline for sales prediction")
-    # the config_name is an attribute of the pipeline and equals "pipeline_configuration"
-    pipeline.config_name
-    # There was no subscription, so subscribers is an empty list
-    pipeline.subscribers # []
-    # The properties dictionary equals {"name": "Pipeline for sales prediction"}. It contains all the properties,
-    # including the `name` provided at the creation
-    pipeline.properties # {"name": "Pipeline for sales prediction"}
-    # The `name` property is also exposed directly as an attribute. It equals "Pipeline for sales prediction"
-    pipeline.name
-    # the training task entity is exposed as an attribute of the pipeline
-    training_task = pipeline.training
-    # the predicting task entity as well
-    predicting_task = pipeline.predicting
-    # All the tasks are also exposed as attributes, including the training task entity
-    training_task = pipeline.training
-    # The data nodes are also exposed as attributes of the pipeline.
-    current_month_data_node = pipeline.current_month
-```
+
 ## Get data node
 
-=> tp.get
+The first method to get a **datanode** is from its id using the `taipy.get` method:
+
+!!! Example
+```python linenums="1"
+import taipy as tp
+
+
+# Retrieve a datanode by its id
+datanode = tp.get(datanode_id)
+
+```
 
 => scenario.data_node_config_name
 
 => pipeline.data_node_config_name
 
-=> tp.get_data_nodes
+
+All the datanodes can be retrieved using the method `taipy.get_data_nodes`. This methdod returns a list of all existing datanodes.
+
+!!! Example
+```python linenums="1"
+import taipy as tp
+
+
+# Retrieve a datanode by its id
+datanodes = tp.get_data_nodes()
+
+datanodes #[DataNode 1, DataNode 2, ..., DataNode N]
+
+```
 
 ## Read data node
 
-=> data_node.read()
+To read the content of a datanode you can use the `datanode.read()` method. The read method returns the data stored on the datanode according to the type of datanode:
 
-=> data_node.filter()
+!!! Example
+```python linenums="1"
+import taipy as tp
+
+
+# Retrieve a datanode by its id
+datanode = tp.get(datanode_id)
+
+# Returns the content stored on the datanode
+datanode.read()
+```
+
+
+Is also possible to read partially the contents of datanode, usefull when dealing with large ammounts of data. This can be achieve using the `datanode.filter()` method:
 
 ## Write data node
 
-=> data_node.write()
+To write some data on the datanode, like the output of a task, you can use the `datanode.write()` method. The method takes an data object (string, dictionary, lists, numpy arrays, pandas dataframes, etc) as a parameter and writes it on the datanode:
+
+!!! Example
+```python linenums="1"
+import taipy as tp
+
+
+# Retrieve a datanode by its id
+datanode = tp.get(datanode_id)
+
+data = [{"a": "1", "b": "2"}, {"a": "3", "b": "4"}]
+
+# Writes the dictionary on the datanode
+datanode.write(data)
+
+# returns the new data stored on the datanode
+datanode.read()
+```
