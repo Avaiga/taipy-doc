@@ -49,7 +49,7 @@ To be able to run your app, Heroku will need the following files:
     git commit -m "Add Heroku Procfile requirement"
     ```
 
-- `requirements.txt`: The dependencies file. See [Virtual environments](https://docs.python.org/3/tutorial/venv.html) for details.
+- `requirements.txt`: The dependency file. See [Virtual environments](https://docs.python.org/3/tutorial/venv.html) for details.
 
     **Note:** If you already have a `requirements.txt` file up to date in your Git, you can ignore this step.
 
