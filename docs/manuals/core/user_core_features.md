@@ -246,7 +246,7 @@ import taipy as tp
 assert len(tp.get_jobs()) == 0
 
 # Create a task then submit it.
-task_config = tp.configure_task("my_print_task", print)
+task_config = tp.configure_task("my_print", print)
 scenario_config = tp.configure_scenario_from_tasks("my_scenario", [task_config])
 scenario = tp.create_scenario(scenario_config)
 tp.submit(scenario)
@@ -255,10 +255,10 @@ tp.submit(scenario)
 assert len(tp.get_jobs()) == 1
 
 # Get the latest created job of a Task.
-tp.get_latest_job(scenario.my_print_task)
+tp.get_latest_job(scenario.my_print)
 
 # Then delete it.
-tp.delete_job(scenario.my_print_task)
+tp.delete_job(scenario.my_print)
 ```
 
 ## Subscribe a scenario or pipeline
