@@ -112,10 +112,10 @@ Definition of a [Task](user_core_concepts.md#task).
 
 Properties:
 
-- `name`: The name of this configuration should be unique.
-- `inputs`: Argument(s) sent to the function.
-- `function`: Function to execute.
-- `outputs`: Function result(s).
+- `name`: The name of this new task configuration. This name should be unique.
+- `inputs`: The inputs of the function.
+- `function`: The function to execute.
+- `outputs`: The function result(s).
 
 Basic example:
 ```python linenums="1"
