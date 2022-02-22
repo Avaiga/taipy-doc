@@ -254,7 +254,7 @@ On the previous code, the two variables `pipeline` and `pipeline_retrieved` are 
 
 ## Get pipeline by config name
 
-A pipeline can also be retrieved by accessing the {config_name} attribute of the scenario
+A pipeline can also be retrieved from a scenario by accessing the pipeline {config_name} of the scenario.
 
 ```python linenums="1"
 # Configure the two pipelines
