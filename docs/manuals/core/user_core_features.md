@@ -209,15 +209,17 @@ scenario it will be demoted, and it will no longer be master for the cycle.
 
 => tp.submit
 
-## Jobs attributes
+## Jobs
 
-`task`: Task of the Job.
+### Attributes
+
+`task`: [Task](./user_core_concepts.md#task) of the [Job](./user_core_concepts.md#job).
 `force`: True if the execution of the task is forced.
 `creation_date`: Date of the creation of the Job with the status `SUBMITTED`.
-`status`: Status of the task.
-`exceptions`: Exceptions handled during the execution of the tasks.
+`status`: Status of the [Task](user_core_concepts.md#task).
+`exceptions`: Exceptions handled during the execution of the [Tasks](./user_core_concepts.md#task).
 
-### Status
+#### Status
 
 `SUBMITTED`: Created but not enqueue for execution.
 `BLOCKED`: Block by inputs not ready.
@@ -228,6 +230,36 @@ scenario it will be demoted, and it will no longer be master for the cycle.
 `COMPLETED`: Execution is done and outputs were writen.
 `SKIPPED`: Was and will not be executed.
 
+### Create/Get/Delete Job
+
+[Jobs](./user_core_concepts.md#job) are created when a task is submited.
+
+You can get all of them by doing `tp.get_jobs()` or the latest [Job](./user_core_concepts.md#job) created of a [Task](./user_core_concepts.md#task) by doing `tp.get_latest_job(task)`.
+
+You can also delete a [Job](./user_core_concepts.md#job) by using `tp.delete_job(job)` or all by doing `tp.delete_jobs()`.
+Delete a [Job](./user_core_concepts.md#job) can raise an `JobNotDeletedException` if the status of the [Job](./user_core_concepts.md#job) is not `SKIPPED`, `COMPLETED` or `FAILED`.
+You can overcome this behaviour by forcing the deletion by doing `tp.delete_job(job, force=True)`.
+
+```python linenums="1"
+import taipy as tp
+
+assert len(tp.get_jobs()) == 0
+
+# Create a task then submit it.
+task_config = tp.configure_task("my_print_task", print)
+scenario_config = tp.configure_scenario_from_tasks("my_scenario", [task_config])
+scenario = tp.create_scenario(scenario_config)
+tp.submit(scenario)
+
+# Retrieve all jobs.
+assert len(tp.get_jobs()) == 1
+
+# Get the latest created job of a Task.
+tp.get_latest_job(scenario.my_print_task)
+
+# Then delete it.
+tp.delete_job(scenario.my_print_task)
+```
 
 ## Subscribe a scenario or pipeline
 
@@ -238,18 +270,6 @@ scenario it will be demoted, and it will no longer be master for the cycle.
 => tp.unsubscribe_scenario
 
 => tp.unsubscribe_pipeline
-
-## get jobs
-
-=> tp.get
-
-=> tp.get_latest_job(task)
-
-=> tp.get_jobs
-
-## delete jobs
-
-=> delete_job
 
 # Task Management
 
