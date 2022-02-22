@@ -214,20 +214,31 @@ scenario it will be demoted, and it will no longer be master for the cycle.
 ### Attributes
 
 `task`: [Task](./user_core_concepts.md#task) of the [Job](./user_core_concepts.md#job).
+
 `force`: True if the execution of the task is forced.
+
 `creation_date`: Date of the creation of the Job with the status `SUBMITTED`.
+
 `status`: Status of the [Task](user_core_concepts.md#task).
+
 `exceptions`: Exceptions handled during the execution of the [Tasks](./user_core_concepts.md#task).
 
-#### Status
+### Job Status
 
 `SUBMITTED`: Created but not enqueue for execution.
+
 `BLOCKED`: Block by inputs not ready.
+
 `PENDING`: Waiting for execution.
+
 `RUNNING`: Is being executing.
+
 `CANCELLED`: Was cancelled by user.
+
 `FAILED`: Failed due to timeout or execution error.
+
 `COMPLETED`: Execution is done and outputs were writen.
+
 `SKIPPED`: Was and will not be executed.
 
 ### Create/Get/Delete Job
