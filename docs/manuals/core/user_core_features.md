@@ -243,7 +243,7 @@ You can overcome this behaviour by forcing the deletion by doing `tp.delete_job(
 ```python linenums="1"
 import taipy as tp
 
-assert len(tp.get_jobs()) == 0
+print(f'(1) Number of job: {len(tp.get_jobs())}.')
 
 # Create a task then submit it.
 task_config = tp.configure_task("my_print", print)
@@ -252,13 +252,21 @@ scenario = tp.create_scenario(scenario_config)
 tp.submit(scenario)
 
 # Retrieve all jobs.
-assert len(tp.get_jobs()) == 1
+print(f'(2) Number of job: {len(tp.get_jobs())}.')
 
 # Get the latest created job of a Task.
 tp.get_latest_job(scenario.my_print)
 
 # Then delete it.
 tp.delete_job(scenario.my_print)
+print(f'(3) Number of job: {len(tp.get_jobs())}.')
+```
+
+This example will produce the following output:
+```
+(1) Number of job: 0.
+(2) Number of job: 1.
+(3) Number of job: 0.
 ```
 
 ## Subscribe a scenario or pipeline
