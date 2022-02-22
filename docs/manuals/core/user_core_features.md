@@ -238,9 +238,7 @@ import taipy as tp
 from taipy.core.scheduler.scheduler import Scheduler
 from config import *
 
-scheduler = Scheduler()
-job = scheduler.submit_task(training_cfg)
-job_retrieved = tp.get(job.id)
+job = tp.get(job_id)
 # job == job_retrieved
 ```
 
