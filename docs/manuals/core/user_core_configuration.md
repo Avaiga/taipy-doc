@@ -108,6 +108,56 @@ value. Any serializable python object can be used.
 
 # Task configuration
 
+Definition of a [Task](user_core_concepts.md#task).
+
+Properties:
+
+- `name`: The name of this new task configuration. This name should be unique.
+- `inputs`: The inputs of the function.
+- `function`: The function to execute.
+- `outputs`: The function result(s).
+
+Basic example:
+```python linenums="1"
+import taipy as tp
+
+def double(nb):
+    return nb * 2
+
+input_data_node_config = tp.configure_data_node("input", default_value=21)
+output_data_node_config = tp.configure_data_node("output")
+
+task_config = tp.configure_task("double_task", double, input_data_node_config, output_data_node_config)
+```
+
+On the previous example, we are configuring a [Task](user_core_concepts.md#task) in Taipy to execute:
+```python
+output = double(21)
+```
+
+In lines 3 and 4, we define a function that we want to use in a [Task](user_core_concepts.md#task).
+The Task configuration is done in lines 6 and 7. The function argument and result are represented as two data node configurations.
+Finally, on line 9, we create the task configuration named 'double_task' that represents the function 'double' that expects the 'input'
+data node as an input parameter and that returns the 'output' data node.
+
+Because a Task can have several inputs and outputs, `tp.configure_task` can receive lists of `DataNodeConfig` objects.
+
+We can have the same behaviour by doing:
+```python
+import taipy as tp
+
+def mult_by(nb, by):
+    return nb * by
+
+nb_to_multiple = tp.configure_data_node("nb_to_multiple", default_value=21)
+multiply_by = tp.configure_data_node("multiply_by", default_value=2)
+
+output_config = tp.configure_data_node("output")
+
+task_config = tp.configure_task("foo", [nb_to_multiple, multiply_by], mult_by, output_config)
+```
+
+
 # Pipeline configuration
 
 # Scenario configuration
