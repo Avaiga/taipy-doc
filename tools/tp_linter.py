@@ -7,7 +7,7 @@ import sys
 COMMENTS_CAN_START_WITH = ' The ', ' If ', ' An ', ' A '
 
 filename = sys.argv[1]
-print(f'filename: {filename}')
+
 for line in open(filename).readlines():
     if line.replace(' ', '').startswith('-`') and ':' in line:
         try:
