@@ -309,7 +309,7 @@ task_retrieved = tp.get(task)
 
 On the previous code, the two variables `task` and `task_retrieved` are equals.
 
-A task can also be retrieved by accessing its config_name attribute of its scenario or pipeline.
+A task can also be retrieved from a scenario or a pipeline, by accessing the task config_name attribute.
 
 ```python linenums="1"
     task_1 = scenario.predicting
