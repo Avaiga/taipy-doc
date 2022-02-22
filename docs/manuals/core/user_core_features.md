@@ -190,7 +190,7 @@ scenario it will be demoted, and it will no longer be master for the cycle.
 
 ## Delete a scenario
 
-A scenario can be deleted by using [`taipy.delete_scenario`](../../reference/#taipy.set_master) which takes the scenario id as a parameter. The deletion is also propagated to the nested pipelines, tasks, data nodes, and jobs if they are not shared with any other scenario.
+A scenario can be deleted by using [`taipy.delete_scenario`](../../reference/#taipy.delete_scenario) which takes the scenario id as a parameter. The deletion is also propagated to the nested pipelines, tasks, data nodes, and jobs if they are not shared with any other scenario.
 
 # Pipeline Management
 
