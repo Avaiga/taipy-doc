@@ -211,7 +211,23 @@ scenario it will be demoted, and it will no longer be master for the cycle.
 
 ## Jobs attributes
 
-=> all attributes and properties
+`task`: Task of the Job.
+`force`: True if the execution of the task is forced.
+`creation_date`: Date of the creation of the Job with the status `SUBMITTED`.
+`status`: Status of the task.
+`exceptions`: Exceptions handled during the execution of the tasks.
+
+### Status
+
+`SUBMITTED`: Created but not enqueue for execution.
+`BLOCKED`: Block by inputs not ready.
+`PENDING`: Waiting for execution.
+`RUNNING`: Is being executing.
+`CANCELLED`: Was cancelled by user.
+`FAILED`: Failed due to timeout or execution error.
+`COMPLETED`: Execution is done and outputs were writen.
+`SKIPPED`: Was and will not be executed.
+
 
 ## Subscribe a scenario or pipeline
 
