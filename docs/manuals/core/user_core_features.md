@@ -243,10 +243,15 @@ You can overcome this behaviour by forcing the deletion by doing `tp.delete_job(
 ```python linenums="1"
 import taipy as tp
 
+def double(nb):
+    return nb * 2
+
 print(f'(1) Number of job: {len(tp.get_jobs())}.')
 
 # Create a task then submit it.
-task_config = tp.configure_task("my_print", print)
+input_data_node_config = tp.configure_data_node("input", default_value=21)
+output_data_node_config = tp.configure_data_node("output")
+task_config = tp.configure_task("double_task", double)
 scenario_config = tp.configure_scenario_from_tasks("my_scenario", [task_config])
 scenario = tp.create_scenario(scenario_config)
 tp.submit(scenario)
@@ -255,10 +260,10 @@ tp.submit(scenario)
 print(f'(2) Number of job: {len(tp.get_jobs())}.')
 
 # Get the latest created job of a Task.
-tp.get_latest_job(scenario.my_print)
+tp.get_latest_job(scenario.double_task)
 
 # Then delete it.
-tp.delete_job(scenario.my_print)
+tp.delete_job(scenario.double_task)
 print(f'(3) Number of job: {len(tp.get_jobs())}.')
 ```
 
