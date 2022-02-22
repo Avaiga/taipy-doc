@@ -235,7 +235,6 @@ The first method to get a job is from its id by using the [`taipy.get`](../../re
 
 ```python linenums="1"
 import taipy as tp
-from taipy.core.scheduler.scheduler import Scheduler
 from config import *
 
 job = tp.get(job_id)
