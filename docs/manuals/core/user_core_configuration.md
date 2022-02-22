@@ -146,7 +146,7 @@ parameters can be provided.
 
 !!! example
 
-    ```python
+    ```python linenums="1"
     import taipy as tp
     from taipy import Scope
 
