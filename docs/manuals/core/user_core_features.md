@@ -211,24 +211,24 @@ scenario it will be demoted, and it will no longer be master for the cycle.
 
 ## Jobs
 
-### Attributes
+### Properties
 
-- `task`: [Task](./user_core_concepts.md#task) of the [Job](./user_core_concepts.md#job).
-- `force`: True if the execution of the task is forced.
-- `creation_date`: Date of the creation of the Job with the status `SUBMITTED`.
-- `status`: Status of the [Task](user_core_concepts.md#task).
-- `exceptions`: Exceptions handled during the execution of the [Tasks](./user_core_concepts.md#task).
+- `task`: The [Task](./user_core_concepts.md#task) of the [Job](./user_core_concepts.md#job).
+- `force`: If True, the execution of the task is forced.
+- `creation_date`: The date of the creation of the Job with the status `SUBMITTED`.
+- `status`: The status of the [Task](user_core_concepts.md#task).
+- `exceptions`: The exceptions handled during the execution of the [Tasks](./user_core_concepts.md#task).
 
 ### Job Status
 
-- `SUBMITTED`: Created but not enqueue for execution.
-- `BLOCKED`: Block by inputs not ready.
-- `PENDING`: Waiting for execution.
-- `RUNNING`: Is being executing.
-- `CANCELLED`: Was cancelled by user.
-- `FAILED`: Failed due to timeout or execution error.
-- `COMPLETED`: Execution is done and outputs were writen.
-- `SKIPPED`: Was and will not be executed.
+- `SUBMITTED`: The job is created but not enqueue for execution.
+- `BLOCKED`: The job is blocked by inputs not ready.
+- `PENDING`: The job is waiting for execution.
+- `RUNNING`: The job is being executing.
+- `CANCELLED`: The job was cancelled by user.
+- `FAILED`: The job failed due to timeout or execution error.
+- `COMPLETED`: The job execution is done and outputs were writen.
+- `SKIPPED`: The job was and will not be executed.
 
 ### Create/Get/Delete Job
 
