@@ -425,9 +425,26 @@ datanode = tp.get(datanode_id)
 
 ```
 
-=> scenario.data_node_config_name
+The datanodes that are part of a **scenario** or **pipeline** can be directly accessed on their levels:
 
-=> pipeline.data_node_config_name
+!!! Example
+```python linenums="1"
+import taipy as tp
+from config import *
+
+# Creating a scenario from a config 
+scenario = tp.create_scenario(monthly_scenario_cfg)
+
+# Access the datanode from a scenario
+scenario.sales_history
+
+# Access the pipeline from a scenario
+scenario.sales
+
+# Access the datanode from a pipeline
+scenario.sales.sales_history
+
+```
 
 
 All the datanodes can be retrieved using the method `taipy.get_data_nodes`. This methdod returns a list of all existing datanodes.
