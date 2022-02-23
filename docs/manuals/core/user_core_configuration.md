@@ -229,7 +229,7 @@ value. Any python object can be used.
 A Sql data node is a specific data node used to model Sql data. To add a new _sql_ data node
 configuration, the `taipy.configure_sql_data_node` method can be used. In addition to the generic
 parameters described in the previous section
-[Data node configuration](user_core_configuration.md#data-node-configuration), four optional
+[Data node configuration](user_core_configuration.md#data-node-configuration), multiple
 parameters can be provided.
 
 - The `db_username` parameter represents the database username that will be used by Taipy to access the database.
