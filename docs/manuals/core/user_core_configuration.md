@@ -167,7 +167,7 @@ Properties:
 
 -   `name`: The name of this new pipeline configuration. This name should be unique.
 -   `tasks`: The list of tasks configs.
--   `properties`: Dictionary of additional properties.
+-   `properties`: The dictionary of additional properties.
 
 Basic example:
 
@@ -185,9 +185,9 @@ Properties:
 
 -   `name`: The name of this new scenario configuration. This name should be unique.
 -   `pipelines`: The list of pipeline configs.
--   `frequency`: Recurrence frequency of the scenario
--   `comparators`: Functions to compare data nodes of scenarios which shared the same scenario config.
--   `properties`: Dictionary of additional properties.
+-   `frequency`: The recurrence frequency of the scenario
+-   `comparators`: The list of functions to compare data nodes of scenarios which shared the same scenario config.
+-   `properties`: The dictionary of additional properties.
 
 Basic example:
 
