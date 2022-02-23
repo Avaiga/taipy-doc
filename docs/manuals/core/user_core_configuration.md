@@ -103,7 +103,7 @@ parameters described in the previous section
 [Data node configuration](user_core_configuration.md#data-node-configuration), three optional
 parameters can be provided.
 
-- The `path` parameter represents the csv file path used by Taipy to read and write the data.
+- The `path` parameter is a mandatory parameter and represents the csv file path used by Taipy to read and write the data.
 - The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`, Taipy will use the 1st row in the csv file as the header. By default, `has_header` is `True`.
 - When the `exposed_type` is given as parameter, if the `exposed_type` value provided is `numpy`, the data node will read the csv file to a numpy array. If the provided value is a custom class, data node will create a list of custom object with the given custom class, each object will represent a row in the csv file.If `exposed_type` is not provided, the data node will read the csv file as a pandas DataFrame.
 
