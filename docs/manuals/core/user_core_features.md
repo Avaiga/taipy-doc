@@ -463,6 +463,16 @@ datanode.read()
 
 Is also possible to read partially the contents of datanode, usefull when dealing with large ammounts of data. This can be achieve using the `datanode.filter()` method:
 
+```python linenums="1"
+datanode.filter([('field_name_like_temperature', 14, Operator.EQUAL), ('field_name_like_temperature', 10, Operator.EQUAL)], JoinOperator.OR))
+```
+Is also posible to use pandas style filtering:
+
+```python linenums="1"
+temp_data = datanode['field_name_like_temperature']
+temp_data[(temp_data == 14) | (temp_data == 10)]
+```
+
 ## Write data node
 
 To write some data on the datanode, like the output of a task, you can use the `datanode.write()` method. The method takes an data object (string, dictionary, lists, numpy arrays, pandas dataframes, etc) as a parameter and writes it on the datanode:
