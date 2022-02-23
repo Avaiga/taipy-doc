@@ -179,7 +179,7 @@ parameters described in the previous section
 parameters can be provided.
 
 - The `read_fct` parameter represents a python function provided by the user. It will be used to read the data.
-- The `write_fct` parameter represents the function, provided by the user, will be used to write the data.
+- The `write_fct` parameter represents a python function provided by the user. It will be used to write the data.
 
 !!! example
 
