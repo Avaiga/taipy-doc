@@ -100,7 +100,7 @@ value. Any serializable python object can be used.
 A Csv data node is a specific data node used to model csv file data. To add a new _csv_ data node
 configuration, the `taipy.configure_csv_data_node` method can be used. In addition to the generic
 parameters described in the previous section
-[Data node configuration](user_core_configuration.md#data-node-configuration), three optional
+[Data node configuration](user_core_configuration.md#data-node-configuration), one mandatory and two optional
 parameters can be provided.
 
 - The `path` parameter is a mandatory parameter and represents the csv file path used by Taipy to read and write the data.
