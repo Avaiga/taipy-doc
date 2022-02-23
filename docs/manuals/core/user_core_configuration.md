@@ -202,7 +202,7 @@ parameters can be provided.
 An in_memory data node is a specific data node used to model any data in the RAM. To add a new _in_memory_ data node
 configuration, the `taipy.configure_in_memory_data_node` method can be used. In addition to the generic
 parameters described in the previous section
-[Data node configuration](user_core_configuration.md#data-node-configuration), two optional
+[Data node configuration](user_core_configuration.md#data-node-configuration), an optional
 parameters can be provided.
 
 - If the `default_data` is given as parameter, the data node is automatically written with the corresponding
