@@ -285,9 +285,74 @@ A pipeline can be deleted by using [`taipy.delete_pipeline`](../../reference/#ta
 
 => tp.submit
 
-## Jobs attributes
+## Jobs
 
-=> all attributes and properties
+### Properties
+
+- `task`: The [Task](./user_core_concepts.md#task) of the [Job](./user_core_concepts.md#job).
+- `force`: If True, the execution of the task is forced.
+- `creation_date`: The date of the creation of the Job with the status `SUBMITTED`.
+- `status`: The status of the [Task](user_core_concepts.md#task).
+- `exceptions`: The exceptions handled during the execution of the [Tasks](./user_core_concepts.md#task).
+
+### Job Status
+
+- `SUBMITTED`: The job is created but not enqueue for execution.
+- `BLOCKED`: The job is blocked by inputs not ready.
+- `PENDING`: The job is waiting for execution.
+- `RUNNING`: The job is being executing.
+- `CANCELLED`: The job was cancelled by user.
+- `FAILED`: The job failed due to timeout or execution error.
+- `COMPLETED`: The job execution is done and outputs were writen.
+- `SKIPPED`: The job was and will not be executed.
+
+### Create/Get/Delete Job
+
+[Jobs](./user_core_concepts.md#job) are created when a task is submited.
+
+You can get all of them by doing [`taipy.get_jobs`](../../reference/#taipy.get_jobs) or the latest [Job](./user_core_concepts.md#job) created of a [Task](./user_core_concepts.md#task) by doing [`taipy.get_latest_job(task)`](../../reference/#taipy.get_latest_job).
+You can also get a job is from its id by using the [`taipy.get`](../../reference/#taipy.get).
+
+You can also delete a [Job](./user_core_concepts.md#job) by using [`taipy.delete_job(job)`](../../reference/#taipy.delete_job) or all by doing [`taipy.delete_jobs`](../../reference/#taipy.delete_jobs).
+Delete a [Job](./user_core_concepts.md#job) can raise an `JobNotDeletedException` if the status of the [Job](./user_core_concepts.md#job) is not `SKIPPED`, `COMPLETED` or `FAILED`.
+You can overcome this behaviour by forcing the deletion by doing `tp.delete_job(job, force=True)`.
+
+!!! Example
+
+    ```python linenums="1"
+    import taipy as tp
+
+    def double(nb):
+        return nb * 2
+
+    print(f'(1) Number of job: {len(tp.get_jobs())}.')
+
+    # Create a task then submit it.
+    input_data_node_config = tp.configure_data_node("input", default_value=21)
+    output_data_node_config = tp.configure_data_node("output")
+    task_config = tp.configure_task("double_task", double)
+    scenario_config = tp.configure_scenario_from_tasks("my_scenario", [task_config])
+    scenario = tp.create_scenario(scenario_config)
+    tp.submit(scenario)
+
+    # Retrieve all jobs.
+    print(f'(2) Number of job: {len(tp.get_jobs())}.')
+
+    # Get the latest created job of a Task.
+    tp.get_latest_job(scenario.double_task)
+
+    # Then delete it.
+    tp.delete_job(scenario.double_task)
+    print(f'(3) Number of job: {len(tp.get_jobs())}.')
+    ```
+
+    This example will produce the following output:
+
+    ```
+    (1) Number of job: 0.
+    (2) Number of job: 1.
+    (3) Number of job: 0.
+    ```
 
 ## Subscribe a scenario or pipeline
 
@@ -298,30 +363,6 @@ A pipeline can be deleted by using [`taipy.delete_pipeline`](../../reference/#ta
 => tp.unsubscribe_scenario
 
 => tp.unsubscribe_pipeline
-
-## Get jobs
-
-The first method to get a job is from its id by using the [`taipy.get`](../../reference/#taipy.get) method :
-
-```python linenums="1"
-import taipy as tp
-from config import *
-
-job = tp.get(job_id)
-# job == job_retrieved
-```
-
-On the previous code, the two variables `job` and `job_retrieved` are equals.
-
-All the jobs can be retrieved using the method [`taipy.get_jobs`](../../reference/#taipy.get_jobs).
-
-The latest job of a task can be retrieved using the method [`taipy.get_latest_job`](../../reference/#taipy.get_latest_job).
-
-## Delete jobs
-
-A job can be deleted using the method [`taipy.delete_job`](../../reference/#taipy.delete_job). If the job is not finished, an exception will be thrown. Setting the "force" parameter to True will force the deletion of the job.
-
-All jobs can be deleted using the method [`taipy.delete_jobs`](../../reference/#taipy.delete_jobs). The deletion is forced by default.
 
 # Task Management
 

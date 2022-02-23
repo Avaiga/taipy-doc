@@ -23,7 +23,7 @@ git commit -m "My first commit"
 
 To be able to run your app, Heroku will need the following files:
 
-- `runtime.txt`: The version of Python you want to use. You can find the list of available version at [Heroku supported versions of Python](https://devcenter.heroku.com/articles/python-support#supported-runtimes).
+- `runtime.txt`: The version of Python you want to use. You can find the list of available versions at [Heroku supported versions of Python](https://devcenter.heroku.com/articles/python-support#supported-runtimes).
 
     For example, put in your `runtime.txt`:
     ```
