@@ -100,8 +100,7 @@ value. Any serializable python object can be used.
 A Csv data node is a specific data node used to model csv file data. To add a new _csv_ data node
 configuration, the `taipy.configure_csv_data_node` method can be used. In addition to the generic
 parameters described in the previous section
-[Data node configuration](user_core_configuration.md#data-node-configuration), one mandatory and two optional
-parameters can be provided.
+[Data node configuration](user_core_configuration.md#data-node-configuration), one mandatory and two optional parameters can be provided.
 
 - The `path` parameter is a mandatory parameter and represents the csv file path used by Taipy to read and write the data.
 - The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`, Taipy will use the 1st row in the csv file as the header. By default, `has_header` is `True`.
@@ -136,10 +135,9 @@ parameters can be provided.
 An Excel data node is a specific data node used to model xlsx file data. To add a new _excel_ data node
 configuration, the `taipy.configure_excel_data_node` method can be used. In addition to the generic
 parameters described in the previous section
-[Data node configuration](user_core_configuration.md#data-node-configuration), four optional
-parameters can be provided.
+[Data node configuration](user_core_configuration.md#data-node-configuration), a mandatory and three optional parameters can be provided.
 
-- The `path` parameter represents the excel file path used by Taipy to read and write the data.
+- The `path` is a mandatory parameter that represents the excel file path used by Taipy to read and write the data.
 - The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`, Taipy will use the 1st row in the excel file as the header. By default, `has_header` is `True`.
 - The `sheet_name` parameter represents which specific sheet in the excel file to read. If `sheet_name` is provided with a list of sheet names, it will return a dictionary with the key being the sheet name and the value being the data of the corresponding sheet. If a string is provided, data node will read only the data of the coressponding sheet. The default value of `sheet_name` is "Sheet1"
 - When the `exposed_type` is given as parameter, if the `exposed_type` value provided is `numpy`, the data node will read the excel file to a numpy array. If the provided value is a custom class, data node will create a list of custom object with the given custom class, each object will represent a row in the excel file.If `exposed_type` is not provided, the data node will read the excel file as a pandas DataFrame.
@@ -175,11 +173,11 @@ parameters can be provided.
 An Generic data node is a specific data node used to model generic data type. To add a new _generic_ data node
 configuration, the `taipy.configure_generic_data_node` method can be used. In addition to the generic
 parameters described in the previous section
-[Data node configuration](user_core_configuration.md#data-node-configuration), two optional
+[Data node configuration](user_core_configuration.md#data-node-configuration), two mandatory
 parameters can be provided.
 
-- The `read_fct` parameter represents a python function provided by the user. It will be used to read the data.
-- The `write_fct` parameter represents a python function provided by the user. It will be used to write the data.
+- The `read_fct` is a mandatory parameter that represents a python function provided by the user. It will be used to read the data.
+- The `write_fct` is a mandatory parameter that represents a python function provided by the user. It will be used to write the data.
 
 !!! example
 
