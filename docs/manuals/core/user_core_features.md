@@ -317,39 +317,42 @@ You can also delete a [Job](./user_core_concepts.md#job) by using [`taipy.delete
 Delete a [Job](./user_core_concepts.md#job) can raise an `JobNotDeletedException` if the status of the [Job](./user_core_concepts.md#job) is not `SKIPPED`, `COMPLETED` or `FAILED`.
 You can overcome this behaviour by forcing the deletion by doing `tp.delete_job(job, force=True)`.
 
-```python linenums="1"
-import taipy as tp
+!!! Example
 
-def double(nb):
-    return nb * 2
+    ```python linenums="1"
+    import taipy as tp
 
-print(f'(1) Number of job: {len(tp.get_jobs())}.')
+    def double(nb):
+        return nb * 2
 
-# Create a task then submit it.
-input_data_node_config = tp.configure_data_node("input", default_value=21)
-output_data_node_config = tp.configure_data_node("output")
-task_config = tp.configure_task("double_task", double)
-scenario_config = tp.configure_scenario_from_tasks("my_scenario", [task_config])
-scenario = tp.create_scenario(scenario_config)
-tp.submit(scenario)
+    print(f'(1) Number of job: {len(tp.get_jobs())}.')
 
-# Retrieve all jobs.
-print(f'(2) Number of job: {len(tp.get_jobs())}.')
+    # Create a task then submit it.
+    input_data_node_config = tp.configure_data_node("input", default_value=21)
+    output_data_node_config = tp.configure_data_node("output")
+    task_config = tp.configure_task("double_task", double)
+    scenario_config = tp.configure_scenario_from_tasks("my_scenario", [task_config])
+    scenario = tp.create_scenario(scenario_config)
+    tp.submit(scenario)
 
-# Get the latest created job of a Task.
-tp.get_latest_job(scenario.double_task)
+    # Retrieve all jobs.
+    print(f'(2) Number of job: {len(tp.get_jobs())}.')
 
-# Then delete it.
-tp.delete_job(scenario.double_task)
-print(f'(3) Number of job: {len(tp.get_jobs())}.')
-```
+    # Get the latest created job of a Task.
+    tp.get_latest_job(scenario.double_task)
 
-This example will produce the following output:
-```
-(1) Number of job: 0.
-(2) Number of job: 1.
-(3) Number of job: 0.
-```
+    # Then delete it.
+    tp.delete_job(scenario.double_task)
+    print(f'(3) Number of job: {len(tp.get_jobs())}.')
+    ```
+
+    This example will produce the following output:
+
+    ```
+    (1) Number of job: 0.
+    (2) Number of job: 1.
+    (3) Number of job: 0.
+    ```
 
 ## Subscribe a scenario or pipeline
 
