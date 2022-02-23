@@ -160,7 +160,47 @@ task_config = tp.configure_task("foo", [nb_to_multiple, multiply_by], mult_by, o
 
 # Pipeline configuration
 
+Definition of a [Pipeline](user_core_concepts.md#pipeline).
+
+Properties:
+
+-   `name`: The name of this new pipeline configuration. This name should be unique.
+-   `tasks`: The list of tasks configs.
+-   `properties`: Dictionary of additional properties.
+
+Basic example:
+
+```python linenums="1"
+pipeline_config = tp.configure_pipeline("multiply_pipeline", [task_config])
+```
+
+On this example, we create a pipeline config which consists of a task in the previous example.
+
 # Scenario configuration
+
+Definition of a [Scenario](user_core_concepts.md#scenario).
+
+Properties:
+
+-   `name`: The name of this new scenario configuration. This name should be unique.
+-   `pipelines`: The list of pipeline configs.
+-   `frequency`: Recurrence frequency of the scenario
+-   `comparators`: Functions to compare data nodes of scenarios which shared the same scenario config.
+-   `properties`: Dictionary of additional properties.
+
+Basic example:
+
+```python linenums="1"
+scenario_config = tp.configure_scenario("multiply_scenario", [pipeline_config])
+```
+
+On this example, we create a scenario config which consists of a pipeline in the previous example.
+
+We can also create a scenario config from a list of tasks, which will automatically create a pipeline consists of those tasks and belongs to the scenario.
+
+```python linenums="1"
+scenario_config = tp.configure_scenario_from_tasks("multiply_scenario",[task_config], pipeline_name="multiply_pipeline")
+```
 
 # Global configuration
 
