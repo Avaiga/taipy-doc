@@ -185,7 +185,7 @@ Properties:
 
 -   `name`: The name of this new scenario configuration. This name should be unique.
 -   `pipelines`: The list of pipeline configs.
--   `frequency`: The recurrence frequency of the scenario
+-   `frequency`: The recurrence frequency of the scenario.
 -   `comparators`: The list of functions to compare data nodes of scenarios which shared the same scenario config.
 -   `properties`: The dictionary of additional properties.
 
