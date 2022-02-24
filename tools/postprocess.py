@@ -60,6 +60,7 @@ def on_post_build(env):
     site_dir = env.conf["site_dir"]
     for root, _, file_list in os.walk(site_dir):
         for f in file_list:
+            # Post-process generated '.html' files
             if f.endswith(".html"):
                 filename = os.path.join(root, f)
                 file_was_changed = False
@@ -92,3 +93,6 @@ def on_post_build(env):
                 if file_was_changed:
                     with open(filename, "w") as html_file:
                         html_file.write(html_content)
+            # Remove '.md_template' files
+            elif f.endswith(".md_template"):
+                os.remove(os.path.join(root, f))
