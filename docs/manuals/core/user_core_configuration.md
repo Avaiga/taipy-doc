@@ -435,7 +435,17 @@ airflow_password = "pass"
 
 # Check configuration
 
-Taipy provides a checking mechanism to validate the compiled configuration. You can trigger the check by calling:
+Taipy provides a checking mechanism to validate the compiled configuration. 
+Currently there are 6 checkers implemented in Taipy:
+
+- GlobalConfigChecker
+- DataNodeConfigChecker
+- TaskConfigChecker
+- PipelineConfigChecker
+- ScenarioConfigChecker
+- JobConfigChecker
+
+You can trigger the check by calling:
 ```python linenums="1"
 import taipy as tp
 
