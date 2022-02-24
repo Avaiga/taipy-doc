@@ -74,7 +74,7 @@ value. Any serializable python object can be used.
 
 !!! example
 
-    ```python
+    ```python linenums="1"
     import taipy as tp
     from taipy import Scope
 
@@ -108,7 +108,7 @@ parameters described in the previous section
 
 !!! example
 
-    ```python
+    ```python linenums="1"
     import taipy as tp
     from taipy import Scope
 
@@ -181,7 +181,7 @@ parameters can be provided.
 
 !!! example
 
-    ```python
+    ```python linenums="1"
     import taipy as tp
     from taipy import Scope
 
@@ -208,7 +208,7 @@ value. Any python object can be used.
 
 !!! example
 
-    ```python
+    ```python linenums="1"
     import taipy as tp
     from taipy import Scope
 
@@ -241,7 +241,7 @@ parameters can be provided.
 
 !!! example
 
-    ```python
+    ```python linenums="1"
     import taipy as tp
     from taipy import Scope
 
@@ -434,6 +434,14 @@ airflow_password = "pass"
     for `airflow_user` and `airflow_password`.
 
 # Check configuration
+
+Taipy provides a checking mechanism to validate the compiled configuration. You can trigger the check by calling:
+```python linenums="1"
+import taipy as tp
+
+tp.check_configuration()
+```
+
 
 !!! Abstract Todo
 
