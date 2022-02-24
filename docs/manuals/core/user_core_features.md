@@ -336,7 +336,6 @@ A task also holds various properties accessible as an attribute of the task:
 -   `task.output` is the list of output data nodes.
 
 !!! Example
-
 ```python linenums="1"
     import taipy as tp
     from config import *
