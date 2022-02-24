@@ -12,10 +12,18 @@ nav:
   - 'User Manual':
     - "About Taipy's User Manual": 'manuals/about.md'
     - Taipy core:
-        - 'Concepts': 'manuals/core/user_core_concepts.md'
-        - 'Configuration': 'manuals/core/user_core_configuration.md'
-        - 'Advanced configuration': 'manuals/core/user_core_advanced_configuration.md'
-        - 'Features': 'manuals/core/user_core_features.md'
+        - 'Concepts':
+            - 'About': 'manuals/core/concepts/about.md'
+            - 'Data node': 'manuals/core/concepts/data-node.md'
+            - 'Task': 'manuals/core/concepts/task.md'
+            - 'Job': 'manuals/core/concepts/job.md'
+            - 'Pipeline': 'manuals/core/concepts/pipeline.md'
+            - 'Scenario': 'manuals/core/concepts/scenario.md'
+            - 'Cycle': 'manuals/core/concepts/cycle.md'
+            - 'Scope': 'manuals/core/concepts/scope.md'
+        -   'Configuration': 'manuals/core/user_core_configuration.md'
+        -   'Advanced configuration': 'manuals/core/user_core_advanced_configuration.md'
+        -   'Features': 'manuals/core/user_core_features.md'
     - Graphical User Interface:
         - 'About': 'manuals/gui/user.md'
         - 'Pages': 'manuals/gui/user_pages.md'
