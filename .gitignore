@@ -47,7 +47,6 @@ coverage.xml
 *.cover
 .hypothesis/
 .pytest_cache/
-tests/taipy/pipeline/.*
 
 # Translations
 *.mo
@@ -99,7 +98,6 @@ ENV/
 # IDE settings
 .vscode/
 .idea/
-.idea/taipy.iml
 .DS_Store
 
 # mkdocs build dir
@@ -112,3 +110,5 @@ site/
 docs/manuals/gui/user_controls.md
 docs/manuals/gui/user_blocks.md
 docs/manuals/gui/viselements/*.md
+/taipy
+/gui

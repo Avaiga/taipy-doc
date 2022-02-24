@@ -133,13 +133,103 @@ type.
 
 ## Root page
 
-!!! abstract "TODO: root page documentation"
+The _Root_ page is the page that is located at the top of the Web application and the
+name of this page is `"/"`.
+
+If your application uses only one page, this is typically where it would be created:
+```py
+  Gui(page="# Page Content")
+```
+creates a page from the Markdown content that you provide, and adds this page to the new
+`Gui` instance with the name `"/"`. This makes it straightforward to watch your application
+run, by pointing a Web browser to the root of the Web server address (by default that would be `http://127.0.0.1:5000/`).
+
+### Single-page applications
+
+If your application has several pages, you would usually create them with different names,
+so the user can skip from page to page (using the
+[`Gui.navigate()`](../../reference/#taipy.gui.gui.Gui.navigate) function or the
+[`navbar`](../viselements/navbar/) control).<br/>
+You can however still have a root page for your application (with the name: `"/"`). In this situation, Taipy creates a
+[single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application)
+for you.
+
+Modern Web applications use this SPA technique: instead of reloading the entire page,
+some processing is performed behind the scene to generate the page that should be
+displayed, transforming the page that is currently shown. This allows for smoother
+transitions from page to page, and the feeling that the application was natively developed
+for your runtime environment.
+
+If your Taipy application has defined a root page, then the content of this page is
+generated before the content of the page you need to display. This makes it very easy to
+design an application that uses the same header (such as a banner and a navigation bar)
+for all its pages.
+
+!!! example
+
+    Here is an example of a Taipy application that holds several pages:
+    ``` py linenums="1"
+       from taipy.gui import Gui
+
+       root_md="# Multi-page application"
+       page1_md="## This is page 1"
+       page2_md="## This is page 2"
+
+       pages = {
+         "/": root_md,
+         "page1": page1_md,
+         "page1": page2_md
+       }
+       Gui(pages=pages).run()
+    ```
+    When you run this application and display the page at `http://127.0.0.1:5000/`,
+    you will notice that the browser navigates to the page `/page1`, and that the
+    final result is a page that contains the content of the root page, followed by
+    what is defined in the page `"page1"`.<br/>
+    In this example, you will see both the main title ('Multi-page application') and
+    the sub-title ('This is page 1').
+
+    If you navigate to '/page2', the main title remains in the page, and the sub-title
+    is replaced by the text 'This is page 2'
+
+### The `<|content|>` pseudo-control
+
+Your application may also need to hold a footer on all the pages it uses.<br/>
+You can use the pseudo-control `<|content|>` to achieve the expected result: this
+visual element is not really a control: It is a placeholder for page content, used in the
+root page of your application, and is replaced by the target page content when the application runs.
+
+!!! example
+
+    ``` py linenums="1"
+       from taipy.gui import Gui
+
+       root_md="""
+       # Multi-page application
+
+       <|content|>
+
+       This application was created with [Taipy](http://taipy.avaiga.com).
+       """
+       page1_md="## This is page 1"
+       page2_md="## This is page 2"
+
+       pages = {
+         "/": root_md,
+         "page1": page1_md,
+         "page1": page2_md
+       }
+       Gui(pages=pages).run()
+    ```
+    This application does the same as in the previous example, except that you now
+    have the footer line (_'This application was created...'_) in all the pages of
+    your application.
 
 ## Partials
 
 There are page fragments that you may want to repeat on different pages. In that situation
-you will want to use the `Partials` concept described below. This will avoid
-repeating yourself when creating your user interfaces.
+you will want to use the `Partials` concept described below. This prevents you from
+having to repeat yourself when creating your user interfaces.
 
 !!! abstract "TODO: partials documentation"
 
