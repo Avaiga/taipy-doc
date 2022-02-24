@@ -1,46 +1,9 @@
 This documentation focuses on providing necessary information to use the Taipy core features, and in particular
 the capabilities related to scenario management. It is assumed that the reader already knows the [Taipy core
-concepts](user_core_concepts.md) described in a previous documentation.
+concepts](concepts/about.md) described in a previous documentation.
 
-It is also assumed in the next sections that `my_config.py` module contains a Taipy configuration already implemented
-with the following python code:
-
-```python linenums="1"
-import taipy as tp
-from taipy import Frequency
-from taipy import Scope
-from my_functions import train, predict, plan
-
-# Configure all six data nodes
-sales_history_cfg = tp.configure_data_node(name="sales_history", scope=Scope.GLOBAL, storage_type="csv", path="my/file/path.csv")
-trained_model_cfg = tp.configure_data_node(name="trained_model", scope=Scope.CYCLE)
-current_month_cfg = tp.configure_data_node(name="current_month", scope=Scope.CYCLE, default_data=datetime(2020,1,1))
-sales_predictions_cfg = tp.configure_data_node(name="sales_predictions", scope=Scope.CYCLE)
-capacity_cfg = tp.configure_data_node(name="capacity", scope=Scope.SCENARIO)
-production_orders_cfg = tp.configure_data_node(name="production_orders", scope=Scope.SCENARIO, storage_type="sql",
-                                               db_username="admin",
-                                               db_password="ENV[PWD]",
-                                               db_name="production_planning",
-                                               db_engine="mssql",
-                                               read_query="SELECT * from production_order",
-                                               write_table="production_order")
-
-# Configure the three tasks
-training_cfg = tp.configure_task(name="training", inputs=sales_history_cfg, train, outputs=[trained_model_cfg])
-predicting_cfg = tp.configure_task(name="predicting", inputs=[trained_model_cfg, current_month_cfg], predict, outputs=sales_predictions_cfg)
-planning_cfg = tp.configure_task(name="planning", inputs=[sales_predictions_cfg, capacity], plan, outputs=[production_orders_cfg])
-
-# Configure the two pipelines
-sales_pipeline_cfg = tp.configure_pipeline(name="sales", tasks=[training_cfg, predicting_cfg])
-production_pipeline_cfg = tp.configure_pipeline(name="production", tasks=[planning_cfg])
-
-# Configure the scenario
-monthly_scenario_cfg = tp.configure_scenario(name="scenario_configuration",
-                                             pipelines=[sales_pipeline_cfg, production_pipeline_cfg])
-                                             frequency=Frequency.MONTHLY)
-```
-
-The previous configuration corresponds to the design displayed in the following picture.
+It is also assumed in the next sections that [`my_config.py`](./my_config.py) module contains a Taipy configuration
+already implemented. This configuration corresponds to the design displayed in the following picture.
 
 ![scenarios](scenarios.svg)
 
@@ -49,8 +12,8 @@ on how to configure a Taipy application.
 
 # Create a Scenario
 
-Scenarios are the most used entities in Taipy. The [`taipy.create_scenario`](../../reference/#taipy.create_scenario)
-can be used to create a new scenario.
+Scenarios are the most used entities in Taipy. The
+[`taipy.create_scenario`](../../reference/#taipy.core.create_scenario) can be used to create a new scenario.
 
 This function creates and returns a new scenario from the scenario configuration
 provided as a parameter. The scenario's creation also triggers the creation of the related entities that
@@ -71,7 +34,7 @@ tp.create_scenario(monthly_scenario_cfg)
 Three parameters can be given to the scenario creation method :
 
 -   `config` is a mandatory parameter of type
-    [`ScenarioConfig`](../../reference/#taipy.config.scenario_config.ScenarioConfig). It corresponds to a scenario
+    [`ScenarioConfig`](../../reference/#taipy.core.config.scenario_config.ScenarioConfig). It corresponds to a scenario
     configuration (created in the config.py module)
 -   `creation_date` is an optional parameter of type datetime.datetime. It corresponds to the creation date of
     the scenario. If the parameter is not provided, the current date-time is used by default.
@@ -80,29 +43,29 @@ Three parameters can be given to the scenario creation method :
 
 !!! Example
 
-Using the config.py module here is an example of how to create a scenario.
+    Using the config.py module here is an example of how to create a scenario.
 
-```python linenums="1"
-    import taipy as tp
-    from config import *
-    from datetime import datetime
+    ```python linenums="1"
+        import taipy as tp
+        from config import *
+        from datetime import datetime
 
-    scenario = tp.create_scenario(monthly_scenario_cfg, creation_date=datetime(2022, 1, 1), name="Scenario for January")
-```
+        scenario = tp.create_scenario(monthly_scenario_cfg, creation_date=datetime(2022, 1, 1), name="Scenario for January")
+    ```
 
-On this small example, one scenario for January is instantiated. Behind the scene, the other related entities are
-also created:
+    On this small example, one scenario for January is instantiated. Behind the scene, the other related entities are
+    also created:
 
--   The January cycle,
--   Two sales and production pipelines,
--   Three tasks (training, predicting, planning),
--   And six data nodes (sales_history, trained_model, current_month, sales_predictions, capacity, production_orders).
+    * The January cycle,
+    * Two sales and production pipelines,
+    * Three tasks (training, predicting, planning),
+    * And six data nodes (sales_history, trained_model, current_month, sales_predictions, capacity, production_orders).
 
 # Scenario and cycle Management
 
 ## Scenario attributes
 
-The scenario creation method returns a [`Scenario`](../../reference/#taipy.Scenario) entity. It is identified by
+The scenario creation method returns a [`Scenario`](../../reference/#taipy.core.Scenario) entity. It is identified by
 a unique identifier named `id` that is generated by Taipy.
 A scenario also holds various properties accessible as an attribute of the scenario:
 
@@ -121,41 +84,41 @@ A scenario also holds various properties accessible as an attribute of the scena
 
 !!! Example
 
-```python linenums="1"
-    import taipy as tp
-    from datetime import datetime
-    from config import *
+    ```python linenums="1"
+        import taipy as tp
+        from datetime import datetime
+        from config import *
 
-    scenario = tp.create_scenario(monthly_scenario_cfg, creation_date=datetime(2022, 1, 1), name="Scenario for January")
+        scenario = tp.create_scenario(monthly_scenario_cfg, creation_date=datetime(2022, 1, 1), name="Scenario for January")
 
-    # the config_name is an attribute of the scenario and equals "scenario_configuration"
-    scenario.config_name
-    # The creation date is the date-time provided at the creation. It equals datetime(2022, 1, 1)
-    scenario.creation_date
-    # Is_master property equals `True` since it is the only scenario of the cycle.
-    scenario.is_master
-    # There was no subscription, so subscribers is an empty list
-    scenario.subscribers # []
-    # The properties dictionary equals {"name": "Scenario for January"}. It contains all the properties,
-    # including the `name` provided at the creation
-    scenario.properties # {"name": "Scenario for January"}
-    # The `name` property is also exposed directly as an attribute. It equals "Scenario for January"
-    scenario.name
-    # the sales pipeline entity is exposed as an attribute of the scenario
-    sales_pipeline = scenario.sales
-    # the production pipeline entity as well
-    production_pipeline = scenario.production
-    # All the tasks are also exposed as attributes, including the training task entity
-    training_task = scenario.training
-    # The six data nodes are also exposed as attributes of the scenario.
-    current_month_data_node = scenario.current_month
-```
+        # the config_name is an attribute of the scenario and equals "scenario_configuration"
+        scenario.config_name
+        # The creation date is the date-time provided at the creation. It equals datetime(2022, 1, 1)
+        scenario.creation_date
+        # Is_master property equals `True` since it is the only scenario of the cycle.
+        scenario.is_master
+        # There was no subscription, so subscribers is an empty list
+        scenario.subscribers # []
+        # The properties dictionary equals {"name": "Scenario for January"}. It contains all the properties,
+        # including the `name` provided at the creation
+        scenario.properties # {"name": "Scenario for January"}
+        # The `name` property is also exposed directly as an attribute. It equals "Scenario for January"
+        scenario.name
+        # the sales pipeline entity is exposed as an attribute of the scenario
+        sales_pipeline = scenario.sales
+        # the production pipeline entity as well
+        production_pipeline = scenario.production
+        # All the tasks are also exposed as attributes, including the training task entity
+        training_task = scenario.training
+        # The six data nodes are also exposed as attributes of the scenario.
+        current_month_data_node = scenario.current_month
+    ```
 
 Taipy exposes multiple methods to manage the various scenarios.
 
 ## Get scenario by id
 
-The first method to get a scenario is from its id by using the [`taipy.get`](../../reference/#taipy.get) method :
+The first method to get a scenario is from its id by using the [`taipy.get`](../../reference/#taipy.core.get) method :
 
 ```python linenums="1"
 import taipy as tp
@@ -170,76 +133,80 @@ On the previous code, the two variables `scenario` and `scenario_retrieved` are 
 
 ## Get all scenarios
 
-All the scenarios can be retrieved using the method [`taipy.get_scenarios`](../../reference/#taipy.get_scenarios).
+All the scenarios can be retrieved using the method [`taipy.get_scenarios`](../../reference/#taipy.core.get_scenarios).
 This method returns the list of all existing scenarios. If a cycle is given as parameter, the list contains all the
 existing scenarios of the cycle.
 
 ## Get master scenarios
 
-[`taipy.get_master`](../../reference/#taipy.get_master) method returns the master scenario of the cycle given as
+[`taipy.get_master`](../../reference/#taipy.core.get_master) method returns the master scenario of the cycle given as
 parameter.
 
-[`taipy.get_all_masters`](../../reference/#taipy.get_all_masters) returns the master scenarios for all the existing
+[`taipy.get_all_masters`](../../reference/#taipy.core.get_all_masters) returns the master scenarios for all the existing
 cycles.
 
 ## Promote a scenario as master
 
-To set a scenario as master, the [`taipy.set_master`](../../reference/#taipy.set_master) method must be used. It
+To set a scenario as master, the [`taipy.set_master`](../../reference/#taipy.core.set_master) method must be used. It
 promotes the scenario given as parameter to the master scenario of its cycle. If the cycle already had a master
 scenario it will be demoted, and it will no longer be master for the cycle.
 
 ## Delete a scenario
 
-A scenario can be deleted by using [`taipy.delete_scenario`](../../reference/#taipy.delete_scenario) which takes the scenario id as a parameter. The deletion is also propagated to the nested pipelines, tasks, data nodes, and jobs if they are not shared with any other scenario.
+A scenario can be deleted by using [`taipy.delete_scenario`](../../reference/#taipy.core.delete_scenario) which takes
+the scenario id as a parameter. The deletion is also propagated to the nested pipelines, tasks, data nodes, and jobs
+if they are not shared with any other scenario.
 
 # Pipeline Management
 
 ## Pipeline attributes
 
-The pipeline creation method returns a [`Pipeline`](../../reference/#taipy.Pipeline) entity. It is identified by
+The pipeline creation method returns a [`Pipeline`](../../reference/#taipy.core.Pipeline) entity. It is identified by
 a unique identifier named `id` that is generated by Taipy.
 A pipeline also holds various properties accessible as an attribute of the pipeline:
 
--   `pipeline.config_name` is the name of the pipeline configuration.
--   `pipeline.subscribers` is the list of callbacks representing the subscribers.
--   `pipeline.properties` is the complete dictionary of the pipeline properties. It includes a copy of the properties of the pipeline configuration, in addition to the properties provided at the creation and at runtime.
--   `pipeline.tasks` is a dictionary holding the various tasks of the pipeline. The key corresponds to the config_name of the task while the value is the task itself.
--   `pipeline.parent_id` is the identifier of the parent, which can be a pipeline, scenario, cycle or None.
--   Each property of the `pipeline.properties` dictionary is also directly exposed as an attribute.
--   Each nested entity is also exposed as an attribute of the pipeline. the attribute name corresponds to the config_name
+- `pipeline.config_name` is the name of the pipeline configuration.
+- `pipeline.subscribers` is the list of callbacks representing the subscribers.
+- `pipeline.properties` is the complete dictionary of the pipeline properties. It includes a copy of the properties
+of the pipeline configuration, in addition to the properties provided at the creation and at runtime.
+- `pipeline.tasks` is a dictionary holding the various tasks of the pipeline. The key corresponds to the config_name
+of the task while the value is the task itself.
+- `pipeline.parent_id` is the identifier of the parent, which can be a pipeline, scenario, cycle or None.
+- Each property of the `pipeline.properties` dictionary is also directly exposed as an attribute.
+- Each nested entity is also exposed as an attribute of the pipeline. the attribute name corresponds to the config_name
     of the nested entity.
 
 !!! Example
 
-```python linenums="1"
-    import taipy as tp
-    from datetime import datetime
-    from config import *
+    ```python linenums="1"
+        import taipy as tp
+        from datetime import datetime
+        from config import *
 
-    pipeline = tp.create_pipeline(sales_pipeline_cfg,name="Pipeline for sales prediction")
+        pipeline = tp.create_pipeline(sales_pipeline_cfg,name="Pipeline for sales prediction")
 
-    # the config_name is an attribute of the pipeline and equals "pipeline_configuration"
-    pipeline.config_name
-    # There was no subscription, so subscribers is an empty list
-    pipeline.subscribers # []
-    # The properties dictionary equals {"name": "Pipeline for sales prediction"}. It contains all the properties,
-    # including the `name` provided at the creation
-    pipeline.properties # {"name": "Pipeline for sales prediction"}
-    # The `name` property is also exposed directly as an attribute. It equals "Pipeline for sales prediction"
-    pipeline.name
-    # the training task entity is exposed as an attribute of the pipeline
-    training_task = pipeline.training
-    # the predicting task entity as well
-    predicting_task = pipeline.predicting
-    # All the tasks are also exposed as attributes, including the training task entity
-    training_task = pipeline.training
-    # The data nodes are also exposed as attributes of the pipeline.
-    current_month_data_node = pipeline.current_month
-```
+        # the config_name is an attribute of the pipeline and equals "pipeline_configuration"
+        pipeline.config_name
+        # There was no subscription, so subscribers is an empty list
+        pipeline.subscribers # []
+        # The properties dictionary equals {"name": "Pipeline for sales prediction"}. It contains all the properties,
+        # including the `name` provided at the creation
+        pipeline.properties # {"name": "Pipeline for sales prediction"}
+        # The `name` property is also exposed directly as an attribute. It equals "Pipeline for sales prediction"
+        pipeline.name
+        # the training task entity is exposed as an attribute of the pipeline
+        training_task = pipeline.training
+        # the predicting task entity as well
+        predicting_task = pipeline.predicting
+        # All the tasks are also exposed as attributes, including the training task entity
+        training_task = pipeline.training
+        # The data nodes are also exposed as attributes of the pipeline.
+        current_month_data_node = pipeline.current_month
+    ```
 
 ## Get pipeline by id
 
-The method to get a pipeline is from its id by using the [`taipy.get`](../../reference/#taipy.get) method :
+The method to get a pipeline is from its id by using the [`taipy.get`](../../reference/#taipy.core.get) method :
 
 ```python linenums="1"
 import taipy as tp
@@ -262,7 +229,7 @@ sales_pipeline_cfg = tp.configure_pipeline(name="sales", tasks=[training_cfg, pr
 production_pipeline_cfg = tp.configure_pipeline(name="production", tasks=[planning_cfg])
 
 # Configure and create the scenario
-monthly_scenario_cfg = tp.configure_scenario(name="scenario_configuration",             pipelines=[sales_pipeline_cfg, production_pipeline_cfg]))
+monthly_scenario_cfg = tp.configure_scenario(name="scenario_configuration", pipelines=[sales_pipeline_cfg, production_pipeline_cfg]))
 scenario = tp.create_scenario(monthly_scenario_cfg)
 
 # Get the pipelines by config name
@@ -272,28 +239,30 @@ production_pipeline = scenario.production
 
 ## Get all pipelines
 
-All the pipelines can be retrieved using the method [`taipy.get_pipelines`](../../reference/#taipy.get_pipelines).
+All the pipelines can be retrieved using the method [`taipy.get_pipelines`](../../reference/#taipy.core.get_pipelines).
 This method returns the list of all existing pipelines.
 
 ## Delete a pipeline
 
-A pipeline can be deleted by using [`taipy.delete_pipeline`](../../reference/#taipy.delete_pipeline) which takes the pipeline id as a parameter. The deletion is also propagated to the nested tasks, data nodes, and jobs if they are not shared with any other pipeline.
+A pipeline can be deleted by using [`taipy.delete_pipeline`](../../reference/#taipy.core.delete_pipeline) which
+takes the pipeline id as a parameter. The deletion is also propagated to the nested tasks, data nodes, and jobs
+if they are not shared with any other pipeline.
 
 # Scheduling and execution
 
 ## Submit a scenario or pipeline
 
-=> tp.submit
+=> TODO tp.submit
 
 ## Jobs
 
 ### Properties
 
-- `task`: The [Task](./user_core_concepts.md#task) of the [Job](./user_core_concepts.md#job).
+- `task`: The [Task](./concepts/task.md) of the [Job](./concepts.job.md).
 - `force`: If True, the execution of the task is forced.
 - `creation_date`: The date of the creation of the Job with the status `SUBMITTED`.
-- `status`: The status of the [Task](user_core_concepts.md#task).
-- `exceptions`: The exceptions handled during the execution of the [Tasks](./user_core_concepts.md#task).
+- `status`: The status of the [Job](./concepts/job.md).
+- `exceptions`: The exceptions handled during the execution of the [Jobs](./concepts/job.md).
 
 ### Job Status
 
@@ -308,14 +277,19 @@ A pipeline can be deleted by using [`taipy.delete_pipeline`](../../reference/#ta
 
 ### Create/Get/Delete Job
 
-[Jobs](./user_core_concepts.md#job) are created when a task is submited.
+[Jobs](./concepts/job.md) are created when a task is submitted.
 
-You can get all of them by doing [`taipy.get_jobs`](../../reference/#taipy.get_jobs) or the latest [Job](./user_core_concepts.md#job) created of a [Task](./user_core_concepts.md#task) by doing [`taipy.get_latest_job(task)`](../../reference/#taipy.get_latest_job).
-You can also get a job is from its id by using the [`taipy.get`](../../reference/#taipy.get).
+You can get all of them with [`taipy.get_jobs`](../../reference/#taipy.core.get_jobs). You can also get the latest
+[Job](./concepts/job.md) of a [Task](./concepts/task.md) with
+[`taipy.get_latest_job(task)`](../../reference/#taipy.core.get_latest_job).
+You can also get a job from its id by using the [`taipy.get`](../../reference/#taipy.core.get).
 
-You can also delete a [Job](./user_core_concepts.md#job) by using [`taipy.delete_job(job)`](../../reference/#taipy.delete_job) or all by doing [`taipy.delete_jobs`](../../reference/#taipy.delete_jobs).
-Delete a [Job](./user_core_concepts.md#job) can raise an `JobNotDeletedException` if the status of the [Job](./user_core_concepts.md#job) is not `SKIPPED`, `COMPLETED` or `FAILED`.
-You can overcome this behaviour by forcing the deletion by doing `tp.delete_job(job, force=True)`.
+You can delete a [Job](concepts/job.md) by using [`taipy.delete_job(job)`](../../reference/#taipy.core.delete_job), or
+you can also delete all jobs with [`taipy.delete_jobs`](../../reference/#taipy.core.delete_jobs).
+
+Delete a [Job](./concepts/job.md) can raise an `JobNotDeletedException` if the status of the
+[Job](./concepts/job.md) is not `SKIPPED`, `COMPLETED` or `FAILED`. You can overcome this behaviour by forcing the
+deletion by doing `tp.delete_job(job, force=True)`.
 
 !!! Example
 
@@ -356,12 +330,13 @@ You can overcome this behaviour by forcing the deletion by doing `tp.delete_job(
 
 ## Subscribe a scenario or pipeline
 
-After each [`Task`](./user_core_concepts.md#task) execution, you can be notified by subscribing to
-[`Pipeline`](./user_core_concepts.md#pipeline) or [`Scenario`](./user_core_concepts.md#scenario).
+After each [Task](./concepts/task.md) execution, you can be notified by subscribing to a
+[Pipeline](./concepts/pipeline.md) or [Scenario](./concepts/scenario.md).
 
 You will be notified for each scenario or pipeline by default, except if you specify one as a target.
 
-If you want a function named `my_function` to be called on each task execution of all scenarios, use `tp.subscribe_scenario(my_function)`.
+If you want a function named `my_function` to be called on each task execution of all scenarios, use
+`tp.subscribe_scenario(my_function)`.
 You can use `tp.subscribe_pipeline(my_function)` to work at the pipeline level.
 
 If you want your function `my_function` to be called for each task of a scenario called `my_scenario`, you should call
@@ -422,43 +397,45 @@ or you can specify the scenario or pipeline by passing it as a parameter.
 
 ## Task attributes
 
-The task creation method returns a [`Task`](../../reference/#taipy.Task) entity. It is identified by a unique identifier named `id` that is generated by Taipy.
+The task creation method returns a [`Task`](../../reference/#taipy.core.Task) entity. It is identified by a unique
+identifier named `id` that is generated by Taipy.
 A task also holds various properties accessible as an attribute of the task:
 
--   `task.config_name` is the name of the scenario configuration.
--   `task.function` is the function that will take data from input data nodes and return data that should go inside of the output data nodes .
--   `task.input` is the list of input data nodes.
--   `task.output` is the list of output data nodes.
+- `task.config_name` is the name of the scenario configuration.
+- `task.function` is the function that will take data from input data nodes and return data that should go
+inside the output data nodes .
+- `task.input` is the list of input data nodes.
+- `task.output` is the list of output data nodes.
 
 !!! Example
-```python linenums="1"
-    import taipy as tp
-    from config import *
+    ```python linenums="1"
+        import taipy as tp
+        from config import *
 
-    scenario = tp.create_scenario(monthly_scenario_cfg)
-    task = scenario.predicting
+        scenario = tp.create_scenario(monthly_scenario_cfg)
+        task = scenario.predicting
 
-    # the config_name is an attribute of the task and equals "task_configuration"
-    task.config_name
+        # the config_name is an attribute of the task and equals "task_configuration"
+        task.config_name
 
-    # the function which is going to be executed with input data nodes and return value on output data nodes.
-    task.function # predict
+        # the function which is going to be executed with input data nodes and return value on output data nodes.
+        task.function # predict
 
-    # input is the list of input data nodes of the task
-    task.input # [trained_model_cfg, current_month_cfg]
+        # input is the list of input data nodes of the task
+        task.input # [trained_model_cfg, current_month_cfg]
 
-    # output is the list of input data nodes of the task
-    task.output # [trained_model_cfg]
+        # output is the list of input data nodes of the task
+        task.output # [trained_model_cfg]
 
-    # the current_month data node entity is exposed as an attribute of the task
-    current_month_data_node = task.current_month
-```
+        # the current_month data node entity is exposed as an attribute of the task
+        current_month_data_node = task.current_month
+    ```
 
 Taipy exposes multiple methods to manage the various tasks.
 
 ## Get Tasks
 
-The first method to get a job is from its id by using the [`taipy.get`](../../reference/#taipy.get) method
+The first method to get a job is from its id by using the [`taipy.get`](../../reference/#taipy.core.get) method
 
 ```python linenums="1"
 import taipy as tp
@@ -482,23 +459,23 @@ A task can also be retrieved from a scenario or a pipeline, by accessing the tas
     # task_1 == task_2
 ```
 
-All the jobs can be retrieved using the method [`taipy.get_tasks`](../../reference/#taipy.get_tasks).
+All the jobs can be retrieved using the method [`taipy.get_tasks`](../../reference/#taipy.core.get_tasks).
 
 # Data node Management
 
 ## Data node attributes
 
-The data node creation method returns a [`Data Node`](../../reference/#taipy.core.DataNode) entity. It is identified by
+The data node creation method returns a [`DataNode`](../../reference/#taipy.core.DataNode) entity. It is identified by
 a unique identifier named `id` that is generated by Taipy.
-A datanode also holds various properties and attributes that are accessible through the entity:
+A data node also holds various properties and attributes that are accessible through the entity:
 
 - `config_name`: The name that identifies the data node.
-- `scope`: The scope of this datanode (scenario, pipeline, etc).
-- `id`: The unique identifier of this datanode.
+- `scope`: The scope of this data node (scenario, pipeline, etc).
+- `id`: The unique identifier of this data node.
 - `name`: The user-readable name if the data node.
 - `parent_id`: The identifier of the parent (pipeline_id, scenario_id, cycle_id) or `None`.
 - `last_edition_date`: The date and time of the last edition.
-- `job_ids`: The ordered list of jobs that have written on this datanode.
+- `job_ids`: The ordered list of jobs that have written on this data node.
 - `validity_days`: The number of days to be added to the data node validity duration.
 - `validity_hours`: The number of hours to be added to the data node validity duration.
 - `validity_minutes`: The number of minutes to be added to the data node validity duration.
@@ -508,100 +485,105 @@ A datanode also holds various properties and attributes that are accessible thro
 
 ## Get data node
 
-The first method to get a **datanode** is from its id using the `taipy.get` method:
+The first method to get a **data node** is from its id using the `taipy.get` method:
 
 !!! Example
-```python linenums="1"
-    import taipy as tp
+    ```python linenums="1"
+        import taipy as tp
 
 
-    # Retrieve a datanode by its id
-    datanode = tp.get(datanode_id)
+        # Retrieve a data node by its id
+        data_node = tp.get(data_node_id)
 
-```
+    ```
 
-The datanodes that are part of a **scenario** or **pipeline** can be directly accessed on their levels:
-
-!!! Example
-```python linenums="1"
-    import taipy as tp
-    from config import *
-
-    # Creating a scenario from a config
-    scenario = tp.create_scenario(monthly_scenario_cfg)
-
-    # Access the datanode from a scenario
-    scenario.sales_history
-
-    # Access the pipeline from a scenario
-    scenario.sales
-
-    # Access the datanode from a pipeline
-    scenario.sales.sales_history
-
-```
-
-
-All the datanodes can be retrieved using the method `taipy.get_data_nodes`. This methdod returns a list of all existing datanodes.
+The data nodes that are part of a **scenario** or **pipeline** can be directly accessed on their levels:
 
 !!! Example
-```python linenums="1"
-    import taipy as tp
+    ```python linenums="1"
+        import taipy as tp
+        from config import *
+
+        # Creating a scenario from a config
+        scenario = tp.create_scenario(monthly_scenario_cfg)
+
+        # Access the data node from a scenario
+        scenario.sales_history
+
+        # Access the pipeline from a scenario
+        scenario.sales
+
+        # Access the data node from a pipeline
+        scenario.sales.sales_history
+
+    ```
 
 
-    # Retrieve a datanode by its id
-    datanodes = tp.get_data_nodes()
+All the data nodes can be retrieved using the method `taipy.get_data_nodes`. This method returns a list of
+all existing data nodes.
 
-    datanodes #[DataNode 1, DataNode 2, ..., DataNode N]
+!!! Example
+    ```python linenums="1"
+        import taipy as tp
 
-```
+
+        # Retrieve a data node by its id
+        data_nodes = tp.get_data_nodes()
+
+        data_nodes #[DataNode 1, DataNode 2, ..., DataNode N]
+
+    ```
 
 ## Read data node
 
-To read the content of a datanode you can use the `datanode.read()` method. The read method returns the data stored on the datanode according to the type of datanode:
+To read the content of a data node you can use the `data_node.read()` method. The read method returns the data stored
+on the data node according to the type of data node:
 
 !!! Example
+    ```python linenums="1"
+        import taipy as tp
+
+
+        # Retrieve a data node by its id
+        data_node = tp.get(data_node_id)
+
+        # Returns the content stored on the data node
+        data_node.read()
+    ```
+
+
+Is also possible to read partially the contents of data node, usefully when dealing with large amounts of data.
+This can be achieved using the `data_node.filter()` method:
+
 ```python linenums="1"
-    import taipy as tp
-
-
-    # Retrieve a datanode by its id
-    datanode = tp.get(datanode_id)
-
-    # Returns the content stored on the datanode
-    datanode.read()
+data_node.filter([('field_name_like_temperature', 14, Operator.EQUAL), ('field_name_like_temperature', 10, Operator.EQUAL)], JoinOperator.OR))
 ```
-
-
-Is also possible to read partially the contents of datanode, usefull when dealing with large ammounts of data. This can be achieve using the `datanode.filter()` method:
+Is also possible to use pandas style filtering:
 
 ```python linenums="1"
-datanode.filter([('field_name_like_temperature', 14, Operator.EQUAL), ('field_name_like_temperature', 10, Operator.EQUAL)], JoinOperator.OR))
-```
-Is also posible to use pandas style filtering:
-
-```python linenums="1"
-temp_data = datanode['field_name_like_temperature']
+temp_data = data_node['field_name_like_temperature']
 temp_data[(temp_data == 14) | (temp_data == 10)]
 ```
 
 ## Write data node
 
-To write some data on the datanode, like the output of a task, you can use the `datanode.write()` method. The method takes an data object (string, dictionary, lists, numpy arrays, pandas dataframes, etc) as a parameter and writes it on the datanode:
+To write some data on the data node, like the output of a task, you can use the `data_node.write()` method.
+The method takes an data object (string, dictionary, lists, numpy arrays, pandas dataframes, etc) as a
+parameter and writes it on the data node:
 
 !!! Example
-```python linenums="1"
-    import taipy as tp
+    ```python linenums="1"
+        import taipy as tp
 
 
-    # Retrieve a datanode by its id
-    datanode = tp.get(datanode_id)
+        # Retrieve a data node by its id
+        data_node = tp.get(data_node_id)
 
-    data = [{"a": "1", "b": "2"}, {"a": "3", "b": "4"}]
+        data = [{"a": "1", "b": "2"}, {"a": "3", "b": "4"}]
 
-    # Writes the dictionary on the datanode
-    datanode.write(data)
+        # Writes the dictionary on the data node
+        data_node.write(data)
 
-    # returns the new data stored on the datanode
-    datanode.read()
-```
+        # returns the new data stored on the data node
+        data_node.read()
+    ```
