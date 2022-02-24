@@ -6,7 +6,7 @@ The taipy configuration methods can simply be imported from the Taipy main modul
 import taipy as tp
 ```
 The following sections shows how to configure the Taipy entities in python. Note that you can override the
-python configuration using _TOML_ files. (More details on the [toml configuration](user_core_toml_configuration.md))
+python configuration using _TOML_ files. (More details on the [toml configuration](user_core_advanced_configuration.md))
 page.
 
 # Data node configuration
@@ -113,12 +113,12 @@ parameters described in the previous section
     from taipy import Scope
 
     # We configure a simple csv data node. The name identifier is "historical_temperature",
-    # the scope is "SCENARIO" (default value), and the path is the file hist_temp.csv 
+    # the scope is "SCENARIO" (default value), and the path is the file hist_temp.csv
     # with `has_header` being True, representing the csv file has a header.
     date_cfg = tp.configure_csv_data_node(name="historical_temperature", path="path/hist_temp.csv", has_header=True, exposed_type="numpy")
 
-    # We then add another csv data node configuration. The name identifier is "sale_history", the 
-    # default SCENARIO scope is used. Since we have a custom class pre-defined for this csv file, we 
+    # We then add another csv data node configuration. The name identifier is "sale_history", the
+    # default SCENARIO scope is used. Since we have a custom class pre-defined for this csv file, we
     # will provide it in the `exposed_type`.
     model_cfg = tp.configure_pickle_data_node(name="sale_history",
                                               path="path/sale_history.csv",
@@ -149,9 +149,9 @@ parameters described in the previous section
     from taipy import Scope
 
     # We configure a simple excel data node. The name identifier is "historical_temperature",
-    # the scope is "SCENARIO" (default value), and the path is the file hist_temp.xlsx 
+    # the scope is "SCENARIO" (default value), and the path is the file hist_temp.xlsx
     # with `has_header` being True, representing the exceo file has a header.
-    # The sheet_name is not provided so Taipy will use the default value "Sheet1" 
+    # The sheet_name is not provided so Taipy will use the default value "Sheet1"
     date_cfg = tp.configure_excel_data_node(name="historical_temperature", path="path/hist_temp.xlsx", has_header=True, exposed_type="numpy")
 
     # We then add another csv data node configuration. The name identifier is "sale_history", the default
@@ -246,11 +246,11 @@ parameters can be provided.
     from taipy import Scope
 
     # We configure a simple sql data node. The name identifier is "historical_temperature",
-    # the scope is "SCENARIO" (default value), and the database username is "admin" 
+    # the scope is "SCENARIO" (default value), and the database username is "admin"
     # The user's password is "password", the database name is "taipy". The database engine will # be mssql short for Microsoft SQL. The read query will be "SELECT * from daily_temp"
     # The table the data will be written to is "forecast_table"
-    date_cfg = tp.configure_sql_data_node(name="historical_temperature", db_username="admin", 
-    db_password="password", db_name="taipy", db_engine="mssql", 
+    date_cfg = tp.configure_sql_data_node(name="historical_temperature", db_username="admin",
+    db_password="password", db_name="taipy", db_engine="mssql",
     read_query="SELECT * from daily_min_example", "write_table"= "forecast_table")
 
 !!! Note
@@ -430,7 +430,7 @@ airflow_password = "pass"
 
 !!! note "Security"
     To ensure you are not exposing your company's secrets, we recommend using
-    [environment-based configuration](user_core_toml_configuration.md#attribute-in-an-environment-variable)
+    [environment-based configuration](user_core_advanced_configuration.md#attribute-in-an-environment-variable)
     for `airflow_user` and `airflow_password`.
 
 # Check configuration
@@ -439,4 +439,4 @@ airflow_password = "pass"
 
 # More details
 For more details on how to override the python configuration, please read the documentation on the
-[:material-arrow-right: TOML configuration](user_core_toml_configuration.md)
+[:material-arrow-right: TOML configuration](user_core_advanced_configuration.md)
