@@ -252,6 +252,7 @@ parameters can be provided.
     date_cfg = tp.configure_sql_data_node(name="historical_temperature", db_username="admin",
     db_password="password", db_name="taipy", db_engine="mssql",
     read_query="SELECT * from daily_min_example", "write_table"= "forecast_table")
+    ```
 
 !!! Note
 
