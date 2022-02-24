@@ -359,14 +359,14 @@ You can overcome this behaviour by forcing the deletion by doing `tp.delete_job(
 After each [`Task`](./user_core_concepts.md#task) execution, you can be notified by subscribing to
 [`Pipeline`](./user_core_concepts.md#pipeline) or [`Scenario`](./user_core_concepts.md#scenario).
 
-You will be notified for each scenario or pipeline by default except if you specify one as a target.
+You will be notified for each scenario or pipeline by default, except if you specify one as a target.
 
 If you want a function named `my_function` to be called on each task execution of all scenarios, use `tp.subscribe_scenario(my_function)`.
-You can use `tp.subscribe_pipeline(my_function)` if you are working on the pipeline level.
+You can use `tp.subscribe_pipeline(my_function)` to work at the pipeline level.
 
-If you want your function `your_function` to be called for each task of a scenario called `my_scenario` you should do
-`tp.subscribe_scenario(your_function, my_scenario)`. Same for the pipeline. If you want to be notified only on a pipeline
-named `my_pipeline` do `tp.subscribe_pipelin(your_function, my_pipeline)`.
+If you want your function `my_function` to be called for each task of a scenario called `my_scenario`, you should call
+`tp.subscribe_scenario(my_function, my_scenario)`. It is similar in the context of pipelines: to be notified on a given
+pipeline stored in `my_pipeline`, you must call `tp.subscribe_pipeline(my_function, my_pipeline)`.
 
 You can also unsubscribe to scenarios by using `tp.unsubscribe_scenario(function)`
 or `tp.unsubscribe_pipeline(function)` for pipelines. Same as for subscription, the unsubscription can be global,
@@ -380,10 +380,10 @@ or you can specify the scenario or pipeline by passing it as a parameter.
             ...
 
         def my_global_subscriber(scenario, job):
-            print(f"Called from my_global_subscriber from scenario '{scenario.config_name}' and job of task '{job.task.config_name}'.")
+            print(f"Called from my_global_subscriber from scenario '{scenario.config_name}' and job for task '{job.task.config_name}'.")
 
         def my_subscriber(scenario, job):
-            print(f"Called from my_subscriber from scenario '{scenario.config_name}' and job of task '{job.task.config_name}'.")
+            print(f"Called from my_subscriber from scenario '{scenario.config_name}' and job for task '{job.task.config_name}'.")
 
         task_1 = tp.configure_task("my_task_1", do_nothing)
         task_2 = tp.configure_task("my_task_2", do_nothing)
@@ -407,15 +407,15 @@ or you can specify the scenario or pipeline by passing it as a parameter.
 
     ```
     Submit: scenario_1
-    Called from my_global_subscriber from scenario 'my_scenario_1' and job of task 'my_task_1'.
-    Called from my_subscriber from scenario 'my_scenario_1' and job of task 'my_task_1'.
-    Called from my_subscriber from scenario 'my_scenario_1' and job of task 'my_task_2'.
+    Called from my_global_subscriber from scenario 'my_scenario_1' and job for task 'my_task_1'.
+    Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_1'.
+    Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_2'.
     Submit: scenario_2
-    Called from my_global_subscriber from scenario 'my_scenario_2' and job of task 'my_task_1'.
+    Called from my_global_subscriber from scenario 'my_scenario_2' and job for task 'my_task_1'.
     Unsubscribe to my_global_subscriber for scenario_1
     Submit: scenario_1
-    Called from my_subscriber from scenario 'my_scenario_1' and job of task 'my_task_1'.
-    Called from my_subscriber from scenario 'my_scenario_1' and job of task 'my_task_2'.
+    Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_1'.
+    Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_2'.
     ```
 
 # Task Management
