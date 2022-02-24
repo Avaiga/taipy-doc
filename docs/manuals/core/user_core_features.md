@@ -417,11 +417,11 @@ The first method to get a **datanode** is from its id using the `taipy.get` meth
 
 !!! Example
 ```python linenums="1"
-import taipy as tp
+    import taipy as tp
 
 
-# Retrieve a datanode by its id
-datanode = tp.get(datanode_id)
+    # Retrieve a datanode by its id
+    datanode = tp.get(datanode_id)
 
 ```
 
@@ -429,20 +429,20 @@ The datanodes that are part of a **scenario** or **pipeline** can be directly ac
 
 !!! Example
 ```python linenums="1"
-import taipy as tp
-from config import *
+    import taipy as tp
+    from config import *
 
-# Creating a scenario from a config 
-scenario = tp.create_scenario(monthly_scenario_cfg)
+    # Creating a scenario from a config 
+    scenario = tp.create_scenario(monthly_scenario_cfg)
 
-# Access the datanode from a scenario
-scenario.sales_history
+    # Access the datanode from a scenario
+    scenario.sales_history
 
-# Access the pipeline from a scenario
-scenario.sales
+    # Access the pipeline from a scenario
+    scenario.sales
 
-# Access the datanode from a pipeline
-scenario.sales.sales_history
+    # Access the datanode from a pipeline
+    scenario.sales.sales_history
 
 ```
 
@@ -451,13 +451,13 @@ All the datanodes can be retrieved using the method `taipy.get_data_nodes`. This
 
 !!! Example
 ```python linenums="1"
-import taipy as tp
+    import taipy as tp
 
 
-# Retrieve a datanode by its id
-datanodes = tp.get_data_nodes()
+    # Retrieve a datanode by its id
+    datanodes = tp.get_data_nodes()
 
-datanodes #[DataNode 1, DataNode 2, ..., DataNode N]
+    datanodes #[DataNode 1, DataNode 2, ..., DataNode N]
 
 ```
 
@@ -467,14 +467,14 @@ To read the content of a datanode you can use the `datanode.read()` method. The 
 
 !!! Example
 ```python linenums="1"
-import taipy as tp
+    import taipy as tp
 
 
-# Retrieve a datanode by its id
-datanode = tp.get(datanode_id)
+    # Retrieve a datanode by its id
+    datanode = tp.get(datanode_id)
 
-# Returns the content stored on the datanode
-datanode.read()
+    # Returns the content stored on the datanode
+    datanode.read()
 ```
 
 
@@ -496,17 +496,17 @@ To write some data on the datanode, like the output of a task, you can use the `
 
 !!! Example
 ```python linenums="1"
-import taipy as tp
+    import taipy as tp
 
 
-# Retrieve a datanode by its id
-datanode = tp.get(datanode_id)
+    # Retrieve a datanode by its id
+    datanode = tp.get(datanode_id)
 
-data = [{"a": "1", "b": "2"}, {"a": "3", "b": "4"}]
+    data = [{"a": "1", "b": "2"}, {"a": "3", "b": "4"}]
 
-# Writes the dictionary on the datanode
-datanode.write(data)
+    # Writes the dictionary on the datanode
+    datanode.write(data)
 
-# returns the new data stored on the datanode
-datanode.read()
+    # returns the new data stored on the datanode
+    datanode.read()
 ```
