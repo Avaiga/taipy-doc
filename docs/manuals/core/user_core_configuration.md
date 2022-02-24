@@ -1,41 +1,41 @@
 Taipy core is an application builder that converts user algorithms into a back-end application. To build such
 an application with the desired behaviors, a few Taipy entities must be configured.
-The taipy configuration methods can simply be imported from the Taipy main module as follows:
+The taipy configuration methods can easily be imported from the Taipy main module as follows:
 
 ```python
 import taipy as tp
 ```
 
-The following sections shows how to configure the Taipy entities in python. Note that you can override the
+The following sections show how to configure the Taipy entities in python. Note that you can override the
 python configuration using _TOML_ files. (More details on the [toml configuration](user_core_toml_configuration.md))
 page.
 
 # Data node configuration
 
-For Taipy to instantiate a data node, it must be provided a data node configuration. A
+For Taipy to instantiate a data node, a data node configuration must be provided.
 [`DataNodeConfig`](../../reference/#taipy.config.data_node_config.DataNodeConfig) is
 used to configure the various data nodes Taipy will manipulate. To configure a new `DataNodeConfig`,
 here is the list of the configurable attributes :
 
 -   The config `name` corresponds to the identifier of the data node config. It is a **mandatory** parameter
-    that must be unique. We strongly recommend to use lowercase alphanumeric characters, dash character '-', or
+    that must be unique. We strongly recommend using lowercase alphanumeric characters, dash character '-', or
     underscore character '\_' (a name compatible with a python variable name).
 -   The `scope` attribute is from type [`Taipy.Scope`](../../reference/#taipy.data.scope.Scope).
     It corresponds to the scope of the data node instantiated from the data node configuration.
     The **default value** is `Scope.SCENARIO`.
 -   The storage `storage_type` is a parameter that corresponds to the type of storage of the data node. The
     possible values are "pickle" (**the default value**), "csv", "excel", "generic", "in_memory", or "sql".
-    As explain in the following subsections, depending on the `storage_type`, other configuration attributes
+    As explained in the following subsections, depending on the `storage_type`, other configuration attributes
     will need to be provided in the `properties` parameter.
--   Any other custom attribute can be provided through the `properties` dictionary (a description, a tag, a )
+-   Any other custom attribute can be provided through the `properties` dictionary (a description, a tag, etc.)
     All the properties will be given to the data nodes instantiated from this data node configuration.
     This `properties` dictionary is also used to configure the parameters specific to each storage type.
 
-To configure a new data node into Taipy, the `taipy.configure_data_node` method should be used.
+To configure a new data node into Taipy, you must use the `taipy.configure_data_node()` method.
 
 !!! example
 
-    Here are a two examples of data node configurations.
+    Here are two examples of data node configurations.
 
     ```python
     import taipy as tp
@@ -64,13 +64,13 @@ parameters described in the previous section
 parameters can be provided.
 
 -   The `path` parameter represents the file path used by Taipy to read and write the data.
-    If the pickle file already exists (in the case of a shared input data node for instance), it is necessary
+    If the pickle file already exists (in the case of a shared input data node, for instance), it is necessary
     to provide the file path as the _path_ parameter. If no value is provided, Taipy will use an internal path
-    in the taipy storage folder (more details on the taipy storage folder configuration available on the
+    in the Taipy storage folder (more details on the Taipy storage folder configuration available on the
     [Global configuration](user_core_configuration.md#global-configuration) documentation).
 
--   If the `default_data` is given as parameter, the data node is automatically written with the corresponding
-    value. Any serializable python object can be used.
+-   If the `default_data` is provided, the data node is automatically written with the corresponding
+    value. Any serializable Python object can be used.
 
 !!! example
 
@@ -143,7 +143,7 @@ data node as an input parameter and that returns the 'output' data node.
 
 Because a Task can have several inputs and outputs, `tp.configure_task` can receive lists of `DataNodeConfig` objects.
 
-We can have the same behaviour by doing:
+We can have the same behavior by doing:
 
 ```python
 import taipy as tp
@@ -175,7 +175,7 @@ Basic example:
 pipeline_config = tp.configure_pipeline("multiply_pipeline", [task_config])
 ```
 
-On this example, we create a pipeline config which consists of a task in the previous example.
+On this example, we create a pipeline config which is made of a single task, identical to the one in the previous example.
 
 # Scenario configuration
 
@@ -186,7 +186,7 @@ Properties:
 -   `name`: The name of this new scenario configuration. This name should be unique.
 -   `pipelines`: The list of pipeline configs.
 -   `frequency`: The recurrence frequency of the scenario.
--   `comparators`: The list of functions to compare data nodes of scenarios which shared the same scenario config.
+-   `comparators`: The list of functions to compare data nodes of scenarios shared the same scenario config.
 -   `properties`: The dictionary of additional properties.
 
 Basic example:
@@ -195,12 +195,12 @@ Basic example:
 scenario_config = tp.configure_scenario("multiply_scenario", [pipeline_config])
 ```
 
-On this example, we create a scenario config which consists of a pipeline in the previous example.
+In this example, we create a scenario config which contains the pipeline that was defined in the previous example.
 
-We can also create a scenario config from a list of tasks, which will automatically create a pipeline consists of those tasks and belongs to the scenario.
+We can also create a new pipeline belonging to this new scenario config and using the two indicated tasks.
 
 ```python linenums="1"
-scenario_config = tp.configure_scenario_from_tasks("multiply_scenario",[task_config], pipeline_name="multiply_pipeline")
+scenario_config = tp.configure_scenario_from_tasks("multiply_scenario", [task_config], pipeline_name="multiply_pipeline")
 ```
 
 # Global configuration
@@ -214,7 +214,7 @@ version only).
 ### Standalone
 
 With the _standalone_ mode, Taipy executes the jobs on its own execution context.
-You can configure the standalone mode with the following config :
+You can configure the standalone mode with the following config:
 
 ```
 [JOB]
@@ -222,9 +222,9 @@ mode = "standalone"
 ```
 
 !!! Note
-Note that the standalone mode is applied by default. If no mode is configured, the standalone mode is applied.
 
-By default, Taipy executes each _job_ one by one in a synchronous configuration. You can ensure this behavior by
+Note that if no mode is configured, the standalone mode is used.
+By default, Taipy executes each _job_ one by one, in a synchronous manner. You can ensure this behavior by
 setting:
 
 ```
@@ -234,13 +234,12 @@ nb_of_workers = 1
 ```
 
 !!! Note
-Note that by default the number of workers is set to 1 : `nb_of_workers = 1` If no value is provided in the
-configuration, Taipy automatically sets the value to 1.
+If no value is provided in the nb_of_workers setting in the configuration, Taipy will set this value to 1.
 
 To execute the _jobs_ in parallel, you can set the number of workers to a positive integer value greater than 1.
-Taipy will use multiprocessing in an asynchronous behavior, and run each job in a dedicated process. The value
+Taipy will use multiple and asynchronous processes, and run each job in a dedicated process. The value
 of the variable `nb_of_workers` represents the maximum number of processes spawned in parallel. For example,
-the following configuration will allow Taipy to run at most 8 jobs in parallel:
+the following configuration allows Taipy to run at most 8 jobs in parallel:
 
 ```
 [JOB]
@@ -305,7 +304,7 @@ airflow_dags_folder = "/dags"
 !!! note "Remote Airflow"
 The Airflow _Dag_ generation can only be accomplished through this folder.
 If Taipy and Airflow are not on the same machine or if Airflow uses remote workers,
-you should mount this folder as shared.
+you must make sure that this folder is mounted in a shared mode.
 
 Airflow can take time before loading _DAGS_.
 In order to wait for Airflow to be ready to schedule tasks, Taipy requests the scheduling several times
