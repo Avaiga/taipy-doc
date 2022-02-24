@@ -316,6 +316,30 @@ task_config = tp.configure_task("foo", [nb_to_multiple, multiply_by], mult_by, o
 # Scenario configuration
 
 # Global configuration
+Holds configuration fields related to the global application.
+
+Properties:
+
+- `notification` : The field to activate/deactivate the notification. Default value : false.
+- `broker_endpoint` : The endpoint used for notification. Must be populated if notification is true.
+- `root_folder` : The path of the base folder for the taipy application. Default value is "./taipy/"
+- `storage_folder` : The folder name used to store Taipy data. Default value is ".data/". It is used in conjunction with the root_folder field. That means the storage path is <root_folder><storage_folder> (Default path : "./taipy/.data/")
+- `clean_entities_enabled` : The field to activate/deactivate the clean entities feature. Default: false
+- `properties` : The dictionary of additional properties.
+
+!!!Example
+```python linenums="1"
+    import taipy as tp
+
+    tp.configure_global_app(
+        notification=True,
+        broker_endpoint="http://foo/bar",
+        root_folder=".taipy_root_folder/",
+        storage_folder=".data_folder",
+        clean_entities_enabled=True,
+        properties={"custom_property": False}
+        )
+```
 
 # Job configuration
 
