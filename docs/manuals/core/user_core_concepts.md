@@ -7,9 +7,9 @@ In this section, the following concepts are defined:
 - [Task](#task)
 - [Job](#job)
 - [Pipeline](#pipeline)
-- [Scenario](#Scenario)
-- [Cycle](#Cycle)
-- [Scope](#Scope)
+- [Scenario](#scenario)
+- [Cycle](#cycle-and-master-scenario)
+- [Scope](#scope)
 
 !!! definition "Config vs Entities"
     Among the previous concepts, the data nodes, the tasks, the pipelines, and the scenarios are created by providing
@@ -49,7 +49,8 @@ file and the python class used for the deserialization.
     and one for the production orders.
 
 The various attributes that depend on the storage type (like sql query, file path, credentials, ...) are populated based
-on the data node configuration ([`DataNodeConfig`](../../reference/#taipy.config.data_node_config.DataNodeConfig)) that
+on the data node configuration ([`DataNodeConfig`](../../reference/#taipy.core.config.data_node_config.DataNodeConfig))
+that
 must be provided when instantiating a new data node. (Please refer to the
 [`configuration details`](user_core_configuration.md#data-node-configuration) documentation for more
 details on configuration).
@@ -62,13 +63,13 @@ the user's need.
 
 Here is the list of predefined _data nodes storage types_:
 
-- [Pickle](../../reference/#taipy.data.pickle.PickleDataNode) (Default storage type)
-- [CSV](../../reference/#taipy.data.csv.CSVDataNode)
-- [Excel](../../reference/#taipy.data.excel.ExcelDataNode)
-- [Generic](../../reference/#taipy.data.generic.GenericDataNode)
-- [In memory](../../reference/#taipy.data.in_memory.InMemoryDataNode) (For synchronous job execution only. Not
+- [Pickle](../../reference/#taipy.core.data.pickle.PickleDataNode) (Default storage type)
+- [CSV](../../reference/#taipy.core.data.csv.CSVDataNode)
+- [Excel](../../reference/#taipy.core.data.excel.ExcelDataNode)
+- [Generic](../../reference/#taipy.core.data.generic.GenericDataNode)
+- [In memory](../../reference/#taipy.core.data.in_memory.InMemoryDataNode) (For synchronous job execution only. Not
 recommended in a production environment)
-- [SQL](../../reference/#taipy.data.sql.SQLDataNode)
+- [SQL](../../reference/#taipy.core.data.sql.SQLDataNode)
 
 The various predefined _storage types_ are mainly used for input data. Indeed, the input data is usually provided by an
 external component, and the data scientist user does not control the format.
@@ -107,7 +108,7 @@ object. Then, the complete CSV file data corresponds to a _Custom Class_ list.
 
 # Task
 
-A [Task](../../reference/#taipy.task.task.Task) is a runnable python code provided by the developer user (typically
+A [Task](../../reference/#taipy.core.task.task.Task) is a runnable python code provided by the developer user (typically
 a data scientist). It represents one step among the various data processing steps the user is working on. Concretely, a
 _task_ means a python function that can be executed.
 
@@ -118,7 +119,7 @@ Since a _task_ represents a function, it can take a set of parameters as input a
 Each parameter and each result is modeled as a data node.
 
 The attributes of a task (the input data nodes, the output data nodes, the python function) are populated based on
-the task configuration ([`TaskConfig`](../../reference/#taipy.config.task_config.TaskConfig)) that
+the task configuration ([`TaskConfig`](../../reference/#taipy.core.config.task_config.TaskConfig)) that
 must be provided when instantiating a new task. (Please refer to the
 [`configuration details`](user_core_configuration.md#task-configuration) documentation for more
 details on configuration).
@@ -145,14 +146,14 @@ details on configuration).
 
 # Job
 
-A [Job](../../reference/#taipy.job.job.Job) represents a unique execution of a task. Each time a task is submitted for
+A [Job](../../reference/#taipy.core.job.job.Job) represents a unique execution of a task. Each time a task is submitted for
 execution, a new _job_ is created. A _job_ holds all the information related to its task execution, including the
-creation date, the execution [Status](../../reference/#taipy.job.status.Status), the user function log messages, and the
+creation date, the execution [Status](../../reference/#taipy.core.job.status.Status), the user function log messages, and the
 eventual exception raised.
 
 # Pipeline
 
-A [Pipeline](../../reference/#taipy.pipeline.pipeline.Pipeline) is made to model an algorithm. It represents a direct
+A [Pipeline](../../reference/#taipy.core.pipeline.pipeline.Pipeline) is made to model an algorithm. It represents a direct
 acyclic graph of input, intermediate, and output data nodes linked together by tasks. A _pipeline_ is a set of connected
 tasks that the user wants to run together for functional reasons. It then represents an execution graph as a consistent
 set of tasks.
@@ -174,14 +175,14 @@ _pipeline_ for computing a training model, and a _pipeline_ dedicated to scoring
 Note that the various pipelines do not require to be disjointed.
 
 The attributes of a pipeline (the set of tasks) are populated based on the pipeline configuration
-([`PipelineConfig`](../../reference/#taipy.config.pipeline_config.PipelineConfig)) that
+([`PipelineConfig`](../../reference/#taipy.core.config.pipeline_config.PipelineConfig)) that
 must be provided when instantiating a new pipeline. (Please refer to the
 [`configuration details`](user_core_configuration.md#pipeline-configuration) documentation for more
 details on configuration).
 
 # Scenario
 
-A [Scenario](../../reference/#taipy.scenario.scenario.Scenario) is made to model a business concept. It represents an
+A [Scenario](../../reference/#taipy.core.scenario.scenario.Scenario) is made to model a business concept. It represents an
 instance of a business problem to solve on consistent data and parameter sets. In other words, when an end user select
 a _scenario_, he/she should have access to all the information and data needed to understand the business case he/she
 is working on and to make the right decisions.
@@ -223,7 +224,7 @@ assumptions.
 Business problems are often recurrent. A _cycle_ (or work cycle) represents an iteration of such a recurrent work
 pattern. Each _cycle_ has a start date and a duration that depends on the frequency on which a user must publish
 a scenario in production. In Taipy, a _cycle_ duration depends on the
-[Frequency](../../reference/#taipy.common.frequency.Frequency) of the scenarios, which is among :
+[Frequency](../../reference/#taipy.core.common.frequency.Frequency) of the scenarios, which is among :
 
 - `Frequency.DAILY`
 - `Frequency.WEEKLY`
@@ -250,14 +251,14 @@ called _master scenario_. There is only one _master scenario_ per cycle.
 
 
 The attributes of a scenario (the set of pipelines, the cycle, ... ) are populated based on the scenario configuration
-([`ScenarioConfig`](../../reference/#taipy.config.scenario_config.ScenarioConfig)) that
+([`ScenarioConfig`](../../reference/#taipy.core.config.scenario_config.ScenarioConfig)) that
 must be provided when instantiating a new scenario. (Please refer to the
 [`configuration details`](user_core_configuration.md#scenario-configuration) documentation for more
 details on configuration).
 
 # Scope
 
-The [Scope](../../reference/#taipy.data.scope.Scope) of a data node is an enum among the following values :
+The [Scope](../../reference/#taipy.core.data.scope.Scope) of a data node is an enum among the following values :
 
 - `Scope.PIPELINE`
 - `Scope.SCENARIO` (Default value)
@@ -265,7 +266,7 @@ The [Scope](../../reference/#taipy.data.scope.Scope) of a data node is an enum a
 - `Scope.GLOBAL`
 
 Each data node has a scope. It is an attribute provided by the
-([`DataNodeConfig`](../../reference/#taipy.config.data_node_config.DataNodeConfig)).
+([`DataNodeConfig`](../../reference/#taipy.core.config.data_node_config.DataNodeConfig)).
 It represents the _visibility_ of the data node in the graph of entities. Indeed,
 the entities can be represented as a graph where each node belongs to one or multiple upper nodes. A data node 'belongs'
 to at least one task which belongs to at least one pipeline which belongs to at least one scenario which belongs to a
