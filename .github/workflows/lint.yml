@@ -1,0 +1,16 @@
+name: Lint
+
+on:
+  pull_request:
+    branches: [develop]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - run: find docs -name \*.md -print0 | xargs -0 -n1 python tools/tp_linter.py

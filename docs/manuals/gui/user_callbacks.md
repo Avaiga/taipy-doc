@@ -25,7 +25,7 @@ activates the control so as to change its value.
 
     x = 50
 
-    def on_change(gui, var, val):
+    def on_change(state, var, val):
         if var == "x":
             print(f"'x' was changed to: {x}")
 
@@ -37,9 +37,9 @@ what to do with it: maybe you will need to trigger some other code to propagate 
 side effects of the variable value being changed.
 
 If you need to reset the value displayed at this moment, you can simply
-change the variable value, assuming you use the `gui.` (or any other variable name you have
-set the `Gui` instance to) prefix when referring to that variable. In our example, that would
-be `gui.x`.
+change the variable value, assuming you use the `state.` (or any other variable name you have
+set the `State` instance to) prefix when referring to that variable. In our example, that would
+be `state.x`.
 
 ## Actions
 
@@ -56,7 +56,7 @@ the application knows that the user activated them somehow.
     Press <|THIS|button|> button.
     """
 
-    def on_action(gui, id, action):
+    def on_action(state, id, action):
         print("The button was pressed!")
 
     Gui(page=md).run()
