@@ -322,9 +322,9 @@ Properties:
 
 - `notification`: The field to activate/deactivate the notification. Default value is false.
 - `broker_endpoint`: The endpoint used for notification. Must be populated if notification is true.
-- `root_folder`: The path of the base folder for the taipy application. Default value is "./taipy/"
-- `storage_folder`: The folder name used to store Taipy data. Default value is ".data/". It is used in conjunction with the root_folder field. That means the storage path is <root_folder><storage_folder> (Default path is "./taipy/.data/")
-- `clean_entities_enabled`: The field to activate/deactivate the clean entities feature. Default value is false
+- `root_folder`: The path of the base folder for the taipy application. Default value is "./taipy/".
+- `storage_folder`: The folder name used to store Taipy data. Default value is ".data/". It is used in conjunction with the root_folder field. That means the storage path is <root_folder><storage_folder> (Default path is "./taipy/.data/").
+- `clean_entities_enabled`: The field to activate/deactivate the clean entities feature. Default value is false.
 - `properties`: The dictionary of additional properties.
 
 !!!Example
