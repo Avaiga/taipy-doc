@@ -480,7 +480,8 @@ airflow_password = "pass"
 
 !!! note "Security"
 
-To ensure you are not exposing your company's secrets, we recommend using [environment-based configuration](user_core_toml_configuration.md#attribute-in-an-environment-variable) for `airflow_user` and `airflow_password`.
+    To ensure you are not exposing your company's secrets, we recommend using 
+    [environment-based configuration](user_core_advanced_configuration.md#attribute-in-an-environment-variable) for `airflow_user` and `airflow_password`.
 
 # Check configuration
 
