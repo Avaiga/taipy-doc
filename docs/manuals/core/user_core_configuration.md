@@ -328,18 +328,16 @@ Properties:
 - `properties`: The dictionary of additional properties.
 
 !!!Example
-```python linenums="1"
-    import taipy as tp
-
-    tp.configure_global_app(
-        notification=True,
-        broker_endpoint="http://foo/bar",
-        root_folder=".taipy_root_folder/",
-        storage_folder=".data_folder",
-        clean_entities_enabled=True,
-        properties={"custom_property": False}
-        )
-```
+    ```python linenums="1"
+        import taipy as tp
+    
+        tp.configure_global_app(
+            root_folder=".taipy_root_folder/",
+            storage_folder=".data_folder",
+            clean_entities_enabled=True,
+            properties={"custom_property": False}
+            )
+    ```
 
 # Job configuration
 
