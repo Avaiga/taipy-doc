@@ -7,8 +7,8 @@ import taipy as tp
 ```
 
 The following sections show how to configure the Taipy entities in python. Note that you can override the
-python configuration using _TOML_ files. (More details on the [toml configuration](user_core_advanced_configuration.md))
-page.
+python configuration using _TOML_ files. (More details on the
+[advanced configuration](user_core_advanced_configuration.md)) page.
 
 # Data node configuration
 
@@ -17,16 +17,22 @@ For Taipy to instantiate a data node, a data node configuration must be provided
 used to configure the various data nodes Taipy will manipulate. To configure a new `DataNodeConfig`,
 here is the list of the configurable attributes :
 
--   The config `name` corresponds to the identifier of the data node config. It is a **mandatory** parameter
+- The config `name` corresponds to the identifier of the data node config. It is a **mandatory** parameter
     that must be unique. We strongly recommend using lowercase alphanumeric characters, dash character '-', or
     underscore character '\_' (a name compatible with a python variable name).
--   The `scope` attribute is from type [`Taipy.Scope`](../../reference/#taipy.core.data.scope.Scope).
+- The `scope` attribute is from type [`Taipy.Scope`](../../reference/#taipy.core.data.scope.Scope).
     It corresponds to the scope of the data node instantiated from the data node configuration.
     The **default value** is `Scope.SCENARIO`.
--   The storage `storage_type` is a parameter that corresponds to the type of storage of the data node. The possible values are ["pickle"](#../../reference/#taipy.core.data.pickle.PickleDataNode) (**the default value**), ["csv"](#../../reference/#taipy.core.data.csv.CSVDataNode), ["excel"](#../../reference/#taipy.core.data.excel.ExcelDataNode), ["generic"](#../../reference/#taipy.core.data.generic.GenericDataNode), ["in_memory"](#../../reference/#taipy.core.data.in_memory.InMemoryDataNode), ["sql"](#../../reference/#taipy.core.data.sql.SQLDataNode).
+- The storage `storage_type` is a parameter that corresponds to the type of storage of the data node. The possible
+values are ["pickle"](../../reference/#taipy.core.data.pickle.PickleDataNode) (**the default value**),
+["csv"](../../reference/#taipy.core.data.csv.CSVDataNode),
+["excel"](../../reference/#taipy.core.data.excel.ExcelDataNode),
+["generic"](../../reference/#taipy.core.data.generic.GenericDataNode),
+["in_memory"](../../reference/#taipy.core.data.in_memory.InMemoryDataNode),
+["sql"](../../reference/#taipy.core.data.sql.SQLDataNode).
     As explained in the following subsections, depending on the `storage_type`, other configuration attributes
     will need to be provided in the `properties` parameter.
--   Any other custom attribute can be provided through the `properties` dictionary (a description, a tag, etc.)
+- Any other custom attribute can be provided through the `properties` dictionary (a description, a tag, etc.)
     All the properties will be given to the data nodes instantiated from this data node configuration.
     This `properties` dictionary is also used to configure the parameters specific to each storage type.
 
@@ -99,11 +105,17 @@ parameters can be provided.
 A Csv data node is a specific data node used to model csv file data. To add a new _csv_ data node
 configuration, the `taipy.configure_csv_data_node` method can be used. In addition to the generic
 parameters described in the previous section
-[Data node configuration](user_core_configuration.md#data-node-configuration), one mandatory and two optional parameters can be provided.
+[Data node configuration](user_core_configuration.md#data-node-configuration), one mandatory and
+two optional parameters can be provided.
 
--   The `path` parameter is a mandatory parameter and represents the csv file path used by Taipy to read and write the data.
--   The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`, Taipy will use the 1st row in the csv file as the header. By default, `has_header` is `True`.
--   When the `exposed_type` is given as parameter, if the `exposed_type` value provided is `numpy`, the data node will read the csv file to a numpy array. If the provided value is a custom class, data node will create a list of custom object with the given custom class, each object will represent a row in the csv file.If `exposed_type` is not provided, the data node will read the csv file as a pandas DataFrame.
+- The `path` parameter is a mandatory parameter and represents the csv file path used by Taipy to read and write
+the data.
+- The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`,
+Taipy will use the 1st row in the csv file as the header. By default, `has_header` is `True`.
+- When the `exposed_type` is given as parameter, if the `exposed_type` value provided is `numpy`, the
+data node will read the csv file to a numpy array. If the provided value is a custom class, data node
+will create a list of custom object with the given custom class, each object will represent a row in the csv
+- file.If `exposed_type` is not provided, the data node will read the csv file as a pandas DataFrame.
 
 !!! example
 
@@ -134,12 +146,20 @@ parameters described in the previous section
 An Excel data node is a specific data node used to model xlsx file data. To add a new _excel_ data node
 configuration, the `taipy.configure_excel_data_node` method can be used. In addition to the generic
 parameters described in the previous section
-[Data node configuration](user_core_configuration.md#data-node-configuration), a mandatory and three optional parameters can be provided.
+[Data node configuration](user_core_configuration.md#data-node-configuration), a mandatory and three
+optional parameters can be provided.
 
--   The `path` is a mandatory parameter that represents the excel file path used by Taipy to read and write the data.
--   The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`, Taipy will use the 1st row in the excel file as the header. By default, `has_header` is `True`.
--   The `sheet_name` parameter represents which specific sheet in the excel file to read. If `sheet_name` is provided with a list of sheet names, it will return a dictionary with the key being the sheet name and the value being the data of the corresponding sheet. If a string is provided, data node will read only the data of the coressponding sheet. The default value of `sheet_name` is "Sheet1"
--   When the `exposed_type` is given as parameter, if the `exposed_type` value provided is `numpy`, the data node will read the excel file to a numpy array. If the provided value is a custom class, data node will create a list of custom object with the given custom class, each object will represent a row in the excel file.If `exposed_type` is not provided, the data node will read the excel file as a pandas DataFrame.
+- The `path` is a mandatory parameter that represents the excel file path used by Taipy to read and write the data.
+- The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`,
+Taipy will use the 1st row in the excel file as the header. By default, `has_header` is `True`.
+- The `sheet_name` parameter represents which specific sheet in the excel file to read. If `sheet_name`
+is provided with a list of sheet names, it will return a dictionary with the key being the sheet name and
+the value being the data of the corresponding sheet. If a string is provided, data node will read only the
+data of the coressponding sheet. The default value of `sheet_name` is "Sheet1"
+- When the `exposed_type` is given as parameter, if the `exposed_type` value provided is `numpy`, the data
+node will read the excel file to a numpy array. If the provided value is a custom class, data node will
+create a list of custom object with the given custom class, each object will represent a row in the excel
+file.If `exposed_type` is not provided, the data node will read the excel file as a pandas DataFrame.
 
 !!! example
 
@@ -175,8 +195,10 @@ parameters described in the previous section
 [Data node configuration](user_core_configuration.md#data-node-configuration), two mandatory
 parameters can be provided.
 
--   The `read_fct` is a mandatory parameter that represents a python function provided by the user. It will be used to read the data.
--   The `write_fct` is a mandatory parameter that represents a python function provided by the user. It will be used to write the data.
+- The `read_fct` is a mandatory parameter that represents a python function provided by the user. It will
+be used to read the data.
+- The `write_fct` is a mandatory parameter that represents a python function provided by the user. It will
+be used to write the data.
 
 !!! example
 
@@ -196,7 +218,7 @@ parameters can be provided.
 
 ### In memory
 
-An in*memory data node is a specific data node used to model any data in the RAM. To add a new \_in_memory* data node
+An in_memory data node is a specific data node used to model any data in the RAM. To add a new in_memory data node
 configuration, the `taipy.configure_in_memory_data_node` method can be used. In addition to the generic
 parameters described in the previous section
 [Data node configuration](user_core_configuration.md#data-node-configuration), an optional
@@ -229,13 +251,14 @@ parameters described in the previous section
 [Data node configuration](user_core_configuration.md#data-node-configuration), multiple
 parameters can be provided.
 
--   The `db_username` parameter represents the database username that will be used by Taipy to access the database.
--   The `db_password` parameter represents the database user's password that will be used by Taipy to access the database.
--   The `db_name` parameter represents the name of the database.
--   The `db_engine` parameter represents the engine of the database.
--   The `read_query` parameter represents the SQL query that will be used by Taipy to read the data from the database.
--   The `write_table` parameter represents the name of the table in the database that Taipy will be writing the data to.
--   The `db_port` parameter represents the database port that will be used by Taipy to access the database. The default value of `db_port` is 1433
+- The `db_username` parameter represents the database username that will be used by Taipy to access the database.
+- The `db_password` parameter represents the database user's password that will be used by Taipy to access the database.
+- The `db_name` parameter represents the name of the database.
+- The `db_engine` parameter represents the engine of the database.
+- The `read_query` parameter represents the SQL query that will be used by Taipy to read the data from the database.
+- The `write_table` parameter represents the name of the table in the database that Taipy will be writing the data to.
+- The `db_port` parameter represents the database port that will be used by Taipy to access the database.
+The default value of `db_port` is 1433
 
 !!! example
 
@@ -259,7 +282,7 @@ parameters can be provided.
 
 # Task configuration
 
-Definition of a [Task](user_core_concepts.md#task).
+Definition of a [Task](concepts/task.md).
 
 Properties:
 
@@ -282,25 +305,20 @@ output_data_node_config = tp.configure_data_node("output")
 task_config = tp.configure_task("double_task", double, input_data_node_config, output_data_node_config)
 ```
 
-On the previous example, we are configuring a [Task](user_core_concepts.md#task) in Taipy to execute:
+On the previous example, we created a TaskConfig.
 
-```python
-output = double(21)
-```
-
-In lines 3 and 4, we define a function that we want to use in a [Task](user_core_concepts.md#task).
-The Task configuration is done in lines 6 and 7. The function argument and result are represented as two data node configurations.
-Finally, on line 9, we create the task configuration named 'double_task' that represents the function 'double' that expects the 'input'
-data node as an input parameter and that returns the 'output' data node.
+In lines 3 and 4, we define a function that we want to use in a [Task](concepts/task.md) instantiated from the task
+config.
+In lines 6 and 7, two data node configurations are created. They will be used as the function argument and the function
+result. Finally, on line 9, we create the task configuration named 'double_task' that represents the function
+'double' that expects a 'input' data node as an input parameter and that returns an 'output' data node.
 
 Because a Task can have several inputs and outputs, `tp.configure_task` can receive lists of `DataNodeConfig` objects.
-
-We can have the same behavior by doing:
 
 ```python
 import taipy as tp
 
-def mult_by(nb, by):
+def multiply(nb, by):
     return nb * by
 
 nb_to_multiple = tp.configure_data_node("nb_to_multiple", default_value=21)
@@ -308,52 +326,77 @@ multiply_by = tp.configure_data_node("multiply_by", default_value=2)
 
 output_config = tp.configure_data_node("output")
 
-task_config = tp.configure_task("foo", [nb_to_multiple, multiply_by], mult_by, output_config)
+task_config = tp.configure_task("foo", multiply, [nb_to_multiple, multiply_by], output_config)
 ```
 
 # Pipeline configuration
 
-Definition of a [Pipeline](concepts.md#pipeline).
+Definition of a [Pipeline](concepts/pipeline.md).
 
 Properties:
 
 -   `name`: The name of this new pipeline configuration. This name should be unique.
--   `tasks`: The list of tasks configs.
+-   `tasks`: The list of tasks configurations.
 -   `properties`: The dictionary of additional properties.
 
-Basic example:
+Basic example using the task configuration `task_config` created in the previous example:
 
 ```python linenums="1"
+import taipy as tp
+
 pipeline_config = tp.configure_pipeline("multiply_pipeline", [task_config])
 ```
 
-On this example, we create a pipeline config which is made of a single task, identical to the one in the previous example.
+On this example, we create a pipeline config which is made of a single task configuration created
+in the previous example.
 
 # Scenario configuration
 
-Definition of a [Scenario](user_core_concepts.md#scenario).
+Definition of a [Scenario](concepts/scenario.md).
 
 Properties:
 
--   `name`: The name of this new scenario configuration. This name should be unique.
--   `pipelines`: The list of pipeline configs.
--   `frequency`: The recurrence frequency of the scenario.
--   `comparators`: The list of functions to compare data nodes of scenarios shared the same scenario config.
--   `properties`: The dictionary of additional properties.
+- `name`: The name of new scenario configuration to be created. This name should be unique.
+- `pipelines`: The list of pipeline configs.
+- `frequency`: The recurrence of the scenarios instantiated from this configuration. Based on this frequency
+    the scenarios will be attached to the right cycles.
+- `comparators`: The list of functions used to compare scenarios. A comparator function is attached to a scenario's
+    data node configuration. During the scenarios comparison, each comparator is applied to all the
+  data  nodes instantiated from the data node configuration attached to the comparator.
+- `properties`: The dictionary of additional properties.
 
-Basic example:
+Basic example using the pipeline configuration `pipeline_config` created in the previous example:
 
 ```python linenums="1"
+import taipy as tp
+
 scenario_config = tp.configure_scenario("multiply_scenario", [pipeline_config])
 ```
 
-In this example, we create a scenario config which contains the pipeline that was defined in the previous example.
+In this example, we create a scenario configuration `ScenarioConfig` which contains the pipeline that was
+defined in the previous example.
 
-We can also create a new pipeline belonging to this new scenario config and using the two indicated tasks.
+In the case the scenario configuration contains only one single pipeline configuration, we can also create the
+`ScenarioConfig` from the task configurations directly.
 
 ```python linenums="1"
-scenario_config = tp.configure_scenario_from_tasks("multiply_scenario", [task_config], pipeline_name="multiply_pipeline")
+import taipy as tp
+
+scenario_config = tp.configure_scenario_from_tasks("multiply_scenario", [task_config])
 ```
+
+Behind the scenes, a pipeline configuration is created. Its name will be the scenario configuration name with the
+`_pipeline` postfix (`multiply_scenario_pipeline` in the previous example).
+
+!!! Note
+
+    Note that the pipeline name can be configured as an optional parameter as follows:
+
+    ```python linenums="1"
+    import taipy as tp
+
+    scenario_config = tp.configure_scenario_from_tasks("multiply_scenario", [task_config], pipeline_name="multiply_pipeline")
+    ```
 
 # Global configuration
 Holds configuration fields related to the global application.
@@ -361,14 +404,16 @@ Holds configuration fields related to the global application.
 Properties:
 
 - `root_folder`: The path of the base folder for the taipy application. Default value is "./taipy/".
-- `storage_folder`: The folder name used to store Taipy data. Default value is ".data/". It is used in conjunction with the root_folder field. That means the storage path is <root_folder><storage_folder> (Default path is "./taipy/.data/").
+- `storage_folder`: The folder name used to store Taipy data. Default value is ".data/". It is used in conjunction
+with the root_folder field. That means the storage path is <root_folder><storage_folder>
+(Default path is "./taipy/.data/").
 - `clean_entities_enabled`: The field to activate/deactivate the clean entities feature. Default value is false.
 - `properties`: The dictionary of additional properties.
 
 !!!Example
     ```python linenums="1"
         import taipy as tp
-    
+
         tp.configure_global_app(
             root_folder=".taipy_root_folder/",
             storage_folder=".data_folder",
@@ -411,7 +456,9 @@ nb_of_workers = 1
 
 To execute the _jobs_ in parallel, you can set the number of workers to a positive integer value greater than 1.
 
-Taipy will use multiple and asynchronous processes, and run each job in a dedicated process. The value of the variable `nb_of_workers` represents the maximum number of processes spawned in parallel. For example,the following configuration allows Taipy to run at most 8 jobs in parallel:
+Taipy will use multiple and asynchronous processes, and run each job in a dedicated process. The value of the
+variable `nb_of_workers` represents the maximum number of processes spawned in parallel. For example,the
+following configuration allows Taipy to run at most 8 jobs in parallel:
 
 ```
 [JOB]
@@ -477,7 +524,8 @@ airflow_dags_folder = "/dags"
 !!! note "Remote Airflow"
 
     The Airflow _Dag_ generation can only be accomplished through this folder.
-    If Taipy and Airflow are not on the same machine or if Airflow uses remote workers, you must make sure that this folder is mounted in a shared mode.
+    If Taipy and Airflow are not on the same machine or if Airflow uses remote workers, you must make
+    sure that this folder is mounted in a shared mode.
 
 Airflow can take time before loading _DAGS_.
 In order to wait for Airflow to be ready to schedule tasks, Taipy requests the scheduling several times
@@ -501,12 +549,13 @@ airflow_password = "pass"
 
 !!! note "Security"
 
-    To ensure you are not exposing your company's secrets, we recommend using 
-    [environment-based configuration](user_core_advanced_configuration.md#attribute-in-an-environment-variable) for `airflow_user` and `airflow_password`.
+    To ensure you are not exposing your company's secrets, we recommend using
+    [environment-based configuration](user_core_advanced_configuration.md#attribute-in-an-environment-variable)
+    for `airflow_user` and `airflow_password`.
 
 # Check configuration
 
-Taipy provides a checking mechanism to validate the configuration. 
+Taipy provides a checking mechanism to validate the configuration.
 
 
 You can trigger the check by calling:
@@ -518,15 +567,26 @@ tp.check_configuration()
 
 Currently there are 6 checkers implemented in Taipy:
 
-- [`GlobalConfigChecker`](../../reference/#taipy.core.config.checker.checker.GlobalConfigChecker): checks if the `notification` property is populated with a Boolean.
-- [`DataNodeConfigChecker`](../../reference/#taipy.core.config.checker.checker.DataNodeConfigChecker): checks if `storage_type` and `scope` properties have been provided. `DataNodeConfigChecker` also checks for specific required properties corresponding to its `storage_type`.
-- [`TaskConfigChecker`](../../reference/#taipy.core.config.checker.checker.TaskConfigChecker): checks if `inputs` and `outputs` properties are populated with DataNode objects and a `Callable` function is provided for the `function` property.  
-- [`PipelineConfigChecker`](../../reference/#taipy.core.config.checker.checker.PipelineConfigChecker): checks if the `tasks` property is populated correctly with a list of `TaskConfig` objects or a single `TaskConfig` object.
-- [`ScenarioConfigChecker`](../../reference/#taipy.core.config.checker.checker.ScenarioConfigChecker): checks if the `pipelines` property is populated correctly with a list of `PipelineConfig` objects or a single `PipelineConfig` object. The `ScenarioConfigChecker` also checks if the `frequency` property is provided and if it is provided with a `Frequency` value. Lastly, it checks if any `comparators` are provided.
-- [`JobConfigChecker`](../../reference/#taipy.core.config.checker.checker.JobConfigChecker): checks if multiprocess is turned on, if yes, checks if any `DataNodeConfigs` have the `storage_type` of `in_memory` as multiprocess cannot be used with `InMemoryDataNode`
+- [`GlobalConfigChecker`](../../reference/#taipy.core.config.checker.checker.GlobalConfigChecker): checks if
+the `notification` property is populated with a Boolean.
+- [`DataNodeConfigChecker`](../../reference/#taipy.core.config.checker.checker.DataNodeConfigChecker): checks
+if `storage_type` and `scope` properties have been provided. `DataNodeConfigChecker` also checks for specific
+required properties corresponding to its `storage_type`.
+- [`TaskConfigChecker`](../../reference/#taipy.core.config.checker.checker.TaskConfigChecker): checks if
+`inputs` and `outputs` properties are populated with DataNode objects and a `Callable` function is provided
+for the `function` property.
+- [`PipelineConfigChecker`](../../reference/#taipy.core.config.checker.checker.PipelineConfigChecker): checks
+if the `tasks` property is populated correctly with a list of `TaskConfig` objects or a single `TaskConfig` object.
+- [`ScenarioConfigChecker`](../../reference/#taipy.core.config.checker.checker.ScenarioConfigChecker): checks
+if the `pipelines` property is populated correctly with a list of `PipelineConfig` objects or a single
+`PipelineConfig` object. The `ScenarioConfigChecker` also checks if the `frequency` property is provided
+and if it is provided with a `Frequency` value. Lastly, it checks if any `comparators` are provided.
+- [`JobConfigChecker`](../../reference/#taipy.core.config.checker.checker.JobConfigChecker): checks if multiprocess
+is turned on, if yes, checks if any `DataNodeConfigs` have the `storage_type` of `in_memory` as
+multiprocess cannot be used with `InMemoryDataNode`
 
 
 # More details
 
-For more details on how to override the python configuration, please read the documentation on the
-[:material-arrow-right: TOML configuration](user_core_advanced_configuration.md)
+For more details on how to override the python configuration with a _TOML_ file, please read the documentation on the
+[:material-arrow-right: advanced configuration](user_core_advanced_configuration.md)
