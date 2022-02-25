@@ -13,18 +13,17 @@ page.
 # Data node configuration
 
 For Taipy to instantiate a data node, a data node configuration must be provided.
-[`DataNodeConfig`](../../reference/#taipy.config.data_node_config.DataNodeConfig) is
+[`DataNodeConfig`](../../reference/#taipy.core.config.data_node_config.DataNodeConfig) is
 used to configure the various data nodes Taipy will manipulate. To configure a new `DataNodeConfig`,
 here is the list of the configurable attributes :
 
 -   The config `name` corresponds to the identifier of the data node config. It is a **mandatory** parameter
     that must be unique. We strongly recommend using lowercase alphanumeric characters, dash character '-', or
     underscore character '\_' (a name compatible with a python variable name).
--   The `scope` attribute is from type [`Taipy.Scope`](../../reference/#taipy.data.scope.Scope).
+-   The `scope` attribute is from type [`Taipy.Scope`](../../reference/#taipy.core.data.scope.Scope).
     It corresponds to the scope of the data node instantiated from the data node configuration.
     The **default value** is `Scope.SCENARIO`.
--   The storage `storage_type` is a parameter that corresponds to the type of storage of the data node. The
-    possible values are "pickle" (**the default value**), "csv", "excel", "generic", "in_memory", or "sql".
+-   The storage `storage_type` is a parameter that corresponds to the type of storage of the data node. The possible values are ["pickle"](#../../reference/#taipy.core.data.pickle.PickleDataNode) (**the default value**), ["csv"](#../../reference/#taipy.core.data.csv.CSVDataNode), ["excel"](#../../reference/#taipy.core.data.excel.ExcelDataNode), ["generic"](#../../reference/#taipy.core.data.generic.GenericDataNode), ["in_memory"](#../../reference/#taipy.core.data.in_memory.InMemoryDataNode), ["sql"](#../../reference/#taipy.core.data.sql.SQLDataNode).
     As explained in the following subsections, depending on the `storage_type`, other configuration attributes
     will need to be provided in the `properties` parameter.
 -   Any other custom attribute can be provided through the `properties` dictionary (a description, a tag, etc.)
@@ -102,9 +101,9 @@ configuration, the `taipy.configure_csv_data_node` method can be used. In additi
 parameters described in the previous section
 [Data node configuration](user_core_configuration.md#data-node-configuration), one mandatory and two optional parameters can be provided.
 
-- The `path` parameter is a mandatory parameter and represents the csv file path used by Taipy to read and write the data.
-- The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`, Taipy will use the 1st row in the csv file as the header. By default, `has_header` is `True`.
-- When the `exposed_type` is given as parameter, if the `exposed_type` value provided is `numpy`, the data node will read the csv file to a numpy array. If the provided value is a custom class, data node will create a list of custom object with the given custom class, each object will represent a row in the csv file.If `exposed_type` is not provided, the data node will read the csv file as a pandas DataFrame.
+-   The `path` parameter is a mandatory parameter and represents the csv file path used by Taipy to read and write the data.
+-   The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`, Taipy will use the 1st row in the csv file as the header. By default, `has_header` is `True`.
+-   When the `exposed_type` is given as parameter, if the `exposed_type` value provided is `numpy`, the data node will read the csv file to a numpy array. If the provided value is a custom class, data node will create a list of custom object with the given custom class, each object will represent a row in the csv file.If `exposed_type` is not provided, the data node will read the csv file as a pandas DataFrame.
 
 !!! example
 
@@ -137,10 +136,10 @@ configuration, the `taipy.configure_excel_data_node` method can be used. In addi
 parameters described in the previous section
 [Data node configuration](user_core_configuration.md#data-node-configuration), a mandatory and three optional parameters can be provided.
 
-- The `path` is a mandatory parameter that represents the excel file path used by Taipy to read and write the data.
-- The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`, Taipy will use the 1st row in the excel file as the header. By default, `has_header` is `True`.
-- The `sheet_name` parameter represents which specific sheet in the excel file to read. If `sheet_name` is provided with a list of sheet names, it will return a dictionary with the key being the sheet name and the value being the data of the corresponding sheet. If a string is provided, data node will read only the data of the coressponding sheet. The default value of `sheet_name` is "Sheet1"
-- When the `exposed_type` is given as parameter, if the `exposed_type` value provided is `numpy`, the data node will read the excel file to a numpy array. If the provided value is a custom class, data node will create a list of custom object with the given custom class, each object will represent a row in the excel file.If `exposed_type` is not provided, the data node will read the excel file as a pandas DataFrame.
+-   The `path` is a mandatory parameter that represents the excel file path used by Taipy to read and write the data.
+-   The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`, Taipy will use the 1st row in the excel file as the header. By default, `has_header` is `True`.
+-   The `sheet_name` parameter represents which specific sheet in the excel file to read. If `sheet_name` is provided with a list of sheet names, it will return a dictionary with the key being the sheet name and the value being the data of the corresponding sheet. If a string is provided, data node will read only the data of the coressponding sheet. The default value of `sheet_name` is "Sheet1"
+-   When the `exposed_type` is given as parameter, if the `exposed_type` value provided is `numpy`, the data node will read the excel file to a numpy array. If the provided value is a custom class, data node will create a list of custom object with the given custom class, each object will represent a row in the excel file.If `exposed_type` is not provided, the data node will read the excel file as a pandas DataFrame.
 
 !!! example
 
@@ -176,8 +175,8 @@ parameters described in the previous section
 [Data node configuration](user_core_configuration.md#data-node-configuration), two mandatory
 parameters can be provided.
 
-- The `read_fct` is a mandatory parameter that represents a python function provided by the user. It will be used to read the data.
-- The `write_fct` is a mandatory parameter that represents a python function provided by the user. It will be used to write the data.
+-   The `read_fct` is a mandatory parameter that represents a python function provided by the user. It will be used to read the data.
+-   The `write_fct` is a mandatory parameter that represents a python function provided by the user. It will be used to write the data.
 
 !!! example
 
@@ -197,14 +196,14 @@ parameters can be provided.
 
 ### In memory
 
-An in_memory data node is a specific data node used to model any data in the RAM. To add a new _in_memory_ data node
+An in*memory data node is a specific data node used to model any data in the RAM. To add a new \_in_memory* data node
 configuration, the `taipy.configure_in_memory_data_node` method can be used. In addition to the generic
 parameters described in the previous section
 [Data node configuration](user_core_configuration.md#data-node-configuration), an optional
 parameters can be provided.
 
-- If the `default_data` is given as parameter, the data node is automatically written with the corresponding
-value. Any python object can be used.
+-   If the `default_data` is given as parameter, the data node is automatically written with the corresponding
+    value. Any python object can be used.
 
 !!! example
 
@@ -230,14 +229,13 @@ parameters described in the previous section
 [Data node configuration](user_core_configuration.md#data-node-configuration), multiple
 parameters can be provided.
 
-- The `db_username` parameter represents the database username that will be used by Taipy to access the database.
-- The `db_password` parameter represents the database user's password that will be used by Taipy to access the database.
-- The `db_name` parameter represents the name of the database.
-- The `db_engine` parameter represents the engine of the database.
-- The `read_query` parameter represents the SQL query that will be used by Taipy to read the data from the database.
-- The `write_table` parameter represents the name of the table in the database that Taipy will be writing the data to.
-- The `db_port` parameter represents the database port that will be used by Taipy to access the database. The default value of `db_port` is 1433
-
+-   The `db_username` parameter represents the database username that will be used by Taipy to access the database.
+-   The `db_password` parameter represents the database user's password that will be used by Taipy to access the database.
+-   The `db_name` parameter represents the name of the database.
+-   The `db_engine` parameter represents the engine of the database.
+-   The `read_query` parameter represents the SQL query that will be used by Taipy to read the data from the database.
+-   The `write_table` parameter represents the name of the table in the database that Taipy will be writing the data to.
+-   The `db_port` parameter represents the database port that will be used by Taipy to access the database. The default value of `db_port` is 1433
 
 !!! example
 
@@ -314,7 +312,7 @@ task_config = tp.configure_task("foo", [nb_to_multiple, multiply_by], mult_by, o
 
 # Pipeline configuration
 
-Definition of a [Pipeline](user_core_concepts.md#pipeline).
+Definition of a [Pipeline](concepts.md#pipeline).
 
 Properties:
 
@@ -376,9 +374,9 @@ mode = "standalone"
 
 !!! Note
 
-Note that if no mode is configured, the standalone mode is used.
-By default, Taipy executes each _job_ one by one, in a synchronous manner. You can ensure this behavior by
-setting:
+    Note that if no mode is configured, the standalone mode is used.
+
+By default, Taipy executes each _job_ one by one, in a synchronous manner. You can ensure this behavior by setting:
 
 ```
 [JOB]
@@ -387,12 +385,12 @@ nb_of_workers = 1
 ```
 
 !!! Note
-If no value is provided in the nb_of_workers setting in the configuration, Taipy will set this value to 1.
+
+    If no value is provided in the nb_of_workers setting in the configuration, Taipy will set this value to 1.
 
 To execute the _jobs_ in parallel, you can set the number of workers to a positive integer value greater than 1.
-Taipy will use multiple and asynchronous processes, and run each job in a dedicated process. The value
-of the variable `nb_of_workers` represents the maximum number of processes spawned in parallel. For example,
-the following configuration allows Taipy to run at most 8 jobs in parallel:
+
+Taipy will use multiple and asynchronous processes, and run each job in a dedicated process. The value of the variable `nb_of_workers` represents the maximum number of processes spawned in parallel. For example,the following configuration allows Taipy to run at most 8 jobs in parallel:
 
 ```
 [JOB]
@@ -428,7 +426,8 @@ airflow_folder = "my_custom_path"
 ```
 
 !!! warning "Production setting"
-Taipy starts Airflow in `standalone` mode. It is an Airflow development mode and not recommended for production.
+
+    Taipy starts Airflow in `standalone` mode. It is an Airflow development mode and not recommended for production.
 
 #### Use an external Airflow
 
@@ -455,9 +454,10 @@ airflow_dags_folder = "/dags"
 ```
 
 !!! note "Remote Airflow"
-The Airflow _Dag_ generation can only be accomplished through this folder.
-If Taipy and Airflow are not on the same machine or if Airflow uses remote workers,
-you must make sure that this folder is mounted in a shared mode.
+
+    The Airflow _Dag_ generation can only be accomplished through this folder.
+
+If Taipy and Airflow are not on the same machine or if Airflow uses remote workers, you must make sure that this folder is mounted in a shared mode.
 
 Airflow can take time before loading _DAGS_.
 In order to wait for Airflow to be ready to schedule tasks, Taipy requests the scheduling several times
@@ -480,9 +480,8 @@ airflow_password = "pass"
 ```
 
 !!! note "Security"
-    To ensure you are not exposing your company's secrets, we recommend using
-    [environment-based configuration](user_core_advanced_configuration.md#attribute-in-an-environment-variable)
-    for `airflow_user` and `airflow_password`.
+
+To ensure you are not exposing your company's secrets, we recommend using [environment-based configuration](user_core_toml_configuration.md#attribute-in-an-environment-variable) for `airflow_user` and `airflow_password`.
 
 # Check configuration
 
