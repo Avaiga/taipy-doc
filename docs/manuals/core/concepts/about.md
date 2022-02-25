@@ -20,7 +20,7 @@ In this section, the following concepts are defined:
     (`DataNode`, `Task`, `Pipeline`, and `Scenario`) are called **_entities_**.
 
     On this page, we provide information on the **_entities_**. More details on how the configuration objects
-    are available on the [configuration documenation](user_core_configuration.md).
+    are available on the [configuration documenation](../user_core_configuration.md).
 
 
 [:material-arrow-right: Next section introduces the data node concept](data-node.md).
