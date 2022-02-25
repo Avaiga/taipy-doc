@@ -457,7 +457,7 @@ airflow_dags_folder = "/dags"
 
     The Airflow _Dag_ generation can only be accomplished through this folder.
 
-If Taipy and Airflow are not on the same machine or if Airflow uses remote workers, you must make sure that this folder is mounted in a shared mode.
+    If Taipy and Airflow are not on the same machine or if Airflow uses remote workers, you must make sure that this folder is mounted in a shared mode.
 
 Airflow can take time before loading _DAGS_.
 In order to wait for Airflow to be ready to schedule tasks, Taipy requests the scheduling several times
