@@ -435,15 +435,8 @@ airflow_password = "pass"
 
 # Check configuration
 
-Taipy provides a checking mechanism to validate the compiled configuration. 
-Currently there are 6 checkers implemented in Taipy:
+Taipy provides a checking mechanism to validate the configuration. 
 
-- GlobalConfigChecker
-- DataNodeConfigChecker
-- TaskConfigChecker
-- PipelineConfigChecker
-- ScenarioConfigChecker
-- JobConfigChecker
 
 You can trigger the check by calling:
 ```python linenums="1"
@@ -452,8 +445,15 @@ import taipy as tp
 tp.check_configuration()
 ```
 
+Currently there are 6 checkers implemented in Taipy:
 
-!!! Abstract Todo
+- [`GlobalConfigChecker`](../../reference/#taipy.core.config.checker.checker.GlobalConfigChecker): checks if the `notification` property is populated with a Boolean.
+- [`DataNodeConfigChecker`](../../reference/#taipy.core.config.checker.checker.DataNodeConfigChecker): checks if `storage_type` and `scope` properties have been provided. `DataNodeConfigChecker` also checks for specific required properties corresponding to its `storage_type`.
+- [`TaskConfigChecker`](../../reference/#taipy.core.config.checker.checker.TaskConfigChecker): checks if `inputs` and `outputs` properties are populated with DataNode objects and a `Callable` function is provided for the `function` property.  
+- [`PipelineConfigChecker`](../../reference/#taipy.core.config.checker.checker.PipelineConfigChecker): checks if the `tasks` property is populated correctly with a list of `TaskConfig` objects or a single `TaskConfig` object.
+- [`ScenarioConfigChecker`](../../reference/#taipy.core.config.checker.checker.ScenarioConfigChecker): checks if the `pipelines` property is populated correctly with a list of `PipelineConfig` objects or a single `PipelineConfig` object. The `ScenarioConfigChecker` also checks if the `frequency` property is provided and if it is provided with a `Frequency` value. Lastly, it checks if any `comparators` are provided.
+- [`JobConfigChecker`](../../reference/#taipy.core.config.checker.checker.JobConfigChecker): checks if multiprocess is turned on, if yes, checks if any `DataNodeConfigs` have the `storage_type` of `in_memory` as multiprocess cannot be used with `InMemoryDataNode`
+
 
 # More details
 For more details on how to override the python configuration, please read the documentation on the
