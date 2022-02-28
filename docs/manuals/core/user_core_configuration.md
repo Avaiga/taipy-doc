@@ -27,9 +27,9 @@ here is the list of the configurable attributes :
 values are ["pickle"](../../reference/#taipy.core.data.pickle.PickleDataNode) (**the default value**),
 ["csv"](../../reference/#taipy.core.data.csv.CSVDataNode),
 ["excel"](../../reference/#taipy.core.data.excel.ExcelDataNode),
-["generic"](../../reference/#taipy.core.data.generic.GenericDataNode),
-["in_memory"](../../reference/#taipy.core.data.in_memory.InMemoryDataNode),
 ["sql"](../../reference/#taipy.core.data.sql.SQLDataNode).
+["in_memory"](../../reference/#taipy.core.data.in_memory.InMemoryDataNode),
+["generic"](../../reference/#taipy.core.data.generic.GenericDataNode).
     As explained in the following subsections, depending on the `storage_type`, other configuration attributes
     will need to be provided in the `properties` parameter.
 - Any other custom attribute can be provided through the `properties` dictionary (a description, a tag, etc.)

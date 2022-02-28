@@ -8,7 +8,7 @@ understand the business case he/she is working on and to make the right decision
     In our example, we want our scenario to have the two pipelines described before. The external blue frame represents
     my scenario that contains both pipelines.
 
-    ![scenarios](../scenarios.svg){ align=left }
+    ![scenarios](pic/scenarios.svg){ align=left }
 
 A scenario represents one instance of a business problem to solve. In other words, each new business problem instance
 is represented by a new scenario. The end user can manage the various multiple scenarios in the same Taipy application.

@@ -5,7 +5,7 @@ concepts](concepts/about.md) described in a previous documentation.
 It is also assumed in the next sections that [`my_config.py`](./my_config.py) module contains a Taipy configuration
 already implemented. This configuration corresponds to the design displayed in the following picture.
 
-![scenarios](scenarios.svg)
+![scenarios](concepts/pic/scenarios.svg)
 
 Please refer to the [configuration documentation](user_core_configuration.md) to have information
 on how to configure a Taipy application.
