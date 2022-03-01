@@ -31,7 +31,7 @@ called _master scenario_. There is only one _master scenario_ per cycle.
 The attributes of a scenario (the set of pipelines, the cycle, ... ) are populated based on the scenario configuration
 ([`ScenarioConfig`](../../../reference/#taipy.core.config.scenario_config.ScenarioConfig)) that
 must be provided when instantiating a new scenario. (Please refer to the
-[`configuration details`](../user_core_configuration.md#scenario-configuration) documentation for more
+[`configuration details`](../config/scenario-config.md) documentation for more
 details on configuration).
 
 

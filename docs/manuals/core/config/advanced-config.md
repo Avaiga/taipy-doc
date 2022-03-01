@@ -1,6 +1,6 @@
 Taipy is an application builder. The purpose of configuring the application back end is to describe the user
 application entities and how they behave at runtime. To get more information about the back-end core concept you can
-read the [core concepts section](user_core_concepts.md)
+read the [core concepts section](../concepts/about.md)
 
 Taipy provides four methods to configure your application :
 
@@ -78,13 +78,13 @@ refer to the following sections.
 # Python code configuration
 
 A code configuration can be done on a Python file directly when designing the pipelines and scenarios. This
-configuration can be done by importing the [`Taipy`](../../reference/#Taipy) class and calling the various
-methods. This python configuration is meant to be used during the application development phase. It overrides
-the default configuration: if some values are not provided, the default configuration applies.
+configuration can be done by importing through the [`taipy`](../../../reference/#taipy) API. This python configuration
+is meant to be used during the application development phase. It overrides the default configuration: if some values
+are not provided, the default configuration applies.
 
 !!! example "Design of the application to configure"
 
-    ![scenarios](concepts/pic/scenarios.svg){ align=left }
+    ![scenarios](../concepts/pic/scenarios.svg){ align=left }
 
     Let's imagine I want to configure an application corresponding to the designed described in the picture. I can use
     the following python configuration code.

@@ -49,3 +49,5 @@ cycles.
     and the production orders data nodes must have a `Scope.SCENARIO` scope, so multiple scenarios do not share them.
 
     ![scopes](pic/storage_types_and_scopes.svg){ align=left }
+
+[:material-arrow-right: Next section introduces the COre configuration.](../config/about.md)

@@ -23,7 +23,7 @@ Note that the various pipelines do not require to be disjointed.
 The attributes of a pipeline (the set of tasks) are populated based on the pipeline configuration
 ([`PipelineConfig`](../../../reference/#taipy.core.config.pipeline_config.PipelineConfig)) that
 must be provided when instantiating a new pipeline. (Please refer to the
-[`configuration details`](../user_core_configuration.md#pipeline-configuration) documentation for more
+[`configuration details`](../config/pipeline-config.md) documentation for more
 details on configuration).
 
 
