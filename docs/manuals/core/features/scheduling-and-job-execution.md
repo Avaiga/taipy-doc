@@ -10,9 +10,9 @@ scenario = tp.create_scenario(monthly_scenario_cfg)
 
 tp.submit(scenario)
 ```
-In line 4 we are creating a new scenario from a scenario config. In line 6 we submit the scenario for an execution.
-The `submit` method triggers the submission of all the scenario's pipelines. Behind the scene, each task of each
-pipeline will be submitted.
+In line 4, we create a new scenario from a scenario configuration. In line 6, we submit the scenario for execution.
+The `submit` method triggers the submission of all the scenario's pipelines. Then each task of each pipeline will be
+submitted.
 
 You can also submit just a single pipeline with the same [`tp.submit`](../../../reference/#taipy.core.taipy.submit)
 method:
@@ -25,11 +25,10 @@ scenario = tp.create_scenario(monthly_scenario_cfg)
 pipeline = scenario.sales_pipeline
 tp.submit(pipeline)
 ```
-In line 5 we are now getting the pipeline named `sales_pipeline` from the created scenario. In line
-6 we only submit this pipeline for an execution. The `tp.submit` method triggers the submission of all the
-pipeline's tasks.
+In line 5, we are now getting the pipeline named `sales_pipeline` from the created scenario. In line 6, we only
+submit this pipeline for execution. The `tp.submit` method triggers the submission of all the pipeline's tasks.
 
-!!! Note "Other syntax"
+!!! Note "Other syntax."
     To submit a scenario or a pipeline, you can also use the methods
     [`scenario.submit()`](../../../reference/#taipy.core.scenario.scenario.Scenario.submit) or
     [`pipeline.submit()`](../../../reference/#taipy.core.pipeline.pipeline.Pipeline.submit):
@@ -45,10 +44,10 @@ pipeline's tasks.
 
 # Job
 
-Each time a task is submitted (through a scenario or a pipeline submission), a new Job
+Each time a task is submitted (through a scenario or a pipeline submission), a new
 [`Job`](../../../reference/#taipy.core.job.job.Job) entity is instantiated.
 
-## Properties
+## Job attributes
 
 Here is the list of job attributes:
 
@@ -123,7 +122,7 @@ deletion with the force parameter set to True: `tp.delete_job(job, force=True)`.
     (3) Number of job: 0.
     ```
 
-# Subscribe to a scenario or pipeline
+# Subscribe to job execution
 
 After each [Task](../concepts/task.md) execution, you can be notified by subscribing to a
 [Pipeline](../concepts/pipeline.md) or [Scenario](../concepts/scenario.md).
