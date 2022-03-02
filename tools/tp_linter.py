@@ -1,5 +1,5 @@
 """
-Check that parameters documentation have a uniform format.
+Check that parameters' documentation have a uniform format.
   - `<param_name>`: [The |A |An ]*.
 """
 import sys
