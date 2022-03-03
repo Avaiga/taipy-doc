@@ -6,22 +6,22 @@
 
 ## Properties
 
-- `task`: The [Task](../concepts/task.md) of the [Job](../concepts/job.md).
-- `force`: If True, the execution of the task is forced.
-- `creation_date`: The date of the creation of the Job with the status `SUBMITTED`.
-- `status`: The status of the [Job](../concepts/job.md).
-- `exceptions`: The exceptions handled during the execution of the [Jobs](../concepts/job.md).
+-   `task`: The [Task](../concepts/task.md) of the [Job](../concepts/job.md).
+-   `force`: If True, the execution of the task is forced.
+-   `creation_date`: The date of the creation of the Job with the status `SUBMITTED`.
+-   `status`: The status of the [Job](../concepts/job.md).
+-   `exceptions`: The exceptions handled during the execution of the [Jobs](../concepts/job.md).
 
 ## Job Status
 
-- `SUBMITTED`: The job is created but not enqueue for execution.
-- `BLOCKED`: The job is blocked by inputs not ready.
-- `PENDING`: The job is waiting for execution.
-- `RUNNING`: The job is being executing.
-- `CANCELLED`: The job was cancelled by user.
-- `FAILED`: The job failed due to timeout or execution error.
-- `COMPLETED`: The job execution is done and outputs were writen.
-- `SKIPPED`: The job was and will not be executed.
+-   `SUBMITTED`: The job is created but not enqueue for execution.
+-   `BLOCKED`: The job is blocked by inputs not ready.
+-   `PENDING`: The job is waiting for execution.
+-   `RUNNING`: The job is being executing.
+-   `CANCELLED`: The job was cancelled by user.
+-   `FAILED`: The job failed due to timeout or execution error.
+-   `COMPLETED`: The job execution is done and outputs were writen.
+-   `SKIPPED`: The job was and will not be executed.
 
 ## Create/Get/Delete Job
 
@@ -96,17 +96,17 @@ or `tp.unsubscribe_pipeline(function)` for pipelines. Same as for subscription, 
 or you can specify the scenario or pipeline by passing it as a parameter.
 
 !!! Example
-    ```python linenums="1"
-        import taipy as tp
+```python linenums="1"
+import taipy as tp
 
         def do_nothing():
             ...
 
         def my_global_subscriber(scenario, job):
-            print(f"Called from my_global_subscriber from scenario '{scenario.config_name}' and job for task '{job.task.config_name}'.")
+            print(f"Called from my_global_subscriber from scenario '{scenario.config_id}' and job for task '{job.task.config_id}'.")
 
         def my_subscriber(scenario, job):
-            print(f"Called from my_subscriber from scenario '{scenario.config_name}' and job for task '{job.task.config_name}'.")
+            print(f"Called from my_subscriber from scenario '{scenario.config_id}' and job for task '{job.task.config_id}'.")
 
         task_1 = tp.configure_task("my_task_1", do_nothing)
         task_2 = tp.configure_task("my_task_2", do_nothing)

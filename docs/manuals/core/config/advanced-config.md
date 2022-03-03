@@ -4,10 +4,10 @@ read the [core concepts section](../concepts/about.md)
 
 Taipy provides four methods to configure your application :
 
-- A default configuration
-- A Python configuration
-- An explicit file configuration using _TOML_ format
-- An environment variable file configuration
+-   A default configuration
+-   A Python configuration
+-   An explicit file configuration using _TOML_ format
+-   An environment variable file configuration
 
 !!! example
 
@@ -96,12 +96,12 @@ are not provided, the default configuration applies.
     from my_functions import train, predict, plan
 
     # Configure all six data nodes
-    sales_history_cfg = tp.configure_data_node(name="sales_history", scope=Scope.GLOBAL, storage_type="csv", path="my/file/path.csv")
-    trained_model_cfg = tp.configure_data_node(name="trained_model", scope=Scope.CYCLE)
-    current_month_cfg = tp.configure_data_node(name="current_month", scope=Scope.CYCLE)
-    sales_predictions_cfg = tp.configure_data_node(name="sales_predictions", scope=Scope.CYCLE)
-    capacity_cfg = tp.configure_data_node(name="capacity", scope=Scope.SCENARIO)
-    production_orders_cfg = tp.configure_data_node(name="production_orders", scope=Scope.SCENARIO, storage_type="sql",
+    sales_history_cfg = tp.configure_data_node(id="sales_history", scope=Scope.GLOBAL, storage_type="csv", path="my/file/path.csv")
+    trained_model_cfg = tp.configure_data_node(id="trained_model", scope=Scope.CYCLE)
+    current_month_cfg = tp.configure_data_node(id="current_month", scope=Scope.CYCLE)
+    sales_predictions_cfg = tp.configure_data_node(id="sales_predictions", scope=Scope.CYCLE)
+    capacity_cfg = tp.configure_data_node(id="capacity", scope=Scope.SCENARIO)
+    production_orders_cfg = tp.configure_data_node(id="production_orders", scope=Scope.SCENARIO, storage_type="sql",
                                                    db_username="admin",
                                                    db_password="ENV[PWD]",
                                                    db_name="production_planning",
@@ -110,27 +110,28 @@ are not provided, the default configuration applies.
                                                    write_table="production_order")
 
     # Configure the three tasks
-    training_cfg = tp.configure_task(name="training", inputs=sales_history_cfg, train, outputs=trained_model_cfg)
-    predicting_cfg = tp.configure_task(name="predicting", inputs=[trained_model_cfg, current_month_cfg], predict, outputs=sales_predictions_cfg)
-    planning_cfg = tp.configure_task(name="planning", inputs=[sales_predictions_cfg, capacity], plan, outputs=[production_orders_cfg])
+    training_cfg = tp.configure_task(id="training", inputs=sales_history_cfg, train, outputs=trained_model_cfg)
+    predicting_cfg = tp.configure_task(id="predicting", inputs=[trained_model_cfg, current_month_cfg], predict, outputs=sales_predictions_cfg)
+    planning_cfg = tp.configure_task(id="planning", inputs=[sales_predictions_cfg, capacity], plan, outputs=[production_orders_cfg])
 
     # Configure the two pipelines
-    sales_pipeline_cfg = tp.configure_pipeline(name="sales", tasks=[training_cfg, predicting_cfg])
-    production_pipeline_cfg = tp.configure_pipeline(name="production", tasks=[planning_cfg])
+    sales_pipeline_cfg = tp.configure_pipeline(id="sales", tasks=[training_cfg, predicting_cfg])
+    production_pipeline_cfg = tp.configure_pipeline(id="production", tasks=[planning_cfg])
 
     # Configure the scenario
-    monthly_scenario_cfg = tp.configure_scenario(name="scenario",
+    monthly_scenario_cfg = tp.configure_scenario(id="scenario",
                                                  pipelines=[sales_pipeline_cfg, production_pipeline_cfg])
                                                  frequency=Frequency.MONTHLY)
     ```
+
 !!! Note
-    The `train`, `predict`, and `plan` methods used on lines 21, 22, and 23 are the user functions imported on line 4
-    from a fake module `my_functions` that represents a user python module.
+The `train`, `predict`, and `plan` methods used on lines 21, 22, and 23 are the user functions imported on line 4
+from a fake module `my_functions` that represents a user python module.
 
 !!! Security
-    Note that on line 13, the password is not exposed. The property's value is a template referencing
-    the environment variable _PWD_ that contains the value. See section
-    [environment-based configuration](#attribute-in-an-environment-variable) for more details.
+Note that on line 13, the password is not exposed. The property's value is a template referencing
+the environment variable _PWD_ that contains the value. See section
+[environment-based configuration](#attribute-in-an-environment-variable) for more details.
 
 # Explicit TOML file configuration
 
@@ -156,19 +157,18 @@ Here is an example of a _TOML_ file overriding the code configuration provided a
     path="./path/to/my/file.csv"
 
 ```
+
 Two behaviors will change using the previous TOML file as file configuration. First, the Taipy application
 will now have five workers (By default, the number of workers is 1). Then, the sales_history data node will
 now be a CSV data node pointing to the file `./path/to/my/file.csv`
 
-
 # Environment variable file configuration
 
-Finally, if the environment variable TAIPY_CONFIG_PATH is defined with the path of a _TOML_ config, Taipy will
+Finally, if the environment variable TAIPY*CONFIG_PATH is defined with the path of a \_TOML* config, Taipy will
 automatically load the file and override the previous configurations (explicit file configuration, code configuration
 and default configuration).
 
 This functionality can be handy to change the configuration of a Taipy application without having to restart it.
-
 
 # Attribute in an environment variable
 
@@ -180,9 +180,11 @@ For example, if you are using Airflow as Taipy scheduler, you can hide the passw
 file using an environment variable.
 
 You can export the PWD variable with the following command line
-````commandline
+
+```commandline
 export PWD=MySeCrEtPaSsWoRd
-````
+```
+
 ```
 [JOB]
 airflow_password = "ENV[PWD]"
