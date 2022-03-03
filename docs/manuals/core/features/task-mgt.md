@@ -13,7 +13,7 @@ A task also holds various properties accessible as an attribute of the task:
 
 !!! Example
 
-````python linenums="1"
+```python linenums="1"
 import taipy as tp
 from config import \*
 
@@ -34,7 +34,7 @@ from config import \*
 
         # the current_month data node entity is exposed as an attribute of the task
         current_month_data_node = task.current_month
-    ```
+```
 
 Taipy exposes multiple methods to manage the various tasks.
 

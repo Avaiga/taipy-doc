@@ -41,7 +41,7 @@ deletion by doing `tp.delete_job(job, force=True)`.
 
 !!! Example
 
-    ```python linenums="1"
+```python linenums="1"
     import taipy as tp
 
     def double(nb):
@@ -66,15 +66,15 @@ deletion by doing `tp.delete_job(job, force=True)`.
     # Then delete it.
     tp.delete_job(scenario.double_task)
     print(f'(3) Number of job: {len(tp.get_jobs())}.')
-    ```
+```
 
-    This example will produce the following output:
+This example will produce the following output:
 
-    ```
+```
     (1) Number of job: 0.
     (2) Number of job: 1.
     (3) Number of job: 0.
-    ```
+```
 
 # Subscribe a scenario or pipeline
 
@@ -124,11 +124,11 @@ import taipy as tp
         tp.unsubscribe_scenario(my_global_subscriber, scenario_1)
         print('Submit: scenario_1)
         tp.submit(scenario_1)
-    ```
+```
 
-    This example will produce the following output:
+This example will produce the following output:
 
-    ```
+```
     Submit: scenario_1
     Called from my_global_subscriber from scenario 'my_scenario_1' and job for task 'my_task_1'.
     Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_1'.
@@ -139,4 +139,4 @@ import taipy as tp
     Submit: scenario_1
     Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_1'.
     Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_2'.
-    ```
+```

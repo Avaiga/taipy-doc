@@ -4,10 +4,10 @@ read the [core concepts section](../concepts/about.md)
 
 Taipy provides four methods to configure your application :
 
--   A default configuration
--   A Python configuration
--   An explicit file configuration using _TOML_ format
--   An environment variable file configuration
+- A default configuration
+- A Python configuration
+- An explicit file configuration using _TOML_ format
+- An environment variable file configuration
 
 !!! example
 
@@ -84,12 +84,12 @@ are not provided, the default configuration applies.
 
 !!! example "Design of the application to configure"
 
-    ![scenarios](../concepts/pic/scenarios.svg){ align=left }
+![scenarios](../concepts/pic/scenarios.svg){ align=left }
 
-    Let's imagine I want to configure an application corresponding to the designed described in the picture. I can use
-    the following python configuration code.
+Let's imagine I want to configure an application corresponding to the designed described in the picture. I can use
+the following python configuration code.
 
-    ```py linenums="1"
+```py linenums="1"
     import taipy as tp
     from taipy import Frequency
     from taipy import Scope
@@ -122,16 +122,15 @@ are not provided, the default configuration applies.
     monthly_scenario_cfg = tp.configure_scenario(id="scenario",
                                                  pipelines=[sales_pipeline_cfg, production_pipeline_cfg])
                                                  frequency=Frequency.MONTHLY)
-    ```
+```
 
 !!! Note
-The `train`, `predict`, and `plan` methods used on lines 21, 22, and 23 are the user functions imported on line 4
-from a fake module `my_functions` that represents a user python module.
+
+    The `train`, `predict`, and `plan` methods used on lines 21, 22, and 23 are the user functions imported on line 4 from a fake module `my_functions` that represents a user python module.
 
 !!! Security
-Note that on line 13, the password is not exposed. The property's value is a template referencing
-the environment variable _PWD_ that contains the value. See section
-[environment-based configuration](#attribute-in-an-environment-variable) for more details.
+
+    Note that on line 13, the password is not exposed. The property's value is a template referencing the environment variable _PWD_ that contains the value. See section [environment-based configuration](#attribute-in-an-environment-variable) for more details.
 
 # Explicit TOML file configuration
 
@@ -164,8 +163,7 @@ now be a CSV data node pointing to the file `./path/to/my/file.csv`
 
 # Environment variable file configuration
 
-Finally, if the environment variable TAIPY*CONFIG_PATH is defined with the path of a \_TOML* config, Taipy will
-automatically load the file and override the previous configurations (explicit file configuration, code configuration
+Finally, if the environment variable TAIPY_CONFIG_PATH is defined with the path of a _TOML_ config, Taipy will automatically load the file and override the previous configurations (explicit file configuration, code configuration
 and default configuration).
 
 This functionality can be handy to change the configuration of a Taipy application without having to restart it.

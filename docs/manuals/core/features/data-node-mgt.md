@@ -26,17 +26,18 @@ The first method to get a **data node** is from its id using the
 
 !!! Example
 
-````python linenums="1"
+```python linenums="1"
 import taipy as tp
 
         # Retrieve a data node by its id
         data_node = tp.get(data_node_id)
 
-    ```
+```
 
 The data nodes that are part of a **scenario** or **pipeline** can be directly accessed on their levels:
 
 !!! Example
+
 ```python linenums="1"
 import taipy as tp
 from config import \*
@@ -53,7 +54,7 @@ from config import \*
         # Access the data node from a pipeline
         scenario.sales.sales_history
 
-    ```
+```
 
 All the data nodes can be retrieved using the method
 [`taipy.get_data_nodes`](../../../reference/#taipy.core.taipy.get_data_nodes). This method returns a list of
@@ -85,7 +86,7 @@ import taipy as tp
 
         # Returns the content stored on the data node
         data_node.read()
-    ```
+```
 
 Is also possible to read partially the contents of data node, usefully when dealing with large amounts of data.
 This can be achieved using the [`data_node.filter()`](../../../reference/#taipy.core.data.data_node.DataNode.filter)
@@ -124,7 +125,7 @@ import taipy as tp
 
         # returns the new data stored on the data node
         data_node.read()
-    ```
+```
 
 [:material-arrow-right: Next section show the scheduling and job execution features](scheduling-and-job-execution.md).
 ````
