@@ -1,13 +1,69 @@
 # Submit a scenario or pipeline
 
-=> TODO tp.submit
+To execute a scenario, you need to call the
+[`tp.submit`](../../../reference/#taipy.core.taipy.submit) method:
+```python linenums="1"
+import taipy as tp
+from config import *
 
-# Jobs
+scenario = tp.create_scenario(monthly_scenario_cfg)
 
-## Properties
+tp.submit(scenario)
+```
+In line 4, we create a new scenario from a scenario configuration. In line 6, we submit the scenario for execution.
+The `submit` method triggers the submission of all the scenario's pipelines. Then each task of each pipeline will be
+submitted.
+
+!!! Note "Other syntax."
+    To submit a scenario, you can also use the method
+    [`scenario.submit()`](../../../reference/#taipy.core.scenario.scenario.Scenario.submit):
+    ```python linenums="1"
+        import taipy as tp
+        from config import *
+
+        scenario = tp.create_scenario(monthly_scenario_cfg)
+        pipeline = scenario.sales_pipeline
+        scenario.submit()
+        pipeline.submit()
+    ```
+
+You can also submit just a single pipeline with the same [`tp.submit`](../../../reference/#taipy.core.taipy.submit)
+method:
+
+```python linenums="1"
+import taipy as tp
+from config import *
+
+scenario = tp.create_scenario(monthly_scenario_cfg)
+pipeline = scenario.sales_pipeline
+tp.submit(pipeline)
+```
+In line 5, we retrieve the pipeline named `sales_pipeline` from the created scenario. In line 6, we submit only this
+pipeline for execution. The `tp.submit()` method triggers the submission of all the pipeline's tasks.
+
+!!! Note "Other syntax."
+    To submit a pipeline, you can also use the method
+    [`pipeline.submit()`](../../../reference/#taipy.core.pipeline.pipeline.Pipeline.submit):
+    ```python linenums="1"
+        import taipy as tp
+        from config import *
+
+        scenario = tp.create_scenario(monthly_scenario_cfg)
+        pipeline = scenario.sales_pipeline
+        pipeline.submit()
+    ```
+
+# Job
+
+Each time a task is submitted (through a scenario or a pipeline submission), a new
+[`Job`](../../../reference/#taipy.core.job.job.Job) entity is instantiated.
+
+## Job attributes
+
+Here is the list of job attributes:
 
 - `task`: The [Task](../concepts/task.md) of the [Job](../concepts/job.md).
-- `force`: If True, the execution of the task is forced.
+- `force`: The force attribute is `True` if the execution of the job has been forced.
 - `creation_date`: The date of the creation of the Job with the status `SUBMITTED`.
 - `status`: The status of the [Job](../concepts/job.md).
 - `exceptions`: The exceptions handled during the execution of the [Jobs](../concepts/job.md).
@@ -23,21 +79,22 @@
 - `COMPLETED`: The job execution is done and outputs were writen.
 - `SKIPPED`: The job was and will not be executed.
 
-## Create/Get/Delete Job
+## Get/Delete Job
 
 [Jobs](../concepts/job.md) are created when a task is submitted.
 
-You can get all of them with [`taipy.get_jobs`](../../../reference/#taipy.core.get_jobs). You can also get the latest
+You can get all of them with [`taipy.get_jobs()`](../../../reference/#taipy.core.get_jobs). You can also get the latest
 [Job](../concepts/job.md) of a [Task](../concepts/task.md) with
 [`taipy.get_latest_job(task)`](../../reference/#taipy.core.get_latest_job).
-You can also get a job from its id by using the [`taipy.get`](../../../reference/#taipy.core.get).
+You can also get a job from its id by using the [`taipy.get()`](../../../reference/#taipy.core.get).
 
-You can delete a [Job](../concepts/job.md) by using [`taipy.delete_job(job)`](../../../reference/#taipy.core.delete_job), or
-you can also delete all jobs with [`taipy.delete_jobs`](../../../reference/#taipy.core.delete_jobs).
+A [Job](../concepts/job.md)  can be deleted using the
+[`taipy.delete_job(job)`](../../../reference/#taipy.core.delete_job) method. You can also delete all jobs with
+[`taipy.delete_jobs()`](../../../reference/#taipy.core.delete_jobs).
 
 Delete a [Job](../concepts/job.md) can raise an `JobNotDeletedException` if the status of the
 [Job](../concepts/job.md) is not `SKIPPED`, `COMPLETED` or `FAILED`. You can overcome this behaviour by forcing the
-deletion by doing `tp.delete_job(job, force=True)`.
+deletion with the _force_ parameter set to `True`: `tp.delete_job(job, force=True)`.
 
 !!! Example
 
@@ -76,10 +133,10 @@ deletion by doing `tp.delete_job(job, force=True)`.
     (3) Number of job: 0.
     ```
 
-# Subscribe a scenario or pipeline
+# Subscribe to job execution
 
 After each [Task](../concepts/task.md) execution, you can be notified by subscribing to a
-[Pipeline](../concepts/pipeline.md) or [Scenario](../concepts/scenario.md).
+[Pipeline](../concepts/pipeline.md) or a [Scenario](../concepts/scenario.md).
 
 You will be notified for each scenario or pipeline by default, except if you specify one as a target.
 
