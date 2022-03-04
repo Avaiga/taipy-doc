@@ -1,20 +1,18 @@
-from datetime import datetime
-
 import pandas as pd
 
 
 def train(sales_history: pd.DataFrame):
-    print("running training")
+    print("Running training")
     return "TRAINED_MODEL"
 
 
 def predict(model, current_month):
-    print("running predicting")
+    print("Running predicting")
     return "SALES_PREDICTIONS"
 
 
 def plan(sales_predictions, capacity):
-    print("running planning")
+    print("Running planning")
     return "PRODUCTION_ORDERS"
 
 

@@ -13,7 +13,7 @@ exception if at least one issue collected has the `ERROR` level.
 
 Here is the list of the issues possibly returned by the checker:
 
-- An `ERROR` issue is created if the `notification` property is populated in the
+- An `ERROR` issue is created if the `clean_entities_enabled` property is populated in the
 [`GlobalAppConfig`](../../../reference/#taipy.core.config.global_app_config.GlobalAppConfig)
 with a non-Boolean value.
 
