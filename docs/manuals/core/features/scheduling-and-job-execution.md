@@ -63,7 +63,7 @@ Each time a task is submitted (through a scenario or a pipeline submission), a n
 Here is the list of job attributes:
 
 - `task`: The [Task](../concepts/task.md) of the [Job](../concepts/job.md).
-- `force`: True if the execution of the job has been forced.
+- `force`: The force attribute is `True` if the execution of the job has been forced.
 - `creation_date`: The date of the creation of the Job with the status `SUBMITTED`.
 - `status`: The status of the [Job](../concepts/job.md).
 - `exceptions`: The exceptions handled during the execution of the [Jobs](../concepts/job.md).
