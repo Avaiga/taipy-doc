@@ -48,6 +48,21 @@ Taipy documentation:
         ```
         python tools/setup_generation.py
         ```
+     Sometimes this script cannot navigate the top-most package, 'taipy'.
+     You will get an error message indicating: `"Root package taipy was not found."`,
+     and the script will try again a few times.<br/>
+     In the situation where it cannot solve the problem, it will exit on error.<br/>
+     After a few seconds, re-running the same script will usually fix that problem.
+
+     Also note that if this script breaks, the 'taipy' directory that was
+     created by the `fetch_source_files.sh` script may have been moved to the
+     `tools` directory. Usually, the script restores that directory.<br/>
+     However, if this was not the case, you must manually move it from
+     `tools` to the top directory: from the root of the `taipy-doc` checkout,
+     run:
+        ```
+        mv tools/taipy .
+        ```
 
    - Generate the documentation set.<br/>
      You can finally use _MkDocs_ to generate the documentation set when all files
