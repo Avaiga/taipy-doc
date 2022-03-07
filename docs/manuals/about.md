@@ -15,11 +15,11 @@ back-end application, so they can quickly and easily put it into their end user'
 scientists are more autonomous. They can focus on their core skills: building the best algorithms to solve their
 business problems.
 
-[:material-arrow-right: Definition of Taipy core concepts](core/user_core_concepts.md),
+[:material-arrow-right: Definition of Taipy core concepts](core/concepts/about.md),
 
 [:material-arrow-right: Documentation on the python configuration](core/user_core_configuration.md),
 
-[:material-arrow-right: Documentation on toml configuration](core/user_core_toml_configuration.md),
+[:material-arrow-right: Documentation on toml configuration](core/user_core_advanced_configuration.md),
 
 [:material-arrow-right: Description of Taipy core features](core/user_core_features.md)
 

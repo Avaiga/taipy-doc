@@ -108,8 +108,7 @@ Every visual element type has the following properties:
     Note that all visual elements are generated with the "taipy-_visual_element_type_" CSS
     class set (ie. the `button` control generates an HTML element that has the
     _taipy-button_ CSS class).
--   `properties`: The name of a variable that holds a dictionary where all property
-    name/value pairs will be used by a given visual element declaration.
+-   `properties`: The name of a variable that holds a dictionary where all property name/value pairs will be used by a given visual element declaration.
 
 All or most of the Taipy visual elements expose similar properties that can be used in a
 generic manner across your pages.

@@ -65,13 +65,11 @@ a.ext-link:after {
 }
 
 [data-md-color-scheme="default"] .tp-ve-card p {
-  color: #080808;
+  color: #080808 !important;
 }
 [data-md-color-scheme="slate"] .tp-ve-card p {
-  color: var(--md-primary-fg-color--light);
+  color: var(--md-primary-fg-color--light) !important;
 }
-
-/* ---------- Card image ---------- */
 
 .tp-ve-card img {
   transition: transform 0.5s ease-in-out;
@@ -82,8 +80,6 @@ a.ext-link:after {
   width: 100%;
   max-width: 8em;
 }
-
-/* ---------- ---------- Card and card inner elements on hover ---------- ---------- */
 
 .tp-ve-card:hover div {
   opacity: 0;

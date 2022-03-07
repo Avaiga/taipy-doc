@@ -23,7 +23,7 @@ git commit -m "My first commit"
 
 To be able to run your app, Heroku will need the following files:
 
-- `runtime.txt`: the version of Python you want to use. You can find the list of available version at [Heroku supported versions of Python](https://devcenter.heroku.com/articles/python-support#supported-runtimes).
+- `runtime.txt`: The version of Python you want to use. You can find the list of available versions at [Heroku supported versions of Python](https://devcenter.heroku.com/articles/python-support#supported-runtimes).
 
     For example, put in your `runtime.txt`:
     ```
@@ -36,7 +36,7 @@ To be able to run your app, Heroku will need the following files:
     git commit -m "Add Heroku runtime requirement"
     ```
 
-- `Procfile`: command launched by Heroku to start your application.
+- `Procfile`: The command launched by Heroku to start your application.
 
     If your entrypoint file is `main.py`, put in your `Procfile`:
     ```
@@ -49,7 +49,7 @@ To be able to run your app, Heroku will need the following files:
     git commit -m "Add Heroku Procfile requirement"
     ```
 
-- `requirements.txt`: your dependencies file. See [Virtual environments](https://docs.python.org/3/tutorial/venv.html) for details.
+- `requirements.txt`: The dependency file. See [Virtual environments](https://docs.python.org/3/tutorial/venv.html) for details.
 
     **Note:** If you already have a `requirements.txt` file up to date in your Git, you can ignore this step.
 
