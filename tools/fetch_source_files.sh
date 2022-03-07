@@ -4,13 +4,15 @@ SCRIPT_NAME=`echo $(basename "$0")|sed 's/\.sh$//'`
 SCRIPT_DIR=$(dirname "$0")
 SCRIPT_DIR=`realpath $SCRIPT_DIR`
 # Assuming this script is in taipy-doc/tools
+ROOT_DIR=`realpath $SCRIPT_DIR/..`
 TOP_DIR=`realpath $SCRIPT_DIR/../..`
 
 usage()
 {
     echo "Usage: $SCRIPT_NAME [-h|--help]"
-    echo "Locally installs the source code of Taipy from different repositories"
-    echo "in order to allow the local generation of the documentation set."
+    echo "Locally installs (in tools) the source code of Taipy from different"
+    echo "repositories in order to allow the local generation of the"
+    echo "documentation set."
     echo "You can then run 'mkdocs serve'"
 }
 
@@ -28,35 +30,29 @@ done
 # Check if repositories are accessible
 for m in $MODULES; do
     if [ ! -d $TOP_DIR/$m ]; then
-	echo "Error: module $m must be cloned next to $SCRIPT_DIR"
-	exit 1
-    fi
-    if [ $m == "taipy-gui" ] && [ ! -d $TOP_DIR/taipy-gui/taipy/gui/webapp ]; then
-	echo "Error: Web app has not been generated in taipy-gui"
-	echo "Please:"
-	echo "  cd $TOP_DIR/taipy-gui/gui"
-	echo "  npm install"
-	echo "  npm run build"
-	echo "then re-run"
-	exit 1
-
+        echo "Error: module $m must be cloned next to $SCRIPT_DIR"
+        exit 1
     fi
 done
 
-if [ -d taipy ]; then
+if [ -d $ROOT_DIR"/taipy" ]; then
     echo Removing legacy \'taipy\'
-    rm -rf taipy
-    mkdir taipy
+    rm -rf $ROOT_DIR"/taipy"
+    mkdir $ROOT_DIR"/taipy"
 fi
 for m in $MODULES; do
     echo Updating module $m
     (cd $TOP_DIR/$m; \
-     tar cf - `find taipy -name \\*.py`) | tar xf -
+     tar cf - `find taipy -name \\*.py`) | (cd $ROOT_DIR;tar xf -)
     if [ $m == "taipy-gui" ]; then
-	if [ -d taipy ]; then
-	    echo Removing legacy \'gui\'
-	    rm -rf gui
-	fi
-	(cd $TOP_DIR/$m;tar cf - gui/doc) | tar xf -
+        if [ -d $ROOT_DIR"/gui" ]; then
+            echo Removing legacy \'gui\'
+            rm -rf $ROOT_DIR"/gui"
+        fi
+        echo Updating doc files for taipy-gui
+	    (cd $TOP_DIR/$m;tar cf - gui/doc) | (cd $ROOT_DIR;tar xf -)
     fi
 done
+echo "Adding taipy's __init__.py"
+echo "from taipy.core import *" >$ROOT_DIR/taipy/__init__.py
+echo "import taipy.gui as gui" >>$ROOT_DIR/taipy/__init__.py

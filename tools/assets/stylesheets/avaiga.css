@@ -30,7 +30,7 @@ a.ext-link:after {
 .tp-ve-card {
   flex: 0 1 calc(33% - 2em);
   margin: 1em 0 0 1em;
-  padding: 2em;
+  padding: 1em;
   position: relative;
   height: 20em;
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
@@ -48,17 +48,19 @@ a.ext-link:after {
   color: var(--md-primary-fg-color);
   flex: 100%;
   text-align: center;
+  font-family: monospace;
+  font-size: 1.2em;
 }
 
 .tp-ve-card p {
   /*Animation*/
-  transform: translateY(-2em);
+  transform: translateY(2em);
   opacity: 0;
-  transition: opacity 0.2s ease 0s, transform 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out 0s, transform 0.5s ease-in-out 0s !important;
   position: absolute;
-  /*Appearence*/
-  color: #ffffff !important;
-  font-weight: 600;
+  bottom: 1em;
+  text-align: center;
+  font-weight: 400;
   visibility: hidden;
 }
 
@@ -89,11 +91,12 @@ a.ext-link:after {
 }
 
 .tp-ve-card:hover p {
-  transition: opacity 0.2s ease 0.5s, transform 0.5s ease-in-out;
   opacity: 1;
   transform: translateY(0);
-  position: static;
+  position: absolute;
   visibility: visible;
+  padding: 0 1em;
+  bottom: 1em;
 }
 
 [data-md-color-scheme="default"] .tp-ve-card img.tp-ve-d,

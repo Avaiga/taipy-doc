@@ -107,8 +107,12 @@ site/
 *.ipynb
 
 # Doc generation
+mkdocs.yml
+/taipy
+/gui
+docs/manuals/reference/*.md
 docs/manuals/gui/user_controls.md
 docs/manuals/gui/user_blocks.md
 docs/manuals/gui/viselements/*.md
-/taipy
-/gui
+docs/manuals/xrefs
+
