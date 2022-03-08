@@ -284,95 +284,57 @@ FUNCTION_ID = "F"
 FIRST_DOC_LINE_RE = re.compile(r"^(.*?)(:?\n\n|$)", re.DOTALL)
 REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 
-def package_contents(package_name):
-    spec = importlib.util.find_spec(package_name)
-    if spec is None:
-        return set()
-
-    pathname = Path(spec.origin).parent
-    ret = set()
-    ret.add(package_name)
-    with os.scandir(pathname) as entries:
-        for entry in entries:
-            if entry.name.startswith('__'):
-                continue
-            current = '.'.join((package_name, entry.name.partition('.')[0]))
-            if entry.is_file():
-                if entry.name.endswith(MODULE_EXTENSIONS):
-                    ret.add(current)
-            elif entry.is_dir():
-                ret |= package_contents(current)
-    return ret
-
-packages = package_contents(ROOT_PACKAGE)
-
+entry_to_package  = {}
 potential_types = set()
-
-def build_entry_to_package(hide_warnings):
-    entry_to_package  = {}
-    for package in packages:
-        module = __import__(package, fromlist="*")
-        entries = []
-        for entry in dir(module):
-            # Private?
-            if entry.startswith("_"):
+def read_module(module):
+    if not module.__name__.startswith(ROOT_PACKAGE):
+        return
+    for entry in dir(module):
+        # Private?
+        if entry.startswith("_"):
+            continue
+        e = getattr(module, entry)
+        if hasattr(e, '__class__') and e.__class__.__name__.startswith("_"):
+            continue
+        if hasattr(e, '__module__') and e.__module__:
+            # Type alias?
+            if e.__module__ == 'typing' and hasattr(e, '__name__'):
+                if not e.__name__ in potential_types:
+                    print(f"INFO - {e.__name__} might be a type alias in {module.__name__}", flush=True)
+                    potential_types.add(e.__name__)
+            # Not in our focus package?
+            if not e.__module__.startswith(ROOT_PACKAGE):
                 continue
-            e = getattr(module, entry)
-            if hasattr(e, '__module__') and e.__module__:
-                # Type alias?
-                if e.__module__ == 'typing' and hasattr(e, '__name__'):
-                    if not e.__name__ in potential_types:
-                        print(f"INFO - {e.__name__} might be a type alias in {module.__name__}", flush=True)
-                        potential_types.add(e.__name__)
-                # Not in our focus package?
-                if not e.__module__.startswith(ROOT_PACKAGE):
-                    continue
-            # Not a function or a class?
-            entry_type = None
-            if isclass(e):
-                entry_type = CLASS_ID
-            elif isfunction(e):
-                entry_type = FUNCTION_ID
-            elif ismodule(e):
-                continue
-            if not entry_type:
-                continue
-            # Add to all entries
-            doc = e.__doc__
-            if doc:
-                first_line = FIRST_DOC_LINE_RE.match(doc.strip())
-                if first_line:
-                    doc = REMOVE_LINE_SKIPS_RE.subn(" ", first_line.group(0))[0].strip()
-                elif not hide_warnings:
-                    print(f"WARNING - Couldn't extract doc summary for {e.__name__} in {e.__module__}", flush=True)
-            key = (e.__module__, entry, entry_type, doc)
-            if key in entry_to_package.keys():
-                if e.__module__ != module.__name__:
-                    # Keep the top-most package
-                    if e.__module__.startswith(module.__name__ + ".") and entry_to_package[key].startswith(module.__name__ + "."):
-                        entry_to_package[key] = module.__name__
+        # Not a function or a class?
+        entry_type = None
+        if isclass(e):
+            entry_type = CLASS_ID
+        elif isfunction(e):
+            entry_type = FUNCTION_ID
+        elif ismodule(e):
+            read_module(e)
+        if not entry_type:
+            continue
+        # Add to all entries
+        doc = e.__doc__
+        if doc:
+            first_line = FIRST_DOC_LINE_RE.match(doc.strip())
+            if first_line:
+                doc = REMOVE_LINE_SKIPS_RE.subn(" ", first_line.group(0))[0].strip()
             else:
-                if doc is None and not hide_warnings:
-                    print(f"WARNING - {e.__name__} [in {e.__module__}] has no doc", flush=True)
-                entry_to_package[key] = module.__name__
-    # For some mysterious reason, this function sometimes fail to find any entry
-    # in the ROOT_PACKAGE.
-    # The only workaround at this point is to try to call this function a few
-    # times... until we spot it.
-    return entry_to_package if ROOT_PACKAGE in entry_to_package.values() else None
+                print(f"WARNING - Couldn't extract doc summary for {e.__name__} in {e.__module__}", flush=True)
+        key = (e.__module__, entry, entry_type, doc)
+        if key in entry_to_package:
+            if e.__module__ != module.__name__:
+                # Keep the top-most package
+                if e.__module__.startswith(module.__name__) and entry_to_package[key].startswith(module.__name__):
+                    entry_to_package[key]  = module.__name__
+        else:
+            if doc is None:
+                print(f"WARNING - {e.__name__} [in {e.__module__}] has no doc", flush=True)
+            entry_to_package[key] = module.__name__
 
-MAX_RETRIES=15
-retries = 0
-while True:
-    entry_to_package = build_entry_to_package(retries > 0)
-    if entry_to_package:
-        break
-    elif retries == 15:
-        restore_top_package_location()
-        raise SystemError(f"FATAL - Could not import {ROOT_PACKAGE}")
-    retries += 1
-    time.sleep(retries / 10)
-    print(f"Root package {ROOT_PACKAGE} was not found. Retrying {retries}/{MAX_RETRIES}", flush=True)
+read_module(__import__(ROOT_PACKAGE))
 
 restore_top_package_location()
 
