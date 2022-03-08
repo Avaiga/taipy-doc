@@ -290,7 +290,7 @@ def read_module(module):
     print(f"FLE - ENTERING read_module({module})")
     if not module.__name__.startswith(ROOT_PACKAGE):
         return
-    print(f"     -> dir({module})")
+    print(f"     -> {dir(module)}")
     for entry in dir(module):
         # Private?
         if entry.startswith("_"):
