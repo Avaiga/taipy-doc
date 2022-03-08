@@ -94,7 +94,7 @@ method:
 
 ```python linenums="1"
 data_node.filter([('field_name_like_temperature', 14, Operator.EQUAL), ('field_name_like_temperature', 10, Operator.EQUAL)], JoinOperator.OR))
-````
+```
 
 Is also possible to use pandas style filtering:
 
@@ -112,7 +112,7 @@ parameter and writes it on the data node:
 
 !!! Example
 
-````python linenums="1"
+```python linenums="1"
 import taipy as tp
 
         # Retrieve a data node by its id
@@ -128,4 +128,4 @@ import taipy as tp
 ```
 
 [:material-arrow-right: Next section show the scheduling and job execution features](scheduling-and-job-execution.md).
-````
+```

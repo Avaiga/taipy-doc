@@ -2,9 +2,9 @@ A pipeline configuration is necessary to instantiate a [Pipeline](../concepts/pi
 [`PipelineConfig`](../../../reference/#taipy.core.config.pipeline_config.PipelineConfig) you can use
 the `taipy.configure_pipeline()` method with the following parameters:
 
--   `id`: The id of this new pipeline configuration. This id should be unique.
--   `tasks`: The list of tasks configurations.
--   `properties`: The dictionary of additional properties.
+- `id`: The id of this new pipeline configuration. This id should be unique.
+- `tasks`: The list of tasks configurations.
+- `properties`: The dictionary of additional properties.
 
 Basic example using the task configuration `task_config` created in the previous example:
 

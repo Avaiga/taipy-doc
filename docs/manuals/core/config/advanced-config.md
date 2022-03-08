@@ -86,7 +86,7 @@ are not provided, the default configuration applies.
 
 ![scenarios](../concepts/pic/scenarios.svg){ align=left }
 
-Let's imagine I want to configure an application corresponding to the designed described in the picture. I can use
+Let's imagine you want to configure an application corresponding to the designed described in the picture. I can use
 the following python configuration code.
 
 ```py linenums="1"
