@@ -372,6 +372,7 @@ for package in sorted(package_to_entries.keys()):
                                     + f"{'()' if type == FUNCTION_ID else ''}`]({package}.{name}.md)"
                                     + f"{': '+entry[3] if entry[3] else ' - NOT DOCUMENTED'}\n")
             output_path = os.path.join(REFERENCE_DIR_PATH, f"{package}.{name}.md")
+            print(f"INFO - Generating entry in {output_path} [{type}]")
             with open(output_path, "w") as output_file:
                 output_file.write("---\nhide:\n  - navigation\n---\n\n"
                                 + f"::: {package}.{name}\n")
@@ -379,6 +380,7 @@ for package in sorted(package_to_entries.keys()):
                 print(f"ERROR - {'Function' if type == FUNCTION_ID else 'Class'} {name} already declared in {xrefs[name]}")
             xrefs[name] = (package, entry[0])
 
+    print(f"INFO - Generating package in {package_output_path}")
     with open(package_output_path, "w") as package_output_file:
         package_output_file.write(f"## Package: {package}\n\n")
         if functions:
