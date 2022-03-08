@@ -24,6 +24,7 @@ toml = ">=0.10"
 tzlocal = ">=3.0"
 "backports.zoneinfo" = {version=">=0.2.0", markers="python_version < '3.9'", extras=["tzdata"]}
 markupsafe = "==2.0.1"
+unidecode = ">=1.3"
 
 [dev-packages]
 black = "*"
