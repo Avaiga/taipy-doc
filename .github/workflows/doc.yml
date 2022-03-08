@@ -39,9 +39,13 @@ jobs:
         run: |
           (cd taipy-gui;tar cf - taipy gui)|tar xf -
           rm -rf taipy-gui
-      - name: Generate Visual Elements doc
+      - name: Create Taipy __init__ file
         run: |
-          pipenv run python tools/generate_viselements.py
+          echo "from taipy.core import *" >taipy/__init__.py
+          echo "import taipy.gui as gui" >>taipy/__init__.py
+      - name: Pre-process root package and GUI doc
+        run: |
+          pipenv run python tools/setup_generation.py
       - name: Build doc and deploy
         run: |
           pipenv run mkdocs gh-deploy --force

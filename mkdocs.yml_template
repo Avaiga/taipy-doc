@@ -62,7 +62,9 @@ nav:
             - 'Setup': 'manuals/deployment/heroku/setup.md'
             - 'Based on Git': 'manuals/deployment/heroku/git.md'
             - 'Based on Docker': 'manuals/deployment/heroku/docker.md'
-  - 'Reference Manual': 'manuals/reference.md'
+  - 'Reference Manual':
+    - "About Taipy's Reference Manual": 'manuals/reference.md'
+    [REFERENCE_CONTENT]
   - 'Contributing':
     - 'About contributions': 'contributing/about_contributing.md'
     - 'How you can contribute': 'contributing/how-to-contribute.md'

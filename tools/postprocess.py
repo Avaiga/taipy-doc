@@ -1,7 +1,24 @@
+# ######################################################################
+#
+# Syntax for cross-references to the Reference Manual:
+#   `ClassName^`
+#       generates a link from `ClassName` to the class doc page
+#   `functionName(*)^`
+#       generates a link from `functionName(*)` to the function doc page
+#   `ClassName.methodName(*)^`
+#       generates a link from `ClassName.methodName(*)` to the method
+#       doc page.
+#   `(ClassName.)methodName(*)^`
+#       generates a link from `methodName(*)` to the method doc page.
+# ######################################################################
 import os
 import re
 from typing import Dict
+import logging
+import json
+from weakref import ref
 
+from importlib_metadata import pass_none
 
 def define_env(env):
     """
@@ -12,7 +29,14 @@ def define_env(env):
 
 TOC_ENTRY_PART1 = r"<li\s*class=\"md-nav__item\">\s*<a\s*href=\""
 TOC_ENTRY_PART2 = r"\"\s*class=\"md-nav__link\">([^<]*)</a>\s*</li>\s*"
-
+# XREF_RE details:
+#  group(1) - A potential opening '('.
+#  group(2) - The class or function name.
+#  group(3) - If not empty, the name of a method, with the '.' prefix
+#    if the classname is to be preserved (group(1) is empty).
+#  group(4) - The function parameters, with their ().
+XREF_RE = re.compile(r"<code>(\()?([^\d\W]\w*)(?:\.\))?"
+                     + r"((?:\.)?(?:[^\d\W]\w*))?(\(.*?\))?\^</code>")
 
 def find_dummy_h3_entries(content: str) -> Dict[str, str]:
     """
@@ -55,9 +79,17 @@ def remove_dummy_h3(content: str, ids: Dict[str, str]) -> str:
 
 
 def on_post_build(env):
-    "Post-build actions for Taipy"
+    "Post-build actions for Taipy documentation"
 
     site_dir = env.conf["site_dir"]
+    log = logging.getLogger("mkdocs")
+    xrefs = {}
+    if os.path.exists(site_dir + "/manuals/xrefs"):
+        with open(site_dir + "/manuals/xrefs") as xrefs_file:
+            xrefs = json.load(xrefs_file)
+    if xrefs is None:
+        log.error(f"Could not find xrefs in /manuals/xrefs")
+    ref_files_path = os.path.join(site_dir, "manuals", "reference")
     for root, _, file_list in os.walk(site_dir):
         for f in file_list:
             # Post-process generated '.html' files
@@ -90,6 +122,43 @@ def on_post_build(env):
                     html_content, n_changes = EXTLINK.subn('<a class="ext-link" \\1', html_content)
                     if n_changes != 0:
                         file_was_changed = True
+                    # Find and resolve potential cross-references to the Reference Manual
+                    rel_path = os.path.relpath(ref_files_path, filename).replace("\\", "/").replace("../", "", 1)
+                    new_content = ""
+                    last_location = 0
+                    for xref in XREF_RE.finditer(html_content):
+                        groups = xref.groups()
+                        entry = groups[1]
+                        method = groups[2]
+                        packages = xrefs.get(entry)
+                        if packages is None:
+                            (dir, file) = os.path.split(filename)
+                            (dir, dir1) = os.path.split(dir)
+                            (dir, dir2) = os.path.split(dir)
+                            if file == "index.html":
+                                (dir, dir3) = os.path.split(dir)
+                                log.error(f"Unresolve crossref '{entry}' found in {dir3}/{dir2}/{dir1}.md")
+                            else:
+                                log.error(f"Unresolve crossref '{entry}' found in {dir2}/{dir1}/{file}")
+                            continue
+                        package = packages[0]
+                        orig_package = packages[0]
+                        new_content += html_content[last_location:xref.start()]
+                        new_content += f"<a href=\"{rel_path}/{package}.{entry}"
+                        if method:
+                            if not groups[0]:
+                                method = method[1:]
+                            new_content += f"/index.html#{orig_package}.{entry}.{method}\"><code>"
+                            if not groups[0]:
+                                new_content += f"{entry}."
+                            new_content += f"{method}"
+                        else:
+                            new_content += f"\"><code>{entry}"
+                        new_content += f"{groups[3] if groups[3] else ''}</code></a>"
+                        last_location = xref.end()
+                    if last_location:
+                        file_was_changed = True
+                        html_content = new_content + html_content[last_location:]
                 if file_was_changed:
                     with open(filename, "w") as html_file:
                         html_file.write(html_content)
