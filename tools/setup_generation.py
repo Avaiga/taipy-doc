@@ -287,6 +287,7 @@ REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 entry_to_package  = {}
 potential_types = set()
 def read_module(module):
+    print(f"FLE - read_module({module})")
     if not module.__name__.startswith(ROOT_PACKAGE):
         return
     for entry in dir(module):
@@ -333,6 +334,8 @@ def read_module(module):
             if doc is None:
                 print(f"WARNING - {e.__name__} [in {e.__module__}] has no doc", flush=True)
             entry_to_package[key] = module.__name__
+            print(f"FLE - entry_to_package[{key}]={module.__name__}")
+
 
 read_module(__import__(ROOT_PACKAGE))
 
