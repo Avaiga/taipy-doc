@@ -24,7 +24,6 @@ submitted.
         scenario = tp.create_scenario(monthly_scenario_cfg)
         pipeline = scenario.sales_pipeline
         scenario.submit()
-        pipeline.submit()
     ```
 
 You can also submit just a single pipeline with the same [`tp.submit`](../../../reference/#taipy.core.taipy.submit)
@@ -70,14 +69,14 @@ Here is the list of job attributes:
 
 ## Job Status
 
-- `SUBMITTED`: The job is created but not enqueue for execution.
-- `BLOCKED`: The job is blocked by inputs not ready.
-- `PENDING`: The job is waiting for execution.
-- `RUNNING`: The job is being executing.
-- `CANCELLED`: The job was cancelled by user.
-- `FAILED`: The job failed due to timeout or execution error.
-- `COMPLETED`: The job execution is done and outputs were writen.
-- `SKIPPED`: The job was and will not be executed.
+-   `SUBMITTED`: The job is created but not enqueue for execution.
+-   `BLOCKED`: The job is blocked by inputs not ready.
+-   `PENDING`: The job is waiting for execution.
+-   `RUNNING`: The job is being executing.
+-   `CANCELLED`: The job was cancelled by user.
+-   `FAILED`: The job failed due to timeout or execution error.
+-   `COMPLETED`: The job execution is done and outputs were writen.
+-   `SKIPPED`: The job was and will not be executed.
 
 ## Get/Delete Job
 
@@ -125,13 +124,13 @@ deletion with the _force_ parameter set to `True`: `tp.delete_job(job, force=Tru
     print(f'(3) Number of job: {len(tp.get_jobs())}.')
     ```
 
-    This example will produce the following output:
+This example will produce the following output:
 
-    ```
-    (1) Number of job: 0.
-    (2) Number of job: 1.
-    (3) Number of job: 0.
-    ```
+```
+(1) Number of job: 0.
+(2) Number of job: 1.
+(3) Number of job: 0.
+```
 
 # Subscribe to job execution
 
@@ -153,17 +152,17 @@ or `tp.unsubscribe_pipeline(function)` for pipelines. Same as for subscription, 
 or you can specify the scenario or pipeline by passing it as a parameter.
 
 !!! Example
-    ```python linenums="1"
-        import taipy as tp
+```python linenums="1"
+import taipy as tp
 
         def do_nothing():
             ...
 
         def my_global_subscriber(scenario, job):
-            print(f"Called from my_global_subscriber from scenario '{scenario.config_name}' and job for task '{job.task.config_name}'.")
+            print(f"Called from my_global_subscriber from scenario '{scenario.config_id}' and job for task '{job.task.config_id}'.")
 
         def my_subscriber(scenario, job):
-            print(f"Called from my_subscriber from scenario '{scenario.config_name}' and job for task '{job.task.config_name}'.")
+            print(f"Called from my_subscriber from scenario '{scenario.config_id}' and job for task '{job.task.config_id}'.")
 
         task_1 = tp.configure_task("my_task_1", do_nothing)
         task_2 = tp.configure_task("my_task_2", do_nothing)
@@ -181,11 +180,11 @@ or you can specify the scenario or pipeline by passing it as a parameter.
         tp.unsubscribe_scenario(my_global_subscriber, scenario_1)
         print('Submit: scenario_1)
         tp.submit(scenario_1)
-    ```
+```
 
-    This example will produce the following output:
+This example will produce the following output:
 
-    ```
+```
     Submit: scenario_1
     Called from my_global_subscriber from scenario 'my_scenario_1' and job for task 'my_task_1'.
     Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_1'.
@@ -196,4 +195,4 @@ or you can specify the scenario or pipeline by passing it as a parameter.
     Submit: scenario_1
     Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_1'.
     Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_2'.
-    ```
+```
