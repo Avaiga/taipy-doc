@@ -17,11 +17,9 @@ business problems.
 
 [:material-arrow-right: Definition of Taipy core concepts](core/concepts/about.md),
 
-[:material-arrow-right: Documentation on the python configuration](core/user_core_configuration.md),
+[:material-arrow-right: Documentation on the python configuration](core/config/about.md),
 
-[:material-arrow-right: Documentation on toml configuration](core/user_core_advanced_configuration.md),
-
-[:material-arrow-right: Description of Taipy core features](core/user_core_features.md)
+[:material-arrow-right: Description of Taipy core features](core/features/about.md)
 
 
 ## Graphical User Interface

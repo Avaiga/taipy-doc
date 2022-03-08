@@ -25,13 +25,13 @@ called _master scenario_. There is only one _master scenario_ per cycle.
     For that, I promote my low capacity scenario as master for the February cycle.
 
     The tree of entities resulting from the various scenarios created is represented on the following picture.
-    ![cycles](../cycles_grey.svg){ width="250" }
+    ![cycles](pic/cycles_grey.svg){ width="250" }
 
 
 The attributes of a scenario (the set of pipelines, the cycle, ... ) are populated based on the scenario configuration
 ([`ScenarioConfig`](../../../reference/#taipy.core.config.scenario_config.ScenarioConfig)) that
 must be provided when instantiating a new scenario. (Please refer to the
-[`configuration details`](../user_core_configuration.md#scenario-configuration) documentation for more
+[`configuration details`](../config/scenario-config.md) documentation for more
 details on configuration).
 
 

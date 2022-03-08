@@ -12,13 +12,13 @@ Each parameter and each result is modeled as a data node.
 The attributes of a task (the input data nodes, the output data nodes, the python function) are populated based on
 the task configuration ([`TaskConfig`](../../../reference/#taipy.core.config.task_config.TaskConfig)) that
 must be provided when instantiating a new task. (Please refer to the
-[`configuration details`](../user_core_configuration.md#task-configuration) documentation for more
+[`configuration details`](../config/task-config) documentation for more
 details on configuration).
 
 !!! example "In our example"
     We create three tasks:
 
-    ![tasks and data nodes](../tasks_and_data_nodes.svg){ align=left }
+    ![tasks and data nodes](pic/tasks_and_data_nodes.svg){ align=left }
 
     The first is the training task that takes the sales history as the input data node and returns the trained model as
     the output data node.

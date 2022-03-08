@@ -22,12 +22,23 @@ file and the python class used for the deserialization.
     trained model, one for the current month, one for the sales predictions, one for the capacity of production,
     and one for the production orders.
 
-The various attributes that depend on the storage type (like sql query, file path, credentials, ...) are populated based
-on the data node configuration
+!!! Note
+
+    Taipy proposes various predefined _data nodes_ corresponding to the most popular _storage types_. More details
+    on the [Data node configuration page](../config/data-node-config.md)
+
+    For example, the sales history comes from our company record system, so we do not control its storage type. We
+    got the data as a CSV file. We can use a predefined CSV _data node_ to model the sales history.
+
+    Concerning the production orders _data node_, we want to write the data into a database shared by other
+    systems. We can use an SQL _data node_ to model the production orders.
+
+    We have no particular specification for the other data nodes. We can use the default storage type: Pickle.
+
+The data node's attributes are populated based on the data node configuration
 ([`DataNodeConfig`](../../../reference/#taipy.core.config.data_node_config.DataNodeConfig))
 that must be provided when instantiating a new data node. (Please refer to the
-[`configuration details`](../user_core_configuration.md#data-node-configuration) documentation for more
+[`configuration details`](../config/data-node-config.md) documentation for more
 details on configuration).
-
 
 [:material-arrow-right: Next section introduces the Task concept](task.md).

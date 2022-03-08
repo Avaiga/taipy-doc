@@ -16,14 +16,14 @@ _pipeline_ for computing a training model, and a _pipeline_ dedicated to scoring
     Indeed, the two pipelines could represent two different workflows that can be run
     independently, on different schedule or by different users.
 
-    ![pipelines](../pipelines.svg){ align=left }
+    ![pipelines](pic/pipelines.svg){ align=left }
 
 Note that the various pipelines do not require to be disjointed.
 
 The attributes of a pipeline (the set of tasks) are populated based on the pipeline configuration
 ([`PipelineConfig`](../../../reference/#taipy.core.config.pipeline_config.PipelineConfig)) that
 must be provided when instantiating a new pipeline. (Please refer to the
-[`configuration details`](../user_core_configuration.md#pipeline-configuration) documentation for more
+[`configuration details`](../config/pipeline-config.md) documentation for more
 details on configuration).
 
 

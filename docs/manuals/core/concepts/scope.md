@@ -27,7 +27,7 @@ cycles.
     In our example with two pipelines, we have multiple possibilities. The following pictures represent two examples.
     The scopes are written in green at the bottom of each data node.
 
-    ![scopes](../storage_types and scopes_basic_possibility.svg){ align=left }
+    ![scopes](pic/storage_types and scopes_basic_possibility.svg){ align=left }
 
     The first picture represents the basic case. We let Taipy apply the default scope (`Scope.PIPELINE`) for most
     data nodes. However, as you can see, the `sales predictions` data node is shared by the two pipelines
@@ -48,4 +48,6 @@ cycles.
     - Finally, since I have multiple scenarios to simulate various capacities for a single cycle, the capacity
     and the production orders data nodes must have a `Scope.SCENARIO` scope, so multiple scenarios do not share them.
 
-    ![scopes](../storage_types_and_scopes.svg){ align=left }
+    ![scopes](pic/storage_types_and_scopes.svg){ align=left }
+
+[:material-arrow-right: Next section introduces the COre configuration.](../config/about.md)
