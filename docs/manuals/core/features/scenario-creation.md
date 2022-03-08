@@ -7,7 +7,7 @@ do not exist yet. Indeed, if the scenario has a frequency, the corresponding cyc
 it does not exist yet. Similarly, the pipelines, tasks, and data nodes nested in the scenario are created
 if they do not exist yet.
 
-The simplest way of creating a scenario is to call the `create_scenario` methods providing the scenario
+The simplest way of creating a scenario is to call the `tp.create_scenario()^` method providing the scenario
 configuration as a parameter:
 
 ```python linenums="1"

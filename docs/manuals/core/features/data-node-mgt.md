@@ -26,49 +26,47 @@ The first method to get a **data node** is from its id using the
 
 !!! Example
 
-```python linenums="1"
-import taipy as tp
+    ```python linenums="1"
+    import taipy as tp
 
-        # Retrieve a data node by its id
-        data_node = tp.get(data_node_id)
-
-```
+    # Retrieve a data node by its id
+    data_node = tp.get(data_node_id)
+    ```
 
 The data nodes that are part of a **scenario** or **pipeline** can be directly accessed on their levels:
 
 !!! Example
 
-```python linenums="1"
-import taipy as tp
-from config import \*
+    ```python linenums="1"
+    import taipy as tp
+    from config import *
 
-        # Creating a scenario from a config
-        scenario = tp.create_scenario(monthly_scenario_cfg)
+    # Creating a scenario from a config
+    scenario = tp.create_scenario(monthly_scenario_cfg)
 
-        # Access the data node from a scenario
-        scenario.sales_history
+    # Access the data node from a scenario
+    scenario.sales_history
 
-        # Access the pipeline from a scenario
-        scenario.sales
+    # Access the pipeline from a scenario
+    scenario.sales
 
-        # Access the data node from a pipeline
-        scenario.sales.sales_history
-
-```
+    # Access the data node from a pipeline
+    scenario.sales.sales_history
+    ```
 
 All the data nodes can be retrieved using the method
 [`taipy.get_data_nodes`](../../../reference/#taipy.core.taipy.get_data_nodes). This method returns a list of
 all existing data nodes.
 
 !!! Example
-```python linenums="1"
-import taipy as tp
 
-        # Retrieve a data node by its id
-        data_nodes = tp.get_data_nodes()
+    ```python linenums="1"
+    import taipy as tp
 
-        data_nodes #[DataNode 1, DataNode 2, ..., DataNode N]
+    # Retrieve a data node by its id
+    data_nodes = tp.get_data_nodes()
 
+    data_nodes #[DataNode 1, DataNode 2, ..., DataNode N]
     ```
 
 # Read data node
@@ -78,15 +76,16 @@ To read the content of a data node you can use the
 method. The read method returns the data stored on the data node according to the type of data node:
 
 !!! Example
-```python linenums="1"
-import taipy as tp
 
-        # Retrieve a data node by its id
-        data_node = tp.get(data_node_id)
+    ```python linenums="1"
+    import taipy as tp
 
-        # Returns the content stored on the data node
-        data_node.read()
-```
+    # Retrieve a data node by its id
+    data_node = tp.get(data_node_id)
+
+    # Returns the content stored on the data node
+    data_node.read()
+    ```
 
 Is also possible to read partially the contents of data node, usefully when dealing with large amounts of data.
 This can be achieved using the [`data_node.filter()`](../../../reference/#taipy.core.data.data_node.DataNode.filter)
@@ -112,20 +111,19 @@ parameter and writes it on the data node:
 
 !!! Example
 
-```python linenums="1"
-import taipy as tp
+    ```python linenums="1"
+    import taipy as tp
 
-        # Retrieve a data node by its id
-        data_node = tp.get(data_node_id)
+    # Retrieve a data node by its id
+    data_node = tp.get(data_node_id)
 
-        data = [{"a": "1", "b": "2"}, {"a": "3", "b": "4"}]
+    data = [{"a": "1", "b": "2"}, {"a": "3", "b": "4"}]
 
-        # Writes the dictionary on the data node
-        data_node.write(data)
+    # Writes the dictionary on the data node
+    data_node.write(data)
 
-        # returns the new data stored on the data node
-        data_node.read()
-```
+    # returns the new data stored on the data node
+    data_node.read()
+    ```
 
 [:material-arrow-right: Next section show the scheduling and job execution features](scheduling-and-job-execution.md).
-```

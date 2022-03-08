@@ -1,11 +1,11 @@
 For Taipy to instantiate a [Data node](../concepts/data-node.md), a data node configuration must be provided. The
 [`DataNodeConfig`](../../../reference/#taipy.core.config.data_node_config.DataNodeConfig) is
-used to configure the various data nodes Taipy will manipulate. To configure a new `DataNodeConfig`, you can use
-the `taipy.configure_data_node()` method.
+used to configure the various data nodes Taipy will manipulate. To configure a new `DataNodeConfig^`, you can use
+the `taipy.configure_data_node()^` method.
 
 ```python linenums="1"
-    import taipy as tp
-    data_node_cfg = tp.configure_data_node(id="data_node_cfg")
+import taipy as tp
+data_node_cfg = tp.configure_data_node(id="data_node_cfg")
 ```
 
 On the previous code, we configure a simple data node just providing an identifier as a string "data_node_cfg".
@@ -13,8 +13,7 @@ On the previous code, we configure a simple data node just providing an identifi
 More optional attributes are available on data nodes. Here is the list of attributes:
 
 -   The config `id` is the identifier of the data node config. It is a **mandatory** parameter
-    that must be unique. We strongly recommend using lowercase alphanumeric characters, dash character '-', or
-    underscore character '\_' (a name compatible with a python variable name).
+    that must be unique. It must be a valid Python variable name.
 
 -   The `scope` attribute is from type [`Taipy.Scope`](../../../reference/#taipy.core.data.scope.Scope).
     It corresponds to the [scope](../concepts/scope.md) of the data node that will be instantiated from the data node
@@ -81,7 +80,7 @@ Each predefined data node is describe in a subsequent section.
 
 A [PickleDataNode](../../../reference/#taipy.core.data.pickle.PickleDataNode) is a specific data node used to model
 pickle data.
-To add a new _pickle_ data node configuration, the `taipy.configure_pickle_data_node` method can be used. In
+To add a new _pickle_ data node configuration, the `taipy.configure_pickle_data_node()^` method can be used. In
 addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), two optional parameters can be provided.
 
@@ -184,15 +183,15 @@ In addition to the generic parameters described in the previous section
     file. If `exposed_type` is not provided, the data node will read the Excel file as a pandas DataFrame.
 
 ```python linenums="1"
-   import taipy as tp
-   from taipy import Scope
+import taipy as tp
+from taipy import Scope
 
-   date_cfg = tp.configure_excel_data_node(id="historical_temperature", path="path/hist_temp.xlsx", has_header=True, exposed_type="numpy")
+date_cfg = tp.configure_excel_data_node(id="historical_temperature", path="path/hist_temp.xlsx", has_header=True, exposed_type="numpy")
 
-   model_cfg = tp.configure_excel_data_node(id="sale_history",
-                                             path="path/sale_history.xlsx",
-                                             sheet_name=["January", "February"]
-                                             exposed_type=SaleRow)
+model_cfg = tp.configure_excel_data_node(id="sale_history",
+                                         path="path/sale_history.xlsx",
+                                         sheet_name=["January", "February"]
+                                         exposed_type=SaleRow)
 ```
 
 In line 4, we configure an Excel data node. The `id` identifier is "historical_temperature". Its `scope` is
@@ -263,10 +262,10 @@ provided.
     be used to write the data.
 
 ```python linenums="1"
-    import taipy as tp
-    from taipy import Scope
+import taipy as tp
+from taipy import Scope
 
-    date_cfg = tp.configure_generic_data_node(id="historical_data", read_fct=read_data, write_fct=write_data)
+date_cfg = tp.configure_generic_data_node(id="historical_data", read_fct=read_data, write_fct=write_data)
 ```
 
 In this small example, we configure a generic data node with the id "historical_data". We provide two

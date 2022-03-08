@@ -24,7 +24,6 @@ submitted.
         scenario = tp.create_scenario(monthly_scenario_cfg)
         pipeline = scenario.sales_pipeline
         scenario.submit()
-        pipeline.submit()
     ```
 
 You can also submit just a single pipeline with the same [`tp.submit`](../../../reference/#taipy.core.taipy.submit)
@@ -98,7 +97,7 @@ deletion with the _force_ parameter set to `True`: `tp.delete_job(job, force=Tru
 
 !!! Example
 
-```python linenums="1"
+    ```python linenums="1"
     import taipy as tp
 
     def double(nb):
@@ -123,14 +122,14 @@ deletion with the _force_ parameter set to `True`: `tp.delete_job(job, force=Tru
     # Then delete it.
     tp.delete_job(scenario.double_task)
     print(f'(3) Number of job: {len(tp.get_jobs())}.')
-```
+    ```
 
 This example will produce the following output:
 
 ```
-    (1) Number of job: 0.
-    (2) Number of job: 1.
-    (3) Number of job: 0.
+(1) Number of job: 0.
+(2) Number of job: 1.
+(3) Number of job: 0.
 ```
 
 # Subscribe to job execution

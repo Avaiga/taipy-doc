@@ -16,29 +16,29 @@ A pipeline also holds various properties accessible as an attribute of the pipel
 !!! Example
 
     ```python linenums="1"
-        import taipy as tp
-        from datetime import datetime
-        from config import *
+    import taipy as tp
+    from datetime import datetime
+    from config import *
 
-        pipeline = tp.create_pipeline(sales_pipeline_cfg,name="Pipeline for sales prediction")
+    pipeline = tp.create_pipeline(sales_pipeline_cfg,name="Pipeline for sales prediction")
 
-        # The config_id is an attribute of the pipeline and equals "pipeline_configuration"
-        pipeline.config_id
-        # There was no subscription, so subscribers is an empty list
-        pipeline.subscribers # []
-        # The properties dictionary equals {"name": "Pipeline for sales prediction"}. It contains all the properties,
-        # including the `name` provided at the creation
-        pipeline.properties # {"name": "Pipeline for sales prediction"}
-        # The `name` property is also exposed directly as an attribute. It equals "Pipeline for sales prediction"
-        pipeline.name
-        # The training task entity is exposed as an attribute of the pipeline
-        training_task = pipeline.training
-        # The predicting task entity as well
-        predicting_task = pipeline.predicting
-        # All the tasks are also exposed as attributes, including the training task entity
-        training_task = pipeline.training
-        # The data nodes are also exposed as attributes of the pipeline.
-        current_month_data_node = pipeline.current_month
+    # The config_id is an attribute of the pipeline and equals "pipeline_configuration"
+    pipeline.config_id
+    # There was no subscription, so subscribers is an empty list
+    pipeline.subscribers # []
+    # The properties dictionary equals {"name": "Pipeline for sales prediction"}. It contains all the properties,
+    # including the `name` provided at the creation
+    pipeline.properties # {"name": "Pipeline for sales prediction"}
+    # The `name` property is also exposed directly as an attribute. It equals "Pipeline for sales prediction"
+    pipeline.name
+    # The training task entity is exposed as an attribute of the pipeline
+    training_task = pipeline.training
+    # The predicting task entity as well
+    predicting_task = pipeline.predicting
+    # All the tasks are also exposed as attributes, including the training task entity
+    training_task = pipeline.training
+    # The data nodes are also exposed as attributes of the pipeline.
+    current_month_data_node = pipeline.current_month
     ```
 
 # Get pipeline by id

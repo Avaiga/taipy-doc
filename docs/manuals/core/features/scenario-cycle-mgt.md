@@ -20,33 +20,33 @@ A scenario also holds various properties accessible as an attribute of the scena
 !!! Example
 
     ```python linenums="1"
-        import taipy as tp
-        from datetime import datetime
-        from config import *
+    import taipy as tp
+    from datetime import datetime
+    from config import *
 
-        scenario = tp.create_scenario(monthly_scenario_cfg, creation_date=datetime(2022, 1, 1), name="Scenario for January")
+    scenario = tp.create_scenario(monthly_scenario_cfg, creation_date=datetime(2022, 1, 1), name="Scenario for January")
 
-        # the config_id is an attribute of the scenario and equals "scenario_configuration"
-        scenario.config_id
-        # The creation date is the date-time provided at the creation. It equals datetime(2022, 1, 1)
-        scenario.creation_date
-        # Is_master property equals `True` since it is the only scenario of the cycle.
-        scenario.is_master
-        # There was no subscription, so subscribers is an empty list
-        scenario.subscribers # []
-        # The properties dictionary equals {"name": "Scenario for January"}. It contains all the properties,
-        # including the `name` provided at the creation
-        scenario.properties # {"name": "Scenario for January"}
-        # The `name` property is also exposed directly as an attribute. It equals "Scenario for January"
-        scenario.name
-        # the sales pipeline entity is exposed as an attribute of the scenario
-        sales_pipeline = scenario.sales
-        # the production pipeline entity as well
-        production_pipeline = scenario.production
-        # All the tasks are also exposed as attributes, including the training task entity
-        training_task = scenario.training
-        # The six data nodes are also exposed as attributes of the scenario.
-        current_month_data_node = scenario.current_month
+    # the config_id is an attribute of the scenario and equals "scenario_configuration"
+    scenario.config_id
+    # The creation date is the date-time provided at the creation. It equals datetime(2022, 1, 1)
+    scenario.creation_date
+    # Is_master property equals `True` since it is the only scenario of the cycle.
+    scenario.is_master
+    # There was no subscription, so subscribers is an empty list
+    scenario.subscribers # []
+    # The properties dictionary equals {"name": "Scenario for January"}. It contains all the properties,
+    # including the `name` provided at the creation
+    scenario.properties # {"name": "Scenario for January"}
+    # The `name` property is also exposed directly as an attribute. It equals "Scenario for January"
+    scenario.name
+    # the sales pipeline entity is exposed as an attribute of the scenario
+    sales_pipeline = scenario.sales
+    # the production pipeline entity as well
+    production_pipeline = scenario.production
+    # All the tasks are also exposed as attributes, including the training task entity
+    training_task = scenario.training
+    # The six data nodes are also exposed as attributes of the scenario.
+    current_month_data_node = scenario.current_month
     ```
 
 Taipy exposes multiple methods to manage the various scenarios.
