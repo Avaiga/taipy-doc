@@ -346,11 +346,11 @@ def build_entry_to_package(hide_warnings):
                 elif not hide_warnings:
                     print(f"WARNING - Couldn't extract doc summary for {e.__name__} in {e.__module__}", flush=True)
             key = (e.__module__, entry, entry_type, doc)
-            if key in entry_to_package:
+            if key in entry_to_package.keys():
                 if e.__module__ != module.__name__:
                     # Keep the top-most package
-                    if e.__module__.startswith(module.__name__):
-                        entry_to_package[key]  = module.__name__
+                    if e.__module__.startswith(module.__name__ + ".") and entry_to_package[key].startswith(module.__name__ + "."):
+                        entry_to_package[key] = module.__name__
             else:
                 if doc is None and not hide_warnings:
                     print(f"WARNING - {e.__name__} [in {e.__module__}] has no doc", flush=True)
@@ -359,10 +359,7 @@ def build_entry_to_package(hide_warnings):
     # in the ROOT_PACKAGE.
     # The only workaround at this point is to try to call this function a few
     # times... until we spot it.
-    for _, package in entry_to_package.items():
-        if package == ROOT_PACKAGE:
-            return entry_to_package
-    return None
+    return entry_to_package if ROOT_PACKAGE in entry_to_package.values() else None
 
 MAX_RETRIES=15
 retries = 0
