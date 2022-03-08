@@ -11,7 +11,7 @@
 
 !!! info "Licence"
 
-    Taipy is a free software under [MIT](https://tlo.mit.edu/learn-about-intellectual-property/software-and-open-source-licensing) Licence
+    Taipy is a free software under [MIT](https://tlo.mit.edu/learn-about-intellectual-property/software-and-open-source-licensing) Licence.
 
 !!! abstract "TODO: fix PYPI package or version link"
 
@@ -61,7 +61,7 @@ Taipy documentation:
 
 ## Code documentation (Reference Manual)
 
-Code is copied from different repositories in order to be processed.
+Code is copied from different repositories to be processed.
 
 ## User documentation (User Manuals)
 

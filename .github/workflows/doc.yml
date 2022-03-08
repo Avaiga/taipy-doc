@@ -39,9 +39,9 @@ jobs:
         run: |
           (cd taipy-gui;tar cf - taipy gui)|tar xf -
           rm -rf taipy-gui
-      - name: Generate Visual Elements doc
+      - name: Pre-process root package and GUI doc
         run: |
-          pipenv run python tools/generate_viselements.py
+          pipenv run python tools/setup_generation.py
       - name: Build doc and deploy
         run: |
           pipenv run mkdocs gh-deploy --force
