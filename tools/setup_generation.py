@@ -341,6 +341,7 @@ restore_top_package_location()
 # Group entries by package
 package_to_entries = {}
 for entry, package in entry_to_package.items():
+    print(f"FLE - Entry {entry} -> {package}")
     if package in package_to_entries:
         package_to_entries[package].append(entry)
     else:
