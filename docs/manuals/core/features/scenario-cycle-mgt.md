@@ -6,7 +6,7 @@ A scenario also holds various properties accessible as an attribute of the scena
 
 -   `scenario.config_name` is the name of the scenario configuration.
 -   `scenario.creation_date` corresponds to the date-time provided at the creation.
--   `scenario.is_master` equals True if it is a master scenario. False otherwise.
+-   `scenario.is_official` equals True if it is an official scenario. False otherwise.
 -   `scenario.subscribers` is the list of callbacks representing the subscribers.
 -   `scenario.properties` is the complete dictionary of the scenario properties. It includes a copy of
     the properties of the scenario configuration, in addition to the properties provided at the creation and at runtime.
@@ -30,8 +30,8 @@ A scenario also holds various properties accessible as an attribute of the scena
         scenario.config_name
         # The creation date is the date-time provided at the creation. It equals datetime(2022, 1, 1)
         scenario.creation_date
-        # Is_master property equals `True` since it is the only scenario of the cycle.
-        scenario.is_master
+        # The is_official property equals `True` since it is the only scenario of the cycle.
+        scenario.is_official
         # There was no subscription, so subscribers is an empty list
         scenario.subscribers # []
         # The properties dictionary equals {"name": "Scenario for January"}. It contains all the properties,
@@ -73,19 +73,19 @@ All the scenarios can be retrieved using the method [`taipy.get_scenarios`](../.
 This method returns the list of all existing scenarios. If a cycle is given as parameter, the list contains all the
 existing scenarios of the cycle.
 
-# Get master scenarios
+# Get official scenarios
 
-[`taipy.get_master`](../../../reference/#taipy.core.taipy.get_master) method returns the master scenario of the cycle
+[`taipy.get_official`](../../../reference/#taipy.core.taipy.get_official) method returns the official scenario of the cycle
 given as parameter.
 
-[`taipy.get_all_masters`](../../../reference/#taipy.core.taipy.get_all_masters) returns the master scenarios for
+[`taipy.get_all_official`](../../../reference/#taipy.core.taipy.get_all_official) returns the official scenarios for
 all the existing cycles.
 
-# Promote a scenario as master
+# Promote a scenario as official
 
-To set a scenario as master, the [`taipy.set_master`](../../../reference/#taipy.core.taipy.set_master) method must
-be used. It promotes the scenario given as parameter to the master scenario of its cycle. If the cycle already
-had a master scenario it will be demoted, and it will no longer be master for the cycle.
+To set a scenario as official, the [`taipy.set_official`](../../../reference/#taipy.core.taipy.set_official) method must
+be used. It promotes the scenario given as parameter to the official scenario of its cycle. If the cycle already
+had an official scenario it will be demoted, and it will no longer be official for the cycle.
 
 # Delete a scenario
 
