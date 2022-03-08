@@ -1,8 +1,8 @@
-# Taipy API packages
+# Taipy Python API packages
 
-Taipy is made of different packages.
+Taipy is made of different Python packages.
 
-The API reference for Taipy is therefore split in several sections.
+The API reference for Taipy is therefore split into several sections.
 
    - [`taipy`](reference/pkg_taipy.md): The main package of Taipy.
 
