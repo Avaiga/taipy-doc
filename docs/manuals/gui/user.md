@@ -26,7 +26,7 @@ The basic principle is that you create pages as you need them, give them a name
 so you can indicate to your browser how to access these pages and provide these pages to a `Gui` instance used in your
 application.
 
-When the `Gui.run()^` method of the `Gui^` instance is invoked, a Web client can connect to the underlying Web
+When the `(Gui.)run()^` method of the `Gui^` instance is invoked, a Web client can connect to the underlying Web
 server and request for a given page. At this time, Taipy transforms the page that you had created into some HTML
 content that is sent to the client so the user can see the application interface.
 
