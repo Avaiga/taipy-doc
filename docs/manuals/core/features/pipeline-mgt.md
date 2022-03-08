@@ -8,12 +8,10 @@ A pipeline also holds various properties accessible as an attribute of the pipel
 - `pipeline.config_id`: The id of the pipeline configuration.
 - `pipeline.subscribers`: The list of callbacks representing the subscribers.
 - `pipeline.properties`: The complete dictionary of the pipeline properties. It includes a copy of the properties of the pipeline configuration, in addition to the properties provided at the creation and at runtime.
-- `pipeline.tasks`: The dictionary holding the various tasks of the pipeline. The key corresponds to the config_id
-    of the task while the value is the task itself.
+- `pipeline.tasks`: The dictionary holding the various tasks of the pipeline. The key corresponds to the config_id of the task while the value is the task itself.
 - `pipeline.parent_id`: The identifier of the parent, which can be a pipeline, scenario, cycle or None.
 - Each property of the `pipeline.properties` dictionary is also directly exposed as an attribute.
-- Each nested entity is also exposed as an attribute of the pipeline. the attribute name corresponds to the *config_id*
-    of the nested entity.
+- Each nested entity is also exposed as an attribute of the pipeline. the attribute name corresponds to the *config_id* of the nested entity.
 
 !!! Example
 
