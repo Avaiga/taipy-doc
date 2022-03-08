@@ -287,10 +287,8 @@ REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 entry_to_package  = {}
 potential_types = set()
 def read_module(module):
-    print(f"FLE - ENTERING read_module({module})")
     if not module.__name__.startswith(ROOT_PACKAGE):
         return
-    print(f"     -> {dir(module)}")
     for entry in dir(module):
         # Private?
         if entry.startswith("_"):
@@ -307,17 +305,13 @@ def read_module(module):
             # Not in our focus package?
             if not e.__module__.startswith(ROOT_PACKAGE):
                 continue
-        print(f"... entry {entry}")
         # Not a function or a class?
         entry_type = None
         if isclass(e):
-            print("         is a CLASS")
             entry_type = CLASS_ID
         elif isfunction(e):
-            print("         is a FUNCTION")
             entry_type = FUNCTION_ID
         elif ismodule(e):
-            print("         is a MODULE")
             read_module(e)
         if not entry_type:
             continue
@@ -339,9 +333,6 @@ def read_module(module):
             if doc is None:
                 print(f"WARNING - {e.__name__} [in {e.__module__}] has no doc", flush=True)
             entry_to_package[key] = module.__name__
-            print(f"FLE - entry_to_package[{key}]={module.__name__}")
-    print(f"FLE - EXITING read_module({module})")
-
 
 read_module(__import__(ROOT_PACKAGE))
 
@@ -350,7 +341,6 @@ restore_top_package_location()
 # Group entries by package
 package_to_entries = {}
 for entry, package in entry_to_package.items():
-    print(f"FLE - Entry {entry} -> {package}")
     if package in package_to_entries:
         package_to_entries[package].append(entry)
     else:
@@ -382,7 +372,6 @@ for package in sorted(package_to_entries.keys()):
                                     + f"{'()' if type == FUNCTION_ID else ''}`]({package}.{name}.md)"
                                     + f"{': '+entry[3] if entry[3] else ' - NOT DOCUMENTED'}\n")
             output_path = os.path.join(REFERENCE_DIR_PATH, f"{package}.{name}.md")
-            print(f"INFO - Generating entry in {output_path} [{type}]")
             with open(output_path, "w") as output_file:
                 output_file.write("---\nhide:\n  - navigation\n---\n\n"
                                 + f"::: {package}.{name}\n")
@@ -390,7 +379,6 @@ for package in sorted(package_to_entries.keys()):
                 print(f"ERROR - {'Function' if type == FUNCTION_ID else 'Class'} {name} already declared in {xrefs[name]}")
             xrefs[name] = (package, entry[0])
 
-    print(f"INFO - Generating package in {package_output_path}")
     with open(package_output_path, "w") as package_output_file:
         package_output_file.write(f"## Package: {package}\n\n")
         if functions:
