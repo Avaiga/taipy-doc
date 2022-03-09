@@ -1,7 +1,7 @@
 For Taipy to instantiate a [Data node](../concepts/data-node.md), a data node configuration must be provided. The
 [`DataNodeConfig`](../../../reference/#taipy.core.config.data_node_config.DataNodeConfig) is
 used to configure the various data nodes Taipy will manipulate. To configure a new `DataNodeConfig^`, you can use
-the `taipy.configure_data_node()^` method.
+the `configure_data_node()^` method.
 
 ```python linenums="1"
 import taipy as tp
