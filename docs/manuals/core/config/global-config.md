@@ -12,14 +12,14 @@ It is used in conjunction with the root_folder field. That means the storage pat
 - `properties`: The dictionary of additional properties.
 
 ```python linenums="1"
-    import taipy as tp
+import taipy as tp
 
-    tp.configure_global_app(
-        root_folder=".taipy_root_folder/",
-        storage_folder=".data_folder",
-        clean_entities_enabled=True,
-        properties={"custom_property": False}
-        )
+tp.configure_global_app(
+    root_folder=".taipy_root_folder/",
+    storage_folder=".data_folder",
+    clean_entities_enabled=True,
+    properties={"custom_property": False}
+    )
 ```
 
 [:material-arrow-right: Next section introduces the job scheduling configuration](job-config.md).

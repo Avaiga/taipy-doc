@@ -89,10 +89,7 @@ def on_post_build(env):
             xrefs = json.load(xrefs_file)
     if xrefs is None:
         log.error(f"Could not find xrefs in /manuals/xrefs")
-    #FLE log.info(f"XRefs: {xrefs}")
-    log.info(f"Site dir: {site_dir}")
     ref_files_path = os.path.join(site_dir, "manuals", "reference")
-    log.info(f"ref_files_path: {ref_files_path}")
     for root, _, file_list in os.walk(site_dir):
         for f in file_list:
             # Post-process generated '.html' files
@@ -133,10 +130,19 @@ def on_post_build(env):
                         groups = xref.groups()
                         entry = groups[1]
                         method = groups[2]
-                        (package, orig_package) = xrefs.get(entry)
-                        if package is None:
-                            log.warning(f"Unresolve crossref {entry} found in {filename}")
+                        packages = xrefs.get(entry)
+                        if packages is None:
+                            (dir, file) = os.path.split(filename)
+                            (dir, dir1) = os.path.split(dir)
+                            (dir, dir2) = os.path.split(dir)
+                            if file == "index.html":
+                                (dir, dir3) = os.path.split(dir)
+                                log.error(f"Unresolve crossref '{entry}' found in {dir3}/{dir2}/{dir1}.md")
+                            else:
+                                log.error(f"Unresolve crossref '{entry}' found in {dir2}/{dir1}/{file}")
                             continue
+                        package = packages[0]
+                        orig_package = packages[0]
                         new_content += html_content[last_location:xref.start()]
                         new_content += f"<a href=\"{rel_path}/{package}.{entry}"
                         if method:
