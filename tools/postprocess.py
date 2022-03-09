@@ -10,6 +10,11 @@
 #       doc page.
 #   `(ClassName.)methodName(*)^`
 #       generates a link from `methodName(*)` to the method doc page.
+#   `package.functionName(*)^`
+#       generates a link from `functionName` to the function doc page
+#   `(package.)functionName(*)^`
+#       generates a link from `functionName` to the function doc page,
+#       hiding the package.
 # ######################################################################
 import os
 import re
@@ -140,13 +145,15 @@ def on_post_build(env):
                         # (class_name.)method_name -> '(', class_name, method_name, *
                         entry = groups[1]
                         method = groups[2]
+                        if method and not groups[0]: # Remove leading '.'
+                            method = method[1:]
                         # Function in package? Or method in class?
                         packages  = [entry, None] if entry in x_packages else xrefs.get(entry)
                         if packages is None:
                             (dir, file) = os.path.split(filename)
                             (dir, dir1) = os.path.split(dir)
                             (dir, dir2) = os.path.split(dir)
-                            message = f"Unresolve crossref '{groups[0]}' found in "
+                            message = f"Unresolve crossref '{xref.group(0)}' found in "
                             if file == "index.html":
                                 (dir, dir3) = os.path.split(dir)
                                 log.error(f"{message}{dir3}/{dir2}/{dir1}.md")
@@ -156,16 +163,21 @@ def on_post_build(env):
                         package = packages[0]
                         orig_package = packages[1]
                         new_content += html_content[last_location:xref.start()]
-                        new_content += f"<a href=\"{rel_path}/{package}.{entry}"
-                        if method:
-                            if not groups[0]:
-                                method = method[1:]
-                            new_content += f"/index.html#{orig_package}.{entry}.{method}\"><code>"
-                            if not groups[0]:
-                                new_content += f"{entry}."
-                            new_content += f"{method}"
+                        new_content += f"<a href=\"{rel_path}/{package}."
+                        if orig_package:
+                            new_content += f"{entry}"
+                            if method:
+                                new_content += f"/index.html#{orig_package}.{entry}.{method}\"><code>"
+                                if not groups[0]:
+                                    new_content += f"{entry}."
+                                new_content += f"{method}"
+                            else:
+                                new_content += f"\"><code>{entry}"
                         else:
-                            new_content += f"\"><code>{entry}"
+                            new_content += f"{method}/\"><code>"
+                            if not groups[0]:
+                                new_content += f"{package}."
+                            new_content += f"{method}"
                         new_content += f"{groups[3] if groups[3] else ''}</code></a>"
                         last_location = xref.end()
                     if last_location:
