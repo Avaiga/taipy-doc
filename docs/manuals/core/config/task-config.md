@@ -8,7 +8,7 @@ the `taipy.configure_task()^` method with the following parameters:
 - _function_: The function to execute.
 - _outputs_: The function result(s).
 
-Simple example:
+Here is a simple example:
 
 ```python linenums="1"
 import taipy as tp

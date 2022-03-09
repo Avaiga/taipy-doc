@@ -1,5 +1,6 @@
-For Taipy to instantiate a [Data node](../concepts/data-node.md), a data node configuration must be provided. `DataNodeConfig^` is used to configure the various data nodes Taipy will
-manipulate. To configure a new `DataNodeConfig^`, you can use the function `configure_data_node()^`.
+For Taipy to instantiate a [Data node](../concepts/data-node.md), a data node configuration must be provided.
+`DataNodeConfig^` is used to configure the various data nodes Taipy will manipulate. To configure a new
+`DataNodeConfig^`, you can use the function `configure_data_node()^`.
 
 ```python linenums="1"
 import taipy as tp
@@ -11,18 +12,19 @@ On the previous code, we configure a simple data node just providing an identifi
 More optional attributes are available on data nodes. Here is the list of these attributes:
 
    - _id_ is the identifier of the data node config.<br/>
-     It is a **mandatory** parameter that must be unique. It must be a valid Python
-     identifier.
+     It is a **mandatory** parameter that must be unique. It must be a valid Python identifier.
 
 -   _scope_ is a `Scope^`.<br/>
-    It corresponds to the [scope](../concepts/scope.md) of the data node that will be instantiated from the data node configuration. The **default value** is `Scope.SCENARIO`.
+    It corresponds to the [scope](../concepts/scope.md) of the data node that will be instantiated from the data
+    node configuration. The **default value** is `Scope.SCENARIO`.
 
 -   _storage_type_ is an attribute that indicates to the type of storage of the
     data node.<br/>
     The possible values are ["pickle"](#pickle) (**the default value**),
     ["csv"](#csv), ["excel"](#excel), ["sql"](#sql), ["in_memory"](#in-memory), or
     ["generic"](#generic).<br/>
-    As explained in the following subsections, depending on the _storage_type_, other configuration attributes must to be provided in the parameter _properties_ parameter.
+    As explained in the following subsections, depending on the _storage_type_, other configuration attributes must
+    be provided in the parameter _properties_ parameter.
 
 -   Any other custom attribute can be provided through the oaramter _properties_, which is
     a dictionary (a description, a tag, etc.)<br/>
