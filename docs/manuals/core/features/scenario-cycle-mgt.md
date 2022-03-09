@@ -78,7 +78,7 @@ existing scenarios of the cycle.
 [`taipy.get_official`](../../../reference/#taipy.core.taipy.get_official) method returns the official scenario of the cycle
 given as parameter.
 
-[`taipy.get_all_official`](../../../reference/#taipy.core.taipy.get_all_official) returns the official scenarios for
+[`taipy.get_official_scenarios`](../../../reference/#taipy.core.taipy.get_official_scenarios) returns the official scenarios for
 all the existing cycles.
 
 # Promote a scenario as official
