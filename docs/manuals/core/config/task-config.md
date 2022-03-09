@@ -4,8 +4,8 @@ the `taipy.configure_task()^` method with the following parameters:
 
 - _id_: The id of the task configuration to be created. This id is **mandatory** and must be a unique valid Python
     variable name.
-- _inputs_: The inputs of the function.
 - _function_: The function to execute.
+- _inputs_: The inputs of the function.
 - _outputs_: The function result(s).
 
 Here is a simple example:
