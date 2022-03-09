@@ -84,7 +84,7 @@ is equivalent to
 
 !!! info "HTML syntax extensions"
 
-    The HTML text that is given to the `HTML^` page renderer is **not** parsed as pure
+    The HTML text that is given to the `Html^` page renderer is **not** parsed as pure
     HTML. Instead, the page is transformed before it is rendered to HTML and delivered to
     the client. Therefore, Taipy was able to introduce a few changes to the pure HTML syntax
     that make it easier to use in the context of describing Taipy pages.

@@ -2,17 +2,17 @@ A scenario configuration is necessary to instantiate a [Scenario](../concepts/sc
 [`ScenarioConfig`](../../../reference/#taipy.core.config.scenario_config.ScenarioConfig) you can use
 the `taipy.configure_scenario()^` method with the following parameters:
 
-- `id`: The id of new scenario configuration to be created. This id is **mandatory** and must be a unique valid Python
+- _id_: The id of new scenario configuration to be created. This id is **mandatory** and must be a unique valid Python
     variable name.
-- `pipelines`: The list of pipeline configs.
-- `frequency`: The recurrence of the scenarios instantiated from this configuration. Based on this frequency the
+- _pipelines_: The list of pipeline configs.
+- _frequency_: The recurrence of the scenarios instantiated from this configuration. Based on this frequency the
     scenarios will be attached to the right cycles.
-- `comparators`: The list of functions used to compare scenarios. A comparator function is attached to a
+- _comparators_: The list of functions used to compare scenarios. A comparator function is attached to a
     scenario's data node configuration. During the scenarios comparison, each comparator is applied to all the data
 -  nodes instantiated from the data node configuration attached to the comparator.
-- `properties`: The dictionary of additional properties.
+- _properties_: A dictionary of additional properties.
 
-Basic example using the pipeline configuration `pipeline_config` created in the previous example:
+Here is a simple example using the pipeline configuration `pipeline_config` created in the previous example:
 
 ```python linenums="1"
 import taipy as tp
