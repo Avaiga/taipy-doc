@@ -26,6 +26,8 @@ import os
 import warnings
 import re
 import shutil
+from datetime import datetime
+
 import pandas as pd
 import math
 import json
@@ -50,7 +52,7 @@ XREFS_PATH = root_dir + "/docs/manuals/xrefs"
 MKDOCS_YML_TEMPLATE_PATH = root_dir + "/mkdocs.yml_template"
 MKDOCS_YML_PATH = root_dir + "/mkdocs.yml"
 
-# Check that the visual elements documentation is available
+# Check that the visual elements' documentation is available
 if not os.path.isdir(VELEMENTS_SOURCE_PATH):
     raise SystemExit(f"FATAL - Visual elements documentation not found in {VELEMENTS_SOURCE_PATH}")
 
@@ -395,5 +397,8 @@ mkdocs_yml_content = re.sub(r"^\s*\[REFERENCE_CONTENT\]\s*$",
                             navigation,
                             mkdocs_yml_content,
                             flags = re.MULTILINE)
+mkdocs_yml_content = re.sub(r"^\s*\[YEAR\]\s*$",
+                            str(datetime.now().year),
+                            mkdocs_yml_content)
 with open(MKDOCS_YML_PATH, "w") as mkdocs_yml_file:
     mkdocs_yml_file.write(mkdocs_yml_content)

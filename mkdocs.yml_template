@@ -3,7 +3,7 @@ site_name: Taipy
 repo_url: https://github.com/avaiga/taipy
 repo_name: taipy
 #strict: true
-copyright: © 2022 Avaiga
+copyright: © [YEAR] Avaiga
 nav:
   - Home: index.md
   - 'Getting started':
