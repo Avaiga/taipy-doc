@@ -1,8 +1,8 @@
 # Pages
 
 Pages are the base for your user interface. Pages hold text, images, or controls that
-display information that the application needs to publish and ways to interact with
-the application data.
+display information that the application needs to publish and interact with
+the application data through visual elements.
 
 ## Page renderers
 
@@ -29,8 +29,7 @@ with the following steps:
 ### Registering the page
 
 Once you have created an instance of a page renderer for a specified piece of
-text, you can register that page to the [`Gui`](../reference/#taipy.gui.gui.Gui) instance
-used by your application.
+text, you can register that page to the `Gui^` instance used by your application.
 
 ### Viewing the page
 
@@ -147,23 +146,22 @@ be `http://127.0.0.1:5000/`).
 ### Single-page applications
 
 If your application has several pages, you would usually create them with different names,
-so the user can navigate from page to page (using the
-[`Gui.navigate()`](../../reference/#taipy.gui.gui.Gui.navigate) function or the
+so the user can navigate from page to page (using the `navigate()^` function or the
 [`navbar`](../viselements/navbar/) control).<br/>
-You can however still have a root page for your application (with the name: `"/"`).
+However, you can still have a root page for your application (with the name: `"/"`).
 In this situation, Taipy creates a
 [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application)
 for you.
 
 Modern Web applications use this SPA technique: instead of reloading the entire page,
 some processing is performed behind the scene to generate the page that should be
-displayed, transforming the page that is currently shown. This allows for smoother
+displayed, transforming the currently shown page. This allows for smoother
 transitions from page to page and feels like the application was natively developed
 for your runtime environment.<br/>
 Although technically, every Taipy Web application *is* a SPA, this notion makes sense only
 when using several pages.
 
-If your Taipy application has defined a root page, then the content of this page is
+If your Taipy application has defined a _root_ page, then the content of this page is
 generated before the content of the page you need to display. This makes it very easy to
 design an application with the same header (such as a banner and a navigation bar)
 for all its pages.

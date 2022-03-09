@@ -4,20 +4,25 @@ _Visual Elements_ are user interface objects that are displayed on a given page.
 Visual elements reflect some application data or give the page some structuring
 or layout information. Most visual elements let users interact with the page content.
 
-You create visual elements using a specific the Markdown syntax (see the
-[`Markdown`](../../reference/#taipy.gui.renderers.Markdown) class)
-or specific HTML tags (see the [`Html`](../../reference/#taipy.gui.renderers.Html) class).
+You create visual elements using a specific Markdown syntax (see the
+`Markdown^` class) or specific HTML tags (see the `Html^` class).
 
 ## Properties
 
-Every visual element that you can use in a page has a type and a set of properties.
+Every visual element you can use in a page has a type and a set of properties.
 
-Beside those common properties, every control type has a specific set of properties that you
+Besides those common properties, every control type has a specific set of properties that you
 can use, listed in the documentation page for that control type.
+
+## Property name
+
+Every control type has a default property name
+If you want to set the value for this property,
+you can use the short version of the control syntax.
 
 ## Property value
 
-Every property value can be set to a given value, that depends on the property type, or a
+Every property value can be set to a given value that depends on the property type or a
 formatted string literal, also known as an _f-string_. This string may reference variable
 names defined in your code, and the property value becomes the evaluated string.
 
@@ -26,11 +31,6 @@ names defined in your code, and the property value becomes the evaluated string.
     value of any variable in the expression, it will be sent automatically to the
     visual element that uses it.
 
-## Property name
-
-Every control type has a default property name
-If you want to set the value for this property,
-you can use the short version of the control syntax.
 
 ## Syntax
 
@@ -84,11 +84,10 @@ is equivalent to
 
 !!! info "HTML syntax extensions"
 
-    The HTML text that is given to the [HTML](../../reference/#taipy.gui.renderers.Html)
-    page renderer is **not** parsed as pure HTML. Instead, the page is transformed before
-    it is rendered to HTML and delivered to the client. Therefore, Taipy was able to
-    introduce a few changes to the pure HTML syntax that make it easier to use in the
-    context of describing Taipy pages.
+    The HTML text that is given to the `Html^` page renderer is **not** parsed as pure
+    HTML. Instead, the page is transformed before it is rendered to HTML and delivered to
+    the client. Therefore, Taipy was able to introduce a few changes to the pure HTML syntax
+    that make it easier to use in the context of describing Taipy pages.
 
     - Attribute names that be array elements.
       Some visual elements (such as the [`chart`](viselements/chart.md) control) need

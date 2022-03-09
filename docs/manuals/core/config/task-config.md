@@ -2,13 +2,13 @@ A task configuration is necessary to instantiate a [Task](../concepts/task.md). 
 [`TaskConfig`](../../../reference/#taipy.core.config.task_config.TaskConfig) you can use
 the `taipy.configure_task()^` method with the following parameters:
 
--   `id`: The id of the task configuration to be created. This id is **mandatory** and must be a unique valid Python
+- _id_: The id of the task configuration to be created. This id is **mandatory** and must be a unique valid Python
     variable name.
--   `inputs`: The inputs of the function.
--   `function`: The function to execute.
--   `outputs`: The function result(s).
+- _inputs_: The inputs of the function.
+- _function_: The function to execute.
+- _outputs_: The function result(s).
 
-Basic example:
+Here is a simple example:
 
 ```python linenums="1"
 import taipy as tp
