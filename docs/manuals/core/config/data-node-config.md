@@ -1,7 +1,6 @@
-For Taipy to instantiate a [Data node](../concepts/data-node.md), a data node configuration must be provided. The
-[`DataNodeConfig`](../../../reference/#taipy.core.config.data_node_config.DataNodeConfig) is
-used to configure the various data nodes Taipy will manipulate. To configure a new `DataNodeConfig^`, you can use
-the `taipy.configure_data_node()^` method.
+For Taipy to instantiate a [Data node](../concepts/data-node.md), a data node configuration must be provided.
+`DataNodeConfig^` is used to configure the various data nodes Taipy will manipulate. To configure a new
+`DataNodeConfig^`, you can use the function `configure_data_node()^`.
 
 ```python linenums="1"
 import taipy as tp
@@ -10,26 +9,29 @@ data_node_cfg = tp.configure_data_node(id="data_node_cfg")
 
 On the previous code, we configure a simple data node just providing an identifier as a string "data_node_cfg".
 
-More optional attributes are available on data nodes. Here is the list of attributes:
+More optional attributes are available on data nodes. Here is the list of these attributes:
 
--   The config `id` is the identifier of the data node config. It is a **mandatory** parameter
-    that must be unique. It must be a valid Python variable name.
+   - _id_ is the identifier of the data node config.<br/>
+     It is a **mandatory** parameter that must be unique. It must be a valid Python identifier.
 
--   The `scope` attribute is from type [`Taipy.Scope`](../../../reference/#taipy.core.data.scope.Scope).
-    It corresponds to the [scope](../concepts/scope.md) of the data node that will be instantiated from the data node
-    configuration. The **default value** is `Scope.SCENARIO`.
+-   _scope_ is a `Scope^`.<br/>
+    It corresponds to the [scope](../concepts/scope.md) of the data node that will be instantiated from the data
+    node configuration. The **default value** is `Scope.SCENARIO`.
 
--   The storage `storage_type` is a parameter that corresponds to the type of storage of the data node. The possible
-    string values are ["pickle"](#pickle) (**the default value**), ["csv"](#csv), ["excel"](#excel), ["sql"](#sql).
-    ["in_memory"](#in-memory), ["generic"](#generic).
-    As explained in the following subsections, depending on the `storage_type`, other configuration attributes
-    will need to be provided in the `properties` parameter.
+-   _storage_type_ is an attribute that indicates to the type of storage of the
+    data node.<br/>
+    The possible values are ["pickle"](#pickle) (**the default value**),
+    ["csv"](#csv), ["excel"](#excel), ["sql"](#sql), ["in_memory"](#in-memory), or
+    ["generic"](#generic).<br/>
+    As explained in the following subsections, depending on the _storage_type_, other configuration attributes must
+    be provided in the parameter _properties_ parameter.
 
--   Any other custom attribute can be provided through the `properties` dictionary (a description, a tag, etc.)
-    All the properties will be given to the data nodes instantiated from this data node configuration.
-    This `properties` dictionary is also used to configure the parameters specific to each storage type.
+-   Any other custom attribute can be provided through the oaramter _properties_, which is
+    a dictionary (a description, a tag, etc.)<br/>
+    All the properties are given to the data nodes instantiated from this data node configuration.<br/>
+    This dictionary _properties_ is also used to configure the parameters specific to each storage type.
 
-Below two examples of data node configurations.
+Below are two examples of data node configurations.
 
 ```python linenums="1"
 import taipy as tp
@@ -45,19 +47,22 @@ model_cfg = tp.configure_data_node(id="model_cfg",
                                    )
 ```
 
-In line 4, we configure a simple data node with the id "date_cfg". Its `scope` is the default
-value `SCENARIO`. The `storage_type` is also the default value "pickle". We also add an optional custom
-`description`. This property will be passed to the data nodes instantiated from this config.
+In line 4, we configure a simple data node with the id "date_cfg". Its _scope_ has the default
+value Scope.SCENARIO. _storage_type_ also has the default value "pickle".<br/>
+An optional custom property called _description_ is also added: this property is propagated
+to the data nodes instantiated from this config.
 
-Then in line 6, we add another data node configuration with the id "model_cfg". Its `scope` is
-`CYCLE`, so the corresponding data nodes will be shared by all the scenarios from the same cycle. The
-`storage_type` is "pickle" as well, and two optional custom properties are added; a string `description` and
-an integer `code`. These two properties will be passed to the data nodes instantiated from this config.
+Then in line 6, we add another data node configuration with the id "model_cfg". _scope_ is
+set to Scope.CYCLE, so the corresponding data nodes will be shared by all the scenarios from
+the same cycle. _storage_type_ is "pickle" as well, and two optional custom properties are
+added: a _description_ string and an integer _code_. These two properties are propagated to the
+data nodes instantiated from this config.
 
 # Storage type
 
-Taipy proposes various predefined _data nodes_ corresponding to the most popular _storage types_. Thanks to predefined
-_data nodes_, the data scientist developer does not need to spend much time configuring the _storage types_ or the
+Taipy proposes various predefined _data nodes_ corresponding to the most popular
+_storage types_. Thanks to predefined _data nodes_, the data scientist developer does not need
+to spend much time configuring the _storage types_ or the
 _query system_. Most of the time, a predefined _data node_ corresponding to a basic and standard use case satisfies
 the user's need like pickle file, csv file, sql table, Excel sheet, etc.
 
