@@ -36,11 +36,11 @@ from inspect import isclass, isfunction, ismodule
 from pathlib import Path
 import time
 
-ROOT_PACKAGE      = "taipy"
+ROOT_PACKAGE = "taipy"
 MODULE_EXTENSIONS = ".py"
 
 # Assuming that this script is located in <taipy-doc>/tools
-tools_dir = os.path.dirname(__file__).replace("\\","/")
+tools_dir = os.path.dirname(__file__).replace("\\", "/")
 root_dir = os.path.dirname(tools_dir)
 
 GUI_DOC_PATH = root_dir + "/docs/manuals/gui/"
@@ -71,17 +71,20 @@ if not mkdocs_yml_content:
 # MkDocs needs it at the root level so we will have to move it back.
 shutil.move(f"{root_dir}/{ROOT_PACKAGE}", f"{tools_dir}/{ROOT_PACKAGE}")
 
+
 # This moves back the package directory to 'root_dir'.
 # It must be called from now on no matter why this program exits.
 def restore_top_package_location():
     # Move top package back to the root level for MkDocs.
     shutil.move(f"{tools_dir}/{ROOT_PACKAGE}", f"{root_dir}/{ROOT_PACKAGE}")
 
+
 # ------------------------------------------------------------------------
 # Step 1
 #   Generating the Visual Elements documentation
 # ------------------------------------------------------------------------
 print("Step 1/2: Generating Visual Elements documentation")
+
 
 def read_skeleton(name):
     content = ""
@@ -92,10 +95,12 @@ def read_skeleton(name):
         raise SystemExit(f"FATAL - Could not read {name} markdown template")
     return content
 
+
 controls_md_template = read_skeleton("controls")
 blocks_md_template = read_skeleton("blocks")
 
-controls_list = ["text", "button", "input", "number", "slider", "toggle", "date", "chart", "file_download", "file_selector", "image",
+controls_list = ["text", "button", "input", "number", "slider", "toggle", "date", "chart", "file_download",
+                 "file_selector", "image",
                  "indicator", "menu", "navbar", "selector", "status", "table", "dialog", "tree"]
 blocks_list = ["part", "expandable", "layout", "pane"]
 # -----------------------------------------------------------------------------
@@ -160,6 +165,7 @@ for current_file in os.listdir(VELEMENTS_SOURCE_PATH):
             raise ValueError(f"Element '{element_name}' has no defined default property")
         element_properties[element_name] = properties
         return properties
+
 
     element_name = os.path.basename(current_file)
     if not element_name in element_properties:
@@ -286,8 +292,10 @@ FUNCTION_ID = "F"
 FIRST_DOC_LINE_RE = re.compile(r"^(.*?)(:?\n\n|$)", re.DOTALL)
 REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 
-entry_to_package  = {}
+entry_to_package = {}
 potential_types = set()
+
+
 def read_module(module):
     if not module.__name__.startswith(ROOT_PACKAGE):
         return
@@ -330,11 +338,12 @@ def read_module(module):
             if e.__module__ != module.__name__:
                 # Keep the top-most package
                 if e.__module__.startswith(module.__name__) and entry_to_package[key].startswith(module.__name__):
-                    entry_to_package[key]  = module.__name__
+                    entry_to_package[key] = module.__name__
         else:
             if doc is None:
                 print(f"WARNING - {e.__name__} [in {e.__module__}] has no doc", flush=True)
             entry_to_package[key] = module.__name__
+
 
 read_module(__import__(ROOT_PACKAGE))
 
@@ -367,19 +376,22 @@ for package in sorted(package_to_entries.keys()):
     navigation += f"    - {package}: manuals/reference/pkg_{package}.md\n"
     package_output_path = os.path.join(REFERENCE_DIR_PATH, f"pkg_{package}.md")
 
+
     def generate_entries(entries, package, type, package_output_file):
         for entry in entries:
             name = entry[1]
             package_output_file.write(f"   - [`{name}"
-                                    + f"{'()' if type == FUNCTION_ID else ''}`]({package}.{name}.md)"
-                                    + f"{': '+entry[3] if entry[3] else ' - NOT DOCUMENTED'}\n")
+                                      + f"{'()' if type == FUNCTION_ID else ''}`]({package}.{name}.md)"
+                                      + f"{': ' + entry[3] if entry[3] else ' - NOT DOCUMENTED'}\n")
             output_path = os.path.join(REFERENCE_DIR_PATH, f"{package}.{name}.md")
             with open(output_path, "w") as output_file:
                 output_file.write("---\nhide:\n  - navigation\n---\n\n"
-                                + f"::: {package}.{name}\n")
+                                  + f"::: {package}.{name}\n")
             if name in xrefs:
-                print(f"ERROR - {'Function' if type == FUNCTION_ID else 'Class'} {name} already declared in {xrefs[name]}")
+                print(
+                    f"ERROR - {'Function' if type == FUNCTION_ID else 'Class'} {name} already declared in {xrefs[name]}")
             xrefs[name] = (package, entry[0])
+
 
     with open(package_output_path, "w") as package_output_file:
         package_output_file.write(f"## Package: {package}\n\n")
@@ -390,15 +402,16 @@ for package in sorted(package_to_entries.keys()):
             package_output_file.write(f"### Classes\n\n")
             generate_entries(classes, package, CLASS_ID, package_output_file)
 with open(XREFS_PATH, "w") as xrefs_output_file:
-  xrefs_output_file.write(json.dumps(xrefs))
+    xrefs_output_file.write(json.dumps(xrefs))
 
 # Update mkdocs.yml
+copyright_content = f"{str(datetime.now().year)}"
+mkdocs_yml_content = re.sub(r"\[YEAR\]",
+                            copyright_content,
+                            mkdocs_yml_content)
 mkdocs_yml_content = re.sub(r"^\s*\[REFERENCE_CONTENT\]\s*$",
                             navigation,
                             mkdocs_yml_content,
-                            flags = re.MULTILINE)
-mkdocs_yml_content = re.sub(r"^\s*\[YEAR\]\s*$",
-                            str(datetime.now().year),
-                            mkdocs_yml_content)
+                            flags=re.MULTILINE)
 with open(MKDOCS_YML_PATH, "w") as mkdocs_yml_file:
     mkdocs_yml_file.write(mkdocs_yml_content)
