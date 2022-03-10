@@ -153,7 +153,8 @@ def on_post_build(env):
                             (dir, file) = os.path.split(filename)
                             (dir, dir1) = os.path.split(dir)
                             (dir, dir2) = os.path.split(dir)
-                            message = f"Unresolve crossref '{xref.group(0)}' found in "
+                            bad_xref = re.sub(r"</?code>", "`", xref.group(0))
+                            message = f"Unresolve crossref '{bad_xref}' found in "
                             if file == "index.html":
                                 (dir, dir3) = os.path.split(dir)
                                 log.error(f"{message}{dir3}/{dir2}/{dir1}.md")

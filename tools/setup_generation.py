@@ -38,6 +38,7 @@ import time
 
 ROOT_PACKAGE = "taipy"
 MODULE_EXTENSIONS = ".py"
+PACKAGE_GROUP = [ "taipy.core", "taipy.gui" ]
 
 # Assuming that this script is located in <taipy-doc>/tools
 tools_dir = os.path.dirname(__file__).replace("\\", "/")
@@ -47,7 +48,8 @@ GUI_DOC_PATH = root_dir + "/docs/manuals/gui/"
 VELEMENTS_DIR_PATH = root_dir + "/docs/manuals/gui/viselements"
 VELEMENTS_SOURCE_PATH = root_dir + "/gui/doc"
 
-REFERENCE_DIR_PATH = root_dir + "/docs/manuals/reference"
+REFERENCE_REL_PATH = "manuals/reference"
+REFERENCE_DIR_PATH = root_dir + "/docs/" + REFERENCE_REL_PATH
 XREFS_PATH = root_dir + "/docs/manuals/xrefs"
 MKDOCS_YML_TEMPLATE_PATH = root_dir + "/mkdocs.yml_template"
 MKDOCS_YML_PATH = root_dir + "/mkdocs.yml"
@@ -360,6 +362,7 @@ for entry, package in entry_to_package.items():
 # Generate all Reference manual pages and update navigation
 navigation = ""
 xrefs = {}
+package_group = None
 for package in sorted(package_to_entries.keys()):
     functions = []
     classes = []
@@ -373,15 +376,33 @@ for package in sorted(package_to_entries.keys()):
     if not classes and not functions:
         print(f"Skipping package {package}: no documented elements")
         continue
-    navigation += f"    - {package}: manuals/reference/pkg_{package}.md\n"
-    package_output_path = os.path.join(REFERENCE_DIR_PATH, f"pkg_{package}.md")
+    if package in PACKAGE_GROUP:
+        package_group = package
+        package_path = f"{REFERENCE_DIR_PATH}/pkg_{package}"
+        os.mkdir(package_path)
+        package_output_path = os.path.join(package_path, "index.md")
+        navigation += (" " * 4 + f"- {package}:\n"
+                     + " " * 6 + f"- {REFERENCE_REL_PATH}/pkg_{package}/index.md\n")
+    else:
+        new_package_group = None
+        for p in PACKAGE_GROUP:
+            if package.startswith(p + "."):
+                new_package_group = p
+                break
+        if new_package_group != package_group:
+            package_group = new_package_group
+            navigation += (" " * 4 + f"- {package_group}:\n")
+        navigation += (" " * (6 if package_group else 4)
+                    + f"- {package}: manuals/reference/pkg_{package}.md\n")
+        package_output_path = os.path.join(REFERENCE_DIR_PATH, f"pkg_{package}.md")
 
 
-    def generate_entries(entries, package, type, package_output_file):
+    def generate_entries(entries, package, type, package_output_file, in_group):
+        in_group = "../" if in_group else ""
         for entry in entries:
             name = entry[1]
             package_output_file.write(f"   - [`{name}"
-                                      + f"{'()' if type == FUNCTION_ID else ''}`]({package}.{name}.md)"
+                                      + f"{'()' if type == FUNCTION_ID else ''}`]({in_group}{package}.{name}.md)"
                                       + f"{': ' + entry[3] if entry[3] else ' - NOT DOCUMENTED'}\n")
             output_path = os.path.join(REFERENCE_DIR_PATH, f"{package}.{name}.md")
             with open(output_path, "w") as output_file:
@@ -394,13 +415,15 @@ for package in sorted(package_to_entries.keys()):
 
 
     with open(package_output_path, "w") as package_output_file:
-        package_output_file.write(f"## Package: {package}\n\n")
+        package_output_file.write(f"---\ntitle: \"{package}\" package\n---\n\n")
+        package_output_file.write(f"## Package: `{package}`\n\n")
+        package_grouped = package == package_group
         if functions:
             package_output_file.write(f"### Functions\n\n")
-            generate_entries(functions, package, FUNCTION_ID, package_output_file)
+            generate_entries(functions, package, FUNCTION_ID, package_output_file, package_grouped)
         if classes:
             package_output_file.write(f"### Classes\n\n")
-            generate_entries(classes, package, CLASS_ID, package_output_file)
+            generate_entries(classes, package, CLASS_ID, package_output_file, package_grouped)
 with open(XREFS_PATH, "w") as xrefs_output_file:
     xrefs_output_file.write(json.dumps(xrefs))
 
@@ -409,9 +432,9 @@ copyright_content = f"{str(datetime.now().year)}"
 mkdocs_yml_content = re.sub(r"\[YEAR\]",
                             copyright_content,
                             mkdocs_yml_content)
-mkdocs_yml_content = re.sub(r"^\s*\[REFERENCE_CONTENT\]\s*$",
+mkdocs_yml_content = re.sub(r"^\s*\[REFERENCE_CONTENT\]\s*\n",
                             navigation,
                             mkdocs_yml_content,
-                            flags=re.MULTILINE)
+                            flags=re.MULTILINE|re.DOTALL)
 with open(MKDOCS_YML_PATH, "w") as mkdocs_yml_file:
     mkdocs_yml_file.write(mkdocs_yml_content)
