@@ -249,7 +249,7 @@ forecast_table", and the table the data will be written to is "forecast_table".
 
 # Generic
 
-An [GenericDataNode](../../../reference/#taipy.core.data.generic.GenericDataNode) is a specific data node used to model
+A [GenericDataNode](../../../reference/#taipy.core.data.generic.GenericDataNode) is a specific data node used to model
 generic data type where the read and the write functions are defined by the user. To add a new _generic_ data node
 configuration, the `taipy.configure_generic_data_node` method can be used. In addition to the parameters
 described in the previous section [Data node configuration](data-node-config.md), two optional parameters can be
@@ -259,17 +259,24 @@ provided.
     be used to read the data.
 
 -   The `write_fct` is a mandatory parameter that represents a python function provided by the user. It will
-    be used to write the data.
+    be used to write the data. The provided function must have at least 1 parameter at the beginning,
+    dedicated to receive data to be written.
+
+-   The `read_fct_params` represents the parameters that will be passed to the `read_fct` to read the data.
+    It can be a Dict or List type object.
+
+-   The `write_fct_params` represents the parameters that will be passed to the `write_fct` to write the data.
+    It can be a Dict or List type object.
 
 ```python linenums="1"
 import taipy as tp
 from taipy import Scope
 
-date_cfg = tp.configure_generic_data_node(id="historical_data", read_fct=read_data, write_fct=write_data)
+date_cfg = tp.configure_generic_data_node(id="historical_data", read_fct=read_data, write_fct=write_data, write_fct_params={'path': '../path/'})
 ```
 
 In this small example, we configure a generic data node with the id "historical_data". We provide two
-python functions as `read_fct` and `write_fct` parameters to read and write the data.
+python functions as `read_fct` and `write_fct` parameters to read and write the data. We also provided a dictionary object for the `write_fct_params` with a path to let the `write_fct` know where to write the data to.
 
 !!! Note
 
