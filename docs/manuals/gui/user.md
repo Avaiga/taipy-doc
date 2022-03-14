@@ -10,7 +10,9 @@ interact with the application code.
 
 In Taipy, GUIs are made of generated Web pages that are served by a Web server
 hosted by the Taipy application itself (or on which the Taipy application relies). This
-server and its settings are handled by the [`Gui object`](user_gui.md).
+server and its settings are handled by the `Gui^` class.</br>
+The section on [Provisioning a User Interface](gui/index.md) explains all you need to
+know about how to use it.
 
 ## How is the Graphical User Interface generated
 
@@ -23,11 +25,11 @@ In order to describe the content of pages, Taipy comes the support for two templ
 handled by the classes `Markdown^` and `Html^`.
 
 The basic principle is that you create pages as you need them, give them a name
-so you can indicate to your browser how to access these pages and provide these pages to a `Gui` instance used in your
-application.
+so you can indicate to your browser how to access these pages and provide these pages to the
+`Gui^` instance used in your application.
 
 When the `(Gui.)run()^` method of the `Gui^` instance is invoked, a Web client can connect to the underlying Web
 server and request for a given page. At this time, Taipy transforms the page that you had created into some HTML
 content that is sent to the client so the user can see the application interface.
 
-!!! info "You can find more information on how pages are created and used in Taipy application in the [Pages](user_pages.md) section."
+!!! info "You can find more information on how pages are created and used in Taipy application in the [Pages](pages.md) section."
