@@ -61,7 +61,7 @@ fragment.
     <|default_property_value|visual_element_type|>
     ```
 
-Please refer to the section about [Markdown syntax](user_pages.md#markdown-specifics) for all the details
+Please refer to the section about [Markdown syntax](../pages.md#markdown-specifics) for all the details
 on the Taipy Markdown extension syntax.
 
 ### HTML
@@ -90,7 +90,7 @@ is equivalent to
     that make it easier to use in the context of describing Taipy pages.
 
     - Attribute names that be array elements.
-      Some visual elements (such as the [`chart`](viselements/chart.md) control) need
+      Some visual elements (such as the [`chart`](chart.md) control) need
       indexed properties. An attribute name such as _y[1]_ is valid in the Taipy context,
       where it would not be in the raw HTML grammar.
 
@@ -125,7 +125,7 @@ can use it in your CSS selectors.
 
 There are situations where your visual element may need a lot of different properties.
 This is typically the case for complex visual elements like the
-[`chart`](viselements/chart.md) or the [`table`](viselements/table.md) controls.
+[`chart`](chart.md) or the [`table`](table.md) controls.
 
 When an element needs many properties and property values, the content may become
 difficult to read. Something you can do about this is create a Python dictionary that

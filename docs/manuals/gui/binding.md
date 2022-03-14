@@ -1,7 +1,7 @@
 # Binding variables
 
 Sometimes, you will want to display information that comes from your application.<br/>
-To achieve this goal, Taipy allows [visual elements](user_viselements.md)
+To achieve this goal, Taipy allows [visual elements](viselements/index.md)
 to relate directly to your application variables, display their values, and even
 change those variable values.
 

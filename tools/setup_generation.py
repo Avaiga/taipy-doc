@@ -9,11 +9,11 @@
 #     and the blocks document pages.
 #
 #     For each visual element, this script combines its property list and core
-#     documentation (located in [VELEMENTS_SOURCE_PATH]), and generates full
-#     Markdown files in [VELEMENTS_DIR_PATH]. All these files ultimately get
+#     documentation (located in [VISELEMENTS_SRC_PATH]), and generates full
+#     Markdown files in [VISELEMENTS_DIR_PATH]. All these files ultimately get
 #     integrated in the global dos set.
 #
-#     The skeleton documentation files [GUI_DOC_PATH]/user_[controls|blocks].md_template
+#     The skeleton documentation files [GUI_DOC_PATH]/[controls|blocks].md_template
 #     are also completed with generated table of contents.
 #
 #   - Generate the entries for every documented class, method, and function.
@@ -45,8 +45,8 @@ tools_dir = os.path.dirname(__file__).replace("\\", "/")
 root_dir = os.path.dirname(tools_dir)
 
 GUI_DOC_PATH = root_dir + "/docs/manuals/gui/"
-VELEMENTS_DIR_PATH = root_dir + "/docs/manuals/gui/viselements"
-VELEMENTS_SOURCE_PATH = root_dir + "/gui/doc"
+VISELEMENTS_SRC_PATH = root_dir + "/gui/doc"
+VISELEMENTS_DIR_PATH = root_dir + "/docs/manuals/gui/viselements"
 
 REFERENCE_REL_PATH = "manuals/reference"
 REFERENCE_DIR_PATH = root_dir + "/docs/" + REFERENCE_REL_PATH
@@ -55,8 +55,8 @@ MKDOCS_YML_TEMPLATE_PATH = root_dir + "/mkdocs.yml_template"
 MKDOCS_YML_PATH = root_dir + "/mkdocs.yml"
 
 # Check that the visual elements' documentation is available
-if not os.path.isdir(VELEMENTS_SOURCE_PATH):
-    raise SystemExit(f"FATAL - Visual elements documentation not found in {VELEMENTS_SOURCE_PATH}")
+if not os.path.isdir(VISELEMENTS_SRC_PATH):
+    raise SystemExit(f"FATAL - Visual elements documentation not found in {VISELEMENTS_SRC_PATH}")
 
 # Check that the source files are available
 if not os.path.exists(f"{root_dir}/{ROOT_PACKAGE}"):
@@ -90,7 +90,7 @@ print("Step 1/2: Generating Visual Elements documentation")
 
 def read_skeleton(name):
     content = ""
-    with open(os.path.join(GUI_DOC_PATH, "user_" + name + ".md_template")) as skeleton_file:
+    with open(os.path.join(GUI_DOC_PATH, name + ".md_template")) as skeleton_file:
         content = skeleton_file.read()
     if not content:
         restore_top_package_location()
@@ -112,7 +112,7 @@ blocks_list = ["part", "expandable", "layout", "pane"]
 element_properties = {}
 element_documentation = {}
 
-for current_file in os.listdir(VELEMENTS_SOURCE_PATH):
+for current_file in os.listdir(VISELEMENTS_SRC_PATH):
     def read_properties(path_name, element_name):
         try:
             df = pd.read_csv(path_name, encoding='utf-8')
@@ -126,7 +126,7 @@ for current_file in os.listdir(VELEMENTS_SOURCE_PATH):
                 parent_props = element_properties.get(parent)
                 if parent_props is None:
                     parent_file = parent + ".csv"
-                    parent_path_name = os.path.join(VELEMENTS_SOURCE_PATH, parent_file)
+                    parent_path_name = os.path.join(VISELEMENTS_SRC_PATH, parent_file)
                     if not os.path.exists(parent_path_name):
                         restore_top_package_location()
                         raise ValueError(f"FATAL - No csv file for '{parent}', inherited by '{element_name}'")
@@ -171,7 +171,7 @@ for current_file in os.listdir(VELEMENTS_SOURCE_PATH):
 
     element_name = os.path.basename(current_file)
     if not element_name in element_properties:
-        path_name = os.path.join(VELEMENTS_SOURCE_PATH, current_file)
+        path_name = os.path.join(VISELEMENTS_SRC_PATH, current_file)
         element_name, current_file_ext = os.path.splitext(element_name)
         if current_file_ext == ".csv":
             read_properties(path_name, element_name)
@@ -179,9 +179,9 @@ for current_file in os.listdir(VELEMENTS_SOURCE_PATH):
             with open(path_name, "r") as doc_file:
                 element_documentation[element_name] = doc_file.read()
 
-# Create VELEMENTS_DIR_PATH directory if necessary
-if not os.path.exists(VELEMENTS_DIR_PATH):
-    os.mkdir(VELEMENTS_DIR_PATH)
+# Create VISELEMS_DIR_PATH directory if necessary
+if not os.path.exists(VISELEMENTS_DIR_PATH):
+    os.mkdir(VISELEMENTS_DIR_PATH)
 
 FIRST_PARA_RE = re.compile(r"(^.*?)(:?\n\n)", re.MULTILINE | re.DOTALL)
 FIRST_HEADER2_RE = re.compile(r"(^.*?)(\n##\s+)", re.MULTILINE | re.DOTALL)
@@ -241,7 +241,7 @@ def generate_element_doc(element_name: str, toc):
     if not match:
         restore_top_package_location()
         raise ValueError(f"Couldn't locate first header2 in documentation for element '{element_name}'")
-    output_path = os.path.join(VELEMENTS_DIR_PATH, element_name + ".md")
+    output_path = os.path.join(VISELEMENTS_DIR_PATH, element_name + ".md")
     with open(output_path, "w") as output_file:
         output_file.write("---\nhide:\n  - navigation\n---\n\n"
                           + f"# <tt>{element_name}</tt>\n\n"
@@ -267,7 +267,7 @@ toc = "<div class=\"tp-ve-cards\">\n"
 for name in controls_list:
     toc += generate_element_doc(name, toc)
 toc += "</div>\n"
-with open(os.path.join(GUI_DOC_PATH, "user_controls.md"), "w") as file:
+with open(os.path.join(GUI_DOC_PATH, "controls.md"), "w") as file:
     file.write(controls_md_template.replace("[TOC]", toc))
 
 # Generate blocks doc page
@@ -275,7 +275,7 @@ toc = "<div class=\"tp-ve-cards\">\n"
 for name in blocks_list:
     toc += generate_element_doc(name, toc)
 toc += "</div>\n"
-with open(os.path.join(GUI_DOC_PATH, "user_blocks.md"), "w") as file:
+with open(os.path.join(GUI_DOC_PATH, "blocks.md"), "w") as file:
     file.write(blocks_md_template.replace("[TOC]", toc))
 
 # ------------------------------------------------------------------------

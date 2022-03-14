@@ -23,8 +23,9 @@ with the following steps:
   the creation of potentially complex HTML components;
 - Control (and block) properties are read, and all referenced application variables are
   bound.
-- Potentially, _callbacks_ are located and connected from the rendered page back to the Python code
-  if you want to watch user events (the notion of callbacks is detailed in the section [Callbacks](user_callbacks.md)).
+- Potentially, _callbacks_ are located and connected from the rendered page back to the Python
+  code if you want to watch user events (the notion of callbacks is detailed in the section
+  [Callbacks](callbacks.md)).
 
 ### Registering the page
 
@@ -147,7 +148,7 @@ be `http://127.0.0.1:5000/`).
 
 If your application has several pages, you would usually create them with different names,
 so the user can navigate from page to page (using the `navigate()^` function or the
-[`navbar`](../viselements/navbar/) control).<br/>
+[`navbar`](viselements/navbar/) control).<br/>
 However, you can still have a root page for your application (with the name: `"/"`).
 In this situation, Taipy creates a
 [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application)
@@ -237,7 +238,7 @@ having to repeat yourself when creating your user interfaces.
 ## Dialogs
 
 Applications sometimes need to prompt the user to indicate a situation or request
-input of some sort. This need is covered in Taipy using the [dialog](user_dialogs.md)
+input of some sort. This need is covered in Taipy using the [dialog](dialogs.md)
 control demonstrated below.
 
 !!! abstract "TODO: dialogs documentation"
