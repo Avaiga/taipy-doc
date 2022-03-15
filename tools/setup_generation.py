@@ -291,11 +291,11 @@ os.mkdir(REFERENCE_DIR_PATH)
 
 CLASS_ID = "C"
 FUNCTION_ID = "F"
+TYPE_ID = "T"
 FIRST_DOC_LINE_RE = re.compile(r"^(.*?)(:?\n\n|$)", re.DOTALL)
 REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 
 entry_to_package = {}
-potential_types = set()
 
 
 def read_module(module):
@@ -308,23 +308,22 @@ def read_module(module):
         e = getattr(module, entry)
         if hasattr(e, '__class__') and e.__class__.__name__.startswith("_"):
             continue
+        entry_type = None
         if hasattr(e, '__module__') and e.__module__:
             # Type alias?
             if e.__module__ == 'typing' and hasattr(e, '__name__'):
-                if not e.__name__ in potential_types:
-                    print(f"INFO - {e.__name__} might be a type alias in {module.__name__}", flush=True)
-                    potential_types.add(e.__name__)
+                entry_type = TYPE_ID
             # Not in our focus package?
-            if not e.__module__.startswith(ROOT_PACKAGE):
+            elif not e.__module__.startswith(ROOT_PACKAGE):
                 continue
         # Not a function or a class?
-        entry_type = None
-        if isclass(e):
-            entry_type = CLASS_ID
-        elif isfunction(e):
-            entry_type = FUNCTION_ID
-        elif ismodule(e):
-            read_module(e)
+        if not entry_type:
+            if isclass(e):
+                entry_type = CLASS_ID
+            elif isfunction(e):
+                entry_type = FUNCTION_ID
+            elif ismodule(e):
+                read_module(e)
         if not entry_type:
             continue
         # Add to all entries
@@ -366,14 +365,17 @@ package_group = None
 for package in sorted(package_to_entries.keys()):
     functions = []
     classes = []
+    types = []
     for entry in package_to_entries[package]:
         if entry[2] == CLASS_ID:
             classes.append(entry)
         elif entry[2] == FUNCTION_ID:
             functions.append(entry)
+        elif entry[2] == TYPE_ID:
+            types.append(entry)
         else:
             raise SystemError("Invalid entry type '{entry[2]}' for {entry[0]}.{entry[1]}")
-    if not classes and not functions:
+    if not classes and not functions and not types:
         print(f"Skipping package {package}: no documented elements")
         continue
     if package in PACKAGE_GROUP:
@@ -418,6 +420,15 @@ for package in sorted(package_to_entries.keys()):
         package_output_file.write(f"---\ntitle: \"{package}\" package\n---\n\n")
         package_output_file.write(f"## Package: `{package}`\n\n")
         package_grouped = package == package_group
+        if types:
+            package_output_file.write(f"### Types\n\n")
+            for type in types:
+                name = type[1]
+                package_output_file.write(f"   - `{name}`"
+                                        + f"{': ' + type[3] if type[3] else ' - NOT DOCUMENTED'}\n")
+                if name in xrefs:
+                    print(f"ERROR - Type {name} already declared in {xrefs[name]}")
+                xrefs[name] = (package, type[0])
         if functions:
             package_output_file.write(f"### Functions\n\n")
             generate_entries(functions, package, FUNCTION_ID, package_output_file, package_grouped)
