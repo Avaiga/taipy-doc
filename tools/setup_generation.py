@@ -50,7 +50,15 @@ VISELEMENTS_DIR_PATH = root_dir + "/docs/manuals/gui/viselements"
 
 # PACKAGES_VISIBILITY indicates which packages should be hidden
 # should an entity are exposed from distinct packages.
-PACKAGES_VISIBILITY = [("taipy.core.config.job_config","taipy.core.exceptions")]
+PACKAGES_VISIBILITY = [
+    ("taipy.core.config.config","taipy.core.exceptions"),
+    ("taipy.core.config.job_config","taipy.core.exceptions"),
+    ("taipy.core.config.scenario_config","taipy.core.exceptions"),
+    ("taipy.core.data.csv","taipy.core.exceptions"),
+    ("taipy.core.data.excel","taipy.core.exceptions"),
+    ("taipy.core.data.generic","taipy.core.exceptions"),
+    ("taipy.core.data.sql","taipy.core.exceptions")
+    ]
 REFERENCE_REL_PATH = "manuals/reference"
 REFERENCE_DIR_PATH = root_dir + "/docs/" + REFERENCE_REL_PATH
 XREFS_PATH = root_dir + "/docs/manuals/xrefs"
