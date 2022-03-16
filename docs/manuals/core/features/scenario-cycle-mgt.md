@@ -93,4 +93,34 @@ A scenario can be deleted by using [`taipy.delete`](../../../reference/#taipy.co
 which takes the scenario id as a parameter. The deletion is also propagated to the nested pipelines, tasks, data
 nodes, and jobs if they are not shared with any other scenario.
 
+# Add/Remove tag of a scenario
+
+A scenario can have multiple tags, which can be added using `taipy.tag^` which takes in the scenario id and a tag. Alternatively, you can use the `scenario.add_tag^` method.
+
+```python linenums="1"
+import taipy as tp
+from config import *
+
+scenario = tp.create_scenario(monthly_scenario_cfg)
+tp.tag(scenario, "my_tag")
+# or
+scenario.add_tag("my_tag")
+```
+
+You can retrieve all scenarios with a specific tag value using `taipy.get_scenarios^` by specifying the value in `tag` parameter.
+
+Two scenario with the same tag cannot belong to one cycle. If an existing tag is set on another scenario, it will be removed on the current scenario having that tag.
+
+You can remove a tag of a scenario using `taipy.untag^` which takes in the scenario id and a tag. Alternatively, you can use the `scenario.remove_tag^` method.
+
+```python linenums="1"
+import taipy as tp
+from config import *
+
+scenario = tp.create_scenario(monthly_scenario_cfg)
+tp.untag(scenario, "my_tag")
+# or
+scenario.remove_tag("my_tag")
+```
+
 [:material-arrow-right: Next section presents the pipeline management features](pipeline-mgt.md).
