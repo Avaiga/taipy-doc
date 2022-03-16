@@ -55,6 +55,7 @@ PACKAGES_VISIBILITY = [
     ("taipy.core.config.job_config","taipy.core.exceptions"),
     ("taipy.core.config.scenario_config","taipy.core.exceptions"),
     ("taipy.core.data.csv","taipy.core.exceptions"),
+    ("taipy.core.data.data_node","taipy.core.exceptions"),
     ("taipy.core.data.excel","taipy.core.exceptions"),
     ("taipy.core.data.generic","taipy.core.exceptions"),
     ("taipy.core.data.sql","taipy.core.exceptions")
