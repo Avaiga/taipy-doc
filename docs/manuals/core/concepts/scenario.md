@@ -1,4 +1,4 @@
-A [Scenario](../../../reference/#taipy.core.scenario.scenario.Scenario) is made to model a business concept.
+A `Scenario^` is made to model a business concept.
 It represents an instance of a business problem to solve on consistent data and parameter sets. In other words,
 when an end user select a _scenario_, he/she should have access to all the information and data needed to
 understand the business case he/she is working on and to make the right decisions.

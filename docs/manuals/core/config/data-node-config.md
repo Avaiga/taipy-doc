@@ -83,7 +83,7 @@ Each predefined data node is describe in a subsequent section.
 
 # Pickle
 
-A [PickleDataNode](../../../reference/#taipy.core.data.pickle.PickleDataNode) is a specific data node used to model
+A `PickleDataNode^` is a specific data node used to model
 pickle data.
 To add a new _pickle_ data node configuration, the `taipy.configure_pickle_data_node()^` method can be used. In
 addition to the generic parameters described in the previous section
@@ -123,7 +123,7 @@ In lines 6, 7, and 8, we add another pickle data node configuration with the id 
 
 # Csv
 
-A [CSVDataNode](../../../reference/#taipy.core.data.csv.CSVDataNode) data node is a specific data node used to
+A `CSVDataNode^` data node is a specific data node used to
 model csv file data. To add a new _csv_ data node
 configuration, the `taipy.configure_csv_data_node` method can be used. In addition to the generic
 parameters described in the previous section
@@ -167,7 +167,7 @@ provide it as the `exposed_type` parameter.
 
 # Excel
 
-An [ExcelDataNode](../../../reference/#taipy.core.data.excel.ExcelDataNode) is a specific data node used to model xlsx
+An `ExcelDataNode^` is a specific data node used to model xlsx
 file data. To add a new _Excel_ data node configuration, the `taipy.configure_excel_data_node` method can be used.
 In addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), a mandatory and three optional parameters can be provided.
@@ -214,7 +214,7 @@ the `exposed_type`. We also provide the list of specific sheets we want to use a
 
 # Sql
 
-A [SqlDataNode](../../../reference/#taipy.core.data.sql.SQLDataNode) is a specific data node used to model Sql
+A `SqlDataNode^` is a specific data node used to model Sql
 data. To add a new _sql_ data node configuration, the `taipy.configure_sql_data_node` method can be used. In
 addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), multiple
@@ -254,7 +254,7 @@ forecast_table", and the table the data will be written to is "forecast_table".
 
 # Generic
 
-A [GenericDataNode](../../../reference/#taipy.core.data.generic.GenericDataNode) is a specific data node used to model
+A `GenericDataNode^` is a specific data node used to model
 generic data type where the read and the write functions are defined by the user. To add a new _generic_ data node
 configuration, the `taipy.configure_generic_data_node` method can be used. In addition to the parameters
 described in the previous section [Data node configuration](data-node-config.md), two optional parameters can be
@@ -293,7 +293,7 @@ Python functions as *read_fct* and *write_fct* parameters to read and write the 
 
 # In memory
 
-An [InMemoryDataNode](../../../reference/#taipy.core.data.in_memory.InMemoryDataNode) is a specific data node used to
+An `InMemoryDataNode^` is a specific data node used to
 model any data in the RAM. To add a new in_memory data node configuration, the `taipy.configure_in_memory_data_node`
 method can be used. In addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), an optional parameter can be provided.

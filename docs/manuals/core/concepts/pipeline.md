@@ -1,5 +1,5 @@
 
-A [Pipeline](../../../reference/#taipy.core.pipeline.pipeline.Pipeline) is made to model an algorithm. It
+A `Pipeline^` is made to model an algorithm. It
 represents a direct acyclic graph of input, intermediate, and output data nodes linked together by tasks.
 A _pipeline_ is a set of connected tasks that the user wants to run together for functional reasons. It then
 represents an execution graph as a consistent set of tasks.
@@ -21,7 +21,7 @@ _pipeline_ for computing a training model, and a _pipeline_ dedicated to scoring
 Note that the various pipelines do not require to be disjointed.
 
 The attributes of a pipeline (the set of tasks) are populated based on the pipeline configuration
-([`PipelineConfig`](../../../reference/#taipy.core.config.pipeline_config.PipelineConfig)) that
+`PipelineConfig^` that
 must be provided when instantiating a new pipeline. (Please refer to the
 [`configuration details`](../config/pipeline-config.md) documentation for more
 details on configuration).

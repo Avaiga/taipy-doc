@@ -1,5 +1,5 @@
 A scenario configuration is necessary to instantiate a [Scenario](../concepts/scenario.md). To create a
-[`ScenarioConfig`](../../../reference/#taipy.core.config.scenario_config.ScenarioConfig) you can use
+`ScenarioConfig^` you can use
 the `taipy.configure_scenario()^` method with the following parameters:
 
 - _id_: The id of new scenario configuration to be created. This id is **mandatory** and must be a unique valid Python

@@ -1,4 +1,4 @@
-The [Scope](../../../reference/#taipy.core.data.scope.Scope) of a data node is an enum among the following values :
+The `Scope^` of a data node is an enum among the following values :
 
 - `Scope.PIPELINE`
 - `Scope.SCENARIO` (Default value)
@@ -6,7 +6,7 @@ The [Scope](../../../reference/#taipy.core.data.scope.Scope) of a data node is a
 - `Scope.GLOBAL`
 
 Each data node has a scope. It is an attribute provided by the
-([`DataNodeConfig`](../../../reference/#taipy.core.config.data_node_config.DataNodeConfig)).
+`DataNodeConfig^`.
 It represents the _visibility_ of the data node in the graph of entities. Indeed,
 the entities can be represented as a graph where each node belongs to one or multiple upper nodes. A data node 'belongs'
 to at least one task which belongs to at least one pipeline which belongs to at least one scenario which belongs to a
