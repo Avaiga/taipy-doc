@@ -11,7 +11,8 @@ a scenario in production. In Taipy, a _cycle_ duration depends on the
 - `Frequency.YEARLY`
 
 Each recurrent scenario is attached to a _cycle_. In other words, each _cycle_ contains multiple scenarios. At the end
-of a cycle (start date + duration), only one of the scenarios can be applied in production. This scenario is called _official scenario_. There is only one _official scenario_ per cycle.
+of a cycle (start date + duration), only one of the scenarios can be applied in production. This scenario is
+called _official scenario_. There is only one _official scenario_ per cycle.
 
 !!! example
 
