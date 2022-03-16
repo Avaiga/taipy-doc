@@ -1,5 +1,5 @@
 A task configuration is necessary to instantiate a [Task](../concepts/task.md). To create a
-[`TaskConfig`](../../../reference/#taipy.core.config.task_config.TaskConfig) you can use
+`TaskConfig^` you can use
 the `taipy.configure_task()^` method with the following parameters:
 
 - _id_: The id of the task configuration to be created. This id is **mandatory** and must be a unique valid Python

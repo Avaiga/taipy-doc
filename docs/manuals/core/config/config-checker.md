@@ -7,8 +7,8 @@ import taipy as tp
 tp.check_configuration()
 ```
 
-The `tp.check_configuration()` method returns a collector of issues. Each issue corresponds to an inconsistency on
-the configuration attached to an issue level (`INFO`, `WARNING`, `ERROR`). `tp.check_configuration()` raises an
+The `taipy.check_configuration^` method returns a collector of issues. Each issue corresponds to an inconsistency on
+the configuration attached to an issue level (`INFO`, `WARNING`, `ERROR`). `taipy.check_configuration^` raises an
 exception if at least one issue collected has the `ERROR` level.
 
 Here is the list of the issues possibly returned by the checker:

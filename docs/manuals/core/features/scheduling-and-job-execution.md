@@ -1,7 +1,7 @@
 # Submit a scenario or pipeline
 
 To execute a scenario, you need to call the
-`tp.submit^` method:
+`taipy.submit^` method:
 ```python linenums="1"
 import taipy as tp
 from config import *
@@ -26,7 +26,7 @@ submitted.
         scenario.submit()
     ```
 
-You can also submit just a single pipeline with the same `tp.submit^`
+You can also submit just a single pipeline with the same `taipy.submit^`
 method:
 
 ```python linenums="1"
@@ -38,7 +38,7 @@ pipeline = scenario.sales_pipeline
 tp.submit(pipeline)
 ```
 In line 5, we retrieve the pipeline named `sales_pipeline` from the created scenario. In line 6, we submit only this
-pipeline for execution. The `tp.submit()` method triggers the submission of all the pipeline's tasks.
+pipeline for execution. The `taipy.submit^` method triggers the submission of all the pipeline's tasks.
 
 !!! Note "Other syntax."
     To submit a pipeline, you can also use the method
