@@ -95,7 +95,7 @@ nodes, and jobs if they are not shared with any other scenario.
 
 # Add/Remove tag of a scenario
 
-A scenario can have multiple tags, which can be added using `taipy.tag^` which takes in the scenario id and a tag. Alternatively, you can use the `scenario.add_tag^` method.
+A scenario can have multiple tags. You can add a tag to a scenario using `taipy.tag^`. Alternatively, you can use the `scenario.add_tag^` method.
 
 ```python linenums="1"
 import taipy as tp
@@ -107,11 +107,11 @@ tp.tag(scenario, "my_tag")
 scenario.add_tag("my_tag")
 ```
 
-You can retrieve all scenarios with a specific tag value using `taipy.get_scenarios^` by specifying the value in `tag` parameter.
+You can retrieve all scenarios with a specific tag value using `taipy.get_scenarios^` with the `tag` parameter.
 
 Two scenario with the same tag cannot belong to one cycle. If an existing tag is set on another scenario, it will be removed on the current scenario having that tag.
 
-You can remove a tag of a scenario using `taipy.untag^` which takes in the scenario id and a tag. Alternatively, you can use the `scenario.remove_tag^` method.
+You can remove a tag of a scenario using `taipy.untag^`. Alternatively, you can use the `scenario.remove_tag^` method.
 
 ```python linenums="1"
 import taipy as tp
