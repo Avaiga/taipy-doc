@@ -58,7 +58,8 @@ PACKAGES_VISIBILITY = [
     ("taipy.core.data.data_node","taipy.core.exceptions"),
     ("taipy.core.data.excel","taipy.core.exceptions"),
     ("taipy.core.data.generic","taipy.core.exceptions"),
-    ("taipy.core.data.sql","taipy.core.exceptions")
+    ("taipy.core.data.sql","taipy.core.exceptions"),
+    ("taipy.core.data.data_node","taipy.core.data.operator")
     ]
 REFERENCE_REL_PATH = "manuals/reference"
 REFERENCE_DIR_PATH = root_dir + "/docs/" + REFERENCE_REL_PATH
