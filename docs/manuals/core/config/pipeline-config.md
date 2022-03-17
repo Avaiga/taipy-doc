@@ -1,5 +1,5 @@
 A pipeline configuration is necessary to instantiate a [Pipeline](../concepts/pipeline.md). To create a
-[`PipelineConfig`](../../../reference/#taipy.core.config.pipeline_config.PipelineConfig) you can use
+`PipelineConfig^` you can use
 the `taipy.configure_pipeline()^` method with the following parameters:
 
 - _id_: The id of this new pipeline configuration. This id is **mandatory** and must be a unique valid Python variable name.

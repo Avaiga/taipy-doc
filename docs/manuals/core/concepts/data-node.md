@@ -36,7 +36,7 @@ file and the python class used for the deserialization.
     We have no particular specification for the other data nodes. We can use the default storage type: Pickle.
 
 The data node's attributes are populated based on the data node configuration
-([`DataNodeConfig`](../../../reference/#taipy.core.config.data_node_config.DataNodeConfig))
+`DataNodeConfig^`
 that must be provided when instantiating a new data node. (Please refer to the
 [`configuration details`](../config/data-node-config.md) documentation for more
 details on configuration).

@@ -1,4 +1,4 @@
-The [`GlobalAppConfig`](../../../reference/#taipy.core.config.global_app_config.GlobalAppConfig) holds configuration
+The `GlobalAppConfig^` holds configuration
 fields
 related to the global application.
 
