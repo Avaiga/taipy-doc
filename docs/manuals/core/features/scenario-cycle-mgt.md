@@ -93,7 +93,7 @@ A scenario can be deleted by using [`taipy.delete`](../../../reference/#taipy.co
 which takes the scenario id as a parameter. The deletion is also propagated to the nested pipelines, tasks, data
 nodes, and jobs if they are not shared with any other scenario.
 
-# Add/Remove tag of a scenario
+# Tag or untag a scenario
 
 A scenario can have multiple tags. You can add a tag to a scenario using `taipy.tag^`. Alternatively, you can use the `scenario.add_tag^` method.
 
