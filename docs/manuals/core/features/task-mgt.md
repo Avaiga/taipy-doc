@@ -40,7 +40,7 @@ Taipy exposes multiple methods to manage the various tasks.
 
 # Get Tasks
 
-The first method to get a job is from its id by using the `taipy.get^` method
+The first method to get a job is from its id by using the `taipy.get()^` method
 
 ```python linenums="1"
 import taipy as tp
@@ -64,6 +64,6 @@ task_2 - pipeline.predicting
 # task_1 == task_2
 ```
 
-All the jobs can be retrieved using the method `taipy.get_tasks^`.
+All the jobs can be retrieved using the method `taipy.get_tasks()^`.
 
 [:material-arrow-right: Next section show the data node management features](data-node-mgt.md).

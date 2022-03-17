@@ -1,7 +1,7 @@
 # Submit a scenario or pipeline
 
 To execute a scenario, you need to call the
-`taipy.submit^` method:
+`taipy.submit()^` method:
 ```python linenums="1"
 import taipy as tp
 from config import *
@@ -16,7 +16,7 @@ submitted.
 
 !!! Note "Other syntax."
     To submit a scenario, you can also use the method
-    `scenario.submit^`:
+    `Scenario.submit()^`:
     ```python linenums="1"
         import taipy as tp
         from config import *
@@ -26,7 +26,7 @@ submitted.
         scenario.submit()
     ```
 
-You can also submit just a single pipeline with the same `taipy.submit^`
+You can also submit just a single pipeline with the same `taipy.submit()^`
 method:
 
 ```python linenums="1"
@@ -42,7 +42,7 @@ pipeline for execution. The `taipy.submit^` method triggers the submission of al
 
 !!! Note "Other syntax."
     To submit a pipeline, you can also use the method
-    `pipeline.submit^`:
+    `Pipeline.submit()^`:
     ```python linenums="1"
         import taipy as tp
         from config import *
@@ -82,14 +82,14 @@ Here is the list of job attributes:
 
 [Jobs](../concepts/job.md) are created when a task is submitted.
 
-You can get all of them with `taipy.get_jobs^`. You can also get the latest
+You can get all of them with `taipy.get_jobs()^`. You can also get the latest
 [Job](../concepts/job.md) of a [Task](../concepts/task.md) with
-`taipy.get_latest_job^`.
-You can also get a job from its id by using the `taipy.get^`.
+`taipy.get_latest_job()^`.
+You can also get a job from its id by using the `taipy.get()^`.
 
 A [Job](../concepts/job.md)  can be deleted using the
-`taipy.delete_job^` method. You can also delete all jobs with
-`taipy.delete_jobs^`.
+`taipy.delete_job()^` method. You can also delete all jobs with
+`taipy.delete_jobs()^`.
 
 Delete a [Job](../concepts/job.md) can raise an `JobNotDeletedException` if the status of the
 [Job](../concepts/job.md) is not `SKIPPED`, `COMPLETED` or `FAILED`. You can overcome this behaviour by forcing the

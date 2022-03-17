@@ -22,7 +22,7 @@ A data node also holds various properties and attributes that are accessible thr
 # Get data node
 
 The first method to get a **data node** is from its id using the
-`taipy.get^` method:
+`taipy.get()^` method:
 
 !!! Example
 
@@ -55,7 +55,7 @@ The data nodes that are part of a **scenario** or **pipeline** can be directly a
     ```
 
 All the data nodes can be retrieved using the method
-`taipy.get_data_nodes^`. This method returns a list of
+`taipy.get_data_nodes()^`. This method returns a list of
 all existing data nodes.
 
 !!! Example
@@ -72,7 +72,7 @@ all existing data nodes.
 # Read data node
 
 To read the content of a data node you can use the
-`data_node.read^`
+`data_node.read()^`
 method. The read method returns the data stored on the data node according to the type of data node:
 
 !!! Example
