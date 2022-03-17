@@ -95,7 +95,7 @@ nodes, and jobs if they are not shared with any other scenario.
 
 # Tag or untag a scenario
 
-A scenario can have multiple tags. You can add a tag to a scenario using `taipy.tag^`. Alternatively, you can use the `scenario.add_tag^` method.
+A scenario can have multiple tags. You can add a tag to a scenario using `taipy.tag()^`. Alternatively, you can use the `Scenario.add_tag()^` method.
 
 ```python linenums="1"
 import taipy as tp
@@ -107,11 +107,11 @@ tp.tag(scenario, "my_tag")
 scenario.add_tag("my_tag")
 ```
 
-You can retrieve all scenarios with a specific tag value using `taipy.get_scenarios^` with the _tag_ parameter.
+You can retrieve all scenarios that have a specific tag using `taipy.get_scenarios()^` with the _tag_ parameter.
 
-Two scenarios with the same tag cannot belong to the same cycle. If an existing tag is set on another scenario from the same cycle, it will be removed from the current scenario having that tag.
+Two scenario can not have the same tag in the same cycle. If an existing tag is set on another scenario from the same cycle, it will be removed from the current scenario having that tag.
 
-You can remove a tag of a scenario using `taipy.untag^`. Alternatively, you can use the `scenario.remove_tag^` method.
+You can remove a tag of a scenario using `taipy.untag()^`. Alternatively, you can use the `Scenario.remove_tag()^` method.
 
 ```python linenums="1"
 import taipy as tp
@@ -122,5 +122,7 @@ tp.untag(scenario, "my_tag")
 # or
 scenario.remove_tag("my_tag")
 ```
+
+You can define a list of authorized tags in the scenario configuration by specifying the value of _authorized_tags_. On the scenarios that are created from that configuration, if you add a tag that is not authorized, an exception will be raised.
 
 [:material-arrow-right: Next section presents the pipeline management features](pipeline-mgt.md).
