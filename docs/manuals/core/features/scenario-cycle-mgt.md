@@ -107,7 +107,7 @@ tp.tag(scenario, "my_tag")
 scenario.add_tag("my_tag")
 ```
 
-You can retrieve all scenarios with a specific tag value using `taipy.get_scenarios^` with the `tag` parameter.
+You can retrieve all scenarios with a specific tag value using `taipy.get_scenarios^` with the _tag_ parameter.
 
 Two scenario with the same tag cannot belong to one cycle. If an existing tag is set on another scenario, it will be removed on the current scenario having that tag.
 
