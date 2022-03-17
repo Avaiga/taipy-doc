@@ -1,6 +1,6 @@
 Taipy is an application builder. The purpose of configuring the application back end is to describe the user
 application entities and how they behave at runtime. To get more information about the back-end core concept you can
-read the [core concepts section](../concepts/about.md)
+read the [core concepts section](../concepts/index.md)
 
 Taipy provides four methods to configure your application :
 

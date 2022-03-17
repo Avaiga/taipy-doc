@@ -214,8 +214,8 @@ the `exposed_type`. We also provide the list of specific sheets we want to use a
 
 # Sql
 
-A `SqlDataNode^` is a specific data node used to model Sql
-data. To add a new _sql_ data node configuration, the `taipy.configure_sql_data_node` method can be used. In
+A `SQLDataNode^` is a specific data node used to model Sql
+data. To add a new _sql_ data node configuration, the `taipy.configure_sql_data_node()` method can be used. In
 addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), multiple
 parameters can be provided.

@@ -50,4 +50,4 @@ cycles.
 
     ![scopes](pic/storage_types_and_scopes.svg){ align=left }
 
-[:material-arrow-right: Next section introduces the COre configuration.](../config/about.md)
+[:material-arrow-right: Next section introduces the Core configuration.](../config/index.md)

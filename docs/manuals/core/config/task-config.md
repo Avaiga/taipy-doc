@@ -30,7 +30,7 @@ In lines 6 and 7, two data node configurations are created. They will be used as
 result. Finally, on line 9, we create the task configuration with the id 'double_task' that represents the function
 'double' that expects a 'input' data node as an input parameter and that returns an 'output' data node.
 
-Because a Task can have several inputs and outputs, `tp.configure_task()^` can receive lists of `DataNodeConfig^`
+Because a Task can have several inputs and outputs, `taipy.configure_task()^` can receive lists of `DataNodeConfig^`
 objects.
 
 ```python

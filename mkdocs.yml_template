@@ -13,7 +13,7 @@ nav:
     - "About Taipy's User Manual": 'manuals/about.md'
     - Taipy core:
         - 'Concepts':
-            - 'About': 'manuals/core/concepts/about.md'
+            - 'manuals/core/concepts/index.md'
             - 'Data node': 'manuals/core/concepts/data-node.md'
             - 'Task': 'manuals/core/concepts/task.md'
             - 'Job': 'manuals/core/concepts/job.md'
@@ -22,7 +22,7 @@ nav:
             - 'Cycle': 'manuals/core/concepts/cycle.md'
             - 'Scope': 'manuals/core/concepts/scope.md'
         - 'Configuration':
-            - 'About': 'manuals/core/config/about.md'
+            - 'manuals/core/config/index.md'
             - 'Data node configs': 'manuals/core/config/data-node-config.md'
             - 'Task configs': 'manuals/core/config/task-config.md'
             - 'Pipeline configs': 'manuals/core/config/pipeline-config.md'
@@ -32,7 +32,7 @@ nav:
             - 'Config checker': 'manuals/core/config/config-checker.md'
             - 'Advanced configuration': 'manuals/core/config/advanced-config.md'
         - 'Features':
-          - 'About': 'manuals/core/features/about.md'
+          - 'manuals/core/features/index.md'
           - 'Scenario creation': 'manuals/core/features/scenario-creation.md'
           - 'Scenario and cycle management': 'manuals/core/features/scenario-cycle-mgt.md'
           - 'Pipeline management': 'manuals/core/features/pipeline-mgt.md'

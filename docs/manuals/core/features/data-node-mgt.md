@@ -71,9 +71,8 @@ all existing data nodes.
 
 # Read data node
 
-To read the content of a data node you can use the
-`data_node.read()^`
-method. The read method returns the data stored on the data node according to the type of data node:
+To read the content of a data node you can use the `DataNode.read()^` method. The read method returns the data
+stored on the data node according to the type of data node:
 
 !!! Example
 
@@ -88,7 +87,7 @@ method. The read method returns the data stored on the data node according to th
     ```
 
 Is also possible to read partially the contents of data node, usefully when dealing with large amounts of data.
-This can be achieved using the `data_node.filter^`
+This can be achieved using the `DataNode.filter()^`
 method:
 
 ```python linenums="1"
@@ -105,7 +104,7 @@ temp_data[(temp_data == 14) | (temp_data == 10)]
 # Write data node
 
 To write some data on the data node, like the output of a task, you can use the
-`data_node.write^` method.
+`DataNode.write()^` method.
 The method takes an data object (string, dictionary, lists, numpy arrays, pandas dataframes, etc) as a
 parameter and writes it on the data node:
 
