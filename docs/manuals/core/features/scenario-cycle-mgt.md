@@ -109,7 +109,7 @@ scenario.add_tag("my_tag")
 
 You can retrieve all scenarios with a specific tag value using `taipy.get_scenarios^` with the _tag_ parameter.
 
-Two scenario with the same tag cannot belong to one cycle. If an existing tag is set on another scenario, it will be removed on the current scenario having that tag.
+Two scenarios with the same tag cannot belong to the same cycle. If an existing tag is set on another scenario from the same cycle, it will be removed from the current scenario having that tag.
 
 You can remove a tag of a scenario using `taipy.untag^`. Alternatively, you can use the `scenario.remove_tag^` method.
 
