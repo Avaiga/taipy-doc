@@ -48,6 +48,19 @@ GUI_DOC_PATH = root_dir + "/docs/manuals/gui/"
 VISELEMENTS_SRC_PATH = root_dir + "/gui/doc"
 VISELEMENTS_DIR_PATH = root_dir + "/docs/manuals/gui/viselements"
 
+# PACKAGES_VISIBILITY indicates which packages should be hidden
+# should an entity are exposed from distinct packages.
+PACKAGES_VISIBILITY = [
+    ("taipy.core.config.config","taipy.core.exceptions"),
+    ("taipy.core.config.job_config","taipy.core.exceptions"),
+    ("taipy.core.config.scenario_config","taipy.core.exceptions"),
+    ("taipy.core.data.csv","taipy.core.exceptions"),
+    ("taipy.core.data.data_node","taipy.core.exceptions"),
+    ("taipy.core.data.excel","taipy.core.exceptions"),
+    ("taipy.core.data.generic","taipy.core.exceptions"),
+    ("taipy.core.data.sql","taipy.core.exceptions"),
+    ("taipy.core.data.data_node","taipy.core.data.operator")
+    ]
 REFERENCE_REL_PATH = "manuals/reference"
 REFERENCE_DIR_PATH = root_dir + "/docs/" + REFERENCE_REL_PATH
 XREFS_PATH = root_dir + "/docs/manuals/xrefs"
@@ -60,7 +73,7 @@ if not os.path.isdir(VISELEMENTS_SRC_PATH):
 
 # Check that the source files are available
 if not os.path.exists(f"{root_dir}/{ROOT_PACKAGE}"):
-    raise SystemError(f"FATAL - Could not not find root pacakge in {root_dir}/{ROOT_PACKAGE}")
+    raise SystemError(f"FATAL - Could not not find root package in {root_dir}/{ROOT_PACKAGE}")
 
 # Read mkdocs yml template file
 mkdocs_yml_content = None
@@ -312,6 +325,9 @@ def read_module(module):
         if hasattr(e, '__module__') and e.__module__:
             # Type alias?
             if e.__module__ == 'typing' and hasattr(e, '__name__'):
+                # Manually remove class from 'typing'
+                if e.__name__ == "NewType":
+                    continue
                 entry_type = TYPE_ID
             # Not in our focus package?
             elif not e.__module__.startswith(ROOT_PACKAGE):
@@ -336,15 +352,25 @@ def read_module(module):
                 print(f"WARNING - Couldn't extract doc summary for {e.__name__} in {e.__module__}", flush=True)
         key = (e.__module__, entry, entry_type, doc)
         if key in entry_to_package:
-            if e.__module__ != module.__name__:
+            package_changed = False
+            for src_pkg, dst_pkg in PACKAGES_VISIBILITY:
+                if module.__name__.startswith(dst_pkg) and entry_to_package[key].startswith(src_pkg):
+                    entry_to_package[key] = module.__name__
+                    package_changed = True
+                    break
+            if not package_changed and e.__module__ != module.__name__:
                 # Keep the top-most package
                 if e.__module__.startswith(module.__name__) and entry_to_package[key].startswith(module.__name__):
                     entry_to_package[key] = module.__name__
+                else: # Is there a package with a higher priority?
+                    for src_pkg, dst_pkg in PACKAGES_VISIBILITY:
+                        if module.__name__.startswith(dst_pkg) and entry_to_package[key].startswith(src_pkg):
+                            entry_to_package[key] = module.__name__
+                            break
         else:
             if doc is None:
                 print(f"WARNING - {e.__name__} [in {e.__module__}] has no doc", flush=True)
             entry_to_package[key] = module.__name__
-
 
 read_module(__import__(ROOT_PACKAGE))
 
@@ -374,9 +400,9 @@ for package in sorted(package_to_entries.keys()):
         elif entry[2] == TYPE_ID:
             types.append(entry)
         else:
-            raise SystemError("Invalid entry type '{entry[2]}' for {entry[0]}.{entry[1]}")
+            raise SystemError("FATAL - Invalid entry type '{entry[2]}' for {entry[0]}.{entry[1]}")
     if not classes and not functions and not types:
-        print(f"Skipping package {package}: no documented elements")
+        print(f"INFO - Skipping package {package}: no documented elements")
         continue
     if package in PACKAGE_GROUP:
         package_group = package
@@ -401,7 +427,7 @@ for package in sorted(package_to_entries.keys()):
 
     def generate_entries(entries, package, type, package_output_file, in_group):
         in_group = "../" if in_group else ""
-        for entry in entries:
+        for entry in sorted(entries, key=lambda e: e[1]):
             name = entry[1]
             package_output_file.write(f"   - [`{name}"
                                       + f"{'()' if type == FUNCTION_ID else ''}`]({in_group}{package}.{name}.md)"
