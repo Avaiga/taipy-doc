@@ -38,7 +38,7 @@ pipeline = scenario.sales_pipeline
 tp.submit(pipeline)
 ```
 In line 5, we retrieve the pipeline named `sales_pipeline` from the created scenario. In line 6, we submit only this
-pipeline for execution. The `taipy.submit^` method triggers the submission of all the pipeline's tasks.
+pipeline for execution. The `taipy.submit()^`method triggers the submission of all the pipeline's tasks.
 
 !!! Note "Other syntax."
     To submit a pipeline, you can also use the method
