@@ -309,6 +309,7 @@ FIRST_DOC_LINE_RE = re.compile(r"^(.*?)(:?\n\n|$)", re.DOTALL)
 REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 
 entry_to_package = {}
+module_doc = {}
 
 
 def read_module(module):
@@ -339,6 +340,7 @@ def read_module(module):
             elif isfunction(e):
                 entry_type = FUNCTION_ID
             elif ismodule(e):
+                module_doc[e.__name__] = e.__doc__
                 read_module(e)
         if not entry_type:
             continue
@@ -445,6 +447,8 @@ for package in sorted(package_to_entries.keys()):
     with open(package_output_path, "w") as package_output_file:
         package_output_file.write(f"---\ntitle: \"{package}\" package\n---\n\n")
         package_output_file.write(f"## Package: `{package}`\n\n")
+        if package in module_doc and module_doc[package]:
+            package_output_file.write(module_doc[package])
         package_grouped = package == package_group
         if types:
             package_output_file.write(f"### Types\n\n")

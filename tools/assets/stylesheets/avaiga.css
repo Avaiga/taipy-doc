@@ -15,8 +15,8 @@
 a.ext-link:after {
   display: inline-block;
   content: url("../images/ext-link.svg");
-  width: 0.7em;
-  height: 0.7em;
+  width: 0.6em;
+  height: 0.6em;
   margin: 0 3px 0 3px;
 }
 
