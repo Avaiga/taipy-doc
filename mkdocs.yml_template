@@ -40,10 +40,7 @@ nav:
           - 'Data node management': 'manuals/core/features/data-node-mgt.md'
           - 'Scheduling and job execution': 'manuals/core/features/scheduling-and-job-execution.md'
     - Graphical User Interface:
-        - 'About': 'manuals/gui/user.md'
-        - 'Provisioning a User Interface':
-           - 'manuals/gui/gui/index.md'
-           - 'Configuration': 'manuals/gui/configuration.md'
+        - manuals/gui/index.md
         - 'Pages': 'manuals/gui/pages.md'
         - 'Visual Elements':
            - 'Visual Elements': 'manuals/gui/viselements/index.md'
@@ -52,8 +49,8 @@ nav:
         - 'Binding variables': 'manuals/gui/binding.md'
         - 'Styling': 'manuals/gui/styling.md'
         - 'Callbacks': 'manuals/gui/callbacks.md'
-        - 'Dialogs': 'manuals/gui/dialogs.md'
         - 'Notifications': 'manuals/gui/notifications.md'
+        - 'Configuration': 'manuals/gui/configuration.md'
     - Docker:
         - 'Standalone Application': 'manuals/docker/standalone.md'
         - 'Running with Airflow': 'manuals/docker/airflow.md'
