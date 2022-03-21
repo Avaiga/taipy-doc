@@ -11,7 +11,7 @@ Pages are created using sub-classes of the (Page^) class which convert some text
 (inside the application code or from an external file) into HTML content sent and
 rendered onto the client device.
 
-Converting text into page content use done following these steps:
+Converting text into page content is done following these steps:
 
 - The text is parsed to locate the Taipy-specific constructs. Those constructs
   let you insert _visual elements_ that can be _controls_ or _blocks_. Visual
