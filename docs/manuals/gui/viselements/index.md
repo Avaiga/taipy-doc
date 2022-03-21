@@ -4,23 +4,34 @@ _Visual Elements_ are user interface objects that are displayed on a given page.
 Visual elements reflect some application data or give the page some structuring
 or layout information. Most visual elements let users interact with the page content.
 
-You create visual elements using a specific Markdown syntax (see the
-`Markdown^` class) or specific HTML tags (see the `Html^` class).
+_Visual Elements_ are split into two categories:
+
+   - _Controls_ typically represent user data that the user can interact with;
+
+   - _Blocks_ let you organize controls (or blocks) in page to provide the best
+    possible user experience.
+
+If you are familiar with what _Visual Elements_ are and how they are declared, you
+may want to jump directly to the list of the available visual elements:
+
+[:material-arrow-right: List of available controls](../controls.md)
+
+[:material-arrow-right: List of available blocks](../blocks.md)
 
 ## Properties
 
 Every visual element you can use in a page has a type and a set of properties.
+To add a visual component to your page, you have to use the appropriate syntax,
+indicating what type of visual element you want to use in your page, and how to
+set the properties of the element.
 
-Besides those common properties, every control type has a specific set of properties that you
-can use, listed in the documentation page for that control type.
-
-## Property name
+### Property name
 
 Every control type has a default property name
 If you want to set the value for this property,
 you can use the short version of the control syntax.
 
-## Property value
+### Property value
 
 Every property value can be set to a given value that depends on the property type or a
 formatted string literal, also known as an _f-string_. This string may reference variable
@@ -34,25 +45,26 @@ names defined in your code, and the property value becomes the evaluated string.
 
 ## Syntax
 
-Visual Elements are declared in your page content using the Markdown or the HTML syntax.
+You create visual elements using a specific Markdown syntax (see the
+`Markdown^` class) or specific HTML tags (see the `Html^` class).
 
 ### Markdown
 
-Creating a visual element in Markdown text is just a matter of inserting a text
-fragment.
+The basic syntax for creating Taipy constructs in Markdown is: `<|...|...|>` (opening with a
+_less than_ character followed by a vertical bar character &#151; sometimes called
+_pipe_ &#151; followed a potentially empty series of vertical bar-separated fragments and closing
+by a vertical bar character immediately followed by the _greater than_ character).<br/>
+Taipy interprets any text between the `<|` and the `|>` markers and tries to create visual
+elements that are inserted in the resulting page.
 
-```py
-<|control_type|property_name=property_value|...|>
-```
+The most common use of this construct is to create controls. Taipy expects the control type
+name to appear between the two first vertical bar characters (like in `<|control|...}>`.
 
-!!! note
-    You can have as many property name-property value pairs as needed, and all the space characters
-    of the property value part _are_ significant.
+!!! important
+    If the first fragment text is not the name of a control type, Taipy will consider this
+    fragment to be the default value for the default property of the control, whose type name
+    must then appear as the second element.
 
-!!! note  "Default property"
-    All visual elements have a _default property_ that can be used _before_ the
-    visual element type name type in order
-    to shorten the definition of the element content:
     ```
     <|visual_element_type|default_property_name=default_property_value|>
     ```
@@ -61,8 +73,77 @@ fragment.
     <|default_property_value|visual_element_type|>
     ```
 
-Please refer to the section about [Markdown syntax](../pages.md#markdown-specifics) for all the details
-on the Taipy Markdown extension syntax.
+    Every visual element has a default property, and using the default property syntax
+    (where the default property value appears as the first `||` fragment) underscore,
+    but placing it first, the most important property value for this visual element:
+    it would be the content of a [`text`](text.md) control, the label of a [`button`](button.md),
+    or the data set displayed by a [`chart`](chart.md), for example.
+
+Every following |-separated fragment is interpreted as a property name-property value
+pair using the syntax: _property\_name=property\_value_ (note that _all_ space characters
+are significative).  
+
+So creating a visual element in Markdown text is just a matter of inserting a text
+fragment similar to:
+
+```
+<|visual_element_type|property_name=property_value|...|>
+```
+
+!!! note
+    You can have as many property name-property value pairs as needed, and all the space characters
+    of the property value part _are_ significant:<br/>
+    The fragment `<|Content |text|>` will be displayed as the string "Content" followed by a
+    space character, because it is part the the propertly value (in this case, the _default_
+    property value, which is the property called _value_ for the [`text`](text.md) control)
+
+!!! note "Shortcut for Boolean properties"
+    Should the `=property_value` fragment be missing, the property value is interpreted as the
+    Boolean value `True`.<br/>
+    Furthermore if the property name is preceded by the text "_no&blank;_", "_not&blank;_",
+    "_don't&blank;_" or "_dont&blank;_" (including the trailing space character) then no
+    property value is expected, and the property value is set to `False`.
+
+#### Some examples
+
+!!! example "Multiple properties"
+    You can have several properties defined in the same control fragment:
+    ```
+    <|button|label=Do something|active=False|>
+    ```
+
+!!! example "The _default property_ rule"
+    The default property name for the control type [`button`](button.md) is _label_. In Taipy,
+    the Markdown text
+    ```
+    <|button|label=Some text|>
+    ```
+    Is exactly equivalent to
+    ```
+    <|Some text|button|>
+    ```
+    which is slightly shorter.
+
+!!! example "The _missing Boolean property value_ rules"
+    ```
+    <|button|active=True|>
+    ```
+    is equivalent to
+    ```
+    <|button|active|>
+    ```
+    And
+    ```
+    <|button|active=False|>
+    ```
+    is equivalent to
+    ```
+    <|button|not active|>
+    ```
+
+There are very few exceptions to the `<|control_type|...|>` syntax, and these exceptions
+are described in their respective documentation section. The most obvious exception is the
+[`text`](text.md) control, which can be created without even mentioning its type.
 
 ### HTML
 
@@ -119,7 +200,9 @@ You can specify an identifier for a specific visual element.
 This identifier is used as the `id` attribute of the generated HTML component so you
 can use it in your CSS selectors.
 
-!!! note "This identifier is also sent to the _on_action_ function of the `Gui` instance, if this visual element can trigger actions."
+!!! note
+    This identifier is also sent to the _on_action_ function of the `Gui` instance, if this visual
+    element can trigger actions.
 
 ### The `properties` property
 
@@ -163,4 +246,7 @@ visual element is updated when the user modifies the value represented by the el
 
 !!! info
     Note that if there is a function called `on_change` declared on the `Gui` instance, it will be
-    invoked no matter what the _propagate_ value is."
+    invoked no matter what the _propagate_ value is.
+
+Besides those common properties, every visual element type has a specific set of properties that you
+can use, listed in the documentation page for that visual element.

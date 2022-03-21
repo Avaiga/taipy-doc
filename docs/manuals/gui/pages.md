@@ -1,52 +1,54 @@
 # Pages
 
-Pages are the base for your user interface. Pages hold text, images, or controls that
-display information that the application needs to publish and interact with
-the application data through visual elements.
+Pages are the base for your user interface. Pages hold text, images, or
+controls that display information that the application needs to publish and
+interact with the application data through visual elements.
 
-## Page renderers
+## Defining pages
 
 Taipy lets you create as many pages as you want, with whatever content you need.
-Pages are created using _page renderers_, which convert some text (inside the application
-code or from an external file) into HTML content sent and rendered onto the client
-device.
+Pages are created using sub-classes of the (Page^) class which convert some text
+(inside the application code or from an external file) into HTML content sent and
+rendered onto the client device.
 
-!!! note
-    A _page rendered_ is an instance of a Python class that reads some text (directly from a
-    string or reading a text file) and converts it into a page that can be displayed in a browser.
+Converting text into page content is done following these steps:
 
-There are different types of page renderers in Taipy, and all process their input text
-with the following steps:
+- The text is parsed to locate the Taipy-specific constructs. Those constructs
+  let you insert _visual elements_ that can be _controls_ or _blocks_. Visual
+  Elements result in  the creation of potentially complex HTML components;
 
-- The text is parsed to locate the Taipy-specific constructs. Those constructs let you
-  insert _visual elements_ that can be _controls_ or _blocks_. Visual Elements result in
-  the creation of potentially complex HTML components;
-- Control (and block) properties are read, and all referenced application variables are
-  bound.
-- Potentially, _callbacks_ are located and connected from the rendered page back to the Python
-  code if you want to watch user events (the notion of callbacks is detailed in the section
-  [Callbacks](callbacks.md)).
+- Visual element properties are read, and Taipy binds the application
+  variables that they use, if any;
 
-### Registering the page
+- Potentially, _callbacks_ are located and connected from the rendered page back
+  to the Python code if you want to watch user events (the notion of callbacks is detailed
+  in the section [Callbacks](callbacks.md)).
 
-Once you have created an instance of a page renderer for a specified piece of
-text, you can register that page to the `Gui^` instance used by your application.
+### Defining the page content
 
-### Viewing the page
+Page content is defined by a regular string, containing text in one
+of two syntaxes:
 
-When the user browser connects to the Web server, requesting the indicated page,
-the rendering takes place (involving the retrieval of the application variable
-values), so you can see your application's state and interact with it.
+- Markdown: a lightweight markup language widely used for creating
+    documentation pages. This is be the ideal format if you are not
+    familiar with Web pages definition, and still want a decent rendering
+    a in matter of minutes.<br/>
+    Taipy has an augmented version of Markdown that makes it simple to
+    organize the page content in sections or grids.
 
-### Markdown processing
+- HTML: if you are more experienced in developing Web user interfaces, you
+    may prefer to use raw HTML content, so you have all the power of the
+    HTML grammar to organize your page content.
+
+#### Using Markdown
 
 One of the page description formats is the [Markdown](https://en.wikipedia.org/wiki/Markdown)
 markup language.
 
 Taipy uses [Python Markdown](https://python-markdown.github.io/) to translate Markdown
-text to elements used to create Web pages. It also uses many extensions that
-make it easier to create nice-looking pages that users can enjoy. Specifically,
-Taipy uses the following [Markdown extensions](https://python-markdown.github.io/extensions/):
+text to Web pages. Many language extensions are used to make it easier to create
+nice-looking pages that users can enjoy. Specifically, Taipy uses the following
+[Markdown extensions](https://python-markdown.github.io/extensions/):
 [_Admonition_](https://python-markdown.github.io/extensions/admonition/),
 [_Attribute Lists_](https://python-markdown.github.io/extensions/attr_list/),
 [_Fenced Code Blocks_](https://python-markdown.github.io/extensions/fenced_code_blocks/),
@@ -54,81 +56,103 @@ Taipy uses the following [Markdown extensions](https://python-markdown.github.io
 [_Markdown in HTML_](https://python-markdown.github.io/extensions/md_in_html/),
 [_Sane Lists_](https://python-markdown.github.io/extensions/sane_lists/)
 and [_Tables_](https://python-markdown.github.io/extensions/tables/).
-Please refer to the Python Markdown package documentation to get information on how these are used.
+Please refer to the Python Markdown package documentation to get information on how to use
+these.
 
-Besides these extensions, Taipy adds its own extension that can parse Taipy-specific
-constructs that allow for defining visual elements (and all the properties they need).
+Creating a page that display HTML content is straightforward:
 
-The basic syntax for creating Taipy constructs in Markdown is: `<|...|...|>` (opening with a
-_less than_ character immediately followed by a vertical bar character &#151; sometimes called
-_pipe_ &#151; followed a potentially empty series of vertical bar-separated fragments and closing
-by a vertical bar character immediately followed by the _greater than_ character).<br/>Taipy
-will interpret any text between the `<|` and the `|>` markers and try to make sense of it.
+```py
+from taipy.gui import Markdown
 
-The most common use of this construct is to create controls. Taipy expects the control type
-name to appear between the two first vertical bar characters (like in `<|control|...}>`.
+md_page = Markdown("""
+# Page title
 
-!!! important
-    If the first fragment text is not the name of a control type, Taipy will consider this
-    fragment to be the default value for the default property of the control, whose type name
-    must then appear as the second element.
+Any [_Markdown_](https://en.wikipedia.org/wiki/Markdown) content can be used here.
+""")
+```
 
-Every following element will be interpreted as a property name-property value pair
-using the syntax: _property\_name=property\_value_ (note that all space characters
-are significative).  
+You then have, in the _md_page_ variable, the definition of a page
+whose content is defined from Markdown text.
 
-!!! note "Shortcut for Boolean properties"
-    Should the `=property_value` fragment be missing, the property value is interpreted as the
-    Boolean value `True`.<br/>
-    Furthermore if the property name is preceded by the text "_no&blank;_", "_not&blank;_",
-    "_don't&blank;_" or "_dont&blank;_" (including the trailing space character) then no
-    property value is expected, and the property value is set to `False`.
+Besides the extensions listed above, Taipy adds its own extension that can parse
+Taipy-specific constructs that allow for defining visual elements (and all the properties
+they need). The details on how visual elements are located and interpreted with Markdown
+contennt can be found in the [Markdown Syntax](viselements/index.md#markdown) section
+about Visual Elements definition.
 
-#### Some examples
+#### Using HTML
 
-!!! example "Multiple properties"
-    You can have several properties defined in the same control fragment:
-    ```
-    <|button|label=Do something|active=False|>
-    ```
+HTML can also be used as the text grammar for creating pages. You don't need to
+create the header and body part: Taipy takes care of this for you.
 
-!!! example "The _default property_ rule"
-    The default property name for the control type [`button`](viselements/button.md) is _label_. In Taipy,
-    the Markdown text
-    ```
-    <|button|label=Some text|>
-    ```
-    Is exactly equivalent to
-    ```
-    <|Some text|button|>
-    ```
-    which is slightly shorter.
+Creating a page that display HTML content is straightforward:
 
-!!! example "The _missing Boolean property value_ rules"
-    ```
-    <|button|active=True|>
-    ```
-    is equivalent to
-    ```
-    <|button|active|>
-    ```
-    And
-    ```
-    <|button|active=False|>
-    ```
-    is equivalent to
-    ```
-    <|button|not active|>
-    ```
+```py
+from taipy.gui import Html
 
-There are very few exceptions to the `<|control_type|...|>` syntax, and these exceptions
-are described in their respective documentation section. The most obvious exception is the
-[`text`](viselements/text.md) control, which can be created without even mentioning its
-type.
+html_page = Html("""
+<h1>Page title</h1>
 
-### HTML specifics
+Any <a href="https://en.wikipedia.org/wiki/HTML"><i>HTML</i></a>
+content can be used here.
+""")
+```
 
-!!! abstract "TODO: HTML specifics documentation"
+You then have, in the _html_page_ variable, the definition of a page
+whose content is defined from HTML text.
+
+Taipy identifies visual element definitions by finding tags that belong
+to the `taipy` namespace. You can find details on how to create visual
+elements using HTML in the [HTML Syntax](viselements/index.md#html) section
+about Visual Elements definition.
+
+### Registering the page
+
+Once you have created an instance of a page renderer for a specified piece of
+text, you can register that page to the `Gui^` instance used by your application.
+
+The `Gui^` constructor can accept the raw content of a page as Markdown text
+and creates a new page for you. That would be the easier way to create
+applications that have a single page. Here is how you can create and register
+a page in a Taipy application:
+```py
+from taipy.gui import Gui
+
+Gui("# This is my page title")
+```
+If you run this Python script and connect a browser to the Web server address
+(usually _localhost:5000_), you can see your title displayed in a blank page.
+
+Of course, the text can be stored in a Python variable and used in the `Gui^`
+constructor:
+```py
+...
+md = "# This is my page title" 
+Gui(md)
+```
+
+If your application has several pages, you add your pages one by one
+using `Gui.add_page()^`. To add multiple page in a single call, you will
+use `Gui.add_pages()^` or create the `Gui^` instance using the _pages_
+argument. In those situations, you have to create a Python dictionary that
+associates a page with its name:
+```
+...
+pages = {
+  'page1': Markdown("# My first page"),
+  'page2': Markdown("# My second page")
+}
+Gui(pages=pages)
+```
+
+In this situation, to see the pages in your browser, the address you will use
+will be _localhost:5000/page1_ or _localhost:5000/page2_.
+
+### Viewing the page
+
+When the user browser connects to the Web server, requesting the indicated page,
+the rendering takes place (involving the retrieval of the application variable
+values), so you can see your application's state and interact with it.
 
 ## Root page
 
@@ -227,21 +251,41 @@ root page of your application, and is replaced by the target page content when t
     have the footer line (_'This application was created...'_) in all the pages of
     your application.
 
-## Partials
-
-There are page fragments that you may want to repeat on different pages. In that situation,
-you will want to use the `Partials` concept described below. This prevents you from
-having to repeat yourself when creating your user interfaces.
-
-!!! abstract "TODO: partials documentation"
-
 ## Dialogs
 
 Applications sometimes need to prompt the user to indicate a situation or request
-input of some sort. This need is covered in Taipy using the [dialog](dialogs.md)
-control demonstrated below.
+input of some sort. Dialogs are forms that can be displayed on top of the page
+the user is looking at, prompting for some input.
 
-!!! abstract "TODO: dialogs documentation"
+To create a dialog, you will use a [`dialog`](viselements/dialog.md) control in your
+page. The dialog holds a page content or a _Partial_ (see [Partials](#partials)).
+
+You can control whether the dialog is visible or not, and what to do when the end-user
+presses the _Validate_ or _Cancel_ button, so your application can deal with the
+user's response.
+
+!!! example
+
+    Here is an example of how you would create a dialog, directly in your Markdown
+    content:
+    
+    ``` py
+       ...
+       page="""
+       ...
+       <|{dialog_is_visible}|dialog|
+       Enter a name:
+
+       <|{name}|input|>
+       |>
+       ...
+       """
+
+       Gui(page).run()
+    ```
+
+Please refer to the documentation page on the [`dialog`](viselements/dialog.md)
+control for more details and examples.
 
 ## Panes
 
@@ -250,6 +294,39 @@ temporary use, such as providing specific parameters for the application. Taipy 
 you create such elements as described below.
 
 !!! abstract "TODO: panes documentation"
+
+## Partials
+
+There are page fragments that you may want to repeat on different pages. In that situation,
+you will want to use the _Partial_ concept: a _Partial_ is similar to a page (and built
+in a very similar way) that can be used multiple times in different visual elements.
+This prevents you from having to repeat yourself when creating your user interfaces.
+
+To create a _Partial_, you must call the method `(Gui.)add_partial()^` on the _Gui_ instance
+of your application. You must give this function a page definition (a string or an instance
+of `Markdown^` or `Html^`), and it returns an instance of `Partial^` that can be used
+in visual elements that use them.
+
+!!! example
+
+    Here is an example of how you would create a `Partial^`, in the situation where the
+    dialog created in the [example above](#dialogs) would be needed in different pages:
+
+    ``` py
+       ...
+       gui = Gui()
+       prompt_user = gui.add_partial(
+         """
+         Enter a name:
+    
+         <|{name}|input|>
+         """
+       )
+       gui.run()
+    ```
+
+You can take a look at the documentation of the [`dialog`](viselements/dialog.md) or 
+[`pane`](viselements/pane.md) to see how these _Partials_ can be used in pages.
 
 ## Local resources
 
