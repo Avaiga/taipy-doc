@@ -53,7 +53,7 @@ Taipy exposes multiple methods to manage the various scenarios.
 
 # Get scenario by id
 
-The first method to get a scenario is from its id by using the `taipy.get()^` method :
+The first method to get a scenario is from its id by using the `taipy.get()^` method:
 
 ```python linenums="1"
 import taipy as tp
