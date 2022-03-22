@@ -83,7 +83,7 @@ This method returns the list of all existing pipelines.
 
 # Delete a pipeline
 
-A pipeline can be deleted by using `taipy.delete^` which
+A pipeline can be deleted by using `taipy.delete()^` which
 takes the pipeline id as a parameter. The deletion is also propagated to the nested tasks, data nodes, and jobs
 if they are not shared with any other pipeline.
 

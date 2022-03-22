@@ -53,7 +53,7 @@ Taipy exposes multiple methods to manage the various scenarios.
 
 # Get scenario by id
 
-The first method to get a scenario is from its id by using the `taipy.get^` method :
+The first method to get a scenario is from its id by using the `taipy.get()^` method:
 
 ```python linenums="1"
 import taipy as tp
@@ -74,15 +74,15 @@ existing scenarios of the cycle.
 
 # Get official scenarios
 
-`taipy.get_official^` method returns the official scenario of the cycle
+The `taipy.get_official()^` method returns the official scenario of the cycle
 given as parameter.
 
-`taipy.get_official_scenarios^` returns the official scenarios for
+`taipy.get_official_scenarios()^` returns the official scenarios for
 all the existing cycles.
 
 # Promote a scenario as official
 
-To set a scenario as official, the `taipy.set_official^` method must
+To set a scenario as official, the `taipy.set_official()^` method must
 be used. It promotes the scenario given as parameter to the official scenario of its cycle. If the cycle already
 had an official scenario it will be demoted, and it will no longer be official for the cycle.
 
