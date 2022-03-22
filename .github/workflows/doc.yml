@@ -1,14 +1,14 @@
 name: Documentation Generation
 
 on:
+  push:
+    branches: [develop]
   workflow_dispatch:
     inputs:
       user-to-notify:
         description: "Github username to notify"
         required: false
         default: ""
-  push:
-    branches: [develop]
 
 jobs:
   Deploy-Doc:
