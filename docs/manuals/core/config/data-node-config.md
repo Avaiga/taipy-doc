@@ -89,13 +89,13 @@ To add a new _pickle_ data node configuration, the `taipy.configure_pickle_data_
 addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), two optional parameters can be provided.
 
--   The `path` parameter represents the file path used by Taipy to read and write the data.
+-   The _path_ parameter represents the file path used by Taipy to read and write the data.
     If the pickle file already exists (in the case of a shared input data node, for instance), it is necessary
     to provide the file path as the _path_ parameter. If no value is provided, Taipy will use an internal path
     in the Taipy storage folder (more details on the Taipy storage folder configuration available on the
     [Global configuration](global-config.md) documentation).
 
--   If the `default_data` is provided, the data node is automatically written with the corresponding
+-   If the _default_data_ is provided, the data node is automatically written with the corresponding
     value. Any serializable Python object can be used.
 
 ```python linenums="1"
@@ -133,13 +133,13 @@ two optional parameters can be provided.
 -   The `path` parameter is a mandatory parameter and represents the csv file path used by Taipy to read and write
     the data.
 
--   The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`,
-    Taipy will use the 1st row in the csv file as the header. By default, `has_header` is `True`.
+-   The _has_header_ parameter represents if the file has a header of not. If _has_header_ is `True`,
+    Taipy will use the 1st row in the csv file as the header. By default, _has_header_ is `True`.
 
--   When the `exposed_type` is given as parameter, if the `exposed_type` value provided is `numpy`, the
+-   When the _exposed_type_ is given as parameter, if the _exposed_type_ value provided is `numpy`, the
     data node will read the csv file to a numpy array. If the provided value is a custom class, data node
     will create a list of custom object with the given custom class, each object will represent a row in the csv
-    file.If `exposed_type` is not provided, the data node will read the csv file as a pandas DataFrame.
+    file.If _exposed_type_ is not provided, the data node will read the csv file as a pandas DataFrame.
 
 ```python linenums="1"
 import taipy as tp
@@ -152,13 +152,13 @@ model_cfg = tp.configure_pickle_data_node(id="sale_history",
                                           exposed_type=SaleRow)
 ```
 
-In line 4, we configure a basic csv data node with the id "historical_temperature". Its `scope` is by
-default `SCENARIO`. The path corresponds to the file \_hist_temp.csv\*. The property `has_header` being True,
+In line 4, we configure a basic csv data node with the id "historical_temperature". Its _scope_ is by
+default `SCENARIO`. The path corresponds to the file \_hist_temp.csv\*. The property _has_header_ being True,
 representing the csv file has a header.
 
 In lines 6, 7, and 8, we then add another csv data node configuration with the id "sale_history". The
 default `SCENARIO` scope is used again. Since we have a custom class pre-defined for this csv file (SaleRow), we
-provide it as the `exposed_type` parameter.
+provide it as the _exposed_type_ parameter.
 
 !!! Note
 
@@ -172,20 +172,20 @@ file data. To add a new _Excel_ data node configuration, the `taipy.configure_ex
 In addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), a mandatory and three optional parameters can be provided.
 
--   The `path` is a mandatory parameter that represents the Excel file path used by Taipy to read and write the data.
+-   The _path_ is a mandatory parameter that represents the Excel file path used by Taipy to read and write the data.
 
--   The `has_header` parameter represents if the file has a header of not. If `has_header` is `True`,
-    Taipy will use the 1st row in the Excel file as the header. By default, `has_header` is `True`.
+-   The _has_header_ parameter represents if the file has a header of not. If _has_header_ is `True`,
+    Taipy will use the 1st row in the Excel file as the header. By default, _has_header_ is `True`.
 
--   The `sheet_name` parameter represents which specific sheet in the Excel file to read. If `sheet_name`
+-   The _sheet_name_ parameter represents which specific sheet in the Excel file to read. If _sheet_name_
     is provided with a list of sheet names, it will return a dictionary with the key being the sheet name and
     the value being the data of the corresponding sheet. If a string is provided, data node will read only the
-    data of the corresponding sheet. The default value of `sheet_name` is "Sheet1".
+    data of the corresponding sheet. The default value of _sheet_name_ is "Sheet1".
 
--   When the `exposed_type` is given as parameter, if the `exposed_type` value provided is `numpy`, the data
+-   When the _exposed_type_ is given as parameter, if the _exposed_type_ value provided is `numpy`, the data
     node will read the Excel file to a numpy array. If the provided value is a custom class, data node will
     create a list of custom object with the given custom class, each object will represent a row in the Excel
-    file. If `exposed_type` is not provided, the data node will read the Excel file as a pandas DataFrame.
+    file. If _exposed_type_ is not provided, the data node will read the Excel file as a pandas DataFrame.
 
 ```python linenums="1"
 import taipy as tp
@@ -199,13 +199,13 @@ model_cfg = tp.configure_excel_data_node(id="sale_history",
                                          exposed_type=SaleRow)
 ```
 
-In line 4, we configure an Excel data node. The `id` identifier is "historical_temperature". Its `scope` is
-`SCENARIO` (default value), and the path is the file hist_temp.xlsx. With `has_header` being True, the
-Excel file must have a header. The `sheet_name` is not provided so Taipy will use the default value "Sheet1".
+In line 4, we configure an Excel data node. The _id_ identifier is "historical_temperature". Its _scope_ is
+`SCENARIO` (default value), and the path is the file hist_temp.xlsx. With _has_header_ being True, the
+Excel file must have a header. The _sheet_name_ is not provided so Taipy will use the default value "Sheet1".
 
-In lines 6, 7, 8, and 9, we then add another csv data node configuration. The `id` identifier is "sale_history", the
+In lines 6, 7, 8, and 9, we then add another csv data node configuration. The _id_ identifier is "sale_history", the
 default `SCENARIO` scope is used. Since we have a custom class pre-defined for this Excel file, we will provide it in
-the `exposed_type`. We also provide the list of specific sheets we want to use as the `sheet_name` parameter.
+the _exposed_type_. We also provide the list of specific sheets we want to use as the _sheet_name_ parameter.
 
 !!! Note
 
@@ -220,17 +220,17 @@ addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), multiple
 parameters can be provided.
 
--   The `db_username` parameter represents the database username that will be used by Taipy to access the database.
--   The `db_password` parameter represents the database user's password that will be used by Taipy to access the database.
--   The `db_name` parameter represents the name of the database.
--   The `db_engine` parameter represents the engine of the database.
--   The `read_query` parameter represents the SQL query that will be used by Taipy to read the data from the database.
--   The `write_table` parameter represents the name of the table in the database that Taipy will be writing the data to.
--   The `db_port` parameter represents the database port that will be used by Taipy to access the database. The
-    default value of `db_port` is 1433.
--   The `db_host` parameter represents the the database host that will be used by Taipy to access the database.
-The default value of `db_host` is "localhost".
--   The `db_driver` parameter represents the database driver that will be used by Taipy. The default value of `db_driver` is "ODBC Driver 17 for SQL Server".
+-   The _db_username_ parameter represents the database username that will be used by Taipy to access the database.
+-   The _db_password_ parameter represents the database user's password that will be used by Taipy to access the database.
+-   The _db_name_ parameter represents the name of the database.
+-   The _db_engine_ parameter represents the engine of the database.
+-   The _read_query_ parameter represents the SQL query that will be used by Taipy to read the data from the database.
+-   The _write_table_ parameter represents the name of the table in the database that Taipy will be writing the data to.
+-   The _db_port_ parameter represents the database port that will be used by Taipy to access the database. The
+    default value of _db_port_ is 1433.
+-   The _db_host_ parameter represents the the database host that will be used by Taipy to access the database.
+The default value of _db_host_ is "localhost".
+-   The _db_driver_ parameter represents the database driver that will be used by Taipy. The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
 
 ```python linenums="1"
 import taipy as tp
@@ -263,17 +263,17 @@ configuration, the `taipy.configure_generic_data_node` method can be used. In ad
 described in the previous section [Data node configuration](data-node-config.md), two optional parameters can be
 provided.
 
--   The *read_fct* is a mandatory parameter that represents a Python function provided by the user. It will
+-   The _read_fct_ is a mandatory parameter that represents a Python function provided by the user. It will
     be used to read the data.
 
--   The *write_fct* is a mandatory parameter that represents a Python function provided by the user. It will
+-   The _write_fct_ is a mandatory parameter that represents a Python function provided by the user. It will
     be used to write the data. The provided function must have at least one parameter,
     dedicated to receive data to be written.
 
--   The parameter *read_fct_params* represents the parameters that are passed to the *read_fct* to read the data.
+-   The parameter _read_fct_params_ represents the parameters that are passed to the _read_fct_ to read the data.
     It can be a *Dict* or *List* type object.
 
--   The parameter *write_fct_params* represents the parameters that are passed to the *write_fct* to write the data.
+-   The parameter _write_fct_params_ represents the parameters that are passed to the *write_fct* to write the data.
     It can be a *Dict* or *List* type object.
 
 ```python linenums="1"
@@ -287,7 +287,7 @@ date_cfg = tp.configure_generic_data_node(id="historical_data",
 ```
 
 In this small example, we configure a generic data node with the id "historical_data". We provide two
-Python functions as *read_fct* and *write_fct* parameters to read and write the data. We also provided a dictionary object for the *write_fct_params* with a path to let the *write_fct* know where to write the data.
+Python functions as _read_fct_ and _write_fct_ parameters to read and write the data. We also provided a dictionary object for the _write_fct_params_ with a path to let the _write_fct_ know where to write the data.
 
 !!! Note
 
@@ -301,7 +301,7 @@ model any data in the RAM. To add a new in_memory data node configuration, the `
 method can be used. In addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), an optional parameter can be provided.
 
--   If the `default_data` is given as parameter, the data node is automatically written with the corresponding
+-   If the _default_data_ is given as parameter, the data node is automatically written with the corresponding
     value. Any python object can be used.
 
 ```python linenums="1"
