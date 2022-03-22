@@ -227,7 +227,10 @@ parameters can be provided.
 -   The `read_query` parameter represents the SQL query that will be used by Taipy to read the data from the database.
 -   The `write_table` parameter represents the name of the table in the database that Taipy will be writing the data to.
 -   The `db_port` parameter represents the database port that will be used by Taipy to access the database. The
-    default value of `db_port` is 1433
+    default value of `db_port` is 1433.
+-   The `db_host` parameter represents the the database host that will be used by Taipy to access the database.
+The default value of `db_host` is "localhost".
+-   The `db_driver` parameter represents the database driver that will be used by Taipy. The default value of `db_driver` is "ODBC Driver 17 for SQL Server".
 
 ```python linenums="1"
 import taipy as tp
