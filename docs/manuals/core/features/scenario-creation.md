@@ -1,5 +1,5 @@
 Scenarios are the most used entities in Taipy. The
-`taipy.create_scenario()^` can be used to create a new scenario.
+`taipy.create_scenario()^` function can be used to create a new scenario.
 
 This function creates and returns a new scenario from the scenario configuration
 provided as a parameter. The scenario's creation also triggers the creation of the related entities that
