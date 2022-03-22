@@ -74,7 +74,7 @@ existing scenarios of the cycle.
 
 # Get official scenarios
 
-`taipy.get_official()^` method returns the official scenario of the cycle
+The `taipy.get_official()^` method returns the official scenario of the cycle
 given as parameter.
 
 `taipy.get_official_scenarios()^` returns the official scenarios for
