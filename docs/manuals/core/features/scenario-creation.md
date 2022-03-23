@@ -1,5 +1,5 @@
 Scenarios are the most used entities in Taipy. The
-[`taipy.create_scenario`](../../../reference/#taipy.core.taipy.create_scenario) can be used to create a new scenario.
+`taipy.create_scenario()^` function can be used to create a new scenario.
 
 This function creates and returns a new scenario from the scenario configuration
 provided as a parameter. The scenario's creation also triggers the creation of the related entities that
@@ -7,7 +7,7 @@ do not exist yet. Indeed, if the scenario has a frequency, the corresponding cyc
 it does not exist yet. Similarly, the pipelines, tasks, and data nodes nested in the scenario are created
 if they do not exist yet.
 
-The simplest way of creating a scenario is to call the `tp.create_scenario()^` method providing the scenario
+The simplest way of creating a scenario is to call the `taipy.create_scenario()^` method providing the scenario
 configuration as a parameter:
 
 ```python linenums="1"
@@ -20,7 +20,7 @@ tp.create_scenario(monthly_scenario_cfg)
 Three parameters can be given to the scenario creation method :
 
 -   `config` is a mandatory parameter of type
-    [`ScenarioConfig`](../../../reference/#taipy.core.config.scenario_config.ScenarioConfig). It corresponds to a
+    `ScenarioConfig^`. It corresponds to a
     scenario
     configuration (created in the config.py module)
 -   `creation_date` is an optional parameter of type datetime.datetime. It corresponds to the creation date of
@@ -50,4 +50,3 @@ Three parameters can be given to the scenario creation method :
     * And six data nodes (sales_history, trained_model, current_month, sales_predictions, capacity, production_orders).
 
 [:material-arrow-right: Next section presents the scenario and cycle management features](scenario-cycle-mgt.md).
-

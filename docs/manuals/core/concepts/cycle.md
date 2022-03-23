@@ -1,8 +1,8 @@
-Business problems are often recurrent. A [Cycle](../../../reference/#taipy.core.cycle.cycle.Cycle)
+Business problems are often recurrent. A `Cycle^`
 (or work cycle) represents an iteration of such a recurrent work
 pattern. Each _cycle_ has a start date and a duration that depends on the frequency on which a user must publish
 a scenario in production. In Taipy, a _cycle_ duration depends on the
-[Frequency](../../../reference/#taipy.core.common.frequency.Frequency) of the scenarios, which is among :
+`Frequency^` of the scenarios, which is among:
 
 - `Frequency.DAILY`
 - `Frequency.WEEKLY`
@@ -11,7 +11,8 @@ a scenario in production. In Taipy, a _cycle_ duration depends on the
 - `Frequency.YEARLY`
 
 Each recurrent scenario is attached to a _cycle_. In other words, each _cycle_ contains multiple scenarios. At the end
-of a cycle (start date + duration), only one of the scenarios can be applied in production. This scenario is called _official scenario_. There is only one _official scenario_ per cycle.
+of a cycle (start date + duration), only one of the scenarios can be applied in production. This scenario is
+called _official scenario_. There is only one _official scenario_ per cycle.
 
 !!! example
 
@@ -27,7 +28,7 @@ of a cycle (start date + duration), only one of the scenarios can be applied in 
     ![cycles](pic/cycles_grey.svg){ width="250" }
 
 The attributes of a scenario (the set of pipelines, the cycle, ... ) are populated based on the scenario configuration
-([`ScenarioConfig`](../../../reference/#taipy.core.config.scenario_config.ScenarioConfig)) that
+`ScenarioConfig^` that
 must be provided when instantiating a new scenario. (Please refer to the
 [`configuration details`](../config/scenario-config.md) documentation for more
 details on configuration).

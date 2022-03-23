@@ -42,6 +42,7 @@ if [ -d $ROOT_DIR"/taipy" ]; then
 fi
 for m in $MODULES; do
     echo Updating module $m
+    (cd $TOP_DIR/$m; git pull)
     (cd $TOP_DIR/$m; \
      tar cf - `find taipy -name \\*.py`) | (cd $ROOT_DIR;tar xf -)
     if [ $m == "taipy-gui" ]; then

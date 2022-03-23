@@ -1,4 +1,4 @@
-The [`JobConfig`](../../../reference/#taipy.core.config.job_config.JobConfig) allows the user to
+The `JobConfig^` allows the user to
 configure the Taipy behavior regarding the job executions.
 Two main modes are available in Taipy : the `standalone` and the `airflow` mode (available in the enterprise
 version only).

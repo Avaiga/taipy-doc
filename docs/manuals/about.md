@@ -15,20 +15,20 @@ back-end application, so they can quickly and easily put it into their end user'
 scientists are more autonomous. They can focus on their core skills: building the best algorithms to solve their
 business problems.
 
-[:material-arrow-right: Definition of Taipy core concepts](core/concepts/about.md),
+[:material-arrow-right: Definition of Taipy core concepts](core/concepts/index.md),
 
-[:material-arrow-right: Documentation on the python configuration](core/config/about.md),
+[:material-arrow-right: Documentation on the python configuration](core/config/index.md),
 
-[:material-arrow-right: Description of Taipy core features](core/features/about.md)
+[:material-arrow-right: Description of Taipy core features](core/features/index.md)
 
 
 ## Graphical User Interface
 
-Taipy comes with a package (`taipy.gui`) that allows for building user interfaces. The
+Taipy comes with a package (`taipy.gui^`) that allows for building user interfaces. The
 Graphical User Interface (GUI) section will provide you with all the information
 you need to create pages that you can display and interact with.
 
-[:material-arrow-right: GUI user manual](gui/user.md)
+[:material-arrow-right: GUI user manual](gui/index.md)
 
 
 ## Deployment

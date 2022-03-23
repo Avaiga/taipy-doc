@@ -1,14 +1,14 @@
 A task configuration is necessary to instantiate a [Task](../concepts/task.md). To create a
-[`TaskConfig`](../../../reference/#taipy.core.config.task_config.TaskConfig) you can use
+`TaskConfig^` you can use
 the `taipy.configure_task()^` method with the following parameters:
 
--   `id`: The id of the task configuration to be created. This id is **mandatory** and must be a unique valid Python
+- _id_: The id of the task configuration to be created. This id is **mandatory** and must be a unique valid Python
     variable name.
--   `inputs`: The inputs of the function.
--   `function`: The function to execute.
--   `outputs`: The function result(s).
+- _function_: The function to execute.
+- _inputs_: The inputs of the function.
+- _outputs_: The function result(s).
 
-Basic example:
+Here is a simple example:
 
 ```python linenums="1"
 import taipy as tp
@@ -30,7 +30,7 @@ In lines 6 and 7, two data node configurations are created. They will be used as
 result. Finally, on line 9, we create the task configuration with the id 'double_task' that represents the function
 'double' that expects a 'input' data node as an input parameter and that returns an 'output' data node.
 
-Because a Task can have several inputs and outputs, `tp.configure_task()^` can receive lists of `DataNodeConfig^`
+Because a Task can have several inputs and outputs, `taipy.configure_task()^` can receive lists of `DataNodeConfig^`
 objects.
 
 ```python

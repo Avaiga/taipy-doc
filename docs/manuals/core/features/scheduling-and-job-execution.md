@@ -1,7 +1,7 @@
 # Submit a scenario or pipeline
 
 To execute a scenario, you need to call the
-[`tp.submit`](../../../reference/#taipy.core.taipy.submit) method:
+`taipy.submit()^` method:
 ```python linenums="1"
 import taipy as tp
 from config import *
@@ -16,7 +16,7 @@ submitted.
 
 !!! Note "Other syntax."
     To submit a scenario, you can also use the method
-    [`scenario.submit()`](../../../reference/#taipy.core.scenario.scenario.Scenario.submit):
+    `Scenario.submit()^`:
     ```python linenums="1"
         import taipy as tp
         from config import *
@@ -26,7 +26,7 @@ submitted.
         scenario.submit()
     ```
 
-You can also submit just a single pipeline with the same [`tp.submit`](../../../reference/#taipy.core.taipy.submit)
+You can also submit just a single pipeline with the same `taipy.submit()^`
 method:
 
 ```python linenums="1"
@@ -38,11 +38,11 @@ pipeline = scenario.sales_pipeline
 tp.submit(pipeline)
 ```
 In line 5, we retrieve the pipeline named `sales_pipeline` from the created scenario. In line 6, we submit only this
-pipeline for execution. The `tp.submit()` method triggers the submission of all the pipeline's tasks.
+pipeline for execution. The `taipy.submit()^` method triggers the submission of all the pipeline's tasks.
 
 !!! Note "Other syntax."
     To submit a pipeline, you can also use the method
-    [`pipeline.submit()`](../../../reference/#taipy.core.pipeline.pipeline.Pipeline.submit):
+    `Pipeline.submit()^`:
     ```python linenums="1"
         import taipy as tp
         from config import *
@@ -55,7 +55,7 @@ pipeline for execution. The `tp.submit()` method triggers the submission of all 
 # Job
 
 Each time a task is submitted (through a scenario or a pipeline submission), a new
-[`Job`](../../../reference/#taipy.core.job.job.Job) entity is instantiated.
+`Job^` entity is instantiated.
 
 ## Job attributes
 
@@ -82,14 +82,14 @@ Here is the list of job attributes:
 
 [Jobs](../concepts/job.md) are created when a task is submitted.
 
-You can get all of them with [`taipy.get_jobs()`](../../../reference/#taipy.core.get_jobs). You can also get the latest
+You can get all of them with `taipy.get_jobs()^`. You can also get the latest
 [Job](../concepts/job.md) of a [Task](../concepts/task.md) with
-[`taipy.get_latest_job(task)`](../../reference/#taipy.core.get_latest_job).
-You can also get a job from its id by using the [`taipy.get()`](../../../reference/#taipy.core.get).
+`taipy.get_latest_job()^`.
+You can also get a job from its id by using the `taipy.get()^`.
 
 A [Job](../concepts/job.md)  can be deleted using the
-[`taipy.delete_job(job)`](../../../reference/#taipy.core.delete_job) method. You can also delete all jobs with
-[`taipy.delete_jobs()`](../../../reference/#taipy.core.delete_jobs).
+`taipy.delete_job()^` method. You can also delete all jobs with
+`taipy.delete_jobs()^`.
 
 Delete a [Job](../concepts/job.md) can raise an `JobNotDeletedException` if the status of the
 [Job](../concepts/job.md) is not `SKIPPED`, `COMPLETED` or `FAILED`. You can overcome this behaviour by forcing the

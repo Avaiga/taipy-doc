@@ -1,4 +1,4 @@
-A [Task](../../../reference/#taipy.core.task.task.Task) is a runnable python code provided by the developer user
+A `Task^` is a runnable python code provided by the developer user
 (typically
 a data scientist). It represents one step among the various data processing steps the user is working on. Concretely, a
 _task_ means a python function that can be executed.
@@ -10,7 +10,7 @@ Since a _task_ represents a function, it can take a set of parameters as input a
 Each parameter and each result is modeled as a data node.
 
 The attributes of a task (the input data nodes, the output data nodes, the python function) are populated based on
-the task configuration ([`TaskConfig`](../../../reference/#taipy.core.config.task_config.TaskConfig)) that
+the task configuration `TaskConfig^` that
 must be provided when instantiating a new task. (Please refer to the
 [`configuration details`](../config/task-config) documentation for more
 details on configuration).

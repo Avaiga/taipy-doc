@@ -3,7 +3,7 @@ site_name: Taipy
 repo_url: https://github.com/avaiga/taipy
 repo_name: taipy
 #strict: true
-copyright: © 2022 Avaiga
+copyright: © [YEAR] Avaiga
 nav:
   - Home: index.md
   - 'Getting started':
@@ -13,7 +13,7 @@ nav:
     - "About Taipy's User Manual": 'manuals/about.md'
     - Taipy core:
         - 'Concepts':
-            - 'About': 'manuals/core/concepts/about.md'
+            - 'manuals/core/concepts/index.md'
             - 'Data node': 'manuals/core/concepts/data-node.md'
             - 'Task': 'manuals/core/concepts/task.md'
             - 'Job': 'manuals/core/concepts/job.md'
@@ -22,7 +22,7 @@ nav:
             - 'Cycle': 'manuals/core/concepts/cycle.md'
             - 'Scope': 'manuals/core/concepts/scope.md'
         - 'Configuration':
-            - 'About': 'manuals/core/config/about.md'
+            - 'manuals/core/config/index.md'
             - 'Data node configs': 'manuals/core/config/data-node-config.md'
             - 'Task configs': 'manuals/core/config/task-config.md'
             - 'Pipeline configs': 'manuals/core/config/pipeline-config.md'
@@ -32,7 +32,7 @@ nav:
             - 'Config checker': 'manuals/core/config/config-checker.md'
             - 'Advanced configuration': 'manuals/core/config/advanced-config.md'
         - 'Features':
-          - 'About': 'manuals/core/features/about.md'
+          - 'manuals/core/features/index.md'
           - 'Scenario creation': 'manuals/core/features/scenario-creation.md'
           - 'Scenario and cycle management': 'manuals/core/features/scenario-cycle-mgt.md'
           - 'Pipeline management': 'manuals/core/features/pipeline-mgt.md'
@@ -40,18 +40,17 @@ nav:
           - 'Data node management': 'manuals/core/features/data-node-mgt.md'
           - 'Scheduling and job execution': 'manuals/core/features/scheduling-and-job-execution.md'
     - Graphical User Interface:
-        - 'About': 'manuals/gui/user.md'
-        - 'Pages': 'manuals/gui/user_pages.md'
+        - manuals/gui/index.md
+        - 'Pages': 'manuals/gui/pages.md'
         - 'Visual Elements':
-           - 'Introduction': 'manuals/gui/user_viselements.md'
-           - 'Controls': 'manuals/gui/user_controls.md'
-           - 'Blocks': 'manuals/gui/user_blocks.md'
-        - 'Binding variables': 'manuals/gui/user_binding.md'
-        - 'Styling': 'manuals/gui/user_styling.md'
-        - 'Callbacks': 'manuals/gui/user_callbacks.md'
-        - 'Dialogs': 'manuals/gui/user_dialogs.md'
-        - 'Notifications': 'manuals/gui/user_notifications.md'
-        - 'GUI References': 'manuals/gui/user_gui.md'
+           - 'Visual Elements': 'manuals/gui/viselements/index.md'
+           - 'Controls': 'manuals/gui/controls.md'
+           - 'Blocks': 'manuals/gui/blocks.md'
+        - 'Binding variables': 'manuals/gui/binding.md'
+        - 'Styling': 'manuals/gui/styling.md'
+        - 'Callbacks': 'manuals/gui/callbacks.md'
+        - 'Notifications': 'manuals/gui/notifications.md'
+        - 'Configuration': 'manuals/gui/configuration.md'
     - Docker:
         - 'Standalone Application': 'manuals/docker/standalone.md'
         - 'Running with Airflow': 'manuals/docker/airflow.md'
