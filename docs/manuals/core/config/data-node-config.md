@@ -271,10 +271,11 @@ provided.
     dedicated to receive data to be written.
 
 -   The parameter _read_fct_params_ represents the parameters that are passed to the _read_fct_ to read the data.
-    It can be a *Dict* or *List* type object.
+    It must be a *List* type object.
 
--   The parameter _write_fct_params_ represents the parameters that are passed to the *write_fct* to write the data.
-    It can be a *Dict* or *List* type object.
+-   The parameter _write_fct_params_ represents the parameters that are passed to the _write_fct_ to write the data.
+    It must be a *List* type object.
+
 
 ```python linenums="1"
 import taipy as tp
@@ -283,11 +284,13 @@ from taipy import Scope
 date_cfg = tp.configure_generic_data_node(id="historical_data",
                                           read_fct=read_data,
                                           write_fct=write_data,
-                                          write_fct_params={'path': '../path/'})
+                                          write_fct_params=['../path/'])
 ```
 
 In this small example, we configure a generic data node with the id "historical_data". We provide two
-Python functions as _read_fct_ and _write_fct_ parameters to read and write the data. We also provided a dictionary object for the _write_fct_params_ with a path to let the _write_fct_ know where to write the data.
+Python functions as _read_fct_ and _write_fct_ parameters to read and write the data. We also provided a list 
+object for the _write_fct_params_ with a path to let the _write_fct_ know where to write the data.
+
 
 !!! Note
 
