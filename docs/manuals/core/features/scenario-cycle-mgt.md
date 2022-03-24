@@ -6,7 +6,7 @@ A scenario also holds various properties accessible as an attribute of the scena
 
 - `scenario.config_id` is the id of the scenario configuration.
 - `scenario.creation_date` corresponds to the date-time provided at the creation.
-- `scenario.is_official` equals True if it is an official scenario. False otherwise.
+- `scenario.is_primary` equals True if it is a primary scenario. False otherwise.
 - `scenario.subscribers` is the list of callbacks representing the subscribers.
 - `scenario.properties` is the complete dictionary of the scenario properties. It includes a copy of the properties
   of the scenario configuration, in addition to the properties provided at the creation and at runtime.
@@ -30,8 +30,8 @@ A scenario also holds various properties accessible as an attribute of the scena
     scenario.config_name
     # The creation date is the date-time provided at the creation. It equals datetime(2022, 1, 1)
     scenario.creation_date
-    # The is_official property equals `True` since it is the only scenario of the cycle.
-    scenario.is_official
+    # The is_primary property equals `True` since it is the only scenario of the cycle.
+    scenario.is_primary
     # There was no subscription, so subscribers is an empty list
     scenario.subscribers # []
     # The properties dictionary equals {"name": "Scenario for January"}. It contains all the properties,
@@ -72,19 +72,19 @@ All the scenarios can be retrieved using the method `taipy.get_scenarios()^`.
 This method returns the list of all existing scenarios. If a cycle is given as parameter, the list contains all the
 existing scenarios of the cycle.
 
-# Get official scenarios
+# Get primary scenarios
 
-The `taipy.get_official()^` method returns the official scenario of the cycle
+The `taipy.get_primary()^` method returns the primary scenario of the cycle
 given as parameter.
 
-`taipy.get_official_scenarios()^` returns the official scenarios for
+`taipy.get_primary_scenarios()^` returns the primary scenarios for
 all the existing cycles.
 
-# Promote a scenario as official
+# Promote a scenario as primary
 
-To set a scenario as official, the `taipy.set_official()^` method must
-be used. It promotes the scenario given as parameter to the official scenario of its cycle. If the cycle already
-had an official scenario it will be demoted, and it will no longer be official for the cycle.
+To set a scenario as primary, the `taipy.set_primary()^` method must
+be used. It promotes the scenario given as parameter to the primary scenario of its cycle. If the cycle already
+had a primary scenario it will be demoted, and it will no longer be primary for the cycle.
 
 # Delete a scenario
 
