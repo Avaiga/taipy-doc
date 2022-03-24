@@ -2,12 +2,12 @@
 
 Thanks for your interest in helping improve Taipy!
 
-There are multiples way to contribute to Taipy, code but also reporting bugs, creating feature requests, helping other users in our forums, Stack Overflow, etc.
+There are multiple ways to contribute to Taipy, code, but also reporting bugs, creating feature requests, helping other users in our forums, Stack Overflow, etc.
 
 Today the only way to communicate with the Taipy team is by Github issues.
 
 
-## Never contribute on an open source project before ?
+## Never contributed on an open source project before ?
 
 Have a look on this [Github documentation](https://docs.github.com/en/get-started/quickstart/contributing-to-projects).
 
@@ -17,38 +17,38 @@ Have a look on this [Github documentation](https://docs.github.com/en/get-starte
 Reporting bugs is through [GitHub issues](https://github.com/Avaiga/taipy/issues).
 
 Please report relevant information and preferably code that exhibits the
-problem. We provide Templates for helping you to propose a comprehensive issue.
+problem. We provide templates to help you to present the issue in a comprehensive way.
 
 The Taipy team will analyse and try to reproduce the bug to provide feedback.
 If confirmed, we will add a priority to the issue and add it in our backlog. Feel free to propose a pull request to fix it.
 
 ## Issue reporting, feedback, proposal, design or any other comment
 
-Any feedback or proposal are greatly appreciated!
-Do not hesitate to create a issue with the appropriate template on [GitHub](https://github.com/Avaiga/taipy/issues).
+Any feedback or proposal is greatly appreciated!
+Do not hesitate to create an issue with the appropriate template on [GitHub](https://github.com/Avaiga/taipy/issues).
 
-The taipy team will analyse your issue and return to you in our best effort.
+The Taipy team will analyse your issue and return to you as soon as possible.
 
 
 ## Implement Features
 
-Taipy team managed its backlog in private. Each issue that will be done during our current sprint is labelled with
+The Taipy team manages its backlog in private. Each issue that will be done during our current sprint is labelled with
 `current sprint`. Please, do not work on it, the Taipy team is on it.
 
 
 ## Improve Documentation
 
-Do not hesitate to create issue or pull request directly on the [`taipy-doc` repository directly](https://github.com/Avaiga/taipy-doc).
+Do not hesitate to create an issue or pull request directly on the [`taipy-doc` repository directly](https://github.com/Avaiga/taipy-doc).
 
 
 
 ## Code organisation
 
-Taipy is organised in four main repository:
+Taipy is organised in four main repositories:
 - [taipy-core](https://github.com/Avaiga/taipy-core) labelled as `back-end`.
 - [taipy-gui](https://github.com/Avaiga/taipy-gui) labelled as `front-end`.
 - [taipy-rest](https://github.com/Avaiga/taipy-rest) labelled as `rest-api`.
-- [taipy](https://github.com/Avaiga/taipy) bring previous package in a single one. Labelled as `taipy`.
+- [taipy](https://github.com/Avaiga/taipy) brings previous packages in a single one. Labelled as `taipy`.
 
 
 ## Coding style and best practices
@@ -62,19 +62,18 @@ Taipy's repositories follow the [PEP 8](https://www.python.org/dev/peps/pep-0008
 ### Git branches
 
 All new development happens in the `develop` branch. All pull requests should target that branch.
-We are following a strict branch naming convetion based on the pattern: `<type>/#<issueId>[IssueSummary]`.
+We are following a strict branch naming convention based on the pattern: `<type>/#<issueId>[IssueSummary]`.
 
 Where:
 - `<type>` would be one of:
     - feature: new feature implementation, or improvement of a feature.
     - fix: bug fix.
-    - review: change provoked by some review comment no immediately taken care of.
+    - review: change provoked by review comment not immediately taken care of.
     - refactor: refactor of a piece of code.
     - doc: doc changes (complement or typo fixes…).
-    - build: Things that have to do with the build process, generally.
-    - qa: QA-related issues (tests, coverage…).
+    - build: in relation with the build process.
 - `<issueId>` is the processed issue identifier. The advantage of explicitly indicating the issue number is that in GitHub, a pull request page shows a direct link to the issue description.
-- `[IssueSummary]` is a (very) short summary of the issue topic, not including spaces, using Camel case or lower-case, dash-separated words. This summary, with its dash (‘-’) symbol prefix, is optional.
+- `[IssueSummary]` is a short summary of the issue topic, not including spaces, using Camel case or lower-case, dash-separated words. This summary, with its dash (‘-’) symbol prefix, is optional.
 
 
 ## Contribution workflow
@@ -96,7 +95,7 @@ Find an issue without the label `current sprint` and add a comment on it to info
      pipenv run python -m pre-commit install
    ```
 
-4. Make the change and create a [pull request from your fork](<https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork>).
+4. Make the change and create a [pull request from your fork](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
    Keep your pull request in __draft__ until your work is finished.
    Do not hesitate to add a comment for help or questions.
    Before you submit a pull request read to review from your forked repo, check that it meets these guidelines:
@@ -106,7 +105,7 @@ Find an issue without the label `current sprint` and add a comment on it to info
     - pre-commit works - without mypy error.
     - Github actions are passing.
 
-5. The taipy team will have a look at your Pull Request and will give feedback. If every requirement are valid, your work will be added in the next
+5. The taipy team will have a look at your Pull Request and will give feedback. If every requirement is valid, your work will be added in the next
    release, congratulation!
 
 
@@ -114,10 +113,10 @@ Find an issue without the label `current sprint` and add a comment on it to info
 
 Taipy comes with multiple optional packages. You can find the list directly in the product or Taipy's packages.
 The back-end Pipfile does not install by default optional packages due to `pyodbc` requiring a driver's manual installation. This is not
-the behaviour for the front-end that install all optional packages through the Pipfile.
+the behaviour for the front-end that installs all optional packages through its Pipfile.
 
 If you are a contributor on Taipy, be careful with dependencies, do not forget to install or uninstall depending on
 your issue.
 
 If you need to add to Taipy a new dependency, do not forget to add it in the `Pipfile` and the `setup.py`.
-Keep in mind that dependency is a vector of attack. Taipy team limit the usage of external dependency at the minimum.
+Keep in mind that dependency is a vector of attack. The Taipy team limits the usage of external dependencies at the minimum.
