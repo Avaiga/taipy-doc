@@ -104,6 +104,10 @@ fragment similar to:
     "_don't&blank;_" or "_dont&blank;_" (including the trailing space character) then no
     property value is expected, and the property value is set to `False`.
 
+!!! note "Unknown properties"
+    If you set a property that a visual element does not recognize, it is
+    ignored without any warning.
+
 #### Some examples
 
 !!! example "Multiple properties"

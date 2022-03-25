@@ -49,9 +49,13 @@ will be displayed on your page.
         right-justification format (`{string:>n}`) does not impact the resulting
         display.
 
+## List of values
+
+TODO
+
 ## Lambda expressions
 
 Some control properties can be assigned lambda expression to simplify the
 code.
 
-!!! abstract "TODO: provide a simple example of a lambda expression usage"
+TODO
