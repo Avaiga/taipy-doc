@@ -1,6 +1,6 @@
 For Taipy to instantiate a [Data node](../concepts/data-node.md), a data node configuration must be provided.
 `DataNodeConfig^` is used to configure the various data nodes Taipy will manipulate. To configure a new
-`DataNodeConfig^`, you can use the function `configure_data_node()^`.
+`DataNodeConfig^`, you can use the function `taipy.configure_data_node()^`.
 
 ```python linenums="1"
 import taipy as tp
@@ -26,7 +26,7 @@ More optional attributes are available on data nodes. Here is the list of these 
     As explained in the following subsections, depending on the _storage_type_, other configuration attributes must
     be provided in the parameter _properties_ parameter.
 
--   Any other custom attribute can be provided through the oaramter _properties_, which is
+-   Any other custom attribute can be provided through the parameter _properties_, which is
     a dictionary (a description, a tag, etc.)<br/>
     All the properties are given to the data nodes instantiated from this data node configuration.<br/>
     This dictionary _properties_ is also used to configure the parameters specific to each storage type.
@@ -288,7 +288,7 @@ date_cfg = tp.configure_generic_data_node(id="historical_data",
 ```
 
 In this small example, we configure a generic data node with the id "historical_data". We provide two
-Python functions as _read_fct_ and _write_fct_ parameters to read and write the data. We also provided a list 
+Python functions as _read_fct_ and _write_fct_ parameters to read and write the data. We also provided a list
 object for the _write_fct_params_ with a path to let the _write_fct_ know where to write the data.
 
 
