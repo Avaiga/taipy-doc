@@ -8,7 +8,7 @@ change those variable values.
 Consider the following application:
 
 ```py linenums="1"
-from taipy.gui import Gui
+from taipy import Gui
 
 x = 1234
 
@@ -50,6 +50,10 @@ will be displayed on your page.
         display.
 
 ## List of values
+
+TODO
+
+## Tabular values
 
 TODO
 

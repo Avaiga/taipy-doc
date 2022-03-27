@@ -79,21 +79,24 @@ Here is the list of the configuration parameters you can use in
      option when launching your application.
    - _single_client_ (bool, default: False): set to True if only a single client can connect.
      False indicates that multiple clients can connect to the server.
-   - _propagate_ (bool, default: True): TODO
+   - _propagate_ (bool, default: True): the default value that will be used for every
+     _propagate_ property value, for all controls. Please look at the section on the
+     [_propagate_ propery](viselements/#the-propagate-property) for details).
    - _time_zone_ (str, default: "client"): indicates how date and time values should be
      interpreted.<br/>
      You can use a TZ database name (as listed in [Time zones list on Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
      or one of the following values:
-      - _"client"_ indicates that the time zone to be used is the Web client's.
-      - _"server"_ indicates that the time zone to be used is the Web server's.
+     - _"client"_ indicates that the time zone to be used is the Web client's.
+     - _"server"_ indicates that the time zone to be used is the Web server's.
    - _theme_ (t.Union[t.Dict[str, t.Any], None]): TODO
    - _theme[light]_ (t.Union[t.Dict[str, t.Any], None]): TODO
    - _theme[dark]_ (t.Union[t.Dict[str, t.Any], None]): TODO
    - _use_arrow_ (bool, default: False): indicates, when True, that you want to use the
-      [Apache Arrow](https://arrow.apache.org/) technology to serialize data to Taipy
-      clients. This allows for better performance in some situations.
+     [Apache Arrow](https://arrow.apache.org/) technology to serialize data to Taipy
+     clients. This allows for better performance in some situations.
    - _upload_folder_ (str or None, default: None): the local path where files are uploaded,
-     when using the [`file_selector`](viselements/file_selector.md) control.
+     when using the [`file_selector`](viselements/file_selector.md) control.<br/>
+     The default value is the temp directory on the system where the application runs.
    - _data_url_max_size_ (int or None): the size below which the upload of file content is
      performed as inline data. If a file content exceeds that size, it will actually create
      a physical file on the server for your application to use. This upload mechanism is
@@ -135,7 +138,7 @@ Enter the following code into the first Notebook cell:
 ```py linenums="1"
 from taipy.gui import Gui, Markdown
 
-page=Markdown("""
+page = Markdown("""
 # Taipy in a Notebook
 
 Value: <|{value}|>
@@ -145,11 +148,14 @@ Set: <|{value}|slider|>
 
 value = 10
 
-gui=Gui(page)
+gui = Gui(page)
 gui.run()
 ```
 
 As you can see, we create and run our `Gui^` instance in lines 13 and 14.
+
+Also note that we use the `Markdown^` class explicitly. That is because later
+in our code, we will want to modify the content of the page.
 
 Run the cell. The output shows that a server was started (usually on
 _http://127.0.0.1:5000_), hosting the 'Taipy' Flask app.<br/>
@@ -164,26 +170,35 @@ You can witness the user interface update when you change a variable
 on the fly. In the context of Notebooks, you can directly access the
 variables that are bound to the user interface:
 
-Enter the following line into a new cell:
-```py
-gui.state.value=50
-```
-When you run this cell, the new value is reflected both in
-the text and the slider.
-
-### Updating pages
+### Updating variables
 
 The point of using Notebooks (besides making it possible to provide explanatory
 text along with the code in a single document) is to allow for changing variables
 on the fly and see the impact of these changes immediately. Let's see how we can
 use that feature with Taipy.
 
+Enter the following line into a new cell:
+```py
+gui.state.value = 50
+```
+When you run this cell, the new value is reflected both in
+the text and the slider.
+
+!!! important "The gui.state property"
+    This property is provided **only** in the context of Notebooks, where
+    there is a single connection to the server, allowing to access a single
+    '_state_'.
+
+### Updating pages
+
+Pages can also be updated on-the-fly.
+
 In another cell, enter the following text:
 
 ```py
 import math
 
-xrange= range(0, 720)
+xrange = range(0, 720)
 
 def compute_data(a):
     return [   a    * math.cos(2 * math.pi * x / 100) +
