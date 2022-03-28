@@ -1,6 +1,6 @@
-__taipy-rest__ provides a Flask Api built on top of __taipy-core__ for you to use Taipy via a REST Api.
+__taipy-rest__ is a python library built on top of [__taipy-core__](../about.md#taipy-core). Its purpose is to automate the use of Taipy core features by providing a runnable Flask Application exposing REST APIs.
 
-This project is meant to be used as a complement for __taipy-core__ and its goal is to enable automation through REST APIs of processes built on taipy.
+It is particularly useful when it comes to integrating a Taipy application in a more complex IT ecosystem.
 
 
 ## What is a Taipy REST Api
