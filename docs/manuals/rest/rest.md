@@ -9,7 +9,7 @@ Taipy REST Api allows developers to create, read, update, run and remove Taipy e
 
 ## How it works
 
-1. Configure your __taipy-core__ application. For more details on Taipy Core configuration, please refer to the [Core configuration documentation](../core/config/index.md). 
+1. Configure your __taipy-core__ application. For more details on Taipy Core configuration, please refer to the [Core configuration documentation](../core/config/index.md).
 At this stage, a `(taipy.core.config.)Config^` singleton must have been instantiated.
 
 2. Configure __taipy-rest__ environment
@@ -17,3 +17,8 @@ At this stage, a `(taipy.core.config.)Config^` singleton must have been instanti
     - *SECRET_KEY*: to set the secret key of the server
 
 3. Run **taipy-rest**
+
+```
+import taipy as tp
+tp.rest.run()
+```
