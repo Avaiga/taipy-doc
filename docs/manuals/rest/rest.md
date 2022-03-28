@@ -5,7 +5,7 @@ This project is meant to be used as a complement for __taipy-core__ and its goal
 
 ## What is a Taipy REST Api
 
-Taipy REST Api allows developers to create, update and remove Taipy objects including scenarios, pipelines, tasks, etc. through a REST Api. For more details please refer to [Taipy concept](../core/concepts/index.md).
+Taipy REST Api allows developers to create, read, update, run and remove Taipy entities (including scenarios, pipelines, tasks, data nodes) through REST APIs. For more details about taipy-core entities, please refer to [Core concepts documentation](../core/concepts/index.md).
 
 ## How it works
 
