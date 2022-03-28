@@ -15,7 +15,5 @@ At this stage, a `(taipy.core.config.)Config^` singleton must have been instanti
 2. Configure __taipy-rest__ environment
     - *FLASK_ENV*: set *FLASK_ENV* to _"development"_ to set the Flask server to debug mode
     - *SECRET_KEY*: to set the secret key of the server
-    - *SQLALCHEMY_DATABASE_URI*: to set the URI to a SQL database
-    - *TAIPY_SETUP_FILE*: to set the path to the Taipy config file
 
 3. Run **taipy-rest**
