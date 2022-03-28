@@ -9,7 +9,8 @@ Taipy REST Api allows developers to create, read, update, run and remove Taipy e
 
 ## How it works
 
-1. Create and provide **taipy-rest** with a Taipy config. [(Details and examples for creating configs)](../core/config/index.md)
+1. Configure your __taipy-core__ application. For more details on Taipy Core configuration, please refer to the [Core configuration documentation](../core/config/index.md). 
+At this stage, a `(taipy.core.config.)Config^` singleton must have been instantiated.
 
 2. Configure __taipy-rest__ environment
     - *FLASK_ENV*: set *FLASK_ENV* to _"development"_ to set the Flask server to debug mode
