@@ -5,7 +5,7 @@ It is particularly useful when it comes to integrating a Taipy application in a 
 
 ## What is a Taipy REST API
 
-Taipy REST API allows developers to create, read, update, run and remove Taipy entities (including scenarios, pipelines, tasks, data nodes) through REST APIs. For more details about taipy-core entities, please refer to [Core concepts documentation](../core/concepts/index.md).
+Taipy REST API allows developers to create, read, update, run and remove Taipy entities (including scenarios, pipelines, tasks, data nodes) through REST APIs. For more details about Taipy entities, please refer to [Core concepts documentation](../core/concepts/index.md).
 
 ## How it works
 
