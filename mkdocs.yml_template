@@ -39,7 +39,7 @@ nav:
           - 'Task management': 'manuals/core/features/task-mgt.md'
           - 'Data node management': 'manuals/core/features/data-node-mgt.md'
           - 'Scheduling and job execution': 'manuals/core/features/scheduling-and-job-execution.md'
-    - 'Core REST Api':
+    - 'Taipy as REST API':
         - 'manuals/rest/rest.md'
         - 'Endpoints example': 'manuals/rest/endpoints.md'
     - Graphical User Interface:
