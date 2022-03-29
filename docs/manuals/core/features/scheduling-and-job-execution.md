@@ -1,4 +1,4 @@
-# Submit a scenario or pipeline
+# Submit a scenario, pipeline or task.
 
 To execute a scenario, you need to call the
 `taipy.submit()^` method:
@@ -51,6 +51,32 @@ pipeline for execution. The `taipy.submit()^` method triggers the submission of 
         pipeline = scenario.sales_pipeline
         pipeline.submit()
     ```
+
+You can also submit just a single task with the same `taipy.submit()^` method:
+
+```python linenums="1"
+import taipy as tp
+from config import *
+
+scenario = tp.create_scenario(monthly_scenario_cfg)
+task = scenario.predicting
+tp.submit(task)
+```
+In line 5, we retrieve the task named `predicting` from the created scenario. In line 6, we submit only this
+task for execution.
+
+!!! Note "Other syntax."
+    To submit a task, you can also use the method
+    `Task.submit()^`:
+    ```python linenums="1"
+        import taipy as tp
+        from config import *
+
+        scenario = tp.create_scenario(monthly_scenario_cfg)
+        task = scenario.predicting
+        task.submit()
+    ```
+
 
 # Job
 

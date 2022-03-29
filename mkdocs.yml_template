@@ -50,9 +50,9 @@ nav:
            - 'Controls': 'manuals/gui/controls.md'
            - 'Blocks': 'manuals/gui/blocks.md'
         - 'Binding variables': 'manuals/gui/binding.md'
-        - 'Styling': 'manuals/gui/styling.md'
         - 'Callbacks': 'manuals/gui/callbacks.md'
         - 'Notifications': 'manuals/gui/notifications.md'
+        - 'Styling': 'manuals/gui/styling.md'
         - 'Configuration': 'manuals/gui/configuration.md'
     - Docker:
         - 'Standalone Application': 'manuals/docker/standalone.md'
