@@ -24,12 +24,15 @@ path to the file and the python class used for deserialization.
 
 !!! example "Let's take a realistic example."
 
-    Let's assume we want to build an application to predict the monthly sales demand  in order to adjust production
+    Let's assume we want to build an application to predict the monthly sales demand in order to adjust production
     planning, constrained by some capacity.
+
+    The flowchart below represents the various data nodes we want to be processed byt the tasks (in orange).
 
     ![tasks and data nodes](pic/tasks_and_data_nodes.svg){ align=left }
 
-    For that purpose, we have six data nodes modeling the data. One each for the sales history, the trained model,
+    For that purpose, we have six data nodes modeling the data (the dark blue boxes). One each for the sales history,
+the trained model,
     the current month, the sales predictions, the production capacity, and the production orders.
 
 !!! Note
