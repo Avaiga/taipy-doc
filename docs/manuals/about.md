@@ -5,15 +5,14 @@ For each topic, we are trying to provide as many examples as possible so that
 you as a Taipy user can perform a specific task.
 
 If you are just starting with Taipy, you may want to look at the [Getting Started document](../getting_started/installation.md)
-in order to see a complete example of a complete Taipy application, described step-by-step.
+in order to see a step-by-step example of a complete Taipy application.
 
 ## Taipy Core
 
-The Taipy core package is a python library made to create complete back-end applications around decision-making
+The Taipy core package is a python library made to build powerful back-end applications around decision-making
 algorithms. It provides the necessary tools to help data scientists transform their algorithms into a complete
-back-end application, so they can quickly and easily put it into their end user's hands. Thanks to Taipy core, data
-scientists are more autonomous. They can focus on their core skills: building the best algorithms to solve their
-business problems.
+back-end application, so it can be swiftly deployed to users around the world. Thanks to Taipy core, data scientists
+can focus more on building the best algorithms to solve problems.
 
 [:material-arrow-right: Definition of Taipy core concepts](core/concepts/index.md),
 
