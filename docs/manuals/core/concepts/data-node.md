@@ -54,4 +54,4 @@ that must be provided when instantiating a new data node. (Please refer to the
 [`configuration details`](../config/data-node-config.md) documentation for more
 details on configuration).
 
-[:material-arrow-right: Next section introduces the Task concept](task.md).
+[:material-arrow-right: The next section introduces the Task concept](task.md).

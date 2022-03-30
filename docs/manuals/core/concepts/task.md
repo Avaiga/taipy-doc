@@ -35,4 +35,4 @@ the task configuration `TaskConfig^` that must be provided when instantiating a 
     orders as an output data node since no task is reading it.
 
 
-[:material-arrow-right: Next section introduces the Job concept.](job.md)
+[:material-arrow-right: The next section introduces the Job concept.](job.md)
