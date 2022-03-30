@@ -178,9 +178,10 @@ In addition to the generic parameters described in the previous section
     Taipy will use the 1st row in the Excel file as the header. By default, _has_header_ is `True`.
 
 -   The _sheet_name_ parameter represents which specific sheet in the Excel file to read. If _sheet_name_
-    is provided with a list of sheet names, it will return a dictionary with the key being the sheet name and
-    the value being the data of the corresponding sheet. If a string is provided, data node will read only the
-    data of the corresponding sheet. The default value of _sheet_name_ is "Sheet1".
+    is provided with a list of sheet names, the data node will return a dictionary with the key being the sheet name and
+    the value being the data of the corresponding sheet. If a string is provided, the data node will read only the
+    data of the corresponding sheet. The default value of _sheet_name_ is None and the data node will return all sheets
+    in the provided Excel file when reading it.
 
 -   When the _exposed_type_ is given as parameter, if the _exposed_type_ value provided is `numpy`, the data
     node will read the Excel file to a numpy array. If the provided value is a custom class, data node will
