@@ -20,5 +20,6 @@ At this stage, a `(taipy.core.config.)Config^` singleton must have been instanti
 
 ```
 import taipy as tp
-tp.rest.run()
+rest_service = tp.Rest()
+rest_service.run()
 ```
