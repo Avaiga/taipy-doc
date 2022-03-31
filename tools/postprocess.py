@@ -137,7 +137,7 @@ def on_post_build(env):
                     new_content = ""
                     last_location = 0
                     for xref in XREF_RE.finditer(html_content):
-                        groups = xref.groups() # Récupération uniquement parmeters, raised, returns
+                        groups = xref.groups()
                         # function_name -> None, function_name, None, *
                         # package.function_name -> None, package, .function_name, *
                         # (package.)function_name -> '(', package, function_name, *
