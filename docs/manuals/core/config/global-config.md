@@ -8,7 +8,7 @@ Here are the (optional) configurable properties:
 - _**storage_folder**_: The folder name used to store Taipy data, its default value is ".data/". It is used in
   conjunction with the root_folder field. That means the default storage path is "./taipy/.data/".
 - _**clean_entities_enabled**_: The field to activate/deactivate the clean entities feature, its default value
-  is `ENV[TAIPY_CLEAN_ENTITIES_ENABLED]` meaning that the value is read from the `TAIPY_CLEAN_ENTITIES_ENABLED`
+  is `ENV[TAIPY_CLEAN_ENTITIES_ENABLED]:bool` meaning that the value is read from the `TAIPY_CLEAN_ENTITIES_ENABLED`
   environment variable. If the environment variable is not set, the value is False.
 - _**properties**_: The dictionary of additional properties.
 

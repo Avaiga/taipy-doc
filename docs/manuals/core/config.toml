@@ -1,0 +1,70 @@
+[TAIPY]
+
+[JOB]
+
+[DATA_NODE.sales_history]
+storage_type = "csv"
+scope = "GLOBAL"
+path = "my/file/path.csv"
+has_header = "True:bool"
+cacheable = "False:bool"
+
+[DATA_NODE.trained_model]
+storage_type = "pickle"
+scope = "CYCLE"
+cacheable = "False:bool"
+
+[DATA_NODE.current_month]
+storage_type = "pickle"
+scope = "CYCLE"
+default_data = 2020-01-01T00:00:00
+cacheable = "False:bool"
+
+[DATA_NODE.sales_predictions]
+storage_type = "pickle"
+scope = "CYCLE"
+cacheable = "False:bool"
+
+[DATA_NODE.capacity]
+storage_type = "pickle"
+scope = "SCENARIO"
+cacheable = "False:bool"
+
+[DATA_NODE.production_orders]
+storage_type = "sql"
+scope = "SCENARIO"
+db_username = "admin"
+db_password = "ENV[PWD]"
+db_name = "production_planning"
+db_host = "localhost"
+db_engine = "mssql"
+db_driver = "ODBC Driver 17 for SQL Server"
+read_query = "SELECT * from production_order"
+write_table = "production_order"
+db_port = "1433:int"
+cacheable = "False:bool"
+
+[TASK.training]
+inputs = [ "sales_history",]
+function = "<function train at 0x000002878FF9D040>"
+outputs = [ "trained_model",]
+
+[TASK.predicting]
+inputs = [ "trained_model", "current_month",]
+function = "<function predict at 0x00000287902E6160>"
+outputs = [ "sales_predictions",]
+
+[TASK.planning]
+inputs = [ "sales_predictions", "capacity",]
+function = "<function plan at 0x00000287AC01BE50>"
+outputs = [ "production_orders",]
+
+[PIPELINE.sales]
+tasks = [ "training", "predicting",]
+
+[PIPELINE.production]
+tasks = [ "planning",]
+
+[SCENARIO.scenario_configuration]
+pipelines = [ "sales", "production",]
+frequency = "MONTHLY"
