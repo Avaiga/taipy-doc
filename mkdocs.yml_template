@@ -11,7 +11,7 @@ nav:
     - 'Creating a Taipy application': 'getting_started/creating_a_taipy_application.md'
   - 'User Manual':
     - "About Taipy's User Manual": 'manuals/about.md'
-    - Taipy core:
+    - Taipy Core:
         - 'Concepts':
             - 'manuals/core/concepts/index.md'
             - 'Data node': 'manuals/core/concepts/data-node.md'

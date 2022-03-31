@@ -1,5 +1,5 @@
 __taipy-rest__ is a python library built on top of [__taipy-core__](../about.md#taipy-core). Its purpose is to
-automate the use of Taipy core features by providing a runnable application exposing REST APIs.
+automate the use of Taipy Core features by providing a runnable application exposing REST APIs.
 
 It is particularly useful when it comes to integrating a Taipy application in a more complex IT ecosystem.
 

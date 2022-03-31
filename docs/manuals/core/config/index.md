@@ -1,4 +1,4 @@
-Taipy core is an application builder that converts user algorithms into a back-end application. To build such
+Taipy Core is an application builder that converts user algorithms into a back-end application. To build such
 an application with the desired behaviors, a few Taipy entities must be configured.
 
 The following sections show how to configure a Taipy application in python. All The taipy configuration methods can

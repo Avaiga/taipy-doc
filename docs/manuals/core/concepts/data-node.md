@@ -1,4 +1,4 @@
-A datanode is one of the most important concepts in Taipy core. It does not contain the data itself, but holds all
+A datanode is one of the most important concepts in Taipy Core. It does not contain the data itself, but holds all
 the necessary information to read and write the actual data. It can be seen as a dataset descriptor or data reference.
 
 A _data node_ can reference any data:

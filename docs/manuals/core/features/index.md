@@ -1,5 +1,5 @@
-This documentation focuses on providing necessary information to use the Taipy core features, and in particular
-the capabilities related to scenario management. It is assumed that the reader already knows the [Taipy core
+This documentation focuses on providing necessary information to use the Taipy Core features, and in particular
+the capabilities related to scenario management. It is assumed that the reader already knows the [Taipy Core
 concepts](../concepts/index.md) described in a previous documentation.
 
 It is also assumed in the next sections that [`my_config.py`](../my_config.py) module contains a Taipy configuration

@@ -9,16 +9,16 @@ in order to see a step-by-step example of a complete Taipy application.
 
 ## Taipy Core
 
-The Taipy core package is a python library made to build powerful and customized data-driven back-end applications.
+The Taipy Core package is a python library made to build powerful and customized data-driven back-end applications.
 It provides the necessary tools to help data scientists transform their algorithms into a complete
-back-end application, so it can be swiftly deployed to users around the world. Thanks to Taipy core, data scientists
+back-end application, so it can be swiftly deployed to users around the world. Thanks to Taipy Core, data scientists
 can focus more on building the best algorithms to solve problems.
 
-[:material-arrow-right: Definition of Taipy core concepts](core/concepts/index.md),
+[:material-arrow-right: Definition of Taipy Core concepts](core/concepts/index.md),
 
 [:material-arrow-right: Documentation on the python configuration](core/config/index.md),
 
-[:material-arrow-right: Description of Taipy core features](core/features/index.md)
+[:material-arrow-right: Description of Taipy Core features](core/features/index.md)
 
 
 ## Graphical User Interface

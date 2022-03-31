@@ -1,4 +1,4 @@
-Taipy core is built for data scientists to turn their algorithms into real, customized applications. Taipy core
+Taipy Core is built for data scientists to turn their algorithms into real, customized applications. Taipy Core
 provides the necessary concepts for modeling, executing, and monitoring such algorithms.
 
 

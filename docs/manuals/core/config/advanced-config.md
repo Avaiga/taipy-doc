@@ -1,5 +1,5 @@
 Taipy is an application builder. The purpose of configuring the Core application is to describe the user application
-entities and how they behave at runtime. To get more information about the core concept please refer to the
+entities and how they behave at runtime. To get more information about the Core concept please refer to the
 [Core concept section](../concepts/index.md).
 
 Taipy provides four methods to configure your application :
