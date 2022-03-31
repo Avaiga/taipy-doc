@@ -11,7 +11,7 @@ A scenario configuration is necessary to instantiate a [Scenario](../concepts/sc
   nodes instantiated from the data node configuration attached to the comparator.
 - _**properties**_: A dictionary of additional properties.
 
-# Scenario configuration from pipelineConfigs
+# Scenario configuration from pipeline configurations
 Here is a simple example assuming the pipeline configuration `pipeline_config` has already been created :
 
 ```python linenums="1"
@@ -23,7 +23,7 @@ scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_confi
 In this example, we create a scenario configuration `ScenarioConfig^` from a pipeline configuration already defined.
 
 
-# Scenario configuration from taskConfigs
+# Scenario configuration from task configurations
 
 When the scenario configuration contains only one single pipeline configuration, we can also create the
 `ScenarioConfig^` from the task configurations directly.
@@ -47,7 +47,7 @@ Behind the scenes, a pipeline configuration is created. Its id will be the scena
     scenario_config = Config.configure_scenario_from_tasks("multiply_scenario", [task_config], pipeline_id="multiply_pipeline")
     ```
 
-# Recurrent scenario configuration with Cycle
+# Scenario configuration with Cycle
 
 Assuming the pipeline configuration `pipeline_config` has already been created, here is an example of a weekly
 scenario configuration :
