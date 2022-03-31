@@ -26,7 +26,13 @@ Here are the (optional) configurable properties:
 
 === "TOML configuration"
 
-    ```toml linenums="1"
+    ```python linenums="1"
+    from taipy import Config
+
+    Config.load("config.toml")
+    ```
+
+    ```toml linenums="1" title="config.toml"
 
     [TAIPY]
 
@@ -38,8 +44,7 @@ Here are the (optional) configurable properties:
     ```
 
 In this example, we set custom values for the _root_folder_, _storage_folder_, and _clean_entities_enabled_ parameters.
-Note that most of the time the default values can be used.
-
-In line 6 and 7, two custom properties are specified: a _version_name_ and an _application_name_.
+Note that most of the time the default values can be used. In line 6 and 7, two custom properties are specified: a
+_version_name_ and an _application_name_.
 
 [:material-arrow-right: The next section introduces the job scheduling configuration](job-config.md).
