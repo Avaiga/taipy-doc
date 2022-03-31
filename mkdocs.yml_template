@@ -11,6 +11,18 @@ nav:
     - 'Creating a Taipy application': 'getting_started/creating_a_taipy_application.md'
   - 'User Manual':
     - "About Taipy's User Manual": 'manuals/about.md'
+    - Taipy GUI:
+        - manuals/gui/index.md
+        - 'Pages': 'manuals/gui/pages.md'
+        - 'Visual Elements':
+           - 'Visual Elements': 'manuals/gui/viselements/index.md'
+           - 'Controls': 'manuals/gui/controls.md'
+           - 'Blocks': 'manuals/gui/blocks.md'
+        - 'Binding variables': 'manuals/gui/binding.md'
+        - 'Callbacks': 'manuals/gui/callbacks.md'
+        - 'Notifications': 'manuals/gui/notifications.md'
+        - 'Styling': 'manuals/gui/styling.md'
+        - 'Configuration': 'manuals/gui/configuration.md'
     - Taipy Core:
         - 'Concepts':
             - 'manuals/core/concepts/index.md'
@@ -32,34 +44,21 @@ nav:
             - 'Config checker': 'manuals/core/config/config-checker.md'
             - 'Advanced configuration': 'manuals/core/config/advanced-config.md'
         - 'Features':
-          - 'manuals/core/features/index.md'
-          - 'Scenario creation': 'manuals/core/features/scenario-creation.md'
-          - 'Scenario and cycle management': 'manuals/core/features/scenario-cycle-mgt.md'
-          - 'Pipeline management': 'manuals/core/features/pipeline-mgt.md'
-          - 'Task management': 'manuals/core/features/task-mgt.md'
-          - 'Data node management': 'manuals/core/features/data-node-mgt.md'
-          - 'Scheduling and job execution': 'manuals/core/features/scheduling-and-job-execution.md'
-    - 'Taipy as REST API':
+            - 'manuals/core/features/index.md'
+            - 'Scenario creation': 'manuals/core/features/scenario-creation.md'
+            - 'Scenario and cycle management': 'manuals/core/features/scenario-cycle-mgt.md'
+            - 'Pipeline management': 'manuals/core/features/pipeline-mgt.md'
+            - 'Task management': 'manuals/core/features/task-mgt.md'
+            - 'Data node management': 'manuals/core/features/data-node-mgt.md'
+            - 'Scheduling and job execution': 'manuals/core/features/scheduling-and-job-execution.md'
+    - 'Taipy REST':
         - 'manuals/rest/rest.md'
         - 'Endpoints example': 'manuals/rest/endpoints.md'
-    - Graphical User Interface:
-        - manuals/gui/index.md
-        - 'Pages': 'manuals/gui/pages.md'
-        - 'Visual Elements':
-           - 'Visual Elements': 'manuals/gui/viselements/index.md'
-           - 'Controls': 'manuals/gui/controls.md'
-           - 'Blocks': 'manuals/gui/blocks.md'
-        - 'Binding variables': 'manuals/gui/binding.md'
-        - 'Callbacks': 'manuals/gui/callbacks.md'
-        - 'Notifications': 'manuals/gui/notifications.md'
-        - 'Styling': 'manuals/gui/styling.md'
-        - 'Configuration': 'manuals/gui/configuration.md'
-    - Docker:
-        - 'Standalone Application': 'manuals/docker/standalone.md'
-        - 'Running with Airflow': 'manuals/docker/airflow.md'
     - Deployment:
-        - Prepare your application for deployment: 'manuals/deployment/prepare-taipy-for-deployment.md'
-        - Heroku:
+        - 'Prepare your application for deployment': 'manuals/deployment/prepare-taipy-for-deployment.md'
+        - 'Standalone Application on docker': 'manuals/docker/standalone.md'
+        - 'Application running with Airflow on docker': 'manuals/docker/airflow.md'
+        - 'Heroku':
             - 'Getting started': 'manuals/deployment/heroku/getting-started.md'
             - 'Setup': 'manuals/deployment/heroku/setup.md'
             - 'Based on Git': 'manuals/deployment/heroku/git.md'
