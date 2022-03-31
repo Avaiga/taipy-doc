@@ -152,13 +152,13 @@ sales_cfg = Config.configure_csv_data_node(id="sale_history",
                                            exposed_type=SaleRow)
 ```
 
-In lines 3, 4, and 5 we defined a custom class `SaleRow` representing a row of the CSV file.
+In lines 3, 4, and 5 we define a custom class `SaleRow` representing a row of the CSV file.
 
-In lines 7, 8, 9 and 10 we configured a basic csv data node with the id "historical_temperature". Its _scope_ is by
+In lines 7, 8, 9 and 10 we configure a basic csv data node with the id "historical_temperature". Its _scope_ is by
 default `SCENARIO`. The path corresponds to the file `path/hist_temp.csv`. The property _has_header_ being True,
 representing the csv file has a header.
 
-In lines 12, 13, and 14, we added another csv data node configuration with the id "sale_history". The
+In lines 12, 13, and 14, we add another csv data node configuration with the id "sale_history". The
 default `SCENARIO` scope is used again. Since we have a custom class pre-defined for this csv file (`SaleRow`), we
 provide it as the _exposed_type_ parameter.
 
@@ -207,13 +207,13 @@ sales_cfg = Config.configure_excel_data_node(id="sale_history",
                                              exposed_type=SaleRow)
 ```
 
-In lines 3, 4, and 5 we defined a custom class `SaleRow` representing a row of the Excel file.
+In lines 3, 4, and 5 we define a custom class `SaleRow` representing a row of the Excel file.
 
-In lines 7, 8, and 9, we configured an Excel data node. The _id_ identifier is "historical_temperature". Its _scope_ is
+In lines 7, 8, and 9, we configure an Excel data node. The _id_ identifier is "historical_temperature". Its _scope_ is
 `SCENARIO` (default value), and the path is the file hist_temp.xlsx. With _has_header_ being True, the
 Excel file must have a header. The _sheet_name_ is not provided so Taipy will use the default value "Sheet1".
 
-In lines 10, 11, 12, and 13, we added another excel data node configuration. The _id_ identifier is "sale_history", the
+In lines 10, 11, 12, and 13, we add another excel data node configuration. The _id_ identifier is "sale_history", the
 default `SCENARIO` scope is used. Since we have a custom class pre-defined for this Excel file, we will provide it in
 the _exposed_type_. We also provide the list of specific sheets we want to use as the _sheet_name_ parameter.
 
@@ -302,7 +302,7 @@ historical_data_cfg = Config.configure_generic_data_node(id="historical_data",
                                                          write_fct_params=['../path/'])
 ```
 
-In this small example, we configured a generic data node with the id "historical_data". We provide two
+In this small example, we configure a generic data node with the id "historical_data". We provide two
 Python functions (previously defined) as _read_fct_ and _write_fct_ parameters to read and write the data. We also
 provided a list object for the _write_fct_params_ with a path to let the _write_fct_ know where to write the data.
 

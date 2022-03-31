@@ -1,20 +1,54 @@
 A pipeline configuration is necessary to instantiate a [Pipeline](../concepts/pipeline.md). To create a
 `PipelineConfig^` you can use
-the `taipy.configure_pipeline()^` method with the following parameters:
+the `Config.configure_pipeline()^` method with the following parameters:
 
-- _id_: The id of this new pipeline configuration. This id is **mandatory** and must be a unique valid Python variable name.
-- _tasks_: The list of tasks configurations.
-- _properties_: A dictionary of additional properties.
-
-Here is a simple example using the task configuration `task_config` created in the previous example:
+- _**id**_: The id of this new pipeline configuration. This id is **mandatory** and must be a unique and valid Python
+  variable name.
+- _**tasks**_: The list of tasks configurations.
+- _**properties**_: A dictionary of additional properties.
 
 ```python linenums="1"
-import taipy as tp
+from taipy import Config
 
-pipeline_config = tp.configure_pipeline("multiply_pipeline", [task_config])
+def double(nb):
+    return nb * 2
+
+input_data_node_config = Config.configure_data_node("input", default_value=21)
+output_data_node_config = Config.configure_data_node("output")
+task_config = Config.configure_task("double_task", double, input_data_node_config, output_data_node_config)
+
+pipeline_cfg = Config.configure_pipeline("my_pipeline", [task_config])
 ```
 
-On this example, we create a pipeline config which is made of a single task configuration created
-in the previous example.
+In the previous code example, in line 10 we create a pipeline configuration with the id "my_pipeline" and made of a
+single task configuration `task_config`.
 
-[:material-arrow-right: Next section introduces the scenario configuration](scenario-config.md).
+```python linenums="1"
+from taipy import Config
+
+def double(nb):
+    return nb * 2
+
+input_data_node_config = Config.configure_data_node("input", default_value=21)
+intermediate_data_node_config = Config.configure_data_node("intermediate")
+output_data_node_config = Config.configure_data_node("output")
+first_task_config = Config.configure_task("first_double_task", double, input_data_node_config, intermediate_data_node_config)
+second_task_config = Config.configure_task("second_double_task", double, intermediate_data_node_config, output_data_node_config)
+
+other_pipeline_cfg = Config.configure_pipeline("another_pipeline", [first_task_config, second_task_config])
+```
+
+In this second code example, in line 12 we create a pipeline configuration with the id "another_pipeline" and made
+of the two task configuration created in lines 9 and 10 `first_task_config` and `second_task_config`.
+
+!!! note
+
+    Note that the order of the task_config in the list does not matter. The two following lines are equivalent.
+    ```python
+    pipeline_cfg = Config.configure_pipeline("pipeline", [first_task_config, second_task_config])
+    ```
+    ```python
+    pipeline_cfg = Config.configure_pipeline("pipeline", [second_task_config, first_task_config])
+    ```
+
+[:material-arrow-right: The next section introduces the scenario configuration](scenario-config.md).
