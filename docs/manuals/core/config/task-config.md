@@ -2,49 +2,60 @@ A task configuration is necessary to instantiate a [Task](../concepts/task.md). 
 `TaskConfig^` you can use
 the `taipy.configure_task()^` method with the following parameters:
 
-- _id_: The id of the task configuration to be created. This id is **mandatory** and must be a unique valid Python
-    variable name.
-- _function_: The function to execute.
-- _inputs_: The inputs of the function.
-- _outputs_: The function result(s).
+- _**id**_: The id of the task configuration to be created. This id is **mandatory** and must be a unique and valid
+  Python variable name.
+- _**function**_: The function to execute.
+- _**inputs**_: The inputs of the function.
+- _**outputs**_: The function result(s).
 
 Here is a simple example:
 
 ```python linenums="1"
-import taipy as tp
+from taipy import Config
 
 def double(nb):
     return nb * 2
 
-input_data_node_config = tp.configure_data_node("input", default_value=21)
-output_data_node_config = tp.configure_data_node("output")
+input_data_node_config = Config.configure_data_node("input", default_value=21)
+output_data_node_config = Config.configure_data_node("output")
 
-task_config = tp.configure_task("double_task", double, input_data_node_config, output_data_node_config)
+task_config = Config.configure_task("double_task", double, input_data_node_config, output_data_node_config)
 ```
 
-On the previous example, we created a `TaskConfig^`.
+In the previous example, we created a `TaskConfig^`.
 
-In lines 3 and 4, we define a function that we want to use in a [Task](../concepts/task.md) instantiated from the task
-config.
+In lines 3 and 4, we defined a function that we want to use in a [Task](../concepts/task.md) instantiated from the task
+config. It takes a single parameter and return a single value.
+
 In lines 6 and 7, two data node configurations are created. They will be used as the function argument and the function
 result. Finally, on line 9, we create the task configuration with the id 'double_task' that represents the function
-'double' that expects a 'input' data node as an input parameter and that returns an 'output' data node.
+'double' that expects an 'input' data node as an input parameter and returns an 'output' data node.
 
 Because a Task can have several inputs and outputs, `taipy.configure_task()^` can receive lists of `DataNodeConfig^`
 objects.
 
-```python
-import taipy as tp
+```python linenums="1"
+from taipy import Config
 
-def multiply(nb, by):
-    return nb * by
+def multiply_and_add(nb1, nb2):
+    return nb1 * nb2, nb1 + nb2
 
-nb_to_multiple = tp.configure_data_node("nb_to_multiple", default_value=21)
-multiply_by = tp.configure_data_node("multiply_by", default_value=2)
+nb_1_cfg = Config.configure_data_node("nb_1", default_value=21)
+nb_2_cfg = Config.configure_data_node("nb_2", default_value=2)
 
-output_config = tp.configure_data_node("output")
+multiplication_cfg = Config.configure_data_node("multiplication")
+addition_cfg = Config.configure_data_node("addition")
 
-task_config = tp.configure_task("foo", multiply, [nb_to_multiple, multiply_by], output_config)
+task_config = Config.configure_task("foo", multiply_and_add, [nb_1_cfg, nb_2_cfg], [multiplication_cfg, addition_cfg])
 ```
 
-[:material-arrow-right: Next section introduces the pipeline configuration](pipeline-config.md).
+In lines 3 and 4, we defined a function with two parameters and two return values.
+
+In lines 6 and 7, two data node configurations are created. They will be used as the function arguments.
+
+In line 9 and 10, two data node are configured. They will be used as the function results.
+
+Finally, in line 12, we created the task configuration with the id 'foo' representing the function
+'multiply_and_add'. It expects two 'input' data nodes and two 'output' data nodes.
+
+[:material-arrow-right: The next section introduces the pipeline configuration](pipeline-config.md).
