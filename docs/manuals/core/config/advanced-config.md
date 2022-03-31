@@ -80,9 +80,9 @@ configure new entities in your Taipy application, you can refer to the following
 # Python code configuration
 
 A code configuration can be done on a Python file directly when designing the pipelines and scenarios. This
-configuration can be done by importing through the [`taipy`](../../../reference/#taipy) API. This python configuration
-is meant to be used during the application development phase. It overrides the default configuration: if some values
-are not provided, the default configuration applies.
+configuration can be done using methods from the `Config^` class. This python configuration is meant to be used
+during the application development phase. It overrides the default configuration:
+if some values are not provided, the default configuration applies.
 
 !!! Example "Design of the application to configure"
 
