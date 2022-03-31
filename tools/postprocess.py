@@ -137,7 +137,7 @@ def on_post_build(env):
                     new_content = ""
                     last_location = 0
                     for xref in XREF_RE.finditer(html_content):
-                        groups = xref.groups()
+                        groups = xref.groups() # Récupération uniquement parmeters, raised, returns
                         # function_name -> None, function_name, None, *
                         # package.function_name -> None, package, .function_name, *
                         # (package.)function_name -> '(', package, function_name, *
@@ -234,6 +234,27 @@ def on_post_build(env):
                     if last_location:
                         file_was_changed = True
                         html_content = new_content + html_content[last_location:]
+
+                    # Ex pattern: <td><code>Optional[Union[Scenario^, Job^]]</td></code>
+                    typing_code = re.compile(r"(<td><code>)(.*\^.*)(</code></td>)")
+                    # Ex pattern: Scenario^
+                    typing_type = re.compile(r"\w+\^")
+                    for xref in typing_code.finditer(html_content):
+                        groups = xref.groups()
+                        table_line = groups[1]  # Optional[Union[Scenario^, Job^]]
+                        table_line_to_replace = "".join(groups)
+                        new_table_line = table_line_to_replace
+
+                        for type_ in typing_type.finditer(table_line):
+                            class_ = type_[0][:-1] # Remove ^
+                            packages = xrefs.get(class_)
+                            if packages:
+                                new_content = f"<a href='{rel_path}/{package}.{class_}'>{class_}</a>"
+                                new_table_line = new_table_line.replace(f"{class_}^", new_content)
+                                file_was_changed = True
+                        if file_was_changed:
+                            html_content = html_content.replace(table_line_to_replace, new_table_line)
+
                 if file_was_changed:
                     with open(filename, "w") as html_file:
                         html_file.write(html_content)
