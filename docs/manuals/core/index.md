@@ -12,5 +12,5 @@ user-defined scenarios, powerful scenario comparison, interactive data, smart sc
 
 [:material-arrow-right: Documentation on the python configuration](config/index.md),
 
-[:material-arrow-right: Description of Taipy Core entities](features/index.md)
+[:material-arrow-right: Description of Taipy Core entities](entities/index.md)
 

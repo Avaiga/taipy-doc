@@ -1,6 +1,6 @@
-# Taipy's Core features
+# Taipy's Core entities
 
-This documentation focuses on providing necessary information to use the Taipy Core features, and in particular
+This documentation focuses on providing necessary information to use the Taipy Core entities, and in particular
 the capabilities related to scenario management. It is assumed that the reader already knows the [Taipy Core
 concepts](../concepts/index.md) described in a previous documentation.
 

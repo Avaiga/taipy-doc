@@ -87,4 +87,4 @@ A pipeline can be deleted by using `taipy.delete()^` which
 takes the pipeline id as a parameter. The deletion is also propagated to the nested tasks, data nodes, and jobs
 if they are not shared with any other pipeline.
 
-[:material-arrow-right: Next section show the task management features](task-mgt.md).
+[:material-arrow-right: Next section show the task management](task-mgt.md).

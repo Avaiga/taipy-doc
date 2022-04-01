@@ -124,4 +124,4 @@ scenario.remove_tag("my_tag")
 
 You can define a list of authorized tags in the scenario configuration by specifying the value of _authorized_tags_. On the scenarios that are created from that configuration, if you add a tag that is not authorized, an exception will be raised.
 
-[:material-arrow-right: Next section presents the pipeline management features](pipeline-mgt.md).
+[:material-arrow-right: Next section presents the pipeline management](pipeline-mgt.md).

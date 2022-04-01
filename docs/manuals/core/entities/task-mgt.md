@@ -66,4 +66,4 @@ task_2 - pipeline.predicting
 
 All the jobs can be retrieved using the method `taipy.get_tasks()^`.
 
-[:material-arrow-right: Next section show the data node management features](data-node-mgt.md).
+[:material-arrow-right: Next section show the data node management](data-node-mgt.md).

@@ -125,4 +125,5 @@ parameter and writes it on the data node:
     data_node.read()
     ```
 
-[:material-arrow-right: Next section show the scheduling and job execution features](scheduling-and-job-execution.md).
+[:material-arrow-right: Next section documents the scheduling and job execution](scheduling-and-job-execution.
+md).

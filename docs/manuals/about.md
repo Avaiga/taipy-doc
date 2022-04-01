@@ -28,9 +28,9 @@ user-defined scenarios, interactive data, smart scheduling, etc.
 
 [:material-arrow-right: Definition of Taipy Core concepts](core/concepts/index.md),
 
-[:material-arrow-right: Documentation on the python configuration](core/config/index.md),
+[:material-arrow-right: Documentation on Taipy Core configuration](core/config/index.md),
 
-[:material-arrow-right: Description of Taipy Core features](core/features/index.md)
+[:material-arrow-right: Description of Taipy Core entities](core/entities/index.md)
 
 
 ## Taipy Rest

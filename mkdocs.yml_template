@@ -45,13 +45,13 @@ nav:
             - 'Config checker': 'manuals/core/config/config-checker.md'
             - 'Advanced configuration': 'manuals/core/config/advanced-config.md'
         - 'Entities':
-            - manuals/core/features/index.md
-            - 'Scenario creation': 'manuals/core/features/scenario-creation.md'
-            - 'Scenario and cycle management': 'manuals/core/features/scenario-cycle-mgt.md'
-            - 'Pipeline management': 'manuals/core/features/pipeline-mgt.md'
-            - 'Task management': 'manuals/core/features/task-mgt.md'
-            - 'Data node management': 'manuals/core/features/data-node-mgt.md'
-            - 'Scheduling and job execution': 'manuals/core/features/scheduling-and-job-execution.md'
+            - manuals/core/entities/index.md
+            - 'Entity creation': 'manuals/core/entities/scenario-creation.md'
+            - 'Scenario and cycle management': 'manuals/core/entities/scenario-cycle-mgt.md'
+            - 'Pipeline management': 'manuals/core/entities/pipeline-mgt.md'
+            - 'Task management': 'manuals/core/entities/task-mgt.md'
+            - 'Data node management': 'manuals/core/entities/data-node-mgt.md'
+            - 'Scheduling and job execution': 'manuals/core/entities/scheduling-and-job-execution.md'
     - 'Taipy REST':
         - manuals/rest/rest.md
         - 'Endpoints example': 'manuals/rest/endpoints.md'

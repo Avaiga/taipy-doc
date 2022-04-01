@@ -61,6 +61,6 @@ The purpose of this section if to define the following Taipy Core concepts.
     a same **config** can be used to instantiate multiple **entities**.
 
     More details on the **configs** are available in the [configuration documentation](../config/index.md).
-    More details on the **entities** are available in the [entities documentation](../features/index.md)
+    More details on the **entities** are available in the [entities documentation](../entities/index.md)
 
 [:material-arrow-right: Next section introduces the data node concept](data-node.md).

@@ -49,4 +49,4 @@ Three parameters can be given to the scenario creation method :
     * Three tasks (training, predicting, planning),
     * And six data nodes (sales_history, trained_model, current_month, sales_predictions, capacity, production_orders).
 
-[:material-arrow-right: Next section presents the scenario and cycle management features](scenario-cycle-mgt.md).
+[:material-arrow-right: Next section presents the scenario and cycle management](scenario-cycle-mgt.md).
