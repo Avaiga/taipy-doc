@@ -8,7 +8,7 @@ decisions.
     In our example, we want our scenario to have the two pipelines described earlier. In the flowchart below, the
     external light blue box represents my scenario that contains both pipelines.
 
-    ![scenarios](pic/scenarios.svg){ align=left }
+    ![scenarios](../pic/scenarios.svg){ align=left }
 
 A scenario represents one instance of a business problem to solve. Each new business problem instance is represented
 by a new scenario. Taipy allows us to give the end users the ability to store, edit, and execute various scenarios

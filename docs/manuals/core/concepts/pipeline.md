@@ -14,7 +14,7 @@ _pipeline_ for computing a training model, and a _pipeline_ dedicated to scoring
     In fact, the two pipelines can be customized to represent two different workflows that run independently,
     under different schedules or by different users.
 
-    ![pipelines](pic/pipelines.svg){ align=left }
+    ![pipelines](../pic/pipelines.svg){ align=left }
 
 Note that the pipelines are not necessarily disjoint.
 

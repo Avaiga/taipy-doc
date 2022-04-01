@@ -25,7 +25,7 @@ nav:
         - 'Configuration': 'manuals/gui/configuration.md'
     - Taipy Core:
         - 'Concepts':
-            - 'manuals/core/concepts/index.md'
+            - manuals/core/concepts/index.md
             - 'Data node': 'manuals/core/concepts/data-node.md'
             - 'Task': 'manuals/core/concepts/task.md'
             - 'Job': 'manuals/core/concepts/job.md'
@@ -34,7 +34,7 @@ nav:
             - 'Cycle': 'manuals/core/concepts/cycle.md'
             - 'Scope': 'manuals/core/concepts/scope.md'
         - 'Configuration':
-            - 'manuals/core/config/index.md'
+            - manuals/core/config/index.md
             - 'Data node configs': 'manuals/core/config/data-node-config.md'
             - 'Task configs': 'manuals/core/config/task-config.md'
             - 'Pipeline configs': 'manuals/core/config/pipeline-config.md'

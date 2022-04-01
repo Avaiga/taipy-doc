@@ -17,7 +17,7 @@ the task configuration `TaskConfig^` that must be provided when instantiating a 
 !!! example "In our example"
     We create three tasks:
 
-    ![tasks and data nodes](pic/tasks_and_data_nodes.svg){ align=left }
+    ![tasks and data nodes](../pic/tasks_and_data_nodes.svg){ align=left }
 
     The first is the training task that takes the sales history as the input data node and returns the trained model as
     the output data node.

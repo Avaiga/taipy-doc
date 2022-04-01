@@ -29,11 +29,10 @@ path to the file and the python class used for deserialization.
 
     The flowchart below represents the various data nodes we want to be processed byt the tasks (in orange).
 
-    ![tasks and data nodes](pic/tasks_and_data_nodes.svg){ align=left }
+    ![tasks and data nodes](../pic/tasks_and_data_nodes.svg){ align=left }
 
     For that purpose, we have six data nodes modeling the data (the dark blue boxes). One each for the sales history,
-the trained model,
-    the current month, the sales predictions, the production capacity, and the production orders.
+    the trained model, the current month, the sales predictions, the production capacity, and the production orders.
 
 !!! Note
 

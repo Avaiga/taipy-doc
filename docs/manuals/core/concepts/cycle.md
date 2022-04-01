@@ -23,7 +23,7 @@ _primary scenario_. There is only one _primary scenario_ per cycle.
     To accomplish that, I promote my low capacity scenario as primary for the February cycle.
 
     The tree of entities resulting from the various scenarios created is represented in the following picture.
-    ![cycles](pic/cycles_grey.svg){ width="250" }
+    ![cycles](../pic/cycles_grey.svg){ width="250" }
 
 The attributes of a scenario (the set of pipelines, the cycle, ... ) are populated based on the scenario configuration
 `ScenarioConfig^` that

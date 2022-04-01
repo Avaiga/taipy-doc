@@ -1,3 +1,5 @@
+# Taipy's Core configuration
+
 Taipy Core is an application builder that converts user algorithms into a back-end application. To build such
 an application with the desired behaviors, a few Taipy entities must be configured.
 
