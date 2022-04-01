@@ -235,13 +235,21 @@ def on_post_build(env):
                         file_was_changed = True
                         html_content = new_content + html_content[last_location:]
 
-                    # Ex pattern: <td><code>Optional[Union[Scenario^, Job^]]</td></code>
+                    # Finding xrefs in 'Parameters', 'Returns' and similar constructs.
+                    # These would be <typeName>^ fragments located in potentially
+                    # complex constructs such as "Optional[Union[str, <typeName>^]]"
+                    #
+                    # These fragments appear in single-line <td> blocks.
+                    #
+                    # At this point, this code is pretty sub-optimal and heavily
+                    # depends on the MkDocs generation. Time will tell if we can
+                    # keep it as is...
                     typing_code = re.compile(r"(<td><code>)(.*\^.*)(</code></td>)")
-                    # Ex pattern: Scenario^
+                    # This will match a single <typeName>^ fragment.
                     typing_type = re.compile(r"\w+\^")
                     for xref in typing_code.finditer(html_content):
                         groups = xref.groups()
-                        table_line = groups[1]  # Optional[Union[Scenario^, Job^]]
+                        table_line = groups[1]
                         table_line_to_replace = "".join(groups)
                         new_table_line = table_line_to_replace
 
