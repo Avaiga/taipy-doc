@@ -7,5 +7,5 @@ Based on Python, Taipy can be deploys on each GNU/Linux distribution that suppor
 ## Summary
 
 - [Prepare your application for deployment.](../prepare-taipy-for-deployment.md)
-- [Deploy your application with uWSGI on Ubuntu.](git.md)
+- [Deploy your application with uWSGI and Nginx on Ubuntu.](git.md)
 

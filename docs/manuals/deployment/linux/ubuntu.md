@@ -1,19 +1,20 @@
-# Deploy on Ubuntu
+# Deploy your application with uWSGI and Nginx on Ubuntu
 
-[Ubuntu](https://ubuntu.com/) is a GNU/Linux operating system. Simple and Open Source it is a perfect target for
-deploying a Taipy Project.
+[Ubuntu](https://ubuntu.com/) is a GNU/Linux operating system on witch we can execute the Web Application Server
+[uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) and the Web Server [Nginx](https://nginx.org).
 
 
-## Ubuntu version
-- 20.04
+## For Ubuntu version before 20.04
+
+Before Ubuntu 20.04 the pre-installed Python version is older then Python3.8 that is the older Python version
+supported by Taipy. If you are in that case, please install at least Python3.8 and use it with this documentation.
 
 ## Prepare your machine
 
 The following software should be installed on your targeted machine:
 - `pip`: for installing Python3 packages.
-- `uwsgi`: your Web Application server.
-- `gevent`: for accepting Websocket on your Web Application server.
-- `nginx`: your Web Server.
+- `uwsgi` and `gevent`: the web application server and its worker that will run the Taipy application.
+- `nginx`: the web server for the Internet exposition.
 
 You can install all of this packages by running the following command:
 ```
@@ -44,16 +45,16 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Taipy start the Web Application, you can show the application by going on `http://127.0.0.1:5000/` with your browser.
+The application is running locally, you can access to it with the browser on the URL `http://127.0.0.1:5000/`.
 
 
 ## Prepare the application for deployment
 
 This configuration is great for local development but not enough for deployment.
-By default, Taipy application are on the debug mode, before putting your application accessible on the Internet,
-you should turn off the this mode by passing the `debug=False` parameter. Then you should inform Taipy that it should
-not run the application by itself but delegate the execution by setting the parameter `run_server` to False.
-Then, you should expose to the Web Application Server uWSGI the Flask application.
+By default, Taipy application are on the debug mode. Before putting your application accessible on the Internet,
+you should turn off this mode by passing the `debug` parameter with the value False. Then you should inform Taipy that
+it should not run the application by itself but delegate the execution by setting the parameter `run_server` to False.
+Then, you should expose to the Web Application Server uWSGI the Flask application by using `Gui._get_flask_app()`.
 
 The new content of `app.py` should now be:
 ```
@@ -67,25 +68,25 @@ app = g._get_flask_app()
 Do not forget to upload this code on your targeted machine and install your dependencies with pip.
 
 !!! important
-    The entrypoint filename and the app variable name are important in this documentation for the good configuration of
-    the Web Application Server. Please, keep them or adapt your configuration.
+    The entrypoint filename and the app variable name are important for the good configuration of
+    the web application server uWSGI. Please, keep them as or adapt the configuration.
 
 
-## uWSGI Application Server
+## uWSGI application server
 
 Maybe did you remarque the following message when you start an Taipy Application:
 ```
 WARNING: This is a development server. Do not use it in a production deployment.
 Use a production WSGI server instead.
 ```
-This message is provided by Flask because the ways to expose an application on the Internet and
-the way of develop an application is not the same mainly for security reasons.
+This message is provided by Flask because the way to expose an application on the Internet and
+the way of develop an application is not the same mainly for security and reliability.
 
 To be able to expose on the Internet we will first use uWSGI for running our application in place of Flask.
 Then, we will use Nginx for exposing your application on the Internet.
 
 uWSGI can be start by command line. But, generally, it's better to start the application automatically when the machine
-start. To be able to do that, we will use [systemd](https://systemd.io/) who is by default installed on Ubuntu.
+starts. To be able to do that, we will use [systemd](https://systemd.io/) who is by default installed on Ubuntu.
 
 Beside your application code, run the following command for generate an adapted file for systemd:
 ```
@@ -108,7 +109,7 @@ User=`whoami`
 WantedBy=multi-user.target
 """ > app.uwsgi.service
 ```
-Then move this file in the correct folder by doing `sudo mv app.uwsgi.service /etc/systemd/system/app.uwsgi.service`
+Then move this file in the correct folder by doing `sudo mv app.uwsgi.service /etc/systemd/system/app.uwsgi.service`.
 
 Now, we can start automatically your application at the startup time of your machine by doing:
 ```
@@ -116,13 +117,13 @@ sudo systemctl start app.uwsgi.service
 sudo systemctl enable app.uwsgi.service
 ```
 
-The application is now running locally but is not accessible from the Internet.
+The application is now running locally but is not accessible yet from the Internet.
 
 
 ## Web Server
 
 To be able to access to your application from the Internet, we will use Nginx.
-Changing the content of `/etc/nginx/sites-enabled/default` by the following:
+Changing the content of `/etc/nginx/sites-enabled/default` with the following:
 ```
 server {
     listen 80;
@@ -138,6 +139,6 @@ Then restart Nginx by doing `sudo systemctl restart nginx`.
 The application is now accessible through the Internet !
 
 !!! Note
-    This configuration is only for HTTP. For HTTPS access, follow the [Nginx documentation](https://nginx.org/en/docs/http/configuring_https_servers.html).
+    This configuration is only for HTTP. If you need an HTTPS connection, follow the [Nginx documentation](https://nginx.org/en/docs/http/configuring_https_servers.html).
 
 
