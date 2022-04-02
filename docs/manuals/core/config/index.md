@@ -1,5 +1,7 @@
 # Taipy's Core configuration
 
+In the previous chapter, the few [Taipy Core concepts](../concepts/index.md) are defined.
+
 Taipy Core is an application builder designed to help data scientists turn their algorithms into an interactive
 production-ready data-driven application.
 
@@ -20,12 +22,10 @@ your application and its entities.
     to. **Configs** can be seen as generators. Indeed, each **entity** is created from a **config**. Note also that
     a same **config** can be used to instantiate multiple **entities**.
 
-    This chapter focuses on the various **configs** objects.
+More details on the **entities** are available in the [Entities](../entities/index.md) chapter.
 
-    More details on the **entities** are available in the [Entities chapter](../entities/index.md)
-
-
-This chapter is dedicated to the configuration. Its sections are organized as follows:
+This chapter is dedicated to the configuration and focuses on the various **configs** objects. Its sections are
+organized as follows:
 
 - [Config](config.md) section introduces the `Config^` singleton class which is the single entrypoint for Taipy Core
   configuration.

@@ -47,7 +47,7 @@ nav:
             - 'Advanced configuration': 'manuals/core/config/advanced-config.md'
         - 'Entities':
             - manuals/core/entities/index.md
-            - 'Entity creation': 'manuals/core/entities/scenario-creation.md'
+            - "Entities' creation": 'manuals/core/entities/scenario-creation.md'
             - 'Scenario and cycle management': 'manuals/core/entities/scenario-cycle-mgt.md'
             - 'Pipeline management': 'manuals/core/entities/pipeline-mgt.md'
             - 'Task management': 'manuals/core/entities/task-mgt.md'

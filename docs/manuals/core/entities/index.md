@@ -9,7 +9,7 @@ already implemented. This configuration corresponds to the design displayed in t
 
 ![scenarios](../pic/scenarios.svg)
 
-Please refer to the [configuration documentation](../config/index.md) to have information
-on how to configure a Taipy application.
+Please refer to the [configuration documentation](../config/index.md) to have information on how to configure a
+Taipy application.
 
-[:material-arrow-right: Next section presents the scenario creation](scenario-creation.md).
+[:material-arrow-right: The next section presents the scenario creation](scenario-creation.md).

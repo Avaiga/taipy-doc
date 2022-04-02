@@ -91,7 +91,7 @@ if some values are not provided, the default configuration applies.
 
         Below is the python code corresponding to the design above.
 
-        ```py linenums="1" title="config.py"
+        ```py linenums="1" title="my_config.py"
         from datetime import datetime
         from my_functions import plan, predict, train
         from taipy import Config, Frequency, Scope

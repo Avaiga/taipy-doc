@@ -60,8 +60,8 @@ The purpose of this section if to define the following Taipy Core concepts.
     to. **Configs** can be seen as generators. Indeed, each **entity** is created from a **config**. Note also that
     a same **config** can be used to instantiate multiple **entities**.
 
-    More details on the **configs** are available in the [Configuration chapter](../config/index.md).
+More details on the **configs** are available in the [Configuration](../config/index.md) chapter.
 
-    More details on the **entities** are available in the [Entities chapter](../entities/index.md)
+More details on the **entities** are available in the [Entities](../entities/index.md) chapter.
 
-[:material-arrow-right: Next section introduces the data node concept](data-node.md).
+[:material-arrow-right: The next section introduces the data node concept](data-node.md).
