@@ -6,15 +6,15 @@
 
 ## For Ubuntu version before 20.04
 
-Before Ubuntu 20.04 the pre-installed Python version is older then Python3.8 that is the older Python version
+Before Ubuntu 20.04 the pre-installed Python version is older than Python3.8 that is the older Python version
 supported by Taipy. If you are in that case, please install at least Python3.8 and use it with this documentation.
 
 ## Prepare your machine
 
 The following software should be installed on your targeted machine:
-- `pip`: for installing Python3 packages.
-- `uwsgi` and `gevent`: the web application server and its worker that will run the Taipy application.
-- `nginx`: the web server for the Internet exposition.
+- _pip_: for installing Python3 packages.
+- _uwsgi_ and _gevent_: the web application server and its worker that will run the Taipy application.
+- _nginx_: the web server for the Internet exposition.
 
 You can install all of this packages by running the following command:
 ```
@@ -33,7 +33,7 @@ from taipy import Gui
 Gui(page="# Getting started with *Taipy*").run()
 ```
 
-We put this code in a file named `app.py` then create an `requirements.txt` file with the
+We put this code in a file named _app.py_ then create an _requirements.txt_ file with the
 following content:
 ```
 taipy
@@ -45,18 +45,18 @@ pip install -r requirements.txt
 python app.py
 ```
 
-The application is running locally, you can access to it with the browser on the URL `http://127.0.0.1:5000/`.
+The application is running locally, you can access to it with the browser on the URL _http://127.0.0.1:5000/_.
 
 
 ## Prepare the application for deployment
 
 This configuration is great for local development but not enough for deployment.
 By default, Taipy application are on the debug mode. Before putting your application accessible on the Internet,
-you should turn off this mode by passing the `debug` parameter with the value False. Then you should inform Taipy that
-it should not run the application by itself but delegate the execution by setting the parameter `run_server` to False.
-Then, you should expose to the Web Application Server uWSGI the Flask application by using `Gui._get_flask_app()`.
+you should turn off this mode by passing the _debug_ parameter with the value False. Then you should inform Taipy that
+it should not run the application by itself but delegate the execution by setting the parameter _run_server_ to False.
+Then, you should expose to the Web Application Server uWSGI the Flask application by using `(Gui)._get_flask_app()^`.
 
-The new content of `app.py` should now be:
+The new content of _app.py_ should now be:
 ```
 from taipy import Gui
 
@@ -74,7 +74,7 @@ Do not forget to upload this code on your targeted machine and install your depe
 
 ## uWSGI application server
 
-Maybe did you remarque the following message when you start an Taipy Application:
+Maybe did you remarque the following message when you start a Taipy Application:
 ```
 WARNING: This is a development server. Do not use it in a production deployment.
 Use a production WSGI server instead.
@@ -86,9 +86,9 @@ To be able to expose on the Internet we will first use uWSGI for running our app
 Then, we will use Nginx for exposing your application on the Internet.
 
 uWSGI can be start by command line. But, generally, it's better to start the application automatically when the machine
-starts. To be able to do that, we will use [systemd](https://systemd.io/) who is by default installed on Ubuntu.
+starts. To be able to do that, we will use [Systemd](https://systemd.io/) who is by default installed on Ubuntu.
 
-Beside your application code, run the following command for generate an adapted file for systemd:
+Beside your application code, run the following command for generate an adapted file for Systemd:
 ```
 echo """
 [Unit]
