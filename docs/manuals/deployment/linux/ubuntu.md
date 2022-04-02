@@ -18,9 +18,9 @@ The following software should be installed on your targeted machine:
 
 You can install all of this packages by running the following command:
 ```
-sudo apt update -y &&\
-sudo apt install -y python3-pip nginx &&\
-sudo pip install uwsgi gevent &&\
+sudo apt update -y && \
+sudo apt install -y python3-pip nginx && \
+sudo pip install uwsgi gevent && \
 sudo ln -s `pwd`/.local/bin/uwsgi /usr/bin/uwsgi
 ```
 
