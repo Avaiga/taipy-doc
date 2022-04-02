@@ -1,23 +1,15 @@
 # Taipy's Core configuration
 
-Taipy Core is an application builder that converts user algorithms into a back-end application. To build such
-an application with the desired behaviors, a few Taipy entities must be configured.
+Taipy Core is an application builder designed to help data scientists turn their algorithms into an interactive
+production-ready data-driven application.
 
-The following sections show how to configure a Taipy application in python. All The taipy configuration methods can
-easily be imported from the Taipy main module as follows:
+To build such an application, the first step consists in configuring the characteristic and the desired behavior of
+your application and its entities.
 
-```python
-import taipy as tp
-```
+!!! important "Reminder: Config vs Entities"
 
-!!! Note
-    Note that you can override the python configuration using _TOML_ files. (More details on the
-    [advanced configuration](advanced-config.md)) page.
-
-!!! "Reminder. Config vs Entities"
-
-    Among the concepts described in this section, the **data nodes**, **tasks**, **pipelines**, and **scenarios** have
-    two types of Taipy objects related to them: configuration objects and runtime objects.
+    The **data nodes**, **tasks**, **pipelines**, and **scenarios** concepts have two types of Taipy objects
+    related to them: configuration objects and runtime objects.
 
     To differentiate the configuration objects from their runtime counterparts, they are named **_configs_**
     (`DataNodeConfig`, `TaskConfig`, `PipelineConfig`, and `ScenarioConfig`) while the runtime objects
@@ -28,6 +20,29 @@ import taipy as tp
     to. **Configs** can be seen as generators. Indeed, each **entity** is created from a **config**. Note also that
     a same **config** can be used to instantiate multiple **entities**.
 
-    More details on the **entities** are available in the [entities documentation](../entities/index.md)
+    This chapter focuses on the various **configs** objects.
 
-[:material-arrow-right: Next section introduces the data node configuration](data-node-config.md).
+    More details on the **entities** are available in the [Entities chapter](../entities/index.md)
+
+
+This chapter is dedicated to the configuration. Its sections are organized as follows:
+
+- [Config](config.md) section introduces the `Config^` singleton class which is the single entrypoint for Taipy Core
+  configuration.
+- [Data node configs](data-node-config.md) section provides documentation on the data nodes' configurations using
+  the python `DataNodeConfig^` class.
+- [Task configs](task-config.md) section provides documentation on the tasks' configurations using the python
+  `TaskConfig^` class.
+- [Pipeline configs](pipeline-config.md) section provides documentation on the pipelines' configurations using the
+  python `PipelineConfig^` class.
+- [Scenario configs](scenario-config.md) section provides documentation on the scenarios' configurations using the
+  python `ScenarioConfig^` class.
+- [Global config](global-config.md) section documents the global configuration fields and the python `GlobalAppConfig^`
+  class.
+- [Job scheduling config](job-config.md) section documents the configuration of the job scheduling using the python
+  `JobConfig^` class.
+- [Config checker](config-checker.md) section presents the configuration checkers.
+- [Advanced configuration](advanced-config.md) section provides details on advanced configuration features, and in
+  particular the capacity to overwrite configuration fields with _TOML_ files.
+
+[:material-arrow-right: The next section introduces the Config singleton](config.md).

@@ -36,6 +36,7 @@ nav:
             - 'Scope': 'manuals/core/concepts/scope.md'
         - 'Configuration':
             - manuals/core/config/index.md
+            - 'Config': 'manuals/core/config/config.md'
             - 'Data node configs': 'manuals/core/config/data-node-config.md'
             - 'Task configs': 'manuals/core/config/task-config.md'
             - 'Pipeline configs': 'manuals/core/config/pipeline-config.md'

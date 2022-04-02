@@ -1,6 +1,4 @@
-The `GlobalAppConfig^` holds configuration
-fields
-related to the global application.
+The `GlobalAppConfig^` holds configuration fields related to the global application.
 
 Here are the (optional) configurable properties:
 

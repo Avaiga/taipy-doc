@@ -235,8 +235,10 @@ parameters can be provided.
     database.
 -   The _**db_name**_ parameter represents the name of the database.
 -   The _**db_engine**_ parameter represents the engine of the database.
--   The _**read_query**_ parameter represents the SQL query that will be used by Taipy to read the data from the database.
--   The _**write_table**_ parameter represents the name of the table in the database that Taipy will be writing the data to.
+-   The _**read_query**_ parameter represents the SQL query that will be used by Taipy to read the data from the
+    database.
+-   The _**write_table**_ parameter represents the name of the table in the database that Taipy will be writing the
+    data to.
 -   The _**db_port**_ parameter represents the database port that will be used by Taipy to access the database. The
     default value of _db_port_ is 1433.
 -   The _**db_host**_ parameter represents the database host that will be used by Taipy to access the database. The

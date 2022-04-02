@@ -2,13 +2,13 @@ Taipy provides a checking mechanism to validate if your configuration is correct
 
 You can trigger the check by calling:
 ```python linenums="1"
-import taipy as tp
+from taipy import Config
 
-tp.check_configuration()
+Config.check()
 ```
 
-The `taipy.check_configuration()^` method returns a collector of issues. Each issue corresponds to an inconsistency on
-the configuration attached to an issue level (`INFO`, `WARNING`, `ERROR`). `taipy.check_configuration()^` raises an
+The `Config.check()^` method returns a collector of issues. Each issue corresponds to an inconsistency on
+the configuration attached to an issue level (`INFO`, `WARNING`, `ERROR`). `Config.check()^` raises an
 exception if at least one issue collected has the `ERROR` level.
 
 Here is the list of the possible issues that could be returned by the checker:

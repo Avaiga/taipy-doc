@@ -46,7 +46,7 @@ The purpose of this section if to define the following Taipy Core concepts.
 - A [Scope](scope.md) represents the _visibility_ of a data node in the graph of entities, and the level of its
   parent (Pipeline, Scenario, Cycle).
 
-!!! definition "Config vs Entities"
+!!! important "Definition: Config vs Entities"
 
     Among the concepts described in this section, the **data nodes**, **tasks**, **pipelines**, and **scenarios** have
     two types of Taipy objects related to them: configuration objects and runtime objects.
@@ -60,7 +60,8 @@ The purpose of this section if to define the following Taipy Core concepts.
     to. **Configs** can be seen as generators. Indeed, each **entity** is created from a **config**. Note also that
     a same **config** can be used to instantiate multiple **entities**.
 
-    More details on the **configs** are available in the [configuration documentation](../config/index.md).
-    More details on the **entities** are available in the [entities documentation](../entities/index.md)
+    More details on the **configs** are available in the [Configuration chapter](../config/index.md).
+
+    More details on the **entities** are available in the [Entities chapter](../entities/index.md)
 
 [:material-arrow-right: Next section introduces the data node concept](data-node.md).

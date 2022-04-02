@@ -1,6 +1,5 @@
 A pipeline configuration is necessary to instantiate a [Pipeline](../concepts/pipeline.md). To create a
-`PipelineConfig^` you can use
-the `Config.configure_pipeline()^` method with the following parameters:
+`PipelineConfig^` you can use the `Config.configure_pipeline()^` method with the following parameters:
 
 - _**id**_: The id of this new pipeline configuration. This id is **mandatory** and must be a unique and valid Python
   variable name.
