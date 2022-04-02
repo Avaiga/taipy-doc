@@ -58,15 +58,15 @@ This configuration is great for local development but not enough for deployment.
 By default, Taipy applications are on the debug mode. Before putting your application accessible on the Internet,
 you should turn off this mode by passing the _debug_ parameter with the value False. Then, you should inform Taipy that
 it should not run the application by itself but delegate the execution by setting the parameter _run_server_ to False.
-Then, you should expose to the Web Application Server uWSGI the Flask application by using `(Gui)._get_flask_app()^`.
+Then, you should expose to the Web Application Server uWSGI the Flask application by using `(Gui)._get_flask_app()`.
 
 The new content of _app.py_ should now be:
 ```
 from taipy import Gui
 
-g = Gui(page="# Getting started with *Taipy*")
-g.run(debug=False, run_server=False)
-app = g._get_flask_app()
+gui_service = Gui(page="# Getting started with *Taipy*")
+gui_service.run(debug=False, run_server=False)
+app = gui_service._get_flask_app()
 ```
 
 Do not forget to upload this code on your targeted machine and install your dependencies with pip.
