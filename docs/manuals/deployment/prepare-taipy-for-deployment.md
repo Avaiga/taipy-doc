@@ -1,34 +1,47 @@
 # Prepare your application for deployment
 
-To be able to deploy a Taipy application you should specify some options in your GUI.
+To be able to deploy a Taipy application you should specify some options for your Service (`Gui` or `Rest`).
 
-These options will be provided from the environment with a default value to allow you to continue
-to work locally without impact.
+These options can be provided from the environment or hard coded.
+Taipy is based on [Flask](https://flask.palletsprojects.com/) and allows customer to
+access to it for customization.
 
 ## Options
 
 - **port:** Binding port for your application. By default, Taipy used the port `5000`.
-- **client_url:** Url used to fetch data from the front end side. By default, Taipy used `localhost:5000`.
 - **host:** Allows Taipy to listen to a public IP.
+- Other Flask options: https://flask.palletsprojects.com/en/2.1.x/config/
 
 ## Example
 
-In a standard local Taipy application, you should have something that looks like
+In your Taipy application, you should have something that looks like:
 ```python
-# Your code
+import taipy as tp
 
-gui.run(title="Taipy Demo")
+#
+# Your code
+#
+
+rest = tp.Rest()
+gui = tp.Gui(md=md)
+
+tp.run(rest, gui, title="Taipy Demo")
 ```
 To be able to run in a remote environment, you should transform this line in
 ```python
 import os
+import taipy as tp
 
+#
 # Your code
+#
 
-gui.run(
+rest = tp.Rest()
+gui = tp.Gui(md=md)
+
+tp.run(
     title="Taipy Demo",
     host='0.0.0.0',
     port=os.environ.get('PORT', '5000'),
-    client_url=os.environ.get('CLIENT_URL', 'localhost:5000')
 )
 ```
