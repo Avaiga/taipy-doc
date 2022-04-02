@@ -27,7 +27,9 @@ gui = tp.Gui(md=md)
 
 tp.run(rest, gui, title="Taipy Demo")
 ```
-To be able to run in a remote environment, you should transform this line in
+
+To be able to run in the Heroku remote environment, you should update your _run_ method by adding
+the _host_ and _port_ required by Heroku:
 ```python
 import os
 import taipy as tp
