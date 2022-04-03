@@ -5,21 +5,7 @@ For each topic, we are trying to provide as many examples as possible so that
 you as a Taipy user can perform a specific task.
 
 If you are just starting with Taipy, you may want to look at the [Getting Started document](../getting_started/installation.md)
-in order to see a complete example of a complete Taipy application, described step-by-step.
-
-## Taipy Core
-
-The Taipy core package is a python library made to create complete back-end applications around decision-making
-algorithms. It provides the necessary tools to help data scientists transform their algorithms into a complete
-back-end application, so they can quickly and easily put it into their end user's hands. Thanks to Taipy core, data
-scientists are more autonomous. They can focus on their core skills: building the best algorithms to solve their
-business problems.
-
-[:material-arrow-right: Definition of Taipy core concepts](core/concepts/index.md),
-
-[:material-arrow-right: Documentation on the python configuration](core/config/index.md),
-
-[:material-arrow-right: Description of Taipy core features](core/features/index.md)
+in order to see a step-by-step example of a complete Taipy application.
 
 
 ## Graphical User Interface
@@ -30,6 +16,26 @@ you need to create pages that you can display and interact with.
 
 [:material-arrow-right: GUI user manual](gui/index.md)
 
+## Taipy Core
+
+The Taipy Core package is a python library made to build powerful and customized data-driven back-end applications.
+It provides the necessary tools to help data scientists transform their algorithms into a complete
+back-end application.
+
+Taipy Core brings algorithm management to another level: algorithms are now connected to the end-user through
+user-defined scenarios, interactive data, smart scheduling, etc.
+
+
+[:material-arrow-right: Definition of Taipy Core concepts](core/concepts/index.md),
+
+[:material-arrow-right: Documentation on Taipy Core configuration](core/config/index.md),
+
+[:material-arrow-right: Description of Taipy Core entities](core/entities/index.md)
+
+
+## Taipy Rest
+
+TODO
 
 ## Deployment
 
