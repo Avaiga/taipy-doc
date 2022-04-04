@@ -23,19 +23,15 @@
 #     reflect the root package structure.
 # ------------------------------------------------------------------------
 import glob
+import json
 import os
-import warnings
 import re
 import shutil
+import warnings
 from datetime import datetime
+from inspect import isclass, isfunction, ismodule
 
 import pandas as pd
-import math
-import json
-import importlib.util
-from inspect import isclass, isfunction, ismodule
-from pathlib import Path
-import time
 
 ROOT_PACKAGE = "taipy"
 MODULE_EXTENSIONS = ".py"
@@ -478,11 +474,12 @@ with open(XREFS_PATH, "w") as xrefs_output_file:
 print("Step 3/3: Generating the Getting Started navigation bar")
 
 def format_getting_started_navigation(filepath: str) -> str:
+    readme_path = f"{filepath}/ReadMe.md"
     if 'step_00' in filepath:
-        return f"        - 'Before you start': '{filepath}/ReadMe.md'"
+        return f"        - 'Before you start': '{readme_path}'"
     filename = filepath[len('getting_started/'):]
     title, step_number = filename.split('_')
-    return f"        - '{title.title()} {int(step_number)}': '{filepath}/ReadMe.md'"
+    return f"        - '{title.title()} {int(step_number)}': '{readme_path}'"
 
 step_folders = glob.glob("docs/getting_started/step_*")
 step_folders = map(lambda s: s[len('docs/'):], step_folders)
