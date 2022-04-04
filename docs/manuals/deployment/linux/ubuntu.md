@@ -150,5 +150,3 @@ Your application is now accessible over the Internet!
 
 !!! Note
     This configuration is only for HTTP. If you need an HTTPS connection, follow the [Nginx documentation](https://nginx.org/en/docs/http/configuring_https_servers.html).
-
-

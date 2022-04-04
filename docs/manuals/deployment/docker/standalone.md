@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- Minimal knowledge in Docker.
+- Minimal knowledge of Docker.
 - Docker must be installed. Check [the official documentation](https://docs.docker.com/engine/install/) for docker installation.
 - Docker-compose must be installed. Check [the official documentation](https://docs.docker.com/compose/install/) for docker-compose installation.
 

@@ -1,6 +1,6 @@
 # Deploy on Heroku
 
-[Heroku](https://heroku.com) is a Cloud provider that allows you to deploy dev and test app for free.
+[Heroku](https://heroku.com) is a Cloud provider that allows you to deploy dev and test apps for free.
 
 The following documentation allows quick deployments on this platform for sharing applications.
 
