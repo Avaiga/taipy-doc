@@ -22,6 +22,7 @@
 #     It finally updates the top navigation bar content (in mkdocs.yml) to
 #     reflect the root package structure.
 # ------------------------------------------------------------------------
+import glob
 import os
 import warnings
 import re
@@ -98,7 +99,7 @@ def restore_top_package_location():
 # Step 1
 #   Generating the Visual Elements documentation
 # ------------------------------------------------------------------------
-print("Step 1/2: Generating Visual Elements documentation")
+print("Step 1/3: Generating Visual Elements documentation")
 
 
 def read_skeleton(name):
@@ -295,7 +296,7 @@ with open(os.path.join(GUI_DOC_PATH, "blocks.md"), "w") as file:
 # Step 2
 #   Generating the Reference Manual
 # ------------------------------------------------------------------------
-print("Step 2/2: Generating the Reference Manual pages")
+print("Step 2/3: Generating the Reference Manual pages")
 
 # Create empty REFERENCE_DIR_PATH directory
 if os.path.exists(REFERENCE_DIR_PATH):
@@ -468,6 +469,27 @@ for package in sorted(package_to_entries.keys()):
 with open(XREFS_PATH, "w") as xrefs_output_file:
     xrefs_output_file.write(json.dumps(xrefs))
 
+
+
+# ------------------------------------------------------------------------
+# Step 3
+#   Generating the Getting Started
+# ------------------------------------------------------------------------
+print("Step 3/3: Generating the Getting Started navigation bar")
+
+def format_getting_started_navigation(filepath: str) -> str:
+    if 'step_00' in filepath:
+        return f"        - 'Before you start': '{filepath}/README.md'"
+    filename = filepath[len('getting_started/'):]
+    name, step_number = filename.split('_')
+    return f"        - '{name.title()} {int(step_number)}': '{filepath}/ReadMe.md'"
+
+step_folders = glob.glob("docs/getting_started/step_*")
+step_folders = map(lambda s: s[len('docs/'):], step_folders)
+step_folders = map(format_getting_started_navigation, step_folders)
+getting_started_navigation = "\n".join(step_folders) + '\n'
+
+
 # Update mkdocs.yml
 copyright_content = f"{str(datetime.now().year)}"
 mkdocs_yml_content = re.sub(r"\[YEAR\]",
@@ -475,6 +497,10 @@ mkdocs_yml_content = re.sub(r"\[YEAR\]",
                             mkdocs_yml_content)
 mkdocs_yml_content = re.sub(r"^\s*\[REFERENCE_CONTENT\]\s*\n",
                             navigation,
+                            mkdocs_yml_content,
+                            flags=re.MULTILINE|re.DOTALL)
+mkdocs_yml_content = re.sub(r"^\s*\[GETTING_STARTED_CONTENT\]\s*\n",
+                            getting_started_navigation,
                             mkdocs_yml_content,
                             flags=re.MULTILINE|re.DOTALL)
 with open(MKDOCS_YML_PATH, "w") as mkdocs_yml_file:
