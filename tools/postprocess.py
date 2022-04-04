@@ -257,7 +257,7 @@ def on_post_build(env):
                             class_ = type_[0][:-1] # Remove ^
                             packages = xrefs.get(class_)
                             if packages:
-                                new_content = f"<a href='{rel_path}/{package}.{class_}'>{class_}</a>"
+                                new_content = f"<a href='{rel_path}/{packages[0]}.{class_}'>{class_}</a>"
                                 new_table_line = new_table_line.replace(f"{class_}^", new_content)
                                 file_was_changed = True
                         if file_was_changed:
