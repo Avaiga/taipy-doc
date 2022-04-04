@@ -49,6 +49,16 @@ jobs:
         run: |
           echo "from taipy.core import *" >taipy/__init__.py
           echo "import taipy.gui as gui" >>taipy/__init__.py
+      - name: Fetch Taipy Getting Started code
+        uses: actions/checkout@v2
+        with:
+          repository: Avaiga/taipy-getting-started
+          ref: develop
+          path: taipy-getting-started
+          token: ${{ secrets.TAIPY_REPOS_ACCESS_TOKEN }}
+      - name: Save Taipy Gui code
+        run: |
+          mv taipy-getting-started/step_* docs/getting_started/
       - name: Pre-process root package and GUI doc
         run: |
           pipenv run python tools/setup_generation.py
