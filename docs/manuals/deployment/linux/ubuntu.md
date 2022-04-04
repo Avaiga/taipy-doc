@@ -56,9 +56,13 @@ The application is running locally, you can access it with the browser on the UR
 This configuration is great for local development but not enough for deployment.
 
 By default, Taipy applications are on the debug mode. Before putting your application accessible on the Internet,
-you should turn off this mode by passing the _debug_ parameter with the value False. Then, you should inform Taipy that
-it should not run the application by itself but delegate the execution by setting the parameter _run_server_ to False.
-Then, you should expose to the Web Application Server uWSGI the Flask application by using `(Gui)._get_flask_app()`.
+you should turn off this mode by passing the _debug_ parameter with the value False. <br/>
+Then, you should inform Taipy that it should not run the application by itself but delegate the execution by setting the
+parameter _run_server_ to False.<br/>
+Then, you should expose to the Web Application Server uWSGI the Flask application by using:
+```
+(Gui)._get_flask_app()
+```
 
 The new content of _app.py_ should now be:
 ```
@@ -69,7 +73,7 @@ gui_service.run(debug=False, run_server=False)
 app = gui_service._get_flask_app()
 ```
 
-Do not forget to upload this code on your targeted machine and install your dependencies with pip.
+Do not forget to upload this code on your targeted machine and install your dependencies with _pip_.
 
 !!! important
     The entrypoint filename and the app variable name are important for the good configuration of
@@ -113,7 +117,10 @@ User=`whoami`
 WantedBy=multi-user.target
 """ > app.uwsgi.service
 ```
-Then transfer this file in the correct folder by doing `sudo mv app.uwsgi.service /etc/systemd/system/app.uwsgi.service`.
+Then transfer this file in the correct folder by doing:
+```
+sudo mv app.uwsgi.service /etc/systemd/system/app.uwsgi.service
+```
 
 Now, you can start your application automatically at the startup time of your machine by doing:
 ```
@@ -138,7 +145,10 @@ server {
     }
 }
 ```
-Then restart Nginx by doing `sudo systemctl restart nginx`.
+Then restart Nginx by doing:
+```
+sudo systemctl restart nginx
+```
 
 The application is now accessible through the Internet !
 
