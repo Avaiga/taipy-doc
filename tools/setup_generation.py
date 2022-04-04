@@ -479,7 +479,7 @@ print("Step 3/3: Generating the Getting Started navigation bar")
 
 def format_getting_started_navigation(filepath: str) -> str:
     if 'step_00' in filepath:
-        return f"        - 'Before you start': '{filepath}/README.md'"
+        return f"        - 'Before you start': '{filepath}/ReadMe.md'"
     filename = filepath[len('getting_started/'):]
     name, step_number = filename.split('_')
     return f"        - '{name.title()} {int(step_number)}': '{filepath}/ReadMe.md'"
