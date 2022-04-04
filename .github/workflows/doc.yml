@@ -59,6 +59,7 @@ jobs:
       - name: Save Taipy Gui code
         run: |
           mv taipy-getting-started/step_* docs/getting_started/
+          mv taipy-getting-started/README.md docs/getting_started/index.md
       - name: Pre-process root package and GUI doc
         run: |
           pipenv run python tools/setup_generation.py
