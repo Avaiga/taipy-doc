@@ -6,7 +6,7 @@
 
 ## For Ubuntu version before 20.04
 
-Before Ubuntu 20.04, the pre-installed Python version is older than Python3.8 which is the oldest Python version
+Before _Ubuntu 20.04_, the pre-installed Python version is older than Python3.8 which is the oldest Python version
 supported by Taipy. If you are in that case, please install at least Python3.8.
 
 ## Prepare your machine
@@ -37,19 +37,38 @@ Gui(page="# Getting started with *Taipy*").run()
 ```
 
 This would be placed in a file called _app.py_.<br>
-You need to create a requirements.txt file that contains:
+You need to create a _requirements.txt_ file that contains:
 ```
 taipy
 ```
 
 On your local machine, start the application by doing:
-```
-pip install -r requirements.txt
-python app.py
+```console
+$pip install -r requirements.txt
+Collecting taipy
+<-- Truncate -->
+Successfully installed taipy
+$python app.py
+ * Server starting on http://127.0.0.1:5000
+ * Serving Flask app 'Taipy' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+<-- Truncate -->
 ```
 
-The application is running locally, you can access it with the browser on the URL _[http://127.0.0.1:5000/](http://127.0.0.1:5000/)_.
+The application is running locally, you can access it with the browser on the URL [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
 
+!!! note
+    The message:
+    ```
+    WARNING: This is a development server. Do not use it in a production deployment.
+    Use a production WSGI server instead.
+    ```
+    Is provided by Flask because the way of exposing an application on the Internet and
+    developping an application locally is not the same, mainly for security and reliability reasons.
+    This message will disappear when using the web server.
 
 ## Prepare the application for deployment
 
@@ -59,7 +78,7 @@ By default, Taipy applications run in Debug mode. Before deploying your applicat
 you should turn off the Debug mode by setting the _debug_ parameter or the `(Gui.)run()^` to False. <br>
 You must also inform Taipy not to run the application server on its own but rather delegate the execution
 by setting the parameter _run_server_ to False.<br>
-The name of the variable where the Web application is stored is used in the uWSGI configuration:
+The name of the variable where the Web application is stored is used in the _uWSGI_ configuration:
 this allows the Web server to load the Web application:
 ```
 from taipy import Gui
@@ -73,24 +92,16 @@ Make sure you upload this code on your targeted machine and install your depende
 
 !!! important
     The entrypoint filename and the app variable name are important for the proper configuration of
-    the uWSGI Web application server. Please, keep them as is or adapt the configuration.
+    the _uWSGI_ Web application server. Please, keep them as is or adapt the configuration.
 
 
 ## uWSGI application server
 
-Each time you start a Taipy application, the following message is printed:
-```
-WARNING: This is a development server. Do not use it in a production deployment.
-Use a production WSGI server instead.
-```
-This message is provided by Flask because the way of exposing an application on the Internet and
-developping an application locally is not the same, mainly for security and reliability reasons.
-
-To expose your application over the Internet, you must use uWSGI instead of Flask as the application server.
+To expose your application over the Internet, you must use _uWSGI_ instead of Flask as the application server.
 You would then leverage Nginx to expose the application.
 
-uWSGI can be started manually. But, generally, it's better to start the application automatically when the machine
-starts. To order to do that, you should use [Systemd](https://systemd.io/) which is installed by default on Ubuntu.
+_uWSGI_ can be started manually. But, generally, it's better to start the application automatically when the machine
+starts. To order to do that, you should use [Systemd](https://systemd.io/) which is installed by default on _Ubuntu_.
 
 Beside your application code, run the following command to generate an adapted file for _Systemd_:
 ```
@@ -129,7 +140,7 @@ The application is now running locally but is not accessible yet from the Intern
 
 ## Web Server
 
-To be able to access to your application from the Internet, you should use Nginx.
+To be able to access to your application from the Internet, you should use _Nginx_.
 Change the content of `/etc/nginx/sites-enabled/default` with the following:
 ```
 server {
@@ -141,7 +152,7 @@ server {
     }
 }
 ```
-Then restart Nginx:
+Then restart _Nginx_:
 ```
 sudo systemctl restart nginx
 ```
