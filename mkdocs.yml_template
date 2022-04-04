@@ -11,38 +11,7 @@ nav:
     - 'Creating a Taipy application': 'getting_started/creating_a_taipy_application.md'
   - 'User Manual':
     - "About Taipy's User Manual": 'manuals/about.md'
-    - Taipy core:
-        - 'Concepts':
-            - 'manuals/core/concepts/index.md'
-            - 'Data node': 'manuals/core/concepts/data-node.md'
-            - 'Task': 'manuals/core/concepts/task.md'
-            - 'Job': 'manuals/core/concepts/job.md'
-            - 'Pipeline': 'manuals/core/concepts/pipeline.md'
-            - 'Scenario': 'manuals/core/concepts/scenario.md'
-            - 'Cycle': 'manuals/core/concepts/cycle.md'
-            - 'Scope': 'manuals/core/concepts/scope.md'
-        - 'Configuration':
-            - 'manuals/core/config/index.md'
-            - 'Data node configs': 'manuals/core/config/data-node-config.md'
-            - 'Task configs': 'manuals/core/config/task-config.md'
-            - 'Pipeline configs': 'manuals/core/config/pipeline-config.md'
-            - 'Scenario configs': 'manuals/core/config/scenario-config.md'
-            - 'Global config': 'manuals/core/config/global-config.md'
-            - 'Job scheduling config': 'manuals/core/config/job-config.md'
-            - 'Config checker': 'manuals/core/config/config-checker.md'
-            - 'Advanced configuration': 'manuals/core/config/advanced-config.md'
-        - 'Features':
-          - 'manuals/core/features/index.md'
-          - 'Scenario creation': 'manuals/core/features/scenario-creation.md'
-          - 'Scenario and cycle management': 'manuals/core/features/scenario-cycle-mgt.md'
-          - 'Pipeline management': 'manuals/core/features/pipeline-mgt.md'
-          - 'Task management': 'manuals/core/features/task-mgt.md'
-          - 'Data node management': 'manuals/core/features/data-node-mgt.md'
-          - 'Scheduling and job execution': 'manuals/core/features/scheduling-and-job-execution.md'
-    - 'Taipy as REST API':
-        - 'manuals/rest/rest.md'
-        - 'Endpoints example': 'manuals/rest/endpoints.md'
-    - Graphical User Interface:
+    - Taipy GUI:
         - manuals/gui/index.md
         - 'Pages': 'manuals/gui/pages.md'
         - 'Visual Elements':
@@ -54,13 +23,46 @@ nav:
         - 'Notifications': 'manuals/gui/notifications.md'
         - 'Styling': 'manuals/gui/styling.md'
         - 'Configuration': 'manuals/gui/configuration.md'
-    - Docker:
-        - 'Standalone Application': 'manuals/docker/standalone.md'
-        - 'Running with Airflow': 'manuals/docker/airflow.md'
+    - Taipy Core:
+        - manuals/core/index.md
+        - 'Concepts':
+            - manuals/core/concepts/index.md
+            - 'Data node': 'manuals/core/concepts/data-node.md'
+            - 'Task': 'manuals/core/concepts/task.md'
+            - 'Job': 'manuals/core/concepts/job.md'
+            - 'Pipeline': 'manuals/core/concepts/pipeline.md'
+            - 'Scenario': 'manuals/core/concepts/scenario.md'
+            - 'Cycle': 'manuals/core/concepts/cycle.md'
+            - 'Scope': 'manuals/core/concepts/scope.md'
+        - 'Configuration':
+            - manuals/core/config/index.md
+            - 'Config': 'manuals/core/config/config.md'
+            - 'Data node configs': 'manuals/core/config/data-node-config.md'
+            - 'Task configs': 'manuals/core/config/task-config.md'
+            - 'Pipeline configs': 'manuals/core/config/pipeline-config.md'
+            - 'Scenario configs': 'manuals/core/config/scenario-config.md'
+            - 'Global config': 'manuals/core/config/global-config.md'
+            - 'Job scheduling config': 'manuals/core/config/job-config.md'
+            - 'Config checker': 'manuals/core/config/config-checker.md'
+            - 'Advanced configuration': 'manuals/core/config/advanced-config.md'
+        - 'Entities':
+            - manuals/core/entities/index.md
+            - "Entities' creation": 'manuals/core/entities/scenario-creation.md'
+            - 'Scenario and cycle management': 'manuals/core/entities/scenario-cycle-mgt.md'
+            - 'Pipeline management': 'manuals/core/entities/pipeline-mgt.md'
+            - 'Task management': 'manuals/core/entities/task-mgt.md'
+            - 'Data node management': 'manuals/core/entities/data-node-mgt.md'
+            - 'Scheduling and job execution': 'manuals/core/entities/scheduling-and-job-execution.md'
+    - 'Taipy REST':
+        - manuals/rest/rest.md
+        - 'Endpoints example': 'manuals/rest/endpoints.md'
     - Deployment:
         - GNU/Linux:
             - 'Ubuntu': 'manuals/deployment/linux/ubuntu.md'
-        - Heroku:
+        - Docker
+            - 'Standalone Application on docker': 'manuals/docker/standalone.md'
+            - 'Application running with Airflow on docker': 'manuals/docker/airflow.md'
+        - 'Heroku':
             - 'Getting started': 'manuals/deployment/heroku/getting-started.md'
             - 'Prepare your application for deployment': 'manuals/deployment/heroku/prepare-taipy-for-deployment.md'
             - 'Setup': 'manuals/deployment/heroku/setup.md'
