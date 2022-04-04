@@ -1,8 +1,9 @@
 # Prepare your application for deployment
 
-To be able to deploy a Taipy application you should specify some options for your Service (`Gui` or `Rest`).
+To be able to deploy a Taipy application - some options must be specified in the Service (`Gui` or `Rest`).
 
 These options can be provided from the environment or hard coded.
+
 Taipy is based on [Flask](https://flask.palletsprojects.com/) and allows customer to
 access to it for customization.
 
