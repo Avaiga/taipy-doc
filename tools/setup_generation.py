@@ -481,8 +481,8 @@ def format_getting_started_navigation(filepath: str) -> str:
     if 'step_00' in filepath:
         return f"        - 'Before you start': '{filepath}/ReadMe.md'"
     filename = filepath[len('getting_started/'):]
-    name, step_number = filename.split('_')
-    return f"        - '{name.title()} {int(step_number)}': '{filepath}/ReadMe.md'"
+    title, step_number = filename.split('_')
+    return f"        - '{title.title()} {int(step_number)}': '{filepath}/ReadMe.md'"
 
 step_folders = glob.glob("docs/getting_started/step_*")
 step_folders = map(lambda s: s[len('docs/'):], step_folders)
