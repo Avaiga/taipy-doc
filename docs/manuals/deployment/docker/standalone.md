@@ -61,11 +61,12 @@ docker rmi my-taipy-app
 You can also wrap your build and run steps with `docker-compose`.
 
 Create a `docker-compose.yml` with the following content:
+
 ```yaml
 version: "3.9"
 services:
   taipy:
-    build: .
+    build: ""
     ports:
       - "5000:5000"
 ```

@@ -59,9 +59,9 @@ nav:
     - Deployment:
         - GNU/Linux:
             - 'Ubuntu': 'manuals/deployment/linux/ubuntu.md'
-        - Docker
-            - 'Standalone Application on docker': 'manuals/docker/standalone.md'
-            - 'Application running with Airflow on docker': 'manuals/docker/airflow.md'
+        - Docker:
+            - 'Standalone Application on docker': 'manuals/deployment/docker/standalone.md'
+            - 'Application running with Airflow on docker': 'manuals/deployment/docker/airflow.md'
         - 'Heroku':
             - 'Getting started': 'manuals/deployment/heroku/getting-started.md'
             - 'Prepare your application for deployment': 'manuals/deployment/heroku/prepare-taipy-for-deployment.md'
