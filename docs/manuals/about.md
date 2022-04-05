@@ -7,9 +7,10 @@ you as a Taipy user can perform a specific task.
 If you are just starting with Taipy, you may want to look at the [Getting Started document](../getting_started/installation.md)
 in order to see a complete example of a complete Taipy application, described step-by-step.
 
-## Taipy Core
+## Taipy Core - `taipy.core`
 
-The Taipy core package is a python library made to create complete back-end applications around decision-making
+The `taipy.core^` package is a python library made to create complete back-end applications
+around decision-making
 algorithms. It provides the necessary tools to help data scientists transform their algorithms into a complete
 back-end application, so they can quickly and easily put it into their end user's hands. Thanks to Taipy core, data
 scientists are more autonomous. They can focus on their core skills: building the best algorithms to solve their
@@ -22,11 +23,11 @@ business problems.
 [:material-arrow-right: Description of Taipy core features](core/features/index.md)
 
 
-## Graphical User Interface
+## Graphical User Interface (GUI) - `taipy.gui`
 
-Taipy comes with a package (`taipy.gui^`) that allows for building user interfaces. The
-Graphical User Interface (GUI) section will provide you with all the information
-you need to create pages that you can display and interact with.
+The `taipy.gui^` package allows you to design an effective Graphic User Interface.
+It provides many interactive widgets, controls, and presentative elements to enhance the
+user’s experience.
 
 [:material-arrow-right: GUI user manual](gui/index.md)
 

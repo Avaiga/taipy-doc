@@ -1,8 +1,8 @@
 # Callbacks
 
-Callbacks are functions that you create in your application that are meant to be
+Callbacks are functions that are created in the application that are
 invoked in response to user actions in generated pages or other events that the
-Web browser requires that the application takes care of.
+Web browser requires that the application handles.
 
 Every callback function receives a `State^` object as its first parameter.<br/>
 This object reflects the state of the application variables, for a given end-user:
@@ -21,9 +21,9 @@ for reading and writing.
 
 Some controls (such as [`input`](viselements/input.md) or [`slider`](viselements/slider.md))
 let the user modify the value they hold.  
-Because you may want to control what that _new value_ is and decide whether to use
-it as such or not, a callback function is called in your application when the user
-activates the control to change its value.
+In order to control what that _new value_ is and decide whether to use
+it as such, a callback function is called in the application when the user
+activates the control in order to change its value.
 
 !!! example
 
@@ -45,13 +45,13 @@ activates the control to change its value.
     Gui(page=md).run()
     ```
 
-Once in your function body, you can check the new value for the variable and decide
-what to do with it: maybe you will need to trigger some other code to propagate the
+In the function body, you can check the new value of the variable and decide
+what to do with it: potentially triggering some other code to propagate the
 side effects of the new variable value.
 
-Suppose you need to reset the value displayed at this moment. In that case, you can change
-the variable value, assuming you use the `state` variable (or any other variable
-name you have assigned for the `State` instance) prefix when referring to that variable.
+In order to reset the value displayed at this point, one can simply change
+the variable value, using the `state` variable (or any other variable name
+that the `State` instance has been set to) prefix when referring to that variable.
 In our example, that would be `state.x`.
 
 !!! note "Control-specific on_change callback"
@@ -90,7 +90,7 @@ the application that the user has activated those controls somehow.
 
 !!! example
     ```py
-    from taipy.gui import Gui
+    from taipy import Gui
 
     md = """
     # Hello Taipy

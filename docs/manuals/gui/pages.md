@@ -1,6 +1,6 @@
 # Pages
 
-Pages are the base for your user interface. Pages hold text, images, or
+Pages are the basis for the user interface. Pages hold text, images, or
 controls that display information that the application needs to publish and
 interact with the application data through visual elements.
 
@@ -9,19 +9,19 @@ interact with the application data through visual elements.
 Taipy lets you create as many pages as you want, with whatever content you need.
 Pages are created using sub-classes of the (Page^) class which convert some text
 (inside the application code or from an external file) into HTML content sent and
-rendered onto the client device.
+rendered on the client device.
 
-Converting text into page content is done following these steps:
+Converting text into page content is done according to these steps:
 
-- The text is parsed to locate the Taipy-specific constructs. Those constructs
+- The text is parsed to locate the Taipy-specific constructs. These constructs
   let you insert _visual elements_ that can be _controls_ or _blocks_. Visual
   Elements result in  the creation of potentially complex HTML components;
 
 - Visual element properties are read, and Taipy binds the application
-  variables that they use, if any;
+  variables that are used, if any;
 
 - Potentially, _callbacks_ are located and connected from the rendered page back
-  to the Python code if you want to watch user events (the notion of callbacks is detailed
+  to the Python code in order to watch user events (the notion of callbacks is detailed
   in the section [Callbacks](callbacks.md)).
 
 ### Defining the page content
@@ -30,9 +30,9 @@ Page content is defined by a regular string, containing text in one
 of two syntaxes:
 
 - Markdown: a lightweight markup language widely used for creating
-    documentation pages. This is be the ideal format if you are not
-    familiar with Web pages definition, and still want a decent rendering
-    a in matter of minutes.<br/>
+    documentation pages. This would be the ideal format if you are not
+    familiar with Web page definition, and would like to create a good
+    visual rendering quickly.<br/>
     Taipy has an augmented version of Markdown that makes it simple to
     organize the page content in sections or grids.
 
@@ -47,7 +47,7 @@ markup language.
 
 Taipy uses [Python Markdown](https://python-markdown.github.io/) to translate Markdown
 text to Web pages. Many language extensions are used to make it easier to create
-nice-looking pages that users can enjoy. Specifically, Taipy uses the following
+nice looking pages that users can enjoy. Specifically, Taipy uses the following
 [Markdown extensions](https://python-markdown.github.io/extensions/):
 [_Admonition_](https://python-markdown.github.io/extensions/admonition/),
 [_Attribute Lists_](https://python-markdown.github.io/extensions/attr_list/),
@@ -73,6 +73,17 @@ Any [_Markdown_](https://en.wikipedia.org/wiki/Markdown) content can be used her
 
 You then have, in the _md_page_ variable, the definition of a page
 whose content is defined from Markdown text.
+
+Note that you can use Markdown's natural _link_ syntax to easily create links
+from one page to another. If, for example, your application has two pages (see
+below how to create such an application, where pages would be called "page1" and
+"page2"), you can create a link to "page2" from "page1" by adding the following
+Markdown fragment in the definition of "page1":
+```
+...
+Goto to [Second Page](/page2) for more information.
+...
+```
 
 Besides the extensions listed above, Taipy adds its own extension that can parse
 Taipy-specific constructs that allow for defining visual elements (and all the properties
@@ -108,7 +119,7 @@ about Visual Elements definition.
 
 ### Registering the page
 
-Once you have created an instance of a page renderer for a specified piece of
+Once you have created an instance of a page renderer for a specific piece of
 text, you can register that page to the `Gui^` instance used by your application.
 
 The `Gui^` constructor can accept the raw content of a page as Markdown text
@@ -116,7 +127,7 @@ and creates a new page for you. That would be the easier way to create
 applications that have a single page. Here is how you can create and register
 a page in a Taipy application:
 ```py
-from taipy.gui import Gui
+from taipy import Gui
 
 Gui("# This is my page title")
 ```
@@ -195,7 +206,7 @@ for all its pages.
 
     Here is an example of a Taipy application that holds several pages:
     ``` py linenums="1"
-       from taipy.gui import Gui
+       from taipy import Gui
 
        root_md="# Multi-page application"
        page1_md="## This is page 1"
@@ -228,7 +239,7 @@ root page of your application, and is replaced by the target page content when t
 !!! example
 
     ``` py linenums="1"
-       from taipy.gui import Gui
+       from taipy import Gui
 
        root_md="""
        # Multi-page application

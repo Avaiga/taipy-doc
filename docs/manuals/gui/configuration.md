@@ -51,10 +51,10 @@ Here is the list of the configuration parameters you can use in
    - _favicon_ (str or None, default is the Avaiga logo): the path to an image file used
      as the page's icon when navigating your Taipy application.
    - _dark_mode_ (bool, default: True): whether the application shows in Dark mode (True)
-     or light mode (False).
+     or Light mode (False).
    - _margin_ (str or None, default: "1em"): a CSS dimension value that indicates how far
      from the border of the windows should your interface be. The default value avoids
-     elements getting glued to the window borders, making it nicer to look at.
+     elements getting glued to the window borders, improving appearance.
    - _system_notification_ (bool, default: True): if True, notifications will be sent by
      the system as well as the browser, should the _system_notification_ parameter in the
      call to (notify()^) be set to None. If False, the default behavior is to not use
@@ -91,7 +91,7 @@ Here is the list of the configuration parameters you can use in
    - _theme_ (t.Union[t.Dict[str, t.Any], None]): TODO
    - _theme[light]_ (t.Union[t.Dict[str, t.Any], None]): TODO
    - _theme[dark]_ (t.Union[t.Dict[str, t.Any], None]): TODO
-   - _use_arrow_ (bool, default: False): indicates, when True, that you want to use the
+   - _use_arrow_ (bool, default: False): indicates whether or not to use the
      [Apache Arrow](https://arrow.apache.org/) technology to serialize data to Taipy
      clients. This allows for better performance in some situations.
    - _upload_folder_ (str or None, default: None): the local path where files are uploaded,
@@ -132,7 +132,7 @@ and manipulate Notebooks.
 
 Create a new Notebook by selecting the _New_ > _Python 3 (ipykernel)_ option located
 in the upper right corner of the Jupyter interface.<br/>
-And you can start creating the Notebook content.
+Then start creating the Notebook content.
 
 Enter the following code into the first Notebook cell:
 ```py linenums="1"
