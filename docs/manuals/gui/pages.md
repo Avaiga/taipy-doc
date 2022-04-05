@@ -72,18 +72,21 @@ Any [_Markdown_](https://en.wikipedia.org/wiki/Markdown) content can be used her
 ```
 
 You then have, in the _md_page_ variable, the definition of a page
-whose content is defined from Markdown text.
+whose content is defined by Markdown text.
 
-Note that you can use Markdown's natural _link_ syntax to easily create links
-from one page to another. If, for example, your application has two pages (see
-below how to create such an application, where pages would be called "page1" and
-"page2"), you can create a link to "page2" from "page1" by adding the following
-Markdown fragment in the definition of "page1":
-```
-...
-Goto to [Second Page](/page2) for more information.
-...
-```
+!!! Note "Markdown link syntax"
+    You can use Markdown's native _link_ syntax to easily create links
+    from one page to another.
+    
+    If, for example, your application has two pages (see below how to create such
+    an application, where pages would be called "page1" and "page2"), you can
+    create a link to "page2" from "page1" by adding the following
+    Markdown fragment in the definition of "page1":
+    ```
+    ...
+    Goto to [Second Page](/page2) for more information.
+    ...
+    ```
 
 Besides the extensions listed above, Taipy adds its own extension that can parse
 Taipy-specific constructs that allow for defining visual elements (and all the properties
