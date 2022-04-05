@@ -48,7 +48,7 @@ Taipy is organised in four main repositories:
 - [taipy-core](https://github.com/Avaiga/taipy-core).
 - [taipy-gui](https://github.com/Avaiga/taipy-gui).
 - [taipy-rest](https://github.com/Avaiga/taipy-rest).
-- [taipy](https://github.com/Avaiga/taipy) brings previous packages in a single one. Labelled as `taipy`.
+- [taipy](https://github.com/Avaiga/taipy) brings previous packages in a single one.
 
 
 ## Coding style and best practices
