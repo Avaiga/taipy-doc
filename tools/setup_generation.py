@@ -482,6 +482,7 @@ def format_getting_started_navigation(filepath: str) -> str:
     return f"        - '{title.title()} {int(step_number)}': '{readme_path}'"
 
 step_folders = glob.glob("docs/getting_started/step_*")
+step_folders.sort()
 step_folders = map(lambda s: s[len('docs/'):], step_folders)
 step_folders = map(format_getting_started_navigation, step_folders)
 getting_started_navigation = "\n".join(step_folders) + '\n'
