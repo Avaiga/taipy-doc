@@ -1,6 +1,6 @@
 # Prepare your application for deployment
 
-To be able to deploy a Taipy application - some options must be specified in the Service (`Gui` or `Rest`).
+To be able to deploy a Taipy application you must specify some options must be specified in the Service (`Gui` or `Rest`).
 
 These options can be provided from the environment or hard-coded.
 
