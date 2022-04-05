@@ -16,7 +16,7 @@ usage()
     echo "You can then run 'mkdocs serve'"
 }
 
-MODULES="taipy-core taipy-gui"
+MODULES="taipy-core taipy-gui taipy-getting-started"
 while [ "$1" != "" ]; do
     case $1 in
         -h | --help)
@@ -43,15 +43,20 @@ fi
 for m in $MODULES; do
     echo Updating module $m
     (cd $TOP_DIR/$m; git pull)
-    (cd $TOP_DIR/$m; \
-     tar cf - `find taipy -name \\*.py`) | (cd $ROOT_DIR;tar xf -)
-    if [ $m == "taipy-gui" ]; then
-        if [ -d $ROOT_DIR"/gui" ]; then
-            echo Removing legacy \'gui\'
-            rm -rf $ROOT_DIR"/gui"
+    if [ $m == "taipy-getting-started" ]; then
+        (cd $TOP_DIR/$m;tar cf - step_*) | (cd $ROOT_DIR/docs/getting_started/;tar xf -)
+        cp $TOP_DIR/taipy-getting-started/README.md $ROOT_DIR/docs/getting_started/index.md
+    else
+        (cd $TOP_DIR/$m; \
+         tar cf - `find taipy -name \\*.py`) | (cd $ROOT_DIR;tar xf -)
+        if [ $m == "taipy-gui" ]; then
+            if [ -d $ROOT_DIR"/gui" ]; then
+                echo Removing legacy \'gui\'
+                rm -rf $ROOT_DIR"/gui"
+            fi
+            echo Updating doc files for taipy-gui
+            (cd $TOP_DIR/$m;tar cf - gui/doc) | (cd $ROOT_DIR;tar xf -)
         fi
-        echo Updating doc files for taipy-gui
-	    (cd $TOP_DIR/$m;tar cf - gui/doc) | (cd $ROOT_DIR;tar xf -)
     fi
 done
 echo "Adding taipy's __init__.py"
