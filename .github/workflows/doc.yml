@@ -56,7 +56,7 @@ jobs:
           ref: develop
           path: taipy-getting-started
           token: ${{ secrets.TAIPY_REPOS_ACCESS_TOKEN }}
-      - name: Save Taipy Gui code
+      - name: Add the Getting Started steps and README in content of the doc
         run: |
           mv taipy-getting-started/step_* docs/getting_started/
           mv taipy-getting-started/README.md docs/getting_started/index.md
