@@ -1,6 +1,6 @@
 # Prepare your application for deployment
 
-To deploy a Taipy application you must specify some options for the Service (`Gui` or `Rest`).
+To deploy a Taipy application you must specify some options for the Services (`Gui` or `Rest`).
 
 These options can be provided from the environment or hard-coded.
 
@@ -10,7 +10,7 @@ access the Flask application so it can be customized.
 ## Options
 
 - **port**: Binding port for your application. By default, Taipy uses the port 5000.
-- **host**: IP address that the application listens to.
+- **host**: IP address that the application listens to. By default, Taipy uses the _localhost_.
 - Other Flask options: See the [Flash configuration](https://flask.palletsprojects.com/en/2.1.x/config/) page.
 
 ## Example

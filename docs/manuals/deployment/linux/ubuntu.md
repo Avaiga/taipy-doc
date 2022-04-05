@@ -86,7 +86,7 @@ from taipy import Gui
 gui_service = Gui(page="# Getting started with *Taipy*")
 web_app = gui_service.run(debug=False, run_server=False)
 ```
-In our example, we store this application in the variable `web_app` (see line 3)
+In our example, we store this application in the variable _web_app_ (see line 3)
 
 Make sure you upload this code on your targeted machine and install your dependencies with _pip_.
 
@@ -138,7 +138,7 @@ sudo systemctl enable app.uwsgi.service
 The application is now running locally but is not accessible yet from the Internet.
 
 
-## Web Server
+## Exposing to the Internet
 
 To be able to access to your application from the Internet, you should use _Nginx_.
 Change the content of `/etc/nginx/sites-enabled/default` with the following:

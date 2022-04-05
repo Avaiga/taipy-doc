@@ -1,6 +1,6 @@
 # Deploy a Taipy application based on git with Heroku
 
-## Prerequisite
+## Prerequisites
 
 - Minimal knowledge of Git.
 - Git must be installed, otherwise check [the official documentation](https://git-scm.com/downloads).
@@ -23,10 +23,10 @@ git commit -m "My first commit"
 
 To be able to run your app, Heroku will need the following files:
 
-- `runtime.txt`: The version of Python you want to use. You can find the list of available versions at
+- `runtime.txt`: Contains the version of Python you want to use. You can find the list of available versions at
   [Heroku supported versions of Python](https://devcenter.heroku.com/articles/python-support#supported-runtimes).
 
-    For example, put in your `runtime.txt`:
+    In this example, your `runtime.txt` should contain:
     ```
     python-3.9.10
     ```
@@ -76,12 +76,12 @@ git push heroku main
 ```
 
 **Note:** This example works if you are working on the `main` branch. If you are working on another branch
-you should run `git push heroku my-branch:main`
+you should run `git push heroku <your-branch-name>:main`
 [check the official Heroku doc](https://devcenter.heroku.com/articles/git#deploying-from-a-branch-besides-main).
 
 ## 4. Check your deployment
 
-You can go to the url `https://<my-taipy-app>.herokuapp.com` with your browser or run `heroku open -a <my-taipy-app>`.
+You can go to the url `https://<my-taipy-app>.herokuapp.com` in your browser or run `heroku open -a <my-taipy-app>`.
 Your application should be deployed correctly.
 
 ## 5. Clean up your resources
