@@ -88,9 +88,13 @@ Here is the list of the configuration parameters you can use in
      or one of the following values:
      - _"client"_ indicates that the time zone to be used is the Web client's.
      - _"server"_ indicates that the time zone to be used is the Web server's.
-   - _theme_ (t.Union[t.Dict[str, t.Any], None]): TODO
-   - _theme[light]_ (t.Union[t.Dict[str, t.Any], None]): TODO
-   - _theme[dark]_ (t.Union[t.Dict[str, t.Any], None]): TODO
+   - _theme_ (t.Union[t.Dict[str, t.Any], None]): A dictionary that lets you customize
+     the theme of your application. See the [Themes section](styling.md/#themes) for
+     details.
+   - _light_theme_ (t.Union[t.Dict[str, t.Any], None]): Similar to the _theme_ setting,
+     but applies to the _light_ theme only.
+   - _theme[dark]_ (t.Union[t.Dict[str, t.Any], None]):  Similar to the _theme_ setting,
+     but applies to the _dark_ theme only.
    - _use_arrow_ (bool, default: False): indicates whether or not to use the
      [Apache Arrow](https://arrow.apache.org/) technology to serialize data to Taipy
      clients. This allows for better performance in some situations.
