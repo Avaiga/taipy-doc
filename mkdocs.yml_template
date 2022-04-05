@@ -57,11 +57,14 @@ nav:
         - manuals/rest/rest.md
         - 'Endpoints example': 'manuals/rest/endpoints.md'
     - Deployment:
-        - 'Prepare your application for deployment': 'manuals/deployment/prepare-taipy-for-deployment.md'
-        - 'Standalone Application on docker': 'manuals/docker/standalone.md'
-        - 'Application running with Airflow on docker': 'manuals/docker/airflow.md'
+        - GNU/Linux:
+            - 'Ubuntu': 'manuals/deployment/linux/ubuntu.md'
+        - Docker:
+            - 'Standalone Application on docker': 'manuals/deployment/docker/standalone.md'
+            - 'Application running with Airflow on docker': 'manuals/deployment/docker/airflow.md'
         - 'Heroku':
             - 'Getting started': 'manuals/deployment/heroku/getting-started.md'
+            - 'Prepare your application for deployment': 'manuals/deployment/heroku/prepare-taipy-for-deployment.md'
             - 'Setup': 'manuals/deployment/heroku/setup.md'
             - 'Based on Git': 'manuals/deployment/heroku/git.md'
             - 'Based on Docker': 'manuals/deployment/heroku/docker.md'

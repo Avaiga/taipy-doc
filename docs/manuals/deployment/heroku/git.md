@@ -1,13 +1,13 @@
 # Deploy a Taipy application based on git with Heroku
 
-## Prerequisite
+## Prerequisites
 
-- Minimal knowledge in Git.
-- Git should be installed, otherwise check [the official documentation](https://git-scm.com/downloads).
-- [:material-arrow-right: Prepare your Taipy application](../prepare-taipy-for-deployment.md)
+- Minimal knowledge of Git.
+- Git must be installed, otherwise check [the official documentation](https://git-scm.com/downloads).
+- [:material-arrow-right: Prepare your Taipy application](prepare-taipy-for-deployment.md)
 - [:material-arrow-right: Set up your Heroku environment](setup.md)
 
-## 1. Add version control on your application
+## 1. Add version control to your application
 
 **Note:** This step is necessary only if your application doesn't already use Git.
 
@@ -23,9 +23,10 @@ git commit -m "My first commit"
 
 To be able to run your app, Heroku will need the following files:
 
-- `runtime.txt`: The version of Python you want to use. You can find the list of available versions at [Heroku supported versions of Python](https://devcenter.heroku.com/articles/python-support#supported-runtimes).
+- `runtime.txt`: Contains the version of Python you want to use. You can find the list of available versions at
+  [Heroku supported versions of Python](https://devcenter.heroku.com/articles/python-support#supported-runtimes).
 
-    For example, put in your `runtime.txt`:
+    In this example, your `runtime.txt` should contain:
     ```
     python-3.9.10
     ```
@@ -49,7 +50,8 @@ To be able to run your app, Heroku will need the following files:
     git commit -m "Add Heroku Procfile requirement"
     ```
 
-- `requirements.txt`: The dependency file. See [Virtual environments](https://docs.python.org/3/tutorial/venv.html) for details.
+- `requirements.txt`: The dependency file. See [Virtual environments](https://docs.python.org/3/tutorial/venv.html)
+  for details.
 
     **Note:** If you already have a `requirements.txt` file up to date in your Git, you can ignore this step.
 
@@ -62,7 +64,8 @@ To be able to run your app, Heroku will need the following files:
 
 ## 3. Deployment
 
-In our example, we use the name `my-taipy-app` for our application. On Heroku, this name should be unique. So you should replace it everywhere by a custom value.
+In our example, we use the name `my-taipy-app` for our application. On Heroku, this name must be unique. Replace it
+everywhere by a custom value.
 
 ```
 heroku login
@@ -73,12 +76,14 @@ git push heroku main
 ```
 
 **Note:** This example works if you are working on the `main` branch. If you are working on another branch
-you should probably do `git push heroku my-branch:main` [check the official Heroku doc](https://devcenter.heroku.com/articles/git#deploying-from-a-branch-besides-main).
+you should run `git push heroku <your-branch-name>:main`
+[check the official Heroku doc](https://devcenter.heroku.com/articles/git#deploying-from-a-branch-besides-main).
 
 ## 4. Check your deployment
 
-You can go on the url `https://<my-taipy-app>.herokuapp.com` with your browser or run `heroku open -a <my-taipy-app>`. Your application should be deployed correctly.
+You can go to the url `https://<my-taipy-app>.herokuapp.com` in your browser or run `heroku open -a <my-taipy-app>`.
+Your application should be deployed correctly.
 
-## 5. Clean your resources
+## 5. Clean up your resources
 
 Remove the Heroku application: `heroku apps:destroy <my-taipy-app> --confirm <my-taipy-app>`
