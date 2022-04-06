@@ -156,10 +156,10 @@ from a tree control where instruments are classified:
 ```py
 selected_intrument = None
 intruments = [
-  ("c1", "Idiophones,"), [
+  ("c1", "Idiophones", [
     ("t1-1", "Concussion", ["Claves", "Spoons"]),
     ("t1-2", "Percussion", ["Triangle", "Marimba", "Xylophone"]),
-    ("t1-3", "Plucked ", ["Pizzicato "])
+    ("t1-3", "Plucked", ["Pizzicato "])
   ]),
   ("c2",  "Membranophones", [
     ("t2-1", "Cylindrical drums", ["Bass drum", "Dohol"]),

@@ -32,7 +32,7 @@ user’s experience.
 
 [:material-arrow-right: GUI user manual](gui/index.md)
 
-## Taipy Rest
+## Taipy REST - `taipy.rest`
 
 TODO
 
