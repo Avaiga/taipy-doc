@@ -109,6 +109,10 @@ Here is the list of the configuration parameters you can use in
    - _ngrok_token_ (str, default: ""): an authtoken, if you need to use Ngrok to expose your
      application to the Internet. See the section on
      [Accessing your app from the Web](#accessing-your-app-from-the-web) for details.
+   - _content_security_policy_ (dict or None, default: None): provide an added layer of security
+     that helps to mitigate certain types of attacks such as Cross-Site Scripting (XSS)
+     and data injection. Visit [Flask-Talisman](https://github.com/GoogleCloudPlatform/flask-talisman#content-security-policy) documentation for more information.
+   - _force_https_ (bool, default: False): rewrite all incoming connects to https
 
 ## Using an external Web server
 
