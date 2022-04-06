@@ -112,7 +112,8 @@ Here is the list of the configuration parameters you can use in
    - _content_security_policy_ (dict or None, default: None): provide an added layer of security
      that helps to mitigate certain types of attacks such as Cross-Site Scripting (XSS)
      and data injection. Visit [Flask-Talisman](https://github.com/GoogleCloudPlatform/flask-talisman#content-security-policy) documentation for more information.
-   - _force_https_ (bool, default: False): rewrite all incoming connects to https
+   - _force_https_ (bool, default: False): rewrite all incoming connects to https.</br>
+     You can enable this feature by using the _--force-https_ option when`launching your application.
 
 ## Using an external Web server
 
