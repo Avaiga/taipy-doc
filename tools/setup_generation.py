@@ -481,7 +481,7 @@ with open(XREFS_PATH, "w") as xrefs_output_file:
 print("Step 3/3: Generating the Getting Started navigation bar")
 
 def format_getting_started_navigation(filepath: str) -> str:
-    readme_path = f"{filepath}/ReadMe.md"
+    readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
     if 'step_00' in filepath:
         return f"        - 'Before you start': '{readme_path}'"
     filename = filepath[len('getting_started/'):]
