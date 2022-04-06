@@ -148,7 +148,42 @@ each value of the _LoV_: each element of the _LoV_ represents a node
 in the tree, and the additional element in each node's tuple must hold
 the child nodes as another _LoV_, or None if it does not have any.
 
-TODO example
+Here is an example of how a _LoV_ for trees can be created.
+
+We want to provide a control that allows the selection of a musical instrument
+from a tree control where instruments are classified:
+
+```py
+selected_intrument = None
+intruments = [
+  ("c1", "Idiophones,"), [
+    ("t1-1", "Concussion", ["Claves", "Spoons"]),
+    ("t1-2", "Percussion", ["Triangle", "Marimba", "Xylophone"]),
+    ("t1-3", "Plucked ", ["Pizzicato "])
+  ]),
+  ("c2",  "Membranophones", [
+    ("t2-1", "Cylindrical drums", ["Bass drum", "Dohol"]),
+    ("t2-2", "Conical drum", ["Timbal"]),
+    ("t2-3", "Barrel drum", ["Dholak", "Glong thad"])
+  ]),
+  ("c3",  "Chordophones", [
+    ("t3-1", "Plucked", ["Guitar", "Harp", "Mandolin"]),
+    ("t3-2", "Bowed", ["Violin", "Cello", "Jinghu"])
+  ]),
+  ("c4",  "Aerophones", [
+    ("t4-1", "Flute", ["Piccolo", "Bansuri", "Transverse flute"]),
+    ("t4-2", "Reed", ["Bassoon", "Oboe", "Clarinet"]),
+    ("t4-3", "Brass", ["Trombone", "Trumpet", "Cornett"])
+  ])
+]
+```
+The tree items are stored in the variable _instruments_, and _selected_instrument_
+will be bound to the tree selection.
+
+The Markdown fragment that would be used in a page would look like this:
+```
+<|{selected_intrument}|tree|lov={intruments}|>
+```
 
 ## Tabular values
 
