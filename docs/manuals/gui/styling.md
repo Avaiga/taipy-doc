@@ -85,13 +85,13 @@ The CSS rule above will impact your display this way:
 
 <div style="display: flex">
   <figure>
-    <img src="../images/regular-button-d.png" class="visible-dark" width="40%" height="auto" />
-    <img src="../images/regular-button-l.png" class="visible-light" width="40%" height="auto"/>
+    <img src="../images/regular-button-d.png" class="visible-dark" />
+    <img src="../images/regular-button-l.png" class="visible-light" />
     <figcaption>Regular button</figcaption>
     </figure>
   <figure>
-    <img src="../images/rounded-button-d.png" class="visible-dark" width="40%" height="auto" />
-    <img src="../images/rounded-button-l.png" class="visible-light" width="40%" height="auto"/>
+    <img src="../images/rounded-button-d.png" class="visible-dark" />
+    <img src="../images/rounded-button-l.png" class="visible-light" />
     <figcaption>Rounded button</figcaption>
     </figure>
   </div>
@@ -130,13 +130,13 @@ capitalize the text of buttons.
 
 <div style="display: flex">
   <figure>
-    <img src="../images/regular-button-d.png" class="visible-dark" width="40%" height="auto" />
-    <img src="../images/regular-button-l.png" class="visible-light" width="40%" height="auto"/>
+    <img src="../images/regular-button-d.png" class="visible-dark" />
+    <img src="../images/regular-button-l.png" class="visible-light" />
     <figcaption>Regular button</figcaption>
     </figure>
   <figure>
-    <img src="../images/no-case-button-d.png" class="visible-dark" width="40%" height="auto" />
-    <img src="../images/no-case-button-l.png" class="visible-light" width="40%" height="auto"/>
+    <img src="../images/no-case-button-d.png" class="visible-dark" />
+    <img src="../images/no-case-button-l.png" class="visible-light" />
     <figcaption>Uncapitalized button</figcaption>
     </figure>
   </div>
@@ -178,12 +178,12 @@ See the impact of setting this custom theme:
 
 <div style="display: flex">
   <figure>
-    <img src="../images/no-theme-d.png" class="visible-dark" width="40%" height="auto" />
-    <img src="../images/no-theme-l.png" class="visible-light" width="40%" height="auto"/>
+    <img src="../images/no-theme-d.png" class="visible-dark" />
+    <img src="../images/no-theme-l.png" class="visible-light"/>
     <figcaption>Regular button</figcaption>
     </figure>
   <figure>
-    <img src="../images/theme.png" width="40%" height="auto" />
+    <img src="../images/theme.png" />
     <figcaption>Themed button</figcaption>
     </figure>
   </div>
