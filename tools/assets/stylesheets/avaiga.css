@@ -149,3 +149,11 @@ a.ext-link:after {
     max-width: calc(100% - 1em);
   }
 }
+
+[data-md-color-scheme="default"] .visible-dark {
+  display: none;
+}
+
+[data-md-color-scheme="slate"] .visible-light {
+  display: none;
+}

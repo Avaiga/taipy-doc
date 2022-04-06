@@ -8,17 +8,9 @@ If you are just starting with Taipy, you may want to look at the [Getting Starte
 in order to see a step-by-step example of a complete Taipy application.
 
 
-## Graphical User Interface
+## Taipy Core - `taipy.core`
 
-Taipy comes with a package (`taipy.gui^`) that allows for building user interfaces. The
-Graphical User Interface (GUI) section will provide you with all the information
-you need to create pages that you can display and interact with.
-
-[:material-arrow-right: GUI user manual](gui/index.md)
-
-## Taipy Core
-
-The Taipy Core package is a python library made to build powerful and customized data-driven back-end applications.
+The `taipy.core^` package is a Python library made to build powerful and customized data-driven back-end applications.
 It provides the necessary tools to help data scientists transform their algorithms into a complete
 back-end application.
 
@@ -32,8 +24,15 @@ user-defined scenarios, interactive data, smart scheduling, etc.
 
 [:material-arrow-right: Description of Taipy Core entities](core/entities/index.md)
 
+## Graphical User Interface (GUI) - `taipy.gui`
 
-## Taipy Rest
+The `taipy.gui^` package allows you to design an effective Graphic User Interface.
+It provides many interactive widgets, controls, and presentative elements to enhance the
+user’s experience.
+
+[:material-arrow-right: GUI user manual](gui/index.md)
+
+## Taipy REST - `taipy.rest`
 
 TODO
 

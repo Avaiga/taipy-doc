@@ -58,6 +58,11 @@ PACKAGES_VISIBILITY = [
     ("taipy.core.data.sql","taipy.core.exceptions"),
     ("taipy.core.data.data_node","taipy.core.data.operator")
     ]
+# Change some item visibility from a package to another
+#   (orig_package, item_name) -> dest_package
+ITEMS_VISIBILITY = {
+    ("taipy.gui.gui", "Gui") : "taipy.gui"
+}
 REFERENCE_REL_PATH = "manuals/reference"
 REFERENCE_DIR_PATH = root_dir + "/docs/" + REFERENCE_REL_PATH
 XREFS_PATH = root_dir + "/docs/manuals/xrefs"
@@ -302,7 +307,7 @@ os.mkdir(REFERENCE_DIR_PATH)
 CLASS_ID = "C"
 FUNCTION_ID = "F"
 TYPE_ID = "T"
-FIRST_DOC_LINE_RE = re.compile(r"^(.*?)(:?\n\n|$)", re.DOTALL)
+FIRST_DOC_LINE_RE = re.compile(r"^(.*?)(:?\n\s*\n|$)", re.DOTALL)
 REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 
 entry_to_package = {}
@@ -378,6 +383,8 @@ restore_top_package_location()
 # Group entries by package
 package_to_entries = {}
 for entry, package in entry_to_package.items():
+    if force_package:= ITEMS_VISIBILITY.get((entry[0], entry[1])):
+        package = force_package
     if package in package_to_entries:
         package_to_entries[package].append(entry)
     else:
