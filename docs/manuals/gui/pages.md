@@ -301,14 +301,6 @@ user's response.
 Please refer to the documentation page on the [`dialog`](viselements/dialog.md)
 control for more details and examples.
 
-## Panes
-
-Modern user interfaces also provide small pages that pop out and be removed for
-temporary use, such as providing specific parameters for the application. Taipy lets
-you create such elements as described below.
-
-!!! abstract "TODO: panes documentation"
-
 ## Partials
 
 There are page fragments that you may want to repeat on different pages. In that situation,
@@ -342,6 +334,24 @@ in visual elements that use them.
 You can take a look at the documentation of the [`dialog`](viselements/dialog.md) or 
 [`pane`](viselements/pane.md) to see how these _Partials_ can be used in pages.
 
+## Panes
+
+Modern user interfaces also provide small pages that pop out and be removed for
+temporary use, such as providing specific parameters for the application. Taipy lets
+you create such elements using the [pane](viselements/pane.md) block.
+
+A pane can appear from any border of you page, next to or on top of the page, and
+disappears when the user clicks outside its area.
+
+A pane can be defined using the `Partial^` class, or directly in the page
+definition.
+
 ## Local resources
 
-!!! abstract "TODO: local resources documentation"
+Pages sometimes need to access local resources from a page. That is the case for
+example if an image needs to be inserted: the path to the image must be provided.
+
+You can indicate, using the parameter _path_mapping_ of the
+[`Gui` constructor](Gui.__init__()^), where those resources are located on the file
+system.
+

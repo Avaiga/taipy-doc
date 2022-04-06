@@ -94,7 +94,7 @@ property. This will be the original value of the selection in the _LoV_ unless
 your control has set the property _value_by_id_ to True, then the selected value
 will be the unique identifier of the value in the _LoV_.
 
-## Custom _LoV_s
+### Custom LoVs
 
 You can create a _LoV_ from any series of objects.
 
@@ -131,8 +131,9 @@ used in 'regular' _LoV_s.
       { "name": "3.9",   "date": 2020 },
       { "name": "3.10",  "date": 2021 }
     ]
+    ```
 
-    You need to represent each item as: "Version <version name> (<version date>)".
+    You need to represent each item as: "Version &lt;version name&gt; (&lt;version date&gt;)".
     The identifier for each version will be its name, which is unique.
 
     The adapter you need to write would look like this:
@@ -141,7 +142,7 @@ used in 'regular' _LoV_s.
       return (version["name"], f"Version {version["name"]} ({version["date"]})")
     ```
 
-## _LoV_ for trees
+### _LoV_ for trees
 
 The [tree](viselements/tree.md) control needs an additional item in
 each value of the _LoV_: each element of the _LoV_ represents a node
@@ -187,11 +188,78 @@ The Markdown fragment that would be used in a page would look like this:
 
 ## Tabular values
 
-TODO
+The [chart](viselements/chart.md) and [table](viselements/table.md) controls
+represent tabular data. This data can be provided as a
+[Pandas DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html),
+a list, a [NumPy array](https://numpy.org/doc/stable/reference/generated/numpy.array.html),
+or a dictionary.
+
+When a variable containing such tabular data is bound to a control, it is
+internally transformed into a Pandas DataFrame so one can specify
+which series of data should be used by a control bound to that data:
+for a table, you can indicate which data a column displays. In a chart, you can
+have different traces for different series in the same graph.
+
+Note that the Python list comprehension syntax (i.e. expressions such as
+`[x for x in range(0, 10)]`) is appropriately handled, as long as the returned
+type is one of the supported types. Such expressions can even be inlined
+directly in the definition of the properties of your control.
+
+This is how Taipy internally stores the tabular data:
+
+- If the data is a dictionary, Taipy creates a DataFrame directly from it.
+- If the data is a list of scalar values, Taipy creates a DataFrame with a single
+  column called '0'.
+- If the data is a list of lists:
+  - If all the lists have the same length, then Taipy creates a DataFrame with
+    one column for each list, in the order of the list data.
+    The column names are the list index.
+  - If the lengths of the lists differ, Taipy creates an internal list of
+    DataFrames, that each has one single column. The name of the DataFrame
+    column is &lt;index&gt;/0, where &lt;index&gt; is the index of the list
+    in the original data list.
+
+!!! note "List of lists in charts"
+    To display several traces within the same chart control, you must use a list
+    of tabular values.
+
+!!! note "Column names"
+    When dealing with a list of tabular data, you need to access the name of
+    the data columns to provide them to the controls that use them.
+
+    To select a column for a control, you must provide the name of this column,
+    prefixed with the index of the data and a slash character.<br/>
+    For example, suppose your data set is defined with the following Python code:
+    ```py
+    dataframe_1 = pd.DataFrame({'x': [i for i in range(10)],
+                                'y': [i for i in range(10)]} )
+    dataframe_2 = pd.DataFrame({'x': [i for i in range(10)],
+                                'y': [i*i for i in range(10)]})
+    data = [ dataframe_1, dataframe_2 ]
+    ```
+    In controls that are bound to _data_, the name of the 'y' column of the second
+    DataFrame must be the string "1/y" .
 
 ## Lambda expressions
 
 Some control properties can be assigned lambda expressions to simplify the
 code.
 
-TODO
+You can, for example, bind a lambda function to the _on_action_ property of
+a control. Here is how you can do this with Markdown:
+```
+<|Action|button|on_action={lambda state: ...}|>
+```
+The lambda expression receives the same parameters as the regular _on_action_
+callback function.
+
+Because Python prevents any assignment from being performed in the body of a lambda
+expression, you cannot update the _state_ object directly. However, the `State^`
+class exposes the method `(State.)assign()^` that allows working around
+that limitation. Here is how you can change the value of the variable _toggle_
+directly from the Markdown definition of your page, within the body of the
+definition of a button:
+```
+<|Toggle|button|on_action={lambda state: s.assign("toggle", not state.toggle)}|>
+```
+Pressing the button will toggle the value of the _toggle_ variable.

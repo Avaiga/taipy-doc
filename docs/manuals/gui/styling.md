@@ -45,13 +45,40 @@ And all pages will appear twice as big.
 
 ### Markdown styles
 
-The Markdown syntax allows specifying an element name or class on 
+Thanks to the [_Attribute Lists_](https://python-markdown.github.io/extensions/attr_list/)
+extension, the Markdown text can hold attributes used for styling.
 
-TODO
+If, for example, your Markdown content is the following:
+```
+...
+This line should be displayed in blue.
+{ .blue-line }
+...
+```
+
+and a style sheet used by the application indicates:
+```css
+.blue-line {
+  color: blue;
+}
+```
+then the text line is displayed in blue.
+
+Please check the documentation for the _Attribute Lists_ extension to find
+more information.
+
+!!! note "div vs. p"
+    Instead of generating &lt;p&gt; HTML tags for lines of text, Taipy
+    uses &lt;div&gt; tags. This allows more complex structures in pages,
+    such as elements within elements.
 
 ### Main page style
 
-TODO
+The top-most element of the generated page is a &lt;div&gt; element with
+the 'id' attribute set to "root".
+
+If you need to reference the top-most element of your page, you 
+can select it in your CSS stylesheets using the selector: `div#root`.
 
 ### Visual elements-specific styles
 
