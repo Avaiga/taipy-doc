@@ -1,7 +1,16 @@
-A `Scenario^` is created to model a business concept. It represents an instance of a business problem to solve on
-consistent data and parameter sets. In other words, when an end user selects a _scenario_, he/she should have access
-to all the information and data needed to understand the business case he/she is working on and to make the right
-decisions.
+We have introduced in Taipy the important concept of a `Scenario^`. The Taipy Scenario represents an instance of a
+business problem to solve on consistent data and parameter sets.
+
+As its name implies, Taipy scenarios enable the business user to instantiate different versions of a business
+problem with different assumptions. This is extremely useful in a business context where impact analysis and what-if
+analysis are essential in the decision process.
+
+After having analyzed its first scenario, the end-user may be very interested in modifying input data nodes (not the
+intermediate nor the output data nodes), re-running the same pipelines and comparing the results with the previous run.
+
+For this purpose, it will just need to instantiate a second scenario, execute it and compare it with the first scenario.
+This process can be repeated across multiple scenarios.
+
 
 !!! example "In the example"
 
@@ -28,8 +37,8 @@ assumptions.
 
 !!! example
 
-    We would like to perform some simulation on the impact of our capacity data on production planning.
-    We want to create two scenarios for the February use case.
+    We would like to perform some simulation on the impact of our capacity data on production planning for the February
+    use case.
 
     The first scenario can forecast demand and compute production orders assuming a low capacity, whereas the
     second scenario assumes a high capacity value.
