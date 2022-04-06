@@ -34,7 +34,7 @@ The Taipy team will analyse your issue and return to you as soon as possible.
 ## Improve Documentation
 
 Do not hesitate to create an issue or pull request directly on the
-[`taipy-doc` repository directly](https://github.com/Avaiga/taipy-doc).
+[taipy-doc repository](https://github.com/Avaiga/taipy-doc).
 
 ## Implement Features
 
@@ -44,6 +44,7 @@ attached to the `current sprint`. Please, do not work on it, the Taipy team is o
 ## Code organisation
 
 Taipy is organised in four main repositories:
+
 - [taipy-core](https://github.com/Avaiga/taipy-core).
 - [taipy-gui](https://github.com/Avaiga/taipy-gui).
 - [taipy-rest](https://github.com/Avaiga/taipy-rest).
@@ -67,6 +68,7 @@ All new development happens in the `develop` branch. All pull requests should ta
 We are following a strict branch naming convention based on the pattern: `<type>/#<issueId>[IssueSummary]`.
 
 Where:
+
 - `<type>` would be one of:
     - feature: new feature implementation, or improvement of a feature.
     - fix: bug fix.
