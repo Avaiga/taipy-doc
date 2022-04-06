@@ -352,6 +352,6 @@ Pages sometimes need to access local resources from a page. That is the case for
 example if an image needs to be inserted: the path to the image must be provided.
 
 You can indicate, using the parameter _path_mapping_ of the
-[`Gui` constructor](Gui.__init__()^), where on the filesystem where the
-application runs should those resources be located.
+[`Gui` constructor](Gui.__init__()^), where those resources are located on the file
+system.
 

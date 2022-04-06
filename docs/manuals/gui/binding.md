@@ -207,7 +207,7 @@ directly in the definition of the properties of your control.
 
 This is how Taipy internally stores the tabular data:
 
-- If the data is a dictionary, Taipy creates a DataFrame directly from if.
+- If the data is a dictionary, Taipy creates a DataFrame directly from it.
 - If the data is a list of scalar values, Taipy creates a DataFrame with a single
   column called '0'.
 - If the data is a list of lists:
@@ -260,6 +260,6 @@ that limitation. Here is how you can change the value of the variable _toggle_
 directly from the Markdown definition of your page, within the body of the
 definition of a button:
 ```
-<|Toggle|button|on_action={lambda state: s.assign("toggle", !state.toggle)}|>
+<|Toggle|button|on_action={lambda state: s.assign("toggle", not state.toggle)}|>
 ```
 Pressing the button will toggle the value of the _toggle_ variable.
