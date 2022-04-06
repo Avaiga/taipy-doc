@@ -8,9 +8,7 @@ assignees: ''
 ---
 
 **Description**
-What this improvement addresses (performance, API...).
+What this improvement addresses (type of documentation, Chapter, section...).
 
-**Acceptance Criteria**
-- [ ] Ensure new code is unit tested, and check code coverage is at least 90%
-- [ ] Propagate any change on the demos and run all of them to ensure there is no breaking change
-- [ ] Ensure any change is well documented
+**Expected change**
+Description of what would be the expected outcome.
