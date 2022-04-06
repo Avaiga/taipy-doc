@@ -53,7 +53,7 @@ for m in $MODULES; do
     fi
     (cd $TOP_DIR/$m; git pull)
     if [ $m == "taipy-getting-started" ]; then
-        (cd $TOP_DIR/$m;tar cf - step_*) | (cd $ROOT_DIR/docs/getting_started/;tar xf -)
+        (cd $TOP_DIR/$m;tar cf - step_* src) | (cd $ROOT_DIR/docs/getting_started/;tar xf -)
         cp $TOP_DIR/taipy-getting-started/README.md $ROOT_DIR/docs/getting_started/index.md
     else
         (cd $TOP_DIR/$m; \

@@ -55,6 +55,7 @@ jobs:
         run: |
           mv taipy-getting-started/step_* docs/getting_started/
           mv taipy-getting-started/README.md docs/getting_started/index.md
+          mv taipy-getting-started/src docs/getting_started/
       - name: Pre-process root package and GUI doc
         run: |
           pipenv run python tools/setup_generation.py
