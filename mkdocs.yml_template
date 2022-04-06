@@ -65,9 +65,8 @@ nav:
     - "About Taipy's Reference Manual": 'manuals/reference.md'
     [REFERENCE_CONTENT]
   - 'Contributing':
-    - 'About contributions': 'contributing/about_contributing.md'
-    - 'How you can contribute': 'contributing/how-to-contribute.md'
-    - 'Get started for local development': 'contributing/get-started.md'
+    - 'Contributing to Taipy': 'contributing/contributing.md'
+    - 'Code of conduct': 'contributing/code_of_conduct.md'
   - 'Credits':
     - 'Development lead': 'credits/development_lead.md'
     - 'Contributors': 'credits/contributors.md'
