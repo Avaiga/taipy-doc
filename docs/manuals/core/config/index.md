@@ -2,7 +2,7 @@
 
 In the previous chapter, the few [Taipy Core concepts](../concepts/index.md) are defined.
 
-Taipy Core is an application builder designed to help data scientists turn their algorithms into an interactive
+Taipy Core is an application builder designed to help Python developer turn their algorithms into an interactive
 production-ready data-driven application.
 
 To build such an application, the first step consists in configuring the characteristic and the desired behavior of
