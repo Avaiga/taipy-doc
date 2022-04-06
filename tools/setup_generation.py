@@ -22,19 +22,16 @@
 #     It finally updates the top navigation bar content (in mkdocs.yml) to
 #     reflect the root package structure.
 # ------------------------------------------------------------------------
+import glob
+import json
 import os
-import warnings
 import re
 import shutil
+import warnings
 from datetime import datetime
+from inspect import isclass, isfunction, ismodule
 
 import pandas as pd
-import math
-import json
-import importlib.util
-from inspect import isclass, isfunction, ismodule
-from pathlib import Path
-import time
 
 ROOT_PACKAGE = "taipy"
 MODULE_EXTENSIONS = ".py"
@@ -61,6 +58,11 @@ PACKAGES_VISIBILITY = [
     ("taipy.core.data.sql","taipy.core.exceptions"),
     ("taipy.core.data.data_node","taipy.core.data.operator")
     ]
+# Change some item visibility from a package to another
+#   (orig_package, item_name) -> dest_package
+ITEMS_VISIBILITY = {
+    ("taipy.gui.gui", "Gui") : "taipy.gui"
+}
 REFERENCE_REL_PATH = "manuals/reference"
 REFERENCE_DIR_PATH = root_dir + "/docs/" + REFERENCE_REL_PATH
 XREFS_PATH = root_dir + "/docs/manuals/xrefs"
@@ -98,7 +100,7 @@ def restore_top_package_location():
 # Step 1
 #   Generating the Visual Elements documentation
 # ------------------------------------------------------------------------
-print("Step 1/2: Generating Visual Elements documentation")
+print("Step 1/3: Generating Visual Elements documentation")
 
 
 def read_skeleton(name):
@@ -295,7 +297,7 @@ with open(os.path.join(GUI_DOC_PATH, "blocks.md"), "w") as file:
 # Step 2
 #   Generating the Reference Manual
 # ------------------------------------------------------------------------
-print("Step 2/2: Generating the Reference Manual pages")
+print("Step 2/3: Generating the Reference Manual pages")
 
 # Create empty REFERENCE_DIR_PATH directory
 if os.path.exists(REFERENCE_DIR_PATH):
@@ -305,7 +307,7 @@ os.mkdir(REFERENCE_DIR_PATH)
 CLASS_ID = "C"
 FUNCTION_ID = "F"
 TYPE_ID = "T"
-FIRST_DOC_LINE_RE = re.compile(r"^(.*?)(:?\n\n|$)", re.DOTALL)
+FIRST_DOC_LINE_RE = re.compile(r"^(.*?)(:?\n\s*\n|$)", re.DOTALL)
 REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 
 entry_to_package = {}
@@ -381,6 +383,8 @@ restore_top_package_location()
 # Group entries by package
 package_to_entries = {}
 for entry, package in entry_to_package.items():
+    if force_package:= ITEMS_VISIBILITY.get((entry[0], entry[1])):
+        package = force_package
     if package in package_to_entries:
         package_to_entries[package].append(entry)
     else:
@@ -468,6 +472,29 @@ for package in sorted(package_to_entries.keys()):
 with open(XREFS_PATH, "w") as xrefs_output_file:
     xrefs_output_file.write(json.dumps(xrefs))
 
+
+
+# ------------------------------------------------------------------------
+# Step 3
+#   Generating the Getting Started
+# ------------------------------------------------------------------------
+print("Step 3/3: Generating the Getting Started navigation bar")
+
+def format_getting_started_navigation(filepath: str) -> str:
+    readme_path = f"{filepath}/ReadMe.md"
+    if 'step_00' in filepath:
+        return f"        - 'Before you start': '{readme_path}'"
+    filename = filepath[len('getting_started/'):]
+    title, step_number = filename.split('_')
+    return f"        - '{title.title()} {int(step_number)}': '{readme_path}'"
+
+step_folders = glob.glob("docs/getting_started/step_*")
+step_folders.sort()
+step_folders = map(lambda s: s[len('docs/'):], step_folders)
+step_folders = map(format_getting_started_navigation, step_folders)
+getting_started_navigation = "\n".join(step_folders) + '\n'
+
+
 # Update mkdocs.yml
 copyright_content = f"{str(datetime.now().year)}"
 mkdocs_yml_content = re.sub(r"\[YEAR\]",
@@ -475,6 +502,10 @@ mkdocs_yml_content = re.sub(r"\[YEAR\]",
                             mkdocs_yml_content)
 mkdocs_yml_content = re.sub(r"^\s*\[REFERENCE_CONTENT\]\s*\n",
                             navigation,
+                            mkdocs_yml_content,
+                            flags=re.MULTILINE|re.DOTALL)
+mkdocs_yml_content = re.sub(r"^\s*\[GETTING_STARTED_CONTENT\]\s*\n",
+                            getting_started_navigation,
                             mkdocs_yml_content,
                             flags=re.MULTILINE|re.DOTALL)
 with open(MKDOCS_YML_PATH, "w") as mkdocs_yml_file:

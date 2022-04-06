@@ -4,11 +4,6 @@ on:
   push:
     branches: [develop]
   workflow_dispatch:
-    inputs:
-      user-to-notify:
-        description: "Github username to notify"
-        required: false
-        default: ""
 
 jobs:
   Deploy-Doc:
@@ -49,6 +44,17 @@ jobs:
         run: |
           echo "from taipy.core import *" >taipy/__init__.py
           echo "import taipy.gui as gui" >>taipy/__init__.py
+      - name: Fetch Taipy Getting Started code
+        uses: actions/checkout@v2
+        with:
+          repository: Avaiga/taipy-getting-started
+          ref: develop
+          path: taipy-getting-started
+          token: ${{ secrets.TAIPY_REPOS_ACCESS_TOKEN }}
+      - name: Add the Getting Started steps and README in content of the doc
+        run: |
+          mv taipy-getting-started/step_* docs/getting_started/
+          mv taipy-getting-started/README.md docs/getting_started/index.md
       - name: Pre-process root package and GUI doc
         run: |
           pipenv run python tools/setup_generation.py

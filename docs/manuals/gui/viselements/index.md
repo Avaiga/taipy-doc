@@ -1,14 +1,14 @@
 # Introduction to Visual Elements
 
-_Visual Elements_ are user interface objects that are displayed on a given page.
+_Visual Elements_ are user interface objects displayed on a given page.
 Visual elements reflect some application data or give the page some structuring
-or layout information. Most visual elements let users interact with the page content.
+or layout information. Most visual elements allow users to interact with the page content.
 
-_Visual Elements_ are split into two categories:
+There are two types of _Visual Elements_:
 
    - _Controls_ typically represent user data that the user can interact with;
 
-   - _Blocks_ let you organize controls (or blocks) in page to provide the best
+   - _Blocks_ let you organize controls (or blocks) in pages to provide the best
     possible user experience.
 
 If you are familiar with what _Visual Elements_ are and how they are declared, you
@@ -20,45 +20,46 @@ may want to jump directly to the list of the available visual elements:
 
 ## Properties
 
-Every visual element you can use in a page has a type and a set of properties.
-To add a visual component to your page, you have to use the appropriate syntax,
-indicating what type of visual element you want to use in your page, and how to
-set the properties of the element.
+Each visual element has a type and a set of properties.
+To add a visual component to a page, appropriate syntax must be used,
+indicating the type of visual element and the
+properties of the element.
 
 ### Property name
 
-Every control type has a default property name
-If you want to set the value for this property,
-you can use the short version of the control syntax.
+Every element type has a default property name that holds its 'main'
+representation: a string for a text element, an array for a selector, or
+a numerical value for a slider.
+
+To set the value for this property, the short version of the visual
+element syntax can be used.
 
 ### Property value
 
-Every property value can be set to a given value that depends on the property type or a
+Every property value can be set to a value that depends on the property type or a
 formatted string literal, also known as an _f-string_. This string may reference variable
-names defined in your code, and the property value becomes the evaluated string.
+names defined in the code, and the value of the property is set to the evaluated string.
 
 !!! note "Dynamic properties"
-    When a property is listed as _dynamic_, this means that if the code changes the
-    value of any variable in the expression, it will be sent automatically to the
-    visual element that uses it.
-
+    When a property is listed as _dynamic_, changing the value of any variable in the
+    expression will update visual element that uses it.
 
 ## Syntax
 
-You create visual elements using a specific Markdown syntax (see the
+You create visual elements using either a specific Markdown syntax (see the
 `Markdown^` class) or specific HTML tags (see the `Html^` class).
 
 ### Markdown
 
 The basic syntax for creating Taipy constructs in Markdown is: `<|...|...|>` (opening with a
 _less than_ character followed by a vertical bar character &#151; sometimes called
-_pipe_ &#151; followed a potentially empty series of vertical bar-separated fragments and closing
-by a vertical bar character immediately followed by the _greater than_ character).<br/>
+_pipe_ &#151; followed by a potentially empty series of vertical bar-separated fragments and
+closing with a vertical bar character immediately followed by the _greater than_ character).<br/>
 Taipy interprets any text between the `<|` and the `|>` markers and tries to create visual
-elements that are inserted in the resulting page.
+elements to be inserted in the resulting page.
 
 The most common use of this construct is to create controls. Taipy expects the control type
-name to appear between the two first vertical bar characters (like in `<|control|...}>`.
+name to appear between the two first vertical bar characters (as in `<|control|...}>`.
 
 !!! important
     If the first fragment text is not the name of a control type, Taipy will consider this
@@ -91,18 +92,22 @@ fragment similar to:
 ```
 
 !!! note
-    You can have as many property name-property value pairs as needed, and all the space characters
-    of the property value part _are_ significant:<br/>
+    You can have as many property name-property value pairs as needed, and all of the space
+    characters of the property value part _are_ significant:<br/>
     The fragment `<|Content |text|>` will be displayed as the string "Content" followed by a
-    space character, because it is part the the propertly value (in this case, the _default_
+    space character, because it is part of the property value (in this case, the _default_
     property value, which is the property called _value_ for the [`text`](text.md) control)
 
 !!! note "Shortcut for Boolean properties"
     Should the `=property_value` fragment be missing, the property value is interpreted as the
     Boolean value `True`.<br/>
-    Furthermore if the property name is preceded by the text "_no&blank;_", "_not&blank;_",
-    "_don't&blank;_" or "_dont&blank;_" (including the trailing space character) then no
+    Furthermore, if the property name is preceded by the text "_no&blank;_", "_not&blank;_",
+    "_don't&blank;_" or "_dont&blank;_" (including the trailing space character), then no
     property value is expected, and the property value is set to `False`.
+
+!!! note "Unknown properties"
+    If you set a property that a visual element does not recognize, it is
+    ignored without any warning.
 
 #### Some examples
 
@@ -141,7 +146,7 @@ fragment similar to:
     <|button|not active|>
     ```
 
-There are very few exceptions to the `<|control_type|...|>` syntax, and these exceptions
+There are very few exceptions to the `<|control_type|...|>` syntax, which
 are described in their respective documentation section. The most obvious exception is the
 [`text`](text.md) control, which can be created without even mentioning its type.
 
@@ -166,7 +171,7 @@ is equivalent to
 !!! info "HTML syntax extensions"
 
     The HTML text that is given to the `Html^` page renderer is **not** parsed as pure
-    HTML. Instead, the page is transformed before it is rendered to HTML and delivered to
+    HTML. Rather, the page is transformed before it is rendered to HTML and delivered to
     the client. Therefore, Taipy was able to introduce a few changes to the pure HTML syntax
     that make it easier to use in the context of describing Taipy pages.
 
@@ -183,15 +188,17 @@ is equivalent to
 
 Every visual element type has the following properties:
 
--   `id`: The identifier of the element, that gets generated in the HTML component.
+-   `id`: The identifier of the element. This identifier is generated in the HTML component
+    and can be used for [styling](../styling.md).
 -   `class_name`: An additional CSS class that is added to the generated HTML component.
     Note that all visual elements are generated with the "taipy-_visual_element_type_" CSS
-    class set (ie. the `button` control generates an HTML element that has the
+    class set (e.g. the `button` control generates an HTML element that has the
     _taipy-button_ CSS class).
--   `properties`: The name of a variable that holds a dictionary where all property name/value pairs will be used by a given visual element declaration.
+-   `properties`: The name of a variable that holds a dictionary where all property name/value
+    pairs will be used by a given visual element declaration.
 
-All or most of the Taipy visual elements expose similar properties that can be used in a
-generic manner across your pages.
+All or most Taipy visual elements expose similar properties that can be used generically
+across your pages.
 
 ### The `id` property
 
@@ -201,8 +208,9 @@ This identifier is used as the `id` attribute of the generated HTML component so
 can use it in your CSS selectors.
 
 !!! note
-    This identifier is also sent to the _on_action_ function of the `Gui` instance, if this visual
-    element can trigger actions.
+    This identifier is also sent to the _on_action_ callback if this visual
+    element can trigger actions (see [Actions](../callbacks/#actions)
+    for details).
 
 ### The `properties` property
 
@@ -212,25 +220,23 @@ This is typically the case for complex visual elements like the
 
 When an element needs many properties and property values, the content may become
 difficult to read. Something you can do about this is create a Python dictionary that
-contains all the key-value pairs for your properties (name and value) then use the name
+contains all the key-value pairs for your properties (name and value), then use the name
 of the variable that holds that dictionary as the value of the `properties` property.
 
 !!! Example
 
     Say your Markdown content needs the following control:
-    `<|dialog|title=Dialog Title|open={show_dialog}|page_id=page|validate_action=validate_action|cancel_action=cancel_action||validate_action_text=Validate|cancel_action_text=Cancel|>`
+    `<|dialog|title=Select an item in the list|open={show_dialog}|labels=Cancel;Validate|page_id=page|close_label=Cancel|>`
 
-    You can argue that this is pretty long and could be improved. In this situation, you might
-    prefer to declare a simple Python dictionary in your code:
+    As this syntax can be cumbersom, you might
+    prefer to define a simple Python dictionary:
 
     ```py linenums="1"
     dialog_props = {
-      "title":           "Dialog Title",
+      "title":           "Select an item in the list",
+      "labels":          "Cancel;Validate",
       "page_id":         "page",
-      "validate_label":  "Validate",
-      "validate_action": "validate_action",
-      "cancel_label":    "Cancel",
-      "cancel_action":   "cancel_action"
+      "close_label":    "Cancel"
     }
     ```
 
@@ -241,12 +247,21 @@ of the variable that holds that dictionary as the value of the `properties` prop
 
 ### The `propagate` property
 
-If the `propagate` property is set to `True`, then the application variable bound to a
-visual element is updated when the user modifies the value represented by the element.
+There are situations where you don't want a variable bound to a control value (such
+as the knob location of a slider) to be updated immediately then the user manipulates
+the control. You may for example want to check the received value in the _on_change_
+callback and decide to use this new value or not.<br/>
+This is the purpose of the _propagate_ property.
+
+When the _propagate_ property is set to True, then the application variable bound to a
+control is updated when the user modifies the value represented by the control.
 
 !!! info
-    Note that if there is a function called `on_change` declared on the `Gui` instance, it will be
-    invoked no matter what the _propagate_ value is.
+    Note that if there is a function called `on_change` accessible to the `Gui` instance
+    (see the section on [Variable Value Change](../callbacks/#variable-value-change) for
+    details), it will be invoked no matter what the _propagate_ value is. The variable
+    value that this function receives is the new requested value, but this value is
+    **not** set to the variable bound to the control.
 
 Besides those common properties, every visual element type has a specific set of properties that you
-can use, listed in the documentation page for that visual element.
+can use, listed in the documentation page for each visual element.

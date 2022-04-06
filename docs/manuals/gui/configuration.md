@@ -1,48 +1,114 @@
 # User Interface Configuration
 
-The user interfaces 
+Applications created using the `taipy.gui` package can be configured
+for different use cases or environments.
+
+This section describes how to configure an application and
+explains different deployment scenarios.
 
 ## Configuring the `Gui` instance
 
-You can configure the User Interface part of your application using
-these settings:
+The `Gui^` instance of your application has many parameters that
+you can modify to accommodate your environment (such as development
+or deployment context) or tune the user experience.
 
-   - _host_ (str, default: 127.0.0.1): the hostname of the server.
-   - _port_ (int, default: 5000): the port that the server uses.
+Configuration parameters can be specified in the call to the `(Gui.)run()^`
+method of your `Gui` instance using the _kwargs_ parameter.
+
+!!! note "Configuring with an .env file"
+    All parameters can also be set to any values and stored as a list of key-value
+    pairs in a text file for your `Gui` instance to consume. The name of this file
+    is the one provided as the _env_filename_ parameter to the
+    [`Gui` constructor](Gui.__init__()^).
+
+    If you have such a configuration file, then the value associated with a
+    configuration parameter will override the one provided in the `(Gui.)run()^`
+    method of your `Gui` instance.
+
+!!! note "Script options"
+    The Python script that you launch to run your application can
+    be provided command-line options that Taipy can use to ultimately
+    override configuration settings. Not all configuration parameters can be
+    overridden with option but when they can, the option is describe in the
+    specific configuration parameter entry below.
+
+    To see a list of all predefined Taipy options, you can run any Taipy
+    script that runs a `Gui` instance with the _-h_ option.
+
+Here is the list of the configuration parameters you can use in
+`Gui.run()^` or as an environment setting:
+
+   - _host_ (str, default: 127.0.0.1): the hostname of the server.<br/>
+     This parameter can be overridden using the _-H_ or _--host_ option
+     when launching your application:<br/>
+     _-H,--host &lt;hostname>_
+   - _port_ (int, default: 5000): the port that the server uses.<br/>
+     This parameter can be overridden using the _-P_ or _--port_ option
+     when launching your application:<br/>
+     _-P,--port &lt;port>_
+   - _title_ (str or None, default: "Taipy App"): the string displayed in the browser page
+     title bar when navigating your Taipy application.
+   - _favicon_ (str or None, default is the Avaiga logo): the path to an image file used
+     as the page's icon when navigating your Taipy application.
    - _dark_mode_ (bool, default: True): whether the application shows in Dark mode (True)
-     or light mode (False).
-   - _debug_ (bool, default: True): set to True if you want to be provided with detailed
-     debugging information messages from the server.
+     or Light mode (False).
    - _margin_ (str or None, default: "1em"): a CSS dimension value that indicates how far
      from the border of the windows should your interface be. The default value avoids
-     elements getting glued to the window borders, making it nicer to look at.
-   - _use_reloader_ (bool, default: True):
+     elements getting glued to the window borders, improving appearance.
+   - _system_notification_ (bool, default: True): if True, notifications will be sent by
+     the system as well as the browser, should the _system_notification_ parameter in the
+     call to (notify()^) be set to None. If False, the default behavior is to not use
+     system notifications. See the section on [Notifications](notifications.md) for details.
+   - _notification_duration_ (int, default: 3000): the time, in milliseconds, that notifications
+     should remain visible (see [Notifications](notifications.md) for details).
+   - _debug_ (bool, default: True): set to True if you want to be provided with detailed
+     debugging information messages from the server.<br/>
+     You can force the _debug_ mode using the _--debug_ option when launching
+     your application.<br/>
+     Or you can force **not** to use the _debug_ mode using the _--no_debug_ option
+     when launching your application.
+   - _flask_log_ (bool, default: False): if set to True, you can get a full, real-time
+     log from the Flask server. This may be useful when trying the find the reason why
+     a request does not behave as expected.
+   - _use_reloader_ (bool, default: True): If True, the application watches its Python
+     source file while running, and reloads the entire script should the file be
+     modified. If False, there is no such watch in place.<br/>
+     You can force the _use_reloader_ mode using the _--use-reloader_ option when
+     launching your application.<br/>
+     Or you can force **not** to use the _use_reloader_ mode using the _--no-reloader_
+     option when launching your application.
+   - _single_client_ (bool, default: False): set to True if only a single client can connect.
+     False indicates that multiple clients can connect to the server.
+   - _propagate_ (bool, default: True): the default value that will be used for every
+     _propagate_ property value, for all controls. Please look at the section on the
+     [_propagate_ propery](viselements/#the-propagate-property) for details).
    - _time_zone_ (str, default: "client"): indicates how date and time values should be
      interpreted.<br/>
      You can use a TZ database name (as listed in [Time zones list on Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
      or one of the following values:
-      - _"client"_ indicates that the time zone to be used is the Web client's.
-      - _"server"_ indicates that the time zone to be used is the Web server's.
-   - _propagate_ (bool, default: True):
-   - _favicon_ (str or None, default is the Avaiga logo): the path to an image file used
-     as the page's icon when navigating your Taipy application.
-   - _title_ (str or None, default: "Taipy App"): the string displayed in the browser page
-     title bar when navigating your Taipy application.
-   - _theme_ (t.Union[t.Dict[str, t.Any], None]):
-   - _theme[light]_ (t.Union[t.Dict[str, t.Any], None]):
-   - _theme[dark]_ (t.Union[t.Dict[str, t.Any], None]):
-   - _use_arrow_ (bool, default: False): indicates, when True, that you want to use the
-      [Apache Arrow](https://arrow.apache.org/) technology to serialize data to Taipy
-      clients. This allows for better performance in some situations.
-   - _browser_notification_ (bool, default: True):
-   - _notification_duration_ (int, default: 3000): the time, in milliseconds, that notifications
-     should remain visible (see [Notifications](notifications.md) for details).
-   - _single_client_ (bool, default: False): set to True if only a single client can connect.
-     False indicates that multiple clients can connect to the server.
-   - _ngrok_token_ (str, default: ""):
-   - _upload_folder_ (str or None, default: None):
-   - _data_url_max_size_ (t.Union[int, None]):
-   - _flask_log_ (bool, default: False):
+     - _"client"_ indicates that the time zone to be used is the Web client's.
+     - _"server"_ indicates that the time zone to be used is the Web server's.
+   - _theme_ (t.Union[t.Dict[str, t.Any], None]): A dictionary that lets you customize
+     the theme of your application. See the [Themes section](styling.md/#themes) for
+     details.
+   - _light_theme_ (t.Union[t.Dict[str, t.Any], None]): Similar to the _theme_ setting,
+     but applies to the _light_ theme only.
+   - _theme[dark]_ (t.Union[t.Dict[str, t.Any], None]):  Similar to the _theme_ setting,
+     but applies to the _dark_ theme only.
+   - _use_arrow_ (bool, default: False): indicates whether or not to use the
+     [Apache Arrow](https://arrow.apache.org/) technology to serialize data to Taipy
+     clients. This allows for better performance in some situations.
+   - _upload_folder_ (str or None, default: None): the local path where files are uploaded,
+     when using the [`file_selector`](viselements/file_selector.md) control.<br/>
+     The default value is the temp directory on the system where the application runs.
+   - _data_url_max_size_ (int or None): the size below which the upload of file content is
+     performed as inline data. If a file content exceeds that size, it will actually create
+     a physical file on the server for your application to use. This upload mechanism is
+     used by the [`file_selector`](viselements/file_selector.md) control.<br/>
+     The default is 50 kB.
+   - _ngrok_token_ (str, default: ""): an authtoken, if you need to use Ngrok to expose your
+     application to the Internet. See the section on
+     [Accessing your app from the Web](#accessing-your-app-from-the-web) for details.
 
 ## Running in Notebooks
 
@@ -70,14 +136,13 @@ and manipulate Notebooks.
 
 Create a new Notebook by selecting the _New_ > _Python 3 (ipykernel)_ option located
 in the upper right corner of the Jupyter interface.<br/>
-And you can start creating the Notebook content.
+Then start creating the Notebook content.
 
 Enter the following code into the first Notebook cell:
-
 ```py linenums="1"
 from taipy.gui import Gui, Markdown
 
-page=Markdown("""
+page = Markdown("""
 # Taipy in a Notebook
 
 Value: <|{value}|>
@@ -87,34 +152,57 @@ Set: <|{value}|slider|>
 
 value = 10
 
-gui=Gui(page)
+gui = Gui(page)
 gui.run()
 ```
 
 As you can see, we create and run our `Gui^` instance in lines 13 and 14.
 
+Also note that we use the `Markdown^` class explicitly. That is because later
+in our code, we will want to modify the content of the page.
+
 Run the cell. The output shows that a server was started (usually on
 _http://127.0.0.1:5000_), hosting the 'Taipy' Flask app.<br/>
-You can now connect a new browser window to this server and see the small
+A new window is created in your browser, displaying the small
 interface we have just created.<br/>
 Note that the text control automatically displays _value_ when you move the slider
 thumb. That shows that Taipy has successfully bound the variable _value_ to both
 the [`text`](viselements/text.md) and the [`slider`](viselements/slider.md)`
 controls.
 
-### Updating pages
+You can witness the user interface update when you change a variable
+on the fly. In the context of Notebooks, you can directly access the
+variables that are bound to the user interface:
+
+### Updating variables
 
 The point of using Notebooks (besides making it possible to provide explanatory
 text along with the code in a single document) is to allow for changing variables
 on the fly and see the impact of these changes immediately. Let's see how we can
 use that feature with Taipy.
 
-In a second cell, enter the following text:
+Enter the following line into a new cell:
+```py
+gui.state.value = 50
+```
+When you run this cell, the new value is reflected both in
+the text and the slider.
+
+!!! important "The gui.state property"
+    This property is provided **only** in the context of Notebooks, where
+    there is a single connection to the server, allowing to access a single
+    '_state_'.
+
+### Updating pages
+
+Pages can also be updated on-the-fly.
+
+In another cell, enter the following text:
 
 ```py
 import math
 
-xrange= range(0, 720)
+xrange = range(0, 720)
 
 def compute_data(a):
     return [   a    * math.cos(2 * math.pi * x / 100) +
@@ -210,4 +298,38 @@ line 10.
 When _gui_ is run (in line 11), Taipy will not create a server of its own.
 Instead, it will serve your GUI pages using the _flask_app_ server created
 in line 4.
+
+## Accessing your app from the Web
+
+[Ngrok](https://ngrok.com/) provides a way to expose your local application
+to the public Internet. That allows anyone to access your application
+before deploying it in your production environment.
+
+If you want to expose your application using Ngrok, you can follow these
+steps:
+
+- Install the `pyngrok` package in your Python environment:
+  ```
+  pip install pyngrok
+  ```
+- Create an account on the [Ngrok Web site](https://ngrok.com/).
+   - That will drive you to a page where you can install the _ngrok_ executable
+     on your machine. Behind the scene, Ngrok will also send you a confirmation
+     email providing a link that you must click to validate your
+     registration and to connect to your new account.<br/>
+     Connecting to your account will provide you the Ngrok _authtoken_.
+
+- Add the NGrok _authtoken_ to the call to `(Gui.)run()^`:
+    ```
+    ...
+    gui=Gui(...)
+    ...
+    gui.run(ngrok_token="<ngrok_authtoken>")
+    ...
+    ```
+- When you run your Taipy script, the console will print out the public URL can
+  allows users to connect to it. This has the form `http://<id>.ngrok.io`.<br/>
+  Your Flask server, running locally will accept and serve connections from all
+  around the world.
+
 
