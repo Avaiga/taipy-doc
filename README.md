@@ -44,28 +44,13 @@ Want to be part of the _Taipy Doc_ community? Check out our [`CODE_OF_CONDUCT.md
 
 ## Directory Structure
 
-- `taipy/core`:
-    - `taipy/core`:
-        - `_repository`: Internal layer for data storage.
-        - `_scheduler`: Internal layer for task scheduling and execution.
-        - `common`: Shared data structures, types, and functions.
-        - `config`: Configuration definition, management and implementation. `config.config.Config` is the main
-          entrypoint for configuring a Taipy Core application.
-        - `cycle`: Work cycle definition, management and implementation.
-        - `data`: Data Node definition, management and implementation.
-        - `exceptions`: _taipy-core_ exceptions.
-        - `job`: Job definition, management and implementation.
-        - `pipeline`: Pipeline definition, management and implementation.
-        - `scenario`: Scenario definition, management and implementation.
-        - `task`: Task definition, management and implementation.
-        - `taipy`: Main entrypoint for _taipy-core_ runtime features.
-    - `tests`: Unit tests following the `taipy/core` structure.
-- `CODE_OF_CONDUCT.md`: Code of conduct for members and contributors of _taipy-core_.
-- `CONTRIBUTING.md`: Instructions to contribute to _taipy-core_.
-- `INSTALLATION.md`: Instructions to install _taipy-core_.
+- `docs`: Documentation content (mainly as markdown files) used by mkdocs to generate the Taipy documentation set.
+- `tools`: Mkdocs and other tools used to build the Taipy documentation set.
+- `CODE_OF_CONDUCT.md`: Code of conduct for members and contributors of _taipy-doc_.
+- `CONTRIBUTING.md`: Instructions to contribute to _taipy-doc_.
+- `INSTALLATION.md`: Instructions to install _taipy-doc_.
 - `LICENSE`: The Apache 2.0 License.
 - `Pipfile`: File used by the Pipenv virtual environment to manage project dependencies.
 - `README.md`: Current file.
-- `setup.py`: The setup script managing building, distributing, and installing _taipy-core_.
-- `tox.ini`: Contains test scenarios to be run.
+- `mkdocs.yml_template`: The template used by mkdocs and other tools to build the Taipy documentation set.
 
