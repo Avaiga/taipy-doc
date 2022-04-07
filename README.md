@@ -1,74 +1,56 @@
-<p>
-    <a href="https://pypi.org/user/Avaiga/">
-        <img src="https://img.shields.io/pypi/v/taipy.svg" alt = "Release Status">
-    </a>
+# Taipy Doc
 
-    <!-- a href="https://github.com/avaiga/taipy-doc/actions">
-        <img src="https://github.com/avaiga/taipy-doc/actions/workflows/dev.yml/badge.svg" alt="CI Status">
-    </a -->
+## License
+Copyright 2022 Avaiga Private Limited
 
-</p>
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+the License. You may obtain a copy of the License at
+[http://www.apache.org/licenses/LICENSE-2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)
 
-!!! info "Licence"
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
 
-    Taipy is a free software under [MIT](https://tlo.mit.edu/learn-about-intellectual-property/software-and-open-source-licensing) Licence.
+## Usage
+- [License](#license)
+- [Usage](#usage)
+- [Taipy Doc](#what-is-taipy-doc)
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [Code of conduct](#code-of-conduct)
+- [Directory Structure](#directory-structure)
 
-!!! abstract "TODO: fix PyPI package or version link"
+## What is Taipy Doc
 
-# Taipy Documentation
+Taipy is a Python library for creating Business Applications. More information on our
+[website](https://www.taipy.io). Taipy is split into multiple repositories to let users
+install the minimum they need.
 
-The Taipy documentation set uses [MkDocs](https://www.mkdocs.org/) to generate its entire
+[Taipy Doc](https://github.com/Avaiga/taipy-doc) has the responsibility to hold and build the full Taipy
+documentation set. The `taipy-doc` repository uses [MkDocs](https://www.mkdocs.org/) to generate its entire
 content.
 
-## Building the documentation
+## Installation
 
-There are three steps to follow if you want to generate the full content of the
-Taipy documentation:
+Want to install _Taipy Doc_? Check out our [`INSTALLATION.md`](INSTALLATION.md) file.
 
-   - Locally copy the mandatory files from other repositories.<br/>
-     Because sources files (where the Reference Manual information is stored) are
-     spread among different directories, you need to copy those files locally 
-     before you run MkDocs.<br/>
-     This can be done quickly and safely using the shell script `fetch_source_files.sh`
-     located in the `tools` directory. Run the script when your current directory is the
-     root of the `taipy-doc` checkout:
-        ```
-        sh tools/fetch_source_files.sh
-        ```
-     You will notice that two new directories are created in the root directory: `taipy` and
-     `gui`. There are where mandatory files are copied. Git ignores these two directories, and
-     you should not bother with them.
+## Contributing
 
-   - Generate the Reference Manual and Visual Elements documentation files.<br/>
-     The Reference Manual and the documentation for the Visual Elements of the `taipy-gui` module are
-     generated from source files copied from the `taipy-core` and `taipy-gui` repositories.<br/>
-     To generate all mandatory files, execute the Python script `setup_generation.py` located
-     in the `tools` directory. Run the script when your current directory is the root
-     of the `taipy-doc` checkout:
-        ```
-        python tools/setup_generation.py
-        ```
+Want to help build _Taipy Doc_? Check out our [`CONTRIBUTING.md`](CONTRIBUTING.md) file.
 
-   - Generate the documentation set.<br/>
-     When all files are copied and generated, you can finally use MkDocs to generate the
-     documentation set. You can use any of the three predefined generation modes:
+## Code of conduct
 
-      - `mkdocs serve`: This is a great way to let MkDocs generate the documentation and
-        locally run a Web server that lets you watch, on the fly, the impact of your changes.
+Want to be part of the _Taipy Doc_ community? Check out our [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) file.
 
-      - `mkdocs build`: Generates the documentation set as a whole hierarchy of files (in
-        `site`). These files can be copied wherever you need to deploy them.
+## Directory Structure
 
-      - `mkdocs gh-deploy`: Generates and deploys the documentation set as a _GitHub Pages_
-         site to publish the result of the documentation build.
-
-# How to contribute
-
-## Code documentation (Reference Manual)
-
-Code is copied from different repositories to be processed.
-
-## User documentation (User Manuals)
-
-## Other manuals
+- `docs`: Documentation content (mainly as markdown files) used by mkdocs to generate the Taipy documentation set.
+- `tools`: Mkdocs and other tools used to build the Taipy documentation set.
+- `CODE_OF_CONDUCT.md`: Code of conduct for members and contributors of _taipy-doc_.
+- `CONTRIBUTING.md`: Instructions to contribute to _taipy-doc_.
+- `INSTALLATION.md`: Instructions to install _taipy-doc_.
+- `LICENSE`: The Apache 2.0 License.
+- `Pipfile`: File used by the Pipenv virtual environment to manage project dependencies.
+- `README.md`: Current file.
+- `mkdocs.yml_template`: The template used by mkdocs and other tools to build the Taipy documentation set.
 
