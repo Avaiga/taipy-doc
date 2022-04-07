@@ -55,7 +55,7 @@ nav:
             - 'Pipeline management': 'manuals/core/entities/pipeline-mgt.md'
             - 'Task management': 'manuals/core/entities/task-mgt.md'
             - 'Data node management': 'manuals/core/entities/data-node-mgt.md'
-            - 'Scheduling and job execution': 'manuals/core/entities/scheduling-and-job-execution.md'
+            - 'Job execution': 'manuals/core/entities/scheduling-and-job-execution.md'
     - 'Taipy REST':
         - manuals/rest/index.md
         - 'Endpoints example': 'manuals/rest/endpoints.md'
