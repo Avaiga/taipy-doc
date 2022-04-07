@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="398" height="460.682" viewBox="0 0 398 460.682">
+  <defs>
+    <filter id="Tracé_3" x="0" y="196.5" width="398" height="264.182" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Tracé_2" x="0" y="0" width="398" height="264.182" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_1" x="160" y="185" width="79" height="79" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Groupe_533" data-name="Groupe 533" transform="translate(-517 -1924)">
+    <g transform="matrix(1, 0, 0, 1, 517, 1924)" filter="url(#Tracé_3)">
+      <path id="Tracé_3-2" data-name="Tracé 3" d="M10,0H370a10,10,0,0,1,10,10V175.874L10,246.182a10,10,0,0,1-10-10V10A10,10,0,0,1,10,0Z" transform="translate(389 448.68) rotate(180)" fill="#283282"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 517, 1924)" filter="url(#Tracé_2)">
+      <path id="Tracé_2-2" data-name="Tracé 2" d="M10,0H370a10,10,0,0,1,10,10V175.874L10,246.182a10,10,0,0,1-10-10V10A10,10,0,0,1,10,0Z" transform="translate(9 6)" fill="#140a1e"/>
+    </g>
+    <g id="Groupe_394" data-name="Groupe 394" transform="translate(548 1930)">
+      <text id="Fastest_Python_GUI_library_you_will_find_in_the_market" data-name="Fastest Python GUI library you will find in the market" transform="translate(0 119)" fill="#f0faff" font-size="16" font-family="Lato-Regular, Lato"><tspan x="0" y="16">Fastest Python GUI library you will find in the </tspan><tspan x="0" y="36">market</tspan></text>
+      <text id="Taipy_GUI" data-name="Taipy GUI" transform="translate(0 75)" fill="#f0faff" font-size="20" font-family="Lato-Regular, Lato"><tspan x="0" y="20">Taipy GUI</tspan></text>
+      <path id="Tracé_4" data-name="Tracé 4" d="M33.359,11.641,34.922,8.2l3.438-1.562L34.922,5.078,33.359,1.641,31.8,5.078,28.359,6.641,31.8,8.2Zm-3.828,3.594-4.766-4.766A1.59,1.59,0,0,0,23.594,10a1.723,1.723,0,0,0-1.172.469L3.828,29.063a1.8,1.8,0,0,0,0,2.422l4.688,4.688a1.723,1.723,0,0,0,1.172.469,1.916,1.916,0,0,0,1.25-.469L29.531,17.578A1.7,1.7,0,0,0,29.531,15.234Zm-5.937-1.172,2.344,2.344-1.953,1.953-2.344-2.344ZM9.688,32.656,7.344,30.313,19.3,18.359,21.641,20.7Z" transform="translate(0 18.359)" fill="#ff462b"/>
+    </g>
+    <g id="Groupe_532" data-name="Groupe 532" transform="translate(546 2190.091)">
+      <text id="Most_complete_low-code_Pipeline_Modeling_with_Scenario_Management" data-name="Most complete low-code Pipeline Modeling with Scenario Management" transform="translate(0 114)" fill="#f7f8fc" font-size="16" font-family="Lato-Regular, Lato"><tspan x="0" y="16">Most complete low-code Pipeline Modeling with </tspan><tspan x="0" y="36">Scenario Management</tspan></text>
+      <text id="Taipy_Core" data-name="Taipy Core" transform="translate(0 70)" fill="#f7f8fc" font-size="20" font-family="Lato-Regular, Lato"><tspan x="0" y="20">Taipy Core</tspan></text>
+      <path id="Tracé_5" data-name="Tracé 5" d="M28.359,20A8.359,8.359,0,1,0,20,28.359,8.369,8.369,0,0,0,28.359,20ZM20,25a5,5,0,1,1,5-5A5.035,5.035,0,0,1,20,25ZM8.359,25H5v6.641A3.335,3.335,0,0,0,8.359,35H15V31.641H8.359Zm0-16.641H15V5H8.359A3.335,3.335,0,0,0,5,8.359V15H8.359ZM31.641,5H25V8.359h6.641V15H35V8.359A3.335,3.335,0,0,0,31.641,5Zm0,26.641H25V35h6.641A3.335,3.335,0,0,0,35,31.641V25H31.641Z" transform="translate(0 15)" fill="#ff462b"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 517, 1924)" filter="url(#Ellipse_1)">
+      <circle id="Ellipse_1-2" data-name="Ellipse 1" cx="30.5" cy="30.5" r="30.5" transform="translate(169 191)" fill="#fff"/>
+    </g>
+    <path id="Tracé_6" data-name="Tracé 6" d="M28.359-28.359H21.641V-25h6.719a5.035,5.035,0,0,1,5,5,5.035,5.035,0,0,1-5,5H21.641v3.359h6.719A8.3,8.3,0,0,0,36.641-20,8.3,8.3,0,0,0,28.359-28.359ZM18.359-15H11.641a5.035,5.035,0,0,1-5-5,5.035,5.035,0,0,1,5-5h6.719v-3.359H11.641A8.3,8.3,0,0,0,3.359-20a8.3,8.3,0,0,0,8.281,8.359h6.719Zm-5-3.359H26.641v-3.281H13.359Z" transform="translate(696.5 2165)" fill="#140a1e"/>
+  </g>
+</svg>
