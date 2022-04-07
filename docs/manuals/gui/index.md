@@ -1,6 +1,6 @@
-# Taipy's User Interface 
+# Taipy's User Interface
 
-The Taipy library provides Python classes that make it easy to create
+The Taipy GUI library provides Python classes that make it easy to create
 powerful Web apps in minutes.
 
 ## What is a graphical user interface
