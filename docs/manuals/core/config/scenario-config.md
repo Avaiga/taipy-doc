@@ -59,7 +59,8 @@ scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_confi
 ```
 
 In this small example, we create a scenario configuration `ScenarioConfig^` from a pipeline configuration with a
-`WEEKLY` frequency.
-
+`WEEKLY` frequency. When scenarios (entities) do get created using the scenario configuration above, they will be
+associated to a Cycle corresponding to their creation date. See documentation on
+[Scenario and cycle management](../entities/scenario-cycle-mgt.md).
 
 [:material-arrow-right: The next section introduces the global configuration](global-config.md).
