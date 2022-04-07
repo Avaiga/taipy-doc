@@ -1,5 +1,9 @@
 # Taipy application with Airflow
 
+!!! important
+    This feature is limited to the Enterprise version only. <br>
+    For more information, contact us at [taipy.io](www.taipy.io).
+
 ## Prerequisites
 
 - Minimal knowledge of Docker.
