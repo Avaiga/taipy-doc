@@ -65,7 +65,7 @@ Taipy's repositories follow the [W3Schools](https://www.w3schools.com/js/js_conv
 ### Git branches
 
 All new development happens in the `develop` branch. All pull requests should target that branch.
-We are following a strict branch naming convention based on the pattern: `<type>/#<issueId>[IssueSummary]`.
+We are following a strict branch naming convention based on the pattern: `<type>/#<issueId>[<IssueSummary>]`.
 
 Where:
 
