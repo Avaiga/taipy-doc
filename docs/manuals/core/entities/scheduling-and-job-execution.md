@@ -91,7 +91,7 @@ Here is the list of the job's attributes:
 - _force_: The force attribute is `True` if the execution of the job has been forced.
 - _creation_date_: The date of the creation of the job with the status `SUBMITTED`.
 - _status_: The status of the job.
-- _exceptions_: The exceptions handled during the execution of the jobs.
+- _stacktrace_: The stacktrace of the exceptions handled during the execution of the jobs.
 
 ## Job Status
 
