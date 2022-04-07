@@ -60,17 +60,17 @@ data nodes instantiated from this config.
 # Storage type
 
 Taipy proposes various predefined _data nodes_ corresponding to the most popular
-_storage types_. Thanks to predefined _data nodes_, the data scientist developer does not need
+_storage types_. Thanks to predefined _data nodes_, the Python developer does not need
 to spend much time configuring the _storage types_ or the
 _query system_. Most of the time, a predefined _data node_ corresponding to a basic and standard use case satisfies
 the user's needs like pickle file, csv file, sql table, Excel sheet, etc.
 
 The various predefined _storage types_ are mainly used for input data. Indeed, the input data is usually provided by an
-external component, and the data scientist user does not control the format.
+external component, and the Python developer user does not control the format.
 
 However, in most cases, particularly for intermediate or output _data nodes_, it is not relevant to prefer one _storage
 type_. The end-user wants to manipulate the corresponding data within the Taipy application. Still, the user does not
-have any particular specifications regarding the _storage type_. In such a case, the data scientist developer is
+have any particular specifications regarding the _storage type_. In such a case, the Python developer is
 recommended to use the default _storage type_ pickle that does not require any configuration.
 
 In case a more specific method to store, read and write the data is needed by the user, Taipy proposes a _Generic data
