@@ -57,7 +57,7 @@ nav:
             - 'Data node management': 'manuals/core/entities/data-node-mgt.md'
             - 'Scheduling and job execution': 'manuals/core/entities/scheduling-and-job-execution.md'
     - 'Taipy REST':
-        - manuals/rest/rest.md
+        - manuals/rest/index.md
         - 'Endpoints example': 'manuals/rest/endpoints.md'
     - Deployment:
         - GNU/Linux:
