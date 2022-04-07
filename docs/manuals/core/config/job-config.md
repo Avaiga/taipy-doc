@@ -1,9 +1,9 @@
 The `JobConfig^` allows the developer to configure the Taipy behavior for job executions. Two main modes are
-available in Taipy : the `standalone` and the `airflow` mode (available in the enterprise version only).
+available in Taipy: the `standalone` and the `airflow` mode (available in the enterprise version only).
 
 # Standalone
 
-With the _standalone_ mode, Taipy executes the jobs on its own execution context. You can configure the standalone
+With the _standalone_ mode, Taipy executes the jobs in its own execution context. You can configure the standalone
 mode with the following config:
 
 === "Python configuration"
@@ -61,7 +61,7 @@ By default, Taipy executes each _job_ one-by-one, in a synchronous manner. You c
 
 To execute the _jobs_ in parallel, you can set the number of workers to an integer value greater than 1.
 
-Taipy will use multiple and asynchronous processes, and run each job in a dedicated process. The value of the
+Taipy will use multiple asynchronous processes, and run each job in a dedicated process. The value of the
 variable `nb_of_workers` represents the maximum number of processes spawned in parallel. For example,the
 following configuration allows Taipy to run at most 8 jobs in parallel:
 
@@ -113,7 +113,7 @@ _airflow_ mode with the following config :
     mode = "airflow"
     ```
 
-## Start Airflow from Taipy
+## Starting Airflow from Taipy
 
 To let Taipy start the Airflow service, you can use the following configuration:
 
@@ -168,7 +168,7 @@ You can change this location with the `airflow_folder` config:
 
     Taipy starts Airflow in `standalone` mode. It is an Airflow development mode and not recommended for production.
 
-## Use an external Airflow
+## Using an external Airflow
 
 By default, Taipy runs with an external Airflow. You can specify it by setting:
 
