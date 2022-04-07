@@ -34,7 +34,12 @@ user’s experience.
 
 ## Taipy REST - `taipy.rest`
 
-TODO
+The `taipy.rest` package allows you to interact with Taipy Core concepts such as scenarios,
+pipelines, etc. through a dedicated REST API. This package aims to provide a solution to
+easily integrate Taipy applications with other IT systems. The API comes with
+multiple endpoints for you to work with Taipy Core concept conveniently and efficiently.
+
+[:material-arrow-right: Taipy REST user manual](rest/index.md)
 
 ## Deployment
 
