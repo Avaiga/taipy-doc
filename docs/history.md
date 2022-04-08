@@ -14,6 +14,7 @@ Release of the first Taipy version.
 - [`taipy-gui`](https://pypi.org/project/taipy-gui/1.0.0/)
   - TODO : A high level new feature of taipy-gui
   - TODO : Eventually another high level new feature of taipy-gui
+  - TODO : Yet another high level new feature of taipy-gui
 - [`taipy-core`](https://pypi.org/project/taipy-core/1.0.0/)
   - TODO : A high level new feature of taipy-core
   - TODO : Eventually another high level new feature of taipy-core
