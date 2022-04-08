@@ -1,15 +1,16 @@
-# Deploy your application with uWSGI and Nginx on Red Hat 8.2
+# Deploy your application with uWSGI and Nginx on Red Hat Enterprise Linux
 
-[RedHat](https://www.redhat.com/) is an Open Source leader providing an GNU/Linux operating named _RHEL_
-that can run the Web Application Server [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) and the Web Server
-[Nginx](https://nginx.org).
+[Red Hat](https://www.redhat.com/) is an Open Source leader providing an GNU/Linux operating named
+_[RHEL](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux)_ that can run the Web Application
+Server [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) and the Web Server [Nginx](https://nginx.org).
 
 
 ## Installing Python3.8
 
+Most _RHEL_ are delivered with a Python version older than Python3.8 which is the oldest Python version
+supported by Taipy. If you are in that case, please install at least Python3.8:
 ```
 sudo dnf install -y gcc openssl-devel bzip2-devel libffi-devel make
-
 wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tgz
 tar xzf Python-3.8.12.tgz
 rm -rf Python-3.8.12.tgz
@@ -19,6 +20,11 @@ sudo make altinstall
 cd ..
 sudo rm -r Python-3.8.12
 ```
+
+!!! info
+    This tutorial specifies the Python version for each command. If your default version is different, you can
+    replace `python3.8` with `python`.
+
 
 ## Prepare your machine
 
@@ -32,9 +38,10 @@ The following software should be installed on your target machine:
 
 You can install all of this packages by running the following command:
 ```
-sudo dnf install -y nginx python3-devel && \
-sudo python3.8 -m pip install uwsgi gevent && \
-sudo ln -s `pwd`/.local/bin/uwsgi /usr/bin/uwsgi
+sudo dnf install -y nginx
+python3.8 -m pip install uwsgi gevent
+sudo mv `pwd`/.local/bin/uwsgi /usr/bin/uwsgi
+sudo restorecon /usr/bin/uwsgi
 ```
 
 ## Run the application locally
@@ -142,7 +149,7 @@ sudo mv app.uwsgi.service /etc/systemd/system/app.uwsgi.service
 Now, you can start your application automatically at the startup time of your machine by doing:
 ```
 sudo restorecon /etc/systemd/system/app.uwsgi.service
-sudo daemon-reload
+sudo systemctl daemon-reload
 sudo systemctl start app.uwsgi.service
 sudo systemctl enable app.uwsgi.service
 ```
@@ -153,20 +160,27 @@ The application is now running locally but is not accessible yet from the Intern
 ## Exposing to the Internet
 
 To be able to access to your application from the Internet, you should use _Nginx_.
-Change the content of `/etc/nginx/sites-enabled/default` with the following:
+Replace the content of `/etc/nginx/nginx.conf` by the [following](./nginx.conf) or:
 ```
-server {
-    listen 80;
-    location / {
-        proxy_pass http://localhost:5000;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Host $host;
-    }
-}
+sudo wget https://docs.taipy.io/manuals/deployment/linux/redhat/nginx.conf -O /etc/nginx/nginx.conf
 ```
-Then restart _Nginx_:
+
+Allow the communication between _Nginx_ and _uWSGI_:
+```
+sudo setsebool -P httpd_can_network_connect 1
+```
+The restart _Nginx_:
 ```
 sudo systemctl restart nginx
+```
+
+## Open firewall
+
+Your application is ready to receive traffic from the Internet but your firewall still block the communication.
+Allow the connection on the _http_ port that is _80_:
+```
+sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+sudo firewall-cmd --reload
 ```
 
 Your application is now accessible over the Internet!
