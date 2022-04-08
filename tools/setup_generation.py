@@ -23,6 +23,7 @@
 #     reflect the root package structure.
 # ------------------------------------------------------------------------
 import glob
+import itertools
 import json
 import os
 import re
@@ -480,18 +481,15 @@ with open(XREFS_PATH, "w") as xrefs_output_file:
 # ------------------------------------------------------------------------
 print("Step 3/3: Generating the Getting Started navigation bar")
 
-def format_getting_started_navigation(filepath: str) -> str:
+def format_getting_started_navigation(filepath: str, step_name: str) -> str:
     readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
-    if 'step_00' in filepath:
-        return f"        - 'Before you start': '{readme_path}'"
-    filename = filepath[len('getting_started/'):]
-    title, step_number = filename.split('_')
-    return f"        - '{title.title()} {int(step_number)}': '{readme_path}'"
+    return f"        - '{step_name}': '{readme_path}'"
 
+steps_naming = filter(None, open('docs/getting_started/summary.txt').read().split('\n'))
 step_folders = glob.glob("docs/getting_started/step_*")
 step_folders.sort()
 step_folders = map(lambda s: s[len('docs/'):], step_folders)
-step_folders = map(format_getting_started_navigation, step_folders)
+step_folders = itertools.starmap(format_getting_started_navigation, zip(step_folders, steps_naming))
 getting_started_navigation = "\n".join(step_folders) + '\n'
 
 
