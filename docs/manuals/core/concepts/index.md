@@ -1,45 +1,45 @@
 # Taipy's Core concepts
 
-Taipy Core is an application builder designed to help Python developer turn their algorithms into an interactive
+Taipy Core is an application builder designed to help Python developer turn their data algorithms into an interactive
 production-ready data-driven application. Taipy Core provides the necessary concepts for modeling, executing, and
-monitoring algorithms/pipelines.
+monitoring algorithms. In this documentation, such algorithms are called pipelines.
 
-An algorithm can be seen as a succession of functions that exchange data. It can be described as an
-execution graph. With Taipy one can model simple algorithms as well as more complex algorithms.
+A pipeline can be seen as a succession of functions that exchange data. It can be described as an
+execution graph. With Taipy one can model simple pipelines as well as more complex pipelines.
 
 !!! example "Let's take some examples."
 
     === "Simple single function example"
 
-        The following picture represents a simple algorithm made of a single _cleaning_ function processing a single input,
-        the _raw data_, and returning a single output, the _cleaned data_.
+        The following picture represents a simple pipeline made of a single _*cleaning*_ function processing a single
+        input, the _*raw data*_, and returning a single output, the _*cleaned data*_.
 
-        ![Simple algorithm](../pic/simple_algo.svg){ margin-left=25% width=52%}
+        ![Simple pipeline](../pic/simple_algo.svg){ margin-left=25% width=52%}
 
     === "Linear example with two functions"
 
-        The second example below is slightly more complex. The first function _cleaning_ processes a single input,
-        the _raw data_, and returns some intermediate data named _cleaned data_. The second function _filtering_ reads the
-        same intermediate data _cleaned data_ and returns a single output _filtered data_.
+        The second example below is slightly more complex. The first function _*cleaning*_ processes a single input,
+        the _*raw data*_, and returns some intermediate data named _*cleaned data*_. The second function _*filtering*_
+        reads the same intermediate data _*cleaned data*_ and returns a single output _*filtered data*_.
 
-        ![Linear algorithm](../pic/linear_algo.svg)
+        ![Linear pipeline](../pic/linear_algo.svg)
 
     === "Branching example"
 
-        The third example below introduces some complexity. As you can see on the picture below, the function
-        _generating_ does not have any input. On the contrary, the function _aggregating_ takes multiple inputs and
+        The third example below introduces some complexity. As you can see in the picture below, the function
+        _*generating*_ does not have any input. On the contrary, the function _*aggregating*_ takes multiple inputs and
         returns multiple outputs.
 
-        ![Linear algorithm](../pic/branching_algo.svg)
+        ![Linear pipeline](../pic/branching_algo.svg)
 
-The purpose of this section if to define the following Taipy Core concepts.
+The purpose of this section is to define the following Taipy Core concepts.
 
 - A [Data node](data-node.md) (the dark blue boxes) represents a dataset. It can be shared by multiple tasks as input or
   output.
-- A [Task](task.md) (the orange boxes) can be seen as a function taking some data node(s) as input and returns
+- A [Task](task.md) (the orange boxes) can be seen as a function taking some data node(s) as input and returning
   some data node(s).
 - A [Job](job.md) is a unique execution of a Task.
-- A [Pipeline](pipeline.md) represents an algorithm made of tasks that should run together.
+- A [Pipeline](pipeline.md) represents an algorithm or pipeline made of tasks that should run together.
 - A [Scenario](scenario.md) is made of one or multiple pipelines. It represents an instance of a business problem to
   solve.
 - A [Cycle](cycle.md) or work cycle is a time period corresponding to an iteration of a recurrent scenario.
@@ -55,10 +55,15 @@ The purpose of this section if to define the following Taipy Core concepts.
     (`DataNodeConfig`, `TaskConfig`, `PipelineConfig`, and `ScenarioConfig`) while the runtime objects
     (`DataNode`, `Task`, `Pipeline`, and `Scenario`) are called **_entities_**.
 
+    It will benefit the reader to visualize the different Taipy **_configs_** like a set of Russian dolls where each
+    **_config_** belongs to a "larger" **_config_**:
+
+    ![Russian dolls](../pic/russian_dolls.svg){ margin-left=25% width=50%}
+
     One thing to wrap your head around (it may not be very intuitive for everyone at first) is that the **configs**
     are really just configuration objects specifying the characteristics and the behaviors of the concepts they relate
     to. **Configs** can be seen as generators. Indeed, each **entity** is created from a **config**. Note also that
-    a same **config** can be used to instantiate multiple **entities**.
+    the same **config** can be used to instantiate multiple **entities**.
 
 More details on the **configs** are available in the [Configuration](../config/index.md) chapter.
 

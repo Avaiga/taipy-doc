@@ -7,7 +7,7 @@ from taipy import Config
 Config.check()
 ```
 
-The `Config.check()^` method returns a collector of issues. Each issue corresponds to an inconsistency on
+The `Config.check()^` method returns a collector of issues. Each issue corresponds to an inconsistency in
 the configuration attached to an issue level (`INFO`, `WARNING`, `ERROR`). `Config.check()^` raises an
 exception if at least one issue collected has the `ERROR` level.
 

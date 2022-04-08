@@ -14,7 +14,7 @@ tp.submit(scenario)
 In line 4, we create a new scenario from a scenario configuration and submit it for execution (line 6). The `submit`
 method triggers the submission of all the scenario's pipelines. Then each task of each pipeline will be submitted.
 
-!!! Note "Other syntax."
+!!! Note "Another syntax."
     To submit a scenario, you can also use the method `Scenario.submit()^`:
 
     ```python linenums="1"
@@ -40,7 +40,7 @@ tp.submit(pipeline)
 In line 5, we retrieve the pipeline named `sales_pipeline` from the created scenario. In line 7, we submit only this
 pipeline for execution. The `taipy.submit()^` method triggers the submission of all the pipeline's tasks.
 
-!!! Note "Other syntax."
+!!! Note "Another syntax."
     To submit a pipeline, you can also use the method `Pipeline.submit()^`:
 
     ```python linenums="1"
@@ -66,7 +66,7 @@ tp.submit(task)
 In line 5, we retrieve the task named `predicting` from the created scenario. In line 7, we submit only this
 task for execution.
 
-!!! Note "Other syntax."
+!!! Note "Another syntax."
     To submit a task, you can also use the method `Task.submit()^`:
 
     ```python linenums="1"

@@ -1,77 +1,33 @@
-Taipy provides four ways to configure your application :
+Taipy provides three ways to configure your application :
 
-- A default configuration
 - A Python configuration
 - An explicit file configuration using _TOML_ format
 - An environment variable file configuration
 
 !!! example
 
-    Here is a typical workflow that shows how to configure a Taipy application at each development stage.
+    Here is a typical workflow that shows how to adapt the configuration of a Taipy application at each stage of a
+    software project (from initial development to production).
 
-    1. First as a developer, I want to design and develop my taipy application. I don’t really need to care about
-    all configuration attributes, so I am starting with the simple default configuration.
+    1. To get started, as a developer I will be designing my application by configuring all the new entities  (data
+    nodes, tasks, pipelines, scenarios) using the Python code configuration with just a minimal number of attributes
+    configured. The default configuration is used for the other attributes.
 
-    2. Then, I am starting to design my application by configuring new entities using the Python code
-    configuration with just a minimal number of attributes configured. The default configuration is used for the
-    other attributes.
-
-    3. Then, I am testing the application built. At this step, I need my application to have a more realistic
+    2. Then, I am testing the application built. At this step, I need my application to have a more realistic
     behavior like real data. For that, I need more configuration. I can specify for my
     specific input dataset what file to use. I am using the Python code configuration for that.
 
-    4. Then, once I am happy with my application running on local, I am deploying it to a remote environment for
-    testing and debugging the application. This is in a dedicated environment made for testing deployment and for
-    integration testing. I can use an explicit file configuration and can easily update the file if necessary to be
-    efficient in debugging, without changing the code directly.
+    3. Then, once I am happy with my application running on my local dev environment, I am deploying it to a remote
+    environment for testing. This is a dedicated environment made for testing deployment and for integration testing.
+    I can then use an explicit TOML file configuration. I can now easily update the file if necessary to be efficient in
+    debugging, without changing the code directly.
 
-    5. Once the step 3 is done, I want to be able to deploy a released and tagged version of my application on
-    several remote environments (e.g. pre-production, production). I am creating one file per remote environment
-    with a few values that differ from the step 3, and on each environment, I am setting a different environment
-    variable value to point to the right configuration file.
+    4. Once the step 3 is done, I want to be able to deploy a released and tagged version of my application in
+    several remote environments (e.g. pre-production, production). I am creating one TOML file per remote environment
+    with a few values that differ from step 3, and on each environment, I am setting a different environment
+    variable value to point to the right TOML configuration file.
 
 These methods are described below.
-
-# Default configuration
-
-The first method is the default configuration and is directly provided by the Taipy library. It allows you to run your
-application in the most standard way (running in localhost, storing data on the local file system, executing tasks
-sequentially and synchronously, ...).
-
-Here is the _TOML_ file of all (not None) default values :
-
-```toml linenums="1"
-
-    [TAIPY]
-    root_folder = "./taipy/"
-    storage_folder = ".data/"
-    clean_entities_enabled = "ENV[TAIPY_CLEAN_ENTITIES_ENABLED]:bool"
-
-    [JOB]
-    mode = "standalone"
-    nb_of_workers = "1"
-    hostname = "localhost:8080"
-
-    [DATA_NODE.default]
-    storage_type = "pickle"
-    scope = "PIPELINE"
-
-    [TASK.default]
-    inputs = []
-    outputs = []
-
-    [PIPELINE.default]
-    tasks = []
-
-    [SCENARIO.default]
-    pipelines = []
-
-```
-
-As you can see in the _TOML_ export, the default config only contains default attributes. In particular each
-`default` block contains the default configuration attributes for the user defined configurations (`DataNodeConfig^`,
-`TaskConfig^`, `PipelineConfig^`, `ScenarioConfig^`). At this point, your Taipy application is empty. In order to
-configure new entities in your Taipy application, you can refer to the following sections.
 
 # Python code configuration
 

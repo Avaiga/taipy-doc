@@ -15,22 +15,22 @@ from taipy import Config
 def double(nb):
     return nb * 2
 
-input_data_node_config = Config.configure_data_node("input", default_value=21)
+input_data_node_cfg = Config.configure_data_node("input", default_value=21)
 output_data_node_config = Config.configure_data_node("output")
 
-task_config = Config.configure_task("double_task", double, input_data_node_config, output_data_node_config)
+double_task_cfg = Config.configure_task("double_task", double, input_data_node_config, output_data_node_config)
 ```
 
-In the previous example, we created a `TaskConfig^`.
+In the example above, we created a `TaskConfig^` named `double_task_cfg`.
 
-In lines 3 and 4, we define a function that we want to use in a [Task](../concepts/task.md) instantiated from the task
+In lines 3-4, we define a function that we want to use in a [Task](../concepts/task.md) instantiated from the task
 config. It takes a single parameter and return a single value.
 
-In lines 6 and 7, two data node configurations are created. They will be used as the function argument and the function
-result.
+In lines 6-7, two data node configurations are created. They will be used respectively as the argument of the
+function double and as the result of the function double.
 
-Finally, on line 9, we create the task configuration with the id 'double_task' that represents the function
-'double' that expects an 'input' data node as an input parameter and returns an 'output' data node.
+Finally, on line 9, we create the task configuration with the id 'double_task' that represents the function 'double'
+that expects an 'input' data node as an input parameter and returns an 'output' data node.
 
 Because a Task can have several inputs and outputs, `taipy.configure_task()^` can receive lists of `DataNodeConfig^`
 objects.
@@ -47,16 +47,16 @@ nb_2_cfg = Config.configure_data_node("nb_2", default_value=2)
 multiplication_cfg = Config.configure_data_node("multiplication")
 addition_cfg = Config.configure_data_node("addition")
 
-task_config = Config.configure_task("foo", multiply_and_add, [nb_1_cfg, nb_2_cfg], [multiplication_cfg, addition_cfg])
+task_cfg = Config.configure_task("foo", multiply_and_add, [nb_1_cfg, nb_2_cfg], [multiplication_cfg, addition_cfg])
 ```
 
-In lines 3 and 4, we define a function with two parameters and two return values.
+In lines 3-4, we define a function with two parameters and two return values.
 
-In lines 6 and 7, two data node configurations are created. They will be used as the function arguments.
+In lines 6-7, two data node configurations are created. They will be used as the function arguments.
 
-In line 9 and 10, two data node are configured. They will be used as the function results.
+In line 9-10, two data node are configured. They will be used as the function results.
 
-Finally, in line 12, we create the task configuration with the id 'foo' representing the function
-'multiply_and_add'. It expects two 'input' data nodes and two 'output' data nodes.
+Finally, in line 12, we create the task configuration with the id 'foo' representing the function 'multiply_and_add'.
+It expects two 'input' data nodes and two 'output' data nodes.
 
 [:material-arrow-right: The next section introduces the pipeline configuration](pipeline-config.md).

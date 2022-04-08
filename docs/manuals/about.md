@@ -7,6 +7,13 @@ you as a Taipy user can perform a specific task.
 If you are just starting with Taipy, you may want to look at the [Getting Started document](../getting_started/installation.md)
 in order to see a step-by-step example of a complete Taipy application.
 
+## Graphical User Interface (GUI) - `taipy.gui`
+
+The `taipy.gui^` package allows you to design an effective Graphic User Interface.
+It provides many interactive widgets, controls, and presentative elements to enhance the
+user’s experience.
+
+[:material-arrow-right: GUI user manual](gui/index.md)
 
 ## Taipy Core - `taipy.core`
 
@@ -23,14 +30,6 @@ user-defined scenarios, interactive data, smart scheduling, etc.
 [:material-arrow-right: Documentation on Taipy Core configuration](core/config/index.md),
 
 [:material-arrow-right: Description of Taipy Core entities](core/entities/index.md)
-
-## Graphical User Interface (GUI) - `taipy.gui`
-
-The `taipy.gui^` package allows you to design an effective Graphic User Interface.
-It provides many interactive widgets, controls, and presentative elements to enhance the
-user’s experience.
-
-[:material-arrow-right: GUI user manual](gui/index.md)
 
 ## Taipy REST - `taipy.rest`
 

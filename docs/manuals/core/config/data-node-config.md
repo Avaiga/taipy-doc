@@ -51,7 +51,7 @@ value for _scope_ is `SCENARIO`. The _storage_type_ also has the default value "
 An optional custom property called _description_ is also added: this property is propagated
 to the data nodes instantiated from this config.
 
-In lines 5, 6, 7, 8, and 9 we add another data node configuration with the id "model_cfg". _scope_ is
+In lines 5-9, we add another data node configuration with the id "model_cfg". _scope_ is
 set to `CYCLE`, so the corresponding data nodes will be shared by all the scenarios from
 the same cycle. _storage_type_ is "pickle" as well, and two optional custom properties are
 added: a _description_ string and an integer _code_. These two properties are propagated to the
@@ -108,7 +108,7 @@ model_cfg = Config.configure_pickle_data_node(id="model_cfg", path="path/to/my/m
 In line 4, we configure a simple pickle data node with the id "date_cfg". The scope is `SCENARIO`
 (default value), and a default data is provided.
 
-In line 6 we add another pickle data node configuration with the id "model_cfg". The default
+In line 6, we add another pickle data node configuration with the id "model_cfg". The default
 `SCENARIO` scope is used. Since the data node config corresponds to a pre-existing pickle file, a path
 "path/to/my/model.p" is provided. We also added an optional custom description.
 
@@ -152,13 +152,13 @@ sales_cfg = Config.configure_csv_data_node(id="sale_history",
                                            exposed_type=SaleRow)
 ```
 
-In lines 3, 4, and 5 we define a custom class `SaleRow` representing a row of the CSV file.
+In lines 3-5, we define a custom class `SaleRow` representing a row of the CSV file.
 
-In lines 7, 8, 9 and 10 we configure a basic csv data node with the id "historical_temperature". Its _scope_ is by
+In lines 7-10, we configure a basic csv data node with the id "historical_temperature". Its _scope_ is by
 default `SCENARIO`. The path corresponds to the file `path/hist_temp.csv`. The property _has_header_ being True,
 representing the csv file has a header.
 
-In lines 12, 13, and 14, we add another csv data node configuration with the id "sale_history". The
+In lines 12-14, we add another csv data node configuration with the id "sale_history". The
 default `SCENARIO` scope is used again. Since we have a custom class pre-defined for this csv file (`SaleRow`), we
 provide it as the _exposed_type_ parameter.
 
@@ -207,13 +207,13 @@ sales_cfg = Config.configure_excel_data_node(id="sale_history",
                                              exposed_type=SaleRow)
 ```
 
-In lines 3, 4, and 5 we define a custom class `SaleRow` representing a row of the Excel file.
+In lines 3-5, we define a custom class `SaleRow`, representing an the Excel file row.
 
-In lines 7, 8, and 9, we configure an Excel data node. The _id_ identifier is "historical_temperature". Its _scope_ is
+In lines 7-9, we configure an Excel data node. The _id_ identifier is "historical_temperature". Its _scope_ is
 `SCENARIO` (default value), and the path is the file hist_temp.xlsx. With _has_header_ being True, the
 Excel file must have a header. The _sheet_name_ is not provided so Taipy will use the default value "Sheet1".
 
-In lines 10, 11, 12, and 13, we add another excel data node configuration. The _id_ identifier is "sale_history", the
+In lines 10-13, we add another excel data node configuration. The _id_ identifier is "sale_history", the
 default `SCENARIO` scope is used. Since we have a custom class pre-defined for this Excel file, we will provide it in
 the _exposed_type_. We also provide the list of specific sheets we want to use as the _sheet_name_ parameter.
 
@@ -276,14 +276,14 @@ method can be used. In addition to the parameters described in the previous sect
 [Data node configuration](data-node-config.md), two optional parameters can be provided.
 
 -   The _**read_fct**_ is a mandatory parameter that represents a Python function provided by the user. It will
-    be used to read the data.
+    be used to read the data. More optional parameters can be passed through the _**read_fct_params**_ parameter.
 
--   The _**write_fct**_ is a mandatory parameter that represents a Python function provided by the user. It will
-    be used to write the data. The provided function must have at least one parameter,
-    dedicated to receive data to be written.
+-   The _**write_fct**_ is a mandatory parameter representing a Python function provided by the user. It will
+    be used to write/serialize the data. The provided function must have at least one parameter dedicated to
+    receiving data to be written. More optional parameters can be passed through the _**write_fct_params**_ parameter.
 
--   The parameter _**read_fct_params**_ represents the parameters that are passed to the _read_fct_ to read the data.
-    It must be a `List` type object.
+-   The parameter _**read_fct_params**_ represents the parameters that are passed to the _read_fct_ to
+    read/de-serialize the data. It must be a `List` type object.
 
 -   The parameter _**write_fct_params**_ represents the parameters that are passed to the _write_fct_ to write the data.
     It must be a `List` type object.
@@ -295,7 +295,7 @@ from taipy import Config
 def read_data():
     pass
 
-def write_data(path: str):
+def write_data(data: Any, path: str):
     pass
 
 historical_data_cfg = Config.configure_generic_data_node(id="historical_data",

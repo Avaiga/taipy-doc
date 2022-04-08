@@ -2,10 +2,10 @@
 
 In the previous chapter, the few [Taipy Core concepts](../concepts/index.md) are defined.
 
-Taipy Core is an application builder designed to help Python developer turn their algorithms into an interactive
-production-ready data-driven application.
+Taipy Core is an application builder designed to help Python developer turn efficiently their algorithms into an
+interactive production-ready data-driven application.
 
-To build such an application, the first step consists in configuring the characteristic and the desired behavior of
+To build such an application, the first step consists in configuring the characteristics and the desired behavior of
 your application and its entities.
 
 !!! important "Reminder: Config vs Entities"
@@ -20,7 +20,7 @@ your application and its entities.
     One thing to wrap your head around (it may not be very intuitive for everyone at first) is that the **configs**
     are really just configuration objects specifying the characteristics and the behaviors of the concepts they relate
     to. **Configs** can be seen as generators. Indeed, each **entity** is created from a **config**. Note also that
-    a same **config** can be used to instantiate multiple **entities**.
+    the same **config** can be used to instantiate multiple **entities**.
 
 More details on the **entities** are available in the [Entities](../entities/index.md) chapter.
 

@@ -76,7 +76,7 @@ Three parameters can be given to the scenario creation method :
 
 !!! Example
 
-    === "Scenario creaion with parameters"
+    === "Scenario creation with parameters"
         Using the [`my_config.py`](../my_config.py) module, here is an example of how to create a scenario.
 
         ```python  linenums="1"
@@ -92,9 +92,13 @@ Three parameters can be given to the scenario creation method :
         In this small example, one scenario for January 2022 is instantiated. A `creation_date` and a `name` are
         provided.
 
+        Note that the _**monthly_scenario_cfg**_ has set the frequency to monthly. Therefore, scenario will be assigned
+        to the cycle corresponding to its creation date (ie the month of January).
+
         Behind the scene, the other related entities are also created:
 
-        * The January cycle,
+        * The January cycle, since the _**monthly_scenario_cfg**_ has set the frequency to MONTHLY. So scenario will
+        be assigned to the cycle corresponding to its creation date (ie the month of January).
         * Two sales and production pipelines,
         * Three tasks (training, predicting, planning),
         * And six data nodes (sales_history, trained_model, current_month, sales_predictions, capacity, production_orders).

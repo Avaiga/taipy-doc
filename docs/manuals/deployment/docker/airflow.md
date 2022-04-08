@@ -2,7 +2,7 @@
 
 !!! important
     This feature is limited to the Enterprise version only. <br>
-    For more information, contact us at [taipy.io](www.taipy.io).
+    For more information, contact us at [taipy.io](https://www.taipy.io).
 
 ## Prerequisites
 
