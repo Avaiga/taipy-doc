@@ -174,6 +174,10 @@ The restart _Nginx_:
 sudo systemctl restart nginx
 ```
 
+!!! Note
+    This configuration is only for HTTP. If you need an HTTPS connection, follow the [Nginx documentation](https://nginx.org/en/docs/http/configuring_https_servers.html).
+
+
 ## Open firewall
 
 Your application is ready to receive traffic from the Internet but your firewall still block the communication.
@@ -184,6 +188,3 @@ sudo firewall-cmd --reload
 ```
 
 Your application is now accessible over the Internet!
-
-!!! Note
-    This configuration is only for HTTP. If you need an HTTPS connection, follow the [Nginx documentation](https://nginx.org/en/docs/http/configuring_https_servers.html).
