@@ -5,9 +5,12 @@ Here are the (optional) configurable properties:
 - _**root_folder**_: The path of the base folder for the taipy application, its default value is "./taipy/".
 - _**storage_folder**_: The folder name used to store Taipy data, its default value is ".data/". It is used in
   conjunction with the root_folder field. That means the default storage path is "./taipy/.data/".
-- _**clean_entities_enabled**_: The field to activate/deactivate the clean entities feature, its default value
-  is `ENV[TAIPY_CLEAN_ENTITIES_ENABLED]:bool` meaning that the value is read from the `TAIPY_CLEAN_ENTITIES_ENABLED`
-  environment variable. If the environment variable is not set, the value is False.
+- _**clean_entities_enabled**_: The field to activate/deactivate the clean entities feature.
+  Its default value is `ENV[TAIPY_CLEAN_ENTITIES_ENABLED]:bool` meaning that the default value is read from the
+  `TAIPY_CLEAN_ENTITIES_ENABLED` environment variable. If the environment variable is not set, the default value is
+  False. <br>
+  Since it is risky to delete all entities on a production environment, Taipy proposes a way to activate this
+  feature only on specific environments. That is why the default value points to an environment variable.
 - _**properties**_: The dictionary of additional properties.
 
 === "Python configuration"
@@ -42,7 +45,7 @@ Here are the (optional) configurable properties:
     ```
 
 In this example, we set custom values for the _root_folder_, _storage_folder_, and _clean_entities_enabled_ parameters.
-Note that most of the time the default values can be used. In line 6 and 7, two custom properties are specified: a
+Note that most of the time the default values can be used. In lines 6-7, two custom properties are specified: a
 _version_name_ and an _application_name_.
 
 [:material-arrow-right: The next section introduces the job scheduling configuration](job-config.md).

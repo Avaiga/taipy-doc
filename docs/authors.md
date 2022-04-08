@@ -1,6 +1,6 @@
 # Development lead
 
-Taipy is developped and maintained by Avaiga.
+Taipy is developed and maintained by Avaiga.
 
 [:material-arrow-right: Visit our website ^:octicons-link-external-16:^](https://www.avaiga.com/){:target="\_blank"}
 

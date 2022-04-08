@@ -19,7 +19,7 @@ task_config = Config.configure_task("double_task", double, input_data_node_confi
 pipeline_cfg = Config.configure_pipeline("my_pipeline", [task_config])
 ```
 
-In the previous code example, in line 10 we create a pipeline configuration with the id "my_pipeline" and made of a
+In the previous code example, in line 10, we create a pipeline configuration with the id "my_pipeline" and made of a
 single task configuration `task_config`.
 
 ```python linenums="1"
@@ -37,7 +37,7 @@ second_task_config = Config.configure_task("second_double_task", double, interme
 other_pipeline_cfg = Config.configure_pipeline("another_pipeline", [first_task_config, second_task_config])
 ```
 
-In this second code example, in line 12 we create a pipeline configuration with the id "another_pipeline" and made
+In this second code example, in line 12, we create a pipeline configuration with the id "another_pipeline" and made
 of the two task configuration created in lines 9 and 10 `first_task_config` and `second_task_config`.
 
 !!! note

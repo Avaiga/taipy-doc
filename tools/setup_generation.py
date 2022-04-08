@@ -76,7 +76,7 @@ if not os.path.isdir(VISELEMENTS_SRC_PATH):
 
 # Check that the source files are available
 if not os.path.exists(f"{root_dir}/{ROOT_PACKAGE}"):
-    raise SystemError(f"FATAL - Could not not find root package in {root_dir}/{ROOT_PACKAGE}")
+    raise SystemError(f"FATAL - Could not find root package in {root_dir}/{ROOT_PACKAGE}")
 
 # Read mkdocs yml template file
 mkdocs_yml_content = None

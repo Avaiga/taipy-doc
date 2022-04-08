@@ -60,7 +60,7 @@ pipeline_retrieved = tp.get(pipeline.id)
 pipeline == pipeline_retrieved
 ```
 
-Here the two variables `pipeline` and `pipeline_retrieved` are equals.
+Here the two variables `pipeline` and `pipeline_retrieved` are equal.
 
 # Get pipeline by config id
 
@@ -87,4 +87,4 @@ existing pipelines.
 A pipeline can be deleted by using `taipy.delete()^` which takes the pipeline id as a parameter. The deletion is
 also propagated to the nested tasks, data nodes, and jobs if they are not shared with any other pipeline.
 
-[:material-arrow-right: The next section show the task management](task-mgt.md).
+[:material-arrow-right: The next sections show the task management](task-mgt.md).

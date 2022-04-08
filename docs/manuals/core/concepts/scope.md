@@ -7,8 +7,8 @@ The `Scope^` of a data node is an enum among the following values :
 
 Each data node has a scope. It is an attribute provided by the `DataNodeConfig^` and represents the _visibility_ of
 the data node in the graph of entities. In fact, the entities can be represented as a graph where each node belongs
-to one or several upper nodes. A data node 'belongs' to at least one task which belongs to at least one pipeline
-which belongs to at least one scenario which belongs to a single cycle.
+to one or several upper nodes. A data node 'belongs' to at least one pipeline which belongs to at least one scenario
+which belongs to a single cycle.
 
 In other words :
 
