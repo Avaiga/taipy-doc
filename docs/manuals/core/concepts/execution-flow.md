@@ -15,9 +15,10 @@ The picture above represents the graph of **configs** objects (`DataNodeConfig` 
 
 # Single Scenario Execution
 
-Let’s assume we create a new scenario from the previous configuration graph. Let’s call it **Scenario 1**. All the
-entities of **Scenario 1** will be instantiated from the various configuration objects. **Scenario 1** can also be
-represented as the entity graph below:
+Let’s assume we instantiate a new scenario from the previous configuration graph. Let’s call it **Scenario 1**. All the
+entities of **Scenario 1** will be instantiated from the various configuration objects.
+
+**Scenario 1** can also be represented as the entity graph below:
 
 ![Scenario 1 Graph ](../pic/execution_flow_entities.svg)
 
