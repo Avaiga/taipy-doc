@@ -19,7 +19,7 @@ Let’s assume we create a new scenario from the previous configuration graph. L
 entities of **Scenario 1** will be instantiated from the various configuration objects. **Scenario 1** can also be
 represented as the entity graph below:
 
-![Configuration Graph ](../pic/execution_flow_entities.svg)
+![Scenario 1 Graph ](../pic/execution_flow_entities.svg)
 
 Thanks to this graph representation, Taipy can understand the execution precedence constraints. When a
 scenario/pipeline is submitted for execution, the tasks are smartly scheduled and executed in the correct order.
@@ -53,7 +53,7 @@ Two options are possible with Taipy:
 Taipy assumes that the entities of each scenario are "local" to each scenario and not shared with others. Similar to
 the first scenario, the following entity graph will be created for **Scenario 2**.
 
-![Configuration Graph ](../pic/execution_flow_entities_2.svg)
+![Scenario 2 Graph option 1](../pic/execution_flow_entities_2.svg)
 
 Note that all the data nodes and tasks are new instances and prefixed by `2`.
 
@@ -62,7 +62,7 @@ Taipy assumes that some entities of the scenarios are "global" and are shared am
 _**current month**_ can be shared by **Scenario 1** and **Scenario 2**. In this second option, the following entity
 graph will be created for **Scenario 2**.
 
-![Configuration Graph ](../pic/execution_flow_entities_2_global_month.svg)
+![Scenario 2 Graph option 2 ](../pic/execution_flow_entities_2_global_month.svg)
 
 To illustrate the two option behaviors, let’s assume that:
 
