@@ -25,7 +25,7 @@ At its creation, a new scenario is attached to a cycle, the one that matches its
     In our example, the end-user must publish production orders (i.e., a production plan) every month. During each
     month (the cycle), the end-user will be interested in "playing" with different scenarios untill only one of
     those scenarios is selected as the official production plan to be published. Using Taipy,
-    each month is modeled as a cycle, and each Taipy cycle will contains one or more Taipy scenarios.
+    each month is modeled as a cycle, and each Taipy cycle will contain one or more Taipy scenarios.
 
     The picture on the left shows the tree of entities: Cycles, Scenarios and their associated Pipeline(s). There
     is an existing past cycle for December and a current cycle for January containing a single scenario.
@@ -53,4 +53,4 @@ The attributes of a scenario (the set of pipelines, the cycle, ... ) are populat
 [`configuration details`](../config/scenario-config.md) documentation for more details on configuration).
 
 
-[:material-arrow-right: The next section introduces the Scope concept.](scope.md)
+[:material-arrow-right: The next section introduces the Job concept.](job.md)

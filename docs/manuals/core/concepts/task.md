@@ -35,4 +35,4 @@ the task configuration `TaskConfig^` that must be provided when instantiating a 
     the _production orders_ data node is considered as an **output** data node since no task reads it.
 
 
-[:material-arrow-right: The next section introduces the Job concept.](job.md)
+[:material-arrow-right: The next section introduces the Pipeline concept.](pipeline.md)
