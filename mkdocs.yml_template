@@ -32,10 +32,11 @@ nav:
             - manuals/core/concepts/index.md
             - 'Data node': 'manuals/core/concepts/data-node.md'
             - 'Task': 'manuals/core/concepts/task.md'
-            - 'Job': 'manuals/core/concepts/job.md'
             - 'Pipeline': 'manuals/core/concepts/pipeline.md'
             - 'Scenario': 'manuals/core/concepts/scenario.md'
             - 'Cycle': 'manuals/core/concepts/cycle.md'
+            - 'Job': 'manuals/core/concepts/job.md'
+            - 'Execution flow': 'manuals/core/concepts/execution-flow.md'
             - 'Scope': 'manuals/core/concepts/scope.md'
         - 'Configuration':
             - manuals/core/config/index.md

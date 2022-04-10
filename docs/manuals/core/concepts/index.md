@@ -5,7 +5,8 @@ production-ready data-driven application. Taipy Core provides the necessary conc
 monitoring algorithms. In this documentation, such algorithms are called pipelines.
 
 A pipeline can be seen as a succession of functions that exchange data. It can be described as an
-execution graph. With Taipy one can model simple pipelines as well as more complex pipelines.
+execution graph (a Directed Acyclic Graph or DAG). With Taipy one can model simple pipelines as well as more complex
+pipelines.
 
 !!! example "Let's take some examples."
 

@@ -1,8 +1,8 @@
 In this section, it is assumed that [`my_config.py`](../my_config.py) module contains a Taipy configuration
 already implemented.
 
-Tasks get created when scenarios or pipelines are created. Please refer to the [Entities' creation](scenario-creation.
-md) section for more details.
+Tasks get created when scenarios or pipelines are created. Please refer to the
+[Entities' creation](scenario-creation.md) section for more details.
 
 # Task attributes
 Now that we assume to know how to create a new `Task^`, this section focuses on describing the task's attributes and
