@@ -5,10 +5,10 @@ _[RHEL](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux)
 Server [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) and the Web Server [Nginx](https://nginx.org).
 
 
-## Installing Python3.8
+## Upgrading Python3.8
 
-Most _RHEL_ are delivered with a Python version older than Python3.8 which is the oldest Python version
-supported by Taipy. If you are in that case, please install at least Python3.8:
+Most _RHEL_ are delivered with a Python version older than 3.8 which is the oldest Python version
+supported by Taipy. If you are in that case, please install at least Python 3.8:
 ```
 sudo dnf install -y gcc openssl-devel bzip2-devel libffi-devel make
 wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tgz
@@ -63,7 +63,7 @@ On your local machine, start the application by doing:
 ```console
 $python3.8 -m pip install -r requirements.txt
 Collecting taipy
-<-- Truncate -->
+...
 Successfully installed taipy
 $python3.8 app.py
  * Server starting on http://127.0.0.1:5000
@@ -72,7 +72,7 @@ $python3.8 app.py
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
  * Debug mode: on
-<-- Truncate -->
+...
 ```
 
 The application is running locally, you can access it with the browser on the URL [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
@@ -85,7 +85,7 @@ The application is running locally, you can access it with the browser on the UR
     ```
     Is provided by Flask because the way of exposing an application on the Internet and
     developping an application locally is not the same, mainly for security and reliability reasons.
-    This message will disappear when using the web server.
+    This message will disappear when using the Web server.
 
 ## Prepare the application for deployment
 
@@ -146,7 +146,7 @@ Then transfer this file in the correct folder by doing:
 sudo mv app.uwsgi.service /etc/systemd/system/app.uwsgi.service
 ```
 
-Now, you can start your application automatically at the startup time of your machine by doing:
+Now, you can start your application automatically on startup time of your machine by doing:
 ```
 sudo restorecon /etc/systemd/system/app.uwsgi.service
 sudo systemctl daemon-reload
@@ -159,7 +159,7 @@ The application is now running locally but is not accessible yet from the Intern
 
 ## Exposing to the Internet
 
-To be able to access to your application from the Internet, you should use _Nginx_.
+To expose your application on the Internet, you should use _Nginx_.
 Replace the content of `/etc/nginx/nginx.conf` by the [following](./nginx.conf) or:
 ```
 sudo wget https://docs.taipy.io/manuals/deployment/linux/redhat/nginx.conf -O /etc/nginx/nginx.conf
@@ -169,19 +169,19 @@ Allow the communication between _Nginx_ and _uWSGI_:
 ```
 sudo setsebool -P httpd_can_network_connect 1
 ```
-The restart _Nginx_:
+Then restart _Nginx_:
 ```
 sudo systemctl restart nginx
 ```
 
 !!! Note
-    This configuration is only for HTTP. If you need an HTTPS connection, follow the [Nginx documentation](https://nginx.org/en/docs/http/configuring_https_servers.html).
+    This configuration is only for HTTP. If you need an HTTPS connection, please read the [Nginx documentation](https://nginx.org/en/docs/http/configuring_https_servers.html).
 
 
 ## Open firewall
 
 Your application is ready to receive traffic from the Internet but your firewall still block the communication.
-Allow the connection on the _http_ port that is _80_:
+Open the _http_ port that is (i.e. port _80_):
 ```
 sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
 sudo firewall-cmd --reload

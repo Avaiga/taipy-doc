@@ -129,7 +129,7 @@ Then transfer this file in the correct folder by doing:
 sudo mv app.uwsgi.service /etc/systemd/system/app.uwsgi.service
 ```
 
-Now, you can start your application automatically at the startup time of your machine by doing:
+Now, you can start your application automatically on startup time of your machine by doing:
 ```
 sudo systemctl start app.uwsgi.service
 sudo systemctl enable app.uwsgi.service
@@ -140,7 +140,7 @@ The application is now running locally but is not accessible yet from the Intern
 
 ## Exposing to the Internet
 
-To be able to access to your application from the Internet, you should use _Nginx_.
+To expose your application on the Internet, you should use _Nginx_.
 Change the content of `/etc/nginx/sites-enabled/default` with the following:
 ```
 server {
@@ -160,4 +160,4 @@ sudo systemctl restart nginx
 Your application is now accessible over the Internet!
 
 !!! Note
-    This configuration is only for HTTP. If you need an HTTPS connection, follow the [Nginx documentation](https://nginx.org/en/docs/http/configuring_https_servers.html).
+    This configuration is only for HTTP. If you need an HTTPS connection, please read the [Nginx documentation](https://nginx.org/en/docs/http/configuring_https_servers.html).
