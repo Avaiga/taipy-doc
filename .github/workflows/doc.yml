@@ -54,7 +54,7 @@ jobs:
       - name: Add the Getting Started steps and README in content of the doc
         run: |
           mv taipy-getting-started/step_* docs/getting_started/
-          mv taipy-getting-started/README.md docs/getting_started/index.md
+          mv taipy-getting-started/index.md docs/getting_started/index.md
           mv taipy-getting-started/src docs/getting_started/
           mv taipy-getting-started/summary.txt docs/getting_started/summary.txt
       - name: Pre-process root package and GUI doc

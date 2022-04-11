@@ -7,10 +7,8 @@ copyright: © [YEAR] Avaiga
 nav:
   - Home: index.md
   - 'Getting started':
-    - 'Installation': 'getting_started/installation.md'
-    - 'Creating a Taipy application':
-        - getting_started/index.md
-    [GETTING_STARTED_CONTENT]
+    - getting_started/index.md
+  [GETTING_STARTED_CONTENT]
   - 'User Manual':
     - "About Taipy's User Manual": 'manuals/about.md'
     - Taipy GUI:

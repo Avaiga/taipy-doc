@@ -483,7 +483,7 @@ print("Step 3/3: Generating the Getting Started navigation bar")
 
 def format_getting_started_navigation(filepath: str, step_name: str) -> str:
     readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
-    return f"        - '{step_name}': '{readme_path}'"
+    return f"    - '{step_name}': '{readme_path}'"
 
 steps_naming = filter(None, open('docs/getting_started/summary.txt').read().split('\n'))
 step_folders = glob.glob("docs/getting_started/step_*")
