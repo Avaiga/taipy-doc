@@ -1,6 +1,6 @@
 # Styling
 
-As mentionned several times, page content is parsed and converted to be sent
+As mentioned several times, page content is parsed and converted to be sent
 to the user's browser. The final page content actually is pure HTML that one can apply
 some style to, providing the best user experience.
 

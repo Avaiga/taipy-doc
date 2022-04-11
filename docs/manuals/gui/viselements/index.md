@@ -155,7 +155,7 @@ are described in their respective documentation section. The most obvious except
 If you choose to embed Taipy visual elements into existing HTML pages, you can use the
 following syntax:
 ```html
-<taipy:visual_element_type property_name="property_value" ...> </visual_element_type>
+<taipy:visual_element_type property_name="property_value" ...> </taipy:visual_element_type>
 ```
 
 The text element of the visual element tag can be used to indicate the default property
@@ -228,7 +228,7 @@ of the variable that holds that dictionary as the value of the `properties` prop
     Say your Markdown content needs the following control:
     `<|dialog|title=Select an item in the list|open={show_dialog}|labels=Cancel;Validate|page_id=page|close_label=Cancel|>`
 
-    As this syntax can be cumbersom, you might
+    As this syntax can be cumbersome, you might
     prefer to define a simple Python dictionary:
 
     ```py linenums="1"

@@ -19,6 +19,9 @@ a.ext-link:after {
   height: 0.6em;
   margin: 0 3px 0 3px;
 }
+[data-md-color-scheme="slate"] a.ext-link:after {
+  filter: brightness(0) saturate(100%) invert(47%) sepia(40%) saturate(2289%) hue-rotate(340deg) brightness(101%) contrast(85%);;
+}
 
 /* ---------- ---------- ---------- Visual Elements Cards ---------- ---------- ---------- */
 .tp-ve-cards {

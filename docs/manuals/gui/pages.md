@@ -91,7 +91,7 @@ whose content is defined by Markdown text.
 Besides the extensions listed above, Taipy adds its own extension that can parse
 Taipy-specific constructs that allow for defining visual elements (and all the properties
 they need). The details on how visual elements are located and interpreted with Markdown
-contennt can be found in the [Markdown Syntax](viselements/index.md#markdown) section
+content can be found in the [Markdown Syntax](viselements/index.md#markdown) section
 about Visual Elements definition.
 
 #### Using HTML
@@ -99,7 +99,7 @@ about Visual Elements definition.
 HTML can also be used as the text grammar for creating pages. You don't need to
 create the header and body part: Taipy takes care of this for you.
 
-Creating a page that display HTML content is straightforward:
+Creating a page that displays HTML content is straightforward:
 
 ```py
 from taipy.gui import Html
@@ -146,7 +146,7 @@ Gui(md)
 ```
 
 If your application has several pages, you add your pages one by one
-using `Gui.add_page()^`. To add multiple page in a single call, you will
+using `Gui.add_page()^`. To add multiple pages in a single call, you will
 use `Gui.add_pages()^` or create the `Gui^` instance using the _pages_
 argument. In those situations, you have to create a Python dictionary that
 associates a page with its name:
@@ -208,7 +208,7 @@ for all its pages.
 !!! example
 
     Here is an example of a Taipy application that holds several pages:
-    ``` py linenums="1"
+    ```py
        from taipy import Gui
 
        root_md="# Multi-page application"
@@ -241,7 +241,7 @@ root page of your application, and is replaced by the target page content when t
 
 !!! example
 
-    ``` py linenums="1"
+    ```py
        from taipy import Gui
 
        root_md="""
@@ -340,7 +340,7 @@ Modern user interfaces also provide small pages that pop out and be removed for
 temporary use, such as providing specific parameters for the application. Taipy lets
 you create such elements using the [pane](viselements/pane.md) block.
 
-A pane can appear from any border of you page, next to or on top of the page, and
+A pane can appear from any border of your page, next to or on top of the page, and
 disappears when the user clicks outside its area.
 
 A pane can be defined using the `Partial^` class, or directly in the page

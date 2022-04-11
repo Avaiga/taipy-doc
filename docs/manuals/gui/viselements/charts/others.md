@@ -1,3 +1,5 @@
+## Other features
+
 ### Simple example
 
 If you want to create a chart that represents a dataframe stored in the Python

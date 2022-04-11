@@ -3,7 +3,7 @@
 The Taipy GUI library provides Python classes that make it easy to create
 powerful Web apps in minutes.
 
-## What is a graphical user interface
+## What is a graphical user interface?
 
 A graphical user interface (or GUI) displays and organizes graphic elements on
 the user's device.
