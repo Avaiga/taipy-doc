@@ -62,7 +62,9 @@ PACKAGES_VISIBILITY = [
 # Change some item visibility from a package to another
 #   (orig_package, item_name) -> dest_package
 ITEMS_VISIBILITY = {
-    ("taipy.gui.gui", "Gui") : "taipy.gui"
+    ("taipy.gui.gui", "Gui") : "taipy.gui",
+    ("taipy.gui.partial", "Partial") : "taipy.gui.partial",
+    ("taipy.gui.page", "Page") : "taipy.gui.page"
 }
 REFERENCE_REL_PATH = "manuals/reference"
 REFERENCE_DIR_PATH = root_dir + "/docs/" + REFERENCE_REL_PATH
