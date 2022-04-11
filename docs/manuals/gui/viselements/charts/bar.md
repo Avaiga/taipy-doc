@@ -18,7 +18,7 @@ percentages=[(1852,50.83), (1856,45.29), ..., (2016,46.09), (2020,51.31)]
 data = pd.DataFrame(percentages, columns= ['Year','%'])
 ```
 
-A Pandas DataFrame is built from a list of tuples that hole the election year,
+A Pandas DataFrame is built from a list of tuples that holds the election year,
 and the percentage of vote the winner has received globally.
 
 The definition of a bar chart that represents this data will look like this:
