@@ -13,6 +13,7 @@ We are working on it !
   - Page scoping
 - `taipy-core-v1.1.0`
   - Resilience: Job recovery system.
+  - Fix numpy compatibility with old versions (<1.21)
 - `taipy-v1.1.0`
   - Includes `taipy-gui-v1.1.0`
   - Includes `taipy-core-v1.1.0`
