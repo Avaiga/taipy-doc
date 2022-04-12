@@ -1,24 +1,53 @@
 ## Other features
 
-### Simple example
+### Pie charts
 
-If you want to create a chart that represents a dataframe stored in the Python
-variable _data_ (first and second columns will be used for _x_ and _y_ values), you can use the following content:
+Pie charts is a circular graphic divided into slices that
+represent a numerical quantity. The arc length of each slice is
+proportional to the quantity it represents.
+
+Here this example, we want to represent how much area is covered
+by forest in countries in the world. Only the first few countries are
+represented since too many would make the chart unreadable.
+
+Our data set, where the area is provided as thousands of hectares in 2020,
+comes from [FAO](https://www.fao.org) and is defined as follows:
+
+```py
+data = pd.DataFrame({
+  "Country": ["Rest of the world","Russian Federation",...,"Peru"],
+  "Area": [1445674.66,815312,...,72330.4]
+})
+```
+
+We can indicate the color of each individual slice using the
+_layout_ property of the chart:
+
+```py
+layout = {
+  "piecolorway": ["B05080","#f5f5f5",...,"#800000"],
+  }
+```
+
+And the chart definition is the following:
 
 !!! example "Page content"
 
     === "Markdown"
 
         ```
-        <|{data}|chart|>
+        <|{data}|chart|type=pie|x=Area|label=Country|layout={layout}|>
         ```
   
     === "HTML"
 
         ```html
-        <taipy:chart>{data}</taipy:chart>
+        <taipy:chart type="pie" x="Area" label="Country" layout="{layout}">{data}</taipy:chart>
         ```
 
+Here is the resulting chart:
+
+![Styling a line chart](others1.png)
 
 ### Multiple charts
 
