@@ -99,11 +99,15 @@ stored on the data node according to the type of data node:
 
 It is also possible to partially read the contents of data nodes, which comes in handy when dealing with large amounts
 of data.
-This can be achieved using the `DataNode.filter()^` method:
+This can be achieved by providing an operator, a Tuple of (key, value, comparison operator),
+or a list of operators to the `DataNode.filter()^` method:
 
 ```python linenums="1"
 data_node.filter([('field_name_like_temperature', 14, Operator.EQUAL), ('field_name_like_temperature', 10, Operator.EQUAL)], JoinOperator.OR))
 ```
+
+If a list of operators is provided, it is necessary to provide a join operator that will be
+used to combine the filtered results from the operators.
 
 It is also possible to use pandas style filtering:
 
