@@ -31,6 +31,7 @@ import shutil
 import warnings
 from datetime import datetime
 from inspect import isclass, isfunction, ismodule
+from pathlib import Path
 
 import pandas as pd
 
@@ -483,15 +484,16 @@ with open(XREFS_PATH, "w") as xrefs_output_file:
 # ------------------------------------------------------------------------
 print("Step 3/3: Generating the Getting Started navigation bar")
 
-def format_getting_started_navigation(filepath: str, step_name: str) -> str:
+def format_getting_started_navigation(filepath: str) -> str:
     readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
+    readme_content = Path('docs', readme_path).read_text().split('\n')
+    step_name = next(filter(lambda l: "# Step" in l, readme_content))[len("# "):]
     return f"    - '{step_name}': '{readme_path}'"
 
-steps_naming = filter(None, open('docs/getting_started/summary.txt').read().split('\n'))
 step_folders = glob.glob("docs/getting_started/step_*")
 step_folders.sort()
 step_folders = map(lambda s: s[len('docs/'):], step_folders)
-step_folders = itertools.starmap(format_getting_started_navigation, zip(step_folders, steps_naming))
+step_folders = map(format_getting_started_navigation, step_folders)
 getting_started_navigation = "\n".join(step_folders) + '\n'
 
 
