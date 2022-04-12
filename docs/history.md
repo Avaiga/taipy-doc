@@ -3,9 +3,9 @@ hide:
   - navigation
 ---
 
-# History
+# Change log
 
-This is the list of changes to Taipy between each release.
+This is the list of changes of each Taipy version.
 
 ## Community edition : 1.0.0 (2022-04-07)
 
