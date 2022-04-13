@@ -1,6 +1,6 @@
 # Deploy your application with uWSGI and Nginx on Red Hat Enterprise Linux
 
-[Red Hat](https://www.redhat.com/) is an Open Source leader providing an GNU/Linux operating named
+[Red Hat](https://www.redhat.com/) is an Open Source leader providing an GNU/Linux operating system named
 _[RHEL](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux)_ that can run the Web Application
 Server [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) and the Web Server [Nginx](https://nginx.org).
 
@@ -36,7 +36,7 @@ The following software should be installed on your target machine:
 
 - _nginx_: the Web server for the Internet exposition.
 
-You can install all of this packages by running the following command:
+You can install all of these packages by running the following command:
 ```
 sudo dnf install -y nginx
 python3.8 -m pip install uwsgi gevent
@@ -108,7 +108,7 @@ In our example, we store this application in the variable _web_app_ (see line 3)
 Make sure you upload this code on your targeted machine and install your dependencies with _pip_.
 
 !!! important
-    The entrypoint filename and the app variable name are important for the proper configuration of
+    The entry point filename and the app variable name are important for the proper configuration of
     the _uWSGI_ Web application server. Please, keep them as is or adapt the configuration.
 
 
@@ -141,7 +141,7 @@ User=`whoami`
 WantedBy=multi-user.target
 """ > app.uwsgi.service
 ```
-Then transfer this file in the correct folder by doing:
+Then transfer this file to the correct folder by doing:
 ```
 sudo mv app.uwsgi.service /etc/systemd/system/app.uwsgi.service
 ```
@@ -180,7 +180,7 @@ sudo systemctl restart nginx
 
 ## Open the firewall
 
-Your application is ready to receive traffic from the Internet but your firewall still blocks the communication.
+Your application is ready to receive traffic from the Internet, but your firewall still blocks the communication.
 Open the _http_ port that is (i.e. port _80_):
 ```
 sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
