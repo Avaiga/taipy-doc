@@ -19,7 +19,7 @@ The following software should be installed on your target machine:
 
 - _nginx_: the Web server for the Internet exposition.
 
-You can install all of this packages by running the following command:
+You can install all of these packages by running the following command:
 ```
 sudo apt update -y
 sudo apt install -y python3-pip nginx
@@ -68,11 +68,11 @@ The application is running locally, you can access it with the browser on the UR
     ```
     Is provided by Flask because the way of exposing an application on the Internet and
     developping an application locally is not the same, mainly for security and reliability reasons.
-    This message will disappear when using the web server.
+    This message will disappear when using the Web server.
 
 ## Prepare the application for deployment
 
-Deploying your application on a remote environment needs a little bit of configuration.
+Deploying your application to a remote environment needs a little bit of configuration.
 
 By default, Taipy applications run in Debug mode. Before deploying your application to the Internet,
 you should turn off the Debug mode by setting the _debug_ parameter or the `(Gui.)run()^` to False. <br>
@@ -91,7 +91,7 @@ In our example, we store this application in the variable _web_app_ (see line 3)
 Make sure you upload this code on your targeted machine and install your dependencies with _pip_.
 
 !!! important
-    The entrypoint filename and the app variable name are important for the proper configuration of
+    The entry point filename and the app variable name are important for the proper configuration of
     the _uWSGI_ Web application server. Please, keep them as is or adapt the configuration.
 
 
