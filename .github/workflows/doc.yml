@@ -56,6 +56,7 @@ jobs:
           mv taipy-getting-started/step_* docs/getting_started/
           mv taipy-getting-started/index.md docs/getting_started/index.md
           mv taipy-getting-started/src docs/getting_started/
+          (cd docs/getting_started;pipenv run python ../../taipy-getting-started/generate_notebook.py)
       - name: Pre-process root package and GUI doc
         run: |
           pipenv run python tools/setup_generation.py

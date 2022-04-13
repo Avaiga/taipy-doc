@@ -55,6 +55,7 @@ for m in $MODULES; do
     if [ $m == "taipy-getting-started" ]; then
         (cd $TOP_DIR/$m;tar cf - step_* src) | (cd $ROOT_DIR/docs/getting_started/;tar xf -)
         cp $TOP_DIR/taipy-getting-started/index.md $ROOT_DIR/docs/getting_started/index.md
+	(cd $ROOT_DIR/docs/getting_started; python $TOP_DIR/taipy-getting-started/generate_notebook.py)
     else
         (cd $TOP_DIR/$m; \
          tar cf - `find taipy -name \\*.py`) | (cd $ROOT_DIR;tar xf -)

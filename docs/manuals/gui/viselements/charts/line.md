@@ -37,13 +37,13 @@ Here is the definition of the chart control:
     === "Markdown"
 
         ```
-        <|{data}|chart|x=Date|y[1]=Temp°C|y[2]=Min|y[3]=Max|mode=lines|line[1]=dash|color[2]=blue|color[3]=red|>
+        <|{data}|chart|mode=lines|x=Date|y[1]=Temp°C|y[2]=Min|y[3]=Max|line[1]=dash|color[2]=blue|color[3]=red|>
         ```
   
     === "HTML"
 
         ```html
-        <taipy:chart x="Date" y[1]="Temp°C" y[2]="Min" y[3]="Max" mode="lines"
+        <taipy:chart mode="lines" x="Date" y[1]="Temp°C" y[2]="Min" y[3]="Max"
                      line[1]="dash" color[2]="blue" color[3]="red">{data}</taipy:chart>
         ```
 
@@ -77,14 +77,14 @@ Let us use this column as a source for displaying text in our chart:
     === "Markdown"
 
         ```
-        <|{data}|chart|x=Date|y[1]=Temp°C|y[2]=Max|text[2]=WeekN|mode[2]=text|>
+        <|{data}|chart|x=Date|y[1]=Temp°C|y[2]=Max|mode[2]=text|text[2]=WeekN|>
         ```
   
     === "HTML"
 
         ```html
         <taipy:chart x="Date" y[1]="Temp°C"
-                     y[2]="Max" text[2]="WeekN" mode[2]="text">{data}</taipy:chart>
+                     mode[2]="text" y[2]="Max" text[2]="WeekN">{data}</taipy:chart>
         ```
 
 This definition will allow to display the texts contained in the 'WeekN'
