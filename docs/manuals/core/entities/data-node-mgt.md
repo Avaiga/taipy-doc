@@ -99,11 +99,11 @@ stored on the data node according to the type of data node:
 
 It is also possible to partially read the contents of data nodes, which comes in handy when dealing with large amounts
 of data.
-This can be achieved by providing an operator, a Tuple of (field_name, value, comparison operator),
+This can be achieved by providing an operator, a Tuple of (*field_name*, *value*, *comparison_operator*),
 or a list of operators to the `DataNode.filter()^` method:
 
 ```python linenums="1"
-data_node.filter([('field_name', 14, Operator.EQUAL), ('field_name', 10, Operator.EQUAL)], JoinOperator.OR))
+data_node.filter([("field_name", 14, Operator.EQUAL), ("field_name", 10, Operator.EQUAL)], JoinOperator.OR))
 ```
 
 If a list of operators is provided, it is necessary to provide a join operator that will be
@@ -112,7 +112,7 @@ used to combine the filtered results from the operators.
 It is also possible to use pandas style filtering:
 
 ```python linenums="1"
-temp_data = data_node['field_name']
+temp_data = data_node["field_name"]
 temp_data[(temp_data == 14) | (temp_data == 10)]
 ```
 
