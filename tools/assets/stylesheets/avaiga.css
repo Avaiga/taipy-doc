@@ -160,3 +160,6 @@ a.ext-link:after {
 [data-md-color-scheme="slate"] .visible-light {
   display: none;
 }
+a.md-content__button {
+  display: none;
+}
