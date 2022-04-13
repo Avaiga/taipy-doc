@@ -103,7 +103,7 @@ You would then leverage Nginx to expose the application.
 _uWSGI_ can be started manually. But, generally, it's better to start the application automatically when the machine
 starts. To order to do that, you should use [Systemd](https://systemd.io/) which is installed by default on _Ubuntu_.
 
-Beside your application code, run the following command to generate an adapted file for _Systemd_:
+From the directory where _app.py_ is located, run the following command to generate an adapted file for _Systemd_:
 ```
 echo """
 [Unit]

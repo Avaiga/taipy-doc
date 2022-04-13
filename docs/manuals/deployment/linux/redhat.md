@@ -5,7 +5,7 @@ _[RHEL](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux)
 Server [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) and the Web Server [Nginx](https://nginx.org).
 
 
-## Upgrading Python3.8
+## Upgrading Python
 
 Most _RHEL_ are delivered with a Python version older than 3.8 which is the oldest Python version
 supported by Taipy. If you are in that case, please install at least Python 3.8:
@@ -22,7 +22,7 @@ sudo rm -r Python-3.8.12
 ```
 
 !!! info
-    This tutorial specifies the Python version for each command. If your default version is different, you can
+    This tutorial specifies the Python version for each command. If your default version is different, you must
     replace `python3.8` with `python`.
 
 
@@ -120,7 +120,7 @@ You would then leverage Nginx to expose the application.
 _uWSGI_ can be started manually. But, generally, it's better to start the application automatically when the machine
 starts. To order to do that, you should use [Systemd](https://systemd.io/) which is installed by default on _Ubuntu_.
 
-Beside your application code, run the following command to generate an adapted file for _Systemd_:
+From the directory where _app.py_ is located, run the following command to generate an adapted file for _Systemd_:
 ```
 echo """
 [Unit]
@@ -178,9 +178,9 @@ sudo systemctl restart nginx
     This configuration is only for HTTP. If you need an HTTPS connection, please read the [Nginx documentation](https://nginx.org/en/docs/http/configuring_https_servers.html).
 
 
-## Open firewall
+## Open the firewall
 
-Your application is ready to receive traffic from the Internet but your firewall still block the communication.
+Your application is ready to receive traffic from the Internet but your firewall still blocks the communication.
 Open the _http_ port that is (i.e. port _80_):
 ```
 sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
