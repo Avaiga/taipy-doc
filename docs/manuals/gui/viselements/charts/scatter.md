@@ -1,6 +1,6 @@
 ## Scatter charts
 
-Scatter charts represent data points as dot or other symbols.
+Scatter charts represent data points as dots or other symbols.
 They are useful to see relationships between groups of data points.
 
 ### Classification
@@ -30,7 +30,7 @@ data = pd.DataFrame({
 })
 ```
 
-The chart definition looks like:
+The chart definition looks like this:
 
 !!! example "Page content"
 
@@ -54,7 +54,7 @@ And the resulting chart is:
 
 A common problem with scatter chart is that individual markers can be displayed
 on top of each other. This may result in markers being hidden by others, and
-the display may not reflect the density of markers. This is the reason why it
+the display may not reflect the density of markers. This is why it
 is usually not a good idea to use scatter charts where markers are completely
 opaque.
 
@@ -62,7 +62,7 @@ It is easy to change the marker parameters if needed. The available parameters
 are listed in the [Plotly scatter](https://plotly.com/python/reference/scatter/#scatter-marker)
 documentation page.<br/>
 Here is how we can change the size and shape of the markers that are used in
-our previous example (with less data points). We need to create two
+our previous example (with fewer data points). We need to create two
 dictionaries that hold the values we want to impact:
 
 ```py
@@ -104,9 +104,10 @@ Regression is an excellent use case for using scatter charts: on top of samples 
 points, you can trace the plot of a function that best fits the data points.
 
 Here is an example of linear regression, where we can use a line plot on top of
-markers. The chart will represent an array of two Data Frame: one for the
-original data points and one for the computed regression line:
+markers. The chart will represent an array of two Data Frames: one for the
+original data points and one for the computed regression line.
 
+Here is the code that defines the source data for the chart:
 ```py
 data = [
   pd.DataFrame({
@@ -137,7 +138,7 @@ The chart definition uses the two Data Frames and their columns:
             mode[1]="markers" x[1]="0/x" y[1]="0/y"
             mode[2]="line"    x[2]="1/x" y[2]="1/Regression">{data}</taipy:chart>
         ```
-See how, using the _mode[]_, _x[]_ and _y[]_ properties, the two plots are defined.
+See how, using the _mode[]_, _x[]_, and _y[]_ properties, the two plots are defined.
 
 The chart representing the linear regression result is the following:
 
