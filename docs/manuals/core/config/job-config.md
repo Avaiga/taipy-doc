@@ -112,87 +112,7 @@ _airflow_ mode with the following config :
     [JOB]
     mode = "airflow"
     ```
-
-## Starting Airflow from Taipy
-
-To let Taipy start the Airflow service, you can use the following configuration:
-
-=== "Python configuration"
-
-    ```python  linenums="1"
-    from taipy import Config
-
-    Config.configure_job_executions(mode="airflow", start_airflow=True)
-    ```
-
-=== "TOML configuration "
-
-    ```python linenums="1"
-    from taipy import Config
-
-    Config.load("config.toml")
-    ```
-
-    ```toml linenums="1" title="config.toml"
-    [JOB]
-    mode = "airflow"
-    start_airflow = "True:bool"
-    ```
-
-By default, Airflow creates a local folder `.airflow` to store its dependencies.
-You can change this location with the `airflow_folder` config:
-
-=== "Python configuration"
-
-    ```python  linenums="1"
-    from taipy import Config
-
-    Config.configure_job_executions(mode="airflow", airflow_folder="my_custom_path")
-    ```
-
-=== "TOML configuration"
-
-    ```python linenums="1"
-    from taipy import Config
-
-    Config.load("config.toml")
-    ```
-
-    ```toml linenums="1" title="config.toml"
-    [JOB]
-    mode = "airflow"
-    airflow_folder = "my_custom_path"
-    ```
-
-!!! warning "Production setting"
-
-    Taipy starts Airflow in `standalone` mode. It is an Airflow development mode and not recommended for production.
-
 ## Using an external Airflow
-
-By default, Taipy runs with an external Airflow. You can specify it by setting:
-
-=== "Python configuration"
-
-    ```python  linenums="1"
-    from taipy import Config
-
-    Config.configure_job_executions(mode="airflow", start_airflow=False)
-    ```
-
-=== "TOML configuration "
-
-    ```python linenums="1"
-    from taipy import Config
-
-    Config.load("config.toml")
-    ```
-
-    ```toml linenums="1" title="config.toml"
-    [JOB]
-    mode = "airflow"
-    start_airflow = "False:bool"
-    ```
 
 By default, Taipy is connected to Airflow on `localhost:8080`. You can change it by:
 
@@ -201,7 +121,7 @@ By default, Taipy is connected to Airflow on `localhost:8080`. You can change it
     ```python  linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(mode="airflow", start_airflow=False, hostname="my_remote_airflow:port")
+    Config.configure_job_executions(mode="airflow", hostname="my_remote_airflow:port")
     ```
 
 === "TOML configuration "
@@ -215,7 +135,6 @@ By default, Taipy is connected to Airflow on `localhost:8080`. You can change it
     ```toml linenums="1" title="config.toml"
     [JOB]
     mode = "airflow"
-    start_airflow = "False:bool"
     hostname = "my_remote_airflow:port"
     ```
 
@@ -227,7 +146,7 @@ By default, this folder is `.dags`, but you can update it by:
     ```python  linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(mode="airflow", start_airflow=False, airflow_dags_folder="/my_dag_folder")
+    Config.configure_job_executions(mode="airflow", airflow_dags_folder="/my_dag_folder")
     ```
 
 === "TOML configuration"
@@ -241,7 +160,6 @@ By default, this folder is `.dags`, but you can update it by:
     ```toml linenums="1" title="config.toml"
     [JOB]
     mode = "airflow"
-    start_airflow = "False:bool"
     airflow_dags_folder = "/my_dag_folder"
     ```
 
@@ -261,7 +179,7 @@ Depending on your Airflow configuration, you can update the number of retries:
     ```python  linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(mode="airflow", start_airflow=False, airflow_api_retry=10)
+    Config.configure_job_executions(mode="airflow", airflow_api_retry=10)
     ```
 
 === "TOML configuration"
@@ -275,7 +193,6 @@ Depending on your Airflow configuration, you can update the number of retries:
     ```toml linenums="1" title="config.toml"
     [JOB]
     mode = "airflow"
-    start_airflow = "False:bool"
     airflow_api_retry = "10:int"
     ```
 
@@ -288,7 +205,7 @@ If Airflow is not started by Taipy, you should provide this configuration:
     ```python  linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(mode="airflow", start_airflow=False, airflow_user="user", airflow_password="pass")
+    Config.configure_job_executions(mode="airflow", airflow_user="user", airflow_password="pass")
     ```
 
 === "TOML configuration"
@@ -302,7 +219,6 @@ If Airflow is not started by Taipy, you should provide this configuration:
     ```toml linenums="1" title="config.toml"
     [JOB]
     mode = "airflow"
-    start_airflow = "False:bool"
     airflow_user = "user"
     airflow_password = "pass"
     ```
