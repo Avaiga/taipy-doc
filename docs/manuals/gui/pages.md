@@ -218,7 +218,7 @@ for all its pages.
        pages = {
          "/": root_md,
          "page1": page1_md,
-         "page1": page2_md
+         "page2": page2_md
        }
        Gui(pages=pages).run()
     ```
