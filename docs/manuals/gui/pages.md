@@ -84,7 +84,7 @@ whose content is defined by Markdown text.
     Markdown fragment in the definition of "page1":
     ```
     ...
-    Goto to [Second Page](/page2) for more information.
+    Go to [Second Page](/page2) for more information.
     ...
     ```
 
@@ -257,7 +257,7 @@ root page of your application, and is replaced by the target page content when t
        pages = {
          "/": root_md,
          "page1": page1_md,
-         "page1": page2_md
+         "page2": page2_md
        }
        Gui(pages=pages).run()
     ```
