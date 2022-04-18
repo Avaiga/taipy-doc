@@ -7,7 +7,7 @@ hide:
 
 This is the list of changes of each Taipy version.
 
-## Community edition : 1.0.0 (2022-04-07)
+## Community edition : 1.0 (2022-04-07)
 
 - [`taipy-gui`](https://pypi.org/project/taipy-gui/1.0.0/)
     - TODO : A high level new feature of taipy-gui
@@ -22,7 +22,7 @@ This is the list of changes of each Taipy version.
 - [`taipy-rest`](https://pypi.org/project/taipy-rest/1.0.0/)
     - REST APIs on top of the _taipy-core_
 - [`taipy`](https://pypi.org/project/taipy/1.0.0/)
-    - Includes taipy-gui-v1.0.0
-    - Includes taipy-core-v1.0.0
-    - Includes taipy-rest-v1.0.0
+    - Includes taipy-gui-v1.0
+    - Includes taipy-core-v1.0
+    - Includes taipy-rest-v1.0
 
