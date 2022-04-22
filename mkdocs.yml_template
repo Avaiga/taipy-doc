@@ -1,5 +1,5 @@
 site_name: Taipy
-site_url: http://docs.taipy.io
+site_url: [SITE_URL]
 repo_url: https://github.com/avaiga/taipy
 repo_name: taipy
 #strict: true
