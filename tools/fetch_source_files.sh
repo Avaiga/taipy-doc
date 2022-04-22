@@ -1,9 +1,5 @@
 #!/bin/bash
-#
-# SCRIPT -version local
-#   -version 1.0
-#   -version core:1.0
-#!/bin/sh
+# See usage() for information.
 
 SCRIPT_NAME=`echo $(basename "$0")|sed 's/\.sh$//'`
 SCRIPT_DIR=$(dirname "$0")
