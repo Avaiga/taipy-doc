@@ -14,7 +14,7 @@ list_modules()
 {
     echo "${1}Valid module names are:"
     for m in $MODULES; do
-	echo "${1}  - $m"
+        echo "${1}  - $m"
     done
 }
 
@@ -71,53 +71,53 @@ RE_MODULE_NOTVERSION='^(([A-Za-z-]+):)?(local|develop)$'
 
 set_version () {
     if [[ $1 =~ $RE_MODULE_NOTVERSION ]]; then
-	mod=${BASH_REMATCH[2]}
-	type=${BASH_REMATCH[3]}
-	if [ -z "$mod" ]; then
-	    for m in $MODULES; do
-		MODULE_BRANCH[$m]=$type
-		MODULE_TAG[$m]=""
-	    done
-	else
-	    if [ -z "${MODULE_BRANCH[$mod]}" ]; then
-		echo "Error: Invalid module name '$mod' in -version parameter: $1" >&2
-		list_modules
-		exit 1
-	    fi
-	    MODULE_BRANCH[$mod]=$type
-	    MODULE_TAG[$mod]=""
-	fi
+        mod=${BASH_REMATCH[2]}
+        type=${BASH_REMATCH[3]}
+        if [ -z "$mod" ]; then
+            for m in $MODULES; do
+                MODULE_BRANCH[$m]=$type
+                MODULE_TAG[$m]=""
+            done
+        else
+            if [ -z "${MODULE_BRANCH[$mod]}" ]; then
+                echo "Error: Invalid module name '$mod' in -version parameter: $1" >&2
+                list_modules
+                exit 1
+            fi
+            MODULE_BRANCH[$mod]=$type
+            MODULE_TAG[$mod]=""
+        fi
     elif [[ $1 =~ $RE_MODULEVERSION ]]; then
-	mod=${BASH_REMATCH[2]}
-	maj=${BASH_REMATCH[3]}
-	min=${BASH_REMATCH[4]}
-	pat=${BASH_REMATCH[6]}
-	mor=${BASH_REMATCH[8]}
-	branch="$maj.$min"
-	tag=""
-	if [[ ! -z "$pat" ]]; then
-	    tag="$branch.$pat"
-	    if [[ ! -z "$mor" ]]; then
-		tag="$tag.$mor"
-	    fi
-	fi
-	if [ -z "$mod" ]; then
-	    for m in $MODULES; do
-		MODULE_BRANCH[$m]=$branch
-		MODULE_TAG[$m]=$tag
-	    done
-	else
-	    if [ -z "${MODULE_BRANCH[$mod]}" ]; then
-		echo "Error: Invalid module name '$mod' in -version parameter: $1" >&2
-		list_modules
-		exit 1
-	    fi
-	    MODULE_BRANCH[$mod]=$branch
-	    MODULE_TAG[$mod]=$tag
-	fi
+        mod=${BASH_REMATCH[2]}
+        maj=${BASH_REMATCH[3]}
+        min=${BASH_REMATCH[4]}
+        pat=${BASH_REMATCH[6]}
+        mor=${BASH_REMATCH[8]}
+        branch="$maj.$min"
+        tag=""
+        if [[ ! -z "$pat" ]]; then
+            tag="$branch.$pat"
+            if [[ ! -z "$mor" ]]; then
+                tag="$tag.$mor"
+            fi
+        fi
+        if [ -z "$mod" ]; then
+            for m in $MODULES; do
+                MODULE_BRANCH[$m]=$branch
+                MODULE_TAG[$m]=$tag
+            done
+        else
+            if [ -z "${MODULE_BRANCH[$mod]}" ]; then
+                echo "Error: Invalid module name '$mod' in -version parameter: $1" >&2
+                list_modules
+                exit 1
+            fi
+            MODULE_BRANCH[$mod]=$branch
+            MODULE_TAG[$mod]=$tag
+        fi
     else
-	echo "Error: Invalid version in -version parameter: $1" >&2
-	exit 1
+        echo "Error: Invalid version in -version parameter: $1" >&2
+        exit 1
     fi
 }
 
@@ -131,13 +131,13 @@ while [[ ! -z "$1" ]]; do
             exit
             ;;
         -*)
-	    echo "Error: unknown option '$1'." >&2
+            echo "Error: unknown option '$1'." >&2
             usage
             exit
             ;;
-	*)
-	    set_version $1
-	    ;;
+        *)
+            set_version $1
+            ;;
      esac
     shift
 done
@@ -145,12 +145,12 @@ done
 for m in $MODULES; do
     version=${MODULE_BRANCH[$m]}
     if [ $version != "local" ]; then
-	if ! [ -x "$(command -v git)" ]; then
-	    echo "Error: cannot run the git command to fetch module '$m'." >&2
-	    exit 1
-	else
-	    break
-	fi
+        if ! [ -x "$(command -v git)" ]; then
+            echo "Error: cannot run the git command to fetch module '$m'." >&2
+            exit 1
+        else
+            break
+        fi
     fi
 done
 
@@ -158,7 +158,7 @@ echo "Module versions requested:"
 for m in $MODULES; do
     version=${MODULE_BRANCH[$m]}
     if [[ ! -z ${MODULE_TAG[$m]} ]]; then
-	version="$version (${MODULE_TAG[$m]})"
+        version="$version (${MODULE_TAG[$m]})"
     fi
     echo "- $m: $version"
 done
@@ -168,25 +168,25 @@ GITROOT="https://github.com/Avaiga/taipy-"
 for m in $MODULES; do
     branch=${MODULE_BRANCH[$m]}
     if [ $branch == "local" ]; then
-	if [ ! -d $TOP_DIR/taipy-$m ]; then
+        if [ ! -d $TOP_DIR/taipy-$m ]; then
             echo "Error: module $m must be cloned next to $SCRIPT_DIR as 'taipy-$m'"
             exit 1
-	fi
+        fi
     elif [ $branch != "develop" ]; then
-	git ls-remote --exit-code --heads ${GITROOT}${m}.git | grep release/${branch} >/dev/null
-	if [ $? != 0 ]; then
-	    echo "Error: No branch 'release/$branch' in repository 'taipy-$m'." >&2
-	    exit 1
-	fi
-	# Check tag
-	tag=${MODULE_TAG[$m]}
-	if [[ ! -z "$tag" ]]; then
-	    find_tag=$(git ls-remote -t --refs ${GITROOT}${m}.git|sed -e 's/^.*\/tags\///'|grep -e "${tag}\$")
-	    if [ ! -f "$find_tag" ]; then
-		echo "Error: No tagged version '$tag' (from 'release/$branch') in repository 'taipy-$m'." >&2
-		exit 1
-	    fi
-	fi
+        git ls-remote --exit-code --heads ${GITROOT}${m}.git | grep release/${branch} >/dev/null
+        if [ $? != 0 ]; then
+            echo "Error: No branch 'release/$branch' in repository 'taipy-$m'." >&2
+            exit 1
+        fi
+        # Check tag
+        tag=${MODULE_TAG[$m]}
+        if [[ ! -z "$tag" ]]; then
+            find_tag=$(git ls-remote -t --refs ${GITROOT}${m}.git|sed -e 's/^.*\/tags\///'|grep -e "${tag}\$")
+            if [ ! -f "$find_tag" ]; then
+                echo "Error: No tagged version '$tag' (from 'release/$branch') in repository 'taipy-$m'." >&2
+                exit 1
+            fi
+        fi
     fi
 done
 
@@ -223,34 +223,34 @@ for m in $MODULES; do
     branch=${MODULE_BRANCH[$m]}
     echo "Updating module $m ($branch)"
     if [ $branch == "local" ]; then
-	if [ "$NO_PULL" != true ] ; then
-	    (cd $TOP_DIR/taipy-$m; git pull)
-	fi
-	if [ $m == "getting-started" ]; then
-	    copy_getting_started $TOP_DIR/taipy-getting-started
-	else
-	    copy_module_to_taipy $TOP_DIR/taipy-$m
-	    if [ $m == "gui" ]; then
-		copy_gui $TOP_DIR/taipy-gui
+        if [ "$NO_PULL" != true ] ; then
+            (cd $TOP_DIR/taipy-$m; git pull)
+        fi
+        if [ $m == "getting-started" ]; then
+            copy_getting_started $TOP_DIR/taipy-getting-started
+        else
+            copy_module_to_taipy $TOP_DIR/taipy-$m
+            if [ $m == "gui" ]; then
+                copy_gui $TOP_DIR/taipy-gui
             fi
-	fi
+        fi
     else
-	if [ $branch != "develop" ] ; then
-	    branch=release/$branch
-	fi
-	git clone -b $branch ${GITROOT}${m}.git $ROOT_DIR/tmp-$m
-	tag=${MODULE_TAG[$m]}
-	if [[ ! -z "$tag" ]]; then
-	    (cd $ROOT_DIR/tmp-$m;git checkout tags/$tag)
-	fi
-	if [ $m == "getting-started" ]; then
-	    copy_getting_started $ROOT_DIR/tmp-getting-started
-	else
-	    copy_module_to_taipy $ROOT_DIR/tmp-$m
-	    if [ $m == "gui" ]; then
-		copy_gui $ROOT_DIR/tmp-gui
+        if [ $branch != "develop" ] ; then
+            branch=release/$branch
+        fi
+        git clone -b $branch ${GITROOT}${m}.git $ROOT_DIR/tmp-$m
+        tag=${MODULE_TAG[$m]}
+        if [[ ! -z "$tag" ]]; then
+            (cd $ROOT_DIR/tmp-$m;git checkout tags/$tag)
+        fi
+        if [ $m == "getting-started" ]; then
+            copy_getting_started $ROOT_DIR/tmp-getting-started
+        else
+            copy_module_to_taipy $ROOT_DIR/tmp-$m
+            if [ $m == "gui" ]; then
+                copy_gui $ROOT_DIR/tmp-gui
             fi
-	fi
-	rm -rf $ROOT_DIR/tmp-$m
+        fi
+        rm -rf $ROOT_DIR/tmp-$m
     fi
 done
