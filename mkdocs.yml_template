@@ -153,17 +153,17 @@ extra:
   social:
     - icon: fontawesome/brands/twitter
       # replace with your own tweet link below
-      link: http://www.avaiga.com
+      link: http://www.taipy.io
       name: Tweet
     - icon: fontawesome/brands/facebook
       # replace with your own facebook link below
-      link: http://www.avaiga.com
+      link: http://www.taipy.io
       name: Facebook
     - icon: fontawesome/brands/github
       link: https://github.com/avaiga/taipy
       name: Github
     - icon: material/email
-      link: "mailto:taipy.dev@avaiga.com"
+      link: "mailto:dev@taipy.io"
   # to enable disqus, uncomment the following and put your disqus id below
   # disqus: disqus_id
   generator: false
