@@ -38,7 +38,7 @@ By default, Taipy executes each _job_ one-by-one, in a synchronous manner. You c
     ```python linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(mode="standalone", nb_workers=1)
+    Config.configure_job_executions(mode="standalone", nb_of_workers=1)
     ```
 
 === "TOML configuration"
@@ -57,20 +57,20 @@ By default, Taipy executes each _job_ one-by-one, in a synchronous manner. You c
 
 !!! Note
 
-    If no value is provided in the nb_of_workers setting in the configuration, Taipy will set this value to 1.
+    If no value is provided in the nb_of_workers setting in the configuration, Taipy will set this value to _1_.
 
-To execute the _jobs_ in parallel, you can set the number of workers to an integer value greater than 1.
+To execute the _jobs_ in simultaneously, you can set the `nb_of_workers` to an integer value greater than _1_. That
+starts each `Job^` in a dedicated process with `nb_of_workers` as the limit of concurrent processes that can run
+simultaneously.
 
-Taipy will use multiple asynchronous processes, and run each job in a dedicated process. The value of the
-variable `nb_of_workers` represents the maximum number of processes spawned in parallel. For example,the
-following configuration allows Taipy to run at most 8 jobs in parallel:
+For example, the following configuration will allow Taipy to run up till eight jobs in simultaneously:
 
 === "Python configuration"
 
     ```python  linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(mode="standalone", nb_workers=8)
+    Config.configure_job_executions(mode="standalone", nb_of_workers=8)
     ```
 
 === "TOML configuration "
