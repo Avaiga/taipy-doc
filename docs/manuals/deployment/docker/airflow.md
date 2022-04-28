@@ -80,7 +80,7 @@ airflow_password="airflow"
     You should first run the following commands ([For more information click here](https://airflow.apache.org/docs/apache-airflow/stable/start/docker.html#setting-the-right-airflow-user)):
     ```
     mkdir -p ./dags ./logs ./plugins
-    echo -e "AIRFLOW_UID=$(id -u)" > .env
+    echo -e "AIRFLOW_UID=$(id -u)\n_PIP_ADDITIONAL_REQUIREMENTS=taipy-core" > .env
     ```
 
 
