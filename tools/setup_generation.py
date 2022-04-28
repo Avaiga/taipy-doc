@@ -521,8 +521,9 @@ getting_started_navigation = "\n".join(step_folders) + '\n'
 #   Generating site url
 # ------------------------------------------------------------------------
 print("Step 4/4: Generating the Site URL")
-current_branch_name = subprocess.run(['git', 'branch', '--show-current'], stdout=subprocess.PIPE).stdout.decode()[:-1]
-site_url = f"https://docs.taipy.io/{current_branch_name}"
+x = re.search(r'version: (\d+)\.(\d+)', mkdocs_yml_content)
+branch_name = f'release/{x.group(1)}.{x.group(2)}'
+site_url = f"https://docs.taipy.io/{branch_name}"
 
 
 # Update mkdocs.yml
