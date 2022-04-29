@@ -521,9 +521,10 @@ getting_started_navigation = "\n".join(step_folders) + '\n'
 #   Generating site url
 # ------------------------------------------------------------------------
 print("Step 4/4: Generating the Site URL")
-x = re.search(r'version: (\d+)\.(\d+)', mkdocs_yml_content)
-branch_name = f'release/{x.group(1)}.{x.group(2)}'
-site_url = f"https://docs.taipy.io/{branch_name}"
+tag = re.search(r'taipy_version: (\d+)\.(\d+)', mkdocs_yml_content)
+tag_major = tag.group(1)
+tag_minor = tag.group(2)
+site_url = f"https://docs.taipy.io/release/{tag_major}.{tag_minor}"
 
 
 # Update mkdocs.yml

@@ -150,7 +150,7 @@ plugins:
   - macros:
       module_name: tools/postprocess
 extra:
-  version: 1.0
+  taipy_version: 1.0
   social:
     - icon: fontawesome/brands/twitter
       # replace with your own tweet link below
