@@ -10,7 +10,7 @@ build:
     python: "3.9"
   jobs:
     pre_install:
-      - bash tools/fetch_source_files.sh 1.0
+      - bash tools/fetch_source_files.sh MKDOCS
       - pip install pipenv
       - pipenv install --dev
       - pipenv run python tools/setup_generation.py
