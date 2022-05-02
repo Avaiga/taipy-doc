@@ -23,12 +23,10 @@
 #     reflect the root package structure.
 # ------------------------------------------------------------------------
 import glob
-import itertools
 import json
 import os
 import re
 import shutil
-import subprocess
 import warnings
 from datetime import datetime
 from inspect import isclass, isfunction, ismodule
