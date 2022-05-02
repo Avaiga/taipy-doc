@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: Avaiga/taipy-core
-          ref: release/1.0
+          ref: develop
           path: taipy-core
           token: ${{ secrets.TAIPY_REPOS_ACCESS_TOKEN }}
       - name: Save Taipy Core code
@@ -33,7 +33,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: Avaiga/taipy-gui
-          ref: release/1.0
+          ref: develop
           path: taipy-gui
           token: ${{ secrets.TAIPY_REPOS_ACCESS_TOKEN }}
       - name: Save Taipy Gui code
@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: Avaiga/taipy-getting-started
-          ref: release/1.0
+          ref: develop
           path: taipy-getting-started
           token: ${{ secrets.TAIPY_REPOS_ACCESS_TOKEN }}
       - name: Add the Getting Started steps and README in content of the doc
