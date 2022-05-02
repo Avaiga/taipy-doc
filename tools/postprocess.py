@@ -134,6 +134,10 @@ def on_post_build(env):
                         html_content, n_changes = GS_DOCLINK.subn(f"\\1{gs_rel_path}\\2", html_content)
                         if n_changes != 0:
                             file_was_changed = True
+                        GS_DOCLINK = re.compile(r"(href=\")http://docs.taipy\.io(.*?\")", re.M | re.S)
+                        html_content, n_changes = GS_DOCLINK.subn(f"\\1{env.conf['site_url']}\\2", html_content)
+                        if n_changes != 0:
+                            file_was_changed = True
                     # Add external link icons
                     # Note we want this only for the simple [text](http*://ext_url) cases
                     EXTLINK = re.compile(
