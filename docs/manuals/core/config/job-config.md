@@ -279,7 +279,7 @@ Depending on your Airflow configuration, you can update the number of retries:
     airflow_api_retry = "10:int"
     ```
 
-Airflow will try to check if the task is ready to be executed using PythonSensor, which will trigger every 20 seconds by default. You can update the number of seconds between each check by:
+Before executing a task, Airflow checks if its inputs are ready every 20 seconds by default. You can update the number of seconds between each check by:
 
 === "Python configuration"
 
