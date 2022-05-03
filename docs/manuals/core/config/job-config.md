@@ -279,6 +279,54 @@ Depending on your Airflow configuration, you can update the number of retries:
     airflow_api_retry = "10:int"
     ```
 
+Before executing a task, Airflow checks if its inputs are ready every 20 seconds by default. You can update the number of seconds between each check by:
+
+=== "Python configuration"
+
+    ```python  linenums="1"
+    from taipy import Config
+
+    Config.configure_job_executions(mode="airflow",airflow_sensor_poke_interval=60)
+    ```
+
+=== "TOML configuration"
+
+    ```python linenums="1"
+    from taipy import Config
+
+    Config.load("config.toml")
+    ```
+
+    ```toml linenums="1" title="config.toml"
+    [JOB]
+    mode = "airflow"
+    airflow_sensor_poke_interval = "60:int"
+    ```
+
+Because Airflow executes the application code in a different directory, you must make sure that all the files used by the application are accessible by the Airflow worker. We can configure the path to the application by specifying its absolute path or relative to the Airflow folder. The default path is "" (empty string), which implies that the absolute path of the running application will be used.
+
+=== "Python configuration"
+
+    ```python  linenums="1"
+    from taipy import Config
+
+    Config.configure_job_executions(mode="airflow",app_folder="/my/app/path")
+    ```
+
+=== "TOML configuration"
+
+    ```python linenums="1"
+    from taipy import Config
+
+    Config.load("config.toml")
+    ```
+
+    ```toml linenums="1" title="config.toml"
+    [JOB]
+    mode = "airflow"
+    app_folder = "/my/app/path"
+    ```
+
 Taipy authentication with Airflow is based on
 [basic_auth](https://airflow.apache.org/docs/apache-airflow/stable/security/api.html#basic-authentication).
 If Airflow is not started by Taipy, you should provide this configuration:
