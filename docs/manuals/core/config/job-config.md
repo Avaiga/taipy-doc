@@ -63,7 +63,7 @@ To execute multiple `Job^` simultaneously, you can set the _nb_of_workers_ to an
 starts each `Job^` in a dedicated process with _nb_of_workers_ as the limit of concurrent processes that can run
 simultaneously.
 
-For example, the following configuration will allow Taipy to run up till eight `Job^` in simultaneously:
+For example, the following configuration will allow Taipy to run up to eight `Job^` simultaneously:
 
 === "Python configuration"
 
