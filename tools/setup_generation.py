@@ -23,7 +23,6 @@
 #     reflect the root package structure.
 # ------------------------------------------------------------------------
 import glob
-import itertools
 import json
 import os
 import re
@@ -104,7 +103,7 @@ def restore_top_package_location():
 # Step 1
 #   Generating the Visual Elements documentation
 # ------------------------------------------------------------------------
-print("Step 1/3: Generating Visual Elements documentation")
+print("Step 1/4: Generating Visual Elements documentation")
 
 
 def read_skeleton(name):
@@ -317,7 +316,7 @@ with open(os.path.join(GUI_DOC_PATH, "blocks.md"), "w") as file:
 # Step 2
 #   Generating the Reference Manual
 # ------------------------------------------------------------------------
-print("Step 2/3: Generating the Reference Manual pages")
+print("Step 2/4: Generating the Reference Manual pages")
 
 # Create empty REFERENCE_DIR_PATH directory
 if os.path.exists(REFERENCE_DIR_PATH):
@@ -498,7 +497,7 @@ with open(XREFS_PATH, "w") as xrefs_output_file:
 # Step 3
 #   Generating the Getting Started
 # ------------------------------------------------------------------------
-print("Step 3/3: Generating the Getting Started navigation bar")
+print("Step 3/4: Generating the Getting Started navigation bar")
 
 def format_getting_started_navigation(filepath: str) -> str:
     readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
@@ -513,8 +512,28 @@ step_folders = map(format_getting_started_navigation, step_folders)
 getting_started_navigation = "\n".join(step_folders) + '\n'
 
 
+
+
+# ------------------------------------------------------------------------
+# Step 4
+#   Generating site url
+# ------------------------------------------------------------------------
+print("Step 4/4: Generating the Site URL")
+tag = re.search(r'taipy_version: (?:develop|(?:(\d+)\.(\d+)))', mkdocs_yml_content)
+
+if not tag.group(1):
+    site_url = f"https://docs.taipy.io/develop"
+else:
+    tag_major = tag.group(1)
+    tag_minor = tag.group(2)
+    site_url = f"https://docs.taipy.io/release/{tag_major}.{tag_minor}"
+
+
 # Update mkdocs.yml
 copyright_content = f"{str(datetime.now().year)}"
+mkdocs_yml_content = re.sub(r"\[SITE_URL\]",
+                            site_url,
+                            mkdocs_yml_content)
 mkdocs_yml_content = re.sub(r"\[YEAR\]",
                             copyright_content,
                             mkdocs_yml_content)

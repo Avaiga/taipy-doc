@@ -113,87 +113,6 @@ _airflow_ mode with the following config :
     mode = "airflow"
     ```
 
-## Starting Airflow from Taipy
-
-To let Taipy start the Airflow service, you can use the following configuration:
-
-=== "Python configuration"
-
-    ```python  linenums="1"
-    from taipy import Config
-
-    Config.configure_job_executions(mode="airflow", start_airflow=True)
-    ```
-
-=== "TOML configuration "
-
-    ```python linenums="1"
-    from taipy import Config
-
-    Config.load("config.toml")
-    ```
-
-    ```toml linenums="1" title="config.toml"
-    [JOB]
-    mode = "airflow"
-    start_airflow = "True:bool"
-    ```
-
-By default, Airflow creates a local folder _.airflow_ to store its dependencies.
-You can change this location with the **airflow_folder** config:
-
-=== "Python configuration"
-
-    ```python  linenums="1"
-    from taipy import Config
-
-    Config.configure_job_executions(mode="airflow", airflow_folder="my_custom_path")
-    ```
-
-=== "TOML configuration"
-
-    ```python linenums="1"
-    from taipy import Config
-
-    Config.load("config.toml")
-    ```
-
-    ```toml linenums="1" title="config.toml"
-    [JOB]
-    mode = "airflow"
-    airflow_folder = "my_custom_path"
-    ```
-
-!!! warning "Production setting"
-
-    Taipy starts Airflow in `standalone` mode. It is an Airflow development mode and not recommended for production.
-
-## Using an external Airflow
-
-By default, Taipy runs with an external Airflow. You can specify it by setting:
-
-=== "Python configuration"
-
-    ```python  linenums="1"
-    from taipy import Config
-
-    Config.configure_job_executions(mode="airflow", start_airflow=False)
-    ```
-
-=== "TOML configuration "
-
-    ```python linenums="1"
-    from taipy import Config
-
-    Config.load("config.toml")
-    ```
-
-    ```toml linenums="1" title="config.toml"
-    [JOB]
-    mode = "airflow"
-    start_airflow = "False:bool"
-    ```
-
 By default, Taipy is connected to Airflow on [localhost:8080](http://localhost:8080). You can change it by:
 
 === "Python configuration"
@@ -201,7 +120,7 @@ By default, Taipy is connected to Airflow on [localhost:8080](http://localhost:8
     ```python  linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(mode="airflow", start_airflow=False, hostname="my_remote_airflow:port")
+    Config.configure_job_executions(mode="airflow", hostname="my_remote_airflow:port")
     ```
 
 === "TOML configuration "
@@ -215,7 +134,6 @@ By default, Taipy is connected to Airflow on [localhost:8080](http://localhost:8
     ```toml linenums="1" title="config.toml"
     [JOB]
     mode = "airflow"
-    start_airflow = "False:bool"
     hostname = "my_remote_airflow:port"
     ```
 
@@ -227,7 +145,7 @@ By default, this folder is _.dags_, but you can update it by:
     ```python  linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(mode="airflow", start_airflow=False, airflow_dags_folder="/my_dag_folder")
+    Config.configure_job_executions(mode="airflow", airflow_dags_folder="/my_dag_folder")
     ```
 
 === "TOML configuration"
@@ -241,7 +159,6 @@ By default, this folder is _.dags_, but you can update it by:
     ```toml linenums="1" title="config.toml"
     [JOB]
     mode = "airflow"
-    start_airflow = "False:bool"
     airflow_dags_folder = "/my_dag_folder"
     ```
 
@@ -261,7 +178,7 @@ Depending on your Airflow configuration, you can update the number of retries:
     ```python  linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(mode="airflow", start_airflow=False, airflow_api_retry=10)
+    Config.configure_job_executions(mode="airflow", airflow_api_retry=10)
     ```
 
 === "TOML configuration"
@@ -275,8 +192,55 @@ Depending on your Airflow configuration, you can update the number of retries:
     ```toml linenums="1" title="config.toml"
     [JOB]
     mode = "airflow"
-    start_airflow = "False:bool"
     airflow_api_retry = "10:int"
+    ```
+
+Before executing a task, Airflow checks if its inputs are ready every 20 seconds by default. You can update the number of seconds between each check by:
+
+=== "Python configuration"
+
+    ```python  linenums="1"
+    from taipy import Config
+
+    Config.configure_job_executions(mode="airflow",airflow_sensor_poke_interval=60)
+    ```
+
+=== "TOML configuration"
+
+    ```python linenums="1"
+    from taipy import Config
+
+    Config.load("config.toml")
+    ```
+
+    ```toml linenums="1" title="config.toml"
+    [JOB]
+    mode = "airflow"
+    airflow_sensor_poke_interval = "60:int"
+    ```
+
+Because Airflow executes the application code in a different directory, you must make sure that all the files used by the application are accessible by the Airflow worker. We can configure the path to the application by specifying its absolute path or relative to the Airflow folder. The default path is "" (empty string), which implies that the absolute path of the running application will be used.
+
+=== "Python configuration"
+
+    ```python  linenums="1"
+    from taipy import Config
+
+    Config.configure_job_executions(mode="airflow",app_folder="/my/app/path")
+    ```
+
+=== "TOML configuration"
+
+    ```python linenums="1"
+    from taipy import Config
+
+    Config.load("config.toml")
+    ```
+
+    ```toml linenums="1" title="config.toml"
+    [JOB]
+    mode = "airflow"
+    app_folder = "/my/app/path"
     ```
 
 Taipy authentication with Airflow is based on
@@ -288,7 +252,7 @@ If Airflow is not started by Taipy, you should provide this configuration:
     ```python  linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(mode="airflow", start_airflow=False, airflow_user="user", airflow_password="pass")
+    Config.configure_job_executions(mode="airflow", airflow_user="user", airflow_password="pass")
     ```
 
 === "TOML configuration"
@@ -302,7 +266,6 @@ If Airflow is not started by Taipy, you should provide this configuration:
     ```toml linenums="1" title="config.toml"
     [JOB]
     mode = "airflow"
-    start_airflow = "False:bool"
     airflow_user = "user"
     airflow_password = "pass"
     ```
