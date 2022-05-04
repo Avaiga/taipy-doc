@@ -80,7 +80,6 @@ nav:
   - 'Credits':
     - 'Development lead': 'credits/development_lead.md'
     - 'Contributors': 'credits/contributors.md'
-  - 'Roadmap': 'roadmap.md'
   - 'History': 'history.md'
 theme:
   name: material
