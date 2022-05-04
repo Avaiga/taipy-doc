@@ -3,7 +3,7 @@ available in Taipy: the `standalone` and the `airflow` mode (available in the en
 
 # Standalone
 
-With the _standalone_ mode, Taipy executes the jobs in its own execution context. You can configure the standalone
+With the _standalone_ mode, Taipy executes the `Job^` in its own execution context. You can configure the standalone
 mode with the following config:
 
 === "Python configuration"
@@ -31,14 +31,14 @@ mode with the following config:
 
     Note that if no mode is configured, the standalone mode is used.
 
-By default, Taipy executes each _job_ one-by-one, in a synchronous manner. You can ensure this behavior with:
+By default, Taipy executes each `Job^` one-by-one, in a synchronous manner. You can ensure this behavior with:
 
 === "Python configuration"
 
     ```python linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(mode="standalone", nb_workers=1)
+    Config.configure_job_executions(mode="standalone", nb_of_workers=1)
     ```
 
 === "TOML configuration"
@@ -57,20 +57,20 @@ By default, Taipy executes each _job_ one-by-one, in a synchronous manner. You c
 
 !!! Note
 
-    If no value is provided in the nb_of_workers setting in the configuration, Taipy will set this value to 1.
+    If no value is provided in the _nb_of_workers_ setting in the configuration, Taipy will set this value to 1.
 
-To execute the _jobs_ in parallel, you can set the number of workers to an integer value greater than 1.
+To execute multiple `Job^` simultaneously, you can set the _nb_of_workers_ to an integer value greater than 1. That
+starts each `Job^` in a dedicated process with _nb_of_workers_ as the limit of concurrent processes that can run
+simultaneously.
 
-Taipy will use multiple asynchronous processes, and run each job in a dedicated process. The value of the
-variable `nb_of_workers` represents the maximum number of processes spawned in parallel. For example,the
-following configuration allows Taipy to run at most 8 jobs in parallel:
+For example, the following configuration will allow Taipy to run up to eight `Job^` simultaneously:
 
 === "Python configuration"
 
     ```python  linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(mode="standalone", nb_workers=8)
+    Config.configure_job_executions(mode="standalone", nb_of_workers=8)
     ```
 
 === "TOML configuration "
@@ -113,7 +113,7 @@ _airflow_ mode with the following config :
     mode = "airflow"
     ```
 
-By default, Taipy is connected to Airflow on `localhost:8080`. You can change it by:
+By default, Taipy is connected to Airflow on [localhost:8080](http://localhost:8080). You can change it by:
 
 === "Python configuration"
 
@@ -137,8 +137,8 @@ By default, Taipy is connected to Airflow on `localhost:8080`. You can change it
     hostname = "my_remote_airflow:port"
     ```
 
-Taipy _jobs_ are converted in Airflow _DAG_ through the Airflow DAG Folder.
-By default, this folder is `.dags`, but you can update it by:
+Taipy `Job^` are converted in Airflow _DAG_ through the Airflow DAG Folder.
+By default, this folder is _.dags_, but you can update it by:
 
 === "Python configuration"
 
