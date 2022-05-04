@@ -112,7 +112,6 @@ _airflow_ mode with the following config :
     [JOB]
     mode = "airflow"
     ```
-## Using an external Airflow
 
 By default, Taipy is connected to Airflow on `localhost:8080`. You can change it by:
 
