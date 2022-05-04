@@ -15,9 +15,7 @@
 
 ## Airflow and Taipy in the same container
 
-The simplest way to try your Taipy application with Airflow is to let Taipy start Airflow by itself.
-
-To do that, you must install the Airflow dependencies in the container itself.
+To run Airflow and Taipy in the same container, you must install the Airflow dependencies in the container itself.
 Replace your Dockerfile with the following:
 ```
 # Your Python version
@@ -42,7 +40,6 @@ Then you should specify Airflow as the scheduler in your configuration.
 [JOB]
 mode = "airflow"
 hostname = "http://localhost:8080"
-start_airflow = true
 ```
 
 ## Airflow and Taipy in different containers
@@ -69,7 +66,6 @@ storage_folder = "/app/data"
 [JOB]
 mode = "airflow"
 hostname = "http://airflow-webserver:8080"
-start_airflow = false
 airflow_api_retry = 100
 airflow_dags_folder="/app/dags"
 airflow_user="airflow"
