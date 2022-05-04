@@ -45,7 +45,7 @@ will be displayed on your page.
           in displaying the text:<br/>
           `dec:64177, oct:00175261, hex:FAB1`.
 
-        Note that since HTML text eliminates non-significant white space,
+        Note that since HTML text eliminates non-significant white space, the
         right-justification format (`{string:>n}`) does not impact the resulting
         display.
 

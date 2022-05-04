@@ -7,93 +7,104 @@ The [Basics](basics.md) section already shows a handful of examples
 showing line charts. This section focuses on customizations that are
 relevant for this type of charts only.
 
-### Tracing a series of values
+### Styling lines
 
-Say you want to create a line chart connecting a series of values.<br/>
-The _x_ values will be the index of each plotted value.
+You can style plots using the _line[]_ and _color[]_ properties.
 
-Our example would plot the function _y = x * x_ on a small range of _x_ values.
-We can do that using inline Python code in the page definition:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{[x*x for x in range(0, 9)]}|chart|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart>{[x*x for x in range(0, 9)]}</taipy:chart>
-        ```
-
-Here is how this chart is displayed:
-
-![Plotting x squared](line1.png)
-
-### Decorating a chart
-
-In our previous example, you may have noticed the '0' sitting under
-the _x_ axis. This is the 'name' of the axis. Because we are not using
-any DataFrame where column names could be used, Taipy uses the index
-of the data series, which is 0, since we only have one dimension in
-our data.
-
-Let's make the chart slightly nicer by adding a real name to the axis.
-This involve the use of the _layout_ property of the chart control. This
-property must be set to a dictionary (see the
-[Ploty Reference](https://plotly.com/javascript/reference/layout/) for
-all the details) defined as follows:
-
+Say we have captured temperature measurements every day: the mean, maximum
+and minimum values for every day. This data set can easily be stored in a
+Pandas Data Frame:
 ```py
-layout={
-  "xaxis": {
-    "title": "Our little range"
+data = pd.DataFrame(
+  {
+    "Date": pd.date_range("<start-date>", periods=100, freq="D"),
+    "Temp°C": [-15,-12.9,...100 records total...,7.2,10.2],
+    "Min": [-22,-19.7,...100 records total...,2.7,6.5],
+    "Max": [-8.6,-8.2,...100 records total...,12.,13.5]
   }
-}
+)
 ```
 
-There are several settings that apply to axis. However in our case, we will
-only use _title_ 
+We want to customize the style of the different traces, so the chart
+is easier to read. We will display the 'Max' trace in red, the 'Min'
+trace in blue, and apply a dash style to the 'regular' temperature
+plot.
 
-The control definition is modified to use that dictionary:
+Here is the definition of the chart control:
+
 !!! example "Page content"
 
     === "Markdown"
 
         ```
-        <|{[x*x for x in range(0, 9)]}|chart|title=Plotting x squared|layout={layout}|>
+        <|{data}|chart|mode=lines|x=Date|y[1]=Temp°C|y[2]=Min|y[3]=Max|line[1]=dash|color[2]=blue|color[3]=red|>
         ```
   
     === "HTML"
 
         ```html
-        <taipy:chart title="Plotting x squared" layout="{layout}">
-          {[x*x for x in range(0, 9)]}
-          </taipy:chart>
+        <taipy:chart mode="lines" x="Date" y[1]="Temp°C" y[2]="Min" y[3]="Max"
+                     line[1]="dash" color[2]="blue" color[3]="red">{data}</taipy:chart>
         ```
 
-As you can see, we also added a title to the chart.
+The page now shows the following chart:
 
-The result is the following:
+![Styling a line chart](line1.png)
+
+### Text above plot
+
+It is sometimes useful to provide textual information on top of a plot.
+Here is how to do that in the context of a line chart.
+
+We want to display, at the approximate location of a temperature data point,
+the index of the week we are plotting the data.
+
+We can reuse the dataset of the example above, and add a column to
+the DataFrame, holding the week number as a text:
+```py
+data = pd.DataFrame({
+...
+"WeekN": [f"W{i//7}" if i%7==0 else None for i in range(0, 100)]
+...
+})
+```
+Note that this new column (_WeekN_) is mainly filled with None values.
+
+Let us use this column as a source for displaying text in our chart:
+
+!!! example "Page content"
+
+    === "Markdown"
+
+        ```
+        <|{data}|chart|x=Date|y[1]=Temp°C|y[2]=Max|mode[2]=text|text[2]=WeekN|>
+        ```
+  
+    === "HTML"
+
+        ```html
+        <taipy:chart x="Date" y[1]="Temp°C"
+                     mode[2]="text" y[2]="Max" text[2]="WeekN">{data}</taipy:chart>
+        ```
+
+This definition will allow to display the texts contained in the 'WeekN'
+column (the _text[2]_) property, at the _y_ coordinate indicated in the
+'Max' column (the _y[2]_), as raw text (the _mode[2]_ property).
+
+Here is the resulting chart:
 
 ![Plotting x squared](line2.png)
 
+!!! tip "Faint text"
+    You may find that your texts don't appear as clearly as they should.
+    Plotly actually applies a low opacity to individual plot items to
+    bring the opacity at a maximum value when the item is selected.
 
-(first and second columns will be used for _x_ and _y_ values), you can use the following content:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart>{data}</taipy:chart>
-        ```
+    If you have this problem and want to work it out, you can enforce a higher
+    opacity value by default for all the text elements of your charts by adding
+    the following lines to your application style sheets:
+    ```css
+    .textpoint text {
+        fill-opacity: 0.9 !important;
+    }
+    ```

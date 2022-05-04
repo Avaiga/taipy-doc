@@ -82,17 +82,15 @@ The result is the following:
 So far the examples did not explicitly define a _x_ axis: we have used
 the index of the _y_ value in the input array.
 
-Let us create a Pandas DataFrame that holds data for our two series: the
+Let us create a dictionary that holds data for our two series: the
 _x_ and the _y_ values:
 
 ```py
-import pandas as pd
-
 x_range = range(-10, 11)
-data = pd.DataFrame({
+data = {
   "x_values": [x for x in x_range],
   "y_values": [x*x for x in x_range]
-})
+}
 ```
 
 !!! example "Page content"
@@ -109,6 +107,7 @@ data = pd.DataFrame({
         <taipy:chart x="x_values" y="y_values">{data}</taipy:chart>
         ```
 
+Taipy internally transforms _data_ to a Pandas DataFrame.
 The _x_ property indicates the name of the DataFrame column ("x_values") that holds
 the _x_ axis values and the _y_ values come from the the column "y_values".
 
@@ -220,10 +219,10 @@ The resulting plot is far more relevant:
 ### Using a time series
 
 Many charts will represent data that is based on a timeline. Taipy allows you
-to define an _x_ axis that represents a time range:
+to define an _x_ axis that represents a time range.
 
-Here is how you could generate some data based on time: one random value for
-each hour of a given day:
+Here is how you could display data based on time. In our example, we will use one
+random value for each hour of a given day:
 
 ```py
 import pandas as pd

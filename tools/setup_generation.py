@@ -23,7 +23,6 @@
 #     reflect the root package structure.
 # ------------------------------------------------------------------------
 import glob
-import itertools
 import json
 import os
 import re
@@ -31,6 +30,7 @@ import shutil
 import warnings
 from datetime import datetime
 from inspect import isclass, isfunction, ismodule
+from pathlib import Path
 
 import pandas as pd
 
@@ -62,7 +62,9 @@ PACKAGES_VISIBILITY = [
 # Change some item visibility from a package to another
 #   (orig_package, item_name) -> dest_package
 ITEMS_VISIBILITY = {
-    ("taipy.gui.gui", "Gui") : "taipy.gui"
+    ("taipy.gui.gui", "Gui") : "taipy.gui",
+    ("taipy.gui.partial", "Partial") : "taipy.gui.partial",
+    ("taipy.gui.page", "Page") : "taipy.gui.page"
 }
 REFERENCE_REL_PATH = "manuals/reference"
 REFERENCE_DIR_PATH = root_dir + "/docs/" + REFERENCE_REL_PATH
@@ -101,7 +103,7 @@ def restore_top_package_location():
 # Step 1
 #   Generating the Visual Elements documentation
 # ------------------------------------------------------------------------
-print("Step 1/3: Generating Visual Elements documentation")
+print("Step 1/4: Generating Visual Elements documentation")
 
 
 def read_skeleton(name):
@@ -127,7 +129,14 @@ blocks_list = ["part", "expandable", "layout", "pane"]
 # -----------------------------------------------------------------------------
 element_properties = {}
 element_documentation = {}
-
+INHERITED_PROP = 1<<0
+DEFAULT_PROP   = 1<<1
+MANDATORY_PROP = 1<<2
+property_prefixes = {
+    ">": INHERITED_PROP,
+    "*": DEFAULT_PROP,
+    "!": MANDATORY_PROP
+}
 for current_file in os.listdir(VISELEMENTS_SRC_PATH):
     def read_properties(path_name, element_name):
         try:
@@ -137,47 +146,56 @@ for current_file in os.listdir(VISELEMENTS_SRC_PATH):
         properties = []
         # Row fields: name, type, default_value, doc
         for row in list(df.to_records(index=False)):
-            if row[0][0] == ">":  # Inherits?
-                parent = row[0][1:]
-                parent_props = element_properties.get(parent)
+            prop_flags = 0
+            prop_name = row[0]
+            while prop_name[0] in property_prefixes:
+                prop_flags |= property_prefixes.get(prop_name[0])
+                prop_name = prop_name[1:]
+            if prop_flags & INHERITED_PROP:  # Inherits?
+                parent_props = element_properties.get(prop_name)
                 if parent_props is None:
-                    parent_file = parent + ".csv"
+                    parent_file = prop_name + ".csv"
                     parent_path_name = os.path.join(VISELEMENTS_SRC_PATH, parent_file)
                     if not os.path.exists(parent_path_name):
                         restore_top_package_location()
-                        raise ValueError(f"FATAL - No csv file for '{parent}', inherited by '{element_name}'")
-                    parent_props = read_properties(parent_path_name, parent)
-                properties += parent_props
+                        raise ValueError(f"FATAL - No csv file for '{prop_name}', inherited by '{element_name}'")
+                    parent_props = read_properties(parent_path_name, prop_name)
+                # Merge inherited properties
+                for parent_prop in parent_props:
+                    try:
+                        prop_index = [p[1] for p in properties].index(parent_prop[1])
+                        p = list(properties[prop_index])
+                        if p[2] == ">":
+                            p[2] = parent_prop[2]
+                            print(f"WARNING: Element {element_name}: legacy '>' in '{p[1]}''s Type")
+                        # Testing for equality detects NaN
+                        properties[prop_index] = (p[0], p[1],
+                                                  p[2] if p[2] == p[2] else parent_prop[2],
+                                                  p[3] if p[3] == p[3] else parent_prop[3],
+                                                  p[4] if p[4] == p[4] else parent_prop[4])
+                    except:
+                        properties.append(parent_prop)
             else:
+                row[0] = prop_name
+                row = (prop_flags, prop_name, *row.tolist()[1:])
                 properties.append(row)
         default_property_name = None
         for i, props in enumerate(properties):
-            # Check if multiple default properties
-            if props[0][0] == "*":  # Default property?
-                name = props[0][1:]
+            # props = (flags, name, type, default value,description)
+            if props[0] & DEFAULT_PROP:  # Default property?
+                name = props[1]
                 if default_property_name and name != default_property_name:
                     warnings.warn(
                         f"Property '{name}' in '{element_name}': default property already defined as {default_property_name}")
                 default_property_name = name
             # Fix Boolean default property values
-            if str(props[2]).lower() == "false":
-                props = (props[0], props[1], "False", props[3])
-                properties[i] = props
-            elif str(props[2]).lower() == "true":
-                props = (props[0], props[1], "True", props[3])
-                properties[i] = props
-            elif str(props[2]) == "nan":  # Empty cell in CSV - Pandas parsing?
-                props = (props[0], props[1], "<i>Mandatory</i>", props[3])
-                properties[i] = props
-            # Drop inherited properties
-            if props[1] == ">":  # Inherited property?
-                try:
-                    inherited_prop_index = [p[0] for p in properties[i + 1:]].index(props[0])
-                    properties[i] = properties[i + 1 + inherited_prop_index]
-                    properties.pop(i + 1 + inherited_prop_index)
-                except:
-                    restore_top_package_location()
-                    raise ValueError(f"No inherited property '{props[0]}' in element '{element_name}'")
+            if str(props[3]).lower() == "false":
+                properties[i] = (props[0], props[1], props[2], "False", props[4])
+            elif str(props[3]).lower() == "true":
+                properties[i] = (props[0], props[1], props[2], "True", props[4])
+            elif props[3] != props[3]:  # Empty cell in CSV - Pandas parsing
+                default_value = "<i>Mandatory</i>" if props[0] & MANDATORY_PROP else ""
+                properties[i] = (props[0], props[1], props[2], default_value, props[4])
         if not default_property_name and (element_name in controls_list + blocks_list):
             restore_top_package_location()
             raise ValueError(f"Element '{element_name}' has no defined default property")
@@ -185,15 +203,15 @@ for current_file in os.listdir(VISELEMENTS_SRC_PATH):
         return properties
 
 
+    path_name = os.path.join(VISELEMENTS_SRC_PATH, current_file)
     element_name = os.path.basename(current_file)
-    if not element_name in element_properties:
-        path_name = os.path.join(VISELEMENTS_SRC_PATH, current_file)
-        element_name, current_file_ext = os.path.splitext(element_name)
-        if current_file_ext == ".csv":
+    element_name, current_file_ext = os.path.splitext(element_name)
+    if current_file_ext == ".csv":
+        if not element_name in element_properties:
             read_properties(path_name, element_name)
-        elif current_file_ext == ".md":
-            with open(path_name, "r") as doc_file:
-                element_documentation[element_name] = doc_file.read()
+    elif current_file_ext == ".md":
+        with open(path_name, "r") as doc_file:
+            element_documentation[element_name] = doc_file.read()
 
 # Create VISELEMS_DIR_PATH directory if necessary
 if not os.path.exists(VISELEMENTS_DIR_PATH):
@@ -233,9 +251,9 @@ def generate_element_doc(element_name: str, toc):
 """
     STAR = "(&#9733;)"
     default_property_name = None
-    for name, type, default_value, doc in properties:
-        if name[0] == "*":
-            default_property_name = name[1:]
+    for flags, name, type, default_value, doc in properties:
+        if flags & DEFAULT_PROP:
+            default_property_name = name
             full_name = f"<code id=\"p-{default_property_name}\"><u><bold>{default_property_name}</bold></u></code><sup><a href=\"#dv\">{STAR}</a></sup>"
         else:
             full_name = f"<code id=\"p-{name}\">{name}</code>"
@@ -298,7 +316,7 @@ with open(os.path.join(GUI_DOC_PATH, "blocks.md"), "w") as file:
 # Step 2
 #   Generating the Reference Manual
 # ------------------------------------------------------------------------
-print("Step 2/3: Generating the Reference Manual pages")
+print("Step 2/4: Generating the Reference Manual pages")
 
 # Create empty REFERENCE_DIR_PATH directory
 if os.path.exists(REFERENCE_DIR_PATH):
@@ -479,22 +497,43 @@ with open(XREFS_PATH, "w") as xrefs_output_file:
 # Step 3
 #   Generating the Getting Started
 # ------------------------------------------------------------------------
-print("Step 3/3: Generating the Getting Started navigation bar")
+print("Step 3/4: Generating the Getting Started navigation bar")
 
-def format_getting_started_navigation(filepath: str, step_name: str) -> str:
+def format_getting_started_navigation(filepath: str) -> str:
     readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
-    return f"        - '{step_name}': '{readme_path}'"
+    readme_content = Path('docs', readme_path).read_text().split('\n')
+    step_name = next(filter(lambda l: "# Step" in l, readme_content))[len("# "):]
+    return f"    - '{step_name}': '{readme_path}'"
 
-steps_naming = filter(None, open('docs/getting_started/summary.txt').read().split('\n'))
 step_folders = glob.glob("docs/getting_started/step_*")
 step_folders.sort()
 step_folders = map(lambda s: s[len('docs/'):], step_folders)
-step_folders = itertools.starmap(format_getting_started_navigation, zip(step_folders, steps_naming))
+step_folders = map(format_getting_started_navigation, step_folders)
 getting_started_navigation = "\n".join(step_folders) + '\n'
+
+
+
+
+# ------------------------------------------------------------------------
+# Step 4
+#   Generating site url
+# ------------------------------------------------------------------------
+print("Step 4/4: Generating the Site URL")
+tag = re.search(r'taipy_version: (?:develop|(?:(\d+)\.(\d+)))', mkdocs_yml_content)
+
+if not tag.group(1):
+    site_url = f"https://docs.taipy.io/develop"
+else:
+    tag_major = tag.group(1)
+    tag_minor = tag.group(2)
+    site_url = f"https://docs.taipy.io/release/{tag_major}.{tag_minor}"
 
 
 # Update mkdocs.yml
 copyright_content = f"{str(datetime.now().year)}"
+mkdocs_yml_content = re.sub(r"\[SITE_URL\]",
+                            site_url,
+                            mkdocs_yml_content)
 mkdocs_yml_content = re.sub(r"\[YEAR\]",
                             copyright_content,
                             mkdocs_yml_content)

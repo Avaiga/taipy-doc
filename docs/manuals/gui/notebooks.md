@@ -5,7 +5,7 @@ You can create and run a Taipy Graphical User Interface from a Jupyter Notebook.
 In this situation, the Web server that Taipy relies on will run on a separate thread,
 so the Notebook works as expected.
 
-## Creating a new Notebook and create a Taipy GUI
+## Creating a Taipy GUI application in a new Notebook
 
 Here is a step-by-step approach on hosting a Taipy GUI within your Notebook
 and interacting with it.
@@ -46,8 +46,8 @@ gui.run()
 
 As you can see, we create and run our `Gui^` instance in lines 13 and 14.
 
-Also note that we use the `Markdown^` class explicitly. That is because later
-in our code, we will want to modify the content of the page.
+Note that we use the `Markdown^` class explicitly (in line 3). That is because
+later in our code, we will want to modify the content of the page.
 
 Run the cell. The output shows that a server was started (usually on
 _http://127.0.0.1:5000_), hosting the 'Taipy' Flask app.<br/>
@@ -55,7 +55,7 @@ A new window is created in your browser, displaying the small
 interface we have just created.<br/>
 Note that the text control automatically displays _value_ when you move the slider
 thumb. That shows that Taipy has successfully bound the variable _value_ to both
-the [`text`](viselements/text.md) and the [`slider`](viselements/slider.md)`
+the [`text`](viselements/text.md) and the [`slider`](viselements/slider.md)
 controls.
 
 You can witness the user interface update when you change a variable

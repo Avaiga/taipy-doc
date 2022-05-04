@@ -27,7 +27,7 @@ method of your `Gui` instance using the _kwargs_ parameter.
 
 !!! note "Script options"
     The Python script that you launch to run your application can
-    be provided command-line options that Taipy can use to ultimately
+    be provided with command-line options that Taipy can use to ultimately
     override configuration settings. Not all configuration parameters can be
     overridden with option but when they can, the option is describe in the
     specific configuration parameter entry below.
@@ -81,7 +81,7 @@ Here is the list of the configuration parameters you can use in
      False indicates that multiple clients can connect to the server.
    - _propagate_ (bool, default: True): the default value that will be used for every
      _propagate_ property value, for all controls. Please look at the section on the
-     [_propagate_ propery](viselements/#the-propagate-property) for details).
+     [_propagate_ property](viselements/#the-propagate-property) for details).
    - _time_zone_ (str, default: "client"): indicates how date and time values should be
      interpreted.<br/>
      You can use a TZ database name (as listed in [Time zones list on Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
@@ -123,7 +123,7 @@ Here is a short code sample that should make this straightforward:
 
 ```py linenums="1"
 from flask import Flask
-from taipy.gui import Gui
+from taipy import Gui
 
 flask_app = Flask(__name__)
 
@@ -162,7 +162,7 @@ steps:
    - That will drive you to a page where you can install the _ngrok_ executable
      on your machine. Behind the scene, Ngrok will also send you a confirmation
      email providing a link that you must click to validate your
-     registration and to connect to your new account.<br/>
+     registration and connect to your new account.<br/>
      Connecting to your account will provide you the Ngrok _authtoken_.
 
 - Add the NGrok _authtoken_ to the call to `(Gui.)run()^`:
@@ -173,7 +173,7 @@ steps:
     gui.run(ngrok_token="<ngrok_authtoken>")
     ...
     ```
-- When you run your Taipy script, the console will print out the public URL can
+- When you run your Taipy script, the console will print out the public URL that
   allows users to connect to it. This has the form `http://<id>.ngrok.io`.<br/>
   Your Flask server, running locally will accept and serve connections from all
   around the world.

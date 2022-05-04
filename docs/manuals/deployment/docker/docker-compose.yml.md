@@ -46,10 +46,7 @@ x-airflow-common:
   # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
   # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
   #${AIRFLOW_IMAGE_NAME:-apache/airflow:2.2.3}
-  image: custom-airflow
-  build:
-      context: .
-      target: airflow
+  image: apache/airflow:2.2.3-python3.9
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
@@ -58,14 +55,15 @@ x-airflow-common:
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
-    AIRFLOW__CORE__LOAD_EXAMPLES: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
+    AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: 20
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
   volumes:
     - ./dags:/opt/airflow/dags
+    - .:/opt/airflow/dags/taipy/app
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
-    - application-data:/app/data
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -75,27 +73,12 @@ x-airflow-common:
       condition: service_healthy
 
 services:
-  taipy:
-    build:
-      context: .
-      target: taipy
-    ports:
-      - "5000:5000"
-    volumes:
-      - ./dags:/app/dags
-      - application-data:/app/data
-    user: "${AIRFLOW_UID:-50000}:0"
-    depends_on:
-      <<: *airflow-common-depends-on
-      airflow-init:
-        condition: service_completed_successfully
-
   postgres:
     image: postgres:13
     environment:
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: airflow
+      POSTGRES_USER: taipy
+      POSTGRES_PASSWORD: taipy
+      POSTGRES_DB: taipy
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
     healthcheck:
@@ -288,5 +271,5 @@ services:
 
 volumes:
   postgres-db-volume:
-  application-data:
+
 ```

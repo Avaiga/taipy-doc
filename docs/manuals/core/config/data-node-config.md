@@ -29,8 +29,9 @@ More optional attributes are available on data nodes, including:
 
 -   Any other custom attribute can be provided through the parameter _**properties**_, which is
     a dictionary (a description, a tag, etc.)<br/>
-    All the properties are given to the data nodes instantiated from this data node configuration.<br/>
-    This _properties_ dictionary is also used to configure the parameters specific to each storage type.
+    This _properties_ dictionary is used to configure the parameters specific to each storage type.
+    Note also that all this dictionary _**properties**_ is copied in the dictionary properties of all the data
+    nodes instantiated from this data node configuration.<br/>
 
 Below are two examples of data node configurations.
 

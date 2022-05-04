@@ -1,5 +1,5 @@
 site_name: Taipy
-# site_url: http://www.avaiga.com
+site_url: [SITE_URL]
 repo_url: https://github.com/avaiga/taipy
 repo_name: taipy
 #strict: true
@@ -7,10 +7,8 @@ copyright: © [YEAR] Avaiga
 nav:
   - Home: index.md
   - 'Getting started':
-    - 'Installation': 'getting_started/installation.md'
-    - 'Creating a Taipy application':
-        - getting_started/index.md
-    [GETTING_STARTED_CONTENT]
+    - getting_started/index.md
+  [GETTING_STARTED_CONTENT]
   - 'User Manual':
     - "About Taipy's User Manual": 'manuals/about.md'
     - Taipy GUI:
@@ -32,10 +30,11 @@ nav:
             - manuals/core/concepts/index.md
             - 'Data node': 'manuals/core/concepts/data-node.md'
             - 'Task': 'manuals/core/concepts/task.md'
-            - 'Job': 'manuals/core/concepts/job.md'
             - 'Pipeline': 'manuals/core/concepts/pipeline.md'
             - 'Scenario': 'manuals/core/concepts/scenario.md'
             - 'Cycle': 'manuals/core/concepts/cycle.md'
+            - 'Job': 'manuals/core/concepts/job.md'
+            - 'Execution flow': 'manuals/core/concepts/execution-flow.md'
             - 'Scope': 'manuals/core/concepts/scope.md'
         - 'Configuration':
             - manuals/core/config/index.md
@@ -62,6 +61,7 @@ nav:
     - Deployment:
         - GNU/Linux:
             - 'Ubuntu': 'manuals/deployment/linux/ubuntu.md'
+            - 'RHEL': 'manuals/deployment/linux/redhat.md'
         - Docker:
             - 'Standalone Application on docker': 'manuals/deployment/docker/standalone.md'
             - 'Application running with Airflow on docker': 'manuals/deployment/docker/airflow.md'
@@ -150,20 +150,21 @@ plugins:
   - macros:
       module_name: tools/postprocess
 extra:
+  taipy_version: develop
   social:
     - icon: fontawesome/brands/twitter
       # replace with your own tweet link below
-      link: http://www.avaiga.com
+      link: http://www.taipy.io
       name: Tweet
     - icon: fontawesome/brands/facebook
       # replace with your own facebook link below
-      link: http://www.avaiga.com
+      link: http://www.taipy.io
       name: Facebook
     - icon: fontawesome/brands/github
       link: https://github.com/avaiga/taipy
       name: Github
     - icon: material/email
-      link: "mailto:taipy.dev@avaiga.com"
+      link: "mailto:dev@taipy.io"
   # to enable disqus, uncomment the following and put your disqus id below
   # disqus: disqus_id
   generator: false
