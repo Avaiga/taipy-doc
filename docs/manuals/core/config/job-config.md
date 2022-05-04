@@ -3,7 +3,7 @@ available in Taipy: the `standalone` and the `airflow` mode (available in the en
 
 # Standalone
 
-With the _standalone_ mode, Taipy executes the jobs in its own execution context. You can configure the standalone
+With the _standalone_ mode, Taipy executes the `Job^` in its own execution context. You can configure the standalone
 mode with the following config:
 
 === "Python configuration"
@@ -31,7 +31,7 @@ mode with the following config:
 
     Note that if no mode is configured, the standalone mode is used.
 
-By default, Taipy executes each _job_ one-by-one, in a synchronous manner. You can ensure this behavior with:
+By default, Taipy executes each `Job^` one-by-one, in a synchronous manner. You can ensure this behavior with:
 
 === "Python configuration"
 
@@ -59,11 +59,11 @@ By default, Taipy executes each _job_ one-by-one, in a synchronous manner. You c
 
     If no value is provided in the nb_of_workers setting in the configuration, Taipy will set this value to _1_.
 
-To execute the _jobs_ in simultaneously, you can set the `nb_of_workers` to an integer value greater than _1_. That
-starts each `Job^` in a dedicated process with `nb_of_workers` as the limit of concurrent processes that can run
+To execute multiple `Job^` in simultaneously, you can set the **nb_of_workers** to an integer value greater than 1. That
+starts each `Job^` in a dedicated process with **nb_of_workers** as the limit of concurrent processes that can run
 simultaneously.
 
-For example, the following configuration will allow Taipy to run up till eight jobs in simultaneously:
+For example, the following configuration will allow Taipy to run up till eight `Job^` in simultaneously:
 
 === "Python configuration"
 
@@ -139,8 +139,8 @@ To let Taipy start the Airflow service, you can use the following configuration:
     start_airflow = "True:bool"
     ```
 
-By default, Airflow creates a local folder `.airflow` to store its dependencies.
-You can change this location with the `airflow_folder` config:
+By default, Airflow creates a local folder _.airflow_ to store its dependencies.
+You can change this location with the **airflow_folder** config:
 
 === "Python configuration"
 
@@ -194,7 +194,7 @@ By default, Taipy runs with an external Airflow. You can specify it by setting:
     start_airflow = "False:bool"
     ```
 
-By default, Taipy is connected to Airflow on `localhost:8080`. You can change it by:
+By default, Taipy is connected to Airflow on [localhost:8080](http://localhost:8080). You can change it by:
 
 === "Python configuration"
 
@@ -219,8 +219,8 @@ By default, Taipy is connected to Airflow on `localhost:8080`. You can change it
     hostname = "my_remote_airflow:port"
     ```
 
-Taipy _jobs_ are converted in Airflow _DAG_ through the Airflow DAG Folder.
-By default, this folder is `.dags`, but you can update it by:
+Taipy `Job^` are converted in Airflow _DAG_ through the Airflow DAG Folder.
+By default, this folder is _.dags_, but you can update it by:
 
 === "Python configuration"
 
