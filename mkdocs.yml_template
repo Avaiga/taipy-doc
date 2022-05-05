@@ -85,7 +85,7 @@ theme:
   name: material
   language: en
   custom_dir: tools
-  logo: assets/images/logo.png
+  logo: assets/images/taipy-logo.png
   font:
     text: Lato
   icon:
