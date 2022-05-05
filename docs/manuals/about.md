@@ -7,6 +7,10 @@ you as a Taipy user can perform a specific task.
 If you are just starting with Taipy, you may want to look at the [Getting Started document](../getting_started/installation.md)
 in order to see a step-by-step example of a complete Taipy application.
 
+!!! important "Reminder"
+
+    Note that Taipy requires **Python 3.8** or latest.
+
 ## Graphical User Interface (GUI) - `taipy.gui`
 
 The `taipy.gui^` package allows you to design an effective Graphic User Interface.
