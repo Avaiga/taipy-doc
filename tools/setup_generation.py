@@ -529,6 +529,7 @@ else:
     site_url = f"https://docs.taipy.io/release/{tag_major}.{tag_minor}"
 
 
+
 # Update mkdocs.yml
 copyright_content = f"{str(datetime.now().year)}"
 mkdocs_yml_content = re.sub(r"\[SITE_URL\]",
