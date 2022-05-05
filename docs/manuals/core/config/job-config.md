@@ -138,7 +138,7 @@ By default, Taipy is connected to Airflow on [localhost:8080](http://localhost:8
     ```
 
 Taipy `Job^` are converted in Airflow _DAG_ through the Airflow DAG Folder.
-By default, this folder is _.dags_, but you can update it by:
+By default, this folder is _dags_, but you can update it by:
 
 === "Python configuration"
 
