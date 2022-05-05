@@ -219,7 +219,7 @@ Before executing a task, Airflow checks if its inputs are ready every 20 seconds
     airflow_sensor_poke_interval = "60:int"
     ```
 
-Because Airflow executes the application code in a different directory, you must make sure that all the files used by the application are accessible by the Airflow worker. We can configure the path to the application by specifying its absolute path or relative to the Airflow folder. The default value is "/opt/airflow/dags/taipy/app".
+Because Airflow executes the application code in a different directory, you must make sure that all the files used by the application are accessible by the Airflow worker. We can configure the path to the application by specifying its absolute path or relative to the Airflow folder. The default value is "/opt/airflow/dags/app".
 
 === "Python configuration"
 
