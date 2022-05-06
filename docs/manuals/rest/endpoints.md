@@ -41,12 +41,12 @@ Get a single datanode by ID
 {
   "datanode": {
     "config_id": "string",
-    "edition_in_progress": true,
+    "edit_in_progress": true,
     "id": "string",
     "job_ids": [
       "string"
     ],
-    "last_edition_date": "string",
+    "last_edit_date": "string",
     "name": "string",
     "parent_id": "string",
     "properties": {},
@@ -73,10 +73,10 @@ Status Code **200**
 |---|---|---|---|---|
 |» datanode|[DataNodeSchema](#schemadatanodeschema)|false|none|none|
 |»» config_id|string|false|none|none|
-|»» edition_in_progress|boolean|false|none|none|
+|»» edit_in_progress|boolean|false|none|none|
 |»» id|string|false|none|none|
 |»» job_ids|[string]|false|none|none|
-|»» last_edition_date|string|false|none|none|
+|»» last_edit_date|string|false|none|none|
 |»» name|string|false|none|none|
 |»» parent_id|string|false|none|none|
 |»» properties|object|false|none|none|
@@ -153,12 +153,12 @@ Get a list of paginated datanodes
   "results": [
     {
       "config_id": "string",
-      "edition_in_progress": true,
+      "edit_in_progress": true,
       "id": "string",
       "job_ids": [
         "string"
       ],
-      "last_edition_date": "string",
+      "last_edit_date": "string",
       "name": "string",
       "parent_id": "string",
       "properties": {},
@@ -185,10 +185,10 @@ Status Code **200**
 |---|---|---|---|---|
 |» results|[[DataNodeSchema](#schemadatanodeschema)]|false|none|none|
 |»» config_id|string|false|none|none|
-|»» edition_in_progress|boolean|false|none|none|
+|»» edit_in_progress|boolean|false|none|none|
 |»» id|string|false|none|none|
 |»» job_ids|[string]|false|none|none|
-|»» last_edition_date|string|false|none|none|
+|»» last_edit_date|string|false|none|none|
 |»» name|string|false|none|none|
 |»» parent_id|string|false|none|none|
 |»» properties|object|false|none|none|
@@ -1716,12 +1716,12 @@ This operation does not require authentication
 ```json
 {
   "config_id": "string",
-  "edition_in_progress": true,
+  "edit_in_progress": true,
   "id": "string",
   "job_ids": [
     "string"
   ],
-  "last_edition_date": "string",
+  "last_edit_date": "string",
   "name": "string",
   "parent_id": "string",
   "properties": {},
@@ -1738,10 +1738,10 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |config_id|string|false|none|none|
-|edition_in_progress|boolean|false|none|none|
+|edit_in_progress|boolean|false|none|none|
 |id|string|false|none|none|
 |job_ids|[string]|false|none|none|
-|last_edition_date|string|false|none|none|
+|last_edit_date|string|false|none|none|
 |name|string|false|none|none|
 |parent_id|string|false|none|none|
 |properties|object|false|none|none|
