@@ -31,9 +31,9 @@
 # Those configurations are useful mostly in case of standalone testing/running Airflow in test/try-out mode
 #
 # _AIRFLOW_WWW_USER_USERNAME   - Username for the administrator account (if requested).
-#                                Default: airflow
+#                                Default: taipy
 # _AIRFLOW_WWW_USER_PASSWORD   - Password for the administrator account (if requested).
-#                                Default: airflow
+#                                Default: taipy
 # _PIP_ADDITIONAL_REQUIREMENTS - Additional PIP requirements to add when starting all containers.
 #                                Default: ''
 #
@@ -63,7 +63,7 @@ x-airflow-common: &airflow-common
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
   volumes:
     - ./dags:/opt/airflow/dags
-    - .:/opt/airflow/dags/taipy/app
+    - .:/opt/airflow/dags/app
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
   user: "${AIRFLOW_UID:-50000}:0"
