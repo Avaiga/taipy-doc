@@ -1,5 +1,5 @@
 site_name: Taipy
-site_url: [SITE_URL]
+site_url: https://docs.taipy.io/en/develop
 repo_url: https://github.com/avaiga/taipy
 repo_name: taipy
 #strict: true
@@ -85,7 +85,7 @@ theme:
   name: material
   language: en
   custom_dir: tools
-  logo: assets/images/logo.png
+  logo: assets/images/taipy-logo.png
   font:
     text: Lato
   icon:
@@ -150,7 +150,6 @@ plugins:
   - macros:
       module_name: tools/postprocess
 extra:
-  taipy_version: develop
   social:
     - icon: fontawesome/brands/twitter
       # replace with your own tweet link below
