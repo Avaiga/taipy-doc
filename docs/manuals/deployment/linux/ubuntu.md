@@ -6,8 +6,8 @@
 
 ## For Ubuntu version before 20.04
 
-Before _Ubuntu 20.04_, the pre-installed Python version is older than Python3.8 which is the oldest Python version
-supported by Taipy. If you are in that case, please install at least Python3.8.
+Before _Ubuntu 20.04_, the pre-installed Python version is older than Python 3.8 which is the oldest Python version
+supported by Taipy. If you are in that case, please install Python 3.8 (or newer).
 
 ## Prepare your machine
 

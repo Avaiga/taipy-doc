@@ -8,7 +8,7 @@ Server [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) and the Web Server 
 ## Upgrading Python
 
 Most _RHEL_ are delivered with a Python version older than 3.8 which is the oldest Python version
-supported by Taipy. If you are in that case, please install at least Python 3.8:
+supported by Taipy. If you are in that case, please install Python 3.8 (or newer):
 ```
 sudo dnf install -y gcc openssl-devel bzip2-devel libffi-devel make
 wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tgz
@@ -61,11 +61,11 @@ taipy
 
 On your local machine, start the application by doing:
 ```console
-$python3.8 -m pip install -r requirements.txt
+$ python3.8 -m pip install -r requirements.txt
 Collecting taipy
 ...
 Successfully installed taipy
-$python3.8 app.py
+$ python3.8 app.py
  * Server starting on http://127.0.0.1:5000
  * Serving Flask app 'Taipy' (lazy loading)
  * Environment: production
@@ -162,7 +162,7 @@ The application is now running locally but is not accessible yet from the Intern
 To expose your application on the Internet, you should use _Nginx_.
 Replace the content of `/etc/nginx/nginx.conf` by the [following](./nginx.conf) or:
 ```
-sudo wget https://docs.taipy.io/manuals/deployment/linux/redhat/nginx.conf -O /etc/nginx/nginx.conf
+sudo wget https://docs.taipy.io/en/latest/manuals/deployment/linux/nginx.conf -O /etc/nginx/nginx.conf
 ```
 
 Allow the communication between _Nginx_ and _uWSGI_:
