@@ -5,8 +5,11 @@ hide:
 
 # Home
 
-Taipy is an innovative **low-code** package to create complete applications in *Python 3.8* or latest. It is
-composed of two main independent components: **Taipy GUI** and **Taipy Core**.
+Taipy is an innovative **low-code** package to create complete applications.
+It is composed of two main independent components:
+**Taipy GUI** and **Taipy Core**.
+
+Taipy requires *Python 3.8* or newer.
 
 <p align="center">
   <img alt="Taipy structure" src="images/taipy-structure.svg">
