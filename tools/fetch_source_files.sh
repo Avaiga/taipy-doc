@@ -116,7 +116,7 @@ set_version () {
             MODULE_TAG[$mod]=$tag
         fi
     elif [[ $1 = "MKDOCS" ]]; then
-        version=$(grep -Ei 'site_url: https://docs.taipy.io/en/(develop|release-[0-9].[0-9])' mkdocs.yml_template | grep -oEi [0-9].[0-9] || echo 'develop')
+        version=$(grep -Ei 'site_url: https://docs\.taipy\.io/en/(develop|release-[0-9].[0-9])' mkdocs.yml_template | grep -oEi [0-9].[0-9] || echo 'develop')
         set_version $version
     else
         echo "Error: Invalid version in -version parameter: $1" >&2
