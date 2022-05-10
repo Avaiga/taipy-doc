@@ -162,7 +162,7 @@ The application is now running locally but is not accessible yet from the Intern
 To expose your application on the Internet, you should use _Nginx_.
 Replace the content of `/etc/nginx/nginx.conf` by the [following](./nginx.conf) or:
 ```
-sudo wget https://docs.taipy.io/en/latest/manuals/deployment/linux/redhat/nginx.conf -O /etc/nginx/nginx.conf
+sudo wget https://docs.taipy.io/en/latest/manuals/deployment/linux/nginx.conf -O /etc/nginx/nginx.conf
 ```
 
 Allow the communication between _Nginx_ and _uWSGI_:
