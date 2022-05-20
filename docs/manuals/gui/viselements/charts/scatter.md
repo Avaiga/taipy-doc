@@ -143,3 +143,39 @@ See how, using the _mode[]_, _x[]_, and _y[]_ properties, the two plots are defi
 The chart representing the linear regression result is the following:
 
 ![Linear regression](scatter3.png)
+
+### Bubble charts and Color Dimension
+
+Bubble chart is a specific use case for scatter charts: variable-sized circular markers. 
+Marker color can also be defined as an array of values via a column name
+
+Here is an example of setting size and color with column names in a marker definition:
+```py
+data = pd.DataFrame({
+    "x": [ 2, 4, 6 ],
+    "y": [ 2, 4, 6 ],
+    "Colors": ["blue", "green", "red"],
+    "Sizes": [20, 40, 30],
+  })
+marker = {"size": "Sizes", "color": "Colors"}
+```
+
+The chart definition uses the Data Frame with the Sizes and Colors columns via the marker :
+
+!!! example "Page content"
+
+    === "Markdown"
+
+        ```
+        <|{data}|chart|x=x|y=y|marker={marker}|mode=markers|>
+        ```
+  
+    === "HTML"
+
+        ```html
+        <taipy:chart
+            mode="markers" x="x" y="y"
+            marker="{marker}">{data}</taipy:chart>
+        ```
+
+![Bubble chart with colors](scatter4.png)
