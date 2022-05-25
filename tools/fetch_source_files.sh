@@ -8,7 +8,7 @@ SCRIPT_DIR=`realpath $SCRIPT_DIR`
 ROOT_DIR=`realpath $SCRIPT_DIR/..`
 TOP_DIR=`realpath $SCRIPT_DIR/../..`
 
-MODULES="core gui getting-started"
+MODULES="core gui getting-started rest"
 
 list_modules()
 {
@@ -55,7 +55,7 @@ usage()
     echo "The default behaviour is to use a local version for all modules."
 }
 
-MODULES="core gui getting-started"
+MODULES="core gui getting-started rest"
 NO_PULL=false
 
 # Initialize all module versions
@@ -167,7 +167,7 @@ for m in $MODULES; do
 done
 
 # Check if module branches/tags/directory exist
-GITROOT="https://github.com/Avaiga/taipy-"
+GITROOT="https://github.com/Avaiga/taipy"
 for m in $MODULES; do
     branch=${MODULE_BRANCH[$m]}
     if [ $branch == "local" ]; then
@@ -176,7 +176,7 @@ for m in $MODULES; do
             exit 1
         fi
     elif [ $branch != "develop" ]; then
-        git ls-remote --exit-code --heads ${GITROOT}${m}.git | grep release/${branch} >/dev/null
+        git ls-remote --exit-code --heads ${GITROOT}-${m}.git | grep release/${branch} >/dev/null
         if [ $? != 0 ]; then
             echo "Error: No branch 'release/$branch' in repository 'taipy-$m'." >&2
             exit 1
@@ -184,7 +184,7 @@ for m in $MODULES; do
         # Check tag
         tag=${MODULE_TAG[$m]}
         if [[ ! -z "$tag" ]]; then
-            find_tag=$(git ls-remote -t --refs ${GITROOT}${m}.git|sed -e 's/^.*\/tags\///'|grep -e "${tag}\$")
+            find_tag=$(git ls-remote -t --refs ${GITROOT}-${m}.git|sed -e 's/^.*\/tags\///'|grep -e "${tag}\$")
             if [ ! -f "$find_tag" ]; then
                 echo "Error: No tagged version '$tag' (from 'release/$branch') in repository 'taipy-$m'." >&2
                 exit 1
@@ -193,6 +193,10 @@ for m in $MODULES; do
     fi
 done
 
+# Last setup failed?
+if [ -d $ROOT_DIR"/tools/taipy" ]; then
+    rm -rf $ROOT_DIR"/tools/taipy"
+fi
 if [ -d $ROOT_DIR"/taipy" ]; then
     echo Removing legacy \'taipy\'
     rm -rf $ROOT_DIR"/taipy"
@@ -201,7 +205,11 @@ fi
 
 copy_module_to_taipy()
 {
-    (cd $1; tar cf - `find taipy -name \\*.py`) | (cd $ROOT_DIR;tar xf -)
+    if [ $1 == "rest" ]; then
+        (cd $2/src; tar cf - `find taipy -name \\*.py`) | (cd $ROOT_DIR;tar xf -)
+    else
+        (cd $2; tar cf - `find taipy -name \\*.py`) | (cd $ROOT_DIR;tar xf -)
+    fi
 }
 
 copy_getting_started()
@@ -232,7 +240,7 @@ for m in $MODULES; do
         if [ $m == "getting-started" ]; then
             copy_getting_started $TOP_DIR/taipy-getting-started
         else
-            copy_module_to_taipy $TOP_DIR/taipy-$m
+            copy_module_to_taipy $m $TOP_DIR/taipy-$m
             if [ $m == "gui" ]; then
                 copy_gui $TOP_DIR/taipy-gui
             fi
@@ -241,7 +249,7 @@ for m in $MODULES; do
         if [ $branch != "develop" ] ; then
             branch=release/$branch
         fi
-        git clone -b $branch ${GITROOT}${m}.git $ROOT_DIR/tmp-$m
+        git clone -b $branch ${GITROOT}-${m}.git $ROOT_DIR/tmp-$m
         tag=${MODULE_TAG[$m]}
         if [[ ! -z "$tag" ]]; then
             (cd $ROOT_DIR/tmp-$m;git checkout tags/$tag)
@@ -249,7 +257,7 @@ for m in $MODULES; do
         if [ $m == "getting-started" ]; then
             copy_getting_started $ROOT_DIR/tmp-getting-started
         else
-            copy_module_to_taipy $ROOT_DIR/tmp-$m
+            copy_module_to_taipy $m $ROOT_DIR/tmp-$m
             if [ $m == "gui" ]; then
                 copy_gui $ROOT_DIR/tmp-gui
             fi
@@ -257,3 +265,22 @@ for m in $MODULES; do
         rm -rf $ROOT_DIR/tmp-$m
     fi
 done
+
+# Manually add the taipy.run() function.
+# TODO: Automate this, grabbing the function from the 'taipy' repository,
+# so we benefit from potential updates.
+cat >>$ROOT_DIR/taipy/__init__.py <<EOF
+
+import typing as t
+
+def run(*apps: t.List[t.Union[Gui, Rest]], **kwargs):
+    """Run one or multiple Taipy services.
+
+    A Taipy service is an instance of a class that runs code as a Web application.
+
+    Parameters:
+        *args (List[Union[Gui^, Rest^]]): Services to run. If several services are provided, all the services run simultaneously. If this is empty or set to None, this method does nothing.
+        **kwargs: Other parameters to provide to the services.
+    """
+    pass
+EOF

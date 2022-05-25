@@ -25,8 +25,8 @@ a_values = [ nan, nan, 1.04, -1.01, ...1000 values..., 1.6, 1.45, nan ]
 b_values = [ -2.1, -0.99, nan, nan, ...1000 values..., nan, nan, 2.12]
 data = pd.DataFrame({
   "x" : x_range,
-  "Class A" : class_A,
-  "Class B" : class_B
+  "Class A" : a_values,
+  "Class B" : b_values
 })
 ```
 

@@ -23,6 +23,15 @@ a.ext-link:after {
   filter: brightness(0) saturate(100%) invert(47%) sepia(40%) saturate(2289%) hue-rotate(340deg) brightness(101%) contrast(85%);;
 }
 
+.md-typeset pre>code,
+.highlighttable .linenos {
+  font-size: 1em;
+}
+
+.md-typeset .admonition {
+  font-size: .8em;
+}
+
 /* ---------- ---------- ---------- Visual Elements Cards ---------- ---------- ---------- */
 .tp-ve-cards {
   display: flex;

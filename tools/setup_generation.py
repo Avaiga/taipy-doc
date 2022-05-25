@@ -36,7 +36,7 @@ import pandas as pd
 
 ROOT_PACKAGE = "taipy"
 MODULE_EXTENSIONS = ".py"
-PACKAGE_GROUP = [ "taipy.core", "taipy.gui" ]
+PACKAGE_GROUP = [ "taipy.core", "taipy.gui", "taipy.rest" ]
 
 # Assuming that this script is located in <taipy-doc>/tools
 tools_dir = os.path.dirname(__file__).replace("\\", "/")
@@ -64,7 +64,54 @@ PACKAGES_VISIBILITY = [
 ITEMS_VISIBILITY = {
     ("taipy.gui.gui", "Gui") : "taipy.gui",
     ("taipy.gui.partial", "Partial") : "taipy.gui.partial",
-    ("taipy.gui.page", "Page") : "taipy.gui.page"
+    ("taipy.gui.page", "Page") : "taipy.gui.page",
+    ("typing", "CycleId") : "taipy.core",
+    ("typing", "DataNodeId") : "taipy.core",
+    ("typing", "JobId") : "taipy.core",
+    ("typing", "PipelineId") : "taipy.core",
+    ("typing", "ScenarioId") : "taipy.core",
+    ("typing", "TaskId") : "taipy.core",
+    ("taipy.core.cycle.cycle", "Cycle") : "taipy.core",
+    ("taipy.core.data.data_node", "DataNode") : "taipy.core",
+    ("taipy.core.common.frequency", "Frequency") : "taipy.core",
+    ("taipy.core.job.job", "Job") : "taipy.core",
+    ("taipy.core.pipeline.pipeline", "Pipeline") : "taipy.core",
+    ("taipy.core.scenario.scenario", "Scenario") : "taipy.core",
+    ("taipy.core.common.scope", "Scope") : "taipy.core",
+    ("taipy.core.job.status", "Status") : "taipy.core",
+    ("taipy.core.task.task", "Task") : "taipy.core",
+    ("taipy.core.data.csv", "CSVDataNode") : "taipy.core.data",
+    ("taipy.core.data.excel", "ExcelDataNode") : "taipy.core.data",
+    ("taipy.core.data.generic", "GenericDataNode") : "taipy.core.data",
+    ("taipy.core.data.in_memory", "InMemoryDataNode") : "taipy.core.data",
+    ("taipy.core.data.pickle", "PickleDataNode") : "taipy.core.data",
+    ("taipy.core.data.sql", "SQLDataNode") : "taipy.core.data",
+    ("taipy.core.taipy", "clean_all_entities") : "taipy.core",
+    ("taipy.core.taipy", "compare_scenarios") : "taipy.core",
+    ("taipy.core.taipy", "create_pipeline") : "taipy.core",
+    ("taipy.core.taipy", "create_scenario") : "taipy.core",
+    ("taipy.core.taipy", "delete") : "taipy.core",
+    ("taipy.core.taipy", "delete_job") : "taipy.core",
+    ("taipy.core.taipy", "delete_jobs") : "taipy.core",
+    ("taipy.core.taipy", "get") : "taipy.core",
+    ("taipy.core.taipy", "get_cycles") : "taipy.core",
+    ("taipy.core.taipy", "get_data_nodes") : "taipy.core",
+    ("taipy.core.taipy", "get_jobs") : "taipy.core",
+    ("taipy.core.taipy", "get_latest_job") : "taipy.core",
+    ("taipy.core.taipy", "get_pipelines") : "taipy.core",
+    ("taipy.core.taipy", "get_primary") : "taipy.core",
+    ("taipy.core.taipy", "get_primary_scenarios") : "taipy.core",
+    ("taipy.core.taipy", "get_scenarios") : "taipy.core",
+    ("taipy.core.taipy", "get_tasks") : "taipy.core",
+    ("taipy.core.taipy", "set") : "taipy.core",
+    ("taipy.core.taipy", "set_primary") : "taipy.core",
+    ("taipy.core.taipy", "submit") : "taipy.core",
+    ("taipy.core.taipy", "subscribe_pipeline") : "taipy.core",
+    ("taipy.core.taipy", "subscribe_scenario") : "taipy.core",
+    ("taipy.core.taipy", "tag") : "taipy.core",
+    ("taipy.core.taipy", "unsubscribe_pipeline") : "taipy.core",
+    ("taipy.core.taipy", "unsubscribe_scenario") : "taipy.core",
+    ("taipy.core.taipy", "untag") : "taipy.core",
 }
 REFERENCE_REL_PATH = "manuals/reference"
 REFERENCE_DIR_PATH = root_dir + "/docs/" + REFERENCE_REL_PATH
