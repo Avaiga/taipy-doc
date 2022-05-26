@@ -261,14 +261,14 @@ and refer to it with the following Taipy configuration:
     ```py linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(airflow_password="ENV[PWD]", nb_workers="ENV[NB_WORKERS]")
+    Config.configure_global_app(password="ENV[PWD]", nb_workers="ENV[NB_WORKERS]")
     ```
 
 === "_TOML_ configuration"
 
     ```toml linenums="1"
     [JOB]
-    airflow_password = "ENV[PWD]"
+    password = "ENV[PWD]"
     nb_workers = "ENV[NB_WORKERS]:int"
     ```
 
