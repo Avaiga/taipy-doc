@@ -62,6 +62,7 @@ nav:
         - GNU/Linux:
             - 'Ubuntu': 'manuals/deployment/linux/ubuntu.md'
             - 'RHEL': 'manuals/deployment/linux/redhat.md'
+        - 'Windows Server': 'manuals/deployment/windows.md'
         - Docker:
             - 'Standalone Application on docker': 'manuals/deployment/docker/standalone.md'
             - 'Application running with Airflow on docker': 'manuals/deployment/docker/airflow.md'
