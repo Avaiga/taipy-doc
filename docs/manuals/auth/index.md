@@ -1,6 +1,6 @@
-!!! warning "Reminder: Authorization and Authentication is only available in enterprise version"
-
 # Taipy's Authentication and Authorization
+
+!!! warning "Reminder: Authorization and Authentication is only available in enterprise version"
 
 ## Pre-requisite
 
