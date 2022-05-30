@@ -4,7 +4,7 @@
 
 ## Pre-requisite
 
-An LDAP server must be setup 
+An LDAP server must be setup
 
 ## Config
 
@@ -42,7 +42,7 @@ If the authorization feature is activated:
 
 If the authorization feature is activated
 - An editor (TAIPY_EDITOR) should have the right to view, create, edit or delete the various entities, and related data in data nodes.
-- An editor, however, cannot execute any tasks, pipelines or scenarios, subscribe/unsubscribe to an execution, and cancel, pause or resume any jobs. 
+- An editor, however, cannot execute any tasks, pipelines or scenarios, subscribe/unsubscribe to an execution, and cancel, pause or resume any jobs.
 
 
 ### Taipy.EXECUTIONER
