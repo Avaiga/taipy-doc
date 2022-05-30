@@ -1,10 +1,10 @@
-!!! warning: "Only available in enterprise version"
+!!! warning "Reminder: Authorization and authentication is only available in enterprise version"
 
 # Taipy's Authentication and Authorization
 
 ## Pre-requisite
 
-An LDAP server must be setup
+An LDAP server must be setup by the user. Taipy will not be responsible for setting the server up.
 
 ## Config
 
