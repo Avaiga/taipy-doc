@@ -18,13 +18,35 @@ Set up connection to your LDAP server with Taipy Config. Here are the configurab
 
 Example of configuring LDAP server connection in Taipy:
 
-```
-Config.global_config.ldap_server = "ldap://0.0.0.0"
-Config.global_config.ldap_base_dn = "dc=example,dc=org"
-Config.global_config.jwt_secret = "my-32-character-ultra-secure-and-ultra-long-secret"
-Config.global_config.jwt_expire = 600   #for 10 minutes
-Config.global_config.auth_enabled = True
-```
+
+=== "Python configuration"
+
+    ```
+    Config.configure_global_app(ldap_server="ldap://0.0.0.0", 
+                                ldap_base_dn="dc=example,dc=org",
+                                jwt_secret = "my-ultra-secure-and-ultra-long-secret",
+                                jwt_expire = 600   #for 10 minutes,
+                                auth_enabled = True)
+    ```
+
+=== "TOML configuration"
+
+    ```python linenums="1"
+    from taipy import Config
+
+    Config.load("config.toml")
+    ```
+
+    ```toml linenums="1" title="config.toml"
+
+    [TAIPY]
+
+    ldap_server="ldap://0.0.0.0"
+    ldap_base_dn="dc=example,dc=org"
+    jwt_secret = "my-ultra-secure-and-ultra-long-secret"
+    jwt_expire = 600   #for 10 minutes
+    auth_enabled = True
+    ```
 
 ## Roles
 
