@@ -10,8 +10,8 @@ You must configure how Taipy connects to the LDAP server using the Taipy `Config
 
 - **Config.global_config.ldap_server**: The url of the LDAP server.
 - **Config.global_config.ldap_base_dn**: The base DN that the LDAP server uses to search for users authentication.
-- **Config.global_config.jwt_secret**: The secret that will be used to generate the access token
-- **Config.global_config.jwt_expire**: The period after which the JWT token provided by Taipy will be expired.
+- **Config.global_config.secret_key**: The secret key that will be used to generate the access token
+- **Config.global_config.auth_session_duration**: The period after which the token provided by Taipy will be expired.
 - **Config.global_config.auth_enabled**: The field to enable or disable Taipy authentication and authorization. Its default value is True, meaning that the enterprise version, by default, will have authentication and authorization feature enabled.
 
 Here is an example of configuring LDAP server connection in Taipy:
@@ -22,8 +22,8 @@ Here is an example of configuring LDAP server connection in Taipy:
     ```
     Config.configure_global_app(ldap_server="ldap://0.0.0.0",
                                 ldap_base_dn="dc=example,dc=org",
-                                jwt_secret = "my-ultra-secure-and-ultra-long-secret",
-                                jwt_expire = 600   # 60 seconds is 10 minutes,
+                                secret_key = "my-ultra-secure-and-ultra-long-secret",
+                                auth_session_duration = 600   # 60 seconds is 10 minutes,
                                 auth_enabled = True)
     ```
 
@@ -41,8 +41,8 @@ Here is an example of configuring LDAP server connection in Taipy:
 
     ldap_server="ldap://0.0.0.0"
     ldap_base_dn="dc=example,dc=org"
-    jwt_secret = "my-ultra-secure-and-ultra-long-secret"
-    jwt_expire = 600   #for 10 minutes
+    secret_key = "my-ultra-secure-and-ultra-long-secret"
+    auth_session_duration = 600   # 60 seconds is 10 minutes,
     auth_enabled = True
     ```
 
