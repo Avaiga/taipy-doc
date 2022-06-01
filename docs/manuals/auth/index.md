@@ -50,6 +50,8 @@ Here is an example of configuring LDAP server connection in Taipy:
 
 Taipy has four predefined user roles names that can be assigned to users. Each of these predefined roles provide a different set of capabilities and will be described in details below.
 
+!!! warning "Caution: Please note that Taipy does not provide functions to populate the predifined user roles to the user's LDAP server. The user is expected to populate the roles themselves."
+
 ## TAIPY_READER
 
 - A reader (TAIPY_READER) has the permission to view the various entities, and related data in a data node
