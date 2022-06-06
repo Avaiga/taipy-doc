@@ -12,14 +12,14 @@ To use LDAP authentication, you must configure how Taipy connects to the LDAP se
 - **Config.global_config.ldap_base_dn**: The base DN that the LDAP server uses to search for users authentication.
 - **Config.global_config.secret_key**: The secret key that will be used to generate the access token.
 - **Config.global_config.auth_session_duration**: The period after which the token provided by Taipy will expire.
-- **Config.global_config.authenticator_protocol**: The authentication protocol that will be used to authenticate users. Currently Taipy accepts three protocols: None, "ldap" and "taipy" (for testing purposes only). By providing the field with None value, we also disable Taipy authentication and authorization feature. And by choosing other protocols ("ldap" or "taipy"), we also enable Taipy authentication and authorization. The default value of this field is None, meaning that authentication and authorization will be disabled by default.
+- **Config.global_config.auth_protocol**: The authentication protocol that will be used to authenticate users. Currently Taipy accepts three protocols: None, "ldap" and "taipy" (for testing purposes only). By providing the field with None value, we also disable Taipy authentication and authorization feature. And by choosing other protocols ("ldap" or "taipy"), we also enable Taipy authentication and authorization. The default value of this field is None, meaning that authentication and authorization will be disabled by default.
 
 Here is an example of configuring LDAP server connection in Taipy:
 
 === "Python configuration"
 
     ```
-    Config.configure_global_app(authenticator_protocol="ldap",
+    Config.configure_global_app(auth_protocol="ldap",
                                 ldap_server="ldap://0.0.0.0",
                                 ldap_base_dn="dc=example,dc=org",
                                 secret_key = "my-ultra-secure-and-ultra-long-secret",
@@ -37,7 +37,7 @@ Here is an example of configuring LDAP server connection in Taipy:
     ```toml linenums="1" title="config.toml"
 
     [TAIPY]
-    authenticator_protocol="ldap"
+    auth_protocol="ldap"
     ldap_server="ldap://0.0.0.0"
     ldap_base_dn="dc=example,dc=org"
     secret_key = "my-ultra-secure-and-ultra-long-secret"
