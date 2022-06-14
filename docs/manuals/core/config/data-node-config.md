@@ -156,7 +156,7 @@ sales_cfg = Config.configure_csv_data_node(id="sale_history",
 In lines 3-5, we define a custom class `SaleRow` representing a row of the CSV file.
 
 In lines 7-10, we configure a basic csv data node with the id "historical_temperature". Its _scope_ is by
-default `SCENARIO`. The default_path corresponds to the file `path/hist_temp.csv`. The property _has_header_ being True,
+default `SCENARIO`. The default path corresponds to the file `path/hist_temp.csv`. The property _has_header_ being True,
 representing the csv file has a header.
 
 In lines 12-14, we add another csv data node configuration with the id "sale_history". The
