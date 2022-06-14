@@ -55,7 +55,7 @@ if some values are not provided, the default configuration applies.
         # Configure all six data nodes
         sales_history_cfg = Config.configure_csv_data_node(id="sales_history",
                                                            scope=Scope.GLOBAL,
-                                                           path="my/file/path.csv")
+                                                           default_path="my/file/path.csv")
         trained_model_cfg = Config.configure_data_node(id="trained_model", scope=Scope.CYCLE)
         current_month_cfg = Config.configure_data_node(id="current_month", scope=Scope.CYCLE, default_data=datetime(2020, 1, 1))
         sales_predictions_cfg = Config.configure_data_node(id="sales_predictions", scope=Scope.CYCLE)
@@ -124,7 +124,7 @@ if some values are not provided, the default configuration applies.
         [DATA_NODE.sales_history]
         storage_type = "csv"
         scope = "GLOBAL"
-        path = "my/file/path.csv"
+        default_path = "my/file/path.csv"
         has_header = "True:bool"
         cacheable = "False:bool"
 
@@ -220,7 +220,7 @@ nb_of_workers = 5
 
 [DATA_NODE.sales_history]
 storage_type="csv"
-path="./path/to/my/file.csv"
+default_path="./path/to/my/file.csv"
 ```
 
 Two behaviors occur if the previous _TOML_ file is used as file configuration. First, the Taipy application now has

@@ -88,9 +88,9 @@ To add a new _pickle_ data node configuration, the `Config.configure_pickle_data
 addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), two optional parameters can be provided.
 
--   The _**path**_ parameter represents the file path used by Taipy to read and write the data.
+-   The _**default_path**_ parameter represents the default file path used by Taipy to read and write the data.
     If the pickle file already exists (in the case of a shared input data node, for instance), it is necessary
-    to provide the file path as the _path_ parameter. If no value is provided, Taipy will use an internal path
+    to provide the default file path as the _default_path_ parameter. If no value is provided, Taipy will use an internal path
     in the Taipy storage folder (more details on the Taipy storage folder configuration available on the
     [Global configuration](global-config.md) documentation).
 
@@ -103,14 +103,14 @@ from datetime import datetime
 
 date_cfg = Config.configure_pickle_data_node(id="date_cfg", default_data=datetime(2022, 1, 25))
 
-model_cfg = Config.configure_pickle_data_node(id="model_cfg", path="path/to/my/model.p",description="The trained model")
+model_cfg = Config.configure_pickle_data_node(id="model_cfg", default_path="path/to/my/model.p",description="The trained model")
 ```
 
 In line 4, we configure a simple pickle data node with the id "date_cfg". The scope is `SCENARIO`
 (default value), and a default data is provided.
 
 In line 6, we add another pickle data node configuration with the id "model_cfg". The default
-`SCENARIO` scope is used. Since the data node config corresponds to a pre-existing pickle file, a path
+`SCENARIO` scope is used. Since the data node config corresponds to a pre-existing pickle file, a default path
 "path/to/my/model.p" is provided. We also added an optional custom description.
 
 !!! Note
@@ -125,7 +125,7 @@ configuration, the `Config.configure_csv_data_node()^` method can be used. In ad
 described in the previous section [Data node configuration](data-node-config.md), one mandatory and two optional
 parameters can be provided.
 
--   The _**path**_ parameter is a mandatory parameter and represents the csv file path used by Taipy to read and write
+-   The _**default_path**_ parameter is a mandatory parameter and represents the default csv file path used by Taipy to read and write
     the data.
 
 -   The _**has_header**_ parameter represents if the file has a header of not. By default, _has_header_ is True and Taipy
@@ -144,19 +144,19 @@ class SaleRow:
     nb_sales: int
 
 temp_cfg = Config.configure_csv_data_node(id="historical_temperature",
-                                          path="path/hist_temp.csv",
+                                          default_path="path/hist_temp.csv",
                                           has_header=True,
                                           exposed_type="numpy")
 
 sales_cfg = Config.configure_csv_data_node(id="sale_history",
-                                           path="path/sale_history.csv",
+                                           default_path="path/sale_history.csv",
                                            exposed_type=SaleRow)
 ```
 
 In lines 3-5, we define a custom class `SaleRow` representing a row of the CSV file.
 
 In lines 7-10, we configure a basic csv data node with the id "historical_temperature". Its _scope_ is by
-default `SCENARIO`. The path corresponds to the file `path/hist_temp.csv`. The property _has_header_ being True,
+default `SCENARIO`. The default_path corresponds to the file `path/hist_temp.csv`. The property _has_header_ being True,
 representing the csv file has a header.
 
 In lines 12-14, we add another csv data node configuration with the id "sale_history". The
@@ -175,7 +175,7 @@ file data. To add a new _Excel_ data node configuration, the `Config.configure_e
 In addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), a mandatory and three optional parameters can be provided.
 
--   The _**path**_ is a mandatory parameter that represents the Excel file path used by Taipy to read and write the data.
+-   The _**default_path**_ is a mandatory parameter that represents the default Excel file path used by Taipy to read and write the data.
 
 -   The _**has_header**_ parameter specifies if the file has a header of not. If _has_header_ is True (by default or was
     specified), Taipy will use the 1st row in the Excel file as the header.
@@ -199,11 +199,11 @@ class SaleRow:
     nb_sales: int
 
 hist_temp_cfg = Config.configure_excel_data_node(id="historical_temperature",
-                                                 path="path/hist_temp.xlsx",
+                                                 default_path="path/hist_temp.xlsx",
                                                  exposed_type="numpy")
 
 sales_cfg = Config.configure_excel_data_node(id="sale_history",
-                                             path="path/sale_history.xlsx",
+                                             default_path="path/sale_history.xlsx",
                                              sheet_name=["January", "February"],
                                              exposed_type=SaleRow)
 ```
@@ -211,7 +211,7 @@ sales_cfg = Config.configure_excel_data_node(id="sale_history",
 In lines 3-5, we define a custom class `SaleRow`, representing an the Excel file row.
 
 In lines 7-9, we configure an Excel data node. The _id_ identifier is "historical_temperature". Its _scope_ is
-`SCENARIO` (default value), and the path is the file hist_temp.xlsx. With _has_header_ being True, the
+`SCENARIO` (default value), and the default path is the file hist_temp.xlsx. With _has_header_ being True, the
 Excel file must have a header. The _sheet_name_ is not provided so Taipy will use the default value "Sheet1".
 
 In lines 10-13, we add another excel data node configuration. The _id_ identifier is "sale_history", the
