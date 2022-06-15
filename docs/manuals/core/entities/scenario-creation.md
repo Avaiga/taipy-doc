@@ -31,7 +31,7 @@ configuration as a parameter:
     # Configure all six data nodes
     sales_history_cfg = Config.configure_csv_data_node(id="sales_history",
                                                        scope=Scope.GLOBAL,
-                                                       path="my/file/path.csv")
+                                                       default_path="my/file/path.csv")
     trained_model_cfg = Config.configure_data_node(id="trained_model", scope=Scope.CYCLE)
     current_month_cfg = Config.configure_data_node(id="current_month", scope=Scope.CYCLE, default_data=datetime(2020, 1, 1))
     sales_predictions_cfg = Config.configure_data_node(id="sales_predictions", scope=Scope.CYCLE)
@@ -115,7 +115,7 @@ Three parameters can be given to the scenario creation method :
         # Configure all six data nodes
         sales_history_cfg = Config.configure_csv_data_node(id="sales_history",
                                                            scope=Scope.GLOBAL,
-                                                           path="my/file/path.csv")
+                                                           default_path="my/file/path.csv")
         trained_model_cfg = Config.configure_data_node(id="trained_model", scope=Scope.CYCLE)
         current_month_cfg = Config.configure_data_node(id="current_month", scope=Scope.CYCLE, default_data=datetime(2020, 1, 1))
         sales_predictions_cfg = Config.configure_data_node(id="sales_predictions", scope=Scope.CYCLE)
@@ -177,7 +177,7 @@ nodes nested in the pipeline are created if they do not exist yet.
     # Configure all six data nodes
     sales_history_cfg = Config.configure_csv_data_node(id="sales_history",
                                                        scope=Scope.GLOBAL,
-                                                       path="my/file/path.csv")
+                                                       default_path="my/file/path.csv")
     trained_model_cfg = Config.configure_data_node(id="trained_model", scope=Scope.CYCLE)
     current_month_cfg = Config.configure_data_node(id="current_month", scope=Scope.CYCLE, default_data=datetime(2020, 1, 1))
     sales_predictions_cfg = Config.configure_data_node(id="sales_predictions", scope=Scope.CYCLE)

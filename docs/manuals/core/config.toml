@@ -5,7 +5,7 @@
 [DATA_NODE.sales_history]
 storage_type = "csv"
 scope = "GLOBAL"
-path = "my/file/path.csv"
+default_path = "my/file/path.csv"
 has_header = "True:bool"
 cacheable = "False:bool"
 
