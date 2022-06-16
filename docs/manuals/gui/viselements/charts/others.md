@@ -81,7 +81,7 @@ Furthermore, we want the second dataset to be displayed in red.
          xaxis[2]="x2">{data}</taipy:chart>
         ```
 
-### Multiple charts with different lengths
+### Multiple charts with different dataset sizes
 
 In the following example, the value holds an array of dataframe of different length _[data1, data2]_.
 We want to show a first chart with columns _Col A_ and _Col B_ from the first dataframe and a second chart
@@ -107,6 +107,58 @@ with columns _Col D_ and _Col F_: the columns names needs to be prefixed by the 
          x[2]="1/Col D" y[2]="1/Col F"
          >{[data1, data2]}</taipy:chart>
         ```
+
+### Plotting on a map
+
+The chart control has support for plotting data on top of maps.
+
+The following code shows how to setup a chart control that can display markers
+on top of a map.
+
+```py3
+data = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/2015_06_30_precipitation.csv")
+
+marker = { "color": "darkblue", "size": 5 }
+
+layout = {
+    "dragmode": "zoom",
+    "mapbox": { "style": "open-street-map", "center": { "lat": 38, "lon": -90 }, "zoom": 4 },
+    "margin": { "r": 0, "t": 0, "b": 0, "l": 0 }
+}
+```
+
+The markers, customized in the _marker_ dictionary, are plotted based on coordinates located
+in the CSV dataset that gets loaded in _data_.
+
+The page content is rather straightforward:
+
+!!! example "Page content"
+
+    === "Markdown"
+
+        ```
+        <|{data}|chart|type=scattermapbox|marker={marker}|layout={layout}|lat=Lat|lon=Lon|text=Globvalue|mode=markers|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:chart
+         type="scattermapbox"
+         lat="Lat" lon="Lon" text="Globvalue"
+         marker="{marker}" layout="{layout}"
+         >{data}</taipy:chart>
+        ```
+
+The chart type is "scattermapbox", and the map type is set to "open-street-map" which uses the
+free geographic data source [OpenStreetMap](https://www.openstreetmap.org/).
+
+Note how the x and y coordinates, when applied to cartographic data, are better expressed as latitude
+and longitude coordinates.
+
+Here is how this looks on the page:
+
+![Plotting on a map](others-maps1.png)
 
 
 ### Tracking selection

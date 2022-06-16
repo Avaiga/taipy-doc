@@ -83,7 +83,7 @@ nav:
   - 'Credits':
     - 'Development lead': 'credits/development_lead.md'
     - 'Contributors': 'credits/contributors.md'
-  - 'History': 'history.md'
+  - 'Release Notes': 'relnotes.md'
 theme:
   name: material
   language: en

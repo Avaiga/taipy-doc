@@ -112,6 +112,7 @@ ITEMS_VISIBILITY = {
     ("taipy.core.taipy", "unsubscribe_pipeline") : "taipy.core",
     ("taipy.core.taipy", "unsubscribe_scenario") : "taipy.core",
     ("taipy.core.taipy", "untag") : "taipy.core",
+    ("taipy.rest.rest", "Rest") : "taipy.rest",
 }
 REFERENCE_REL_PATH = "manuals/reference"
 REFERENCE_DIR_PATH = root_dir + "/docs/" + REFERENCE_REL_PATH
