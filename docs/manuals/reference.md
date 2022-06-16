@@ -6,7 +6,8 @@ The API reference for Taipy is therefore split into several sections.
 
    - [`taipy`](reference/pkg_taipy.md): The main package of Taipy.
 
-   - [`taipy.core`](reference/pkg_taipy.core/index.md): The package providing .
+   - [`taipy.core`](reference/pkg_taipy.core/index.md): The package providing the functionality for data access, Scenarios and Pipelines
+   definition and task execution.
 
    - [`taipy.gui`](reference/pkg_taipy.gui/index.md): The package dedicated to Graphical
       User Interface generation.
