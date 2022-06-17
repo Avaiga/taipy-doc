@@ -37,9 +37,11 @@ Published on 2022-06.
      obscures the user input.
    - The [`input`](manuals/gui/viselements/input.md), [`number`](manuals/gui/viselements/number.md) and
      [`selector`](manuals/gui/viselements/selector.md) controls have a new _label_ property that lets you
-    display a label next to the control.
+    display a label inside the control.
    - The [`layout`](manuals/gui/viselements/layout.md) block has new syntax that makes it easier to define
      a repetition of column definition.
+   - Support for multiple assignment to variables in _on_change()_.
+
 
 **`taipy-core`**<br/>1.1.0
 
@@ -57,8 +59,6 @@ Published on 2022-06.
    - Concurrency issues were fixed.
    - Taipy supports HTTPS via reverse proxies.<br/>
      See [issue](https://github.com/Avaiga/taipy-gui/issues/263).
-   - Modifying a variable multiple times in _on_change()_  is now supported.<br/>
-     See [issue](https://github.com/Avaiga/taipy-gui/issues/257).
    - The [_attr_list_](https://python-markdown.github.io/extensions/attr_list) extension can
      be used to style individual Markdown elements without the need for a CSS file.<br/>
      See [issue](https://github.com/Avaiga/taipy-gui/issues/185).
