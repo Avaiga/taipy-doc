@@ -38,7 +38,7 @@ mkdocs-include-markdown-plugin = "*"
 mkdocs-macros-plugin = "*"
 mkdocs-material = "==7.3.0"
 mkdocs-material-extensions = "*"
-mkdocstrings = "*"
+mkdocstrings = "==0.17"
 
 [requires]
 python_version = "3"
