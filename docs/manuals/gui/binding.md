@@ -1,6 +1,6 @@
 # Binding variables
 
-It will often be useful to display information from the application.<br/>
+It will often be useful to display information stored in application data.<br/>
 To achieve this goal, Taipy allows [visual elements](viselements/index.md)
 to relate directly to application variables, display their values, and
 change those variable values.
@@ -21,6 +21,20 @@ The variable `x` contains the value <|{x}|>.
 
 When this program runs (and a Web browser is directed to the running server), the
 root page displays the value of the variable _x_, as it was defined in your code.
+
+## Scope of variable binding
+
+[TODO CHECK]
+
+In the tiny example above, the entire application holds a single page, and
+the variable (_x_) that is bound is located in the same, unique module.
+
+In larger applications, we may want to create Python modules that hold
+Taipy pages, binding visual elements to local variables. That allows for
+a clearer organization of the code, where application variables used in
+only a few pages can sit next to the page definition.
+
+[TODO EXAMPLE]
 
 ## Expressions
 
