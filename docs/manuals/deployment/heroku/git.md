@@ -4,7 +4,7 @@
 
 - Minimal knowledge of Git.
 - Git must be installed, otherwise check [the official documentation](https://git-scm.com/downloads).
-- [:material-arrow-right: Prepare your Taipy application](prepare-taipy-for-deployment.md)
+- [:material-arrow-right: Prepare your Taipy application](../prepare-taipy-for-deployment.md)
 - [:material-arrow-right: Set up your Heroku environment](setup.md)
 
 ## 1. Add version control to your application
