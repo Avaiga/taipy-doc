@@ -1,7 +1,7 @@
 # Prepare your application for deployment
 
 Development and production do not imply the same security, reliability and performance level.
-These exigences imply the usage of specific tools that will impact the code structure.
+These requirements imply specific tools that will impact the code structure.
 
 ## A basic application as an example
 
@@ -14,7 +14,7 @@ gui = Gui(page="# Getting started with *Taipy*")
 tp.run(gui, title="Taipy Demo")
 ```
 
-You can run this application by doing `python main.py` and obtain the following output:
+You can run this application with `python main.py` and obtain the following output:
 ```
 * Server starting on http://127.0.0.1:5000
 * Serving Flask app ‘Taipy’ (lazy loading)
@@ -26,19 +26,19 @@ Use a production WSGI server instead.
 ```
 
 [Flask](https://flask.palletsprojects.com/en/2.1.x/) generates this warning because it is a development and not
-production server.
+a production server.
 
 ## Gunicorn
 
 Following the [recommendation of _Flask_](https://flask.palletsprojects.com/en/2.1.x/deploying/) we will use
 [Gunicorn](https://gunicorn.org/) for production. _Gunicorn_ will run your application differently than _Python_
-used to do. Due to that condition, update the application to:
+does. Due to that condition, you should update the application to:
 ```python
 import taipy as tp
 
 gui = Gui(page="# Getting started with *Taipy*")
 
-# Here we are defining the app variable.
+# Here we are defining the `app` variable.
 # _Gunicorn_ will use this variable to serve your application.
 app = tp.run(gui, title="Taipy Demo", run_server=False)
 ```
@@ -47,7 +47,7 @@ The application is now ready to be served by _Gunicorn_.
 
 !!! Note
     Click [here](../reference/taipy.gui.Gui/#taipy.gui.gui.Gui.run) to obtain more information on the `run_server`
-    parameter.
+    parameters.
 
 ## Running the application with Gunicorn
 
@@ -57,7 +57,7 @@ pip install gunicorn gevent
 ```
 
 !!! Note
-    If you want more information about running _Gunicorn_ with _Gevent_, have a look on the
+    If you want more information about running _Gunicorn_ with _Gevent_, have a look at the
     [official documentation](https://flask-socketio.readthedocs.io/en/latest/deployment.html).
 
 Now start _Gunicorn_ by running:
@@ -69,8 +69,8 @@ Your application is now responding, and you can access it from your [browser](ht
 
 ## Using the same code in development and production
 
-Debugging with _Gunicorn_ is not easy as debugging when running with the `python` command. To be able to switch
-from debugging to ready to production, you can respect the following structure:
+Debugging with _Gunicorn_ is not as easy as debugging with the `python` command. To be able to switch
+from debugging to ready to production, you should follow this structure:
 ```python
 import taipy as tp
 
