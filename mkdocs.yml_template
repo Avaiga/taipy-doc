@@ -61,6 +61,7 @@ nav:
     - 'Taipy Authentication and Authorization':
         - manuals/auth/index.md
     - Deployment:
+        - 'Prepare your application for deployment': 'manuals/deployment/prepare-taipy-for-deployment.md'
         - GNU/Linux:
             - 'Ubuntu': 'manuals/deployment/linux/ubuntu.md'
             - 'RHEL': 'manuals/deployment/linux/redhat.md'
@@ -69,7 +70,6 @@ nav:
             - 'Standalone Application on docker': 'manuals/deployment/docker/standalone.md'
         - 'Heroku':
             - 'Getting started': 'manuals/deployment/heroku/getting-started.md'
-            - 'Prepare your application for deployment': 'manuals/deployment/heroku/prepare-taipy-for-deployment.md'
             - 'Setup': 'manuals/deployment/heroku/setup.md'
             - 'Based on Git': 'manuals/deployment/heroku/git.md'
             - 'Based on Docker': 'manuals/deployment/heroku/docker.md'
