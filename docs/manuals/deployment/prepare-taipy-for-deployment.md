@@ -1,9 +1,8 @@
-# Prepare your application for deployment
 
 Development and production do not imply the same security, reliability and performance level.
 These requirements imply specific tools that will impact the code structure.
 
-## A basic application as an example
+# A basic application as an example
 
 Create a file _main.py_, put the following content inside, then install _Taipy_ with `pip install taipy`:
 ```python
@@ -33,9 +32,7 @@ a production server.
 ## Gunicorn
 
 Following the [recommendation of Flask](https://flask.palletsprojects.com/en/2.1.x/deploying/) we will use
-[Gunicorn](https://gunicorn.org/) for production.
-_Gunicorn_ will run your application differently than _Python_
-does. Due to that condition, you should update the application to:
+[Gunicorn](https://gunicorn.org/) for production. _Gunicorn_ will run your application differently than _Python_ does. You should update the application to:
 ```python
 import taipy as tp
 
@@ -52,7 +49,7 @@ The application is now ready to be served by _Gunicorn_.
     Click [here](../../reference/taipy.gui.Gui/#taipy.gui.gui.Gui.run) to obtain more information on the `run_server`
     parameters.
 
-## Running the application with Gunicorn
+# Running the application with Gunicorn
 
 First, install _Gunicorn_ and [Gevent](http://www.gevent.org/). _Gevent_ will be used by _Gunicorn_ as a worker:
 ```
@@ -70,7 +67,7 @@ gunicorn -k gevent -w 1 --bind=0.0.0.0:5000 --timeout 1800 main:app
 
 Your application is now responding, and you can access it from your [browser](http://localhost:5000).
 
-## Using the same code in development and production
+# Using the same code in development and production
 
 Debugging with _Gunicorn_ is not as easy as debugging with the `python` command. To be able to switch
 from debugging to ready to production, you should follow this structure:
