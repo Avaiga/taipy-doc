@@ -1,4 +1,3 @@
-
 Development and production do not imply the same security, reliability and performance level.
 These requirements imply specific tools that will impact the code structure.
 
