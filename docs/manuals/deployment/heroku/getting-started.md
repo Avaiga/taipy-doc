@@ -10,7 +10,7 @@ This documentation is made for **test** and **dev** only. We do not recommend de
 
 ## Summary
 
-- [Prepare your application for deployment](prepare-taipy-for-deployment.md)
+- [Prepare your application for deployment](../prepare-taipy-for-deployment.md)
 - [Set up your Heroku environment.](setup.md)
 - [Deploy your application with a deployment based on Git.](git.md)
 - [Deploy your application with a deployment based on Docker.](docker.md)
