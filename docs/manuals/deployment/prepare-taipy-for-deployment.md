@@ -28,7 +28,7 @@ Use a production WSGI server instead.
 [Flask](https://flask.palletsprojects.com/en/2.1.x/) generates this warning because it is a development and not
 a production server.
 
-## Gunicorn
+# Gunicorn
 
 Following the [recommendation of Flask](https://flask.palletsprojects.com/en/2.1.x/deploying/) we will use
 [Gunicorn](https://gunicorn.org/) for production. _Gunicorn_ will run your application differently than _Python_ does. You should update the application to:
