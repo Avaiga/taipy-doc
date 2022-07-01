@@ -166,7 +166,11 @@ for m in $MODULES; do
 done
 
 # Check if module branches/tags/directory exist
-GITROOT="https://github.com/Avaiga/taipy"
+if [ X$GITHUB_TOKEN == X ]; then
+    GITROOT="https://github.com/Avaiga/taipy"
+else
+    GITROOT="https://$GITHUB_TOKEN@github.com/Avaiga/taipy"
+fi
 for m in $MODULES; do
     branch=${MODULE_BRANCH[$m]}
     if [ $branch == "local" ]; then
