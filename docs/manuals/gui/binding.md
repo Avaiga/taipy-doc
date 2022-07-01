@@ -65,8 +65,9 @@ where this page is defined. If the variable can not be found in the page module,
 then the variable is sought in the *\_\_main\_\_* module (typically, where the
 `Gui^` instance is created).
 
-This mechanisms allows to create pages on their own module, with local variables
-that the rest of the application may not be aware of. Global variables (the ones
+This mechanism allows pages to bind to local variables declared on their own module.
+These variables may be not exposed to other modules of the application.<br/>
+Global variables (the ones
 declared in the *\_\_main\_\_* module), on the other hand, can be used in all
 page content definitions. The module where the page is defined does not need to
 import the global variables, if they are not used in the Python code of the module.
@@ -77,7 +78,7 @@ import the global variables, if they are not used in the Python code of the modu
     expression using a global variable as well as some local parameter.
 
     This local parameter is useless for the rest of the application, so
-    we store it in a local variable, in the module where the page is
+    we store it as a local variable, in the module where the page is
     defined.<br/>
     We create a _pages_ package, where we can store the file `page.py` which is
     the module file where the page would be declared:
@@ -109,11 +110,11 @@ import the global variables, if they are not used in the Python code of the modu
     from pages.page import page
 
     navigation = [("/home", "Home"), ("/page", "Expression")]
-    root_page="""# Expression
+    root_page="""
     <|navbar|lov={navigation}|>
     """
 
-    root_page="""# Home page
+    home_page="""# Home page
     ...
     """
 

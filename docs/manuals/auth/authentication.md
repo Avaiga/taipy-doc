@@ -3,7 +3,7 @@
     This section is relevant only to the Enterprise edition of Taipy.
 
 Authentication is the process that makes sure a given user exists and
-that the password that is provided when logging in matches the expected
+that the password provided when logging in matches the expected
 one. This process ensures that a user that logs in really is who she or
 he claims to be.
 
@@ -21,7 +21,11 @@ if the kind of authenticator needed by the application is known
 programmer can alternatively use the `login()^` function that will create
 an `Authenticator^` the first time it is invoked.
 
-Taipy Enterprise supports three authentication protocols:
+Each kind of `Authenticator^` implements an *authentication protocol* that provides
+services that allows for creating credentials and retrieve the roles associated
+to a user.
+
+Taipy Enterprise edition supports three authentication protocols:
 
    - "none": The *None* authenticator does not check the user password in
       `login()` and always validates the login process by creating a `Credentials^`
@@ -81,14 +85,15 @@ can provide in the [`Authenticator` constructor](Authenticator.__init__()^):
   by this authenticator be considered valid. 
 
 !!! Note "Global configuration"
-    If you are using Taipy Core (the `taipy.core` package), these parameters can also
+    If you are using the Taipy Configuration to configure the Core features (Scenarios, Task
+    scheduling, Datanodes, ...), these parameters can also
     be set in the [Taipy Global Configuration](../core/config/global-config.md).
 
     The global configuration properties related to the default authentication
     are used if the parameters are not loaded from a
     *taipy&#x5F;auth&#x5F;&lt;protocol&gt;.json* file.
 
-    Here is how you cound use the _**Config.global_config.secret_key**_ and
+    Here is how you can use the _**Config.global_config.secret_key**_ and
     _**Config.global_config.auth_session_duration**_ properties of the
     global configuration:
 
@@ -120,8 +125,8 @@ returns a valid `Credentials^` object, no matter what user name and password
 are provided.
 
 To create a *None* authenticator, you can instantiate an `Authenticator^` object
-setting the *protocol* argument of the constructor (or
-) to "none".
+setting the *protocol* argument of the constructor (or the
+_**Config.global_config.auth_protocol**_) to "none".
 
 ## Taipy Authenticator
 
@@ -139,9 +144,9 @@ Here is how you typically create a Taipy authenticator:
 ```
 from taipy.auth import Authenticator
 roles={
-  "user1": "role1",
-  "user2": "role2",
-  "user3": ["role1", "role2"]
+  "user1": ["role1", "TAIPY_READER"],
+  "user2": ["role2", "TAIPY_ADMIN"],
+  "user3": ["role1", "role2"m , "TAIPY_ADMIN"]
 }
 authenticator = Authenticator("taipy", roles=roles)
 ```
@@ -165,8 +170,9 @@ Taipy Authenticator with two users, with and without assigned roles:
     ```
     Config.configure_global_app(auth_protocol="taipy",
                                 auth_roles={
-                                    "user1": ["role1", "role2"],
-                                    "user2": []
+                                    "user1": ["role1", "role2", "TAIPY_ADMIN"],
+                                    "user2": ["TAIPY_READER"],
+                                    "user3": []
                                     }
                                 )
     ```
@@ -265,7 +271,7 @@ representation of the password:
      text string, returns the hashed value for it.
 
    - CLI: The `taipy.auth` module has an entry point that can be invoked from
-     the CLI, using -t `-m` option of Python, and the `-p` option of the
+     the CLI, using the `-m` option of Python, and the `-p` option of the
      `taipy.auth` module. Below is an example of how to use the CLI option.
 
 Note that only the first 16 characters of the plain text password are

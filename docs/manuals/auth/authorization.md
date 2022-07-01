@@ -60,7 +60,7 @@ can be combined to provide a value for role traits depending on the roles assign
 users.
 
 Let's imagine that your application needs to manipulate two types of
-resources: *Document* et *Deployment*. Resources have access rights
+resources: *Document* et *Post*. Resources have access rights
 specific to their nature.
 
 A *Document* can be read or modified.

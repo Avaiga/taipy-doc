@@ -65,6 +65,8 @@ ITEMS_VISIBILITY = {
     ("taipy.gui.gui", "Gui") : "taipy.gui",
     ("taipy.gui.partial", "Partial") : "taipy.gui.partial",
     ("taipy.gui.page", "Page") : "taipy.gui.page",
+    ("taipy.gui.state", "State") : "taipy.gui",
+    ("taipy.gui.renderers", "Markdown") : "taipy.gui",
     ("typing", "CycleId") : "taipy.core",
     ("typing", "DataNodeId") : "taipy.core",
     ("typing", "JobId") : "taipy.core",
@@ -444,8 +446,6 @@ def read_module(module):
             entry_to_package[key] = module.__name__
 
 read_module(__import__(ROOT_PACKAGE))
-read_module(__import__("taipy.auth"))
-read_module(__import__("taipy.enterprise"))
 
 restore_top_package_location()
 
@@ -530,7 +530,7 @@ for package in sorted(package_to_entries.keys()):
                 package_output_file.write(f"   - `{name}`"
                                         + f"{': ' + type[3] if type[3] else ' - NOT DOCUMENTED'}\n")
                 if name in xrefs:
-                    print(f"ERROR - Type {name} already declared in {xrefs[name]}")
+                    print(f"WARNING - Type {package}.{name} already declared in {xrefs[name]}")
                 xrefs[name] = (package, type[0])
         if functions:
             package_output_file.write(f"### Functions\n\n")
