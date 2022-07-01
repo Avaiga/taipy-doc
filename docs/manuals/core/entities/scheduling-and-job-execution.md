@@ -169,6 +169,9 @@ If you want your function `my_function` to be called for each task of a scenario
 `taipy.subscribe_scenario(my_function, my_scenario)`. It is similar in the context of pipelines: to be notified on a
 given pipeline stored in `my_pipeline`, you must call `taipy.subscribe_pipeline(my_function, my_pipeline)`.
 
+You can also define a function that receives multiple parameters to be used as a subscriber. It is similar to the example
+above, you can just add your parameters as a list, for example `taipy.subscribe_scenario(my_function, ["my_param", 42], my_scenario)`.
+
 You can also unsubscribe to scenarios by using `taipy.unsubscribe_scenario(function)`
 or `tp.unsubscribe_pipeline(function)` for pipelines. Same as for subscription, the un-subscription can be global,
 or you can specify the scenario or pipeline by passing it as a parameter.
@@ -186,13 +189,19 @@ def my_global_subscriber(scenario, job):
 def my_subscriber(scenario, job):
     print(f"Called from my_subscriber from scenario '{scenario.config_id}' and job for task '{job.task.config_id}'.")
 
+def my_subscriber_multi_param(scenario, job, params):
+    print(f"Called from my_subscriber_multi_param with parameters {params} in job for task '{job.task.config_id}'.")
+
 task_1 = tp.configure_task("my_task_1", do_nothing)
 task_2 = tp.configure_task("my_task_2", do_nothing)
 scenario_1 = tp.configure_scenario_from_tasks("my_scenario", [task, task])
 scenario_2 = tp.configure_scenario_from_tasks("my_scenario", [task, task])
 
+params = ["my_param_1", 42]
+
 tp.subscribe_scenario(my_global_subscriber)  # Global subscription
 tp.subscribe_scenario(my_subscriber, scenario_1)  # Subscribe only on one scenario
+tp.subscribe_scenario(my_subscriber_multi_param, params, scenario_1)  # Subscriber with multiple params
 
 print('Submit: scenario_1')
 tp.submit(scenario_1)
@@ -210,7 +219,9 @@ This example will produce the following output:
 Submit: scenario_1
 Called from my_global_subscriber from scenario 'my_scenario_1' and job for task 'my_task_1'.
 Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_1'.
+Called from my_subscriber_multi_param with parameters ["my_param_1", 42] in job for task 'my_task_1 .
 Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_2'.
+Called from my_subscriber_multi_param with parameters ["my_param_1", 42] in job for task 'my_task_2'.
 Submit: scenario_2
 Called from my_global_subscriber from scenario 'my_scenario_2' and job for task 'my_task_1'.
 Unsubscribe to my_global_subscriber for scenario_1

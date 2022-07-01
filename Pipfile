@@ -8,6 +8,7 @@ Flask-Migrate = "==3.0"
 Flask-RESTful = "==0.3.9"
 apispec = {extras = ["yaml"], version = "==5.0"}
 apispec-webframeworks = "==0.5.2"
+bcrypt = "==3.2.2"
 flask = "==2.1"
 flask-cors = "==3.0.10"
 flask-marshmallow = "==0.14"
@@ -39,7 +40,6 @@ simple-websocket = "==0.3"
 sqlalchemy = "==1.4"
 toml = "==0.10"
 tzlocal = "==3.0"
-bcrypt = "*"
 
 [requires]
 python_version = "3"

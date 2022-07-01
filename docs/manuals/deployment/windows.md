@@ -1,4 +1,2 @@
-Taipy is fully compatible with a production deployment on a Windows Server.
-
-However, No documentation is provided at this point since Microsoft recommends deploying Python applications on Linux
-server [Python Web app to Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/quickstart-python).
+Even if Taipy is fully compatible with Windows, we do not recommend deploying it on a Windows Server for production usage.
+For that purpose, we do not provide at this point any documentation.
