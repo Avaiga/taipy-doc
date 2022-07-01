@@ -1,48 +1,32 @@
-!!! warning "Reminder: Authorization and Authentication is only available in the Enterprise version"
+!!! warning "Available in Taipy Enterprise edition"
 
-# Pre-requisites
+    This chapter is relevant only to the Enterprise edition of Taipy.
 
-If you plan to use LDAP authentication, An LDAP server must be set up. Taipy provides no support for setting up the server.
+The Enterprise edition of Taipy has additional features that let applications
+authentify users and behave differently depending on the identify of the
+end-user.
 
-# Configuration
+The process of changing the application logic depending on the identify of
+the user using the application is two-fold:
 
-To use LDAP authentication, you must configure how Taipy connects to the LDAP server using the Taipy `Config^` features. Here are the configurable properties you can use:
+   - Authentication: the process that verifies that a user is known to
+     the system. This is perform by a *login* step, that creates an instance
+     of the `Credentials^` class. That instance holds all the information relevant
+     for a given user, whose identity has been usually verified using a password.<br/>
+     Credentials hold a set of roles, identified as strings, that the application
+     can use to change its logic.
 
-- **Config.global_config.ldap_server**: The url of the LDAP server.
-- **Config.global_config.ldap_base_dn**: The base DN that the LDAP server uses to search for users authentication.
-- **Config.global_config.secret_key**: The secret key that will be used to generate the access token.
-- **Config.global_config.auth_session_duration**: The period after which the token provided by Taipy will expire.
-- **Config.global_config.auth_protocol**: The authentication protocol that will be used to authenticate users. Currently Taipy accepts three protocols: None, "ldap" and "taipy" (for testing purposes only). By providing the field with None value, we also disable Taipy authentication and authorization feature. And by choosing other protocols ("ldap" or "taipy"), we also enable Taipy authentication and authorization. The default value of this field is None, meaning that authentication and authorization will be disabled by default.
+   - Authorization: Once a user is identified, the application can use the
+     roles that are assigned to the user in order to change its logic, such
+     as allowing a set of operations or preventing the user from performing
+     certain tasks.
 
-Here is an example of configuring LDAP server connection in Taipy:
+Please refer to the following section to get more information:
 
-=== "Python configuration"
+[:material-arrow-right: Authentication in Taipy Enterprise](authorization.md)
 
-    ```
-    Config.configure_global_app(auth_protocol="ldap",
-                                ldap_server="ldap://0.0.0.0",
-                                ldap_base_dn="dc=example,dc=org",
-                                secret_key = "my-ultra-secure-and-ultra-long-secret",
-                                auth_session_duration = 600,)   # 60 seconds is 10 minutes
-    ```
+[:material-arrow-right: Authorization in Taipy Enterprise](authorization.md)
 
-=== "TOML configuration"
-
-    ```python linenums="1"
-    from taipy import Config
-
-    Config.load("config.toml")
-    ```
-
-    ```toml linenums="1" title="config.toml"
-
-    [TAIPY]
-    auth_protocol="ldap"
-    ldap_server="ldap://0.0.0.0"
-    ldap_base_dn="dc=example,dc=org"
-    secret_key = "my-ultra-secure-and-ultra-long-secret"
-    auth_session_duration = 600   # 60 seconds is 10 minutes,
-    ```
 
 # Roles
 

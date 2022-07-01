@@ -36,7 +36,7 @@ import pandas as pd
 
 ROOT_PACKAGE = "taipy"
 MODULE_EXTENSIONS = ".py"
-PACKAGE_GROUP = [ "taipy.core", "taipy.gui", "taipy.rest" ]
+PACKAGE_GROUP = [ "taipy.core", "taipy.gui", "taipy.rest", "taipy.auth", "taipy.enterprise" ]
 
 # Assuming that this script is located in <taipy-doc>/tools
 tools_dir = os.path.dirname(__file__).replace("\\", "/")
@@ -444,6 +444,8 @@ def read_module(module):
             entry_to_package[key] = module.__name__
 
 read_module(__import__(ROOT_PACKAGE))
+read_module(__import__("taipy.auth"))
+read_module(__import__("taipy.enterprise"))
 
 restore_top_package_location()
 

@@ -33,7 +33,7 @@ of two syntaxes:
     documentation pages. This would be the ideal format if you are not
     familiar with Web page definition, and would like to create a good
     visual rendering quickly.<br/>
-    Taipy has an augmented version of Markdown that makes it simple to
+    Taipy has an augmented implementation of Markdown that makes it simple to
     organize the page content in sections or grids.
 
 - HTML: if you are more experienced in developing Web user interfaces, you
