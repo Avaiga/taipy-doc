@@ -8,7 +8,7 @@ SCRIPT_DIR=`realpath $SCRIPT_DIR`
 ROOT_DIR=`realpath $SCRIPT_DIR/..`
 TOP_DIR=`realpath $SCRIPT_DIR/../..`
 
-MODULES="core gui getting-started rest"
+MODULES="core gui getting-started rest auth enterprise"
 
 list_modules()
 {
@@ -55,7 +55,6 @@ usage()
     echo "The default behaviour is to use a local version for all modules."
 }
 
-MODULES="core gui getting-started rest"
 NO_PULL=false
 
 # Initialize all module versions
@@ -205,7 +204,7 @@ fi
 
 copy_module_to_taipy()
 {
-    if [ $1 == "rest" ]; then
+    if [ $1 == "rest" -o $1 == "auth"  -o $1 == "enterprise" ]; then
         (cd $2/src; tar cf - `find taipy -name \\*.py`) | (cd $ROOT_DIR;tar xf -)
     else
         (cd $2; tar cf - `find taipy -name \\*.py`) | (cd $ROOT_DIR;tar xf -)
@@ -273,13 +272,13 @@ cat >>$ROOT_DIR/taipy/__init__.py <<EOF
 
 import typing as t
 
-def run(*apps: t.List[t.Union[Gui, Rest]], **kwargs):
+def run(*apps: t.List[t.Union[Gui, Rest]], **kwargs: t.Dict):
     """Run one or multiple Taipy services.
 
     A Taipy service is an instance of a class that runs code as a Web application.
 
     Parameters:
-        *args (List[Union[Gui^, Rest^]]): Services to run. If several services are provided, all the services run simultaneously. If this is empty or set to None, this method does nothing.
+        *apps (List[Union[Gui^, Rest^]]): Services to run. If several services are provided, all the services run simultaneously. If this is empty or set to None, this method does nothing.
         **kwargs: Other parameters to provide to the services.
     """
     pass

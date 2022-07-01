@@ -14,3 +14,14 @@ The API reference for Taipy is therefore split into several sections.
 
    - [`taipy.rest`](reference/pkg_taipy.rest/index.md): The package that provides a full
      REST interface on top of _taipy-core_.
+   
+   -  <p style="background-color: rgba(255,145,0,.1)">
+     [`taipy.enterprise`](reference/pkg_taipy.enterprise/index.md): Available in
+     the Taipy Enterprise edition only.</p>
+     The package responsible for providing features that are specific to the Enterprise
+     edition of Taipy.
+
+   - <p style="background-color: rgba(255,145,0,.1)">
+     [`taipy.auth`](reference/pkg_taipy.auth/index.md): Available in
+     the Taipy Enterprise edition only.</p>
+     The package responsible for providing the authentication and authorization features.

@@ -36,7 +36,7 @@ import pandas as pd
 
 ROOT_PACKAGE = "taipy"
 MODULE_EXTENSIONS = ".py"
-PACKAGE_GROUP = [ "taipy.core", "taipy.gui", "taipy.rest" ]
+PACKAGE_GROUP = [ "taipy.core", "taipy.gui", "taipy.rest", "taipy.auth", "taipy.enterprise" ]
 
 # Assuming that this script is located in <taipy-doc>/tools
 tools_dir = os.path.dirname(__file__).replace("\\", "/")
@@ -65,6 +65,8 @@ ITEMS_VISIBILITY = {
     ("taipy.gui.gui", "Gui") : "taipy.gui",
     ("taipy.gui.partial", "Partial") : "taipy.gui.partial",
     ("taipy.gui.page", "Page") : "taipy.gui.page",
+    ("taipy.gui.state", "State") : "taipy.gui",
+    ("taipy.gui.renderers", "Markdown") : "taipy.gui",
     ("typing", "CycleId") : "taipy.core",
     ("typing", "DataNodeId") : "taipy.core",
     ("typing", "JobId") : "taipy.core",
@@ -528,7 +530,7 @@ for package in sorted(package_to_entries.keys()):
                 package_output_file.write(f"   - `{name}`"
                                         + f"{': ' + type[3] if type[3] else ' - NOT DOCUMENTED'}\n")
                 if name in xrefs:
-                    print(f"ERROR - Type {name} already declared in {xrefs[name]}")
+                    print(f"WARNING - Type {package}.{name} already declared in {xrefs[name]}")
                 xrefs[name] = (package, type[0])
         if functions:
             package_output_file.write(f"### Functions\n\n")

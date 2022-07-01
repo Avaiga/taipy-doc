@@ -58,8 +58,10 @@ nav:
     - 'Taipy REST':
         - manuals/rest/index.md
         - 'Endpoints example': 'manuals/rest/endpoints.md'
-    - 'Taipy Authentication and Authorization':
+    - 'Authentication and Roles':
         - manuals/auth/index.md
+        - 'Authentication': 'manuals/auth/authentication.md'
+        - 'Authorization': 'manuals/auth/authorization.md'
     - Deployment:
         - 'Prepare your application for deployment': 'manuals/deployment/prepare-taipy-for-deployment.md'
         - GNU/Linux:

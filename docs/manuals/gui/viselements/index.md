@@ -31,7 +31,7 @@ Every element type has a default property name that holds its 'main'
 representation: a string for a text element, an array for a selector, or
 a numerical value for a slider.
 
-To set the value for this property, the short version of the visual
+To set the value for this property, the short syntax for the visual
 element syntax can be used.
 
 ### Property value
