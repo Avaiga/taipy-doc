@@ -191,8 +191,9 @@ Taipy Authenticator with two users, with and without assigned roles:
     auth_protocol="taipy"
 
     [TAIPY.auth_roles]
-    user1 = [ "role1", "role2",]
-    user2 = []
+    user1 = ["role1", "role2", "TAIPY_ADMIN",]
+    user2 = ["TAIPY_READER"],
+    user3 = []
     ```
 
 ### Password-protected authentication
@@ -283,7 +284,7 @@ This value must be set to the 'TAIPY_AUTH_HASH' environment variable in
 order to generate hashed passwords, as well as when running the application,
 so passwords can be verified.<br/>
 The value of 'TAIPY_AUTH_HASH' can be any string value.</br>
-Obviously, the value of 'TAIPY_AUTH_HASH' must be the same when generating the
+The value of 'TAIPY_AUTH_HASH' **must** be the same when generating the
 hashed passwords and when running the application that invokes the `login()^`
 function.
 

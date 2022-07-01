@@ -23,7 +23,7 @@ the user using the application is two-fold:
 
 Please refer to the following section to get more information:
 
-[:material-arrow-right: Authentication in Taipy Enterprise](authorization.md)
+[:material-arrow-right: Authentication in Taipy Enterprise](authentication.md)
 
 [:material-arrow-right: Authorization in Taipy Enterprise](authorization.md)
 
