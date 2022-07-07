@@ -62,6 +62,25 @@ The data nodes that are part of a **scenario**, **pipeline** or **task** can be 
     task.sales_history
     ```
 
+It is also possible to directly access all data nodes that are part of a **scenario**, **pipeline** as attributes:
+
+!!! Example
+
+    ```python linenums="1"
+    import taipy as tp
+    import my_config
+
+    # Creating a scenario from a config
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+    # Access all the data nodes from the scenario
+    scenario.data_nodes
+
+    # Access the pipeline 'sales' from the scenario and then access all the data nodes from the pipeline
+    pipeline = scenario.sales
+    pipeline.data_nodes
+    ```
+
 All the data nodes can be retrieved using the method `taipy.get_data_nodes()^` which returns a list of all existing
 data nodes.
 
