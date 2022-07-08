@@ -62,11 +62,11 @@ The data nodes that are part of a **scenario**, **pipeline** or **task** can be 
     task.sales_history
     ```
 
-It is also possible to directly access all data nodes that are part of a **scenario**, **pipeline** as attributes:
+It is also possible to directly access all data nodes that are part of a **scenario** or a **pipeline** as attributes:
 
 !!! Example
 
-    ```python linenums="1"
+    ```
     import taipy as tp
     import my_config
 
