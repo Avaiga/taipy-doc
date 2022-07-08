@@ -36,7 +36,7 @@ import pandas as pd
 
 ROOT_PACKAGE = "taipy"
 MODULE_EXTENSIONS = ".py"
-PACKAGE_GROUP = [ "taipy.core", "taipy.gui", "taipy.rest", "taipy.auth", "taipy.enterprise" ]
+PACKAGE_GROUP = [ "taipy.config", "taipy.core", "taipy.gui", "taipy.rest", "taipy.auth", "taipy.enterprise" ]
 
 # Assuming that this script is located in <taipy-doc>/tools
 tools_dir = os.path.dirname(__file__).replace("\\", "/")
@@ -153,7 +153,7 @@ def restore_top_package_location():
 # Step 1
 #   Generating the Visual Elements documentation
 # ------------------------------------------------------------------------
-print("Step 1/3: Generating Visual Elements documentation")
+print("Step 1/3: Generating Visual Elements documentation", flush=True)
 
 
 def read_skeleton(name):
@@ -366,7 +366,7 @@ with open(os.path.join(GUI_DOC_PATH, "blocks.md"), "w") as file:
 # Step 2
 #   Generating the Reference Manual
 # ------------------------------------------------------------------------
-print("Step 2/3: Generating the Reference Manual pages")
+print("Step 2/3: Generating the Reference Manual pages", flush=True)
 
 # Create empty REFERENCE_DIR_PATH directory
 if os.path.exists(REFERENCE_DIR_PATH):
@@ -493,6 +493,8 @@ for package in sorted(package_to_entries.keys()):
                 new_package_group = p
                 break
         if new_package_group != package_group:
+            if not new_package_group:
+                raise SystemExit(f"FATAL - Unknown package '{new_package_group}' for package '{package}' (renamed from '{package_group}')")
             package_group = new_package_group
             navigation += (" " * 4 + f"- {package_group}:\n")
         navigation += (" " * (6 if package_group else 4)
@@ -547,7 +549,7 @@ with open(XREFS_PATH, "w") as xrefs_output_file:
 # Step 3
 #   Generating the Getting Started
 # ------------------------------------------------------------------------
-print("Step 3/3: Generating the Getting Started navigation bar")
+print("Step 3/3: Generating the Getting Started navigation bar", flush=True)
 
 def format_getting_started_navigation(filepath: str) -> str:
     readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
