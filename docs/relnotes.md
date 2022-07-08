@@ -7,6 +7,14 @@ hide:
 
 This is the list of changes to Taipy releases as they were published.
 
+## Community edition: 1.2 (In progress)
+
+#### Improvements
+
+**`taipy-core`**<br/>1.2.0
+
+   - The data node of a scenario or a pipeline can now be accessed at the scenario or pipeline level.
+
 ## Community edition: 1.1
 
 Published on 2022-06.
@@ -74,7 +82,6 @@ Published on 2022-06.
      _last_edit_date_ must be used instead.
    - The _edition_in_progress_ attribute of data nodes is now deprecated.<br/>
      _edit_in_progress_ must be used instead.
-   - The data node of a scenario or a pipeline can now be accessed at the scenario or pipeline level.
 
 ## Enterprise edition: 1.1
 
