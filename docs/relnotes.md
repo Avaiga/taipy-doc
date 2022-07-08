@@ -7,12 +7,20 @@ hide:
 
 This is the list of changes to Taipy releases as they were published.
 
+## Community edition: 1.2 (In progress)
+
+#### Improvements
+
+**`taipy-core`**<br/>1.2.0
+
+   - The data node of a scenario or a pipeline can now be accessed at the scenario or pipeline level.
+
 ## Community edition: 1.1
 
 Published on 2022-06.
 
 [`taipy` 1.1](https://pypi.org/project/taipy/1.1.0/) contains the latest
-[`taipy-gui` 1.1](https://pypi.org/project/taipy-gui/1.1.0/), 
+[`taipy-gui` 1.1](https://pypi.org/project/taipy-gui/1.1.0/),
 [`taipy-core` 1.1](https://pypi.org/project/taipy-core/1.1.0/) and
 [`taipy-rest` 1.1](https://pypi.org/project/taipy-rest/1.1.0/) packages.
 
