@@ -349,14 +349,14 @@ In this example, we configure an in_memory data node with the id "date", the sco
 
 # JSON
 
-An `JSONDataNode^` is a specific data node used to model JSON
+An `JSONDataNode^` is a type of data node used to model JSON
 file data. To add a new _JSON_ data node configuration, the `Config.configure_json_data_node_node()^` method can be used.
 In addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), a mandatory and an optional parameters can be provided.
 
 -   The _**path**_ is a mandatory parameter that represents the JSON file path used by Taipy to read and write the data.
 
--   When the _**exposed_type**_ is given as a parameter, if the provided value is a custom class, data node will create a custom object of that class if the JSON is an object, or a list of custom objects if the JSON data is a list. If _exposed_type_ is not provided, the data node will treat the JSON object as a dictionary.
+-   If the _**exposed_type**_ is set to a custom class then the data node will create a custom object of that class if the JSON is an object, or a list of custom objects if the JSON data is a list. If _exposed_type_ is not provided, the data node will treat the JSON object as a dictionary.
 
 
 ```python linenums="1"
@@ -368,21 +368,21 @@ class SaleRow:
 
 hist_temp_cfg = Config.configure_json_data_node(id="historical_temperature",path="path/hist_temp.json",)
 
-sales_cfg = Config.configure_excel_data_node(id="sale_history",
+sales_cfg = Config.configure_json_data_node(id="sale_history",
                                              path="path/sale_history.json",
                                              exposed_type=SaleRow)
 ```
 
-In lines 3-5, we define a custom class `SaleRow`, representing an the Excel file row.
+In lines 3-5, we define a custom class `SaleRow`, representing an the JSON file row.
 
-In lines 7-8, we configure an Excel data node. The _id_ identifier is "historical_temperature". Its _scope_ is
+In lines 7-8, we configure an JSON data node. The _id_ argument is "historical_temperature". Its _scope_ is
 `SCENARIO` (default value), and the path is the file hist_temp.json.
 
-In lines 10-13, we add another excel data node configuration. The _id_ identifier is "sale_history", the
+In lines 10-13, we create an JSON data node configuration. The _id_ identifier is "sale_history", the
 default `SCENARIO` scope is used. Since we have a custom class pre-defined for this JSON file, we will provide it in
 the _exposed_type_.
 
 !!! Note
 
     To configure an JSON data node, it is equivalent to use the method `Config.configure_json_data_node()^` or
-    the method `Config.configure_data_node()^` with parameter `storage_type="json"`.
+    the method `Config.configure_data_node()^` with the `storage_type` argument set to "json".
