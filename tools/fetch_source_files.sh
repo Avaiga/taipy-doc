@@ -8,7 +8,7 @@ SCRIPT_DIR=`realpath $SCRIPT_DIR`
 ROOT_DIR=`realpath $SCRIPT_DIR/..`
 TOP_DIR=`realpath $SCRIPT_DIR/../..`
 
-MODULES="core gui getting-started rest auth enterprise"
+MODULES="config core gui getting-started rest auth enterprise"
 
 list_modules()
 {
@@ -208,10 +208,10 @@ fi
 
 copy_module_to_taipy()
 {
-    if [ $1 == "rest" -o $1 == "auth"  -o $1 == "enterprise" ]; then
-        (cd $2/src; tar cf - `find taipy -name \\*.py`) | (cd $ROOT_DIR;tar xf -)
-    else
+    if [ $1 == "gui" ]; then
         (cd $2; tar cf - `find taipy -name \\*.py`) | (cd $ROOT_DIR;tar xf -)
+    else
+        (cd $2/src; tar cf - `find taipy -name \\*.py`) | (cd $ROOT_DIR;tar xf -)
     fi
 }
 
