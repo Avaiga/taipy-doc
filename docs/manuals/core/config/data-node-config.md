@@ -373,12 +373,12 @@ sales_cfg = Config.configure_json_data_node(id="sale_history",
                                              exposed_type=SaleRow)
 ```
 
-In lines 3-5, we define a custom class `SaleRow`, representing an the JSON file row.
+In lines 3-5, we define a custom class `SaleRow`, representing a JSON file row.
 
-In lines 7-8, we configure an JSON data node. The _id_ argument is "historical_temperature". Its _scope_ is
+In line 7, we configure a JSON data node. The _id_ argument is "historical_temperature". Its _scope_ is
 `SCENARIO` (default value), and the path is the file hist_temp.json.
 
-In lines 10-13, we create an JSON data node configuration. The _id_ identifier is "sale_history", the
+In lines 9-11, we create a JSON data node configuration. The _id_ identifier is "sale_history", the
 default `SCENARIO` scope is used. Since we have a custom class pre-defined for this JSON file, we will provide it in
 the _exposed_type_.
 
