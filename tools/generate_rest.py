@@ -5,9 +5,16 @@ from taipy.rest.api.views import register_views
 from taipy.rest.app import create_app
 from taipy.rest.extensions import apispec
 
+enterprise_warnings = """!!! warning "Available in Taipy Enterprise edition"
+
+    This section is relevant only to the Enterprise edition of Taipy.
+
+"""
+
 
 def _split_into_components(specs: dict):
     paths = ["cycle", "scenario", "pipeline", "datanode", "task", "job", "auth"]
+    enterprise_paths = ["auth"]
 
     for p in paths:
         tmp = copy.deepcopy(specs)
@@ -22,6 +29,8 @@ def _split_into_components(specs: dict):
         with open(f"docs/manuals/rest/{p}.json", "w") as f:
             json.dump(tmp, f)
         with open(f"docs/manuals/rest/{p}.md", "w") as f:
+            if p in enterprise_paths:
+                f.write(enterprise_warnings)
             f.write(f"!!swagger {p}.json!!\n")
 
 
