@@ -63,6 +63,7 @@ nav:
         - 'Scenario endpoints': 'manuals/rest/scenario.md'
         - 'Cycle endpoints': 'manuals/rest/cycle.md'
         - 'Job endpoints': 'manuals/rest/job.md'
+        - 'Auth endpoints': 'manuals/rest/auth.md'
     - 'Authentication and Roles':
         - manuals/auth/index.md
         - 'Authentication': 'manuals/auth/authentication.md'

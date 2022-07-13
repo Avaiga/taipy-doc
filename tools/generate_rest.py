@@ -7,7 +7,7 @@ from taipy.rest.extensions import apispec
 
 
 def _split_into_components(specs: dict):
-    paths = ["cycle", "scenario", "pipeline", "datanode", "task", "job"]
+    paths = ["cycle", "scenario", "pipeline", "datanode", "task", "job", "auth"]
 
     for p in paths:
         tmp = copy.deepcopy(specs)
