@@ -354,33 +354,52 @@ file data. To add a new _JSON_ data node configuration, the `Config.configure_js
 In addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), a mandatory and an optional parameters can be provided.
 
--   The _**path**_ is a mandatory parameter that represents the JSON file path used by Taipy to read and write the data.
+- The _**default_path**_ is a mandatory parameter that represents the JSON file path used by Taipy to read and write the data.
 
--   If the _**exposed_type**_ is set to a custom class then the data node will create a custom object of that class if the JSON is an object, or a list of custom objects if the JSON data is a list. If _exposed_type_ is not provided, the data node will treat the JSON object as a dictionary.
+- The _**encoder** and _**decoder**_ parameters are optional parameters that represent the encoder (json.JSONEncoder) and decoder
+  (json.JSONDecoder) used to serialize and deserialize the JSON data.
 
 
 ```python linenums="1"
 from taipy import Config
+import json
 
 class SaleRow:
     date: str
     nb_sales: int
 
-hist_temp_cfg = Config.configure_json_data_node(id="historical_temperature",path="path/hist_temp.json",)
+class SaleRowEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, SaleRow):
+            return {'__type__': "SaleRow", 'date': obj.date, 'nb_sales': obj.nb_sales}
+        return json.JSONEncoder.default(self, obj)
+
+class SaleRowDecoder(json.JSONDecoder):
+    def __init__(self, *args, **kwargs):
+        json.JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
+
+    def object_hook(self, d):
+        if d.get('__type__') == "SaleRow":
+            return SaleRow(date=d['date'], nb_sales=d['nb_sales'])
+        return d
+
+hist_temp_cfg = Config.configure_json_data_node(id="historical_temperature",default_path="path/hist_temp.json",)
 
 sales_cfg = Config.configure_json_data_node(id="sale_history",
                                              path="path/sale_history.json",
-                                             exposed_type=SaleRow)
+                                             encoder=SaleRowEncoder,
+                                             decoder=SaleRowDecoder)
 ```
 
-In lines 3-5, we define a custom class `SaleRow`, representing a JSON file row.
+In lines 4-6, we define a custom class `SaleRow`, representing a JSON object.
 
-In line 7, we configure a JSON data node. The _id_ argument is "historical_temperature". Its _scope_ is
+In line 8-21, we define custom encoder and decoder for the `SaleRow` class.
+
+In line 23, we configure a JSON data node. The _id_ argument is "historical_temperature". Its _scope_ is
 `SCENARIO` (default value), and the path is the file hist_temp.json.
 
-In lines 9-11, we create a JSON data node configuration. The _id_ identifier is "sale_history", the
-default `SCENARIO` scope is used. Since we have a custom class pre-defined for this JSON file, we will provide it in
-the _exposed_type_.
+In lines 25-28, we create a JSON data node configuration. The _id_ identifier is "sale_history", the
+default `SCENARIO` scope is used. The encoder and decoder are the custom encoder and decoder defined above.
 
 !!! Note
 
