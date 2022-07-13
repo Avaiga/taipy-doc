@@ -40,6 +40,7 @@ simple-websocket = "==0.3"
 sqlalchemy = "==1.4"
 toml = "==0.10"
 tzlocal = "==3.0"
+mkdocs-render-swagger-plugin = "*"
 
 [requires]
 python_version = "3"

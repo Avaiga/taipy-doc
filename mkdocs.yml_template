@@ -57,7 +57,12 @@ nav:
             - 'Job execution': 'manuals/core/entities/scheduling-and-job-execution.md'
     - 'Taipy REST':
         - manuals/rest/index.md
-        - 'Endpoints example': 'manuals/rest/endpoints.md'
+        - 'Data node endpoints': 'manuals/rest/data-node.md'
+        - 'Task endpoints': 'manuals/rest/task.md'
+        - 'Pipeline endpoints': 'manuals/rest/pipeline.md'
+        - 'Scenario endpoints': 'manuals/rest/scenario.md'
+        - 'Cycle endpoints': 'manuals/rest/cycle.md'
+        - 'Job endpoints': 'manuals/rest/job.md'
     - 'Authentication and Roles':
         - manuals/auth/index.md
         - 'Authentication': 'manuals/auth/authentication.md'
@@ -153,6 +158,7 @@ plugins:
         - taipy
   - macros:
       module_name: tools/postprocess
+  - render_swagger
 extra:
   social:
     - icon: fontawesome/brands/twitter
