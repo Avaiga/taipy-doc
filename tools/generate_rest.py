@@ -21,6 +21,8 @@ def _split_into_components(specs: dict):
         tmp["paths"] = filtered_path
         with open(f"docs/manuals/rest/{p}.json", "w") as f:
             json.dump(tmp, f)
+        with open(f"docs/manuals/rest/{p}.md", "w") as f:
+            f.write(f"!!swagger {p}.json!!\n")
 
 
 if __name__ == "__main__":

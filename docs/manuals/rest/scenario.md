@@ -1,1 +1,0 @@
-!!swagger scenario.json!!

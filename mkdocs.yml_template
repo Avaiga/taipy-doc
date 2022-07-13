@@ -57,7 +57,7 @@ nav:
             - 'Job execution': 'manuals/core/entities/scheduling-and-job-execution.md'
     - 'Taipy REST':
         - manuals/rest/index.md
-        - 'Data node endpoints': 'manuals/rest/data-node.md'
+        - 'Data node endpoints': 'manuals/rest/datanode.md'
         - 'Task endpoints': 'manuals/rest/task.md'
         - 'Pipeline endpoints': 'manuals/rest/pipeline.md'
         - 'Scenario endpoints': 'manuals/rest/scenario.md'
