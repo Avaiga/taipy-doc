@@ -40,8 +40,6 @@ TOC_ENTRY_PART2 = r"\"\s*class=\"md-nav__link\">([^<]*)</a>\s*</li>\s*"
 #    Can be empty.
 #  group(3) - The name of a method, or the last sub-package name.
 #  group(4) - The function parameters, with their ().
-XREF_RE_LEGACY = re.compile(r"<code>(\()?([^\d\W]\w*)(?:\.\))?"
-                     + r"((?:\.)?(?:[^\d\W]\w*))?(\(.*?\))?\^</code>")
 XREF_RE = re.compile(r"<code>(\()?((?:[^\d\W]\w*\.)*)"
                      + r"(?:\))?([^\d\W]\w*)(\(.*?\))?\^</code>")
                       
