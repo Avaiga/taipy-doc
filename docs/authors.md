@@ -10,4 +10,4 @@ Taipy is developed and maintained by Avaiga.
 
 None yet.
 
-Why not be the first? Check out the [contributing section](../../contributing/about_contributing/)!
+Why not be the first? Check out the [contributing section](contributing/contributing.md)!
