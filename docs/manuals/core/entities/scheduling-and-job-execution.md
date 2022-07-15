@@ -173,7 +173,7 @@ Cancelling a `RUNNING` Job will set the Job to `CANCELLED`. However, it will not
         sleep(10)
         return nb * 2
 
-    print(f'(1) Number of job: {len(tp.get_jobs())}.')
+    print(f'(1) Number of jobs: {len(tp.get_jobs())}.')
 
     # Create a scenario then submit it.
     input_data_node_config = tp.configure_data_node("input", default_value=21)
