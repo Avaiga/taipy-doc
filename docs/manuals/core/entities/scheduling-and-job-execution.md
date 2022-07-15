@@ -201,8 +201,8 @@ Cancelling a `RUNNING` Job will set the Job to `CANCELLED`. However, it will not
 This example will produce the following output:
 
 ```
-(1) Number of job: 0.
-(2) Number of job: 1.
+(1) Number of jobs: 0.
+(2) Number of jobs: 1.
 (3) Status of job double_task: Status.RUNNING
 (4) Status of job double_task: Status.CANCELLED
 ```
