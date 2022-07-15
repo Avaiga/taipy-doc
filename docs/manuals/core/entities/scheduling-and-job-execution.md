@@ -184,7 +184,7 @@ Cancelling a `RUNNING` Job will set the Job to `CANCELLED`. However, it will not
     tp.submit(scenario)
 
     # Retrieve all jobs.
-    print(f'(2) Number of job: {len(tp.get_jobs())}.')
+    print(f'(2) Number of jobs: {len(tp.get_jobs())}.')
 
     # Get the latest created job of a Task.
     job = tp.get_latest_job(scenario.double_task)
