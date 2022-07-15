@@ -103,6 +103,7 @@ Here is the list of the job's attributes:
 -   `FAILED`: The job failed due to timeout or execution error.
 -   `COMPLETED`: The job execution is done and outputs were written.
 -   `SKIPPED`: The job was and will not be executed.
+-   `ABANDONED`: The job was abandoned and will not be executed.
 
 ## Get/Delete Job
 
@@ -153,6 +154,57 @@ This example will produce the following output:
 (1) Number of job: 0.
 (2) Number of job: 1.
 (3) Number of job: 0.
+```
+
+## Cancel Job
+
+Jobs are created when a task is submitted.
+
+- You can cancel the Job with `taipy.cancel_job(job)^`. When cancelling a Job, you will effectively set the `Status^` of subsequent jobs of the cancelled Job to `ABANDONED`.
+
+Cancelling a `RUNNING` Job will set the Job to `CANCELLED`. However, it will not terminate the subprocess that has already been dispatched to execute the Job.
+
+!!! Example
+
+    ```python linenums="1"
+    import taipy as tp
+
+    def double(nb):
+        sleep(10)
+        return nb * 2
+
+    print(f'(1) Number of job: {len(tp.get_jobs())}.')
+
+    # Create a scenario then submit it.
+    input_data_node_config = tp.configure_data_node("input", default_value=21)
+    output_data_node_config = tp.configure_data_node("output")
+    task_config = tp.configure_task("double_task", double)
+    scenario_config = tp.configure_scenario_from_tasks("my_scenario", [task_config])
+    scenario = tp.create_scenario(scenario_config)
+    tp.submit(scenario)
+
+    # Retrieve all jobs.
+    print(f'(2) Number of job: {len(tp.get_jobs())}.')
+
+    # Get the latest created job of a Task.
+    job = tp.get_latest_job(scenario.double_task)
+
+    # Get status of the Job
+    print(f'(3) Status of job double_task: {job.status}')
+
+    # Then cancel it.
+    tp.cancel_job(job)
+
+    print(f'(4) Status of job double_task: {job.status}')
+    ```
+
+This example will produce the following output:
+
+```
+(1) Number of job: 0.
+(2) Number of job: 1.
+(3) Status of job double_task: Status.RUNNING
+(4) Status of job double_task: Status.CANCELLED
 ```
 
 # Subscribe to job execution

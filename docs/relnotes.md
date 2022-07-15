@@ -14,6 +14,9 @@ This is the list of changes to Taipy releases as they were published.
 **`taipy-core`**<br/>1.2.0
 
    - The data node of a scenario or a pipeline can now be accessed at the scenario or pipeline level.
+   - When submitting a scenario, a pipeline or a task, a list of jobs or a Job will be returned.
+   - A submitted job can now be cancelled and prevent from running. If the job has already been run, meaning a subprocess has already been dispatched to execute said job, the job can still be cancelled, but the subprocess will keep running until finished.
+   - When cancelling a job, the subsequent jobs of the cancelled job will be set to ABANDONED and will not be run.
 
 ## Community edition: 1.1
 
