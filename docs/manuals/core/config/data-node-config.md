@@ -225,6 +225,12 @@ the _exposed_type_. We also provide the list of specific sheets we want to use a
 
 # Sql
 
+!!! Important
+
+    To be able to use a `SQLDataNode^` with Microsoft SQL Server you need to run internal dependencies with
+    `pip install taipy[mssql]` and install your corresponding
+    [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
+
 A `SQLDataNode^` is a specific data node used to model Sql
 data. To add a new _sql_ data node configuration, the `Config.configure_sql_data_node()^` method can be used. In
 addition to the generic parameters described in the previous section
