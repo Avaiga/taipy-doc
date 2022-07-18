@@ -2,4 +2,4 @@
 
 None yet.
 
-Why not be the first? Check out the [contributing section](../../contributing/about_contributing/)!
+Why not be the first? Check out the [contributing section](../contributing/about_contributing.md)!

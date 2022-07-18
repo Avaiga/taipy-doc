@@ -36,12 +36,13 @@ TOC_ENTRY_PART1 = r"<li\s*class=\"md-nav__item\">\s*<a\s*href=\""
 TOC_ENTRY_PART2 = r"\"\s*class=\"md-nav__link\">([^<]*)</a>\s*</li>\s*"
 # XREF_RE details:
 #  group(1) - A potential opening '('.
-#  group(2) - The class or function name.
-#  group(3) - If not empty, the name of a method, with the '.' prefix
-#    if the classname is to be preserved (group(1) is empty).
+#  group(2) - The package, class or function name with a trailing '.'.
+#    Can be empty.
+#  group(3) - The name of a method, or the last sub-package name.
 #  group(4) - The function parameters, with their ().
-XREF_RE = re.compile(r"<code>(\()?([^\d\W]\w*)(?:\.\))?"
-                     + r"((?:\.)?(?:[^\d\W]\w*))?(\(.*?\))?\^</code>")
+XREF_RE = re.compile(r"<code>(\()?((?:[^\d\W]\w*\.)*)"
+                     + r"(?:\))?([^\d\W]\w*)(\(.*?\))?\^</code>")
+                      
 
 def find_dummy_h3_entries(content: str) -> Dict[str, str]:
     """
@@ -97,6 +98,8 @@ def on_post_build(env):
     x_packages = set()
     for ps in xrefs.values():
         x_packages.add(ps[0])
+        if ps[2]:
+            x_packages.update(ps[2])
     manuals_files_path = os.path.join(site_dir, "manuals")
     ref_files_path = os.path.join(manuals_files_path, "reference")
     for root, _, file_list in os.walk(site_dir):
@@ -134,12 +137,12 @@ def on_post_build(env):
                         html_content, n_changes = GS_DOCLINK.subn(f"\\1{gs_rel_path}\\2", html_content)
                         if n_changes != 0:
                             file_was_changed = True
-                    # Add external link icons
+                    # Add external link icons (and open in new tab)
                     # Note we want this only for the simple [text](http*://ext_url) cases
                     EXTLINK = re.compile(
                         r"<a\s+(href=\"http[^\"]+\">.*?<\/a>)", re.M | re.S
                     )
-                    html_content, n_changes = EXTLINK.subn('<a class="ext-link" \\1', html_content)
+                    html_content, n_changes = EXTLINK.subn('<a class="ext-link" target="_blank" \\1', html_content)
                     if n_changes != 0:
                         file_was_changed = True
                     # Find and resolve automatic cross-references to the Reference Manual
@@ -150,19 +153,48 @@ def on_post_build(env):
                     for xref in XREF_RE.finditer(html_content):
                         groups = xref.groups()
                         # function_name -> None, function_name, None, *
-                        # package.function_name -> None, package, .function_name, *
-                        # (package.)function_name -> '(', package, function_name, *
                         # class_name -> None, class_name, None, *
-                        # package.class_name -> None, package, .class_name, *
-                        # class_name.method_name -> None, class_name, .method_name, *
-                        # (class_name.)method_name -> '(', class_name, method_name, *
-                        entry = groups[1]
-                        method = groups[2]
-                        if method and not groups[0]: # Remove leading '.'
-                            method = method[1:]
-                        # Function in package? Or method in class?
-                        packages  = [entry, None] if entry in x_packages else xrefs.get(entry)
-                        if packages is None:
+                        # package.class.function_name -> None, package.class., function_name, *
+                        # (package.class.)function_name -> '(', package.class., function_name, *
+                        # package.class_name -> None, package., class_name, *
+                        # class_name.method_name -> None, class_name., method_name, *
+                        # (class_name.)method_name -> '(', class_name., method_name, *
+                        dest = None
+                        package = None
+                        entry = None
+                        method = None
+                        dest_package = None
+                        if groups[1]:
+                            # Class.Method?
+                            entry = groups[1][:-1]
+                            dest = xrefs.get(entry)
+                            if dest:
+                                package = dest[0]
+                                method = groups[2]
+                            else: # Package?
+                                full_package = f"{groups[1]}{groups[2]}"
+                                if full_package in x_packages:
+                                    package = full_package
+                                    entry = None
+                                    dest = True
+                                else: # Package.entry?
+                                    package = entry
+                                    dest = xrefs.get(groups[2])
+                                    if dest:
+                                        # Rename package if necessary
+                                        if package != dest[0] and package in dest[2]:
+                                            dest_package = dest[0]
+                                        entry = groups[2]
+                        else:
+                            dest = xrefs.get(groups[2])
+                            if dest:
+                                package = dest[0]
+                                entry = groups[2]
+                            else: # Package?
+                                if groups[2] in x_packages:
+                                    package = groups[2]
+                                    dest = True
+                        if not dest:
                             (dir, file) = os.path.split(filename)
                             (dir, dir1) = os.path.split(dir)
                             (dir, dir2) = os.path.split(dir)
@@ -174,24 +206,31 @@ def on_post_build(env):
                             else:
                                 log.error(f"{message}{dir2}/{dir1}/{file}")
                             continue
-                        package = packages[0]
-                        orig_package = packages[1]
+                        if dest_package is None:
+                            dest_package = package
                         new_content += html_content[last_location:xref.start()]
-                        new_content += f"<a href=\"{rel_path}/{package}."
-                        if orig_package:
-                            new_content += f"{entry}"
+                        new_content += f"<a href=\"{rel_path}/"
+                        if entry:
+                            new_content += f"{dest_package}.{entry}/"
                             if method:
-                                new_content += f"/index.html#{orig_package}.{entry}.{method}\"><code>"
+                                new_content += f"index.html#{dest[1]}.{entry}.{method}\"><code>"
                                 if not groups[0]:
                                     new_content += f"{entry}."
                                 new_content += f"{method}"
                             else:
-                                new_content += f"\"><code>{entry}"
+                                new_content += f"\"><code>"
+                                if not groups[0]:
+                                    new_content += f"{package}."
+                                new_content += entry
                         else:
-                            new_content += f"{method}/\"><code>"
+                            new_content += f"pkg_{dest_package}"
+                            if method:
+                                new_content += method
+                            new_content += "/\"><code>"
                             if not groups[0]:
-                                new_content += f"{package}."
-                            new_content += f"{method}"
+                                new_content += f"{package}"
+                            if method:
+                                new_content += f".{method}"
                         new_content += f"{groups[3] if groups[3] else ''}</code></a>"
                         last_location = xref.end()
                     if last_location:
