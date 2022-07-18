@@ -1,5 +1,3 @@
-# Standalone Taipy application
-
 ## Prerequisites
 
 - Minimal knowledge of Docker.
@@ -27,6 +25,17 @@ RUN pip install -r requirements.txt
 # Start up command
 CMD python my-app.py
 ```
+
+!!! Note
+
+    If you are using a `SQLDataNode^` with a Microsoft SQL Server, you need to add the following commands
+    before installing your application:
+    ```
+    RUN apt-get update && apt-get install -y lsb-release && apt-get clean all
+    RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+    RUN curl https://packages.microsoft.com/config/debian/$(lsb_release -rs)/prod.list > /etc/apt/sources.list.d/mssql-release.list
+    RUN apt update && ACCEPT_EULA=Y apt install -y msodbcsql18 unixodbc-dev
+    ```
 
 Build the container using the command:
 ```

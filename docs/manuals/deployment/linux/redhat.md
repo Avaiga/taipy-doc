@@ -44,6 +44,12 @@ sudo mv `pwd`/.local/bin/uwsgi /usr/bin/uwsgi
 sudo restorecon /usr/bin/uwsgi
 ```
 
+!!! Note
+
+    If you are using a `SQLDataNode^` with a Microsoft SQL Server, you need to install your corresponding
+    [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
+
+
 ## Run the application locally
 
 If you want to deploy the following application:
