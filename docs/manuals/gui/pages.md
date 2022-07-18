@@ -186,7 +186,7 @@ be `http://127.0.0.1:5000/`).
 
 If your application has several pages, you would usually create them with different names,
 so the user can navigate from page to page (using the `navigate()^` function or the
-[`navbar`](viselements/navbar/) control).<br/>
+[`navbar`](viselements/navbar.md) control).<br/>
 However, you can still have a root page for your application (with the name: `"/"`).
 In this situation, Taipy creates a
 [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application)

@@ -22,6 +22,7 @@
 #     It finally updates the top navigation bar content (in mkdocs.yml) to
 #     reflect the root package structure.
 # ------------------------------------------------------------------------
+from typing import Dict, Any
 import glob
 import json
 import os
@@ -46,76 +47,52 @@ GUI_DOC_PATH = root_dir + "/docs/manuals/gui/"
 VISELEMENTS_SRC_PATH = root_dir + "/gui/doc"
 VISELEMENTS_DIR_PATH = root_dir + "/docs/manuals/gui/viselements"
 
-# PACKAGES_VISIBILITY indicates which packages should be hidden
-# should an entity are exposed from distinct packages.
-PACKAGES_VISIBILITY = [
-    ("taipy.core.config.config","taipy.core.exceptions"),
-    ("taipy.core.config.job_config","taipy.core.exceptions"),
-    ("taipy.core.config.scenario_config","taipy.core.exceptions"),
-    ("taipy.core.data.csv","taipy.core.exceptions"),
-    ("taipy.core.data.data_node","taipy.core.exceptions"),
-    ("taipy.core.data.excel","taipy.core.exceptions"),
-    ("taipy.core.data.generic","taipy.core.exceptions"),
-    ("taipy.core.data.sql","taipy.core.exceptions"),
-    ("taipy.core.data.data_node","taipy.core.data.operator")
-    ]
-# Change some item visibility from a package to another
-#   (orig_package, item_name) -> dest_package
-ITEMS_VISIBILITY = {
-    ("taipy.gui.gui", "Gui") : "taipy.gui",
-    ("taipy.gui.partial", "Partial") : "taipy.gui.partial",
-    ("taipy.gui.page", "Page") : "taipy.gui.page",
-    ("taipy.gui.state", "State") : "taipy.gui",
-    ("taipy.gui.renderers", "Markdown") : "taipy.gui",
-    ("typing", "CycleId") : "taipy.core",
-    ("typing", "DataNodeId") : "taipy.core",
-    ("typing", "JobId") : "taipy.core",
-    ("typing", "PipelineId") : "taipy.core",
-    ("typing", "ScenarioId") : "taipy.core",
-    ("typing", "TaskId") : "taipy.core",
-    ("taipy.core.cycle.cycle", "Cycle") : "taipy.core",
-    ("taipy.core.data.data_node", "DataNode") : "taipy.core",
-    ("taipy.core.common.frequency", "Frequency") : "taipy.core",
-    ("taipy.core.job.job", "Job") : "taipy.core",
-    ("taipy.core.pipeline.pipeline", "Pipeline") : "taipy.core",
-    ("taipy.core.scenario.scenario", "Scenario") : "taipy.core",
-    ("taipy.core.common.scope", "Scope") : "taipy.core",
-    ("taipy.core.job.status", "Status") : "taipy.core",
-    ("taipy.core.task.task", "Task") : "taipy.core",
-    ("taipy.core.data.csv", "CSVDataNode") : "taipy.core.data",
-    ("taipy.core.data.excel", "ExcelDataNode") : "taipy.core.data",
-    ("taipy.core.data.generic", "GenericDataNode") : "taipy.core.data",
-    ("taipy.core.data.in_memory", "InMemoryDataNode") : "taipy.core.data",
-    ("taipy.core.data.pickle", "PickleDataNode") : "taipy.core.data",
-    ("taipy.core.data.sql", "SQLDataNode") : "taipy.core.data",
-    ("taipy.core.taipy", "clean_all_entities") : "taipy.core",
-    ("taipy.core.taipy", "compare_scenarios") : "taipy.core",
-    ("taipy.core.taipy", "create_pipeline") : "taipy.core",
-    ("taipy.core.taipy", "create_scenario") : "taipy.core",
-    ("taipy.core.taipy", "delete") : "taipy.core",
-    ("taipy.core.taipy", "delete_job") : "taipy.core",
-    ("taipy.core.taipy", "delete_jobs") : "taipy.core",
-    ("taipy.core.taipy", "get") : "taipy.core",
-    ("taipy.core.taipy", "get_cycles") : "taipy.core",
-    ("taipy.core.taipy", "get_data_nodes") : "taipy.core",
-    ("taipy.core.taipy", "get_jobs") : "taipy.core",
-    ("taipy.core.taipy", "get_latest_job") : "taipy.core",
-    ("taipy.core.taipy", "get_pipelines") : "taipy.core",
-    ("taipy.core.taipy", "get_primary") : "taipy.core",
-    ("taipy.core.taipy", "get_primary_scenarios") : "taipy.core",
-    ("taipy.core.taipy", "get_scenarios") : "taipy.core",
-    ("taipy.core.taipy", "get_tasks") : "taipy.core",
-    ("taipy.core.taipy", "set") : "taipy.core",
-    ("taipy.core.taipy", "set_primary") : "taipy.core",
-    ("taipy.core.taipy", "submit") : "taipy.core",
-    ("taipy.core.taipy", "subscribe_pipeline") : "taipy.core",
-    ("taipy.core.taipy", "subscribe_scenario") : "taipy.core",
-    ("taipy.core.taipy", "tag") : "taipy.core",
-    ("taipy.core.taipy", "unsubscribe_pipeline") : "taipy.core",
-    ("taipy.core.taipy", "unsubscribe_scenario") : "taipy.core",
-    ("taipy.core.taipy", "untag") : "taipy.core",
-    ("taipy.rest.rest", "Rest") : "taipy.rest",
-}
+# (destination_package, item_pattern)
+# or (destination_package, item_patterns)
+FORCE_PACKAGE = [
+    ("typing.*", "taipy.core"),
+    ("taipy.gui.*.(Gui|State|Markdown)", "taipy.gui"),
+    ("taipy.gui.partial.Partial", "taipy.gui.partial"),
+    ("taipy.gui.page.Page", "taipy.gui.page"),
+    (["taipy.core.cycle.cycle.Cycle",
+      "taipy.core.data.data_node.DataNode",
+      "taipy.core.common.frequency.Frequency",
+      "taipy.core.job.job.Job",
+      "taipy.core.pipeline.pipeline.Pipeline",
+      "taipy.core.scenario.scenario.Scenario",
+      "taipy.core.common.scope.Scope",
+      "taipy.core.job.status.Status",
+      "taipy.core.task.task.Task",
+      "taipy.core.taipy.clean_all_entities",
+      "taipy.core.taipy.compare_scenarios",
+      "taipy.core.taipy.create_pipeline",
+      "taipy.core.taipy.create_scenario",
+      "taipy.core.taipy.delete",
+      "taipy.core.taipy.delete_job",
+      "taipy.core.taipy.delete_jobs",
+      "taipy.core.taipy.get",
+      "taipy.core.taipy.get_cycles",
+      "taipy.core.taipy.get_data_nodes",
+      "taipy.core.taipy.get_jobs",
+      "taipy.core.taipy.get_latest_job",
+      "taipy.core.taipy.get_pipelines",
+      "taipy.core.taipy.get_primary",
+      "taipy.core.taipy.get_primary_scenarios",
+      "taipy.core.taipy.get_scenarios",
+      "taipy.core.taipy.get_tasks",
+      "taipy.core.taipy.set",
+      "taipy.core.taipy.set_primary",
+      "taipy.core.taipy.submit",
+      "taipy.core.taipy.subscribe_pipeline",
+      "taipy.core.taipy.subscribe_scenario",
+      "taipy.core.taipy.tag",
+      "taipy.core.taipy.unsubscribe_pipeline",
+      "taipy.core.taipy.unsubscribe_scenario",
+      "taipy.core.taipy.untag"], "taipy.core"),
+    ("taipy.core.data.*.*DataNode", "taipy.core.data"),
+    ("taipy.rest.rest.Rest", "taipy.rest")
+]
+
 REFERENCE_REL_PATH = "manuals/reference"
 REFERENCE_DIR_PATH = root_dir + "/docs/" + REFERENCE_REL_PATH
 XREFS_PATH = root_dir + "/docs/manuals/xrefs"
@@ -128,7 +105,11 @@ if not os.path.isdir(VISELEMENTS_SRC_PATH):
 
 # Check that the source files are available
 if not os.path.exists(f"{root_dir}/{ROOT_PACKAGE}"):
-    raise SystemError(f"FATAL - Could not find root package in {root_dir}/{ROOT_PACKAGE}")
+    # Result of a fail previous run?
+    if os.path.exists(f"{tools_dir}/{ROOT_PACKAGE}"):
+        shutil.move(f"{tools_dir}/{ROOT_PACKAGE}", f"{root_dir}/{ROOT_PACKAGE}")
+    else:
+        raise SystemError(f"FATAL - Could not find root package in {root_dir}/{ROOT_PACKAGE}")
 
 # Read mkdocs yml template file
 mkdocs_yml_content = None
@@ -147,7 +128,6 @@ shutil.move(f"{root_dir}/{ROOT_PACKAGE}", f"{tools_dir}/{ROOT_PACKAGE}")
 def restore_top_package_location():
     # Move top package back to the root level for MkDocs.
     shutil.move(f"{tools_dir}/{ROOT_PACKAGE}", f"{root_dir}/{ROOT_PACKAGE}")
-
 
 # ------------------------------------------------------------------------
 # Step 1
@@ -366,7 +346,7 @@ with open(os.path.join(GUI_DOC_PATH, "blocks.md"), "w") as file:
 # Step 2
 #   Generating the Reference Manual
 # ------------------------------------------------------------------------
-print("Step 2/3: Generating the Reference Manual pages")
+print("Step 2/3: Generating the Reference Manual pages", flush=True)
 
 # Create empty REFERENCE_DIR_PATH directory
 if os.path.exists(REFERENCE_DIR_PATH):
@@ -379,6 +359,14 @@ TYPE_ID = "T"
 FIRST_DOC_LINE_RE = re.compile(r"^(.*?)(:?\n\s*\n|$)", re.DOTALL)
 REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 
+# Entries:
+#   full_entry_name ->
+#     name
+#     module (source)
+#     type
+#     doc
+#     packages
+entries: Dict[str, Dict[str, Any]] = {}
 entry_to_package = {}
 module_doc = {}
 
@@ -423,41 +411,79 @@ def read_module(module):
                 doc = REMOVE_LINE_SKIPS_RE.subn(" ", first_line.group(0))[0].strip()
             else:
                 print(f"WARNING - Couldn't extract doc summary for {e.__name__} in {e.__module__}", flush=True)
-        key = (e.__module__, entry, entry_type, doc)
-        if key in entry_to_package:
-            package_changed = False
-            for src_pkg, dst_pkg in PACKAGES_VISIBILITY:
-                if module.__name__.startswith(dst_pkg) and entry_to_package[key].startswith(src_pkg):
-                    entry_to_package[key] = module.__name__
-                    package_changed = True
+        full_name = f"{e.__module__}.{entry}"
+        if entry_info := entries.get(full_name):
+            packages = entry_info["packages"]
+            new_packages = []
+            add_package = None
+            # Current module is prefix to known packages?
+            for package in packages:
+                if package.startswith(module.__name__):
+                    add_package = module.__name__
+                else:
+                    new_packages.append(package)
+            if add_package:
+                new_packages.insert(0, add_package)
+                packages = new_packages
+            # Any known package is prefix to module?
+            add_package = module.__name__
+            for package in packages:
+                if module.__name__.startswith(package):
+                    add_package = None
                     break
-            if not package_changed and e.__module__ != module.__name__:
-                # Keep the top-most package
-                if e.__module__.startswith(module.__name__) and entry_to_package[key].startswith(module.__name__):
-                    entry_to_package[key] = module.__name__
-                else: # Is there a package with a higher priority?
-                    for src_pkg, dst_pkg in PACKAGES_VISIBILITY:
-                        if module.__name__.startswith(dst_pkg) and entry_to_package[key].startswith(src_pkg):
-                            entry_to_package[key] = module.__name__
-                            break
+            if add_package:
+                new_packages.append(add_package)
+            entry_info["packages"] = new_packages
         else:
             if doc is None:
                 print(f"WARNING - {e.__name__} [in {e.__module__}] has no doc", flush=True)
-            entry_to_package[key] = module.__name__
+            entries[full_name] = {
+                "name": entry,
+                "module": e.__module__,
+                "type": entry_type,
+                "doc": doc,
+                "packages": [module.__name__],
+            }
 
 read_module(__import__(ROOT_PACKAGE))
 
 restore_top_package_location()
 
+FORCE_PACKAGE_REGEXPS = []
+def convert_to_pattern(input, dest):
+    pattern = "^" + input.replace(".", "\\.").replace("*", ".*") + "$"
+    FORCE_PACKAGE_REGEXPS.append((re.compile(pattern), dest))
+for force_package in FORCE_PACKAGE:
+    if isinstance(force_package[0], list):
+        for fp in force_package[0]:
+            convert_to_pattern(fp, force_package[1])
+    else:
+        convert_to_pattern(force_package[0], force_package[1])
+for entry, entry_info in entries.items():
+    if len(entry_info["packages"]) != 1:
+        print(f"MULTIPLE PACKAGES - Entry {entry}")
+    # "name": "module" "type" "doc" "packages"
+    for force_package in FORCE_PACKAGE_REGEXPS:
+        if force_package[0].match(entry):
+            entry_info["force_package"] = force_package[1]
+            break
+# DEBUG
+with open("all_entries.json", "w") as debug_output_file:
+    debug_output_file.write(json.dumps(entries, indent=2))
+
+#exit(0)
+
 # Group entries by package
 package_to_entries = {}
-for entry, package in entry_to_package.items():
-    if force_package:= ITEMS_VISIBILITY.get((entry[0], entry[1])):
-        package = force_package
+for entry, info in entries.items():
+    package = info.get("force_package", info["packages"][0])
     if package in package_to_entries:
-        package_to_entries[package].append(entry)
+        package_to_entries[package].append(info)
     else:
-        package_to_entries[package] = [entry]
+        package_to_entries[package] = [info]
+# DEBUG
+with open("all_packages.json", "w") as debug_output_file:
+    debug_output_file.write(json.dumps(package_to_entries, indent=2))
 
 # Generate all Reference manual pages and update navigation
 navigation = ""
@@ -467,15 +493,15 @@ for package in sorted(package_to_entries.keys()):
     functions = []
     classes = []
     types = []
-    for entry in package_to_entries[package]:
-        if entry[2] == CLASS_ID:
-            classes.append(entry)
-        elif entry[2] == FUNCTION_ID:
-            functions.append(entry)
-        elif entry[2] == TYPE_ID:
-            types.append(entry)
+    for entry_info in package_to_entries[package]:
+        if entry_info["type"] == CLASS_ID:
+            classes.append(entry_info)
+        elif entry_info["type"] == FUNCTION_ID:
+            functions.append(entry_info)
+        elif entry_info["type"] == TYPE_ID:
+            types.append(entry_info)
         else:
-            raise SystemError("FATAL - Invalid entry type '{entry[2]}' for {entry[0]}.{entry[1]}")
+            raise SystemError("FATAL - Invalid entry type '{entry_info['type']}' for {entry_info['module']}.{entry_info['name']}")
     if not classes and not functions and not types:
         print(f"INFO - Skipping package {package}: no documented elements")
         continue
@@ -493,6 +519,8 @@ for package in sorted(package_to_entries.keys()):
                 new_package_group = p
                 break
         if new_package_group != package_group:
+            if not new_package_group:
+                raise SystemExit(f"FATAL - Unknown package '{new_package_group}' for package '{package}' (renamed from '{package_group}')")
             package_group = new_package_group
             navigation += (" " * 4 + f"- {package_group}:\n")
         navigation += (" " * (6 if package_group else 4)
@@ -500,21 +528,22 @@ for package in sorted(package_to_entries.keys()):
         package_output_path = os.path.join(REFERENCE_DIR_PATH, f"pkg_{package}.md")
 
 
-    def generate_entries(entries, package, type, package_output_file, in_group):
+    def generate_entries(entry_infos, package, type, package_output_file, in_group):
         in_group = "../" if in_group else ""
-        for entry in sorted(entries, key=lambda e: e[1]):
-            name = entry[1]
+        for entry_info in sorted(entry_infos, key=lambda i: i["name"]):
+            name = entry_info["name"]
+            force_package = entry_info.get("force_package", package)
             package_output_file.write(f"   - [`{name}"
-                                      + f"{'()' if type == FUNCTION_ID else ''}`]({in_group}{package}.{name}.md)"
-                                      + f"{': ' + entry[3] if entry[3] else ' - NOT DOCUMENTED'}\n")
-            output_path = os.path.join(REFERENCE_DIR_PATH, f"{package}.{name}.md")
+                                      + f"{'()' if type == FUNCTION_ID else ''}`]({in_group}{force_package}.{name}.md)"
+                                      + f"{': ' + entry_info['doc'] if entry_info['doc'] else ' - NOT DOCUMENTED'}\n")
+            output_path = os.path.join(REFERENCE_DIR_PATH, f"{force_package}.{name}.md")
             with open(output_path, "w") as output_file:
                 output_file.write("---\nhide:\n  - navigation\n---\n\n"
-                                  + f"::: {package}.{name}\n")
-            if name in xrefs:
+                                  + f"::: {force_package}.{name}\n")
+            if xref := xrefs.get(name):
                 print(
-                    f"ERROR - {'Function' if type == FUNCTION_ID else 'Class'} {name} already declared in {xrefs[name]}")
-            xrefs[name] = (package, entry[0])
+                    f"ERROR - {'Function' if type == FUNCTION_ID else 'Class'} {name} already declared as {xref[0]}.{xref[1]}")
+            xrefs[name] = [force_package, entry_info["module"], entry_info["packages"]]
 
 
     with open(package_output_path, "w") as package_output_file:
@@ -526,18 +555,24 @@ for package in sorted(package_to_entries.keys()):
         if types:
             package_output_file.write(f"### Types\n\n")
             for type in types:
-                name = type[1]
+                name = type["name"]
                 package_output_file.write(f"   - `{name}`"
-                                        + f"{': ' + type[3] if type[3] else ' - NOT DOCUMENTED'}\n")
+                                        + f"{': ' + type.get('doc', ' - NOT DOCUMENTED')}\n")
                 if name in xrefs:
                     print(f"WARNING - Type {package}.{name} already declared in {xrefs[name]}")
-                xrefs[name] = (package, type[0])
+                xrefs[name] = [package, entry_info["module"], entry_info.get("final_package")]
         if functions:
             package_output_file.write(f"### Functions\n\n")
             generate_entries(functions, package, FUNCTION_ID, package_output_file, package_grouped)
         if classes:
             package_output_file.write(f"### Classes\n\n")
             generate_entries(classes, package, CLASS_ID, package_output_file, package_grouped)
+
+# Filter out packages that are the exposed pagckage and appear in the packages list
+for entry, entry_desc in xrefs.items():
+    package = entry_desc[0]
+    if entry_desc[2]:
+        entry_desc[2] = [p for p in entry_desc[2] if p != package]
 with open(XREFS_PATH, "w") as xrefs_output_file:
     xrefs_output_file.write(json.dumps(xrefs))
 
