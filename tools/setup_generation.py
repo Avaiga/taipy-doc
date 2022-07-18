@@ -467,11 +467,6 @@ for entry, entry_info in entries.items():
         if force_package[0].match(entry):
             entry_info["force_package"] = force_package[1]
             break
-# DEBUG
-with open("all_entries.json", "w") as debug_output_file:
-    debug_output_file.write(json.dumps(entries, indent=2))
-
-#exit(0)
 
 # Group entries by package
 package_to_entries = {}
@@ -481,9 +476,6 @@ for entry, info in entries.items():
         package_to_entries[package].append(info)
     else:
         package_to_entries[package] = [info]
-# DEBUG
-with open("all_packages.json", "w") as debug_output_file:
-    debug_output_file.write(json.dumps(package_to_entries, indent=2))
 
 # Generate all Reference manual pages and update navigation
 navigation = ""
