@@ -28,7 +28,7 @@ CMD python my-app.py
 
 !!! Note
 
-    If you are using a Microsoft SQL Server as `SQLDataNode^`, you need to add the following commands
+    If you are using a `SQLDataNode^` with a Microsoft SQL Server, you need to add the following commands
     before installing your application:
     ```
     RUN apt-get update && apt-get install -y lsb-release && apt-get clean all
