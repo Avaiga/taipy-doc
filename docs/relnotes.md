@@ -14,6 +14,8 @@ This is the list of changes to Taipy releases as they were published.
 **`taipy-core`**<br/>1.2.0
 
    - The data node of a scenario or a pipeline can now be accessed at the scenario or pipeline level.
+   - When submitting a scenario, a pipeline or a task, a list of jobs or a Job will be returned.
+   - A submitted job can be cancelled. The subsequent jobs are abandoned.
 
 ## Community edition: 1.1
 
