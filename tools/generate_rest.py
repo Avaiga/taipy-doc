@@ -21,13 +21,16 @@ def _split_into_components(specs: dict):
     """
     paths = ["cycle", "scenario", "pipeline", "datanode", "task", "job", "auth"]
     enterprise_paths = ["auth"]
+    additional_schemas = {
+        "job": ["callable"],
+        "auth": ["login"],
+    }
 
     for p in paths:
         tmp = copy.deepcopy(specs)
-        if p != "job":
-            filtered_schema = {k: v for k, v in tmp["components"]["schemas"].items() if p in k.lower()}
-        else:
-            filtered_schema = {k: v for k, v in tmp["components"]["schemas"].items() if p or "callable" in k.lower()}
+        filtered_keys = [p] + additional_schemas.get(p, [])
+        filtered_schema = {k: v for k, v in tmp["components"]
+                           ["schemas"].items() if any(key in k.lower() for key in filtered_keys)}
         filtered_path = {k: v for k, v in tmp["paths"].items() if p in k.lower()}
 
         tmp["components"]["schemas"] = filtered_schema
