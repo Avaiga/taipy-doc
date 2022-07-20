@@ -159,7 +159,6 @@ plugins:
         - taipy
   - macros:
       module_name: tools/postprocess
-  - render_swagger
 extra:
   social:
     - icon: fontawesome/brands/twitter

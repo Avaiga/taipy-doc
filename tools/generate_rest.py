@@ -1,5 +1,6 @@
 import copy
 import json
+from subprocess import call
 
 from taipy.rest.api.views import register_views
 from taipy.rest.app import create_app
@@ -13,6 +14,11 @@ enterprise_warnings = """!!! warning "Available in Taipy Enterprise edition"
 
 
 def _split_into_components(specs: dict):
+    """
+    Require node and widdershins to be installed on local machine.
+
+    `npm i -g widdershins`
+    """
     paths = ["cycle", "scenario", "pipeline", "datanode", "task", "job", "auth"]
     enterprise_paths = ["auth"]
 
@@ -28,10 +34,16 @@ def _split_into_components(specs: dict):
         tmp["paths"] = filtered_path
         with open(f"docs/manuals/rest/{p}.json", "w") as f:
             json.dump(tmp, f)
-        with open(f"docs/manuals/rest/{p}.md", "w") as f:
-            if p in enterprise_paths:
-                f.write(enterprise_warnings)
-            f.write(f"!!swagger {p}.json!!\n")
+        call(
+            f"widdershins --search false --language_tabs --summary docs/manuals/rest/{p}.json -o docs/manuals/rest/{p}.md",
+            shell=True,
+        )
+
+        if p in enterprise_paths:
+            with open(f"docs/manuals/rest/{p}.md", "r") as f:
+                content = f.read()
+            with open(f"docs/manuals/rest/{p}.md", "w") as f:
+                f.write(enterprise_warnings + content)
 
 
 if __name__ == "__main__":
