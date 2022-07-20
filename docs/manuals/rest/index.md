@@ -5,7 +5,6 @@ automate the use of Taipy Core features by providing a runnable application expo
 
 It is particularly useful when it comes to integrating a Taipy application in a more complex IT ecosystem.
 
-
 ## What is a Taipy REST API
 
 Taipy REST API allows developers to create, read, update, run and remove Taipy entities (including scenarios,
@@ -18,6 +17,7 @@ concepts documentation](../core/concepts/index.md).
    [Core configuration documentation](../core/config/index.md).
 
 2. Configure Taipy REST environment
+
     - _FLASK_ENV_: Can be set to _"development"_ to set the server to debug mode.
     - _SECRET_KEY_: The secret key of the server.
 

@@ -121,3 +121,6 @@ docs/getting_started/index.md
 docs/getting_started/step_*/
 docs/getting_started/src/
 docs/getting_started/summary.txt
+docs/manuals/rest/*.json
+docs/manuals/rest/*.md
+!docs/manuals/rest/index.md
