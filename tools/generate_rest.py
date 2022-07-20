@@ -2,9 +2,9 @@ import copy
 import json
 from subprocess import call
 
-from taipy.rest.api.views import register_views
-from taipy.rest.app import create_app
-from taipy.rest.extensions import apispec
+from ..taipy.rest.api.views import register_views
+from ..taipy.rest.app import create_app
+from ..taipy.rest.extensions import apispec
 
 enterprise_warnings = """!!! warning "Available in Taipy Enterprise edition"
 
@@ -29,8 +29,9 @@ def _split_into_components(specs: dict):
     for p in paths:
         tmp = copy.deepcopy(specs)
         filtered_keys = [p] + additional_schemas.get(p, [])
-        filtered_schema = {k: v for k, v in tmp["components"]
-                           ["schemas"].items() if any(key in k.lower() for key in filtered_keys)}
+        filtered_schema = {
+            k: v for k, v in tmp["components"]["schemas"].items() if any(key in k.lower() for key in filtered_keys)
+        }
         filtered_path = {k: v for k, v in tmp["paths"].items() if p in k.lower()}
 
         tmp["components"]["schemas"] = filtered_schema
