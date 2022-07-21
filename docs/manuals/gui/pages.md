@@ -7,7 +7,7 @@ interact with the application data through visual elements.
 ## Defining pages
 
 Taipy lets you create as many pages as you want, with whatever content you need.
-Pages are created using sub-classes of the (Page^) class which convert some text
+Pages are created using sub-classes of the (`Page^`) class which convert some text
 (inside the application code or from an external file) into HTML content sent and
 rendered on the client device.
 
@@ -77,7 +77,7 @@ whose content is defined by Markdown text.
 !!! Note "Markdown link syntax"
     You can use Markdown's native _link_ syntax to easily create links
     from one page to another.
-    
+
     If, for example, your application has two pages (see below how to create such
     an application, where pages would be called "page1" and "page2"), you can
     create a link to "page2" from "page1" by adding the following
@@ -141,7 +141,7 @@ Of course, the text can be stored in a Python variable and used in the `Gui^`
 constructor:
 ```py
 ...
-md = "# This is my page title" 
+md = "# This is my page title"
 Gui(md)
 ```
 
@@ -282,7 +282,7 @@ user's response.
 
     Here is an example of how you would create a dialog, directly in your Markdown
     content:
-    
+
     ``` py
        ...
        page="""
@@ -324,14 +324,14 @@ in visual elements that use them.
        prompt_user = gui.add_partial(
          """
          Enter a name:
-    
+
          <|{name}|input|>
          """
        )
        gui.run()
     ```
 
-You can take a look at the documentation of the [`dialog`](viselements/dialog.md) or 
+You can take a look at the documentation of the [`dialog`](viselements/dialog.md) or
 [`pane`](viselements/pane.md) to see how these _Partials_ can be used in pages.
 
 ## Panes
