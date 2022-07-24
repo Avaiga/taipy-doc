@@ -2,9 +2,9 @@ import copy
 import json
 from subprocess import call
 
-from ..taipy.rest.api.views import register_views
-from ..taipy.rest.app import create_app
-from ..taipy.rest.extensions import apispec
+from taipy.rest.api.views import register_views
+from taipy.rest.app import create_app
+from taipy.rest.extensions import apispec
 
 enterprise_warnings = """!!! warning "Available in Taipy Enterprise edition"
 
@@ -22,6 +22,7 @@ def _split_into_components(specs: dict):
     paths = ["cycle", "scenario", "pipeline", "datanode", "task", "job", "auth"]
     enterprise_paths = ["auth"]
     additional_schemas = {
+        "datanode": ["any"],
         "job": ["callable"],
         "auth": ["login"],
     }
@@ -39,7 +40,7 @@ def _split_into_components(specs: dict):
         with open(f"docs/manuals/rest/{p}.json", "w") as f:
             json.dump(tmp, f)
         call(
-            f"widdershins --omitHeader true --search false --language_tabs --summary docs/manuals/rest/{p}.json -o docs/manuals/rest/{p}.md",
+            f"widdershins --omitHeader true --search false --language_tabs 'http: HTTP' --summary docs/manuals/rest/{p}.json -o docs/manuals/rest/{p}.md",
             shell=True,
         )
 
