@@ -40,7 +40,7 @@ def _split_into_components(specs: dict):
         with open(f"docs/manuals/rest/{p}.json", "w") as f:
             json.dump(tmp, f)
         call(
-            f"widdershins --omitHeader true --search false --language_tabs 'http: HTTP' --summary docs/manuals/rest/{p}.json -o docs/manuals/rest/{p}.md",
+            f"widdershins --omitHeader true --search false --language_tabs shell --summary docs/manuals/rest/{p}.json -o docs/manuals/rest/{p}.md",
             shell=True,
         )
 
