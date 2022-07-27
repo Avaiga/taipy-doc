@@ -4,11 +4,9 @@
 - Docker must be installed. Check [the official documentation](https://docs.docker.com/engine/install/) for docker installation.
 - Docker-compose must be installed. Check [the official documentation](https://docs.docker.com/compose/install/) for docker-compose installation.
 
-**Important information:** The following setup is designed for development and testing. It does not target a production deployment.
+## Development Dockerfile
 
-## Basic Taipy Dockerfile
-
-The following example allows you to run your application inside a Docker container.
+The following example allows you to run your application for development purpose inside a Docker container.
 
 ```
 # Your Python version
@@ -23,7 +21,7 @@ COPY . /app
 RUN pip install -r requirements.txt
 
 # Start up command
-CMD python my-app.py
+CMD python main.py
 ```
 
 !!! Note
