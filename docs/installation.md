@@ -5,6 +5,15 @@ hide:
 
 # Installation
 
+## Prerequisite
+
+To run Taipy, Python (version 3.8 or above) and [pip][] are required. If you don't have pip installed, this [Python installation guide][] can guide you through the process, or you can follow the [official installation page][] of pip.
+
+You can also install pip in a [conda][] environment by using the following command:
+``` console
+$ conda install pip
+```
+
 ## Stable release
 
 To install Taipy, run this command in your terminal:
@@ -15,10 +24,14 @@ $ pip install taipy
 
 !!! info "This is the preferred method to install Taipy, as it will always install the most recent stable release."
 
-    If you don't have [pip][] installed, this [Python installation guide][]
-    can guide you through the process.
+### Installing Taipy in a Conda environment
 
-    This method also applies for installing Taipy in an Anaconda environment.
+Taipy can also be installed and used in a conda environment, to do so, run this command in your terminal:
+``` console
+$ conda create -n env-name
+$ conda activate env-name
+$ pip install taipy
+```
 
 ## From source
 
@@ -47,3 +60,5 @@ $ pip install .
   [Python installation guide]: http://docs.python-guide.org/en/latest/starting/installation/
   [Github repo]: https://github.com/Avaiga/taipy
   [tarball]: https://github.com/Avaiga/taipy/tarball/main
+  [official installation page]: https://pip.pypa.io/en/latest/installation/
+  [conda]: https://docs.conda.io/projects/conda/en/latest/index.html
