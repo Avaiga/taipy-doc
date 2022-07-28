@@ -313,7 +313,7 @@ def on_post_build(env):
                         if file_was_changed:
                             html_content = html_content.replace(table_line_to_replace, new_table_line)
 
-                    # Shorten Table of contents in READ API files
+                    # Shorten Table of contents in REST API files
                     if "rest/apis_" in filename or "rest\\apis_" in filename:
                         REST_TOC_ENTRY_RE = re.compile(r"(<a\s+href=\"#apiv.*?>\s+)"
                                                      + r"/api/v\d+(.*?)(?=\s+</a>)")
