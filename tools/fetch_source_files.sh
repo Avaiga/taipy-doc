@@ -209,9 +209,6 @@ fi
 copy_module_to_taipy()
 {
     srcdir=$2/src
-    if [ $1 == "gui" ]; then
-        srcdir=$2
-    fi
     (cd $srcdir; tar cf - `find taipy -name \\*.py`) | (cd $ROOT_DIR;tar xf -)
 }
 
