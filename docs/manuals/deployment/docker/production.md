@@ -7,10 +7,10 @@
 
 ## Production ready Dockerfile
 
-The following Dockerfile contains minimum configuration for put your application in production.
+The following Dockerfile contains the minimum configuration settings for you to deploy your application to production.
 
-This template assumes that you provide a `requirements.txt` file with all your dependencies.
-Please, update the Docker command `CMD` with corresponding file name and Flask app of your application
+This template assumes that you provide a `requirements.txt` file with all the Python dependencies of your application.
+Make sure you update the Docker command `CMD` with the appropriate file name and Flask settings for your application
 as describe in [prepare your application for deployment](../prepare-taipy-for-deployment.md).
 
 ```
@@ -43,7 +43,7 @@ CMD [ "<main>:<app>" ]
 
 !!! Note
 
-    If you are using a `SQLDataNode^` with a Microsoft SQL Server, you need to add the following commands
+    If you are using an `SQLDataNode^` based on Microsoft SQL Server, you need to add the following commands
     before creating the user:
     ```
     RUN apt-get update && apt-get install -y lsb-release && apt-get clean all
