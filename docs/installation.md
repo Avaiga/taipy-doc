@@ -7,9 +7,9 @@ hide:
 
 ## Prerequisite
 
-To run Taipy, Python (version 3.8 or above) and [pip][https://pip.pypa.io] are required. If you don't have `pip` installed, this [Python installation guide][http://docs.python-guide.org/en/latest/starting/installation/] can guide you through the process, or you can follow the [official installation page][https://pip.pypa.io/en/latest/installation/] of `pip`.
+To run Taipy, Python (version 3.8 or above) and [pip](https://pip.pypa.io) are required. If you don't have `pip` installed, this [Python installation guide](http://docs.python-guide.org/en/latest/starting/installation/) can guide you through the process, or you can follow the [official installation page](https://pip.pypa.io/en/latest/installation/) of `pip`.
 
-You can also install `pip` in a [Conda][https://docs.conda.io/projects/conda/en/latest/index.html] environment by using the following command:
+You can also install `pip` in a [Conda](https://docs.conda.io/projects/conda/en/latest/index.html) environment by using the following command:
 ``` console
 $ conda install pip
 ```
@@ -36,7 +36,7 @@ $ pip install taipy
 ## From source
 
 The source for Taipy can be downloaded from
-the [Github repo][https://github.com/Avaiga/taipy].
+the [Github repo](https://github.com/Avaiga/taipy).
 
 You can either clone the public repository:
 
@@ -44,7 +44,7 @@ You can either clone the public repository:
 $ git clone git://github.com/avaiga/taipy
 ```
 
-Or download the [tarball][https://github.com/Avaiga/taipy/tarball/main]:
+Or download the [tarball](https://github.com/Avaiga/taipy/tarball/main):
 
 ``` console
 $ curl -OJL https://github.com/avaiga/taipy/tarball/main
