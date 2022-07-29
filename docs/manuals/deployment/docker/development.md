@@ -26,7 +26,7 @@ CMD python main.py
 
 !!! Note
 
-    If you are using an `SQLDataNode^` based on Microsoft SQL Server, you need to add the following commands
+    If you are using an SQL database based on Microsoft SQL Server, you need to add the following commands
     before installing your application:
     ```
     RUN apt-get update && apt-get install -y lsb-release && apt-get clean all
