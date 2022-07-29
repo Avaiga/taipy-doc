@@ -313,6 +313,20 @@ def on_post_build(env):
                         if file_was_changed:
                             html_content = html_content.replace(table_line_to_replace, new_table_line)
 
+                    # Shorten Table of contents in REST API files
+                    if "rest/apis_" in filename or "rest\\apis_" in filename:
+                        REST_TOC_ENTRY_RE = re.compile(r"(<a\s+href=\"#apiv.*?>\s+)"
+                                                     + r"/api/v\d+(.*?)(?=\s+</a>)")
+                        new_content = ""
+                        last_location = 0
+                        for toc_entry in REST_TOC_ENTRY_RE.finditer(html_content):
+                            new_content += html_content[last_location:toc_entry.start()]
+                            new_content += f"{toc_entry.group(1)}{toc_entry.group(2)}"
+                            last_location = toc_entry.end()
+                        if last_location:
+                            file_was_changed = True
+                            html_content = new_content + html_content[last_location:]
+
                 if file_was_changed:
                     with open(filename, "w") as html_file:
                         html_file.write(html_content)

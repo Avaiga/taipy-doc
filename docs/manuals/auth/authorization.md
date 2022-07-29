@@ -201,7 +201,7 @@ user can display.
 
 The `AuthorizedPage^` class lets you specify a role traits filter where
 both the *success* and *failure* cases must be a page renderer (whether
-a `Markdown^` or an `HTML^` instance - see the
+a `Markdown^` or an `Html^` instance - see the
 [section on Page Renderers](../gui/pages.md/#defining-the-page-content) for more
 information).<br/>
 Instead of calling `Gui.add_page()` for the page renderer, you will

@@ -59,13 +59,6 @@ nav:
             - 'Job execution': 'manuals/core/entities/scheduling-and-job-execution.md'
     - 'Taipy REST':
         - manuals/rest/index.md
-        - 'Data node endpoints': 'manuals/rest/datanode.md'
-        - 'Task endpoints': 'manuals/rest/task.md'
-        - 'Pipeline endpoints': 'manuals/rest/pipeline.md'
-        - 'Scenario endpoints': 'manuals/rest/scenario.md'
-        - 'Cycle endpoints': 'manuals/rest/cycle.md'
-        - 'Job endpoints': 'manuals/rest/job.md'
-        - 'Auth endpoints': 'manuals/rest/auth.md'
     - 'Authentication and Roles':
         - manuals/auth/index.md
         - 'Authentication': 'manuals/auth/authentication.md'
@@ -85,6 +78,9 @@ nav:
   - 'Reference Manual':
     - "About Taipy's Reference Manual": 'manuals/reference.md'
     [REFERENCE_CONTENT]
+    - "REST API":
+      - manuals/reference_rest/index.md
+      [REST_REFERENCE_CONTENT]
   - 'Contributing':
     - 'Contributing to Taipy': 'contributing/contributing.md'
     - 'Code of conduct': 'contributing/code_of_conduct.md'
