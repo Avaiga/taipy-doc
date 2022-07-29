@@ -69,7 +69,9 @@ nav:
             - 'Ubuntu': 'manuals/deployment/linux/ubuntu.md'
             - 'RHEL': 'manuals/deployment/linux/redhat.md'
         - 'Windows Server': 'manuals/deployment/windows.md'
-        - Docker: 'manuals/deployment/docker/docker.md'
+        - Docker:
+            - 'Development': 'manuals/deployment/docker/development.md'
+            - 'Production': 'manuals/deployment/docker/production.md'
         - 'Heroku':
             - 'Getting started': 'manuals/deployment/heroku/getting-started.md'
             - 'Setup': 'manuals/deployment/heroku/setup.md'
