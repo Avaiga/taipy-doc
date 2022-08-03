@@ -99,7 +99,7 @@ Here is the list of the job's attributes:
 -   `BLOCKED`: The job is blocked by inputs not ready.
 -   `PENDING`: The job is waiting for execution.
 -   `RUNNING`: The job is being executed.
--   `CANCELLED`: The job was cancelled by the user.
+-   `CANCELED`: The job was canceled by the user.
 -   `FAILED`: The job failed due to timeout or execution error.
 -   `COMPLETED`: The job execution is done and outputs were written.
 -   `SKIPPED`: The job was and will not be executed.
@@ -164,7 +164,7 @@ Jobs are created when a task is submitted.
 
 !!! example "Canceling a job"
 
-    ```python linenums="1"
+    ```python
     import taipy as tp
 
     def double(nb):
@@ -201,7 +201,7 @@ Jobs are created when a task is submitted.
     print(f'(6) Status of job print_task: {jobs[1].status}')
     ```
 
-This example will produce the following output:
+This example produces the following output:
 
 ```
 (1) Number of jobs: 0.
@@ -209,12 +209,12 @@ This example will produce the following output:
 (3) Status of job double_task: Status.RUNNING
 (4) Status of job print_task: Status.BLOCKED
 (5) Status of job double_task: Status.COMPLETED
-(6) Status of job print_task: Status.CANCELLED
+(6) Status of job print_task: Status.CANCELED
 ```
 
 !!! example "Canceling a running job"
 
-    ```python linenums="1"
+    ```python
     import taipy as tp
 
     def double(nb):
@@ -251,7 +251,7 @@ This example will produce the following output:
     print(f'(6) Status of job print_task: {jobs[1].status}')
     ```
 
-This example will produce the following output:
+This example produces the following output:
 
 ```
 (1) Number of jobs: 0.
