@@ -4,7 +4,8 @@ This User Manual covers all the topics and concepts that you can find in Taipy.
 For each topic, we are trying to provide as many examples as possible so that
 you as a Taipy user can perform a specific task.
 
-If you are just starting with Taipy, you may want to look at the [Getting Started document](../getting_started/installation.md)
+If you are just starting with Taipy, you may want to look at the
+[Getting Started document](../getting_started/installation.md)
 in order to see a step-by-step example of a complete Taipy application.
 
 !!! important "Supported Python versions"
