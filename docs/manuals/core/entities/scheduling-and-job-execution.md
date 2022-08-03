@@ -162,7 +162,7 @@ Jobs are created when a task is submitted.
 
 - You can cancel a Job with `taipy.cancel_job(job)^`. When canceling a Job, you will effectively set the `Status^` of subsequent jobs of the canceled Job to `ABANDONED`. However, a job cannot be canceled if it is already running. When canceling a running job, its subsequent jobs will be abandoned and the running job will continue running until completed.
 
-!!! example "Cancelling a job"
+!!! example "Canceling a job"
 
     ```python linenums="1"
     import taipy as tp
