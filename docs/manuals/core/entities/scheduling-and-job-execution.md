@@ -212,7 +212,7 @@ This example will produce the following output:
 (6) Status of job print_task: Status.CANCELLED
 ```
 
-!!! example "Cancelling a running job"
+!!! example "Canceling a running job"
 
     ```python linenums="1"
     import taipy as tp
