@@ -96,7 +96,7 @@ Here is the list of the job's attributes:
 ## Job Status
 
 -   `SUBMITTED`: The job is created but not enqueued for execution.
--   `BLOCKED`: The job is blocked by inputs not ready.
+-   `BLOCKED`: The job is blocked because inputs are not ready.
 -   `PENDING`: The job is waiting for execution.
 -   `RUNNING`: The job is being executed.
 -   `CANCELED`: The job was canceled by the user.
@@ -160,7 +160,7 @@ This example will produce the following output:
 
 Jobs are created when a task is submitted.
 
-- You can cancel a Job with `taipy.cancel_job(job)^`. When canceling a Job, you will effectively set the `Status^` of subsequent jobs of the canceled Job to `ABANDONED`. However, a job cannot be canceled if it is already running. When canceling a running job, its subsequent jobs will be abandoned and the running job will continue running until completed.
+- You can cancel a job with `taipy.cancel_job(job)^`. When canceling a job, you will set the `Status^` of subsequent jobs of the canceled job to `ABANDONED`. However, a job cannot be canceled if it is already running. When canceling a running job, its subsequent jobs will be abandoned and the running job will continue running until completed.
 
 !!! example "Canceling a job"
 
@@ -182,17 +182,16 @@ Jobs are created when a task is submitted.
     scenario = tp.create_scenario(scenario_config)
     tp.submit(scenario)
 
-    # Retrieve all jobs.
+    # Count the jobs.
     print(f'(2) Number of jobs: {len(tp.get_jobs())}.')
 
-    # Get the latest created job of a Task.
     jobs = tp.get_latest_job(scenario.double_task)
 
-    # Get status of the Job
+    # Get status of the job.
     print(f'(3) Status of job double_task: {job[0].status}')
     print(f'(4) Status of job print_task: {jobs[1].status}')
 
-    # Then cancel it.
+    # Then cancel the second job.
     tp.cancel_job(job[1])
 
     sleep(10)
@@ -232,17 +231,16 @@ This example produces the following output:
     scenario = tp.create_scenario(scenario_config)
     tp.submit(scenario)
 
-    # Retrieve all jobs.
+    # Count the jobs.
     print(f'(2) Number of jobs: {len(tp.get_jobs())}.')
 
-    # Get the latest created job of a Task.
     jobs = tp.get_latest_job(scenario.double_task)
 
-    # Get status of the Job
+    # Get status of the job.
     print(f'(3) Status of job double_task: {job[0].status}')
     print(f'(4) Status of job print_task: {jobs[1].status}')
 
-    # Then cancel it.
+    # Then cancel the first job.
     tp.cancel_job(job[0])
 
     sleep(10)
