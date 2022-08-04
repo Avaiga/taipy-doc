@@ -96,10 +96,10 @@ Here is the list of the job's attributes:
 ## Job Status
 
 -   `SUBMITTED`: The job is created but not enqueued for execution.
--   `BLOCKED`: The job is blocked by inputs not ready.
+-   `BLOCKED`: The job is blocked because inputs are not ready.
 -   `PENDING`: The job is waiting for execution.
 -   `RUNNING`: The job is being executed.
--   `CANCELLED`: The job was cancelled by the user.
+-   `CANCELED`: The job was canceled by the user.
 -   `FAILED`: The job failed due to timeout or execution error.
 -   `COMPLETED`: The job execution is done and outputs were written.
 -   `SKIPPED`: The job was and will not be executed.
@@ -160,18 +160,15 @@ This example will produce the following output:
 
 Jobs are created when a task is submitted.
 
-- You can cancel the Job with `taipy.cancel_job(job)^`. When cancelling a Job, you will effectively set the `Status^` of subsequent jobs of the cancelled Job to `ABANDONED`.
+- You can cancel a job with `taipy.cancel_job(job)^`. When canceling a job, you will set the `Status^` of subsequent jobs of the canceled job to `ABANDONED`. However, a job cannot be canceled if it is already running. When canceling a running job, its subsequent jobs will be abandoned and the running job will continue running until completed.
 
-!!! Warning
-    Cancelling a `RUNNING` Job will set the Job to `CANCELLED`. However, it will not terminate the subprocess that has already been dispatched to execute the Job.
+!!! example "Canceling a job"
 
-!!! Example
-
-    ```python linenums="1"
+    ```python
     import taipy as tp
 
     def double(nb):
-        sleep(10)
+        sleep(5)
         return nb * 2
 
     print(f'(1) Number of jobs: {len(tp.get_jobs())}.')
@@ -179,33 +176,88 @@ Jobs are created when a task is submitted.
     # Create a scenario then submit it.
     input_data_node_config = tp.configure_data_node("input", default_value=21)
     output_data_node_config = tp.configure_data_node("output")
-    task_config = tp.configure_task("double_task", double)
-    scenario_config = tp.configure_scenario_from_tasks("my_scenario", [task_config])
+    double_task_config = tp.configure_task("double_task", double, input_data_node_config, output_data_node_config)
+    print_task_config = tp.configure_task("print_task", print, output_data_node_config)
+    scenario_config = tp.configure_scenario_from_tasks("my_scenario", [double_task_config, print_task_config])
     scenario = tp.create_scenario(scenario_config)
     tp.submit(scenario)
 
-    # Retrieve all jobs.
+    # Count the jobs.
     print(f'(2) Number of jobs: {len(tp.get_jobs())}.')
 
-    # Get the latest created job of a Task.
-    job = tp.get_latest_job(scenario.double_task)
+    jobs = tp.get_latest_job(scenario.double_task)
 
-    # Get status of the Job
-    print(f'(3) Status of job double_task: {job.status}')
+    # Get status of the job.
+    print(f'(3) Status of job double_task: {job[0].status}')
+    print(f'(4) Status of job print_task: {jobs[1].status}')
 
-    # Then cancel it.
-    tp.cancel_job(job)
+    # Then cancel the second job.
+    tp.cancel_job(job[1])
 
-    print(f'(4) Status of job double_task: {job.status}')
+    sleep(10)
+
+    print(f'(5) Status of job double_task: {job[0].status}')
+    print(f'(6) Status of job print_task: {jobs[1].status}')
     ```
 
-This example will produce the following output:
+This example produces the following output:
 
 ```
 (1) Number of jobs: 0.
-(2) Number of jobs: 1.
+(2) Number of jobs: 2.
 (3) Status of job double_task: Status.RUNNING
-(4) Status of job double_task: Status.CANCELLED
+(4) Status of job print_task: Status.BLOCKED
+(5) Status of job double_task: Status.COMPLETED
+(6) Status of job print_task: Status.CANCELED
+```
+
+!!! example "Canceling a running job"
+
+    ```python
+    import taipy as tp
+
+    def double(nb):
+        sleep(5)
+        return nb * 2
+
+    print(f'(1) Number of jobs: {len(tp.get_jobs())}.')
+
+    # Create a scenario then submit it.
+    input_data_node_config = tp.configure_data_node("input", default_value=21)
+    output_data_node_config = tp.configure_data_node("output")
+    double_task_config = tp.configure_task("double_task", double, input_data_node_config, output_data_node_config)
+    print_task_config = tp.configure_task("print_task", print, output_data_node_config)
+    scenario_config = tp.configure_scenario_from_tasks("my_scenario", [double_task_config, print_task_config])
+    scenario = tp.create_scenario(scenario_config)
+    tp.submit(scenario)
+
+    # Count the jobs.
+    print(f'(2) Number of jobs: {len(tp.get_jobs())}.')
+
+    jobs = tp.get_latest_job(scenario.double_task)
+
+    # Get status of the job.
+    print(f'(3) Status of job double_task: {job[0].status}')
+    print(f'(4) Status of job print_task: {jobs[1].status}')
+
+    # Then cancel the first job.
+    tp.cancel_job(job[0])
+
+    sleep(10)
+
+    print(f'(5) Status of job double_task: {job[0].status}')
+    print(f'(6) Status of job print_task: {jobs[1].status}')
+    ```
+
+This example produces the following output:
+
+```
+(1) Number of jobs: 0.
+(2) Number of jobs: 2.
+(3) Status of job double_task: Status.RUNNING
+(4) Status of job print_task: Status.BLOCKED
+(5) Status of job double_task: Status.COMPLETED
+(6) Status of job print_task: Status.ABANDONED
 ```
 
 # Subscribe to job execution
