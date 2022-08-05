@@ -1,6 +1,31 @@
-# Taipy's REST API
+# Taipy's REST APIs
 
-Taipy provides a REST API so an application can send and receive data to and from a Taipy
-application hosting a REST Server (see `Rest^` for more information).
+Taipy can expose REST APIs so an external application can send and receive data to and from any
+Taipy application. Taipy REST Server must first be started. (See [REST user manual](../rest/index.md) to learn how
+to run the `Rest^` server).
 
-TODO - Explain more!
+Once the taipy REST server is running, any REST client can make some HTTP requests to the various APIs exposed.
+
+## APIs organization
+
+All the APIs are exposed at the following base url: `http://<HOST>:<PORT>/api/v1/` where `<HOST>` and `<PORT>`
+are placeholders to be replaced respectively by the application host and the application port.
+The various entry points are grouped by domain (data node, task, pipeline, scenario, cycle, job, auth). Each domain
+corresponds to a specific path:
+
+- The APIs related to authentication and authorization are grouped under the base url <br>
+  `http://<HOST>:<PORT>/api/v1/auth/`. Here is the exhaustive list of all entrypoints for [auth](./apis_auth.md).
+- The APIs related to cycles are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/cycles/`. Here is the
+  exhaustive list of all entrypoints for [cycles](./apis_cycle.md).
+- The APIs related to data nodes are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/datanodes/`. Here
+  is the exhaustive list of all entrypoints for [data nodes](./apis_datanode.md).
+- The APIs related to job and scheduling are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/jobs/`.
+  Here is the exhaustive list of all entrypoints for [jobs](./apis_job.md).
+- The APIs related to pipelines are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/pipelines/`. Here
+  is the exhaustive list of all entrypoints for [pipelines](./apis_pipeline.md).
+- The APIs related to scenarios are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/scenarios/`. Here
+  is the exhaustive list of all entrypoints for [scenarios](./apis_scenario.md).
+- The APIs related to tasks are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/tasks/`. Here is the
+  exhaustive list of all entrypoints for [tasks](./apis_task.md).
+
+Note that all the schemas are described in this [schemas](./schemas.md) section.
