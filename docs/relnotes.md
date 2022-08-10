@@ -15,7 +15,7 @@ This is the list of changes to Taipy releases as they were published.
 
    - The data node of a scenario or a pipeline can now be accessed at the scenario or pipeline levels.
    - When submitting a scenario, a pipeline or a task, a list of jobs or a Job will be returned.
-   - A submitted job can be canceled. When canceling the job, its subsequent jobs will be abandoned. When the cancel method is called on a running job, it cannot be canceled, but its subsequent jobs will be abandoned.
+   - A submitted job, a pending job or a blocked job can be canceled. When canceling the job, its subsequent jobs will be abandoned. On the other hand, running job, completed job, skipped job, failed job, canceled job and abandoned job cannot be canceled. When the cancel method is called on a running job, a completed job or a skipped job, its subsequent jobs will be abandoned while its status remains unchanged.
 
 ## Community edition: 1.1
 
