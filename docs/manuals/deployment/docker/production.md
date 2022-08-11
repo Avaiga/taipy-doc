@@ -58,7 +58,7 @@ It is not recommended to expose Gunicorn to the Internet. It is better to let [N
 handle [this responsibility](https://docs.gunicorn.org/en/stable/deploy.html).
 
 Beside your `docker-compose.yaml`, create a file named `nginx.conf` with
-[the following content](https://docs.taipy.io/en/latest/manuals/deployment/docker/nginx.conf).
+[the following content](./nginx.conf).
 
 Then, update your `docker-compose.yaml`:
 ```yaml
