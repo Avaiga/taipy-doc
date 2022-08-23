@@ -160,7 +160,7 @@ This example will produce the following output:
 
 Jobs are created when a task is submitted.
 
-- You can cancel a job with `taipy.cancel_job(job)^`. When canceling a job, you will set the `Status^` of subsequent jobs of the canceled job to `ABANDONED`. However, a job cannot be canceled if it is already running. When canceling a running job, its subsequent jobs will be abandoned and the running job will continue running until completed.
+- You can cancel a job with the following statuses `SUBMITTED`, `PENDING`, or `BLOCKED` with `taipy.cancel_job(job)^`. When canceling a job, you will set the `Status^` of subsequent jobs of the canceled job to `ABANDONED`. However, a job whose status is `RUNNING`, `COMPLETED`, `SKIPPED`, `FAILED`, `CANCELED`, or `ABANDONED`, cannot be canceled. When the cancel method is called on a job with its status being either `RUNNING`, `COMPLETED`, or `SKIPPED`, its subsequent jobs will be abandoned while its status remains unchanged.
 
 !!! example "Canceling a job"
 
