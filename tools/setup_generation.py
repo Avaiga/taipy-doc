@@ -652,8 +652,7 @@ for path, desc in rest_specs["paths"].items():
 
   file.write(f"# `{path}`\n\n")
   for method, method_desc in desc.items():
-    file.write(f"## `{method.upper()}`\n\n")
-    file.write(f"{method_desc['summary']}\n\n")
+    file.write(f"## {method.upper()}\n\n")
     file.write(f"{method_desc['description']}\n\n")
     parameters = method_desc.get("parameters")
     if parameters is not None:
@@ -664,7 +663,7 @@ for path, desc in rest_specs["paths"].items():
           param_type = "TODO"
           if "schema" in param and len(param["schema"]) == 1:
               param_type = param["schema"]["type"]
-          file.write(f"|{param['name']}|{param_type}|{'Yes' if param['name'] else 'No'}|-|\n")
+          file.write(f"|{param['name']}|{param_type}|{'Yes' if param['name'] else 'No'}|{param.get('description', '-')}|\n")
       file.write("\n")
     request_body = method_desc.get("requestBody")
     if request_body is not None:
