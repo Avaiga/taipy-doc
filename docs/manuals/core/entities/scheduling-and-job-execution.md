@@ -26,6 +26,20 @@ method triggers the submission of all the scenario's pipelines. Then each task o
         scenario.submit()
     ```
 
+By default, Taipy will asynchronously execute the jobs. If you want to wait until the submitted jobs are finished, you can use the parameter _wait_ and _timeout_:
+
+```python linenums="1"
+import taipy as tp
+import my_config
+
+scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+task = scenario.predicting
+
+tp.submit(task, wait=True, timeout=3)
+```
+
+_timeout_ can be an integer or a float. By default, _wait_ is False and _timeout_ is None. If _wait_ is True and _timeout_ is not specified or None, there is no limit to the wait time. If _wait_ is True and _timeout_ is specified, taipy will wait until all the submitted jobs are finished or up to _timeout_ seconds.
+
 You can also submit just a single pipeline with the same `taipy.submit()^` method:
 
 ```python linenums="1"
@@ -38,7 +52,7 @@ pipeline = scenario.sales_pipeline
 tp.submit(pipeline)
 ```
 In line 5, we retrieve the pipeline named `sales_pipeline` from the created scenario. In line 7, we submit only this
-pipeline for execution. The `taipy.submit()^` method triggers the submission of all the pipeline's tasks.
+pipeline for execution. The `taipy.submit()^` method triggers the submission of all the pipeline's tasks. When submitting a pipeline, you can also use the two parameters _wait_ and _timeout_ to wait until all of the jobs are finished or up to _timeout_ seconds.
 
 !!! Note "Another syntax."
     To submit a pipeline, you can also use the method `Pipeline.submit()^`:
@@ -64,7 +78,7 @@ task = scenario.predicting
 tp.submit(task)
 ```
 In line 5, we retrieve the task named `predicting` from the created scenario. In line 7, we submit only this
-task for execution.
+task for execution. When submitting a task, you can also use the two parameters _wait_ and _timeout_ to wait until the job is finished or up to _timeout_ seconds.
 
 !!! Note "Another syntax."
     To submit a task, you can also use the method `Task.submit()^`:
@@ -77,20 +91,6 @@ task for execution.
         task = scenario.predicting
         task.submit()
     ```
-
-By default, Taipy will asynchronously execute the jobs. If you want to wait until the submitted jobs are finished, you can use the parameter _wait_ and _timeout_:
-
-```python linenums="1"
-import taipy as tp
-import my_config
-
-scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
-task = scenario.predicting
-
-tp.submit(task, wait=True, timeout=3)
-```
-
-_timeout_ can be an integer or a float. By default, _wait_ is False and _timeout_ is None. If _wait_ is True and _timeout_ is not specified or None, there is no limit to the wait time. If _wait_ is True and _timeout_ is specified, taipy will wait until all the submitted jobs are finished or up to _timeout_ seconds.
 
 # Job
 
