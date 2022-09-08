@@ -605,6 +605,7 @@ enterprise_rest_paths = ["auth"]
 response_statuses = {
     "200": ("OK", "https://httpwg.org/specs/rfc7231.html#status.200"),
     "201": ("Created", "https://httpwg.org/specs/rfc7231.html#status.201"),
+    "202": ("Accepted", "https://httpwg.org/specs/rfc7231.html#status.202"),
     "204": ("No Content", "https://httpwg.org/specs/rfc7231.html#status.204"),
     "401": ("Unauthorized", "https://httpwg.org/specs/rfc7235.html#status.401"),
     "404": ("Not Found", "https://httpwg.org/specs/rfc7231.html#status.404"),
