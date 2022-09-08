@@ -40,7 +40,7 @@ MODULE_EXTENSIONS = ".py"
 PACKAGE_GROUP = [ "taipy.config", "taipy.core", "taipy.gui", "taipy.rest", "taipy.auth", "taipy.enterprise" ]
 
 # Assuming that this script is located in <taipy-doc>/tools
-tools_dir = os.path.dirname(__file__).replace("\\", "/")
+tools_dir = os.path.dirname(os.path.abspath(__file__)).replace("\\", "/")
 root_dir = os.path.dirname(tools_dir)
 
 GUI_DOC_PATH = root_dir + "/docs/manuals/gui/"
