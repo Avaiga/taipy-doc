@@ -7,7 +7,7 @@ Create a file _main.py_, put the following content inside, then install _Taipy_ 
 ```python
 import taipy as tp
 
-gui = Gui(page="# Getting started with *Taipy*")
+gui = tp.Gui(page="# Getting started with *Taipy*")
 
 tp.run(gui, title="Taipy Demo")
 ```
@@ -27,6 +27,60 @@ Use a production WSGI server instead.
 
 [Flask](https://flask.palletsprojects.com/en/2.1.x/) generates this warning because it is a development and not
 a production server.
+
+# Runing different Taipy services together
+
+You can run different Taipy services including `Gui^`, `Rest^`, `Core^` together by using `taipy.run()^`.
+
+You can run `Gui^` along with `Core^` together with the following code:
+```python
+import taipy as tp
+
+gui = tp.Gui(page="# Getting started with *Taipy*")
+core = tp.Core()
+
+tp.run([gui, core], title="Taipy Demo")
+```
+
+As `Rest^` needs `Core^` to function, when running `Rest^` service, `Core^` will also run along with it:
+```python
+import taipy as tp
+
+core = tp.Core()
+rest = tp.Rest()
+
+tp.run([core, rest], title="Taipy Demo")
+```
+
+The above code is the same as:
+```python
+import taipy as tp
+
+rest = tp.Rest()
+
+tp.run([rest], title="Taipy Demo")
+```
+
+You can run all Taipy services including `Gui^`, `Rest^` and `Core^` with the below code:
+```python
+import taipy as tp
+
+gui = tp.Gui(page="# Getting started with *Taipy*")
+rest = tp.Rest()
+core = tp.Core()
+
+tp.run([gui, rest, core], title="Taipy Demo")
+```
+
+Since running `Rest^` means you will also be running `Core^`, the following code is the same as the above:
+```python
+import taipy as tp
+
+gui = tp.Gui(page="# Getting started with *Taipy*")
+rest = tp.Rest()
+
+tp.run([gui, rest], title="Taipy Demo")
+```
 
 # Gunicorn
 
