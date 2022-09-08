@@ -27,7 +27,7 @@ cycles.
 
     ![scopes](../pic/storage_types and scopes_basic_possibility.svg){ align=left }
 
-    The first picture represents the basic case. We let Taipy apply the default scope (`Scope.PIPELINE`) for most
+    The first picture represents the basic case. We let Taipy apply the default scope (`Scope.SCENARIO`) for most
     data nodes. However, as you can see, the `sales predictions` data node is shared by the two pipelines
     of my scenario. Consequently, its scope cannot be `Scope.PIPELINE`, but must be at least `Scope.SCENARIO`.
     In this case, my various scenarios do not share any data nodes.
