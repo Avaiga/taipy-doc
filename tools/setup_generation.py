@@ -40,7 +40,7 @@ MODULE_EXTENSIONS = ".py"
 PACKAGE_GROUP = [ "taipy.config", "taipy.core", "taipy.gui", "taipy.rest", "taipy.auth", "taipy.enterprise" ]
 
 # Assuming that this script is located in <taipy-doc>/tools
-tools_dir = os.path.dirname(__file__).replace("\\", "/")
+tools_dir = os.path.dirname(os.path.abspath(__file__)).replace("\\", "/")
 root_dir = os.path.dirname(tools_dir)
 
 GUI_DOC_PATH = root_dir + "/docs/manuals/gui/"
@@ -605,6 +605,7 @@ enterprise_rest_paths = ["auth"]
 response_statuses = {
     "200": ("OK", "https://httpwg.org/specs/rfc7231.html#status.200"),
     "201": ("Created", "https://httpwg.org/specs/rfc7231.html#status.201"),
+    "202": ("Accepted", "https://httpwg.org/specs/rfc7231.html#status.202"),
     "204": ("No Content", "https://httpwg.org/specs/rfc7231.html#status.204"),
     "401": ("Unauthorized", "https://httpwg.org/specs/rfc7235.html#status.401"),
     "404": ("Not Found", "https://httpwg.org/specs/rfc7231.html#status.404"),
