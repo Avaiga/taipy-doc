@@ -49,6 +49,7 @@ To expose the Taipy REST APIs, the Taipy REST server must first be started.
    ```
 
 !!! Note "When running Taipy Rest server, you will also run `Core^`"
+!!! info "For running Taipy Rest service with the other Taipy services, please refer to page [Running Taipy services](../running_services/index.md)"
 
 ## Using Taipy REST APIs
 

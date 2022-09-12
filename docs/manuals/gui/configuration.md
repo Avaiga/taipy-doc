@@ -110,6 +110,8 @@ Here is the list of the configuration parameters you can use in
      application to the Internet. See the section on
      [Accessing your app from the Web](#accessing-your-app-from-the-web) for details.
 
+!!! info "For running Taipy Gui service with the other Taipy services, please refer to page [Running Taipy services](../running_services/index.md)"
+
 ## Using an external Web server
 
 Taipy user interfaces can be served by external servers. This happens in situations
@@ -177,5 +179,3 @@ steps:
   allows users to connect to it. This has the form `http://<id>.ngrok.io`.<br/>
   Your Flask server, running locally will accept and serve connections from all
   around the world.
-
-
