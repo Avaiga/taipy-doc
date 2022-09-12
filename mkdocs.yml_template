@@ -59,6 +59,8 @@ nav:
             - 'Job execution': 'manuals/core/entities/scheduling-and-job-execution.md'
     - 'Taipy REST':
         - manuals/rest/index.md
+    - 'Running Taipy services':
+        - manuals/running_services/index.md
     - 'Authentication and Roles':
         - manuals/auth/index.md
         - 'Authentication': 'manuals/auth/authentication.md'
