@@ -45,4 +45,4 @@ content sent back to the client so the user can see the application interface
 and start using it.
 
 !!! info "You can find more information on how pages are created and used in Taipy application in the [Pages](pages.md) section."
-!!! info "For running Taipy Gui service with the other Taipy services, please refer to page [Running Taipy services](../running_services/index.md)"
+!!! info "For running Taipy Gui service with some other Taipy services, please refer to page [Running Taipy services](../running_services/index.md)"
