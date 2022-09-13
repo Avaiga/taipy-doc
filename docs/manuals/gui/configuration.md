@@ -110,7 +110,7 @@ Here is the list of the configuration parameters you can use in
      application to the Internet. See the section on
      [Accessing your app from the Web](#accessing-your-app-from-the-web) for details.
 
-!!! info "For running Taipy Gui service with some other Taipy services, please refer to page [Running Taipy services](../running_services/index.md)"
+!!! info "To run the Taipy GUI service with some other Taipy services, please refer to the [Running Taipy services](../running_services/index.md) page"
 
 ## Using an external Web server
 

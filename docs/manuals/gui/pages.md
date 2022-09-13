@@ -232,7 +232,7 @@ for all its pages.
     If you navigate to '/page2', the main title remains on the page, and the sub-title
     is replaced by the text 'This is page 2'
 
-    !!! info "For running Taipy Gui service with the other Taipy services, please refer to page [Running Taipy services](../running_services/index.md)"
+    !!! info "To run the Taipy GUI service with the other Taipy services, please refer to the [Running Taipy services](../running_services/index.md) page"
 
 ### The `<|content|>` pseudo-control
 
