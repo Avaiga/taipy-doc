@@ -43,7 +43,7 @@ tp.run([core])
 
 # Runing different Taipy services together
 
-You can run different Taipy services together by using `taipy.run()^`.
+You can run various Taipy services together by using `taipy.run()^`.
 
 You can run Taipy Gui along with Taipy Core together with the following code:
 ```python
