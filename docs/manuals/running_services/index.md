@@ -6,39 +6,58 @@ For example, you can run the Gui service with the following code:
 ```python
 import taipy as tp
 
-gui = tp.Gui(page="# Getting started with *Taipy*")
+if __name__ == "__main__":
+    gui = tp.Gui(page="# Getting started with *Taipy*")
 
-# Approach 1
-gui.run(gui, title="Taipy Demo")
+    # Approach 1
+    gui.run(gui, title="Taipy Demo")
 
-# Approach 2
-tp.run([gui], title="Taipy Demo")
+    # Approach 2
+    tp.run([gui], title="Taipy Demo")
 ```
 
 By default, when running the Rest service, you will also start the Core service as the Rest service relies on the Core service to function:
 ```python
 import taipy as tp
 
-rest = tp.Rest()
+if __name__ == "__main__":
+    rest = tp.Rest()
 
-# Approach 1
-rest.run()
+    # Approach 1
+    rest.run()
 
-# Approach 2
-tp.run([rest])
+    # Approach 2
+    tp.run([rest])
+```
+
+The above code is the same as:
+```python
+import taipy as tp
+
+if __name__ == "__main__":
+    core = tp.Core()
+    rest = tp.Rest()
+
+    # Approach 1
+    core.run()
+    rest.run()
+
+    # Approach 2
+    tp.run([core, rest], title="Taipy Demo")
 ```
 
 You can run the Core service individually with the below code:
 ```python
 import taipy as tp
 
-core = tp.Core()
+if __name__ == "__main__":
+    core = tp.Core()
 
-# Approach 1
-core.run()
+    # Approach 1
+    core.run()
 
-# Approach 2
-tp.run([core])
+    # Approach 2
+    tp.run([core])
 ```
 
 # Runing different Taipy services together
@@ -49,48 +68,23 @@ You can run Taipy Gui along with Taipy Core together with the following code:
 ```python
 import taipy as tp
 
-gui = tp.Gui(page="# Getting started with *Taipy*")
-core = tp.Core()
+if __name__ == "__main__":
+    gui = tp.Gui(page="# Getting started with *Taipy*")
+    core = tp.Core()
 
-tp.run([gui, core], title="Taipy Demo")
-```
-
-As mentioned, Taipy Rest needs Taipy Core to function, when running the Taipy Rest service, Taipy Core will also run along with it:
-```python
-import taipy as tp
-
-core = tp.Core()
-rest = tp.Rest()
-
-tp.run([core, rest], title="Taipy Demo")
-```
-
-The above code is the same as:
-```python
-import taipy as tp
-
-rest = tp.Rest()
-
-tp.run([rest], title="Taipy Demo")
+    tp.run([gui, core], title="Taipy Demo")
 ```
 
 You can run all Taipy services including Taipy Gui, Taipy Rest, and Taipy Core with the below code:
+
 ```python
 import taipy as tp
 
-gui = tp.Gui(page="# Getting started with *Taipy*")
-rest = tp.Rest()
-core = tp.Core()
+if __name__ == "__main__":
+    gui = tp.Gui(page="# Getting started with *Taipy*")
+    rest = tp.Rest()
 
-tp.run([gui, rest, core], title="Taipy Demo")
+    tp.run([gui, rest], title="Taipy Demo")
 ```
 
-Since running `Rest^` means you will also be running `Core^`, the following code is the same as the above:
-```python
-import taipy as tp
-
-gui = tp.Gui(page="# Getting started with *Taipy*")
-rest = tp.Rest()
-
-tp.run([gui, rest], title="Taipy Demo")
-```
+!!! note "As mentioned, Taipy Rest needs Taipy Core to function, when running the Taipy Rest service, Taipy Core will also run along with it. Therefore, Taipy Core will also be together with Taipy Gui and Taipy Rest in the above example."
