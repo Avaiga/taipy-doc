@@ -33,6 +33,9 @@ More optional attributes are available on data nodes, including:
     Note also that all this dictionary _**properties**_ is copied in the dictionary properties of all the data
     nodes instantiated from this data node configuration.<br/>
 
+-   _**cacheable**_ is an attribute stored in the _properties_ dictionary. The parameter indicates if the data node
+    can be cached during or between the execution of the tasks it is connected to.
+
 Below are two examples of data node configurations.
 
 ```python linenums="1"
