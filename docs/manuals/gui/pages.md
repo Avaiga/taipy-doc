@@ -232,6 +232,8 @@ for all its pages.
     If you navigate to '/page2', the main title remains on the page, and the sub-title
     is replaced by the text 'This is page 2'
 
+    !!! info "To run the Taipy GUI service with the other Taipy services, please refer to the [Running Taipy services](../running_services/index.md) page"
+
 ### The `<|content|>` pseudo-control
 
 Your application may also need to hold a footer on all the pages it uses.<br/>
@@ -354,4 +356,3 @@ example if an image needs to be inserted: the path to the image must be provided
 You can indicate, using the parameter _path_mapping_ of the
 [`Gui` constructor](Gui.__init__()^), where those resources are located on the file
 system.
-
