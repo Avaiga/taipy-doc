@@ -1,13 +1,12 @@
 ## Gantt charts
 
-Gantt charts are not supported by Plotly.
-But Plotly provides a way of displaying horizontal bar charts with different starting points that can look like a Gantt chart.
+Although real Gantt charts are not supported by Plotly, there are ways to display horizontal bar charts with different starting points that can look like a Gantt chart.
 
 ### Simple Gantt like chart
 
 Using a horizontal bar chart with different starting points will look like a Gantt chart.
-- _type_ property is set to bar.
-- _orientation_ property is set to h or horizontal.
+- _type_ property is set to "bar".
+- _orientation_ property is set to "h" or "horizontal".
 
 Different resources are displayed by different traces in the same chart.
 
@@ -15,10 +14,10 @@ Here is an example where we represent two resources' tasks, based on the same
 _x_ timeline axis:
 
 - The tasks start dates are represented by the _base_ values on the _x_ axis (type is date or datetime ).
-- The tasks duration are represented by the _x_ values on the _x_ axis (type is date or datetime). 
+- The tasks durations are represented by the _x_ values on the _x_ axis (type is date or datetime). 
   The _x_ values are specified as a time duration ie a date where 0 is January 1st 1970 ie `date(1970, 1, 1)`. for example to specify a duration of 2 days, one would set the value to date(1970, 1, 3)
-- The resources names are reprensented by the _y_ values. To keep the tasks on the same horizontal line, the _y_ value should be the same.
-- The tasks names can by specified by the _text_or _label_ property.
+- The resources names are represented by the _y_ values. To keep the tasks on the same horizontal line, the _y_ value should be the same.
+- The tasks names can by specified by the _text_ or _label_ property.
 
 ```py
 data = pd.DataFrame({
