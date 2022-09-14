@@ -7,18 +7,62 @@ hide:
 
 This is the list of changes to Taipy releases as they were published.
 
-## Community edition: 1.2 (In progress)
+## Community edition: 2.0 (In progress)
+
+Published on TO_BE_DEFINED.
+
+[`taipy` 2.0](https://pypi.org/project/taipy/2.0.0/) contains the latest
+[`taipy-config` 1.0](https://pypi.org/project/taipy-config/1.0.0/),
+[`taipy-gui` 2.0](https://pypi.org/project/taipy-gui/2.0.0/),
+[`taipy-core` 2.0](https://pypi.org/project/taipy-core/2.0.0/) and
+[`taipy-rest` 2.0](https://pypi.org/project/taipy-rest/2.0.0/) packages.
+
+#### Features
+
+**`taipy-core`** 2.0.0
+
+   - TODO SQLDataNodes
+   - TODO SQLTableDatanode
+   - TODO JSONDataNodes
+   - In standalone mode, a job whose status is `SUBMITTED`, `PENDING`, or `BLOCKED`, can be canceled. When
+     canceling the job, its subsequent jobs will be abandoned and their statuses will be set to `ABANDONED`. When
+     the cancel method is called on a job with its status being either `RUNNING`, `COMPLETED`, or `SKIPPED`, its
+     subsequent jobs will be abandoned while its status remains unchanged. A job whose status is `FAILED`,
+     `CANCELED`, or `ABANDONED`, cannot be canceled.
+   - TODO Core as a service
 
 #### Improvements
 
-**`taipy-core`**<br/>1.2.0
+**`taipy-core`** 2.0.0
 
-   - The data node of a scenario or a pipeline can now be accessed at the scenario or pipeline levels.
+   - The data node of a scenario or a pipeline can now be accessed directly at the scenario or pipeline levels.
    - When submitting a scenario, a pipeline or a task, a list of jobs or a Job will be returned.
-   - In standalone mode, a job whose status is `SUBMITTED`, `PENDING`, or `BLOCKED`, can be canceled. When canceling the job, its subsequent jobs will be abandoned. On the other hand, a job whose status is `RUNNING`, `COMPLETED`, `SKIPPED`, `FAILED`, `CANCELED`, or `ABANDONED`, cannot be canceled. When the cancel method is called on a job with its status being either `RUNNING`, `COMPLETED`, or `SKIPPED`, its subsequent jobs will be abandoned while its status remains unchanged.
-   - When submitting a scenario, pipeline, or task in standalone mode, the user can use the parameters _wait_ and _timeout_ to wait until the submitted jobs are finished or up to _timeout_ seconds.
+   - When submitting a scenario, pipeline, or task in standalone mode, the user can use the parameters _wait_ and
+     _timeout_ to wait until the submitted jobs are finished or up to _timeout_ seconds.
    - When a running job is failed, its subsequent jobs will be abandoned.
    - A primary scenario can be deleted along with its cycle if it is the only scenario in the cycle.
+   - TODO Exception messages
+
+**`taipy-config`** 1.0.0
+
+   - TODO New package
+
+#### Significant bug fixes
+
+#### Deprecations
+
+   - TODO Config field nb_of_workers into max_nb_of_workers
+
+## Enterprise edition: 2.0 (In progress)
+
+Published on TO_BE_DEFINED.
+
+#### Features
+
+    - TODO alternative storage system
+
+#### Improvements
+    -
 
 ## Community edition: 1.1
 
@@ -32,13 +76,13 @@ Published on 2022-06.
 
 #### Improvements
 
-**`taipy-gui`**<br/>1.1.0
+**`taipy-gui`** 1.1.0
 
    - The `State^` instance can be initialized in a user-defined function. See the _on_init_
      attribute of the `Gui^` class for more details.
    - Page definitions and the bound variables can be isolated in a module to clarify the
      application code organization.<br/>
-     See this [section](manuals/gui/binding.md#scope-of-variable-binding) for details.
+     See this [section](manuals/gui/binding.md#scope-for-variable-binding) for details.
    - The [`chart`](manuals/gui/viselements/chart.md) control can display georeferenced data on top
      of maps.<br/>
      See this [example](manuals/gui/viselements/charts/others.md#plotting-on-a-map) for details.
@@ -56,7 +100,7 @@ Published on 2022-06.
    - Support for multiple assignment to variables in _on_change()_.
 
 
-**`taipy-core`**<br/>1.1.0
+**`taipy-core`** 1.1.0
 
    - Execution modes: "_development_" mode (default) runs tasks in a synchronous way one task at
      a time, while "_standalone_" mode runs tasks in an asynchronous and parallel way using
@@ -67,7 +111,7 @@ Published on 2022-06.
 
 #### Significant bug fixes
 
-**`taipy-gui`**<br/>1.1.0
+**`taipy-gui`** 1.1.0
 
    - Concurrency issues were fixed.
    - Taipy supports HTTPS via reverse proxies.<br/>
@@ -78,7 +122,7 @@ Published on 2022-06.
 
 #### Deprecations
 
-**`taipy-core`**<br/>1.1.0
+**`taipy-core`** 1.1.0
 
    - The _path_ attribute of `DataNodeConfig`, for CSV, Excel and Pickle types is now deprecated.<br/>
      _default_path_ must be used instead: it is the default path to use when instantiating a data node from
@@ -113,7 +157,7 @@ Published on 2022-04.
 
 #### Features
 
-**`taipy-gui`**<br/>1.0.0
+**`taipy-gui`** 1.0.0
 
    - Multiple pages support
    - Binding to global variables
@@ -122,7 +166,7 @@ Published on 2022-04.
    - Page content support for Markdown and HTML
    - Jupyter Notebook support
 
-**`taipy-core`**<br/>1.0.0
+**`taipy-core`** 1.0.0
 
    - Full configuration system
    - Data node management (read/write/filter/cache)
@@ -130,6 +174,6 @@ Published on 2022-04.
    - Scenario and cycle management
    - Smart scheduling and execution (Scenario, Pipeline, and Task submission)
 
-**`taipy-rest`**<br/>1.0.0
+**`taipy-rest`** 1.0.0
 
    - REST APIs on top of `taipy-core`
