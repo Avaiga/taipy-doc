@@ -59,10 +59,10 @@ Published on TO_BE_DEFINED.
 
 #### Features
 
-    - TODO alternative storage system
+   - TODO alternative storage system
 
 #### Improvements
-    -
+   - TODO authentication
 
 ## Community edition: 1.1
 
