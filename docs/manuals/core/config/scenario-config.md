@@ -64,3 +64,15 @@ associated to a Cycle corresponding to their creation date. See documentation on
 [Scenario and cycle management](../entities/scenario-cycle-mgt.md).
 
 [:material-arrow-right: The next section introduces the global configuration](global-config.md).
+
+# Scenario configuration with comparators
+
+Here is a simple example assuming the pipeline configuration `pipeline_config` has already been created with `datanode_config` as one of the data nodes in the pipeline and the `compare_result` function is predefined:
+
+```python linenums="1"
+from taipy import Config
+
+scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_config], comparators={datanode_config.id: compare})
+```
+
+In this example, we create a scenario configuration `ScenarioConfig^` from a pipeline configuration already defined. We also provide the scenario configuration with a dictionary of the data node configuration id that we want to compare and a predifined function that can be used to compare data nodes of the scenarios.
