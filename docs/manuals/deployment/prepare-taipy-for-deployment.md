@@ -7,7 +7,7 @@ Create a file _main.py_, put the following content inside, then install _Taipy_ 
 ```python
 import taipy as tp
 
-gui = Gui(page="# Getting started with *Taipy*")
+gui = tp.Gui(page="# Getting started with *Taipy*")
 
 tp.run(gui, title="Taipy Demo")
 ```
