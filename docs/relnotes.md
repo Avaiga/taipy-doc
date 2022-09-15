@@ -7,12 +7,12 @@ hide:
 
 This is the list of changes to Taipy releases as they were published.
 
-## Community edition: 2.0 (In progress)
+## Community edition: 2.0
 
 Published on TO_BE_DEFINED.
 
 [`taipy` 2.0](https://pypi.org/project/taipy/2.0.0/) contains the latest
-[`taipy-config` 1.0](https://pypi.org/project/taipy-config/1.0.0/),
+[`taipy-config` 2.0](https://pypi.org/project/taipy-config/2.0.0/),
 [`taipy-gui` 2.0](https://pypi.org/project/taipy-gui/2.0.0/),
 [`taipy-core` 2.0](https://pypi.org/project/taipy-core/2.0.0/) and
 [`taipy-rest` 2.0](https://pypi.org/project/taipy-rest/2.0.0/) packages.
@@ -28,7 +28,7 @@ Published on TO_BE_DEFINED.
      canceling the job, its subsequent jobs will be abandoned and their statuses will be set to `ABANDONED`. When
      the cancel method is called on a job with its status being either `RUNNING`, `COMPLETED`, or `SKIPPED`, its
      subsequent jobs will be abandoned while its status remains unchanged. A job whose status is `FAILED`,
-     `CANCELED`, or `ABANDONED`, cannot be canceled.
+     `CANCELED`, or `ABANDONED` cannot be canceled.
    - TODO Core as a service
 
 #### Improvements
@@ -53,7 +53,7 @@ Published on TO_BE_DEFINED.
 
    - TODO Config field nb_of_workers into max_nb_of_workers
 
-## Enterprise edition: 2.0 (In progress)
+## Enterprise edition: 2.0
 
 Published on TO_BE_DEFINED.
 
