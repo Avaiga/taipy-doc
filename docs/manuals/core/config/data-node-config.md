@@ -223,6 +223,52 @@ the _exposed_type_. We also provide the list of specific sheets we want to use a
     To configure an Excel data node, it is equivalent to use the method `Config.configure_excel_data_node()^` or
     the method `Config.configure_data_node()^` with parameter `storage_type="excel"`.
 
+# SQL Table
+
+!!! Important
+
+    To be able to use a `SQLTableDataNode^` with Microsoft SQL Server you need to run internal dependencies with
+    `pip install taipy[mssql]` and install your corresponding
+    [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
+
+A `SQLTableDataNode^` is a specific data node used to model data from a SQL table. To add a new _sql_table_ data node configuration, the `Config.configure_sql_table_data_node()^` method can be used. In
+addition to the generic parameters described in the previous section
+[Data node configuration](data-node-config.md), multiple
+parameters can be provided.
+
+-   The _**db_username**_ parameter represents the database username that will be used by Taipy to access the database.
+-   The _**db_password**_ parameter represents the database user's password that will be used by Taipy to access the
+    database.
+-   The _**db_name**_ parameter represents the name of the database.
+-   The _**db_engine**_ parameter represents the engine of the database.
+-   The _**table_name**_ parameter represents the name of the table to read from and write into.
+-   The _**db_port**_ parameter represents the database port that will be used by Taipy to access the database. The
+    default value of _db_port_ is 1433.
+-   The _**db_host**_ parameter represents the database host that will be used by Taipy to access the database. The
+    default value of _db_host_ is "localhost".
+-   The _**db_driver**_ parameter represents the database driver that will be used by Taipy. The default value of
+    _db_driver_ is "ODBC Driver 17 for SQL Server".
+
+```python linenums="1"
+from taipy import Config
+
+forecasts_cfg = Config.configure_sql_table_data_node(id="forecasts",
+                                               db_username="admin",
+                                               db_password="password",
+                                               db_name="taipy",
+                                               db_engine="mssql",
+                                               table_name="forecast_table")
+```
+
+In the previous example, we configure a _sql_table_ data node with the id "forecasts". Its scope is the
+default value `SCENARIO`. The database username is "admin", the user's password is "password", the database name
+is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The table name is "forecast_table". When the data node is read, it will read all the rows from the table "forecast_table" and when the data node is written, it will delete all the data in the table and insert the new data.
+
+!!! Note
+
+    To configure a SQL table data node, it is equivalent to use the method `Config.configure_sql_data_node()^` or
+    the method `Config.configure_data_node()^` with parameter `storage_type="sql_table"`.
+
 # SQL
 
 !!! Important
@@ -284,51 +330,7 @@ The write query builder in this example is a callback that takes in a dataframe 
     To configure an SQL data node, it is equivalent to use the method `Config.configure_sql_data_node()^` or
     the method `Config.configure_data_node()^` with parameter `storage_type="sql"`.
 
-# SQL Table
 
-!!! Important
-
-    To be able to use a `SQLTableDataNode^` with Microsoft SQL Server you need to run internal dependencies with
-    `pip install taipy[mssql]` and install your corresponding
-    [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
-
-A `SQLTableDataNode^` is a specific data node used to model data from a SQL table. To add a new _sql_table_ data node configuration, the `Config.configure_sql_table_data_node()^` method can be used. In
-addition to the generic parameters described in the previous section
-[Data node configuration](data-node-config.md), multiple
-parameters can be provided.
-
--   The _**db_username**_ parameter represents the database username that will be used by Taipy to access the database.
--   The _**db_password**_ parameter represents the database user's password that will be used by Taipy to access the
-    database.
--   The _**db_name**_ parameter represents the name of the database.
--   The _**db_engine**_ parameter represents the engine of the database.
--   The _**table_name**_ parameter represents the name of the table to read from and write into.
--   The _**db_port**_ parameter represents the database port that will be used by Taipy to access the database. The
-    default value of _db_port_ is 1433.
--   The _**db_host**_ parameter represents the database host that will be used by Taipy to access the database. The
-    default value of _db_host_ is "localhost".
--   The _**db_driver**_ parameter represents the database driver that will be used by Taipy. The default value of
-    _db_driver_ is "ODBC Driver 17 for SQL Server".
-
-```python linenums="1"
-from taipy import Config
-
-forecasts_cfg = Config.configure_sql_table_data_node(id="forecasts",
-                                               db_username="admin",
-                                               db_password="password",
-                                               db_name="taipy",
-                                               db_engine="mssql",
-                                               table_name="forecast_table")
-```
-
-In the previous example, we configure a _sql_table_ data node with the id "forecasts". Its scope is the
-default value `SCENARIO`. The database username is "admin", the user's password is "password", the database name
-is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The table name is "forecast_table". When the data node is read, it will read all the rows from the table "forecast_table" and when the data node is written, it will delete all the data in the table and insert the new data.
-
-!!! Note
-
-    To configure a SQL table data node, it is equivalent to use the method `Config.configure_sql_data_node()^` or
-    the method `Config.configure_data_node()^` with parameter `storage_type="sql_table"`.
 
 # Generic
 
