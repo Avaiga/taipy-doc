@@ -21,9 +21,9 @@ Published on TO_BE_DEFINED.
 
 **`taipy-core`** 2.0.0
 
-   - TODO SQLDataNodes
-   - TODO SQLTableDatanode
-   - TODO JSONDataNodes
+   - New data node: SQLTableDataNode. It represents a table in a SQL database.
+   - New data node: JSONDataNode. It represents the data from a JSON file.
+   - SQLDataNode behavior is changed due to the release of SQLTableDataNode. Now it represents the data using custom read and write queries.
    - In standalone mode, a job whose status is `SUBMITTED`, `PENDING`, or `BLOCKED`, can be canceled. When
      canceling the job, its subsequent jobs will be abandoned and their statuses will be set to `ABANDONED`. When
      the cancel method is called on a job with its status being either `RUNNING`, `COMPLETED`, or `SKIPPED`, its
