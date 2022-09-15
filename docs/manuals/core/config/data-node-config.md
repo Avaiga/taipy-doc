@@ -322,8 +322,10 @@ In the previous example, we configure a _sql_ data node with the id "forecasts".
 default value `SCENARIO`. The database username is "admin", the user's password is "password", the database name
 is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The read query will be "SELECT \* from
 forecast_table".
+
 The write query builder in this example is a callable function that takes in a dataframe and return a list of queries. The first query will delete all the data in the table "forecast_table", and the second query is a prepared statement that takes in two values, which is the data from the two columns "date" and "nb_sales" in the dataframe. Since this is a prepared statement, it must be passed as a tuple with the first element being the query and the second element being the data.
 
+The data parameter of the write query builder is expected to have the same data type as the return type of the task function whose output is the data node. In this example, the task function returns a dataframe, so the data parameter of the write query builder is also expected to be a dataframe.
 
 !!! Note
 
