@@ -23,7 +23,8 @@ Published on TO_BE_DEFINED.
 
    - New data node: SQLTableDataNode. It represents a table in a SQL database.
    - New data node: JSONDataNode. It represents the data from a JSON file.
-   - SQLDataNode behavior is changed due to the release of SQLTableDataNode. Now it represents the data using custom read and write queries.
+   - SQLDataNode behavior is changed due to the release of SQLTableDataNode. Now it represents the data
+     using custom read and write queries.
    - In standalone mode, a job whose status is `SUBMITTED`, `PENDING`, or `BLOCKED`, can be canceled. When
      canceling the job, its subsequent jobs will be abandoned and their statuses will be set to `ABANDONED`. When
      the cancel method is called on a job with its status being either `RUNNING`, `COMPLETED`, or `SKIPPED`, its
@@ -41,7 +42,8 @@ Published on TO_BE_DEFINED.
      _timeout_ to wait until the submitted jobs are finished or up to _timeout_ seconds.
    - When a running job is failed, its subsequent jobs will be abandoned.
    - A primary scenario can be deleted along with its cycle if it is the only scenario in the cycle.
-   - TODO Exception messages
+   - The messages of the various Exceptions that can be raised have been improved to help the users debug their
+     applications.
 
 **`taipy-config`** 1.0.0
 
