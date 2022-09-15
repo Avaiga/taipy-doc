@@ -22,7 +22,7 @@ More optional attributes are available on data nodes, including:
 -   _**storage_type**_ is an attribute that indicates the type of storage of the
     data node.<br/>
     The possible values are ["pickle"](#pickle) (**the default value**),
-    ["csv"](#csv), ["excel"](#excel), ["sql"](#sql), ["sql_table"](#sql_table), ["in_memory"](#in-memory), or
+    ["csv"](#csv), ["excel"](#excel), ["json"](#json), ["sql"](#sql), ["sql_table"](#sql_table), ["in_memory"](#in-memory), or
     ["generic"](#generic).<br/>
     As explained in the following subsections, depending on the _storage_type_, other configuration attributes must
     be provided in the parameter _properties_ parameter.
@@ -231,7 +231,7 @@ the _exposed_type_. We also provide the list of specific sheets we want to use a
     `pip install taipy[mssql]` and install your corresponding
     [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
 
-A `SQLTableDataNode^` is a specific data node used to model data from a SQL table. To add a new _sql_table_ data node configuration, the `Config.configure_sql_table_data_node()^` method can be used. In
+An `SQLTableDataNode^` is a specific data node that models data stored in a single SQL table. To add a new _sql_table_ data node configuration, the `Config.configure_sql_table_data_node()^` method can be used. In
 addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), multiple
 parameters can be provided.
@@ -262,7 +262,7 @@ forecasts_cfg = Config.configure_sql_table_data_node(id="forecasts",
 
 In the previous example, we configure a _sql_table_ data node with the id "forecasts". Its scope is the
 default value `SCENARIO`. The database username is "admin", the user's password is "password", the database name
-is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The table name is "forecast_table". When the data node is read, it will read all the rows from the table "forecast_table" and when the data node is written, it will delete all the data in the table and insert the new data.
+is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The table name is "forecast_table". When the data node is read, it will read all the rows from the table "forecast_table", and when the data node is written, it will delete all the data in the table and insert the new data.
 
 !!! Note
 
@@ -277,8 +277,7 @@ is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The ta
     `pip install taipy[mssql]` and install your corresponding
     [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
 
-A `SQLDataNode^` is a specific data node used to model SQL
-data using queries. To add a new _sql_ data node configuration, the `Config.configure_sql_data_node()^` method can be used. In
+An `SQLDataNode^` is a specific data node used to model data stored in an SQL Database. To add a new _sql_ data node configuration, the `Config.configure_sql_data_node()^` method can be used. In
 addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), multiple
 parameters can be provided.
@@ -290,7 +289,7 @@ parameters can be provided.
 -   The _**db_engine**_ parameter represents the engine of the database.
 -   The _**read_query**_ parameter represents the SQL query that will be used by Taipy to read the data from the
     database.
--   The _**write_query_builder**_ parameter is the callback that takes in the data and return a list of queries that are executed when the data node is written into.
+-   The _**write_query_builder**_ parameter is a callable function that takes in the data as an input parameter and returns a list of SQL queries to be executed when the write data node method is called.
 -   The _**db_port**_ parameter represents the database port that will be used by Taipy to access the database. The
     default value of _db_port_ is 1433.
 -   The _**db_host**_ parameter represents the database host that will be used by Taipy to access the database. The
@@ -323,7 +322,8 @@ In the previous example, we configure a _sql_ data node with the id "forecasts".
 default value `SCENARIO`. The database username is "admin", the user's password is "password", the database name
 is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The read query will be "SELECT \* from
 forecast_table".
-The write query builder in this example is a callback that takes in a dataframe and return a list of queries. The first query will delete all the data in the table "forecast_table" and the second query is a prepared statement that takes in two values, which is the data from the two columns "date" and "nb_sales" in the dataframe. Since this is a prepared statement, it must be passed as a tuple with the first element being the query and the second element being the data.
+The write query builder in this example is a callable function that takes in a dataframe and return a list of queries. The first query will delete all the data in the table "forecast_table", and the second query is a prepared statement that takes in two values, which is the data from the two columns "date" and "nb_sales" in the dataframe. Since this is a prepared statement, it must be passed as a tuple with the first element being the query and the second element being the data.
+
 
 !!! Note
 
