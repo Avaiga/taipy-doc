@@ -27,6 +27,8 @@ More optional attributes are available on data nodes, including:
     As explained in the following subsections, depending on the _storage_type_, other configuration attributes must
     be provided in the parameter _properties_ parameter.
 
+-   _**cacheable**_ is an attribute that indicates if the data node can be cached during the execution of the tasks it is connected to.
+
 -   Any other custom attribute can be provided through the parameter _**properties**_, which is
     a dictionary (a description, a tag, etc.)<br/>
     This _properties_ dictionary is used to configure the parameters specific to each storage type.
