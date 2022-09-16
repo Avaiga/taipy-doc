@@ -30,7 +30,7 @@ Published on TO_BE_DEFINED.
      the cancel method is called on a job with its status being either `RUNNING`, `COMPLETED`, or `SKIPPED`, its
      subsequent jobs will be abandoned while its status remains unchanged. A job whose status is `FAILED`,
      `CANCELED`, or `ABANDONED` cannot be canceled.
-   - TODO Core as a service
+   - Taipy Core can now be run as a service by using `Core().run()` or `tp.run(Core())`. By running Core as a service, Taipy will initialize the scheduler and the job dispatcher based on the config provided. Taipy Core can also be run along with Taipy Gui or Taipy Rest.
 
 #### Improvements
 
@@ -40,6 +40,7 @@ Published on TO_BE_DEFINED.
    - When submitting a scenario, a pipeline or a task, a list of jobs or a Job will be returned.
    - When submitting a scenario, pipeline, or task in standalone mode, the user can use the parameters _wait_ and
      _timeout_ to wait until the submitted jobs are finished or up to _timeout_ seconds.
+   - When in standalone mode, the job dispatcher will be running in a sub-thread that will periodically check for new jobs submitted by Taipy to execute.
    - When a running job is failed, its subsequent jobs will be abandoned.
    - A primary scenario can be deleted along with its cycle if it is the only scenario in the cycle.
    - The messages of the various Exceptions that can be raised have been improved to help the users debug their
@@ -53,7 +54,7 @@ Published on TO_BE_DEFINED.
 
 #### Deprecations
 
-   - TODO Config field nb_of_workers into max_nb_of_workers
+   - The field nb_of_workers within the Config has been deprecated in favor of max_nb_of_workers.
 
 ## Enterprise edition: 2.0
 
