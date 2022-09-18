@@ -62,7 +62,8 @@ Published on TO_BE_DEFINED.
 
 #### Features
 
-   - TODO alternative storage system
+   - New repository: SQLLite can now be used as a replacement for filesystem as the taipy repository.
+   - New repository: MongoDB can now be used as a replacement for filesystem as the taipy repository. 
 
 #### Improvements
    - TODO authentication
