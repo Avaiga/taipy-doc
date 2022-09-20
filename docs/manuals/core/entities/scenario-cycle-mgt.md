@@ -141,11 +141,10 @@ You can export a scenario with its related entities into a folder using `taipy.e
 
 ```python linenums="1"
 import taipy as tp
-import my_config
+import my_scenario_config
 
-scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+scenario = tp.create_scenario(my_scenario_config)
 tp.export(scenario.id, "./my_scenario")
-```
 
 
 # Cycle attributes
