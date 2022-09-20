@@ -62,8 +62,7 @@ Published on TO_BE_DEFINED.
 
 #### Features
 
-   - New repository: SQLLite can now be used as a replacement for filesystem as the taipy repository.
-   - New repository: MongoDB can now be used as a replacement for filesystem as the taipy repository. 
+   - SQLLite or MongoDB databases can now be used as alternatives to the filesystem to store Taipy entities.
 
 #### Improvements
    - TODO authentication
