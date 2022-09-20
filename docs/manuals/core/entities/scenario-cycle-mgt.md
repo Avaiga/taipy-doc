@@ -144,7 +144,7 @@ import taipy as tp
 import my_scenario_config
 
 scenario = tp.create_scenario(my_scenario_config)
-tp.export(scenario.id, "./my_scenario")
+tp.export(scenario.id, folder="./my_scenario")
 
 
 # Cycle attributes
