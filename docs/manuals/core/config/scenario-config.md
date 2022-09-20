@@ -67,12 +67,12 @@ associated to a Cycle corresponding to their creation date. See documentation on
 
 # Scenario configuration with comparators
 
-Here is a simple example assuming the pipeline configuration `pipeline_config` has already been created with `datanode_config` as one of the data nodes in the pipeline and the `compare_result` function is predefined:
+Here is a simple example. Assuming the pipeline configuration `pipeline_config` has already been created with `datanode_config` as one of the data node config in the pipeline config. The `compare_method` function is also predefined:
 
-```python linenums="1"
+```python
 from taipy import Config
 
-scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_config], comparators={datanode_config.id: compare})
+scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_config], comparators={datanode_config.id: compare_method})
 ```
 
 In this example, we create a scenario configuration `ScenarioConfig^` from a pipeline configuration already defined. We also provide the scenario configuration with a dictionary of the data node configuration id that we want to compare and a predifined function that can be used to compare data nodes of the scenarios.

@@ -100,7 +100,7 @@ If there is more than one scenario in the cycle, an error will be raised if you 
 
 # Compare scenarios
 
-You can compare two or more scenarios, created from the same scenario configuration, by using `taipy.compare_scenarios()` which takes two or more scenarios as the parameters. You can also provide the data node config id to specify which data nodes from the scenarios you want to compare through the parameter _**data_node_config_id**_
+You can compare two or more scenarios, created from the same scenario configuration, by using `taipy.compare_scenarios()` which takes two or more scenarios as the parameters. You can also provide the data node config id to specify which data nodes from the scenarios you want to compare through the parameter _**data_node_config_id**_.
 
 ```python linenums="1"
 import taipy as tp
@@ -112,6 +112,8 @@ current_month_scenario = tp.create_scenario(monthly_scenario_cfg)
 tp.compare(previous_month_scenario, current_month_scenario, "result_data_node")
 tp.compare(previous_month_scenario, current_month_scenario, "date_time_data_node")
 ```
+
+!!! info "To see how you can define the function used to compare data nodes, please refer to the [Scenario Config](../config/scenario-config.md) page."
 
 # Tag or untag a scenario
 
