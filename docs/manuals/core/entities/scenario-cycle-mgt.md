@@ -104,13 +104,18 @@ You can compare two or more scenarios, created from the same scenario configurat
 
 ```python linenums="1"
 import taipy as tp
+from datetime import datetime
 from my_config import *
 
 previous_month_scenario = tp.create_scenario(monthly_scenario_cfg)
-current_month_scenario = tp.create_scenario(monthly_scenario_cfg)
+previous_month_scenario.current_month.write(datetime(2020, 1, 1))
+previous_month_scenario.submit()
 
-tp.compare(previous_month_scenario, current_month_scenario, "result_data_node")
-tp.compare(previous_month_scenario, current_month_scenario, "date_time_data_node")
+current_month_scenario = tp.create_scenario(monthly_scenario_cfg)
+current_month_scenario.current_month.write(datetime(2020, 2, 1))
+current_month_scenario.submit()
+
+tp.compare(previous_month_scenario, current_month_scenario, data_node_config_id="sales_predictions")
 ```
 !!! info
     Defining the comparison function

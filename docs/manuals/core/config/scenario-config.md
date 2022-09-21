@@ -68,10 +68,16 @@ associated to a Cycle corresponding to their creation date. See documentation on
 # Configuring scenario comparators
 
 Let us imagine a common situation where the pipeline configuration `pipeline_config` has been created with `datanode_config` as one of the data node configuration for this the pipeline configuration.
-The function `compare_function` has also been defined:
+The function `compare_function` is also defined as followed:
 
 ```python
 from taipy import Config
+
+def compare_function(*data_node_results):
+  comparison_result = data_node_results[0]
+  for data_node in data_node_results[1:]:
+    comparison_result -= data_node
+  return comparison_result
 
 scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_config], comparators={datanode_config.id: compare_function})
 ```
