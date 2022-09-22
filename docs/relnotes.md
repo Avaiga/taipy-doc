@@ -60,7 +60,7 @@ Published on TO_BE_DEFINED.
 
 **`taipy-core`** 2.0.0
 
-   - The field nb_of_workers within the Config has been deprecated in favor of max_nb_of_workers.
+   - The field `*nb_of_workers*` within the Config has been deprecated in favor of `*max_nb_of_workers*`.
 
 ## Enterprise edition: 2.0
 
