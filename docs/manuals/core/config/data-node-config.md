@@ -22,8 +22,8 @@ More optional attributes are available on data nodes, including:
 -   _**storage_type**_ is an attribute that indicates the type of storage of the
     data node.<br/>
     The possible values are ["pickle"](#pickle) (**the default value**),
-    ["csv"](#csv), ["excel"](#excel), ["json"](#json), ["sql"](#sql), ["sql_table"](#sql_table), ["in_memory"](#in-memory), or
-    ["generic"](#generic).<br/>
+    ["csv"](#csv), ["excel"](#excel), ["json"](#json), ["mongo_collection"](#mongo-collection),
+    ["sql"](#sql), ["sql_table"](#sql_table), ["in_memory"](#in-memory), or ["generic"](#generic).<br/>
     As explained in the following subsections, depending on the _storage_type_, other configuration attributes must
     be provided in the parameter _properties_ parameter.
 
@@ -66,7 +66,7 @@ Taipy proposes various predefined _data nodes_ corresponding to the most popular
 _storage types_. Thanks to predefined _data nodes_, the Python developer does not need
 to spend much time configuring the _storage types_ or the
 _query system_. Most of the time, a predefined _data node_ corresponding to a basic and standard use case satisfies
-the user's needs like pickle file, csv file, sql table, Excel sheet, etc.
+the user's needs like pickle file, csv file, sql table, MongoDB collection, Excel sheet, etc.
 
 The various predefined _storage types_ are mainly used for input data. Indeed, the input data is usually provided by an
 external component, and the Python developer user does not control the format.
