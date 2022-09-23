@@ -42,8 +42,7 @@ Published on TO_BE_DEFINED.
    - When submitting a scenario, a pipeline, or a task, the job(s) created will be returned.
    - When submitting a scenario, pipeline, or task in standalone mode, the user can use the parameters
      _wait_ and _timeout_ to wait until the submitted jobs are finished or up to _timeout_ seconds.
-   - When in standalone mode, the job dispatcher will be running in a sub-thread that will periodically
-     check for new jobs submitted by Taipy to execute.
+   - When in standalone mode, the job dispatcher runs in a sub-thread that periodically checks for new jobs submitted by Taipy to execute.
    - When a running job fails, its subsequent jobs will be automatically abandoned.
    - A primary scenario can be deleted along with its cycle if it is the only scenario in the cycle.
    - The messages of the various Exceptions that can be raised have been improved to help the users
