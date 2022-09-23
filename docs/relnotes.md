@@ -31,8 +31,7 @@ Published on TO_BE_DEFINED.
      be abandoned while its status remains unchanged. A job whose status is `FAILED`, `CANCELED` or `ABANDONED`
      cannot be canceled.
    - Taipy Core can now be run as a service by using `Core().run()` or `tp.run(Core())`. By running Core
-     as a service, Taipy will initialize the scheduler and the job dispatcher based on the config provided. Taipy
-     Core can also be run along with Taipy Gui or Taipy Rest.
+     as a service, Taipy initializes the scheduler and the job dispatcher based on the provided configuration. The Taipy Core service can be run along with Taipy Gui or Taipy Rest services.
 
 #### Improvements
 
