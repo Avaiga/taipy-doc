@@ -73,11 +73,24 @@ The function `compare_function` is also defined as followed:
 ```python
 from taipy import Config
 
+# Calling compare_function(10, 13, 17, 9) returns the following dict
+# {
+# 0: {0: 0, 1: 3, 2: 7, 3: -1},
+# 1: {0: -3, 1: 0, 2: 4, 3: -4},
+# 2: {0: -7, 1: -4, 2: 0, 3: -8},
+# 3: {0: 1, 1: 4, 2: 8, 3: 0}}
 def compare_function(*data_node_results):
-  comparison_result = data_node_results[0]
-  for data_node in data_node_results[1:]:
-    comparison_result -= data_node
-  return comparison_result
+    comparison_result= {}
+    current_result_index = 0
+    for current_result in data_node_results:
+        comparison_result[current_result_index]={}
+        next_result_index = 0
+        for next_result in data_node_results:
+            print(f"comparing result {current_result_index} with result {next_result_index}")
+            comparison_result[current_result_index][next_result_index] = next_result - current_result
+            next_result_index += 1
+        current_result_index += 1
+    return comparison_result
 
 scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_config], comparators={datanode_config.id: compare_function})
 ```
