@@ -1,6 +1,7 @@
 from datetime import datetime
 
-from my_functions import plan, predict, train
+from my_functions import compare, plan, predict, train
+
 from taipy import Config, Frequency, Scope
 
 # Configure all six data nodes
@@ -39,4 +40,5 @@ monthly_scenario_cfg = Config.configure_scenario(
     id="scenario_configuration",
     pipeline_configs=[sales_pipeline_cfg, production_pipeline_cfg],
     frequency=Frequency.MONTHLY,
+    comparators={sales_predictions_cfg.id: compare},
 )

@@ -64,3 +64,35 @@ associated to a Cycle corresponding to their creation date. See documentation on
 [Scenario and cycle management](../entities/scenario-cycle-mgt.md).
 
 [:material-arrow-right: The next section introduces the global configuration](global-config.md).
+
+# Configuring scenario comparators
+
+Let us imagine a common situation where the pipeline configuration `pipeline_config` has been created with `datanode_config` as one of the data node configuration for this the pipeline configuration.
+The function `compare_function` is also defined as followed:
+
+```python
+from taipy import Config
+
+# Calling compare_function(10, 13, 17, 9) returns the following dict
+# {
+# 0: {0: 0, 1: 3, 2: 7, 3: -1},
+# 1: {0: -3, 1: 0, 2: 4, 3: -4},
+# 2: {0: -7, 1: -4, 2: 0, 3: -8},
+# 3: {0: 1, 1: 4, 2: 8, 3: 0}}
+def compare_function(*data_node_results):
+    comparison_result= {}
+    current_result_index = 0
+    for current_result in data_node_results:
+        comparison_result[current_result_index]={}
+        next_result_index = 0
+        for next_result in data_node_results:
+            print(f"comparing result {current_result_index} with result {next_result_index}")
+            comparison_result[current_result_index][next_result_index] = next_result - current_result
+            next_result_index += 1
+        current_result_index += 1
+    return comparison_result
+
+scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_config], comparators={datanode_config.id: compare_function})
+```
+
+We created the scenario configuration `scenario_config` using the indicated pipeline configuration. We use the `comparators` parameter to provide a dictionary indicating which data node need to be compared and with what function.
