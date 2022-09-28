@@ -50,7 +50,8 @@ Taipy Enterprise edition supports three authentication protocols:
     You can retrieve the default authenticator using the function `Authenticator.get_default()^`.
 
     If `login()^` or `Authenticator.get_default()^` are called before any authenticator
-    was created, Taipy looks for an `AuthenticationConfig^` in the Taipy Config.
+    was created, Taipy looks for an `AUTHENTICATION` config section (see `AuthenticationConfig^`
+    for more details).
     This config section, if present, is used to instantiate the *default Authenticator*.
 
     To summarize:
@@ -83,7 +84,7 @@ The *None* authenticator does not check for user declaration or password match.
 It is designed so that developers can start building secure applications before
 the actual authentication system and processes are defined or deployed.
 
-When the *None* authenticator `(Authenticator.)login()^` method is called, it always
+When the *None* authenticator's `(Authenticator.)login()^` method is called, it always
 returns a valid `Credentials^` object, no matter what username and password
 are provided.
 
@@ -91,7 +92,7 @@ To create a *None* authenticator, you can instantiate an `Authenticator^` object
 setting the *protocol* argument of the constructor to "none".
 
 !!! Note "Using Taipy configuration to set default authenticator"
-    To set the *default authenticator* to `none` you can use the authentication configuration either in Python or Toml:
+    To set the *default authenticator* to `none` you can use the authentication configuration either in Python or TOML:
 
     === "Python configuration"
 
@@ -105,7 +106,7 @@ setting the *protocol* argument of the constructor to "none".
         ```toml title="config.toml"
 
         [AUTHENTICATION]
-        protocole = "none"
+        protocol = "none"
         ```
 
         ```python title="main.py"
@@ -248,7 +249,7 @@ both the *roles* and *passwords* arguments of the
 ```
 users={
     "roles": {
-        "user1": ["role1", "TAIPY_READER"],
+        "user1": "role1",
         "user2": ["role2", "TAIPY_ADMIN"],
         "user3": ["role1", "role2", "TAIPY_ADMIN"]
     },
@@ -271,7 +272,7 @@ print(f"user3 - Logged in. Roles={user3.get_roles()}")
 ```
 You get the following output:
 ```
-user1 - Logged in. Roles={'role1', 'TAIPY_READER'}
+user1 - Logged in. Roles={'role1'}
 user2 - Logged in. Roles={'role2', 'TAIPY_ADMIN'}
 user3 - Logged in. Roles={'role1', 'role2', 'TAIPY_ADMIN'}
 ```
@@ -288,7 +289,7 @@ to use the username as the password value for this user.
         ```
         Config.configure_authentication(protocol="taipy",
                                         roles={
-                                            "user1": ["role1", "TAIPY_READER"],
+                                            "user1": "role1",
                                             "user2": ["role2", "TAIPY_ADMIN"],
                                             "user3": ["role1", "role2", "TAIPY_ADMIN"]},
                                         passwords={
@@ -307,7 +308,7 @@ to use the username as the password value for this user.
         protocol="taipy"
 
         [AUTHENTICATION.roles]
-        user1 = ["role1", "TAIPY_READER",]
+        user1 = "role1"
         user2 = ["role2", "TAIPY_ADMIN"],
         user3 = ["role1", "role2", "TAIPY_ADMIN"]
 
