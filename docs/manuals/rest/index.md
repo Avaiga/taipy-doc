@@ -82,7 +82,7 @@ using either the curl command line REST client or a python REST client (the `req
             "job_ids": [],
             "edit_in_progress": false,
             "name": "First forecast_value data node",
-            "parent_id": "SCENARIO_my_awesome_scenario_c6e73df8-5508-41f8-a8e5-c6b1f9cd4c73",
+            "owner_id": "SCENARIO_my_awesome_scenario_c6e73df8-5508-41f8-a8e5-c6b1f9cd4c73",
             "config_id": "forecast_value"
         }, {
             "last_edit_date": "2022-08-04T17:12:10.973318",
@@ -94,7 +94,7 @@ using either the curl command line REST client or a python REST client (the `req
             "job_ids": [],
             "edit_in_progress": false,
             "name": "historical data",
-            "parent_id": "SCENARIO_my_awesome_scenario_5ed1582b-7b5c-4d62-8f7c-5c4ee9ee721a",
+            "owner_id": "SCENARIO_my_awesome_scenario_5ed1582b-7b5c-4d62-8f7c-5c4ee9ee721a",
             "config_id": "historical_data_set"
         }]
         ```
@@ -121,7 +121,7 @@ using either the curl command line REST client or a python REST client (the `req
             "job_ids": [],
             "edit_in_progress": false,
             "name": "First forecast_value data node",
-            "parent_id": "SCENARIO_my_awesome_scenario_c6e73df8-5508-41f8-a8e5-c6b1f9cd4c73",
+            "owner_id": "SCENARIO_my_awesome_scenario_c6e73df8-5508-41f8-a8e5-c6b1f9cd4c73",
             "config_id": "forecast_value"
         }, {
             "last_edit_date": "2022-08-04T17:12:10.973318",
@@ -133,7 +133,7 @@ using either the curl command line REST client or a python REST client (the `req
             "job_ids": [],
             "edit_in_progress": false,
             "name": "historical data",
-            "parent_id": "SCENARIO_my_awesome_scenario_5ed1582b-7b5c-4d62-8f7c-5c4ee9ee721a",
+            "owner_id": "SCENARIO_my_awesome_scenario_5ed1582b-7b5c-4d62-8f7c-5c4ee9ee721a",
             "config_id": "historical_data_set"
         }]
         ```

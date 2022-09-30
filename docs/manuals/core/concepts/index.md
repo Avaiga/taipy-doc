@@ -45,7 +45,7 @@ The purpose of this section is to define the following Taipy Core concepts.
   solve.
 - A [Cycle](cycle.md) or work cycle is a time period corresponding to an iteration of a recurrent scenario.
 - A [Scope](scope.md) represents the _visibility_ of a data node in the graph of entities, and the level of its
-  parent (Pipeline, Scenario, Cycle).
+  owner (Pipeline, Scenario, Cycle).
 
 !!! important "Definition: Config vs Entities"
 
