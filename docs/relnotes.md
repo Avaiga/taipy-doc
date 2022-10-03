@@ -12,20 +12,31 @@ This is the list of changes to Taipy releases as they were published.
 Published on 2022-06.
 
 [`taipy` 1.1](https://pypi.org/project/taipy/1.1.0/) contains the latest
-[`taipy-gui` 1.1](https://pypi.org/project/taipy-gui/1.1.0/), 
+[`taipy-gui` 1.1](https://pypi.org/project/taipy-gui/1.1.0/),
 [`taipy-core` 1.1](https://pypi.org/project/taipy-core/1.1.0/) and
 [`taipy-rest` 1.1](https://pypi.org/project/taipy-rest/1.1.0/) packages.
 
 
 #### Improvements
 
-**`taipy-gui`**<br/>1.1.0
+**`taipy-gui`**<br/>1.1.3
+
+- The client-server communication settings are extended to accommodate various Flask deployment scenarios.<br/>
+  See the documentation for the *async_mode* parameter to `Gui.run()^` for more information.
+- Implicit re-run of the `Gui^` instance in Notebook environments.<br/>
+  See [issue #320](https://github.com/Avaiga/taipy-gui/issues/320).
+- Test server/client versions for safe interoperability.<br/>
+  See [issue #323](https://github.com/Avaiga/taipy-gui/issues/323).
+- Allow the edition of specific table columns.<br/>
+  See [issue #366](https://github.com/Avaiga/taipy-gui/issues/366).
+
+<br/>1.1.0
 
    - The `State^` instance can be initialized in a user-defined function. See the _on_init_
      attribute of the `Gui^` class for more details.
    - Page definitions and the bound variables can be isolated in a module to clarify the
      application code organization.<br/>
-     See this [section](manuals/gui/binding.md#scope-of-variable-binding) for details.
+     See this [section](manuals/gui/binding.md#scope-for-variable-binding) for details.
    - The [`chart`](manuals/gui/viselements/chart.md) control can display georeferenced data on top
      of maps.<br/>
      See this [example](manuals/gui/viselements/charts/others.md#plotting-on-a-map) for details.
@@ -54,14 +65,23 @@ Published on 2022-06.
 
 #### Significant bug fixes
 
-**`taipy-gui`**<br/>1.1.0
+**`taipy-gui`**<br/>1.1.3
 
-   - Concurrency issues were fixed.
-   - Taipy supports HTTPS via reverse proxies.<br/>
-     See [issue](https://github.com/Avaiga/taipy-gui/issues/263).
-   - The [_attr_list_](https://python-markdown.github.io/extensions/attr_list) extension can
-     be used to style individual Markdown elements without the need for a CSS file.<br/>
-     See [issue](https://github.com/Avaiga/taipy-gui/issues/185).
+- Error fixed when modifying a State dictionary entry in a callback.<br/>
+  See [issue #356](https://github.com/Avaiga/taipy-gui/issues/356).
+- Boolean values not editable in tables.<br/>
+  See [issue #365](https://github.com/Avaiga/taipy-gui/issues/365).
+- Crash fixed when using a dictionary in the labels property of the slider control.<br/>
+  See [issue #379](https://github.com/Avaiga/taipy-gui/issues/379).
+     
+<br/>1.1.0
+
+- Concurrency issues were fixed.
+- The [_attr_list_](https://python-markdown.github.io/extensions/attr_list) extension can
+  be used to style individual Markdown elements without the need for a CSS file.<br/>
+  See [issue #185](https://github.com/Avaiga/taipy-gui/issues/185).
+- Taipy supports HTTPS via reverse proxies.<br/>
+  See [issue #263](https://github.com/Avaiga/taipy-gui/issues/263).
 
 #### Deprecations
 
