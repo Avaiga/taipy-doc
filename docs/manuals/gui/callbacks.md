@@ -112,8 +112,8 @@ code, if there is one.
 When a client connects to your application, the `on_init()` callback is invoked so you can
 set variables to appropriate values, depending on the application state at this point.
 
-A new connection will make Taipy GUI try to locate a global `on_init()` function, and
-invoke this function providing the client's `State^`, where you can
+A new connection will make Taipy GUI try to locate a global `on_init()` function and
+invoke this function, providing the client's `State^`, where you can
 specify timely values in your application variables.
 
 Here is how an `on_init()` function could be used to initialize a connection-specific variable.
@@ -169,7 +169,7 @@ def on_action(state: State, ...):
     thread.start()
 ```
 
-Line 14 introduces the declaration of a callback function, that would typically be
+Line 14 introduces the declaration of a callback function that would typically be
 executed when the user activates a control. This is where we want to run the time-consuming task defined in the function *heavy_function()*`. However, because we know this
 will take time, we will execute it in another thread and let the application carry on
 its regular execution.<br/>
@@ -178,20 +178,20 @@ Typically, in this situation, we may want to deactivate the button that triggere
 so that the user cannot request the execution twice until the task was actually performed.
 
 In line 10, we define the function that gets executed in the external thread. The first
-thing to do is to invoke *heavy_function()* (with whatever parameters it needs).
+thing to do is invoke *heavy_function()* (providing whatever parameters it needs).
 When the function is done, we want to update the graphical user interface that the work
 was performed. This is where `invoke_callback()^` is used: the code requests that the
 function **heavy_function_done()* is invoked. The `State^` will be provided by Taipy, using
-the state identifier that was provided in *state_id*.
+the state identifier provided in *state_id*.
 
 The actual update of the user interface (including, potentially, the re-activation of the
 control that triggered the callback in the first place) is performed in *heavy_function_done()*,
-defined at line 6. Any code that needs a `State^` object (to update a variable or send a
+defined in line 6. Any code that needs a `State^` object (to update a variable or send a
 notification to the user) can be used safely.
 
 ## Exception handling
 
-Because the user interface may invoke your own Python code using callbacks, exceptions
+Because the user interface may invoke the application Python code using callbacks, exceptions
 may be raised in the user code. Taipy GUI provides a way to notify the application of
 such situations, so you can control what to do to reflect the application state.
 
