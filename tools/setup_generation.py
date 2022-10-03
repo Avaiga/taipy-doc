@@ -100,7 +100,7 @@ FORCE_PACKAGE = [
 ]
 
 # Entries that should be hidden for the time being
-HIDDEN_ENTRIES = ["Decimator"]
+HIDDEN_ENTRIES = ["Decimator", "get_context_id", "invoke_state_callback"]
 
 REFERENCE_REL_PATH = "manuals/reference"
 REFERENCE_DIR_PATH = root_dir + "/docs/" + REFERENCE_REL_PATH
