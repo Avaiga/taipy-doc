@@ -26,6 +26,7 @@ nav:
         - 'Styling': 'manuals/gui/styling.md'
         - 'Configuration': 'manuals/gui/configuration.md'
         - 'Using Notebooks': 'manuals/gui/notebooks.md'
+        - 'Extension': 'manuals/gui/extension.md'
     - Taipy Core:
         - manuals/core/index.md
         - 'Concepts':

@@ -54,13 +54,11 @@ ENTERPRISE_BANNER = """!!! warning "Available in Taipy Enterprise edition"
 
 """
 
-# (destination_package, item_pattern)
-# or (destination_package, item_patterns)
+# (item_pattern, destination_package)
+# or ([item_pattern...], destination_package)
 FORCE_PACKAGE = [
     ("typing.*", "taipy.core"),
-    ("taipy.gui.*.(Gui|State|Markdown)", "taipy.gui"),
-    ("taipy.gui.partial.Partial", "taipy.gui.partial"),
-    ("taipy.gui.page.Page", "taipy.gui.page"),
+    ("taipy.gui.*.(Gui|State|Markdown|Page)", "taipy.gui"),
     (["taipy.core.cycle.cycle.Cycle",
       "taipy.core.data.data_node.DataNode",
       "taipy.core.common.frequency.Frequency",
@@ -71,6 +69,7 @@ FORCE_PACKAGE = [
       "taipy.core.job.status.Status",
       "taipy.core.task.task.Task",
       "taipy.core.taipy.clean_all_entities",
+      "taipy.core.taipy.cancel_job",
       "taipy.core.taipy.compare_scenarios",
       "taipy.core.taipy.create_pipeline",
       "taipy.core.taipy.create_scenario",
@@ -99,6 +98,9 @@ FORCE_PACKAGE = [
     ("taipy.core.data.*.*DataNode", "taipy.core.data"),
     ("taipy.rest.rest.Rest", "taipy.rest")
 ]
+
+# Entries that should be hidden for the time being
+HIDDEN_ENTRIES = ["Decimator", "get_context_id", "invoke_state_callback"]
 
 REFERENCE_REL_PATH = "manuals/reference"
 REFERENCE_DIR_PATH = root_dir + "/docs/" + REFERENCE_REL_PATH
@@ -218,6 +220,7 @@ for current_file in os.listdir(VISELEMENTS_SRC_PATH):
                 properties.append(row)
         default_property_name = None
         for i, props in enumerate(properties):
+            # TODO: Remove properties that have an hidden type
             # props = (flags, name, type, default value,description)
             if props[0] & DEFAULT_PROP:  # Default property?
                 name = props[1]
@@ -399,6 +402,9 @@ def read_module(module):
             # Not in our focus package?
             elif not e.__module__.startswith(ROOT_PACKAGE):
                 continue
+        # Remove hidden entries
+        if entry in HIDDEN_ENTRIES:
+            continue
         # Not a function or a class?
         if not entry_type:
             if isclass(e):
