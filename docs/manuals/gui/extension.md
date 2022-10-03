@@ -39,12 +39,12 @@ from taipy.gui.extension import ElementLibrary
 
 class MyCustomLibrary(ElementLibrary):
     def get_name(self) -> str:
-        return "<mu_custom_library_name>"
+        return "library_name"
 
     def get_elements(self) -> dict:
         return ({
-          "<custom_element_1>": Element(...),
-          "<custom_element_2>": Element(...),
+          "element1_name": Element(...),
+          "element2_name": Element(...),
           })
 ```
 
@@ -68,11 +68,11 @@ Element("<default_property_name>",
         <rendering_arguments>)
 ```
 
-An element property descriptor (handled by the `ElementProperty^` class) must be
-indicated its type (one of the `PropertyType^` values) and potentially a default
+An element property descriptor (handled by the `ElementProperty^` class) must
+indicate its type (one of the `PropertyType^` values) and potentially a default
 value.
 
-All elements must indicated what is its default property name. That is used in Markdown
+All elements must indicate what is its default property name. That is used in Markdown
 page as the first fragment of the `<|...|>` construct, or the value located in the
 text part of an element tag in HTML pages.
 
@@ -111,9 +111,9 @@ In order to create and use custom visual elements, you need to install:
 
 - Taipy GUI 2.0 or higher (included in Taipy and Taipy Enterprise).
 - Python 3.8 or higher.
-- NodeJS and NPM if you plan to create dynamic custom visual elements.
+- NodeJS (and NPM) if you plan to create dynamic custom visual elements.
 
-A basic knowledge of React and TypeScript is welcome.
+A basic knowledge of React (that we use with TypeScript) is welcome.
 
 ## Examples
 

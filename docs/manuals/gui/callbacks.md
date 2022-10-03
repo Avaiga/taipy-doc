@@ -148,7 +148,7 @@ to the client's browser.
 
 Here is how this can be achieved:
 ```py linenums="1"
-from taipy.gui import get_state_id, notify
+from taipy.gui import State, get_state_id, notify
 from threading import Thread
 
 gui = Gui(...)
@@ -170,11 +170,12 @@ def on_action(state: State, ...):
 ```
 
 Line 14 introduces the declaration of a callback function that would typically be
-executed when the user activates a control. This is where we want to run the time-consuming task defined in the function *heavy_function()*`. However, because we know this
+executed when the user activates a control. This is where we want to run the time-consuming task defined in the function *heavy_function()*. However, because we know this
 will take time, we will execute it in another thread and let the application carry on
 its regular execution.<br/>
 Note that in *on_action()*, we can use *state* to update variables or notify the user interface.
-Typically, in this situation, we may want to deactivate the button that triggered the callback
+Typically, in this situation and if we do not want to block the user interface using `hold_control()^`
+and `resume_control()^`, we may want to deactivate the button that triggered the callback
 so that the user cannot request the execution twice until the task was actually performed.
 
 In line 10, we define the function that gets executed in the external thread. The first

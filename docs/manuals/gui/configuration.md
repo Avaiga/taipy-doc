@@ -92,7 +92,7 @@ Here is the list of the configuration parameters you can use in
      [*propagate* property](viselements/#the-propagate-property) for details).
    - *time_zone* (str, default: "client"): indicates how date and time values should be
      interpreted.<br/>
-     You can use a TZ database name (as listed in[Time zones list on Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
+     You can use a TZ database name (as listed in [Time zones list on Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
      or one of the following values:
      - "client" indicates that the time zone to be used is the Web client's.
      - "server" indicates that the time zone to be used is the Web server's.
@@ -112,7 +112,7 @@ Here is the list of the configuration parameters you can use in
    - *data_url_max_size* (int or None): the size below which the upload of file content is
      performed as inline data. If a file content exceeds that size, it will actually create
      a physical file on the server for your application to use. This upload mechanism is
-     used by the [`file_selector`](viselements/file_selector.md) control.<br/>
+     used by the [`file_download`](viselements/file_download.md) and [`image`](viselements/image.md) controls.<br/>
      The default is 50 kB.
    - *ngrok_token* (str, default: ""): an authtoken, if you need to use Ngrok to expose
      your application to the Internet. See the section on

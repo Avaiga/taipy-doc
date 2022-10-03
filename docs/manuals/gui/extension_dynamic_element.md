@@ -4,7 +4,7 @@ To add variable binding to custom elements, you must create dynamic elements.
 
 Dynamic elements use JavaScript code to dynamically generate HTML code to
 produce the pages that can be displayed in a browser. Taipy GUI actually relies
-of the [React](https://reactjs.org/) JavaScript library to simplify the
+on the [React](https://reactjs.org/) JavaScript library to simplify the
 development of graphical components.
 
 !!! warning "Work in Progress"
