@@ -19,7 +19,7 @@ Reporting bugs is through [GitHub issues](https://github.com/Avaiga/taipy/issues
 Please report relevant information and preferably code that exhibits the problem. We provide templates to help you
 to present the issue in a comprehensive way.
 
-The Taipy team will analyse and try to reproduce the bug to provide feedback. If confirmed, we will add a priority
+The Taipy team will analyze and try to reproduce the bug to provide feedback. If confirmed, we will add a priority
 to the issue and add it in our backlog. Feel free to propose a pull request to fix it.
 
 ## Issue reporting, feedback, proposal, design or any other comment
@@ -27,7 +27,7 @@ to the issue and add it in our backlog. Feel free to propose a pull request to f
 Any feedback or proposal is greatly appreciated! Do not hesitate to create an issue with the appropriate template on
 [GitHub](https://github.com/Avaiga/taipy/issues).
 
-The Taipy team will analyse your issue and return to you as soon as possible.
+The Taipy team will analyze your issue and return to you as soon as possible.
 
 ## Improve Documentation
 
@@ -39,13 +39,14 @@ Do not hesitate to create an issue or pull request directly on the
 The Taipy team manages its backlog in private. Each issue that will be done during our current sprint is
 attached to the `current sprint`. Please, do not work on it, the Taipy team is on it.
 
-## Code organisation
+## Code organization
 
-Taipy is organised in four main repositories:
+Taipy is organized in several repositories:
 
 - [taipy-core](https://github.com/Avaiga/taipy-core).
 - [taipy-gui](https://github.com/Avaiga/taipy-gui).
 - [taipy-rest](https://github.com/Avaiga/taipy-rest).
+- [taipy-config](https://github.com/Avaiga/taipy-config).
 - [taipy](https://github.com/Avaiga/taipy) brings previous packages in a single one.
 
 ## Coding style and best practices
@@ -112,7 +113,7 @@ working on it.
     - pre-commit works - without mypy error.
     - GitHub's actions are passing.
 
-6. The taipy team will have a look at your Pull Request and will give feedback. If every requirement is valid, your
+6. The Taipy team will have a look at your Pull Request and will give feedback. If every requirement is valid, your
    work will be added in the next release, congratulation!
 
 
@@ -120,7 +121,7 @@ working on it.
 
 Taipy comes with multiple optional packages. You can find the list directly in the product or Taipy's packages.
 The back-end Pipfile does not install by default optional packages due to `pyodbc` requiring a driver's manual
-installation. This is not the behaviour for the front-end that installs all optional packages through its Pipfile.
+installation. This is not the behavior for the front-end that installs all optional packages through its Pipfile.
 
 If you are a contributor on Taipy, be careful with dependencies, do not forget to install or uninstall depending on
 your issue.

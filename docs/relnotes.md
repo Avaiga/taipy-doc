@@ -17,15 +17,16 @@ Published on 2022-10.
 [`taipy-core` 2.0](https://pypi.org/project/taipy-core/2.0.0/) and
 [`taipy-rest` 2.0](https://pypi.org/project/taipy-rest/2.0.0/) packages.
 
-#### Features
+#### New Features
 
 **`taipy-gui`**<br/>2.0.0
 
 - Extension API: custom visual elements can be integrated into Taipy GUI applications.<br/>
   Third party HTML components can be integrated into Taipy GUI pages to address specific use cases.<br/>
   See [Extension API](../manuals/gui/extension) for details.
-- New callbacks (`on_navigate` and `on_exception`) can be used to detect navigation events and exceptions
-  raised in user code.<br/>
+- New callbacks (`on_init`, `on_navigate`, `on_exception` and `on_status`) can be used to initialize a new
+  session, detect navigation events, trigger code when exceptions are raised in user code,
+  and invoke code when a *status* page is requested.<br/>
   See [Callbacks](../manuals/gui/callbacks) for details.
 - The Taipy GUI application configuration uses the generic Taipy configuration mechanism exposed in the
   new `taipy-config` package.
@@ -83,7 +84,7 @@ Published on 2022-10.
 
 Published on 2022-10.
 
-#### Features
+#### New Features
 
 - SQLLite or MongoDB databases can now be used as alternatives to the filesystem to store Taipy entities.
 
