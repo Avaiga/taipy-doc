@@ -336,11 +336,6 @@ The data parameter of the write query builder is expected to have the same data 
 
 # Mongo Collection
 
-!!! Important
-
-    To be able to use a `MongoCollectionDataNode^` with MongoDB, you need to run internal dependencies with
-    `pip install taipy[mongo]`.
-
 A `MongoCollectionDataNode^` is a specific data node used to model data stored in a Mongo collection. To add a new *mongo_collection* data node configuration, the `Config.configure_mongo_collection_data_node()^` method can be used.
 In addition to the generic parameters described in the previous section [Data node configuration](data-node-config.md), multiple parameters can be provided.
 
@@ -350,57 +345,71 @@ In addition to the generic parameters described in the previous section [Data no
 -   The _**collection_name**_ parameter represents the name of the data collection in the database.
 -   The _**read_query**_ parameter represents the MongoDB query in the form of a dictionary that will be used by Taipy to read the data from the collection.
 -   The _**custom_document**_ parameter represents the custom class that is used to store, encode, and decode data when reading and writing to a Mongo collection. The data returned by the read method is a list of custom_document object(s), and the data passed as a parameter of the write method is a (list of) custom_document object(s). The custom_document can have:
-    -   An otional `decoder` method to decode data in the Mongo collection to a custom object when reading.
-    -   An optional `encoder` method to encode the object's properties to the Mongo collection format when writing.
+    -   An otional `decoder()` method to decode data in the Mongo collection to a custom object when reading.
+    -   An optional `encoder()` method to encode the object's properties to the Mongo collection format when writing.
 -   The _**db_port**_ parameter represents the database port that will be used by Taipy to access MongoDB. The default value of _db_port_ is 27017.
 -   The _**db_host**_ parameter represents the database host that will be used by Taipy to access MongoDB. The default value of _db_host_ is "localhost".
 
 ```python linenums="1"
 from taipy import Config
-from datetime import datetime
-from bson.objectid import ObjectId
 
-class CustomDocument:
-    def __init__(self, id=ObjectId(), foo=None, bar=None, time=datime.now()):
-        self.id = id
-        self.foo = foo
-        self.bar = bar
-        self.time = time
-
-    def encode(self):
-        return {"_id": self.id, "foo": self.foo, "bar": self.bar, "time": self.time.isoformat()}
-
-    @classmethod
-    def decode(cls, document):
-        return cls(
-            str(document["_id"]),
-            document["foo"],
-            document["bar"],
-            datetime.fromisoformat(document["time"])
-        )
-
-forecasts_cfg = Config.configure_mongo_collection_data_node(
-    id="forecasts",
+historical_data_cfg = Config.configure_mongo_collection_data_node(
+    id="historical_data",
     db_username="admin",
-    db_password="password",
+    db_password="pa$$w0rd",
     db_name="taipy",
-    collection_name="forcast_data",
-    read_query={},
-    custom_document=CustomDocument,
+    collection_name="historical_data_set",
 )
 ```
 
-In this example, we configure a *mongo_collection* data node with the id "forecasts". Its scope is the
-default value `SCENARIO`. The database username is "admin", the user's password is "password", the database name
-is "taipy", and the data collection is "forcast_data". The read query will be `{}`, which corresponds to the following SQL statement: "SELECT \* from
-forecast_data".
+In this example, we configure a *mongo_collection* data node with the id "historical_data":
 
-The custom document is defined as CustomDocument class, with:
+-   Its scope is the default value `SCENARIO`.
+-   The database username is "admin", the user's password is "pa$$w0rd"
+-   The database name is "taipy"
+-   The collection name is "historical_data_set".
+-   Without being specified, the custom document class is defined as `taipy.core.DefaultCustomDocument`.
+
+```python linenums="1"
+from taipy import Config
+from datetime import datetime
+
+class DailyMinTemp:
+    def __init__(self, Date : datetime = None, Temp : float = None):
+        self.Date = Date
+        self.Temp = Temp
+
+    def encode(self):
+        return {
+            "date": self.Date.isoformat(),
+            "temperature": self.Temp,
+        }
+
+    @classmethod
+    def decode(cls, data):
+        return cls(
+            datetime.fromisoformat(data["date"]),
+            data["temperature"],
+        )
+
+historical_data_cfg = Config.configure_mongo_collection_data_node(
+    id="historical_data",
+    db_username="admin",
+    db_password="pa$$w0rd",
+    db_name="taipy",
+    collection_name="historical_data_set",
+    custom_document=DailyMinTemp,
+)
+```
+
+In this next example, we configure another *mongo_collection* data node, with the custom document is defined as DailyMinTemp class.
+
 -   The custom encode method encodes `datetime.datetime` to the ISO 8601 string format.
--   The corresponding decode method decodes a ISO 8601 string to `datetime.datetime`, and convert the _id of the document to a string.
+-   The corresponding decode method decodes a ISO 8601 string to `datetime.datetime`.
+-   The `_id` of the Mongo document is discarded.
 
-Without this two methods, the default decoder will map the key of each document to the corresponding properties of a custom object, and the default encoder will convert object's properties to a dictionary for writing to the Mongo collection, without any special formating.
-As a result, the properties of the custom document class without encode and decode methods are expected to have the same name as the name of each document in the Mongo collection. In this example, each document contains "_id", "foo", "bar", and "time" fields, so the properties of the custom document are also expected to be "_id", "foo", "bar", and "time".
+Without this two methods, the default decoder will map the key of each document to the corresponding property of a DailyMinTemp object,
+and the default encoder will convert DailyMinTemp object's properties to a dictionary, without any special formating.
 
 !!! Note
 
