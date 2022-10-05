@@ -219,8 +219,13 @@ def on_post_build(env):
                                 new_content += f"{method}"
                             else:
                                 new_content += f"\"><code>"
-                                if not groups[0]:
-                                    new_content += f"{package}."
+                                # FIX:
+                                # This block would add the destination package name
+                                # before the entry name, in the link body.
+                                # That's usualy what we do not want.
+                                # It is kept until no bad impact is found.
+                                #if not groups[0]:
+                                #    new_content += f"{package}."
                                 new_content += entry
                         else:
                             new_content += f"pkg_{dest_package}"
@@ -294,7 +299,7 @@ def on_post_build(env):
                     # At this point, this code is pretty sub-optimal and heavily
                     # depends on the MkDocs generation. Time will tell if we can
                     # keep it as is...
-                    typing_code = re.compile(r"(<td><code>)(.*\^.*)(</code></td>)")
+                    typing_code = re.compile(r"(<td>\s*<code>)(.*\^.*)(</code>\s*</td>)")
                     # This will match a single <typeName>^ fragment.
                     typing_type = re.compile(r"\w+\^")
                     for xref in typing_code.finditer(html_content):

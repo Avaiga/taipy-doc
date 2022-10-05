@@ -147,7 +147,7 @@ Gui(md)
 
 If your application has several pages, you add your pages one by one
 using `Gui.add_page()^`. To add multiple pages in a single call, you will
-use `Gui.add_pages()^` or create the `Gui^` instance using the _pages_
+use `Gui.add_pages()^` or create the `Gui^` instance using the *pages*
 argument. In those situations, you have to create a Python dictionary that
 associates a page with its name:
 ```
@@ -160,7 +160,11 @@ Gui(pages=pages)
 ```
 
 In this situation, to see the pages in your browser, the address you will use
-will be _localhost:5000/page1_ or _localhost:5000/page2_.
+will be *localhost:5000/page1* or *localhost:5000/page2*.
+
+Note that if pages are created in different modules, the variables that they can bind
+to visual elements may have a scope limited to their origin module. See
+[Page scopes](binding.md#scope-for-variable-binding) for more details.
 
 ### Viewing the page
 
@@ -264,7 +268,7 @@ root page of your application, and is replaced by the target page content when t
        Gui(pages=pages).run()
     ```
     This application does the same as in the previous example, except that you now
-    have the footer line (_'This application was created...'_) in all the pages of
+    have the footer line (*'This application was created...'*) in all the pages of
     your application.
 
 ## Dialogs
@@ -274,10 +278,10 @@ input of some sort. Dialogs are forms that can be displayed on top of the page
 the user is looking at, prompting for some input.
 
 To create a dialog, you will use a [`dialog`](viselements/dialog.md) control in your
-page. The dialog holds a page content or a _Partial_ (see [Partials](#partials)).
+page. The dialog holds a page content or a *Partial* (see [Partials](#partials)).
 
 You can control whether the dialog is visible or not, and what to do when the end-user
-presses the _Validate_ or _Cancel_ button, so your application can deal with the
+presses the *Validate* or *Cancel* button, so your application can deal with the
 user's response.
 
 !!! example
@@ -306,14 +310,14 @@ control for more details and examples.
 ## Partials
 
 There are page fragments that you may want to repeat on different pages. In that situation,
-you will want to use the _Partial_ concept: a _Partial_ is similar to a page (and built
+you will want to use the *Partial* concept: a *Partial* is similar to a page (and built
 in a very similar way) that can be used multiple times in different visual elements.
 This prevents you from having to repeat yourself when creating your user interfaces.
 
-To create a _Partial_, you must call the method `(Gui.)add_partial()^` on the _Gui_ instance
-of your application. You must give this function a page definition (a string or an instance
-of `Markdown^` or `Html^`), and it returns an instance of `Partial^` that can be used
-in visual elements that use them.
+To create a _Partial_, you must call the method `(Gui.)add_partial()^` on the *Gui*
+instance of your application. You must give this function a page definition (a string or
+an instance of `Markdown^` or `Html^`), and it returns an instance of `Partial^` that can
+be used in visual elements that use them.
 
 !!! example
 
@@ -334,7 +338,7 @@ in visual elements that use them.
     ```
 
 You can take a look at the documentation of the [`dialog`](viselements/dialog.md) or
-[`pane`](viselements/pane.md) to see how these _Partials_ can be used in pages.
+[`pane`](viselements/pane.md) to see how these *Partials* can be used in pages.
 
 ## Panes
 
@@ -353,6 +357,6 @@ definition.
 Pages sometimes need to access local resources from a page. That is the case for
 example if an image needs to be inserted: the path to the image must be provided.
 
-You can indicate, using the parameter _path_mapping_ of the
+You can indicate, using the parameter *path_mapping* of the
 [`Gui` constructor](Gui.__init__()^), where those resources are located on the file
 system.

@@ -104,5 +104,131 @@ the application that the user has activated those controls somehow.
     Gui(page=md).run()
     ```
 
-The default behavior for these controls is to call the `on_action` function within your code,
-if there is one.
+The default behavior for these controls is to call the `on_action` function within your
+code, if there is one.
+
+## Initialize a new connection
+
+When a client connects to your application, the `on_init()` callback is invoked so you can
+set variables to appropriate values, depending on the application state at this point.
+
+A new connection will make Taipy GUI try to locate a global `on_init()` function and
+invoke this function, providing the client's `State^`, where you can
+specify timely values in your application variables.
+
+Here is how an `on_init()` function could be used to initialize a connection-specific variable.
+Here this variable would represent the date and time when the connection occurs:
+
+```py
+from datetime import datetime
+
+connection_datetime = None
+def on_init(state: State):
+    state.connection_datetime = datetime.now()
+```
+
+## Long-running callbacks
+
+In some cases, the code that runs as a result of invoking a callback may take a long
+time. The browser expects some response when the work required by the callback is
+performed. However, in the context of a client-server application such as the ones built with
+Taipy GUI, tasks that take a long time may result in a timeout in the communication between
+the server (the Python application) and the client (the Web browser connected to it).
+
+Taipy GUI provides a way to update the user interface while the server is still working on
+the requested tasks asynchronously.
+
+Here is how to set up such asynchronous communication with Taipy GUI.
+
+Say a callback is triggered, where your application needs to perform some heavy task,
+consuming time. Say this task is implemented in the `heavy_function()` function.<br/>
+In a callback triggered by the user interface, we want to create a thread, run our
+task, then refresh the visual elements according to the results, or send notifications
+to the client's browser.
+
+Here is how this can be achieved:
+```py linenums="1"
+from taipy.gui import State, get_state_id, notify
+from threading import Thread
+
+gui = Gui(...)
+
+def heavy_function_done(state: State):
+    # Now the State can be used to update the user interface
+    notify(state, "info", "The heavy task was done!")
+
+def heavy_function_in_thread(state_id: str, ...other_args...):
+    heavy_function(...other_args...)
+    invoke_callback(gui, state_id, heavy_function_done)
+
+def on_action(state: State, ...):
+    notify(state, "info", "Heavy task started...", duration=3000)
+    # Execute the heavy task, in a new thread
+    thread = Thread(target=heavy_function_in_thread,
+                    args=[get_state_id(state), ...other_args...])
+    thread.start()
+```
+
+Line 14 introduces the declaration of a callback function that would typically be
+executed when the user activates a control. This is where we want to run the time-consuming task defined in the function *heavy_function()*. However, because we know this
+will take time, we will execute it in another thread and let the application carry on
+its regular execution.<br/>
+Note that in *on_action()*, we can use *state* to update variables or notify the user interface.
+Typically, in this situation and if we do not want to block the user interface using `hold_control()^`
+and `resume_control()^`, we may want to deactivate the button that triggered the callback
+so that the user cannot request the execution twice until the task was actually performed.
+
+In line 10, we define the function that gets executed in the external thread. The first
+thing to do is invoke *heavy_function()* (providing whatever parameters it needs).
+When the function is done, we want to update the graphical user interface that the work
+was performed. This is where `invoke_callback()^` is used: the code requests that the
+function **heavy_function_done()* is invoked. The `State^` will be provided by Taipy, using
+the state identifier provided in *state_id*.
+
+The actual update of the user interface (including, potentially, the re-activation of the
+control that triggered the callback in the first place) is performed in *heavy_function_done()*,
+defined in line 6. Any code that needs a `State^` object (to update a variable or send a
+notification to the user) can be used safely.
+
+## Exception handling
+
+Because the user interface may invoke the application Python code using callbacks, exceptions
+may be raised in the user code. Taipy GUI provides a way to notify the application of
+such situations, so you can control what to do to reflect the application state.
+
+When a user callback raises an exception, the global `on_exception()` callback is invoked.
+
+Here is an example of an exception handling callback that would provide valuable
+information in the user interface should a problem occur:
+
+```py
+def on_exception(state: State, function_name: str, ex: Exception)
+    state.status_text = f"A problem occured in {function_name}"
+```
+
+## Navigation callback
+
+You can control the behavior of your application when the user navigates from one
+page to another. You would typically use that functionality when a page should not
+be exposed to a user under a given condition but instead display another fallback
+page.
+
+Here is an example of how to use that callback:<br/>
+Imagine an application that can display results of some sort on the page "results".
+If results are not ready for some reason, when navigating to the result page should
+be prevented, and the user should be switched to another page instead:
+
+```py linenums="1"
+results_ready = False
+
+def on_navigate(state: State, page_name: str): str
+    if page_name == "results" and not state.results_ready:
+        return "no_results"
+    return page_name
+```
+Line 1 initializes the variable *results_ready* to False, indicating that at this point,
+there are no results ready to be displayed yet.
+
+In line 4, we check if the requested page is the "results" page and if there are no
+results yet to be shown. In that situation, the callback function returns "no_results",
+which is the name of the page that should be displayed instead.

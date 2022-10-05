@@ -98,6 +98,29 @@ propagated to the nested pipelines, tasks, data nodes, and jobs if they are not 
 
 If there is more than one scenario in the cycle, an error will be raised if you try to delete a primary scenario. You must promote another scenario as primary before deleting the primary one. On the other hand, if there is only one scenario in the cycle, the primary scenario can be deleted, which will also delete its cycle.
 
+# Compare scenarios
+
+You can compare two or more scenarios, created from the same scenario configuration, by using `taipy.compare_scenarios()`. This function accepts two or more scenarios to be compared, you can also provide the data node config id to specify which data nodes from the scenarios you want to compare.
+
+```python linenums="1"
+import taipy as tp
+from datetime import datetime
+from my_config import *
+
+previous_month_scenario = tp.create_scenario(monthly_scenario_cfg)
+previous_month_scenario.current_month.write(datetime(2020, 1, 1))
+previous_month_scenario.submit()
+
+current_month_scenario = tp.create_scenario(monthly_scenario_cfg)
+current_month_scenario.current_month.write(datetime(2020, 2, 1))
+current_month_scenario.submit()
+
+tp.compare(previous_month_scenario, current_month_scenario, data_node_config_id="sales_predictions")
+```
+!!! info
+    Defining the comparison function
+    To see how you can define the function used to compare data nodes, please refer to the [Scenario Config](../config/scenario-config.md) page.
+
 # Tag or untag a scenario
 
 A scenario can have multiple tags. You can add a tag to a scenario using `taipy.tag()^`. Alternatively, you can use
