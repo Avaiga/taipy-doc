@@ -28,6 +28,9 @@ Published on 2022-10.
   session, detect navigation events, trigger code when exceptions are raised in user code,
   and invoke code when a *status* page is requested.<br/>
   See [Callbacks](../manuals/gui/callbacks) for details.
+- New functions allow applications to invoke long-running callbacks without blocking.<br/>
+  See [Long Running Callbacks](../manuals/gui/callbacks/#long-running-callbacks) for
+  details.
 - The Taipy GUI application configuration uses the generic Taipy configuration mechanism exposed in the
   new `taipy-config` package.
 - An application can request the status of the server application using the "status" predefined page.<br/>
@@ -73,6 +76,12 @@ Published on 2022-10.
   debug their applications.
 
 #### Significant bug fixes
+
+**`taipy-gui`**<br/><br/>2.0.1
+
+- Bar charts' "barmode" set to "stack" is broken.<br/>
+  See [issue #445](https://github.com/Avaiga/taipy-gui/issues/445).
+
 
 #### Deprecations
 

@@ -86,6 +86,9 @@ nav:
     - "REST API":
       - manuals/reference_rest/index.md
       [REST_REFERENCE_CONTENT]
+    - "GUI Extension API":
+      - manuals/reference_guiext/index.md
+      - "taipy-gui module": manuals/reference_guiext/modules.md
   - 'Contributing':
     - 'Contributing to Taipy': 'contributing/contributing.md'
     - 'Code of conduct': 'contributing/code_of_conduct.md'

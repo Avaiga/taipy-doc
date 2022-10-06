@@ -119,6 +119,26 @@ def on_post_build(env):
                     if ids:
                         html_content = remove_dummy_h3(html_content, ids)
                         file_was_changed = True
+                    # Remove <h1>Index</h1> part of relevant pages
+                    INDEX_H1_RE = re.compile(
+                        r"<h1>Index</h1>\s*<h2(.*?)>(.*?)</h2>", re.M | re.S
+                    )
+                    match = INDEX_H1_RE.search(html_content)
+                    if match:
+                        before = html_content[:match.start()]
+                        new_title = match.group(2)
+                        if new_title.startswith("Package"):
+                            USELESS_TITLE_RE = re.compile(r"(?<=<title>)Index(.*?)(?=</title>)", re.M | re.S)
+                            t_match = USELESS_TITLE_RE.search(before)
+                            if t_match:
+                                new_title = re.sub(r"<a\s+.*?</a>", "", new_title)
+                                new_title, n = re.subn(r"<code>(.*?)</code>", r"\g<1>", new_title)
+                                new_title = "Taipy p" + new_title[1:]
+                        before = before[:t_match.start()] + new_title + before[t_match.end():]
+                        html_content = (before
+                            + f"<h1{match.group(1)}>{match.group(2)}</h1>"
+                            + html_content[match.end():])
+                        file_was_changed = True
                     # Collapse doubled <h1>/<h2> page titles
                     REPEATED_H1_H2 = re.compile(
                         r"<h1>(.*?)</h1>\s*<h2\s+(id=\".*?\")>\1(<a\s+class=\"headerlink\".*?</a>)?</h2>", re.M | re.S
@@ -331,6 +351,21 @@ def on_post_build(env):
                         if last_location:
                             file_was_changed = True
                             html_content = new_content + html_content[last_location:]
+
+                    # Rename Extension API type aliases
+                    if "reference_guiext" in filename:
+                        for in_out in [("TaipyAction", "Action", "../interfaces/Action"),
+                                       ("TaipyContext", "Context", "#context")]:
+                            LINK_RE = re.compile(f"<code>{in_out[0]}</code>")
+                            new_content = ""
+                            last_location = 0
+                            for link in LINK_RE.finditer(html_content):
+                                new_content += html_content[last_location:link.start()]
+                                new_content += f"<a href=\"{in_out[2]}\"><code>{in_out[1]}</code></a>"
+                                last_location = link.end()
+                            if last_location:
+                                file_was_changed = True
+                                html_content = new_content + html_content[last_location:]
 
                 if file_was_changed:
                     with open(filename, "w") as html_file:

@@ -123,28 +123,109 @@ Here this variable would represent the date and time when the connection occurs:
 from datetime import datetime
 
 connection_datetime = None
-def on_init(state: State):
+def on_init(state):
     state.connection_datetime = datetime.now()
 ```
 
 ## Long-running callbacks
 
-In some cases, the code that runs as a result of invoking a callback may take a long
-time. The browser expects some response when the work required by the callback is
-performed. However, in the context of a client-server application such as the ones built with
-Taipy GUI, tasks that take a long time may result in a timeout in the communication between
-the server (the Python application) and the client (the Web browser connected to it).
+In some cases, the code that runs as a result of invoking a callback may take a long time. The browser
+expects some response when the work required by the callback is performed. However, in the context of a
+client-server application such as the ones built with Taipy GUI, tasks that take a long time may result
+in a timeout in the communication between the server (the Python application) and the client (the Web
+browser connected to it).
 
-Taipy GUI provides a way to update the user interface while the server is still working on
-the requested tasks asynchronously.
+Taipy GUI provides a way to update the user interface while the server is still working on the requested
+tasks asynchronously. Here is how this works:
 
-Here is how to set up such asynchronous communication with Taipy GUI.
-
-Say a callback is triggered, where your application needs to perform some heavy task,
-consuming time. Say this task is implemented in the `heavy_function()` function.<br/>
+Say a callback is triggered, where your application needs to perform some heavy task, consuming time.
+Let's presume that this task is implemented in the *heavy_function()* function.<br/>
 In a callback triggered by the user interface, we want to create a thread, run our
 task, then refresh the visual elements according to the results, or send notifications
 to the client's browser.
+
+The implementation of this task's execution is straightforward:
+```py linenums="1"
+from taipy.gui import State, invoke_long_running, notify
+
+def heavy_function(...):
+    # Do something that takes time...
+    ...
+
+def on_action(state, *action_args):
+    notify(state, "info", "Heavy task started...")
+    invoke_long_running(state, heavy_function, [...heavy_function arguments...])
+```
+
+Line 5 shows the invocation of `invoke_long_running()^` which does all the hard work. All the parameters
+to *heavy_function()* should be sent to the call, encapsulated in an array.<br/>
+When the call is performed, *heavy_function()* is invoked, but the application keeps running anyway:
+the user function is running in a background thread. 
+
+### Task status
+
+Note that `invoke_long_running()^` does more than just execute your task behind the scenes. It has
+additional parameters that let you monitor what the task is doing, particularly when it finishes.
+
+Here is some code that shows how to be notified when the task ends:
+```py linenums="1"
+...
+
+def heavy_function_status(state, status):
+    if status:
+        notify(state, "success", f"The heavy task has finished!")
+    else:
+        notify(state, "error", f"The heavy task has failed somehow...")
+
+def on_action(state, *action_args):
+    invoke_long_running(state, heavy_function, [...heavy_function arguments...],
+                        heavy_function_status)
+```
+
+The new function *heavy_function_status()* is provided to `invoke_long_callback()^` (see line 12). This function is called when the task finishes. The value of the *heavy_function_status()* function indicates
+whether the task succeeded or failed.
+
+### Task progress
+
+`invoke_long_callback()^` also supports a way to periodically trigger the status function
+(*heavy_function_status()*) if your application needs regular updates and not only the notification of
+the task being finished.
+
+```py linenums="1"
+...
+
+def heavy_function_status(state, status):
+    if isinstance(status, bool):
+        if status:
+            notify(state, "success", f"The heavy task has finished!")
+        else:
+            notify(state, "error", f"The heavy task has failed somehow.")
+    else:
+        notify(state, "info", f"The heavy task is still running...")
+
+def on_action(state: State, *action_args):
+    invoke_long_running(state, heavy_function, [...heavy_function arguments...],
+                        heavy_function_status, [...heavy_function_status arguments...],
+                        5000)
+```
+
+Note how we have used the *period* parameter in line 15. This makes *heavy_function_status()* being called
+every 5 seconds so your user interface may provide an update to the end user.
+
+In this *heavy_function_status()*, we must test whether the second parameter is a bool or not.
+If it **is** a bool then its value indicates whether *heavy_function()* finished successfully or not.<br/>
+If it is an integer, it provides how many periods (whose length is indicated in the *period* parameter to
+`invoke_long_running()^`) have passed since *heavy_function()* was started.
+
+## Long-running callbacks in a Thread
+
+The execution of long-running callback using `invoke_long_callback()` may however not apply to
+a specific situation. This API hides many technical details that some application may want to
+be more in control of.
+
+Here is how to manually create a Thread that does the hard work, and how Taipy GUI can
+run it properly from a callback. We use the same use case as above: some long-running
+function called *heavy_function()* that we want to execute when certain even occurs.
 
 Here is how this can be achieved:
 ```py linenums="1"

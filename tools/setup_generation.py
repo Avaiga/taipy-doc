@@ -3,8 +3,8 @@
 #   Prepares all files before running MkDocs to generate the complete
 #   Taipy documentation set.
 #
-# This setup is two-fold:
-#   - Generate the Markdown files for all visual elements.
+# This setup is multi-fold:
+#   - Step 1: Generate the Markdown files for all visual elements.
 #     This includes the Update of the Table of Contents for both the controls
 #     and the blocks document pages.
 #
@@ -16,11 +16,24 @@
 #     The skeleton documentation files [GUI_DOC_PATH]/[controls|blocks].md_template
 #     are also completed with generated table of contents.
 #
-#   - Generate the entries for every documented class, method, and function.
+#   - Step 2: Generate the entries for every documented class, method, and function.
 #     This scripts browses the root package (ROOT_PACKAGE) and builds a
 #     documentation file for every package and every class it finds.
 #     It finally updates the top navigation bar content (in mkdocs.yml) to
 #     reflect the root package structure.
+#
+#   - Step 3: Generating the REST API documentation
+#     A Taipy REST server is created and the API is queries dynamically.
+#     Then documentation pages are generated from the retrieved structure.
+#
+#   - Step 4: Generating the GUI Extension API documentation
+#     The Reference Manual pages for the Taipy GUI JavaScript extension module
+#     is generated using the typedoc tools, directly from the JavaScript
+#     source files.
+#    
+#   - Step 5: Generating the Getting Started
+#     Files are listed and sorted after being copied from the taipy-getting-started
+#     repository.
 # ------------------------------------------------------------------------
 from typing import Dict, Any
 import glob
@@ -142,7 +155,7 @@ def restore_top_package_location():
 # Step 1
 #   Generating the Visual Elements documentation
 # ------------------------------------------------------------------------
-print("Step 1/4: Generating Visual Elements documentation", flush=True)
+print("Step 1/5: Generating Visual Elements documentation", flush=True)
 
 
 def read_skeleton(name):
@@ -356,7 +369,7 @@ with open(os.path.join(GUI_DOC_PATH, "blocks.md"), "w") as file:
 # Step 2
 #   Generating the Reference Manual
 # ------------------------------------------------------------------------
-print("Step 2/4: Generating the Reference Manual pages", flush=True)
+print("Step 2/5: Generating the Reference Manual pages", flush=True)
 
 # Create empty REFERENCE_DIR_PATH directory
 if os.path.exists(REFERENCE_DIR_PATH):
@@ -551,12 +564,12 @@ for package in sorted(package_to_entries.keys()):
 
     with open(package_output_path, "w") as package_output_file:
         package_output_file.write(f"---\ntitle: \"{package}\" package\n---\n\n")
-        package_output_file.write(f"## Package: `{package}`\n\n")
+        package_output_file.write(f"# Package: `{package}`\n\n")
         if package in module_doc and module_doc[package]:
             package_output_file.write(module_doc[package])
         package_grouped = package == package_group
         if types:
-            package_output_file.write(f"### Types\n\n")
+            package_output_file.write(f"## Types\n\n")
             for type in types:
                 name = type["name"]
                 package_output_file.write(f"   - `{name}`"
@@ -565,10 +578,10 @@ for package in sorted(package_to_entries.keys()):
                     print(f"WARNING - Type {package}.{name} already declared in {xrefs[name]}")
                 xrefs[name] = [package, entry_info["module"], entry_info.get("final_package")]
         if functions:
-            package_output_file.write(f"### Functions\n\n")
+            package_output_file.write(f"## Functions\n\n")
             generate_entries(functions, package, FUNCTION_ID, package_output_file, package_grouped)
         if classes:
-            package_output_file.write(f"### Classes\n\n")
+            package_output_file.write(f"## Classes\n\n")
             generate_entries(classes, package, CLASS_ID, package_output_file, package_grouped)
 
 # Filter out packages that are the exposed pagckage and appear in the packages list
@@ -584,7 +597,7 @@ with open(XREFS_PATH, "w") as xrefs_output_file:
 # Step 3
 #   Generating the REST API documentation
 # ------------------------------------------------------------------------
-print("Step 3/4: Generating the REST API Reference Manual pages", flush=True)
+print("Step 3/5: Generating the REST API Reference Manual pages", flush=True)
 from taipy.rest.app import create_app as rest_create_app
 from taipy.rest.extensions import apispec as rest_apispec
 from taipy.rest.api.views import register_views as rest_register_views
@@ -724,11 +737,58 @@ rest_navigation += " " * 6 + "- Schemas: manuals/reference_rest/schemas.md\n"
 
 restore_top_package_location()
 
+
 # ------------------------------------------------------------------------
 # Step 4
+#   Generating the GUI Extension API documentation
+# ------------------------------------------------------------------------
+print("Step 4/5: Generating the GUI Extension API Reference Manual pages", flush=True)
+import subprocess
+
+GUI_EXT_REF_DIR_PATH=root_dir + "/docs/manuals/reference_guiext"
+
+npm_path=shutil.which("npm")
+try:
+    subprocess.run([npm_path, "--version"], shell=True, capture_output=True)
+except OSError:
+    print(f"Couldn't run npm, ignoring this step.")
+    npm_path=None
+if npm_path:
+    saved_cwd = os.getcwd()
+    gui_path=os.path.join(root_dir, "gui")
+    os.chdir(gui_path)
+    print(f"    Installing node modules...", flush=True)
+    subprocess.run([npm_path, "i", "--omit=optional"], shell=True)
+    print(f"    Generating documentation...", flush=True)
+    subprocess.run([npm_path, "run", "mkdocs"], shell=True)
+    # Process and copy files to docs/manuals
+    if os.path.exists(GUI_EXT_REF_DIR_PATH):
+        shutil.rmtree(GUI_EXT_REF_DIR_PATH)
+    os.mkdir(GUI_EXT_REF_DIR_PATH)
+    dst_dir = os.path.abspath(GUI_EXT_REF_DIR_PATH)
+    src_dir = os.path.abspath(os.path.join(gui_path, "reference_guiext"))
+    JS_EXT_RE = re.compile(r"^(.*?)(\n#.*?\n)", re.MULTILINE|re.DOTALL)
+    for root, dirs, files in os.walk(src_dir):
+        for file in files:
+            file_content = None
+            path_name = os.path.join(root, file)
+            with open(path_name) as input:
+                file_content = input.read()
+            match = JS_EXT_RE.search(file_content)
+            if match:
+                file_content = match.group(2) + match.group(1) + file_content[match.end():]
+            path_name = path_name.replace(src_dir, dst_dir)
+            with open(path_name, "w") as output:
+                output.write(file_content)
+        for dir in dirs:
+            os.mkdir(os.path.join(dst_dir, dir))
+    os.chdir(saved_cwd)
+
+# ------------------------------------------------------------------------
+# Step 5
 #   Generating the Getting Started
 # ------------------------------------------------------------------------
-print("Step 4/4: Generating the Getting Started navigation bar", flush=True)
+print("Step 4/5: Generating the Getting Started navigation bar", flush=True)
 
 def format_getting_started_navigation(filepath: str) -> str:
     readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')

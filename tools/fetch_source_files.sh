@@ -223,10 +223,17 @@ copy_gui()
 {
     if [ -d $ROOT_DIR"/gui" ]; then
         echo Removing legacy \'gui\'
+        # Save node_modules for more efficient local usage
+        if [ -d $ROOT_DIR"/gui/node_modules" ]; then
+            mv $ROOT_DIR"/gui/node_modules" $ROOT_DIR"/gui_node_modules"
+        fi
         rm -rf $ROOT_DIR"/gui"
     fi
     echo Updating doc files for gui
-    (cd $1;tar cf - gui/doc) | (cd $ROOT_DIR;tar xf -)
+    (cd $1;tar cf - gui/*.md gui/*.json gui/doc gui/src) | (cd $ROOT_DIR;tar xf -)
+    if [ -d $ROOT_DIR"/gui_node_modules" ]; then
+        mv $ROOT_DIR"/gui_node_modules" $ROOT_DIR"/gui/node_modules"
+    fi
 }
 
 # Extract the modules code
