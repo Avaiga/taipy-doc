@@ -412,8 +412,6 @@ In this example, we configure an in_memory data node with the id "date", the sco
     To configure an in_memory data node, it is equivalent to use the method `Config.configure_in_memory_data_node()^` or
     the method `Config.configure_data_node()^` with parameter `storage_type="in_memory"`.
 
-[:material-arrow-right: The next section introduces the task configuration](task-config.md).
-
 # JSON
 
 An `JSONDataNode^` is a type of data node used to model JSON
@@ -472,3 +470,5 @@ default `SCENARIO` scope is used. The encoder and decoder are the custom encoder
 
     To configure an JSON data node, it is equivalent to use the method `Config.configure_json_data_node()^` or
     the method `Config.configure_data_node()^` with the `storage_type` argument set to "json".
+
+[:material-arrow-right: The next section introduces the task configuration](task-config.md).
