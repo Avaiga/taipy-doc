@@ -748,10 +748,11 @@ import subprocess
 
 GUI_EXT_REF_DIR_PATH=root_dir + "/docs/manuals/reference_guiext"
 
-print(f"{sys.environ}")
+print(f"ENV: {os.environ}")
 
 npm_path=shutil.which("npm")
 if npm_path:
+    print(f"npm_path: {npm_path}")
     try:
         subprocess.run([npm_path, "--version"], shell=True, capture_output=True)
     except OSError:
@@ -762,7 +763,7 @@ if npm_path:
     gui_path=os.path.join(root_dir, "gui")
     os.chdir(gui_path)
     print(f"    Installing node modules...", flush=True)
-    subprocess.run([npm_path, "i", "--omit=optional"], shell=True)
+    subprocess.run([npm_path, "install", "--omit=optional"], shell=True)
     print(f"    Generating documentation...", flush=True)
     subprocess.run([npm_path, "run", "mkdocs"], shell=True)
     # Process and copy files to docs/manuals
