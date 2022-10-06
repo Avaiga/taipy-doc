@@ -755,6 +755,7 @@ if npm_path:
     print(f"npm_path: {npm_path}")
     try:
         subprocess.run([npm_path, "--version"], shell=True, capture_output=True)
+        #subprocess.run([npm_path, "install ", "-g", "npm@8.13"], shell=True, capture_output=True)
     except OSError:
         print(f"Couldn't run npm, ignoring this step.")
         npm_path=None
