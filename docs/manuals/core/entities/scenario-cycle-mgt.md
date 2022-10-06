@@ -137,15 +137,25 @@ be raised.
 
 # Export a scenario
 
-You can export a scenario with its related entities into a folder using `taipy.export_scenario()^`. This method takes the scenario id and the path to the folder as parameters. The folder will be created if it does not exist and overwrtiten if it exists.
+You can export a scenario with its related entities in `JSON` format into a folder using `taipy.export_scenario()^`.
+This method takes the scenario id and the path to the export folder as parameters.
+
+!!! warning
+
+    The `folder_path` will be **overwritten** if it does exist.
+
+Alternatively, you can use the `Scenario.export()^` method.
 
 ```python linenums="1"
 import taipy as tp
-import my_scenario_config
+import my_config
 
-scenario = tp.create_scenario(my_scenario_config)
-tp.export(scenario.id, folder="./my_scenario")
+scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
+tp.export(scenario.id, folder_path="./monthly_scenario")
+# or
+scenario.export(folder_path="./monthly_scenario")
+```
 
 # Cycle attributes
 
