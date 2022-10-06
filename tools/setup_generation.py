@@ -45,6 +45,7 @@ import warnings
 from datetime import datetime
 from inspect import isclass, isfunction, ismodule
 from pathlib import Path
+import sys
 
 import pandas as pd
 
@@ -746,6 +747,8 @@ print("Step 4/5: Generating the GUI Extension API Reference Manual pages", flush
 import subprocess
 
 GUI_EXT_REF_DIR_PATH=root_dir + "/docs/manuals/reference_guiext"
+
+print(f"{sys.environ}")
 
 npm_path=shutil.which("npm")
 if npm_path:
