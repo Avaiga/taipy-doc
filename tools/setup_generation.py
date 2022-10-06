@@ -752,6 +752,10 @@ npm_path=shutil.which("npm")
 if npm_path:
     print(f"npm_path: {npm_path}")
     try:
+        subprocess.run(["npm", "--version"], shell=True)
+        print(f"Try 2", flush=True)
+        subprocess.run(f"{npm_path} --version", shell=True)
+        print(f"Try 3", flush=True)
         subprocess.run([npm_path, "--version"], shell=True)
         #subprocess.run([npm_path, "install ", "-g", "npm@8.13"], shell=True, capture_output=True)
     except OSError:
