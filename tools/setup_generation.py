@@ -751,10 +751,7 @@ GUI_EXT_REF_DIR_PATH=root_dir + "/docs/manuals/reference_guiext"
 npm_path=shutil.which("npm")
 if npm_path:
     try:
-        print(f"Try 1", flush=True)
-        subprocess.run("npm --version", shell=True)
-        print(f"Try 2", flush=True)
-        subprocess.run(f"{npm_path} --version", shell=True)
+        subprocess.run(f"{npm_path} --version", shell=True, capture_output=True)
     except OSError:
         print(f"Couldn't run npm, ignoring this step.", flush=True)
         npm_path=None
@@ -762,10 +759,10 @@ if npm_path:
     saved_cwd = os.getcwd()
     gui_path=os.path.join(root_dir, "gui")
     os.chdir(gui_path)
-    print(f"    Installing node modules...", flush=True)
-    subprocess.run("npm ci --omit=optional", shell=True)
-    print(f"    Generating documentation...", flush=True)
-    subprocess.run("npm run mkdocs", shell=True)
+    print(f"... Installing node modules...", flush=True)
+    subprocess.run(f"{npm_path} ci --omit=optional", shell=True)
+    print(f"... Generating documentation...", flush=True)
+    subprocess.run(f"{npm_path} run mkdocs", shell=True)
     # Process and copy files to docs/manuals
     if os.path.exists(GUI_EXT_REF_DIR_PATH):
         shutil.rmtree(GUI_EXT_REF_DIR_PATH)
@@ -793,7 +790,7 @@ if npm_path:
 # Step 5
 #   Generating the Getting Started
 # ------------------------------------------------------------------------
-print("Step 4/5: Generating the Getting Started navigation bar", flush=True)
+print("Step 5/5: Generating the Getting Started navigation bar", flush=True)
 
 def format_getting_started_navigation(filepath: str) -> str:
     readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
