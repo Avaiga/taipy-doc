@@ -748,11 +748,12 @@ import subprocess
 GUI_EXT_REF_DIR_PATH=root_dir + "/docs/manuals/reference_guiext"
 
 npm_path=shutil.which("npm")
-try:
-    subprocess.run([npm_path, "--version"], shell=True, capture_output=True)
-except OSError:
-    print(f"Couldn't run npm, ignoring this step.")
-    npm_path=None
+if npm_path:
+    try:
+        subprocess.run([npm_path, "--version"], shell=True, capture_output=True)
+    except OSError:
+        print(f"Couldn't run npm, ignoring this step.")
+        npm_path=None
 if npm_path:
     saved_cwd = os.getcwd()
     gui_path=os.path.join(root_dir, "gui")
