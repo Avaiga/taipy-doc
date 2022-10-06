@@ -750,14 +750,11 @@ GUI_EXT_REF_DIR_PATH=root_dir + "/docs/manuals/reference_guiext"
 
 npm_path=shutil.which("npm")
 if npm_path:
-    print(f"npm_path: {npm_path}")
     try:
-        subprocess.run(["npm", "--version"], shell=True)
+        print(f"Try 1", flush=True)
+        subprocess.run("npm --version", shell=True)
         print(f"Try 2", flush=True)
         subprocess.run(f"{npm_path} --version", shell=True)
-        print(f"Try 3", flush=True)
-        subprocess.run([npm_path, "--version"], shell=True)
-        #subprocess.run([npm_path, "install ", "-g", "npm@8.13"], shell=True, capture_output=True)
     except OSError:
         print(f"Couldn't run npm, ignoring this step.", flush=True)
         npm_path=None
@@ -766,9 +763,9 @@ if npm_path:
     gui_path=os.path.join(root_dir, "gui")
     os.chdir(gui_path)
     print(f"    Installing node modules...", flush=True)
-    subprocess.run([npm_path, "ci", "--omit=optional"], shell=True)
+    subprocess.run("npm ci --omit=optional", shell=True)
     print(f"    Generating documentation...", flush=True)
-    subprocess.run([npm_path, "run", "mkdocs"], shell=True)
+    subprocess.run("npm run mkdocs", shell=True)
     # Process and copy files to docs/manuals
     if os.path.exists(GUI_EXT_REF_DIR_PATH):
         shutil.rmtree(GUI_EXT_REF_DIR_PATH)
