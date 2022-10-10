@@ -41,8 +41,11 @@ To be able to run your app, Heroku will need the following files:
 
     If your entrypoint file is `main.py`, put in your `Procfile`:
     ```
-    web: python main.py
+    web: python main.py -H 0.0.0.0 -P $PORT
     ```
+    Note that we are using the *-H* and *-P* options (as described in the
+    [Configuration section](../../gui/configuration.md#configuring-the-gui-instance))
+    to provide Taipy with the appropriate host and port settings.
 
     Now you should save this file in your git repository by doing:
     ```
