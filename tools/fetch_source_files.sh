@@ -156,6 +156,11 @@ for m in $MODULES; do
     fi
 done
 
+if ! grep -Ei 'site_url: https://docs\.taipy\.io/en/(develop|release-[0-9].[0-9])$' mkdocs.yml_template >/dev/null; then
+    echo "Error: Invalid site_url value in mkdocs.yml_template. Must be develop or release-[M].[m]" >&2
+    exit 1
+fi
+
 echo "Module versions requested:"
 for m in $MODULES; do
     version=${MODULE_BRANCH[$m]}
