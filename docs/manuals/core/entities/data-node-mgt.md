@@ -13,7 +13,7 @@ A data node also holds various properties and attributes accessible through the 
 -   _**scope**_: The scope of this data node (scenario, pipeline, etc.).
 -   _**id**_: The unique identifier of this data node.
 -   _**name**_: The user-readable name of the data node.
--   _**parent_id**_: The identifier of the parent (pipeline_id, scenario_id, cycle_id) or `None`.
+-   _**owner_id**_: The identifier of the owner (pipeline_id, scenario_id, cycle_id) or `None`.
 -   _**last_edit_date**_: The date and time of the last modification.
 -   _**job_ids**_: The ordered list of jobs that have written on this data node.
 -   _**cacheable**_: The Boolean value that indicates if a data node is cacheable.
