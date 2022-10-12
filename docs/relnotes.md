@@ -7,6 +7,14 @@ hide:
 
 This is the list of changes to Taipy releases as they were published.
 
+## Community edition: 2.1 (In progress)
+
+#### New Features
+
+**`taipy-core`** *<br/>2.1
+
+   - New data node named `MongoCollectionDataNode`. It represents the data from a MongoDB collection.
+
 ## Community edition: 2.0
 
 Published on 2022-10.

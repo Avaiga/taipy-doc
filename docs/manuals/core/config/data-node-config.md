@@ -22,8 +22,8 @@ More optional attributes are available on data nodes, including:
 -   _**storage_type**_ is an attribute that indicates the type of storage of the
     data node.<br/>
     The possible values are ["pickle"](#pickle) (**the default value**),
-    ["csv"](#csv), ["excel"](#excel), ["json"](#json), ["sql"](#sql), ["sql_table"](#sql_table), ["in_memory"](#in-memory), or
-    ["generic"](#generic).<br/>
+    ["csv"](#csv), ["excel"](#excel), ["json"](#json), ["mongo_collection"](#mongo-collection),
+    ["sql"](#sql), ["sql_table"](#sql_table), ["in_memory"](#in-memory), or ["generic"](#generic).<br/>
     As explained in the following subsections, depending on the _storage_type_, other configuration attributes must
     be provided in the parameter _properties_ parameter.
 
@@ -66,7 +66,7 @@ Taipy proposes various predefined _data nodes_ corresponding to the most popular
 _storage types_. Thanks to predefined _data nodes_, the Python developer does not need
 to spend much time configuring the _storage types_ or the
 _query system_. Most of the time, a predefined _data node_ corresponding to a basic and standard use case satisfies
-the user's needs like pickle file, csv file, sql table, Excel sheet, etc.
+the user's needs like pickle file, csv file, sql table, MongoDB collection, Excel sheet, etc.
 
 The various predefined _storage types_ are mainly used for input data. Indeed, the input data is usually provided by an
 external component, and the Python developer user does not control the format.
@@ -334,6 +334,87 @@ The data parameter of the write query builder is expected to have the same data 
     To configure an SQL data node, it is equivalent to use the method `Config.configure_sql_data_node()^` or
     the method `Config.configure_data_node()^` with parameter `storage_type="sql"`.
 
+# Mongo Collection
+
+A `MongoCollectionDataNode^` is a specific data node used to model data stored in a Mongo collection. To add a new *mongo_collection* data node configuration, the `Config.configure_mongo_collection_data_node()^` method can be used.
+In addition to the generic parameters described in the previous section [Data node configuration](data-node-config.md), multiple parameters can be provided.
+
+-   The _**db_username**_ parameter represents the username that will be used by Taipy to access MongoDB.
+-   The _**db_password**_ parameter represents the user's password that will be used by Taipy to access MongoDB.
+-   The _**db_name**_ parameter represents the name of the database in MongoDB.
+-   The _**collection_name**_ parameter represents the name of the data collection in the database.
+-   The _**read_query**_ parameter represents the MongoDB query in the form of a dictionary that will be used by Taipy to read the data from the collection.
+-   The _**custom_document**_ parameter represents the custom class that is used to store, encode, and decode data when reading and writing to a Mongo collection. The data returned by the read method is a list of custom_document object(s), and the data passed as a parameter of the write method is a (list of) custom_document object(s). The custom_document can have:
+    -   An otional `decoder()` method to decode data in the Mongo collection to a custom object when reading.
+    -   An optional `encoder()` method to encode the object's properties to the Mongo collection format when writing.
+-   The _**db_port**_ parameter represents the database port that will be used by Taipy to access MongoDB. The default value of _db_port_ is 27017.
+-   The _**db_host**_ parameter represents the database host that will be used by Taipy to access MongoDB. The default value of _db_host_ is "localhost".
+
+```python linenums="1"
+from taipy import Config
+
+historical_data_cfg = Config.configure_mongo_collection_data_node(
+    id="historical_data",
+    db_username="admin",
+    db_password="pa$$w0rd",
+    db_name="taipy",
+    collection_name="historical_data_set",
+)
+```
+
+In this example, we configure a *mongo_collection* data node with the id "historical_data":
+
+-   Its scope is the default value `SCENARIO`.
+-   The database username is "admin", the user's password is "pa$$w0rd"
+-   The database name is "taipy"
+-   The collection name is "historical_data_set".
+-   Without being specified, the custom document class is defined as `taipy.core.DefaultCustomDocument`.
+
+```python linenums="1"
+from taipy import Config
+from datetime import datetime
+
+class DailyMinTemp:
+    def __init__(self, Date : datetime = None, Temp : float = None):
+        self.Date = Date
+        self.Temp = Temp
+
+    def encode(self):
+        return {
+            "date": self.Date.isoformat(),
+            "temperature": self.Temp,
+        }
+
+    @classmethod
+    def decode(cls, data):
+        return cls(
+            datetime.fromisoformat(data["date"]),
+            data["temperature"],
+        )
+
+historical_data_cfg = Config.configure_mongo_collection_data_node(
+    id="historical_data",
+    db_username="admin",
+    db_password="pa$$w0rd",
+    db_name="taipy",
+    collection_name="historical_data_set",
+    custom_document=DailyMinTemp,
+)
+```
+
+In this next example, we configure another *mongo_collection* data node, with the custom document is defined as DailyMinTemp class.
+
+-   The custom encode method encodes `datetime.datetime` to the ISO 8601 string format.
+-   The corresponding decode method decodes a ISO 8601 string to `datetime.datetime`.
+-   The `_id` of the Mongo document is discarded.
+
+Without this two methods, the default decoder will map the key of each document to the corresponding property of a DailyMinTemp object,
+and the default encoder will convert DailyMinTemp object's properties to a dictionary, without any special formating.
+
+!!! Note
+
+    To configure a Mongo collection data node, it is equivalent to use the method `Config.configure_mongo_collection_data_node()^` or
+    the method `Config.configure_data_node()^` with parameter `storage_type="mongo_collection"`.
 
 
 # Generic
