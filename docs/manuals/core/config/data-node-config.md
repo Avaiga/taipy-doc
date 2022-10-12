@@ -436,8 +436,7 @@ hist_temp_cfg = Config.configure_json_data_node(
 In this example, we configure a JSON data node. The _id_ argument is "historical_temperature". Its _scope_ is
 `SCENARIO` (default value), and the path is the file hist_temp.json.
 
-Without specific _**encoder** and _**decoder**_ parameters, `hist_temp_cfg` will use the `DefaultJSONEncoder` and
-`DefaultJSONDecoder` provided by Taipy, which have the capability to encode and decode Python [`enum.Enum`](https://docs.python.org/3/library/enum.html), [`datetime.datetime`](https://docs.python.org/3/library/datetime.html#datetime-objects),
+Without specific _**encoder** and _**decoder**_ parameters, `hist_temp_cfg` will use default encoder and decoder provided by Taipy, which have the capability to encode and decode Python [`enum.Enum`](https://docs.python.org/3/library/enum.html), [`datetime.datetime`](https://docs.python.org/3/library/datetime.html#datetime-objects),
 and [dataclass](https://docs.python.org/3/library/dataclasses.html) object.
 
 ```python linenums="1"
