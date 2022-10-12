@@ -158,6 +158,28 @@ You can define a list of authorized tags in the scenario configuration by specif
 From the scenarios that are created from that configuration, if you add a tag that is not authorized, an exception will
 be raised.
 
+# Export a scenario
+
+You can export a scenario with its related entities in `JSON` format into a folder using `taipy.export_scenario()^`.
+This method takes the scenario id and the path to the export folder as parameters.
+
+!!! warning
+
+    The `folder_path` will be **overwritten** if it does exist.
+
+Alternatively, you can use the `Scenario.export()^` method.
+
+```python linenums="1"
+import taipy as tp
+import my_config
+
+scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+tp.export(scenario.id, folder_path="./monthly_scenario")
+# or
+scenario.export(folder_path="./monthly_scenario")
+```
+
 # Cycle attributes
 
 As we saw in the previous chapter, the `Cycle^` creation is indirectly triggered by the scenario creation method.
