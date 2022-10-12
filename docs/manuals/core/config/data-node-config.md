@@ -229,9 +229,10 @@ the _exposed_type_. We also provide the list of specific sheets we want to use a
 
 !!! Important
 
-    To be able to use a `SQLTableDataNode^` with Microsoft SQL Server you need to run internal dependencies with
-    `pip install taipy[mssql]` and install your corresponding
-    [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
+    -  To be able to use a `SQLTableDataNode^` with Microsoft SQL Server you need to run internal dependencies with `pip install taipy[mssql]` and install your corresponding [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
+    - To be able to use a `SQLTableDataNode^` with MySQL Server you need to run internal dependencies with `pip install taipy[mysql]` and install your corresponding [MySQL Driver for MySQL](https://pypi.org/project/PyMySQL/).
+    - To be able to use a `SQLTableDataNode^` with PostgreSQL Server you need to run internal dependencies with `pip install taipy[postgresql]` and install your corresponding [Postgres JDBC Driver for PostgreSQL](https://www.postgresql.org/docs/7.4/jdbc-use.html).
+
 
 An `SQLTableDataNode^` is a specific data node that models data stored in a single SQL table. To add a new _sql_table_ data node configuration, the `Config.configure_sql_table_data_node()^` method can be used. In
 addition to the generic parameters described in the previous section
@@ -242,7 +243,7 @@ parameters can be provided.
 -   The _**db_password**_ parameter represents the database user's password that will be used by Taipy to access the
     database.
 -   The _**db_name**_ parameter represents the name of the database.
--   The _**db_engine**_ parameter represents the engine of the database.
+-   The _**db_engine**_ parameter represents the engine of the database. Possible values are _"sqlite"_, _"mssql"_, _"mysql"_, or _"postgresql"_.
 -   The _**table_name**_ parameter represents the name of the table to read from and write into.
 -   The _**db_port**_ parameter represents the database port that will be used by Taipy to access the database. The
     default value of _db_port_ is 1433.
@@ -275,9 +276,9 @@ is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The ta
 
 !!! Important
 
-    To be able to use a `SQLDataNode^` with Microsoft SQL Server you need to run internal dependencies with
-    `pip install taipy[mssql]` and install your corresponding
-    [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
+    -  To be able to use a `SQLTableDataNode^` with Microsoft SQL Server you need to run internal dependencies with `pip install taipy[mssql]` and install your corresponding [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
+    - To be able to use a `SQLTableDataNode^` with MySQL Server you need to run internal dependencies with `pip install taipy[mysql]` and install your corresponding [MySQL Driver for MySQL](https://pypi.org/project/PyMySQL/).
+    - To be able to use a `SQLTableDataNode^` with PostgreSQL Server you need to run internal dependencies with `pip install taipy[postgresql]` and install your corresponding [Postgres JDBC Driver for PostgreSQL](https://www.postgresql.org/docs/7.4/jdbc-use.html).
 
 An `SQLDataNode^` is a specific data node used to model data stored in an SQL Database. To add a new _sql_ data node configuration, the `Config.configure_sql_data_node()^` method can be used. In
 addition to the generic parameters described in the previous section
@@ -288,7 +289,7 @@ parameters can be provided.
 -   The _**db_password**_ parameter represents the database user's password that will be used by Taipy to access the
     database.
 -   The _**db_name**_ parameter represents the name of the database.
--   The _**db_engine**_ parameter represents the engine of the database.
+-   The _**db_engine**_ parameter represents the engine of the database. Possible values are _"sqlite"_, _"mssql"_, _"mysql"_, or _"postgresql"_.
 -   The _**read_query**_ parameter represents the SQL query that will be used by Taipy to read the data from the
     database.
 -   The _**write_query_builder**_ parameter is a callable function that takes in the data as an input parameter and returns a list of SQL queries to be executed when the write data node method is called.
