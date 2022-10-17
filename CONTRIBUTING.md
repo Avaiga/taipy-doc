@@ -8,9 +8,10 @@ other users in our forums, Stack Overflow, etc.
 
 Several channels are open to communicate with the Taipy R&D team:
 
-- Communicating through the [taipy.io forum](https://www.taipy.io/community/)
-- Through [GitHub issues](https://github.com/Avaiga/taipy-doc/issues)
-- etc.
+- The [taipy.io forum](https://www.taipy.io/community/) for open discussion with the Taipy team
+- [GitHub issues](https://github.com/Avaiga/taipy/issues) on the Taipy repository to suggest improvements, new features, or to report a bug
+- [GitHub discussions](https://github.com/Avaiga/taipy/discussions) on the Taipy repository for discussing technical topics related to the implementation of Taipy.
+- [StackOverflow](https://stackoverflow.com/questions/tagged/taipy) for precise questions related to the usage of Taipy.
 
 Before contributing to Taipy, please read our [Code of conduct](https://github.com/Avaiga/taipy-doc/blob/develop/CODE_OF_CONDUCT.md)
 
