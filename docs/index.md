@@ -12,7 +12,7 @@ It is composed of two main independent components:
 Taipy requires *Python 3.8* or newer.
 
 <p align="center">
-  <img alt="Taipy structure" src="images/taipy-structure.svg">
+  <img alt="Taipy structure" src="images/taipy-structure-vector.svg">
 </p>
 
 The **Graphical User Interface** of Taipy allows anyone with basic knowledge of Python to create a beautiful and
