@@ -6,20 +6,25 @@ Every little help and credit will always be given.
 There are multiple ways to contribute to Taipy, code, but also reporting bugs, creating feature requests, helping
 other users in our forums, Stack Overflow, etc.
 
-Today the only way to communicate with the Taipy team is by GitHub issues.
+Several channels are open to communicate with the Taipy R&D team:
 
-Before to contribute to Taipy, please read our [Code of conduct](code_of_conduct.md).
+- The [taipy.io forum](https://www.taipy.io/community/) for open discussion with the Taipy team
+- [GitHub issues](https://github.com/Avaiga/taipy/issues) on the Taipy repository to suggest improvements, new features, or to report a bug
+- [GitHub discussions](https://github.com/Avaiga/taipy/discussions) on the Taipy repository for discussing technical topics related to the implementation of Taipy.
+- [StackOverflow](https://stackoverflow.com/questions/tagged/taipy) for precise questions related to the usage of Taipy.
 
-## Never contributed on an open source project before ?
+Before contributing to Taipy, please read our [Code of conduct](code_of_conduct.md).
 
-Have a look on this [GitHub documentation](https://docs.github.com/en/get-started/quickstart/contributing-to-projects).
+## Never contributed to an open source project before ?
 
-## Report bugs
+Have a look at this [GitHub documentation](https://docs.github.com/en/get-started/quickstart/contributing-to-projects).
+
+## Bugs report
 
 Reporting bugs is through [GitHub issues](https://github.com/Avaiga/taipy/issues).
 
 Please report relevant information and preferably code that exhibits the problem. We provide templates to help you
-to present the issue in a comprehensive way.
+present the issue in a comprehensive way.
 
 The Taipy team will analyse and try to reproduce the bug to provide feedback. If confirmed, we will add a priority
 to the issue and add it in our backlog. Feel free to propose a pull request to fix it.
@@ -43,7 +48,7 @@ attached to the `current sprint`. Please, do not work on it, the Taipy team is o
 
 ## Code organisation
 
-Taipy is organised in four main repositories:
+Taipy is organized in four main repositories:
 
 - [taipy-core](https://github.com/Avaiga/taipy-core).
 - [taipy-gui](https://github.com/Avaiga/taipy-gui).
