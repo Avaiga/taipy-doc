@@ -30,7 +30,7 @@
 #     The Reference Manual pages for the Taipy GUI JavaScript extension module
 #     is generated using the typedoc tools, directly from the JavaScript
 #     source files.
-#    
+#
 #   - Step 5: Generating the Getting Started
 #     Files are listed and sorted after being copied from the taipy-getting-started
 #     repository.
@@ -71,8 +71,8 @@ ENTERPRISE_BANNER = """!!! warning "Available in Taipy Enterprise edition"
 # (item_pattern, destination_package)
 # or ([item_pattern...], destination_package)
 FORCE_PACKAGE = [
-    ("typing.*", "taipy.core"),
     ("taipy.gui.*.(Gui|State|Markdown|Page)", "taipy.gui"),
+    ("typing.*", "taipy.core"),
     (["taipy.core.cycle.cycle.Cycle",
       "taipy.core.data.data_node.DataNode",
       "taipy.core.common.frequency.Frequency",
@@ -109,7 +109,17 @@ FORCE_PACKAGE = [
       "taipy.core.taipy.unsubscribe_pipeline",
       "taipy.core.taipy.unsubscribe_scenario",
       "taipy.core.taipy.untag"], "taipy.core"),
+    ("taipy.core._core.Core", "taipy.core"),
+    ("taipy.config.common.scope.Scope", "taipy.core.config"),
+    ("taipy.config.common.frequency.Frequency", "taipy.core.config"),
+    ("taipy.config.global_app.global_app_config.GlobalAppConfig", "taipy.core.config"),
+    ("taipy.core.config.*", "taipy.core.config"),
     ("taipy.core.data.*.*DataNode", "taipy.core.data"),
+    ("taipy.core.data.operator.Operator", "taipy.core.data.operator"),
+    ("taipy.core.data.operator.JoinOperator", "taipy.core.data.operator"),
+    ("taipy.core.exceptions.exceptions.*", "taipy.core.exceptions"),
+    ("taipy.config.checker.issue.Issue", "taipy.config"),
+    ("taipy.config.checker.issue_collector.IssueCollector", "taipy.config"),
     ("taipy.rest.rest.Rest", "taipy.rest")
 ]
 
@@ -585,7 +595,7 @@ for package in sorted(package_to_entries.keys()):
             package_output_file.write(f"## Classes\n\n")
             generate_entries(classes, package, CLASS_ID, package_output_file, package_grouped)
 
-# Filter out packages that are the exposed pagckage and appear in the packages list
+# Filter out packages that are the exposed package and appear in the packages list
 for entry, entry_desc in xrefs.items():
     package = entry_desc[0]
     if entry_desc[2]:
