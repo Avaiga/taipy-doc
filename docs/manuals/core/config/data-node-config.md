@@ -473,7 +473,7 @@ In this next example, we config a `JSONDataNode^` with custom JSON _**encoder** 
 - In lines 4-6, we define a custom class `SaleRow`, representing data in a JSON object.
 
 - In line 8-21, we define custom encoder and decoder for the `SaleRow` class.
-    - When [write to JSONDataNode](../entities/data-node-mgt.md#write-data-node), the `SaleRowEncoder` will
+    - When [writing to JSONDataNode](../entities/data-node-mgt.md#write-data-node), the `SaleRowEncoder` will
     encode a `SaleRow` object to JSON format. For example, after create a scenario,
         ```python
         scenario.sale_history.write(SaleRow("12/24/2018", 1550))
@@ -487,7 +487,7 @@ In this next example, we config a `JSONDataNode^` with custom JSON _**encoder** 
         }
         ```
     to path/sale_history.json.
-    - When [read a JSONDataNode](../entities/data-node-mgt.md#read-data-node), the `SaleRowDecoder` will
+    - When [reading a JSONDataNode](../entities/data-node-mgt.md#read-data-node), the `SaleRowDecoder` will
     decode any JSON object has `"__type__": "SaleRow"` to a `SaleRow` object.
 
 - In lines 23-26, we create a JSON data node configuration. The _id_ identifier is "sale_history", the
@@ -495,7 +495,7 @@ default `SCENARIO` scope is used. The encoder and decoder are the custom encoder
 
 !!! Note
 
-    To configure a JSON data node, it is equivalent to use the method `Config.configure_json_data_node()^` or
+    To configure a JSON data node, you can use the method `Config.configure_json_data_node()^` or
     the method `Config.configure_data_node()^` with the `storage_type` argument set to "json".
 
 [:material-arrow-right: The next section introduces the task configuration](task-config.md).
