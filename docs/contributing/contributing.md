@@ -9,7 +9,7 @@ other users in our forums, Stack Overflow, etc.
 Several channels are open to communicate with the Taipy R&D team:
 
 - Communicating through the [taipy.io forum](https://www.taipy.io/community/)
-- Through GitHub issues
+- Through [GitHub issues](https://github.com/Avaiga/taipy-doc/issues)
 - etc.
 
 Before contributing to Taipy, please read our [Code of conduct](code_of_conduct.md).
