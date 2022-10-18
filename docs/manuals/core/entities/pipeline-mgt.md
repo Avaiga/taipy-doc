@@ -87,4 +87,27 @@ existing pipelines.
 A pipeline can be deleted by using `taipy.delete()^` which takes the pipeline id as a parameter. The deletion is
 also propagated to the nested tasks, data nodes, and jobs if they are not shared with any other pipeline.
 
+# Get parent scenarios
+
+To get the parent scenario of a pipeline, you can use the `Pipeline.get_parents()^` method. The method will return a dictionary with the key being the level of the parent ("scenarios") and the value is a set of the parent entities corresponding to the level. You can also use `taipy.get_parents()^`, which takes a child entity such as the task as input, to achieve the same result.
+
+!!! Example
+
+    ```python linenums="1"
+    import taipy as tp
+    import my_config
+
+    # Creating a scenario from a config
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+    # Retrieve a pipeline
+    pipeline = scenario.sales_pipeline_cfg
+
+    # get the parent entities of the pipeline
+    parent_entities = pipeline.get_parents()
+
+    # get the parent entities of the pipeline
+    tp.get_parents(pipeline)
+    ```
+
 [:material-arrow-right: The next sections show the task management](task-mgt.md).
