@@ -14,7 +14,8 @@ A data node also holds various properties and attributes accessible through the 
 -   _**id**_: The unique identifier of this data node.
 -   _**name**_: The user-readable name of the data node.
 -   _**owner_id**_: The identifier of the owner (pipeline_id, scenario_id, cycle_id) or `None`.
--   _**last_edit_date**_: The date and time of the last modification.
+-   _**last_edit_date**_: The date and time of the last modification either by Taipy execution or
+    an external factor.
 -   _**job_ids**_: The ordered list of jobs that have written on this data node.
 -   _**cacheable**_: The Boolean value that indicates if a data node is cacheable.
 -   _**validity_period**_: The validity period of a cacheable data node. If _validity_period_ is set to None, the
