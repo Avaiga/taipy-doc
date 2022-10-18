@@ -4,7 +4,7 @@
 #   Taipy documentation set.
 #
 # This setup is performed by executing successive steps, depending on the
-# the topic (Reference Manual generation, JavaScript documentation integration
+# topic (Reference Manual generation, JavaScript documentation integration
 # within MkDocs...)
 # ################################################################################
 

@@ -31,8 +31,8 @@ class RefManStep(SetupStep):
     # (item_pattern, destination_package)
     # or ([item_pattern...], destination_package)
     FORCE_PACKAGE = [
-        ("typing.*", "taipy.core"),
         ("taipy.gui.*.(Gui|State|Markdown|Page)", "taipy.gui"),
+        ("typing.*", "taipy.core"),
         (
             [
                 "taipy.core.cycle.cycle.Cycle",
@@ -74,7 +74,17 @@ class RefManStep(SetupStep):
             ],
             "taipy.core",
         ),
+        ("taipy.core._core.Core", "taipy.core"),
+        ("taipy.config.common.scope.Scope", "taipy.core.config"),
+        ("taipy.config.common.frequency.Frequency", "taipy.core.config"),
+        ("taipy.config.global_app.global_app_config.GlobalAppConfig", "taipy.core.config"),
+        ("taipy.core.config.*", "taipy.core.config"),
         ("taipy.core.data.*.*DataNode", "taipy.core.data"),
+        ("taipy.core.data.operator.Operator", "taipy.core.data.operator"),
+        ("taipy.core.data.operator.JoinOperator", "taipy.core.data.operator"),
+        ("taipy.core.exceptions.exceptions.*", "taipy.core.exceptions"),
+        ("taipy.config.checker.issue.Issue", "taipy.config"),
+        ("taipy.config.checker.issue_collector.IssueCollector", "taipy.config"),
         ("taipy.rest.rest.Rest", "taipy.rest"),
     ]
     # Entries that should be hidden for the time being
@@ -365,7 +375,7 @@ class RefManStep(SetupStep):
                         classes, package, CLASS_ID, package_output_file, package_grouped
                     )
 
-        # Filter out packages that are the exposed pagckage and appear in the packages list
+        # Filter out packages that are the exposed package and appear in the packages list
         for entry, entry_desc in xrefs.items():
             package = entry_desc[0]
             if entry_desc[2]:
