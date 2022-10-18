@@ -52,6 +52,7 @@ class RefManStep(SetupStep):
                 "taipy.core.taipy.delete",
                 "taipy.core.taipy.delete_job",
                 "taipy.core.taipy.delete_jobs",
+                "taipy.core.taipy.export_scenario",
                 "taipy.core.taipy.get",
                 "taipy.core.taipy.get_cycles",
                 "taipy.core.taipy.get_data_nodes",
