@@ -57,6 +57,7 @@ class RefManStep(SetupStep):
                 "taipy.core.taipy.get_data_nodes",
                 "taipy.core.taipy.get_jobs",
                 "taipy.core.taipy.get_latest_job",
+                "taipy.core.taipy.get_parents",
                 "taipy.core.taipy.get_pipelines",
                 "taipy.core.taipy.get_primary",
                 "taipy.core.taipy.get_primary_scenarios",
