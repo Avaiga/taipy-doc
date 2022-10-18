@@ -97,7 +97,6 @@ class RefManStep(SetupStep):
         # Create empty REFERENCE_DIR_PATH directory
         if os.path.exists(self.REFERENCE_DIR_PATH):
             shutil.rmtree(self.REFERENCE_DIR_PATH)
-            os.mkdir(self.REFERENCE_DIR_PATH)
 
         setup.move_package_to_tools(Setup.ROOT_PACKAGE)
         try:
@@ -113,6 +112,8 @@ class RefManStep(SetupStep):
         TYPE_ID = "T"
         FIRST_DOC_LINE_RE = re.compile(r"^(.*?)(:?\n\s*\n|$)", re.DOTALL)
         REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
+
+        os.mkdir(self.REFERENCE_DIR_PATH)
 
         # Entries:
         #   full_entry_name ->
