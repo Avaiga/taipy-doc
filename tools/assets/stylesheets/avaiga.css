@@ -6,7 +6,7 @@
   --md-primary-fg-color--dark: #ec693c;
   --md-paper-bg-color: #fff;
   --transition-duration-base: 400ms;
-  --tooltip-show-delay: 300ms;
+  --tooltip-show-delay: 400ms;
 }
 [data-md-color-scheme="slate"] {
   --md-hue: 240;
@@ -16,6 +16,10 @@
 .md-header__button.md-logo img {
   width: 48px;
   height: 48px;
+}
+
+.md-content{
+  overflow: initial;
 }
 
 /* Display the right icon for the right theme */
@@ -56,19 +60,22 @@ a.ext-link::after {
   transform: translate(-50%, -0.5rem);
   z-index: 1;
   min-width: 100px;
+  max-width: 200px;
   padding: 1em;
   background-color: var(--md-primary-fg-color);
   border-radius: 0.5em;
   color: var(--md-primary-bg-color);
-  font-size: 0.875rem;
+  font-size: 0.9em;
   text-align: center;
   opacity: 0;
   transition: opacity var(--transition-duration-base),
+              transform var(--transition-duration-base),
               left 0s;
 }
 
 .tp-tooltip img{
   min-width: 150px;
+  max-width: 100%;
 }
 
 .tp-tooltip::after{
@@ -90,10 +97,10 @@ ul.tp-pills-list{
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  gap: 0.5rem;
 }
 ul.tp-pills-list li {
-  margin-left: 0;
-  margin-right: 1rem;
+  margin: 0;
   min-width: 0;
 }
 
@@ -111,12 +118,15 @@ a.tp-pill{
 
 .tp-pill .tp-tooltip{
   left: -9999rem;
+  transform: translate(-50%, 0);
 }
 
 .tp-pill:hover .tp-tooltip{
   left: 50%;
+  transform: translate(-50%, -0.5rem);
   opacity: 1;
   transition: opacity var(--transition-duration-base) var(--tooltip-show-delay),
+              transform var(--transition-duration-base) var(--tooltip-show-delay),
               left 0s var(--tooltip-show-delay);
 }
 

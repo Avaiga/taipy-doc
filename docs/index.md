@@ -19,7 +19,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
 
 <div class="tp-row tp-row--gutter-sm">
   <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
-    <a class="tp-content-card" href="#">
+    <a class="tp-content-card" href="getting_started/">
       <img class="tp-content-card-icon icon-light" src="images/icons/flag-w.svg">
       <img class="tp-content-card-icon icon-dark" src="images/icons/flag.svg">
       <h3>Getting started</h3>
@@ -30,7 +30,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </div>
   <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
-    <a class="tp-content-card" href="#">
+    <a class="tp-content-card" href="manuals/reference">
       <img class="tp-content-card-icon icon-light" src="images/icons/menu_book-w.svg">
       <img class="tp-content-card-icon icon-dark" src="images/icons/menu_book.svg">
       <h3>Reference Manual</h3>
@@ -41,18 +41,16 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </div>
   <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
-    <a class="tp-content-card" href="#">
+    <a class="tp-content-card" href="manuals/gui/controls/">
       <img class="tp-content-card-icon icon-light" src="images/icons/tune-w.svg">
       <img class="tp-content-card-icon icon-dark" src="images/icons/tune.svg">
       <h3>Controls</h3>
-      <p>
-        Controls are UI objects for data vizualisation/interaction.
-      </p>
+      <p> Controls are UI objects for data vizualisation/interaction. </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
   </div>
   <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
-    <a class="tp-content-card" href="#">
+    <a class="tp-content-card" href="manuals/about/">
       <img class="tp-content-card-icon icon-light" src="images/icons/dashboard-w.svg">
       <img class="tp-content-card-icon icon-dark" src="images/icons/dashboard.svg">
       <h3>Taipy’s user interface</h3>
@@ -68,11 +66,164 @@ These topics are the most visited ones, we thought you’d like to have a glance
 
 <ul class="tp-pills-list">
   <li>
-    <a class="tp-pill" href="#">
+    <a class="tp-pill" href="manuals/gui/viselements/button">
+      <span>Button</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/button-d.png" alt="">
+        <p>A control that can trigger a function when pressed.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/chart">
+      <span>Chart</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/chart-d.png"/>
+        <p>Displays data sets in a chart or a group of charts.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/date">
+      <span>Date</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/date-d.png"/>
+        <p>A control that can display and specify a formatted date, with or without time.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/dialog">
+      <span>Dialog</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/dialog-d.png"/>
+        <p>A modal dialog.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/file_download">
+      <span>File download</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/file_download-d.png"/>
+        <p>Allows downloading of a file content.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/file_selector">
       <span>File selector</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/file_selector-d.png" alt="">
         <p>Allows uploading a file content.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/image">
+      <span>Image</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/image-d.png"/>
+        <p>A control that can display an image.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/indicator">
+      <span>Indicator</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/indicator-d.png"/>
+        <p>Displays a label on a red to green scale at a specific position.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/input">
+      <span>Input</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/input-d.png"/>
+        <p>A control that displays some text that can potentially be edited.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/menu">
+      <span>Menu</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/menu-d.png"/>
+        <p>Shows a left-side menu.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/navbar">
+      <span>Navbar</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/navbar-d.png"/>
+        <p>A navigation bar control.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/number">
+      <span>Number</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/number-d.png"/>
+        <p>A kind of input that handles numbers.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/selector">
+      <span>Selector</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/selector-d.png"/>
+        <p>A control that allows for selecting items from a list of choices.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/slider">
+      <span>Slider</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/slider-d.png"/>
+        <p>Displays and allows the user to set a value within a range.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/status">
+      <span>Status</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/status-d.png"/>
+        <p>Displays a status or a list of statuses.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/table">
+      <span>Table</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/table-d.png"/>
+        <p>Displays a data set as tabular data.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/text">
+      <span>Text</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/text-d.png"/>
+        <p>Displays a value as a static text.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/toggle">
+      <span>Toggle</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/toggle-d.png"/>
+        <p>A series of toggle buttons that the user can select.</p>
       </div>
     </a>
   </li>
@@ -82,7 +233,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
 
 Taipy is composed of two main independent components: **Taipy Core** and **Taipy GUI**. You can use the GUI component without the Scenario Management and vice-versa. However, as you will see, they are incredibly efficient when combined.
 
-<div class="tp-row" style="margin-top: 1rem; margin-bottom: 1rem">
+<div class="tp-row" style="margin-top: 2rem; margin-bottom: 2rem">
   <div class="tp-col-12 tp-col-md">
     <article class="tp-content-card">
       <h3>Taipy GUI</h3>
