@@ -104,10 +104,10 @@ To get the parent scenario of a pipeline, you can use the `Pipeline.get_parents(
     pipeline = scenario.sales_pipeline_cfg
 
     # get the parent entities of the pipeline
-    parent_entities = pipeline.get_parents()
+    parent_entities = pipeline.get_parents()  # {'scenarios': [Scenario 1]}
 
     # get the parent entities of the pipeline
-    tp.get_parents(pipeline)
+    tp.get_parents(pipeline)  # {'scenarios': [Scenario 1]}
     ```
 
 [:material-arrow-right: The next sections show the task management](task-mgt.md).

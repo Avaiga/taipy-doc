@@ -182,10 +182,10 @@ To get the parent entities of a data node, like the tasks that use the data node
     data_node = scenario.sales_history
 
     # get the parent entities of the data node
-    parent_entities = data_node.get_parents()
+    parent_entities = data_node.get_parents()   # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1], 'tasks': [Task 1]}
 
     # get the parent entities of the data node
-    tp.get_parents(data_node)
+    tp.get_parents(data_node)   # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1], 'tasks': [Task 1]}
     ```
 
 [:material-arrow-right: The next section shows the scheduling and job execution](scheduling-and-job-execution.md).

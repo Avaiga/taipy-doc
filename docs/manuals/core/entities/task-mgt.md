@@ -88,10 +88,10 @@ To get the parent entities of a task, like the pipeline that includes the tasks,
     task = scenario.training_cfg
 
     # get the parent entities of the task
-    parent_entities = task.get_parents()
+    parent_entities = task.get_parents()    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1]}
 
     # get the parent entities of the task
-    tp.get_parents(task)
+    tp.get_parents(task)    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1]}
     ```
 
 [:material-arrow-right: The next section shows the data node management](data-node-mgt.md).
