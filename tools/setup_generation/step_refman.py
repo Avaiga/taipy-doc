@@ -402,11 +402,13 @@ class RefManStep(SetupStep):
 
         # Delete temporary file
         if os.path.exists("config_doc.txt"):
+            print(f"DEBUG - Deleting config_doc.txt")
             os.remove("config_doc.txt")
 
         # Read config.py file
         from pathlib import Path
         with open(Path("tools", "taipy", "config", "config.py"), 'r') as f:
+            print(f"DEBUG - Reading config.py")
             contents = f.readlines()
 
         # Inject imports and code
@@ -426,6 +428,7 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
 
         # Fix code injection
         with open(Path("tools", "taipy", "config", "config.py"), "w") as f:
+            print(f"DEBUG - Writing config.py")
             new_content = "".join(contents)
             new_content = new_content.replace(
                 "custom_document: Any = <class 'taipy.core.common.default_custom_document.DefaultCustomDocument'>",
@@ -438,6 +441,8 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
             new_content = new_content.replace("taipy.core.config.pipeline_config.PipelineConfig", "PipelineConfig")
             new_content = new_content.replace("taipy.config.common.frequency.Frequency", "Frequency")
             f.write(new_content)
+            print(f"DEBUG - Content :")
+            print(new_content)
 
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(
