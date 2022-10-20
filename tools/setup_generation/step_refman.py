@@ -391,19 +391,25 @@ class RefManStep(SetupStep):
     def add_external_methods_to_config_class():
         import os
         if not os.path.exists("config_doc.txt"):
+            print(f"WARNING - No method found to add to Config documentation !")
             return
 
         # Get code of methods to inject
         with open('config_doc.txt', 'r') as f:
+            print(f"INFO - Found some methods to add to Config documentation.")
             methods_to_inject = f.read()
+            print(f"DEBUG - Extract of code to inject : \n")
+            print(methods_to_inject[0:200] + "\n")
 
         # Delete temporary file
         if os.path.exists("config_doc.txt"):
+            print(f"DEBUG - Deleting config_doc.txt")
             os.remove("config_doc.txt")
 
         # Read config.py file
         from pathlib import Path
         with open(Path("tools", "taipy", "config", "config.py"), 'r') as f:
+            print(f"DEBUG - Reading config.py")
             contents = f.readlines()
 
         # Inject imports and code
@@ -423,6 +429,7 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
 
         # Fix code injection
         with open(Path("tools", "taipy", "config", "config.py"), "w") as f:
+            print(f"DEBUG - Writing config.py")
             new_content = "".join(contents)
             new_content = new_content.replace(
                 "custom_document: Any = <class 'taipy.core.common.default_custom_document.DefaultCustomDocument'>",
