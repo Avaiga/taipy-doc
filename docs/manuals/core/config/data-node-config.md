@@ -335,164 +335,6 @@ The data parameter of the write query builder is expected to have the same data 
     To configure an SQL data node, it is equivalent to use the method `Config.configure_sql_data_node()^` or
     the method `Config.configure_data_node()^` with parameter `storage_type="sql"`.
 
-# Mongo Collection
-
-A `MongoCollectionDataNode^` is a specific data node used to model data stored in a Mongo collection. To add a new *mongo_collection* data node configuration, the `Config.configure_mongo_collection_data_node()^` method can be used.
-In addition to the generic parameters described in the previous section [Data node configuration](data-node-config.md), multiple parameters can be provided.
-
--   The _**db_name**_ parameter represents the name of the database in MongoDB.
--   The _**collection_name**_ parameter represents the name of the data collection in the database.
--   The _**custom_document**_ parameter represents the custom class that is used to store, encode, and decode data when reading and writing to a Mongo collection. The data returned by the read method is a list of custom_document object(s), and the data passed as a parameter of the write method is a (list of) custom_document object(s). The custom_document can have:
-    -   An otional `decoder()` method to decode data in the Mongo collection to a custom object when reading.
-    -   An optional `encoder()` method to encode the object's properties to the Mongo collection format when writing.
--   The _**db_username**_ parameter represents the username that will be used by Taipy to access MongoDB.
--   The _**db_password**_ parameter represents the user's password that will be used by Taipy to access MongoDB.
--   The _**db_port**_ parameter represents the database port that will be used by Taipy to access MongoDB. The default value of _db_port_ is 27017.
--   The _**db_host**_ parameter represents the database host that will be used by Taipy to access MongoDB. The default value of _db_host_ is "localhost".
-
-```python linenums="1"
-from taipy import Config
-
-historical_data_cfg = Config.configure_mongo_collection_data_node(
-    id="historical_data",
-    db_username="admin",
-    db_password="pa$$w0rd",
-    db_name="taipy",
-    collection_name="historical_data_set",
-)
-```
-
-In this example, we configure a *mongo_collection* data node with the id "historical_data":
-
--   Its scope is the default value `SCENARIO`.
--   The database username is "admin", the user's password is "pa$$w0rd"
--   The database name is "taipy"
--   The collection name is "historical_data_set".
--   Without being specified, the custom document class is defined as `taipy.core.DefaultCustomDocument`.
-
-```python linenums="1"
-from taipy import Config
-from datetime import datetime
-
-class DailyMinTemp:
-    def __init__(self, Date : datetime = None, Temp : float = None):
-        self.Date = Date
-        self.Temp = Temp
-
-    def encode(self):
-        return {
-            "date": self.Date.isoformat(),
-            "temperature": self.Temp,
-        }
-
-    @classmethod
-    def decode(cls, data):
-        return cls(
-            datetime.fromisoformat(data["date"]),
-            data["temperature"],
-        )
-
-historical_data_cfg = Config.configure_mongo_collection_data_node(
-    id="historical_data",
-    db_username="admin",
-    db_password="pa$$w0rd",
-    db_name="taipy",
-    collection_name="historical_data_set",
-    custom_document=DailyMinTemp,
-)
-```
-
-In this next example, we configure another *mongo_collection* data node, with the custom document is defined as DailyMinTemp class.
-
--   The custom encode method encodes `datetime.datetime` to the ISO 8601 string format.
--   The corresponding decode method decodes a ISO 8601 string to `datetime.datetime`.
--   The `_id` of the Mongo document is discarded.
-
-Without this two methods, the default decoder will map the key of each document to the corresponding property of a DailyMinTemp object,
-and the default encoder will convert DailyMinTemp object's properties to a dictionary, without any special formating.
-
-!!! Note
-
-    To configure a Mongo collection data node, it is equivalent to use the method `Config.configure_mongo_collection_data_node()^` or
-    the method `Config.configure_data_node()^` with parameter `storage_type="mongo_collection"`.
-
-
-# Generic
-
-A `GenericDataNode^` is a specific data node used to model generic data types where the read and the write functions
-are defined by the user. To add a new _generic_ data node configuration, the `Config.configure_generic_data_node()^`
-method can be used. In addition to the parameters described in the previous section
-[Data node configuration](data-node-config.md), two optional parameters can be provided.
-
--   The _**read_fct**_ is a mandatory parameter that represents a Python function provided by the user. It will
-    be used to read the data. More optional parameters can be passed through the _**read_fct_params**_ parameter.
-
--   The _**write_fct**_ is a mandatory parameter representing a Python function provided by the user. It will
-    be used to write/serialize the data. The provided function must have at least one parameter dedicated to
-    receiving data to be written. More optional parameters can be passed through the _**write_fct_params**_ parameter.
-
--   The parameter _**read_fct_params**_ represents the parameters that are passed to the _read_fct_ to
-    read/de-serialize the data. It must be a `List` type object.
-
--   The parameter _**write_fct_params**_ represents the parameters that are passed to the _write_fct_ to write the data.
-    It must be a `List` type object.
-
-
-```python linenums="1"
-from taipy import Config
-
-def read_data():
-    pass
-
-def write_data(data: Any, path: str):
-    pass
-
-historical_data_cfg = Config.configure_generic_data_node(id="historical_data",
-                                                         read_fct=read_data,
-                                                         write_fct=write_data,
-                                                         write_fct_params=['../path/'])
-```
-
-In this small example, we configure a generic data node with the id "historical_data". We provide two
-Python functions (previously defined) as _read_fct_ and _write_fct_ parameters to read and write the data. We also
-provided a list object for the _write_fct_params_ with a path to let the _write_fct_ know where to write the data.
-
-
-!!! Note
-
-    To configure a generic data node, it is equivalent to use the method `Config.configure_generic_data_node()^` or
-    the method `Config.configure_data_node()^` with parameter `storage_type="generic"`.
-
-# In memory
-
-An `InMemoryDataNode^` is a specific data node used to model any data in the RAM. The
-`Config.configure_in_memory_data_node()^` method can be used to add a new in_memory data node configuration. In
-addition to the generic parameters described in the previous section [Data node configuration](data-node-config.md),
-an optional parameter can be provided.
-
--   If the _**default_data**_ is given as a parameter, the data node is automatically written with the corresponding
-    value (note that any python object can be used).
-
-```python linenums="1"
-from taipy import Config
-from datetime import datetime
-
-date_cfg = Config.configure_in_memory_data_node(id="date", default_data=datetime(2022, 1, 25))
-```
-
-In this example, we configure an in_memory data node with the id "date", the scope is `SCENARIO`
-(default value), and a default data is provided.
-
-!!! Warning
-
-    Since the data is stored in memory, it cannot be used in a multiprocess environment. (See
-    [Job configuration](job-config.md#standalone) for more details).
-
-!!! Note
-
-    To configure an in_memory data node, it is equivalent to use the method `Config.configure_in_memory_data_node()^` or
-    the method `Config.configure_data_node()^` with parameter `storage_type="in_memory"`.
-
 # JSON
 
 A `JSONDataNode^` is a type of data node used to model JSON
@@ -579,5 +421,162 @@ default `SCENARIO` scope is used. The encoder and decoder are the custom encoder
 
     To configure a JSON data node, it is equivalent to use the method `Config.configure_json_data_node()^` or
     the method `Config.configure_data_node()^` with the `storage_type` argument set to "json".
+
+# Mongo Collection
+
+A `MongoCollectionDataNode^` is a specific data node used to model data stored in a Mongo collection. To add a new *mongo_collection* data node configuration, the `Config.configure_mongo_collection_data_node()^` method can be used.
+In addition to the generic parameters described in the previous section [Data node configuration](data-node-config.md), multiple parameters can be provided.
+
+-   The _**db_name**_ parameter represents the name of the database in MongoDB.
+-   The _**collection_name**_ parameter represents the name of the data collection in the database.
+-   The _**custom_document**_ parameter represents the custom class that is used to store, encode, and decode data when reading and writing to a Mongo collection. The data returned by the read method is a list of custom_document object(s), and the data passed as a parameter of the write method is a (list of) custom_document object(s). The custom_document can have:
+    -   An otional `decoder()` method to decode data in the Mongo collection to a custom object when reading.
+    -   An optional `encoder()` method to encode the object's properties to the Mongo collection format when writing.
+-   The _**db_username**_ parameter represents the username that will be used by Taipy to access MongoDB.
+-   The _**db_password**_ parameter represents the user's password that will be used by Taipy to access MongoDB.
+-   The _**db_port**_ parameter represents the database port that will be used by Taipy to access MongoDB. The default value of _db_port_ is 27017.
+-   The _**db_host**_ parameter represents the database host that will be used by Taipy to access MongoDB. The default value of _db_host_ is "localhost".
+
+```python linenums="1"
+from taipy import Config
+
+historical_data_cfg = Config.configure_mongo_collection_data_node(
+    id="historical_data",
+    db_username="admin",
+    db_password="pa$$w0rd",
+    db_name="taipy",
+    collection_name="historical_data_set",
+)
+```
+
+In this example, we configure a *mongo_collection* data node with the id "historical_data":
+
+-   Its scope is the default value `SCENARIO`.
+-   The database username is "admin", the user's password is "pa$$w0rd"
+-   The database name is "taipy"
+-   The collection name is "historical_data_set".
+-   Without being specified, the custom document class is defined as `taipy.core.DefaultCustomDocument`.
+
+```python linenums="1"
+from taipy import Config
+from datetime import datetime
+
+class DailyMinTemp:
+    def __init__(self, Date : datetime = None, Temp : float = None):
+        self.Date = Date
+        self.Temp = Temp
+
+    def encode(self):
+        return {
+            "date": self.Date.isoformat(),
+            "temperature": self.Temp,
+        }
+
+    @classmethod
+    def decode(cls, data):
+        return cls(
+            datetime.fromisoformat(data["date"]),
+            data["temperature"],
+        )
+
+historical_data_cfg = Config.configure_mongo_collection_data_node(
+    id="historical_data",
+    db_username="admin",
+    db_password="pa$$w0rd",
+    db_name="taipy",
+    collection_name="historical_data_set",
+    custom_document=DailyMinTemp,
+)
+```
+
+In this next example, we configure another *mongo_collection* data node, with the custom document is defined as DailyMinTemp class.
+
+-   The custom encode method encodes `datetime.datetime` to the ISO 8601 string format.
+-   The corresponding decode method decodes a ISO 8601 string to `datetime.datetime`.
+-   The `_id` of the Mongo document is discarded.
+
+Without this two methods, the default decoder will map the key of each document to the corresponding property of a DailyMinTemp object,
+and the default encoder will convert DailyMinTemp object's properties to a dictionary, without any special formating.
+
+!!! Note
+
+    To configure a Mongo collection data node, it is equivalent to use the method `Config.configure_mongo_collection_data_node()^` or
+    the method `Config.configure_data_node()^` with parameter `storage_type="mongo_collection"`.
+
+# Generic
+
+A `GenericDataNode^` is a specific data node used to model generic data types where the read and the write functions
+are defined by the user. To add a new _generic_ data node configuration, the `Config.configure_generic_data_node()^`
+method can be used. In addition to the parameters described in the previous section
+[Data node configuration](data-node-config.md), two optional parameters can be provided.
+
+-   The _**read_fct**_ is a mandatory parameter that represents a Python function provided by the user. It will
+    be used to read the data. More optional parameters can be passed through the _**read_fct_params**_ parameter.
+
+-   The _**write_fct**_ is a mandatory parameter representing a Python function provided by the user. It will
+    be used to write/serialize the data. The provided function must have at least one parameter dedicated to
+    receiving data to be written. More optional parameters can be passed through the _**write_fct_params**_ parameter.
+
+-   The parameter _**read_fct_params**_ represents the parameters that are passed to the _read_fct_ to
+    read/de-serialize the data. It must be a `List` type object.
+
+-   The parameter _**write_fct_params**_ represents the parameters that are passed to the _write_fct_ to write the data.
+    It must be a `List` type object.
+
+
+```python linenums="1"
+from taipy import Config
+
+def read_data():
+    pass
+
+def write_data(data: Any, path: str):
+    pass
+
+historical_data_cfg = Config.configure_generic_data_node(id="historical_data",
+                                                         read_fct=read_data,
+                                                         write_fct=write_data,
+                                                         write_fct_params=['../path/'])
+```
+
+In this small example, we configure a generic data node with the id "historical_data". We provide two
+Python functions (previously defined) as _read_fct_ and _write_fct_ parameters to read and write the data. We also
+provided a list object for the _write_fct_params_ with a path to let the _write_fct_ know where to write the data.
+
+
+!!! Note
+
+    To configure a generic data node, it is equivalent to use the method `Config.configure_generic_data_node()^` or
+    the method `Config.configure_data_node()^` with parameter `storage_type="generic"`.
+
+# In memory
+
+An `InMemoryDataNode^` is a specific data node used to model any data in the RAM. The
+`Config.configure_in_memory_data_node()^` method can be used to add a new in_memory data node configuration. In
+addition to the generic parameters described in the previous section [Data node configuration](data-node-config.md),
+an optional parameter can be provided.
+
+-   If the _**default_data**_ is given as a parameter, the data node is automatically written with the corresponding
+    value (note that any python object can be used).
+
+```python linenums="1"
+from taipy import Config
+from datetime import datetime
+
+date_cfg = Config.configure_in_memory_data_node(id="date", default_data=datetime(2022, 1, 25))
+```
+
+In this example, we configure an in_memory data node with the id "date", the scope is `SCENARIO`
+(default value), and a default data is provided.
+
+!!! Warning
+
+    Since the data is stored in memory, it cannot be used in a multiprocess environment. (See
+    [Job configuration](job-config.md#standalone) for more details).
+
+!!! Note
+
+    To configure an in_memory data node, it is equivalent to use the method `Config.configure_in_memory_data_node()^` or
+    the method `Config.configure_data_node()^` with parameter `storage_type="in_memory"`.
 
 [:material-arrow-right: The next section introduces the task configuration](task-config.md).
