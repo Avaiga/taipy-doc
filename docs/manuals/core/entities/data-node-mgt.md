@@ -120,7 +120,7 @@ stored on the data node according to the type of data node:
     ```
 
 To write some data on the data node, like the output of a task, you can use the `DataNode.write()^` method. The
-method takes a data object (string, dictionary, lists, numpy arrays, pandas dataframes, etc. based on the storage type)
+method takes a data object (string, dictionary, lists, numpy arrays, pandas dataframes, etc. based on the data node type and its exposed type)
 as a parameter and writes it on the data node:
 
 !!! Example
