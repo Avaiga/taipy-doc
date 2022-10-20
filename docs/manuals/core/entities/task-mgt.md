@@ -81,16 +81,16 @@ To get the parent entities of a task, like the pipeline that includes the tasks,
     import taipy as tp
     import my_config
 
-    # Creating a scenario from a config
+    # Create a scenario from a config
     scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
     # Retrieve a task
     task = scenario.training_cfg
 
-    # get the parent entities of the task
+    # Retrieve the parent entities of the task
     parent_entities = task.get_parents()    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1]}
 
-    # get the parent entities of the task
+    # Retrieve the parent entities of the task
     tp.get_parents(task)    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1]}
     ```
 

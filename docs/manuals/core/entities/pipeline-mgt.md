@@ -97,16 +97,16 @@ To get the parent scenario of a pipeline, you can use the `Pipeline.get_parents(
     import taipy as tp
     import my_config
 
-    # Creating a scenario from a config
+    # Create a scenario from a config
     scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
     # Retrieve a pipeline
     pipeline = scenario.sales_pipeline_cfg
 
-    # get the parent entities of the pipeline
+    # Retrieve the parent entities of the pipeline
     parent_entities = pipeline.get_parents()  # {'scenarios': [Scenario 1]}
 
-    # get the parent entities of the pipeline
+    # Retrieve the parent entities of the pipeline
     tp.get_parents(pipeline)  # {'scenarios': [Scenario 1]}
     ```
 

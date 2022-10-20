@@ -167,7 +167,7 @@ writes it on the data node:
 
 # Get parent scenarios, pipelines and tasks
 
-To get the parent entities of a data node, like the tasks that use the data node, or the pipeline that includes the tasks, or the scenario that contains the pipeline, you can use the `DataNode.get_parents()^` method. The method will return a dictionary with the key being the level of the parent ("scenarios", "pipelines" or "tasks") and the value is a set of the parent entities corresponding to the level. You can also use `taipy.get_parents()^`, which takes a child entity such as the data node as input, to achieve the same result.
+To get the parent entities of a data node, like the tasks that use the data node, or the pipelines that includes the tasks, or the scenarios that contains the pipeline, you can use the `DataNode.get_parents()^` method. The method will return a dictionary with the key being the level of the parent ("scenarios", "pipelines" or "tasks") and the value is a set of the parent entities corresponding to the level. You can also use `taipy.get_parents()^`, which takes a child entity such as the data node as input, to achieve the same result.
 
 !!! Example
 
@@ -175,16 +175,16 @@ To get the parent entities of a data node, like the tasks that use the data node
     import taipy as tp
     import my_config
 
-    # Creating a scenario from a config
+    # Create a scenario from a config
     scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
     # Retrieve a data node
     data_node = scenario.sales_history
 
-    # get the parent entities of the data node
+    # Retrieve the parent entities of the data node
     parent_entities = data_node.get_parents()   # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1], 'tasks': [Task 1]}
 
-    # get the parent entities of the data node
+    # Retrieve the parent entities of the data node
     tp.get_parents(data_node)   # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1], 'tasks': [Task 1]}
     ```
 

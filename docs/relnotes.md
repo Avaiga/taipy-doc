@@ -14,9 +14,9 @@ This is the list of changes to Taipy releases as they were published.
 **`taipy-core`** *<br/>2.1
 
    - New data node named `MongoCollectionDataNode`. It represents the data from a MongoDB collection.
-   - The parent entities of of a data node, a task, or a pipeline can be accessed via `DataNode.get_parents()^`,
+   - The parent entities of a data node, a task, or a pipeline can be accessed via `DataNode.get_parents()^`,
    `Task.get_parents()^`, or `Pipeline.get_parents()^`, or by passing the data node entity, task entity or pipeline
-   entity to the method `taipy.get_parents()^`.
+   entity to the function `taipy.get_parents()^`.
 
 ## Community edition: 2.0
 
