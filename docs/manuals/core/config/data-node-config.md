@@ -12,7 +12,7 @@ In the previous code, we configured a simple data node just providing an identif
 
 More optional attributes are available on data nodes, including:
 
-   - _**id**_ is the identifier of the data node config.<br/>
+- _**id**_ is the identifier of the data node config.<br/>
      It is a **mandatory** parameter that must be unique. It must be a valid Python identifier.
 
 -   _**scope**_ is a `Scope^`.<br/>
@@ -120,9 +120,9 @@ In line 6, we add another pickle data node configuration with the id "model_cfg"
     To configure a pickle data node, it is equivalent to use the method `Config.configure_pickle_data_node()^` or
     the method `Config.configure_data_node()^` with parameter `storage_type="pickle"`.
 
-# Csv
+# CSV
 
-A `CSVDataNode^` data node is a specific data node used to model csv file data. To add a new _csv_ data node
+A `CSVDataNode^` data node is a specific data node used to model csv file data. To add a new _CSV_ data node
 configuration, the `Config.configure_csv_data_node()^` method can be used. In addition to the generic parameters
 described in the previous section [Data node configuration](data-node-config.md), one mandatory and two optional
 parameters can be provided.
@@ -136,7 +136,7 @@ parameters can be provided.
 -   When the _**exposed_type**_ is given as a parameter, if the _exposed_type_ value provided is `numpy`, the
     data node will read the csv file to a numpy array. If the provided value is a custom class, data node
     will create a list of custom object with the given custom class, each object will represent a row in the csv
-    file.If _exposed_type_ is not provided, the data node will read the csv file as a pandas DataFrame.
+    file. If _exposed_type_ is not provided, the data node will read the csv file as a pandas.DataFrame.
 
 ```python linenums="1"
 from taipy import Config
@@ -157,11 +157,11 @@ sales_cfg = Config.configure_csv_data_node(id="sale_history",
 
 In lines 3-5, we define a custom class `SaleRow` representing a row of the CSV file.
 
-In lines 7-10, we configure a basic csv data node with the id "historical_temperature". Its _scope_ is by
+In lines 7-10, we configure a basic CSV data node with the id "historical_temperature". Its _scope_ is by
 default `SCENARIO`. The default path corresponds to the file `path/hist_temp.csv`. The property _has_header_ being True,
 representing the csv file has a header.
 
-In lines 12-14, we add another csv data node configuration with the id "sale_history". The
+In lines 12-14, we add another CSV data node configuration with the id "sale_history". The
 default `SCENARIO` scope is used again. Since we have a custom class pre-defined for this csv file (`SaleRow`), we
 provide it as the _exposed_type_ parameter.
 
@@ -340,14 +340,13 @@ The data parameter of the write query builder is expected to have the same data 
 A `MongoCollectionDataNode^` is a specific data node used to model data stored in a Mongo collection. To add a new *mongo_collection* data node configuration, the `Config.configure_mongo_collection_data_node()^` method can be used.
 In addition to the generic parameters described in the previous section [Data node configuration](data-node-config.md), multiple parameters can be provided.
 
--   The _**db_username**_ parameter represents the username that will be used by Taipy to access MongoDB.
--   The _**db_password**_ parameter represents the user's password that will be used by Taipy to access MongoDB.
 -   The _**db_name**_ parameter represents the name of the database in MongoDB.
 -   The _**collection_name**_ parameter represents the name of the data collection in the database.
--   The _**read_query**_ parameter represents the MongoDB query in the form of a dictionary that will be used by Taipy to read the data from the collection.
 -   The _**custom_document**_ parameter represents the custom class that is used to store, encode, and decode data when reading and writing to a Mongo collection. The data returned by the read method is a list of custom_document object(s), and the data passed as a parameter of the write method is a (list of) custom_document object(s). The custom_document can have:
     -   An otional `decoder()` method to decode data in the Mongo collection to a custom object when reading.
     -   An optional `encoder()` method to encode the object's properties to the Mongo collection format when writing.
+-   The _**db_username**_ parameter represents the username that will be used by Taipy to access MongoDB.
+-   The _**db_password**_ parameter represents the user's password that will be used by Taipy to access MongoDB.
 -   The _**db_port**_ parameter represents the database port that will be used by Taipy to access MongoDB. The default value of _db_port_ is 27017.
 -   The _**db_host**_ parameter represents the database host that will be used by Taipy to access MongoDB. The default value of _db_host_ is "localhost".
 
@@ -503,7 +502,7 @@ In addition to the generic parameters described in
 
 - The _**default_path**_ is a mandatory parameter that represents the JSON file path used by Taipy to read and write data.
 
-- The _**encoder** and _**decoder**_ parameters are optional parameters that represent the encoder (json.JSONEncoder) and decoder
+- The _**encoder**_ and _**decoder**_ parameters are optional parameters that represent the encoder (json.JSONEncoder) and decoder
 (json.JSONDecoder) used to serialize and deserialize JSON data.
 
 ```python linenums="1"
@@ -518,8 +517,10 @@ hist_temp_cfg = Config.configure_json_data_node(
 In this example, we configure a JSON data node. The _id_ argument is "historical_temperature". Its _scope_ is
 `SCENARIO` (default value), and the path is the file hist_temp.json.
 
-Without specific _**encoder** and _**decoder**_ parameters, `hist_temp_cfg` will use default encoder and decoder provided by Taipy, which have the capability to encode and decode Python [`enum.Enum`](https://docs.python.org/3/library/enum.html), [`datetime.datetime`](https://docs.python.org/3/library/datetime.html#datetime-objects),
-and [dataclass](https://docs.python.org/3/library/dataclasses.html) object.
+Without specific _**encoder**_ and _**decoder**_ parameters, `hist_temp_cfg` will use default encoder and decoder provided by Taipy,
+which have the capability to encode and decode Python [`enum.Enum`](https://docs.python.org/3/library/enum.html),
+[`datetime.datetime`](https://docs.python.org/3/library/datetime.html#datetime-objects), and
+[dataclass](https://docs.python.org/3/library/dataclasses.html) object.
 
 ```python linenums="1"
 from taipy import Config
@@ -550,7 +551,7 @@ sales_cfg = Config.configure_json_data_node(id="sale_history",
                                              decoder=SaleRowDecoder)
 ```
 
-In this next example, we config a `JSONDataNode^` with custom JSON _**encoder** and _**decoder**_:
+In this next example, we config a `JSONDataNode^` with custom JSON _**encoder**_ and _**decoder**_:
 
 - In lines 4-6, we define a custom class `SaleRow`, representing data in a JSON object.
 
@@ -569,8 +570,7 @@ In this next example, we config a `JSONDataNode^` with custom JSON _**encoder** 
         }
         ```
     to path/sale_history.json.
-    - When [read a JSONDataNode](../entities/data-node-mgt.md#read-data-node), the `SaleRowDecoder` will
-    decode any JSON object has `"__type__": "SaleRow"` to a `SaleRow` object.
+    - When read a JSONDataNode, the `SaleRowDecoder` will decode any JSON object has `"__type__": "SaleRow"` to a `SaleRow` object.
 
 - In lines 23-26, we create a JSON data node configuration. The _id_ identifier is "sale_history", the
 default `SCENARIO` scope is used. The encoder and decoder are the custom encoder and decoder defined above.
