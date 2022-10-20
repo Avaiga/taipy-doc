@@ -118,6 +118,7 @@ FORCE_PACKAGE = [
     ("taipy.core.data.operator.Operator", "taipy.core.data.operator"),
     ("taipy.core.data.operator.JoinOperator", "taipy.core.data.operator"),
     ("taipy.core.exceptions.exceptions.*", "taipy.core.exceptions"),
+    ("taipy.config.config.Config", "taipy.config"),
     ("taipy.config.checker.issue.Issue", "taipy.config"),
     ("taipy.config.checker.issue_collector.IssueCollector", "taipy.config"),
     ("taipy.rest.rest.Rest", "taipy.rest")
@@ -382,6 +383,8 @@ with open(os.path.join(GUI_DOC_PATH, "blocks.md"), "w") as file:
 # ------------------------------------------------------------------------
 print("Step 2/5: Generating the Reference Manual pages", flush=True)
 
+os.environ["GENERATING_TAIPY_DOC"] = "true"
+
 # Create empty REFERENCE_DIR_PATH directory
 if os.path.exists(REFERENCE_DIR_PATH):
     shutil.rmtree(REFERENCE_DIR_PATH)
@@ -481,6 +484,7 @@ def read_module(module):
                 "doc": doc,
                 "packages": [module.__name__],
             }
+
 
 read_module(__import__(ROOT_PACKAGE))
 
@@ -595,6 +599,56 @@ for package in sorted(package_to_entries.keys()):
             package_output_file.write(f"## Classes\n\n")
             generate_entries(classes, package, CLASS_ID, package_output_file, package_grouped)
 
+def add_external_methods_to_config_class():
+    import os
+    if not os.path.exists("config_doc.txt"):
+        return
+
+    # Get code of methods to inject
+    with open('config_doc.txt', 'r') as f:
+        methods_to_inject = f.read()
+
+    # Delete temporary file
+    if os.path.exists("config_doc.txt"):
+        os.remove("config_doc.txt")
+
+    # Read config.py file
+    from pathlib import Path
+    with open(Path("tools", "taipy", "config", "config.py"), 'r') as f:
+        contents = f.readlines()
+
+    # Inject imports and code
+    imports_to_inject = """from types import NoneType
+from typing import Any, Callable, List
+import json
+from .common.scope import Scope
+from .common.frequency import Frequency
+from taipy.core.common.default_custom_document import DefaultCustomDocument
+from taipy.core.config.job_config import JobConfig
+from taipy.core.config.data_node_config import DataNodeConfig
+from taipy.core.config.task_config import TaskConfig
+from taipy.core.config.scenario_config import ScenarioConfig
+from taipy.core.config.pipeline_config import PipelineConfig\n"""
+    contents.insert(11, imports_to_inject)
+    contents.insert(len(contents) - 2, methods_to_inject)
+
+    # Fix code injection
+    with open(Path("tools", "taipy", "config", "config.py"), "w") as f:
+        new_content = "".join(contents)
+        new_content = new_content.replace(
+            "custom_document: Any = <class 'taipy.core.common.default_custom_document.DefaultCustomDocument'>",
+            "custom_document: Any = DefaultCustomDocument"
+        )
+        new_content = new_content.replace("taipy.config.common.scope.Scope", "Scope")
+        new_content = new_content.replace("<Scope.SCENARIO: 2>", "Scope.SCENARIO")
+        new_content = new_content.replace("taipy.core.config.data_node_config.DataNodeConfig", "DataNodeConfig")
+        new_content = new_content.replace("taipy.core.config.task_config.TaskConfig", "TaskConfig")
+        new_content = new_content.replace("taipy.core.config.pipeline_config.PipelineConfig", "PipelineConfig")
+        new_content = new_content.replace("taipy.config.common.frequency.Frequency", "Frequency")
+        f.write(new_content)
+
+add_external_methods_to_config_class()
+
 # Filter out packages that are the exposed package and appear in the packages list
 for entry, entry_desc in xrefs.items():
     package = entry_desc[0]
@@ -603,6 +657,7 @@ for entry, entry_desc in xrefs.items():
 with open(XREFS_PATH, "w") as xrefs_output_file:
     xrefs_output_file.write(json.dumps(xrefs))
 
+del os.environ['GENERATING_TAIPY_DOC']
 
 # ------------------------------------------------------------------------
 # Step 3
