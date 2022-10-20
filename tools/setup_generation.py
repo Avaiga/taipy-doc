@@ -383,6 +383,8 @@ with open(os.path.join(GUI_DOC_PATH, "blocks.md"), "w") as file:
 # ------------------------------------------------------------------------
 print("Step 2/5: Generating the Reference Manual pages", flush=True)
 
+os.environ["GENERATING_TAIPY_DOC"] = "true"
+
 # Create empty REFERENCE_DIR_PATH directory
 if os.path.exists(REFERENCE_DIR_PATH):
     shutil.rmtree(REFERENCE_DIR_PATH)
@@ -482,6 +484,7 @@ def read_module(module):
                 "doc": doc,
                 "packages": [module.__name__],
             }
+
 
 read_module(__import__(ROOT_PACKAGE))
 
@@ -654,6 +657,7 @@ for entry, entry_desc in xrefs.items():
 with open(XREFS_PATH, "w") as xrefs_output_file:
     xrefs_output_file.write(json.dumps(xrefs))
 
+del os.environ['GENERATING_TAIPY_DOC']
 
 # ------------------------------------------------------------------------
 # Step 3
