@@ -101,6 +101,7 @@ class RefManStep(SetupStep):
         return "Generation of the Reference Manual pages"
 
     def enter(self, setup: Setup):
+        os.environ["GENERATING_TAIPY_DOC"] = "true"
         self.REFERENCE_DIR_PATH = setup.docs_dir + "/" + RefManStep.REFERENCE_REL_PATH
         self.XREFS_PATH = setup.manuals_dir + "/xrefs"
         self.navigation = None
@@ -398,18 +399,15 @@ class RefManStep(SetupStep):
         with open('config_doc.txt', 'r') as f:
             print(f"INFO - Found some methods to add to Config documentation.")
             methods_to_inject = f.read()
-            print(f"DEBUG - Extract of code to inject : \n")
             print(methods_to_inject[0:200] + "\n")
 
         # Delete temporary file
         if os.path.exists("config_doc.txt"):
-            print(f"DEBUG - Deleting config_doc.txt")
             os.remove("config_doc.txt")
 
         # Read config.py file
         from pathlib import Path
         with open(Path("tools", "taipy", "config", "config.py"), 'r') as f:
-            print(f"DEBUG - Reading config.py")
             contents = f.readlines()
 
         # Inject imports and code
@@ -429,7 +427,6 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
 
         # Fix code injection
         with open(Path("tools", "taipy", "config", "config.py"), "w") as f:
-            print(f"DEBUG - Writing config.py")
             new_content = "".join(contents)
             new_content = new_content.replace(
                 "custom_document: Any = <class 'taipy.core.common.default_custom_document.DefaultCustomDocument'>",
@@ -447,3 +444,4 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
         setup.update_mkdocs_yaml_template(
             r"^\s*\[REFERENCE_CONTENT\]\s*\n", self.navigation
         )
+        del os.environ['GENERATING_TAIPY_DOC']
