@@ -399,7 +399,6 @@ class RefManStep(SetupStep):
         with open('config_doc.txt', 'r') as f:
             print(f"INFO - Found some methods to add to Config documentation.")
             methods_to_inject = f.read()
-            print(methods_to_inject[0:200] + "\n")
 
         # Delete temporary file
         if os.path.exists("config_doc.txt"):
