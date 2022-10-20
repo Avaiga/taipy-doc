@@ -17,9 +17,7 @@ This is the list of changes to Taipy releases as they were published.
    - The parent entities of a data node, a task, or a pipeline can be accessed via `DataNode.get_parents()^`,
    `Task.get_parents()^`, or `Pipeline.get_parents()^`, or by passing the data node entity, task entity or pipeline
    entity to the function `taipy.get_parents()^`.
-   - Data node caching mechanism now also considered the date and time of the last modification of a file caused
-   by either Taipy execution or an external factor. This behavior is currently limited to only CSV files, Excel
-   files, JSON files and pickle files.
+   - Data node caching mechanism now also takes into account the date and time of the last modification of a file caused by either Taipy execution or an external factor. This behavior is currently limited to CSV, Excel, JSON and pickle files only.
 
 ## Community edition: 2.0
 
