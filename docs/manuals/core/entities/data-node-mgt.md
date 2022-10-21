@@ -167,7 +167,8 @@ writes it on the data node:
 
 # Get parent scenarios, pipelines and tasks
 
-To get the parent entities of a data node, like the tasks that use the data node, or the pipelines that includes the tasks, or the scenarios that contains the pipeline, you can use the `DataNode.get_parents()^` method. The method will return a dictionary with the key being the level of the parent ("scenarios", "pipelines" or "tasks") and the value is a set of the parent entities corresponding to the level. You can also use `taipy.get_parents()^`, which takes a child entity such as the data node as input, to achieve the same result.
+To get the parent entities of a data node (scenarios or pipelines or tasks) you can use either the method `DataNode.get_parents()^` or the function
+`taipy.get_parents()^`. Both return the parents of the data node.
 
 !!! Example
 

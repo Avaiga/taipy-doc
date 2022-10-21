@@ -89,7 +89,8 @@ also propagated to the nested tasks, data nodes, and jobs if they are not shared
 
 # Get parent scenarios
 
-To get the parent scenario of a pipeline, you can use the `Pipeline.get_parents()^` method. The method will return a dictionary with the key being the level of the parent ("scenarios") and the value is a set of the parent entities corresponding to the level. You can also use `taipy.get_parents()^`, which takes a child entity such as the task as input, to achieve the same result.
+To get the parent entities of a pipeline (scenarios) you can use either the method `DataNode.get_parents()^` or the function
+`taipy.get_parents()^`. Both return the parents of the pipeline.
 
 !!! Example
 

@@ -73,7 +73,8 @@ All the jobs can be retrieved using the method `taipy.get_tasks()^`.
 
 # Get parent scenarios and pipelines
 
-To get the parent entities of a task, like the pipeline that includes the tasks, or the scenario that contains the pipeline, you can use the `Task.get_parents()^` method. The method will return a dictionary with the key being the level of the parent ("scenarios" or "pipelines") and the value is a set of the parent entities corresponding to the level. You can also use `taipy.get_parents()^`, which takes a child entity such as the task as input, to achieve the same result.
+To get the parent entities of a task (scenarios or pipelines) you can use either the method `Task.get_parents()^` or the function
+`taipy.get_parents()^`. Both return the parents of the task.
 
 !!! Example
 
