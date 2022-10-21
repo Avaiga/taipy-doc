@@ -2,7 +2,7 @@ The [previous section](scenario-creation.md) provided documentation on `Scenario
 that we know how to create a new `Scenario^`, this section will describe the scenario's attributes and the various
 utility methods.
 
-In the following, it is assumed that [`my_config.py`](../my_config.py) module contains a Taipy configuration
+In the following, it is assumed that [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py) module contains a Taipy configuration
 already implemented.
 
 # Scenario attributes

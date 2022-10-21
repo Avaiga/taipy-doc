@@ -77,7 +77,7 @@ Three parameters can be given to the scenario creation method :
 !!! Example
 
     === "Scenario creation with parameters"
-        Using the [`my_config.py`](../my_config.py) module, here is an example of how to create a scenario.
+        Using the [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py) module, here is an example of how to create a scenario.
 
         ```python  linenums="1"
             import taipy as tp
