@@ -1,4 +1,4 @@
-In the following, it is assumed that [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py
+In the following, it is assumed that [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
 module contains a Taipy configuration already implemented.
 
 Data nodes get created when scenarios or pipelines are created. Please refer to the
@@ -54,11 +54,13 @@ The data nodes that are part of a **scenario**, **pipeline** or **task** can be 
     # Access the data node 'sales_history' from the scenario
     scenario.sales_history
 
-    # Access the pipeline 'sales' from the scenario and then access the data node 'sales_history' from the pipeline
+    # Access the pipeline 'sales' from the scenario and
+    # then access the data node 'sales_history' from the pipeline
     pipeline = scenario.sales
     pipeline.sales_history
 
-    # Access the task 'training' from the pipeline and then access the data node 'sales_history' from the task
+    # Access the task 'training' from the pipeline and
+    # then access the data node 'sales_history' from the task
     task = pipeline.training
     task.sales_history
     ```
@@ -79,7 +81,8 @@ All data nodes that are part of a **scenario** or a **pipeline** can be directly
     # Access all the data nodes from the scenario
     scenario.data_nodes
 
-    # Access the pipeline 'sales' from the scenario and then access all the data nodes from the pipeline
+    # Access the pipeline 'sales' from the scenario and
+    # then access all the data nodes from the pipeline
     pipeline = scenario.sales
     pipeline.data_nodes
     ```
@@ -165,7 +168,9 @@ Check out [What can be pickled and unpickled?](https://docs.python.org/3/library
 When read from a CSV data node, Taipy returns the data of the csv file based on _exposed_type_ parameter.
 Check out [CSV Data Node configuration](../config/data-node-config.md#csv) for more details on _exposed_type_.
 
-!!! example "path/sale_history.csv"
+Assume that the content of the `sales.csv` file is the following.
+
+!!! example "path/sales.csv"
 
     ```csv
     date,nb_sales
@@ -174,9 +179,9 @@ Check out [CSV Data Node configuration](../config/data-node-config.md#csv) for m
     12/26/2018,1832
     ```
 
-!!! example "`data_node.read()` returns"
+The following examples represent the results when read from CSV data node with different _exposed_type_:
 
-    The following examples represent the results when read from CSV data node with different _exposed_type_:
+!!! example "`data_node.read()` returns"
 
     === "exposed_type = "pandas""
 
@@ -217,9 +222,9 @@ When write data to a CSV data node, the `CSVDataNode.write()^` method can take s
 - dictionary, or list of dictionaries
 - pandas dataframes
 
-!!! example "`data_node.write()` examples"
+The following examples will write to the path of the CSV data node:
 
-    The following examples will write to the path of the CSV data node:
+!!! example "`data_node.write()` examples"
 
     === "list"
         When write a list to CSV data node, each element of a list contains 1 row of data.
@@ -311,7 +316,12 @@ To write with custom column names, use the `CSVDataNode.write_with_column_names(
 When read from a Excel data node, Taipy returns the data of the Excel file based on _exposed_type_ parameter.
 Check out [Excel Data Node configuration](../config/data-node-config.md#excel) for more details on _exposed_type_.
 
-!!! example "path/sale_history.xlsx"
+For the example in this section, assume that `sales_history_cfg` in [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
+is an _Excel_ data node configuration with `default_path="path/sales.xlsx"`.
+
+Assume that the content of the `sales.xlsx` file is the following.
+
+!!! example "path/sales.xlsx"
 
     | date       | nb_sales |
     |------------|----------|
@@ -319,9 +329,9 @@ Check out [Excel Data Node configuration](../config/data-node-config.md#excel) f
     | 12/25/2018 | 2315     |
     | 12/26/2018 | 1832     |
 
-!!! example "`data_node.read()` returns"
+The following examples represent the results when read from Excel data node with different _exposed_type_:
 
-    The following examples represent the results when read from Excel data node with different _exposed_type_:
+!!! example "`data_node.read()` returns"
 
     === "exposed_type = "pandas""
 
@@ -362,9 +372,9 @@ When write data to a Excel data node, the `ExcelDataNode.write()^` method can ta
 - dictionary, or list of dictionaries
 - pandas dataframes
 
-!!! example "`data_node.write()` examples"
+The following examples will write to the path of the Excel data node:
 
-    The following examples will write to the path of the Excel data node:
+!!! example "`data_node.write()` examples"
 
     === "list"
         When write a list to Excel data node, each element of a list contains 1 row of data.
@@ -479,6 +489,9 @@ However, the content of a JSON data node can vary. By default, JSON data node ca
 - Python [`enum.Enum`](https://docs.python.org/3/library/enum.html).
 - A [`datetime.datetime`](https://docs.python.org/3/library/datetime.html#datetime-objects) object.
 - A [dataclass](https://docs.python.org/3/library/dataclasses.html) object.
+
+For the example in this section, assume that `sales_history_cfg` in [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
+is an _JSON_ data node configuration with `default_path="path/sales.json"`.
 
 !!! example "Read and write from a JSON data node using default _encoder_ and _decoder_"
 
@@ -607,6 +620,9 @@ however, the type of the value should be supported by MongoDB, including but not
 - String.
 - Object (embedded document object).
 - Arrays − arrays or list or multiple values.
+
+For the example in this section, assume that `sales_history_cfg` in [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
+is a _Mongo collection_ data node configuration.
 
 Check out [MongoDB supported data types](https://www.mongodb.com/docs/manual/reference/bson-types/) for more details.
 
