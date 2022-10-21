@@ -174,48 +174,6 @@ Check out [CSV Data Node configuration](../config/data-node-config.md#csv) for m
     12/26/2018,1832
     ```
 
-<!-- <table>
-    <tr>
-        <td> exposed_type = "pandas" </td>
-        <td> exposed_type = "numpy" </td>
-        <td> exposed_type = SaleRow </td>
-    </tr>
-
-    <tr>
-        <td>
-            ```python
-            pandas.DataFrame
-            (
-                       date  nb_sales
-              0  12/24/2018      1550
-              1  12/25/2018      2315
-              2  12/26/2018      1832
-            )
-            ```
-        </td>
-        <td>
-            ```python
-            numpy.array(
-              [
-                ["12/24/2018", "1550"],
-                ["12/25/2018", "2315"],
-                ["12/26/2018", "1832"]
-              ],
-            )
-            ```
-        </td>
-        <td>
-            ```python
-            [
-              SaleRow("12/24/2018", 1550),
-              SaleRow("12/25/2018", 2315),
-              SaleRow("12/26/2018", 1832),
-            ]
-            ```
-        </td>
-    </tr>
-</table> -->
-
 !!! example "`data_node.read()` returns"
 
     The following examples represent the results when read from CSV data node with different _exposed_type_:
@@ -686,6 +644,10 @@ document class.
 
 In memory read / write example
 
+!!! Warning
+
+    Since the data is stored in memory, it cannot be used in a multiprocess environment. (See
+    [Job configuration](job-config.md#standalone) for more details).
 
 ## Generic
 
@@ -716,5 +678,8 @@ temp_data = data_node["field_name"]
 temp_data[(temp_data == 14) | (temp_data == 10)]
 ```
 
+!!! Warning
+
+    For now , the `DataNode.filter()^` method can only be used with data node that has the exposed type is pandas.DataFrame.
 
 [:material-arrow-right: The next section shows the scheduling and job execution](scheduling-and-job-execution.md).
