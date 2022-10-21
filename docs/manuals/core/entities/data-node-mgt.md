@@ -165,4 +165,28 @@ writes it on the data node:
     data_retrieved = data_node.read()
     ```
 
+# Get parent scenarios, pipelines and tasks
+
+To get the parent entities of a data node (scenarios or pipelines or tasks) you can use either the method `DataNode.get_parents()^` or the function
+`taipy.get_parents()^`. Both return the parents of the data node.
+
+!!! Example
+
+    ```python linenums="1"
+    import taipy as tp
+    import my_config
+
+    # Create a scenario from a config
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+    # Retrieve a data node
+    data_node = scenario.sales_history
+
+    # Retrieve the parent entities of the data node
+    parent_entities = data_node.get_parents()   # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1], 'tasks': [Task 1]}
+
+    # Retrieve the parent entities of the data node
+    tp.get_parents(data_node)   # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1], 'tasks': [Task 1]}
+    ```
+
 [:material-arrow-right: The next section shows the scheduling and job execution](scheduling-and-job-execution.md).
