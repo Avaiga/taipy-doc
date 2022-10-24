@@ -14,6 +14,8 @@ This documentation is divided in three main sections:
 - [**"User Manual"**](manuals/about.md) describes what the product concepts are, and how you can use them.
 - [**"Reference Manual"**](manuals/reference) gathers all the APIs that Taipy exposes.
 
+Taipy requires *Python 3.8* or newer.
+
 ## Quick access
 
 These topics are the most visited ones, we thought you’d like to have a glance at them!
@@ -265,5 +267,3 @@ Taipy is composed of two main independent components: **Taipy Core** and **Taipy
 </div>
 
 Other packages offer additional functionality, such as a **REST API** that allows for deploying Taipy Core applications as a Web service.
-
-Taipy requires *Python 3.8* or newer.
