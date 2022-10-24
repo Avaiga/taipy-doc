@@ -7,11 +7,12 @@ hide:
 # Welcome to Taipy Documentation!
 
 Taipy is an innovative **low-code** package to create complete applications.
+
 This documentation is divided in three main sections:
 
 - [**"Getting Started"**](getting_started/index.md) provides a step-by-step opening to Taipy. Taipy features are leveraged as the application becomes more and more complex.
 - [**"User Manual"**](manuals/about.md) describes what the product concepts are, and how you can use them.
-- [**"Reference Manual"**](manuals/reference) gathers all the Python APIs that Taipy exposes.
+- [**"Reference Manual"**](manuals/reference) gathers all the APIs that Taipy exposes.
 
 ## Quick access
 
@@ -24,7 +25,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <img class="tp-content-card-icon icon-dark" src="images/icons/flag.svg">
       <h3>Getting started</h3>
       <p>
-        This tour shows you how to create an entire application using the two components of Taipy
+        This tour shows you how to create an entire application using the two main components of Taipy.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
@@ -35,7 +36,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <img class="tp-content-card-icon icon-dark" src="images/icons/menu_book.svg">
       <h3>Reference Manual</h3>
       <p>
-        Description of Taipy’s API.
+        Documentation for all APIs exposed in Taipy.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
@@ -45,7 +46,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <img class="tp-content-card-icon icon-light" src="images/icons/tune-w.svg">
       <img class="tp-content-card-icon icon-dark" src="images/icons/tune.svg">
       <h3>Controls</h3>
-      <p> Controls are UI objects for data vizualisation/interaction. </p>
+      <p>Controls are UI objects for data vizualisation and interaction.</p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
   </div>
