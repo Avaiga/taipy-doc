@@ -264,6 +264,6 @@ Taipy is composed of two main independent components: **Taipy Core** and **Taipy
 
 </div>
 
-Other packages offer additional functionality, such as a **REST API** that allows for deploying Taipy application on Web architectures.
+Other packages offer additional functionality, such as a **REST API** that allows for deploying Taipy Core applications as a Web service.
 
 Taipy requires *Python 3.8* or newer.
