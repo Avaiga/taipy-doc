@@ -10,13 +10,13 @@ Taipy is an innovative **low-code** package to create complete applications.
 
 This documentation is divided in three main sections:
 
-- [**"Getting Started"**](getting_started/index.md) provides a step-by-step opening to Taipy. Taipy features are leveraged as the application becomes more and more complex.
+- [**"Getting Started"**](getting_started/index.md) provides a step-by-step introduction to Taipy. Taipy features are leveraged as the application becomes more and more complex.
 - [**"User Manual"**](manuals/about.md) describes what the product concepts are, and how you can use them.
 - [**"Reference Manual"**](manuals/reference) gathers all the APIs that Taipy exposes.
 
 ## Quick access
 
-These topics are the most visited ones, we thought you’d like to have a glance on them!
+These topics are the most visited ones, we thought you’d like to have a glance at them!
 
 <div class="tp-row tp-row--gutter-sm">
   <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
@@ -56,7 +56,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <img class="tp-content-card-icon icon-dark" src="images/icons/dashboard.svg">
       <h3>Taipy’s user interface</h3>
       <p>
-        The Taipy GUI library provides Python classes to create powerful Web apps in minutes.
+        The Taipy GUI library provides controls and other entities to create powerful Web apps in minutes.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
@@ -232,7 +232,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
 
 ## How does it work?
 
-Taipy is composed of two main independent components: **Taipy Core** and **Taipy GUI**. You can use the GUI component without the Scenario Management and vice-versa. However, as you will see, they are incredibly efficient when combined.
+Taipy is composed of two main independent components: **Taipy Core** and **Taipy GUI**. You can use either component independently. However, as you will see, they are incredibly efficient when combined.
 
 <div class="tp-row" style="margin-top: 2rem; margin-bottom: 2rem">
   <div class="tp-col-12 tp-col-md">
@@ -241,7 +241,7 @@ Taipy is composed of two main independent components: **Taipy Core** and **Taipy
       <p>
         The <strong>Graphical User Interface</strong> of Taipy allows anyone with basic knowledge of Python to create a beautiful and
         interactive interface. It is a simple and intuitive way to create a GUI. No need to know how to design web pages
-        with CSS or HTML. Taipy uses an augmented syntax of Markdown to create your desired Web page.
+        with CSS or HTML. Taipy uses an augmented Markdown syntax of Markdown to create your desired Web page.
       </p>
     </article>
     <article class="tp-content-card">
