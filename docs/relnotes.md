@@ -14,6 +14,10 @@ This is the list of changes to Taipy releases as they were published.
 **`taipy-core`** *<br/>2.1
 
    - New data node named `MongoCollectionDataNode`. It represents the data from a MongoDB collection.
+   - The parent entities of a data node, a task, or a pipeline can be accessed via `DataNode.get_parents()^`,
+   `Task.get_parents()^`, or `Pipeline.get_parents()^`, or by passing the data node entity, task entity or pipeline
+   entity to the function `taipy.get_parents()^`.
+   - The data node caching mechanism now also takes into account the date and time of the last modification of a file caused by either Taipy execution or an external factor. This behavior is limited to file-based data nodes: CSV, Excel, JSON, and pickle data nodes only.
 
 ## Community edition: 2.0
 
@@ -175,7 +179,7 @@ Published on 2022-06.
   See [issue #365](https://github.com/Avaiga/taipy-gui/issues/365).
 - Crash fixed when using a dictionary in the labels property of the slider control.<br/>
   See [issue #379](https://github.com/Avaiga/taipy-gui/issues/379).
-     
+
 <br/>1.1.0
 
 - Concurrency issues were fixed.
