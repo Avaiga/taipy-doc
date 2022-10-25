@@ -96,33 +96,6 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/viselements/dialog">
-      <span>Dialog</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/dialog-d.png"/>
-        <p>A modal dialog.</p>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="manuals/gui/viselements/file_download">
-      <span>File download</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/file_download-d.png"/>
-        <p>Allows downloading of a file content.</p>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="manuals/gui/viselements/file_selector">
-      <span>File selector</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/file_selector-d.png" alt="">
-        <p>Allows uploading a file content.</p>
-      </div>
-    </a>
-  </li>
-  <li>
     <a class="tp-pill" href="manuals/gui/viselements/image">
       <span>Image</span>
       <div class="tp-tooltip">
@@ -159,47 +132,11 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/viselements/navbar">
-      <span>Navbar</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/navbar-d.png"/>
-        <p>A navigation bar control.</p>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="manuals/gui/viselements/number">
-      <span>Number</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/number-d.png"/>
-        <p>A kind of input that handles numbers.</p>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="manuals/gui/viselements/selector">
-      <span>Selector</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/selector-d.png"/>
-        <p>A control that allows for selecting items from a list of choices.</p>
-      </div>
-    </a>
-  </li>
-  <li>
     <a class="tp-pill" href="manuals/gui/viselements/slider">
       <span>Slider</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/slider-d.png"/>
         <p>Displays and allows the user to set a value within a range.</p>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="manuals/gui/viselements/status">
-      <span>Status</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/status-d.png"/>
-        <p>Displays a status or a list of statuses.</p>
       </div>
     </a>
   </li>
@@ -213,20 +150,10 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/viselements/text">
-      <span>Text</span>
+    <a class="tp-pill" href="manuals/gui/controls/">
+      <span>…</span>
       <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/text-d.png"/>
-        <p>Displays a value as a static text.</p>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="manuals/gui/viselements/toggle">
-      <span>Toggle</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/toggle-d.png"/>
-        <p>A series of toggle buttons that the user can select.</p>
+        <p>Browse the complete list of visual elements</p>
       </div>
     </a>
   </li>

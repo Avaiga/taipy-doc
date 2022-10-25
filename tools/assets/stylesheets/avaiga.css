@@ -66,8 +66,7 @@ a.ext-link::after{
   left: 50%;
   transform: translate(-50%, -0.5rem);
   z-index: 1;
-  min-width: 100px;
-  max-width: 200px;
+  min-width: 200px;
   padding: 1em;
   background-color: var(--md-primary-fg-color);
   border-radius: 0.5em;
@@ -119,8 +118,13 @@ a.tp-pill{
   text-align: center;
   padding: 0.6em 1.5em;
   border-radius: 50rem;
+  /* background: var(--md-default-fg-color--lightest); */
   background: var(--md-paper-bg-color);
   color: var(--md-default-fg-color);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.2));
+}
+[data-md-color-scheme="slate"] .tp-pill{
+  background: var(--md-paper-bg-color);
 }
 
 .tp-pill .tp-tooltip{
