@@ -11,8 +11,8 @@ Taipy is an innovative **low-code** package to create complete applications.
 This documentation is divided in three main sections:
 
 - [**"Getting Started"**](getting_started/index.md) provides a step-by-step introduction to Taipy. Taipy features are leveraged as the application becomes more and more complex.
-- [**"User Manual"**](manuals/about.md) describes what the product concepts are, and how you can use them.
-- [**"Reference Manual"**](manuals/reference) gathers all the APIs that Taipy exposes.
+- [**"User Manual"**](manuals/about.md) describes the main concepts for Taipy GUI, Taipy Core and Taipy REST. It also  provides information on the deployment of your Taipy app.
+- [**"Reference Manual"**](manuals/reference) documents all the Taipy APIs.
 
 Taipy requires *Python 3.8* or newer.
 
@@ -241,20 +241,22 @@ Taipy is composed of two main independent components: **Taipy Core** and **Taipy
     <article class="tp-content-card">
       <h3>Taipy GUI</h3>
       <p>
-        The <strong>Graphical User Interface</strong> of Taipy allows anyone with basic knowledge of Python to create a beautiful and
-        interactive interface. It is a simple and intuitive way to create a GUI. No need to know how to design web pages
-        with CSS or HTML. Taipy uses an augmented Markdown syntax of Markdown to create your desired Web page.
+        The <strong>Graphical User Interface</strong> of Taipy allows anyone with basic knowledge of Python to create a beautiful and interactive interface. It is a simple and intuitive way to create a GUI. No need to know how to design web pages with CSS or HTML. Taipy uses an augmented Markdown syntax to create your desired Web page.
       </p>
     </article>
     <article class="tp-content-card">
       <h3>Taipy Core</h3>      
-      <p>The <strong>Scenario Management</strong> component of Taipy is a powerful tool to manage business problems and pipelines. Using <strong>Taipy Core</strong> is straightforward. Among other features, you are able to:</p>
+      <p>
+        A simple yet powerful <strong>pipeline orchestration</strong> package.<br>
+        Some of the key features:
+      </p>
       <ul>
-        <li>Keep track of your KPI, data, scenarios, pipelines, etc.</li>
-        <li>Have smart scheduling</li>
-        <li>Simplify industrialization for Data Visualization, Machine-Learning, Optimization, etc.</li>
+        <li>Intuitive DAG modeling</li>
+        <li>Smart scheduling</li>
+        <li>Powerful data caching</li>
+        <li>Scenario enabled pipelines</li>
+        <li>KPI Tracking</li>
       </ul>
-      <p>You can use the GUI component without the Scenario Management and vice-versa. However, as you will see, they are incredibly efficient when combined.</p>
     </article>
   </div>
 
