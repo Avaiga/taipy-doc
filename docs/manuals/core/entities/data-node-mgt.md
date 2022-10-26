@@ -491,7 +491,7 @@ However, the content of a JSON data node can vary. By default, JSON data node ca
 - A [dataclass](https://docs.python.org/3/library/dataclasses.html) object.
 
 For the example in this section, assume that `sales_history_cfg` in [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
-is an _JSON_ data node configuration with `default_path="path/sales.json"`.
+is a _JSON_ data node configuration with `default_path="path/sales.json"`.
 
 !!! example "Read and write from a JSON data node using default _encoder_ and _decoder_"
 
@@ -658,12 +658,15 @@ document class.
 
 ## In memory
 
-In memory read / write example
+Since an _In memory_ data node stores data in RAM as a Python variable, the read / write methods are rather straightforward.
+
+When read from an In memory data node, Taipy returns whichever data stored in RAM corresponding to the data node.
+
+Correspondingly, In memory data node can write any data object that is valid data for a Python variable.
 
 !!! Warning
 
-    Since the data is stored in memory, it cannot be used in a multiprocess environment. (See
-    [Job configuration](job-config.md#standalone) for more details).
+    Since the data is stored in memory, it cannot be used in a multiprocess environment. (See [Job configuration](job-config.md#standalone) for more details).
 
 ## Generic
 
