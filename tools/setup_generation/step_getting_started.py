@@ -4,7 +4,6 @@
 # Files are listed and sorted after being copied from the taipy-getting-started
 # repository.
 # ################################################################################
-from unicodedata import name
 from .setup import Setup, SetupStep
 import glob
 from pathlib import Path
