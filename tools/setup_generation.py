@@ -10,7 +10,7 @@
 
 import os
 
-from setup_generation import Setup
+from setup_generation import run_setup
 from setup_generation.step_viselements import VisElementsStep
 from setup_generation.step_refman import RefManStep
 from setup_generation.step_rest_refman import RestRefManStep
@@ -27,7 +27,4 @@ steps = [
     ]
 
 # Assuming that this script is located in <taipy-doc>/tools
-setup = Setup(os.path.dirname(os.path.dirname(os.path.abspath(__file__)).replace("\\", "/")),
-              steps)
-setup.setup()
-setup.exit()
+run_setup(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), steps)

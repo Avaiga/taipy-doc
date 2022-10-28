@@ -4,6 +4,7 @@
 # Files are listed and sorted after being copied from the taipy-getting-started
 # repository.
 # ################################################################################
+from unicodedata import name
 from .setup import Setup, SetupStep
 import glob
 from pathlib import Path
@@ -35,5 +36,6 @@ class GettingStartedStep(SetupStep):
 
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(
-            r"^\s*\[GETTING_STARTED_CONTENT\]\s*\n", self.navigation
+            r"^\s*\[GETTING_STARTED_CONTENT\]\s*\n",
+            self.navigation if self.navigation else ""
         )
