@@ -36,7 +36,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     <a class="tp-content-card" href="manuals/reference">
       <img class="tp-content-card-icon icon-light" src="images/icons/menu_book-w.svg">
       <img class="tp-content-card-icon icon-dark" src="images/icons/menu_book.svg">
-      <h3>Reference Manual</h3>
+      <h3>User Manual</h3>
       <p>
         Documentation for all APIs exposed in Taipy.
       </p>
