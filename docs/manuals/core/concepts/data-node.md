@@ -1,3 +1,5 @@
+# Data node
+
 A data node is one of the most important concepts in Taipy Core. It does not contain the data itself but holds all
 the necessary information to read and write the actual data. It can be seen as a dataset descriptor or data reference.
 

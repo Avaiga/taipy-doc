@@ -1,3 +1,5 @@
+# Scenario
+
 We have introduced in Taipy the important concept of a `Scenario^`. The Taipy Scenario represents an instance of a
 business problem to solve on consistent data and parameter sets.
 

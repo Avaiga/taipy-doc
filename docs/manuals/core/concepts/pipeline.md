@@ -1,3 +1,5 @@
+# Pipeline
+
 A `Pipeline^` is made to model an algorithm. It represents a direct acyclic graph of input, intermediate, and output
 data nodes linked together by tasks. A _pipeline_ is a set of tasks designed to perform a set of functions.
 
