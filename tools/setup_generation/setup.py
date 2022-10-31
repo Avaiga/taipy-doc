@@ -20,9 +20,7 @@ class Setup(ABC):
         self.docs_dir = self.root_dir + "/docs"
         self.manuals_dir = self.docs_dir + "/manuals"
         self.tools_dir = self.root_dir + "/tools"
-        self.requested_steps = (
-            # None  # Can be used later to filter out steps to be performed
-        )
+        self.requested_steps = None  # Can be used later to filter out steps to be performed
         self.mkdocs_yml_template_content = None
         self.MKDOCS_YML_PATH = self.root_dir + "/mkdocs.yml"
         self.MKDOCS_YML_TEMPLATE_PATH = self.MKDOCS_YML_PATH + "_template"
