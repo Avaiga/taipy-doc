@@ -175,5 +175,6 @@ class RestRefManStep(SetupStep):
 
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(
-            r"^\s*\[REST_REFERENCE_CONTENT\]\s*\n", self.navigation
+            r"^\s*\[REST_REFERENCE_CONTENT\]\s*\n",
+            self.navigation if self.navigation else ""
         )

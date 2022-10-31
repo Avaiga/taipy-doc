@@ -24,9 +24,9 @@ This is the list of changes to Taipy releases as they were published.
 Published on 2022-10.
 
 [`taipy` 2.0](https://pypi.org/project/taipy/2.0.0/) contains the latest
-[`taipy-config` 2.0](https://pypi.org/project/taipy-config/2.0.0/),
-[`taipy-gui` 2.0](https://pypi.org/project/taipy-gui/2.0.0/),
-[`taipy-core` 2.0](https://pypi.org/project/taipy-core/2.0.0/) and
+[`taipy-config` 2.0](https://pypi.org/project/taipy-config/2.0.1/),
+[`taipy-gui` 2.0](https://pypi.org/project/taipy-gui/2.0.2/),
+[`taipy-core` 2.0](https://pypi.org/project/taipy-core/2.0.3/) and
 [`taipy-rest` 2.0](https://pypi.org/project/taipy-rest/2.0.0/) packages.
 
 #### New Features
@@ -89,7 +89,17 @@ Published on 2022-10.
 
 #### Significant bug fixes
 
-**`taipy-gui`**<br/><br/>2.0.1
+**`taipy-gui`**<br/>
+2.0.2
+
+- `image` control may not render properly.<br/>
+  See [issue #436](https://github.com/Avaiga/taipy-gui/issues/436).
+- Clarify and improve the `editable` (and `editable[]`) property in the `table` control.<br/>
+  See [issue #464](https://github.com/Avaiga/taipy-gui/issues/464).
+- [gui] section in configuration files breaks the application.<br/>
+  See [issue #469](https://github.com/Avaiga/taipy-gui/issues/469).
+
+2.0.1
 
 - Bar charts' "barmode" set to "stack" is broken.<br/>
   See [issue #445](https://github.com/Avaiga/taipy-gui/issues/445).

@@ -94,6 +94,9 @@ class RefManStep(SetupStep):
     # Where the Reference Manual files are generated (MUST BE relative to docs_dir)
     REFERENCE_REL_PATH = "manuals/reference"
 
+    def __init__(self):
+        self.navigation = None
+
     def get_id(self) -> str:
         return "refman"
 
@@ -104,7 +107,6 @@ class RefManStep(SetupStep):
         os.environ["GENERATING_TAIPY_DOC"] = "true"
         self.REFERENCE_DIR_PATH = setup.docs_dir + "/" + RefManStep.REFERENCE_REL_PATH
         self.XREFS_PATH = setup.manuals_dir + "/xrefs"
-        self.navigation = None
 
     def setup(self, setup: Setup) -> None:
         # Create empty REFERENCE_DIR_PATH directory
@@ -428,7 +430,6 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
 
         # Fix code injection
         with open(Path("tools", "taipy", "config", "config.py"), "w") as f:
-            print(f"DEBUG - Writing config.py")
             new_content = "".join(contents)
             new_content = new_content.replace(
                 "custom_document: Any = <class 'taipy.core.common.default_custom_document.DefaultCustomDocument'>",
@@ -441,11 +442,13 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
             new_content = new_content.replace("taipy.core.config.pipeline_config.PipelineConfig", "PipelineConfig")
             new_content = new_content.replace("taipy.config.common.frequency.Frequency", "Frequency")
             f.write(new_content)
-            print(f"DEBUG - Content :")
-            print(new_content)
 
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(
-            r"^\s*\[REFERENCE_CONTENT\]\s*\n", self.navigation
+            r"^\s*\[REFERENCE_CONTENT\]\s*\n",
+            self.navigation if self.navigation else ""
         )
-        del os.environ['GENERATING_TAIPY_DOC']
+        try:
+            del os.environ['GENERATING_TAIPY_DOC']
+        except:
+            pass

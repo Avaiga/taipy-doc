@@ -12,38 +12,18 @@
 # The skeleton documentation files [GUI_DOC_PATH]/[controls|blocks].md_template
 # are also completed with generated table of contents.
 # ################################################################################
+import json
+from typing import Dict, List, Optional
 from .setup import Setup, SetupStep
 import os
 import re
-import warnings
-import pandas as pd
 
 
 class VisElementsStep(SetupStep):
-
-    controls_list = [
-        "text",
-        "button",
-        "input",
-        "number",
-        "slider",
-        "toggle",
-        "date",
-        "chart",
-        "file_download",
-        "file_selector",
-        "image",
-        "indicator",
-        "menu",
-        "navbar",
-        "selector",
-        "status",
-        "table",
-        "dialog",
-        "tree",
-    ]
-
-    blocks_list = ["part", "expandable", "layout", "pane"]
+    DEFAULT_PROPERTY = "default_property"
+    PROPERTIES = "properties"
+    NAME = "name"
+    INHERITS = "inherits"
 
     def get_id(self) -> str:
         return "viselements"
@@ -65,139 +45,90 @@ class VisElementsStep(SetupStep):
             raise FileNotFoundError(
                 f"FATAL - Could not read {self.blocks_md_template_path} markdown template"
             )
+        viselements_json_path = self.VISELEMENTS_SRC_PATH + "/viselements.json"
+        with open(viselements_json_path) as viselements_json_file:
+            self.viselements = json.load(viselements_json_file)
+        # Test validity of visual elements doc and resolve inheritance
+        self.controls = self.viselements["controls"]
+        self.blocks = self.viselements["blocks"]
+        undocumented = self.viselements["undocumented"]
+        self.all_elements = {}
+        for element in self.controls+self.blocks+undocumented:
+            element_type = element[0]
+            if element_type in self.all_elements:
+                raise ValueError(
+                    f"FATAL - Duplicate element type '{element_type}' in {viselements_json_path}"
+                )
+            element_desc = element[1]
+            if not __class__.PROPERTIES in element_desc and not __class__.INHERITS in element_desc:
+                raise ValueError(
+                    f"FATAL - No properties in element type '{element_type}' in {viselements_json_path}"
+                )
+            self.all_elements[element_type] = element_desc
+        # Find default property for all element types
+        for element_type, element_desc in self.all_elements.items():
+            default_property = None
+            if properties := element_desc.get(__class__.PROPERTIES, None):
+                for property in properties:
+                    if __class__.DEFAULT_PROPERTY in property:
+                        if property[__class__.DEFAULT_PROPERTY]:
+                            default_property = property[__class__.NAME]
+                        del property[__class__.DEFAULT_PROPERTY]
+            element_desc[__class__.DEFAULT_PROPERTY] = default_property
+        # Resolve inheritance
+        def merge(element_desc, parent_element_desc, default_property) -> Optional[str]:
+            element_properties = element_desc.get(__class__.PROPERTIES, [])
+            element_property_names = [p[__class__.NAME] for p in element_properties]
+            for property in parent_element_desc.get(__class__.PROPERTIES, []):
+                property_name = property[__class__.NAME]
+                if property_name in element_property_names:
+                    element_property = element_properties[element_property_names.index(property_name)]
+                    for n in ["type", "default_value", "doc"]:
+                        if not n in element_property and n in property:
+                            element_property[n] = property[n]
+                else:
+                    element_property_names.append(property_name)
+                    element_properties.append(property)
+            element_desc[__class__.PROPERTIES] = element_properties
+            if not default_property and parent_element_desc.get(__class__.DEFAULT_PROPERTY, False):
+                default_property = parent_element_desc[__class__.DEFAULT_PROPERTY]
+            return default_property
 
-    def read_md_template(self, path: str) -> str:
-        content = ""
-        with open(path) as template_file:
-            content = template_file.read()
-        if not content:
-            raise FileNotFoundError(f"FATAL - Could not read {path} markdown template")
-        return content
+        for element_type, element_desc in self.all_elements.items():
+            if parent_types := element_desc.get(__class__.INHERITS, None):
+                del element_desc[__class__.INHERITS]
+                default_property = element_desc[__class__.DEFAULT_PROPERTY]
+                for parent_type in parent_types:
+                    parent_desc = self.all_elements[parent_type]
+                    default_property = merge(element_desc, parent_desc, default_property)
+                element_desc[__class__.DEFAULT_PROPERTY] = default_property
+        # Check that documented elements have a default property and a doc file,
+        # and that their properties have the mandatory settings.
+        for element in self.controls+self.blocks:
+            element_type = element[0]
+            element_desc = element[1]
+            if not __class__.DEFAULT_PROPERTY in element_desc:
+                raise ValueError(
+                    f"FATAL - No default property for element type '{element_type}' in {viselements_json_path}"
+                )
+            if not __class__.PROPERTIES in element_desc:
+                raise ValueError(
+                    f"FATAL - No properties for element type '{element_type}' in {viselements_json_path}"
+                )
+            doc_path = self.VISELEMENTS_SRC_PATH + "/" + element_type + ".md"
+            if not os.access(doc_path, os.R_OK):
+                raise FileNotFoundError(
+                    f"FATAL - Could not find doc for element type '{element_type}' in {self.VISELEMENTS_SRC_PATH}"
+                )
+            # Check completeness
+            for property in element_desc[__class__.PROPERTIES]:
+                for n in ["type", "doc"]:
+                    if not n in property:
+                        raise ValueError(
+                            f"FATAL - No value for '{n}' in the '{property[__class__.NAME]}' properties of element type '{element_type}' in {viselements_json_path}"
+                        )
 
     def setup(self, setup: Setup) -> None:
-        controls_md_template = self.read_md_template(self.controls_md_template_path)
-        blocks_md_template = self.read_md_template(self.blocks_md_template_path)
-
-        # -----------------------------------------------------------------------------
-        # Read all element properties, including parent elements that are not
-        # actual visual elements (shared, lovComp...)
-        # -----------------------------------------------------------------------------
-        element_properties = {}
-        element_documentation = {}
-        INHERITED_PROP = 1 << 0
-        DEFAULT_PROP = 1 << 1
-        MANDATORY_PROP = 1 << 2
-        property_prefixes = {
-            ">": INHERITED_PROP,
-            "*": DEFAULT_PROP,
-            "!": MANDATORY_PROP,
-        }
-        for current_file in os.listdir(self.VISELEMENTS_SRC_PATH):
-
-            def read_properties(path_name, element_name):
-                try:
-                    df = pd.read_csv(path_name, encoding="utf-8")
-                except Exception as e:
-                    raise IOError(f"{path_name}: {e}")
-                properties = []
-                # Row fields: name, type, default_value, doc
-                for row in list(df.to_records(index=False)):
-                    prop_flags = 0
-                    prop_name = row[0]
-                    while prop_name[0] in property_prefixes:
-                        prop_flags |= property_prefixes.get(prop_name[0])
-                        prop_name = prop_name[1:]
-                    if prop_flags & INHERITED_PROP:  # Inherits?
-                        parent_props = element_properties.get(prop_name)
-                        if parent_props is None:
-                            parent_file = prop_name + ".csv"
-                            parent_path_name = os.path.join(
-                                self.VISELEMENTS_SRC_PATH, parent_file
-                            )
-                            if not os.path.exists(parent_path_name):
-                                raise ValueError(
-                                    f"FATAL - No csv file for '{prop_name}', inherited by '{element_name}'"
-                                )
-                            parent_props = read_properties(parent_path_name, prop_name)
-                        # Merge inherited properties
-                        for parent_prop in parent_props:
-                            try:
-                                prop_index = [p[1] for p in properties].index(
-                                    parent_prop[1]
-                                )
-                                p = list(properties[prop_index])
-                                if p[2] == ">":
-                                    p[2] = parent_prop[2]
-                                    print(
-                                        f"WARNING: Element {element_name}: legacy '>' in '{p[1]}''s Type"
-                                    )
-                                # Testing for equality detects NaN
-                                properties[prop_index] = (
-                                    p[0],
-                                    p[1],
-                                    p[2] if p[2] == p[2] else parent_prop[2],
-                                    p[3] if p[3] == p[3] else parent_prop[3],
-                                    p[4] if p[4] == p[4] else parent_prop[4],
-                                )
-                            except:
-                                properties.append(parent_prop)
-                    else:
-                        row[0] = prop_name
-                        row = (prop_flags, prop_name, *row.tolist()[1:])
-                        properties.append(row)
-                default_property_name = None
-                for i, props in enumerate(properties):
-                    # TODO: Remove properties that have an hidden type
-                    # props = (flags, name, type, default value,description)
-                    if props[0] & DEFAULT_PROP:  # Default property?
-                        name = props[1]
-                        if default_property_name and name != default_property_name:
-                            warnings.warn(
-                                f"Property '{name}' in '{element_name}': default property already defined as {default_property_name}"
-                            )
-                        default_property_name = name
-                    # Fix Boolean default property values
-                    if str(props[3]).lower() == "false":
-                        properties[i] = (
-                            props[0],
-                            props[1],
-                            props[2],
-                            "False",
-                            props[4],
-                        )
-                    elif str(props[3]).lower() == "true":
-                        properties[i] = (props[0], props[1], props[2], "True", props[4])
-                    elif props[3] != props[3]:  # Empty cell in CSV - Pandas parsing
-                        default_value = (
-                            "<i>Mandatory</i>" if props[0] & MANDATORY_PROP else ""
-                        )
-                        properties[i] = (
-                            props[0],
-                            props[1],
-                            props[2],
-                            default_value,
-                            props[4],
-                        )
-                if not default_property_name and (
-                    element_name
-                    in self.__class__.controls_list + self.__class__.blocks_list
-                ):
-                    raise ValueError(
-                        f"Element '{element_name}' has no defined default property"
-                    )
-                element_properties[element_name] = properties
-                return properties
-
-            path_name = os.path.join(self.VISELEMENTS_SRC_PATH, current_file)
-            element_name = os.path.basename(current_file)
-            element_name, current_file_ext = os.path.splitext(element_name)
-            if current_file_ext == ".csv":
-                if not element_name in element_properties:
-                    read_properties(path_name, element_name)
-            elif current_file_ext == ".md":
-                with open(path_name, "r") as doc_file:
-                    element_documentation[element_name] = doc_file.read()
-
         # Create VISELEMS_DIR_PATH directory if necessary
         if not os.path.exists(self.VISELEMENTS_DIR_PATH):
             os.mkdir(self.VISELEMENTS_DIR_PATH)
@@ -205,18 +136,19 @@ class VisElementsStep(SetupStep):
         FIRST_PARA_RE = re.compile(r"(^.*?)(:?\n\n)", re.MULTILINE | re.DOTALL)
         FIRST_HEADER2_RE = re.compile(r"(^.*?)(\n##\s+)", re.MULTILINE | re.DOTALL)
 
-        def generate_element_doc(element_name: str, toc):
+        def generate_element_doc(element_type: str, element_desc: Dict):
             """
             Returns the entry for the Table of Contents that is inserted
             in the global Visual Elements doc page.
             """
-            properties = element_properties[element_name]
-            documentation = element_documentation[element_name]
+            doc_path = self.VISELEMENTS_SRC_PATH + "/" + element_type + ".md"
+            with open(doc_path, "r") as doc_file:
+                element_documentation = doc_file.read()
             # Retrieve first paragraph from element documentation
-            match = FIRST_PARA_RE.match(documentation)
+            match = FIRST_PARA_RE.match(element_documentation)
             if not match:
                 raise ValueError(
-                    f"Couldn't locate first paragraph in documentation for element '{element_name}'"
+                    f"Couldn't locate first paragraph in documentation for element '{element_type}'"
                 )
             first_documentation_paragraph = match.group(1)
 
@@ -235,13 +167,19 @@ class VisElementsStep(SetupStep):
 <tbody>
 """
             STAR = "(&#9733;)"
-            default_property_name = None
-            for flags, name, type, default_value, doc in properties:
-                if flags & DEFAULT_PROP:
-                    default_property_name = name
-                    full_name = f'<code id="p-{default_property_name}"><u><bold>{default_property_name}</bold></u></code><sup><a href="#dv">{STAR}</a></sup>'
+            default_property_name = element_desc[__class__.DEFAULT_PROPERTY]
+            for property in element_desc[__class__.PROPERTIES]:
+                name  = property[__class__.NAME]
+                type  = property["type"]
+                default_value  = property.get("default_value", None)
+                doc  = property.get("doc", None)
+                if not default_value:
+                    default_value = "<i>Required</i>" if property.get("required", False) else ""
+                full_name = f"<code id=\"p-{name}\">"
+                if name == default_property_name:
+                    full_name += f"<u><bold>{name}</bold></u></code><sup><a href=\"#dv\">{STAR}</a></sup>"
                 else:
-                    full_name = f'<code id="p-{name}">{name}</code>'
+                    full_name += f"{name}</code>"
                 properties_table += (
                     "<tr>\n"
                     + f"<td nowrap>{full_name}</td>\n"
@@ -260,22 +198,22 @@ class VisElementsStep(SetupStep):
                 )
 
             # Insert title and properties in element documentation
-            match = FIRST_HEADER2_RE.match(documentation)
+            match = FIRST_HEADER2_RE.match(element_documentation)
             if not match:
                 raise ValueError(
-                    f"Couldn't locate first header2 in documentation for element '{element_name}'"
+                    f"Couldn't locate first header2 in documentation for element '{element_type}'"
                 )
-            output_path = os.path.join(self.VISELEMENTS_DIR_PATH, element_name + ".md")
+            output_path = os.path.join(self.VISELEMENTS_DIR_PATH, element_type + ".md")
             with open(output_path, "w") as output_file:
                 output_file.write(
                     "---\nhide:\n  - navigation\n---\n\n"
-                    + f"# <tt>{element_name}</tt>\n\n"
+                    + f"# <tt>{element_type}</tt>\n\n"
                     + match.group(1)
                     + properties_table
                     + match.group(2)
-                    + documentation[match.end() :]
+                    + element_documentation[match.end() :]
                 )
-            e = element_name  # Shortcut
+            e = element_type  # Shortcut
             return (
                 f'<a class="tp-ve-card" href="../viselements/{e}/">\n'
                 + f"<div>{e}</div>\n"
@@ -290,18 +228,19 @@ class VisElementsStep(SetupStep):
             # f"<li><a href=\"../viselements/{e}/\"><code>{e}</code></a>: {first_documentation_paragraph}</li>\n"
             # The toc header and footer must then be "<ui>" and "</ul>" respectively.
 
-        # Generate controls doc page
-        toc = '<div class="tp-ve-cards">\n'
-        for name in self.__class__.controls_list:
-            toc += generate_element_doc(name, toc)
-        toc += "</div>\n"
-        with open(os.path.join(self.GUI_DOC_PATH, "controls.md"), "w") as file:
-            file.write(controls_md_template.replace("[TOC]", toc))
+        # Generate element doc pages
+        def generate_doc_page(category: str, elements: List, md_template_path: str):
+            md_template = ""
+            with open(md_template_path) as template_file:
+                md_template = template_file.read()
+            if not md_template:
+                raise FileNotFoundError(f"FATAL - Could not read {md_template_path} markdown template")
+            toc = '<div class="tp-ve-cards">\n'
+            for element_type, element_desc in elements:
+                toc += generate_element_doc(element_type, element_desc)
+            toc += "</div>\n"
+            with open(os.path.join(self.GUI_DOC_PATH, f"{category}.md"), "w") as file:
+                file.write(md_template.replace("[TOC]", toc))
 
-        # Generate blocks doc page
-        toc = '<div class="tp-ve-cards">\n'
-        for name in self.__class__.blocks_list:
-            toc += generate_element_doc(name, toc)
-        toc += "</div>\n"
-        with open(os.path.join(self.GUI_DOC_PATH, "blocks.md"), "w") as file:
-            file.write(blocks_md_template.replace("[TOC]", toc))
+        generate_doc_page("controls", self.controls, self.controls_md_template_path)
+        generate_doc_page("blocks", self.blocks, self.blocks_md_template_path)
