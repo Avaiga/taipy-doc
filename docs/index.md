@@ -44,19 +44,10 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </div>
   <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
-    <a class="tp-content-card" href="manuals/gui/controls/">
-      <img class="tp-content-card-icon icon-light" src="images/icons/tune-w.svg">
-      <img class="tp-content-card-icon icon-dark" src="images/icons/tune.svg">
-      <h3>Controls</h3>
-      <p>Controls are UI objects for data vizualisation and interaction.</p>
-      <span class="tp-content-card-readmore">Read more</span>
-    </a>
-  </div>
-  <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
     <a class="tp-content-card" href="manuals/about/">
       <img class="tp-content-card-icon icon-light" src="images/icons/dashboard-w.svg">
       <img class="tp-content-card-icon icon-dark" src="images/icons/dashboard.svg">
-      <h3>Taipy’s user interface</h3>
+      <h3>Taipy User Interface</h3>
       <p>
         The Taipy GUI library provides controls and other entities to create powerful Web apps in minutes.
       </p>
