@@ -165,7 +165,7 @@ Check out [What can be pickled and unpickled?](https://docs.python.org/3/library
 
 ## CSV
 
-When read from a CSV data node, Taipy returns the data of the csv file based on _exposed_type_ parameter.
+When read from a CSV data node, Taipy returns the data of the CSV file based on _exposed_type_ parameter.
 Check out [CSV Data Node configuration](../config/data-node-config.md#csv) for more details on _exposed_type_.
 
 Assume that the content of the `sales.csv` file is the following.
@@ -699,6 +699,7 @@ temp_data[(temp_data == 14) | (temp_data == 10)]
 
 !!! Warning
 
-    For now , the `DataNode.filter()^` method can only be used with data node that has the exposed type is pandas.DataFrame.
+    For now, the `DataNode.filter()^` method is only implemented for `CSVDataNode^`, `ExcelDataNode^`,
+    `SQLTableDataNode^`, `SQLDataNode` with `"pandas"` as the _**exposed_type**_ value.
 
 [:material-arrow-right: The next section shows the scheduling and job execution](scheduling-and-job-execution.md).

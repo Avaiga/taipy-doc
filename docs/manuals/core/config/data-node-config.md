@@ -66,7 +66,7 @@ Taipy proposes various predefined _data nodes_ corresponding to the most popular
 _storage types_. Thanks to predefined _data nodes_, the Python developer does not need
 to spend much time configuring the _storage types_ or the
 _query system_. Most of the time, a predefined _data node_ corresponding to a basic and standard use case satisfies
-the user's needs like pickle file, csv file, sql table, MongoDB collection, Excel sheet, etc.
+the user's needs like pickle file, CSV file, SQL table, MongoDB collection, Excel sheet, etc.
 
 The various predefined _storage types_ are mainly used for input data. Indeed, the input data is usually provided by an
 external component, and the Python developer user does not control the format.
@@ -122,21 +122,21 @@ In line 6, we add another pickle data node configuration with the id "model_cfg"
 
 # CSV
 
-A `CSVDataNode^` data node is a specific data node used to model csv file data. To add a new _CSV_ data node
+A `CSVDataNode^` data node is a specific data node used to model CSV file data. To add a new _CSV_ data node
 configuration, the `Config.configure_csv_data_node()^` method can be used. In addition to the generic parameters
 described in the previous section [Data node configuration](data-node-config.md), one mandatory and two optional
 parameters can be provided.
 
--   The _**default_path**_ parameter is a mandatory parameter and represents the default csv file path used by Taipy to read and write
+-   The _**default_path**_ parameter is a mandatory parameter and represents the default CSV file path used by Taipy to read and write
     the data.
 
 -   The _**has_header**_ parameter represents if the file has a header of not. By default, _has_header_ is True and Taipy
     will use the 1st row in the CSV file as the header.
 
 -   When the _**exposed_type**_ is given as a parameter, if the _exposed_type_ value provided is `numpy`, the
-    data node will read the csv file to a numpy array. If the provided value is a custom class, data node
-    will create a list of custom object with the given custom class, each object will represent a row in the csv
-    file. If _exposed_type_ is not provided, the data node will read the csv file as a pandas.DataFrame.
+    data node will read the CSV file to a numpy array. If the provided value is a custom class, data node
+    will create a list of custom object with the given custom class, each object will represent a row in the CSV
+    file. If _exposed_type_ is not provided, the data node will read the CSV file as a `pandas.DataFrame`.
 
 ```python linenums="1"
 from taipy import Config
@@ -159,15 +159,15 @@ In lines 3-5, we define a custom class `SaleRow` representing a row of the CSV f
 
 In lines 7-10, we configure a basic CSV data node with the id "historical_temperature". Its _scope_ is by
 default `SCENARIO`. The default path corresponds to the file `path/hist_temp.csv`. The property _has_header_ being True,
-representing the csv file has a header.
+representing the CSV file has a header.
 
 In lines 12-14, we add another CSV data node configuration with the id "sale_history". The
-default `SCENARIO` scope is used again. Since we have a custom class pre-defined for this csv file (`SaleRow`), we
+default `SCENARIO` scope is used again. Since we have a custom class pre-defined for this CSV file (`SaleRow`), we
 provide it as the _exposed_type_ parameter.
 
 !!! Note
 
-    To configure a csv data node, it is equivalent to use the method `Config.configure_csv_data_node()^` or
+    To configure a CSV data node, it is equivalent to use the method `Config.configure_csv_data_node()^` or
     the method `Config.configure_data_node()^` with parameter `storage_type="csv"`.
 
 # Excel
@@ -216,7 +216,7 @@ In lines 7-9, we configure an Excel data node. The _id_ identifier is "historica
 `SCENARIO` (default value), and the default path is the file hist_temp.xlsx. With _has_header_ being True, the
 Excel file must have a header. The _sheet_name_ is not provided so Taipy will use the default value "Sheet1".
 
-In lines 10-13, we add another excel data node configuration. The _id_ identifier is "sale_history", the
+In lines 10-13, we add another Excel data node configuration. The _id_ identifier is "sale_history", the
 default `SCENARIO` scope is used. Since we have a custom class pre-defined for this Excel file, we will provide it in
 the _exposed_type_. We also provide the list of specific sheets we want to use as the _sheet_name_ parameter.
 
@@ -234,7 +234,7 @@ the _exposed_type_. We also provide the list of specific sheets we want to use a
     - To be able to use a `SQLTableDataNode^` with PostgreSQL Server you need to run internal dependencies with `pip install taipy[postgresql]` and install your corresponding [Postgres JDBC Driver for PostgreSQL](https://www.postgresql.org/docs/7.4/jdbc-use.html).
 
 
-An `SQLTableDataNode^` is a specific data node that models data stored in a single SQL table. To add a new _sql_table_ data node configuration, the `Config.configure_sql_table_data_node()^` method can be used. In
+An `SQLTableDataNode^` is a specific data node that models data stored in a single SQL table. To add a new _SQL table_ data node configuration, the `Config.configure_sql_table_data_node()^` method can be used. In
 addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), multiple
 parameters can be provided.
@@ -263,7 +263,7 @@ forecasts_cfg = Config.configure_sql_table_data_node(id="forecasts",
                                                table_name="forecast_table")
 ```
 
-In the previous example, we configure a _sql_table_ data node with the id "forecasts". Its scope is the
+In the previous example, we configure a _SQL table_ data node with the id "forecasts". Its scope is the
 default value `SCENARIO`. The database username is "admin", the user's password is "password", the database name
 is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The table name is "forecast_table". When the data node is read, it will read all the rows from the table "forecast_table", and when the data node is written, it will delete all the data in the table and insert the new data.
 
@@ -280,7 +280,7 @@ is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The ta
     - To be able to use a `SQLTableDataNode^` with MySQL Server you need to run internal dependencies with `pip install taipy[mysql]` and install your corresponding [MySQL Driver for MySQL](https://pypi.org/project/PyMySQL/).
     - To be able to use a `SQLTableDataNode^` with PostgreSQL Server you need to run internal dependencies with `pip install taipy[postgresql]` and install your corresponding [Postgres JDBC Driver for PostgreSQL](https://www.postgresql.org/docs/7.4/jdbc-use.html).
 
-An `SQLDataNode^` is a specific data node used to model data stored in an SQL Database. To add a new _sql_ data node configuration, the `Config.configure_sql_data_node()^` method can be used. In
+An `SQLDataNode^` is a specific data node used to model data stored in an SQL Database. To add a new _SQL_ data node configuration, the `Config.configure_sql_data_node()^` method can be used. In
 addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), multiple
 parameters can be provided.
@@ -321,7 +321,7 @@ forecasts_cfg = Config.configure_sql_data_node(id="forecasts",
                                                write_query_builder= write_query_builder)
 ```
 
-In the previous example, we configure a _sql_ data node with the id "forecasts". Its scope is the
+In the previous example, we configure a _SQL_ data node with the id "forecasts". Its scope is the
 default value `SCENARIO`. The database username is "admin", the user's password is "password", the database name
 is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The read query will be "SELECT \* from
 forecast_table".
@@ -345,7 +345,8 @@ In addition to the generic parameters described in
 - The _**default_path**_ is a mandatory parameter that represents the JSON file path used by Taipy to read and write data.
 
 - The _**encoder**_ and _**decoder**_ parameters are optional parameters that represent the encoder (json.JSONEncoder) and decoder
-(json.JSONDecoder) used to serialize and deserialize JSON data.
+(json.JSONDecoder) used to serialize and deserialize JSON data. Check out
+[JSON Encoders and Decoders documentation](https://docs.python.org/3/library/json.html#encoders-and-decoders) for more details.
 
 ```python linenums="1"
 from taipy import Config
@@ -357,9 +358,9 @@ hist_temp_cfg = Config.configure_json_data_node(
 ```
 
 In this example, we configure a JSON data node. The _id_ argument is "historical_temperature". Its _scope_ is
-`SCENARIO` (default value), and the path is the file hist_temp.json.
+`SCENARIO` (default value), and the path is the file *hist_temp.json*.
 
-Without specific _**encoder**_ and _**decoder**_ parameters, `hist_temp_cfg` will use default encoder and decoder provided by Taipy,
+Without specific _**encoder**_ and _**decoder**_ parameters, *hist_temp_cfg* will use default encoder and decoder provided by Taipy,
 which have the capability to encode and decode Python [`enum.Enum`](https://docs.python.org/3/library/enum.html),
 [`datetime.datetime`](https://docs.python.org/3/library/datetime.html#datetime-objects), and
 [dataclass](https://docs.python.org/3/library/dataclasses.html) object.
@@ -411,7 +412,7 @@ In this next example, we config a `JSONDataNode^` with custom JSON _**encoder**_
             "nb_sales": 1550,
         }
         ```
-    to path/sale_history.json.
+    to the file *path/sale_history.json*.
     - When read a JSONDataNode, the `SaleRowDecoder` will decode any JSON object has `"__type__": "SaleRow"` to a `SaleRow` object.
 
 - In lines 23-26, we create a JSON data node configuration. The _id_ identifier is "sale_history", the
@@ -420,7 +421,7 @@ default `SCENARIO` scope is used. The encoder and decoder are the custom encoder
 !!! Note
 
     To configure a JSON data node, it is equivalent to use the method `Config.configure_json_data_node()^` or
-    the method `Config.configure_data_node()^` with the `storage_type` argument set to "json".
+    the method `Config.configure_data_node()^` with parameter `storage_type="json"`.
 
 # Mongo Collection
 
