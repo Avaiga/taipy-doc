@@ -38,7 +38,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <img class="tp-content-card-icon icon-dark" src="images/icons/menu_book.svg">
       <h3>User Manual</h3>
       <p>
-        Get your hands on using Taipy, guided by examples.
+        Put Taipy in gear, guided by examples.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
