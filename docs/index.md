@@ -47,7 +47,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     <a class="tp-content-card" href="manuals/about/">
       <img class="tp-content-card-icon icon-light" src="images/icons/dashboard-w.svg">
       <img class="tp-content-card-icon icon-dark" src="images/icons/dashboard.svg">
-      <h3>Taipy User Interface</h3>
+      <h3>User Interface</h3>
       <p>
         The Taipy GUI library provides controls and other entities to create powerful Web apps in minutes.
       </p>
