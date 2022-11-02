@@ -33,32 +33,23 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </div>
   <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
-    <a class="tp-content-card" href="manuals/reference">
+    <a class="tp-content-card" href="manuals/about/">
       <img class="tp-content-card-icon icon-light" src="images/icons/menu_book-w.svg">
       <img class="tp-content-card-icon icon-dark" src="images/icons/menu_book.svg">
       <h3>Reference Manual</h3>
       <p>
-        Documentation for all APIs exposed in Taipy.
+        Get your hands on using Taipy, guided by examples.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
   </div>
   <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
-    <a class="tp-content-card" href="manuals/gui/controls/">
-      <img class="tp-content-card-icon icon-light" src="images/icons/tune-w.svg">
-      <img class="tp-content-card-icon icon-dark" src="images/icons/tune.svg">
-      <h3>Controls</h3>
-      <p>Controls are UI objects for data vizualisation and interaction.</p>
-      <span class="tp-content-card-readmore">Read more</span>
-    </a>
-  </div>
-  <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
-    <a class="tp-content-card" href="manuals/about/">
+    <a class="tp-content-card" href="manuals/gui/">
       <img class="tp-content-card-icon icon-light" src="images/icons/dashboard-w.svg">
       <img class="tp-content-card-icon icon-dark" src="images/icons/dashboard.svg">
-      <h3>Taipy’s user interface</h3>
+      <h3>User interface</h3>
       <p>
-        The Taipy GUI library provides controls and other entities to create powerful Web apps in minutes.
+        Taipy GUI provides controls and other elements to create powerful Web apps in minutes.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
@@ -69,7 +60,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
 
 <ul class="tp-pills-list">
   <li>
-    <a class="tp-pill" href="manuals/gui/viselements/button">
+    <a class="tp-pill" href="manuals/gui/viselements/button/">
       <span>Button</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/button-d.png" alt="">
@@ -78,7 +69,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/viselements/chart">
+    <a class="tp-pill" href="manuals/gui/viselements/chart/">
       <span>Chart</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/chart-d.png"/>
@@ -87,7 +78,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/viselements/date">
+    <a class="tp-pill" href="manuals/gui/viselements/date/">
       <span>Date</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/date-d.png"/>
@@ -96,7 +87,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/viselements/image">
+    <a class="tp-pill" href="manuals/gui/viselements/image/">
       <span>Image</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/image-d.png"/>
@@ -105,7 +96,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/viselements/indicator">
+    <a class="tp-pill" href="manuals/gui/viselements/indicator/">
       <span>Indicator</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/indicator-d.png"/>
@@ -114,7 +105,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/viselements/input">
+    <a class="tp-pill" href="manuals/gui/viselements/input/">
       <span>Input</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/input-d.png"/>
@@ -123,7 +114,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/viselements/menu">
+    <a class="tp-pill" href="manuals/gui/viselements/menu/">
       <span>Menu</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/menu-d.png"/>
@@ -132,7 +123,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/viselements/slider">
+    <a class="tp-pill" href="manuals/gui/viselements/slider/">
       <span>Slider</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/slider-d.png"/>
@@ -141,7 +132,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/viselements/table">
+    <a class="tp-pill" href="manuals/gui/viselements/table/">
       <span>Table</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/table-d.png"/>
@@ -153,7 +144,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     <a class="tp-pill" href="manuals/gui/controls/">
       <span>…</span>
       <div class="tp-tooltip">
-        <p>Browse the complete list of visual elements</p>
+        <p>Browse the complete list of visual elements.</p>
       </div>
     </a>
   </li>
