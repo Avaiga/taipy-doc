@@ -484,7 +484,7 @@ In JSON, values must be one of the following data types:
 - A boolean
 - `null`
 
-However, the content of a JSON data node can vary. By default, JSON data node can also encode and decode:
+However, the content of a JSON data node can vary. By default, JSON data node provided by Taipy can also encode and decode:
 
 - Python [`enum.Enum`](https://docs.python.org/3/library/enum.html).
 - A [`datetime.datetime`](https://docs.python.org/3/library/datetime.html#datetime-objects) object.
@@ -656,6 +656,12 @@ You can also specify custom document class to handle specific attribute, encode 
 Check out [Mongo collection Data Node configuration](../config/data-node-config.md#mongo-collection) for more details on how to config a custom
 document class.
 
+## Generic
+
+A _Generic_ data node has the read and the write functions defined by the user:
+-   When read from a generic data node, Taipy runs the function defined by *read_fct* with parameters defined by *read_fct_params*.
+-   When write to a generic data node, Taipy runs the function defined by *write_fct* with parameters defined by *write_fct_params*.
+
 ## In memory
 
 Since an _In memory_ data node stores data in RAM as a Python variable, the read / write methods are rather straightforward.
@@ -667,10 +673,6 @@ Correspondingly, In memory data node can write any data object that is valid dat
 !!! Warning
 
     Since the data is stored in memory, it cannot be used in a multiprocess environment. (See [Job configuration](job-config.md#standalone) for more details).
-
-## Generic
-
-Generic read / write example
 
 
 # Filter read results

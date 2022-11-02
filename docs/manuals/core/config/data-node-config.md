@@ -513,7 +513,7 @@ and the default encoder will convert DailyMinTemp object's properties to a dicti
 A `GenericDataNode^` is a specific data node used to model generic data types where the read and the write functions
 are defined by the user. To add a new _generic_ data node configuration, the `Config.configure_generic_data_node()^`
 method can be used. In addition to the parameters described in the previous section
-[Data node configuration](data-node-config.md),  the following parameters can be provided:
+[Data node configuration](data-node-config.md), the following parameters can be provided:
 
 -   _**read_fct**_ is a mandatory parameter that represents a Python function provided by the user. It will
     be used to read the data. More optional parameters can be passed through the _**read_fct_params**_ parameter.
@@ -532,21 +532,30 @@ method can be used. In addition to the parameters described in the previous sect
 ```python linenums="1"
 from taipy import Config
 
-def read_data():
-    pass
+def read_text(path: str) -> str:
+    with open(path, 'r') as text_reader:
+        data = text_reader.read()
+    return data
 
-def write_data(data: Any, path: str):
-    pass
+def write_text(path: str, data: str):
+    with open(path, 'w') as text_writer:
+        text_writer.write(data)
 
 historical_data_cfg = Config.configure_generic_data_node(id="historical_data",
-                                                         read_fct=read_data,
-                                                         write_fct=write_data,
-                                                         write_fct_params=['../path/'])
+                                                         read_fct=read_text,
+                                                         write_fct=write_text,
+                                                         read_fct_params=["../path/data.txt"]
+                                                         write_fct_params=["../path/data.txt", "write data"])
 ```
 
-In this small example, we configure a generic data node with the id "historical_data". We provide two
-Python functions (previously defined) as _read_fct_ and _write_fct_ parameters to read and write the data. We also
-provided a list object for the _write_fct_params_ with a path to let the _write_fct_ know where to write the data.
+In this small example, we configure a generic data node with the id "historical_data".
+
+In line 13-14, we provide two Python functions (previously defined) as _read_fct_ and _write_fct_ parameters to read and
+write the data in a text file.
+
+In line 15, we provide _read_fct_params_ with a path to let the _read_fct_ know where to read the data.
+
+In line 16, we provide a list of parameters to _write_fct_params_ with a path to let the _write_fct_ know where to write the data, and the data to write.
 
 
 !!! Note
@@ -559,7 +568,7 @@ provided a list object for the _write_fct_params_ with a path to let the _write_
 An `InMemoryDataNode^` is a specific data node used to model any data in the RAM. The
 `Config.configure_in_memory_data_node()^` method can be used to add a new in_memory data node configuration. In
 addition to the generic parameters described in the previous section [Data node configuration](data-node-config.md),
-an optional parameter can be provided.
+an optional parameter can be provided:
 
 -   If the _**default_data**_ is given as a parameter, the data node is automatically written with the corresponding
     value (note that any python object can be used).
