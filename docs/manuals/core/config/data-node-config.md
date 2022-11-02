@@ -13,7 +13,7 @@ In the previous code, we configured a simple data node just providing an identif
 More optional attributes are available on data nodes, including:
 
 - _**id**_ is the identifier of the data node config.<br/>
-     It is a **mandatory** parameter that must be unique. It must be a valid Python identifier.
+    It is a **mandatory** parameter that must be unique. It must be a valid Python identifier.
 
 -   _**scope**_ is a `Scope^`.<br/>
     It corresponds to the [scope](../concepts/scope.md) of the data node that will be instantiated from the data
@@ -27,7 +27,8 @@ More optional attributes are available on data nodes, including:
     As explained in the following subsections, depending on the _storage_type_, other configuration attributes must
     be provided in the parameter _properties_ parameter.
 
--   _**cacheable**_ is an attribute that indicates if the data node can be cached during the execution of the tasks it is connected to.
+-   _**cacheable**_ is an attribute that indicates if the data node can be cached during the execution of the tasks
+    it is connected to.
 
 -   Any other custom attribute can be provided through the parameter _**properties**_, which is
     a dictionary (a description, a tag, etc.)<br/>
@@ -90,14 +91,14 @@ To add a new _pickle_ data node configuration, the `Config.configure_pickle_data
 addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), two optional parameters can be provided.
 
--   The _**default_path**_ parameter represents the default file path used by Taipy to read and write the data.
+-   _**default_path**_ represents the default file path used by Taipy to read and write the data.<br/>
     If the pickle file already exists (in the case of a shared input data node, for instance), it is necessary
-    to provide the default file path as the _default_path_ parameter. If no value is provided, Taipy will use an internal path
-    in the Taipy storage folder (more details on the Taipy storage folder configuration available on the
-    [Global configuration](global-config.md) documentation).
+    to provide the default file path as the _default_path_ parameter.<br/>
+    If no value is provided, Taipy will use an internal path in the Taipy storage folder (more details on the
+    Taipy storage folder configuration available on the [Global configuration](global-config.md) documentation).
 
--   If the _**default_data**_ is provided, the data node is automatically written with the corresponding
-    value. Any serializable Python object can be used.
+-   _**default_data**_ indicates data that is automatically written to the data node upon creation.<br/>
+    Any serializable Python object can be used. The default value is `None`.
 
 ```python linenums="1"
 from taipy import Config
@@ -124,19 +125,19 @@ In line 6, we add another pickle data node configuration with the id "model_cfg"
 
 A `CSVDataNode^` data node is a specific data node used to model CSV file data. To add a new _CSV_ data node
 configuration, the `Config.configure_csv_data_node()^` method can be used. In addition to the generic parameters
-described in the previous section [Data node configuration](data-node-config.md), one mandatory and two optional
-parameters can be provided.
+described in the previous section [Data node configuration](data-node-config.md), the following parameters can be provided:
 
--   The _**default_path**_ parameter is a mandatory parameter and represents the default CSV file path used by Taipy to read and write
+-   _**default_path**_ is a mandatory parameter and represents the default CSV file path used by Taipy to read and write
     the data.
 
--   The _**has_header**_ parameter represents if the file has a header of not. By default, _has_header_ is True and Taipy
-    will use the 1st row in the CSV file as the header.
+-   _**has_header**_ indicates if the file has a header of not.<br/>
+    By default, _has_header_ is True and Taipy will use the 1st row in the CSV file as the header.
 
--   When the _**exposed_type**_ is given as a parameter, if the _exposed_type_ value provided is `numpy`, the
-    data node will read the CSV file to a numpy array. If the provided value is a custom class, data node
-    will create a list of custom object with the given custom class, each object will represent a row in the CSV
-    file. If _exposed_type_ is not provided, the data node will read the CSV file as a `pandas.DataFrame`.
+-   _**exposed_type**_ indicates the data type returned when reading the data node (more examples of reading from CSV data node with different _exposed_type_ is available on [Read / Write a data node](../entities/data-node-mgt.md#csv) documentation):
+    -   By default, _exposed_type_ is `"pandas"`, and the data node will read the CSV file as a `pandas.DataFrame`.
+    -   If the _exposed_type_ value provided is `"numpy"`, the data node will read the CSV file to a numpy array.
+    -   If the provided _exposed_type_ value is a custom Python class, the data node will create a list of custom
+    objects with the given custom class, each object will represent a row in the CSV file.
 
 ```python linenums="1"
 from taipy import Config
@@ -177,21 +178,23 @@ file data. To add a new _Excel_ data node configuration, the `Config.configure_e
 In addition to the generic parameters described in the previous section
 [Data node configuration](data-node-config.md), a mandatory and three optional parameters can be provided.
 
--   The _**default_path**_ is a mandatory parameter that represents the default Excel file path used by Taipy to read and write the data.
+-   _**default_path**_ is a mandatory parameter that represents the default Excel file path used by Taipy to read and
+    write the data.
 
--   The _**has_header**_ parameter specifies if the file has a header of not. If _has_header_ is True (by default or was
-    specified), Taipy will use the 1st row in the Excel file as the header.
+-   _**has_header**_ indicates if the file has a header of not.<br/>
+    By default, _has_header_ is True and Taipy will use the 1st row in the Excel file as the header.
 
--   The _**sheet_name**_ parameter represents which specific sheet in the Excel file to read. If _sheet_name_
-    is provided with a list of sheet names, the data node will return a dictionary with the key being the sheet name and
-    the value being the data of the corresponding sheet. If a string is provided, the data node will read only the
-    data of the corresponding sheet. The default value of _sheet_name_ is None and the data node will return all sheets
-    in the provided Excel file when reading it.
+-   _**sheet_name**_ represents which specific sheet in the Excel file to read:
+    -   By default, _sheet_name_ is None and the data node will return all sheets in the Excel file when reading it.
+    -   If _sheet_name_ is provided as a string, the data node will read only the data of the corresponding sheet.
+    -   If _sheet_name_ is provided with a list of sheet names, the data node will return a dictionary with the key
+    being the sheet name and the value being the data of the corresponding sheet.
 
--   When the _**exposed_type**_ is given as a parameter, if the _exposed_type_ value provided is `numpy`, the data
-    node will read the Excel file to a numpy array. If the provided value is a custom class, data node will
-    create a list of custom objects with the given custom class, each object will represent a row in the Excel
-    file. If _exposed_type_ is not provided, the data node will read the Excel file as a pandas DataFrame.
+-   _**exposed_type**_ indicates the data type returned when reading the data node (more examples of reading from Excel data node with different _exposed_type_ is available on [Read / Write a data node](../entities/data-node-mgt.md#excel) documentation):
+    -   By default, _exposed_type_ is `"pandas"`, and the data node will read the Excel file as a `pandas.DataFrame`.
+    -   If the _exposed_type_ value provided is `"numpy"`, the data node will read the Excel file to a numpy array.
+    -   If the provided _exposed_type_ value is a custom Python class, the data node will create a list of custom
+    objects with the given custom class, each object will represent a row in the Excel file.
 
 ```python linenums="1"
 from taipy import Config
@@ -234,23 +237,23 @@ the _exposed_type_. We also provide the list of specific sheets we want to use a
     - To be able to use a `SQLTableDataNode^` with PostgreSQL Server you need to run internal dependencies with `pip install taipy[postgresql]` and install your corresponding [Postgres JDBC Driver for PostgreSQL](https://www.postgresql.org/docs/7.4/jdbc-use.html).
 
 
-An `SQLTableDataNode^` is a specific data node that models data stored in a single SQL table. To add a new _SQL table_ data node configuration, the `Config.configure_sql_table_data_node()^` method can be used. In
-addition to the generic parameters described in the previous section
-[Data node configuration](data-node-config.md), multiple
-parameters can be provided.
+An `SQLTableDataNode^` is a specific data node that models data stored in a single SQL table. To add a new _SQL table_
+data node configuration, the `Config.configure_sql_table_data_node()^` method can be used. In addition to the generic
+parameters described in the previous section [Data node configuration](data-node-config.md), the following parameters
+can be provided:
 
--   The _**db_username**_ parameter represents the database username that will be used by Taipy to access the database.
--   The _**db_password**_ parameter represents the database user's password that will be used by Taipy to access the
-    database.
--   The _**db_name**_ parameter represents the name of the database.
--   The _**db_engine**_ parameter represents the engine of the database. Possible values are _"sqlite"_, _"mssql"_, _"mysql"_, or _"postgresql"_.
--   The _**table_name**_ parameter represents the name of the table to read from and write into.
--   The _**db_port**_ parameter represents the database port that will be used by Taipy to access the database. The
-    default value of _db_port_ is 1433.
--   The _**db_host**_ parameter represents the database host that will be used by Taipy to access the database. The
-    default value of _db_host_ is "localhost".
--   The _**db_driver**_ parameter represents the database driver that will be used by Taipy. The default value of
-    _db_driver_ is "ODBC Driver 17 for SQL Server".
+-   _**db_username**_ represents the database username that will be used by Taipy to access the database.
+-   _**db_password**_ represents the database user's password that will be used by Taipy to access the database.
+-   _**db_name**_ represents the name of the database.
+-   _**db_engine**_ represents the engine of the database.<br/>
+    Possible values are _"sqlite"_, _"mssql"_, _"mysql"_, or _"postgresql"_.
+-   _**table_name**_ represents the name of the table to read from and write into.
+-   _**db_port**_ represents the database port that will be used by Taipy to access the database.<br/>
+    The default value of _db_port_ is 1433.
+-   _**db_host**_ represents the database host that will be used by Taipy to access the database.<br/>
+    The default value of _db_host_ is "localhost".
+-   _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
+    The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
 
 ```python linenums="1"
 from taipy import Config
@@ -269,7 +272,7 @@ is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The ta
 
 !!! Note
 
-    To configure a SQL table data node, it is equivalent to use the method `Config.configure_sql_data_node()^` or
+    To configure a SQL table data node, it is equivalent to use the method `Config.configure_sql_table_data_node()^` or
     the method `Config.configure_data_node()^` with parameter `storage_type="sql_table"`.
 
 # SQL
@@ -280,25 +283,25 @@ is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The ta
     - To be able to use a `SQLTableDataNode^` with MySQL Server you need to run internal dependencies with `pip install taipy[mysql]` and install your corresponding [MySQL Driver for MySQL](https://pypi.org/project/PyMySQL/).
     - To be able to use a `SQLTableDataNode^` with PostgreSQL Server you need to run internal dependencies with `pip install taipy[postgresql]` and install your corresponding [Postgres JDBC Driver for PostgreSQL](https://www.postgresql.org/docs/7.4/jdbc-use.html).
 
-An `SQLDataNode^` is a specific data node used to model data stored in an SQL Database. To add a new _SQL_ data node configuration, the `Config.configure_sql_data_node()^` method can be used. In
-addition to the generic parameters described in the previous section
-[Data node configuration](data-node-config.md), multiple
-parameters can be provided.
+An `SQLDataNode^` is a specific data node used to model data stored in an SQL Database. To add a new _SQL_ data node
+configuration, the `Config.configure_sql_data_node()^` method can be used. In addition to the generic parameters
+described in the previous section [Data node configuration](data-node-config.md), the following parameters can be
+provided:
 
--   The _**db_username**_ parameter represents the database username that will be used by Taipy to access the database.
--   The _**db_password**_ parameter represents the database user's password that will be used by Taipy to access the
-    database.
--   The _**db_name**_ parameter represents the name of the database.
--   The _**db_engine**_ parameter represents the engine of the database. Possible values are _"sqlite"_, _"mssql"_, _"mysql"_, or _"postgresql"_.
--   The _**read_query**_ parameter represents the SQL query that will be used by Taipy to read the data from the
-    database.
--   The _**write_query_builder**_ parameter is a callable function that takes in the data as an input parameter and returns a list of SQL queries to be executed when the write data node method is called.
--   The _**db_port**_ parameter represents the database port that will be used by Taipy to access the database. The
-    default value of _db_port_ is 1433.
--   The _**db_host**_ parameter represents the database host that will be used by Taipy to access the database. The
-    default value of _db_host_ is "localhost".
--   The _**db_driver**_ parameter represents the database driver that will be used by Taipy. The default value of
-    _db_driver_ is "ODBC Driver 17 for SQL Server".
+-   _**db_username**_ represents the database username that will be used by Taipy to access the database.
+-   _**db_password**_ represents the database user's password that will be used by Taipy to access the database.
+-   _**db_name**_ represents the name of the database.
+-   _**db_engine**_ represents the engine of the database.<br/>
+    Possible values are _"sqlite"_, _"mssql"_, _"mysql"_, or _"postgresql"_.
+-   _**read_query**_ represents the SQL query that will be used by Taipy to read the data from the database.
+-   _**write_query_builder**_ is a callable function that takes in the data as an input parameter and returns a list of
+    SQL queries to be executed when the write data node method is called.
+-   _**db_port**_ represents the database port that will be used by Taipy to access the database.<br/>
+    The default value of _db_port_ is 1433.
+-   _**db_host**_ represents the database host that will be used by Taipy to access the database.<br/>
+    The default value of _db_host_ is "localhost".
+-   _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
+    The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
 
 ```python linenums="1"
 from taipy import Config
@@ -337,16 +340,15 @@ The data parameter of the write query builder is expected to have the same data 
 
 # JSON
 
-A `JSONDataNode^` is a type of data node used to model JSON
-file data. To add a new _JSON_ data node configuration, the `Config.configure_json_data_node_node()^` method can be used.
-In addition to the generic parameters described in
-[Data node configuration](data-node-config.md) section, a mandatory and two optional parameters can be provided.
+A `JSONDataNode^` is a type of data node used to model JSON file data. To add a new _JSON_ data node configuration, the
+`Config.configure_json_data_node_node()^` method can be used. In addition to the generic parameters described in
+[Data node configuration](data-node-config.md) section, the following parameters can be provided:
 
-- The _**default_path**_ is a mandatory parameter that represents the JSON file path used by Taipy to read and write data.
+-   _**default_path**_ is a mandatory parameter that represents the JSON file path used by Taipy to read and write data.
 
-- The _**encoder**_ and _**decoder**_ parameters are optional parameters that represent the encoder (json.JSONEncoder) and decoder
-(json.JSONDecoder) used to serialize and deserialize JSON data. Check out
-[JSON Encoders and Decoders documentation](https://docs.python.org/3/library/json.html#encoders-and-decoders) for more details.
+-   _**encoder**_ and _**decoder**_ parameters are optional parameters that represent the encoder (json.JSONEncoder) and
+    decoder (json.JSONDecoder) used to serialize and deserialize JSON data.<br/>
+    Check out [JSON Encoders and Decoders documentation](https://docs.python.org/3/library/json.html#encoders-and-decoders) for more details.
 
 ```python linenums="1"
 from taipy import Config
@@ -428,15 +430,17 @@ default `SCENARIO` scope is used. The encoder and decoder are the custom encoder
 A `MongoCollectionDataNode^` is a specific data node used to model data stored in a Mongo collection. To add a new *mongo_collection* data node configuration, the `Config.configure_mongo_collection_data_node()^` method can be used.
 In addition to the generic parameters described in the previous section [Data node configuration](data-node-config.md), multiple parameters can be provided.
 
--   The _**db_name**_ parameter represents the name of the database in MongoDB.
--   The _**collection_name**_ parameter represents the name of the data collection in the database.
--   The _**custom_document**_ parameter represents the custom class that is used to store, encode, and decode data when reading and writing to a Mongo collection. The data returned by the read method is a list of custom_document object(s), and the data passed as a parameter of the write method is a (list of) custom_document object(s). The custom_document can have:
+-   _**db_name**_ represents the name of the database in MongoDB.
+-   _**collection_name**_ represents the name of the data collection in the database.
+-   _**custom_document**_ represents the custom class that is used to store, encode, and decode data when reading and writing to a Mongo collection. The data returned by the read method is a list of custom_document object(s), and the data passed as a parameter of the write method is a (list of) custom_document object(s). The custom_document can have:
     -   An otional `decoder()` method to decode data in the Mongo collection to a custom object when reading.
     -   An optional `encoder()` method to encode the object's properties to the Mongo collection format when writing.
--   The _**db_username**_ parameter represents the username that will be used by Taipy to access MongoDB.
--   The _**db_password**_ parameter represents the user's password that will be used by Taipy to access MongoDB.
--   The _**db_port**_ parameter represents the database port that will be used by Taipy to access MongoDB. The default value of _db_port_ is 27017.
--   The _**db_host**_ parameter represents the database host that will be used by Taipy to access MongoDB. The default value of _db_host_ is "localhost".
+-   _**db_username**_ represents the username that will be used by Taipy to access MongoDB.
+-   _**db_password**_ represents the user's password that will be used by Taipy to access MongoDB.
+-   _**db_port**_ represents the database port that will be used by Taipy to access MongoDB.<br/>
+    The default value of _db_port_ is 27017.
+-   _**db_host**_ represents the database host that will be used by Taipy to access MongoDB.<br/>
+    The default value of _db_host_ is "localhost".
 
 ```python linenums="1"
 from taipy import Config
@@ -509,19 +513,19 @@ and the default encoder will convert DailyMinTemp object's properties to a dicti
 A `GenericDataNode^` is a specific data node used to model generic data types where the read and the write functions
 are defined by the user. To add a new _generic_ data node configuration, the `Config.configure_generic_data_node()^`
 method can be used. In addition to the parameters described in the previous section
-[Data node configuration](data-node-config.md), two optional parameters can be provided.
+[Data node configuration](data-node-config.md),  the following parameters can be provided:
 
--   The _**read_fct**_ is a mandatory parameter that represents a Python function provided by the user. It will
+-   _**read_fct**_ is a mandatory parameter that represents a Python function provided by the user. It will
     be used to read the data. More optional parameters can be passed through the _**read_fct_params**_ parameter.
 
--   The _**write_fct**_ is a mandatory parameter representing a Python function provided by the user. It will
+-   _**write_fct**_ is a mandatory parameter representing a Python function provided by the user. It will
     be used to write/serialize the data. The provided function must have at least one parameter dedicated to
     receiving data to be written. More optional parameters can be passed through the _**write_fct_params**_ parameter.
 
--   The parameter _**read_fct_params**_ represents the parameters that are passed to the _read_fct_ to
-    read/de-serialize the data. It must be a `List` type object.
+-   _**read_fct_params**_ represents the parameters that are passed to the _read_fct_ to read/de-serialize the data.
+    It must be a `List` type object.
 
--   The parameter _**write_fct_params**_ represents the parameters that are passed to the _write_fct_ to write the data.
+-   _**write_fct_params**_ represents the parameters that are passed to the _write_fct_ to write the data.
     It must be a `List` type object.
 
 
