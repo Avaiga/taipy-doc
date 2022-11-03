@@ -313,7 +313,7 @@ To write with custom column names, use the `CSVDataNode.write_with_column_names(
 
 ## Excel
 
-When read from a Excel data node, Taipy returns the data of the Excel file based on _exposed_type_ parameter.
+When read from an Excel data node, Taipy returns the data of the Excel file based on _exposed_type_ parameter.
 Check out [Excel Data Node configuration](../config/data-node-config.md#excel) for more details on _exposed_type_.
 
 For the example in this section, assume that `sales_history_cfg` in [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
@@ -366,7 +366,7 @@ The following examples represent the results when read from Excel data node with
         ]
         ```
 
-When write data to a Excel data node, the `ExcelDataNode.write()^` method can take several datatype as the input:
+When write data to an Excel data node, the `ExcelDataNode.write()^` method can take several datatype as the input:
 
 - list, numpy array
 - dictionary, or list of dictionaries
@@ -400,8 +400,8 @@ The following examples will write to the path of the Excel data node:
         data_node.write(
             np.array([
                 ["12/24/2018", 1550],
-                ["12/24/2018", 2315],
-                ["12/24/2018", 1832],
+                ["12/25/2018", 2315],
+                ["12/26/2018", 1832],
             ])
         )
         ```
@@ -424,8 +424,8 @@ The following examples will write to the path of the Excel data node:
         data_node.write(
             [
                 {"date": "12/24/2018", "nb_sales": 1550},
-                {"date": "12/24/2018", "nb_sales": 2315},
-                {"date": "12/24/2018", "nb_sales": 1832},
+                {"date": "12/25/2018", "nb_sales": 2315},
+                {"date": "12/26/2018", "nb_sales": 1832},
             ]
         )
         ```
@@ -436,8 +436,8 @@ The following examples will write to the path of the Excel data node:
         data = pandas.DataFrame(
             [
                 {"date": "12/24/2018", "nb_sales": 1550},
-                {"date": "12/24/2018", "nb_sales": 2315},
-                {"date": "12/24/2018", "nb_sales": 1832},
+                {"date": "12/25/2018", "nb_sales": 2315},
+                {"date": "12/26/2018", "nb_sales": 1832},
             ]
         )
 
@@ -460,14 +460,222 @@ To write with custom column names, use the `ExcelDataNode.write_with_column_name
     )
     ```
 
-
 ## SQL Table
 
-SQL table read/write example
+When read from a SQL Table data node, Taipy returns the data of the SQL Table file based on _exposed_type_ parameter.
+Check out [SQL Table Data Node configuration](../config/data-node-config.md#sql-table) for more details on _exposed_type_.
+
+For the example in this section, assume that `sales_history_cfg` in [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
+is a _SQL Table_ data node configuration with `table_name="sales"`.
+
+Assume that the content of the `"sales"` table is the following.
+
+!!! example "A selection from the "sales" table"
+
+    | ID | date       | nb_sales |
+    |----|------------|----------|
+    | 1  | 12/24/2018 | 1550     |
+    | 2  | 12/25/2018 | 2315     |
+    | 3  | 12/26/2018 | 1832     |
+
+The following examples represent the results when read from SQL Table data node with different _exposed_type_:
+
+!!! example "`data_node.read()` returns"
+
+    === "exposed_type = "pandas""
+
+        ```python
+        pandas.DataFrame
+        (
+               ID        date  nb_sales
+            0   1  12/24/2018      1550
+            1   2  12/25/2018      2315
+            2   3  12/26/2018      1832
+        )
+        ```
+
+    === "exposed_type = "numpy""
+
+        ```python
+        numpy.array(
+            [
+                ["1", "12/24/2018", "1550"],
+                ["2", "12/25/2018", "2315"],
+                ["3", "12/26/2018", "1832"]
+            ],
+        )
+        ```
+
+    === "exposed_type = SaleRow"
+        ```python
+        [
+            SaleRow("12/24/2018", 1550),
+            SaleRow("12/25/2018", 2315),
+            SaleRow("12/26/2018", 1832),
+        ]
+        ```
+
+When write data to a SQL Table data node, the `SQLTableDataNode.write()^` method can take several datatype as the input:
+
+- list of lists or list of tuples
+- numpy array
+- dictionary, or list of dictionaries
+- pandas dataframes
+
+Assume that the "ID" column is the auto-increment primary key. The following examples will write to the SQL Table data
+node:
+
+!!! example "`data_node.write()` examples"
+
+    === "list"
+
+        ```python
+        # write a list of lists
+        data_node.write(
+            [
+                ["12/24/2018", 1550],
+                ["12/25/2018", 2315],
+                ["12/26/2018", 1832],
+            ]
+        )
+
+        # or write a list of tuples
+        data_node.write(
+            [
+                ("12/24/2018", 1550),
+                ("12/25/2018", 2315),
+                ("12/26/2018", 1832),
+            ]
+        )
+        ```
+
+    === "numpy array"
+
+        ```python
+        data = np.array(
+            [
+                ["12/24/2018", 1550],
+                ["12/25/2018", 2315],
+                ["12/26/2018", 1832],
+            ]
+        )
+
+        data_node.write(data)
+        ```
+
+    === "dictionary"
+
+        ```python
+        # write 1 record to the SQL table
+        data_node.write(
+            {"date": "12/24/2018", "nb_sales": 1550}
+        )
+
+        # write multile records using a list of dictionaries
+        data_node.write(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/25/2018", "nb_sales": 2315},
+                {"date": "12/26/2018", "nb_sales": 1832},
+            ]
+        )
+        ```
+
+    === "pandas dataframes"
+
+        ```python
+        data = pandas.DataFrame(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/25/2018", "nb_sales": 2315},
+                {"date": "12/26/2018", "nb_sales": 1832},
+            ]
+        )
+
+        data_node.write(data)
+        ```
 
 ## SQL
 
-SQL read/write example
+A SQL data node is designed to give the user more flexibility on how to read and write to SQL table (or multiple SQL tables).
+
+Let's consider the `orders_cfg` in [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py) which configures a SQL data node.
+
+When read from a SQL data node, Taipy executes the read query and returns the data of the SQL file based on _exposed_type_ parameter:
+-   The _exposed_type_ parameter of `orders_cfg` is undefined, therefore it takes the default value as "pandas". Check out [SQL Data Node configuration](../config/data-node-config.md#sql) for more details on _exposed_type_.
+-   The _read_query_ of `orders_cfg` is
+    ```sql
+    SELECT orders.ID, orders.date, products.price, orders.number_of_products
+    FROM orders INNER JOIN products
+    ON orders.product_id=products.ID
+    ```
+-   When read from the SQL data node using `data_node.read()` method, Taipy will execute the above query and return a `pandas.DataFrame` represents the "orders" table inner join with the "products" table.
+
+!!! example "A selection from the "orders" table"
+
+    | ID | date       | product_id | number_of_products |
+    |----|------------|------------|--------------------|
+    | 1  | 01/05/2019 |          2 |                200 |
+    | 2  | 01/05/2019 |          3 |                450 |
+    | 3  | 01/05/2019 |          5 |                350 |
+    | 4  | 01/06/2019 |          1 |                520 |
+    | 5  | 01/06/2019 |          3 |                250 |
+    | 6  | 01/07/2019 |          2 |                630 |
+    | 7  | 01/07/2019 |          4 |                480 |
+
+!!! example "A selection from the "products" table"
+
+    | ID | price | description |
+    |----|-------|-------------|
+    | 1  |    30 | foo product |
+    | 2  |    50 | bar product |
+    | 3  |    25 | foo product |
+    | 4  |    60 | bar product |
+    | 5  |    40 | foo product |
+
+!!! example "`data_node.read()` returns"
+
+    ```python
+    pandas.DataFrame
+    (
+            ID         date   price   number_of_products
+        0   1   01/05/2019      50                 200
+        1   2   01/05/2019      25                 450
+        2   3   01/05/2019      40                 350
+        3   4   01/06/2019      30                 520
+        4   5   01/06/2019      25                 250
+        5   6   01/07/2019      50                 630
+        6   7   01/07/2019      60                 480
+    )
+    ```
+
+When write to a SQL data node, Taipy will first pass the data to _write_query_builder_ and then execute a list of queries returned by the query builder:
+-   The _write_query_builder_ parameter of `orders_cfg` in this example is defined as the `write_orders_plan()` method.
+-   After being called with the write data as a `pd.DataFrame`, the `write_orders_plan()` method will return a list of SQL queries.
+-   The first query deletes all records from "orders" table.
+-   The following query will insert a list of records to the "orders" table according to the data, assume that "ID" column in "orders" table is the auto-increment primary key.
+
+!!! example "`data_node.write()`"
+
+    ```python
+    data = pandas.DataFrame(
+        [
+            {"date": "01/08/2019", "product_id": 1 "number_of_products": 450},
+            {"date": "01/08/2019", "product_id": 3 "number_of_products": 320},
+            {"date": "01/08/2019", "product_id": 4 "number_of_products": 350},
+        ]
+    )
+
+    data_node.write(data)
+    ```
+
+    The "orders" table after being written:
+
+    | ID | date       | product_id | number_of_products |
+    |----|------------|------------|--------------------|
+    | 8  | 01/08/2019 |          1 |                450 |
+    | 9  | 01/08/2019 |          3 |                320 |
+    | 10 | 01/08/2019 |          4 |                350 |
 
 ## JSON
 
