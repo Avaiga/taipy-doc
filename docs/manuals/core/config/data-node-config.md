@@ -435,7 +435,7 @@ In this next example, we config a `JSONDataNode^` with custom JSON _**encoder**_
         }
         ```
     to the file *path/sales.json*.
-    - When read a JSONDataNode, the `SaleRowDecoder` will decode any JSON object has `"__type__": "SaleRow"` to a `SaleRow` object.
+    - When reading a JSONDataNode, the `SaleRowDecoder` is used to convert a JSON object with the attribute `__type__` into a Python object corresponding to the value of the attribute. In this example, the "SaleRow"` data class.
 
 - In lines 23-26, we create a JSON data node configuration. The _id_ identifier is "sales_history", the
 default `SCENARIO` scope is used. The encoder and decoder are the custom encoder and decoder defined above.
