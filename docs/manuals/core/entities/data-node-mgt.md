@@ -14,7 +14,8 @@ A data node also holds various properties and attributes accessible through the 
 -   _**id**_: The unique identifier of this data node.
 -   _**name**_: The user-readable name of the data node.
 -   _**owner_id**_: The identifier of the owner (pipeline_id, scenario_id, cycle_id) or `None`.
--   _**last_edit_date**_: The date and time of the last modification.
+-   _**last_edit_date**_: The date and time of the last data modification made through Taipy.
+    Note that **only** for file-based data nodes (CSV, Excel, pickle, JSON, ...), the file's last modification date is used to compute the _**last_edit_date**_ value. That means if a file is modified manually or by an external process, the _**last_edit_date**_ value is automatically updated within Taipy.
 -   _**job_ids**_: The ordered list of jobs that have written on this data node.
 -   _**cacheable**_: The Boolean value that indicates if a data node is cacheable.
 -   _**validity_period**_: The validity period of a cacheable data node. If _validity_period_ is set to None, the
@@ -146,7 +147,6 @@ as a parameter and writes it on the data node:
     # returns the new data stored on the data node
     data_retrieved = data_node.read()
     ```
-
 
 ## Pickle
 
@@ -911,5 +911,29 @@ temp_data[(temp_data == 14) | (temp_data == 10)]
 
     For now, the `DataNode.filter()^` method is only implemented for `CSVDataNode^`, `ExcelDataNode^`,
     `SQLTableDataNode^`, `SQLDataNode` with `"pandas"` as the _**exposed_type**_ value.
+
+# Get parent scenarios, pipelines and tasks
+
+To get the parent entities of a data node (scenarios or pipelines or tasks) you can use either the method `DataNode.get_parents()^` or the function
+`taipy.get_parents()^`. Both return the parents of the data node.
+
+!!! Example
+
+    ```python linenums="1"
+    import taipy as tp
+    import my_config
+
+    # Create a scenario from a config
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+    # Retrieve a data node
+    data_node = scenario.sales_history
+
+    # Retrieve the parent entities of the data node
+    parent_entities = data_node.get_parents()   # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1], 'tasks': [Task 1]}
+
+    # Retrieve the parent entities of the data node
+    tp.get_parents(data_node)   # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1], 'tasks': [Task 1]}
+    ```
 
 [:material-arrow-right: The next section shows the scheduling and job execution](scheduling-and-job-execution.md).

@@ -14,15 +14,19 @@ This is the list of changes to Taipy releases as they were published.
 **`taipy-core`** *<br/>2.1
 
    - New data node named `MongoCollectionDataNode`. It represents the data from a MongoDB collection.
+   - The parent entities of a data node, a task, or a pipeline can be accessed via `DataNode.get_parents()^`,
+   `Task.get_parents()^`, or `Pipeline.get_parents()^`, or by passing the data node entity, task entity or pipeline
+   entity to the function `taipy.get_parents()^`.
+   - The data node caching mechanism now also takes into account the date and time of the last modification of a file caused by either Taipy execution or an external factor. This behavior is limited to file-based data nodes: CSV, Excel, JSON, and pickle data nodes only.
 
 ## Community edition: 2.0
 
 Published on 2022-10.
 
 [`taipy` 2.0](https://pypi.org/project/taipy/2.0.0/) contains the latest
-[`taipy-config` 2.0](https://pypi.org/project/taipy-config/2.0.0/),
-[`taipy-gui` 2.0](https://pypi.org/project/taipy-gui/2.0.0/),
-[`taipy-core` 2.0](https://pypi.org/project/taipy-core/2.0.0/) and
+[`taipy-config` 2.0](https://pypi.org/project/taipy-config/2.0.1/),
+[`taipy-gui` 2.0](https://pypi.org/project/taipy-gui/2.0.2/),
+[`taipy-core` 2.0](https://pypi.org/project/taipy-core/2.0.3/) and
 [`taipy-rest` 2.0](https://pypi.org/project/taipy-rest/2.0.0/) packages.
 
 #### New Features
@@ -85,7 +89,17 @@ Published on 2022-10.
 
 #### Significant bug fixes
 
-**`taipy-gui`**<br/><br/>2.0.1
+**`taipy-gui`**<br/>
+2.0.2
+
+- `image` control may not render properly.<br/>
+  See [issue #436](https://github.com/Avaiga/taipy-gui/issues/436).
+- Clarify and improve the `editable` (and `editable[]`) property in the `table` control.<br/>
+  See [issue #464](https://github.com/Avaiga/taipy-gui/issues/464).
+- [gui] section in configuration files breaks the application.<br/>
+  See [issue #469](https://github.com/Avaiga/taipy-gui/issues/469).
+
+2.0.1
 
 - Bar charts' "barmode" set to "stack" is broken.<br/>
   See [issue #445](https://github.com/Avaiga/taipy-gui/issues/445).
@@ -175,7 +189,7 @@ Published on 2022-06.
   See [issue #365](https://github.com/Avaiga/taipy-gui/issues/365).
 - Crash fixed when using a dictionary in the labels property of the slider control.<br/>
   See [issue #379](https://github.com/Avaiga/taipy-gui/issues/379).
-     
+
 <br/>1.1.0
 
 - Concurrency issues were fixed.
