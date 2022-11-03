@@ -602,6 +602,7 @@ A SQL data node is designed to give the user more flexibility on how to read and
 Let's consider the `orders_cfg` in [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py) which configures a SQL data node.
 
 When read from a SQL data node, Taipy executes the read query and returns the data of the SQL file based on _exposed_type_ parameter:
+
 -   The _exposed_type_ parameter of `orders_cfg` is undefined, therefore it takes the default value as "pandas". Check out [SQL Data Node configuration](../config/data-node-config.md#sql) for more details on _exposed_type_.
 -   The _read_query_ of `orders_cfg` is
     ```sql
@@ -650,6 +651,7 @@ When read from a SQL data node, Taipy executes the read query and returns the da
     ```
 
 When write to a SQL data node, Taipy will first pass the data to _write_query_builder_ and then execute a list of queries returned by the query builder:
+
 -   The _write_query_builder_ parameter of `orders_cfg` in this example is defined as the `write_orders_plan()` method.
 -   After being called with the write data as a `pd.DataFrame`, the `write_orders_plan()` method will return a list of SQL queries.
 -   The first query deletes all records from "orders" table.
@@ -867,6 +869,7 @@ document class.
 ## Generic
 
 A _Generic_ data node has the read and the write functions defined by the user:
+
 -   When read from a generic data node, Taipy runs the function defined by *read_fct* with parameters defined by *read_fct_params*.
 -   When write to a generic data node, Taipy runs the function defined by *write_fct* with parameters defined by *write_fct_params*.
 
