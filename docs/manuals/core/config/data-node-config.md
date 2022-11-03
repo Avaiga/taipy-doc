@@ -151,8 +151,8 @@ temp_cfg = Config.configure_csv_data_node(id="historical_temperature",
                                           has_header=True,
                                           exposed_type="numpy")
 
-sales_cfg = Config.configure_csv_data_node(id="sale_history",
-                                           default_path="path/sale_history.csv",
+sales_history_cfg = Config.configure_csv_data_node(id="sales_history",
+                                           default_path="path/sales.csv",
                                            exposed_type=SaleRow)
 ```
 
@@ -162,9 +162,9 @@ In lines 7-10, we configure a basic CSV data node with the id "historical_temper
 default `SCENARIO`. The default path corresponds to the file `path/hist_temp.csv`. The property _has_header_ being True,
 representing the CSV file has a header.
 
-In lines 12-14, we add another CSV data node configuration with the id "sale_history". The
-default `SCENARIO` scope is used again. Since we have a custom class pre-defined for this CSV file (`SaleRow`), we
-provide it as the _exposed_type_ parameter.
+In lines 12-14, we add another CSV data node configuration with the id "sales_history". The default `SCENARIO` scope
+is used again. Since we have a custom class pre-defined for this CSV file (`SaleRow`), we provide it as the
+_exposed_type_ parameter.
 
 !!! Note
 
@@ -207,19 +207,19 @@ hist_temp_cfg = Config.configure_excel_data_node(id="historical_temperature",
                                                  default_path="path/hist_temp.xlsx",
                                                  exposed_type="numpy")
 
-sales_cfg = Config.configure_excel_data_node(id="sale_history",
-                                             default_path="path/sale_history.xlsx",
+sales_history_cfg = Config.configure_excel_data_node(id="sales_history",
+                                             default_path="path/sales.xlsx",
                                              sheet_name=["January", "February"],
                                              exposed_type=SaleRow)
 ```
 
-In lines 3-5, we define a custom class `SaleRow`, representing an the Excel file row.
+In lines 3-5, we define a custom class `SaleRow`, representing a row in the Excel file.
 
 In lines 7-9, we configure an Excel data node. The _id_ identifier is "historical_temperature". Its _scope_ is
 `SCENARIO` (default value), and the default path is the file hist_temp.xlsx. With _has_header_ being True, the
 Excel file must have a header. The _sheet_name_ is not provided so Taipy will use the default value "Sheet1".
 
-In lines 10-13, we add another Excel data node configuration. The _id_ identifier is "sale_history", the
+In lines 10-13, we add another Excel data node configuration. The _id_ identifier is "sales_history", the
 default `SCENARIO` scope is used. Since we have a custom class pre-defined for this Excel file, we will provide it in
 the _exposed_type_. We also provide the list of specific sheets we want to use as the _sheet_name_ parameter.
 
@@ -232,12 +232,12 @@ the _exposed_type_. We also provide the list of specific sheets we want to use a
 
 !!! Important
 
-    -  To be able to use a `SQLTableDataNode^` with Microsoft SQL Server you need to run internal dependencies with `pip install taipy[mssql]` and install your corresponding [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
+    - To be able to use a `SQLTableDataNode^` with Microsoft SQL Server you need to run internal dependencies with `pip install taipy[mssql]` and install your corresponding [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
     - To be able to use a `SQLTableDataNode^` with MySQL Server you need to run internal dependencies with `pip install taipy[mysql]` and install your corresponding [MySQL Driver for MySQL](https://pypi.org/project/PyMySQL/).
     - To be able to use a `SQLTableDataNode^` with PostgreSQL Server you need to run internal dependencies with `pip install taipy[postgresql]` and install your corresponding [Postgres JDBC Driver for PostgreSQL](https://www.postgresql.org/docs/7.4/jdbc-use.html).
 
 
-An `SQLTableDataNode^` is a specific data node that models data stored in a single SQL table. To add a new _SQL table_
+A `SQLTableDataNode^` is a specific data node that models data stored in a single SQL table. To add a new _SQL table_
 data node configuration, the `Config.configure_sql_table_data_node()^` method can be used. In addition to the generic
 parameters described in the previous section [Data node configuration](data-node-config.md), the following parameters
 can be provided:
@@ -254,21 +254,31 @@ can be provided:
     The default value of _db_host_ is "localhost".
 -   _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
     The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
+-   _**exposed_type**_ indicates the data type returned when reading the data node (more examples of reading from SQL Table data node with different _exposed_type_ is available on [Read / Write a data node](../entities/data-node-mgt.md#sql-table) documentation):
+    -   By default, _exposed_type_ is `"pandas"`, and the data node will read the SQL table as a `pandas.DataFrame`.
+    -   If the _exposed_type_ value provided is `"numpy"`, the data node will read the SQL table to a numpy array.
+    -   If the provided _exposed_type_ value is a custom Python class, the data node will create a list of custom
+    objects with the given custom class, each object will represent a row in the SQL table.
 
 ```python linenums="1"
 from taipy import Config
 
-forecasts_cfg = Config.configure_sql_table_data_node(id="forecasts",
-                                               db_username="admin",
-                                               db_password="password",
-                                               db_name="taipy",
-                                               db_engine="mssql",
-                                               table_name="forecast_table")
+sales_history_cfg = Config.configure_sql_table_data_node(
+    id="sales_history",
+    db_username="admin",
+    db_password="password",
+    db_name="taipy",
+    db_engine="mssql",
+    table_name="sales"
+)
 ```
 
-In the previous example, we configure a _SQL table_ data node with the id "forecasts". Its scope is the
-default value `SCENARIO`. The database username is "admin", the user's password is "password", the database name
-is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The table name is "forecast_table". When the data node is read, it will read all the rows from the table "forecast_table", and when the data node is written, it will delete all the data in the table and insert the new data.
+In the previous example, we configure a _SQL table_ data node with the id "sales_history". Its scope is the default
+value `SCENARIO`. The database username is "admin", the user's password is "password", the database name is "taipy",
+and the database engine is `mssql` (short for Microsoft SQL). The table name is "sales".
+
+When the data node is read, it will read all the rows from the table "sales", and when the data node is written, it
+will delete all the data in the table and insert the new data.
 
 !!! Note
 
@@ -279,11 +289,11 @@ is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The ta
 
 !!! Important
 
-    -  To be able to use a `SQLTableDataNode^` with Microsoft SQL Server you need to run internal dependencies with `pip install taipy[mssql]` and install your corresponding [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
+    - To be able to use a `SQLTableDataNode^` with Microsoft SQL Server you need to run internal dependencies with `pip install taipy[mssql]` and install your corresponding [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
     - To be able to use a `SQLTableDataNode^` with MySQL Server you need to run internal dependencies with `pip install taipy[mysql]` and install your corresponding [MySQL Driver for MySQL](https://pypi.org/project/PyMySQL/).
     - To be able to use a `SQLTableDataNode^` with PostgreSQL Server you need to run internal dependencies with `pip install taipy[postgresql]` and install your corresponding [Postgres JDBC Driver for PostgreSQL](https://www.postgresql.org/docs/7.4/jdbc-use.html).
 
-An `SQLDataNode^` is a specific data node used to model data stored in an SQL Database. To add a new _SQL_ data node
+A `SQLDataNode^` is a specific data node used to model data stored in a SQL Database. To add a new _SQL_ data node
 configuration, the `Config.configure_sql_data_node()^` method can be used. In addition to the generic parameters
 described in the previous section [Data node configuration](data-node-config.md), the following parameters can be
 provided:
@@ -302,40 +312,50 @@ provided:
     The default value of _db_host_ is "localhost".
 -   _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
     The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
+-   _**exposed_type**_ indicates the data type returned when reading the data node:
+    -   By default, _exposed_type_ is `"pandas"`, and the data node will return a `pandas.DataFrame` when execute the _read_query_.
+    -   If the _exposed_type_ value provided is `"numpy"`, the data node will return a numpy array.
+    -   If the provided _exposed_type_ value is a custom Python class, the data node will create a list of custom
+    objects with the given custom class, each object will represent a record in the table returned by the _read_query_.
 
 ```python linenums="1"
 from taipy import Config
 import pandas as pd
 
-def write_query_builder(data: pd.DataFrame){
+def write_query_builder(data: pd.DataFrame):
     insert_data = list(data[["date", "nb_sales"]].itertuples(index=False, name=None))
     return [
-        "DELETE FROM forecast_table",
-        ("INSERT INTO forecast_table VALUES (?, ?)", insert_data)
+        "DELETE FROM sales",
+        ("INSERT INTO sales VALUES (?, ?)", insert_data)
     ]
-}
 
-forecasts_cfg = Config.configure_sql_data_node(id="forecasts",
-                                               db_username="admin",
-                                               db_password="password",
-                                               db_name="taipy",
-                                               db_engine="mssql",
-                                               read_query="SELECT * from forecast_table",
-                                               write_query_builder= write_query_builder)
+sales_history_cfg = Config.configure_sql_data_node(
+    id="sales_history",
+    db_username="admin",
+    db_password="password",
+    db_name="taipy",
+    db_engine="mssql",
+    read_query="SELECT * from sales",
+    write_query_builder=write_query_builder
+)
 ```
 
-In the previous example, we configure a _SQL_ data node with the id "forecasts". Its scope is the
-default value `SCENARIO`. The database username is "admin", the user's password is "password", the database name
-is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The read query will be "SELECT \* from
-forecast_table".
+In the previous example, we configure a _SQL_ data node with the id "sales_history". Its scope is the default value
+`SCENARIO`. The database username is "admin", the user's password is "password", the database name is "taipy", and the
+database engine is `mssql` (short for Microsoft SQL). The read query will be "SELECT \* from sales".
 
-The write query builder in this example is a callable function that takes in a dataframe and return a list of queries. The first query will delete all the data in the table "forecast_table", and the second query is a prepared statement that takes in two values, which is the data from the two columns "date" and "nb_sales" in the dataframe. Since this is a prepared statement, it must be passed as a tuple with the first element being the query and the second element being the data.
+The write query builder in this example is a callable function that takes in a `pandas.DataFrame` and return a list of queries.
+The first query will delete all the data in the table "sales", and the second query is a prepared statement that takes
+in two values, which is the data from the two columns "date" and "nb_sales" in the `pandas.DataFrame`. Since this is a prepared
+statement, it must be passed as a tuple with the first element being the query and the second element being the data.
 
-The data parameter of the write query builder is expected to have the same data type as the return type of the task function whose output is the data node. In this example, the task function returns a dataframe, so the data parameter of the write query builder is also expected to be a dataframe.
+The data parameter of the write query builder is expected to have the same data type as the return type of the task
+function whose output is the data node. In this example, the task function returns a `pandas.DataFrame`, so the data parameter
+of the write query builder is also expected to be a `pandas.DataFrame`.
 
 !!! Note
 
-    To configure an SQL data node, it is equivalent to use the method `Config.configure_sql_data_node()^` or
+    To configure a SQL data node, it is equivalent to use the method `Config.configure_sql_data_node()^` or
     the method `Config.configure_data_node()^` with parameter `storage_type="sql"`.
 
 # JSON
@@ -390,8 +410,8 @@ class SaleRowDecoder(json.JSONDecoder):
             return SaleRow(date=d['date'], nb_sales=d['nb_sales'])
         return d
 
-sales_cfg = Config.configure_json_data_node(id="sale_history",
-                                             path="path/sale_history.json",
+sales_history_cfg = Config.configure_json_data_node(id="sales_history",
+                                             path="path/sales.json",
                                              encoder=SaleRowEncoder,
                                              decoder=SaleRowDecoder)
 ```
@@ -404,7 +424,7 @@ In this next example, we config a `JSONDataNode^` with custom JSON _**encoder**_
     - When [write to JSONDataNode](../entities/data-node-mgt.md#write-data-node), the `SaleRowEncoder` will
     encode a `SaleRow` object to JSON format. For example, after create a scenario,
         ```python
-        scenario.sale_history.write(SaleRow("12/24/2018", 1550))
+        scenario.sales_history.write(SaleRow("12/24/2018", 1550))
         ```
     will write
         ```json
@@ -414,10 +434,10 @@ In this next example, we config a `JSONDataNode^` with custom JSON _**encoder**_
             "nb_sales": 1550,
         }
         ```
-    to the file *path/sale_history.json*.
+    to the file *path/sales.json*.
     - When read a JSONDataNode, the `SaleRowDecoder` will decode any JSON object has `"__type__": "SaleRow"` to a `SaleRow` object.
 
-- In lines 23-26, we create a JSON data node configuration. The _id_ identifier is "sale_history", the
+- In lines 23-26, we create a JSON data node configuration. The _id_ identifier is "sales_history", the
 default `SCENARIO` scope is used. The encoder and decoder are the custom encoder and decoder defined above.
 
 !!! Note
