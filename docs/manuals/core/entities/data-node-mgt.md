@@ -1,4 +1,4 @@
-In the following, it is assumed that [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
+In the following, it is assumed that [`my_config.py`](../my_config.py)
 module contains a Taipy configuration already implemented.
 
 Data nodes get created when scenarios or pipelines are created. Please refer to the

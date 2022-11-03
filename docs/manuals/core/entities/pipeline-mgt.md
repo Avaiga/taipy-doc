@@ -2,7 +2,7 @@ The [Entities' creation](scenario-creation.md) section provided documentation on
 how to create a new `Pipeline^`, this section focuses on describing the pipeline's attributes and utility methods for
 using pipelines.
 
-In the following, it is assumed that [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py) module contains a Taipy configuration
+In the following, it is assumed that [`my_config.py`](../my_config.py) module contains a Taipy configuration
 already implemented.
 
 # Pipeline attributes
