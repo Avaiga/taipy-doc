@@ -1,5 +1,3 @@
-# Task
-
 A `Task^` is a runnable python code provided by the developer (typically a data scientist). It represents one of the
 steps that the developer will need to implement his/her pipeline. Concretely, a _task_ means a python function that
 can be executed.

@@ -105,7 +105,8 @@ from datetime import datetime
 
 date_cfg = Config.configure_pickle_data_node(id="date_cfg", default_data=datetime(2022, 1, 25))
 
-model_cfg = Config.configure_pickle_data_node(id="model_cfg", default_path="path/to/my/model.p",description="The trained model")
+model_cfg = Config.configure_pickle_data_node(
+    id="model_cfg", default_path="path/to/my/model.p",description="The trained model")
 ```
 
 In line 4, we configure a simple pickle data node with the id "date_cfg". The scope is `SCENARIO`

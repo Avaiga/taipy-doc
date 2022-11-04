@@ -1,5 +1,3 @@
-# Cycle
-
 Data applications are often used to solve business problems that operate in time cycles.
 
 Examples:

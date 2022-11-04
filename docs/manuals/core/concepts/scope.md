@@ -1,5 +1,3 @@
-# Scope
-
 The `Scope^` of a data node is an enum among the following values :
 
 - `Scope.PIPELINE`
