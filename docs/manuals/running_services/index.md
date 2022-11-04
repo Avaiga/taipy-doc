@@ -5,7 +5,7 @@ calling the method _run()_ from the service instance either `Gui^`, `Rest^`, or 
 !!! Important
 
     As you can see in the following examples, the code to run a Taipy service is set within a `if` block checking if
-    the special variable `__name__ == "__main__"`. It's a standard boilerplate code that protects users from
+    the special variable `__name__` equals to `"__main__"`. It's a standard boilerplate code that protects users from
     accidentally invoking the script when they didn't intend to. In particular the module is called when Taipy
     spawns a new Process.
 
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     tp.run(rest)
 ```
 
-The code above is the same as:
+The code above is similar as:
 ```python
 import taipy as tp
 
@@ -104,7 +104,7 @@ if __name__ == "__main__":
     tp.run(gui, rest, title="Taipy Demo")
 ```
 
-Taipy Rest needs Taipy Core to function, when running the Taipy Rest service, Taipy Core will
-also run along with it. Therefore, Taipy Core will also be together with Taipy GUI and Taipy Rest in
-the previous example.
+Taipy Rest relies on Taipy Core. When running the Taipy Rest service, Taipy Core will
+also run along with it. Therefore, Taipy Core will run with Taipy GUI and Taipy Rest in
+the previous code example.
 

@@ -298,7 +298,7 @@ If you want your function `my_function` to be called for each task of a scenario
 given pipeline stored in `my_pipeline`, you must call `taipy.subscribe_pipeline(my_function, my_pipeline)`.
 
 You can also define a function that receives multiple parameters to be used as a subscriber. It is similar to the
-exampleabove, you can just add your parameters as a list, for example
+example above, you can just add your parameters as a list, for example
 `taipy.subscribe_scenario(my_function, ["my_param", 42], my_scenario)`.
 
 You can also unsubscribe to scenarios by using `taipy.unsubscribe_scenario(function)`

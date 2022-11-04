@@ -227,7 +227,7 @@ class RefManStep(SetupStep):
                     }
 
         from pathlib import Path
-        back_up_path = Path("tools", "setup_generation", "back_up_config.py")
+        back_up_path = Path("tools", "setup_generation", "config.py.bak")
         if Path.exists(back_up_path):
             path = Path("tools", "taipy", "config", "config.py")
             shutil.move(back_up_path, path)
@@ -415,7 +415,7 @@ class RefManStep(SetupStep):
         # Copy config.py file
         from pathlib import Path
         path = Path("tools", "taipy", "config", "config.py")
-        back_up_path = Path("tools", "setup_generation", "back_up_config.py")
+        back_up_path = Path("tools", "setup_generation", "config.py.bak")
         shutil.copyfile(path, back_up_path)
 
         # Read config.py file
