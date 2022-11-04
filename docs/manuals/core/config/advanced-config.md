@@ -49,44 +49,47 @@ if some values are not provided, the default configuration applies.
 
         ```py linenums="1" title="my_config.py"
         from datetime import datetime
-        from my_functions import plan, predict, train
+        from my_functions import write_orders_plan, compare, plan, predict, train
         from taipy import Config, Frequency, Scope
 
         # Configure all six data nodes
-        sales_history_cfg = Config.configure_csv_data_node(id="sales_history",
-                                                           scope=Scope.GLOBAL,
-                                                           default_path="my/file/path.csv")
+        sales_history_cfg = Config.configure_csv_data_node(
+            id="sales_history", scope=Scope.GLOBAL, default_path="path/sales.csv"
+        )
         trained_model_cfg = Config.configure_data_node(id="trained_model", scope=Scope.CYCLE)
         current_month_cfg = Config.configure_data_node(id="current_month", scope=Scope.CYCLE, default_data=datetime(2020, 1, 1))
         sales_predictions_cfg = Config.configure_data_node(id="sales_predictions", scope=Scope.CYCLE)
         capacity_cfg = Config.configure_data_node(id="capacity")
-        production_orders_cfg = Config.configure_sql_data_node(id="production_orders",
-                                                               db_username="admin",
-                                                               db_password="ENV[PWD]",
-                                                               db_name="production_planning",
-                                                               db_engine="mssql",
-                                                               read_query="SELECT * from production_order",
-                                                               write_table="production_order")
+        orders_cfg = Config.configure_sql_data_node(
+            id="orders",
+            db_username="admin",
+            db_password="ENV[PWD]",
+            db_name="production_planning",
+            db_engine="mssql",
+            read_query="SELECT orders.ID, orders.date, products.price, orders.number_of_products FROM orders INNER JOIN products ON orders.product_id=products.ID",
+            write_query_builder=write_orders_plan,
+        )
 
         # Configure the three tasks
         training_cfg = Config.configure_task("training", train, sales_history_cfg, [trained_model_cfg])
-        predicting_cfg = Config.configure_task(id="predicting",
-                                               function=predict,
-                                               input=[trained_model_cfg, current_month_cfg],
-                                               output=sales_predictions_cfg)
-        planning_cfg = Config.configure_task(id="planning",
-                                             function=plan,
-                                             input=[sales_predictions_cfg, capacity_cfg],
-                                             output=[production_orders_cfg])
+        predicting_cfg = Config.configure_task(
+            id="predicting", function=predict, input=[trained_model_cfg, current_month_cfg], output=sales_predictions_cfg
+        )
+        planning_cfg = Config.configure_task(
+            id="planning", function=plan, input=[sales_predictions_cfg, capacity_cfg], output=[orders_cfg]
+        )
 
         # Configure the two pipelines
         sales_pipeline_cfg = Config.configure_pipeline(id="sales", task_configs=[training_cfg, predicting_cfg])
         production_pipeline_cfg = Config.configure_pipeline(id="production", task_configs=[planning_cfg])
 
         # Configure the scenario
-        monthly_scenario_cfg = Config.configure_scenario(id="scenario_configuration",
-                                                         pipeline_configs=[sales_pipeline_cfg, production_pipeline_cfg],
-                                                         frequency=Frequency.MONTHLY)
+        monthly_scenario_cfg = Config.configure_scenario(
+            id="scenario_configuration",
+            pipeline_configs=[sales_pipeline_cfg, production_pipeline_cfg],
+            frequency=Frequency.MONTHLY,
+            comparators={sales_predictions_cfg.id: compare},
+        )
         ```
 
         The `train`, `predict`, and `plan` methods used in lines 22, 24, and 28 are the user functions imported in line
@@ -98,6 +101,13 @@ if some values are not provided, the default configuration applies.
 
         ```py linenums="1" title="my_functions.py"
         import pandas as pd
+
+        def write_orders_plan(data: pd.DataFrame):
+            insert_data = list(data[["date", "product_id", "number_of_products"]].itertuples(index=False, name=None))
+            return [
+                "DELETE FROM orders",
+                ("INSERT INTO orders VALUES (?, ?, ?)", insert_data)
+            ]
 
         def train(sales_history: pd.DataFrame):
             print("Running training")
@@ -124,7 +134,7 @@ if some values are not provided, the default configuration applies.
         [DATA_NODE.sales_history]
         storage_type = "csv"
         scope = "GLOBAL"
-        default_path = "my/file/path.csv"
+        default_path = "path/sales.csv"
         has_header = "True:bool"
         cacheable = "False:bool"
 
@@ -149,7 +159,7 @@ if some values are not provided, the default configuration applies.
         scope = "SCENARIO"
         cacheable = "False:bool"
 
-        [DATA_NODE.production_orders]
+        [DATA_NODE.orders]
         storage_type = "sql"
         scope = "SCENARIO"
         db_username = "admin"
@@ -158,8 +168,8 @@ if some values are not provided, the default configuration applies.
         db_host = "localhost"
         db_engine = "mssql"
         db_driver = "ODBC Driver 17 for SQL Server"
-        read_query = "SELECT * from production_order"
-        write_table = "production_order"
+        read_query = "SELECT orders.ID, orders.date, products.price, orders.number_of_products FROM orders INNER JOIN products ON orders.product_id=products.ID"
+        write_query_builder = <function write_orders_plan at 0x000002878FF9A030>
         db_port = "1433:int"
         cacheable = "False:bool"
 
@@ -173,7 +183,7 @@ if some values are not provided, the default configuration applies.
 
         [TASK.planning]
         inputs = [ "sales_predictions", "capacity",]
-        outputs = [ "production_orders",]
+        outputs = [ "orders",]
 
         [PIPELINE.sales]
         tasks = [ "training", "predicting",]

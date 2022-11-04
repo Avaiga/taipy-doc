@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
+import os
 import re
 import shutil
 from typing import List
@@ -15,18 +16,11 @@ class Setup(ABC):
 """
 
     def __init__(self, root_dir: str, steps: List["SetupStep"]):
-        self.root_dir = root_dir
+        self.root_dir = root_dir.replace("\\", "/")
         self.docs_dir = self.root_dir + "/docs"
         self.manuals_dir = self.docs_dir + "/manuals"
         self.tools_dir = self.root_dir + "/tools"
-        self.requested_steps = (
-            None  # Can be used later to filter out steps to be performed
-        )
-        self.steps = []
-        for step in steps:
-            if self.requested_steps is None or step.get_id() in self.requested_steps:
-                self.steps.append(step)
-                step.enter(self)
+        self.requested_steps = None  # Can be used later to filter out steps to be performed
         self.mkdocs_yml_template_content = None
         self.MKDOCS_YML_PATH = self.root_dir + "/mkdocs.yml"
         self.MKDOCS_YML_TEMPLATE_PATH = self.MKDOCS_YML_PATH + "_template"
@@ -36,6 +30,13 @@ class Setup(ABC):
             raise SystemError(
                 "FATAL - Could not read MkDocs template configuration file at {MKDOCS_YML_TEMPLATE_PATH}"
             )
+        self.steps = []
+        for step in steps:
+            if self.requested_steps is None or step.get_id() in self.requested_steps:
+                self.steps.append(step)
+                step.enter(self)
+            else:
+                step.exit(self)
 
     def setup(self):
         n_steps = len(self.steps)
@@ -85,8 +86,18 @@ class SetupStep(ABC):
         pass
 
     def exit(self, setup: Setup):
+        """Called after the step is executed.
+
+        Note that this member function is also called, before _enter()_,
+        if this step is skipped.
+        """
         pass
 
     @abstractmethod
     def setup(self, setup: Setup):
         pass
+
+def run_setup(root_dir: str, steps: List[SetupStep]):
+    setup = Setup(root_dir, steps)
+    setup.setup()
+    setup.exit()
