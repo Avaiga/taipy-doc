@@ -113,12 +113,16 @@ class RefManStep(SetupStep):
         if os.path.exists(self.REFERENCE_DIR_PATH):
             shutil.rmtree(self.REFERENCE_DIR_PATH)
 
-        setup.move_package_to_tools(Setup.ROOT_PACKAGE)
+        saved_dir = os.getcwd()
         try:
+            os.chdir(setup.tools_dir)
+            if not os.path.isdir(os.path.join(setup.tools_dir, Setup.ROOT_PACKAGE)):
+                setup.move_package_to_tools(Setup.ROOT_PACKAGE)
             self.generate_refman_pages()
         except Exception as e:
             raise e
         finally:
+            os.chdir(saved_dir)
             setup.move_package_to_root(Setup.ROOT_PACKAGE)
 
     def generate_refman_pages(self) -> None:
@@ -343,7 +347,7 @@ class RefManStep(SetupStep):
                     ]
 
             with open(package_output_path, "w") as package_output_file:
-                package_output_file.write(f'---\ntitle: "{package}" package\n---\n\n')
+                package_output_file.write(f"---\ntitle: \"{package}\" package\n---\n\n")
                 package_output_file.write(f"# Package: `{package}`\n\n")
                 if package in module_doc and module_doc[package]:
                     package_output_file.write(module_doc[package])
@@ -398,7 +402,7 @@ class RefManStep(SetupStep):
             return
 
         # Get code of methods to inject
-        with open('config_doc.txt', 'r') as f:
+        with open("config_doc.txt", "r") as f:
             print(f"INFO - Found some methods to add to Config documentation.")
             methods_to_inject = f.read()
 
@@ -409,13 +413,12 @@ class RefManStep(SetupStep):
 
         # Read config.py file
         from pathlib import Path
-        with open(Path("tools", "taipy", "config", "config.py"), 'r') as f:
+        with open(Path("tools", "taipy", "config", "config.py"), "r") as f:
             print(f"DEBUG - Reading config.py")
             contents = f.readlines()
 
         # Inject imports and code
-        imports_to_inject = """from types import NoneType
-from typing import Any, Callable, List
+        imports_to_inject = """from typing import Any, Callable, List
 import json
 from .common.scope import Scope
 from .common.frequency import Frequency
@@ -449,6 +452,6 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
             self.navigation if self.navigation else ""
         )
         try:
-            del os.environ['GENERATING_TAIPY_DOC']
+            del os.environ["GENERATING_TAIPY_DOC"]
         except:
             pass

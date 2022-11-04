@@ -1,10 +1,8 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
-import os
 import re
 import shutil
 from typing import List
-
 
 class Setup(ABC):
     ROOT_PACKAGE = "taipy"
@@ -20,9 +18,7 @@ class Setup(ABC):
         self.docs_dir = self.root_dir + "/docs"
         self.manuals_dir = self.docs_dir + "/manuals"
         self.tools_dir = self.root_dir + "/tools"
-        self.requested_steps = (
-            # None  # Can be used later to filter out steps to be performed
-        )
+        self.requested_steps = None
         self.mkdocs_yml_template_content = None
         self.MKDOCS_YML_PATH = self.root_dir + "/mkdocs.yml"
         self.MKDOCS_YML_TEMPLATE_PATH = self.MKDOCS_YML_PATH + "_template"
@@ -99,7 +95,19 @@ class SetupStep(ABC):
     def setup(self, setup: Setup):
         pass
 
-def run_setup(root_dir: str, steps: List[SetupStep]):
+from .step_viselements import VisElementsStep
+from .step_refman import RefManStep
+from .step_rest_refman import RestRefManStep
+from .step_gui_ext_refman import GuiExtRefManStep
+from .step_getting_started import GettingStartedStep
+
+def run_setup(root_dir: str, steps: List[SetupStep] = [
+    VisElementsStep(),
+    RefManStep(),
+    RestRefManStep(),
+    GuiExtRefManStep(),
+    GettingStartedStep()
+    ]):
     setup = Setup(root_dir, steps)
     setup.setup()
     setup.exit()
