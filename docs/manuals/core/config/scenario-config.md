@@ -11,7 +11,7 @@ A scenario configuration is necessary to instantiate a [Scenario](../concepts/sc
   nodes instantiated from the data node configuration attached to the comparator.
 - _**properties**_: A dictionary of additional properties.
 
-# Scenario configuration from pipeline configurations
+# From pipeline configs
 Here is a simple example assuming the pipeline configuration `pipeline_config` has already been created :
 
 ```python linenums="1"
@@ -23,7 +23,7 @@ scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_confi
 In this example, we create a scenario configuration `ScenarioConfig^` from a pipeline configuration already defined.
 
 
-# Scenario configuration from task configurations
+# From task configs
 
 When the scenario configuration contains only one single pipeline configuration, we can also create the
 `ScenarioConfig^` from the task configurations directly.
@@ -44,10 +44,11 @@ Behind the scenes, a pipeline configuration is created. Its id will be the scena
     ```python linenums="1"
     from taipy import Config
 
-    scenario_config = Config.configure_scenario_from_tasks("multiply_scenario", [task_config], pipeline_id="multiply_pipeline")
+    scenario_config = Config.configure_scenario_from_tasks(
+        "multiply_scenario", [task_config], pipeline_id="multiply_pipeline")
     ```
 
-# Scenario configuration with Cycle
+# Using Cycles
 
 Assuming the pipeline configuration `pipeline_config` has already been created, here is an example of a weekly
 scenario configuration :
@@ -55,7 +56,8 @@ scenario configuration :
 ```python  linenums="1"
 from taipy import Config, Frequency
 
-scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_config], Frequency.WEEKLY)
+scenario_config = Config.configure_scenario(
+    "multiply_scenario", [pipeline_config], Frequency.WEEKLY)
 ```
 
 In this small example, we create a scenario configuration `ScenarioConfig^` from a pipeline configuration with a
@@ -65,10 +67,11 @@ associated to a Cycle corresponding to their creation date. See documentation on
 
 [:material-arrow-right: The next section introduces the global configuration](global-config.md).
 
-# Configuring scenario comparators
+# Using scenario comparators
 
-Let us imagine a common situation where the pipeline configuration `pipeline_config` has been created with `datanode_config` as one of the data node configuration for this the pipeline configuration.
-The function `compare_function` is also defined as followed:
+Let us imagine a common situation where the pipeline configuration `pipeline_config` has been created with
+`datanode_config` as one of the data node configuration for this the pipeline configuration. The function
+`compare_function` is also defined as followed:
 
 ```python
 from taipy import Config
@@ -80,19 +83,21 @@ from taipy import Config
 # 2: {0: -7, 1: -4, 2: 0, 3: -8},
 # 3: {0: 1, 1: 4, 2: 8, 3: 0}}
 def compare_function(*data_node_results):
-    comparison_result= {}
-    current_result_index = 0
-    for current_result in data_node_results:
-        comparison_result[current_result_index]={}
-        next_result_index = 0
-        for next_result in data_node_results:
-            print(f"comparing result {current_result_index} with result {next_result_index}")
-            comparison_result[current_result_index][next_result_index] = next_result - current_result
-            next_result_index += 1
-        current_result_index += 1
-    return comparison_result
+    compare_result= {}
+    current_res_index = 0
+    for current_res in data_node_results:
+        compare_result[current_res_index]={}
+        next_res_index = 0
+        for next_res in data_node_results:
+            print(f"comparing result {current_res_index} with result {next_res_index}")
+            compare_result[current_res_index][next_res_index] = next_res - current_res
+            next_res_index += 1
+        current_res_index += 1
+    return compare_result
 
-scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_config], comparators={datanode_config.id: compare_function})
+scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_config],
+                                            comparators={datanode_config.id: compare_function})
 ```
 
-We created the scenario configuration `scenario_config` using the indicated pipeline configuration. We use the `comparators` parameter to provide a dictionary indicating which data node need to be compared and with what function.
+We created the scenario configuration `scenario_config` using the indicated pipeline configuration. We use the
+`comparators` parameter to provide a dictionary indicating which data node need to be compared and with what function.

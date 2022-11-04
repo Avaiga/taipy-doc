@@ -917,8 +917,8 @@ temp_data[(temp_data == 14) | (temp_data == 10)]
 
 # Get parent scenarios, pipelines and tasks
 
-To get the parent entities of a data node (scenarios or pipelines or tasks) you can use either the method `DataNode.get_parents()^` or the function
-`taipy.get_parents()^`. Both return the parents of the data node.
+To get the parent entities of a data node (scenarios or pipelines or tasks) you can use either the method
+`DataNode.get_parents()^` or the function `taipy.get_parents()^`. Both return the parents of the data node.
 
 !!! Example
 
@@ -933,10 +933,12 @@ To get the parent entities of a data node (scenarios or pipelines or tasks) you 
     data_node = scenario.sales_history
 
     # Retrieve the parent entities of the data node
-    parent_entities = data_node.get_parents()   # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1], 'tasks': [Task 1]}
+    parent_entities = data_node.get_parents()
+    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1], 'tasks': [Task 1]}
 
     # Retrieve the parent entities of the data node
-    tp.get_parents(data_node)   # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1], 'tasks': [Task 1]}
+    tp.get_parents(data_node)
+    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1], 'tasks': [Task 1]}
     ```
 
 [:material-arrow-right: The next section shows the scheduling and job execution](scheduling-and-job-execution.md).

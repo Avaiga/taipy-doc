@@ -226,6 +226,12 @@ class RefManStep(SetupStep):
                         "packages": [module.__name__],
                     }
 
+        from pathlib import Path
+        back_up_path = Path("tools", "setup_generation", "config.py.bak")
+        if Path.exists(back_up_path):
+            path = Path("tools", "taipy", "config", "config.py")
+            shutil.move(back_up_path, path)
+
         read_module(__import__(Setup.ROOT_PACKAGE))
 
         FORCE_PACKAGE_REGEXPS = []
@@ -404,13 +410,16 @@ class RefManStep(SetupStep):
 
         # Delete temporary file
         if os.path.exists("config_doc.txt"):
-            print(f"DEBUG - Deleting config_doc.txt")
             os.remove("config_doc.txt")
 
-        # Read config.py file
+        # Copy config.py file
         from pathlib import Path
-        with open(Path("tools", "taipy", "config", "config.py"), 'r') as f:
-            print(f"DEBUG - Reading config.py")
+        path = Path("tools", "taipy", "config", "config.py")
+        back_up_path = Path("tools", "setup_generation", "config.py.bak")
+        shutil.copyfile(path, back_up_path)
+
+        # Read config.py file
+        with open(path, 'r') as f:
             contents = f.readlines()
 
         # Inject imports and code
@@ -429,7 +438,7 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
         contents.insert(len(contents) - 2, methods_to_inject)
 
         # Fix code injection
-        with open(Path("tools", "taipy", "config", "config.py"), "w") as f:
+        with open(path, "w") as f:
             new_content = "".join(contents)
             new_content = new_content.replace(
                 "custom_document: Any = <class 'taipy.core.common.default_custom_document.DefaultCustomDocument'>",
@@ -442,6 +451,7 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
             new_content = new_content.replace("taipy.core.config.pipeline_config.PipelineConfig", "PipelineConfig")
             new_content = new_content.replace("taipy.config.common.frequency.Frequency", "Frequency")
             f.write(new_content)
+
 
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(
