@@ -84,15 +84,15 @@ from taipy import Config
 # 3: {0: 1, 1: 4, 2: 8, 3: 0}}
 def compare_function(*data_node_results):
     compare_result= {}
-    current_result_index = 0
-    for current_result in data_node_results:
-        compare_result[current_result_index]={}
-        next_result_index = 0
-        for next_result in data_node_results:
-            print(f"comparing result {current_result_index} with result {next_result_index}")
-            compare_result[current_result_index][next_result_index] = next_result - current_result
-            next_result_index += 1
-        current_result_index += 1
+    current_res_index = 0
+    for current_res in data_node_results:
+        compare_result[current_res_index]={}
+        next_res_index = 0
+        for next_res in data_node_results:
+            print(f"comparing result {current_res_index} with result {next_res_index}")
+            compare_result[current_res_index][next_res_index] = next_res - current_res
+            next_res_index += 1
+        current_res_index += 1
     return compare_result
 
 scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_config],
