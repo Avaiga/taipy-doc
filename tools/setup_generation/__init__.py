@@ -1,1 +1,1 @@
-from .setup import Setup, run_setup
+from .setup import run_setup

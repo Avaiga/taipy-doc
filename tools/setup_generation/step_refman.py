@@ -105,8 +105,8 @@ class RefManStep(SetupStep):
 
     def enter(self, setup: Setup):
         os.environ["GENERATING_TAIPY_DOC"] = "true"
-        self.REFERENCE_DIR_PATH = setup.docs_dir + "/" + RefManStep.REFERENCE_REL_PATH
-        self.XREFS_PATH = setup.manuals_dir + "/xrefs"
+        self.REFERENCE_DIR_PATH = os.path.join(setup.docs_dir, RefManStep.REFERENCE_REL_PATH)
+        self.XREFS_PATH = os.path.join(setup.manuals_dir, "xrefs")
 
     def setup(self, setup: Setup) -> None:
         # Create empty REFERENCE_DIR_PATH directory
@@ -118,14 +118,14 @@ class RefManStep(SetupStep):
             os.chdir(setup.tools_dir)
             if not os.path.isdir(os.path.join(setup.tools_dir, Setup.ROOT_PACKAGE)):
                 setup.move_package_to_tools(Setup.ROOT_PACKAGE)
-            self.generate_refman_pages()
+            self.generate_refman_pages(setup)
         except Exception as e:
             raise e
         finally:
             os.chdir(saved_dir)
             setup.move_package_to_root(Setup.ROOT_PACKAGE)
 
-    def generate_refman_pages(self) -> None:
+    def generate_refman_pages(self, setup: Setup) -> None:
         CLASS_ID = "C"
         FUNCTION_ID = "F"
         TYPE_ID = "T"
@@ -142,7 +142,6 @@ class RefManStep(SetupStep):
         #     doc
         #     packages
         entries: dict[str, dict[str, any]] = {}
-        entry_to_package = {}
         module_doc = {}
 
         def read_module(module):
@@ -229,6 +228,11 @@ class RefManStep(SetupStep):
                         "doc": doc,
                         "packages": [module.__name__],
                     }
+
+        taipy_config_dir = os.path.join(setup.tools_dir, "taipy", "config")
+        config_backup_path = os.path.join(taipy_config_dir, "config.py.bak")
+        if os.path.exists(config_backup_path):
+            shutil.move(config_backup_path, os.path.join(taipy_config_dir, "config.py"))
 
         read_module(__import__(Setup.ROOT_PACKAGE))
 
@@ -384,7 +388,7 @@ class RefManStep(SetupStep):
                         classes, package, CLASS_ID, package_output_file, package_grouped
                     )
 
-        self.add_external_methods_to_config_class()
+        self.add_external_methods_to_config_class(setup)
 
         # Filter out packages that are the exposed package and appear in the packages list
         for entry, entry_desc in xrefs.items():
@@ -395,26 +399,27 @@ class RefManStep(SetupStep):
             xrefs_output_file.write(json.dumps(xrefs))
 
     @staticmethod
-    def add_external_methods_to_config_class():
-        import os
+    def add_external_methods_to_config_class(setup: Setup):
         if not os.path.exists("config_doc.txt"):
-            print(f"WARNING - No method found to add to Config documentation !")
+            print(f"WARNING - No methods found to inject to Config documentation!")
             return
 
         # Get code of methods to inject
         with open("config_doc.txt", "r") as f:
-            print(f"INFO - Found some methods to add to Config documentation.")
+            print(f"INFO - Injecting methods to Config documentation.")
             methods_to_inject = f.read()
 
         # Delete temporary file
         if os.path.exists("config_doc.txt"):
-            print(f"DEBUG - Deleting config_doc.txt")
             os.remove("config_doc.txt")
 
+        # Backup file taipy/config/config.py
+        taipy_config_dir = os.path.join(setup.tools_dir, "taipy", "config")
+        config_path = os.path.join(taipy_config_dir, "config.py")
+        shutil.copyfile(config_path, os.path.join(taipy_config_dir, "config.py.bak"))
+
         # Read config.py file
-        from pathlib import Path
-        with open(Path("tools", "taipy", "config", "config.py"), "r") as f:
-            print(f"DEBUG - Reading config.py")
+        with open(config_path, "r") as f:
             contents = f.readlines()
 
         # Inject imports and code
@@ -432,7 +437,7 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
         contents.insert(len(contents) - 2, methods_to_inject)
 
         # Fix code injection
-        with open(Path("tools", "taipy", "config", "config.py"), "w") as f:
+        with open(config_path, "w") as f:
             new_content = "".join(contents)
             new_content = new_content.replace(
                 "custom_document: Any = <class 'taipy.core.common.default_custom_document.DefaultCustomDocument'>",
@@ -446,12 +451,11 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
             new_content = new_content.replace("taipy.config.common.frequency.Frequency", "Frequency")
             f.write(new_content)
 
+
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(
             r"^\s*\[REFERENCE_CONTENT\]\s*\n",
             self.navigation if self.navigation else ""
         )
-        try:
+        if "GENERATING_TAIPY_DOC" in os.environ:
             del os.environ["GENERATING_TAIPY_DOC"]
-        except:
-            pass
