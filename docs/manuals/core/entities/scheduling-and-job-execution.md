@@ -149,7 +149,7 @@ Deleting a Job can raise an `JobNotDeletedException^` if the `Status^` of the Jo
     print(f'(1) Number of job: {len(tp.get_jobs())}.')
 
     # Create a scenario then submit it.
-    input_data_node_config = tp.configure_data_node("input", default_value=21)
+    input_data_node_config = tp.configure_data_node("input", default_data=21)
     output_data_node_config = tp.configure_data_node("output")
     task_config = tp.configure_task("double_task", double)
     scenario_config = tp.configure_scenario_from_tasks("my_scenario", [task_config])
@@ -197,7 +197,7 @@ Jobs are created when a task is submitted.
     print(f'(1) Number of jobs: {len(tp.get_jobs())}.')
 
     # Create a scenario then submit it.
-    input_data_node_cfg = tp.configure_data_node("input", default_value=21)
+    input_data_node_cfg = tp.configure_data_node("input", default_data=21)
     output_data_node_cfg = tp.configure_data_node("output")
     double_task_config = tp.configure_task("double_task", double, input_data_node_cfg, output_data_node_cfg)
     print_task_config = tp.configure_task("print_task", print, output_data_node_cfg)
@@ -246,7 +246,7 @@ This example produces the following output:
     print(f'(1) Number of jobs: {len(tp.get_jobs())}.')
 
     # Create a scenario then submit it.
-    input_data_node_cfg = tp.configure_data_node("input", default_value=21)
+    input_data_node_cfg = tp.configure_data_node("input", default_data=21)
     output_data_node_cfg = tp.configure_data_node("output")
     double_task_config = tp.configure_task("double_task", double, input_data_node_cfg, output_data_node_cfg)
     print_task_config = tp.configure_task("print_task", print, output_data_node_cfg)
