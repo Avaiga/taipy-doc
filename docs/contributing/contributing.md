@@ -28,7 +28,7 @@ Reporting bugs is through [GitHub issues](https://github.com/Avaiga/taipy/issues
 Please report relevant information and preferably code that exhibits the problem. We provide templates to help you
 present the issue in a comprehensive way.
 
-The Taipy team will analyse and try to reproduce the bug to provide feedback. If confirmed, we will add a priority
+The Taipy team will analyze and try to reproduce the bug to provide feedback. If confirmed, we will add a priority
 to the issue and add it in our backlog. Feel free to propose a pull request to fix it.
 
 ## Issue reporting, feedback, proposal, design or any other comment
@@ -36,7 +36,7 @@ to the issue and add it in our backlog. Feel free to propose a pull request to f
 Any feedback or proposal is greatly appreciated! Do not hesitate to create an issue with the appropriate template on
 [GitHub](https://github.com/Avaiga/taipy/issues).
 
-The Taipy team will analyse your issue and return to you as soon as possible.
+The Taipy team will analyze your issue and return to you as soon as possible.
 
 ## Improve Documentation
 
@@ -48,10 +48,11 @@ Do not hesitate to create an issue or pull request directly on the
 The Taipy team manages its backlog in private. Each issue that will be done during our current sprint is
 attached to the `current sprint`. Please, do not work on it, the Taipy team is on it.
 
-## Code organisation
+## Code organization
 
-Taipy is organized in four main repositories:
+Taipy is organized in five main repositories:
 
+- [taipy-config](https://github.com/Avaiga/taipy-config).
 - [taipy-core](https://github.com/Avaiga/taipy-core).
 - [taipy-gui](https://github.com/Avaiga/taipy-gui).
 - [taipy-rest](https://github.com/Avaiga/taipy-rest).
@@ -64,7 +65,7 @@ Taipy is organized in four main repositories:
 Taipy's repositories follow the [PEP 8](https://www.python.org/dev/peps/pep-0008/) and
 [PEP 484](https://www.python.org/dev/peps/pep-0484/) coding convention.
 
-## Javascript
+## JavaScript
 
 Taipy's repositories follow the [W3Schools](https://www.w3schools.com/js/js_conventions.asp) and
 [Google](https://google.github.io/styleguide/tsguide.html) coding convention.
@@ -97,9 +98,9 @@ working on it.
 1. Make your [own fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) of the repository
    target by the issue. Clone it on our local machine, then go inside the directory.
 
-2. We are working with [Pipenv](https://github.com/pypa/pipenv) for our virtualenv.
-   Create a local env and install development package by running `pipenv install --dev`, then run tests with `pipenv
-   run pytest` to verify your setup.
+2. We are working with [Pipenv](https://github.com/pypa/pipenv) for our virtual environments.
+   Create a local env and install development package by running `pipenv install --dev`, then run tests with
+   `pipenv run pytest` to verify your setup.
 
 3. For convention help, we provide a [pre-commit](https://pre-commit.com/hooks.html) file.
    This tool will run before each commit and will automatically reformat code or raise warnings and errors based on the
@@ -114,14 +115,15 @@ working on it.
    [pull request from your fork](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
    Keep your pull request in __draft__ until your work is finished.
    Do not hesitate to add a comment for help or questions.
+
    Before you submit a pull request read to review from your forked repo, check that it meets these guidelines:
     - Include tests.
     - Code is [rebase](http://stackoverflow.com/a/7244456/1110993).
     - License is present.
-    - pre-commit works - without mypy error.
+    - pre-commit works - without MyPI errors.
     - GitHub's actions are passing.
 
-6. The taipy team will have a look at your Pull Request and will give feedback. If every requirement is valid, your
+6. The Taipy team will have a look at your Pull Request and will give feedback. If every requirement is valid, your
    work will be added in the next release, congratulation!
 
 
@@ -129,11 +131,11 @@ working on it.
 
 Taipy comes with multiple optional packages. You can find the list directly in the product or Taipy's packages.
 The back-end Pipfile does not install by default optional packages due to `pyodbc` requiring a driver's manual
-installation. This is not the behaviour for the front-end that installs all optional packages through its Pipfile.
+installation. This is not the behavior for the front-end that installs all optional packages through its Pipfile.
 
 If you are a contributor on Taipy, be careful with dependencies, do not forget to install or uninstall depending on
 your issue.
 
-If you need to add to Taipy a new dependency, do not forget to add it in the `Pipfile` and the `setup.py`.
+If you need to add to Taipy a new dependency, do not forget to add it in the `Pipfile` and `setup.py`.
 Keep in mind that dependency is a vector of attack. The Taipy team limits the usage of external dependencies at the
 minimum.

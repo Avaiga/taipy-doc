@@ -105,23 +105,27 @@ class RefManStep(SetupStep):
 
     def enter(self, setup: Setup):
         os.environ["GENERATING_TAIPY_DOC"] = "true"
-        self.REFERENCE_DIR_PATH = setup.docs_dir + "/" + RefManStep.REFERENCE_REL_PATH
-        self.XREFS_PATH = setup.manuals_dir + "/xrefs"
+        self.REFERENCE_DIR_PATH = os.path.join(setup.docs_dir, RefManStep.REFERENCE_REL_PATH)
+        self.XREFS_PATH = os.path.join(setup.manuals_dir, "xrefs")
 
     def setup(self, setup: Setup) -> None:
         # Create empty REFERENCE_DIR_PATH directory
         if os.path.exists(self.REFERENCE_DIR_PATH):
             shutil.rmtree(self.REFERENCE_DIR_PATH)
 
-        setup.move_package_to_tools(Setup.ROOT_PACKAGE)
+        saved_dir = os.getcwd()
         try:
-            self.generate_refman_pages()
+            os.chdir(setup.tools_dir)
+            if not os.path.isdir(os.path.join(setup.tools_dir, Setup.ROOT_PACKAGE)):
+                setup.move_package_to_tools(Setup.ROOT_PACKAGE)
+            self.generate_refman_pages(setup)
         except Exception as e:
             raise e
         finally:
+            os.chdir(saved_dir)
             setup.move_package_to_root(Setup.ROOT_PACKAGE)
 
-    def generate_refman_pages(self) -> None:
+    def generate_refman_pages(self, setup: Setup) -> None:
         CLASS_ID = "C"
         FUNCTION_ID = "F"
         TYPE_ID = "T"
@@ -138,7 +142,6 @@ class RefManStep(SetupStep):
         #     doc
         #     packages
         entries: dict[str, dict[str, any]] = {}
-        entry_to_package = {}
         module_doc = {}
 
         def read_module(module):
@@ -226,11 +229,10 @@ class RefManStep(SetupStep):
                         "packages": [module.__name__],
                     }
 
-        from pathlib import Path
-        back_up_path = Path("tools", "setup_generation", "config.py.bak")
-        if Path.exists(back_up_path):
-            path = Path("tools", "taipy", "config", "config.py")
-            shutil.move(back_up_path, path)
+        taipy_config_dir = os.path.join(setup.tools_dir, "taipy", "config")
+        config_backup_path = os.path.join(taipy_config_dir, "config.py.bak")
+        if os.path.exists(config_backup_path):
+            shutil.move(config_backup_path, os.path.join(taipy_config_dir, "config.py"))
 
         read_module(__import__(Setup.ROOT_PACKAGE))
 
@@ -349,7 +351,7 @@ class RefManStep(SetupStep):
                     ]
 
             with open(package_output_path, "w") as package_output_file:
-                package_output_file.write(f'---\ntitle: "{package}" package\n---\n\n')
+                package_output_file.write(f"---\ntitle: \"{package}\" package\n---\n\n")
                 package_output_file.write(f"# Package: `{package}`\n\n")
                 if package in module_doc and module_doc[package]:
                     package_output_file.write(module_doc[package])
@@ -386,7 +388,7 @@ class RefManStep(SetupStep):
                         classes, package, CLASS_ID, package_output_file, package_grouped
                     )
 
-        self.add_external_methods_to_config_class()
+        self.add_external_methods_to_config_class(setup)
 
         # Filter out packages that are the exposed package and appear in the packages list
         for entry, entry_desc in xrefs.items():
@@ -397,34 +399,31 @@ class RefManStep(SetupStep):
             xrefs_output_file.write(json.dumps(xrefs))
 
     @staticmethod
-    def add_external_methods_to_config_class():
-        import os
+    def add_external_methods_to_config_class(setup: Setup):
         if not os.path.exists("config_doc.txt"):
-            print(f"WARNING - No method found to add to Config documentation !")
+            print(f"WARNING - No methods found to inject to Config documentation!")
             return
 
         # Get code of methods to inject
-        with open('config_doc.txt', 'r') as f:
-            print(f"INFO - Found some methods to add to Config documentation.")
+        with open("config_doc.txt", "r") as f:
+            print(f"INFO - Injecting methods to Config documentation.")
             methods_to_inject = f.read()
 
         # Delete temporary file
         if os.path.exists("config_doc.txt"):
             os.remove("config_doc.txt")
 
-        # Copy config.py file
-        from pathlib import Path
-        path = Path("tools", "taipy", "config", "config.py")
-        back_up_path = Path("tools", "setup_generation", "config.py.bak")
-        shutil.copyfile(path, back_up_path)
+        # Backup file taipy/config/config.py
+        taipy_config_dir = os.path.join(setup.tools_dir, "taipy", "config")
+        config_path = os.path.join(taipy_config_dir, "config.py")
+        shutil.copyfile(config_path, os.path.join(taipy_config_dir, "config.py.bak"))
 
         # Read config.py file
-        with open(path, 'r') as f:
+        with open(config_path, "r") as f:
             contents = f.readlines()
 
         # Inject imports and code
-        imports_to_inject = """from types import NoneType
-from typing import Any, Callable, List
+        imports_to_inject = """from typing import Any, Callable, List
 import json
 from .common.scope import Scope
 from .common.frequency import Frequency
@@ -438,7 +437,7 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
         contents.insert(len(contents) - 2, methods_to_inject)
 
         # Fix code injection
-        with open(path, "w") as f:
+        with open(config_path, "w") as f:
             new_content = "".join(contents)
             new_content = new_content.replace(
                 "custom_document: Any = <class 'taipy.core.common.default_custom_document.DefaultCustomDocument'>",
@@ -458,7 +457,5 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
             r"^\s*\[REFERENCE_CONTENT\]\s*\n",
             self.navigation if self.navigation else ""
         )
-        try:
-            del os.environ['GENERATING_TAIPY_DOC']
-        except:
-            pass
+        if "GENERATING_TAIPY_DOC" in os.environ:
+            del os.environ["GENERATING_TAIPY_DOC"]

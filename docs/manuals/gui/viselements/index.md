@@ -248,7 +248,7 @@ of the variable that holds that dictionary as the value of the `properties` prop
 ### The `propagate` property
 
 There are situations where you don't want a variable bound to a control value (such
-as the knob location of a slider) to be updated immediately then the user manipulates
+as the knob location of a slider) to be updated immediately when the user manipulates
 the control. You may for example want to check the received value in the _on_change_
 callback and decide to use this new value or not.<br/>
 This is the purpose of the _propagate_ property.
