@@ -135,9 +135,9 @@ described in the previous section [Data node configuration](data-node-config.md)
     By default, _has_header_ is True and Taipy will use the 1st row in the CSV file as the header.
 
 -   _**exposed_type**_ indicates the data type returned when reading the data node (more examples of reading from CSV data node with different _exposed_type_ is available on [Read / Write a data node](../entities/data-node-mgt.md#csv) documentation):
-    -   By default, _exposed_type_ is `"pandas"`, and the data node will read the CSV file as a `pandas.DataFrame`.
-    -   If the _exposed_type_ value provided is `"modin"`, the data node will read the CSV file as a `modin.pandas.DataFrame`.
-    -   If the _exposed_type_ value provided is `"numpy"`, the data node will read the CSV file to a numpy array.
+    -   By default, _exposed_type_ is "pandas", and the data node will read the CSV file as a `pandas.DataFrame`.
+    -   If the _exposed_type_ value provided is "modin", the data node will read the CSV file as a `modin.pandas.DataFrame`.
+    -   If the _exposed_type_ value provided is "numpy", the data node will read the CSV file to a numpy array.
     -   If the provided _exposed_type_ value is a custom Python class, the data node will create a list of custom
     objects with the given custom class, each object will represent a row in the CSV file.
 
@@ -164,13 +164,13 @@ sales_history_cfg = Config.configure_csv_data_node(id="sales_history",
 
 In lines 3-5, we define a custom class `SaleRow` representing a row of the CSV file.
 
-In lines 7-10, we configure a basic CSV data node with the id "historical_temperature". Its _scope_ is by
-default `SCENARIO`. The default path corresponds to the file `path/hist_temp.csv`. The property _has_header_ being True,
+In lines 7-10, we configure a basic CSV data node with the identifier "historical_temperature". Its _scope_ is by
+default `SCENARIO`. The default path corresponds to the file "path/hist_temp.csv". The property _has_header_ being True,
 representing the CSV file has a header.
 
-In lines 12-15, we configure another CSV data node with the id "log_history". It uses the default `SCENARIO` scope again. The default path is the path to the CSV file `path/hist_log.csv`. The _exposed_type_ provided will be "modin" exposed type.
+In lines 12-15, we configure another CSV data node with the identifier "log_history". It uses the default `SCENARIO` scope again. The default path is the path to the CSV file "path/hist_log.csv". The _exposed_type_ provided will be "modin" exposed type.
 
-In lines 17-19, we add another CSV data node configuration with the id "sales_history". The default `SCENARIO` scope
+In lines 17-19, we add another CSV data node configuration with the identifier "sales_history". The default `SCENARIO` scope
 is used again. Since we have a custom class pre-defined for this CSV file (`SaleRow`), we provide it as the
 _exposed_type_ parameter.
 
@@ -199,9 +199,9 @@ In addition to the generic parameters described in the previous section
     being the sheet name and the value being the data of the corresponding sheet.
 
 -   _**exposed_type**_ indicates the data type returned when reading the data node (more examples of reading from Excel data node with different _exposed_type_ is available on [Read / Write a data node](../entities/data-node-mgt.md#excel) documentation):
-    -   By default, _exposed_type_ is `"pandas"`, and the data node will read the Excel file as a `pandas.DataFrame`.
-    -   If the _exposed_type_ value provided is `"modin"`, the data node will read the CSV file as a `modin.pandas.DataFrame`.
-    -   If the _exposed_type_ value provided is `"numpy"`, the data node will read the Excel file to a numpy array.
+    -   By default, _exposed_type_ is "pandas", and the data node will read the Excel file as a `pandas.DataFrame`.
+    -   If the _exposed_type_ value provided is "modin", the data node will read the CSV file as a `modin.pandas.DataFrame`.
+    -   If the _exposed_type_ value provided is "numpy", the data node will read the Excel file to a numpy array.
     -   If the provided _exposed_type_ value is a custom Python class, the data node will create a list of custom
     objects with the given custom class, each object will represent a row in the Excel file.
 
@@ -228,13 +228,13 @@ sales_history_cfg = Config.configure_excel_data_node(id="sales_history",
 
 In lines 3-5, we define a custom class `SaleRow`, representing a row in the Excel file.
 
-In lines 7-9, we configure an Excel data node. The _id_ identifier is "historical_temperature". Its _scope_ is
+In lines 7-9, we configure an Excel data node. The identifier is "historical_temperature". Its _scope_ is
 `SCENARIO` (default value), and the default path is the file hist_temp.xlsx. With _has_header_ being True, the
 Excel file must have a header. The _sheet_name_ is not provided so Taipy will use the default value "Sheet1".
 
-In lines 11-13, we configure a new Excel data node. The _id_ identifier is "log_history", the default `SCENARIO` scope is used, and the default path is "path/hist_log.xlsx". "modin" will be used as the _exoposed_type_.
+In lines 11-13, we configure a new Excel data node. The identifier is "log_history", the default `SCENARIO` scope is used, and the default path is "path/hist_log.xlsx". "modin" will be used as the _exposed_type_.
 
-In lines 15-18, we add another Excel data node configuration. The _id_ identifier is "sales_history", the
+In lines 15-18, we add another Excel data node configuration. The identifier is "sales_history", the
 default `SCENARIO` scope is used. Since we have a custom class pre-defined for this Excel file, we will provide it in
 the _exposed_type_. We also provide the list of specific sheets we want to use as the _sheet_name_ parameter.
 
@@ -270,9 +270,9 @@ can be provided:
 -   _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
     The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
 -   _**exposed_type**_ indicates the data type returned when reading the data node (more examples of reading from SQL Table data node with different _exposed_type_ is available on [Read / Write a data node](../entities/data-node-mgt.md#sql-table) documentation):
-    -   By default, _exposed_type_ is `"pandas"`, and the data node will read the SQL table as a `pandas.DataFrame`.
-    -   If the _exposed_type_ value provided is `"modin"`, the data node will read the CSV file as a `modin.pandas.DataFrame`.
-    -   If the _exposed_type_ value provided is `"numpy"`, the data node will read the SQL table to a numpy array.
+    -   By default, _exposed_type_ is "pandas", and the data node will read the SQL table as a `pandas.DataFrame`.
+    -   If the _exposed_type_ value provided is "modin", the data node will read the CSV file as a `modin.pandas.DataFrame`.
+    -   If the _exposed_type_ value provided is "numpy", the data node will read the SQL table to a numpy array.
     -   If the provided _exposed_type_ value is a custom Python class, the data node will create a list of custom
     objects with the given custom class, each object will represent a row in the SQL table.
 
@@ -329,9 +329,9 @@ provided:
 -   _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
     The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
 -   _**exposed_type**_ indicates the data type returned when reading the data node:
-    -   By default, _exposed_type_ is `"pandas"`, and the data node will return a `pandas.DataFrame` when execute the _read_query_.
-    -   If the _exposed_type_ value provided is `"modin"`, the data node will read the CSV file as a `modin.pandas.DataFrame`.
-    -   If the _exposed_type_ value provided is `"numpy"`, the data node will return a numpy array.
+    -   By default, _exposed_type_ is "pandas", and the data node will return a `pandas.DataFrame` when execute the _read_query_.
+    -   If the _exposed_type_ value provided is "modin", the data node will read the CSV file as a `modin.pandas.DataFrame`.
+    -   If the _exposed_type_ value provided is "numpy", the data node will return a numpy array.
     -   If the provided _exposed_type_ value is a custom Python class, the data node will create a list of custom
     objects with the given custom class, each object will represent a record in the table returned by the _read_query_.
 

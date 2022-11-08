@@ -18,7 +18,7 @@ This is the list of changes to Taipy releases as they were published.
    `Task.get_parents()^`, or `Pipeline.get_parents()^`, or by passing the data node entity, task entity or pipeline
    entity to the function `taipy.get_parents()^`.
    - The data node caching mechanism now also takes into account the date and time of the last modification of a file caused by either Taipy execution or an external factor. This behavior is limited to file-based data nodes: CSV, Excel, JSON, and pickle data nodes only.
-   - Added support for modin as the new exposed type.
+   - Added support for [modin](https://modin.readthedocs.io/en/stable/) as the new exposed type.
 
 ## Community edition: 2.0
 
