@@ -10,7 +10,7 @@
 
 import os
 
-from setup_generation import run_setup
+from _setup_generation import run_setup
 
 # Assuming that this script is located in <taipy-doc>/tools
 run_setup(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
