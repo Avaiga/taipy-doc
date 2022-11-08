@@ -195,6 +195,18 @@ The following examples represent the results when read from CSV data node with d
         )
         ```
 
+    === "exposed_type = "modin""
+
+        ```python
+        modin.pandas.DataFrame
+        (
+                     date  nb_sales
+            0  12/24/2018      1550
+            1  12/25/2018      2315
+            2  12/26/2018      1832
+        )
+        ```
+
     === "exposed_type = "numpy""
 
         ```python
@@ -345,6 +357,18 @@ The following examples represent the results when read from Excel data node with
         )
         ```
 
+    === "exposed_type = "modin""
+
+        ```python
+        modin.pandas.DataFrame
+        (
+                     date  nb_sales
+            0  12/24/2018      1550
+            1  12/25/2018      2315
+            2  12/26/2018      1832
+        )
+        ```
+
     === "exposed_type = "numpy""
 
         ```python
@@ -486,6 +510,18 @@ The following examples represent the results when read from SQL Table data node 
 
         ```python
         pandas.DataFrame
+        (
+               ID        date  nb_sales
+            0   1  12/24/2018      1550
+            1   2  12/25/2018      2315
+            2   3  12/26/2018      1832
+        )
+        ```
+
+    === "exposed_type = "modin""
+
+        ```python
+        modin.pandas.DataFrame
         (
                ID        date  nb_sales
             0   1  12/24/2018      1550
