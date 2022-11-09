@@ -1,10 +1,8 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
-import os
 import re
 import shutil
 from typing import List
-
 
 class Setup(ABC):
     ROOT_PACKAGE = "taipy"
@@ -45,7 +43,7 @@ class Setup(ABC):
             description = step.get_description()
             if description:
                 description = f": {description}"
-            print(f"{line}\n| Step {step_index+1}/{n_steps}{description}\n{line}")
+            print(f"{line}\n| Step {step_index+1}/{n_steps}{description}\n{line}", flush=True)
             step.setup(self)
 
     def exit(self):
@@ -97,7 +95,19 @@ class SetupStep(ABC):
     def setup(self, setup: Setup):
         pass
 
-def run_setup(root_dir: str, steps: List[SetupStep]):
+from .step_viselements import VisElementsStep
+from .step_refman import RefManStep
+from .step_rest_refman import RestRefManStep
+from .step_gui_ext_refman import GuiExtRefManStep
+from .step_getting_started import GettingStartedStep
+
+def run_setup(root_dir: str, steps: List[SetupStep] = [
+    VisElementsStep(),
+    RefManStep(),
+    RestRefManStep(),
+    GuiExtRefManStep(),
+    GettingStartedStep()
+    ]):
     setup = Setup(root_dir, steps)
     setup.setup()
     setup.exit()
