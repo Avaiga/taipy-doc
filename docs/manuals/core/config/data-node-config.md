@@ -137,7 +137,7 @@ described in the previous section [Data node configuration](data-node-config.md)
 -   _**exposed_type**_ indicates the data type returned when reading the data node (more examples of reading from CSV data node with different _exposed_type_ is available on [Read / Write a data node](../entities/data-node-mgt.md#csv) documentation):
     -   By default, _exposed_type_ is "pandas", and the data node will read the CSV file as a `pandas.DataFrame`.
     -   If the _exposed_type_ value provided is "modin", the data node will read the CSV file as a `modin.pandas.DataFrame`.
-    -   If the _exposed_type_ value provided is "numpy", the data node will read the CSV file to a numpy array.
+    -   If the _exposed_type_ value provided is "numpy", the data node will read the CSV file as a numpy array.
     -   If the provided _exposed_type_ value is a custom Python class, the data node will create a list of custom
     objects with the given custom class, each object will represent a row in the CSV file.
 
@@ -171,7 +171,7 @@ representing the CSV file has a header.
 In lines 12-15, we configure another CSV data node with the identifier "log_history". It uses the default `SCENARIO` scope again. The default path is the path to the CSV file "path/hist_log.csv". The _exposed_type_ provided will be "modin" exposed type.
 
 In lines 17-19, we add another CSV data node configuration with the identifier "sales_history". The default `SCENARIO` scope
-is used again. Since we have a custom class pre-defined for this CSV file (`SaleRow`), we provide it as the
+is used again. Since we have a custom class called `SaleRow` that is defined for this CSV file, we provide it as the
 _exposed_type_ parameter.
 
 !!! Note
@@ -201,7 +201,7 @@ In addition to the generic parameters described in the previous section
 -   _**exposed_type**_ indicates the data type returned when reading the data node (more examples of reading from Excel data node with different _exposed_type_ is available on [Read / Write a data node](../entities/data-node-mgt.md#excel) documentation):
     -   By default, _exposed_type_ is "pandas", and the data node will read the Excel file as a `pandas.DataFrame`.
     -   If the _exposed_type_ value provided is "modin", the data node will read the CSV file as a `modin.pandas.DataFrame`.
-    -   If the _exposed_type_ value provided is "numpy", the data node will read the Excel file to a numpy array.
+    -   If the _exposed_type_ value provided is "numpy", the data node will read the Excel file as a numpy array.
     -   If the provided _exposed_type_ value is a custom Python class, the data node will create a list of custom
     objects with the given custom class, each object will represent a row in the Excel file.
 
@@ -272,7 +272,7 @@ can be provided:
 -   _**exposed_type**_ indicates the data type returned when reading the data node (more examples of reading from SQL Table data node with different _exposed_type_ is available on [Read / Write a data node](../entities/data-node-mgt.md#sql-table) documentation):
     -   By default, _exposed_type_ is "pandas", and the data node will read the SQL table as a `pandas.DataFrame`.
     -   If the _exposed_type_ value provided is "modin", the data node will read the CSV file as a `modin.pandas.DataFrame`.
-    -   If the _exposed_type_ value provided is "numpy", the data node will read the SQL table to a numpy array.
+    -   If the _exposed_type_ value provided is "numpy", the data node will read the SQL table as a numpy array.
     -   If the provided _exposed_type_ value is a custom Python class, the data node will create a list of custom
     objects with the given custom class, each object will represent a row in the SQL table.
 
