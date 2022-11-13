@@ -14,15 +14,18 @@ TOP_DIR = os.path.dirname(ROOT_DIR)
 # Where all the code from all directories/repositories is copied
 DEST_DIR_NAME = "taipy"
 
-PACKAGES = ["config", "core", "gui", "getting-started", "rest" ]
-PRIVATE_PACKAGES = [ "auth", "enterprise" ]
+REPOS = ["config", "core", "gui", "getting-started", "rest" ]
+PRIVATE_REPOS = [ "auth", "enterprise" ]
 
+OPTIONAL_PACKAGES = {
+    "gui": ["pyarrow", "pyngrok", "python-magic", "python-magic-bin"]
+}
 class GitContext(object):
     """Temporarily force GIT_TERMINAL_PROMPT to 0 for private repositories."""
     V="GIT_TERMINAL_PROMPT"
-    def __init__(self, package: str):
+    def __init__(self, repo: str):
         self.value = None
-        self.save_value = package in PRIVATE_PACKAGES
+        self.save_value = repo in PRIVATE_REPOS
 
     def __enter__(self):
         if self.save_value:
@@ -37,7 +40,7 @@ class GitContext(object):
                 del os.environ[__class__.V]
 
 
-p = PACKAGES[1]
+p = REPOS[1]
 parser = argparse.ArgumentParser(prog="python "+SCRIPT_NAME,
                                  formatter_class=argparse.RawTextHelpFormatter,
                                  description="""\
@@ -51,32 +54,32 @@ parser.add_argument("-c", "--check", action='store_true',
                     help="Only checks if the fetch can be performed then exits.")
 parser.add_argument('version', nargs='*',
                     help="""\
-The version for the whole doc set, or specific packages.
+The version for the whole doc set, or specific repositories.
 This can be 'local', 'develop' or a valid version number.
-It can be prefixed with '<package>:', then the version applies
-only to that package. If that prefix is not present, the version
-applies to all packages.
-Valid package names are:
+It can be prefixed with '<repository>:', then the version applies
+only to that repository. If that prefix is not present, the version
+applies to all repositories.
+Valid repository names are:
 """
-+ "\n".join(["  - " + p for p in PACKAGES ])
++ "\n".join(["  - " + p for p in REPOS ])
 + """
 
 Note that each <version> arguments may overwrite the previous ones.
 i.e.:
   '2.0 """ + p + """:1.0' will set all versions to 2.0 except for
-    the '""" + p + """' package.
-  '""" + p + """:1.0 2.0' will set version 2.0 for all packages.
+    the '""" + p + """' repository.
+  '""" + p + """:1.0 2.0' will set version 2.0 for all repositories.
 If <version> is 'local', the code is retrieved from a directory called
-'taipy-<package>', above the current directory.
+'taipy-<repository-name>', above the current directory.
 If <version> is 'develop', the develop branch for the indicated repository
 is used.
 If <version> is '<Major>.<Minor>', the corresponding branch is used.
 If <version> contains an additional '.<Patch>[.<More>]' fragment, then the
 corresponding tag is extracted from the '<Major>.<Minor>' branch for that
-package.
+repository.
 If any version is not 'local', then the 'git' command must be accessible.
 
-The default behaviour is to use a local version for all packages.
+The default behaviour is to use a local version for all repositories.
 """)
 
 args = parser.parse_args()
@@ -93,20 +96,20 @@ if mkdocs_yml_version is None:
     raise ValueError(f"'{mkdocs_yml_template_path}' has an invalid site_url value. This must be 'develop' or 'release-[M].[m]'.")
 mkdocs_yml_version = mkdocs_yml_version.group(2) if mkdocs_yml_version.group(2) else mkdocs_yml_version.group(1)
 
-# Gather version information for each package
-package_defs = { package: { "version" : "local", "tag": None } for package in PACKAGES+PRIVATE_PACKAGES }
+# Gather version information for each repository
+repo_defs = { repo: { "version" : "local", "tag": None } for repo in REPOS+PRIVATE_REPOS }
 CATCH_VERSION_RE = re.compile(r"(^\d+\.\d+?)(?:(\.\d+)(\..*)?)?|develop|local$")
 for version in args.version:
-    package = None
+    repo = None
     if version == "MKDOCS":
         version = mkdocs_yml_version
         tag = None
     else:
         try:
             colon = version.index(":")
-            package = version[:colon]
-            if package.startswith("taipy-"):
-                package = package[6:]
+            repo = version[:colon]
+            if repo.startswith("taipy-"):
+                repo = repo[6:]
             version = version[colon+1:]
         except ValueError as e:
             pass
@@ -120,19 +123,19 @@ for version in args.version:
                 tag = version + version_match.group(2)
                 if version_match.group(3):
                     tag += version_match.group(3)
-    if package:
-        if not package in package_defs:
-            raise ValueError(f"'{package}' is not a valid package.")
-        package_defs[package]["version"] = version
-        package_defs[package]["tag"] = tag
+    if repo:
+        if not repo in repo_defs:
+            raise ValueError(f"'{repo}' is not a valid repository name.")
+        repo_defs[repo]["version"] = version
+        repo_defs[repo]["tag"] = tag
     else:
-        for package in package_defs.keys():
-            package_defs[package]["version"] = version
-            package_defs[package]["tag"] = tag
+        for repo in repo_defs.keys():
+            repo_defs[repo]["version"] = version
+            repo_defs[repo]["tag"] = tag
 
 # Test git, if needed
 git_command="git"
-if args.no_pull and all(v["version"] == "local" for v in package_defs.values()):
+if args.no_pull and all(v["version"] == "local" for v in repo_defs.values()):
     git_command=None
 else:
     git_path = shutil.which(git_command)
@@ -140,50 +143,50 @@ else:
         raise IOError(f"Couldn't find command \"{git_command}\"")
     git_command=git_path
 
-# Check that directory, branches and tags exist for each package
+# Check that directory, branches and tags exist for each repository
 github_token = os.environ.get("GITHUB_TOKEN", "")
 if github_token:
     github_token += "@"
 github_root=f"https://{github_token}github.com/Avaiga/taipy-"
-for package in package_defs.keys():
-    version = package_defs[package]["version"]
+for repo in repo_defs.keys():
+    version = repo_defs[repo]["version"]
     if version == "local":
-        package_path = os.path.join(TOP_DIR, "taipy-" + package)
-        package_defs[package]["path"] = package_path
-        if not os.path.isdir(package_path):
-            raise IOError(f"Repository 'taipy-{package}' must be cloned in \"{TOP_DIR}\".")
+        repo_path = os.path.join(TOP_DIR, "taipy-" + repo)
+        repo_defs[repo]["path"] = repo_path
+        if not os.path.isdir(repo_path):
+            raise IOError(f"Repository 'taipy-{repo}' must be cloned in \"{TOP_DIR}\".")
     elif version == "develop":
-        with GitContext(package):
-            cmd = subprocess.run(f"{git_path} ls-remote -q -h {github_root}{package}.git", shell=True, capture_output=True, text=True)
+        with GitContext(repo):
+            cmd = subprocess.run(f"{git_path} ls-remote -q -h {github_root}{repo}.git", shell=True, capture_output=True, text=True)
             if cmd.returncode:
-                raise SystemError(f"Problem with {package}: {cmd.stdout}")
+                raise SystemError(f"Problem with {repo}: {cmd.stdout}")
     else:
-        with GitContext(package):
-            cmd = subprocess.run(f"{git_path} ls-remote --exit-code --heads {github_root}{package}.git", shell=True, capture_output=True, text=True)
+        with GitContext(repo):
+            cmd = subprocess.run(f"{git_path} ls-remote --exit-code --heads {github_root}{repo}.git", shell=True, capture_output=True, text=True)
             if cmd.returncode:
-                if package in PRIVATE_PACKAGES:
-                    package_defs[package]["skip"] = True
+                if repo in PRIVATE_REPOS:
+                    repo_defs[repo]["skip"] = True
                     continue
                 else:
-                    raise SystemError(f"Couldn't query branches from {github_root}{package}.")
+                    raise SystemError(f"Couldn't query branches from {github_root}{repo}.")
             if not f"release/{version}\n" in cmd.stdout:
-                raise ValueError(f"No branch 'release/{version}' in repository 'taipy-{package}'.")
-            tag = package_defs[package]["tag"]
+                raise ValueError(f"No branch 'release/{version}' in repository 'taipy-{repo}'.")
+            tag = repo_defs[repo]["tag"]
             if tag:
-                cmd = subprocess.run(f"{git_path} ls-remote -t --refs {github_root}{package}.git", shell=True, capture_output=True, text=True)
+                cmd = subprocess.run(f"{git_path} ls-remote -t --refs {github_root}{repo}.git", shell=True, capture_output=True, text=True)
                 if not f"refs/tags/{tag}\n" in cmd.stdout:
-                    raise ValueError(f"No tag '{tag}' in repository 'taipy-{package}'.")
+                    raise ValueError(f"No tag '{tag}' in repository 'taipy-{repo}'.")
 
 if args.check:
     print(f"Fetch should perform properly with the following settings:")
-    for package in package_defs.keys():
-        if not package_defs[package].get("skip", False):
-            version = package_defs[package]['version']
+    for repo in repo_defs.keys():
+        if not repo_defs[repo].get("skip", False):
+            version = repo_defs[repo]['version']
             version = "(local)" if version == "local" else f"branch:{version if version == 'develop' else f'release/{version}'}"
-            tag = package_defs[package]["tag"]
+            tag = repo_defs[repo]["tag"]
             if tag:
                 version += f" tag:{tag}"
-            print(f"- taipy-{package} {version}")
+            print(f"- taipy-{repo} {version}")
     exit(0)
 
 DEST_DIR = os.path.join(ROOT_DIR, DEST_DIR_NAME)
@@ -198,9 +201,40 @@ os.makedirs(DEST_DIR)
 # If a leftover of a previous failed run
 safe_rmtree(os.path.join(TOOLS_PATH, DEST_DIR_NAME))
 
+pipfile_packages = {}
+PIPFILE_PACKAGE_RE = re.compile(r"(.*?)\s?=\s?(.*)")
+
 # Fetch files
-def move_package(package: str, src_path: str):
-    if package == "getting-started":
+def move_files(repo: str, src_path: str):
+    # Read Pipfile dependency packages
+    pipfile_path = os.path.join(src_path, "Pipfile")
+    if os.path.isfile(pipfile_path):
+        reading_packages= False
+        repo_optional_packages = OPTIONAL_PACKAGES.get(repo, None)
+        with open(pipfile_path, "r") as pipfile:
+            while True:
+                line = pipfile.readline()
+                if str(line) == "" or (reading_packages and (not line.strip() or line[0] == "[")):
+                    break
+                line = line.strip()
+                if line == "[packages]":
+                    reading_packages = True
+                elif reading_packages:
+                    match = PIPFILE_PACKAGE_RE.fullmatch(line)
+                    if match and not match.group(1).startswith("taipy"):
+                        package = match.group(1).lower()
+                        version = match.group(2)
+                        if repo_optional_packages is None or not package in repo_optional_packages:
+                            if package in pipfile_packages:
+                                versions = pipfile_packages[package]
+                                if version in versions:
+                                    versions[version].append(repo)
+                                else:
+                                    versions[version] = [ repo ]
+                            else:
+                                pipfile_packages[package] = { version: [ repo ] }
+    # Copy relevant files for Reference Manual generation
+    if repo == "getting-started":
         gs_dir = os.path.join(ROOT_DIR, "docs", "getting_started")
         safe_rmtree(os.path.join(gs_dir, "src"))
         for step_dir in [step_dir for step_dir in os.listdir(gs_dir) if step_dir.startswith("step_") and os.path.isdir(os.path.join(gs_dir, step_dir))]:
@@ -215,8 +249,9 @@ def move_package(package: str, src_path: str):
         subprocess.run(f"python {os.path.join(src_path), 'generate_notebook.py'}", shell=True, capture_output=True, text=True)
         os.chdir(saved_dir)
     else:
-        tmp_dir = os.path.join(ROOT_DIR, f"{package}.tmp")
-        gui_dir = os.path.join(ROOT_DIR, f"gui") if package == "gui" else None
+        tmp_dir = os.path.join(ROOT_DIR, f"{repo}.tmp")
+        safe_rmtree(tmp_dir)
+        gui_dir = os.path.join(ROOT_DIR, f"gui") if repo == "gui" else None
         if gui_dir and os.path.isdir(gui_dir):
             if os.path.isdir(os.path.join(gui_dir, "node_modules")):
                 shutil.move(os.path.join(gui_dir, "node_modules"), os.path.join(ROOT_DIR, f"gui_node_modules"))
@@ -245,29 +280,29 @@ def move_package(package: str, src_path: str):
         finally:
             shutil.rmtree(tmp_dir)
 
-for package in package_defs.keys():
-    version = package_defs[package]['version']
-    print(f"Fetching package {package} ({version})", flush=True)
+for repo in repo_defs.keys():
+    version = repo_defs[repo]['version']
+    print(f"Fetching file for repository {repo} ({version})", flush=True)
     if version == "local":
-        src_path = package_defs[package]['path']
+        src_path = repo_defs[repo]['path']
         if not args.no_pull:
             subprocess.run(f"{git_path} pull {src_path}", shell=True, capture_output=True, text=True)
         print(f"    Copying from {src_path}...", flush=True)
-        move_package(package, src_path)
-    elif not package_defs[package].get("skip", False):
-        clone_dir = os.path.join(ROOT_DIR, f"{package}.clone")
+        move_files(repo, src_path)
+    elif not repo_defs[repo].get("skip", False):
+        clone_dir = os.path.join(ROOT_DIR, f"{repo}.clone")
         if version != "develop":
             version = f"release/{version}"
         print("    Cloning...", flush=True)
-        subprocess.run(f"{git_path} clone -b {version} {github_root}{package}.git {clone_dir}", shell=True, capture_output=True, text=True)
-        tag = package_defs[package]['tag']
+        subprocess.run(f"{git_path} clone -b {version} {github_root}{repo}.git {clone_dir}", shell=True, capture_output=True, text=True)
+        tag = repo_defs[repo]['tag']
         if tag:
             # Checkout tag version
             saved_dir = os.getcwd()
             os.chdir(clone_dir)
             subprocess.run(f"{git_path} checkout {tag}", shell=True, capture_output=True, text=True)
             os.chdir(saved_dir)
-        move_package(package, clone_dir)
+        move_files(repo, clone_dir)
         # For some reason, we need to protect the removal of the clone dirs...
         # See https://stackoverflow.com/questions/1213706/what-user-do-python-scripts-run-as-in-windows
         def handleRemoveReadonly(func, path, exc):
@@ -277,4 +312,67 @@ for package in package_defs.keys():
                 func(path)
             else:
                 raise
-        shutil.rmtree(os.path.join(ROOT_DIR, f"{package}.clone"), onerror=handleRemoveReadonly)
+        shutil.rmtree(clone_dir, onerror=handleRemoveReadonly)
+
+# Generate Pipfile from package dependencies from all repositories
+pipfile_path = os.path.join(ROOT_DIR, "Pipfile")
+pipfile_message = "WARNING: Package versions mismatch in Pipfiles - Pipfile not updated."
+for package, versions in pipfile_packages.items():
+    if len(versions) != 1:
+        if pipfile_message:
+            print(pipfile_message)
+            pipfile_message = None
+        print(f"- {package}:")
+        for version, repos in versions.items():
+            print(f"  {version} in {', '.join(repos)}.")
+        pipfile_path = None
+# Update Pipfile from all other Pipfiles
+if pipfile_path:
+    pipfile_lines = None
+    with open(pipfile_path, "r") as pipfile:
+        pipfile_lines = pipfile.readlines()
+    new_pipfile_path = os.path.join(ROOT_DIR, "Pipfile.new")
+    in_packages_section = False
+    legacy_pipfile_packages = {}
+    pipfile_changes = []
+    with open(new_pipfile_path, "w") as new_pipfile:
+        for line in pipfile_lines:
+            if in_packages_section:
+                if not line or line[0] == "[":
+                    in_packages_section = False
+                    # List packages
+                    for package in sorted(pipfile_packages.keys(), key=str.casefold):
+                        versions = pipfile_packages[package]
+                        version = list(versions.keys())[0]
+                        new_pipfile.write(f"{package} = {version}\n")
+                        if not package in legacy_pipfile_packages:
+                            pipfile_changes.append(f"Package '{package}' added ({version})")
+                        elif legacy_pipfile_packages[package] != version:
+                            pipfile_changes.append(f"Package '{package}' version changed from {legacy_pipfile_packages[package]} to {version}")
+                            del legacy_pipfile_packages[package]
+                        else:
+                            del legacy_pipfile_packages[package]
+                    new_pipfile.write("\n")
+                    skip_line = True
+                    new_pipfile.write(line)
+                match = PIPFILE_PACKAGE_RE.fullmatch(line.strip())
+                if match and not match.group(1).startswith("taipy"):
+                    legacy_pipfile_packages[match.group(1).lower()] = match.group(2)
+            else:
+                new_pipfile.write(line)
+                if line.strip() == "[packages]":
+                    in_packages_section = True
+    for package, version in legacy_pipfile_packages.items():
+        pipfile_changes.append(f"Package '{package}' removed ({version})")
+    if pipfile_changes:
+        print(f"Pipfile was updated (Pipfile.bak saved):")
+        for change in pipfile_changes:
+            print(f"- {change}")
+        shutil.move(pipfile_path, os.path.join(ROOT_DIR, "Pipfile.bak"))
+        shutil.move(new_pipfile_path, pipfile_path)
+        print(f"You may want to rebuild you virtual environment:")
+        print(f"  - pipenv --rm")
+        print(f"  - pipenv install --dev")
+    else:
+        print(f"No changes in Pipfile")
+        os.remove(new_pipfile_path)

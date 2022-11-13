@@ -146,7 +146,6 @@ markdown_extensions:
   - toc:
       baselevel: 2
       permalink: true
-      slugify: !!python/name:pymdownx.slugs.uslugify
   - meta
 plugins:
   - include-markdown
@@ -159,10 +158,10 @@ plugins:
             docstring_style: google
           rendering:
             show_source: false
-      watch:
-        - taipy
   - macros:
       module_name: tools/postprocess
+watch:
+  - taipy
 extra:
   social:
     - icon: fontawesome/brands/twitter
