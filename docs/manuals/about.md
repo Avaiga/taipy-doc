@@ -22,8 +22,9 @@ user’s experience.
 
 ## Taipy Core - `taipy.core`
 
-The `taipy.core^` package is a Python library made to build powerful and customized data-driven back-end applications.
-It provides the necessary tools to help Python developer transform their algorithms into a complete
+The `taipy.core^` package is a Python library designed to build powerful and customized data-driven back-end
+applications.
+It provides the necessary tools to help Python developers transform their algorithms into a complete
 back-end application.
 
 Taipy Core brings algorithm management to another level: algorithms are now connected to the end-user through
@@ -38,10 +39,10 @@ user-defined scenarios, interactive data, smart scheduling, etc.
 
 ## Taipy REST - `taipy.rest`
 
-The `taipy.rest` package allows you to interact with Taipy Core concepts such as scenarios,
-pipelines, etc. through a dedicated REST API. This package aims to provide a solution to
-easily integrate Taipy applications with other IT systems. The API comes with
-multiple endpoints for you to work with Taipy Core concept conveniently and efficiently.
+The `taipy.rest` package allows you to access Taipy Core functionalities such as scenarios management,
+pipelines and task orchestration, data management, etc., through a dedicated REST API.
+This package aims to provide a solution to easily integrate Taipy applications with other IT systems.
+The API comes with multiple endpoints for you to work with Taipy Core conveniently and efficiently.
 
 [:material-arrow-right: Taipy REST user manual](rest/index.md)
 
