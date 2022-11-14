@@ -85,7 +85,7 @@ re-execute **Scenario 1**, Taipy detects that the **current month** data node en
 **Scenario 1**, runs the entity graph with the **current month** set to "_February_".
 
 To enable the difference in behavior, Taipy introduces the concept of Scope. In Taipy, Option 1 corresponds to the
-by-default behavior: the `SCOPE` default value is `SCENARIO`. While Option 2 corresponds to setting the
-scope to a level above SCENARIO (either `CYCLE` or `GLOBAL`).
+by-default behavior: the _SCOPE_ default value is `SCENARIO`. While Option 2 corresponds to setting the
+scope to a level above `SCENARIO` (either `CYCLE` or `GLOBAL`).
 
 [:material-arrow-right: The next section introduces the Scope concept.](scope.md)

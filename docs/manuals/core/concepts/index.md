@@ -37,13 +37,13 @@ This section aims at defining the following Taipy Core concepts.
 
 - A [Data node](data-node.md) (the dark blue boxes) represents a reference to a dataset. It can refer to any type of
   data such as built-in Python objects (e.g. integer, string, dictionary of parameters, list of values, ...) or more
-  complex objects (e.g. a machine learning model, a list of custom objects, the result of a database query, ...)
+  complex objects (e.g. a machine learning model, a list of custom objects, the result of a database query, ...).
   A data node can be shared by multiple tasks as input or output.
 - A [Task](task.md) (the orange boxes) can be seen as a function receiving some data node(s) as input and returning
   some data node(s) as output.
 - A [Job](job.md) represents a unique execution of a Task.
 - A [Pipeline](pipeline.md) represents a set of tasks connected together through data nodes, that should be executed
-  together and forming a consistent algorithm.
+  as a whole and forming a consistent algorithm.
 - A [Scenario](scenario.md) is made of one or multiple pipelines. It represents an instance of a business problem to
   solve.
 - A [Cycle](cycle.md) or work cycle is a time period corresponding to an iteration of a recurrent business
@@ -56,7 +56,7 @@ This section aims at defining the following Taipy Core concepts.
 !!! important "Definition: Config vs Entities"
 
     Among the concepts described in this section, **data nodes**, **tasks**, **pipelines**, and **scenarios** have
-    two types of Taipy objects related to them: configuration objects and runtime objects.
+    two types of Taipy objects related to them: _configuration_ objects and _runtime_ objects.
 
     To differentiate the configuration objects from their runtime counterparts, they are named **_configs_**
     (`DataNodeConfig`, `TaskConfig`, `PipelineConfig`, and `ScenarioConfig`). In contrast, the runtime objects

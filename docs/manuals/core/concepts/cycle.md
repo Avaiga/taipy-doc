@@ -37,7 +37,7 @@ When comes the end of a _cycle_ (start date + duration), only one of the scenari
 !!! example "Example for February cycle"
 
     ![cycles](../pic/cycles_colored.svg){ align=left width="250" }
-    Now the user starts working on the February work cycle. He creates two scenarios for the February cycle (one
+    Now the user starts working on the February work cycle. He or she creates two scenarios for the February cycle (one
     with a low capacity assumption and one with a high capacity assumption).
     The user can then decide to elect the low capacity scenario as the "officilal" scenario for February.
     To accomplish that, he just needs to promote the low capacity scenario as _**primary**_ for the February cycle.

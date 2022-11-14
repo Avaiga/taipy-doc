@@ -1,4 +1,4 @@
-We have introduced within Taipy the important concept of a `Scenario^`. The Taipy Scenario represents an instance of a
+We have introduced within Taipy the important concept of a `Scenario^`. A Taipy Scenario represents an instance of a
 business problem to solve on consistent data and parameter sets.
 
 As its name implies, with Taipy scenarios the users can instantiate different versions of a business

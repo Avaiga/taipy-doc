@@ -29,7 +29,7 @@ the task configuration `TaskConfig^` that must be provided when instantiating a 
 
 !!! Important
     The data nodes _sales history_, _current month_, and _capacity_ are considered as **input**
-    data nodes since no task computes them.<br>
+    data nodes since no task computes them.<br/>
     The _trained model_ and _sales predictions_' data nodes are considered as **intermediate** data nodes while
     the _production orders_ data node is considered as an **output** data node since no task reads it.
 
