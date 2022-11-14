@@ -17,7 +17,7 @@ preprocessing and preparing data, a _pipeline_ for computing a training model, a
 
     This problem has been modeled in two pipelines - one pipeline for the forecasting algorithm and one for the
     production planning algorithm. As a consequence, the two algorithms can have two different workflows. They can run
-    independently, under different schedules. For example, one on a fixed schedule (e.g. every week) and one on demand
+    independently, under different schedules. For example, one on a fixed schedule (e.g. every week) and one on demand,
     interactively triggered by end-users.
 
 
