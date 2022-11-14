@@ -26,6 +26,22 @@ method triggers the submission of all the scenario's pipelines. Then each task o
         scenario.submit()
     ```
 
+By default, Taipy will asynchronously execute the jobs. If you want to wait until the submitted jobs are finished, you can use the parameter _wait_ and _timeout_:
+
+```python linenums="1"
+import taipy as tp
+import my_config
+
+scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+task = scenario.predicting
+
+tp.submit(task, wait=True, timeout=3)
+```
+
+_timeout_ can be an integer or a float. By default, _wait_ is False and _timeout_ is None. If _wait_ is True and
+_timeout_ is not specified or None, there is no limit to the wait time. If _wait_ is True and _timeout_ is specified,
+taipy will wait until all the submitted jobs are finished or up to _timeout_ seconds.
+
 You can also submit just a single pipeline with the same `taipy.submit()^` method:
 
 ```python linenums="1"
@@ -38,7 +54,9 @@ pipeline = scenario.sales_pipeline
 tp.submit(pipeline)
 ```
 In line 5, we retrieve the pipeline named `sales_pipeline` from the created scenario. In line 7, we submit only this
-pipeline for execution. The `taipy.submit()^` method triggers the submission of all the pipeline's tasks.
+pipeline for execution. The `taipy.submit()^` method triggers the submission of all the pipeline's tasks. When
+submitting a pipeline, you can also use the two parameters _wait_ and _timeout_ to wait until all the jobs are
+finished or up to _timeout_ seconds.
 
 !!! Note "Another syntax."
     To submit a pipeline, you can also use the method `Pipeline.submit()^`:
@@ -64,7 +82,8 @@ task = scenario.predicting
 tp.submit(task)
 ```
 In line 5, we retrieve the task named `predicting` from the created scenario. In line 7, we submit only this
-task for execution.
+task for execution. When submitting a task, you can also use the two parameters _wait_ and _timeout_ to wait until
+the job is finished or up to _timeout_ seconds.
 
 !!! Note "Another syntax."
     To submit a task, you can also use the method `Task.submit()^`:
@@ -96,13 +115,14 @@ Here is the list of the job's attributes:
 ## Job Status
 
 -   `SUBMITTED`: The job is created but not enqueued for execution.
--   `BLOCKED`: The job is blocked by inputs not ready.
+-   `BLOCKED`: The job is blocked because inputs are not ready.
 -   `PENDING`: The job is waiting for execution.
 -   `RUNNING`: The job is being executed.
--   `CANCELLED`: The job was cancelled by the user.
+-   `CANCELED`: The job was canceled by the user.
 -   `FAILED`: The job failed due to timeout or execution error.
 -   `COMPLETED`: The job execution is done and outputs were written.
 -   `SKIPPED`: The job was and will not be executed.
+-   `ABANDONED`: The job was abandoned and will not be executed.
 
 ## Get/Delete Job
 
@@ -129,7 +149,7 @@ Deleting a Job can raise an `JobNotDeletedException^` if the `Status^` of the Jo
     print(f'(1) Number of job: {len(tp.get_jobs())}.')
 
     # Create a scenario then submit it.
-    input_data_node_config = tp.configure_data_node("input", default_value=21)
+    input_data_node_config = tp.configure_data_node("input", default_data=21)
     output_data_node_config = tp.configure_data_node("output")
     task_config = tp.configure_task("double_task", double)
     scenario_config = tp.configure_scenario_from_tasks("my_scenario", [task_config])
@@ -169,8 +189,9 @@ If you want your function `my_function` to be called for each task of a scenario
 `taipy.subscribe_scenario(my_function, my_scenario)`. It is similar in the context of pipelines: to be notified on a
 given pipeline stored in `my_pipeline`, you must call `taipy.subscribe_pipeline(my_function, my_pipeline)`.
 
-You can also define a function that receives multiple parameters to be used as a subscriber. It is similar to the example
-above, you can just add your parameters as a list, for example `taipy.subscribe_scenario(my_function, ["my_param", 42], my_scenario)`.
+You can also define a function that receives multiple parameters to be used as a subscriber. It is similar to the
+example above, you can just add your parameters as a list, for example
+`taipy.subscribe_scenario(my_function, ["my_param", 42], my_scenario)`.
 
 You can also unsubscribe to scenarios by using `taipy.unsubscribe_scenario(function)`
 or `tp.unsubscribe_pipeline(function)` for pipelines. Same as for subscription, the un-subscription can be global,
@@ -184,13 +205,13 @@ def do_nothing():
     ...
 
 def my_global_subscriber(scenario, job):
-    print(f"Called from my_global_subscriber from scenario '{scenario.config_id}' and job for task '{job.task.config_id}'.")
+    print(f"my_global_subscriber: scenario '{scenario.config_id}'; task '{job.task.config_id}'.")
 
 def my_subscriber(scenario, job):
-    print(f"Called from my_subscriber from scenario '{scenario.config_id}' and job for task '{job.task.config_id}'.")
+    print(f"my_subscriber: scenario '{scenario.config_id}'; task '{job.task.config_id}'.")
 
 def my_subscriber_multi_param(scenario, job, params):
-    print(f"Called from my_subscriber_multi_param with parameters {params} in job for task '{job.task.config_id}'.")
+    print(f"my_subscriber_multi_param: params {params}; task '{job.task.config_id}'.")
 
 task_1 = tp.configure_task("my_task_1", do_nothing)
 task_2 = tp.configure_task("my_task_2", do_nothing)
@@ -200,8 +221,8 @@ scenario_2 = tp.configure_scenario_from_tasks("my_scenario", [task, task])
 params = ["my_param_1", 42]
 
 tp.subscribe_scenario(my_global_subscriber)  # Global subscription
-tp.subscribe_scenario(my_subscriber, scenario_1)  # Subscribe only on one scenario
-tp.subscribe_scenario(my_subscriber_multi_param, params, scenario_1)  # Subscriber with multiple params
+tp.subscribe_scenario(my_subscriber, scenario_1)  # Subscribe only to one scenario
+tp.subscribe_scenario(my_subscriber_multi_param, params, scenario_1)  # Subscribe with params
 
 print('Submit: scenario_1')
 tp.submit(scenario_1)
@@ -217,15 +238,15 @@ This example will produce the following output:
 
 ```
 Submit: scenario_1
-Called from my_global_subscriber from scenario 'my_scenario_1' and job for task 'my_task_1'.
-Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_1'.
-Called from my_subscriber_multi_param with parameters ["my_param_1", 42] in job for task 'my_task_1 .
-Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_2'.
-Called from my_subscriber_multi_param with parameters ["my_param_1", 42] in job for task 'my_task_2'.
+my_global_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
+my_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
+my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_1 .
+my_subscriber: scenario 'my_scenario_1' ; task 'my_task_2'.
+my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_2'.
 Submit: scenario_2
-Called from my_global_subscriber from scenario 'my_scenario_2' and job for task 'my_task_1'.
+my_global_subscriber: scenario 'my_scenario_2'; task 'my_task_1'.
 Unsubscribe to my_global_subscriber for scenario_1
 Submit: scenario_1
-Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_1'.
-Called from my_subscriber from scenario 'my_scenario_1' and job for task 'my_task_2'.
+my_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
+my_subscriber: scenario 'my_scenario_1'; task 'my_task_2'.
 ```
