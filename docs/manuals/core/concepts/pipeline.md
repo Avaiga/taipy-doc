@@ -1,21 +1,24 @@
-A `Pipeline^` is made to model an algorithm. It represents a direct acyclic graph of input, intermediate, and output
+A `Pipeline^` is designed to model an algorithm. It represents a direct acyclic graph of input, intermediate, and output
 data nodes linked together by tasks. A _pipeline_ is a set of tasks designed to perform a set of functions.
 
-For instance, in a typical machine learning application, we may have a _pipeline_ dedicated to preprocessing and
-preparing data, a _pipeline_ for computing a training model, and a _pipeline_ dedicated to scoring.
+For instance, in a typical machine learning application, we may have several pipelines: a _pipeline_ dedicated to
+preprocessing and preparing data, a _pipeline_ for computing a training model, and a _pipeline_ dedicated to scoring.
 
 !!! example "In the example"
 
-    We have chosen to model two pipelines.
+    We have chosen to model only two pipelines corresponding to a manufacturer having to first predict the sales
+    forecast, then based on the sales forecast to plan its production in its plant.
 
     ![pipelines](../pic/pipelines.svg){ align=left }
 
-    First, a sales pipeline (boxed in green in the picture) containing **training** and **predict** tasks.
+    First, the sales pipeline (boxed in green in the picture) containing **training** and **predict** tasks.
 
     Second, a production pipeline (boxed in dark gray in the picture) containing the **planning** task.
-    In fact, the two pipelines can be customized to represent two different workflows that run independently,
-    under different schedules (for batch execution running on a fixed schedule (e.g. every week)) or by different users
-    (For interactive execution triggered by end-users).
+
+    This problem has been modeled in two pipelines - one pipeline for the forecasting algorithm and one for the
+    production planning algorithm. As a consequence, the two algorithms can have two different workflows. They can run
+    independently, under different schedules. For example, one on a fixed schedule (e.g. every week) and one on demand,
+    interactively triggered by end-users.
 
 
 Note that the pipelines are not necessarily disjoint.
