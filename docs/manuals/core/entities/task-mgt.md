@@ -16,6 +16,7 @@ A task also holds various properties accessible as an attribute of the task:
     inside the output data nodes.
 -   _**input**_ is the list of input data nodes.
 -   _**output**_ is the list of output data nodes.
+-   _**version**_: The string indicates the application version of the task to instantiate. If not provided, the current version is used.
 
 !!! Example
 
