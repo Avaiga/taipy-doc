@@ -15,7 +15,7 @@ from taipy import Config
 def double(nb):
     return nb * 2
 
-input_data_node_cfg = Config.configure_data_node("input", default_value=21)
+input_data_node_cfg = Config.configure_data_node("input", default_data=21)
 output_data_node_config = Config.configure_data_node("output")
 
 double_task_cfg = Config.configure_task("double_task", double, input_data_node_config, output_data_node_config)
@@ -41,8 +41,8 @@ from taipy import Config
 def multiply_and_add(nb1, nb2):
     return nb1 * nb2, nb1 + nb2
 
-nb_1_cfg = Config.configure_data_node("nb_1", default_value=21)
-nb_2_cfg = Config.configure_data_node("nb_2", default_value=2)
+nb_1_cfg = Config.configure_data_node("nb_1", default_data=21)
+nb_2_cfg = Config.configure_data_node("nb_2", default_data=2)
 
 multiplication_cfg = Config.configure_data_node("multiplication")
 addition_cfg = Config.configure_data_node("addition")
