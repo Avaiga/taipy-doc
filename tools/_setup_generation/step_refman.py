@@ -86,8 +86,10 @@ class RefManStep(SetupStep):
         ("taipy.config.checker.issue_collector.IssueCollector", "taipy.config"),
         ("taipy.config.common.scope.Scope", "taipy.core.config"),
         ("taipy.config.common.frequency.Frequency", "taipy.core.config"),
-        ("taipy.config.global_app.global_app_config.GlobalAppConfig", "taipy.core.config"),
+        ("taipy.config.unique_section.*", "taipy.config"),
+        ("taipy.config.exceptions.exceptions.ConfigurationIssueError", "taipy.config.exceptions"),
         ("taipy.rest.rest.Rest", "taipy.rest"),
+        ("taipy.auth.config.authentication_config.AuthenticationConfig", "taipy.auth.config"),
     ]
     # Entries that should be hidden for the time being
     HIDDEN_ENTRIES = ["Decimator", "get_context_id", "invoke_state_callback"]
