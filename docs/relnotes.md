@@ -86,12 +86,17 @@ Published on 2022-10.
   See [issue #464](https://github.com/Avaiga/taipy-gui/issues/464).
 - [gui] section in configuration files breaks the application.<br/>
   See [issue #469](https://github.com/Avaiga/taipy-gui/issues/469).
-  
+
 2.0.1
 
 - Bar charts' "barmode" set to "stack" is broken.<br/>
   See [issue #445](https://github.com/Avaiga/taipy-gui/issues/445).
 
+**`taipy-core`**<br/>
+2.0.4
+
+- Do not update `last_edit_date` when a job fails or is abandoned.
+  See [issue #366](https://github.com/Avaiga/taipy-core/issues/366).
 
 #### Deprecations
 
@@ -177,7 +182,7 @@ Published on 2022-06.
   See [issue #365](https://github.com/Avaiga/taipy-gui/issues/365).
 - Crash fixed when using a dictionary in the labels property of the slider control.<br/>
   See [issue #379](https://github.com/Avaiga/taipy-gui/issues/379).
-     
+
 <br/>1.1.0
 
 - Concurrency issues were fixed.
