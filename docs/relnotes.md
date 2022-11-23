@@ -105,6 +105,11 @@ Published on 2022-10.
 - Bar charts' "barmode" set to "stack" is broken.<br/>
   See [issue #445](https://github.com/Avaiga/taipy-gui/issues/445).
 
+**`taipy-core`**<br/>
+2.0.4
+
+- Do not update `last_edit_date` when a job fails or is abandoned.
+  See [issue #366](https://github.com/Avaiga/taipy-core/issues/366).
 
 #### Deprecations
 
