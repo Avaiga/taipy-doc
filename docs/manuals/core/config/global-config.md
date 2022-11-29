@@ -70,13 +70,14 @@ The configuration needed to use an SQL database, through sqlite3 engine, is desc
 ```python linenums="1"
 from taipy import Config
 
-Config.configure_global_app(root_folder=".taipy_root_folder/",
-                            storage_folder=".data_folder",
-                            clean_entities_enabled=True,
-                            read_entity_retry=2,
-                            repository_type="sql",
-                            repository_properties={"db_location": "path_to_sqlite_file/database.db"}
-                            )
+Config.configure_global_app(
+    root_folder=".taipy_root_folder/",
+    storage_folder=".data_folder",
+    clean_entities_enabled=True,
+    read_entity_retry=2,
+    repository_type="sql",
+    repository_properties={"db_location": "path_to_sqlite_file/database.db"}
+    )
 ```
 Taipy creates a table called `taipy_model` in the database described in the configuration, where it stores
 information about the taipy entities.

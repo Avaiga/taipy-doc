@@ -41,13 +41,15 @@ Below are two examples of data node configurations.
 ```python linenums="1"
 from taipy import Config, Scope
 
-date_cfg = Config.configure_data_node(id="date_cfg", description="The current date of the scenario")
+date_cfg = Config.configure_data_node(id="date_cfg",
+                                      description="The current date of the scenario")
 
-model_cfg = Config.configure_data_node(id="model_cfg",
-                                       scope=Scope.CYCLE,
-                                       storage_type="pickle",
-                                       description="The trained model shared by all scenarios",
-                                       code=54)
+model_cfg = Config.configure_data_node(
+    id="model_cfg",
+    scope=Scope.CYCLE,
+    storage_type="pickle",
+    description="Trained model shared by all scenarios",
+    code=54)
 ```
 
 In line 3, we configured a simple data node with the id "date_cfg". The default
@@ -104,10 +106,14 @@ addition to the generic parameters described in the previous section
 from taipy import Config
 from datetime import datetime
 
-date_cfg = Config.configure_pickle_data_node(id="date_cfg", default_data=datetime(2022, 1, 25))
+date_cfg = Config.configure_pickle_data_node(
+    id="date_cfg",
+    default_data=datetime(2022, 1, 25))
 
 model_cfg = Config.configure_pickle_data_node(
-    id="model_cfg", default_path="path/to/my/model.p", description="The trained model")
+    id="model_cfg",
+    default_path="path/to/my/model.p",
+    description="The trained model")
 ```
 
 In line 4, we configure a simple pickle data node with the id "date_cfg". The scope is `SCENARIO`
@@ -148,18 +154,21 @@ class SaleRow:
     date: str
     nb_sales: int
 
-temp_cfg = Config.configure_csv_data_node(id="historical_temperature",
-                                          default_path="path/hist_temp.csv",
-                                          has_header=True,
-                                          exposed_type="numpy")
+temp_cfg = Config.configure_csv_data_node(
+    id="historical_temperature",
+    default_path="path/hist_temp.csv",
+    has_header=True,
+    exposed_type="numpy")
 
-log_cfg = Config.configure_csv_data_node(id="log_history",
-                                         default_path="path/hist_log.csv",
-                                         exposed_type="modin")
+log_cfg = Config.configure_csv_data_node(
+    id="log_history",
+    default_path="path/hist_log.csv",
+    exposed_type="modin")
 
-sales_history_cfg = Config.configure_csv_data_node(id="sales_history",
-                                           default_path="path/sales.csv",
-                                           exposed_type=SaleRow)
+sales_history_cfg = Config.configure_csv_data_node(
+    id="sales_history",
+    default_path="path/sales.csv",
+    exposed_type=SaleRow)
 ```
 
 In lines 3-5, we define a custom class `SaleRow` representing a row of the CSV file.
@@ -168,11 +177,13 @@ In lines 7-10, we configure a basic CSV data node with the identifier "historica
 default `SCENARIO`. The default path corresponds to the file "path/hist_temp.csv". The property _has_header_ being True,
 representing the CSV file has a header.
 
-In lines 12-15, we configure another CSV data node with the identifier "log_history". It uses the default `SCENARIO` scope again. The default path is the path to the CSV file "path/hist_log.csv". The _exposed_type_ provided will be "modin" exposed type.
+In lines 12-15, we configure another CSV data node with the identifier "log_history". It uses the default `SCENARIO`
+scope again. The default path is the path to the CSV file "path/hist_log.csv". The _exposed_type_ provided will be
+"modin" exposed type.
 
-In lines 17-19, we add another CSV data node configuration with the identifier "sales_history". The default `SCENARIO` scope
-is used again. Since we have a custom class called `SaleRow` that is defined for this CSV file, we provide it as the
-_exposed_type_ parameter.
+In lines 17-19, we add another CSV data node configuration with the identifier "sales_history". The default
+`SCENARIO` scope is used again. Since we have a custom class called `SaleRow` that is defined for this CSV file, we
+provide it as the _exposed_type_ parameter.
 
 !!! Note
 
@@ -212,18 +223,21 @@ class SaleRow:
     date: str
     nb_sales: int
 
-hist_temp_cfg = Config.configure_excel_data_node(id="historical_temperature",
-                                                 default_path="path/hist_temp.xlsx",
-                                                 exposed_type="numpy")
+hist_temp_cfg = Config.configure_excel_data_node(
+    id="historical_temperature",
+    default_path="path/hist_temp.xlsx",
+    exposed_type="numpy")
 
-hist_log_cfg = Config.configure_excel_data_node(id="log_history",
-                                                default_path="path/hist_log.xlsx",
-                                                exposed_type="modin")
+hist_log_cfg = Config.configure_excel_data_node(
+    id="log_history",
+    default_path="path/hist_log.xlsx",
+    exposed_type="modin")
 
-sales_history_cfg = Config.configure_excel_data_node(id="sales_history",
-                                             default_path="path/sales.xlsx",
-                                             sheet_name=["January", "February"],
-                                             exposed_type=SaleRow)
+sales_history_cfg = Config.configure_excel_data_node(
+    id="sales_history",
+    default_path="path/sales.xlsx",
+    sheet_name=["January", "February"],
+    exposed_type=SaleRow)
 ```
 
 In lines 3-5, we define a custom class `SaleRow`, representing a row in the Excel file.
@@ -232,7 +246,8 @@ In lines 7-9, we configure an Excel data node. The identifier is "historical_tem
 `SCENARIO` (default value), and the default path is the file hist_temp.xlsx. With _has_header_ being True, the
 Excel file must have a header. The _sheet_name_ is not provided so Taipy will use the default value "Sheet1".
 
-In lines 11-13, we configure a new Excel data node. The identifier is "log_history", the default `SCENARIO` scope is used, and the default path is "path/hist_log.xlsx". "modin" will be used as the _exposed_type_.
+In lines 11-13, we configure a new Excel data node. The identifier is "log_history", the default `SCENARIO` scope is
+used, and the default path is "path/hist_log.xlsx". "modin" will be used as the _exposed_type_.
 
 In lines 15-18, we add another Excel data node configuration. The identifier is "sales_history", the
 default `SCENARIO` scope is used. Since we have a custom class pre-defined for this Excel file, we will provide it in
@@ -340,7 +355,8 @@ from taipy import Config
 import pandas as pd
 
 def write_query_builder(data: pd.DataFrame):
-    insert_data = list(data[["date", "nb_sales"]].itertuples(index=False, name=None))
+    insert_data = list(
+        data[["date", "nb_sales"]].itertuples(index=False, name=None))
     return [
         "DELETE FROM sales",
         ("INSERT INTO sales VALUES (?, ?)", insert_data)
@@ -361,14 +377,15 @@ In the previous example, we configure a _SQL_ data node with the id "sales_histo
 `SCENARIO`. The database username is "admin", the user's password is "password", the database name is "taipy", and the
 database engine is `mssql` (short for Microsoft SQL). The read query will be "SELECT \* from sales".
 
-The write query builder in this example is a callable function that takes in a `pandas.DataFrame` and return a list of queries.
-The first query will delete all the data in the table "sales", and the second query is a prepared statement that takes
-in two values, which is the data from the two columns "date" and "nb_sales" in the `pandas.DataFrame`. Since this is a prepared
-statement, it must be passed as a tuple with the first element being the query and the second element being the data.
+The write query builder in this example is a callable function that takes in a `pandas.DataFrame` and return a list
+of queries. The first query will delete all the data in the table "sales", and the second query is a prepared
+statement that takes in two values, which is the data from the two columns "date" and "nb_sales" in the `pandas.
+DataFrame`. Since this is a prepared statement, it must be passed as a tuple with the first element being the query
+and the second element being the data.
 
 The data parameter of the write query builder is expected to have the same data type as the return type of the task
-function whose output is the data node. In this example, the task function returns a `pandas.DataFrame`, so the data parameter
-of the write query builder is also expected to be a `pandas.DataFrame`.
+function whose output is the data node. In this example, the task function returns a `pandas.DataFrame`, so the data
+parameter of the write query builder is also expected to be a `pandas.DataFrame`.
 
 !!! Note
 
@@ -385,7 +402,8 @@ A `JSONDataNode^` is a type of data node used to model JSON file data. To add a 
 
 -   _**encoder**_ and _**decoder**_ parameters are optional parameters that represent the encoder (json.JSONEncoder) and
     decoder (json.JSONDecoder) used to serialize and deserialize JSON data.<br/>
-    Check out [JSON Encoders and Decoders documentation](https://docs.python.org/3/library/json.html#encoders-and-decoders) for more details.
+    Check out [JSON Encoders and Decoders](https://docs.python.org/3/library/json.html#encoders-and-decoders)
+    documentation for more details.
 
 ```python linenums="1"
 from taipy import Config
@@ -399,8 +417,9 @@ hist_temp_cfg = Config.configure_json_data_node(
 In this example, we configure a JSON data node. The _id_ argument is "historical_temperature". Its _scope_ is
 `SCENARIO` (default value), and the path is the file *hist_temp.json*.
 
-Without specific _**encoder**_ and _**decoder**_ parameters, *hist_temp_cfg* will use default encoder and decoder provided by Taipy,
-which have the capability to encode and decode Python [`enum.Enum`](https://docs.python.org/3/library/enum.html),
+Without specific _**encoder**_ and _**decoder**_ parameters, *hist_temp_cfg* will use default encoder and decoder
+provided by Taipy, which have the capability to encode and decode Python
+[`enum.Enum`](https://docs.python.org/3/library/enum.html),
 [`datetime.datetime`](https://docs.python.org/3/library/datetime.html#datetime-objects), and
 [dataclass](https://docs.python.org/3/library/dataclasses.html) object.
 
@@ -415,22 +434,29 @@ class SaleRow:
 class SaleRowEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, SaleRow):
-            return {'__type__': "SaleRow", 'date': obj.date, 'nb_sales': obj.nb_sales}
+            return {
+                '__type__': "SaleRow",
+                'date': obj.date,
+                'nb_sales': obj.nb_sales}
         return json.JSONEncoder.default(self, obj)
 
 class SaleRowDecoder(json.JSONDecoder):
     def __init__(self, *args, **kwargs):
-        json.JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
+        json.JSONDecoder.__init__(self,
+                                  object_hook=self.object_hook,
+                                  *args,
+                                  **kwargs)
 
     def object_hook(self, d):
         if d.get('__type__') == "SaleRow":
             return SaleRow(date=d['date'], nb_sales=d['nb_sales'])
         return d
 
-sales_history_cfg = Config.configure_json_data_node(id="sales_history",
-                                             path="path/sales.json",
-                                             encoder=SaleRowEncoder,
-                                             decoder=SaleRowDecoder)
+sales_history_cfg = Config.configure_json_data_node(
+    id="sales_history",
+    path="path/sales.json",
+    encoder=SaleRowEncoder,
+    decoder=SaleRowDecoder)
 ```
 
 In this next example, we config a `JSONDataNode^` with custom JSON _**encoder**_ and _**decoder**_:
@@ -464,13 +490,15 @@ default `SCENARIO` scope is used. The encoder and decoder are the custom encoder
 
 # Mongo Collection
 
-A `MongoCollectionDataNode^` is a specific data node used to model data stored in a Mongo collection. To add a new *mongo_collection* data node configuration, the `Config.configure_mongo_collection_data_node()^` method can be used.
-In addition to the generic parameters described in the previous section [Data node configuration](data-node-config.md), multiple parameters can be provided.
+A `MongoCollectionDataNode^` is a specific data node used to model data stored in a Mongo collection. To add a new
+*mongo_collection* data node configuration, the `Config.configure_mongo_collection_data_node()^` method can be used.
+In addition to the generic parameters described in the previous section [Data node configuration](data-node-config.md),
+multiple parameters can be provided.
 
 -   _**db_name**_ represents the name of the database in MongoDB.
 -   _**collection_name**_ represents the name of the data collection in the database.
 -   _**custom_document**_ represents the custom class that is used to store, encode, and decode data when reading and writing to a Mongo collection. The data returned by the read method is a list of custom_document object(s), and the data passed as a parameter of the write method is a (list of) custom_document object(s). The custom_document can have:
-    -   An otional `decoder()` method to decode data in the Mongo collection to a custom object when reading.
+    -   An optional `decoder()` method to decode data in the Mongo collection to a custom object when reading.
     -   An optional `encoder()` method to encode the object's properties to the Mongo collection format when writing.
 -   _**db_username**_ represents the username that will be used by Taipy to access MongoDB.
 -   _**db_password**_ represents the user's password that will be used by Taipy to access MongoDB.
@@ -504,7 +532,7 @@ from taipy import Config
 from datetime import datetime
 
 class DailyMinTemp:
-    def __init__(self, Date : datetime = None, Temp : float = None):
+    def __init__(self, Date : datetime=None, Temp : float=None):
         self.Date = Date
         self.Temp = Temp
 
@@ -531,14 +559,16 @@ historical_data_cfg = Config.configure_mongo_collection_data_node(
 )
 ```
 
-In this next example, we configure another *mongo_collection* data node, with the custom document is defined as DailyMinTemp class.
+In this next example, we configure another *mongo_collection* data node, with the custom document is defined as
+DailyMinTemp class.
 
 -   The custom encode method encodes `datetime.datetime` to the ISO 8601 string format.
 -   The corresponding decode method decodes a ISO 8601 string to `datetime.datetime`.
 -   The `_id` of the Mongo document is discarded.
 
-Without this two methods, the default decoder will map the key of each document to the corresponding property of a DailyMinTemp object,
-and the default encoder will convert DailyMinTemp object's properties to a dictionary, without any special formating.
+Without this two methods, the default decoder will map the key of each document to the corresponding property of a
+DailyMinTemp object, and the default encoder will convert DailyMinTemp object's properties to a dictionary, without
+any special formatting.
 
 !!! Note
 
@@ -578,11 +608,12 @@ def write_text(path: str, data: str):
     with open(path, 'w') as text_writer:
         text_writer.write(data)
 
-historical_data_cfg = Config.configure_generic_data_node(id="historical_data",
-                                                         read_fct=read_text,
-                                                         write_fct=write_text,
-                                                         read_fct_params=["../path/data.txt"]
-                                                         write_fct_params=["../path/data.txt", "write data"])
+historical_data_cfg = Config.configure_generic_data_node(
+    id="historical_data",
+    read_fct=read_text,
+    write_fct=write_text,
+    read_fct_params=["../path/data.txt"]
+    write_fct_params=["../path/data.txt", "write data"])
 ```
 
 In this small example, we configure a generic data node with the id "historical_data".
@@ -592,7 +623,8 @@ write the data in a text file.
 
 In line 15, we provide _read_fct_params_ with a path to let the _read_fct_ know where to read the data.
 
-In line 16, we provide a list of parameters to _write_fct_params_ with a path to let the _write_fct_ know where to write the data, and the data to write.
+In line 16, we provide a list of parameters to _write_fct_params_ with a path to let the _write_fct_ know where to
+write the data, and the data to write.
 
 
 !!! Note
@@ -614,7 +646,9 @@ an optional parameter can be provided:
 from taipy import Config
 from datetime import datetime
 
-date_cfg = Config.configure_in_memory_data_node(id="date", default_data=datetime(2022, 1, 25))
+date_cfg = Config.configure_in_memory_data_node(
+    id="date",
+    default_data=datetime(2022, 1, 25))
 ```
 
 In this example, we configure an in_memory data node with the id "date", the scope is `SCENARIO`

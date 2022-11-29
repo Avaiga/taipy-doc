@@ -29,7 +29,8 @@ A task also holds various properties accessible as an attribute of the task:
     # the config_id is an attribute of the task and equals "task_configuration"
     task.config_id
 
-    # the function which is going to be executed with input data nodes and return value on output data nodes.
+    # the function which is going to be executed with input data
+    # nodes and return value on output data nodes.
     task.function # predict
 
     # input is the list of input data nodes of the task
@@ -88,11 +89,13 @@ To get the parent entities of a task (scenarios or pipelines) you can use either
     # Retrieve a task
     task = scenario.training_cfg
 
-    # Retrieve the parent entities of the task
-    parent_entities = task.get_parents()    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1]}
+    # Retrieve the parent entities of the task. The returned value is
+    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1]}
+    parent_entities = task.get_parents()
 
-    # Retrieve the parent entities of the task
-    tp.get_parents(task)    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1]}
+    # Retrieve the parent entities of the task. The return value is
+    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1]}
+    tp.get_parents(task)
     ```
 
 [:material-arrow-right: The next section shows the data node management](data-node-mgt.md).

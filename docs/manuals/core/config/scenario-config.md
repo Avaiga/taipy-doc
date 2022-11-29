@@ -17,7 +17,8 @@ Here is a simple example assuming the pipeline configuration `pipeline_config` h
 ```python linenums="1"
 from taipy import Config
 
-scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_config])
+scenario_config = Config.configure_scenario("multiply_scenario",
+                                            [pipeline_config])
 ```
 
 In this example, we create a scenario configuration `ScenarioConfig^` from a pipeline configuration already defined.
@@ -31,7 +32,8 @@ When the scenario configuration contains only one single pipeline configuration,
 ```python linenums="1"
 from taipy import Config
 
-scenario_config = Config.configure_scenario_from_tasks("multiply_scenario", [task_config])
+scenario_config = Config.configure_scenario_from_tasks("multiply_scenario",
+                                                       [task_config])
 ```
 
 Behind the scenes, a pipeline configuration is created. Its id will be the scenario configuration id with the
@@ -45,7 +47,9 @@ Behind the scenes, a pipeline configuration is created. Its id will be the scena
     from taipy import Config
 
     scenario_config = Config.configure_scenario_from_tasks(
-        "multiply_scenario", [task_config], pipeline_id="multiply_pipeline")
+        "multiply_scenario",
+        [task_config],
+        pipeline_id="multiply_pipeline")
     ```
 
 # Using Cycles
@@ -57,7 +61,9 @@ scenario configuration :
 from taipy import Config, Frequency
 
 scenario_config = Config.configure_scenario(
-    "multiply_scenario", [pipeline_config], Frequency.WEEKLY)
+    "multiply_scenario",
+    [pipeline_config],
+    Frequency.WEEKLY)
 ```
 
 In this small example, we create a scenario configuration `ScenarioConfig^` from a pipeline configuration with a
@@ -73,7 +79,7 @@ Let us imagine a common situation where the pipeline configuration `pipeline_con
 `datanode_config` as one of the data node configuration for this the pipeline configuration. The function
 `compare_function` is also defined as followed:
 
-```python
+```python linenums="1"
 from taipy import Config
 
 # Calling compare_function(10, 13, 17, 9) returns the following dict
@@ -84,19 +90,21 @@ from taipy import Config
 # 3: {0: 1, 1: 4, 2: 8, 3: 0}}
 def compare_function(*data_node_results):
     compare_result= {}
-    current_res_index = 0
+    current_res_i = 0
     for current_res in data_node_results:
-        compare_result[current_res_index]={}
-        next_res_index = 0
+        compare_result[current_res_i]={}
+        next_res_i = 0
         for next_res in data_node_results:
-            print(f"comparing result {current_res_index} with result {next_res_index}")
-            compare_result[current_res_index][next_res_index] = next_res - current_res
-            next_res_index += 1
-        current_res_index += 1
+            print(f"comparing result {current_res_i} with result {next_res_i}")
+            compare_result[current_res_i][next_res_i] = next_res - current_res
+            next_res_i += 1
+        current_res_i += 1
     return compare_result
 
-scenario_config = Config.configure_scenario("multiply_scenario", [pipeline_config],
-                                            comparators={datanode_config.id: compare_function})
+scenario_config = Config.configure_scenario(
+    "multiply_scenario",
+    [pipeline_config],
+    comparators={datanode_config.id: compare_function})
 ```
 
 We created the scenario configuration `scenario_config` using the indicated pipeline configuration. We use the
