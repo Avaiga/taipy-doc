@@ -125,7 +125,9 @@ This can be achieved by providing an operator, a Tuple of (*field_name*, *value*
 or a list of operators to the `DataNode.filter()^` method:
 
 ```python linenums="1"
-data_node.filter([("field_name", 14, Operator.EQUAL), ("field_name", 10, Operator.EQUAL)], JoinOperator.OR))
+data_node.filter([
+    ("field_name", 14, Operator.EQUAL), ("field_name", 10, Operator.EQUAL)],
+    JoinOperator.OR))
 ```
 
 If a list of operators is provided, it is necessary to provide a join operator that will be

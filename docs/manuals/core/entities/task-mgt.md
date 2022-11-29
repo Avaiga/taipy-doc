@@ -29,7 +29,8 @@ A task also holds various properties accessible as an attribute of the task:
     # the config_id is an attribute of the task and equals "task_configuration"
     task.config_id
 
-    # the function which is going to be executed with input data nodes and return value on output data nodes.
+    # the function which is going to be executed with input data
+    # nodes and return value on output data nodes.
     task.function # predict
 
     # input is the list of input data nodes of the task
