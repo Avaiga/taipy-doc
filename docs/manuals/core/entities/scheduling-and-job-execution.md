@@ -26,7 +26,8 @@ method triggers the submission of all the scenario's pipelines. Then each task o
         scenario.submit()
     ```
 
-By default, Taipy will asynchronously execute the jobs. If you want to wait until the submitted jobs are finished, you can use the parameter _wait_ and _timeout_:
+By default, Taipy will asynchronously execute the jobs. If you want to wait until the submitted jobs are finished,
+you can use the parameter _wait_ and _timeout_:
 
 ```python linenums="1"
 import taipy as tp
@@ -306,55 +307,56 @@ or `tp.unsubscribe_pipeline(function)` for pipelines. Same as for subscription, 
 or you can specify the scenario or pipeline by passing it as a parameter.
 
 !!! Example
-```python linenums="1"
-import taipy as tp
 
-def do_nothing():
-    ...
+    ```python linenums="1"
+    import taipy as tp
 
-def my_global_subscriber(scenario, job):
-    print(f"my_global_subscriber: scenario '{scenario.config_id}'; task '{job.task.config_id}'.")
+    def do_nothing():
+        ...
 
-def my_subscriber(scenario, job):
-    print(f"my_subscriber: scenario '{scenario.config_id}'; task '{job.task.config_id}'.")
+    def my_global_subscriber(scenario, job):
+        print(f"my_global_subscriber: scenario '{scenario.config_id}'; task '{job.task.config_id}'.")
 
-def my_subscriber_multi_param(scenario, job, params):
-    print(f"my_subscriber_multi_param: params {params}; task '{job.task.config_id}'.")
+    def my_subscriber(scenario, job):
+        print(f"my_subscriber: scenario '{scenario.config_id}'; task '{job.task.config_id}'.")
 
-task_1 = tp.configure_task("my_task_1", do_nothing)
-task_2 = tp.configure_task("my_task_2", do_nothing)
-scenario_1 = tp.configure_scenario_from_tasks("my_scenario", [task, task])
-scenario_2 = tp.configure_scenario_from_tasks("my_scenario", [task, task])
+    def my_subscriber_multi_param(scenario, job, params):
+        print(f"my_subscriber_multi_param: params {params}; task '{job.task.config_id}'.")
 
-params = ["my_param_1", 42]
+    task_1 = tp.configure_task("my_task_1", do_nothing)
+    task_2 = tp.configure_task("my_task_2", do_nothing)
+    scenario_1 = tp.configure_scenario_from_tasks("my_scenario", [task, task])
+    scenario_2 = tp.configure_scenario_from_tasks("my_scenario", [task, task])
 
-tp.subscribe_scenario(my_global_subscriber)  # Global subscription
-tp.subscribe_scenario(my_subscriber, scenario_1)  # Subscribe only to one scenario
-tp.subscribe_scenario(my_subscriber_multi_param, params, scenario_1)  # Subscribe with params
+    params = ["my_param_1", 42]
 
-print('Submit: scenario_1')
-tp.submit(scenario_1)
-print('Submit: scenario_2')
+    tp.subscribe_scenario(my_global_subscriber)  # Global subscription
+    tp.subscribe_scenario(my_subscriber, scenario_1)  # Subscribe only to one scenario
+    tp.subscribe_scenario(my_subscriber_multi_param, params, scenario_1)  # Subscribe with params
 
-print('Unsubscribe to my_global_subscriber for scenario_1')
-tp.unsubscribe_scenario(my_global_subscriber, scenario_1)
-print('Submit: scenario_1)
-tp.submit(scenario_1)
-```
+    print('Submit: scenario_1')
+    tp.submit(scenario_1)
+    print('Submit: scenario_2')
 
-This example will produce the following output:
+    print('Unsubscribe to my_global_subscriber for scenario_1')
+    tp.unsubscribe_scenario(my_global_subscriber, scenario_1)
+    print('Submit: scenario_1)
+    tp.submit(scenario_1)
+    ```
 
-```
-Submit: scenario_1
-my_global_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
-my_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
-my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_1 .
-my_subscriber: scenario 'my_scenario_1' ; task 'my_task_2'.
-my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_2'.
-Submit: scenario_2
-my_global_subscriber: scenario 'my_scenario_2'; task 'my_task_1'.
-Unsubscribe to my_global_subscriber for scenario_1
-Submit: scenario_1
-my_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
-my_subscriber: scenario 'my_scenario_1'; task 'my_task_2'.
-```
+    This example will produce the following output:
+
+    ```
+    Submit: scenario_1
+    my_global_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
+    my_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
+    my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_1 .
+    my_subscriber: scenario 'my_scenario_1' ; task 'my_task_2'.
+    my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_2'.
+    Submit: scenario_2
+    my_global_subscriber: scenario 'my_scenario_2'; task 'my_task_1'.
+    Unsubscribe to my_global_subscriber for scenario_1
+    Submit: scenario_1
+    my_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
+    my_subscriber: scenario 'my_scenario_1'; task 'my_task_2'.
+    ```

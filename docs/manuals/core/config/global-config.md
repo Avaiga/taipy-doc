@@ -74,19 +74,20 @@ The configuration needed to use a sql database, through sqlite3 engine, is descr
 ```python linenums="1"
 from taipy import Config
 
-Config.configure_global_app(root_folder=".taipy_root_folder/",
-                            storage_folder=".data_folder",
-                            clean_entities_enabled=True,
-                            read_entity_retry=2,
-                            repository_type="sql",
-                            repository_properties={"db_location": ".path_to_sqlite_file/database.db"}
-                            )
+Config.configure_global_app(
+    root_folder=".taipy_root_folder/",
+    storage_folder=".data_folder",
+    clean_entities_enabled=True,
+    read_entity_retry=2,
+    repository_type="sql",
+    repository_properties={"db_location": "path_to_sqlite_file/database.db"}
+    )
 ```
 Taipy creates a table called `taipy_model` in the database described in the configuration, where it stores
 information about the taipy entities.
 
 
-Here are the configurable properties for the sql repository:
+Here are the configurable properties for the SQL repository:
   - _**db_location**_: The path of a sqlite3 database file.
 
 ## MongoDB storage for Taipy entities
@@ -118,7 +119,7 @@ Config.configure_global_app(root_folder=".taipy_root_folder/",
 Taipy will create a collection, in the database described in the configuration, for each taipy entity(Cycle,
 Scenario, Pipeline, Datanode, Task and Job), where it will store information about the taipy entities.
 
-Here are the configurable properties for the mongo repository:
+Here are the configurable properties for the Mongo repository:
 
   - _**mongodb_hostname**_: The URL for the mongo database.
   - _**mongodb_user**_: The username to access the database.
