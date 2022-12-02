@@ -154,12 +154,19 @@ for repo in repo_defs.keys():
         repo_path = os.path.join(TOP_DIR, "taipy-" + repo)
         repo_defs[repo]["path"] = repo_path
         if not os.path.isdir(repo_path):
-            raise IOError(f"Repository 'taipy-{repo}' must be cloned in \"{TOP_DIR}\".")
+            if repo in PRIVATE_REPOS:
+                repo_defs[repo]["skip"] = True
+            else:
+                raise IOError(f"Repository 'taipy-{repo}' must be cloned in \"{TOP_DIR}\".")
     elif version == "develop":
         with GitContext(repo):
             cmd = subprocess.run(f"{git_path} ls-remote -q -h {github_root}{repo}.git", shell=True, capture_output=True, text=True)
             if cmd.returncode:
-                raise SystemError(f"Problem with {repo}: {cmd.stdout}")
+                if repo in PRIVATE_REPOS:
+                    repo_defs[repo]["skip"] = True
+                    continue
+                else:
+                    raise SystemError(f"Problem with {repo}: {cmd.stdout}")
     else:
         with GitContext(repo):
             cmd = subprocess.run(f"{git_path} ls-remote --exit-code --heads {github_root}{repo}.git", shell=True, capture_output=True, text=True)
@@ -281,6 +288,8 @@ def move_files(repo: str, src_path: str):
             shutil.rmtree(tmp_dir)
 
 for repo in repo_defs.keys():
+    if repo_defs[repo].get("skip", False):
+        continue
     version = repo_defs[repo]['version']
     print(f"Fetching file for repository {repo} ({version})", flush=True)
     if version == "local":
@@ -289,7 +298,7 @@ for repo in repo_defs.keys():
             subprocess.run(f"{git_path} pull {src_path}", shell=True, capture_output=True, text=True)
         print(f"    Copying from {src_path}...", flush=True)
         move_files(repo, src_path)
-    elif not repo_defs[repo].get("skip", False):
+    else:
         clone_dir = os.path.join(ROOT_DIR, f"{repo}.clone")
         if version != "develop":
             version = f"release/{version}"
