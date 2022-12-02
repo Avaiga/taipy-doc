@@ -21,7 +21,7 @@ Taipy documentation:
    - your local filesystem (next to the current directory `taipy-doc`, you would have
      cloned the repositories that make the whole Taipy product: `taipy-config`,
      `taipy-core`, `taipy-getting-started`, `taipy-gui` and `taipy-rest`).<br/>
-   - the Taipy repository.
+   - the Taipy repositories on GitHub.
 
    By default, the script will copy all repositories from a local clone. Before files
    are copied, a `git pull` command is launched from each local clone directory, in
@@ -45,7 +45,7 @@ Taipy documentation:
 2. Generate the Reference Manual and Visual Elements' documentation files.
 
    The Reference Manual and the documentation for the Visual Elements of the `taipy-gui` module
-   are generated from source files copied from the `taipy-core` and `taipy-gui` repositories.<br/>
+   are generated from source files copied from a set of repositories.<br/>
    To generate all mandatory files, execute the Python script `setup_generation.py` located
    in the `tools` directory. Run the script when your current directory is the root
    of the `taipy-doc` checkout:
