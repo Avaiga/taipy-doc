@@ -19,6 +19,7 @@
 }
 
 .md-content{
+  min-width: 0;
   overflow: initial;
 }
 
@@ -330,4 +331,8 @@ a.tp-pill{
 }
 a.md-content__button{
   display: none;
+}
+
+.highlight{
+
 }
