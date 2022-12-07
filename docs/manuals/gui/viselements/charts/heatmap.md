@@ -5,7 +5,7 @@ A heatmap depicts values for a main variable of interest across two axis variabl
 ### When to Use?
 - To show user behavior on specific webpages.
 - To display the magnitude of a data set over two dimensions.
-- In retail matrix, manufacturing diagram, population maps.
+- In retail matrix, manufacturing diagram, and population maps.
 - For marketing goals and analytics, reflecting on user behavior on specific webpages.
 - And more
 
@@ -33,15 +33,34 @@ import pandas as pd
 
 data = [
     pd.DataFrame({
-        'z': [[1, 6, 30, 50, 1], [20, 1, 60, 80, 30], [30, 60, 1, -10, 20]],
-        'y': ['Morning', 'Afternoon', 'Evening']
+        'z': [
+            [0.8, 2.4, 2.5, 3.9, 0.0, 4.0, 0.0],
+            [2.4, 0.0, 4.0, 1.0, 2.7, 0.0, 0.0],
+            [1.1, 2.4, 0.8, 4.3, 1.9, 4.4, 0.0],
+            [0.6, 0.0, 0.3, 0.0, 3.1, 0.0, 0.0],
+            [0.7, 1.7, 0.6, 2.6, 2.2, 6.2, 0.0],
+            [1.3, 1.2, 0.0, 0.0, 0.0, 3.2, 5.1],
+            [0.1, 2.0, 0.0, 1.4, 0.0, 1.9, 6.3]
+        ],
+        'y': ["cucumber",
+              "tomato",
+              "lettuce",
+              "asparagus",
+              "potato",
+              "wheat",
+              "barley"]
     }),
     pd.DataFrame({
-        'x': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        'x': ["Farmer Joe",
+              "Upland Bros.",
+              "Smith Gardening",
+              "Agrifun",
+              "Organiculture",
+              "BioGoods Ltd.",
+              "Cornylee Corp."],
     })
 ]
 
-// Apply new color scheme
 options = {'colorscale': 'Electric'}
 
 md = """
