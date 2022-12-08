@@ -126,4 +126,4 @@ docs/manuals/reference_rest/*.md
 docs/manuals/reference_guiext/
 
 # OS generation
-**/Thumbs.db
+*/**/Thumbs.db
