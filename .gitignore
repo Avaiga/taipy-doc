@@ -124,6 +124,3 @@ docs/getting_started/summary.txt
 docs/manuals/reference_rest/*.md
 !docs/manuals/reference_rest/index.md
 docs/manuals/reference_guiext/
-
-# OS generation
-*/**/Thumbs.db
