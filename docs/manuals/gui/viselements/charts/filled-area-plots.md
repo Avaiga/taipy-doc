@@ -93,6 +93,10 @@ Gui(md).run()
 ![Basic Overlaid Area Chart without boundary lines](filled-area-overlaid-3.png)
 
 ### Stacked Area Chart
+A stacked area chart is a variation of an area chart. It visualized the evolution of multiple data series (value of several groups) over time.
+
+This example will show the income (x 1000$) of each products per month.
+
 ```py
 from src.taipy.gui import Gui
 import pandas as pd
@@ -116,3 +120,36 @@ md = "<|{data}|chart|x=month|y[1]=milk|y[2]=bread|y[3]=apples|type=scatter|mode=
 Gui(md).run()
 ```
 ![Stacked Area Chart](filled-area-stacked.png)
+
+### Normalized Stacked Area Chart
+
+A percentage stacked area chart is very close to a classic stacked area chart. However, values are normalised to make in sort that the sum of each group is 100 at each position on the X axis
+
+Now we want to show the ratio of cosmetic products sales between each regions.
+```py
+from src.taipy.gui import Gui
+import pandas as pd
+
+options4USA = {"stackgroup": "one", "groupnorm": "percent"}
+options4China = {"stackgroup": "one"}
+options4EU = {"stackgroup": "one"}
+options4Africa = {"stackgroup": "one"}
+
+data = {
+    "region": ["Nail polish", "Eyebrow pencil", "Rouge", "Lipstick", "Eyeshadows", "Eyeliner", "Foundation", "Lip gloss", "Mascara"],
+    'usa': [12814, 13012, 11624, 8814, 12998, 12321, 10342, 22998, 11261],
+    'china': [3054, 5067, 7004, 9054, 12043, 15067, 10119, 12043, 10419],
+    'eu': [4376, 3987, 3574, 4376, 4572, 3417, 5231, 4572, 6134],
+    'africa': [4229, 3932, 5221, 9256, 3308, 5432, 13701, 4008, 18712],
+}
+
+layout={
+    # Show all value of cosmetic products when hovering on a region
+    'hovermode': 'x unified',
+}
+
+md = "<|{data}|chart|x=region|y[1]=usa|y[2]=china|y[3]=eu|y[4]=africa|type=scatter|options[1]={options4USA}|options[2]={options4China}|options[3]={options4EU}|options[4]={options4Africa}|layout={layout}|>"
+
+Gui(md).run()
+```
+![Normalized Stacked Area Chart](filled-area-stacked-2.png)
