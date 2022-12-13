@@ -261,7 +261,7 @@ can be provided:
 -   _**db_password**_ represents the database user's password that will be used by Taipy to access the database.
 -   _**db_name**_ represents the name of the database.
 -   _**db_engine**_ represents the engine of the database.<br/>
-    Possible values are _"sqlite"_, _"mssql"_, _"mysql"_, or _"postgresql"_.
+    Possible values are _"sqlite"_ or _"mssql"_.
 -   _**table_name**_ represents the name of the table to read from and write into.
 -   _**db_port**_ represents the database port that will be used by Taipy to access the database.<br/>
     The default value of _db_port_ is 1433.
@@ -303,12 +303,7 @@ is "taipy", and the database engine is `mssql` (short for Microsoft SQL). The ta
     - To be able to use a `SQLDataNode^` with Microsoft SQL Server you need to run internal dependencies with
         `pip install taipy[mssql]` and install your corresponding
         [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
-    - To be able to use a `SQLDataNode^` with MySQL Server you need to run internal dependencies with
-        `pip install taipy[mysql]` and install your corresponding
-        [MySQL Driver for MySQL](https://pypi.org/project/PyMySQL/).
-    - To be able to use a `SQLDataNode^` with PostgreSQL Server you need to run internal dependencies with
-        `pip install taipy[postgresql]` and install your corresponding
-        [Postgres JDBC Driver for PostgreSQL](https://www.postgresql.org/docs/7.4/jdbc-use.html).
+
 
 A `SQLDataNode^` is a specific data node used to model data stored in a SQL Database. To add a new _SQL_ data node
 configuration, the `Config.configure_sql_data_node()^` method can be used. In addition to the generic parameters
@@ -319,7 +314,7 @@ provided:
 -   _**db_password**_ represents the database user's password that will be used by Taipy to access the database.
 -   _**db_name**_ represents the name of the database.
 -   _**db_engine**_ represents the engine of the database.<br/>
-    Possible values are _"sqlite"_, _"mssql"_, _"mysql"_, or _"postgresql"_.
+    Possible values are _"sqlite"_ or _"mssql"_.
 -   _**read_query**_ represents the SQL query that will be used by Taipy to read the data from the database.
 -   _**write_query_builder**_ is a callable function that takes in the data as an input parameter and returns a list of
     SQL queries to be executed when the write data node method is called.
