@@ -176,9 +176,21 @@ a.tp-pill{
   margin-top: 1rem;
 }
 
+.tp-content-card-header{
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tp-content-card h3{
+  margin: 0;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
 .tp-content-card-icon{
   margin-top: 0;
-  align-self: flex-start;
 }
 
 .tp-content-card-readmore{
@@ -331,8 +343,4 @@ a.tp-pill{
 }
 a.md-content__button{
   display: none;
-}
-
-.highlight{
-
 }

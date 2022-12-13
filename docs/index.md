@@ -23,9 +23,11 @@ These topics are the most visited ones, we thought you’d like to have a glance
 <div class="tp-row tp-row--gutter-sm">
   <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
     <a class="tp-content-card" href="getting_started/">
-      <img class="tp-content-card-icon icon-light" src="images/icons/flag-w.svg">
-      <img class="tp-content-card-icon icon-dark" src="images/icons/flag.svg">
-      <h3>Getting started</h3>
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon icon-light" src="images/icons/flag-w.svg">
+        <img class="tp-content-card-icon icon-dark" src="images/icons/flag.svg">
+        <h3>Getting started</h3>
+      </header>
       <p>
         This tour shows you how to create an entire application using the two main components of Taipy.
       </p>
@@ -34,9 +36,11 @@ These topics are the most visited ones, we thought you’d like to have a glance
   </div>
   <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
     <a class="tp-content-card" href="manuals/about/">
-      <img class="tp-content-card-icon icon-light" src="images/icons/menu_book-w.svg">
-      <img class="tp-content-card-icon icon-dark" src="images/icons/menu_book.svg">
-      <h3>User Manual</h3>
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon icon-light" src="images/icons/menu_book-w.svg">
+        <img class="tp-content-card-icon icon-dark" src="images/icons/menu_book.svg">
+        <h3>User Manual</h3>
+      </header>
       <p>
         Put Taipy in gear, guided by examples.
       </p>
@@ -45,9 +49,11 @@ These topics are the most visited ones, we thought you’d like to have a glance
   </div>
   <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
     <a class="tp-content-card" href="manuals/gui/">
-      <img class="tp-content-card-icon icon-light" src="images/icons/dashboard-w.svg">
-      <img class="tp-content-card-icon icon-dark" src="images/icons/dashboard.svg">
-      <h3>User interface</h3>
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon icon-light" src="images/icons/dashboard-w.svg">
+        <img class="tp-content-card-icon icon-dark" src="images/icons/dashboard.svg">
+        <h3>User interface</h3>
+      </header>
       <p>
         Taipy GUI provides controls and other elements to create powerful Web apps in minutes.
       </p>
