@@ -13,7 +13,7 @@ def double(nb):
     return nb * 2
 
 input_data_node_config = Config.configure_data_node("input",
-                                                    default_value=21)
+                                                    default_data=21)
 output_data_node_config = Config.configure_data_node("output")
 task_config = Config.configure_task("double_task",
                                     double,
@@ -33,7 +33,7 @@ def double(nb):
     return nb * 2
 
 input_data_node_config = Config.configure_data_node("input",
-                                                    default_value=21)
+                                                    default_data=21)
 intermediate_data_node_config = Config.configure_data_node("intermediate")
 output_data_node_config = Config.configure_data_node("output")
 first_task_config = Config.configure_task("first_double_task",
