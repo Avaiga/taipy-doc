@@ -2,7 +2,7 @@
 
 A heatmap depicts values for a main variable of interest across two axis variables as a grid of colored squares. The axis variables are divided into ranges like a bar chart or histogram, and each cell’s color indicates the value of the main variable in the corresponding cell range.
 
-### When to Use?
+### Typical use of headmaps
 - To show user behavior on specific webpages.
 - To display the magnitude of a data set over two dimensions.
 - In retail matrix, manufacturing diagram, and population maps.
@@ -10,30 +10,37 @@ A heatmap depicts values for a main variable of interest across two axis variabl
 - And more
 
 ### Basic Heatmap
-The chart below shows the colors in accordance with each temperatures
-
+Actually, a 'Basic Heatmap' is used to show some value based on two axis.
+This example displays a heatmaps that represents the temperature of XXXX for each given YYY
 ```py
-from taipy.gui import Gui
-
 data = {
-    "temperature": [[1, 20, 30], [20, 1, 60], [30, 60, 1]],
+    "temperature": [[10, 20, 30, 50], [20, 10, 60, 40], [30, 60, 10, 60], [20, 30, 50, 20]],
+    "city": ["City A", "City B", "City C", "City D"],
+    "season": ["Winter", "Summer", "Spring", "Autumn"]
 }
-options = {'colorscale': 'Reds'}
-md = """
-## Basic Heatmap
-<|{data}|chart|z=temperature|type=heatmap|options={options}|>
-"""
-
-Gui(md).run()
 ```
-![Basic Heatmap](heatmap_basic.png)
+!!! example "Page content"
+
+    === "Markdown"
+
+        ```
+        <|{data}|chart|z=temperature|x=city|y=season|type=heatmap|>
+        ```
+  
+    === "HTML"
+
+        ```html
+        <taipy:chart type="heatmap" z="temperature" x="city" y="season" options="options">{data}</taipy:chart>
+        ```
+<figure>
+    <img src="heatmap_basic-dark.png" class="visible-dark" />
+    <img src="heatmap_basic.png" class="visible-light" />
+    <figcaption>Basic Heatmap</figcaption>
+</figure>
 
 ### Heatmap with Categorical Axis Labels
 In the following example, we have an array which defines the data (harvest by different farmers in tons/year) to color code. We then also need two lists of names of farmers and vegetables cultivated by them.
 ```py
-from taipy.gui import Gui
-import pandas as pd
-
 data = [
     pd.DataFrame({
         'harvest': [
@@ -64,39 +71,43 @@ data = [
     })
 ]
 options = {'colorscale': 'Rainbow'}
-md = """
-## Heatmap with Categorical Axis Labels
-<|{data}|chart|type=heatmap|z=0/harvest|x=1/farmers|y=0/vegetables|options={options}|>
-"""
-
-Gui(md).run()
 ```
-![Heatmap with Categorical Axis Labels](heatmap_axis_labels.png)
+!!! example "Page content"
+
+    === "Markdown"
+
+        ```
+        <|{data}|chart|type=heatmap|z=0/harvest|x=1/farmers|y=0/vegetables|options={options}|>
+        ```
+  
+    === "HTML"
+
+        ```html
+        <taipy:chart type="heatmap" z="0/harvest" x="1/farmers" y="0/vegetables" options="options">{data}</taipy:chart>
+        ```
+<figure>
+    <img src="heatmap_axis_labels-dark.png" class="visible-dark" />
+    <img src="heatmap_axis_labels.png" class="visible-light" />
+    <figcaption>Heatmap with Categorical Axis Labels</figcaption>
+</figure>
 
 ### Annotated Heatmap
-In this chart, we have average temperature (°F) in seasons of top 4 US cities
+You may want to display the actual value that is represented, at the appropriate location in the heatmap.
+
+This example creates a heatmap that represents the temperature (in Fahrenheit) for different locations, in different seasons.
 ```py
-from taipy.gui import Gui
-import pandas as pd
-
-seasons = ['Winter', 'Summer', 'Spring', 'Autumn']
-
-cities = ['New York', 'Los Angeles', 'Chicago', 'Houston']
-
-temperature = [
-    [33.7, 74.49, 57.8, 57.6],
-    [60.1, 68.2, 64.5, 65.7],
-    [22.89, 72.2, 55.7, 51.6],
-    [53.0, 83.3, 72.7, 53.0],
-]
-
 data = [
     pd.DataFrame({
-        'temperature': temperature,
-        'cities': cities
+        'temperature': [
+                            [33.7, 74.49, 57.8, 57.6],
+                            [60.1, 68.2, 64.5, 65.7],
+                            [22.89, 72.2, 55.7, 51.6],
+                            [53.0, 83.3, 72.7, 53.0],
+                        ],
+        'cities': ['New York', 'Los Angeles', 'Chicago', 'Houston']
     }),
     pd.DataFrame({
-        'seasons': seasons,
+        'seasons': ['Winter', 'Summer', 'Spring', 'Autumn'],
     })
 ]
 
@@ -138,15 +149,25 @@ for i in range(len(cities)):
         'showarrow': False
     }
     layout['annotations'].append(result)
-
-md = """
-## Annotated Heatmap
-<|{data}|chart|type=heatmap|z=0/temperature|x=1/seasons|y=0/cities|options={options}|layout={layout}|>
-"""
-
-Gui(md).run()
 ```
-![Annotated Heatmap](heatmap_annotated.png)
+!!! example "Page content"
+
+    === "Markdown"
+
+        ```
+        <|{data}|chart|type=heatmap|z=0/temperature|x=1/seasons|y=0/cities|options={options}|layout={layout}|>
+        ```
+  
+    === "HTML"
+
+        ```html
+        <taipy:chart type="heatmap" z="0/temperature" x="1/seasons" y="0/cities" options="options" layout="layout">{data}</taipy:chart>
+        ```
+<figure>
+    <img src="heatmap_annotated-dark.png" class="visible-dark" />
+    <img src="heatmap_annotated.png" class="visible-light" />
+    <figcaption>Annotated Heatmap</figcaption>
+</figure>
 
 ### Heatmap with Unequal Block Sizes
 
@@ -220,4 +241,22 @@ md = """
 
 Gui(md).run()
 ```
-![Heatmap with Unequal Block Sizes](heatmap_unequal_block_sizes.png)
+
+!!! example "Page content"
+
+    === "Markdown"
+
+        ```
+       <|{data}|chart|type[1]=heatmap|z[1]=0/zHeatmap|x[1]=1/xHeatmap|y[1]=1/yHeatmap|layout={layout}|type[2]=scatter|x[2]=2/xTrace|y[2]=2/yTrace|>
+        ```
+  
+    === "HTML"
+
+        ```html
+        <taipy:chart type[1]="heatmap" z[1]="0/zHeatmap" x[1]="1/xHeatmap" y[1]="1/yHeatmap" layout="layout" type[2]="scatter" x[2]="2/xTrace" y[2]="2/yTrace">{data}</taipy:chart>
+        ```
+<figure>
+    <img src="heatmap_unequal_block_sizes-dark.png" class="visible-dark" />
+    <img src="heatmap_unequal_block_sizes.png" class="visible-light" />
+    <figcaption>Heatmap with Unequal Block Sizes</figcaption>
+</figure>
