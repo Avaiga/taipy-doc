@@ -31,9 +31,11 @@ data = {
         ```html
         <taipy:chart type="scatter" x="day" y="items" options="options">{data}</taipy:chart>
         ```
-
-![Simple example](filled-area.png)
-
+<figure>
+    <img src="filled-area-dark.png" class="visible-dark" />
+    <img src="filled-area.png" class="visible-light" />
+    <figcaption>Simple example</figcaption>
+</figure>
 ### Overlay of Area Charts
 With above example, we want to add one more trace to visualize the total price (x 1000$) per day.
 
@@ -59,8 +61,11 @@ data = {
         ```html
         <taipy:chart type="scatter" x="day" y[1]="items" y[2]="prize" options="options">{data}</taipy:chart>
         ```
-![Basic Overlaid Area Chart](filled-area-overlaid.png)
-
+<figure>
+    <img src="filled-area-overlaid-dark.png" class="visible-dark" />
+    <img src="filled-area-overlaid.png" class="visible-light" />
+    <figcaption>Overlay of Area Charts</figcaption>
+</figure>
 It is not perfect, isn't it. So we have to define 2 types of fill option for "items" and "prize"
 
 ```py
@@ -80,8 +85,11 @@ opts_prize = {"fill": "tonexty"}
         ```html
         <taipy:chart type="scatter" x="day" y[1]="items" y[2]="prize" options[1]="opts_item" options[2]="opts_prize">{data}</taipy:chart>
         ```
-![Basic Overlaid Area Chart with different options](filled-area-overlaid-2.png)
-
+<figure>
+    <img src="filled-area-overlaid-2-dark.png" class="visible-dark" />
+    <img src="filled-area-overlaid-2.png" class="visible-light" />
+    <figcaption>Overlay of Area Charts with different options</figcaption>
+</figure>
 Great, it is better now, however we don't want to see the lines. Just add mode "none" to the chart.
 !!! example "Page content"
 
@@ -96,8 +104,11 @@ Great, it is better now, however we don't want to see the lines. Just add mode "
         ```html
         <taipy:chart type="scatter" x="day" y[1]="items" y[2]="prize" options[1]="opts_item" options[2]="opts_prize" mode="none">{data}</taipy:chart>
         ```
-![Basic Overlaid Area Chart without boundary lines](filled-area-overlaid-3.png)
-
+<figure>
+    <img src="filled-area-overlaid-3-dark.png" class="visible-dark" />
+    <img src="filled-area-overlaid-3.png" class="visible-light" />
+    <figcaption>Overlay of Area Charts without boundary lines</figcaption>
+</figure>
 ### Stacked Area Chart
 A stacked area chart is a variation of an area chart. It visualized the evolution of multiple data series (value of several groups) over time.
 
@@ -128,8 +139,11 @@ data = {
         ```html
         <taipy:chart type="scatter" x="month" y[1]="milk" y[2]="bread" y[3]="apples" options[1]="opts_milk" options[2]="opts_bread" options[3]="opts_apple" mode="none">{data}</taipy:chart>
         ```
-![Stacked Area Chart](filled-area-stacked.png)
-
+<figure>
+    <img src="filled-area-stacked-dark.png" class="visible-dark" />
+    <img src="filled-area-stacked.png" class="visible-light" />
+    <figcaption>Stacked Area Chart</figcaption>
+</figure>
 ### Normalized Stacked Area Chart
 
 A percentage stacked area chart is very close to a classic stacked area chart. However, values are normalised to make in sort that the sum of each group is 100 at each position on the X axis.
@@ -167,4 +181,8 @@ layout={
         ```html
         <taipy:chart type="scatter" x="region" y[1]="usa" y[2]="china" y[3]="eu" y[4]="africa" options[1]="opts_usa" options[2]="opts_china" options[3]="opts_eu" options[4]="opts_africa" layout="layout">{data}</taipy:chart>
         ```
-![Normalized Stacked Area Chart](filled-area-stacked-2.png)
+<figure>
+    <img src="filled-area-stacked-2-dark.png" class="visible-dark" />
+    <img src="filled-area-stacked-2.png" class="visible-light" />
+    <figcaption>Normalized Stacked Area Chart</figcaption>
+</figure>
