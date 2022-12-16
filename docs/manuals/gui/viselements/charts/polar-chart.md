@@ -59,7 +59,7 @@ md = """
 Gui(md).run()
 ```
 
-![Line Polar Chart](line-polar-chart.png)
+![Line Polar Chart](line-polar-chart-l.png)
 
 ## Area Polar Chart
 
@@ -120,7 +120,7 @@ Gui(md).run()
 
 ```
 
-![Area Polar Chart](area-polar-chart.png)
+![Area Polar Chart](area-polar-chart-l.png)
 
 ## Polar Chart Directions
 
@@ -190,7 +190,7 @@ md = """
 """
 Gui(md).run()
 ```
-![Polar Chart Directions](polar-chart-direction.png)
+![Polar Chart Directions](polar-chart-direction-l.png)
 
 ## Polar Chart Subplots
 
@@ -298,7 +298,7 @@ md = """
 Gui(md).run()
 ```
 
-![Polar Chart Subplots](polar-chart-subplots.png)
+![Polar Chart Subplots](polar-chart-subplots-l.png)
 
 ## Categorical Polar Chart
 
@@ -436,7 +436,7 @@ md = """
 Gui(md).run()
 ```
 
-![Categorical Polar Chart](./categorical-polar-chart.png)
+![Categorical Polar Chart](categorical-polar-chart-l.png)
 
 ## Polar Chart Sector
 
@@ -504,7 +504,7 @@ md = """
 Gui(md).run()
 ```
 
-![Polar Chart Sector](./polar-chart-sector.png)
+![Polar Chart Sector](polar-chart-sector-l.png)
 
 ## WebGL Polar Chart
 
@@ -668,4 +668,4 @@ md = """
 Gui(md).run()
 ```
 
-![WebGL Polar Chart](./webgl-polar-chart.png)
+![WebGL Polar Chart](webgl-polar-chart-l.png)
