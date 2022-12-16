@@ -42,7 +42,7 @@ md = """
 Gui(md).run()
 ```
 
-![Simple Candlestick with Pandas](simple-candlestick-with-pandas.png)
+![Simple Candlestick with Pandas](simple-candlestick-with-pandas-l.png)
 
 ## Candlestick Chart with Rangeslider
 
@@ -250,7 +250,7 @@ md = """
 Gui(md).run()
 ```
 
-![Candlestick Chart with Rangeslider](candlestick-chart-with-rangeslider.png)
+![Candlestick Chart with Rangeslider](candlestick-chart-with-rangeslider-l.png)
 
 ## Candlestick without Rangeslider
 
@@ -298,7 +298,7 @@ md = """
 Gui(md).run()
 ```
 
-![Candlestick without Rangeslider](candlestick-without-rangeslider.png)
+![Candlestick without Rangeslider](candlestick-without-rangeslider-l.png)
 
 ## Adding Customized Text and Annotations
 
@@ -367,7 +367,7 @@ md = """
 Gui(md).run()
 ```
 
-![Adding Customized Text and Annotations](adding-customized-text-and-annotations.png)
+![Adding Customized Text and Annotations](adding-customized-text-and-annotations-l.png)
 
 ## Custom Candlestick Colors
 
@@ -405,7 +405,7 @@ md = """
 Gui(md).run()
 ```
 
-![Custom Candlestick Colors](custom-candlestick-colors.png)
+![Custom Candlestick Colors](custom-candlestick-colors-l.png)
 
 ## Simple Example with datetime Objects
 
@@ -452,4 +452,4 @@ md = """
 Gui(md).run()
 ```
 
-![Simple Example with datetime Objects](simple-example-with-datetime-objects.png)
+![Simple Example with datetime Objects](simple-example-with-datetime-objects-l.png)
