@@ -271,18 +271,14 @@ The following examples will write to the path of the CSV data node:
     === "dictionary"
 
         ```python
-        # write 1 row
-        data_node.write(
-            {"date": "12/24/2018", "nb_sales": 1550}
-        )
-        # write multiple rows
+        # "list" form
         data_node.write(
             {
                 "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
                 "nb_sales": [1550, 2315, 1832]
             }
         )
-        # or using a list of dictionaries
+        # "records" form
         data_node.write(
             [
                 {"date": "12/24/2018", "nb_sales": 1550},
@@ -433,18 +429,14 @@ The following examples will write to the path of the Excel data node:
     === "dictionary"
 
         ```python
-        # write 1 row
-        data_node.write(
-            {"date": "12/24/2018", "nb_sales": 1550}
-        )
-        # write multiple rows
+        # "list" form
         data_node.write(
             {
                 "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
                 "nb_sales": [1550, 2315, 1832]
             }
         )
-        # or using a list of dictionaries
+        # "records" form
         data_node.write(
             [
                 {"date": "12/24/2018", "nb_sales": 1550},
