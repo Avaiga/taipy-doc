@@ -15,7 +15,7 @@ A data node also holds various properties and attributes accessible through the 
 -   _**name**_: The user-readable name of the data node.
 -   _**owner_id**_: The identifier of the owner (pipeline_id, scenario_id, cycle_id) or `None`.
 -   _**last_edit_date**_: The date and time of the last data modification made through Taipy.
-    Note that **only** for file-based data nodes (CSV, Excel, pickle, JSON, ...), the file's last modification date is used to compute the _**last_edit_date**_ value. That means if a file is modified manually or by an external process, the _**last_edit_date**_ value is automatically updated within Taipy.
+    Note that **only** for file-based data nodes (CSV, Excel, pickle, JSON, Parquet, ...), the file's last modification date is used to compute the _**last_edit_date**_ value. That means if a file is modified manually or by an external process, the _**last_edit_date**_ value is automatically updated within Taipy.
 -   _**job_ids**_: The ordered list of jobs that have written on this data node.
 -   _**cacheable**_: The Boolean value that indicates if a data node is cacheable.
 -   _**validity_period**_: The validity period of a cacheable data node. If _validity_period_ is set to None, the
@@ -851,6 +851,152 @@ is a _JSON_ data node configuration with `default_path="path/sales.json"`.
 
 You can also specify custom JSON _**encoder**_ and _**decoder**_ to handle different data types. Check out [JSON Data Node
 configuration](../config/data-node-config.md#json) for more details on how to config custom JSON _**encoder**_ and _**decoder**_.
+
+## Parquet
+
+When read from a Parquet data node, Taipy returns the data of the Parquet file based on _exposed_type_ parameter.
+Check out [Parquet Data Node configuration](../config/data-node-config.md#parquet) for more details on _exposed_type_.
+
+Assume that the content of the `sales.parquet` file populates the following table.
+
+!!! example "path/sales.parquet"
+
+    | date       | nb_sales |
+    |------------|----------|
+    | 12/24/2018 | 1550     |
+    | 12/25/2018 | 2315     |
+    | 12/26/2018 | 1832     |
+
+The following examples represent the results when read from Parquet data node with different _exposed_type_:
+
+!!! example "`data_node.read()` returns"
+
+    === "exposed_type = "pandas""
+
+        ```python
+        pandas.DataFrame
+        (
+                     date  nb_sales
+            0  12/24/2018      1550
+            1  12/25/2018      2315
+            2  12/26/2018      1832
+        )
+        ```
+
+    === "exposed_type = "modin""
+
+        ```python
+        modin.pandas.DataFrame
+        (
+                     date  nb_sales
+            0  12/24/2018      1550
+            1  12/25/2018      2315
+            2  12/26/2018      1832
+        )
+        ```
+
+    === "exposed_type = "numpy""
+
+        ```python
+        numpy.array(
+            [
+                ["12/24/2018", "1550"],
+                ["12/25/2018", "2315"],
+                ["12/26/2018", "1832"]
+            ],
+        )
+        ```
+
+    === "exposed_type = SaleRow"
+        ```python
+        [
+            SaleRow("12/24/2018", 1550),
+            SaleRow("12/25/2018", 2315),
+            SaleRow("12/26/2018", 1832),
+        ]
+        ```
+
+When writing data to a Parquet data node, the `ParquetDataNode.write()^` method can take several datatype as the input:
+
+- pandas dataframes
+- modin dataframes
+- any object, which will be passed to the `pd.DataFrame` constructor (e.g., list of dictionaries)
+
+The following examples will write to the path of the Parquet data node:
+
+!!! example "`data_node.write()` examples"
+
+    === "pandas dataframes"
+
+        ```python
+        data = pandas.DataFrame(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/24/2018", "nb_sales": 2315},
+                {"date": "12/24/2018", "nb_sales": 1832},
+            ]
+        )
+
+        data_node.write(data)
+        ```
+
+    === "dictionary"
+
+        ```python
+        # "list" form
+        data_node.write(
+            {
+                "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
+                "nb_sales": [1550, 2315, 1832]
+            }
+        )
+
+        # "records" form
+        data_node.write(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/24/2018", "nb_sales": 2315},
+                {"date": "12/24/2018", "nb_sales": 1832},
+            ]
+        )
+        ```
+
+    === "modin dataframes"
+
+        ```python
+        data = modin.pandas.DataFrame(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/24/2018", "nb_sales": 2315},
+                {"date": "12/24/2018", "nb_sales": 1832},
+            ]
+        )
+
+        data_node.write(data)
+        ```
+
+Additionally, Parquet data node entities also expose two new methods, namely: `ParquetDataNode.read_with_kwargs^` and `ParquetDataNode.write_with_kwargs^`. These two methods may be used to pass additional keyword arguments to the pandas [`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html) and [`pandas.DataFrame.to_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html) methods, **on top of the arguments which were defined in the [ParquetDataNode configuration](../config/data-node-config.md#parquet)**.
+
+The following examples demonstrate reading and writing to a Parquet data node with additional keyword arguments:
+
+!!! example "reading and writing to Parquet data node entities"
+
+    === "ParquetDataNode.read_with_kwargs"
+        
+        ```python
+        columns = ["nb_sales"]
+        data_node.read_with_kwargs(columns=columns)
+        ```
+    
+    === "ParquetDataNode.write_with_kwargs"
+
+        ```python
+        data_node.write_with_kwargs(index=False)
+        ```
+
+In the first example, the `ParquetDataNode.read_with_kwargs^` method is used to specify a keyword parameter, _"columns"_, which is the list of column names to be read from the Parquet dataset. In this case, only the "nb_sales" column will be read.
+
+In the second example, The `ParquetDataNode.write_with_kwargs^` method is used to specify a keyword parameter, _"index"_, which is a boolean value determining if the index of the DataFrame should be written. In this case, the index will not be not written.
 
 ## Mongo collection
 
