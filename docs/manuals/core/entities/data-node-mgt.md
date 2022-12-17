@@ -150,7 +150,7 @@ as a parameter and writes it on the data node:
 
 ## Pickle
 
-When read from a Pickle data node, Taipy returns whichever data stored in the pickle file.
+When reading from a Pickle data node, Taipy returns whichever data stored in the pickle file.
 
 Pickle data node can write any data object that can be picked, including but not limited to:
 
@@ -165,7 +165,7 @@ Check out [What can be pickled and unpickled?](https://docs.python.org/3/library
 
 ## CSV
 
-When read from a CSV data node, Taipy returns the data of the CSV file based on _exposed_type_ parameter.
+When reading from a CSV data node, Taipy returns the data of the CSV file based on the _exposed_type_ parameter.
 Check out [CSV Data Node configuration](../config/data-node-config.md#csv) for more details on _exposed_type_.
 
 Assume that the content of the `sales.csv` file is the following.
@@ -179,7 +179,7 @@ Assume that the content of the `sales.csv` file is the following.
     12/26/2018,1832
     ```
 
-The following examples represent the results when read from CSV data node with different _exposed_type_:
+The following examples represent the results when reading from a CSV data node with different _exposed_type_:
 
 !!! example "`data_node.read()` returns"
 
@@ -228,7 +228,7 @@ The following examples represent the results when read from CSV data node with d
         ]
         ```
 
-When write data to a CSV data node, the `CSVDataNode.write()^` method can take several datatype as the input:
+When writing data to a CSV data node, the `CSVDataNode.write()^` method can take several datatype as the input:
 
 - list, numpy array
 - dictionary, or list of dictionaries
@@ -321,7 +321,7 @@ To write with custom column names, use the `CSVDataNode.write_with_column_names(
 
 ## Excel
 
-When read from an Excel data node, Taipy returns the data of the Excel file based on _exposed_type_ parameter.
+When reading from an Excel data node, Taipy returns the data of the Excel file based on the _exposed_type_ parameter.
 Check out [Excel Data Node configuration](../config/data-node-config.md#excel) for more details on _exposed_type_.
 
 For the example in this section, assume that `sales_history_cfg` in [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
@@ -337,7 +337,7 @@ Assume that the content of the `sales.xlsx` file is the following.
     | 12/25/2018 | 2315     |
     | 12/26/2018 | 1832     |
 
-The following examples represent the results when read from Excel data node with different _exposed_type_:
+The following examples represent the results when reading from an Excel data node with different _exposed_type_:
 
 !!! example "`data_node.read()` returns"
 
@@ -386,7 +386,7 @@ The following examples represent the results when read from Excel data node with
         ]
         ```
 
-When write data to an Excel data node, the `ExcelDataNode.write()^` method can take several datatype as the input:
+When writing data to an Excel data node, the `ExcelDataNode.write()^` method can take several datatype as the input:
 
 - list, numpy array
 - dictionary, or list of dictionaries
@@ -478,7 +478,7 @@ To write with custom column names, use the `ExcelDataNode.write_with_column_name
 
 ## SQL Table
 
-When read from a SQL Table data node, Taipy returns the data of the SQL Table file based on _exposed_type_ parameter.
+When reading from a SQL Table data node, Taipy returns the data of the SQL Table file based on the _exposed_type_ parameter.
 Check out [SQL Table Data Node configuration](../config/data-node-config.md#sql-table) for more details on _exposed_type_.
 
 For the example in this section, assume that `sales_history_cfg` in [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
@@ -494,7 +494,7 @@ Assume that the content of the `"sales"` table is the following.
     | 2  | 12/25/2018 | 2315     |
     | 3  | 12/26/2018 | 1832     |
 
-The following examples represent the results when read from SQL Table data node with different _exposed_type_:
+The following examples represent the results when reading from a SQL Table data node with different _exposed_type_:
 
 !!! example "`data_node.read()` returns"
 
@@ -543,7 +543,7 @@ The following examples represent the results when read from SQL Table data node 
         ]
         ```
 
-When write data to a SQL Table data node, the `SQLTableDataNode.write()^` method can take several datatype as the input:
+When writing data to a SQL Table data node, the `SQLTableDataNode.write()^` method can take several datatype as the input:
 
 - list of lists or list of tuples
 - numpy array
@@ -629,7 +629,7 @@ A SQL data node is designed to give the user more flexibility on how to read and
 
 Let's consider the `orders_cfg` in [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py) which configures a SQL data node.
 
-When read from a SQL data node, Taipy executes the read query and returns the data of the SQL file based on _exposed_type_ parameter:
+When reading from a SQL data node, Taipy executes the read query and returns the data of the SQL file based on the _exposed_type_ parameter:
 
 -   The _exposed_type_ parameter of `orders_cfg` is undefined, therefore it takes the default value as "pandas". Check out [SQL Data Node configuration](../config/data-node-config.md#sql) for more details on _exposed_type_.
 -   The _read_query_ of `orders_cfg` is
@@ -638,7 +638,7 @@ When read from a SQL data node, Taipy executes the read query and returns the da
     FROM orders INNER JOIN products
     ON orders.product_id=products.ID
     ```
--   When read from the SQL data node using `data_node.read()` method, Taipy will execute the above query and return a `pandas.DataFrame` represents the "orders" table inner join with the "products" table.
+-   When reading from the SQL data node using `data_node.read()` method, Taipy will execute the above query and return a `pandas.DataFrame` represents the "orders" table inner join with the "products" table.
 
 !!! example "A selection from the "orders" table"
 
@@ -678,7 +678,7 @@ When read from a SQL data node, Taipy executes the read query and returns the da
     )
     ```
 
-When write to a SQL data node, Taipy will first pass the data to _write_query_builder_ and then execute a list of queries returned by the query builder:
+When writing to a SQL data node, Taipy will first pass the data to _write_query_builder_ and then execute a list of queries returned by the query builder:
 
 -   The _write_query_builder_ parameter of `orders_cfg` in this example is defined as the `write_orders_plan()` method.
 -   After being called with the write data as a `pd.DataFrame`, the `write_orders_plan()` method will return a list of SQL queries.
@@ -709,9 +709,9 @@ When write to a SQL data node, Taipy will first pass the data to _write_query_bu
 
 ## JSON
 
-When read from a JSON data node, Taipy will return a dictionary or a list based on the format of the JSON file.
+When reading from a JSON data node, Taipy will return a dictionary or a list based on the format of the JSON file.
 
-When write data to a JSON data node, the `JSONDataNode.write()^` method can take list, dictionary, or list of dictionaries as the input.
+When writing data to a JSON data node, the `JSONDataNode.write()^` method can take a list, dictionary, or list of dictionaries as the input.
 
 In JSON, values must be one of the following data types:
 
@@ -846,9 +846,9 @@ configuration](../config/data-node-config.md#json) for more details on how to co
 
 ## Mongo collection
 
-When read from a Mongo collection data node, Taipy will return a list of objects as instances of a document class defined by _**custom_document**_.
+When reading from a Mongo collection data node, Taipy will return a list of objects as instances of a document class defined by _**custom_document**_.
 
-When write data to a Mongo collection data node, the `MongoCollectionDataNode.write()^` method takes a list of objects as instances of a document class
+When writing data to a Mongo collection data node, the `MongoCollectionDataNode.write()^` method takes a list of objects as instances of a document class
 defined by _**custom_document**_ as the input.
 
 By default, Mongo collection data node uses `taipy.core.DefaultCustomDocument` as the document class. A `DefaultCustomDocument` can have any attribute,
@@ -898,14 +898,14 @@ document class.
 
 A _Generic_ data node has the read and the write functions defined by the user:
 
--   When read from a generic data node, Taipy runs the function defined by *read_fct* with parameters defined by *read_fct_params*.
--   When write to a generic data node, Taipy runs the function defined by *write_fct* with parameters defined by *write_fct_params*.
+-   When reading from a generic data node, Taipy runs the function defined by *read_fct* with parameters defined by *read_fct_params*.
+-   When writing to a generic data node, Taipy runs the function defined by *write_fct* with parameters defined by *write_fct_params*.
 
 ## In memory
 
 Since an _In memory_ data node stores data in RAM as a Python variable, the read / write methods are rather straightforward.
 
-When read from an In memory data node, Taipy returns whichever data stored in RAM corresponding to the data node.
+When reading from an In memory data node, Taipy returns whichever data stored in RAM corresponding to the data node.
 
 Correspondingly, In memory data node can write any data object that is valid data for a Python variable.
 
