@@ -275,7 +275,7 @@ The following examples will write to the path of the CSV data node:
         data_node.write(
             {"date": "12/24/2018", "nb_sales": 1550}
         )
-        # write multile rows
+        # write multiple rows
         data_node.write(
             {
                 "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
@@ -437,7 +437,7 @@ The following examples will write to the path of the Excel data node:
         data_node.write(
             {"date": "12/24/2018", "nb_sales": 1550}
         )
-        # write multile rows
+        # write multiple rows
         data_node.write(
             {
                 "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
@@ -607,7 +607,7 @@ node:
             {"date": "12/24/2018", "nb_sales": 1550}
         )
 
-        # write multile records using a list of dictionaries
+        # write multiple records using a list of dictionaries
         data_node.write(
             [
                 {"date": "12/24/2018", "nb_sales": 1550},
