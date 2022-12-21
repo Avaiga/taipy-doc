@@ -492,7 +492,7 @@ default `SCENARIO` scope is used. The encoder and decoder are the custom encoder
 
 !!! Info
 
-    The ParquetDataNode implementation in Taipy wraps _pandas_ (itself a wrapper of the _pyarrow_ and _fastparquet_ engines) through the [`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html) and [`pandas.DataFrame.to_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html) methods for reading and writing Parquet data respectively.
+    Taipy ParquetDataNode wraps [`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html) and [`pandas.DataFrame.to_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html) methods for reading and writing Parquet data, respectively.
 
 A `ParquetDataNode^` data node is a specific data node used to model [Parquet](https://parquet.apache.org/) file data. To add a new _Parquet_ data node
 configuration, the `Config.configure_parquet_data_node()^` method can be used. In addition to the generic parameters
@@ -507,14 +507,14 @@ described in the previous section [Data node configuration](data-node-config.md)
 -   _**compression**_ is the name of the compression to use.<br/>
     Possible values are _"snappy"_, _"gzip"_, _"brotli"_ and `None`. The default value is _"snappy"_. Use None for no compression.
 
--   _**read_kwargs**_ is a dictionary of additional parameters passed to the _pandas.read_parquet_ method.
+-   _**read_kwargs**_ is a dictionary of additional parameters passed to the [`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html)  method.
 
--   _**write_kwargs**_ is a dictionary of additional parameters passed to the _pandas.DataFrame.write_parquet_ method.<br/>
-    The parameters in _"read_kwargs"_ and _"write_kwargs"_ have a **higher precedence** than the top-level parameters (**engine** and **compression**) which are also passed to Pandas.
+-   _**write_kwargs**_ is a dictionary of additional parameters passed to the [`pandas.DataFrame.to_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html) method.<br/>
+    The parameters in _"read_kwargs"_ and _"write_kwargs"_ have a **higher precedence** than the top-level parameters (**engine** and **compression**) which are also passed to Pandas. Passing `read_kwargs={"engine": "fastparquet", "compression": "gzip"} will override the **engine** and **compression** properties of the data node.
 
     !!! Tip
 
-        Some parameters (such as _"columns"_, used for reading a subset of columns from the data) only make sense to be passed to the Parquet engine at runtime instead of in the configuration. The `ParquetDataNode.read_with_kwargs^` and `ParquetDataNode.write_with_kwargs^` methods provide an alternative for specifying keyword arguments at runtime. See examples of using this method at the [Data Node Management page](../entities/data-node-mgt.md#parquet).
+        The `ParquetDataNode.read_with_kwargs^` and `ParquetDataNode.write_with_kwargs^` methods provide an alternative for specifying keyword arguments at runtime. See examples of these methods at the [Data Node Management page](../entities/data-node-mgt.md#parquet).
 
 -   _**exposed_type**_ indicates the data type returned when reading the data node (more examples of reading from Parquet data node with different _exposed_type_ is available on [Read / Write a data node](../entities/data-node-mgt.md#parquet) documentation):
     -   By default, _exposed_type_ is "pandas", and the data node will read the Parquet file as a `pandas.DataFrame`.
@@ -528,9 +528,6 @@ from taipy import Config
 temp_cfg = Config.configure_parquet_data_node(
     id="historical_temperature",
     default_path="path/hist_temp.parquet",
-    engine="pyarrow", # default
-    compression="snappy", # default
-    exposed_type="pandas") # default
 ```
 
 In lines 3-8, we configure a basic Parquet data node. The only two required parameters are _id_ and _default_path_.

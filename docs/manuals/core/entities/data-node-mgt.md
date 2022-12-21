@@ -979,7 +979,7 @@ Additionally, Parquet data node entities also expose two new methods, namely: `P
 
 The following examples demonstrate reading and writing to a Parquet data node with additional keyword arguments:
 
-!!! example "reading and writing to Parquet data node entities"
+!!! example "Read and write with `ParquetDataNode.read_with_kwargs^` and `ParquetDataNode.write_with_kwargs^`"
 
     === "ParquetDataNode.read_with_kwargs"
         
