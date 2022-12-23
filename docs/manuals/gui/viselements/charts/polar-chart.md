@@ -39,8 +39,8 @@ layout = {
     "showlegend": True,
     "orientation": -90
 }
-# Plotly.newPlot('myDiv', data, layout);
-# });
+
+
 props = {
     "name[1]": "Figure8",
     "name[2]": "Cardioid",
@@ -64,9 +64,6 @@ Gui(md).run()
 ## Area Polar Chart
 
 ```py
-from taipy.gui import Gui
-import pandas as pd
-
 data = [
     pd.DataFrame(
         {"r": [0, 1.5, 1.5, 0, 2.5, 2.5, 0], "theta": [0, 10, 25, 0, 205, 215, 0]}
@@ -116,8 +113,6 @@ props = {
 md = """
 <|{data}|chart|type=scatterpolar|mode=lines|options={opts}|layout={layout}|properties={props}|>
 """
-Gui(md).run()
-
 ```
 
 ![Area Polar Chart](area-polar-chart-l.png)
@@ -125,9 +120,6 @@ Gui(md).run()
 ## Polar Chart Directions
 
 ```py
-from taipy.gui import Gui
-import pandas as pd
-
 data = [
     pd.DataFrame(
         {
@@ -146,16 +138,12 @@ data = [
 opts1 = {
     "fillcolor": "#709BFF",
     "fill": "toself",
-    "line": {"color": "#ff66ab"},
-    "marker": {"color": "#8090c7", "symbol": "square", "size": 8},
+    "subplot": "polar",
 }
 opts2 = {
     "fillcolor": "#E4FF87",
     "fill": "toself",
-    "line": {
-        "color": "#ff66ab",
-    },
-    "marker": {"color": "#8090c7", "symbol": "square", "size": 8},
+    "subplot": "polar2",
 }
 
 layout = {
@@ -177,7 +165,7 @@ layout = {
 }
 props = {
     "options[1]": opts1,
-    "options[1]": opts2,
+    "options[2]": opts2,
     "theta[1]": "0/theta",
     "r[1]": "0/r",
     "theta[2]": "1/theta",
@@ -188,17 +176,12 @@ props = {
 md = """
 <|{data}|chart|type=scatterpolar|mode=lines+markers|layout={layout}|properties={props}|>
 """
-Gui(md).run()
 ```
 ![Polar Chart Directions](polar-chart-direction-l.png)
 
 ## Polar Chart Subplots
 
 ```py
-from taipy import Gui
-import pandas as pd
-
-
 data = [
     pd.DataFrame(
         {
@@ -235,24 +218,20 @@ data = [
 opts1 = {
     "line": {"color": "#ff66ab"},
     "marker": {"color": "#8090c7", "symbol": "square", "size": 8},
+    "subplot": "polar",
 }
 opts2 = {
     "line": {
         "color": "rgb(231,41,138)",
     },
-    "marker": {"color": "rgb(231,41,138)", "symbol": "square", "size": 8},
+    "subplot": "polar2",
 }
 opts3 = {
-    "line": {
-        "color": "#ff66ab",
-    },
-    "marker": {"color": "#8090c7", "symbol": "square", "size": 8},
+    "subplot": "polar3",
 }
 opts4 = {
-    "line": {
-        "color": "#ff66ab",
-    },
-    "marker": {"color": "#8090c7", "symbol": "square", "size": 8},
+    "fill": "toself",
+    "subplot": "polar4",
 }
 
 
@@ -270,7 +249,7 @@ layout = {
     },
     "polar4": {
         "domain": {"x": [0.54, 1], "y": [0, 0.44]},
-        "radialaxis": {"visible": True, "range": [0, 6]},
+        "radialaxis": {"visible": False, "range": [0, 6]},
     },
     "showlegend": False,
 }
@@ -278,24 +257,17 @@ layout = {
 opts = {"line": {"color": "black"}}
 props = {
     "options[1]": opts1,
-    "options[2]": opts2,
-    "options[3]": opts3,
-    "options[4]": opts4,
-    "theta[1]": "0/theta",
-    "r[1]": "0/r",
-    "theta[2]": "1/theta",
-    "r[2]": "1/r",
-    "theta[3]": "2/theta",
-    "r[3]": "2/r",
-    "theta[4]": "3/theta",
-    "r[4]": "3/r",
+    "options[3]": opts2,
+    "options[4]": opts3,
+    "options[5]": opts4,
     "name[1]": "trace1",
     "name[2]": "trace2",
+    "name[3]": "trace3",
+    "name[4]": "trace4",
 }
 md = """
-<|{data}|chart|type=scatterpolar|mode=lines+markers|options={opts}|layout={layout}|properties={props}|>
+<|{data}|chart|type=scatterpolargl|mode=lines+markers|options={opts}|layout={layout}|properties={props}|>
 """
-Gui(md).run()
 ```
 
 ![Polar Chart Subplots](polar-chart-subplots-l.png)
@@ -303,10 +275,6 @@ Gui(md).run()
 ## Categorical Polar Chart
 
 ```py
-from taipy import Gui
-import pandas as pd
-
-
 data = [
     pd.DataFrame(
         {
@@ -334,49 +302,33 @@ data = [
     ),
     pd.DataFrame(
         {
-            "r": [5, 4, 2, 4, 5, 5],
-            "theta": ["b", "c", "d", "e", "a", "b"],
+            "r": ["a", "b", "c", "d", "b", "f", "a", "a"],
+            "theta": [45, 90, 180, 200, 300, 15, 20, 45],
         }
     ),
 ]
 
 opts1 = {
+    "marker": {
+        "symbol": "square",
+    },
     "fill": "toself",
-    "fillcolor": "#E4FF87",
-    "line": {"color": "#ff66ab"},
-    "marker": {"color": "#8090c7", "symbol": "square", "size": 8},
+    "subplot": "polar",
 }
+
 opts2 = {
-    "fillcolor": "#E4FF87",
+    "subplot": "polar2",
     "fill": "toself",
-    "line": {
-        "color": "#ff66ab",
-    },
-    "marker": {"color": "#8090c7", "symbol": "square", "size": 8},
 }
+
 opts3 = {
-    "fillcolor": "#E4FF87",
+    "subplot": "polar3",
     "fill": "toself",
-    "line": {
-        "color": "#ff66ab",
-    },
-    "marker": {"color": "#8090c7", "symbol": "square", "size": 8},
 }
+
 opts4 = {
-    "fillcolor": "#E4FF87",
+    "subplot": "polar4",
     "fill": "toself",
-    "line": {
-        "color": "#ff66ab",
-    },
-    "marker": {"color": "#8090c7", "symbol": "square", "size": 8},
-}
-opts5 = {
-    "fillcolor": "#E4FF87",
-    "fill": "toself",
-    "line": {
-        "color": "#ff66ab",
-    },
-    "marker": {"color": "#8090c7", "symbol": "square", "size": 8},
 }
 
 
@@ -401,11 +353,6 @@ layout = {
         "radialaxis": {"categoryorder": "category descending"},
         "angularaxis": {"thetaunit": "radians", "dtick": 0.3141592653589793},
     },
-    "polar5": {
-        "domain": {"x": [0.54, 1], "y": [0, 0.44]},
-        "radialaxis": {"categoryorder": "category descending"},
-        "angularaxis": {"thetaunit": "radians", "dtick": 0.3141592653589793},
-    },
 }
 
 props = {
@@ -413,27 +360,12 @@ props = {
     "options[2]": opts2,
     "options[3]": opts3,
     "options[4]": opts4,
-    "options[5]": opts5,
-    "theta[1]": "0/theta",
-    "r[1]": "0/r",
-    "theta[2]": "1/theta",
-    "r[2]": "1/r",
-    "theta[3]": "2/theta",
-    "r[3]": "2/r",
-    "theta[4]": "3/theta",
-    "r[4]": "3/r",
-    "theta[5]": "4/theta",
-    "r[5]": "4/r",
-    "name[1]": "trace1",
-    "name[2]": "trace2",
-    "name[3]": "trace3",
-    "name[4]": "trace4",
-    "name[5]": "trace5",
+    "options[5]": opts4,
 }
+
 md = """
 <|{data}|chart|type=scatterpolar|mode=lines+markers|layout={layout}|properties={props}|>
 """
-Gui(md).run()
 ```
 
 ![Categorical Polar Chart](categorical-polar-chart-l.png)
@@ -441,9 +373,6 @@ Gui(md).run()
 ## Polar Chart Sector
 
 ```py
-from taipy import Gui
-import pandas as pd
-
 data = [
     pd.DataFrame(
         {
@@ -460,14 +389,11 @@ data = [
 ]
 
 opts1 = {
-    "line": {"color": "#ff66ab"},
-    "marker": {"color": "#8090c7", "symbol": "circle", "size": 8},
+    "subplot": "polar",
 }
+
 opts2 = {
-    "line": {
-        "color": "#ff66ab",
-    },
-    "marker": {"color": "#8090c7", "symbol": "circle", "size": 8},
+    "subplot": "polar2",
 }
 
 layout = {
@@ -488,20 +414,13 @@ layout = {
 props = {
     "options[1]": opts1,
     "options[2]": opts2,
-    "theta[1]": "0/theta",
-    "r[1]": "0/r",
-    "theta[2]": "1/theta",
-    "r[2]": "1/r",
     "name[1]": "trace1",
     "name[2]": "trace2",
-    "name[3]": "trace3",
-    "name[4]": "trace4",
-    "name[5]": "trace5",
 }
+
 md = """
 <|{data}|chart|type=scatterpolar|mode=lines+markers|layout={layout}|properties={props}|>
 """
-Gui(md).run()
 ```
 
 ![Polar Chart Sector](polar-chart-sector-l.png)
@@ -509,9 +428,6 @@ Gui(md).run()
 ## WebGL Polar Chart
 
 ```py
-from taipy import Gui
-import pandas as pd
-
 rows = pd.read_csv(
     "https://raw.githubusercontent.com/plotly/datasets/master/hobbs-pearson-trials.csv"
 )
@@ -665,7 +581,6 @@ props = {
 md = """
 <|{data}|chart|type=scatterpolargl|mode=markers|layout={layout}|properties={props}|>
 """
-Gui(md).run()
 ```
 
 ![WebGL Polar Chart](webgl-polar-chart-l.png)
