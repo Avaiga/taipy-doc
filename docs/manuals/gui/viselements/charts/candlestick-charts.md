@@ -11,11 +11,14 @@ Explanation of parameters and options relevant to candlestick charts can be foun
 | high,low,open,close | Values to plot | Control definition |
 | rangeslider | dict of parameters in axis layout | layout |
 
-## Simple Candlestick with Pandas
-
+## Required Libraries
+- [yfinance](https://pypi.org/project/yfinance/)
+  
 ```sh
 pipenv install yfinance
 ```
+
+## Simple Candlestick with Pandas
 
 ```py
 from taipy.gui import Gui
@@ -47,15 +50,7 @@ Gui(md).run()
 
 ## Candlestick Chart with Rangeslider
 
-```sh
-pipenv install yfinance
-```
-
 ```py
-from taipy.gui import Gui
-import pandas as pd
-import yfinance as yf
-
 df = yf.Ticker("AAPL").history(interval="1d", period="50Y")
 
 data = pd.DataFrame(
@@ -68,11 +63,6 @@ data = pd.DataFrame(
     }
 )
 
-options = {
-    "decreasing": {"line": {"color": "#7F7F7F"}},
-    "increasing": {"line": {"color": "#17BECF"}},
-    "line": {"color": "rgba(31,119,180,1)"},
-}
 layout = {
     "dragmode": "zoom",
     "margin": {"r": 10, "t": 25, "b": 40, "l": 60},
@@ -99,23 +89,13 @@ md = """
  
 <|{data}|chart|type=candlestick|layout={layout}|x=x|close=close|open=open|low=low|high=high|options={options}|>
 """
-
-Gui(md).run()
 ```
 
 ![Candlestick Chart with Rangeslider](candlestick-chart-with-rangeslider-l.png)
 
 ## Candlestick without Rangeslider
 
-```sh
-pipenv install yfinance
-```
-
 ```py
-from taipy.gui import Gui
-import pandas as pd
-import yfinance as yf
-
 df = yf.Ticker("AAPL").history(interval="1d", period="50Y")
 
 data = pd.DataFrame(
@@ -128,13 +108,6 @@ data = pd.DataFrame(
     }
 )
 
-options = {
-    "decreasing": {"line": {"color": "#7F7F7F"}},
-    "increasing": {"line": {"color": "#17BECF"}},
-    "line": {"color": "rgba(31,119,180,1)"},
-}
-
-
 layout = {
     "dragmode": "zoom",
     "showlegend": False,
@@ -145,27 +118,17 @@ layout = {
 
 
 md = """
-## Simple Candlestick with Pandas
+## Candlestick without Rangeslider
  
-<|{data}|chart|type=candlestick|x=x|close=close|open=open|low=low|high=high|layout={layout}|options={options}|>
+<|{data}|chart|type=candlestick|x=x|close=close|open=open|low=low|high=high|layout={layout}|>
 """
-
-Gui(md).run()
 ```
 
 ![Candlestick without Rangeslider](candlestick-without-rangeslider-l.png)
 
 ## Adding Customized Text and Annotations
 
-```sh
-pipenv install yfinance
-```
-
 ```py
-from taipy.gui import Gui
-import pandas as pd
-import yfinance as yf
-
 df = yf.Ticker("AAPL").history(interval="1d", period="50Y")
 
 data = pd.DataFrame(
@@ -220,23 +183,13 @@ md = """
  
 <|{data}|chart|type=candlestick|x=x|close=close|open=open|low=low|high=high|layout={layout}|options={options}|>
 """
-
-Gui(md).run()
 ```
 
 ![Adding Customized Text and Annotations](adding-customized-text-and-annotations-l.png)
 
 ## Custom Candlestick Colors
 
-```sh
-pipenv install yfinance
-```
-
 ```py
-from taipy.gui import Gui
-import pandas as pd
-import yfinance as yf
-
 df = yf.Ticker("AAPL").history(interval="1d", period="50Y")
 
 data = pd.DataFrame(
@@ -260,8 +213,6 @@ md = """
  
 <|{data}|chart|type=candlestick|x=x|close=close|open=open|low=low|high=high|options={options}|>
 """
-
-Gui(md).run()
 ```
 
 ![Custom Candlestick Colors](custom-candlestick-colors-l.png)
@@ -296,19 +247,11 @@ data = pd.DataFrame(
     }
 )
 
-options = {
-    "decreasing": {"line": {"color": "#7F7F7F"}},
-    "increasing": {"line": {"color": "#17BECF"}},
-    "line": {"color": "rgba(31,119,180,1)"},
-}
-
 md = """
 ## Simple Example with datetime Objects
  
-<|{data}|chart|type=candlestick|x=x|close=close|open=open|low=low|high=high|options={options}|>
+<|{data}|chart|type=candlestick|x=x|close=close|open=open|low=low|high=high|>
 """
-
-Gui(md).run()
 ```
 
 ![Simple Example with datetime Objects](simple-example-with-datetime-objects-l.png)
