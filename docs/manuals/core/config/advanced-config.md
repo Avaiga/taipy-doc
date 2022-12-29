@@ -309,14 +309,71 @@ and refer to it with the following Taipy configuration:
     Note that if the type of the configuration attribute is not a string, it must be specified in the _TOML_ file
     (':bool', ':int', ':float').
 
-# Exporting configuration
+# Exporting and loading configuration
 
-Taipy also provides a method to export the compiled configuration applied after the compilation of all the
-configurations (default, Python code, explicit file, and environment variable configurations) which is the result of
-the overwriting.
+Taipy provides some API's to export and load its configurations.
+
+## Export
+!!! note
+
+    Changed in version 2.1. Now it only exports the python code configuration.
+
+Export the python code configuration:
 
 ```python linenums="1"
 from taipy import Config
 
 Config.export("config.toml")
+```
+
+## Load
+!!! note
+
+    Changed in version 2.1. Now it only replaces the python code configuration.
+
+Load a configuration file and replace the current python code configuration.
+
+```python linenums="1"
+from taipy import Config
+
+Config.load("config.toml")
+```    
+
+## Backup
+!!! note
+
+    New in version 2.1.
+
+Backup the applied configuration:
+
+```python linenums="1"
+from taipy import Config
+
+Config.backup("config.toml")
+```
+
+## Restore
+!!! note
+
+    New in version 2.1.
+
+Load a configuration file and replace the current applied configuration.
+
+```python linenums="1"
+from taipy import Config
+
+Config.restore("config.toml")
+```    
+
+## Override
+!!! note
+
+    New in version 2.1.
+
+Load a configuration file, replace the current file configuration and triggers a recomputation of the applied configuration.
+
+```python linenums="1"
+from taipy import Config
+
+Config.override("config.toml")
 ```
