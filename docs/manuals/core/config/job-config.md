@@ -5,7 +5,7 @@ available in Taipy: the `standalone` and the `development` mode (available for d
 
 !!! Warning
 
-    We do not encourage using Taipy Core in an interactive Python environment such as Jupyter Notebook or iPython. However, if you find the need for it, please note that when using the standalone mode in an interactive environmentcontext, the function to be provided to a task configuration must be defined in a separated Python module (or a .py file) and not in the interactive platform. For reference, please visit:[multiprocessing — Process-based parallelism — Python 3.11.1 documentation](https://docs.python.org/3/library/multiprocessing.html#using-a-pool-of-workers)
+    We do not encourage using standalone mode in an interactive Python environment such as Jupyter Notebook or iPython. However, if you find the need for it, please note that when using the standalone mode in an interactive environment context, the function to be provided to a task configuration must be defined in a separated Python module (or a .py file) and not in the interactive platform. For reference, please visit:[multiprocessing — Process-based parallelism — Python 3.11.1 documentation](https://docs.python.org/3/library/multiprocessing.html#using-a-pool-of-workers)
 
 With the _standalone_ mode, Taipy executes the `Job^` in its own execution context. You can configure the standalone
 mode with the following config:
