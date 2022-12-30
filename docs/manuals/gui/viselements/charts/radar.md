@@ -3,6 +3,17 @@
  (Spider Web Diagram)
 A radar chart is a visualization suited for the display of multiple variables on a two-dimensional plane. Radar charts take advantage of polar coordinates, where, for each observation, each feature is represented by an angle (theta) and the magnitude by the distance from the center.
 
+## Key properties
+
+| Parameter       | Value Options             | Location           |
+| --------------- | ------------------------- | ------------------ |
+| type          | "scatterpolar"          | Control definition |
+| r, theta | Values to plot | Control definition |
+| axis definition | range, visibility, etc.| Layout |
+| fill | "none", "toself", "tonext" | options |
+
+## Examples
+
 ### Basic Radar Chart
 We will show skill diargram for a BE developer in this example
 
@@ -80,4 +91,3 @@ data = [
 </figure>
 
 Explanation of parameters and options relevant to radar charts can be found [here](https://plotly.com/javascript/reference/scatterpolar/). Full details for the Taipy Chart control can be found in the Chart Control section of the [Taipy GUI User Manual](https://docs.taipy.io/en/latest/manuals/gui/viselements/chart/)
-
