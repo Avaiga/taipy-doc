@@ -2,7 +2,7 @@
 
 To execute a scenario, you need to call the `taipy.submit()^` method:
 
-```python linenums="1"
+```python
 import taipy as tp
 import my_config
 
@@ -28,7 +28,7 @@ method triggers the submission of all the scenario's pipelines. Then each task o
 
 By default, Taipy will asynchronously execute the jobs. If you want to wait until the submitted jobs are finished, you can use the parameter _wait_ and _timeout_:
 
-```python linenums="1"
+```python
 import taipy as tp
 import my_config
 
@@ -44,7 +44,7 @@ taipy will wait until all the submitted jobs are finished or up to _timeout_ sec
 
 You can also submit just a single pipeline with the same `taipy.submit()^` method:
 
-```python linenums="1"
+```python
 import taipy as tp
 import my_config
 
@@ -73,7 +73,7 @@ finished or up to _timeout_ seconds.
 
 You can also submit just a single task with the same `taipy.submit()^` method:
 
-```python linenums="1"
+```python
 import taipy as tp
 import my_config
 
@@ -347,25 +347,4 @@ or you can specify the scenario or pipeline by passing it as a parameter.
 
     This example will produce the following output:
 
-    ```
-    Submit: scenario_1
-    my_global_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
-    my_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
-    my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_1 .
-    my_subscriber: scenario 'my_scenario_1' ; task 'my_task_2'.
-    my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_2'.
-    Submit: scenario_2
-    my_global_subscriber: scenario 'my_scenario_2'; task 'my_task_1'.
-    Unsubscribe to my_global_subscriber for scenario_1
-    Submit: scenario_1
-    my_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
-    my_subscriber: scenario 'my_scenario_1'; task 'my_task_2'.
-    ```
-
-# Running in Notebooks
-
-We do not encourage using Taipy Core in an interactive Python environment such as Jupyter Notebook or iPython.
-However, if you find the need for it, please note that when using the standalone mode in an interactive environment
-context, the function to be provided to a task configuration must be defined in a separated Python module (or a .py
-file) and not in the interactive platform.For reference, please visit:
-[multiprocessing — Process-based parallelism — Python 3.9.14 documentation](https://docs.python.org/3.9/library/multiprocessing.html#using-a-pool-of-workers)
+    ``  Submit: scenario_1     my_global_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.     my_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.     my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_1 .     my_subscriber: scenario 'my_scenario_1' ; task 'my_task_2'.     my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_2'.     Submit: scenario_2     my_global_subscriber: scenario 'my_scenario_2'; task 'my_task_1'.     Unsubscribe to my_global_subscriber for scenario_1     Submit: scenario_1     my_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.     my_subscriber: scenario 'my_scenario_1'; task 'my_task_2'.  ``

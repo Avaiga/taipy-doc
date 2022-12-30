@@ -3,6 +3,10 @@ available in Taipy: the `standalone` and the `development` mode (available for d
 
 # Standalone mode
 
+!!! Warning
+
+    We do not encourage using Taipy Core in an interactive Python environment such as Jupyter Notebook or iPython. However, if you find the need for it, please note that when using the standalone mode in an interactive environmentcontext, the function to be provided to a task configuration must be defined in a separated Python module (or a .py file) and not in the interactive platform. For reference, please visit:[multiprocessing — Process-based parallelism — Python 3.11.1 documentation](https://docs.python.org/3/library/multiprocessing.html#using-a-pool-of-workers)
+
 With the _standalone_ mode, Taipy executes the `Job^` in its own execution context. You can configure the standalone
 mode with the following config:
 
@@ -22,10 +26,7 @@ mode with the following config:
     Config.load("config.toml")
     ```
 
-    ```toml linenums="1" title="config.toml"
-    [JOB]
-    mode = "standalone"
-    ```
+    ``toml linenums="1" title="config.toml"     [JOB]     mode = "standalone"     ``
 
 !!! Note
 
@@ -49,15 +50,11 @@ By default, Taipy executes each `Job^` one-by-one, in a synchronous manner. You 
     Config.load("config.toml")
     ```
 
-    ```toml linenums="1" title="config.toml"
-    [JOB]
-    mode = "standalone"
-    nb_of_workers = "1:int"
-    ```
+    ``toml linenums="1" title="config.toml"     [JOB]     mode = "standalone"     nb_of_workers = "1:int"     ``
 
 !!! Note
 
-    If no value is provided in the _nb_of_workers_ setting in the configuration, Taipy will set this value to 1.
+    If no value is provided in the_nb_of_workers_ setting in the configuration, Taipy will set this value to 1.
 
 To execute multiple `Job^` simultaneously, you can set the _nb_of_workers_ to an integer value greater than 1. That
 starts each `Job^` in a dedicated process with _nb_of_workers_ as the limit of concurrent processes that can run
@@ -81,11 +78,7 @@ For example, the following configuration will allow Taipy to run up to eight `Jo
     Config.load("config.toml")
     ```
 
-    ```toml linenums="1" title="config.toml"
-    [JOB]
-    mode = "standalone"
-    nb_of_workers = "8:int"
-    ```
+    ``toml linenums="1" title="config.toml"     [JOB]     mode = "standalone"     nb_of_workers = "8:int"     ``
 
 # Development mode
 
@@ -108,9 +101,6 @@ test a job execution and or investigate an issue. The _development_ mode can be 
     Config.load("config.toml")
     ```
 
-    ```toml linenums="1" title="config.toml"
-    [JOB]
-    mode = "development"
-    ```
+    ``toml linenums="1" title="config.toml"     [JOB]     mode = "development"     ``
 
 [:material-arrow-right: The next section introduces the configuration checker](config-checker.md).
