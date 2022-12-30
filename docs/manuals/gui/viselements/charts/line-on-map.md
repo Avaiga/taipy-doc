@@ -194,3 +194,13 @@ We can see top crowed cities: New York, Los Angeles and Chicago
     <img src="map-with-bubbles.png" class="visible-light" />
     <figcaption>Maps with bubbles</figcaption>
 </figure>
+
+Explanation of parameters and options relevant to Mapbox density charts can be found [here](https://plotly.com/javascript/reference/scattergeo/). Full details for the Taipy Chart control can be found in the Chart Control section of the [Taipy GUI User Manual](https://docs.taipy.io/en/latest/manuals/gui/viselements/chart/)
+
+### Key parameters
+| Parameter       | Value Options             | Location           |
+| --------------- | ------------------------- | ------------------ |
+| type          | "scattergeo"          | Control definition |
+| lat,lon | Values to plot | Control definition |
+| projection | [Projection List](https://plotly.com/python/map-configuration/#map-projections) | Layout |
+| lataxis, lonaxis | Dict of values | Layout |
