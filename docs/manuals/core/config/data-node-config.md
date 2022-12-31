@@ -498,11 +498,12 @@ A `ParquetDataNode^` data node is a specific data node used to model [Parquet](h
 configuration, the `Config.configure_parquet_data_node()^` method can be used. In addition to the generic parameters
 described in the previous section [Data node configuration](data-node-config.md), the following parameters can be provided:
 
--   _**default_path**_ is a mandatory parameter and represents the default Parquet file path used by Taipy to read and write
+-   _**default_path**_ is a mandatory parameter and represents the default Parquet path to the file or directory used by Taipy to read and write
     the data.
 
 -   _**engine**_ represents the Parquet library to use.<br/>
-    Possible values are _"fastparquet"_ or _"pyarrow"_. The default value is _"pyarrow"_.
+    Possible values are _"fastparquet"_ or _"pyarrow"_. The default value is _"pyarrow"_.<br/>
+    Using the _"fastparquet"_ engine requires installation with `pip install taipy[fastparquet]`.
 
 -   _**compression**_ is the name of the compression to use.<br/>
     Possible values are _"snappy"_, _"gzip"_, _"brotli"_ and `None`. The default value is _"snappy"_. Use None for no compression.

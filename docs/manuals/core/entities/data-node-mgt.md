@@ -979,24 +979,22 @@ Additionally, Parquet data node entities also expose two new methods, namely: `P
 
 The following examples demonstrate reading and writing to a Parquet data node with additional keyword arguments:
 
-!!! example "Read and write with `ParquetDataNode.read_with_kwargs^` and `ParquetDataNode.write_with_kwargs^`"
-
-    === "ParquetDataNode.read_with_kwargs"
+!!! example "Reading data with `ParquetDataNode.read_with_kwargs^`"
         
-        ```python
-        columns = ["nb_sales"]
-        data_node.read_with_kwargs(columns=columns)
-        ```
-    
-    === "ParquetDataNode.write_with_kwargs"
+    ```python
+    columns = ["nb_sales"]
+    data_node.read_with_kwargs(columns=columns)
+    ```
 
-        ```python
-        data_node.write_with_kwargs(index=False)
-        ```
+Here, the `ParquetDataNode.read_with_kwargs^` method is used to specify a keyword parameter, _"columns"_, which is the list of column names to be read from the Parquet dataset. In this case, only the "nb_sales" column will be read.
 
-In the first example, the `ParquetDataNode.read_with_kwargs^` method is used to specify a keyword parameter, _"columns"_, which is the list of column names to be read from the Parquet dataset. In this case, only the "nb_sales" column will be read.
+!!! example "Writing data with `ParquetDataNode.write_with_kwargs^`"
 
-In the second example, The `ParquetDataNode.write_with_kwargs^` method is used to specify a keyword parameter, _"index"_, which is a boolean value determining if the index of the DataFrame should be written. In this case, the index will not be not written.
+    ```python
+    data_node.write_with_kwargs(index=False)
+    ```
+
+Here, the `ParquetDataNode.write_with_kwargs^` method is used to specify a keyword parameter, _"index"_, which is a boolean value determining if the index of the DataFrame should be written. In this case, the index will not be not written.
 
 ## Mongo collection
 
