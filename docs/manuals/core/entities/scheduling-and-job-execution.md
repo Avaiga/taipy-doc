@@ -73,7 +73,7 @@ finished or up to _timeout_ seconds.
 
 You can also submit just a single task with the same `taipy.submit()^` method:
 
-```python
+```python linenums="1"
 import taipy as tp
 import my_config
 
