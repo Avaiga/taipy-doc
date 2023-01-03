@@ -37,7 +37,7 @@ class GuiExtRefManStep(SetupStep):
             gui_path = os.path.join(setup.root_dir, "gui")
             os.chdir(gui_path)
             print(f"... Installing node modules...", flush=True)
-            subprocess.run(f"{self.npm_path} ci --omit=optional", shell=True)
+            subprocess.run(f"{self.npm_path} run inst", shell=True)
             print(f"... Generating documentation...", flush=True)
             subprocess.run(f"{self.npm_path} run mkdocs", shell=True)
             # Process and copy files to docs/manuals
