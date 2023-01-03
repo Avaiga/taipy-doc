@@ -28,7 +28,7 @@ method triggers the submission of all the scenario's pipelines. Then each task o
 
 By default, Taipy will asynchronously execute the jobs. If you want to wait until the submitted jobs are finished, you can use the parameter _wait_ and _timeout_:
 
-```python
+```python linenums="1"
 import taipy as tp
 import my_config
 
