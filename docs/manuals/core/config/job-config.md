@@ -50,7 +50,11 @@ By default, Taipy executes each `Job^` one-by-one, in a synchronous manner. You 
     Config.load("config.toml")
     ```
 
-    ``toml linenums="1" title="config.toml"     [JOB]     mode = "standalone"     nb_of_workers = "1:int"     ``
+    ```toml linenums="1" title="config.toml"
+    [JOB]
+    mode = "standalone"
+    nb_of_workers = "1:int"
+    ```
 
 !!! Note
 
