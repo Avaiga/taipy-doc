@@ -26,7 +26,10 @@ mode with the following config:
     Config.load("config.toml")
     ```
 
-    ``toml linenums="1" title="config.toml"     [JOB]     mode = "standalone"     ``
+    ```toml linenums="1" title="config.toml"     
+    [JOB]     
+    mode = "standalone"     
+    ```
 
 !!! Note
 
