@@ -112,6 +112,9 @@ test a job execution and or investigate an issue. The _development_ mode can be 
     Config.load("config.toml")
     ```
 
-    ``toml linenums="1" title="config.toml"     [JOB]     mode = "development"     ``
+    ```toml linenums="1" title="config.toml"
+    [JOB]
+    mode = "development"
+    ```
 
 [:material-arrow-right: The next section introduces the configuration checker](config-checker.md).
