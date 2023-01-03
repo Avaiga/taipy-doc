@@ -85,7 +85,11 @@ For example, the following configuration will allow Taipy to run up to eight `Jo
     Config.load("config.toml")
     ```
 
-    ``toml linenums="1" title="config.toml"     [JOB]     mode = "standalone"     nb_of_workers = "8:int"     ``
+    ```toml linenums="1" title="config.toml"
+    [JOB]
+    mode = "standalone"
+    nb_of_workers = "8:int"
+    ```
 
 # Development mode
 
