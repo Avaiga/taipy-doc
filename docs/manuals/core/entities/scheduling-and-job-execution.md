@@ -2,7 +2,7 @@
 
 To execute a scenario, you need to call the `taipy.submit()^` method:
 
-```python
+```python linenums="1"
 import taipy as tp
 import my_config
 
