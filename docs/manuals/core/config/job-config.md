@@ -61,7 +61,7 @@ By default, Taipy executes each `Job^` one-by-one, in a synchronous manner. You 
 
 !!! Note
 
-    If no value is provided in the_nb_of_workers_ setting in the configuration, Taipy will set this value to 1.
+    If no value is provided in the _nb_of_workers_ setting in the configuration, Taipy will set this value to 1.
 
 To execute multiple `Job^` simultaneously, you can set the _nb_of_workers_ to an integer value greater than 1. That
 starts each `Job^` in a dedicated process with _nb_of_workers_ as the limit of concurrent processes that can run
