@@ -44,7 +44,7 @@ taipy will wait until all the submitted jobs are finished or up to _timeout_ sec
 
 You can also submit just a single pipeline with the same `taipy.submit()^` method:
 
-```python
+```python linenums="1"
 import taipy as tp
 import my_config
 
