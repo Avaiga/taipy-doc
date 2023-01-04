@@ -109,6 +109,8 @@ import taipy as tp
 from datetime import datetime
 from my_config import *
 
+tp.Core().run()
+
 previous_month_scenario = tp.create_scenario(monthly_scenario_cfg)
 previous_month_scenario.current_month.write(datetime(2020, 1, 1))
 previous_month_scenario.submit()

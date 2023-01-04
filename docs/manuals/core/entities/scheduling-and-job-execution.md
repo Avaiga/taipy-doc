@@ -1,6 +1,29 @@
-# Submit a scenario, pipeline or task.
+# Submit a scenario, pipeline, or task
+
+In a Taipy application, running the Core service is required to execute jobs.
+
+To see how you can run different Taipy services, please refer to the [Running Taipy services](../../running_services/index.md) page.
+
+!!! Important "Block configuration after running Taipy Core services"
+    After running the Core services, all configuration will be blocked from update to prepare for job execution.
 
 To execute a scenario, you need to call the `taipy.submit()^` method:
+
+```python linenums="1"
+import taipy as tp
+import my_config
+
+tp.Core().run()
+
+scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+tp.submit(scenario)
+```
+
+In line 6, we create a new scenario from a scenario configuration and submit it for execution (line 8). The `submit`
+method triggers the submission of all the scenario's pipelines. Then each task of each pipeline will be submitted.
+
+The Core service can also be started after `submit` method. Note that jobs can only be executed after the Taipy Core service is started.
 
 ```python linenums="1"
 import taipy as tp
@@ -9,10 +32,9 @@ import my_config
 scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
 tp.submit(scenario)
-```
 
-In line 4, we create a new scenario from a scenario configuration and submit it for execution (line 6). The `submit`
-method triggers the submission of all the scenario's pipelines. Then each task of each pipeline will be submitted.
+tp.Core().run()
+```
 
 !!! Note "Another syntax."
     To submit a scenario, you can also use the method `Scenario.submit()^`:
@@ -20,6 +42,8 @@ method triggers the submission of all the scenario's pipelines. Then each task o
     ```python linenums="1"
     import taipy as tp
     import my_config
+
+    tp.Core().run()
 
     scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
@@ -31,6 +55,8 @@ By default, Taipy will asynchronously execute the jobs. If you want to wait unti
 ```python linenums="1"
 import taipy as tp
 import my_config
+
+tp.Core().run()
 
 scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 task = scenario.predicting
@@ -48,7 +74,9 @@ You can also submit just a single pipeline with the same `taipy.submit()^` metho
 import taipy as tp
 import my_config
 
-scenario = tp.create_scenario(monthly_scenario_cfg)
+tp.Core().run()
+
+scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 pipeline = scenario.sales_pipeline
 
 tp.submit(pipeline)
@@ -66,6 +94,8 @@ finished or up to _timeout_ seconds.
     import taipy as tp
     import my_config
 
+    tp.Core().run()
+
     scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
     pipeline = scenario.sales_pipeline
     pipeline.submit()
@@ -76,6 +106,8 @@ You can also submit just a single task with the same `taipy.submit()^` method:
 ```python linenums="1"
 import taipy as tp
 import my_config
+
+tp.Core().run()
 
 scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 task = scenario.predicting
@@ -93,6 +125,8 @@ the job is finished or up to _timeout_ seconds.
     ```python linenums="1"
     import taipy as tp
     import my_config
+
+    tp.Core().run()
 
     scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
     task = scenario.predicting
@@ -155,6 +189,9 @@ Deleting a Job can raise an `JobNotDeletedException^` if the `Status^` of the Jo
     output_data_node_config = tp.configure_data_node("output")
     task_config = tp.configure_task("double_task", double)
     scenario_config = tp.configure_scenario_from_tasks("my_scenario", [task_config])
+
+    tp.Core().run()
+
     scenario = tp.create_scenario(scenario_config)
     tp.submit(scenario)
 
@@ -204,6 +241,9 @@ Jobs are created when a task is submitted.
     double_task_config = tp.configure_task("double_task", double, input_data_node_cfg, output_data_node_cfg)
     print_task_config = tp.configure_task("print_task", print, output_data_node_cfg)
     scenario_config = tp.configure_scenario_from_tasks("my_scenario", [double_task_config, print_task_config])
+
+    tp.Core().run()
+
     scenario = tp.create_scenario(scenario_config)
     tp.submit(scenario)
 
@@ -253,6 +293,9 @@ This example produces the following output:
     double_task_config = tp.configure_task("double_task", double, input_data_node_cfg, output_data_node_cfg)
     print_task_config = tp.configure_task("print_task", print, output_data_node_cfg)
     scenario_config = tp.configure_scenario_from_tasks("my_scenario", [double_task_config, print_task_config])
+
+    tp.Core().run()
+
     scenario = tp.create_scenario(scenario_config)
     tp.submit(scenario)
 
@@ -328,6 +371,8 @@ or you can specify the scenario or pipeline by passing it as a parameter.
     task_2 = tp.configure_task("my_task_2", do_nothing)
     scenario_1 = tp.configure_scenario_from_tasks("my_scenario", [task, task])
     scenario_2 = tp.configure_scenario_from_tasks("my_scenario", [task, task])
+
+    tp.Core().run()
 
     params = ["my_param_1", 42]
 
