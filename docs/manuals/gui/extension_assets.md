@@ -1,13 +1,12 @@
 # Accessing the library assets
 
-Say we want to display a small image next to the text. That would be useful in the
-situation where we apply our *caption* control to represent a company name along with
-its logo.
+Say we want to display a small image next to the text. That would be useful in the situation where we apply
+our *caption* control to represent a company name along with its logo.
 
-In HTML, you would create an `img` tag, where the source URL is set to the path of the
-image. However, in order to protect the application from attacks, Taipy provides the
-method `ElementLibrary.get_resource()` that let the application filter what resources
-are requested, and return the actual files according to the application setting.
+In HTML, you would create an `img` tag, where the source URL is set to the path of the image.<br/>
+However, in order to protect the application from attacks, Taipy provides the method
+`ElementLibrary.get_resource()` that let the application filter what resources are requested, and return the
+actual files according to the application setting.
 
 
 
