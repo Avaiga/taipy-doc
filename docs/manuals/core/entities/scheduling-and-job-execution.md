@@ -18,12 +18,12 @@ method triggers the submission of all the scenario's pipelines. Then each task o
     To submit a scenario, you can also use the method `Scenario.submit()^`:
 
     ```python linenums="1"
-        import taipy as tp
-        import my_config
+    import taipy as tp
+    import my_config
 
-        scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-        scenario.submit()
+    scenario.submit()
     ```
 
 By default, Taipy will asynchronously execute the jobs. If you want to wait until the submitted jobs are finished, you can use the parameter _wait_ and _timeout_:
@@ -53,6 +53,7 @@ pipeline = scenario.sales_pipeline
 
 tp.submit(pipeline)
 ```
+
 In line 5, we retrieve the pipeline named `sales_pipeline` from the created scenario. In line 7, we submit only this
 pipeline for execution. The `taipy.submit()^` method triggers the submission of all the pipeline's tasks. When
 submitting a pipeline, you can also use the two parameters _wait_ and _timeout_ to wait until all the jobs are
@@ -62,12 +63,12 @@ finished or up to _timeout_ seconds.
     To submit a pipeline, you can also use the method `Pipeline.submit()^`:
 
     ```python linenums="1"
-        import taipy as tp
-        import my_config
+    import taipy as tp
+    import my_config
 
-        scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
-        pipeline = scenario.sales_pipeline
-        pipeline.submit()
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+    pipeline = scenario.sales_pipeline
+    pipeline.submit()
     ```
 
 You can also submit just a single task with the same `taipy.submit()^` method:
@@ -81,6 +82,7 @@ task = scenario.predicting
 
 tp.submit(task)
 ```
+
 In line 5, we retrieve the task named `predicting` from the created scenario. In line 7, we submit only this
 task for execution. When submitting a task, you can also use the two parameters _wait_ and _timeout_ to wait until
 the job is finished or up to _timeout_ seconds.
@@ -89,12 +91,12 @@ the job is finished or up to _timeout_ seconds.
     To submit a task, you can also use the method `Task.submit()^`:
 
     ```python linenums="1"
-        import taipy as tp
-        import my_config
+    import taipy as tp
+    import my_config
 
-        scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
-        task = scenario.predicting
-        task.submit()
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+    task = scenario.predicting
+    task.submit()
     ```
 
 # Job
@@ -114,15 +116,15 @@ Here is the list of the job's attributes:
 
 ## Job Status
 
--   `SUBMITTED`: The job is created but not enqueued for execution.
--   `BLOCKED`: The job is blocked because inputs are not ready.
--   `PENDING`: The job is waiting for execution.
--   `RUNNING`: The job is being executed.
--   `CANCELED`: The job was canceled by the user.
--   `FAILED`: The job failed due to timeout or execution error.
--   `COMPLETED`: The job execution is done and outputs were written.
--   `SKIPPED`: The job was and will not be executed.
--   `ABANDONED`: The job was abandoned and will not be executed.
+- `SUBMITTED`: The job is created but not enqueued for execution.
+- `BLOCKED`: The job is blocked because inputs are not ready.
+- `PENDING`: The job is waiting for execution.
+- `RUNNING`: The job is being executed.
+- `CANCELED`: The job was canceled by the user.
+- `FAILED`: The job failed due to timeout or execution error.
+- `COMPLETED`: The job execution is done and outputs were written.
+- `SKIPPED`: The job was and will not be executed.
+- `ABANDONED`: The job was abandoned and will not be executed.
 
 ## Get/Delete Job
 
