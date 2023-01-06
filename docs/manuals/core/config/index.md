@@ -26,7 +26,7 @@ your application and its entities.
 
 !!! Important
 
-    All configuration objects should be created before runtime to avoid any conflict.
+    All configuration objects should be created before running Core service to avoid any conflict.
 
 This chapter is dedicated to the configuration and focuses on the various **configs** objects. Its sections are
 organized as follows:
