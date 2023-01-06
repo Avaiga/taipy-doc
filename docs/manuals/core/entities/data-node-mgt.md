@@ -16,6 +16,7 @@ A data node also holds various properties and attributes accessible through the 
 -   _**parent_id**_: The identifier of the parent (pipeline_id, scenario_id, cycle_id) or `None`.
 -   _**last_edit_date**_: The date and time of the last modification.
 -   _**job_ids**_: The ordered list of jobs that have written on this data node.
+-   _**version**_: The string indicates the application version of the data node to instantiate. If not provided, the current version is used.
 -   _**cacheable**_: The Boolean value that indicates if a data node is cacheable.
 -   _**validity_period**_: The validity period of a cacheable data node. If _validity_period_ is set to None, the
     data node is always up-to-date.
