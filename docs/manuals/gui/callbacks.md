@@ -146,7 +146,7 @@ to the client's browser.
 
 The implementation of this task's execution is straightforward:
 ```py linenums="1"
-from taipy.gui import State, invoke_long_callback, notify
+from taipy.gui import State, invoke_long_running, notify
 
 def heavy_function(...):
     # Do something that takes time...
@@ -154,17 +154,17 @@ def heavy_function(...):
 
 def on_action(state, *action_args):
     notify(state, "info", "Heavy task started...")
-    invoke_long_callback(state, heavy_function, [...heavy_function arguments...])
+    invoke_long_running(state, heavy_function, [...heavy_function arguments...])
 ```
 
-Line 5 shows the invocation of `invoke_long_callback()^` which does all the hard work. All the parameters
+Line 5 shows the invocation of `invoke_long_running()^` which does all the hard work. All the parameters
 to *heavy_function()* should be sent to the call, encapsulated in an array.<br/>
 When the call is performed, *heavy_function()* is invoked, but the application keeps running anyway:
 the user function is running in a background thread. 
 
 ### Task status
 
-Note that `invoke_long_callback()^` does more than just execute your task behind the scenes. It has
+Note that `invoke_long_running()^` does more than just execute your task behind the scenes. It has
 additional parameters that let you monitor what the task is doing, particularly when it finishes.
 
 Here is some code that shows how to be notified when the task ends:
@@ -178,8 +178,8 @@ def heavy_function_status(state, status):
         notify(state, "error", f"The heavy task has failed somehow...")
 
 def on_action(state, *action_args):
-    invoke_long_callback(state, heavy_function, [...heavy_function arguments...],
-                         heavy_function_status)
+    invoke_long_running(state, heavy_function, [...heavy_function arguments...],
+                        heavy_function_status)
 ```
 
 The new function *heavy_function_status()* is provided to `invoke_long_callback()^` (see line 12). This function is called when the task finishes. The value of the *heavy_function_status()* function indicates
@@ -204,9 +204,9 @@ def heavy_function_status(state, status):
         notify(state, "info", f"The heavy task is still running...")
 
 def on_action(state: State, *action_args):
-    invoke_long_callback(state, heavy_function, [...heavy_function arguments...],
-                         heavy_function_status, [...heavy_function_status arguments...],
-                         5000)
+    invoke_long_running(state, heavy_function, [...heavy_function arguments...],
+                        heavy_function_status, [...heavy_function_status arguments...],
+                        5000)
 ```
 
 Note how we have used the *period* parameter in line 15. This makes *heavy_function_status()* being called
@@ -215,7 +215,7 @@ every 5 seconds so your user interface may provide an update to the end user.
 In this *heavy_function_status()*, we must test whether the second parameter is a bool or not.
 If it **is** a bool then its value indicates whether *heavy_function()* finished successfully or not.<br/>
 If it is an integer, it provides how many periods (whose length is indicated in the *period* parameter to
-`invoke_long_callback()^`) have passed since *heavy_function()* was started.
+`invoke_long_running()^`) have passed since *heavy_function()* was started.
 
 ## Long-running callbacks in a Thread
 

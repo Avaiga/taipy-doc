@@ -23,8 +23,6 @@ import logging
 import json
 from weakref import ref
 
-from importlib_metadata import pass_none
-
 def define_env(env):
     """
     Mandatory to make this a proper MdDocs macro

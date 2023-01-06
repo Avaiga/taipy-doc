@@ -15,13 +15,10 @@ from taipy import Config
 def double(nb):
     return nb * 2
 
-input_data_node_cfg = Config.configure_data_node("input", default_data=21)
+input_data_node_cfg = Config.configure_data_node("input", default_value=21)
 output_data_node_config = Config.configure_data_node("output")
 
-double_task_cfg = Config.configure_task("double_task",
-                                        double,
-                                        input_data_node_config,
-                                        output_data_node_config)
+double_task_cfg = Config.configure_task("double_task", double, input_data_node_config, output_data_node_config)
 ```
 
 In the example above, we created a `TaskConfig^` named `double_task_cfg`.
@@ -44,17 +41,13 @@ from taipy import Config
 def multiply_and_add(nb1, nb2):
     return nb1 * nb2, nb1 + nb2
 
-nb_1_cfg = Config.configure_data_node("nb_1", default_data=21)
-nb_2_cfg = Config.configure_data_node("nb_2", default_data=2)
+nb_1_cfg = Config.configure_data_node("nb_1", default_value=21)
+nb_2_cfg = Config.configure_data_node("nb_2", default_value=2)
 
 multiplication_cfg = Config.configure_data_node("multiplication")
 addition_cfg = Config.configure_data_node("addition")
 
-task_cfg = Config.configure_task("foo",
-                                 multiply_and_add,
-                                 [nb_1_cfg, nb_2_cfg],
-                                 [multiplication_cfg,
-                                 addition_cfg])
+task_cfg = Config.configure_task("foo", multiply_and_add, [nb_1_cfg, nb_2_cfg], [multiplication_cfg, addition_cfg])
 ```
 
 In lines 3-4, we define a function with two parameters and two return values.

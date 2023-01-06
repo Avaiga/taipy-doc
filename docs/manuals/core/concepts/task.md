@@ -1,8 +1,9 @@
-A `Task^` is a runnable Python function provided by the developer. It represents one of the
-steps that the developer wants to implement in his/her pipeline.
+A `Task^` is a runnable python code provided by the developer (typically a data scientist). It represents one of the
+steps that the developer will need to implement his/her pipeline. Concretely, a _task_ means a python function that
+can be executed.
 
 For example, a _task_ could be a pre-processing function to clean the initial dataset. It could also be a more complex
-function that computes a training model using machine learning algorithms.
+function that develops a training model using machine learning algorithms.
 
 Since a _task_ represents a function, it can take a set of parameters as input and return a set of results as output.
 Each input parameter and each output result is modeled as a data node.
@@ -28,8 +29,8 @@ the task configuration `TaskConfig^` that must be provided when instantiating a 
 
 
 !!! Important
-    The data nodes _sales history_, _current month_, and _capacity_ are considered as **input**
-    data nodes since no task computes them.<br/>
+    Since no task computes them, _sales history_, _current month_, and _capacity_ are considered as **input**
+    data nodes. <br>
     The _trained model_ and _sales predictions_' data nodes are considered as **intermediate** data nodes while
     the _production orders_ data node is considered as an **output** data node since no task reads it.
 

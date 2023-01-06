@@ -6,26 +6,18 @@ Every little help and credit will always be given.
 There are multiple ways to contribute to Taipy, code, but also reporting bugs, creating feature requests, helping
 other users in our forums, Stack Overflow, etc.
 
-Several channels are open to communicate with the Taipy R&D team:
+Today the only way to communicate with the Taipy team is by GitHub issues.
 
-- The [taipy.io forum](https://www.taipy.io/community/) for open discussion with the Taipy team
-- [GitHub issues](https://github.com/Avaiga/taipy/issues) on the Taipy repository to suggest improvements, new features, or to report a bug
-- [GitHub discussions](https://github.com/Avaiga/taipy/discussions) on the Taipy repository for discussing technical topics related to the implementation of Taipy.
-- [StackOverflow](https://stackoverflow.com/questions/tagged/taipy) for precise questions related to the usage of Taipy.
+## Never contributed on an open source project before ?
 
-Before contributing to Taipy, please read our [Code of conduct](https://github.com/Avaiga/taipy-doc/blob/develop/CODE_OF_CONDUCT.md)
+Have a look on this [GitHub documentation](https://docs.github.com/en/get-started/quickstart/contributing-to-projects).
 
-
-## Never contributed to an open source project before ?
-
-Have a look at this [GitHub documentation](https://docs.github.com/en/get-started/quickstart/contributing-to-projects).
-
-## Bugs report
+## Report bugs
 
 Reporting bugs is through [GitHub issues](https://github.com/Avaiga/taipy/issues).
 
 Please report relevant information and preferably code that exhibits the problem. We provide templates to help you
-present the issue in a comprehensive way.
+to present the issue in a comprehensive way.
 
 The Taipy team will analyze and try to reproduce the bug to provide feedback. If confirmed, we will add a priority
 to the issue and add it in our backlog. Feel free to propose a pull request to fix it.

@@ -5,7 +5,7 @@
 [DATA_NODE.sales_history]
 storage_type = "csv"
 scope = "GLOBAL"
-default_path = "path/sales.csv"
+default_path = "my/file/path.csv"
 has_header = "True:bool"
 cacheable = "False:bool"
 
@@ -30,7 +30,7 @@ storage_type = "pickle"
 scope = "SCENARIO"
 cacheable = "False:bool"
 
-[DATA_NODE.orders]
+[DATA_NODE.production_orders]
 storage_type = "sql"
 scope = "SCENARIO"
 db_username = "admin"
@@ -39,8 +39,8 @@ db_name = "production_planning"
 db_host = "localhost"
 db_engine = "mssql"
 db_driver = "ODBC Driver 17 for SQL Server"
-read_query = "SELECT orders.ID, orders.date, products.price, orders.number_of_products FROM orders INNER JOIN products ON orders.product_id=products.ID"
-write_query_builder = <function write_orders_plan at 0x000002878FF9A030>
+read_query = "SELECT * from production_order"
+write_table = "production_order"
 db_port = "1433:int"
 cacheable = "False:bool"
 
@@ -57,7 +57,7 @@ outputs = [ "sales_predictions",]
 [TASK.planning]
 inputs = [ "sales_predictions", "capacity",]
 function = "<function plan at 0x00000287AC01BE50>"
-outputs = [ "orders",]
+outputs = [ "production_orders",]
 
 [PIPELINE.sales]
 tasks = [ "training", "predicting",]

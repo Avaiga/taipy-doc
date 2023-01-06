@@ -16,7 +16,6 @@ A task also holds various properties accessible as an attribute of the task:
     inside the output data nodes.
 -   _**input**_ is the list of input data nodes.
 -   _**output**_ is the list of output data nodes.
--   _**version**_: The string indicates the application version of the task to instantiate. If not provided, the current version is used.
 
 !!! Example
 
@@ -30,8 +29,7 @@ A task also holds various properties accessible as an attribute of the task:
     # the config_id is an attribute of the task and equals "task_configuration"
     task.config_id
 
-    # the function which is going to be executed with input data
-    # nodes and return value on output data nodes.
+    # the function which is going to be executed with input data nodes and return value on output data nodes.
     task.function # predict
 
     # input is the list of input data nodes of the task
@@ -72,31 +70,5 @@ task_2 - pipeline.predicting
 ```
 
 All the jobs can be retrieved using the method `taipy.get_tasks()^`.
-
-# Get parent scenarios and pipelines
-
-To get the parent entities of a task (scenarios or pipelines) you can use either the method `Task.get_parents()^` or the function
-`taipy.get_parents()^`. Both return the parents of the task.
-
-!!! Example
-
-    ```python linenums="1"
-    import taipy as tp
-    import my_config
-
-    # Create a scenario from a config
-    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
-
-    # Retrieve a task
-    task = scenario.training_cfg
-
-    # Retrieve the parent entities of the task. The returned value is
-    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1]}
-    parent_entities = task.get_parents()
-
-    # Retrieve the parent entities of the task. The return value is
-    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1]}
-    tp.get_parents(task)
-    ```
 
 [:material-arrow-right: The next section shows the data node management](data-node-mgt.md).

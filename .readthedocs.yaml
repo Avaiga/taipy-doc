@@ -11,7 +11,7 @@ build:
     nodejs: "18"
   jobs:
     pre_install:
-      - python tools/fetch_source_files.py MKDOCS
+      - bash tools/fetch_source_files.sh MKDOCS
       - pip install pipenv
       - pipenv install --dev
       - pipenv run python tools/setup_generation.py
