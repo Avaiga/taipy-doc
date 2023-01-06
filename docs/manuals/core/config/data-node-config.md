@@ -496,7 +496,7 @@ default `SCENARIO` scope is used. The encoder and decoder are the custom encoder
 
 A `ParquetDataNode^` data node is a specific data node used to model [Parquet](https://parquet.apache.org/) file data. To add a new _Parquet_ data node
 configuration, the `Config.configure_parquet_data_node()^` method can be used. In addition to the generic parameters
-described in the previous section [Data node configuration](data-node-config.md), the following parameters can be provided:
+described in [Data node configuration](data-node-config.md) section, the following parameters can be provided:
 
 -   _**default_path**_ is a mandatory parameter and represents the default Parquet path to the file or directory used by Taipy to read and write
     the data.
