@@ -1,4 +1,4 @@
-## Line charts
+# Line charts
 
 Line plots are a widely-used representation that connects distinct
 data points, showing trends.
@@ -7,14 +7,27 @@ The [Basic concepts](basics.md) section already shows a handful of examples
 showing line charts. This section focuses on customizations that are
 relevant for this type of charts only.
 
+## Key properties
+
+| Parameter       | Value             | Notes |
+| --------------- | ------------------------- | ------------------ |
+| [_mode_](../chart.md#p-mode)      | `lines`          | Overrides the default `lines+markers` |
+| [_x_](../chart.md#p-x)            | x values           |  |
+| [_y_](../chart.md#p-y)            | y values           |  |
+| [_line_](../chart.md#p-line)      | Style for the line |  |
+| [_color_](../chart.md#p-color)  | Color for the line  |  |
+| [_text_](../chart.md#p-text)  | Text to display  |  |
+
+## Examples
+
 ### Styling lines
 
-You can style plots using the [_line[]_](../chart.md#p-line) and [_color[]_](../chart.md#p-color)
-properties.
+You can style plots using the [_line[]_](../chart.md#p-line) and
+[_color[]_](../chart.md#p-color) properties.
 
 Say we have captured temperature measurements every day: the mean, maximum
 and minimum values for every day. This data set can easily be stored in a
-dictionary, that Taipy will use as a Pandas DataFrame:
+dictionary, that Taipy will convert to a Pandas DataFrame:
 ```py
 data = {
     "Date": pandas.date_range("<start-date>", periods=100, freq="D"),
@@ -61,7 +74,7 @@ Here is how to do that in the context of a line chart.
 
 We want to display, at the approximate location of a temperature data point,
 the index of the week we are plotting the data.<br/>
-We can use the [_text[]_](../chart.md#p-text) to do just that: a text will
+We can use the [_text[]_](../chart.md#p-text) property to do just that: a text will
 be displayed at the relevant (_x_, _y_) location.
 
 We can reuse the dataset of the example above, and add a column to

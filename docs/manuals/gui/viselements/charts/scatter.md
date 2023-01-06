@@ -1,7 +1,21 @@
-## Scatter charts
+# Scatter charts
 
 Scatter charts represent data points as dots or other symbols.
 They are useful to see relationships between groups of data points.
+
+In order to create scatter charts with Taipy, you need to set the
+[_mode[]_](../chart.md#p-mode) property for your trace to "markers".
+
+## Key properties
+
+| Parameter       | Value             | Notes |
+| --------------- | ------------------------- | ------------------ |
+| [_mode_](../chart.md#p-mode)      | `markers`          |  |
+| [_x_](../chart.md#p-x)            | x values           |  |
+| [_y_](../chart.md#p-y)            | y values           |  |
+| [_marker_](../chart.md#p-marker)  | dictionary  | `size` can be an integer or a column name in _data_.<br/>`color` can be a color value or a column name in _data_.<br/>`symbol` must be a predefined symbol name. |
+
+## Examples
 
 ### Classification
 
@@ -46,36 +60,48 @@ The chart definition looks like this:
         <taipy:chart mode="markers" x="x" y[1]="Class A" y[2]="Class B">{data}</taipy:chart>
         ```
 
-And the resulting chart is:
+Note how the [_mode_](../chart.md#p-mode) property is set to "markers".
 
-![Scatter chart](scatter1.png)
+The resulting chart is:
+
+<figure>
+    <img src="../scatter-classification-d.png" class="visible-dark" />
+    <img src="../scatter-classification-l.png" class="visible-light"/>
+    <figcaption>Classification</figcaption>
+</figure>
 
 ### Customizing a scatter chart
 
-A common problem with scatter chart is that individual markers can be displayed
+A common problem with scatter charts is that individual markers can be displayed
 on top of each other. This may result in markers being hidden by others, and
 the display may not reflect the density of markers. This is why it
 is usually not a good idea to use scatter charts where markers are completely
 opaque.
 
-It is easy to change the marker parameters if needed. The available parameters
-are listed in the [Plotly scatter](https://plotly.com/python/reference/scatter/#scatter-marker)
-documentation page.<br/>
+It is easy to customize the markers representation using the
+[_marker_](../chart.md#p-marker) indexed property. This property expects
+a dictionary that indicates how markers should be represented. The structure
+of this dictionary and available values are listed in the
+[Plotly scatter](https://plotly.com/python/reference/scatter/#scatter-marker)
+documentation page.
+
 Here is how we can change the size and shape of the markers that are used in
 our previous example (with fewer data points). We need to create two
 dictionaries that hold the values we want to impact:
 
 ```py
 marker_A = {
-  "symbol": "arrow-down",
-  "size": 20
+    "symbol": "circle-open",
+    "size": 16
 }
 marker_B = {
   "symbol": "triangle-up-dot",
-  "size": 20
+  "size": 20,
+  "opacity": 0.7
 }
 ```
-We are requesting bigger markers, with one shape per series.
+We are requesting that the markers have different shape to represent different data sets,
+and the markers for the B data set are slightly bigger.
 
 To have Taipy use those styles, we must modify the chart definition:
 !!! example "Page content"
@@ -96,7 +122,11 @@ To have Taipy use those styles, we must modify the chart definition:
 
 That generates the following chart:
 
-![Styled scatter chart](scatter2.png)
+<figure>
+    <img src="../scatter-style-d.png" class="visible-dark" />
+    <img src="../scatter-style-l.png" class="visible-light"/>
+    <figcaption>Styling markers</figcaption>
+</figure>
 
 ### Regression
 
@@ -110,18 +140,22 @@ original data points and one for the computed regression line.
 Here is the code that defines the source data for the chart:
 ```py
 data = [
-  pd.DataFrame({
+  {
     "x": [ 0.13, -0.49, ..., 1.89, -0.97 ],
     "y": [ 22.23, -51.77, ..., 135.76, -77.33 ]
-  }),
-  pd.DataFrame({
+  },
+  {
     "x": [ -3.53,  2.95 ],
     "Regression": [ -237.48, 200 ]
-  })
+  }
   ]
 ```
 
-The chart definition uses the two Data Frames and their columns:
+The values _x_ and _Regression_ could be computed, for example, using the
+[LinearRegression class](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)
+from the [`scikit-learn` package](https://scikit-learn.org/stable/).
+
+The chart definition uses the two data sets and their columns:
 
 !!! example "Page content"
 
@@ -138,44 +172,15 @@ The chart definition uses the two Data Frames and their columns:
             mode[1]="markers" x[1]="0/x" y[1]="0/y"
             mode[2]="line"    x[2]="1/x" y[2]="1/Regression">{data}</taipy:chart>
         ```
-See how, using the _mode[]_, _x[]_, and _y[]_ properties, the two plots are defined.
+See how, using the _mode[]_, _x[]_, and _y[]_ properties, the two plots are defined.<br/>
+Also note how the data sets are referenced: `x[1]` being set to `0/x"` indicates that the
+x values for the first trace should be retrieved from the column called _x_ in the first
+element of the data array (0 indicating the first array element).
 
 The chart representing the linear regression result is the following:
 
-![Linear regression](scatter3.png)
-
-### Bubble charts and Color Dimension
-
-Bubble chart is a specific use case for scatter charts: variable-sized circular markers. 
-Marker color can also be defined as an array of values via a column name
-
-Here is an example of setting size and color with column names in a marker definition:
-```py
-data = pd.DataFrame({
-    "x": [ 2, 4, 6 ],
-    "y": [ 2, 4, 6 ],
-    "Colors": ["blue", "green", "red"],
-    "Sizes": [20, 40, 30],
-  })
-marker = {"size": "Sizes", "color": "Colors"}
-```
-
-The chart definition uses the Data Frame with the Sizes and Colors columns via the marker :
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|x=x|y=y|marker={marker}|mode=markers|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart
-            mode="markers" x="x" y="y"
-            marker="{marker}">{data}</taipy:chart>
-        ```
-
-![Bubble chart with colors](scatter4.png)
+<figure>
+    <img src="../scatter-regression-d.png" class="visible-dark" />
+    <img src="../scatter-regression-l.png" class="visible-light"/>
+    <figcaption>Linear regression</figcaption>
+</figure>
