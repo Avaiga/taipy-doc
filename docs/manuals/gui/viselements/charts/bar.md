@@ -1,7 +1,23 @@
-## Bar charts
+# Bar charts
 
 Bar charts can be handy when you need to compare data points
 next to one another and look at a global change over time.
+
+Taipy creates a bar chart when the [_type_](../chart.md#p-type) property for a trace
+in the chart control is set to "bar".
+
+
+## Key properties
+
+| Parameter       | Value             | Notes |
+| --------------- | ------------------------- | ------------------ |
+| [_type_](../chart.md#p-type)      | `bar`          |  |
+| [_x_](../chart.md#p-x)            | x values           |  |
+| [_y_](../chart.md#p-y)            | y values           |  |
+| [_orientation_](../chart.md#p-orientation)  | `"v"` or `"h"`  | The orientation of the trace. |
+| [_layout_](../chart.md#p-layout)  | dictionary  | `barmode` can be used to indicate how to show values at the same coordinates. |
+
+## Examples
 
 ### Simple bar chart
 
@@ -14,7 +30,7 @@ election in the US since 1852 (source
 The Python code will look like this:
 ```py
 percentages=[(1852,50.83), (1856,45.29), ..., (2016,46.09), (2020,51.31)]
-data = pd.DataFrame(percentages, columns= ["Year", "%"])
+data = pandas.DataFrame(percentages, columns= ["Year", "%"])
 ```
 
 A Pandas DataFrame is built from a list of tuples that hold the election year
@@ -41,34 +57,30 @@ is displayed on the page (the blue color is not related to what party the
 elected president belongs to - it is just the default color that Plotly
 has picked up):
 
-![Bar chart](bar1.png)
-
-!!! note "Faint bars"
-    Plotly gives bars a low opacity unless they are selected. If you
-    want to override that behavior and force a higher opacity, you
-    can use the following rule in your CSS style sheet:
-    ```css
-    .cartesianlayer .plot path {
-        opacity: 0.8 !important;
-    }
-    ```
+<figure>
+    <img src="../bar-simple-d.png" class="visible-dark" />
+    <img src="../bar-simple-l.png" class="visible-light"/>
+    <figcaption>Simple bar chart</figcaption>
+</figure>
 
 ### Multiple data sets
 
 Say you want to display the score of the winning side next to the
 score of the losing side.
 
-Starting with the same data set as above, you can write:
+Starting with a smaller version of the data set used above, you can write:
 ```py
-percentages=[(1852,50.83), (1856,45.29), ..., (2016,46.09), (2020,51.31)]
-data = pd.DataFrame(percentages, columns= ["Year", "Won"])
+percentages=[(1852,50.83), (1856,45.29), ..., (1924,54.04), (1928,58.21)]
+data = pandas.DataFrame(percentages, columns= ["Year", "Won"])
+# Add the Lost column (100-Won)
 data["Lost"] = [100-t[1] for t in percentages]
 ```
 
 We add a new column to the DataFrame _data_, which is the complement to 100
 of _percentages_.
 
-To represent it, we will change the definition of the cart control:
+To represent it, we will change the definition of the cart control, splitting the two
+data sets to be represented in _y[1]_ and _y[2]_.
 
 !!! example "Page content"
 
@@ -87,8 +99,11 @@ To represent it, we will change the definition of the cart control:
 
 Here is how this new data set is represented:
 
-![Bar chart](bar2.png)
-
+<figure>
+    <img src="../bar-multiple-d.png" class="visible-dark" />
+    <img src="../bar-multiple-l.png" class="visible-light"/>
+    <figcaption>Multiple data sets</figcaption>
+</figure>
 
 ### Stacked bar chart
 
@@ -121,7 +136,11 @@ And use this dictionary in the definition of the chart:
 
 Here is the resulting image:
 
-![Bar chart](bar3.png)
+<figure>
+    <img src="../bar-stacked-d.png" class="visible-dark" />
+    <img src="../bar-stacked-l.png" class="visible-light"/>
+    <figcaption>Stacked bar charts</figcaption>
+</figure>
 
 And each bar adds up to 100, as expected.
 
@@ -152,21 +171,27 @@ located on the _x_ axis.
 The chart control definition for this example is slightly more complex than
 for the previous examples. It is clearer to store the properties and their
 values in a dictionary, which we will later use as the value for the
-_properties_ control property.
+[_properties_](../chart.md#p-properties) control property.
 
 Here is our property dictionary:
 ```py
 properties = {
+    # Shared y values
     "y":              "Hobbies",
+    # Bars for the female data set
     "x[1]":           "Female",
     "color[1]":       "#c26391",
-    "orientation[1]": "h",
+    # Bars for the male data set
     "x[2]":           "Male",
     "color[2]":       "#5c91de",
-    "orientation[2]": "h",
+    # Both data sets are represented with an horizontal orientation
+    "orientation":    "h",
+    # 
     "layout": {
         "barmode": "overlay",
+        # Set a relevant title for the x axis
         "xaxis": { "title": "Gender" },
+        # Hide the legend
         "showlegend": False
     }
 }
@@ -176,8 +201,8 @@ _orientation[]_ property is used to change the orientation of the bars in
 our chart.
 
 Also, note that the _layout_ property is set as well: We indicate in its
-_barmode_ property that the two charts should be displayed next to each
-other, and we hide the legend using the _showlegend_ property.
+_barmode_ property that the two charts should be share the same y coordinates,
+and we hide the legend using the _showlegend_ property.
 
 Now let's use this dictionary in the definition of the chart:
 
@@ -197,96 +222,8 @@ Now let's use this dictionary in the definition of the chart:
 
 Here is the result:
 
-![Bar chart](bar4.png)
-
-### Histogram
-
-A histogram shows how often different values occur in a data set. Histograms
-are used to see the shape of the data's distribution.
-
-This example will show the histogram of temperature samples taken every
-day in a given location.
-
-A DataFrame column holds a temperature for each day:
-```py
-data = pd.DataFrame({ "Days" : [-11.3,-6,-0.1,...,-8.1,1.6,-4.8] })
-```
-
-And a _layout_ dictionary decorates the _x_ axis:
-```py
-layout = { "xaxis"  : { "title": "Temperature °C"} }
-```
-
-The chart control definition uses the "histogram" value for the _type_
-property:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=histogram|y[1]=Days|layout={layout}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="histogram" y[1]="Days" layout="{layout}">{data}</taipy:chart>
-        ```
-
-Here is how the histogram is displayed:
-
-![Bar chart](bar5.png)
-
-### Comparing histograms
-
-You want to compare two histograms next to
-each other, sharing the same _x_ axis.
-
-Imagine you have a daily sample of the temperatures in two cities. Showing
-their histogram next to each other can immediately help understand the
-difference between the two data sets.
-
-In this situation, you need to split your data sets into two distinct data
-frames, one for each city. Each DataFrame contains a column holding a
-temperature for each day. The two DataFrames are stored in an array:
-```py
-data = [
-    pd.DataFrame({ "City A" : [-11.3,-6,-0.1,...,-8.1,1.6,-4.8]}),
-    pd.DataFrame({ "City B" : [-7.1,5.1,11.8,...,3.4,13.1,-0.5]})
-]
-```
-
-Besides the label of the _x_ axis, the _layout_ dictionary must indicate
-that both data sets must share the same _x_ axis:
-```py
-layout = {
-    "barmode": "overlay",
-    "xaxis"  : { "title": "Temperature °C"}
-}
-```
-
-The chart control definition is the following:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=histogram|y[1]=0/City A|y[2]=1/City B|layout={layout}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="histogram" y[1]="0/City A" y[2]="1/City B" layout="{layout}">{data}</taipy:chart>
-        ```
-
-Note how you indicate which data set must be used in the chart: When dealing
-with arrays of DataFrames, the syntax is '_index_/_column_' where _index_
-indicates the index in the _data_ array where the DataFrame holding the
-column _column_ is located.
-
-The resulting display will be:
-
-![Bar chart](bar6.png)
+<figure>
+    <img src="../bar-facing-d.png" class="visible-dark" />
+    <img src="../bar-facing-l.png" class="visible-light"/>
+    <figcaption>Facing bar charts</figcaption>
+</figure>
