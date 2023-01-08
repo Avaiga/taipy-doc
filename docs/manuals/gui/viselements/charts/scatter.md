@@ -14,6 +14,7 @@ In order to create scatter charts with Taipy, you need to set the
 | [_x_](../chart.md#p-x)            | x values           |  |
 | [_y_](../chart.md#p-y)            | y values           |  |
 | [_marker_](../chart.md#p-marker)  | dictionary  | `size` can be an integer or a column name in _data_.<br/>`color` can be a color value or a column name in _data_.<br/>`symbol` must be a predefined symbol name. |
+| [_layout_](../chart.md#p-layout) | dictionary | Global layout settings. |
 
 ## Examples
 
@@ -123,9 +124,101 @@ To have Taipy use those styles, we must modify the chart definition:
 That generates the following chart:
 
 <figure>
-    <img src="../scatter-style-d.png" class="visible-dark" />
-    <img src="../scatter-style-l.png" class="visible-light"/>
+    <img src="../scatter-styling-d.png" class="visible-dark" />
+    <img src="../scatter-styling-l.png" class="visible-light"/>
     <figcaption>Styling markers</figcaption>
+</figure>
+
+### Customizing individual data points
+
+Changing the style of markers can also be set for each individual data point.
+
+Consider the following array of three data sets:
+
+```py
+data = [
+    { "x": [1, 2, 3, 4], "y": [10, 11, 12, 13] },
+    { "x": [1, 2, 3, 4], "y": [11, 12, 13, 14] },
+    { "x": [1, 2, 3, 4], "y": [12, 13, 14, 15] }
+]
+```
+
+We can create an array of _marker_ dictionaries, on for every trace, where
+we indicate how data points will be represented:
+
+```py
+markers = [
+    # First data set is represented by increasingly large
+    # disks, getting more and more opaque
+    {
+        "color": "red",
+        "size": [12, 22, 32, 42],
+        "opacity": [0.2, 0.5, 0.7, 1]
+    },
+    # Second data set is represented with a different symbol
+    # for each data point
+    {
+        "color": "blue",
+        "size": 18,
+        "symbol": ["circle", "square", "diamond", "cross"]
+    },
+    # Third data set is represented with green disks surrounded
+    # by a red circle that becomes thicker and thicker
+    {
+        "color": "green",
+        "size": 20,
+        "line": {
+            "color": "red",
+            "width": [2, 4, 6, 8]
+        }
+    }
+]
+```
+
+We can further customize the whole chart be creating a _layout_ dictionary and
+use it in our chart:
+
+```py
+layout = {
+    # Hide the chart legend
+    "showlegend": False,
+    # Remove all ticks from the x axis
+    "xaxis": {
+        "showticklabels": False
+    },
+    # Remove all ticks from the y axis
+    "yaxis": {
+        "showticklabels": False
+    }
+}
+```
+
+The chart definition can now use this array as the value for the indexed property
+[_marker_](../chart.md#p-marker): each item applies to consecutive traces.<br/>
+We also set the [_layout_](../chart.md#p-layout) property to apply the global
+layout settings:
+
+!!! example "Page content"
+
+    === "Markdown"
+
+        ```
+        <|{data}|chart|mode=markers|marker={markers}|layout={layout}|>
+        ```
+  
+    === "HTML"
+
+        ```html
+        <taipy:chart mode="markers"
+                     marker="{markers}" layout="{layout}">{data}</taipy:chart>
+        ```
+
+The resulting chart displays as:
+
+<figure>
+    <img src="../scatter-more-styling-d.png" class="visible-dark" />
+    <img src="../scatter-more-styling-l.png" class="visible-light"/>
+    <figcaption>Styling data points</figcaption>
 </figure>
 
 ### Regression
