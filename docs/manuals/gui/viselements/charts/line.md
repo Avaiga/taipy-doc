@@ -20,7 +20,7 @@ relevant for this type of charts only.
 
 ## Examples
 
-### Styling lines
+### Styling lines {data-source="gui:doc/examples/charts/line-style"}
 
 You can style plots using the [_line[]_](../chart.md#p-line) and
 [_color[]_](../chart.md#p-color) properties.
@@ -67,7 +67,7 @@ The page now shows the following chart:
     <figcaption>Styling a line chart</figcaption>
 </figure>
 
-### Text above plot
+### Text above plot {data-source="gui:doc/examples/charts/line-text"}
 
 It is sometimes useful to provide textual information on top of a plot.
 Here is how to do that in the context of a line chart.

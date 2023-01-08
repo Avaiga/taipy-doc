@@ -18,7 +18,7 @@ In order to create scatter charts with Taipy, you need to set the
 
 ## Examples
 
-### Classification
+### Classification {data-source="gui:doc/examples/charts/scatter-classification"}
 
 Using a scatter chart to represent the result of the classification of
 samples is really relevant: you can use different colors to represent
@@ -71,7 +71,7 @@ The resulting chart is:
     <figcaption>Classification</figcaption>
 </figure>
 
-### Customizing a scatter chart
+### Customizing a scatter chart {data-source="gui:doc/examples/charts/scatter-styling"}
 
 A common problem with scatter charts is that individual markers can be displayed
 on top of each other. This may result in markers being hidden by others, and
@@ -129,7 +129,7 @@ That generates the following chart:
     <figcaption>Styling markers</figcaption>
 </figure>
 
-### Customizing individual data points
+### Customizing individual data points {data-source="gui:doc/examples/charts/scatter-more-styling"}
 
 Changing the style of markers can also be set for each individual data point.
 
@@ -221,7 +221,7 @@ The resulting chart displays as:
     <figcaption>Styling data points</figcaption>
 </figure>
 
-### Regression
+### Regression {data-source="gui:doc/examples/charts/scatter-regression"}
 
 Regression is an excellent use case for using scatter charts: on top of samples data
 points, you can trace the plot of a function that best fits the data points.
