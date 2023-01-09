@@ -5,7 +5,7 @@ In a Taipy application, running the Core service is required to execute jobs.
 To see how you can run different Taipy services, please refer to the [Running Taipy services](../../running_services/index.md) page.
 
 !!! important "Preventing configuration update when the Taipy Core service is running"
-    After running the Core services, all configuration will be blocked from update to prepare for job execution.
+    After running the Core service, all configuration will be blocked from update to prepare for job execution.
 
 To execute a scenario, you need to call the `taipy.submit()^` method:
 
