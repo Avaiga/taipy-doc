@@ -8,7 +8,7 @@ interactive production-ready data-driven application.
 To build such an application, the first step consists in configuring the characteristics and the desired behavior of
 your application and its entities.
 
-!!! Note "Reminder: Config vs Entities"
+!!! note "Reminder: Config vs Entities"
 
     The **data nodes**, **tasks**, **pipelines**, and **scenarios** concepts have two types of Taipy objects
     related to them: configuration objects and runtime objects.
@@ -24,7 +24,7 @@ your application and its entities.
 
     More details on the **entities** are available in the [Entities](../entities/index.md) chapter.
 
-!!! Important
+!!! important
 
     All configuration objects should be created before running Core service to avoid any conflict.
 

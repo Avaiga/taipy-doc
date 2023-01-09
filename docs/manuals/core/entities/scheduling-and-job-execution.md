@@ -4,8 +4,8 @@ In a Taipy application, running the Core service is required to execute jobs.
 
 To see how you can run different Taipy services, please refer to the [Running Taipy services](../../running_services/index.md) page.
 
-!!! Important "Block configuration after running Taipy Core services"
-    After running the Core services, all configuration will be blocked from update to prepare for job execution.
+!!! important "Preventing configuration update when the Taipy Core service is running"
+    After running the Core service, all configuration will be blocked from update to prepare for job execution.
 
 To execute a scenario, you need to call the `taipy.submit()^` method:
 
@@ -20,10 +20,10 @@ scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 tp.submit(scenario)
 ```
 
-In line 6, we create a new scenario from a scenario configuration and submit it for execution (line 8). The `submit`
+In line 6, we create a new scenario from a scenario configuration and submit it for execution (line 8). The `taipy.submit()^`
 method triggers the submission of all the scenario's pipelines. Then each task of each pipeline will be submitted.
 
-The Core service can also be started after `submit` method. Note that jobs can only be executed after the Taipy Core service is started.
+The Core service can also be started after `taipy.submit()^` method. Note that jobs can only be executed after the Taipy Core service is started.
 
 ```python linenums="1"
 import taipy as tp

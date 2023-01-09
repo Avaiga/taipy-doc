@@ -2,7 +2,7 @@ Taipy provides you three runnable services: Taipy GUI, Taipy Rest, and Taipy Cor
 calling the method _run()_ from the service instance either `Gui^`, `Rest^`, or `Core^`. You can also use `taipy.run
 ()^` to start the service(s).
 
-!!! Important
+!!! important
 
     As you can see in the following examples, the code to run a Taipy service is set within a `if` block checking if
     the special variable `__name__` equals to `"__main__"`. It's a standard boilerplate code that protects users from
@@ -48,8 +48,8 @@ if __name__ == "__main__":
 By starting the Core service, all configuration will be blocked from update to prepare for job execution.
 To continue configure your application, stop the Core service by running `core.stop()`.
 
-!!! Note
-    On a Taipy application that uses Core API, running Core service is required to execute jobs.
+!!! note
+    On a Taipy application that uses the Taipy Core API, running Core service is required to execute jobs.
 
 ## Running `Rest` and `Core`
 
