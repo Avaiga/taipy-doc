@@ -45,6 +45,12 @@ if __name__ == "__main__":
     tp.run(core)
 ```
 
+By starting the Core service, all configuration will be blocked from update to prepare for job execution.
+To continue configure your application, stop the Core service by running `core.stop()`.
+
+!!! Note
+    On a Taipy application that uses Core API, running Core service is required to execute jobs.
+
 ## Running `Rest` and `Core`
 
 By default, running the Rest service, also starts the Core service as the Rest service relies on the Core service :

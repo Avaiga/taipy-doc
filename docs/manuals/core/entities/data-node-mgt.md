@@ -17,6 +17,7 @@ A data node also holds various properties and attributes accessible through the 
 -   _**last_edit_date**_: The date and time of the last data modification made through Taipy.
     Note that **only** for file-based data nodes (CSV, Excel, pickle, JSON, ...), the file's last modification date is used to compute the _**last_edit_date**_ value. That means if a file is modified manually or by an external process, the _**last_edit_date**_ value is automatically updated within Taipy.
 -   _**job_ids**_: The ordered list of jobs that have written on this data node.
+-   _**version**_: The string indicates the application version of the data node to instantiate. If not provided, the current version is used.
 -   _**cacheable**_: The Boolean value that indicates if a data node is cacheable.
 -   _**validity_period**_: The validity period of a cacheable data node. If _validity_period_ is set to None, the
     data node is always up-to-date.
