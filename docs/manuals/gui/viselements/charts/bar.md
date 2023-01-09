@@ -79,8 +79,8 @@ data["Lost"] = [100-t[1] for t in percentages]
 We add a new column to the DataFrame _data_, which is the complement to 100
 of _percentages_.
 
-To represent it, we will change the definition of the cart control, splitting the two
-data sets to be represented in _y[1]_ and _y[2]_.
+To represent it, we will change the definition of the chart control, splitting
+the two data sets to be represented in _y[1]_ and _y[2]_.
 
 !!! example "Page content"
 
@@ -200,8 +200,8 @@ Note how to define our two _x_ sets of values (in _x[1]_ and _x[2]_). The
 _orientation[]_ property is used to change the orientation of the bars in
 our chart.
 
-Also, note that the _layout_ property is set as well: We indicate in its
-_barmode_ property that the two charts should be share the same y coordinates,
+Also, note that the _layout_ property is set as well: we indicate in its
+_barmode_ property that the two charts should share the same y coordinates,
 and we hide the legend using the _showlegend_ property.
 
 Now let's use this dictionary in the definition of the chart:

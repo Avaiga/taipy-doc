@@ -13,7 +13,7 @@ In order to create scatter charts with Taipy, you need to set the
 | [_mode_](../chart.md#p-mode)      | `markers`          |  |
 | [_x_](../chart.md#p-x)            | x values           |  |
 | [_y_](../chart.md#p-y)            | y values           |  |
-| [_marker_](../chart.md#p-marker)  | dictionary  | `size` can be an integer or a column name in _data_.<br/>`color` can be a color value or a column name in _data_.<br/>`symbol` must be a predefined symbol name. |
+| [_marker_](../chart.md#p-marker)  | dictionary  | `size` can be an integer or a column name in _data_.<br/>`color` can be a color value or a column name in _data_.<br/>`symbol` must be a predefined symbol name or a column name in _data_.<br/>`opacity` can be a opacity value or a column name in _data_.|
 | [_layout_](../chart.md#p-layout) | dictionary | Global layout settings. |
 
 ## Examples
