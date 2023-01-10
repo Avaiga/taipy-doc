@@ -4,17 +4,17 @@ Scatter charts represent data points as dots or other symbols.
 They are useful to see relationships between groups of data points.
 
 In order to create scatter charts with Taipy, you need to set the
-[_mode[]_](../chart.md#p-mode) property for your trace to "markers".
+[*mode[]*](../chart.md#p-mode) property for your trace to "markers".
 
 ## Key properties
 
-| Parameter       | Value             | Notes |
+| Name            | Value           | Notes   |
 | --------------- | ------------------------- | ------------------ |
-| [_mode_](../chart.md#p-mode)      | `markers`          |  |
-| [_x_](../chart.md#p-x)            | x values           |  |
-| [_y_](../chart.md#p-y)            | y values           |  |
-| [_marker_](../chart.md#p-marker)  | dictionary  | `size` can be an integer or a column name in _data_.<br/>`color` can be a color value or a column name in _data_.<br/>`symbol` must be a predefined symbol name or a column name in _data_.<br/>`opacity` can be a opacity value or a column name in _data_.|
-| [_layout_](../chart.md#p-layout) | dictionary | Global layout settings. |
+| [*mode*](../chart.md#p-mode)      | `markers`          |  |
+| [*x*](../chart.md#p-x)            | x values           |  |
+| [*y*](../chart.md#p-y)            | y values           |  |
+| [*marker*](../chart.md#p-marker)  | dictionary  | `size` can be an integer or a column name in *data*.<br/>`color` can be a color value or a column name in *data*.<br/>`symbol` must be a predefined symbol name or a column name in *data*.<br/>`opacity` can be a opacity value or a column name in *data*.|
+| [*layout*](../chart.md#p-layout) | dictionary | Global layout settings. |
 
 ## Examples
 
@@ -25,13 +25,13 @@ samples is really relevant: you can use different colors to represent
 different classes that data points belong to.
 
 Here is an example where we have two series of samples, based on the same
-_x_ axis: samples are stored in one series or the other depending on
+*x* axis: samples are stored in one series or the other depending on
 a classification algorithm. The result is three numerical arrays:
 
-- The values on the _x_ axis.
-- The _y_ values for the samples that belong to the class 'A'. The value
+- The values on the *x* axis.
+- The *y* values for the samples that belong to the class 'A'. The value
   is set to Nan if it does not belong to class 'A'.
-- The _y_ values for the samples that belong to the class 'B'. The value
+- The *y* values for the samples that belong to the class 'B'. The value
   is set to Nan if it does not belong to class 'B'.
 
 ```py
@@ -61,7 +61,7 @@ The chart definition looks like this:
         <taipy:chart mode="markers" x="x" y[1]="Class A" y[2]="Class B">{data}</taipy:chart>
         ```
 
-Note how the [_mode_](../chart.md#p-mode) property is set to "markers".
+Note how the [*mode*](../chart.md#p-mode) property is set to "markers".
 
 The resulting chart is:
 
@@ -80,7 +80,7 @@ is usually not a good idea to use scatter charts where markers are completely
 opaque.
 
 It is easy to customize the markers representation using the
-[_marker_](../chart.md#p-marker) indexed property. This property expects
+[*marker*](../chart.md#p-marker) indexed property. This property expects
 a dictionary that indicates how markers should be represented. The structure
 of this dictionary and available values are listed in the
 [Plotly scatter](https://plotly.com/python/reference/scatter/#scatter-marker)
@@ -143,7 +143,7 @@ data = [
 ]
 ```
 
-We can create an array of _marker_ dictionaries, on for every trace, where
+We can create an array of *marker* dictionaries, on for every trace, where
 we indicate how data points will be represented:
 
 ```py
@@ -175,7 +175,7 @@ markers = [
 ]
 ```
 
-We can further customize the whole chart be creating a _layout_ dictionary and
+We can further customize the whole chart be creating a *layout* dictionary and
 use it in our chart:
 
 ```py
@@ -194,8 +194,8 @@ layout = {
 ```
 
 The chart definition can now use this array as the value for the indexed property
-[_marker_](../chart.md#p-marker): each item applies to consecutive traces.<br/>
-We also set the [_layout_](../chart.md#p-layout) property to apply the global
+[*marker*](../chart.md#p-marker): each item applies to consecutive traces.<br/>
+We also set the [*layout*](../chart.md#p-layout) property to apply the global
 layout settings:
 
 !!! example "Page content"
@@ -244,7 +244,7 @@ data = [
   ]
 ```
 
-The values _x_ and _Regression_ could be computed, for example, using the
+The values *x* and *Regression* could be computed, for example, using the
 [LinearRegression class](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)
 from the [`scikit-learn` package](https://scikit-learn.org/stable/).
 
@@ -265,9 +265,9 @@ The chart definition uses the two data sets and their columns:
             mode[1]="markers" x[1]="0/x" y[1]="0/y"
             mode[2]="line"    x[2]="1/x" y[2]="1/Regression">{data}</taipy:chart>
         ```
-See how, using the _mode[]_, _x[]_, and _y[]_ properties, the two plots are defined.<br/>
-Also note how the data sets are referenced: `x[1]` being set to `0/x"` indicates that the
-x values for the first trace should be retrieved from the column called _x_ in the first
+See how, using the *mode[]*, *x[]*, and *y[]* properties, the two plots are defined.<br/>
+Also note how the data sets are referenced: `x[1]` being set to `0/x` indicates that the
+x values for the first trace should be retrieved from the column called *x* in the first
 element of the data array (0 indicating the first array element).
 
 The chart representing the linear regression result is the following:
