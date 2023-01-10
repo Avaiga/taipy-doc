@@ -1,6 +1,5 @@
 ## Funnel charts
 
-TODO
 Funnel charts represent a succession of values correlated between each other according to a certain order.
 
 ### Typical use of headmaps
