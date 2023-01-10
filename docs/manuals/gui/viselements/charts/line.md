@@ -5,29 +5,29 @@ data points, showing trends.
 
 The [Basic concepts](basics.md) section already shows a handful of examples
 showing line charts. This section focuses on customizations that are
-relevant for this type of charts only.
+relevant to this type of chart only.
 
 ## Key properties
 
-| Parameter       | Value             | Notes |
+| Name            | Value           | Notes   |
 | --------------- | ------------------------- | ------------------ |
-| [_mode_](../chart.md#p-mode)      | `lines`          | Overrides the default `lines+markers` |
-| [_x_](../chart.md#p-x)            | x values           |  |
-| [_y_](../chart.md#p-y)            | y values           |  |
-| [_line_](../chart.md#p-line)      | Style for the line |  |
-| [_color_](../chart.md#p-color)  | Color for the line  |  |
-| [_text_](../chart.md#p-text)  | Text to display  |  |
+| [*mode*](../chart.md#p-mode)      | `lines`          | Overrides the default `lines+markers` |
+| [*x*](../chart.md#p-x)            | x values           |  |
+| [*y*](../chart.md#p-y)            | y values           |  |
+| [*line*](../chart.md#p-line)      | Style for the line |  |
+| [*color*](../chart.md#p-color)  | Color for the line  |  |
+| [*text*](../chart.md#p-text)  | Text to display  |  |
 
 ## Examples
 
 ### Styling lines {data-source="gui:doc/examples/charts/line-style"}
 
-You can style plots using the [_line[]_](../chart.md#p-line) and
-[_color[]_](../chart.md#p-color) properties.
+You can style plots using the [*line[]*](../chart.md#p-line) and
+[*color[]*](../chart.md#p-color) properties.
 
-Say we have captured temperature measurements every day: the mean, maximum
+Say we have captured daily temperature measurements: the mean, maximum
 and minimum values for every day. This data set can easily be stored in a
-dictionary, that Taipy will convert to a Pandas DataFrame:
+dictionary that Taipy will convert to a Pandas DataFrame:
 ```py
 data = {
     "Date": pandas.date_range("<start-date>", periods=100, freq="D"),
@@ -37,9 +37,9 @@ data = {
 }
 ```
 
-We want to customize the style of the different traces, so the chart
+We want to customize the style of the different traces so the chart
 is easier to read. We will display the 'Max' trace in red, the 'Min'
-trace in blue, and apply a dash style to the 'regular' temperature
+trace in blue and apply a dash style to the 'regular' temperature
 plot.
 
 Here is the definition of the chart control:
@@ -72,12 +72,12 @@ The page now shows the following chart:
 It is sometimes useful to provide textual information on top of a plot.
 Here is how to do that in the context of a line chart.
 
-We want to display, at the approximate location of a temperature data point,
-the index of the week we are plotting the data.<br/>
-We can use the [_text[]_](../chart.md#p-text) property to do just that: a text will
-be displayed at the relevant (_x_, _y_) location.
+We want to display the index of the relevant week at the approximate location of a
+temperature data point.<br/>
+We can use the [*text[]*](../chart.md#p-text) property to do just that: a text will
+be displayed at the relevant (*x*, *y*) location.
 
-We can reuse the dataset of the example above, and add a column to
+We can reuse the dataset of the example above and add a column to
 the data dictionary, holding the week number as a text:
 ```py
 data = {
@@ -86,7 +86,7 @@ data = {
 ...
 }
 ```
-Note that this new column (_WeekN_) is mainly filled with None values: we only add a text
+Note that this new column (*WeekN*) is mainly filled with None values: we only add text
 information on Sundays.
 
 Let us use this column as a source for displaying text in our chart:
@@ -106,11 +106,11 @@ Let us use this column as a source for displaying text in our chart:
                      mode[2]="text" y[2]="Max" text[2]="WeekN">{data}</taipy:chart>
         ```
 
-We use the [_mode[]_](../chart.md#p-mode) indexed property to indicate that, for
+We use the [*mode[]*](../chart.md#p-mode) indexed property to indicate that, for
 the second trace, we want to display the text itself.<br/>
-This definition allows to display the texts contained in the 'WeekN'
-column (the _text[2]_) property, at the _y_ coordinate indicated in the
-'Max' column (the _y[2]_), as raw text (the _mode[2]_ property).
+This definition allows the display of the texts contained in the 'WeekN'
+column (the *text[2]*) property at the *y* coordinate indicated in the
+'Max' column (the *y[2]*), as raw text (the *mode[2]* property).
 
 Here is the resulting chart:
 

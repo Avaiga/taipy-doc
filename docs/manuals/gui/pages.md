@@ -255,7 +255,7 @@ root page of your application, and is replaced by the target page content when t
 
        <|content|>
 
-       This application was created with [Taipy](http://taipy.avaiga.com).
+       This application was created with [Taipy](https://www.taipy.io/).
        """
        page1_md="## This is page 1"
        page2_md="## This is page 2"

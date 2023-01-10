@@ -3,19 +3,19 @@
 Bar charts can be handy when you need to compare data points
 next to one another and look at a global change over time.
 
-Taipy creates a bar chart when the [_type_](../chart.md#p-type) property for a trace
+Taipy creates a bar chart when the [*type*](../chart.md#p-type) property for a trace
 in the chart control is set to "bar".
 
 
 ## Key properties
 
-| Parameter       | Value             | Notes |
+| Name            | Value           | Notes   |
 | --------------- | ------------------------- | ------------------ |
-| [_type_](../chart.md#p-type)      | `bar`          |  |
-| [_x_](../chart.md#p-x)            | x values           |  |
-| [_y_](../chart.md#p-y)            | y values           |  |
-| [_orientation_](../chart.md#p-orientation)  | `"v"` or `"h"`  | The orientation of the trace. |
-| [_layout_](../chart.md#p-layout)  | dictionary  | `barmode` can be used to indicate how to show values at the same coordinates. |
+| [*type*](../chart.md#p-type)      | `bar`          |  |
+| [*x*](../chart.md#p-x)            | x values           |  |
+| [*y*](../chart.md#p-y)            | y values           |  |
+| [*orientation*](../chart.md#p-orientation)  | `"v"` or `"h"`  | The orientation of the trace. |
+| [*layout*](../chart.md#p-layout)  | dictionary  | `barmode` can be used to indicate how to show values at the same coordinates. |
 
 ## Examples
 
@@ -52,9 +52,9 @@ The definition of a bar chart that represents this data will look like this:
         <taipy:chart type="bar" x="Year" y="%">{data}</taipy:chart>
         ```
 
-All we did is set the _type_ property to "bar", and the following chart
-is displayed on the page (the blue color is not related to what party the
-elected president belongs to - it is just the default color that Plotly
+All we did is set the [*type*](../chart.md#p-type) property to "bar", and the
+following chart is displayed on the page (the blue color is not related to what
+party the elected president belongs to - it is just the default color that Plotly
 has picked up):
 
 <figure>
@@ -76,11 +76,11 @@ data = pandas.DataFrame(percentages, columns= ["Year", "Won"])
 data["Lost"] = [100-t[1] for t in percentages]
 ```
 
-We add a new column to the DataFrame _data_, which is the complement to 100
-of _percentages_.
+We add a new column to the DataFrame *data*, which is the complement to 100
+of *percentages*.
 
 To represent it, we will change the definition of the chart control, splitting
-the two data sets to be represented in _y[1]_ and _y[2]_.
+the two data sets to be represented in *y[1]* and *y[2]*.
 
 !!! example "Page content"
 
@@ -107,13 +107,13 @@ Here is how this new data set is represented:
 
 ### Stacked bar chart {data-source="gui:doc/examples/charts/bar-stacked"}
 
-When different data sets are available from the same set of _x_ values, it
+When different data sets are available from the same set of *x* values, it
 may be relevant to stack those values in the same bar.
 
 We are reusing the same DataFrame as in the example above.
 
 To indicate that we want a stacked representation, you must
-create a _layout_ dictionary:
+create a *layout* dictionary:
 ```py
 layout={ "barmode": "stack" }
 ```
@@ -146,7 +146,7 @@ And each bar adds up to 100, as expected.
 
 ### Facing bar charts {data-source="gui:doc/examples/charts/bar-facing"}
 
-It's sometimes helpful to display two bar charts facing each other,
+It's sometimes helpful to display two bar charts facing each other 
 so comparing data is more manageable.
 
 This example creates a chart that shows the ratio of men and women
@@ -165,13 +165,13 @@ data = pd.DataFrame({
     "Male":   [-0.39, ..., -0.6]
 })
 ```
-Note how we negated the values for the Male data, so they are properly
-located on the _x_ axis.
+Note how we negated the values for the Male data so they are properly
+located on the *x* axis.
 
 The chart control definition for this example is slightly more complex than
-for the previous examples. It is clearer to store the properties and their
-values in a dictionary, which we will later use as the value for the
-[_properties_](../chart.md#p-properties) control property.
+in the previous examples. It is clearer to store the properties and their
+value in a single dictionary, which we will later use as the value for the
+[*properties*](../chart.md#p-properties) control property.
 
 Here is our property dictionary:
 ```py
@@ -196,13 +196,13 @@ properties = {
     }
 }
 ```
-Note how to define our two _x_ sets of values (in _x[1]_ and _x[2]_). The
-_orientation[]_ property is used to change the orientation of the bars in
+Note how to define our two *x* sets of values (in *x[1]* and *x[2]*). The
+*orientation[]* property is used to change the orientation of the bars in
 our chart.
 
-Also, note that the _layout_ property is set as well: we indicate in its
-_barmode_ property that the two charts should share the same y coordinates,
-and we hide the legend using the _showlegend_ property.
+Also, note that the *layout* property is set as well: we indicate in its
+*barmode* property that the two charts should share the same y coordinates,
+and we hide the legend using the *showlegend* property.
 
 Now let's use this dictionary in the definition of the chart:
 
