@@ -133,8 +133,8 @@ Here is how the data is referenced from the chart control:
 And the chart displays as expected:
 
 <figure>
-    <img src="../heatmap_unbalanced-d.png" class="visible-dark" />
-    <img src="../heatmap_unbalanced-l.png" class="visible-light" />
+    <img src="../heatmap-unbalanced-d.png" class="visible-dark" />
+    <img src="../heatmap-unbalanced-l.png" class="visible-light" />
     <figcaption>Temperatures</figcaption>
 </figure>
 
@@ -169,8 +169,8 @@ control:
         <taipy:chart type="heatmap" z="Temperatures" x="Seasons" y="Cities" options="options">{data}</taipy:chart>
         ```
 <figure>
-    <img src="../heatmap_colorscale-d.png" class="visible-dark" />
-    <img src="../heatmap_colorscale-l.png" class="visible-light" />
+    <img src="../heatmap-colorscale-d.png" class="visible-dark" />
+    <img src="../heatmap-colorscale-l.png" class="visible-light" />
     <figcaption>Specific Color Scale</figcaption>
 </figure>
 
@@ -253,8 +253,8 @@ The chart definition will appear as follows:
 And the result looks like this:
 
 <figure>
-    <img src="../heatmap_annotated-d.png" class="visible-dark" />
-    <img src="../heatmap_annotated-l.png" class="visible-light" />
+    <img src="../heatmap-annotated-d.png" class="visible-dark" />
+    <img src="../heatmap-annotated-l.png" class="visible-light" />
     <figcaption>Annotated Heatmap</figcaption>
 </figure>
 
@@ -330,8 +330,8 @@ coordinate array we computed (in *data[1]*).
 Here is resulting chart:
 
 <figure>
-    <img src="../heatmap_unequal_cell_sizes-d.png" class="visible-dark" />
-    <img src="../heatmap_unequal_cell_sizes-l.png" class="visible-light" />
+    <img src="../heatmap-unequal-cell-sizes-d.png" class="visible-dark" />
+    <img src="../heatmap-unequal-cell-sizes-l.png" class="visible-light" />
     <figcaption>Unequal cell sizes</figcaption>
 </figure>
 
@@ -435,7 +435,7 @@ index and column names.
 
 The image that you get looks like the following:
 <figure>
-    <img src="../heatmap_drawing_on_top-d.png" class="visible-dark" />
-    <img src="../heatmap_drawing_on_top-l.png" class="visible-light" />
+    <img src="../heatmap-drawing-on-top-d.png" class="visible-dark" />
+    <img src="../heatmap-drawing-on-top-l.png" class="visible-light" />
     <figcaption>The Golden spiral</figcaption>
 </figure>
