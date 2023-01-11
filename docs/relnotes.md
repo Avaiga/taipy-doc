@@ -9,8 +9,22 @@ This is the list of changes to Taipy releases as they were published.
 
 ## Community edition: 2.1 (In progress)
 
+Published on 2023-01.
+
+[`taipy` 2.1](https://pypi.org/project/taipy/2.1.0/) contains the latest
+[`taipy-config` 2.1](https://pypi.org/project/taipy-config/2.1.0/),
+[`taipy-gui` 2.1](https://pypi.org/project/taipy-gui/2.1.0/),
+[`taipy-core` 2.1](https://pypi.org/project/taipy-core/2.1.0/) and
+[`taipy-rest` 2.1](https://pypi.org/project/taipy-rest/2.1.0/) packages.
+
+
 #### New Features
 
+**`taipy-gui`**<br/>2.1
+
+   - Charts now support polar, funnel, candlesticks and many other types of charts.<br/>
+     See the [chart control](../manuals/gui/viselements/chart) section for details.
+ 
 **`taipy-core`** *<br/>2.1
 
    - New data node named `MongoCollectionDataNode`. It represents the data from a MongoDB collection.
@@ -20,6 +34,13 @@ This is the list of changes to Taipy releases as they were published.
    - The data node caching mechanism now also takes into account the date and time of the last modification of a file caused by either Taipy execution or an external factor. This behavior is limited to file-based data nodes: CSV, Excel, JSON, and pickle data nodes only.
    - Added support for [modin](https://modin.readthedocs.io/en/stable/) as the new exposed type.
    - Running the Core service is required to execute jobs.
+
+#### Improvements and changes
+
+**`taipy-gui`**<br/>2.0.0
+
+- The Pie charts now use the *values* property to set values instead of *x*.<br/>
+  See [Pie charts](../manuals/gui/viselements/charts/pie) for details.
 
 ## Community edition: 2.0
 
@@ -70,7 +91,7 @@ Published on 2022-10.
 - The new `taipy-config` package was exposed to be used by any other Taipy package for configuration and logging.
 
 
-#### Improvements
+#### Improvements and changes
 
 **`taipy-gui`**<br/>2.0.0
 - Stopping then re-running the `Gui^` instance is no longer required in Notebook contexts.
@@ -126,7 +147,7 @@ Published on 2022-10.
 
 - SQLLite or MongoDB databases can now be used as alternatives to the filesystem to store Taipy entities.
 
-#### Improvements
+#### Improvements and changes
 
 - Simplification of the authentication API.
 
@@ -140,7 +161,7 @@ Published on 2022-06.
 [`taipy-rest` 1.1](https://pypi.org/project/taipy-rest/1.1.0/) packages.
 
 
-#### Improvements
+#### Improvements and changes
 
 **`taipy-gui`**<br/>1.1.3
 
