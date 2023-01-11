@@ -129,6 +129,7 @@ complete explanation of what part of the Extension API is used.
 Each example addresses specific areas of the extension API. You should be able to
 make you way from one example to the next.
 
+- [File Structure](extension_file_structure.md)
 - [Custom static element](extension_static_element.md)
 - [Accessing assets](extension_assets.md)
 - [Custom dynamic element](extension_dynamic_element.md)
