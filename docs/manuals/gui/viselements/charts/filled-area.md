@@ -14,7 +14,7 @@ of the Plotly documentation
 
 | Name            | Value           | Notes   |
 | --------------- | ------------------------- | ------------------ |
-| [*type*](../chart.md#p-type)      | `bar`          |  |
+| [*type*](../chart.md#p-type)      | `scatter`          |  |
 | [*x*](../chart.md#p-x)            | x values           |  |
 | [*y*](../chart.md#p-y)            | y values           |  |
 | [*options*](../chart.md#p-options)  | dictionary  | `fill` indicates how to perform the fill.<br/>`stackgroup` indicates the name of the stack group to associate the trace with. |
