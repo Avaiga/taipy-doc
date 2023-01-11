@@ -1,6 +1,6 @@
 # Funnel charts
 
-Funnel charts represent a series of decreasing values as shrinking stacked bars.
+Funnel charts represent series of decreasing values as shrinking stacked bars.
 
 Funnel charts are typically used:
 
@@ -23,7 +23,7 @@ of the chart control "funnel" or "funnelarea".
 | [*y*](../chart.md#p-y)            | Stage names  | For the `funnel` type.  |
 | [*values*](../chart.md#p-values)  | Volume values for stages  | For the `funnelarea` type.  |
 | [*text*](../chart.md#p-text)      | Stage names  | For the `funnelarea` type.  |
-| [*marker*](../chart.md#p-marker)  | dictionary  | `color` can be used to indicate the color of the box representing a stage.<br/>`line` provides the parameters for styling the box frames. |
+| [*marker*](../chart.md#p-marker)  | dictionary  | `color` can be used to indicate the color of the box representing a stage. It can refer to the name of a column in *data* what would hold color definitions.<br/>`line` provides the parameters for styling the box frames. |
 | [*options*](../chart.md#p-options)  | dictionary  | `connector` can be used to customize the graphical properties of the lines connecting the boxes. |
 
 ## Examples
@@ -114,7 +114,7 @@ legend.
     === "Markdown"
 
         ```
-        <|{data}|type=funnel|chart|x={x}|y=Types|name={names}|>
+        <|{data}|chart|type=funnel|x={x}|y=Types|name={names}|>
         ```
   
     === "HTML"
