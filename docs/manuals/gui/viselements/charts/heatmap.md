@@ -155,6 +155,7 @@ options = { "colorscale": "Portland" }
 
 And reference that dictionary in the [*options*](../../chart/#p-options) property of the
 control:
+
 !!! example "Page content"
 
     === "Markdown"
@@ -166,8 +167,12 @@ control:
     === "HTML"
 
         ```html
-        <taipy:chart type="heatmap" z="Temperatures" x="Seasons" y="Cities" options="options">{data}</taipy:chart>
+        <taipy:chart type="heatmap" z="Temperatures" x="Seasons" y="Cities" options="{options}">
+            {data}</taipy:chart>
         ```
+
+Here is how the page looks like:
+
 <figure>
     <img src="../heatmap-colorscale-d.png" class="visible-dark" />
     <img src="../heatmap-colorscale-l.png" class="visible-light" />
@@ -188,7 +193,7 @@ example):
 ```py
 layout = {
     # This array contains the information we want to display in the cells
-    # These are be filled later
+    # These are filled later
     "annotations": [],
     # No ticks on the x axis, show labels on top the of the chart
     "xaxis": {
@@ -247,7 +252,8 @@ The chart definition will appear as follows:
     === "HTML"
 
         ```html
-        <taipy:chart type="heatmap" z="Temperatures" x="Seasons" y="Cities" layout="layout">{data}</taipy:chart>
+        <taipy:chart type="heatmap" z="Temperatures" x="Seasons" y="Cities" layout="{layout}">
+            {data}</taipy:chart>
         ```
 
 And the result looks like this:
