@@ -6,7 +6,7 @@ In Polar Charts, a series is represented by a closed curve that connects points 
 
 ## Polar Charts Key Parameters <a id="table"></a>
 
-Explanation of parameters and options relevant to radar charts can be found [here](#table). Full details for the Taipy Chart control can be found in the Chart Control section of the [Taipy GUI User Manual](https://docs.taipy.io/en/latest/manuals/gui/viselements/chart/)
+Explanation of parameters and options relevant to polar charts can be found [here](#table). Full details for the Taipy Chart control can be found in the Chart Control section of the [Taipy GUI User Manual](https://docs.taipy.io/en/latest/manuals/gui/viselements/chart/)
 
 | Parameter       | Value Options             | Location           |
 | --------------- | ------------------------- | ------------------ |
