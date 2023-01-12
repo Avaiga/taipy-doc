@@ -6,6 +6,8 @@ list of values gets an array of values(`lov`) and a default value(`defaultLov`).
 
 ## Declaring a dynamic element
 ```py
+# demo_lib/demo_library.py file
+
 class DemoLibrary(ElementLibrary):
     elts = {
         "list": Element(
@@ -34,6 +36,8 @@ Property type of the `lov` property is `PropertyType.lov`. This means that the v
 
 ## Creating the React component
 ```ts
+// demo_lib/frontend/src/DemoList.tsx
+
 interface FredListProps {
     value?: string;
     defaultValue?: string;
@@ -79,6 +83,8 @@ const DemoList = (props: FredListProps) => {
 
 ## Using the element in the application
 ```py
+# demo-init.py
+
 value = "default value"
 
 page = """
