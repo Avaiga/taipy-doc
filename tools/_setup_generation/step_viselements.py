@@ -45,6 +45,11 @@ class VisElementsStep(SetupStep):
             raise FileNotFoundError(
                 f"FATAL - Could not read {self.blocks_md_template_path} markdown template"
             )
+        self.charts_home_html_path = self.VISELEMENTS_DIR_PATH + "/charts/home.html_fragment"
+        if not os.access(self.charts_home_html_path, os.R_OK):
+            raise FileNotFoundError(
+                f"FATAL - Could not read {self.charts_home_html_path} html fragment"
+            )
         viselements_json_path = self.VISELEMENTS_SRC_PATH + "/viselements.json"
         with open(viselements_json_path) as viselements_json_file:
             self.viselements = json.load(viselements_json_file)
@@ -134,6 +139,7 @@ class VisElementsStep(SetupStep):
             os.mkdir(self.VISELEMENTS_DIR_PATH)
 
         FIRST_PARA_RE = re.compile(r"(^.*?)(:?\n\n)", re.MULTILINE | re.DOTALL)
+        FIRST_HEADER1_RE = re.compile(r"(^.*?)(\n#\s+)", re.MULTILINE | re.DOTALL)
         FIRST_HEADER2_RE = re.compile(r"(^.*?)(\n##\s+)", re.MULTILINE | re.DOTALL)
 
         def generate_element_doc(element_type: str, element_desc: Dict):
@@ -203,15 +209,47 @@ class VisElementsStep(SetupStep):
                 raise ValueError(
                     f"Couldn't locate first header2 in documentation for element '{element_type}'"
                 )
+            before_properties = match.group(1)
+            after_properties = match.group(2) + element_documentation[match.end() :]
             output_path = os.path.join(self.VISELEMENTS_DIR_PATH, element_type + ".md")
+
+            # Special case for charts: we want to insert the chart gallery that is stored in the
+            # file whose path is in self.charts_home_html_path
+            # This should be inserted before the first level 1 header
+            if element_type == "chart":
+                with open(self.charts_home_html_path, "r") as html_fragment_file:
+                    chart_gallery = html_fragment_file.read()
+                    # The chart_gallery begins with a comment where all sub-sections
+                    # are listed.
+                SECTIONS_RE = re.compile(r"^(?:\s*<!--\s+)(.*?)(?:-->)", re.MULTILINE | re.DOTALL)
+                match = SECTIONS_RE.match(chart_gallery)
+                if not match:
+                    raise ValueError(
+                        f"{self.charts_home_html_path} should begin with an HTML comment that lists the chart types"
+                    )
+                chart_gallery = "\n" + chart_gallery[match.end() :]
+                SECTION_RE = re.compile(r"^(\w+):(.*)$")
+                chart_sections = ""
+                for line in match.group(1).splitlines():
+                    match = SECTION_RE.match(line)
+                    if match:
+                        chart_sections += f"- [{match.group(2)}](charts/{match.group(1)}.md)\n"
+
+                match = FIRST_HEADER1_RE.match(element_documentation)
+                if not match:
+                    raise ValueError(
+                        f"Couldn't locate first header1 in documentation for element 'chart'"
+                    )
+                before_properties = match.group(1) + chart_gallery + match.group(2) + before_properties[match.end() :]
+                after_properties += chart_sections
+
             with open(output_path, "w") as output_file:
                 output_file.write(
                     "---\nhide:\n  - navigation\n---\n\n"
                     + f"# <tt>{element_type}</tt>\n\n"
-                    + match.group(1)
+                    + before_properties
                     + properties_table
-                    + match.group(2)
-                    + element_documentation[match.end() :]
+                    + after_properties
                 )
             e = element_type  # Shortcut
             return (
