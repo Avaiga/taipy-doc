@@ -10,11 +10,12 @@ In order to create scatter charts with Taipy, you need to set the
 
 | Name            | Value           | Notes   |
 | --------------- | ------------------------- | ------------------ |
+| [*type*](../chart.md#p-type)      | `scatter`          | Default value  |
 | [*mode*](../chart.md#p-mode)      | `markers`          |  |
 | [*x*](../chart.md#p-x)            | x values           |  |
 | [*y*](../chart.md#p-y)            | y values           |  |
-| [*marker*](../chart.md#p-marker)  | dictionary  | `size` can be an integer or a column name in *data*.<br/>`color` can be a color value or a column name in *data*.<br/>`symbol` must be a predefined symbol name or a column name in *data*.<br/>`opacity` can be a opacity value or a column name in *data*.|
-| [*layout*](../chart.md#p-layout) | dictionary | Global layout settings. |
+| [*marker*](../chart.md#p-marker)  | dictionary  | `size` can be set to an integer value.<br/>`color` can be set to a color value.<br/>`symbol` can be set to a predefined symbol name.<br/>`opacity` can be set to an opacity.  |
+| [*layout*](../chart.md#p-layout) | dictionary | Global layout settings.  |
 
 ## Examples
 

@@ -22,18 +22,22 @@ Published on 2023-01.
 
 **`taipy-gui`**<br/>2.1
 
-   - Charts now support polar, funnel, candlesticks and many other types of charts.<br/>
-     See the [chart control](../manuals/gui/viselements/chart) section for details.
- 
+- Charts now support polar, funnel, candlesticks and many other types of charts.<br/>
+  See the [chart control](../manuals/gui/viselements/chart) section for details.
+- Developers can specify the location of the Taipy webapp, for debugging purposes.<br/>
+  Use the `--webapp-path` command line option to use that.
+
 **`taipy-core`** *<br/>2.1
 
-   - New data node named `MongoCollectionDataNode`. It represents the data from a MongoDB collection.
-   - The parent entities of a data node, a task, or a pipeline can be accessed via `DataNode.get_parents()^`,
-   `Task.get_parents()^`, or `Pipeline.get_parents()^`, or by passing the data node entity, task entity or pipeline
-   entity to the function `taipy.get_parents()^`.
-   - The data node caching mechanism now also takes into account the date and time of the last modification of a file caused by either Taipy execution or an external factor. This behavior is limited to file-based data nodes: CSV, Excel, JSON, and pickle data nodes only.
-   - Added support for [modin](https://modin.readthedocs.io/en/stable/) as the new exposed type.
-   - Running the Core service is required to execute jobs.
+- New data node named `MongoCollectionDataNode`. It represents the data from a MongoDB collection.
+- The parent entities of a data node, a task, or a pipeline can be accessed via
+  `DataNode.get_parents()^`, `Task.get_parents()^`, or `Pipeline.get_parents()^`, or by passing the
+  data node entity, task entity or pipeline entity to the function `taipy.get_parents()^`.
+- The data node caching mechanism now also takes into account the date and time of the last
+  modification of a file caused by either Taipy execution or an external factor. This behavior is
+  limited to file-based data nodes: CSV, Excel, JSON, and pickle data nodes only.
+- Added support for [modin](https://modin.readthedocs.io/en/stable/) as the new exposed type.
+- Running the Core service is required to execute jobs.
 
 #### Improvements and changes
 
