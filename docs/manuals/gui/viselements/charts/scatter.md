@@ -14,7 +14,7 @@ In order to create scatter charts with Taipy, you need to set the
 | [*mode*](../chart.md#p-mode)      | `markers`          |  |
 | [*x*](../chart.md#p-x)            | x values           |  |
 | [*y*](../chart.md#p-y)            | y values           |  |
-| [*marker*](../chart.md#p-marker)  | dictionary  | `size` can be set to an integer value.<br/>`color` can be set to a color value.<br/>`symbol` can be set to a predefined symbol name.<br/>`opacity` can be set to an opacity.  |
+| [*marker*](../chart.md#p-marker)  | dictionary  | `size` can be set to an integer value.<br/>`color` can be set to a color name or value.<br/>`symbol` can be set to a predefined symbol name (see [Symbol names](https://plotly.com/javascript/reference/scatter/#scatter-marker-symbol) for details).<br/>`opacity` can be set to an opacity value (between 0 and 1).  |
 | [*layout*](../chart.md#p-layout) | dictionary | Global layout settings.  |
 
 ## Examples

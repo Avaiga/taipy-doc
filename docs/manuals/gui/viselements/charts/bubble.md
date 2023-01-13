@@ -32,13 +32,13 @@ data = {
     "y": [1, 2, 3],
     "Colors": ["blue", "green", "red"],
     "Sizes": [20, 40, 30],
-    "Opacity": [1, .4, 1]
+    "Opacities": [1, .4, 1]
 }
 
 marker = {
     "color": "Colors",
     "size": "Sizes",
-    "opacity": "Opacity"
+    "opacity": "Opacities"
 }
 ```
 
