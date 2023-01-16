@@ -21,18 +21,19 @@ to "pie" to create a pie chart.
 
 ### Simple pie chart {data-source="gui:doc/examples/charts/pie-simple"}
 
-Here this example, we want to represent how much area is covered
-by forest in countries in the world. Only the first few countries are
-represented since too many would make the chart unreadable.
+In this example, we want to represent the area covered by forests around the world. Only the
+first few countries are represented since too many would make the chart unreadable.
 
-Our data set, where the area is provided as thousands of hectares in 2020,
-comes from [FAO](https://www.fao.org) and is defined as follows:
+Our data set indicates, for every listed country, how much land is covered by
+forests in thousands of hectares. This data was copied from the [FAO](https://www.fao.org)
+site for 2020.<br/>
+Here is how the data set is defined in our code:
 
 ```py
-data = pd.DataFrame({
+data = {
   "Country": ["Rest of the world","Russian Federation",...,"Peru"],
   "Area": [1445674.66,815312,...,72330.4]
-})
+}
 ```
 
 We can indicate the color of each individual slice using the
@@ -65,8 +66,7 @@ Here is the resulting chart:
 
 ### Styling {data-source="gui:doc/examples/charts/pie-styling"}
 
-You can specify what the color of each slice will be and these sorts of
-things.
+You can specify what the color of each slice should be.
 
 Here is a sample that creates a pie chart showing all the colors of the
 rainbow:

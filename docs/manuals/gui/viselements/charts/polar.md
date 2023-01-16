@@ -23,7 +23,7 @@ of the chart control to "scatterpolar", and set the [*r*](../chart.md#p-r) and
 
 ## Examples
 
-### Simple polar chart  {data-source="gui:doc/examples/charts/polar-simple"}
+### Simple polar chart {data-source="gui:doc/examples/charts/polar-simple"}
 
 A typical use case for polar charts is when you have a parametric
 equation to represent, based on an angular value.
