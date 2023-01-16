@@ -30,6 +30,19 @@
           transpiler (the program that transforms TypeScript code to vanilla JavaScript)
           needs this file to drive its execution.
     - `src` is where our react components are stored. Whenever you want to create new taipy component that is defined in `demo_library.py` you have to create it inside this folder
+
+    ```jsx
+    import React from 'react'
+
+    interface DemoImageProps {
+        src?: string;
+        alt?: string;
+    }
+
+    export default function DemoImage(props: DemoImageProps) {
+      return <img src={props.src} alt={props.alt} />
+    }
+    ```
     
       - `index.ts` is where all react elements gets exported with the name that matches with our `demo_library.py` elements' name.
     ```ts
