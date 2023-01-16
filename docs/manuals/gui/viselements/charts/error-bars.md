@@ -5,7 +5,8 @@ It is typically used when the data set is made of samples produced with measurem
 devices that generate known observational errors. The measurement error
 is usually both random and systematic (due to a miscalibrated instrument).
 
-Error bars can be applied to *scatter charts* ([line charts](line.md) or [bar charts](bar.md)).
+Error bars can be applied to [*line charts*](line.md),
+[*scatter charts*](scatter.md) and [*bar charts*](bar.md).
 To create error bars, you must provide the chart control with an [*options*](../chart.md#p-options)
 value where the *error_x* or *error_y* keys are set to a valid value. Please refer to the
 [Plotly documentation on error bars](https://plotly.com/javascript/reference/#scatter-error_x)
