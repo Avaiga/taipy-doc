@@ -105,7 +105,7 @@ The code is the following:
 ```py
 # Number of samples
 n_samples = 10
-# y values: [0..max_x-1]
+# y values: [0..n_samples-1]
 y = range(0, n_samples)
 
 data = {
