@@ -6,20 +6,20 @@ line:Line charts
 scatter:Scatter charts
 bar:Bar charts
 bubble:Bubble charts
-area:Filled areas/filled
+filled-area:Filled areas
 pie:Pie charts
 histogram:Histograms
 heatmap:Heatmaps
-bar:Error bars/error
-error:Continuous error/continuous
-plot:Box plots/box
+error-bars:Error bars
+continuous-error:Continuous error
+box-plot:Box plots
 polar:Polar charts
 radar:Radar charts
 candlestick:Candlestick charts
 funnel:Funnel charts
-map:Charts on maps
-map:Areas on maps
-map:Density maps
+chart-map:Charts on maps
+area-map:Areas on maps
+density-map:Density maps
 gantt:Gantt charts
 others:Other chart types
 -->
@@ -150,10 +150,10 @@ the chart types supported by Taipy by application category:
         <img src="../charts/home-heatmap-d.png"  class="visible-dark" />
         <img src="../charts/home-heatmap-l.png"  class="visible-light" />
       </a></li>
-    <li><a href="../charts/error-bar">
+    <li><a href="../charts/error-bars">
         <span>Error bars<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
-        <img src="../charts/home-error-bar-d.png"  class="visible-dark" />
-        <img src="../charts/home-error-bar-l.png"  class="visible-light" />
+        <img src="../charts/home-error-bars-d.png"  class="visible-dark" />
+        <img src="../charts/home-error-bars-l.png"  class="visible-light" />
       </a></li>
     <li><a href="../charts/continuous-error">
         <span>Continuous error<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
