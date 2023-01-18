@@ -45,7 +45,7 @@ error_upper = [y+e for (y, e) in zip(samples, error_plus)]
 # Lower bound (y - error_minus)
 error_lower = [y-e for (y, e) in zip(samples, error_minus)]
 
-full_data = [
+data = [
     # Trace for samples
     {
         "x": x,
