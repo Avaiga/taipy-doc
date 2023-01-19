@@ -58,6 +58,12 @@ nav:
             - 'Task management': 'manuals/core/entities/task-mgt.md'
             - 'Data node management': 'manuals/core/entities/data-node-mgt.md'
             - 'Job execution': 'manuals/core/entities/scheduling-and-job-execution.md'
+        - 'Version Control':
+            - manuals/core/versioning/index.md
+            - "Development mode": 'manuals/core/versioning/development_mode.md'
+            - "Experiment mode": 'manuals/core/versioning/experiment_mode.md'
+            - "Production mode": 'manuals/core/versioning/production_mode.md'
+            - "Version management": 'manuals/core/versioning/version-mgt.md'
     - 'Taipy REST':
         - manuals/rest/index.md
     - 'Running Taipy services':

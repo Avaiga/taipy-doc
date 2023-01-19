@@ -38,6 +38,10 @@ Published on 2023-01.
   limited to file-based data nodes: CSV, Excel, JSON, and pickle data nodes only.
 - Added support for [modin](https://modin.readthedocs.io/en/stable/) as the new exposed type.
 - Running the Core service is required to execute jobs.
+- New version control system for Taipy applications. Developers can now run an application in development,
+  save a version of the application as an experiment, re-run older experiments, and push a version to
+  production.<br/>
+  See the [version control](../manuals/core/versioning) section for details.
 
 #### Improvements and changes
 

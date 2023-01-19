@@ -14,3 +14,4 @@ user-defined scenarios, powerful scenario comparison, interactive data, smart sc
 
 [:material-arrow-right: Description of Taipy Core entities](entities/index.md)
 
+[:material-arrow-right: Documentation on manage your Taipy application version](versioning/index.md)
