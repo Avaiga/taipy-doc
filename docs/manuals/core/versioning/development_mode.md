@@ -9,12 +9,11 @@ By default, a Taipy Core application is run in development mode. You can also ru
 
 ```console
 $ python arima_taipy_app.py
-[2023-01-19 14:45:10,139][Taipy][INFO] Development mode: Clean all entities with version d74ec95e-6b98-4612-b50b-d171599fa3e9
+[2023-01-19 14:45:10,139][Taipy][INFO] Development mode: Clean all entities of version d74ec95e-6b98-4612-b50b-d171599fa3e9
 ----- Started training -----
------ Model is in training -----
------ Model is in training -----
+Epoch 1 ...
+Epoch 2 ...
 [2023-01-19 14:45:11,228][Taipy][INFO] job JOB_arima_training_16a095ec-1286-4138-a289-4e7fe07a624d is completed.
-[2023-01-19 14:45:11,250][Taipy][INFO] job JOB_arima_scoring_341ca8ee-cca5-4f03-bdd1-c6ffd02de2cb is completed.
 ```
 
 In the example above, `python arima_taipy_app.py` run the application in development mode.

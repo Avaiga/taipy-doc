@@ -34,7 +34,6 @@ This will reload the entities of that experiment to run the application.
     ```console
     $ python arima_taipy_app.py --experiment "1.0"
     [2023-01-19 15:38:53,930][Taipy][INFO] job JOB_arima_training_0745e01b-4126-4736-bb87-2cbc77df7ff2 is skipped.
-    [2023-01-19 15:38:53,933][Taipy][INFO] job JOB_arima_scoring_231e62a8-7586-41c8-96d1-855b1752edf8 is skipped.
     ```
 
 To run the experiment with a fresh start, you can run experiment mode with `--clean-entities` option.
@@ -45,8 +44,11 @@ This will clean all entities of that experiment and run the application again.
 
     ```console
     $ python arima_taipy_app.py --experiment "1.0" --clean-entities
-    [2023-01-19 15:38:53,930][Taipy][INFO] job JOB_arima_training_0745e01b-4126-4736-bb87-2cbc77df7ff2 is skipped.
-    [2023-01-19 15:38:53,933][Taipy][INFO] job JOB_arima_scoring_231e62a8-7586-41c8-96d1-855b1752edf8 is skipped.
+    [2023-01-19 15:38:50,139][Taipy][INFO] Clean all entities of version "1.0"
+    ----- Started training -----
+    Epoch 1 ...
+    Epoch 2 ...
+    [2023-01-19 15:38:53,930][Taipy][INFO] job JOB_arima_training_0745e01b-4126-4736-bb87-2cbc77df7ff2 is completed.
     ```
 
 There is a constrain: when re-run an experiment, the configuration of the application must be one with that experiment.
@@ -77,10 +79,9 @@ This will override the configuration of experiment "1.0" with the current applic
     [2023-01-19 15:28:53,168][Taipy][WARNING] The Configuration of version 1.0 is conflict with the current Python Config.
     [2023-01-19 15:38:53,894][Taipy][WARNING] Overriding version 1.0 ...
     ----- Started training -----
-    ----- Model is in training -----
-    ----- Model is in training -----
+    Epoch 1 ...
+    Epoch 2 ...
     [2023-01-19 14:45:11,228][Taipy][INFO] job JOB_arima_training_16a095ec-1286-4138-a289-4e7fe07a624d is completed.
-    [2023-01-19 14:45:11,250][Taipy][INFO] job JOB_arima_scoring_341ca8ee-cca5-4f03-bdd1-c6ffd02de2cb is completed.
     ```
 
 Here, the jobs are run again since you updated the path of the input datanode.
