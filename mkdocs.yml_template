@@ -64,6 +64,7 @@ nav:
             - "Experiment mode": 'manuals/core/versioning/experiment_mode.md'
             - "Production mode": 'manuals/core/versioning/production_mode.md'
             - "Version management": 'manuals/core/versioning/version-mgt.md'
+            - "Migrate legacy Taipy application": 'manuals/core/versioning/legacy-version-migration.md'
     - 'Taipy REST':
         - manuals/rest/index.md
     - 'Running Taipy services':
