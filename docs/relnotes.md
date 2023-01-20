@@ -27,17 +27,30 @@ Published on 2023-01.
 - Developers can specify the location of the Taipy webapp, for debugging purposes.<br/>
   Use the `--webapp-path` command line option to use that.
 
-**`taipy-core`** *<br/>2.1
+**`taipy-core`**<br/>2.1
 
-- New data node named `MongoCollectionDataNode`. It represents the data from a MongoDB collection.
+- New data node named [MongoCollectionDataNode](../manuals/core/config/data-node-config/#mongo-collection).
+  It represents the data from a MongoDB collection.
+- New data node named [ParquetDataNode](../manuals/core/config/data-node-config/#parquet) It represents
+  tabular data stored in the Apache Parquet format.
 - The parent entities of a data node, a task, or a pipeline can be accessed via
   `DataNode.get_parents()^`, `Task.get_parents()^`, or `Pipeline.get_parents()^`, or by passing the
   data node entity, task entity or pipeline entity to the function `taipy.get_parents()^`.
-- The data node caching mechanism now also takes into account the date and time of the last
-  modification of a file caused by either Taipy execution or an external factor. This behavior is
-  limited to file-based data nodes: CSV, Excel, JSON, and pickle data nodes only.
+- Deprecation of the data node _cacheable_ property. It is replaced by _skippable_ property on tasks.
+  The mechanism remains unchanged but instead of setting _cacheable_ property to `True` for all the
+  outputs of a task that can be skipped, just set the task _skippable_ property to `True`.
+- New data node property _expiration_date_ computed adding the _validity_period_ duration to the
+  _last_edit_date_ of the data node.
+- New data node property _is_up_to_date_ equals to `True` if the data node has not expired (refer to
+  _expiration_date_ attribute). `False` otherwise.
+- The _last_edit_date_ attribute of a data node is now updated when the corresponding data is written
+  by either a Taipy task execution or an external factor. This behavior is limited to file-based
+  data nodes: CSV, Excel, JSON, and pickle data nodes only.
 - Added support for [modin](https://modin.readthedocs.io/en/stable/) as the new exposed type.
-- Running the Core service is required to execute jobs.
+- TODO versioning feature available
+- TODO Running the Core service is required to execute jobs. See run method
+- TODO SQL repository available
+
 
 #### Improvements and changes
 
