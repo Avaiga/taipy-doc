@@ -48,7 +48,7 @@ Published on 2023-01.
   data nodes: CSV, Excel, JSON, and pickle data nodes only.
 - Added support for [modin](https://modin.readthedocs.io/en/stable/) as the new exposed type.
 - TODO versioning feature available
-- TODO Running the Core service is required to execute jobs. See run method
+- TODO Running the Core service is required to execute jobs. See `Core().run()^` method.
 - TODO SQL repository available
 
 
@@ -101,7 +101,8 @@ Published on 2022-10.
   be abandoned while its status remains unchanged. A job whose status is `FAILED`, `CANCELED` or `ABANDONED`
   cannot be canceled.
 - Taipy Core can now be run as a service by using `Core().run()` or `tp.run(Core())`. By running Core
-  as a service, Taipy initializes the scheduler and the job dispatcher based on the provided configuration. The Taipy Core service can be run along with Taipy GUI or Taipy Rest services.
+  as a service, Taipy initializes the scheduler and the job dispatcher based on the provided configuration. The
+  Taipy Core service can be run along with Taipy GUI or Taipy Rest services.
 
 **`taipy-config`**<br/>2.0.0
 
