@@ -90,6 +90,7 @@ nav:
       - manuals/reference_guiext/index.md
       - "taipy-gui module": manuals/reference_guiext/modules.md
   - 'Contributing':
+    - 'Contributors': 'contributing/contributors.md'
     - 'Contributing to Taipy': 'contributing/contributing.md'
     - 'Code of conduct': 'contributing/code_of_conduct.md'
   - 'Credits':
