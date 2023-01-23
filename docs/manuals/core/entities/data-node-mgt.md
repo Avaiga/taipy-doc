@@ -920,6 +920,7 @@ When writing data to a Parquet data node, the `ParquetDataNode.write()^` method 
 
 - pandas dataframes
 - modin dataframes
+- numpy arrays
 - any object, which will be passed to the `pd.DataFrame` constructor (e.g., list of dictionaries)
 
 The following examples will write to the path of the Parquet data node:
