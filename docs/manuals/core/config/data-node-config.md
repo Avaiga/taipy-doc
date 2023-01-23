@@ -22,7 +22,7 @@ More optional attributes are available on data nodes, including:
 -   _**storage_type**_ is an attribute that indicates the type of storage of the
     data node.<br/>
     The possible values are ["pickle"](#pickle) (**the default value**),
-    ["csv"](#csv), ["excel"](#excel), ["json"](#json), ["mongo_collection"](#mongo-collection),
+    ["csv"](#csv), ["excel"](#excel), ["json"](#json), ["mongo_collection"](#mongo-collection), ["parquet"](#parquet),
     ["sql"](#sql), ["sql_table"](#sql_table), ["in_memory"](#in-memory), or ["generic"](#generic).<br/>
     As explained in the following subsections, depending on the _storage_type_, other configuration attributes must
     be provided in the parameter _properties_ parameter.
@@ -90,8 +90,8 @@ Each predefined data node is described in a subsequent section.
 A `PickleDataNode^` is a specific data node used to model
 pickle data.
 To add a new _pickle_ data node configuration, the `Config.configure_pickle_data_node()^` method can be used. In
-addition to the generic parameters described in the previous section
-[Data node configuration](data-node-config.md), two optional parameters can be provided.
+addition to the generic parameters described in the [Data node configuration](data-node-config.md) section, two 
+optional parameters can be provided.
 
 -   _**default_path**_ represents the default file path used by Taipy to read and write the data.<br/>
     If the pickle file already exists (in the case of a shared input data node, for instance), it is necessary
@@ -132,7 +132,7 @@ In line 6, we add another pickle data node configuration with the id "model_cfg"
 
 A `CSVDataNode^` data node is a specific data node used to model CSV file data. To add a new _CSV_ data node
 configuration, the `Config.configure_csv_data_node()^` method can be used. In addition to the generic parameters
-described in the previous section [Data node configuration](data-node-config.md), the following parameters can be provided:
+described in the [Data node configuration](data-node-config.md) section, the following parameters can be provided:
 
 -   _**default_path**_ is a mandatory parameter and represents the default CSV file path used by Taipy to read and write
     the data.
@@ -194,8 +194,8 @@ provide it as the _exposed_type_ parameter.
 
 An `ExcelDataNode^` is a specific data node used to model xlsx
 file data. To add a new _Excel_ data node configuration, the `Config.configure_excel_data_node()^` method can be used.
-In addition to the generic parameters described in the previous section
-[Data node configuration](data-node-config.md), a mandatory and three optional parameters can be provided.
+In addition to the generic parameters described in the [Data node configuration](data-node-config.md) section, a 
+mandatory and three optional parameters can be provided.
 
 -   _**default_path**_ is a mandatory parameter that represents the default Excel file path used by Taipy to read and
     write the data.
@@ -269,7 +269,7 @@ the _exposed_type_. We also provide the list of specific sheets we want to use a
 
 A `SQLTableDataNode^` is a specific data node that models data stored in a single SQL table. To add a new _SQL table_
 data node configuration, the `Config.configure_sql_table_data_node()^` method can be used. In addition to the generic
-parameters described in the previous section [Data node configuration](data-node-config.md), the following parameters
+parameters described in the [Data node configuration](data-node-config.md) section, the following parameters
 can be provided:
 
 -   _**db_username**_ represents the database username that will be used by Taipy to access the database.
@@ -326,7 +326,7 @@ will delete all the data in the table and insert the new data.
 
 A `SQLDataNode^` is a specific data node used to model data stored in a SQL Database. To add a new _SQL_ data node
 configuration, the `Config.configure_sql_data_node()^` method can be used. In addition to the generic parameters
-described in the previous section [Data node configuration](data-node-config.md), the following parameters can be
+described in the [Data node configuration](data-node-config.md) section, the following parameters can be
 provided:
 
 -   _**db_username**_ represents the database username that will be used by Taipy to access the database.
@@ -395,7 +395,7 @@ parameter of the write query builder is also expected to be a `pandas.DataFrame`
 # JSON
 
 A `JSONDataNode^` is a type of data node used to model JSON file data. To add a new _JSON_ data node configuration, the
-`Config.configure_json_data_node_node()^` method can be used. In addition to the generic parameters described in
+`Config.configure_json_data_node_node()^` method can be used. In addition to the generic parameters described in the
 [Data node configuration](data-node-config.md) section, the following parameters can be provided:
 
 -   _**default_path**_ is a mandatory parameter that represents the JSON file path used by Taipy to read and write data.
@@ -488,11 +488,83 @@ default `SCENARIO` scope is used. The encoder and decoder are the custom encoder
     To configure a JSON data node, it is equivalent to use the method `Config.configure_json_data_node()^` or
     the method `Config.configure_data_node()^` with parameter `storage_type="json"`.
 
+# Parquet
+
+!!! Info
+
+    Taipy ParquetDataNode wraps [`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html) and [`pandas.DataFrame.to_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html) methods for reading and writing Parquet data, respectively.
+
+A `ParquetDataNode^` data node is a specific data node used to model [Parquet](https://parquet.apache.org/) file data. To add a new _Parquet_ data node
+configuration, the `Config.configure_parquet_data_node()^` method can be used. In addition to the generic parameters
+described in [Data node configuration](data-node-config.md) section, the following parameters can be provided:
+
+-   _**default_path**_ is a mandatory parameter and represents the default Parquet path to the file or directory used by Taipy to read and write
+    the data.
+
+-   _**engine**_ represents the Parquet library to use.<br/>
+    Possible values are _"fastparquet"_ or _"pyarrow"_. The default value is _"pyarrow"_.<br/>
+    Using the _"fastparquet"_ engine requires installation with `pip install taipy[fastparquet]`.
+
+-   _**compression**_ is the name of the compression to use.<br/>
+    Possible values are _"snappy"_, _"gzip"_, _"brotli"_ and `None`. The default value is _"snappy"_. Use None for no compression.
+
+-   _**read_kwargs**_ is a dictionary of additional parameters passed to the [`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html)  method.
+
+-   _**write_kwargs**_ is a dictionary of additional parameters passed to the [`pandas.DataFrame.to_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html) method.<br/>
+    The parameters in _"read_kwargs"_ and _"write_kwargs"_ have a **higher precedence** than the top-level parameters (**engine** and **compression**) which are also passed to Pandas. Passing `read_kwargs={"engine": "fastparquet", "compression": "gzip"} will override the **engine** and **compression** properties of the data node.
+
+    !!! Tip
+
+        The `ParquetDataNode.read_with_kwargs^` and `ParquetDataNode.write_with_kwargs^` methods provide an alternative for specifying keyword arguments at runtime. See examples of these methods at the [Data Node Management page](../entities/data-node-mgt.md#parquet).
+
+-   _**exposed_type**_ indicates the data type returned when reading the data node (more examples of reading from Parquet data node with different _exposed_type_ is available on [Read / Write a data node](../entities/data-node-mgt.md#parquet) documentation):
+    -   By default, _exposed_type_ is "pandas", and the data node will read the Parquet file as a `pandas.DataFrame`.
+    -   If the _exposed_type_ value provided is "modin", the data node will read the Parquet file as a `modin.pandas.DataFrame`.
+    -   If the _exposed_type_ value provided is "numpy", the data node will read the Parquet file as a numpy array.
+    -   If the provided _exposed_type_ value is a Callable, the data node will create a list of objects as returned by the Callable. Each object will represent a row in the Parquet file. The Parquet file is read as a `pandas.DataFrame`, and each row of the DataFrame is passed to the Callable as keyword arguments where the key is the column name and the value is the corresponding value for that row. 
+
+```python linenums="1"
+from taipy import Config
+
+temp_cfg = Config.configure_parquet_data_node(
+    id="historical_temperature",
+    default_path="path/hist_temp.parquet",
+```
+
+In lines 3-8, we configure a basic Parquet data node. The only two required parameters are _id_ and _default_path_.
+
+```python linenums="1"
+from taipy import Config
+
+read_kwargs = {"filters": [("log_level", "in", {"ERROR", "CRITICAL"})]}
+write_kwargs = {"partition_cols": ["log_level"], "compression": None}
+
+log_cfg = Config.configure_parquet_data_node(
+    id="log_history",
+    default_path="path/hist_log.parquet",
+    engine="pyarrow", # default
+    compression="snappy", # default, but overridden by the key in write_kwargs
+    exposed_type="modin",
+    read_kwargs=read_kwargs,
+    write_kwargs=write_kwargs)
+```
+
+In this larger example, we illustrate some specific benefits of using ParquetDataNode for storing tabular data. This time, we pass the _read_kwargs_ and _write_kwargs_ dictionary parameters to be passed as keyword arguments to [`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html) and [`pandas.DataFrame.to_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html) respectively.
+
+Here, the dataset is partitioned (using _partition_cols_ on line 4) by the "log_level" column when being written to disk. Also, filtering is performed (using _filters_ on line 3) to read only the rows where the "log_level" column value is either "ERROR" or "CRITICAL" — speeding up the read, especially when dealing with a large amount of data.
+
+Note that even though line 10 specifies the _compression_ as "snappy", because the "compression" key was also provided in the _write_kwargs_ dictionary on line 4, the latter value will be used — hence the _compression_ will be `None`.
+
+!!! Note
+
+    To configure a Parquet data node, it is equivalent to use the method `Config.configure_parquet_data_node()^` or
+    the method `Config.configure_data_node()^` with parameter `storage_type="parquet"`.
+
 # Mongo Collection
 
 A `MongoCollectionDataNode^` is a specific data node used to model data stored in a Mongo collection. To add a new
 *mongo_collection* data node configuration, the `Config.configure_mongo_collection_data_node()^` method can be used.
-In addition to the generic parameters described in the previous section [Data node configuration](data-node-config.md),
+In addition to the generic parameters described in the [Data node configuration](data-node-config.md) section,
 multiple parameters can be provided.
 
 -   _**db_name**_ represents the name of the database in MongoDB.
@@ -579,8 +651,8 @@ any special formatting.
 
 A `GenericDataNode^` is a specific data node used to model generic data types where the read and the write functions
 are defined by the user. To add a new _generic_ data node configuration, the `Config.configure_generic_data_node()^`
-method can be used. In addition to the parameters described in the previous section
-[Data node configuration](data-node-config.md), the following parameters can be provided:
+method can be used. In addition to the parameters described in the [Data node configuration](data-node-config.md) 
+section, the following parameters can be provided:
 
 -   _**read_fct**_ is a mandatory parameter that represents a Python function provided by the user. It will
     be used to read the data. More optional parameters can be passed through the _**read_fct_params**_ parameter.
@@ -707,7 +779,7 @@ student_data = Config.configure_generic_data_node(
 
 An `InMemoryDataNode^` is a specific data node used to model any data in the RAM. The
 `Config.configure_in_memory_data_node()^` method can be used to add a new in_memory data node configuration. In
-addition to the generic parameters described in the previous section [Data node configuration](data-node-config.md),
+addition to the generic parameters described in the [Data node configuration](data-node-config.md) section,
 an optional parameter can be provided:
 
 -   If the _**default_data**_ is given as a parameter, the data node is automatically written with the corresponding
