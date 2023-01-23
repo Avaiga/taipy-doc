@@ -703,8 +703,6 @@ student_data = Config.configure_generic_data_node(
     To configure a generic data node, it is equivalent to use the method `Config.configure_generic_data_node()^` or
     the method `Config.configure_data_node()^` with parameter `storage_type="generic"`.
 
-
-
 # In memory
 
 An `InMemoryDataNode^` is a specific data node used to model any data in the RAM. The
