@@ -4,7 +4,9 @@ Taipy leverages Plotly's capabilities of plotting data on top of maps.
 
 The data points to plot must then be stored in the [*lat*](../chart.md#p-lat) and
 [*lon*](../chart.md#p-lon) properties of the chart control, whose type must be
-set to *scattergeo*.
+set to *scattergeo*.<br/>
+You can find the full description of *scattergeo* plots on the Plotly reference
+manual for [*scattergeo* traces](https://plotly.com/javascript/reference/scattergeo/).
 
 ## Key properties
 
@@ -13,7 +15,7 @@ set to *scattergeo*.
 | [*type*](../chart.md#p-type)      | `scattergeo`          |  |
 | [*lat*](../chart.md#p-lat)        | Latitude values           | In degrees North.  |
 | [*lon*](../chart.md#p-lon)        | Longitude values           | In degrees East.  |
-| [*layout*](../chart.md#p-layout)  | dictionary  | *geo* can be used for specific settings for *scattergeo* plots. |
+| [*layout*](../chart.md#p-layout)  | dictionary  | *geo* can be used for specific settings for *scattergeo* plots. See [*geo* property of *layout*](https://plotly.com/javascript/reference/layout/geo/#layout-geo) for details.  |
 
 ## Examples
 
@@ -63,7 +65,7 @@ line = {
 ```
 
 In the dictionary stored in *layout["geo"]*, you can spot a handful of settings
-tuning who the map is rendered under the line.
+tuning how the map is rendered under the line.
 
 The chart definition uses all those objects to create the control:
 
