@@ -30,7 +30,7 @@ class ContributorStep(SetupStep):
         self.content = ""
 
     def enter(self, setup: Setup):
-        self.PATH = os.path.join(setup.docs_dir, "contributing", "contributors.md")
+        self.PATH = os.path.join(setup.docs_dir, "credits", "contributors.md")
 
     def get_id(self) -> str:
         return "contributors"
