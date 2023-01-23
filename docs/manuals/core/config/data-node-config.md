@@ -626,11 +626,84 @@ In line 15, we provide _read_fct_params_ with a path to let the _read_fct_ know 
 In line 16, we provide a list of parameters to _write_fct_params_ with a path to let the _write_fct_ know where to
 write the data, and the data to write.
 
+The generic data node can be used in situations that require a spefic business logic either in reading or writing data, and that can be easily provided by the user. Heres an example using a custom delimiter when writing and reading from a csv file.
+
+```python linenums="1"
+import csv
+from typing import List
+
+from taipy import Config
+
+def read_csv(path: str, delimiter: str = ",") -> str:
+    with open(path, newline=' ') as csvfile:
+        data = csv.reader(csvfile, delimiter=delimiter)
+    return data
+
+def write_csv(path: str, delimiter: str = ",", data: List[str]):
+    headers = ["country_code", "country"]
+    with open(path, 'w') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(header)
+
+        writer.writerow(data)
+
+csv_country_data_cfg = Config.configure_generic_data_node(
+    id="csv_country_data",
+    read_fct=read_csv,
+    write_fct=write_csv,
+    read_fct_params=["../path/data.csv", ";"]
+    write_fct_params=["../path/data.csv", ";", ["FR", "France", "NZ", "New Zealand", "US", "USA"]])
+```
+
+It is also possible to use a generic data node custom functions to do some data preparation:
+
+```python linenums="1"
+from datetime import datetime
+from typing import List
+
+import pandas as pd
+
+from taipy import Config
+
+def read_csv(path: str) -> str:
+    # reading a csv file, define some column types and parse a string into datetime
+    custom_date_parser = lambda x: datetime.strptime(x, "%Y %m %d %H:%M:%S")
+    data = pd.read_csv(
+        path,
+        parse_dates=['date'],
+        date_parser=custom_date_parser,
+        dtype={
+            "name": str,
+            "grade": int
+        }
+    )
+    return data
+
+def write_csv(path: str, data: pd.DataFrame):
+    # dropping not a number values before writing
+    data.dropna().to_csv(path)
+
+
+student_df = pd.DataFrame([
+    {"name": "Jhon", "grade": "B", "date": datetime.now()},
+    {"name": "Lucas", "grade": pd.NA, "date": datetime.now()}
+])
+
+student_data = Config.configure_generic_data_node(
+    id="student_data",
+    read_fct=read_csv,
+    write_fct=write_csv,
+    read_fct_params=["../path/data.csv"]
+    write_fct_params=["../path/data.csv", student_df])
+```
+
 
 !!! Note
 
     To configure a generic data node, it is equivalent to use the method `Config.configure_generic_data_node()^` or
     the method `Config.configure_data_node()^` with parameter `storage_type="generic"`.
+
+
 
 # In memory
 
