@@ -916,7 +916,7 @@ The following examples represent the results when read from Parquet data node wi
         ]
         ```
 
-When writing data to a Parquet data node, the `ParquetDataNode.write()^` method can take several datatype as the input:
+When writing data to a Parquet data node, the `ParquetDataNode.write()^` method can take several datatype as the input depending on the _exposed type_:
 
 - pandas dataframes
 - modin dataframes
