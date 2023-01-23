@@ -27,7 +27,9 @@ class ContributorStep(SetupStep):
         self.REPO_URLS = list(map(lambda _: f"{self.BASE_URL}/repos/avaiga/" + _ + "/contributors", self.REPOSITORIES))
         self.PATH = ""
         self.ANONYMOUS = ["dependabot[bot]"]
-        self.content = ""
+        self.content = """# Contributors
+
+A special thanks go to our contributors:\n"""
 
     def enter(self, setup: Setup):
         self.PATH = os.path.join(setup.docs_dir, "credits", "contributors.md")
@@ -60,10 +62,10 @@ class ContributorStep(SetupStep):
         return contributors
 
     def build_content(self, contributors):
-        self.content = """# Contributors
-
-A special thanks go to our contributors:\n"""
-        for login, contributor_info in contributors.items():
+        contrib_list = list(contributors.items())
+        import random
+        random.shuffle(contrib_list)
+        for login, contributor_info in contrib_list:
             if login not in self.ANONYMOUS:
                 self.content += f"\n- [<img src='{contributor_info['avatar_url']}' alt='avatar' width='20'/>" \
                                 f" {login}]" \
