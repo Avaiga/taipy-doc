@@ -72,24 +72,25 @@ class DemoLibrary(ElementLibrary):
 ```tsx
 const Plot = lazy(() => import("react-plotly.js"));
 
-interface Props {
-    data: string | undefined;
+interface DemoChartProps {
+    data?: string;
     defaultData: string;
-    layout: string | undefined;
-    type: PlotType | undefined;
-    config: string | undefined;
+    layout?: string;
+    type?: PlotType;
+    config?: string;
 }
 
-export default function DemoChart(props: Props) {
+export default function DemoChart(props: DemoChartProps) {
     const plotlyMain = useMemo(() => {
         const data: Data[] = JSON.parse(props?.data || props.defaultData).map((d: Data) => {
             return {
                 ...d,
+                // if overall chart type is not specified, use the type of the data in the data series
                 type: props?.type || d.type,
             };
         });
-        const layout = JSON.parse(props?.layout || "{}") as Partial<Layout>;
-        const config = JSON.parse(props?.config || "{}") as Partial<Config>;
+        const layout: Partial<Layout> = JSON.parse(props?.layout || "{}");
+        const config: Partial<Config> = JSON.parse(props?.config || "{}");
 
         return { data, layout, config };
     }, [props.data, props.layout, props.config]);
