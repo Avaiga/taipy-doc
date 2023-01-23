@@ -275,5 +275,5 @@ Here is the resulting chart display:
 <figure>
     <img src="../map-bubbles-d.png" class="visible-dark" />
     <img src="../map-bubbles-l.png" class="visible-light"/>
-    <figcaption>[TODO]</figcaption>
+    <figcaption>Populated cities</figcaption>
 </figure>
