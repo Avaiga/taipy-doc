@@ -17,7 +17,7 @@ polar:Polar charts
 radar:Radar charts
 candlestick:Candlestick charts
 funnel:Funnel charts
-chart-map:Charts on maps
+map:Maps
 area-map:Areas on maps
 density-map:Density maps
 gantt:Gantt charts
@@ -201,10 +201,10 @@ the chart types supported by Taipy by application category:
 
 <h3 class="h3">Maps</h3>
 <ul class="list">
-    <li><a href="../charts/chart-map">
-        <span>Charts on maps<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
-        <img src="../charts/home-chart-map-d.png"  class="visible-dark" />
-        <img src="../charts/home-chart-map-l.png"  class="visible-light" />
+    <li><a href="../charts/map">
+        <span>Map plots<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
+        <img src="../charts/home-map-d.png"  class="visible-dark" />
+        <img src="../charts/home-map-l.png"  class="visible-light" />
       </a></li>
     <li><a href="../charts/area-map">
         <span>Areas on maps<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
