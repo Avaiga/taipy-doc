@@ -1,27 +1,57 @@
-When developing a Taipy Core application, data nodes, tasks, pipelines, ... or the execution flow are constantly changing.
+In a development phase, when creating a new Taipy Core application, we usually implement
+the various functionalities in iterative development steps by alternating an implementation
+phase with a test phase.
+Basically, we code a first version of the application (the configuration particularly) and we
+run it for test purpose. Then we re-write the code to improve it creating a new version, and
+run it again. And so on and so forth.
 
-In this mode, all entities of is stored in a development version.
-Each time the Core application is run, all entities of the development version are cleaned, which ensure a fresh start
-for the new application.
+The problem is that when we run the application, we do create some entities (data nodes,
+tasks, scenarios, etc.). When re-running the application, the old entities instantiated with
+an old version of the configuration are most probably not compatible with the new configuration.
+During the development phase, between two runs of the application, we typically don't need
+to keep the data. On the contrary, we usually prefer to start the application on a clean state.
 
-By default, a Taipy Core application is run in development mode. You can also run with explicit `--development` or
-`-dev` option on the command line interface.
 
-```console
-$ python arima_taipy_app.py
-[2023-01-19 14:45:10,139][Taipy][INFO] Development mode: Clean all entities of version d74ec95e-6b98-4612-b50b-d171599fa3e9
------ Started training -----
-Epoch 1 ...
-Epoch 2 ...
-[2023-01-19 14:45:11,228][Taipy][INFO] job JOB_arima_training_16a095ec-1286-4138-a289-4e7fe07a624d is completed.
+In _development_ mode, Taipy deletes old entities attached to a previous development version
+before running the application. This ensures a fresh start for the application. When running
+an application in _development mode_, a development version is created.
+
+In the following, we consider the basic Taipy Core application `main.py`:
+
+```python
+{%
+include-markdown "./code_example/main.py"
+comments=false
+%}
 ```
 
-In the example above, `python arima_taipy_app.py` run the application in development mode.
+By default, a Taipy Core application runs in _development_ mode, but you can also run a
+Taipy application on your command line interface with `--development` or `-dev` option.
 
-The output on the console indicates that all entities of development version `d74ec95e-6b98-4612-b50b-d171599fa3e9` was cleaned and the application is run.
+```console
+$ python main.py -l
+Version number                         Mode                   Creation date
+9b01399c-67e4-41a4-83d3-121f7210d4e7   Development (latest)   2023-01-23 23:46:04
+
+
+$ python main.py
+[2023-01-24 23:46:29,468][Taipy][INFO] Development mode: Clean all entities of version 9b01399c-67e4-41a4-83d3-121f7210d4e7
+[2023-01-24 23:46:29,615][Taipy][INFO] job JOB_my_print_algo_9d75018a-1803-4358-8530-e62641e00ed8 is completed.
+
+$ python main.py -l
+Version number                         Mode                   Creation date
+9b01399c-67e4-41a4-83d3-121f7210d4e7   Development (latest)   2023-01-23 23:47:08
+```
+
+In the example above, `python main.py` command runs the application in development mode.
+
+The output on the console indicates that all entities of the development version
+`9b01399c-67e4-41a4-83d3-121f7210d4e7` are deleted before running the application.
 
 !!! info "Taipy Core application in Notebook environment."
 
-    In a Notebook environment, development mode is applied by default when the Core service is run.
+    In a Notebook environment, development mode is applied by default when the run method of
+    the Core service is called.
 
-    This means all entities of the development version are cleaned every time `Core().run()` is invoked in a code cell.
+    This means all entities of the development version are cleaned every time `Core().run()` is invoked
+    in a code cell.
