@@ -269,23 +269,33 @@ And here is what the resulting chart looks like:
 ## Tracking selection {data-source="gui:doc/examples/charts/advanced-selection"}
 
 The chart control has the [*selected*](../chart.md#p-selected) property
-that can be used to track data point selection in the chart control.
-The property is dynamic and indexed, the bound variable will hold an array of point index.
-It will be updated when the user selects points on the chart.
+that can be used to track data point selection in the chart control.<br/>
+This property is dynamic and indexed; the bound variable holds an array of point
+indexes. It is updated when the user selects points on the chart.
 
-Here is some code that calculates the mean of the values of the selected points of a chart control:
+Here is some code that calculates the mean of the values of the selected points of
+a chart control:
 
 ```py
-from taipy import Gui
-import random
-import numpy as np
-
+# x = [0..20]
 x = list(range(0, 21))
-y = [random.uniform(1, 20) for _ in x]
 
 data = {
     "x": x,
-    "y": y
+    # A list of random values within [1, 10]
+    "y": [random.uniform(1, 10) for _ in x]
+}
+
+layout = {
+    # Force the Box select tool
+    "dragmode": "select",
+    # Remove all margins around the plot
+    "margin": {"l":0,"r":0,"b":0,"t":0}
+}
+
+config = {
+    # Hide Plotly's mode bar
+    "displayModeBar": False
 }
 
 selected_indices = []
@@ -293,13 +303,16 @@ selected_indices = []
 mean_value = 0.
 
 def on_change(state, var, val):
-    print(f"Var={var} Val={val}")
     if var == "selected_indices":
-        state.mean_value = np.mean([data["y"][idx] for idx in val]) if len(val) else 0
+        state.mean_value = numpy.mean([data["y"][idx] for idx in val]) if len(val) else 0
 ```
 
-The part you should be looking at is the use of the default callback property [*on_change*](../../callbacks/#variable-value-change):
-it detects the change in *selected_indices* and calculate the mean.
+The part you should be looking at is the use of the default callback property [*on_change*](../../callbacks.md#variable-value-change):
+it detects the changes in *selected_indices* and calculates the mean, which updates
+the text in the title.
+
+We also create two objects (*layout* and *config*) used to remove the mode
+bar above the chart and force the Box select tool.
 
 Here is the definition of the chart and text controls:
 
@@ -310,15 +323,20 @@ Here is the definition of the chart and text controls:
         ```
         ## Mean of <|{len(selected_indices)}|raw|> selected points: <|{mean_value}|format=%.2f|raw|>
 
-        <|{data}|chart|selected={selected_indices}|>
+        <|{data}|chart|selected={selected_indices}|layout={layout}|plot_config={config}|>
         ```
 
     === "HTML"
 
         ```html
-        <h2>Mean of <taipy:text raw="true">{len(selected_indices)}</taipy:text> selected points: <taipy:text format="%.2f" raw="true">{mean_value}</taipy:text>
+        <h2>Mean of
+          <taipy:text raw="true">{len(selected_indices)}</taipy:text>
+          selected points:
+          <taipy:text format="%.2f" raw="true">{mean_value}</taipy:text>
+          </h2>
 
-        <taipy:chart selected="{selected_indices}">{data}</taipy:chart>
+        <taipy:chart selected="{selected_indices}" layout="{layout}"
+            plot_config="{config}">{data}</taipy:chart>
         ```
 
 And here is what the resulting page looks like:
