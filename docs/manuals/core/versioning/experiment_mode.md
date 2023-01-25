@@ -179,7 +179,7 @@ nb scenarios: 2
 ```
 
 As you can see on the previous example, the application run correctly after updating
-the configuration. A new scenario has been created submitted.
+the configuration. A new scenario has been created.
 
 !!! Warning
 
