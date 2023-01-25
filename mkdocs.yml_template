@@ -86,7 +86,7 @@ nav:
             - 'Setup': 'manuals/deployment/heroku/setup.md'
             - 'Based on Git': 'manuals/deployment/heroku/git.md'
             - 'Based on Docker': 'manuals/deployment/heroku/docker.md'
-    - "Migration path": 'manuals/legacy-version-migration.md'
+    - "Migration path to 2.1": 'manuals/legacy-version-migration.md'
   - 'Reference Manual':
     - "About Taipy's Reference Manual": 'manuals/reference.md'
     [REFERENCE_CONTENT]

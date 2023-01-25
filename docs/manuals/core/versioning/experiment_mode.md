@@ -24,7 +24,7 @@ comments=false
 %}
 ```
 
-# Create an experiment version
+# Create a version
 
 To create an _experiment_ version you can run a Taipy application on your command line
 interface with `--experiment` option.
