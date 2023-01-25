@@ -64,7 +64,6 @@ nav:
             - "Development mode": 'manuals/core/versioning/development_mode.md'
             - "Experiment mode": 'manuals/core/versioning/experiment_mode.md'
             - "Production mode": 'manuals/core/versioning/production_mode.md'
-            - "Migrate legacy Taipy application": 'manuals/core/versioning/legacy-version-migration.md'
     - 'Taipy REST':
         - manuals/rest/index.md
     - 'Running Taipy services':
@@ -87,6 +86,7 @@ nav:
             - 'Setup': 'manuals/deployment/heroku/setup.md'
             - 'Based on Git': 'manuals/deployment/heroku/git.md'
             - 'Based on Docker': 'manuals/deployment/heroku/docker.md'
+    - "Migration path": 'manuals/legacy-version-migration.md'
   - 'Reference Manual':
     - "About Taipy's Reference Manual": 'manuals/reference.md'
     [REFERENCE_CONTENT]
