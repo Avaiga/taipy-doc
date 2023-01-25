@@ -25,7 +25,7 @@ chart control.
 Here is an example that demonstrates this. We want to plot two different data sets that
 represent the same function (x squared) on two different intervals.
 
-- The first trace is very coarse, with a data point at every *x* unit between -10 and
+- The first trace is very coarse, with a data point at every other *x* unit between -10 and
   10.
 - The second trace is far more detailed, with ten data points between each *x* unit,
   on the interval [-4, 4].
@@ -79,7 +79,7 @@ set with the indexed data set syntax as shown below:
         ```
         <|{data}|chart|x[1]=0/x|y[1]=0/Coarse|x[2]=1/x|y[2]=1/Fine|>
         ```
-  
+
     === "HTML"
 
         ```html
@@ -88,9 +88,9 @@ set with the indexed data set syntax as shown below:
         ```
 
 Trace number 1 (the Coarse trace) is defined by *x[1]* and *y[1]*, and uses
-the series *data[0]["x"]* and *data[0]["y"]*;<br/>
+the series *data[0]["x"]* and *data[0]["Coarse"]*;<br/>
 Trace number 2 (the Fine trace) is defined by *x[2]* and *y[2]*, and uses
-the series *data[1]["x"]* and *data[1]["y"]*.
+the series *data[1]["x"]* and *data[1]["Fine"]*.
 
 Here is what the resulting plot looks like:
 
@@ -170,7 +170,7 @@ Adding the annotations to the chart control is a matter of setting the
         ```
         <|{data}|chart|layout={layout}|>
         ```
-  
+
     === "HTML"
 
         ```html
@@ -251,7 +251,7 @@ Here is the definition of the chart control:
         ```
         <|{data}|chart|layout={layout}|>
         ```
-  
+
     === "HTML"
 
         ```html
@@ -270,30 +270,58 @@ And here is what the resulting chart looks like:
 
 The chart control has the [*selected*](../chart.md#p-selected) property
 that can be used to track data point selection in the chart control.
+The property is dynamic and indexed, the bound variable will hold an array of point index.
+It will be updated when the user selects points on the chart.
 
-[TODO]
+Here is some code that calculates the mean of the values of the selected points of a chart control:
 
 ```py
-[TODO]
+from taipy import Gui
+import random
+import numpy as np
+
+x = list(range(0, 21))
+y = [random.uniform(1, 20) for _ in x]
+
+data = {
+    "x": x,
+    "y": y
+}
+
+selected_indices = []
+
+mean_value = 0.
+
+def on_change(state, var, val):
+    print(f"Var={var} Val={val}")
+    if var == "selected_indices":
+        state.mean_value = np.mean([data["y"][idx] for idx in val]) if len(val) else 0
 ```
 
-[TODO]
+The part you should be looking at is the use of the default callback property [*on_change*](../../callbacks/#variable-value-change):
+it detects the change in *selected_indices* and calculate the mean.
+
+Here is the definition of the chart and text controls:
 
 !!! example "Page content"
 
     === "Markdown"
 
         ```
-        [TODO]
+        ## Mean of <|{len(selected_indices)}|raw|> selected points: <|{mean_value}|format=%.2f|raw|>
+
+        <|{data}|chart|selected={selected_indices}|>
         ```
-  
+
     === "HTML"
 
         ```html
-        [TODO]
+        <h2>Mean of <taipy:text raw="true">{len(selected_indices)}</taipy:text> selected points: <taipy:text format="%.2f" raw="true">{mean_value}</taipy:text>
+
+        <taipy:chart selected="{selected_indices}">{data}</taipy:chart>
         ```
 
-[TODO]
+And here is what the resulting page looks like:
 
 <figure>
     <img src="../advanced-selection-d.png" class="visible-dark" />
@@ -332,7 +360,7 @@ def range_changed(state, x1, x2, x3):
         ```
         [TODO]
         ```
-  
+
     === "HTML"
 
         ```html
