@@ -108,7 +108,7 @@ versions are filtered out.
 
 # Clean entities of an existing version
 
-To run the _experiment_ version with a fresh start, you can run using _experiment_
+To run an _experiment_ version with a fresh start, you can run on _experiment_
 mode with `--clean-entities` option. Taipy deletes the entities of the version
 provided before running the application again.
 
