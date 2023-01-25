@@ -1,4 +1,4 @@
-# Candlestick Chart
+# Candlestick charts
 
 Candlestick charts are commonly used in the stock market business. For a given
 period, the open and close prices of some stock are represented as a
