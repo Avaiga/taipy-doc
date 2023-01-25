@@ -76,7 +76,7 @@ the name "1.0".
 
 In this example, you can see the number of scenarios displayed is still 1. Taipy
 only considered the scenarios of the 1.0 version, and filters out the entities of
-the other versions.
+other versions.
 
 # Run an existing version
 
@@ -103,12 +103,12 @@ Version number                         Mode                   Creation date
 ```
 
 As you can see, this time the number of scenarios displayed is 2. Indeed, we run
-twice the 1.0 version, so we have two scenarios attached to it. Scenarios from other
+the 1.0 version twice, so we have two scenarios attached to it. Scenarios from other
 versions are filtered out.
 
 # Clean entities of an existing version
 
-To run the _experiment_ version with a fresh start, you can run using _experiment_
+To run an _experiment_ version with a fresh start, you can run on _experiment_
 mode with `--clean-entities` option. Taipy deletes the entities of the version
 provided before running the application again.
 
@@ -179,7 +179,7 @@ nb scenarios: 2
 ```
 
 As you can see on the previous example, the application run correctly after updating
-the configuration. A new scenario has been created submitted.
+the configuration. A new scenario has been created.
 
 !!! Warning
 
