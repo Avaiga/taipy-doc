@@ -88,7 +88,7 @@ command line interface with `--experiment VERSION` option and the name of the ex
 $ python main.py -l
 Version number                         Mode                   Creation date
 1.0                                    Experiment (latest)    2023-01-25 12:24:19
-325d0618-6f9e-459b-9597-48fa93a57a23   Experiment (latest)    2023-01-25 12:20:56
+325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
 $ python main.py --experiment 1.0
@@ -116,7 +116,7 @@ provided before running the application again.
 $ python main.py -l
 Version number                         Mode                   Creation date
 1.0                                    Experiment (latest)    2023-01-25 12:24:19
-325d0618-6f9e-459b-9597-48fa93a57a23   Experiment (latest)    2023-01-25 12:20:56
+325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
 $ python main.py --experiment 1.0 --clean-entities
