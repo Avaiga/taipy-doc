@@ -103,7 +103,7 @@ Version number                         Mode                   Creation date
 ```
 
 As you can see, this time the number of scenarios displayed is 2. Indeed, we run
-twice the 1.0 version, so we have two scenarios attached to it. Scenarios from other
+the 1.0 version twice, so we have two scenarios attached to it. Scenarios from other
 versions are filtered out.
 
 # Clean entities of an existing version
