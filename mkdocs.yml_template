@@ -80,6 +80,10 @@ nav:
             - 'Setup': 'manuals/deployment/heroku/setup.md'
             - 'Based on Git': 'manuals/deployment/heroku/git.md'
             - 'Based on Docker': 'manuals/deployment/heroku/docker.md'
+    - 'Taipy Studio':
+        - manuals/studio/index.md
+        - 'Building configuration': 'manuals/studio/config.md'
+        - 'GUI Markdown support': 'manuals/studio/gui.md'
   - 'Reference Manual':
     - "About Taipy's Reference Manual": 'manuals/reference.md'
     [REFERENCE_CONTENT]
