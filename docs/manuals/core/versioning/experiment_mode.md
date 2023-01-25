@@ -76,7 +76,7 @@ the name "1.0".
 
 In this example, you can see the number of scenarios displayed is still 1. Taipy
 only considered the scenarios of the 1.0 version, and filters out the entities of
-the other versions.
+other versions.
 
 # Run an existing version
 
