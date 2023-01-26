@@ -20,15 +20,19 @@ Published on 2023-01.
 
 #### New Features
 
-**`taipy-gui`**<br/>2.1
+**`taipy-gui`**<br/>2.1.0
 
 - Charts now support polar, funnel, candlesticks and many other types of charts.<br/>
   See the [chart control](../manuals/gui/viselements/chart) section for details.
 - Developers can specify the location of the Taipy webapp, for debugging purposes.<br/>
   Use the `--webapp-path` command line option to use that.
 
-**`taipy-core`**<br/>2.1
+**`taipy-core`**<br/>2.1.0
 
+- New version management system for Taipy applications. Users can now run an application in development
+  mode, save a version of the application as an experiment version, re-run older experiment versions,
+  and push a version to production.<br/>
+  See the [Version management system](../manuals/core/versioning) documentation page for more details.
 - New data node named [MongoCollectionDataNode](../manuals/core/config/data-node-config/#mongo-collection).
   It represents the data from a MongoDB collection.
 - New data node named [ParquetDataNode](../manuals/core/config/data-node-config/#parquet) It represents
@@ -36,28 +40,31 @@ Published on 2023-01.
 - The parent entities of a data node, a task, or a pipeline can be accessed via
   `DataNode.get_parents()^`, `Task.get_parents()^`, or `Pipeline.get_parents()^`, or by passing the
   data node entity, task entity or pipeline entity to the function `taipy.get_parents()^`.
-- Deprecation of the data node _cacheable_ property. It is replaced by _skippable_ property on tasks.
-  The mechanism remains unchanged but instead of setting _cacheable_ property to `True` for all the
-  outputs of a task that can be skipped, just set the task _skippable_ property to `True`.
 - New data node property _expiration_date_ computed adding the _validity_period_ duration to the
   _last_edit_date_ of the data node.
 - New data node property _is_up_to_date_ equals to `True` if the data node has not expired (refer to
   _expiration_date_ attribute). `False` otherwise.
-- The _last_edit_date_ attribute of a data node is now updated when the corresponding data is written
-  by either a Taipy task execution or an external factor. This behavior is limited to file-based
-  data nodes: CSV, Excel, JSON, and pickle data nodes only.
-- Added support for [modin](https://modin.readthedocs.io/en/stable/) as the new exposed type.
-- TODO versioning feature available
-- TODO Running the Core service is required to execute jobs. See `Core().run()^` method.
+- Added support for [Modin](https://modin.readthedocs.io/en/stable/) as a new exposed type.
+- Running the Core service is required to execute jobs. See `Core().run()^` method.
+
 - TODO SQL repository available
 
 
 #### Improvements and changes
 
-**`taipy-gui`**<br/>2.0.0
+**`taipy-gui`**<br/>2.1.0
 
 - The Pie charts now use the *values* property to set values instead of *x*.<br/>
   See [Pie charts](../manuals/gui/viselements/charts/pie) for details.
+
+**`taipy-gui`**<br/>2.1.0
+- Deprecation of the data node _cacheable_ property. It is replaced by _skippable_ property on tasks.
+  The mechanism remains unchanged but instead of setting _cacheable_ property to `True` for all the
+  outputs of a task that can be skipped, just set the task _skippable_ property to `True`.
+- The _last_edit_date_ attribute of a data node is now updated when the corresponding data is modified
+  by either a Taipy task execution or an external factor. This behavior is limited to file-based
+  data nodes: CSV, Excel, JSON, and pickle data nodes only.
+
 
 ## Community edition: 2.0
 

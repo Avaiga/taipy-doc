@@ -58,6 +58,12 @@ nav:
             - 'Task management': 'manuals/core/entities/task-mgt.md'
             - 'Data node management': 'manuals/core/entities/data-node-mgt.md'
             - 'Job execution': 'manuals/core/entities/scheduling-and-job-execution.md'
+        - 'Version Management':
+            - manuals/core/versioning/index.md
+            - "Manage versions": 'manuals/core/versioning/version-mgt.md'
+            - "Development mode": 'manuals/core/versioning/development_mode.md'
+            - "Experiment mode": 'manuals/core/versioning/experiment_mode.md'
+            - "Production mode": 'manuals/core/versioning/production_mode.md'
     - 'Taipy REST':
         - manuals/rest/index.md
     - 'Running Taipy services':
@@ -93,13 +99,14 @@ nav:
     - "GUI Extension API":
       - manuals/reference_guiext/index.md
       - "taipy-gui module": manuals/reference_guiext/modules.md
+  - "Upgrades": 'manuals/legacy-version-migration.md'
+  - 'Release Notes': 'relnotes.md'
   - 'Contributing':
     - 'Contributing to Taipy': 'contributing/contributing.md'
     - 'Code of conduct': 'contributing/code_of_conduct.md'
   - 'Credits':
     - 'Development lead': 'credits/development_lead.md'
     - 'Contributors': 'credits/contributors.md'
-  - 'Release Notes': 'relnotes.md'
 theme:
   name: material
   language: en
