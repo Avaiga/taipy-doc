@@ -1,4 +1,4 @@
-# Radar Chart
+# Radar charts
 
 A radar chart (sometimes called a Spider chart or a Web chart) is a kind of
 [polar chart](polar.md) that does not use explicit angular value to indicate the location

@@ -86,7 +86,10 @@ nav:
             - 'Setup': 'manuals/deployment/heroku/setup.md'
             - 'Based on Git': 'manuals/deployment/heroku/git.md'
             - 'Based on Docker': 'manuals/deployment/heroku/docker.md'
-    - "Migration path to 2.1": 'manuals/legacy-version-migration.md'
+    - 'Taipy Studio':
+        - manuals/studio/index.md
+        - 'Building configuration': 'manuals/studio/config.md'
+        - 'GUI Markdown support': 'manuals/studio/gui.md'
   - 'Reference Manual':
     - "About Taipy's Reference Manual": 'manuals/reference.md'
     [REFERENCE_CONTENT]
@@ -96,13 +99,14 @@ nav:
     - "GUI Extension API":
       - manuals/reference_guiext/index.md
       - "taipy-gui module": manuals/reference_guiext/modules.md
+  - "Upgrades": 'manuals/legacy-version-migration.md'
+  - 'Release Notes': 'relnotes.md'
   - 'Contributing':
     - 'Contributing to Taipy': 'contributing/contributing.md'
     - 'Code of conduct': 'contributing/code_of_conduct.md'
   - 'Credits':
     - 'Development lead': 'credits/development_lead.md'
     - 'Contributors': 'credits/contributors.md'
-  - 'Release Notes': 'relnotes.md'
 theme:
   name: material
   language: en
