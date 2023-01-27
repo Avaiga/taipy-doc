@@ -49,7 +49,7 @@ Below is the list of all the optional arguments:
 
     In the following, we consider the basic Taipy Core application `main.py`:
 
-    ```python
+    ```python linenums="1"
     {%
     include-markdown "./code_example/main.py"
     comments=false
