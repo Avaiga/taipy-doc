@@ -7,6 +7,25 @@ hide:
 
 This is the list of changes to Taipy releases as they were published.
 
+## Taipy Studio: 1.0 (In progress)
+
+The first release of the
+[`Taipy Studio`](https://marketplace.visualstudio.com/items?itemName=Taipy.taipy-studio)
+extension to [Visual Studio Code](https://code.visualstudio.com/).
+
+Taipy Studio brings programmers tools that significantly improve productivity when
+building Taipy applications.
+
+It mainly provides:
+
+- A graphical editor for building configuration files, so one does not have
+    to code configurations in Python any longer;
+- IntelliSense applied to the Markdown syntax extension that Taipy GUI
+    uses to define the visual elements in the interface pages.
+
+You can refer to the [Taipy Studio User Manual](manuals/studio/index.md) section for more
+information.
+
 ## Community edition: 2.1 (In progress)
 
 Published on 2023-01.
