@@ -17,7 +17,7 @@ entities of your other experiments or your stable versions.
 
 In the following, we consider the basic Taipy Core application `main.py`:
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/main.py"
 comments=false
@@ -148,7 +148,7 @@ Let's assume a change has been made in the configuration in `main.py`. A custom
 property (`description`) has been added to the output data node config. Here is
 the new configuration.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/main_with_changes.py"
 comments=false

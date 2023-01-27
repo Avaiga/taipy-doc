@@ -37,6 +37,8 @@ Published on 2023-01.
   It represents the data from a MongoDB collection.
 - New data node named [ParquetDataNode](../manuals/core/config/data-node-config/#parquet) It represents
   tabular data stored in the Apache Parquet format.
+- Added support for [Modin](https://modin.readthedocs.io/en/stable/) as a new exposed type.
+- Running the Core service is required to execute jobs. See `Core().run()^` method.
 - The parent entities of a data node, a task, or a pipeline can be accessed via
   `DataNode.get_parents()^`, `Task.get_parents()^`, or `Pipeline.get_parents()^`, or by passing the
   data node entity, task entity or pipeline entity to the function `taipy.get_parents()^`.
@@ -44,9 +46,6 @@ Published on 2023-01.
   _last_edit_date_ of the data node.
 - New data node property _is_up_to_date_ equals to `True` if the data node has not expired (refer to
   _expiration_date_ attribute). `False` otherwise.
-- Added support for [Modin](https://modin.readthedocs.io/en/stable/) as a new exposed type.
-- Running the Core service is required to execute jobs. See `Core().run()^` method.
-
 - TODO SQL repository available
 
 
@@ -57,7 +56,7 @@ Published on 2023-01.
 - The Pie charts now use the *values* property to set values instead of *x*.<br/>
   See [Pie charts](../manuals/gui/viselements/charts/pie) for details.
 
-**`taipy-gui`**<br/>2.1.0
+**`taipy-core`**<br/>2.1.0
 - Deprecation of the data node _cacheable_ property. It is replaced by _skippable_ property on tasks.
   The mechanism remains unchanged but instead of setting _cacheable_ property to `True` for all the
   outputs of a task that can be skipped, just set the task _skippable_ property to `True`.
