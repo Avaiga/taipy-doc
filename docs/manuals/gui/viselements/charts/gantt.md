@@ -1,12 +1,142 @@
-## Gantt charts
+# Gantt charts
 
-Although real Gantt charts are not supported by Plotly, there are ways to display horizontal bar charts with different starting points that can look like a Gantt chart.
+Although Plotly does not have Gantt chart-specific features, there are ways to display horizontal bar charts with different starting points that can look like a Gantt chart.
 
-### Simple Gantt like chart
+Therefore, the basis for creating a chart control representing a Gantt chart, you must
+set the [*type*](../chart.md#p-type) property of the control to "bar" and set the
+[*orientation*](../chart.md#p-orientation) property to "h".
 
-Using a horizontal bar chart with different starting points will look like a Gantt chart.
-- _type_ property is set to "bar".
-- _orientation_ property is set to "h" or "horizontal".
+In a Gantt chart, you have two inescapable traits:
+
+- the *x* axis represents the time.
+- the *y* axis holds a list of tasks that are scheduled or a list
+    of resources that are assigned different tasks along the time.
+
+Gantt charts are based on a timeline. Working with the Plotly bar charts using
+dates and times as an axis value is pretty tricky and needs explanations:
+
+- Every bar represents a time span for a given activity.
+- Setting its *y* location is straightforward: the *y* value for that bar is the name of
+    the task or the resource it is assigned to.
+- Each bar needs two values, indicating when an activity starts and ends. This
+    is where things are a bit more complicated:
+    - The *base* value for each bar must be set to the date when the activity starts.
+    - The *x* value for each bar must be set to a `datetime` value representing
+        the duration of the activity relative to January 1st, 1970.
+
+To summarize: if you have a task "T" planned between &lt;date1&gt; and &lt;date2&gt;,
+you will have to provide the chart control with:
+
+- *base* = &lt;date1&gt;
+- *y* = T
+- *x* = date(January 1st, 1970)+&lt;date2&gt;-&lt;date1&gt;
+
+The first example below illustrates this.
+
+By default, the text displayed when hovering over a bar is the contents
+of the *base* property. So, in the above situation, the tooltip
+would display the start date of a bar you hover over.<br/>
+If you need to display the *end* date instead, this is what you need to do:
+
+- The *base* value for each bar must be set to the date when the activity **ends**.
+- You must use *negative* time spans: the *x* values would be the duration of the
+    activities, **subtracted** from the Unix epoch, January 1st, 1970.<br/>
+    I.e.: *x* = date(January 1st, 1970)-&lt;date2&gt;+&lt;date1&gt;
+
+## Key properties
+
+| Name            | Value           | Notes   |
+| --------------- | ------------------------- | ------------------ |
+| [*type*](../chart.md#p-type)      | `bar`  |  |
+| [*x*](../chart.md#p-x)      | series of `datetime`  | The duration of the activities expressed relative to the Unix epoch (January 1st, 1970). See above for details.  |
+| [*y*](../chart.md#p-x)      |   | The tasks or the resources.  |
+| [*orientation*](../chart.md#p-orientation)      | `h`  | The main axis for Gantt charts is the horizontal axis.  |
+| [*base*](../chart.md#p-base)      | series of `datetime`  | The start dates of the activities (or end dates if you use negative time spans).  |
+
+## Examples
+
+### Simple Gantt chart {data-source="gui:doc/examples/charts/gantt-simple"}
+
+Here is a simple example of using the chart control to display a Gantt chart.
+
+We want to display, over time, the span of several tasks.
+
+Here is the code that we use:
+
+```py
+# Tasks definitions
+tasks = ["Plan", "Research", "Design", "Implement", "Test", "Deliver"]
+# Task durations, in days
+durations = [50, 30, 30, 40, 15, 10]
+# Planned start dates of tasks
+start_dates = [
+    datetime.date(2022, 10, 15), # Plan
+    datetime.date(2022, 11,  7), # Research
+    datetime.date(2022, 12,  1), # Design
+    datetime.date(2022, 12, 20), # Implement
+    datetime.date(2023,  1, 15), # Test
+    datetime.date(2023,  2,  1)  # Deliver
+]
+
+epoch = datetime.date(1970, 1, 1)
+
+data = {
+    "start": start_dates,
+    "Task": tasks,
+    # Compute the time span as a datetime (relative to January 1st, 1970)
+    "Date": [epoch+datetime.timedelta(days=d) for d in durations]
+}
+
+layout = {
+    "yaxis": {
+        # Sort tasks from top to bottom
+        "autorange": "reversed",
+        # Remove title
+        "title": {"text": ""}
+    },
+}
+```
+
+The *start* column of the data set should be used as the data source for the
+[*base*](../chart.md#p-base) property of the chart control.
+
+The *Date* column (named as such so it appears nicely under the x axis) of *data*
+is set to the list of all tasks' duration as a `datetime` object relative to
+the Unix epoch: January 1st, 1970.<br/>
+This column should be used to set the data source for the control's
+[*x*](../chart.md#p-x) property.
+
+Also notice the *layout* object: this is used to make the Gantt chart slightly nicer. In
+particular, the ordering of the tasks is reversed; otherwise, the first task would appear
+at the bottom of the chart.
+
+Here is how we defined the chart control:
+
+!!! example "Page content"
+
+    === "Markdown"
+
+        ```
+        <|{data}|chart|type=bar|orientation=h|y=Task|x=Date|base=start|layout={layout}|>
+        ```
+  
+    === "HTML"
+
+        ```html
+        <taipy:chart type="bar" orientation="h" y="Task" x="Date" base="start"
+            layout={layout}>{data}</taipy:chart>
+        ```
+
+The resulting Gantt chart looks like this:
+
+<figure>
+    <img src="../gantt-simple-d.png" class="visible-dark" />
+    <img src="../gantt-simple-l.png" class="visible-light"/>
+    <figcaption>Simple Gantt chart</figcaption>
+</figure>
+
+<!--
+### Simple Gantt chart
 
 Different resources are displayed by different traces in the same chart.
 
@@ -53,3 +183,4 @@ And the resulting chart is:
 
 ![Gantt like chart](ganttlike1.png)
 
+-->
