@@ -20,28 +20,38 @@ dates and times as an axis value is pretty tricky and needs explanations:
     the task or the resource it is assigned to.
 - Each bar needs two values, indicating when an activity starts and ends. This
     is where things are a bit more complicated:
-    - The *base* value for each bar must be set to the date when the activity ends.
+    - The *base* value for each bar must be set to the date when the activity starts.
     - The *x* value for each bar must be set to a `datetime` value representing
-        the negative duration of the activity relative to January 1st, 1970.
+        the duration of the activity relative to January 1st, 1970.
 
 To summarize: if you have a task "T" planned between &lt;date1&gt; and &lt;date2&gt;,
 you will have to provide the chart control with:
 
-- *base* = &lt;date2&gt;
+- *base* = &lt;date1&gt;
 - *y* = T
-- *x* = date(January 1st, 1970)-&lt;date2&gt;+&lt;date1&gt;
+- *x* = date(January 1st, 1970)+&lt;date2&gt;-&lt;date1&gt;
 
-The first example below illustrates all this.
+The first example below illustrates this.
+
+By default, the text displayed when hovering over a bar is the contents
+of the *base* property. So, in the above situation, the tooltip
+would display the start date of a bar you hover over.<br/>
+If you need to display the *end* date instead, this is what you need to do:
+
+- The *base* value for each bar must be set to the date when the activity **ends**.
+- You must use *negative* time spans: the *x* values would be the duration of the
+    activities, **subtracted** from the Unix epoch, January 1st, 1970.<br/>
+    I.e.: *x* = date(January 1st, 1970)-&lt;date2&gt;+&lt;date1&gt;
 
 ## Key properties
 
 | Name            | Value           | Notes   |
 | --------------- | ------------------------- | ------------------ |
 | [*type*](../chart.md#p-type)      | `bar`  |  |
-| [*x*](../chart.md#p-x)      | series of `datetime`  | The negative duration of the activities. See above for details.  |
+| [*x*](../chart.md#p-x)      | series of `datetime`  | The duration of the activities expressed relative to the Unix epoch (January 1st, 1970). See above for details.  |
 | [*y*](../chart.md#p-x)      |   | The tasks or the resources.  |
 | [*orientation*](../chart.md#p-orientation)      | `h`  | The main axis for Gantt charts is the horizontal axis.  |
-| [*base*](../chart.md#p-base)      | series of `datetime`  | The end dates of the activities.  |
+| [*base*](../chart.md#p-base)      | series of `datetime`  | The start dates of the activities (or end dates if you use negative time spans).  |
 
 ## Examples
 
@@ -68,16 +78,13 @@ start_dates = [
     datetime.date(2023,  2,  1)  # Deliver
 ]
 
-# Compute end dates: start_date+duration for all tasks
-latest = [date+datetime.timedelta(days=durations[i]) for i, date in enumerate(start_dates)]
-# Compute the negative time span (January 1st, 1970 - duration)
 epoch = datetime.date(1970, 1, 1)
-span = [epoch-datetime.timedelta(days=duration) for duration in durations]
 
 data = {
-    "end": latest,
+    "start": start_dates,
     "Task": tasks,
-    "Date": span
+    # Compute the time span as a datetime (relative to January 1st, 1970)
+    "Date": [epoch+datetime.timedelta(days=d) for d in durations]
 }
 
 layout = {
@@ -90,17 +97,14 @@ layout = {
 }
 ```
 
-Here are the different steps that we take to provide the chart control the data sets
-it needs to represent the Gantt chart:
+The *start* column of the data set should be used as the data source for the
+[*base*](../chart.md#p-base) property of the chart control.
 
-- We compute the array *latest* that holds the end dates for all tasks.<br/>
-    To do this, we add the duration of each task to its start date. The resulting
-    array is set as the data source for the [*base*](../chart.md#p-base) property
-    of the chart control.
-- *span* contains a `datetime` object that represents the date *duration* days
-    before the epoch (January 1st, 1970), for every task.<br/>
-    We use this array to set as the data source for the [*x*](../chart.md#p-x) property
-    of the chart control.
+The *Date* column (named as such so it appears nicely under the x axis) of *data*
+is set to the list of all tasks' duration as a `datetime` object relative to
+the Unix epoch: January 1st, 1970.<br/>
+This column should be used to set the data source for the control's
+[*x*](../chart.md#p-x) property.
 
 Also notice the *layout* object: this is used to make the Gantt chart slightly nicer. In
 particular, the ordering of the tasks is reversed; otherwise, the first task would appear
@@ -113,13 +117,13 @@ Here is how we defined the chart control:
     === "Markdown"
 
         ```
-        <|{data}|chart|type=bar|orientation=h|y=Task|x=Date|base=end|layout={layout}|>
+        <|{data}|chart|type=bar|orientation=h|y=Task|x=Date|base=start|layout={layout}|>
         ```
   
     === "HTML"
 
         ```html
-        <taipy:chart type="bar" orientation="h" y="Task" x="Date" base="end"
+        <taipy:chart type="bar" orientation="h" y="Task" x="Date" base="start"
             layout={layout}>{data}</taipy:chart>
         ```
 
@@ -130,7 +134,6 @@ The resulting Gantt chart looks like this:
     <img src="../gantt-simple-l.png" class="visible-light"/>
     <figcaption>Simple Gantt chart</figcaption>
 </figure>
-
 
 <!--
 ### Simple Gantt chart
