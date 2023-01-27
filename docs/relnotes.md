@@ -6,8 +6,6 @@ hide:
 # Release Notes
 
 This is the list of changes to Taipy releases as they were published.
-Please refer to [upgrades](./legacy-version-migration.md) page for
-details on how to upgrade Taipy versions.
 
 ## Community edition: 2.1 (In progress)
 
@@ -19,8 +17,6 @@ Published on 2023-01.
 [`taipy-core` 2.1](https://pypi.org/project/taipy-core/2.1.0/) and
 [`taipy-rest` 2.1](https://pypi.org/project/taipy-rest/2.1.0/) packages.
 
-Please refer to [upgrades](./legacy-version-migration.md#from-2.0-to-2.1) page for
-details on how to migrate from version &#8804 2.0 to 2.1.
 
 #### New Features
 
