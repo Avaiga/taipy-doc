@@ -18,12 +18,10 @@ More optional attributes are available on data nodes, including:
 - _**id**_ is the identifier of the data node config.<br/>
     It is a **mandatory** parameter that must be unique. It must be a valid Python
     identifier.
-
 - _**scope**_ is a `Scope^`.<br/>
     It corresponds to the [scope](../concepts/scope.md) of the data node that will
     be instantiated from the data node configuration. The **default value** is
     `Scope.SCENARIO`.
-
 - _**storage_type**_ is an attribute that indicates the type of storage of the
     data node.<br/>
     The possible values are ["pickle"](#pickle) (**the default value**), ["csv"](#csv),
@@ -32,10 +30,6 @@ More optional attributes are available on data nodes, including:
     ["in_memory"](#in-memory), or ["generic"](#generic).<br/>
     As explained in the following subsections, depending on the _storage_type_, other
     configuration attributes must be provided in the parameter _properties_ parameter.
-
-- _**cacheable**_ is an attribute that indicates if the data node can be cached during
-    the execution of the tasks it is connected to.
-
 - Any other custom attribute can be provided through the parameter _**properties**_,
     which is a dictionary (a description, a tag, etc.)<br/>
     This _properties_ dictionary is used to configure the parameters specific to each

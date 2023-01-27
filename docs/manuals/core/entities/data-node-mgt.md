@@ -9,20 +9,22 @@ Data nodes get created when scenarios or pipelines are created. Please refer to 
 A `DataNode^` entity is identified by a unique identifier `id` that Taipy generates.
 A data node also holds various properties and attributes accessible through the entity:
 
--   _**config_id**_: The id of the data node config.
--   _**scope**_: The scope of this data node (scenario, pipeline, etc.).
--   _**id**_: The unique identifier of this data node.
--   _**name**_: The user-readable name of the data node.
--   _**owner_id**_: The identifier of the owner (pipeline_id, scenario_id, cycle_id) or `None`.
--   _**last_edit_date**_: The date and time of the last data modification made through Taipy.
-    Note that **only** for file-based data nodes (CSV, Excel, pickle, JSON, Parquet, ...), the file's last modification date is used to compute the _**last_edit_date**_ value. That means if a file is modified manually or by an external process, the _**last_edit_date**_ value is automatically updated within Taipy.
--   _**job_ids**_: The ordered list of jobs that have written on this data node.
--   _**version**_: The string indicates the application version of the data node to instantiate. If not provided, the current version is used.
--   _**cacheable**_: The Boolean value that indicates if a data node is cacheable.
--   _**validity_period**_: The validity period of a cacheable data node. If _validity_period_ is set to None, the
+- _**config_id**_: The id of the data node config.
+- _**scope**_: The scope of this data node (scenario, pipeline, etc.).
+- _**id**_: The unique identifier of this data node.
+- _**name**_: The user-readable name of the data node.
+- _**owner_id**_: The identifier of the owner (pipeline_id, scenario_id, cycle_id) or `None`.
+- _**last_edit_date**_: The date and time of the last data modification made through Taipy.
+    Note that **only** for file-based data nodes (CSV, Excel, pickle, JSON, Parquet, ...), the
+    file's last modification date is used to compute the _**last_edit_date**_ value. That means if a file is modified
+    manually or by an external process, the _**last_edit_date**_ value is automatically updated within Taipy.
+- _**job_ids**_: The ordered list of jobs that have written on this data node.
+- _**version**_: The string indicates the application version of the data node to instantiate.
+    If not provided, the current version is used.
+- _**validity_period**_: The validity period of a data node. If _validity_period_ is set to None, the
     data node is always up-to-date.
--   _**edit_in_progress**_: The flag that signals if a task is currently computing this data node.
--   _**properties**_: The dictionary of additional arguments.
+- _**edit_in_progress**_: The flag that signals if a task is currently computing this data node.
+- _**properties**_: The dictionary of additional arguments.
 
 # Get data node
 
@@ -974,7 +976,7 @@ Additionally, Parquet data node entities also expose two new methods, namely: `P
 The following examples demonstrate reading and writing to a Parquet data node with additional keyword arguments:
 
 !!! example "Reading data with `ParquetDataNode.read_with_kwargs^`"
-        
+
     ```python
     columns = ["nb_sales"]
     data_node.read_with_kwargs(columns=columns)

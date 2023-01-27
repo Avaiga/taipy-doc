@@ -3,7 +3,7 @@ attached to the current version or another _production_ version. It corresponds 
 the application is stable and running in a production environment.
 
 In the following, we consider the basic Taipy Core application `main.py` for all our examples:
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/main_with_changes.py"
 comments=false

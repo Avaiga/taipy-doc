@@ -6,6 +6,8 @@ A task configuration is necessary to instantiate a [Task](../concepts/task.md). 
 - _**function**_: The function to execute.
 - _**inputs**_: The input data nodes referring the parameter(s) data of the _function_ to be executed.
 - _**outputs**_: The output data nodes referring the result(s) data of the _function_ to be executed.
+- _**skippable**_: Boolean attribute indicating if the task execution can be skipped if all output
+  data nodes are up-to-date. Default value: `False`.
 
 Here is a simple example:
 
@@ -21,7 +23,8 @@ output_data_node_config = Config.configure_data_node("output")
 double_task_cfg = Config.configure_task("double_task",
                                         double,
                                         input_data_node_config,
-                                        output_data_node_config)
+                                        output_data_node_config,
+                                        skippable=True)
 ```
 
 In the example above, we created a `TaskConfig^` named `double_task_cfg`.
@@ -32,8 +35,11 @@ config. It takes a single parameter and return a single value.
 In lines 6-7, two data node configurations are created. They will be used respectively as the argument of the
 function double and as the result of the function double.
 
-Finally, on line 9, we create the task configuration with the id 'double_task' that represents the function 'double'
-that expects an 'input' data node as an input parameter and returns an 'output' data node.
+Finally, on line 9-13, we create the task configuration with the id _double_task_ that represents the function
+_double_ that expects an _input_ data node as a parameter and returns an _output_ data node.
+On line 13, the Task configuration has been set `skippable`. That means when submitting a Task entity instantiated
+from this TaskConfig, Taipy will skip its execution if its input data nodes haven't changed since the previous
+execution.
 
 Because a Task can have several inputs and outputs, `Config.configure_task()^` can receive lists of `DataNodeConfig^`
 objects.
@@ -53,8 +59,7 @@ addition_cfg = Config.configure_data_node("addition")
 task_cfg = Config.configure_task("foo",
                                  multiply_and_add,
                                  [nb_1_cfg, nb_2_cfg],
-                                 [multiplication_cfg,
-                                 addition_cfg])
+                                 [multiplication_cfg, addition_cfg])
 ```
 
 In lines 3-4, we define a function with two parameters and two return values.
@@ -63,7 +68,7 @@ In lines 6-7, two data node configurations are created. They will be used as the
 
 In line 9-10, two data node are configured. They will be used as the function results.
 
-Finally, in line 12, we create the task configuration with the id 'foo' representing the function 'multiply_and_add'.
-It expects two 'input' data nodes and two 'output' data nodes.
+Finally, in line 12-15, we create the task configuration with the id _foo_ representing the function _multiply_and_add_.
+It expects two _input_ data nodes and two _output_ data nodes.
 
 [:material-arrow-right: The next section introduces the pipeline configuration](pipeline-config.md).
