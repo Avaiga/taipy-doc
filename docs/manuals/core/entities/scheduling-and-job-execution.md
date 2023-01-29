@@ -1,11 +1,15 @@
 # Submit a scenario, pipeline, or task
 
-In a Taipy application, running the Core service is required to execute jobs.
-
-To see how you can run different Taipy services, please refer to the [Running Taipy services](../../running_services/index.md) page.
+In a Taipy application, running the Core service is required to execute jobs. To see how you
+can run different Taipy services, please refer to the [Running Taipy services](../../running_services/index.md)
+page.
 
 !!! important "Preventing configuration update when the Taipy Core service is running"
+
     After running the Core service, all configuration will be blocked from update to prepare for job execution.
+
+In this section, it is assumed that <a href="./code_example/my_config.py" download>`my_config.py`</a>
+module contains a Taipy configuration already implemented.
 
 To execute a scenario, you need to call the `taipy.submit()^` method:
 
@@ -20,10 +24,12 @@ scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 tp.submit(scenario)
 ```
 
-In line 6, we create a new scenario from a scenario configuration and submit it for execution (line 8). The `taipy.submit()^`
-method triggers the submission of all the scenario's pipelines. Then each task of each pipeline will be submitted.
+In line 6, we create a new scenario from a scenario configuration and submit it for execution (line 8).
+The `taipy.submit()^` method triggers the submission of all the scenario's pipelines. Then each task of each
+pipeline will be submitted.
 
-The Core service can also be started after `taipy.submit()^` method. Note that jobs can only be executed after the Taipy Core service is started.
+The Core service can also be started after `taipy.submit()^` method. Note that jobs can only be executed
+after the Taipy Core service is started.
 
 ```python linenums="1"
 import taipy as tp
@@ -50,7 +56,8 @@ tp.Core().run()
     scenario.submit()
     ```
 
-By default, Taipy will asynchronously execute the jobs. If you want to wait until the submitted jobs are finished, you can use the parameter _wait_ and _timeout_:
+By default, Taipy will asynchronously execute the jobs. If you want to wait until the submitted jobs
+are finished, you can use the parameter _wait_ and _timeout_:
 
 ```python linenums="1"
 import taipy as tp
@@ -64,11 +71,13 @@ task = scenario.predicting
 tp.submit(task, wait=True, timeout=3)
 ```
 
-_timeout_ can be an integer or a float. By default, _wait_ is False and _timeout_ is None. If _wait_ is True and
-_timeout_ is not specified or None, there is no limit to the wait time. If _wait_ is True and _timeout_ is specified,
-taipy will wait until all the submitted jobs are finished or up to _timeout_ seconds.
+_timeout_ represents a time span in seconds. It can be an integer or a float. By default, _wait_
+is False and _timeout_ is None. If _wait_ is True and _timeout_ is not specified or None, there
+is no limit to the wait time. If _wait_ is True and _timeout_ is specified,
+taipy waits until all the submitted jobs are finished, or the timeout expires (which ever occurred
+first).
 
-You can also submit just a single pipeline with the same `taipy.submit()^` method:
+It is also possible to submit a single pipeline using the same `taipy.submit()^` method:
 
 ```python linenums="1"
 import taipy as tp
@@ -82,10 +91,9 @@ pipeline = scenario.sales_pipeline
 tp.submit(pipeline)
 ```
 
-In line 5, we retrieve the pipeline named `sales_pipeline` from the created scenario. In line 7, we submit only this
+In line 5, we retrieve the pipeline named `sales_pipeline` from the created scenario. In line 7, we submit this
 pipeline for execution. The `taipy.submit()^` method triggers the submission of all the pipeline's tasks. When
-submitting a pipeline, you can also use the two parameters _wait_ and _timeout_ to wait until all the jobs are
-finished or up to _timeout_ seconds.
+submitting a pipeline, you can also use the two parameters _wait_ and _timeout_.
 
 !!! Note "Another syntax."
     To submit a pipeline, you can also use the method `Pipeline.submit()^`:
@@ -101,7 +109,7 @@ finished or up to _timeout_ seconds.
     pipeline.submit()
     ```
 
-You can also submit just a single task with the same `taipy.submit()^` method:
+You can also submit a single task with the same `taipy.submit()^` method:
 
 ```python linenums="1"
 import taipy as tp
@@ -115,9 +123,8 @@ task = scenario.predicting
 tp.submit(task)
 ```
 
-In line 5, we retrieve the task named `predicting` from the created scenario. In line 7, we submit only this
-task for execution. When submitting a task, you can also use the two parameters _wait_ and _timeout_ to wait until
-the job is finished or up to _timeout_ seconds.
+In line 5, we retrieve the task named `predicting` from the created scenario. In line 7, we submit this
+task for execution. When submitting a task, you can also use the two parameters _wait_ and _timeout_.
 
 !!! Note "Another syntax."
     To submit a task, you can also use the method `Task.submit()^`:
@@ -182,7 +189,7 @@ Deleting a Job can raise an `JobNotDeletedException^` if the `Status^` of the Jo
     def double(nb):
         return nb * 2
 
-    print(f'(1) Number of job: {len(tp.get_jobs())}.')
+    print(f'(1) Number of jobs: {len(tp.get_jobs())}.')
 
     # Create a scenario then submit it.
     input_data_node_config = tp.configure_data_node("input", default_data=21)
@@ -196,22 +203,22 @@ Deleting a Job can raise an `JobNotDeletedException^` if the `Status^` of the Jo
     tp.submit(scenario)
 
     # Retrieve all jobs.
-    print(f'(2) Number of job: {len(tp.get_jobs())}.')
+    print(f'(2) Number of jobs: {len(tp.get_jobs())}.')
 
     # Get the latest created job of a Task.
     tp.get_latest_job(scenario.double_task)
 
     # Then delete it.
     tp.delete_job(scenario.double_task)
-    print(f'(3) Number of job: {len(tp.get_jobs())}.')
+    print(f'(3) Number of jobs: {len(tp.get_jobs())}.')
     ```
 
 This example will produce the following output:
 
 ```
-(1) Number of job: 0.
-(2) Number of job: 1.
-(3) Number of job: 0.
+(1) Number of jobs: 0.
+(2) Number of jobs: 1.
+(3) Number of jobs: 0.
 ```
 
 ## Cancel Job
@@ -330,25 +337,24 @@ This example produces the following output:
 
 # Subscribe to job execution
 
-After each `Task^` execution, you can be notified by subscribing to a `Pipeline^` or a `Scenario^`.
+You can subscribe to a `Pipeline^` or a `Scenario^` execution to be notified when a job status changes.
 
-You will be notified for each scenario or pipeline by default, except if you specify one as a target.
+If you want a function named `my_function()` to be called on each status change of each task execution
+of all scenarios, use `taipy.subscribe_scenario(my_function)`. You can use
+`taipy.subscribe_pipeline(my_function)` to work at the pipeline level.
 
-If you want a function named `my_function` to be called on each status change of each task execution of all scenarios,
-use `taipy.subscribe_scenario(my_function)`. You can use `taipy.subscribe_pipeline(my_function)` to work at the
-pipeline level.
+If you want your function `my_function()` to be called for each task of a scenario called `my_scenario`,
+you should call `taipy.subscribe_scenario(my_function, my_scenario)`. It is similar in the context of
+pipelines: to be notified on a given pipeline stored in `my_pipeline`, you must call
+`taipy.subscribe_pipeline(my_function, my_pipeline)`.
 
-If you want your function `my_function` to be called for each task of a scenario called `my_scenario`, you should call
-`taipy.subscribe_scenario(my_function, my_scenario)`. It is similar in the context of pipelines: to be notified on a
-given pipeline stored in `my_pipeline`, you must call `taipy.subscribe_pipeline(my_function, my_pipeline)`.
-
-You can also define a function that receives multiple parameters to be used as a subscriber. It is similar to the
-example above, you can just add your parameters as a list, for example
+You can also define a function that receives multiple parameters to be used as a subscriber. It is
+similar to the example above, you can just add your parameters as a list, for example
 `taipy.subscribe_scenario(my_function, ["my_param", 42], my_scenario)`.
 
 You can also unsubscribe to scenarios by using `taipy.unsubscribe_scenario(function)`
-or `tp.unsubscribe_pipeline(function)` for pipelines. Same as for subscription, the un-subscription can be global,
-or you can specify the scenario or pipeline by passing it as a parameter.
+or `tp.unsubscribe_pipeline(function)` for pipelines. Same as for subscription, the un-subscription
+can be global, or you can specify the scenario or pipeline by passing it as a parameter.
 
 !!! Example
 
