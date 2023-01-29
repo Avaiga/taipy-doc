@@ -23,7 +23,8 @@ Published on 2023-01.
 <h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
 2.1
 
-- Taipy and all its dependencies now support Python 3.11.
+- Taipy and all its dependencies now support Python 3.11.<br/>
+  See [Python documentation](https://docs.python.org/3/whatsnew/3.11.html) for details.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.1.0
@@ -39,14 +40,14 @@ Published on 2023-01.
 - Charts now support polar, funnel, candlesticks and many other types of charts.<br/>
   See the [chart control](manuals/gui/viselements/chart.md) section for details.
 - Charts now support the dark theme automatically.
-- Tooltips can be set on individual cells.<br/>
+- Tooltips can be set on individual table cells.<br/>
   See the [example](manuals/gui/viselements/table.md#cell-tooltip) for more information.
 - [Long running callbacks](manuals/gui/callbacks.md#long-running-callbacks) have
   been improved to allow for easily returning a value.<br/>
   See the documentation of the `invoke_long_callback()^` function or the
   [issue #547](https://github.com/Avaiga/taipy-gui/issues/547) for more details.
 - Developers can specify the location of the Taipy webapp, for debugging purposes.<br/>
-  The `--webapp-path` command line option allows to specific that location.<br/>
+  The `--webapp-path` command line option allows to specify that location.<br/>
   See [issue #564](https://github.com/Avaiga/taipy-gui/issues/564).
 
 
@@ -159,7 +160,8 @@ Published on 2022-10.
 2.0.0
 
 - Stopping then re-running the `Gui^` instance is no longer required in Notebook contexts.
-- A discrete graphical indicator is displayed on top of pages when the server is processing.
+- A discrete graphical indicator is displayed at the bottom of pages when the server is
+  processing.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.0.0
