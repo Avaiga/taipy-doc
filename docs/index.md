@@ -156,6 +156,67 @@ These topics are the most visited ones, we thought you’d like to have a glance
   </li>
 </ul>
 
+## Build your Core functionalities!
+
+<ul class="tp-pills-list">
+  <li>
+    <a class="tp-pill" href="manuals/core/config/data-node-config/#storage-type">
+      <span>Data node config</span>
+      <div class="tp-tooltip">
+        <p>Configure a predefined data node.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/core/config/task-config/">
+      <span>Task config</span>
+      <div class="tp-tooltip">
+        <p>Add a Task configuration.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/core/config/scenario-config/#from-task-configs">
+      <span>Scenario config</span>
+      <div class="tp-tooltip">
+        <p>Configure a new Scenario.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/core/entities/scenario-creation/">
+      <span>Create a scenario</span>
+      <div class="tp-tooltip">
+        <p>Instantiate a Scenario from a scenario config.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/core/entities/scheduling-and-job-execution/#submit-a-scenario-pipeline-or-task/">
+      <span>Submit a scenario</span>
+      <div class="tp-tooltip">
+        <p>Submit a Scenario.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/core/versioning/">
+      <span>Manage versions</span>
+      <div class="tp-tooltip">
+        <p>Manage your application's versions.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/core/">
+      <span>…</span>
+      <div class="tp-tooltip">
+        <p>Browse the Core user manual.</p>
+      </div>
+    </a>
+  </li>
+</ul>
+
 ## How does it work?
 
 Taipy is composed of two main independent components: **Taipy Core** and **Taipy GUI**. You can use either component independently. However, as you will see, they are incredibly efficient when combined.
@@ -169,7 +230,7 @@ Taipy is composed of two main independent components: **Taipy Core** and **Taipy
       </p>
     </article>
     <article class="tp-content-card">
-      <h3>Taipy Core</h3>      
+      <h3>Taipy Core</h3>
       <p>
         A simple yet powerful <strong>pipeline orchestration</strong> package.<br>
         Some of the key features:
