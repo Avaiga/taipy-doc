@@ -1,19 +1,22 @@
-In the process of improving a stable version of a Taipy application, you want to run
-one or multiple experiments like tuning algorithm parameters, updating configuration to
-add KPI data nodes, testing new algorithms, etc. These require some configuration changes
-so that each experiment has its own configuration. Each run of an experiment
-must be analyzed, evaluated, and eventually compared to others.
-
-In that case, you want to keep your experiments in a dedicated version with the
-corresponding configuration and entities. You also need to be able to re-run the
-application eventually with some configuration changes without deleting the experiment's
-entities.
-
 With _experiment_ mode, you can save and name your application as an _experiment_ version.
 When running an _experiment_ version in _experiment_ mode, Taipy only considers the
 entities attached to this version. It filters out all other entities from different
 versions, so you can continue your development process without worrying about losing
-entities of your other experiments or your stable versions.
+entities of your other versions.
+
+!!! note "Use case"
+
+    The _experiment_ mode is particularly useful in the process of improving a stable
+    version of a Taipy application. In that case, you need to run one or multiple
+    experiments like tuning algorithm parameters, updating configuration by adding
+    KPI data nodes, testing new algorithms, etc. These require some configuration
+    changes so that each experiment has its own configuration. Each run of an experiment
+    must be analyzed, evaluated, and eventually compared to others.
+
+    In that case, you want to keep your experiments in a dedicated version with the
+    corresponding configuration and entities. You also need to be able to re-run the
+    application eventually with some configuration changes without deleting the
+    experiment's entities.
 
 In the following, we consider the basic Taipy Core application `main.py`:
 
