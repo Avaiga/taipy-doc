@@ -99,7 +99,6 @@ nav:
     - "GUI Extension API":
       - manuals/reference_guiext/index.md
       - "taipy-gui module": manuals/reference_guiext/modules.md
-  - "Upgrades": 'migration.md'
   - 'Release Notes': 'relnotes.md'
   - 'Contributing':
     - 'Contributing to Taipy': 'contributing/contributing.md'
