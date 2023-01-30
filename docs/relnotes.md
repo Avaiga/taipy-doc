@@ -37,16 +37,41 @@ Published on 2023-01.
 [`taipy-rest` 2.1](https://pypi.org/project/taipy-rest/2.1.0/) packages.
 
 
-#### New Features
+### New Features
 
-**`taipy-gui`**<br/>2.1.0
+<h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
+2.1
 
+- Taipy and all its dependencies now support Python 3.11.<br/>
+  See [Python documentation](https://docs.python.org/3/whatsnew/3.11.html) for details.
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.1.0
+
+- A security feature has been added: the file `.taipyignore`, located next to
+  the Python main file, can list the paths that you want to prevent access to.<br/>
+  See [issue #501](https://github.com/Avaiga/taipy-gui/issues/501) or
+  [this section](manuals/gui/configuration.md#protect-your-application-files) for
+  details.
+- Charts can use a [Decimator]() instance that cleverly filters data
+  points out to greatly improve performance.<br/>
+  See the [Decimator documentation]() for more details.
 - Charts now support polar, funnel, candlesticks and many other types of charts.<br/>
-  See the [chart control](../manuals/gui/viselements/chart) section for details.
+  See the [chart control](manuals/gui/viselements/chart.md) section for details.
+- Charts now support the dark theme automatically.
+- Tooltips can be set on individual table cells.<br/>
+  See the [example](manuals/gui/viselements/table.md#cell-tooltip) for more information.
+- [Long running callbacks](manuals/gui/callbacks.md#long-running-callbacks) have
+  been improved to allow for easily returning a value.<br/>
+  See the documentation of the `invoke_long_callback()^` function or the
+  [issue #547](https://github.com/Avaiga/taipy-gui/issues/547) for more details.
 - Developers can specify the location of the Taipy webapp, for debugging purposes.<br/>
-  Use the `--webapp-path` command line option to use that.
+  The `--webapp-path` command line option allows to specify that location.<br/>
+  See [issue #564](https://github.com/Avaiga/taipy-gui/issues/564).
 
-**`taipy-core`**<br/>2.1.0
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.1.0
 
 - New version management system for Taipy applications. Users can now run an application in development
   mode, save a version of the application as an experiment version, re-run older experiment versions,
@@ -68,14 +93,25 @@ Published on 2023-01.
 - TODO SQL repository available
 
 
-#### Improvements and changes
+### Improvements and changes
 
-**`taipy-gui`**<br/>2.1.0
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.1.0
 
 - The Pie charts now use the *values* property to set values instead of *x*.<br/>
-  See [Pie charts](../manuals/gui/viselements/charts/pie) for details.
+  See [Pie charts](manuals/gui/viselements/charts/pie.md) for details.
+- Unselected data points or traces in charts now preserve their original opacity.<br/>
+  See [issue #496](https://github.com/Avaiga/taipy-gui/issues/496).
+- `class_name` is now a dynamic property.<br/>
+  See [issue #480](https://github.com/Avaiga/taipy-gui/issues/480).
+- The *allow_unsafe_werkzeug* option of [Werkzeug](https://werkzeug.palletsprojects.com/)
+  (that [Flask](https://flask.palletsprojects.com/) depends on for the WSGI part) is forced
+  to True when the Gui instance is run in Debug mode, because of a change in policy in
+  recent updates.
 
-**`taipy-core`**<br/>2.1.0
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.1.0
+
 - Deprecation of the data node _cacheable_ property. It is replaced by _skippable_ property on tasks.
   The mechanism remains unchanged but instead of setting _cacheable_ property to `True` for all the
   outputs of a task that can be skipped, just set the task _skippable_ property to `True`.
@@ -94,19 +130,20 @@ Published on 2022-10.
 [`taipy-core` 2.0](https://pypi.org/project/taipy-core/2.0.3/) and
 [`taipy-rest` 2.0](https://pypi.org/project/taipy-rest/2.0.0/) packages.
 
-#### New Features
+### New Features
 
-**`taipy-gui`**<br/>2.0.0
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.0.0
 
 - Extension API: custom visual elements can be integrated into Taipy GUI applications.<br/>
   Third party HTML components can be integrated into Taipy GUI pages to address specific use cases.<br/>
-  See [Extension API](../manuals/gui/extension) for details.
+  See [Extension API](manuals/gui/extension.md) for details.
 - New callbacks (`on_init`, `on_navigate`, `on_exception` and `on_status`) can be used to initialize a new
   session, detect navigation events, trigger code when exceptions are raised in user code,
   and invoke code when a *status* page is requested.<br/>
-  See [Callbacks](../manuals/gui/callbacks) for details.
+  See [Callbacks](manuals/gui/callbacks.md) for details.
 - New functions allow applications to invoke long-running callbacks without blocking.<br/>
-  See [Long Running Callbacks](../manuals/gui/callbacks/#long-running-callbacks) for
+  See [Long Running Callbacks](manuals/gui/callbacks.md#long-running-callbacks) for
   details.
 - The Taipy GUI application configuration uses the generic Taipy configuration mechanism exposed in the
   new `taipy-config` package.
@@ -114,7 +151,8 @@ Published on 2022-10.
 - The new 'base' property of the chart control makes it possible to create Gantt chart-like displays.<br/>
   See [Gantt Charts](../manuals/gui/viselements/charts/gantt) for details.
 
-**`taipy-core`**<br/>2.0.0
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.0.0
 
 - New data node named SQLTableDataNode. It represents a table in a SQL database.
 - New data node named JSONDataNode. It represents the data from a JSON file.
@@ -129,18 +167,23 @@ Published on 2022-10.
   as a service, Taipy initializes the scheduler and the job dispatcher based on the provided configuration. The
   Taipy Core service can be run along with Taipy GUI or Taipy Rest services.
 
-**`taipy-config`**<br/>2.0.0
+<h6 style="font-size: 1.2em"><strong><code>taipy-config</code></strong></h6>
+2.0.0
 
 - The new `taipy-config` package was exposed to be used by any other Taipy package for configuration and logging.
 
 
-#### Improvements and changes
+### Improvements and changes
 
-**`taipy-gui`**<br/>2.0.0
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.0.0
+
 - Stopping then re-running the `Gui^` instance is no longer required in Notebook contexts.
-- A discrete graphical indicator is displayed on top of pages when the server is processing.
+- A discrete graphical indicator is displayed at the bottom of pages when the server is
+  processing.
 
-**`taipy-core`**<br/>2.0.0
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.0.0
 
 - The data node of a scenario or a pipeline can now be accessed directly at the scenario or pipeline
   levels.
@@ -153,9 +196,9 @@ Published on 2022-10.
 - The messages of the various Exceptions that can be raised have been improved to help the users
   debug their applications.
 
-#### Significant bug fixes
+### Significant bug fixes
 
-**`taipy-gui`**<br/>
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.0.2
 
 - `image` control may not render properly.<br/>
@@ -170,15 +213,16 @@ Published on 2022-10.
 - Bar charts' "barmode" set to "stack" is broken.<br/>
   See [issue #445](https://github.com/Avaiga/taipy-gui/issues/445).
 
-**`taipy-core`**<br/>
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.0.4
 
 - Do not update `last_edit_date` when a job fails or is abandoned.
   See [issue #366](https://github.com/Avaiga/taipy-core/issues/366).
 
-#### Deprecations
+### Deprecations
 
-**`taipy-core`**<br/>2.0.0
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.0.0
 
 - The field `*nb_of_workers*` within the Config has been deprecated in favor of `*max_nb_of_workers*`.
 
@@ -186,11 +230,11 @@ Published on 2022-10.
 
 Published on 2022-10.
 
-#### New Features
+### New Features
 
 - SQLLite or MongoDB databases can now be used as alternatives to the filesystem to store Taipy entities.
 
-#### Improvements and changes
+### Improvements and changes
 
 - Simplification of the authentication API.
 
@@ -204,9 +248,10 @@ Published on 2022-06.
 [`taipy-rest` 1.1](https://pypi.org/project/taipy-rest/1.1.0/) packages.
 
 
-#### Improvements and changes
+### Improvements and changes
 
-**`taipy-gui`**<br/>1.1.3
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+1.1.3
 
 - The client-server communication settings are extended to accommodate various Flask deployment scenarios.<br/>
   See the documentation for the *async_mode* parameter to `Gui.run()^` for more information.
@@ -217,7 +262,7 @@ Published on 2022-06.
 - Allow the edition of specific table columns.<br/>
   See [issue #366](https://github.com/Avaiga/taipy-gui/issues/366).
 
-<br/>1.1.0
+1.1.0
 
 - The `State^` instance can be initialized in a user-defined function. See the _on_init_
   attribute of the `Gui^` class for more details.
@@ -241,7 +286,8 @@ Published on 2022-06.
 - Support for multiple assignment to variables in _on_change()_.
 
 
-**`taipy-core`**<br/>1.1.0
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+1.1.0
 
 - Execution modes: "_development_" mode (default) runs tasks in a synchronous way one task at
   a time, while "_standalone_" mode runs tasks in an asynchronous and parallel way using
@@ -250,9 +296,10 @@ Published on 2022-06.
   the number of times Taipy will retry in case of error.
 - Performance improvements when reading and writing entities.
 
-#### Significant bug fixes
+### Significant bug fixes
 
-**`taipy-gui`**<br/><br/>1.1.3
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+1.1.3
 
 - Error fixed when modifying a State dictionary entry in a callback.<br/>
   See [issue #356](https://github.com/Avaiga/taipy-gui/issues/356).
@@ -261,7 +308,7 @@ Published on 2022-06.
 - Crash fixed when using a dictionary in the labels property of the slider control.<br/>
   See [issue #379](https://github.com/Avaiga/taipy-gui/issues/379).
 
-<br/>1.1.0
+1.1.0
 
 - Concurrency issues were fixed.
 - The [_attr_list_](https://python-markdown.github.io/extensions/attr_list) extension can
@@ -270,9 +317,10 @@ Published on 2022-06.
 - Taipy supports HTTPS via reverse proxies.<br/>
   See [issue #263](https://github.com/Avaiga/taipy-gui/issues/263).
 
-#### Deprecations
+### Deprecations
 
-**`taipy-core`**<br/>1.1.0
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+1.1.0
 
 - The _path_ attribute of `DataNodeConfig`, for CSV, Excel and Pickle types is now deprecated.<br/>
   _default_path_ must be used instead: it is the default path to use when instantiating a data node from
@@ -305,9 +353,10 @@ Published on 2022-04.
 [`taipy-core` 1.0](https://pypi.org/project/taipy-core/1.0.3/) and
 [`taipy-rest` 1.0](https://pypi.org/project/taipy-rest/1.0.1/) packages.
 
-#### Features
+### Features
 
-**`taipy-gui`**<br/>1.0.0
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+1.0.0
 
 - Multiple pages support
 - Binding to global variables
@@ -316,7 +365,8 @@ Published on 2022-04.
 - Page content support for Markdown and HTML
 - Jupyter Notebook support
 
-**`taipy-core`**<br/>1.0.0
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+1.0.0
 
 - Full configuration system
 - Data node management (read/write/filter/cache)
@@ -324,6 +374,7 @@ Published on 2022-04.
 - Scenario and cycle management
 - Smart scheduling and execution (Scenario, Pipeline, and Task submission)
 
-**`taipy-rest`**<br/>1.0.0
+<h6 style="font-size: 1.2em"><strong><code>taipy-rest</code></strong></h6>
+1.0.0
 
 - REST APIs on top of `taipy-core`
