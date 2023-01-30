@@ -7,7 +7,12 @@ hide:
 
 This is the list of changes to Taipy releases as they were published.
 
-## Taipy Studio: 1.0 (In progress)
+!!! note "Migration"
+
+    Please refer to the [Migration page](./migration.md) for potential migration paths for your applications
+    implemented on legacy Taipy versions.
+
+## Taipy Studio: 1.0
 
 The first release of the
 [`Taipy Studio`](https://marketplace.visualstudio.com/items?itemName=Taipy.taipy-studio)
@@ -26,7 +31,7 @@ It mainly provides:
 You can refer to the [Taipy Studio User Manual](manuals/studio/index.md) section for more
 information.
 
-## Community edition: 2.1 (In progress)
+## Community edition: 2.1
 
 Published on 2023-01.
 
@@ -36,6 +41,8 @@ Published on 2023-01.
 [`taipy-core` 2.1](https://pypi.org/project/taipy-core/2.1.0/) and
 [`taipy-rest` 2.1](https://pypi.org/project/taipy-rest/2.1.0/) packages.
 
+Please refer to the [Migration page](./migration.md#from-2.0-to-2.1) for
+details on how to migrate from version older than 2.1.
 
 ### New Features
 
@@ -71,7 +78,7 @@ Published on 2023-01.
 
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
-2.1.0
+2.1.0 (In progress)
 
 - New version management system for Taipy applications. Users can now run an application in development
   mode, save a version of the application as an experiment version, re-run older experiment versions,
