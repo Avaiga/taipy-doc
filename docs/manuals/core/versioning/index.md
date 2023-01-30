@@ -1,18 +1,21 @@
 # Version management system
 
-When developing, maintaining, or deploying a Taipy application, it is difficult
+When developing, maintaining, or deploying a Taipy application, it is challenging
 to keep the Taipy entities (scenarios, tasks, data nodes, etc.) up-to-date when
-the Core configuration changes. Indeed, one can update the configuration
-(`Config^`) to create a new feature, experiment with an alternative algorithm, fix a bug,
-etc. When re-running the application after a change in the configuration, old entities
+the Core configuration changes. Taipy provides Version Management to address these
+central issues.
+
+Indeed, developers can update the configuration (`Config^`) to implement a new feature,
+experiment with an alternative algorithm, fix a bug, create a new data node, etc.
+When re-running the application after a change in the configuration, old entities
 instantiated before the change are not guaranteed to be compatible with the new
 configuration.
 
 Taipy proposes a **version management system** to:
 
-- manage the different versions of the configuration across the application runs,
-- keep track of the old versions used to instantiate old entities,
-- choose the runtime mode of Taipy that defines how Taipy handles old entities.
+- Manage the different versions of the configuration across the application runs,
+- Keep track of the old versions used to instantiate old entities,
+- Choose the runtime mode of Taipy that defines how Taipy handles old entities.
 
 This **version management system** is available using command line arguments when
 running a Taipy Core application. Please refer to the
