@@ -78,7 +78,7 @@ details on how to migrate from version older than 2.1.
 
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
-2.1.0 (In progress)
+2.1.0
 
 - New version management system for Taipy applications. Users can now run an application in development
   mode, save a version of the application as an experiment version, re-run older experiment versions,
@@ -97,7 +97,7 @@ details on how to migrate from version older than 2.1.
   _last_edit_date_ of the data node.
 - New data node property _is_up_to_date_ equals to `True` if the data node has not expired (refer to
   _expiration_date_ attribute). `False` otherwise.
-- TODO SQL repository available
+- SQL _repository_type_ is now available on community edition.
 
 
 ### Improvements and changes

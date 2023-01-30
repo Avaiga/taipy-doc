@@ -6,7 +6,7 @@ entities of your other versions.
 
 !!! note "Use case"
 
-    The _experiment_ mode is particularly useful in the process of improving a stable
+    The _experiment_ mode is handy in the process of improving a stable
     version of a Taipy application. In that case, you need to run one or multiple
     experiments like tuning algorithm parameters, updating configuration by adding
     KPI data nodes, testing new algorithms, etc. These require some configuration
