@@ -1,10 +1,11 @@
-The `Config^` class is the entrypoint for Taipy Core configuration. It is accessible using the following import:
+The `Config^` class is a singleton as the entry point for the Taipy Core configuration. It is accessible
+using the following import:
 
 ```py linenums="1"
 from taipy import Config
 ```
 
-It exposes all the necessary attributes and methods to manage the configuration. In particular, it holds :
+It exposes all the necessary attributes and methods to manage the configuration. In particular, it holds
 
 - the [data node configurations](data-node-config.md) as a dictionary of `DataNodeConfig^`s:
     ```python linenums="1"

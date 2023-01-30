@@ -1,8 +1,8 @@
-In the following, it is assumed that [`my_config.py`](../my_config.py)
-module contains a Taipy configuration already implemented.
-
 Data nodes get created when scenarios or pipelines are created. Please refer to the
 [Entities' creation](scenario-creation.md) section for more details.
+
+In this section, it is assumed that <a href="./code_example/my_config.py" download>`my_config.py`</a>
+module contains a Taipy configuration already implemented.
 
 # Data node attributes
 
@@ -18,17 +18,18 @@ A data node also holds various properties and attributes accessible through the 
     Note that **only** for file-based data nodes (CSV, Excel, pickle, JSON, Parquet, ...), the
     file's last modification date is used to compute the _**last_edit_date**_ value. That means if a file is modified
     manually or by an external process, the _**last_edit_date**_ value is automatically updated within Taipy.
-- _**job_ids**_: The ordered list of jobs that have written on this data node.
+- _**edits**_: The ordered list of `Edit^`s, representing the successive modifications of the data node.
 - _**version**_: The string indicates the application version of the data node to instantiate.
     If not provided, the current version is used.
 - _**validity_period**_: The validity period of a data node. If _validity_period_ is set to None, the
     data node is always up-to-date.
-- _**edit_in_progress**_: The flag that signals if a task is currently computing this data node.
+- _**edit_in_progress**_: The boolean flag signals if the data node is locked for modification.
 - _**properties**_: The dictionary of additional arguments.
 
 # Get data node
 
-The first method to get a **data node** is from its id using the `taipy.get()^` method:
+The first method to access a **data node** is by calling the `taipy.get()^` method
+passing the data node id as parameter:
 
 !!! Example
 
@@ -107,8 +108,8 @@ data nodes.
 
 # Read / Write a data node
 
-To read the content of a data node you can use the `DataNode.read()^` method. The read method returns the data
-stored on the data node according to the type of data node:
+To access the content of a data node you can use the `DataNode.read()^` method. The read method returns the data
+stored in the data node according to the type of data node:
 
 !!! Example
 
@@ -127,8 +128,8 @@ stored on the data node according to the type of data node:
     ```
 
 To write some data on the data node, like the output of a task, you can use the `DataNode.write()^` method. The
-method takes a data object (string, dictionary, lists, numpy arrays, pandas dataframes, etc. based on the data node type and its exposed type)
-as a parameter and writes it on the data node:
+method takes a data object (string, dictionary, lists, NumPy arrays, Pandas dataframes, etc. based on the data
+node type and its exposed type) as a parameter and writes it on the data node:
 
 !!! Example
 
@@ -163,7 +164,9 @@ Pickle data node can write any data object that can be picked, including but not
 - functions, classes.
 - instances of classes with picklable properties.
 
-Check out [What can be pickled and unpickled?](https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled) for more details.
+Check out
+[What can be pickled and unpickled?](https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled)
+for more details.
 
 
 ## CSV
@@ -628,20 +631,28 @@ node:
 
 ## SQL
 
-A SQL data node is designed to give the user more flexibility on how to read and write to SQL table (or multiple SQL tables).
+A SQL data node is designed to give the user more flexibility on how to read and write to SQL table
+(or multiple SQL tables).
 
-Let's consider the `orders_cfg` in [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py) which configures a SQL data node.
+Let's consider the `orders_cfg` in
+[`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
+which configures a SQL data node.
 
-When reading from a SQL data node, Taipy executes the read query and returns the data of the SQL file based on the _exposed_type_ parameter:
+When reading from a SQL data node, Taipy executes the read query and returns the data of the SQL
+file based on the _exposed_type_ parameter:
 
--   The _exposed_type_ parameter of `orders_cfg` is undefined, therefore it takes the default value as "pandas". Check out [SQL Data Node configuration](../config/data-node-config.md#sql) for more details on _exposed_type_.
--   The _read_query_ of `orders_cfg` is
+- The _exposed_type_ parameter of `orders_cfg` is undefined, therefore it takes the default value
+  as "pandas".
+  Check out [SQL Data Node configuration](../config/data-node-config.md#sql) for more details on
+  _exposed_type_.
+- The _read_query_ of `orders_cfg` is
     ```sql
     SELECT orders.ID, orders.date, products.price, orders.number_of_products
     FROM orders INNER JOIN products
     ON orders.product_id=products.ID
     ```
--   When reading from the SQL data node using `data_node.read()` method, Taipy will execute the above query and return a `pandas.DataFrame` represents the "orders" table inner join with the "products" table.
+- When reading from the SQL data node using `data_node.read()` method, Taipy will execute the above
+  query and return a `pandas.DataFrame` represents the "orders" table inner join with the "products" table.
 
 !!! example "A selection from the "orders" table"
 
@@ -681,12 +692,16 @@ When reading from a SQL data node, Taipy executes the read query and returns the
     )
     ```
 
-When writing to a SQL data node, Taipy will first pass the data to _write_query_builder_ and then execute a list of queries returned by the query builder:
+When writing to a SQL data node, Taipy will first pass the data to _write_query_builder_ and then
+execute a list of queries returned by the query builder:
 
--   The _write_query_builder_ parameter of `orders_cfg` in this example is defined as the `write_orders_plan()` method.
--   After being called with the write data as a `pd.DataFrame`, the `write_orders_plan()` method will return a list of SQL queries.
--   The first query deletes all records from "orders" table.
--   The following query will insert a list of records to the "orders" table according to the data, assume that "ID" column in "orders" table is the auto-increment primary key.
+- The _write_query_builder_ parameter of `orders_cfg` in this example is defined as the
+  `write_orders_plan()` method.
+- After being called with the write data as a `pd.DataFrame`, the `write_orders_plan()`
+  method will return a list of SQL queries.
+- The first query deletes all records from "orders" table.
+- The following query will insert a list of records to the "orders" table according to the
+  data, assume that "ID" column in "orders" table is the auto-increment primary key.
 
 !!! example "`data_node.write()`"
 
@@ -714,7 +729,8 @@ When writing to a SQL data node, Taipy will first pass the data to _write_query_
 
 When reading from a JSON data node, Taipy will return a dictionary or a list based on the format of the JSON file.
 
-When writing data to a JSON data node, the `JSONDataNode.write()^` method can take a list, dictionary, or list of dictionaries as the input.
+When writing data to a JSON data node, the `JSONDataNode.write()^` method can take a list,
+dictionary, or list of dictionaries as the input.
 
 In JSON, values must be one of the following data types:
 
@@ -725,13 +741,15 @@ In JSON, values must be one of the following data types:
 - A boolean
 - `null`
 
-However, the content of a JSON data node can vary. By default, JSON data node provided by Taipy can also encode and decode:
+However, the content of a JSON data node can vary. By default, JSON data node provided by Taipy can
+also encode and decode:
 
 - Python [`enum.Enum`](https://docs.python.org/3/library/enum.html).
 - A [`datetime.datetime`](https://docs.python.org/3/library/datetime.html#datetime-objects) object.
 - A [dataclass](https://docs.python.org/3/library/dataclasses.html) object.
 
-For the example in this section, assume that `sales_history_cfg` in [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
+For the example in this section, assume that `sales_history_cfg` in
+[`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
 is a _JSON_ data node configuration with `default_path="path/sales.json"`.
 
 !!! example "Read and write from a JSON data node using default _encoder_ and _decoder_"
@@ -844,8 +862,9 @@ is a _JSON_ data node configuration with `default_path="path/sales.json"`.
 
         The read method will return a list of SaleRow objects as `data` when written.
 
-You can also specify custom JSON _**encoder**_ and _**decoder**_ to handle different data types. Check out [JSON Data Node
-configuration](../config/data-node-config.md#json) for more details on how to config custom JSON _**encoder**_ and _**decoder**_.
+You can also specify custom JSON _**encoder**_ and _**decoder**_ to handle different data types.
+Check out [JSON Data Node configuration](../config/data-node-config.md#json) for more details on
+how to config custom JSON _**encoder**_ and _**decoder**_.
 
 ## Parquet
 
@@ -911,7 +930,8 @@ The following examples represent the results when read from Parquet data node wi
         ]
         ```
 
-When writing data to a Parquet data node, the `ParquetDataNode.write()^` method can take several datatype as the input depending on the _exposed type_:
+When writing data to a Parquet data node, the `ParquetDataNode.write()^` method can take several
+datatype as the input depending on the _exposed type_:
 
 - pandas dataframes
 - modin dataframes
@@ -971,7 +991,13 @@ The following examples will write to the path of the Parquet data node:
         data_node.write(data)
         ```
 
-Additionally, Parquet data node entities also expose two new methods, namely: `ParquetDataNode.read_with_kwargs^` and `ParquetDataNode.write_with_kwargs^`. These two methods may be used to pass additional keyword arguments to the pandas [`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html) and [`pandas.DataFrame.to_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html) methods, **on top of the arguments which were defined in the [ParquetDataNode configuration](../config/data-node-config.md#parquet)**.
+Additionally, Parquet data node entities also expose two new methods, namely: `ParquetDataNode.read_with_kwargs^`
+and `ParquetDataNode.write_with_kwargs^`. These two methods may be used to pass additional keyword arguments
+to the pandas
+[`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html)
+and [`pandas.DataFrame.to_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html)
+methods, **on top of the arguments which were defined in the
+[ParquetDataNode configuration](../config/data-node-config.md#parquet)**.
 
 The following examples demonstrate reading and writing to a Parquet data node with additional keyword arguments:
 
@@ -982,7 +1008,9 @@ The following examples demonstrate reading and writing to a Parquet data node wi
     data_node.read_with_kwargs(columns=columns)
     ```
 
-Here, the `ParquetDataNode.read_with_kwargs^` method is used to specify a keyword parameter, _"columns"_, which is the list of column names to be read from the Parquet dataset. In this case, only the "nb_sales" column will be read.
+Here, the `ParquetDataNode.read_with_kwargs^` method is used to specify a keyword parameter, _"columns"_,
+which is the list of column names to be read from the Parquet dataset. In this case, only the "nb_sales"
+column will be read.
 
 !!! example "Writing data with `ParquetDataNode.write_with_kwargs^`"
 
@@ -990,24 +1018,30 @@ Here, the `ParquetDataNode.read_with_kwargs^` method is used to specify a keywor
     data_node.write_with_kwargs(index=False)
     ```
 
-Here, the `ParquetDataNode.write_with_kwargs^` method is used to specify a keyword parameter, _"index"_, which is a boolean value determining if the index of the DataFrame should be written. In this case, the index will not be not written.
+Here, the `ParquetDataNode.write_with_kwargs^` method is used to specify a keyword parameter, _"index"_,
+which is a boolean value determining if the index of the DataFrame should be written. In this case, the
+index will not be not written.
 
 ## Mongo collection
 
-When reading from a Mongo collection data node, Taipy will return a list of objects as instances of a document class defined by _**custom_document**_.
+When reading from a Mongo collection data node, Taipy will return a list of objects as instances of a
+document class defined by _**custom_document**_.
 
-When writing data to a Mongo collection data node, the `MongoCollectionDataNode.write()^` method takes a list of objects as instances of a document class
+When writing data to a Mongo collection data node, the `MongoCollectionDataNode.write()^` method takes
+a list of objects as instances of a document class
 defined by _**custom_document**_ as the input.
 
-By default, Mongo collection data node uses `taipy.core.DefaultCustomDocument` as the document class. A `DefaultCustomDocument` can have any attribute,
-however, the type of the value should be supported by MongoDB, including but not limited to:
+By default, Mongo collection data node uses `taipy.core.DefaultCustomDocument` as the document class.
+A `DefaultCustomDocument` can have any attribute, however, the type of the value should be supported by
+MongoDB, including but not limited to:
 
 - Boolean, integers, and floating-point numbers.
 - String.
 - Object (embedded document object).
 - Arrays − arrays or list or multiple values.
 
-For the example in this section, assume that `sales_history_cfg` in [`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
+For the example in this section, assume that `sales_history_cfg` in
+[`my_config.py`](https://github.com/Avaiga/taipy-doc/blob/develop/docs/manuals/core/my_config.py)
 is a _Mongo collection_ data node configuration.
 
 Check out [MongoDB supported data types](https://www.mongodb.com/docs/manual/reference/bson-types/) for more details.
@@ -1037,35 +1071,42 @@ Check out [MongoDB supported data types](https://www.mongodb.com/docs/manual/ref
 
     The read method will return a list of DefaultCustomDocument objects, including "_id" attribute.
 
-You can also specify custom document class to handle specific attribute, encode and decode data when reading and writing to the Mongo collection.
+You can also specify custom document class to handle specific attribute, encode and decode data when
+reading and writing to the Mongo collection.
 
-Check out [Mongo collection Data Node configuration](../config/data-node-config.md#mongo-collection) for more details on how to config a custom
+Check out [Mongo collection Data Node configuration](../config/data-node-config.md#mongo-collection)
+for more details on how to config a custom
 document class.
 
 ## Generic
 
 A _Generic_ data node has the read and the write functions defined by the user:
 
--   When reading from a generic data node, Taipy runs the function defined by *read_fct* with parameters defined by *read_fct_params*.
--   When writing to a generic data node, Taipy runs the function defined by *write_fct* with parameters defined by *write_fct_params*.
+- When reading from a generic data node, Taipy runs the function defined by *read_fct* with parameters
+  defined by *read_fct_params*.
+- When writing to a generic data node, Taipy runs the function defined by *write_fct* with parameters
+  defined by *write_fct_params*.
 
 ## In memory
 
-Since an _In memory_ data node stores data in RAM as a Python variable, the read / write methods are rather straightforward.
+Since an _In memory_ data node stores data in RAM as a Python variable, the read / write methods are
+rather straightforward.
 
-When reading from an In memory data node, Taipy returns whichever data stored in RAM corresponding to the data node.
+When reading from an In memory data node, Taipy returns whichever data stored in RAM corresponding
+to the data node.
 
 Correspondingly, In memory data node can write any data object that is valid data for a Python variable.
 
 !!! Warning
 
-    Since the data is stored in memory, it cannot be used in a multiprocess environment. (See [Job configuration](job-config.md#standalone) for more details).
+    Since the data is stored in memory, it cannot be used in a multiprocess environment.
+    (See [Job configuration](job-config.md#standalone) for more details).
 
 
 # Filter read results
 
-It is also possible to partially read the contents of data nodes, which comes in handy when dealing with large amounts
-of data.
+It is also possible to partially read the contents of data nodes, which comes in handy when dealing
+with large amounts of data.
 This can be achieved by providing an operator, a Tuple of (*field_name*, *value*, *comparison_operator*),
 or a list of operators to the `DataNode.filter()^` method:
 

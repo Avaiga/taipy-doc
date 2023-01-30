@@ -219,7 +219,8 @@ used in 'regular' *LoV*s.
       { "name": "3.4",   "date": 2014 },
       { "name": "3.8",   "date": 2019 },
       { "name": "3.9",   "date": 2020 },
-      { "name": "3.10",  "date": 2021 }
+      { "name": "3.10",  "date": 2021 },
+      { "name": "3.11",  "date": 2022 }
     ]
     ```
 

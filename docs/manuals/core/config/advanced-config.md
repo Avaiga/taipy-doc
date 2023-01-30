@@ -1,39 +1,39 @@
-Taipy provides three ways to configure your application :
+Taipy provides three ways to configure your application:
 
-- A Python configuration
+- A Python code configuration
 - An explicit file configuration using _TOML_ format
-- An environment variable file configuration
+- A file configuration provided through an environment variable
 
 !!! example
 
     Here is a typical workflow that shows how to adapt the configuration of a Taipy application at each stage of a
     software project (from initial development to production).
 
-    1. To get started, as a developer I will be designing my application by configuring all the new entities  (data
+    1. To start, as a developer I will design my application by configuring all the new entities  (data
     nodes, tasks, pipelines, scenarios) using the Python code configuration with just a minimal number of attributes
     configured. The default configuration is used for the other attributes.
 
-    2. Then, I am testing the application built. At this step, I need my application to have a more realistic
-    behavior like real data. For that, I need more configuration. I can specify for my
+    2. Then, I test the application I just built. At this step, I need my application to have a more realistic
+    behavior, like real data. For that, I need more configuration. I can specify for my
     specific input dataset what file to use. I am using the Python code configuration for that.
 
-    3. Then, once I am happy with my application running on my local dev environment, I am deploying it to a remote
-    environment for testing. This is a dedicated environment made for testing deployment and for integration testing.
-    I can then use an explicit TOML file configuration. I can now easily update the file if necessary to be efficient in
-    debugging, without changing the code directly.
+    3. Once I am satisfied with my application running on my local dev environment, I will deploy it to a remote
+    environment for testing. It is a dedicated environment made for testing deployment and integration testing.
+    I can then use an explicit TOML file configuration. I can now easily update the file when needed to
+    debug efficiently without changing the code directly.
 
-    4. Once the step 3 is done, I want to be able to deploy a released and tagged version of my application in
-    several remote environments (e.g. pre-production, production). I am creating one TOML file per remote environment
-    with a few values that differ from step 3, and on each environment, I am setting a different environment
-    variable value to point to the right TOML configuration file.
+    4. Once step 3 is completed, I want to deploy a released and tagged version of my application across
+    several remote environments (e.g., pre-production and production). I create one TOML file per remote
+    environment with a few values that differ from step 3. For each environment, I set the environment
+    variable TAIPY_CONFIG_PATH (see below) to point to the right TOML configuration file.
 
 These methods are described below.
 
 # Python code configuration
 
-A code configuration can be done on a Python file directly when designing the pipelines and scenarios. This
-configuration can be done using methods from the `Config^` class. This python configuration is meant to be used
-during the application development phase. It overrides the default configuration:
+The configuration (for all your data nodes, tasks, pipelines, scenarios, etc.) can be defined directly using Python
+code. This configuration can be done using methods from the `Config^` class. This Python configuration is meant to
+be used during the application development phase. It overrides the default configuration:
 if some values are not provided, the default configuration applies.
 
 !!! Example "Design of the application to configure"
@@ -41,11 +41,11 @@ if some values are not provided, the default configuration applies.
     ![scenarios](../pic/scenarios.svg){ align=left }
 
     Let's imagine we want to configure an application corresponding to the design described in the picture. We use
-    the following python configuration code.
+    the following Python configuration code.
 
     === "Python configuration"
 
-        Below is the python code corresponding to the design above.
+        Below is the Python code corresponding to the design above.
 
         ```py linenums="1" title="my_config.py"
         from datetime import datetime
@@ -116,11 +116,11 @@ if some values are not provided, the default configuration applies.
         ```
 
         The `train`, `predict`, and `plan` methods used in lines 22, 24, and 28 are the user functions imported in line
-        2 from the module `my_functions` that represents a user python module.
+        2 from the module `my_functions` that represents a user Python module.
 
     === "my_functions.py module"
 
-        The following module "my_function" is imported in the python configuration.
+        The following module "my_function" is imported in the Python configuration.
 
         ```py linenums="1" title="my_functions.py"
         import pandas as pd
@@ -146,9 +146,9 @@ if some values are not provided, the default configuration applies.
             return "PRODUCTION_ORDERS"
         ```
 
-    === "_TOML_ export of the python configuration"
+    === "_TOML_ export of the Python configuration"
 
-        The following file is the TOML version of the python configuration.
+        The following file is the TOML version of the Python configuration.
 
         ```toml linenums="1" title="config.toml"
         [TAIPY]
@@ -225,7 +225,7 @@ if some values are not provided, the default configuration applies.
 
 !!! warning "Security"
 
-    Note that in line 15 of the python code, and in line 37 of the _TOML_ export, the password is not exposed. The
+    Note that in line 15 of the Python code, and in line 37 of the _TOML_ export, the password is not exposed. The
     property's value is a template referencing the environment variable _PWD_ that contains the value.
     It must be exported as follows:
     ``` commandline
@@ -236,7 +236,7 @@ if some values are not provided, the default configuration applies.
 # Explicit TOML file configuration
 
 Taipy also provides file configuration. Indeed, a _TOML_ file can be explicitly provided by the developer to the Taipy
-application using Python coding such as :
+application using Python coding such as:
 
 ```py linenums="1"
 from taipy import Config
@@ -245,7 +245,7 @@ Config.load("folder/config.toml")
 ```
 
 This file configuration overrides the attributes in the code configuration (and the default configuration).
-Here is an example of a _TOML_ file overriding the code configuration provided above as an example :
+Here is an example of a _TOML_ file overriding the code configuration provided above as an example:
 
 ```toml linenums="1" title="folder/config.toml"
 [JOB]
@@ -261,41 +261,40 @@ Two behaviors occur if the previous _TOML_ file is used as file configuration. F
 five workers (By default, the number of workers is 1). Then, the sales_history data node now is a CSV data node
 pointing to the file `./path/to/my/file.csv`. All other configuration fields remain unchanged.
 
-# Environment variable file configuration
+# File configuration in an environment variable
 
 Finally, if the environment variable `TAIPY_CONFIG_PATH` is defined with the path of a _TOML_ config, Taipy will
-automatically load the file and override the previous configurations (explicit file configuration, code configuration
-and default configuration).
+automatically load the file and override the previous configurations (explicit file configuration, code
+configuration, and default configuration).
 
-This functionality can be handy to change the configuration of a Taipy application without having to restart it.
+This functionality can be handy for changing the configuration of a Taipy application without having to restart it.
 
 # Attribute in an environment variable
 
 Configuration can be set dynamically using environment variables with the syntax `ENV[MY_VARIABLE]`. This syntax can
-be used both in python configuration or _TOML_ configuration. At runtime, Taipy will search for `MY_VARIABLE` among the
-environment variables then use it.
+be used both in Python configuration or _TOML_ configuration. At runtime, Taipy will search for `MY_VARIABLE` among the
+environment variables and then use it.
 
-This can be used to set a different configuration field value depending on the environment on which the application
-will run. This is also especially useful if you want to use secret strings such as host names, usernames or passwords.
-For example, if you are using Airflow as a Taipy scheduler, you can hide the password from the configuration file
-using an environment variable.
+It can be used to set a different configuration field value depending on the application's environment. It is
+also especially useful if you want to use secret strings such as host names, usernames or passwords.
+For example, you can hide a password from the configuration file using an environment variable.
 
 Let's take an example with two environment variables. One string password and one integer value. You can export the
-`PWD` and `NB_WORKERS` variables with the following command lines
+`PWD` and `NB_USERS` variables with the following command lines
 
 ```commandline linenums="1"
     export PWD=MySeCrEtPaSsWoRd
-    export NB_WORKERS=4
+    export NB_USERS=4
 ```
 
 and refer to it with the following Taipy configuration:
 
-=== "python configuration"
+=== "Python configuration"
 
     ```py linenums="1"
     from taipy import Config
 
-    Config.configure_global_app(password="ENV[PWD]", nb_workers="ENV[NB_WORKERS]")
+    Config.configure_global_app(password="ENV[PWD]", max_nb_users="ENV[NB_USERS]")
     ```
 
 === "_TOML_ configuration"
@@ -303,22 +302,35 @@ and refer to it with the following Taipy configuration:
     ```toml linenums="1"
     [JOB]
     password = "ENV[PWD]"
-    nb_workers = "ENV[NB_WORKERS]:int"
+    max_nb_users = "ENV[NB_USERS]:int"
     ```
 
     Note that if the type of the configuration attribute is not a string, it must be specified in the _TOML_ file
     (':bool', ':int', ':float').
 
-# Exporting and loading configuration
+# Loading and exporting configuration
 
 Taipy provides some API's to export and load its configurations.
+
+## Load
+!!! note
+
+    Changed in version 2.1. Now it only replaces the Python code configuration.
+
+Load a configuration file and replace the Python code configuration.
+
+```python linenums="1"
+from taipy import Config
+
+Config.load("config.toml")
+```
 
 ## Export
 !!! note
 
-    Changed in version 2.1. Now it only exports the python code configuration.
+    Changed in version 2.1. Now it only exports the Python code configuration.
 
-Export the python code configuration:
+Export the Python code configuration:
 
 ```python linenums="1"
 from taipy import Config
@@ -326,18 +338,6 @@ from taipy import Config
 Config.export("config.toml")
 ```
 
-## Load
-!!! note
-
-    Changed in version 2.1. Now it only replaces the python code configuration.
-
-Load a configuration file and replace the current python code configuration.
-
-```python linenums="1"
-from taipy import Config
-
-Config.load("config.toml")
-```    
 
 ## Backup
 !!! note
@@ -357,20 +357,21 @@ Config.backup("config.toml")
 
     New in version 2.1.
 
-Load a configuration file and replace the current applied configuration.
+Load a configuration file and replace the applied configuration.
 
 ```python linenums="1"
 from taipy import Config
 
 Config.restore("config.toml")
-```    
+```
 
 ## Override
 !!! note
 
     New in version 2.1.
 
-Load a configuration file, replace the current file configuration and triggers a recomputation of the applied configuration.
+Load a configuration file, replace the current file configuration and triggers a re-computation of the applied
+configuration.
 
 ```python linenums="1"
 from taipy import Config

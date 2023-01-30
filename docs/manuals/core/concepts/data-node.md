@@ -1,13 +1,13 @@
 A data node is one of the most important concepts in Taipy Core. It does not contain the data itself but holds all
 the necessary information to read and write the actual data. It can be seen as a dataset descriptor or data reference.
 
-A _data node_ can reference any data type:
+A _data node_ can reference any data:
 
 - a text,
 - a numeric value,
-- a list of parameters,
-- a custom python object,
-- the content of a JSON file, a CSV file, a Pickle file, etc.
+- a list, tuple, set, dictionary of parameters,
+- a custom python object (a dataframe, a dataclass, etc.),
+- the content of a JSON file, a CSV file, a Pickle file, a Parquet file, etc.
 - the content of one or multiple database table(s),
 - any other data.
 
@@ -18,17 +18,17 @@ The _data node_ information depends on the data itself, its exposed format, and 
 
 First example: If the data is stored in an SQL database, the corresponding _data node_ should contain the username,
 password, host, port, the queries to read and write the data, as well as the Python class used to represent a
-database line.
+database entry.
 
 Second example: If the data is stored in a CSV file, the corresponding _data node_ should contain, for instance, the
 path to the file and the Python class used to represent a CSV line.
 
 !!! example "Let's take a realistic example."
 
-    Let's assume we want to build an application to predict the monthly sales demand in order to adjust production
-    planning, constrained by some capacity.
+    Let's assume we want to build an application to predict monthly sales in order to adjust production
+    planning, constrained by some maximum capacity.
 
-    The flowchart below represents the various data nodes we want to be processed byt the tasks (in orange).
+    The flowchart below represents the various data nodes used as input or output of the tasks (in orange).
 
     ![tasks and data nodes](../pic/tasks_and_data_nodes.svg){ align=left }
 
@@ -41,14 +41,13 @@ path to the file and the Python class used to represent a CSV line.
     Taipy proposes various predefined _data nodes_ corresponding to the most popular _storage types_. More details on
     the [Data node configuration page](../config/data-node-config.md)
 
-    In our example, the sales history is in a CSV file. For example, the sales history comes from the company
-    record system, so we do not control its storage type. We got the data as a CSV file. We use the predefined CSV
-    data node to model the _**sales history**_.
+    In our example, the sales history is a CSV file received, for instance, from a company record system. We use
+    the predefined CSV data node to model the _**sales history**_.
 
-    As for the _**production orders**_ data node, we want to write the data into a database shared by other systems.
-    We can use the SQL data node to model the _**production orders**_.
+    As for the _**production orders**_ data node, we write the data into a database shared by other systems.
+    We use the predefined SQL data node to model the _**production orders**_.
 
-    We have no particular specification for the other data nodes. We use the default storage type: Pickle.
+    We have no particular specifications for the other data nodes. We use the default storage type: Pickle.
 
 A data node's attributes are populated based on its data node configuration `DataNodeConfig^` that must be
 provided when instantiating a new data node. (Please refer to the

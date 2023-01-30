@@ -71,7 +71,6 @@ The resulting chart looks like this:
     <figcaption>Simple funnel chart</figcaption>
 </figure>
 
-
 ### Multiple traces {data-source="gui:doc/examples/charts/funnel-multiple"}
 
 With the previous example, we could spot how many contacts would convert to sales,

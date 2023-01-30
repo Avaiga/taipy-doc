@@ -201,7 +201,7 @@ DEST_DIR = os.path.join(ROOT_DIR, DEST_DIR_NAME)
 def safe_rmtree(dir: str):
     if os.path.isdir(dir):
         shutil.rmtree(dir)
-    
+
 # Remove target 'taipy' directory
 safe_rmtree(DEST_DIR)
 os.makedirs(DEST_DIR)
@@ -265,7 +265,8 @@ def move_files(repo: str, src_path: str):
             shutil.rmtree(gui_dir)
         try:
             def keep_py_files(dir, filenames):
-                return [name for name in filenames if not os.path.isdir(os.path.join(dir, name)) and not name.endswith('.py')]
+                return [name for name in filenames if not os.path.isdir(os.path.join(dir, name)) and not (
+                    name.endswith('.py') or name.endswith('.pyi') or name.endswith('.json'))]
             shutil.copytree(os.path.join(src_path, "src", "taipy"), tmp_dir, ignore=keep_py_files)
             entries = os.listdir(tmp_dir)
             for entry in entries:
