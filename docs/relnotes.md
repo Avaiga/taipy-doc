@@ -83,10 +83,10 @@ details on how to migrate from version older than 2.1.
 - New version management system for Taipy applications. Users can now run an application in development
   mode, save a version of the application as an experiment version, re-run older experiment versions,
   and push a version to production.<br/>
-  See the [Version management system](../manuals/core/versioning) documentation page for more details.
-- New data node named [MongoCollectionDataNode](../manuals/core/config/data-node-config/#mongo-collection).
+  See the [Version management system](./manuals/core/versioning/index.md) documentation page for more details.
+- New data node named [MongoCollectionDataNode](./manuals/core/config/data-node-config.md#mongo-collection).
   It represents the data from a MongoDB collection.
-- New data node named [ParquetDataNode](../manuals/core/config/data-node-config/#parquet) It represents
+- New data node named [ParquetDataNode](./manuals/core/config/data-node-config.md#parquet). It represents
   tabular data stored in the Apache Parquet format.
 - Added support for [Modin](https://modin.readthedocs.io/en/stable/) as a new exposed type.
 - Running the Core service is required to execute jobs. See `Core().run()^` method.
@@ -97,7 +97,8 @@ details on how to migrate from version older than 2.1.
   _last_edit_date_ of the data node.
 - New data node property _is_up_to_date_ equals to `True` if the data node has not expired (refer to
   _expiration_date_ attribute). `False` otherwise.
-- SQL _repository_type_ is now available on community edition.
+- The **sql** _repository_type_ is now available on community edition to store Core entities in an
+  SQL database. See [SQL storage section](./manuals/core/config/global-config.md#sql-storage-for-taipy-entities).
 
 
 ### Improvements and changes
