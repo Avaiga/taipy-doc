@@ -26,7 +26,8 @@ The extension is activated when Visual Studio Code finds Markdown text:
 - In a Markdown file (the filename extension must be `.md`) which is
   part of the currently opened project;
 - In any string that appears in Python source code, part of the currently
-  opened project.
+  opened project, using the triple quote syntax (which allows a string to
+  span multiple lines of text).
 
 ## Auto-completion
 
@@ -48,11 +49,13 @@ text editor for a Markdown file:
 
 ### Access to variable and function names
 
-If the Markdown content is entered as a string value in a Python file or
-as text in a Markdown file that has the same root name as a Python file sitting
-in the same directory both being part of the currently opened project, the
-auto-completion feature can also be used in the context of a property value.<br/>
-Then Taipy Studio proposes relevant variable names just after the user presses
+The auto-completion feature can also be used in the context of a property value
+to provide quick access to variable and function names that would be valid
+values for a given property. This works only if the Markdown content is entered as
+a string value in a Python file (using the triple quote syntax) or as text in a
+Markdown file with the same root name as a Python file sitting in the same
+directory, both being part of the currently opened project.<br/>
+Then Taipy Studio proposes relevant Python identifiers just after the user presses
 the "`{`" key, opening a fragment to write a Python expression.
 
 Here is what this looks like when referencing a variable name:
