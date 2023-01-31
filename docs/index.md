@@ -175,49 +175,31 @@ These topics are the most visited ones, we thought you’d like to have a glance
   <li>
     <a class="tp-pill" href="manuals/core/config/data-node-config/#storage-type">
       <span>Configure Data node</span>
-      <div class="tp-tooltip">
-        <p>Configure a data node.</p>
-      </div>
     </a>
   </li>
   <li>
     <a class="tp-pill" href="manuals/core/config/task-config/">
       <span>Configure Task</span>
-      <div class="tp-tooltip">
-        <p>Configure a new task.</p>
-      </div>
     </a>
   </li>
   <li>
     <a class="tp-pill" href="manuals/core/config/scenario-config/#from-task-configs">
       <span>Configure Scenario</span>
-      <div class="tp-tooltip">
-        <p>Configure a new scenario.</p>
-      </div>
     </a>
   </li>
   <li>
     <a class="tp-pill" href="manuals/core/entities/scenario-creation/">
-      <span>Create Scenario</span>
-      <div class="tp-tooltip">
-        <p>Instantiate a scenario from a scenario config.</p>
-      </div>
+      <span>Instantiate Scenario</span>
     </a>
   </li>
   <li>
     <a class="tp-pill" href="manuals/core/entities/scheduling-and-job-execution/#submit-a-scenario-pipeline-or-task/">
       <span>Submit Scenario</span>
-      <div class="tp-tooltip">
-        <p>Submit a scenario.</p>
-      </div>
     </a>
   </li>
   <li>
     <a class="tp-pill" href="manuals/core/versioning/">
       <span>Manage versions</span>
-      <div class="tp-tooltip">
-        <p>Manage your application's versions.</p>
-      </div>
     </a>
   </li>
   <li>
