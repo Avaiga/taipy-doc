@@ -12,6 +12,39 @@ in order to see a step-by-step example of a complete Taipy application.
 
     Taipy requires **Python 3.8** or newer.
 
+## Quick access
+
+These topics are the most visited ones, we thought you’d like to have a glance at them!
+
+<div class="tp-row tp-row--gutter-sm">
+  <div class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card" href="../gui/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon icon-light" src="../../images/icons/visual-element-w.svg">
+        <img class="tp-content-card-icon icon-dark" src="../../images/icons/visual-element.svg">
+        <h3>Visual elements</h3>
+      </header>
+      <p>
+        Browse dozens of Taipy GUI controls to build your UI
+      </p>
+      <span class="tp-content-card-readmore">Read more</span>
+    </a>
+  </div>
+  <div class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card" href="../gui/viselements/chart/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon icon-light" src="../../images/icons/bar-chart-w.svg">
+        <img class="tp-content-card-icon icon-dark" src="../../images/icons/bar-chart.svg">
+        <h3>Charts</h3>
+      </header>
+      <p>
+        An important component of Taipy GUI with almost infinite possibilities right at your fingertips.
+      </p>
+      <span class="tp-content-card-readmore">Read more</span>
+    </a>
+  </div>
+</div>
+
 ## Graphical User Interface (GUI) - `taipy.gui`
 
 The `taipy.gui^` package allows you to design an effective Graphic User Interface.
