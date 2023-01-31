@@ -6,7 +6,7 @@ A _data node_ can reference any data:
 - a text,
 - a numeric value,
 - a list, tuple, set, dictionary of parameters,
-- a custom python object (a dataframe, a dataclass, etc.),
+- a custom Python object (a Pandas DataFrame, a dataclass, etc.),
 - the content of a JSON file, a CSV file, a Pickle file, a Parquet file, etc.
 - the content of one or multiple database table(s),
 - any other data.
