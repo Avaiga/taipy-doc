@@ -19,7 +19,7 @@ Taipy proposes a **version management system** to:
 
 This **version management system** is available using command line arguments when
 running a Taipy Core application. Please refer to the
-[command line options](./version-mgt.md) documentation page for more details.
+[Manage versions](./version-mgt.md) documentation page for more details.
 
 
 ## Modes
