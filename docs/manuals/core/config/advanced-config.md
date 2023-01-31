@@ -174,67 +174,72 @@ if some values are not provided, the default configuration applies.
 
         [DATA_NODE.sales_history]
         storage_type = "csv"
-        scope = "GLOBAL"
+        scope = "GLOBAL:SCOPE"
         default_path = "path/sales.csv"
         has_header = "True:bool"
-        cacheable = "False:bool"
+        exposed_type = "pandas"
 
         [DATA_NODE.trained_model]
         storage_type = "pickle"
-        scope = "CYCLE"
-        cacheable = "False:bool"
+        scope = "CYCLE:SCOPE"
 
         [DATA_NODE.current_month]
         storage_type = "pickle"
-        scope = "CYCLE"
-        default_data = 2020-01-01T00:00:00
-        cacheable = "False:bool"
+        scope = "CYCLE:SCOPE"
+        default_data = "2020-01-01T00:00:00:datetime"
 
         [DATA_NODE.sales_predictions]
         storage_type = "pickle"
-        scope = "CYCLE"
-        cacheable = "False:bool"
+        scope = "CYCLE:SCOPE"
 
         [DATA_NODE.capacity]
         storage_type = "pickle"
-        scope = "SCENARIO"
-        cacheable = "False:bool"
+        scope = "SCENARIO:SCOPE"
 
         [DATA_NODE.orders]
         storage_type = "sql"
-        scope = "SCENARIO"
+        scope = "SCENARIO:SCOPE"
         db_username = "admin"
-        db_password = "ENV[PWD]"
+        db_password = "admin_pwd"
         db_name = "production_planning"
         db_host = "localhost"
         db_engine = "mssql"
         db_driver = "ODBC Driver 17 for SQL Server"
         read_query = "SELECT orders.ID, orders.date, products.price, orders.number_of_products FROM orders INNER JOIN products ON orders.product_id=products.ID"
-        write_query_builder = <function write_orders_plan at 0x000002878FF9A030>
+        write_query_builder = "functions.write_orders_plan:function"
         db_port = "1433:int"
-        cacheable = "False:bool"
+        exposed_type = "pandas"
 
         [TASK.training]
-        inputs = [ "sales_history",]
-        outputs = [ "trained_model",]
+        inputs = [ "sales_history:SECTION",]
+        function = "functions.train:function"
+        outputs = [ "trained_model:SECTION",]
+        skippable = "False:bool"
 
         [TASK.predicting]
-        inputs = [ "trained_model", "current_month",]
-        outputs = [ "sales_predictions",]
+        inputs = [ "trained_model:SECTION", "current_month:SECTION",]
+        function = "functions.predict:function"
+        outputs = [ "sales_predictions:SECTION",]
+        skippable = "False:bool"
 
         [TASK.planning]
-        inputs = [ "sales_predictions", "capacity",]
-        outputs = [ "orders",]
+        inputs = [ "sales_predictions:SECTION", "capacity:SECTION",]
+        function = "functions.plan:function"
+        outputs = [ "orders:SECTION",]
+        skippable = "False:bool"
 
         [PIPELINE.sales]
-        tasks = [ "training", "predicting",]
+        tasks = [ "training:SECTION", "predicting:SECTION",]
 
         [PIPELINE.production]
-        tasks = [ "planning",]
+        tasks = [ "planning:SECTION",]
 
         [SCENARIO.scenario_configuration]
-        pipelines = [ "sales", "production",]
-        frequency = "MONTHLY"
+        pipelines = [ "sales:SECTION", "production:SECTION",]
+        frequency = "MONTHLY:FREQUENCY"
+
+        [SCENARIO.scenario_configuration.comparators]
+        sales_predictions = [ "functions.compare:function",]
         ```
 
         Note that the type of the non-string configuration attributes is specified in the _TOML_ file by adding at the
@@ -248,7 +253,7 @@ if some values are not provided, the default configuration applies.
     ``` commandline
     export PWD=my_pwd
     ```
-    See section [environment-based configuration](#attribute-in-an-environment-variable) for more details.
+    See section [Attribute in an env variable](#attribute-in-an-env-variable) for more details.
 
 # Override using explicit TOML file
 
@@ -327,7 +332,7 @@ and refer to it with the following Taipy configuration:
 
 # Loading and exporting configuration
 
-Taipy provides some API's to export and load its configurations.
+Taipy provides some APIs to export and load its configurations.
 
 ## Load
 !!! note
