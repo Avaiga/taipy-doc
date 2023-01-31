@@ -174,41 +174,41 @@ These topics are the most visited ones, we thought you’d like to have a glance
 <ul class="tp-pills-list">
   <li>
     <a class="tp-pill" href="manuals/core/config/data-node-config/#storage-type">
-      <span>Data node config</span>
+      <span>Configure Data node</span>
       <div class="tp-tooltip">
-        <p>Configure a predefined data node.</p>
+        <p>Configure a data node.</p>
       </div>
     </a>
   </li>
   <li>
     <a class="tp-pill" href="manuals/core/config/task-config/">
-      <span>Task config</span>
+      <span>Configure Task</span>
       <div class="tp-tooltip">
-        <p>Add a Task configuration.</p>
+        <p>Configure a new task.</p>
       </div>
     </a>
   </li>
   <li>
     <a class="tp-pill" href="manuals/core/config/scenario-config/#from-task-configs">
-      <span>Scenario config</span>
+      <span>Configure Scenario</span>
       <div class="tp-tooltip">
-        <p>Configure a new Scenario.</p>
+        <p>Configure a new scenario.</p>
       </div>
     </a>
   </li>
   <li>
     <a class="tp-pill" href="manuals/core/entities/scenario-creation/">
-      <span>Create a scenario</span>
+      <span>Create Scenario</span>
       <div class="tp-tooltip">
-        <p>Instantiate a Scenario from a scenario config.</p>
+        <p>Instantiate a scenario from a scenario config.</p>
       </div>
     </a>
   </li>
   <li>
     <a class="tp-pill" href="manuals/core/entities/scheduling-and-job-execution/#submit-a-scenario-pipeline-or-task/">
-      <span>Submit a scenario</span>
+      <span>Submit Scenario</span>
       <div class="tp-tooltip">
-        <p>Submit a Scenario.</p>
+        <p>Submit a scenario.</p>
       </div>
     </a>
   </li>
