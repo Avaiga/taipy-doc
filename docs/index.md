@@ -21,7 +21,7 @@ Taipy requires *Python 3.8* or newer.
 These topics are the most visited ones, we thought you’d like to have a glance at them!
 
 <div class="tp-row tp-row--gutter-sm">
-  <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
+  <div class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card" href="getting_started/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon icon-light" src="images/icons/flag-w.svg">
@@ -34,7 +34,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <span class="tp-content-card-readmore">Read more</span>
     </a>
   </div>
-  <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
+  <div class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card" href="manuals/about/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon icon-light" src="images/icons/menu_book-w.svg">
@@ -47,7 +47,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <span class="tp-content-card-readmore">Read more</span>
     </a>
   </div>
-  <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
+  <div class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card" href="manuals/gui/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon icon-light" src="images/icons/dashboard-w.svg">
@@ -56,6 +56,19 @@ These topics are the most visited ones, we thought you’d like to have a glance
       </header>
       <p>
         Taipy GUI provides controls and other elements to create powerful Web apps in minutes.
+      </p>
+      <span class="tp-content-card-readmore">Read more</span>
+    </a>
+  </div>
+  <div class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card" href="manuals/gui/viselements/chart/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon icon-light" src="images/icons/bar-chart-w.svg">
+        <img class="tp-content-card-icon icon-dark" src="images/icons/bar-chart.svg">
+        <h3>Charts</h3>
+      </header>
+      <p>
+        An important component of Taipy GUI with almost infinite possibilities right at your fingertips.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
