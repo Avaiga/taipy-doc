@@ -17,11 +17,11 @@ polar:Polar charts
 radar:Radar charts
 candlestick:Candlestick charts
 funnel:Funnel charts
-chart-map:Charts on maps
-area-map:Areas on maps
-density-map:Density maps
+map:Maps
+#TODO#area-map:Areas on maps
+#TODO#density-map:Density maps
 gantt:Gantt charts
-others:Other chart types
+advanced:Advanced topics
 -->
 
 # Chart types catalog
@@ -160,11 +160,11 @@ the chart types supported by Taipy by application category:
         <img src="../charts/home-continuous-error-d.png"  class="visible-dark" />
         <img src="../charts/home-continuous-error-l.png"  class="visible-light" />
       </a></li>
-    <li><a href="../charts/box-plot">
+    <!-- TODO li><a href="../charts/box-plot">
         <span>Box plots<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
         <img src="../charts/home-box-plot-d.png"  class="visible-dark" />
         <img src="../charts/home-box-plot-l.png"  class="visible-light" />
-      </a></li>
+      </a></li -->
     <!-- Violin plots - violin -->
     <!-- 2D histograms - 2d-histogram -->
     <!-- 2d density plot - 2d-density-->
@@ -201,20 +201,29 @@ the chart types supported by Taipy by application category:
 
 <h3 class="h3">Maps</h3>
 <ul class="list">
-    <li><a href="../charts/chart-map">
-        <span>Charts on maps<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
-        <img src="../charts/home-chart-map-d.png"  class="visible-dark" />
-        <img src="../charts/home-chart-map-l.png"  class="visible-light" />
+    <li><a href="../charts/map">
+        <span>Map plots<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
+        <img src="../charts/home-map-d.png"  class="visible-dark" />
+        <img src="../charts/home-map-l.png"  class="visible-light" />
       </a></li>
-    <li><a href="../charts/area-map">
+    <!-- TODO li><a href="../charts/area-map">
         <span>Areas on maps<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
         <img src="../charts/home-area-map-d.png"  class="visible-dark" />
         <img src="../charts/home-area-map-l.png"  class="visible-light" />
-      </a></li>
-    <li><a href="../charts/density-map">
+      </a></li -->
+    <!-- TODO li><a href="../charts/density-map">
         <span>Density maps<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
         <img src="../charts/home-density-map-d.png"  class="visible-dark" />
         <img src="../charts/home-density-map-l.png"  class="visible-light" />
-      </a></li>
+      </a></li -->
     <!-- Choropleth maps - choropleth-map -->
+</ul>
+
+<h3 class="h3">Specialized charts</h3>
+<ul class="list">
+    <li><a href="../charts/gantt">
+        <span>Gantt charts<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
+        <img src="../charts/home-gantt-d.png"  class="visible-dark" />
+        <img src="../charts/home-gantt-l.png"  class="visible-light" />
+      </a></li>
 </ul>

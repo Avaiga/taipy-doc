@@ -35,19 +35,21 @@ complex pipelines.
 
 This section aims at defining the following Taipy Core concepts.
 
-- A [Data node](data-node.md) (the dark blue boxes) represents a reference to a dataset. It can refer to any type of
-  data such as built-in Python objects (e.g. integer, string, dictionary of parameters, list of values, ...) or more
-  complex objects (e.g. a machine learning model, a list of custom objects, the result of a database query, ...).
+- A [Data node](data-node.md) (the dark blue boxes) represents a reference to a dataset. A data node can be
+  used/shared by multiple tasks as input or output. It can refer to any type of data: a built-in Python object
+  (e.g. an integer, a string, a dictionary or list of parameters, ...) or a more complex object (e.g. a file,
+  a machine learning model, a list of custom objects, the result of a database query, ...).
   A data node can be shared by multiple tasks as input or output.
-- A [Task](task.md) (the orange boxes) can be seen as a function receiving some data node(s) as input and returning
-  some data node(s) as output.
+- A [Task](task.md) (the orange boxes) can be seen as a function receiving data node(s) as input and returning
+  data node(s) as output.
 - A [Job](job.md) represents a unique execution of a Task.
 - A [Pipeline](pipeline.md) represents a set of tasks connected together through data nodes, that should be executed
   as a whole and forming a consistent algorithm.
 - A [Scenario](scenario.md) is made of one or multiple pipelines. It represents an instance of a business problem to
   solve.
-- A [Cycle](cycle.md) or work cycle is a time period corresponding to an iteration of a recurrent business
-  problem. A cycle is defined thanks to the **_Frequency_** of scenarios. For instance, if scenarios have a weekly
+- A [Cycle](cycle.md) or work cycle is a time period corresponding to an iteration of a recurrent business problem.
+  For instance, a company's sales forecast needs to be generated _every week_.
+  A cycle is defined thanks to the **_Frequency_** of scenarios. For instance, if scenarios have a weekly
   frequency, then each cycle represents a particular week, and every scenario will be attached to a particular cycle
   (i.e. a week).
 - A [Scope](scope.md) represents the _visibility_ of a data node in the graph of entities, and the level of its
@@ -58,9 +60,9 @@ This section aims at defining the following Taipy Core concepts.
     Among the concepts described in this section, **data nodes**, **tasks**, **pipelines**, and **scenarios** have
     two types of Taipy objects related to them: _configuration_ objects and _runtime_ objects.
 
-    To differentiate the configuration objects from their runtime counterparts, they are named **_configs_**
-    (`DataNodeConfig`, `TaskConfig`, `PipelineConfig`, and `ScenarioConfig`). In contrast, the runtime objects
-    (`DataNode`, `Task`, `Pipeline`, and `Scenario`) are called **_entities_**.
+    To differentiate them, the configuration objects are named **_configs_** (`DataNodeConfig`, `TaskConfig`,
+    `PipelineConfig`, and `ScenarioConfig`). In contrast, the runtime objects (`DataNode`, `Task`, `Pipeline`, and
+    `Scenario`) are called **_entities_**.
 
     It will benefit the reader to visualize the different Taipy **_configs_** like a set of Russian dolls where each
     **_config_** belongs to a "larger" **_config_**:

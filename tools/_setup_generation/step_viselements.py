@@ -140,7 +140,8 @@ class VisElementsStep(SetupStep):
 
         FIRST_PARA_RE = re.compile(r"(^.*?)(:?\n\n)", re.MULTILINE | re.DOTALL)
         FIRST_HEADER1_RE = re.compile(r"(^.*?)(\n#\s+)", re.MULTILINE | re.DOTALL)
-        FIRST_HEADER2_RE = re.compile(r"(^.*?)(\n##\s+)", re.MULTILINE | re.DOTALL)
+        # Find first level 2 or 3 header
+        FIRST_HEADER2_RE = re.compile(r"(^.*?)(\n###?\s+)", re.MULTILINE | re.DOTALL)
 
         def generate_element_doc(element_type: str, element_desc: Dict):
             """

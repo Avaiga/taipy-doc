@@ -21,7 +21,7 @@ Taipy requires *Python 3.8* or newer.
 These topics are the most visited ones, we thought you’d like to have a glance at them!
 
 <div class="tp-row tp-row--gutter-sm">
-  <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
+  <div class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card" href="getting_started/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon icon-light" src="images/icons/flag-w.svg">
@@ -34,7 +34,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <span class="tp-content-card-readmore">Read more</span>
     </a>
   </div>
-  <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
+  <div class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card" href="manuals/about/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon icon-light" src="images/icons/menu_book-w.svg">
@@ -47,7 +47,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <span class="tp-content-card-readmore">Read more</span>
     </a>
   </div>
-  <div class="tp-col-12 tp-col-md-6 tp-col-lg-4 d-flex">
+  <div class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card" href="manuals/gui/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon icon-light" src="images/icons/dashboard-w.svg">
@@ -56,6 +56,19 @@ These topics are the most visited ones, we thought you’d like to have a glance
       </header>
       <p>
         Taipy GUI provides controls and other elements to create powerful Web apps in minutes.
+      </p>
+      <span class="tp-content-card-readmore">Read more</span>
+    </a>
+  </div>
+  <div class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card" href="manuals/gui/viselements/chart/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon icon-light" src="images/icons/bar-chart-w.svg">
+        <img class="tp-content-card-icon icon-dark" src="images/icons/bar-chart.svg">
+        <h3>Charts</h3>
+      </header>
+      <p>
+        An important component of Taipy GUI with almost infinite possibilities right at your fingertips.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
@@ -156,6 +169,49 @@ These topics are the most visited ones, we thought you’d like to have a glance
   </li>
 </ul>
 
+## Build your Core functionalities!
+
+<ul class="tp-pills-list">
+  <li>
+    <a class="tp-pill" href="manuals/core/config/data-node-config/#storage-type">
+      <span>Configure Data node</span>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/core/config/task-config/">
+      <span>Configure Task</span>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/core/config/scenario-config/#from-task-configs">
+      <span>Configure Scenario</span>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/core/entities/scenario-creation/">
+      <span>Instantiate Scenario</span>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/core/entities/scheduling-and-job-execution/#submit-a-scenario-pipeline-or-task/">
+      <span>Submit Scenario</span>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/core/versioning/">
+      <span>Manage versions</span>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/core/">
+      <span>…</span>
+      <div class="tp-tooltip">
+        <p>Browse the Core user manual.</p>
+      </div>
+    </a>
+  </li>
+</ul>
+
 ## How does it work?
 
 Taipy is composed of two main independent components: **Taipy Core** and **Taipy GUI**. You can use either component independently. However, as you will see, they are incredibly efficient when combined.
@@ -169,7 +225,7 @@ Taipy is composed of two main independent components: **Taipy Core** and **Taipy
       </p>
     </article>
     <article class="tp-content-card">
-      <h3>Taipy Core</h3>      
+      <h3>Taipy Core</h3>
       <p>
         A simple yet powerful <strong>pipeline orchestration</strong> package.<br>
         Some of the key features:
