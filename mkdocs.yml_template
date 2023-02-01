@@ -101,11 +101,9 @@ nav:
       - "taipy-gui module": manuals/reference_guiext/modules.md
   - 'Release Notes': 'relnotes.md'
   - 'Contributing':
-    - 'Contributors': 'contributing/contributors.md'
     - 'Contributing to Taipy': 'contributing/contributing.md'
     - 'Code of conduct': 'contributing/code_of_conduct.md'
   - 'Credits':
-    - 'Development lead': 'credits/development_lead.md'
     - 'Contributors': 'credits/contributors.md'
 theme:
   name: material
