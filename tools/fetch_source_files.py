@@ -4,6 +4,8 @@ import re
 import shutil
 import subprocess
 
+from _fetch_source_file.git_context import GitContext
+
 SCRIPT_NAME = os.path.basename(__file__)
 
 # Assuming this script is in taipy-doc/tools
@@ -14,34 +16,15 @@ TOP_DIR = os.path.dirname(ROOT_DIR)
 # Where all the code from all directories/repositories is copied
 DEST_DIR_NAME = "taipy"
 
-REPOS = ["config", "core", "gui", "getting-started", "rest" ]
-PRIVATE_REPOS = [ "auth", "enterprise" ]
+REPOS = ["config", "core", "gui", "getting-started", "rest"]
+PRIVATE_REPOS = ["auth", "enterprise"]
 
 OPTIONAL_PACKAGES = {
     "gui": ["pyarrow", "pyngrok", "python-magic", "python-magic-bin"]
 }
-class GitContext(object):
-    """Temporarily force GIT_TERMINAL_PROMPT to 0 for private repositories."""
-    V="GIT_TERMINAL_PROMPT"
-    def __init__(self, repo: str):
-        self.value = None
-        self.save_value = repo in PRIVATE_REPOS
-
-    def __enter__(self):
-        if self.save_value:
-            self.value = os.environ.get(__class__.V, None)
-            os.environ[__class__.V] = "0"
-
-    def __exit__(self, exception_type, exception_value, traceback):
-        if self.save_value:
-            if self.value:
-                os.environ[__class__.V] = self.value
-            else:
-                del os.environ[__class__.V]
-
 
 p = REPOS[1]
-parser = argparse.ArgumentParser(prog="python "+SCRIPT_NAME,
+parser = argparse.ArgumentParser(prog="python " + SCRIPT_NAME,
                                  formatter_class=argparse.RawTextHelpFormatter,
                                  description="""\
 Locally copies the source code of Taipy from different places
@@ -61,8 +44,8 @@ only to that repository. If that prefix is not present, the version
 applies to all repositories.
 Valid repository names are:
 """
-+ "\n".join(["  - " + p for p in REPOS ])
-+ """
+                         + "\n".join(["  - " + p for p in REPOS])
+                         + """
 
 Note that each <version> arguments may overwrite the previous ones.
 i.e.:
@@ -91,13 +74,15 @@ with open(mkdocs_yml_template_path, "r") as mkdocs_file:
     mkdocs_yml_template = mkdocs_file.read()
 if mkdocs_yml_template is None:
     raise IOError(f"Couldn't open '{mkdocs_yml_template_path}'")
-mkdocs_yml_version = re.search(r"site_url:\s*https://docs\.taipy\.io/en/(develop|release-(\d\.\d))$", mkdocs_yml_template, re.MULTILINE)
+mkdocs_yml_version = re.search(r"site_url:\s*https://docs\.taipy\.io/en/(develop|release-(\d\.\d))$",
+                               mkdocs_yml_template, re.MULTILINE)
 if mkdocs_yml_version is None:
-    raise ValueError(f"'{mkdocs_yml_template_path}' has an invalid site_url value. This must be 'develop' or 'release-[M].[m]'.")
+    raise ValueError(
+        f"'{mkdocs_yml_template_path}' has an invalid site_url value. This must be 'develop' or 'release-[M].[m]'.")
 mkdocs_yml_version = mkdocs_yml_version.group(2) if mkdocs_yml_version.group(2) else mkdocs_yml_version.group(1)
 
 # Gather version information for each repository
-repo_defs = { repo: { "version" : "local", "tag": None } for repo in REPOS+PRIVATE_REPOS }
+repo_defs = {repo: {"version": "local", "tag": None} for repo in REPOS + PRIVATE_REPOS}
 CATCH_VERSION_RE = re.compile(r"(^\d+\.\d+?)(?:(\.\d+)(\..*)?)?|develop|local$")
 for version in args.version:
     repo = None
@@ -110,7 +95,7 @@ for version in args.version:
             repo = version[:colon]
             if repo.startswith("taipy-"):
                 repo = repo[6:]
-            version = version[colon+1:]
+            version = version[colon + 1:]
         except ValueError as e:
             pass
         version_match = CATCH_VERSION_RE.fullmatch(version)
@@ -134,20 +119,20 @@ for version in args.version:
             repo_defs[repo]["tag"] = tag
 
 # Test git, if needed
-git_command="git"
+git_command = "git"
 if args.no_pull and all(v["version"] == "local" for v in repo_defs.values()):
-    git_command=None
+    git_command = None
 else:
     git_path = shutil.which(git_command)
     if git_path is None or subprocess.run(f"{git_path} --version", shell=True, capture_output=True) is None:
         raise IOError(f"Couldn't find command \"{git_command}\"")
-    git_command=git_path
+    git_command = git_path
 
 # Check that directory, branches and tags exist for each repository
 github_token = os.environ.get("GITHUB_TOKEN", "")
 if github_token:
     github_token += "@"
-github_root=f"https://{github_token}github.com/Avaiga/taipy-"
+github_root = f"https://{github_token}github.com/Avaiga/taipy-"
 for repo in repo_defs.keys():
     version = repo_defs[repo]["version"]
     if version == "local":
@@ -159,8 +144,9 @@ for repo in repo_defs.keys():
             else:
                 raise IOError(f"Repository 'taipy-{repo}' must be cloned in \"{TOP_DIR}\".")
     elif version == "develop":
-        with GitContext(repo):
-            cmd = subprocess.run(f"{git_path} ls-remote -q -h {github_root}{repo}.git", shell=True, capture_output=True, text=True)
+        with GitContext(repo, PRIVATE_REPOS):
+            cmd = subprocess.run(f"{git_path} ls-remote -q -h {github_root}{repo}.git", shell=True, capture_output=True,
+                                 text=True)
             if cmd.returncode:
                 if repo in PRIVATE_REPOS:
                     repo_defs[repo]["skip"] = True
@@ -168,8 +154,9 @@ for repo in repo_defs.keys():
                 else:
                     raise SystemError(f"Problem with {repo}: {cmd.stdout}")
     else:
-        with GitContext(repo):
-            cmd = subprocess.run(f"{git_path} ls-remote --exit-code --heads {github_root}{repo}.git", shell=True, capture_output=True, text=True)
+        with GitContext(repo, PRIVATE_REPOS):
+            cmd = subprocess.run(f"{git_path} ls-remote --exit-code --heads {github_root}{repo}.git", shell=True,
+                                 capture_output=True, text=True)
             if cmd.returncode:
                 if repo in PRIVATE_REPOS:
                     repo_defs[repo]["skip"] = True
@@ -180,7 +167,8 @@ for repo in repo_defs.keys():
                 raise ValueError(f"No branch 'release/{version}' in repository 'taipy-{repo}'.")
             tag = repo_defs[repo]["tag"]
             if tag:
-                cmd = subprocess.run(f"{git_path} ls-remote -t --refs {github_root}{repo}.git", shell=True, capture_output=True, text=True)
+                cmd = subprocess.run(f"{git_path} ls-remote -t --refs {github_root}{repo}.git", shell=True,
+                                     capture_output=True, text=True)
                 if not f"refs/tags/{tag}\n" in cmd.stdout:
                     raise ValueError(f"No tag '{tag}' in repository 'taipy-{repo}'.")
 
@@ -198,9 +186,11 @@ if args.check:
 
 DEST_DIR = os.path.join(ROOT_DIR, DEST_DIR_NAME)
 
+
 def safe_rmtree(dir: str):
     if os.path.isdir(dir):
         shutil.rmtree(dir)
+
 
 # Remove target 'taipy' directory
 safe_rmtree(DEST_DIR)
@@ -211,12 +201,13 @@ safe_rmtree(os.path.join(TOOLS_PATH, DEST_DIR_NAME))
 pipfile_packages = {}
 PIPFILE_PACKAGE_RE = re.compile(r"(.*?)\s?=\s?(.*)")
 
+
 # Fetch files
 def move_files(repo: str, src_path: str):
     # Read Pipfile dependency packages
     pipfile_path = os.path.join(src_path, "Pipfile")
     if os.path.isfile(pipfile_path):
-        reading_packages= False
+        reading_packages = False
         repo_optional_packages = OPTIONAL_PACKAGES.get(repo, None)
         with open(pipfile_path, "r") as pipfile:
             while True:
@@ -237,23 +228,26 @@ def move_files(repo: str, src_path: str):
                                 if version in versions:
                                     versions[version].append(repo)
                                 else:
-                                    versions[version] = [ repo ]
+                                    versions[version] = [repo]
                             else:
-                                pipfile_packages[package] = { version: [ repo ] }
+                                pipfile_packages[package] = {version: [repo]}
     # Copy relevant files for Reference Manual generation
     if repo == "getting-started":
         gs_dir = os.path.join(ROOT_DIR, "docs", "getting_started")
         safe_rmtree(os.path.join(gs_dir, "src"))
-        for step_dir in [step_dir for step_dir in os.listdir(gs_dir) if step_dir.startswith("step_") and os.path.isdir(os.path.join(gs_dir, step_dir))]:
+        for step_dir in [step_dir for step_dir in os.listdir(gs_dir) if
+                         step_dir.startswith("step_") and os.path.isdir(os.path.join(gs_dir, step_dir))]:
             safe_rmtree(os.path.join(gs_dir, step_dir))
-        for step_dir in [step_dir for step_dir in os.listdir(src_path) if step_dir.startswith("step_") and os.path.isdir(os.path.join(src_path, step_dir))]:
+        for step_dir in [step_dir for step_dir in os.listdir(src_path) if
+                         step_dir.startswith("step_") and os.path.isdir(os.path.join(src_path, step_dir))]:
             shutil.copytree(os.path.join(src_path, step_dir), os.path.join(gs_dir, step_dir))
         safe_rmtree(os.path.join(gs_dir, "src"))
         shutil.copytree(os.path.join(src_path, "src"), os.path.join(gs_dir, "src"))
         shutil.copy(os.path.join(src_path, "index.md"), os.path.join(gs_dir, "index.md"))
         saved_dir = os.getcwd()
         os.chdir(os.path.join(ROOT_DIR, "docs", "getting_started"))
-        subprocess.run(f"python {os.path.join(src_path), 'generate_notebook.py'}", shell=True, capture_output=True, text=True)
+        subprocess.run(f"python {os.path.join(src_path), 'generate_notebook.py'}", shell=True, capture_output=True,
+                       text=True)
         os.chdir(saved_dir)
     else:
         tmp_dir = os.path.join(ROOT_DIR, f"{repo}.tmp")
@@ -267,6 +261,7 @@ def move_files(repo: str, src_path: str):
             def keep_py_files(dir, filenames):
                 return [name for name in filenames if not os.path.isdir(os.path.join(dir, name)) and not (
                     name.endswith('.py') or name.endswith('.pyi') or name.endswith('.json'))]
+
             shutil.copytree(os.path.join(src_path, "src", "taipy"), tmp_dir, ignore=keep_py_files)
             entries = os.listdir(tmp_dir)
             for entry in entries:
@@ -274,7 +269,7 @@ def move_files(repo: str, src_path: str):
                     if entry != "__pycache__":
                         shutil.move(os.path.join(tmp_dir, entry), DEST_DIR)
                 except shutil.Error as e:
-                    if entry != "__init__.py": # Top-most __entry__.py gets overwritten over and over
+                    if entry != "__init__.py":  # Top-most __entry__.py gets overwritten over and over
                         raise e
             if gui_dir:
                 os.mkdir(gui_dir)
@@ -287,6 +282,7 @@ def move_files(repo: str, src_path: str):
                     shutil.move(os.path.join(ROOT_DIR, "gui_node_modules"), os.path.join(gui_dir, "node_modules"))
         finally:
             shutil.rmtree(tmp_dir)
+
 
 for repo in repo_defs.keys():
     if repo_defs[repo].get("skip", False):
@@ -304,7 +300,8 @@ for repo in repo_defs.keys():
         if version != "develop":
             version = f"release/{version}"
         print("    Cloning...", flush=True)
-        subprocess.run(f"{git_path} clone -b {version} {github_root}{repo}.git {clone_dir}", shell=True, capture_output=True, text=True)
+        subprocess.run(f"{git_path} clone -b {version} {github_root}{repo}.git {clone_dir}", shell=True,
+                       capture_output=True, text=True)
         tag = repo_defs[repo]['tag']
         if tag:
             # Checkout tag version
@@ -313,15 +310,19 @@ for repo in repo_defs.keys():
             subprocess.run(f"{git_path} checkout {tag}", shell=True, capture_output=True, text=True)
             os.chdir(saved_dir)
         move_files(repo, clone_dir)
+
+
         # For some reason, we need to protect the removal of the clone dirs...
         # See https://stackoverflow.com/questions/1213706/what-user-do-python-scripts-run-as-in-windows
         def handleRemoveReadonly(func, path, exc):
             import errno, stat
             if func == os.unlink and exc[1].errno == errno.EACCES:
-                os.chmod(path, stat.S_IRWXU| stat.S_IRWXG| stat.S_IRWXO) # 0777
+                os.chmod(path, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)  # 0777
                 func(path)
             else:
                 raise
+
+
         shutil.rmtree(clone_dir, onerror=handleRemoveReadonly)
 
 # Generate Pipfile from package dependencies from all repositories
@@ -358,7 +359,8 @@ if pipfile_path:
                         if not package in legacy_pipfile_packages:
                             pipfile_changes.append(f"Package '{package}' added ({version})")
                         elif legacy_pipfile_packages[package] != version:
-                            pipfile_changes.append(f"Package '{package}' version changed from {legacy_pipfile_packages[package]} to {version}")
+                            pipfile_changes.append(
+                                f"Package '{package}' version changed from {legacy_pipfile_packages[package]} to {version}")
                             del legacy_pipfile_packages[package]
                         else:
                             del legacy_pipfile_packages[package]
