@@ -11,13 +11,13 @@ from pathlib import Path
 
 class GettingStartedStep(SetupStep):
     def __init__(self):
-        self.MAPPING_PAGE_PATTERN = [
-            ("getting-started", r"\[GETTING_STARTED_CONTENT\]"),
-            ("getting-started-gui", r"\[GETTING_STARTED_GUI_CONTENT\]"),
-            ("getting-started-core", r"\[GETTING_STARTED_CORE_CONTENT\]")
-        ]
         # {page: (pattern_to_replace, content)}
-        self.content = {page_pattern[0]: (page_pattern[1], "") for page_pattern in self.MAPPING_PAGE_PATTERN}
+        self.DEFAULT_CONTENT = {
+            "getting-started": (r"\[GETTING_STARTED_CONTENT\]", ""),
+            "getting-started-gui": (r"\[GETTING_STARTED_GUI_CONTENT\]", ""),
+            "getting-started-core": (r"\[GETTING_STARTED_CORE_CONTENT\]", "")
+        }
+        self.content = dict()
 
     def get_id(self) -> str:
         return "getting_started"
@@ -26,15 +26,16 @@ class GettingStartedStep(SetupStep):
         return "Generating the Getting Started"
 
     def setup(self, setup: Setup) -> None:
-        for page in self.MAPPING_PAGE_PATTERN:
+        for page in self.DEFAULT_CONTENT.keys():
             self.get_content_for_page(page)
 
     def get_content_for_page(self, page):
-        step_folders = glob.glob("docs/getting_started/" + page[0] + "/step_*")
+        step_folders = glob.glob("docs/getting_started/" + page + "/step_*")
         step_folders.sort()
         step_folders = map(lambda s: s[len('docs/getting_started/'):], step_folders)
         step_folders = map(self._format_getting_started_navigation, step_folders)
-        self.content[page[0]] = (page[1], "\n".join(step_folders) + '\n')
+
+        self.content[page] = (self.DEFAULT_CONTENT[page][0], "\n".join(step_folders) + '\n')
 
     def _format_getting_started_navigation(self, filepath: str) -> str:
         readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
@@ -44,6 +45,4 @@ class GettingStartedStep(SetupStep):
 
     def exit(self, setup: Setup):
         for page_key in self.content.keys():
-            setup.update_mkdocs_yaml_template(
-                r"^\s*" + self.content[page_key][0] + r"\s*\n", self.content[page_key][1]
-            )
+            setup.update_mkdocs_yaml_template(r"^\s*" + self.content[page_key][0] + r"\s*\n", self.content[page_key][1])
