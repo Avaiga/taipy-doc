@@ -11,7 +11,10 @@ from pathlib import Path
 
 class GettingStartedStep(SetupStep):
     def __init__(self):
-        self.navigation = None
+        self.navigation = {}
+        self.GETTING_STARTED = "getting-started"
+        self.GUI = "getting-started-gui"
+        self.CORE = "getting-started-core"
 
     def get_id(self) -> str:
         return "getting_started"
@@ -20,21 +23,33 @@ class GettingStartedStep(SetupStep):
         return "Generating the Getting Started"
 
     def setup(self, setup: Setup) -> None:
-        def format_getting_started_navigation(filepath: str) -> str:
-            readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
-            readme_content = Path('docs', readme_path).read_text().split('\n')
-            step_name = next(filter(lambda l: "# Step" in l, readme_content))[len("# "):]
-            return f"    - '{step_name}': '{readme_path}'"
+        self.setup_repo(self.GUI)
+        self.setup_repo(self.CORE)
+        self.setup_repo(self.GETTING_STARTED)
 
-        step_folders = glob.glob("docs/getting_started/step_*")
+    def setup_repo(self, repo):
+        step_folders = glob.glob("docs/getting_started/" + repo + "/step_*")
         step_folders.sort()
-        step_folders = map(lambda s: s[len('docs/'):], step_folders)
-        step_folders = map(format_getting_started_navigation, step_folders)
-        self.navigation = "\n".join(step_folders) + '\n'
+        step_folders = map(lambda s: s[len('docs/getting_started/'):], step_folders)
+        step_folders = map(self._format_getting_started_navigation, step_folders)
+        self.navigation[repo] = "\n".join(step_folders) + '\n'
 
+    def _format_getting_started_navigation(self,  filepath: str) -> str:
+        readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
+        readme_content = Path('docs/', 'getting_started/', readme_path).read_text().split('\n')
+        step_name = next(filter(lambda l: "# Step" in l, readme_content))[len("# "):]
+        return f"        - '{step_name}': '{readme_path}'"
 
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(
             r"^\s*\[GETTING_STARTED_CONTENT\]\s*\n",
-            self.navigation if self.navigation else ""
+            self.navigation[self.GETTING_STARTED] if self.navigation.get(self.GETTING_STARTED) else ""
+        )
+        setup.update_mkdocs_yaml_template(
+            r"^\s*\[GETTING_STARTED_GUI_CONTENT\]\s*\n",
+            self.navigation[self.GUI] if self.navigation.get(self.GUI) else ""
+        )
+        setup.update_mkdocs_yaml_template(
+            r"^\s*\[GETTING_STARTED_CORE_CONTENT\]\s*\n",
+            self.navigation[self.CORE] if self.navigation.get(self.CORE) else ""
         )

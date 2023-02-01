@@ -10,7 +10,15 @@ nav:
     - Installation: installation.md
   - 'Getting started':
     - getting_started/index.md
-  [GETTING_STARTED_CONTENT]
+    - 'Getting started with gui':
+        - getting_started/getting-started-gui/index.md
+    [GETTING_STARTED_GUI_CONTENT]
+    - 'Getting started with core':
+        - getting_started/getting-started-core/index.md
+    [GETTING_STARTED_CORE_CONTENT]
+    - 'Getting started with taipy':
+        - getting_started/getting-started/index.md
+    [GETTING_STARTED_CONTENT]
   - 'User Manual':
     - "About Taipy's User Manual": 'manuals/about.md'
     - Taipy GUI:
