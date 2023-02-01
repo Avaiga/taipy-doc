@@ -96,9 +96,9 @@ let you choose one of two options:
 
 - "Reveal file in explorer view": Visual Studio Code will select and focus on the file
     item in the project's files in the Explorer pane.
-- "Show view": creates a view on the configuration file that represents the entire content
-    of the configuration file as a [global graph](#the-graph-view), so you can see
-    all the configuration elements and how they relate to each other.
+- "Show view": creates a view from the configuration file that represents all the
+    configuration elements as a [global graph](#the-graph-view), so you can see
+    all the elements and how they relate to each other.
 
 ## Configuring Data Nodes
 
