@@ -11,10 +11,13 @@ from pathlib import Path
 
 class GettingStartedStep(SetupStep):
     def __init__(self):
-        self.navigation = {}
-        self.GETTING_STARTED = "getting-started"
-        self.GUI = "getting-started-gui"
-        self.CORE = "getting-started-core"
+        self.MAPPING_PAGE_PATTERN = [
+            ("getting-started", r"\[GETTING_STARTED_CONTENT\]"),
+            ("getting-started-gui", r"\[GETTING_STARTED_GUI_CONTENT\]"),
+            ("getting-started-core", r"\[GETTING_STARTED_CORE_CONTENT\]")
+        ]
+        # {page: (pattern_to_replace, content)}
+        self.content = {page_pattern[0]: (page_pattern[1], "") for page_pattern in self.MAPPING_PAGE_PATTERN}
 
     def get_id(self) -> str:
         return "getting_started"
@@ -23,33 +26,24 @@ class GettingStartedStep(SetupStep):
         return "Generating the Getting Started"
 
     def setup(self, setup: Setup) -> None:
-        self.setup_repo(self.GUI)
-        self.setup_repo(self.CORE)
-        self.setup_repo(self.GETTING_STARTED)
+        for page in self.MAPPING_PAGE_PATTERN:
+            self.get_content_for_page(page)
 
-    def setup_repo(self, repo):
-        step_folders = glob.glob("docs/getting_started/" + repo + "/step_*")
+    def get_content_for_page(self, page):
+        step_folders = glob.glob("docs/getting_started/" + page[0] + "/step_*")
         step_folders.sort()
         step_folders = map(lambda s: s[len('docs/getting_started/'):], step_folders)
         step_folders = map(self._format_getting_started_navigation, step_folders)
-        self.navigation[repo] = "\n".join(step_folders) + '\n'
+        self.content[page[0]] = (page[1], "\n".join(step_folders) + '\n')
 
-    def _format_getting_started_navigation(self,  filepath: str) -> str:
+    def _format_getting_started_navigation(self, filepath: str) -> str:
         readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
         readme_content = Path('docs/', 'getting_started/', readme_path).read_text().split('\n')
         step_name = next(filter(lambda l: "# Step" in l, readme_content))[len("# "):]
         return f"        - '{step_name}': '{readme_path}'"
 
     def exit(self, setup: Setup):
-        setup.update_mkdocs_yaml_template(
-            r"^\s*\[GETTING_STARTED_CONTENT\]\s*\n",
-            self.navigation[self.GETTING_STARTED] if self.navigation.get(self.GETTING_STARTED) else ""
-        )
-        setup.update_mkdocs_yaml_template(
-            r"^\s*\[GETTING_STARTED_GUI_CONTENT\]\s*\n",
-            self.navigation[self.GUI] if self.navigation.get(self.GUI) else ""
-        )
-        setup.update_mkdocs_yaml_template(
-            r"^\s*\[GETTING_STARTED_CORE_CONTENT\]\s*\n",
-            self.navigation[self.CORE] if self.navigation.get(self.CORE) else ""
-        )
+        for page_key in self.content.keys():
+            setup.update_mkdocs_yaml_template(
+                r"^\s*" + self.content[page_key][0] + r"\s*\n", self.content[page_key][1]
+            )
