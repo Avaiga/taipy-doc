@@ -7,10 +7,10 @@ Welcome to the **Getting Started** guide for Taipy. Taipy is composed of two com
 - **Scenario Management** (Taipy Core): implements a modern backend for any data-driven application based on your business case.
 Three Getting Started are available. 
 
-Three **'Getting Started'** are available to introduce these two components. These 'Getting Started' are all **independant** and can be without any previous knowledge of Taipy.
+Three **'Getting Started'** are available to introduce these two components. These 'Getting Started' are all **independent** and can be followed without any previous knowledge of Taipy.
  
 - [Getting Started with Taipy GUI](./getting-started-gui/index.md). It explains the basics of Taipy GUI. A multi-page NLP (Natural Language Processing) application is created along the way.
 
 - [Getting Started with Taipy Core](./getting-started-core/index.md). It shows how to configure and execute code with Taipy Core and all the useful features included.
 
-- [Getting Started with Core & GUI](./getting-started/index.md).This Getting Started has similarities with the other two. It is not required to have done the previous ones. However, it will use the power of both components to create a full Machine Learning application with just a few steps.
+- [Getting Started with Core & GUI](./getting-started/index.md). This Getting Started has similarities with the other two. It is optional to have done the previous ones. It will use the power of both components to create a full Machine Learning application with just a few steps.
