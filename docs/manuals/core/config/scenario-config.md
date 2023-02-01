@@ -2,7 +2,7 @@ A scenario configuration is necessary to instantiate a [Scenario](../concepts/sc
 `ScenarioConfig^`, you can use the `Config.configure_scenario()^` method with the following parameters:
 
 - _**id**_: The id of a new scenario configuration to be created. This id is **mandatory** and must
-  be a unique and valid Python variable name.
+  be a unique and valid Python identifier.
 - _**pipelines**_: The list of pipeline configs.
 - _**frequency**_: The recurrence of the scenarios instantiated from this configuration. The scenarios
   are attached to the proper cycles based on this frequency.
