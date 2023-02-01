@@ -27,19 +27,19 @@ class GettingStartedStep(SetupStep):
 
     def setup(self, setup: Setup) -> None:
         for page in self.DEFAULT_CONTENT.keys():
-            self.get_content_for_page(page)
+            self.set_content_for_page(page)
 
-    def get_content_for_page(self, page):
+    def set_content_for_page(self, page):
         step_folders = glob.glob("docs/getting_started/" + page + "/step_*")
         step_folders.sort()
-        step_folders = map(lambda s: s[len('docs/getting_started/'):], step_folders)
-        step_folders = map(self._format_getting_started_navigation, step_folders)
+        step_folders = map(lambda s: s[len('docs/'):], step_folders)
+        step_folders = map(self._format_page_content, step_folders)
 
         self.content[page] = (self.DEFAULT_CONTENT[page][0], "\n".join(step_folders) + '\n')
 
-    def _format_getting_started_navigation(self, filepath: str) -> str:
+    def _format_page_content(self, filepath: str) -> str:
         readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
-        readme_content = Path('docs/', 'getting_started/', readme_path).read_text().split('\n')
+        readme_content = Path('docs/', readme_path).read_text().split('\n')
         step_name = next(filter(lambda l: "# Step" in l, readme_content))[len("# "):]
         return f"        - '{step_name}': '{readme_path}'"
 

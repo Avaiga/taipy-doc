@@ -20,10 +20,6 @@ OPTIONAL_PACKAGES = {
     "gui": ["pyarrow", "pyngrok", "python-magic", "python-magic-bin"]
 }
 
-#####################
-#        RUN        #
-#####################
-
 args = CLI(os.path.basename(__file__), REPOS).get_args()
 
 # Read version from mkdocs.yml template
@@ -179,11 +175,10 @@ def move_files(repo: str, src_path: str):
                                     versions[version] = [repo]
                             else:
                                 pipfile_packages[package] = {version: [repo]}
-    # Copy relevant files for Reference Manual generation
+    # Copy relevant files for doc generation
     if repo.startswith("getting-started"):
-
         gs_dir = os.path.join(ROOT_DIR, "docs", "getting_started", repo)
-        safe_rmtree(os.path.join(gs_dir, "src"))
+        # safe_rmtree(os.path.join(gs_dir, "src"))
         for step_dir in [step_dir for step_dir in os.listdir(gs_dir) if
                          step_dir.startswith("step_") and os.path.isdir(os.path.join(gs_dir, step_dir))]:
             safe_rmtree(os.path.join(gs_dir, step_dir))
@@ -194,8 +189,10 @@ def move_files(repo: str, src_path: str):
         shutil.copytree(os.path.join(src_path, "src"), os.path.join(gs_dir, "src"))
         shutil.copy(os.path.join(src_path, "index.md"), os.path.join(gs_dir, "index.md"))
         saved_dir = os.getcwd()
-        os.chdir(os.path.join(ROOT_DIR, "docs", "getting_started"))
-        subprocess.run(f"python {os.path.join(src_path), 'generate_notebook.py'}", shell=True, capture_output=True,
+        os.chdir(os.path.join(ROOT_DIR, "docs", "getting_started", repo))
+        subprocess.run(f"python {os.path.join(src_path, 'generate_notebook.py')}",
+                       shell=True,
+                       capture_output=True,
                        text=True)
         os.chdir(saved_dir)
     else:
