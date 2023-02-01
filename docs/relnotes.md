@@ -7,7 +7,12 @@ hide:
 
 This is the list of changes to Taipy releases as they were published.
 
-## Taipy Studio: 1.0 (In progress)
+!!! note "Migration"
+
+    Please refer to the [Migration page](./migration.md) for potential migration paths for your applications
+    implemented on legacy Taipy versions.
+
+## Taipy Studio: 1.0
 
 The first release of the
 [`Taipy Studio`](https://marketplace.visualstudio.com/items?itemName=Taipy.taipy-studio)
@@ -26,7 +31,7 @@ It mainly provides:
 You can refer to the [Taipy Studio User Manual](manuals/studio/index.md) section for more
 information.
 
-## Community edition: 2.1 (In progress)
+## Community edition: 2.1
 
 Published on 2023-01.
 
@@ -36,6 +41,8 @@ Published on 2023-01.
 [`taipy-core` 2.1](https://pypi.org/project/taipy-core/2.1.0/) and
 [`taipy-rest` 2.1](https://pypi.org/project/taipy-rest/2.1.0/) packages.
 
+Please refer to the [Migration page](./migration.md#from-2.0-to-2.1) for
+details on how to migrate from version older than 2.1.
 
 ### New Features
 
@@ -76,10 +83,10 @@ Published on 2023-01.
 - New version management system for Taipy applications. Users can now run an application in development
   mode, save a version of the application as an experiment version, re-run older experiment versions,
   and push a version to production.<br/>
-  See the [Version management system](../manuals/core/versioning) documentation page for more details.
-- New data node named [MongoCollectionDataNode](../manuals/core/config/data-node-config/#mongo-collection).
+  See the [Version management system](./manuals/core/versioning/index.md) documentation page for more details.
+- New data node named [MongoCollectionDataNode](./manuals/core/config/data-node-config.md#mongo-collection).
   It represents the data from a MongoDB collection.
-- New data node named [ParquetDataNode](../manuals/core/config/data-node-config/#parquet) It represents
+- New data node named [ParquetDataNode](./manuals/core/config/data-node-config.md#parquet). It represents
   tabular data stored in the Apache Parquet format.
 - Added support for [Modin](https://modin.readthedocs.io/en/stable/) as a new exposed type.
 - Running the Core service is required to execute jobs. See `Core().run()^` method.
@@ -90,7 +97,8 @@ Published on 2023-01.
   _last_edit_date_ of the data node.
 - New data node property _is_up_to_date_ equals to `True` if the data node has not expired (refer to
   _expiration_date_ attribute). `False` otherwise.
-- TODO SQL repository available
+- The **sql** _repository_type_ is now available on community edition to store Core entities in an
+  SQL database. See [SQL storage section](./manuals/core/config/global-config.md#sql-storage-for-taipy-entities).
 
 
 ### Improvements and changes

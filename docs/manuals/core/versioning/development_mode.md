@@ -1,18 +1,9 @@
-During a development phase, when creating a new Taipy Core application, we usually implement
-the various functionalities in iterative development steps by alternating an implementation
-phase with a test phase.
-Basically, we code a first version of the application (the configuration particularly) and we
-run it for test purpose. Then we re-write the code to improve it creating a new version, and
-run it again. And so on and so forth.
+Developing an application in Taipy often requires changing the configuration multiple times.
+Data from a previous run are incompatible with the configuration changes. They should then be
+deleted to try the new configuration version.
 
-The problem is that when we run the application, we do create some entities (data nodes,
-tasks, scenarios, etc.). When re-running the application, the old entities instantiated with
-an old version of the configuration are most probably not compatible with the new configuration.
-During this development phase, between two runs of the application, we typically don't need
-to keep the data. On the contrary, we usually prefer to start the application on a clean state.
-
-In _development_ mode, Taipy deletes old entities attached to a previous development version
-before running the application. This ensures a fresh start for the application. When running
+In _development_ mode, Taipy automatically deletes old entities attached to a previous development
+version before running the application. This ensures a fresh start for the application. When running
 an application in _development mode_, a development version is created.
 
 In the following, we consider the basic Taipy Core application `main.py`:
