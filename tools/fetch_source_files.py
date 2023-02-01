@@ -5,6 +5,7 @@ import shutil
 import subprocess
 
 from _fetch_source_file.git_context import GitContext
+from _fetch_source_file.cli import CLI
 
 SCRIPT_NAME = os.path.basename(__file__)
 
@@ -23,49 +24,55 @@ OPTIONAL_PACKAGES = {
     "gui": ["pyarrow", "pyngrok", "python-magic", "python-magic-bin"]
 }
 
-p = REPOS[1]
-parser = argparse.ArgumentParser(prog="python " + SCRIPT_NAME,
-                                 formatter_class=argparse.RawTextHelpFormatter,
-                                 description="""\
-Locally copies the source code of Taipy from different places
-in order to allow the generation of the documentation set.
-After this script has run, you can run 'mkdocs serve'.
-""")
-parser.add_argument("-n", "--no_pull", action='store_true',
-                    help="Prevents the source repository update (local only).")
-parser.add_argument("-c", "--check", action='store_true',
-                    help="Only checks if the fetch can be performed then exits.")
-parser.add_argument('version', nargs='*',
-                    help="""\
-The version for the whole doc set, or specific repositories.
-This can be 'local', 'develop' or a valid version number.
-It can be prefixed with '<repository>:', then the version applies
-only to that repository. If that prefix is not present, the version
-applies to all repositories.
-Valid repository names are:
-"""
-                         + "\n".join(["  - " + p for p in REPOS])
-                         + """
+args = CLI(SCRIPT_NAME, REPOS).get_args()
 
-Note that each <version> arguments may overwrite the previous ones.
-i.e.:
-  '2.0 """ + p + """:1.0' will set all versions to 2.0 except for
-    the '""" + p + """' repository.
-  '""" + p + """:1.0 2.0' will set version 2.0 for all repositories.
-If <version> is 'local', the code is retrieved from a directory called
-'taipy-<repository-name>', above the current directory.
-If <version> is 'develop', the develop branch for the indicated repository
-is used.
-If <version> is '<Major>.<Minor>', the corresponding branch is used.
-If <version> contains an additional '.<Patch>[.<More>]' fragment, then the
-corresponding tag is extracted from the '<Major>.<Minor>' branch for that
-repository.
-If any version is not 'local', then the 'git' command must be accessible.
+# p = REPOS[1]
+# parser = argparse.ArgumentParser(prog="python " + SCRIPT_NAME,
+#                                  formatter_class=argparse.RawTextHelpFormatter,
+#                                  description="""\
+# Locally copies the source code of Taipy from different places
+# in order to allow the generation of the documentation set.
+# After this script has run, you can run 'mkdocs serve'.
+# """)
+# parser.add_argument("-n", "--no_pull", action='store_true',
+#                     help="Prevents the source repository update (local only).")
+# parser.add_argument("-c", "--check", action='store_true',
+#                     help="Only checks if the fetch can be performed then exits.")
+# parser.add_argument('version', nargs='*',
+#                     help="""\
+# The version for the whole doc set, or specific repositories.
+# This can be 'local', 'develop' or a valid version number.
+# It can be prefixed with '<repository>:', then the version applies
+# only to that repository. If that prefix is not present, the version
+# applies to all repositories.
+# Valid repository names are:
+# """
+#                          + "\n".join(["  - " + p for p in REPOS])
+#                          + """
+#
+# Note that each <version> arguments may overwrite the previous ones.
+# i.e.:
+#   '2.0 """ + p + """:1.0' will set all versions to 2.0 except for
+#     the '""" + p + """' repository.
+#   '""" + p + """:1.0 2.0' will set version 2.0 for all repositories.
+# If <version> is 'local', the code is retrieved from a directory called
+# 'taipy-<repository-name>', above the current directory.
+# If <version> is 'develop', the develop branch for the indicated repository
+# is used.
+# If <version> is '<Major>.<Minor>', the corresponding branch is used.
+# If <version> contains an additional '.<Patch>[.<More>]' fragment, then the
+# corresponding tag is extracted from the '<Major>.<Minor>' branch for that
+# repository.
+# If any version is not 'local', then the 'git' command must be accessible.
+#
+# The default behaviour is to use a local version for all repositories.
+# """)
 
-The default behaviour is to use a local version for all repositories.
-""")
+# args = parser.parse_args()
 
-args = parser.parse_args()
+
+#################################################"
+
 
 # Read version from mkdocs.yml template
 mkdocs_yml_template = None
