@@ -9,7 +9,7 @@ nav:
     - index.md
     - Installation: installation.md
   - 'Getting started':
-    - getting_started/index.md
+    - 'Getting started': 'getting_started/index.md'
     - 'Getting started with gui':
         - getting_started/getting-started-gui/index.md
     [GETTING_STARTED_GUI_CONTENT]
