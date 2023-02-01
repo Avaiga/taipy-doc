@@ -5,7 +5,6 @@ import subprocess
 
 from _fetch_source_file import CLI, GitContext, read_doc_version_from_mkdocs_yml_template_file
 
-
 # Assuming this script is in taipy-doc/tools
 TOOLS_PATH = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(TOOLS_PATH)
@@ -14,18 +13,21 @@ TOP_DIR = os.path.dirname(ROOT_DIR)
 # Where all the code from all directories/repositories is copied
 DEST_DIR_NAME = "taipy"
 
-REPOS = ["config", "core", "gui", "getting-started", "rest"]
+REPOS = ["config", "core", "gui", "getting-started", "getting-started-core", "getting-started-gui", "rest"]
 PRIVATE_REPOS = ["auth", "enterprise"]
 
 OPTIONAL_PACKAGES = {
     "gui": ["pyarrow", "pyngrok", "python-magic", "python-magic-bin"]
 }
 
+#####################
+#        RUN        #
+#####################
+
 args = CLI(os.path.basename(__file__), REPOS).get_args()
 
 # Read version from mkdocs.yml template
 mkdocs_yml_version = read_doc_version_from_mkdocs_yml_template_file(ROOT_DIR)
-
 
 # Gather version information for each repository
 repo_defs = {repo: {"version": "local", "tag": None} for repo in REPOS + PRIVATE_REPOS}
@@ -178,8 +180,9 @@ def move_files(repo: str, src_path: str):
                             else:
                                 pipfile_packages[package] = {version: [repo]}
     # Copy relevant files for Reference Manual generation
-    if repo == "getting-started":
-        gs_dir = os.path.join(ROOT_DIR, "docs", "getting_started")
+    if repo.startswith("getting-started"):
+
+        gs_dir = os.path.join(ROOT_DIR, "docs", "getting_started", repo)
         safe_rmtree(os.path.join(gs_dir, "src"))
         for step_dir in [step_dir for step_dir in os.listdir(gs_dir) if
                          step_dir.startswith("step_") and os.path.isdir(os.path.join(gs_dir, step_dir))]:
@@ -206,7 +209,7 @@ def move_files(repo: str, src_path: str):
         try:
             def keep_py_files(dir, filenames):
                 return [name for name in filenames if not os.path.isdir(os.path.join(dir, name)) and not (
-                    name.endswith('.py') or name.endswith('.pyi') or name.endswith('.json'))]
+                    name.endswith('.py') or name.endswith('.pyi') or name.endswith('.json') or name.endswith('.ipynb'))]
 
             shutil.copytree(os.path.join(src_path, "src", "taipy"), tmp_dir, ignore=keep_py_files)
             entries = os.listdir(tmp_dir)
