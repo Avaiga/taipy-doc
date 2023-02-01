@@ -33,7 +33,6 @@ class GettingStartedStep(SetupStep):
     def set_content_for_page(self, page):
         step_folders = glob.glob("docs/getting_started/" + page + "/step_*")
         step_folders.sort()
-        print(len(step_folders))
         step_folders = map(lambda s: s[len('docs/'):], step_folders)
         step_folders = map(self._format_page_content, step_folders)
 
