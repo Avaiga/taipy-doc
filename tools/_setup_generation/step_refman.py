@@ -92,7 +92,7 @@ class RefManStep(SetupStep):
         ("taipy.auth.config.authentication_config.AuthenticationConfig", "taipy.auth.config"),
     ]
     # Entries that should be hidden for the time being
-    HIDDEN_ENTRIES = ["Decimator", "get_context_id", "invoke_state_callback"]
+    HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback"]
     # Where the Reference Manual files are generated (MUST BE relative to docs_dir)
     REFERENCE_REL_PATH = "manuals/reference"
 
