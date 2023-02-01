@@ -11,13 +11,13 @@ from pathlib import Path
 
 class GettingStartedStep(SetupStep):
     def __init__(self):
-        # {page: (pattern_to_replace, content)}
+        # {page: (title, content)}
         self.DEFAULT_CONTENT = {
-            "getting-started": (r"\[GETTING_STARTED_CONTENT\]", ""),
-            "getting-started-gui": (r"\[GETTING_STARTED_GUI_CONTENT\]", ""),
-            "getting-started-core": (r"\[GETTING_STARTED_CORE_CONTENT\]", "")
+            "getting-started-gui": ('Getting started with GUI', ""),
+            "getting-started-core": ('Getting started with Core', ""),
+            "getting-started": ('Getting started with Taipy', ""),
         }
-        self.content = dict()
+        self.content = []
 
     def get_id(self) -> str:
         return "getting_started"
@@ -28,21 +28,25 @@ class GettingStartedStep(SetupStep):
     def setup(self, setup: Setup) -> None:
         for page in self.DEFAULT_CONTENT.keys():
             self.set_content_for_page(page)
+        self.content = "\n".join(self.content) + "\n"
 
     def set_content_for_page(self, page):
         step_folders = glob.glob("docs/getting_started/" + page + "/step_*")
         step_folders.sort()
+        print(len(step_folders))
         step_folders = map(lambda s: s[len('docs/'):], step_folders)
         step_folders = map(self._format_page_content, step_folders)
 
-        self.content[page] = (self.DEFAULT_CONTENT[page][0], "\n".join(step_folders) + '\n')
+        content = f"    - '{self.DEFAULT_CONTENT[page][0]}':\n"
+        content += f"      - getting_started/{page}/index.md\n"
+        content += "\n".join(step_folders)
+        self.content.append(content)
 
     def _format_page_content(self, filepath: str) -> str:
         readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
         readme_content = Path('docs/', readme_path).read_text().split('\n')
         step_name = next(filter(lambda l: "# Step" in l, readme_content))[len("# "):]
-        return f"        - '{step_name}': '{readme_path}'"
+        return f"      - '{step_name}': '{readme_path}'"
 
     def exit(self, setup: Setup):
-        for page_key in self.content.keys():
-            setup.update_mkdocs_yaml_template(r"^\s*" + self.content[page_key][0] + r"\s*\n", self.content[page_key][1])
+        setup.update_mkdocs_yaml_template(r"^\s*\[GETTING_STARTED_CONTENT\]\s*\n", self.content)
