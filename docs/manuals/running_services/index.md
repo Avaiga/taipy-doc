@@ -1,6 +1,6 @@
 Taipy provides you three runnable services: Taipy GUI, Taipy Rest, and Taipy Core. You can run Taipy services by
-calling the method _run()_ from the service instance either `Gui^`, `Rest^`, or `Core^`. You can also use `taipy.run()^`
-to start the service(s).
+calling the method _run()_ from the service instance either `Gui^`, `Rest^`, or `Core^`. You can also use
+`taipy.run()` to start the service(s).
 
 !!! important
 
@@ -98,7 +98,7 @@ if __name__ == "__main__":
 ```
 
 ## Running `Gui`, `Core` and `Rest`
-You can run all Taipy services together by using `taipy.run()^` with the code below:
+You can run all Taipy services together by using `taipy.run()` with the code below:
 
 ```python
 import taipy as tp
@@ -113,4 +113,3 @@ if __name__ == "__main__":
 Taipy Rest relies on Taipy Core. When running the Taipy Rest service, Taipy Core will
 also run along with it. Therefore, Taipy Core will run with Taipy GUI and Taipy Rest in
 the previous code example.
-
