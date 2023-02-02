@@ -13,9 +13,9 @@ class GettingStartedStep(SetupStep):
     def __init__(self):
         # {page: (title, content)}
         self.DEFAULT_CONTENT = {
-            "getting-started-gui": ('Getting started with GUI', ""),
-            "getting-started-core": ('Getting started with Core', ""),
-            "getting-started": ('Getting started with Taipy', ""),
+            "getting-started-gui": ("Getting started with GUI", ""),
+            "getting-started-core": ("Getting started with Core", ""),
+            "getting-started": ("Getting started with Taipy", ""),
         }
         self.content = []
 
