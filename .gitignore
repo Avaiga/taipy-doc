@@ -123,6 +123,9 @@ docs/manuals/reference_guiext/
 
 # Getting started
 docs/getting_started/getting-started/*
+!docs/getting_started/getting-started/
 docs/getting_started/getting-started-gui/*
+!docs/getting_started/getting-started-gui/
 docs/getting_started/getting-started-core/*
+!docs/getting_started/getting-started-core/
 
