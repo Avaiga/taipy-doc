@@ -5,7 +5,6 @@ Welcome to the **Getting Started** guide for Taipy. Taipy is composed of two com
 - **Graphical User Interface builder** (Taipy GUI): allows any Python developer to create a complex and interactive GUI.
 
 - **Scenario Management** (Taipy Core): implements a modern backend for any data-driven application based on your business case.
-Three Getting Started are available. 
 
 Three **'Getting Started'** are available to introduce these two components. These 'Getting Started' are all **independent** and can be followed without any previous knowledge of Taipy.
  
