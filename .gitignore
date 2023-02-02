@@ -117,10 +117,12 @@ docs/manuals/gui/viselements/*.md
 !docs/manuals/gui/viselements/index.md
 docs/manuals/xrefs
 !docs/manuals/gui/gui_example.ipynb
-docs/getting_started/index.md
-docs/getting_started/step_*/
-docs/getting_started/src/
-docs/getting_started/summary.txt
 docs/manuals/reference_rest/*.md
 !docs/manuals/reference_rest/index.md
 docs/manuals/reference_guiext/
+
+# Getting started
+docs/getting_started/getting-started/*
+docs/getting_started/getting-started-gui/*
+docs/getting_started/getting-started-core/*
+
