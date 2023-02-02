@@ -118,6 +118,11 @@ details on how to migrate from version older than 2.1.
   recent updates.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.1.1
+
+- Add overload type descriptions for the `taipy.get()` method that supports multiple different combinations
+  of argument types.
+
 2.1.0
 
 - Deprecation of the data node _cacheable_ property. It is replaced by _skippable_ property on tasks.
