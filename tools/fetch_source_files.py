@@ -271,6 +271,28 @@ for repo in repo_defs.keys():
 
         shutil.rmtree(clone_dir, onerror=handleRemoveReadonly)
 
+# Manually add the taipy.run() function.
+# TODO: Automate this, grabbing the function from the 'taipy' repository,
+# so we benefit from potential updates.
+init_path = os.path.join(ROOT_DIR, "taipy", "__init__.py")
+with open(init_path, "a") as init:
+    run_method = """
+import typing as t
+
+def run(*apps: t.List[t.Union[Gui, Rest, Core]], **kwargs) -> t.Optional[t.Union[Gui, Rest, Core]]:
+    \"\"\"Run one or multiple Taipy services.
+
+    A Taipy service is an instance of a class that runs code as a Web application.
+
+    Parameters:
+        *args (List[Union[`Gui^`, `Rest^`, `Core^`]]): Services to run.
+            If several services are provided, all the services run simultaneously. If this is empty or set to None,
+            this method does nothing.
+        **kwargs: Other parameters to provide to the services.
+    \"\"\"
+    pass\n"""
+    init.write(run_method)
+
 # Generate Pipfile from package dependencies from all repositories
 pipfile_path = os.path.join(ROOT_DIR, "Pipfile")
 pipfile_message = "WARNING: Package versions mismatch in Pipfiles - Pipfile not updated."
