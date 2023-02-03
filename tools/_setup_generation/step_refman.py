@@ -434,7 +434,9 @@ class RefManStep(SetupStep):
             contents = f.readlines()
 
         # Inject imports and code
-        imports_to_inject = """from typing import Any, Callable, List
+        imports_to_inject = """
+from types import NoneType
+from typing import Any, Callable, Dict, List, Union, Optional
 import json
 from .common.scope import Scope
 from .common.frequency import Frequency
