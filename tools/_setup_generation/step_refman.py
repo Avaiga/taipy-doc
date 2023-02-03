@@ -74,7 +74,7 @@ class RefManStep(SetupStep):
         ("taipy.core.taipy.unsubscribe_scenario", "taipy.core"),
         ("taipy.core.taipy.untag", "taipy.core"),
         ("taipy.core._core.Core", "taipy.core"),
-        # ("taipy.core.common.default_custom_document.DefaultCustomDocument", "taipy.core.common"),
+        ("taipy.core.common.default_custom_document.DefaultCustomDocument", "taipy.core.common"),
         ("taipy.core.config.*", "taipy.core.config"),
         ("taipy.core.data.*.*DataNode", "taipy.core.data"),
         ("taipy.core.data.operator.Operator", "taipy.core.data.operator"),
