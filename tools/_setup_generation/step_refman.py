@@ -270,6 +270,16 @@ class RefManStep(SetupStep):
             else:
                 package_to_entries[package] = [info]
 
+        # Add taipy packages with documentation but no entry
+        for package, doc in module_doc.items():
+            if not package.startswith("taipy"):
+                continue
+            if package in package_to_entries:
+                continue
+            if not doc:
+                continue
+            package_to_entries[package] = {}
+
         # Generate all Reference manual pages and update navigation
         self.navigation = ""
         xrefs = {}
@@ -289,9 +299,6 @@ class RefManStep(SetupStep):
                     raise SystemError(
                         "FATAL - Invalid entry type '{entry_info['type']}' for {entry_info['module']}.{entry_info['name']}"
                     )
-            if not classes and not functions and not types:
-                print(f"INFO - Skipping package {package}: no documented elements")
-                continue
             if package in RefManStep.PACKAGE_GROUP:
                 package_group = package
                 package_path = f"{self.REFERENCE_DIR_PATH}/pkg_{package}"
