@@ -1,4 +1,4 @@
-A configuration file is a standard text file, with a '`.toml`' extension. Visual Studio
+A configuration file is a standard text file with the '`.toml`' extension. Visual Studio
 Code lets you edit it manually, as any other text file.<br/>
 Taipy Studio provides some support for identifying problems in configuration
 files and accelerating typing thanks to auto-completion features.
@@ -39,6 +39,6 @@ Here are the problems that Taipy Studio identifies:
     A configuration element identifier that does not exist is referenced by this
     configuration element (Data Node, Task, Pipeline, or Scenario).
 - "Cannot find Python function: 'XXX'." (Error)<br/>
-    A function name that does not exist is used in this Task configuration element.<br/>
+    This Task configuration element uses a function name that does not exist.<br/>
     A Quick Fix can create that function for you.
 

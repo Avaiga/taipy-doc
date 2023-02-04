@@ -8,7 +8,7 @@ This configuration can be coded in Python and tuned using environment variables
 [advanced configuration](../core/config/advanced-config.md#Python-code-configuration)
 section).
 
-Taipy Studio provides ways to design graphically the configuration for your applications.
+Taipy Studio provides ways to design graphically Taipy application configurations.
 Within the Visual Studio Code environment, you can create configuration elements (for
 Data Nodes, Tasks, Pipelines, and Scenarios), specify the properties for those elements,
 and use a visual representation of those configuration elements as a graph.
@@ -17,13 +17,13 @@ and use a visual representation of those configuration elements as a graph.
   <img src="../images/config_overview.png" width=75%>
 </p>
 
-Taipy Studio stores those configuration in TOML files. These files can be used at
+Taipy Studio stores those configurations in TOML files. These files can be used at
 runtime by Taipy applications as described in the
 [note on Studio](../core/config/advanced-config.md#studio).
 
 ## Introduction
 
-Taipy Studio has a dedicated panel called "Taipy Configs" where mostly everything
+Taipy Studio has a dedicated panel called "Taipy Configs", where mostly everything
 happens. To open this panel, use the "View > Open View..." menu option and search
 for the view called "Taipy Configs".
 
@@ -43,7 +43,7 @@ configuration elements:
 - Data Notes: holds the list of
     [Data Node configurations](../core/config/data-node-config.md) defined
     in the selected configuration file.<br/>
-    The user can select a Data Node configuration in this list, to access all its
+    The user can select a Data Node configuration in this list to access all its
     properties in the Details section (see below).
 - Tasks: holds the list of
     [Task configurations](../core/config/task-config.md) defined
