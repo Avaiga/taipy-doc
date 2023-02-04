@@ -30,59 +30,57 @@ class RefManStep(SetupStep):
     # (item_pattern, destination_package)
     # or ([item_pattern...], destination_package)
     FORCE_PACKAGE = [
+        # GUI
         ("taipy.gui.*.(Gui|State|Markdown|Page)", "taipy.gui"),
+        # Core
         ("typing.*", "taipy.core"),
-        (
-            [
-                "taipy.core.cycle.cycle.Cycle",
-                "taipy.core.data.data_node.DataNode",
-                "taipy.core.common.frequency.Frequency",
-                "taipy.core.job.job.Job",
-                "taipy.core.pipeline.pipeline.Pipeline",
-                "taipy.core.scenario.scenario.Scenario",
-                "taipy.core.common.scope.Scope",
-                "taipy.core.job.status.Status",
-                "taipy.core.task.task.Task",
-                "taipy.core.taipy.cancel_job",
-                "taipy.core.taipy.clean_all_entities",
-                "taipy.core.taipy.clean_all_entities_by_version",
-                "taipy.core.taipy.compare_scenarios",
-                "taipy.core.taipy.create_pipeline",
-                "taipy.core.taipy.create_scenario",
-                "taipy.core.taipy.delete",
-                "taipy.core.taipy.delete_job",
-                "taipy.core.taipy.delete_jobs",
-                "taipy.core.taipy.export_scenario",
-                "taipy.core.taipy.get",
-                "taipy.core.taipy.get_cycles",
-                "taipy.core.taipy.get_data_nodes",
-                "taipy.core.taipy.get_jobs",
-                "taipy.core.taipy.get_latest_job",
-                "taipy.core.taipy.get_parents",
-                "taipy.core.taipy.get_pipelines",
-                "taipy.core.taipy.get_primary",
-                "taipy.core.taipy.get_primary_scenarios",
-                "taipy.core.taipy.get_scenarios",
-                "taipy.core.taipy.get_tasks",
-                "taipy.core.taipy.set",
-                "taipy.core.taipy.set_primary",
-                "taipy.core.taipy.submit",
-                "taipy.core.taipy.subscribe_pipeline",
-                "taipy.core.taipy.subscribe_scenario",
-                "taipy.core.taipy.tag",
-                "taipy.core.taipy.unsubscribe_pipeline",
-                "taipy.core.taipy.unsubscribe_scenario",
-                "taipy.core.taipy.untag",
-            ],
-            "taipy.core",
-        ),
+        ("taipy.core.cycle.cycle.Cycle", "taipy.core"),
+        ("taipy.core.data.data_node.DataNode", "taipy.core"),
+        ("taipy.core.common.frequency.Frequency", "taipy.core"),
+        ("taipy.core.job.job.Job", "taipy.core"),
+        ("taipy.core.pipeline.pipeline.Pipeline", "taipy.core"),
+        ("taipy.core.scenario.scenario.Scenario", "taipy.core"),
+        ("taipy.core.common.scope.Scope", "taipy.core"),
+        ("taipy.core.job.status.Status", "taipy.core"),
+        ("taipy.core.task.task.Task", "taipy.core"),
+        ("taipy.core.taipy.cancel_job", "taipy.core"),
+        ("taipy.core.taipy.clean_all_entities", "taipy.core"),
+        ("taipy.core.taipy.clean_all_entities_by_version", "taipy.core"),
+        ("taipy.core.taipy.compare_scenarios", "taipy.core"),
+        ("taipy.core.taipy.create_pipeline", "taipy.core"),
+        ("taipy.core.taipy.create_scenario", "taipy.core"),
+        ("taipy.core.taipy.delete", "taipy.core"),
+        ("taipy.core.taipy.delete_job", "taipy.core"),
+        ("taipy.core.taipy.delete_jobs", "taipy.core"),
+        ("taipy.core.taipy.export_scenario", "taipy.core"),
+        ("taipy.core.taipy.get", "taipy.core"),
+        ("taipy.core.taipy.get_cycles", "taipy.core"),
+        ("taipy.core.taipy.get_data_nodes", "taipy.core"),
+        ("taipy.core.taipy.get_jobs", "taipy.core"),
+        ("taipy.core.taipy.get_latest_job", "taipy.core"),
+        ("taipy.core.taipy.get_parents", "taipy.core"),
+        ("taipy.core.taipy.get_pipelines", "taipy.core"),
+        ("taipy.core.taipy.get_primary", "taipy.core"),
+        ("taipy.core.taipy.get_primary_scenarios", "taipy.core"),
+        ("taipy.core.taipy.get_scenarios", "taipy.core"),
+        ("taipy.core.taipy.get_tasks", "taipy.core"),
+        ("taipy.core.taipy.set", "taipy.core"),
+        ("taipy.core.taipy.set_primary", "taipy.core"),
+        ("taipy.core.taipy.submit", "taipy.core"),
+        ("taipy.core.taipy.subscribe_pipeline", "taipy.core"),
+        ("taipy.core.taipy.subscribe_scenario", "taipy.core"),
+        ("taipy.core.taipy.tag", "taipy.core"),
+        ("taipy.core.taipy.unsubscribe_pipeline", "taipy.core"),
+        ("taipy.core.taipy.unsubscribe_scenario", "taipy.core"),
+        ("taipy.core.taipy.untag", "taipy.core"),
         ("taipy.core._core.Core", "taipy.core"),
-        ("taipy.core.common.default_custom_document.DefaultCustomDocument", "taipy.core.common"),
+        # ("taipy.core.common.default_custom_document.DefaultCustomDocument", "taipy.core.common"),
         ("taipy.core.config.*", "taipy.core.config"),
         ("taipy.core.data.*.*DataNode", "taipy.core.data"),
         ("taipy.core.data.operator.Operator", "taipy.core.data.operator"),
         ("taipy.core.data.operator.JoinOperator", "taipy.core.data.operator"),
         ("taipy.core.exceptions.exceptions.*", "taipy.core.exceptions"),
+        # Config
         ("taipy.config.config.Config", "taipy.config"),
         ("taipy.config.checker.issue.Issue", "taipy.config"),
         ("taipy.config.checker.issue_collector.IssueCollector", "taipy.config"),
@@ -90,7 +88,9 @@ class RefManStep(SetupStep):
         ("taipy.config.common.frequency.Frequency", "taipy.core.config"),
         ("taipy.config.unique_section.*", "taipy.config"),
         ("taipy.config.exceptions.exceptions.ConfigurationIssueError", "taipy.config.exceptions"),
+        # Rest
         ("taipy.rest.rest.Rest", "taipy.rest"),
+        # Auth
         ("taipy.auth.config.authentication_config.AuthenticationConfig", "taipy.auth.config"),
     ]
     # Entries that should be hidden for the time being
@@ -270,6 +270,16 @@ class RefManStep(SetupStep):
             else:
                 package_to_entries[package] = [info]
 
+        # Add taipy packages with documentation but no entry
+        for package, doc in module_doc.items():
+            if not package.startswith("taipy"):
+                continue
+            if package in package_to_entries:
+                continue
+            if not doc:
+                continue
+            package_to_entries[package] = {}
+
         # Generate all Reference manual pages and update navigation
         self.navigation = ""
         xrefs = {}
@@ -289,9 +299,6 @@ class RefManStep(SetupStep):
                     raise SystemError(
                         "FATAL - Invalid entry type '{entry_info['type']}' for {entry_info['module']}.{entry_info['name']}"
                     )
-            if not classes and not functions and not types:
-                print(f"INFO - Skipping package {package}: no documented elements")
-                continue
             if package in RefManStep.PACKAGE_GROUP:
                 package_group = package
                 package_path = f"{self.REFERENCE_DIR_PATH}/pkg_{package}"
@@ -427,7 +434,9 @@ class RefManStep(SetupStep):
             contents = f.readlines()
 
         # Inject imports and code
-        imports_to_inject = """from typing import Any, Callable, List
+        imports_to_inject = """
+from types import NoneType
+from typing import Any, Callable, Dict, List, Union, Optional
 import json
 from .common.scope import Scope
 from .common.frequency import Frequency
