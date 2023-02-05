@@ -20,7 +20,7 @@ There are two types of elements displayed in these views:
     - A link from a Scenario element to a Pipeline element indicates that
       the Pipeline element is one of the tasks of the Scenario element.
 
-## Opening a Graph View
+# Opening a Graph View
 
 A Graph View can be created in three situations:
 
@@ -34,7 +34,7 @@ A Graph View can be created in three situations:
     Right-click a Scenario configuration element in the SCENARIOS section of
     the Taipy Configs pane, and select "Show View".
 
-## The Graph View actions
+# The Graph View actions
 
 At the top of a Graph View, there is a row of icons that can be clicked
 to trigger actions.
@@ -75,7 +75,7 @@ This row is split into three sections:
        This icon appears **only** when the Graph View represents a full configuration file.
 
 
-## Editing in a Graph View
+# Editing in a Graph View
 
 To demonstrate the capabilities of the Graph View, we will create the configuration
 described in the
@@ -95,17 +95,20 @@ Note that there is no code for defining the `Config^` object if these source fil
 We also start with an empty `config.toml` file, where the configuration elements will
 be defined.
 
-### Creating the first configuration elements
+## Creating the first configuration elements
 
 We will start by opening a Graph View representing the entire configuration file
 then we will create the Data Node and Task configuration elements using the
 [Graph View action buttons](#the-graph-view-actions).
 
 <p align="center">
-  <img src="../images/config_graphview_1.gif" width=80%>
+  <img src="../../images/config_graphview_1.gif" width=80%>
 </p>
 
-### Creating the Pipeline configuration
+After the Task configuration and all three Data Node configurations are created,
+we connect the Out ports to the appropriate In ports by dragging links.
+
+## Creating the Pipeline configuration
 
 The Pipeline configuration element is created similarly. Once the element
 appears in the Graph View, we connect its Out port to the In port of the Task
@@ -113,17 +116,33 @@ element to indicate that the "planning" task element is part of the
 "production" pipeline:
 
 <p align="center">
-  <img src="../images/config_graphview_2.gif" width=80%>
+  <img src="../../images/config_graphview_2.gif" width=80%>
 </p>
 
-### Creating the Scenario configuration
+## Creating the Scenario configuration
 
 Similarly, we create the Scenario configuration element and connect its Out port
 to the In port of the "production" pipeline to indicate that this Pipeline
 configuration element is part of the "scenario_configuration" scenario:
 
 <p align="center">
-  <img src="../images/config_graphview_3.gif" width=80%>
+  <img src="../../images/config_graphview_3.gif" width=80%>
+</p>
+
+## Setting the configuration elements parameters
+
+You can select a configuration element from the Graph View and use the Details
+section of the Taipy Configs pane.<br/>
+From there, you can set the properties of the selected element.
+
+Here is how we can set the function used in the Task configuration we have created above.
+Note that Taipy Studio can locate the functions module and name, so it is easy to spot the
+one you want to use.<br/>
+In our example, we want our Task configuration to use the function called `plan` from the
+`functions` module (the `functions.py` source file):
+
+<p align="center">
+  <img src="../../images/config_graphview_4.gif" width=80%>
 </p>
 
 After this final step, the configuration file can be saved from the Graph View
@@ -141,7 +160,7 @@ if __name__ == "__main__":
     Config.load("config.toml")
     tp.Core().run()
 
-    # Extract the scenario configuration from the Config
+    # Retrieve the scenario configuration from the Config
     scenario_cfg = Config.scenarios["scenario_configuration"]
     # Create a scenario entity
     scenario = tp.create_scenario(scenario_cfg)
@@ -149,7 +168,7 @@ if __name__ == "__main__":
     tp.submit(scenario)
 ```
 
-### Changing the links
+## Changing the links
 
 - To add a control point on a link, click the link where you want to create
     the control point, then drag the point where you want it. Release the

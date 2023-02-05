@@ -3,7 +3,7 @@ Code lets you edit it manually, as any other text file.<br/>
 Taipy Studio provides some support for identifying problems in configuration
 files and accelerating typing thanks to auto-completion features.
 
-## Auto-completion
+# Auto-completion
 
 If you are entering text in a configuration section ([DATA_NODE.*id*], [TASK.*id*], etc.),
 you can press the `Ctrl-<SPACE>` key combination, then Taipy Studio will suggest relevant
@@ -20,7 +20,7 @@ showing how we could create a new Data Node configuration in the body of a confi
 You will also get support for auto-completion in other contexts, such as a reference
 to another configuration element.
 
-## Spotting problems
+# Spotting problems
 
 Taipy Studio helps point out potential problems in your configuration files that are
 indicated in the body of the file content, in the Problems pane, and in the "Details"
