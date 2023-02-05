@@ -55,7 +55,7 @@ This row is split into three sections:
        Save the Graph View as an image.
     - ![Fit to contents](../images/config-icon-zoomfit.png):<br/>
        Adjust the panning and zoom factor of the Graph View so the entire graph can be
-       represented. [TODO: is that true??]
+       represented.
 - Center section: Configuration element name and type.<br/>
     This section is empty when the Graph View represents a complete configuration file.<br/>
     If the Graph View represents a pipeline configuration element, this section displays the
@@ -90,7 +90,7 @@ We are starting from a project where only the Python code was developed:
 - `main.py` loads the configuration file and submits a scenario
 - `functions.py` defines the functions used by the Task configuration elements.
 
-Note that there is no code for defining the `Config^` object if these source files.
+Note that there is no code for defining the `Config^` object in these source files.
 
 We also start with an empty `config.toml` file, where the configuration elements will
 be defined.

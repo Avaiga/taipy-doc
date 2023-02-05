@@ -32,6 +32,7 @@ section of the "Taipy Configs" pane.
 
 Here are the problems that Taipy Studio identifies:
 
+- General TOML syntax errors from the "Even Better TOML" extension.
 - "No reference to element 'XXX'." (Warning)<br/>
     The configuration element (Data Node, Task, or Pipeline) is not referenced
     by any other element.
