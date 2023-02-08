@@ -21,10 +21,9 @@ class ContributorStep(SetupStep):
         self.REPO_URLS = []
         self.MEMBERS = {}
         self.CONTRIBUTORS = {}
-        self.ANONYMOUS = ["dependabot[bot]"]
+        self.ANONYMOUS = ["dependabot[bot]", "joaoandre", "joaoandre-avaiga"]
         self.PATH = ""
         self.TEMPLATE_SUFFIX = "_template"
-
 
     def enter(self, setup: Setup):
         self.PATH = os.path.join(setup.docs_dir, "credits", "contributors.md")
