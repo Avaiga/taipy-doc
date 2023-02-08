@@ -2,7 +2,7 @@ A pipeline configuration is necessary to instantiate a [Pipeline](../concepts/pi
 `PipelineConfig^`, you can use the `Config.configure_pipeline()^` method with the following parameters:
 
 - _**id**_: The id of this new pipeline configuration. This id is **mandatory** and must be a unique and valid Python
-  variable name.
+  identifier.
 - _**tasks**_: The list of task configurations.
 - _**properties**_: A dictionary of additional properties.
 

@@ -88,9 +88,9 @@ set with the indexed data set syntax as shown below:
         ```
 
 Trace number 1 (the Coarse trace) is defined by *x[1]* and *y[1]*, and uses
-the series *data[0]["x"]* and *data[0]["Coarse"]*;<br/>
+the series *data[0]\["x"\]* and *data[0]\["Coarse"\]*;<br/>
 Trace number 2 (the Fine trace) is defined by *x[2]* and *y[2]*, and uses
-the series *data[1]["x"]* and *data[1]["Fine"]*.
+the series *data[1]\["x"\]* and *data[1]\["Fine"\]*.
 
 Here is what the resulting plot looks like:
 

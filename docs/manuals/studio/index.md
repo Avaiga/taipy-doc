@@ -5,7 +5,7 @@ that significantly accelerates the development of Taipy applications.
 
 This tool addresses two major areas:
 
-- Building configurations.<br/>
+- Building configurations<br/>
     An application that relies on [Taipy Core](../core/) functionalities needs to build
     a Taipy [configuration](../core/config/) where DataNode configs, Task configs, etc.
     are declared.<br/>
@@ -18,7 +18,7 @@ This tool addresses two major areas:
     scenarios as graphs, where nodes are DataNodes or Tasks.
 
     You may want to learn more about Taipy configuration files edition by navigating
-    to the [Configuration files edition](config.md) page.
+    to the [Configuration files edition](config/index.md) page.
 
 - Defining Taipy GUI page content with Markdown<br/>
     Taipy GUI exposes an augmented implementation of the
@@ -65,8 +65,8 @@ Once installed, Taipy Studio is activated when:
   menu option).
 
 Depending on your task at hand, you may want to read more on
-[building configurations](config.md) or on [GUI Markdown support](gui.md).
+[building configurations](config/index.md) or on [GUI Markdown support](gui.md).
 
-## [:material-arrow-right: Building configurations](config.md)
+## [:material-arrow-right: Building configurations](config/index.md)
 
 ## [:material-arrow-right: GUI Markdown support](gui.md)

@@ -82,7 +82,7 @@ configuration is recommended.
 
 If a more specific method to store, read and write the data is needed, Taipy
 provides a Generic data node that can be used for any storage type (or any
-kind of query system). The developer only needs to provide two python
+kind of query system). The developer only needs to provide two Python
 functions, one for reading and one for writing the data. Please refer to the
 [generic data node config section](#generic) for more details on generic data
 node.
@@ -159,9 +159,9 @@ provided:
   examples of reading from CSV data node with different _exposed_type_ is available on
   [Read / Write a data node](../entities/data-node-mgt.md#csv) documentation):
     - By default, _exposed_type_ is "pandas", and the data node reads the CSV file
-      as a Pandas dataframe (`pandas.DataFrame`) when executing the read method.
+      as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
     - If the _exposed_type_ provided is "modin", the data node reads the CSV
-      file as a Modin dataframe (`modin.pandas.DataFrame`) when executing the read method.
+      file as a Modin DataFrame (`modin.pandas.DataFrame`) when executing the read method.
     - If the _exposed_type_ provided is "numpy", the data node reads the CSV
       file as a NumPy array (`numpy.ndarray`) when executing the read method.
     - If the provided _exposed_type_ is a custom Python class, the data node creates
@@ -229,9 +229,9 @@ parameters are provided.
   examples of reading from Excel data node with different _exposed_type_ is available
   on [Read / Write a data node](../entities/data-node-mgt.md#excel) documentation):
     - By default, _exposed_type_ is "pandas", and the data node reads the Excel
-      file as a Pandas dataframe (`pandas.DataFrame`) when executing the read method.
+      file as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
     - If the _exposed_type_ provided is "modin", the data node reads the Excel
-      file as a Modin dataframe (`modin.pandas.DataFrame`) when executing the
+      file as a Modin DataFrame (`modin.pandas.DataFrame`) when executing the
       read method.
     - If the _exposed_type_ provided is "numpy", the data node reads the
       Excel file as a NumPy array (`numpy.ndarray`) when executing the read method.
@@ -308,9 +308,9 @@ following parameters can be provided:
   examples of reading from SQL Table data node with different _exposed_type_ is available on
   [Read / Write a data node](../entities/data-node-mgt.md#sql-table) documentation):
     - By default, _exposed_type_ is "pandas", and the data node reads the SQL table
-      as a Pandas dataframe (`pandas.DataFrame`) when executing the read method.
+      as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
     - If the _exposed_type_ provided is "modin", the data node reads the SQL table
-      as a Modin dataframe (`modin.pandas.DataFrame`) when executing the read method.
+      as a Modin DataFrame (`modin.pandas.DataFrame`) when executing the read method.
     - If the _exposed_type_ provided is "numpy", the data node reads the SQL table
       as a NumPy array (`numpy.ndarray`) when executing the read method.
     - If the provided _exposed_type_ is a custom Python class, the data node creates
@@ -379,9 +379,9 @@ provided:
   The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
 - _**exposed_type**_ indicates the data type returned when reading the data node:
     - By default, _exposed_type_ is "pandas", and the data node reads the data
-      as a Pandas dataframe (`pandas.DataFrame`) when execute the _read_query_.
+      as a Pandas DataFrame (`pandas.DataFrame`) when execute the _read_query_.
     - If the _exposed_type_ provided is "modin", the data node reads the CSV file
-      as a Modin dataframe (`modin.pandas.DataFrame`) when execute the _read_query_.
+      as a Modin DataFrame (`modin.pandas.DataFrame`) when execute the _read_query_.
     - If the _exposed_type_ provided is "numpy", the data node reads the CSV file
       as a NumPy array (`numpy.ndarray`) when execute the _read_query_.
     - If the provided _exposed_type_ is a custom Python class, the data node
@@ -548,14 +548,14 @@ section, the following parameters can be provided:
   of reading from Parquet data node with different _exposed_type_ are available on
   [Read / Write a data node](../entities/data-node-mgt.md#parquet) documentation):
     - By default, _exposed_type_ is "pandas", and the data node reads the Parquet file
-      as a Pandas dataframe (`pandas.DataFrame`) when executing the read method.
+      as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
     - If the _exposed_type_ provided is "modin", the data node reads the Parquet
-      file as a Modin dataframe (`modin.pandas.DataFrame`) when executing the read method.
+      file as a Modin DataFrame (`modin.pandas.DataFrame`) when executing the read method.
     - If the _exposed_type_ provided is "numpy", the data node reads the Parquet
       file as a NumPy array (`numpy.ndarray`) when executing the read method.
     - If the provided _exposed_type_ is a `Callable`, the data node creates a list of
       objects as returned by the `Callable`. Each object represents a record in the Parquet
-      file. The Parquet file is read as a `pandas.DataFrame` and each row of the dataframe
+      file. The Parquet file is read as a `pandas.DataFrame` and each row of the DataFrame
       is passed to the Callable as keyword arguments where the key is the column name, and
       the value is the corresponding value for that row.
 
@@ -749,7 +749,7 @@ provided:
 
 - If the _**default_data**_ is given as a parameter of the data node configuration,
   the data node entity is automatically written with the corresponding value (note
-  that any serializable python object can be used) upon its instantiation.
+  that any serializable Python object can be used) upon its instantiation.
 
 ```python linenums="1"
 {%

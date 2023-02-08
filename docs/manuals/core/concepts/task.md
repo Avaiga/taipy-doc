@@ -8,7 +8,7 @@ Since a _task_ represents a function, it can take a set of parameters as input a
 Each input parameter and each output result is modeled as a data node.
 
 
-The attributes of a task (the input data nodes, the output data nodes, the python function) are populated based on
+The attributes of a task (the input data nodes, the output data nodes, the Python function) are populated based on
 the task configuration `TaskConfig^` that must be provided when instantiating a new task. (Please refer to the
 [`configuration details`](../config/task-config) documentation for more details on configuration).
 

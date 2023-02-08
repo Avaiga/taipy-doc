@@ -2,7 +2,7 @@ A task configuration is necessary to instantiate a [Task](../concepts/task.md). 
 `TaskConfig^`, you can use the `Config.configure_task()^` method with the following parameters:
 
 - _**id**_: The id of the task configuration to be created. This id is **mandatory** and must be a unique and valid
-  Python variable name.
+  Python identifier.
 - _**function**_: The function to execute.
 - _**inputs**_: The input data nodes referring to the _function_'s parameter(s) data to be executed.
 - _**outputs**_: The output data nodes referring to the result(s) data of the _function_ to be executed.

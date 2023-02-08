@@ -9,8 +9,8 @@ nav:
     - index.md
     - Installation: installation.md
   - 'Getting started':
-    - getting_started/index.md
-  [GETTING_STARTED_CONTENT]
+    - 'Getting started': 'getting_started/index.md'
+    [GETTING_STARTED_CONTENT]
   - 'User Manual':
     - "About Taipy's User Manual": 'manuals/about.md'
     - Taipy GUI:
@@ -88,7 +88,12 @@ nav:
             - 'Based on Docker': 'manuals/deployment/heroku/docker.md'
     - 'Taipy Studio':
         - manuals/studio/index.md
-        - 'Building configuration': 'manuals/studio/config.md'
+        - 'Building configurations':
+           - manuals/studio/config/index.md
+           - 'Managing configuration files': 'manuals/studio/config/files.md'
+           - 'Configuring elements': 'manuals/studio/config/elements.md'
+           - 'Graph views': 'manuals/studio/config/graphview.md'
+           - 'Text edition': 'manuals/studio/config/textedition.md'
         - 'GUI Markdown support': 'manuals/studio/gui.md'
   - 'Reference Manual':
     - "About Taipy's Reference Manual": 'manuals/reference.md'
