@@ -107,9 +107,8 @@ nav:
   - 'Release Notes': 'relnotes.md'
   - 'Contributing':
     - 'Contributing to Taipy': 'contributing/contributing.md'
-    - 'Code of conduct': 'contributing/code_of_conduct.md'
-  - 'Credits':
     - 'Contributors': 'credits/contributors.md'
+    - 'Code of conduct': 'contributing/code_of_conduct.md'
 theme:
   name: material
   language: en

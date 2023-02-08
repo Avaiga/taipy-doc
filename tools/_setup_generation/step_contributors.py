@@ -1,7 +1,7 @@
 # ################################################################################
-# Taipy Contributor section generation setup step.
+# Taipy Contributor list generation setup step.
 #
-# A contributor section is generated based on internal and external contributors
+# A contributors list is generated based on internal and external contributors
 # retrieved using GitHub REST APIs.
 # ################################################################################
 import os
@@ -11,7 +11,7 @@ import requests
 from .setup import SetupStep, Setup
 
 
-class ContributorStep(SetupStep):
+class ContributorsStep(SetupStep):
 
     def __init__(self):
         self.BASE_URL = "https://api.github.com"
@@ -32,7 +32,7 @@ class ContributorStep(SetupStep):
         return "contributors"
 
     def get_description(self) -> str:
-        return "Generating the contributors"
+        return "Generating the contributors list."
 
     def setup(self, setup: Setup) -> None:
         self.get_repo_urls()
