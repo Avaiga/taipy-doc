@@ -19,7 +19,7 @@ the data points get rendered.
 
 ## Examples
 
-### Simple bubble chart {data-source="gui:doc/examples/charts/bubble-simple"}
+### Simple bubble chart {data-source="gui:doc/examples/charts/bubble-simple.py"}
 
 A simple use case for bubble charts is a data set where data points have a related color,
 size, and opacity to be applied for their representation.
@@ -69,7 +69,7 @@ The result looks like this:
     <figcaption>Simple bubble chart</figcaption>
 </figure>
 
-### Setting data point symbols {data-source="gui:doc/examples/charts/bubble-symbols"}
+### Setting data point symbols {data-source="gui:doc/examples/charts/bubble-symbols.py"}
 
 Setting the symbol that is used for every data point is a matter of setting
 the *symbol* property of the dictionary used in the chart control's
@@ -119,7 +119,7 @@ And the resulting chart looks like this:
     <figcaption>Bubble chart symbols</figcaption>
 </figure>
 
-### Hover text {data-source="gui:doc/examples/charts/bubble-hover"}
+### Hover text {data-source="gui:doc/examples/charts/bubble-hover.py"}
 
 You can customize the text that would appear should the user move the pointing
 device on top of a data point symbol.<br/>

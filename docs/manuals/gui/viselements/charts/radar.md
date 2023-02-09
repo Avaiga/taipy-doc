@@ -24,7 +24,7 @@ radar chart automatically arranges all categories along the angular axis.
 
 ## Examples
 
-### Simple radar chart {data-source="gui:doc/examples/charts/radar-simple"}
+### Simple radar chart {data-source="gui:doc/examples/charts/radar-simple.py"}
 
 Here is an example that demonstrates the use of a radar chart to display
 the relative usage of programming languages among developers:
@@ -88,7 +88,7 @@ Here is the resulting figure:
     <figcaption>Simple radar chart</figcaption>
 </figure>
 
-### Multiple data sets {data-source="gui:doc/examples/charts/radar-multiple"}
+### Multiple data sets {data-source="gui:doc/examples/charts/radar-multiple.py"}
 
 Radar charts are handy when used to compare two data sets: one can immediately spot
 where a given data set performs better or worse than another for a given category.

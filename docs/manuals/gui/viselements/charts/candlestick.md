@@ -23,7 +23,7 @@ property is set to "candlestick".
 
 ## Examples
 
-### Simple candlestick chart {data-source="gui:doc/examples/charts/candlestick-simple"}
+### Simple candlestick chart {data-source="gui:doc/examples/charts/candlestick-simple.py"}
 
 The following example creates a candlestick chart for the AAPL stock price. It shows all
 the relevant daily information for an entire month.
@@ -69,7 +69,7 @@ The chart is displayed like this:
     <figcaption>Simple candlestick chart</figcaption>
 </figure>
 
-### Styling candlestick charts {data-source="gui:doc/examples/charts/candlestick-styling"}
+### Styling candlestick charts {data-source="gui:doc/examples/charts/candlestick-styling.py"}
 
 By default, Plotly creates green candlestick bars when the value grows (when *close* is
 greater than *open*) and red candlestick bars when the value decreases.<br/>
@@ -141,7 +141,7 @@ This is what the customized candlestick chart looks like:
     <figcaption>Styling candlestick charts</figcaption>
 </figure>
 
-### Using a time series {data-source="gui:doc/examples/charts/candlestick-timeseries"}
+### Using a time series {data-source="gui:doc/examples/charts/candlestick-timeseries.py"}
 
 So far, the *x* values were taken from the Pandas DataFrame that was built by the
 [*yfinance*](https://pypi.org/project/yfinance/) API: the *index* of the DataFrame

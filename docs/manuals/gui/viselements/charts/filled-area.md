@@ -21,7 +21,7 @@ of the Plotly documentation
 
 ## Examples
 
-### Simple filled area chart {data-source="gui:doc/examples/charts/filled-area-simple"}
+### Simple filled area chart {data-source="gui:doc/examples/charts/filled-area-simple.py"}
 
 Here is how we can create a filled area chart to represent the number of items sold every
 weekday:
@@ -65,7 +65,7 @@ The resulting chart is displayed as follows:
     <figcaption>Filled area chart</figcaption>
 </figure>
 
-### Overlayed filled areas {data-source="gui:doc/examples/charts/filled-area-overlay"}
+### Overlayed filled areas {data-source="gui:doc/examples/charts/filled-area-overlay.py"}
 
 Suppose we want also to visualize the price of the items.<br/>
 One way of doing this could be to overlay the two traces on top of each other.
@@ -121,7 +121,7 @@ Here is what the result looks like:
     <figcaption>Overlay of Area Charts</figcaption>
 </figure>
 
-### Stacked Area Chart {data-source="gui:doc/examples/charts/filled-area-stacked"}
+### Stacked Area Chart {data-source="gui:doc/examples/charts/filled-area-stacked.py"}
 
 Multiple traces in a filled area chart can also be displayed as a stack of traces.
 
@@ -174,7 +174,7 @@ Here is the resulting display:
     <figcaption>Stacking areas</figcaption>
 </figure>
 
-### Normalized Stacked Area Chart {data-source="gui:doc/examples/charts/filled-area-normalized"}
+### Normalized Stacked Area Chart {data-source="gui:doc/examples/charts/filled-area-normalized.py"}
 
 Normalizing a stacked area chart makes it easy to visualize relative quantities
 among different data. All values for a given 'x' value are displayed as a
