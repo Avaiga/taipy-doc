@@ -15,7 +15,7 @@ in different situations. It also shows basic customization hints.
 
 ## Examples
 
-### Plotting a series of values {data-source="gui:doc/examples/charts/basics-simple"}
+### Plotting a series of values {data-source="gui:doc/examples/charts/basics-simple.py"}
 
 Say you want to create a line chart connecting a series of values.<br/>
 The *x* values will be the index of each plotted value.
@@ -45,7 +45,7 @@ Here is how this chart is displayed:
     <figcaption>Plotting a series</figcaption>
 </figure>
 
-### Defining the range for *x* {data-source="gui:doc/examples/charts/basics-xrange"}
+### Defining the range for *x* {data-source="gui:doc/examples/charts/basics-xrange.py"}
 
 The example above does not explicitly define an *x* axis: we use the index of the
 *y* value in the input array.<br/>
@@ -103,7 +103,7 @@ The resulting image is the following:
 Note that the axes now have relevant names: because the series are named in
 the source data, both the *x* and *y* axes are labeled accordingly.
 
-### Decorating a chart {data-source="gui:doc/examples/charts/basics-title"}
+### Decorating a chart {data-source="gui:doc/examples/charts/basics-title.py"}
 
 In the first example, you may have noticed the '0' sitting under
 the *x* axis. This is the 'name' of the axis. Because we were not using
@@ -155,7 +155,7 @@ The result is the following:
     <figcaption>Title and x axis label</figcaption>
 </figure>
 
-### Adding a trace {data-source="gui:doc/examples/charts/basics-multiple-traces"}
+### Adding a trace {data-source="gui:doc/examples/charts/basics-multiple.py"}
 
 You will often want to display several traces in the same chart control.
 
@@ -214,7 +214,7 @@ If you want to change the color of a trace, you can use the
 [*color*](../chart.md#p-color) property: setting *color[2]* to "red" will impact the
 color of the second trace, so it is displayed in red.
 
-### Adding a *y* axis {data-source="gui:doc/examples/charts/basics-two-y-axis"}
+### Adding a *y* axis {data-source="gui:doc/examples/charts/basics-two-y-axis.py"}
 
 Let us look at a situation where the two *y* series use ranges that are very
 different:
@@ -317,7 +317,7 @@ The resulting plot is far more relevant:
     <figcaption>Second <i>y</i> axis</figcaption>
 </figure>
 
-### Using a time series {data-source="gui:doc/examples/charts/basics-timeline"}
+### Using a time series {data-source="gui:doc/examples/charts/basics-timeline.py"}
 
 Many charts will represent data that is based on a timeline. Taipy allows you
 to define an *x* axis that represents a time range.

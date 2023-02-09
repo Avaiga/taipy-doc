@@ -120,6 +120,7 @@ docs/manuals/xrefs
 docs/manuals/reference_rest/*.md
 !docs/manuals/reference_rest/index.md
 docs/manuals/reference_guiext/
+node_modules/
 
 # Getting started
 docs/getting_started/getting-started/*

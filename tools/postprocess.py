@@ -87,6 +87,8 @@ def on_post_build(env):
 
     site_dir = env.conf["site_dir"]
     log = logging.getLogger("mkdocs")
+    match = re.search(r"/en/(develop|(?:release-(\d+\.\d+)))/$", env.conf["site_url"])
+    branch = (f"release/{match.group(2)}" if match.group(2) else match.group(1)) if match else "unknown"
     xrefs = {}
     if os.path.exists(site_dir + "/manuals/xrefs"):
         with open(site_dir + "/manuals/xrefs") as xrefs_file:
@@ -325,16 +327,38 @@ def on_post_build(env):
                         table_line = groups[1]
                         table_line_to_replace = "".join(groups)
                         new_table_line = table_line_to_replace
+                        typing_xref_found = False
 
                         for type_ in typing_type.finditer(table_line):
                             class_ = type_[0][:-1] # Remove ^
                             packages = xrefs.get(class_)
                             if packages:
-                                new_content = f"<a href='{rel_path}/{packages[0]}.{class_}'>{class_}</a>"
+                                typing_xref_found = True
+                                new_content = f"<a href=\"{rel_path}/{packages[0]}.{class_}\">{class_}</a>"
                                 new_table_line = new_table_line.replace(f"{class_}^", new_content)
-                                file_was_changed = True
-                        if file_was_changed:
+                        if typing_xref_found:
+                            file_was_changed = True
                             html_content = html_content.replace(table_line_to_replace, new_table_line)
+
+                    # Replace data-source attributes in h<N> tags to links to
+                    # files in the appropriate repositores.
+                    new_content = ""
+                    last_location = 0
+                    DATASOURCE_RE = re.compile(r"(<(h\d+))\s+data-source=\"(.*?)\"(.*</\2>)")
+                    for source in DATASOURCE_RE.finditer(html_content):
+                        ref = source.group(3)
+                        repo_match = re.search("^([\w\d]+):", ref)
+                        if repo_match:
+                            ref = f"https://github.com/Avaiga/taipy-{repo_match.group(0)[:-1]}/blob/{branch}/{ref[repo_match.end():]}"
+                        new_content += (html_content[last_location:source.start()]
+                                     + f"{source.group(1)}{source.group(4)}"
+                                     + f"\n<small>You can download the entire source code used in this section"
+                                     + f" from the <a href=\"{ref}\">GitHub repository</a>.</small>"
+                                     )
+                        last_location = source.end()
+                    if last_location:
+                        file_was_changed = True
+                        html_content = new_content + html_content[last_location:]
 
                     # Shorten Table of contents in REST API files
                     if "rest/apis_" in filename or "rest\\apis_" in filename:
@@ -350,7 +374,7 @@ def on_post_build(env):
                             file_was_changed = True
                             html_content = new_content + html_content[last_location:]
 
-                    # Rename Extension API type aliases
+                    # Rename the GUI Extension API type aliases
                     if "reference_guiext" in filename:
                         for in_out in [("TaipyAction", "Action", "../interfaces/Action"),
                                        ("TaipyContext", "Context", "#context")]:
