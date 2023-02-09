@@ -171,8 +171,14 @@ class RefManStep(SetupStep):
                     if e.__module__.startswith(Setup.ROOT_PACKAGE):
                         if e.__class__.__name__ == "NewType":
                             entry_type = TYPE_ID
+                    elif e.__module__ == "typing" and hasattr(e, "__name__"):
+                        # Manually remove class from 'typing'
+                        if e.__name__ == "NewType":
+                            continue
+                        if e.__name__ == "overload":
+                            continue
+                        entry_type = TYPE_ID
                     else:
-                        # Not in our focus package?
                         continue
                 # Remove hidden entries
                 if entry in RefManStep.HIDDEN_ENTRIES:
