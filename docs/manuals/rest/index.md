@@ -24,7 +24,7 @@ To expose the Taipy REST APIs, the Taipy REST server must first be started.
        - `env` is an optional string parameter used as the application environment.
        - `secret_key` is an optional parameter used as the application server secret key.<br>
    <br>
-   These parameters can be set using the `GlobalConfig^` properties. Here is an example:
+   These parameters can be set using the `GlobalAppConfig^` properties. Here is an example:
    ``` python
    from taipy import Config
 
