@@ -174,9 +174,8 @@ class RefManStep(SetupStep):
                         # Manually remove class from 'typing'
                         if e.__name__ == "NewType":
                             continue
-                        print("--- module -->" + str(module))
-                        print("--- entry -->" + str(entry))
-                        print("--- name  -->" + str(e.__name__))
+                        if e.__name__ == "overload":
+                            continue
                         entry_type = TYPE_ID
                     else:
                         continue
