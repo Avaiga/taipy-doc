@@ -49,7 +49,7 @@ By starting the Core service, all configuration will be blocked from update to p
 To continue configure your application, stop the Core service by running `core.stop()`.
 
 !!! note
-    On a Taipy application that uses the Taipy Core API, running Core service is required to execute jobs.
+    On a Taipy application that uses the Taipy Core API, running the Core service is required to execute jobs.
 
 ## Running `Rest` and `Core`
 
