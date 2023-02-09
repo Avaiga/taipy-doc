@@ -344,9 +344,21 @@ def on_post_build(env):
                     # files in the appropriate repositores.
                     new_content = ""
                     last_location = 0
-                    DATASOURCE_RE = re.compile(r"<(h\d+)\s+data-source=\"(.*?)\".*</\1>")
+                    DATASOURCE_RE = re.compile(r"(<(h\d+))\s+data-source=\"(.*?)\"(.*</\2>)")
                     for source in DATASOURCE_RE.finditer(html_content):
-                        print(f"FOUND source {source.group(2)} in {filename}")
+                        ref = source.group(3)
+                        repo_match = re.search("^([\w\d]+):", ref)
+                        if repo_match:
+                            ref = f"https://github.com/Avaiga/taipy-{repo_match.group(0)[:-1]}/blob/{branch}/{ref[repo_match.end():]}"
+                        new_content += (html_content[last_location:source.start()]
+                                     + f"{source.group(1)}{source.group(4)}"
+                                     + f"\n<small>You can download the entire source code used in this section"
+                                     + f" from the <a href=\"{ref}\">GitHub repository</a>.</small>"
+                                     )
+                        last_location = source.end()
+                    if last_location:
+                        file_was_changed = True
+                        html_content = new_content + html_content[last_location:]
 
                     # Shorten Table of contents in REST API files
                     if "rest/apis_" in filename or "rest\\apis_" in filename:
@@ -362,7 +374,7 @@ def on_post_build(env):
                             file_was_changed = True
                             html_content = new_content + html_content[last_location:]
 
-                    # Rename Extension API type aliases
+                    # Rename the GUI Extension API type aliases
                     if "reference_guiext" in filename:
                         for in_out in [("TaipyAction", "Action", "../interfaces/Action"),
                                        ("TaipyContext", "Context", "#context")]:
