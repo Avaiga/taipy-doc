@@ -19,7 +19,7 @@ manual for [*scattergeo* traces](https://plotly.com/javascript/reference/scatter
 
 ## Examples
 
-### Simple map {data-source="gui:doc/examples/charts/map-simple"}
+### Simple map {data-source="gui:doc/examples/charts/map-simple.py"}
 
 Here is a simple example demonstrating how to plot a line between two
 georeferenced locations.
@@ -92,7 +92,7 @@ The control renders as shown here:
     <figcaption>Flight path</figcaption>
 </figure>
 
-### Multiple paths {data-source="gui:doc/examples/charts/map-lines"}
+### Multiple paths {data-source="gui:doc/examples/charts/map-lines.py"}
 
 If you need to display several distinct paths on top of a map, you must create a trace
 for each.
@@ -205,7 +205,7 @@ Here is how the chart control is displayed:
     <figcaption>US flights</figcaption>
 </figure>
 
-### Bubbles on map {data-source="gui:doc/examples/charts/map-bubbles"}
+### Bubbles on map {data-source="gui:doc/examples/charts/map-bubbles.py"}
 
 You may need to represent some value at their appropriate location.
 

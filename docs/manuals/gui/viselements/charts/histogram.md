@@ -21,7 +21,7 @@ property for a trace set to "histogram".
 
 ## Examples
 
-### Simple histogram {data-source="gui:doc/examples/charts/histogram-simple"}
+### Simple histogram {data-source="gui:doc/examples/charts/histogram-simple.py"}
 
 The simplest histogram would use a data set and represent the number of
 data points that fall in a given bin (between two fixed values).
@@ -70,7 +70,7 @@ data = {
 Then Taipy would have been able to extract the name of the data set and
 use it as the axis label (as you can see in the following example).
 
-### Horizontal histogram {data-source="gui:doc/examples/charts/histogram-horizontal"}
+### Horizontal histogram {data-source="gui:doc/examples/charts/histogram-horizontal.py"}
 
 To display a histogram horizontally (where the values count appear in horizontal bars),
 we can simply set the data set as the value of the [_y_](../chart.md#p-y) property
@@ -108,7 +108,7 @@ The resulting chart looks as follows:
     <figcaption>Horizontal histogram</figcaption>
 </figure>
 
-### Overlying data sets {data-source="gui:doc/examples/charts/histogram-overlay"}
+### Overlying data sets {data-source="gui:doc/examples/charts/histogram-overlay.py"}
 
 You can display several data sets in the same histogram. One way of representing
 this would be to overlay the two histogram displays (and apply some transparency
@@ -178,7 +178,7 @@ Here is what the resulting chart looks like:
     <figcaption>Overlaid data sets</figcaption>
 </figure>
 
-### Stacked data sets {data-source="gui:doc/examples/charts/histogram-stacked"}
+### Stacked data sets {data-source="gui:doc/examples/charts/histogram-stacked.py"}
 
 Histograms can also represent different data sets accumulating their bin
 counts on top of one another.<br/>
@@ -231,7 +231,7 @@ To result in the following figure:
     <figcaption>Stacked data sets</figcaption>
 </figure>
 
-### Cumulative histogram {data-source="gui:doc/examples/charts/histogram-cumulative"}
+### Cumulative histogram {data-source="gui:doc/examples/charts/histogram-cumulative.py"}
 
 Histograms can also represent the sum of the number of observations, bin after
 bin.<br/>
@@ -277,7 +277,7 @@ The resulting chart looks like this:
 It's no surprise to see the count grow to 500, which is the size of
 our initial data set.
 
-### Normalized histogram {data-source="gui:doc/examples/charts/histogram-normalized"}
+### Normalized histogram {data-source="gui:doc/examples/charts/histogram-normalized.py"}
 
 Instead of displaying the count of bins, histograms can also be customized to display
 the proportion of each bin.<br/>
@@ -323,7 +323,7 @@ Here is what the chart looks like:
     <figcaption>Normalized histogram</figcaption>
 </figure>
 
-### Specifying the binning function {data-source="gui:doc/examples/charts/histogram-binning"}
+### Specifying the binning function {data-source="gui:doc/examples/charts/histogram-binning-function.py"}
 
 Histograms usually represent the count of observations for each bin. However, you
 may want to reflect other information on the data set, such as how many times
@@ -397,7 +397,7 @@ The page shows:
     <figcaption>Different binning-functions</figcaption>
 </figure>
 
-### Tuning bins {data-source="gui:doc/examples/charts/histogram-nbins"}
+### Tuning bins {data-source="gui:doc/examples/charts/histogram-nbins.py"}
 
 Histograms can be customized to force the number of bins that Plotly
 computes when facing data sets.<br/>

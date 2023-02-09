@@ -19,7 +19,7 @@ to "pie" to create a pie chart.
 
 ## Examples
 
-### Simple pie chart {data-source="gui:doc/examples/charts/pie-simple"}
+### Simple pie chart {data-source="gui:doc/examples/charts/pie-simple.py"}
 
 In this example, we want to represent the area covered by forests around the world. Only the
 first few countries are represented since too many would make the chart unreadable.
@@ -64,7 +64,7 @@ Here is the resulting chart:
     <figcaption>Simple pie chart</figcaption>
 </figure>
 
-### Styling {data-source="gui:doc/examples/charts/pie-styling"}
+### Styling {data-source="gui:doc/examples/charts/pie-styling.py"}
 
 You can specify what the color of each slice should be.
 
@@ -126,7 +126,7 @@ The colored pie chart renders as follows:
     <figcaption>Styling</figcaption>
 </figure>
 
-### Multiple charts {data-source="gui:doc/examples/charts/pie-multiple"}
+### Multiple charts {data-source="gui:doc/examples/charts/pie-multiple.py"}
 
 You can create a chart control that holds several pie charts and display
 them together.
