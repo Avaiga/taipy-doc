@@ -27,7 +27,7 @@ of the chart control to "heatmap".
 
 ## Examples
 
-### Simple Heatmap {data-source="gui:doc/examples/charts/heatmap-simple"}
+### Simple Heatmap {data-source="gui:doc/examples/charts/heatmap-simple.py"}
 
 This example displays a heatmap representing the temperatures, in °C, in some cities during
 a given season (of the northern hemisphere).
@@ -76,7 +76,7 @@ And here is how the resulting chart will look like on the page:
     <figcaption>Temperatures</figcaption>
 </figure>
 
-### Unbalanced Heatmap {data-source="gui:doc/examples/charts/heatmap-unbalanced"}
+### Unbalanced Heatmap {data-source="gui:doc/examples/charts/heatmap-unbalanced.py"}
 
 The example above was an example where the size of the datasets for the *x* and *y*
 axes was the same.
@@ -138,7 +138,7 @@ And the chart displays as expected:
     <figcaption>Temperatures</figcaption>
 </figure>
 
-### Setting the color scale {data-source="gui:doc/examples/charts/heatmap-colorscale"}
+### Setting the color scale {data-source="gui:doc/examples/charts/heatmap-colorscale.py"}
 
 If you want to change the color scale used in the heatmap cells, you must set the *colorscale*
 property of the property [*options*](../../chart/#p-options) of the chart control.<br/>
@@ -179,7 +179,7 @@ Here is how the page looks like:
     <figcaption>Specific Color Scale</figcaption>
 </figure>
 
-### Annotated Heatmap {data-source="gui:doc/examples/charts/heatmap-annotated"}
+### Annotated Heatmap {data-source="gui:doc/examples/charts/heatmap-annotated.py"}
 
 You may need to display some information in the cells of a heatmap.
 
@@ -264,7 +264,7 @@ And the result looks like this:
     <figcaption>Annotated Heatmap</figcaption>
 </figure>
 
-### Unequal Cell Sizes {data-source="gui:doc/examples/charts/heatmap-unequal-cell-sizes"}
+### Unequal Cell Sizes {data-source="gui:doc/examples/charts/heatmap-unequal-cell-sizes.py"}
 
 You may need to specify the size of each heatmap cell, both in the horizontal and the vertical
 dimensions.
@@ -341,7 +341,7 @@ Here is resulting chart:
     <figcaption>Unequal cell sizes</figcaption>
 </figure>
 
-### Drawing on top of a heatmap {data-source="gui:doc/examples/charts/heatmap-drawing-on-top"}
+### Drawing on top of a heatmap {data-source="gui:doc/examples/charts/heatmap-drawing-on-top.py"}
 
 You can even add another trace on top of a heatmap.
 
