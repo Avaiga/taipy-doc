@@ -172,13 +172,16 @@ class RefManStep(SetupStep):
                             entry_type = TYPE_ID
                     elif e.__module__ == "typing" and hasattr(e, "__name__"):
                         # Manually remove class from 'typing'
-                        if e.__name__ == "NewType" or not e.__name__.startswith(Setup.ROOT_PACKAGE):
-                            continue
                         print("----->" + str(e))
                         print("----->" + str(e.__module__))
                         print("----->" + str(e.__name__))
+                        if e.__name__ == "NewType":
+                            continue
                         entry_type = TYPE_ID
                     else:
+                        print("----->" + str(e))
+                        print("----->" + str(e.__module__))
+                        print("----->" + str(e.__name__))
                         continue
                 # Remove hidden entries
                 if entry in RefManStep.HIDDEN_ENTRIES:
