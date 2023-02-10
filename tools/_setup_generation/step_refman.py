@@ -34,15 +34,28 @@ class RefManStep(SetupStep):
         ("taipy.gui.*.(Gui|State|Markdown|Page)", "taipy.gui"),
         # Core
         ("typing.*", "taipy.core"),
-        ("taipy.core.cycle.cycle.Cycle", "taipy.core"),
-        ("taipy.core.data.data_node.DataNode", "taipy.core"),
+        ("taipy.core._core.Core", "taipy.core"),
+        ("taipy.core.common.alias.CycleId", "taipy.core"),
+        ("taipy.core.common.alias.DataNodeId", "taipy.core"),
+        ("taipy.core.common.alias.Edit", "taipy.core"),
+        ("taipy.core.common.alias.JobId", "taipy.core"),
+        ("taipy.core.common.alias.PipelineId", "taipy.core"),
+        ("taipy.core.common.alias.ScenarioId", "taipy.core"),
+        ("taipy.core.common.alias.TaskId", "taipy.core"),
+        ("taipy.core.common.default_custom_document.DefaultCustomDocument", "taipy.core.common"),
         ("taipy.core.common.frequency.Frequency", "taipy.core"),
+        ("taipy.core.common.scope.Scope", "taipy.core"),
+        ("taipy.core.config.*", "taipy.core.config"),
+        ("taipy.core.cycle.cycle.Cycle", "taipy.core"),
+        ("taipy.core.data.*.*DataNode", "taipy.core.data"),
+        ("taipy.core.data.data_node.DataNode", "taipy.core"),
+        ("taipy.core.data.operator.Operator", "taipy.core.data.operator"),
+        ("taipy.core.data.operator.JoinOperator", "taipy.core.data.operator"),
+        ("taipy.core.exceptions.exceptions.*", "taipy.core.exceptions"),
         ("taipy.core.job.job.Job", "taipy.core"),
         ("taipy.core.pipeline.pipeline.Pipeline", "taipy.core"),
         ("taipy.core.scenario.scenario.Scenario", "taipy.core"),
-        ("taipy.core.common.scope.Scope", "taipy.core"),
         ("taipy.core.job.status.Status", "taipy.core"),
-        ("taipy.core.task.task.Task", "taipy.core"),
         ("taipy.core.taipy.cancel_job", "taipy.core"),
         ("taipy.core.taipy.clean_all_entities", "taipy.core"),
         ("taipy.core.taipy.clean_all_entities_by_version", "taipy.core"),
@@ -73,21 +86,15 @@ class RefManStep(SetupStep):
         ("taipy.core.taipy.unsubscribe_pipeline", "taipy.core"),
         ("taipy.core.taipy.unsubscribe_scenario", "taipy.core"),
         ("taipy.core.taipy.untag", "taipy.core"),
-        ("taipy.core._core.Core", "taipy.core"),
-        ("taipy.core.common.default_custom_document.DefaultCustomDocument", "taipy.core.common"),
-        ("taipy.core.config.*", "taipy.core.config"),
-        ("taipy.core.data.*.*DataNode", "taipy.core.data"),
-        ("taipy.core.data.operator.Operator", "taipy.core.data.operator"),
-        ("taipy.core.data.operator.JoinOperator", "taipy.core.data.operator"),
-        ("taipy.core.exceptions.exceptions.*", "taipy.core.exceptions"),
+        ("taipy.core.task.task.Task", "taipy.core"),
         # Config
-        ("taipy.config.config.Config", "taipy.config"),
         ("taipy.config.checker.issue.Issue", "taipy.config"),
         ("taipy.config.checker.issue_collector.IssueCollector", "taipy.config"),
         ("taipy.config.common.scope.Scope", "taipy.core.config"),
         ("taipy.config.common.frequency.Frequency", "taipy.core.config"),
-        ("taipy.config.unique_section.*", "taipy.config"),
+        ("taipy.config.config.Config", "taipy.config"),
         ("taipy.config.exceptions.exceptions.ConfigurationIssueError", "taipy.config.exceptions"),
+        ("taipy.config.unique_section.*", "taipy.config"),
         # Rest
         ("taipy.rest.rest.Rest", "taipy.rest"),
         # Auth
@@ -160,14 +167,19 @@ class RefManStep(SetupStep):
                     continue
                 entry_type = None
                 if hasattr(e, "__module__") and e.__module__:
-                    # Type alias?
-                    if e.__module__ == "typing" and hasattr(e, "__name__"):
+                    # Handling alias Types
+                    if e.__module__.startswith(Setup.ROOT_PACKAGE):  # For local build
+                        if e.__class__.__name__ == "NewType":
+                            entry_type = TYPE_ID
+                    elif e.__module__ == "typing" and hasattr(e, "__name__"):  # For Readthedoc build
                         # Manually remove class from 'typing'
                         if e.__name__ == "NewType":
                             continue
+                        # Manually remove function from 'typing'
+                        if e.__name__ == "overload":
+                            continue
                         entry_type = TYPE_ID
-                    # Not in our focus package?
-                    elif not e.__module__.startswith(Setup.ROOT_PACKAGE):
+                    else:
                         continue
                 # Remove hidden entries
                 if entry in RefManStep.HIDDEN_ENTRIES:
