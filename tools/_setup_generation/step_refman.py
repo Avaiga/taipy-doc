@@ -167,14 +167,15 @@ class RefManStep(SetupStep):
                     continue
                 entry_type = None
                 if hasattr(e, "__module__") and e.__module__:
-                    # Type alias?
-                    if e.__module__.startswith(Setup.ROOT_PACKAGE):
+                    # Handling alias Types
+                    if e.__module__.startswith(Setup.ROOT_PACKAGE):  # For local build
                         if e.__class__.__name__ == "NewType":
                             entry_type = TYPE_ID
-                    elif e.__module__ == "typing" and hasattr(e, "__name__"):
+                    elif e.__module__ == "typing" and hasattr(e, "__name__"):  # For Readthedoc build
                         # Manually remove class from 'typing'
                         if e.__name__ == "NewType":
                             continue
+                        # Manually remove function from 'typing'
                         if e.__name__ == "overload":
                             continue
                         entry_type = TYPE_ID
