@@ -277,7 +277,7 @@ the list of specific sheets we want to use as the _sheet_name_ parameter.
 
 !!! Important
 
-    - To be able to use a`SQLTableDataNode^` with Microsoft SQL Server you need to run
+    - To be able to use a `SQLTableDataNode^` with Microsoft SQL Server you need to run
     internal dependencies with `pip install taipy[mssql]` and install your corresponding
     [Microsoft ODBC Driver for SQLServer](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
     - To be able to use a `SQLTableDataNode^` with MySQL Server you need to run internal
@@ -383,7 +383,7 @@ provided:
   The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
 - _**exposed_type**_ indicates the data type returned when reading the data node:
     - By default, _exposed_type_ is "pandas", and the data node reads the data
-    as a Pandas DataFrame (`pandas.DataFrame`) when execute the _read_query_.
+      as a Pandas DataFrame (`pandas.DataFrame`) when execute the _read_query_.
     - If the _exposed_type_ provided is "modin", the data node reads the CSV file
       as a Modin DataFrame (`modin.pandas.DataFrame`) when execute the _read_query_.
     - If the _exposed_type_ provided is "numpy", the data node reads the CSV file
@@ -438,6 +438,7 @@ provided:
   configuration will inherit/share the same _json_ file provided in the
   default_path. To avoid this, the path property of a _json_ data node entity
   can be changed at runtime right after its instantiation.<br/>
+
 - _**encoder**_ and _**decoder**_ parameters are optional parameters representing
   the encoder (json.JSONEncoder) and decoder (json.JSONDecoder) used to serialize and
   deserialize JSON data.<br/>
@@ -473,24 +474,24 @@ In this next example, we configure a `JSONDataNode^` with a custom JSON _**encod
 and _**decoder**_:
 
 - In lines 5-7, we define a custom class `SaleRow`, representing data in a JSON object.
+
 - In lines 9-30, we define a custom encoder and decoder for the `SaleRow` class.
     - When [writing a JSONDataNode](../entities/data-node-mgt.md#write-data-node),
-      the `SaleRowEncoder` encodes a `SaleRow` object in JSON format. For example,
-      after the creation of the scenario `scenario`,
+    the `SaleRowEncoder` encodes a `SaleRow` object in JSON format. For example,
+    after the creation of the scenario `scenario`,
         ```python
         scenario.sales_history.write(SaleRow("12/24/2018", 1550))
         ```
-      the previous code writes the following object
-          ```json
-          {
-              "__type__": "SaleRow",
-              "date": "12/24/2018",
-              "nb_sales": 1550,
-          }
-          ```
-      to the file *path/sales.json*.
-
-  - When reading a JSONDataNode, the `SaleRowDecoder` converts a JSON
+    the previous code writes the following object
+        ```json
+        {
+            "__type__": "SaleRow",
+            "date": "12/24/2018",
+            "nb_sales": 1550,
+        }
+        ```
+    to the file *path/sales.json*.
+    - When reading a JSONDataNode, the `SaleRowDecoder` converts a JSON
     object with the attribute `__type__` into a Python object corresponding to the
     attribute's value. In this example, the "SaleRow"` data class.
 
