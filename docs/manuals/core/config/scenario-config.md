@@ -11,10 +11,15 @@ A scenario configuration is necessary to instantiate a [Scenario](../concepts/sc
   nodes instantiated from the data node configuration attached to the comparator.
 - _**properties**_: A dictionary of additional properties.
 
+!!! Warning
+
+    Note that we cannot use the word "_entity_owner" as a key in the properties as it has been reserved for internal use.
+
 # From pipeline configs
+
 Here is a simple example assuming the pipeline configuration `pipeline_cfg` has already been created:
 
-```python linenums="1"
+```python
 from taipy import Config
 
 scenario_cfg = Config.configure_scenario("multiply_scenario",
@@ -23,13 +28,12 @@ scenario_cfg = Config.configure_scenario("multiply_scenario",
 
 In this example, we create a scenario configuration `ScenarioConfig^` from a pipeline configuration already defined.
 
-
 # From task configs
 
 When the scenario configuration contains only one single pipeline configuration, we can also create the
 `ScenarioConfig^` from the task configurations directly.
 
-```python linenums="1"
+```python
 from taipy import Config
 
 scenario_cfg = Config.configure_scenario_from_tasks("multiply_scenario",
@@ -57,7 +61,7 @@ Behind the scenes, a pipeline configuration is created. Its id will be the scena
 Assuming the pipeline configuration `pipeline_cfg` has already been created, here is an example of a weekly
 scenario configuration:
 
-```python  linenums="1"
+```python
 from taipy import Config, Frequency
 
 scenario_cfg = Config.configure_scenario(
@@ -78,8 +82,7 @@ created using `datanode_cfg` as one of its data node configurations. At the scen
 define a function that compares the results for the various scenarios (entities) created with this config. You
 simply need to define such a function in the comparators field. Here’s an example below:
 
-
-```python linenums="1"
+```python
 from taipy import Config
 
 # Calling compare_function(10, 13, 17, 9) returns the following dict
@@ -118,7 +121,7 @@ on the given input parameters.
 
 !!! Info
 
-    Please refer to the [scenario entity comparison](../entities/scenario-cycle-mgt.md) section to see
+    Please refer to the[scenario entity comparison](../entities/scenario-cycle-mgt.md) section to see
     how to compare scenarios using the comparators defined in a `ScenarioConfig^`.
 
 [:material-arrow-right: The next section introduces the global configuration](global-config.md).
