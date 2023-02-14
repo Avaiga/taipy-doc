@@ -11,7 +11,7 @@ A task configuration is necessary to instantiate a [Task](../concepts/task.md). 
 
 Here is a simple example:
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/task_cfg/task-config_simple.py"
 comments=false
@@ -35,7 +35,7 @@ its execution if its input data nodes haven't changed since the previous executi
 Because a Task can have several inputs and outputs, `Config.configure_task()^` can receive
 lists of `DataNodeConfig^` objects.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/task_cfg/task-config_multiple.py"
 comments=false

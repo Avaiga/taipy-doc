@@ -10,7 +10,7 @@ A pipeline configuration is necessary to instantiate a [Pipeline](../concepts/pi
 
     Note that we cannot use the word "_entity_owner" as a key in the properties as it has been reserved for internal use.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/pipeline_cfg/pipeline-config_simple.py"
 comments=false
@@ -20,7 +20,7 @@ comments=false
 In the previous code example, in line 16, we create a pipeline configuration with the id "my_pipeline" and made of a
 single task configuration `task_config`.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/pipeline_cfg/pipeline-config_multiple.py"
 comments=false
@@ -32,7 +32,14 @@ of the two task configurations created in lines 12 and 16 `first_task_cfg` and `
 
 !!! note
 
-    Note that the order of the task_config in the list does not matter. The following lines are equivalent.``python     pipeline_cfg = Config.configure_pipeline("pipeline",                                              [first_task_cfg, second_task_cfg])     ``
-    ``python     pipeline_cfg = Config.configure_pipeline("pipeline",                                              [second_task_cfg, first_task_cfg])     ``
+    Note that the order of the task_config in the list does not matter. The following lines are equivalent.
+    ```python
+    pipeline_cfg = Config.configure_pipeline("pipeline",
+                                             [first_task_cfg, second_task_cfg])
+    ```
+    ```python
+    pipeline_cfg = Config.configure_pipeline("pipeline",
+                                             [second_task_cfg, first_task_cfg])
+    ```
 
 [:material-arrow-right: The next section introduces the scenario configuration](scenario-config.md).

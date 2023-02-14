@@ -4,7 +4,7 @@ To create an instance of a [Data node](../concepts/data-node.md), a data node
 configuration must first be provided. `DataNodeConfig^` is used to configure data nodes.
 To configure a new `DataNodeConfig^`, one can use the function `Config.configure_data_node()^`.
 
-```python
+```python linenums="1" linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_simple.py"
 comments=false
@@ -17,30 +17,30 @@ creates a data node configuration, and registers it in the `Config^` singleton.
 
 The attributes available on data nodes are:
 
-- _**id**_ is the string identifier of the data node config.`<br/>`
-  It is the only **mandatory** parameter and must be a unique and valid Python
-  identifier.
-- _**scope**_ is a `Scope^`.`<br/>`
-  It corresponds to the [scope](../concepts/scope.md) of the data node that will
-  be instantiated from the data node configuration. The **default value** is
-  `Scope.SCENARIO`.
+- _**id**_ is the string identifier of the data node config.<br/>
+    It is the only **mandatory** parameter and must be a unique and valid Python
+    identifier.
+- _**scope**_ is a `Scope^`.<br/>
+    It corresponds to the [scope](../concepts/scope.md) of the data node that will
+    be instantiated from the data node configuration. The **default value** is
+    `Scope.SCENARIO`.
 - _**storage_type**_ is an attribute that indicates the storage type of the
-  data node.`<br/>`
-  The possible values are [&#34;pickle&#34;](#pickle) (**the default value**), [&#34;csv&#34;](#csv),
-  [&#34;excel&#34;](#excel), [&#34;json&#34;](#json), [&#34;mongo_collection&#34;](#mongo-collection),
-  [&#34;parquet&#34;](#parquet), [&#34;sql&#34;](#sql), [&#34;sql_table&#34;](#sql_table),
-  [&#34;in_memory&#34;](#in-memory), or [&#34;generic&#34;](#generic).`<br/>`
-  As explained in the following subsections, depending on the _storage_type_, other
-  configuration attributes must be provided in the _properties_ parameter.
+    data node.<br/>
+    The possible values are [&#34;pickle&#34;](#pickle) (**the default value**), [&#34;csv&#34;](#csv),
+    [&#34;excel&#34;](#excel), [&#34;json&#34;](#json), [&#34;mongo_collection&#34;](#mongo-collection),
+    [&#34;parquet&#34;](#parquet), [&#34;sql&#34;](#sql), [&#34;sql_table&#34;](#sql_table),
+    [&#34;in_memory&#34;](#in-memory), or [&#34;generic&#34;](#generic).<br/>
+    As explained in the following subsections, depending on the _storage_type_, other
+    configuration attributes must be provided in the _properties_ parameter.
 - Any other custom attribute can be provided through the parameter _**properties**_,
-  a kwargs dictionary accepting any number of custom parameters (a description,
-  a label, a tag, etc.) (It is recommended to read
-  [doc](https://realpython.com/python-kwargs-and-args/) if you are not familiar with
-  **kwargs arguments)
-  `<br/>`
-  This _properties_ dictionary is used to configure the parameters specific to each
-  storage type. It is copied in the dictionary properties of all the data nodes
-  instantiated from this data node configuration.`<br/>`
+    a kwargs dictionary accepting any number of custom parameters (a description,
+    a label, a tag, etc.) (It is recommended to read
+    [doc](https://realpython.com/python-kwargs-and-args/) if you are not familiar with
+    **kwargs arguments)
+    <br/>
+    This _properties_ dictionary is used to configure the parameters specific to each
+    storage type. It is copied in the dictionary properties of all the data nodes
+    instantiated from this data node configuration.<br/>
 
 !!! Warning
 
@@ -48,7 +48,7 @@ The attributes available on data nodes are:
 
 Below are two examples of data node configurations.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_two-examples.py"
 comments=false
@@ -57,7 +57,7 @@ comments=false
 
 In lines 3-4, we configured a simple data node with the id "date_cfg". The default
 value for _scope_ is `SCENARIO`. The _storage_type_ is set to the default value
-"pickle".`<br/>`
+"pickle".<br/>
 An optional custom property called _description_ is also added: this property is
 propagated to the data nodes instantiated from this config.
 
@@ -103,21 +103,21 @@ the [Data node configuration](data-node-config.md) section, two optional
 parameters can be provided.
 
 - _**default_path**_ represents the default file path used to read and write
-  the data of the data nodes instantiated from the _pickle_ configuration.`<br/>`
+  the data of the data nodes instantiated from the _pickle_ configuration.<br/>
   It is used to populate the path property of the entities (_pickle_ data nodes)
   instantiated from the _pickle_ data node configuration. That means by default
   all the entities (_pickle_ data nodes) instantiated from the same _pickle_
   configuration will inherit/share the same _pickle_ file provided in the
   default_path. To avoid this, the path property of a _pickle_ data node entity
-  can be changed at runtime right after its instantiation.`<br/>`
+  can be changed at runtime right after its instantiation.<br/>
   If no value is provided, Taipy will use an internal path in the Taipy storage folder
   (more details on the Taipy storage folder configuration are available in the
   [Global configuration](global-config.md) documentation).
 - _**default_data**_ indicates data automatically written to the data node
-  _pickle_ upon creation.`<br/>`
+  _pickle_ upon creation.<br/>
   Any serializable Python object can be used. The default value is `None`.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_pickle.py"
 comments=false
@@ -134,7 +134,8 @@ added an optional custom description.
 
 !!! Note
 
-    To configure a pickle data node, it is equivalent to using the method`Config.configure_pickle_data_node()^` or the method `Config.configure_data_node()^`
+    To configure a pickle data node, it is equivalent to using the method
+    `Config.configure_pickle_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="pickle"`.
 
 ## CSV
@@ -146,20 +147,21 @@ can be used. In addition to the generic parameters described in the
 provided:
 
 - _**default_path**_ represents the default file path used to read and write
-  data pointed by the data nodes instantiated from the _csv_ configuration.`<br/>`
+  data pointed by the data nodes instantiated from the _csv_ configuration.<br/>
   It is used to populate the path property of the entities (_csv_ data nodes)
   instantiated from the _csv_ data node configuration. That means by default
   all the entities (_csv_ data nodes) instantiated from the same _csv_
   configuration will inherit/share the same _csv_ file provided in the
   default_path. To avoid this, the path property of a _csv_ data node entity
-  can be changed at runtime right after its instantiation.`<br/>`
-- _**has_header**_ indicates if the file has a header of not.`<br/>`
+  can be changed at runtime right after its instantiation.<br/>
+
+- _**has_header**_ indicates if the file has a header of not.<br/>
   By default, _has_header_ is True and Taipy will use the 1st row in the CSV file as
   the header.
+
 - _**exposed_type**_ indicates the data type returned when reading the data node (more
   examples of reading from CSV data node with different _exposed_type_ is available on
   [Read / Write a data node](../entities/data-node-mgt.md#csv) documentation):
-
   - By default, _exposed_type_ is "pandas", and the data node reads the CSV file
     as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
   - If the _exposed_type_ provided is "modin", the data node reads the CSV
@@ -170,7 +172,7 @@ provided:
     a list of custom objects with the given custom class. Each object represents
     a row in the CSV file.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_csv.py"
 comments=false
@@ -193,7 +195,8 @@ that is defined for this CSV file, we provide it as the _exposed_type_ parameter
 
 !!! Note
 
-    To configure a CSV data node, it is equivalent to using the method`Config.configure_csv_data_node()^` or the method `Config.configure_data_node()^`
+    To configure a CSV data node, it is equivalent to using the method
+    `Config.configure_csv_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="csv"`.
 
 ## Excel
@@ -205,18 +208,19 @@ can be used. In addition to the generic parameters described in the
 parameters are provided.
 
 - _**default_path**_ represents the default file path used to read and write
-  data pointed by the data nodes instantiated from the _Excel_ configuration.`<br/>`
+  data pointed by the data nodes instantiated from the _Excel_ configuration.<br/>
   It is used to populate the path property of the entities (_Excel_ data nodes)
   instantiated from the _Excel_ data node configuration. That means by default
   all the entities (_Excel_ data nodes) instantiated from the same _Excel_
   configuration will inherit/share the same _Excel_ file provided in the
   default_path. To avoid this, the path property of a _Excel_ data node entity
-  can be changed at runtime right after its instantiation.`<br/>`
-- _**has_header**_ indicates if the file has a header of not.`<br/>`
+  can be changed at runtime right after its instantiation.<br/>
+
+- _**has_header**_ indicates if the file has a header of not.<br/>
   By default, _has_header_ is True and Taipy will use the 1st row in the Excel file
   as the header.
-- _**sheet_name**_ represents which specific sheet in the Excel file to read:
 
+- _**sheet_name**_ represents which specific sheet in the Excel file to read:
   - By default, _sheet_name_ is None and the data node will return all sheets in
     the Excel file when reading it.
   - If _sheet_name_ is provided as a string, the data node will read only the data
@@ -224,10 +228,10 @@ parameters are provided.
   - If _sheet_name_ is provided with a list of sheet names, the data node will return
     a dictionary with the key being the sheet name and the value being the data of
     the corresponding sheet.
+
 - _**exposed_type**_ indicates the data type returned when reading the data node (more
   examples of reading from Excel data node with different _exposed_type_ is available
   on [Read / Write a data node](../entities/data-node-mgt.md#excel) documentation):
-
   - By default, _exposed_type_ is "pandas", and the data node reads the Excel
     file as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
   - If the _exposed_type_ provided is "modin", the data node reads the Excel
@@ -239,7 +243,7 @@ parameters are provided.
     creates a list of custom objects with the given custom class. Each object
     represents a row in the Excel file.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_excel.py"
 comments=false
@@ -265,7 +269,8 @@ the list of specific sheets we want to use as the _sheet_name_ parameter.
 
 !!! Note
 
-    To configure an Excel data node, it is equivalent to using the method`Config.configure_excel_data_node()^` or the method `Config.configure_data_node()^`
+    To configure an Excel data node, it is equivalent to using the method
+    `Config.configure_excel_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="excel"`.
 
 ## SQL Table
@@ -293,29 +298,29 @@ following parameters can be provided:
 - _**db_password**_ represents the database user's password that will be used by Taipy to
   access the database.
 - _**db_name**_ represents the name of the database.
-- _**db_engine**_ represents the engine of the database.`<br/>`
-  Possible values are _"sqlite"_, _"mssql"_, _"mysql"_, or _"postgresql"_.
+- _**db_engine**_ represents the engine of the database.<br/>
+    Possible values are _"sqlite"_, _"mssql"_, _"mysql"_, or _"postgresql"_.
 - _**table_name**_ represents the name of the table to read from and write into.
-- _**db_port**_ represents the database port that will be used by Taipy to access the database.`<br/>`
+- _**db_port**_ represents the database port that will be used by Taipy to access the database.<br/>
   The default value of _db_port_ is 1433.
-- _**db_host**_ represents the database host that will be used by Taipy to access the database.`<br/>`
-  The default value of _db_host_ is "localhost".
-- _**db_driver**_ represents the database driver that will be used by Taipy.`<br/>`
-  The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
+- _**db_host**_ represents the database host that will be used by Taipy to access the database.<br/>
+    The default value of _db_host_ is "localhost".
+- _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
+    The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
 - _**exposed_type**_ indicates the data type returned when reading the data node (more
   examples of reading from SQL Table data node with different _exposed_type_ is available on
   [Read / Write a data node](../entities/data-node-mgt.md#sql-table) documentation):
-  - By default, _exposed_type_ is "pandas", and the data node reads the SQL table
-    as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
-  - If the _exposed_type_ provided is "modin", the data node reads the SQL table
-    as a Modin DataFrame (`modin.pandas.DataFrame`) when executing the read method.
-  - If the _exposed_type_ provided is "numpy", the data node reads the SQL table
-    as a NumPy array (`numpy.ndarray`) when executing the read method.
-  - If the provided _exposed_type_ is a custom Python class, the data node creates
-    a list of custom objects with the given custom class. Each object represents
-    a record in the SQL table.
+    - By default, _exposed_type_ is "pandas", and the data node reads the SQL table
+        as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
+    - If the _exposed_type_ provided is "modin", the data node reads the SQL table
+        as a Modin DataFrame (`modin.pandas.DataFrame`) when executing the read method.
+    - If the _exposed_type_ provided is "numpy", the data node reads the SQL table
+        as a NumPy array (`numpy.ndarray`) when executing the read method.
+    - If the provided _exposed_type_ is a custom Python class, the data node creates
+        a list of custom objects with the given custom class. Each object represents
+        a record in the SQL table.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_sql-table.py"
 comments=false
@@ -333,14 +338,15 @@ data node is written, it deletes all the data in the table and insert the new da
 
 !!! Note
 
-    To configure a SQL table data node, it is equivalent to using the method`Config.configure_sql_table_data_node()^` or the method `Config.configure_data_node()^`
+    To configure a SQL table data node, it is equivalent to using the method
+    `Config.configure_sql_table_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="sql_table"`.
 
 ## SQL
 
 !!! Important
 
-    - To be able to use a`SQLTableDataNode^` with Microsoft SQL Server you need to run
+    - To be able to use a `SQLTableDataNode^` with Microsoft SQL Server you need to run
     internal dependencies with `pip install taipy[mssql]` and install your corresponding
     [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
     - To be able to use a `SQLTableDataNode^` with MySQL Server you need to run internal
@@ -361,31 +367,31 @@ provided:
 - _**db_password**_ represents the database user's password that will be used by Taipy to
   access the database.
 - _**db_name**_ represents the name of the database.
-- _**db_engine**_ represents the engine of the database.`<br/>`
-  Possible values are _"sqlite"_, _"mssql"_, _"mysql"_, or _"postgresql"_.
+- _**db_engine**_ represents the engine of the database.<br/>
+    Possible values are _"sqlite"_, _"mssql"_, _"mysql"_, or _"postgresql"_.
 - _**read_query**_ represents the SQL query that will be used by Taipy to read the data
   from the database.
 - _**write_query_builder**_ is a callable function that takes in the data as an input
   parameter and returns a list of SQL queries to be executed when the write method is
   called.
-- _**db_port**_ represents the database port that will be used by Taipy to access the database.`<br/>`
+- _**db_port**_ represents the database port that will be used by Taipy to access the database.<br/>
   The default value of _db_port_ is 1433.
-- _**db_host**_ represents the database host that will be used by Taipy to access the database.`<br/>`
+- _**db_host**_ represents the database host that will be used by Taipy to access the database.<br/>
   The default value of _db_host_ is "localhost".
-- _**db_driver**_ represents the database driver that will be used by Taipy.`<br/>`
+- _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
   The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
 - _**exposed_type**_ indicates the data type returned when reading the data node:
-  - By default, _exposed_type_ is "pandas", and the data node reads the data
-    as a Pandas DataFrame (`pandas.DataFrame`) when execute the _read_query_.
-  - If the _exposed_type_ provided is "modin", the data node reads the CSV file
-    as a Modin DataFrame (`modin.pandas.DataFrame`) when execute the _read_query_.
-  - If the _exposed_type_ provided is "numpy", the data node reads the CSV file
-    as a NumPy array (`numpy.ndarray`) when execute the _read_query_.
-  - If the provided _exposed_type_ is a custom Python class, the data node
-    creates a list of custom objects with the given custom class. Each object represents
-    a record in the table returned by the _read_query_.
+      - By default, _exposed_type_ is "pandas", and the data node reads the data
+          as a Pandas DataFrame (`pandas.DataFrame`) when execute the _read_query_.
+      - If the _exposed_type_ provided is "modin", the data node reads the CSV file
+        as a Modin DataFrame (`modin.pandas.DataFrame`) when execute the _read_query_.
+      - If the _exposed_type_ provided is "numpy", the data node reads the CSV file
+        as a NumPy array (`numpy.ndarray`) when execute the _read_query_.
+      - If the provided _exposed_type_ is a custom Python class, the data node
+        creates a list of custom objects with the given custom class. Each object represents
+        a record in the table returned by the _read_query_.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_sql.py"
 comments=false
@@ -411,7 +417,8 @@ _write_query_builder_ is a `pandas.DataFrame`.
 
 !!! Note
 
-    To configure a SQL data node, it is equivalent to using the method`Config.configure_sql_data_node()^` or the method `Config.configure_data_node()^`
+    To configure a SQL data node, it is equivalent to using the method
+    `Config.configure_sql_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="sql"`.
 
 ## JSON
@@ -423,20 +430,20 @@ In addition to the generic parameters described in the
 provided:
 
 - _**default_path**_ represents the default file path used to read and write
-  data pointed by the data nodes instantiated from the _json_ configuration.`<br/>`
+  data pointed by the data nodes instantiated from the _json_ configuration.<br/>
   It is used to populate the path property of the entities (_json_ data nodes)
   instantiated from the _json_ data node configuration. That means by default
   all the entities (_json_ data nodes) instantiated from the same _json_
   configuration will inherit/share the same _json_ file provided in the
   default_path. To avoid this, the path property of a _json_ data node entity
-  can be changed at runtime right after its instantiation.`<br/>`
+  can be changed at runtime right after its instantiation.<br/>
 - _**encoder**_ and _**decoder**_ parameters are optional parameters representing
   the encoder (json.JSONEncoder) and decoder (json.JSONDecoder) used to serialize and
-  deserialize JSON data.`<br/>`
+  deserialize JSON data.<br/>
   Check out [JSON Encoders and Decoders](https://docs.python.org/3/library/json.html#encoders-and-decoders)
   documentation for more details.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_json.py"
 comments=false
@@ -454,7 +461,7 @@ decode Python [`enum.Enum`](https://docs.python.org/3/library/enum.html),
 [`datetime.timedelta`](https://docs.python.org/3/library/datetime.html#timedelta-objects),
 and [dataclass](https://docs.python.org/3/library/dataclasses.html) object.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_json-with-encoder.py"
 comments=false
@@ -499,17 +506,17 @@ parameters described in the [Data node configuration](data-node-config.md)
 section, the following parameters can be provided:
 
 - _**default_path**_ represents the default file path used to read and write
-  data pointed by the data nodes instantiated from the _Parquet_ configuration.`<br/>`
+  data pointed by the data nodes instantiated from the _Parquet_ configuration.<br/>
   It is used to populate the path property of the entities (_Parquet_ data nodes)
   instantiated from the _Parquet_ data node configuration. That means by default
   all the entities (_Parquet_ data nodes) instantiated from the same _Parquet_
   configuration will inherit/share the same _Parquet_ file provided in the
   default_path. To avoid this, the path property of a _Parquet_ data node entity
-  can be changed at runtime right after its instantiation.`<br/>`
-- _**engine**_ represents the Parquet library to use.`<br/>`
-  Possible values are _"fastparquet"_ or _"pyarrow"_. The default value is _"pyarrow"_.`<br/>`
+  can be changed at runtime right after its instantiation.<br/>
+- _**engine**_ represents the Parquet library to use.<br/>
+  Possible values are _"fastparquet"_ or _"pyarrow"_. The default value is _"pyarrow"_.<br/>
   Using the _"fastparquet"_ engine requires installation with `pip install taipy[fastparquet]`.
-- _**compression**_ is the name of the compression to use.`<br/>`
+- _**compression**_ is the name of the compression to use.<br/>
   Possible values are _"snappy"_, _"gzip"_, _"brotli"_ and `None`. The default value is
   _"snappy"_. Use None for no compression.
 - _**read_kwargs**_ is a dictionary of additional parameters passed to the
@@ -517,7 +524,7 @@ section, the following parameters can be provided:
   method.
 - _**write_kwargs**_ is a dictionary of additional parameters passed to the
   [`pandas.DataFrame.to_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html)
-  method.`<br/>`
+  method.<br/>
   The parameters in _"read_kwargs"_ and _"write_kwargs"_ have a **higher precedence** than the
   top-level parameters (**engine** and **compression**) which are also passed to Pandas. Passing
   `read_kwargs= {"engine": "fastparquet", "compression": "gzip"}` will override the **engine** and
@@ -606,9 +613,9 @@ section, multiple parameters can be provided.
   - An optional `encoder()` method to encode the object's properties to the Mongo collection format when writing.
 - _**db_username**_ represents the username to be used to access MongoDB.
 - _**db_password**_ represents the user's password to be used by Taipy to access MongoDB.
-- _**db_port**_ represents the database port to be used to access MongoDB.`<br/>`
+- _**db_port**_ represents the database port to be used to access MongoDB.<br/>
   The default value of _db_port_ is 27017.
-- _**db_host**_ represents the database host to be used to access MongoDB.`<br/>`
+- _**db_host**_ represents the database host to be used to access MongoDB.<br/>
   The default value of _db_host_ is "localhost".
 
 ```python

@@ -8,7 +8,7 @@ This is the list of changes to Taipy releases as they were published.
 
 !!! note "Migration"
 
-    Please refer to the[Migration page](./migration.md) for potential migration paths for your applications
+    Please refer to the [Migration page](./migration.md) for potential migration paths for your applications
     implemented on legacy Taipy versions.
 
 ## Taipy Studio: 1.0
@@ -23,9 +23,9 @@ building Taipy applications.
 It mainly provides:
 
 - A graphical editor for building configuration files, so one does not have
-  to code configurations in Python any longer;
+    to code configurations in Python any longer;
 - IntelliSense applied to the Markdown syntax extension that Taipy GUI
-  uses to define the visual elements in the interface pages.
+    uses to define the visual elements in the interface pages.
 
 You can refer to the [Taipy Studio User Manual](manuals/studio/index.md) section for more
 information.
@@ -48,31 +48,31 @@ details on how to migrate from version older than 2.1.
 <h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
 2.1
 
-- Taipy and all its dependencies now support Python 3.11.`<br/>`
+- Taipy and all its dependencies now support Python 3.11.<br/>
   See [Python documentation](https://docs.python.org/3/whatsnew/3.11.html) for details.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.1.0
 
 - A security feature has been added: the file `.taipyignore`, located next to
-  the Python main file, can list the paths that you want to prevent access to.`<br/>`
+  the Python main file, can list the paths that you want to prevent access to.<br/>
   See [issue #501](https://github.com/Avaiga/taipy-gui/issues/501) or
   [this section](manuals/gui/configuration.md#protect-your-application-files) for
   details.
 - Charts can use a [Decimator]() instance that cleverly filters data
-  points out to greatly improve performance.`<br/>`
+  points out to greatly improve performance.<br/>
   See the [Decimator documentation]() for more details.
-- Charts now support polar, funnel, candlesticks and many other types of charts.`<br/>`
+- Charts now support polar, funnel, candlesticks and many other types of charts.<br/>
   See the [chart control](manuals/gui/viselements/chart.md) section for details.
 - Charts now support the dark theme automatically.
-- Tooltips can be set on individual table cells.`<br/>`
+- Tooltips can be set on individual table cells.<br/>
   See the [example](manuals/gui/viselements/table.md#cell-tooltip) for more information.
 - [Long running callbacks](manuals/gui/callbacks.md#long-running-callbacks) have
-  been improved to allow for easily returning a value.`<br/>`
+  been improved to allow for easily returning a value.<br/>
   See the documentation of the `invoke_long_callback()^` function or the
   [issue #547](https://github.com/Avaiga/taipy-gui/issues/547) for more details.
-- Developers can specify the location of the Taipy webapp, for debugging purposes.`<br/>`
-  The `--webapp-path` command line option allows to specify that location.`<br/>`
+- Developers can specify the location of the Taipy webapp, for debugging purposes.<br/>
+  The `--webapp-path` command line option allows to specify that location.<br/>
   See [issue #564](https://github.com/Avaiga/taipy-gui/issues/564).
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
@@ -80,7 +80,7 @@ details on how to migrate from version older than 2.1.
 
 - New version management system for Taipy applications. Users can now run an application in development
   mode, save a version of the application as an experiment version, re-run older experiment versions,
-  and push a version to production.`<br/>`
+  and push a version to production.<br/>
   See the [Version management system](./manuals/core/versioning/index.md) documentation page for more details.
 - New data node named [MongoCollectionDataNode](./manuals/core/config/data-node-config.md#mongo-collection).
   It represents the data from a MongoDB collection.
@@ -104,11 +104,11 @@ details on how to migrate from version older than 2.1.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.1.0
 
-- The Pie charts now use the *values* property to set values instead of *x*.`<br/>`
+- The Pie charts now use the *values* property to set values instead of *x*.<br/>
   See [Pie charts](manuals/gui/viselements/charts/pie.md) for details.
-- Unselected data points or traces in charts now preserve their original opacity.`<br/>`
+- Unselected data points or traces in charts now preserve their original opacity.<br/>
   See [issue #496](https://github.com/Avaiga/taipy-gui/issues/496).
-- `class_name` is now a dynamic property.`<br/>`
+- `class_name` is now a dynamic property.<br/>
   See [issue #480](https://github.com/Avaiga/taipy-gui/issues/480).
 - The *allow_unsafe_werkzeug* option of [Werkzeug](https://werkzeug.palletsprojects.com/)
   (that [Flask](https://flask.palletsprojects.com/) depends on for the WSGI part) is forced
@@ -145,20 +145,20 @@ Published on 2022-10.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.0.0
 
-- Extension API: custom visual elements can be integrated into Taipy GUI applications.`<br/>`
-  Third party HTML components can be integrated into Taipy GUI pages to address specific use cases.`<br/>`
+- Extension API: custom visual elements can be integrated into Taipy GUI applications.<br/>
+  Third party HTML components can be integrated into Taipy GUI pages to address specific use cases.<br/>
   See [Extension API](manuals/gui/extension.md) for details.
 - New callbacks (`on_init`, `on_navigate`, `on_exception` and `on_status`) can be used to initialize a new
   session, detect navigation events, trigger code when exceptions are raised in user code,
-  and invoke code when a *status* page is requested.`<br/>`
+  and invoke code when a *status* page is requested.<br/>
   See [Callbacks](manuals/gui/callbacks.md) for details.
-- New functions allow applications to invoke long-running callbacks without blocking.`<br/>`
+- New functions allow applications to invoke long-running callbacks without blocking.<br/>
   See [Long Running Callbacks](manuals/gui/callbacks.md#long-running-callbacks) for
   details.
 - The Taipy GUI application configuration uses the generic Taipy configuration mechanism exposed in the
   new `taipy-config` package.
-- An application can request the status of the server application using the "status" predefined page.`<br/>`
-- The new 'base' property of the chart control makes it possible to create Gantt chart-like displays.`<br/>`
+- An application can request the status of the server application using the "status" predefined page.<br/>
+- The new 'base' property of the chart control makes it possible to create Gantt chart-like displays.<br/>
   See [Gantt Charts](../manuals/gui/viselements/charts/gantt) for details.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
@@ -210,16 +210,16 @@ Published on 2022-10.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.0.2
 
-- `image` control may not render properly.`<br/>`
+- `image` control may not render properly.<br/>
   See [issue #436](https://github.com/Avaiga/taipy-gui/issues/436).
-- Clarify and improve the `editable` (and `editable[]`) property in the `table` control.`<br/>`
+- Clarify and improve the `editable` (and `editable[]`) property in the `table` control.<br/>
   See [issue #464](https://github.com/Avaiga/taipy-gui/issues/464).
-- [gui] section in configuration files breaks the application.`<br/>`
+- [gui] section in configuration files breaks the application.<br/>
   See [issue #469](https://github.com/Avaiga/taipy-gui/issues/469).
 
 2.0.1
 
-- Bar charts' "barmode" set to "stack" is broken.`<br/>`
+- Bar charts' "barmode" set to "stack" is broken.<br/>
   See [issue #445](https://github.com/Avaiga/taipy-gui/issues/445).
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
@@ -261,13 +261,13 @@ Published on 2022-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 1.1.3
 
-- The client-server communication settings are extended to accommodate various Flask deployment scenarios.`<br/>`
+- The client-server communication settings are extended to accommodate various Flask deployment scenarios.<br/>
   See the documentation for the *async_mode* parameter to `Gui.run()^` for more information.
-- Implicit re-run of the `Gui^` instance in Notebook environments.`<br/>`
+- Implicit re-run of the `Gui^` instance in Notebook environments.<br/>
   See [issue #320](https://github.com/Avaiga/taipy-gui/issues/320).
-- Test server/client versions for safe interoperability.`<br/>`
+- Test server/client versions for safe interoperability.<br/>
   See [issue #323](https://github.com/Avaiga/taipy-gui/issues/323).
-- Allow the edition of specific table columns.`<br/>`
+- Allow the edition of specific table columns.<br/>
   See [issue #366](https://github.com/Avaiga/taipy-gui/issues/366).
 
 1.1.0
@@ -275,14 +275,14 @@ Published on 2022-06.
 - The `State^` instance can be initialized in a user-defined function. See the _on_init_
   attribute of the `Gui^` class for more details.
 - Page definitions and the bound variables can be isolated in a module to clarify the
-  application code organization.`<br/>`
+  application code organization.<br/>
   See this [section](manuals/gui/binding.md#scope-for-variable-binding) for details.
 - The [`chart`](manuals/gui/viselements/chart.md) control can display georeferenced data on top
-  of maps.`<br/>`
+  of maps.<br/>
   See this [example](manuals/gui/viselements/charts/others.md#plotting-on-a-map) for details.
 - The [`input`](manuals/gui/viselements/input.md) and [`slider`](manuals/gui/viselements/slider.md)
   controls have a new _change_delay_ property that lets you tune how fast you want to propagate
-  changes.`<br/>`
+  changes.<br/>
   This allows for a better user experience.
 - The [`input`](manuals/gui/viselements/input.md) control has a new _password_ property that, if True,
   obscures the user input.
@@ -308,20 +308,20 @@ Published on 2022-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 1.1.3
 
-- Error fixed when modifying a State dictionary entry in a callback.`<br/>`
+- Error fixed when modifying a State dictionary entry in a callback.<br/>
   See [issue #356](https://github.com/Avaiga/taipy-gui/issues/356).
-- Boolean values not editable in tables.`<br/>`
+- Boolean values not editable in tables.<br/>
   See [issue #365](https://github.com/Avaiga/taipy-gui/issues/365).
-- Crash fixed when using a dictionary in the labels property of the slider control.`<br/>`
+- Crash fixed when using a dictionary in the labels property of the slider control.<br/>
   See [issue #379](https://github.com/Avaiga/taipy-gui/issues/379).
 
 1.1.0
 
 - Concurrency issues were fixed.
 - The [_attr_list_](https://python-markdown.github.io/extensions/attr_list) extension can
-  be used to style individual Markdown elements without the need for a CSS file.`<br/>`
+  be used to style individual Markdown elements without the need for a CSS file.<br/>
   See [issue #185](https://github.com/Avaiga/taipy-gui/issues/185).
-- Taipy supports HTTPS via reverse proxies.`<br/>`
+- Taipy supports HTTPS via reverse proxies.<br/>
   See [issue #263](https://github.com/Avaiga/taipy-gui/issues/263).
 
 ### Deprecations
@@ -329,12 +329,12 @@ Published on 2022-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 1.1.0
 
-- The _path_ attribute of `DataNodeConfig`, for CSV, Excel and Pickle types is now deprecated.`<br/>`
+- The _path_ attribute of `DataNodeConfig`, for CSV, Excel and Pickle types is now deprecated.<br/>
   _default_path_ must be used instead: it is the default path to use when instantiating a data node from
   the config. Note that the attribute in the `DataNode` entity is still called _path_.
-- The _last_edition_date_ attribute of data nodes is now deprecated.`<br/>`
+- The _last_edition_date_ attribute of data nodes is now deprecated.<br/>
   _last_edit_date_ must be used instead.
-- The _edition_in_progress_ attribute of data nodes is now deprecated.`<br/>`
+- The _edition_in_progress_ attribute of data nodes is now deprecated.<br/>
   _edit_in_progress_ must be used instead.
 
 ## Enterprise edition: 1.1
