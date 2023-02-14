@@ -2,6 +2,7 @@
 hide:
   - navigation
 ---
+
 # Release Notes
 
 This is the list of changes to Taipy releases as they were published.
@@ -75,6 +76,7 @@ details on how to migrate from version older than 2.1.
   The `--webapp-path` command line option allows to specify that location.<br/>
   See [issue #564](https://github.com/Avaiga/taipy-gui/issues/564).
 
+
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.1.0
 
@@ -98,6 +100,7 @@ details on how to migrate from version older than 2.1.
 - The **sql** _repository_type_ is now available on community edition to store Core entities in an
   SQL database. See [SQL storage section](./manuals/core/config/global-config.md#sql-storage-for-taipy-entities).
 - The version required for [openpyxl](https://openpyxl.readthedocs.io/en/stable/) has been downgraded from "openpyxl>=3.0.7,<4.0" to "openpyxl<3.1.0" to match the version used by [Modin](https://modin.readthedocs.io/en/stable/).
+
 
 ### Improvements and changes
 
@@ -129,6 +132,7 @@ details on how to migrate from version older than 2.1.
 - The _last_edit_date_ attribute of a data node is now updated when the corresponding data is modified
   by either a Taipy task execution or an external factor. This behavior is limited to file-based
   data nodes: CSV, Excel, JSON, and pickle data nodes only.
+
 
 ## Community edition: 2.0
 
@@ -181,6 +185,7 @@ Published on 2022-10.
 2.0.0
 
 - The new `taipy-config` package was exposed to be used by any other Taipy package for configuration and logging.
+
 
 ### Improvements and changes
 
@@ -256,6 +261,7 @@ Published on 2022-06.
 [`taipy-core` 1.1](https://pypi.org/project/taipy-core/1.1.0/) and
 [`taipy-rest` 1.1](https://pypi.org/project/taipy-rest/1.1.0/) packages.
 
+
 ### Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
@@ -292,6 +298,7 @@ Published on 2022-06.
 - The [`layout`](manuals/gui/viselements/layout.md) block has new syntax that makes it easier to define
   a repetition of column definition.
 - Support for multiple assignment to variables in _on_change()_.
+
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 1.1.0
