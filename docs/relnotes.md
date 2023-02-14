@@ -99,7 +99,6 @@ details on how to migrate from version older than 2.1.
   _expiration_date_ attribute). `False` otherwise.
 - The **sql** _repository_type_ is now available on community edition to store Core entities in an
   SQL database. See [SQL storage section](./manuals/core/config/global-config.md#sql-storage-for-taipy-entities).
-- The version required for [openpyxl](https://openpyxl.readthedocs.io/en/stable/) has been downgraded from "openpyxl>=3.0.7,<4.0" to "openpyxl<3.1.0" to match the version used by [Modin](https://modin.readthedocs.io/en/stable/).
 
 
 ### Improvements and changes
@@ -133,6 +132,14 @@ details on how to migrate from version older than 2.1.
   by either a Taipy task execution or an external factor. This behavior is limited to file-based
   data nodes: CSV, Excel, JSON, and pickle data nodes only.
 
+### Significant bug fixes
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.1.2
+
+- The version required for [openpyxl](https://openpyxl.readthedocs.io/en/stable/) has been downgraded
+  from "openpyxl>=3.0.7,<4.0" to "openpyxl<3.1.0" to match the version used by
+  [Modin](https://modin.readthedocs.io/en/stable/).
 
 ## Community edition: 2.0
 
