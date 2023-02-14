@@ -16,10 +16,9 @@ A scenario configuration is necessary to instantiate a [Scenario](../concepts/sc
     Note that we cannot use the word "_entity_owner" as a key in the properties as it has been reserved for internal use.
 
 # From pipeline configs
-
 Here is a simple example assuming the pipeline configuration `pipeline_cfg` has already been created:
 
-```python  linenums="1"
+```python linenums="1"
 from taipy import Config
 
 scenario_cfg = Config.configure_scenario("multiply_scenario",
@@ -27,6 +26,7 @@ scenario_cfg = Config.configure_scenario("multiply_scenario",
 ```
 
 In this example, we create a scenario configuration `ScenarioConfig^` from a pipeline configuration already defined.
+
 
 # From task configs
 
@@ -81,6 +81,7 @@ Let us imagine a typical situation where the pipeline configuration `pipeline_cf
 created using `datanode_cfg` as one of its data node configurations. At the scenario configuration level, you can
 define a function that compares the results for the various scenarios (entities) created with this config. You
 simply need to define such a function in the comparators field. Here’s an example below:
+
 
 ```python linenums="1"
 from taipy import Config
