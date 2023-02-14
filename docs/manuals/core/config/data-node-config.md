@@ -496,8 +496,8 @@ and _**decoder**_:
     attribute's value. In this example, the "SaleRow"` data class.
 
 - In lines 33-37, we create a JSON data node configuration. The _id_ identifier is
-    "sales_history". The default `SCENARIO` scope is used. The encoder and decoder are the
-    custom encoder and decoder defined above.
+"sales_history". The default `SCENARIO` scope is used. The encoder and decoder are the
+custom encoder and decoder defined above.
 
 !!! Note
 
@@ -598,7 +598,8 @@ the _compression_ is `None`.
 
 !!! Note
 
-    To configure a Parquet data node, it is equivalent to using the method`Config.configure_parquet_data_node()^` or the method `Config.configure_data_node()^`
+    To configure a Parquet data node, it is equivalent to using the method
+    `Config.configure_parquet_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="parquet"`.
 
 !!! Info
@@ -693,6 +694,7 @@ can be provided:
 
 - _**write_fct_params**_ represents the parameters passed to the _write_fct_ to write
   the data. It must be a `List` type object.
+
 
 ```python linenums="1"
 {%
