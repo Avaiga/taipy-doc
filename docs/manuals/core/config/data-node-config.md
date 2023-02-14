@@ -1,10 +1,9 @@
 # New data node config
-
 To create an instance of a [Data node](../concepts/data-node.md), a data node
 configuration must first be provided. `DataNodeConfig^` is used to configure data nodes.
 To configure a new `DataNodeConfig^`, one can use the function `Config.configure_data_node()^`.
 
-```python linenums="1" linenums="1"
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_simple.py"
 comments=false
@@ -26,10 +25,10 @@ The attributes available on data nodes are:
     `Scope.SCENARIO`.
 - _**storage_type**_ is an attribute that indicates the storage type of the
     data node.<br/>
-    The possible values are [&#34;pickle&#34;](#pickle) (**the default value**), [&#34;csv&#34;](#csv),
-    [&#34;excel&#34;](#excel), [&#34;json&#34;](#json), [&#34;mongo_collection&#34;](#mongo-collection),
-    [&#34;parquet&#34;](#parquet), [&#34;sql&#34;](#sql), [&#34;sql_table&#34;](#sql_table),
-    [&#34;in_memory&#34;](#in-memory), or [&#34;generic&#34;](#generic).<br/>
+    The possible values are ["pickle"](#pickle) (**the default value**), ["csv"](#csv),
+    ["excel"](#excel), ["json"](#json), ["mongo_collection"](#mongo-collection),
+    ["parquet"](#parquet), ["sql"](#sql), ["sql_table"](#sql_table),
+    ["in_memory"](#in-memory), or ["generic"](#generic).<br/>
     As explained in the following subsections, depending on the _storage_type_, other
     configuration attributes must be provided in the _properties_ parameter.
 - Any other custom attribute can be provided through the parameter _**properties**_,
@@ -113,6 +112,7 @@ parameters can be provided.
   If no value is provided, Taipy will use an internal path in the Taipy storage folder
   (more details on the Taipy storage folder configuration are available in the
   [Global configuration](global-config.md) documentation).
+
 - _**default_data**_ indicates data automatically written to the data node
   _pickle_ upon creation.<br/>
   Any serializable Python object can be used. The default value is `None`.
@@ -162,15 +162,15 @@ provided:
 - _**exposed_type**_ indicates the data type returned when reading the data node (more
   examples of reading from CSV data node with different _exposed_type_ is available on
   [Read / Write a data node](../entities/data-node-mgt.md#csv) documentation):
-  - By default, _exposed_type_ is "pandas", and the data node reads the CSV file
-    as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
-  - If the _exposed_type_ provided is "modin", the data node reads the CSV
-    file as a Modin DataFrame (`modin.pandas.DataFrame`) when executing the read method.
-  - If the _exposed_type_ provided is "numpy", the data node reads the CSV
-    file as a NumPy array (`numpy.ndarray`) when executing the read method.
-  - If the provided _exposed_type_ is a custom Python class, the data node creates
-    a list of custom objects with the given custom class. Each object represents
-    a row in the CSV file.
+    - By default, _exposed_type_ is "pandas", and the data node reads the CSV file
+      as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
+    - If the _exposed_type_ provided is "modin", the data node reads the CSV
+      file as a Modin DataFrame (`modin.pandas.DataFrame`) when executing the read method.
+    - If the _exposed_type_ provided is "numpy", the data node reads the CSV
+      file as a NumPy array (`numpy.ndarray`) when executing the read method.
+    - If the provided _exposed_type_ is a custom Python class, the data node creates
+      a list of custom objects with the given custom class. Each object represents
+      a row in the CSV file.
 
 ```python linenums="1"
 {%
@@ -221,27 +221,27 @@ parameters are provided.
   as the header.
 
 - _**sheet_name**_ represents which specific sheet in the Excel file to read:
-  - By default, _sheet_name_ is None and the data node will return all sheets in
-    the Excel file when reading it.
-  - If _sheet_name_ is provided as a string, the data node will read only the data
-    of the corresponding sheet.
-  - If _sheet_name_ is provided with a list of sheet names, the data node will return
-    a dictionary with the key being the sheet name and the value being the data of
-    the corresponding sheet.
+    - By default, _sheet_name_ is None and the data node will return all sheets in
+      the Excel file when reading it.
+    - If _sheet_name_ is provided as a string, the data node will read only the data
+      of the corresponding sheet.
+    - If _sheet_name_ is provided with a list of sheet names, the data node will return
+      a dictionary with the key being the sheet name and the value being the data of
+      the corresponding sheet.
 
 - _**exposed_type**_ indicates the data type returned when reading the data node (more
   examples of reading from Excel data node with different _exposed_type_ is available
   on [Read / Write a data node](../entities/data-node-mgt.md#excel) documentation):
-  - By default, _exposed_type_ is "pandas", and the data node reads the Excel
-    file as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
-  - If the _exposed_type_ provided is "modin", the data node reads the Excel
-    file as a Modin DataFrame (`modin.pandas.DataFrame`) when executing the
-    read method.
-  - If the _exposed_type_ provided is "numpy", the data node reads the
-    Excel file as a NumPy array (`numpy.ndarray`) when executing the read method.
-  - If the provided _exposed_type_ is a custom Python class, the data node
-    creates a list of custom objects with the given custom class. Each object
-    represents a row in the Excel file.
+    - By default, _exposed_type_ is "pandas", and the data node reads the Excel
+      file as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
+    - If the _exposed_type_ provided is "modin", the data node reads the Excel
+      file as a Modin DataFrame (`modin.pandas.DataFrame`) when executing the
+      read method.
+    - If the _exposed_type_ provided is "numpy", the data node reads the
+      Excel file as a NumPy array (`numpy.ndarray`) when executing the read method.
+    - If the provided _exposed_type_ is a custom Python class, the data node
+      creates a list of custom objects with the given custom class. Each object
+      represents a row in the Excel file.
 
 ```python linenums="1"
 {%
@@ -287,6 +287,7 @@ the list of specific sheets we want to use as the _sheet_name_ parameter.
     internal dependencies with `pip install taipy[postgresql]` and install your corresponding
     [Postgres JDBC Driver for PostgreSQL](https://www.postgresql.org/docs/7.4/jdbc-use.html).
 
+
 A `SQLTableDataNode^` is a specific data node that models data stored in a single SQL
 table. To add a new _SQL table_ data node configuration, the
 `Config.configure_sql_table_data_node()^` method can be used. In addition to the generic
@@ -311,14 +312,14 @@ following parameters can be provided:
   examples of reading from SQL Table data node with different _exposed_type_ is available on
   [Read / Write a data node](../entities/data-node-mgt.md#sql-table) documentation):
     - By default, _exposed_type_ is "pandas", and the data node reads the SQL table
-        as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
+      as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
     - If the _exposed_type_ provided is "modin", the data node reads the SQL table
-        as a Modin DataFrame (`modin.pandas.DataFrame`) when executing the read method.
+      as a Modin DataFrame (`modin.pandas.DataFrame`) when executing the read method.
     - If the _exposed_type_ provided is "numpy", the data node reads the SQL table
-        as a NumPy array (`numpy.ndarray`) when executing the read method.
+      as a NumPy array (`numpy.ndarray`) when executing the read method.
     - If the provided _exposed_type_ is a custom Python class, the data node creates
-        a list of custom objects with the given custom class. Each object represents
-        a record in the SQL table.
+      a list of custom objects with the given custom class. Each object represents
+      a record in the SQL table.
 
 ```python linenums="1"
 {%
@@ -381,15 +382,15 @@ provided:
 - _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
   The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
 - _**exposed_type**_ indicates the data type returned when reading the data node:
-      - By default, _exposed_type_ is "pandas", and the data node reads the data
-          as a Pandas DataFrame (`pandas.DataFrame`) when execute the _read_query_.
-      - If the _exposed_type_ provided is "modin", the data node reads the CSV file
-        as a Modin DataFrame (`modin.pandas.DataFrame`) when execute the _read_query_.
-      - If the _exposed_type_ provided is "numpy", the data node reads the CSV file
-        as a NumPy array (`numpy.ndarray`) when execute the _read_query_.
-      - If the provided _exposed_type_ is a custom Python class, the data node
-        creates a list of custom objects with the given custom class. Each object represents
-        a record in the table returned by the _read_query_.
+    - By default, _exposed_type_ is "pandas", and the data node reads the data
+    as a Pandas DataFrame (`pandas.DataFrame`) when execute the _read_query_.
+    - If the _exposed_type_ provided is "modin", the data node reads the CSV file
+      as a Modin DataFrame (`modin.pandas.DataFrame`) when execute the _read_query_.
+    - If the _exposed_type_ provided is "numpy", the data node reads the CSV file
+      as a NumPy array (`numpy.ndarray`) when execute the _read_query_.
+    - If the provided _exposed_type_ is a custom Python class, the data node
+      creates a list of custom objects with the given custom class. Each object represents
+      a record in the table returned by the _read_query_.
 
 ```python linenums="1"
 {%
@@ -473,28 +474,34 @@ and _**decoder**_:
 
 - In lines 5-7, we define a custom class `SaleRow`, representing data in a JSON object.
 - In lines 9-30, we define a custom encoder and decoder for the `SaleRow` class.
-
-  - When [writing a JSONDataNode](../entities/data-node-mgt.md#write-data-node),
-    the `SaleRowEncoder` encodes a `SaleRow` object in JSON format. For example,
-    after the creation of the scenario `scenario`,
-    ```python
-    scenario.sales_history.write(SaleRow("12/24/2018", 1550))
-    ```
-
-  the previous code writes the following object
-  ``json { "__type__": "SaleRow", "date": "12/24/2018", "nb_sales": 1550, } ``
-  to the file *path/sales.json*.
+    - When [writing a JSONDataNode](../entities/data-node-mgt.md#write-data-node),
+      the `SaleRowEncoder` encodes a `SaleRow` object in JSON format. For example,
+      after the creation of the scenario `scenario`,
+        ```python
+        scenario.sales_history.write(SaleRow("12/24/2018", 1550))
+        ```
+      the previous code writes the following object
+          ```json
+          {
+              "__type__": "SaleRow",
+              "date": "12/24/2018",
+              "nb_sales": 1550,
+          }
+          ```
+      to the file *path/sales.json*.
 
   - When reading a JSONDataNode, the `SaleRowDecoder` converts a JSON
     object with the attribute `__type__` into a Python object corresponding to the
     attribute's value. In this example, the "SaleRow"` data class.
+
 - In lines 33-37, we create a JSON data node configuration. The _id_ identifier is
-  "sales_history". The default `SCENARIO` scope is used. The encoder and decoder are the
-  custom encoder and decoder defined above.
+    "sales_history". The default `SCENARIO` scope is used. The encoder and decoder are the
+    custom encoder and decoder defined above.
 
 !!! Note
 
-    To configure a JSON data node, it is equivalent to using the method`Config.configure_json_data_node()^` or the method `Config.configure_data_node()^`
+    To configure a JSON data node, it is equivalent to using the method
+    `Config.configure_json_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="json"`.
 
 ## Parquet
@@ -513,15 +520,19 @@ section, the following parameters can be provided:
   configuration will inherit/share the same _Parquet_ file provided in the
   default_path. To avoid this, the path property of a _Parquet_ data node entity
   can be changed at runtime right after its instantiation.<br/>
+
 - _**engine**_ represents the Parquet library to use.<br/>
   Possible values are _"fastparquet"_ or _"pyarrow"_. The default value is _"pyarrow"_.<br/>
   Using the _"fastparquet"_ engine requires installation with `pip install taipy[fastparquet]`.
+
 - _**compression**_ is the name of the compression to use.<br/>
   Possible values are _"snappy"_, _"gzip"_, _"brotli"_ and `None`. The default value is
   _"snappy"_. Use None for no compression.
+
 - _**read_kwargs**_ is a dictionary of additional parameters passed to the
   [`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html)
   method.
+
 - _**write_kwargs**_ is a dictionary of additional parameters passed to the
   [`pandas.DataFrame.to_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html)
   method.<br/>
@@ -532,26 +543,26 @@ section, the following parameters can be provided:
 
 !!! Tip
 
-    The`ParquetDataNode.read_with_kwargs^` and `ParquetDataNode.write_with_kwargs^`
+    The `ParquetDataNode.read_with_kwargs^` and `ParquetDataNode.write_with_kwargs^`
     methods provide an alternative for specifying keyword arguments at runtime. See examples
     of these methods on the [Data Node Management page](../entities/data-node-mgt.md#parquet).
 
 - _**exposed_type**_ indicates the data type returned when reading the data node (more examples
   of reading from Parquet data node with different _exposed_type_ are available on
   [Read / Write a data node](../entities/data-node-mgt.md#parquet) documentation):
-  - By default, _exposed_type_ is "pandas", and the data node reads the Parquet file
-    as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
-  - If the _exposed_type_ provided is "modin", the data node reads the Parquet
-    file as a Modin DataFrame (`modin.pandas.DataFrame`) when executing the read method.
-  - If the _exposed_type_ provided is "numpy", the data node reads the Parquet
-    file as a NumPy array (`numpy.ndarray`) when executing the read method.
-  - If the provided _exposed_type_ is a `Callable`, the data node creates a list of
-    objects as returned by the `Callable`. Each object represents a record in the Parquet
-    file. The Parquet file is read as a `pandas.DataFrame` and each row of the DataFrame
-    is passed to the Callable as keyword arguments where the key is the column name, and
-    the value is the corresponding value for that row.
+    - By default, _exposed_type_ is "pandas", and the data node reads the Parquet file
+      as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
+    - If the _exposed_type_ provided is "modin", the data node reads the Parquet
+      file as a Modin DataFrame (`modin.pandas.DataFrame`) when executing the read method.
+    - If the _exposed_type_ provided is "numpy", the data node reads the Parquet
+      file as a NumPy array (`numpy.ndarray`) when executing the read method.
+    - If the provided _exposed_type_ is a `Callable`, the data node creates a list of
+      objects as returned by the `Callable`. Each object represents a record in the Parquet
+      file. The Parquet file is read as a `pandas.DataFrame` and each row of the DataFrame
+      is passed to the Callable as keyword arguments where the key is the column name, and
+      the value is the corresponding value for that row.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_parquet-simple.py"
 comments=false
@@ -561,7 +572,7 @@ comments=false
 In lines 3-5, we configure a basic Parquet data node. The only two required parameters are
 _id_ and _default_path_.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_parquet-complete.py"
 comments=false
@@ -591,7 +602,8 @@ the _compression_ is `None`.
 
 !!! Info
 
-    Taipy ParquetDataNode wraps[`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html)
+    Taipy ParquetDataNode wraps
+    [`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html)
     and [`pandas.DataFrame.to_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html)
     methods for reading and writing Parquet data, respectively.
 
@@ -609,16 +621,16 @@ section, multiple parameters can be provided.
   decode data when reading and writing to a Mongo collection. The data returned by the
   read method is a list of custom_document object(s), and the data passed as a parameter
   of the write method is a (list of) custom_document object(s). The custom_document can have:
-  - An optional `decoder()` method to decode data in the Mongo collection to a custom object when reading.
-  - An optional `encoder()` method to encode the object's properties to the Mongo collection format when writing.
+    - An optional `decoder()` method to decode data in the Mongo collection to a custom object when reading.
+    - An optional `encoder()` method to encode the object's properties to the Mongo collection format when writing.
 - _**db_username**_ represents the username to be used to access MongoDB.
 - _**db_password**_ represents the user's password to be used by Taipy to access MongoDB.
 - _**db_port**_ represents the database port to be used to access MongoDB.<br/>
-  The default value of _db_port_ is 27017.
+    The default value of _db_port_ is 27017.
 - _**db_host**_ represents the database host to be used to access MongoDB.<br/>
-  The default value of _db_host_ is "localhost".
+    The default value of _db_host_ is "localhost".
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_mongo-collection.py"
 comments=false
@@ -634,7 +646,7 @@ In this example, we configure a *mongo_collection* data node with the id "histor
 - Without being specified, the custom document class is defined as
   `taipy.core.DefaultCustomDocument`.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_mongo-complete.py"
 comments=false
@@ -644,9 +656,9 @@ comments=false
 In this next example, we configure another *mongo_collection* data node, with the custom
 document is defined as `DailyMinTemp` class.
 
-- The custom _encode_ method encodes `datetime.datetime` to the ISO 8601 string format.
-- The corresponding _decode_ method decodes an ISO 8601 string to `datetime.datetime`.
-- The `_id` of the Mongo document is discarded.
+-   The custom _encode_ method encodes `datetime.datetime` to the ISO 8601 string format.
+-   The corresponding _decode_ method decodes an ISO 8601 string to `datetime.datetime`.
+-   The `_id` of the Mongo document is discarded.
 
 Without these two methods, the default decoder will map the key of each document to
 the corresponding property of a `DailyMinTemp` object, and the default encoder will
@@ -654,7 +666,8 @@ convert `DailyMinTemp` object's properties to a dictionary without any special f
 
 !!! Note
 
-    To configure a Mongo collection data node, it is equivalent to using the method`Config.configure_mongo_collection_data_node()^` or the method `Config.configure_data_node()^`
+    To configure a Mongo collection data node, it is equivalent to using the method
+    `Config.configure_mongo_collection_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="mongo_collection"`.
 
 ## Generic
@@ -668,16 +681,19 @@ can be provided:
 - _**read_fct**_ is a mandatory parameter representing a Python function provided
   by the user. It is used to read the data. More optional parameters can be passed
   through the _**read_fct_params**_ parameter.
+
 - _**write_fct**_ is a mandatory parameter representing a Python function provided by the
   user. It is used to write/serialize the data. The provided function must have at least
   one parameter to receive data to be written. It must be the first parameter.
   More optional parameters can be passed through the _**write_fct_params**_ parameter.
+
 - _**read_fct_params**_ represents the parameters passed to the _read_fct_ to
   read/de-serialize the data. It must be a `List` type object.
+
 - _**write_fct_params**_ represents the parameters passed to the _write_fct_ to write
   the data. It must be a `List` type object.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_generic-text.py"
 comments=false
@@ -701,7 +717,7 @@ The generic data node can also be used in situations requiring a specific busine
 reading or writing data, and the user can easily provide that. Follows an example using a
 custom delimiter when writing and reading a CSV file.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_generic-csv.py"
 comments=false
@@ -711,7 +727,7 @@ comments=false
 It is also possible to use a generic data node custom functions to perform some data
 preparation:
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_generic-data-prep.py"
 comments=false
@@ -720,7 +736,8 @@ comments=false
 
 !!! Note
 
-    To configure a generic data node, it is equivalent to using the method`Config.configure_generic_data_node()^` or the method `Config.configure_data_node()^`
+    To configure a generic data node, it is equivalent to using the method
+    `Config.configure_generic_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="generic"`.
 
 ## In memory
@@ -735,7 +752,7 @@ provided:
   the data node entity is automatically written with the corresponding value (note
   that any serializable Python object can be used) upon its instantiation.
 
-```python
+```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_memory.py"
 comments=false
@@ -748,11 +765,12 @@ The scope is `SCENARIO` (default value), and default data is provided.
 !!! Warning
 
     Since the data is stored in memory, it cannot be used in a multi-process environment.
-    (See[Job configuration](job-config.md#standalone) for more details).
+    (See [Job configuration](job-config.md#standalone) for more details).
 
 !!! Note
 
-    To configure an in_memory data node, it is equivalent to using the method`Config.configure_in_memory_data_node()^` or the method `Config.configure_data_node()^`
+    To configure an in_memory data node, it is equivalent to using the method
+    `Config.configure_in_memory_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="in_memory"`.
 
 [:material-arrow-right: The next section introduces the task configuration](task-config.md).
