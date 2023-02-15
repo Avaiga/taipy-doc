@@ -11,7 +11,7 @@ A scenario configuration is necessary to instantiate a [Scenario](../concepts/sc
   nodes instantiated from the data node configuration attached to the comparator.
 - _**properties**_: A dictionary of additional properties.
 
-!!! Warning
+!!! warning "Reserved keys"
 
     Note that we cannot use the word "_entity_owner" as a key in the properties as it has been reserved for internal use.
 
