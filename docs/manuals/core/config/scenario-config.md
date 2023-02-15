@@ -11,6 +11,10 @@ A scenario configuration is necessary to instantiate a [Scenario](../concepts/sc
   nodes instantiated from the data node configuration attached to the comparator.
 - _**properties**_: A dictionary of additional properties.
 
+!!! warning "Reserved keys"
+
+    Note that we cannot use the word "_entity_owner" as a key in the properties as it has been reserved for internal use.
+
 # From pipeline configs
 Here is a simple example assuming the pipeline configuration `pipeline_cfg` has already been created:
 
@@ -57,7 +61,7 @@ Behind the scenes, a pipeline configuration is created. Its id will be the scena
 Assuming the pipeline configuration `pipeline_cfg` has already been created, here is an example of a weekly
 scenario configuration:
 
-```python  linenums="1"
+```python linenums="1"
 from taipy import Config, Frequency
 
 scenario_cfg = Config.configure_scenario(
