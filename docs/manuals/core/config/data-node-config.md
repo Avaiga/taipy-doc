@@ -41,6 +41,10 @@ The attributes available on data nodes are:
     storage type. It is copied in the dictionary properties of all the data nodes
     instantiated from this data node configuration.<br/>
 
+!!! warning "Reserved keys"
+
+    Note that we cannot use the word "_entity_owner" as a key in the properties as it has been reserved for internal use.
+
 Below are two examples of data node configurations.
 
 ```python linenums="1"

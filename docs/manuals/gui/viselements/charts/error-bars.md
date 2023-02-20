@@ -21,7 +21,7 @@ for a complete description of these settings.
 
 ## Examples
 
-### Simple error bars {data-source="gui:doc/examples/charts/error-bars-simple"}
+### Simple error bars {data-source="gui:doc/examples/charts/error-bars-simple.py"}
 
 The example shown here creates two traces in the same chart: one is a perfect sine trace,
 and the other is the same sine trace, except that the *y* values of its data points are
@@ -86,7 +86,7 @@ Here is the result:
     <figcaption>Simple error bars</figcaption>
 </figure>
 
-### Asymmetric error bars {data-source="gui:doc/examples/charts/error-bars-asymmetric"}
+### Asymmetric error bars {data-source="gui:doc/examples/charts/error-bars-asymmetric.py"}
 
 The previous example uses an error range applied to every data point. The error
 bar of each data point would represent the whole error range as a segment centered on

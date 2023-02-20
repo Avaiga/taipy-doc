@@ -55,7 +55,7 @@ If you need to display the *end* date instead, this is what you need to do:
 
 ## Examples
 
-### Simple Gantt chart {data-source="gui:doc/examples/charts/gantt-simple"}
+### Simple Gantt chart {data-source="gui:doc/examples/charts/gantt-simple.py"}
 
 Here is a simple example of using the chart control to display a Gantt chart.
 

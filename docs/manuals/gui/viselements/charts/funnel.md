@@ -28,7 +28,7 @@ of the chart control "funnel" or "funnelarea".
 
 ## Examples
 
-### Simple funnel chart {data-source="gui:doc/examples/charts/funnel-simple"}
+### Simple funnel chart {data-source="gui:doc/examples/charts/funnel-simple.py"}
 
 Here is an example of how to visualize a typical Sales process, looking at how
 many sale opportunities make it through, from the number of leads down to the
@@ -71,7 +71,7 @@ The resulting chart looks like this:
     <figcaption>Simple funnel chart</figcaption>
 </figure>
 
-### Multiple traces {data-source="gui:doc/examples/charts/funnel-multiple"}
+### Multiple traces {data-source="gui:doc/examples/charts/funnel-multiple.py"}
 
 With the previous example, we could spot how many contacts would convert to sales,
 globally for a company.<br/>
@@ -129,7 +129,7 @@ The resulting chart looks like this:
     <figcaption>Funnel chart with multiple traces</figcaption>
 </figure>
 
-### Styling {data-source="gui:doc/examples/charts/funnel-styling"}
+### Styling {data-source="gui:doc/examples/charts/funnel-styling.py"}
 
 Taipy lets you customize how the funnel chart elements can be styled.<br/>
 To indicate how bars and lines should look, use the
@@ -191,7 +191,7 @@ And here is how the resulting funnel chart is displayed:
     <figcaption>Styling funnel charts</figcaption>
 </figure>
 
-### Funnel area chart {data-source="gui:doc/examples/charts/funnel-area"}
+### Funnel area chart {data-source="gui:doc/examples/charts/funnel-area.py"}
 
 A funnel area chart is a kind of funnel chart where boxes, instead of being represented
 as rectangles, appear as stacked trapezoids.<br/>
@@ -249,7 +249,7 @@ The funnel area chart we just created looks like this:
     <figcaption>Funnel area chart</figcaption>
 </figure>
 
-### Multiple funnel charts {data-source="gui:doc/examples/charts/funnel-area-multiple"}
+### Multiple funnel charts {data-source="gui:doc/examples/charts/funnel-area-multiple.py"}
 
 You can create a chart control that represents several funnel charts: Taipy
 lets use of the *domain* property set to the definition of a location

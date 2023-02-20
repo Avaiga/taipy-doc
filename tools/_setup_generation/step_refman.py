@@ -166,12 +166,19 @@ class RefManStep(SetupStep):
                     continue
                 entry_type = None
                 if hasattr(e, "__module__") and e.__module__:
-                    # Type alias?
-                    if e.__module__.startswith(Setup.ROOT_PACKAGE):
+                    # Handling alias Types
+                    if e.__module__.startswith(Setup.ROOT_PACKAGE):  # For local build
                         if e.__class__.__name__ == "NewType":
                             entry_type = TYPE_ID
+                    elif e.__module__ == "typing" and hasattr(e, "__name__"):  # For Readthedoc build
+                        # Manually remove class from 'typing'
+                        if e.__name__ == "NewType":
+                            continue
+                        # Manually remove function from 'typing'
+                        if e.__name__ == "overload":
+                            continue
+                        entry_type = TYPE_ID
                     else:
-                        # Not in our focus package?
                         continue
                 # Remove hidden entries
                 if entry in RefManStep.HIDDEN_ENTRIES:
@@ -274,6 +281,16 @@ class RefManStep(SetupStep):
             else:
                 package_to_entries[package] = [info]
 
+        # Add taipy packages with documentation but no entry
+        for package, doc in module_doc.items():
+            if not package.startswith("taipy"):
+                continue
+            if package in package_to_entries:
+                continue
+            if not doc:
+                continue
+            package_to_entries[package] = {}
+
         # Generate all Reference manual pages and update navigation
         self.navigation = ""
         xrefs = {}
@@ -293,9 +310,6 @@ class RefManStep(SetupStep):
                     raise SystemError(
                         "FATAL - Invalid entry type '{entry_info['type']}' for {entry_info['module']}.{entry_info['name']}"
                     )
-            if not classes and not functions and not types:
-                print(f"INFO - Skipping package {package}: no documented elements")
-                continue
             if package in RefManStep.PACKAGE_GROUP:
                 package_group = package
                 package_path = f"{self.REFERENCE_DIR_PATH}/pkg_{package}"
@@ -431,7 +445,9 @@ class RefManStep(SetupStep):
             contents = f.readlines()
 
         # Inject imports and code
-        imports_to_inject = """from typing import Any, Callable, List
+        imports_to_inject = """
+from types import NoneType
+from typing import Any, Callable, Dict, List, Union, Optional
 import json
 from .common.scope import Scope
 from .common.frequency import Frequency
