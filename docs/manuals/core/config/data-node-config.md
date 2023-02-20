@@ -160,8 +160,8 @@ provided:
   the header.
 
 - _**exposed_type**_ indicates the data type returned when reading the data node (more
-  examples of reading from CSV data node with different _exposed_type_ is available on
-  [Read / Write a data node](../entities/data-node-mgt.md#csv) documentation):
+  examples of reading from a CSV data node with different _exposed_type_ are available
+  in the [Read / Write a data node](../entities/data-node-mgt.md#csv) documentation):
     - By default, _exposed_type_ is "pandas", and the data node reads the CSV file
       as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
     - If the _exposed_type_ provided is "modin", the data node reads the CSV
@@ -230,8 +230,8 @@ parameters are provided.
       the corresponding sheet.
 
 - _**exposed_type**_ indicates the data type returned when reading the data node (more
-  examples of reading from Excel data node with different _exposed_type_ is available
-  on [Read / Write a data node](../entities/data-node-mgt.md#excel) documentation):
+  examples of reading from an Excel data node with different _exposed_type_ are available
+  in the [Read / Write a data node](../entities/data-node-mgt.md#excel) documentation):
     - By default, _exposed_type_ is "pandas", and the data node reads the Excel
       file as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
     - If the _exposed_type_ provided is "modin", the data node reads the Excel
@@ -309,8 +309,8 @@ following parameters can be provided:
 - _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
     The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
 - _**exposed_type**_ indicates the data type returned when reading the data node (more
-  examples of reading from SQL Table data node with different _exposed_type_ is available on
-  [Read / Write a data node](../entities/data-node-mgt.md#sql-table) documentation):
+  examples of reading from a SQL table data node with different _exposed_type_ are available
+  in the [Read / Write a data node](../entities/data-node-mgt.md#sql-table) documentation):
     - By default, _exposed_type_ is "pandas", and the data node reads the SQL table
       as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
     - If the _exposed_type_ provided is "modin", the data node reads the SQL table
@@ -347,13 +347,13 @@ data node is written, it deletes all the data in the table and insert the new da
 
 !!! Important
 
-    - To be able to use a `SQLTableDataNode^` with Microsoft SQL Server you need to run
+    - To be able to use a `SQLDataNode^` with Microsoft SQL Server you need to install
     internal dependencies with `pip install taipy[mssql]` and install your corresponding
     [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
-    - To be able to use a `SQLTableDataNode^` with MySQL Server you need to run internal
+    - To be able to use a `SQLDataNode^` with MySQL Server you need to install internal
     dependencies with `pip install taipy[mysql]` and install your corresponding
     [MySQL Driver for MySQL](https://pypi.org/project/PyMySQL/).
-    - To be able to use a `SQLTableDataNode^` with PostgreSQL Server you need to run
+    - To be able to use a `SQLDataNode^` with PostgreSQL Server you need to install
     internal dependencies with `pip install taipy[postgresql]` and install your corresponding
     [Postgres JDBC Driver for PostgreSQL](https://www.postgresql.org/docs/7.4/jdbc-use.html).
 
@@ -381,7 +381,9 @@ provided:
   The default value of _db_host_ is "localhost".
 - _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
   The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
-- _**exposed_type**_ indicates the data type returned when reading the data node:
+- _**exposed_type**_ indicates the data type returned when reading the data node (more
+  examples of reading from a SQL data node with different _exposed_type_ are available
+  in the [Read / Write a data node](../entities/data-node-mgt.md#sql) documentation):
     - By default, _exposed_type_ is "pandas", and the data node reads the data
       as a Pandas DataFrame (`pandas.DataFrame`) when execute the _read_query_.
     - If the _exposed_type_ provided is "modin", the data node reads the CSV file
@@ -775,5 +777,31 @@ The scope is `SCENARIO` (default value), and default data is provided.
     To configure an in_memory data node, it is equivalent to using the method
     `Config.configure_in_memory_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="in_memory"`.
+
+# Default data node configuration
+
+By default, if there is no information provided when configuring a datanode (except for the mandatory _**id**_), the `Config.configure_data_node()^` method will return a _pickle_ data node configuration with the `Scope^` is set to `SCENARIO`.
+
+To override the default data node configuration, one can use the `Config.configure_default_data_node()^` method.
+Then, a new data node configuration will:
+
+- have the same properties as the default data node configuration if the _**storage_type**_ is the same as the default one.
+- ignore the default data node configuration if the _**storage_type**_ is different from the default one.
+
+```python linenums="1"
+{%
+include-markdown "./code_example/data_node_cfg/data-node-config_default.py"
+comments=false
+%}
+```
+
+We override the default data node configuration by a SQL table data node configuration in the previous code example, providing all necessary properties for a SQL table data node in lines 3-14.
+
+Then we configure 5 data nodes:
+
+- Line 16 configures a SQL Table data node `products_data_cfg`. By providing only the _**id**_, `products_data_cfg` has the exact same properties as the default data node configuration as above, which reads and writes to the "products" table.
+- Line 17 configures a SQL Table data node `users_data_cfg`. By also providing `table_name="users"`, this data node reads and writes to the "users" table.
+- Lines 18 and 19 configure 2 SQL Table data nodes, one using `Config.configure_data_node()^` with `storage_type="sql_table"`, one using `Config.configure_sql_table_data_node()^`. Since both have the same _**storage_type**_ as the default data node configuration, both have the same properties except for the table name.
+- Line 21 configures a CSV data node `forecast_data_cfg`. Since the _**storage_type**_ is `"csv"`, which is different from the `"sql_table"` configured in line 9, the default data node configuration is ignored. Therefore, the scope of `forecast_data_cfg` is `SCENARIO` by default.
 
 [:material-arrow-right: The next section introduces the task configuration](task-config.md).
