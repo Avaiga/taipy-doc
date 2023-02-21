@@ -48,6 +48,7 @@ mkdocs-material = "==7.3.0"
 mkdocs-material-extensions = "*"
 mkdocstrings = "*"
 mkdocstrings-python = "*"
+requests = "*"
 
 [requires]
 python_version = "3"
