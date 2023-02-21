@@ -35,7 +35,7 @@ Here are essential points you need to know about element libraries:
 - An element library is a Python object that derives from the `ElementLibrary^` class. 
 - Element libraries have a name (returned by `ElementLibrary.get_name()^`) that is
   used to refer to visual elements in page definitions.
-- Element libraries hold the set of its elements, as returned by
+- Element libraries hold the set of their elements, as returned by
   `ElementLibrary.get_elements()^`.
 
 You can create an element library by simply subclassing `ElementLibrary^` and
@@ -119,7 +119,8 @@ To create and use custom visual elements, you need to install the following:
 
 - Taipy GUI 2.0 or higher (included in Taipy and Taipy Enterprise).
 - Python 3.8 or higher.
-- NodeJS (and NPM) if you need to create dynamic custom visual elements.
+- [Node.js](https://nodejs.org) (version 18 or above) if you need to create dynamic custom visual
+  elements. Note that this comes with `npm`, the Node Package Manager.
 
 Basic knowledge of React (that we use with TypeScript) is welcome.
 
@@ -181,8 +182,7 @@ Each of these entries needs some explanation:
 - `<package_dir>/frontend/webpack.config.js`: The configuration to build the JavaScript
   bundle of the extension library.
 - `<package_dir>/frontend/src/`: The source file for the front-end components.<br/>
-  Grouping all the TypeScript/JavaScript in the same place makes it easier to find and
-  bundle them.
+  Grouping all the TypeScript/JavaScript in the same place makes finding and bundling with them easier.
 - `<package_dir>/frontend/src/index.ts`: The entry point of the JavaScript bundle.<br/>
   This file must export the React components of the bundle.
 - `<package_dir>/frontend/src/<component>.ts`: The implementation file for a React
@@ -201,7 +201,7 @@ Here are examples of custom elements you can build with a complete explanation o
 part of the Taipy GUI Extension API is used.
 
 Each example addresses specific areas of the extension API. You should be able to
-make you way from one example to the next.
+make your way from one example to the next.
 
 - [Custom static elements](extension_static_element.md)
 - [Custom dynamic elements](extension_dynamic_element.md)
