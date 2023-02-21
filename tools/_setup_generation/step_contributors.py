@@ -4,6 +4,7 @@
 # A contributors list is generated based on internal and external contributors
 # retrieved using GitHub REST APIs.
 # ################################################################################
+import base64
 import os
 import random
 import requests
@@ -21,7 +22,7 @@ class ContributorsStep(SetupStep):
         self.REPO_URLS = []
         self.MEMBERS = {}
         self.CONTRIBUTORS = {}
-        self.ANONYMOUS = ["dependabot[bot]", "joaoandre", "joaoandre-avaiga"]
+        self.ANONYMOUS = ["dependabot[bot]"]
         self.PATH = ""
         self.TEMPLATE_SUFFIX = "_template"
 
@@ -41,22 +42,49 @@ class ContributorsStep(SetupStep):
         self.build_content((self.MEMBERS, "[AVAIGA_TEAM_MEMBERS]"), (self.CONTRIBUTORS, "[TAIPY_CONTRIBUTORS]"))
 
     def get_repo_urls(self):
-        repos = requests.get(self.REPOS).json()
+        response = requests.get(self.REPOS)
+        if response.status_code != 200:
+            print(f"WARNING - Couldn't get repositories. response.status_code: {response.status_code}", flush=True)
+            return
+        repos = response.json()
         self.REPO_URLS = list(map(lambda _: _['url'], repos))
 
     def get_avaiga_members(self):
-        members = requests.get(self.MEMBERS_URL).json()
-        for c in members:
-            login = c['login']
+        response = requests.get(self.MEMBERS_URL)
+        if response.status_code != 200:
+            print(f"WARNING - Couldn't get members. response.status_code: {response.status_code}", flush=True)
+            return
+        members = response.json()
+        for member in members:
+            login = member['login']
             if login not in self.MEMBERS and login not in self.ANONYMOUS:
-                self.MEMBERS[login] = {"avatar_url": c['avatar_url'], "html_url": c['html_url']}
+                self.MEMBERS[login] = {"avatar_url": member['avatar_url'], "html_url": member['html_url']}
 
     def get_contributors(self):
         for url in self.REPO_URLS:
+            response = requests.get(url + "/contents/contributors.txt")
+            public_contributor_logins = []
+            if response.status_code == 200:
+                data = response.json()
+                content = data["content"]
+                encoding = data["encoding"]
+                if encoding == 'base64':
+                    file_content = base64.b64decode(content).decode()
+                    public_contributor_logins += file_content.strip().split("\n")
+                else:
+                    print(f"WARNING - Couldn't get contributors for {url}. unknown encoding: {encoding}", flush=True)
+                    continue
+            else:
+                print(f"WARNING - Couldn't get contributors for {url}. response.status_code: {response.status_code}",
+                      flush=True)
+                continue
             response = requests.get(url+"/contributors")
+            if response.status_code != 200:
+                print(f"WARNING - Couldn't get contributors. response.status_code: {response.status_code}", flush=True)
+                continue
             for c in response.json():
                 login = c['login']
-                if login not in self.MEMBERS and login not in self.ANONYMOUS:
+                if login not in self.MEMBERS and login not in self.ANONYMOUS and login in public_contributor_logins:
                     self.CONTRIBUTORS[login] = {"avatar_url": c['avatar_url'], "html_url": c['html_url']}
 
     def build_content(self, *members_pattern_tuples):
