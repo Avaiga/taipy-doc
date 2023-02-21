@@ -1,5 +1,7 @@
 site_name: Taipy
 site_url: https://docs.taipy.io/en/develop
+site_description: Documentation for Taipy
+site_author: taipy.io
 repo_url: https://github.com/avaiga/taipy
 repo_name: taipy
 #strict: true
@@ -12,21 +14,24 @@ nav:
     - 'Getting started': 'getting_started/index.md'
     [GETTING_STARTED_CONTENT]
   - 'User Manual':
-    - "About Taipy's User Manual": 'manuals/about.md'
+    - "About Taipy's User Manual": manuals/about.md
     - Taipy GUI:
         - manuals/gui/index.md
-        - 'Pages': 'manuals/gui/pages.md'
-        - 'Visual Elements':
-           - 'Visual Elements': 'manuals/gui/viselements/index.md'
-           - 'Controls': 'manuals/gui/controls.md'
-           - 'Blocks': 'manuals/gui/blocks.md'
-        - 'Binding variables': 'manuals/gui/binding.md'
-        - 'Callbacks': 'manuals/gui/callbacks.md'
-        - 'Notifications': 'manuals/gui/notifications.md'
-        - 'Styling': 'manuals/gui/styling.md'
-        - 'Configuration': 'manuals/gui/configuration.md'
-        - 'Using Notebooks': 'manuals/gui/notebooks.md'
-        - 'Extension': 'manuals/gui/extension.md'
+        - "Pages": manuals/gui/pages.md
+        - "Visual Elements":
+           - manuals/gui/viselements/index.md
+           - "Controls": manuals/gui/controls.md
+           - "Blocks": manuals/gui/blocks.md
+        - "Binding variables": manuals/gui/binding.md
+        - "Callbacks": manuals/gui/callbacks.md
+        - "Notifications": manuals/gui/notifications.md
+        - "Styling": manuals/gui/styling.md
+        - "Configuration": manuals/gui/configuration.md
+        - "Using Notebooks": manuals/gui/notebooks.md
+        - "Extension":
+           - manuals/gui/extension/index.md
+           - "Static Elements": manuals/gui/extension_static_element.md
+           - "Dynamic Elements": manuals/gui/extension_dynamic_element.md
     - Taipy Core:
         - manuals/core/index.md
         - 'Concepts':
@@ -177,6 +182,7 @@ plugins:
       module_name: tools/postprocess
 watch:
   - taipy
+  - tools/postprocess.py
 extra:
   social:
     - icon: fontawesome/brands/twitter
