@@ -1,17 +1,17 @@
 # Dynamic elements
 
-To add variable binding to custom elements, you must create dynamic elements.
+The [previous section on static elements](extension_static_element.md) exposes
+how element libraries and elements are defined. A major limitation with
+static elements is that you cannot change their property values at run-time.
+In Taipy GUI, you can [bind Python variables or expressions](binding.md)
+to properties so that when the application changes the value of a
+variable, it can be immediately reflected in the user interface.<br/>
 
-Dynamic elements use JavaScript code to dynamically generate HTML code to
+Custom elements that allow for variable binding are called *dynamic elements*
+in Taipy GUI.
+
+Dynamic elements use [TypeScript](https://www.typescriptlang.org/) and
+[JavaScript](https://www.javascript.com/) code to dynamically generate HTML code to
 produce the pages that can be displayed in a browser. Taipy GUI actually relies
 on the [React](https://reactjs.org/) JavaScript library to simplify the
 development of graphical components.
-
-!!! warning "Work in Progress"
-    This section still requires significant work, which is in progress.
-    At this time, Taipy GUI provides a custom element library example
-    with lengthy explanations on how to build it.<br/>
-    Please look into the `doc/extension` directory where Taipy GUI is
-    installed for more information.<br/>
-    You can also look at this example directly on
-    [GitHub](https://github.com/Avaiga/taipy-gui/tree/develop/doc/extension).
