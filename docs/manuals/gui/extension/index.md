@@ -96,7 +96,7 @@ inserted into the page when it is requested.
 - Static elements.<br/>
   A static visual element cannot interact with the underlying application.
   It can be used just like any other element in a page, but its properties are not
-  bound to application variables: if the a variable value is modified, it does not
+  bound to application variables: if a variable value is modified, it does not
   impact the representation of the element on the page.<br/>
   Static elements are implemented by creating a string that holds the XHTML text (that is,
   HTML that respects the XML syntax, where all tags must be closed) that is inserted in
