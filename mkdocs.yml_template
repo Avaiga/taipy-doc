@@ -34,6 +34,8 @@ nav:
            - "Dynamic Elements": manuals/gui/extension_dynamic_element.md
     - Taipy Core:
         - manuals/core/index.md
+        - 'Basic examples':
+            - manuals/core/basic_examples/index.md
         - 'Concepts':
             - manuals/core/concepts/index.md
             - 'Data node': 'manuals/core/concepts/data-node.md'
@@ -69,8 +71,6 @@ nav:
             - "Development mode": 'manuals/core/versioning/development_mode.md'
             - "Experiment mode": 'manuals/core/versioning/experiment_mode.md'
             - "Production mode": 'manuals/core/versioning/production_mode.md'
-        - 'Basic examples':
-            - manuals/core/basic_examples/index.md
     - 'Taipy REST':
         - manuals/rest/index.md
     - 'Running Taipy services':
