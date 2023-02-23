@@ -51,7 +51,7 @@ class ContributorsStep(SetupStep):
         self.REPO_URLS = list(map(lambda _: _['url'], repos))
 
     def get_avaiga_members(self):
-        response = self.__get(self.MEMBERS_URL)
+        response = self.__get(self.MEMBERS_URL, with_token=False)
         if response.status_code != 200:
             print(f"WARNING - Couldn't get members. response.status_code: {response.status_code}", flush=True)
             return
@@ -121,8 +121,8 @@ class ContributorsStep(SetupStep):
         with open(path, 'w') as file:
             file.write(file_data)
 
-    def __get(self, url):
-        if self.GH_TOKEN:
+    def __get(self, url, with_token=True):
+        if with_token and self.GH_TOKEN:
             headers = {'Authorization': f'token {self.GH_TOKEN}'}
             return requests.get(url, headers=headers)
         else:
