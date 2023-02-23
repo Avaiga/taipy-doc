@@ -20,7 +20,7 @@ usually displayed under the reference trace, created as a
 
 ## Examples
 
-### Simple continuous error band {data-source="gui:doc/examples/charts/continuous-error-simple"}
+### Simple continuous error band {data-source="gui:doc/examples/charts/continuous-error-simple.py"}
 
 Here is a complete example that demonstrates how to create a continuous
 error band.
@@ -116,7 +116,7 @@ Here is the result:
     <figcaption>Continuous Error</figcaption>
 </figure>
 
-### Multiple bands {data-source="gui:doc/examples/charts/continuous-error-multiple"}
+### Multiple bands {data-source="gui:doc/examples/charts/continuous-error-multiple.py"}
 
 Of course, you may need to display several traces with their related
 continuous error bands.<br/>

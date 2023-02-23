@@ -23,7 +23,7 @@ of the chart control to "scatterpolar", and set the [*r*](../chart.md#p-r) and
 
 ## Examples
 
-### Simple polar chart {data-source="gui:doc/examples/charts/polar-simple"}
+### Simple polar chart {data-source="gui:doc/examples/charts/polar-simple.py"}
 
 A typical use case for polar charts is when you have a parametric
 equation to represent, based on an angular value.
@@ -81,7 +81,7 @@ Here is the result:
     <figcaption>Simple polar chart</figcaption>
 </figure>
 
-### Areas {data-source="gui:doc/examples/charts/polar-area"}
+### Areas {data-source="gui:doc/examples/charts/polar-area.py"}
 
 Filling an area in a polar chart is only a matter of setting the *fill* property of
 the value assigned to the [*options*](../chart.md#p-options) property of the chart control.
@@ -139,7 +139,7 @@ Here is the result:
     <figcaption>Area in a polar chart</figcaption>
 </figure>
 
-### Multiple traces {data-source="gui:doc/examples/charts/polar-multiple"}
+### Multiple traces {data-source="gui:doc/examples/charts/polar-multiple.py"}
 
 Several traces can be displayed in the same polar chart. The [*r*](../chart.md#p-r)
 indexed property can refer to different data.
@@ -209,7 +209,7 @@ Here is what the chart looks like:
     <figcaption>Multiple traces</figcaption>
 </figure>
 
-### Specifying the angular range {data-source="gui:doc/examples/charts/polar-sector"}
+### Specifying the angular range {data-source="gui:doc/examples/charts/polar-sectors.py"}
 
 It may be necessary not to display the entire 360° of the chart but instead select a
 range of angles to represent: a *sector*.
@@ -277,7 +277,7 @@ Here are our two traces, gathered in the same chart:
     <figcaption>Specifying a sector</figcaption>
 </figure>
 
-### Angular axis settings {data-source="gui:doc/examples/charts/polar-angular-axis"}
+### Angular axis settings {data-source="gui:doc/examples/charts/polar-angular-axis.py"}
 
 The angular axis can be tuned to set its origin wherever needed. It can
 also be oriented, and the angular values can appear in different units.
@@ -355,7 +355,7 @@ The two traces appear in the chart, mirroring one another:
     <figcaption>Customizing the angular axis</figcaption>
 </figure>
 
-### Setting tick texts {data-source="gui:doc/examples/charts/polar-tick-texts"}
+### Setting tick texts {data-source="gui:doc/examples/charts/polar-tick-texts.py"}
 
 You can also customize what the tick texts are: what text is at what location on the axis.
 

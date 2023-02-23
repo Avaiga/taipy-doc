@@ -21,13 +21,13 @@ import re
 from typing import Dict
 import logging
 import json
-from weakref import ref
 
 def define_env(env):
     """
     Mandatory to make this a proper MdDocs macro
     """
-    pass
+    match = re.search(r"/en/(develop|(?:release-(\d+\.\d+)))/$", env.conf["site_url"])
+    env.conf["branch"] = (f"release/{match.group(2)}" if match.group(2) else match.group(1)) if match else "unknown"
 
 
 TOC_ENTRY_PART1 = r"<li\s*class=\"md-nav__item\">\s*<a\s*href=\""
@@ -325,17 +325,30 @@ def on_post_build(env):
                         table_line = groups[1]
                         table_line_to_replace = "".join(groups)
                         new_table_line = table_line_to_replace
+                        typing_xref_found = False
 
                         for type_ in typing_type.finditer(table_line):
                             class_ = type_[0][:-1] # Remove ^
                             packages = xrefs.get(class_)
                             if packages:
-                                new_content = f"<a href='{rel_path}/{packages[0]}.{class_}'>{class_}</a>"
+                                typing_xref_found = True
+                                new_content = f"<a href=\"{rel_path}/{packages[0]}.{class_}\">{class_}</a>"
                                 new_table_line = new_table_line.replace(f"{class_}^", new_content)
-                                file_was_changed = True
-                        if file_was_changed:
+                        if typing_xref_found:
+                            file_was_changed = True
                             html_content = html_content.replace(table_line_to_replace, new_table_line)
 
+                    # Replace data-source attributes in h<N> tags to links to
+                    # files in the appropriate repositores.
+                    process = process_data_source_attr(html_content, env)
+                    if process[0]:
+                        html_content = process[1]
+                        file_was_changed = True
+                    # Replace hrefs to GitHub containg [BRANCH] with proper branch name.
+                    process = process_links_to_github(html_content, env)
+                    if process[0]:
+                        html_content = process[1]
+                        file_was_changed = True
                     # Shorten Table of contents in REST API files
                     if "rest/apis_" in filename or "rest\\apis_" in filename:
                         REST_TOC_ENTRY_RE = re.compile(r"(<a\s+href=\"#apiv.*?>\s+)"
@@ -350,7 +363,7 @@ def on_post_build(env):
                             file_was_changed = True
                             html_content = new_content + html_content[last_location:]
 
-                    # Rename Extension API type aliases
+                    # Rename the GUI Extension API type aliases
                     if "reference_guiext" in filename:
                         for in_out in [("TaipyAction", "Action", "../interfaces/Action"),
                                        ("TaipyContext", "Context", "#context")]:
@@ -371,3 +384,40 @@ def on_post_build(env):
             # Remove '.md_template' files
             elif f.endswith(".md_template"):
                 os.remove(os.path.join(root, f))
+
+# ################################################################################
+# Functions that are used in the postprocessing phase.
+# I wish we could move them elsewhere, but couldn't figure out how
+# ################################################################################
+def process_data_source_attr(html: str, env):
+    _DATASOURCE_RE = re.compile(r"(<(h\d+))\s+data-source=\"(.*?)\"(.*</\2>)")
+    new_content = ""
+    last_location = 0
+    for m in _DATASOURCE_RE.finditer(html):
+        ref = m.group(3)
+        repo_m = re.search("^([\w\d]+):", ref)
+        if repo_m:
+            ref = ("https://github.com/Avaiga/taipy-" +
+                   f"{repo_m.group(0)[:-1]}/blob/{env.conf['branch']}/{ref[repo_m.end():]}")
+        new_content += (html[last_location:m.start()]
+                        + f"{m.group(1)}{m.group(4)}"
+                        + f"\n<small>You can download the entire source code used in this "
+                        + f"section from the <a href=\"{ref}\">GitHub repository</a>.</small>"
+                        )
+        last_location = m.end()
+    if last_location:
+        return (True, new_content + html[last_location:])
+    else:
+        return (False, None)
+
+def process_links_to_github(html: str, env):
+    _LINK_RE = re.compile(r"(?<=href=\"https://github.com/Avaiga/)(taipy-gui/tree/)\[BRANCH\](.*?\")")
+    new_content = ""
+    last_location = 0
+    for m in _LINK_RE.finditer(html):
+        new_content += html[last_location:m.start()] + m.group(1) + env.conf['branch'] + m.group(2)
+        last_location = m.end()
+    if last_location:
+        return (True, new_content + html[last_location:])
+    else:
+        return (False, None)

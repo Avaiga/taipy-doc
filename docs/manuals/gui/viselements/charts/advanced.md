@@ -4,7 +4,7 @@ Taipy exposes advanced features that the Plotly library provides. This section
 demonstrates some of those features, when they are needed and how to use them
 in your Taipy application.
 
-## Multiple traces with different dataset sizes {data-source="gui:doc/examples/charts/advanced-unbalanced-datasets"}
+## Multiple traces with different dataset sizes {data-source="gui:doc/examples/charts/advanced-unbalanced-datasets.py"}
 
 The [*Adding a trace*](basics.md#adding-a-trace) example explained how to create multiple
 traces on the same chart.<br/>
@@ -88,9 +88,9 @@ set with the indexed data set syntax as shown below:
         ```
 
 Trace number 1 (the Coarse trace) is defined by *x[1]* and *y[1]*, and uses
-the series *data[0]["x"]* and *data[0]["Coarse"]*;<br/>
+the series *data[0]\["x"\]* and *data[0]\["Coarse"\]*;<br/>
 Trace number 2 (the Fine trace) is defined by *x[2]* and *y[2]*, and uses
-the series *data[1]["x"]* and *data[1]["Fine"]*.
+the series *data[1]\["x"\]* and *data[1]\["Fine"\]*.
 
 Here is what the resulting plot looks like:
 
@@ -100,7 +100,7 @@ Here is what the resulting plot looks like:
     <figcaption>Unbalanced data sets</figcaption>
 </figure>
 
-## Adding annotations {data-source="gui:doc/examples/charts/advanced-annotations"}
+## Adding annotations {data-source="gui:doc/examples/charts/advanced-annotations.py"}
 
 You can add text annotations on top of a chart using the *annotations* property of
 the dictionary set to the [*layout*](../chart.md#p-layout) property of the chart
@@ -185,7 +185,7 @@ Here is how the annotated chart control shows on the page:
     <figcaption>Text annotations</figcaption>
 </figure>
 
-## Adding shapes {data-source="gui:doc/examples/charts/advanced-shapes"}
+## Adding shapes {data-source="gui:doc/examples/charts/advanced-shapes.py"}
 
 Shapes can be rendered on top of a chart at defined locations.<br/>
 To create shapes, you must add shape descriptors to the *shapes* property of
@@ -266,7 +266,7 @@ And here is what the resulting chart looks like:
     <figcaption>Shapes on chart</figcaption>
 </figure>
 
-## Tracking selection {data-source="gui:doc/examples/charts/advanced-selection"}
+## Tracking selection {data-source="gui:doc/examples/charts/advanced-selection.py"}
 
 The chart control has the [*selected*](../chart.md#p-selected) property
 that can be used to track data point selection in the chart control.<br/>
@@ -348,7 +348,7 @@ And here is what the resulting page looks like:
 </figure>
 
 <!--- TODO: when range tracking works.. say... better
-## Tracking range changes {data-source="gui:doc/examples/charts/advanced-range-tracking"}
+## Tracking range changes {data-source="gui:doc/examples/charts/advanced-range-tracking.py"}
 
 You can be notified when the visible range of the chart is changed. That happens when the
 user zooms or pans the chart content using the Zoom or Pan tools.

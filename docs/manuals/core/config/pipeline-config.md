@@ -6,6 +6,10 @@ A pipeline configuration is necessary to instantiate a [Pipeline](../concepts/pi
 - _**tasks**_: The list of task configurations.
 - _**properties**_: A dictionary of additional properties.
 
+!!! warning "Reserved keys"
+
+    Note that we cannot use the word "_entity_owner" as a key in the properties as it has been reserved for internal use.
+
 ```python linenums="1"
 {%
 include-markdown "./code_example/pipeline_cfg/pipeline-config_simple.py"
