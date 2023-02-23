@@ -15,6 +15,7 @@ from .setup import SetupStep, Setup
 class ContributorsStep(SetupStep):
 
     def __init__(self):
+        self.GH_TOKEN = os.getenv("GITHUB_TOKEN", None)
         self.BASE_URL = "https://api.github.com"
         self.ORGANIZATION_URL = f"{self.BASE_URL}/orgs/avaiga"
         self.MEMBERS_URL = f"{self.ORGANIZATION_URL}/members"
@@ -42,7 +43,7 @@ class ContributorsStep(SetupStep):
         self.build_content((self.MEMBERS, "[AVAIGA_TEAM_MEMBERS]"), (self.CONTRIBUTORS, "[TAIPY_CONTRIBUTORS]"))
 
     def get_repo_urls(self):
-        response = requests.get(self.REPOS)
+        response = self.__get(self.REPOS)
         if response.status_code != 200:
             print(f"WARNING - Couldn't get repositories. response.status_code: {response.status_code}", flush=True)
             return
@@ -50,7 +51,7 @@ class ContributorsStep(SetupStep):
         self.REPO_URLS = list(map(lambda _: _['url'], repos))
 
     def get_avaiga_members(self):
-        response = requests.get(self.MEMBERS_URL)
+        response = self.__get(self.MEMBERS_URL)
         if response.status_code != 200:
             print(f"WARNING - Couldn't get members. response.status_code: {response.status_code}", flush=True)
             return
@@ -62,7 +63,7 @@ class ContributorsStep(SetupStep):
 
     def get_contributors(self):
         for url in self.REPO_URLS:
-            response = requests.get(url + "/contents/contributors.txt")
+            response = self.__get(url + "/contents/contributors.txt")
             public_contributor_logins = []
             if response.status_code == 200:
                 data = response.json()
@@ -78,7 +79,7 @@ class ContributorsStep(SetupStep):
                 print(f"WARNING - Couldn't get contributors for {url}. response.status_code: {response.status_code}",
                       flush=True)
                 continue
-            response = requests.get(url+"/contributors")
+            response = self.__get(url+"/contributors")
             if response.status_code != 200:
                 print(f"WARNING - Couldn't get contributors. response.status_code: {response.status_code}", flush=True)
                 continue
@@ -119,6 +120,14 @@ class ContributorsStep(SetupStep):
         # Write the file out without the template suffix
         with open(path, 'w') as file:
             file.write(file_data)
+
+    def __get(self, url):
+        if self.GH_TOKEN:
+            headers = {'Authorization': f'token {self.GH_TOKEN}'}
+            return requests.get(url, headers=headers)
+        else:
+            return requests.get(url)
+
 
     def exit(self, setup: Setup):
         pass
