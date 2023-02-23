@@ -8,7 +8,7 @@ through user-defined scenarios, powerful scenario management and comparison, int
 Taipy Core provides the key concept of _Scenario_. Among other functionalities, a _Scenario_ represents an instance
 of a data science problem with its datasets (modeled as _Data nodes_ in Taipy Core) and the algorithms to run to solve
 the problem. The algorithms are modeled as an execution graph (a Directed Acyclic Graph or DAG) that can be seen as a
-succession of functions  (or _Tasks_ in Taipy Core) that exchange data. With Taipy Core, one can model simple as
+succession of functions (or _Tasks_ in Taipy Core) that exchange data. With Taipy Core, one can model simple as
 well as very complex algorithms.
 
 [:material-arrow-right: Basic examples](basic_examples/index.md),

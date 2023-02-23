@@ -10,12 +10,12 @@ def build_message(name):
     return f"Hello {name}!"
 
 
-# A first data node configuration represents the name of the person
-person_data_node_cfg = Config.configure_data_node(id="person")
+# A first data node configuration represents a name
+name_data_node_cfg = Config.configure_data_node(id="name")
 # A second data node configuration represents the message to print
 message_data_node_cfg = Config.configure_data_node(id="message")
 # The task represents the build_message function
-build_msg_task_cfg = Config.configure_task("build_msg", build_message, person_data_node_cfg, message_data_node_cfg)
+build_msg_task_cfg = Config.configure_task("build_msg", build_message, name_data_node_cfg, message_data_node_cfg)
 # The scenario represent the whole execution graph
 scenario_cfg = Config.configure_scenario_from_tasks("scenario", task_configs=[build_msg_task_cfg])
 
