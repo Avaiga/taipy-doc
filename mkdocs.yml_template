@@ -34,7 +34,7 @@ nav:
            - "Dynamic Elements": manuals/gui/extension_dynamic_element.md
     - Taipy Core:
         - manuals/core/index.md
-        - 'Basic examples':
+        - 'Basic example':
             - manuals/core/basic_examples/index.md
         - 'Concepts':
             - manuals/core/concepts/index.md
