@@ -11,7 +11,7 @@ the problem. The algorithms are modeled as an execution graph (a Directed Acycli
 succession of functions (or _Tasks_ in Taipy Core) that exchange data. With Taipy Core, one can model simple as
 well as very complex algorithms.
 
-[:material-arrow-right: Basic examples](basic_examples/index.md),
+[:material-arrow-right: Basic example](basic_examples/index.md),
 
 [:material-arrow-right: Definition of Taipy Core concepts](concepts/index.md),
 
