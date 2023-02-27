@@ -48,7 +48,7 @@ Finally, in line 11, we configure the execution graph of the scenario providing 
 
 ## Running Core service
 
-Running Taipy Core as a service allow Taipy to set up all necessary variables to use Core functionalities.
+Running Taipy Core as a service allows Taipy to set up all necessary variables to use Core functionalities.
 
 ``` python linenums="1"
 from taipy import Core
