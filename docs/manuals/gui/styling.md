@@ -141,7 +141,7 @@ HTML id that can be used by CSS styling.
 For example, if your Markdown page contains the following control:
 
 ```
-<|Click me|button|id="my_button"|>
+<|Click me|button|id=my_button|>
 ```
 
 You can change the style of that button using a CSS selector that
