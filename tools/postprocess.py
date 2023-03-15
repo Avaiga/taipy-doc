@@ -395,7 +395,7 @@ def process_data_source_attr(html: str, env):
     last_location = 0
     for m in _DATASOURCE_RE.finditer(html):
         ref = m.group(3)
-        repo_m = re.search("^([\w\d]+):", ref)
+        repo_m = re.search(r"^([\w\d]+):", ref)
         if repo_m:
             ref = ("https://github.com/Avaiga/taipy-" +
                    f"{repo_m.group(0)[:-1]}/blob/{env.conf['branch']}/{ref[repo_m.end():]}")

@@ -242,7 +242,7 @@ of the variable that holds that dictionary as the value of the `properties` prop
 
     Then shorten your Markdown text with the following syntax:
     ```
-    <{show_dialog}|dialog|properties=dialog_props|>
+    <|{show_dialog}|dialog|properties=dialog_props|>
     ```
 
 ### The `propagate` property

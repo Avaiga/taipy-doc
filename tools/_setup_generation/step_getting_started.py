@@ -31,12 +31,12 @@ class GettingStartedStep(SetupStep):
         self.content = "\n".join(self.content) + "\n"
 
     def set_content_for_page(self, page):
-        step_folders = glob.glob("docs/getting_started/" + page + "/step_*")
+        step_folders = glob.glob(f"docs/getting_started/{page}/step_*")
         step_folders.sort()
         step_folders = map(lambda s: s[len('docs/'):], step_folders)
         step_folders = map(self._format_page_content, step_folders)
 
-        content = f"    - '{self.DEFAULT_CONTENT[page][0]}':\n"
+        content = f"    - \"{self.DEFAULT_CONTENT[page][0]}\":\n"
         content += f"      - getting_started/{page}/index.md\n"
         content += "\n".join(step_folders)
         self.content.append(content)
@@ -45,7 +45,7 @@ class GettingStartedStep(SetupStep):
         readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
         readme_content = Path('docs/', readme_path).read_text().split('\n')
         step_name = next(filter(lambda l: "# Step" in l, readme_content))[len("# "):]
-        return f"      - '{step_name}': '{readme_path}'"
+        return f"      - \"{step_name}\": {readme_path}"
 
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(r"^\s*\[GETTING_STARTED_CONTENT\]\s*\n", self.content)
