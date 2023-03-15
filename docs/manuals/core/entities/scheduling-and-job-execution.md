@@ -109,7 +109,7 @@ submitting a pipeline, you can also use the two parameters _wait_ and _timeout_.
     pipeline.submit()
     ```
 
-You can also submit a single task with the same `taipy.submit()^` method, and it will return the created `Job^`:
+You can also submit a single task with the same `taipy.submit()^` method. It returns the created `Job^`:
 
 ```python linenums="1"
 import taipy as tp
