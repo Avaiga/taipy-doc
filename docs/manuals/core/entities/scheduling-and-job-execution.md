@@ -11,7 +11,7 @@ page.
 In this section, it is assumed that <a href="./code_example/my_config.py" download>`my_config.py`</a>
 module contains a Taipy configuration already implemented.
 
-To execute a scenario, you need to call the `taipy.submit()^` method, which will return a list of created `Job^`:
+To execute a scenario, you need to call the `taipy.submit()^` method. It returns a list of created `Job^`s:
 
 ```python linenums="1"
 import taipy as tp
