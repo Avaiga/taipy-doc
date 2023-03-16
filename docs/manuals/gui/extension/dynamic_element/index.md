@@ -26,7 +26,7 @@ development of graphical components.
 
 !!! warning "Minimal knowledge"
     The following sections contain code samples written in TypeScript that leverage
-    the React library. This manual is in no way a beginner's on either technology.
+    the React library. This manual is in no way a beginner's guide on either technology.
 
     To create your custom dynamic elements, you need to know about React functional
     components and hooks and how to create simple components.<br/>
@@ -39,9 +39,12 @@ development of graphical components.
 
 The declaration of a dynamic element looks very similar to the declaration of a static
 element.<br/>
-The fundamental change is that instead of setting the *render_xhtml* argument of the
-[`Element` constructor](Element.__init__()^), you must instead provide the name of
-the React component that implements that element to its *react_component* argument.
+The fundamental change is that if the *render_xhtml* argument of the
+[`Element` constructor](Element.__init__()^) is not set or is not a function
+then the element is considered *dynamic*. That is, implemented using a React
+component. You can specify the name of the component using the *react_component*
+argument. If you don't, Taipy GUI will use a capitalized camel case transformation
+of the element name as the target React component name.
 
 Here is how a custom element library containing a dynamic element would be declared:
 
@@ -53,22 +56,24 @@ class CustomLibrary(ElementLibrary):
     def __init__(self) -> None:
         self.elements = {
               ...
-              "<element1_name>": Element("<default_property_name>", {
-                  "<property1_name>": ElementProperty(<property1_type>, ...),
+              "<element1 name>": Element("<default property name>", {
+                  "<property1 name>": ElementProperty(<property1 type>, ...),
                   ...
               },
-              react_component="<element1_component_name>"),
+              # This is optional and can be omitted if the component name can be inferred
+              # from the element name
+              react_component="<element1 component name>"),
               ...
         }
 
     def get_name(self) -> str:
-        return "<library_name>"
+        return "<library name>"
 
     def get_elements(self) -> dict:
         return self.elements
 
     def get_scripts(self) -> list[str]:
-        return ["<javascript_module_pathname>"]
+        return ["<javascript module pathname>"]
 ```
 
 There are two significant differences to spot compared to a custom element
@@ -99,14 +104,14 @@ front-end for a custom visual element:
 - The component name should be one used when the element is declared, using the
   *react_component* argument of the [`Element` constructor](Element.__init__()^).<br/>
   If this parameter is not used, Taipy GUI uses a camel case transformation of the element
-  name with a lowercase initial letter.
+  name.
 - All component source files are bundled in a JavaScript library. We are using
   [*webpack*](https://webpack.js.org/) for this purpose.
 - Components must be exported by the JavaScript library with the same name as the one
   used in the [`Element` constructor](Element.__init__()^).
 - Property names must be valid Python identifiers.
 - The camel case transformation of the property names, with a lowercase initial letter, are
-  used to name the keys of the *props* argument for the functional component.<br/>
+  used to name the keys of the *props* argument for the React component.<br/>
   We recommend that we declare a TypeScript interface that provides better typing
   for this argument: each property of the interface should have the transformed name
   of the element property.<br/>
@@ -140,14 +145,14 @@ The default name for the React component would be "SizableLabel", and its proper
 will be named after the element's property names.<br/>
 Here is how the definition for the React component will look like (typically, this code
 will be stored in a file called "SizableLabel.tsx", in the directory
-"&lt;project_dir&gt;/&lt;package&gt;/front-end/src"):
+"&lt;project dir&gt;/&lt;package dir&gt;/front-end/src"):
 
 ```ts
 interface SizableLabelProps {
-    label: string;
-    defaultLabel?: string;
+    label?: string;
+    defaultLabel: string;
     size?: number;
-    defaultSize?: number;
+    defaultSize: number;
 }
 
 const SizableLabel = (props: SizableLabelProps) => {
@@ -157,7 +162,7 @@ const SizableLabel = (props: SizableLabelProps) => {
 
 When the component is entirely defined, it must be exported by the JavaScript library.<br/>
 This is done by adding the *export* directive in the file
-"&lt;project_dir&gt;/&lt;package&gt;/front-end/src/index.ts".
+"&lt;project dir&gt;/&lt;package dir&gt;/front-end/src/index.ts".
 
 For our example, this would be the content of this file:
 ```ts
@@ -176,7 +181,7 @@ steps to take:
 - Bundle all JavaScript code into the extension library JavaScript module.
 
 All the steps are handled by the `package.json` file located at the root of the front-end
-NPM project (that is, in the `<package_dir>/front-end` directory in our examples).<br/>
+NPM project (that is, in the `<package dir>/front-end` directory in our examples).<br/>
 The commands declared in this file heavily rely on [*webpack*](https://webpack.js.org/)
 to handle the build process: the "scripts" property of the `package.json` content defines
 the "build" entry as invoking "webpack".<br/>
@@ -242,7 +247,7 @@ JSX syntax (used in `.tsx` source files):
 
    The settings of the *resolve* and *rules* properties make `webpack` look for TypeScript
    files (`.ts` and `.tsx`) and process those files using the "ts-loader" TypeScript
-   compiler.
+   transpiler loader.
 
 ### Resolve Taipy GUI dependency
 
@@ -264,14 +269,38 @@ To simplify the understanding of the rest of this section, let's assume that you
 the directory path returned by this command in the environment variable 'TAIPY_GUI_DIR'.<br/>
 
 To install the Taipy GUI JavaScript module, you need to run the following command:
-```
+```title="Unix"
 npm i $TAIPY_GUI_DIR/taipy/gui/webapp
 ```
-
+```title="Windows"
+npm i %TAIPY_GUI_DIR%\taipy\gui\webapp
+```
 Note that in the `package.json` file that is installed in Taipy GUI (in
 `$TAIPY_GUI_DIR/taipy/doc/extension/example_library/front-end`), there is an entry
 called "install" in the "scripts" section that invokes an NPM script to perform
 this task.
+
+This dependency must be explicitly declared for `webpack` to use as an external
+library.<br/>
+In the `webpack.config.js` file you can find the following lines, that assumes
+that the environment variable "TAIPY_GUI_DIR" was set as indicated above:
+
+```js
+  externals: {"taipy-gui": "TaipyGui"},
+
+  plugins: [
+    new webpack.DllReferencePlugin({
+      manifest: path.resolve(
+        __dirname,
+        `${process.env.TAIPY_GUI_DIR}/taipy/gui/webapp/taipy-gui-deps-manifest.json`
+      ),
+      name: "TaipyGuiDependencies"
+    }),
+  ]
+```
+These two settings ensure that the Taipy GUI JavaScript module is accessible for
+resolving the symbols it exposes and that this module is not bundled itself in the
+generated custom extension library JavaScript module.
 
 ### Bundle the JavaScript code
 

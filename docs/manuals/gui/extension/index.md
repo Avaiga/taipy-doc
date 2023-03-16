@@ -20,8 +20,8 @@ by its name. An element name must be unique in the context of its library.<br/>
 Each library also has a name. To insert a custom visual element in a page, you will use
 the full name of the element:
 
-- `<library_name>.<element_name>` in a Markdown page
-- `<library_name>:<element_name>` in an HTML page
+- `<library name>.<element name>` in a Markdown page
+- `<library name>:<element name>` in an HTML page
 
 ## Element Libraries and Custom Elements
 
@@ -48,12 +48,12 @@ from taipy.gui.extension import ElementLibrary, Element
 class CustomLibrary(ElementLibrary):
     def __init__(self) -> None:
         self.elements = {
-          "<element1_name>": Element(...),
-          "<element2_name>": Element(...),
+          "<element1 name>": Element(...),
+          "<element2 name>": Element(...),
         }
 
     def get_name(self) -> str:
-        return "<library_name>"
+        return "<library name>"
 
     def get_elements(self) -> dict:
         return self.elements
@@ -75,13 +75,13 @@ The [`Element` constructor](Element.__init__()^) needs a description of all the 
 that this element holds, as well as how this element is rendered.
 
 ```py
-Element("<default_property_name>",
+Element("<default property name>",
         {
-           "<property1_name>": ElementProperty(<property1_type>, ...),
-           "<property2_name>": ElementProperty(<property2_type>, ...),
+           "<property1 name>": ElementProperty(<property1 type>, ...),
+           "<property2 name>": ElementProperty(<property2 type>, ...),
            ...
         },
-        <rendering_arguments>)
+        <rendering arguments>)
 ```
 
 An element property descriptor (handled by the `ElementProperty^` class) must
@@ -132,7 +132,8 @@ inserted into the page when it is requested.
 An extension library must be exposed to the Taipy GUI application so application pages can use
 its elements:
 
-- The *main* Python module must import the library module or package.
+- One of the Python modules of the application must import the library module or package
+  so it can be instantiated;
 - The library must be instantiated and the instance must be used in the invocation of
   the function `Gui.add_library()^` to expose the extension library to the application.
 
@@ -161,10 +162,10 @@ allowing for the creation of an extension library with dynamic elements.
 Here is what the directory structure of a typical extension library project looks like:
 
 ```
-<project_dir>
+<project dir>
 ├── pyproject.toml
 ├── MANIFEST.in
-└── <package_dir>/
+└── <package dir>/
     ├── __init__.py
     ├── library.py
     └── front-end/ (only if you need dynamic elements)
@@ -184,31 +185,31 @@ Each of these entries needs some explanation:
   details.
 - `MANIFEST.in`: Commands to be executed when the Python package is built as a source distribution.
   The [section on packaging](../extension_packaging.md) explains what this file should contain.
-- `<package_dir>/`: The root directory for the extension library. This contains all the Python
+- `<package dir>/`: The root directory for the extension library. This contains all the Python
   (and potentially TypeScript/JavaScript code) needed to build the extension library.<br/>
   The name of this directory is used as the name of the root directory for the Python package.
-- `<package_dir>/__init__.py`: Required to make `<package_dir>` a valid Python package directory.</br>
+- `<package dir>/__init__.py`: Required to make `<package dir>` a valid Python package directory.</br>
   It is also the right place to import the library class because it is easier from the developer's
   standpoint when a Taipy GUI application imports the extension library.
-- `<package_dir>/library.py`: The implementation file for the extension library.<br/>
+- `<package dir>/library.py`: The implementation file for the extension library.<br/>
   This is where you typically will define the subclass of `ElementLibrary^` that implements
   your extension library.
-- `<package_dir>/front-end/`: If you create an extension library containing dynamic
+- `<package dir>/front-end/`: If you create an extension library containing dynamic
   elements, we strongly encourage storing all the front-end-specific code in this
   dedicated directory.<br/>
   This should contain all the TypeScript/JavaScript code for the React components and
   what it takes to build the JavaScript bundle that the extension library uses.
-- `<package_dir>/front-end/package.json`: The meta-data for the Node project that holds
+- `<package dir>/front-end/package.json`: The meta-data for the Node project that holds
   the components implementing the front-end side of the dynamic elements of your extension
   library.
-- `<package_dir>/front-end/tsconfig.json`: The TypeScript compilation options.
-- `<package_dir>/front-end/webpack.config.js`: The configuration to build the JavaScript
+- `<package dir>/front-end/tsconfig.json`: The TypeScript compilation options.
+- `<package dir>/front-end/webpack.config.js`: The configuration to build the JavaScript
   bundle of the extension library.
-- `<package_dir>/front-end/src/`: The source file for the front-end components.<br/>
+- `<package dir>/front-end/src/`: The source file for the front-end components.<br/>
   Grouping all the TypeScript/JavaScript in the same place makes finding and bundling with them easier.
-- `<package_dir>/front-end/src/index.ts`: The entry point of the JavaScript bundle.<br/>
+- `<package dir>/front-end/src/index.ts`: The entry point of the JavaScript bundle.<br/>
   This file must export the React components of the bundle.
-- `<package_dir>/front-end/src/<component>.ts`: The implementation file for a React
+- `<package dir>/front-end/src/<component>.ts`: The implementation file for a React
   component used by a dynamic element. Each component typically has its own
   implementation file.
 

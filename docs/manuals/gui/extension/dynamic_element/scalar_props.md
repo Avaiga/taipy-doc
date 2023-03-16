@@ -1,6 +1,6 @@
 # Scalar properties
 
-In his section, we are going to add a dynamic custom element to the custom element
+In this section, we are going to add a dynamic custom element to the custom element
 library started in the [Static Elements](../static_element.md#declaring-the-extension-library-data-sourceguidocextensionexample_libraryexample_librarypy)
 section.
 
@@ -56,7 +56,7 @@ import { useDynamicProperty } from "taipy-gui";
 
 interface ColoredLabelProps {
   value?: string;
-  defaultValue?: string;
+  defaultValue: string;
 }
 
 // Sequence of colors
@@ -86,10 +86,12 @@ const ColoredLabel = (props: ColoredLabelProps) => {
 
 export default ColoredLabel;
 ```
+We use the
+[`useDynamicProperty()`](../../../../reference_guiext/modules/#usedynamicproperty)
+hook provided by the Taipy GUI Extension API to retrieve the value of the dynamic
+property. This hook returns the latest updated value.<br/>
 
-We use the `useDynamicProperty()` hook provided by the Taipy GUI Extension API to retrieve
-the value of the dynamic property. This hook returns the latest updated value.
-<br/>It takes three parameters:
+It takes three parameters:
 
 - *value*: The bound value, coming from the *props* of the component;
 - *defaultValue* The default value, coming from the *props* of the component;
