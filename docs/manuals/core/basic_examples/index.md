@@ -124,5 +124,5 @@ Hello Kylian Mbappe!
 
 !!! important
 
-    Please refer to the [Core getting started](../../../getting_started/getting-started-core/index.md)
-    documentation for a more realistic use case.
+    Please refer to the [Getting started with Core](../../../getting_started/getting-started-core/index.md)
+    manual for a more realistic use case.
