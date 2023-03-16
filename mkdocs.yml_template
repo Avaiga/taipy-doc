@@ -10,8 +10,8 @@ nav:
   - Home:
     - index.md
     - "Installation": installation.md
-  - "Getting started":
-    - "Getting started": getting_started/index.md
+  - "Getting Started":
+    - getting_started/index.md
     [GETTING_STARTED_CONTENT]
   - "User Manual":
     - "About Taipy's User Manual": manuals/about.md

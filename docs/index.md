@@ -16,7 +16,7 @@ This documentation is divided in three main sections:
 
 Taipy requires *Python 3.8* or newer.
 
-## Quick access
+## Quick Access
 
 These topics are the most visited ones, we thought you’d like to have a glance at them!
 
@@ -26,7 +26,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon icon-light" src="images/icons/flag-w.svg">
         <img class="tp-content-card-icon icon-dark" src="images/icons/flag.svg">
-        <h3>Getting started</h3>
+        <h3>Getting Started</h3>
       </header>
       <p>
         This tour shows you how to create an entire application using the two main components of Taipy.

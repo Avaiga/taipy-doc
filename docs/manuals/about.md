@@ -12,7 +12,7 @@ in order to see a step-by-step example of a complete Taipy application.
 
     Taipy requires **Python 3.8** or newer.
 
-## Quick access
+## Quick Access
 
 These topics are the most visited ones, we thought you’d like to have a glance at them!
 
@@ -51,7 +51,7 @@ The `taipy.gui^` package allows you to design an effective Graphic User Interfac
 It provides many interactive widgets, controls, and presentative elements to enhance the
 user’s experience.
 
-[:material-arrow-right: GUI user manual](gui/index.md)
+[:material-arrow-right: GUI User Manual](gui/index.md)
 
 ## Taipy Core - `taipy.core`
 
@@ -77,7 +77,7 @@ pipelines and task orchestration, data management, etc., through a dedicated RES
 This package aims to provide a solution to easily integrate Taipy applications with other IT systems.
 The API comes with multiple endpoints for you to work with Taipy Core conveniently and efficiently.
 
-[:material-arrow-right: Taipy REST user manual](rest/index.md)
+[:material-arrow-right: Taipy REST User Manual](rest/index.md)
 
 ## Deployment
 
