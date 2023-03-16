@@ -103,7 +103,7 @@ class RestRefManStep(SetupStep):
                 if dest_path in enterprise_paths:
                     file.write(Setup.ENTERPRISE_BANNER)
                 file.write(f"{dest_path_desc}\n\n")
-                self.navigation += " " * 6 + f"- Paths for {dest_path}: manuals/reference_rest/apis_{dest_path}.md\n"
+                self.navigation += " " * 6 + f"- \"Paths for {dest_path}\": manuals/reference_rest/apis_{dest_path}.md\n"
                 path_files[dest_path] = file
 
             file.write(f"# `{path}`\n\n")
@@ -170,7 +170,7 @@ class RestRefManStep(SetupStep):
                     file.write(f"|{property}|{get_property_type(property_desc, True)}|-|\n")
                 file.write("\n")
         file.close()
-        self.navigation += " " * 6 + "- Schemas: manuals/reference_rest/schemas.md\n"
+        self.navigation += " " * 6 + "- \"Schemas\": manuals/reference_rest/schemas.md\n"
 
 
     def exit(self, setup: Setup):

@@ -128,7 +128,7 @@ property of all visual elements. If you need to assign more than one
 class to an element, you can separate each individual class name with
 a space character:
 ```
-<|Click me|button|classname="option testing"|>
+<|Click me|button|classname=option testing|>
 ```
 This Markdown fragment gets converted into an HTML element with three CSS classes
 assigned: _taipy-button_, _option_, and _testing_.

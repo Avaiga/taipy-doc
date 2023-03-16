@@ -158,7 +158,7 @@ Published on 2022-10.
 
 - Extension API: custom visual elements can be integrated into Taipy GUI applications.<br/>
   Third party HTML components can be integrated into Taipy GUI pages to address specific use cases.<br/>
-  See [Extension API](manuals/gui/extension.md) for details.
+  See [Extension API](manuals/gui/extension/) for details.
 - New callbacks (`on_init`, `on_navigate`, `on_exception` and `on_status`) can be used to initialize a new
   session, detect navigation events, trigger code when exceptions are raised in user code,
   and invoke code when a *status* page is requested.<br/>

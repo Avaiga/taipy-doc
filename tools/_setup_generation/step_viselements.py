@@ -229,7 +229,7 @@ class VisElementsStep(SetupStep):
                         f"{self.charts_home_html_path} should begin with an HTML comment that lists the chart types"
                     )
                 chart_gallery = "\n" + chart_gallery[match.end() :]
-                SECTION_RE = re.compile(r"^(\w+):(.*)$")
+                SECTION_RE = re.compile(r"^([\w-]+):(.*)$")
                 chart_sections = ""
                 for line in match.group(1).splitlines():
                     match = SECTION_RE.match(line)
