@@ -173,7 +173,7 @@ export { SizableLabel };
 
 ## Building the front-end module
 
-To build the JavaScript module that Taipy GUI use by on the user's browser, there are three
+To build the JavaScript module that Taipy GUI can load on the user's browser, there are three
 steps to take:
 
 - Convert the TypeScript code to JavaScript;

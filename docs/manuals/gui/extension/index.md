@@ -132,7 +132,7 @@ inserted into the page when it is requested.
 An extension library must be exposed to the Taipy GUI application so application pages can use
 its elements:
 
-- One of the Python modules of the application must import the library module or package
+- The Python application must import the library module or package
   so it can be instantiated;
 - The library must be instantiated and the instance must be used in the invocation of
   the function `Gui.add_library()^` to expose the extension library to the application.
