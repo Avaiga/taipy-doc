@@ -36,6 +36,8 @@ nav:
               - "Scalar properties": manuals/gui/extension/dynamic_element/scalar_props.md
     - Taipy Core:
         - manuals/core/index.md
+        - 'Basic example: Hello world!':
+            - manuals/core/basic_examples/index.md
         - "Concepts":
             - manuals/core/concepts/index.md
             - "Data node": manuals/core/concepts/data-node.md
@@ -114,10 +116,8 @@ nav:
   - "Release Notes": relnotes.md
   - "Contributing":
     - "Contributing to Taipy": contributing/contributing.md
-    - "Code of conduct": contributing/code_of_conduct.md
-  - "Credits":
-    - "Development lead": credits/development_lead.md
     - "Contributors": credits/contributors.md
+    - "Code of conduct": contributing/code_of_conduct.md
 theme:
   name: material
   language: en

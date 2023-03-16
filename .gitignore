@@ -120,6 +120,7 @@ docs/manuals/xrefs
 docs/manuals/reference_rest/*.md
 !docs/manuals/reference_rest/index.md
 docs/manuals/reference_guiext/
+docs/credits/contributors.md
 node_modules/
 
 # Getting started
@@ -129,4 +130,3 @@ docs/getting_started/getting-started-gui/*
 !docs/getting_started/getting-started-gui/.gitkeep
 docs/getting_started/getting-started-core/*
 !docs/getting_started/getting-started-core/.gitkeep
-

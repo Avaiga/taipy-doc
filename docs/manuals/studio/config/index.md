@@ -40,7 +40,7 @@ configuration elements:
     project.<br/>
     The user can select a configuration file in this list to populate the other
     sections of the Taipy Configs view.
-- Data Notes: holds the list of
+- Data Nodes: holds the list of
     [Data Node configurations](../../core/config/data-node-config.md) defined
     in the selected configuration file.<br/>
     The user can select a Data Node configuration in this list to access all its
