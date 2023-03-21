@@ -3,7 +3,7 @@ import pandas as pd
 from taipy import Config
 
 
-def read_csv(path: str) -> str:
+def read_csv(path: str) -> pd.DataFrame:
     # reading a csv file, define some column types and parse a string into datetime
     custom_parser = lambda x: dt.strptime(x, "%Y %m %d %H:%M:%S")
     data = pd.read_csv(
@@ -18,7 +18,7 @@ def read_csv(path: str) -> str:
     return data
 
 
-def write_csv(data: pd.DataFrame, path: str):
+def write_csv(data: pd.DataFrame, path: str) -> None:
     # dropping not a number values before writing
     data.dropna().to_csv(path)
 

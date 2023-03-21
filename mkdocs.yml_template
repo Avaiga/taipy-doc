@@ -1,5 +1,7 @@
 site_name: Taipy
 site_url: https://docs.taipy.io/en/develop
+site_description: Documentation for Taipy
+site_author: taipy.io
 repo_url: https://github.com/avaiga/taipy
 repo_name: taipy
 #strict: true
@@ -7,96 +9,103 @@ copyright: © [YEAR] Avaiga
 nav:
   - Home:
     - index.md
-    - Installation: installation.md
-  - 'Getting started':
-    - 'Getting started': 'getting_started/index.md'
+    - "Installation": installation.md
+  - "Getting Started":
+    - getting_started/index.md
     [GETTING_STARTED_CONTENT]
-  - 'User Manual':
-    - "About Taipy's User Manual": 'manuals/about.md'
+  - "User Manual":
+    - "About Taipy's User Manual": manuals/about.md
     - Taipy GUI:
         - manuals/gui/index.md
-        - 'Pages': 'manuals/gui/pages.md'
-        - 'Visual Elements':
-           - 'Visual Elements': 'manuals/gui/viselements/index.md'
-           - 'Controls': 'manuals/gui/controls.md'
-           - 'Blocks': 'manuals/gui/blocks.md'
-        - 'Binding variables': 'manuals/gui/binding.md'
-        - 'Callbacks': 'manuals/gui/callbacks.md'
-        - 'Notifications': 'manuals/gui/notifications.md'
-        - 'Styling': 'manuals/gui/styling.md'
-        - 'Configuration': 'manuals/gui/configuration.md'
-        - 'Using Notebooks': 'manuals/gui/notebooks.md'
-        - 'Extension': 'manuals/gui/extension.md'
+        - "Pages": manuals/gui/pages.md
+        - "Visual Elements":
+           - manuals/gui/viselements/index.md
+           - "Controls": manuals/gui/controls.md
+           - "Blocks": manuals/gui/blocks.md
+        - "Binding variables": manuals/gui/binding.md
+        - "Callbacks": manuals/gui/callbacks.md
+        - "Notifications": manuals/gui/notifications.md
+        - "Styling": manuals/gui/styling.md
+        - "Configuration": manuals/gui/configuration.md
+        - "Using Notebooks": manuals/gui/notebooks.md
+        - "Extension":
+           - manuals/gui/extension/index.md
+           - "Static Elements": manuals/gui/extension/static_element.md
+           - "Dynamic Elements":
+              - manuals/gui/extension/dynamic_element/index.md
+              - "Scalar properties": manuals/gui/extension/dynamic_element/scalar_props.md
     - Taipy Core:
         - manuals/core/index.md
-        - 'Concepts':
+        - 'Basic example: Hello world!':
+            - manuals/core/basic_examples/index.md
+        - "Concepts":
             - manuals/core/concepts/index.md
-            - 'Data node': 'manuals/core/concepts/data-node.md'
-            - 'Task': 'manuals/core/concepts/task.md'
-            - 'Pipeline': 'manuals/core/concepts/pipeline.md'
-            - 'Scenario': 'manuals/core/concepts/scenario.md'
-            - 'Cycle': 'manuals/core/concepts/cycle.md'
-            - 'Job': 'manuals/core/concepts/job.md'
-            - 'Execution flow': 'manuals/core/concepts/execution-flow.md'
-            - 'Scope': 'manuals/core/concepts/scope.md'
-        - 'Configuration':
+            - "Data node": manuals/core/concepts/data-node.md
+            - "Task": manuals/core/concepts/task.md
+            - "Pipeline": manuals/core/concepts/pipeline.md
+            - "Scenario": manuals/core/concepts/scenario.md
+            - "Cycle": manuals/core/concepts/cycle.md
+            - "Job": manuals/core/concepts/job.md
+            - "Execution flow": manuals/core/concepts/execution-flow.md
+            - "Scope": manuals/core/concepts/scope.md
+        - "Configuration":
             - manuals/core/config/index.md
-            - 'Config': 'manuals/core/config/config.md'
-            - 'Data node configs': 'manuals/core/config/data-node-config.md'
-            - 'Task configs': 'manuals/core/config/task-config.md'
-            - 'Pipeline configs': 'manuals/core/config/pipeline-config.md'
-            - 'Scenario configs': 'manuals/core/config/scenario-config.md'
-            - 'Global config': 'manuals/core/config/global-config.md'
-            - 'Job execution config': 'manuals/core/config/job-config.md'
-            - 'Config checker': 'manuals/core/config/config-checker.md'
-            - 'Advanced configuration': 'manuals/core/config/advanced-config.md'
-        - 'Entities':
+            - "Config": manuals/core/config/config.md
+            - "Data node configs": manuals/core/config/data-node-config.md
+            - "Task configs": manuals/core/config/task-config.md
+            - "Pipeline configs": manuals/core/config/pipeline-config.md
+            - "Scenario configs": manuals/core/config/scenario-config.md
+            - "Global config": manuals/core/config/global-config.md
+            - "Job execution config": manuals/core/config/job-config.md
+            - "Config checker": manuals/core/config/config-checker.md
+            - "Advanced configuration": manuals/core/config/advanced-config.md
+        - "Entities":
             - manuals/core/entities/index.md
-            - "Entities' creation": 'manuals/core/entities/scenario-creation.md'
-            - 'Scenario and cycle management': 'manuals/core/entities/scenario-cycle-mgt.md'
-            - 'Pipeline management': 'manuals/core/entities/pipeline-mgt.md'
-            - 'Task management': 'manuals/core/entities/task-mgt.md'
-            - 'Data node management': 'manuals/core/entities/data-node-mgt.md'
-            - 'Job execution': 'manuals/core/entities/orchestrating-and-job-execution.md'
-        - 'Version Management':
+            - "Entities' creation": manuals/core/entities/scenario-creation.md
+            - "Scenario and cycle management": manuals/core/entities/scenario-cycle-mgt.md
+            - "Pipeline management": manuals/core/entities/pipeline-mgt.md
+            - "Task management": manuals/core/entities/task-mgt.md
+            - "Data node management": manuals/core/entities/data-node-mgt.md
+            - "Job execution": manuals/core/entities/orchestrating-and-job-execution.md
+        - "Version Management":
             - manuals/core/versioning/index.md
-            - "Manage versions": 'manuals/core/versioning/version-mgt.md'
-            - "Development mode": 'manuals/core/versioning/development_mode.md'
-            - "Experiment mode": 'manuals/core/versioning/experiment_mode.md'
-            - "Production mode": 'manuals/core/versioning/production_mode.md'
-    - 'Taipy REST':
+            - "Manage versions": manuals/core/versioning/version-mgt.md
+            - "Development mode": manuals/core/versioning/development_mode.md
+            - "Experiment mode": manuals/core/versioning/experiment_mode.md
+            - "Production mode": manuals/core/versioning/production_mode.md
+    - "Taipy REST":
         - manuals/rest/index.md
-    - 'Running Taipy services':
+    - "Running Taipy services":
         - manuals/running_services/index.md
-    - 'Authentication and Roles':
+    - "Authentication and Roles":
         - manuals/auth/index.md
-        - 'Authentication': 'manuals/auth/authentication.md'
-        - 'Authorization': 'manuals/auth/authorization.md'
-    - Deployment:
-        - 'Prepare your application for deployment': 'manuals/deployment/prepare-taipy-for-deployment.md'
-        - GNU/Linux:
-            - 'Ubuntu': 'manuals/deployment/linux/ubuntu.md'
-            - 'RHEL': 'manuals/deployment/linux/redhat.md'
-        - 'Windows Server': 'manuals/deployment/windows.md'
-        - Docker:
-            - 'Development': 'manuals/deployment/docker/development.md'
-            - 'Production': 'manuals/deployment/docker/production.md'
-        - 'Heroku':
-            - 'Getting started': 'manuals/deployment/heroku/getting-started.md'
-            - 'Setup': 'manuals/deployment/heroku/setup.md'
-            - 'Based on Git': 'manuals/deployment/heroku/git.md'
-            - 'Based on Docker': 'manuals/deployment/heroku/docker.md'
-    - 'Taipy Studio':
+        - "Authentication": manuals/auth/authentication.md
+        - "Authorization": manuals/auth/authorization.md
+    - "Deployment":
+        - "Prepare your application for deployment": manuals/deployment/prepare-taipy-for-deployment.md
+        - "GNU/Linux":
+            - "Ubuntu": manuals/deployment/linux/ubuntu.md
+            - "RHEL": manuals/deployment/linux/redhat.md
+        - "Windows Server": manuals/deployment/windows.md
+        - "Docker":
+            - "Development": manuals/deployment/docker/development.md
+            - "Production": manuals/deployment/docker/production.md
+        - "Heroku":
+            - "Getting started": manuals/deployment/heroku/getting-started.md
+            - "Setup": manuals/deployment/heroku/setup.md
+            - "Based on Git": manuals/deployment/heroku/git.md
+            - "Based on Docker": manuals/deployment/heroku/docker.md
+    - "Taipy Studio":
         - manuals/studio/index.md
-        - 'Building configurations':
+        - "Building configurations":
            - manuals/studio/config/index.md
-           - 'Managing configuration files': 'manuals/studio/config/files.md'
-           - 'Configuring elements': 'manuals/studio/config/elements.md'
-           - 'Graph views': 'manuals/studio/config/graphview.md'
-           - 'Text edition': 'manuals/studio/config/textedition.md'
-        - 'GUI Markdown support': 'manuals/studio/gui.md'
-  - 'Reference Manual':
-    - "About Taipy's Reference Manual": 'manuals/reference.md'
+           - "Managing configuration files": manuals/studio/config/files.md
+           - "Configuring elements": manuals/studio/config/elements.md
+           - "Graph views": manuals/studio/config/graphview.md
+           - "Text edition": manuals/studio/config/textedition.md
+        - "GUI Markdown support": manuals/studio/gui.md
+  - "Reference Manual":
+    - "About Taipy's Reference Manual": manuals/reference.md
     [REFERENCE_CONTENT]
     - "REST API":
       - manuals/reference_rest/index.md
@@ -104,13 +113,11 @@ nav:
     - "GUI Extension API":
       - manuals/reference_guiext/index.md
       - "taipy-gui module": manuals/reference_guiext/modules.md
-  - 'Release Notes': 'relnotes.md'
-  - 'Contributing':
-    - 'Contributing to Taipy': 'contributing/contributing.md'
-    - 'Code of conduct': 'contributing/code_of_conduct.md'
-  - 'Credits':
-    - 'Development lead': 'credits/development_lead.md'
-    - 'Contributors': 'credits/contributors.md'
+  - "Release Notes": relnotes.md
+  - "Contributing":
+    - "Contributing to Taipy": contributing/contributing.md
+    - "Contributors": credits/contributors.md
+    - "Code of conduct": contributing/code_of_conduct.md
 theme:
   name: material
   language: en
@@ -177,6 +184,7 @@ plugins:
       module_name: tools/postprocess
 watch:
   - taipy
+  - tools/postprocess.py
 extra:
   social:
     - icon: fontawesome/brands/twitter

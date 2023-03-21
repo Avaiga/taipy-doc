@@ -11,7 +11,7 @@ page.
 In this section, it is assumed that <a href="./code_example/my_config.py" download>`my_config.py`</a>
 module contains a Taipy configuration already implemented.
 
-To execute a scenario, you need to call the `taipy.submit()^` method:
+To execute a scenario, you need to call the `taipy.submit()^` method. It returns a list of created `Job^`s:
 
 ```python linenums="1"
 import taipy as tp
@@ -21,7 +21,7 @@ tp.Core().run()
 
 scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-tp.submit(scenario)
+jobs = tp.submit(scenario)
 ```
 
 In line 6, we create a new scenario from a scenario configuration and submit it for execution (line 8).
@@ -77,7 +77,7 @@ is no limit to the wait time. If _wait_ is True and _timeout_ is specified,
 taipy waits until all the submitted jobs are finished, or the timeout expires (which ever occurred
 first).
 
-It is also possible to submit a single pipeline using the same `taipy.submit()^` method:
+It is also possible to submit a single pipeline using the same `taipy.submit()^` method. . It returns a list of created `Job^`s:
 
 ```python linenums="1"
 import taipy as tp
@@ -88,7 +88,7 @@ tp.Core().run()
 scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 pipeline = scenario.sales_pipeline
 
-tp.submit(pipeline)
+jobs = tp.submit(pipeline)
 ```
 
 In line 5, we retrieve the pipeline named `sales_pipeline` from the created scenario. In line 7, we submit this
@@ -109,7 +109,7 @@ submitting a pipeline, you can also use the two parameters _wait_ and _timeout_.
     pipeline.submit()
     ```
 
-You can also submit a single task with the same `taipy.submit()^` method:
+You can also submit a single task with the same `taipy.submit()^` method. It returns the created `Job^`:
 
 ```python linenums="1"
 import taipy as tp
@@ -120,7 +120,7 @@ tp.Core().run()
 scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 task = scenario.predicting
 
-tp.submit(task)
+job = tp.submit(task)
 ```
 
 In line 5, we retrieve the task named `predicting` from the created scenario. In line 7, we submit this

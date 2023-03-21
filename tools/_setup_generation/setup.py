@@ -4,6 +4,7 @@ import re
 import shutil
 from typing import List
 
+
 class Setup(ABC):
     ROOT_PACKAGE = "taipy"
 
@@ -49,7 +50,7 @@ class Setup(ABC):
             description = step.get_description()
             if description:
                 description = f": {description}"
-            print(f"{line}\n| Step {step_index+1}/{n_steps}{description}\n{line}", flush=True)
+            print(f"{line}\n| Step {step_index + 1}/{n_steps}{description}\n{line}", flush=True)
             step.setup(self)
 
     def exit(self):
@@ -101,19 +102,25 @@ class SetupStep(ABC):
     def setup(self, setup: Setup):
         pass
 
+
 from .step_viselements import VisElementsStep
 from .step_refman import RefManStep
 from .step_rest_refman import RestRefManStep
 from .step_gui_ext_refman import GuiExtRefManStep
 from .step_getting_started import GettingStartedStep
+from .step_contributors import ContributorsStep
 
-def run_setup(root_dir: str, steps: List[SetupStep] = [
-    VisElementsStep(),
-    RefManStep(),
-    RestRefManStep(),
-    GuiExtRefManStep(),
-    GettingStartedStep()
-    ]):
+
+def run_setup(root_dir: str, steps: List[SetupStep] = None):
+    if steps is None:
+        steps = [
+            VisElementsStep(),
+            RefManStep(),
+            RestRefManStep(),
+            GuiExtRefManStep(),
+            GettingStartedStep(),
+            ContributorsStep()
+        ]
     setup = Setup(root_dir, steps)
     setup.setup()
     setup.exit()

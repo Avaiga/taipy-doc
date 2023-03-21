@@ -91,7 +91,7 @@ fragment similar to:
 <|visual_element_type|property_name=property_value|...|>
 ```
 
-!!! note
+!!! note "Multiple properties"
     You can have as many property name-property value pairs as needed, and all of the space
     characters of the property value part _are_ significant:<br/>
     The fragment `<|Content |text|>` will be displayed as the string "Content" followed by a
@@ -108,6 +108,60 @@ fragment similar to:
 !!! note "Unknown properties"
     If you set a property that a visual element does not recognize, it is
     ignored without any warning.
+
+!!! important "Indentation and block elements: element tag identifiers"
+    Markdown depends heavily on text indentation to decide whether or not a new paragraph or section
+    should be created.<br/>
+    When dealing with block elements to create sections on your page, you might be
+    tempted to indent the opening element tags, so the Markdown text is easier to read.<
+
+    The following Markdown content:
+    ```
+    <|
+    The part content
+    <|
+    First sub-part content.
+    |>
+    <|
+    Second sub-part content.
+    |>
+    |>
+    ```
+    would be easier to read if indented, as shown here:
+    ```
+    <|
+      The part content
+      <|
+      First sub-part content.
+      |>
+      <|
+      Second sub-part content.
+      |>
+    |>
+    ```
+    Finding the opening '<|' when looking at a '|>' fragment is far easier, and you have a hint of
+    the elements' structure.<br/>
+    Unfortunately, this indentation may break the Markdown parsing, and your page will not look
+    how you expected.
+
+    Taipy GUI provides a way for you to simplify the match of a closing element tag with its opening
+    element tag.<br/>
+    You can use, instead of the '<|...|>' sequence, the '<*id*|...|*id*>' where *id* must be a valid
+    Python identifier. Then the parsing of the Markdown content will indicate structural problems
+    (like element tags that don't match), and you can find matching element tags easier.
+
+    The example above could use this feature:
+    ```
+    <main_section|
+    The part content
+    <sub_section1|
+    First sub-part content.
+    |sub_section1>
+    <sub_section2|
+    Second sub-part content.
+    |sub_section2>
+    |main_section>
+    ```
 
 #### Some examples
 
@@ -242,7 +296,7 @@ of the variable that holds that dictionary as the value of the `properties` prop
 
     Then shorten your Markdown text with the following syntax:
     ```
-    <{show_dialog}|dialog|properties=dialog_props|>
+    <|{show_dialog}|dialog|properties=dialog_props|>
     ```
 
 ### The `propagate` property

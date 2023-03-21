@@ -10,7 +10,7 @@ def read_doc_version_from_mkdocs_yml_template_file(root_dir):
         mkdocs_yml_template = mkdocs_file.read()
     if mkdocs_yml_template is None:
         raise IOError(f"Couldn't open '{mkdocs_yml_template_path}'")
-    mkdocs_yml_version = re.search(r"site_url:\s*https://docs\.taipy\.io/en/(develop|release-(\d+\.\d+))$",
+    mkdocs_yml_version = re.search(r"site_url:\s*https://docs\.taipy\.io/en/(develop|release-(\d\.\d))$",
                                    mkdocs_yml_template, re.MULTILINE)
     if mkdocs_yml_version is None:
         raise ValueError(

@@ -1,18 +1,18 @@
 import csv
-from typing import List
+from typing import List, Iterator
 from taipy import Config
 
 
-def read_csv(path: str, delimiter: str = ",") -> str:
+def read_csv(path: str, delimiter: str = ",") -> Iterator:
     with open(path, newline=' ') as csvfile:
         data = csv.reader(csvfile, delimiter=delimiter)
     return data
 
 
-def write_csv(data: List[str], path: str, delimiter: str = ","):
+def write_csv(data: List[str], path: str, delimiter: str = ",") -> None:
     headers = ["country_code", "country"]
     with open(path, 'w') as csvfile:
-        writer = csv.writer(csvfile)
+        writer = csv.writer(csvfile, delimiter=delimiter)
         writer.writerow(headers)
         for row in data:
             writer.writerow(row)

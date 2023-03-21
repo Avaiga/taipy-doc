@@ -46,10 +46,10 @@ if __name__ == "__main__":
 ```
 
 By starting the Core service, all configuration will be blocked from update to prepare for job execution.
-To continue configure your application, stop the Core service by running `core.stop()`.
+To continue to configure your application, stop the Core service by running `core.stop()`.
 
 !!! note
-    On a Taipy application that uses the Taipy Core API, running Core service is required to execute jobs.
+    On a Taipy application that uses the Taipy Core API, running the Core service is required to execute jobs.
 
 ## Running `Rest` and `Core`
 
@@ -91,8 +91,8 @@ together with the following code:
 import taipy as tp
 
 if __name__ == "__main__":
-    gui = tp.Gui(page="# Getting started with *Taipy*")
     core = tp.Core()
+    gui = tp.Gui(page="# Getting started with *Taipy*")
 
     tp.run(gui, core, title="Taipy Demo")
 ```
