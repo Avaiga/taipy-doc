@@ -3,7 +3,7 @@
 The Taipy Core package is a Python library designed to build powerful and customized data-driven back-end applications.
 It provides the necessary tools to help Python developers transform their algorithms into a complete
 back-end application. It brings algorithm management to another level: algorithms are now connected to the end-user
-through user-defined scenarios, powerful scenario management and comparison, interactive data, smart orchestrating, etc.
+through user-defined scenarios, powerful scenario management and comparison, interactive data, smart job orchestration, etc.
 
 Taipy Core provides the key concept of _Scenario_. Among other functionalities, a _Scenario_ represents an instance
 of a data science problem with its datasets (modeled as _Data nodes_ in Taipy Core) and the algorithms to run to solve
