@@ -61,7 +61,7 @@ It provides the necessary tools to help Python developers transform their algori
 back-end application.
 
 Taipy Core brings algorithm management to another level: algorithms are now connected to the end-user through
-user-defined scenarios, interactive data, smart orchestrating, etc.
+user-defined scenarios, interactive data, smart job orchestration, etc.
 
 
 [:material-arrow-right: Definition of Taipy Core concepts](core/concepts/index.md),
