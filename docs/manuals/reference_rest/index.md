@@ -19,7 +19,7 @@ corresponds to a specific path:
   exhaustive list of all entrypoints for [cycles](./apis_cycle.md).
 - The APIs related to data nodes are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/datanodes/`. Here
   is the exhaustive list of all entrypoints for [data nodes](./apis_datanode.md).
-- The APIs related to job and scheduling are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/jobs/`.
+- The APIs related to job and orchestrating are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/jobs/`.
   Here is the exhaustive list of all entrypoints for [jobs](./apis_job.md).
 - The APIs related to pipelines are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/pipelines/`. Here
   is the exhaustive list of all entrypoints for [pipelines](./apis_pipeline.md).

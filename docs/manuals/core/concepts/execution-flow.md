@@ -28,7 +28,7 @@ configuration objects.
 ![Scenario 1 Graph ](../pic/execution_flow_entities.svg)
 
 Thanks to this graph representation, Taipy automatically understand the execution precedence constraints. When a
-scenario/pipeline is submitted for execution, the tasks are smartly scheduled and executed in the correct sequence.
+scenario/pipeline is submitted for execution, the tasks are smartly orchestrated and executed in the correct sequence.
 
 Taipy also optimizes the execution of pipelines and scenarios by not recomputing tasks that do not need to be
 re-executed. This is the concept of _caching_.

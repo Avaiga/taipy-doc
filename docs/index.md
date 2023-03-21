@@ -193,7 +193,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/core/entities/scheduling-and-job-execution/#submit-a-scenario-pipeline-or-task/">
+    <a class="tp-pill" href="manuals/core/entities/orchestrating-and-job-execution/#submit-a-scenario-pipeline-or-task/">
       <span>Submit Scenario</span>
     </a>
   </li>
@@ -232,7 +232,7 @@ Taipy is composed of two main independent components: **Taipy Core** and **Taipy
       </p>
       <ul>
         <li>Intuitive DAG modeling</li>
-        <li>Smart scheduling</li>
+        <li>Smart orchestrating</li>
         <li>Powerful data caching</li>
         <li>Scenario enabled pipelines</li>
         <li>KPI Tracking</li>
