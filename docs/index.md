@@ -232,7 +232,7 @@ Taipy is composed of two main independent components: **Taipy Core** and **Taipy
       </p>
       <ul>
         <li>Intuitive DAG modeling</li>
-        <li>Smart orchestrating</li>
+        <li>Smart job orchestration</li>
         <li>Powerful data caching</li>
         <li>Scenario enabled pipelines</li>
         <li>KPI Tracking</li>
