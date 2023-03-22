@@ -49,7 +49,7 @@ extension using the
 Look for extensions whose names contain "Taipy".
 
 <p align="center">
-  <img src="images/installation.gif" width=75%>
+  <img src="images/installation.gif" width="75%"/>
 </p>
 
 Once installed, Taipy Studio is activated when:

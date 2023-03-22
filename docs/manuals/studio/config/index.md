@@ -14,7 +14,7 @@ Data Nodes, Tasks, Pipelines, and Scenarios), specify the properties for those e
 and use a visual representation of those configuration elements as a graph.
 
 <p align="center">
-  <img src="../images/config_overview.png" width=75%>
+  <img src="../images/config_overview.png" width="75%"/>
 </p>
 
 Taipy Studio stores those configurations in TOML files. These files can be used at
@@ -30,7 +30,7 @@ for the view called "Taipy Configs".
 The view appears like this:
 
 <p align="center">
-  <img src="../images/config_panel.png" width=30%>
+  <img src="../images/config_panel.png" width="30%"/>
 </p>
 
 This panel is split into several sections that let the user access all the

@@ -14,7 +14,7 @@ showing how we could create a new Data Node configuration in the body of a confi
 
 
 <p align="center">
-  <img src="../images/config_autocomplete.gif" width=80%>
+  <img src="../images/config_autocomplete.gif" width="80%"/>
 </p>
 
 You will also get support for auto-completion in other contexts, such as a reference
@@ -27,7 +27,7 @@ indicated in the body of the file content, in the Problems pane, and in the "Det
 section of the "Taipy Configs" pane.
 
 <p align="center">
-  <img src="../images/config_diagnostics.png" width=75%>
+  <img src="../images/config_diagnostics.png" width="75%"/>
 </p>
 
 Here are the problems that Taipy Studio identifies:

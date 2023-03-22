@@ -44,7 +44,7 @@ Here is an example of how a control can be created in the Visual Studio Code
 text editor for a Markdown file:
 
 <p align="center">
-  <img src="../images/autocomplete_element.gif" width=75%>
+  <img src="../images/autocomplete_element.gif" width="75%"/>
 </p>
 
 ### Access to variable and function names
@@ -61,7 +61,7 @@ the "`{`" key, opening a fragment to write a Python expression.
 Here is what this looks like when referencing a variable name:
 
 <p align="center">
-  <img src="../images/autocomplete_variable.gif" width=75%>
+  <img src="../images/autocomplete_variable.gif" width="75%"/>
 </p>
 
 And here is a similar example, where a function name is required for a
@@ -69,7 +69,7 @@ property that holds a callback. Candidate function names that could be
 set to the property is proposed to the user:
 
 <p align="center">
-  <img src="../images/autocomplete_function.gif" width=75%>
+  <img src="../images/autocomplete_function.gif" width="75%"/>
 </p>
 
 
@@ -86,37 +86,37 @@ Here is a list of warnings and errors detected by Taipy Studio:
 - Missing closing syntax on control elements (MSC).<br/>
   Quick fix available: add closing syntax.
   <p align="center">
-    <img src="../images/diagnostics_mcs.png">
+    <img src="../images/diagnostics_mcs.png"/>
   </p>
 
 - Missing opening tag on block elements (MOT).
   <p align="center">
-    <img src="../images/diagnostics_mot.png">
+    <img src="../images/diagnostics_mot.png"/>
   </p>
 
 - Missing closing tag on block elements (MCT).
   <p align="center">
-    <img src="../images/diagnostics_mct.png">
+    <img src="../images/diagnostics_mct.png"/>
   </p>
 
 - Missing opening tag with matching tag id (MOTI).
   <p align="center">
-    <img src="../images/diagnostics_moti.png">
+    <img src="../images/diagnostics_moti.png"/>
   </p>
 
 - Missing closing tag with matching tag id (MCTI).
   <p align="center">
-    <img src="../images/diagnostics_mcti.png">
+    <img src="../images/diagnostics_mcti.png"/>
   </p>
 
 - Opening tag with unmatched tag id (UOTI).
   <p align="center">
-    <img src="../images/diagnostics_uoti.png">
+    <img src="../images/diagnostics_uoti.png"/>
   </p>
 
 - Closing tag with unmatched tag id (UCTI).
   <p align="center">
-    <img src="../images/diagnostics_ucti.png">
+    <img src="../images/diagnostics_ucti.png"/>
   </p>    
 
 - Invalid property format (PE01).
@@ -124,24 +124,24 @@ Here is a list of warnings and errors detected by Taipy Studio:
 - Invalid property name (PE02).<br/>
     Property names are dependent on the visual element type. Quick fix is available.
     <p align="center">
-      <img src="../images/diagnostics_pe02.png">
+      <img src="../images/diagnostics_pe02.png"/>
     </p>
 
 - Ignore negated value (PE03).<br/>
     Quick fix available: remove negated value.
     <p align="center">
-      <img src="../images/diagnostics_pe03.png">
+      <img src="../images/diagnostics_pe03.png"/>
     </p>
 
 - Function not found (FNF).<br/>
     This error is detected only in the context of a Python source file.
     <p align="center">
-      <img src="../images/diagnostics_fnf.png">
+      <img src="../images/diagnostics_fnf.png"/>
     </p>
     Quick fix available: generate a function with the correct signature into the
     Python file:
     <p align="center">
-      <img src="../images/diagnostics_fnf_quickfix.gif">
+      <img src="../images/diagnostics_fnf_quickfix.gif"/>
     </p>
 
 ## Element Generation
@@ -160,7 +160,7 @@ element needs to be generated and with what set of properties.<br/>
 The definition for the new element will be inserted in the last active window.
 
 <p align="center">
-  <img src="../images/generation_viselement.gif">
+  <img src="../images/generation_viselement.gif"  width="90%"/>
 </p>
 
 Of course, you may want to bind this command to some key binding of your liking.
@@ -176,5 +176,5 @@ closing "|>" fragment is inserted as an additional line.
 Here is how you can rapidly create a new control on your page:
 
 <p align="center">
-  <img src="../images/snippet_control.gif" width=75%>
+  <img src="../images/snippet_control.gif" width="75%"/>
 </p>
