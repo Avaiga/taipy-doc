@@ -16,6 +16,10 @@ element.<br/>
 Note that you cannot set the identifier of a new Data Node element to one
 already used by another.
 
+Default values are provided for the essential properties of the new Data Node configuration
+element: *storage_type* is set to "pickle" and *scope* is set to "SCENARIO:SCOPE".<br/>
+These are displayed in the DETAILS section of the "Taipy Configs" panel.
+
 ## Renaming a Data Node configuration
 
 Right-click a Data Node identifier in the Data Node section and select the
@@ -65,6 +69,11 @@ Taipy Studio will prompt you for an identifier for this new Task configuration
 element.<br/>
 Note that you cannot set the identifier of a new Task element to one
 already used by another.
+
+Default values are provided for the essential properties of the new Task configuration
+element: *inputs* and *outputs* are set to an empty list and *skippable* is set to
+"False:bool".<br/>
+These are displayed in the DETAILS section of the "Taipy Configs" panel.
 
 ## Renaming a Task configuration
 
@@ -128,6 +137,10 @@ element.<br/>
 Note that you cannot set the identifier of a new Pipeline element to one
 already used by another.
 
+Default values are provided for the essential properties of the new Pipeline configuration
+element: *tasks* is set to an empty list.<br/>
+These properties are displayed in the DETAILS section of the "Taipy Configs" panel.
+
 ## Renaming a Pipeline configuration
 
 Right-click a Pipeline identifier in the Pipelines section and select the
@@ -187,6 +200,10 @@ Taipy Studio will prompt you for an identifier for this new Scenario configurati
 element.<br/>
 Note that you cannot set the identifier of a new Scenario element to one
 already used by another.
+
+Default values are provided for the essential properties of the new Scenario configuration
+element: *pipelines* is set to an empty list.<br/>
+These properties are displayed in the DETAILS section of the "Taipy Configs" panel.
 
 ## Renaming a Scenario configuration
 

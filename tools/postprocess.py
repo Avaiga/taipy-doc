@@ -100,6 +100,7 @@ def on_post_build(env):
             x_packages.update(ps[2])
     manuals_files_path = os.path.join(site_dir, "manuals")
     ref_files_path = os.path.join(manuals_files_path, "reference")
+    fixed_cross_refs = {}
     for root, _, file_list in os.walk(site_dir):
         for f in file_list:
             # Post-process generated '.html' files
@@ -291,7 +292,13 @@ def on_post_build(env):
                             (dir, file) = os.path.split(md_file[1:]) # Drop the separator
                             (dir, dir1) = os.path.split(dir)
                             if file == "index.html": # Other cases to be treated as they come
-                                log.warning(f"FIXED error on link in '{dir}{sep}{dir1}.md' to '{dir}{sep}{entry}{method}{groups[3]}^'")
+                                source = f"{dir}{sep}{dir1}.md"
+                                dest = f"{dir}{sep}{entry}{method}{groups[3]}^"
+                                sources = fixed_cross_refs.get(dest, None)
+                                if sources:
+                                    sources.add(source)
+                                else:
+                                    fixed_cross_refs[dest] = {source}
                         package = packages[0]
                         orig_package = packages[1]
                         new_content += html_content[last_location:xref.start()]
@@ -384,6 +391,10 @@ def on_post_build(env):
             # Remove '.md_template' files
             elif f.endswith(".md_template"):
                 os.remove(os.path.join(root, f))
+    if fixed_cross_refs:
+        for dest in sorted(fixed_cross_refs.keys()):
+            sources = ", ".join(sorted(fixed_cross_refs[dest]))
+            log.info(f"FIXED cross-ref to '{dest}' from {sources}")
 
 # ################################################################################
 # Functions that are used in the postprocessing phase.

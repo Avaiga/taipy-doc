@@ -10,7 +10,7 @@ adding a configuration file is simply a matter of creating it from the Visual St
 Code Explorer panel:
 
 <p align="center">
-  <img src="../../images/config_init.gif" width=80%>
+  <img src="../../images/config_init.gif" width="80%"/>
 </p>
 
 Similarly, if you remove or rename a configuration file from the Explorer panel of Visual

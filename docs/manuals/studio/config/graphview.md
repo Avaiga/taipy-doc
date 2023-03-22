@@ -6,7 +6,7 @@ There are two types of elements displayed in these views:
 
 - Nodes:<br/>
     These are rectangular boxes that represent specific configuration elements. All
-    elements have an "In" and an "Out" port that lets you connect elements one to
+    elements have an "In" and an "Out" port that let you connect elements one to
     another.
 - Links:<br/>
     These a lines that represent the relation between two elements. All links
@@ -87,6 +87,10 @@ see that creating the second Pipeline configuration of the example is straightfo
 
 We are starting from a project where only the Python code was developed:
 
+<p align="center">
+  <img src="../../images/config_explorer.png" width="50%"/>
+</p>
+
 - `main.py` loads the configuration file and submits a scenario
 - `functions.py` defines the functions used by the Task configuration elements.
 
@@ -95,6 +99,13 @@ Note that there is no code for defining the `Config^` object in these source fil
 We also start with an empty `config.toml` file, where the configuration elements will
 be defined.
 
+You can see the 'T' sign next to the `main.py` file in the EXPLORER pane. This indicates
+that this Python file is considered as the *main* Python module for the application. This
+is used when you need to assign a function to be executed in a Task configuration
+element.<br/>
+To set another source file as the *main* Python module file, simply right-click on the file
+in the EXPLORER pane and select "Taipy: Set as main module".
+
 ## Creating the first configuration elements
 
 We will start by opening a Graph View representing the entire configuration file
@@ -102,7 +113,7 @@ then we will create the Data Node and Task configuration elements using the
 [Graph View action buttons](#the-graph-view-actions).
 
 <p align="center">
-  <img src="../../images/config_graphview_1.gif" width=80%>
+  <img src="../../images/config_graphview_1.gif" width="80%"/>
 </p>
 
 After the Task configuration and all three Data Node configurations are created,
@@ -116,7 +127,7 @@ element to indicate that the "planning" task element is part of the
 "production" pipeline:
 
 <p align="center">
-  <img src="../../images/config_graphview_2.gif" width=80%>
+  <img src="../../images/config_graphview_2.gif" width="80%"/>
 </p>
 
 ## Creating the Scenario configuration
@@ -126,7 +137,7 @@ to the In port of the "production" pipeline to indicate that this Pipeline
 configuration element is part of the "scenario_configuration" scenario:
 
 <p align="center">
-  <img src="../../images/config_graphview_3.gif" width=80%>
+  <img src="../../images/config_graphview_3.gif" width="80%"/>
 </p>
 
 ## Setting the configuration elements parameters
@@ -142,7 +153,7 @@ In our example, we want our Task configuration to use the function called `plan`
 `functions` module (the `functions.py` source file):
 
 <p align="center">
-  <img src="../../images/config_graphview_4.gif" width=80%>
+  <img src="../../images/config_graphview_4.gif" width="80%"/>
 </p>
 
 After this final step, the configuration file can be saved from the Graph View
