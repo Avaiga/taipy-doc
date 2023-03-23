@@ -294,20 +294,23 @@ table. To add a new _SQL table_ data node configuration, the
 parameters described in the [Data node configuration](data-node-config.md) section, the
 following parameters can be provided:
 
-- _**db_username**_ represents the database username that will be used by Taipy to
-  access the database.
-- _**db_password**_ represents the database user's password that will be used by Taipy to
-  access the database.
 - _**db_name**_ represents the name of the database.
 - _**db_engine**_ represents the engine of the database.<br/>
     Possible values are _"sqlite"_, _"mssql"_, _"mysql"_, or _"postgresql"_.
 - _**table_name**_ represents the name of the table to read from and write into.
-- _**db_port**_ represents the database port that will be used by Taipy to access the database.<br/>
-  The default value of _db_port_ is 1433.
+- _**db_username**_ represents the database username that will be used by Taipy to
+  access the database. Required by _"mssql"_, _"mysql"_, and _"postgresql"_ engines.
+- _**db_password**_ represents the database user's password that will be used by Taipy to
+  access the database. Required by _"mssql"_, _"mysql"_, and _"postgresql"_ engines.
 - _**db_host**_ represents the database host that will be used by Taipy to access the database.<br/>
     The default value of _db_host_ is "localhost".
+- _**db_port**_ represents the database port that will be used by Taipy to access the database.<br/>
+  The default value of _db_port_ is 1433.
 - _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
     The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
+- _**sqlite_folder_path**_ represents the path to the folder that contains the SQLite database file. The default value of _sqlite_folder_path_ is the current working folder.
+- _**sqlite_file_extension**_ represents the file extension of the SQLite database file. The default value of _sqlite_file_extension_ is ".db".
+- _**db_extra_args**_ is a dictionary of additional arguments that need to be passed into the database connection string.
 - _**exposed_type**_ indicates the data type returned when reading the data node (more
   examples of reading from a SQL table data node with different _exposed_type_ are available
   in the [Read / Write a data node](../entities/data-node-mgt.md#sql-table) documentation):
@@ -324,6 +327,14 @@ following parameters can be provided:
 ```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_sql-table.py"
+start="# import config start"
+end='# import config end'
+comments=false
+%}
+{%
+include-markdown "./code_example/data_node_cfg/data-node-config_sql-table.py"
+start="# mssql example start"
+end='# mssql example end'
 comments=false
 %}
 ```
@@ -332,7 +343,29 @@ In the previous example, we configure a _SQL table_ data node with the id "sales
 Its scope is the default value `SCENARIO`. The database username is "admin", the user's
 password is "password" (refer to [advance configuration](./advanced-config.md) to pass
 password as an environment variable), the database name is "taipy", and the database
-engine is `mssql` (short for Microsoft SQL). The table name is "sales".
+engine is `mssql` (short for Microsoft SQL). The table name is "sales". To ensure secure
+connection with the SQL server, "TrustServerCertificate" is defined as "yes" in the
+_db_extra_args_.
+
+```python linenums="1"
+{%
+include-markdown "./code_example/data_node_cfg/data-node-config_sql-table.py"
+start="# import config start"
+end='# import config end'
+comments=false
+%}
+{%
+include-markdown "./code_example/data_node_cfg/data-node-config_sql-table.py"
+start="# sqlite example start"
+end='# sqlite example end'
+comments=false
+%}
+```
+
+In the next example, we configure a _SQL table_ data node with the database engine is `sqlite`.
+Here, the database username and password are unnecessary. The folder containing SQLite database
+file is "database", with the file extension is ".sqlite3". Since the database name is "taipy",
+this SQL table data node will read and write to the SQLite database stored at "database/taipy.sqlite3".
 
 When the data node is read, it reads all the rows from the table "sales", and when the
 data node is written, it deletes all the data in the table and insert the new data.
@@ -363,10 +396,6 @@ be used. In addition to the generic parameters described in the
 [Data node configuration](data-node-config.md) section, the following parameters can be
 provided:
 
-- _**db_username**_ represents the database username that will be used by Taipy to access
-  the database.
-- _**db_password**_ represents the database user's password that will be used by Taipy to
-  access the database.
 - _**db_name**_ represents the name of the database.
 - _**db_engine**_ represents the engine of the database.<br/>
     Possible values are _"sqlite"_, _"mssql"_, _"mysql"_, or _"postgresql"_.
@@ -375,12 +404,19 @@ provided:
 - _**write_query_builder**_ is a callable function that takes in the data as an input
   parameter and returns a list of SQL queries to be executed when the write method is
   called.
-- _**db_port**_ represents the database port that will be used by Taipy to access the database.<br/>
-  The default value of _db_port_ is 1433.
+- _**db_username**_ represents the database username that will be used by Taipy to access
+  the database. Required by _"mssql"_, _"mysql"_, and _"postgresql"_ engines.
+- _**db_password**_ represents the database user's password that will be used by Taipy to
+  access the database. Required by _"mssql"_, _"mysql"_, and _"postgresql"_ engines.
 - _**db_host**_ represents the database host that will be used by Taipy to access the database.<br/>
   The default value of _db_host_ is "localhost".
+- _**db_port**_ represents the database port that will be used by Taipy to access the database.<br/>
+  The default value of _db_port_ is 1433.
 - _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
   The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
+- _**sqlite_folder_path**_ represents the path to the folder that contains the SQLite database file. The default value of _sqlite_folder_path_ is the current working folder.
+- _**sqlite_file_extension**_ represents the file extension of the SQLite database file. The default value of _sqlite_file_extension_ is ".db".
+- _**db_extra_args**_ is a dictionary of additional arguments that need to be passed into the database connection string.
 - _**exposed_type**_ indicates the data type returned when reading the data node (more
   examples of reading from a SQL data node with different _exposed_type_ are available
   in the [Read / Write a data node](../entities/data-node-mgt.md#sql) documentation):
@@ -397,6 +433,14 @@ provided:
 ```python linenums="1"
 {%
 include-markdown "./code_example/data_node_cfg/data-node-config_sql.py"
+start="# import config start"
+end='# import config end'
+comments=false
+%}
+{%
+include-markdown "./code_example/data_node_cfg/data-node-config_sql.py"
+start="# mssql example start"
+end='# mssql example end'
 comments=false
 %}
 ```
@@ -417,6 +461,20 @@ The very first parameter of _write_query_builder_ (i.e. data) is expected to hav
 type as the return type of the task function whose output is the data node. In this example,
 the task function must return a `pandas.DataFrame`, since the data parameter of the
 _write_query_builder_ is a `pandas.DataFrame`.
+
+```python linenums="14"
+{%
+include-markdown "./code_example/data_node_cfg/data-node-config_sql.py"
+start="# sqlite example start"
+end='# sqlite example end'
+comments=false
+%}
+```
+
+In the next example, instead of `mssql`, we configure "sales_history" data node with `sqlite` engine.
+Here, the database username and password are unnecessary. The folder containing SQLite database
+file is "database", with the file extension is ".sqlite3". Since the database name is "taipy", this
+SQL table data node will read and write to the SQLite database stored at "database/taipy.sqlite3".
 
 !!! Note
 
