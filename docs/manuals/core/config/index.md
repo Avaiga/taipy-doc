@@ -41,7 +41,7 @@ organized as follows:
   `ScenarioConfig^` class.
 - [Global config](global-config.md) section documents the global configuration fields and the
   `GlobalAppConfig^` class.
-- [Job scheduling config](job-config.md) section documents the configuration of the job scheduling
+- [Job orchestration config](job-config.md) section documents the configuration of the job orchestration
   using the `JobConfig^` class.
 - [Config checker](config-checker.md) section presents the configuration checkers.
 - [Advanced configuration](advanced-config.md) section provides details on advanced configuration

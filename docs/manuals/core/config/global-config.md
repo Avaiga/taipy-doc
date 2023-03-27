@@ -123,4 +123,4 @@ Here are the configurable properties for the Mongo repository:
   - _**mongodb_port**_: The port to access the database. This property is optional and has 27017 as a default value.
   - _**application_db**_: The database that will hold the taipy collections.
 
-[:material-arrow-right: The next section introduces the job scheduling configuration](job-config.md).
+[:material-arrow-right: The next section introduces the job orchestration configuration](job-config.md).
