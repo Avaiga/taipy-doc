@@ -65,7 +65,7 @@ properties are specified: a _version_name_ and an _application_name_.
 
 ## SQL storage for Taipy entities
 
-The configuration needed to use an SQL database, through sqlite3 engine, is described in the lines 7-8.
+The configuration needed to use a SQL database, through sqlite3 engine, is described in the lines 7-8.
 
 ```python linenums="1"
 from taipy import Config
