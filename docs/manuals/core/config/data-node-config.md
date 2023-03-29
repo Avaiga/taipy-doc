@@ -324,45 +324,36 @@ following parameters can be provided:
       a list of custom objects with the given custom class. Each object represents
       a record in the SQL table.
 
+### Example with a Microsoft SQL database table
+
+First, let's take a look at an example on how to configure a _SQL table_ data node with the
+database engine is `mssql` (short for Microsoft SQL).
+
 ```python linenums="1"
 {%
-include-markdown "./code_example/data_node_cfg/data-node-config_sql-table.py"
-start="# import config start"
-end='# import config end'
-comments=false
-%}
-{%
-include-markdown "./code_example/data_node_cfg/data-node-config_sql-table.py"
-start="# mssql example start"
-end='# mssql example end'
+include-markdown "./code_example/data_node_cfg/data-node-config_sql-table_with_mssql_engine.py"
 comments=false
 %}
 ```
 
-In the previous example, we configure a _SQL table_ data node with the id "sales_history".
+In this example, we configure a _SQL table_ data node with the id "sales_history".
 Its scope is the default value `SCENARIO`. The database username is "admin", the user's
 password is "password" (refer to [advance configuration](./advanced-config.md) to pass
-password as an environment variable), the database name is "taipy", and the database
-engine is `mssql` (short for Microsoft SQL). The table name is "sales". To ensure secure
-connection with the SQL server, "TrustServerCertificate" is defined as "yes" in the
-_db_extra_args_.
+password as an environment variable), the database name is "taipy". The table name is "sales".
+To ensure secure connection with the SQL server, "TrustServerCertificate" is defined as "yes"
+in the _db_extra_args_.
+
+### Example with a SQLite database table
+
+In the next example, we configure a _SQL table_ data node with the database engine is `sqlite`.
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data_node_cfg/data-node-config_sql-table.py"
-start="# import config start"
-end='# import config end'
-comments=false
-%}
-{%
-include-markdown "./code_example/data_node_cfg/data-node-config_sql-table.py"
-start="# sqlite example start"
-end='# sqlite example end'
+include-markdown "./code_example/data_node_cfg/data-node-config_sql-table_with_sqlite_engine.py"
 comments=false
 %}
 ```
 
-In the next example, we configure a _SQL table_ data node with the database engine is `sqlite`.
 Here, the database username and password are unnecessary. The folder containing SQLite database
 file is "database", with the file extension is ".sqlite3". Since the database name is "taipy",
 this SQL table data node will read and write to the SQLite database stored at "database/taipy.sqlite3".
@@ -430,25 +421,23 @@ provided:
       creates a list of custom objects with the given custom class. Each object represents
       a record in the table returned by the _read_query_.
 
+### Example with a Microsoft SQL database table
+
+First, let's take a look at an example on how to configure a _SQL table_ data node with the
+database engine is `mssql` (short for Microsoft SQL).
+
 ```python linenums="1"
 {%
-include-markdown "./code_example/data_node_cfg/data-node-config_sql.py"
-start="# import config start"
-end='# import config end'
-comments=false
-%}
-{%
-include-markdown "./code_example/data_node_cfg/data-node-config_sql.py"
-start="# mssql example start"
-end='# mssql example end'
+include-markdown "./code_example/data_node_cfg/data-node-config_sql_with_mssql_engine.py"
 comments=false
 %}
 ```
 
-In the previous example, we configure a _SQL_ data node with the id "sales_history".
+In this example, we configure a _SQL_ data node with the id "sales_history".
 Its scope is the default value `SCENARIO`. The database username is "admin", the user's
-password is "password", the database name is "taipy", and the database engine is `mssql`
-(short for Microsoft SQL). The read query will be "SELECT \* from sales".
+password is "password" (refer to [advance configuration](./advanced-config.md) to pass
+password as an environment variable), and the database name is "taipy". The read query
+will be "SELECT \* from sales".
 
 The _write_query_builder_ is a callable function that takes in a `pandas.DataFrame` and
 return a list of queries. The first query will delete all the data in the table "sales",
@@ -462,16 +451,18 @@ type as the return type of the task function whose output is the data node. In t
 the task function must return a `pandas.DataFrame`, since the data parameter of the
 _write_query_builder_ is a `pandas.DataFrame`.
 
-```python linenums="14"
+
+### Example with a SQLite database table
+
+In the next example, we configure a _SQL table_ data node with the database engine is `sqlite`.
+
+```python linenums="1"
 {%
-include-markdown "./code_example/data_node_cfg/data-node-config_sql.py"
-start="# sqlite example start"
-end='# sqlite example end'
+include-markdown "./code_example/data_node_cfg/data-node-config_sql_with_sqlite_engine.py"
 comments=false
 %}
 ```
 
-In the next example, instead of `mssql`, we configure "sales_history" data node with `sqlite` engine.
 Here, the database username and password are unnecessary. The folder containing SQLite database
 file is "database", with the file extension is ".sqlite3". Since the database name is "taipy", this
 SQL table data node will read and write to the SQLite database stored at "database/taipy.sqlite3".
