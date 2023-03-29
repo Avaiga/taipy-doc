@@ -16,7 +16,7 @@ remote data, historical data, a set of parameters, a trained model, etc.
 
 The _data node_ information depends on the data itself, its exposed format, and its storage type.
 
-First example: If the data is stored in an SQL database, the corresponding _data node_ should contain the username,
+First example: If the data is stored in a SQL database, the corresponding _data node_ should contain the username,
 password, host, port, the queries to read and write the data, as well as the Python class used to represent a
 database entry.
 

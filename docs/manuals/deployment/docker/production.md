@@ -43,7 +43,7 @@ CMD [ "<main>:<app>" ]
 
 !!! Note
 
-    If you are using an SQL database based on Microsoft SQL Server, you need to add the following commands
+    If you are using a SQL database based on Microsoft SQL Server, you need to add the following commands
     before creating the user:
     ```
     RUN apt-get update && apt-get install -y lsb-release && apt-get clean all
