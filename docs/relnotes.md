@@ -12,6 +12,15 @@ This is the list of changes to Taipy releases as they were published.
     Please refer to the [Migration page](./migration.md) for potential migration paths for your applications
     implemented on legacy Taipy versions.
 
+## Community edition: 2.3
+
+### New Features
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.3.0
+
+- All cycles and its coressponding scenarios can be now retrieved by calling `taipy.get_cycles_scenarios()^`.
+
 ## Taipy Studio: 1.0
 
 The first release of the

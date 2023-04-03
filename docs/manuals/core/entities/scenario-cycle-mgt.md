@@ -262,3 +262,8 @@ propagated to the nested scenarios, pipelines, tasks, data nodes, and jobs if th
 cycles.
 
 [:material-arrow-right: The next section presents the pipeline management](pipeline-mgt.md).
+
+# Get all cycles and its scenarios
+
+All cycles and scenarios can be retrieved by calling `taipy.get_cycles_scenarios()^`.
+This method returns a dictionary of cycles as keys and lists corresponding scenarios as values.
