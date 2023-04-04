@@ -89,6 +89,11 @@ The `taipy.get_primary()^` method returns the primary scenario of the cycle give
 
 `taipy.get_primary_scenarios()^` returns the primary scenarios for all the existing cycles.
 
+# Get all scenarios grouped by cycles
+
+All scenarios can be retrieved and grouped by their cycles by calling `taipy.get_cycles_scenarios()^`.
+This method returns a dictionary of cycles as keys and lists corresponding scenarios as values.
+
 # Promote a scenario as primary
 
 To set a scenario as _primary_, the `taipy.set_primary()^` method must be used. It promotes the scenario given as a
@@ -262,8 +267,3 @@ propagated to the nested scenarios, pipelines, tasks, data nodes, and jobs if th
 cycles.
 
 [:material-arrow-right: The next section presents the pipeline management](pipeline-mgt.md).
-
-# Get all cycles and its scenarios
-
-All cycles and scenarios can be retrieved by calling `taipy.get_cycles_scenarios()^`.
-This method returns a dictionary of cycles as keys and lists corresponding scenarios as values.

@@ -19,7 +19,7 @@ This is the list of changes to Taipy releases as they were published.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.3.0
 
-- All cycles and its coressponding scenarios can be now retrieved by calling `taipy.get_cycles_scenarios()^`.
+- All scenarios grouped by their cycles can be now retrieved by calling `taipy.get_cycles_scenarios()^`.
 
 ## Taipy Studio: 1.0
 
