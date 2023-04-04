@@ -86,7 +86,7 @@ provided.
 # Get all scenarios grouped by cycles
 
 All scenarios can be retrieved and grouped by their cycles by calling `taipy.get_cycles_scenarios()^`.
-This method returns a dictionary of cycles as keys and lists corresponding scenarios as values.
+This method returns a dictionary with cycles as keys and lists of corresponding scenarios as values.
 
 # Get primary scenarios
 
