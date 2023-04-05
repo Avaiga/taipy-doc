@@ -164,17 +164,17 @@ $ python main.py --experiment 1.0
 Added object:
         DATA_NODE "output" has attribute "description" added: What a description
 
-To override these changes, run your application with --force option.
+To force running the application with the changes, run your application with --taipy-force option.
 ```
 
 In the example above, when re-running version 1.0, Taipy detects and displays all
 the differences, so you precisely know what has been changed and can decide what
 to do. Either you revert your configuration changes, or you can run the application
-with the `--force` option to force Taipy to update the configuration of the provided
+with the `--taipy-force` option to force Taipy to update the configuration of the provided
 version before re-running the application.
 
 ```console
-$ python main.py --experiment 1.0 --force
+$ python main.py --experiment 1.0 --taipy-force
 [2023-01-25 12:55:05,484][Taipy][WARNING] The Configuration of version 1.0 is conflicted with the current Python Config.
 [2023-01-25 12:52:05,692][Taipy][WARNING] Overriding version 1.0 ...
 [2023-01-25 12:52:05,890][Taipy][INFO] job JOB_my_print_algo_96ed74ed-183b-4dff-86c9-3b733d4d9bd9 is completed.
