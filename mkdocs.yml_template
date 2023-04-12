@@ -26,8 +26,8 @@ nav:
         - "Callbacks": manuals/gui/callbacks.md
         - "Notifications": manuals/gui/notifications.md
         - "Styling":
-	   - manuals/gui/styling/index.md
-	   - "The Stylekit": manuals/gui/styling/stylekit.md
+           - manuals/gui/styling/index.md
+           - "The Stylekit": manuals/gui/styling/stylekit.md
         - "Configuration": manuals/gui/configuration.md
         - "Using Notebooks": manuals/gui/notebooks.md
         - "Extension":
