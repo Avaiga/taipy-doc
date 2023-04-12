@@ -7,10 +7,12 @@ some style to, providing the best user experience.
 Styling involves some knowledge of [Cascading Style Sheets](https://www.w3.org/Style/CSS/).
 This section describes what sort of styling you may want to apply, in different situations.
 
-Taipy GUI comes with the [Stylekit](stylekit.md): a set of stylesheets that provide a default,
-homogeneous, easy to customize style for all visual elements and a few utility CSS classes that
-accelerates the development of specific CSS classes to apply to pages. The Stylekit is installed
-by default in Taipy GUI applications.
+Taipy GUI comes with a set of stylesheets that give applications an homogeneous and solid
+look and feel. This set of stylesheet is grouped in what is called the *Stylekit*.<br/>
+The Stylekit is easy to customize and provides few utility CSS classes that accelerates the
+development of specific styles to apply to pages.<br/>
+The Stylekit is documented in the [Stylekit section](stylekit.md) of this documentation,
+where you can find all the information on how to use and customize it.
 
 ## Style sheets
 
@@ -92,7 +94,7 @@ will apply the *blue* class to the bold text fragment:
   <figcaption>Styling fragments</figcaption>
 </figure>
 
-Note to style a heading, the syntax is slightly different: right after the text of the heading,
+Note that to style a heading, the syntax is slightly different: right after the text of the heading,
 you must insert a white space, as many sharp (#) characters as the heading uses, another white
 space, then the style construct.<br/>
 Here is an example that works properly.

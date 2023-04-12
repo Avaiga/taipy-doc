@@ -79,7 +79,7 @@ Here is the list of the configuration parameters you can use in
      but applies to the _light_ theme only.
    - *dark_theme* (Union[dict[str, any], None]): Similar to the *theme* setting,
      but applies to the *dark* theme only.
-   - *stylekit* (Union[bool, dict[str, any], None]): If True or unspecified, use the
+   - *stylekit* (Union[bool, dict[str, int, float], None]): If True or unspecified, use the
      default [Stylekit](styling/stylekit.md) for this application.<br/>
      If False, do not use the [Stylekit](styling/stylekit.md).<br/>
      If this parameter is set to a dictionary, the keys are used as

@@ -8,7 +8,8 @@ The Stylekit provides a few useful features:
 
 - Predefined styles for Taipy GUI visual elements so they align better on the page;
 - CSS variables that are used all over the stylesheets so that you can modify those
-  variables and witness the propagation of specific graphical attributes;
+  variables and witness the propagation of graphical attributes such as color or
+  spacing values;
 - Utility CSS classes that can be used to make some elements appear with appealing
   attributes.
 
@@ -165,12 +166,23 @@ They all are multiple of the base *--spacing1* variable, ensuring a natural layo
 | <a name="p-spacing5"></a>*--spacing5*         | `calc(var(--spacing1) * 5)`   | Quintuple of [*--spacing1*](#p-spacing1) |
 | <a name="p-spacing6"></a>*--spacing6*         | `calc(var(--spacing1) * 6)`   | Sixfold of [*--spacing1*](#p-spacing1) |
 
+### Other properties
+
+There are a few more CSS custom properties that the Stylekit relies on in classes that
+can [style sections](#styled-sections):
+
+| CSS custom property                           | Default value                 | Comments                  |
+| --------------------------------------------- | ----------------------------- | ------------------------- |
+| <a name="p-container-max-width"></a>*--container-max-width* | 75rem | The maximum width of section that use the [*container*](#container) CSS class. |
+| <a name="p-element-padding"></a>*--element-padding* | `var(--spacing2)` | The inner margins of sections using the [*card*](#card) or [*sidebar*](#sidebar) classes. |
+| <a name="p-sidebar-min-width"></a>*--sidebar-min-width* | 15rem | The minimum width of sections using the [*sidebar*](#sidebar) class. |
+
 ## CSS classes
 
 The Stylekit defined several pre-defined CSS classes that are based on the 
 [CSS custom properties](#css-custom-properties) described above.
 
-### Colors
+### Color
 
 You can use the classes called *color_&lt;keyword&gt;* and *bg_&lt;keyword&gt;* to apply a text
 or a background color to your elements.<br/>
@@ -178,34 +190,34 @@ Here is the list of available classes:
 
 | CSS class                | Description |
 | ------------------------ | ----------- |
-| *color-primary*          | Use [*--color-primary*](#p-color-primary) for the text color. |
-| *bg-primary*             | Use [*--color-primary*](#p-color-primary) for the background color. |
-| *color-secondary*        | Use [*--color-secondary*](#p-color-secondary) for the text color. |
-| *bg-secondary*           | Use [*--color-secondary*](#p-color-secondary) for the background color. |
-| *color-error*            | Use [*--color-error*](#p-color-error) for the text color. |
-| *bg-error*               | Use [*--color-error*](#p-color-error) for the background color. |
-| *color-warning*          | Use [*--color-warning*](#p-color-warning) for the text color. |
-| *bg-warning*             | Use [*--color-warning*](#p-color-warning) for the background color. |
-| *color-success*          | Use [*--color-success*](#p-color-success) for the text color. |
-| *bg-success*             | Use [*--color-success*](#p-color-success) for the background color. |
-| *color-background*       | Use [*--color-background*](#p-color-background) for the text color. |
-| *bg-default*             | Use [*--color-background*](#p-color-background) for the background color. |
-| *color-background-light* | Use [*--color-background-light*](#p-color-background-light) for the text color. |
-| *bg-default-light*       | Use [*--color-background-light*](#p-color-background-light) for the background color. |
-| *color-background-dark*  | Use [*--color-background-dark*](#p-color-background-dark) for the text color. |
-| *bg-default-dark*        | Use [*--color-background-dark*](#p-color-background-dark) for the background color. |
-| *color-paper*            | Use [*--color-paper*](#p-color-paper) for the text color. |
-| *bg-paper*               | Use [*--color-paper*](#p-color-paper) for the background color. |
-| *color-paper-light*      | Use [*--color-paper-light*](#p-color-paper-light) for the text color. |
-| *bg-paper-light*         | Use [*--color-paper-light*](#p-color-paper-light) for the background color. |
-| *color-paper-dark*       | Use [*--color-paper-dark*](#p-color-paper-dark) for the text color. |
-| *bg-paper-dark*          | Use [*--color-paper-dark*](#p-color-paper-dark) for the background color. |
-| *color-contrast*         | Use [*--color-contrast*](#p-color-contrast) for the text color. |
-| *bg-contrast*            | Use [*--color-contrast*](#p-color-contrast) for the background color. |
-| *color-contrast-light*   | Use [*--color-contrast-light*](#p-color-contrast-light) for the text color. |
-| *bg-contrast-light*      | Use [*--color-contrast-light*](#p-color-contrast-light) for the background color. |
-| *color-contrast-dark*    | Use [*--color-contrast-dark*](#p-color-contrast-dark) for the text color. |
-| *bg-contrast-dark*       | Use [*--color-contrast-dark*](#p-color-contrast-dark) for the background color. |
+| *color-primary*          | Uses [*--color-primary*](#p-color-primary) for the text color. |
+| *bg-primary*             | Uses [*--color-primary*](#p-color-primary) for the background color. |
+| *color-secondary*        | Uses [*--color-secondary*](#p-color-secondary) for the text color. |
+| *bg-secondary*           | Uses [*--color-secondary*](#p-color-secondary) for the background color. |
+| *color-error*            | Uses [*--color-error*](#p-color-error) for the text color. |
+| *bg-error*               | Uses [*--color-error*](#p-color-error) for the background color. |
+| *color-warning*          | Uses [*--color-warning*](#p-color-warning) for the text color. |
+| *bg-warning*             | Uses [*--color-warning*](#p-color-warning) for the background color. |
+| *color-success*          | Uses [*--color-success*](#p-color-success) for the text color. |
+| *bg-success*             | Uses [*--color-success*](#p-color-success) for the background color. |
+| *color-background*       | Uses [*--color-background*](#p-color-background) for the text color. |
+| *bg-default*             | Uses [*--color-background*](#p-color-background) for the background color. |
+| *color-background-light* | Uses [*--color-background-light*](#p-color-background-light) for the text color. |
+| *bg-default-light*       | Uses [*--color-background-light*](#p-color-background-light) for the background color. |
+| *color-background-dark*  | Uses [*--color-background-dark*](#p-color-background-dark) for the text color. |
+| *bg-default-dark*        | Uses [*--color-background-dark*](#p-color-background-dark) for the background color. |
+| *color-paper*            | Uses [*--color-paper*](#p-color-paper) for the text color. |
+| *bg-paper*               | Uses [*--color-paper*](#p-color-paper) for the background color. |
+| *color-paper-light*      | Uses [*--color-paper-light*](#p-color-paper-light) for the text color. |
+| *bg-paper-light*         | Uses [*--color-paper-light*](#p-color-paper-light) for the background color. |
+| *color-paper-dark*       | Uses [*--color-paper-dark*](#p-color-paper-dark) for the text color. |
+| *bg-paper-dark*          | Uses [*--color-paper-dark*](#p-color-paper-dark) for the background color. |
+| *color-contrast*         | Uses [*--color-contrast*](#p-color-contrast) for the text color. |
+| *bg-contrast*            | Uses [*--color-contrast*](#p-color-contrast) for the background color. |
+| *color-contrast-light*   | Uses [*--color-contrast-light*](#p-color-contrast-light) for the text color. |
+| *bg-contrast-light*      | Uses [*--color-contrast-light*](#p-color-contrast-light) for the background color. |
+| *color-contrast-dark*    | Uses [*--color-contrast-dark*](#p-color-contrast-dark) for the text color. |
+| *bg-contrast-dark*       | Uses [*--color-contrast-dark*](#p-color-contrast-dark) for the background color. |
 
 All these classes are defined using the "!important" priority setting, overriding all
 previous styling rules.
@@ -250,22 +262,22 @@ A few classes are available to style body text:
 | CSS class           | Description                            |
 | ------------------- | -------------------------------------- |
 | *text-body*         | Mimics the body text default style.    |
-| *text-small*        | Smaller version of the body text.      |
-| *text-caption*      | Even smaller version of the body text. |
-| *text-weight300*    | "Light" font weight.                   |
-| *text-weight400*    | "Regular" font weight.                 |
-| *text-weight500*    | "Medium" font weight.                  |
-| *text-weight600*    | "Semi bold" font weight.               |
-| *text-weight700*    | "Bold" font weight.                    |
-| *text-weight800*    | "Extra bold" font weight.              |
-| *text-weight900*    | "Black" font weight.                   |
+| *text-small*        | Uses a smaller version of the body text. |
+| *text-caption*      | Uses an even smaller version of the body text. |
+| *text-weight300*    | Uses the "Light" font weight.          |
+| *text-weight400*    | Uses the "Regular" font weight.        |
+| *text-weight500*    | Uses the "Medium" font weight.         |
+| *text-weight600*    | Uses the "Semi bold" font weight.      |
+| *text-weight700*    | Uses the "Bold" font weight.           |
+| *text-weight800*    | Uses the "Extra bold" font weight.     |
+| *text-weight900*    | Uses the "Heavy" font weight.          |
 | *text-left*         | Align text to the left.                |
-| *text-center*       | Center text.                           |
-| *text-right*        | Align text to the right.               |
-| *text-uppercase*    | Transform text to uppercase.           |
-| *text-no-transform* | Cancel all case transformations.       |
-| *text_underline*    | Underline text.                        |
-| *text_no_underline* | Do not underline text.                 |
+| *text-center*       | Centers text.                          |
+| *text-right*        | Aligns text to the right.              |
+| *text-uppercase*    | Transforms text to uppercase.          |
+| *text-no-transform* | Cancels all case transformations.      |
+| *text-underline*    | Underlines text.                       |
+| *text-no-underline* | Prevents the text underlining.         |
 
 Notes:
 
@@ -280,25 +292,25 @@ Notes:
 
 These Stylekit classes let you add margins and padding to elements:
 
-| CSS class | Description                            |
-| --------- | -------------------------------------- |
-| *m0*      | Remove margins from all sides.                               |
-| *m-auto*  | Add automatic margins to all sides (centering the element in its container) |
-| *m-half*  | Add a [*--spacing-half*](#p-spacing-half) margin value to all sides.        |
-| *m1*      | Add a [*--spacing1*](#p-spacing1) margin value to all sides. |
-| *m2*      | Add a [*--spacing2*](#p-spacing2) margin value to all sides. |
-| *m3*      | Add a [*--spacing3*](#p-spacing3) margin value to all sides. |
-| *m4*      | Add a [*--spacing4*](#p-spacing4) margin value to all sides. |
-| *m5*      | Add a [*--spacing5*](#p-spacing5) margin value to all sides. |
-| *m6*      | Add a [*--spacing6*](#p-spacing6) margin value to all sides. |
-| *p0*      | Remove padding from all sides.                               |
-| *p-half*  | Add a [*--spacing-half*](#p-spacing-half) padding value to all sides. |
-| *p1*      | Add a [*--spacing1*](#p-spacing1) padding value to all sides. |
-| *p2*      | Add a [*--spacing2*](#p-spacing2) padding value to all sides. |
-| *p3*      | Add a [*--spacing3*](#p-spacing3) padding value to all sides. |
-| *p4*      | Add a [*--spacing4*](#p-spacing4) padding value to all sides. |
-| *p5*      | Add a [*--spacing5*](#p-spacing5) padding value to all sides. |
-| *p6*      | Add a [*--spacing6*](#p-spacing6) padding value to all sides. |
+| CSS class | Description                                                   |
+| --------- | ------------------------------------------------------------- |
+| *m0*      | Removes margins from all sides.                               |
+| *m-auto*  | Adds automatic margins to all sides (centering the element in its container) |
+| *m-half*  | Adds a [*--spacing-half*](#p-spacing-half) margin value to all sides.        |
+| *m1*      | Adds a [*--spacing1*](#p-spacing1) margin value to all sides. |
+| *m2*      | Adds a [*--spacing2*](#p-spacing2) margin value to all sides. |
+| *m3*      | Adds a [*--spacing3*](#p-spacing3) margin value to all sides. |
+| *m4*      | Adds a [*--spacing4*](#p-spacing4) margin value to all sides. |
+| *m5*      | Adds a [*--spacing5*](#p-spacing5) margin value to all sides. |
+| *m6*      | Adds a [*--spacing6*](#p-spacing6) margin value to all sides. |
+| *p0*      | Removes padding from all sides.                               |
+| *p-half*  | Adds a [*--spacing-half*](#p-spacing-half) padding value to all sides. |
+| *p1*      | Adds a [*--spacing1*](#p-spacing1) padding value to all sides. |
+| *p2*      | Adds a [*--spacing2*](#p-spacing2) padding value to all sides. |
+| *p3*      | Adds a [*--spacing3*](#p-spacing3) padding value to all sides. |
+| *p4*      | Adds a [*--spacing4*](#p-spacing4) padding value to all sides. |
+| *p5*      | Adds a [*--spacing5*](#p-spacing5) padding value to all sides. |
+| *p6*      | Adds a [*--spacing6*](#p-spacing6) padding value to all sides. |
 
 !!! note "Specifying the impacted side"
     You can specify which side of the element should be impacted by the spacing class.<br/>
@@ -310,6 +322,37 @@ These Stylekit classes let you add margins and padding to elements:
     to the top of the element, removes the padding to its top, and adds a *spacing-half*
     margin to its bottom. 
 
+All these classes are defined using the "!important" priority setting, overriding all
+previous styling rules.
+
+### Display
+
+A few classes in the Stylekit have an impact on the CSS *display* property of the element
+they apply to:
+
+| CSS class        | Description                                                         |
+| ---------------- | ------------------------------------------------------------------- |
+| *d-none*         | Hides the element and frees the space it would normally take.       |
+| *d-flex*         | Makes the element a flexible layout block, so its direct children display horizontally. |
+| *d-block*        | Displays the element as a block on a new line.                      |
+| *d-inline*       | Displays the element inline, horizontally, and treats it like text. |
+| *d-inline-block* | Displays the element inline but keeps it treated as a block (i.e. for margins, paddings, etc). |
+
+All these classes are defined using the "!important" priority setting, overriding all
+previous styling rules.
+
+### Opacity
+
+The Stylekit provides a handful of CSS classes that deal with element opacity:
+
+| CSS class          | Description                          |
+| ------------------ | ------------------------------------ |
+| *transparent*      | Turns the element transparent.<br/>Although it does not render any longer, the element is still present and occupies space. |
+| *half-transparent* | Makes the element 50% transparent.   |
+| *opaque*           | Restores the element’s full opacity. |
+
+All these classes are defined using the "!important" priority setting, overriding all
+previous styling rules.
 
 ## Leveraging the selected theme
 
@@ -344,6 +387,140 @@ The same technique can be used to customize CSS classes based on the theme:
 }
 ```
 
-## Boxes (?)
+## Styled Sections
 
-TODO
+The Stylekit defines a few CSS classes that provide widely used styles for sections.<br/>
+Although these can be used for any visual element, they are typically applied to the
+[*part*](../viselements/part.md) and [*layout*](../viselements/layout.md) block element types.
+
+These allow for making blocks stand out in pages, or be physically constrained at specific locations
+with specific sizes.
+
+The classes that the Stylekit define for this purpose are:
+
+- [*container*](#container)
+- [*card*](#card)
+- [*header*](#header)
+- [*sidebar*](#sidebar)
+
+### `container` ###
+
+The *container* class prevents the block it applies to from consuming all the available space.
+
+The maximum width of that container is set by the [*--container-max-width*](#p-container-max-width)
+custom property. Feel free to override this property in your stylesheets to adapt it to your own
+needs.
+
+Here is an example of the *container* class applied to a [`part`](../viselements/part.md) block.
+In this example, we would have defined the additional class:
+```css
+.container-bg {
+  background-color: rgb(80, 127, 172);
+}
+```
+
+Now if the Markdown contains the following fragment:
+```
+Outside the container.
+<|container container-bg|
+Inside the container
+|>
+```
+
+Then the result will look like this:
+<figure>
+  <img src="../container-d.png" class="visible-dark" />
+  <img src="../container-l.png" class="visible-light"/>
+  <figcaption>The <i>container</i> section style</figcaption>
+</figure>
+
+Note that we leverage the Markdown syntax to create a [`part`](../viselements/part.md) block:
+
+- The default block element type name is "part", so it can be removed from the opening
+  element syntax. This allows to write `<|container container-bg|` instead of
+  `<|container container-bg|part|`.
+- The default property name of the *part* block is *class_name*. So `<|container container-bg|`
+  is equivalent to `<|part|class_name=container container-bg|`.
+
+### `card`
+
+The *card* class produces an elevated block to display the section in the flow of the page.
+
+The *card* class uses the [*--element-padding*](#p-element-padding) custom property to
+add padding around its content.
+
+Let's look at an example using the *card* class.<br/>
+Here is the Markdown content for a page:
+```
+Outside the card.
+<|card card-bg|
+Inside the card
+{: .p1 .mb1 }
+|>
+```
+
+This example relies on the definition of another CSS class that would look like this
+in a stylesheet:
+```css
+.card-bg {
+  background-color: rgb(211, 150, 109);
+}
+```
+
+Here is how the page would be rendered:
+<figure>
+  <img src="../card-d.png" class="visible-dark" />
+  <img src="../card-l.png" class="visible-light"/>
+  <figcaption>The <i>card</i> section style</figcaption>
+</figure>
+
+### `header`
+
+The *header* class can be applied on a [`layout`](../viselements/layout.md) or a
+[`part`](../viselements/part.md) block to make it stand out from the content as an elevated bar.
+
+*header* does not define any padding. If you need to tune the spacing of the elements
+that appear in the styled section, you can use the [spacing classes](#spacing_1).
+
+You can also apply the CSS class *sticky* to fix the header to the top of the page when
+it is scrolled.
+
+Here is an example of such a header. Consider the following Markdown content:
+```
+<|layout|columns=1fr auto 1fr|class_name=container align_columns_center|
+<|part|class_name=pt_half pb_half|
+<|Taipy App|text|height=30px|width=30px|>
+|>
+<|part|class_name=align_item_stretch|
+<|navbar|lov={[("p1", "Page 1"), ("p2", "Page 2")]}|class_name=fullheight|>
+|>
+<|part|class_name=text_right|
+<|toggle|theme|class_name=relative nolabel|>
+|>
+|>
+```
+
+This creates a three-columns *layout* block that has the *header* CSS class.
+
+This block contains a label, a navigation bar and a theme toggle button.<br/>
+Here is how the rendered page looks like:
+
+<figure>
+  <img src="../header-d.png" class="visible-dark" />
+  <img src="../header-l.png" class="visible-light"/>
+  <figcaption>The <i>header</i> section style</figcaption>
+</figure>
+
+### `sidebar`
+
+The *sidebar* class produces an elevated area filling the entire height of the page and standing out from the general background and content.
+
+Sections that use the *sidebar* class track the window scroll position. If its content is higher than the
+window, it becomes a scrollable area.
+
+The *sidebar* class uses two custom properties:
+
+- [*--element-padding*](#p-element-padding): to add padding around its content.
+- [*--sidebar-min-width*](#p-sidebar-min-width): the minimum width of the section. This can be useful
+  to implement a responsive design to your pages.
+
