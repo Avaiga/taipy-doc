@@ -19,8 +19,8 @@ Published on 2023-04.
 [`taipy` 2.2](https://pypi.org/project/taipy/2.2.0/) contains the latest
 [`taipy-config` 2.2](https://pypi.org/project/taipy-config/2.2.0/),
 [`taipy-gui` 2.2](https://pypi.org/project/taipy-gui/2.2.0/),
-[`taipy-core` 2.2](https://pypi.org/project/taipy-core/2.2.0/) and
-[`taipy-rest` 2.2](https://pypi.org/project/taipy-rest/2.2.0/) packages.
+[`taipy-core` 2.2](https://pypi.org/project/taipy-core/2.2.1/) and
+[`taipy-rest` 2.2](https://pypi.org/project/taipy-rest/2.2.1/) packages.
 
 ### New Features
 
