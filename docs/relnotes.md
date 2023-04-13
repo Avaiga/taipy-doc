@@ -52,7 +52,7 @@ Published on 2023-04.
   or collapsed.
 - Better error messages when parsing Markdown content.
 - Better support for auto-completion in IDE for the `Gui.run()^` configuration parameters, based
-  a generated Python Interface Definition file.
+  on a generated Python Interface Definition file.
 - The *status* entry point now provides information about the loaded element libraries and
   the elements they define.
 - The `navigate()^` function and the *page* property of the [`part` block](manuals/gui/viselements/part.md)
