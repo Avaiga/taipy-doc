@@ -12,7 +12,70 @@ This is the list of changes to Taipy releases as they were published.
     Please refer to the [Migration page](./migration.md) for potential migration paths for your applications
     implemented on legacy Taipy versions.
 
-## Taipy Studio: 1.0
+## Community edition: 2.2
+
+Published on 2023-04.
+
+[`taipy` 2.2](https://pypi.org/project/taipy/2.2.0/) contains the latest
+[`taipy-config` 2.2](https://pypi.org/project/taipy-config/2.2.0/),
+[`taipy-gui` 2.2](https://pypi.org/project/taipy-gui/2.2.0/),
+[`taipy-core` 2.2](https://pypi.org/project/taipy-core/2.2.0/) and
+[`taipy-rest` 2.2](https://pypi.org/project/taipy-rest/2.2.0/) packages.
+
+### New Features
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.2.0
+
+- A default set of stylesheets are installed with Taipy GUI so that, by
+  default, applications benefit from a homogeneous and good-looking
+  style. This is called the [Stylekit](manuals/gui/styling/stylekit.md).<br/>
+  The Stylekit can be easily customized to fit your application design's
+  requirements.
+- The [`table`](manuals/gui/viselements/table.md) and [`chart`](manuals/gui/viselements/chart.md)
+  controls have a new property called *rebuild* that can be used if you need to entirely change the
+  data they rely on, including their structure.
+
+### Improvements and changes
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.2.0
+
+- The default property name for the [`part` block](manuals/gui/viselements/part.md)
+  was changed from *render* to *class_name* to allow for directly using the
+  style classes from the [Stylekit](manuals/gui/styling/stylekit.md).<br/>
+  Please check the section on
+  [Styled Sections](manuals/gui/styling/stylekit.md#styled-sections) for
+  more information.
+- The [`expandable` block](manuals/gui/viselements/expandable.md) has a new property
+  called *on_change* enabling to set a specific callback when the block is expanded
+  or collapsed.
+- Better error messages when parsing Markdown content.
+- Better support for auto-completion in IDE for the `Gui.run()^` configuration parameters, based
+  on a generated Python Interface Definition file.
+- The *status* entry point now provides information about the loaded element libraries and
+  the elements they define.
+- The `navigate()^` function and the *page* property of the [`part` block](manuals/gui/viselements/part.md)
+  can now use, as their target, any URL. In the context of a `part` block, the page will be rendered
+  in an *iframe*.<br/>
+  See [issue #621](https://github.com/Avaiga/taipy-gui/issues/621).
+
+### Significant bug fixes
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.2.0
+
+- Bound variable scope issues fixed when used by elements defined at the root page
+  level.<br/>
+  See [issue #583](https://github.com/Avaiga/taipy-gui/issues/583).
+- Filters management fixed in the [`table` controls](manuals/gui/viselements/table.md).<br/>
+  See [issue #667](https://github.com/Avaiga/taipy-gui/issues/667).
+- Communication with the server may break.<br/>
+  See [issue #695](https://github.com/Avaiga/taipy-gui/issues/695).
+
+## Studio: 1.0
+
+Published on 2023-02.
 
 The first release of the
 [`Taipy Studio`](https://marketplace.visualstudio.com/items?itemName=Taipy.taipy-studio)

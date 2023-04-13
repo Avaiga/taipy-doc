@@ -152,7 +152,7 @@ def heavy_function(...):
     # Do something that takes time...
     ...
 
-def on_action(state, *action_args):
+def on_action(state, id, action):
     notify(state, "info", "Heavy task started...")
     invoke_long_callback(state, heavy_function, [...heavy_function arguments...])
 ```
@@ -177,7 +177,7 @@ def heavy_function_status(state, status):
     else:
         notify(state, "error", f"The heavy task has failed somehow...")
 
-def on_action(state, *action_args):
+def on_action(state, id, action):
     invoke_long_callback(state, heavy_function, [...heavy_function arguments...],
                          heavy_function_status)
 ```
@@ -203,7 +203,7 @@ def heavy_function_status(state, status):
     else:
         notify(state, "info", f"The heavy task is still running...")
 
-def on_action(state: State, *action_args):
+def on_action(state, id, action):
     invoke_long_callback(state, heavy_function, [...heavy_function arguments...],
                          heavy_function_status, [...heavy_function_status arguments...],
                          5000)
@@ -242,7 +242,7 @@ def heavy_function_in_thread(state_id: str, ...other_args...):
     heavy_function(...other_args...)
     invoke_callback(gui, state_id, heavy_function_done)
 
-def on_action(state: State, ...):
+def on_action(state: State, id, action):
     notify(state, "info", "Heavy task started...", duration=3000)
     # Execute the heavy task, in a new thread
     thread = Thread(target=heavy_function_in_thread,
