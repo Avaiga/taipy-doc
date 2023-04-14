@@ -47,6 +47,7 @@ orders_cfg = Config.configure_sql_data_node(
     db_engine="mssql",
     read_query="SELECT orders.ID, orders.date, products.price, orders.number_of_products FROM orders INNER JOIN products ON orders.product_id=products.ID",
     write_query_builder=write_orders_plan,
+    db_driver="ODBC Driver 17 for SQL Server",
 )
 
 # Configure the three tasks

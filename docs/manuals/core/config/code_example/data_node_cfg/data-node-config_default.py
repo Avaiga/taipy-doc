@@ -9,6 +9,7 @@ Config.configure_default_data_node(
     table_name="products",
     db_host="localhost",
     db_port=1437,
+    db_driver="ODBC Driver 17 for SQL Server",
     db_extra_args={"TrustServerCertificate": "yes"},
     scope=Scope.GLOBAL,
 )
