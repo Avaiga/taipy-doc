@@ -12,6 +12,23 @@ This is the list of changes to Taipy releases as they were published.
     Please refer to the [Migration page](./migration.md) for potential migration paths for your applications
     implemented on legacy Taipy versions.
 
+## Community edition: 2.3 (Work in progress)
+
+Not published yet.
+
+[`taipy` 2.3](https://pypi.org/project/taipy/2.3.0/) contains the latest
+[`taipy-config` 2.3](https://pypi.org/project/taipy-config/2.3.0/),
+[`taipy-gui` 2.3](https://pypi.org/project/taipy-gui/2.3.0/),
+[`taipy-core` 2.3](https://pypi.org/project/taipy-core/2.3.0/) and
+[`taipy-rest` 2.3](https://pypi.org/project/taipy-rest/2.3.0/) packages.
+
+### New Features
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.3.0
+
+- All scenarios grouped by their cycles can be now retrieved by calling `taipy.get_cycles_scenarios()^`.
+
 ## Community edition: 2.2
 
 Published on 2023-04.

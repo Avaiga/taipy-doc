@@ -83,6 +83,11 @@ existing scenarios. If an optional cycle is given as a parameter, the list conta
 cycle. If an optional tag is provided as a parameter, the list contains all the existing scenarios tagged with the tag
 provided.
 
+# Get all scenarios grouped by cycles
+
+All scenarios can be retrieved and grouped by their cycles by calling `taipy.get_cycles_scenarios()^`.
+This method returns a dictionary with cycles as keys and lists of corresponding scenarios as values.
+
 # Get primary scenarios
 
 The `taipy.get_primary()^` method returns the primary scenario of the cycle given as a parameter.
