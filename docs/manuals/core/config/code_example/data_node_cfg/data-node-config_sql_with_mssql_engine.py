@@ -17,5 +17,6 @@ sales_history_cfg = Config.configure_sql_data_node(
     db_engine="mssql",
     read_query="SELECT * from sales",
     write_query_builder=write_query_builder,
+    db_driver="ODBC Driver 17 for SQL Server",
     db_extra_args={"TrustServerCertificate": "yes"},
 )

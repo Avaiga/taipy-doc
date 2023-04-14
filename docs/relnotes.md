@@ -90,6 +90,13 @@ Published on 2023-04.
 - Communication with the server may break.<br/>
   See [issue #695](https://github.com/Avaiga/taipy-gui/issues/695).
 
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.2.2
+
+- PostgreSQL and MySQL engines do not support "driver" argument. See [issue #544](https://github.com/Avaiga/taipy-core/issues/544).<br/>
+  To avoid conflict between engines, the default value of the _db_driver_ parameter in a SQL or a SQL table data node configuration has been removed.
+
 ## Studio: 1.0
 
 Published on 2023-02.
