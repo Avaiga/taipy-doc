@@ -27,7 +27,7 @@ Below is the list of all the optional arguments:
   If the version provided already exists as an _experiment_ version, it is converted
   to a production version.
 
-- **--force-run**: With the `--force-run` argument, Taipy overrides a version even if
+- **--taipy-force**: With the `--taipy-force` argument, Taipy overrides a version even if
   the configuration has changed and run the application. Default to False.
 
 - **--clean-entities**: With the `--clean-entities` argument, running a Taipy
@@ -64,7 +64,7 @@ on your command line interface with the `--help` or `-h` option.
 ``` console
 $ python main.py --help
 Usage: main.py [-h] [--development | --experiment [VERSION] | --production [VERSION]]
-        [--force-run] [--clean-entities] [--list-versions] [--delete-version VERSION]
+        [--taipy-force] [--clean-entities] [--list-versions] [--delete-version VERSION]
         [--delete-production-version VERSION]
 
 options:
@@ -87,7 +87,7 @@ Core:
                         production. All production versions should have the same configuration
                         and share all entities. Without being specified, the latest version
                         is used.
-  --force-run,          Force override the configuration of the version if existed and run the
+  --taipy-force,          Force override the configuration of the version if existed and run the
                         application. Default to False.
   --clean-entities      Clean all current version entities before running the application.
                         Default to False.

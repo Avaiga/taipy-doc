@@ -7,18 +7,25 @@ some style to, providing the best user experience.
 Styling involves some knowledge of [Cascading Style Sheets](https://www.w3.org/Style/CSS/).
 This section describes what sort of styling you may want to apply, in different situations.
 
+Taipy GUI comes with a set of stylesheets that give applications an homogeneous and solid
+look and feel. This set of stylesheet is grouped in what is called the *Stylekit*.<br/>
+The Stylekit is easy to customize and provides few utility CSS classes that accelerates the
+development of specific styles to apply to pages.<br/>
+The Stylekit is documented in the [Stylekit section](stylekit.md) of this documentation,
+where you can find all the information on how to use and customize it.
+
 ## Style sheets
 
 There are two ways you can apply a stylesheet to your application:
 
 - Global style sheet.<br/>
-  The _css_file_ parameter of the [`Gui` constructor](Gui.__init__()^) lets you
+  The *css_file* parameter of the [`Gui` constructor](Gui.__init__()^) lets you
   specify a CSS file that your application will use for every page. The default value
   for this parameter is a file located next to your main Python script, with the
   same name except for the extension that must be '.css'.
 
 - Page-specific style.<br/>
-  The method `Gui.add_page()^` has a _style_ parameter that can be set to CSS content.
+  The method `Gui.add_page()^` has a *style* parameter that can be set to CSS content.
   This additional style is applied to the page and **only** this page.
 
 Beside explicit style sheets, you can also modify the global theme, as
@@ -27,13 +34,13 @@ described in the [section on Themes](#themes).
 ## Applying style
 
 Once the style sheets are set for the application, you can start learning about
-how styles can be expressed to pages.
+how styles can be applied to pages.
 
 ### Global styles
 
 As in any Web application, the root element (`:root`) is available for global
 style settings.<br/>
-For example, if you want to make your application bigger, enlarging the
+For example, if you want to make your application bigger by enlarging the
 font size, you could write:
 ```css
 :root {
@@ -43,29 +50,59 @@ font size, you could write:
 And all pages will appear twice as big.
 
 
-### Markdown styles
+### Styling Markdown
 
-Thanks to the [_Attribute Lists_](https://python-markdown.github.io/extensions/attr_list/)
+Thanks to the [*Attribute Lists*](https://python-markdown.github.io/extensions/attr_list/)
 extension, the Markdown text can hold attributes used for styling.
 
 If, for example, your Markdown content is the following:
 ```
-...
-This line should be displayed in blue.
-{ .blue-line }
-...
+Un-styled text line.
+
+Styled text line.
+{: .blue }
 ```
 
-and a style sheet used by the application indicates:
+and a stylesheet used by the application defined the *blue* CSS class:
 ```css
-.blue-line {
+.blue {
   color: blue;
 }
 ```
-then the text line is displayed in blue.
+then the text line is displayed in blue:
 
-Please check the documentation for the _Attribute Lists_ extension to find
-more information.
+<figure>
+  <img src="attribute-para-d.png" class="visible-dark" />
+  <img src="attribute-para-l.png" class="visible-light"/>
+  <figcaption>Styling paragraphs</figcaption>
+</figure>
+
+That would apply to the entire preceding paragraph.
+
+If you want to set the style for an inline element of the text (such as a
+bold section identified by the "\*\*" markers), you can use the same
+attribute syntax, right after the text fragment, without any space
+character.<br/>
+The following Markdown content:
+```
+A text that has a **specific**{: .blue } style.
+```
+will apply the *blue* class to the bold text fragment:
+<figure>
+  <img src="attribute-fragment-d.png" class="visible-dark" />
+  <img src="attribute-fragment-l.png" class="visible-light"/>
+  <figcaption>Styling fragments</figcaption>
+</figure>
+
+Note that to style a heading, the syntax is slightly different: right after the text of the heading,
+you must insert a white space, as many sharp (#) characters as the heading uses, another white
+space, then the style construct.<br/>
+Here is an example that works properly.
+```
+## My heading ## {: .my-style }
+```
+
+Please check the documentation for the *Attribute Lists* extension for more information.
 
 !!! note "div vs. p"
     Instead of generating &lt;p&gt; HTML tags for lines of text, Taipy
@@ -89,9 +126,9 @@ your pages.
 
 Every visual element is assigned a CSS class that depends on the type
 of the element.<br/>
-The default associated class name is made of the string _"taipy-"_ followed
+The default associated class name is made of the string *"taipy-"* followed
 by the type of element: all Taipy buttons, for example, have the CSS
-class name: _"taipy-button"_.
+class name: *"taipy-button"*.
 
 You can therefore create a weird-looking button displayed in an
 oval by setting a style sheet that contains:
@@ -123,19 +160,19 @@ The CSS rule above will impact your display this way:
     </figure>
   </div>
 
-You can also add CSS class names of your choice using the _classname_
+You can also add CSS class names of your choice using the *class_name*
 property of all visual elements. If you need to assign more than one
 class to an element, you can separate each individual class name with
 a space character:
 ```
-<|Click me|button|classname=option testing|>
+<|Click me|button|class_name=option testing|>
 ```
 This Markdown fragment gets converted into an HTML element with three CSS classes
-assigned: _taipy-button_, _option_, and _testing_.
+assigned: *taipy-button*, *option*, and *testing*.
 
 #### Using the HTML 'id' attribute
 
-You can use the _id_ property of all visual elements to generate an
+You can use the *id* property of all visual elements to generate an
 HTML id that can be used by CSS styling.
 
 For example, if your Markdown page contains the following control:
@@ -178,16 +215,16 @@ support for theming, so you can customize how things will look across all compon
 Material UI exposes the full API for handling themes, which you can find
 on the [MUI Theming](https://mui.com/customization/theming/) page.
 
-To change the theme of your application, you must use the _theme_ configuration
+To change the theme of your application, you must use the *theme* configuration
 parameter (for example in the `Gui.run()` method) as explained in the
-[Configuration](configuration.md) section. You could also impact only the _light_
-or the _dark_ theme using the _light_theme_ or _dark_theme_ configuration settings.
+[Configuration](configuration.md) section. You could also impact only the *light*
+or the *dark* theme using the *light_theme* or *dark_theme* configuration settings.
 
 Here is how you would change the general theme if you wanted the background
 color to be a neutral gray color (#808080 in CSS) and make the primary color
 an orange-looking color instead of the default blue color.<br/>
 In your Python code, you would create a theme dictionary and provide it as
-the value of the _theme_ parameter of the method `Gui.run()`:
+the value of the *theme* parameter of the method `Gui.run()`:
 
 ```py
 ...

@@ -72,6 +72,19 @@ Here is the list of the configuration parameters you can use in
      your application.<br/>
      Or you can force **not** to use the *debug* mode using the *--no_debug* option
      when launching your application.
+   - *theme* (Union[dict[str, any], None]): A dictionary that lets you customize
+     the theme of your application. See the [Themes section](styling.md/#themes) for
+     details.
+   - *light_theme* (Union[dict[str, any], None]): Similar to the *theme* setting,
+     but applies to the _light_ theme only.
+   - *dark_theme* (Union[dict[str, any], None]): Similar to the *theme* setting,
+     but applies to the *dark* theme only.
+   - *stylekit* (Union[bool, dict[str, int, float], None]): If True or unspecified, use the
+     default [Stylekit](styling/stylekit.md) for this application.<br/>
+     If False, do not use the [Stylekit](styling/stylekit.md).<br/>
+     If this parameter is set to a dictionary, the keys are used as
+     [Stylekit variable](styling/stylekit.md#variables) names, whose values are
+     overloaded by the value indicated in the dictionary.
    - *flask_log* (bool, default: False): if set to True, you can get a full, real-time
      log from the Flask server. This may be useful when trying the find the reason why
      a request does not behave as expected.
@@ -96,13 +109,6 @@ Here is the list of the configuration parameters you can use in
      or one of the following values:
      - "client" indicates that the time zone to be used is the Web client's.
      - "server" indicates that the time zone to be used is the Web server's.
-   - *theme* (Union[dict[str, any], None]): A dictionary that lets you customize
-     the theme of your application. See the [Themes section](styling.md/#themes) for
-     details.
-   - *light_theme* (Union[dict[str, any], None]): Similar to the *theme* setting,
-     but applies to the _light_ theme only.
-   - *dark_theme* (Union[dict[str, any], None]):  Similar to the *theme* setting,
-     but applies to the *dark* theme only.
    - *use_arrow* (bool, default: False): indicates whether or not to use the
      [Apache Arrow](https://arrow.apache.org/) technology to serialize data to Taipy
      clients. This allows for better performance in some situations.
