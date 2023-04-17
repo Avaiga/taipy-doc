@@ -306,8 +306,7 @@ following parameters can be provided:
     The default value of _db_host_ is "localhost".
 - _**db_port**_ represents the database port that will be used by Taipy to access the database.<br/>
   The default value of _db_port_ is 1433.
-- _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
-    The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
+- _**db_driver**_ represents the database driver that will be used by Taipy.
 - _**sqlite_folder_path**_ represents the path to the folder that contains the SQLite database file. The default value of _sqlite_folder_path_ is the current working folder.
 - _**sqlite_file_extension**_ represents the file extension of the SQLite database file. The default value of _sqlite_file_extension_ is ".db".
 - _**db_extra_args**_ is a dictionary of additional arguments that need to be passed into the database connection string.
@@ -403,8 +402,7 @@ provided:
   The default value of _db_host_ is "localhost".
 - _**db_port**_ represents the database port that will be used by Taipy to access the database.<br/>
   The default value of _db_port_ is 1433.
-- _**db_driver**_ represents the database driver that will be used by Taipy.<br/>
-  The default value of _db_driver_ is "ODBC Driver 17 for SQL Server".
+- _**db_driver**_ represents the database driver that will be used by Taipy.
 - _**sqlite_folder_path**_ represents the path to the folder that contains the SQLite database file. The default value of _sqlite_folder_path_ is the current working folder.
 - _**sqlite_file_extension**_ represents the file extension of the SQLite database file. The default value of _sqlite_file_extension_ is ".db".
 - _**db_extra_args**_ is a dictionary of additional arguments that need to be passed into the database connection string.
