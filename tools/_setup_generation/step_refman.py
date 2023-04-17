@@ -68,6 +68,7 @@ class RefManStep(SetupStep):
         ("taipy.core.taipy.export_scenario", "taipy.core"),
         ("taipy.core.taipy.get", "taipy.core"),
         ("taipy.core.taipy.get_cycles", "taipy.core"),
+        ("taipy.core.taipy.get_cycles_scenarios", "taipy.core"),
         ("taipy.core.taipy.get_data_nodes", "taipy.core"),
         ("taipy.core.taipy.get_jobs", "taipy.core"),
         ("taipy.core.taipy.get_latest_job", "taipy.core"),
