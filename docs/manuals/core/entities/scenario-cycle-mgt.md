@@ -212,7 +212,7 @@ attributes and properties, each accessible as an attribute of the cycle:
 -   _**start_date**_ corresponds to the date and time of the start of this cycle.
 -   _**end_date**_ corresponds to the date and time of the end of this cycle.
 -   _**name**_ corresponds to a user readable name of this cycle.
--   Each property of the _**properties**_ dictionary is also directly exposed as an attribute.
+-   Each property of the _**properties'**_ dictionary is also directly exposed as an attribute.
 
 !!! Example
 
@@ -235,7 +235,7 @@ attributes and properties, each accessible as an attribute of the cycle:
     cycle.start_date
     # The end date is the date-time of the end of the cycle. It equals datetime(2022, 1, 31)
     cycle.end_date
-    # By default, the `name` is None. It can be set manually.
+    # By default, the `name` is generated. It can be set manually.
     cycle.name = "January cycle"
     ```
 
