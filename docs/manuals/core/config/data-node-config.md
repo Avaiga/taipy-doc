@@ -695,7 +695,7 @@ In this example, we configure a *mongo_collection* data node with the id "histor
 - The database name is "taipy"
 - The collection name is "historical_data_set".
 - Without being specified, the custom document class is defined as
-  `taipy.core.DefaultCustomDocument`.
+  `taipy.core.MongoDefaultDocument`.
 
 ```python linenums="1"
 {%

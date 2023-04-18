@@ -1031,8 +1031,8 @@ When writing data to a Mongo collection data node, the `MongoCollectionDataNode.
 a list of objects as instances of a document class
 defined by _**custom_document**_ as the input.
 
-By default, Mongo collection data node uses `taipy.core.DefaultCustomDocument` as the document class.
-A `DefaultCustomDocument` can have any attribute, however, the type of the value should be supported by
+By default, Mongo collection data node uses `taipy.core.MongoDefaultDocument` as the document class.
+A `MongoDefaultDocument` can have any attribute, however, the type of the value should be supported by
 MongoDB, including but not limited to:
 
 - Boolean, integers, and floating-point numbers.
@@ -1049,12 +1049,12 @@ Check out [MongoDB supported data types](https://www.mongodb.com/docs/manual/ref
 !!! example "Read and write from a Mongo collection data node using default document class"
 
     ```python
-    from taipy.core import DefaultCustomDocument
+    from taipy.core import MongoDefaultDocument
 
     data = [
-        DefaultCustomDocument(date="12/24/2018", nb_sales=1550),
-        DefaultCustomDocument(date="12/25/2018", nb_sales=2315),
-        DefaultCustomDocument(date="12/26/2018", nb_sales=1832),
+        MongoDefaultDocument(date="12/24/2018", nb_sales=1550),
+        MongoDefaultDocument(date="12/25/2018", nb_sales=2315),
+        MongoDefaultDocument(date="12/26/2018", nb_sales=1832),
     ]
     data_node.write(data)
     ```
@@ -1069,7 +1069,7 @@ Check out [MongoDB supported data types](https://www.mongodb.com/docs/manual/ref
     ]
     ```
 
-    The read method will return a list of DefaultCustomDocument objects, including "_id" attribute.
+    The read method will return a list of MongoDefaultDocument objects, including "_id" attribute.
 
 You can also specify custom document class to handle specific attribute, encode and decode data when
 reading and writing to the Mongo collection.
