@@ -42,7 +42,7 @@ class RefManStep(SetupStep):
         ("taipy.core.common.alias.ScenarioId", "taipy.core"),
         ("taipy.core.common.alias.TaskId", "taipy.core"),
         ("taipy.core.common.alias.Edit", "taipy.core"),
-        ("taipy.core.data.mongo.MongoDefaultDocument", "taipy.core.common"),
+        ("taipy.core.common.mongo_default_document.MongoDefaultDocument", "taipy.core.common"),
         ("taipy.core.common.frequency.Frequency", "taipy.core"),
         ("taipy.core.common.scope.Scope", "taipy.core"),
         ("taipy.core.config.*", "taipy.core.config"),
@@ -453,7 +453,7 @@ from typing import Any, Callable, Dict, List, Union, Optional
 import json
 from .common.scope import Scope
 from .common.frequency import Frequency
-from taipy.core.data.mongo import MongoDefaultDocument
+from taipy.core.common.mongo_default_document import MongoDefaultDocument
 from taipy.core.config.job_config import JobConfig
 from taipy.core.config.data_node_config import DataNodeConfig
 from taipy.core.config.task_config import TaskConfig
@@ -466,7 +466,7 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
         with open(config_path, "w") as f:
             new_content = "".join(contents)
             new_content = new_content.replace(
-                "custom_document: Any = <class 'taipy.core.data.mongo.MongoDefaultDocument'>",
+                "custom_document: Any = <class 'taipy.core.common.mongo_default_document.MongoDefaultDocument'>",
                 "custom_document: Any = MongoDefaultDocument"
             )
             new_content = new_content.replace("taipy.config.common.scope.Scope", "Scope")
