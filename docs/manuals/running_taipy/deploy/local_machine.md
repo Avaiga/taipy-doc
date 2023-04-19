@@ -1,5 +1,3 @@
-# On local machine
+# Python main.py
 
-## Python main.py
-
-## Expose your app to the Internet with Ngrok
+# Expose your app to the Internet with Ngrok
