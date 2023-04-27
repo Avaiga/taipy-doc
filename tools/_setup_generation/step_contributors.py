@@ -42,8 +42,9 @@ class ContributorsStep(SetupStep):
             self.get_avaiga_members()
             self.get_contributors()
             self.build_content((self.MEMBERS, "[AVAIGA_TEAM_MEMBERS]"), (self.CONTRIBUTORS, "[TAIPY_CONTRIBUTORS]"))
-        except:
+        except Exception as e:
             print(f"ERROR - Couldn't generate contributors' list.", flush=True)
+            print(e)
             return
 
     def get_repo_urls(self):
@@ -141,7 +142,7 @@ class ContributorsStep(SetupStep):
 
     def __get(self, url, with_token=True):
         if with_token and self.GH_TOKEN:
-            headers = {'Authorization': f'token {self.GH_TOKEN}'}
+            headers = {"Accept": "application/vnd.github+json", "Authorization": f"Bearer {self.GH_TOKEN}"}
             return requests.get(url, headers=headers)
         else:
             return requests.get(url)
