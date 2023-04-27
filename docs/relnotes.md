@@ -77,8 +77,8 @@ Published on 2023-04.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.2.3
 
-- Error raised when running Core service in development mode after a function rename in the Config.<br/>
-  See [issue #560](https://github.com/Avaiga/Avaiga/taipy-core/issues/560)
+- Running the Core service in development mode after renaming a function in the Config may break.<br/>
+  See [issue #560](https://github.com/Avaiga/Avaiga/taipy-core/issues/560).
 
 2.2.2
 
