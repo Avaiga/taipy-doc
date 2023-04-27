@@ -17,7 +17,7 @@ class ContributorsStep(SetupStep):
     def __init__(self):
         self.GH_TOKEN = os.getenv("GITHUB_TOKEN", None)
         self.BASE_URL = "https://api.github.com"
-        self.ORGANIZATION_URL = f"{self.BASE_URL}/orgs/avaiga"
+        self.ORGANIZATION_URL = f"{self.BASE_URL}/orgs/Avaiga"
         self.MEMBERS_URL = f"{self.ORGANIZATION_URL}/members"
         self.REPOS = f"{self.ORGANIZATION_URL}/repos"
         self.REPO_URLS = []
@@ -43,15 +43,12 @@ class ContributorsStep(SetupStep):
             self.get_contributors()
             self.build_content((self.MEMBERS, "[AVAIGA_TEAM_MEMBERS]"), (self.CONTRIBUTORS, "[TAIPY_CONTRIBUTORS]"))
         except Exception as e:
-            print(f"ERROR - Couldn't generate contributors' list.", flush=True)
-            print(e)
-            return
+            print(f"WARNING - Exception raised while listing contributors:\n{e}")
 
     def get_repo_urls(self):
         response = self.__get(self.REPOS)
         if response.status_code != 200:
             print(f"WARNING - Couldn't get repositories. response.status_code: {response.status_code}", flush=True)
-            print(self.REPOS)
             return
         repos = response.json()
         self.REPO_URLS = list(map(lambda _: _['url'], repos))
@@ -60,7 +57,6 @@ class ContributorsStep(SetupStep):
         response = self.__get(self.MEMBERS_URL, with_token=False)
         if response.status_code != 200:
             print(f"WARNING - Couldn't get members. response.status_code: {response.status_code}", flush=True)
-            print(self.MEMBERS_URL)
             return
         members = response.json()
         for member in members:
@@ -69,10 +65,8 @@ class ContributorsStep(SetupStep):
                 self.MEMBERS[login] = {"avatar_url": member['avatar_url'], "html_url": member['html_url']}
 
     def get_contributors(self):
-        no_contributors_status = {}
-        no_contributors_encoding = {}
         for url in self.REPO_URLS:
-            response = self.__get(url + "/contents/contributors.txt")
+            response = self.__get(url + "/contents/contributors.txt", ignore404=True)
             public_contributor_logins = []
             if response.status_code == 200:
                 data = response.json()
@@ -82,30 +76,22 @@ class ContributorsStep(SetupStep):
                     file_content = base64.b64decode(content).decode()
                     public_contributor_logins += file_content.strip().split("\n")
                 else:
-                    if no_contributors_encoding.get(encoding):
-                        no_contributors_encoding[encoding] = ", ".join([no_contributors_encoding[encoding], url])
-                    else:
-                        no_contributors_encoding[encoding] = url
+                    print(f"WARNING - Couldn't get contributors from {url}. unknown encoding: {encoding}", flush=True)
                     continue
+            elif response.status_code == 404:
+                print(f"INFO - No contributors.txt in repository {url[len(self.BASE_URL)+14:]}.", flush=True)
             else:
-                if no_contributors_status.get(response.status_code):
-                    no_contributors_status[response.status_code] = ", ".join([no_contributors_status[
-                                                                                  response.status_code],
-                                                                              url])
-                else:
-                    no_contributors_status[response.status_code] = url
+                print(f"WARNING - Couldn't get contributors for {url}. response.status_code: {response.status_code}",
+                      flush=True)
                 continue
-            response = self.__get(url + "/contributors")
+            response = self.__get(url+"/contributors")
             if response.status_code != 200:
+                print(f"WARNING - Couldn't get contributors. response.status_code: {response.status_code}", flush=True)
                 continue
             for c in response.json():
                 login = c['login']
                 if login not in self.MEMBERS and login not in self.ANONYMOUS and login in public_contributor_logins:
                     self.CONTRIBUTORS[login] = {"avatar_url": c['avatar_url'], "html_url": c['html_url']}
-        for code, urls in no_contributors_status.items():
-            print(f"WARNING - Couldn't get contributors for {urls}. Wrong status code: {code}.", flush=True)
-        for encoding, urls in no_contributors_encoding.items():
-            print(f"WARNING - Couldn't get contributors for {urls}. Unknown encoding {encoding}.", flush=True)
 
     def build_content(self, *members_pattern_tuples):
         pattern_content_tuples = []
@@ -117,9 +103,9 @@ class ContributorsStep(SetupStep):
             random.shuffle(members_list)
             for login, member_info in members_list:
                 if login not in self.ANONYMOUS:
-                    content += f"\n- [<img src='{member_info['avatar_url']}' alt='avatar' width='20'/>" \
-                               f" {login}]" \
-                               f"({member_info['html_url']})"
+                    content += f"\n- [<img src='{member_info['avatar_url']}' alt='{login} GitHub avatar' width='20'/>" \
+                                    f"{login}]" \
+                                    f"({member_info['html_url']})"
             content += "\n"
             pattern_content_tuples.append((pattern, content))
 
@@ -140,12 +126,17 @@ class ContributorsStep(SetupStep):
         with open(path, 'w') as file:
             file.write(file_data)
 
-    def __get(self, url, with_token=True):
+    def __get(self, url, with_token=True, ignore404:bool = False):
         if with_token and self.GH_TOKEN:
-            headers = {"Accept": "application/vnd.github+json", "Authorization": f"Bearer {self.GH_TOKEN}"}
+            headers = {
+                "Accept": "application/vnd.github+json",
+                "Authorization": "Bearer "+self.GH_TOKEN
+            }
+            #{'Authorization': f'token {self.GH_TOKEN}'}
             return requests.get(url, headers=headers)
         else:
             return requests.get(url)
+
 
     def exit(self, setup: Setup):
         pass

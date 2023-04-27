@@ -83,7 +83,7 @@ def remove_dummy_h3(content: str, ids: Dict[str, str]) -> str:
 
 
 def on_post_build(env):
-    """Post-build actions for Taipy documentation"""
+    "Post-build actions for Taipy documentation"
 
     site_dir = env.conf["site_dir"]
     log = logging.getLogger("mkdocs")
@@ -154,6 +154,10 @@ def on_post_build(env):
                         gs_rel_path = os.path.relpath(site_dir, filename).replace("\\", "/").replace("../", "", 1)
                         GS_DOCLINK = re.compile(r"(href=\")https://docs\.taipy\.io/en/latest(.*?\")", re.M | re.S)
                         html_content, n_changes = GS_DOCLINK.subn(f"\\1{gs_rel_path}\\2", html_content)
+                        if n_changes != 0:
+                            file_was_changed = True
+                        GS_IPYNB = re.compile(r"(<a\s*href=\"([^\"]*?)\.ipynb\")\s*>", re.M | re.S)
+                        html_content, n_changes = GS_IPYNB.subn(f"\\1 download>", html_content)
                         if n_changes != 0:
                             file_was_changed = True
                     # Add external link icons (and open in new tab)

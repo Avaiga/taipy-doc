@@ -39,7 +39,7 @@ toml = "==0.10"
 tzlocal = "==3.0"
 
 [dev-packages]
-jinja2 = "*"
+jinja2 = "3.1.0"
 mkdocs = "*"
 mkdocs-autorefs = "*"
 mkdocs-include-markdown-plugin = "*"
