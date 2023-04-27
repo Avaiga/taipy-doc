@@ -37,10 +37,13 @@ class ContributorsStep(SetupStep):
         return "Generating the contributors list."
 
     def setup(self, setup: Setup) -> None:
-        self.get_repo_urls()
-        self.get_avaiga_members()
-        self.get_contributors()
-        self.build_content((self.MEMBERS, "[AVAIGA_TEAM_MEMBERS]"), (self.CONTRIBUTORS, "[TAIPY_CONTRIBUTORS]"))
+        try:
+            self.get_repo_urls()
+            self.get_avaiga_members()
+            self.get_contributors()
+            self.build_content((self.MEMBERS, "[AVAIGA_TEAM_MEMBERS]"), (self.CONTRIBUTORS, "[TAIPY_CONTRIBUTORS]"))
+        except:
+            return
 
     def get_repo_urls(self):
         response = self.__get(self.REPOS)
@@ -86,7 +89,7 @@ class ContributorsStep(SetupStep):
                 if no_contributors_status.get(response.status_code):
                     no_contributors_status[response.status_code] = ", ".join([no_contributors_status[
                                                                                   response.status_code],
-                                                                             url])
+                                                                              url])
                 else:
                     no_contributors_status[response.status_code] = url
                 continue
