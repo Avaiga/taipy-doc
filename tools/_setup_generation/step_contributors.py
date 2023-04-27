@@ -43,6 +43,7 @@ class ContributorsStep(SetupStep):
             self.get_contributors()
             self.build_content((self.MEMBERS, "[AVAIGA_TEAM_MEMBERS]"), (self.CONTRIBUTORS, "[TAIPY_CONTRIBUTORS]"))
         except:
+            print(f"ERROR - Couldn't generate contributors' list.", flush=True)
             return
 
     def get_repo_urls(self):
