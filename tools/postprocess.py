@@ -40,7 +40,7 @@ TOC_ENTRY_PART2 = r"\"\s*class=\"md-nav__link\">([^<]*)</a>\s*</li>\s*"
 #  group(4) - The function parameters, with their ().
 XREF_RE = re.compile(r"<code>(\()?((?:[^\d\W]\w*\.)*)"
                      + r"(?:\))?([^\d\W]\w*)(\(.*?\))?\^</code>")
-                      
+
 
 def find_dummy_h3_entries(content: str) -> Dict[str, str]:
     """
@@ -83,7 +83,7 @@ def remove_dummy_h3(content: str, ids: Dict[str, str]) -> str:
 
 
 def on_post_build(env):
-    "Post-build actions for Taipy documentation"
+    """Post-build actions for Taipy documentation"""
 
     site_dir = env.conf["site_dir"]
     log = logging.getLogger("mkdocs")
