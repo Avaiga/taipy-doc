@@ -75,10 +75,17 @@ Published on 2023-04.
 
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.2.3
+
+- Error raised when running Core service in development mode after a function rename in the Config.<br/>
+  See [issue #560](https://github.com/Avaiga/Avaiga/taipy-core/issues/560)
+
 2.2.2
 
-- PostgreSQL and MySQL engines do not support "driver" argument. See [issue #544](https://github.com/Avaiga/taipy-core/issues/544).<br/>
-  To avoid conflict between engines, the default value of the _db_driver_ parameter in a SQL or a SQL table data node configuration has been removed.
+- PostgreSQL and MySQL engines do not support "driver" argument.<br/>
+  See [issue #544](https://github.com/Avaiga/taipy-core/issues/544).<br/>
+  To avoid conflict between engines, the default value of the _db_driver_ parameter in a SQL or a SQL table data
+  node configuration has been removed.
 
 ## Studio: 1.0
 
