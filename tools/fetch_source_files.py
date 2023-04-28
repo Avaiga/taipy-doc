@@ -288,7 +288,7 @@ def run(*services: t.List[t.Union[Gui, Rest, Core]], **kwargs) -> t.Optional[t.U
         *services (List[Union[`Gui^`, `Rest^`, `Core^`]]): Services to run.
             If several services are provided, all the services run simultaneously. If this is empty or set to None,
             this method does nothing.
-        **kwargs: Other parameters to provide to the services.
+        **kwargs (dict[str, any]): Other parameters to provide to the services.
     \"\"\"
     pass\n"""
     init.write(run_method)

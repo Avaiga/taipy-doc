@@ -18,7 +18,7 @@ method of your `Gui` instance using the *kwargs* parameter.
 !!! note "Configuring with an .env file"
     All parameters can also be set to any values and stored as a list of key-value
     pairs in a text file for your `Gui` instance to consume. The name of this file
-    is the one provided as the _env_filename_ parameter to the
+    is the one provided as the *env_filename* parameter to the
     [`Gui` constructor](Gui.__init__()^).
 
     If you have such a configuration file, then the value associated with a
@@ -62,7 +62,7 @@ Here is the list of the configuration parameters you can use in
    - *notification_duration* (int, default: 3000): the time, in milliseconds, that
      notifications should remain visible (see [Notifications](notifications.md) for
      details).
-   - *debug* (bool, default: True): set to True if you want to be provided with detailed
+   - *debug* (bool, default: False): set this parameter to True if you want to be provided with detailed
      debugging information messages from the server.<br/>
      If the debug mode is set, then the *async_mode* parameter of the call to `Gui.run()^`
      is overridden to "threading" to use the Flask built-in development server.<br/>
@@ -76,7 +76,7 @@ Here is the list of the configuration parameters you can use in
      the theme of your application. See the [Themes section](styling.md/#themes) for
      details.
    - *light_theme* (Union[dict[str, any], None]): Similar to the *theme* setting,
-     but applies to the _light_ theme only.
+     but applies to the *light* theme only.
    - *dark_theme* (Union[dict[str, any], None]): Similar to the *theme* setting,
      but applies to the *dark* theme only.
    - *stylekit* (Union[bool, dict[str, int, float], None]): If True or unspecified, use the

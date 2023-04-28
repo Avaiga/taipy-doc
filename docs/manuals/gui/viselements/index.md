@@ -243,7 +243,7 @@ is equivalent to
 Every visual element type has the following properties:
 
 -   `id`: The identifier of the element. This identifier is generated in the HTML component
-    and can be used for [styling](../styling.md).
+    and can be used for [styling](../styling/index.md).
 -   `class_name`: An additional CSS class that is added to the generated HTML component.
     Note that all visual elements are generated with the "taipy-_visual_element_type_" CSS
     class set (e.g. the `button` control generates an HTML element that has the
@@ -259,7 +259,8 @@ across your pages.
 You can specify an identifier for a specific visual element.
 
 This identifier is used as the `id` attribute of the generated HTML component so you
-can use it in your CSS selectors.
+can use it in your CSS selectors. You can look at the [Styling](../styling/index.md)
+section for more information.
 
 !!! note
     This identifier is also sent to the _on_action_ callback if this visual
