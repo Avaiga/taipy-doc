@@ -24,7 +24,7 @@ ldap3 = "==2.9.1"
 markdown = "==3.4.1"
 markupsafe = "==2.1.1"
 marshmallow-sqlalchemy = "==0.25"
-modin = {extras = ["dask"], version = "==0.16.2"}
+modin = "==0.16.2"
 networkx = "==2.6"
 openpyxl = "==3.0.7"
 pandas = "==1.5.1"
@@ -39,16 +39,16 @@ toml = "==0.10"
 tzlocal = "==3.0"
 
 [dev-packages]
+jinja2 = "3.1.0"
 mkdocs = "*"
 mkdocs-autorefs = "*"
 mkdocs-include-markdown-plugin = "*"
 mkdocs-macros-plugin = "*"
-mkdocs-material = "==7.3.0"
+mkdocs-material = "*"
 mkdocs-material-extensions = "*"
 mkdocstrings = "*"
 mkdocstrings-python = "*"
 requests = "*"
-jinja2 = "3.1.0"
 
 [requires]
 python_version = "3"

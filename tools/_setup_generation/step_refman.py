@@ -68,6 +68,7 @@ class RefManStep(SetupStep):
         ("taipy.core.taipy.export_scenario", "taipy.core"),
         ("taipy.core.taipy.get", "taipy.core"),
         ("taipy.core.taipy.get_cycles", "taipy.core"),
+        ("taipy.core.taipy.get_cycles_scenarios", "taipy.core"),
         ("taipy.core.taipy.get_data_nodes", "taipy.core"),
         ("taipy.core.taipy.get_jobs", "taipy.core"),
         ("taipy.core.taipy.get_latest_job", "taipy.core"),
@@ -200,6 +201,8 @@ class RefManStep(SetupStep):
                 if doc:
                     first_line = FIRST_DOC_LINE_RE.match(doc.strip())
                     if first_line:
+                        if first_line.group(0).startswith("NOT DOCUMENTED"):
+                            continue
                         doc = REMOVE_LINE_SKIPS_RE.subn(" ", first_line.group(0))[
                             0
                         ].strip()

@@ -40,7 +40,7 @@ TOC_ENTRY_PART2 = r"\"\s*class=\"md-nav__link\">([^<]*)</a>\s*</li>\s*"
 #  group(4) - The function parameters, with their ().
 XREF_RE = re.compile(r"<code>(\()?((?:[^\d\W]\w*\.)*)"
                      + r"(?:\))?([^\d\W]\w*)(\(.*?\))?\^</code>")
-                      
+
 
 def find_dummy_h3_entries(content: str) -> Dict[str, str]:
     """

@@ -323,6 +323,9 @@ if pipfile_path:
                     for package in sorted(pipfile_packages.keys(), key=str.casefold):
                         versions = pipfile_packages[package]
                         version = list(versions.keys())[0]
+                        if package == "modin":
+                            # Remove 'extras' from modin package requirements
+                            version = re.sub(r"\{\s*extras.*?,\s*version\s*=\s*(.*?)\s*}", r"\1", version)
                         new_pipfile.write(f"{package} = {version}\n")
                         if not package in legacy_pipfile_packages:
                             pipfile_changes.append(f"Package '{package}' added ({version})")

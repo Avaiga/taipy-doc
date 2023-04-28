@@ -78,7 +78,7 @@ Published on 2023-04.
 2.2.3
 
 - Running the Core service in development mode after renaming a function in the Config may break.<br/>
-  See [issue #560](https://github.com/Avaiga/Avaiga/taipy-core/issues/560).
+  See [issue #560](https://github.com/Avaiga/taipy-core/issues/560).
 
 2.2.2
 
