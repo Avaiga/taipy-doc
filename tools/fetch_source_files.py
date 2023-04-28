@@ -279,13 +279,13 @@ with open(init_path, "a") as init:
     run_method = """
 import typing as t
 
-def run(*apps: t.List[t.Union[Gui, Rest, Core]], **kwargs) -> t.Optional[t.Union[Gui, Rest, Core]]:
+def run(*services: t.List[t.Union[Gui, Rest, Core]], **kwargs) -> t.Optional[t.Union[Gui, Rest, Core]]:
     \"\"\"Run one or multiple Taipy services.
 
     A Taipy service is an instance of a class that runs code as a Web application.
 
     Parameters:
-        *args (List[Union[`Gui^`, `Rest^`, `Core^`]]): Services to run.
+        *services (List[Union[`Gui^`, `Rest^`, `Core^`]]): Services to run.
             If several services are provided, all the services run simultaneously. If this is empty or set to None,
             this method does nothing.
         **kwargs: Other parameters to provide to the services.
@@ -323,6 +323,9 @@ if pipfile_path:
                     for package in sorted(pipfile_packages.keys(), key=str.casefold):
                         versions = pipfile_packages[package]
                         version = list(versions.keys())[0]
+                        if package == "modin":
+                            # Remove 'extras' from modin package requirements
+                            version = re.sub(r"\{\s*extras.*?,\s*version\s*=\s*(.*?)\s*}", r"\1", version)
                         new_pipfile.write(f"{package} = {version}\n")
                         if not package in legacy_pipfile_packages:
                             pipfile_changes.append(f"Package '{package}' added ({version})")
