@@ -69,7 +69,11 @@ task_retrieved = tp.get(task.id)
 
 Here, the two variables `task` and `task_retrieved` are equal.
 
-A task can also be retrieved from a scenario or a pipeline, by accessing the task config_id attribute.
+All the jobs can be retrieved using the method `taipy.get_tasks()^`.
+
+# Get tasks by config id
+
+A task can be retrieved from a scenario or a pipeline, by accessing the task config_id attribute.
 
 ```python linenums="1"
 task_1 = scenario.predicting
@@ -78,7 +82,20 @@ task_2 - pipeline.predicting
 # task_1 == task_2
 ```
 
-All the jobs can be retrieved using the method `taipy.get_tasks()^`.
+Tasks can also be retrieved by their config_id by calling `taipy.get_entities_by_config_id()^`, which will return
+a list of existing tasks based on the config_id.
+
+!!! Example
+
+    ```python linenums="1"
+    import taipy as tp
+    import my_config
+
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+    # Get all training tasks by config id
+    all_training_tasks = tp.get_entities_by_config_id(my_config.training_cfg.id)
+    ```
 
 # Get parent scenarios and pipelines
 

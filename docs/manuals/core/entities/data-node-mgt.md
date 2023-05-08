@@ -45,7 +45,10 @@ passing the data node id as parameter:
     # data_node == data_node_retrieved
     ```
 
-The data nodes that are part of a **scenario**, **pipeline** or **task** can be directly accessed as attributes:
+# Get data nodes by config_id
+
+The data nodes that are part of a **scenario**, **pipeline** or **task** can be directly accessed as attributes by
+using its config_id:
 
 !!! Example
 
@@ -68,6 +71,21 @@ The data nodes that are part of a **scenario**, **pipeline** or **task** can be 
     # then access the data node 'sales_history' from the task
     task = pipeline.training
     task.sales_history
+    ```
+
+Data nodes can be retrieved by their config_id by calling `taipy.get_entities_by_config_id()^`, which will return
+a list of existing data nodes based on the config_id.
+
+!!! Example
+
+    ```python linenums="1"
+    import taipy as tp
+    import my_config
+
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+    # Get all trained model data nodes by config_id
+    all_trained_model_dns = tp.get_entities_by_config_id(my_config.trained_model_cfg.id)
     ```
 
 # Get all data nodes

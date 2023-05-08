@@ -65,20 +65,37 @@ pipeline == pipeline_retrieved
 
 Here the two variables `pipeline` and `pipeline_retrieved` are equal.
 
-# Get pipeline by config id
+# Get pipelines by config id
 
 A pipeline can also be retrieved from a scenario by accessing the pipeline's config_id of the scenario.
 
-```python linenums="1"
-import taipy as tp
-import my_config
+!!! Example
 
-scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+    ```python linenums="1"
+    import taipy as tp
+    import my_config
 
-# Get the pipelines by config id
-sales_pipeline = scenario.sales
-production_pipeline = scenario.production
-```
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+    # Get the pipelines by config id
+    sales_pipeline = scenario.sales
+    production_pipeline = scenario.production
+    ```
+
+Pipelines can also be retrieved by their config_id by calling `taipy.get_entities_by_config_id()^`, which will return
+a list of existing pipelines based on the config_id.
+
+!!! Example
+
+    ```python linenums="1"
+    import taipy as tp
+    import my_config
+
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+    # Get all sale pipelines by config id
+    all_sales_pipeline = tp.get_entities_by_config_id(my_config.sales_pipeline_cfg.id)
+    ```
 
 # Get all pipelines
 

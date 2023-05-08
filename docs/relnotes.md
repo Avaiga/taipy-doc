@@ -30,6 +30,7 @@ Not published yet.
 - All scenarios grouped by their cycles can be now retrieved by calling `taipy.get_cycles_scenarios()^`.
 - All entities (cycles, scenarios, pipelines, tasks, data nodes, and jobs) expose two new methods: `get_label` and
   `get_simple_label`, that can be used to display the entity.
+- `taipy.get_entities_by_config_id()^` can be used to retrieved all entities based on the provided config_id.
 
 ## Community edition: 2.2
 
