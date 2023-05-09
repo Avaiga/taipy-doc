@@ -82,8 +82,8 @@ task_2 - pipeline.predicting
 # task_1 == task_2
 ```
 
-Tasks can also be retrieved by their config_id by calling `taipy.get_entities_by_config_id()^`, which will return
-a list of existing tasks based on the config_id.
+Tasks can also be retrieved by their config_id by calling `taipy.get_entities_by_config_id()^` with their config_id.
+It returns the list of all existing tasks instantiated from the config_id provided as a parameter.
 
 !!! Example
 
@@ -91,10 +91,12 @@ a list of existing tasks based on the config_id.
     import taipy as tp
     import my_config
 
-    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+    # Create 2 scenarios.
+    scenario_1 = tp.create_scenario(my_config.monthly_scenario_cfg)
+    scenario_2 = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-    # Get all training tasks by config id
-    all_training_tasks = tp.get_entities_by_config_id(my_config.training_cfg.id)
+    # Get all training tasks by config id, this will return a list of 2 training tasks created alongside the 2 scenarios.
+    all_training_tasks = tp.get_entities_by_config_id("training")
     ```
 
 # Get parent scenarios and pipelines

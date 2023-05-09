@@ -73,8 +73,8 @@ using its config_id:
     task.sales_history
     ```
 
-Data nodes can be retrieved by their config_id by calling `taipy.get_entities_by_config_id()^`, which will return
-a list of existing data nodes based on the config_id.
+Data nodes can be retrieved by their config_id by calling `taipy.get_entities_by_config_id()^` with their config_id.
+It returns the list of all existing data nodes instantiated from the config_id provided as a parameter.
 
 !!! Example
 
@@ -82,10 +82,13 @@ a list of existing data nodes based on the config_id.
     import taipy as tp
     import my_config
 
-    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+    # Create 2 scenarios.
+    scenario_1 = tp.create_scenario(my_config.monthly_scenario_cfg)
+    scenario_2 = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-    # Get all trained model data nodes by config_id
-    all_trained_model_dns = tp.get_entities_by_config_id(my_config.trained_model_cfg.id)
+    # Get all data nodes by config_id, this will return a list of 2 trained_model data nodes
+    # created alongside the 2 scenarios.
+    all_trained_model_dns = tp.get_entities_by_config_id("trained_model")
     ```
 
 # Get all data nodes
