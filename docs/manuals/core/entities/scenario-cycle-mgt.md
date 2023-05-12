@@ -78,8 +78,8 @@ Here, the two variables `scenario` and `scenario_retrieved` are equal.
 
 # Get scenarios by config id
 
-Scenarios can also be retrieved by their config_id by calling `taipy.get_entities_by_config_id()^` with their config_id.
-It returns the list of all existing scenarios instantiated from the config_id provided as a parameter.
+Scenarios can also be retrieved using `taipy.get_entities_by_config_id()^` providing the config_id.
+This method returns the list of all existing scenarios instantiated from the config_id provided as a parameter.
 
 !!! Example
 
