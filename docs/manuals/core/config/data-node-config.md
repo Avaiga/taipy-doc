@@ -739,10 +739,10 @@ can be provided:
   More optional parameters can be passed through the _**write_fct_params**_ parameter.
 
 - _**read_fct_params**_ represents the parameters passed to the _read_fct_ to
-  read/de-serialize the data. It must be a `List` type object.
+  read/de-serialize the data. It must be a `Tuple` type object.
 
 - _**write_fct_params**_ represents the parameters passed to the _write_fct_ to write
-  the data. It must be a `List` type object.
+  the data. It must be a `Tuple` type object.
 
 
 ```python linenums="1"
