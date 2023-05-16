@@ -22,5 +22,6 @@ csv_country_data_cfg = Config.configure_generic_data_node(
     id="csv_country_data",
     read_fct=read_csv,
     write_fct=write_csv,
-    read_fct_params=["../path/data.csv", ";"],
-    write_fct_params=["../path/data.csv", ";"])
+    read_fct_params=("../path/data.csv", ";"),
+    write_fct_params=("../path/data.csv", ";"),
+)

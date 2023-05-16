@@ -27,5 +27,6 @@ student_data = Config.configure_generic_data_node(
     id="student_data",
     read_fct=read_csv,
     write_fct=write_csv,
-    read_fct_params=["../path/data.csv"],
-    write_fct_params=["../path/data.csv"])
+    read_fct_params=("../path/data.csv", ),
+    write_fct_params=("../path/data.csv", ),
+)
