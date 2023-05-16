@@ -33,6 +33,14 @@ Not published yet.
 - `taipy.get_entities_by_config_id()^` can be used to retrieve all entities that are based on
   the provided configuration identifier.
 
+### Improvements and changes
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.3.0
+
+- A generic data node now can be created with only the `read_fct` for reading only or the `write_fct` for writing only data node.<br/>
+- The `read_fct_params` and `write_fct_params` of a generic data node are renamed to `read_fct_args` and `write_fct_args`, and both must be populated with a List value to avoid the problem of passing Tuple of one string.<br/>
+
 ## Community edition: 2.2
 
 Published on 2023-04.
