@@ -1104,9 +1104,9 @@ document class.
 A _Generic_ data node has the read and the write functions defined by the user:
 
 - When reading from a generic data node, Taipy runs the function defined by *read_fct* with parameters
-  defined by *read_fct_params*.
+  defined by *read_fct_args*.
 - When writing to a generic data node, Taipy runs the function defined by *write_fct* with parameters
-  defined by *write_fct_params*.
+  defined by *write_fct_args*.
 
 ## In memory
 

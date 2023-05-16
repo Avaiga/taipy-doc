@@ -729,21 +729,23 @@ method adds a new _generic_ data node configuration. In addition to the paramete
 in the [Data node configuration](data-node-config.md) section, the following parameters
 can be provided:
 
-- _**read_fct**_ is a mandatory parameter representing a Python function provided
-  by the user. It is used to read the data. More optional parameters can be passed
-  through the _**read_fct_params**_ parameter.
+- _**read_fct**_ represents a Python function, which is used to read the data.
+  More optional parameters can be passed through the _**read_fct_args**_ parameter.
 
-- _**write_fct**_ is a mandatory parameter representing a Python function provided by the
-  user. It is used to write/serialize the data. The provided function must have at least
-  one parameter to receive data to be written. It must be the first parameter.
-  More optional parameters can be passed through the _**write_fct_params**_ parameter.
+- _**write_fct**_ represents a Python function, which is used to write/serialize the data.
+  The provided function must have at least one parameter to receive data to be written.
+  It must be the first parameter. More optional parameters can be passed through the
+  _**write_fct_args**_ parameter.
 
-- _**read_fct_params**_ represents the parameters passed to the _read_fct_ to
+- _**read_fct_args**_ represents the parameters passed to the _read_fct_ to
   read/de-serialize the data. It must be a `List` type object.
 
-- _**write_fct_params**_ represents the parameters passed to the _write_fct_ to write
+- _**write_fct_args**_ represents the parameters passed to the _write_fct_ to write
   the data. It must be a `List` type object.
 
+!!! Note
+
+    At least one of the _**read_fct**_ or _**write_fct**_ is required to configure a generic data node.
 
 ```python linenums="1"
 {%
@@ -758,10 +760,10 @@ In lines 17-18, we provide two Python functions (previously defined) as _read_fc
 parameters to read and write the data in a text file. Note that the first parameter of _write_fct_
 is mandatory and is used to pass the data on writing.
 
-In line 19, we provide _read_fct_params_ with a path to let the _read_fct_ know where to read the
+In line 19, we provide _read_fct_args_ with a path to let the _read_fct_ know where to read the
 data.
 
-In line 20, we provide a list of parameters to _write_fct_params_ with a path to let the _write_fct_
+In line 20, we provide a list of parameters to _write_fct_args_ with a path to let the _write_fct_
 know where to write the data. Note that the data parameter will be automatically passed at runtime
 when writing the data.
 
