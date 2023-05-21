@@ -216,15 +216,15 @@ Material UI exposes the full API for handling themes, which you can find
 on the [MUI Theming](https://mui.com/customization/theming/) page.
 
 To change the theme of your application, you must use the *theme* configuration
-parameter (for example in the `Gui.run()` method) as explained in the
-[Configuration](configuration.md) section. You could also impact only the *light*
+parameter (for example in the `Gui.run()^` method) as explained in the
+[Configuration](../configuration.md) section. You could also impact only the *light*
 or the *dark* theme using the *light_theme* or *dark_theme* configuration settings.
 
 Here is how you would change the general theme if you wanted the background
 color to be a neutral gray color (#808080 in CSS) and make the primary color
 an orange-looking color instead of the default blue color.<br/>
 In your Python code, you would create a theme dictionary and provide it as
-the value of the *theme* parameter of the method `Gui.run()`:
+the value of the *theme* parameter of the method `Gui.run()^`:
 
 ```py
 ...

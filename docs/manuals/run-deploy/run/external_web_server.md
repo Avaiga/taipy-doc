@@ -21,7 +21,7 @@ gui = Gui(page="# Taipy application", flask=flask_app)
 gui.run()
 ```
 
-The Flask server is created in line 4. Routes and such would be declared
+The Flask server is created in line 3. Routes and such would be declared
 as usual (like in lines 6 to 8).
 
 Note how we use the Flask instance to use it in the `Gui^` constructor in

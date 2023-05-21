@@ -81,4 +81,4 @@ The API comes with multiple endpoints for you to work with Taipy Core convenient
 
 ## Deployment
 
-[:material-arrow-right: Heroku Deployment manual](deployment/heroku/getting-started.md)
+[:material-arrow-right: Heroku Deployment manual](run-deploy/deploy/heroku/index.md)

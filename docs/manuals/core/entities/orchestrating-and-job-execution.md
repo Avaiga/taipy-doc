@@ -1,8 +1,8 @@
 # Submit a scenario, pipeline, or task
 
 In a Taipy application, running the Core service is required to execute jobs. To see how you
-can run different Taipy services, please refer to the [Running Taipy services](../../running_services/index.md)
-page.
+can run different Taipy services, please refer to the
+[Running Taipy services](../../run-deploy/run/running_services.md) page.
 
 !!! important "Preventing configuration update when the Taipy Core service is running"
 

@@ -1,3 +1,0 @@
-# On Databricks for development
-
-## SSH tunneling ...

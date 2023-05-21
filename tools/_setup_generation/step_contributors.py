@@ -17,7 +17,7 @@ class ContributorsStep(SetupStep):
     def __init__(self):
         self.GH_TOKEN = os.getenv("GITHUB_TOKEN", None)
         self.BASE_URL = "https://api.github.com"
-        self.ORGANIZATION_URL = f"{self.BASE_URL}/orgs/avaiga"
+        self.ORGANIZATION_URL = f"{self.BASE_URL}/orgs/Avaiga"
         self.MEMBERS_URL = f"{self.ORGANIZATION_URL}/members"
         self.REPOS = f"{self.ORGANIZATION_URL}/repos"
         self.REPO_URLS = []
@@ -37,10 +37,13 @@ class ContributorsStep(SetupStep):
         return "Generating the contributors list."
 
     def setup(self, setup: Setup) -> None:
-        self.get_repo_urls()
-        self.get_avaiga_members()
-        self.get_contributors()
-        self.build_content((self.MEMBERS, "[AVAIGA_TEAM_MEMBERS]"), (self.CONTRIBUTORS, "[TAIPY_CONTRIBUTORS]"))
+        try:
+            self.get_repo_urls()
+            self.get_avaiga_members()
+            self.get_contributors()
+            self.build_content((self.MEMBERS, "[AVAIGA_TEAM_MEMBERS]"), (self.CONTRIBUTORS, "[TAIPY_CONTRIBUTORS]"))
+        except Exception as e:
+            print(f"WARNING - Exception raised while listing contributors:\n{e}")
 
     def get_repo_urls(self):
         response = self.__get(self.REPOS)
@@ -63,7 +66,7 @@ class ContributorsStep(SetupStep):
 
     def get_contributors(self):
         for url in self.REPO_URLS:
-            response = self.__get(url + "/contents/contributors.txt")
+            response = self.__get(url + "/contents/contributors.txt", ignore404=True)
             public_contributor_logins = []
             if response.status_code == 200:
                 data = response.json()
@@ -73,8 +76,10 @@ class ContributorsStep(SetupStep):
                     file_content = base64.b64decode(content).decode()
                     public_contributor_logins += file_content.strip().split("\n")
                 else:
-                    print(f"WARNING - Couldn't get contributors for {url}. unknown encoding: {encoding}", flush=True)
+                    print(f"WARNING - Couldn't get contributors from {url}. unknown encoding: {encoding}", flush=True)
                     continue
+            elif response.status_code == 404:
+                print(f"INFO - No contributors.txt in repository {url[len(self.BASE_URL)+14:]}.", flush=True)
             else:
                 print(f"WARNING - Couldn't get contributors for {url}. response.status_code: {response.status_code}",
                       flush=True)
@@ -98,8 +103,8 @@ class ContributorsStep(SetupStep):
             random.shuffle(members_list)
             for login, member_info in members_list:
                 if login not in self.ANONYMOUS:
-                    content += f"\n- [<img src='{member_info['avatar_url']}' alt='avatar' width='20'/>" \
-                                    f" {login}]" \
+                    content += f"\n- [<img src='{member_info['avatar_url']}' alt='{login} GitHub avatar' width='20'/>" \
+                                    f"{login}]" \
                                     f"({member_info['html_url']})"
             content += "\n"
             pattern_content_tuples.append((pattern, content))
@@ -121,9 +126,13 @@ class ContributorsStep(SetupStep):
         with open(path, 'w') as file:
             file.write(file_data)
 
-    def __get(self, url, with_token=True):
+    def __get(self, url, with_token=True, ignore404:bool = False):
         if with_token and self.GH_TOKEN:
-            headers = {'Authorization': f'token {self.GH_TOKEN}'}
+            headers = {
+                "Accept": "application/vnd.github+json",
+                "Authorization": "Bearer "+self.GH_TOKEN
+            }
+            #{'Authorization': f'token {self.GH_TOKEN}'}
             return requests.get(url, headers=headers)
         else:
             return requests.get(url)

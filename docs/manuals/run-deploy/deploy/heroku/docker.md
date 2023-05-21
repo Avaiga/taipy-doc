@@ -4,7 +4,7 @@
 
 - Minimal knowledge of Docker.
 - Docker should be installed. Check [the official documentation](https://docs.docker.com/engine/install/) for docker installation.
-- [:material-arrow-right: Prepare your Taipy application](../prepare-taipy-for-deployment.md)
+- [:material-arrow-right: Running a Taipy application](../../run/index.md)
 - [:material-arrow-right: Set up your Heroku environment](setup.md)
 
 

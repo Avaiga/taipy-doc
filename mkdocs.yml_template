@@ -81,29 +81,34 @@ nav:
         - manuals/auth/index.md
         - "Authentication": manuals/auth/authentication.md
         - "Authorization": manuals/auth/authorization.md
-    - "Running a Taipy application":
-        - "Prepare your app":
-            - "The run method": manuals/running_taipy/prepare/running_services.md
-            - "Using an external Web server": manuals/running_taipy/prepare/external_web_server.md
-            - "Protect private files": manuals/running_taipy/prepare/protect_files.md
-        - "Deploy your app":
-            - "On local machine": manuals/running_taipy/deploy/local_machine.md
-            - "On Taipy Cloud": manuals/running_taipy/deploy/taipy-cloud.md
-            - "On Linux server":
-                - "Ubuntu": manuals/running_taipy/deploy/linux/ubuntu.md
-                - "RHEL": manuals/running_taipy/deploy/linux/redhat.md
-            - "On Windows server": manuals/running_taipy/deploy/windows.md
+    - "Running & Deploying":
+        - manuals/run-deploy/index.md
+        - "Running":
+            - manuals/run-deploy/run/index.md
+            - "The run() function": manuals/run-deploy/run/running_services.md
+            - "Using an external Web server": manuals/run-deploy/run/external_web_server.md
+            - "Protect private files": manuals/run-deploy/run/protect_files.md
+        - "Deployment":
+            - manuals/run-deploy/deploy/index.md
+            - "On local machine": manuals/run-deploy/deploy/local_machine.md
+            - "On Taipy Cloud": manuals/run-deploy/deploy/taipy-cloud.md
+            - "On Linux servers":
+                - manuals/run-deploy/deploy/linux/index.md
+                - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md
+                - "RHEL": manuals/run-deploy/deploy/linux/redhat.md
+            - "On Windows server": manuals/run-deploy/deploy/windows.md
             - "Using Docker":
-                - "For development": manuals/running_taipy/deploy/docker/development.md
-                - "For production": manuals/running_taipy/deploy/docker/production.md
-            - "On Azure": manuals/running_taipy/deploy/azure.md
-            - "On Clever Cloud": manuals/running_taipy/deploy/clever-cloud.md
+                - manuals/run-deploy/deploy/docker/index.md
+                - "For development": manuals/run-deploy/deploy/docker/development.md
+                - "For production": manuals/run-deploy/deploy/docker/production.md
+            - "On Azure": manuals/run-deploy/deploy/azure.md
+            - "On Clever Cloud": manuals/run-deploy/deploy/clever-cloud.md
             - "On Heroku":
-                - "Getting started": manuals/deployment/heroku/getting-started.md
-                - "Setup": manuals/deployment/heroku/setup.md
-                - "Based on Git": manuals/deployment/heroku/git.md
-                - "Based on Docker": manuals/deployment/heroku/docker.md
-            - "On Databricks": manuals/running_taipy/deploy/databricks.md
+                - manuals/run-deploy/deploy/heroku/index.md
+                - "Setup": manuals/run-deploy/deploy/heroku/setup.md
+                - "Based on Git": manuals/run-deploy/deploy/heroku/git.md
+                - "Based on Docker": manuals/run-deploy/deploy/heroku/docker.md
+            - "On Databricks": manuals/run-deploy/deploy/databricks.md
     - "Taipy Studio":
         - manuals/studio/index.md
         - "Building configurations":

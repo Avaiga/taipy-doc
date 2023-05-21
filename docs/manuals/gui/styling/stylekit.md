@@ -201,11 +201,11 @@ Here is the list of available classes:
 | *color-success*          | Uses [*--color-success*](#p-color-success) for the text color. |
 | *bg-success*             | Uses [*--color-success*](#p-color-success) for the background color. |
 | *color-background*       | Uses [*--color-background*](#p-color-background) for the text color. |
-| *bg-default*             | Uses [*--color-background*](#p-color-background) for the background color. |
+| *bg-background*          | Uses [*--color-background*](#p-color-background) for the background color. |
 | *color-background-light* | Uses [*--color-background-light*](#p-color-background-light) for the text color. |
-| *bg-default-light*       | Uses [*--color-background-light*](#p-color-background-light) for the background color. |
+| *bg-background-light*       | Uses [*--color-background-light*](#p-color-background-light) for the background color. |
 | *color-background-dark*  | Uses [*--color-background-dark*](#p-color-background-dark) for the text color. |
-| *bg-default-dark*        | Uses [*--color-background-dark*](#p-color-background-dark) for the background color. |
+| *bg-background-dark*        | Uses [*--color-background-dark*](#p-color-background-dark) for the background color. |
 | *color-paper*            | Uses [*--color-paper*](#p-color-paper) for the text color. |
 | *bg-paper*               | Uses [*--color-paper*](#p-color-paper) for the background color. |
 | *color-paper-light*      | Uses [*--color-paper-light*](#p-color-paper-light) for the text color. |

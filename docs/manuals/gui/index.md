@@ -21,7 +21,7 @@ hosted by the Taipy application itself (or on which the Taipy application
 relies). Taipy provides the class `Gui^` that handles this server and its
 settings.
 
-The `Gui^` class holds any number of _pages_, where text and graphical elements can
+The `Gui^` class holds any number of *pages*, where text and graphical elements can
 be placed. These elements can reflect the state of your application variables
 so the end-user can be presented with relevant information.<br/>
 Users can also interact with some of those elements to trigger application code
@@ -30,7 +30,7 @@ completely different page.
 
 The generated Web pages are built from a set of template text files that you
 provide, where you would have planted placeholders that will display application
-data. The application end users can then see and interact with the application. We call these representative and interactive objects: _visual elements_.
+data. The application end users can then see and interact with the application. We call these representative and interactive objects: *visual elements*.
 
 To describe the content of pages, Taipy comes the support for two template formats, handled by the classes `Markdown^` and `Html^`.
 
@@ -45,4 +45,5 @@ content sent back to the client so the user can see the application interface
 and start using it.
 
 !!! info "You can find more information on how pages are created and used in Taipy application in the [Pages](pages.md) section."
-!!! info "To run the Taipy GUI service with some other Taipy services, please refer to the [Running Taipy services](../running_services/index.md) page"
+
+!!! info "To run the Taipy GUI service with some other Taipy services, please refer to the [Running Taipy services](../run-deploy/run/running_services.md) page"
