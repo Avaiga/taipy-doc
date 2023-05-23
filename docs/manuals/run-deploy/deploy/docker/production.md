@@ -1,17 +1,20 @@
 ## Prerequisites
 
 - Knowledge of Docker.
-- [Prepare your application for deployment](../prepare-taipy-for-deployment.md)
+- [Running a Taipy application](../../run/index.md)
 - [Followed steps for development](development.md)
 
 
 ## Production ready Dockerfile
 
-The following Dockerfile contains the minimum configuration settings for you to deploy your application to production.
+The following Dockerfile contains the minimum configuration settings for you to deploy your application to
+production.
 
-This template assumes that you provide a `requirements.txt` file with all the Python dependencies of your application.
-Make sure you update the Docker command `CMD` with the appropriate file name and Flask settings for your application
-as describe in [prepare your application for deployment](../prepare-taipy-for-deployment.md).
+This template assumes that you provide a `requirements.txt` file with all the Python dependencies of your
+application.
+
+Make sure you update the Docker command `CMD` with the appropriate file name and Flask settings for your
+application as describe in [Running a Taipy application](../../run/index.md).
 
 ```
 # Your Python version

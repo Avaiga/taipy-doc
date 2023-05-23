@@ -62,8 +62,8 @@ Here is the list of the configuration parameters you can use in
    - *notification_duration* (int, default: 3000): the time, in milliseconds, that
      notifications should remain visible (see [Notifications](notifications.md) for
      details).
-   - *debug* (bool, default: False): set this parameter to True if you want to be provided with detailed
-     debugging information messages from the server.<br/>
+   - *debug* (bool, default: False): set this parameter to True if you want to be provided with
+     detailed debugging information messages from the server.<br/>
      If the debug mode is set, then the *async_mode* parameter of the call to `Gui.run()^`
      is overridden to "threading" to use the Flask built-in development server.<br/>
      To avoid warning from the websocket layer when using the *debug* mode, make sure
@@ -73,7 +73,7 @@ Here is the list of the configuration parameters you can use in
      Or you can force **not** to use the *debug* mode using the *--no_debug* option
      when launching your application.
    - *theme* (Union[dict[str, any], None]): A dictionary that lets you customize
-     the theme of your application. See the [Themes section](styling.md/#themes) for
+     the theme of your application. See the [Themes section](styling/index.md#themes) for
      details.
    - *light_theme* (Union[dict[str, any], None]): Similar to the *theme* setting,
      but applies to the *light* theme only.
@@ -102,7 +102,7 @@ Here is the list of the configuration parameters you can use in
      connect to the server.
    - *propagate* (bool, default: True): the default value that will be used for every
      *propagate* property value, for all controls. Please look at the section on the
-     [*propagate* property](viselements/#the-propagate-property) for details).
+     [*propagate* property](../viselements/#the-propagate-property) for details).
    - *time_zone* (str, default: "client"): indicates how date and time values should be
      interpreted.<br/>
      You can use a TZ database name (as listed in [Time zones list on Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
@@ -126,7 +126,7 @@ Here is the list of the configuration parameters you can use in
 
 !!! info "Multiple Taipy services"
    To run the Taipy GUI service with some other Taipy services, please refer to the
-   [Running Taipy services](../running_services/index.md) section.
+   [Running Taipy services](../run-deploy/run/running_services.md) section.
 
 ## Using an external Web server
 

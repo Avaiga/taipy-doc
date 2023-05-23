@@ -4,8 +4,8 @@
 
 - Minimal knowledge of Git.
 - Git must be installed, otherwise check [the official documentation](https://git-scm.com/downloads).
-- [:material-arrow-right: Prepare your Taipy application](../prepare-taipy-for-deployment.md)
-- [:material-arrow-right: Set up your Heroku environment](setup.md)
+- [:material-arrow-right: Running a Taipy application](../../run/index.md).
+- [:material-arrow-right: Set up your Heroku environment](setup.md).
 
 ## 1. Add version control to your application
 
@@ -39,13 +39,14 @@ To be able to run your app, Heroku will need the following files:
 
 - `Procfile`: The command launched by Heroku to start your application.
 
-    If your entrypoint file is `main.py`, put in your `Procfile`:
+    If your main module file is `main.py`, `Procfile` should contain:
     ```
     web: python main.py -H 0.0.0.0 -P $PORT
     ```
     Note that we are using the *-H* and *-P* options (as described in the
-    [Configuration section](../../gui/configuration.md#configuring-the-gui-instance))
-    to provide Taipy with the appropriate host and port settings.
+    [Taipy GUI Configuration section](../../../gui/configuration.md#configuring-the-gui-instance))
+    to provide Taipy with the appropriate host and port settings for the Web
+    application.
 
     Now you should save this file in your git repository by doing:
     ```
