@@ -100,9 +100,17 @@ Here is the list of the configuration parameters you can use in
    - *single_client* (bool, default: False): set to True if only a single client can
      connect. False, which is the default value, indicates that multiple clients can
      connect to the server.
+   - *change_delay* (int, default: None): the delay, in milliseconds, used by some controls (namely
+     [`slider`](viselements/slider.md), [`input`](viselements/input.md),
+     and [`number`](viselements/number.md)) before the user actions are sent to the backend server for
+     further processing. This can be used when there is a significant network latency: user
+     actions would then get stacked up on the front-end before the back-end had a chance to receive them,
+     resulting in a poor user experience. This value should be less than 300 to ensure a smooth interaction
+     with the control.<br/>
+     The default value of None indicates the Taipy GUI does not use any delay.
    - *propagate* (bool, default: True): the default value that will be used for every
      *propagate* property value, for all controls. Please look at the section on the
-     [*propagate* property](../viselements/#the-propagate-property) for details).
+     [*propagate* property](viselements/#the-propagate-property) for details.
    - *time_zone* (str, default: "client"): indicates how date and time values should be
      interpreted.<br/>
      You can use a TZ database name (as listed in [Time zones list on Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
