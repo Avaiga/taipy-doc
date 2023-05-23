@@ -236,8 +236,11 @@ for all its pages.
     If you navigate to '/page2', the main title remains on the page, and the sub-title
     is replaced by the text 'This is page 2'
 
-    Note that if you need to run the Taipy GUI service with other Taipy services, you may need
-    to refer to the [Running Taipy services](../run-deploy/run/running_services.md) section.
+!!! tip "Running multiple services"
+
+    If you need to run the Taipy GUI service with other Taipy services, you may need
+    to refer to the [Running Taipy services](../run-deploy/run/running_services.md)
+    section.
 
 ### The `<|content|>` pseudo-control
 

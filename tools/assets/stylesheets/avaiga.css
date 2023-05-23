@@ -103,7 +103,7 @@ a.ext-link::after{
 
 /* ---------- ---------- ---------- PILLS ---------- ---------- ---------- */
 
-ul.tp-pills-list{
+.md-typeset .tp-pills-list:not([hidden]){
   margin-left: 0;
   list-style: none;
   display: flex;
@@ -111,7 +111,7 @@ ul.tp-pills-list{
   flex-wrap: wrap;
   gap: 0.5rem;
 }
-ul.tp-pills-list li{
+.md-typeset .tp-pills-list:not([hidden]) li{
   margin: 0;
   min-width: 0;
 }
