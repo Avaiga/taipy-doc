@@ -48,7 +48,7 @@ the chart types supported by Taipy by application category:
     width: 1.125em;
     margin-right: 10px;
 }
-.md-typeset .list {
+.md-typeset .list:not([hidden]) {
     margin-left: 0;
     display: flex;
     flex-direction: row;
