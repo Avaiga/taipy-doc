@@ -6,18 +6,18 @@
 
 ## For Ubuntu version before 20.04
 
-Before _Ubuntu 20.04_, the pre-installed Python version is older than Python 3.8 which is the oldest Python version
-supported by Taipy. If you are in that case, please install Python 3.8 (or newer).
+Before *Ubuntu 20.04*, the pre-installed Python version is older than Python 3.8 which is the oldest
+Python version supported by Taipy. If you are in that case, please install Python 3.8 (or newer).
 
 ## Prepare your machine
 
 The following software should be installed on your target machine:
 
-- _pip_: for installing Python3 packages.
+- *pip*: for installing Python3 packages.
 
-- _uwsgi_ and _gevent_: the Web application server and its workers that will run the Taipy application.
+- *uwsgi* and *gevent*: the Web application server and its workers that will run the Taipy applications.
 
-- _nginx_: the Web server for the Internet exposition.
+- *nginx*: the Web server for the Internet exposition.
 
 You can install all of these packages by running the following command:
 ```
@@ -42,8 +42,8 @@ from taipy import Gui
 Gui(page="# Getting started with *Taipy*").run()
 ```
 
-This would be placed in a file called _app.py_.<br>
-You need to create a _requirements.txt_ file that contains:
+This would be placed in a file called *app.py*.<br>
+You need to create a *requirements.txt* file that contains:
 ```
 taipy
 ```
@@ -64,7 +64,8 @@ $python app.py
 <-- Truncate -->
 ```
 
-The application is running locally, you can access it with the browser on the URL [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
+The application is running locally, you can access it with the browser on the URL
+[http://127.0.0.1:5000/](http://127.0.0.1:5000/).
 
 !!! note
     The message:
@@ -72,7 +73,7 @@ The application is running locally, you can access it with the browser on the UR
     WARNING: This is a development server. Do not use it in a production deployment.
     Use a production WSGI server instead.
     ```
-    Is provided by Flask because the way of exposing an application on the Internet and
+    Is issued by Flask because the way of exposing an application on the Internet and
     developping an application locally is not the same, mainly for security and reliability reasons.
     This message will disappear when using the Web server.
 
@@ -80,11 +81,12 @@ The application is running locally, you can access it with the browser on the UR
 
 Deploying your application to a remote environment needs a little bit of configuration.
 
-By default, Taipy applications run in Debug mode. Before deploying your application to the Internet,
-you should turn off the Debug mode by setting the _debug_ parameter or the `(Gui.)run()^` to False. <br>
-You must also inform Taipy not to run the application server on its own but rather delegate the execution
-by setting the parameter _run_server_ to False.<br>
-The name of the variable where the Web application is stored is used in the _uWSGI_ configuration:
+Make sure you turn off the Debug mode (which is the default) by setting the
+[*debug*](../../../gui/configuration.md#p-debug) parameter of `(Gui.)run()^` to False.<br>
+You must also inform Taipy not to run the application server on its own but rather delegate the
+execution by setting the parameter [*run_server*](../../../gui/configuration.md#p-run_server)
+of the call to `Gui.run()^` to False.<br>
+The name of the variable where the Web application is stored is used in the *uWSGI* configuration:
 this allows the Web server to load the Web application:
 ```
 from taipy import Gui
@@ -92,24 +94,24 @@ from taipy import Gui
 gui_service = Gui(page="# Getting started with *Taipy*")
 web_app = gui_service.run(debug=False, run_server=False)
 ```
-In our example, we store this application in the variable _web_app_ (see line 3)
+In our example, we store this application in the variable *web_app* (see line 3)
 
-Make sure you upload this code on your targeted machine and install your dependencies with _pip_.
+Make sure you upload this code on your target machine and install your dependencies with *pip*.
 
-!!! important
+!!! important "Entry point"
     The entry point filename and the app variable name are important for the proper configuration of
-    the _uWSGI_ Web application server. Please, keep them as is or adapt the configuration.
+    the *uWSGI* Web application server. Please, keep them as is or adapt the configuration.
 
 
 ## uWSGI application server
 
-To expose your application over the Internet, you must use _uWSGI_ instead of Flask as the application server.
+To expose your application over the Internet, you must use *uWSGI* instead of Flask as the application server.
 You would then leverage Nginx to expose the application.
 
-_uWSGI_ can be started manually. But, generally, it's better to start the application automatically when the machine
-starts. To order to do that, you should use [Systemd](https://systemd.io/) which is installed by default on _Ubuntu_.
+*uWSGI* can be started manually. But, generally, it's better to start the application automatically when the machine
+starts. To order to do that, you should use [Systemd](https://systemd.io/) which is installed by default on *Ubuntu*.
 
-From the directory where _app.py_ is located, run the following command to generate an adapted file for _Systemd_:
+From the directory where *app.py* is located, run the following command to generate an adapted file for *Systemd*:
 ```
 echo """
 [Unit]
@@ -130,12 +132,12 @@ User=`whoami`
 WantedBy=multi-user.target
 """ > app.uwsgi.service
 ```
-Then transfer this file in the correct folder by doing:
+Then transfer this file in the correct folder by executing:
 ```
 sudo mv app.uwsgi.service /etc/systemd/system/app.uwsgi.service
 ```
 
-Now, you can start your application automatically on startup time of your machine by doing:
+Now, you can start your application automatically on startup time of your machine by running:
 ```
 sudo systemctl start app.uwsgi.service
 sudo systemctl enable app.uwsgi.service
@@ -158,12 +160,12 @@ server {
     }
 }
 ```
-Then restart _Nginx_:
+Then restart *Nginx*:
 ```
 sudo systemctl restart nginx
 ```
 
 Your application is now accessible over the Internet!
 
-!!! Note
+!!! note "HTTPS support"
     This configuration is only for HTTP. If you need an HTTPS connection, please read the [Nginx documentation](https://nginx.org/en/docs/http/configuring_https_servers.html).

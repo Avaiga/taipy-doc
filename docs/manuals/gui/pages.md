@@ -175,7 +175,8 @@ values), so you can see your application's state and interact with it.
 ## Root page
 
 The _Root_ page is the page located at the top of the Web application.
-The name of this page is `"/"`.
+The name of this page is `"/"` (or the value of the [*base_url*](configuration.md#p-base_url)
+configuration setting).
 
 If your application uses only one page, this is typically where it would be created:
 ```py
@@ -364,3 +365,9 @@ example if an image needs to be inserted: the path to the image must be provided
 You can indicate, using the parameter *path_mapping* of the
 [`Gui` constructor](Gui.__init__()^), where those resources are located on the file
 system.
+
+## Status page
+
+The _Status_ page is a special page that the user can access by requesting the "/taipy.status.json"
+page. 
+TODO.

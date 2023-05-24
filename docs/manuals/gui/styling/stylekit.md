@@ -22,21 +22,22 @@ The Stylekit can apply to your pages if you choose and you can customize most of
 By default, the Stylekit is enabled: the Stylekit stylesheets are loaded with your application
 and impact all your application's page rendering.
 
-In order *not* to use the Stylekit, you must specify the *stylekit* of the
-`Gui.run()^` method to False:
+In order *not* to use the Stylekit, you must specify the
+[*stylekit*](../configuration.md#p-stylekit) configuration setting to False, or set it
+to False in the call to `Gui.run()^`:
 ```py
 gui.run(stylekit=False)
 ```
 
-Note that setting *stylekit* to True is equivalent to using the default variable values of
-the Stylekit.
+Note that setting [*stylekit*](../configuration.md#p-stylekit) to True is equivalent to using the
+default variable values of the Stylekit.
 
 ### Customizing the Stylekit
 
 The Stylekit defines a set of [variables](#variables) with default values. Those variables can be
-overloaded by setting the *stylekit* parameter of the `Gui.run()^` method to a dictionary:
-each key of this dictionary represents a Stylekit variable name, and you would associate the new value
-for this variable to that key.
+overloaded by setting the [*stylekit*](../configuration.md#p-stylekit) parameter of the `Gui.run()^`
+method to a dictionary: each key of this dictionary represents a Stylekit variable name, and you
+would associate the new value for this variable to that key.
 
 Here is how you can change the primary and secondary colors for your application:
 
@@ -55,7 +56,7 @@ The exhaustive list of all the Stylekit variables can be found in the
 
 The Stylekit defines several variables that impact the overall style of your Taipy GUI
 application pages. The values for these variables can be overloaded by providing a dictionary
-to the *stylekit* parameter of the `Gui.run()^` method.
+to the [*stylekit*](../configuration.md#p-stylekit) parameter of the `Gui.run()^` method.
 
 Each variable initializes a CSS custom property that you can use in your own stylesheets.<br/>
 Details on the Stylekit's CSS custom properties can be found in the

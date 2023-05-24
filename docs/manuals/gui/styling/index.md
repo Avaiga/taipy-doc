@@ -19,10 +19,10 @@ where you can find all the information on how to use and customize it.
 There are two ways you can apply a stylesheet to your application:
 
 - Global style sheet.<br/>
-  The *css_file* parameter of the [`Gui` constructor](Gui.__init__()^) lets you
-  specify a CSS file that your application will use for every page. The default value
-  for this parameter is a file located next to your main Python script, with the
-  same name except for the extension that must be '.css'.
+  The *css_file* parameter of the [`Gui` constructor](Gui.__init__()^) lets you specify a CSS file
+  that your application will use for every page. The default value for this parameter is a file
+  located next to your main Python script, with the same name except for the extension that must be
+  '.css'.
 
 - Page-specific style.<br/>
   The method `Gui.add_page()^` has a *style* parameter that can be set to CSS content.
@@ -97,7 +97,7 @@ will apply the *blue* class to the bold text fragment:
 Note that to style a heading, the syntax is slightly different: right after the text of the heading,
 you must insert a white space, as many sharp (#) characters as the heading uses, another white
 space, then the style construct.<br/>
-Here is an example that works properly.
+Here is an example that works properly:
 ```
 ## My heading ## {: .my-style }
 ```
@@ -215,16 +215,18 @@ support for theming, so you can customize how things will look across all compon
 Material UI exposes the full API for handling themes, which you can find
 on the [MUI Theming](https://mui.com/customization/theming/) page.
 
-To change the theme of your application, you must use the *theme* configuration
-parameter (for example in the `Gui.run()^` method) as explained in the
+To change the theme of your application, you must use the [*theme*](../configuration.md#p-theme)
+configuration parameter (for example in the `Gui.run()^` method) as explained in the
 [Configuration](../configuration.md) section. You could also impact only the *light*
-or the *dark* theme using the *light_theme* or *dark_theme* configuration settings.
+or the *dark* theme using the [*light_theme*](../configuration.md#p-light_theme) or
+[*dark_theme*](../configuration.md#p-dark_theme) configuration settings.
 
 Here is how you would change the general theme if you wanted the background
 color to be a neutral gray color (#808080 in CSS) and make the primary color
 an orange-looking color instead of the default blue color.<br/>
-In your Python code, you would create a theme dictionary and provide it as
-the value of the *theme* parameter of the method `Gui.run()^`:
+In your Python code, you would create a theme dictionary and provide it as the value of the
+[*theme*](../configuration.md#p-theme) configuration settings (or as an additional  parameter to the
+call to `Gui.run()^`):
 
 ```py
 ...
