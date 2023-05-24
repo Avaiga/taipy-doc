@@ -26,7 +26,7 @@ cycles.
 
     The first picture represents the basic case. We let Taipy apply the default scope (`Scope.SCENARIO`) for most
     data nodes. However, as you can see, the `sales predictions` data node is shared by the two pipelines
-    of my scenario. Consequently, its scope must be at least `Scope.SCENARIO`. In this case, my various scenarios
+    of my scenario. Consequently, its scope must be `Scope.SCENARIO`. In this case, my various scenarios
     do not share any data nodes.
 
     In the second picture, we have a second use case. In this example, several changes are made:
