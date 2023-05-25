@@ -27,18 +27,21 @@ Not published yet.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.3.0
 
-- All scenarios grouped by their cycles can be now retrieved by calling `taipy.get_cycles_scenarios()^`.
+- All scenarios grouped by their cycles can now be retrieved by calling `taipy.get_cycles_scenarios()^`.
 - All entities (cycles, scenarios, pipelines, tasks, data nodes, and jobs) expose two new methods: `get_label` and
   `get_simple_label`, that can be used to display the entity.
 - `taipy.get_entities_by_config_id()^` can be used to retrieve all entities that are based on
   the provided configuration identifier.
+- Commands for managing Taipy application versions can now be accessed via the `$ taipy manage-versions` command. Run `$ taipy manage-versions --help` for more details.
+- A version can now be renamed by running `$ taipy manage-versions --rename <old_version> <new_version>` from a command-line interface.
+- The configuration of a version can now be compared with another one by running `$ taipy manage-versions --compare-config <version_1> <version_2>` from a command-line interface.
 
 ### Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.3.0
 
-- A generic data node now can be created with only the `read_fct` for reading only or the `write_fct` for writing only data node.<br/>
+- A generic data node can now be created with only the `read_fct` for reading only or the `write_fct` for writing only data node.<br/>
 - The `read_fct_params` and `write_fct_params` of a generic data node are renamed to `read_fct_args` and `write_fct_args`, and both must be populated with a List value to avoid the problem of passing Tuple of one string.<br/>
 
 ## Community edition: 2.2
