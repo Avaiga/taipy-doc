@@ -1,111 +1,56 @@
-The **version management system** allows a Taipy user to track and manage various
-versions of its application. To use the **version management system**, one needs
-to add command line arguments when running a Taipy Core application.
+The **Taipy version management system** allows a Taipy user to track and manage various versions
+of its application. To use the version management system, one can run the `$ taipy manage-versions`
+command in a terminal (Linux, macOS) or command prompt (Windows).
 
 Below is the list of all the optional arguments:
 
-- **--help** or **-h**: With the `--help` argument, running a Taipy Core application
-  shows the help message and exits.
+- **--help** or **-h**: Shows the help message and exits.
 
-- **--development** or **-dev**: With the `--development` argument, Taipy runs the
-  application in _development_ mode using the unique development version. All existing
-  entities (from previous runs) attached to the development version are deleted before
-  running the Taipy application. This is the default mode.
+- **--list** or **-l**: Lists all existing versions of the Taipy application and exits.
 
-- **--experiment [VERSION]**: With the `--experiment` argument, Taipy runs the application
-  in _experiment_ mode and only considers the entities attached to the version used.
-  All other entities attached to different versions are filtered out.
-  When the version is provided as a command line argument, a new _experiment_ version
-  is created using the version name provided. If no version is provided, a random string
-  is used.
-  If the version provided already exists, Taipy runs the application using the existing
-  version only if the current configuration has not changed compared to the existing
-  version.
+- **--rename OLD_VERSION NEW_VERSION**: Rename the provided old version name to the new one.
 
-- **--production [VERSION]**: With the `--production` argument, Taipy runs the application
-  in _production_ mode with the version provided. All existing entities are accessible.
-  If the version provided already exists as an _experiment_ version, it is converted
-  to a production version.
+- **--compare-config VERSION_1 VERSION_2**: Compare the configuration of version 1 and version 2.
+  Show the configuration differences and exits.
 
-- **--taipy-force**: With the `--taipy-force` argument, Taipy overrides a version even if
-  the configuration has changed and run the application. Default to False.
+- **--delete VERSION** or **-d VERSION**: Deletes the provided version and its entities.
 
-- **--clean-entities**: With the `--clean-entities` argument, running a Taipy
-  Core application cleans all current version entities before running the application.
-  Default to False.
+- **--delete-production VERSION** or **-dp VERSION**: Converts the provided production version
+  to an experiment version.
 
-- **--list-versions** or **-l**: With the `--list-versions` argument, running a Taipy
-  Core application lists all existing versions and exits.
-
-- **--delete-version VERSION** or **-d VERSION**: With the `--delete-version` argument,
-  running a Taipy Core application deletes the provided version.
-
-- **--delete-production-version VERSION** or **-dp VERSION**: With the `--delete-production-version`
-  argument, running a Taipy Core application converts the provided production version to
-  an experiment version.
-
-
-!!! Note
-
-    In the following, we consider the basic Taipy Core application `main.py`:
-
-    ```python linenums="1"
-    {%
-    include-markdown "./code_example/main.py"
-    comments=false
-    %}
-    ```
 
 # Help
 
-To display the help with all command line arguments, you can run a Taipy Core application
-on your command line interface with the `--help` or `-h` option.
+To display the help with all command line arguments, you can run `taipy help manage-versions`
+command on your command line interface. Alternatively, you can run `taipy manage-versions` with
+the `--help` or `-h` option.
 
-``` console
-$ python main.py --help
-Usage: main.py [-h] [--development | --experiment [VERSION] | --production [VERSION]]
-        [--taipy-force] [--clean-entities] [--list-versions] [--delete-version VERSION]
-        [--delete-production-version VERSION]
+```console
+$ taipy help manage-versions
+usage: taipy manage-versions [-h] [-l] [--rename OLD_VERSION NEW_VERSION]
+                             [--compare-config VERSION_1 VERSION_2] [-d VERSION] [-dp VERSION]
 
 options:
   -h, --help            show this help message and exit
-
-Core:
-  Optional arguments for Core service
-
-  --development, -dev   When execute Taipy application in `development` mode, all
-                        entities from the previous development version will be deleted
-                        before running new Taipy application. This is the default behavior.
-  --experiment [VERSION]
-                        When execute Taipy application in `experiment` mode, the current
-                        Taipy application is saved to a new version. If version name already
-                        exists, check for compatibility with current Python Config and run the
-                        application. Without being specified, the version number will be a
-                        random string.
-  --production [VERSION]
-                        When execute in `production` mode, the current version is used in
-                        production. All production versions should have the same configuration
-                        and share all entities. Without being specified, the latest version
-                        is used.
-  --taipy-force,          Force override the configuration of the version if existed and run the
-                        application. Default to False.
-  --clean-entities      Clean all current version entities before running the application.
-                        Default to False.
-  --list-versions, -l   List all existing versions of the Taipy application.
-  --delete-version VERSION, -d VERSION
+  -l, --list            List all existing versions of the Taipy application.
+  --rename OLD_VERSION NEW_VERSION
+                        Rename a Taipy version.
+  --compare-config VERSION_1 VERSION_2
+                        Compare the Configuration of 2 Taipy versions.
+  -d VERSION, --delete VERSION
                         Delete a Taipy version by version number.
-  --delete-production-version VERSION, -dp VERSION
-                        Delete a Taipy version from production by version number. The version
-                        is still kept as an experiment version.
+  -dp VERSION, --delete-production VERSION
+                        Delete a Taipy version from production by version number. The version is
+                        still kept as an experiment version.
 ```
 
 # List all versions
 
-To list all versions of your Taipy Core application, you can run a Taipy application
-on your command line interface with `--list-version` or `-l` option.
+To list all versions of your Taipy Core application, you can run the version management command
+with `--list` or `-l` option.
 
 ```console
-$ python main.py --list-version
+$ taipy manage-versions --list
 Version number                         Mode                   Creation date
 d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:10
 3.0                                    Experiment             2023-01-18 12:10:55
@@ -120,13 +65,52 @@ In the example above, there are 5 versions of the application:
 - Two experiment versions "7a24dbb8-bdf6-4c84-9ddf-7b921abc5df9" and "3.0".
 - Two production versions "1.0" and "2.0".
 
-# Delete a version
+# Rename a version
 
-To delete a version, you can run a Taipy application on your command line interface
-with `--delete-version` or `-d` option.
+To rename a version, you can run the version management command with `--rename` option, providing
+the current version name and the new desired name.
 
 ```console
-$ python main.py --list-version
+$ taipy manage-versions --list
+Version number                         Mode                   Creation date
+d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:10
+2.0                                    Experiment             2023-01-16 15:10:41
+1.0                                    Experiment             2023-01-12 09:10:35
+
+$ taipy manage-versions --rename 2.0 1.1
+Successfully renamed version '2.0' to '1.1'.
+
+$ taipy manage-versions --list
+Version number                         Mode                   Creation date
+d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:10
+1.1                                    Experiment             2023-01-16 15:10:41
+1.0                                    Experiment             2023-01-12 09:10:35
+```
+
+!!! Warning
+
+    You can not use an existing version as the new version name, since it may cause different
+    versions to overlap each other.
+
+# Compare the configuration of 2 versions
+
+To compare the configuration between 2 versions, you can run the version management command with `--compare-config` option, providing the two version names.
+
+```console
+$ taipy manage-versions --compare-config 1.0 2.0
+[2023-01-25 12:52:05,484][Taipy][INFO] Differences between version 1.0 Configuration and version 2.0 Configuration:
+Added object:
+        DATA_NODE "output" has attribute "description" added: What a description
+```
+In this example, from the comparison output, we can see that the data node "output" of version 2.0
+has a newly added attribute named "description".
+
+# Delete a version
+
+To delete a version, you can run the version management command with `--delete` or `-d` option.
+
+```console
+$ taipy manage-versions --list
 Version number                         Mode                   Creation date
 d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:10
 3.0                                    Experiment             2023-01-18 12:10:55
@@ -134,10 +118,10 @@ d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:1
 7a24dbb8-bdf6-4c84-9ddf-7b921abc5df9   Experiment             2023-01-16 17:10:15
 1.0                                    Production             2023-01-12 09:10:35
 
-$ python main.py --delete-version "1.0"
+$ python main.py --delete "1.0"
 Successfully delete version 1.0.
 
-$ python main.py --list-version
+$ taipy manage-versions --list
 Version number                         Mode                   Creation date
 d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:10
 3.0                                    Experiment             2023-01-18 12:10:55
@@ -147,11 +131,11 @@ d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:1
 
 # Remove a version from production
 
-To convert a version from production to experiment, you can run a Taipy application
-on your command line interface with `--delete-production-version` option.
+To convert a version from production to experiment, you can run the version management command
+with `--delete-production` option.
 
 ```console
-$ python main.py --list-version
+$ taipy manage-versions --list
 Version number                         Mode                   Creation date
 d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:10
 3.0                                    Experiment             2023-01-18 12:10:55
@@ -159,10 +143,10 @@ d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:1
 7a24dbb8-bdf6-4c84-9ddf-7b921abc5df9   Experiment             2023-01-16 17:10:15
 1.0                                    Production             2023-01-12 09:10:35
 
-$ python main.py --delete-production-version "1.0"
-Successfully delete version 1.0 from production version list.
+$ python main.py --delete-production "1.0"
+Successfully delete version 1.0 from the production version list.
 
-$ python main.py --list-version
+$ taipy manage-versions --list
 
 Version number                         Mode                   Creation date
 d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:10

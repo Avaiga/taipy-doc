@@ -19,7 +19,7 @@ By default, a Taipy Core application runs in _development_ mode, but you can als
 Taipy application on your command line interface with `--development` or `-dev` option.
 
 ```console
-$ python main.py -l
+$ taipy manage-versions --list
 Version number                         Mode                   Creation date
 9b01399c-67e4-41a4-83d3-121f7210d4e7   Development (latest)   2023-01-23 23:44:04
 
@@ -28,7 +28,7 @@ $ python main.py
 [2023-01-24 23:46:29,615][Taipy][INFO] job JOB_my_print_algo_9d75018a-1803-4358-8530-e62641e00ed8 is completed.
 nb scenarios: 1
 
-$ python main.py -l
+$ taipy manage-versions --list
 Version number                         Mode                   Creation date
 9b01399c-67e4-41a4-83d3-121f7210d4e7   Development (latest)   2023-01-23 23:46:29
 ```

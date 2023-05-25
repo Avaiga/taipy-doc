@@ -33,7 +33,7 @@ To create an _experiment_ version you can run a Taipy application on your comman
 interface with `--experiment` option.
 
 ```console
-$ python main.py -l
+$ taipy manage-versions --list
 Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development (latest)   2023-01-25 12:20:33
 
@@ -41,7 +41,7 @@ $ python main.py --experiment
 [2023-01-25 12:20:56,474][Taipy][INFO] job JOB_my_print_algo_e1c49bdb-9284-40c5-a096-db0235697cb3 is completed.
 nb scenarios: 1
 
-$ python main.py -l
+$ taipy manage-versions --list
 Version number                         Mode                   Creation date
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment (latest)    2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
@@ -58,7 +58,7 @@ You can explicitly define the name of an _experiment_ version by providing the n
 in the command line.
 
 ```console
-$ python main.py -l
+$ taipy manage-versions --list
 Version number                         Mode                   Creation date
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment (latest)    2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
@@ -67,7 +67,7 @@ $ python main.py --experiment 1.0
 [2023-01-25 12:24:19,613][Taipy][INFO] job JOB_my_print_algo_9b6232f9-601e-4a85-852e-2ada7bc1e459 is completed.
 nb scenarios: 1
 
-$ python main.py -l
+$ taipy manage-versions --list
 Version number                         Mode                   Creation date
 1.0                                    Experiment (latest)    2023-01-25 12:24:19
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
@@ -88,7 +88,7 @@ be the same. No change must be done. You can run a Taipy application on your
 command line interface with `--experiment VERSION` option and the name of the existing version.
 
 ```console
-$ python main.py -l
+$ taipy manage-versions --list
 Version number                         Mode                   Creation date
 1.0                                    Experiment (latest)    2023-01-25 12:24:19
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
@@ -98,7 +98,7 @@ $ python main.py --experiment 1.0
 [2023-01-25 12:28:54,963][Taipy][INFO] job JOB_my_print_algo_2133dc18-643b-4351-872b-aedfc2c65c9c is completed.
 nb scenarios: 2
 
-$ python main.py -l
+$ taipy manage-versions --list
 Version number                         Mode                   Creation date
 1.0                                    Experiment (latest)    2023-01-25 12:24:19
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
@@ -116,7 +116,7 @@ mode with `--clean-entities` option. Taipy deletes the entities of the version
 provided before running the application again.
 
 ```console
-$ python main.py -l
+$ taipy manage-versions --list
 Version number                         Mode                   Creation date
 1.0                                    Experiment (latest)    2023-01-25 12:24:19
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
@@ -127,7 +127,7 @@ $ python main.py --experiment 1.0 --clean-entities
 [2023-01-25 12:36:05,777][Taipy][INFO] job JOB_my_print_algo_494bf4a7-afa2-4916-9221-fabd8de1738a is completed.
 nb scenarios: 1
 
-$ python main.py -l
+$ taipy manage-versions --list
 Version number                         Mode                   Creation date
 1.0                                    Experiment (latest)    2023-01-25 12:24:19
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
