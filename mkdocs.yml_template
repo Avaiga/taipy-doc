@@ -15,6 +15,7 @@ nav:
     [GETTING_STARTED_CONTENT]
   - "User Manual":
     - "About Taipy's User Manual": manuals/about.md
+    - "Taipy command-line interface": manuals/taipy_cli.md
     - Taipy GUI:
         - manuals/gui/index.md
         - "Pages": manuals/gui/pages.md
