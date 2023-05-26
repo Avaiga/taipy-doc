@@ -24,6 +24,15 @@ Not published yet.
 
 ### New Features
 
+<h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
+2.3.0
+
+- New Taipy command-line interface. Please refer to the
+  [Taipy command-line interface](./manuals/taipy_cli.md)
+  documentation page for more information.
+- User can now create a new Taipy application from a template by running `$ taipy create` from the
+  Taipy command-line interface with an optional `--template` option.
+
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.3.0
 
