@@ -151,3 +151,11 @@ gui.run()
 Go to the Taipy interface page and refresh.<br/>
 The slider now controls the chart that is automatically updated when a new
 value is set.
+
+!!! note "Restarting the Web server"
+    Some Notebook environments are not able to restart the underlying Web server so that
+    Taipy GUI can immediately reuse the port number it was communicating with. To cope with this
+    problem, in the context of Notebooks only, the port number that is used as part of the
+    application URL is a proxy to the real port that is served. Invoking `run()` after `stop()`
+    generates a hidden port number that gets used transparently. This behavior is controlled by the
+    [*notebook_proxy*](configuration.md#p-notebook_proxy) configuration setting.

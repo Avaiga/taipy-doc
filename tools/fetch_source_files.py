@@ -279,13 +279,13 @@ with open(init_path, "a") as init:
     run_method = """
 import typing as t
 
-def run(*services: t.List[t.Union[Gui, Rest, Core]], **kwargs) -> t.Optional[t.Union[Gui, Rest, Core]]:
+def run(*services: Union[Gui, Rest, Core], **kwargs) -> Optional[Union[Gui, Rest, Core]]:
     \"\"\"Run one or multiple Taipy services.
 
     A Taipy service is an instance of a class that runs code as a Web application.
 
     Parameters:
-        *services (List[Union[`Gui^`, `Rest^`, `Core^`]]): Services to run.
+        services (Union[`Gui^`, `Rest^`, `Core^`]): Services to run.<br/>
             If several services are provided, all the services run simultaneously. If this is empty or set to None,
             this method does nothing.
         **kwargs (dict[str, any]): Other parameters to provide to the services.
