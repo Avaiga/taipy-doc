@@ -7,7 +7,7 @@ A task configuration is necessary to instantiate a [Task](../concepts/task.md). 
 - _**inputs**_: The input data nodes referring to the _function_'s parameter(s) data to be executed.
 - _**outputs**_: The output data nodes referring to the result(s) data of the _function_ to be executed.
 - _**skippable**_: Boolean attribute indicating if the task execution can be skipped if all output
-  data nodes are up-to-date. Default value: `False`.
+  data nodes are up-to-date. The default value of _skippable_ is `False`.
 
 Here is a simple example:
 

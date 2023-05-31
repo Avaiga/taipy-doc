@@ -23,7 +23,7 @@ A task also holds various properties accessible as an attribute of the task:
   If not provided, the current version is used. Refer to the [version management](../versioning/index.md)
   page for more details.
 - _**skippable**_: Boolean attribute indicating if a task execution can be skipped when all output
-  data nodes are up-to-date. Default value: `False`.
+  data nodes are up-to-date. The default value of _skippable_ is `False`.
 
 !!! Example
 
