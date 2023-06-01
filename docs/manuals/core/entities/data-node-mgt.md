@@ -22,8 +22,8 @@ A data node also holds various properties and attributes accessible through the 
 - _**version**_: The string indicates the application version of the data node to instantiate.
     If not provided, the current version is used.
 - _**validity_period**_: The duration since the last edit date which the data node can be considered up-to-date.
-    Once the validity period is passed, the data node is stale and relevant tasks will not be skippable
-    (see the [Task management page](task-mgt.md) for more detail).
+    Once the validity period is passed, the data node is considered stale and relevant tasks will run
+    even if they are skippable (see the [Task management page](task-mgt.md) for more detail).
     If _validity_period_ is set to `None`, the data node is always up-to-date.
 - _**edit_in_progress**_: The boolean flag signals if the data node is locked for modification.
 - _**properties**_: The dictionary of additional arguments.
