@@ -15,15 +15,17 @@ A task also holds various properties accessible as an attribute of the task:
 - _**input**_ is the list of input data nodes.
 - _**output**_ is the list of output data nodes.
 - _**function**_ is the Python function associated with the Task config.<br/>
-  The _function_ takes as many parameters as there are data nodes in the _input_ attribute. Each parameter corresponds
+  The *function* takes as many parameters as there are data nodes in the *input* attribute. Each parameter corresponds
   to the return value of an input data node `read()` method.<br/>
-  The function returns as many parameters as there are data nodes in the _output_ attribute. Each
-  _function_'s returned value corresponds to the parameter of an output data node `write()` method.
+  The function returns as many parameters as there are data nodes in the *output* attribute. Each
+  *function*'s returned value corresponds to the parameter of an output data node `write()` method.
 - _**version**_: The string indicates the application version of the task to instantiate.
   If not provided, the current version is used. Refer to the [version management](../versioning/index.md)
   page for more details.
 - _**skippable**_: Boolean attribute indicating if a task execution can be skipped when all output
-  data nodes are up-to-date. Default value: `False`.
+  data nodes are up-to-date (see the *validity_period* attribute in the
+  [Data node management page](../entities/data-node-mgt.md) for more detail). The default value of
+  *skippable* is False.
 
 !!! Example
 
