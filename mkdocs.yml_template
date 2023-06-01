@@ -71,7 +71,7 @@ nav:
             - "Job execution": manuals/core/entities/orchestrating-and-job-execution.md
         - "Version Management":
             - manuals/core/versioning/index.md
-            - "Manage versions": manuals/core/versioning/version-mgt.md
+            - "Run a version": manuals/core/versioning/version-mgt.md
             - "Development mode": manuals/core/versioning/development_mode.md
             - "Experiment mode": manuals/core/versioning/experiment_mode.md
             - "Production mode": manuals/core/versioning/production_mode.md

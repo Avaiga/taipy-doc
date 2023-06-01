@@ -13,14 +13,12 @@ configuration.
 
 Taipy proposes a **version management system** to:
 
-- Manage the different versions of the configuration across the application runs,
-- Keep track of the old versions used to instantiate old entities,
-- Choose the runtime mode of Taipy that defines how Taipy handles old entities.
-
-This **version management system** is available using command line arguments when
-running a Taipy Core application. Please refer to the
-[Manage versions](./version-mgt.md) documentation page for more details.
-
+- Create or re-use a version when running a Taipy application (Refer to
+  [Run with a version name](version-mgt.md) Page)
+- Manage the different versions of the configuration across the application runs
+  (Refer to [Run with a version name](../../cli.md#Manage-versions) Page),
+- Keep track of the old versions used to instantiate old entities
+  (Refer to [Run with a version name](../../cli.md#Manage-versions) Page),
 
 ## Modes
 

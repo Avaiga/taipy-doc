@@ -131,7 +131,7 @@ options:
                         still kept as an experiment version.
 ```
 
-# List all versions
+## List all versions
 To list all versions of your Taipy Core application, you can run the version management command
 with `--list` or `-l` option.
 
@@ -151,7 +151,7 @@ In the example above, there are 5 versions of the application:
 - Two experiment versions "7a24dbb8-bdf6-4c84-9ddf-7b921abc5df9" and "3.0".
 - Two production versions "1.0" and "2.0".
 
-# Rename a version
+## Rename a version
 To rename a version, you can run the version management command with `--rename` option, providing
 the current version name and the new desired name.
 
@@ -177,7 +177,7 @@ d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:1
     You can not use an existing version as the new version name, since it may cause different
     versions to overlap each other.
 
-# Compare the configuration of 2 versions
+## Compare the configuration of 2 versions
 
 To compare the configuration between 2 versions, you can run the version management command with
 `--compare-config` option, providing the two version names.
@@ -191,7 +191,7 @@ Added object:
 In this example, from the comparison output, we can see that the data node "output" of version 2.0
 has a newly added attribute named "description".
 
-# Delete a version
+## Delete a version
 
 To delete a version, you can run the version management command with `--delete` or `-d` option.
 
@@ -215,7 +215,7 @@ d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:1
 7a24dbb8-bdf6-4c84-9ddf-7b921abc5df9   Experiment             2023-01-16 17:10:15
 ```
 
-# Remove a version from production
+## Remove a version from production
 
 To convert a version from production to experiment, you can run the version management command
 with `--delete-production` option.
