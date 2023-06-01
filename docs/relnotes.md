@@ -28,7 +28,7 @@ Not published yet.
 2.3.0
 
 - New Taipy command-line interface. Please refer to the
-  [Taipy command-line interface](./manuals/taipy_cli.md)
+  [Taipy command-line interface](./manuals/cli.md)
   documentation page for more information.
 - User can now create a new Taipy application from a template by running `$ taipy create` from the
   Taipy command-line interface with an optional `--template` option.

@@ -15,7 +15,6 @@ nav:
     [GETTING_STARTED_CONTENT]
   - "User Manual":
     - "About Taipy's User Manual": manuals/about.md
-    - "Taipy command-line interface": manuals/taipy_cli.md
     - Taipy GUI:
         - manuals/gui/index.md
         - "Pages": manuals/gui/pages.md
@@ -82,6 +81,7 @@ nav:
         - manuals/auth/index.md
         - "Authentication": manuals/auth/authentication.md
         - "Authorization": manuals/auth/authorization.md
+    - "Taipy command-line interface": manuals/cli.md
     - "Running & Deploying":
         - manuals/run-deploy/index.md
         - "Running":
