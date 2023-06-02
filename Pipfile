@@ -40,12 +40,11 @@ twisted = "==22.10.0"
 tzlocal = "==3.0"
 
 [dev-packages]
-jinja2 = "3.1.0"
 mkdocs = "*"
 mkdocs-autorefs = "*"
 mkdocs-include-markdown-plugin = "*"
 mkdocs-macros-plugin = "*"
-mkdocs-material = "*"
+mkdocs-material = "<8.0.0"
 mkdocs-material-extensions = "*"
 mkdocstrings = "*"
 mkdocstrings-python = "*"
