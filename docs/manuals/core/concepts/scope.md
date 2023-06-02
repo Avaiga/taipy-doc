@@ -1,18 +1,15 @@
 The `Scope^` of a data node is an enum among the following values :
 
-- `Scope.PIPELINE`
 - `Scope.SCENARIO` (Default value)
 - `Scope.CYCLE`
 - `Scope.GLOBAL`
 
 Each data node has a scope. It is an attribute provided by the `DataNodeConfig^` and represents the _visibility_ of
 the data node in the graph of entities. The entities can be described as a graph where each node belongs to one or
-several upper nodes. A data node 'belongs' to at least one pipeline, which belongs to at least one scenario, which
-belongs to a single cycle.
+several upper nodes. A data node 'belongs' to at least one scenario, which belongs to a single cycle.
 
 In other words :
 
-- A data node with the scope equals `Scope.PIPELINE`, can only be shared by multiple tasks in the same pipeline.
 - A data node with the scope equals `Scope.SCENARIO`, can be shared by multiple tasks and pipelines within a unique
 scenario, but it cannot belong to other tasks or pipelines from another scenario.
 - A data node with the scope equals `Scope.CYCLE`, can be shared by all the tasks, pipelines, and scenarios from one
@@ -29,8 +26,8 @@ cycles.
 
     The first picture represents the basic case. We let Taipy apply the default scope (`Scope.SCENARIO`) for most
     data nodes. However, as you can see, the `sales predictions` data node is shared by the two pipelines
-    of my scenario. Consequently, its scope cannot be `Scope.PIPELINE`, but must be at least `Scope.SCENARIO`.
-    In this case, my various scenarios do not share any data nodes.
+    of my scenario. Consequently, its scope must be `Scope.SCENARIO`. In this case, my various scenarios
+    do not share any data nodes.
 
     In the second picture, we have a second use case. In this example, several changes are made:
 
