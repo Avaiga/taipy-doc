@@ -182,7 +182,7 @@ class VisElementsStep(SetupStep):
                 doc  = property.get("doc", None)
                 if not default_value:
                     default_value = "<i>Required</i>" if property.get("required", False) else ""
-                full_name = f"<code id=\"p-{name}\">"
+                full_name = f"<code id=\"p-{re.sub('<[^>]+>', '', name)}\">"
                 if name == default_property_name:
                     full_name += f"<u><bold>{name}</bold></u></code><sup><a href=\"#dv\">{STAR}</a></sup>"
                 else:

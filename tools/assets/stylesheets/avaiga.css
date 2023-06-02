@@ -339,6 +339,13 @@ a.tp-pill{
   }
 }
 
+figure.tp-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 [data-md-color-scheme="default"] .visible-dark{
   display: none;
 }
