@@ -369,5 +369,48 @@ system.
 ## Status page
 
 The _Status_ page is a special page that the user can access by requesting the "/taipy.status.json"
-page. 
-TODO.
+page.
+
+This returns a customizable JSON representation of the state of the application as a dictionary
+where the key "gui" is set to a dictionary containing the information you might need to dig into
+the state of the application without changing the definition of the pages.
+
+The "user_status" key of the "gui" entry is set to a dictionary that is initialized by
+the user-defined `on_status()` global function. This function is invoked when the end-user
+requests the "/taipy.status.json" page; it receives a single argument: the current application
+*state* (an instance of the `State^` class).<br/>
+This function should return a dictionary where you can define any key or value of your choice.
+
+Here is a short example to demonstrate the status page customization:
+
+```py
+from taipy.gui import Gui, State
+
+x = 1234
+
+def on_status(state: State):
+    return {
+        "x": state.x,
+        "info": "Some information..."
+    }
+
+Gui(page="""
+# Status page
+
+Value of x: <|{x}|>
+""").run()
+```
+
+When this application is running, the "/taipy.status.json" page shows a JSON representation of
+a dictionary with a single key, "gui". The value associated with this key is another dictionary
+with the single key, "user_status". And the value associated with that key is the dictionary
+returned by `on_status()`.<br/>
+In this example, *gui.user_status.x* is set to 1234 (as initialized in the application), and
+*gui.user_status.info* is the string defined in the `on_status()` function.
+
+!!! note "Extended status"
+    If the [*extended_status*](configuration.md#p-extended_status) parameter is set to True,
+    the dictionary associated with the *gui* key is augmented with run-time information of the
+    application, such as the version of the Taipy GUI package that is running, the version of
+    the Python interpreter that is running the application, the list of the extension
+    libraries that the application has loaded and a few more details.
