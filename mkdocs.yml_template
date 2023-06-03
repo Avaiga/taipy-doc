@@ -209,7 +209,7 @@ extra:
       name: LinkedIn
     - icon: fontawesome/brands/youtube
       link: https://www.youtube.com/channel/UCYZyGVj-fPgUSITZnsOQoDg
-      name: LinkedIn
+      name: YouTube
     - icon: fontawesome/brands/github
       link: https://github.com/avaiga/taipy
       name: Github
