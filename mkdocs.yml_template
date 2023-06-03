@@ -202,13 +202,14 @@ watch:
 extra:
   social:
     - icon: fontawesome/brands/twitter
-      # replace with your own tweet link below
-      link: http://www.taipy.io
+      link: https://twitter.com/Taipy_io
       name: Tweet
-    - icon: fontawesome/brands/facebook
-      # replace with your own facebook link below
-      link: http://www.taipy.io
-      name: Facebook
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/taipy-io/
+      name: LinkedIn
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/channel/UCYZyGVj-fPgUSITZnsOQoDg
+      name: YouTube
     - icon: fontawesome/brands/github
       link: https://github.com/avaiga/taipy
       name: Github
