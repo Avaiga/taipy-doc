@@ -398,7 +398,7 @@ Gui(page="""
 # Status page
 
 Value of x: <|{x}|>
-""").run(run_browser=False)
+""").run()
 ```
 
 When this application is running, the "/taipy.status.json" page shows a JSON representation of
