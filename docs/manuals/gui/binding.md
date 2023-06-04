@@ -87,8 +87,7 @@ to import the global variables if they are not used in the Python code of the mo
     We create a *pages* package, where we can create the file `page.py`, which is the module file
     where the page would be declared:
 
-    ```py linenums="1"
-    # File: pages/page.py
+    ```py linenums="1"  title="pages/page.py"
     from taipy.gui import Markdown
 
     page = Markdown("""# Expression evaluation
@@ -98,17 +97,16 @@ to import the global variables if they are not used in the Python code of the mo
     local_value = 0
     ```
 
-    Note that the page definition uses the variable *base_value* (in line 5), which
+    Note that the page definition uses the variable *base_value* (in line 4), which
     is unknown to this module.<br/>
-    The page also references the variable *local_value* (line 8), defined locally in
+    The page also references the variable *local_value* (line 7), defined locally in
     this module.
 
     Now let's create the main module of the application, adding a home page, and reusing
     the page that we just created above. That would be done in the file `main.py`,
     defining the *\_\_main\_\_* module of our application:
 
-    ```py  linenums="1"
-    # File: main.py
+    ```py  linenums="1" title="main.py"
     from taipy.gui import Gui, Markdown
     from pages.page import page
 
@@ -133,7 +131,7 @@ to import the global variables if they are not used in the Python code of the mo
     ```
 
     *page* is imported from `pages.page` (that is the file `pages/page.py`) in
-    line 3, then added to the `Gui` instance in line 19.
+    line 2, then added to the `Gui` instance in line 18.
 
     When you run the application, you will see that the 'Expression' page can
     evaluate the expression stored in its text element. The local variable
@@ -166,7 +164,7 @@ defined.
     from another module.<br/>
     The root page also has a button that, when pressed, invokes the callback function *button_pressed()*:
 
-    ```py
+    ```py title="main.py"
     from taipy.gui import Gui, Markdown
     from page import sub_page
 
@@ -189,7 +187,7 @@ defined.
     ```
 
     Here is the code for the *page* module, where *sub_page* is defined:
-    ```py
+    ```py title="page.py"
     from taipy.gui import Markdown
 
     def button_pressed(state):
@@ -239,7 +237,7 @@ is defined.
 
     In the situation described above, no matter which *button_pressed()* callback function is
     invoked, you can always explicitly reference the *x* variable defined in the sub-page module
-    using the syntax: *state["page1"].x*. The indexed syntax avoids confusion.<br/>
+    using the syntax: *state["page"].x*. The indexed syntax avoids confusion.<br/>
     Similarly, *state["\_\_main\_\_"].x* always refers to the global *x* variable, defined in the
     main module.
 
