@@ -53,35 +53,39 @@ and the double of *x* will be displayed on your page.
 ## Scope for variable binding
 
 In the tiny example above, the entire application holds a single page.
-The bound variable (*x*) is located in the same, unique module.
+The bound variable (*x*) is defined in the same, unique module.
 
 In larger applications, we may want to create Python modules that hold
 Taipy pages, binding visual elements to local variables. That allows for
 a clearer organization of the code, where application variables used in
 only a few pages can sit next to the page definition.
 
-When Taipy finds a variable in a page, it first tries to locate it in the module
-where this page is defined. If the variable can not be found in the page module,
-then the variable is sought in the *\_\_main\_\_* module (typically, where the
-`Gui^` instance is created).
+When Taipy finds a variable in a page (that is, in a Python expression set to
+a property using the curly braces syntax: *{expression}*), it first tries to locate it
+in the module where this page is defined. If the variable can not be found in the page
+module, then the variable is sought in the *\_\_main\_\_* module (typically, where the
+`Gui^` instance is created).<br/>
+We call *page scopes* the context where the variables are located: first, the module
+where the page is defined, then the main module.
+
+!!! important "Defining a page scope"
+    A page scope, where variables used in a page definition are searched, is the module
+    where the page *instance* (an instance of the `Markdown^` or the `HTML^` classes),
+    **not** the text of the page.
 
 This mechanism allows pages to bind to local variables declared on their own module.
-These variables may be not exposed to other modules of the application.<br/>
-Global variables (the ones
-declared in the *\_\_main\_\_* module), on the other hand, can be used in all
-page content definitions. The module where the page is defined does not need to
-import the global variables, if they are not used in the Python code of the module.
+These variables may not be exposed to other modules of the application.<br/>
+Global variables (the ones declared in the *\_\_main\_\_* module), on the other hand, can
+be used in all page content definitions. The module where the page is defined does not need
+to import the global variables if they are not used in the Python code of the module.
 
 !!! example "Example"
-
-    Say you want to create a page that represents some evalution of an
-    expression using a global variable as well as some local parameter.
-
-    This local parameter is useless for the rest of the application, so
-    we store it as a local variable, in the module where the page is
-    defined.<br/>
-    We create a _pages_ package, where we can store the file `page.py` which is
-    the module file where the page would be declared:
+    Say you want to create a page that represents some evaluation of an expression using two
+    variables. The first variable would be global for the application. But the second variable
+    does not need to be exposed to the rest of the application, so we store it as a local
+    variable in the module where the page is defined.<br/>
+    We create a *pages* package, where we can create the file `page.py`, which is the module file
+    where the page would be declared:
 
     ```py linenums="1"
     # File: pages/page.py
@@ -91,17 +95,16 @@ import the global variables, if they are not used in the Python code of the modu
     Expression value: <|{base_value + local_value}|>
     """)
 
-    local_value=0
+    local_value = 0
     ```
 
-    Note that the page definition uses the variable _base_value_ (in line 5) that is
-    unknown to this module.
-
-    The page also references the variable _local_value_ (line 8), which is local to
+    Note that the page definition uses the variable *base_value* (in line 5), which
+    is unknown to this module.<br/>
+    The page also references the variable *local_value* (line 8), defined locally in
     this module.
 
-    Now let's create the whole application, adding a home page, and reusing
-    the page that we just created above. That would be done in the file `main.py`
+    Now let's create the main module of the application, adding a home page, and reusing
+    the page that we just created above. That would be done in the file `main.py`,
     defining the *\_\_main\_\_* module of our application:
 
     ```py  linenums="1"
@@ -129,15 +132,116 @@ import the global variables, if they are not used in the Python code of the modu
     Gui(pages=pages).run()
     ```
 
-    The _page_ is imported from `pages.page` (that is the file `pages/page.py`) in
-    line 3 then added to the `Gui` instance in line 19.
+    *page* is imported from `pages.page` (that is the file `pages/page.py`) in
+    line 3, then added to the `Gui` instance in line 19.
 
     When you run the application, you will see that the 'Expression' page can
     evaluate the expression stored in its text element. The local variable
-    *local_value* was never exported from the _page_ module, neither was the
-    global *base_value* imported in _page_.<br/>
-    Nevertheless, the evaluation of the expression is performed propery, using
+    *local_value* was never exported from the *page* module, and neither was the
+    global *base_value* imported in *page*.<br/>
+    Nevertheless, the evaluation of the expression is performed properly, using
     those two variables.
+
+### Local callback functions
+
+This principle applies to callback functions as well: when a function name is found
+in a page definition, this function is first searched in the page scope (the module where
+the page was defined). If the function cannot be located, it is sought in the main
+module.
+
+This makes it possible to use the same callback function name in different modules and
+rely on page scopes to determine which is invoked when a callback is triggered: Taipy
+GUI favors the callback functions that are defined in the module where the page itself is
+defined.
+
+!!! important "Global callback functions"
+    The way you can define local callback functions does not apply to global callbacks
+    such as `on_action()`. There can be only one global callback, defined in the main
+    module.
+
+!!! example
+    Here is an example of how this local callback binding is done. This example has a main module
+    that holds a single page (at the root of the application URL) with a
+    [`navbar`](viselements/navbar.md) control that can navigate to the page *sub_page*, imported
+    from another module.<br/>
+    The root page also has a button that, when pressed, invokes the callback function *button_pressed()*:
+
+    ```py
+    from taipy.gui import Gui, Markdown
+    from page import sub_page
+
+    navigation = [("/sub_page", "Page")]
+
+    def button_pressed(state):
+        ...
+
+    root_page="""# Application
+    <|navbar|lov={navigation}|>
+
+    <|Press for action|button|on_action=button_pressed|>
+    """
+
+    Gui(pages={
+            "/": Markdown(root_page),
+            "sub_page": sub_page
+        }).run()
+    """
+    ```
+
+    Here is the code for the *page* module, where *sub_page* is defined:
+    ```py
+    from taipy.gui import Markdown
+
+    def button_pressed(state):
+        ....
+
+    sub_page=Markdown("""# Sub-Page
+        <|Press for action|button|on_action=button_pressed|>""")
+    ```
+
+    All this module does is define the (local) function *button_pressed()*, and the
+    *sub_page* page that the main module imports.
+
+    Now both the root page **and** the sub-page have a button, defined so they would invoke a
+    callback function called *button_pressed()* when activated.<br/>
+    The Taipy GUI implementation is such that if you press the button from the root page (defined
+    in the main module), then it is the global function *button_pressed()* that gets called. If
+    you press the button from the sub page (defined in the *page* module). then it is the function
+    *button_pressed()* defined in the *page* module that gets called. 
+
+### Page scope in callbacks
+
+All callback functions are invoked with a state object as their first parameter.<br/>
+From that state, one can access the variables of the application. However, the state
+interprets the access to variables depending on the page scope: if a callback is defined
+in a module, then local variables will be available directly, scoped to the appropriate
+module.
+
+In the example above, we have defined two different callback functions called *button_pressed()*.
+Suppose we had defined two variables called *x* in both the main module and the sub-page module,
+then used *x* in both the root page and the sub-page, then when invoked, the state received
+in the callback functions would behave slightly differently, enforcing the use of the page
+scope:
+
+- When the *button_pressed()* defined in the main module is invoked, then `state.x` would
+  return the value of the *x* variable, in the main module.
+- When the *button_pressed()* defined in the sub-page module is invoked, then `state.x` would
+  return the value of the *x* variable, in the sub-page module.
+
+This makes it very obvious to focus on the variable at hand in a given module where a page
+is defined.
+
+!!! note "Crossing page scopes"
+    The state received in callbacks has a mechanism that lets you access variables from other
+    modules.<br/>
+    The way this works is to use the state object as a collection, indexed by the name of the
+    module where the variable is defined (and used in a page definition).
+
+    In the situation described above, no matter which *button_pressed()* callback function is
+    invoked, you can always explicitly reference the *x* variable defined in the sub-page module
+    using the syntax: *state["page1"].x*. The indexed syntax avoids confusion.<br/>
+    Similarly, *state["\_\_main\_\_"].x* always refers to the global *x* variable, defined in the
+    main module.
 
 ## List of values
 
