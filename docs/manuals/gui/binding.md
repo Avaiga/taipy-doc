@@ -158,15 +158,15 @@ defined.
     module.
 
     However, a global callback can call any function in any module where a page would have been
-    define and the *state* will behave as you would expected, letting you access the variables
+    define, and the *state* will behave as you would expect, letting you access the variables
     from the page scope.
 
     Here is an example to demonstrate that. Suppose you need to initialize some variables from
     a page defined in a module. The proper way to do this would be to define a function called
     *on_init()* and initialize the state variable. However, because *on_init()* is a global
-    callback and would not work properly from the module (contrairy to when it is declared in the
+    callback and would not be invoked in the module (contrary to when it is declared in the
     *\_\_main\_\_* module), you need to declare an initialization function in the page module
-    (no matter what its name is) and invoke thins function from the global *on_init()* callback.
+    (no matter what its name is) and invoke this function from the global *on_init()* callback.
 
     The code for the module would look like this:
     ```py title="page.py"
@@ -180,7 +180,7 @@ defined.
     sub_page=Markdown("""  ... some content referencing {my_variable} ... """)
     ```
 
-    Note that we have called the initialization function *on_init()* but that's really just
+    Note that we have called the initialization function *on_init()*, but that's really just
     a way to make the code easier to understand: what we want to do here is exactly what should
     be done in the global *on_init()* callback.
 
