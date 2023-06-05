@@ -157,12 +157,54 @@ defined.
     such as `on_action()`. There can be only one global callback, defined in the main
     module.
 
+    However, a global callback can call any function in any module where a page would have been
+    define and the *state* will behave as you would expected, letting you access the variables
+    from the page scope.
+
+    Here is an example to demonstrate that. Suppose you need to initialize some variables from
+    a page defined in a module. The proper way to do this would be to define a function called
+    *on_init()* and initialize the state variable. However, because *on_init()* is a global
+    callback and would not work properly from the module (contrairy to when it is declared in the
+    *\_\_main\_\_* module), you need to declare an initialization function in the page module
+    (no matter what its name is) and invoke thins function from the global *on_init()* callback.
+
+    The code for the module would look like this:
+    ```py title="page.py"
+
+    ...
+    my_variable = ""
+    ...
+    def on_init(state):
+        state.my_variable = "The initial value"
+    ...
+    sub_page=Markdown("""  ... some content referencing {my_variable} ... """)
+    ```
+
+    Note that we have called the initialization function *on_init()* but that's really just
+    a way to make the code easier to understand: what we want to do here is exactly what should
+    be done in the global *on_init()* callback.
+
+    Here is how the main module would invoke this initialization function:
+    ```py title="main.py"
+    # Create an alias for on_init() in the page module
+    from page import on_init as page_on_init
+
+    def on_init(state):
+        page_on_init(state)
+    ```
+
+    Now when the application is initialized from the main module, the global *on_init()* function
+    invokes the page module's *on_init()* function with the received *state*. The access to the
+    state in the page module's *on_init()* function will properly impact the variable in the correct
+    page scope.
+
 !!! example
     Here is an example of how this local callback binding is done. This example has a main module
     that holds a single page (at the root of the application URL) with a
     [`navbar`](viselements/navbar.md) control that can navigate to the page *sub_page*, imported
     from another module.<br/>
-    The root page also has a button that, when pressed, invokes the callback function *button_pressed()*:
+    The root page also has a button that, when pressed, invokes the callback function
+    *button_pressed()*:
 
     ```py title="main.py"
     from taipy.gui import Gui, Markdown
