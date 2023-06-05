@@ -27,11 +27,11 @@ Not published yet.
 <h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
 2.3.0
 
-- New Taipy command-line interface. Please refer to the
+- New Taipy command-line interface (CLI). Please refer to the
   [Taipy command-line interface](./manuals/cli.md)
   documentation page for more information.
 - User can now create a new Taipy application from a template by running `$ taipy create` from the
-  Taipy command-line interface with an optional `--template` option.
+  CLI with an optional `--template` option.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.3.0
@@ -42,8 +42,8 @@ Not published yet.
 - `taipy.get_entities_by_config_id()^` can be used to retrieve all entities that are based on
   the provided configuration identifier.
 - Commands for managing Taipy application versions can now be accessed via the `$ taipy manage-versions` command. Run `$ taipy manage-versions --help` for more details.
-- A version can now be renamed by running `$ taipy manage-versions --rename <old_version> <new_version>` from a command-line interface.
-- The configuration of a version can now be compared with another one by running `$ taipy manage-versions --compare-config <version_1> <version_2>` from a command-line interface.
+- A version can now be renamed by running `$ taipy manage-versions --rename <old_version> <new_version>` from the CLI.
+- The configuration of a version can now be compared with another one by running `$ taipy manage-versions --compare-config <version_1> <version_2>` from the CLI.
 
 ### Improvements and changes
 
