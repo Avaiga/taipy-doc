@@ -1,19 +1,19 @@
 When running a Taipy Core application in `--production` mode, Taipy can access all entities
-attached to the current version or another _production_ version. It corresponds to the case where
+attached to the current version or another *production* version. It corresponds to the case where
 the application is stable and running in a production environment.
 
 In the following, we consider the basic Taipy Core application `main.py` for all our examples:
-```python linenums="1"
+```python linenums="1" title="main.py"
 {%
-include-markdown "./code_example/main_with_changes.py"
+include-markdown "./code_example/main.py"
 comments=false
 %}
 ```
 
 # Convert an experiment version to production
 
-To convert an _experiment_ version to a _production_, you can run the Taipy application
-on your command line interface with `--production VERSION` option providing the version name.
+To convert an experiment version to a production, you can run the Taipy application on the CLI with
+`--production` option and providing the version name.
 
 ```console
 $ taipy manage-versions --list
@@ -33,11 +33,10 @@ Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 ```
 
-In the example above, Taipy converted the version 1.0 to a _production_ version before
-running it.
+In the example above, Taipy converted the version 1.0 to a production version before running it.
 
-Without explicitly providing the version, the latest version of your application is
-used. Here is another example:
+Without explicitly providing the version name, the latest version of your application is used.
+Here is another example:
 
 ```console
 $ python main.py --experiment 2.0
@@ -63,19 +62,20 @@ Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 ```
 
-As you can see, we first created an _experiment_ version named 2.0. One scenario is
-attached to it. When listing the existing versions, we can see that 2.0 is the latest
-version used. So when running the Taipy application in _production_ mode without
-providing the version, the latest is used and converted to production before running.
-Note that once the version is converted to _production_, the application accesses all
-_production_ entities, including from older _production_ versions.
+As you can see, we first created an experiment version named 2.0 and there is one scenario is
+attached to it. When listing the existing versions, we can see that 2.0 is the latest version used.
+Therefore, when running the Taipy application in production mode without providing the version name,
+the latest is used and converted to production before running.
+
+Note that once the version is converted to production, the application can access all production
+entities, including from older production versions.
 
 
 # Remove a production version
 
-To remove a _production_ version, you can run on your command line interface a Taipy
-application with the `--delete-production VERSION` option providing the version
-name.
+To remove a production version, you can use the `taipy manage-versions` with the `--delete-production`
+option on the Taipy CLI and providing the version name (see the
+[Manage versions on Taipy CLI page](../../cli.md#manage-versions) for more details).
 
 ```console
 $ taipy manage-versions --delete-production 2.0
@@ -89,5 +89,5 @@ Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 ```
 
-After running the commands above, version 2.0 is an _experiment_ version again. It
-is no longer a _production_ version.
+After running the commands above, version 2.0 is an experiment version again. It is no longer a
+production version.
