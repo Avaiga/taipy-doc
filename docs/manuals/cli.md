@@ -12,7 +12,7 @@ Taipy 2.3.0
 If you don't see a supported version of Taipy, you'll need to either upgrade Taipy or perform a
 fresh install, as described in the [Installation page](../installation.md).
 
-# Help on Taipy CLI
+# Help
 A list of available commands provided by Taipy is shown by running the `taipy`, or `taipy help`,
 or `taipy --help` command.
 
@@ -29,6 +29,9 @@ positional arguments:
 options:
   -v, --version         Print the current Taipy version and exit.
 ```
+
+To have more detail about each command, you can run `taipy help <command>` and provide the command
+name. For more detail, please refer to each section below.
 
 # Create a Taipy application
 
@@ -56,7 +59,7 @@ we change directory (`cd`) to our newly created folder and start the application
 
     If there is no answer provided, the default value in the square brackets will be applied.
 
-## From another template
+## From a specific template
 You can also specify another template using the `--template` option.
 ```console
 $ taipy create --template default
@@ -67,7 +70,7 @@ $ cd ./new_application
 $ python app.py
 ```
 
-## List templates with the --help option
+## List of templates
 
 You can see the list of supported templates by running `taipy help create` command. Alternatively, you can
 use the `--help` or `-h` options. Run `taipy create --help` or `taipy create -h`.
@@ -177,7 +180,7 @@ d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:1
     You can not use an existing version as the new version name, since it may cause different
     versions to overlap each other.
 
-## Compare the configuration of 2 versions
+## Compare configurations
 
 To compare the configuration between 2 versions, you can run the version management command with
 `--compare-config` option, providing the two version names.
