@@ -44,7 +44,7 @@ Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 ```
 
-As indicated by th output of `taipy manage-versions --list` command, a new experiment version is
+As indicated by the output of `taipy manage-versions --list` command, a new experiment version is
 created and stored. As you can see, the number of scenarios displayed is 1. That means Taipy only
 considers the scenarios of the experiment version, and filters out the entities of the other
 development version.
