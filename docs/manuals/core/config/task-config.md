@@ -8,7 +8,7 @@ A task configuration is necessary to instantiate a [Task](../concepts/task.md). 
 - _**outputs**_: The output data nodes referring to the result(s) data of the *function* to be executed.
 - _**skippable**_: Boolean attribute indicating if the task execution can be skipped if all output
   data nodes are up-to-date (see the *validity_period* attribute in the
-  [Data node management page](../entities/data-node-mgt.md) for more details). The default value of
+  [Data node configs page](../config/data-node-config.md) for more details). The default value of
   *skippable* is False.
 
 Here is a simple example:
