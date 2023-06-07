@@ -95,7 +95,7 @@ class RefManStep(SetupStep):
         ("taipy.config.common.scope.Scope", "taipy.core.config"),
         ("taipy.config.common.frequency.Frequency", "taipy.core.config"),
         ("taipy.config.unique_section.*", "taipy.config"),
-        ("taipy.config.exceptions.exceptions.ConfigurationIssueError", "taipy.config.exceptions"),
+        #("taipy.config.exceptions.exceptions.ConfigurationIssueError", "taipy.config.exceptions"),
         # Rest
         ("taipy.rest.rest.Rest", "taipy.rest"),
         # Auth
