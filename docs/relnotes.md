@@ -41,6 +41,15 @@ Not published yet.
 - A generic data node now can be created with only the `read_fct` for reading only or the `write_fct` for writing only data node.<br/>
 - The `read_fct_params` and `write_fct_params` of a generic data node are renamed to `read_fct_args` and `write_fct_args`, and both must be populated with a List value to avoid the problem of passing Tuple of one string.<br/>
 
+### Deprecations
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.0.0
+
+- `PipelineConfig^` has been deprecated and will be combined with `ScenarioConfig^` in future update.
+- `taipy.create_pipeline()^` has been deprecated.
+- `Pipeline^` concept has been deprecated and many changes will be made in future versions.
+
 ## Community edition: 2.2
 
 Published on 2023-04.

@@ -1,3 +1,8 @@
+!!! warning "Deprecation"
+
+    Note that the concept of `Pipeline^` has been deprecated in Taipy and many changes will be made in
+    future versions.
+
 The [Entities' creation](scenario-creation.md) section provides documentation on `Pipeline^` creation. Now
 that we know how to create a new `Pipeline^`, this section focuses on describing the pipeline's attributes
 and utility methods.
