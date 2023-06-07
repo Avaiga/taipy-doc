@@ -7,6 +7,9 @@ or layout information. Most visual elements allow users to interact with the pag
 There are two types of _Visual Elements_:
 
    - _Controls_ typically represent user data that the user can interact with;
+     The `taipy` package come with a dedicated set of Taipy GUI controls that let users
+     display and interact with [Taipy Core entities](../../core/entities). These controls
+     are listed in the [Core back-end controls](../corelements) section.
 
    - _Blocks_ let you organize controls (or blocks) in pages to provide the best
     possible user experience.
@@ -15,6 +18,8 @@ If you are familiar with what _Visual Elements_ are and how they are declared, y
 may want to jump directly to the list of the available visual elements:
 
 [:material-arrow-right: List of available controls](../controls.md)
+
+[:material-arrow-right: List of available Core back-end controls](../corelements)
 
 [:material-arrow-right: List of available blocks](../blocks.md)
 

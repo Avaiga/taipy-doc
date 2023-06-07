@@ -24,6 +24,9 @@ class CoreElementsStep(ElementsGenerator):
     def get_description(self) -> str:
         return "Extraction of the Core elements documentation"
 
+    def get_doc_dir(self) -> str:
+        return "corelements"
+
     def enter(self, setup: Setup):
         self.CORELEMENTS_DIR_PATH = setup.manuals_dir + "/gui/corelements"
         self.template_path = self.CORELEMENTS_DIR_PATH + "/index.md_template"
@@ -36,6 +39,9 @@ class CoreElementsStep(ElementsGenerator):
 
     def get_element_template_path(self, element_type: str) -> str:
         return f"{self.CORELEMENTS_DIR_PATH}/{element_type}.md_template"
+    
+    def get_element_md_path(self, element_type: str) -> str:
+        return f"{self.CORELEMENTS_DIR_PATH}/{element_type}.md"
 
     def setup(self, setup: Setup) -> None:
         self.generate_pages("controls", os.path.join(self.CORELEMENTS_DIR_PATH, "index.md"), self.template_path)

@@ -10,6 +10,9 @@ class ElementsGenerator(SetupStep):
     NAME = "name"
     INHERITS = "inherits"
 
+    def get_doc_dir(self) -> str:
+        raise NotImplemented("ElementsGenerator get_doc_dir() must be defined.")
+
     # Load elements, test validity of doc and resolve inheritance
     def load_elements(self, elements_json_path: str, categories: List[str]) -> None:
         with open(elements_json_path) as elements_json_file:
@@ -100,7 +103,16 @@ class ElementsGenerator(SetupStep):
     FIRST_HEADER2_RE = re.compile(r"(^.*?)(\n###?\s+)", re.MULTILINE | re.DOTALL)
 
     def get_element_template_path(self, element_type: str) -> str:
-        raise NotImplementedError(f"get_element_template_path() not implemented (element was {element}).")
+        raise NotImplementedError(f"get_element_template_path() not implemented (element was {element_type}).")
+
+    def get_element_md_path(self, element_type: str) -> str:
+        raise NotImplementedError(f"get_element_md_path() not implemented (element was {element_type}).")
+
+    # Returns before_properties and after_properties if needed
+    # Returned tuple would be: (new_before_properties, after_properties) where each can be None, indicating
+    # we don't want to change them
+    def element_page_hook(self, element_type:str, doc:str, before_properties: str, after_properties: str) -> tuple[str, str]:
+        return (None, None)
 
     # Generate element doc pages for that category
     def generate_pages(self, category: str, md_path: str, md_template_path: str) -> None:
@@ -109,9 +121,9 @@ class ElementsGenerator(SetupStep):
             Returns the entry for the Table of Contents that is inserted
             in the global Visual Elements or Core Elements doc page.
             """
-            doc_path = self.get_element_template_path(element_type) 
-            with open(doc_path, "r") as doc_file:
-                element_documentation = doc_file.read()
+            template_doc_path = self.get_element_template_path(element_type) 
+            with open(template_doc_path, "r") as template_doc_file:
+                element_documentation = template_doc_file.read()
             # Retrieve first paragraph from element documentation
             match = ElementsGenerator.FIRST_PARA_RE.match(element_documentation)
             if not match:
@@ -173,40 +185,16 @@ class ElementsGenerator(SetupStep):
                 )
             before_properties = match.group(1)
             after_properties = match.group(2) + element_documentation[match.end() :]
-            output_path = os.path.join(self.VISELEMENTS_DIR_PATH, element_type + ".md")
 
-            # Special case for charts: we want to insert the chart gallery that is stored in the
-            # file whose path is in self.charts_home_html_path
-            # This should be inserted before the first level 1 header
-            if element_type == "chart":
-                with open(self.charts_home_html_path, "r") as html_fragment_file:
-                    chart_gallery = html_fragment_file.read()
-                    # The chart_gallery begins with a comment where all sub-sections
-                    # are listed.
-                SECTIONS_RE = re.compile(r"^(?:\s*<!--\s+)(.*?)(?:-->)", re.MULTILINE | re.DOTALL)
-                match = SECTIONS_RE.match(chart_gallery)
-                if not match:
-                    raise ValueError(
-                        f"{self.charts_home_html_path} should begin with an HTML comment that lists the chart types"
-                    )
-                chart_gallery = "\n" + chart_gallery[match.end() :]
-                SECTION_RE = re.compile(r"^([\w-]+):(.*)$")
-                chart_sections = ""
-                for line in match.group(1).splitlines():
-                    match = SECTION_RE.match(line)
-                    if match:
-                        chart_sections += f"- [{match.group(2)}](charts/{match.group(1)}.md)\n"
+            # Process element hook
+            hook_values = self.element_page_hook(element_type, element_documentation, before_properties, after_properties)
+            if hook_values[0]:
+                before_properties = hook_values[0]
+            if hook_values[1]:
+                after_properties = hook_values[1]
 
-                match = ElementsGenerator.FIRST_HEADER1_RE.match(element_documentation)
-                if not match:
-                    raise ValueError(
-                        f"Couldn't locate first header1 in documentation for element 'chart'"
-                    )
-                before_properties = match.group(1) + chart_gallery + match.group(2) + before_properties[match.end() :]
-                after_properties += chart_sections
-
-            with open(output_path, "w") as output_file:
-                output_file.write(
+            with open(self.get_element_md_path(element_type), "w") as md_file:
+                md_file.write(
                     "---\nhide:\n  - navigation\n---\n\n"
                     + f"# <tt>{element_type}</tt>\n\n"
                     + before_properties
@@ -214,18 +202,19 @@ class ElementsGenerator(SetupStep):
                     + after_properties
                 )
             e = element_type  # Shortcut
+            d = self.get_doc_dir()
             return (
-                f'<a class="tp-ve-card" href="../viselements/{e}/">\n'
+                f'<a class="tp-ve-card" href="../{d}/{e}/">\n'
                 + f"<div>{e}</div>\n"
-                + f'<img class="tp-ve-l" src="../viselements/{e}-l.png"/>\n'
-                + f'<img class="tp-ve-lh" src="../viselements/{e}-lh.png"/>\n'
-                + f'<img class="tp-ve-d" src="../viselements/{e}-d.png"/>\n'
-                + f'<img class="tp-ve-dh" src="../viselements/{e}-dh.png"/>\n'
+                + f'<img class="tp-ve-l" src="../{d}/{e}-l.png"/>\n'
+                + f'<img class="tp-ve-lh" src="../{d}/{e}-lh.png"/>\n'
+                + f'<img class="tp-ve-d" src="../{d}/{e}-d.png"/>\n'
+                + f'<img class="tp-ve-dh" src="../{d}/{e}-dh.png"/>\n'
                 + f"<p>{first_documentation_paragraph}</p>\n"
                 + "</a>\n"
             )
             # If you want a simple list, use
-            # f"<li><a href=\"../viselements/{e}/\"><code>{e}</code></a>: {first_documentation_paragraph}</li>\n"
+            # f"<li><a href=\"../{d}/{e}/\"><code>{e}</code></a>: {first_documentation_paragraph}</li>\n"
             # The toc header and footer must then be "<ui>" and "</ul>" respectively.
 
         md_template = ""
@@ -239,4 +228,3 @@ class ElementsGenerator(SetupStep):
         toc += "</div>\n"
         with open(md_path, "w") as md_file:
             md_file.write(md_template.replace("[TOC]", toc))
-
