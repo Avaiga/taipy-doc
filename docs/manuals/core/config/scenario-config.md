@@ -16,6 +16,12 @@ A scenario configuration is necessary to instantiate a [Scenario](../concepts/sc
     Note that we cannot use the word "_entity_owner" as a key in the properties as it has been reserved for internal use.
 
 # From pipeline configs
+
+!!! warning "Deprecation"
+
+    Note that `PipelineConfig^` has been deprecated in version 2.3 and will be combined with `ScenarioConfig^` in the following major version.
+    It is recommended to configure ScenarioConfig with `configure_scenario_from_tasks` instead.
+
 Here is a simple example assuming the pipeline configuration `pipeline_cfg` has already been created:
 
 ```python linenums="1"

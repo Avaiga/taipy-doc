@@ -54,6 +54,14 @@ Not published yet.
 - The `read_fct_params` and `write_fct_params` of a generic data node are renamed to `read_fct_args` and `write_fct_args`, and both must be populated with a List value to avoid the problem of passing Tuple of one string.<br/>
 - The `validity_period` attribute of a data node is now exposed at configuration level to set the up-to-date duration of a data node.<br/>
 
+### Deprecations
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.3.0
+
+- `PipelineConfig^` has been deprecated and will be combined with `ScenarioConfig^` in future update.
+- `taipy.create_pipeline()^` has been deprecated.
+
 ## Community edition: 2.2
 
 Published on 2023-04.
