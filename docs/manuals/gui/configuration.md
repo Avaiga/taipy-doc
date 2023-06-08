@@ -60,11 +60,11 @@ Here is the list of the configuration parameters you can use in
      of the [*allow_unsafe_werkzeug*](#p-allow_unsafe_werkzeug) parameter to True.
    - <a name="p-title"></a>*title* (str or None, default: "Taipy App"): the string displayed in the
      browser page title bar when navigating your Taipy application.
-   - <a name="p-dark_mode">*dark_mode*</a> (bool, default: True): whether the application shows in
+   - <a name="p-dark_mode"></a>*dark_mode* (bool, default: True): whether the application shows in
      *Dark* mode (True) or *Light* mode (False).
    - <a name="p-favicon"></a>*favicon* (str or None, default is the Taipy logo): the path to an
      image file used as the page's icon when navigating your Taipy application.
-   - <a name="p-run_browser">*run_browser*</a> (bool, default: True): when `Gui.run()^` is invoked,
+   - <a name="p-run_browser"></a>*run_browser* (bool, default: True): when `Gui.run()^` is invoked,
      Taipy GUI automatically runs the system's browser and opens a new page to display the
      application interface, unless this parameter is set to False.
    - <a name="p-margin"></a>*margin* (str or None, default: "1em"): a CSS dimension value that

@@ -73,7 +73,7 @@ nav:
             - "Job execution": manuals/core/entities/orchestrating-and-job-execution.md
         - "Version Management":
             - manuals/core/versioning/index.md
-            - "Manage versions": manuals/core/versioning/version-mgt.md
+            - "Configuration": manuals/core/versioning/configuration.md
             - "Development mode": manuals/core/versioning/development_mode.md
             - "Experiment mode": manuals/core/versioning/experiment_mode.md
             - "Production mode": manuals/core/versioning/production_mode.md
@@ -83,6 +83,7 @@ nav:
         - manuals/auth/index.md
         - "Authentication": manuals/auth/authentication.md
         - "Authorization": manuals/auth/authorization.md
+    - "Taipy command-line interface": manuals/cli.md
     - "Running & Deploying":
         - manuals/run-deploy/index.md
         - "Running":
@@ -204,13 +205,14 @@ watch:
 extra:
   social:
     - icon: fontawesome/brands/twitter
-      # replace with your own tweet link below
-      link: http://www.taipy.io
+      link: https://twitter.com/Taipy_io
       name: Tweet
-    - icon: fontawesome/brands/facebook
-      # replace with your own facebook link below
-      link: http://www.taipy.io
-      name: Facebook
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/taipy-io/
+      name: LinkedIn
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/channel/UCYZyGVj-fPgUSITZnsOQoDg
+      name: YouTube
     - icon: fontawesome/brands/github
       link: https://github.com/avaiga/taipy
       name: Github
