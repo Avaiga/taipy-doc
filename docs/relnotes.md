@@ -48,7 +48,6 @@ Not published yet.
 
 - `PipelineConfig^` has been deprecated and will be combined with `ScenarioConfig^` in future update.
 - `taipy.create_pipeline()^` has been deprecated.
-- `Pipeline^` concept has been deprecated and many changes will be made in future versions.
 
 ## Community edition: 2.2
 
