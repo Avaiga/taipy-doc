@@ -13,7 +13,7 @@ TOP_DIR = os.path.dirname(ROOT_DIR)
 # Where all the code from all directories/repositories is copied
 DEST_DIR_NAME = "taipy"
 
-REPOS = ["config", "core", "gui", "getting-started", "getting-started-core", "getting-started-gui", "rest"]
+REPOS = ["config", "core", "gui", "rest", "taipy", "getting-started", "getting-started-core", "getting-started-gui"]
 PRIVATE_REPOS = ["auth", "enterprise"]
 
 OPTIONAL_PACKAGES = {
@@ -26,7 +26,7 @@ args = CLI(os.path.basename(__file__), REPOS).get_args()
 mkdocs_yml_version = read_doc_version_from_mkdocs_yml_template_file(ROOT_DIR)
 
 # Gather version information for each repository
-repo_defs = {repo: {"version": "local", "tag": None} for repo in REPOS + PRIVATE_REPOS}
+repo_defs = {repo if repo == "taipy" else f"taipy-{repo}": {"version": "local", "tag": None} for repo in REPOS + PRIVATE_REPOS}
 CATCH_VERSION_RE = re.compile(r"(^\d+\.\d+?)(?:(\.\d+)(\..*)?)?|develop|local$")
 for version in args.version:
     repo = None
@@ -37,8 +37,8 @@ for version in args.version:
         try:
             colon = version.index(":")
             repo = version[:colon]
-            if repo.startswith("taipy-"):
-                repo = repo[6:]
+            if not repo.startswith("taipy"):
+                repo = f"taipy-{repo}"
             version = version[colon + 1:]
         except ValueError as e:
             pass
@@ -76,17 +76,17 @@ else:
 github_token = os.environ.get("GITHUB_TOKEN", "")
 if github_token:
     github_token += "@"
-github_root = f"https://{github_token}github.com/Avaiga/taipy-"
+github_root = f"https://{github_token}github.com/Avaiga/"
 for repo in repo_defs.keys():
     version = repo_defs[repo]["version"]
     if version == "local":
-        repo_path = os.path.join(TOP_DIR, "taipy-" + repo)
+        repo_path = os.path.join(TOP_DIR, repo)
         repo_defs[repo]["path"] = repo_path
         if not os.path.isdir(repo_path):
             if repo in PRIVATE_REPOS:
                 repo_defs[repo]["skip"] = True
             else:
-                raise IOError(f"Repository 'taipy-{repo}' must be cloned in \"{TOP_DIR}\".")
+                raise IOError(f"Repository '{repo}' must be cloned in \"{TOP_DIR}\".")
     elif version == "develop":
         with GitContext(repo, PRIVATE_REPOS):
             cmd = subprocess.run(f"{git_path} ls-remote -q -h {github_root}{repo}.git", shell=True, capture_output=True,
@@ -108,13 +108,13 @@ for repo in repo_defs.keys():
                 else:
                     raise SystemError(f"Couldn't query branches from {github_root}{repo}.")
             if not f"release/{version}\n" in cmd.stdout:
-                raise ValueError(f"No branch 'release/{version}' in repository 'taipy-{repo}'.")
+                raise ValueError(f"No branch 'release/{version}' in repository '{repo}'.")
             tag = repo_defs[repo]["tag"]
             if tag:
                 cmd = subprocess.run(f"{git_path} ls-remote -t --refs {github_root}{repo}.git", shell=True,
                                      capture_output=True, text=True)
                 if not f"refs/tags/{tag}\n" in cmd.stdout:
-                    raise ValueError(f"No tag '{tag}' in repository 'taipy-{repo}'.")
+                    raise ValueError(f"No tag '{tag}' in repository '{repo}'.")
 
 if args.check:
     print(f"Fetch should perform properly with the following settings:")
@@ -125,7 +125,7 @@ if args.check:
             tag = repo_defs[repo]["tag"]
             if tag:
                 version += f" tag:{tag}"
-            print(f"- taipy-{repo} {version}")
+            print(f"- {repo} {version}")
     exit(0)
 
 DEST_DIR = os.path.join(ROOT_DIR, DEST_DIR_NAME)
@@ -176,8 +176,8 @@ def move_files(repo: str, src_path: str):
                             else:
                                 pipfile_packages[package] = {version: [repo]}
     # Copy relevant files for doc generation
-    if repo.startswith("getting-started"):
-        gs_dir = os.path.join(ROOT_DIR, "docs", "getting_started", repo)
+    if repo.startswith("taipy-getting-started"):
+        gs_dir = os.path.join(ROOT_DIR, "docs", "getting_started", repo[6:])
         # safe_rmtree(os.path.join(gs_dir, "src"))
         for step_dir in [step_dir for step_dir in os.listdir(gs_dir) if
                          step_dir.startswith("step_") and os.path.isdir(os.path.join(gs_dir, step_dir))]:
@@ -189,7 +189,7 @@ def move_files(repo: str, src_path: str):
         shutil.copytree(os.path.join(src_path, "src"), os.path.join(gs_dir, "src"))
         shutil.copy(os.path.join(src_path, "index.md"), os.path.join(gs_dir, "index.md"))
         saved_dir = os.getcwd()
-        os.chdir(os.path.join(ROOT_DIR, "docs", "getting_started", repo))
+        os.chdir(os.path.join(ROOT_DIR, "docs", "getting_started", repo[6:]))
         subprocess.run(f"python {os.path.join(src_path, 'generate_notebook.py')}",
                        shell=True,
                        capture_output=True,
@@ -198,36 +198,56 @@ def move_files(repo: str, src_path: str):
     else:
         tmp_dir = os.path.join(ROOT_DIR, f"{repo}.tmp")
         safe_rmtree(tmp_dir)
-        gui_dir = os.path.join(ROOT_DIR, f"gui") if repo == "gui" else None
-        if gui_dir and os.path.isdir(gui_dir):
+        gui_dir = os.path.join(ROOT_DIR, f"gui") if repo == "taipy-gui" else None
+        if repo == "taipy-gui" and os.path.isdir(gui_dir):
             if os.path.isdir(os.path.join(gui_dir, "node_modules")):
                 shutil.move(os.path.join(gui_dir, "node_modules"), os.path.join(ROOT_DIR, f"gui_node_modules"))
             shutil.rmtree(gui_dir)
         try:
-            def keep_py_files(dir, filenames):
-                return [name for name in filenames if not os.path.isdir(os.path.join(dir, name)) and not (
-                    name.endswith('.py') or name.endswith('.pyi') or name.endswith('.json') or name.endswith('.ipynb'))]
+            def copy_source(src_path: str, repo: str):
+                def copy(item: str, src: str, dst: str, rel_path: str):
+                    full_src = os.path.join(src, item)
+                    full_dst = os.path.join(dst, item)
+                    if os.path.isdir(full_src):
+                        if item in ["__pycache__", "node_modules"]:
+                            return
+                        if not os.path.isdir(full_dst):
+                            os.makedirs(full_dst)
+                        rel_path = f"{rel_path}/{item}"
+                        for sub_item in os.listdir(full_src):
+                            copy(sub_item, full_src, full_dst, rel_path)
+                    elif any(item.endswith(ext) for ext in [".py", ".pyi", ".json", ".ipynb"]):
+                        if os.path.isfile(full_dst): # File exists - compare
+                            with open(full_src, "r") as f:
+                                src = f.read()
+                            with open(full_dst, "r") as f:
+                                dst = f.read()
+                            if src != dst:
+                                raise FileExistsError(f"File {rel_path}/{item} already exists and is different (copying repository {repo})")
+                        else:
+                            shutil.copy(full_src, full_dst)
+                dest_path = os.path.join(ROOT_DIR, "taipy")
+                if not os.path.exists(dest_path):
+                    os.makedirs(dest_path)
+                src_path = os.path.join(src_path, "src", "taipy")
+                for item in os.listdir(src_path):
+                    copy(item, src_path, dest_path, "")
+            copy_source(src_path, repo)
 
-            shutil.copytree(os.path.join(src_path, "src", "taipy"), tmp_dir, ignore=keep_py_files)
-            entries = os.listdir(tmp_dir)
-            for entry in entries:
-                try:
-                    if entry != "__pycache__":
-                        shutil.move(os.path.join(tmp_dir, entry), DEST_DIR)
-                except shutil.Error as e:
-                    if entry != "__init__.py":  # Top-most __entry__.py gets overwritten over and over
-                        raise e
             if gui_dir:
-                os.mkdir(gui_dir)
+                if not os.path.isdir(gui_dir):
+                    os.mkdir(gui_dir)
                 src_gui_dir = os.path.join(src_path, "gui")
-                shutil.copytree(os.path.join(src_gui_dir, "doc"), os.path.join(gui_dir, "doc"))
                 shutil.copytree(os.path.join(src_gui_dir, "src"), os.path.join(gui_dir, "src"))
                 for f in [f for f in os.listdir(src_gui_dir) if f.endswith(".md") or f.endswith(".json")]:
                     shutil.copy(os.path.join(src_gui_dir, f), os.path.join(gui_dir, f))
                 if os.path.isdir(os.path.join(ROOT_DIR, "gui_node_modules")):
                     shutil.move(os.path.join(ROOT_DIR, "gui_node_modules"), os.path.join(gui_dir, "node_modules"))
         finally:
+            pass
+            """
             shutil.rmtree(tmp_dir)
+            """
 
 
 for repo in repo_defs.keys():

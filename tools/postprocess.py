@@ -85,8 +85,8 @@ def remove_dummy_h3(content: str, ids: Dict[str, str]) -> str:
 def on_post_build(env):
     "Post-build actions for Taipy documentation"
 
-    site_dir = env.conf["site_dir"]
     log = logging.getLogger("mkdocs")
+    site_dir = env.conf["site_dir"]
     xrefs = {}
     if os.path.exists(site_dir + "/manuals/xrefs"):
         with open(site_dir + "/manuals/xrefs") as xrefs_file:
@@ -103,8 +103,11 @@ def on_post_build(env):
     fixed_cross_refs = {}
     for root, _, file_list in os.walk(site_dir):
         for f in file_list:
+            # Remove the *_template files
+            if f.endswith("_template"):
+                os.remove(os.path.join(root, f))
             # Post-process generated '.html' files
-            if f.endswith(".html"):
+            elif f.endswith(".html"):
                 filename = os.path.join(root, f)
                 file_was_changed = False
                 with open(filename) as html_file:

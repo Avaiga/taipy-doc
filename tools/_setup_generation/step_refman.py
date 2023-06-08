@@ -21,6 +21,7 @@ class RefManStep(SetupStep):
         "taipy.config",
         "taipy.core",
         "taipy.gui",
+        "taipy.gui_core",
         "taipy.rest",
         "taipy.auth",
         "taipy.enterprise",
@@ -95,7 +96,7 @@ class RefManStep(SetupStep):
         ("taipy.config.common.scope.Scope", "taipy.core.config"),
         ("taipy.config.common.frequency.Frequency", "taipy.core.config"),
         ("taipy.config.unique_section.*", "taipy.config"),
-        ("taipy.config.exceptions.exceptions.ConfigurationIssueError", "taipy.config.exceptions"),
+        #("taipy.config.exceptions.exceptions.ConfigurationIssueError", "taipy.config.exceptions"),
         # Rest
         ("taipy.rest.rest.Rest", "taipy.rest"),
         # Auth
@@ -145,6 +146,7 @@ class RefManStep(SetupStep):
         REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 
         os.mkdir(self.REFERENCE_DIR_PATH)
+        loaded_modules = set()
 
         # Entries:
         #   full_entry_name ->
@@ -157,6 +159,9 @@ class RefManStep(SetupStep):
         module_doc = {}
 
         def read_module(module):
+            if module in loaded_modules:
+                return
+            loaded_modules.add(module)
             if not module.__name__.startswith(Setup.ROOT_PACKAGE):
                 return
             for entry in dir(module):

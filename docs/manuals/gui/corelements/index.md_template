@@ -1,0 +1,17 @@
+# Core elements
+
+!!! warning "Available in Taipy Community and Enterprise editions"
+
+    The controls listed in this section are available only if the
+    [`taipy`](https://pypi.org/project/taipy/) Python package is installed. These controls are
+    **not** present if only [`taipy-gui`](https://pypi.org/project/taipy-gui/) is installed.
+
+Taipy provides a set of visual elements that are meant to simplify the use of Core
+objects... TODO
+
+## Elements list
+
+Here is the list of all the available Core elements in Taipy:
+
+[TOC]
+
