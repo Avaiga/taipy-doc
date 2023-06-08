@@ -73,7 +73,7 @@ Three parameters can be given to the scenario creation method :
 
 !!! warning "Deprecation"
 
-    Note that function `taipy.create_pipeline()^` has been deprecated.
+    Note that function `taipy.create_pipeline()^` has been deprecated in version 2.3.
 
 Pipelines can be created separately from scenarios using `taipy.create_pipeline()^` function.
 
