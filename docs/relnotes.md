@@ -44,7 +44,7 @@ Not published yet.
 ### Deprecations
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
-2.0.0
+2.3.0
 
 - `PipelineConfig^` has been deprecated and will be combined with `ScenarioConfig^` in future update.
 - `taipy.create_pipeline()^` has been deprecated.
