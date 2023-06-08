@@ -1,6 +1,6 @@
 !!! warning "Deprecation"
 
-    Note that the concept of `Pipeline^` has been deprecated in Taipy and many changes will be made in
+    Note that the `PipelineConfig^` has been deprecated in version 2.3. The `Pipeline^` entity will be strongly impacted in the following major version.
     future versions.
 
 The [Entities' creation](scenario-creation.md) section provides documentation on `Pipeline^` creation. Now
