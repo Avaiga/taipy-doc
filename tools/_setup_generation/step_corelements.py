@@ -34,7 +34,7 @@ class CoreElementsStep(ElementsGenerator):
             raise FileNotFoundError(
                 f"FATAL - Could not read {self.template_path} markdown template"
             )
-        self.load_elements(setup.root_dir + "/gui/core_viselements.json",
+        self.load_elements(setup.root_dir + "/taipy/gui_core/viselements.json",
                            ["controls"])
 
     def get_element_template_path(self, element_type: str) -> str:

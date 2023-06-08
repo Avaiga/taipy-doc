@@ -31,7 +31,6 @@ class VisElementsStep(ElementsGenerator):
     def enter(self, setup: Setup):
         self.GUI_DIR_PATH = setup.manuals_dir + "/gui"
         self.VISELEMENTS_DIR_PATH = self.GUI_DIR_PATH + "/viselements"
-        self.VISELEMENTS_SRC_PATH = setup.root_dir + "/gui/doc"
         self.controls_template_path = self.GUI_DIR_PATH + "/controls.md_template"
         if not os.access(self.controls_template_path, os.R_OK):
             raise FileNotFoundError(
@@ -47,12 +46,12 @@ class VisElementsStep(ElementsGenerator):
             raise FileNotFoundError(
                 f"FATAL - Could not read {self.charts_home_html_path} html fragment"
             )
-        self.load_elements(self.VISELEMENTS_SRC_PATH + "/viselements.json",
+        self.load_elements(setup.root_dir + "/taipy/gui/viselements.json",
                            ["controls", "blocks"])
 
 
     def get_element_template_path(self, element_type: str) -> str:
-        return f"{self.VISELEMENTS_SRC_PATH}/{element_type}.md"
+        return f"{self.VISELEMENTS_DIR_PATH}/{element_type}.md_template"
 
     def get_element_md_path(self, element_type: str) -> str:
         return f"{self.VISELEMENTS_DIR_PATH}/{element_type}.md"
