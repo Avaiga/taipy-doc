@@ -109,8 +109,8 @@ nav:
                 - "For production": manuals/run-deploy/deploy/docker/production.md
             - On Azure:
                 - manuals/run-deploy/deploy/azure.md
-            - On Clever Cloud:
-                - manuals/run-deploy/deploy/clever-cloud.md
+#            - On Clever Cloud:
+#                - manuals/run-deploy/deploy/clever-cloud.md
             - On Heroku:
                 - manuals/run-deploy/deploy/heroku/index.md
                 - "Setup": manuals/run-deploy/deploy/heroku/setup.md
