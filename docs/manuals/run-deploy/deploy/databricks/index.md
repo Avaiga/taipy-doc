@@ -6,7 +6,7 @@
 
 !!! Warning
 
-    We recommend using Databricks deployments for development and demonstration purposes only.
+    We recommend using Databricks deployments for testing or demonstration purposes only.
 
 In the current section we consider the following as prerequisites:
 
