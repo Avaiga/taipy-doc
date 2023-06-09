@@ -52,8 +52,7 @@ import taipy as tp
 
 if __name__ == "__main__":
     print('Starting the Taipy application')
-    tp.Gui(page="# Getting started with *Taipy*").run
-    (title="Taipy application")
+    tp.Gui(page="# Getting started with *Taipy*").run(title="Taipy application")
 ```
 
 In this example, we have a simple Taipy application that starts by printing a message to the console using the `print()` function. This message will be captured by the Azure App Service's Log Stream.
