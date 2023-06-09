@@ -1,4 +1,12 @@
-# Deploy on Databricks for development
+# Deploy on Databricks
+
+!!! Note
+
+    Taipy is currently only available with Databricks **Standard** runtimes.
+
+!!! Warning
+
+    We recommend using Databricks deployments for development and demonstration purposes only.
 
 ## Prerequisites
 
@@ -7,16 +15,6 @@
 - A Databricks cluster in operation.
 - A Linux-based machine that can communicate with your local machine and Databricks.
 - [:material-arrow-right: Running a Taipy application](../../run/index.md)
-
-!!! Note
-
-    Taipy is currently only available with Databricks **Standard** runtimes.
-
-
-!!! Warning
-
-    The following configuration is for development purposes only.
-
 
 ## Running an application
 
