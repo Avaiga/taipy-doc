@@ -70,7 +70,7 @@ where the page is defined, then the main module.
 
 !!! important "Defining a page scope"
     A page scope, where variables used in a page definition are searched, is the module
-    where the page *instance* (an instance of the `Markdown^` or the `HTML^` classes),
+    where the page *instance* (an instance of the `Markdown^` or the `Html^` classes),
     **not** the text of the page.
 
 This mechanism allows pages to bind to local variables declared on their own module.

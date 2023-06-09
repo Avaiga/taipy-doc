@@ -10,9 +10,6 @@ class ElementsGenerator(SetupStep):
     NAME = "name"
     INHERITS = "inherits"
 
-    def get_doc_dir(self) -> str:
-        raise NotImplemented("ElementsGenerator get_doc_dir() must be defined.")
-
     # Load elements, test validity of doc and resolve inheritance
     def load_elements(self, elements_json_path: str, categories: List[str]) -> None:
         with open(elements_json_path) as elements_json_file:
@@ -84,10 +81,10 @@ class ElementsGenerator(SetupStep):
                 raise ValueError(
                     f"FATAL - No properties for element type '{element}'"
                 )
-            doc_path = self.get_element_template_path(element)
-            if not os.access(doc_path, os.R_OK):
+            template_path = self.get_element_md_path(element) + "_template"
+            if not os.access(template_path, os.R_OK):
                 raise FileNotFoundError(
-                    f"FATAL - Could not find doc for element type '{element}' at {doc_path}"
+                    f"FATAL - Could not find doc for element type '{element}' at {template_path}"
                 )
             # Check completeness
             for property in element_desc[__class__.PROPERTIES]:
@@ -102,9 +99,6 @@ class ElementsGenerator(SetupStep):
     # Find first level 2 or 3 header
     FIRST_HEADER2_RE = re.compile(r"(^.*?)(\n###?\s+)", re.MULTILINE | re.DOTALL)
 
-    def get_element_template_path(self, element_type: str) -> str:
-        raise NotImplementedError(f"get_element_template_path() not implemented (element was {element_type}).")
-
     def get_element_md_path(self, element_type: str) -> str:
         raise NotImplementedError(f"get_element_md_path() not implemented (element was {element_type}).")
 
@@ -115,13 +109,13 @@ class ElementsGenerator(SetupStep):
         return (None, None)
 
     # Generate element doc pages for that category
-    def generate_pages(self, category: str, md_path: str, md_template_path: str) -> None:
+    def generate_pages(self, category: str, md_path: str) -> None:
         def generate_element_doc(element_type: str, element_desc: Dict):
             """
             Returns the entry for the Table of Contents that is inserted
             in the global Visual Elements or Core Elements doc page.
             """
-            template_doc_path = self.get_element_template_path(element_type) 
+            template_doc_path = self.get_element_md_path(element_type) + "_template"
             with open(template_doc_path, "r") as template_doc_file:
                 element_documentation = template_doc_file.read()
             # Retrieve first paragraph from element documentation
@@ -202,14 +196,13 @@ class ElementsGenerator(SetupStep):
                     + after_properties
                 )
             e = element_type  # Shortcut
-            d = self.get_doc_dir()
             return (
-                f'<a class="tp-ve-card" href="../{d}/{e}/">\n'
+                f'<a class="tp-ve-card" href="../{e}/">\n'
                 + f"<div>{e}</div>\n"
-                + f'<img class="tp-ve-l" src="../{d}/{e}-l.png"/>\n'
-                + f'<img class="tp-ve-lh" src="../{d}/{e}-lh.png"/>\n'
-                + f'<img class="tp-ve-d" src="../{d}/{e}-d.png"/>\n'
-                + f'<img class="tp-ve-dh" src="../{d}/{e}-dh.png"/>\n'
+                + f'<img class="tp-ve-l" src="../{e}-l.png"/>\n'
+                + f'<img class="tp-ve-lh" src="../{e}-lh.png"/>\n'
+                + f'<img class="tp-ve-d" src="../{e}-d.png"/>\n'
+                + f'<img class="tp-ve-dh" src="../{e}-dh.png"/>\n'
                 + f"<p>{first_documentation_paragraph}</p>\n"
                 + "</a>\n"
             )
@@ -218,10 +211,10 @@ class ElementsGenerator(SetupStep):
             # The toc header and footer must then be "<ui>" and "</ul>" respectively.
 
         md_template = ""
-        with open(md_template_path) as template_file:
+        with open(f"{md_path}_template") as template_file:
             md_template = template_file.read()
         if not md_template:
-            raise FileNotFoundError(f"FATAL - Could not read {md_template_path} markdown template")
+            raise FileNotFoundError(f"FATAL - Could not read {md_path}_template markdown template")
         toc = '<div class="tp-ve-cards">\n'
         for element_type in self.categories[category]:
             toc += generate_element_doc(element_type, self.elements[element_type])
