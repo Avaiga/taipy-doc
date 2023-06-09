@@ -6,7 +6,7 @@
 - Knowledge of SSH.
 - A Databricks cluster in operation.
 - A Linux-based machine that can communicate with your local machine and Databricks.
-- [:material-arrow-right: Running a Taipy application](../run/index.md)
+- [:material-arrow-right: Running a Taipy application](../../run/index.md)
 
 !!! Note
 
@@ -22,7 +22,7 @@
 
 By taking the [application created earlier](../../run/index.md), installing it on Databrick and running it as follows.
 
-![running-taipy-application](databricks/running-taipy-application.png)
+![running-taipy-application](images/running-taipy-application.png)
 
 But you can't access the application from your computer.
 
@@ -42,11 +42,11 @@ The key point of the architecture is the communication between the Linux-based m
 
 On Databricks, go to compute and select your cluster.
 
-![databricks-clusters](databricks/databricks-clusters.png)
+![databricks-clusters](images/databricks-clusters.png)
 
 Go to the "Apps" panel and select "Web Terminal". It opens a new tab with a shell. 
 
-![running-taipy-application](databricks/databricks-shell.png)
+![running-taipy-application](images/databricks-shell.png)
 
 In this shell, enter the following command, replacing `username` and `machine-ip` with your values:
 ```ssh -R 8080:127.0.0.1:5000 <username>@<machine-ip>```
@@ -59,7 +59,7 @@ You are now on the Linux-based machine, and the communication is verified. You m
 
 Therefore, running `curl localhost:8080` should get your application's output still running on your Databricks notebook!
 
-![running-taipy-application](databricks/curl-app.png)
+![running-taipy-application](images/curl-app.png)
 
 
 ## Make it accessible from the outside

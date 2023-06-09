@@ -13,7 +13,7 @@ Here are the different situations that Taipy can address:
   [Azure](https://azure.microsoft.com/en-us/) platform;
 - [Heroku](heroku/index.md): deploy the application on the
   [Heroku](https://www.heroku.com/home) platform;
-- [Databricks](databricks.md): deploy the application on the
+- [Databricks](databricks/index.md): deploy the application on the
   [Databricks](https://www.databricks.com/) platform;
 - [Clever Cloud](clever-cloud.md): deploy the application on the
   [Clever Cloud](https://www.clever-cloud.com/) environment.
