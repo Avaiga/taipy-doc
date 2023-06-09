@@ -1,17 +1,14 @@
-We introduce here the important concept of a `Scenario^`. A Taipy Scenario represents an instance of a
-business problem to solve on consistent data and parameter sets.
+Introducing the `Scenario`, a fundamental key concept in Taipy.
 
-As its name implies, with Taipy scenarios, the users can instantiate different versions of a business
-problem with different assumptions. This is extremely useful in a business context where impact analysis
-and what-if analysis are essential in the decision process.
+A Taipy scenario represents a business problem with consistent data and parameters.
 
-After analyzing its first scenario, an end-user may be interested in modifying input
-data nodes (not the intermediate nor the output data nodes), re-running the same pipelines, and
-comparing the results with the previous run.
+It serves as a powerful tool to create different versions of a problem by incorporating assumptions. This flexibility is particularly valuable for impact analysis and decision-making processes, enabling users to create, store, edit, and execute multiple scenarios within the same application.
 
-For this purpose, he needs to instantiate a second scenario, execute it and compare it with the
-first scenario. This process can be repeated across multiple scenarios.
+Once an initial scenario has been analyzed, users can modify the input data nodes (excluding the intermediates and output data nodes), rerun his pipelines, and compare results.
 
+This involves instantiating a second scenario, executing it, and comparing the outcomes with the first scenario.
+
+This iterative process can be repeated across multiple scenarios, allowing for comprehensive exploration and analysis of different problem variations.
 
 !!! example "In the example"
 
@@ -20,9 +17,13 @@ first scenario. This process can be repeated across multiple scenarios.
 
     ![scenarios](../pic/scenarios.svg){ align=left }
 
-A scenario represents one instance of a business problem to solve. Each new business problem instance
-is represented by a new scenario. With Taipy, end-users can create, store, edit, and
-execute various scenarios within the same application.
+
+Two use-cases arise from the utilization of Taipy scenarios:
+
+### - Use case 1 : 
+Each _scenario_ represents a distinct instance of a business problem. 
+
+With Taipy, end-users can create, store, edit, and execute various scenarios within the same application. 
 
 !!! example
 
@@ -39,20 +40,16 @@ execute various scenarios within the same application.
     Then the end-user creates another scenario for February using the new information provided for the
     February period. And so on.
 
-Two _scenarios_ can also represent the same instance of a business problem but with two different sets of
-assumptions.
+### - Use case 2:
+Two _scenarios_ represent the same business problem instance, but with different sets of assumptions.
 
 !!! example
 
-    The end-user would like to simulate the impact of our capacity data on production planning for the
-    February use case.
+    The end-user wants to simulate how our capacity data affects production planning for the February situation.
 
-    The first scenario can forecast demand and compute production orders assuming a low capacity,
-    whereas the second assumes a higher capacity value.
+    In the first scenario, we forecast demand and calculate production orders based on a low capacity assumption. In the second scenario, we assume a higher capacity value.
 
-    One can note that data scientists can also use scenarios. This is often referred to as ‘experiments’.
-    Scenarios are in fact, a generalization of experiments in such a way that both data sceintists
-    and end-users can finally use the same concept: the Scenario.
+    It's important to note that scenarios are not only useful for end-users, but also for data scientists. They can use scenarios as experiments to test different hypotheses. Essentially, scenarios provide a common concept that both data scientists and end-users can utilize.
 
 
 [:material-arrow-right: The next section introduces the Cycle concept.](cycle.md)
