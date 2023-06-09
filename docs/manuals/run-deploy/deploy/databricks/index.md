@@ -8,7 +8,7 @@
 
     We recommend using Databricks deployments for development and demonstration purposes only.
 
-## Prerequisites
+In the current section we consider the following as prerequisites:
 
 - Knowledge of Databricks.
 - Knowledge of SSH.
@@ -16,25 +16,44 @@
 - A Linux-based machine that can communicate with your local machine and Databricks.
 - [:material-arrow-right: Running a Taipy application](../../run/index.md)
 
-## Running an application
+## Running your application on Databricks
 
-By taking the [application created earlier](../../run/index.md), installing it on Databrick and running it as follows.
+The first step consist in running your Taipy application on Databricks.
+Let's consider the following application:
+
+```python linenums="1"
+{%
+include-markdown "../../code_sample/basic_gui_rest_app.py"
+comments=false
+%}
+```
+
+Connect to Databricks and run the previous code in a Databricks Notebook.
+
+TODO: Take a better screenshot or copy/paste the output in a code snippet.
 
 ![running-taipy-application](images/running-taipy-application.png)
 
-But you can't access the application from your computer.
+As you can see on the output, the Taipy application is running on the Databricks localhost (127.0.0.1:5000)
+which is not exposed. The next section shows you how to expose your application.
 
-## External access with Databricks
+
+## Exposing your application
+
+
+
+
+### External access with Databricks
 
 Databricks does not provide external access to notebooks. You can access resources from your notebooks, but the other way is blocked.
 
 We can't change this configuration, but we can remove it using an external component as our application's entry point.
 
-## Connecting Virtual Machine and Databricks
+### Connecting Virtual Machine and Databricks
 
 Since we can't connect to the Databricks, we'll use the Linux-based machine as an entry point to the Databricks. To do this, we'll use [SSH](https://www.ssh.com) which is installed by default on Databricks and Linux. It will create a tunnel between the two entities, enabling them to communicate. We'll also install Nginx on the Linux-based machine to link the request to your application.
 
-## Configuring communication
+### Configuring communication
 
 The key point of the architecture is the communication between the Linux-based machine and Databricks. To check connectivity, we'll connect to the Linux-based device via Databricks.
 
@@ -42,7 +61,7 @@ On Databricks, go to compute and select your cluster.
 
 ![databricks-clusters](images/databricks-clusters.png)
 
-Go to the "Apps" panel and select "Web Terminal". It opens a new tab with a shell. 
+Go to the "Apps" panel and select "Web Terminal". It opens a new tab with a shell.
 
 ![running-taipy-application](images/databricks-shell.png)
 
@@ -60,9 +79,9 @@ Therefore, running `curl localhost:8080` should get your application's output st
 ![running-taipy-application](images/curl-app.png)
 
 
-## Make it accessible from the outside
+### Make it accessible from the outside
 
-Communication is now established, but not from the browser's point of view. We'll install and configure Nginx on the Linux-based machine to enable browser-based communication. 
+Communication is now established, but not from the browser's point of view. We'll install and configure Nginx on the Linux-based machine to enable browser-based communication.
 
 First, install [Nginx](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/).
 
