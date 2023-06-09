@@ -53,7 +53,7 @@ class VisElementsStep(ElementsGenerator):
 
     def setup(self, setup: Setup) -> None:
         self.generate_pages("controls", self.controls_path)
-        self.generate_pages("blocks",   self.get_element_md_path("blocks"))
+        self.generate_pages("blocks", self.blocks_path)
 
     def element_page_hook(self, element_type:str, element_documentation: str, before: str, after: str) -> tuple[str, str]:
         # Special case for charts: we want to insert the chart gallery that is stored in the
