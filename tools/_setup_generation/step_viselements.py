@@ -5,11 +5,11 @@
 # and the blocks document pages.
 #
 # For each visual element, this script combines its property list and core
-# documentation (located in [VISELEMENTS_SRC_PATH]), and generates full
-# Markdown files in [VISELEMENTS_DIR_PATH]. All these files ultimately get
-# integrated in the global dos set.
+# documentation, and generates full Markdown files in [VISELEMENTS_DIR_PATH]. All
+# these files ultimately get integrated in the global doc set.
 #
-# The skeleton documentation files [GUI_DOC_PATH]/[controls|blocks].md_template
+# The skeleton documentation files
+# [VISELEMENTS_DIR_PATH]/[controls|blocks].md_template
 # are also completed with generated table of contents.
 # ################################################################################
 from .setup import Setup
@@ -25,21 +25,19 @@ class VisElementsStep(ElementsGenerator):
     def get_description(self) -> str:
         return "Extraction of the visual elements documentation"
 
-    def get_doc_dir(self) -> str:
-        return "viselements"
-
     def enter(self, setup: Setup):
-        self.GUI_DIR_PATH = setup.manuals_dir + "/gui"
-        self.VISELEMENTS_DIR_PATH = self.GUI_DIR_PATH + "/viselements"
-        self.controls_template_path = self.GUI_DIR_PATH + "/controls.md_template"
-        if not os.access(self.controls_template_path, os.R_OK):
+        self.VISELEMENTS_DIR_PATH = setup.manuals_dir + "/gui/viselements"
+        self.controls_path = self.get_element_md_path("controls")
+        template_path = f"{self.controls_path}_template"
+        if not os.access(template_path, os.R_OK):
             raise FileNotFoundError(
-                f"FATAL - Could not read {self.controls_template_path} Markdown template"
+                f"FATAL - Could not read {template_path} Markdown template"
             )
-        self.blocks_template_path = self.GUI_DIR_PATH + "/blocks.md_template"
-        if not os.access(self.blocks_template_path, os.R_OK):
+        self.blocks_path = self.get_element_md_path("blocks")
+        template_path = f"{self.blocks_path}_template"
+        if not os.access(template_path, os.R_OK):
             raise FileNotFoundError(
-                f"FATAL - Could not read {self.blocks_template_path} Markdown template"
+                f"FATAL - Could not read {template_path} Markdown template"
             )
         self.charts_home_html_path = self.VISELEMENTS_DIR_PATH + "/charts/home.html_fragment"
         if not os.access(self.charts_home_html_path, os.R_OK):
@@ -50,18 +48,12 @@ class VisElementsStep(ElementsGenerator):
                            ["controls", "blocks"])
 
 
-    def get_element_template_path(self, element_type: str) -> str:
-        return f"{self.VISELEMENTS_DIR_PATH}/{element_type}.md_template"
-
     def get_element_md_path(self, element_type: str) -> str:
         return f"{self.VISELEMENTS_DIR_PATH}/{element_type}.md"
 
     def setup(self, setup: Setup) -> None:
-        # Create VISELEMS_DIR_PATH directory if necessary
-        if not os.path.exists(self.VISELEMENTS_DIR_PATH):
-            os.mkdir(self.VISELEMENTS_DIR_PATH)
-        self.generate_pages("controls", self.get_element_md_path("controls"), self.controls_template_path)
-        self.generate_pages("blocks",   self.get_element_md_path("blocks"), self.blocks_template_path)
+        self.generate_pages("controls", self.controls_path)
+        self.generate_pages("blocks", self.blocks_path)
 
     def element_page_hook(self, element_type:str, element_documentation: str, before: str, after: str) -> tuple[str, str]:
         # Special case for charts: we want to insert the chart gallery that is stored in the

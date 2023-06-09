@@ -17,11 +17,11 @@ There are two types of _Visual Elements_:
 If you are familiar with what _Visual Elements_ are and how they are declared, you
 may want to jump directly to the list of the available visual elements:
 
-[:material-arrow-right: List of available controls](../controls.md)
+[:material-arrow-right: List of available controls](controls.md)
 
 [:material-arrow-right: List of available Core back-end controls](../corelements)
 
-[:material-arrow-right: List of available blocks](../blocks.md)
+[:material-arrow-right: List of available blocks](blocks.md)
 
 ## Properties
 

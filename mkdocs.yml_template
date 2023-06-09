@@ -20,10 +20,10 @@ nav:
         - "Pages": manuals/gui/pages.md
         - "Visual Elements":
            - manuals/gui/viselements/index.md
-           - "Controls": manuals/gui/controls.md
+           - "Controls": manuals/gui/viselements/controls.md
            - "Core Back-end Controls":
               - manuals/gui/corelements/index.md
-           - "Blocks": manuals/gui/blocks.md
+           - "Blocks": manuals/gui/viselements/blocks.md
         - "Binding variables": manuals/gui/binding.md
         - "Callbacks": manuals/gui/callbacks.md
         - "Notifications": manuals/gui/notifications.md
