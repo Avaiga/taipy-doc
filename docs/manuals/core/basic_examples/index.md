@@ -8,7 +8,7 @@ simple or very complex algorithms.
 
 This section aims to build a _Hello world_ example to show how to quickly configure, create and submit
 a scenario. The following picture represents the scenario execution graph made of two data nodes
-(blue boxes) and two tasks (orange boxes).
+(blue boxes) and one task (orange box).
 
 ![hello world example](../pic/hello_world.svg){width=75%}
 
