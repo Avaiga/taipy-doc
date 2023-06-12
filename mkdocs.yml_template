@@ -179,7 +179,8 @@ markdown_extensions:
       generic: true
   - pymdownx.highlight
   - pymdownx.superfences
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.details
   - admonition
   - toc:
