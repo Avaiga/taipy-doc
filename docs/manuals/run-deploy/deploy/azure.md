@@ -9,7 +9,7 @@
 
 ## Azure App Service
 
-Azure App Service is a managed platform that simplifies deployment, scaling, and management of web applications. Azure Web App, a service within App Service, specialized in hosting and managing web applications. As a Python developer, you can leverage Azure Web App to easily deploy and run your Python-based web applications in a scalable and hassle-free environment.
+Azure App Service is a managed platform that simplifies web application deployment, scaling, and management. Azure Web App, a service within App Service, specializes in hosting and managing web applications. As a Python developer, you can leverage Azure Web App to quickly deploy and run your Python-based web applications in a scalable, hassle-free environment.
 
 !!! Note
 
@@ -17,13 +17,13 @@ Azure App Service is a managed platform that simplifies deployment, scaling, and
 
 ## Prepare your application
 
-Open a terminal and go in the application folder. Ensure you have a `requirements.txt` file listing the required dependencies and your entrypoint Python file named `app.py` or `application.py`. These files are crucial for Azure App Service to correctly deploy your application.
+Open a terminal and go in the application folder. Ensure you have a `requirements.txt` file listing the required dependencies and your entry point Python file named `app.py` or `application.py`. These files are crucial for Azure App Service to deploy your application correctly.
 
 !!! Note
 
-   This naming convention is standard but you can [overwrite it](https://learn.microsoft.com/en-us/azure/app-service/configure-language-python).
+   This naming convention is standard, but you can [overwrite it](https://learn.microsoft.com/en-us/azure/app-service/configure-language-python).
 
-Here the folder structure:
+Here is the folder structure and content:
 ```shell
 taipy@taipy:~$ ls
 application.py  requirements.txt
@@ -44,12 +44,12 @@ else:
 
 ## Create a Web App in Azure
 
-In your terminal, login to Azure using the command:
+In your terminal, log in to Azure using the command:
 ```shell
 taipy@taipy:~$ az login
 ```
 
-Still in your terminal, you can create the web app then deploy your code using the following command:
+Still in your terminal, you can create the web app and then deploy your code using the following command:
 ```shell
 taipy@taipy:~$ az webapp up --runtime PYTHON:3.9 --sku B1 --logs
 The webapp 'gentle-stone-7d284754337a4dcb968d392baac1ccc9' doesn't exist
@@ -68,11 +68,11 @@ Configuring default logging for the app, if not already enabled
 
 - The `--runtime` parameter specifies the Python version your app is running, in this case, Python 3.9.
 - The `--sku` parameter defines the size (CPU, memory) and cost of the app service plan. This example uses the B1 (Basic) service plan.
-- The `--logs` flag configures default logging required to enable viewing the log stream immediately after launching the web app.
+- The `--logs` flag configures the default logging required to enable viewing the log stream immediately after launching the web app.
 
 You can optionally specify the `--name <app-name>` argument to provide a custom name for your app. If not provided, a name will be automatically generated.
 
-The command may take a few minutes to complete. While it is running, it provides messages about the ressource group and the App Service. Keep then for the next step. In the example, the resource group name is `taipy_rg_4939` and the App Service is `taipy_asp_8825`.
+The command may take a few minutes to complete. While running, it provides messages about the resource group and the Azure App Service names. Keep them for the next step. In the example, the resource group name is `taipy_rg_4939` and the App Service is `taipy_asp_8825`.
 
 Once completed, it will display the message "You can launch the app at http://<app-name>.azurewebsites.net", which is the URL of your app. In the example `http://gentle-stone-7d284754337a4dcb968d392baac1ccc9.azurewebsites.net`.
 
@@ -83,6 +83,6 @@ Once completed, it will display the message "You can launch the app at http://<a
 
 ## Further information
 
-The Azure documentation provide more information about [configuration](https://learn.microsoft.com/en-us/azure/app-service/configure-language-python), [monitoring](https://learn.microsoft.com/en-us/azure/app-service/overview-monitoring) or [logs](https://learn.microsoft.com/en-us/azure/app-service/troubleshoot-diagnostic-logs#enable-application-logging-linuxcontainer).
+The Azure documentation provides more information about [configuration](https://learn.microsoft.com/en-us/azure/app-service/configure-language-python), [monitoring](https://learn.microsoft.com/en-us/azure/app-service/overview-monitoring) or [logs](https://learn.microsoft.com/en-us/azure/app-service/troubleshoot-diagnostic-logs#enable-application-logging-linuxcontainer).
 
 You can also find more information about [Azure App Service and Azure Web Application](https://learn.microsoft.com/en-us/azure/app-service/overview-hosting-plans).
