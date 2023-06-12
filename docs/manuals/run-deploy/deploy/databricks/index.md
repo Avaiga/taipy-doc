@@ -48,7 +48,7 @@ proxy machine and the Databricks machine, enabling them to communicate.
 We'll also install Nginx on the Linux-based machine to route the request from your browser
 to your application.
 
-### 1 - Set up a machine
+### 1 - Set up a proxy machine
 
 TODO: Any linux based machine with prerequisites
 
