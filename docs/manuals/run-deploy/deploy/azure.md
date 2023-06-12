@@ -76,11 +76,6 @@ The command may take a few minutes to complete. While running, it provides messa
 
 Once completed, it will display the message "You can launch the app at http://<app-name>.azurewebsites.net", which is the URL of your app. In the example `http://gentle-stone-7d284754337a4dcb968d392baac1ccc9.azurewebsites.net`.
 
-!!! Note
-
-    The command can also include the `--location <location-name>` argument to specify the Azure region. Use `az account list-locations` to retrieve a list of available regions for your account.
-
-
 ## Further information
 
 The Azure documentation provides more information about [configuration](https://learn.microsoft.com/en-us/azure/app-service/configure-language-python), [monitoring](https://learn.microsoft.com/en-us/azure/app-service/overview-monitoring) or [logs](https://learn.microsoft.com/en-us/azure/app-service/troubleshoot-diagnostic-logs#enable-application-logging-linuxcontainer).
