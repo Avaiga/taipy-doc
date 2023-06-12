@@ -4,7 +4,7 @@
 
 - Minimal knowledge of Azure.
 - Azure CLI should be installed. Check [the official documentation](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) for azure CLI installation.
-- [:material-arrow-right: Running a Taipy application](../../run/index.md)
+- [:material-arrow-right: Running a Taipy application](../run/index.md)
 
 
 ## Azure App Service
@@ -19,9 +19,7 @@ Azure App Service is a managed platform that simplifies web application deployme
 
 Open a terminal and go in the application folder. Ensure you have a `requirements.txt` file listing the required dependencies and your entry point Python file named `app.py` or `application.py`. These files are crucial for Azure App Service to deploy your application correctly.
 
-!!! Note
-
-   This naming convention is standard, but you can [overwrite it](https://learn.microsoft.com/en-us/azure/app-service/configure-language-python).
+Because Azure Web Application runs applications with [Gunicorn](https://gunicorn.org/), your application must be adapted to be startable by Gunicorn. To do so, you must expose an `app` object of type `Flask` as shown in the following example.
 
 Here is the folder structure and content:
 ```shell
@@ -32,14 +30,14 @@ taipy
 taipy@taipy:~$ cat application.py
 import taipy as tp
 
-app = tp.Gui(page="# Getting started with *Taipy*")
+tp_app = tp.Gui(page="# Getting started with *Taipy*")
 
 if __name__ == "__main__":
    # Development mode, Flask runs the application for debugging.
-   app.run()
+   tp_app.run()
 else:
-   # Production mode, Azure Web Application runs the application with [Gunicorn](https://gunicorn.org/).
-   app = app.run(run_server=False)
+   # Production mode, Azure Web Application runs the application with Gunicorn.
+   app = tp_app.run(run_server=False)
 ```
 
 ## Create a Web App in Azure
