@@ -79,7 +79,8 @@ element to make it easy to manipulate.
 
 ### Showing and hiding controls
 
-A `part` can be hidden by setting the [*render*](#p-render) property to False:
+If you set the [*render*](#p-render) property to False, the `part` is not rendered
+at all:
 
 !!! example "Page content"
     === "Markdown"
