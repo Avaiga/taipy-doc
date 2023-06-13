@@ -216,10 +216,10 @@ theme:
   name: material
   language: en
   custom_dir: tools
-  logo: assets/images/taipy-logo.png
   font:
     text: Lato
   icon:
+    logo: taipy-logo
     repo: fontawesome/brands/git-alt
   palette:
     - scheme: default
