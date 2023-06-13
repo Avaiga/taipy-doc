@@ -1,6 +1,8 @@
 @import 'partials/_grid.css';
 
-:root{
+/* Default */
+:root,
+[data-md-color-scheme="default"]{
   --md-primary-fg-color:        #ff462b;
   --md-primary-fg-color--light: #ff725c;
   --md-primary-fg-color--dark:  #d61d00;
@@ -10,10 +12,27 @@
   --md-paper-bg-color: #ffffff;
   --transition-duration-base: 400ms;
   --tooltip-show-delay: 400ms;
+  --md-footer-bg-color: #e2e6f7;
+  --md-footer-bg-color--dark: hsla(var(--md-hue),50%,8%,1);
+  --md-footer-fg-color: var(--md-default-fg-color);
 }
+
+/* Dark mode */
 [data-md-color-scheme="slate"]{
-  --md-hue: 240;
-  --md-paper-bg-color: hsla(var(--md-hue), 15%, 12%, 0.87);
+  --md-default-bg-color: hsla(var(--md-hue),50%,8%,1);
+  --md-default-bg-color--light: hsla(var(--md-hue),50%,10%,1);
+  --md-default-bg-color--lighter: hsla(var(--md-hue),50%,12%,1);
+  --md-default-bg-color--lightest: hsla(var(--md-hue),50%,15%,1);
+  --md-paper-bg-color: var(--md-default-bg-color--light);
+  --md-footer-bg-color: hsla(var(--md-hue),50%,6%,1);
+  --md-footer-bg-color--dark: hsla(var(--md-hue),50%,5%,1);
+  --md-footer-fg-color: var(--md-default-fg-color);
+}
+
+/* Both modes */
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"]{
+  --md-hue: 270; 
 }
 
 .md-header__title{
