@@ -1,5 +1,7 @@
 # Deploy on Azure
 
+[Azure] (https://azure.microsoft.com/en-us), one of the world's leading providers of cloud services, is the perfect platform for deploying Taipy applications. It allows developers to stay focused on their application bringing effortless scalability, monitoring and security natively. The following documentation shows how to deploy on Azure App Service and get an application into the hands of the end-user.
+
 ## Prerequisites
 
 - Minimal knowledge of Azure.
@@ -9,7 +11,7 @@
 
 ## Azure App Service
 
-Azure App Service is a managed platform that simplifies web application deployment, scaling, and management. Azure Web App, a service within App Service, specializes in hosting and managing web applications. As a Python developer, you can leverage Azure Web App to quickly deploy and run your Python-based web applications in a scalable, hassle-free environment.
+[Azure App Service](https://learn.microsoft.com/en-us/azure/app-service/) is a managed platform that simplifies web application deployment, scaling, and management. Azure Web App, a service within App Service, specializes in hosting and managing web applications. As a Python developer, you can leverage Azure Web App to quickly deploy and run your Python-based web applications in a scalable, hassle-free environment.
 
 !!! Note
 
