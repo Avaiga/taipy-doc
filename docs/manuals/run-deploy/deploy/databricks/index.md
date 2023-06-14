@@ -109,7 +109,7 @@ In this shell, enter the following command, replacing `username` and `machine-ip
 You are now on the Linux-based machine, and the communication is verified. You may notice the option
 `-R 8080:127.0.0.1:5000`. This option starts
 [port forwarding](https://www.ssh.com/academy/ssh/tunneling-example) from the machine to Databricks.
-Specifically, it forwards all packets from port 8080 to port 5000 on your Databricks.
+Specifically, it forwards all packets from port 8080 to port 5000 on your Databricks notebook.
 
 Running `curl localhost:8080` should get your application's output while running on your Databricks notebook!
 

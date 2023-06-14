@@ -95,28 +95,28 @@ nav:
             - manuals/run-deploy/deploy/index.md
             - "On the local machine":
                 - manuals/run-deploy/deploy/local_machine.md
-            - On Taipy Cloud:
+            - "On Taipy Cloud":
                 - manuals/run-deploy/deploy/taipy-cloud.md
-            - On Linux servers:
+            - "On Linux servers":
                 - manuals/run-deploy/deploy/linux/index.md
                 - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md
                 - "RHEL": manuals/run-deploy/deploy/linux/redhat.md
-            - On Windows server:
+            - "On Windows server":
                 - manuals/run-deploy/deploy/windows.md
-            - Using Docker:
+            - "Using Docker":
                 - manuals/run-deploy/deploy/docker/index.md
                 - "For development": manuals/run-deploy/deploy/docker/development.md
                 - "For production": manuals/run-deploy/deploy/docker/production.md
-            - On Azure:
+            - "On Azure":
                 - manuals/run-deploy/deploy/azure.md
-#            - On Clever Cloud:
+#            - "On Clever Cloud":
 #                - manuals/run-deploy/deploy/clever-cloud.md
-            - On Heroku:
+            - "On Heroku":
                 - manuals/run-deploy/deploy/heroku/index.md
                 - "Setup": manuals/run-deploy/deploy/heroku/setup.md
                 - "Based on Git": manuals/run-deploy/deploy/heroku/git.md
                 - "Based on Docker": manuals/run-deploy/deploy/heroku/docker.md
-            - On Databricks:
+            - "On Databricks":
                 - manuals/run-deploy/deploy/databricks/index.md
     - "Taipy Studio":
         - manuals/studio/index.md
