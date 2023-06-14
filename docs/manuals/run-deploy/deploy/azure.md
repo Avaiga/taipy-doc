@@ -74,7 +74,7 @@ You can optionally specify the `--name <app-name>` argument to provide a custom 
 
 The command may take a few minutes to complete. While running, it provides messages about the resource group and the Azure App Service names. Keep them for the next step. In the example, the resource group name is `taipy_rg_4939` and the App Service is `taipy_asp_8825`.
 
-Once completed, it will display the message "You can launch the app at http://<application-name>.azurewebsites.net", which is the URL of your application. In the example `http://gentle-stone-7d284754337a4dcb968d392baac1ccc9.azurewebsites.net`.
+Once completed, it will display the message: "You can launch the app at http://<application-name>.azurewebsites.net", which is the URL of your application. In the example `http://gentle-stone-7d284754337a4dcb968d392baac1ccc9.azurewebsites.net`.
 
 ## Further information
 
