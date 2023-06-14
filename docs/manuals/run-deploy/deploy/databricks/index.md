@@ -1,5 +1,7 @@
 # Deploy on Databricks
 
+Databricks is a standard platform for data scientists and big data engineers. It can provide a web-based laptop connected to your data source within your cloud provider. Nevertheless, Databricks does not provide a direct path to developing a web application. This documentation will show you how to adapt your infrastructure so that you can create a Taipy application in your Databricks.
+
 !!! Note
 
     Taipy is currently only available with Databricks **Standard** runtimes.
