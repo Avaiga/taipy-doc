@@ -1,11 +1,11 @@
 # Deploy on Azure
 
-[Azure] (https://azure.microsoft.com/en-us), one of the world's leading providers of cloud services, is the perfect platform for deploying Taipy applications. It allows developers to stay focused on their application bringing effortless scalability, monitoring and security natively. The following documentation shows how to deploy on Azure App Service and get an application into the hands of the end-user.
+[Azure] (https://azure.microsoft.com/en-us), one of the world's leading providers of cloud services, is a very relevant choice for deploying Taipy applications. It allows developers to stay focused on their application bringing effortless scalability, monitoring and security natively. The following documentation shows how to deploy on Azure App Service and get an application into the hands of the end-user.
 
 ## Prerequisites
 
 - Minimal knowledge of Azure.
-- Azure CLI should be installed. Check [the official documentation](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) for azure CLI installation.
+- Azure CLI should be installed. Check [the official documentation](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) for Azure CLI installation.
 - [:material-arrow-right: Running a Taipy application](../run/index.md)
 
 
@@ -15,11 +15,11 @@
 
 !!! Note
 
-    You can create Azure App Service and Azure Web App using Azure portal, VS Code, Azure Tools extension pack, or Azure CLI. Here we will focus on Azure CLI.
+    You can create Azure App Service and Azure Web App using Azure Portal, VS Code, Azure Tools extension pack, or Azure CLI. In this section, we focus on Azure CLI.
 
 ## Prepare your application
 
-Open a terminal and go in the application folder. Ensure you have a `requirements.txt` file listing the required dependencies and your entry point Python file named `app.py` or `application.py`. These files are crucial for Azure App Service to deploy your application correctly.
+Open a terminal and set your directory to the application folder. Ensure you have a `requirements.txt` file listing the required dependencies and your entry point Python file named `app.py` or `application.py`. These files are crucial for Azure App Service to deploy your application correctly.
 
 Because Azure Web Application runs applications with [Gunicorn](https://gunicorn.org/), your application must be adapted to be startable by Gunicorn. To do so, you must expose an `app` object of type `Flask` as shown in the following example.
 
@@ -49,7 +49,7 @@ In your terminal, log in to Azure using the command:
 taipy@taipy:~$ az login
 ```
 
-Still in your terminal, you can create the web app and then deploy your code using the following command:
+You can now create the web application and then deploy your code using the following command:
 ```shell
 taipy@taipy:~$ az webapp up --runtime PYTHON:3.9 --sku B1 --logs
 The webapp 'gentle-stone-7d284754337a4dcb968d392baac1ccc9' doesn't exist
@@ -66,15 +66,15 @@ You can launch the app at http://gentle-stone-7d284754337a4dcb968d392baac1ccc9.a
 Configuring default logging for the app, if not already enabled
 ```
 
-- The `--runtime` parameter specifies the Python version your app is running, in this case, Python 3.9.
-- The `--sku` parameter defines the size (CPU, memory) and cost of the app service plan. This example uses the B1 (Basic) service plan.
-- The `--logs` flag configures the default logging required to enable viewing the log stream immediately after launching the web app.
+- The `--runtime` parameter specifies the Python version your application is running, in this case, Python 3.9.
+- The `--sku` parameter defines the size (CPU, memory) and cost of the Azure App Service plan. This example uses the B1 (Basic) service plan.
+- The `--logs` flag configures the default logging required to enable viewing the log stream immediately after launching the web application.
 
-You can optionally specify the `--name <app-name>` argument to provide a custom name for your app. If not provided, a name will be automatically generated.
+You can optionally specify the `--name <app-name>` argument to provide a custom name for your application. If it is not provided, a name will be automatically generated.
 
 The command may take a few minutes to complete. While running, it provides messages about the resource group and the Azure App Service names. Keep them for the next step. In the example, the resource group name is `taipy_rg_4939` and the App Service is `taipy_asp_8825`.
 
-Once completed, it will display the message "You can launch the app at http://<app-name>.azurewebsites.net", which is the URL of your app. In the example `http://gentle-stone-7d284754337a4dcb968d392baac1ccc9.azurewebsites.net`.
+Once completed, it will display the message "You can launch the app at http://<application-name>.azurewebsites.net", which is the URL of your application. In the example `http://gentle-stone-7d284754337a4dcb968d392baac1ccc9.azurewebsites.net`.
 
 ## Further information
 
