@@ -93,7 +93,7 @@ nav:
             - "Protect private files": manuals/run-deploy/run/protect_files.md
         - "Deployment":
             - manuals/run-deploy/deploy/index.md
-            - On local machine:
+            - "On the local machine":
                 - manuals/run-deploy/deploy/local_machine.md
             - On Taipy Cloud:
                 - manuals/run-deploy/deploy/taipy-cloud.md
