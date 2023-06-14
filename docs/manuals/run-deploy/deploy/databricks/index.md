@@ -1,6 +1,6 @@
 # Deploy on Databricks
 
-Databricks is a standard platform for data scientists and big data engineers. It can provide a web-based laptop connected to your data source within your cloud provider. Nevertheless, Databricks does not provide a direct path to developing a web application. This documentation will show you how to adapt your infrastructure so that you can create a Taipy application in your Databricks.
+Databricks is a standard platform for data scientists and big data engineers. It can provide a web-based development environment connected to your data source within your cloud provider. Nevertheless, Databricks does not provide a direct path to developing a web application. This documentation will show you how to adapt your infrastructure so that you can create a Taipy application in your Databricks environment.
 
 !!! Note
 
@@ -20,8 +20,7 @@ In the current section, we consider the following as prerequisites:
 
 !!! Note
 
-    If you don't have a Linux-based machine, you can use a cloud provider as Azure to
-    [create one](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal?tabs=ubuntu).
+    If you don't have a Linux-based machine, you can use a cloud provider like Microsoft Azure to [create one](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal?tabs=ubuntu).
 
 ## Running your application on Databricks
 
@@ -35,7 +34,7 @@ comments=false
 %}
 ```
 
-Connect to Databricks and run the previous code in a Databricks Notebook. You should obtain a similar output:
+Connect to Databricks and run the previous code in a Databricks Notebook. You should obtain an output similar to the following:
 ```
 [2023-06-12 17:17:25,611][Taipy][INFO] Running in 'single_client' mode in notebook environment
 INFO:Taipy:Running in 'single_client' mode in notebook environment
@@ -57,23 +56,21 @@ Since we can't connect to Databricks directly, we'll use an SSH tunnel between a
 Databricks machine, enabling them to communicate.
 We'll also install Nginx on the Linux-based machine to route the request from your browser to your application.
 
-In the end, the browser sends a request to the Nginx on the Linux-based machine; the Nginx will redirect
-this request to the SSH tunnel, which will redirect to the Taipy application.
+In the end, the browser sends a request to Nginx on the Linux-based machine; Nginx will redirect this request to the SSH tunnel, which will redirect to the Taipy application.
 
-Here is the technical architecture of the solution.
+Here is the technical architecture of the solution:
 ![Technical architecture](./images/technical-architecture.svg)
 
 !!! Warning
 
-    The Linux-based machine should be accessible from your network and Databricks.
+    The Linux-based machine should be accessible from your network and from Databricks.
 
 ### 1- Configure the proxy using Nginx
 
 We'll install and configure Nginx on the Linux-based machine to enable browser-based communication.
-Once configured, Nginx will redirect all incoming requests on the port HTTP (80) to port 8080.
+Once configured, Nginx will redirect all incoming requests from the default HTTP port (80) to port 8080.
 
-First, install [Nginx](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/). Then configure
-the redirection by putting the following content in `/etc/nginx/sites-enabled/default` :
+First, install [Nginx](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/). Then configure the redirection by copying the following content in `/etc/nginx/sites-enabled/default` :
 ```
 server {
     listen 80;
@@ -94,7 +91,7 @@ And restart Nginx: `systemctl restart nginx`.
 
 ### 2 - Connect Databricks to the proxy machine
 
-Open Databricks on a first tab, and go to compute and select your cluster.
+Open Databricks in a first tab, and press "Compute" and select your cluster.
 
 ![databricks-clusters](images/databricks-clusters.png)
 
@@ -114,7 +111,7 @@ You are now on the Linux-based machine, and the communication is verified. You m
 [port forwarding](https://www.ssh.com/academy/ssh/tunneling-example) from the machine to Databricks.
 Specifically, it forwards all packets from port 8080 to port 5000 on your Databricks.
 
-Therefore, running `curl localhost:8080` should get your application's output still running on your Databricks notebook!
+Running `curl localhost:8080` should get your application's output while running on your Databricks notebook!
 
 ![running-taipy-application](images/curl-app.png)
 
