@@ -16,14 +16,11 @@ calling the method _run()_ from the service instance either `Gui^`, `Rest^`, or 
 # Running all Taipy services: `Gui`, `Core` and `Rest`
 You can run all Taipy services together by using `taipy.run()` with the code below:
 
-```python
-import taipy as tp
-
-if __name__ == "__main__":
-    gui = tp.Gui(page="# Getting started with *Taipy*")
-    rest = tp.Rest()
-
-    tp.run(gui, rest, title="Taipy application")
+```python linenums="1"
+{%
+include-markdown "../code_sample/basic_gui_rest_app.py"
+comments=false
+%}
 ```
 
 Since Taipy REST relies on Taipy Core when running the Taipy REST service, Taipy Core will
