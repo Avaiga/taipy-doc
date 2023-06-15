@@ -32,9 +32,9 @@ The following software should be installed on your target machine:
 
 - _pip_: for installing Python3 packages.
 
-- _uwsgi_ and _gevent_: the Web application server and its workers that will run the Taipy application.
+- _uwsgi_ and _gevent_: the web application server and its workers that will run the Taipy application.
 
-- _nginx_: the Web server for the Internet exposition.
+- _nginx_: the web server for the Internet exposition.
 
 You can install all of these packages by running the following command:
 ```
@@ -91,7 +91,7 @@ The application is running locally, you can access it with the browser on the UR
     ```
     Is provided by Flask because the way of exposing an application on the Internet and
     developping an application locally is not the same, mainly for security and reliability reasons.
-    This message will disappear when using the Web server.
+    This message will disappear when using the web server.
 
 ## Prepare the application for deployment
 
@@ -101,8 +101,8 @@ By default, Taipy applications run in Debug mode. Before deploying your applicat
 you should turn off the Debug mode by setting the _debug_ parameter or the `(Gui.)run()^` to False. <br>
 You must also inform Taipy not to run the application server on its own but rather delegate the execution
 by setting the parameter _run_server_ to False.<br>
-The name of the variable where the Web application is stored is used in the _uWSGI_ configuration:
-this allows the Web server to load the Web application:
+The name of the variable where the web application is stored is used in the _uWSGI_ configuration:
+this allows the web server to load the web application:
 ```
 from taipy import Gui
 
@@ -115,7 +115,7 @@ Make sure you upload this code on your targeted machine and install your depende
 
 !!! important
     The entry point filename and the app variable name are important for the proper configuration of
-    the _uWSGI_ Web application server. Please, keep them as is or adapt the configuration.
+    the *uWSGI* web application server. Please, keep them as is or adapt the configuration.
 
 
 ## uWSGI application server
@@ -123,10 +123,10 @@ Make sure you upload this code on your targeted machine and install your depende
 To expose your application over the Internet, you must use _uWSGI_ instead of Flask as the application server.
 You would then leverage Nginx to expose the application.
 
-_uWSGI_ can be started manually. But, generally, it's better to start the application automatically when the machine
-starts. To order to do that, you should use [Systemd](https://systemd.io/) which is installed by default on _RHEL_.
+*uWSGI* can be started manually. But, generally, it's better to start the application automatically when the machine
+starts. To order to do that, you should use [Systemd](https://systemd.io/) which is installed by default on *RHEL*.
 
-From the directory where _app.py_ is located, run the following command to generate an adapted file for _Systemd_:
+From the directory where *app.py* is located, run the following command to generate an adapted file for *Systemd*:
 ```
 echo """
 [Unit]
@@ -186,8 +186,8 @@ sudo systemctl restart nginx
 
 ## Open the firewall
 
-Your application is ready to receive traffic from the Internet, but your firewall still blocks the communication.
-Open the _http_ port that is (i.e. port _80_):
+Your application is ready to receive traffic from the Internet, but your firewall still blocks the communication.<br/>
+Open the *HTTP* port that is (i.e. port *80*):
 ```
 sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
 sudo firewall-cmd --reload

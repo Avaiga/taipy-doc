@@ -63,7 +63,7 @@ Taipy documentation:
    documentation set. You can use any of the three predefined generation modes:
 
    - `mkdocs serve`: This is a great way to let MkDocs generate the documentation and
-     locally run a Web server that lets you watch your changes impact on the fly.
+     locally run a web server that lets you watch your changes impact on the fly.
 
    - `mkdocs build`: Generates the documentation set as a whole hierarchy of files (in
      `site`). These files can be copied wherever you need to deploy them.

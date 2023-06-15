@@ -142,7 +142,7 @@ following page definition:
         <taipy:part page="page_name"/>
         ```
 
-You can also embed an external Web page, setting the [*page*](#p-page) property to the URL
+You can also embed an external web page, setting the [*page*](#p-page) property to the URL
 (starting with `http://` or `https://`) you want to render:
 
 !!! example "Page content"
@@ -162,7 +162,7 @@ The resulting page will be displayed as this:
 <figure class="tp-center">
     <img src="../part-url-d.png" class="visible-dark"  width="80%"/>
     <img src="../part-url-l.png" class="visible-light" width="80%"/>
-    <figcaption>Embedding an external Web page</figcaption>
+    <figcaption>Embedding an external web page</figcaption>
 </figure>
 
 Note that you may have to tune the value of the [*height*](#p-height) property since the external

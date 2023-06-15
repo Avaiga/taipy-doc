@@ -11,7 +11,7 @@ This mechanism is known as "Taipy GUI Extension".
 ## Introduction
 
 Taipy GUI lets developers create and use custom visual elements to address specific use
-cases or integrate third-party Web components. One can expand the functionality
+cases or integrate third-party web components. One can expand the functionality
 offered by the base Taipy GUI package to create custom components that can be
 effortlessly used in pages and shared with the community.
 
