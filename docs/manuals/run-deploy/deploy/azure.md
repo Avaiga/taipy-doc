@@ -1,6 +1,6 @@
 # Deploy on Azure
 
-[Azure] (https://azure.microsoft.com/en-us), one of the world's leading providers of cloud services, is a very relevant choice for deploying Taipy applications. It allows developers to stay focused on their application bringing effortless scalability, monitoring and security natively. The following documentation shows how to deploy on Azure App Service and get an application into the hands of the end-user.
+[Azure](https://azure.microsoft.com/en-us), one of the world's leading providers of cloud services, is a very relevant choice for deploying Taipy applications. It allows developers to stay focused on their application bringing effortless scalability, monitoring and security natively. The following documentation shows how to deploy on Azure App Service and get an application into the hands of the end-user.
 
 ## Prerequisites
 
