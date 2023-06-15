@@ -47,6 +47,8 @@ class VisElementsStep(ElementsGenerator):
         self.load_elements(setup.root_dir + "/taipy/gui/viselements.json",
                            ["controls", "blocks"])
 
+    def has_category(self) -> bool:
+        return True
 
     def get_element_md_path(self, element_type: str) -> str:
         return f"{self.VISELEMENTS_DIR_PATH}/{element_type}.md"

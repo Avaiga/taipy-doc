@@ -99,6 +99,9 @@ class ElementsGenerator(SetupStep):
     # Find first level 2 or 3 header
     FIRST_HEADER2_RE = re.compile(r"(^.*?)(\n###?\s+)", re.MULTILINE | re.DOTALL)
 
+    def has_category(self) -> bool:
+        raise NotImplementedError(f"has_category() not implemented.")
+
     def get_element_md_path(self, element_type: str) -> str:
         raise NotImplementedError(f"get_element_md_path() not implemented (element was {element_type}).")
 
@@ -196,13 +199,14 @@ class ElementsGenerator(SetupStep):
                     + after_properties
                 )
             e = element_type  # Shortcut
+            d = f"../{e}" if self.has_category() else e
             return (
-                f'<a class="tp-ve-card" href="../{e}/">\n'
+                f'<a class="tp-ve-card" href="{d}/">\n'
                 + f"<div>{e}</div>\n"
-                + f'<img class="tp-ve-l" src="../{e}-l.png"/>\n'
-                + f'<img class="tp-ve-lh" src="../{e}-lh.png"/>\n'
-                + f'<img class="tp-ve-d" src="../{e}-d.png"/>\n'
-                + f'<img class="tp-ve-dh" src="../{e}-dh.png"/>\n'
+                + f'<img class="tp-ve-l" src="{d}-l.png"/>\n'
+                + f'<img class="tp-ve-lh" src="{d}-lh.png"/>\n'
+                + f'<img class="tp-ve-d" src="{d}-d.png"/>\n'
+                + f'<img class="tp-ve-dh" src="{d}-dh.png"/>\n'
                 + f"<p>{first_documentation_paragraph}</p>\n"
                 + "</a>\n"
             )
