@@ -89,7 +89,7 @@ nav:
         - "Running":
             - manuals/run-deploy/run/index.md
             - "The run() function": manuals/run-deploy/run/running_services.md
-            - "Using an external Web server": manuals/run-deploy/run/external_web_server.md
+            - "Using an external web server": manuals/run-deploy/run/external_web_server.md
             - "Protect private files": manuals/run-deploy/run/protect_files.md
         - "Deployment":
             - manuals/run-deploy/deploy/index.md

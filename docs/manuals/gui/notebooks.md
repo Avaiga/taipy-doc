@@ -2,7 +2,7 @@
 
 You can create and run a Taipy Graphical User Interface from a Jupyter Notebook.
 
-In this situation, the Web server that Taipy relies on will run on a separate thread,
+In this situation, the web server that Taipy relies on will run on a separate thread,
 so the Notebook works as expected.
 
 ## Creating a Taipy GUI application in a new Notebook
@@ -152,8 +152,8 @@ Go to the Taipy interface page and refresh.<br/>
 The slider now controls the chart that is automatically updated when a new
 value is set.
 
-!!! note "Restarting the Web server"
-    Some Notebook environments are not able to restart the underlying Web server so that
+!!! note "Restarting the web server"
+    Some Notebook environments are not able to restart the underlying web server so that
     Taipy GUI can immediately reuse the port number it was communicating with. To cope with this
     problem, in the context of Notebooks only, the port number that is used as part of the
     application URL is a proxy to the real port that is served. Invoking `run()` after `stop()`
