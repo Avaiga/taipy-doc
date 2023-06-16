@@ -35,8 +35,8 @@ Published on 2023-06.
 - New Taipy command-line interface (CLI). Please refer to the
   [Taipy command-line interface](./manuals/cli.md) documentation page for more information.
 - Users can now create a new Taipy application from a template by running `$ taipy create` from the
-  CLI. Besides the default template, "multi-page-gui" and "multi-page-gui-core" templates can be
-  chosen with the optional `--template` option.
+  CLI. Besides the default template, "multi-page-gui" template can be chosen with the optional
+  `--template` option.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.3.0
