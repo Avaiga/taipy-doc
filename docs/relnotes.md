@@ -96,6 +96,7 @@ Published on 2023-06.
   problem of passing Tuple of one string.
 - The *validity_period* attribute of a data node is now exposed at the configuration level to set
   the up-to-date duration of a data node.
+- Add support for SQLAlchemy 2.0
 
 ### Significant bug fixes
 
