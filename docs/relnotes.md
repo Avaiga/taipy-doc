@@ -44,7 +44,9 @@ Published on 2023-06.
 - The [`table`](manuals/gui/viselements/table.md) and [`chart`](manuals/gui/viselements/chart.md)
   controls have a new property called *rebuild* that allows for modifying the control configuration
   at runtime, using properties that are *not* dynamic.<br/>
-  See the examples for table and chart TODO links.
+  See the details in the specific documentation sections for
+  [tables](manuals/gui/viselements/table.md#the-rebuild-property) and
+  [charts](manuals/gui/viselements/chart.md#the-rebuild-property).
 - The [`part` block](manuals/gui/viselements/part.md) now accepts any URL as a value for the
   [*page* property](manuals/gui/viselements/part.md#p-page). You can then integrate any external
   web page as demonstrated in [this example](manuals/gui/viselements/part.md#part-showing-a-page).
