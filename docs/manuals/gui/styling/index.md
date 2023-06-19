@@ -38,7 +38,7 @@ how styles can be applied to pages.
 
 ### Global styles
 
-As in any Web application, the root element (`:root`) is available for global
+As in any web application, the root element (`:root`) is available for global
 style settings.<br/>
 For example, if you want to make your application bigger by enlarging the
 font size, you could write:

@@ -50,7 +50,7 @@ Here is the list of the configuration parameters you can use in
      to be provided with detailed debugging information messages from the server.<br/>
      If the debug mode is set, then the *async_mode* parameter of the call to `Gui.run()^`
      is overridden to "threading" to use the Flask built-in development server.<br/>
-     To avoid warnings from the WebSocket layer when using the *debug* mode, make sure
+     To avoid warnings from the web socket layer when using the *debug* mode, make sure
      you install the *simple-websocket* optional package.<br/>
      You can force the *debug* mode using the *--debug* option when launching
      your application.<br/>
@@ -71,7 +71,7 @@ Here is the list of the configuration parameters you can use in
      indicates how far from the border of the windows should your interface be. The default value
      avoids elements getting glued to the window borders, improving appearance.
    - <a name="p-system_notification"></a>*system_notification* (bool, default: True): if True,
-     notifications will be sent by the system as well as the browser, should the *system_notification* parameter in the call to (notify()^) be set to None. If False, the
+     notifications will be sent by the system as well as the browser, should the *system_notification* parameter in the call to (`notify()^`) be set to None. If False, the
      default behavior is to not use system notifications.<br/>
      See the section on [Notifications](notifications.md) for details.
    - <a name="p-notification_duration"></a>*notification_duration* (int, default: 3000): the time,
@@ -127,8 +127,8 @@ Here is the list of the configuration parameters you can use in
      You can use a TZ database name (as listed in
      [Time zones list on Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones))
      or one of the following values:
-     - "client" indicates that the time zone to be used is the Web client's.
-     - "server" indicates that the time zone to be used is the Web server's.
+     - "client" indicates that the time zone to be used is the web client's.
+     - "server" indicates that the time zone to be used is the web server's.
    - <a name="p-upload_folder"></a>*upload_folder* (str or None, default: None): the local path
      where files are uploaded when using the [`file_selector`](viselements/file_selector.md)
      control.<br/>
@@ -152,7 +152,7 @@ Here is the list of the configuration parameters you can use in
      on how quickly the kernel can clean up its resources.<br/>
      See the section on [running Taipy GUI in Notebooks](notebooks.md) for more details.
    - <a name="p-server_config"></a>*server_config* (dict[str, any], default: True): allows for
-     fine-tuning the configuration of the underlying Web server. TODO.
+     fine-tuning the configuration of the underlying web server. TODO.
    - <a name="p-single_client"></a>*single_client* (bool, default: False): set to True if only a
      single client can connect. False, which is the default value, indicates that multiple clients
      can connect to the server.<br/>
@@ -163,15 +163,15 @@ Here is the list of the configuration parameters you can use in
      This parameter is forced to "threading" if [*debug*](#p-debug) or
      [*use_reloader*](#p-use_reloader) is set to True.
    - <a name="p-run_in_thread"></a>*run_in_thread* (bool, default: False): if set to True, the
-     underlying Web server runs in a separate thread. In a Notebook context, this parameter
+     underlying web server runs in a separate thread. In a Notebook context, this parameter
      is forced to True.
    - <a name="p-run_server"></a>*run_server* (bool, default: True): must be set to False if you
      if you want to run this GUI application on an external server. Then Taipy GUI will not create
      or run the server, and it is up to the programmer to use the Flask instance returned by
-     `Gui.run()^` or `Gui.get_flask_app()^` so it is served by the target Web server.
+     `Gui.run()^` or `Gui.get_flask_app()^` so it is served by the target web server.
    - <a name="p-base_url"></a>*base_url* (str or None, default: "/"): a string used as a prefix to
      the path part of the exposed URL, so one can deploy a Taipy GUI application in a path different
-     from the root of the Web site.
+     from the root of the web site.
    - <a name="p-allow_unsafe_werkzeug"></a>*allow_unsafe_werkzeug* (bool, default: False): hides
      some [Flask-SocketIO](https://pypi.org/project/Flask-SocketIO/) runtime errors in some
      debugging scenarios. This is set to True when [*debug*](#p-debug) is set to True.
@@ -183,10 +183,10 @@ Here is the list of the configuration parameters you can use in
    To run the Taipy GUI service with some other Taipy services, please refer to the
    [Running Taipy services](../run-deploy/run/running_services.md) section.
 
-## Using an external Web server
+## Using an external web server
 
 Taipy user interfaces can be served by external servers. This happens when
-you already have a Web app running and want to add the GUI capabilities
+you already have a web application running and want to add the GUI capabilities
 of Taipy to it.
 
 What you need to do in this case is use the *flask* parameter of the `Gui^` constructor,
@@ -220,7 +220,7 @@ in line 4.
 
 ## Protect your application files
 
-When the `Gui^` instance runs, it creates a Web server that serves the
+When the `Gui^` instance runs, it creates a web server that serves the
 registered pages, with the root of the site located where the `__main__`
 Python module file is located.<br/>
 This allows malicious users to potentially access the files of your
@@ -244,7 +244,7 @@ The syntax of this text file is identical to the syntax used by Git
 for its [`.gitignore`](https://git-scm.com/docs/gitignore) file.
 
 If a user requests a file whose path matches one that appears in `.taipyignore`
-then the Taipy Web server returns an HTTP error 404 (Not Found), protecting
+then the Taipy web server returns an HTTP error 404 (Not Found), protecting
 your file from being downloaded without your consent.
 
 ## Accessing your app from the Web
@@ -265,7 +265,7 @@ steps:
   ```
   pip install pyngrok
   ```
-- Create an account on the [Ngrok Web site](https://ngrok.com/).
+- Create an account on the [Ngrok web site](https://ngrok.com/).
    - That will drive you to a page where you can install the *ngrok* executable
      on your machine. Behind the scene, Ngrok will also send you a confirmation
      email providing a link that you must click to validate your

@@ -20,7 +20,7 @@ The variable `x` contains the value <|{x}|>.
 """).run()
 ```
 
-When this program runs (and a Web browser is directed to the running server), the
+When this program runs (and a web browser is directed to the running server), the
 root page displays the value of the variable *x*, as it was defined in your code.
 
 ## Expressions

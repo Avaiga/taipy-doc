@@ -33,6 +33,9 @@ class CoreElementsStep(ElementsGenerator):
         self.load_elements(setup.root_dir + "/taipy/gui_core/viselements.json",
                            ["controls"])
 
+    def has_category(self) -> bool:
+        return False
+
     def get_element_md_path(self, element_type: str) -> str:
         return f"{self.CORELEMENTS_DIR_PATH}/{element_type}.md"
 

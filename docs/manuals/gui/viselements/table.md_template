@@ -35,6 +35,87 @@ The table component supports three display modes:
 - *auto_loading*: the pages are loaded on demand depending on the visible area. That is the behavior when
   the [*auto_loading*](#p-auto_loading) property is set to True.
 
+### The *rebuild* property
+
+When the application modifies the value of a dynamic property, the impact of the change is
+immediately reflected on the application page. However, changing the value of properties that are
+*not* dynamic requires that the user refreshes the page manually (or that the application
+explicitly calls `navigate()^` with the *force* parameter set to True). This is due to the fact
+that the entire front-end component must be entirely re-generated to reflect its new settings
+based on the property values.<br/>
+The table control provides the [*rebuild*](#p-rebuild) property that, when set to True, triggers
+the rebuilding of the table front-end component and refreshes the page.<br/>
+Note that this mechanism may hurt the user experience because rebuilding the entire component can
+be a somewhat complex operation.
+
+Here is a situation where you may need to use [*rebuild*](#p-rebuild): your application displays
+a table, and you want to provide a way to interactively change the order of its columns.<br/>
+Here is what the application code would look like:
+```py  title="table.py"
+from taipy.gui import Gui
+
+# x: [1..5]
+x_range = range(1, 6)
+data = {
+    "X": x_range,
+    "Y": [x*x for x in x_range]
+}
+
+column_orders = [("X;Y", "Squared"), ("Y;X", "Square root")]
+columns = column_orders[0]
+
+page = """
+<|{data}|table|columns={columns[0]}|show_all|>
+
+<|{columns}|toggle|lov={column_orders}|>
+"""
+
+Gui(page=page).run()
+```
+
+The table displays two columns of data, one column holding the square value of the other.
+When you run this application, here is what the page looks like:
+<figure class="tp-center">
+    <img src="../table-rebuild-1-d.png" class="visible-dark"  width="60%"/>
+    <img src="../table-rebuild-1-l.png" class="visible-light" width="60%"/>
+    <figcaption>Initial display of the application</figcaption>
+</figure>
+
+A toggle button lets the user choose whether to represent, in the second column, the square of the
+value in the first column or the other way around.<br/>
+To implement this, the code is setting the value "X;Y" or "Y;X" to the property
+[*columns*](#p-columns).<br/>
+Here is what the application looks like just after the user has changed the
+value of the toggle button:
+<figure class="tp-center">
+    <img src="../table-rebuild-2-d.png" class="visible-dark"  width="60%"/>
+    <img src="../table-rebuild-2-l.png" class="visible-light" width="60%"/>
+    <figcaption>After the columns should be reordered</figcaption>
+</figure>
+
+We can see that although the value for the toggle button was properly updated, the table has not
+rearranged its columns. That is because the [*columns*](#p-columns) property is *not* dynamic.
+
+Setting the [*rebuild*](#p-rebuild) property to True allows for updating the table on the fly:
+let's change the table's Markdown definition to:
+```
+<|{data}|table|columns={columns[0]}|show_all|rebuild|>
+```
+
+If you run the application again, and select the alternative column order in the toggle button,
+here is what the page looks like:
+<figure class="tp-center">
+    <img src="../table-rebuild-3-d.png" class="visible-dark"  width="60%"/>
+    <img src="../table-rebuild-3-l.png" class="visible-light" width="60%"/>
+    <figcaption>After the columns are reordered</figcaption>
+</figure>
+
+Now the table properly reflects the value of the [*columns*](#p-columns) property and no manual
+refresh was needed.
+
+Make sure, when you are using the [*rebuild*](#p-rebuild) property, that no performance impact is
+so bad that it would ruin the user experience.
+
 ## Styling
 
 All the table controls are generated with the "taipy-table" CSS class. You can use this class

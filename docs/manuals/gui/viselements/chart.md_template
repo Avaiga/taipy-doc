@@ -104,6 +104,83 @@ or slightly shorter (and if there are no more than three traces):
 page = "<|...|chart|...|i_property={value1}|i_property[2]={value2}|i_property[3]={value3}|...|>"
 ```
 
+### The *rebuild* property
+
+Some of the chart control's properties may result in Taipy GUI having to entirely reconstruct the
+graphical component running on the front-end (the user's browser). The chart control provides some
+properties that are *dynamic* and allow for an instant page update. Changing the values of the
+other properties is not immediately reflected on the page.<br/>
+Setting the value of the [*rebuild*](#p-rebuild) property to True, however, will ensure that the
+control is entirely rebuilt on the front-end and refreshed on the page. Using this property will
+have an impact on the user experience since it involves a potentially extensive code generation.
+Make sure, when you use the *rebuild* property, that the deployment environment can support the
+performance hit gracefully for the end users.
+
+Here is an example of how this property can be used.<br/>
+Consider the code below:
+
+```py title="chart.py"
+from taipy.gui import Gui
+import math
+
+# x values: [-10..10]
+x_range = range(-10, 11)
+data = {
+    "X": x_range,
+    "Y": [x*x for x in x_range],
+    "Y2": [math.cos(2 * math.pi * x / 10) / 360 for x in x_range]
+}
+
+types = [("bar", "Bar"), ("line", "Line")]
+selected_type = types[0]
+
+page = """
+<|{data}|chart|type={selected_type[0]}|x=X|y=Y|>
+
+<|{selected_type}|toggle|lov={types}|>
+"""
+
+Gui(page=page).run()
+```
+
+This application displays a chart representing two functions of the values stored in the array
+*x_range*: the squared value and a cosine function.<br/>
+A [`toggle`](toggle.md) control is added to the page to let the user choose the chart type
+dynamically: a line chart or a bar chart.
+
+Here is what this application looks like when you run it:
+<figure class="tp-center">
+    <img src="../chart-rebuild-1-d.png" class="visible-dark"  width="75%"/>
+    <img src="../chart-rebuild-1-l.png" class="visible-light" width="75%"/>
+    <figcaption>Initial display of the application</figcaption>
+</figure>
+
+If the user switches the type in the toggle button, this would be the resulting page:
+<figure class="tp-center">
+    <img src="../chart-rebuild-2-d.png" class="visible-dark"  width="75%"/>
+    <img src="../chart-rebuild-2-l.png" class="visible-light" width="75%"/>
+    <figcaption>After the type was switched</figcaption>
+</figure>
+
+You can see that although the toggle value was changed, the chart was not impacted by the new
+setting. That is because the [*type*](#p-type) property is *not* dynamic.<br/>
+To display the chart with the new type setting, one would have to refresh the browser page.
+
+However, Taipy GUI can rebuild and refresh the chart automatically if you set it's
+[*rebuild*](#p-rebuild) property to True. The Markdown chart definition can be changed
+to:
+```
+<|{data}|chart|type={selected_type[0]}|x=X|y=Y|rebuild|>
+```
+
+If you run the application again, as soon as the user selects the new chart type using the toggle
+button, the page will reflect the change without explicit refresh:
+<figure class="tp-center">
+    <img src="../chart-rebuild-3-d.png" class="visible-dark"  width="75%"/>
+    <img src="../chart-rebuild-3-l.png" class="visible-light" width="75%"/>
+    <figcaption>After the type was switched, with <i>rebuild</i> set to True</figcaption>
+</figure>
+
 ## Styling
 
 All the chart controls are generated with the "taipy-chart" CSS class. You can use this class

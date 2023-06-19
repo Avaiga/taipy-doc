@@ -123,29 +123,35 @@ nav:
         - "Running":
             - manuals/run-deploy/run/index.md
             - "The run() function": manuals/run-deploy/run/running_services.md
-            - "Using an external Web server": manuals/run-deploy/run/external_web_server.md
+            - "Using an external web server": manuals/run-deploy/run/external_web_server.md
             - "Protect private files": manuals/run-deploy/run/protect_files.md
         - "Deployment":
             - manuals/run-deploy/deploy/index.md
-            - "On local machine": manuals/run-deploy/deploy/local_machine.md
-            - "On Taipy Cloud": manuals/run-deploy/deploy/taipy-cloud.md
+            - "On the local machine":
+                - manuals/run-deploy/deploy/local_machine.md
+            - "On Taipy Cloud":
+                - manuals/run-deploy/deploy/taipy-cloud.md
             - "On Linux servers":
                 - manuals/run-deploy/deploy/linux/index.md
                 - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md
                 - "RHEL": manuals/run-deploy/deploy/linux/redhat.md
-            - "On Windows server": manuals/run-deploy/deploy/windows.md
+            - "On Windows server":
+                - manuals/run-deploy/deploy/windows.md
             - "Using Docker":
                 - manuals/run-deploy/deploy/docker/index.md
                 - "For development": manuals/run-deploy/deploy/docker/development.md
                 - "For production": manuals/run-deploy/deploy/docker/production.md
-            - "On Azure": manuals/run-deploy/deploy/azure.md
-            - "On Clever Cloud": manuals/run-deploy/deploy/clever-cloud.md
+            - "On Azure":
+                - manuals/run-deploy/deploy/azure.md
+#            - "On Clever Cloud":
+#                - manuals/run-deploy/deploy/clever-cloud.md
             - "On Heroku":
                 - manuals/run-deploy/deploy/heroku/index.md
                 - "Setup": manuals/run-deploy/deploy/heroku/setup.md
                 - "Based on Git": manuals/run-deploy/deploy/heroku/git.md
                 - "Based on Docker": manuals/run-deploy/deploy/heroku/docker.md
-            - "On Databricks": manuals/run-deploy/deploy/databricks.md
+            - "On Databricks":
+                - manuals/run-deploy/deploy/databricks/index.md
     - "Taipy Studio":
         - manuals/studio/index.md
         - "Building configurations":

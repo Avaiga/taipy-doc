@@ -55,7 +55,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
         <h3>User interface</h3>
       </header>
       <p>
-        Taipy GUI provides controls and other elements to create powerful Web apps in minutes.
+        Taipy GUI provides controls and other elements to create powerful web apps in minutes.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
@@ -221,7 +221,7 @@ Taipy is composed of two main independent components: **Taipy Core** and **Taipy
     <article class="tp-content-card">
       <h3>Taipy GUI</h3>
       <p>
-        The <strong>Graphical User Interface</strong> of Taipy allows anyone with basic knowledge of Python to create a beautiful and interactive interface. It is a simple and intuitive way to create a GUI. No need to know how to design web pages with CSS or HTML. Taipy uses an augmented Markdown syntax to create your desired Web page.
+        The <strong>Graphical User Interface</strong> of Taipy allows anyone with basic knowledge of Python to create a beautiful and interactive interface. It is a simple and intuitive way to create a GUI. No need to know how to design web pages with CSS or HTML. Taipy uses an augmented Markdown syntax to create your desired web page.
       </p>
     </article>
     <article class="tp-content-card">
@@ -248,4 +248,4 @@ Taipy is composed of two main independent components: **Taipy Core** and **Taipy
 
 </div>
 
-Other packages offer additional functionality, such as a **REST API** that allows for deploying Taipy Core applications as a Web service.
+Other packages offer additional functionality, such as a **REST API** that allows for deploying Taipy Core applications as a web service.
