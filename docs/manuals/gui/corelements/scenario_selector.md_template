@@ -21,7 +21,8 @@ button letting users create new scenarios:
   <figcaption>No scenario to select</figcaption>
 </figure>
 
-When the user presses that button, a form appears so the settings of the new scenario can be set:
+When the user presses that button, a form appears so that the settings of the new scenario can be
+set:
 
 <figure class="tp-center">
   <img src="../scenario_selector-create-d.png" class="visible-dark"  width="60%"/>

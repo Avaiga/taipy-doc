@@ -15,10 +15,10 @@ Here is what the control would look like when representing a scenario entity:
   <figcaption>Viewing the parameters of a scenario</figcaption>
 </figure>
 
-Next the scenario's label at the top of the control, the 'fly' button can trigger the scenario
+Next the scenario's label at the top of the control, the 'play' button can trigger the scenario
 submission.<br/>
 If the scenario has pipelines, the user can submit each pipeline independently by pressing the
-'fly' button on the right of the pipeline's label.
+'play' button on the right of the pipeline's label.
 
 The user can click the scenario label to change it:
 <figure class="tp-center">
@@ -38,5 +38,5 @@ Users can also add or modify custom properties:
 </figure>
 
 Clicking the "New Property Key" line will create a new property.<br/>
-Clicking a custom property value field will let users change the property value.</br>
+Clicking a custom property key or value fields will let users change the property value.</br>
 The 'trash' button deletes the custom property.
