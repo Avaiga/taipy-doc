@@ -41,6 +41,7 @@
   --md-grid-padding-x: 1rem;
   --md-content-padding-y: 2rem;
   --md-sidebar-width: 12rem;
+  --md-paper-shadow: 0 0 0 1px var(--md-default-border-color);
 
   /* Animations */
   --transition-duration-base: 400ms;
@@ -296,7 +297,9 @@
 }
 
 .md-content .md-typeset .admonition{
-  border-color: var(--admonition-color);
+  border: none;
+  border-left: 4px solid var(--admonition-color);
+  box-shadow: var(--md-paper-shadow);
 }
 .md-typeset .admonition .admonition-title{
   z-index: 0;
@@ -420,7 +423,7 @@ a.tp-pill{
   background: var(--md-paper-bg-color);
   color: var(--md-default-fg-color);
   font-size: var(--md-body-font-size--small);
-  filter: drop-shadow(0 0 2px var(--md-default-border-color));
+  box-shadow: var(--md-paper-shadow);
 }
 
 .tp-pill .tp-tooltip{
@@ -451,8 +454,8 @@ a.tp-pill{
   background: var(--md-paper-bg-color);
   color: var(--md-default-fg-color);
   overflow: hidden;
-  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
   font-size: var(--md-body-font-size--small);
+  box-shadow: var(--md-paper-shadow);
 }
 .tp-content-card[href]{
   color: var(--md-default-fg-color);
