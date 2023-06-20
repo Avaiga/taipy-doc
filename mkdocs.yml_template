@@ -5,48 +5,14 @@ site_author: taipy.io
 repo_url: https://github.com/avaiga/taipy
 repo_name: taipy
 #strict: true
-copyright: © 2023 Avaiga
+copyright: © [YEAR] Avaiga
 nav:
   - Home:
     - index.md
     - "Installation": installation.md
   - "Getting Started":
     - getting_started/index.md
-    - "Getting started with GUI":
-      - getting_started/getting-started-gui/index.md
-      - "Step 1: First Web page": getting_started/getting-started-gui/step_01/ReadMe.md
-      - "Step 2: Visual elements": getting_started/getting-started-gui/step_02/ReadMe.md
-      - "Step 3: Interaction": getting_started/getting-started-gui/step_03/ReadMe.md
-      - "Step 4: Charts": getting_started/getting-started-gui/step_04/ReadMe.md
-      - "Step 5: Python expression in properties": getting_started/getting-started-gui/step_05/ReadMe.md
-      - "Step 6: Page layout": getting_started/getting-started-gui/step_06/ReadMe.md
-      - "Step 7: Multi-pages, navbars, and menus": getting_started/getting-started-gui/step_07/ReadMe.md
-    - "Getting started with Core":
-      - getting_started/getting-started-core/index.md
-      - "Step 1: Configuration and execution": getting_started/getting-started-core/step_01/ReadMe.md
-      - "Step 2: Basic functions": getting_started/getting-started-core/step_02/ReadMe.md
-      - "Step 3: Data Node types": getting_started/getting-started-core/step_03/ReadMe.md
-      - "Step 4: Cycles": getting_started/getting-started-core/step_04/ReadMe.md
-      - "Step 5: Scopes": getting_started/getting-started-core/step_05/ReadMe.md
-      - "Step 6: Skipping tasks": getting_started/getting-started-core/step_06/ReadMe.md
-      - "Step 7: Execution modes": getting_started/getting-started-core/step_07/ReadMe.md
-      - "Step 8: Scenario comparison": getting_started/getting-started-core/step_08/ReadMe.md
-      - "Step 9: Scenario subscription": getting_started/getting-started-core/step_09/ReadMe.md
-    - "Getting started with Taipy":
-      - getting_started/getting-started/index.md
-      - "Step 0: First web page": getting_started/getting-started/step_00/ReadMe.md
-      - "Step 1: Visual elements": getting_started/getting-started/step_01/ReadMe.md
-      - "Step 2: Interactive GUI": getting_started/getting-started/step_02/ReadMe.md
-      - "Step 3: Introducing Taipy Core": getting_started/getting-started/step_03/ReadMe.md
-      - "Step 4: Pipeline Management": getting_started/getting-started/step_04/ReadMe.md
-      - "Step 5: GUI and Pipeline": getting_started/getting-started/step_05/ReadMe.md
-      - "Step 6: Creation of Scenarios": getting_started/getting-started/step_06/ReadMe.md
-      - "Step 7: GUI and Scenario": getting_started/getting-started/step_07/ReadMe.md
-      - "Step 8: Modify Data Nodes content": getting_started/getting-started/step_08/ReadMe.md
-      - "Step 9: Manage Scenarios": getting_started/getting-started/step_09/ReadMe.md
-      - "Step 10: Embellish your App": getting_started/getting-started/step_10/ReadMe.md
-      - "Step 11: Introducing Cycles": getting_started/getting-started/step_11/ReadMe.md
-      - "Step 12: Compare Scenarios": getting_started/getting-started/step_12/ReadMe.md
+    [GETTING_STARTED_CONTENT]
   - "User Manual":
     - "About Taipy's User Manual": manuals/about.md
     - Taipy GUI:
@@ -163,53 +129,10 @@ nav:
         - "GUI Markdown support": manuals/studio/gui.md
   - "Reference Manual":
     - "About Taipy's Reference Manual": manuals/reference.md
-    - taipy: manuals/reference/pkg_taipy.md
-    - taipy.config:
-      - manuals/reference/pkg_taipy.config/index.md
-      - taipy.config.exceptions: manuals/reference/pkg_taipy.config.exceptions.md
-    - taipy.core:
-      - manuals/reference/pkg_taipy.core/index.md
-      - taipy.core.common: manuals/reference/pkg_taipy.core.common.md
-      - taipy.core.config: manuals/reference/pkg_taipy.core.config.md
-      - taipy.core.data: manuals/reference/pkg_taipy.core.data.md
-      - taipy.core.data.operator: manuals/reference/pkg_taipy.core.data.operator.md
-      - taipy.core.exceptions: manuals/reference/pkg_taipy.core.exceptions.md
-      - taipy.core.notification: manuals/reference/pkg_taipy.core.notification.md
-      - taipy.core.notification.core_event_consumer: manuals/reference/pkg_taipy.core.notification.core_event_consumer.md
-      - taipy.core.notification.notifier: manuals/reference/pkg_taipy.core.notification.notifier.md
-      - taipy.core.notification.registration: manuals/reference/pkg_taipy.core.notification.registration.md
-      - taipy.core.taipy: manuals/reference/pkg_taipy.core.taipy.md
-    - taipy.gui:
-      - manuals/reference/pkg_taipy.gui/index.md
-      - taipy.gui.data: manuals/reference/pkg_taipy.gui.data.md
-      - taipy.gui.extension: manuals/reference/pkg_taipy.gui.extension.md
-      - taipy.gui.utils.proxy: manuals/reference/pkg_taipy.gui.utils.proxy.md
-    - taipy.rest:
-      - manuals/reference/pkg_taipy.rest/index.md
-      - taipy.rest.api.error_handler: manuals/reference/pkg_taipy.rest.api.error_handler.md
-      - taipy.rest.api.resources: manuals/reference/pkg_taipy.rest.api.resources.md
-      - taipy.rest.api.resources.cycle: manuals/reference/pkg_taipy.rest.api.resources.cycle.md
-      - taipy.rest.api.resources.datanode: manuals/reference/pkg_taipy.rest.api.resources.datanode.md
-      - taipy.rest.api.resources.job: manuals/reference/pkg_taipy.rest.api.resources.job.md
-      - taipy.rest.api.resources.pipeline: manuals/reference/pkg_taipy.rest.api.resources.pipeline.md
-      - taipy.rest.api.resources.scenario: manuals/reference/pkg_taipy.rest.api.resources.scenario.md
-      - taipy.rest.api.resources.task: manuals/reference/pkg_taipy.rest.api.resources.task.md
-      - taipy.rest.api.schemas: manuals/reference/pkg_taipy.rest.api.schemas.md
-      - taipy.rest.api.schemas.datanode: manuals/reference/pkg_taipy.rest.api.schemas.datanode.md
-      - taipy.rest.api.schemas.job: manuals/reference/pkg_taipy.rest.api.schemas.job.md
-      - taipy.rest.api.views: manuals/reference/pkg_taipy.rest.api.views.md
-      - taipy.rest.app: manuals/reference/pkg_taipy.rest.app.md
-      - taipy.rest.commons.apispec: manuals/reference/pkg_taipy.rest.commons.apispec.md
-      - taipy.rest.extensions: manuals/reference/pkg_taipy.rest.extensions.md
+    [REFERENCE_CONTENT]
     - "REST API":
       - manuals/reference_rest/index.md
-      - "Paths for cycle": manuals/reference_rest/apis_cycle.md
-      - "Paths for datanode": manuals/reference_rest/apis_datanode.md
-      - "Paths for job": manuals/reference_rest/apis_job.md
-      - "Paths for pipeline": manuals/reference_rest/apis_pipeline.md
-      - "Paths for scenario": manuals/reference_rest/apis_scenario.md
-      - "Paths for task": manuals/reference_rest/apis_task.md
-      - "Schemas": manuals/reference_rest/schemas.md
+      [REST_REFERENCE_CONTENT]
     - "GUI Extension API":
       - manuals/reference_guiext/index.md
       - "taipy-gui module": manuals/reference_guiext/modules.md
@@ -222,25 +145,27 @@ theme:
   name: material
   language: en
   custom_dir: tools
+  logo: assets/images/taipy-logo.png
   font:
     text: Lato
   icon:
     logo: taipy-logo
     repo: fontawesome/brands/git-alt
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: custom
       accent: custom
       toggle:
-       icon: material/toggle-switch-off-outline
-       name: Switch to dark mode
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: custom
       accent: custom
-      scheme: slate
       toggle:
-       icon: material/toggle-switch
-       name: Switch to light mode
+        icon: material/toggle-switch
+        name: Switch to light mode
   features:
     - navigation.indexes
     - navigation.tabs
