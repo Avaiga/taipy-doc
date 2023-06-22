@@ -85,10 +85,10 @@ nav:
         - "Authorization": manuals/auth/authorization.md
     - "Taipy command-line interface":
         - manuals/cli/index.md
-        - "help":manuals/cli/help.md
-        - "create":manuals/cli/create.md
-        - "manage-versions":manuals/cli/manage-versions.md
-        - "version":manuals/cli/version.md
+        - "help": manuals/cli/help.md
+        - "create": manuals/cli/create.md
+        - "manage-versions": manuals/cli/manage-versions.md
+        - "version": manuals/cli/version.md
     - "Running & Deploying":
         - manuals/run-deploy/index.md
         - "Running":
