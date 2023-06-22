@@ -31,7 +31,7 @@ Version number                         Mode                   Creation date
 
 In the example above, `python main.py` command runs the application in development mode. The
 command `taipy manage-versions --list` lists all versions of your current Taipy Core application
-(see the [Manage versions on Taipy CLI page](../../cli.md#manage-versions) for more details).
+(see the [Manage versions on Taipy CLI page](../../cli/manage-versions.md) for more details).
 
 The output on the console indicates that all entities of the development version
 `9b01399c-67e4-41a4-83d3-121f7210d4e7` are deleted before running the application.

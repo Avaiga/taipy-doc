@@ -33,7 +33,7 @@ Published on 2023-06.
   can then visualize the Core entities and interact with them.<br/>
   Please check the [list of Core back-end controls](manuals/gui/corelements/index.md).
 - New Taipy command-line interface (CLI). Please refer to the
-  [Taipy command-line interface](./manuals/cli.md) documentation page for more information.
+  [Taipy command-line interface](./manuals/cli/index.md) documentation page for more information.
 - Users can now create a new Taipy application from a template by running `$ taipy create` from the
   CLI. Besides the default template, "multi-page-gui" template can be chosen with the optional
   `--template` option.
