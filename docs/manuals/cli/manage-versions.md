@@ -1,7 +1,7 @@
 # Manage versions
 
 The `taipy manage-versions` command allows a Taipy user to track and manage various versions of
-a Taipy Core application. Please refer to the [Version management](./core/versioning/index.md)
+a Taipy Core application. Please refer to the [Version management](../core/versioning/index.md)
 documentation page for more information on creating or re-using a version.
 
 To use the version management system, one can run the `$ taipy manage-versions`
