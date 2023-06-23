@@ -200,9 +200,8 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          selection:
+          options:
             docstring_style: google
-          rendering:
             show_source: false
   - macros:
       module_name: tools/postprocess
