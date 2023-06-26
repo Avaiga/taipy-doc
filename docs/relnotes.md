@@ -62,9 +62,12 @@ Published on 2023-06.
 2.3.1
 
 - New exposed functions:
-   - `is_submittable()^` checks if a scenario or a pipeline can be submitted;
-   - `is_promotable()^` checks if a scenario can be promoted to primary;
-   - `is_deletable()^` checks if an entity can be deleted.
+
+       * `is_submittable()^` checks if a scenario or a pipeline can be submitted;
+
+       * `is_promotable()^` checks if a scenario can be promoted to primary;
+
+       * `is_deletable()^` checks if an entity can be deleted.
 
 2.3.0
 
