@@ -61,9 +61,10 @@ Published on 2023-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.3.1
 
-- New API exposed at taipy package level to check if a scenario or a pipeline can be submitted (`is_submittable()^`)
-- New API exposed at taipy package level to check if a scenario can be promoted as primary (`is_promotable()^`)
-- New API exposed at taipy package level to check if an entity can be deleted (`is_deletable()^`)
+- New exposed functions:
+   - `is_submittable()^` checks if a scenario or a pipeline can be submitted;
+   - `is_promotable()^` checks if a scenario can be promoted to primary;
+   - `is_deletable()^` checks if an entity can be deleted.
 
 2.3.0
 
