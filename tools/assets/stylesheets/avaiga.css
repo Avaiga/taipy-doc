@@ -52,6 +52,7 @@
 /* Dark mode */
 [data-md-color-scheme="slate"]{
   /* Color */
+  --md-accent-fg-color: #545ec9;
   --md-default-bg-color: hsla(var(--md-hue),50%,8%,1);
   --md-default-bg-color--light: hsla(var(--md-hue),50%,10%,1);
   --md-default-bg-color--lighter: hsla(var(--md-hue),50%,12%,1);
@@ -299,6 +300,7 @@
 .md-content .md-typeset .admonition{
   border: none;
   border-left: 4px solid var(--admonition-color);
+  background-color: var(--md-paper-bg-color);
   box-shadow: var(--md-paper-shadow);
 }
 .md-typeset .admonition .admonition-title{
