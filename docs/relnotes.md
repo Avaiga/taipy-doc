@@ -59,6 +59,16 @@ Published on 2023-06.
   variables in complex dependencies situations.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.3.1
+
+- New exposed functions:
+
+       * `is_submittable()^` checks if a scenario or a pipeline can be submitted;
+
+       * `is_promotable()^` checks if a scenario can be promoted to primary;
+
+       * `is_deletable()^` checks if an entity can be deleted.
+
 2.3.0
 
 - All scenarios grouped by their cycle can now be retrieved by calling
