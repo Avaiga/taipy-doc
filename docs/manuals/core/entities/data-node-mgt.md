@@ -13,7 +13,7 @@ A data node also holds various properties and attributes accessible through the 
 - _**scope**_: The scope of this data node (scenario, pipeline, etc.).
 - _**id**_: The unique identifier of this data node.
 - _**name**_: The user-readable name of the data node.
-- _**owner_id**_: The identifier of the owner (pipeline_id, scenario_id, cycle_id) or `None`.
+- _**owner_id**_: The identifier of the owner (pipeline_id, scenario_id, cycle_id) or None.
 - _**last_edit_date**_: The date and time of the last data modification made through Taipy.
     Note that **only** for file-based data nodes (CSV, Excel, pickle, JSON, Parquet, ...), the
     file's last modification date is used to compute the _**last_edit_date**_ value. That means if a file is modified
@@ -21,8 +21,10 @@ A data node also holds various properties and attributes accessible through the 
 - _**edits**_: The ordered list of `Edit^`s, representing the successive modifications of the data node.
 - _**version**_: The string indicates the application version of the data node to instantiate.
     If not provided, the current version is used.
-- _**validity_period**_: The validity period of a data node. If _validity_period_ is set to None, the
-    data node is always up-to-date.
+- _**validity_period**_: The duration since the last edit date for which the data node can be considered up-to-date.
+    Once the validity period has passed, the data node is considered stale and relevant tasks will run
+    even if they are skippable (see the [Task management page](task-mgt.md) for more details).
+    If *validity_period* is set to None, the data node is always up-to-date.
 - _**edit_in_progress**_: The boolean flag signals if the data node is locked for modification.
 - _**properties**_: The dictionary of additional arguments.
 
@@ -1052,8 +1054,8 @@ When writing data to a Mongo collection data node, the `MongoCollectionDataNode.
 a list of objects as instances of a document class
 defined by _**custom_document**_ as the input.
 
-By default, Mongo collection data node uses `taipy.core.DefaultCustomDocument` as the document class.
-A `DefaultCustomDocument` can have any attribute, however, the type of the value should be supported by
+By default, Mongo collection data node uses `taipy.core.MongoDefaultDocument` as the document class.
+A `MongoDefaultDocument` can have any attribute, however, the type of the value should be supported by
 MongoDB, including but not limited to:
 
 - Boolean, integers, and floating-point numbers.
@@ -1070,12 +1072,12 @@ Check out [MongoDB supported data types](https://www.mongodb.com/docs/manual/ref
 !!! example "Read and write from a Mongo collection data node using default document class"
 
     ```python
-    from taipy.core import DefaultCustomDocument
+    from taipy.core import MongoDefaultDocument
 
     data = [
-        DefaultCustomDocument(date="12/24/2018", nb_sales=1550),
-        DefaultCustomDocument(date="12/25/2018", nb_sales=2315),
-        DefaultCustomDocument(date="12/26/2018", nb_sales=1832),
+        MongoDefaultDocument(date="12/24/2018", nb_sales=1550),
+        MongoDefaultDocument(date="12/25/2018", nb_sales=2315),
+        MongoDefaultDocument(date="12/26/2018", nb_sales=1832),
     ]
     data_node.write(data)
     ```
@@ -1090,7 +1092,7 @@ Check out [MongoDB supported data types](https://www.mongodb.com/docs/manual/ref
     ]
     ```
 
-    The read method will return a list of DefaultCustomDocument objects, including "_id" attribute.
+    The read method will return a list of MongoDefaultDocument objects, including "_id" attribute.
 
 You can also specify custom document class to handle specific attribute, encode and decode data when
 reading and writing to the Mongo collection.

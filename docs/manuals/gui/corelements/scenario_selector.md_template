@@ -1,0 +1,78 @@
+Select scenarios from the list of all Taipy Core scenario entities.
+
+The scenario selector shows all the scenario entities handled by Taipy Core and lets the user
+select a scenario from a list, create new scenarios or edit existing scenarios.
+
+## Details
+
+The scenario selector displays a tree selector where scenarios are grouped based on their cycle
+(if the property [*display_cycles*](#p-display_cycles) has not been set to False).<br/>
+If the [*show_primary_flag*](#p-show_primary_flag) property has not been forced to False, the
+label of the primary scenario are overlaid with a small visual hint that lets users spot them
+immediately.
+
+If no created scenario has been created yet, the tree selector will appear empty. The default
+behavior, controlled by the [*show_add_button*](#p-show_add_button) property, is to display a
+button letting users create new scenarios:
+
+<figure class="tp-center">
+  <img src="../scenario_selector-empty-d.png" class="visible-dark"  width="80%"/>
+  <img src="../scenario_selector-empty-l.png" class="visible-light" width="80%"/>
+  <figcaption>No scenario to select</figcaption>
+</figure>
+
+When the user presses that button, a form appears so that the settings of the new scenario can be
+set:
+
+<figure class="tp-center">
+  <img src="../scenario_selector-create-d.png" class="visible-dark"  width="60%"/>
+  <img src="../scenario_selector-create-l.png" class="visible-light" width="60%"/>
+  <figcaption>Dialog to create a new scenario</figcaption>
+</figure>
+
+In this form, the user must indicate which scenario configuration should be used and specify the
+scenario creation date.<br/>
+Custom properties can also be added to the new scenario by pressing the "+" button located on the
+right side of the property key and value fields.
+
+When several new scenarios are created, the scenario selector will list all the scenarios,
+potentially grouped in their relevant cycle:
+
+<figure class="tp-center">
+  <img src="../scenario_selector-filled-d.png" class="visible-dark"  width="60%"/>
+  <img src="../scenario_selector-filled-l.png" class="visible-light" width="60%"/>
+  <figcaption>Showing all the created scenarios</figcaption>
+</figure>
+
+Notice how the primary scenario for a cycle is immediately flagged as "primary" (you may choose
+not to show that icon by setting the [*show_primary_flag*](#p-show_primary_flag) property to
+False).
+
+### Editing a scenario
+
+Users can press the pencil icon located next to the scenario labels. When that happens, a dialog
+box similar to the scenario creation dialog is displayed to let users modify the scenario
+settings.
+
+Here is how this dialog box looks like:
+
+<figure class="tp-center">
+  <img src="../scenario_selector-edition-d.png" class="visible-dark"  width="60%"/>
+  <img src="../scenario_selector-edition-l.png" class="visible-light" width="60%"/>
+  <figcaption>Editing a scenario</figcaption>
+</figure>
+
+The user can change the scenario label and custom properties then press the Apply button to
+propagate the changes.<br/>
+The Cancel button closes the dialog without changing anything.<br/>
+The Delete button deletes the edited scenario.
+
+Note that there is no way to change the scenario configuration or its creation date.
+
+### Selecting a scenario
+
+When the user selects a scenario in the tree selector, the [*value*](#p-value) property is
+set to the selected entity and the [*on_change*](#p-on_change) callback is invoked. The
+application can then use the selected value.
+
+If no scenario is selected, [*value*](#p-value) is set no None.

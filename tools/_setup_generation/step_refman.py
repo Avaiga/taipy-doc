@@ -21,6 +21,7 @@ class RefManStep(SetupStep):
         "taipy.config",
         "taipy.core",
         "taipy.gui",
+        "taipy.gui_core",
         "taipy.rest",
         "taipy.auth",
         "taipy.enterprise",
@@ -35,25 +36,24 @@ class RefManStep(SetupStep):
         # Core
         ("typing.*", "taipy.core"),
         ("taipy.core._core.Core", "taipy.core"),
-        ("taipy.core.common.alias.CycleId", "taipy.core"),
-        ("taipy.core.common.alias.DataNodeId", "taipy.core"),
-        ("taipy.core.common.alias.JobId", "taipy.core"),
-        ("taipy.core.common.alias.PipelineId", "taipy.core"),
-        ("taipy.core.common.alias.ScenarioId", "taipy.core"),
-        ("taipy.core.common.alias.TaskId", "taipy.core"),
-        ("taipy.core.common.alias.Edit", "taipy.core"),
-        ("taipy.core.common.default_custom_document.DefaultCustomDocument", "taipy.core.common"),
+        ("taipy.core.common.mongo_default_document.MongoDefaultDocument", "taipy.core.common"),
         ("taipy.core.common.frequency.Frequency", "taipy.core"),
         ("taipy.core.common.scope.Scope", "taipy.core"),
         ("taipy.core.config.*", "taipy.core.config"),
+        ("taipy.core.cycle.cycle_id.CycleId", "taipy.core"),
         ("taipy.core.cycle.cycle.Cycle", "taipy.core"),
+        ("taipy.core.data.data_node_id.DataNodeId", "taipy.core"),
+        ("taipy.core.data.data_node_id.Edit", "taipy.core"),
         ("taipy.core.data.*.*DataNode", "taipy.core.data"),
         ("taipy.core.data.data_node.DataNode", "taipy.core"),
         ("taipy.core.data.operator.Operator", "taipy.core.data.operator"),
         ("taipy.core.data.operator.JoinOperator", "taipy.core.data.operator"),
         ("taipy.core.exceptions.exceptions.*", "taipy.core.exceptions"),
+        ("taipy.core.job.job_id.JobId", "taipy.core"),
         ("taipy.core.job.job.Job", "taipy.core"),
+        ("taipy.core.pipeline.pipeline_id.PipelineId", "taipy.core"),
         ("taipy.core.pipeline.pipeline.Pipeline", "taipy.core"),
+        ("taipy.core.scenario.scenario_id.ScenarioId", "taipy.core"),
         ("taipy.core.scenario.scenario.Scenario", "taipy.core"),
         ("taipy.core.job.status.Status", "taipy.core"),
         ("taipy.core.taipy.cancel_job", "taipy.core"),
@@ -70,6 +70,7 @@ class RefManStep(SetupStep):
         ("taipy.core.taipy.get_cycles", "taipy.core"),
         ("taipy.core.taipy.get_cycles_scenarios", "taipy.core"),
         ("taipy.core.taipy.get_data_nodes", "taipy.core"),
+        ("taipy.core.taipy.get_entities_by_config_id", "taipy.core"),
         ("taipy.core.taipy.get_jobs", "taipy.core"),
         ("taipy.core.taipy.get_latest_job", "taipy.core"),
         ("taipy.core.taipy.get_parents", "taipy.core"),
@@ -78,6 +79,9 @@ class RefManStep(SetupStep):
         ("taipy.core.taipy.get_primary_scenarios", "taipy.core"),
         ("taipy.core.taipy.get_scenarios", "taipy.core"),
         ("taipy.core.taipy.get_tasks", "taipy.core"),
+        ("taipy.core.taipy.is_deletable", "taipy.core"),
+        ("taipy.core.taipy.is_promotable", "taipy.core"),
+        ("taipy.core.taipy.is_submittable", "taipy.core"),
         ("taipy.core.taipy.set", "taipy.core"),
         ("taipy.core.taipy.set_primary", "taipy.core"),
         ("taipy.core.taipy.submit", "taipy.core"),
@@ -87,6 +91,7 @@ class RefManStep(SetupStep):
         ("taipy.core.taipy.unsubscribe_pipeline", "taipy.core"),
         ("taipy.core.taipy.unsubscribe_scenario", "taipy.core"),
         ("taipy.core.taipy.untag", "taipy.core"),
+        ("taipy.core.task.task_id.TaskId", "taipy.core"),
         ("taipy.core.task.task.Task", "taipy.core"),
         # Config
         ("taipy.config.config.Config", "taipy.config"),
@@ -95,14 +100,13 @@ class RefManStep(SetupStep):
         ("taipy.config.common.scope.Scope", "taipy.core.config"),
         ("taipy.config.common.frequency.Frequency", "taipy.core.config"),
         ("taipy.config.unique_section.*", "taipy.config"),
-        ("taipy.config.exceptions.exceptions.ConfigurationIssueError", "taipy.config.exceptions"),
         # Rest
         ("taipy.rest.rest.Rest", "taipy.rest"),
         # Auth
         ("taipy.auth.config.authentication_config.AuthenticationConfig", "taipy.auth.config"),
     ]
     # Entries that should be hidden for the time being
-    HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback"]
+    HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback", "notification"]
     # Where the Reference Manual files are generated (MUST BE relative to docs_dir)
     REFERENCE_REL_PATH = "manuals/reference"
 
@@ -145,6 +149,7 @@ class RefManStep(SetupStep):
         REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 
         os.mkdir(self.REFERENCE_DIR_PATH)
+        loaded_modules = set()
 
         # Entries:
         #   full_entry_name ->
@@ -157,6 +162,9 @@ class RefManStep(SetupStep):
         module_doc = {}
 
         def read_module(module):
+            if module in loaded_modules:
+                return
+            loaded_modules.add(module)
             if not module.__name__.startswith(Setup.ROOT_PACKAGE):
                 return
             for entry in dir(module):
@@ -455,7 +463,7 @@ from typing import Any, Callable, Dict, List, Union, Optional
 import json
 from .common.scope import Scope
 from .common.frequency import Frequency
-from taipy.core.common.default_custom_document import DefaultCustomDocument
+from taipy.core.common.mongo_default_document import MongoDefaultDocument
 from taipy.core.config.job_config import JobConfig
 from taipy.core.config.data_node_config import DataNodeConfig
 from taipy.core.config.task_config import TaskConfig
@@ -468,8 +476,8 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
         with open(config_path, "w") as f:
             new_content = "".join(contents)
             new_content = new_content.replace(
-                "custom_document: Any = <class 'taipy.core.common.default_custom_document.DefaultCustomDocument'>",
-                "custom_document: Any = DefaultCustomDocument"
+                "custom_document: Any = <class 'taipy.core.common.mongo_default_document.MongoDefaultDocument'>",
+                "custom_document: Any = MongoDefaultDocument"
             )
             new_content = new_content.replace("taipy.config.common.scope.Scope", "Scope")
             new_content = new_content.replace("<Scope.SCENARIO: 2>", "Scope.SCENARIO")

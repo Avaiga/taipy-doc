@@ -14,15 +14,15 @@ The application may however have a few requirements that Taipy can address:
   run as services. That is typically the case for [Taipy GUI](../../gui) or
   [Taipy REST](../../rest), but the execution of [Taipy Core](../../core) tasks
   can also be taken care of by a specific service;
-- [Rely on an external Web server](external_web_server.md): although [Taipy GUI](../../gui)
-  and [Taipy REST](../../rest) provide an internal Web server, you may need to host the
-  Taipy application in a Web server that is already installed in your infrastructure.
-- [Protect private files](protect_files.md): because the hosting of an application by a Web
+- [Rely on an external web server](external_web_server.md): although [Taipy GUI](../../gui)
+  and [Taipy REST](../../rest) provide an internal web server, you may need to host the
+  Taipy application in a web server that is already installed in your infrastructure.
+- [Protect private files](protect_files.md): because the hosting of an application by a web
   server poses risks of exposing files that you want to keep secret, Taipy provides means
   to setup file access security.
 
 ## [Running Taipy services](running_services.md)
 
-## [External Web servers](external_web_server.md)
+## [External web servers](external_web_server.md)
 
 ## [Protecting private files](protect_files.md)
