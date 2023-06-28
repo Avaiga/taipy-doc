@@ -12,7 +12,20 @@ This is the list of changes to Taipy releases as they were published.
     Please refer to the [Migration page](./migration.md) for potential migration paths for your applications
     implemented on legacy Taipy versions.
 
-## Community edition: 2.3
+## Community edition: 3.0 (Work in progress)
+
+Not published yet.
+
+### New Features
+
+### Improvements and changes
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+3.0.0
+
+- `Scope.PIPELINE` has been removed from `Scope^` values.
+
+## Community edition: 2.3 (Work in progress)
 
 Published on 2023-06.
 
