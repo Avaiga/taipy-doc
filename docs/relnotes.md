@@ -21,6 +21,7 @@ Not published yet.
 ### Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+3.0.0
 
 - `Scope.PIPELINE` has been removed from `Scope^` values.
 
