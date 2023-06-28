@@ -1,0 +1,18 @@
+Displays a list of the Data Node entities that can be selected.
+
+## Details
+
+The control displays a tree selector where all data node entities are listed.<br/>
+If [*display_cycles*](#p-display_cycles) is set to False, the cycles are not represented.
+
+In an application that would have created a few data nodes, some of them being scoped at the
+scenario level, here is what the data node selector would look like:
+<figure class="tp-center">
+  <img src="../data_node_selector-init-d.png" class="visible-dark"  width="70%"/>
+  <img src="../data_node_selector-init-l.png" class="visible-light" width="70%"/>
+  <figcaption>The list of selectable data nodes</figcaption>
+</figure>
+
+When the user selects a data node, the [*on_change*](#p-on_change) callback is invoked, so that
+the application can use the selected value. The value is set to the [*value*](#p-value) property.
+

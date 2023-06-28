@@ -23,13 +23,16 @@ class GuiExtRefManStep(SetupStep):
         self.GUI_EXT_REF_DIR_PATH = setup.manuals_dir + "/reference_guiext"
         if os.path.exists(self.GUI_EXT_REF_DIR_PATH):
             shutil.rmtree(self.GUI_EXT_REF_DIR_PATH)
-        self.npm_path = shutil.which("npm")
-        if self.npm_path:
+        npm_path = shutil.which("npm")
+        if npm_path:
+            if " " in npm_path:
+                npm_path = f"\"{npm_path}\""
             try:
-                subprocess.run(f"{self.npm_path} --version", shell=True, capture_output=True)
+                subprocess.run(f"{npm_path} --version", shell=True, capture_output=True)
             except OSError:
                 print(f"WARNING: Couldn't run npm, ignoring this step.", flush=True)
-                self.npm_path = None
+                npm_path = None
+        self.npm_path = npm_path
 
     def setup(self, setup: Setup) -> None:
         if self.npm_path:

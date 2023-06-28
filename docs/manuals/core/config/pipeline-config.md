@@ -1,3 +1,7 @@
+!!! warning "Deprecation"
+
+    Note that `PipelineConfig^` has been deprecated in version 2.3 and will be combined with `ScenarioConfig^` in the following major version.
+
 A pipeline configuration is necessary to instantiate a [Pipeline](../concepts/pipeline.md). To create a
 `PipelineConfig^`, you can use the `Config.configure_pipeline()^` method with the following parameters:
 

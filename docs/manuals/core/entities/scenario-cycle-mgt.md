@@ -76,6 +76,25 @@ scenario == scenario_retrieved
 
 Here, the two variables `scenario` and `scenario_retrieved` are equal.
 
+# Get scenarios by config id
+
+Scenarios can also be retrieved using `taipy.get_entities_by_config_id()^` providing the config_id.
+This method returns the list of all existing scenarios instantiated from the config_id provided as a parameter.
+
+!!! Example
+
+    ```python linenums="1"
+    import taipy as tp
+    import my_config
+
+    # Create 2 scenarios.
+    scenario_1 = tp.create_scenario(my_config.monthly_scenario_cfg)
+    scenario_2 = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+    # Get all monthly scenarios by config id, this will return a list of 2 scenarios just created.
+    all_monthly_scenarios = tp.get_entities_by_config_id("scenario_configuration")
+    ```
+
 # Get all scenarios
 
 All the scenarios can be retrieved using the method `taipy.get_scenarios()^`. This method returns the list of all

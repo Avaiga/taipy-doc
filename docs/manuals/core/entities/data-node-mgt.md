@@ -13,7 +13,7 @@ A data node also holds various properties and attributes accessible through the 
 - _**scope**_: The scope of this data node (scenario, pipeline, etc.).
 - _**id**_: The unique identifier of this data node.
 - _**name**_: The user-readable name of the data node.
-- _**owner_id**_: The identifier of the owner (pipeline_id, scenario_id, cycle_id) or `None`.
+- _**owner_id**_: The identifier of the owner (pipeline_id, scenario_id, cycle_id) or None.
 - _**last_edit_date**_: The date and time of the last data modification made through Taipy.
     Note that **only** for file-based data nodes (CSV, Excel, pickle, JSON, Parquet, ...), the
     file's last modification date is used to compute the _**last_edit_date**_ value. That means if a file is modified
@@ -21,8 +21,10 @@ A data node also holds various properties and attributes accessible through the 
 - _**edits**_: The ordered list of `Edit^`s, representing the successive modifications of the data node.
 - _**version**_: The string indicates the application version of the data node to instantiate.
     If not provided, the current version is used.
-- _**validity_period**_: The validity period of a data node. If _validity_period_ is set to None, the
-    data node is always up-to-date.
+- _**validity_period**_: The duration since the last edit date for which the data node can be considered up-to-date.
+    Once the validity period has passed, the data node is considered stale and relevant tasks will run
+    even if they are skippable (see the [Task management page](task-mgt.md) for more details).
+    If *validity_period* is set to None, the data node is always up-to-date.
 - _**edit_in_progress**_: The boolean flag signals if the data node is locked for modification.
 - _**properties**_: The dictionary of additional arguments.
 
@@ -45,7 +47,10 @@ passing the data node id as parameter:
     # data_node == data_node_retrieved
     ```
 
-The data nodes that are part of a **scenario**, **pipeline** or **task** can be directly accessed as attributes:
+# Get data nodes by config_id
+
+The data nodes that are part of a **scenario**, **pipeline** or **task** can be directly accessed as attributes by
+using their config_id:
 
 !!! Example
 
@@ -68,6 +73,24 @@ The data nodes that are part of a **scenario**, **pipeline** or **task** can be 
     # then access the data node 'sales_history' from the task
     task = pipeline.training
     task.sales_history
+    ```
+
+Data nodes can be retrieved by using `taipy.get_entities_by_config_id()^` providing the config_id.
+This method returns the list of all existing data nodes instantiated from the config_id provided as a parameter.
+
+!!! Example
+
+    ```python linenums="1"
+    import taipy as tp
+    import my_config
+
+    # Create 2 scenarios, which will also create 2 trained_model data nodes.
+    scenario_1 = tp.create_scenario(my_config.monthly_scenario_cfg)
+    scenario_2 = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+    # Get all data nodes by config_id, this will return a list of 2 trained_model data nodes
+    # created alongside the 2 scenarios.
+    all_trained_model_dns = tp.get_entities_by_config_id("trained_model")
     ```
 
 # Get all data nodes
@@ -1083,9 +1106,9 @@ document class.
 A _Generic_ data node has the read and the write functions defined by the user:
 
 - When reading from a generic data node, Taipy runs the function defined by *read_fct* with parameters
-  defined by *read_fct_params*.
+  defined by *read_fct_args*.
 - When writing to a generic data node, Taipy runs the function defined by *write_fct* with parameters
-  defined by *write_fct_params*.
+  defined by *write_fct_args*.
 
 ## In memory
 

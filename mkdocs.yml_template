@@ -20,8 +20,10 @@ nav:
         - "Pages": manuals/gui/pages.md
         - "Visual Elements":
            - manuals/gui/viselements/index.md
-           - "Controls": manuals/gui/controls.md
-           - "Blocks": manuals/gui/blocks.md
+           - "Controls": manuals/gui/viselements/controls.md
+           - "Core Back-end Controls":
+              - manuals/gui/corelements/index.md
+           - "Blocks": manuals/gui/viselements/blocks.md
         - "Binding variables": manuals/gui/binding.md
         - "Callbacks": manuals/gui/callbacks.md
         - "Notifications": manuals/gui/notifications.md
@@ -71,32 +73,56 @@ nav:
             - "Job execution": manuals/core/entities/orchestrating-and-job-execution.md
         - "Version Management":
             - manuals/core/versioning/index.md
-            - "Manage versions": manuals/core/versioning/version-mgt.md
+            - "Configuration": manuals/core/versioning/configuration.md
             - "Development mode": manuals/core/versioning/development_mode.md
             - "Experiment mode": manuals/core/versioning/experiment_mode.md
             - "Production mode": manuals/core/versioning/production_mode.md
     - "Taipy REST":
         - manuals/rest/index.md
-    - "Running Taipy services":
-        - manuals/running_services/index.md
     - "Authentication and Roles":
         - manuals/auth/index.md
         - "Authentication": manuals/auth/authentication.md
         - "Authorization": manuals/auth/authorization.md
-    - "Deployment":
-        - "Prepare your application for deployment": manuals/deployment/prepare-taipy-for-deployment.md
-        - "GNU/Linux":
-            - "Ubuntu": manuals/deployment/linux/ubuntu.md
-            - "RHEL": manuals/deployment/linux/redhat.md
-        - "Windows Server": manuals/deployment/windows.md
-        - "Docker":
-            - "Development": manuals/deployment/docker/development.md
-            - "Production": manuals/deployment/docker/production.md
-        - "Heroku":
-            - "Getting started": manuals/deployment/heroku/getting-started.md
-            - "Setup": manuals/deployment/heroku/setup.md
-            - "Based on Git": manuals/deployment/heroku/git.md
-            - "Based on Docker": manuals/deployment/heroku/docker.md
+    - "Taipy command-line interface":
+        - manuals/cli/index.md
+        - "help": manuals/cli/help.md
+        - "create": manuals/cli/create.md
+        - "manage-versions": manuals/cli/manage-versions.md
+        - "version": manuals/cli/version.md
+    - "Running & Deploying":
+        - manuals/run-deploy/index.md
+        - "Running":
+            - manuals/run-deploy/run/index.md
+            - "The run() function": manuals/run-deploy/run/running_services.md
+            - "Using an external web server": manuals/run-deploy/run/external_web_server.md
+            - "Protect private files": manuals/run-deploy/run/protect_files.md
+        - "Deployment":
+            - manuals/run-deploy/deploy/index.md
+            - "On the local machine":
+                - manuals/run-deploy/deploy/local_machine.md
+            - "On Taipy Cloud":
+                - manuals/run-deploy/deploy/taipy-cloud.md
+            - "On Linux servers":
+                - manuals/run-deploy/deploy/linux/index.md
+                - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md
+                - "RHEL": manuals/run-deploy/deploy/linux/redhat.md
+            - "On Windows server":
+                - manuals/run-deploy/deploy/windows.md
+            - "Using Docker":
+                - manuals/run-deploy/deploy/docker/index.md
+                - "For development": manuals/run-deploy/deploy/docker/development.md
+                - "For production": manuals/run-deploy/deploy/docker/production.md
+            - "On Azure":
+                - manuals/run-deploy/deploy/azure.md
+#            - "On Clever Cloud":
+#                - manuals/run-deploy/deploy/clever-cloud.md
+            - "On Heroku":
+                - manuals/run-deploy/deploy/heroku/index.md
+                - "Setup": manuals/run-deploy/deploy/heroku/setup.md
+                - "Based on Git": manuals/run-deploy/deploy/heroku/git.md
+                - "Based on Docker": manuals/run-deploy/deploy/heroku/docker.md
+            - "On Databricks":
+                - manuals/run-deploy/deploy/databricks/index.md
     - "Taipy Studio":
         - manuals/studio/index.md
         - "Building configurations":
@@ -164,7 +190,8 @@ markdown_extensions:
       generic: true
   - pymdownx.highlight
   - pymdownx.superfences
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.details
   - admonition
   - toc:
@@ -178,9 +205,8 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          selection:
+          options:
             docstring_style: google
-          rendering:
             show_source: false
   - macros:
       module_name: tools/postprocess
@@ -190,13 +216,14 @@ watch:
 extra:
   social:
     - icon: fontawesome/brands/twitter
-      # replace with your own tweet link below
-      link: http://www.taipy.io
+      link: https://twitter.com/Taipy_io
       name: Tweet
-    - icon: fontawesome/brands/facebook
-      # replace with your own facebook link below
-      link: http://www.taipy.io
-      name: Facebook
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/taipy-io/
+      name: LinkedIn
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/channel/UCYZyGVj-fPgUSITZnsOQoDg
+      name: YouTube
     - icon: fontawesome/brands/github
       link: https://github.com/avaiga/taipy
       name: Github

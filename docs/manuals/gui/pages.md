@@ -31,12 +31,12 @@ of two syntaxes:
 
 - Markdown: a lightweight markup language widely used for creating
     documentation pages. This would be the ideal format if you are not
-    familiar with Web page definition, and would like to create a good
+    familiar with web page definition, and would like to create a good
     visual rendering quickly.<br/>
     Taipy has an augmented implementation of Markdown that makes it simple to
     organize the page content in sections or grids.
 
-- HTML: if you are more experienced in developing Web user interfaces, you
+- HTML: if you are more experienced in developing web user interfaces, you
     may prefer to use raw HTML content, so you have all the power of the
     HTML grammar to organize your page content.
 
@@ -46,7 +46,7 @@ One of the page description formats is the [Markdown](https://en.wikipedia.org/w
 markup language.
 
 Taipy uses [Python Markdown](https://python-markdown.github.io/) to translate Markdown
-text to Web pages. Many language extensions are used to make it easier to create
+text to web pages. Many language extensions are used to make it easier to create
 nice looking pages that users can enjoy. Specifically, Taipy uses the following
 [Markdown extensions](https://python-markdown.github.io/extensions/):
 [_Admonition_](https://python-markdown.github.io/extensions/admonition/),
@@ -134,7 +134,7 @@ from taipy import Gui
 
 Gui("# This is my page title")
 ```
-If you run this Python script and connect a browser to the Web server address
+If you run this Python script and connect a browser to the web server address
 (usually _localhost:5000_), you can see your title displayed in a blank page.
 
 Of course, the text can be stored in a Python variable and used in the `Gui^`
@@ -168,14 +168,15 @@ to visual elements may have a scope limited to their origin module. See
 
 ### Viewing the page
 
-When the user browser connects to the Web server, requesting the indicated page,
+When the user browser connects to the web server, requesting the indicated page,
 the rendering takes place (involving the retrieval of the application variable
 values), so you can see your application's state and interact with it.
 
 ## Root page
 
-The _Root_ page is the page located at the top of the Web application.
-The name of this page is `"/"`.
+The _Root_ page is the page located at the top of the web application.
+The name of this page is `"/"` (or the value of the [*base_url*](configuration.md#p-base_url)
+configuration setting).
 
 If your application uses only one page, this is typically where it would be created:
 ```py
@@ -183,7 +184,7 @@ If your application uses only one page, this is typically where it would be crea
 ```
 creates a page from the Markdown content that you provide and adds this page to the new
 `Gui` instance with the name `"/"`. This makes it straightforward to watch your application
-run by pointing a Web browser to the root of the Web server address (by default, that would
+run by pointing a web browser to the root of the web server address (by default, that would
 be `http://127.0.0.1:5000/`).
 
 ### Single-page applications
@@ -196,12 +197,12 @@ In this situation, Taipy creates a
 [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application)
 for you.
 
-Modern Web applications use this SPA technique: instead of reloading the entire page,
+Modern web applications use this SPA technique: instead of reloading the entire page,
 some processing is performed behind the scene to generate the page that should be
 displayed, transforming the currently shown page. This allows for smoother
 transitions from page to page and feels like the application was natively developed
 for your runtime environment.<br/>
-Although technically, every Taipy Web application *is* a SPA, this notion makes sense only
+Although technically, every Taipy web application *is* a SPA, this notion makes sense only
 when using several pages.
 
 If your Taipy application has defined a _root_ page, then the content of this page is
@@ -236,7 +237,11 @@ for all its pages.
     If you navigate to '/page2', the main title remains on the page, and the sub-title
     is replaced by the text 'This is page 2'
 
-    !!! info "To run the Taipy GUI service with the other Taipy services, please refer to the [Running Taipy services](../running_services/index.md) page"
+!!! tip "Running multiple services"
+
+    If you need to run the Taipy GUI service with other Taipy services, you may need
+    to refer to the [Running Taipy services](../run-deploy/run/running_services.md)
+    section.
 
 ### The `<|content|>` pseudo-control
 
@@ -360,3 +365,52 @@ example if an image needs to be inserted: the path to the image must be provided
 You can indicate, using the parameter *path_mapping* of the
 [`Gui` constructor](Gui.__init__()^), where those resources are located on the file
 system.
+
+## Status page
+
+The _Status_ page is a special page that the user can access by requesting the "/taipy.status.json"
+page.
+
+This returns a customizable JSON representation of the state of the application as a dictionary
+where the key "gui" is set to a dictionary containing the information you might need to dig into
+the state of the application without changing the definition of the pages.
+
+The "user_status" key of the "gui" entry is set to a dictionary that is initialized by
+the user-defined `on_status()` global function. This function is invoked when the end-user
+requests the "/taipy.status.json" page; it receives a single argument: the current application
+*state* (an instance of the `State^` class).<br/>
+This function should return a dictionary where you can define any key or value of your choice.
+
+Here is a short example to demonstrate the status page customization:
+
+```py
+from taipy.gui import Gui, State
+
+x = 1234
+
+def on_status(state: State):
+    return {
+        "x": state.x,
+        "info": "Some information..."
+    }
+
+Gui(page="""
+# Status page
+
+Value of x: <|{x}|>
+""").run()
+```
+
+When this application is running, the "/taipy.status.json" page shows a JSON representation of
+a dictionary with a single key, "gui". The value associated with this key is another dictionary
+with the single key, "user_status". And the value associated with that key is the dictionary
+returned by `on_status()`.<br/>
+In this example, *gui.user_status.x* is set to 1234 (as initialized in the application), and
+*gui.user_status.info* is the string defined in the `on_status()` function.
+
+!!! note "Extended status"
+    If the [*extended_status*](configuration.md#p-extended_status) parameter is set to True,
+    the dictionary associated with the *gui* key is augmented with runtime information of the
+    application, such as the version of the Taipy GUI package that is running, the version of
+    the Python interpreter that is running the application, the list of the extension
+    libraries that the application has loaded and a few more details.

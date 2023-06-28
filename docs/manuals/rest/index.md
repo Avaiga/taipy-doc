@@ -1,6 +1,6 @@
-# Taipy Rest
+# Taipy REST
 
-The Taipy Rest package is a python library made to provide a REST server on top of [Taipy Core](../about.
+The Taipy REST package is a python library made to provide a REST server on top of [Taipy Core](../about.
 md#taipy-core).
 The purpose is to automate the use of Taipy Core features by exposing REST APIs.
 
@@ -48,8 +48,11 @@ To expose the Taipy REST APIs, the Taipy REST server must first be started.
    * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
    ```
 
-!!! Note "When running the Taipy Rest server, you will also run `Core^`"
-!!! info "To run the Taipy Rest service with the other Taipy services, please refer to the [Running Taipy services](../running_services/index.md) page"
+!!! Note "When running the Taipy REST server, you will also run `Core^`"
+
+!!! info "Running the REST service"
+    To run the Taipy REST service with the other Taipy services, please refer to the
+    [taipy.run() function](../run-deploy/run/running_services.md) page.
 
 ## Using Taipy REST APIs
 

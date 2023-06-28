@@ -12,9 +12,9 @@ This is the list of changes to Taipy releases as they were published.
     Please refer to the [Migration page](./migration.md) for potential migration paths for your applications
     implemented on legacy Taipy versions.
 
-## Community edition: 2.3 (Work in progress)
+## Community edition: 2.3
 
-Not published yet.
+Published on 2023-06.
 
 [`taipy` 2.3](https://pypi.org/project/taipy/2.3.0/) contains the latest
 [`taipy-config` 2.3](https://pypi.org/project/taipy-config/2.3.0/),
@@ -24,10 +24,113 @@ Not published yet.
 
 ### New Features
 
+<h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
+2.3.0
+
+- Core Back-end Controls<br/>
+  Taipy comes, in the [`taipy`](https://pypi.org/project/taipy/) package, with a set of
+  ready-to-use GUI controls that connect to entities created by Taipy Core. Your application
+  can then visualize the Core entities and interact with them.<br/>
+  Please check the [list of Core back-end controls](manuals/gui/corelements/index.md).
+- New Taipy command-line interface (CLI). Please refer to the
+  [Taipy command-line interface](./manuals/cli/index.md) documentation page for more information.
+- Users can now create a new Taipy application from a template by running `$ taipy create` from the
+  CLI. Besides the default template, "multi-page-gui" template can be chosen with the optional
+  `--template` option.
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.3.0
+
+- The [`table`](manuals/gui/viselements/table.md) and [`chart`](manuals/gui/viselements/chart.md)
+  controls have a new property called *rebuild* that allows for modifying the control configuration
+  at runtime, using properties that are *not* dynamic.<br/>
+  See the details in the specific documentation sections for
+  [tables](manuals/gui/viselements/table.md#the-rebuild-property) and
+  [charts](manuals/gui/viselements/chart.md#the-rebuild-property).
+- The [`part` block](manuals/gui/viselements/part.md) now accepts any URL as a value for the
+  [*page* property](manuals/gui/viselements/part.md#p-page). You can then integrate any external
+  web page as demonstrated in [this example](manuals/gui/viselements/part.md#part-showing-a-page).
+  <br/>
+  To better control the layout of external pages, a new
+  [*height* property](manuals/gui/viselements/part.md#p-height) has been added to the the
+  [`part`](manuals/gui/viselements/part.md) element.
+- The `navigate()^` function has an additional parameter called *force* that, when set to True,
+  re-renders the page (set to the *to* parameter). This allows to force the evaluation of bound
+  variables in complex dependencies situations.
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.3.1
+
+- New exposed functions:
+
+       * `is_submittable()^` checks if a scenario or a pipeline can be submitted;
+
+       * `is_promotable()^` checks if a scenario can be promoted to primary;
+
+       * `is_deletable()^` checks if an entity can be deleted.
+
+2.3.0
+
+- All scenarios grouped by their cycle can now be retrieved by calling
+  `taipy.get_cycles_scenarios()^`.
+- All entities (cycles, scenarios, pipelines, tasks, data nodes, and jobs) expose two new methods:
+  `get_label()` and `get_simple_label()`, that can be used to display the entity.
+- `taipy.get_entities_by_config_id()^` can be used to retrieve all entities that are based on the
+  provided configuration identifier.
+- Commands for managing Taipy application versions can now be accessed via the
+  `$ taipy manage-versions` command. Run `$ taipy manage-versions --help` for more details.
+- A version can now be renamed by running
+  `$ taipy manage-versions --rename <old_version> <new_version>` from the CLI.
+- The configuration of a version can now be compared with another one by running
+  `$ taipy manage-versions --compare-config <version_1> <version_2>` from the CLI.
+
+### Improvements and changes
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.3.0
+
+- Page scopes (how Taipy GUI finds bound variables in different modules) have been
+  improved so any given page can locate a variable in any module that defines a local page.<br/>
+  See the [section on page scopes](manuals/gui/binding.md#scope-for-variable-binding) for more
+  information and examples.
+- A new mechanism to start the web server when [using Notebooks](manuals/gui/notebooks) was put
+  in place to prevent potential bottlenecks when allocating a port number. This behavior is
+  controlled by the [*notebook_proxy*](manuals/gui/configuration.md#p-notebook_proxy) configuration
+  parameter.
+
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.3.0
 
-- All scenarios grouped by their cycles can be now retrieved by calling `taipy.get_cycles_scenarios()^`.
+- A generic data node can now be created defining only the *read_fct* parameter for a read-only data
+  node, or only the *write_fct* parameter for a write-only data node.
+- The parameters *read_fct_params* and *write_fct_params* of the generic data nodes were renamed to
+  *read_fct_args* and *write_fct_args*, and both must be populated with a List value to avoid the
+  problem of passing Tuple of one string.
+- The *validity_period* attribute of a data node is now exposed at the configuration level to set
+  the up-to-date duration of a data node.
+- Add support for SQLAlchemy 2.0
+
+### Significant bug fixes
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.3.0
+
+- The removal of all the [`table`](manuals/gui/viselements/table.md) filters has no immediate effect.
+  <br/>
+  See [issue #667](https://github.com/Avaiga/taipy-gui/issues/667).
+- Styling of the [`pane` block](manuals/gui/viselements/pane.md) was not applied properly.<br/>
+  See [issue #766](https://github.com/Avaiga/taipy-gui/issues/766).
+- Some notifications (see `notify()^`) could be missed when there were too many in a small period
+  of time.<br/>
+  See [issue #777](https://github.com/Avaiga/taipy-gui/issues/777).
+
+### Deprecations
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.3.0
+
+- `PipelineConfig^` has been deprecated and will be combined with `ScenarioConfig^` in future updates.
+- `taipy.create_pipeline()^` has been deprecated.
 
 ## Community edition: 2.2
 
@@ -92,10 +195,17 @@ Published on 2023-04.
 
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.2.3
+
+- Error raised when running Core service in development mode after a function rename in the Config.<br/>
+  See [issue #560](https://github.com/Avaiga/taipy-core/issues/560).
+
 2.2.2
 
-- PostgreSQL and MySQL engines do not support "driver" argument. See [issue #544](https://github.com/Avaiga/taipy-core/issues/544).<br/>
-  To avoid conflict between engines, the default value of the _db_driver_ parameter in a SQL or a SQL table data node configuration has been removed.
+- PostgreSQL and MySQL engines do not support "driver" argument.<br/>
+  See [issue #544](https://github.com/Avaiga/taipy-core/issues/544).<br/>
+  To avoid conflict between engines, the default value of the _db_driver_ parameter in a SQL or a SQL table data
+  node configuration has been removed.
 
 ## Studio: 1.0
 

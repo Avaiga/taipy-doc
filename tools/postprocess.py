@@ -40,7 +40,7 @@ TOC_ENTRY_PART2 = r"\"\s*class=\"md-nav__link\">([^<]*)</a>\s*</li>\s*"
 #  group(4) - The function parameters, with their ().
 XREF_RE = re.compile(r"<code>(\()?((?:[^\d\W]\w*\.)*)"
                      + r"(?:\))?([^\d\W]\w*)(\(.*?\))?\^</code>")
-                      
+
 
 def find_dummy_h3_entries(content: str) -> Dict[str, str]:
     """
@@ -85,8 +85,8 @@ def remove_dummy_h3(content: str, ids: Dict[str, str]) -> str:
 def on_post_build(env):
     "Post-build actions for Taipy documentation"
 
-    site_dir = env.conf["site_dir"]
     log = logging.getLogger("mkdocs")
+    site_dir = env.conf["site_dir"]
     xrefs = {}
     if os.path.exists(site_dir + "/manuals/xrefs"):
         with open(site_dir + "/manuals/xrefs") as xrefs_file:
@@ -103,8 +103,11 @@ def on_post_build(env):
     fixed_cross_refs = {}
     for root, _, file_list in os.walk(site_dir):
         for f in file_list:
+            # Remove the *_template files
+            if f.endswith("_template"):
+                os.remove(os.path.join(root, f))
             # Post-process generated '.html' files
-            if f.endswith(".html"):
+            elif f.endswith(".html"):
                 filename = os.path.join(root, f)
                 file_was_changed = False
                 with open(filename) as html_file:
@@ -154,6 +157,10 @@ def on_post_build(env):
                         gs_rel_path = os.path.relpath(site_dir, filename).replace("\\", "/").replace("../", "", 1)
                         GS_DOCLINK = re.compile(r"(href=\")https://docs\.taipy\.io/en/latest(.*?\")", re.M | re.S)
                         html_content, n_changes = GS_DOCLINK.subn(f"\\1{gs_rel_path}\\2", html_content)
+                        if n_changes != 0:
+                            file_was_changed = True
+                        GS_IPYNB = re.compile(r"(<a\s*href=\"([^\"]*?)\.ipynb\")\s*>", re.M | re.S)
+                        html_content, n_changes = GS_IPYNB.subn(f"\\1 download>", html_content)
                         if n_changes != 0:
                             file_was_changed = True
                     # Add external link icons (and open in new tab)

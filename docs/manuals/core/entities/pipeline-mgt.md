@@ -1,3 +1,7 @@
+!!! warning "Deprecation"
+
+    Note that the `PipelineConfig^` has been deprecated in version 2.3. The `Pipeline^` entity will be strongly impacted in the following major version.
+
 The [Entities' creation](scenario-creation.md) section provides documentation on `Pipeline^` creation. Now
 that we know how to create a new `Pipeline^`, this section focuses on describing the pipeline's attributes
 and utility methods.
@@ -65,20 +69,40 @@ pipeline == pipeline_retrieved
 
 Here the two variables `pipeline` and `pipeline_retrieved` are equal.
 
-# Get pipeline by config id
+# Get pipelines by config id
 
 A pipeline can also be retrieved from a scenario by accessing the pipeline's config_id of the scenario.
 
-```python linenums="1"
-import taipy as tp
-import my_config
+!!! Example
 
-scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+    ```python linenums="1"
+    import taipy as tp
+    import my_config
 
-# Get the pipelines by config id
-sales_pipeline = scenario.sales
-production_pipeline = scenario.production
-```
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+    # Get the pipelines by config id
+    sales_pipeline = scenario.sales
+    production_pipeline = scenario.production
+    ```
+
+Pipelines can also be retrieved using `taipy.get_entities_by_config_id()^` providing the config_id.
+This method returns the list of all existing pipelines instantiated from the config_id provided as a parameter.
+
+!!! Example
+
+    ```python linenums="1"
+    import taipy as tp
+    import my_config
+
+    # Create 2 scenarios, which will also create 2 sales pipelines.
+    scenario_1 = tp.create_scenario(my_config.monthly_scenario_cfg)
+    scenario_2 = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+    # Get all sale pipelines by config id, this will return a list of 2 sales pipelines
+    # created alongside the 2 scenarios.
+    all_sales_pipeline = tp.get_entities_by_config_id("sales")
+    ```
 
 # Get all pipelines
 
