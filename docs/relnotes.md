@@ -22,7 +22,7 @@ Not published yet.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 
-- `Scope.PIPELINE` has been removed as a value of `Scope^`.
+- `Scope.PIPELINE` has been removed from `Scope^` values.
 
 ## Community edition: 2.3 (Work in progress)
 
