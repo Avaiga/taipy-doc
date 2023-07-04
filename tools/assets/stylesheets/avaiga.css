@@ -660,13 +660,13 @@ a.md-content__button{
   display: none;
 }
 
-.tp-btn-back,
-.md-content .tp-btn-back {
+.tp-btn-parent,
+.md-content .tp-btn-parent {
   margin-bottom: 1rem;
   color: var(--md-default-fg-color);
   font-weight: bold;
 }
-.tp-btn-back:hover,
-.md-content .tp-btn-back:hover{
+.tp-btn-parent:hover,
+.md-content .tp-btn-parent:hover{
   color: var(--md-primary-fg-color);
 }
