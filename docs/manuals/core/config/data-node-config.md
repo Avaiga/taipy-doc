@@ -24,7 +24,7 @@ The attributes available on data nodes are:
 - _**validity_period**_ is a [timedelta object](https://docs.python.org/3/library/datetime.html#timedelta-objects)
     that represents the duration since the last edit date for which the data node can be considered up-to-date.
     Once the validity period has passed, the data node is considered stale and relevant tasks will run even if they are
-    skippable (see the [Task configs page](../core/config/task-config.md) for more details).
+    skippable (see the [Task configs page](../config/task-config.md) for more details).
     If *validity_period* is set to the default value None, the data node is always up-to-date.
 - _**storage_type**_ is an attribute that indicates the storage type of the
     data node.<br/>
@@ -698,7 +698,7 @@ In this example, we configure a *mongo_collection* data node with the id "histor
 - The database name is "taipy"
 - The collection name is "historical_data_set".
 - Without being specified, the custom document class is defined as
-  `taipy.core.DefaultCustomDocument`.
+  `taipy.core.MongoDefaultDocument`.
 
 ```python linenums="1"
 {%

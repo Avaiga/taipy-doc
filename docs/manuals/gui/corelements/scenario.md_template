@@ -1,7 +1,42 @@
 Displays and modify the definition of a scenario.
 
-TODO
+## Details
 
-## Usage
+The scenario control displays the information stored in a given scenario, lets the user change
+its parameters at runtime, and provides ways to submit it.
 
-TODO
+When the [*scenario*](#p-scenario) property is set to a `Scenario^` instance, the control displays
+the information for that scenario.
+
+Here is what the control would look like when representing a scenario entity:
+<figure class="tp-center">
+  <img src="../scenario-init-d.png" class="visible-dark"  width="60%"/>
+  <img src="../scenario-init-l.png" class="visible-light" width="60%"/>
+  <figcaption>Viewing the parameters of a scenario</figcaption>
+</figure>
+
+Next the scenario's label at the top of the control, the 'play' button can trigger the scenario
+submission.<br/>
+If the scenario has pipelines, the user can submit each pipeline independently by pressing the
+'play' button on the right of the pipeline's label.
+
+The user can click the scenario label to change it:
+<figure class="tp-center">
+  <img src="../scenario-edit-label-d.png" class="visible-dark"  width="60%"/>
+  <img src="../scenario-edit-label-l.png" class="visible-light" width="60%"/>
+  <figcaption>Editing the scenario label</figcaption>
+</figure>
+
+The user must click the 'check' button to apply the change or the 'cross' button to cancel the
+operation.
+
+Users can also add or modify custom properties:
+<figure class="tp-center">
+  <img src="../scenario-edit-props-d.png" class="visible-dark"  width="60%"/>
+  <img src="../scenario-edit-props-l.png" class="visible-light" width="60%"/>
+  <figcaption>Editing custom properties</figcaption>
+</figure>
+
+Clicking the "New Property Key" line will create a new property.<br/>
+Clicking a custom property key or value fields will let users change the property value.</br>
+The 'trash' button deletes the custom property.

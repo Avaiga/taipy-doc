@@ -139,7 +139,9 @@ Here is the list of the configuration parameters you can use in
      this directory should be searched.<br/>
      The default uses the path to the "webapp" directory within the installed Taipy GUI package.
    - <a name="p-chart_dark_template"></a>*chart_dark_template* (dict[str, any] or None, default:
-     None): TODO.
+     None): a template for styling charts in dark mode. The full documentation for this object
+     can be found in the documentation section for
+     [Plotly's layout template](https://plotly.com/javascript/reference/layout/#layout-template).
    - <a name="p-extended_status"></a>*extended_status* (bool, default: False): if set to True, the
      [status page](pages.md#status-page) output is augmented with additional information.
    - <a name="p-flask_log"></a>*flask_log* (bool, default: False): if set to True, you can get a
@@ -151,8 +153,6 @@ Here is the list of the configuration parameters you can use in
      dynamically generated port so that the user can stop and restart the server without depending
      on how quickly the kernel can clean up its resources.<br/>
      See the section on [running Taipy GUI in Notebooks](notebooks.md) for more details.
-   - <a name="p-server_config"></a>*server_config* (dict[str, any], default: True): allows for
-     fine-tuning the configuration of the underlying web server. TODO.
    - <a name="p-single_client"></a>*single_client* (bool, default: False): set to True if only a
      single client can connect. False, which is the default value, indicates that multiple clients
      can connect to the server.<br/>
@@ -162,6 +162,30 @@ Here is the list of the configuration parameters you can use in
      that Taipy GUI depends on.<br/>
      This parameter is forced to "threading" if [*debug*](#p-debug) or
      [*use_reloader*](#p-use_reloader) is set to True.
+   - <a name="p-server_config"></a>*server_config* (dict[str, any], default: None): allows for
+     fine-tuning the configuration of the underlying web server. The keys and types of values that
+     you can set in this dictionary are the following:
+      - *flask* (dict[str, any]): lets you specify the parameters to the Flask application object,
+        as explained in the
+        [Flask Server Configuration](https://flask.palletsprojects.com/en/2.3.x/api/#flask.Flask)
+        documentation page. Each key/value pair is used when calling the Flask constructor.
+      - *cors* (Union[bool, dict[str, any]]): if True, this indicates that you are using
+        [Flask CORS](https://flask-cors.readthedocs.io/en/latest/).<br/>
+        If this entry holds a dictionary, then the key/value pairs of the dictionary are used
+        to configure Flask CORS. All the details can be found in the
+        [Flask CORS Configuration](https://flask-cors.readthedocs.io/en/latest/configuration.html#configuration-options)
+        documentation section.
+      - *socketio*: (dict[str, any]): lets you specify the parameters to the Flask-SocketIO server
+        that Taipy GUI creates. You can find all the documentation for all relevant key/value pairs
+        in the
+        [Flask-SocketIO configuration](https://flask-socketio.readthedocs.io/en/latest/api.html)
+        documentation page.
+      - *ssl_context" (str|tuple[str, str]): the value set when running the underlying SocketIO
+        instance for SSL support.<br/>
+        This will work for a Flask development server, for testing purposes but not when using
+        "eventlet" or "gevent" [*async_mode*](#p-async_mode). You will need to rely on your web
+        server's documentation to learn how to enable SSL support and configure the server with
+        a real TLS certificate.
    - <a name="p-run_in_thread"></a>*run_in_thread* (bool, default: False): if set to True, the
      underlying web server runs in a separate thread. In a Notebook context, this parameter
      is forced to True.

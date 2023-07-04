@@ -12,7 +12,20 @@ This is the list of changes to Taipy releases as they were published.
     Please refer to the [Migration page](./migration.md) for potential migration paths for your applications
     implemented on legacy Taipy versions.
 
-## Community edition: 2.3
+## Community edition: 3.0 (Work in progress)
+
+Not published yet.
+
+### New Features
+
+### Improvements and changes
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+3.0.0
+
+- `Scope.PIPELINE` has been removed from `Scope^` values.
+
+## Community edition: 2.3 (Work in progress)
 
 Published on 2023-06.
 
@@ -33,7 +46,7 @@ Published on 2023-06.
   can then visualize the Core entities and interact with them.<br/>
   Please check the [list of Core back-end controls](manuals/gui/corelements/index.md).
 - New Taipy command-line interface (CLI). Please refer to the
-  [Taipy command-line interface](./manuals/cli.md) documentation page for more information.
+  [Taipy command-line interface](./manuals/cli/index.md) documentation page for more information.
 - Users can now create a new Taipy application from a template by running `$ taipy create` from the
   CLI. Besides the default template, "multi-page-gui" template can be chosen with the optional
   `--template` option.
@@ -44,7 +57,9 @@ Published on 2023-06.
 - The [`table`](manuals/gui/viselements/table.md) and [`chart`](manuals/gui/viselements/chart.md)
   controls have a new property called *rebuild* that allows for modifying the control configuration
   at runtime, using properties that are *not* dynamic.<br/>
-  See the examples for table and chart TODO links.
+  See the details in the specific documentation sections for
+  [tables](manuals/gui/viselements/table.md#the-rebuild-property) and
+  [charts](manuals/gui/viselements/chart.md#the-rebuild-property).
 - The [`part` block](manuals/gui/viselements/part.md) now accepts any URL as a value for the
   [*page* property](manuals/gui/viselements/part.md#p-page). You can then integrate any external
   web page as demonstrated in [this example](manuals/gui/viselements/part.md#part-showing-a-page).
@@ -57,6 +72,16 @@ Published on 2023-06.
   variables in complex dependencies situations.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.3.1
+
+- New exposed functions:
+
+       * `is_submittable()^` checks if a scenario or a pipeline can be submitted;
+
+       * `is_promotable()^` checks if a scenario can be promoted to primary;
+
+       * `is_deletable()^` checks if an entity can be deleted.
+
 2.3.0
 
 - All scenarios grouped by their cycle can now be retrieved by calling

@@ -14,7 +14,8 @@ configuration.
 Taipy proposes a **version management system** to:
 
 - Create or re-use a version when running a Taipy application.
-- Manage the different versions of the configuration across the application runs (see the [Manage versions on Taipy CLI page](../../cli.md#manage-versions) for more details).
+- Manage the different versions of the configuration across the application runs (see the
+[Manage versions on Taipy CLI page](../../cli/manage-versions.md) for more details).
 
 ## Modes
 
