@@ -375,9 +375,9 @@ a.ext-link::after{
   z-index: 1;
   min-width: 200px;
   padding: 1em;
-  background-color: var(--md-primary-fg-color);
+  background-color: var(--md-footer-bg-color);
   border-radius: 0.5em;
-  color: var(--md-primary-bg-color);
+  color: var(--md-defaut-fg-color);
   font-size: 0.9em;
   text-align: center;
   opacity: 0;
@@ -398,7 +398,7 @@ a.ext-link::after{
   left: 50%;
   transform: translateX(-50%);
   border: 0.5rem solid transparent;
-  border-top: 0.5rem solid var(--md-primary-fg-color);
+  border-top: 0.5rem solid var(--md-footer-bg-color);
   border-bottom: none;
 }
 
