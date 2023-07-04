@@ -659,3 +659,14 @@ figure.tp-center {
 a.md-content__button{
   display: none;
 }
+
+.tp-btn-back,
+.md-content .tp-btn-back {
+  margin-bottom: 1rem;
+  color: var(--md-default-fg-color);
+  font-weight: bold;
+}
+.tp-btn-back:hover,
+.md-content .tp-btn-back:hover{
+  color: var(--md-primary-fg-color);
+}
