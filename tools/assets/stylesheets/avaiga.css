@@ -290,6 +290,8 @@
 /* ---------- ADMONITIONS ---------- */
 
 .md-typeset .admonition{
+  --admonition-title-background: rgba(0, 0, 0, 0.1);
+
   font-size: var(--md-body-font-size--small);
 }
 
@@ -305,10 +307,8 @@
 }
 .md-typeset .admonition .admonition-title{
   z-index: 0;
-  padding-bottom: 0;
-  background-color: transparent;
+  background-color: var(--admonition-title-background, transparent);
   color: var(--admonition-color);
-  /* border-bottom: 1px solid var(--md-default-border-color); */
 }
 .md-typeset .admonition .admonition-title::before{
   background-color: var(--admonition-color);
@@ -316,7 +316,8 @@
 
 .admonition.note,
 .admonition.abstract,
-.admonition.info{
+.admonition.info,
+.admonition.important{
   --admonition-color: var(--md-info-color);
 }
 .admonition.tip,
