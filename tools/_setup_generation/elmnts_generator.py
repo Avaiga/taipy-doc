@@ -84,7 +84,7 @@ class ElementsGenerator(SetupStep):
             template_path = self.get_element_md_path(element) + "_template"
             if not os.access(template_path, os.R_OK):
                 raise FileNotFoundError(
-                    f"FATAL - Could not find doc for element type '{element}' at {template_path}"
+                    f"FATAL - Could not find template doc file for element type '{element}' at {template_path}"
                 )
             # Check completeness
             for property in element_desc[__class__.PROPERTIES]:
