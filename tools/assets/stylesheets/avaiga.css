@@ -37,10 +37,10 @@
   --md-body-font-size--smallest: 0.6rem;
 
   /* Layout */
-  --md-grid-max-width: 64rem;
+  --md-grid-max-width: 75rem;
   --md-grid-padding-x: 1rem;
   --md-content-padding-y: 2rem;
-  --md-sidebar-width: 12rem;
+  --md-sidebar-width: 16rem;
   --md-paper-shadow: 0 0 0 1px var(--md-default-border-color);
 
   /* Animations */
@@ -305,11 +305,13 @@
 }
 .md-typeset .admonition .admonition-title{
   z-index: 0;
-  background-color: var(--admonition-color);
-  color: white;
+  padding-bottom: 0;
+  background-color: transparent;
+  color: var(--admonition-color);
+  /* border-bottom: 1px solid var(--md-default-border-color); */
 }
 .md-typeset .admonition .admonition-title::before{
-  background-color: white;
+  background-color: var(--admonition-color);
 }
 
 .admonition.note,
