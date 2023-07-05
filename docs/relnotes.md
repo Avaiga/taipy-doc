@@ -23,6 +23,9 @@ Not published yet.
 
 - New exposed function `taipy.exists()^` checks if an entity exists or not.
 
+- A production version of the application can now be provided with migration functions, to help making
+  sure that entities from all production versions are compatible with each other.<br/>
+  See the [Production mode](./manuals/core/versioning/production_mode.md) documentation page for more details.
 
 ### Improvements and changes
 
