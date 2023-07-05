@@ -1,4 +1,4 @@
-import taipy.core as tp
+import taipy as tp
 from taipy import Config
 
 
