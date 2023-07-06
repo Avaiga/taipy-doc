@@ -55,7 +55,7 @@ Taipy documentation:
    # Install the mandatory Python modules from Pipfile to the virtual env
    pipenv install --dev
    # Run the setup
-   python tools/setup_generation.py
+   pipenv run python tools/setup_generation.py
    ```
 
 3. Generate the documentation set.<br/>
