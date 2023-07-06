@@ -57,7 +57,7 @@ Taipy documentation:
    # Set the environment for the shell
    pipenv shell
    # Run the setup
-   python tools/setup_generation.py
+   pipenv run python tools/setup_generation.py
    ```
 
 3. Generate the documentation set.<br/>
