@@ -18,6 +18,12 @@ Not published yet.
 
 ### New Features
 
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+3.0.0
+
+- New exposed function `taipy.exists()^` checks if an entity exists or not.
+
+
 ### Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
