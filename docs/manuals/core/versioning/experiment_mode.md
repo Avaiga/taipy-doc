@@ -35,7 +35,7 @@ Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development (latest)   2023-01-25 12:20:33
 
 $ python main.py --experiment
-[2023-01-25 12:20:56,474][Taipy][INFO] job JOB_my_print_algo_e1c49bdb-9284-40c5-a096-db0235697cb3 is completed.
+[2023-01-25 12:20:56,474][Taipy][INFO] job JOB_placeholder_algo_e1c49bdb-9284-40c5-a096-db0235697cb3 is completed.
 nb scenarios: 1
 
 $ taipy manage-versions --list
@@ -62,7 +62,7 @@ Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
 $ python main.py --experiment 1.0
-[2023-01-25 12:24:19,613][Taipy][INFO] job JOB_my_print_algo_9b6232f9-601e-4a85-852e-2ada7bc1e459 is completed.
+[2023-01-25 12:24:19,613][Taipy][INFO] job JOB_placeholder_algo_9b6232f9-601e-4a85-852e-2ada7bc1e459 is completed.
 nb scenarios: 1
 
 $ taipy manage-versions --list
@@ -95,7 +95,7 @@ Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
 $ python main.py --experiment 1.0
-[2023-01-25 12:28:54,963][Taipy][INFO] job JOB_my_print_algo_2133dc18-643b-4351-872b-aedfc2c65c9c is completed.
+[2023-01-25 12:28:54,963][Taipy][INFO] job JOB_placeholder_algo_2133dc18-643b-4351-872b-aedfc2c65c9c is completed.
 nb scenarios: 2
 ```
 
@@ -117,7 +117,7 @@ Version number                         Mode                   Creation date
 
 $ python main.py --experiment 1.0 --clean-entities
 [2023-01-25 12:36:05,598][Taipy][INFO] Clean all entities of version 1.0
-[2023-01-25 12:36:05,777][Taipy][INFO] job JOB_my_print_algo_494bf4a7-afa2-4916-9221-fabd8de1738a is completed.
+[2023-01-25 12:36:05,777][Taipy][INFO] job JOB_placeholder_algo_494bf4a7-afa2-4916-9221-fabd8de1738a is completed.
 nb scenarios: 1
 
 $ taipy manage-versions --list
@@ -167,7 +167,7 @@ $ python main.py --experiment 1.0 --taipy-force
 [2023-01-25 12:55:05,484][Taipy][ERROR] The version 1.0 Configuration is conflicted with the current Python Config.
     DATA_NODE "output" has attribute "description" added: What a description
 [2023-01-25 12:52:05,692][Taipy][WARNING] Option --taipy-force is detected, overriding the configuration of version  1.0 ...
-[2023-01-25 12:52:05,890][Taipy][INFO] job JOB_my_print_algo_96ed74ed-183b-4dff-86c9-3b733d4d9bd9 is completed.
+[2023-01-25 12:52:05,890][Taipy][INFO] job JOB_placeholder_algo_96ed74ed-183b-4dff-86c9-3b733d4d9bd9 is completed.
 nb scenarios: 2
 ```
 
