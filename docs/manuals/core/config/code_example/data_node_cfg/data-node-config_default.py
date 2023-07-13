@@ -1,6 +1,6 @@
 from taipy import Config, Scope
 
-Config.configure_default_data_node(
+Config.set_default_data_node_configuration(
     storage_type="sql_table",
     db_username="username",
     db_password="p4$$w0rD",

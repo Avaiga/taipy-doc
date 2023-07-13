@@ -834,7 +834,7 @@ The scope is `SCENARIO` (default value), and default data is provided.
 
 By default, if there is no information provided when configuring a datanode (except for the mandatory _**id**_), the `Config.configure_data_node()^` method will return a *pickle* data node configuration with the `Scope^` is set to `SCENARIO`.
 
-To override the default data node configuration, one can use the `Config.configure_default_data_node()^` method.
+To override the default data node configuration, one can use the `Config.set_default_data_node_configuration()^` method.
 Then, a new data node configuration will:
 
 - have the same properties as the default data node configuration if the _**storage_type**_ is the same as the default one.
