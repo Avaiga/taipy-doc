@@ -150,23 +150,23 @@ theme:
   name: material
   language: en
   custom_dir: tools
-  logo: assets/images/taipy-logo.png
   font:
     text: Lato
   icon:
+    logo: taipy-logo
     repo: fontawesome/brands/git-alt
   palette:
     - media: "(prefers-color-scheme: light)"
-      primary: indigo
-      accent: indigo
       scheme: default
+      primary: custom
+      accent: custom
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
-      primary: deep-orange
-      accent: deep-orange
       scheme: slate
+      primary: custom
+      accent: custom
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
@@ -174,7 +174,9 @@ theme:
     - navigation.indexes
     - navigation.tabs
     - navigation.tabs.sticky
+    - navigation.footer
     - content.tabs.link
+    - content.code.copy
 extra_css:
   - assets/stylesheets/avaiga.css
 markdown_extensions:

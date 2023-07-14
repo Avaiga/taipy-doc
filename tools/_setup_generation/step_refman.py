@@ -36,7 +36,7 @@ class RefManStep(SetupStep):
         # Core
         ("typing.*", "taipy.core"),
         ("taipy.core._core.Core", "taipy.core"),
-        ("taipy.core.common.default_custom_document.DefaultCustomDocument", "taipy.core.common"),
+        ("taipy.core.common.mongo_default_document.MongoDefaultDocument", "taipy.core.common"),
         ("taipy.core.common.frequency.Frequency", "taipy.core"),
         ("taipy.core.common.scope.Scope", "taipy.core"),
         ("taipy.core.config.*", "taipy.core.config"),
@@ -66,6 +66,7 @@ class RefManStep(SetupStep):
         ("taipy.core.taipy.delete_job", "taipy.core"),
         ("taipy.core.taipy.delete_jobs", "taipy.core"),
         ("taipy.core.taipy.export_scenario", "taipy.core"),
+        ("taipy.core.taipy.exists", "taipy.core"),
         ("taipy.core.taipy.get", "taipy.core"),
         ("taipy.core.taipy.get_cycles", "taipy.core"),
         ("taipy.core.taipy.get_cycles_scenarios", "taipy.core"),
@@ -463,7 +464,7 @@ from typing import Any, Callable, Dict, List, Union, Optional
 import json
 from .common.scope import Scope
 from .common.frequency import Frequency
-from taipy.core.common.default_custom_document import DefaultCustomDocument
+from taipy.core.common.mongo_default_document import MongoDefaultDocument
 from taipy.core.config.job_config import JobConfig
 from taipy.core.config.data_node_config import DataNodeConfig
 from taipy.core.config.task_config import TaskConfig
@@ -476,8 +477,8 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
         with open(config_path, "w") as f:
             new_content = "".join(contents)
             new_content = new_content.replace(
-                "custom_document: Any = <class 'taipy.core.common.default_custom_document.DefaultCustomDocument'>",
-                "custom_document: Any = DefaultCustomDocument"
+                "custom_document: Any = <class 'taipy.core.common.mongo_default_document.MongoDefaultDocument'>",
+                "custom_document: Any = MongoDefaultDocument"
             )
             new_content = new_content.replace("taipy.config.common.scope.Scope", "Scope")
             new_content = new_content.replace("<Scope.SCENARIO: 2>", "Scope.SCENARIO")

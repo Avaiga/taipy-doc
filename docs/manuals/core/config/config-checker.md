@@ -30,7 +30,7 @@ Here is the list of the possible issues that could be returned by the checker:
   `PipelineConfig`.
 - A `WARNING` issue is created if a `ScenarioConfig^` has no pipeline configuration defined.
 - An `ERROR` issue is created if the `frequency` parameter of a `ScenarioConfig^` has an incorrect `Frequency^` value.
-- An `INFO` issue is created if a `ScenarioConfig^` has no `comparator` defined.
+- An `ERROR` issue is created if the value of `comparators` property of a `ScenarioConfig^` is not a dictionary, with each key is a data node id and the value is a callable function.
 - If the `JobConfig^` has been configured with multiple workers, an `ERROR` issue is created if an "in_memory"
   `DataNodeConfig^` is defined.
 

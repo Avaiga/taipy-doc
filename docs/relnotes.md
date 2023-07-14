@@ -12,6 +12,25 @@ This is the list of changes to Taipy releases as they were published.
     Please refer to the [Migration page](./migration.md) for potential migration paths for your applications
     implemented on legacy Taipy versions.
 
+## Community edition: 3.0 (Work in progress)
+
+Not published yet.
+
+### New Features
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+3.0.0
+
+- New exposed function `taipy.exists()^` checks if an entity exists or not.
+
+
+### Improvements and changes
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+3.0.0
+
+- `Scope.PIPELINE` has been removed from `Scope^` values.
+
 ## Community edition: 2.3
 
 Published on 2023-06.
@@ -86,7 +105,23 @@ Published on 2023-06.
 
 ### Improvements and changes
 
+<h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
+2.3.2
+
+- The [expanded](manuals/gui/corelements/scenario.md#p-expanded) and
+  [show_tags](manuals/gui/corelements/scenario.md#p-show_tags) properties of the
+  [scenario](manuals/gui/corelements/scenario.md) control now have a default value of
+  False.
+
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.3.2
+
+- Multi-line [input](manuals/gui/viselements/input.md) controls accept the Shift+Enter combination
+  to create a new line.<br/>
+  See [issue #824](https://github.com/Avaiga/taipy-gui/issues/824).
+- [Table](manuals/gui/viselements/table.md) filters adapt to a change of the visible columns.<br/>
+  See [issue #822](https://github.com/Avaiga/taipy-gui/issues/822).
+
 2.3.0
 
 - Page scopes (how Taipy GUI finds bound variables in different modules) have been

@@ -96,7 +96,7 @@ for repo in repo_defs.keys():
                     repo_defs[repo]["skip"] = True
                     continue
                 else:
-                    raise SystemError(f"Problem with {repo}: {cmd.stdout}")
+                    raise SystemError(f"Problem with {repo}:\nOutput: {cmd.stdout}\nError: {cmd.stderr}")
     else:
         with GitContext(repo, PRIVATE_REPOS):
             cmd = subprocess.run(f"{git_path} ls-remote --exit-code --heads {github_root}{repo}.git", shell=True,
