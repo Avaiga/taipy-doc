@@ -13,8 +13,6 @@ exception if at least one issue collected has the `ERROR` level.
 
 Here is the list of the possible issues that could be returned by the checker:
 
-- An `ERROR` issue is created if the `clean_entities_enabled` property is populated in the `GlobalAppConfig^` with a
-  non-Boolean value.
 - An `ERROR` issue is created if the `storage_type` and the `scope` properties of any `DataNodeConfig^` have not
   been provided with a correct value.
 - Depending on the `storage_type` value of a `DataNodeConfig^`, an `ERROR` issue is created if a specific required
