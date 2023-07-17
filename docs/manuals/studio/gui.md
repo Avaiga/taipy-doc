@@ -76,9 +76,10 @@ set to the property is proposed to the user:
 
 If you are used to working with Markdown in Visual Studio Code, you certainly came across the
 [Markdown preview](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview)
-feature: pressing `Ctrl+Shift+V` in an editor that contains Markdown content creates a window
-showing the representation of a Markdown file. If the text editor and preview window are displayed
-next to each other, you are able to instantly see the changes done in the active Markdown file.
+feature: pressing `Ctrl+Shift+V` (or `Cmd+Shift+V` on a Mac keyboard) in an editor that contains
+Markdown content creates a window showing the representation of a Markdown file. If the text editor
+and preview window are displayed next to each other, you are able to instantly see the changes done
+in the active Markdown file.
 
 This feature is leveraged by Taipy Studio so that Taipy visual elements are recognized and rendered
 in the Markdown preview window. When a valid Taipy GUI visual element is inserted in the Markdown
@@ -127,16 +128,36 @@ project:
 
 The Markdown preview pane of Taipy Studio supports the binding of a property to a value.<br/>
 
-Because the Visual Studio code preview area is not connected to an actual application that could
-provide values set to variables, Taipy Studio uses a TODO taipy.mock.json
+Because the Visual Studio Code preview is not connected to an actual application that could
+provide values set to variables, Taipy Studio provides a means to mock the values of variables
+bound to element properties.<br/>
+You can create, in the project directory (where Visual Studio Code was launched), a file called
+`taipy.mock.json`. This file must contain, in JSON format, the definition of a dictionary where
+each key is a variable name, and each value defines the value to be assigned to the variable name.
+
+Here is an example of how to use this feature:
 
 <p align="center">
   <img src="../images/preview_data.png" width="80%"/>
 </p>
 
+The two controls defined in the Markdown file are bound to two variables (*text* and *value*). To
+mock the connection to run-time variables, the `taipy.mock.json` file contains the definition of a
+dictionary with two entries that are set to the values the controls should reflect for the preview
+of the Markdown file.
+
 !!! warning "No expression evaluation"
     Expressions are not evaluated: you can use "{value}" to evaluate the variable in the preview
     area, but expressions (such as "{value+1}") will **not** be replaced with their evaluation.
+
+<!--TODO
+    <br/>
+    However, you can mock the expression evaluated value by added the expression itself as a
+    value name in the `taipy.mock.json` file, as show here:
+   <p align="center">
+     <img src="../images/preview_data_eval.png" width="80%"/>
+   </p>
+-->
 
 ### Tabular values
 
