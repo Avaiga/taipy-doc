@@ -54,19 +54,24 @@ Taipy documentation:
    pip install pipenv
    # Install the mandatory Python modules from Pipfile to the virtual env
    pipenv install --dev
+   # Set the environment for the shell
+   pipenv shell
    # Run the setup
-   python tools/setup_generation.py
+   pipenv run python tools/setup_generation.py
    ```
 
 3. Generate the documentation set.<br/>
    When all files are copied and generated, you can finally use MkDocs to generate the
    documentation set. You can use any of the three predefined generation modes:
 
-   - `mkdocs serve`: This is a great way to let MkDocs generate the documentation and
+   - `serve`: This is a great way to let MkDocs generate the documentation and
      locally run a web server that lets you watch your changes impact on the fly.
 
-   - `mkdocs build`: Generates the documentation set as a whole hierarchy of files (in
+   - `build`: Generates the documentation set as a whole hierarchy of files (in
      `site`). These files can be copied wherever you need to deploy them.
 
-   - `mkdocs gh-deploy`: Generates and deploys the documentation set as a _GitHub Pages_
+   - `gh-deploy`: Generates and deploys the documentation set as a _GitHub Pages_
      site to publish the result of the documentation build.
+
+   To generate the doc, and assuming you are still within the *pipenv shell* context,
+   you will run: `mkdocs <mode>` (i.e. `mkdocs serve`).
