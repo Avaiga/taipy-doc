@@ -162,6 +162,13 @@ Published on 2023-06.
 ### Deprecations
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.3.2
+
+- The `Config.configure_default_data_node()` method has been deprecated. The `Config.set_default_data_node_configuration()^` method should be used instead.
+- The `Config.configure_task_node()` method has been deprecated. The `Config.set_task_node_configuration()^` method should be used instead.
+- The `Config.configure_pipeline_node()` method has been deprecated. The `Config.set_pipeline_node_configuration()^` method should be used instead.
+- The `Config.configure_scenario_node()` method has been deprecated. The `Config.set_scenario_node_configuration()^` method should be used instead.
+
 2.3.0
 
 - `PipelineConfig^` has been deprecated and will be combined with `ScenarioConfig^` in future updates.
