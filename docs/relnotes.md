@@ -31,7 +31,7 @@ Not published yet.
 
 - `Scope.PIPELINE` has been removed from `Scope^` values.
 - The `root_folder`, `storage_folder`, `read_entity_retry`, `repository_type`, and `repository_properties`
-  attributes of the `GlobalAppConfig^` have been moved to the `CoreSection^` section.<br/>
+  attributes of the `GlobalAppConfig^` have been moved to the `CoreSection^`.<br/>
   Please refer to the [Core configuration page](core-config.md) for details.
 
 ## Community edition: 2.3
