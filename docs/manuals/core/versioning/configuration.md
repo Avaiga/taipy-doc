@@ -2,21 +2,10 @@ Taipy uses the Config mechanism (Python or TOML) to configure the version manage
 
 This section describes the various methods to configure the Taipy version management system.
 
-# Configure using Taipy Config
+# Configure using Core Configuration
 
-The first method is using the Taipy configuration mechanism with the `Config.configure_core()^` method.
-This method creates a data node configuration, and registers it in the `Config^` singleton.
-
-The attributes available on data nodes are:
-
-- _**mode**_ is a string that indicates the mode of the version management system.
-    Possible values are *"development"*, *"experiment"*, or *"production"*.
-- _**version_number**_ is the string identifier of the version. In development mode, the version
-    number is ignored.
-- _**force**_ indicates whether Taipy will override a version even if the configuration has changed
-    or not and run the application. Default to False.
-- _**clean_entities**_ indicates whether running a Taipy Core service will clean all current version
-    entities or not before running the application. Default to False.
+The first method is configuring the `CoreSection^` with the `Config.configure_core()^` method.
+For more details about the configuration fields, please refer to the [Core config](core-config.md) documentation page.
 
 ```python linenums="1"
 from taipy import Config

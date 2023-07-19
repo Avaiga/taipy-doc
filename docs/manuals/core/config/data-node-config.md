@@ -114,7 +114,7 @@ parameters can be provided.
   can be changed at runtime right after its instantiation.<br/>
   If no value is provided, Taipy will use an internal path in the Taipy storage folder
   (more details on the Taipy storage folder configuration are available in the
-  [Global configuration](global-config.md) documentation).
+  [Core configuration](core-config.md) documentation).
 
 - _**default_data**_ indicates data automatically written to the data node
   *pickle* upon creation.<br/>
