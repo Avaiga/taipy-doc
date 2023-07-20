@@ -5,8 +5,9 @@ Here are the (optional) configurable properties:
 - _**root_folder**_: The path of the base folder for the Taipy application, its default value is "./taipy/".
 - _**storage_folder**_: The folder name used to store Taipy data, its default value is ".data/". It is used in
   conjunction with the root_folder field. That means the default storage path is "./taipy/.data/".
-- _**read_entity_retry**_: The integer number of retry when reading an entity after a failed attempt (in case of
-  concurrent access). The default value is 3.
+- _**read_entity_retry**_: An integer number only used with `filesystem` _**repository_type**_. <br>
+It corresponds to the number of times Taipy retries reading an entity after a failed attempt for concurrent access. <br>
+The default value is 3.
 - _**repository_type**_: The type of storage that will be used to hold Taipy entities. Available options are:
   `filesystem`, `sql` and `mongo`. If no repository type is informed, the filesystem will be used as the default
   repository.
