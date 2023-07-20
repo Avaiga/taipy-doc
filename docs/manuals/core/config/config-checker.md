@@ -11,12 +11,12 @@ The `Config.check()^` method returns a collector of issues. Each issue correspon
 the configuration attached to an issue level (`INFO`, `WARNING`, `ERROR`). `Config.check()^` raises an
 exception if at least one issue collected has the `ERROR` level.
 
-Here is the list of the possible issues that could be returned by the checker:
+Here is the list of the possible issues that the checker could return:
 
-- An `ERROR` issue is created if the `clean_entities_enabled` property is populated in the `GlobalAppConfig^` with a
-  non-Boolean value.
-- An `ERROR` issue is created if the `storage_type` and the `scope` properties of any `DataNodeConfig^` have not
-  been provided with a correct value.
+- A `WARNING` issue is created if the `repository_type` property is populated in the `CoreSection^` with an
+  unsupported repository value.
+- An `ERROR` issue is created if the `storage_type` and the `scope` properties of any `DataNodeConfig^` are not
+  provided with a correct value.
 - Depending on the `storage_type` value of a `DataNodeConfig^`, an `ERROR` issue is created if a specific required
   property is missing.
 - An `ERROR` issue is created if one of the `inputs` and `outputs` parameters of a `TaskConfig^` does not correspond
