@@ -12,6 +12,34 @@ This is the list of changes to Taipy releases as they were published.
     Please refer to the [Migration page](./migration.md) for potential migration paths for your applications
     implemented on legacy Taipy versions.
 
+## Community edition: 2.4
+
+Published on 2023-06.
+
+[`taipy` 2.4](https://pypi.org/project/taipy/2.4.0/) contains the latest
+[`taipy-config` 2.4](https://pypi.org/project/taipy-config/2.4.0/),
+[`taipy-gui` 2.4](https://pypi.org/project/taipy-gui/2.4.0/),
+[`taipy-core` 2.4](https://pypi.org/project/taipy-core/2.4.0/) and
+[`taipy-rest` 2.4](https://pypi.org/project/taipy-rest/2.4.0/) packages.
+
+### New Features
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.4.0
+
+-
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.4.0
+
+- Support for [modin 0.23](https://github.com/modin-project/modin/releases/tag/0.23.0)
+  <br/>
+  See [issue #575](https://github.com/Avaiga/taipy-core/issues/575)
+- Support for [pandas 2.0](https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html).
+  <br/>
+  Note that pandas versions earlier than 2.0 are not supported anymore in Taipy 2.4.
+  You can use Taipy 2.3 for pandas 1.5 compatibility.
+
 ## Community edition: 2.3
 
 Published on 2023-06.
@@ -129,10 +157,14 @@ Published on 2023-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.3.2
 
-- The `Config.configure_default_data_node()` method has been deprecated. The `Config.set_default_data_node_configuration()^` method should be used instead.
-- The `Config.configure_task_node()` method has been deprecated. The `Config.set_task_node_configuration()^` method should be used instead.
-- The `Config.configure_pipeline_node()` method has been deprecated. The `Config.set_pipeline_node_configuration()^` method should be used instead.
-- The `Config.configure_scenario_node()` method has been deprecated. The `Config.set_scenario_node_configuration()^` method should be used instead.
+- The `Config.configure_default_data_node()` method has been deprecated.
+  The `Config.set_default_data_node_configuration()^` method should be used instead.
+- The `Config.configure_task_node()` method has been deprecated.
+  The `Config.set_task_node_configuration()^` method should be used instead.
+- The `Config.configure_pipeline_node()` method has been deprecated.
+  The `Config.set_pipeline_node_configuration()^` method should be used instead.
+- The `Config.configure_scenario_node()` method has been deprecated.
+  The `Config.set_scenario_node_configuration()^` method should be used instead.
 
 2.3.0
 
