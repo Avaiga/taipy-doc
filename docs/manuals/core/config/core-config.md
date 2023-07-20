@@ -1,4 +1,4 @@
-The `CoreSection^` holds configuration fields related to the Core application.
+The `CoreSection^` holds configuration fields related to the Core service.
 
 Here are the (optional) configurable properties:
 
