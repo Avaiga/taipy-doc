@@ -37,7 +37,7 @@ Not published yet.
 
        * `Submittable.is_ready_to_run()^` checks if an entity is ready to be run;
 
-       * `Submittable.data_nodes_being_edited()^` retrieves data nodes that are being editted
+       * `Submittable.data_nodes_being_edited()^` retrieves data nodes that are being edited
             of a `Submittable^` entity;
 
        * `is_deletable()^` checks if an entity can be deleted.
