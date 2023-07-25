@@ -23,7 +23,7 @@ Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
 $ python main.py --production 1.0
-[2023-01-25 13:00:05,333][Taipy][INFO] job JOB_placeholder_algo_e25214c4-1047-4136-a5db-c1241a3ddbcf is completed.
+[2023-01-25 13:00:05,333][Taipy][INFO] job JOB_example_algorithm_e25214c4-1047-4136-a5db-c1241a3ddbcf is completed.
 nb scenarios: 3
 
 $ taipy manage-versions --list
@@ -40,7 +40,7 @@ Here is another example:
 
 ```console
 $ python main.py --experiment 2.0
-[2023-01-25 13:05:17,712][Taipy][INFO] job JOB_placeholder_algo_ac79138a-4c3a-4560-bbd4-f4975083bf83 is completed.
+[2023-01-25 13:05:17,712][Taipy][INFO] job JOB_example_algorithm_ac79138a-4c3a-4560-bbd4-f4975083bf83 is completed.
 nb scenarios: 1
 
 $ taipy manage-versions --list
@@ -51,7 +51,7 @@ Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
 $ python main.py --production
-[2023-01-25 13:06:00,871][Taipy][INFO] job JOB_placeholder_algo_1fcb6feb-cef1-46e0-a818-4ae2e58df57d is completed.
+[2023-01-25 13:06:00,871][Taipy][INFO] job JOB_example_algorithm_1fcb6feb-cef1-46e0-a818-4ae2e58df57d is completed.
 nb scenarios: 5
 
 $ taipy manage-versions --list
@@ -91,7 +91,7 @@ $ python main.py --production 2.0
     DATA_NODE "output" has attribute "path" added: output.pkl
     DATA_NODE "input" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     DATA_NODE "output" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
-    TASK "placeholder_algo" has attribute "skippable" modified: False:bool -> True:bool
+    TASK "example_algorithm" has attribute "skippable" modified: False:bool -> True:bool
 
 Please add a new production version with migration functions or run your application with --taipy-force option to override the Config of production version 2.0.
 ```
@@ -109,10 +109,10 @@ $ python main.py --production 2.0 --taipy-force
     DATA_NODE "output" has attribute "path" added: output.pkl
     DATA_NODE "input" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     DATA_NODE "output" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
-    TASK "placeholder_algo" has attribute "skippable" modified: False:bool -> True:bool
+    TASK "example_algorithm" has attribute "skippable" modified: False:bool -> True:bool
 [2023-07-04 10:25:41][Taipy][WARNING] Option --taipy-force is detected, overriding the configuration of version 2.0 ...
 [2023-07-04 10:25:41][Taipy][INFO] Version 2.0 is already a production version.
-[2023-07-04 10:25:41][Taipy][INFO] job JOB_placeholder_algo_7a54227c-159d-4768-99c3-8c19c84a2e61 is completed.
+[2023-07-04 10:25:41][Taipy][INFO] job JOB_example_algorithm_7a54227c-159d-4768-99c3-8c19c84a2e61 is completed.
 ```
 
 As you can see, the application is run successfully after updating the configuration.
@@ -133,7 +133,7 @@ To avoid overriding production version 2.0, we can create a new production versi
 ```console
 $ python main.py --production 2.1
 [2023-07-04 11:35:31][Taipy][INFO] There is no migration function from production version "2.0" to version "2.1".
-[2023-07-04 11:35:31][Taipy][INFO] job JOB_placeholder_algo_e3f72ec8-86b1-40c7-a382-6f63f04e8b7b is completed.
+[2023-07-04 11:35:31][Taipy][INFO] job JOB_example_algorithm_e3f72ec8-86b1-40c7-a382-6f63f04e8b7b is completed.
 ```
 
 Recall that in the production environment, Taipy can access all entities attached to any production version. However, since there are conflicting changes between version 2.0 and 2.1, accessing an entity from version 2.0 may lead to inconsistent behavior.
@@ -176,7 +176,7 @@ Config.add_migration_function(
 
 Config.add_migration_function(
     target_version="2.1",
-    config="placeholder_algo",
+    config="example_algorithm",
     migration_fct=migrate_skippable_task,
 )
 ```
