@@ -21,8 +21,26 @@ Not published yet.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 3.0.0
 
-- New exposed function `taipy.exists()^` checks if an entity exists or not.
+- New abstract class:
+      * `Submittable^` to model entities that can be submitted for execution
+            The children entity classes of `Submittable` are `Scenario` and `Pipeline`;
 
+- New exposed functions:
+
+       * `taipy.exists()^^` checks if an entity exists or not;
+
+       * `Submittable.get_inputs()^` retrieves input data nodes of a `Submittable` entity;
+
+       * `Submittable.get_outputs()^` retrieves output data nodes of a `Submittable` entity;
+
+       * `Submittable.get_intermediate()^` retrieves intermediate data nodes of a `Submittable` entity;
+
+       * `Submittable.is_ready_to_run()^` checks if an entity is ready to be run;
+
+       * `Submittable.data_nodes_being_edited()^` retrieves data nodes that are being edited
+            of a `Submittable^` entity;
+
+       * `is_deletable()^` checks if an entity can be deleted.
 
 ### Improvements and changes
 
