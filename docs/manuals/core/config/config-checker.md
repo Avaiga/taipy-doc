@@ -33,5 +33,8 @@ Here is the list of the possible issues that could be returned by the checker:
 - An `ERROR` issue is created if the value of `comparators` property of a `ScenarioConfig^` is not a dictionary, with each key is a data node id and the value is a callable function.
 - If the `JobConfig^` has been configured with multiple workers, an `ERROR` issue is created if an "in_memory"
   `DataNodeConfig^` is defined.
+- An `ERROR` issue is created if the `migration_function` parameter of a `MigrationConfig^` is not a callable function.
+- An `ERROR` issue is created if the `target_version` parameter of a `MigrationConfig^` is not a valid production version.
+- An `INFO` issue is created if there is no `MigrationConfig^` defined to migrate entities from an old production version to the next production version.
 
 [:material-arrow-right: The next section presents advanced configuration](advanced-config.md).
