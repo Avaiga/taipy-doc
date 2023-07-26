@@ -59,7 +59,7 @@ nav:
             - "Task configs": manuals/core/config/task-config.md
             - "Pipeline configs": manuals/core/config/pipeline-config.md
             - "Scenario configs": manuals/core/config/scenario-config.md
-            - "Global config": manuals/core/config/global-config.md
+            - "Core config": manuals/core/config/core-config.md
             - "Job execution config": manuals/core/config/job-config.md
             - "Config checker": manuals/core/config/config-checker.md
             - "Advanced configuration": manuals/core/config/advanced-config.md

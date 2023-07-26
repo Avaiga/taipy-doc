@@ -5,39 +5,45 @@ using the following import:
 from taipy import Config
 ```
 
-It exposes all the necessary attributes and methods to manage the configuration. In particular, it holds
+It exposes all the necessary attributes and methods to manage the configuration. In particular, it holds:
 
-- the [data node configurations](data-node-config.md) as a dictionary of `DataNodeConfig^`s:
+- The [Data node configurations](data-node-config.md) as a dictionary of `DataNodeConfig^`s:
     ```python linenums="1"
     from taipy import Config
 
     Config.data_nodes
     ```
-- the [task configurations](task-config.md) as a dictionary of`TaskConfig^`s:
+- The [Task configurations](task-config.md) as a dictionary of`TaskConfig^`s:
     ```python linenums="1"
     from taipy import Config
 
     Config.tasks
     ```
-- the [pipeline configurations](pipeline-config.md) as a dictionary of`PipelineConfig^`s:
+- The [Pipeline configurations](pipeline-config.md) as a dictionary of`PipelineConfig^`s:
     ```python linenums="1"
     from taipy import Config
 
     Config.pipelines
     ```
-- the [scenario configurations](scenario-config.md) as a dictionary of `ScenarioConfig^`s:
+- The [Scenario configurations](scenario-config.md) as a dictionary of `ScenarioConfig^`s:
     ```python linenums="1"
     from taipy import Config
 
     Config.scenarios
     ```
-- the [job configuration](job-config.md) as a `JobConfig^`:
+- The [Job configuration](job-config.md) as a `JobConfig^`:
     ```python linenums="1"
     from taipy import Config
 
     Confi.job_config
     ```
-- the [global configuration](global-config.md) as a `GlobalAppConfig^`:
+- The [Core configuration](core-config.md) as a `CoreSection^`:
+    ```python linenums="1"
+    from taipy import Config
+
+    Confi.core
+    ```
+- The Global configuration as a `GlobalAppConfig^`:
     ```python linenums="1"
     from taipy import Config
 

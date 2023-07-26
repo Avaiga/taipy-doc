@@ -21,7 +21,26 @@ Not published yet.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 3.0.0
 
-- New exposed function `taipy.exists()^` checks if an entity exists or not.
+- New abstract class:
+      * `Submittable^` to model entities that can be submitted for execution
+            The children entity classes of `Submittable` are `Scenario` and `Pipeline`;
+
+- New exposed functions:
+
+       * `taipy.exists()^^` checks if an entity exists or not;
+
+       * `Submittable.get_inputs()^` retrieves input data nodes of a `Submittable` entity;
+
+       * `Submittable.get_outputs()^` retrieves output data nodes of a `Submittable` entity;
+
+       * `Submittable.get_intermediate()^` retrieves intermediate data nodes of a `Submittable` entity;
+
+       * `Submittable.is_ready_to_run()^` checks if an entity is ready to be run;
+
+       * `Submittable.data_nodes_being_edited()^` retrieves data nodes that are being edited
+            of a `Submittable^` entity;
+
+       * `is_deletable()^` checks if an entity can be deleted.
 
 - A production version of the application can now be provided with migration functions, to help making
   sure that entities from all production versions are compatible with each other.<br/>
@@ -33,6 +52,9 @@ Not published yet.
 3.0.0
 
 - `Scope.PIPELINE` has been removed from `Scope^` values.
+- The `root_folder`, `storage_folder`, `read_entity_retry`, `repository_type`, and `repository_properties`
+  attributes of the `GlobalAppConfig^` have been moved to the `CoreSection^`.<br/>
+  Please refer to the [Core configuration page](core-config.md) for details.
 
 ## Community edition: 2.3
 

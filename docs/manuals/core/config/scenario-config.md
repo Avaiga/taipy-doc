@@ -131,4 +131,4 @@ on the given input parameters.
     Please refer to the [scenario entity comparison](../entities/scenario-cycle-mgt.md) section to see
     how to compare scenarios using the comparators defined in a `ScenarioConfig^`.
 
-[:material-arrow-right: The next section introduces the global configuration](global-config.md).
+[:material-arrow-right: The next section introduces the Core configuration](core-config.md).
