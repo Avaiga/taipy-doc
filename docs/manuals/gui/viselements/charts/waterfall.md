@@ -7,7 +7,7 @@ A typical use of waterfall charts shows how a net value is reached through gains
 over time.
 
 To create a waterfall chart in Taipy, you must set the [*type*](../chart.md#p-type) property
-of the chart control "waterfall".
+of the chart control to "waterfall".
 
 ## Key properties
 
@@ -116,8 +116,9 @@ data["Diff"] = [data["Score"][i]-data["Par"][i] for i in range(0,n_holes)] + [No
 ```
 
 For each hole, we compute the difference between the actual score and the par (a value of -2,
-for example, indicates ). We then set the entire array of differences, with an additional None
-value, to the dataset used by the chart, associated with the key "Diff".<br/>
+for example, is a "birdie" in golf jargon: two hits under par). We then set the entire array of
+differences, with an additional None value, to the dataset used by the chart, associated with the
+key "Diff".<br/>
 This array will be the value represented by our chart, showing, for each hole, the score relative
 to the par. To indicate how to represent this array, we must add to the *data* dataset the *measure*:
 
