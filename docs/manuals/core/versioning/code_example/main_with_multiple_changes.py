@@ -15,4 +15,4 @@ scenario_cfg = Config.configure_scenario_from_tasks("my_scenario", [task_cfg])
 if __name__ == "__main__":
     tp.Core().run()
     tp.create_scenario(scenario_cfg)
-    print(f"nb scenarios: {len(tp.get_scenarios())}")
+    print(f"Number of scenarios: {len(tp.get_scenarios())}")
