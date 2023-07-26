@@ -18,62 +18,83 @@ To convert an experiment version to a production, you can run the Taipy applicat
 ```console
 $ taipy manage-versions --list
 Version number                         Mode                   Creation date
-1.0                                    Experiment (latest)    2023-01-25 12:24:19
+0.1                                    Experiment (latest)    2023-01-25 12:24:19
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
-$ python main.py --production 1.0
+$ python main.py --production 0.1
 [2023-01-25 13:00:05,333][Taipy][INFO] job JOB_example_algorithm_e25214c4-1047-4136-a5db-c1241a3ddbcf is completed.
-nb scenarios: 3
+Number of scenarios: 3
 
 $ taipy manage-versions --list
 Version number                         Mode                   Creation date
-1.0                                    Production (latest)    2023-01-25 13:00:05
+0.1                                    Production (latest)    2023-01-25 13:00:05
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 ```
 
-In the example above, Taipy converted the version 1.0 to a production version before running it.
+In the example above, Taipy converted the version 0.1 to a production version before running it.
 
 Without explicitly providing the version name, the latest version of your application is used.
 Here is another example:
 
 ```console
-$ python main.py --experiment 2.0
+$ python main.py --experiment 1.0
 [2023-01-25 13:05:17,712][Taipy][INFO] job JOB_example_algorithm_ac79138a-4c3a-4560-bbd4-f4975083bf83 is completed.
-nb scenarios: 1
+Number of scenarios: 1
 
 $ taipy manage-versions --list
 Version number                         Mode                   Creation date
-2.0                                    Experiment (latest)    2023-01-25 13:05:17
-1.0                                    Production             2023-01-25 13:00:05
+1.0                                    Experiment (latest)    2023-01-25 13:05:17
+0.1                                    Production             2023-01-25 13:00:05
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
 $ python main.py --production
 [2023-01-25 13:06:00,871][Taipy][INFO] job JOB_example_algorithm_1fcb6feb-cef1-46e0-a818-4ae2e58df57d is completed.
-nb scenarios: 5
+Number of scenarios: 5
 
 $ taipy manage-versions --list
 Version number                         Mode                   Creation date
-2.0                                    Production (latest)    2023-01-25 13:06:00
-1.0                                    Production             2023-01-25 13:00:05
+1.0                                    Production (latest)    2023-01-25 13:06:00
+0.1                                    Production             2023-01-25 13:00:05
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 ```
 
-As you can see, we first created an experiment version named 2.0 and there is one scenario is
-attached to it. When listing the existing versions, we can see that 2.0 is the latest version used.
+As you can see, we first created an experiment version named 1.0 and there is one scenario is
+attached to it. When listing the existing versions, we can see that 1.0 is the latest version used.
 Therefore, when running the Taipy application in production mode without providing the version name,
 the latest is used and converted to production before running.
 
 Note that once the version is converted to production, the application can access all production
 entities, including from older production versions.
 
+# Remove a production version
+
+To remove a production version, you can use the `taipy manage-versions` with the `--delete-production`
+option on the Taipy CLI and providing the version name (see the
+[Manage versions on Taipy CLI page](../../cli/manage-versions.md) for more details).
+
+```console
+$ taipy manage-versions --delete-production 0.1
+Successfully delete version 0.1 from production version list.
+
+$ taipy manage-versions --list
+Version number                         Mode                   Creation date
+1.0                                    Production (latest)    2023-01-25 13:06:00
+0.1                                    Experiment             2023-01-25 13:00:05
+325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
+26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
+```
+
+After running the commands above, version 0.1 is an experiment version again. It is no longer a
+production version.
+
 # Change config of an existing production version
 
 Similar to experiment mode, to re-run an existing production version, the configuration
-of the application must be the same. There must be no breaking change.
+of the application must not have any breaking conflict.
 
 Let's assume multiple changes have been made to the configuration in `main.py`.
 
@@ -85,33 +106,33 @@ comments=false
 ```
 
 ```console
-$ python main.py --production 2.0
-[2023-01-25 12:52:05,484][Taipy][ERROR] The version 2.0 Configuration is conflicted with the current Configuration:
+$ python main.py --production 1.0
+[2023-01-25 12:52:05,484][Taipy][ERROR] The version 1.0 Configuration is conflicted with the current Configuration:
     DATA_NODE "input" has attribute "path" added: input.pkl
     DATA_NODE "output" has attribute "path" added: output.pkl
     DATA_NODE "input" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     DATA_NODE "output" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     TASK "example_algorithm" has attribute "skippable" modified: False:bool -> True:bool
 
-Please add a new production version with migration functions or run your application with --taipy-force option to override the Config of production version 2.0.
+Please add a new production version with migration functions or run your application with --taipy-force option to override the Config of production version 1.0.
 ```
 
-In the example above, when re-running production version 2.0, Taipy detects and displays all the
+In the example above, when re-running production version 1.0, Taipy detects and displays all the
 changes. As shown in the message, there are 2 options to deal with these changes.
 
 First, you can run the production version with the `--taipy-force` option to force Taipy to update
 the configuration of the version before re-running the application.
 
 ```console
-$ python main.py --production 2.0 --taipy-force
-[2023-07-04 10:25:41][Taipy][ERROR] The version 2.0 Configuration is conflicted with the current Configuration:
+$ python main.py --production 1.0 --taipy-force
+[2023-07-04 10:25:41][Taipy][ERROR] The version 1.0 Configuration is conflicted with the current Configuration:
     DATA_NODE "input" has attribute "path" added: input.pkl
     DATA_NODE "output" has attribute "path" added: output.pkl
     DATA_NODE "input" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     DATA_NODE "output" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     TASK "example_algorithm" has attribute "skippable" modified: False:bool -> True:bool
-[2023-07-04 10:25:41][Taipy][WARNING] Option --taipy-force is detected, overriding the configuration of version 2.0 ...
-[2023-07-04 10:25:41][Taipy][INFO] Version 2.0 is already a production version.
+[2023-07-04 10:25:41][Taipy][WARNING] Option --taipy-force is detected, overriding the configuration of version 1.0 ...
+[2023-07-04 10:25:41][Taipy][INFO] Version 1.0 is already a production version.
 [2023-07-04 10:25:41][Taipy][INFO] job JOB_example_algorithm_7a54227c-159d-4768-99c3-8c19c84a2e61 is completed.
 ```
 
@@ -128,17 +149,31 @@ compatible with each other. Let's dive deeper into this topic in the next sectio
 
 # Production version with migration functions
 
-To avoid overriding production version 2.0, we can create a new production version named 2.1 with these new changes.
+First, without overriding the Configuration of version 1.0, let's use the [scenario selector](../../gui/corelements/scenario_selector.md) to create a scenario for June.
+
+![June scenario in production version 1.0](pic/scenario_selector_for_production_ver1.png)
+
+Let's take a close look at the attributes of the data nodes and the task. The scopes of the data nodes are
+`Scope.SCENARIO`, the skippable attribute of the task is False, and the versions of all entities are 1.0.
+Keep this in mind for later comparison.
+
+With the newly updated configuration, let's create a new production version named 2.0.
 
 ```console
-$ python main.py --production 2.1
-[2023-07-04 11:35:31][Taipy][INFO] There is no migration function from production version "2.0" to version "2.1".
+$ python main.py --production 2.0
+[2023-07-04 11:35:31][Taipy][INFO] There is no migration function from production version "1.0" to version "2.0".
 [2023-07-04 11:35:31][Taipy][INFO] job JOB_example_algorithm_e3f72ec8-86b1-40c7-a382-6f63f04e8b7b is completed.
 ```
 
-Recall that in the production environment, Taipy can access all entities attached to any production version. However, since there are conflicting changes between version 2.0 and 2.1, accessing an entity from version 2.0 may lead to inconsistent behavior.
+Recall that in the production environment, Taipy can access all entities attached to any production version.
+However, since there are conflicting changes between version 1.0 and 2.0, accessing an entity from version 1.0
+may lead to inconsistent behavior.
 
-It is recommended that when there are conflicting changes between production versions, migration functions should also be provided. These functions accept an entity as the input, and should return the newly migrated entity.
+It is recommended that when there are conflicting changes between production versions, migration functions should
+also be provided. These functions accept an entity as the input, and should return the newly migrated entity.
+
+From the log message, you can see that Taipy does not find any migration function from version 1.0 to 2.0.
+Let's create migration functions to make entities from production version 1.0 compatible with 2.0.
 
 ```python
 def migrate_datanode_scope(datanode):
@@ -151,57 +186,49 @@ def migrate_skippable_task(task):
 ```
 
 In this example, we have 2 migration functions, `migrate_datanode_scope()` and `migrate_skippable_task()`.
-Notice that between version 2.0 and 2.1, each data node has its path and scope changed. However, we only migrate the scope because we want to keep the path pointing to the correct pickle file. You can freely modify the migration function as you wish, but be careful with how it may affect the application.
+Notice that between version 1.0 and 2.0, each data node has its path and scope changed. However, we only migrate
+the scope because we want to keep the path pointing to the correct pickle file. You can freely modify the
+migration function as you wish, but be careful with how it may affect the application.
 
-To register the migration functions to Taipy, use the `Config.add_migration_function()^` method. This method requires the following parameters.
+To register the migration functions to Taipy, use the `Config.add_migration_function()^` method.
+This method requires the following parameters.
 
 - ***target_version*** represents the production version that entities are migrated to.
 
 - ***config*** indicates the configuration or the id of the config that needs to migrate.
 
-- ***migration_fct*** represents the migration function that takes an entity as input and returns a new entity that is compatible with the target production version.
+- ***migration_fct*** represents the migration function that takes an entity as input and returns a new entity
+  that is compatible with the target production version.
 
 ```python
 Config.add_migration_function(
-    target_version="2.1",
+    target_version="2.0",
     config="input",
     migration_fct=migrate_datanode_scope,
 )
 
 Config.add_migration_function(
-    target_version="2.1",
+    target_version="2.0",
     config="output",
     migration_fct=migrate_datanode_scope,
 )
 
 Config.add_migration_function(
-    target_version="2.1",
+    target_version="2.0",
     config="example_algorithm",
     migration_fct=migrate_skippable_task,
 )
 ```
 
+After registering the migration functions, we can run the application again. Let's use the [scenario selector](../../gui/corelements/scenario_selector.md) to create a scenario for July.
 
+![July scenario in production version 2.0](pic/scenario_selector_for_production_ver2.png)
 
-<!-- TODO: Add example on how to get an entity from an old production version, and what would the result looks like -->
+Next, let's access June scenario.
 
-# Remove a production version
+![Migrated June scenario in production version 1.0](pic/scenario_selector_for_production_ver1_migrated.png)
 
-To remove a production version, you can use the `taipy manage-versions` with the `--delete-production`
-option on the Taipy CLI and providing the version name (see the
-[Manage versions on Taipy CLI page](../../cli/manage-versions.md) for more details).
-
-```console
-$ taipy manage-versions --delete-production 2.0
-Successfully delete version 2.0 from production version list.
-
-$ taipy manage-versions --list
-Version number                         Mode                   Creation date
-2.0                                    Experiment (latest)    2023-01-25 13:06:00
-1.0                                    Production             2023-01-25 13:00:05
-325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
-26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
-```
-
-After running the commands above, version 2.0 is an experiment version again. It is no longer a
-production version.
+We can see that the scope of the data nodes are updated to `GLOBAL`, and the skippable attribute of the task is
+also updated to True. Notice that since we don't migrate the path of the data nodes, the path of the data nodes
+are still pointing to the pickle files of June scenario. And finally, all entities are now version 2.0 and compatible
+with the new configuration.
