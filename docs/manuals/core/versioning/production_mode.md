@@ -114,7 +114,8 @@ $ python main.py --production 1.0
     DATA_NODE "output" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     TASK "example_algorithm" has attribute "skippable" modified: False:bool -> True:bool
 
-Please add a new production version with migration functions or run your application with --taipy-force option to override the production configuration of version 1.0.
+Please add a new production version with migration functions.
+If old entities remain compatible with the new configuration, you can also run your application with --taipy-force option to override the production configuration of version 1.0.
 ```
 
 In the example above, when re-running production version 1.0, Taipy detects and displays all the
