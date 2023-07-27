@@ -42,9 +42,9 @@ Not published yet.
 
        * `is_deletable()^` checks if an entity can be deleted.
 
-- A production version of the application can now be provided with migration functions, to help making
-  sure that entities from all production versions are compatible with each other.<br/>
-  See the [Production mode](./manuals/core/versioning/production_mode.md) documentation page for more details.
+- A production version of the application can now be provided with migration functions to help 
+  ensure that entities from all production versions are compatible with each other.<br/>
+  For more information, please refer to [Production mode](./manuals/core/versioning/production_mode.md).
 
 ### Improvements and changes
 

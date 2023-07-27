@@ -72,10 +72,10 @@ Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 ```
 
-With the `--experiment 0.1` option, an experiment version is created and stored under the name "0.1".
+With the `--experiment 0.1` option, an experiment version is created and stored with the name "0.1".
 
 In this example, you can see the number of scenarios displayed is still 1. Taipy only considered
-the scenarios of the 0.1 version, and filters out the entities of other versions.
+the scenarios version "0.1", and filters out the entities of other versions.
 
 # Run an existing version
 
@@ -140,7 +140,7 @@ But don't worry; if there is any change to your configuration, Taipy will show
 a warning message before exiting.
 
 Let's assume a small change has been made to the configuration in `main.py`. A custom property
-(`description`) has been added to the output data node config. Here is the new configuration.
+(`description`) has been added to the output data node config. Here is the new configuration:
 
 ```python linenums="1" title="main.py"
 {%

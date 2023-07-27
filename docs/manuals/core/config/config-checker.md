@@ -35,6 +35,6 @@ Here is the list of the possible issues that the checker could return:
   `DataNodeConfig^` is defined.
 - An `ERROR` issue is created if the `migration_function` parameter of a `MigrationConfig^` is not a callable function.
 - An `ERROR` issue is created if the `target_version` parameter of a `MigrationConfig^` is not a valid production version.
-- An `INFO` issue is created if there is no `MigrationConfig^` defined to migrate entities from an old production version to the next production version.
+- An `INFO` issue is created if no `MigrationConfig^` is defined to migrate entities from an old production version to the next.
 
 [:material-arrow-right: The next section presents advanced configuration](advanced-config.md).

@@ -7,7 +7,7 @@ def example_algorithm(entry: str):
     return entry
 
 
-input_cfg = Config.configure_data_node("input", path="input.pkl", scope=Scope.GLOBAL, default_data="a_string")
+input_cfg = Config.configure_data_node("input", path="input.pkl", scope=Scope.GLOBAL, default_data="A string")
 output_cfg = Config.configure_data_node("output", path="output.pkl", scope=Scope.GLOBAL)
 task_cfg = Config.configure_task("example_algorithm", example_algorithm, input_cfg, output_cfg, skippable=True)
 scenario_cfg = Config.configure_scenario_from_tasks("my_scenario", [task_cfg])
