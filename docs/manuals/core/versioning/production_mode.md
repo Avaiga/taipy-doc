@@ -143,13 +143,13 @@ As you can see, the application is run successfully after updating the configura
     By forcing the configuration update, you must be aware that old entities instantiated before
     the configuration change may not be compatible.
 
-Second, to avoid overriding the Configuration of that production version, you can create a new
+Second, to avoid overriding the configuration of that production version, you can create a new
 production version and add migration functions to make entities from all production versions
 compatible with each other. Let's dive deeper into this topic in the next section.
 
 # Production version with migration functions
 
-First, without overriding the Configuration of version 1.0, let's use the [scenario selector](../../gui/corelements/scenario_selector.md) to create a scenario for June.
+First, without overriding the configuration of version 1.0, let's use the [scenario selector](../../gui/corelements/scenario_selector.md) to create a scenario for June.
 
 ![June scenario in production version 1.0](pic/scenario_selector_for_production_ver1.png)
 

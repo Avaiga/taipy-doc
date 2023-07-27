@@ -99,7 +99,7 @@ $ python main.py --experiment 0.1
 Number of scenarios: 2
 ```
 
-As you can see, this time the number of scenarios displayed is 2. Indeed, we run the 0.1 version
+As you can see, this time the number of scenarios displayed is 2. Indeed, we run the "0.1" version
 twice, so we have two scenarios attached to it.
 
 # Clean entities of an existing version
@@ -151,7 +151,7 @@ comments=false
 
 ```console
 $ python main.py --experiment 0.1
-[2023-01-25 12:52:05,484][Taipy][ERROR] The version 0.1 Configuration is conflicted with the current Configuration:
+[2023-01-25 12:52:05,484][Taipy][ERROR] Configuration for version 0.1 conflicts with the current Configuration:
     DATA_NODE "output" has attribute "description" added: What a description
 
 To force running the application with the changes, run your application with --taipy-force option.
@@ -164,7 +164,7 @@ Taipy to update the configuration of the provided version before re-running the 
 
 ```console
 $ python main.py --experiment 0.1 --taipy-force
-[2023-01-25 12:55:05,484][Taipy][ERROR] The version 0.1 Configuration is conflicted with the current Python Config.
+[2023-01-25 12:55:05,484][Taipy][ERROR] Configuration for version 0.1 conflicts with the current Python Config.
     DATA_NODE "output" has attribute "description" added: What a description
 [2023-01-25 12:52:05,692][Taipy][WARNING] Option --taipy-force is detected, overriding the configuration of version  0.1 ...
 [2023-01-25 12:52:05,890][Taipy][INFO] job JOB_example_algorithm_96ed74ed-183b-4dff-86c9-3b733d4d9bd9 is completed.
@@ -179,7 +179,7 @@ the configuration. A new scenario has been created.
     By forcing the configuration update, you must be aware that old entities instantiated before
     the configuration change may not be compatible.
 
-    On the previous example, note that two scenarios are attached to version 0.1, and two `output`
+    On the previous example, note that two scenarios are attached to version "0.1", and two `output`
     data nodes as well. One has been instantiated before the configuration update and one after.
     That means the `description` property only exists for one of the two `output` data nodes.
     It is your responsibility to handle the changes.
