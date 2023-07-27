@@ -5,7 +5,9 @@ This section describes the various methods to configure the Taipy version manage
 # Configure using Core Configuration
 
 The first method is configuring the `CoreSection^` with the `Config.configure_core()^` method.
-For more details about the configuration fields, please refer to the [Core config](core-config.md) documentation page.
+For more details about the configuration fields, please refer to the [Core config](../config/core-config.md)
+documentation
+page.
 
 ```python linenums="1"
 from taipy import Config
