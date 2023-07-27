@@ -151,7 +151,7 @@ comments=false
 
 ```console
 $ python main.py --experiment 0.1
-[2023-01-25 12:52:05,484][Taipy][ERROR] Configuration for version 0.1 conflicts with the current Configuration:
+[2023-01-25 12:52:05,484][Taipy][ERROR] The configuration for version 0.1 conflicts with the current configuration:
     DATA_NODE "output" has attribute "description" added: What a description
 
 To force running the application with the changes, run your application with --taipy-force option.
@@ -164,7 +164,7 @@ Taipy to update the configuration of the provided version before re-running the 
 
 ```console
 $ python main.py --experiment 0.1 --taipy-force
-[2023-01-25 12:55:05,484][Taipy][ERROR] Configuration for version 0.1 conflicts with the current Python Config.
+[2023-01-25 12:55:05,484][Taipy][ERROR] The configuration for version 0.1 conflicts with the current Python Config.
     DATA_NODE "output" has attribute "description" added: What a description
 [2023-01-25 12:52:05,692][Taipy][WARNING] Option --taipy-force is detected, overriding the configuration of version  0.1 ...
 [2023-01-25 12:52:05,890][Taipy][INFO] job JOB_example_algorithm_96ed74ed-183b-4dff-86c9-3b733d4d9bd9 is completed.

@@ -107,14 +107,14 @@ comments=false
 
 ```console
 $ python main.py --production 1.0
-[2023-01-25 12:52:05,484][Taipy][ERROR] Configuration for version 1.0 conflicts with the current Configuration:
+[2023-01-25 12:52:05,484][Taipy][ERROR] The configuration for version 1.0 conflicts with the current configuration:
     DATA_NODE "input" has attribute "path" added: input.pkl
     DATA_NODE "output" has attribute "path" added: output.pkl
     DATA_NODE "input" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     DATA_NODE "output" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     TASK "example_algorithm" has attribute "skippable" modified: False:bool -> True:bool
 
-Please add a new production version with migration functions or run your application with --taipy-force option to override the production Configuration of version 1.0.
+Please add a new production version with migration functions or run your application with --taipy-force option to override the production configuration of version 1.0.
 ```
 
 In the example above, when re-running production version 1.0, Taipy detects and displays all the
@@ -125,7 +125,7 @@ the version's configuration before re-running the application.
 
 ```console
 $ python main.py --production 1.0 --taipy-force
-[2023-07-04 10:25:41][Taipy][ERROR] Configuration for version 1.0 conflicts with the current Configuration:
+[2023-07-04 10:25:41][Taipy][ERROR] The configuration for version 1.0 conflicts with the current configuration:
     DATA_NODE "input" has attribute "path" added: input.pkl
     DATA_NODE "output" has attribute "path" added: output.pkl
     DATA_NODE "input" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
