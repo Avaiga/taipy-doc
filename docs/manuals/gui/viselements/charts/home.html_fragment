@@ -17,6 +17,7 @@ polar:Polar charts
 radar:Radar charts
 candlestick:Candlestick charts
 funnel:Funnel charts
+waterfall:Waterfall charts
 map:Maps
 #TODO#area-map:Areas on maps
 #TODO#density-map:Density maps
@@ -196,6 +197,11 @@ the chart types supported by Taipy by application category:
         <span>Funnel charts<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
         <img src="../charts/home-funnel-d.png"  class="visible-dark" />
         <img src="../charts/home-funnel-l.png"  class="visible-light" />
+      </a></li>
+    <li><a href="../charts/waterfall">
+        <span>Waterfall charts<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
+        <img src="../charts/home-waterfall-d.png"  class="visible-dark" />
+        <img src="../charts/home-waterfall-l.png"  class="visible-light" />
       </a></li>
 </ul>
 
