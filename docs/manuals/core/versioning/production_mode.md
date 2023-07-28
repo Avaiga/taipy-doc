@@ -62,7 +62,7 @@ Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 ```
 
-As you can see, we first created an experiment version named 1.0 and there is one scenario is
+As you can see, we first created an experiment version named 1.0 and create one scenario.
 When listing the existing versions, we see that 1.0 is the latest version.
 Therefore, when running the Taipy application in production mode without providing the version name,
 the latest is used and converted to production before running.
