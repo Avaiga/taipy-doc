@@ -229,7 +229,7 @@ Next, let's access the scenario for the month of June:
 
 ![Migrated June scenario in production version 1.0](pic/scenario_selector_for_production_ver1_migrated.png)
 
-We can see that the scope of the data nodes are updated to `GLOBAL`, and the skippable attribute of the task is
+We can see that the data node scopes are updated to `GLOBAL`, and the skippable attribute of the task is
 also updated to True. Notice that since we don't migrate the path of the data nodes, the path of the data nodes
 still points to the pickle files of the June scenario. And finally, all entities are now version 2.0 and compatible
 with the new configuration.
