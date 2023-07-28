@@ -21,8 +21,8 @@ development mode by running your Taipy application with `--development` or `-dev
 ```console
 $ python main.py
 [2023-01-24 23:46:29,468][Taipy][INFO] Development mode: Clean all entities of version 9b01399c-67e4-41a4-83d3-121f7210d4e7
-[2023-01-24 23:46:29,615][Taipy][INFO] job JOB_my_print_algo_9d75018a-1803-4358-8530-e62641e00ed8 is completed.
-nb scenarios: 1
+[2023-01-24 23:46:29,615][Taipy][INFO] job JOB_example_algorithm_9d75018a-1803-4358-8530-e62641e00ed8 is completed.
+Number of scenarios: 1
 
 $ taipy manage-versions --list
 Version number                         Mode                   Creation date

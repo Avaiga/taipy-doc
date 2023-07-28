@@ -24,21 +24,21 @@ entities instantiated in previous runs. There are three runtime modes that can b
 a Taipy application.
 
 - In development mode (default mode), Taipy drops all old entities before running the application.
-  It is made to help users during the application development phase to implement its application
-  through successive iterations of configuration changes. Please refer to the
-  [development mode](./development_mode.md) documentation page for more details.
+  It is made to help users during the application development phase to implement their application
+  through successive iterations of configuration changes. For more information, please refer to
+  [Development mode](./development_mode.md).
 
 - In experiment mode, Taipy keeps old entities untouched but filters them out when running the
   application. The application behaves like there are no old entities. Only the entities created
   during the current run are considered by the application. It is designed to help the user improve
   an existing application by experimenting with possible configuration changes, trying new
-  algorithms, investigating the impacts of a parameter change, etc. Please refer to the
-  [experiment mode](./experiment_mode.md) documentation page for more details.
+  algorithms, investigating the impacts of a parameter change, etc. For more information, please refer to
+  [Experiment mode](./experiment_mode.md).
 
 - In production mode, Taipy considers all existing entities, whether they have been instantiated in
   the current run or in a previous one. It is designed to run an application in a production
-  environment with existing entities created in previous runs. Please refer to the
-  [production mode](./production_mode.md) documentation page for more details.
+  environment with existing entities created in previous runs. For more information, please refer to
+  [Production mode](./production_mode.md).
 
 ## Versions
 

@@ -42,6 +42,10 @@ Not published yet.
 
        * `is_deletable()^` checks if an entity can be deleted.
 
+- A production version of the application can now be provided with migration functions to help 
+  ensure that entities from all production versions are compatible with each other.<br/>
+  For more information, please refer to [Production mode](./manuals/core/versioning/production_mode.md).
+
 ### Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>

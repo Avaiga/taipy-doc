@@ -35,8 +35,8 @@ Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development (latest)   2023-01-25 12:20:33
 
 $ python main.py --experiment
-[2023-01-25 12:20:56,474][Taipy][INFO] job JOB_my_print_algo_e1c49bdb-9284-40c5-a096-db0235697cb3 is completed.
-nb scenarios: 1
+[2023-01-25 12:20:56,474][Taipy][INFO] job JOB_example_algorithm_e1c49bdb-9284-40c5-a096-db0235697cb3 is completed.
+Number of scenarios: 1
 
 $ taipy manage-versions --list
 Version number                         Mode                   Creation date
@@ -61,21 +61,21 @@ Version number                         Mode                   Creation date
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment (latest)    2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
-$ python main.py --experiment 1.0
-[2023-01-25 12:24:19,613][Taipy][INFO] job JOB_my_print_algo_9b6232f9-601e-4a85-852e-2ada7bc1e459 is completed.
-nb scenarios: 1
+$ python main.py --experiment 0.1
+[2023-01-25 12:24:19,613][Taipy][INFO] job JOB_example_algorithm_9b6232f9-601e-4a85-852e-2ada7bc1e459 is completed.
+Number of scenarios: 1
 
 $ taipy manage-versions --list
 Version number                         Mode                   Creation date
-1.0                                    Experiment (latest)    2023-01-25 12:24:19
+0.1                                    Experiment (latest)    2023-01-25 12:24:19
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 ```
 
-With the `--experiment 1.0` option, an experiment version is created and stored under the name "1.0".
+With the `--experiment 0.1` option, an experiment version is created and stored with the name "0.1".
 
 In this example, you can see the number of scenarios displayed is still 1. Taipy only considered
-the scenarios of the 1.0 version, and filters out the entities of other versions.
+the scenarios version "0.1", and filters out the entities of other versions.
 
 # Run an existing version
 
@@ -90,16 +90,16 @@ the existing version.
 ```console
 $ taipy manage-versions --list
 Version number                         Mode                   Creation date
-1.0                                    Experiment (latest)    2023-01-25 12:24:19
+0.1                                    Experiment (latest)    2023-01-25 12:24:19
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
-$ python main.py --experiment 1.0
-[2023-01-25 12:28:54,963][Taipy][INFO] job JOB_my_print_algo_2133dc18-643b-4351-872b-aedfc2c65c9c is completed.
-nb scenarios: 2
+$ python main.py --experiment 0.1
+[2023-01-25 12:28:54,963][Taipy][INFO] job JOB_example_algorithm_2133dc18-643b-4351-872b-aedfc2c65c9c is completed.
+Number of scenarios: 2
 ```
 
-As you can see, this time the number of scenarios displayed is 2. Indeed, we run the 1.0 version
+As you can see, this time the number of scenarios displayed is 2. Indeed, we run the "0.1" version
 twice, so we have two scenarios attached to it.
 
 # Clean entities of an existing version
@@ -111,18 +111,18 @@ application again.
 ```console
 $ taipy manage-versions --list
 Version number                         Mode                   Creation date
-1.0                                    Experiment (latest)    2023-01-25 12:24:19
+0.1                                    Experiment (latest)    2023-01-25 12:24:19
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
-$ python main.py --experiment 1.0 --clean-entities
-[2023-01-25 12:36:05,598][Taipy][INFO] Clean all entities of version 1.0
-[2023-01-25 12:36:05,777][Taipy][INFO] job JOB_my_print_algo_494bf4a7-afa2-4916-9221-fabd8de1738a is completed.
-nb scenarios: 1
+$ python main.py --experiment 0.1 --clean-entities
+[2023-01-25 12:36:05,598][Taipy][INFO] Clean all entities of version 0.1
+[2023-01-25 12:36:05,777][Taipy][INFO] job JOB_example_algorithm_494bf4a7-afa2-4916-9221-fabd8de1738a is completed.
+Number of scenarios: 1
 
 $ taipy manage-versions --list
 Version number                         Mode                   Creation date
-1.0                                    Experiment (latest)    2023-01-25 12:24:19
+0.1                                    Experiment (latest)    2023-01-25 12:24:19
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 ```
@@ -139,37 +139,36 @@ of the application must be the same. There must be no breaking change.
 But don't worry; if there is any change to your configuration, Taipy will show
 a warning message before exiting.
 
-Let's assume a change has been made in the configuration in `main.py`. A custom
-property (`description`) has been added to the output data node config. Here is
-the new configuration.
+Let's assume a small change has been made to the configuration in `main.py`. A custom property
+(`description`) has been added to the output data node config. Here is the new configuration:
 
 ```python linenums="1" title="main.py"
 {%
-include-markdown "./code_example/main_with_changes.py"
+include-markdown "./code_example/main_with_small_change.py"
 comments=false
 %}
 ```
 
 ```console
-$ python main.py --experiment 1.0
-[2023-01-25 12:52:05,484][Taipy][WARNING] The Configuration of version 1.0 is conflicted with the current Python Config.
-Added object:
-        DATA_NODE "output" has attribute "description" added: What a description
+$ python main.py --experiment 0.1
+[2023-01-25 12:52:05,484][Taipy][ERROR] The configuration for version 0.1 conflicts with the current configuration:
+    DATA_NODE "output" has attribute "description" added: What a description
 
 To force running the application with the changes, run your application with --taipy-force option.
 ```
 
-In the example above, when re-running version 1.0, Taipy detects and displays all the differences,
+In the example above, when re-running version 0.1, Taipy detects and displays all the differences,
 so you precisely know what has been changed and can decide what to do. Either you revert your
 configuration changes, or you can run the application with the `--taipy-force` option to force
 Taipy to update the configuration of the provided version before re-running the application.
 
 ```console
-$ python main.py --experiment 1.0 --taipy-force
-[2023-01-25 12:55:05,484][Taipy][WARNING] The Configuration of version 1.0 is conflicted with the current Python Config.
-[2023-01-25 12:52:05,692][Taipy][WARNING] Overriding version 1.0 ...
-[2023-01-25 12:52:05,890][Taipy][INFO] job JOB_my_print_algo_96ed74ed-183b-4dff-86c9-3b733d4d9bd9 is completed.
-nb scenarios: 2
+$ python main.py --experiment 0.1 --taipy-force
+[2023-01-25 12:55:05,484][Taipy][ERROR] The configuration for version 0.1 conflicts with the current Python Config.
+    DATA_NODE "output" has attribute "description" added: What a description
+[2023-01-25 12:52:05,692][Taipy][WARNING] Option --taipy-force is detected, overriding the configuration of version  0.1 ...
+[2023-01-25 12:52:05,890][Taipy][INFO] job JOB_example_algorithm_96ed74ed-183b-4dff-86c9-3b733d4d9bd9 is completed.
+Number of scenarios: 2
 ```
 
 As you can see on the previous example, the application run correctly after updating
@@ -180,7 +179,7 @@ the configuration. A new scenario has been created.
     By forcing the configuration update, you must be aware that old entities instantiated before
     the configuration change may not be compatible.
 
-    On the previous example, note that two scenarios are attached to version 1.0, and two `output`
+    On the previous example, note that two scenarios are attached to version "0.1", and two `output`
     data nodes as well. One has been instantiated before the configuration update and one after.
     That means the `description` property only exists for one of the two `output` data nodes.
     It is your responsibility to handle the changes.
