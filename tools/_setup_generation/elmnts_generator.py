@@ -81,6 +81,12 @@ class ElementsGenerator(SetupStep):
                 raise ValueError(
                     f"FATAL - No properties for element type '{element}'"
                 )
+            # Not ready for 2.4
+            if element == "job_selector":
+                del self.elements[element]
+                self.categories["controls"].remove(element)
+                continue
+
             template_path = self.get_element_md_path(element) + "_template"
             if not os.access(template_path, os.R_OK):
                 raise FileNotFoundError(

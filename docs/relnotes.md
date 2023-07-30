@@ -37,9 +37,9 @@ Published on 2023-07.
 
 - The multi-line [`input`](manuals/gui/viselements/input.md) control now accepts Shift+Enter to
   insert a line break.<br/>
-  See [issue #824](https://github.com/Avaiga/taipy-core/issues/824)
+  See [issue #824](https://github.com/Avaiga/taipy-gui/issues/824)
 - Edition of a date value in tables now prompts the user with a date picker.<br/>
-  See [issue #797](https://github.com/Avaiga/taipy-core/issues/797)
+  See [issue #797](https://github.com/Avaiga/taipy-gui/issues/797)
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.4.0
@@ -58,7 +58,7 @@ Published on 2023-07.
 2.4.0
 
 - The date format is not used when editing a date value in tables.<br/>
-  See [issue #867](https://github.com/Avaiga/taipy-core/issues/867)
+  See [issue #867](https://github.com/Avaiga/taipy-gui/issues/867)
 - The *on_edit* callback of a non-sorted table based on a DataFrame with mixed-up indices can receive
   an incorrect *index* value in its payload.<br/>
   See [issue #866](https://github.com/Avaiga/taipy-gui/issues/866).
