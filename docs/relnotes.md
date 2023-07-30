@@ -14,7 +14,7 @@ This is the list of changes to Taipy releases as they were published.
 
 ## Community edition: 2.4
 
-Published on 2023-06.
+Published on 2023-07.
 
 [`taipy` 2.4](https://pypi.org/project/taipy/2.4.0/) contains the latest
 [`taipy-config` 2.4](https://pypi.org/project/taipy-config/2.4.0/),
@@ -24,10 +24,22 @@ Published on 2023-06.
 
 ### New Features
 
+<h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
+2.4.0
+
+- The [`scenario_selector`](manuals/gui/corelements/scenario_selector.md) control has a new
+  property called *on_creation* that lets developers implement what to do in response to an
+  end-user pressing the "Create" button. This gives full control of scenario creation.
+- The activity spinner now relies on the CSS class `taipy-busy` so it can be styled.
+
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.4.0
 
--
+- The multi-line [`input`](manuals/gui/viselements/input.md) control now accepts Shift+Enter to
+  insert a line break.<br/>
+  See [issue #824](https://github.com/Avaiga/taipy-gui/issues/824)
+- Edition of a date value in tables now prompts the user with a date picker.<br/>
+  See [issue #797](https://github.com/Avaiga/taipy-gui/issues/797)
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.4.0
@@ -37,8 +49,22 @@ Published on 2023-06.
   See [issue #575](https://github.com/Avaiga/taipy-core/issues/575)
 - Support for [pandas 2.0](https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html).
   <br/>
-  Note that pandas versions earlier than 2.0 are not supported anymore in Taipy 2.4.
-  You can use Taipy 2.3 for pandas 1.5 compatibility.
+  Note that Pandas versions earlier than 2.0 are not supported anymore in Taipy 2.4.
+  You can use Taipy 2.3 for Pandas 1.5 compatibility.
+
+### Significant bug fixes
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.4.0
+
+- The date format is not used when editing a date value in tables.<br/>
+  See [issue #867](https://github.com/Avaiga/taipy-gui/issues/867)
+- The *on_edit* callback of a non-sorted table based on a DataFrame with mixed-up indices can receive
+  an incorrect *index* value in its payload.<br/>
+  See [issue #866](https://github.com/Avaiga/taipy-gui/issues/866).
+- Changing the columns displayed in a [`table`](manuals/gui/viselements/table.md) control may lead
+  to an inconsistent filter.<br/>
+  See [issue #822](https://github.com/Avaiga/taipy-gui/issues/822).
 
 ## Community edition: 2.3
 
