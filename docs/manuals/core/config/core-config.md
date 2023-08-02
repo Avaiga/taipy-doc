@@ -7,7 +7,7 @@ Here are the (optional) configurable properties:
   conjunction with the root_folder field. That means the default storage path is "./taipy/.data/".
 - _**read_entity_retry**_: An integer number only used with `filesystem` _**repository_type**_. <br>
 It corresponds to the number of times Taipy retries reading an entity after a failed attempt for concurrent access. <br>
-The default value is 3.
+The default value is 1.
 - _**repository_type**_: The type of storage that will be used to hold Taipy entities. Available options are:
   `filesystem`, `sql` and `mongo`. If no repository type is informed, the filesystem will be used as the default
   repository.
@@ -25,8 +25,6 @@ The default value is 3.
 - _**version_number**_: The identifier of the version. In development mode, the version number is ignored.
 - _**force**_: Indicates whether Taipy will override a version even if the configuration has changed
     or not and run the application. Default to False.
-- _**clean_entities**_: Indicates whether running a Taipy Core service will clean all current version
-    entities or not before running the application. Default to False.
 
 === "Python configuration"
 

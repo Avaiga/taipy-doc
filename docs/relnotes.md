@@ -55,6 +55,10 @@ Not published yet.
 - The `root_folder`, `storage_folder`, `read_entity_retry`, `repository_type`, and `repository_properties`
   attributes of the `GlobalAppConfig^` have been moved to the `CoreSection^`.<br/>
   Please refer to the [Core configuration page](core-config.md) for details.
+- The `clean_entities` attribute has been removed from the `CoreSection^`. Correspondingly, the
+  `--clean-entities` option has been removed from the version management CLI.<br/>
+  To clean entities of a version, please run your application in development mode, or delete your
+  version with the `--delete` option.
 
 ## Community edition: 2.3
 
