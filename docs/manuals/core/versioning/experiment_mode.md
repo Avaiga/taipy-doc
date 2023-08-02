@@ -99,7 +99,7 @@ $ python main.py --experiment 0.1
 Number of scenarios: 2
 ```
 
-As you can see, this time the number of scenarios displayed is 2. Indeed, we run the "0.1" version
+As you can see, this time, the number of scenarios displayed is 2. Indeed, we run the "0.1" version
 twice, so we have two scenarios attached to it.
 
 # Change config of an existing version
@@ -155,8 +155,8 @@ the configuration. A new scenario has been created.
     That means the `description` property only exists for one of the two `output` data nodes.
     It is your responsibility to handle the changes.
 
-    Hint: You can migrate your old entities so they become compatible with the new configuration or
-    you can ensure your code is compatible with both versions of data nodes.
+    Hint: You can migrate your old entities to become compatible with the new configuration or
+    ensure your code is compatible with both versions of data nodes.
 
 # Delete a version
 
@@ -166,7 +166,7 @@ option on the Taipy CLI and provide the version name (see the
 
 ```console
 $ taipy manage-versions --delete 0.1
-Successfully delete version 0.1 from the production version list.
+Successfully deleted version 0.1 from the production version list.
 
 $ taipy manage-versions --list
 Version number                         Mode                   Creation date

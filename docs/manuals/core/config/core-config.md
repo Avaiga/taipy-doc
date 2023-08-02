@@ -9,8 +9,7 @@ Here are the (optional) configurable properties:
 It corresponds to the number of times Taipy retries reading an entity after a failed attempt for concurrent access. <br>
 The default value is 1.
 - _**repository_type**_: The type of storage that will be used to hold Taipy entities. Available options are:
-  `filesystem`, `sql` and `mongo`. If no repository type is informed, the filesystem will be used as the default
-  repository.
+  `filesystem`, `sql` and `mongo`. The filesystem will be used as the default repository if no repository type is informed.
 - _**repository_properties**_: A dictionary of properties that will be used to instantiate the chosen repository.
   Only required if the chosen repository is `sql` or `mongo`.</br>
   If _**repository_type**_ is set to `filesystem`, Taipy uses _**root_folder**_ and _**storage_folder**_ to store

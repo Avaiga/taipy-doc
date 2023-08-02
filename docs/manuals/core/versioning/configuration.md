@@ -16,7 +16,7 @@ Config.configure_core(mode="experiment", version_number="0.1")
 ```
 
 In the above example, we configure the version management system by setting the mode to experiment
-with the version number is "0.1".
+with the version number "0.1".
 
 # Configure using a TOML file
 
@@ -77,8 +77,8 @@ configure the version management system:
   to a production version.
 
 - **--taipy-force**: With the `--taipy-force` argument, Taipy overrides a version even if
-  the configuration has changed and run the application. Default to False.
+  the configuration has changed and runs the application. Default to False.
 
-!!! note "Configure using both TOML file and CLI options"
+!!! note "Configure using both the TOML file and CLI options."
     If you configure the Taipy version management system using the CLI options, the value
     associated with each CLI option will override the one provided in the explicit TOML file.
