@@ -99,37 +99,8 @@ $ python main.py --experiment 0.1
 Number of scenarios: 2
 ```
 
-As you can see, this time the number of scenarios displayed is 2. Indeed, we run the "0.1" version
+As you can see, this time, the number of scenarios displayed is 2. Indeed, we run the "0.1" version
 twice, so we have two scenarios attached to it.
-
-# Clean entities of an existing version
-
-To run an experiment version with a fresh start, you can run on experiment mode with the
-`--clean-entities` option. Taipy deletes the entities of the version provided before running the
-application again.
-
-```console
-$ taipy manage-versions --list
-Version number                         Mode                   Creation date
-0.1                                    Experiment (latest)    2023-01-25 12:24:19
-325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
-26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
-
-$ python main.py --experiment 0.1 --clean-entities
-[2023-01-25 12:36:05,598][Taipy][INFO] Clean all entities of version 0.1
-[2023-01-25 12:36:05,777][Taipy][INFO] job JOB_example_algorithm_494bf4a7-afa2-4916-9221-fabd8de1738a is completed.
-Number of scenarios: 1
-
-$ taipy manage-versions --list
-Version number                         Mode                   Creation date
-0.1                                    Experiment (latest)    2023-01-25 12:24:19
-325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
-26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
-```
-
-As you can see in the previous example the number of scenarios became 1 again. Indeed,
-Taipy cleaned all entities of that experiment version before running it again (which
-created a new scenario).
 
 # Change config of an existing version
 
@@ -184,5 +155,23 @@ the configuration. A new scenario has been created.
     That means the `description` property only exists for one of the two `output` data nodes.
     It is your responsibility to handle the changes.
 
-    Hint: You can migrate your old entities so they become compatible with the new configuration or
-    you can ensure your code is compatible with both versions of data nodes.
+    Hint: You can migrate your old entities to become compatible with the new configuration or
+    ensure your code is compatible with both versions of data nodes.
+
+# Delete a version
+
+To delete an experiment version, you can use the `taipy manage-versions` with the `--delete`
+option on the Taipy CLI and provide the version name (see the
+[Manage versions on Taipy CLI page](../../cli/manage-versions.md) for more details).
+
+```console
+$ taipy manage-versions --delete 0.1
+Successfully deleted version 0.1 from the production version list.
+
+$ taipy manage-versions --list
+Version number                         Mode                   Creation date
+325d0618-6f9e-459b-9597-48fa93a57a23   Experiment  (latest)   2023-01-25 12:20:56
+26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
+```
+
+After running the commands above, version 0.1 and all its entities are deleted.

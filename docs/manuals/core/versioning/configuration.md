@@ -12,11 +12,11 @@ page.
 ```python linenums="1"
 from taipy import Config
 
-Config.configure_core(mode="experiment", version_number="0.1", clean_entities=True)
+Config.configure_core(mode="experiment", version_number="0.1")
 ```
 
 In the above example, we configure the version management system by setting the mode to experiment
-with the version number is "0.1", and clean all entities on each run.
+with the version number "0.1".
 
 # Configure using a TOML file
 
@@ -30,7 +30,6 @@ and force overriding the previous experiment version when there is conflicting C
 mode = "experiment"
 version_number = "0.1"
 force = "True:bool"
-clean_entities = "False:bool"
 ```
 
 The TOML file can be loaded by Taipy using Python coding as follow.
@@ -78,12 +77,8 @@ configure the version management system:
   to a production version.
 
 - **--taipy-force**: With the `--taipy-force` argument, Taipy overrides a version even if
-  the configuration has changed and run the application. Default to False.
+  the configuration has changed and runs the application. Default to False.
 
-- **--clean-entities**: With the `--clean-entities` argument, running a Taipy
-  Core application cleans all current version entities before running the application.
-  Default to False.
-
-!!! note "Configure using both TOML file and CLI options"
+!!! note "Configure using both the TOML file and CLI options."
     If you configure the Taipy version management system using the CLI options, the value
     associated with each CLI option will override the one provided in the explicit TOML file.
