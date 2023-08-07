@@ -17,7 +17,7 @@ creates a data node configuration, and registers it in the `Config^` singleton.
 The attributes available on data nodes are:
 
 - _**id**_ is the string identifier of the data node config.<br/>
-    It is the only **mandatory** parameter and must be a unique and valid Python identifier.
+    It is a **mandatory** parameter and must be a unique and valid Python identifier.
 - _**scope**_ is a `Scope^`.<br/>
     It corresponds to the [scope](../concepts/scope.md) of the data node that will be instantiated
     from the data node configuration. The **default value** is `Scope.SCENARIO`.
@@ -832,7 +832,9 @@ The scope is `SCENARIO` (default value), and default data is provided.
 
 # Default data node configuration
 
-By default, if there is no information provided when configuring a datanode (except for the mandatory _**id**_), the `Config.configure_data_node()^` method will return a *pickle* data node configuration with the `Scope^` is set to `SCENARIO`.
+By default, if there is no information provided when configuring a datanode (except for the mandatory _**id**_),
+the `Config.configure_data_node()^` method will return a *pickle* data node configuration with the `Scope^`
+is set to `SCENARIO`.
 
 To override the default data node configuration, one can use the `Config.set_default_data_node_configuration()^` method.
 Then, a new data node configuration will:
@@ -855,5 +857,33 @@ Then we configure 5 data nodes:
 - Line 17 configures a SQL Table data node `users_data_cfg`. By also providing `table_name="users"`, this data node reads and writes to the "users" table.
 - Lines 18 and 19 configure 2 SQL Table data nodes, one using `Config.configure_data_node()^` with `storage_type="sql_table"`, one using `Config.configure_sql_table_data_node()^`. Since both have the same _**storage_type**_ as the default data node configuration, both have the same properties except for the table name.
 - Line 21 configures a CSV data node `forecast_data_cfg`. Since the _**storage_type**_ is `"csv"`, which is different from the `"sql_table"` configured in line 9, the default data node configuration is ignored. Therefore, the scope of `forecast_data_cfg` is `SCENARIO` by default.
+
+# Configure a data node from another configuration
+
+Taipy also provides the possibility to use an existing configuration as a scaffold to configure a new data node.
+This can be useful when the application has a lot of data nodes with similar properties.
+
+To utilize the information of an existing configuration to create a new data node configuration, one can use the
+`Config.configure_data_node_from()^` method. This method accepts the following parameters:
+
+- _**source_configuration**_ is a mandatory parameter that represents the source data node configuration.
+- _**id**_ represents the unique mandatory identifier of the new data node configuration.
+- Any other attribute can be provided through the parameter _**properties**_, a kwargs dictionary accepting any number
+  of custom parameters (the scope, the validity period, a description, a label, a tag, etc.)<br/>
+  This *properties* dictionary will override any attribute of the source data node configuration if provided.
+
+```python linenums="1"
+{%
+include-markdown "./code_example/data_node_cfg/data-node-config-from-another-configuration.py"
+comments=false
+%}
+```
+
+In this example, we first configure the `product_data_cfg` SQL table data node with all necessary
+properties in lines 3-14.
+
+Then we configure 3 similar data nodes, `users_data_cfg`, `retail_data_cfg`, and `wholesale_data_cfg` in lines 16-33,
+by using the `Config.configure_data_node_from()^` method with `product_data_cfg` as the source configuration, only
+changing the table name and the scope of the new data nodes.
 
 [:material-arrow-right: The next section introduces the task configuration](task-config.md).

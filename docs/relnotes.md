@@ -21,6 +21,10 @@ Not published yet.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 3.0.0
 
+- A data node configuration can be used as a scaffold to configure a new similar data node. Please refer to the
+  [Configure a data node from another configuration](./manuals/core/config/data-node-config.md#configure-a-data-node-from-another-configuration)
+  section for more information.
+
 - New abstract class:
       * `Submittable^` to model entities that can be submitted for execution
             The children entity classes of `Submittable` are `Scenario` and `Pipeline`;
@@ -42,7 +46,7 @@ Not published yet.
 
        * `is_deletable()^` checks if an entity can be deleted.
 
-- A production version of the application can now be provided with migration functions to help 
+- A production version of the application can now be provided with migration functions to help
   ensure that entities from all production versions are compatible with each other.<br/>
   For more information, please refer to [Production mode](./manuals/core/versioning/production_mode.md).
 
