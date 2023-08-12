@@ -63,6 +63,10 @@ Not published yet.
   `--clean-entities` option has been removed from the version management CLI.<br/>
   To clean entities of a version, please run your application in development mode, or delete your
   version with the `--delete` option.
+- The deprecated `nb_of_workers` attribute of the JobConfig has been removed.
+- The deprecated `parent_id` attribute of a DataNode, Task, Pipeline, or Scenario entity, has been removed.
+- The deprecated `last_edition_date` and `edition_in_progress` attributes of a DataNode entity have been removed.
+- The deprecated `DataNode.lock_edition()` and `DataNode.unlock_edition()` methods have been removed.
 
 ## Community edition: 2.3
 
