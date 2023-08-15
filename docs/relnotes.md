@@ -21,6 +21,11 @@ Not published yet.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 3.0.0
 
+- A global data node can be created from a data node configuration with GLOBAL scope using the new
+  `taipy.create_global_data_node()` method.<br/>
+  Please refer to the [Create a data node](./manuals/core/entities/data-node-mgt.md#create-a-data-node)
+  section for more information.
+
 - A data node configuration can be used as a scaffold to configure a new similar data node. Please refer to the
   [Configure a data node from another configuration](./manuals/core/config/data-node-config.md#configure-a-data-node-from-another-configuration)
   section for more information.
@@ -31,7 +36,7 @@ Not published yet.
 
 - New exposed functions:
 
-       * `taipy.exists()^^` checks if an entity exists or not;
+       * `taipy.exists()^` checks if an entity exists or not;
 
        * `Submittable.get_inputs()^` retrieves input data nodes of a `Submittable` entity;
 

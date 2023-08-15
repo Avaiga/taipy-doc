@@ -28,7 +28,39 @@ A data node also holds various properties and attributes accessible through the 
 - _**edit_in_progress**_: The boolean flag signals if the data node is locked for modification.
 - _**properties**_: The dictionary of additional arguments.
 
-# Get data node
+# Create a data node
+
+There are 2 methods to create data nodes in Taipy.
+
+The first method is by creating a scenario via the `taipy.create_scenario()^` method. This method takes a scenario
+configuration as a parameter and returns the created scenario, and all data nodes that related to the scenario will
+be created alongside the scenario.
+
+The second method is creating a global data node directly using the `taipy.create_global_data_node()^` method.
+This method takes a data node configuration as a parameter and returns the created data node.
+
+This method is useful when you want to create a data node that is independent of any cycle or scenario.For example,
+you can create a data node that stores the dataset for training a model, modify the datanode independently, and then
+use this data node in multiple scenarios.
+
+!!! Example
+
+    ```python linenums="1"
+    import taipy as tp
+    from my_config import sales_history_cfg
+
+    sale_history_datanode = tp.create_global_data_node(sales_history_cfg)
+    ```
+
+!!! Warning
+
+    The `taipy.create_global_data_node()^` method only accepts data node configuration with `GLOBAL` scope. If
+    a data node configuration with a different scope is provided, the method will raise the
+    `DataNodeConfigIsNotGlobal^` exception.
+
+# Get data nodes
+
+## Get a data node by the id
 
 The first method to access a **data node** is by calling the `taipy.get()^` method
 passing the data node id as parameter:
@@ -47,7 +79,7 @@ passing the data node id as parameter:
     # data_node == data_node_retrieved
     ```
 
-# Get data nodes by config_id
+## Get data nodes by config_id
 
 The data nodes that are part of a **scenario**, **pipeline** or **task** can be directly accessed as attributes by
 using their config_id:
@@ -93,7 +125,7 @@ This method returns the list of all existing data nodes instantiated from the co
     all_trained_model_dns = tp.get_entities_by_config_id("trained_model")
     ```
 
-# Get all data nodes
+##  Get all data nodes
 
 All data nodes that are part of a **scenario** or a **pipeline** can be directly accessed as attributes:
 
