@@ -33,14 +33,14 @@ A data node also holds various properties and attributes accessible through the 
 There are 2 methods to create data nodes in Taipy.
 
 The first method is by creating a scenario via the `taipy.create_scenario()^` method. This method takes a scenario
-configuration as a parameter and returns the created scenario, and all data nodes that related to the scenario will
+configuration as a parameter and returns the created scenario, and all data nodes that are related to the scenario will
 be created alongside the scenario.
 
 The second method is creating a global data node directly using the `taipy.create_global_data_node()^` method.
 This method takes a data node configuration as a parameter and returns the created data node.
 
-This method is useful when you want to create a data node that is independent of any cycle or scenario.For example,
-you can create a data node that stores the dataset for training a model, modify the datanode independently, and then
+This method is useful when you want to create a data node that is independent of any cycle or scenario. For example,
+you can create a data node that stores the dataset for training a model, modify the data node independently, and then
 use this data node in multiple scenarios.
 
 !!! Example
