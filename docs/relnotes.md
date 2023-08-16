@@ -23,12 +23,12 @@ Not published yet.
 
 - A global data node can be created from a data node configuration with GLOBAL scope using the new
   `taipy.create_global_data_node()` method.<br/>
-  Please refer to the [Create a data node](./manuals/core/entities/data-node-mgt.md#create-a-data-node)
-  section for more information.
+  Please refer to [Create a data node](./manuals/core/entities/data-node-mgt.md#create-a-data-node)
+  for more information.
 
-- A data node configuration can be used as a scaffold to configure a new similar data node. Please refer to the
+- A data node configuration can be a scaffold to configure a new similar data node. Please refer to 
   [Configure a data node from another configuration](./manuals/core/config/data-node-config.md#configure-a-data-node-from-another-configuration)
-  section for more information.
+  for more information.
 
 - New abstract class:
       * `Submittable^` to model entities that can be submitted for execution
