@@ -329,9 +329,9 @@ class RefManStep(SetupStep):
                 os.mkdir(package_path)
                 package_output_path = os.path.join(package_path, "index.md")
                 self.navigation += (
-                    " " * 4
+                    " " * 6
                     + f"- {package}:\n"
-                    + " " * 6
+                    + " " * 8
                     + f"- {RefManStep.REFERENCE_REL_PATH}/pkg_{package}/index.md\n"
                 )
             else:
@@ -346,9 +346,9 @@ class RefManStep(SetupStep):
                             f"FATAL - Unknown package '{new_package_group}' for package '{package}' (renamed from '{package_group}')"
                         )
                     package_group = new_package_group
-                    self.navigation += " " * 4 + f"- {package_group}:\n"
+                    self.navigation += " " * 6 + f"- {package_group}:\n"
                 self.navigation += (
-                    " " * (6 if package_group else 4)
+                    " " * (8 if package_group else 6)
                     + f"- {package}: manuals/reference/pkg_{package}.md\n"
                 )
                 package_output_path = os.path.join(
