@@ -68,6 +68,13 @@ Not published yet.
 - The deprecated `last_edition_date` and `edition_in_progress` attributes of a DataNode entity have been removed.
 - The deprecated `DataNode.lock_edition()` and `DataNode.unlock_edition()` methods have been removed.
 
+<h6 style="font-size: 1.2em"><strong><code>taipy-template</code></strong></h6>
+3.0.0
+- The "taipy-default-template" template now also supports creating a multi-pages application with Core and Rest services.
+  These options are available when creating a new application from the template.
+- The "multi-page-gui" template has been removed. Please use the "taipy-default-template" instead if you want to create
+  a Taipy multi-pages application.
+
 ## Community edition: 2.3
 
 Published on 2023-06.
