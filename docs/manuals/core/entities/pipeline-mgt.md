@@ -34,10 +34,10 @@ Taipy generates. A pipeline also holds various properties accessible as an attri
     from datetime import datetime
     import my_config
 
-    pipeline = tp.create_pipeline(my_config.sales_pipeline_cfg, name="Pipeline for sales prediction")
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg, name="Monthly scenario")
+    sales_pipeline = scenario.sales_pipeline
+    sales_pipeline.name = "Pipeline for sales prediction"
 
-    # The config_id is an attribute of the pipeline. Here it is "pipeline_configuration"
-    pipeline.config_id
     # There was no subscription, so subscribers is an empty list
     pipeline.subscribers # []
     # The properties dictionary equals {"name": "Pipeline for sales prediction"}. It
@@ -54,55 +54,25 @@ Taipy generates. A pipeline also holds various properties accessible as an attri
     current_month_data_node = pipeline.current_month
     ```
 
-# Get pipeline by id
+# Get a pipeline
 
-The method to access a pipeline is from its id by using the `taipy.get()^` method :
+There are two ways to retrieve a pipeline:
+
+The first method is by getting it from its parent scenario, using the pipeline name as an attribute.
+The second method to access a pipeline is from its id by using the `taipy.get()^` method.
 
 ```python linenums="1"
 import taipy as tp
 import my_config
 
-pipeline = tp.create_pipeline(my_config.sales_pipeline_cfg)
+scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+pipeline = scenario.sales_pipeline
+
 pipeline_retrieved = tp.get(pipeline.id)
 pipeline == pipeline_retrieved
 ```
 
 Here the two variables `pipeline` and `pipeline_retrieved` are equal.
-
-# Get pipelines by config id
-
-A pipeline can also be retrieved from a scenario by accessing the pipeline's config_id of the scenario.
-
-!!! Example
-
-    ```python linenums="1"
-    import taipy as tp
-    import my_config
-
-    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
-
-    # Get the pipelines by config id
-    sales_pipeline = scenario.sales
-    production_pipeline = scenario.production
-    ```
-
-Pipelines can also be retrieved using `taipy.get_entities_by_config_id()^` providing the config_id.
-This method returns the list of all existing pipelines instantiated from the config_id provided as a parameter.
-
-!!! Example
-
-    ```python linenums="1"
-    import taipy as tp
-    import my_config
-
-    # Create 2 scenarios, which will also create 2 sales pipelines.
-    scenario_1 = tp.create_scenario(my_config.monthly_scenario_cfg)
-    scenario_2 = tp.create_scenario(my_config.monthly_scenario_cfg)
-
-    # Get all sale pipelines by config id, this will return a list of 2 sales pipelines
-    # created alongside the 2 scenarios.
-    all_sales_pipeline = tp.get_entities_by_config_id("sales")
-    ```
 
 # Get all pipelines
 
