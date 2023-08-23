@@ -158,7 +158,7 @@ provided:
   default_path. To avoid this, the path property of a *csv* data node entity
   can be changed at runtime right after its instantiation.<br/>
 
-- _**encoding**_ represents the encoding of the JSON file.<br/>
+- _**encoding**_ represents the encoding of the CSV file.<br/>
   The default value of *encoding* is "utf-8".
 
 - _**has_header**_ indicates if the file has a header of not.<br/>
