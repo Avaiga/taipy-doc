@@ -866,7 +866,7 @@ This can be useful when the application has a lot of data nodes with similar pro
 To utilize the information of an existing configuration to create a new data node configuration, one can use the
 `Config.configure_data_node_from()^` method. This method accepts the following parameters:
 
-- _**source_configuration**_ is a mandatory parameter that represents the source data node configuration.
+- _**source_configuration**_ is a mandatory parameter representing the source data node configuration.
 - _**id**_ represents the unique mandatory identifier of the new data node configuration.
 - Any other attribute can be provided through the parameter _**properties**_, a kwargs dictionary accepting any number
   of custom parameters (the scope, the validity period, a description, a label, a tag, etc.)<br/>
