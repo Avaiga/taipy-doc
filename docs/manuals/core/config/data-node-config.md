@@ -158,6 +158,9 @@ provided:
   default_path. To avoid this, the path property of a *csv* data node entity
   can be changed at runtime right after its instantiation.<br/>
 
+- _**encoding**_ represents the encoding of the JSON file.<br/>
+  The default value of *encoding* is "utf-8".
+
 - _**has_header**_ indicates if the file has a header of not.<br/>
   By default, *has_header* is True and Taipy will use the 1st row in the CSV file as
   the header.
@@ -490,6 +493,9 @@ provided:
   configuration will inherit/share the same *json* file provided in the
   default_path. To avoid this, the path property of a *json* data node entity
   can be changed at runtime right after its instantiation.<br/>
+
+- _**encoding**_ represents the encoding of the JSON file.<br/>
+  The default value of *encoding* is "utf-8".
 
 - _**encoder**_ and _**decoder**_ parameters are optional parameters representing
   the encoder (json.JSONEncoder) and decoder (json.JSONDecoder) used to serialize and
