@@ -14,7 +14,6 @@ module contains a Taipy configuration already implemented.
 The pipeline creation method returns a `Pipeline^` entity. It is identified by a unique identifier `id` that
 Taipy generates. A pipeline also holds various properties accessible as an attribute of the pipeline:
 
-- _config_id_: The id of the pipeline configuration.
 - _subscribers_: The list of Tuples (callback, params) representing the subscribers.
 - _properties_: The complete dictionary of the pipeline properties. It includes a copy of the properties of
   the pipeline configuration, in addition to the properties provided at the creation and at runtime.
@@ -24,7 +23,7 @@ Taipy generates. A pipeline also holds various properties accessible as an attri
 - _**version**_: The string indicates the application version of the pipeline to instantiate. If not provided,
   the current version is used. Refer to the [version management](../versioning/index.md) page for more details.
 - Each property of the _properties_ dictionary is also directly exposed as an attribute.
-- Each nested entity is also exposed as an attribute of the pipeline. the attribute name corresponds to the
+- Each nested entity is also exposed as an attribute of the pipeline. The attribute name corresponds to the
   *config_id* of the nested entity.
 
 !!! Example
