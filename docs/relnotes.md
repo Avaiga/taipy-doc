@@ -30,6 +30,10 @@ Not published yet.
   [Configure a data node from another configuration](./manuals/core/config/data-node-config.md#configure-a-data-node-from-another-configuration)
   for more information.
 
+- The encoding type of CSVDataNode and JSONDataNode can now be configured using the *encoding* parameter. Please refer
+  to [Configure a CSVDataNode](./manuals/core/config/data-node-config.md#csv) and [Configure a JSONDataNode](./manuals/core/config/data-node-config.md#json)
+  sections for more information.
+
 - New abstract class:
       * `Submittable^` to model entities that can be submitted for execution
             The children entity classes of `Submittable` are `Scenario` and `Pipeline`;
