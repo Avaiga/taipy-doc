@@ -31,12 +31,12 @@ minimalized Taipy application.
 - The first question defines the application root folder as "new_application"
 - In the second and third questions, we set the main Python file of the application as "app.py" and the web page's title
   as "App Title".
-- In the 4th question, we clarify that we want a Taipy multi-page GUI application with 3 pages, and the page names are
+- In the 4th question, we clarify that we want a Taipy multi-page GUI application with three pages, and the page names are
   "slide_1", "slide_2", and "slide_3". Please note that if the names are not clarified, the default name will be
   "page_1", "page_2", and so on.
 - In the 5th question, we clarify that we want to use scenario management, so the application should include the
   Taipy Core service.
-- In the 6th question, we choose the default answer is No, which means that we don't want to use Rest API, so the
+- In the 6th question, we chose the default answer is No, meaning we don't want to use Rest API, so the
   application should not include the Taipy Rest API service.
 
 Finally, we changed the directory (`cd`) to our newly created folder and started the application by running
@@ -57,7 +57,7 @@ $ python app.py
 ```
 
 In this example, we scaffold a new Taipy application using the "scenario-management" template, which utilizes
-[a scenrio selector](./../gui/corelements/scenario_selector.md) to allow creating, managing, and running scenarios
+[a scenario selector](./../gui/corelements/scenario_selector.md) to allow creating, managing, and running scenarios
 directly from the GUI page.
 
 Please refer to the next section for a list of templates.
