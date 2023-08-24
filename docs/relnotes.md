@@ -26,9 +26,8 @@ Not published yet.
   Please refer to [Create a data node](./manuals/core/entities/data-node-mgt.md#create-a-data-node)
   for more information.
 
-- A data node configuration can be a scaffold to configure a new similar data node. Please refer to 
-  [Configure a data node from another configuration](./manuals/core/config/data-node-config.md#configure-a-data-node-from-another-configuration)
-  for more information.
+- A data node configuration can be a scaffold to configure a new similar data node. For more information, refer to
+  [Configure a data node from another configuration](./manuals/core/config/data-node-config.md#configure-a-data-node-from-another-configuration).
 
 - The encoding type of CSVDataNode and JSONDataNode can now be configured using the *encoding* parameter. Please refer
   to [Configure a CSVDataNode](./manuals/core/config/data-node-config.md#csv) and [Configure a JSONDataNode](./manuals/core/config/data-node-config.md#json)
@@ -59,6 +58,11 @@ Not published yet.
   ensure that entities from all production versions are compatible with each other.<br/>
   For more information, please refer to [Production mode](./manuals/core/versioning/production_mode.md).
 
+<h6 style="font-size: 1.2em"><strong><code>taipy-template</code></strong></h6>
+3.0.0
+
+- A new template named "scenario-management" is available. For more information on creating a new Taipy application with the new "scenario-management" template, refer to [Create a Taipy application from a specific template](./manuals/cli/create.md#from-a-specific-template).
+
 ### Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
@@ -80,6 +84,7 @@ Not published yet.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-template</code></strong></h6>
 3.0.0
+
 - The "taipy-default-template" template also supports creating a multi-pages application with Core and Rest services.
   These options are available when creating a new application from the template.
 - The "multi-page-gui" template has been removed. Please use the "taipy-default-template" instead to create
