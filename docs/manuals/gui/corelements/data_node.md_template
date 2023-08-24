@@ -1,0 +1,20 @@
+Displays a Data Node.
+
+TODO
+
+## Details
+
+Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit.
+
+Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae
+dicta sunt, explicabo:
+<figure class="tp-center">
+  <img src="../data_node-d.png" class="visible-dark"  width="70%"/>
+  <img src="../data_node-l.png" class="visible-light" width="70%"/>
+  <figcaption>The DataNode viewer</figcaption>
+</figure>
+
+At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum
+deleniti atque corrupti, quos dolores et quas molestias.
+

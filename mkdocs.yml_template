@@ -134,7 +134,7 @@ nav:
              - "Text edition": manuals/studio/config/textedition.md
           - "GUI Markdown support": manuals/studio/gui.md
     - "Python Reference Manual":
-      - "About Taipy's Python Reference Manual": manuals/reference.md
+      - manuals/reference/index.md
       [REFERENCE_CONTENT]
     - "REST API":
       - manuals/reference_rest/index.md

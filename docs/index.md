@@ -12,7 +12,7 @@ This documentation is divided in three main sections:
 
 - [**"Getting Started"**](getting_started/index.md) provides a step-by-step introduction to Taipy. Taipy features are leveraged as the application becomes more and more complex.
 - [**"User Manual"**](manuals/about.md) describes the main concepts for Taipy GUI, Taipy Core and Taipy REST. It also  provides information on the deployment of your Taipy app.
-- [**"Reference Manual"**](manuals/reference) documents all the Taipy APIs.
+- [**"Reference Manual"**](manuals/reference/index.md) documents all the Taipy APIs.
 
 Taipy requires *Python 3.8* or newer.
 

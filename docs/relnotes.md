@@ -71,7 +71,7 @@ Not published yet.
 - `Scope.PIPELINE` has been removed from `Scope^` values.
 - The `root_folder`, `storage_folder`, `read_entity_retry`, `repository_type`, and `repository_properties`
   attributes of the `GlobalAppConfig^` have been moved to the `CoreSection^`.<br/>
-  Please refer to the [Core configuration page](core-config.md) for details.
+  Please refer to the [Core configuration page](manuals/core/config/core-config.md) for details.
 - The `clean_entities` attribute has been removed from the `CoreSection^`. Correspondingly, the
   `--clean-entities` option has been removed from the version management CLI.<br/>
   To clean entities of a version, please run your application in development mode, or delete your
@@ -187,7 +187,7 @@ Published on 2023-06.
   improved so any given page can locate a variable in any module that defines a local page.<br/>
   See the [section on page scopes](manuals/gui/binding.md#scope-for-variable-binding) for more
   information and examples.
-- A new mechanism to start the web server when [using Notebooks](manuals/gui/notebooks) was put
+- A new mechanism to start the web server when [using Notebooks](manuals/gui/notebooks.md) was put
   in place to prevent potential bottlenecks when allocating a port number. This behavior is
   controlled by the [*notebook_proxy*](manuals/gui/configuration.md#p-notebook_proxy) configuration
   parameter.
@@ -398,7 +398,6 @@ details on how to migrate from version older than 2.1.
 - The **sql** _repository_type_ is now available on community edition to store Core entities in an
   SQL database. See [SQL storage section](./manuals/core/config/global-config.md#sql-storage-for-taipy-entities).
 
-
 ### Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
@@ -456,10 +455,10 @@ Published on 2022-10.
 
 - Extension API: custom visual elements can be integrated into Taipy GUI applications.<br/>
   Third party HTML components can be integrated into Taipy GUI pages to address specific use cases.<br/>
-  See [Extension API](manuals/gui/extension/) for details.
-- New callbacks (`on_init`, `on_navigate`, `on_exception` and `on_status`) can be used to initialize a new
-  session, detect navigation events, trigger code when exceptions are raised in user code,
-  and invoke code when a *status* page is requested.<br/>
+  See [Extension API](manuals/gui/extension/index.md) for details.
+- New callbacks (`on_init`, `on_navigate`, `on_exception` and `on_status`) can be used to
+  initialize a new session, detect navigation events, trigger code when exceptions are raised in
+  user code, and invoke code when a *status* page is requested.<br/>
   See [Callbacks](manuals/gui/callbacks.md) for details.
 - New functions allow applications to invoke long-running callbacks without blocking.<br/>
   See [Long Running Callbacks](manuals/gui/callbacks.md#long-running-callbacks) for
@@ -468,7 +467,7 @@ Published on 2022-10.
   new `taipy-config` package.
 - An application can request the status of the server application using the "status" predefined page.<br/>
 - The new 'base' property of the chart control makes it possible to create Gantt chart-like displays.<br/>
-  See [Gantt Charts](../manuals/gui/viselements/charts/gantt) for details.
+  See [Gantt Charts](manuals/gui/viselements/charts/gantt.md) for details.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.0.0

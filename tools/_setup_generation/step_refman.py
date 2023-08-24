@@ -9,6 +9,7 @@
 # ################################################################################
 from .setup import Setup, SetupStep
 from inspect import isclass, isfunction, ismodule
+import glob
 import json
 import os
 import re
@@ -126,9 +127,13 @@ class RefManStep(SetupStep):
         self.XREFS_PATH = os.path.join(setup.manuals_dir, "xrefs")
 
     def setup(self, setup: Setup) -> None:
-        # Create empty REFERENCE_DIR_PATH directory
-        if os.path.exists(self.REFERENCE_DIR_PATH):
-            shutil.rmtree(self.REFERENCE_DIR_PATH)
+        # Clean REFERENCE_DIR_PATH directory
+        for p in os.listdir(self.REFERENCE_DIR_PATH):
+            fp = os.path.join(self.REFERENCE_DIR_PATH, p)
+            if re.match("^(pkg_)?taipy(\..*)?\.md$", p):
+                os.remove(fp)
+            elif os.path.isdir(fp) and re.match("^pkg_taipy(\..*)?$", p):
+                shutil.rmtree(fp)
 
         saved_dir = os.getcwd()
         try:
@@ -149,7 +154,6 @@ class RefManStep(SetupStep):
         FIRST_DOC_LINE_RE = re.compile(r"^(.*?)(:?\n\s*\n|$)", re.DOTALL)
         REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 
-        os.mkdir(self.REFERENCE_DIR_PATH)
         loaded_modules = set()
 
         # Entries:

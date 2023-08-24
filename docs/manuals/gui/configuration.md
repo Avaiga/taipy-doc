@@ -121,7 +121,7 @@ Here is the list of the configuration parameters you can use in
      The default value of None indicates that Taipy GUI does not use any delay.
    - <a name="p-propagate"></a>*propagate* (bool, default: True): the default value that is used
      for every *propagate* property value, for all controls. Please look at the section on the
-     [*propagate* property](viselements/#the-propagate-property) for details.
+     [*propagate* property](viselements/index.md#the-propagate-property) for details.
    - <a name="p-time_zone"></a>*time_zone* (str, default: "client"): indicates how date and time
      values should be interpreted.<br/>
      You can use a TZ database name (as listed in

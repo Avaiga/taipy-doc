@@ -80,7 +80,7 @@ class RestRefManStep(SetupStep):
                     # print(f"WARNING - No type...")
                     return ""
                 type_name = type_name[type_name.rfind('/') + 1:]
-                prefix = "" if from_schemas else "../schemas/"
+                prefix = "" if from_schemas else "schemas.md"
                 type_name = f"[`{type_name}`]({prefix}#{type_name.lower()})"
             return f"{a_pre}{type_name}{a_post}"
 
@@ -127,7 +127,7 @@ class RestRefManStep(SetupStep):
                     file.write(f"<div><h4 style=\"display: inline-block;\">Request body:</h4>\n")
                     schema = request_body["content"]["application/json"]["schema"]["$ref"]
                     schema = schema[schema.rfind('/') + 1:]
-                    file.write(f"<span><a href=\"../schemas/#{schema.lower()}\">{schema}</a></div>\n\n")
+                    file.write(f"<span><a href=\"schemas.md#{schema.lower()}\">{schema}</a></div>\n\n")
                 responses = method_desc.get("responses")
                 if responses is not None:
                     file.write(f"<h4>Responses</h4>\n\n")

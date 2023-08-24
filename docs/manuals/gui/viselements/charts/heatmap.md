@@ -11,7 +11,7 @@ Typical usages of heatmaps:
 - For marketing goals and analytics, reflecting on user behavior on specific web pages;
 - ...
 
-To create a heatmap in Taipy, you must set the property [*type*](../../chart/#p-type)
+To create a heatmap in Taipy, you must set the property [*type*](../chart.md#p-type)
 of the chart control to "heatmap".
 
 ## Key properties
@@ -50,8 +50,8 @@ must be lists of the same size.
 
 Here is how you would define the chart control to represent this data:
 
-- The main variable is referenced by the [*z*](../../chart/#p-z) property.
-- The two axes are referenced by the [*x*](../../chart/#p-x) and [*y*](../../chart/#p-y)
+- The main variable is referenced by the [*z*](../chart.md#p-z) property.
+- The two axes are referenced by the [*x*](../chart.md#p-x) and [*y*](../chart.md#p-y)
   properties.
 
 !!! example "Page content"
@@ -141,7 +141,7 @@ And the chart displays as expected:
 ### Setting the color scale {data-source="gui:doc/examples/charts/heatmap-colorscale.py"}
 
 If you want to change the color scale used in the heatmap cells, you must set the *colorscale*
-property of the property [*options*](../../chart/#p-options) of the chart control.<br/>
+property of the property [*options*](../chart.md#p-options) of the chart control.<br/>
 You can create an entirely custom color scale or use one of the predefined values listed
 in the [Colorscales](https://plotly.com/javascript/colorscales/) page of the
 [Plotly.js](https://plotly.com/javascript/) documentation.
@@ -153,7 +153,7 @@ options for our chart control:
 options = { "colorscale": "Portland" }
 ```
 
-And reference that dictionary in the [*options*](../../chart/#p-options) property of the
+And reference that dictionary in the [*options*](../chart.md#p-options) property of the
 control:
 
 !!! example "Page content"
@@ -235,7 +235,7 @@ for city in range(len(cities)):
         layout["annotations"].append(annotation)
 ```
 
-We create the _layout_ dictionary that will be set to the [*layout*](../../chart/#p-layout)
+We create the _layout_ dictionary that will be set to the [*layout*](../chart.md#p-layout)
 property of the chart, then fill its *annotations* property for every city and every
 season, storing a formatted string representing the temperature.
 
@@ -330,7 +330,7 @@ Here is how you would create the control definition:
             {data}</taipy:chart>
         ```
 
-Note how the [*x*](../../chart/#p-x) and [*y*](../../chart/#p-y) properties are set to the
+Note how the [*x*](../chart.md#p-x) and [*y*](../chart.md#p-y) properties are set to the
 coordinate array we computed (in *data[1]*).
 
 Here is resulting chart:
