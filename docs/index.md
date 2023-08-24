@@ -3,79 +3,79 @@ hide:
   - navigation
 ---
 
+# Welcome to Taipy
 
-# Welcome to Taipy Documentation!
+Taipy, an open-source Python library, is a potent asset for shaping your applications' front-end and back-end facets. Notably, it delivers an uncomplicated syntax designed to expedite the creation of interactive, multi-page dashboards enriched with augmented Markdown. This web application builder empowers the generation of dynamic interfaces without requiring proficiency in web development.
 
-Taipy is an innovative **low-code** package to create complete applications.
+Simultaneously, Taipy is tailor-made to forge influential and tailored data-driven back-end applications. It offers automatic components that facilitate the organization and management of data access and flow orchestration. This capability, aptly termed Scenario Management, necessitates minimal Python configuration.
 
-This documentation is divided in three main sections:
+Employing Taipy Studio, a graphical configuration editor, configuring your scenarios (data flows) has never been more streamlined. This resource provides a user-centric interface that enables seamless drag-and-drop interactions, layout customization, and effortless feature integration.
 
-- [**"Getting Started"**](getting_started/index.md) provides a step-by-step introduction to Taipy. Taipy features are leveraged as the application becomes more and more complex.
-- [**"User Manual"**](manuals/about.md) describes the main concepts for Taipy GUI, Taipy Core and Taipy REST. It also  provides information on the deployment of your Taipy app.
-- [**"Reference Manual"**](manuals/reference) documents all the Taipy APIs.
+For data scientists and developers alike, Taipy acts as a catalyst for successful Python endeavors. Whether your aim is a straightforward pilot or a comprehensive application within IDEs or Notebooks, Taipy equips you with all indispensable functionalities. Its architecture is meticulously crafted to truncate both development and deployment timelines significantly.
 
-Taipy requires *Python 3.8* or newer.
+Taipy's web application builder is a robust tool that empowers individuals and enterprises to develop web applications without extensive coding expertise. A primary advantage of Taipy lies in its ability to expedite development across both front-end and back-end domains, encompassing everything from initial prototypes to fully scalable, production-ready applications.
 
-## Quick Access
+**Taipy Front-End Functionalities:**
 
-These topics are the most visited ones, we thought you’d like to have a glance at them!
+- Crafting a user interface is accomplished with a foundational understanding of Python programming.
+- Taipy is purposefully engineered to prioritize user-friendliness, resulting in a straightforward and intuitive process of user interface creation.
+- No prior knowledge of web design is necessary, and it eradicates the need for any prerequisites related to CSS and HTML.
+- Leveraging augmented markdown syntax, Taipy aids users in seamlessly generating their desired web pages.
 
-<div class="tp-row tp-row--gutter-sm">
-  <div class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card" href="getting_started/">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-icon icon-light" src="images/icons/flag-w.svg">
-        <img class="tp-content-card-icon icon-dark" src="images/icons/flag.svg">
-        <h3>Getting Started</h3>
-      </header>
-      <p>
-        This tour shows you how to create an entire application using the two main components of Taipy.
-      </p>
-      <span class="tp-content-card-readmore">Read more</span>
-    </a>
+**Taipy Back-End Functionalities:**
+
+- Taipy provides extensive support for establishing resilient pipelines capable of managing diverse scenarios.
+- The process of modeling Directed Acyclic Graphs (DAGs) is simplified through Taipy's functionality.
+- Enhancing the overall performance of Taipy applications, the data caching feature is integrated.
+- Facilitating a registry of pipeline executions.
+- Enabling pipeline versioning.
+- Taipy equips users with the ability to monitor and assess the performance of their applications using the KPI tracking tool.
+- Furthermore, Taipy offers a built-in visualization feature for pipelines and their associated data.
+
+## Overview of the Taipy Flow
+
+The subsequent schematic diagram illustrates the complete sequence encompassing all stages within the Taipy flow.
+
+  <div class="tp-col-12 tp-col-md-auto">
+    <figure align="center">
+      <img alt="Taipy structure" src="images/taipy-flow-updated.png" >
+    </figure>
   </div>
-  <div class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card" href="manuals/about/">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-icon icon-light" src="images/icons/menu_book-w.svg">
-        <img class="tp-content-card-icon icon-dark" src="images/icons/menu_book.svg">
-        <h3>User Manual</h3>
-      </header>
+
+## Discover how Taipy functions
+
+Taipy consists of two independent components: **Taipy Core** and **Taipy GUI**. While each can be used independently, they synergize remarkably when combined. 
+
+<div class="tp-row" style="margin-top: 2rem; margin-bottom: 2rem">
+  <div class="tp-col-12 tp-col-md">
+    <article class="tp-content-card">
+      <h3>Taipy GUI</h3>
       <p>
-        Put Taipy in gear, guided by examples.
+       A user-friendly <strong>Graphical User Interface</strong> for crafting interactive interfaces with Python—no CSS or HTML expertise required.
       </p>
-      <span class="tp-content-card-readmore">Read more</span>
-    </a>
-  </div>
-  <div class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card" href="manuals/gui/">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-icon icon-light" src="images/icons/dashboard-w.svg">
-        <img class="tp-content-card-icon icon-dark" src="images/icons/dashboard.svg">
-        <h3>User interface</h3>
-      </header>
+    </article>
+    <article class="tp-content-card">
+      <h3>Taipy Core</h3>
       <p>
-        Taipy GUI provides controls and other elements to create powerful web apps in minutes.
+        Empowers you with intuitive Directed Acyclic Graph (DAG) modeling, bright job orchestration, potent data caching, scenario-enabled pipelines, and KPI tracking.
       </p>
-      <span class="tp-content-card-readmore">Read more</span>
-    </a>
+    </article>
   </div>
-  <div class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card" href="manuals/gui/viselements/chart/">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-icon icon-light" src="images/icons/bar-chart-w.svg">
-        <img class="tp-content-card-icon icon-dark" src="images/icons/bar-chart.svg">
-        <h3>Charts</h3>
-      </header>
-      <p>
-        An important component of Taipy GUI with almost infinite possibilities right at your fingertips.
-      </p>
-      <span class="tp-content-card-readmore">Read more</span>
-    </a>
+
+  <div class="tp-col-12 tp-col-md-auto">
+    <figure align="center">
+      <img alt="Taipy structure" src="images/taipy-structure.svg" width="350">
+    </figure>
   </div>
+
 </div>
 
-## Browse dozens of controls to build your UI!
+Taipy also features other packages, such as a **REST API** for deploying Taipy Core applications as web services.
+
+## Quick Access Taipy Library Components
+
+Taipy offers components within open-source Python libraries that are instrumental for web application development.
+Below, you'll find a succinct elucidation of each term, contextualized within the framework of the Taipy web application builder.
 
 <ul class="tp-pills-list">
   <li>
@@ -83,7 +83,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <span>Button</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/button-d.png" alt="">
-        <p>A control that can trigger a function when pressed.</p>
+        <p>You can employ this class name to target the buttons on your page and apply styling.</p>
       </div>
     </a>
   </li>
@@ -92,7 +92,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <span>Chart</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/chart-d.png"/>
-        <p>Displays data sets in a chart or a group of charts.</p>
+        <p>A chart visually depicts data through graphs, charts, or plots.</p>
       </div>
     </a>
   </li>
@@ -101,7 +101,25 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <span>Date</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/date-d.png"/>
-        <p>A control that can display and specify a formatted date, with or without time.</p>
+        <p>Date input pertains to a web app's field for selecting or inputting dates, often through a user-friendly calendar picker.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/pages/#dialogs">
+      <span>Dialogs</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/taipy-dialogs.png"/>
+        <p>Dialogs are pop-up windows overlaying main content for user input or messages, prompting confirmation, alerts, or extra information, facilitated by Taipy's dialog components.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/studio/config/graphview/">
+      <span>Graphs</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/taipy-graph.png"/>
+        <p>Within a web application builder, a graph visualizes data via nodes and edges, illustrating relationships between data entities, with the Taipy Python library facilitating graph construction and analysis.</p>
       </div>
     </a>
   </li>
@@ -110,16 +128,43 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <span>Image</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/image-d.png"/>
-        <p>A control that can display an image.</p>
+        <p>Images are visual content showcased within a web application, with the Taipy Python library offering image processing, manipulation, and rendering capabilities.</p>
       </div>
     </a>
   </li>
+  <li>
+    <a class="tp-pill" href="getting_started/getting-started-gui/step_06/ReadMe/">
+      <span>Page layout</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/taipy-page-layout.png"/>
+        <p>Layout dictates the organization of components (e.g., charts, inputs, tables) in a web app's interface, defining element structure and positioning on a web page.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/pane/">
+      <span>Pane</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/taipy-pane.png"/>
+        <p>Panes within a web app builder indicate independently scrollable or resizable interface sections, aiding content organization and flexibility, supported by Taipy's pane-based layouts.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/gui/pages/#partials">
+      <span>Partials</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/taipy-partials.png"/>
+        <p>Partials are reusable components or templates, termed partial views, within web app frameworks, enhancing code modularity by embedding them in other templates to recycle shared elements across diverse views or pages.</p>
+      </div>
+    </a>
+  </li>  
   <li>
     <a class="tp-pill" href="manuals/gui/viselements/indicator/">
       <span>Indicator</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/indicator-d.png"/>
-        <p>Displays a label on a red to green scale at a specific position.</p>
+        <p>Displays a label on a scale ranging from red to green at a specific position.</p>
       </div>
     </a>
   </li>
@@ -155,12 +200,21 @@ These topics are the most visited ones, we thought you’d like to have a glance
       <span>Table</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/table-d.png"/>
-        <p>Displays a data set as tabular data.</p>
+        <p>A table presents data in rows and columns, often used in web applications for structured data display and interaction.</p>
       </div>
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/controls/">
+    <a class="tp-pill" href="manuals/gui/binding/">
+      <span>Binding variables</span>
+      <div class="tp-tooltip">
+        <img src="manuals/gui/viselements/taipy-variable-bindings.png"/>
+        <p>Variable bindings establish connections between variables and assigned values, binding user input or component data to specific variables in a web app builder, enabling input capture, processing, and dynamic data updates based on user interactions.</p>
+      </div>
+    </a>
+  </li>  
+  <li>
+    <a class="tp-pill" href="manuals/gui/viselements/controls/">
       <span>…</span>
       <div class="tp-tooltip">
         <p>Browse the complete list of visual elements.</p>
@@ -169,7 +223,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
   </li>
 </ul>
 
-## Build your Core functionalities!
+## Explore Core functionalities
 
 <ul class="tp-pills-list">
   <li>
@@ -211,41 +265,3 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </li>
 </ul>
-
-## How does it work?
-
-Taipy is composed of two main independent components: **Taipy Core** and **Taipy GUI**. You can use either component independently. However, as you will see, they are incredibly efficient when combined.
-
-<div class="tp-row" style="margin-top: 2rem; margin-bottom: 2rem">
-  <div class="tp-col-12 tp-col-md">
-    <article class="tp-content-card">
-      <h3>Taipy GUI</h3>
-      <p>
-        The <strong>Graphical User Interface</strong> of Taipy allows anyone with basic knowledge of Python to create a beautiful and interactive interface. It is a simple and intuitive way to create a GUI. No need to know how to design web pages with CSS or HTML. Taipy uses an augmented Markdown syntax to create your desired web page.
-      </p>
-    </article>
-    <article class="tp-content-card">
-      <h3>Taipy Core</h3>
-      <p>
-        A simple yet powerful <strong>pipeline orchestration</strong> package.<br>
-        Some of the key features:
-      </p>
-      <ul>
-        <li>Intuitive DAG modeling</li>
-        <li>Smart job orchestration</li>
-        <li>Powerful data caching</li>
-        <li>Scenario enabled pipelines</li>
-        <li>KPI Tracking</li>
-      </ul>
-    </article>
-  </div>
-
-  <div class="tp-col-12 tp-col-md-auto">
-    <figure align="center">
-      <img alt="Taipy structure" src="images/taipy-structure-vector.svg" width="350">
-    </figure>
-  </div>
-
-</div>
-
-Other packages offer additional functionality, such as a **REST API** that allows for deploying Taipy Core applications as a web service.
