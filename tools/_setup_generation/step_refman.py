@@ -9,7 +9,6 @@
 # ################################################################################
 from .setup import Setup, SetupStep
 from inspect import isclass, isfunction, ismodule
-import glob
 import json
 import os
 import re
