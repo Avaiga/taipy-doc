@@ -6,10 +6,10 @@ that significantly accelerates the development of Taipy applications.
 This tool addresses two major areas:
 
 - Building configurations<br/>
-    An application that relies on [Taipy Core](../core/) functionalities needs to build
-    a Taipy [configuration](../core/config/) where DataNode configs, Task configs, etc.
+    An application that relies on [Taipy Core](../core/index.md) functionalities needs to build
+    a Taipy [configuration](../core/config/index.md) where DataNode configs, Task configs, etc.
     are declared.<br/>
-    Running the application usually starts by creating [entities](../core/entities/),
+    Running the application usually starts by creating [entities](../core/entities/index.md),
     which depend on configuration elements.
 
     Taipy Studio provides a graphical editor where you can create and configure

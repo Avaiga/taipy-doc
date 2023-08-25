@@ -9,8 +9,8 @@ There are two types of *Visual Elements*:
    - *Controls* typically represent user data that the user can interact with.<br/>
      Beside the generic controls provided in Taipy GUI and listed in [this section](controls.md),
      the `taipy` package come with a dedicated set of Taipy GUI controls that let users display and
-     interact with [Taipy Core entities](../../core/entities). These controls are listed in the
-     [Core back-end controls](../corelements) section.
+     interact with [Taipy Core entities](../../core/entities/index.md). These controls are listed
+     in the [Core back-end controls](../corelements/index.md) section.
 
    - *Blocks* let you organize controls (or blocks) in pages to provide the best
     possible user experience.
@@ -20,7 +20,7 @@ may want to jump directly to the list of the available visual elements:
 
 [:material-arrow-right: List of available controls](controls.md)
 
-[:material-arrow-right: List of available Core back-end controls](../corelements)
+[:material-arrow-right: List of available Core back-end controls](../corelements/index.md)
 
 [:material-arrow-right: List of available blocks](blocks.md)
 
@@ -55,8 +55,8 @@ names defined in the code, and the value of the property is set to the evaluated
     new variable value, which might be slow and hit the user experience.<br/>
     Visual Elements that are costly to render on the browser provide a property called *rebuild*
     that allows one to explicitly request the render of the component. Please check the relevant
-    sections for the [`chart`](chart/#the-rebuild-property) and
-    [`table`](table/#the-rebuild-property) controls for more information.
+    sections for the [`chart`](chart.md#the-rebuild-property) and
+    [`table`](table.md#the-rebuild-property) controls for more information.
 
 
 ## Syntax
@@ -283,7 +283,7 @@ section for more information.
 
 !!! note
     This identifier is also sent to the *on_action* callback if this visual
-    element can trigger actions (see [Actions](../callbacks/#actions)
+    element can trigger actions (see [Actions](../callbacks.md#actions)
     for details).
 
 ### The `properties` property
@@ -331,7 +331,7 @@ control is updated when the user modifies the value represented by the control.
 
 !!! info
     Note that if there is a function called `on_change()` accessible to the `Gui` instance
-    (see the section on [Variable Value Change](../callbacks/#variable-value-change) for
+    (see the section on [Variable Value Change](../callbacks.md#variable-value-change) for
     details), it will be invoked no matter what the *propagate* value is. The variable
     value that this function receives is the new requested value, but this value is
     **not** set to the variable bound to the control.
