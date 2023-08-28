@@ -5,8 +5,14 @@ As its name implies, with Taipy scenarios, the users can instantiate different v
 problem with different assumptions. This is extremely useful in a business context where impact analysis
 and what-if analysis are essential in the decision process.
 
-After analyzing its first scenario, an end-user may be interested in modifying input
-data nodes (not the intermediate nor the output data nodes), re-running the same pipelines, and
+A scenario contains an executable Directed Acyclic Graph (or DAG). The scenario DAG is a set of tasks connecting
+data nodes together. It can also be broken down to smaller graphs for execution by defining a `Sequence^`.
+A sequence is a subset of tasks derives from the scenario's set of tasks, forming a smaller executable DAG that
+can be submitted separately from the scenario DAG. A scenario can also contain a set of additional data nodes
+outside of the scenario DAG to represent additional data related to the scenario but are not executable.
+
+After analyzing its first scenario, an end-user may be interested in modifying input data nodes
+(not the intermediate nor the output data nodes), re-running the same sequences or scenario, and
 comparing the results with the previous run.
 
 For this purpose, he needs to instantiate a second scenario, execute it and compare it with the
@@ -15,8 +21,10 @@ first scenario. This process can be repeated across multiple scenarios.
 
 !!! example "In the example"
 
-    Here, our scenario consists of the two pipelines described earlier. The external light blue box in the flowchart
-    below represents our scenario that contains both pipelines.
+    Here, our scenario consists of the a graph of data nodes and tasks. The scenario graph can also be split into
+    two sequences as subgraphs described earlier. The external light blue box in the flowchart below represents
+    our scenario that contains all data nodes, tasks and sequences.
+    # TODO: update the picture
 
     ![scenarios](../pic/scenarios.svg){ align=left }
 
