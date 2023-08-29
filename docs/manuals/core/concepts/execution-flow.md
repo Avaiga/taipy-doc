@@ -3,11 +3,11 @@
 !!! important "Reminder: Config vs Entities"
 
     The **data nodes**, **tasks**, and **scenarios** concepts have two types of Taipy objects related to them:
-    **configs** and runtime **entities**. **Sequences** also has its configuration object that is provided through
-    **scenarios config** Taipy objects. It also has its own runtime **entities**
+    **configurations** and runtime **entities**. **Sequences** also has its configuration object that is provided through
+    **scenarios configuration** Taipy objects. It also has its own runtime **entities**
 
-    Remember that each **entity** is created from a **config** (e.g. a Data node is created from a Data node config, a
-    Task from a Task Config, a Scenarios from a Scenario config, etc). Remember also that the same **config** can be used
+    Remember that each **entity** is created from a **configuration** (e.g. a Data node is created from a Data node configuration, a
+    Task from a Task Config, a Scenarios from a Scenario configuration, etc). Remember also that the same **configuration** can be used
     to instantiate multiple **entities** (e.g., a scenario configuration can be used to instantiate two different scenarios).
 
 Let's take some scenario entity use cases to illustrate the logic behind the execution flow. For this purpose,
@@ -51,7 +51,7 @@ then only three situations can occur:
 
 # Multiple Scenario Execution
 
-Let’s continue with the previous example by creating a second scenario from the same config. Let’s call it
+Let’s continue with the previous example by creating a second scenario from the same configuration. Let’s call it
 **Scenario 2**. In the case of two scenarios instantiated from the same configuration, what could be the impact
 of executing **scenario 1** over the execution of **scenario 2**.
 
