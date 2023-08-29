@@ -4,9 +4,8 @@ Taipy Core is an application builder designed to help Python developers turn the
 production-ready data-driven application. Taipy Core provides the necessary concepts for modeling, executing, and
 monitoring algorithms. In this documentation, such concepts are called scenarios.
 
-A scenario can be seen as a succession of functions that exchange data. It can be described as an
-execution graph (a Directed Acyclic Graph or DAG). With Taipy Core, one can model simple as well as very
-complex scenarios.
+A scenario can be seen as a succession of functions that exchange data. It can be described as an execution graph
+(a Directed Acyclic Graph or DAG). With Taipy Core, one can model simple and very complex scenarios.
 
 !!! example "Let's take some examples."
 
@@ -43,10 +42,10 @@ This section aims at defining the following Taipy Core concepts.
 - A [Task](task.md) (the orange boxes) can be seen as a function receiving data node(s) as input and returning
   data node(s) as output.
 - A [Job](job.md) represents a unique execution of a Task.
-- A [Scenario](scenario.md) represents a set of tasks connected together through data nodes forming a Directed Acyclic Graph,
-  that should be executed as a whole (or as subgraphs via the use of sequences) and forming a consistent algorithm. It can
-  also contain a set of additional data nodes for data that are related but are not part of the executable graph.
-- A [Sequence](sequence.md) represents a set of tasks connected together through data nodes, that should be executed
+- A [Scenario](scenario.md) represents a set of tasks connected through data nodes forming a Directed Acyclic Graph,
+  that should be executed as a whole (or as subgraphs via sequences) and create a consistent algorithm. It can
+  also contain a set of additional data nodes for related data but are not part of the executable graph.
+- A [Sequence](sequence.md) represents a set of tasks connected through data nodes, that should be executed
   as a whole and forming a consistent algorithm. A sequence belongs to a scenario and can be thought of as a subgraph of
   the scenario's complete graph.
 - A [Cycle](cycle.md) or work cycle is a time period corresponding to an iteration of a recurrent business problem.

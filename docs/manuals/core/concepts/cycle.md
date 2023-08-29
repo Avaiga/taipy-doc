@@ -28,7 +28,7 @@ _creation_date_.
     those scenarios is selected as the official production plan to be published. Using Taipy,
     each month is modeled as a cycle, and each Taipy cycle can contain one or more Taipy scenarios.
 
-    The picture on the left shows the tree of entities: Cycles, Scenarios and their associated Sequence(s). There
+    The picture on the left shows the tree of entities: Cycles, Scenarios, and their associated Sequence(s). There
     is an existing past cycle for December and a current cycle for January containing a single scenario.
 
 When comes the end of a _cycle_ (start date + duration), only one of the scenarios is applied in production. This

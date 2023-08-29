@@ -1,10 +1,10 @@
 A `Task^` is a runnable Python function provided by the developer. It represents one of the
-steps that the developer wants to implement in his/her sequence.
+steps that the developer wants to implement in her sequence.
 
-For example, a _task_ could be a pre-processing function to clean the initial dataset. It could also be a more complex
+For example, a *task* could be a pre-processing function to clean the initial dataset. It could also be a more complex
 function that computes a training model using machine learning algorithms.
 
-Since a _task_ represents a function, it can take a set of parameters as input and return a set of results as output.
+Since a *task* represents a function, it can take a set of parameters as input and return a set of results as output.
 Each input parameter and each output result is modeled as a data node.
 
 
