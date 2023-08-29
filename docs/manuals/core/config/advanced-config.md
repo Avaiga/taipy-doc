@@ -10,7 +10,7 @@ Taipy provides three ways to configure your application:
     software project (from initial development to production).
 
     1. To start, as a developer I will design my application by configuring all the new entities  (data
-    nodes, tasks, pipelines, scenarios) using the Python code configuration with just a minimal number of attributes
+    nodes, tasks, scenarios) using the Python code configuration with just a minimal number of attributes
     configured. The default configuration is used for the other attributes.
 
     2. Then, I test the application I just built. At this step, I need my application to have a more realistic
@@ -31,7 +31,7 @@ These methods are described below.
 
 # Python code configuration
 
-The configuration (for all your data nodes, tasks, pipelines, scenarios, etc.) can be defined directly using Python
+The configuration (for all your data nodes, tasks, scenarios, etc.) can be defined directly using Python
 code. This configuration can be done using methods from the `Config^` class. This Python configuration is meant to
 be used during the application development phase. It overrides the default configuration:
 if some values are not provided, the default configuration applies.
@@ -99,20 +99,13 @@ if some values are not provided, the default configuration applies.
             output=[orders_cfg]
         )
 
-        # Configure the two pipelines
-        sales_pipeline_cfg = Config.configure_pipeline(
-            id="sales",
-            task_configs=[training_cfg, predicting_cfg])
-        production_pipeline_cfg = Config.configure_pipeline(
-            id="production",
-            task_configs=[planning_cfg])
-
         # Configure the scenario
         monthly_scenario_cfg = Config.configure_scenario(
             id="scenario_configuration",
-            pipeline_configs=[sales_pipeline_cfg, production_pipeline_cfg],
+            task_configs=[training_cfg, predicting_cfg, planning_cfg],
             frequency=Frequency.MONTHLY,
             comparators={sales_predictions_cfg.id: compare},
+            sequences={"sales": [training_cfg, predicting_cfg], "production": [planning_cfg]}
         )
         ```
 
@@ -229,18 +222,16 @@ if some values are not provided, the default configuration applies.
         outputs = [ "orders:SECTION",]
         skippable = "False:bool"
 
-        [PIPELINE.sales]
-        tasks = [ "training:SECTION", "predicting:SECTION",]
-
-        [PIPELINE.production]
-        tasks = [ "planning:SECTION",]
-
         [SCENARIO.scenario_configuration]
-        pipelines = [ "sales:SECTION", "production:SECTION",]
+        tasks = [ "training:SECTION", "predicting:SECTION", "planning:SECTION",]
         frequency = "MONTHLY:FREQUENCY"
 
         [SCENARIO.scenario_configuration.comparators]
         sales_predictions = [ "functions.compare:function",]
+
+        [SCENARIO.scenario_configuration.sequences]
+        sales = [ "training:SECTION", "predicting:SECTION",]
+        production = [ "planning:SECTION",]
         ```
 
         Note that the type of the non-string configuration attributes is specified in the _TOML_ file by adding at the
