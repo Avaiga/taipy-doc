@@ -7,9 +7,8 @@
     **scenarios config** Taipy objects. It also has its own runtime **entities**
 
     Remember that each **entity** is created from a **config** (e.g. a Data node is created from a Data node config, a
-    Task from a Task Config, a Pipeline from a Pipeline config, a Scenarios from a Scenario config, etc). Remember
-    also that the same **config** can be used to instantiate multiple **entities** (e.g., a scenario configuration can
-    be used to instantiate two different scenarios).
+    Task from a Task Config, a Scenarios from a Scenario config, etc). Remember also that the same **config** can be used
+    to instantiate multiple **entities** (e.g., a scenario configuration can be used to instantiate two different scenarios).
 
 Let's take some scenario entity use cases to illustrate the logic behind the execution flow. For this purpose,
 we will use the configuration graph below.
