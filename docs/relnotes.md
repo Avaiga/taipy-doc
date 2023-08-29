@@ -85,9 +85,9 @@ Not published yet.
 <h6 style="font-size: 1.2em"><strong><code>taipy-template</code></strong></h6>
 3.0.0
 
-- The "taipy-default-template" template also supports creating a multi-pages application with Core and Rest services.
+- The default template also supports creating a multi-pages application with Core and Rest services.
   These options are available when creating a new application from the template.
-- The "multi-page-gui" template has been removed. Please use the "taipy-default-template" instead to create
+- The "multi-page-gui" template has been removed. Please use the default instead to create
   a Taipy multi-pages application.
 
 ## Community edition: 2.3
