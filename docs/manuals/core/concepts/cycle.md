@@ -28,7 +28,7 @@ _creation_date_.
     those scenarios is selected as the official production plan to be published. Using Taipy,
     each month is modeled as a cycle, and each Taipy cycle can contain one or more Taipy scenarios.
 
-    The picture on the left shows the tree of entities: Cycles, Scenarios and their associated Pipeline(s). There
+    The picture on the left shows the tree of entities: Cycles, Scenarios and their associated Sequence(s). There
     is an existing past cycle for December and a current cycle for January containing a single scenario.
 
 When comes the end of a _cycle_ (start date + duration), only one of the scenarios is applied in production. This
@@ -49,7 +49,7 @@ When comes the end of a _cycle_ (start date + duration), only one of the scenari
 
     Note that cycles are optional. If a scenario has no Frequency, it will not be attached to any cycle.
 
-The attributes of a scenario (the set of pipelines, the cycle, ... ) are populated based on the scenario configuration
+The attributes of a scenario (the set of sequences, the cycle, ... ) are populated based on the scenario configuration
 `ScenarioConfig^` that must be provided when instantiating a new scenario. (Please refer to the
 [`configuration details`](../config/scenario-config.md) documentation for more details on configuration).
 

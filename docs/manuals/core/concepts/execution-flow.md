@@ -2,8 +2,9 @@
 
 !!! important "Reminder: Config vs Entities"
 
-    The **data nodes**, **tasks**, **pipelines**, and **scenarios** concepts have two types of Taipy objects
-    related to them: **configs** and runtime **entities**.
+    The **data nodes**, **tasks**, and **scenarios** concepts have two types of Taipy objects related to them:
+    **configs** and runtime **entities**. **Sequences** also has its configuration object that is provided through
+    **scenarios config** Taipy objects. It also has its own runtime **entities**
 
     Remember that each **entity** is created from a **config** (e.g. a Data node is created from a Data node config, a
     Task from a Task Config, a Pipeline from a Pipeline config, a Scenarios from a Scenario config, etc). Remember
@@ -12,6 +13,7 @@
 
 Let's take some scenario entity use cases to illustrate the logic behind the execution flow. For this purpose,
 we will use the configuration graph below.
+# TODO: update this image
 
 ![Configuration Graph ](../pic/execution_flow_configs.svg)
 
@@ -28,9 +30,9 @@ configuration objects.
 ![Scenario 1 Graph ](../pic/execution_flow_entities.svg)
 
 Thanks to this graph representation, Taipy automatically understand the execution precedence constraints. When a
-scenario/pipeline is submitted for execution, the tasks are smartly orchestrated and executed in the correct sequence.
+scenario/sequence is submitted for execution, the tasks are smartly orchestrated and executed in the correct sequence.
 
-Taipy also optimizes the execution of pipelines and scenarios by not recomputing tasks that do not need to be
+Taipy also optimizes the execution of sequences and scenarios by not recomputing tasks that do not need to be
 re-executed. This is the concept of _caching_.
 
 Let’s assume that **scenario 1** has already been executed. If the end-user decides to re-execute the same scenario,

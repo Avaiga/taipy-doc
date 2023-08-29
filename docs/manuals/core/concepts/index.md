@@ -46,7 +46,7 @@ This section aims at defining the following Taipy Core concepts.
 - A [Scenario](scenario.md) represents a set of tasks connected together through data nodes forming a Directed Acyclic Graph,
   that should be executed as a whole (or as subgraphs via the use of sequences) and forming a consistent algorithm. It can
   also contain a set of additional data nodes for data that are related but are not part of the executable graph.
-- A [Sequence](pipeline.md) represents a set of tasks connected together through data nodes, that should be executed
+- A [Sequence](sequence.md) represents a set of tasks connected together through data nodes, that should be executed
   as a whole and forming a consistent algorithm. A sequence belongs to a scenario and can be thought of as a subgraph of
   the scenario's complete graph.
 - A [Cycle](cycle.md) or work cycle is a time period corresponding to an iteration of a recurrent business problem.

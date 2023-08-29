@@ -10,16 +10,16 @@ several parent nodes. A data node 'belongs' to at least one scenario belonging t
 
 In other words :
 
-- A data node with the scope equals `Scope.SCENARIO`, can be shared by multiple tasks and pipelines within a unique
-scenario, but it cannot belong to other tasks or pipelines from another scenario.
-- A data node with the scope equals `Scope.CYCLE`, can be shared by all the tasks, pipelines, and scenarios from one
-cycle but cannot be shared with tasks, pipelines, or scenarios from another cycle.
-- A data node with the scope equals `Scope.GLOBAL`, can be shared by any task, pipeline, and scenario, whatever their
+- A data node with the scope equals `Scope.SCENARIO`, can be shared by multiple tasks and sequences within a unique
+scenario, but it cannot belong to other tasks or sequences from another scenario.
+- A data node with the scope equals `Scope.CYCLE`, can be shared by all the tasks, sequences, and scenarios from one
+cycle but cannot be shared with tasks, sequences, or scenarios from another cycle.
+- A data node with the scope equals `Scope.GLOBAL`, can be shared by any task, sequence, and scenario, whatever their
 cycles.
 
 !!! example
 
-    In our example with two pipelines, we have several possibilities. The following pictures represent two examples.
+    In our example with two sequences, we have several possibilities. The following pictures represent two examples.
     The scopes are written in green at the bottom of each data node.
 
     ![scopes](../pic/storage_types and scopes_basic_possibility.svg){ align=left }

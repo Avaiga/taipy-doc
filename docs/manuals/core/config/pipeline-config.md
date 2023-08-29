@@ -2,7 +2,7 @@
 
     Note that `PipelineConfig^` has been deprecated in version 2.3 and will be combined with `ScenarioConfig^` in the following major version.
 
-A pipeline configuration is necessary to instantiate a [Pipeline](../concepts/pipeline.md). To create a
+A pipeline configuration is necessary to instantiate a [Sequence](../concepts/sequence.md). To create a
 `PipelineConfig^`, you can use the `Config.configure_pipeline()^` method with the following parameters:
 
 - _**id**_: The id of this new pipeline configuration. This id is **mandatory** and must be a unique and valid Python

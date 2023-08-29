@@ -1,5 +1,5 @@
-Tasks, Pipelines and Scenarios entities can be submitted for execution. The submission of a scenario triggers the
-submission of all the contained pipelines. Similarly, submission of a pipeline triggers the submission of
+Tasks, Sequences and Scenarios entities can be submitted for execution. The submission of a scenario triggers the
+submission of all the contained tasks. Similarly, submission of a pipeline also triggers the submission of
 all the contained tasks.
 
 Each time a task is submitted for execution, a new _Job_ is created. A `Job^` represents a single execution of a task.
