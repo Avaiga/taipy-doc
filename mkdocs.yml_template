@@ -58,7 +58,6 @@ nav:
               - "Config": manuals/core/config/config.md
               - "Data node configs": manuals/core/config/data-node-config.md
               - "Task configs": manuals/core/config/task-config.md
-              - "Pipeline configs": manuals/core/config/pipeline-config.md
               - "Scenario configs": manuals/core/config/scenario-config.md
               - "Core config": manuals/core/config/core-config.md
               - "Job execution config": manuals/core/config/job-config.md
