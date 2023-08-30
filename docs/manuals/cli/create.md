@@ -12,7 +12,7 @@ $ taipy create
 Application root folder name [taipy_application]: new_application
 Application main Python file [main.py]: app.py
 Application title [Default title]: App Title
-How many pages and their names? [1]: 3 slide_1 slide_2 slide_3
+Page names in multi-page application? []: slide_1 slide_2 slide_3
 Does the application use scenario management or version management? [No]: y
 Does the application use Rest API? [No]:
 $ cd ./new_application
@@ -31,9 +31,9 @@ minimalized Taipy application.
 - The first question defines the application root folder as "new_application"
 - In the second and third questions, we set the main Python file of the application as "app.py" and the web page's title
   as "App Title".
-- In the 4th question, we clarify that we want a Taipy multi-page GUI application with three pages, and the page names are
-  "slide_1", "slide_2", and "slide_3". Please note that if the names are not clarified, the default name will be
-  "page_1", "page_2", and so on.
+- In the 4th question, we clarify that we want a Taipy multi-page GUI application with three pages, and the page names
+  are "slide_1", "slide_2", and "slide_3". If there is no answer to this question, the application will be a single page
+  application. Please note that the names must be valid Python identifiers.
 - In the 5th question, we clarify that we want to use scenario management, so the application should include the
   Taipy Core service.
 - In the 6th question, we chose the default answer is No, meaning we don't want to use Rest API, so the
@@ -69,10 +69,10 @@ use the `--help` or `-h` options. Run `taipy create --help` or `taipy create -h`
 
 ```console
 $ taipy help create
-usage: taipy create [-h] [--template {taipy-default-template,scenario-management,...}]
+usage: taipy create [-h] [--template {default,scenario-management,...}]
 
 options:
   -h, --help            show this help message and exit
-  --template {taipy-default-template,scenario-management,...}
+  --template {default,scenario-management,...}
                         The Taipy template to create new application.
 ```
