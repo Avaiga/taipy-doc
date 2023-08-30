@@ -6,7 +6,7 @@ The API reference for Taipy is therefore split into several sections.
 
    - [`taipy`](pkg_taipy.md): The main package of Taipy.
 
-   - [`taipy.core`](pkg_taipy.core/index.md): The package providing the functionality for data access, Scenarios and Pipelines
+   - [`taipy.core`](pkg_taipy.core/index.md): The package providing the functionality for data access, Scenarios and Sequences
    definition and task execution.
 
    - [`taipy.gui`](pkg_taipy.gui/index.md): The package dedicated to Graphical
@@ -14,7 +14,7 @@ The API reference for Taipy is therefore split into several sections.
 
    - [`taipy.rest`](pkg_taipy.rest/index.md): The package that provides a full
      REST interface on top of _taipy-core_.
-   
+
    -  <p style="background-color: rgba(255,145,0,.1)">
      [`taipy.enterprise`](pkg_taipy.enterprise/index.md): Available in
      the Taipy Enterprise edition only.</p>

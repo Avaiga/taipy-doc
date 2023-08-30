@@ -1,4 +1,4 @@
-Tasks get created when scenarios or pipelines are created. Please refer to the
+Tasks get created when scenarios are created. Please refer to the
 [Entities' creation](scenario-creation.md) section for more details.
 
 In this section, it is assumed that <a href="./code_example/my_config.py" download>`my_config.py`</a>
@@ -75,12 +75,12 @@ All the jobs can be retrieved using the method `taipy.get_tasks()^`.
 
 # Get tasks by config id
 
-A task can be retrieved from a scenario or a pipeline, by accessing the task config_id attribute.
+A task can be retrieved from a scenario or a sequence, by accessing the task config_id attribute.
 
 ```python linenums="1"
 task_1 = scenario.predicting  # "predicting" is the config_id of the predicting Task in the scenario
-pipeline = scenario.sales
-task_2 = pipeline.predicting  # "predicting" is the config_id of the predicting Task in the pipeline
+sequence = scenario.sales
+task_2 = sequence.predicting  # "predicting" is the config_id of the predicting Task in the sequence
 # task_1 == task_2
 ```
 
@@ -102,9 +102,9 @@ This method returns the list of all existing tasks instantiated from the config_
     all_training_tasks = tp.get_entities_by_config_id("training")
     ```
 
-# Get parent scenarios and pipelines
+# Get parent scenarios and sequences
 
-To access the parent entities of a task (scenarios or pipelines), you can
+To access the parent entities of a task (scenarios or sequences), you can
 use either the method `Task.get_parents()^` or the function
 `taipy.get_parents()^`. Both return the parents of the task.
 
@@ -121,11 +121,11 @@ use either the method `Task.get_parents()^` or the function
     task = scenario.training_cfg
 
     # Retrieve the parent entities of the task. The returned value is
-    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1]}
+    # {'scenarios': [Scenario 1], 'sequences': [Sequence 1]}
     parent_entities = task.get_parents()
 
     # Retrieve the parent entities of the task. The return value is
-    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1]}
+    # {'scenarios': [Scenario 1], 'sequences': [Sequence 1]}
     tp.get_parents(task)
     ```
 
