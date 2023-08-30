@@ -7,7 +7,7 @@ A scenario configuration is necessary to instantiate a [Scenario](../concepts/sc
 - _**additional_data_nodes**_: A list of additional data node configuragtions.
 - _**frequency**_: The recurrence of the scenarios instantiated from this configuration. The scenarios
   are attached to the proper cycles based on this frequency.
-- _**sequences**_: A dictionary of sequence configurations.
+- _**sequences**_: A dictionary of sequence descriptions.
 - _**comparators**_: A list of functions used to compare scenarios. A comparator function is attached to a
   scenario's data node configuration. During the scenario comparison, each comparator is applied to all the data
   nodes instantiated from the data node configuration attached to the comparator.
@@ -49,10 +49,11 @@ a data node configuration already defined. The provided data node configuration 
 Additional data node configurations are optional when configuring a `ScenarioConfig^`.
 
 
-# Adding sequence configurations
+# Adding sequence descriptions
 
-We can define sequences through scenario configuration. Here is a simple example assuming the task configuration
-`add_task_cfg_1`, `add_task_cfg_2`, `multiply_task_cfg_1`, `multiply_task_cfg_2` have already been created:
+In the scenario configuration, we can describe the sequences to create with the scenario creations.
+Here is a simple example assuming the task configuration `add_task_cfg_1`, `add_task_cfg_2`,
+`multiply_task_cfg_1`, `multiply_task_cfg_2` have already been created:
 
 ```python linenums="1"
 from taipy import Config

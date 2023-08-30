@@ -35,7 +35,7 @@ organized as follows:
 - [Task configs](task-config.md) section describes the tasks' configurations using the
   `TaskConfig^` class.
 - [Scenario configs](scenario-config.md) section describes the scenarios' configurations using the
-  `ScenarioConfig^` class. It also describes how to configure a sequence by using the `ScenarioConfig^`.
+  `ScenarioConfig^` class.
 - [Core config](core-config.md) section documents the Core configuration fields and the
   `CoreSection^` class.
 - [Job orchestration config](job-config.md) section documents the configuration of the job orchestration
