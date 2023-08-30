@@ -42,51 +42,71 @@ The subsequent schematic diagram illustrates the complete sequence encompassing 
     </figure>
   </div>
 
-## Discover how Taipy functions
+## Quick Access
 
-Taipy consists of two independent components: **Taipy Core** and **Taipy GUI**. While each can be used independently, they synergize remarkably when combined. 
+These frequently visited topics have been highlighted for your quick reference.
 
-<div class="tp-row" style="margin-top: 2rem; margin-bottom: 2rem">
-  <div class="tp-col-12 tp-col-md">
-    <article class="tp-content-card">
-      <h3>Taipy GUI</h3>
+<div class="tp-row tp-row--gutter-sm">
+  <div class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card" href="getting_started/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon icon-light" src="images/icons/flag-w.svg">
+        <img class="tp-content-card-icon icon-dark" src="images/icons/flag.svg">
+        <h3>Getting Started</h3>
+      </header>
       <p>
-       A user-friendly <strong>Graphical User Interface</strong> for crafting interactive interfaces with Python—no CSS or HTML expertise required.
+        This guide comprehensively outlines key steps and concepts in Python web application development, catering to both novices and proficient Python programmers venturing into Taipy for the first time.
       </p>
-    </article>
-    <article class="tp-content-card">
-      <h3>Taipy Core</h3>
+      <span class="tp-content-card-readmore">Read more</span>
+    </a>
+  </div>
+  <div class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card" href="manuals/gui/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon icon-light" src="images/icons/dashboard-w.svg">
+        <img class="tp-content-card-icon icon-dark" src="images/icons/dashboard.svg">
+        <h3>User interface</h3>
+      </header>
       <p>
-        Empowers you with intuitive Directed Acyclic Graph (DAG) modeling, bright job orchestration, potent data caching, scenario-enabled pipelines, and KPI tracking.
+        Taipy GUI provides controls and other elements to create powerful web apps in minutes. Taipy GUI empowers developers with a robust tool for visually designing user interfaces by organizing user interface block elements and utilizing style kits.
       </p>
-    </article>
+      <span class="tp-content-card-readmore">Read more</span>
+    </a>
   </div>
-
-  <div class="tp-col-12 tp-col-md-auto">
-    <figure align="center">
-      <img alt="Taipy structure" src="images/taipy-structure.svg" width="350">
-    </figure>
+  <div class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card" href="manuals/gui/viselements/chart/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon icon-light" src="images/icons/bar-chart-w.svg">
+        <img class="tp-content-card-icon icon-dark" src="images/icons/bar-chart.svg">
+        <h3>Charts</h3>
+      </header>
+      <p>
+        An essential facet of Taipy GUI, offering nearly boundless potential, Plotly is a graphing library that provides an extensive array of customizable visualizations for datasets, with these components accessible through Taipy's chart control, tightly linked to the underlying implementation.
+      </p>
+      <span class="tp-content-card-readmore">Read more</span>
+    </a>
   </div>
-
+  <div class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card" href="manuals/core/concepts/scenario/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon icon-light" src="images/icons/menu_book-w.svg">
+        <img class="tp-content-card-icon icon-dark" src="images/icons/menu_book.svg">
+        <h3>Scenario</h3>
+      </header>
+      <p>
+        We introduce the essential notion of a Taipy Scenario, representing a singular business problem instance tackled using uniform data and parameter sets, allowing users to instantiate diverse versions of a problem with varying assumptions, an invaluable asset for decision-making in contexts demanding impact and what-if analysis.
+      </p>
+      <span class="tp-content-card-readmore">Read more</span>
+    </a>
+  </div>  
 </div>
 
-Taipy also features other packages, such as a **REST API** for deploying Taipy Core applications as web services.
-
-## Quick Access Taipy Library Components
+## Build your UI with dozens visual elements
 
 Taipy offers components within open-source Python libraries that are instrumental for web application development.
 Below, you'll find a succinct elucidation of each term, contextualized within the framework of the Taipy web application builder.
 
 <ul class="tp-pills-list">
-  <li>
-    <a class="tp-pill" href="manuals/gui/viselements/button/">
-      <span>Button</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/button-d.png" alt="">
-        <p>You can employ this class name to target the buttons on your page and apply styling.</p>
-      </div>
-    </a>
-  </li>
   <li>
     <a class="tp-pill" href="manuals/gui/viselements/chart/">
       <span>Chart</span>
@@ -97,74 +117,20 @@ Below, you'll find a succinct elucidation of each term, contextualized within th
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/viselements/date/">
-      <span>Date</span>
+    <a class="tp-pill" href="manuals/gui/viselements/table/">
+      <span>Table</span>
       <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/date-d.png"/>
-        <p>Date input pertains to a web app's field for selecting or inputting dates, often through a user-friendly calendar picker.</p>
+        <img src="manuals/gui/viselements/table-d.png"/>
+        <p>A table presents data in rows and columns, often used in web applications for structured data display and interaction.</p>
       </div>
     </a>
-  </li>
+  </li> 
   <li>
-    <a class="tp-pill" href="manuals/gui/pages/#dialogs">
-      <span>Dialogs</span>
+    <a class="tp-pill" href="manuals/gui/viselements/button/">
+      <span>Button</span>
       <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/taipy-dialogs.png"/>
-        <p>Dialogs are pop-up windows overlaying main content for user input or messages, prompting confirmation, alerts, or extra information, facilitated by Taipy's dialog components.</p>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="manuals/studio/config/graphview/">
-      <span>Graphs</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/taipy-graph.png"/>
-        <p>Within a web application builder, a graph visualizes data via nodes and edges, illustrating relationships between data entities, with the Taipy Python library facilitating graph construction and analysis.</p>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="manuals/gui/viselements/image/">
-      <span>Image</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/image-d.png"/>
-        <p>Images are visual content showcased within a web application, with the Taipy Python library offering image processing, manipulation, and rendering capabilities.</p>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="getting_started/getting-started-gui/step_06/ReadMe/">
-      <span>Page layout</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/taipy-page-layout.png"/>
-        <p>Layout dictates the organization of components (e.g., charts, inputs, tables) in a web app's interface, defining element structure and positioning on a web page.</p>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="manuals/gui/viselements/pane/">
-      <span>Pane</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/taipy-pane.png"/>
-        <p>Panes within a web app builder indicate independently scrollable or resizable interface sections, aiding content organization and flexibility, supported by Taipy's pane-based layouts.</p>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="manuals/gui/pages/#partials">
-      <span>Partials</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/taipy-partials.png"/>
-        <p>Partials are reusable components or templates, termed partial views, within web app frameworks, enhancing code modularity by embedding them in other templates to recycle shared elements across diverse views or pages.</p>
-      </div>
-    </a>
-  </li>  
-  <li>
-    <a class="tp-pill" href="manuals/gui/viselements/indicator/">
-      <span>Indicator</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/indicator-d.png"/>
-        <p>Displays a label on a scale ranging from red to green at a specific position.</p>
+        <img src="manuals/gui/viselements/button-d.png" alt="">
+        <p>You can employ this class name to target the buttons on your page and apply styling.</p>
       </div>
     </a>
   </li>
@@ -178,15 +144,6 @@ Below, you'll find a succinct elucidation of each term, contextualized within th
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/viselements/menu/">
-      <span>Menu</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/menu-d.png"/>
-        <p>Shows a left-side menu.</p>
-      </div>
-    </a>
-  </li>
-  <li>
     <a class="tp-pill" href="manuals/gui/viselements/slider/">
       <span>Slider</span>
       <div class="tp-tooltip">
@@ -195,24 +152,6 @@ Below, you'll find a succinct elucidation of each term, contextualized within th
       </div>
     </a>
   </li>
-  <li>
-    <a class="tp-pill" href="manuals/gui/viselements/table/">
-      <span>Table</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/table-d.png"/>
-        <p>A table presents data in rows and columns, often used in web applications for structured data display and interaction.</p>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="manuals/gui/binding/">
-      <span>Binding variables</span>
-      <div class="tp-tooltip">
-        <img src="manuals/gui/viselements/taipy-variable-bindings.png"/>
-        <p>Variable bindings establish connections between variables and assigned values, binding user input or component data to specific variables in a web app builder, enabling input capture, processing, and dynamic data updates based on user interactions.</p>
-      </div>
-    </a>
-  </li>  
   <li>
     <a class="tp-pill" href="manuals/gui/viselements/controls/">
       <span>…</span>
@@ -223,17 +162,12 @@ Below, you'll find a succinct elucidation of each term, contextualized within th
   </li>
 </ul>
 
-## Explore Core functionalities
+## Main Taipy functionalities
 
 <ul class="tp-pills-list">
   <li>
-    <a class="tp-pill" href="manuals/core/config/data-node-config/#storage-type">
-      <span>Configure Data node</span>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="manuals/core/config/task-config/">
-      <span>Configure Task</span>
+    <a class="tp-pill" href="manuals/gui/viselements/blocks/">
+      <span>Structure Pages</span>
     </a>
   </li>
   <li>
@@ -257,11 +191,13 @@ Below, you'll find a succinct elucidation of each term, contextualized within th
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/core/">
-      <span>…</span>
-      <div class="tp-tooltip">
-        <p>Browse the Core user manual.</p>
-      </div>
+    <a class="tp-pill" href="manuals/cli/">
+      <span>Taipy command-line interface (CLI)</span>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="manuals/rest/">
+      <span>Expose Taipy's REST APIs</span>
     </a>
   </li>
 </ul>
