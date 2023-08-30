@@ -5,13 +5,14 @@ A Taipy *Scenario* represents a business problem with consistent data and parame
 Scenarios are a powerful tool to create different versions of a business problem under different
 assumptions. This is especially valuable for what-if analysis in decision-making processes,
 enabling users to create, store, edit, and execute multiple scenarios with various
-parameters within the same application. 
+parameters within the same application.
 
-A scenario contains an executable Directed Acyclic Graph (or DAG). The scenario DAG is a set of tasks connecting
-data nodes together. It can also be broken down into smaller graphs for execution by defining a `Sequence^`s.
-A sequence is a subset of tasks derived from the scenario's set of tasks, forming a smaller executable DAG that
-can be submitted separately from the scenario DAG. A scenario can also contain a set of other data nodes
-outside of the scenario DAG to represent additional data related to the scenario but are not executable.
+A scenario contains a Directed Acyclic Graph (or DAG) submittable for execution. The scenario DAG is a set of
+tasks connecting data nodes together. It can also be broken down into smaller graphs for execution by defining
+a `Sequence^`s. A sequence is a subset of connected tasks derived from the scenario's set of tasks, forming
+a smaller executable DAG that can be submitted separately from the scenario DAG. A scenario can also contain
+a set of additional data nodes that are not part of the scenario DAG to represent additional data related to
+the scenario. The execution of the scenario does not compute the additional data nodes.
 
 After analyzing its first scenario, an end-user may be interested in modifying input data nodes
 (not the intermediate nor the output data nodes), re-running the identical sequences or scenario and

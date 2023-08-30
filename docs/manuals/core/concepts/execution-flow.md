@@ -4,7 +4,7 @@
 
     The **data nodes**, **tasks**, and **scenarios** concepts have two types of Taipy objects related to them:
     **configurations** and runtime **entities**. **Sequences** also has its configuration object that is provided through
-    **scenarios configuration** Taipy objects. It also has its own runtime **entities**
+    **scenario configuration** Taipy objects. It also has its own runtime **entities**
 
     Remember that each **entity** is created from a **configuration** (e.g. a Data node is created from a Data node configuration, a
     Task from a Task Config, a Scenarios from a Scenario configuration, etc). Remember also that the same **configuration** can be used
