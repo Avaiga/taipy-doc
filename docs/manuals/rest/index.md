@@ -5,7 +5,7 @@ md#taipy-core).
 The purpose is to automate the use of Taipy Core features by exposing REST APIs.
 
 The Taipy REST APIs allows users to create, read, update, run and remove Taipy entities (including cycles, scenarios,
-pipelines, tasks, jobs and data nodes) through REST APIs. For more details about Taipy entities, please refer to [Core
+sequences, tasks, jobs and data nodes) through REST APIs. For more details about Taipy entities, please refer to [Core
 concepts documentation](../core/concepts/index.md).
 
 It is particularly useful when it comes to integrating a Taipy application in a more complex IT ecosystem.

@@ -17,8 +17,8 @@ Here is what the control would look like when representing a scenario entity:
 
 Next the scenario's label at the top of the control, the 'play' button can trigger the scenario
 submission.<br/>
-If the scenario has pipelines, the user can submit each pipeline independently by pressing the
-'play' button on the right of the pipeline's label.
+If the scenario has sequences, the user can submit each sequence independently by pressing the
+'play' button on the right of the sequence's label.
 
 The user can click the scenario label to change it:
 <figure class="tp-center">

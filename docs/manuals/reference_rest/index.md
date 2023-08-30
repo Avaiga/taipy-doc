@@ -10,7 +10,7 @@ Once the taipy REST server is running, any REST client can make some HTTP reques
 
 All the APIs are exposed at the following base url: `http://<HOST>:<PORT>/api/v1/` where `<HOST>` and `<PORT>`
 are placeholders to be replaced respectively by the application host and the application port.
-The various entry points are grouped by domain (data node, task, pipeline, scenario, cycle, job, auth). Each domain
+The various entry points are grouped by domain (data node, task, sequence, scenario, cycle, job, auth). Each domain
 corresponds to a specific path:
 
 - The APIs related to authentication and authorization are grouped under the base url <br>
@@ -21,8 +21,8 @@ corresponds to a specific path:
   is the exhaustive list of all entrypoints for [data nodes](./apis_datanode.md).
 - The APIs related to job and orchestration are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/jobs/`.
   Here is the exhaustive list of all entrypoints for [jobs](./apis_job.md).
-- The APIs related to pipelines are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/pipelines/`. Here
-  is the exhaustive list of all entrypoints for [pipelines](./apis_pipeline.md).
+- The APIs related to sequences are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/sequences/`. Here
+  is the exhaustive list of all entrypoints for [sequences](./apis_pipeline.md).
 - The APIs related to scenarios are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/scenarios/`. Here
   is the exhaustive list of all entrypoints for [scenarios](./apis_scenario.md).
 - The APIs related to tasks are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/tasks/`. Here is the
