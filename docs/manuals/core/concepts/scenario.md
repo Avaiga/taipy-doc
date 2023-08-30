@@ -7,6 +7,17 @@ assumptions. This is especially valuable for what-if analysis in decision-making
 enabling users to create, store, edit, and execute multiple scenarios with various
 parameters within the same application.
 
+A scenario contains a Directed Acyclic Graph (or DAG) submittable for execution. The scenario DAG is a set of
+tasks connecting data nodes together. It can also be broken down into smaller graphs for execution by defining
+a `Sequence^`s. A sequence is a subset of connected tasks derived from the scenario's set of tasks, forming
+a smaller executable DAG that can be submitted separately from the scenario DAG. A scenario can also contain
+a set of additional data nodes that are not part of the scenario DAG to represent additional data related to
+the scenario. The execution of the scenario does not compute the additional data nodes.
+
+After analyzing its first scenario, an end-user may be interested in modifying input data nodes
+(not the intermediate nor the output data nodes), re-running the identical sequences or scenario and
+comparing the results with the previous run.
+
 Once an initial scenario has been analyzed, users can modify the input data nodes (excluding
 the intermediates and output data nodes), rerun part of its tasks, and compare results.
 
@@ -18,8 +29,10 @@ exploration and analysis of different problem variations.
 
 !!! example "In the example"
 
-    Here, our scenario consists of the two pipelines described earlier. The external light
-    blue box in the flowchart below represents our scenario that contains both pipelines.
+    Here, our scenario consists of a graph of data nodes and tasks. The scenario graph can also be split into
+    two sequences as subgraphs described earlier. The external light blue box in the flowchart below represents
+    our scenario that contains all data nodes, tasks, and sequences.
+    # TODO: update the picture
 
     ![scenarios](../pic/scenarios.svg){ align=left }
 

@@ -2,20 +2,19 @@
 
 Taipy Core is an application builder designed to help Python developers turn their data algorithms into an interactive
 production-ready data-driven application. Taipy Core provides the necessary concepts for modeling, executing, and
-monitoring algorithms. In this documentation, such algorithms are called pipelines.
+monitoring algorithms. In this documentation, such concepts are called scenarios.
 
-A pipeline can be seen as a succession of functions that exchange data. It can be described as an
-execution graph (a Directed Acyclic Graph or DAG). With Taipy Core, one can model simple as well as very
-complex pipelines.
+A scenario can be seen as a succession of functions that exchange data. It can be described as an execution graph
+(a Directed Acyclic Graph or DAG). With Taipy Core, one can model simple and very complex scenarios.
 
 !!! example "Let's take some examples."
 
     === "Simple single function example"
 
-        The following picture represents a simple pipeline made of a single _*cleaning*_ function processing a single
+        The following picture represents a simple scenario made of a single _*cleaning*_ function processing a single
         input, the _*raw data*_, and returning a single output, the _*cleaned data*_.
 
-        ![Simple pipeline](../pic/simple_algo.svg){ margin-left=25% width=52%}
+        ![Simple scenario](../pic/simple_algo.svg){ margin-left=25% width=52%}
 
     === "Linear example with two functions"
 
@@ -23,7 +22,7 @@ complex pipelines.
         the _*raw data*_, and returns some intermediate data named _*cleaned data*_. The second function _*filtering*_
         reads the same intermediate data _*cleaned data*_ and returns a single output _*filtered data*_.
 
-        ![Linear pipeline](../pic/linear_algo.svg)
+        ![Linear scenario](../pic/linear_algo.svg)
 
     === "Branching example"
 
@@ -31,7 +30,7 @@ complex pipelines.
         _*generating*_ does not have any input. On the contrary, the function _*aggregating*_ takes multiple inputs and
         returns multiple outputs.
 
-        ![Linear pipeline](../pic/branching_algo.svg)
+        ![Linear scenario](../pic/branching_algo.svg)
 
 This section aims at defining the following Taipy Core concepts.
 
@@ -43,30 +42,33 @@ This section aims at defining the following Taipy Core concepts.
 - A [Task](task.md) (the orange boxes) can be seen as a function receiving data node(s) as input and returning
   data node(s) as output.
 - A [Job](job.md) represents a unique execution of a Task.
-- A [Pipeline](pipeline.md) represents a set of tasks connected together through data nodes, that should be executed
-  as a whole and forming a consistent algorithm.
-- A [Scenario](scenario.md) is made of one or multiple pipelines. It represents an instance of a business problem to
-  solve.
+- A [Scenario](scenario.md) represents a set of tasks connected through data nodes forming a Directed Acyclic Graph,
+  that should be executed as a whole (or as subgraphs via sequences) and create a consistent algorithm. It can
+  also contain a set of additional data nodes for related data but are not part of the executable graph.
+- A [Sequence](sequence.md) represents a set of tasks connected through data nodes, that should be executed
+  as a whole and forming a consistent algorithm. A sequence belongs to a scenario and can be thought of as a subgraph of
+  the scenario's complete graph.
 - A [Cycle](cycle.md) or work cycle is a time period corresponding to an iteration of a recurrent business problem.
   For instance, a company's sales forecast needs to be generated _every week_.
   A cycle is defined thanks to the **_Frequency_** of scenarios. For instance, if scenarios have a weekly
   frequency, then each cycle represents a particular week, and every scenario will be attached to a particular cycle
   (i.e. a week).
 - A [Scope](scope.md) represents the _visibility_ of a data node in the graph of entities, and the level of its
-  owner (Pipeline, Scenario, Cycle).
+  owner (Scenario, Cycle, Global).
 
 !!! important "Definition: Config vs Entities"
 
-    Among the concepts described in this section, **data nodes**, **tasks**, **pipelines**, and **scenarios** have
+    Among the concepts described in this section, **data nodes**, **tasks**, **sequences**, and **scenarios** have
     two types of Taipy objects related to them: _configuration_ objects and _runtime_ objects.
 
     To differentiate them, the configuration objects are named **_configs_** (`DataNodeConfig`, `TaskConfig`,
-    `PipelineConfig`, and `ScenarioConfig`). In contrast, the runtime objects (`DataNode`, `Task`, `Pipeline`, and
-    `Scenario`) are called **_entities_**.
+    and `ScenarioConfig`). , The sequence concept does not have its own configuration object.
+    However, sequence configuration can be done within the `ScenarioConfig`. In contrast,
+    the runtime objects (`DataNode`, `Task`, `Sequence`, and `Scenario`) are called **_entities_**.
 
     It will benefit the reader to visualize the different Taipy **_configs_** like a set of Russian dolls where each
     **_config_** belongs to a "larger" **_config_**:
-
+    # TODO: fix this image
     ![Russian dolls](../pic/russian_dolls.svg){ margin-left=25% width=50%}
 
     One thing to wrap your head around (it may not be very intuitive for everyone at first) is that the **configs**
