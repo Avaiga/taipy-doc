@@ -1,25 +1,26 @@
 # Introduction to Visual Elements
 
-_Visual Elements_ are user interface objects displayed on a given page.
+*Visual Elements* are user interface objects displayed on a given page.
 Visual elements reflect some application data or give the page some structuring
 or layout information. Most visual elements allow users to interact with the page content.
 
-There are two types of _Visual Elements_:
+There are two types of *Visual Elements*:
 
-   - _Controls_ typically represent user data that the user can interact with;
-     The `taipy` package come with a dedicated set of Taipy GUI controls that let users
-     display and interact with [Taipy Core entities](../../core/entities). These controls
-     are listed in the [Core back-end controls](../corelements) section.
+   - *Controls* typically represent user data that the user can interact with.<br/>
+     Beside the generic controls provided in Taipy GUI and listed in [this section](controls.md),
+     the `taipy` package come with a dedicated set of Taipy GUI controls that let users display and
+     interact with [Taipy Core entities](../../core/entities/index.md). These controls are listed
+     in the [Core back-end controls](../corelements/index.md) section.
 
-   - _Blocks_ let you organize controls (or blocks) in pages to provide the best
+   - *Blocks* let you organize controls (or blocks) in pages to provide the best
     possible user experience.
 
-If you are familiar with what _Visual Elements_ are and how they are declared, you
+If you are familiar with what *Visual Elements* are and how they are declared, you
 may want to jump directly to the list of the available visual elements:
 
 [:material-arrow-right: List of available controls](controls.md)
 
-[:material-arrow-right: List of available Core back-end controls](../corelements)
+[:material-arrow-right: List of available Core back-end controls](../corelements/index.md)
 
 [:material-arrow-right: List of available blocks](blocks.md)
 
@@ -42,12 +43,21 @@ element syntax can be used.
 ### Property value
 
 Every property value can be set to a value that depends on the property type or a
-formatted string literal, also known as an _f-string_. This string may reference variable
+formatted string literal, also known as an *f-string*. This string may reference variable
 names defined in the code, and the value of the property is set to the evaluated string.
 
 !!! note "Dynamic properties"
-    When a property is listed as _dynamic_, changing the value of any variable in the
-    expression will update visual element that uses it.
+    When a property is listed as *dynamic*, changing the value of any variable in its expression's
+    value will immediately update the visual element that uses it. All properties are *not*
+    dynamic, though, for performance reasons: when a Python variable bound to an element's property
+    is modified, it can tremendously impact the rendering of the graphical component on the page
+    displayed by the user's browser. The component may have to be entirely rebuilt to reflect the
+    new variable value, which might be slow and hit the user experience.<br/>
+    Visual Elements that are costly to render on the browser provide a property called *rebuild*
+    that allows one to explicitly request the render of the component. Please check the relevant
+    sections for the [`chart`](chart.md#the-rebuild-property) and
+    [`table`](table.md#the-rebuild-property) controls for more information.
+
 
 ## Syntax
 
@@ -57,16 +67,16 @@ You create visual elements using either a specific Markdown syntax (see the
 ### Markdown
 
 The basic syntax for creating Taipy constructs in Markdown is: `<|...|...|>` (opening with a
-_less than_ character followed by a vertical bar character &#151; sometimes called
-_pipe_ &#151; followed by a potentially empty series of vertical bar-separated fragments and
-closing with a vertical bar character immediately followed by the _greater than_ character).<br/>
+*less than* character followed by a vertical bar character &#151; sometimes called
+*pipe* &#151; followed by a potentially empty series of vertical bar-separated fragments and
+closing with a vertical bar character immediately followed by the *greater than* character).<br/>
 Taipy interprets any text between the `<|` and the `|>` markers and tries to create visual
 elements to be inserted in the resulting page.
 
 The most common use of this construct is to create controls. Taipy expects the control type
-name to appear between the two first vertical bar characters (as in `<|control|...}>`.
+name to appear between the two first vertical bar characters (as in `<|control|...}>`).
 
-!!! important
+!!! important "Shortcut for the default property"
     If the first fragment text is not the name of a control type, Taipy will consider this
     fragment to be the default value for the default property of the control, whose type name
     must then appear as the second element.
@@ -86,7 +96,7 @@ name to appear between the two first vertical bar characters (as in `<|control|.
     or the data set displayed by a [`chart`](chart.md), for example.
 
 Every following |-separated fragment is interpreted as a property name-property value
-pair using the syntax: _property\_name=property\_value_ (note that _all_ space characters
+pair using the syntax: *property\_name=property\_value* (note that *all* space characters
 are significative).  
 
 So creating a visual element in Markdown text is just a matter of inserting a text
@@ -98,16 +108,16 @@ fragment similar to:
 
 !!! note "Multiple properties"
     You can have as many property name-property value pairs as needed, and all of the space
-    characters of the property value part _are_ significant:<br/>
+    characters of the property value part *are* significant:<br/>
     The fragment `<|Content |text|>` will be displayed as the string "Content" followed by a
-    space character, because it is part of the property value (in this case, the _default_
-    property value, which is the property called _value_ for the [`text`](text.md) control)
+    space character, because it is part of the property value (in this case, the *default*
+    property value, which is the property called *value* for the [`text`](text.md) control)
 
 !!! note "Shortcut for Boolean properties"
     Should the `=property_value` fragment be missing, the property value is interpreted as the
     Boolean value `True`.<br/>
-    Furthermore, if the property name is preceded by the text "_no&blank;_", "_not&blank;_",
-    "_don't&blank;_" or "_dont&blank;_" (including the trailing space character), then no
+    Furthermore, if the property name is preceded by the text "no&blank;", "not&blank;",
+    "don't&blank;" or "dont&blank;" (including the trailing space character), then no
     property value is expected, and the property value is set to `False`.
 
 !!! note "Unknown properties"
@@ -118,7 +128,7 @@ fragment similar to:
     Markdown depends heavily on text indentation to decide whether or not a new paragraph or section
     should be created.<br/>
     When dealing with block elements to create sections on your page, you might be
-    tempted to indent the opening element tags, so the Markdown text is easier to read.<
+    tempted to indent the opening element tags, so the Markdown text is easier to read.
 
     The following Markdown content:
     ```
@@ -176,7 +186,7 @@ fragment similar to:
     <|button|label=Do something|active=False|>
     ```
 
-!!! example "The _default property_ rule"
+!!! example "The *default property* shortcut"
     The default property name for the control type [`button`](button.md) is _label_. In Taipy,
     the Markdown text
     ```
@@ -188,7 +198,8 @@ fragment similar to:
     ```
     which is slightly shorter.
 
-!!! example "The _missing Boolean property value_ rules"
+!!! example "The *missing Boolean property value* shortcuts"
+    Defining a Boolean property with no value is equivalent to setting that property to True:
     ```
     <|button|active=True|>
     ```
@@ -196,7 +207,10 @@ fragment similar to:
     ```
     <|button|active|>
     ```
-    And
+
+    Prefixing a Boolean property name with "no&blank;", "not&blank;", "don't&blank;" or
+    "dont&blank;" and not setting the propery value is equivalent to setting that property to
+    False:
     ```
     <|button|active=False|>
     ```
@@ -236,7 +250,7 @@ is equivalent to
 
     - Attribute names that be array elements.
       Some visual elements (such as the [`chart`](chart.md) control) need
-      indexed properties. An attribute name such as _y[1]_ is valid in the Taipy context,
+      indexed properties. An attribute name such as *y[1]* is valid in the Taipy context,
       where it would not be in the raw HTML grammar.
 
     - Empty attribute value.
@@ -250,9 +264,9 @@ Every visual element type has the following properties:
 -   `id`: The identifier of the element. This identifier is generated in the HTML component
     and can be used for [styling](../styling/index.md).
 -   `class_name`: An additional CSS class that is added to the generated HTML component.
-    Note that all visual elements are generated with the "taipy-_visual_element_type_" CSS
+    Note that all visual elements are generated with the "taipy-*visual\_element\_type*" CSS
     class set (e.g. the `button` control generates an HTML element that has the
-    _taipy-button_ CSS class).
+    *taipy-button* CSS class).
 -   `properties`: The name of a variable that holds a dictionary where all property name/value
     pairs will be used by a given visual element declaration.
 
@@ -268,8 +282,8 @@ can use it in your CSS selectors. You can look at the [Styling](../styling/index
 section for more information.
 
 !!! note
-    This identifier is also sent to the _on_action_ callback if this visual
-    element can trigger actions (see [Actions](../callbacks/#actions)
+    This identifier is also sent to the *on_action* callback if this visual
+    element can trigger actions (see [Actions](../callbacks.md#actions)
     for details).
 
 ### The `properties` property
@@ -288,15 +302,14 @@ of the variable that holds that dictionary as the value of the `properties` prop
     Say your Markdown content needs the following control:
     `<|dialog|title=Select an item in the list|open={show_dialog}|labels=Cancel;Validate|page_id=page|close_label=Cancel|>`
 
-    As this syntax can be cumbersome, you might
-    prefer to define a simple Python dictionary:
+    As this syntax can be cumbersome, you might prefer to define a simple Python dictionary:
 
     ```py linenums="1"
     dialog_props = {
-      "title":           "Select an item in the list",
-      "labels":          "Cancel;Validate",
-      "page_id":         "page",
-      "close_label":    "Cancel"
+      "title":       "Select an item in the list",
+      "labels":      "Cancel;Validate",
+      "page_id":     "page",
+      "close_label": "Cancel"
     }
     ```
 
@@ -309,17 +322,17 @@ of the variable that holds that dictionary as the value of the `properties` prop
 
 There are situations where you don't want a variable bound to a control value (such
 as the knob location of a slider) to be updated immediately when the user manipulates
-the control. You may for example want to check the received value in the _on_change_
+the control. You may for example want to check the received value in the *on_change*
 callback and decide to use this new value or not.<br/>
-This is the purpose of the _propagate_ property.
+This is the purpose of the *propagate* property.
 
 When the _propagate_ property is set to True, then the application variable bound to a
 control is updated when the user modifies the value represented by the control.
 
 !!! info
-    Note that if there is a function called `on_change` accessible to the `Gui` instance
-    (see the section on [Variable Value Change](../callbacks/#variable-value-change) for
-    details), it will be invoked no matter what the _propagate_ value is. The variable
+    Note that if there is a function called `on_change()` accessible to the `Gui` instance
+    (see the section on [Variable Value Change](../callbacks.md#variable-value-change) for
+    details), it will be invoked no matter what the *propagate* value is. The variable
     value that this function receives is the new requested value, but this value is
     **not** set to the variable bound to the control.
 

@@ -12,9 +12,87 @@ This is the list of changes to Taipy releases as they were published.
     Please refer to the [Migration page](./migration.md) for potential migration paths for your applications
     implemented on legacy Taipy versions.
 
-## Community edition: 2.3 (Work in progress)
+## Community edition: 3.0 (Work in progress)
 
 Not published yet.
+
+### New Features
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+3.0.0
+
+- A global data node can be created from a data node configuration with GLOBAL scope using the new
+  `taipy.create_global_data_node()` method.<br/>
+  Please refer to [Create a data node](./manuals/core/entities/data-node-mgt.md#create-a-data-node)
+  for more information.
+
+- A data node configuration can be a scaffold to configure a new similar data node. For more information, refer to
+  [Configure a data node from another configuration](./manuals/core/config/data-node-config.md#configure-a-data-node-from-another-configuration).
+
+- The encoding type of CSVDataNode and JSONDataNode can now be configured using the *encoding* parameter. Please refer
+  to [Configure a CSVDataNode](./manuals/core/config/data-node-config.md#csv) and [Configure a JSONDataNode](./manuals/core/config/data-node-config.md#json)
+  sections for more information.
+
+- New abstract class:
+      * `Submittable^` to model entities that can be submitted for execution
+            The children entity classes of `Submittable` are `Scenario` and `Pipeline`;
+
+- New exposed functions:
+
+       * `taipy.exists()^` checks if an entity exists or not;
+
+       * `Submittable.get_inputs()^` retrieves input data nodes of a `Submittable` entity;
+
+       * `Submittable.get_outputs()^` retrieves output data nodes of a `Submittable` entity;
+
+       * `Submittable.get_intermediate()^` retrieves intermediate data nodes of a `Submittable` entity;
+
+       * `Submittable.is_ready_to_run()^` checks if an entity is ready to be run;
+
+       * `Submittable.data_nodes_being_edited()^` retrieves data nodes that are being edited
+            of a `Submittable^` entity;
+
+       * `is_deletable()^` checks if an entity can be deleted.
+
+- A production version of the application can now be provided with migration functions to help
+  ensure that entities from all production versions are compatible with each other.<br/>
+  For more information, please refer to [Production mode](./manuals/core/versioning/production_mode.md).
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-template</code></strong></h6>
+3.0.0
+
+- A new template named "scenario-management" is available. For more information on creating a new Taipy application with the new "scenario-management" template, refer to [Create a Taipy application from a specific template](./manuals/cli/create.md#from-a-specific-template).
+
+### Improvements and changes
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+3.0.0
+
+- `Scope.PIPELINE` has been removed from `Scope^` values.
+- The `root_folder`, `storage_folder`, `read_entity_retry`, `repository_type`, and `repository_properties`
+  attributes of the `GlobalAppConfig^` have been moved to the `CoreSection^`.<br/>
+  Please refer to the [Core configuration page](manuals/core/config/core-config.md) for details.
+- The `clean_entities` attribute has been removed from the `CoreSection^`. Correspondingly, the
+  `--clean-entities` option has been removed from the version management CLI.<br/>
+  To clean entities of a version, please run your application in development mode, or delete your
+  version with the `--delete` option.
+- The deprecated `nb_of_workers` attribute of the JobConfig has been removed.
+- The deprecated `parent_id` attribute of a DataNode, Task, Pipeline, or Scenario entity, has been removed.
+- The deprecated `last_edition_date` and `edition_in_progress` attributes of a DataNode entity have been removed.
+- The deprecated `DataNode.lock_edition()` and `DataNode.unlock_edition()` methods have been removed.
+- The deprecated `taipy.create_pipeline()` method has been removed.
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-template</code></strong></h6>
+3.0.0
+
+- The default template also supports creating a multi-pages application with Core and Rest services.
+  These options are available when creating a new application from the template.
+- The "multi-page-gui" template has been removed. Please use the default instead to create
+  a Taipy multi-pages application.
+
+## Community edition: 2.3
+
+Published on 2023-06.
 
 [`taipy` 2.3](https://pypi.org/project/taipy/2.3.0/) contains the latest
 [`taipy-config` 2.3](https://pypi.org/project/taipy-config/2.3.0/),
@@ -27,39 +105,132 @@ Not published yet.
 <h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
 2.3.0
 
+- Core Back-end Controls<br/>
+  Taipy comes, in the [`taipy`](https://pypi.org/project/taipy/) package, with a set of
+  ready-to-use GUI controls that connect to entities created by Taipy Core. Your application
+  can then visualize the Core entities and interact with them.<br/>
+  Please check the [list of Core back-end controls](manuals/gui/corelements/index.md).
 - New Taipy command-line interface (CLI). Please refer to the
-  [Taipy command-line interface](./manuals/cli.md)
-  documentation page for more information.
-- User can now create a new Taipy application from a template by running `$ taipy create` from the
-  CLI with an optional `--template` option.
+  [Taipy command-line interface](./manuals/cli/index.md) documentation page for more information.
+- Users can now create a new Taipy application from a template by running `$ taipy create` from the
+  CLI. Besides the default template, "multi-page-gui" template can be chosen with the optional
+  `--template` option.
 
-<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.3.0
 
-- All scenarios grouped by their cycles can now be retrieved by calling `taipy.get_cycles_scenarios()^`.
-- All entities (cycles, scenarios, pipelines, tasks, data nodes, and jobs) expose two new methods: `get_label` and
-  `get_simple_label`, that can be used to display the entity.
-- `taipy.get_entities_by_config_id()^` can be used to retrieve all entities that are based on
-  the provided configuration identifier.
-- Commands for managing Taipy application versions can now be accessed via the `$ taipy manage-versions` command. Run `$ taipy manage-versions --help` for more details.
-- A version can now be renamed by running `$ taipy manage-versions --rename <old_version> <new_version>` from the CLI.
-- The configuration of a version can now be compared with another one by running `$ taipy manage-versions --compare-config <version_1> <version_2>` from the CLI.
+- The [`table`](manuals/gui/viselements/table.md) and [`chart`](manuals/gui/viselements/chart.md)
+  controls have a new property called *rebuild* that allows for modifying the control configuration
+  at runtime, using properties that are *not* dynamic.<br/>
+  See the details in the specific documentation sections for
+  [tables](manuals/gui/viselements/table.md#the-rebuild-property) and
+  [charts](manuals/gui/viselements/chart.md#the-rebuild-property).
+- The [`part` block](manuals/gui/viselements/part.md) now accepts any URL as a value for the
+  [*page* property](manuals/gui/viselements/part.md#p-page). You can then integrate any external
+  web page as demonstrated in [this example](manuals/gui/viselements/part.md#part-showing-a-page).
+  <br/>
+  To better control the layout of external pages, a new
+  [*height* property](manuals/gui/viselements/part.md#p-height) has been added to the the
+  [`part`](manuals/gui/viselements/part.md) element.
+- The `navigate()^` function has an additional parameter called *force* that, when set to True,
+  re-renders the page (set to the *to* parameter). This allows to force the evaluation of bound
+  variables in complex dependencies situations.
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.3.1
+
+- New exposed functions:
+
+       * `is_submittable()^` checks if a scenario or a pipeline can be submitted;
+
+       * `is_promotable()^` checks if a scenario can be promoted to primary;
+
+       * `is_deletable()^` checks if an entity can be deleted.
+
+2.3.0
+
+- All scenarios grouped by their cycle can now be retrieved by calling
+  `taipy.get_cycles_scenarios()^`.
+- All entities (cycles, scenarios, pipelines, tasks, data nodes, and jobs) expose two new methods:
+  `get_label()` and `get_simple_label()`, that can be used to display the entity.
+- `taipy.get_entities_by_config_id()^` can be used to retrieve all entities that are based on the
+  provided configuration identifier.
+- Commands for managing Taipy application versions can now be accessed via the
+  `$ taipy manage-versions` command. Run `$ taipy manage-versions --help` for more details.
+- A version can now be renamed by running
+  `$ taipy manage-versions --rename <old_version> <new_version>` from the CLI.
+- The configuration of a version can now be compared with another one by running
+  `$ taipy manage-versions --compare-config <version_1> <version_2>` from the CLI.
 
 ### Improvements and changes
 
+<h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
+2.3.2
+
+- The [expanded](manuals/gui/corelements/scenario.md#p-expanded) and
+  [show_tags](manuals/gui/corelements/scenario.md#p-show_tags) properties of the
+  [scenario](manuals/gui/corelements/scenario.md) control now have a default value of
+  False.
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.3.2
+
+- Multi-line [input](manuals/gui/viselements/input.md) controls accept the Shift+Enter combination
+  to create a new line.<br/>
+  See [issue #824](https://github.com/Avaiga/taipy-gui/issues/824).
+- [Table](manuals/gui/viselements/table.md) filters adapt to a change of the visible columns.<br/>
+  See [issue #822](https://github.com/Avaiga/taipy-gui/issues/822).
+
+2.3.0
+
+- Page scopes (how Taipy GUI finds bound variables in different modules) have been
+  improved so any given page can locate a variable in any module that defines a local page.<br/>
+  See the [section on page scopes](manuals/gui/binding.md#scope-for-variable-binding) for more
+  information and examples.
+- A new mechanism to start the web server when [using Notebooks](manuals/gui/notebooks.md) was put
+  in place to prevent potential bottlenecks when allocating a port number. This behavior is
+  controlled by the [*notebook_proxy*](manuals/gui/configuration.md#p-notebook_proxy) configuration
+  parameter.
+
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.3.0
 
-- A generic data node can now be created with only the `read_fct` for reading only or the `write_fct` for writing only data node.<br/>
-- The `read_fct_params` and `write_fct_params` of a generic data node are renamed to `read_fct_args` and `write_fct_args`, and both must be populated with a List value to avoid the problem of passing Tuple of one string.<br/>
-- The `validity_period` attribute of a data node is now exposed at configuration level to set the up-to-date duration of a data node.<br/>
+- A generic data node can now be created defining only the *read_fct* parameter for a read-only data
+  node, or only the *write_fct* parameter for a write-only data node.
+- The parameters *read_fct_params* and *write_fct_params* of the generic data nodes were renamed to
+  *read_fct_args* and *write_fct_args*, and both must be populated with a List value to avoid the
+  problem of passing Tuple of one string.
+- The *validity_period* attribute of a data node is now exposed at the configuration level to set
+  the up-to-date duration of a data node.
+- Add support for SQLAlchemy 2.0
+
+### Significant bug fixes
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
+2.3.0
+
+- The removal of all the [`table`](manuals/gui/viselements/table.md) filters has no immediate effect.
+  <br/>
+  See [issue #667](https://github.com/Avaiga/taipy-gui/issues/667).
+- Styling of the [`pane` block](manuals/gui/viselements/pane.md) was not applied properly.<br/>
+  See [issue #766](https://github.com/Avaiga/taipy-gui/issues/766).
+- Some notifications (see `notify()^`) could be missed when there were too many in a small period
+  of time.<br/>
+  See [issue #777](https://github.com/Avaiga/taipy-gui/issues/777).
 
 ### Deprecations
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+2.3.2
+
+- The `Config.configure_default_data_node()` method has been deprecated. The `Config.set_default_data_node_configuration()^` method should be used instead.
+- The `Config.configure_task_node()` method has been deprecated. The `Config.set_task_node_configuration()^` method should be used instead.
+- The `Config.configure_pipeline_node()` method has been deprecated. The `Config.set_pipeline_node_configuration()^` method should be used instead.
+- The `Config.configure_scenario_node()` method has been deprecated. The `Config.set_scenario_node_configuration()^` method should be used instead.
+
 2.3.0
 
-- `PipelineConfig^` has been deprecated and will be combined with `ScenarioConfig^` in future update.
+- `PipelineConfig^` has been deprecated and will be combined with `ScenarioConfig^` in future updates.
 - `taipy.create_pipeline()^` has been deprecated.
 
 ## Community edition: 2.2
@@ -227,7 +398,6 @@ details on how to migrate from version older than 2.1.
 - The **sql** _repository_type_ is now available on community edition to store Core entities in an
   SQL database. See [SQL storage section](./manuals/core/config/global-config.md#sql-storage-for-taipy-entities).
 
-
 ### Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
@@ -285,10 +455,10 @@ Published on 2022-10.
 
 - Extension API: custom visual elements can be integrated into Taipy GUI applications.<br/>
   Third party HTML components can be integrated into Taipy GUI pages to address specific use cases.<br/>
-  See [Extension API](manuals/gui/extension/) for details.
-- New callbacks (`on_init`, `on_navigate`, `on_exception` and `on_status`) can be used to initialize a new
-  session, detect navigation events, trigger code when exceptions are raised in user code,
-  and invoke code when a *status* page is requested.<br/>
+  See [Extension API](manuals/gui/extension/index.md) for details.
+- New callbacks (`on_init`, `on_navigate`, `on_exception` and `on_status`) can be used to
+  initialize a new session, detect navigation events, trigger code when exceptions are raised in
+  user code, and invoke code when a *status* page is requested.<br/>
   See [Callbacks](manuals/gui/callbacks.md) for details.
 - New functions allow applications to invoke long-running callbacks without blocking.<br/>
   See [Long Running Callbacks](manuals/gui/callbacks.md#long-running-callbacks) for
@@ -297,7 +467,7 @@ Published on 2022-10.
   new `taipy-config` package.
 - An application can request the status of the server application using the "status" predefined page.<br/>
 - The new 'base' property of the chart control makes it possible to create Gantt chart-like displays.<br/>
-  See [Gantt Charts](../manuals/gui/viselements/charts/gantt) for details.
+  See [Gantt Charts](manuals/gui/viselements/charts/gantt.md) for details.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.0.0

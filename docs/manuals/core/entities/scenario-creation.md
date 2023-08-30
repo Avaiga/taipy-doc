@@ -69,30 +69,4 @@ Three parameters can be given to the scenario creation method :
 
         ![scenarios](../pic/scenarios.svg)
 
-# Pipeline creation
-
-!!! warning "Deprecation"
-
-    Note that function `taipy.create_pipeline()^` has been deprecated in version 2.3.
-
-Pipelines can be created separately from scenarios using `taipy.create_pipeline()^` function.
-
-This function creates and returns a new pipeline from the pipeline configuration provided as a parameter. The
-pipeline's creation also triggers the creation of the related entities that do not exist yet. Indeed, tasks and data
-nodes nested in the pipeline are created if they do not exist yet.
-
-=== "Simple pipeline creation"
-
-    ```python linenums="1"
-    import taipy as tp
-    import my_config
-
-    pipeline = tp.create_pipeline(my_config.sales_pipeline_cfg)
-    ```
-
-=== "Graph representation of the scenario"
-
-    ![scenarios](../pic/scenarios.svg)
-
-
 [:material-arrow-right: The next section presents the scenario and cycle management](scenario-cycle-mgt.md).

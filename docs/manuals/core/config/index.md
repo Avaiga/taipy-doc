@@ -39,8 +39,8 @@ organized as follows:
   `PipelineConfig^` class.
 - [Scenario configs](scenario-config.md) section describes the scenarios' configurations using the
   `ScenarioConfig^` class.
-- [Global config](global-config.md) section documents the global configuration fields and the
-  `GlobalAppConfig^` class.
+- [Core config](core-config.md) section documents the Core configuration fields and the
+  `CoreSection^` class.
 - [Job orchestration config](job-config.md) section documents the configuration of the job orchestration
   using the `JobConfig^` class.
 - [Config checker](config-checker.md) section presents the configuration checkers.

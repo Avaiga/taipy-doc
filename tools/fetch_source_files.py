@@ -96,7 +96,7 @@ for repo in repo_defs.keys():
                     repo_defs[repo]["skip"] = True
                     continue
                 else:
-                    raise SystemError(f"Problem with {repo}: {cmd.stdout}")
+                    raise SystemError(f"Problem with {repo}:\nOutput: {cmd.stdout}\nError: {cmd.stderr}")
     else:
         with GitContext(repo, PRIVATE_REPOS):
             cmd = subprocess.run(f"{git_path} ls-remote --exit-code --heads {github_root}{repo}.git", shell=True,
@@ -302,7 +302,7 @@ import typing as t
 def run(*services: t.Union[Gui, Rest, Core], **kwargs) -> t.Optional[t.Union[Gui, Rest, Core]]:
     \"\"\"Run one or multiple Taipy services.
 
-    A Taipy service is an instance of a class that runs code as a Web application.
+    A Taipy service is an instance of a class that runs code as a web application.
 
     Parameters:
         services (Union[`Gui^`, `Rest^`, `Core^`]): Services to run.<br/>

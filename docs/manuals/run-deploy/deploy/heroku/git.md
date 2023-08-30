@@ -45,7 +45,7 @@ To be able to run your app, Heroku will need the following files:
     ```
     Note that we are using the *-H* and *-P* options (as described in the
     [Taipy GUI Configuration section](../../../gui/configuration.md#configuring-the-gui-instance))
-    to provide Taipy with the appropriate host and port settings for the Web
+    to provide Taipy with the appropriate host and port settings for the web
     application.
 
     Now you should save this file in your git repository by doing:
