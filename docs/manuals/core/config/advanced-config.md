@@ -9,9 +9,9 @@ Taipy provides three ways to configure your application:
     Here is a typical workflow that shows how to adapt the configuration of a Taipy application at each stage of a
     software project (from initial development to production).
 
-    1. To start, as a developer I will design my application by configuring all the new entities  (data
-    nodes, tasks, scenarios) using the Python code configuration with just a minimal number of attributes
-    configured. The default configuration is used for the other attributes.
+    1. As a developer, I will design my application by configuring all the new entities  (data nodes, tasks, scenarios)
+    using the Python code configuration with just a few attributes configured. The default configuration is used
+    for the other attributes.
 
     2. Then, I test the application I just built. At this step, I need my application to have a more realistic
     behavior, like real data. For that, I need more configuration. I can specify for my
@@ -34,7 +34,7 @@ These methods are described below.
 The configuration (for all your data nodes, tasks, scenarios, etc.) can be defined directly using Python
 code. This configuration can be done using methods from the `Config^` class. This Python configuration is meant to
 be used during the application development phase. It overrides the default configuration:
-if some values are not provided, the default configuration applies.
+the default configuration applies if some values are not provided.
 
 !!! Example "Design of the application to configure"
 

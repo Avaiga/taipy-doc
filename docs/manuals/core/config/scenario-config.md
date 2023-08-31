@@ -3,8 +3,8 @@ A scenario configuration is necessary to instantiate a [Scenario](../concepts/sc
 
 - _**id**_: The id of a new scenario configuration to be created. This id is **mandatory** and must
   be a unique and valid Python identifier.
-- _**tasks**_: A list of task configuragtions.
-- _**additional_data_nodes**_: A list of additional data node configuragtions.
+- _**tasks**_: A list of task configurations.
+- _**additional_data_nodes**_: A list of additional data node configurations.
 - _**frequency**_: The recurrence of the scenarios instantiated from this configuration. The scenarios
   are attached to the proper cycles based on this frequency.
 - _**sequences**_: A dictionary of sequence descriptions.
@@ -17,7 +17,7 @@ A scenario configuration is necessary to instantiate a [Scenario](../concepts/sc
 
     Note that we cannot use the word "_entity_owner" as a key in the properties as it has been reserved for internal use.
 
-# From task configs
+# From task configurations
 
 Here is a simple example assuming the task configuration `multiply_task_cfg` has already been created:
 
@@ -28,8 +28,8 @@ scenario_cfg = Config.configure_scenario("multiply_scenario",
                                          [multiply_task_cfg])
 ```
 
-In this example, we create a scenario configuration `ScenarioConfig^` from a task configuration already defined.
-A `ScenarioConfig^` must always be provided with a list of `TaskConfig^`.
+In this example, we create a scenario configuration `ScenarioConfig^` from a task configuration from
+a defined task configuration. A `ScenarioConfig^` must always be provided with a list of `TaskConfig^`.
 
 # Adding additional data nodes configurations
 
@@ -51,7 +51,7 @@ Additional data node configurations are optional when configuring a `ScenarioCon
 
 # Adding sequence descriptions
 
-In the scenario configuration, we can describe the sequences to create with the scenario creations.
+In the scenario configuration, we can describe the sequences to be created with the scenario creation.
 Here is a simple example assuming the task configuration `add_task_cfg_1`, `add_task_cfg_2`,
 `multiply_task_cfg_1`, `multiply_task_cfg_2` have already been created:
 
@@ -60,24 +60,24 @@ from taipy import Config
 
 scenario_cfg = Config.configure_scenario("multiply_scenario",
                                          [add_task_cfg_1, add_task_cfg_2, multiply_task_cfg_1, multiply_task_cfg_2],
-                                         sequences={"add_sequence": [add_task_cfg_1, add_task_cfg_2,],
-                                                    "multiply_sequence": [multiply_task_cfg_1, multiply_task_cfg_2,],})
+                                         sequences={"add_sequence": [add_task_cfg_1, add_task_cfg_2],
+                                                    "multiply_sequence": [multiply_task_cfg_1, multiply_task_cfg_2]})
 ```
 
-We can also add sequences to your scenario configuration after you have created your scenario configuration.
+We can also add sequences to our scenario configuration after we have created our scenario configuration.
 
 ```python linenums="1"
 from taipy import Config
 
 scenario_cfg = Config.configure_scenario("multiply_scenario",
-                                         [add_task_cfg_1, add_task_cfg_2, multiply_task_cfg_1, multiply_task_cfg_2],)
+                                         [add_task_cfg_1, add_task_cfg_2, multiply_task_cfg_1, multiply_task_cfg_2])
 
-scenario_cfg.add_sequences({"add_sequence": [add_task_cfg_1, add_task_cfg_2,],
-                            "multiply_sequence": [multiply_task_cfg_1, multiply_task_cfg_2,],})
+scenario_cfg.add_sequences({"add_sequence": [add_task_cfg_1, add_task_cfg_2],
+                            "multiply_sequence": [multiply_task_cfg_1, multiply_task_cfg_2]})
 
 # Or we can add them separately as well
-scenario_cfg.add_sequences({"add_sequence": [add_task_cfg_1, add_task_cfg_2,],})
-scenario_cfg.add_sequences({"multiply_sequence": [multiply_task_cfg_1, multiply_task_cfg_2,],})
+scenario_cfg.add_sequences({"add_sequence": [add_task_cfg_1, add_task_cfg_2]})
+scenario_cfg.add_sequences({"multiply_sequence": [multiply_task_cfg_1, multiply_task_cfg_2]})
 
 ```
 
@@ -88,8 +88,8 @@ from taipy import Config
 
 scenario_cfg = Config.configure_scenario("multiply_scenario",
                                          [add_task_cfg_1, add_task_cfg_2, multiply_task_cfg_1, multiply_task_cfg_2],
-                                         sequences={"add_sequence": [add_task_cfg_1, add_task_cfg_2,],
-                                                    "multiply_sequence": [multiply_task_cfg_1, multiply_task_cfg_2,],})
+                                         sequences={"add_sequence": [add_task_cfg_1, add_task_cfg_2],
+                                                    "multiply_sequence": [multiply_task_cfg_1, multiply_task_cfg_2]})
 
 scenario_cfg.remove_sequences(["add_sequence", "multiply_sequence"])
 
@@ -99,11 +99,11 @@ scenario_cfg.remove_sequences("add_sequence")
 
 ```
 In the small examples above, we create a scenario configuration `ScenarioConfig^` from task configurations and
-defined sequences of that scenario configuration. You can refer back to the sequence concept in
+define sequences for that scenario configuration. You can refer back to the sequence concept in
 [Sequence concept](../concepts/pipeline.md).
 
 When defining a sequence in a `ScenarioConfig^`, you need to provide a dictionary with the sequence name as the key
-and a list of task configurations that belongs to the sequence as the value. Note that the task configurations of the
+and a list of task configurations that belong to the sequence as the value. Note that the task configurations of the
 sequence must also exist in the tasks of the scenario configuration.
 
 # Using Cycles

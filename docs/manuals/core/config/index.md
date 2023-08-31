@@ -10,8 +10,8 @@ your application and its entities.
 
 !!! note "Reminder: Config vs Entities"
 
-    Throughout the documentation, configuration objects are named **_configs_** (`DataNodeConfig`, `TaskConfig`,
-    and `ScenarioConfig`), while runtime objects (`DataNode`, `Task`, `Sequence`, and `Scenario`) are called entities.
+    Throughout the documentation, configuration objects are named **_configs_** (`DataNodeConfig^`, `TaskConfig^`,
+    and `ScenarioConfig^`), while runtime objects (`DataNode^`, `Task^`, `Sequence^`, and `Scenario^`) are called entities.
 
     One thing to wrap your head around (it may not be very intuitive for everyone at first) is that
     the **configs** are really just configuration objects specifying the characteristics and behaviors
