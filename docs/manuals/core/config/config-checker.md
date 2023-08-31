@@ -23,12 +23,10 @@ Here is the list of the possible issues that the checker could return:
   to a `DataNodeConfig`.
 - A `WARNING` issue is created if a `TaskConfig^` has no input and no output.
 - An `ERROR` issue is created if the `function` parameter of a `TaskConfig^` is not a callable function.
-- An `ERROR` issue is created if one of the `task` parameters of a `PipelineConfig^` does not correspond to a
-  `TaskConfig`.
-- A `WARNING` issue is created if a `PipelineConfig^` has no task configuration defined.
-- An `ERROR` issue is created if one of the `pipeline` parameters of a `ScenarioConfig^` does not correspond to a
-  `PipelineConfig`.
-- A `WARNING` issue is created if a `ScenarioConfig^` has no pipeline configuration defined.
+- An `ERROR` issue is created if one of the tasks provided in the `sequences` parameters does not does not exist in
+  the corresponding list of tasks in `tasks` parameter of the `ScenarioConfig^`.
+- An `ERROR` issue is created if a `ScenarioConfig^` has no task configuration defined.
+- A `WARNING` issue is created if a `ScenarioConfig^` has no additional data node configuration defined.
 - An `ERROR` issue is created if the `frequency` parameter of a `ScenarioConfig^` has an incorrect `Frequency^` value.
 - An `ERROR` issue is created if the value of `comparators` property of a `ScenarioConfig^` is not a dictionary, with each key is a data node id and the value is a callable function.
 - If the `JobConfig^` has been configured with multiple workers, an `ERROR` issue is created if an "in_memory"

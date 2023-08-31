@@ -116,8 +116,8 @@ Config.configure_core(
 )
 ```
 
-Taipy will create a collection, in the database described in the configuration, for each Taipy entity (Cycle,
-Scenario, Pipeline, Datanode, Task and Job), where it will store information about the taipy entities.
+Taipy will create a collection, in the database described in the configuration, for each Taipy entity (`Cycle^`,
+`Scenario^`, `Datanode^`, `Task^` and `Job^`), where it will store information about the Taipy entities.
 
 Here are the configurable properties for the Mongo repository:
 

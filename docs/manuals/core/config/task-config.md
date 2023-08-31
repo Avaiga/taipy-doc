@@ -54,4 +54,4 @@ In lines 11-12, two data nodes are configured. They will be used as the function
 Finally, in lines 14-17, we create the task configuration with the id *foo* representing
 the function *multiply_and_add*. It expects two *input* data nodes and two *output* data nodes.
 
-[:material-arrow-right: The next section introduces the pipeline configuration](pipeline-config.md).
+[:material-arrow-right: The next section introduces the scenario configuration](scenario-config.md).
