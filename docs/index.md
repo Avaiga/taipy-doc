@@ -200,4 +200,12 @@ Below, you'll find a succinct elucidation of each term, contextualized within th
       <span>Expose Taipy's REST APIs</span>
     </a>
   </li>
+    <li>
+    <a class="tp-pill" href="manuals/about/">
+      <span>…</span>
+      <div class="tp-tooltip">
+        <p>Browse the complete list of features.</p>
+      </div>
+    </a>
+  </li>
 </ul>
