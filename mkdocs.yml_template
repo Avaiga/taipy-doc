@@ -47,7 +47,7 @@ nav:
               - manuals/core/concepts/index.md
               - "Data node": manuals/core/concepts/data-node.md
               - "Task": manuals/core/concepts/task.md
-              - "Pipeline": manuals/core/concepts/pipeline.md
+              - "Sequence": manuals/core/concepts/sequence.md
               - "Scenario": manuals/core/concepts/scenario.md
               - "Cycle": manuals/core/concepts/cycle.md
               - "Job": manuals/core/concepts/job.md
@@ -58,7 +58,6 @@ nav:
               - "Config": manuals/core/config/config.md
               - "Data node configs": manuals/core/config/data-node-config.md
               - "Task configs": manuals/core/config/task-config.md
-              - "Pipeline configs": manuals/core/config/pipeline-config.md
               - "Scenario configs": manuals/core/config/scenario-config.md
               - "Core config": manuals/core/config/core-config.md
               - "Job execution config": manuals/core/config/job-config.md
@@ -134,7 +133,7 @@ nav:
              - "Text edition": manuals/studio/config/textedition.md
           - "GUI Markdown support": manuals/studio/gui.md
     - "Python Reference Manual":
-      - "About Taipy's Python Reference Manual": manuals/reference.md
+      - manuals/reference/index.md
       [REFERENCE_CONTENT]
     - "REST API":
       - manuals/reference_rest/index.md

@@ -7,7 +7,7 @@
     **not** present if only [`taipy-gui`](https://pypi.org/project/taipy-gui/) is installed.
 
 Taipy provides a set of visual elements that are meant to simplify the use of the
-[entities](../../core/entities/) created with Taipy Core.
+[entities](../../core/entities/index.md) created with Taipy Core.
 
 These controls let users list the entities, create new ones, edit or delete them.
 
