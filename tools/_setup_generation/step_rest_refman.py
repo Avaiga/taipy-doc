@@ -103,7 +103,7 @@ class RestRefManStep(SetupStep):
                 if dest_path in enterprise_paths:
                     file.write(Setup.ENTERPRISE_BANNER)
                 file.write(f"{dest_path_desc}\n\n")
-                self.navigation += " " * 6 + f"- \"Paths for {dest_path}\": manuals/reference_rest/apis_{dest_path}.md\n"
+                self.navigation += f"- \"Paths for {dest_path}\": manuals/reference_rest/apis_{dest_path}.md\n"
                 path_files[dest_path] = file
 
             file.write(f"# `{path}`\n\n")
@@ -159,18 +159,17 @@ class RestRefManStep(SetupStep):
         for f in path_files.values():
             f.close()
 
-        file = open(f"{REST_REF_DIR_PATH}/schemas.md", "w")
-        for schema, schema_desc in rest_specs["components"]["schemas"].items():
-            properties = schema_desc.get("properties")
-            if properties is not None:
-                file.write(f"## {schema}\n\n")
-                file.write("|Name|Type|Description|\n")
-                file.write("|---|---|---|\n")
-                for property, property_desc in properties.items():
-                    file.write(f"|{property}|{get_property_type(property_desc, True)}|-|\n")
-                file.write("\n")
-        file.close()
-        self.navigation += " " * 6 + "- \"Schemas\": manuals/reference_rest/schemas.md\n"
+        with open(f"{REST_REF_DIR_PATH}/schemas.md", "w") as file:
+            for schema, schema_desc in rest_specs["components"]["schemas"].items():
+                properties = schema_desc.get("properties")
+                if properties is not None:
+                    file.write(f"## {schema}\n\n")
+                    file.write("|Name|Type|Description|\n")
+                    file.write("|---|---|---|\n")
+                    for property, property_desc in properties.items():
+                        file.write(f"|{property}|{get_property_type(property_desc, True)}|-|\n")
+                    file.write("\n")
+        self.navigation += "- \"Schemas\": manuals/reference_rest/schemas.md\n"
 
 
     def exit(self, setup: Setup):
