@@ -51,6 +51,11 @@ class RefManStep(SetupStep):
         ("taipy.core.exceptions.exceptions.*", "taipy.core.exceptions"),
         ("taipy.core.job.job_id.JobId", "taipy.core"),
         ("taipy.core.job.job.Job", "taipy.core"),
+        ("taipy.core.notification.CoreEventConsumerBase", "taipy.core.notification"),
+        ("taipy.core.notification.EventEntityType", "taipy.core.notification"),
+        ("taipy.core.notification.EventOperation", "taipy.core.notification"),
+        ("taipy.core.notification.Event", "taipy.core.notification"),
+        ("taipy.core.notification.Notifier", "taipy.core.notification"),
         ("taipy.core.pipeline.pipeline_id.PipelineId", "taipy.core"),
         ("taipy.core.pipeline.pipeline.Pipeline", "taipy.core"),
         ("taipy.core.scenario.scenario_id.ScenarioId", "taipy.core"),
@@ -107,7 +112,7 @@ class RefManStep(SetupStep):
         ("taipy.auth.config.authentication_config.AuthenticationConfig", "taipy.auth.config"),
     ]
     # Entries that should be hidden for the time being
-    HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback", "notification"]
+    HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback"]
     # Where the Reference Manual files are generated (MUST BE relative to docs_dir)
     REFERENCE_REL_PATH = "manuals/reference"
 
