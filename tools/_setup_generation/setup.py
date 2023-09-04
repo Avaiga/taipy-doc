@@ -61,7 +61,15 @@ class Setup(ABC):
             mkdocs_yml_file.write(self.mkdocs_yml_template_content)
 
     # Utility function to update the MkDocs yml template file
-    def update_mkdocs_yaml_template(self, pattern, replacement):
+    def update_mkdocs_yaml_template(self, pattern: str, replacement: str):
+        # Retrieve and keep indendation
+        if pattern.startswith(r"^\s*"):
+            pattern = r"^(\s*)" + pattern[4:]
+            lines = replacement.split("\n")
+            if not lines[-1]:
+                lines = lines[:-1]
+            replacement = "\n".join(map(lambda s: r"\1"+s, lines))+"\n"
+
         self.mkdocs_yml_template_content = re.sub(
             pattern,
             replacement if replacement else "",

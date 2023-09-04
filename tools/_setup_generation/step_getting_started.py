@@ -36,16 +36,16 @@ class GettingStartedStep(SetupStep):
         step_folders = map(lambda s: s[len('docs/'):], step_folders)
         step_folders = map(self._format_page_content, step_folders)
 
-        content = f"    - \"{self.DEFAULT_CONTENT[page][0]}\":\n"
-        content += f"      - getting_started/{page}/index.md\n"
-        content += "\n".join(step_folders)
+        content = f"- \"{self.DEFAULT_CONTENT[page][0]}\":\n  - getting_started/{page}/index.md\n"
+        if step_folders:
+            content += "\n".join(step_folders)
         self.content.append(content)
 
     def _format_page_content(self, filepath: str) -> str:
         readme_path = f"{filepath}/ReadMe.md".replace('\\', '/')
         readme_content = Path('docs/', readme_path).read_text().split('\n')
         step_name = next(filter(lambda l: "# Step" in l, readme_content))[len("# "):]
-        return f"      - \"{step_name}\": {readme_path}"
+        return f"  - \"{step_name}\": {readme_path}"
 
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(r"^\s*\[GETTING_STARTED_CONTENT\]\s*\n", self.content)

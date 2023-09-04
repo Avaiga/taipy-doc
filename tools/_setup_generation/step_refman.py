@@ -16,8 +16,8 @@ import shutil
 
 
 class RefManStep(SetupStep):
-    # Package grouping
-    PACKAGE_GROUP = [
+    # Package grouping (order is kept in generation)
+    PACKAGE_GROUPS = [
         "taipy.config",
         "taipy.core",
         "taipy.gui",
@@ -326,34 +326,30 @@ class RefManStep(SetupStep):
                     raise SystemError(
                         "FATAL - Invalid entry type '{entry_info['type']}' for {entry_info['module']}.{entry_info['name']}"
                     )
-            if package in RefManStep.PACKAGE_GROUP:
+            if package in RefManStep.PACKAGE_GROUPS:
                 package_group = package
                 package_path = f"{self.REFERENCE_DIR_PATH}/pkg_{package}"
                 os.mkdir(package_path)
                 package_output_path = os.path.join(package_path, "index.md")
                 self.navigation += (
-                    " " * 6
-                    + f"- {package}:\n"
-                    + " " * 8
-                    + f"- {RefManStep.REFERENCE_REL_PATH}/pkg_{package}/index.md\n"
+                    f"- {package}:\n  - {RefManStep.REFERENCE_REL_PATH}/pkg_{package}/index.md\n"
                 )
             else:
-                new_package_group = None
-                for p in RefManStep.PACKAGE_GROUP:
+                high_package_group = None
+                for p in RefManStep.PACKAGE_GROUPS:
                     if package.startswith(p + "."):
-                        new_package_group = p
+                        high_package_group = p
                         break
-                if new_package_group != package_group:
-                    if not new_package_group:
+                if high_package_group != package_group:
+                    if not high_package_group:
                         raise SystemExit(
-                            f"FATAL - Unknown package '{new_package_group}' for package '{package}' (renamed from '{package_group}')"
+                            f"FATAL - Unknown package '{high_package_group}' for package '{package}' (renamed from '{package_group}')"
                         )
-                    package_group = new_package_group
-                    self.navigation += " " * 6 + f"- {package_group}:\n"
-                self.navigation += (
-                    " " * (8 if package_group else 6)
-                    + f"- {package}: manuals/reference/pkg_{package}.md\n"
-                )
+                    package_group = high_package_group
+                    self.navigation += f"- {package_group}:\n"
+                if package_group:
+                    self.navigation += "  "
+                self.navigation += f"- {package}: {RefManStep.REFERENCE_REL_PATH}/pkg_{package}.md\n"
                 package_output_path = os.path.join(
                     self.REFERENCE_DIR_PATH, f"pkg_{package}.md"
                 )
