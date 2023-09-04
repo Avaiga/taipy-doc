@@ -13,16 +13,16 @@ Employing Taipy Studio, a graphical configuration editor, configuring your scena
 
 For data scientists and developers alike, Taipy acts as a catalyst for successful Python endeavors. Whether your aim is a straightforward pilot or a comprehensive application within IDEs or Notebooks, Taipy equips you with all indispensable functionalities. Its architecture is meticulously crafted to truncate both development and deployment timelines significantly.
 
-Taipy's web application builder is a robust tool that empowers individuals and enterprises to develop web applications without extensive coding expertise. A primary advantage of Taipy lies in its ability to expedite development across both front-end and back-end domains, encompassing everything from initial prototypes to fully scalable, production-ready applications.
+Taipy is a complete tool that empowers individuals and enterprises to develop applications without extensive coding expertise. A primary advantage of Taipy lies in its ability to expedite development across both front-end and back-end domains, encompassing everything from initial prototypes to fully scalable, production-ready applications.
 
-**Taipy Front-End Functionalities:**
+**Front-End Functionalities:**
 
-- Crafting a user interface is accomplished with a foundational understanding of Python programming.
+- Creating a user interface requires a solid grasp of Python programming fundamentals.
 - Taipy is purposefully engineered to prioritize user-friendliness, resulting in a straightforward and intuitive process of user interface creation.
 - No prior knowledge of web design is necessary, and it eradicates the need for any prerequisites related to CSS and HTML.
-- Leveraging augmented markdown syntax, Taipy aids users in seamlessly generating their desired web pages.
+- Leveraging augmented Markdown syntax, Taipy GUI aids users in seamlessly generating their desired web pages.
 
-**Taipy Back-End Functionalities:**
+**Back-End Functionalities:**
 
 - Taipy provides extensive support for establishing resilient pipelines capable of managing diverse scenarios.
 - The process of modeling Directed Acyclic Graphs (DAGs) is simplified through Taipy's functionality.
