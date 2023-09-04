@@ -2,8 +2,8 @@ The [Entities' creation](scenario-creation.md) section provides documentation on
 that we know how to create a new `Sequence^`, this section focuses on describing the sequence's attributes
 and utility methods.
 
-In this section, it is assumed that <a href="./code_example/my_config.py" download>`my_config.py`</a>
-module contains a Taipy configuration already implemented.
+In this section, it is assumed that the <a href="./code_example/my_config.py" download>`my_config.py`</a>
+module contains an already implemented configuration.
 
 # Sequence attributes
 
@@ -14,14 +14,14 @@ add data_nodes, parent_ids
 
 - _**subscribers**_: The list of Tuples (callback, params) representing the subscribers.
 - _**properties**_: The complete dictionary of the sequence properties. It includes a copy of the properties of
-  the sequence configuration, in addition to the properties provided at the creation and at runtime.
-- _**tasks**_: The dictionary holding the various tasks of the sequence. The key corresponds to the config_id of the
+  the sequence configuration, in addition to the properties provided at the creation and runtime.
+- _**tasks**_: The dictionary holds the sequence's various tasks. The key corresponds to the config_id of the
   task while the value is the task itself.
 - _**data_nodes**_: The dictionary holding the various data nodes of the sequence. The key corresponds to the
     data node's _config_id_ (while the value is the data node itself).
 - _**owner_id**_: The identifier of the owner, which can be a scenario, cycle, or None.
 - _**version**_: The string indicates the application version of the sequence to instantiate. If not provided,
-  the current version is used. Refer to the [version management](../versioning/index.md) page for more details.
+  the current version is used. For more details, refer to [version management](../versioning/index.md).
 - Each property of the _**properties**_ dictionary is also directly exposed as an attribute.
 - Each nested entity is also exposed as an attribute of the sequence. The attribute name corresponds to the
   *config_id* of the nested entity.
@@ -58,7 +58,7 @@ add data_nodes, parent_ids
 There are two ways to retrieve a sequence:
 
 The first method is by getting it from its parent scenario, using the sequence name as an attribute.
-The second method to access a sequence is from its id by using the `taipy.get()^` method.
+The second method to access a sequence is from its id using the `taipy.get()^` method.
 
 ```python linenums="1"
 import taipy as tp

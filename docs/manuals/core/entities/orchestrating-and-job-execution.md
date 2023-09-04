@@ -76,7 +76,7 @@ is no limit to the wait time. If _wait_ is True and _timeout_ is specified,
 taipy waits until all the submitted jobs are finished, or the timeout expires (which ever occurred
 first).
 
-It is also possible to submit a single equence using the same `taipy.submit()^` method. It returns a list of created `Job^`s:
+It is also possible to submit a single sequence using the same `taipy.submit()^` method. It returns a list of created `Job^`s:
 
 ```python linenums="1"
 import taipy as tp

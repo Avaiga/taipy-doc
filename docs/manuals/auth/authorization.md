@@ -229,20 +229,20 @@ Taipy Core uses four predefined user roles names that can be assigned to users. 
 - A *reader* ("TAIPY_READER" role) has the permission to view the various entities and
   related data in a data node.
 - A *reader*, however, cannot create, edit, delete an entity or edit the data in a data
-  node manually. Readers are not permitted to submit tasks, sequences or scenarios,
+  node manually. Readers are not permitted to submit tasks, sequences, or scenarios,
   subscribe or unsubscribe to an execution or cancel, pause or resume any job.
 
 ### "TAIPY_EDITOR"
 
 - An *editor* ("TAIPY_EDITOR" role) has the permission to view, create, edit and delete
   the various entities and related data in data node.
-- An *editor*, however, cannot execute any task, sequence or scenario, subscribe or
+- An *editor*, however, cannot execute any task, sequence, or scenario, subscribe or
   unsubscribe to an execution or cancel, pause or resume any job.
 
 ### "TAIPY_EXECUTOR"
 
 - An *executor* ("TAIPY_EXECUTOR" role) has the permission to view the various entities,
-  and related data in data node, submit tasks, sequences or scenarios for execution,
+  and related data in the data node, submit tasks, sequences or scenarios for execution,
   subscribe or unsubscribe an execution, and cancel, pause or resume any job.
 - An *executor*, however, cannot create, edit or delete the various entities, and
   related data in data node.

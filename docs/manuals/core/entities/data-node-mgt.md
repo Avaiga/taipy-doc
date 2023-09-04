@@ -1189,7 +1189,7 @@ temp_data[(temp_data == 14) | (temp_data == 10)]
 
 # Get parent scenarios, sequences and tasks
 
-To get the parent entities of a data node (scenarios or sequences or tasks) you can use either the method
+To get the parent entities of a data node (scenarios, sequences, or tasks) you can use either the method
 `DataNode.get_parents()^` or the function `taipy.get_parents()^`. Both return the parents of the data node.
 
 !!! Example
