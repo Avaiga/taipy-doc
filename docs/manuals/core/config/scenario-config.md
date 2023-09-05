@@ -100,7 +100,7 @@ scenario_cfg.remove_sequences("add_sequence")
 ```
 In the small examples above, we create a scenario configuration `ScenarioConfig^` from task configurations and
 define sequences for that scenario configuration. You can refer back to the sequence concept in
-[Sequence concept](../concepts/pipeline.md).
+[Sequence concept](../concepts/sequence.md).
 
 When defining a sequence in a `ScenarioConfig^`, you need to provide a dictionary with the sequence name as the key
 and a list of task configurations that belong to the sequence as the value. Note that the task configurations of the

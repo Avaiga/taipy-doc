@@ -73,7 +73,7 @@ user-defined scenarios, interactive data, smart job orchestration, etc.
 ## Taipy REST - `taipy.rest`
 
 The `taipy.rest` package allows you to access Taipy Core functionalities such as scenarios management,
-pipelines and task orchestration, data management, etc., through a dedicated REST API.
+sequences and task orchestration, data management, etc., through a dedicated REST API.
 This package aims to provide a solution to easily integrate Taipy applications with other IT systems.
 The API comes with multiple endpoints for you to work with Taipy Core conveniently and efficiently.
 

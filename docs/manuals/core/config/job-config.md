@@ -7,7 +7,7 @@ available in Taipy: the `standalone` mode and the `development` mode.
 With the _development_ mode, the jobs are synchronously executed one by one. The jobs are directly executed
 in the main thread at the submission. Note that with the _development_ mode, the submit method waits for the
 jobs to be finished before to return. Please refer to the
-[submit entity](../entities/orchestrating-and-job-execution.md#submit-a-scenario-pipeline-or-task) section to
+[submit entity](../entities/orchestrating-and-job-execution.md#submit-a-scenario-sequence-or-task) section to
 the see how to submit jobs.
 
 It is particularly handy to test a job execution and/or investigate an issue in the function
@@ -56,7 +56,7 @@ At the submission, the job is queued. It is dequeued in a different thread and s
 executed.
 Note that with the _standalone_ mode, the submit method in not blocking and returns after the job is queued.
 It means the submit method can return before the job finishes or even before it is dequeued. Please refer to
-the [submit entity](../entities/orchestrating-and-job-execution.md#submit-a-scenario-pipeline-or-task) section
+the [submit entity](../entities/orchestrating-and-job-execution.md#submit-a-scenario-sequence-or-task) section
 to the see how to submit jobs.
 
 You can configure the _standalone_ mode with the following config:
