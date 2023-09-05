@@ -160,7 +160,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/gui/controls/">
+    <a class="tp-pill" href="manuals/gui/viselements/controls/">
       <span>…</span>
       <div class="tp-tooltip">
         <p>Browse the complete list of visual elements.</p>
