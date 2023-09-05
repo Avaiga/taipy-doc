@@ -16,7 +16,7 @@ Page names in multi-page application? []: slide_1 slide_2 slide_3
 Does the application use scenario management or version management? [No]: y
 Does the application use Rest API? [No]:
 $ cd ./new_application
-$ python app.py
+$ taipy run app.py
 ```
 In this example, we scaffold a new application using the default Taipy template, which lets us create a simple,
 minimalized Taipy application.
@@ -40,7 +40,7 @@ minimalized Taipy application.
   application should not include the Taipy Rest API service.
 
 Finally, we changed the directory (`cd`) to our newly created folder and started the application by running
-`python app.py`.
+`taipy run app.py`.
 
 ## From a specific template
 
@@ -53,7 +53,7 @@ Application main Python file [main.py]: app.py
 Application title [Default title]: App Title
 Does the application use TOML Config? [No]:
 $ cd ./new_application
-$ python app.py
+$ taipy run app.py
 ```
 
 In this example, we scaffold a new Taipy application using the "scenario-management" template, which utilizes

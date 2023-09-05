@@ -22,7 +22,7 @@ Version number                         Mode                   Creation date
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
-$ python main.py --production 0.1
+$ taipy run main.py --production 0.1
 [2023-01-25 13:00:05,333][Taipy][INFO] job JOB_example_algorithm_e25214c4-1047-4136-a5db-c1241a3ddbcf is completed.
 Number of scenarios: 3
 
@@ -39,7 +39,7 @@ Without explicitly providing the version name, the latest version of your applic
 Here is another example:
 
 ```console
-$ python main.py --experiment 1.0
+$ taipy run main.py --experiment 1.0
 [2023-01-25 13:05:17,712][Taipy][INFO] job JOB_example_algorithm_ac79138a-4c3a-4560-bbd4-f4975083bf83 is completed.
 Number of scenarios: 1
 
@@ -50,7 +50,7 @@ Version number                         Mode                   Creation date
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
-$ python main.py --production
+$ taipy run main.py --production
 [2023-01-25 13:06:00,871][Taipy][INFO] job JOB_example_algorithm_1fcb6feb-cef1-46e0-a818-4ae2e58df57d is completed.
 Number of scenarios: 5
 
@@ -106,7 +106,7 @@ comments=false
 ```
 
 ```console
-$ python main.py --production 1.0
+$ taipy run main.py --production 1.0
 [2023-01-25 12:52:05,484][Taipy][ERROR] The configuration for version 1.0 conflicts with the current configuration:
     DATA_NODE "input" has attribute "path" added: input.pkl
     DATA_NODE "output" has attribute "path" added: output.pkl
@@ -125,7 +125,7 @@ First, you can run the production version with the `--taipy-force` option to for
 the version's configuration before re-running the application.
 
 ```console
-$ python main.py --production 1.0 --taipy-force
+$ taipy run main.py --production 1.0 --taipy-force
 [2023-07-04 10:25:41][Taipy][ERROR] The configuration for version 1.0 conflicts with the current configuration:
     DATA_NODE "input" has attribute "path" added: input.pkl
     DATA_NODE "output" has attribute "path" added: output.pkl
@@ -161,7 +161,7 @@ Keep this in mind for later comparison.
 With the newly updated configuration, let's create a new production version named 2.0.
 
 ```console
-$ python main.py --production 2.0
+$ taipy run main.py --production 2.0
 [2023-07-04 11:35:31][Taipy][INFO] There is no migration function from production version "1.0" to version "2.0".
 [2023-07-04 11:35:31][Taipy][INFO] job JOB_example_algorithm_e3f72ec8-86b1-40c7-a382-6f63f04e8b7b is completed.
 ```

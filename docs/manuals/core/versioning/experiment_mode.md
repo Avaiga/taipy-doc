@@ -34,7 +34,7 @@ $ taipy manage-versions --list
 Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development (latest)   2023-01-25 12:20:33
 
-$ python main.py --experiment
+$ taipy run main.py --experiment
 [2023-01-25 12:20:56,474][Taipy][INFO] job JOB_example_algorithm_e1c49bdb-9284-40c5-a096-db0235697cb3 is completed.
 Number of scenarios: 1
 
@@ -61,7 +61,7 @@ Version number                         Mode                   Creation date
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment (latest)    2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
-$ python main.py --experiment 0.1
+$ taipy run main.py --experiment 0.1
 [2023-01-25 12:24:19,613][Taipy][INFO] job JOB_example_algorithm_9b6232f9-601e-4a85-852e-2ada7bc1e459 is completed.
 Number of scenarios: 1
 
@@ -94,7 +94,7 @@ Version number                         Mode                   Creation date
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
-$ python main.py --experiment 0.1
+$ taipy run main.py --experiment 0.1
 [2023-01-25 12:28:54,963][Taipy][INFO] job JOB_example_algorithm_2133dc18-643b-4351-872b-aedfc2c65c9c is completed.
 Number of scenarios: 2
 ```
@@ -121,7 +121,7 @@ comments=false
 ```
 
 ```console
-$ python main.py --experiment 0.1
+$ taipy run main.py --experiment 0.1
 [2023-01-25 12:52:05,484][Taipy][ERROR] The configuration for version 0.1 conflicts with the current configuration:
     DATA_NODE "output" has attribute "description" added: What a description
 
@@ -134,7 +134,7 @@ configuration changes, or you can run the application with the `--taipy-force` o
 Taipy to update the configuration of the provided version before re-running the application.
 
 ```console
-$ python main.py --experiment 0.1 --taipy-force
+$ taipy run main.py --experiment 0.1 --taipy-force
 [2023-01-25 12:55:05,484][Taipy][ERROR] The configuration for version 0.1 conflicts with the current Python Config.
     DATA_NODE "output" has attribute "description" added: What a description
 [2023-01-25 12:52:05,692][Taipy][WARNING] Option --taipy-force is detected, overriding the configuration of version  0.1 ...

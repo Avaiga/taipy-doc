@@ -19,7 +19,7 @@ By default, a Taipy Core application runs in development mode. You can also expl
 development mode by running your Taipy application with `--development` or `-dev` option on the CLI.
 
 ```console
-$ python main.py
+$ taipy run main.py
 [2023-01-24 23:46:29,468][Taipy][INFO] Development mode: Clean all entities of version 9b01399c-67e4-41a4-83d3-121f7210d4e7
 [2023-01-24 23:46:29,615][Taipy][INFO] job JOB_example_algorithm_9d75018a-1803-4358-8530-e62641e00ed8 is completed.
 Number of scenarios: 1
@@ -29,7 +29,7 @@ Version number                         Mode                   Creation date
 9b01399c-67e4-41a4-83d3-121f7210d4e7   Development (latest)   2023-01-23 23:46:29
 ```
 
-In the example above, `python main.py` command runs the application in development mode. The
+In the example above, `taipy run main.py` command runs the application in development mode. The
 command `taipy manage-versions --list` lists all versions of your current Taipy Core application
 (see the [Manage versions on Taipy CLI page](../../cli/manage-versions.md) for more details).
 
