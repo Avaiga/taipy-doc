@@ -122,7 +122,7 @@ d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:1
 7a24dbb8-bdf6-4c84-9ddf-7b921abc5df9   Experiment             2023-01-16 17:10:15
 1.0                                    Production             2023-01-12 09:10:35
 
-$ python main.py --delete "1.0"
+$ taipy manage-versions --delete "1.0"
 Successfully delete version 1.0.
 
 $ taipy manage-versions --list
@@ -147,7 +147,7 @@ d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:1
 7a24dbb8-bdf6-4c84-9ddf-7b921abc5df9   Experiment             2023-01-16 17:10:15
 1.0                                    Production             2023-01-12 09:10:35
 
-$ python main.py --delete-production "1.0"
+$ taipy manage-versions --delete-production "1.0"
 Successfully delete version 1.0 from the production version list.
 
 $ taipy manage-versions --list
