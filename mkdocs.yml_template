@@ -68,7 +68,7 @@ nav:
               - manuals/core/entities/index.md
               - "Entities' creation": manuals/core/entities/scenario-creation.md
               - "Scenario and cycle management": manuals/core/entities/scenario-cycle-mgt.md
-              - "Pipeline management": manuals/core/entities/pipeline-mgt.md
+              - "Sequence management": manuals/core/entities/sequence-mgt.md
               - "Task management": manuals/core/entities/task-mgt.md
               - "Data node management": manuals/core/entities/data-node-mgt.md
               - "Job execution": manuals/core/entities/orchestrating-and-job-execution.md

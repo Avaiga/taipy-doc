@@ -181,7 +181,7 @@ Below, you'll find a succinct elucidation of each term, contextualized within th
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/core/entities/orchestrating-and-job-execution/#submit-a-scenario-pipeline-or-task/">
+    <a class="tp-pill" href="manuals/core/entities/orchestrating-and-job-execution/#submit-a-scenario-sequence-or-task/">
       <span>Submit Scenario</span>
     </a>
   </li>

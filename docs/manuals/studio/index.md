@@ -14,7 +14,7 @@ This tool addresses two major areas:
 
     Taipy Studio provides a graphical editor where you can create and configure
     the elements of your configurations stored in toml files that your Taipy
-    application can load at runtime. The editor can represent pipelines and
+    application can load at runtime. The editor can represent sequences and
     scenarios as graphs, where nodes are DataNodes or Tasks.
 
     You may want to learn more about Taipy configuration files edition by navigating

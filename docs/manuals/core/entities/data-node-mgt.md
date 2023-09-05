@@ -1,4 +1,4 @@
-Data nodes get created when scenarios or pipelines are created. Please refer to the
+Data nodes get created when scenarios are created. Please refer to the
 [Entities' creation](scenario-creation.md) section for more details.
 
 In this section, it is assumed that <a href="./code_example/my_config.py" download>`my_config.py`</a>
@@ -10,10 +10,10 @@ A `DataNode^` entity is identified by a unique identifier `id` that Taipy genera
 A data node also holds various properties and attributes accessible through the entity:
 
 - _**config_id**_: The id of the data node config.
-- _**scope**_: The scope of this data node (scenario, pipeline, etc.).
+- _**scope**_: The scope of this data node (scenario, etc.).
 - _**id**_: The unique identifier of this data node.
 - _**name**_: The user-readable name of the data node.
-- _**owner_id**_: The identifier of the owner (pipeline_id, scenario_id, cycle_id) or None.
+- _**owner_id**_: The identifier of the owner (scenario_id, cycle_id) or None.
 - _**last_edit_date**_: The date and time of the last data modification made through Taipy.
     Note that **only** for file-based data nodes (CSV, Excel, pickle, JSON, Parquet, ...), the
     file's last modification date is used to compute the _**last_edit_date**_ value. That means if a file is modified
@@ -81,7 +81,7 @@ passing the data node id as a parameter:
 
 ## Get data nodes by config_id
 
-The data nodes that are part of a **scenario**, **pipeline**, or **task** can be directly accessed as attributes by
+The data nodes that are part of a **scenario**, **sequence**, or **task** can be directly accessed as attributes by
 using their config_id:
 
 !!! Example
@@ -96,14 +96,14 @@ using their config_id:
     # Access the data node 'sales_history' from the scenario
     scenario.sales_history
 
-    # Access the pipeline 'sales' from the scenario and
-    # then access the data node 'sales_history' from the pipeline
-    pipeline = scenario.sales
-    pipeline.sales_history
+    # Access the sequence 'sales' from the scenario and
+    # then access the data node 'sales_history' from the sequence
+    sequence = scenario.sales
+    sequence.sales_history
 
-    # Access the task 'training' from the pipeline and
+    # Access the task 'training' from the sequence and
     # then access the data node 'sales_history' from the task
-    task = pipeline.training
+    task = sequence.training
     task.sales_history
     ```
 
@@ -127,7 +127,7 @@ This method returns the list of all existing data nodes instantiated from the co
 
 ##  Get all data nodes
 
-All data nodes that are part of a **scenario** or a **pipeline** can be directly accessed as attributes:
+All data nodes that are part of a **scenario** or a **sequence** can be directly accessed as attributes:
 
 !!! Example
 
@@ -141,10 +141,10 @@ All data nodes that are part of a **scenario** or a **pipeline** can be directly
     # Access all the data nodes from the scenario
     scenario.data_nodes
 
-    # Access the pipeline 'sales' from the scenario and
-    # then access all the data nodes from the pipeline
-    pipeline = scenario.sales
-    pipeline.data_nodes
+    # Access the sequence 'sales' from the scenario and
+    # then access all the data nodes from the sequence
+    sequence = scenario.sales
+    sequence.data_nodes
     ```
 
 All the data nodes can be retrieved using the method `taipy.get_data_nodes()^` which returns a list of all existing
@@ -1187,9 +1187,9 @@ temp_data[(temp_data == 14) | (temp_data == 10)]
     For now, the `DataNode.filter()^` method is only implemented for `CSVDataNode^`, `ExcelDataNode^`,
     `SQLTableDataNode^`, `SQLDataNode` with `"pandas"` as the _**exposed_type**_ value.
 
-# Get parent scenarios, pipelines and tasks
+# Get parent scenarios, sequences and tasks
 
-To get the parent entities of a data node (scenarios or pipelines or tasks) you can use either the method
+To get the parent entities of a data node (scenarios, sequences, or tasks) you can use either the method
 `DataNode.get_parents()^` or the function `taipy.get_parents()^`. Both return the parents of the data node.
 
 !!! Example
@@ -1206,11 +1206,11 @@ To get the parent entities of a data node (scenarios or pipelines or tasks) you 
 
     # Retrieve the parent entities of the data node
     parent_entities = data_node.get_parents()
-    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1], 'tasks': [Task 1]}
+    # {'scenarios': [Scenario 1], 'sequences': [Sequence 1], 'tasks': [Task 1]}
 
     # Retrieve the parent entities of the data node
     tp.get_parents(data_node)
-    # {'scenarios': [Scenario 1], 'pipelines': [Pipeline 1], 'tasks': [Task 1]}
+    # {'scenarios': [Scenario 1], 'sequences': [Sequence 1], 'tasks': [Task 1]}
     ```
 
 [:material-arrow-right: The next section shows the job orchestration and execution](orchestrating-and-job-execution.md).

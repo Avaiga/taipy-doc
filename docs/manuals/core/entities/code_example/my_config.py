@@ -1,14 +1,13 @@
 from datetime import datetime
-from taipy import Config, Frequency, Scope
+
 import pandas as pd
+
+from taipy import Config, Frequency, Scope
 
 
 def write_orders_plan(data: pd.DataFrame):
     insert_data = list(data[["date", "product_id", "number_of_products"]].itertuples(index=False, name=None))
-    return [
-        "DELETE FROM orders",
-        ("INSERT INTO orders VALUES (?, ?, ?)", insert_data)
-    ]
+    return ["DELETE FROM orders", ("INSERT INTO orders VALUES (?, ?, ?)", insert_data)]
 
 
 def train(sales_history: pd.DataFrame):
@@ -59,14 +58,11 @@ planning_cfg = Config.configure_task(
     id="planning", function=plan, input=[sales_predictions_cfg, capacity_cfg], output=[orders_cfg]
 )
 
-# Configure the two pipelines
-sales_pipeline_cfg = Config.configure_pipeline(id="sales", task_configs=[training_cfg, predicting_cfg])
-production_pipeline_cfg = Config.configure_pipeline(id="production", task_configs=[planning_cfg])
-
 # Configure the scenario
 monthly_scenario_cfg = Config.configure_scenario(
     id="scenario_configuration",
-    pipeline_configs=[sales_pipeline_cfg, production_pipeline_cfg],
+    task_configs=[training_cfg, predicting_cfg, planning_cfg],
     frequency=Frequency.MONTHLY,
     comparators={sales_predictions_cfg.id: compare},
+    sequences={"sales": [training_cfg, predicting_cfg], "production": [planning_cfg]},
 )

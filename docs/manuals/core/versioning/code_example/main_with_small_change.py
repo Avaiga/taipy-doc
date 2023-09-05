@@ -10,7 +10,7 @@ def example_algorithm(entry: str):
 input_cfg = Config.configure_data_node("input", default_data="a_string")
 output_cfg = Config.configure_data_node("output", description="What a description")
 task_cfg = Config.configure_task("example_algorithm", example_algorithm, input_cfg, output_cfg)
-scenario_cfg = Config.configure_scenario_from_tasks("my_scenario", [task_cfg])
+scenario_cfg = Config.configure_scenario("my_scenario", [task_cfg])
 
 if __name__ == "__main__":
     tp.Core().run()

@@ -1,10 +1,10 @@
 import taipy as tp
 from taipy import Config, Core
 
-
 ################################################################
 #                  Configure your application                  #
 ################################################################
+
 
 def build_message(name):
     return f"Hello {name}!"
@@ -17,7 +17,7 @@ message_data_node_cfg = Config.configure_data_node(id="message")
 # The task represents the build_message function
 build_msg_task_cfg = Config.configure_task("build_msg", build_message, name_data_node_cfg, message_data_node_cfg)
 # The scenario represent the whole execution graph
-scenario_cfg = Config.configure_scenario_from_tasks("scenario", task_configs=[build_msg_task_cfg])
+scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_task_cfg])
 
 if __name__ == "__main__":
     ################################################################

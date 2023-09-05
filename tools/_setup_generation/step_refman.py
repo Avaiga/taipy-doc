@@ -7,12 +7,13 @@
 # It finally updates the top navigation bar content (in mkdocs.yml) to
 # reflect the root package structure.
 # ################################################################################
-from .setup import Setup, SetupStep
-from inspect import isclass, isfunction, ismodule
 import json
 import os
 import re
 import shutil
+from inspect import isclass, isfunction, ismodule
+
+from .setup import Setup, SetupStep
 
 
 class RefManStep(SetupStep):
@@ -57,6 +58,9 @@ class RefManStep(SetupStep):
         ("taipy.core.notification.EventOperation", "taipy.core.notification"),
         ("taipy.core.notification.Event", "taipy.core.notification"),
         ("taipy.core.notification.Notifier", "taipy.core.notification"),
+        ("taipy.core.sequence.sequence_id.SequenceId", "taipy.core"),
+        ("taipy.core.sequence.sequence.Sequence", "taipy.core"),
+        ("taipy.core.scenario.scenario_id.ScenarioId", "taipy.core"),
         ("taipy.core.scenario.scenario.Scenario", "taipy.core"),
         ("taipy.core.scenario.scenario_id.ScenarioId", "taipy.core"),
         ("taipy.core.sequence.sequence.Sequence", "taipy.core"),
@@ -66,6 +70,7 @@ class RefManStep(SetupStep):
         ("taipy.core.taipy.clean_all_entities_by_version", "taipy.core"),
         ("taipy.core.taipy.compare_scenarios", "taipy.core"),
         ("taipy.core.taipy.create_global_data_node", "taipy.core"),
+        ("taipy.core.taipy.create_sequence", "taipy.core"),
         ("taipy.core.taipy.create_scenario", "taipy.core"),
         ("taipy.core.taipy.delete", "taipy.core"),
         ("taipy.core.taipy.delete_job", "taipy.core"),
@@ -220,9 +225,7 @@ class RefManStep(SetupStep):
                     if first_line:
                         if first_line.group(0).startswith("NOT DOCUMENTED"):
                             continue
-                        doc = REMOVE_LINE_SKIPS_RE.subn(" ", first_line.group(0))[
-                            0
-                        ].strip()
+                        doc = REMOVE_LINE_SKIPS_RE.subn(" ", first_line.group(0))[0].strip()
                     else:
                         print(
                             f"WARNING - Couldn't extract doc summary for {e.__name__} in {e.__module__}",
@@ -358,10 +361,9 @@ class RefManStep(SetupStep):
                 package_output_path = os.path.join(
                     self.REFERENCE_DIR_PATH, f"pkg_{package}.md"
                 )
+                package_output_path = os.path.join(self.REFERENCE_DIR_PATH, f"pkg_{package}.md")
 
-            def generate_entries(
-                entry_infos, package, type, package_output_file, in_group
-            ):
+            def generate_entries(entry_infos, package, type, package_output_file, in_group):
                 in_group = "../" if in_group else ""
                 for entry_info in sorted(entry_infos, key=lambda i: i["name"]):
                     name = entry_info["name"]
@@ -371,14 +373,9 @@ class RefManStep(SetupStep):
                         + f"{'()' if type == FUNCTION_ID else ''}`]({in_group}{force_package}.{name}.md)"
                         + f"{': ' + entry_info['doc'] if entry_info['doc'] else ' - NOT DOCUMENTED'}\n"
                     )
-                    output_path = os.path.join(
-                        self.REFERENCE_DIR_PATH, f"{force_package}.{name}.md"
-                    )
+                    output_path = os.path.join(self.REFERENCE_DIR_PATH, f"{force_package}.{name}.md")
                     with open(output_path, "w") as output_file:
-                        output_file.write(
-                            "---\nhide:\n  - navigation\n---\n\n"
-                            + f"::: {force_package}.{name}\n"
-                        )
+                        output_file.write("---\nhide:\n  - navigation\n---\n\n" + f"::: {force_package}.{name}\n")
                     if xref := xrefs.get(name):
                         print(
                             f"ERROR - {'Function' if type == FUNCTION_ID else 'Class'} {name} already declared as {xref[0]}.{xref[1]}"
@@ -390,7 +387,7 @@ class RefManStep(SetupStep):
                     ]
 
             with open(package_output_path, "w") as package_output_file:
-                package_output_file.write(f"---\ntitle: \"{package}\" package\n---\n\n")
+                package_output_file.write(f'---\ntitle: "{package}" package\n---\n\n')
                 package_output_file.write(f"# Package: `{package}`\n\n")
                 if package in module_doc and module_doc[package]:
                     package_output_file.write(module_doc[package])
@@ -399,14 +396,9 @@ class RefManStep(SetupStep):
                     package_output_file.write(f"## Types\n\n")
                     for type in types:
                         name = type["name"]
-                        package_output_file.write(
-                            f"   - `{name}`"
-                            + f"{': ' + type.get('doc', ' - NOT DOCUMENTED')}\n"
-                        )
+                        package_output_file.write(f"   - `{name}`" + f"{': ' + type.get('doc', ' - NOT DOCUMENTED')}\n")
                         if name in xrefs:
-                            print(
-                                f"WARNING - Type {package}.{name} already declared in {xrefs[name]}"
-                            )
+                            print(f"WARNING - Type {package}.{name} already declared in {xrefs[name]}")
                         xrefs[name] = [
                             package,
                             entry_info["module"],
@@ -423,9 +415,7 @@ class RefManStep(SetupStep):
                     )
                 if classes:
                     package_output_file.write(f"## Classes\n\n")
-                    generate_entries(
-                        classes, package, CLASS_ID, package_output_file, package_grouped
-                    )
+                    generate_entries(classes, package, CLASS_ID, package_output_file, package_grouped)
 
         self.add_external_methods_to_config_class(setup)
 
@@ -473,7 +463,7 @@ from taipy.core.config.job_config import JobConfig
 from taipy.core.config.data_node_config import DataNodeConfig
 from taipy.core.config.task_config import TaskConfig
 from taipy.core.config.scenario_config import ScenarioConfig
-from taipy.core.config.pipeline_config import PipelineConfig\n"""
+from taipy.core.config.sequence_config import SequenceConfig\n"""
         contents.insert(11, imports_to_inject)
         contents.insert(len(contents) - 2, methods_to_inject)
 
@@ -482,21 +472,17 @@ from taipy.core.config.pipeline_config import PipelineConfig\n"""
             new_content = "".join(contents)
             new_content = new_content.replace(
                 "custom_document: Any = <class 'taipy.core.common.mongo_default_document.MongoDefaultDocument'>",
-                "custom_document: Any = MongoDefaultDocument"
+                "custom_document: Any = MongoDefaultDocument",
             )
             new_content = new_content.replace("taipy.config.common.scope.Scope", "Scope")
             new_content = new_content.replace("<Scope.SCENARIO: 2>", "Scope.SCENARIO")
             new_content = new_content.replace("taipy.core.config.data_node_config.DataNodeConfig", "DataNodeConfig")
             new_content = new_content.replace("taipy.core.config.task_config.TaskConfig", "TaskConfig")
-            new_content = new_content.replace("taipy.core.config.pipeline_config.PipelineConfig", "PipelineConfig")
+            new_content = new_content.replace("taipy.core.config.sequence_config.SequenceConfig", "SequenceConfig")
             new_content = new_content.replace("taipy.config.common.frequency.Frequency", "Frequency")
             f.write(new_content)
 
-
     def exit(self, setup: Setup):
-        setup.update_mkdocs_yaml_template(
-            r"^\s*\[REFERENCE_CONTENT\]\s*\n",
-            self.navigation if self.navigation else ""
-        )
+        setup.update_mkdocs_yaml_template(r"^\s*\[REFERENCE_CONTENT\]\s*\n", self.navigation if self.navigation else "")
         if "GENERATING_TAIPY_DOC" in os.environ:
             del os.environ["GENERATING_TAIPY_DOC"]

@@ -32,10 +32,11 @@ class RestRefManStep(SetupStep):
     def generate_rest_refman_pages(self, setup: Setup):
         REST_REF_DIR_PATH = setup.manuals_dir + "/reference_rest"
         from taipy.rest.app import create_app as rest_create_app
+
         app = rest_create_app()
 
-        from taipy.rest.extensions import apispec as rest_apispec
         from taipy.rest.api.views import register_views as rest_register_views
+        from taipy.rest.extensions import apispec as rest_apispec
 
         with app.app_context():
             rest_register_views()
@@ -46,11 +47,11 @@ class RestRefManStep(SetupStep):
         path_descs = {
             "cycle": "Entry points that interact with `Cycle^` entities.",
             "scenario": "Entry points that interact with `Scenario^` entities.",
-            "pipeline": "Entry points that interact with `Pipeline^` entities.",
+            "sequence": "Entry points that interact with `Sequence^` entities.",
             "datanode": "Entry points that interact with `DataNode^` entities.",
             "task": "Entry points that interact with `Task^` entities.",
             "job": "Entry points that interact with `Job^` entities.",
-            "auth": "Entry points that deal with authentication."
+            "auth": "Entry points that deal with authentication.",
         }
         path_files = {}
         enterprise_paths = ["auth"]
@@ -64,13 +65,12 @@ class RestRefManStep(SetupStep):
             "404": ("Not Found", "https://httpwg.org/specs/rfc7231.html#status.404"),
         }
 
-
         def get_property_type(property_desc, from_schemas):
             type_name = property_desc.get("type", None)
             a_pre = ""
             a_post = ""
             if type_name == "array":
-                property_desc = property_desc['items']
+                property_desc = property_desc["items"]
                 type_name = property_desc.get("type", None)
                 a_pre = "\\["
                 a_post = "\\]"
@@ -79,11 +79,10 @@ class RestRefManStep(SetupStep):
                 if type_name is None:
                     # print(f"WARNING - No type...")
                     return ""
-                type_name = type_name[type_name.rfind('/') + 1:]
+                type_name = type_name[type_name.rfind("/") + 1 :]
                 prefix = "" if from_schemas else "schemas.md"
                 type_name = f"[`{type_name}`]({prefix}#{type_name.lower()})"
             return f"{a_pre}{type_name}{a_post}"
-
 
         for path, desc in rest_specs["paths"].items():
             dest_path = None
@@ -120,14 +119,15 @@ class RestRefManStep(SetupStep):
                         if "schema" in param and len(param["schema"]) == 1:
                             param_type = param["schema"]["type"]
                         file.write(
-                            f"|{param['name']}|{param_type}|{'Yes' if param['name'] else 'No'}|{param.get('description', '-')}|\n")
+                            f"|{param['name']}|{param_type}|{'Yes' if param['name'] else 'No'}|{param.get('description', '-')}|\n"
+                        )
                     file.write("\n")
                 request_body = method_desc.get("requestBody")
                 if request_body is not None:
-                    file.write(f"<div><h4 style=\"display: inline-block;\">Request body:</h4>\n")
+                    file.write(f'<div><h4 style="display: inline-block;">Request body:</h4>\n')
                     schema = request_body["content"]["application/json"]["schema"]["$ref"]
-                    schema = schema[schema.rfind('/') + 1:]
-                    file.write(f"<span><a href=\"schemas.md#{schema.lower()}\">{schema}</a></div>\n\n")
+                    schema = schema[schema.rfind("/") + 1 :]
+                    file.write(f'<span><a href="schemas.md#{schema.lower()}">{schema}</a></div>\n\n')
                 responses = method_desc.get("responses")
                 if responses is not None:
                     file.write(f"<h4>Responses</h4>\n\n")
@@ -174,6 +174,5 @@ class RestRefManStep(SetupStep):
 
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(
-            r"^\s*\[REST_REFERENCE_CONTENT\]\s*\n",
-            self.navigation if self.navigation else ""
+            r"^\s*\[REST_REFERENCE_CONTENT\]\s*\n", self.navigation if self.navigation else ""
         )
