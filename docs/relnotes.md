@@ -62,11 +62,11 @@ Not published yet.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 3.0.0
 
-- `ScenarioConfig^` graph is now created directly from `TaskConfig^` and
+- A `ScenarioConfig^` graph is now created directly from `TaskConfig^` and
   `DataNodeConfig^`. Consequently, `PipelineConfig` has been removed. For more
   information, refer to [Configure a scenario](./manuals/core/config/scenario-config.md).
-- `Pipeline^` entity has been removed and replaced by `Sequence^`. A sequence is
-  hold by a `Scenario^` and represent a sub set of its tasks than can be submitted
+- The `Pipeline^` object has been removed and replaced by `Sequence^`. A sequence is
+  held by a `Scenario^` and represents a subset of its tasks than can be submitted
   together independently of the other tasks of the scenario. For more information,
   refer to `Scenario.add_sequence()^` and `Scenario.remove_sequence()^`.
 - `Scope.PIPELINE` has been removed from `Scope^` values.
@@ -76,7 +76,8 @@ Not published yet.
 - The `clean_entities` attribute has been removed from the `CoreSection^`. Correspondingly, the
   `--clean-entities` option has been removed from the version management CLI.<br/>
   To clean entities of a version, please run your application in development mode, or delete your
-  version with the `--delete` CLI option.
+  version with the `--delete` CLI option. For more information, refer to
+  [Taipy command-line interface](./manuals/cli/index.md)
 - The deprecated `nb_of_workers` attribute of the JobConfig has been removed.
 - The deprecated `parent_id` attribute of a DataNode, Task, Pipeline, or Scenario entity, has been removed.
 - The deprecated `last_edition_date` and `edition_in_progress` attributes of a DataNode entity have been removed.
@@ -408,7 +409,7 @@ details on how to migrate from version older than 2.1.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.1.0
 
-- The Pie charts now use the *values'* property to set values instead of *x*.<br/>
+- The Pie charts now use the *values* property to set values instead of *x*.<br/>
   See [Pie charts](manuals/gui/viselements/charts/pie.md) for details.
 - Unselected data points or traces in charts now preserve their original opacity.<br/>
   See [issue #496](https://github.com/Avaiga/taipy-gui/issues/496).
@@ -513,7 +514,8 @@ Published on 2022-10.
 - When submitting a scenario, a pipeline, or a task, the job(s) created will be returned.
 - When submitting a scenario, pipeline, or task in standalone mode, the user can use the parameters
   _wait_ and _timeout_ to wait until the submitted jobs are finished or up to _timeout_ seconds.
-- When in standalone mode, the job dispatcher runs in a sub-thread that periodically checks for new jobs submitted by Taipy to execute.
+- When in standalone mode, the job dispatcher runs in a sub-thread that periodically checks for new
+  jobs submitted by Taipy to execute.
 - When a running job fails, its subsequent jobs will be automatically abandoned.
 - A primary scenario can be deleted along with its cycle if it is the only scenario in the cycle.
 - The messages of the various Exceptions that can be raised have been improved to help the users
