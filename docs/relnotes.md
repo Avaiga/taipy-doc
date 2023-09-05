@@ -21,53 +21,54 @@ Not published yet.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 3.0.0
 
-- A global data node can be created from a data node configuration with GLOBAL scope using the new
-  `taipy.create_global_data_node()` method.<br/>
-  Please refer to [Create a data node](./manuals/core/entities/data-node-mgt.md#create-a-data-node)
-  for more information.
-
-- A data node configuration can be a scaffold to configure a new similar data node. For more information, refer to
+- A production version of a Taipy application can now be provided with **migration functions** to
+  automatically migrate entities and keep them compatible with previous versions.<br/>
+  For more information, refer to [Production mode](./manuals/core/versioning/production_mode.md).
+- A `GLOBAL` scope data node can be created from a data node configuration calling
+  the new `taipy.create_global_data_node()^` method.<br/>
+  For more information, refer to
+  [Create a data node](./manuals/core/entities/data-node-mgt.md#create-a-data-node).
+- A data node configuration can be built from an existing data node configuration.
+  For more information, refer to
   [Configure a data node from another configuration](./manuals/core/config/data-node-config.md#configure-a-data-node-from-another-configuration).
+- A new class `Submittable^` models entities that can be submitted for execution.
+  It is an Abstract class instantiated by `Scenario^` and `Sequence^`;
+  It can be handy to use the new following `Submittable^` methods:
 
-- The encoding type of CSVDataNode and JSONDataNode can now be configured using the *encoding* parameter. Please refer
-  to [Configure a CSVDataNode](./manuals/core/config/data-node-config.md#csv) and [Configure a JSONDataNode](./manuals/core/config/data-node-config.md#json)
-  sections for more information.
+      * `Submittable.get_inputs()^` retrieves input data nodes of a `Submittable` entity;
+      * `Submittable.get_outputs()^` retrieves output data nodes of a `Submittable` entity;
+      * `Submittable.get_intermediate()^` retrieves intermediate data nodes of a `Submittable` entity;
+      * `Submittable.is_ready_to_run()^` checks if an entity is ready to be run;
+      * `Submittable.data_nodes_being_edited()^` retrieves data nodes that are being edited
+        of a `Submittable^` entity;
+- New functions exposed by the `taipy` module: `taipy.is_deletable()^` checks if an entity can be deleted.
+  `taipy.exists()^` checks if an entity exists.
+- The encoding type of CSVDataNode and JSONDataNode can now be configured using the
+  *encoding* parameter. For more information, please refer to
+  [Configure a CSVDataNode](./manuals/core/config/data-node-config.md#csv)
+  and [Configure a JSONDataNode](./manuals/core/config/data-node-config.md#json)
+  sections.
 
-- New abstract class:
-      * `Submittable^` to model entities that can be submitted for execution
-            The children entity classes of `Submittable` are `Scenario` and `Pipeline`;
-
-- New exposed functions:
-
-       * `taipy.exists()^` checks if an entity exists or not;
-
-       * `Submittable.get_inputs()^` retrieves input data nodes of a `Submittable` entity;
-
-       * `Submittable.get_outputs()^` retrieves output data nodes of a `Submittable` entity;
-
-       * `Submittable.get_intermediate()^` retrieves intermediate data nodes of a `Submittable` entity;
-
-       * `Submittable.is_ready_to_run()^` checks if an entity is ready to be run;
-
-       * `Submittable.data_nodes_being_edited()^` retrieves data nodes that are being edited
-            of a `Submittable^` entity;
-
-       * `is_deletable()^` checks if an entity can be deleted.
-
-- A production version of the application can now be provided with migration functions to help
-  ensure that entities from all production versions are compatible with each other.<br/>
-  For more information, please refer to [Production mode](./manuals/core/versioning/production_mode.md).
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-template</code></strong></h6>
 3.0.0
 
-- A new template named "scenario-management" is available. For more information on creating a new Taipy application with the new "scenario-management" template, refer to [Create a Taipy application from a specific template](./manuals/cli/create.md#from-a-specific-template).
+- A new template named "scenario-management" is available. For more information on creating
+  a new Taipy application with the new "scenario-management" template, refer to
+  [Create a Taipy application from a specific template](./manuals/cli/create.md#from-a-specific-template).
 
 ### Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 3.0.0
 
+- `ScenarioConfig^` graph is now created directly from `TaskConfig^` and
+  `DataNodeConfig^`. Consequently, `PipelineConfig` has been removed. For more
+  information, refer to [Configure a scenario](./manuals/core/config/scenario-config.md).
+- `Pipeline^` entity has been removed and replaced by `Sequence^`. A sequence is
+  hold by a `Scenario^` and represent a sub set of its tasks than can be submitted
+  together independently of the other tasks of the scenario. For more information,
+  refer to `Scenario.add_sequence()^` and `Scenario.remove_sequence()^`.
 - `Scope.PIPELINE` has been removed from `Scope^` values.
 - The `root_folder`, `storage_folder`, `read_entity_retry`, `repository_type`, and `repository_properties`
   attributes of the `GlobalAppConfig^` have been moved to the `CoreSection^`.<br/>
@@ -75,7 +76,7 @@ Not published yet.
 - The `clean_entities` attribute has been removed from the `CoreSection^`. Correspondingly, the
   `--clean-entities` option has been removed from the version management CLI.<br/>
   To clean entities of a version, please run your application in development mode, or delete your
-  version with the `--delete` option.
+  version with the `--delete` CLI option.
 - The deprecated `nb_of_workers` attribute of the JobConfig has been removed.
 - The deprecated `parent_id` attribute of a DataNode, Task, Pipeline, or Scenario entity, has been removed.
 - The deprecated `last_edition_date` and `edition_in_progress` attributes of a DataNode entity have been removed.
@@ -223,10 +224,14 @@ Published on 2023-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.3.2
 
-- The `Config.configure_default_data_node()` method has been deprecated. The `Config.set_default_data_node_configuration()^` method should be used instead.
-- The `Config.configure_task_node()` method has been deprecated. The `Config.set_task_node_configuration()^` method should be used instead.
-- The `Config.configure_pipeline_node()` method has been deprecated. The `Config.set_pipeline_node_configuration()^` method should be used instead.
-- The `Config.configure_scenario_node()` method has been deprecated. The `Config.set_scenario_node_configuration()^` method should be used instead.
+- The `Config.configure_default_data_node()` method has been deprecated.
+  The `Config.set_default_data_node_configuration()^` method should be used instead.
+- The `Config.configure_task_node()` method has been deprecated.
+  The `Config.set_task_node_configuration()^` method should be used instead.
+- The `Config.configure_pipeline_node()` method has been deprecated.
+  The `Config.set_pipeline_node_configuration()^` method should be used instead.
+- The `Config.configure_scenario_node()` method has been deprecated.
+  The `Config.set_scenario_node_configuration()^` method should be used instead.
 
 2.3.0
 
@@ -396,14 +401,14 @@ details on how to migrate from version older than 2.1.
 - New data node property _is_up_to_date_ equals to `True` if the data node has not expired (refer to
   _expiration_date_ attribute). `False` otherwise.
 - The **sql** _repository_type_ is now available on community edition to store Core entities in an
-  SQL database. See [SQL storage section](./manuals/core/config/global-config.md#sql-storage-for-taipy-entities).
+  SQL database. See [SQL storage section](./manuals/core/config/core-config.md).
 
 ### Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.1.0
 
-- The Pie charts now use the *values* property to set values instead of *x*.<br/>
+- The Pie charts now use the *values'* property to set values instead of *x*.<br/>
   See [Pie charts](manuals/gui/viselements/charts/pie.md) for details.
 - Unselected data points or traces in charts now preserve their original opacity.<br/>
   See [issue #496](https://github.com/Avaiga/taipy-gui/issues/496).
