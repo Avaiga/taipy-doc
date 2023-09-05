@@ -25,14 +25,14 @@ Taipy is a complete tool that empowers individuals and enterprises to develop ap
 **Back-End Functionalities:**
 
 - Taipy provides extensive support for establishing resilient pipelines capable of managing diverse scenarios.
-- The process of modeling Directed Acyclic Graphs (DAGs) is simplified through Taipy's functionality.
+- The process of modeling Directed Acyclic Graphs (DAGs) is simplified through data flow functionality.
 - Enhancing the overall performance of Taipy applications, the data caching feature is integrated.
 - Facilitating a registry of pipeline executions.
 - Enabling pipeline versioning.
 - Taipy equips users with the ability to monitor and assess the performance of their applications using the KPI tracking tool.
 - Furthermore, Taipy offers a built-in visualization feature for pipelines and their associated data.
 
-## Overview of the Taipy Flow
+## Overview of Taipy
 
 The subsequent schematic diagram illustrates the complete sequence encompassing all stages within the Taipy flow.
 
