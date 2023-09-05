@@ -14,8 +14,9 @@ nav:
     - getting_started/index.md
     [GETTING_STARTED_CONTENT]
   - "Manuals":
-    - "User Manual":
-      - "About Taipy's User Manual": manuals/about.md
+    - manuals/index.md
+    - "User Manuals":
+      - manuals/usermans/index.md
       - Taipy GUI:
           - manuals/gui/index.md
           - "Pages": manuals/gui/pages.md
@@ -132,15 +133,17 @@ nav:
              - "Graph views": manuals/studio/config/graphview.md
              - "Text edition": manuals/studio/config/textedition.md
           - "GUI Markdown support": manuals/studio/gui.md
-    - "Python Reference Manual":
-      - manuals/reference/index.md
-      [REFERENCE_CONTENT]
-    - "REST API":
-      - manuals/reference_rest/index.md
-      [REST_REFERENCE_CONTENT]
-    - "GUI Extension API":
-      - manuals/reference_guiext/index.md
-      - "taipy-gui module": manuals/reference_guiext/modules.md
+    - "Reference Manuals":
+      - manuals/refmans/index.md
+      - "Python Reference Manual":
+        - manuals/reference/index.md
+        [REFERENCE_CONTENT]
+      - "REST API":
+        - manuals/reference_rest/index.md
+        [REST_REFERENCE_CONTENT]
+      - "GUI Extension API":
+        - manuals/reference_guiext/index.md
+        - "taipy-gui module": manuals/reference_guiext/modules.md
   - "Release Notes": relnotes.md
   - "Contributing":
     - "Contributing to Taipy": contributing/contributing.md
@@ -149,7 +152,7 @@ nav:
 theme:
   name: material
   language: en
-  custom_dir: tools
+  custom_dir: taipy_theme
   font:
     text: Lato
   icon:
@@ -217,7 +220,7 @@ watch:
   - tools/postprocess.py
 extra:
   social:
-    - icon: fontawesome/brands/twitter
+    - icon: fontawesome/brands/x-twitter
       link: https://twitter.com/Taipy_io
       name: Tweet
     - icon: fontawesome/brands/linkedin

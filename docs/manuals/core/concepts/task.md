@@ -10,7 +10,7 @@ Each input parameter and each output result is modeled as a data node.
 
 The attributes of a task (the input data nodes, the output data nodes, the Python function) are populated based on
 the task configuration `TaskConfig^` that must be provided when instantiating a new task. (Please refer to the
-[`configuration details`](../config/task-config) documentation for more details on configuration).
+[`configuration details`](../config/task-config.md) documentation for more details on configuration).
 
 !!! example "In our example"
     We create three tasks:

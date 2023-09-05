@@ -16,8 +16,8 @@ import shutil
 
 
 class RefManStep(SetupStep):
-    # Package grouping
-    PACKAGE_GROUP = [
+    # Package grouping (order is kept in generation)
+    PACKAGE_GROUPS = [
         "taipy.config",
         "taipy.core",
         "taipy.gui",
@@ -51,16 +51,21 @@ class RefManStep(SetupStep):
         ("taipy.core.exceptions.exceptions.*", "taipy.core.exceptions"),
         ("taipy.core.job.job_id.JobId", "taipy.core"),
         ("taipy.core.job.job.Job", "taipy.core"),
-        ("taipy.core.pipeline.pipeline_id.PipelineId", "taipy.core"),
-        ("taipy.core.pipeline.pipeline.Pipeline", "taipy.core"),
-        ("taipy.core.scenario.scenario_id.ScenarioId", "taipy.core"),
-        ("taipy.core.scenario.scenario.Scenario", "taipy.core"),
         ("taipy.core.job.status.Status", "taipy.core"),
+        ("taipy.core.notification.CoreEventConsumerBase", "taipy.core.notification"),
+        ("taipy.core.notification.EventEntityType", "taipy.core.notification"),
+        ("taipy.core.notification.EventOperation", "taipy.core.notification"),
+        ("taipy.core.notification.Event", "taipy.core.notification"),
+        ("taipy.core.notification.Notifier", "taipy.core.notification"),
+        ("taipy.core.scenario.scenario.Scenario", "taipy.core"),
+        ("taipy.core.scenario.scenario_id.ScenarioId", "taipy.core"),
+        ("taipy.core.sequence.sequence.Sequence", "taipy.core"),
+        ("taipy.core.sequence.sequence_id.SequenceId", "taipy.core"),
         ("taipy.core.taipy.cancel_job", "taipy.core"),
         ("taipy.core.taipy.clean_all_entities", "taipy.core"),
         ("taipy.core.taipy.clean_all_entities_by_version", "taipy.core"),
         ("taipy.core.taipy.compare_scenarios", "taipy.core"),
-        ("taipy.core.taipy.create_pipeline", "taipy.core"),
+        ("taipy.core.taipy.create_global_data_node", "taipy.core"),
         ("taipy.core.taipy.create_scenario", "taipy.core"),
         ("taipy.core.taipy.delete", "taipy.core"),
         ("taipy.core.taipy.delete_job", "taipy.core"),
@@ -75,7 +80,7 @@ class RefManStep(SetupStep):
         ("taipy.core.taipy.get_jobs", "taipy.core"),
         ("taipy.core.taipy.get_latest_job", "taipy.core"),
         ("taipy.core.taipy.get_parents", "taipy.core"),
-        ("taipy.core.taipy.get_pipelines", "taipy.core"),
+        ("taipy.core.taipy.get_sequences", "taipy.core"),
         ("taipy.core.taipy.get_primary", "taipy.core"),
         ("taipy.core.taipy.get_primary_scenarios", "taipy.core"),
         ("taipy.core.taipy.get_scenarios", "taipy.core"),
@@ -86,10 +91,10 @@ class RefManStep(SetupStep):
         ("taipy.core.taipy.set", "taipy.core"),
         ("taipy.core.taipy.set_primary", "taipy.core"),
         ("taipy.core.taipy.submit", "taipy.core"),
-        ("taipy.core.taipy.subscribe_pipeline", "taipy.core"),
+        ("taipy.core.taipy.subscribe_sequence", "taipy.core"),
         ("taipy.core.taipy.subscribe_scenario", "taipy.core"),
         ("taipy.core.taipy.tag", "taipy.core"),
-        ("taipy.core.taipy.unsubscribe_pipeline", "taipy.core"),
+        ("taipy.core.taipy.unsubscribe_sequence", "taipy.core"),
         ("taipy.core.taipy.unsubscribe_scenario", "taipy.core"),
         ("taipy.core.taipy.untag", "taipy.core"),
         ("taipy.core.task.task_id.TaskId", "taipy.core"),
@@ -107,7 +112,7 @@ class RefManStep(SetupStep):
         ("taipy.auth.config.authentication_config.AuthenticationConfig", "taipy.auth.config"),
     ]
     # Entries that should be hidden for the time being
-    HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback", "notification"]
+    HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback"]
     # Where the Reference Manual files are generated (MUST BE relative to docs_dir)
     REFERENCE_REL_PATH = "manuals/reference"
 
@@ -326,34 +331,30 @@ class RefManStep(SetupStep):
                     raise SystemError(
                         "FATAL - Invalid entry type '{entry_info['type']}' for {entry_info['module']}.{entry_info['name']}"
                     )
-            if package in RefManStep.PACKAGE_GROUP:
+            if package in RefManStep.PACKAGE_GROUPS:
                 package_group = package
                 package_path = f"{self.REFERENCE_DIR_PATH}/pkg_{package}"
                 os.mkdir(package_path)
                 package_output_path = os.path.join(package_path, "index.md")
                 self.navigation += (
-                    " " * 6
-                    + f"- {package}:\n"
-                    + " " * 8
-                    + f"- {RefManStep.REFERENCE_REL_PATH}/pkg_{package}/index.md\n"
+                    f"- {package}:\n  - {RefManStep.REFERENCE_REL_PATH}/pkg_{package}/index.md\n"
                 )
             else:
-                new_package_group = None
-                for p in RefManStep.PACKAGE_GROUP:
+                high_package_group = None
+                for p in RefManStep.PACKAGE_GROUPS:
                     if package.startswith(p + "."):
-                        new_package_group = p
+                        high_package_group = p
                         break
-                if new_package_group != package_group:
-                    if not new_package_group:
+                if high_package_group != package_group:
+                    if not high_package_group:
                         raise SystemExit(
-                            f"FATAL - Unknown package '{new_package_group}' for package '{package}' (renamed from '{package_group}')"
+                            f"FATAL - Unknown package '{high_package_group}' for package '{package}' (renamed from '{package_group}')"
                         )
-                    package_group = new_package_group
-                    self.navigation += " " * 6 + f"- {package_group}:\n"
-                self.navigation += (
-                    " " * (8 if package_group else 6)
-                    + f"- {package}: manuals/reference/pkg_{package}.md\n"
-                )
+                    package_group = high_package_group
+                    self.navigation += f"- {package_group}:\n"
+                if package_group:
+                    self.navigation += "  "
+                self.navigation += f"- {package}: {RefManStep.REFERENCE_REL_PATH}/pkg_{package}.md\n"
                 package_output_path = os.path.join(
                     self.REFERENCE_DIR_PATH, f"pkg_{package}.md"
                 )
