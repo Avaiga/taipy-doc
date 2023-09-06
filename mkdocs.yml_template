@@ -88,6 +88,7 @@ nav:
           - manuals/cli/index.md
           - "help": manuals/cli/help.md
           - "create": manuals/cli/create.md
+          - "run": manuals/cli/run.md
           - "manage-versions": manuals/cli/manage-versions.md
           - "version": manuals/cli/version.md
       - "Running & Deploying":
