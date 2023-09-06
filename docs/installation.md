@@ -3,55 +3,79 @@ hide:
   - navigation
 ---
 
-# Installation
+# Install Taipy
+
+Welcome to the installation section of the Taipy web application builder! This section will guide you through the seamless and straightforward process of setting up and deploying your own powerful web applications.
 
 ## Prerequisite
 
-To run Taipy, Python (version 3.8 or above) and [pip](https://pip.pypa.io) are required. If you don't have `pip` installed, this [Python installation guide](http://docs.python-guide.org/en/latest/starting/installation/) can guide you through the process, or you can follow the [official installation page](https://pip.pypa.io/en/latest/installation/) of `pip`.
+Before installing Taipy, ensure you have Python (version 3.8 or above) and [pip](https://pip.pypa.io) installed on your system. If you don't have pip installed, you can follow these steps to install it:
 
-You can also install `pip` in a [Conda](https://docs.conda.io/projects/conda/en/latest/index.html) environment by using the following command:
+1. **[Python Installation Guide](http://docs.python-guide.org/en/latest/starting/installation/)**: Follow the installation guide to set up Python on your system. 
+   After the installation, you can open the Command Prompt and type `python --version` to check the installed Python version.
+
+2. **[Installing pip](https://pip.pypa.io/en/latest/installation/)**: Pip is included by default if you use Python 3.4 or later. Otherwise, you can follow the official 
+   installation page of pip to install it. To verify the installation, type `pip --version` or `pip3 --version`.
+
+Alternatively, if you are using a Conda environment, you can install pip using the following command:
+
 ``` console
 $ conda install pip
 ```
 
-## Stable release
+To install Taipy, you have several options depending on your needs and preferences.
 
-To install Taipy, run this command in your terminal:
+## Installing Taipy - Stable release
+
+The preferred method to install Taipy is by using **pip**. Open your terminal or command prompt and run the following command:
 
 ``` console
 $ pip install taipy
 ```
 
-!!! info "This is the preferred method to install Taipy, as it will always install the most recent stable release."
+This command will download and install the most recent stable release of Taipy.
 
-### Installing Taipy in a Conda environment
+## Installing Taipy in a Conda Environment
 
-Taipy can also be installed and used in a `Conda` environment, run this command in your terminal:
-``` console
-$ conda create -n env-name
-$ conda activate env-name
-$ pip install taipy
-```
+Conda is an open-source package management system and environment management system that runs on Windows, macOS, and Linux. 
 
-## From source
+If you prefer to work within a [Conda](https://docs.conda.io/projects/conda/en/latest/index.html) environment, follow these steps:
 
-The source for Taipy can be downloaded from
-the [Github repo](https://github.com/Avaiga/taipy).
+1. Create a new **Conda** environment (replace **env-name** with your desired environment name):
+   ``` console
+   $ conda create -n env-name
+   ```
+2. Activate the newly created environment:
+   ``` console
+   $ conda activate env-name
+   ```
+3. Install Taipy within the Conda environment using pip:
+   ``` console
+   $ pip install taipy
+   ```
 
-You can either clone the public repository:
+## Installing Taipy from Source
 
-``` console
-$ git clone git://github.com/avaiga/taipy
-```
+If you want to work with the latest development version or contribute to the project, you can install Taipy from the source code.
 
-Or download the [tarball](https://github.com/Avaiga/taipy/tarball/main):
+- Clone the public repository from GitHub (you'll need Git installed for this method):
+  ``` console
+  $ git clone git://github.com/avaiga/taipy
+  ```
 
-``` console
-$ curl -OJL https://github.com/avaiga/taipy/tarball/main
-```
+Or,  
+  
+- Download the tarball directly from GitHub:
+  ``` console
+  $ curl -OJL https://github.com/avaiga/taipy/tarball/main
+  ```
 
-Once you have a copy of the source, you can install it with:
+Once you have the source code, navigate to the directory containing the Taipy source code and run the following command:
 
 ``` console
 $ pip install .
 ```
+
+This will install Taipy from the source code on your system. 
+
+!!! info "The commands mentioned above are for Unix-like systems (Linux, macOS), and you may need to adjust them slightly if you are using a different operating system such as Windows."
