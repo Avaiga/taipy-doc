@@ -1,7 +1,7 @@
 # Run application in Taipy CLI
 
 Assume that you have a "main.py" file containing your Taipy application.
-To start the Taipy application, you can run
+To start the Taipy application, you can run:
 
 ```console
 $ python main.py
