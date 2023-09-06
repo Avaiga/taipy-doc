@@ -32,7 +32,6 @@ exploration and analysis of different problem variations.
     Here, our scenario consists of a graph of data nodes and tasks. The scenario graph can also be split into
     two sequences as subgraphs described earlier. The external light blue box in the flowchart below represents
     our scenario that contains all data nodes, tasks, and sequences.
-    # TODO: update the picture
 
     ![scenarios](../pic/scenarios.svg){ align=left }
 

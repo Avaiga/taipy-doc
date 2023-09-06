@@ -7,10 +7,9 @@ preprocessing and preparing data, a sequence for computing a training model, and
 !!! example "In the example"
 
     We have chosen to model only two sequences corresponding to a manufacturer having first to predict the sales
-    forecast then, based on the sales forecast, plan its production in its plant.
-    # TODO: fix this picture
+    forecast, then, based on the sales forecast, plan its production in its plant.
 
-    ![sequences](../pic/pipelines.svg){ align=left }
+    ![sequences](../pic/sequences.svg){ align=left }
 
     First, the sales sequence (boxed in green in the picture) contains **training** and **predict** tasks.
 

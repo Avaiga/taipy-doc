@@ -67,7 +67,6 @@ This section aims at defining the following Taipy Core concepts.
 
     It will benefit the reader to visualize the different Taipy **_configs_** like a set of Russian dolls where each
     **_config_** belongs to a "larger" **_config_**:
-    # TODO: fix this image
     ![Russian dolls](../pic/russian_dolls.svg){ margin-left=25% width=50%}
 
     One thing to wrap your head around (it may not be very intuitive for everyone at first) is that the **configs**

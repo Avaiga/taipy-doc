@@ -22,7 +22,7 @@ corresponds to a specific path:
 - The APIs related to job and orchestration are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/jobs/`.
   Here is the exhaustive list of all entrypoints for [jobs](./apis_job.md).
 - The APIs related to sequences are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/sequences/`. Here
-  is the exhaustive list of all entrypoints for [sequences](./apis_pipeline.md).
+  is the exhaustive list of all entrypoints for [sequences](./apis_sequence.md).
 - The APIs related to scenarios are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/scenarios/`. Here
   is the exhaustive list of all entrypoints for [scenarios](./apis_scenario.md).
 - The APIs related to tasks are grouped under the base url <br> `http://<HOST>:<PORT>/api/v1/tasks/`. Here is the

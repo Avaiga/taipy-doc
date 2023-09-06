@@ -12,7 +12,6 @@
 
 Let's take some scenario entity use cases to illustrate the logic behind the execution flow. For this purpose,
 we will use the configuration graph below.
-# TODO: update this image
 
 ![Configuration Graph ](../pic/execution_flow_configs.svg)
 
