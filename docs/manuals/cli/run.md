@@ -14,7 +14,7 @@ provides a run command to run your Taipy application, supporting both Taipy supp
 ## With Taipy supported arguments
 
 Taipy CLI will parse Taipy supported arguments and pass the rest of the arguments to your Taipy application.
-To display the list of Taipy supported arguments, you can run `taipy help run` command.
+To display the list of Taipy supported arguments, you can run the `taipy help run` command.
 Alternatively, you can use the `--help` or `-h` options by running `taipy run --help` or `taipy run -h`.
 
 ```console
@@ -37,36 +37,36 @@ options:
   --ngrok-token [NGROK_TOKEN]
                         Specify NGROK Authtoken
   --webapp-path [WEBAPP_PATH]
-                        The path to the web app to be used. The default is the webapp directory
+                        The path to the web app to be used. The default is the web app directory
                         under gui in the Taipy GUI package directory.
   --debug               Turn on debug
   --no-debug            Turn off debug
   --use-reloader        Auto reload on code changes
   --no-reloader         No reload on code changes
-  --development         When execute Taipy application in `development` mode, all entities from
-                        the previous development version will be deleted before running new Taipy
+  --development         When executing the Taipy application in `development` mode, all entities from
+                        the previous development version will be deleted before running the new Taipy
                         application.
   --experiment [VERSION]
-                        When execute Taipy application in `experiment` mode, the current Taipy
-                        application is saved to a new version. If version name already exists,
-                        check for compatibility with current Python Config and run the
+                        When executing the Taipy application in `experiment` mode, the current Taipy
+                        application is saved to a new version. If the version name already exists,
+                        check for compatibility with the current Python Config and run the
                         application. Without being specified, the version number will be a random
                         string.
   --production [VERSION]
-                        When execute in `production` mode, the current version is used in
+                        When executed in `production` mode, the current version is used in
                         production. All production versions should have the same configuration and
-                        share all entities. Without being specified, the latest version is used.
+                        share all entities. The latest version is only used if specified.
   --force               Force override the configuration of the version if existed and run the
                         application. Default to False.
   --no-force            Stop the application if any Config conflict exists.
 
 subcommands:
   {external-args}
-    external-args       Arguments defined after this keyword will be considered as external
-                        arguments to be passed to the application
+    external-args       Arguments defined after this keyword will be considered external
+                        arguments to be passed to the application.
 ```
 
-To start your application in the Taipy CLI, you can run
+To start your application in the Taipy CLI, you can run:
 
 ```console
 $ taipy run main.py
@@ -79,7 +79,7 @@ $ taipy run main.py --port 8080 --experiment "0.1" --debug
 ```
 
 In this example, your Taipy application will be started in experiment mode with version name "0.1"
-with debug on, and on the port "8080" of the server.
+with debug on and on the port "8080" of the server.
 
 !!! info
 
@@ -88,13 +88,13 @@ with debug on, and on the port "8080" of the server.
 
 ## With Taipy unsupported arguments
 
-Assume that the "main.py" file containing some custom arguments for your application:
+Assume that the "main.py" file contains some custom arguments for your application:
 
 - `--host`: specify the host of the data server to read from.
 - `--port`: specify the port of the data server to read from.
 - `--debug`: turn on debug mode on your data processing pipeline.
 
-In a normal Python CLI, your application arguments will conflict with Taipy supported arguments.
+In a standard Python CLI, your application arguments will conflict with Taipy supported arguments.
 Passing the host of your data server would also change the host of your Taipy application, which
 is not a good problem to have.
 
@@ -107,4 +107,4 @@ $ taipy run main.py --port 8080 external-args --host data.server.com --port 2714
 
 In this example, your Taipy application will be started on *localhost:8080* with debug off since we
 do not specify debug mode for Taipy. Meanwhile, your data processing pipeline will be reading data
-from *data.server.com:2714*, and the pipeline will be run with debug on.
+from *data.server.com:2714*, the pipeline will run with debug.

@@ -29,7 +29,7 @@ Version number                         Mode                   Creation date
 9b01399c-67e4-41a4-83d3-121f7210d4e7   Development (latest)   2023-01-23 23:46:29
 ```
 
-In the example above, `taipy run main.py` command runs the application in development mode. The
+In the example above, the `taipy run main.py` command runs the application in development mode. The
 command `taipy manage-versions --list` lists all versions of your current Taipy Core application
 (see the [Manage versions on Taipy CLI page](../../cli/manage-versions.md) for more details).
 
