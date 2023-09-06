@@ -18,6 +18,12 @@ Not published yet.
 
 ### New Features
 
+<h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
+3.0.0
+
+- Taipy application can now be run with Taipy command-line interface (CLI) using the `taipy run`
+  command. For more information, refer to [Run application in Taipy CLI](./manuals/cli/run.md).
+
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 3.0.0
 
