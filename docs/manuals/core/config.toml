@@ -59,12 +59,8 @@ inputs = [ "sales_predictions", "capacity",]
 function = "<function plan at 0x00000287AC01BE50>"
 outputs = [ "orders",]
 
-[PIPELINE.sales]
-tasks = [ "training", "predicting",]
-
-[PIPELINE.production]
-tasks = [ "planning",]
-
 [SCENARIO.scenario_configuration]
-pipelines = [ "sales", "production",]
+tasks = [ "training", "predicting", "planning",]
 frequency = "MONTHLY"
+sequences.sale = [ "training", "predicting",]
+sequences.production = [ "planning",]

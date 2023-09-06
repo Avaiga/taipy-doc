@@ -19,12 +19,6 @@ It exposes all the necessary attributes and methods to manage the configuration.
 
     Config.tasks
     ```
-- The [Pipeline configurations](pipeline-config.md) as a dictionary of`PipelineConfig^`s:
-    ```python linenums="1"
-    from taipy import Config
-
-    Config.pipelines
-    ```
 - The [Scenario configurations](scenario-config.md) as a dictionary of `ScenarioConfig^`s:
     ```python linenums="1"
     from taipy import Config

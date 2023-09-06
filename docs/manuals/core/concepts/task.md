@@ -1,16 +1,16 @@
 A `Task^` is a runnable Python function provided by the developer. It represents one of the
-steps that the developer wants to implement in his/her pipeline.
+steps that the developer wants to implement in her sequence.
 
-For example, a _task_ could be a pre-processing function to clean the initial dataset. It could also be a more complex
+For example, a *task* could be a pre-processing function to clean the initial dataset. It could also be a more complex
 function that computes a training model using machine learning algorithms.
 
-Since a _task_ represents a function, it can take a set of parameters as input and return a set of results as output.
+Since a *task* represents a function, it can take a set of parameters as input and return a set of results as output.
 Each input parameter and each output result is modeled as a data node.
 
 
 The attributes of a task (the input data nodes, the output data nodes, the Python function) are populated based on
 the task configuration `TaskConfig^` that must be provided when instantiating a new task. (Please refer to the
-[`configuration details`](../config/task-config) documentation for more details on configuration).
+[`configuration details`](../config/task-config.md) documentation for more details on configuration).
 
 !!! example "In our example"
     We create three tasks:
@@ -34,4 +34,4 @@ the task configuration `TaskConfig^` that must be provided when instantiating a 
     the _production orders_ data node is considered as an **output** data node since no task reads it.
 
 
-[:material-arrow-right: The next section introduces the Pipeline concept.](pipeline.md)
+[:material-arrow-right: The next section introduces the Sequence concept.](sequence.md)

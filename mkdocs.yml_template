@@ -14,8 +14,9 @@ nav:
     - "Install Taipy": installation.md
     [GETTING_STARTED_CONTENT]
   - "Manuals":
-    - "User Manual":
-      - "About Taipy's User Manual": manuals/about.md
+    - manuals/index.md
+    - "User Manuals":
+      - manuals/usermans/index.md
       - Taipy GUI:
           - manuals/gui/index.md
           - "Pages": manuals/gui/pages.md
@@ -47,7 +48,7 @@ nav:
               - manuals/core/concepts/index.md
               - "Data node": manuals/core/concepts/data-node.md
               - "Task": manuals/core/concepts/task.md
-              - "Pipeline": manuals/core/concepts/pipeline.md
+              - "Sequence": manuals/core/concepts/sequence.md
               - "Scenario": manuals/core/concepts/scenario.md
               - "Cycle": manuals/core/concepts/cycle.md
               - "Job": manuals/core/concepts/job.md
@@ -58,7 +59,6 @@ nav:
               - "Config": manuals/core/config/config.md
               - "Data node configs": manuals/core/config/data-node-config.md
               - "Task configs": manuals/core/config/task-config.md
-              - "Pipeline configs": manuals/core/config/pipeline-config.md
               - "Scenario configs": manuals/core/config/scenario-config.md
               - "Core config": manuals/core/config/core-config.md
               - "Job execution config": manuals/core/config/job-config.md
@@ -68,7 +68,7 @@ nav:
               - manuals/core/entities/index.md
               - "Entities' creation": manuals/core/entities/scenario-creation.md
               - "Scenario and cycle management": manuals/core/entities/scenario-cycle-mgt.md
-              - "Pipeline management": manuals/core/entities/pipeline-mgt.md
+              - "Sequence management": manuals/core/entities/sequence-mgt.md
               - "Task management": manuals/core/entities/task-mgt.md
               - "Data node management": manuals/core/entities/data-node-mgt.md
               - "Job execution": manuals/core/entities/orchestrating-and-job-execution.md
@@ -133,15 +133,17 @@ nav:
              - "Graph views": manuals/studio/config/graphview.md
              - "Text edition": manuals/studio/config/textedition.md
           - "GUI Markdown support": manuals/studio/gui.md
-    - "Python Reference Manual":
-      - manuals/reference/index.md
-      [REFERENCE_CONTENT]
-    - "REST API":
-      - manuals/reference_rest/index.md
-      [REST_REFERENCE_CONTENT]
-    - "GUI Extension API":
-      - manuals/reference_guiext/index.md
-      - "taipy-gui module": manuals/reference_guiext/modules.md
+    - "Reference Manuals":
+      - manuals/refmans/index.md
+      - "Python Reference Manual":
+        - manuals/reference/index.md
+        [REFERENCE_CONTENT]
+      - "REST API":
+        - manuals/reference_rest/index.md
+        [REST_REFERENCE_CONTENT]
+      - "GUI Extension API":
+        - manuals/reference_guiext/index.md
+        - "taipy-gui module": manuals/reference_guiext/modules.md
   - "Release Notes": relnotes.md
   - "Contributing":
     - "Contributing to Taipy": contributing/contributing.md
@@ -150,7 +152,7 @@ nav:
 theme:
   name: material
   language: en
-  custom_dir: tools
+  custom_dir: taipy_theme
   font:
     text: Lato
   icon:
@@ -218,7 +220,7 @@ watch:
   - tools/postprocess.py
 extra:
   social:
-    - icon: fontawesome/brands/twitter
+    - icon: fontawesome/brands/x-twitter
       link: https://twitter.com/Taipy_io
       name: Tweet
     - icon: fontawesome/brands/linkedin

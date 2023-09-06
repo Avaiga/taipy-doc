@@ -50,11 +50,6 @@ configuration elements:
     in the selected configuration file.<br/>
     The user can select a Task configuration in this list to access all its
     properties in the Details section (see below).
-- Pipelines: holds the list of
-    [Pipeline configurations](../../core/config/pipeline-config.md) defined
-    in the selected configuration file.<br/>
-    The user can select a Pipeline configuration in this list to access all its
-    properties in the Details section (see below).
 - Scenarios: holds the list of
     [Scenario configurations](../../core/config/scenario-config.md) defined
     in the selected configuration file.<br/>

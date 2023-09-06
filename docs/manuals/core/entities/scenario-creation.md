@@ -8,7 +8,7 @@ scenario.
 This function creates and returns a new scenario from the scenario configuration provided as a parameter. The
 scenario's creation also triggers the creation of the related entities that do not exist yet. Indeed, if the
 scenario has a frequency and there isn’t any corresponding cycle, the cycle will be created. Similarly, the
-pipelines, tasks, and data nodes nested in the scenario are created if they do not exist yet.
+sequences, tasks, and data nodes nested in the scenario are created if they do not exist yet.
 
 The simplest way of creating a scenario is to call the `taipy.create_scenario()^` method providing the scenario
 configuration as a parameter:
@@ -61,7 +61,7 @@ Three parameters can be given to the scenario creation method :
 
         * The January cycle, since the _**monthly_scenario_cfg**_ has set the frequency to MONTHLY. So scenario will
         be assigned to the cycle corresponding to its creation date (ie the month of January).
-        * Two sales and production pipelines,
+        * Two sales and production sequences,
         * Three tasks (training, predicting, planning),
         * And six data nodes (sales_history, trained_model, current_month, sales_predictions, capacity, orders).
 

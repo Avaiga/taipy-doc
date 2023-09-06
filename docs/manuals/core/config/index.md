@@ -10,9 +10,8 @@ your application and its entities.
 
 !!! note "Reminder: Config vs Entities"
 
-    Throughout the documentation, configuration objects are named **_configs_** (`DataNodeConfig`,
-    `TaskConfig`, `PipelineConfig`, and `ScenarioConfig`), while runtime objects (`DataNode`,
-    `Task`, `Pipeline`, and `Scenario`) are called entities.
+    Throughout the documentation, configuration objects are named **_configs_** (`DataNodeConfig^`, `TaskConfig^`,
+    and `ScenarioConfig^`), while runtime objects (`DataNode^`, `Task^`, `Sequence^`, and `Scenario^`) are called entities.
 
     One thing to wrap your head around (it may not be very intuitive for everyone at first) is that
     the **configs** are really just configuration objects specifying the characteristics and behaviors
@@ -35,8 +34,6 @@ organized as follows:
   the `DataNodeConfig^` class.
 - [Task configs](task-config.md) section describes the tasks' configurations using the
   `TaskConfig^` class.
-- [Pipeline configs](pipeline-config.md) section describes the pipelines' configurations using the
-  `PipelineConfig^` class.
 - [Scenario configs](scenario-config.md) section describes the scenarios' configurations using the
   `ScenarioConfig^` class.
 - [Core config](core-config.md) section documents the Core configuration fields and the
