@@ -9,9 +9,9 @@ copyright: © [YEAR] Avaiga
 nav:
   - Home:
     - index.md
-    - "Installation": installation.md
   - "Getting Started":
     - getting_started/index.md
+    - "Install Taipy": installation.md
     [GETTING_STARTED_CONTENT]
   - "Manuals":
     - "User Manual":
