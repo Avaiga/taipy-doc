@@ -69,6 +69,8 @@ Not published yet.
   held by a `Scenario^` and represents a subset of its tasks than can be submitted
   together independently of the other tasks of the scenario. For more information,
   refer to `Scenario.add_sequence()^` and `Scenario.remove_sequence()^`.
+- `PipelineConfig^` object has been removed and merged into `ScenarioConfig^`. To configure a sequence,
+  refer to `ScenarioConfig.add_sequences()^` and `ScenarioConfig.remove_sequences()^`.
 - `Scope.PIPELINE` has been removed from `Scope^` values.
 - The `root_folder`, `storage_folder`, `read_entity_retry`, `repository_type`, and `repository_properties`
   attributes of the `GlobalAppConfig^` have been moved to the `CoreSection^`.<br/>
@@ -83,6 +85,7 @@ Not published yet.
 - The deprecated `last_edition_date` and `edition_in_progress` attributes of a DataNode entity have been removed.
 - The deprecated `DataNode.lock_edition()` and `DataNode.unlock_edition()` methods have been removed.
 - The deprecated `taipy.create_pipeline()` method has been removed.
+- Function `DataNode.track_edit` has been made public.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-template</code></strong></h6>
 3.0.0
