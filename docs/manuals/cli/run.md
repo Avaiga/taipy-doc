@@ -11,10 +11,10 @@ However, when working with command-line arguments, Taipy supported arguments can
 arguments of other libraries or your application's arguments. To avoid this confusion, Taipy CLI
 provides a run command to run your Taipy application, supporting both Taipy supported and unsupported arguments.
 
-## With Taipy supported arguments
+## With Taipy arguments
 
-Taipy CLI will parse Taipy supported arguments and pass the rest of the arguments to your Taipy application.
-To display the list of Taipy supported arguments, you can run the `taipy help run` command.
+Taipy CLI will parse internal arguments (interpreted by Taipy) and pass the others to your Taipy application.
+To display the list of available Taipy arguments, you can run the `taipy help run` command.
 Alternatively, you can use the `--help` or `-h` options by running `taipy run --help` or `taipy run -h`.
 
 ```console
@@ -72,7 +72,7 @@ To start your application in the Taipy CLI, you can run:
 $ taipy run main.py
 ```
 
-You can also provide Taipy supported arguments to the run command.
+You can also provide Taipy arguments to the run command.
 
 ```console
 $ taipy run main.py --port 8080 --experiment "0.1" --debug
@@ -84,9 +84,9 @@ with debug on and on the port "8080" of the server.
 !!! info
 
     By providing the arguments to the taipy run command, you are specifying that these arguments are
-    Taipy's arguments. Your application and other libraries would not be able to use these arguments.
+    Taipy's arguments. Your application and other libraries would not use these arguments. To pass arguments to other libraries, please refer to the next section.
 
-## With Taipy unsupported arguments
+## With external arguments for other libraries
 
 Assume that the "main.py" file contains some custom arguments for your application:
 
@@ -105,6 +105,5 @@ arguments to your application.
 $ taipy run main.py --port 8080 external-args --host data.server.com --port 2714 --debug
 ```
 
-In this example, your Taipy application will be started on *localhost:8080* with debug off since we
-do not specify debug mode for Taipy. Meanwhile, your data processing pipeline will be reading data
-from *data.server.com:2714*, the pipeline will run with debug.
+In this example, your Taipy application will be started on *localhost:8080* with *debug* off since we
+do not specify `debug` parameter for Taipy. Meanwhile, your application will run with `debug` parameter and read data from *data.server.com:2714*.
