@@ -1,4 +1,4 @@
-When running a Taipy Core application in `--production` mode, Taipy can access all entities
+When running a Taipy Core application in *--production* mode, Taipy can access all entities
 attached to the current version or another *production* version. It corresponds to the case where
 the application is stable and running in a production environment.
 
@@ -13,7 +13,7 @@ comments=false
 # Convert an experiment version to production
 
 To convert an experiment version to a production, you can run the Taipy application on the CLI with
-`--production` option and providing the version name.
+*--production* option and providing the version name.
 
 ```console
 $ taipy manage-versions --list
@@ -22,7 +22,7 @@ Version number                         Mode                   Creation date
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
-$ python main.py --production 0.1
+$ taipy run main.py --production 0.1
 [2023-01-25 13:00:05,333][Taipy][INFO] job JOB_example_algorithm_e25214c4-1047-4136-a5db-c1241a3ddbcf is completed.
 Number of scenarios: 3
 
@@ -39,7 +39,7 @@ Without explicitly providing the version name, the latest version of your applic
 Here is another example:
 
 ```console
-$ python main.py --experiment 1.0
+$ taipy run main.py --experiment 1.0
 [2023-01-25 13:05:17,712][Taipy][INFO] job JOB_example_algorithm_ac79138a-4c3a-4560-bbd4-f4975083bf83 is completed.
 Number of scenarios: 1
 
@@ -50,7 +50,7 @@ Version number                         Mode                   Creation date
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
-$ python main.py --production
+$ taipy run main.py --production
 [2023-01-25 13:06:00,871][Taipy][INFO] job JOB_example_algorithm_1fcb6feb-cef1-46e0-a818-4ae2e58df57d is completed.
 Number of scenarios: 5
 
@@ -72,7 +72,7 @@ entities, including older versions.
 
 # Remove a production version
 
-To remove a production version, you can use the `taipy manage-versions` with the `--delete-production`
+To remove a production version, you can use the `taipy manage-versions` with the *--delete-production*
 option on the Taipy CLI and provide the version name (see the
 [Manage versions on Taipy CLI page](../../cli/manage-versions.md) for more details).
 
@@ -106,7 +106,7 @@ comments=false
 ```
 
 ```console
-$ python main.py --production 1.0
+$ taipy run main.py --production 1.0
 [2023-01-25 12:52:05,484][Taipy][ERROR] The configuration for version 1.0 conflicts with the current configuration:
     DATA_NODE "input" has attribute "path" added: input.pkl
     DATA_NODE "output" has attribute "path" added: output.pkl
@@ -115,24 +115,24 @@ $ python main.py --production 1.0
     TASK "example_algorithm" has attribute "skippable" modified: False:bool -> True:bool
 
 Please add a new production version with migration functions.
-If old entities remain compatible with the new configuration, you can also run your application with --taipy-force option to override the production configuration of version 1.0.
+If old entities remain compatible with the new configuration, you can also run your application with --force option to override the production configuration of version 1.0.
 ```
 
 In the example above, when re-running production version 1.0, Taipy detects and displays all the
 changes. As shown in the message, there are two options to deal with these changes.
 
-First, you can run the production version with the `--taipy-force` option to force Taipy to update
+First, you can run the production version with the *--force* option to force Taipy to update
 the version's configuration before re-running the application.
 
 ```console
-$ python main.py --production 1.0 --taipy-force
+$ taipy run main.py --production 1.0 --force
 [2023-07-04 10:25:41][Taipy][ERROR] The configuration for version 1.0 conflicts with the current configuration:
     DATA_NODE "input" has attribute "path" added: input.pkl
     DATA_NODE "output" has attribute "path" added: output.pkl
     DATA_NODE "input" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     DATA_NODE "output" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     TASK "example_algorithm" has attribute "skippable" modified: False:bool -> True:bool
-[2023-07-04 10:25:41][Taipy][WARNING] Option --taipy-force is detected, overriding the configuration of version 1.0 ...
+[2023-07-04 10:25:41][Taipy][WARNING] Option --force is detected, overriding the configuration of version 1.0 ...
 [2023-07-04 10:25:41][Taipy][INFO] Version 1.0 is already a production version.
 [2023-07-04 10:25:41][Taipy][INFO] job JOB_example_algorithm_7a54227c-159d-4768-99c3-8c19c84a2e61 is completed.
 ```
@@ -161,7 +161,7 @@ Keep this in mind for later comparison.
 With the newly updated configuration, let's create a new production version named 2.0.
 
 ```console
-$ python main.py --production 2.0
+$ taipy run main.py --production 2.0
 [2023-07-04 11:35:31][Taipy][INFO] There is no migration function from production version "1.0" to version "2.0".
 [2023-07-04 11:35:31][Taipy][INFO] job JOB_example_algorithm_e3f72ec8-86b1-40c7-a382-6f63f04e8b7b is completed.
 ```

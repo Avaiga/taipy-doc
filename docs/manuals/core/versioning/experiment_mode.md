@@ -27,14 +27,14 @@ comments=false
 
 # Create a version
 
-To create an experiment version, you can run your Taipy application with `--experiment` option on the CLI.
+To create an experiment version, you can run your Taipy application with *--experiment* option on the CLI.
 
 ```console
 $ taipy manage-versions --list
 Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development (latest)   2023-01-25 12:20:33
 
-$ python main.py --experiment
+$ taipy run main.py --experiment
 [2023-01-25 12:20:56,474][Taipy][INFO] job JOB_example_algorithm_e1c49bdb-9284-40c5-a096-db0235697cb3 is completed.
 Number of scenarios: 1
 
@@ -61,7 +61,7 @@ Version number                         Mode                   Creation date
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment (latest)    2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
-$ python main.py --experiment 0.1
+$ taipy run main.py --experiment 0.1
 [2023-01-25 12:24:19,613][Taipy][INFO] job JOB_example_algorithm_9b6232f9-601e-4a85-852e-2ada7bc1e459 is completed.
 Number of scenarios: 1
 
@@ -72,7 +72,7 @@ Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 ```
 
-With the `--experiment 0.1` option, an experiment version is created and stored with the name "0.1".
+With the *--experiment 0.1* option, an experiment version is created and stored with the name "0.1".
 
 In this example, you can see the number of scenarios displayed is still 1. Taipy only considered
 the scenarios version "0.1", and filters out the entities of other versions.
@@ -84,7 +84,7 @@ To run an existing experiment version, there **must not** be any breaking change
 - Changes in the GUI configuration.
 - Changes in the Core configuration.
 
-You can run a Taipy application on the CLI with `--experiment` option and following by the name of
+You can run a Taipy application on the CLI with *--experiment* option and following by the name of
 the existing version.
 
 ```console
@@ -94,7 +94,7 @@ Version number                         Mode                   Creation date
 325d0618-6f9e-459b-9597-48fa93a57a23   Experiment             2023-01-25 12:20:56
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 
-$ python main.py --experiment 0.1
+$ taipy run main.py --experiment 0.1
 [2023-01-25 12:28:54,963][Taipy][INFO] job JOB_example_algorithm_2133dc18-643b-4351-872b-aedfc2c65c9c is completed.
 Number of scenarios: 2
 ```
@@ -121,23 +121,23 @@ comments=false
 ```
 
 ```console
-$ python main.py --experiment 0.1
+$ taipy run main.py --experiment 0.1
 [2023-01-25 12:52:05,484][Taipy][ERROR] The configuration for version 0.1 conflicts with the current configuration:
     DATA_NODE "output" has attribute "description" added: What a description
 
-To force running the application with the changes, run your application with --taipy-force option.
+To force running the application with the changes, run your application with --force option.
 ```
 
 In the example above, when re-running version 0.1, Taipy detects and displays all the differences,
 so you precisely know what has been changed and can decide what to do. Either you revert your
-configuration changes, or you can run the application with the `--taipy-force` option to force
+configuration changes, or you can run the application with the *--force* option to force
 Taipy to update the configuration of the provided version before re-running the application.
 
 ```console
-$ python main.py --experiment 0.1 --taipy-force
+$ taipy run main.py --experiment 0.1 --force
 [2023-01-25 12:55:05,484][Taipy][ERROR] The configuration for version 0.1 conflicts with the current Python Config.
     DATA_NODE "output" has attribute "description" added: What a description
-[2023-01-25 12:52:05,692][Taipy][WARNING] Option --taipy-force is detected, overriding the configuration of version  0.1 ...
+[2023-01-25 12:52:05,692][Taipy][WARNING] Option --force is detected, overriding the configuration of version  0.1 ...
 [2023-01-25 12:52:05,890][Taipy][INFO] job JOB_example_algorithm_96ed74ed-183b-4dff-86c9-3b733d4d9bd9 is completed.
 Number of scenarios: 2
 ```
@@ -160,7 +160,7 @@ the configuration. A new scenario has been created.
 
 # Delete a version
 
-To delete an experiment version, you can use the `taipy manage-versions` with the `--delete`
+To delete an experiment version, you can use the `taipy manage-versions` with the *--delete*
 option on the Taipy CLI and provide the version name (see the
 [Manage versions on Taipy CLI page](../../cli/manage-versions.md) for more details).
 
