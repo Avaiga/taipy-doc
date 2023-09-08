@@ -51,17 +51,17 @@ the [Advanced configuration page](../config/advanced-config.md).
 
 The versioning management system has many parameters that you can modify to accommodate your
 use-case (such as development or experiment mode). To see a list of all predefined Taipy options,
-you can run the `taipy help run` command. Alternatively, you can use the `--help` or `-h` options
+you can run the `taipy help run` command. Alternatively, you can use the *--help* or *-h* options
 by running `taipy run --help` or `taipy run -h`.
 
 Here is the list of the configuration options you can use in the CLI to configure the version management system:
 
-- **--development** or **-dev**: With the `--development` argument, Taipy runs the
+- *--development* or *-dev*: With the *--development* argument, Taipy runs the
   application in *development* mode using the unique development version. All existing
   entities (from previous runs) attached to the development version are deleted before
   running the Taipy application. This is the default mode.
 
-- **--experiment [VERSION]**: With the `--experiment` argument, Taipy runs the application
+- *--experiment [VERSION]*: With the *--experiment* argument, Taipy runs the application
   in *experiment* mode and only considers the entities attached to the version used.
   All other entities attached to different versions are filtered out.
   When the version is provided as a command line argument, a new *experiment* version
@@ -71,12 +71,12 @@ Here is the list of the configuration options you can use in the CLI to configur
   version only if the current configuration has not changed compared to the existing
   version.
 
-- **--production [VERSION]**: With the `--production` argument, Taipy runs the application
+- *--production [VERSION]*: With the *--production* argument, Taipy runs the application
   in *production* mode with the version provided. All existing entities are accessible.
   If the version provided already exists as an *experiment* version, it is converted
   to a production version.
 
-- **--force**: With the `--force` argument, Taipy overrides a version even if
+- *--force*: With the *--force* argument, Taipy overrides a version even if
   the configuration has changed and runs the application. Default to False.
 
 !!! note "Configure using both the TOML file and CLI options."

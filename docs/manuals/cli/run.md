@@ -27,7 +27,7 @@ For specific descriptions and usages of each argument, refer to:
 - [Configuring version management system using the CLI](../core/versioning/configuration.md#configure-using-the-cli)
 
 To display the list of available Taipy arguments, you can run the `taipy help run` command.
-Alternatively, you can use the `--help` or `-h` options by running `taipy run --help` or `taipy run -h`.
+Alternatively, you can use the *--help* or *-h* options by running `taipy run --help` or `taipy run -h`.
 
 ```console
 $ taipy help run
@@ -103,9 +103,9 @@ with debug on and on the port "8080" of the server.
 
 Assume that the "main.py" file contains some custom arguments for your application:
 
-- `--host`: specify the host of the data server to read from.
-- `--port`: specify the port of the data server to read from.
-- `--debug`: turn on debug mode on your data processing pipeline.
+- *--host* specify the host of the data server to read from.
+- *--port* specify the port of the data server to read from.
+- *--debug* turn on debug mode on your data processing pipeline.
 
 In a standard Python CLI, your application arguments will conflict with Taipy arguments.
 Passing the host of your data server would also change the host of your Taipy application, which
@@ -119,5 +119,5 @@ $ taipy run main.py --port 8080 external-args --host data.server.com --port 2714
 ```
 
 In this example, your Taipy application will be started on *localhost:8080* with *debug* off since we
-do not specify `debug` parameter for Taipy. Meanwhile, your application will run with `debug` parameter
-and read data from *data.server.com:2714*.
+do not specify *--debug* parameter for Taipy. Meanwhile, your application will run with *--debug*
+parameter and read data from *data.server.com:2714*.

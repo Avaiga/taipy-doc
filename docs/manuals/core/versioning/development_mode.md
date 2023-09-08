@@ -16,7 +16,7 @@ comments=false
 ```
 
 By default, a Taipy Core application runs in development mode. You can also explicitly define the
-development mode by running your Taipy application with `--development` or `-dev` option on the CLI.
+development mode by running your Taipy application with *--development* or *-dev* option on the CLI.
 
 ```console
 $ taipy run main.py

@@ -9,24 +9,24 @@ command in a terminal (Linux, macOS) or command prompt (Windows).
 
 Below is the list of all the optional arguments:
 
-- **--help** or **-h**: Shows the help message and exits.
+- *--help* or *-h*: Shows the help message and exits.
 
-- **--list** or **-l**: Lists all existing versions of the Taipy application and exits.
+- *--list* or *-l*: Lists all existing versions of the Taipy application and exits.
 
-- **--rename OLD_VERSION NEW_VERSION**: Rename the provided old version name to the new one.
+- *--rename OLD_VERSION NEW_VERSION*: Rename the provided old version name to the new one.
 
-- **--compare-config VERSION_1 VERSION_2**: Compare the configuration of version 1 and version 2.
+- *--compare-config VERSION_1 VERSION_2*: Compare the configuration of version 1 and version 2.
   Show the configuration differences and exits.
 
-- **--delete VERSION** or **-d VERSION**: Deletes the provided version and its entities.
+- *--delete VERSION* or *-d VERSION*: Deletes the provided version and its entities.
 
-- **--delete-production VERSION** or **-dp VERSION**: Converts the provided production version
+- *--delete-production VERSION* or *-dp VERSION*: Converts the provided production version
   to an experiment version.
 
 ## List capabilities with the --help option
 
 To display the help message of the `manage-version` command, you can run `taipy help manage-versions` command.
-Alternatively, you can use the `--help` or `-h` options by running `taipy manage-versions --help`
+Alternatively, you can use the *--help* or *-h* options by running `taipy manage-versions --help`
 or `taipy manage-versions -h`.
 
 ```console
@@ -50,7 +50,7 @@ options:
 
 ## List all versions
 To list all versions of your Taipy Core application, you can run the version management command
-with `--list` or `-l` option.
+with *--list* or *-l* option.
 
 ```console
 $ taipy manage-versions --list
@@ -69,7 +69,7 @@ In the example above, there are 5 versions of the application:
 - Two production versions "1.0" and "2.0".
 
 ## Rename a version
-To rename a version, you can run the version management command with `--rename` option, providing
+To rename a version, you can run the version management command with *--rename* option, providing
 the current version name and the new desired name.
 
 ```console
@@ -97,7 +97,7 @@ d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:1
 ## Compare configurations
 
 To compare the configuration between 2 versions, you can run the version management command with
-`--compare-config` option, providing the two version names.
+*--compare-config* option, providing the two version names.
 
 ```console
 $ taipy manage-versions --compare-config 1.0 2.0
@@ -110,7 +110,7 @@ has a newly added attribute named "description".
 
 ## Delete a version
 
-To delete a version, you can run the version management command with `--delete` or `-d` option.
+To delete a version, you can run the version management command with *--delete* or *-d* option.
 
 ```console
 $ taipy manage-versions --list
@@ -135,7 +135,7 @@ d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:1
 ## Remove a version from production
 
 To convert a version from production to experiment, you can run the version management command
-with `--delete-production` option.
+with *--delete-production* option.
 
 ```console
 $ taipy manage-versions --list

@@ -1,4 +1,4 @@
-When running a Taipy Core application in `--production` mode, Taipy can access all entities
+When running a Taipy Core application in *--production* mode, Taipy can access all entities
 attached to the current version or another *production* version. It corresponds to the case where
 the application is stable and running in a production environment.
 
@@ -13,7 +13,7 @@ comments=false
 # Convert an experiment version to production
 
 To convert an experiment version to a production, you can run the Taipy application on the CLI with
-`--production` option and providing the version name.
+*--production* option and providing the version name.
 
 ```console
 $ taipy manage-versions --list
@@ -72,7 +72,7 @@ entities, including older versions.
 
 # Remove a production version
 
-To remove a production version, you can use the `taipy manage-versions` with the `--delete-production`
+To remove a production version, you can use the `taipy manage-versions` with the *--delete-production*
 option on the Taipy CLI and provide the version name (see the
 [Manage versions on Taipy CLI page](../../cli/manage-versions.md) for more details).
 
@@ -121,7 +121,7 @@ If old entities remain compatible with the new configuration, you can also run y
 In the example above, when re-running production version 1.0, Taipy detects and displays all the
 changes. As shown in the message, there are two options to deal with these changes.
 
-First, you can run the production version with the `--force` option to force Taipy to update
+First, you can run the production version with the *--force* option to force Taipy to update
 the version's configuration before re-running the application.
 
 ```console

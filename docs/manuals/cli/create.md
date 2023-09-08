@@ -44,7 +44,7 @@ Finally, we changed the directory (`cd`) to our newly created folder and started
 
 ## From a specific template
 
-You can specify another template using the `--template` option.
+You can specify another template using the *--template* option.
 
 ```console
 $ taipy create --template scenario-management
@@ -65,7 +65,7 @@ Please refer to the next section for a list of templates.
 ## List of templates
 
 You can see the list of supported templates by running `taipy help create` command. Alternatively, you can
-use the `--help` or `-h` options. Run `taipy create --help` or `taipy create -h`.
+use the *--help* or *-h* options by running `taipy create --help` or `taipy create -h`.
 
 ```console
 $ taipy help create

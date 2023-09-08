@@ -27,7 +27,7 @@ comments=false
 
 # Create a version
 
-To create an experiment version, you can run your Taipy application with `--experiment` option on the CLI.
+To create an experiment version, you can run your Taipy application with *--experiment* option on the CLI.
 
 ```console
 $ taipy manage-versions --list
@@ -72,7 +72,7 @@ Version number                         Mode                   Creation date
 26e56e84-9e7e-4a26-93f6-443d9aa541d9   Development            2023-01-25 12:20:33
 ```
 
-With the `--experiment 0.1` option, an experiment version is created and stored with the name "0.1".
+With the *--experiment 0.1* option, an experiment version is created and stored with the name "0.1".
 
 In this example, you can see the number of scenarios displayed is still 1. Taipy only considered
 the scenarios version "0.1", and filters out the entities of other versions.
@@ -84,7 +84,7 @@ To run an existing experiment version, there **must not** be any breaking change
 - Changes in the GUI configuration.
 - Changes in the Core configuration.
 
-You can run a Taipy application on the CLI with `--experiment` option and following by the name of
+You can run a Taipy application on the CLI with *--experiment* option and following by the name of
 the existing version.
 
 ```console
@@ -130,7 +130,7 @@ To force running the application with the changes, run your application with --f
 
 In the example above, when re-running version 0.1, Taipy detects and displays all the differences,
 so you precisely know what has been changed and can decide what to do. Either you revert your
-configuration changes, or you can run the application with the `--force` option to force
+configuration changes, or you can run the application with the *--force* option to force
 Taipy to update the configuration of the provided version before re-running the application.
 
 ```console
@@ -160,7 +160,7 @@ the configuration. A new scenario has been created.
 
 # Delete a version
 
-To delete an experiment version, you can use the `taipy manage-versions` with the `--delete`
+To delete an experiment version, you can use the `taipy manage-versions` with the *--delete*
 option on the Taipy CLI and provide the version name (see the
 [Manage versions on Taipy CLI page](../../cli/manage-versions.md) for more details).
 
