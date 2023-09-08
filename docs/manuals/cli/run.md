@@ -7,9 +7,9 @@ To start the Taipy application, you can run:
 $ taipy run main.py
 ```
 
-!!! note
+!!! note "Using the 'python' command"
 
-    An alternative way to run your application is to use the Python command directly.
+    An alternative way to run your application is to use the `python` command, which runs the Python interpreter.
 
     ```console
     $ python main.py
