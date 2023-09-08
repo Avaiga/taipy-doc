@@ -4,12 +4,19 @@ Assume that you have a "main.py" file containing your Taipy application.
 To start the Taipy application, you can run:
 
 ```console
-$ python main.py
+$ taipy run main.py
 ```
 
-However, when working with command-line arguments, Taipy supported arguments can be confused with
-arguments of other libraries or your application's arguments. To avoid this confusion, Taipy CLI
-provides a run command to run your Taipy application, supporting both Taipy supported and unsupported arguments.
+!!! note
+
+    An alternative way to run your application is to use the Python command directly.
+
+    ```console
+    $ python main.py
+    ```
+    However, when working with command-line arguments, Taipy arguments can be confused with arguments
+    of other libraries or your application's arguments. To avoid this confusion, we recommend
+    using the `taipy run` command, which is more robust in avoiding any command-line argument conflict.
 
 ## With Taipy arguments
 
@@ -84,7 +91,8 @@ with debug on and on the port "8080" of the server.
 !!! info
 
     By providing the arguments to the taipy run command, you are specifying that these arguments are
-    Taipy's arguments. Your application and other libraries would not use these arguments. To pass arguments to other libraries, please refer to the next section.
+    Taipy's arguments. Your application and other libraries would not use these arguments. To pass
+    arguments to other libraries, please refer to the next section.
 
 ## With external arguments for other libraries
 
@@ -94,16 +102,17 @@ Assume that the "main.py" file contains some custom arguments for your applicati
 - `--port`: specify the port of the data server to read from.
 - `--debug`: turn on debug mode on your data processing pipeline.
 
-In a standard Python CLI, your application arguments will conflict with Taipy supported arguments.
+In a standard Python CLI, your application arguments will conflict with Taipy arguments.
 Passing the host of your data server would also change the host of your Taipy application, which
 is not a good problem to have.
 
-To solve this problem, Taipy CLI provides the "external-args" subcommand to pass Taipy unsupported
-arguments to your application.
+To solve this problem, Taipy CLI provides the "external-args" subcommand to pass external arguments
+to your application.
 
 ```console
 $ taipy run main.py --port 8080 external-args --host data.server.com --port 2714 --debug
 ```
 
 In this example, your Taipy application will be started on *localhost:8080* with *debug* off since we
-do not specify `debug` parameter for Taipy. Meanwhile, your application will run with `debug` parameter and read data from *data.server.com:2714*.
+do not specify `debug` parameter for Taipy. Meanwhile, your application will run with `debug` parameter
+and read data from *data.server.com:2714*.
