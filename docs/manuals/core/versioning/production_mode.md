@@ -115,24 +115,24 @@ $ taipy run main.py --production 1.0
     TASK "example_algorithm" has attribute "skippable" modified: False:bool -> True:bool
 
 Please add a new production version with migration functions.
-If old entities remain compatible with the new configuration, you can also run your application with --taipy-force option to override the production configuration of version 1.0.
+If old entities remain compatible with the new configuration, you can also run your application with --force option to override the production configuration of version 1.0.
 ```
 
 In the example above, when re-running production version 1.0, Taipy detects and displays all the
 changes. As shown in the message, there are two options to deal with these changes.
 
-First, you can run the production version with the `--taipy-force` option to force Taipy to update
+First, you can run the production version with the `--force` option to force Taipy to update
 the version's configuration before re-running the application.
 
 ```console
-$ taipy run main.py --production 1.0 --taipy-force
+$ taipy run main.py --production 1.0 --force
 [2023-07-04 10:25:41][Taipy][ERROR] The configuration for version 1.0 conflicts with the current configuration:
     DATA_NODE "input" has attribute "path" added: input.pkl
     DATA_NODE "output" has attribute "path" added: output.pkl
     DATA_NODE "input" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     DATA_NODE "output" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     TASK "example_algorithm" has attribute "skippable" modified: False:bool -> True:bool
-[2023-07-04 10:25:41][Taipy][WARNING] Option --taipy-force is detected, overriding the configuration of version 1.0 ...
+[2023-07-04 10:25:41][Taipy][WARNING] Option --force is detected, overriding the configuration of version 1.0 ...
 [2023-07-04 10:25:41][Taipy][INFO] Version 1.0 is already a production version.
 [2023-07-04 10:25:41][Taipy][INFO] job JOB_example_algorithm_7a54227c-159d-4768-99c3-8c19c84a2e61 is completed.
 ```

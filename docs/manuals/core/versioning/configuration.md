@@ -51,10 +51,10 @@ the [Advanced configuration page](../config/advanced-config.md).
 
 The versioning management system has many parameters that you can modify to accommodate your
 use-case (such as development or experiment mode). To see a list of all predefined Taipy options,
-you can run any Taipy script that runs a `Core` instance with the *-h* or *--help* option.
+you can run the `taipy help run` command. Alternatively, you can use the `--help` or `-h` options
+by running `taipy run --help` or `taipy run -h`.
 
-Here is the list of the configuration options you can use in the CLI to
-configure the version management system:
+Here is the list of the configuration options you can use in the CLI to configure the version management system:
 
 - **--development** or **-dev**: With the `--development` argument, Taipy runs the
   application in *development* mode using the unique development version. All existing
@@ -76,7 +76,7 @@ configure the version management system:
   If the version provided already exists as an *experiment* version, it is converted
   to a production version.
 
-- **--taipy-force**: With the `--taipy-force` argument, Taipy overrides a version even if
+- **--force**: With the `--force` argument, Taipy overrides a version even if
   the configuration has changed and runs the application. Default to False.
 
 !!! note "Configure using both the TOML file and CLI options."
