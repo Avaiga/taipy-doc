@@ -25,7 +25,7 @@ Below is the list of all the optional arguments:
 
 ## List capabilities with the --help option
 
-To display the help with all command line arguments, you can run `taipy help manage-versions` command.
+To display the help message of the `manage-version` command, you can run `taipy help manage-versions` command.
 Alternatively, you can use the `--help` or `-h` options by running `taipy manage-versions --help`
 or `taipy manage-versions -h`.
 
