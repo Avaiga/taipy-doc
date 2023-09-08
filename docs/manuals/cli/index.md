@@ -10,8 +10,7 @@ commands to streamline your web application development. Here is a list of avail
 - [:material-arrow-right: taipy create](create.md): With this command, you can easily initiate a new Taipy
   application by utilizing a template as a starting point for your project.
 
-- [:material-arrow-right: taipy run](run.md): This command allows you to run your Taipy application with arguments
-  both supported and unsupported by Taipy.
+- [:material-arrow-right: taipy run](run.md): This command allows you to run your Taipy application.
 
 - [:material-arrow-right: taipy manage-versions](manage-versions.md): This command empowers you to efficiently
   manage the versions of your user application and their related data.
