@@ -35,11 +35,9 @@ class RestRefManStep(SetupStep):
 
         app = rest_create_app()
 
-        from taipy.rest.api.views import register_views as rest_register_views
         from taipy.rest.extensions import apispec as rest_apispec
 
         with app.app_context():
-            rest_register_views()
             rest_specs = rest_apispec.swagger_json().json
 
         self.navigation = ""
