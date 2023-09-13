@@ -68,7 +68,7 @@ if args.no_pull and all(v["version"] == "local" for v in repo_defs.values()):
     git_command = None
 else:
     git_path = shutil.which(git_command)
-    if git_path is None or subprocess.run(f"{git_path} --version", shell=True, capture_output=True) is None:
+    if git_path is None or subprocess.run(f"\"{git_path}\" --version", shell=True, capture_output=True) is None:
         raise IOError(f"Couldn't find command \"{git_command}\"")
     git_command = git_path
 
@@ -89,7 +89,7 @@ for repo in repo_defs.keys():
                 raise IOError(f"Repository '{repo}' must be cloned in \"{TOP_DIR}\".")
     elif version == "develop":
         with GitContext(repo, PRIVATE_REPOS):
-            cmd = subprocess.run(f"{git_path} ls-remote -q -h {github_root}{repo}.git", shell=True, capture_output=True,
+            cmd = subprocess.run(f"\"{git_path}\" ls-remote -q -h {github_root}{repo}.git", shell=True, capture_output=True,
                                  text=True)
             if cmd.returncode:
                 if repo in PRIVATE_REPOS:
@@ -99,7 +99,7 @@ for repo in repo_defs.keys():
                     raise SystemError(f"Problem with {repo}:\nOutput: {cmd.stdout}\nError: {cmd.stderr}")
     else:
         with GitContext(repo, PRIVATE_REPOS):
-            cmd = subprocess.run(f"{git_path} ls-remote --exit-code --heads {github_root}{repo}.git", shell=True,
+            cmd = subprocess.run(f"\"{git_path}\" ls-remote --exit-code --heads {github_root}{repo}.git", shell=True,
                                  capture_output=True, text=True)
             if cmd.returncode:
                 if repo in PRIVATE_REPOS:
@@ -111,7 +111,7 @@ for repo in repo_defs.keys():
                 raise ValueError(f"No branch 'release/{version}' in repository '{repo}'.")
             tag = repo_defs[repo]["tag"]
             if tag:
-                cmd = subprocess.run(f"{git_path} ls-remote -t --refs {github_root}{repo}.git", shell=True,
+                cmd = subprocess.run(f"\"{git_path}\" ls-remote -t --refs {github_root}{repo}.git", shell=True,
                                      capture_output=True, text=True)
                 if not f"refs/tags/{tag}\n" in cmd.stdout:
                     raise ValueError(f"No tag '{tag}' in repository '{repo}'.")
@@ -258,7 +258,7 @@ for repo in repo_defs.keys():
     if version == "local":
         src_path = repo_defs[repo]['path']
         if not args.no_pull:
-            subprocess.run(f"{git_path} pull {src_path}", shell=True, capture_output=True, text=True)
+            subprocess.run(f"\"{git_path}\" pull {src_path}", shell=True, capture_output=True, text=True)
         print(f"    Copying from {src_path}...", flush=True)
         move_files(repo, src_path)
     else:
@@ -266,14 +266,14 @@ for repo in repo_defs.keys():
         if version != "develop":
             version = f"release/{version}"
         print("    Cloning...", flush=True)
-        subprocess.run(f"{git_path} clone -b {version} {github_root}{repo}.git {clone_dir}", shell=True,
+        subprocess.run(f"\"{git_path}\" clone -b {version} {github_root}{repo}.git {clone_dir}", shell=True,
                        capture_output=True, text=True)
         tag = repo_defs[repo]['tag']
         if tag:
             # Checkout tag version
             saved_dir = os.getcwd()
             os.chdir(clone_dir)
-            subprocess.run(f"{git_path} checkout {tag}", shell=True, capture_output=True, text=True)
+            subprocess.run(f"\"{git_path}\" checkout {tag}", shell=True, capture_output=True, text=True)
             os.chdir(saved_dir)
         move_files(repo, clone_dir)
 
