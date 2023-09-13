@@ -99,6 +99,30 @@ Not published yet.
 - The "multi-page-gui" template has been removed. Please use the default instead to create
   a Taipy multi-pages application.
 
+### Significant bug fixes
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+3.0.0
+
+- When running the Core service in development mode, changing the name of the function used by a task then running
+  the application again would raise an error.<br/>
+  See [issue #743](https://github.com/Avaiga/taipy-core/issues/743).
+
+## Enterprise edition: 3.0 (Work in progress)
+
+Not published yet.
+
+This release contains all of [`taipy` 3.0](Link to Taipy pypi)
+as well as additional features.
+
+### New Features
+
+- ...
+
+### Improvements and changes
+
+- The job recovery mechanism is now only available when the Core service is run.
+
 ## Community edition: 2.3
 
 Published on 2023-06.
