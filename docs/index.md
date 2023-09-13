@@ -27,7 +27,7 @@ Taipy is a versatile tool that enables both individuals and businesses to create
 - Enhancing the overall performance of Taipy applications, data caching, parallel executions of tasks, data source scoping are all integrated.
 - Providing a registry of pipeline executions.
 - Taipy equips users with the ability to monitor and assess the performance of their applications using the KPI tracking tool.
-- Furthermore, Taipy offers built-in graphical explorers for visualizing and editing your ‘executed’ pipelines and their associated data.
+- Taipy offers built-in graphical explorers for visualizing, editing, and monitoring your ‘executed’ pipelines and their associated data.
 
 ## Overview of Taipy
 
