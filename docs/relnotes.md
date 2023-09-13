@@ -99,6 +99,15 @@ Not published yet.
 - The "multi-page-gui" template has been removed. Please use the default instead to create
   a Taipy multi-pages application.
 
+### Significant bug fixes
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+3.0.0
+
+- When running the Core service in development mode, changing the name of the function used by a task then running
+  the application again would raise an error.<br/>
+  See [issue #743](https://github.com/Avaiga/taipy-core/issues/743).
+
 ## Community edition: 2.3
 
 Published on 2023-06.
