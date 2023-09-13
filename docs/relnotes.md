@@ -108,6 +108,21 @@ Not published yet.
   the application again would raise an error.<br/>
   See [issue #743](https://github.com/Avaiga/taipy-core/issues/743).
 
+## Enterprise edition: 3.0 (Work in progress)
+
+Not published yet.
+
+This release contains all of [`taipy` 3.0](Link to Taipy pypi)
+as well as additional features.
+
+### New Features
+
+- ...
+
+### Improvements and changes
+
+- The job recovery mechanism is now only available when the Core service is run.
+
 ## Community edition: 2.3
 
 Published on 2023-06.
