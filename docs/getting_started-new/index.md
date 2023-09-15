@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Getting Started with Taipy
 
 Welcome to Taipy! This guide will walk you through the process of installing Taipy 
