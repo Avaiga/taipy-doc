@@ -12,16 +12,12 @@ and building your first application.
 
 To get started with Taipy, ensure that you have Python (version 3.8 or higher) and
 [pip](https://pip.pypa.io) installed on your system. Once you have these prerequisites, 
-follow these steps to install Taipy:
-
-1. Open your terminal or command prompt. 
-2. Run the following command:
+open your terminal or command prompt and run the following command to download and
+install the latest stable release of Taipy.
 
 ``` console
 $ pip install taipy
 ```
-
-This command will download and install the latest stable release of Taipy.
 
 !!! info "Other Installation Options"
     
@@ -30,7 +26,7 @@ This command will download and install the latest stable release of Taipy.
     for additional instructions.
 
 
-## Your First Taipy Scenario 
+## First Taipy Scenario 
 Taipy introduces the concept of a *Scenario* to model pipeline executions. 
 A *Scenario* consists of an execution graph, often represented as a Directed 
 Acyclic Graph (DAG), where tasks (or functions) exchange data. Your scenario 
@@ -41,7 +37,7 @@ to demonstrate the configuration process. Here's an illustration of the
 scenario's execution graph made of two data nodes (blue boxes) and one task 
 (orange box):
 
-![hello world example](hello_world.svg){width=75%}
+![hello world example](hello_world.svg){width=50%}
 
 It consists in one input data node named *name*. Then a task named 
 *build_message* takes the first data node and returns a second 
@@ -79,7 +75,7 @@ scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_tas
 ### Running The Core service
 
 Running the Core service allows Taipy to process the configuration made in the 
-previous step to set up the scenario management feature.
+previous step and set up the scenario management feature.
 
 Include the following code in your Python script:
 
@@ -123,7 +119,7 @@ to the `build_message()` function, and writes the result to the output data node
 Line 6 reads and prints the output data node `message` that has been written by 
 the execution of the scenario `hello_scenario`.
 
-Here is the python code corresponding to the example:
+Putting all together the pieces, here is the Python code corresponding to the example:
 <a href="./hello_world_scenario.py" download>`hello_world_scenario.py`</a>
 
 And here is the expected output.
@@ -143,29 +139,8 @@ In this section we propose a basic graphical interface to interact with the scen
 created before. Use the following Python code :
 
 ``` python
-import taipy as tp
-from taipy import Config, Core, Gui
+from taipy import Gui
 
-
-################################################################
-#                  Configure your application                  #
-################################################################
-def build_message(name):
-    return f"Hello {name}!"
-
-
-# A first data node configuration represents a name
-name_data_node_cfg = Config.configure_data_node(id="input_name")
-# A second data node configuration represents the message to print
-message_data_node_cfg = Config.configure_data_node(id="message")
-# The task represents the build_message function
-build_msg_task_cfg = Config.configure_task("build_msg", build_message, name_data_node_cfg, message_data_node_cfg)
-# The scenario represent the whole execution graph
-scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_task_cfg])
-
-################################################################
-#                     Design your interface                    #
-################################################################
 hello_scenario = None
 input_name = "Taipy"
 message = None
@@ -185,19 +160,15 @@ Message: <|{message}|text|>
 """
 
 if __name__ == "__main__":
-    ################################################################
-    #            Instantiate and run the services                  #
-    ################################################################
     Core().run()
-    
     hello_scenario = tp.create_scenario(scenario_cfg)
-
     Gui(page).run()
 ```
 
-TODO: split? and explain the code above
+TODO: explain the code above
 
-Here is the complete python code corresponding:
+Putting all together the scenario and the Gui pieces, here is the complete python code 
+corresponding to the example:
 <a href="./hello_world.py" download>`hello_world.py`</a>
 
 This concludes the basic steps to get you started with Taipy. For more realistic 
