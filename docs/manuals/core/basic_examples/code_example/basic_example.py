@@ -11,7 +11,7 @@ def build_message(name):
 
 
 # A first data node configuration represents a name
-name_data_node_cfg = Config.configure_data_node(id="name")
+name_data_node_cfg = Config.configure_data_node(id="input_name")
 # A second data node configuration represents the message to print
 message_data_node_cfg = Config.configure_data_node(id="message")
 # The task represents the build_message function
@@ -31,10 +31,10 @@ if __name__ == "__main__":
     zinedine_scenario = tp.create_scenario(scenario_cfg)
     kylian_scenario = tp.create_scenario(scenario_cfg)
 
-    zinedine_scenario.person.write("Zinedine")
+    zinedine_scenario.input_name.write("Zinedine")
     zinedine_scenario.submit()
     print(zinedine_scenario.message.read())
 
-    kylian_scenario.person.write("Kylian Mbappe")
+    kylian_scenario.input_name.write("Kylian Mbappe")
     kylian_scenario.submit()
     print(kylian_scenario.message.read())
