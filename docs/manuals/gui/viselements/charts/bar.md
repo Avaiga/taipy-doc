@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Bar charts
 
 Bar charts can be handy when you need to compare data points

@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Funnel charts
 
 Funnel charts represent series of decreasing values as shrinking stacked bars.
@@ -35,7 +40,6 @@ many sale opportunities make it through, from the number of leads down to the
 number of actual sales.
 
 The data set is pretty simple:
-
 ```py
 data = {
     "Opps":  ["Hot leads", "Doc sent", "Quote", "Closed Won"],
@@ -79,7 +83,6 @@ We can split this information into Regions and get more detailed conversion
 information.
 
 In the following code, we have the same information spread across regions:
-
 ```py
 data = {
     # The stage names
@@ -137,7 +140,6 @@ To indicate how bars and lines should look, use the
 of the chart control.
 
 Here is some code that shows how styling can be customized:
-
 ```py
 data = {
     "Types":  ["Website visit", "Downloads", "Prospects", "Invoice sent", "Closed"],
@@ -207,7 +209,6 @@ to [*values*](../chart.md#p-values) (instead of [*y*](../chart.md#p-y) and
 [*x*](../chart.md#p-x)).
 
 Here is some code that demonstrates how to create a funnel area chart with Taipy:
-
 ```py
 data = {
     "Types":  ["Visits", "Downloads", "Prospects", "Invoiced", "Closed"],
@@ -257,7 +258,6 @@ box in the [*options*](../chart.md#p-options) property of the control.
 
 Here is a complete example where we display, in the same chart, a funnel area chart
 for two sales pipes, in two regions, resulting in four traces being generated:
-
 ```py
 data = {
     "John_us": [500, 450, 340, 230, 220, 110],

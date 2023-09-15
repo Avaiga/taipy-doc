@@ -1,4 +1,9 @@
-## Filled areas
+---
+hide:
+  - navigation
+---
+
+# Filled areas
 
 An area chart displays a solid-colored area between the traces.
 
@@ -25,7 +30,6 @@ of the Plotly documentation
 
 Here is how we can create a filled area chart to represent the number of items sold every
 weekday:
-
 ```py
 data = {
     "Day":   ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
@@ -71,7 +75,6 @@ Suppose we want also to visualize the price of the items.<br/>
 One way of doing this could be to overlay the two traces on top of each other.
 
 Here is an example that does just that:
-
 ```py
 data = {
     "Day":   [ "Mon", "Tue", "Wed", "Thu", "Fri" ],
@@ -129,7 +132,6 @@ To do this, you need to set the *stackgroup* of the dictionary set to
 the [*options*](../chart.md#p-options) property of the chart control to a group name.
 
 Here is some code that demonstrates this:
-
 ```py
 data = {
     "Month":  [
@@ -182,7 +184,6 @@ percentage of the overall total.
 
 Suppose we want to show the ratio of cosmetic products sales across different regions in
 a hypothetic company:
-
 ```py
 data = {
     "Products": [

@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 ## Other features
 
 ### Pie charts
@@ -21,8 +26,7 @@ data = pd.DataFrame({
 ```
 
 We can indicate the color of each individual slice using the
-_layout_ property of the chart:
-
+*layout* property of the chart:
 ```py
 layout = {
   "piecolorway": ["B05080","#f5f5f5",...,"#800000"],
@@ -53,10 +57,10 @@ Here is the resulting chart:
 
 You may want to plot different data sets in the same chart.
 
-In the following example, _data_ holds a data frame where two sets of values are stored
-in columns _y1_ and _y2_ that you want to represent in a chart where the abscissa
-values can be found in column _x_.  
-Labels for the charts can be found in columns _l1_ and _l2_.
+In the following example, *data* holds a data frame where two sets of values are stored
+in columns *y1* and *y2* that you want to represent in a chart where the abscissa
+values can be found in column *x*.  
+Labels for the charts can be found in columns *l1* and *l2*.
 
 Furthermore, we want the second dataset to be displayed in red.
 
@@ -83,9 +87,10 @@ Furthermore, we want the second dataset to be displayed in red.
 
 ### Multiple charts with different dataset sizes
 
-In the following example, the value holds an array of dataframe of different length _[data1, data2]_.
-We want to show a first chart with columns _Col A_ and _Col B_ from the first dataframe and a second chart
-with columns _Col D_ and _Col F_: the columns names needs to be prefixed by the index of the dataframe in the array.
+In the following example, the value holds an array of dataframe of different length
+*[data1, data2]*. We want to show a first chart with columns *Col A* and *Col B* from the first
+dataframe and a second chart with columns *Col D* and *Col F*: the columns names needs to be
+prefixed by the index of the dataframe in the array.
 
 !!! example "Page content"
 
@@ -97,7 +102,7 @@ with columns _Col D_ and _Col F_: the columns names needs to be prefixed by the 
         <|{[[26, 34, 46],[34,34],[16, 46, 20, 6]]}|chart|>
         ```
   
-        In this second example, we draw 3 charts with _x_ the index of the _y_ value from each array.
+        In this second example, we draw 3 charts with *x* the index of the *y* value from each array.
 
     === "HTML"
 
@@ -114,8 +119,7 @@ The chart control has support for plotting data on top of maps.
 
 The following code shows how to setup a chart control that can display markers
 on top of a map.
-
-```py3
+```py
 data = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/2015_06_30_precipitation.csv")
 
 marker = { "color": "darkblue", "size": 5 }
@@ -127,8 +131,8 @@ layout = {
 }
 ```
 
-The markers, customized in the _marker_ dictionary, are plotted based on coordinates located
-in the CSV dataset that gets loaded in _data_.
+The markers, customized in the *marker* dictionary, are plotted based on coordinates located
+in the CSV dataset that gets loaded in *data*.
 
 The page content is rather straightforward:
 
@@ -182,7 +186,7 @@ are selected in a variable.
 
 ### Tracking range
 
-By specifying a function for _on_range_change_, you can be made aware of chart zoom changes.
+By specifying a function for *on_range_change*, you can be made aware of chart zoom changes.
 
 !!! example "Page content"
 
@@ -200,7 +204,7 @@ By specifying a function for _on_range_change_, you can be made aware of chart z
 
 ### Sampling data
 
-By specifying _limit_rows_ as True, charts will adapt the number of points to the viewable area.
+By specifying *limit_rows* as True, charts will adapt the number of points to the viewable area.
 Depending on the algorithm, Some specific points might not be shown on the chart.
 
 !!! example "Page content"
@@ -219,10 +223,11 @@ Depending on the algorithm, Some specific points might not be shown on the chart
 
 ### Responsive chart
 
-By specifying _plot_config_ responsive key, chart will be responsive ie chart will resize automatically to adapt to its container width (especially usefull on mobile devices).
+By specifying *plot_config* responsive key, chart will be responsive i.e. chart will resize
+automatically to adapt to its container width (especially useful on mobile devices).
 Please get more information at [Plotly.js responsive](https://plotly.com/javascript/responsive-fluid-layout/).
 
-```py3
+```py
 pconf = {"responsive": True}
 ```
 

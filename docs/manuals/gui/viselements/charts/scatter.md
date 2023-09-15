@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Scatter charts
 
 Scatter charts represent data points as dots or other symbols.
@@ -90,7 +95,6 @@ documentation page.
 Here is how we can change the size and shape of the markers that are used in
 our previous example (with fewer data points). We need to create two
 dictionaries that hold the values we want to impact:
-
 ```py
 marker_A = {
     "symbol": "circle-open",
@@ -106,6 +110,7 @@ We are requesting that the markers have different shape to represent different d
 and the markers for the B data set are slightly bigger.
 
 To have Taipy use those styles, we must modify the chart definition:
+
 !!! example "Page content"
 
     === "Markdown"
@@ -135,7 +140,6 @@ That generates the following chart:
 Changing the style of markers can also be set for each individual data point.
 
 Consider the following array of three data sets:
-
 ```py
 data = [
     { "x": [1, 2, 3, 4], "y": [10, 11, 12, 13] },
@@ -146,7 +150,6 @@ data = [
 
 We can create an array of *marker* dictionaries, on for every trace, where
 we indicate how data points will be represented:
-
 ```py
 markers = [
     # First data set is represented by increasingly large
@@ -178,7 +181,6 @@ markers = [
 
 We can further customize the whole chart be creating a *layout* dictionary and
 use it in our chart:
-
 ```py
 layout = {
     # Hide the chart legend

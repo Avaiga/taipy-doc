@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Radar charts
 
 A radar chart (sometimes called a Spider chart or a web chart) is a kind of
@@ -28,7 +33,6 @@ radar chart automatically arranges all categories along the angular axis.
 
 Here is an example that demonstrates the use of a radar chart to display
 the relative usage of programming languages among developers:
-
 ```py
 data = {
     # List of programming languages
@@ -95,7 +99,6 @@ where a given data set performs better or worse than another for a given categor
 
 This example shows how to use a radar chart that displays two distinct data sets using
 the same categories:
-
 ```py
 # Skill categories
 skills=["HTML", "CSS", "Java", "Python", "PHP", "JavaScript", "Photoshop"]

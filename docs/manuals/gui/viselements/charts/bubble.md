@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Bubble charts
 
 Bubble charts are a type of [scatter chart](scatter.md) where marker sizes and colors are depending
@@ -25,7 +30,6 @@ A simple use case for bubble charts is a data set where data points have a relat
 size, and opacity to be applied for their representation.
 
 Here is a small example of this:
-
 ```py
 data = {
     "x": [1, 2, 3],
@@ -76,7 +80,6 @@ the *symbol* property of the dictionary used in the chart control's
 [*marker*](../chart.md#p-marker) property.
 
 Here is an example that demonstrates this:
-
 ```py
 data = {
     "x": [1, 2, 3, 4, 5],
@@ -128,7 +131,6 @@ to the [*text*](../chart.md#p-text) property of the chart control to indicate
 what this text should be, for every data point.
 
 Here is some code that defines hover texts for a bubble chart:
-
 ```py
 data = {
     "x": [1, 2, 3],

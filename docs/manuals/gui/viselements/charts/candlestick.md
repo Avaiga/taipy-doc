@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Candlestick charts
 
 Candlestick charts are commonly used in the stock market business. For a given
@@ -30,7 +35,6 @@ the relevant daily information for an entire month.
 
 Note that we use the Python [*yfinance* package](https://pypi.org/project/yfinance/)
 to query the historical data:
-
 ```py
 # Extraction of a month of stock data for AAPL using the
 # yfinance package (see https://pypi.org/project/yfinance/).
@@ -76,7 +80,6 @@ greater than *open*) and red candlestick bars when the value decreases.<br/>
 
 Here is some code that applies colors of our choosing to the candlesticks. This code
 also removes the *range slider* (the thin candlestick overview under the main area):
-
 ```py
 # Extraction of a few days of stock historical data for AAPL using
 # the yfinance package (see https://pypi.org/project/yfinance/).
@@ -149,7 +152,6 @@ contains a series of *Timestamp* instances from the Pandas library.
 
 You can create your own time series using the common *datetime* type that are
 available in all Python implementations in the *datetime* package:
-
 ```py
 # Retrieved history:
 # (Open, Close, Low, High)
