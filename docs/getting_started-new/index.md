@@ -150,8 +150,6 @@ from taipy import Config, Core, Gui
 ################################################################
 #                  Configure your application                  #
 ################################################################
-
-
 def build_message(name):
     return f"Hello {name}!"
 
@@ -168,7 +166,6 @@ scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_tas
 ################################################################
 #                     Design your interface                    #
 ################################################################
-
 hello_scenario = None
 input_name = "Taipy"
 message = None
@@ -189,23 +186,16 @@ Message: <|{message}|text|>
 
 if __name__ == "__main__":
     ################################################################
-    #            Instantiate the Core service and run it           #
+    #            Instantiate and run the services                  #
     ################################################################
     Core().run()
-
-    ################################################################
-    #               Manage your scenarios and data nodes           #
-    ################################################################
+    
     hello_scenario = tp.create_scenario(scenario_cfg)
-
-    ################################################################
-    #            Instantiate the Gui service and run it            #
-    ################################################################
 
     Gui(page).run()
 ```
 
-TODO: explain the code above
+TODO: split? and explain the code above
 
 Here is the complete python code corresponding:
 <a href="./hello_world.py" download>`hello_world.py`</a>
