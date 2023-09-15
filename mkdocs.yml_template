@@ -9,10 +9,10 @@ copyright: © [YEAR] Avaiga
 nav:
   - Home:
     - index.md
+  - "Install Taipy":
+    - installation/index.md
   - "Getting started":
     - getting_started-new/index.md
-    - "Install Taipy": getting_started-new/installation.md
-    - "Hello World": getting_started-new/hello-world.md
   - "Tutorials":
     - getting_started/index.md
     [GETTING_STARTED_CONTENT]
