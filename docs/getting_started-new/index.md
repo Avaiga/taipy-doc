@@ -45,7 +45,7 @@ data node named *message*.
 
 Building the corresponding Taipy application requires three easy steps.
 
-### Configuring the application
+### Configuration
 
 The first step involves configuring the execution graph. This includes 
 configuring data nodes, tasks, and scenario itself. 
@@ -72,7 +72,7 @@ scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_tas
 - Finally, line 11 configures the execution graph of the scenario providing 
   the previously configured task.
 
-### Running The Core service
+### Core service run
 
 Running the Core service allows Taipy to process the configuration made in the 
 previous step and set up the scenario management feature.
@@ -90,7 +90,7 @@ main module, preventing accidental execution. It is strongly recommended to incl
 
 In line 4, we simply instantiate and run a Core service.
 
-### Creating Scenarios and accessing data
+### Scenario creation and data access
 
 Now that Taipy Core service is running, you can create and manage scenarios, submit 
 task graphs for execution, and access data nodes. Here's a code snippet to demonstrate 
@@ -129,7 +129,7 @@ And here is the expected output.
 Hello Taipy!
 ```
 
-## Build a Graphical Interface
+## Graphical Interface
 
 In the previous step, you used Taipy Python APIs to access, edit, and submit a scenario. 
 This interaction is commonly implemented within Python functions triggered 
