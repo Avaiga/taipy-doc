@@ -165,7 +165,10 @@ if __name__ == "__main__":
     Gui(page).run()
 ```
 
-TODO: explain the code above
+TODO: explain the code above and result below
+
+![result](result.png){width=50%}
+
 
 Putting all together the scenario and the Gui pieces, here is the complete python code 
 corresponding to the example:
