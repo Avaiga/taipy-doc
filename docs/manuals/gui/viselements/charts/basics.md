@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Basic concepts
 
 This section explains how the chart control can used be used to represent data
@@ -54,7 +59,6 @@ that holds the value arrays for both *x* and *y*.
 
 Let us create a dictionary that holds data for our two series: the
 *x* and the *y* values:
-
 ```py
 # x values are [-10..10]
 x_range = range(-10, 11)
@@ -117,7 +121,6 @@ This involves using the [*layout*](../chart.md#p-layout) layout property of
 the chart control. This property must be set to a dictionary (see the
 [Plotly Reference](https://plotly.com/javascript/reference/layout/) for
 all the details) defined as follows:
-
 ```py
 layout = {
   "xaxis": {
@@ -161,7 +164,6 @@ You will often want to display several traces in the same chart control.
 
 For each data series, we can add a column to the DataFrame and indicate
 which series to display:
-
 ```py
 # x values are [-10..10]
 x_range = range(-10, 11)
@@ -218,7 +220,6 @@ color of the second trace, so it is displayed in red.
 
 Let us look at a situation where the two *y* series use ranges that are very
 different:
-
 ```py
 # x values are [-10..10]
 x_range = range(-10, 11)
@@ -267,7 +268,6 @@ second axis and set this object to the chart control's [*layout*](../chart.md#p-
 property.
 
 Here is what the definition of this object looks like:
-
 ```py
 layout = {
     "yaxis2": {
@@ -327,7 +327,6 @@ series of dates based on a start date and a frequency.
 
 Here is how you could display data based on time. In our example, we will use one
 random value for each hour on a given day:
-
 ```py
 data = {
     "Date": pandas.date_range("2023-01-04", periods=24, freq="H"),

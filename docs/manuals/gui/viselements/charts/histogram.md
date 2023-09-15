@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Histograms
 
 A histogram is a graphical representation that arranges a group of data into
@@ -27,7 +32,6 @@ The simplest histogram would use a data set and represent the number of
 data points that fall in a given bin (between two fixed values).
 
 Let us create an array of random numbers that represent a Gaussian distribution:
-
 ```py
 data = [random.gauss(0, 5) for i in range(1000)]
 ```
@@ -58,9 +62,8 @@ This would produce the image below:
 
 Note that the label under the x axis appears as '0'. That's because we
 did not name our data set.<br/>
-To have a more appealing x axis label, we could have defined _data_
+To have a more appealing x axis label, we could have defined *data*
 as a dictionary:
-
 ```py
 data = {
   "Input": [random.gauss(0, 5) for i in range(1000)]
@@ -73,18 +76,17 @@ use it as the axis label (as you can see in the following example).
 ### Horizontal histogram {data-source="gui:doc/examples/charts/histogram-horizontal.py"}
 
 To display a histogram horizontally (where the values count appear in horizontal bars),
-we can simply set the data set as the value of the [_y_](../chart.md#p-y) property
-of the chart control (instead of [_x_](../chart.md#p-x)).
+we can simply set the data set as the value of the [*y*](../chart.md#p-y) property
+of the chart control (instead of [*x*](../chart.md#p-x)).
 
 Let us create a data set (same as above, really):
-
 ```py
 data = {
     "Count": [random.random() for i in range(100)]
 }
 ```
 
-And use it in your chart control, as a _y_ value this time:
+And use it in your chart control, as a *y* value this time:
 
 !!! example "Page content"
 
@@ -114,13 +116,12 @@ You can display several data sets in the same histogram. One way of representing
 this would be to overlay the two histogram displays (and apply some transparency
 so that all data sets remain visible).
 
-To overlay the data set traces, you need to set the _barmode_ property of
-[_layout_](../chart.md#p-layout) to "overlay".
+To overlay the data set traces, you need to set the *barmode* property of
+[*layout*](../chart.md#p-layout) to "overlay".
 
 
 Let us create an array of two random data sets then prepare the objects that customize
 the histogram chart:
-
 ```py
 # Data is made of two random data sets
 data = [
@@ -182,11 +183,10 @@ Here is what the resulting chart looks like:
 
 Histograms can also represent different data sets accumulating their bin
 counts on top of one another.<br/>
-The _barmode_ property of the value set to the [_layout_](../chart.md#p-layout) must
+The *barmode* property of the value set to the [*layout*](../chart.md#p-layout) must
 be set to "stack" to achieve this.
 
 Using the two random data sets defined by:
-
 ```py
 # Array of two data sets
 data = {
@@ -235,9 +235,8 @@ To result in the following figure:
 
 Histograms can also represent the sum of the number of observations, bin after
 bin.<br/>
-Taipy can represent such a histogram using the _cumulative_ property of the value set
-to the [_options_](../chart.md#p-options) chart control property.
-
+Taipy can represent such a histogram using the *cumulative* property of the value set
+to the [*options*](../chart.md#p-options) chart control property.
 ```py
 # Random data set
 data = [random.random() for i in range(500)]
@@ -281,14 +280,13 @@ our initial data set.
 
 Instead of displaying the count of bins, histograms can also be customized to display
 the proportion of each bin.<br/>
-To achieve this, set the _histnorm_ property of the value set to the
-[_options_](../chart.md#p-options) chart control property to what would be relevant
+To achieve this, set the *histnorm* property of the value set to the
+[*options*](../chart.md#p-options) chart control property to what would be relevant
 in your situation (see the
 [histnorm documentation](https://plotly.com/javascript/reference/#histogram2d-histnorm)
 on the Plotly site for details).
 
 We can define a random data set and the histogram options with this code:
-
 ```py
 # Random data set
 data = [random.random() for i in range(100)]
@@ -367,9 +365,9 @@ properties = {
 }
 ```
 
-Note what _options_ indicates: the first trace will represent how many instances of
-the bin name (the name of the fruit, in _x_) appear in the first data set. The second
-trace will sum the _y_ values for each bin.
+Note what *options* indicates: the first trace will represent how many instances of
+the bin name (the name of the fruit, in *x*) appear in the first data set. The second
+trace will sum the *y* values for each bin.
 
 Because there are quite a few settings, we group them in a single dictionary that we
 can then use as the value to the property [*properties*](../chart.md#p-properties) of
@@ -406,7 +404,6 @@ Use the *nbinsx* property of the dictionary set to the
 number.
 
 Here is the code we are using in this example:
-
 ```py
 # Random set of 100 samples
 samples = { "x": [random.gauss() for i in range(100)] }

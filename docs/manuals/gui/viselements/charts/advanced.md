@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Advanced topics
 
 Taipy exposes advanced features that the Plotly library provides. This section
@@ -31,7 +36,6 @@ represent the same function (x squared) on two different intervals.
   on the interval [-4, 4].
 
 Here is the code that does just that:
-
 ```py
 # The first data set uses the x interval [-10..10],
 # with one point at every other unit
@@ -112,8 +116,6 @@ look at the documentation on the
 page on Plotly's website.
 
 Here is an example demonstrating how you can add annotations to your chart controls:
-
-
 ```py
 # Function to plot: x^3/3 - x
 def f(x):
@@ -196,7 +198,6 @@ The documentation for shape descriptors can be found in the
 page on Plotly's website.
 
 Here is some code that creates shapes on top of a chart control:
-
 ```py
 # Function to plot: x^3/3-x
 def f(x):
@@ -275,7 +276,6 @@ indexes. It is updated when the user selects points on the chart.
 
 Here is some code that calculates the mean of the values of the selected points of
 a chart control:
-
 ```py
 # x = [0..20]
 x = list(range(0, 21))
@@ -307,9 +307,9 @@ def on_change(state, var, val):
         state.mean_value = numpy.mean([data["y"][idx] for idx in val]) if len(val) else 0
 ```
 
-The part you should be looking at is the use of the default callback property [*on_change*](../../callbacks.md#variable-value-change):
-it detects the changes in *selected_indices* and calculates the mean, which updates
-the text in the title.
+The part you should be looking at is the use of the default callback property
+[*on_change*](../../callbacks.md#variable-value-change): it detects the changes in
+*selected_indices* and calculates the mean, which updates the text in the title.
 
 We also create two objects (*layout* and *config*) used to remove the mode
 bar above the chart and force the Box select tool.

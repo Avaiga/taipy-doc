@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Map plots
 
 Taipy leverages Plotly's capabilities of plotting data on top of maps.
@@ -25,7 +30,6 @@ Here is a simple example demonstrating how to plot a line between two
 georeferenced locations.
 
 The code that defines all necessary data structures looks like this:
-
 ```py
 # Flight start and end locations
 data = {
@@ -116,7 +120,6 @@ its type). The association of the trace data to the element index in *data* is
 done by adding the *lat[n]* and *lon[n]* keys to the dictionary.
 
 Here is the complete code:
-
 ```py
 airports = {
     "AMS": {"lat": 52.31047296675518, "lon": 4.76819929439927},
@@ -213,7 +216,6 @@ In the following code, the array *cities* holds a series of cities with their lo
 and human population.<br/>
 We create a Pandas DataFrame that holds the full information, where we add two
 columns that the chart control can use to build the bubbles themselves:
-
 ```py
 cities = [
     {"name": "Tokyo", "lat": 35.6839, "lon": 139.7744, "population": 39105000},

@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Polar charts
 
 Polar charts are a common variation of circular graphs. They are used when relationships between
@@ -30,7 +35,6 @@ equation to represent, based on an angular value.
 
 Here is an example of such a chart. We are creating a parametric curve that will
 result in a nice-looking polar chart:
-
 ```py
 # One data point for each degree
 theta = range(0, 360)
@@ -87,7 +91,6 @@ Filling an area in a polar chart is only a matter of setting the *fill* property
 the value assigned to the [*options*](../chart.md#p-options) property of the chart control.
 
 Here is an example that uses the same data set (in *data*) as in the previous example:
-
 ```py
 options = {
     "fill": "toself"
@@ -145,7 +148,6 @@ Several traces can be displayed in the same polar chart. The [*r*](../chart.md#p
 indexed property can refer to different data.
 
 Here is how to create several traces:
-
 ```py
 # One data point for each degree
 theta = range(0, 360)
@@ -215,7 +217,6 @@ It may be necessary not to display the entire 360° of the chart but instead sel
 range of angles to represent: a *sector*.
 
 Here is some code that does that:
-
 ```py
 # Sample small plot definition
 trace = {
@@ -282,9 +283,7 @@ Here are our two traces, gathered in the same chart:
 The angular axis can be tuned to set its origin wherever needed. It can
 also be oriented, and the angular values can appear in different units.
 
-
 Here is a demonstration of these capabilities:
-
 ```py
 # Create a star shape
 data = {
@@ -361,7 +360,6 @@ You can also customize what the tick texts are: what text is at what location on
 
 Here is an example that uses a chart control to show the current time in a way that looks like
 a wall clock:
-
 ```py
 def generate_hand_shapes():
     # Retrieve and store the current, local time
@@ -470,7 +468,6 @@ the chart control definition can be concise.
 Note how we use the [*on_navigate()*](../../callbacks.md#navigation-callback) callback function
 to refresh the data so that every refresh of the display will compute and display the current
 time.
-
 
 Here is the very simple chart control definition:
 

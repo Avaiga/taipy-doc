@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Continuous error bands
 
 Continuous error bands represent the error or the measurement imprecision as
@@ -27,7 +32,6 @@ error band.
 
 We create the shape of the error band from the input data that is applied
 a random error displacement, positively and negatively:
-
 ```py
 # Common axis for all data: [1..10]
 x = list(range(1, 11))
@@ -131,7 +135,6 @@ we could have gotten our groceries from. This defines our ranges, for every type
 of item.
 
 Here is the code that does that:
-
 ```py
 # Data is collected from January 1st, 2010, every month
 start_date = datetime.datetime(year=2010, month=1, day=1)

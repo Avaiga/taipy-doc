@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Heatmaps
 
 A heatmap depicts values for a main variable of interest across two axes as a grid of colored
@@ -33,7 +38,6 @@ This example displays a heatmap representing the temperatures, in °C, in some c
 a given season (of the northern hemisphere).
 
 We define the dataset to be displayed as a simple dictionary:
-
 ```py
 data = {
     "Temperatures": [[17.2, 27.4, 28.6, 21.5],
@@ -83,7 +87,6 @@ axes was the same.
 
 If you needed to add another city to be represented on the *y* axis, you would need
 to change the definition of the source dataset:
-
 ```py
 data = [
     {
@@ -148,7 +151,6 @@ in the [Colorscales](https://plotly.com/javascript/colorscales/) page of the
 
 We are reusing the code of the first example, where we add a new variable to hold the
 options for our chart control:
-
 ```py
 options = { "colorscale": "Portland" }
 ```
@@ -187,9 +189,8 @@ This example demonstrates how to display the temperature for a given city
 in a given season in the appropriate heatmap cell, leveraging the previous
 example.
 
-Here is the code that is needed (we use the same definition for _data_ as in the previous
+Here is the code that is needed (we use the same definition for *data* as in the previous
 example):
-
 ```py
 layout = {
     # This array contains the information we want to display in the cells
@@ -235,7 +236,7 @@ for city in range(len(cities)):
         layout["annotations"].append(annotation)
 ```
 
-We create the _layout_ dictionary that will be set to the [*layout*](../chart.md#p-layout)
+We create the *layout* dictionary that will be set to the [*layout*](../chart.md#p-layout)
 property of the chart, then fill its *annotations* property for every city and every
 season, storing a formatted string representing the temperature.
 
@@ -270,7 +271,6 @@ You may need to specify the size of each heatmap cell, both in the horizontal an
 dimensions.
 
 Let's consider the following code:
-
 ```py
 grid_size = 10
 data = [
@@ -349,7 +349,6 @@ Here is an example of displaying a [Golden spiral](https://en.wikipedia.org/wiki
 on top of a heatmap representing a Fibonacci sequence. This example was more or less
 translated to Python from the
 [Plotly.js documentation](https://plotly.com/javascript/heatmaps/).
-
 ```py
 # Return the x and y coordinates of the spiral for the given angle
 def spiral(th):

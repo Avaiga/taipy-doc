@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Pie charts
 
 A pie chart is a circular graphic divided into slices representing a numerical quantity.
@@ -28,7 +33,6 @@ Our data set indicates, for every listed country, how much land is covered by
 forests in thousands of hectares. This data was copied from the [FAO](https://www.fao.org)
 site for 2020.<br/>
 Here is how the data set is defined in our code:
-
 ```py
 data = {
   "Country": ["Rest of the world","Russian Federation",...,"Peru"],
@@ -36,8 +40,7 @@ data = {
 }
 ```
 
-We can indicate the color of each individual slice using the
-_layout_ property of the chart:
+We can indicate the color of each individual slice using the *layout* property of the chart:
 
 And the chart definition is the following:
 
@@ -70,7 +73,6 @@ You can specify what the color of each slice should be.
 
 Here is a sample that creates a pie chart showing all the colors of the
 rainbow:
-
 ```py
 n_slices = 20
 # List: [1..n_slices]

@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Error bars
 
 Error bars are located on data points and indicate the correctness of the value shown.
@@ -28,7 +33,6 @@ and the other is the same sine trace, except that the *y* values of its data poi
 displaced randomly in a range that we define (in *error_ranges*).
 
 Here is the code that implements that:
-
 ```py
 # Number of samples
 max_x = 20
@@ -101,7 +105,6 @@ Here is an example that demonstrates how to implement this. This example uses a
 as well.
 
 The code is the following:
-
 ```py
 # Number of samples
 n_samples = 10
