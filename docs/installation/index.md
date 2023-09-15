@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Install Taipy
 Welcome to the installation section of the Taipy web application builder! This section will guide you through the seamless and straightforward process of setting up and deploying your own powerful web applications.
 
