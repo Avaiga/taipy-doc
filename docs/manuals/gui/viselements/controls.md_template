@@ -1,10 +1,24 @@
 # Controls
 
-Controls are user interface objects that represent data.
+Controls are user interface objects that represent data and that users can interact with.
 
-## Controls list
+## Generic controls
 
-Here is the list of all available controls in Taipy:
+Here is the list of all available controls in Taipy GUI:
 
 [TOC]
 
+## Scenario management controls
+
+Some controls are dedicated to Scenario Management. These controls let users select
+Entities and interact with them.
+
+!!! warning "Available in Taipy Community and Enterprise editions"
+
+    The controls listed in this section are available only if the
+    [`taipy`](https://pypi.org/project/taipy/) Python package is installed. These controls are
+    **not** present if only [`taipy-gui`](https://pypi.org/project/taipy-gui/) is installed.
+
+Here is the list of all the available controls that are available in Taipy:
+
+[core_TOC]
