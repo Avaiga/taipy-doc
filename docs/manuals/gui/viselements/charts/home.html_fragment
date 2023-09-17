@@ -18,6 +18,7 @@ radar:Radar charts
 candlestick:Candlestick charts
 funnel:Funnel charts
 waterfall:Waterfall charts
+treemap:Treemaps
 map:Maps
 #TODO#area-map:Areas on maps
 #TODO#density-map:Density maps
@@ -227,6 +228,11 @@ the chart types supported by Taipy by application category:
 
 <h3 class="h3">Specialized charts</h3>
 <ul class="list">
+    <li><a href="../charts/treemap">
+        <span>Treemaps<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
+        <img src="../charts/home-treemap-d.png"  class="visible-dark" />
+        <img src="../charts/home-treemap-l.png"  class="visible-light" />
+      </a></li>
     <li><a href="../charts/gantt">
         <span>Gantt charts<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><use xlink:href="#rarrow"/></svg></span>
         <img src="../charts/home-gantt-d.png"  class="visible-dark" />

@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Line charts
 
 Line plots are a widely-used representation that connects distinct

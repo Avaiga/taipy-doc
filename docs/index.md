@@ -35,7 +35,8 @@ Is provided by Taipy’s “Scenario Management”, one of Taipy’s central con
 
 ## Overview of Taipy
 
-The subsequent schematic diagram illustrates the complete sequence encompassing all stages within the Taipy flow.
+The subsequent schematic diagram illustrates the complete sequence encompassing all stages within 
+the Taipy flow.
 
   <div class="tp-col-12 tp-col-md-auto">
     <figure align="center">
@@ -99,7 +100,7 @@ These frequently visited topics have been highlighted for your quick reference.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
-  </div>  
+  </div>
 </div>
 
 ## Build your UI with dozens of visual elements
@@ -121,10 +122,13 @@ Taipy provides many GUI components (referred to as “Taipy Controls”) that ar
       <span>Table</span>
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/table-d.png"/>
-        <p>A table presents data in rows and columns, often used in web applications for structured data display and interaction.</p>
+        <p>
+          A table presents data in rows and columns, often used in web applications for structured 
+          data display and interaction.
+        </p>
       </div>
     </a>
-  </li> 
+  </li>
   <li>
     <a class="tp-pill" href="manuals/gui/viselements/button/">
       <span>Button</span>

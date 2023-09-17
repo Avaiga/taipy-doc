@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Waterfall charts
 
 Waterfall charts can display a running total as values are added or subtracted. They are used to
@@ -27,7 +32,6 @@ Waterfall charts are typically used for describing cash flow: the initial value 
 and how it evolves with time.
 
 Here is a dataset that could represent such a flow:
-
 ```py
 data = {
     "Day":   ["Mon", "Tue", "Wed", "Thu", "Fri"],
@@ -88,7 +92,6 @@ scores.<br/>
 This is where styling comes in handy.
 
 Here is a dataset that represents the score achieved on a 9-hole golf course:
-
 ```py
 n_holes = 9
 
@@ -110,7 +113,6 @@ last "value" will not be used in our example. Instead, at the location of this "
 want to display the running total: the cumulative difference between the actual score and the par
 for each hole. All those differences are stored in another array that we store in the *data*
 dictionary:
-
 ```py
 data["Diff"] = [data["Score"][i]-data["Par"][i] for i in range(0,n_holes)] + [None]
 ```
@@ -121,7 +123,6 @@ differences, with an additional None value, to the dataset used by the chart, as
 key "Diff".<br/>
 This array will be the value represented by our chart, showing, for each hole, the score relative
 to the par. To indicate how to represent this array, we must add to the *data* dataset the *measure*:
-
 ```py
 data = {
     ...
@@ -191,7 +192,6 @@ easy to read.
 
 To achieve this with Taipy GUI, you need to create a slightly more complex dataset than
 in the examples above:
-
 ```py
 data = [
     {
@@ -243,4 +243,3 @@ The resulting chart looks like this:
     <img src="../waterfall-period_levels-l.png" class="visible-light"/>
     <figcaption>Waterfall chart with bucketed periods</figcaption>
 </figure>
-
