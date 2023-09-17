@@ -2,20 +2,18 @@
 
 Learn how to use Taipy and improve your skills with the following tutorials.
 
-
-TODO:
-
-In this page I want a list of all the tutorials. It should contain the 3 old 
-getting started, plus the current tutorials we have in the website.
-
-| Id   |            Title             |                                    description                                     |  keywords   |                                    link to the markdown page | 
-|:-----|:----------------------------:|:----------------------------------------------------------------------------------:|:-----------:|-------------------------------------------------------------:|
-| 1    |      Understanding GUI       | Understand basic knowledge of Taipy GUI creating of a multi-page NLP application.  |  **TODO**   |                     [gui tuto](./understanding_gui/index.md) |
-| 2    | Scenario management Overview |              Learn the main features of the Taipy scenario management              |  **TODO**   | [scenario mgt tuto](./scenario_management_overview/index.md) |
-| 3    |  How to use Taipy templates  | Use a taipy template to generate a complete application from back-end to front-end |  **TODO**   |                 [templates tuto](./using_templates/index.md) |
-
-
-I would like to turn the previous tabel (which is incomplete) in to a beautiful page with 
-similar layout as the one in the website:
-
-![expected layout](TMP_PIC_TO_REMOVE.png){width=50%}
+| Id  |                          Title                          |                                    description                                    |  keywords  |                                    link to the markdown page | 
+|:----|:-------------------------------------------------------:|:---------------------------------------------------------------------------------:|:-----------:|-------------------------------------------------------------:|
+| 1   |                    Understanding GUI                    | Understand basic knowledge of Taipy GUI creating of a multi-page NLP application. |  **TODO**  |                     [gui tuto](./understanding_gui/index.md) |
+| 2   |              Scenario management Overview               |             Learn the main features of the Taipy scenario management              |  **TODO**  | [scenario mgt tuto](./scenario_management_overview/index.md) |
+| 3   |                  Complete application                   |              Build a complete application from back-end to front-end              |  **TODO**  | [Complete application tuto](./complete_application/index.md) |
+| 4   |          GS with Taipy Gui (to merge with #1?)          |                                     **TODO**                                      |  **TODO**  |                                           [templates tuto]() |
+| 5   |                Creating a Data dashboard                |                                     **TODO**                                      |  **TODO**  |                                           [templates tuto]() |
+| 6   |            Changing line types using charts             |                                     **TODO**                                      |  **TODO**  |                                           [templates tuto]() |
+| 7   |               Organizing your application               |                                     **TODO**                                      |  **TODO**  |                                           [templates tuto]() |
+| 8   | Organizing Taipy applications, Partials, Dialogs, Panes |                                     **TODO**                                      |  **TODO**  |                                           [templates tuto]() |
+| 9   |            GS with Core (to merge with #2?)             |                                     **TODO**                                      |  **TODO**  |                                           [templates tuto]() |
+| 10  |                      Core concepts                      |                                     **TODO**                                      |  **TODO**  |                                           [templates tuto]() |
+| 11  |                     Core execution                      |                                     **TODO**                                      |  **TODO**  |                                           [templates tuto]() |
+| 12  |                   Smart task skipping                   |                                     **TODO**                                      |  **TODO**  |                                           [templates tuto]() |
+ 
