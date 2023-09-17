@@ -3,25 +3,23 @@ from taipy import Config, Core, Gui
 
 
 ################################################################
-#                  Configure your application                  #
+#            Configure application                             #
 ################################################################
-
-
 def build_message(name):
     return f"Hello {name}!"
 
 
-# A first data node configuration represents a name
+# A first data node configuration to model an input name.
 name_data_node_cfg = Config.configure_data_node(id="input_name")
-# A second data node configuration represents the message to print
+# A second data node configuration to model the message to display.
 message_data_node_cfg = Config.configure_data_node(id="message")
-# The task represents the build_message function
+# A task configuration to model the build_message function.
 build_msg_task_cfg = Config.configure_task("build_msg", build_message, name_data_node_cfg, message_data_node_cfg)
-# The scenario represent the whole execution graph
+# The scenario configuration represents the whole execution graph.
 scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_task_cfg])
 
 ################################################################
-#                     Design your interface                    #
+#            Design graphical interface                        #
 ################################################################
 
 hello_scenario = None
@@ -31,7 +29,7 @@ message = None
 
 def submit_scenario(state):
     state.hello_scenario.input_name.write(state.input_name)
-    state.hello_scenario.submit(wait=True)
+    state.hello_scenario.submit()
     state.message = hello_scenario.message.read()
 
 page = """
@@ -44,17 +42,17 @@ Message: <|{message}|text|>
 
 if __name__ == "__main__":
     ################################################################
-    #            Instantiate the Core service and run it           #
+    #            Instantiate and run Core service                  #
     ################################################################
     Core().run()
 
     ################################################################
-    #               Manage your scenarios and data nodes           #
+    #            Manage scenarios and data nodes                   #
     ################################################################
     hello_scenario = tp.create_scenario(scenario_cfg)
 
     ################################################################
-    #            Instantiate the Gui service and run it            #
+    #            Instantiate and run Gui service                   #
     ################################################################
 
     Gui(page).run()
