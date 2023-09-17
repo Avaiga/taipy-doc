@@ -1,61 +1,29 @@
 ---
 hide:
   - navigation
+  - toc
 ---
 
-# Welcome to Taipy
+# Welcome to Taipy Documentation!
 
-Taipy is a helpful open-source Python library for improving both the front-end and back-end of your
-applications. It's designed to make it easy to create interactive, multi-page dashboards with 
-enhanced Markdown content. Even if you're not an expert in web development, you can use this web 
-application builder to create dynamic interfaces quickly and easily.
+Taipy is an open-source library to easily develop data-driven web applications in pure Python.
 
-At the same time, Taipy is designed specifically for creating data-driven back-end applications. It 
-comes with built-in components that make it easy to organize and control how data is accessed and 
-managed. This feature, called "Scenario Management," requires very little setup in Python.
+Taipy is a versatile tool suitable for developers and businesses, regardless of their coding 
+expertise. Taipy covers both front-end and back-end requirements to expedite application 
+development, from initial prototypes to production ready solutions.
 
-With Taipy Studio, a graphical configuration editor, setting up your scenarios (which include data 
-flows and pipelines) has become much simpler. This tool offers a user-friendly interface where you 
-can easily drag and drop elements, customize layouts, and integrate features effortlessly.
+- **User interface creation:** 
+  Design user interfaces effortlessly. You don't need prior web design knowledge to create 
+  interactive multi-page applications. With extended Markdown syntax, you can craft dynamic 
+  web pages with ease. No knowledge of web development is required!
 
-Taipy is a versatile tool that enables both individuals and businesses to create applications 
-without needing advanced coding skills. One of its key benefits is how it speeds up development for 
-both the front-end and back-end aspects, covering everything from initial prototypes to fully 
-scalable, ready-to-use applications.
+- **Scenario and data management:**
+  Taipy is designed specifically for data-driven applications. Setting up scenarios, including 
+  data flows and pipelines, requires minimal Python setup.
 
-**Front-End Functionalities:**
-
-- Creating a user interface requires a solid grasp of Python programming fundamentals.
-- Taipy is purposefully engineered to prioritize user-friendliness, resulting in a straightforward 
-  and intuitive process of user interface creation.
-- No prior knowledge of web design is necessary, and it eradicates the need for any prerequisites 
-  related to CSS and HTML.
-- Leveraging augmented Markdown syntax, Taipy GUI aids users in seamlessly generating their desired
-  web pages.
-
-**Back-End Functionalities:**
-
-- Taipy provides extensive support for establishing resilient pipelines capable of managing diverse
-  scenarios.
-- The process of modeling Directed Acyclic Graphs (DAGs) is simplified through Taipy Studio.
-- Enhancing the overall performance of Taipy applications, data caching, parallel executions of 
-  tasks, data source scoping are all integrated.
-- Providing a registry of pipeline executions.
-- Taipy equips users with the ability to monitor and assess the performance of their applications 
-  using the KPI tracking tool.
-- Taipy offers built-in graphical explorers for visualizing, editing, and monitoring your ‘executed’
-  pipelines and their associated data.
-
-## Overview of Taipy
-
-The subsequent schematic diagram illustrates the complete sequence encompassing all stages within 
-the Taipy flow.
-
-  <div class="tp-col-12 tp-col-md-auto">
-    <figure align="center">
-      <img alt="Taipy structure" src="images/taipy-flow-updated.png" >
-    </figure>
-  </div>
+- **Pipeline orchestration:**
+  With data caching, parallel task execution, and data source scoping Taipy makes it efficient 
+  for developers to model complex pipelines and for end-users to visualize, run, and monitor them.
 
 ## Quick Access
 
