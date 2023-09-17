@@ -5,29 +5,33 @@ hide:
 
 # Welcome to Taipy
 
-Taipy is a helpful open-source Python library for improving both the front-end and back-end of your applications. It's designed to make it easy to create interactive, multi-page dashboards with enhanced Markdown content. Even if you're not an expert in web development, you can use this web application builder to create dynamic interfaces quickly and easily.
+Taipy is an open-source Python designed to build both the front-end and back-end of your applications. Taipy is easy to learn while providing all the features required to cover the whole software cycle: from prototypes/pilots all the way to deployment/production. Taipy’s front-end makes it easy to create interactive, multi-users, multi-page dashboards. Yet, Taipy provides all the customization possibilities (graphical event management, delay management, etc) required by developers and end-users.
 
-At the same time, Taipy is designed specifically for creating data-driven back-end applications. It comes with built-in components that make it easy to organize and control how data is accessed and managed. This feature, called "Scenario Management," requires very little setup in Python.
+At the same time, Taipy is designed for creating data-driven back-end applications. It comes with built-in components that make it easy to organize and control how data is accessed and managed. Pipeline orchestration is very easy to implement through a graphical editor (Taipy Studio) and an intuitive Python API. 
 
-With Taipy Studio, a graphical configuration editor, setting up your scenarios (which include data flows and pipelines) has become much simpler. This tool offers a user-friendly interface where you can easily drag and drop elements, customize layouts, and integrate features effortlessly.
+The capability to:
 
-Taipy is a versatile tool that enables both individuals and businesses to create applications without needing advanced coding skills. One of its key benefits is how it speeds up development for both the front-end and back-end aspects, covering everything from initial prototypes to fully scalable, ready-to-use applications.
+- Register pipeline single execution. 
+- Perform what-if analysis (comparing different executions/runs). 
+- Explore your past executions, comparing them.
+
+Is provided by Taipy’s “Scenario Management”, one of Taipy’s central concepts.
 
 **Front-End Functionalities:**
 
-- Creating a user interface requires a solid grasp of Python programming fundamentals.
-- Taipy is purposefully engineered to prioritize user-friendliness, resulting in a straightforward and intuitive process of user interface creation.
-- No prior knowledge of web design is necessary, and it eradicates the need for any prerequisites related to CSS and HTML.
+- Taipy provides all the GUI components needed to build interactive front-ends.
+- No prior knowledge of web design is necessary, and any prerequisites related to CSS and HTML.
 - Leveraging augmented Markdown syntax, Taipy GUI aids users in seamlessly generating their desired web pages.
+- Taipy’s ability to really customize your GUI in terms of layout, graphical events, Style/CSS, etc is one of Taipy’s strongest points.
 
 **Back-End Functionalities:**
 
-- Taipy provides extensive support for establishing resilient pipelines capable of managing diverse scenarios.
+- Taipy provides extensive support for orchestrating resilient pipelines capable of managing diverse situations.
 - The process of modeling Directed Acyclic Graphs (DAGs) is simplified through Taipy Studio.
-- Enhancing the overall performance of Taipy applications, data caching, parallel executions of tasks, data source scoping are all integrated.
+- Enhancing the overall performance of Taipy applications, task caching, parallel executions of tasks, data source scoping are all integrated.
 - Providing a registry of pipeline executions.
 - Taipy equips users with the ability to monitor and assess the performance of their applications using the KPI tracking tool.
-- Taipy offers built-in graphical explorers for visualizing, editing, and monitoring your ‘executed’ pipelines and their associated data.
+- Taipy offers built-in graphical explorers for visualizing, editing, and monitoring your past ‘executed’ pipelines and their associated data.
 
 ## Overview of Taipy
 
@@ -52,7 +56,7 @@ These frequently visited topics have been highlighted for your quick reference.
         <h3>Getting Started</h3>
       </header>
       <p>
-        This guide covers all the important steps and concepts in Python web application development. It's useful for both beginners and experienced Python programmers who are trying out Taipy for the first time.
+        In this guide, you will build a complete Taipy web application step by step. It covers some of the important concepts in Taipy. It's useful for both beginners and experienced Python programmers who are trying out Taipy for the first time.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
@@ -65,7 +69,7 @@ These frequently visited topics have been highlighted for your quick reference.
         <h3>User interface</h3>
       </header>
       <p>
-        Taipy GUI gives you the tools and elements you need to create strong web apps quickly. It empowers developers by offering a powerful tool for visually designing user interfaces. You can organize user interface elements and use style kits to make your apps look great.
+        This is Taipy GUI user manual. It describes the concepts and elements you need to create strong web apps quickly. From GUI pages, controls, blocks, visual elements, binding Python variables, callbacks, styling, extending Taipy, etc. Also, for our users working on Notebooks, we do provide information on how to run Taipy from Notebooks.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
@@ -78,7 +82,7 @@ These frequently visited topics have been highlighted for your quick reference.
         <h3>Charts</h3>
       </header>
       <p>
-        One crucial part of Taipy's graphical user interface (GUI) is its graphing library. This library offers a wide range of customizable ways to visualize data. You can access these features through Taipy's chart control, which is closely connected to how it's implemented behind the scenes.
+        One crucial part of Taipy's graphical user interface (GUI) is its graphing library. This library offers a wide range of customizable ways to visualize data.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
@@ -91,17 +95,16 @@ These frequently visited topics have been highlighted for your quick reference.
         <h3>Scenario</h3>
       </header>
       <p>
-        Taipy Scenario represents a specific business problem that you solve using data and different sets of parameters. This feature lets you create different versions of the same problem with different assumptions, which is really helpful for making decisions when you need to analyze the potential impact of different scenarios.
+        Taipy Scenario represents a specific business problem (modeled as a pipeline) that you solve using data and different sets of parameters. Scenarios let you create different versions of the same problem with different assumptions, which is really helpful for making decisions when you need to analyze the potential impact of different scenarios.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
   </div>  
 </div>
 
-## Build your UI with dozens visual elements
+## Build your UI with dozens of visual elements
 
-Taipy provides components in open-source Python libraries that are important for building web applications.
-Below, you'll find a clear explanation of each term, explained in the context of the Taipy web application builder.
+Taipy provides many GUI components (referred to as “Taipy Controls”) that are the essential bricks for building web applications. Below, you'll find a clear explanation of each term, explained in the context of the Taipy web application builder.
 
 <ul class="tp-pills-list">
   <li>
