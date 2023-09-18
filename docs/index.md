@@ -12,22 +12,14 @@ Taipy’s front-end makes it easy to create interactive, multi-users, multi-page
 Yet, Taipy provides all the customization possibilities (graphical event management, delay 
 management, etc) required by developers and end-users.
 
-At the same time, Taipy is designed for creating data-driven back-end applications. It comes with built-in components that make it easy to organize and control how data is accessed and managed. Pipeline orchestration is very easy to implement through a graphical editor (Taipy Studio) and an intuitive Python API. 
-
-The capability to:
-
-- Register pipeline single execution. 
-- Perform what-if analysis (comparing different executions/runs). 
-- Explore your past executions, comparing them.
-
-Is provided by Taipy’s “Scenario Management”, one of Taipy’s central feature.
-
 **Front-End Functionalities:**
 
 - Taipy provides all the GUI components needed to build interactive front-ends.
 - No prior knowledge of web design is necessary, and any prerequisites related to CSS and HTML.
 - Leveraging augmented Markdown syntax, Taipy GUI aids users in seamlessly generating their desired web pages.
 - Taipy’s ability to really customize your GUI in terms of layout, graphical events, Style/CSS, etc is one of Taipy’s strongest points.
+
+At the same time, Taipy is designed for creating data-driven back-end applications. It comes with built-in components that make it easy to organize and control how data is accessed and managed. 
 
 **Back-End Functionalities:**
 
@@ -37,6 +29,14 @@ Is provided by Taipy’s “Scenario Management”, one of Taipy’s central fea
 - Providing a registry of pipeline executions.
 - Taipy equips users with the ability to monitor and assess the performance of their applications using the KPI tracking tool.
 - Taipy offers built-in graphical explorers for visualizing, editing, and monitoring your past ‘executed’ pipelines and their associated data.
+
+Pipeline orchestration is very easy to implement through a graphical editor (Taipy Studio) and an intuitive Python API. 
+
+Taipy's "Scenario Management" is a central concept that offers various capabilities, including:
+
+- Register pipeline single execution. 
+- Perform what-if analysis (comparing different executions/runs). 
+- Explore your past executions, comparing them.
 
 ## Overview of Taipy
 
