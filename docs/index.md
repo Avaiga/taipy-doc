@@ -19,7 +19,8 @@ management, etc) required by developers and end-users.
 - Leveraging augmented Markdown syntax, Taipy GUI aids users in seamlessly generating their desired web pages.
 - Taipy’s ability to really customize your GUI in terms of layout, graphical events, Style/CSS, etc is one of Taipy’s strongest points.
 
-At the same time, Taipy is designed for creating data-driven back-end applications. It comes with built-in components that make it easy to organize and control how data is accessed and managed. 
+At the same time, Taipy is designed for creating data-driven back-end applications. 
+It comes with built-in components that make it easy to organize and control how data is accessed and managed. 
 
 **Back-End Functionalities:**
 
