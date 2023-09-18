@@ -5,7 +5,12 @@ hide:
 
 # Welcome to Taipy
 
-Taipy is an open-source Python designed to build both the front-end and back-end of your applications. Taipy is easy to learn while providing all the features required to cover the whole software cycle: from prototypes/pilots all the way to deployment/production. Taipy’s front-end makes it easy to create interactive, multi-users, multi-page dashboards. Yet, Taipy provides all the customization possibilities (graphical event management, delay management, etc) required by developers and end-users.
+Taipy is an open-source Python library designed to build both the front-end and back-end of 
+your applications. Taipy is easy to learn while providing all the features required to cover 
+the whole software cycle: from prototypes/pilots all the way to deployment/production. 
+Taipy’s front-end makes it easy to create interactive, multi-users, multi-page dashboards. 
+Yet, Taipy provides all the customization possibilities (graphical event management, delay 
+management, etc) required by developers and end-users.
 
 At the same time, Taipy is designed for creating data-driven back-end applications. It comes with built-in components that make it easy to organize and control how data is accessed and managed. Pipeline orchestration is very easy to implement through a graphical editor (Taipy Studio) and an intuitive Python API. 
 
@@ -15,7 +20,7 @@ The capability to:
 - Perform what-if analysis (comparing different executions/runs). 
 - Explore your past executions, comparing them.
 
-Is provided by Taipy’s “Scenario Management”, one of Taipy’s central concepts.
+Is provided by Taipy’s “Scenario Management”, one of Taipy’s central feature.
 
 **Front-End Functionalities:**
 
