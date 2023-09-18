@@ -13,7 +13,7 @@ TOP_DIR = os.path.dirname(ROOT_DIR)
 # Where all the code from all directories/repositories is copied
 DEST_DIR_NAME = "taipy"
 
-REPOS = ["config", "core", "gui", "rest", "taipy", "getting-started", "getting-started-core", "getting-started-gui"]
+REPOS = ["config", "core", "gui", "rest", "taipy", "templates"]
 PRIVATE_REPOS = ["auth", "enterprise"]
 
 OPTIONAL_PACKAGES = {
