@@ -84,7 +84,7 @@ if __name__ == "__main__":
 - Line 3 is standard boilerplate code to ensure your script runs only from the main module, 
 preventing accidental execution. It is strongly recommended to include it.
 
-In line 4, we instantiate and run a Core service.
+- Line 4 instantiates and runs a Core service.
 
 ### Scenario creation and data access
 
