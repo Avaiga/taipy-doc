@@ -1,0 +1,34 @@
+[TAIPY]
+
+[DATA_NODE.input]
+scope = "SCENARIO:SCOPE"
+default_data = "21:int"
+
+[DATA_NODE.intermediate]
+scope = "SCENARIO:SCOPE"
+
+[DATA_NODE.output]
+scope = "SCENARIO:SCOPE"
+
+[TASK.double]
+inputs = [ "input:SECTION",]
+function = "__main__.double:function"
+outputs = [ "intermediate:SECTION",]
+skippable = "False:bool"
+
+[TASK.add]
+inputs = [ "intermediate:SECTION",]
+function = "__main__.add:function"
+outputs = [ "output:SECTION",]
+skippable = "False:bool"
+
+[PIPELINE.my_pipeline]
+tasks = [ "double:SECTION", "add:SECTION",]
+
+[SCENARIO.multiply_scenario]
+pipelines = [ "my_pipeline:SECTION",]
+frequency = "MONTHLY:FREQUENCY"
+name = "my_scenario"
+
+[SCENARIO.multiply_scenario.comparators]
+output = [ "__main__.compare_function:function",]

@@ -88,6 +88,7 @@ class Setup(ABC):
 
 
 class SetupStep(ABC):
+
     @abstractmethod
     def get_id(self) -> str:
         return ""
@@ -116,7 +117,6 @@ from .step_corelements import CoreElementsStep
 from .step_refman import RefManStep
 from .step_rest_refman import RestRefManStep
 from .step_gui_ext_refman import GuiExtRefManStep
-from .step_getting_started import GettingStartedStep
 from .step_contributors import ContributorsStep
 
 
@@ -128,7 +128,6 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
             RefManStep(),
             RestRefManStep(),
             GuiExtRefManStep(),
-            GettingStartedStep(),
             ContributorsStep()
         ]
     setup = Setup(root_dir, steps)
