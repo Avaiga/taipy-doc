@@ -81,7 +81,7 @@ from taipy import Core
 if __name__ == "__main__":
     Core().run()
 ```
-Line 3 is standard boilerplate code to ensure your script runs only from the main module, 
+- Line 3 is standard boilerplate code to ensure your script runs only from the main module, 
 preventing accidental execution. It is strongly recommended to include it.
 
 In line 4, we instantiate and run a Core service.
