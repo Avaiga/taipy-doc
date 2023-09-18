@@ -43,8 +43,7 @@ Building the corresponding Taipy application requires three easy steps.
 
 ### Configuration
 
-The first step involves configuring the execution graph. This includes 
-configuring data nodes, tasks, and scenario itself. 
+The initial step is to set up the execution graph, which involves configuring data nodes, tasks, and the scenario itself. 
 Use the following Python code:
 
 ```python linenums="1"
@@ -103,14 +102,14 @@ print(hello_scenario.message.read())
 In line 3, method `tp.create_scenario()` instantiates the new scenario name *hello_scenario* 
 from the scenario configuration built before.
 
-Line 4, sets the input data node *input_name* of *hello_scenario* with the string value "Taipy" 
+- Line 4, sets the input data node *input_name* of *hello_scenario* with the string value "Taipy" 
 using the `write()` method.
 
-Line 5 submits the *hello_scenario* for execution, which triggers the creation and execution of 
+- Line 5 submits the *hello_scenario* for execution, which triggers the creation and execution of 
 a job. This job reads the input data node, passes the value to the *build_message()* function, 
 and writes the result to the output data node.
 
-Line 6 reads and prints the output data node *message* written by the execution of the scenario 
+- Line 6 reads and prints the output data node *message* written by the execution of the scenario 
 *hello_scenario*.
 
 Putting all together the pieces, you can download the entire Python code for the example
@@ -167,5 +166,5 @@ example from the link:
 
 That covers the fundamental steps to begin with Taipy. For more realistic 
 use cases and advanced features, refer to the 
-[Tutorials](../tutorials/index.md), [demos](../demos/index.md), or 
+[tutorials](../tutorials/index.md), [demos](../demos/index.md), or 
 [manuals](../manuals/index.md) pages.
