@@ -14,8 +14,8 @@ def count_values(df):
 
 
 historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
-                                                 default_path="time_series.csv",
-                                                 scope=Scope.GLOBAL)
+                                                     default_path="time_series.csv",
+                                                     scope=Scope.GLOBAL)
 month_cfg =  Config.configure_data_node(id="month", scope=Scope.CYCLE)
 
 month_values_cfg = Config.configure_data_node(id="month_data",

@@ -11,13 +11,13 @@ nav:
     - index.md
   - "Install Taipy":
     - installation/index.md
-  - "Getting started":
+  - "Getting Started":
     - getting_started/index.md
   - "Tutorials":
     - tutorials/index.md
-    - "Understanding GUI": tutorials/understanding_gui/index.md
-    - "Scenario management Overview": tutorials/scenario_management_overview/index.md
-    - "Using Templates": tutorials/using_templates/index.md
+    - "Understanding GUI": tutorials/complete_applications/understanding_gui/index.md
+    - "Scenario management Overview": tutorials/complete_applications/scenario_management_overview/index.md
+    - "Build a complete application": tutorials/complete_applications/complete_application/index.md
   - "Manuals":
     - manuals/index.md
     - "User Manuals":
