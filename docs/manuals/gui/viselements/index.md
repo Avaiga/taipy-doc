@@ -20,8 +20,6 @@ may want to jump directly to the list of the available visual elements:
 
 [:material-arrow-right: List of available controls](controls.md)
 
-[:material-arrow-right: List of available Core back-end controls](../corelements/index.md)
-
 [:material-arrow-right: List of available blocks](blocks.md)
 
 ## Properties
@@ -187,7 +185,7 @@ fragment similar to:
     ```
 
 !!! example "The *default property* shortcut"
-    The default property name for the control type [`button`](button.md) is _label_. In Taipy,
+    The default property name for the control type [`button`](button.md) is *label*. In Taipy,
     the Markdown text
     ```
     <|button|label=Some text|>
@@ -326,7 +324,7 @@ the control. You may for example want to check the received value in the *on_cha
 callback and decide to use this new value or not.<br/>
 This is the purpose of the *propagate* property.
 
-When the _propagate_ property is set to True, then the application variable bound to a
+When the *propagate* property is set to True, then the application variable bound to a
 control is updated when the user modifies the value represented by the control.
 
 !!! info

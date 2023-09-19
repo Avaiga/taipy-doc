@@ -111,7 +111,7 @@ These frequently visited topics have been highlighted for your quick reference.
 
 ## Build your UI with dozens of visual elements
 
-Taipy provides many GUI components (referred to as “Taipy Controls”) that are the essential bricks for building web applications. Below, you'll find a clear explanation of each term, explained in the context of the Taipy web application builder.
+Taipy provides many GUI components (referred to as "Taipy Controls") that are the essential bricks for building web applications. Below, you'll find a clear explanation of each term, explained in the context of the Taipy web application builder.
 
 <ul class="tp-pills-list">
   <li>

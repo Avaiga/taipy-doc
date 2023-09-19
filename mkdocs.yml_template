@@ -11,21 +11,20 @@ nav:
     - index.md
   - "Install Taipy":
     - installation/index.md
-  - "Getting started":
+  - "Getting Started":
     - getting_started/index.md
   - "Tutorials":
     - tutorials/index.md
-    - "Understanding GUI": tutorials/understanding_gui/index.md
-    - "Scenario management Overview": tutorials/scenario_management_overview/index.md
-    - "Using Templates": tutorials/using_templates/index.md
-    - "Tutorial videos": tutorials/videos/index.md
-      - "Markdown Syntax": tutorials/videos/markdown-syntax.md
-      - "Data Dashboard": tutorials/videos/data-dashboard.md
-      - "Taipy Charts to Update Line Types": tutorials/videos/charts.md
-      - "Manage Multiple Graphical Pages": tutorials/videos/graphical_pages.md
-      - "Partials in Taipy": tutorials/videos/partials.md
-      - "Manage Data Pipelines with Scenarios": tutorials/videos/data_pipelines.md
-      - "Data Nodes and Tasks": tutorials/videos/data_nodes.md
+    - "Understanding GUI": tutorials/complete_applications/understanding_gui/index.md
+    - "Scenario management Overview": tutorials/complete_applications/scenario_management_overview/index.md
+    - "Build a complete application": tutorials/complete_applications/complete_application/index.md
+    - "Markdown Syntax": tutorials/videos/markdown-syntax.md
+    - "Data Dashboard": tutorials/videos/data-dashboard.md
+    - "Taipy Charts to Update Line Types": tutorials/videos/charts.md
+    - "Manage Multiple Graphical Pages": tutorials/videos/graphical_pages.md
+    - "Partials in Taipy": tutorials/videos/partials.md
+    - "Manage Data Pipelines with Scenarios": tutorials/videos/data_pipelines.md
+    - "Data Nodes and Tasks": tutorials/videos/data_nodes.md
   - "Manuals":
     - manuals/index.md
     - "User Manuals":
@@ -36,8 +35,6 @@ nav:
           - "Visual Elements":
              - manuals/gui/viselements/index.md
              - "Controls": manuals/gui/viselements/controls.md
-             - "Core Back-end Controls":
-                - manuals/gui/corelements/index.md
              - "Blocks": manuals/gui/viselements/blocks.md
           - "Binding variables": manuals/gui/binding.md
           - "Callbacks": manuals/gui/callbacks.md
