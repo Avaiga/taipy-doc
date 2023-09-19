@@ -678,3 +678,38 @@ a.md-content__button{
 .md-content .tp-btn-parent:hover{
   color: var(--md-primary-fg-color);
 }
+
+/* ---------- ---------- ---------- Breadcrumbs ---------- ---------- ---------- */
+ul.tp-bc {
+    padding: 4px 4px;
+    list-style: none;
+    background-color: var(--md-default-bg-color--lighter);
+    margin-left: auto;
+}
+
+ul.tp-bc:before {
+    padding: 8px;
+    color: var(--md-primary-fg-color--light);
+    content: 'Back to:';
+    font-size: var(--md-body-font-size--small)
+}
+ul.tp-bc li {
+    display: inline;
+    font-size: var(--md-body-font-size--small)
+}
+
+ul.tp-bc li+li:before {
+    padding: 1em;
+    color: var(--md-primary-fg-color);
+    content: '>';
+}
+
+ul.tp-bc li a {
+    color: var(--md-primary-fg-color--dark);
+    text-decoration: none;
+}
+
+ul.tp-bc li a:hover {
+    color: var(--md-primary-fg-color--dark);
+    text-decoration: underline;
+}

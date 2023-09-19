@@ -112,19 +112,17 @@ class SetupStep(ABC):
         pass
 
 
-from .step_viselements import VisElementsStep
-from .step_corelements import CoreElementsStep
-from .step_refman import RefManStep
-from .step_rest_refman import RestRefManStep
-from .step_gui_ext_refman import GuiExtRefManStep
-from .step_contributors import ContributorsStep
-
-
 def run_setup(root_dir: str, steps: List[SetupStep] = None):
-    if steps is None:
+    if not steps:
+        from .step_viselements import VisElementsStep
+        from .step_refman import RefManStep
+        from .step_rest_refman import RestRefManStep
+        from .step_gui_ext_refman import GuiExtRefManStep
+        from .step_getting_started import GettingStartedStep
+        from .step_contributors import ContributorsStep
+
         steps = [
             VisElementsStep(),
-            CoreElementsStep(),
             RefManStep(),
             RestRefManStep(),
             GuiExtRefManStep(),
