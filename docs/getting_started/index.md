@@ -19,7 +19,7 @@ $ pip install taipy
 
     For alternative installation methods or if you're lacking Python or pip, refer to the [installation page](../installation/index.md).
 
-## Dive into Your First Taipy Scenario
+## Your First Taipy Scenario
 
 A Taipy *Scenario* models pipeline executions. Think of it as an execution graph, typically a Directed Acyclic Graph (DAG), with tasks or functions sharing data. The complexity of your scenario is all up to you.
 
