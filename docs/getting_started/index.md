@@ -90,7 +90,7 @@ and writes the result to the output data node.
 - Line 6 reads and prints the output data node *message* written by the execution of the scenario 
 *hello_scenario*.
 
-For convenience, grab the entire code for this example:
+For your convenience, you can get the complete code for this example:
 <a href="./hello_world_scenario.py" download>`hello_world_scenario.py`</a>
 
 Expected Output:
@@ -101,9 +101,7 @@ Hello Taipy!
 
 ## Build a graphical interface
 
-While we used the Python APIs of Taipy to manage our scenario, it typically integrates
-with a graphical interface, also built using Taipy, for end-user interactions. Here's a
-basic GUI set up for our "Hello World" scenario:
+While we've used Taipy's Python APIs to handle our scenario, it usually works seamlessly with a graphical interface, also created using Taipy, to provide a more user-friendly experience. Here's a simple GUI set up for our "Hello World" scenario:
 
 ```python
 from taipy import Gui
@@ -130,7 +128,7 @@ if __name__ == "__main__":
     Gui(page).run()
 ```
 
-For the full example with the user interface code, download:
+To get the complete example, including the user interface code, download it here::
 <a href="./hello_world.py" download>`hello_world.py`</a>
 
 TO DO: explain the code above and result below
