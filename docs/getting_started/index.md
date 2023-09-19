@@ -99,7 +99,7 @@ Expected Output:
 Hello Taipy!
 ```
 
-## A Glimpse into creating a GUI
+## Build a graphical interface
 
 While we used the Python APIs of Taipy to manage our scenario, it typically integrates
 with a graphical interface, also built using Taipy, for end-user interactions. Here's a
@@ -140,4 +140,4 @@ TO DO: explain the code above and result below
 
 ---
 
-For deeper dives and more intricate use cases, check out our [Tutorials](../tutorials/index.md), [Demos](../demos/index.md), or [Manuals](../manuals/index.md).
+For more realistic and advanced use cases, check out our [Tutorials](../tutorials/index.md), [Demos](../demos/index.md), or [Manuals](../manuals/index.md).
