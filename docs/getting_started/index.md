@@ -7,7 +7,7 @@ hide:
 
 Dive into Taipy with this beginner-friendly guide. Learn to install, configure, and deploy your first application with ease.
 
-## Installation
+## Installation with pip
 
 1. **Prerequisites**: Ensure you have Python (version 3.8 or higher) and [pip](https://pip.pypa.io) installed.
 2. **Installation Command**: Run the following in your terminal or command prompt:
@@ -65,7 +65,8 @@ if __name__ == "__main__":
     Core().run()
 ```
 
-3. **Scenario Creation & Data Management**: With the Taipy Core service up and running, you can create and manage scenarios, submit task graphs for execution, and access data nodes:
+3. **Scenario & Data Management**: With the Core service up and running, you can create
+and manage scenarios, submit task graphs for execution, and access data nodes:
 
 ```python linenums="1"
 import taipy as tp
@@ -100,7 +101,9 @@ Hello Taipy!
 
 ## A Glimpse into creating a GUI
 
-While we used the Python APIs of Taipy to manage our scenario, it typically also integrates with a graphical interface, also built using Taipy, for smoother user interactions. Here's a basic GUI setup for our "Hello World" scenario:
+While we used the Python APIs of Taipy to manage our scenario, it typically integrates
+with a graphical interface, also built using Taipy, for end-user interactions. Here's a
+basic GUI set up for our "Hello World" scenario:
 
 ```python
 from taipy import Gui
@@ -127,7 +130,7 @@ if __name__ == "__main__":
     Gui(page).run()
 ```
 
-For the full example with GUI, download:
+For the full example with the user interface code, download:
 <a href="./hello_world.py" download>`hello_world.py`</a>
 
 TO DO: explain the code above and result below
