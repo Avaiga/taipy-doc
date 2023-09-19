@@ -1,0 +1,38 @@
+[TAIPY]
+
+[DATA_NODE.historical_data]
+storage_type = "csv"
+scope = "SCENARIO:SCOPE"
+default_path = "time_series.csv"
+has_header = "True:bool"
+exposed_type = "pandas"
+
+[DATA_NODE.month]
+scope = "SCENARIO:SCOPE"
+
+[DATA_NODE.month_data]
+scope = "SCENARIO:SCOPE"
+
+[DATA_NODE.nb_of_values]
+scope = "SCENARIO:SCOPE"
+
+[TASK.filter_by_month]
+inputs = [ "historical_data:SECTION", "month:SECTION",]
+function = "__main__.filter_by_month:function"
+outputs = [ "month_data:SECTION",]
+skippable = "False:bool"
+
+[TASK.count_values]
+inputs = [ "month_data:SECTION",]
+function = "__main__.count_values:function"
+outputs = [ "nb_of_values:SECTION",]
+skippable = "False:bool"
+
+[PIPELINE.my_pipeline]
+tasks = [ "filter_by_month:SECTION", "count_values:SECTION",]
+
+[SCENARIO.my_scenario]
+pipelines = [ "my_pipeline:SECTION",]
+frequency = "MONTHLY:FREQUENCY"
+
+[SCENARIO.my_scenario.comparators]
