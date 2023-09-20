@@ -5,46 +5,35 @@ hide:
 
 # Getting Started with Taipy
 
-Welcome to Taipy! This guide will show you how to install Taipy and create your first application.
+Dive into Taipy with this beginner-friendly guide. Learn to install, configure, and deploy your first application with ease.
 
-## Install Taipy with pip
+## Installation with pip
 
-To begin with Taipy, ensure you have Python installed (version 3.8 or higher) along with
-[pip](https://pip.pypa.io). Once you have these prerequisites, open your terminal or command 
-prompt and run the following command to get the latest stable version of Taipy downloaded and 
-installed:
-
+1. **Prerequisites**: Ensure you have Python (version 3.8 or higher) and [pip](https://pip.pypa.io) installed.
+2. **Installation Command**: Run the following in your terminal or command prompt:
 ``` console
 $ pip install taipy
 ```
 
 !!! info "Other installation options"
-    
-    You can find additional instructions on the [installation page](../installation/index.md) 
-    if you require different ways to install Taipy or don't have Python or pip installed.
 
+    For alternative installation methods or if you're lacking Python or pip, refer to the [installation page](../installation/index.md).
 
-## First Taipy Scenario 
-Taipy introduces the concept of a *Scenario* to model pipeline executions. A *Scenario* consists 
-of an execution graph, often represented as a Directed Acyclic Graph (DAG), where tasks (or 
-functions) exchange data. You can make your scenario as easy or as complicated as you want, 
-depending on what you need.
+## Your First Taipy Scenario
 
-For your first scenario, we'll create a simple "Hello World" example to show you the 
-configuration process. Here's a picture of the scenario's execution graph, which has two data 
-nodes (blue boxes) and one task (orange box):
+A Taipy *Scenario* models pipeline executions. Think of it as an execution graph where tasks or functions collaborate and exchange data. You have full control over how complex your scenario can be.
 
-![hello world example](hello_world.svg){width=50%}
+Let's craft a basic "Hello World" scenario:
 
-This involves a single input data node called *name*. Afterward, a task called *build_message* 
-takes the first initial data node and returns a second data node called *message*.
+![Hello World Example](hello_world.svg){width=50%}
 
-Building the corresponding Taipy application requires three easy steps.
+The graph involves:
+- An input data node named *name*.
+- A task, *build_message*, that processes the *name* data node and outputs a *message* data node.
 
-### Configuration
+### Setting It Up
 
-The initial step is to set up the execution graph, which involves configuring data nodes, tasks, and the scenario itself. 
-Use the following Python code:
+1. **Configuration**: Set up the execution graph with the following Python code:
 
 ```python linenums="1"
 from taipy import Config
@@ -61,18 +50,13 @@ scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_tas
 ```
 
 - Lines 4-5 define the function that the task will use during execution.
-- Lines 8-9 configure the two data nodes, *input_name* and *message*.
+- Lines 8-9 configure the data nodes, *input_name* and *message*.
 - Line 10 configures a task called *build_msg* associated with the *build_message()*
   function, specifying the input and output data nodes.
 - Finally, line 11 configures the execution graph of the scenario providing 
   the previously configured task.
 
-### Core service run
-
-The Core service processes the configuration made in the previous step to set up the scenario 
-management feature.
-
-Include the following code in your Python script:
+2. **Core Service Initialization**: The Core service processes the configuration of the previous step to set up the scenario management feature.
 
 ```python linenums="1"
 from taipy import Core
@@ -80,16 +64,10 @@ from taipy import Core
 if __name__ == "__main__":
     Core().run()
 ```
-- Line 3 is standard boilerplate code to ensure your script runs only from the main module, 
-preventing accidental execution. It is strongly recommended to include it.
 
-- Line 4 instantiates and runs a Core service.
+3. **Scenario & Data Management**: With the Core service up and running, you can create
+and manage scenarios, submit task graphs for execution, and access data nodes:
 
-### Scenario creation and data access
-
-With the Taipy Core service up and running, you can create and manage scenarios, submit 
-task graphs for execution, and access data nodes. Here's a code snippet to illustrate  
-these actions:
 ```python linenums="1"
 import taipy as tp
 
@@ -99,7 +77,7 @@ hello_scenario.submit()
 print(hello_scenario.message.read())
 ```
 
-In line 3, method `tp.create_scenario()` instantiates the new scenario name *hello_scenario* 
+- In line 3, method `tp.create_scenario()` instantiates the new scenario name *hello_scenario* 
 from the scenario configuration built before.
 
 - Line 4, sets the input data node *input_name* of *hello_scenario* with the string value "Taipy" 
@@ -112,30 +90,25 @@ and writes the result to the output data node.
 - Line 6 reads and prints the output data node *message* written by the execution of the scenario 
 *hello_scenario*.
 
-Putting all together the pieces, you can download the entire Python code for the example
-from this link: <a href="./hello_world_scenario.py" download>`hello_world_scenario.py`</a>
+For your convenience, you can get the complete code for this example:
+<a href="./hello_world_scenario.py" download>`hello_world_scenario.py`</a>
 
-And here is the expected output:
+Expected Output:
 ``` console
 [2023-02-08 20:19:35,062][Taipy][INFO] job JOB_build_msg_9e5a5c28-6c3e-4b59-831d-fcc8b43f882e is completed.
 Hello Taipy!
 ```
 
-## Graphical Interface
+## Build a graphical interface
 
-In the previous step, you used Taipy Python APIs to access, edit, and submit a scenario.
-This interaction is typically integrated into Python functions that get triggered by end-user 
-actions in a graphical interface built using Taipy. 
+While we've used Taipy's Python APIs to handle our scenario, it usually works seamlessly with a graphical interface, also created using Taipy, to provide a more user-friendly experience. Here's a simple GUI set up for our "Hello World" scenario:
 
-In this section, we suggest a basic graphical interface for interacting with the previously created 
-scenario. Use the following Python code:
-``` python
+```python
 from taipy import Gui
 
 hello_scenario = None
 input_name = "Taipy"
 message = None
-
 
 def submit_scenario(state):
     state.hello_scenario.input_name.write(state.input_name)
@@ -144,7 +117,6 @@ def submit_scenario(state):
 
 page = """
 Name: <|{input_name}|input|>
-
 <|submit|button|on_action=submit_scenario|>
 
 Message: <|{message}|text|>
@@ -156,15 +128,14 @@ if __name__ == "__main__":
     Gui(page).run()
 ```
 
-TODO: explain the code above and result below
-
-![result](result.png){width=50%}
-
-Combining both the scenario and the Gui parts, you can download the entire Python code for the 
-example from the link:
+To get the complete example, including the user interface code, download it here::
 <a href="./hello_world.py" download>`hello_world.py`</a>
 
-That covers the fundamental steps to begin with Taipy. For more realistic 
-use cases and advanced features, refer to the 
-[tutorials](../tutorials/index.md), [demos](../demos/index.md), or 
-[manuals](../manuals/index.md) pages.
+TO DO: explain the code above and result below
+
+![GUI Result](result.png){width=50%}
+
+
+---
+
+For more realistic and advanced use cases, check out our [Tutorials](../tutorials/index.md), [Demos](../demos/index.md), or [Manuals](../manuals/index.md).
