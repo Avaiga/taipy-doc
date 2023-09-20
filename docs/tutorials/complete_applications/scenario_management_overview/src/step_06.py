@@ -14,34 +14,31 @@ def count_values(df):
 
 
 historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
-                                                     default_path="time_series.csv",
-                                                     scope=Scope.GLOBAL)
+                                                 default_path="time_series.csv",
+                                                 scope=Scope.GLOBAL)
 month_cfg =  Config.configure_data_node(id="month", scope=Scope.CYCLE)
 month_values_cfg =  Config.configure_data_node(id="month_data",
-                                               scope=Scope.CYCLE,
-                                               cacheable=True)
+                                               scope=Scope.CYCLE)
 
-nb_of_values_cfg = Config.configure_data_node(id="nb_of_values",
-                                              cacheable=True)
+nb_of_values_cfg = Config.configure_data_node(id="nb_of_values")
 
 
 task_filter_cfg = Config.configure_task(id="filter_by_month",
                                                  function=filter_by_month,
                                                  input=[historical_data_cfg, month_cfg],
-                                                 output=month_values_cfg)
+                                                 output=month_values_cfg,
+                                                 skippable=True)
 
 task_count_values_cfg = Config.configure_task(id="count_values",
                                                  function=count_values,
                                                  input=month_values_cfg,
-                                                 output=nb_of_values_cfg)
+                                                 output=nb_of_values_cfg,
+                                                 skippable=True)
 
-pipeline_cfg = Config.configure_pipeline(id="my_pipeline",
-                                         task_configs=[task_filter_cfg,
-                                                       task_count_values_cfg])
-
-scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                         pipeline_configs=[pipeline_cfg],
-                                         frequency=Frequency.MONTHLY)
+scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
+                                                    task_configs=[task_filter_cfg,
+                                                                  task_count_values_cfg],
+                                                    frequency=Frequency.MONTHLY)
 
 Config.export('config_06.toml')
 
@@ -59,37 +56,24 @@ if __name__ == '__main__':
                                     name="Scenario 2022/9/1")
 
 
-
-    # scenario 1 and 2 belongs to the same cycle so 
-    # defining the month for scenario 1 defines the month for the scenarios in the cycle
+    # scenario 1 and 2 belongs to the same cycle
     scenario_1.month.write(10)
-    print("Scenario 1: month", scenario_1.month.read())
-    print("Scenario 2: month", scenario_2.month.read())
 
-    print("Scenario 1: submit")
     scenario_1.submit()
-    print("Value", scenario_1.nb_of_values.read())
 
-    # first task has already been executed by scenario 1 because scenario 2 shares the same data node for this task
-    print("Scenario 2: first submit")
+    # first task has already been executed by scenario 1
+    # because scenario 2 shares the same data node for this task
     scenario_2.submit()
-    print("Value", scenario_2.nb_of_values.read())
 
     # every task has already been executed so everything will be skipped
-    print("Scenario 2: second submit")
     scenario_2.submit()
-    print("Value", scenario_2.nb_of_values.read())
 
     # scenario 3 has no connection to the other scenarios so everything will be executed
-    print("Scenario 3: submit")
     scenario_3.month.write(9)
     scenario_3.submit()
-    print("Value", scenario_3.nb_of_values.read())
-
 
     # changing an input data node will make the task be reexecuted
     print("Scenario 3: change in historical data")
     scenario_3.historical_data.write(pd.read_csv('time_series_2.csv'))
     scenario_3.submit()
-    print("Value", scenario_3.nb_of_values.read())
 

@@ -13,9 +13,8 @@ task_cfg = Config.configure_task("double",
                                  input_data_node_cfg,
                                  output_data_node_cfg)
 
-pipeline_cfg = Config.configure_pipeline("my_pipeline", [task_cfg])
-
-scenario_cfg = Config.configure_scenario("my_scenario", [pipeline_cfg])
+scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
+                                                    task_configs=[task_cfg])
 
 Config.export('config_02.toml')
 
@@ -38,3 +37,11 @@ if __name__ == '__main__':
     print([s.name for s in tp.get_scenarios()])
     scenario = tp.get(scenario.id)
     tp.delete(scenario.id)
+
+    scenario = None
+    data_node = None
+
+    tp.Gui("""<|{scenario}|scenario_selector|>
+              <|{scenario}|scenario|>
+              <|{scenario}|scenario_dag|>
+              <|{data_node}|data_node_selector|>""").run()

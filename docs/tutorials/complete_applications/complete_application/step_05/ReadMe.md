@@ -1,118 +1,138 @@
-> You can download the code of this step [here](../src/step_05.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started/tree/develop/src).
+> You can download the full code [here](https://github.com/Avaiga/taipy-getting-started/tree/develop/src).
 
-!!! warning "For Notebooks"
+# Performance
 
-    The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting-started/getting_started.ipynb).
+The Performance Page is a part of the application. It allows users to compare the performance metrics (Root Mean Squared Error and Mean Absolute Error) of different scenarios. The page displays a table and two bar charts for comparing the metrics between baseline and machine learning predictions.
 
-# Step 5: GUI and Pipeline
+![Performance Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }"
 
-In Step 4, we created a first pipeline using only Taipy Core. Let's update the GUI to reflect the results of the 
-pipeline.
+## Markdown
 
-A "Predict" [button](https://docs.taipy.io/en/latest/manuals/gui/viselements/button/) is added to the page to create the 
-pipeline and run it. When you press a button, Taipy calls the function passed to the *on_action* property.
+```markdown
+<|part|render={len(comparison_scenario)>0}|
 
-`<|Text displayed on button|button|on_action=fct_name_called_when_pressed|>`
-   
-A [chart](https://docs.taipy.io/en/latest/manuals/gui/viselements/chart/) control can be found at the end of the markdown to 
-visualize the predictions. The chart plots two traces: the historical values and the predicted values.
+<|Table|expanded=False|expandable|
+<|{comparison_scenario}|table|>
+|>
+
+<|{selected_metric}|selector|lov={metric_selector}|dropdown|>
+
+<|{comparison_scenario}|chart|type=bar|x=Scenario Name|y[1]=RMSE baseline|y[2]=RMSE ML|render={selected_metric=="RMSE"}|>
+
+<|{comparison_scenario}|chart|type=bar|x=Scenario Name|y[1]=MAE baseline|y[2]=MAE ML|render={selected_metric=="MAE"}|>
+|>
+
+
+<center><|Compare primarys|button|on_action=compare|></center>
+```
+
+The Markdown section defines the layout and components of the Performance Page. It includes the following elements:
+
+- **Conditional Rendering**: `<|part|render={len(comparison_scenario)>0}|...|>`
+
+The part component ensures that certain elements are only rendered when there is data available in the comparison_scenario.
+
+- **Table**: `<|{comparison_scenario}|table|>`
+
+A table that displays the comparison data from the comparison_scenario DataFrame. The table is expandable if the number of rows exceeds the available space.
+
+- **Metric Selector**: `<|{selected_metric}|selector|lov={metric_selector}|dropdown|>`
+
+A dropdown selector that allows users to choose between two metrics: Root Mean Squared Error (RMSE) and Mean Absolute Error (MAE).
+
+- **Bar Charts**: `<|{comparison_scenario}|chart|type=bar|x=Scenario Name|y[1]=RMSE baseline|y[2]=RMSE ML|...|>`
+
+Two bar charts that compare the selected metric (RMSE or MAE) between baseline and machine learning predictions. The charts display the performance metrics for each scenario.
+
+- **Compare Button**: `<|Compare primarys|button|on_action=compare|>`
+
+A button that triggers the "compare" action when clicked. It is used to initiate the comparison process.
+
+## Python Code
+
+The Python code initializes and manages the state of the Performance Page.
 
 ```python
-import numpy as np
+from taipy.gui import Markdown
+
 import pandas as pd
+import taipy as tp
 
-# Initialize the "predictions" dataset
-predictions_dataset = pd.DataFrame({"Date":[dt.datetime(2021, 6, 1)], "Historical values":[np.NaN], "Predicted values":[np.NaN]})
+# Initial dataset for comparison
+comparison_scenario = pd.DataFrame(columns=["Scenario Name",
+                                            "RMSE baseline",
+                                            "MAE baseline",
+                                            "RMSE ML",
+                                            "MAE ML"])
 
-# Add a button and a chart for our predictions
-pipeline_page = page + """
-Press <|predict|button|on_action=predict|> to predict with default parameters (30 predictions) and June 1st as day.
 
-<|{predictions_dataset}|chart|x=Date|y[1]=Historical values|type[1]=bar|y[2]=Predicted values|type[2]=scatter|height=80%|width=100%|>
-"""
+# Selector for metrics
+metric_selector = ["RMSE", "MAE"]
+selected_metric = metric_selector[0]
+
+
+def compare(state):
+    print("Comparing...")
+
+    # Initialize lists for comparison
+    scenario_data = []
+
+    # Go through all the primary scenarios
+    all_scenarios = sorted(tp.get_primary_scenarios(), key=lambda x: x.creation_date.timestamp())
+
+    for scenario in all_scenarios:
+        rmse_baseline, mae_baseline = scenario.metrics_baseline.read()
+        rmse_ml, mae_ml = scenario.metrics_ml.read()
+
+
+        # Store scenario data in a dictionary
+        scenario_data.append({
+            "Scenario Name": scenario.name,
+            "RMSE baseline": rmse_baseline,
+            "MAE baseline": mae_baseline,
+            "RMSE ML": rmse_ml,
+            "MAE ML": mae_ml
+        })
+
+    # Create a DataFrame from the scenario_data list
+    state.comparison_scenario = pd.DataFrame(scenario_data)
+
+performance = Markdown("pages/performance/performance.md")
 ```
 
-`create_and_submit_pipeline()` creates and executes the pipeline after being called by `predict()`. 
+It includes the following components:
+
+- **Global Variables**:
+
+The variables `comparison_scenario`, `metric_selector`, and `selected_metric` are initialized. The `comparison_scenario` DataFrame stores the comparison data, while `metric_selector` holds the options for the metric selector. `selected_metric` is initialized with the default metric, which is the first element of the metric_selector list (RMSE).
+
+- **Compare Function**:
+
+The compare function is responsible for performing the comparison process. When the user clicks the "Compare" button, this function is called. It retrieves the primary scenarios from the application and goes through each scenario to extract the RMSE and MAE metrics for both baseline and machine learning predictions. The data is then stored in the comparison_scenario DataFrame.
+
+- **Performance Page Initialization**:
+
+The performance variable is initialized as a Markdown object, representing the content of the Performance Page.
+
+
+The Performance Page of the Python application provides users with the ability to compare the performance metrics of different scenarios for time series predictions. It allows users to choose between RMSE and MAE metrics and visualizes the comparison results using bar charts. The page is a valuable tool for analyzing the effectiveness of different prediction scenarios and can aid in making informed decisions based on performance evaluations.
+
+## Connection to the entire application
+
+Don't forget to add the page to the application in the *main.py*:
+
+Import `performance` to the main file.
 
 ```python
-def predict(state):
-    print("'Predict' button clicked")
-    pipeline = create_and_submit_pipeline()
-    update_predictions_dataset(state, pipeline)
+...
+
+pages = {
+    "/": root_page,
+    "data_viz": data_viz,
+    "scenario": scenario_page,
+    "performance": performance # add performance
+}
 
 
-def create_and_submit_pipeline():
-    print("Execution of pipeline...")
-    # Create the pipeline from the pipeline config
-    pipeline = tp.create_pipeline(baseline_pipeline_cfg)
-    # Submit the pipeline (Execution)
-    tp.submit(pipeline)
-    return pipeline
+...
 ```
-
-After the execution of the pipeline (`tp.submit()`), the data stored in *predictions* and *cleaned_data* Data 
-Nodes become accessible. The `read()` method accesses the data in Data Nodes.
-
-The `create_predictions_dataset()` function below creates a final dataframe (that concatenates the predictions and 
-the historical data together) containing three columns:
-
-- Date,
-
-- Historical values,
-
-- Predicted values.
-
-```python
-def create_predictions_dataset(pipeline):
-    print("Creating predictions dataset...")
-    # Read data from the pipeline
-    predictions = pipeline.predictions.read()
-    day = pipeline.day.read()
-    n_predictions = pipeline.n_predictions.read()
-    cleaned_data = pipeline.cleaned_dataset.read()
-    
-    # Set arbitrarily the time window for the chart as 5 times the number of predictions
-    window = 5 * n_predictions
-
-    # Create the historical dataset that will be displayed
-    new_length = len(cleaned_data[cleaned_data["Date"] < day]) + n_predictions
-    temp_df = cleaned_data[:new_length]
-    temp_df = temp_df[-window:].reset_index(drop=True)
-    
-    # Create the series that will be used in the concat
-    historical_values = pd.Series(temp_df["Value"], name="Historical values")
-    predicted_values = pd.Series([np.NaN]*len(temp_df), name="Predicted values")
-    predicted_values[-len(predictions):] = predictions
-    
-    # Create the predictions dataset
-    # Columns : [Date, Historical values, Predicted values]
-    return pd.concat([temp_df["Date"], historical_values, predicted_values], axis=1)
-```
-
-It is now really simple to get  the predictions dataset and display it in the "Prediction chart" created above.
-
-
-When you press the "Predict" button, this function below is called. It will update the predictions' dataset, and 
-this change will propagate to the chart.
-
-
-```python
-def update_predictions_dataset(state, pipeline):
-    print("Updating predictions dataset...")
-    state.predictions_dataset = create_predictions_dataset(pipeline)
-```
-
-This is what the structure of the code looks like for the GUI:
-
-![Organisation](organisation.svg){ width=500 style="margin:auto;display:block" }
-
-```python
-# Run of the Taipy Core service
-tp.Core().run()
-
-Gui(page=pipeline_page).run(dark_mode=False)
-```
-
-![GUI for a pipeline](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
-
-> **Important Remark**: A better option would have been to have the `create_predictions_dataset()` modeled as a last **Task** inside the pipeline graph.

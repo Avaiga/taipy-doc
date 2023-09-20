@@ -1,23 +1,22 @@
 > You can download the code of this step [here](../src/step_08.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started-core/tree/develop/src).
 
-# Step 8: Scenario comparison
+# Comparing scenarios
 
-This step reuses the configuration provided in the previous step except for the [scenario configuration](https://docs.taipy.io/en/latest/manuals/core/entities/scenario-cycle-mgt/#compare-scenarios).
+*Time to complete: 15 minutes; Level: Advanced*
 
 ![](config_08.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-Taipy provides a mechanism to compare scenarios by providing a function directly into the scenario's configuration.
+Taipy provides a mechanism to compare data nodes of scenarios by providing a function directly into the scenario's configuration.
 
 ## Step 1: The first step consists in declaring on which data nodes to apply the comparison functions:
 
-Taipy can compare Data Nodes. In this example, we want a comparison applied to the '_output_' Data Node. It is indicated in the comparators parameter of the `configure_scenario()`.
+In this example, we want a comparison applied to the '_output_' Data Node. It is indicated in the comparators parameter of the `configure_scenario_from_tasks()`.
 
 ```python
-scenario_cfg = Config.configure_scenario(id="multiply_scenario",
-                                        name="my_scenario",
-                                        pipeline_configs=[pipeline_cfg],
-                                        comparators={output_data_node_cfg.id: compare_function},
-                                        frequency=Frequency.MONTHLY)
+scenario_cfg = Config.configure_scenario_from_tasks(id="multiply_scenario",
+                                                    name="my_scenario",
+                                                    tasks_configs=[pipeline_cfg],
+                                                    comparators={output_data_node_cfg.id: compare_function},)
 ```
 ## Step 2: Implement the comparison function (`compare_function()`) used above.
 
@@ -25,10 +24,10 @@ _data_node_results_ is the list of the Output Data Nodes from all scenarios pass
 
 ```python
 def compare_function(*data_node_results):
-    compare_result= {}
+    compare_result = {}
     current_res_i = 0
     for current_res in data_node_results:
-        compare_result[current_res_i]={}
+        compare_result[current_res_i] = {}
         next_res_i = 0
         for next_res in data_node_results:
             print(f"comparing result {current_res_i} with result {next_res_i}")
@@ -46,23 +45,87 @@ tp.Core().run()
 scenario_1 = tp.create_scenario(scenario_cfg)
 scenario_2 = tp.create_scenario(scenario_cfg)
 
-
-print("\nScenario 1: submit")
 scenario_1.submit()
-print("Value", scenario_1.output.read())
-
-print("\nScenario 2: first submit")
 scenario_2.submit()
-print("Value", scenario_2.output.read())
-
 
 print(tp.compare_scenarios(scenario_1, scenario_2))
 ```
 
-## Taipy Rest
+Results:
 
-Taipy Rest allows the user to navigate through the entities of the application but also create and submit scenarios. Taipy Rest commands are referenced [here](https://docs.taipy.io/en/latest/manuals/reference_rest/).
+```
+...
+{'output': {'compare_function': {0: {0: 0, 1: -4}, 1: {0: 4, 1: 0}}}}
+```
+
+# Entire code
+
 
 ```python
-tp.Rest().run()
+from taipy.core.config import Config, Frequency
+import taipy as tp
+
+
+# Normal function used by Taipy
+def double(nb):
+    return nb * 2
+
+def add(nb):
+    return nb + 10
+
+
+# Configuration of Data Nodes
+input_cfg = Config.configure_data_node("input", default_data=21)
+intermediate_cfg = Config.configure_data_node("intermediate")
+output_cfg = Config.configure_data_node("output")
+
+# Configuration of tasks
+first_task_cfg = Config.configure_task("double",
+                                    double,
+                                    input_cfg,
+                                    intermediate_cfg)
+
+second_task_cfg = Config.configure_task("add",
+                                    add,
+                                    intermediate_cfg,
+                                    output_cfg)
+
+
+
+def compare_function(*data_node_results):
+    # example of function
+    compare_result = {}
+    current_res_i = 0
+    for current_res in data_node_results:
+        compare_result[current_res_i] = {}
+        next_res_i = 0
+        for next_res in data_node_results:
+            print(f"comparing result {current_res_i} with result {next_res_i}")
+            compare_result[current_res_i][next_res_i] = next_res - current_res
+            next_res_i += 1
+        current_res_i += 1
+    return compare_result
+
+
+scenario_cfg = Config.configure_scenario_from_tasks(id="multiply_scenario",
+                                                    name="my_scenario",
+                                                    task_configs=[first_task_cfg, second_task_cfg],
+                                                    comparators={output_cfg.id: compare_function})
+
+
+if __name__=="__main__":
+    tp.Core().run()
+
+    scenario_1 = tp.create_scenario(scenario_cfg)
+    scenario_2 = tp.create_scenario(scenario_cfg)
+
+    scenario_1.input.write(10)
+    scenario_2.input.write(8)
+
+    scenario_1.submit()
+    scenario_2.submit()
+    
+    print(tp.compare_scenarios(scenario_1, scenario_2))
+
+    tp.Rest().run()
 ```

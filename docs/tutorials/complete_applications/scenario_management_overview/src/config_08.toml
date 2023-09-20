@@ -1,33 +1,31 @@
 [TAIPY]
+read_entity_retry = "3:int"
 
 [DATA_NODE.input]
-scope = "SCENARIO:SCOPE"
 default_data = "21:int"
 
 [DATA_NODE.intermediate]
-scope = "SCENARIO:SCOPE"
 
 [DATA_NODE.output]
-scope = "SCENARIO:SCOPE"
 
 [TASK.double]
-inputs = [ "input:SECTION",]
 function = "__main__.double:function"
+inputs = [ "input:SECTION",]
 outputs = [ "intermediate:SECTION",]
 skippable = "False:bool"
 
 [TASK.add]
-inputs = [ "intermediate:SECTION",]
 function = "__main__.add:function"
+inputs = [ "intermediate:SECTION",]
 outputs = [ "output:SECTION",]
 skippable = "False:bool"
 
-[PIPELINE.my_pipeline]
+[PIPELINE.multiply_scenario_pipeline]
 tasks = [ "double:SECTION", "add:SECTION",]
+name = "my_scenario"
 
 [SCENARIO.multiply_scenario]
-pipelines = [ "my_pipeline:SECTION",]
-frequency = "MONTHLY:FREQUENCY"
+pipelines = [ "multiply_scenario_pipeline:SECTION",]
 name = "my_scenario"
 
 [SCENARIO.multiply_scenario.comparators]

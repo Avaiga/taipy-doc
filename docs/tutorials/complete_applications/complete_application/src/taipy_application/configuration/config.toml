@@ -1,0 +1,74 @@
+[TAIPY]
+read_entity_retry = "3:int"
+
+[DATA_NODE.initial_dataset]
+storage_type = "csv"
+scope = "GLOBAL:SCOPE"
+path = "data/dataset.csv"
+
+[DATA_NODE.day]
+default_data = "2021-07-26T00:00:00:datetime"
+
+[DATA_NODE.n_predictions]
+default_data = "40:int"
+
+[DATA_NODE.max_capacity]
+default_data = "200:int"
+
+[DATA_NODE.cleaned_dataset]
+scope = "GLOBAL:SCOPE"
+
+[DATA_NODE.predictions_baseline]
+
+[DATA_NODE.predictions_ml]
+
+[DATA_NODE.full_predictions]
+
+[DATA_NODE.metrics_baseline]
+
+[DATA_NODE.metrics_ml]
+
+[TASK.task_clean_data]
+function = "algos.algos.clean_data:function"
+inputs = [ "initial_dataset:SECTION",]
+outputs = [ "cleaned_dataset:SECTION",]
+skippable = "True:bool"
+
+[TASK.predict_baseline]
+function = "algos.algos.predict_baseline:function"
+inputs = [ "cleaned_dataset:SECTION", "n_predictions:SECTION", "day:SECTION", "max_capacity:SECTION",]
+outputs = [ "predictions_baseline:SECTION",]
+skippable = "False:bool"
+
+[TASK.task_predict_ml]
+function = "algos.algos.predict_ml:function"
+inputs = [ "cleaned_dataset:SECTION", "n_predictions:SECTION", "day:SECTION", "max_capacity:SECTION",]
+outputs = [ "predictions_ml:SECTION",]
+skippable = "False:bool"
+
+[TASK.task_metrics_baseline]
+function = "algos.algos.compute_metrics:function"
+inputs = [ "cleaned_dataset:SECTION", "predictions_baseline:SECTION",]
+outputs = [ "metrics_baseline:SECTION",]
+skippable = "False:bool"
+
+[TASK.task_metrics_ml]
+function = "algos.algos.compute_metrics:function"
+inputs = [ "cleaned_dataset:SECTION", "predictions_ml:SECTION",]
+outputs = [ "metrics_ml:SECTION",]
+skippable = "False:bool"
+
+[TASK.task_full_predictions]
+function = "algos.algos.create_predictions_dataset:function"
+inputs = [ "predictions_baseline:SECTION", "predictions_ml:SECTION", "day:SECTION", "n_predictions:SECTION", "cleaned_dataset:SECTION",]
+outputs = [ "full_predictions:SECTION",]
+skippable = "False:bool"
+
+[PIPELINE.scenario_pipeline]
+tasks = [ "task_clean_data:SECTION", "predict_baseline:SECTION", "task_predict_ml:SECTION", "task_metrics_baseline:SECTION", "task_metrics_ml:SECTION", "task_full_predictions:SECTION",]
+
+[SCENARIO.scenario]
+pipelines = [ "scenario_pipeline:SECTION",]
+frequency = "WEEKLY:FREQUENCY"
+
+[SCENARIO.scenario.comparators]

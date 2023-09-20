@@ -28,7 +28,7 @@ This kind of expression creates direct connections between visual elements witho
 
 ## A use case for NLP - Part 1
 
-The code for NLP is provided here; it doesn't concern Taipy but it will be used in Part 2 when we wrap a GUI around this NLP engine.
+The code for NLP is provided here; it doesn't concern Taipy but it will be used in Part 2 when we wrap a GUI around this NLP engine. Before executing this step, you should have `pip install torch` and `pip install transformers`. The model will be downloaded and used in this code snippet. Torch is for now only available for Python version between 3.8 and 3.10. If you cannot install these packages, just return a dictionnary of random numbers for the `analyze_text(text)`.
 
 
 ```python
@@ -81,7 +81,8 @@ def local_callback(state):
     notify(state, 'Info', f'The text is: {state.text}', True)
     temp = state.dataframe.copy()
     scores = analyze_text(state.text)
-    state.dataframe = temp.append(scores, ignore_index=True)
+    temp.loc[len(temp)] = scores
+    state.dataframe = temp
     state.text = ""
 
 
@@ -94,9 +95,7 @@ page = """
 My text: <|{text}|>
 
 Enter a word:
-
 <|{text}|input|>
-
 <|Analyze|button|on_action=local_callback|>
 
 ## Positive

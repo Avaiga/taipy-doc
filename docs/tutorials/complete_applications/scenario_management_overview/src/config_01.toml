@@ -1,22 +1,22 @@
 [TAIPY]
+read_entity_retry = "3:int"
 
-[DATA_NODE.input]
-scope = "SCENARIO:SCOPE"
-default_data = "21:int"
+[DATA_NODE.historical_temperature]
 
-[DATA_NODE.output]
-scope = "SCENARIO:SCOPE"
+[DATA_NODE.date_to_forecast]
 
-[TASK.double]
-inputs = [ "input:SECTION",]
-function = "__main__.double:function"
-outputs = [ "output:SECTION",]
+[DATA_NODE.predictions]
+
+[TASK.predict]
+function = "__main__.predict:function"
+inputs = [ "historical_temperature:SECTION", "date_to_forecast:SECTION",]
+outputs = [ "predictions:SECTION",]
 skippable = "False:bool"
 
-[PIPELINE.my_pipeline]
-tasks = [ "double:SECTION",]
+[PIPELINE.my_scenario_pipeline]
+tasks = [ "predict:SECTION",]
 
 [SCENARIO.my_scenario]
-pipelines = [ "my_pipeline:SECTION",]
+pipelines = [ "my_scenario_pipeline:SECTION",]
 
 [SCENARIO.my_scenario.comparators]

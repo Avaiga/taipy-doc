@@ -1,4 +1,4 @@
-from taipy.core.config import Config, Frequency
+from taipy.core.config import Config, Frequency, Status
 import taipy as tp
 import datetime as dt
 import time
@@ -19,6 +19,7 @@ input_cfg = Config.configure_data_node("input", default_data=21)
 intermediate_cfg = Config.configure_data_node("intermediate")
 output_cfg = Config.configure_data_node("output")
 
+
 # Configuration of tasks
 first_task_cfg = Config.configure_task("double",
                                     double,
@@ -30,10 +31,6 @@ second_task_cfg = Config.configure_task("add",
                                     intermediate_cfg,
                                     output_cfg)
 
-# Configuration of the pipeline and scenario
-pipeline_cfg = Config.configure_pipeline("my_pipeline", [first_task_cfg, second_task_cfg])
-
-
 
 def callback_scenario_state(scenario, job):
     """All the scenarios are subscribed to the callback_scenario_state function. It means whenever a job is done, it is called.
@@ -44,14 +41,15 @@ def callback_scenario_state(scenario, job):
         job (_type_): the job that has its status changed
     """
     print(scenario.name)
-    if job.status.value == 7:
+    if job.status == tp.core.Status.COMPLETED:
         for data_node in job.task.output.values():
             print(data_node.read())
 
-
-scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                         name="my_scenario",
-                                         pipeline_configs=[pipeline_cfg])
+# Configuration of scenario
+scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
+                                                    task_configs=[first_task_cfg,
+                                                                  second_task_cfg],
+                                                    name="my_scenario")
 
 
 Config.export("config_09.toml")

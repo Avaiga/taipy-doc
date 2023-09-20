@@ -1,41 +1,158 @@
-> You can download the code of this step [here](../src/step_04.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started/tree/develop/src).
+> You can download the full code [here](https://github.com/Avaiga/taipy-getting-started/tree/develop/src).
 
-!!! warning "For Notebooks"
+# Step 4: Scenario Page
 
-    The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting-started/getting_started.ipynb).
+The Scenario Page is a part of the application designed to create and customize scenarios for predictions based on time series data. Users can set different parameters for the prediction process, such as the prediction date, maximum capacity, and the number of predictions. The page also includes a chart that displays historical values and predictions made using machine learning and baseline methods.
 
-# Step 4: Pipeline Management
+![Scenario Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }"
 
-In Step 3, you have described your graph; let's implement it with Taipy! 
+The Scenario Page is constructed using a combination of Markdown and Python code. Below is a detailed explanation of each component:
 
-## Pipeline configuration
+## Markdown (pages/scenario/scenario.md)
 
-To configure your first pipeline, you need to list all the tasks you want to be done by the pipeline. This pipeline executes the cleaning (*clean_data_task*) and the predicting (*predict_baseline_task*). Note that the **task_configs** is a list, so you don't have to worry about the order of the tasks. Taipy does that for you and optimizes its execution.
+```markdown
+# Create your scenario:
 
-```python
-# Create the first pipeline configuration
-baseline_pipeline_cfg = Config.configure_pipeline(id="baseline",
-                                                  task_configs=[clean_data_task_cfg, predict_baseline_task_cfg])
+<|layout|columns=3 1 1 1 1|
+<|{scenario}|scenario_selector|>
+
+**Prediction date** <br/>
+<|{day}|date|active={scenario}|not with_time|>
+
+**Max capacity** <br/>
+<|{max_capacity}|number|active={scenario}|>
+
+**Number of predictions** <br/>
+<|{n_predictions}|number|active={scenario}|>
+
+<br/> <|Save|button|on_action=save|active={scenario}|>
+|>
+ 
+<|{scenario}|scenario|>
+
+<|{predictions_dataset}|chart|x=Date|y[1]=Historical values|type[1]=bar|y[2]=Predicted values ML|y[3]=Predicted values Baseline|>
 ```
 
-## Pipeline creation and execution
+The Markdown section defines the layout and components of the Scenario Page. It contains the following elements:
 
-First of all, Taipy has to be run (tp.Core().run()). It will create a service that will act as a job scheduler. Then, create your pipeline from its configuration, submit it, and print the "predictions" Data Node results.
+- **Scenario Selector**: `<|{scenario}|scenario_selector|>`
+
+A component (a dropdown) that allows users to select different scenarios. The selected scenario will affect the values of other components on the page.
+
+- **Prediction Date**: `<|{day}|date|...|>`
+
+A date picker where users can select the date for which they want to make predictions. The selected date will be used for both machine learning and baseline predictions.
+
+- **Max Capacity**: `<|{max_capacity}|number|...|>`
+
+A number input field where users can set the maximum capacity value. This value is used to cap the predictions if they exceed the specified maximum.
+
+- **Number of Predictions**: `<|{n_predictions}|number|...|>`
+
+A number input field where users can set the desired number of predictions to be made.
+
+- **Save Button**: `<|Save|button|on_action=save|active={scenario}|>`
+
+A button that triggers the "save" action when clicked. It is used to save the selected scenario and parameter values.
+
+- **Scenario Section**: `<|{scenario}|scenario|>`
+
+A section that displays information about the currently selected scenario. It includes details about the scenario, properties, and the ability to delete or submit the scenario.
+
+- **Predictions Chart**: `<|{predictions_dataset}|chart|...|>`
+
+A chart that displays historical values and the predicted values obtained from machine learning and baseline methods. It shows how well the predictions align with the historical data.
+
+
+## Python Code (pages/scenario/scenario.py)
+
+The Python code initializes and manages the state of the Scenario Page.
 
 ```python
-import taipy as tp
+from taipy.gui import Markdown, notify
+import datetime as dt
+import pandas as pd
 
-# Run of the Taipy Core service
-tp.Core().run()
 
-# Create the pipeline
-baseline_pipeline = tp.create_pipeline(baseline_pipeline_cfg)
-# Submit the pipeline (Execution)
-tp.submit(baseline_pipeline)
+scenario = None
+day = dt.datetime(2021, 7, 26)
+n_predictions = 40
+max_capacity = 200
+predictions_dataset = {"Date":[0], 
+                       "Predicted values ML":[0],
+                       "Predicted values Baseline":[0],
+                       "Historical values":[0]}
+
+
+
+def save(state):
+    print("Saving scenario...")
+    # Get the currently selected scenario
+
+    # Conversion to the right format
+    state_day = dt.datetime(state.day.year, state.day.month, state.day.day)
+
+    # Change the default parameters by writing in the Data Nodes
+    state.scenario.day.write(state_day)
+    state.scenario.n_predictions.write(int(state.n_predictions))
+    state.scenario.max_capacity.write(int(state.max_capacity))
+    notify(state, "success", "Saved!")
     
-# Read output data from the pipeline
-baseline_predictions = baseline_pipeline.predictions.read()
-print("Predictions of baseline algorithm\n", baseline_predictions)
+
+def on_change(state, var_name, var_value):
+    if var_name == "scenario" and var_value:
+        state.day = state.scenario.day.read()
+        state.n_predictions = state.scenario.n_predictions.read()
+        state.max_capacity = state.scenario.max_capacity.read()
+        
+        if state.scenario.full_predictions.is_ready_for_reading:
+            state.predictions_dataset = state.scenario.full_predictions.read()
+        else:
+            state.predictions_dataset = predictions_dataset
+
+
+
+scenario_page = Markdown("pages/scenario/scenario.md")
 ```
 
-> Note that when creating the pipeline (`tp.create_pipeline()`), all associated Taipy objects of the pipeline (Data nodes, Tasks, etc) get automatically created (unless already present).
+
+It includes the following components:
+
+- **Global Variables**:
+
+The global variables scenario, day, n_predictions, max_capacity, and predictions_dataset are defined. These variables store the initial state of the application.
+
+- **Save Function**:
+
+The save function is responsible for saving the current scenario state. When the user clicks the "Save" button, this function is called. It takes the state of the page as input, converts the date format to the appropriate format, and updates the scenario parameters accordingly. It then notifies the user with a success message.
+
+- **On Change Function**:
+
+The on_change function is called when any variable on the page changes its value. It monitors the changes in the scenario variable and updates the other variables accordingly. It also checks if the `full_predictions` are ready for reading and updates the `predictions_dataset` accordingly.
+
+- **Scenario Page Initialization**:
+
+The scenario_page variable is initialized as a Markdown object, representing the content of the Scenario Page.
+
+It provides an interactive interface for users to create and customize different scenarios for time series predictions. It allows users to select prediction dates, set maximum capacity, and choose the number of predictions to make. The page also presents a chart to visualize the historical data and the predicted values from both machine learning and baseline methods. Users can save their selected scenarios to use them for further analysis and comparison. 
+
+## Connection to the entire application
+
+Don't forget to add the page to the application in the *main.py*:
+
+Import `scenario_page` to the main file.
+
+```python
+...
+
+def on_change(state, var_name: str, var_value):
+    state['scenario'].on_change(state, var_name, var_value)
+
+pages = {
+    "/": root_page,
+    "data_viz": data_viz,
+    "scenario": scenario_page # add scenario
+}
+
+...
+```
