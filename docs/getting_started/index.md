@@ -21,7 +21,7 @@ $ pip install taipy
 
 ## Your First Taipy Scenario
 
-A Taipy *Scenario* models pipeline executions. Think of it as an execution graph, typically a Directed Acyclic Graph (DAG), with tasks or functions sharing data. The complexity of your scenario is all up to you.
+A Taipy *Scenario* models pipeline executions. Think of it as an execution graph where tasks or functions collaborate and exchange data. You have full control over how complex your scenario can be.
 
 Let's craft a basic "Hello World" scenario:
 
