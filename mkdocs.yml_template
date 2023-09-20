@@ -18,14 +18,13 @@ nav:
     - "Understanding GUI": tutorials/complete_applications/understanding_gui/index.md
     - "Scenario management Overview": tutorials/complete_applications/scenario_management_overview/index.md
     - "Build a complete application": tutorials/complete_applications/complete_application/index.md
-    - "Tutorial videos": 
-      - "Markdown Syntax": tutorials/videos/markdown_syntax.md
-      - "Data Dashboard": tutorials/videos/data-dashboard.md
-      - "Changing Line Types Using Charts": tutorials/videos/charts.md
-      - "Manage Multiple Graphical Pages": tutorials/videos/graphical_pages.md
-      - "Partials in Taipy": tutorials/videos/partials.md
-      - "Manage Data Pipelines with Scenarios": tutorials/videos/data_pipelines.md
-      - "Data Nodes and Tasks": tutorials/videos/data_nodes.md
+    - "Markdown Syntax": tutorials/videos/markdown_syntax.md
+    - "Data Dashboard": tutorials/videos/data-dashboard.md
+    - "Changing Line Types Using Charts": tutorials/videos/charts.md
+    - "Manage Multiple Graphical Pages": tutorials/videos/graphical_pages.md
+    - "Partials in Taipy": tutorials/videos/partials.md
+    - "Manage Data Pipelines with Scenarios": tutorials/videos/data_pipelines.md
+    - "Data Nodes and Tasks": tutorials/videos/data_nodes.md
   - "Manuals":
     - manuals/index.md
     - "User Manuals":
