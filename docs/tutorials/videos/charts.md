@@ -1,8 +1,7 @@
-# Taipy Charts to Update Line Types
+# Changing Line Types Using Charts
 
 Make a line chart for your Taipy application. We're using a basic time series dataset with two variables. You can either use your dataset or get it from the Taipy website.
 
-Charts are visual ways to show and study patterns, trends, and connections in data. Line charts, in particular, show data points connected by straight lines, 
-making it easy to see trends and changes over time. You can change the line styles in charts by adjusting the line properties to create different looks.
+Charts visualize patterns, trends, and data relationships. Line charts connect data points with straight lines for tracking changes over time. Customize line styles in charts by tweaking line properties for various appearances.
 
 To discover more about the Taipy Taipy charts to update line types, click on the tutorial video [here](https://www.youtube.com/watch?v=M32xhZP04yo).
