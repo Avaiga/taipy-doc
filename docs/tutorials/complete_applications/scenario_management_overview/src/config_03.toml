@@ -2,33 +2,28 @@
 
 [DATA_NODE.historical_data]
 storage_type = "csv"
-scope = "SCENARIO:SCOPE"
-default_path = "src/time_series.csv"
-has_header = "True:bool"
-exposed_type = "pandas"
+default_path = "time_series.csv"
 
 [DATA_NODE.month_data]
-scope = "SCENARIO:SCOPE"
 
 [DATA_NODE.nb_of_values]
-scope = "SCENARIO:SCOPE"
 
 [TASK.filter_current]
-inputs = [ "historical_data:SECTION",]
 function = "__main__.filter_current:function"
+inputs = [ "historical_data:SECTION",]
 outputs = [ "month_data:SECTION",]
 skippable = "False:bool"
 
 [TASK.count_values]
-inputs = [ "month_data:SECTION",]
 function = "__main__.count_values:function"
+inputs = [ "month_data:SECTION",]
 outputs = [ "nb_of_values:SECTION",]
 skippable = "False:bool"
 
-[PIPELINE.my_pipeline]
-tasks = [ "filter_current:SECTION", "count_values:SECTION",]
-
 [SCENARIO.my_scenario]
-pipelines = [ "my_pipeline:SECTION",]
+tasks = [ "filter_current:SECTION", "count_values:SECTION",]
+additional_data_nodes = []
 
 [SCENARIO.my_scenario.comparators]
+
+[SCENARIO.my_scenario.sequences]
