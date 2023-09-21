@@ -4,7 +4,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 !!! warning "For Notebooks"
 
-    The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
+    The "Getting Started" Notebook is available [here](../../../../getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 # Step 5: Python expression in properties
 
@@ -30,7 +30,10 @@ This kind of expression creates direct connections between visual elements witho
 
 ## A use case for NLP - Part 1
 
-The code for NLP is provided here; it doesn't concern Taipy but it will be used in Part 2 when we wrap a GUI around this NLP engine. Before executing this step, you should have `pip install torch` and `pip install transformers`. The model will be downloaded and used in this code snippet. Torch is for now only available for Python version between 3.8 and 3.10. If you cannot install these packages, just return a dictionnary of random numbers for the `analyze_text(text)`.
+The code for NLP is provided here; it doesn't concern Taipy but it will be used in Part 2 when we wrap a GUI around this NLP engine. 
+Before executing this step, you should have `pip install torch` and `pip install transformers`. 
+The model will be downloaded and used in this code snippet. Torch is for now only available for Python version between 3.8 and 3.10. 
+If you cannot install these packages, just return a dictionnary of random numbers for the `analyze_text(text)`.
 
 
 ```python

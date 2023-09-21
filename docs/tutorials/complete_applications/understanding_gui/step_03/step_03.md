@@ -4,7 +4,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 !!! warning "For Notebooks"
 
-    The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
+    The "Getting Started" Notebook is available [here](../../../../getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 # Step 3: Interaction
 
@@ -32,7 +32,7 @@ In the code below, this concept will be used to:
 
 - Reset the input when the text equals "Reset".
 
-## How to connect two variables - the *[on_change()](https://docs.taipy.io/en/latest/manuals/gui/callbacks/)* function
+## How to connect two variables - the *[on_change()](../../../../manuals/gui/callbacks.md)* function
 
 In *Taipy*, the `on_change()` function is a "special" function. **Taipy** will check if you created and will use a function with this name. Whenever the state of a variable is modified, the *callback* function is called with three parameters:
 
@@ -77,4 +77,4 @@ Gui(page).run()
 
 ![Interactive GUI](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-[_notify()_](https://docs.taipy.io/en/latest/manuals/gui/notifications/) is a Taipy GUI function that creates a notification with text. The user can pass multiple parameters, including the _state_, the _notification_type_, and the _message_.
+[_notify()_](../../../../manuals/gui/notifications.md) is a Taipy GUI function that creates a notification with text. The user can pass multiple parameters, including the _state_, the _notification_type_, and the _message_.

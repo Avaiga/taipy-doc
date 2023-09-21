@@ -1,8 +1,10 @@
-> You can download the code of this step [here](../src/step_07.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started-gui/tree/develop/src).
+> You can download the code for
+<a href="./../src/step_07.py" download>Step 7</a> 
+or all the steps <a href="./../src/src.zip" download>here</a>. 
 
 !!! warning "For Notebooks"
 
-    The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
+    The "Getting Started" Notebook is available [here](../../../../getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 # Step 7: Multi-pages, navbars, and menus
 
@@ -30,7 +32,7 @@ Gui(pages=pages).run()
 
 ## Navigating between pages
 
-- [menu](https://docs.taipy.io/en/latest/manuals/gui/viselements/menu/): creates a menu on the left to navigate through the pages.
+- [menu](../../../../manuals/gui/viselements/menu.md_template): creates a menu on the left to navigate through the pages.
 
 `<|menu|label=Menu|lov={lov_pages}|on_action=on_menu|>`. For example, this code creates a menu with two pages:
 
@@ -59,7 +61,7 @@ Gui(pages=pages).run()
 
 ![Menu](menu.png){ width=500 style="margin:auto;display:block" }
 
-- [navbar](https://docs.taipy.io/en/latest/manuals/gui/viselements/navbar/): creates an element to navigate through the Taipy pages by default
+- [navbar](../../../../manuals/gui/viselements/navbar.md_template): creates an element to navigate through the Taipy pages by default
 
 ```python
 from taipy.gui import Gui

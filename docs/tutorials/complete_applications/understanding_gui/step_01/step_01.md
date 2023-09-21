@@ -5,7 +5,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 !!! warning "For Notebooks"
 
-    The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
+    The "Getting Started" Notebook is available [here](../../../../getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 # Step 1: First Web page
 
@@ -24,7 +24,7 @@ By default, the page won't automatically reload itself after making a code chang
 
 To change this behavior, putting `use_reloader=True` in the `.run()` will reload the application when you modify a file in your application and save it. It can be used as a development mode.
 
-If you want to run multiple servers simultaneously, you can change the server port number (5000 by default) in the `.run()` method. For example, `Gui(...).run(port=xxxx)`. Other options of the `.run()` can be found [here](https://docs.taipy.io/en/latest/manuals/gui/configuration/#configuring-the-gui-instance).
+If you want to run multiple servers simultaneously, you can change the server port number (5000 by default) in the `.run()` method. For example, `Gui(...).run(port=xxxx)`. Other options of the `.run()` can be found [here](../../../../manuals/gui/configuration.md/#configuring-the-gui-instance).
 
 
 Note that you can style the text. Taipy uses the Markdown syntax to style your text and more. Therefore, `#` creates 

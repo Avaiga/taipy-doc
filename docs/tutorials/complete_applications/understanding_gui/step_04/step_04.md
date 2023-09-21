@@ -4,7 +4,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 !!! warning "For Notebooks"
 
-    The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
+    The "Getting Started" Notebook is available [here](../../../../getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 # Step 4: Charts
  
@@ -23,7 +23,7 @@ Different formats can be passed to a chart element: a list, a Numpy array, or a 
 
 Taipy charts are based on Plotly charts. Like any other visual element, charts have a lot of parameters.
 
-Here are a few of the essential properties. You can also look at the [documentation](https://docs.taipy.io/en/latest/manuals/gui/viselements/chart/) for more information.
+Here are a few of the essential properties. You can also look at the [documentation](../../../../manuals/gui/viselements/chart.md_template) for more information.
  - x and y are used to define the axis of the chart. Note that even if data inside columns are dynamic, the name of columns to display in a chart are not.
 
 ```python
@@ -47,7 +47,7 @@ Gui("<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|color[1]=green|>").run()
 
 ## Different types of charts
 
-Different types are available: maps, bar charts, pie charts, line charts, and 3D charts, ... To know how to use them quickly, types are listed [here](https://docs.taipy.io/en/latest/manuals/gui/viselements/chart/). If compatible, two types like _scatter_, _line_, and _bar_ can also be used together on the same chart. 
+Different types are available: maps, bar charts, pie charts, line charts, and 3D charts, ... To know how to use them quickly, types are listed [here](../../../../manuals/gui/viselements/chart.md_template). If compatible, two types like _scatter_, _line_, and _bar_ can also be used together on the same chart. 
 
 ```python
 data = {"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]}
