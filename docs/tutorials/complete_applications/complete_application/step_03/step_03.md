@@ -156,10 +156,12 @@ predict_baseline_task_cfg = Config.configure_task(id="predict_baseline",
                                                   output=predictions_cfg)
 ```
 
-Other tasks are being configured to get the metrics of the pipeline and a dataset
+Other tasks are being configured to get the metrics of the pipeline and a dataset 
 with all the predictions and historical data.
 
 ## Scenario configuration
+
+Now, all these task and Data Nodes configuration can set up a scenario. These tasks creating an execution graph will be executed when a scenario is submitted.
 
 ```python
 scenario_cfg = Config.configure_scenario(id="scenario",

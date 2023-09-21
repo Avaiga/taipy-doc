@@ -32,11 +32,11 @@ The Markdown section defines the layout and components of the Performance Page. 
 
 - **Conditional Rendering**: `<|part|render={len(comparison_scenario)>0}|...|>`
 
-The part component ensures that certain elements are only rendered when there is data available in the comparison_scenario.
+The part component ensures that certain elements are only rendered when there is data available in the *comparison_scenario*.
 
 - **Table**: `<|{comparison_scenario}|table|>`
 
-A table that displays the comparison data from the comparison_scenario DataFrame. The table is expandable if the number of rows exceeds the available space.
+A table that displays the comparison data from the *comparison_scenario* DataFrame. The table is expandable if the number of rows exceeds the available space.
 
 - **Metric Selector**: `<|{selected_metric}|selector|lov={metric_selector}|dropdown|>`
 
@@ -106,14 +106,14 @@ It includes the following components:
 
 - **Global Variables**:
 
-The variables `comparison_scenario`, `metric_selector`, and `selected_metric` are initialized. 
-The `comparison_scenario` DataFrame stores the comparison data, while `metric_selector` holds the options for the metric selector. `selected_metric` is initialized with the default metric, which is the first element of the metric_selector list (RMSE).
+The variables *comparison_scenario*, *metric_selector*, and *selected_metric* are initialized. 
+The *comparison_scenario* DataFrame stores the comparison data, while *metric_selector* holds the options for the metric selector. *selected_metric* is initialized with the default metric, which is the first element of the *metric_selector* list (RMSE).
 
 - **Compare Function**:
 
 The compare function is responsible for performing the comparison process. When the user clicks the "Compare" button, this function is called. 
 It retrieves the primary scenarios from the application and goes through each scenario to extract the RMSE and MAE metrics for both baseline and machine learning predictions. 
-The data is then stored in the comparison_scenario DataFrame.
+The data is then stored in the *comparison_scenario* DataFrame.
 
 - **Performance Page Initialization**:
 
