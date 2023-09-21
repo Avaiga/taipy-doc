@@ -3,7 +3,9 @@
 
 # Step 4: Scenario Page
 
-The Scenario Page is a part of the application designed to create and customize scenarios for predictions based on time series data. Users can set different parameters for the prediction process, such as the prediction date, maximum capacity, and the number of predictions. The page also includes a chart that displays historical values and predictions made using machine learning and baseline methods.
+The Scenario Page is a part of the application designed to create and customize scenarios for predictions based on time series data. 
+Users can set different parameters for the prediction process, such as the prediction date, maximum capacity, and the number of predictions. 
+The page also includes a chart that displays historical values and predictions made using machine learning and baseline methods.
 
 ![Scenario Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }"
 
@@ -121,25 +123,27 @@ It includes the following components:
 
 - **Global Variables**:
 
-The global variables scenario, day, n_predictions, max_capacity, and predictions_dataset are defined. These variables store the initial state of the application.
+The global variables *scenario*, *day*, *n_predictions*, *max_capacity*, and *predictions_dataset* are defined. These variables store the initial state of the application.
 
 - **Save Function**:
 
-The save function is responsible for saving the current scenario state. When the user clicks the "Save" button, this function is called. It takes the state of the page as input, converts the date format to the appropriate format, and updates the scenario parameters accordingly. It then notifies the user with a success message.
+The `save` function is responsible for saving the current scenario state. When the user clicks the "Save" button, this function is called. It takes the state of the page as input, converts the date format to the appropriate format, and updates the scenario parameters accordingly. It then notifies the user with a success message.
 
 - **On Change Function**:
 
-The on_change function is called when any variable on the page changes its value. It monitors the changes in the scenario variable and updates the other variables accordingly. It also checks if the `full_predictions` are ready for reading and updates the `predictions_dataset` accordingly.
+The `on_change` function is called when any variable on the page changes its value. It monitors the changes in the scenario variable and updates the other variables accordingly. It also checks if the *full_predictions* are ready for reading and updates the *predictions_dataset*` accordingly.
 
 - **Scenario Page Initialization**:
 
-The scenario_page variable is initialized as a Markdown object, representing the content of the Scenario Page.
+The *scenario_page* variable is initialized as a Markdown object, representing the content of the Scenario Page.
 
 It provides an interactive interface for users to create and customize different scenarios for time series predictions. It allows users to select prediction dates, set maximum capacity, and choose the number of predictions to make. The page also presents a chart to visualize the historical data and the predicted values from both machine learning and baseline methods. Users can save their selected scenarios to use them for further analysis and comparison. 
 
 ## Connection to the entire application
 
-Import `scenario_page` to the main file.
+Use the `on_change` function created in the *scenario* page; it has to be called in the global `on_change` (main script) of the application. This global function is called whenever a variable changes on the user interface. 
+
+In your main script:
 
 ```python
 def on_change(state, var_name: str, var_value):
