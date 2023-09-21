@@ -14,17 +14,17 @@ To apprehend the Scenario Management aspect of Taipy, you need to understand fou
 
 ![Configuration](config_toml.png){ width=300 style="margin:auto;display:block" }
 
-## Configuration [Basics](../../../..//core/concepts.md)
+## Configuration [Basics](../../../../manuals/core/index.md)
 
 The configuration consists of defining Data Nodes and Tasks.
 
-- [**Data Nodes**](../../../..//core/concepts/data-node.md): are the translation of variables in 
+- [**Data Nodes**](../../../../manuals/core/concepts/data-node.md): are the translation of variables in 
   Taipy. Data Nodes don't contain the data itself but know how to retrieve it. They can refer to any kind of data.
   Data Nodes can point to various data sources, such as Python variables, CSV files, Pickle files, SQL databases, etc. 
 
-- [**Tasks**](../../../..//core/concepts/task.md): are the translation of functions in Taipy.
+- [**Tasks**](../../../../manuals/core/concepts/task.md): are the translation of functions in Taipy.
 
-- [**Scenarios**](../../../..//core/concepts/scenario.md): Together, they create a graph that maps the execution flow which is called scenario. End-Users very often require modifying 
+- [**Scenarios**](../../../../manuals/core/concepts/scenario.md): Together, they create a graph that maps the execution flow which is called scenario. End-Users very often require modifying 
   various parameters to reflect different business situations. Taipy Scenarios will provide the framework to 
   "play"/"execute" pipelines under different conditions/variations (i.e. data/parameters modified by the end-user)
 
