@@ -1,4 +1,4 @@
-# For the sake of clarity, we have used an AutoRegressive model rather than a pure ML model such as:
+# To make things clear, we've opted for an AutoRegressive model instead of a pure ML model like:
 # Random Forest, Linear Regression, LSTM, etc   
 from statsmodels.tsa.ar_model import AutoReg
 import pandas as pd
