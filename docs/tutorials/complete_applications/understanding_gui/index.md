@@ -1,33 +1,35 @@
-# Getting Started with Taipy GUI
-
 !!! important "Supported Python versions"
 
     Taipy requires **Python 3.8** or newer.
 
-Welcome to the **Getting Started** guide for Taipy GUI. This tour shows you how to use Taipy GUI to create an interactive Web application. Taipy GUI implements a modern backend for any data-driven application based on your business case.
+Welcome to the **Tutorial** on how to use Taipy frontend. This tour shows you how to use Taipy to create an interactive Web application.
 
-![Getting Started GUI application](step_07/result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![GUI application](step_07/result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-# Taipy GUI
+Taipy aims to simplify web application development:
 
-Taipy GUI is one of the components of Taipy to create easily Web application. There are a lot of reasons for using Taipy GUI:
+- Accelerates application building.
 
-- It fastens the creation of an application.
+- Streamlines management of variables and events.
 
-- It manages easily and efficiently variables and events.
+- Offers intuitive visualization using Markdown syntax.
 
-- Easy visualization with Markdown syntax.
-
-Each step of the **"Getting Started"** will focus on basic concepts of *Taipy*. Note that every step is dependent on 
-the code of the previous one. After completing the last step, you will have the skills to develop your own Taipy 
+Each step of the **"Tutorial"** will focus on the basic concepts of *Taipy*. Note that every step is dependent on the code of the previous one. After completing the last step, you will have the skills to develop your own Taipy 
 application. 
 
 ## Before we begin
 
-Only Taipy has to be installed. **Taipy** package requires Python 3.8 or newer;
+**Taipy** package requires Python 3.8 or newer;
 
 ``` console
 $ pip install taipy
+```
+
+After completing step 5, the application will feature a Natural Language Processing (NLP) algorithm for demonstration purposes, compatible only with Python versions 3.8 to 3.10. To integrate this NLP feature, you must install Transformers and Torch. Nonetheless, you can still continue with the tutorial guide by choosing to skip this algorithm.
+
+``` console
+$ pip install torch
+$ pip install transformers
 ```
 
 !!! info 
@@ -40,11 +42,11 @@ $ pip install taipy
 
 ## Using Notebooks
 
-This **Getting Started** is for Python scripts (*.py*) only. If you want to use **Jupyter Notebooks**, download this [notebook](https://docs.taipy.io/en/latest/getting_started/getting-started-gui/getting_started.ipynb).
+This **Tutorial** is for Python scripts (*.py*) only. If you want to use **Jupyter Notebooks**, download this [notebook](https://docs.taipy.io/en/latest/getting_started/getting-started-gui/getting_started.ipynb).
 
 ## Taipy Studio
 
-Taipy Studio is a VS Code extension that provides an autocompletion of Taipy visual elements. The creation of a Taipy application can be done more easily and quickly through Taipy Studio.
+[Taipy Studio](https://docs.taipy.io/en/latest/manuals/studio/) is a VS Code extension that provides an auto-completion of Taipy visual elements. Creating a Taipy application can be done more easily and quickly through Taipy Studio.
 
 So, without further delay, let's begin to code!
 

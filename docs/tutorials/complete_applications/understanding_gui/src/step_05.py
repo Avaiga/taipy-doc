@@ -19,6 +19,8 @@ dataframe = pd.DataFrame({"Text":[''],
                           "Score Neg":[0.33],
                           "Overall":[0]})
 
+# Torch is, for now, only available for the Python version between 3.8 and 3.10. 
+# If you cannot install these packages, just return a dictionary of random numbers for the `analyze_text(text).`
 def analyze_text(text):
     # Run for Roberta Model
     encoded_text = tokenizer(text, return_tensors='pt')
@@ -37,7 +39,8 @@ def local_callback(state):
     notify(state, 'Info', f'The text is: {state.text}', True)
     temp = state.dataframe.copy()
     scores = analyze_text(state.text)
-    state.dataframe = temp.append(scores, ignore_index=True)
+    temp.loc[len(temp)] = scores
+    state.dataframe = temp
     state.text = ""
 
 

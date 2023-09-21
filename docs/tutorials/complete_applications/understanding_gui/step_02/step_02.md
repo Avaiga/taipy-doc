@@ -1,4 +1,6 @@
-> You can download the code of this step [here](../src/step_02.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started-gui/tree/develop/src).
+> You can download the code for
+<a href="./../src/step_01.py" download>step 02</a> 
+or all the steps <a href="./../src/src.zip" download>here</a>. 
 
 !!! warning "For Notebooks"
 
@@ -7,7 +9,7 @@
 # Step 2: Visual elements
 
 Many visual elements can be added to the basic code viewed in Step 1. This Step shows how to use visual elements 
-like charts, sliders, and tables, atc., inside the graphical interface.
+like charts, sliders, tables, etc., inside the graphical interface.
 
 ## Visual elements
 
@@ -19,7 +21,7 @@ element is a Taipy graphical object displayed on the client. It can be a
 [table](https://docs.taipy.io/en/latest/manuals/gui/viselements/table/), an 
 [input](https://docs.taipy.io/en/latest/manuals/gui/viselements/input/), a 
 [menu](https://docs.taipy.io/en/latest/manuals/gui/viselements/menu/), etc. Check the list 
-[here](https://docs.taipy.io/en/latest/manuals/gui/controls/).
+[here]( https://docs.taipy.io/en/latest/manuals/gui/viselements/controls/).
 
 Every visual element follows a similar syntax:
 
@@ -29,7 +31,7 @@ For example, a [slider](https://docs.taipy.io/en/latest/manuals/gui/viselements/
 
 `<|{variable}|slider|min=min_value|max=max_value|>`.
 
-For each visual element you wish to add to your web page, you must include the above-mentionned syntax inside your markdown 
+For each visual element you wish to add to your web page, you must include the above-mentioned syntax inside your markdown 
 string (representing your page). Example: at the beginning of the page, let's display:
 
 - a Python variable *text*

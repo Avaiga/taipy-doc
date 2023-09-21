@@ -4,17 +4,21 @@
 
     The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
 
-## Step 7: Multi-pages, navbars, and menus
+# Step 7: Multi-pages, navbars, and menus
 
-The creation of a multi-page application is greatly simplified with Taipy. To create a multi-page application, a dictionary of pages has to be defined. Here we will create three Pages: a Root page and two pages (page1 & page2). We will use Visual elements like a menu or navbar on this root page to navigate between page1 and page2.
+The creation of a multi-page application is greatly simplified with Taipy. A dictionary of pages must be defined to create a multi-page application. Here we will create three Pages: a Root page and two pages (page1 & page2). We will use Visual elements like a menu or navbar on this root page to navigate between page1 and page2.
 
 
 ```python
 from taipy import Gui
 
-root_md="# Multi-page application"
-page1_md="## This is page 1"
-page2_md="## This is page 2"
+# Add a navbar to switch from one page to the other
+root_md = """
+<|navbar|>
+# Multi-page application
+"""
+page1_md = "## This is page 1"
+page2_md = "## This is page 2"
 
 pages = {
     "/": root_md,
@@ -53,9 +57,9 @@ pages = {
 Gui(pages=pages).run()
 ```
 
-![Menu](menu.png){ width=50 style="margin:auto;display:block" }
+![Menu](menu.png){ width=500 style="margin:auto;display:block" }
 
-- [navbar](): creates an element to navigate through the Taipy pages by default
+- [navbar](https://docs.taipy.io/en/latest/manuals/gui/viselements/navbar/): creates an element to navigate through the Taipy pages by default
 
 ```python
 from taipy.gui import Gui
@@ -74,7 +78,7 @@ pages = {
 Gui(pages=pages).run()
 ```
  
-![Navbar](navbar.png){ width=50 style="margin:auto;display:block" }
+![Navbar](navbar.png){ width=500 style="margin:auto;display:block" }
 
  
 ## Back to the code
@@ -101,7 +105,6 @@ page_file = """
 |>
 
 <|{dataframe2}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|height=800px|>
-
 """
 
 def analyze_file(state):
@@ -117,8 +120,9 @@ def analyze_file(state):
         text = file_list[i]
         state.treatment = int((i+1)*100/len(file_list))
         temp = state.dataframe2.copy()
-        scores = analize_text(text)
-        state.dataframe2 = temp.append(scores, ignore_index=True)
+        scores = analyze_text(text)
+        temp.loc[len(temp)] = scores
+        state.dataframe2 = temp
         
     state.path = None
 ```    

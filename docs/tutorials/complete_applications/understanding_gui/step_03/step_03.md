@@ -1,4 +1,6 @@
-> You can download the code of this step [here](../src/step_03.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started-gui/tree/develop/src).
+> You can download the code for
+<a href="./../src/step_01.py" download>step 03</a> 
+or all the steps <a href="./../src/src.zip" download>here</a>. 
 
 !!! warning "For Notebooks"
 

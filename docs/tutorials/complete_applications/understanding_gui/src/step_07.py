@@ -16,9 +16,7 @@ page = """
 My text: <|{text}|>
 
 Enter a word:
-
 <|{text}|input|>
-
 <|Analyze|button|on_action=local_callback|>
 |>
 
@@ -26,24 +24,14 @@ Enter a word:
 <|Table|expandable|
 <|{dataframe}|table|width=100%|number_format=%.2f|>
 |>
-
 |>
 
 <|layout|columns=1 1 1|
-<|
-## Positive
-<|{np.mean(dataframe['Score Pos'])}|text|format=%.2f|> %
-|>
+## Positive <|{np.mean(dataframe['Score Pos'])}|text|format=%.2f|raw|>
 
-<|
-## Neutral
-<|{np.mean(dataframe['Score Neu'])}|text|format=%.2f|> %
-|>
+## Neutral <|{np.mean(dataframe['Score Neu'])}|text|format=%.2f|raw|>
 
-<|
-## Negative
-<|{np.mean(dataframe['Score Neg'])}|text|format=%.2f|> %
-|>
+## Negative <|{np.mean(dataframe['Score Neg'])}|text|format=%.2f|raw|>
 |>
 
 <|{dataframe}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|>
@@ -79,7 +67,8 @@ def local_callback(state):
     notify(state, 'Info', f'The text is: {state.text}', True)
     temp = state.dataframe.copy()
     scores = analyze_text(state.text)
-    state.dataframe = temp.append(scores, ignore_index=True)
+    temp.loc[len(temp)] = scores
+    state.dataframe = temp
     state.text = ""
 
 
@@ -116,7 +105,8 @@ def analyze_file(state):
         state.treatment = int((i+1)*100/len(file_list))
         temp = state.dataframe2.copy()
         scores = analyze_text(text)
-        state.dataframe2 = temp.append(scores, ignore_index=True)
+        temp.loc[len(temp)] = scores
+        state.dataframe2 = temp
         
     state.path = None
     

@@ -12,7 +12,7 @@ Here is one of the simplest code to create a chart:
 
 ```python
 list_to_display = [100/x for x in range(1, 100)]
-"<|{list_to_display}|chart|>"
+Gui("<|{list_to_display}|chart|>").run()
 ```
 
 Different formats can be passed to a chart element: a list, a Numpy array, or a Pandas Dataframe.
@@ -21,34 +21,34 @@ Different formats can be passed to a chart element: a list, a Numpy array, or a 
 
 Taipy charts are based on Plotly charts. Like any other visual element, charts have a lot of parameters.
 
-Here are a few of the essential properties. You can also look at the [documentation]() for more information.
+Here are a few of the essential properties. You can also look at the [documentation](https://docs.taipy.io/en/latest/manuals/gui/viselements/chart/) for more information.
  - x and y are used to define the axis of the chart. Note that even if data inside columns are dynamic, the name of columns to display in a chart are not.
 
 ```python
-data = pd.DataFrame({"x_col":[0,1,2], "y_col1":[4,1,2]})
+data = {"x_col":[0,1,2], "y_col1":[4,1,2]}
 Gui("<|{data}|chart|x=x_col|y=y_col1|>").run()
 ```
 
  - x and y can be indexed to add more traces to the chart:
 
 ```python
-data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,2,1], "y_col_2":[3,1,2]})
+data = {"x_col":[0,1,2], "y_col_1":[4,2,1], "y_col_2":[3,1,2]}
 Gui("<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|>").run()
 ```
 
  - Taipy provides a lot of different options to customize graphs. _color_ is one of them:
 
 ```python
-data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,2,1], "y_col_2":[3,1,2]})
+data = {"x_col":[0,1,2], "y_col_1":[4,2,1], "y_col_2":[3,1,2]}
 Gui("<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|color[1]=green|>").run()
 ```
 
 ## Different types of charts
 
-Different types are available: maps, bar charts, pie charts, line charts, and 3D charts, ... To know how to use them quickly, types are listed [here](). If compatible, two types like _scatter_, _line_, and _bar_ can also be used together on the same chart. 
+Different types are available: maps, bar charts, pie charts, line charts, and 3D charts, ... To know how to use them quickly, types are listed [here](https://docs.taipy.io/en/latest/manuals/gui/viselements/chart/). If compatible, two types like _scatter_, _line_, and _bar_ can also be used together on the same chart. 
 
 ```python
-data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})
+data = {"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]}
 Gui("<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|type[1]=bar|>").run()
 ```
 
@@ -77,7 +77,7 @@ dataframe = pd.DataFrame({"Text":['Test', 'Other', 'Love'],
 
 ## Quick tip to write visual elements
 
-To simplify the coding, each visual element has a "properties" parameter where a Python dictionary of property can be directly passed on. To replicate the graph above, we could do the following:
+To make coding easier, each visual element has a "properties" parameter where you can directly pass a Python dictionary of properties. To recreate the graph shown above, you can to the following:
 
 ```python
 property_chart = {"type":"bar",

@@ -1,4 +1,6 @@
-> You can download the code of this step [here](../src/step_06.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started-gui/tree/develop/src).
+> You can download the code for
+<a href="./../src/step_06.py" download>Step 6</a> 
+or all the steps <a href="./../src/src.zip" download>here</a>. 
 
 !!! warning "For Notebooks"
 
@@ -7,7 +9,7 @@
 
 # Step 6: Page layout
 
-In just a few steps, you have created a full forecasting application that predicts across multiple days with different parameters. However, the page's layout could be greatly improved. To get a more aesthetically pleasing page, three new useful controls will be used. These are:
+You have created a full forecasting application that predicts across multiple days with different parameters in just a few steps. However, the page's layout could be greatly improved. Three new useful controls will be used to get a more aesthetically pleasing page. These are:
 
 - [part](https://docs.taipy.io/en/latest/manuals/gui/viselements/part/): creates a group of text/visual elements. A useful property of `part` is _render_. If set to False, it will not display the part. This allows the developer to hide a group of visual elements dynamically.
 
@@ -52,9 +54,7 @@ page = """
 My text: <|{text}|>
 
 Enter a word:
-
 <|{text}|input|>
-
 <|Analyze|button|on_action=local_callback|>
 |>
 
@@ -62,24 +62,14 @@ Enter a word:
 <|Table|expandable|
 <|{dataframe}|table|width=100%|>
 |>
-
 |>
 
 <|layout|columns=1 1 1|
-<|
-## Positive
-<|{np.mean(dataframe['Score Pos'])}|>
-|>
+## Positive <|{np.mean(dataframe['Score Pos'])}|text|format=%.2f|raw|>
 
-<|
-## Neutral
-<|{np.mean(dataframe['Score Neu'])}|>
-|>
+## Neutral <|{np.mean(dataframe['Score Neu'])}|text|format=%.2f|raw|>
 
-<|
-## Negative
-<|{np.mean(dataframe['Score Neg'])}|>
-|>
+## Negative <|{np.mean(dataframe['Score Neg'])}|text|format=%.2f|raw|>
 |>
 
 <|{dataframe}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|>
