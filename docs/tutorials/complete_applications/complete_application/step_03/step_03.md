@@ -52,13 +52,14 @@ In a ML context, it is common to have numerous training and testing pipelines fo
 - Data Cleaning,
 
 - Predictions (for *number of predictions*) from **day** onwards. In our example, predictions represents the number 
-  of items sold in a given store on a 15-min basis.
+of items sold in a given store on a 15-min basis.
 
 - Creation of metrics and of a dataset for visualization.
 
 -------------
 
 ### Input Data Nodes configuration
+
 These are the input Data Nodes. They represent the variables in Taipy when a pipeline is executed. Still, first, we 
 have to configure them to create the DAG.
 
@@ -104,7 +105,7 @@ max_capacity_cfg = Config.configure_data_node(id="max_capacity", default_data=20
 
 - *full_dataset* is the concatenation of the predictions.
 
-- The *metrics* Data Nodes store KPI about the predictions.
+- The *metrics* Data Nodes store KPIs about the predictions.
 
 ```python
 ## Remaining Data Nodes
@@ -156,7 +157,7 @@ predict_baseline_task_cfg = Config.configure_task(id="predict_baseline",
                                                   output=predictions_cfg)
 ```
 
-Other tasks are being configured to get the metrics of the pipeline and a dataset 
+Other tasks are being configured the same way to get the metrics of the pipeline and a dataset 
 with all the predictions and historical data.
 
 ## Scenario configuration
@@ -231,7 +232,7 @@ predict_baseline_task_cfg = Config.configure_task(id="predict_baseline",
 
 
 # Create the task configuration of the predict_ml function.
-## We use the same input and ouput as the previous predict_baseline task but we change the funtion
+## We're using the same input and output as in the previous predict_baseline task, but we're changing the function
 predict_ml_task_cfg = Config.configure_task(id="task_predict_ml",
                                             function=predict_ml,
                                             input=[cleaned_dataset_cfg,
