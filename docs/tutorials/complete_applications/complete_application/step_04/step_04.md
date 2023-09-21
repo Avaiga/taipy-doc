@@ -139,21 +139,9 @@ It provides an interactive interface for users to create and customize different
 
 ## Connection to the entire application
 
-Don't forget to add the page to the application in the *main.py*:
-
 Import `scenario_page` to the main file.
 
 ```python
-...
-
 def on_change(state, var_name: str, var_value):
     state['scenario'].on_change(state, var_name, var_value)
-
-pages = {
-    "/": root_page,
-    "data_viz": data_viz,
-    "scenario": scenario_page # add scenario
-}
-
-...
 ```
