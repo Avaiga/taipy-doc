@@ -17,7 +17,13 @@ nav:
     - tutorials/index.md
     - "Understanding GUI": tutorials/complete_applications/understanding_gui/index.md
     - "Scenario management Overview": tutorials/complete_applications/scenario_management_overview/index.md
-    - "Build a complete application": tutorials/complete_applications/complete_application/index.md
+    - "Build a complete application":
+      - "Build a complete application": tutorials/complete_applications/complete_application/index.md
+      - "1 - Data visualization page": tutorials/complete_applications/complete_application/step_01/step_01.md
+      - "2 - Algorithms used": tutorials/complete_applications/complete_application/step_02/step_02.md
+      - "3 - Scenario configuration": tutorials/complete_applications/complete_application/step_03/step_03.md
+      - "4 - Scenario page": tutorials/complete_applications/complete_application/step_04/step_04.md
+      - "5 - Performance page": tutorials/complete_applications/complete_application/step_05/step_05.md
     - "Markdown Syntax": tutorials/videos/markdown_syntax.md
     - "Data Dashboard": tutorials/videos/data-dashboard.md
     - "Changing Line Types Using Charts": tutorials/videos/charts.md
