@@ -1,7 +1,7 @@
 > The full code is available
 <a href="./../src/src.zip" download>here</a>.
 
-# Configuration of scenario
+# Scenario
 
 - Taipy efficiently manages the execution of your functions/pipelines.
 
