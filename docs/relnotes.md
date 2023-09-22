@@ -117,7 +117,8 @@ as well as additional features.
 
 ### New Features
 
-- ...
+- Taipy methods can be scheduled to run at a specific time using the new `taipy.Scheduler^` API.
+  For more information, refer to [Schedule a method](./manuals/core/scheduling/index.md).
 
 ### Improvements and changes
 

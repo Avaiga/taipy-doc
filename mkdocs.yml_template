@@ -94,6 +94,8 @@ nav:
               - "Development mode": manuals/core/versioning/development_mode.md
               - "Experiment mode": manuals/core/versioning/experiment_mode.md
               - "Production mode": manuals/core/versioning/production_mode.md
+          - "Scheduling":
+              - manuals/core/scheduling/index.md
       - "Taipy REST":
           - manuals/rest/index.md
       - "Authentication and Roles":
