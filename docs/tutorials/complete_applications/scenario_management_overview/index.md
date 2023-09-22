@@ -4,13 +4,13 @@
 
 Welcome to the **Tutorial** guide for scenario management.
 
-Taipy facilitates pipeline orchestration. There are a lot of reasons for using Taipy backend:
+Taipy facilitates pipeline orchestration. There are several good reasons to use the Taipy backend:
 
 - Taipy efficiently manages the execution of your functions/pipelines.
 
 - Taipy manages data sources and monitors KPIs.
 
-- Taipy provides easy management of multiple pipelines and end-user scenarios, which comes in handy in the context of Machine Learning or Mathematical optimization.
+- Taipy makes it simple to oversee multiple pipelines and end-user scenarios, especially useful in Machine Learning or Mathematical optimization contexts.
 
 Each step of the **"Tutorial"** will focus on basic concepts of *Taipy Core*.
 

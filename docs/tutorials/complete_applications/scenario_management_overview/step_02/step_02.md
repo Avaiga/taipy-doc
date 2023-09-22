@@ -4,7 +4,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 # Basic functions
 
-*Time to complete: 15 minutes; Level: Beginner*
+*Estimated Time for Completion: 15 minutes; Difficulty Level: Beginner*
 
 Let's discuss some of the essential functions that come along with Taipy.
 
@@ -18,7 +18,7 @@ Let's discuss some of the essential functions that come along with Taipy.
 
 ## Utility of having scenarios
 
-Taipy lets the user create multiple instances of the same configuration. Data can differ between different scenario instances. It is essential to understand the difference in data between scenario instances. Such differences in scenarios can be due to the following:
+With Taipy, users can make several instances of the same setup. The data can vary among these different scenario instances. It's crucial to grasp the distinctions in data among scenario instances. These variations in scenarios can occur for the following reasons:
 
 - Changing data from input data nodes, 
 

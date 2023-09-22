@@ -4,7 +4,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 # Executing jobs
 
-*Time to complete: 15 minutes; Level: Advanced*
+*Estimated Time for Completion: 15 minutes; Difficulty Level: Advanced*
 
 Taipy has [different ways](../../../../manuals/core/config/job-config.md) to execute the code. Changing the execution mode can be useful for running multiple tasks in parallel.
 

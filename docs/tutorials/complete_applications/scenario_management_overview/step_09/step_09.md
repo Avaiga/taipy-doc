@@ -4,7 +4,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 # Subscribing to a scenario
 
-*Time to complete: 15 minutes; Level: Advanced*
+*Estimated Time for Completion: 15 minutes; Difficulty Level: Advanced*
 
 To have an action after changing a job status, we can [subscribe a function](../../../../manuals/core/entities/orchestrating-and-job-execution.md/#subscribe-to-job-execution) to a scenario. A status change calls this function. This feature allows the creation of logs or particular events for Taipy GUI.
 

@@ -4,7 +4,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 # Data Node types
 
-*Time to complete: 15 minutes; Level: Beginner*
+*Estimated Time for Completion: 15 minutes; Difficulty Level: Beginner*
 
 ![](Data-Sources.jpg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
@@ -22,7 +22,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 - *[Generic](../../../../manuals/core/config/data-node-config.md/#generic)*: Taipy provides a generic Data Node that can read and store any data based on a custom _reading_ and _writing_ function created by the user.
 
-This section uses the simple DAG/execution configuration described below. The configuration consists of the following:
+This part utilizes the straightforward DAG/execution setup detailed below. The setup comprises the following components:
 
 1. Three Data Nodes:
 

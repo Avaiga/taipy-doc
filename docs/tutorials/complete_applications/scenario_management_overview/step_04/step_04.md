@@ -4,11 +4,11 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 # Cycles
 
-*Time to complete: 15 minutes; Level: Intermediate*
+*Estimated Time for Completion: 15 minutes; Difficulty Level: Intermediate*
 
 [Cycles](../../../../manuals/core/concepts/cycle.md) have been introduced to reflect business situations our customers frequently encounter and can be extremely useful. 
 
-For instance, a large fast food chain wants to generate sales forecasts for its stores every week. When creating a given scenario, it needs to be attached to a given week. And often, a single one will be published amongst all the scenarios generated for a given week. This kind of 'official' scenario is referred to as the 'Primary' scenario in Taipy.
+For instance, a large fast food chain wants to generate sales forecasts for its stores every week. When creating a given scenario, it needs to be attached to a given week. Typically, only one scenario will be shared among all the scenarios made for a specific week. This specific 'official' scenario is known as the 'Primary' scenario in Taipy.
 
 
 Note that Cycles can be ignored entirely if the business problem has no time frequency. 

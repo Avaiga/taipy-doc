@@ -4,7 +4,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 # Configuration and execution
 
-*Time to complete: 15 minutes; Level: Beginner*
+*Estimated Time for Completion: 15 minutes; Difficulty Level: Beginner*
 
 Before looking at some code examples, let’s define some basic terms Taipy Core uses. Taipy Core revolves around three major concepts.
 

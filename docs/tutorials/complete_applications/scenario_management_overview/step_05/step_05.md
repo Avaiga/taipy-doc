@@ -4,7 +4,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 # Scopes
 
-*Time to complete: 15 minutes; Level: Intermediate*
+*Estimated Time for Completion: 15 minutes; Difficulty Level: Intermediate*
 
 [Scopes](../../../../manuals/core/concepts/scope.md) determine how Data Nodes are shared between cycles and scenarios. The developer may decide:
 

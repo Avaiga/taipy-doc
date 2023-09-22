@@ -4,9 +4,9 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 # Skipping tasks
 
-*Time to complete: 15 minutes; Level: Intermediate*
+*Estimated Time for Completion: 15 minutes; Difficulty Level: Intermediate*
 
-Skipping tasks is an essential feature of Taipy. Running twice a function with the same inputs can create the same output. Executing this sort of function is a waste of time and resources.
+Skipping tasks is a crucial capability of Taipy. If you run a function twice with the same inputs, you'll get the same output. Executing this type of function is inefficient and consumes unnecessary time and resources.
 
 Taipy offers the option to set the _skippable_ attribute for each task. If this attribute is set to True, Taipy Core’s scheduler automatically detects if changes have occurred on any of the input Data Nodes of a task. 
 If there are no changes, it automatically skips the execution of that task. By default, _skippable_ is set to False. 

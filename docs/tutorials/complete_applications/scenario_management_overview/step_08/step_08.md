@@ -4,7 +4,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 # Comparing scenarios
 
-*Time to complete: 15 minutes; Level: Advanced*
+*Estimated Time for Completion: 15 minutes; Difficulty Level: Advanced*
 
 ![](config_08.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
