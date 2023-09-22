@@ -55,7 +55,7 @@ So, without further delay, let's begin to code!
 
 2. [Algorithms used](step_02/step_02.md)
 
-3. [Backend Configuration](step_03/step_03.md)
+3. [Scenario Configuration](step_03/step_03.md)
 
 4. [Scenario page](step_04/step_04.md)
 

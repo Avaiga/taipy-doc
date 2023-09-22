@@ -7,26 +7,24 @@
 
 - Taipy manages data sources and monitors KPIs.
 
-- Taipy provides an easy management of multiple pipelines and end-user scenarios which comes in handy in the 
-  context of Machine Learning or Mathematical optimization.
+- Taipy provides an easy management of multiple pipelines and end-user scenarios which comes in handy in the context of Machine Learning or Mathematical optimization.
 
-To apprehend the Scenario Management aspect of Taipy, you need to understand four essential concepts.
+To apprehend what is a _Scenario_, you need to understand the _Data node_ and _Task_ concepts.
 
-![Configuration](config_toml.png){ width=300 style="margin:auto;display:block" }
 
 ## Configuration [Basics](../../../../manuals/core/index.md)
 
-The configuration consists of defining Data Nodes and Tasks.
-
 - [**Data Nodes**](../../../../manuals/core/concepts/data-node.md): are the translation of variables in 
-  Taipy. Data Nodes don't contain the data itself but know how to retrieve it. They can refer to any kind of data.
-  Data Nodes can point to various data sources, such as Python variables, CSV files, Pickle files, SQL databases, etc. 
+  Taipy. Data Nodes don't contain the data itself but point to the data and know how to retrieve it. Data Nodes can point to various data source types, 
+  (CSV files, Pickle files, databases, etc.) and can represent any Python variable (integer, string, data frames, lists, etc.). 
 
-- [**Tasks**](../../../../manuals/core/concepts/task.md): are the translation of functions in Taipy.
+- [**Tasks**](../../../../manuals/core/concepts/task.md): are the translation of functions in Taipy where their inputs and outputs are data nodes.
 
-- [**Scenarios**](../../../../manuals/core/concepts/scenario.md): Together, they create a graph that maps the execution flow which is called scenario. End-Users very often require modifying 
-  various parameters to reflect different business situations. Taipy Scenarios will provide the framework to 
-  "play"/"execute" pipelines under different conditions/variations (i.e. data/parameters modified by the end-user)
+- [**Scenarios**](../../../../manuals/core/concepts/scenario.md): Scenarios are created by combining Data Nodes and Tasks to form a graph that maps the 
+	execution flow. End-Users very often require modifying  
+  various parameters to reflect different business situations. Taipy provide the 
+  framework to play/execute scenarios under different situations (i.e. various 
+  data/parameters values set by end-users).
 
 ## Data Nodes Configuration
 
@@ -36,7 +34,7 @@ Parameters for Data Node configuration:
 
 - Storage Type: Specifies the storage type for the Data Node, e.g., CSV file, Pickle file, etc. The initial dataset, for example, is a CSV file with storage_type="csv".
 
-- Scope: Defines the scope of the Data Node. There are three types of scope in the code: Global, Scenario, and Pipeline scope.
+- Scope: Defines the scope of the Data Node. There are three types of scope in the code: Global, Cycle, and Scenario scope.
 
 1- `Scope.SCENARIO` (default): Having one data node for each scenario.
 
@@ -45,7 +43,9 @@ Parameters for Data Node configuration:
 3- `Scope.GLOBAL`: Finally, extend the scope globally (across all scenarios of all cycles). For example, the initial/historical dataset is usually shared by all the scenarios/pipelines/cycles. It is unique in the entire application.
 
 
-In a ML context, it is common to have numerous training and testing pipelines for different algorithms. Here, we configure two pipelines that predict on a given **day** the values for the following days either with ML or Baseline model:
+In an ML context, it is common to have numerous training and testing models.  In this tutorial, we configure a scenario that predict on a given **day** 
+the values for the following days using two models: a baseline and a ML 
+model.
 
 - Retrieval of the initial dataset,
 
@@ -56,7 +56,10 @@ of items sold in a given store on a 15-min basis.
 
 - Creation of metrics and of a dataset for visualization.
 
--------------
+The graph below represents the scenario to configure, where tasks are in orange and data nodes in blue.
+
+![Configuration](config_toml.png){ width=300 style="margin:auto;display:block" }
+
 
 ### Input Data Nodes configuration
 
@@ -96,7 +99,7 @@ max_capacity_cfg = Config.configure_data_node(id="max_capacity", default_data=20
 
 ```
 
-### Remaining Data Nodes
+### Intermediate and output Data Nodes
 
 - *cleaned_dataset* is the dataset after cleaning (after the `clean_data()` function).
 
@@ -129,7 +132,8 @@ Tasks are the translation of functions in Taipy. Each task has an ID, a function
 ### clean_data_task
 
 The first task that you want to create is your `clean_data()` task.
-It will take your initial dataset (input Data Node), clean it (calling the `clean_data()` function) and generate the cleaned dataset Data Node.
+It will take your initial dataset (input Data Node), 
+clean it (calling the `clean_data()` function) and generate the cleaned dataset Data Node.
 This task will only execute once thanks to the skippability feature of Taipy.
 
 ![Clean Data](clean_data.svg){ width=300 style="margin:auto;display:block" }
@@ -157,7 +161,7 @@ predict_baseline_task_cfg = Config.configure_task(id="predict_baseline",
                                                   output=predictions_cfg)
 ```
 
-Other tasks are being configured the same way to get the metrics of the pipeline and a dataset 
+Other tasks are being configured the same way to get the metrics from the two models and a dataset 
 with all the predictions and historical data.
 
 ## Scenario configuration

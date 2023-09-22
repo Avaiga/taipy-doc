@@ -3,9 +3,10 @@
 
 # Step 4: Scenario Page
 
-The Scenario Page is a part of the application designed to create and customize scenarios for predictions based on time series data. 
-Users can set different parameters for the prediction process, such as the prediction date, maximum capacity, and the number of predictions. 
-The page also includes a chart that displays historical values and predictions made using machine learning and baseline methods.
+The Scenario Page is a section of the application made for crafting and tailoring 
+prediction scenarios using time series data. Users can adjust various parameters for the 
+prediction, like the prediction date, maximum capacity, and the quantity of predictions. 
+This page also features a chart that shows past data and predictions created using both machine learning and baseline techniques.
 
 ![Scenario Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }"
 
@@ -36,7 +37,7 @@ The Scenario Page is constructed using a combination of Markdown and Python code
 <|{predictions_dataset}|chart|x=Date|y[1]=Historical values|type[1]=bar|y[2]=Predicted values ML|y[3]=Predicted values Baseline|>
 ```
 
-The Markdown section defines the layout and components of the Scenario Page. It contains the following elements:
+The Markdown section outlines the arrangement and elements of the Scenario Page. It consists of the following components:
 
 - **Scenario Selector**: `<|{scenario}|scenario_selector|>`
 
