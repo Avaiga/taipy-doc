@@ -3,9 +3,12 @@
 
 # Algorithms used
 
-The application includes functions for data cleaning, baseline prediction, machine learning (ML) prediction, computing metrics, and creating a dataset for displaying predictions.
+The application contains functions for different tasks, such as cleaning data, making baseline predictions, 
+using machine learning (ML) for predictions, calculating metrics, and generating a dataset to display the predictions.
 
-`clean_data` is responsible for cleaning the initial dataset by converting the 'Date' column to datetime format. It takes an initial DataFrame as input and returns a cleaned copy of the DataFrame.
+The function `clean_data` handles the task of cleaning the initial 
+dataset. It does this by converting the 'Date' column into datetime 
+format. It takes an initial DataFrame as input and provides a cleaned copy of that DataFrame as output.
 
 ```python
 def clean_data(initial_dataset: pd.DataFrame):
@@ -16,9 +19,14 @@ def clean_data(initial_dataset: pd.DataFrame):
 ```
 
 
-`predict_baseline()` and `predict_ml()` predict values based on the `cleaned dataset`. It takes the cleaned DataFrame, the number of predictions to make (`n_predictions`), a specific date (`day`), and a maximum capacity value (`max_capacity`).
+## Predictions:
+	
+`predict_baseline()` and `predict_ml()` returns prediction values from the cleaned 
+DataFrame (`cleaned_dataset`), the number of predictions to make (`n_predictions`), a 
+specific date (`day`), and a maximum capacity value (`max_capacity`).
 
-They first select the training dataset up to the specified date. Then, it performs some computation or manipulation to give predictions. Predictions cannot exceed the maximum capacity.
+First, they pick the training dataset up to the date mentioned. After that, they perform certain calculations or adjustments to make predictions. 
+These predictions must not surpass the maximum limit.
 
 ```python
 def predict_baseline(cleaned_dataset: pd.DataFrame, n_predictions: int, day: dt.datetime, max_capacity: int):
@@ -54,7 +62,13 @@ def compute_metrics(historical_data, predicted_data):
     return rmse, mae
 ```
 
-`create_predictions_dataset()` creates a predictions dataset for visualization purposes. It takes the predicted baseline values (`predictions_baseline`), ML predicted values (`predictions_ml`), a specific date (`day`), the number of predictions to make (`n_predictions`), and the cleaned dataset (`cleaned_data`).The function returns a DataFrame containing the date, historical values, ML predicted values, and baseline predicted values.
+## Output dataset
+	
+`create_predictions_dataset()` creates a predictions dataset for visualization purposes. It 
+takes the predicted baseline values (`predictions_baseline`), ML predicted values 
+(`predictions_ml`), a specific date (`day`), the number of predictions to make
+(`n_predictions`), and the cleaned dataset (`cleaned_data`).The function returns a DataFrame 
+containing the date, historical values, ML predicted values, and baseline predicted values.
 
 
 ```python
@@ -71,6 +85,8 @@ def create_predictions_dataset(predictions_baseline, predictions_ml, day, n_pred
 ```
 
 ## Entire code (algorithms/algorithms.py)
+	
+Chaining all the functions together can be represented as a following graph:
 
 ```python
 # For the sake of clarity, we have used an AutoRegressive model rather than a pure ML model such as:

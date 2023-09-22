@@ -5,7 +5,7 @@
 
 This is a guide to create a Data Visualization page for our example. The page contains interactive visual elements to display data from a CSV file.
 
-![Interactive GUI](result.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }"
+![Interactive GUI](result.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Importing the Dataset
 
@@ -25,7 +25,7 @@ dataset = get_data(path_to_csv)
 
 ## Visual Elements
 
-Taipy GUI introduces the concept of *Visual elements*, which are graphical objects displayed on the client. You can use various visual elements such as [slider](../../../../manuals/gui/viselements/slider.md), a 
+Taipy introduces the concept of *Visual elements*, which are graphical objects displayed on the client. You can use various visual elements such as [slider](../../../../manuals/gui/viselements/slider.md), a 
 [chart](../../../../manuals/gui/viselements/chart.md_template), a 
 [table](../../../../manuals/gui/viselements/table.md_template), an 
 [input](../../../../manuals/gui/viselements/input.md_template), a 
@@ -36,7 +36,8 @@ Taipy GUI introduces the concept of *Visual elements*, which are graphical objec
 <|{variable}|visual_element_name|param_1=param_1|param_2=param_2| ... |>
 ```
 
-For example, to add a [slider](../../../../manuals/gui/viselements/slider.md_template) that modifies the value of the variable *n_week*, use the following syntax:
+For example, to add a [slider](../../../../manuals/gui/viselements/slider.md_template) 
+that modifies the value of the variable *n_week*, use the following syntax:
 
 ```markdown
 <|{n_week}|slider|min=1|max=52|>
@@ -57,11 +58,13 @@ The Data Visualization page contains the following visual elements:
 
 ## Multi-client - state
 
-Taipy maintains a separate state for each client connection. The state holds the values of all variables used in the user interface. For example, modifying *n_week* through a slider will update *state.n_week*, not the global Python variable *n_week*. Each client has its own state, ensuring that changes made by one client don't affect others.
+Taipy maintains a separate state for each client connection. The state holds the values of all variables used in the user interface. For example, modifying *n_week* through a slider will 
+update *state.n_week*, not the global Python variable *n_week*. Each client has its own state, 
+ensuring that changes made by one client don't affect others.
 
 ## [Callbacks](../../../../manuals/gui/callbacks.md)
 
-In each visual elements, callbacks can be placed. This will only you to update variables depending on user action. (See local callback and global callback)
+In every visual element, you can add callbacks. This allows you to update variables based on user actions. (Check out local callbacks and global callbacks for more information.)
 
 - state: The state object containing all the variables.
 - The name of the modified variable. (optional)
@@ -94,7 +97,7 @@ Select week: *<|{n_week}|>*
 
 ## Python code (pages/data_viz/data_viz.py)
 
-You can find below the associated code with the Markdown that will populate the objects of the page and create the interaction between the slider and the chart.
+Below, you'll find the code that goes along with the Markdown. This code will fill in the objects on the page and establish the interaction between the slider and the chart.
 
 ```python
 from taipy.gui import Markdown
