@@ -31,7 +31,7 @@ tp.Scheduler.start()
 ```
 
 Once the scheduler is started, the scheduled methods will run in the background at the scheduled time.
-While the scheduler is running, you can run other methods without being blocked by the scheduler.
+While the scheduler is running, you can schedule other methods without being blocked by the scheduler.
 
 !!! info "Schedule a method before and after starting the scheduler"
 
@@ -72,6 +72,7 @@ tp.Scheduler.start()
 ```
 
 In the above example, we schedule the `tp.submit(monthly_scenario)` method with different intervals.
+Notice that we chose to submit a scenario as an example, but any Python method can be scheduled.
 
 - First, we need to call the `every()` method and provide the time interval.
   If not provided, the default interval is 1.
@@ -85,7 +86,7 @@ Once scheduled, the method will run in the background. The first run will be:
 - the number of interval from the scheduled time, or
 - at the start of the scheduler if the scheduler is started **after** the time that the method supposed to run.
 
-## Run a method at a specific time
+## Run a method at a specific time and/or date
 
 To schedule a method to run at a specific time, you can call the `at()` and `on()` methods after providing the time unit.
 
@@ -256,8 +257,7 @@ Taipy `Scheduler^` provides shortcut for scheduling popular Taipy methods, inclu
 - `taipy.submit()`
 - A combination of `taipy.create_scenario()` and `taipy.submit()`
 
-Instead of calling the `do()` method and providing the Taipy method to schedule, you can call
-the following method directly from the scheduler.
+Instead of using the `do()` method and specifying the Taipy method to schedule, you can directly call the following method from the scheduler.
 
 ```python linenums="1"
 import taipy as tp
