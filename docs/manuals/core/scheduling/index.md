@@ -118,11 +118,11 @@ yearly scheduled methods. The `on()` method requires the following parameter:
 
   If a string, it must be in one of the following formats:
 
-  - For monthly scheduled methods -> "DD"
+  - For monthly scheduled methods -> "DD".
   - For yearly scheduled methods -> "MM-DD". The month can be a number or the name of the month in English
     (e.g. "January" or "Jan").
-  The day string can be a number between 1 and 31, or a negative number representing the number of days from
-  the end of the month. For example, -1 represents the last day of the month.
+  The day string can be a number representing the day of the month, or a negative number representing
+  the number of days from the end of the month. For example, -1 represents the last day of the month.
 
 
 ```python linenums="1"
