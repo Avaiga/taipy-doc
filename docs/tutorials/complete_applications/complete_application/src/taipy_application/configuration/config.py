@@ -43,15 +43,13 @@ clean_data_task_cfg = Config.configure_task(id="task_clean_data",
                                             output=cleaned_dataset_cfg,
                                             skippable=True)
 
+
 predict_baseline_task_cfg = Config.configure_task(id="predict_baseline",
                                                   function=predict_baseline,
                                                   input=[cleaned_dataset_cfg, n_predictions_cfg, day_cfg,
                                                          max_capacity_cfg],
                                                   output=predictions_baseline_cfg)
 
-
-# Create the task configuration of the predict_ml function.
-## We're using the same input and output as in the previous predict_baseline task, but we're changing the function
 predict_ml_task_cfg = Config.configure_task(id="task_predict_ml",
                                             function=predict_ml,
                                             input=[cleaned_dataset_cfg,
@@ -72,6 +70,7 @@ metrics_ml_task_cfg = Config.configure_task(id="task_metrics_ml",
                                                    predictions_ml_cfg],
                                             output=metrics_ml_cfg)
 
+
 full_predictions_task_cfg = Config.configure_task(id="task_full_predictions",
                                             function=create_predictions_dataset,
                                             input=[predictions_baseline_cfg,
@@ -80,8 +79,6 @@ full_predictions_task_cfg = Config.configure_task(id="task_full_predictions",
                                                   n_predictions_cfg,
                                                   cleaned_dataset_cfg],
                                             output=full_predictions_cfg)
-
-
 
 
 # Configure our scenario which is our business problem.
