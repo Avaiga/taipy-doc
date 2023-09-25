@@ -3,10 +3,11 @@
 
 # Step 4: Scenario Page
 
-The Scenario Page is a section of the application made for crafting and tailoring 
-prediction scenarios using time series data. Users can adjust various parameters for the 
-prediction, like the prediction date, maximum capacity, and the quantity of predictions. 
-This page also features a chart that shows past data and predictions created using both machine learning and baseline techniques.
+The Scenario Page is a part of the application designed for creating and 
+customizing prediction scenarios using time series data. Users can modify different parameters 
+for the prediction, such as the prediction date, maximum capacity, 
+and the number of predictions. This page also includes a chart displaying historical data 
+and predictions generated using both machine learning and baseline methods.
 
 ![Scenario Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }"
 
@@ -128,7 +129,10 @@ The global variables *scenario*, *day*, *n_predictions*, *max_capacity*, and *pr
 
 - **Save Function**:
 
-The `save` function is responsible for saving the current scenario state. When the user clicks the "Save" button, this function is called. It takes the state of the page as input, converts the date format to the appropriate format, and updates the scenario parameters accordingly. It then notifies the user with a success message.
+The `save` function is in charge of preserving the current scenario state. 
+When the user clicks the "Save" button, this function gets activated. 
+It receives the page's state as input, converts the date format to the correct one, 
+adjusts the scenario parameters accordingly, and then informs the user with a success message.
 
 - **On Change Function**:
 
@@ -138,11 +142,14 @@ The `on_change` function is called when any variable on the page changes its val
 
 The *scenario_page* variable is initialized as a Markdown object, representing the content of the Scenario Page.
 
-It provides an interactive interface for users to create and customize different scenarios for time series predictions. It allows users to select prediction dates, set maximum capacity, and choose the number of predictions to make. The page also presents a chart to visualize the historical data and the predicted values from both machine learning and baseline methods. Users can save their selected scenarios to use them for further analysis and comparison. 
+It provides an interactive interface for users to create and customize different scenarios for time series predictions. It allows users to select prediction dates, 
+set maximum capacity, and choose the number of predictions to make. The page also presents a chart to visualize the historical data and the predicted values from 
+both machine learning and baseline methods. Users can save their selected scenarios to use them for further analysis and comparison. 
 
 ## Connection to the entire application
 
-Use the `on_change` function created in the *scenario* page; it has to be called in the global `on_change` (main script) of the application. This global function is called whenever a variable changes on the user interface. 
+Use the `on_change` function created in the *scenario* page; it has to be called in the global `on_change` (main script) of the application. 
+This global function is called whenever a variable changes on the user interface. 
 
 In your main script:
 

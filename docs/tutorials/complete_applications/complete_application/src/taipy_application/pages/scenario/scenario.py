@@ -19,7 +19,9 @@ predictions_dataset = {"Date":[0],
                        "Predicted values Baseline":[0],
                        "Historical values":[0]}
 
-
+def submission_change(state, submittable, details: dict):
+    print(f"submission_change(state, submittable: {submittable}, details: {details})")
+    notify(state, "info", f"submission_change(state, submittable: {submittable}, details: {details})")
 
 def save(state):
     print("Saving scenario...")
@@ -45,7 +47,6 @@ def on_change(state, var_name, var_value):
             state.predictions_dataset = state.scenario.full_predictions.read()
         else:
             state.predictions_dataset = predictions_dataset
-
 
 
 scenario_page = Markdown("pages/scenario/scenario.md")

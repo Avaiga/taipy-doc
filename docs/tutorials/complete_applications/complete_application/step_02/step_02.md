@@ -3,12 +3,13 @@
 
 # Algorithms used
 
-The application contains functions for different tasks, such as cleaning data, making baseline predictions, 
-using machine learning (ML) for predictions, calculating metrics, and generating a dataset to display the predictions.
+The application includes functions for various tasks, including data cleaning, creating baseline predictions, 
+utilizing machine learning (ML) for predictions, computing metrics, and generating a dataset for displaying the predictions.
 
-The function `clean_data` handles the task of cleaning the initial 
-dataset. It does this by converting the 'Date' column into datetime 
-format. It takes an initial DataFrame as input and provides a cleaned copy of that DataFrame as output.
+The `clean_data` function manages the job of cleaning the initial dataset. It achieves this by transforming 
+the 'Date' column into a datetime format. This function takes an initial DataFrame as input 
+and delivers a cleaned copy of that DataFrame as its output.
+
 
 ```python
 def clean_data(initial_dataset: pd.DataFrame):
@@ -22,11 +23,12 @@ def clean_data(initial_dataset: pd.DataFrame):
 ## Predictions:
 	
 `predict_baseline()` and `predict_ml()` returns prediction values from the cleaned 
-DataFrame (`cleaned_dataset`), the number of predictions to make (`n_predictions`), a 
-specific date (`day`), and a maximum capacity value (`max_capacity`).
+DataFrame (*cleaned_dataset*), the number of predictions to make (*n_predictions*), a 
+specific date (*day*), and a maximum capacity value (*max_capacity*).
 
-First, they pick the training dataset up to the date mentioned. After that, they perform certain calculations or adjustments to make predictions. 
-These predictions must not surpass the maximum limit.
+Initially, they select the training dataset up to the specified date. Following that, they carry out specific calculations 
+or adjustments to generate predictions. It's important to ensure that these predictions 
+do not exceed the maximum limit.
 
 ```python
 def predict_baseline(cleaned_dataset: pd.DataFrame, n_predictions: int, day: dt.datetime, max_capacity: int):
@@ -65,9 +67,19 @@ def compute_metrics(historical_data, predicted_data):
 ## Output dataset
 	
 `create_predictions_dataset()` creates a predictions dataset for visualization purposes. It 
-takes the predicted baseline values (`predictions_baseline`), ML predicted values 
-(`predictions_ml`), a specific date (`day`), the number of predictions to make
-(`n_predictions`), and the cleaned dataset (`cleaned_data`).The function returns a DataFrame 
+takes:
+
+- the predicted baseline values (*predictions_baseline*),
+
+- ML predicted values 
+(*predictions_ml*),
+
+- a specific date (*day*), the number of predictions to make
+(*n_predictions*),
+
+- and the cleaned dataset (*cleaned_data*).
+
+The function returns a DataFrame 
 containing the date, historical values, ML predicted values, and baseline predicted values.
 
 
@@ -87,6 +99,8 @@ def create_predictions_dataset(predictions_baseline, predictions_ml, day, n_pred
 ## Entire code (algorithms/algorithms.py)
 	
 Chaining all the functions together can be represented as a following graph:
+
+![Execution Graph](config_toml.png){ width=300 style="margin:auto;display:block" }
 
 ```python
 # For the sake of clarity, we have used an AutoRegressive model rather than a pure ML model such as:

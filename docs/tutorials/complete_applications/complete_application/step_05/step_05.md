@@ -3,8 +3,10 @@
 
 # Performance
 
-The Performance Page is a part of the application. It allows users to compare the performance metrics (Root Mean Squared Error and Mean Absolute Error) of different scenarios. 
-The page displays a table and two bar charts for comparing the metrics between baseline and machine learning predictions.
+The Performance Page is a section of the application that permits users to compare the performance metrics, 
+including Root Mean Squared Error and Mean Absolute Error, across various scenarios. 
+The page displays a table and two bar charts for comparing these metrics between baseline and 
+machine learning predictions.
 
 ![Performance Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }"
 
@@ -111,9 +113,9 @@ The *comparison_scenario* DataFrame stores the comparison data, while *metric_se
 
 - **Compare Function**:
 
-The `compare` function is responsible for performing the comparison process. This function is called when the user clicks the "Compare" button. 
-It retrieves the primary scenarios from the application and goes through each scenario to extract the RMSE and MAE metrics for both baseline and 
-machine learning predictions.
+The `compare` function takes care of the comparison process. This function is triggered when the user clicks 
+the "Compare" button. It gathers the primary scenarios from the application and then goes through each scenario 
+to collect the RMSE and MAE metrics for both baseline and machine learning predictions.
 
 The data is then stored in the *comparison_scenario* DataFrame.
 
@@ -122,6 +124,7 @@ The data is then stored in the *comparison_scenario* DataFrame.
 The performance variable is initialized as a Markdown object, representing the content of the Performance Page.
 
 
-The Performance Page in the Python application lets users compare how well different scenarios perform when making time series predictions. 
-Users can select between RMSE and MAE metrics and see the comparison results displayed as bar charts. This page is a useful tool for assessing 
-the efficiency of various prediction scenarios and can assist in making informed decisions based on performance evaluations.
+The Performance Page in the Python application enables users to compare the effectiveness of different scenarios 
+in making time series predictions. Users can choose between RMSE and MAE metrics and view the comparison results 
+presented as bar charts. This page serves as a valuable tool for evaluating the efficiency of various prediction 
+scenarios and can assist in making informed decisions based on performance assessments.
