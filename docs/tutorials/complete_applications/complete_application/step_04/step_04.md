@@ -2,16 +2,18 @@
 <a href="./../src/src.zip" download>here</a>.
 
 The Scenario Page is a part of the application designed for creating and 
-customizing prediction scenarios using time series data. Users can modify different parameters 
+customizing prediction scenarios using time series data. End-users can modify different parameters 
 for the prediction, such as the prediction date, maximum capacity, 
 and the number of predictions. This page also includes a chart displaying historical data 
 and predictions generated using both machine learning and baseline methods.
 
-![Scenario Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }"
+![Scenario Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-The Scenario Page is constructed using a combination of Markdown and Python code. Below is a detailed explanation of each component:
+The Scenario Page is constructed using a combination of Markdown and Python code. Below is a detailed explanation.
 
-# Markdown (pages/scenario/scenario.md)
+# Markdown
+
+The following Markdown corresponds to the `pages/scenario/scenario.md`file.
 
 ```markdown
 # Create your scenario:
@@ -48,7 +50,7 @@ The Markdown section outlines the arrangement and elements of the Scenario Page.
 
 - **Scenario Selector**: `<|{scenario}|scenario_selector|>`
 
-A component (a dropdown) that allows users to select different scenarios. The selected scenario will affect the values of other components on the page.
+A component (a dropdown) that allows users to select different scenarios. The selected scenario will affect the values of other components on the page. The scenario value is used in other elements so selecting a scenario affects the other elements.
 
 - **Prediction Date**: `<|{day}|date|...|>`
 
@@ -74,14 +76,14 @@ A section that displays information about the currently selected scenario. It in
 
 A chart that displays historical values and the predicted values obtained from machine learning and baseline methods. It shows how well the predictions align with the historical data.
 
-- **Data Node Exploration**: `<|{data_node}|data_node_selector|> <|{data_node}|data_node_selector|>`
+- **Data Node Exploration**: `<|{data_node}|data_node_selector|> <|{data_node}|data_node|>`
 
 This is where the detailed information and history about the selected data node is presented. Depending on the nature of the data node, this could display raw data in a tabular format, visualizations, texts, or dates. If the format allows it, the user can directly write new values in the data node.
 
 
-# Python Code (pages/scenario/scenario.py)
+# Python Code
 
-The Python code initializes and manages the state of the Scenario Page.
+The following Python code corresponds to the `pages/scenario/scenario.py` file. It initializes and manages the state of the Scenario Page.
 
 ```python
 from taipy.gui import Markdown, notify
@@ -145,7 +147,7 @@ The global variables *scenario*, *data_node*, *day*, *n_predictions*, *max_capac
 
 - **Save Function**:
 
-The `save` function is in charge of preserving the current scenario state. 
+The `save` function is used as a callback. It is in charge of preserving the current scenario state.  is in charge of preserving the current scenario state. 
 When the user clicks the "Save" button, this function gets activated. 
 It receives the page's state as input, converts the date format to the correct one, 
 adjusts the scenario parameters accordingly, and then informs the user with a success message.

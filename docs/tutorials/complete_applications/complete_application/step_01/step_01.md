@@ -24,17 +24,17 @@ dataset = get_data(path_to_csv)
 ## Visual Elements
 
 Taipy introduces the concept of *Visual elements*, which are graphic objects shown on the client interface. You can use various visual elements such as [slider](../../../../manuals/gui/viselements/slider.md), a 
-[chart](../../../../manuals/gui/viselements/chart.md_template), a 
-[table](../../../../manuals/gui/viselements/table.md_template), an 
-[input](../../../../manuals/gui/viselements/input.md_template), a 
-[menu](../../../../manuals/gui/viselements/menu.md_template), etc. Check the list 
+[chart](../../../../manuals/gui/viselements/chart.md), a 
+[table](../../../../manuals/gui/viselements/table.md), an 
+[input](../../../../manuals/gui/viselements/input.md), a 
+[menu](../../../../manuals/gui/viselements/menu.md), etc. Check the list 
 [here](../../../../manuals/gui/viselements/index.md). The syntax for adding a visual element is as follows:
 
 ```markdown
 <|{variable}|visual_element_name|param_1=param_1|param_2=param_2| ... |>
 ```
 
-For example, to add a [slider](../../../../manuals/gui/viselements/slider.md_template) 
+For example, to add a [slider](../../../../manuals/gui/viselements/slider.md) 
 that modifies the value of the variable *n_week*, use the following syntax:
 
 ```markdown
@@ -79,9 +79,9 @@ def on_slider(state):
     state.dataset_week = dataset[dataset["Date"].dt.isocalendar().week == state.n_week]
 ```
 
-# Markdown (pages/data_viz/data_viz.md)
+# Markdown
 
-Here is the entire Markdown of the first page.
+The following Markdown corresponds to the `pages/data_viz/data_viz.md`file. It is the entire Markdown of the first page.
 
 ```markdown
 # Data Visualization page
@@ -95,7 +95,7 @@ Select week: *<|{n_week}|>*
 
 # Python code (pages/data_viz/data_viz.py)
 
-Here is the code that complements the Markdown. This code populates the objects on the page and creates the connection between the slider and the chart.
+The following Python code corresponds to the `pages/data_viz/data_viz.py` file. It is the code that complements the Markdown above. This code populates the objects on the page and creates the connection between the slider and the chart.
 
 ```python
 from taipy.gui import Markdown
