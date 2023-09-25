@@ -158,7 +158,9 @@ The `submission_change` function is designed to handle feedback when a scenario 
 
 - **On Change Function**:
 
-The `on_change` function is called when any variable on the page changes its value. It monitors the changes in the scenario variable and updates the other variables accordingly. It also checks if the *full_predictions* are ready for reading and updates the *predictions_dataset*` accordingly.
+The `on_change` function is called whenever any variable on the page undergoes a value change. 
+It keeps track of alterations in the scenario variable and adjusts the other variables accordingly. 
+It also verifies if the *full_predictions* are available for reading and updates the *predictions_dataset* accordingly.
 
 - **Scenario Page Initialization**:
 
