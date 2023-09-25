@@ -30,4 +30,4 @@ pages = {
 if __name__ == "__main__":
     tp.Core().run()
     gui = Gui(pages=pages)
-    gui.run(title="Taipy Application", port=3455)
+    gui.run(title="Taipy Application")

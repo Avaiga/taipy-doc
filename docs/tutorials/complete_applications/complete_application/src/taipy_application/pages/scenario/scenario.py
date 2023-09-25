@@ -11,17 +11,22 @@ import pandas as pd
 
 
 scenario = None
+data_node = None
 day = dt.datetime(2021, 7, 26)
 n_predictions = 40
 max_capacity = 200
-predictions_dataset = {"Date":[0], 
+predictions_dataset = {"Date":[dt.datetime(2021, 7, 26)], 
                        "Predicted values ML":[0],
                        "Predicted values Baseline":[0],
                        "Historical values":[0]}
 
 def submission_change(state, submittable, details: dict):
-    print(f"submission_change(state, submittable: {submittable}, details: {details})")
-    notify(state, "info", f"submission_change(state, submittable: {submittable}, details: {details})")
+    if details['submission_status'] == 'COMPLETED':
+        notify(state, "success", 'Scenario completed!')
+        state['scenario'].on_change(state, 'scenario', state.scenario)
+    else:
+        notify(state, "error", 'Something went wrong!')
+
 
 def save(state):
     print("Saving scenario...")
@@ -44,7 +49,7 @@ def on_change(state, var_name, var_value):
         state.max_capacity = state.scenario.max_capacity.read()
         
         if state.scenario.full_predictions.is_ready_for_reading:
-            state.predictions_dataset = state.scenario.full_predictions.read()
+            state.predictions_dataset = state.scenario.full_predictions.read()[-200:]
         else:
             state.predictions_dataset = predictions_dataset
 

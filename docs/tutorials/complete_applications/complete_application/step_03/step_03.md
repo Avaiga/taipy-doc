@@ -58,7 +58,7 @@ of items sold in a given store on a 15-min basis.
 
 The graph below represents the scenario to configure, where tasks are in orange and data nodes in blue.
 
-![Configuration](config_toml.png){ width=300 style="margin:auto;display:block" }
+![Configuration](config_toml.png){ width=700 style="margin:auto;display:block" }
 
 
 ### Input Data Nodes configuration
@@ -193,7 +193,7 @@ from algos.algos import *
 
 path_to_csv = "data/dataset.csv"
 
-# Datanodes (3.1)
+# Datanodes
 ## Input Data Nodes
 initial_dataset_cfg = Config.configure_data_node(id="initial_dataset",
                                                  storage_type="csv",
@@ -220,9 +220,7 @@ full_predictions_cfg = Config.configure_data_node(id="full_predictions")
 metrics_baseline_cfg = Config.configure_data_node(id="metrics_baseline")
 metrics_ml_cfg = Config.configure_data_node(id="metrics_ml")
 
-# Functions (3.2)
-
-# Tasks (3.3)
+# Tasks
 clean_data_task_cfg = Config.configure_task(id="task_clean_data",
                                             function=clean_data,
                                             input=initial_dataset_cfg,

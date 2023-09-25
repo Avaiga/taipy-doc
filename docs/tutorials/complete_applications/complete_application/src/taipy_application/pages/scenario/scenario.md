@@ -18,3 +18,11 @@
 <|{scenario}|scenario|on_submission_change=submission_change|>
 
 <|{predictions_dataset}|chart|x=Date|y[1]=Historical values|type[1]=bar|y[2]=Predicted values ML|y[3]=Predicted values Baseline|>
+
+# Data Node Exploration
+
+<|layout|columns=1 5|
+<|{data_node}|data_node_selector|>
+
+<|{data_node}|data_node|>
+|>
