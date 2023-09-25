@@ -1,8 +1,6 @@
 > The full code is available
 <a href="./../src/src.zip" download>here</a>.
 
-# Performance
-
 The Performance Page is a section of the application that permits users to compare the performance metrics, 
 including Root Mean Squared Error and Mean Absolute Error, across various scenarios. 
 The page displays a table and two bar charts for comparing these metrics between baseline and 
@@ -10,7 +8,7 @@ machine learning predictions.
 
 ![Performance Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }"
 
-## Markdown
+# Markdown (pages/performance/performance.md)
 
 ```markdown
 <|part|render={len(comparison_scenario)>0}|
@@ -52,7 +50,7 @@ Two bar charts that compare the selected metric (RMSE or MAE) between baseline a
 
 A button that triggers the "compare" action when clicked. It is used to initiate the comparison process.
 
-## Python Code
+## Python Code (pages/performance/performance.py)
 
 The Python code initializes and manages the state of the Performance Page.
 

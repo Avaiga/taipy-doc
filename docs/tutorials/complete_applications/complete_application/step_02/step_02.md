@@ -1,8 +1,6 @@
 > The full code is available
 <a href="./../src/src.zip" download>here</a>.
 
-# Algorithms used
-
 The application includes functions for various tasks, including data cleaning, creating baseline predictions, 
 utilizing machine learning (ML) for predictions, computing metrics, and generating a dataset for displaying the predictions.
 
@@ -99,7 +97,7 @@ def create_predictions_dataset(predictions_baseline, predictions_ml, day, n_pred
     return predictions_dataset
 ```
 
-## Entire code (algorithms/algorithms.py)
+# Entire code (algorithms/algorithms.py)
 	
 Chaining all the functions together can be represented as a following graph:
 
