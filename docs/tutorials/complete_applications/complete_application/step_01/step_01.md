@@ -66,7 +66,7 @@ ensuring that changes made by one client don't affect others.
 
 You can include callbacks in each visual element, enabling you to modify variables according to user actions. For further details, explore local callbacks and global callbacks.
 
-- state: The state object containing all the variables.
+- *state*: The state object containing all the variables.
 - The name of the modified variable. (optional)
 - Its new value. (optional)
 

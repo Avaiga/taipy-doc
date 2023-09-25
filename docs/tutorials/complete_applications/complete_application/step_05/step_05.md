@@ -119,10 +119,6 @@ to collect the RMSE and MAE metrics for both baseline and machine learning predi
 
 The data is then stored in the *comparison_scenario* DataFrame.
 
-- **Performance Page Initialization**:
-
-The performance variable is initialized as a Markdown object, representing the content of the Performance Page.
-
 
 The Performance Page in the Python application enables users to compare the effectiveness of different scenarios 
 in making time series predictions. Users can choose between RMSE and MAE metrics and view the comparison results 
