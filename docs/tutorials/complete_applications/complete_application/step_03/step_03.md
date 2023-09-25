@@ -11,9 +11,6 @@
 
 To apprehend what is a _Scenario_, you need to understand the _Data node_ and _Task_ concepts.
 
-
-## Configuration [Basics](../../../../manuals/core/index.md)
-
 - [**Data Nodes**](../../../../manuals/core/concepts/data-node.md): are the translation of variables in 
   Taipy. Data Nodes don't contain the data itself but point to the data and know how to retrieve it. These Data Nodes can point to different types of data sources like CSV files, Pickle files, databases, etc., 
   and they can represent various types of Python variables such as integers, strings, data frames, lists, and more. 
@@ -25,6 +22,11 @@ To apprehend what is a _Scenario_, you need to understand the _Data node_ and _T
   various parameters to reflect different business situations. Taipy provide the 
   framework to play/execute scenarios under different situations (i.e. various 
   data/parameters values set by end-users).
+
+
+# Configuration Basics
+
+Before creating and runnning our scenarios, we need to configure them properly.
 
 ## Data Nodes Configuration
 
@@ -61,7 +63,7 @@ The graph below represents the scenario to configure, where tasks are in orange 
 ![Configuration](config_toml.png){ width=700 style="margin:auto;display:block" }
 
 
-### Input Data Nodes configuration
+### Input Data Nodes Configuration
 
 These are the input Data Nodes. They stand for the variables in Taipy when a 
 pipeline is run. However, initially, we need to set them up to build the DAG.
@@ -164,7 +166,7 @@ predict_baseline_task_cfg = Config.configure_task(id="predict_baseline",
 Other tasks are being configured the same way to get the metrics from the two models and a dataset 
 with all the predictions and historical data.
 
-## Scenario configuration
+## Scenario Configuration
 
 All of these task and Data Node configurations can create a scenario. These tasks 
 that form an execution graph will be executed when a scenario is submitted.
@@ -181,7 +183,7 @@ scenario_cfg = Config.configure_scenario(id="scenario",
 
 ```
 
-## Entire code (configuration/config.py)
+# Entire code (configuration/config.py)
 
 ```python
 import datetime as dt

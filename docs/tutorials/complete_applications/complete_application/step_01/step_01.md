@@ -1,8 +1,6 @@
 > The full code is available
 <a href="./../src/src.zip" download>here</a>.
 
-# Data Visualization Page
-
 This is a guide for creating a Data Visualization page for our example. The page includes interactive visual elements for showcasing data from a CSV file.
 
 ![Interactive GUI](result.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
@@ -81,7 +79,7 @@ def on_slider(state):
     state.dataset_week = dataset[dataset["Date"].dt.isocalendar().week == state.n_week]
 ```
 
-## Markdown (pages/data_viz/data_viz.md)
+# Markdown (pages/data_viz/data_viz.md)
 
 Here is the entire Markdown of the first page.
 
@@ -95,7 +93,7 @@ Select week: *<|{n_week}|>*
 <|{dataset_week}|chart|type=bar|x=Date|y=Value|>
 ```
 
-## Python code (pages/data_viz/data_viz.py)
+# Python code (pages/data_viz/data_viz.py)
 
 Here is the code that complements the Markdown. This code populates the objects on the page and creates the connection between the slider and the chart.
 

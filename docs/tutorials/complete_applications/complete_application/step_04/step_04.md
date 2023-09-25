@@ -1,8 +1,6 @@
 > The full code is available
 <a href="./../src/src.zip" download>here</a>.
 
-# Step 4: Scenario Page
-
 The Scenario Page is a part of the application designed for creating and 
 customizing prediction scenarios using time series data. Users can modify different parameters 
 for the prediction, such as the prediction date, maximum capacity, 
@@ -13,7 +11,7 @@ and predictions generated using both machine learning and baseline methods.
 
 The Scenario Page is constructed using a combination of Markdown and Python code. Below is a detailed explanation of each component:
 
-## Markdown (pages/scenario/scenario.md)
+# Markdown (pages/scenario/scenario.md)
 
 ```markdown
 # Create your scenario:
@@ -81,7 +79,7 @@ A chart that displays historical values and the predicted values obtained from m
 This is where the detailed information and history about the selected data node is presented. Depending on the nature of the data node, this could display raw data in a tabular format, visualizations, texts, or dates. If the format allows it, the user can directly write new values in the data node.
 
 
-## Python Code (pages/scenario/scenario.py)
+# Python Code (pages/scenario/scenario.py)
 
 The Python code initializes and manages the state of the Scenario Page.
 
@@ -170,7 +168,7 @@ It provides an interactive interface for users to create and customize different
 set maximum capacity, and choose the number of predictions to make. The page also presents a chart to visualize the historical data and the predicted values from 
 both machine learning and baseline methods. Users can save their selected scenarios to use them for further analysis and comparison. 
 
-## Connection to the entire application
+# Connection to the entire application
 
 Use the `on_change` function created in the *scenario* page; it has to be called in the global `on_change` (main script) of the application. 
 This global function is called whenever a variable changes on the user interface. 
