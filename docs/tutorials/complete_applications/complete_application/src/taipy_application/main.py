@@ -14,7 +14,6 @@ from configuration.config import *
 from taipy.gui import Gui
 import taipy as tp
 
-
 def on_change(state, var_name: str, var_value):
     state['scenario'].on_change(state, var_name, var_value)
 
@@ -27,7 +26,8 @@ pages = {
 }
 
 
+
 if __name__ == "__main__":
     tp.Core().run()
     gui = Gui(pages=pages)
-    gui.run(title="Taipy Application")
+    gui.run(title="Taipy Application", port=3455)

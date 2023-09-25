@@ -15,6 +15,6 @@
 <br/> <|Save|button|on_action=save|active={scenario}|>
 |>
  
-<|{scenario}|scenario|>
+<|{scenario}|scenario|on_submission_change=submission_change|>
 
 <|{predictions_dataset}|chart|x=Date|y[1]=Historical values|type[1]=bar|y[2]=Predicted values ML|y[3]=Predicted values Baseline|>

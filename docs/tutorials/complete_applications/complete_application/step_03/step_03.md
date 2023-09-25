@@ -15,8 +15,8 @@ To apprehend what is a _Scenario_, you need to understand the _Data node_ and _T
 ## Configuration [Basics](../../../../manuals/core/index.md)
 
 - [**Data Nodes**](../../../../manuals/core/concepts/data-node.md): are the translation of variables in 
-  Taipy. Data Nodes don't contain the data itself but point to the data and know how to retrieve it. Data Nodes can point to various data source types, 
-  (CSV files, Pickle files, databases, etc.) and can represent any Python variable (integer, string, data frames, lists, etc.). 
+  Taipy. Data Nodes don't contain the data itself but point to the data and know how to retrieve it. These Data Nodes can point to different types of data sources like CSV files, Pickle files, databases, etc., 
+  and they can represent various types of Python variables such as integers, strings, data frames, lists, and more. 
 
 - [**Tasks**](../../../../manuals/core/concepts/task.md): are the translation of functions in Taipy where their inputs and outputs are data nodes.
 
@@ -43,9 +43,9 @@ Parameters for Data Node configuration:
 3- `Scope.GLOBAL`: Finally, extend the scope globally (across all scenarios of all cycles). For example, the initial/historical dataset is usually shared by all the scenarios/pipelines/cycles. It is unique in the entire application.
 
 
-In an ML context, it is common to have numerous training and testing models.  In this tutorial, we configure a scenario that predict on a given **day** 
-the values for the following days using two models: a baseline and a ML 
-model.
+In a Machine Learning context, it's typical to have multiple training and testing models. In this tutorial, 
+we set up a scenario where we predict the values for the upcoming days based on a specific **day**, 
+using two models: a baseline model and a Machine Learning model.
 
 - Retrieval of the initial dataset,
 
@@ -63,8 +63,8 @@ The graph below represents the scenario to configure, where tasks are in orange 
 
 ### Input Data Nodes configuration
 
-These are the input Data Nodes. They represent the variables in Taipy when a pipeline is executed. Still, first, we 
-have to configure them to create the DAG.
+These are the input Data Nodes. They stand for the variables in Taipy when a 
+pipeline is run. However, initially, we need to set them up to build the DAG.
 
 - *initial_dataset* is simply the initial CSV file. Taipy needs some parameters to read this data: *path* and 
   *header*. The `scope` is global; each scenario or pipeline has the same initial dataset.
@@ -148,7 +148,7 @@ clean_data_task_cfg = Config.configure_task(id="clean_data",
 
 ### predict_baseline_task
 
-This task will take the cleaned dataset and predict it according to your parameters i.e. the three input Data Nodes:
+This task will use the cleaned dataset and make predictions based on your specified parameters, which are the three input Data Nodes:
 
 *Day*, *Number of predictions* and *Max Capacity*.
 
@@ -166,7 +166,8 @@ with all the predictions and historical data.
 
 ## Scenario configuration
 
-Now, all these task and Data Nodes configuration can set up a scenario. These tasks creating an execution graph will be executed when a scenario is submitted.
+All of these task and Data Node configurations can create a scenario. These tasks 
+that form an execution graph will be executed when a scenario is submitted.
 
 ```python
 scenario_cfg = Config.configure_scenario(id="scenario",

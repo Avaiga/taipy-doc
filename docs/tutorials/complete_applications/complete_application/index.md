@@ -2,8 +2,8 @@
 
     Taipy requires **Python 3.8** or newer.
 
-Welcome to the **Tutorial** guide on how to make a full application from frontend to
-backend. No prior knowledge is required to complete this Tutorial.
+Welcome to the **Tutorial** guide, which will walk you through creating a complete application from the front end 
+to the back end. You don't need any prior knowledge to complete this tutorial.
 
 ![Tutorial application](step_01/overview.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
