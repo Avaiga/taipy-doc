@@ -32,8 +32,6 @@ Before creating and runnning our scenarios, we need to configure them properly.
 
 During Data Node configuration, the developer specifies the type or format of each Data Node, along with its scope.
 
-Parameters for Data Node configuration:
-
 - Storage Type: Specifies the storage type for the Data Node, e.g., CSV file, Pickle file, etc. The initial dataset, for example, is a CSV file with storage_type="csv".
 
 - Scope: Defines the scope of the Data Node. There are three types of scope in the code: Global, Cycle, and Scenario scope.
@@ -42,7 +40,7 @@ Parameters for Data Node configuration:
 
 2- `Scope.CYCLE`: Extend the scope by sharing data nodes across all scenarios of a given cycle.
 
-3- `Scope.GLOBAL`: Finally, extend the scope globally (across all scenarios of all cycles). For example, the initial/historical dataset is usually shared by all the scenarios/pipelines/cycles. It is unique in the entire application.
+3- `Scope.GLOBAL`: Finally, extend the scope globally (across all scenarios of all cycles). For example, the initial/historical dataset is usually shared by all the scenarios/cycles. It is unique in the entire application.
 
 
 In a Machine Learning context, it's typical to have multiple training and testing models. In this tutorial, 
@@ -173,13 +171,13 @@ that form an execution graph will be executed when a scenario is submitted.
 
 ```python
 scenario_cfg = Config.configure_scenario(id="scenario",
-                                                    task_configs=[clean_data_task_cfg,
-                                                                  predict_baseline_task_cfg,
-                                                                  predict_ml_task_cfg,
-                                                                  metrics_baseline_task_cfg,
-                                                                  metrics_ml_task_cfg,
-                                                                  full_predictions_task_cfg],
-                                                    frequency=Frequency.WEEKLY)
+                                         task_configs=[clean_data_task_cfg,
+                                                       predict_baseline_task_cfg,
+                                                       predict_ml_task_cfg,
+                                                       metrics_baseline_task_cfg,
+                                                       metrics_ml_task_cfg,
+                                                       full_predictions_task_cfg],
+                                         frequency=Frequency.WEEKLY)
 
 ```
 
@@ -229,15 +227,13 @@ clean_data_task_cfg = Config.configure_task(id="task_clean_data",
                                             output=cleaned_dataset_cfg,
                                             skippable=True)
 
+
 predict_baseline_task_cfg = Config.configure_task(id="predict_baseline",
                                                   function=predict_baseline,
                                                   input=[cleaned_dataset_cfg, n_predictions_cfg, day_cfg,
                                                          max_capacity_cfg],
                                                   output=predictions_baseline_cfg)
 
-
-# Create the task configuration of the predict_ml function.
-## We're using the same input and output as in the previous predict_baseline task, but we're changing the function
 predict_ml_task_cfg = Config.configure_task(id="task_predict_ml",
                                             function=predict_ml,
                                             input=[cleaned_dataset_cfg,
@@ -258,6 +254,7 @@ metrics_ml_task_cfg = Config.configure_task(id="task_metrics_ml",
                                                    predictions_ml_cfg],
                                             output=metrics_ml_cfg)
 
+
 full_predictions_task_cfg = Config.configure_task(id="task_full_predictions",
                                             function=create_predictions_dataset,
                                             input=[predictions_baseline_cfg,
@@ -266,8 +263,6 @@ full_predictions_task_cfg = Config.configure_task(id="task_full_predictions",
                                                   n_predictions_cfg,
                                                   cleaned_dataset_cfg],
                                             output=full_predictions_cfg)
-
-
 
 
 # Configure our scenario which is our business problem.
