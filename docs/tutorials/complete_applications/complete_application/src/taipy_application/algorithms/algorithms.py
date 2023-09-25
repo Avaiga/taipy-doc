@@ -45,29 +45,21 @@ def compute_metrics(historical_data, predicted_data):
     mae = mean_absolute_error(historical_to_compare, predicted_data)
     return rmse, mae
 
+
 def create_predictions_dataset(predictions_baseline, predictions_ml, day, n_predictions, cleaned_data):
     print("Creating predictions dataset...")
-
-    # Set arbitrarily the time window for the chart as 5 times the number of predictions
-    window = 5 * n_predictions
-
+    
     # Create the historical dataset that will be displayed
     new_length = len(cleaned_data[cleaned_data["Date"] < day]) + n_predictions
-    temp_df = cleaned_data[:new_length]
-    temp_df = temp_df[-window:].reset_index(drop=True)
+    historical_data = cleaned_data[:new_length].reset_index(drop=True)
 
-    # Create the series that will be used in the concat
-    historical_values = pd.Series(temp_df["Value"], name="Historical values")
-    predicted_values_ml = pd.Series([np.NaN] * len(temp_df), name="Predicted values ML")
-    predicted_values_ml[-len(predictions_ml):] = predictions_ml 
-    predicted_values_baseline = pd.Series([np.NaN] * len(temp_df), name="Predicted values Baseline")
-    predicted_values_baseline[-len(predictions_baseline):] = predictions_baseline
+    create_series = lambda data, name: pd.Series([np.NaN] * (len(historical_data)), name=name).fillna({i: val for i, val in enumerate(data, len(historical_data)-n_predictions)})
 
-    # Create the predictions dataset
-    # Columns : [Date, Historical values, Predicted values]
-    predictions_dataset = pd.concat([temp_df["Date"],
-                                    historical_values,
-                                    predicted_values_ml,
-                                    predicted_values_baseline], axis=1)
-    
+    predictions_dataset = pd.concat([
+        historical_data["Date"],
+        historical_data["Value"].rename("Historical values"),
+        create_series(predictions_ml, "Predicted values ML"),
+        create_series(predictions_baseline, "Predicted values Baseline")
+    ], axis=1)
+
     return predictions_dataset

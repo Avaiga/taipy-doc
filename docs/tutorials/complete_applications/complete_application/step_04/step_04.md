@@ -33,9 +33,17 @@ The Scenario Page is constructed using a combination of Markdown and Python code
 <br/> <|Save|button|on_action=save|active={scenario}|>
 |>
  
-<|{scenario}|scenario|>
+<|{scenario}|scenario|on_submission_change=submission_change|>
 
 <|{predictions_dataset}|chart|x=Date|y[1]=Historical values|type[1]=bar|y[2]=Predicted values ML|y[3]=Predicted values Baseline|>
+
+# Data Node Exploration
+
+<|layout|columns=1 5|
+<|{data_node}|data_node_selector|>
+
+<|{data_node}|data_node|>
+|>
 ```
 
 The Markdown section outlines the arrangement and elements of the Scenario Page. It consists of the following components:
@@ -60,13 +68,17 @@ A number input field where users can set the desired number of predictions to be
 
 A button that triggers the "save" action when clicked. It is used to save the selected scenario and parameter values.
 
-- **Scenario Section**: `<|{scenario}|scenario|>`
+- **Scenario Section**: `<|{scenario}|scenario|on_submission_change=submission_change|>`
 
-A section that displays information about the currently selected scenario. It includes details about the scenario, properties, and the ability to delete or submit the scenario.
+A section that displays information about the currently selected scenario. It includes details about the scenario, properties, and the ability to delete or submit the scenario. When the scenario status is changed, `submission_change` is called with information on the scenario.
 
 - **Predictions Chart**: `<|{predictions_dataset}|chart|...|>`
 
 A chart that displays historical values and the predicted values obtained from machine learning and baseline methods. It shows how well the predictions align with the historical data.
+
+- **Data Node Exploration**: `<|{data_node}|data_node_selector|> <|{data_node}|data_node_selector|>`
+
+This is where the detailed information and history about the selected data node is presented. Depending on the nature of the data node, this could display raw data in a tabular format, visualizations, texts, or dates. If the format allows it, the user can directly write new values in the data node.
 
 
 ## Python Code (pages/scenario/scenario.py)
@@ -80,6 +92,7 @@ import pandas as pd
 
 
 scenario = None
+data_node = None
 day = dt.datetime(2021, 7, 26)
 n_predictions = 40
 max_capacity = 200
@@ -88,7 +101,12 @@ predictions_dataset = {"Date":[0],
                        "Predicted values Baseline":[0],
                        "Historical values":[0]}
 
-
+def submission_change(state, submittable, details: dict):
+    if details['submission_status'] == 'COMPLETED':
+        notify(state, "success", 'Scenario completed!')
+        state['scenario'].on_change(state, 'scenario', state.scenario)
+    else:
+        notify(state, "error", 'Something went wrong!')
 
 def save(state):
     print("Saving scenario...")
@@ -125,7 +143,7 @@ It includes the following components:
 
 - **Global Variables**:
 
-The global variables *scenario*, *day*, *n_predictions*, *max_capacity*, and *predictions_dataset* are defined. These variables store the initial state of the application.
+The global variables *scenario*, *data_node*, *day*, *n_predictions*, *max_capacity*, and *predictions_dataset* are defined. These variables store the initial state of the application.
 
 - **Save Function**:
 
@@ -133,6 +151,10 @@ The `save` function is in charge of preserving the current scenario state.
 When the user clicks the "Save" button, this function gets activated. 
 It receives the page's state as input, converts the date format to the correct one, 
 adjusts the scenario parameters accordingly, and then informs the user with a success message.
+
+- **Submission Status Change**
+
+The `submission_change` function is designed to handle feedback when a scenario submission completes. It takes in the current state, the submitted object, and details regarding the submission. If the submission is successful ('*COMPLETED*'), it sends a success notification to the user and triggers an update on the *scenario* object. In the event of a failure, it provides an error notification, alerting the user that something went wrong.
 
 - **On Change Function**:
 
