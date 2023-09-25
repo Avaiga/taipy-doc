@@ -97,9 +97,9 @@ def create_predictions_dataset(predictions_baseline, predictions_ml, day, n_pred
     return predictions_dataset
 ```
 
-# Entire code (algorithms/algorithms.py)
+# Entire code
 	
-Chaining all the functions together can be represented as a following graph:
+The following Python code corresponds to the `algorithms/algorithms.py` file. Chaining all the functions together can be represented as the following graph:
 
 ![Execution Graph](config_toml.png){ width=700 style="margin:auto;display:block" }
 

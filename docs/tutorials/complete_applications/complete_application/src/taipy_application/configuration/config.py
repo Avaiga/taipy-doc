@@ -90,5 +90,3 @@ scenario_cfg = Config.configure_scenario(id="scenario",
                                                         metrics_ml_task_cfg,
                                                         full_predictions_task_cfg],
                                          frequency=Frequency.WEEKLY)
-
-Config.export('configuration/config.toml')

@@ -9,6 +9,10 @@ to the back end. You don't need any prior knowledge to complete this tutorial.
 
 In the **"Tutorial"** each step concentrates on fundamental ideas about *Taipy*.
 
+## Objective of the Application
+
+You are about to create a comprehensive multi-page application designed for data visualization, predictive analytics, and comparative assessment. This app processes sales figures for display. One of its dedicated pages allows you to use two predictive models where predictions can be fine-tuned through some parameters. To round it off, the performance page offers a graphical comparison of various predictive outcomes.
+
 ## Before we begin
 
 Three packages have to be installed:
@@ -30,11 +34,11 @@ $ pip install statsmodels
     `pip install taipy` is the preferred method to install the latest stable version of Taipy.
     
     If you don't have [pip](https://pip.pypa.io) installed, this 
-    [Python installation guide](http://docs.python-guide.org/en/latest/starting/installation/)
+    [Taipy installation guide](../../../installation/index.md)
     can guide you through the process.
 
 
-Once Taipy is installed, you can use the CLI to create the scaffolding. The default template will be used throughout the creation of the application.
+Once Taipy is installed, you can use the CLI to scaffold an application folder. Run the create command line with default template and answer basic questions as follows:
 
 ``` console
 > taipy create --template default

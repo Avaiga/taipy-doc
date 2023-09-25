@@ -6,9 +6,11 @@ including Root Mean Squared Error and Mean Absolute Error, across various scenar
 The page displays a table and two bar charts for comparing these metrics between baseline and 
 machine learning predictions.
 
-![Performance Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }"
+![Performance Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-# Markdown (pages/performance/performance.md)
+# Markdown
+
+The following Markdown corresponds to the `pages/performance/performance.md`file.
 
 ```markdown
 <|part|render={len(comparison_scenario)>0}|
@@ -50,9 +52,9 @@ Two bar charts that compare the selected metric (RMSE or MAE) between baseline a
 
 A button that triggers the "compare" action when clicked. It is used to initiate the comparison process.
 
-## Python Code (pages/performance/performance.py)
+## Python Code
 
-The Python code initializes and manages the state of the Performance Page.
+The following Python code corresponds to the `pages/performance/performance.py` file. 
 
 ```python
 from taipy.gui import Markdown
@@ -101,8 +103,6 @@ def compare(state):
 
 performance = Markdown("pages/performance/performance.md")
 ```
-
-It includes the following components:
 
 - **Global Variables**:
 

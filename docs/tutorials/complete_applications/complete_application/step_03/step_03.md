@@ -3,16 +3,19 @@
 
 # Scenario
 
-- Taipy efficiently manages the execution of your functions/pipelines.
+Taipy provides an easy Scenario management to efficiently:
 
-- Taipy manages data sources and monitors KPIs.
+- manage the execution of your functions/pipelines.
 
-- Taipy provides an easy management of multiple pipelines and end-user scenarios which comes in handy in the context of Machine Learning or Mathematical optimization.
+- manage data sources and monitor KPIs.
+
+It comes in handy in the context of Machine Learning or Mathematical optimization.
 
 To apprehend what is a _Scenario_, you need to understand the _Data node_ and _Task_ concepts.
 
 - [**Data Nodes**](../../../../manuals/core/concepts/data-node.md): are the translation of variables in 
-  Taipy. Data Nodes don't contain the data itself but point to the data and know how to retrieve it. These Data Nodes can point to different types of data sources like CSV files, Pickle files, databases, etc., 
+  Taipy. Data Nodes don't contain the data itself but point to the data and know how to retrieve 
+  it. These Data Nodes can point to different types of data sources like CSV files, Pickle files, databases, etc., 
   and they can represent various types of Python variables such as integers, strings, data frames, lists, and more. 
 
 - [**Tasks**](../../../../manuals/core/concepts/task.md): are the translation of functions in Taipy where their inputs and outputs are data nodes.
@@ -28,7 +31,7 @@ To apprehend what is a _Scenario_, you need to understand the _Data node_ and _T
 
 Before creating and runnning our scenarios, we need to configure them properly.
 
-## Data Nodes Configuration
+## Configuring Data Nodes
 
 During Data Node configuration, the developer specifies the type or format of each Data Node, along with its scope.
 
@@ -101,7 +104,7 @@ max_capacity_cfg = Config.configure_data_node(id="max_capacity", default_data=20
 
 ### Intermediate and output Data Nodes
 
-- *cleaned_dataset* is the dataset after cleaning (after the `clean_data()` function).
+- *cleaned_dataset* is the dataset after cleaning (after the `clean_data` function).
 
 - *predictions_ml* and *predictions_baseline* are the predictions of the model. They are the output of `predict_baseline()` and `predict_ml()` 
   functions.
@@ -124,16 +127,16 @@ metrics_baseline_cfg = Config.configure_data_node(id="metrics_baseline")
 metrics_ml_cfg = Config.configure_data_node(id="metrics_ml")
 ```
 
-## Task Configuration
+## Configuring Taskss
 
 Tasks are the translation of functions in Taipy. Each task has an ID, a function, inputs, and outputs.
 
 
-### clean_data_task
+### clean_data task
 
-The first task that you want to create is your `clean_data()` task.
+The first task that you want to create is your `clean_data` task.
 It will take your initial dataset (input Data Node), 
-clean it (calling the `clean_data()` function) and generate the cleaned dataset Data Node.
+clean it (calling the `clean_data` function) and generate the cleaned dataset Data Node.
 This task will only execute once thanks to the skippability feature of Taipy.
 
 ![Clean Data](clean_data.svg){ width=300 style="margin:auto;display:block" }
@@ -146,7 +149,7 @@ clean_data_task_cfg = Config.configure_task(id="clean_data",
                                             skippable=True)
 ```
 
-### predict_baseline_task
+### predict_baseline task
 
 This task will use the cleaned dataset and make predictions based on your specified parameters, which are the three input Data Nodes:
 
@@ -161,7 +164,8 @@ predict_baseline_task_cfg = Config.configure_task(id="predict_baseline",
                                                   output=predictions_cfg)
 ```
 
-Other tasks are being configured the same way to get the metrics from the two models and a dataset 
+The other tasks (`predict_ml`, `metrics_baseline`, `metrics_ml`, and `full_prediction`) are 
+being configured the same way to get the metrics from the two models and a dataset 
 with all the predictions and historical data.
 
 ## Scenario Configuration
@@ -181,7 +185,9 @@ scenario_cfg = Config.configure_scenario(id="scenario",
 
 ```
 
-# Entire code (configuration/config.py)
+# Entire code
+
+The following Python code corresponds to the `configuration/config.py` file.
 
 ```python
 import datetime as dt
@@ -275,5 +281,4 @@ scenario_cfg = Config.configure_scenario(id="scenario",
                                                        full_predictions_task_cfg],
                                           frequency=Frequency.WEEKLY)
 
-Config.export('config/config.toml')
 ```
