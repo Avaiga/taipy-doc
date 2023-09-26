@@ -2,8 +2,8 @@
 
     Taipy requires **Python 3.8** or newer.
 
-Welcome to the **Tutorial** guide, which will walk you through creating a complete application from the front end 
-to the back end. You don't need any prior knowledge to complete this tutorial.
+Welcome to the **Tutorial** guide, which will walk you through creating a complete application 
+from the front end to the back end. You don't need any prior knowledge to complete this tutorial.
 
 ![Tutorial application](step_01/overview.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
@@ -11,7 +11,11 @@ In the **"Tutorial"** each step concentrates on fundamental ideas about *Taipy*.
 
 ## Objective of the Application
 
-You are about to create a comprehensive multi-page application designed for data visualization, predictive analytics, and comparative assessment. This app processes sales figures for display. One of its dedicated pages allows you to use two predictive models where predictions can be fine-tuned through some parameters. To round it off, the performance page offers a graphical comparison of various predictive outcomes.
+You are about to create a comprehensive multi-page application designed for data visualization, 
+predictive analytics, and comparative assessment. This app processes sales figures for display. 
+One of its dedicated pages allows you to use two predictive models where predictions can be 
+fine-tuned through some parameters. To round it off, the performance page offers a graphical 
+comparison of various predictive outcomes.
 
 ## Before we begin
 
@@ -38,7 +42,8 @@ $ pip install statsmodels
     can guide you through the process.
 
 
-Once Taipy is installed, you can use the CLI to scaffold an application folder. Run the create command line with default template and answer basic questions as follows:
+Once Taipy is installed, you can use the CLI to scaffold an application folder. Run the create
+command line with default template and answer basic questions as follows:
 
 ``` console
 > taipy create --template default

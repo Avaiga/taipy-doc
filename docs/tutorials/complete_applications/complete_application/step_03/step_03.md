@@ -11,7 +11,7 @@ Taipy provides an easy Scenario management to efficiently:
 
 It comes in handy in the context of Machine Learning or Mathematical optimization.
 
-To apprehend what is a _Scenario_, you need to understand the _Data node_ and _Task_ concepts.
+To apprehend what is a **Scenario**, you need to understand the **Data node** and **Task** concepts.
 
 - [**Data Nodes**](../../../../manuals/core/concepts/data-node.md): are the translation of variables in 
   Taipy. Data Nodes don't contain the data itself but point to the data and know how to retrieve 
@@ -127,7 +127,7 @@ metrics_baseline_cfg = Config.configure_data_node(id="metrics_baseline")
 metrics_ml_cfg = Config.configure_data_node(id="metrics_ml")
 ```
 
-## Configuring Taskss
+## Configuring Tasks
 
 Tasks are the translation of functions in Taipy. Each task has an ID, a function, inputs, and outputs.
 
@@ -170,7 +170,7 @@ with all the predictions and historical data.
 
 ## Scenario Configuration
 
-All of these task and Data Node configurations can create a scenario. These tasks 
+All the task and Data Node configurations can create a scenario. These tasks 
 that form an execution graph will be executed when a scenario is submitted.
 
 ```python
