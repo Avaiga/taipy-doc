@@ -22,7 +22,7 @@ module <a href="./code_example/my_config.py" download>`my_config.py`</a>.
 
 ## Start/Stop the scheduler
 
-For the scheduler to run the scheduled methods, first you need to start the scheduler using the `start()` method.
+To make the scheduler execute the scheduled methods, you must first start the scheduler by using the `start()` method.
 
 ```python
 import taipy as tp
@@ -30,8 +30,8 @@ import taipy as tp
 tp.Scheduler.start()
 ```
 
-Once the scheduler is started, the scheduled methods will run in the background at the scheduled time.
-While the scheduler is running, you can schedule other methods without being blocked by the scheduler.
+Once the scheduler is started, the scheduled methods will run in the background at their specified times. 
+While the scheduler is running, you can execute other methods without being blocked by the scheduler.
 
 !!! info "Schedule a method before and after starting the scheduler"
 
@@ -249,7 +249,7 @@ tp.Scheduler.every().second.do(tp.submit, monthly_scenario)
 tp.Scheduler.clear()
 ```
 
-## Shortcut for scheduling Taipy methods
+## Shortcut for scheduling most used Taipy methods
 
 Taipy `Scheduler^` provides shortcut for scheduling popular Taipy methods, including:
 
