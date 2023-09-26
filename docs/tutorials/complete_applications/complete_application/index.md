@@ -1,25 +1,17 @@
-# Getting Started with Taipy
-
 !!! important "Supported Python versions"
 
     Taipy requires **Python 3.8** or newer.
 
-Welcome to the **Getting Started** guide for Taipy. This tour shows you how to create an entire application using 
-the two components of Taipy:
+Welcome to the **Tutorial** guide, which will walk you through creating a complete application from the front end 
+to the back end. You don't need any prior knowledge to complete this tutorial.
 
-- **Graphical User Interface builder** (Taipy GUI): allows any Python developer to create a complex and interactive GUI.
+![Tutorial application](step_01/overview.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-- **Scenario Management** (Taipy Core): implements a modern backend for any data-driven application based on your business case.
+In the **"Tutorial"** each step concentrates on fundamental ideas about *Taipy*.
 
-![Getting Started application](step_00/imd_end_interface.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+## Objective of the Application
 
-
-You can use Taipy GUI without Taipy Core and vice-versa. However, as you will see, they are incredibly efficient 
-when combined.
-
-Each step of the **"Getting Started"** will focus on basic concepts of *Taipy*. Note that every step is dependent on 
-the code of the previous one. After completing the last step, you will have the skills to develop your own Taipy 
-application. 
+You are about to create a comprehensive multi-page application designed for data visualization, predictive analytics, and comparative assessment. This app processes sales figures for display. One of its dedicated pages allows you to use two predictive models where predictions can be fine-tuned through some parameters. To round it off, the performance page offers a graphical comparison of various predictive outcomes.
 
 ## Before we begin
 
@@ -27,7 +19,7 @@ Three packages have to be installed:
 
  1. **Taipy** package, it requires Python 3.8 or newer;
 
- 2. **scikit-learn**: A Machine-Learning package that will be used in the Getting Started user code;
+ 2. **scikit-learn**: A Machine-Learning package that will be used in the Tutorial user code;
 
  3. **statsmodels**: Another package for statistics also used in the user code.
 
@@ -42,39 +34,33 @@ $ pip install statsmodels
     `pip install taipy` is the preferred method to install the latest stable version of Taipy.
     
     If you don't have [pip](https://pip.pypa.io) installed, this 
-    [Python installation guide](http://docs.python-guide.org/en/latest/starting/installation/)
+    [Taipy installation guide](../../../installation/index.md)
     can guide you through the process.
 
-## Using Notebooks
 
-This **Getting Started** is for Python scripts (*.py*) only. If you want to use **Jupyter Notebooks**, download this [notebook](https://docs.taipy.io/en/latest/getting_started/getting-started/getting_started.ipynb).
+Once Taipy is installed, you can use the CLI to scaffold an application folder. Run the create command line with default template and answer basic questions as follows:
+
+``` console
+> taipy create --template default
+Application root folder name [taipy_application]:
+Application main Python file [main.py]:
+Application title [Taipy Application]:
+Page names in multi-page application? []: data_viz scenario performance
+Does the application use scenario management or version management? [No]: yes
+Does the application use Rest API? [No]: no
+```
+
 
 So, without further delay, let's begin to code!
 
 ## Steps
 
-0. [First web page](step_00/ReadMe.md)
+1. [Data Visualization page](step_01/step_01.md)
 
-1. [Visual elements](step_01/ReadMe.md)
+2. [Algorithms used](step_02/step_02.md)
 
-2. [Interactive GUI](step_02/ReadMe.md)
+3. [Scenario Configuration](step_03/step_03.md)
 
-3. [Introducing Taipy Core](step_03/ReadMe.md)
+4. [Scenario page](step_04/step_04.md)
 
-4. [Pipeline Management](step_04/ReadMe.md)
-
-5. [GUI & Pipeline](step_05/ReadMe.md)
-
-6. [Creation of Scenarios](step_06/ReadMe.md)
-
-7. [GUI & Scenarios](step_07/ReadMe.md)
-
-8. [Modify Data Nodes content](step_08/ReadMe.md)
-
-9. [Manage Scenarios](step_09/ReadMe.md)
-
-10. [Embellish your APP](step_10/ReadMe.md)
-
-11. [Introducing Cycles](step_11/ReadMe.md)
-
-12. [Compare Scenarios](step_12/ReadMe.md)
+5. [Performance page](step_05/step_05.md)
