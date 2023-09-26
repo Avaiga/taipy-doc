@@ -140,13 +140,20 @@ Results:
 Value at the end of task 23.45
 ```    
 
-This small piece of code shows how to manage scenarios. The scenario or data node management is 
-usually done by end-users through a graphical interface. Taipy provides a set of visual elements 
-dedicated to Scenario management to replace the code above.
+In this code, you can see how to create qnd submit scenarios, retrieve data nodes from, 
+read and write data. Many other functions are described in the manuals, in particular in the 
+[taipy](../../../../manuals/reference/pkg_taipy.md), 
+[scenario](https://docs.taipy.io/en/develop/manuals/core/entities/scenario-cycle-mgt/) and 
+[data node](https://docs.taipy.io/en/develop/manuals/core/entities/data-node-mgt/) documentation 
+pages.
 
 # Visual elements
 
-Add these few lines to the code of your script. This creates a web application to:
+The small piece of code of the previous section shows how to manage scenarios. The scenario or data 
+node management is usually done by end-users through a graphical interface. Taipy provides 
+visual elements dedicated to Scenario management to replace the code above.
+
+Add these few lines to the code of your script. This creates a web application, so end-users can:
 
 - select scenarios,
 

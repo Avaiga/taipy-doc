@@ -2,19 +2,18 @@
 
     Taipy requires **Python 3.8** or newer.
 
-Welcome to the **Tutorial** guide for scenario management.
+Welcome to the **Scenario management** tutorial guide.
 
-Taipy facilitates pipeline orchestration. There are several good reasons to use the Taipy backend:
+The Taipy Scenario management is a set of functionalities used to easily and efficiently 
+create dataflows (pipelines), manage and record their executions, and access their data.
+It is designed to be used by end-users in a multi-user context and gets especially useful 
+for Machine Learning or Mathematical optimization.
 
-- Taipy efficiently manages the execution of your functions/pipelines.
+# Objective of the Application
 
-- Taipy manages data sources and monitors KPIs.
+TODO add a description of the application we are building
 
-- Taipy makes it simple to oversee multiple pipelines and end-user scenarios, especially useful in Machine Learning or Mathematical optimization contexts.
-
-Each step of the **"Tutorial"** will focus on basic concepts of *Taipy Core*.
-
-## Before we begin
+# Before we begin
 
 Only Taipy has to be installed. **Taipy** package requires Python 3.8 or newer;
 
@@ -31,17 +30,17 @@ $ pip install taipy
     can guide you through the process.
 
 
-## Taipy Studio
+# Taipy Studio
 
-There are two ways to configure Taipy backend (Taipy Core), either by Python code or with Taipy Studio. We strongly recommend using Taipy Studio. 
-
-Taipy Studio is a VS Code extension that provides a graphical editor to describe pipelines. The configuration of Taipy Core can be done more easily and quickly through Taipy Studio.
+There are two ways to configure Taipy, either by Python code or using Taipy Studio. Taipy Studio 
+is a VS Code extension that provides a graphical editor to describe pipelines. The configuration 
+can be done easily and quickly with drag and drop.
 
 So, without further delay, let's begin to code!
 
-## Concepts
+# Steps
 
-1. [Configuration and execution](step_01/step_01.md)
+1. [Configuration](step_01/step_01.md)
 
 2. [Basic functions](step_02/step_02.md)
 
