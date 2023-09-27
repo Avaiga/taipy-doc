@@ -11,11 +11,9 @@ if __name__ == '__main__':
     # my_scenario is the id of the scenario configured
     scenario_cfg = Config.scenarios['my_scenario']
 
-    tp.Core().run()
-
     scenario = tp.create_scenario(scenario_cfg, name="Scenario")
     tp.submit(scenario)
-    print("First submit", scenario.output.read())
+    print("Output of First submit:", scenario.output.read())
 
     print("Before write", scenario.input.read())
     scenario.input.write(54)
@@ -29,3 +27,13 @@ if __name__ == '__main__':
     print([s.name for s in tp.get_scenarios()])
     scenario = tp.get(scenario.id)
     tp.delete(scenario.id)
+
+    scenario = None
+    data_node = None
+
+    tp.Gui("""<|{scenario}|scenario_selector|>
+              <|{scenario}|scenario|>
+              <|{scenario}|scenario_dag|>
+              <|{data_node}|data_node_selector|>""").run()
+
+

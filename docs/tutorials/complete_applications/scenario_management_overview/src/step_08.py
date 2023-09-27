@@ -1,6 +1,5 @@
-from taipy.core.config import Config, Frequency
+from taipy.core.config import Config
 import taipy as tp
-
 
 
 # Normal function used by Taipy
@@ -27,15 +26,14 @@ second_task_cfg = Config.configure_task("add",
                                     intermediate_cfg,
                                     output_cfg)
 
-# Configuration of the pipeline and scenario
-pipeline_cfg = Config.configure_pipeline("my_pipeline", [first_task_cfg, second_task_cfg])
 
 
 def compare_function(*data_node_results):
-    compare_result= {}
+    # example of function
+    compare_result = {}
     current_res_i = 0
     for current_res in data_node_results:
-        compare_result[current_res_i]={}
+        compare_result[current_res_i] = {}
         next_res_i = 0
         for next_res in data_node_results:
             print(f"comparing result {current_res_i} with result {next_res_i}")
@@ -46,10 +44,9 @@ def compare_function(*data_node_results):
 
 
 scenario_cfg = Config.configure_scenario(id="multiply_scenario",
-                                        name="my_scenario",
-                                        pipeline_configs=[pipeline_cfg],
-                                        comparators={output_cfg.id: compare_function},
-                                        frequency=Frequency.MONTHLY)
+                                                    name="my_scenario",
+                                                    task_configs=[first_task_cfg, second_task_cfg],
+                                                    comparators={output_cfg.id: compare_function})
 
 Config.export("config_08.toml")
 

@@ -22,9 +22,15 @@ if __name__ == '__main__':
 
     tp.Core().run()
 
-    scenario_1 = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")
-    scenario_1.submit()
+    scenario = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")
+    scenario.submit()
 
-    scenario_2 = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")
-    scenario_2.submit()
+    print("Nb of values of scenario:", scenario.nb_of_values.read())
+
+    data_node = None
+
+    tp.Gui("""<|{scenario}|scenario_selector|>
+              <|{scenario}|scenario|>
+              <|{scenario}|scenario_dag|>
+              <|{data_node}|data_node_selector|>""").run()
 
