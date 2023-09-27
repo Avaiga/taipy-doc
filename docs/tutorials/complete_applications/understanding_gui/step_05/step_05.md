@@ -30,10 +30,12 @@ This kind of expression creates direct connections between visual elements witho
 
 ## A use case for NLP - Part 1
 
-The code for NLP is provided here; it doesn't concern Taipy but it will be used in Part 2 when we wrap a GUI around this NLP engine. 
+The code for NLP is provided here, although it's not directly related to Taipy. It will come into play in Part 2 when we wrap a GUI around this NLP engine.
+
 Before executing this step, you should have `pip install torch` and `pip install transformers`. 
-The model will be downloaded and used in this code snippet. Torch is for now only available for Python version between 3.8 and 3.10. 
-If you cannot install these packages, just return a dictionnary of random numbers for the `analyze_text(text)`.
+The model will be downloaded and utilized in this code snippet. Note that Torch is currently only accessible for Python versions between 3.8 and 3.10.
+
+If you encounter difficulties installing these packages, you can simply provide a dictionary of random numbers as the output for the `analyze_text(text)` function.
 
 
 ```python

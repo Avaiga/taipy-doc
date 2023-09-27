@@ -8,7 +8,10 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 # Step 7: Multi-pages, navbars, and menus
 
-The creation of a multi-page application is greatly simplified with Taipy. A dictionary of pages must be defined to create a multi-page application. Here we will create three Pages: a Root page and two pages (page1 & page2). We will use Visual elements like a menu or navbar on this root page to navigate between page1 and page2.
+Taipy significantly simplifies the process of building a multi-page application. To create a multi-page application, 
+you need to define a dictionary of pages. In this example, we will create three Pages: 
+a Root page and two additional pages (page 1 & page 2). We will incorporate Visual elements, 
+such as a menu or navbar, on the Root page to facilitate navigation between page 1 and page 2.
 
 
 ```python
@@ -32,7 +35,7 @@ Gui(pages=pages).run()
 
 ## Navigating between pages
 
-- [menu](../../../../manuals/gui/viselements/menu.md_template): creates a menu on the left to navigate through the pages.
+- [menu](../../../../manuals/gui/viselements/menu.md): creates a menu on the left to navigate through the pages.
 
 `<|menu|label=Menu|lov={lov_pages}|on_action=on_menu|>`. For example, this code creates a menu with two pages:
 
@@ -61,7 +64,7 @@ Gui(pages=pages).run()
 
 ![Menu](menu.png){ width=500 style="margin:auto;display:block" }
 
-- [navbar](../../../../manuals/gui/viselements/navbar.md_template): creates an element to navigate through the Taipy pages by default
+- [navbar](../../../../manuals/gui/viselements/navbar.md): creates an element to navigate through the Taipy pages by default
 
 ```python
 from taipy.gui import Gui

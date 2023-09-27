@@ -9,9 +9,9 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 # Step 1: First Web page
 
-You only need one line of code to create your first Taipy web page. Create a `Gui` object with a String and run it.
+You only need one line of code to create your first Taipy web page. Just create a `Gui` object with a string and run it. 
 
-You will see a client link in the console. Simply copy and paste it into a web browser to open your first Taipy web client!
+In the console, you'll find a client link. All you need to do is copy and paste it into your web browser to open your first Taipy web client!
 
 
 ```python
@@ -20,15 +20,18 @@ from taipy import Gui
 Gui(page="# Getting started with *Taipy*").run() # use_reloader=True
 ```
 
-By default, the page won't automatically reload itself after making a code change.
+By default, the page won't refresh on its own after you make a code modification.
 
-To change this behavior, putting `use_reloader=True` in the `.run()` will reload the application when you modify a file in your application and save it. It can be used as a development mode.
+If you want to alter this behavior, you can add `use_reloader=True` in the `.run()` method. This will cause 
+the application to automatically reload when you make changes to a file in your application and save it. 
+It's typically used in development mode.
 
-If you want to run multiple servers simultaneously, you can change the server port number (5000 by default) in the `.run()` method. For example, `Gui(...).run(port=xxxx)`. Other options of the `.run()` can be found [here](../../../../manuals/gui/configuration.md/#configuring-the-gui-instance).
+If you wish to run multiple servers concurrently, you can modify the server port number (5000 by default) in the `.run()` method. For example, `Gui(...).run(port=xxxx)`. Other options of the `.run()` can be found [here](../../../../manuals/gui/configuration.md/#configuring-the-gui-instance).
 
 
-Note that you can style the text. Taipy uses the Markdown syntax to style your text and more. Therefore, `#` creates 
-a title, `##` makes a subtitle. Put your text in `*` for *italics* or in `**` to have it in **bold**.
+Keep in mind that you have the option to format your text. Taipy uses Markdown syntax to style your text 
+and more. Therefore, `#` creates a title, `##` makes a subtitle. 
+Put your text in `*` for *italics* or in `**` to have it in **bold**.
 
 
 ![First Web Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }

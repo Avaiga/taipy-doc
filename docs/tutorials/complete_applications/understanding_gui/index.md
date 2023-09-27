@@ -2,7 +2,7 @@
 
     Taipy requires **Python 3.8** or newer.
 
-Welcome to the **Tutorial** on how to use Taipy frontend. This tour shows you how to use Taipy to create an interactive Web application.
+Welcome to the **Tutorial** for using Taipy frontend. This guide will demonstrate how to utilize Taipy to build an interactive web application.
 
 ![GUI application](step_07/result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
@@ -14,8 +14,9 @@ Taipy aims to simplify web application development:
 
 - Offers intuitive visualization using Markdown syntax.
 
-Each step of the **"Tutorial"** will focus on the basic concepts of *Taipy*. Note that every step is dependent on the code of the previous one. After completing the last step, you will have the skills to develop your own Taipy 
-application. 
+In each part of the **"Tutorial"** we'll emphasize the basic principles of *Taipy*. 
+It's important to note that each step builds on the code from the previous one. 
+By the end of the final step, you'll be equipped with the ability to create your own Taipy application.
 
 ## Before we begin
 
@@ -25,7 +26,10 @@ application.
 $ pip install taipy
 ```
 
-After completing step 5, the application will feature a Natural Language Processing (NLP) algorithm for demonstration purposes, compatible only with Python versions 3.8 to 3.10. To integrate this NLP feature, you must install Transformers and Torch. Nonetheless, you can still continue with the tutorial guide by choosing to skip this algorithm.
+Once you finish step 5, the application will include a Natural Language Processing (NLP) algorithm 
+for demonstration purposes. Note that this algorithm is compatible only with Python versions 3.8 to 3.10. 
+To incorporate this NLP feature, you'll need to install Transformers and Torch. 
+However, if you prefer, you can proceed with the tutorial guide without using this algorithm.   
 
 ``` console
 $ pip install torch

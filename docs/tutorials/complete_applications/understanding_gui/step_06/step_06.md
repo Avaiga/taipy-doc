@@ -10,9 +10,12 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 # Step 6: Page layout
 
-You have created a full forecasting application that predicts across multiple days with different parameters in just a few steps. However, the page's layout could be greatly improved. Three new useful controls will be used to get a more aesthetically pleasing page. These are:
+You've successfully built a comprehensive forecasting application capable of making predictions for multiple days 
+with various parameters in just a few steps. Nevertheless, there is room for substantial improvement 
+in the page's layout. We'll introduce three new helpful controls to enhance the page's visual appeal. 
+These controls are:
 
-- [part](../../../../manuals/gui/viselements/part.md_template): creates a group of text/visual elements. A useful property of `part` is _render_. If set to False, it will not display the part. This allows the developer to hide a group of visual elements dynamically.
+- [part](../../../../manuals/gui/viselements/part.md): creates a group of text/visual elements. A useful property of `part` is _render_. If set to False, it will not display the part. This allows the developer to hide a group of visual elements dynamically.
 
 ```
 <|part|render={bool_variable}|
@@ -21,7 +24,7 @@ Or visual elements...
 |>
 ```
 
-- [layout](../../../../manuals/gui/viselements/layout.md_template): creates invisible columns where you can put your texts and visual elements. The _columns_ property indicates the width and number of columns. Here, we create three columns of the same width.
+- [layout](../../../../manuals/gui/viselements/layout.md): creates invisible columns where you can put your texts and visual elements. The _columns_ property indicates the width and number of columns. Here, we create three columns of the same width.
 
 ```
 <|layout|columns=1 1 1|
@@ -36,7 +39,7 @@ Third column
 ![Layout](layout.png){ width=500 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
-- [expandable](../../../../manuals/gui/viselements/expandable.md_template): creates a block that can expand or shrink.
+- [expandable](../../../../manuals/gui/viselements/expandable.md): creates a block that can expand or shrink.
 
 ![expandable](expandable.png){ width=500 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
