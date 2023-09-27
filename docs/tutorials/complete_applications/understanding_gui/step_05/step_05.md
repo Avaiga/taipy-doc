@@ -1,8 +1,10 @@
-> You can download the code of this step [here](../src/step_05.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started-gui/tree/develop/src).
+> You can download the code for
+<a href="./../src/step_05.py" download>Step 5</a> 
+or all the steps <a href="./../src/src.zip" download>here</a>. 
 
 !!! warning "For Notebooks"
 
-    The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
+    The "Getting Started" Notebook is available [here](../../../../getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 # Step 5: Python expression in properties
 
@@ -28,7 +30,12 @@ This kind of expression creates direct connections between visual elements witho
 
 ## A use case for NLP - Part 1
 
-The code for NLP is provided here; it doesn't concern Taipy but it will be used in Part 2 when we wrap a GUI around this NLP engine.
+The code for NLP is provided here, although it's not directly related to Taipy. It will come into play in Part 2 when we wrap a GUI around this NLP engine.
+
+Before executing this step, you should have `pip install torch` and `pip install transformers`. 
+The model will be downloaded and utilized in this code snippet. Note that Torch is currently only accessible for Python versions between 3.8 and 3.10.
+
+If you encounter difficulties installing these packages, you can simply provide a dictionary of random numbers as the output for the `analyze_text(text)` function.
 
 
 ```python
@@ -81,7 +88,8 @@ def local_callback(state):
     notify(state, 'Info', f'The text is: {state.text}', True)
     temp = state.dataframe.copy()
     scores = analyze_text(state.text)
-    state.dataframe = temp.append(scores, ignore_index=True)
+    temp.loc[len(temp)] = scores
+    state.dataframe = temp
     state.text = ""
 
 
@@ -94,9 +102,7 @@ page = """
 My text: <|{text}|>
 
 Enter a word:
-
 <|{text}|input|>
-
 <|Analyze|button|on_action=local_callback|>
 
 ## Positive

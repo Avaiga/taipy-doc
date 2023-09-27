@@ -9,8 +9,6 @@ from taipy.gui import Gui, notify
 text = "Original text"
 
 page = """
-<|toggle|theme|>
-
 # Getting started with Taipy GUI
 
 <|layout|columns=1 1|
@@ -18,9 +16,7 @@ page = """
 My text: <|{text}|>
 
 Enter a word:
-
 <|{text}|input|>
-
 <|Analyze|button|on_action=local_callback|>
 |>
 
@@ -28,25 +24,17 @@ Enter a word:
 <|Table|expandable|
 <|{dataframe}|table|width=100%|number_format=%.2f|>
 |>
-
 |>
 
 <|layout|columns=1 1 1|
-<|
-## Positive
-<|{float(np.mean(dataframe['Score Pos']))}|text|format=%.2f|>%
+## Positive <|{float(np.mean(dataframe['Score Pos']))}|text|format=%.2f|raw|>%
+
+## Neutral <|{float(np.mean(dataframe['Score Neu']))}|text|format=%.2f|raw|>%
+
+## Negative <|{float(np.mean(dataframe['Score Neg']))}|text|format=%.2f|raw|>%
 |>
 
-<|
-## Neutral
-<|{float(np.mean(dataframe['Score Neu']))}|text|format=%.2f|>%
-|>
-
-<|
-## Negative
-<|{float(np.mean(dataframe['Score Neg']))}|text|format=%.2f|>%
-|>
-|>
+<br/>
 
 <|{dataframe}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|>
 """
@@ -80,7 +68,8 @@ def local_callback(state):
     notify(state, 'Info', f'The text is: {state.text}', True)
     temp = state.dataframe.copy()
     scores = analyze_text(state.text)
-    state.dataframe = temp.append(scores, ignore_index=True)
+    temp.loc[len(temp)] = scores
+    state.dataframe = temp
     state.text = ""
 
 Gui(page).run()

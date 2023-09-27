@@ -1,33 +1,39 @@
-# Getting Started with Taipy GUI
-
 !!! important "Supported Python versions"
 
     Taipy requires **Python 3.8** or newer.
 
-Welcome to the **Getting Started** guide for Taipy GUI. This tour shows you how to use Taipy GUI to create an interactive Web application. Taipy GUI implements a modern backend for any data-driven application based on your business case.
+Welcome to the **Tutorial** for using Taipy frontend. This guide will demonstrate how to utilize Taipy to build an interactive web application.
 
-![Getting Started GUI application](step_07/result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![GUI application](step_07/result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-# Taipy GUI
+Taipy aims to simplify web application development:
 
-Taipy GUI is one of the components of Taipy to create easily Web application. There are a lot of reasons for using Taipy GUI:
+- Accelerates application building.
 
-- It fastens the creation of an application.
+- Streamlines management of variables and events.
 
-- It manages easily and efficiently variables and events.
+- Offers intuitive visualization using Markdown syntax.
 
-- Easy visualization with Markdown syntax.
-
-Each step of the **"Getting Started"** will focus on basic concepts of *Taipy*. Note that every step is dependent on 
-the code of the previous one. After completing the last step, you will have the skills to develop your own Taipy 
-application. 
+In each part of the **"Tutorial"** we'll emphasize the basic principles of *Taipy*. 
+It's important to note that each step builds on the code from the previous one. 
+By the end of the final step, you'll be equipped with the ability to create your own Taipy application.
 
 ## Before we begin
 
-Only Taipy has to be installed. **Taipy** package requires Python 3.8 or newer;
+**Taipy** package requires Python 3.8 or newer;
 
 ``` console
 $ pip install taipy
+```
+
+Once you finish step 5, the application will include a Natural Language Processing (NLP) algorithm 
+for demonstration purposes. Note that this algorithm is compatible only with Python versions 3.8 to 3.10. 
+To incorporate this NLP feature, you'll need to install Transformers and Torch. 
+However, if you prefer, you can proceed with the tutorial guide without using this algorithm.   
+
+``` console
+$ pip install torch
+$ pip install transformers
 ```
 
 !!! info 
@@ -40,26 +46,26 @@ $ pip install taipy
 
 ## Using Notebooks
 
-This **Getting Started** is for Python scripts (*.py*) only. If you want to use **Jupyter Notebooks**, download this [notebook](https://docs.taipy.io/en/latest/getting_started/getting-started-gui/getting_started.ipynb).
+This **Tutorial** is for Python scripts (*.py*) only. If you want to use **Jupyter Notebooks**, download this [notebook](../../../../getting_started/getting-started-gui/getting_started.ipynb).
 
 ## Taipy Studio
 
-Taipy Studio is a VS Code extension that provides an autocompletion of Taipy visual elements. The creation of a Taipy application can be done more easily and quickly through Taipy Studio.
+[Taipy Studio](../../../manuals/studio/index.md) is a VS Code extension that provides an auto-completion of Taipy visual elements. Creating a Taipy application can be done more easily and quickly through Taipy Studio.
 
 So, without further delay, let's begin to code!
 
 ## Steps
 
-1. [First Web page](step_01/ReadMe.md)
+1. [First Web page](step_01/step_01.md)
 
-2. [Visual elements](step_02/ReadMe.md)
+2. [Visual elements](step_02/step_02.md)
 
-3. [Interaction](step_03/ReadMe.md)
+3. [Interaction](step_03/step_03.md)
 
-4. [Charts](step_04/ReadMe.md)
+4. [Charts](step_04/step_04.md)
 
-5. [Python expression in properties](step_05/ReadMe.md)
+5. [Python expression in properties](step_05/step_05.md)
 
-6. [Page layout](step_06/ReadMe.md)
+6. [Page layout](step_06/step_06.md)
 
-7. [Multi-pages, navbars, and menus](step_07/ReadMe.md)
+7. [Multi-pages, navbars, and menus](step_07/step_07.md)

@@ -31,11 +31,12 @@ def local_callback(state):
     notify(state, 'info', f'The text is: {state.text}')
     
     temp = state.dataframe.copy()
-    state.dataframe = temp.append({"Text":state.text,
-                                   "Score Pos":0,
-                                   "Score Neu":0,
-                                   "Score Neg":0,
-                                   "Overall":0}, ignore_index=True)
+    temp.loc[len(temp)] = {"Text":state.text,
+                            "Score Pos":0,
+                            "Score Neu":0,
+                            "Score Neg":0,
+                            "Overall":0}
+    state.dataframe = temp
     state.text = ""
 
 Gui(page).run()
