@@ -22,7 +22,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 - *[Generic](../../../../manuals/core/config/data-node-config.md/#generic)*: Taipy provides a generic Data Node that can read and store any data based on a custom _reading_ and _writing_ function created by the user.
 
-This part utilizes the straightforward DAG/execution setup detailed below. The setup comprises the following components:
+This section uses a simple DAG/execution setup explained below. The setup includes these components:
 
 1. Three Data Nodes:
 

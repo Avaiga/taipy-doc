@@ -8,16 +8,22 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 [Cycles](../../../../manuals/core/concepts/cycle.md) have been introduced to reflect business situations our customers frequently encounter and can be extremely useful. 
 
-For instance, a large fast food chain wants to generate sales forecasts for its stores every week. When creating a given scenario, it needs to be attached to a given week. Typically, only one scenario will be shared among all the scenarios made for a specific week. This specific 'official' scenario is known as the 'Primary' scenario in Taipy.
+For example, a big fast-food chain wants to predict its store sales every week. When they create a scenario 
+for a particular week, it has to be linked to that specific week. Usually, there will be just one scenario 
+used for all the scenarios created for a particular week. 
+This special 'official' scenario is called the 'Primary' scenario in Taipy.
 
 
 Note that Cycles can be ignored entirely if the business problem has no time frequency. 
 
 
-In this step, scenarios are attached to a MONTHLY cycle. Using Cycles, the developer benefits from specific Taipy's functions to navigate through these Cycles. For instance, by providing the Cycle, Taipy can get all the scenarios created in a month. You can also easily get every primary scenario generated for the past X months to monitor KPIs over time.
+In this step, scenarios are connected to a MONTHLY cycle. With the help of Cycles, developers can take advantage 
+of Taipy's specific functions to work with these Cycles. For instance, by providing the Cycle, Taipy can retrieve 
+all the scenarios created within a month. You can also easily access every primary scenario generated 
+in the past X months to track KPIs over time.
 
-Let’s slightly change the filter function by passing the month as an argument to get started. You must create a new Data Node representing the month (see the steps below).
-
+Let's make a slight adjustment to the filter function by passing the month as an argument. You'll need to create a new Data Node that represents the month. 
+Follow the steps below:
 
 ```python
 def filter_by_month(df, month):
@@ -69,10 +75,13 @@ Then to introduce Cycles, you need to set the frequency (predefined attribute) o
         ```
 
 
-As you can see, a Cycle is activated once you have set the desired frequency of the scenario. In this code snippet, since we have specified `frequency=Frequency.MONTHLY`, the corresponding scenario is automatically attached to the correct period (month) when it is created. 
+In the code snippet, you can observe that a Cycle becomes active when you've set the desired frequency for the scenario. In this code snippet, since we have specified 
+`frequency=Frequency.MONTHLY`, the corresponding scenario is automatically attached to the correct period (month) when it is created. 
 
 
-The Cycle which a Scenario belongs to is based on the _creation_date_ (`datetime.datetime.now()` by default) of the scenario. It can be "attached" to a specific cycle by manually setting its _creation_date_, as we are doing in the following example.
+The Cycle which a Scenario belongs to is based on the _creation_date_ 
+(`datetime.datetime.now()` by default) of the scenario. It can be "attached" 
+to a specific cycle by manually setting its _creation_date_, as we are doing in the following example.
 
 
 ```python
@@ -86,7 +95,10 @@ scenario_2 = tp.create_scenario(scenario_cfg,
                                 name="Scenario 2022/10/5")
 ```
 
-Scenario 1 and Scenario 2 are two scenario entities/instances created from the same scenario configuration. They belong to the same Cycle but don't share the same Data Nodes. By default, each scenario instance has its own data node instances. They are not shared with any other scenario. The Scope concept can modify this behavior, which is covered in the next step.
+Scenario 1 and Scenario 2 are two separate scenario entities created using the same scenario configuration. 
+They are part of the same Cycle but have different Data Nodes. By default, each scenario instance 
+has its own data node instances, and they are not shared with any other scenario. 
+The Scope concept can change this behavior, and we'll discuss it in the next step.
 
 
 ```python
@@ -116,11 +128,14 @@ Month Data Node of Scenario 2 10
 
 ## Primary scenarios
 
-In each Cycle, there is a primary scenario. A primary scenario is interesting because it represents the important scenario of the Cycle, the reference. By default, the first scenario created for a cycle is primary.
+In each Cycle, there is a primary scenario. A primary scenario is interesting because 
+it represents the important scenario of the Cycle, the reference. By default, the 
+first scenario created for a cycle is primary.
 
 ### GUI-Core visual elements
 
-GUI-Core elements may be used to manipulate Cycles. Cycles are visible in *scenario_selector* or *data_node_selector*. It is also possible to make a scenario primary directly through the `scenario` visual element.
+You can utilize GUI-Core elements to control Cycles. Cycles can be seen in either the *scenario_selector* or *data_node_selector*. 
+Additionally, it's possible to designate a scenario as primary directly through the `scenario` visual element.
 
 ```python
 data_node = None

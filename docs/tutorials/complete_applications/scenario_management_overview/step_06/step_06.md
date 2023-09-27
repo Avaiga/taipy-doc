@@ -9,9 +9,9 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 Skipping tasks is a crucial capability of Taipy. If you run a function twice with the same inputs,
 you'll get the same output. Executing this type of function is inefficient and consumes unnecessary time and resources.
 
-Taipy offers the option to set the _skippable_ attribute for each task. If this attribute is set to
-True, Taipy Core’s scheduler automatically detects if changes have occurred on any of the input Data Nodes of a task. 
-If there are no changes, it automatically skips the execution of that task. By default, _skippable_ is set to False. 
+In Taipy, you have the choice to configure the _skippable_ attribute for each task. When this attribute is set to True, 
+Taipy Core's scheduler can automatically detect whether any changes have happened to the input Data Nodes of a task. 
+If there are no changes, it will skip the execution of that task. By default, _skippable_ is set to False.
 
 
 ![](config_06.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
@@ -84,7 +84,9 @@ Scenario 1: submit
 Value 849
 ```
 
-When you submit scenario 2, the scheduler skips the initial task in this second scenario. This is because both scenarios use the same Data Nodes for this task, and there have been no changes in the input Data Nodes since the last time the task ran when we submitted scenario 1.
+When you submit scenario 2, the scheduler skips the initial task in this second scenario. 
+This happens because both scenarios utilize the same Data Nodes for this task, and there haven't been any changes 
+in the input Data Nodes since the last time the task ran when we submitted scenario 1.
 
 ```python
 # the first task has already been executed by scenario 1
@@ -130,7 +132,7 @@ Results:
 [2022-12-22 16:20:10,257][Taipy][INFO] job JOB_count_values_... is completed.
 ```  
 
-Here, we change the input Data Node of the pipeline so Taipy will re-run the correct tasks to ensure that everything is up-to-date.
+In this case, we modify the input Data Node so that Taipy will execute the necessary tasks to ensure that everything is current and up-to-date.
 
 
 ```python

@@ -18,7 +18,9 @@ Let's discuss some of the essential functions that come along with Taipy.
 
 ## Utility of having scenarios
 
-With Taipy, users can make several instances of the same setup. The data can vary among these different scenario instances. It's crucial to grasp the distinctions in data among scenario instances. These variations in scenarios can occur for the following reasons:
+Using Taipy, users can create multiple copies of the same setup. These copies can have different data. 
+Understanding these differences in data between the copies is important. 
+These variations in scenarios can happen because of the following reasons:
 
 - Changing data from input data nodes, 
 
@@ -26,7 +28,7 @@ With Taipy, users can make several instances of the same setup. The data can var
 
 - Different values from parameters set by the end-user, etc.
 
-The developer can directly change the data nodes entities with the _write_ function (see below).
+The developer has the ability to directly modify the data nodes entities using the _write_ function (as shown below).
 
 ![](config_02.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
@@ -101,7 +103,10 @@ tp.delete(scenario.id)
 
 ## Ways of executing the code: Versioning
 
-Taipy provides a [versioning system](../../../../manuals/core/versioning/index.md) to keep track of the changes that a configuration experiences over time: new data sources, new parameters, new versions of your Machine Learning engine, etc. `python main.py -h` opens a helper to understand the versioning options at your disposal.
+Taipy provides a [versioning system](../../../../manuals/core/versioning/index.md) to 
+keep track of the changes that a configuration experiences over time: new data 
+ sources, new parameters, new versions of your Machine Learning engine, etc. 
+ `python main.py -h` opens a helper to understand the versioning options at your disposal.
 
 # Entire code
 

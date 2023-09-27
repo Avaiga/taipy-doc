@@ -12,7 +12,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 - `Scope.CYCLE`: Extend the scope by sharing data nodes across all scenarios of a given cycle.
 
-- `Scope.GLOBAL`: Finally, extend the scope globally (across all scenarios of all cycles). For example, the initial/historical dataset is usually shared by all the scenarios/pipelines/cycles. It is unique in the entire application.
+- `Scope.GLOBAL`: Finally, you can expand the scope globally, applying it across all scenarios in all cycles. For instance, the initial or historical dataset is typically shared by all scenarios, and cycles. It's a unique dataset throughout the entire application.
 
 ![](config_05.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
@@ -53,7 +53,9 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
         ```
 
 
-Cycles are created based on the _creation_date_ of scenarios. In the example below, we force the creation_date to a given date (in real life, the actual creation date of the scenario gets used automatically).
+Cycles are generated according to the _creation_date_ of scenarios. In the example 
+below, we set the creation_date to a specific date (typically, in real situations, 
+the actual creation date of the scenario is automatically used).
 
 ```python
 tp.Core().run()

@@ -28,11 +28,10 @@ $ pip install taipy
 
 # Taipy Studio
 
-There are two ways to configure Taipy, either by Python code or using Taipy Studio. Taipy Studio 
-is a VS Code extension that provides a graphical editor to describe pipelines. The configuration 
+You have two options for configuring Taipy: either through Python code or by using Taipy Studio. TTaipy Studio is a Visual Studio Code extension that offers a graphical editor for defining pipelines. The configuration 
 can be done easily and quickly with drag and drop.
 
-So, without further delay, let's begin to code!
+Now, without any more delay, let's get started with the coding!
 
 # Concepts
 

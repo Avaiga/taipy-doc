@@ -7,8 +7,8 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 Before looking at some code examples, to apprehend what is a *Scenario*, you need to 
 understand the *Data node* and *Task* concepts.
 
-- [**Data Nodes**](../../../../manuals/core/concepts/data-node.md): are the translation of 
-  variables in Taipy. Data Nodes don't contain the data itself but point to the data and know 
+- [**Data Nodes**](../../../../manuals/core/concepts/data-node.md): represents a variable in Taipy. 
+Data Nodes don't contain the data itself but point to the data and know 
   how to retrieve it. These Data Nodes can point to different types of data sources like CSV 
   files, Pickle files, databases, etc., and they can represent various types of Python variables 
   such as integers, strings, data frames, lists, and more. They are fully generic and can be 
@@ -25,14 +25,12 @@ understand the *Data node* and *Task* concepts.
   situations (i.e. various data/parameters values set by end-users).
 
 [**Configuration**](../../../../manuals/core/config/index.md) is a structure to define scenarios.
-It represents our Direct Acyclic Graph(s); it models the data sources and parameters, as well as 
-tasks. Once defined, a configuration acts like a superclass; it is used to instantiate different 
-scenario instances.
+It serves as the blueprint for our Directed Acyclic Graph(s) and models the data sources, parameters, and tasks. 
+After being defined, a configuration functions like a superclass and is employed to generate various instances of scenarios.
 
 # Configuring a Scenario
 
-Let’s consider a simple scenario representing a single function `predict` taking two inputs: a 
-dataset and a date to forecast and generate a prediction for the chosen date. 
+Think about the most basic pipeline: one function that needs two things to work – some data and a date. It uses these to generate a prediction for that date.
 
 See the function code below:
 

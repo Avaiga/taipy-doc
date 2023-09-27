@@ -6,7 +6,8 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Advanced*
 
-To have an action after changing a job status, we can [subscribe a function](../../../../manuals/core/entities/orchestrating-and-job-execution.md/#subscribe-to-job-execution) to a scenario. A status change calls this function. This feature allows the creation of logs or particular events for Taipy GUI.
+To perform an action after a job status change, you can [subscribe a function](../../../../manuals/core/entities/orchestrating-and-job-execution.md/#subscribe-to-job-execution) to a scenario. 
+When there is a status change, this function is triggered. This feature enables the creation of logs or specific events for the Taipy GUI.
 
 ```python
 def callback_scenario_state(scenario, job):

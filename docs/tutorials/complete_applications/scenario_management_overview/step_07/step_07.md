@@ -28,7 +28,8 @@ def add(nb):
 
 ![](config_07.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-This line of code changes the execution mode. _standalone_ makes Taipy Core asynchronous. Here, a maximum of two tasks are able to run concurrently.
+This line of code alters the execution mode. Setting it to _standalone_ makes Taipy Core work asynchronously. 
+In this configuration, a maximum of two tasks can run simultaneously.
 
 ```python
 Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)

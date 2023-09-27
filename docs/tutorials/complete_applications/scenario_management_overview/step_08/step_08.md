@@ -8,16 +8,17 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 ![](config_08.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-Taipy provides a mechanism to compare data nodes of scenarios by providing a function directly into the scenario's configuration.
+Taipy offers a way to compare data nodes across scenarios by including a function directly in the configuration of the scenario.
 
 ## Step 1: The first step consists in declaring on which data nodes to apply the comparison functions:
 
-In this example, we want a comparison applied to the '_output_' Data Node. It is indicated in the comparators parameter of the `configure_scenario()`.
+In this example, we want to apply a comparison to the '_output_' Data Node. It is indicated in the comparators parameter of the `configure_scenario()`.
 
 ```python
 scenario_cfg = Config.configure_scenario(id="multiply_scenario",
                                                     name="my_scenario",
-                                                    tasks_configs=[pipeline_cfg],
+                                                    tasks_configs=[first_task_cfg,
+                                                                   second_task_cfg],
                                                     comparators={output_data_node_cfg.id: compare_function},)
 ```
 ## Step 2: Implement the comparison function (`compare_function()`) used above.
