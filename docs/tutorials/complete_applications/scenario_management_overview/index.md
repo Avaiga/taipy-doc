@@ -9,10 +9,6 @@ create dataflows (pipelines), manage and record their executions, and access the
 It is designed to be used by end-users in a multi-user context and gets especially useful 
 for Machine Learning or Mathematical optimization.
 
-# Objective of the Application
-
-TODO add a description of the application we are building
-
 # Before we begin
 
 Only Taipy has to be installed. **Taipy** package requires Python 3.8 or newer;
@@ -38,11 +34,9 @@ can be done easily and quickly with drag and drop.
 
 So, without further delay, let's begin to code!
 
-# Steps
+# Concepts
 
 1. [Configuration](step_01/step_01.md)
-
-2. [Basic functions](step_02/step_02.md)
 
 3. [Data Node types](step_03/step_03.md)
 

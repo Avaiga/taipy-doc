@@ -24,10 +24,10 @@ understand the *Data node* and *Task* concepts.
   situations. Taipy provide the framework to execute various scenarios under different 
   situations (i.e. various data/parameters values set by end-users).
 
-- [**Configuration**](../../../../manuals/core/config/index.md) is a structure to define 
-  scenarios. It represents our Direct Acyclic Graph(s); it models the data sources and 
-  parameters, as well as tasks. Once defined, a configuration acts like a superclass; it is used 
-  to instantiate different scenario instances.
+[**Configuration**](../../../../manuals/core/config/index.md) is a structure to define scenarios.
+It represents our Direct Acyclic Graph(s); it models the data sources and parameters, as well as 
+tasks. Once defined, a configuration acts like a superclass; it is used to instantiate different 
+scenario instances.
 
 # Configuring a Scenario
 
@@ -59,7 +59,7 @@ Three Data Nodes are being configured (**historical_temperature**, **date_to_for
 
     === "Python configuration"
 
-        **Alternative 2:** Configuration using Python Code
+        **Alternative 1:** Configuration using Python Code
 
         Here is the code to configure a simple scenario.
 
@@ -81,7 +81,7 @@ Three Data Nodes are being configured (**historical_temperature**, **date_to_for
 
     === "Using Taipy Studio"
 
-        **Alternative 1:** Configuration using Taipy Studio
+        **Alternative 2:** Configuration using Taipy Studio
 
         By watching the animation below, you can see how this configuration gets created using 
         Taipy Studio. In fact, Taipy Studio is an editor of a TOML file specific to Taipy. It 
@@ -102,6 +102,8 @@ Three Data Nodes are being configured (**historical_temperature**, **date_to_for
         ```
 
 The configuration is done! Let's use it to instantiate scenarios and submit them.
+
+# Instantiate Scenario
 
 First, run the Core service in your code (`tp.Core().run()`). Then, you can play with Taipy: 
 
@@ -140,7 +142,7 @@ Results:
 Value at the end of task 23.45
 ```    
 
-In this code, you can see how to create qnd submit scenarios, retrieve data nodes from, 
+In this code, you can see how to create and submit scenarios, retrieve data nodes, 
 read and write data. Many other functions are described in the manuals, in particular in the 
 [taipy](../../../../manuals/reference/pkg_taipy.md), 
 [scenario](https://docs.taipy.io/en/develop/manuals/core/entities/scenario-cycle-mgt/) and 

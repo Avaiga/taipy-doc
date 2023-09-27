@@ -6,7 +6,8 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Advanced*
 
-Taipy has [different ways](../../../../manuals/core/config/job-config.md) to execute the code. Changing the execution mode can be useful for running multiple tasks in parallel.
+Taipy has [different ways](../../../../manuals/core/config/job-config.md) to execute the code.
+Changing the execution mode can be useful for running multiple tasks in parallel.
 
 - _standalone_ mode: asynchronous. Jobs can be run in parallel depending on the graph of execution (if _max_nb_of_workers_ > 1).
 
