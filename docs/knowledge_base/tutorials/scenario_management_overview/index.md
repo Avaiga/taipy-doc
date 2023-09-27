@@ -35,7 +35,7 @@ Now, without any more delay, let's get started with the coding!
 
 # Concepts
 
-1. [Configuration](step_01/step_01.md)
+1. [Scenario configuration and run](step_01/step_01.md)
 
 3. [Data Node types](step_03/step_03.md)
 
