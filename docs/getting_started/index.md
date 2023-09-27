@@ -74,7 +74,6 @@ The graph involves:
 
 3. **Scenario & Data Management**: With the Core service up and running, you can create
     and manage scenarios, submit task graphs for execution, and access data nodes:
-
     ```python linenums="1"
     import taipy as tp
     
@@ -83,19 +82,16 @@ The graph involves:
     hello_scenario.submit()
     print(hello_scenario.message.read())
     ```
-
-   - In line 3, method `tp.create_scenario()` instantiates the new scenario name 
-       *hello_scenario* from the scenario configuration built before.
-
-   - Line 4, sets the input data node *input_name* of *hello_scenario* with the string value 
-       "Taipy" using the `write()` method.
-
-   - Line 5 submits the *hello_scenario* for execution, which triggers the creation and 
-       execution of a job. This job reads the input data node, passes the value to the 
-       *build_message()* function, and writes the result to the output data node.
-
-   - Line 6 reads and prints the output data node *message* written by the execution of the 
-       scenario *hello_scenario*.
+   
+    - In line 3, method `tp.create_scenario()` instantiates the new scenario name 
+        *hello_scenario* from the scenario configuration built before.
+    - Line 4, sets the input data node *input_name* of *hello_scenario* with the string value 
+        "Taipy" using the `write()` method.
+    - Line 5 submits the *hello_scenario* for execution, which triggers the creation and 
+        execution of a job. This job reads the input data node, passes the value to the 
+        *build_message()* function, and writes the result to the output data node.
+    - Line 6 reads and prints the output data node *message* written by the execution of the 
+        scenario *hello_scenario*.
 
 4. **Run the application**: For your convenience, you can get the complete code here:
     <a href="./hello_world_scenario.py" download>`hello_world_scenario.py`</a>
