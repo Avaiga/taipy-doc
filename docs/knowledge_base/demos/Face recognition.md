@@ -1,4 +1,4 @@
-## Introduction:
+# Real-time Face Recognition with Taipy: A Powerful Demo
 Welcome to Taipy's Face Recognition demo, where we unveil the incredible capabilities of our AI-driven platform. In this article, we will explore the description and functionality of our Face Recognition demo, illustrating how you can harness Taipy's potential for real-time face detection and recognition.
 
 ## Understanding Face Recognition
