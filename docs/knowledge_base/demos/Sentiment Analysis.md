@@ -1,4 +1,4 @@
-## Introduction:
+# Sentiment Analysis with Taipy: Unlock Insights from Text
 Welcome to Taipy's Sentiment Analysis demo page, where you can witness the impressive capabilities of our AI-powered text analysis tool. In this article, we will delve into the description and functionality of our Sentiment Analysis use case, showcasing how you can harness Taipy's potential for unlocking valuable insights from text data.
 
 ## Understanding Sentiment Analysis
