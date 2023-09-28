@@ -96,11 +96,17 @@ The graph involves:
 4. **Run the application**: For your convenience, you can get the complete code here:
     <a href="./hello_world_scenario.py" download>`hello_world_scenario.py`</a>
 
-Expected Output:
-``` console
-[2023-02-08 20:19:35,062][Taipy][INFO] job JOB_build_msg_9e5a5c28-6c3e-4b59-831d-fcc8b43f882e is completed.
-Hello Taipy!
-```
+    Run the application with the Taipy CLI command:
+
+    ``` console
+    $ taipy run hello_world_scenario.py
+    ```
+
+    Expected Output:
+    ``` console
+    [2023-02-08 20:19:35,062][Taipy][INFO] job JOB_build_msg_9e5a5c28-6c3e-4b59-831d-fcc8b43f882e is completed.
+    Hello Taipy!
+    ```
 
 ## Build a graphical interface
 
