@@ -24,7 +24,7 @@ Taipy's 5-page Production Planning application addresses these manufacturing cha
 
 # The 5-Page Production Planning Application
 
-Taipy's Production Planning demo is a 5-page application designed to tackle the complexities of production planning. Let's explore each page's functionality:
+Taipy's [Production Planning](https://production-planning.taipy.cloud/) demo is a 5-page application designed to tackle the complexities of production planning. Let's explore each page's functionality:
 
 ## 1. Input Data Visualization: 
 After registering and logging in, users are greeted with a main chart displaying the future demand for finished products (FPA and FPB) over the next 11 months. This page provides critical insights into upcoming production requirements.
