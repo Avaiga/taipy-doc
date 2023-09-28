@@ -23,3 +23,9 @@ The Predictions page empowers users to create scenarios for predicting future CO
 ## 5. **World Page**
 
 The World page presents global COVID-19 statistics through line charts and pie charts. Users can switch between viewing absolute numbers or the relative impact of COVID-19 on different countries, offering a comprehensive overview of the pandemic's worldwide reach.
+
+# Conclusion
+
+Our COVID-19 Dashboard is a testament to Taipy's front-end and back-end power in building informative and interactive applications. In a world where data-driven insights are more critical than ever, this dashboard provides a valuable tool for visualizing and predicting COVID-19 trends.
+
+Explore the dashboard, try out different scenarios, and gain insights into the global impact of the pandemic. Taipy Core and Taipy GUI have seamlessly come together to create a versatile and user-friendly application that can assist individuals and organizations in making informed decisions during these challenging times.
