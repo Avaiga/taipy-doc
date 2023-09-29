@@ -27,7 +27,8 @@ To leverage Taipy's sentiment analysis capabilities for your own projects, follo
 
 5-Upload the text file you wish to analyze.
 
-6- Taipy will process the entire text and display the sentiments detected within the document.
+6- The application will process the entire text and display the sentiments detected within the document.
+
 
 
 # Conclusion
