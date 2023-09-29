@@ -1,4 +1,4 @@
-Production planning is a pivotal aspect of manufacturing, ensuring that resources are allocated efficiently to meet demand while minimizing costs. Taipy's Production Planning demo offers a comprehensive solution for optimizing production and cost management. In this article, we'll delve into this 5-page application that addresses the challenges of production planning.
+Production planning is a pivotal aspect of manufacturing, ensuring that resources are allocated efficiently to meet demand while minimizing costs. Taipy's Production Planning demo offers a comprehensive solution for optimizing production and cost management. In this demo, we'll delve into this 5-page application that addresses the challenges of production planning.
 
 # Understanding Production Planning
 
