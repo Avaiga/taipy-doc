@@ -12,7 +12,7 @@ The initial page of our Sentiment Analysis app, named "Line", is meant for insta
 The second page, named "Text", takes sentiment analysis to the next level by allowing users to upload entire text files for comprehensive sentiment analysis. Users can select a text file from their device, and Taipy will analyze the entire content to provide insights into the sentiments expressed throughout the document. This feature is particularly useful for processing longer texts such as articles, reports, or extensive customer feedback.
 
 # Powered by Taipy
-Both pages of this Sentiment Analysis application were built using Taipy's advanced technology. Taipy is an open-source Python library for building web applications' front-end and back-end. And in this demo, it allowed the build of the GUI to interact with the AI-powered text analysis tool.
+Both pages of this Sentiment Analysis application were built using Taipy's advanced technology. Taipy is an open-source Python library for building web applications' front-end and back-end. And in this demo, it allowed building the GUI to interact with the AI-powered text analysis tool.
 
 # How to Use Taipy for Sentiment Analysis
 To make use of Taipy's sentiment analysis abilities for your own projects, just follow these easy steps:
