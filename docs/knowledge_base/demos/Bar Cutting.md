@@ -1,4 +1,4 @@
-Precision bar cutting is an essential task in various industries, and the Bar Cutting demo powered by Taipy is here to transform it. In this article, we will explore this application's capabilities, which optimize bar cutting using different algorithms for enhanced efficiency and minimized losses.
+Precision bar cutting is an essential task in various industries, and the Bar Cutting demo powered by Taipy is here to transform it. In this demo, we will explore this application's capabilities, which optimize bar cutting using different algorithms for enhanced efficiency and minimized losses.
 
 # Understanding Bar Cutting Optimization
 
@@ -7,7 +7,7 @@ Bar cutting optimization is the process of efficiently cutting bars or materials
 
 # The 5-page application
 
-## Page 1 : A Glimpse of the Initial Page
+## Page 1: A Glimpse of the Initial Page
 
 On the initial page of the application, users are presented with the option to select one of the two cases they wish to execute. Clicking the RUN button triggers the following sequence of actions:
 
@@ -17,23 +17,23 @@ On the initial page of the application, users are presented with the option to s
 
 The bar chart visually represents the cutting patterns, showcasing the lengths of customer bars and, notably, the loss. By switching between algorithms, users can instantly observe the difference in loss, with the Optim algorithm typically outperforming the Baseline.
 
-## Page 2 : Exploring Input Data and Metrics
+## Page 2: Exploring Input Data and Metrics
 
 For deeper insights, users can open the Parameters panel (Taipy Expandable) to examine the input data for the chosen case. This includes information about available stock (mother bars for cutting) and demand.
 
 The Metrics page displays key metrics for both the baseline and Optim models, offering different representations such as bar charts and pie charts. Metrics showcase the loss as a percentage of the overall length used (mother bars) or as the actual loss value (in millimeters).
 
 
-## Page 3 : Comparing Model Performance
+## Page 3: Comparing Model Performance
 
 The balance icon on the left panel leads users to another page where the performance of the two models is displayed side by side. This comparative view provides valuable insights into which algorithm yields superior results for the selected case.
 
 
-## Page 4 : Comparing Scenarios 
+## Page 4: Comparing Scenarios 
 
 For a comprehensive analysis, users can compare the performance of each model across different use cases (scenarios) by clicking on the balance icon. This feature aids in understanding how each algorithm performs under varying conditions.
 
-## Page 5 : Databases 
+## Page 5: Databases 
 The results are summarized and displayed in a table format that can be conveniently downloaded as a CSV file for further analysis.
 
 
