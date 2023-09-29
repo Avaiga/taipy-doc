@@ -1,4 +1,4 @@
-Welcome to Taipy's Tweet Generation demo, where we unveil the extraordinary capabilities of our AI-driven platform. In this article, we will explore the description and functionality of our Tweet Generation demo, illustrating how you can harness Taipy to create unique Tweets effortlessly.
+Welcome to Taipy's Tweet Generation demo, where we showcase the exceptional capabilities of our AI-powered platform. In this article, we will explain the description and how our Tweet Generation works, demonstrating how you can use Taipy to effortlessly create unique Tweets.
 
 # Understanding Tweet Generation
 Tweet generation is a fascinating application of AI that empowers users to craft engaging and unique Tweets with the help of AI models. Taipy's Tweet Generation demo showcases the seamless integration of cutting-edge AI models, including GPT-3's Davinci engine for text generation and DALL·E for image generation.
