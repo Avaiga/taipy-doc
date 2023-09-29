@@ -1,4 +1,4 @@
-In the fast-paced world of business, retaining customers is a top priority. The Churn Classification demo, powered by Taipy, is here to revolutionize customer retention. In this article, we'll explore this multi-page application that encompasses data visualization, model management, model comparison, and predictive analytics.
+In the fast-paced world of business, retaining customers is a top priority. The Churn Classification demo, powered by Taipy, is here to revolutionize customer retention. In this demo, we'll explore this multi-page application that encompasses data visualization, model management, model comparison, and predictive analytics.
 
 
 # Understanding Churn Classification
