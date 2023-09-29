@@ -16,7 +16,7 @@ This application demonstrates two critical aspects:
 2- **Real-time Face Detection and Recognition with OpenCV:** Dive into the world of computer vision and understand how OpenCV, in combination with Taipy, can detect and recognize faces accurately and efficiently in real-time scenarios.
 
 ## Powered by Taipy
-This Face Recognition demo exemplifies the fusion of Taipy's AI capabilities with OpenCV's image processing prowess. Taipy's advanced understanding of text data is complemented by OpenCV's ability to analyze visual data, resulting in a powerful synergy that offers endless possibilities for developers and businesses alike.
+The Face Recognition demo serves as a prime example of the synergy between Taipy's AI capabilities and OpenCV's image processing expertise. Taipy's advanced text data comprehension is enhanced by OpenCV's capacity to analyze visual data. This collaboration creates a potent combination, opening up numerous opportunities for developers and businesses to explore.
 
 # How to Use Taipy for Face Recognition
 To experience real-time face detection and recognition using Taipy's GUI component, follow these straightforward steps:
