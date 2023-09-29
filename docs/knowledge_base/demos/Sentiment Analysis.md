@@ -19,15 +19,15 @@ To make use of Taipy's sentiment analysis abilities for your own projects, just 
 
 1. Go on this [page](https://sentiment-analysis.taipy.cloud/line)
 
-2-On the first page, input the text you want to analyze directly into the provided text box.
+2. On the first page, input the text you want to analyze directly into the provided text box.
 
-3-Click the "Analyze" button to receive instant sentiment analysis results.
+3. Click the "Analyze" button to receive instant sentiment analysis results.
 
-4-To analyze an entire text file, proceed to the second page.
+4. To analyze an entire text file, proceed to the second page.
 
-5-Upload the text file you wish to analyze.
+5. Upload the text file you wish to analyze.
 
-6- The application will process the entire text and display the sentiments detected within the document.
+6. The application will process the entire text and display the sentiments detected within the document.
 
 
 
