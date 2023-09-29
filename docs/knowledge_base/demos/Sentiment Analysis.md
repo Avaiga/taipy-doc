@@ -12,7 +12,7 @@ The first page of our Sentiment Analysis application, named "Line", is designed 
 The second page, named "Text", takes sentiment analysis to the next level by allowing users to upload entire text files for comprehensive sentiment analysis. Users can select a text file from their device, and Taipy will analyze the entire content to provide insights into the sentiments expressed throughout the document. This feature is particularly useful for processing longer texts such as articles, reports, or extensive customer feedback.
 
 # Powered by Taipy
-Both pages of this Sentiment Analysis application were created using Taipy's cutting-edge technology. Taipy is a versatile and powerful AI language model that excels at understanding and interpreting text data. Its ability to accurately identify sentiments, whether positive, negative, or neutral, makes it an invaluable tool for businesses and individuals seeking to gain actionable insights from textual information.
+Both pages of this Sentiment Analysis application were built using Taipy's advanced technology. Taipy is a versatile and potent AI language model that excels in comprehending and interpreting text data. Its capability to precisely detect sentiments, be they positive, negative, or neutral, renders it an invaluable tool for businesses and individuals looking to extract practical insights from textual information.
 
 # How to Use Taipy for Sentiment Analysis
 To leverage Taipy's sentiment analysis capabilities for your own projects, follow these simple steps:
