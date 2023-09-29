@@ -28,6 +28,6 @@ To experience real-time face detection and recognition using Taipy's GUI compone
 3- Observe as Taipy's integration with OpenCV detects and recognizes faces in the video stream in real time.
 
 # Conclusion
-Face recognition is a transformative technology with wide-ranging applications, and Taipy's Face Recognition demo is here to showcase its potential. Whether you want to explore custom UI components or harness real-time face detection and recognition, Taipy empowers you to unlock the capabilities of AI and computer vision.
+Face recognition is a powerful technology with many uses, and Taipy's Face Recognition demo is here to demonstrate what it can do. Whether you want to try out custom user interface features or use real-time face detection and recognition, Taipy lets you tap into the power of AI and computer vision.
 
 Ready to explore the future of face recognition? Visit Taipy's Face Recognition demo page today and experience the power of Taipy's real-time capabilities.
