@@ -25,7 +25,7 @@ Further explore Taipy's capabilities for ML application development.
 Dive into creating an interactive Image Classification web application.
 Conclusion
 
-Our video tutorial series offers valuable insights into the world of interactive image classification using Taipy, Nvidia CUDA, and TensorFlow. Whether you're a beginner or an experienced developer, you'll find practical guidance and examples to enhance your ML workflows.
+Our video tutorial series provides valuable insights into the realm of interactive image classification using Taipy, Nvidia CUDA, and TensorFlow. Whether you're a novice or a seasoned developer, you'll discover practical guidance and real-world examples to enhance your machine learning workflows.
 
 Stay tuned for the next part of our series, where we'll concentrate on managing data pipelines with Taipy Core, providing seamless integration with Taipy.
 
