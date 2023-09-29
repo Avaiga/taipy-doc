@@ -2,7 +2,7 @@ Welcome to Taipy's Face Recognition demonstration, where we showcase the remarka
 
 
 # Understanding Face Recognition
-Face recognition is a cutting-edge technology that allows computers to identify and verify human faces in images and videos. Taipy's Face Recognition demo showcases the seamless integration of this technology into our platform, providing a user-friendly experience for capturing video from your webcam and performing real-time face detection.
+Face recognition is an advanced technology that enables computers to recognize and verify human faces in images and videos. Taipy's Face Recognition demo highlights the smooth incorporation of this technology into our platform, offering a user-friendly way to capture video from your webcam and conduct real-time face detection.
 
 # The Face Recognition Demo
 ## Real-time Face Detection
