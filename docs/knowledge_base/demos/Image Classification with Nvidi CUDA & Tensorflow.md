@@ -17,7 +17,7 @@ Don't miss out on part 2, where we delve into creating powerful custom pipelines
 
 # Video 2: Interactive Image Classification with Taipy 
 
-In our second video, we continue our exploration of interactive image classification applications using Taipy. This video focuses on creating an Image Classification web application, building on the knowledge from the first video.
+In our second video, we continue our journey through interactive image classification applications with Taipy. This installment is dedicated to constructing an Image Classification web application, building upon the insights gained from the first video.
 
 ## Video Highlights:
 
