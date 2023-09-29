@@ -17,7 +17,7 @@ Both pages of this Sentiment Analysis application were created using Taipy's cut
 # How to Use Taipy for Sentiment Analysis
 To leverage Taipy's sentiment analysis capabilities for your own projects, follow these simple steps:
 
-1-Go on this page : https://sentiment-analysis.taipy.cloud/line 
+1. Go on this [page](https://sentiment-analysis.taipy.cloud/line)
 
 2-On the first page, input the text you want to analyze directly into the provided text box.
 
