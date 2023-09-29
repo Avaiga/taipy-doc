@@ -1,4 +1,4 @@
-In the realm of financial markets, data is king. The ability to quickly and easily visualize historical stock data and make predictions is a game-changer for investors and financial analysts. Our Stock Visualization demo, built with Taipy GUI and powered by the Prophet library, offers a revolutionary approach to achieving this.
+In the realm of financial markets, data is king. The ability to quickly and easily visualize historical stock data and make predictions is a game-changer for investors and financial analysts. Our Stock Visualization demo, built with Taipy front-end component and powered by the [Prophet](https://facebook.github.io/prophet/docs/quick_start.html) library, offers a revolutionary approach to achieving this.
 
 
 # Unlocking the Potential of Stock Visualization
@@ -13,7 +13,7 @@ The core goal of our demo is to demonstrate the ease with which you can create a
 
 # Harnessing Prophet for Predictions
 
-Predicting stock trends is a crucial aspect of financial analysis. In our demo, we utilize Meta's [Prophet](https://facebook.github.io/prophet/docs/quick_start.html) library to provide predictions for stocks over the next 1 to 5 years. This predictive capability empowers users to make well-informed decisions with the help of Taipy.
+Predicting stock trends is a crucial aspect of financial analysis. In our demo, we utilize Meta's Prophet library to provide predictions for stocks over the next 1 to 5 years. This predictive capability empowers users to make well-informed decisions with the help of Taipy.
 
 
 # Conclusion
