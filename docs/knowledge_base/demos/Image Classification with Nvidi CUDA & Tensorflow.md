@@ -29,4 +29,4 @@ Our video tutorial series provides valuable insights into the realm of interacti
 
 Stay tuned for the next part of our series, where we'll concentrate on managing data pipelines with Taipy Core, providing seamless integration with Taipy.
 
-Ready to embark on this exciting journey? Watch our videos and explore the potential of Taipy for creating intelligent image classification applications.
+Are you prepared to embark on this thrilling journey? Tune in to our videos and unlock the possibilities of Taipy for developing intelligent image classification applications.
