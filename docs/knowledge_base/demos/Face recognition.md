@@ -1,4 +1,5 @@
-Welcome to Taipy's Face Recognition demo, where we unveil the incredible capabilities of our AI-driven platform. In this article, we will explore the description and functionality of our Face Recognition demo, illustrating how you can harness Taipy's potential for real-time face detection and recognition.
+Welcome to Taipy's Face Recognition demonstration, where we showcase the remarkable abilities of our AI-powered platform. In this article, we will delve into the description and functionality of our Face Recognition demo, demonstrating how you can utilize Taipy's potential for real-time face detection and recognition.
+
 
 # Understanding Face Recognition
 Face recognition is a cutting-edge technology that allows computers to identify and verify human faces in images and videos. Taipy's Face Recognition demo showcases the seamless integration of this technology into our platform, providing a user-friendly experience for capturing video from your webcam and performing real-time face detection.
