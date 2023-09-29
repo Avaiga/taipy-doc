@@ -3,7 +3,7 @@ Welcome to our video tutorial series, where we take you on a journey to create i
 
 # Video 1: Building an Interactive Image Classification Application with Taipy and Nvidia CUDA
 
-In the first video of our series, we'll show you how to build an interactive image classification application using Taipy and Nvidia CUDA. You'll quickly learn how to create an Image Classification web application with the intuitive Taipy front-end.
+In the initial video of our series, we will demonstrate how to construct an interactive image classification application using Taipy and Nvidia CUDA. You will swiftly grasp the process of building an Image Classification web application with the user-friendly Taipy front-end.
 
 ## Video Highlights:
 
