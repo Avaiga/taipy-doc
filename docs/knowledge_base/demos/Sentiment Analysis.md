@@ -1,7 +1,7 @@
 Welcome to Taipy's Sentiment Analysis demo page, where you can witness how an AI-powered text analysis tool is leveraged by Taipy. In this demo, we will delve into the description and functionality of our Sentiment Analysis use case, showcasing how you can harness Taipy's potential for unlocking valuable insights from text data.
 
 # Understanding Sentiment Analysis
-Sentiment analysis, also known as "opinion mining", is a Natural Language Processing (NLP) technique used to determine the emotional tone behind a piece of text. It enables businesses and individuals to gain a deeper understanding of the sentiments, opinions, and attitudes expressed within written content. Taipy's sentiment analysis model makes this process incredibly efficient and accurate.
+Sentiment analysis, also called "opinion mining", is a technique in Natural Language Processing (NLP) used to figure out the emotional tone conveyed in a text. It helps businesses and individuals better grasp the feelings, viewpoints, and attitudes expressed in written content. Taipy's sentiment analysis model excels in making this process highly efficient and accurate.
 
 # The Two-Page Application
 
