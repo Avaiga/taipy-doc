@@ -1,4 +1,4 @@
-Welcome to Taipy's Sales Dashboard demo, where we showcase the remarkable capabilities of our platform in data visualization. In this article, we will explore the description and functionality of our Sales Dashboard, illustrating how you can leverage Taipy to create interactive dashboards for your Excel data effortlessly.
+Welcome to Taipy's Sales Dashboard demo, where we showcase the remarkable capabilities of our platform in data visualization. In this demo, we will explore the description and functionality of our Sales Dashboard, illustrating how you can leverage Taipy to create interactive dashboards for your Excel data effortlessly.
 
 # Understanding the Sales Dashboard
 The Sales Dashboard is a versatile tool that simplifies the process of visualizing data from Excel files. Taipy's technology drives this demo, enabling users to read Excel data and display valuable insights. Users can filter data based on city, customer, and gender, making examining metrics specific to different groups and locations easy.
