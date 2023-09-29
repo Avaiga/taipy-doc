@@ -27,6 +27,6 @@ Conclusion
 
 Our video tutorial series provides valuable insights into the realm of interactive image classification using Taipy, Nvidia CUDA, and TensorFlow. Whether you're a novice or a seasoned developer, you'll discover practical guidance and real-world examples to enhance your machine learning workflows.
 
-Stay tuned for the next part of our series, where we'll concentrate on managing data pipelines with Taipy Core, providing seamless integration with Taipy.
+Stay tuned for the next part of our series, where we'll focus on the management of data pipelines using Taipy Core, ensuring smooth integration with Taipy for enhanced functionality.
 
 Are you prepared to embark on this thrilling journey? Tune in to our videos and unlock the possibilities of Taipy for developing intelligent image classification applications.
