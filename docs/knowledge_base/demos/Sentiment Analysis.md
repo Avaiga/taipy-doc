@@ -6,7 +6,7 @@ Sentiment analysis, also called "opinion mining", is a technique in Natural Lang
 # The Two-Page Application
 
 ## Page 1: Analyzing User Input
-The first page of our Sentiment Analysis application, named "Line", is designed for real-time analysis of user input. Whether it's a short sentence or a paragraph, simply type or paste the text into the input box, and Taipy will swiftly assess the sentiments expressed within the text. This feature is ideal for quick sentiment assessments of social media comments, customer reviews, or any text data you encounter on the web.
+The initial page of our Sentiment Analysis app, named "Line", is meant for instantly analyzing user input. Whether it's a brief sentence or a longer paragraph, just type or paste the text into the input box, and Taipy will quickly evaluate the sentiments conveyed in the text. This is perfect for rapidly gauging the sentiments in social media comments, customer reviews, or any text you come across online.
 
 ## Page 2: Uploading and Analyzing Text Files
 The second page, named "Text", takes sentiment analysis to the next level by allowing users to upload entire text files for comprehensive sentiment analysis. Users can select a text file from their device, and Taipy will analyze the entire content to provide insights into the sentiments expressed throughout the document. This feature is particularly useful for processing longer texts such as articles, reports, or extensive customer feedback.
