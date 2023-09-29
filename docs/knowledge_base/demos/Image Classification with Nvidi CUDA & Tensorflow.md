@@ -1,4 +1,4 @@
-Welcome to our video tutorial series, where we take you on a journey to create interactive image classification applications using Taipy, [Nvidia CUDA](https://developer.nvidia.com/cuda-toolkit), and [TensorFlow](https://www.tensorflow.org/). In this demo, we'll explore the exciting world of building intelligent image classifiers with powerful tools and technologies.
+Welcome to our video tutorial series, where we take you on a journey to create interactive image classification applications using Taipy, [Nvidia CUDA](https://developer.nvidia.com/cuda-toolkit), and [TensorFlow](https://www.tensorflow.org/). In this demonstration, we'll dive into the fascinating realm of constructing intelligent image classifiers using these robust tools and technologies.
 
 
 # Video 1: Building an Interactive Image Classification Application with Taipy and Nvidia CUDA
