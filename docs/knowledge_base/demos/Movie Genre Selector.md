@@ -23,13 +23,13 @@ The Movie Genre Selector is a prime example of how Taipy can make complex tasks 
 # How to Use Taipy for Genre Selection
 To explore and select movie genres using Taipy's Genre Selector, follow these simple steps:
 
-1- Visit Taipy [Movie Genre Selector Demo](https://demo-movie-genre.taipy.cloud/).
+1. Visit Taipy [Movie Genre Selector Demo](https://demo-movie-genre.taipy.cloud/).
 
-2- Interact with the user-friendly interface to explore different movie genres. Choose your favorite genre on the scrolling menu. 
+2. Interact with the user-friendly interface to explore different movie genres. Choose your favorite genre on the scrolling menu. 
 
-3- Make selections to discover movies that match your preferences.
+3. Make selections to discover movies that match your preferences.
 
-4- Enjoy personalized 7 movie recommendations based on your genre choices.
+4. Enjoy personalized 7 movie recommendations based on your genre choices.
 
 # Conclusion
 Choosing the perfect movie genre doesn't have to be a daunting task. Taipy's Genre Selector demo is here to simplify the process and enhance your movie-watching experience. Whether looking for new genres to explore or seeking tailored movie recommendations, Taipy empowers you to easily discover movies.
