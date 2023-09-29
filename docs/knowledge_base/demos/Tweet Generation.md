@@ -17,7 +17,7 @@ This application highlights several key features:
 3- Style Transfer: Users can infuse the style of a specific Twitter account into their Tweet, making it feel more authentic and in line with their desired audience.
 
 # Powered by Taipy
-The Tweet Generation demo is a testament to Taipy's ability to harness the potential of AI models for creative and engaging content generation. By combining text and images, Taipy empowers users to craft Tweets that stand out on social media platforms.
+The Tweet Generation demo exemplifies Taipy's capacity to utilize AI models for creative and captivating content generation. By merging text and images, Taipy empowers users to create Tweets that grab attention on social media platforms.
 
 # How to Use Taipy for Tweet Generation
 To create captivating Tweets with Taipy's Tweet Generation demo, follow these straightforward steps:
