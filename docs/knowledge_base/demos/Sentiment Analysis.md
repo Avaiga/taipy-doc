@@ -34,4 +34,4 @@ To make use of Taipy's sentiment analysis abilities for your own projects, just 
 # Conclusion
 Sentiment analysis is a valuable tool for comprehending the emotions and viewpoints conveyed in text data, and Taipy makes it easy and effective for various uses. Whether you require swift insights from user comments or thorough sentiment analysis of extensive documents, Taipy's Sentiment Analysis feature is available to assist you in uncovering valuable information concealed within text.
 
-Ready to get started? Visit Taipy's Sentiment Analysis demo page today and discover the future of text analysis with Taipy.
+Would you be ready to get started? Visit Taipy's [Sentiment Analysis demo page](https://sentiment-analysis.taipy.cloud/line) today and discover the future of text analysis with Taipy.
