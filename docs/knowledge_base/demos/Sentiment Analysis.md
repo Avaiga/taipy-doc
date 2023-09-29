@@ -15,7 +15,7 @@ The second page, named "Text", takes sentiment analysis to the next level by all
 Both pages of this Sentiment Analysis application were built using Taipy's advanced technology. Taipy is a versatile and potent AI language model that excels in comprehending and interpreting text data. Its capability to precisely detect sentiments, be they positive, negative, or neutral, renders it an invaluable tool for businesses and individuals looking to extract practical insights from textual information.
 
 # How to Use Taipy for Sentiment Analysis
-To leverage Taipy's sentiment analysis capabilities for your own projects, follow these simple steps:
+To make use of Taipy's sentiment analysis abilities for your own projects, just follow these easy steps:
 
 1. Go on this [page](https://sentiment-analysis.taipy.cloud/line)
 
