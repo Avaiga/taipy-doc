@@ -6,7 +6,7 @@ Face recognition is a cutting-edge technology that allows computers to identify 
 
 # The Face Recognition Demo
 ## Real-time Face Detection
-Our Face Recognition demo offers real-time face detection, thanks to the powerful OpenCV library. Using Taipy's intuitive GUI component, users can access their webcam to capture video. The system then analyzes this video stream, identifying and highlighting faces as they appear in real time. This feature is invaluable for various applications, including security, human-computer interaction, and more.
+Our Face Recognition demo provides real-time face detection capabilities, thanks to the robust OpenCV library. Through Taipy's user-friendly GUI component, users can activate their webcam to capture video. The system subsequently processes this video stream, promptly identifying and outlining faces as they appear. This feature is highly valuable for numerous applications, such as security, human-computer interaction, and beyond.
 
 ## Key Takeaways
 This application demonstrates two critical aspects:
