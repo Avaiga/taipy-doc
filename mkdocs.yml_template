@@ -53,6 +53,7 @@ nav:
     - "Demos":
         - knowledge_base/demos/index.md
         - "Sentiment Analysis": knowledge_base/demos/sentiment_analysis.md
+        - "Movie genre selector": knowledge_base/demos/movie_genre_selector.md
     - "Tips and tricks":
         - knowledge_base/tips/index.md
   - "Manuals":
