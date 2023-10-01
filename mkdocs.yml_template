@@ -53,6 +53,7 @@ nav:
     - "Demos":
         - knowledge_base/demos/index.md
         - "Sentiment Analysis": knowledge_base/demos/sentiment_analysis.md
+        - "Bar Cutting": knowledge_base/demos/bar_cutting.md
     - "Tips and tricks":
         - knowledge_base/tips/index.md
   - "Manuals":
