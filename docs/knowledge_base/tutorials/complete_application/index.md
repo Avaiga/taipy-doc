@@ -2,12 +2,12 @@
 
     Taipy requires **Python 3.8** or newer.
 
-Welcome to the **Tutorial** guide, which will walk you through creating a complete application 
-from the front end to the back end. You don't need any prior knowledge to complete this tutorial.
+This tutorial guide will walk you through creating a complete application from the front end to 
+the back end. You don't need any prior knowledge to complete this tutorial.
 
 ![Tutorial application](step_01/overview.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-In the **"Tutorial"** each step concentrates on fundamental ideas about *Taipy*.
+Each step concentrates on fundamental ideas about *Taipy*.
 
 ## Objective of the Application
 
@@ -54,7 +54,6 @@ Page names in multi-page application? []: data_viz scenario performance
 Does the application use scenario management or version management? [No]: yes
 Does the application use Rest API? [No]: no
 ```
-
 
 So, without further delay, let's begin to code!
 
