@@ -52,6 +52,7 @@ nav:
         - "Data Nodes and Tasks": knowledge_base/tutorials/data_nodes.md
     - "Demos":
         - knowledge_base/demos/index.md
+        - "Tweet generation": knowledge_base/demos/tweet_generation.md
         - "Sentiment Analysis": knowledge_base/demos/sentiment_analysis.md
     - "Tips and tricks":
         - knowledge_base/tips/index.md
