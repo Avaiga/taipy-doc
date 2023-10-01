@@ -53,6 +53,7 @@ nav:
     - "Demos":
         - knowledge_base/demos/index.md
         - "Sentiment Analysis": knowledge_base/demos/sentiment_analysis.md
+        - "Production Planning": knowledge_base/demos/production-planning.md
     - "Tips and tricks":
         - knowledge_base/tips/index.md
   - "Manuals":
