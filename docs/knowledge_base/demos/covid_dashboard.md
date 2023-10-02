@@ -10,9 +10,9 @@ Here are some of the important things it can do:
 
 ## 1. **Country Page**
 
-The Country page offers detailed statistics on a specific country's COVID-19 data. Users can 
-easily change the selected country and toggle between displaying data cumulatively or in density 
-form. The interactive line chart on this page allows users to visualize the data dynamically.
+The Country page provides detailed statistics about COVID-19 in a particular country. Users can easily pick 
+a different country and switch between showing data cumulatively or in density form. 
+There's also an interactive line chart on this page that helps users see the data in a dynamic way.
 
 ## 2. **Pie Chart Representation**
 
