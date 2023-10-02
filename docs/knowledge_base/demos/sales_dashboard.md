@@ -33,15 +33,13 @@ these simple steps:
 
 1. Visit Taipy [Sales Dashboard Demo](https://sales-dashboard.taipy.cloud/).
 
-2. Upload your Excel file containing the sales data you wish to visualize.
-
-3. Use the provided filters to select specific criteria such as city, customer, or gender to 
+2. Use the provided filters to select specific criteria such as city, customer, or gender to 
     narrow down your data.
 
-4. Explore the two dynamic charts, sales by hour and sales by product, to analyze trends and 
+3. Explore the two dynamic charts, "sales by hour" and "sales by product", to analyze trends and 
     patterns.
 
-5. Gain valuable insights and make informed decisions based on your data analysis.
+4. Gain valuable insights and make informed decisions based on your data analysis.
 
 # Conclusion
 Crafting interactive and informative sales dashboards has never been easier, thanks to Taipy's 
