@@ -1,7 +1,7 @@
-Welcome to Taipy's Movie Genre Selector demo, where we unveil the exciting capabilities of our 
-AI-powered platform. In this demo, we will explore the description and functionality of our 
-Genre Selector demo, illustrating how you can easily leverage Taipy to explore and select movie 
-genres.
+Welcome to Taipy's Movie Genre Selector demo, where we introduce the exciting features 
+of our AI-powered platform. In this demonstration, we will provide an overview 
+and explanation of how our Genre Selector demo works, showcasing how you can use Taipy to explore 
+and choose movie genres effortlessly.
 
 # Understanding the Movie Genre Selector
 The Movie Genre Selector is a user-friendly tool that simplifies the process of discovering and 
