@@ -21,6 +21,9 @@ What's truly remarkable is that this fully interactive and highly tailored web a
 can be created with fewer than 120 lines of Python code, a feat that was previously unheard 
 of before Taipy's introduction.
 
+<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/c82bfbd1-1698-49d0-bcb6-d8cbc683c19d width="650">
+
+
 
 # Harnessing Prophet for Predictions
 
