@@ -24,9 +24,9 @@ of before Taipy's introduction.
 
 # Harnessing Prophet for Predictions
 
-Predicting stock trends is a crucial aspect of financial analysis. In our demo, we utilize 
-Meta's Prophet library to provide predictions for stocks over the next 1 to 5 years. This 
-predictive capability empowers users to make well-informed decisions with the help of Taipy.
+Forecasting stock trends is a vital part of financial analysis. In our demo, we make use of Meta's Prophet library 
+to offer stock predictions for the upcoming 1 to 5 years. This predictive feature empowers users to make 
+informed choices with the assistance of Taipy.
 
 
 # Conclusion
