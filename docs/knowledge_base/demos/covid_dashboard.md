@@ -34,9 +34,9 @@ predictions.
 
 ## 5. **World Page**
 
-The World page presents global COVID-19 statistics through line charts and pie charts. Users can 
-switch between viewing absolute numbers or the relative impact of COVID-19 on different 
-countries, offering a comprehensive overview of the pandemic's worldwide reach.
+The World page displays global COVID-19 statistics using line charts and pie charts. 
+Users can switch between seeing the exact numbers or how COVID-19 has affected different countries 
+relative to each other, giving a complete picture of the pandemic's worldwide extent.
 
 # Conclusion
 
