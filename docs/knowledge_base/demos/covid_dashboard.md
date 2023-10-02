@@ -27,10 +27,10 @@ of how the pandemic has affected different areas.
 
 ## 4. **Predictions**
 
-The Predictions page empowers users to create scenarios for predicting future COVID-19 data. By 
-specifying a scenario name and prediction date, users can generate predictions for a particular 
-country. The dashboard keeps a record of all scenarios, making it easy to review and compare 
-predictions.
+The Predictions page allows users to make predictions about future COVID-19 data. Users can do this by naming 
+their scenario and choosing a date for their prediction. This prediction is then made for a specific country. 
+The dashboard keeps a record of all these scenarios, making it simple for users to look at 
+and compare their predictions.
 
 ## 5. **World Page**
 
