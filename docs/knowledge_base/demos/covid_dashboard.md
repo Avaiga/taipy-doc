@@ -5,8 +5,8 @@ showcasing its ability to visualize COVID-19 data and even predict future trends
 
 
 # Exploring the COVID-19 Dashboard
-Our COVID-19 Dashboard is designed to provide a minimalist yet comprehensive view of COVID-19 
-data for the year 2020. Here are some of the key features and functionalities:
+Our COVID-19 Dashboard is created to give a simple but complete look at COVID-19 information for the year 2020. 
+Here are some of the important things it can do:
 
 ## 1. **Country Page**
 
