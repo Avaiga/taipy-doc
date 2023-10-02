@@ -4,9 +4,9 @@ and explanation of how our Genre Selector demo works, showcasing how you can use
 and choose movie genres effortlessly.
 
 # Understanding the Movie Genre Selector
-The Movie Genre Selector is a user-friendly tool that simplifies the process of discovering and 
-selecting movie genres. Taipy's innovative technology powers this demo, making it an enjoyable 
-and informative experience for movie enthusiasts.
+The Movie Genre Selector is a user-friendly tool designed to make it easy to explore and pick movie genres. 
+This demo is powered by Taipy's innovative technology, creating an enjoyable and informative experience 
+for movie enthusiasts.
 
 # The Movie Genre Selector Demo
 Discovering Movie Genres
