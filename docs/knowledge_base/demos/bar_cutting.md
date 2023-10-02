@@ -13,8 +13,8 @@ of choosing the best size of cuts to make in bars to minimize waste, and maximiz
 
 ## Page 1: A Glimpse of the Initial Page
 
-On the initial page of the application, users are presented with the option to select one of the 
-two cases they wish to execute. Clicking the RUN button triggers the following sequence of actions:
+On the application's starting page, users can choose one of the two cases they want to run. 
+When they click the RUN button, it initiates the following series of actions:
 
 1. Loading of the selected dataset (Case 1/Case 2 or Case 3).
 2. Execution of two algorithms: Baseline and Optim.
