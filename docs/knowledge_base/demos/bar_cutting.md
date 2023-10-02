@@ -59,8 +59,7 @@ under different conditions.
 
 
 ## Page 5: Databases 
-The results are summarized and displayed in a table that can be conveniently downloaded 
-as a CSV file for further analysis.
+The results are summarized and presented in a table, which users can easily download as a CSV file for further analysis.
 
 <img src=https://github.com/Avaiga/taipy-doc/assets/31435778/0a1d793b-6e81-4231-8291-9585ff4c8f7b width="500">
 
