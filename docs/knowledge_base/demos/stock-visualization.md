@@ -36,5 +36,5 @@ data visualization for financial insights. Whether you're an investor seeking hi
 or an analyst predicting future trends, our dashboard provides a user-friendly platform to improve your 
 decision-making process.
 
-You can explore the application, add new tickers to the list, and unlock the potential of Taipy 
-in transforming financial data into actionable insights.
+Feel free to explore the application, include new stock tickers in the list, and discover how Taipy 
+can convert financial data into actionable insights.
