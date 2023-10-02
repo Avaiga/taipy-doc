@@ -11,9 +11,9 @@ is the procedure of recognizing customers who are probably going to discontinue 
 or service and taking steps to keep them. This involves examining past customer information 
 and utilizing machine learning algorithms to forecast which customers may leave.
 
-Churn classification is essential for businesses because retaining existing customers is often 
-more cost-effective than acquiring new ones. By identifying at-risk customers early and 
-implementing retention strategies, businesses can reduce churn rates and increase customer loyalty.
+Churn classification is crucial for businesses because keeping current customers is frequently more cost-efficient 
+than acquiring new ones. By identifying customers who may leave early and applying retention strategies, 
+businesses can lower churn rates and boost customer loyalty.
 
 # A Glimpse of the application
 
