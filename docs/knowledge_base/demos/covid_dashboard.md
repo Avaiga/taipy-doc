@@ -40,10 +40,10 @@ countries, offering a comprehensive overview of the pandemic's worldwide reach.
 
 # Conclusion
 
-Our COVID-19 Dashboard is a testament to Taipy's front-end and back-end power in building 
-informative and interactive applications. In a world where data-driven insights are more 
-critical than ever, this dashboard provides a valuable tool for visualizing and predicting 
-COVID-19 trends.
+Our COVID-19 Dashboard is a testament to Taipy's power in building applications using front-end
+capabilities for informative and interactive data visualization and back-end capabilities for
+smart scenario computation. In a world where data-driven insights are more critical than ever,
+this dashboard provides a valuable tool for visualizing and predicting COVID-19 trends.
 
 Explore the dashboard, try out different scenarios, and gain insights into the global impact of 
 the pandemic. Taipy Core and Taipy GUI have seamlessly come together to create a versatile and 
