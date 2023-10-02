@@ -6,9 +6,9 @@ the complexities of production planning.
 
 # Understanding Production Planning
 
-Production planning involves the strategic scheduling of resources, materials, and processes to 
-achieve production goals efficiently. It's a critical function in manufacturing, as it directly 
-impacts product quality, delivery times, and overall profitability.
+Production planning involves strategically arranging resources, materials, and processes 
+to achieve production objectives efficiently. It's a vital function in manufacturing because 
+it directly influences product quality, delivery schedules, and overall profitability.
 
 # Significance of Production Planning in Manufacturing
 
