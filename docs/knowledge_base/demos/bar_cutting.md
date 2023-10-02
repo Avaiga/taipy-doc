@@ -25,7 +25,7 @@ importantly, the amount of material wasted. Users can switch between algorithms 
 quickly see the difference in material waste, with the Optim algorithm usually 
 performing better than the Baseline.
 
-<img src=bar cutting page 1](https://github.com/Avaiga/taipy-doc/assets/31435778/fb5b9154-888d-4640-9e8d-e52596d622b3 width="500">
+<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/fb5b9154-888d-4640-9e8d-e52596d622b3 width="500">
   
 
 ## Page 2: Exploring Input Data and Metrics
