@@ -42,9 +42,9 @@ or as the actual amount of material wasted (in millimeters).
 
 ## Page 3: Comparing Model Performance
 
-The balance icon on the left panel leads users to another page where the performance of the two 
-models is displayed side by side. This comparative view provides valuable insights into which 
-algorithm yields superior results for the selected case.
+By clicking the balance icon in the left panel, users are taken to another page where 
+the performance of the two models is shown side by side. This comparative view offers valuable insights 
+into which algorithm produces better results for the chosen case.
 
 <img src=https://github.com/Avaiga/taipy-doc/assets/31435778/7ab84665-083e-4c43-8ccb-c22ed43f3f27 width="500">
 
