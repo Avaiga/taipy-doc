@@ -15,7 +15,7 @@ Users can produce engaging Tweets that connect with their audience by supplying 
 optional mood parameter, and even a Twitter account for style transfer. This feature is ideal 
 for individuals and businesses seeking to improve their social media presence.
 
-![Tweet_generation_interface](https://github.com/Avaiga/taipy-doc/assets/31435778/bf4922e2-1f75-4c74-bdad-83c5df71a942)
+<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/bf4922e2-1f75-4c74-bdad-83c5df71a942 width="650">
 
 
 ## Key Features
