@@ -45,5 +45,5 @@ Whether you're exploring data, handling models, comparing predictive models,
 or accessing important datasets, Taipy streamlines the process, enabling businesses 
 to make data-driven decisions to improve customer loyalty.
 
-Explore the application, delve into churn prediction, and harness the capabilities of Taipy for 
-more effective customer retention strategies.
+Take the time to explore the application, dive into churn prediction, and make use of Taipy's capabilities 
+to enhance your customer retention strategies more effectively.
