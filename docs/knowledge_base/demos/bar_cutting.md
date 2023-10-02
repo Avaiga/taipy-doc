@@ -20,9 +20,10 @@ When they click the RUN button, it initiates the following series of actions:
 2. Execution of two algorithms: Baseline and Optim.
 3. Display of results, with the loss depicted in blue on the bar chart.
 
-The bar chart represents the cutting patterns, showcasing the lengths of customer bars 
-and, notably, the loss. By switching between algorithms, users can instantly observe the 
-difference in loss, with the Optim algorithm typically outperforming the Baseline.
+The bar chart displays the cutting patterns, showing the lengths of customer bars and, 
+importantly, the amount of material wasted. Users can switch between algorithms to 
+quickly see the difference in material waste, with the Optim algorithm usually 
+performing better than the Baseline.
 
 <img src=bar cutting page 1](https://github.com/Avaiga/taipy-doc/assets/31435778/fb5b9154-888d-4640-9e8d-e52596d622b3 width="500">
   
