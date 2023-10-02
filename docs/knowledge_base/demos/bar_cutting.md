@@ -6,9 +6,7 @@ minimized losses.
 # Understanding Bar Cutting Optimization
 
 [Bar Cutting](https://en.wikipedia.org/wiki/Cutting_stock_problem) optimization is the process 
-of efficiently cutting bars or materials to specific lengths, minimizing waste, and maximizing 
-the utilization of raw materials. It's a critical task in industries where precision and 
-efficiency are paramount.
+of choosing the best size of cuts to make in bars to minimize waste, and maximize the raw material utilization. It's a critical task in industries where material lost represents important costs or shortfalls.
 
 
 # The Bar Cutting application
