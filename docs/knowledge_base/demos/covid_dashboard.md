@@ -1,7 +1,7 @@
-Access to real-time data and insights has become crucial in a world profoundly affected by the 
-COVID-19 pandemic. Enter our COVID-19 Dashboard, a multi-page application that demonstrates the 
-synergy between Taipy. In this demo, we will take you on a tour of this powerful dashboard, 
-showcasing its ability to visualize COVID-19 data and even predict future trends.
+Access to real-time data and insights has become vital in a world profoundly impacted by the COVID-19 pandemic. 
+Introducing our COVID-19 Dashboard, a multi-page application that illustrates the synergy between Taipy. 
+In this demonstration, we'll guide you through this robust dashboard, highlighting its capacity 
+to visualize COVID-19 data and even forecast future trends.
 
 
 # Exploring the COVID-19 Dashboard
