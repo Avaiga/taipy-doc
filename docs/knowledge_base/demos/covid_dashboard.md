@@ -45,7 +45,7 @@ capabilities for informative and interactive data visualization and back-end cap
 smart scenario computation. In a world where data-driven insights are more critical than ever,
 this dashboard provides a valuable tool for visualizing and predicting COVID-19 trends.
 
-Explore the dashboard, try out different scenarios, and gain insights into the global impact of 
-the pandemic. Taipy Core and Taipy GUI have seamlessly come together to create a versatile and 
-user-friendly application that can assist individuals and organizations in making informed 
-decisions during these challenging times.
+Take some time to explore the dashboard, experiment with various scenarios, and get a better understanding 
+of the pandemic's global effects. The combination of Taipy Core and Taipy GUI has smoothly produced 
+a versatile and user-friendly application that can help individuals and organizations make informed choices 
+during these difficult times.
