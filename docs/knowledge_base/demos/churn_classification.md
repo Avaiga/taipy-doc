@@ -6,10 +6,10 @@ model comparison, and predictive analytics.
 
 
 # Understanding Churn Classification
-Churn classification, also known as customer churn prediction or customer attrition analysis, is 
-the process of identifying customers who are likely to stop using a product or service and take 
-actions to retain them. It involves analyzing historical customer data and using machine 
-learning algorithms to predict which customers are at risk of churning.
+Churn classification, also known to as customer churn prediction or customer attrition analysis, 
+is the procedure of recognizing customers who are probably going to discontinue using a product 
+or service and taking steps to keep them. This involves examining past customer information 
+and utilizing machine learning algorithms to forecast which customers may leave.
 
 Churn classification is essential for businesses because retaining existing customers is often 
 more cost-effective than acquiring new ones. By identifying at-risk customers early and 
