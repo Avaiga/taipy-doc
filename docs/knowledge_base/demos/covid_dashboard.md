@@ -5,7 +5,8 @@ to visualize COVID-19 data and even forecast future trends.
 
 
 # Exploring the COVID-19 Dashboard
-Our COVID-19 Dashboard is created to give a simple but complete look at COVID-19 information for the year 2020. 
+Our [COVID-19 Dashboard](https://covid-dashboard.taipy.cloud/Country) is created to give 
+a simple but complete look at COVID-19 information for the year 2020. 
 Here are some of the important things it can do:
 
 ## 1. **Country Page**
@@ -45,7 +46,7 @@ capabilities for informative and interactive data visualization and back-end cap
 smart scenario computation. In a world where data-driven insights are more critical than ever,
 this dashboard provides a valuable tool for visualizing and predicting COVID-19 trends.
 
-Take some time to explore the dashboard, experiment with various scenarios, and get a better understanding 
-of the pandemic's global effects. The combination of Taipy Core and Taipy GUI has smoothly produced 
+Take some time to explore the dashboard, experiment with various scenarios, and better understand 
+the pandemic's global effects. The combination of Taipy Core and Taipy GUI has smoothly produced 
 a versatile and user-friendly application that can help individuals and organizations make informed choices 
 during these difficult times.
