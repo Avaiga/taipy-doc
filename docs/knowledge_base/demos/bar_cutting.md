@@ -11,7 +11,7 @@ the utilization of raw materials. It's a critical task in industries where preci
 efficiency are paramount.
 
 
-# The 5-page application
+# The Bar Cutting application
 
 ## Page 1: A Glimpse of the Initial Page
 
