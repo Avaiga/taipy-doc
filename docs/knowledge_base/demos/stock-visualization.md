@@ -16,10 +16,10 @@ offering insights readily accessible to you.
 
 # Building an Interactive Data Visualization Dashboard
 
-The core goal of our demo is to demonstrate the ease with which you can create a data 
-visualization dashboard using Taipy. What's groundbreaking is that this fully interactive, 
-highly customized web application can be developed with fewer than 120 lines of Python code, a 
-feat previously unheard of until Taipy's introduction.
+Our demo's primary objective is to illustrate how effortlessly you can build a data visualization dashboard using Taipy. 
+What's truly remarkable is that this fully interactive and highly tailored web application 
+can be created with fewer than 120 lines of Python code, a feat that was previously unheard 
+of before Taipy's introduction.
 
 
 # Harnessing Prophet for Predictions
