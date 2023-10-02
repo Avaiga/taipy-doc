@@ -26,10 +26,10 @@ Taipy can provide personalized movie recommendations based on your genre selecti
 your movie-watching experience.
 
 # Powered by Taipy
-The Movie Genre Selector is a prime example of how Taipy can make complex tasks simple and 
-enjoyable. With its natural language understanding capabilities, Taipy can seamlessly categorize 
-and recommend movies based on genres, making it a valuable tool for movie enthusiasts and 
-streaming platforms.
+The Movie Genre Selector exemplifies how Taipy can simplify complex tasks 
+and make them enjoyable. With its natural language understanding abilities, Taipy can 
+effortlessly categorize and suggest movies based on genres, which makes it a valuable tool 
+for movie enthusiasts and streaming platforms.
 
 # How to Use Taipy for Genre Selection
 To explore and select movie genres using Taipy's Genre Selector, follow these simple steps:
