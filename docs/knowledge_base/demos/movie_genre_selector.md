@@ -49,5 +49,5 @@ is here to make the process simpler and improve your movie-watching experience.
 Whether you're searching for new genres to explore or personalized movie recommendations, 
 Taipy makes it easy for you to discover movies.
 
-Ready to explore the world of movie genres? Visit Taipy's Genre Selector demo page today and 
-start your cinematic journey with Taipy's intuitive tools.
+Are you ready to delve into the realm of movie genres? Head over to Taipy's Genre Selector demo page 
+today and begin your cinematic journey with Taipy's user-friendly tools.
