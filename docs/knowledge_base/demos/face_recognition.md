@@ -1,5 +1,5 @@
 Welcome to Taipy's Face Recognition demonstration, where we showcase the remarkable abilities of 
-our AI-powered platform. In this demo, we will delve into the description and functionality of 
+our platform. In this demo, we will delve into the description and functionality of 
 our Face Recognition demo, demonstrating how you can utilize Taipy's potential for real-time 
 face detection and recognition.
 
@@ -12,7 +12,7 @@ webcam and conduct real-time face detection.
 
 # The Face Recognition Demo
 ## Real-time Face Detection
-Our Face Recognition demo provides real-time face detection capabilities, thanks to the robust 
+Our Face Recognition demo provides real-time face detection capabilities thanks to the robust 
 OpenCV library. Through Taipy's user-friendly GUI component, users can activate their webcam to 
 capture video. The system subsequently processes this video stream, promptly identifying and 
 outlining faces as they appear. This feature is highly valuable for numerous applications, such 
@@ -30,10 +30,11 @@ This application demonstrates two critical aspects:
     accurately and efficiently in real-time scenarios.
 
 ## Powered by Taipy
-The Face Recognition demo serves as a prime example of the synergy between Taipy's AI 
-capabilities and OpenCV's image processing expertise. OpenCV's ability to analyze visual data 
-enhances Taipy's advanced text data comprehension. This collaboration creates a potent 
-combination, opening up numerous opportunities for developers and businesses to explore.
+The Face Recognition demo perfectly exemplifies the powerful synergy between Taipy and OpenCV. 
+Taipy's role in delivering AI results, combined with OpenCV's expertise in image processing and analysis, 
+results in a dynamic partnership that unlocks a myriad of possibilities for developers and businesses alike. 
+This collaboration harnesses the strengths of both technologies, 
+offering a comprehensive solution for visual data analysis.
 
 # How to Use Taipy for Face Recognition
 To experience real-time face detection and recognition using Taipy's GUI component, follow these 
