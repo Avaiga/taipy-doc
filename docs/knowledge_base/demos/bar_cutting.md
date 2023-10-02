@@ -30,9 +30,8 @@ performing better than the Baseline.
 
 ## Page 2: Exploring Input Data and Metrics
 
-For deeper insights, users can open the Parameters panel to examine the input 
-data for the chosen case. This includes information about available stock (mother bars for 
-cutting) and demand.
+For more detailed information, users can open the Parameters panel to review the input data 
+for the selected case. This includes details about the available stock (the original bars for cutting) and the demand.
 
 The Metrics page displays key metrics for both the Baseline and Optim models, offering different 
 representations such as bar charts and pie charts. Metrics showcase the loss as a percentage of 
