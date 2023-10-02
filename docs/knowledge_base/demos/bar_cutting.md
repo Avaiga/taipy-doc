@@ -24,6 +24,9 @@ The bar chart represents the cutting patterns, showcasing the lengths of custome
 and, notably, the loss. By switching between algorithms, users can instantly observe the 
 difference in loss, with the Optim algorithm typically outperforming the Baseline.
 
+<img src=bar cutting page 1](https://github.com/Avaiga/taipy-doc/assets/31435778/fb5b9154-888d-4640-9e8d-e52596d622b3 width="500">
+  
+
 ## Page 2: Exploring Input Data and Metrics
 
 For deeper insights, users can open the Parameters panel to examine the input 
@@ -34,12 +37,15 @@ The Metrics page displays key metrics for both the Baseline and Optim models, of
 representations such as bar charts and pie charts. Metrics showcase the loss as a percentage of 
 the overall length used (mother bars) or as the actual loss value (in millimeters).
 
+<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/3ccbead1-e756-43c2-8375-b7309e76fe36 width="500">
 
 ## Page 3: Comparing Model Performance
 
 The balance icon on the left panel leads users to another page where the performance of the two 
 models is displayed side by side. This comparative view provides valuable insights into which 
 algorithm yields superior results for the selected case.
+
+<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/7ab84665-083e-4c43-8ccb-c22ed43f3f27 width="500">
 
 
 ## Page 4: Comparing Scenarios 
@@ -48,9 +54,14 @@ For a comprehensive analysis, users can compare the performance of each model ac
 use cases (scenarios) by clicking on the balance icon. This feature aids in understanding how 
 each algorithm performs under varying conditions.
 
+<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/f9a7c59a-598f-42dd-98dd-63f0cd79ac07 width="500">
+
+
 ## Page 5: Databases 
 The results are summarized and displayed in a table that can be conveniently downloaded 
 as a CSV file for further analysis.
+
+<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/0a1d793b-6e81-4231-8291-9585ff4c8f7b width="500">
 
 
 # Disclaimer
