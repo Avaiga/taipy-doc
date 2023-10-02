@@ -73,5 +73,5 @@ intricate manufacturing issues. Whether you're visualizing data, handling scenar
 or assessing production performance, Taipy makes everything simpler, enabling businesses 
 to use data for smarter production planning.
 
-Explore the application, delve into production optimization, and experience firsthand how Taipy 
-streamlines production planning in the manufacturing sector.
+Take the time to explore the application, dive into production optimization, and 
+see for yourself how Taipy simplifies production planning in the manufacturing industry.
