@@ -9,35 +9,37 @@ Our [COVID-19 Dashboard](https://covid-dashboard.taipy.cloud/Country) is created
 a simple but complete look at COVID-19 information for the year 2020. 
 Here are some of the important things it can do:
 
-## 1. **Country Page**
+## 1. **Country Page and Pie Chart Representation**
 
 The Country page provides detailed statistics about COVID-19 in a particular country. Users can easily pick 
 a different country and switch between showing data cumulatively or in density form. 
-There's also an interactive line chart on this page that helps users see the data in a dynamic way.
-
-## 2. **Pie Chart Representation**
-
-A pie chart showcases the distribution of COVID-19 cases among Confirmed, Recovered, and Deaths, 
+There's also an interactive line chart on this page that helps users see the data in a dynamic way. As well as 
+a pie chart that showcases the distribution of COVID-19 cases among Confirmed, Recovered, and Deaths, 
 offering a clear and intuitive way to understand the data.
 
-## 3. **Interactive Map**
+<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/3b6abcf2-cafe-4582-99a8-8eec485cd1fc width="650">
+
+## 2. **Interactive Map**
 
 The Map page presents an interesting way to examine COVID-19 data. The colors and sizes on the map change 
 dynamically depending on the number of deaths in each place, showing a visual representation 
 of how the pandemic has affected different areas.
 
-## 4. **Predictions**
+## 3. **Predictions**
 
 The Predictions page allows users to make predictions about future COVID-19 data. Users can do this by naming 
 their scenario and choosing a date for their prediction. This prediction is then made for a specific country. 
 The dashboard keeps a record of all these scenarios, making it simple for users to look at 
 and compare their predictions.
 
-## 5. **World Page**
+## 4. **World Page**
 
 The World page displays global COVID-19 statistics using line charts and pie charts. 
 Users can switch between seeing the exact numbers or how COVID-19 has affected different countries 
 relative to each other, giving a complete picture of the pandemic's worldwide extent.
+
+<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/9f3d7390-2b57-4a29-84f2-038165bbeb86 width="650">
+
 
 # Conclusion
 
