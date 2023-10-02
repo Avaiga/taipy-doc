@@ -1,5 +1,5 @@
 Welcome to Taipy's Tweet Generation demo, where we showcase the exceptional capabilities of our 
-AI-powered platform. In this demo, we will explain the description and how our Tweet Generation 
+AI-powered platform. In this demo, we will explain how our Tweet Generation 
 works, demonstrating how you can use Taipy to create unique Tweets effortlessly.
 
 # Understanding Tweet Generation
