@@ -1,13 +1,13 @@
-Welcome to Taipy's Sales Dashboard demo, where we highlight the impressive capabilities of our 
-platform in data visualization. In this demonstration, we will explain the description and 
-operation of our Sales Dashboard, demonstrating how you can easily use Taipy to design 
-interactive dashboards for your Excel data.
+Welcome to Taipy's Sales Dashboard demo, where we highlight the impressive capabilities 
+of our platform in data visualization. 
+In this demonstration, we will explain the description and operation of our Sales Dashboard, 
+demonstrating how you can easily use Taipy to design interactive dashboards for your Excel data.
 
 # Understanding the Sales Dashboard
 The Sales Dashboard is a versatile tool that streamlines the task of visualizing data from Excel 
 files. This demo harnesses Taipy's technology, allowing users to extract data from Excel and 
 present meaningful insights. Users can apply filters based on city, customer, and gender, making 
-it straightforward to analyze metrics tailored to various groups and locations.
+analyzing metrics tailored to various groups and locations straightforwardly.
 
 # The Sales Dashboard Demo
 ## Filtering Data for Insights
@@ -38,7 +38,7 @@ these simple steps:
 3. Use the provided filters to select specific criteria such as city, customer, or gender to 
     narrow down your data.
 
-4. Explore the two dynamic charts: sales by hour and sales by product to analyze trends and 
+4. Explore the two dynamic charts, sales by hour and sales by product, to analyze trends and 
     patterns.
 
 5. Gain valuable insights and make informed decisions based on your data analysis.
@@ -46,7 +46,7 @@ these simple steps:
 # Conclusion
 Crafting interactive and informative sales dashboards has never been easier, thanks to Taipy's 
 Sales Dashboard demo. Whether you're a business expert in search of insights or a data 
-enthusiast uncovering trends, Taipy empowers you to effortlessly visualize your Excel data.
+enthusiast uncovering trends, Taipy empowers you to visualize your Excel data effortlessly.
 
 Would you be ready to transform your data into insights? Visit Taipy's Sales Dashboard demo page 
 today and experience the ease of data visualization with Taipy.
