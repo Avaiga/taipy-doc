@@ -40,10 +40,10 @@ application consisting of four key pages:
 
 # Conclusion
 
-The Churn Classification demo exemplifies the power of Taipy in simplifying customer retention 
-efforts. Whether you're exploring data, managing models, comparing predictive models, or 
-accessing critical datasets, Taipy streamlines the process, empowering businesses to make 
-data-driven decisions to enhance customer loyalty.
+The Churn Classification demo illustrates how Taipy can simplify customer retention efforts. 
+Whether you're exploring data, handling models, comparing predictive models, 
+or accessing important datasets, Taipy streamlines the process, enabling businesses 
+to make data-driven decisions to improve customer loyalty.
 
 Explore the application, delve into churn prediction, and harness the capabilities of Taipy for 
 more effective customer retention strategies.
