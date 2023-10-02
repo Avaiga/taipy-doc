@@ -3,6 +3,9 @@ of our platform in data visualization.  This demo harnesses Taipy's technology, 
 present meaningful insights. Users can apply filters based on city, customer, and gender, making 
 analyzing metrics tailored to various groups and locations straightforwardly.
 
+<img  src=https://github.com/Avaiga/taipy-doc/assets/31435778/9fe86e5e-5973-41d6-afd3-130062683bd3 width="650">
+
+
 # The Sales Dashboard Demo
 ## Filtering Data for Insights
 Taipy's Sales Dashboard allows users to filter Excel data for valuable insights. Whether you 
