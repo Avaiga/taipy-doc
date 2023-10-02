@@ -31,8 +31,8 @@ all while managing costs effectively. Effective production planning leads to sev
     Production planning contributes to consistent product quality by minimizing rush orders and 
     last-minute changes.
 
-Taipy's Production Planning application addresses these manufacturing challenges head-on, 
-providing a streamlined platform for optimizing production processes and costs.
+Taipy's Production Planning application tackles these manufacturing challenges directly, 
+offering a straightforward platform to improve production processes and control costs.
 
 # The Production Planning Application
 
