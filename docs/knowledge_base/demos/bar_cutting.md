@@ -51,9 +51,9 @@ into which algorithm produces better results for the chosen case.
 
 ## Page 4: Comparing Scenarios 
 
-For a comprehensive analysis, users can compare the performance of each model across different 
-use cases (scenarios) by clicking on the balance icon. This feature aids in understanding how 
-each algorithm performs under varying conditions.
+To conduct a thorough analysis, users can compare how each model performs in various use cases (scenarios) 
+by clicking on the balance icon. This feature helps in understanding how each algorithm behaves 
+under different conditions.
 
 <img src=https://github.com/Avaiga/taipy-doc/assets/31435778/f9a7c59a-598f-42dd-98dd-63f0cd79ac07 width="500">
 
