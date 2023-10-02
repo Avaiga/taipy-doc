@@ -33,9 +33,10 @@ performing better than the Baseline.
 For more detailed information, users can open the Parameters panel to review the input data 
 for the selected case. This includes details about the available stock (the original bars for cutting) and the demand.
 
-The Metrics page displays key metrics for both the Baseline and Optim models, offering different 
-representations such as bar charts and pie charts. Metrics showcase the loss as a percentage of 
-the overall length used (mother bars) or as the actual loss value (in millimeters).
+The Metrics page displays important metrics for both the Baseline and Optim models, 
+presenting them in various ways like bar charts and pie charts. These metrics demonstrate 
+the material waste as a percentage of the total length of the original bars (mother bars) used 
+or as the actual amount of material wasted (in millimeters).
 
 <img src=https://github.com/Avaiga/taipy-doc/assets/31435778/3ccbead1-e756-43c2-8375-b7309e76fe36 width="500">
 
