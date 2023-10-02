@@ -31,10 +31,10 @@ predictive capability empowers users to make well-informed decisions with the he
 
 # Conclusion
 
-Our Stock Visualization demo showcases the power of Taipy GUI and Prophet in simplifying data 
-visualization for financial insights. Whether you're an investor looking for historical data or 
-an analyst predicting future trends, our dashboard offers a user-friendly platform to enhance 
-your decision-making process.
+Our Stock Visualization demo highlights the capability of Taipy GUI and Prophet in streamlining 
+data visualization for financial insights. Whether you're an investor seeking historical data 
+or an analyst predicting future trends, our dashboard provides a user-friendly platform to improve your 
+decision-making process.
 
 You can explore the application, add new tickers to the list, and unlock the potential of Taipy 
 in transforming financial data into actionable insights.
