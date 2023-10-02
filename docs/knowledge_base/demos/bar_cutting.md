@@ -76,6 +76,6 @@ The Bar Cutting demo exemplifies Taipy's prowess in precision cutting optimizati
 you're involved in manufacturing, logistics, or any industry requiring efficient bar cutting, 
 Taipy simplifies the process and minimizes losses in an intuitive and visually appealing manner.
 
-Explore the application, test different scenarios, and harness the power of Taipy for more 
-precise and efficient bar cutting.
+Take the time to explore the application, experiment with various scenarios, 
+and utilize the capabilities of Taipy for more accurate and efficient bar cutting.
 
