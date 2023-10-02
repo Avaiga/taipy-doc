@@ -21,9 +21,9 @@ offering a clear and intuitive way to understand the data.
 
 ## 3. **Interactive Map**
 
-The Map page offers an engaging way to explore COVID-19 data. Colors and sizes on the map are 
-dynamically adjusted based on the number of deaths in each location, providing a visual 
-representation of the pandemic's impact across regions.
+The Map page presents an interesting way to examine COVID-19 data. The colors and sizes on the map change 
+dynamically depending on the number of deaths in each place, showing a visual representation 
+of how the pandemic has affected different areas.
 
 ## 4. **Predictions**
 
