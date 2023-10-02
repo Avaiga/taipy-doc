@@ -1,6 +1,6 @@
 In the realm of financial markets, data is king. The ability to quickly and easily visualize 
 historical stock data and make predictions is a game-changer for investors and financial 
-analysts. Our Stock Visualization demo, built with Taipy front-end component and powered by the 
+analysts. Our Stock Visualization demo, built with Taipy and powered by the 
 [Prophet](https://facebook.github.io/prophet/docs/quick_start.html) library, offers a 
 revolutionary approach to achieving this.
 
