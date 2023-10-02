@@ -58,8 +58,8 @@ page's functionality:
     customization.
 
 4. Scenario Comparison: 
-    The balance icon leads to a page where users can compare two scenarios within the same month. 
-    This side-by-side comparison aids in evaluating the impact of different production plans.
+    The balance icon takes users to a page where they can compare two scenarios for the same month. 
+    This side-by-side comparison helps in assessing how different production plans might affect the situation.
 
 5. Visualizing Performance Over Time: 
     By clicking the circle arrow icon, users can visualize the algorithm's performance over time. 
