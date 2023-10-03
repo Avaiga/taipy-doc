@@ -244,7 +244,6 @@
   }
 }
 
-
 /* ---------- ---------- ---------- CONTENT ---------- ---------- ---------- */
 
 .md-main__inner{
@@ -680,36 +679,37 @@ a.md-content__button{
 }
 
 /* ---------- ---------- ---------- Breadcrumbs ---------- ---------- ---------- */
-ul.tp-bc {
-    padding: 4px 4px;
-    list-style: none;
-    background-color: var(--md-default-bg-color--lighter);
-    margin-left: auto;
+.tp-bc {
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+  margin-bottom: calc((var(--md-content-padding-y) * -1) + 0.5rem);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; 
+  padding: var(--md-content-padding-y) 0 0 0;
+  background-color: transparent;
+  color: var(--md-default-fg-color--light);
+  font-size: var(--md-body-font-size--smaller);
+  list-style: none;
 }
 
-ul.tp-bc:before {
-    padding: 8px;
-    color: var(--md-primary-fg-color--light);
-    content: 'Back to:';
-    font-size: var(--md-body-font-size--small)
-}
-ul.tp-bc li {
-    display: inline;
-    font-size: var(--md-body-font-size--small)
+.tp-bc:before {
+  content: 'Back to:';
+  margin-right: 0.5rem;
 }
 
-ul.tp-bc li+li:before {
-    padding: 1em;
-    color: var(--md-primary-fg-color);
-    content: '>';
+.tp-bc li + li:before {
+  content: '›';
+  padding: 0 0.5em;
 }
 
-ul.tp-bc li a {
-    color: var(--md-primary-fg-color--dark);
-    text-decoration: none;
+.tp-bc a {
+  color: var(--md-default-fg-color--light);
+  font-size: inherit;
+  text-decoration: none;
 }
 
-ul.tp-bc li a:hover {
-    color: var(--md-primary-fg-color--dark);
-    text-decoration: underline;
+.tp-bc li a:hover {
+  color: var(--md-default-fg-color);
+  text-decoration: underline;
 }
