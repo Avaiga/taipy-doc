@@ -1,7 +1,7 @@
-Precision bar cutting is an essential task in various industries, and the Bar Cutting demo 
-powered by Taipy is here to transform it. In this demo, we will explore this application's 
-capabilities, which optimize bar cutting using different algorithms for enhanced efficiency and 
-minimized losses.
+Welcome to the Bar Cutting Optimization demonstration, where we showcase an innovative 
+approach to minimize losses in the bar-cutting process. This demo will highlight 
+how a Taipy decision-support application optimize the bar-cutting process, 
+leading to better outcomes with reduced waste.
 
 # Understanding Bar Cutting Optimization
 
