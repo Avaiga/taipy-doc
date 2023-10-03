@@ -222,8 +222,10 @@
     word-break: break-word;
     gap: 0.25em;
   }
-  .md-nav--primary a.md-nav__link::before,
-  .md-nav--primary .md-nav__link > a:only-child::before {
+
+  .md-nav--primary a.md-nav__link:only-child::before,
+  .md-nav--primary a.md-nav__link.md-nav__link--active:nth-child(2):before,
+  .md-nav--primary a.md-nav__link.md-nav__link--active:nth-child(3):before {
     content: "–";
     align-self: flex-start;
     flex: 0 0 auto;
