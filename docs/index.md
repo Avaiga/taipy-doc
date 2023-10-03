@@ -38,7 +38,9 @@ These frequently visited topics have been highlighted for your quick reference.
         <h3>Getting Started</h3>
       </header>
       <p>
-        In this guide, you will build a complete Taipy web application step by step. It covers some of the important concepts in Taipy. It's useful for both beginners and experienced Python programmers who are trying out Taipy for the first time.
+        In this guide, you will build a complete Taipy web application step by step. It covers 
+some of the important concepts in Taipy. It's useful for both beginners and experienced Python 
+programmers who are trying out Taipy for the first time.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
@@ -51,7 +53,10 @@ These frequently visited topics have been highlighted for your quick reference.
         <h3>User interface</h3>
       </header>
       <p>
-        This is Taipy GUI user manual. It describes the concepts and elements you need to create strong web apps quickly. From GUI pages, controls, blocks, visual elements, binding Python variables, callbacks, styling, extending Taipy, etc. Also, for our users working on Notebooks, we do provide information on how to run Taipy from Notebooks.
+        This is Taipy GUI user manual. It describes the concepts and elements you need to create 
+strong web apps quickly. From GUI pages, controls, blocks, visual elements, binding Python 
+variables, callbacks, styling, extending Taipy, etc. Also, for our users working on Notebooks, 
+we do provide information on how to run Taipy from Notebooks.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
@@ -64,7 +69,8 @@ These frequently visited topics have been highlighted for your quick reference.
         <h3>Charts</h3>
       </header>
       <p>
-        One crucial part of Taipy's graphical user interface (GUI) is its graphing library. This library offers a wide range of customizable ways to visualize data.
+        One crucial part of Taipy's graphical user interface (GUI) is its graphing library. This 
+library offers a wide range of customizable ways to visualize data.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
@@ -77,7 +83,10 @@ These frequently visited topics have been highlighted for your quick reference.
         <h3>Scenario</h3>
       </header>
       <p>
-        Taipy Scenario represents a specific business problem (modeled as a pipeline) that you solve using data and different sets of parameters. Scenarios let you create different versions of the same problem with different assumptions, which is really helpful for making decisions when you need to analyze the potential impact of different scenarios.
+        Taipy Scenario represents a specific business problem (modeled as a pipeline) that you 
+solve using data and different sets of parameters. Scenarios let you create different versions 
+of the same problem with different assumptions, which is really helpful for making decisions 
+when you need to analyze the potential impact of different scenarios.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
@@ -86,7 +95,9 @@ These frequently visited topics have been highlighted for your quick reference.
 
 ## Build your UI with dozens of visual elements
 
-Taipy provides many GUI components (referred to as "Taipy Controls") that are the essential bricks for building web applications. Below, you'll find a clear explanation of each term, explained in the context of the Taipy web application builder.
+Taipy provides many GUI components (referred to as "Taipy Controls") that are the essential 
+bricks for building web applications. Below, you'll find a clear explanation of each term, 
+explained in the context of the Taipy web application builder.
 
 <ul class="tp-pills-list">
   <li>
