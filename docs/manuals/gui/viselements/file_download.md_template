@@ -44,7 +44,8 @@ Allows downloading *content* when content is a file path or some content.
 The [*label*](#p-label) property can be set to specify the label used as the button text next to
 the download icon.
 
-The function name provided as *on_action* is called when the user initiates the download.
+The function name provided as [*on_action*](#p-on_action) is called when the download is done
+(except if [*content*](#p-content) was set to None, as show in the *dynamic content* examples below).
 
 The [*name*](#p-name) property is used as the default file name proposed to the user when
 saving the downloaded file (depending on the browser validation rules).
@@ -66,14 +67,14 @@ saving the downloaded file (depending on the browser validation rules).
 ### Preview file in the browser
 
 The file content can be visualized in the browser (if supported and in another tab) by setting
-*bypass_preview* to False.
+[*bypass_preview*](#p-bypass_preview) to False.
 
 !!! example "Page content"
 
     === "Markdown"
 
         ```
-        <|{content}|file_download|dont bypass_preview|>
+        <|{content}|file_download|don't bypass_preview|>
         ```
   
     === "HTML"
