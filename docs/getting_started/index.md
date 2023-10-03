@@ -170,14 +170,14 @@ It uses standard Markdown syntax as well as visual elements.
 Taipy offers various visual elements that can interact with your Python variables and 
 environment. It allows you to display variables, modify them, and interact with the application.
 
-Here is a generic example of one: `<|{variable}|visual_element_type|...|>`. `variable` is 
+Here is a generic example of one: `<|{variable}|visual_element_type|...|>`. *variable* is 
 the main property of the visual element and is usually what is displayed or modified through the visual element.
 
 In our initial example: 
 
-- `name` is bound to an input and text field, allowing the user’s input to be directly stored in the `name` variable.
+- *name* is bound to an input and text field, allowing the user’s input to be directly stored in the *name* variable.
 
-- `message` is connected to a text field, allowing you to display changing content to the user.
+- *message* is connected to a text field, allowing you to display changing content to the user.
 
 #### Interactivity Through Actions
 
@@ -190,18 +190,18 @@ def submit_scenario(state):
     state.message = scenario.message.read()
 ```
 
-Every callback, including `submit_scenario`, utilizes `state` as the first parameter. 
-The `state` represents a user connection and is used to read and assign runtime 
-variables for a specific user. This makes it simple for Taipy to handle multiple users at once.
+Every callback, including `submit_scenario`, utilizes state as the first parameter. 
+This state represents a user's connection and is used to read and set variables while 
+the user is interacting with the program. It makes it simple for Taipy to handle multiple users simultaneously.
 
-While `scenario` is available to everyone using the program, `state.name` and `state.input` are unique to the user 
+While *scenario* is available to everyone using the program, *state.name* and *state.input* are unique to the user 
 who defines them. This design ensures that each user's actions are separate and efficiently controlled, 
-while variables like `scenario` are global variables.
+while variables like *scenario* are global variables.
 
 TODO: State illustration
 
-In the `submit_scenario` function, the `name` entered by the user on the interface is saved to the scenario. 
-After submission, the outcome is retrieved and stored in the `message` variable, which is then shown on the user interface due to the connection between them.
+In the `submit_scenario` function, the *name* entered by the user on the interface is saved to the scenario. 
+After submission, the outcome is retrieved and stored in the *message* variable, which is then shown on the user interface due to the connection between them.
 
 ```python
 if __name__ == "__main__":
