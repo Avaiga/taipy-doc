@@ -161,19 +161,23 @@ Message: <|{message}|text|>
 
 **Pages**
 
-Taipy pages can be defined in multiple ways: Markdown, Html or Python. The `page` variable is a Markdown representation of the user interface. It uses standard Markdown syntax as well as visual elements.
+Taipy pages can be defined in multiple ways: Markdown, Html or Python. The `page` 
+variable is a Markdown representation of the user interface. 
+It uses standard Markdown syntax as well as visual elements.
 
 **Visual elements**
 
-A Taipy visual element is an highly interactive element that can display variables, modify them and more.  You can play with a lot of different types from charts to sliders. They all interact with your Python variables and environment. 
+Taipy offers various visual elements that can interact with your Python variables and 
+environment. It allows you to display variables, modify them, and interact with the application.
 
-Here is a generic example of one: `<|{variable}|visual_element_type|...|>`. `variable` is the main property of the visual element and is usually what is displayed or modified through the visual element.
+Here is a generic example of one: `<|{variable}|visual_element_type|...|>`. `variable` is 
+the main property of the visual element and is usually what is displayed or modified through the visual element.
 
 In our initial example: 
 
 - `name` is bound to an input and text field, allowing the user’s input to be directly stored in the `name` variable.
 
-- `message` is bound to a text field, making it possible to display dynamic content to the user.
+- `message` is connected to a text field, allowing you to display changing content to the user.
 
 #### Interactivity Through Actions
 
@@ -186,13 +190,18 @@ def submit_scenario(state):
     state.message = scenario.message.read()
 ```
 
-Every callback, including `submit_scenario`, utilizes `state` as the first parameter. The `state` represents a user connection and is used to read and assign runtime variables for a specific user. It enables Taipy to be easily multi-user.
+Every callback, including `submit_scenario`, utilizes `state` as the first parameter. 
+The `state` represents a user connection and is used to read and assign runtime 
+variables for a specific user. This makes it simple for Taipy to handle multiple users at once.
 
-While `scenario` remains globally accessible, `state.name` and `state.input` are specific to the user defining it. This architecture ensures that individual user interactions are isolated and managed efficiently while variables like `scenario` are accessed globally.
+While `scenario` is available to everyone using the program, `state.name` and `state.input` are unique to the user 
+who defines them. This design ensures that each user's actions are separate and efficiently controlled, 
+while variables like `scenario` are global variables.
 
 TODO: State illustration
 
-In the `submit_scenario` function, the `name` on the user interface is written to the scenario. Upon submission, the result is read into the `message` variable, which is then reflected in the UI thanks to the binding.
+In the `submit_scenario` function, the `name` entered by the user on the interface is saved to the scenario. 
+After submission, the outcome is retrieved and stored in the `message` variable, which is then shown on the user interface due to the connection between them.
 
 ```python
 if __name__ == "__main__":
@@ -201,7 +210,8 @@ if __name__ == "__main__":
     Gui(page).run()
 ```
 
-The application's main execution block initializes the Core services, creates a scenario, and launches the GUI, bringing the interactive interface to life.
+The main part of the application starts by setting up the Core services, generating a scenario, and starting the GUI, 
+which makes the interactive interface active and functional.
 
 ![GUI Result](result.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
