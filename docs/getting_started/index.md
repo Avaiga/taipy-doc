@@ -34,7 +34,9 @@ Let's craft a basic "Hello World" scenario:
 ![Hello World Example](hello_world.svg){width=50%}
 
 The graph involves:
+
 - An input data node named *name*.
+
 - A task, *build_message*, that processes the *name* data node and outputs a *message* data node.
 
 ### Setting It Up
@@ -49,14 +51,14 @@ The graph involves:
         return f"Hello {name}!"
     
     
-    name_data_node_cfg = Config.configure_data_node(id="input_name")
+    name_data_node_cfg = Config.configure_data_node(id="name")
     message_data_node_cfg = Config.configure_data_node(id="message")
     build_msg_task_cfg = Config.configure_task("build_msg", build_message, name_data_node_cfg, message_data_node_cfg)
     scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_task_cfg])
     ```
 
     - Lines 4-5 define the function that the task will use during execution.
-    - Lines 8-9 configure the data nodes, *input_name* and *message*.
+    - Lines 8-9 configure the data nodes, *name* and *message*.
     - Line 10 configures a task called *build_msg* associated with the *build_message()*
       function, specifying the input and output data nodes.
     - Finally, line 11 configures the execution graph of the scenario providing 
@@ -78,14 +80,14 @@ The graph involves:
     import taipy as tp
     
     hello_scenario = tp.create_scenario(scenario_cfg)
-    hello_scenario.input_name.write("Taipy")
+    hello_scenario.name.write("Taipy")
     hello_scenario.submit()
     print(hello_scenario.message.read())
     ```
    
     - In line 3, method `tp.create_scenario()` instantiates the new scenario name 
         *hello_scenario* from the scenario configuration built before.
-    - Line 4, sets the input data node *input_name* of *hello_scenario* with the string value 
+    - Line 4, sets the input data node *name* of *hello_scenario* with the string value 
         "Taipy" using the `write()` method.
     - Line 5 submits the *hello_scenario* for execution, which triggers the creation and 
         execution of a job. This job reads the input data node, passes the value to the 
@@ -117,35 +119,85 @@ Here's a simple GUI set up for our "Hello World" scenario:
 ```python linenums="1"
 from taipy import Gui
 
-hello_scenario = None
-input_name = "Taipy"
-message = None
-
-def submit_scenario(state):
-    state.hello_scenario.input_name.write(state.input_name)
-    state.hello_scenario.submit(wait=True)
-    state.message = hello_scenario.message.read()
 
 page = """
-Name: <|{input_name}|input|>
+Name: <|{name}|input|>
 <|submit|button|on_action=submit_scenario|>
 
 Message: <|{message}|text|>
 """
 
+name = "Taipy"
+message = None
+
+
+def submit_scenario(state):
+    state.scenario.name.write(state.name)
+    state.scenario.submit(wait=True)
+    state.message = scenario.message.read()
+
+
 if __name__ == "__main__":
     Core().run()
-    hello_scenario = tp.create_scenario(scenario_cfg)
+    scenario = tp.create_scenario(scenario_cfg)
     Gui(page).run()
 ```
 
 To get the complete example, including the user interface code, download it here:
 <a href="./hello_world.py" download>`hello_world.py`</a>
 
-TO DO: explain the code above and result below
+Now, let’s explain the key elements of this code:
 
-![GUI Result](result.png){width=50%}
+```python
+from taipy import Gui
+import taipy as tp
 
+page = """
+Name: <|{name}|input|>
+<|submit|button|on_action=submit_scenario|>
+Message: <|{message}|text|>
+"""
+```
+
+- The `page` variable is a Markdown representation of the user interface. It uses standard Markdown syntax as well as visual elements.
+
+- A Taipy visual element is of the form of `<|{variable}|visual_element_type|>`.Taipy has a lot of visual elements to play with and they often interact with a Python variable. For instance, `{name}` and `{message}` are bound to an input and text field, allowing the user’s input to be directly stored in the `name` variable.
+
+- The `name` and `message` are examples of bound variables. They are directly linked to visual elements in the UI, facilitating real-time interaction between the user and the application.
+
+
+
+- The `message` variable, similarly, is bound to a text field, making it possible to display dynamic content to the user.
+
+#### Interactivity Through Actions
+
+- Actions, like `on_action=submit_scenario`, allow visual elements like buttons to trigger specific functions, enhancing the interactivity of the application.
+
+```python
+def submit_scenario(state):
+    scenario.name.write(state.name)
+    scenario.submit()
+    state.message = scenario.message.read()
+```
+
+- In the `submit_scenario` function, the `name` from the state is written to the scenario, and upon submission, the result is read into the `message` variable, which is then reflected in the UI thanks to the binding.
+
+Every callback, including `submit_scenario`, utilizes `state` as the primary parameter for multi-user functionality. The `state` represents a user connection and is used to read and assign runtime variables for a specific user.  While the scenario remains globally accessible, `state.name` and `state.input` are specific to the user defining it. This architecture ensures that individual user interactions are isolated and managed efficiently, while variables like `scenario` are accessed globally.
+
+```python
+if __name__ == "__main__":
+    tp.Core().run()
+    scenario = tp.create_scenario(scenario_cfg)
+    Gui(page).run()
+```
+
+- The application's main execution block initializes the core services, creates a scenario, and launches the GUI, bringing the interactive interface to life.
+
+![GUI Result](result.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+
+### In Conclusion
+
+Taipy lies in its ease of use and the direct binding of application variables to visual elements. This binding ensures that the interface is always in sync with the underlying application state, providing a real-time, interactive experience for the user.
 
 ---
 
