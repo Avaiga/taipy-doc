@@ -104,7 +104,7 @@ or slightly shorter (and if there are no more than three traces):
 page = "<|...|chart|...|i_property={value1}|i_property[2]={value2}|i_property[3]={value3}|...|>"
 ```
 
-### The *rebuild* property
+### The *rebuild* property {data-source="gui:doc/examples/charts/example-rebuild.py"}
 
 Some of the chart control's properties may result in Taipy GUI having to entirely reconstruct the
 graphical component running on the front-end (the user's browser). The chart control provides some
