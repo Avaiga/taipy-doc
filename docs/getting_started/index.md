@@ -159,17 +159,25 @@ Message: <|{message}|text|>
 """
 ```
 
-- The `page` variable is a Markdown representation of the user interface. It uses standard Markdown syntax as well as visual elements.
+**Pages**
 
-- A Taipy visual element is of the form of `<|{variable}|visual_element_type|...|>`. Taipy has a lot of visual elements to play with, which interact with your Python variables and environment. `{variable}` is the main property of the visual element and is usually what is displayed or modified through the visual element.
+Taipy pages can be defined in multiple ways: Markdown, Html or Python. The `page` variable is a Markdown representation of the user interface. It uses standard Markdown syntax as well as visual elements.
 
-- For instance, `{name}` is bound to an input and text field, allowing the user’s input to be directly stored in the `name` variable.
+**Visual elements**
 
-- Similarly, the `message` variable is bound to a text field, making it possible to display dynamic content to the user.
+A Taipy visual element is an highly interactive element that can display variables, modify them and more.  You can play with a lot of different types from charts to sliders. They all interact with your Python variables and environment. 
+
+Here is a generic example of one: `<|{variable}|visual_element_type|...|>`. `variable` is the main property of the visual element and is usually what is displayed or modified through the visual element.
+
+In our initial example: 
+
+- `name` is bound to an input and text field, allowing the user’s input to be directly stored in the `name` variable.
+
+- `message` is bound to a text field, making it possible to display dynamic content to the user.
 
 #### Interactivity Through Actions
 
-- Actions, like `on_action=submit_scenario`, allow visual elements like buttons to trigger specific functions, enhancing the interactivity of the application.
+Actions, like `on_action=submit_scenario`, allow visual elements like buttons to trigger specific functions, enhancing the interactivity of the application.
 
 ```python
 def submit_scenario(state):
