@@ -17,13 +17,13 @@ development, from initial prototypes to production ready solutions.
   interactive multi-page applications. With extended Markdown syntax, you can craft dynamic 
   web pages with ease. No knowledge of web development is required!
 
-- **Scenario and data management:**
-  Taipy is designed specifically for data-driven applications. Setting up scenarios, including 
-  data flows and pipelines, requires minimal Python setup.
-
 - **Pipeline orchestration:**
   With data caching, parallel task execution, and data source scoping Taipy makes it efficient 
   for developers to model complex pipelines and for end-users to visualize, run, and monitor them.
+
+- **Scenario and data management:**
+  Taipy is designed specifically for data-driven applications. Setting up scenarios, orchestrating 
+  data flows and pipelines, and accessing data requires minimal Python setup.
 
 ## Quick Access
 
