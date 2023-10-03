@@ -53,7 +53,8 @@ nav:
     - "Demos":
         - knowledge_base/demos/index.md
     - "Tips and tricks":
-        - knowledge_base/tips/index.md
+        - "The Scenarios": knowledge_base/tips/the_scenarios.md
+        - "Sharing a Taipy Application on Colab with Ngrok": knowledge_base/tips/sharing_taipy_app_colab_ngrok.md
   - "Manuals":
     - manuals/index.md
     - "User Manuals":
