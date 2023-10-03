@@ -4,7 +4,7 @@ In the fast-moving world of business today, people who make decisions need to ad
 Taipy scenarios are a strong tool for running and saving sets of tasks. They can create different versions of a business problem with different guesses. 
 This helps users understand the effects and possibilities, which are really important for big decisions.
 
-![Monthly Production Planning](scenario_1_2.png){width=100%}
+![Scenarios](scenario_1_2.png){width=100%}
 
 In this article, we will examine Taipy scenarios more closely. We will explore what they can do and how they can be useful when making decisions.
 
