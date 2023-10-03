@@ -53,8 +53,10 @@ nav:
     - "Demos":
         - knowledge_base/demos/index.md
         - "Sales Dashboard": knowledge_base/demos/sales_dashboard.md
+        - "Tweet generation": knowledge_base/demos/tweet_generation.md
         - "Face Recognition": knowledge_base/demos/face_recognition.md
         - "Sentiment Analysis": knowledge_base/demos/sentiment_analysis.md
+        - "COVID Dashboard": knowledge_base/demos/covid_dashboard.md
         - "Movie genre selector": knowledge_base/demos/movie_genre_selector.md
     - "Tips and tricks":
         - knowledge_base/tips/index.md
