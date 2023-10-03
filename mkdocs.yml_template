@@ -52,6 +52,15 @@ nav:
         - "Data Nodes and Tasks": knowledge_base/tutorials/data_nodes.md
     - "Demos":
         - "Demos": knowledge_base/demos/index.md
+        - "Sales Dashboard": knowledge_base/demos/sales_dashboard.md
+        - "Tweet generation": knowledge_base/demos/tweet_generation.md
+        - "Face Recognition": knowledge_base/demos/face_recognition.md
+        - "Sentiment Analysis": knowledge_base/demos/sentiment_analysis.md
+        - "Churn Classification": knowledge_base/demos/churn_classification.md
+        - "Production Planning": knowledge_base/demos/production-planning.md
+        - "Stock Visualization": knowledge_base/demos/stock-visualization.md
+        - "COVID Dashboard": knowledge_base/demos/covid_dashboard.md
+        - "Movie genre selector": knowledge_base/demos/movie_genre_selector.md
     - "Tips and tricks":
         - "Tips and tricks": knowledge_base/tips/index.md
         - "The Scenarios": knowledge_base/tips/scenarios/index.md
