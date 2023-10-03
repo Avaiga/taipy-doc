@@ -21,18 +21,11 @@ set class = class ~ " md-header--shadow md-header--lifted" %} {% elif
             data-md-color-scheme="{{ scheme | replace(' ', '-') }}"
             data-md-color-primary="{{ primary | replace(' ', '-') }}"
             data-md-color-accent="{{ accent | replace(' ', '-') }}"
-            {%
-            if
-            option.toggle
-            %}
-            aria-label="{{ option.toggle.name }}"
-            {%
-            else
-            %}
-            aria-hidden="true"
-            {%
-            endif
-            %}
+            {% if option.toggle %}
+              aria-label="{{ option.toggle.name }}"
+            {% else %}
+              aria-hidden="true"
+            {% endif %}
             type="radio"
             name="__palette"
             id="__palette_{{ loop.index }}"
