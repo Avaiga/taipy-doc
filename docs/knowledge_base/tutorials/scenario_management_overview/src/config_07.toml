@@ -1,0 +1,33 @@
+[TAIPY]
+
+[JOB]
+mode = "standalone"
+max_nb_of_workers = "2:int"
+
+[DATA_NODE.input]
+default_data = "21:int"
+
+[DATA_NODE.intermediate]
+default_data = "21:int"
+
+[DATA_NODE.output]
+
+[TASK.double]
+function = "__mp_main__.double:function"
+inputs = [ "input:SECTION",]
+outputs = [ "intermediate:SECTION",]
+skippable = "False:bool"
+
+[TASK.add]
+function = "__mp_main__.add:function"
+inputs = [ "intermediate:SECTION",]
+outputs = [ "output:SECTION",]
+skippable = "False:bool"
+
+[SCENARIO.my_scenario]
+tasks = [ "double:SECTION", "add:SECTION",]
+additional_data_nodes = []
+
+[SCENARIO.my_scenario.comparators]
+
+[SCENARIO.my_scenario.sequences]

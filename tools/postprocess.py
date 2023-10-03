@@ -27,7 +27,7 @@ def define_env(env):
     Mandatory to make this a proper MdDocs macro
     """
     match = re.search(r"/en/(develop|(?:release-(\d+\.\d+)))/$", env.conf["site_url"])
-    env.conf["branch"] = (f"release/{match.group(2)}" if match.group(2) else match.group(1)) if match else "unknown"
+    env.conf["branch"] = (f"release/{match[2]}" if match[2] else match[1]) if match else "unknown"
 
 
 TOC_ENTRY_PART1 = r"<li\s*class=\"md-nav__item\">\s*<a\s*href=\""
@@ -391,6 +391,37 @@ def on_post_build(env):
                             if last_location:
                                 file_was_changed = True
                                 html_content = new_content + html_content[last_location:]
+
+                    # Add breadcrumbs to Taipy GUI's control, part and core element pages
+                    fn_match = re.search(r"(/|\\)gui\1(vis|cor)elements\1(.*?)\1index.html", filename)
+                    element_category = None
+                    if fn_match is not None:
+                        if category_match := re.search(r"<!--\s+Category:\s+(\w+)\s+-->", html_content):
+                            element_category = category_match[1]
+                        elif re.match(r"^charts(/|\\).*$", fn_match[3]):
+                            element_category = "chart"
+                    if element_category:
+                        # Insert breadcrumbs
+                        ARTICLE_RE = re.compile(r"(<div\s+class=\"md-content\".*?>)(\s*<article)")
+                        if article_match := ARTICLE_RE.search(html_content):
+                            repl = "\n<ul class=\"tp-bc\">"
+                            if fn_match[2] == "cor":
+                                repl += f"<li><a href=\"../../viselements\"><b>Visual Elements</b></a></li>"
+                                repl += "<li><a href=\"../../viselements/controls/#scenario-management-controls\"><b>Scenario management controls</b></a></li>"
+                            else:
+                                chart_part = "../" if element_category == "chart" else ""
+                                repl += f"<li><a href=\"{chart_part}..\"><b>Visual Elements</b></a></li>"
+                                repl += (f"<li><a href=\"{chart_part}../blocks\"><b>Blocks</b></a></li>" if element_category == "blocks"
+                                        else f"<li><a href=\"{chart_part}../controls/#standard-controls\"><b>Standard controls</b></a></li>")
+                                if chart_part:
+                                    repl += f"<li><a href=\"{chart_part}../chart\"><b>Charts</b></a></li>"
+                            repl += "</ul>"
+                            html_content = (html_content[:article_match.start()]
+                                            + article_match.group(1)
+                                            + repl
+                                            + article_match.group(2)
+                                            + html_content[article_match.end():])
+                            file_was_changed = True
 
                 if file_was_changed:
                     with open(filename, "w") as html_file:

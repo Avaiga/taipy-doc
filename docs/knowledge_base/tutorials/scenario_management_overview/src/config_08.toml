@@ -1,0 +1,30 @@
+[TAIPY]
+
+[DATA_NODE.input]
+default_data = "21:int"
+
+[DATA_NODE.intermediate]
+
+[DATA_NODE.output]
+
+[TASK.double]
+function = "__main__.double:function"
+inputs = [ "input:SECTION",]
+outputs = [ "intermediate:SECTION",]
+skippable = "False:bool"
+
+[TASK.add]
+function = "__main__.add:function"
+inputs = [ "intermediate:SECTION",]
+outputs = [ "output:SECTION",]
+skippable = "False:bool"
+
+[SCENARIO.multiply_scenario]
+tasks = [ "double:SECTION", "add:SECTION",]
+additional_data_nodes = []
+name = "my_scenario"
+
+[SCENARIO.multiply_scenario.comparators]
+output = [ "__main__.compare_function:function",]
+
+[SCENARIO.multiply_scenario.sequences]
