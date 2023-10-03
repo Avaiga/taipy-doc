@@ -52,8 +52,10 @@ nav:
         - "Data Nodes and Tasks": knowledge_base/tutorials/data_nodes.md
     - "Demos":
         - knowledge_base/demos/index.md
+        - "Face Recognition": knowledge_base/demos/face_recognition.md
         - "Sentiment Analysis": knowledge_base/demos/sentiment_analysis.md
         - "Production Planning": knowledge_base/demos/production-planning.md
+        - "Movie genre selector": knowledge_base/demos/movie_genre_selector.md
     - "Tips and tricks":
         - knowledge_base/tips/index.md
   - "Manuals":
