@@ -18,7 +18,7 @@ In addition to coding with Python scripts, [Taipy works seamlessly in Notebook e
 
 In this article, we will demonstrate how to put a Taipy application on Notebooks that are hosted on the Google Colab platform. We will achieve this by creating a public URL using [Ngrok](https://ngrok.com/).
 
-![Monthly Production Planning](Sharing_Taipy_Ngrok_1.png){width=80%}
+![Problem statement](Sharing_Taipy_Ngrok_1.png){width=80%}
 
 To begin, let's briefly explain what Ngrok and Google Colab are.
 
@@ -54,11 +54,11 @@ this URL is only accessible locally and cannot be accessed from the internet. As
 
 On the Ngrok website (create a hyperlink to Ngrok website), create a free account.
 
-![Monthly Production Planning](Sharing_Taipy_Ngrok_2.png){width=50%}
+![Getting your Authtoken on Ngrok](Sharing_Taipy_Ngrok_2.png){width=50%}
 
 After you've created your account, you can obtain your personal AuthToken. We require this AuthToken to establish the tunnel for our Taipy application.
 
-![Monthly Production Planning](Sharing_Taipy_Ngrok_3.png){width=60%}
+![Getting your Authtoken on Ngrok](Sharing_Taipy_Ngrok_3.png){width=60%}
 
 Head to Ngrok website and obtain your tunnel Authtoken.
 
@@ -70,16 +70,16 @@ The initial step involves importing Ngrok. To do this, let's install the Ngrok P
 
 The next step takes place in the Gui.run() call. Taipy has an in-built Ngrok Authtoken reader. We just have to add the `ngrok_token` parameter in the `run()` function and put the Authtoken provided by Ngrok.
 
-![Monthly Production Planning](Sharing_Taipy_Ngrok_4.png){width=100%}
+![Sharing our Taipy application in Google Colab with Ngrok](Sharing_Taipy_Ngrok_4.png){width=100%}
 
 Executing this last step will generate a public URL from Ngrok in the terminal.
 
-![Monthly Production Planning](Sharing_Taipy_Ngrok_5.png){width=70%}
-![Monthly Production Planning](Sharing_Taipy_Ngrok_5_1.png){width=70%}
+![Sharing our Taipy application in Google Colab with Ngrok](Sharing_Taipy_Ngrok_5.png){width=70%}
+![Sharing our Taipy application in Google Colab with Ngrok](Sharing_Taipy_Ngrok_5_1.png){width=70%}
 
 Now, please click on the Ngrok Public URL link to access our application.
 
-![Monthly Production Planning](taipy_ngrok_app.gif){width=100%}
+![Sharing our Taipy application in Google Colab with Ngrok](taipy_ngrok_app.gif){width=100%}
 
 Congratulations! You have successfully created and launched our multi-page Taipy application from Colab!!
 
@@ -95,10 +95,10 @@ correctly because the page refreshes several times. This happens because of the 
 To address this issue, you can modify the `change_delay` parameter in one of the following ways:
 
 - **Locally**: You can make changes to this parameter locally, directly within the Taipy visual element.
-  ![Monthly Production Planning](Sharing_Taipy_Ngrok_6.png){width=100%}
+  ![Update the delay parameter](Sharing_Taipy_Ngrok_6.png){width=100%}
 
 - **Globally**: To adjust the delay for all of Taipy's visual elements.
-  ![Monthly Production Planning](Sharing_Taipy_Ngrok_7.png){width=100%}
+  ![Update the delay parameter](Sharing_Taipy_Ngrok_7.png){width=100%}
 
 ## Reloading after modification
 
@@ -113,27 +113,27 @@ and enables easy updates with fewer re-executions required. You can learn more a
 `Page.set_content` here are the new cells to add:
 
 1. Import Markdown:
-   ![Monthly Production Planning](Sharing_Taipy_Ngrok_8.png){width=100%}
+   ![Modification of the markdown](Sharing_Taipy_Ngrok_8.png){width=100%}
 
 2. Set empty new page:
-   ![Monthly Production Planning](Sharing_Taipy_Ngrok_9.png){width=100%}
+   ![Modification of the markdown](Sharing_Taipy_Ngrok_9.png){width=100%}
 
 3. Set content to `new_page`:
-   ![Monthly Production Planning](Sharing_Taipy_Ngrok_10.png){width=100%}
+   ![Modification of the markdown](Sharing_Taipy_Ngrok_10.png){width=100%}
 
 4. Update the `pages` definition:
-   ![Monthly Production Planning](Sharing_Taipy_Ngrok_11.png){width=100%}
+   ![Modification of the markdown](Sharing_Taipy_Ngrok_11.png){width=100%}
 
 ## Variable modification with `gui.reload`
 
 1. Add this step
-   ![Monthly Production Planning](Sharing_Taipy_Ngrok_12.png){width=100%}
+   ![Variable modification](Sharing_Taipy_Ngrok_12.png){width=100%}
 
 2. Update your `Gui.run`
-   ![Monthly Production Planning](Sharing_Taipy_Ngrok_13.png){width=100%}
+   ![Variable modification](Sharing_Taipy_Ngrok_13.png){width=100%}
 
 3. Add the `gui.reload` function
-   ![Monthly Production Planning](Sharing_Taipy_Ngrok_14.png){width=100%}
+   ![Variable modification](Sharing_Taipy_Ngrok_14.png){width=100%}
 
 After you've made your modifications, just rerun the cell where you made the changes and activate the reload function. Refresh your application page to view the updates you've made.
 
