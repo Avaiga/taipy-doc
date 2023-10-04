@@ -8,7 +8,7 @@ This helps users understand the effects and possibilities, which are really impo
 
 In this article, we will examine Taipy scenarios more closely. We will explore what they can do and how they can be useful when making decisions.
 
-As a reminder, Taipy scenarios are one of the fundamental ideas within [Taipy](https://www.taipy.io/about-taipy/what-is-taipy-core/).
+As a reminder, Taipy scenarios are one of the fundamental ideas within [Taipy](https://docs.taipy.io/en/latest/manuals/about/).
 
 ## Taipy Scenarios: An Overview
 
