@@ -51,8 +51,8 @@ permanent by opting for a paid solution.
 Now, let's begin:
 
 For our example, we will use a Sentiment Analysis Application from 
-[Taipy's Getting Started](https://github.com/Avaiga/demo-sentiment-analysis) guide. This 
-application showcases multiple pages with a feature-rich graphical user interface.
+[Demo sentiment analysis](https://github.com/Avaiga/demo-sentiment-analysis) guide. 
+This application showcases multiple pages with a feature-rich graphical user interface.
 
 ## Step 1: Getting Started with Taipy and Google Colab
 
@@ -160,7 +160,7 @@ and enables easy updates with fewer re-executions required. You can learn more a
 1. Add this step
    ![Variable modification](Sharing_Taipy_Ngrok_12.png){width=100%}
 
-2. Update your `Gui.run`
+2. Update your `tp.run(gui)`
    ![Variable modification](Sharing_Taipy_Ngrok_13.png){width=100%}
 
 3. Add the `gui.reload` function
