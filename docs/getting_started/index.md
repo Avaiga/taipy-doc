@@ -35,9 +35,9 @@ Let's craft a basic "Hello World" scenario:
 
 The graph involves:
 
-- An input data node named *name*.
+- An input data node named *input_name*.
 
-- A task, *build_message*, that processes the *name* data node and outputs a *message* data node.
+- A task, *build_message*, that processes the *input_name* data node and outputs a *message* data node.
 
 ### Setting It Up
 
@@ -51,14 +51,14 @@ The graph involves:
         return f"Hello {name}!"
     
     
-    name_data_node_cfg = Config.configure_data_node(id="name")
+    input_name_data_node_cfg = Config.configure_data_node(id="input_name")
     message_data_node_cfg = Config.configure_data_node(id="message")
-    build_msg_task_cfg = Config.configure_task("build_msg", build_message, name_data_node_cfg, message_data_node_cfg)
+    build_msg_task_cfg = Config.configure_task("build_msg", build_message, input_name_data_node_cfg, message_data_node_cfg)
     scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_task_cfg])
     ```
 
     - Lines 4-5 define the function that the task will use during execution.
-    - Lines 8-9 configure the data nodes, *name* and *message*.
+    - Lines 8-9 configure the data nodes, *input_name* and *message*.
     - Line 10 configures a task called *build_msg* associated with the *build_message()*
       function, specifying the input and output data nodes.
     - Finally, line 11 configures the execution graph of the scenario providing 
@@ -80,14 +80,14 @@ The graph involves:
     import taipy as tp
     
     hello_scenario = tp.create_scenario(scenario_cfg)
-    hello_scenario.name.write("Taipy")
+    hello_scenario.input_name.write("Taipy")
     hello_scenario.submit()
     print(hello_scenario.message.read())
     ```
    
     - In line 3, method `tp.create_scenario()` instantiates the new scenario name 
         *hello_scenario* from the scenario configuration built before.
-    - Line 4, sets the input data node *name* of *hello_scenario* with the string value 
+    - Line 4, sets the input data node *input_name* of *hello_scenario* with the string value 
         "Taipy" using the `write()` method.
     - Line 5 submits the *hello_scenario* for execution, which triggers the creation and 
         execution of a job. This job reads the input data node, passes the value to the 
@@ -121,18 +121,18 @@ from taipy import Gui
 
 
 page = """
-Name: <|{name}|input|>
+Name: <|{input_name}|input|>
 <|submit|button|on_action=submit_scenario|>
 
 Message: <|{message}|text|>
 """
 
-name = "Taipy"
+input_name = "Taipy"
 message = None
 
 
 def submit_scenario(state):
-    state.scenario.name.write(state.name)
+    state.scenario.input_name.write(state.input_name)
     state.scenario.submit(wait=True)
     state.message = scenario.message.read()
 
@@ -153,7 +153,7 @@ from taipy import Gui
 import taipy as tp
 
 page = """
-Name: <|{name}|input|>
+Name: <|{input_name}|input|>
 <|submit|button|on_action=submit_scenario|>
 Message: <|{message}|text|>
 """
@@ -175,7 +175,7 @@ the main property of the visual element and is usually what is displayed or modi
 
 In our initial example: 
 
-- *name* is bound to an input and text field, allowing the user’s input to be directly stored in the *name* variable.
+- *input_name* is bound to an input and text field, allowing the user’s input to be directly stored in the *input_name* variable.
 
 - *message* is connected to a text field, allowing you to display changing content to the user.
 
@@ -185,7 +185,7 @@ Actions, like `on_action=submit_scenario`, allow visual elements like buttons to
 
 ```python
 def submit_scenario(state):
-    scenario.name.write(state.name)
+    scenario.input_name.write(state.input_name)
     scenario.submit()
     state.message = scenario.message.read()
 ```
@@ -194,13 +194,13 @@ Every callback, including `submit_scenario`, utilizes state as the first paramet
 This state represents a user's connection and is used to read and set variables while 
 the user is interacting with the program. It makes it simple for Taipy to handle multiple users simultaneously.
 
-While *scenario* is available to everyone using the program, *state.name* and *state.input* are unique to the user 
+While *scenario* is available to everyone using the program, *state.input_name* and *state.input* are unique to the user 
 who defines them. This design ensures that each user's actions are separate and efficiently controlled, 
 while variables like *scenario* are global variables.
 
 TODO: State illustration
 
-In the `submit_scenario` function, the *name* entered by the user on the interface is saved to the scenario. 
+In the `submit_scenario` function, the *input_name* entered by the user on the interface is saved to the scenario. 
 After submission, the outcome is retrieved and stored in the *message* variable, which is then shown on the user interface due to the connection between them.
 
 ```python
