@@ -37,7 +37,7 @@ The graph involves:
 
 - An input data node named *input_name*.
 
-- A task, *build_message*, that processes the *input_name* data node and outputs a *message* data node.
+- A task, referring to the function *build_message()*, that processes the *input_name* data node and outputs a *message* data node.
 
 ### Setting It Up
 
@@ -161,7 +161,7 @@ Message: <|{message}|text|>
 
 **Pages**
 
-Taipy pages can be defined in multiple ways: Markdown, Html or Python. The `page` 
+Taipy pages can be defined in multiple ways: Markdown, Html or Python. The *page* 
 variable is a Markdown representation of the user interface. 
 It uses standard Markdown syntax as well as visual elements.
 
@@ -190,17 +190,17 @@ def submit_scenario(state):
     state.message = scenario.message.read()
 ```
 
-Every callback, including `submit_scenario`, utilizes state as the first parameter. 
+Every callback, including *submit_scenario()*, receives a `State^` object as its first parameter. 
 This state represents a user's connection and is used to read and set variables while 
-the user is interacting with the program. It makes it simple for Taipy to handle multiple users simultaneously.
+the user is interacting with the program. It makes it possible for Taipy to handle multiple users simultaneously.
 
-While *scenario* is available to everyone using the program, *state.input_name* and *state.input* are unique to the user 
-who defines them. This design ensures that each user's actions are separate and efficiently controlled, 
+While *scenario* is available to everyone using the program, *state.input_name* and *state.input* are specific to the user who interacts with them. 
+This design ensures that each user's actions are separate and efficiently controlled, 
 while variables like *scenario* are global variables.
 
 TODO: State illustration
 
-In the `submit_scenario` function, the *input_name* entered by the user on the interface is saved to the scenario. 
+In the *submit_scenario()* function, the *input_name* entered by the user on the interface is saved to the scenario. 
 After submission, the outcome is retrieved and stored in the *message* variable, which is then shown on the user interface due to the connection between them.
 
 ```python
