@@ -25,14 +25,16 @@ Data Nodes don't contain the data itself but point to the data and know
   situations (i.e. various data/parameters values set by end-users).
 
 [**Configuration**](../../../../manuals/core/config/index.md) is a structure to define scenarios.
-It serves as the blueprint for our Directed Acyclic Graph(s) and models the data sources, parameters, and tasks. 
-After being defined, a configuration functions like a superclass and is employed to generate various instances of scenarios.
+It serves as the blueprint for our Directed Acyclic Graph(s) and models the data sources,
+parameters, and tasks. After being defined, a configuration functions like a superclass and is
+employed to generate various instances of scenarios.
 
 # Configuring a Scenario
 
-Think about the most basic pipeline: one function that needs two things to work – some data and a date. It uses these to generate a prediction for that date.
+Think about the most basic pipeline: one function that needs two things to work – some data and a
+date. It uses these to generate a prediction for that date.
 
-See the function code below:
+See the code for this function below:
 
 ```python
 import pandas as pd
@@ -90,7 +92,8 @@ Three Data Nodes are being configured (**historical_temperature**, **date_to_for
         </video>
 
         To use this configuration in our code (`main.py` for example), we must load it and 
-        retrieve the `scenario_cfg`. This `scenario_cfg` is the basis to instantiate our scenarios.
+        retrieve the *scenario_cfg* instance. This object is the basis to instantiate our
+        scenarios.
 
         ```python
         Config.load('config_01.toml')
@@ -143,9 +146,8 @@ Value at the end of task 23.45
 In this code, you can see how to create and submit scenarios, retrieve data nodes, 
 read and write data. Many other functions are described in the manuals, in particular in the 
 [taipy](../../../../manuals/reference/pkg_taipy.md), 
-[scenario](https://docs.taipy.io/en/develop/manuals/core/entities/scenario-cycle-mgt/) and 
-[data node](https://docs.taipy.io/en/develop/manuals/core/entities/data-node-mgt/) documentation 
-pages.
+[scenario](../../../../manuals/core/entities/scenario-cycle-mgt/) and 
+[data node](../../../../manuals/core/entities/data-node-mgt/) documentation pages.
 
 # Visual elements
 
@@ -190,7 +192,7 @@ The [Scenario management visual elements](../../../../manuals/gui/corelements/in
 provide all the necessary controls to manage and access scenarios and data nodes. In fact,
 creating a Scenario based application connected to your pipelines has never been simpler.
 
-![Sceanrio management demo](demo.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Scenario management demo](demo.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 # Entire code
 
@@ -248,4 +250,3 @@ if __name__ == '__main__':
 
     tp.Gui(scenario_md).run()
 ``` 
-    
