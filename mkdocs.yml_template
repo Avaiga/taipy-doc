@@ -65,6 +65,7 @@ nav:
     - "Tips and tricks":
         - knowledge_base/tips/index.md
         - "Jupyter Notebooks": knowledge_base/tips/jupyter_notebooks/index.md
+        - "Long Running Callbacks": knowledge_base/tips/long_callbacks/index.md
   - "Manuals":
     - manuals/index.md
     - "User Manuals":
