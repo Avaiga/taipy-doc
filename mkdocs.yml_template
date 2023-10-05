@@ -64,6 +64,7 @@ nav:
         - "Movie genre selector": knowledge_base/demos/movie_genre_selector.md
     - "Tips and tricks":
         - knowledge_base/tips/index.md
+        - "Jupyter Notebooks": knowledge_base/tips/jupyter_notebooks/index.md
   - "Manuals":
     - manuals/index.md
     - "User Manuals":
