@@ -36,8 +36,6 @@ To instantiate a Taipy scenario, users first need to configure it with the "Conf
 how often it runs, what it compares, and its properties.
 Then users can create a scenario with the `create_scenario()` method passing as a parameter the scenario configuration.
 
-![Scenario Configuration and Creation](scenario_2.png){width=100%}
-
 ## Accessing and Managing Scenarios
 
 Taipy offers different ways to work with scenarios. You can do things like getting a scenario by its ID, getting all scenarios, making one scenario the main one, and comparing scenarios.
