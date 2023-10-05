@@ -198,7 +198,6 @@ While *scenario* is available to everyone using the program, *state.input_name* 
 This design ensures that each user's actions are separate and efficiently controlled, 
 while variables like *scenario* are global variables.
 
-TODO: State illustration
 
 In the *submit_scenario()* function, the *input_name* entered by the user on the interface is saved to the scenario. 
 After submission, the outcome is retrieved and stored in the *message* variable, which is then shown on the user interface due to the connection between them.
