@@ -1,4 +1,3 @@
-# Multi-page Application
 
 Are you tired of messy and confusing dashboards that make it hard to find the information you need? 
 If so, it might be a good idea to switch to multipage applications!
@@ -22,7 +21,7 @@ Taipy makes creating multipage applications a breeze.
 So, if you're ready to enhance your data visualization, check out our multipage feature 
 and start creating your own intuitive and insightful applications with Taipy:
 
-## Part 1 – Building a Basic Multi-Page Application
+# Part 1 – Building a Basic Multi-Page Application
 
 While it's possible to create a multi-page Taipy application in a single script, 
 it's often a good practice to organize your code into a folder structure like this:
@@ -33,7 +32,7 @@ In this arrangement, every submodule in the **pages** folder (like `home.py` and
 holds the code for each page in our application. 
 We're demonstrating with just two pages in this example, but you can add as many as you need.
 
-## Defining the Pages
+# Defining the Pages
 
 To make it simpler, we'll ensure that each page doesn't affect any other page. 
 In other words, when you do something on one page, it won't affect the other pages. 
@@ -58,7 +57,7 @@ For example, to turn `home.py` into a one-page Taipy application, we could add t
 
 ![Defining the Pages](multipage_application_5.png){width=100%}
 
-## Defining a Multi-Page Application
+# Defining a Multi-Page Application
 
 Up to this point, we've structured our multi-page Taipy application by 
 keeping two one-page applications in a subfolder named "pages."
@@ -87,13 +86,13 @@ If you change the URL from */home* to */temperature*, you will see the following
 
 ![Defining a Multi-Page Application](multipage_application_8.png){width=50%}
 
-## How to navigate between pages?
+# How to navigate between pages?
 
 Manually changing the URL to navigate between pages isn't ideal. 
 Taipy provides several methods for adding navigation to your multi-page application, 
 making it more user-friendly and intuitive.
 
-### 1. The navbar
+## 1. The navbar
 
 ![The navbar](multipage_application_9.gif){width=50%}
 
@@ -122,7 +121,7 @@ As an additional tip, you can use HTML *center* tags to center the *navbar* on t
 The concept of the *root* page is more advanced in Taipy and will be explored 
 in more detail in Part 2 of this Taipy multi-page series.
 
-### 2. The navigate function
+## 2. The navigate function
 
 The `taipy.gui.navigate` function is self-explanatory in its purpose, 
 it is used to navigate to other pages. 
@@ -171,7 +170,7 @@ then call `navigate(state, page)` to direct the user to the selected `page`.
 In practice, we effectively have the same functionality as the navbar, 
 but had to do a bit more work to expressly create that functionality.
 
-### 3. Hyperlinks
+## 3. Hyperlinks
 
 Finally, the simplest way to implement navigation in Taipy is with a hyperlink:
 
@@ -181,7 +180,7 @@ This results in the following clickable **temperature** text, which directs the 
 
 ![Hyperlinks](multipage_application_14.png){width=50%}
 
-## Part 2
+# Part 2
 
 In preparation for Part 2 of the **Taipy Tips: Building a Multi-Page Application** series, 
 you can anticipate learning about the following topics:
