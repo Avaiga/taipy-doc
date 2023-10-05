@@ -1,5 +1,3 @@
-# Taipy in Jupyter Notebooks
-
 ![Taipy GUI in Jupyter Notebooks](jupyter_notebooks_1.png){width=100%}
 
 Taipy's built-in support for Jupyter Notebooks offers us:
@@ -23,7 +21,7 @@ To solve this and enhance the experience of using Taipy in Jupyter Notebook, we 
 2. [Gui.reload()](../../manuals/reference/taipy.gui.Gui/#taipy.gui.gui.Gui.reload): Use this
    method when you modify a variable that's used in a page.
 
-## Modifying Page Content
+# Modifying Page Content
 
 The code below illustrates how to create a basic Taipy web application in a Jupyter Notebook:
 
@@ -44,7 +42,7 @@ Simply running the new cell (and refreshing the browser) will correctly update o
 
 ![Modifying Page Content](notebook_set_content_no_browser.gif){width=100%}
 
-## Modifying Variable
+# Modifying Variable
 
 Another common task is to change the value of a variable used in our Page definition. Consider the
 following Jupyter Notebook as an example:
@@ -62,7 +60,7 @@ After running the cell, refresh your browser to view the updated changes.
 This doesn't only relate to variables on pages, but also to
 [callback functions](../../manuals/gui/callbacks/) like `on_change`` or user-defined callbacks.
 
-## Conclusion
+# Conclusion
 
 Taipy is dedicated to offering complete web interfaces (GUIs) from both Python scripts and
 notebooks.<br/>
