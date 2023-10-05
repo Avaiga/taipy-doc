@@ -14,11 +14,11 @@ nav:
   - "Getting Started":
     - getting_started/index.md
   - "Knowledge Base":
-    - knowledge_base/index.md
+    - "Knowledge Base": knowledge_base/index.md
     - "Tutorials":
-        - knowledge_base/tutorials/index.md
+        - "Tutorials": knowledge_base/tutorials/index.md
         - "Understanding GUI":
-            - knowledge_base/tutorials/understanding_gui/index.md
+            - "Understanding GUI": knowledge_base/tutorials/understanding_gui/index.md
             - "1 - First Web page": knowledge_base/tutorials/understanding_gui/step_01/step_01.md
             - "2 - Visual elements": knowledge_base/tutorials/understanding_gui/step_02/step_02.md
             - "3 - Interactions": knowledge_base/tutorials/understanding_gui/step_03/step_03.md
@@ -27,7 +27,7 @@ nav:
             - "6 - Page layouts": knowledge_base/tutorials/understanding_gui/step_06/step_06.md
             - "7 - Multi-pages, navbars, and menus": knowledge_base/tutorials/understanding_gui/step_07/step_07.md
         - "Scenario management Overview":
-            - knowledge_base/tutorials/scenario_management_overview/index.md
+            - "Scenario management Overview": knowledge_base/tutorials/scenario_management_overview/index.md
             - "1 - Scenario config and run": knowledge_base/tutorials/scenario_management_overview/step_01/step_01.md
             - "2 - Data Node types": knowledge_base/tutorials/scenario_management_overview/step_02/step_02.md
             - "3 - Cycles": knowledge_base/tutorials/scenario_management_overview/step_03/step_03.md
@@ -51,10 +51,20 @@ nav:
         - "Manage Data Pipelines with Scenarios": knowledge_base/tutorials/data_pipelines.md
         - "Data Nodes and Tasks": knowledge_base/tutorials/data_nodes.md
     - "Demos":
-        - knowledge_base/demos/index.md
+        - "Demos": knowledge_base/demos/index.md
+        - "Sales Dashboard": knowledge_base/demos/sales_dashboard.md
+        - "Tweet generation": knowledge_base/demos/tweet_generation.md
+        - "Face Recognition": knowledge_base/demos/face_recognition.md
+        - "Sentiment Analysis": knowledge_base/demos/sentiment_analysis.md
+        - "Churn Classification": knowledge_base/demos/churn_classification.md
+        - "Production Planning": knowledge_base/demos/production-planning.md
+        - "Stock Visualization": knowledge_base/demos/stock-visualization.md
+        - "COVID Dashboard": knowledge_base/demos/covid_dashboard.md
+        - "Movie genre selector": knowledge_base/demos/movie_genre_selector.md
     - "Tips and tricks":
-        - "The Scenarios": knowledge_base/tips/the_scenarios.md
-        - "Sharing a Taipy Application on Colab with Ngrok": knowledge_base/tips/sharing_taipy_app_colab_ngrok.md
+        - "Tips and tricks": knowledge_base/tips/index.md
+        - "The Scenarios": knowledge_base/tips/scenarios/index.md
+        - "Sharing a Taipy Application on Colab with Ngrok": knowledge_base/tips/colab_with_ngrok/index.md
   - "Manuals":
     - manuals/index.md
     - "User Manuals":
