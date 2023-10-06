@@ -7,6 +7,6 @@ Charts visualize patterns, trends, and data relationships. Line charts connect d
 straight lines for tracking changes over time. Customize line styles in charts by tweaking line 
 properties for various appearances.
 
-To learn more about Taipy charts, watch the tutorial video:
+To learn more about charts in Taipy, watch the tutorial video:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/M32xhZP04yo?feature=oembed" frameborder="0" allowfullscreen></iframe>

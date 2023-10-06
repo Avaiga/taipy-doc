@@ -8,6 +8,6 @@ data from different sources like databases, APIs, or real-time feeds into one ea
 interface. Typically, they use charts, graphs, tables, gauges, and other visuals to present data 
 in a clear and interactive way.
 
-To learn more about Taipy data dashboard, watch the tutorial video:
+To learn more on how to create a data dashboard with Taipy, watch the tutorial video:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/0KlZ3IDFJz4?feature=oembed" frameborder="0" allowfullscreen></iframe>
