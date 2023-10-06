@@ -24,3 +24,9 @@ for specific cities or delve into gender-based sales metrics, this tool enhances
 
 
 ```$pip install taipy```
+
+
+## Source
+The logic and idea, as well as part of the code of this application, come from Sven Bosau. 
+The original code can be found [here](https://github.com/Sven-Bo/streamlit-sales-dashboard). 
+It was recreated using Taipy.
