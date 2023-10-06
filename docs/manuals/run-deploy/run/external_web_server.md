@@ -7,7 +7,7 @@ setting it to the instance of the Flask server you are using.
 
 Here is a short code sample that should make this straightforward:
 
-```py linenums="1"
+```python linenums="1"
 from flask import Flask
 from taipy import Gui
 

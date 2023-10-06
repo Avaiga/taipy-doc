@@ -119,7 +119,7 @@ performance hit gracefully for the end users.
 Here is an example of how this property can be used.<br/>
 Consider the code below:
 
-```py title="chart.py"
+```python title="chart.py"
 from taipy.gui import Gui
 import math
 

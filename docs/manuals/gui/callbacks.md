@@ -145,7 +145,7 @@ task, then refresh the visual elements according to the results, or send notific
 to the client's browser.
 
 The implementation of this task's execution is straightforward:
-```py linenums="1"
+```python linenums="1"
 from taipy.gui import State, invoke_long_callback, notify
 
 def heavy_function(...):
@@ -168,7 +168,7 @@ Note that `invoke_long_callback()^` does more than just execute your task behind
 additional parameters that let you monitor what the task is doing, particularly when it finishes.
 
 Here is some code that shows how to be notified when the task ends:
-```py linenums="1"
+```python linenums="1"
 ...
 
 def heavy_function_status(state, status):
@@ -191,7 +191,7 @@ whether the task succeeded or failed.
 (*heavy_function_status()*) if your application needs regular updates and not only the notification of
 the task being finished.
 
-```py linenums="1"
+```python linenums="1"
 ...
 
 def heavy_function_status(state, status):
@@ -228,7 +228,7 @@ run it properly from a callback. We use the same use case as above: some long-ru
 function called *heavy_function()* that we want to execute when certain even occurs.
 
 Here is how this can be achieved:
-```py linenums="1"
+```python linenums="1"
 from taipy.gui import State, get_state_id, notify
 from threading import Thread
 
@@ -299,7 +299,7 @@ Imagine an application that can display results of some sort on the page "result
 If results are not ready for some reason, when navigating to the result page should
 be prevented, and the user should be switched to another page instead:
 
-```py linenums="1"
+```python linenums="1"
 results_ready = False
 
 def on_navigate(state: State, page_name: str): str

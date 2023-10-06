@@ -44,7 +44,7 @@ nav:
             - "4 - Scenario page": knowledge_base/tutorials/complete_application/step_04/step_04.md
             - "5 - Performance page": knowledge_base/tutorials/complete_application/step_05/step_05.md
         - "Markdown Syntax": knowledge_base/tutorials/markdown_syntax.md
-        - "Data Dashboard": knowledge_base/tutorials/data-dashboard.md
+        - "Data Dashboard": knowledge_base/tutorials/data_dashboard.md
         - "Changing Line Types Using Charts": knowledge_base/tutorials/charts.md
         - "Manage Multiple Graphical Pages": knowledge_base/tutorials/graphical_pages.md
         - "Partials in Taipy": knowledge_base/tutorials/partials.md
@@ -65,6 +65,7 @@ nav:
         - "Movie genre selector": knowledge_base/demos/movie_genre_selector.md
     - "Tips and tricks":
         - knowledge_base/tips/index.md
+        - "Jupyter Notebooks": knowledge_base/tips/jupyter_notebooks/index.md
   - "Manuals":
     - manuals/index.md
     - "User Manuals":
