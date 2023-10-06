@@ -13,7 +13,7 @@ This one page demo provides real-time face detection capabilities
 thanks to the robust [OpenCV library](https://opencv.org/). 
 
 
-## Hot to use the Application
+## How to use the Application
 
 1. While opening the application, you'll see yourself accross your webcam. A red square surrounding your face with someone else's name.
    
