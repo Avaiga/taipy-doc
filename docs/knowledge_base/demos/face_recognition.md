@@ -13,9 +13,12 @@ This one page demo provides real-time face detection capabilities
 thanks to the robust [OpenCV library](https://opencv.org/). 
 
 
-Hot to use it:
-1. While opneing the application, you'll see yourself accross your webcam. A red square surrounding your face with someone else's name.
+## How to use the Application
+
+1. While opening the application, you'll see yourself accross your webcam. A red square surrounding your face with someone else's name.
+   
 2. Train the model to recognize you by clicking the "Capture" button and giving your name several times.
+   
 3. Click now the "Re-train" button. Your name should now appear. The model recognizes you now.
 
 <img src=face-recognition width="615">
