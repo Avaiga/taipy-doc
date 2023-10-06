@@ -15,7 +15,7 @@ and the front-end would immediately reflect the new string content.
 
 Starting from the code mentioned above, here is how you would declare this new element:
 
-```py hl_lines="8 15-17"
+```python hl_lines="8 15-17"
 from taipy.gui.extension import ElementLibrary, Element, ElementProperty, PropertyType
 
 class ExampleLibrary(ElementLibrary):
