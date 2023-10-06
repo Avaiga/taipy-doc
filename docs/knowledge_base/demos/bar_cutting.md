@@ -1,83 +1,57 @@
-Welcome to the Bar Cutting Optimization demonstration, where we showcase an innovative 
-approach to minimize losses in the bar-cutting process. This demo will highlight 
-how a Taipy decision-support application optimize the bar-cutting process, 
-leading to better outcomes with reduced waste.
+This demo showcases how to optimize
+the bar-cutting process for minimal waste.
+Bar-cutting optimization minimizes waste by choosing optimal cut sizes in bars.
+This visualization is crucial in industries with significant material 
+costs or shortages.
 
-# Understanding Bar Cutting Optimization
+[Try it Live](https://bar-cutting.taipy.cloud/Databases)
 
-[Bar Cutting](https://en.wikipedia.org/wiki/Cutting_stock_problem) optimization is the process 
-of choosing the best size of cuts to make in bars to minimize waste, and maximize the raw
-material utilization. It's a critical task in industries where material lost represents
-important costs or shortfalls.
+## Understand the Application
+The application comprises five pages accessible via the left panel by 
+expanding the menu list.
 
+### Page 1: Bar Visualization
 
-# The Bar Cutting application
+  1. Load the selected dataset Choose from two cases and RUN.
+  2. Execute either the Baseline or the Optim algorithms models.
+  3. Display results, highlighting loss in blue on a bar chart.
+  4. Switch algorithms to compare material waste.
 
-## Page 1: A Glimpse of the Initial Page
+<img src= bar-cutting-bar-Visualization] width="615">
 
-On the application's starting page, users can choose one of the two cases they want to run. 
-When they click the RUN button, it initiates the following series of actions:
+To access additional information, you can open the Parameters panel 
+(Taipy Expandable) to review the input data related to the selected case, 
+Stock available and Demand to fulfill.
 
-1. Loading of the selected dataset (Case 1/Case 2 or Case 3).
-2. Execution of two algorithms: Baseline and Optim.
-3. Display of results, with the loss depicted in blue on the bar chart.
+### Page 2: Visual Metrics
+On this page, you'll find metrics for both the Baseline Model and the 
+Optim Model presented in two distinct formats: bar charts and pie charts. 
+These metrics provide insights into the loss, which can be visualized as 
+either a percentage of the total length of the mother bars utilized or as 
+the precise loss value measured in millimeters.
 
-The bar chart displays the cutting patterns, showing the lengths of customer bars and, 
-importantly, the amount of material wasted. Users can switch between algorithms to 
-quickly see the difference in material waste, with the Optim algorithm usually 
-performing better than the Baseline.
+<img src=bar-cutting-Metrics width ="615">
 
-<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/fb5b9154-888d-4640-9e8d-e52596d622b3 width="500">
-  
+### Page 3: Compare Models
+- Compare Baseline and Optim models' performance side by side.
 
-## Page 2: Exploring Input Data and Metrics
-
-For more detailed information, users can open the Parameters panel to review the input data 
-for the selected case. This includes details about the available stock (the original bars for cutting) and the demand.
-
-The Metrics page displays important metrics for both the Baseline and Optim models, 
-presenting them in various ways like bar charts and pie charts. These metrics demonstrate 
-the material waste as a percentage of the total length of the original bars (mother bars) used 
-or as the actual amount of material wasted (in millimeters).
-
-<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/3ccbead1-e756-43c2-8375-b7309e76fe36 width="500">
-
-## Page 3: Comparing Model Performance
-
-By clicking the balance icon in the left panel, users are taken to another page where 
-the performance of the two models is shown side by side. This comparative view offers valuable insights 
-into which algorithm produces better results for the chosen case.
-
-<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/7ab84665-083e-4c43-8ccb-c22ed43f3f27 width="500">
+<img src=bar-cutting-model-comparison width ="615">
 
 
-## Page 4: Comparing Scenarios 
+### Page 4: Compare Cases
+Assess the performance of each model across various scenarios. This 
+represents one of Taipy's most valuable features.
 
-To conduct a thorough analysis, users can compare how each model performs in various use cases (scenarios) 
-by clicking on the balance icon. This feature helps in understanding how each algorithm behaves 
-under different conditions.
+<img src=bar-cutting-compare-cases width ="615">
 
-<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/f9a7c59a-598f-42dd-98dd-63f0cd79ac07 width="500">
+### Page 5: Databases
+Results are neatly summarized in a table, allowing you to select the case, 
+model and table. The results are then accessible for download in CSV format.
+
+<img src=bar-cutting-databases width ="615">
+
+## Disclaimer
+Code for this demo is not publicly available yet. [Contact us](https://www.taipy.io/contact-us/) for a sample.
 
 
-## Page 5: Databases 
-The results are summarized and presented in a table, which users can easily download as a CSV file for further analysis.
-
-<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/0a1d793b-6e81-4231-8291-9585ff4c8f7b width="500">
-
-
-# Disclaimer
-
-Please note that the code for this demo is not publicly available at this stage but can be 
-shared upon request. Feel free to [contact us](https://www.taipy.io/contact-us/) if you wish to 
-receive a sample.
-
-# Conclusion
-
-The Bar Cutting demo showcases Taipy's excellence in precision cutting optimization. 
-Whether you work in manufacturing, logistics, or any industry that needs efficient bar cutting, 
-Taipy makes the process straightforward and reduces waste in a user-friendly and visually appealing way.
-
-Take the time to explore the application, experiment with various scenarios, 
-and utilize the capabilities of Taipy for more accurate and efficient bar cutting.
-
+```$pip install taipy```
