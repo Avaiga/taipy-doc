@@ -40,3 +40,5 @@ How to use it:
 Global COVID-19 statistics summarized via line and pie charts. The Comparison of Covid countries' impact can be seen by changing the toggle between ‘Absolute’ and ‘Relative’.  
 
 <img src=covid-dashboard-world width ="615">
+
+```$pip install taipy```
