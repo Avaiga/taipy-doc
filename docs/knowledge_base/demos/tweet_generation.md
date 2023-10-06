@@ -1,63 +1,37 @@
-Welcome to Taipy's Tweet Generation demo, where we showcase the exceptional capabilities of our 
-AI-powered platform. In this demo, we will explain how our Tweet Generation 
-works, demonstrating how you can use Taipy to create unique Tweets effortlessly.
+Sentiment analysis, also called "opinion mining", is a technique in
+Natural Language Processing (NLP) used to figure out the 
+emotional tone conveyed in a text. 
 
-# Understanding Tweet Generation
-Tweet generation is an intriguing use of AI that enables users to create interesting and 
-one-of-a-kind Tweets with the assistance of AI models. Taipy's Tweet Generation demo illustrates 
-the smooth incorporation of advanced AI models, including GPT-3's Davinci engine for text 
-generation and DALL·E for image generation.
+It helps businesses and individuals better grasp the feelings, 
+viewpoints, and attitudes expressed in written content. Taipy's
+sentiment analysis model excels in making this process highly efficient and accurate.
 
-# The Tweet Generation Demo
-## Crafting Unique Tweets
-Taipy's Tweet Generation demo makes it simple for users to create unique Tweets effortlessly. 
-Users can produce engaging Tweets that connect with their audience by supplying a topic, an 
-optional mood parameter, and even a Twitter account for style transfer. This feature is ideal 
-for individuals and businesses seeking to improve their social media presence.
+[Try it live](https://sentiment-analysis.taipy.cloud/line) 
 
-<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/bf4922e2-1f75-4c74-bdad-83c5df71a942 width="650">
+[Get it on GitHub](https://github.com/Avaiga/demo-sentiment-analysis)
+
+# Understanding the Application
+The application comprises two pages accessible via the upper tabs : "_Line_", "_Text_"
+
+## Page 1: Line - Analyzing User Input
+The initial page of our Sentiment Analysis app, named "Line", is 
+meant for instantly analyzing user input. Whether it's a brief 
+sentence or a longer paragraph, just type or paste the text into 
+the input box, and Taipy will quickly evaluate the sentiments conveyed
+in the text. This is perfect for rapidly gauging the sentiments in social
+media comments, customer reviews, or any text you come across online.
+
+<img src=sentiment-analysis-line width="615">
 
 
-## Key Features
-This application highlights several key features:
+## Page 2: Text - Uploading and Analyzing Text Files
+The second page, named "Text" allows users to upload entire text files for 
+comprehensive sentiment analysis. Users can select a text file from their 
+device, and the application will provide insights into the sentiments 
+expressed throughout the document. This feature is particularly useful 
+for processing longer texts such as articles, reports, or extensive 
+customer feedback.
 
-1. AI-Powered Content Creation: Taipy leverages GPT-3's Davinci engine to predict and generate 
-    text based on user inputs, resulting in captivating Tweets.
+<img src=sentiment-analysis-text width="615">
 
-2. Image Integration with DALL·E: The application seamlessly integrates DALL·E, OpenAI's image 
-    creation model, to generate images that complement the Tweet text, creating visually 
-    appealing and unique content.
-
-3. Style Transfer: Users can infuse the style of a specific Twitter account into their Tweet, 
-    making it feel more authentic and in line with their desired audience.
-
-# Powered by Taipy
-The Tweet Generation demo exemplifies Taipy's capacity to utilize AI models for creative and 
-captivating content generation. By merging text and images, Taipy empowers users to create 
-Tweets that grab attention on social media platforms.
-
-# How to Use Taipy for Tweet Generation
-To create captivating Tweets with Taipy's Tweet Generation demo, follow these straightforward steps:
-
-1. Visit Taipy [Tweet Generation Demo](https://tweet-generation.taipy.cloud/).
-
-2. Fill out the text prompt creation form, including the topic, optional mood parameter, and a 
-    Twitter account for style transfer.
-
-3. Taipy will generate an instruction to write a Tweet based on your input.
-
-4. The GPT-3 Davinci engine predicts the next word tokens, resulting in the generation of a Tweet.
-
-5. Optionally, the application can request and display an image from DALL·E based on the 
-    generated Tweet text.
-
-6. Enjoy your unique Tweet that combines both text and image for maximum impact.
-
-# Conclusion
-Creating captivating and distinctive Tweets has become more accessible than ever thanks to 
-Taipy's Tweet Generation demo. Whether you aim to boost your social media presence or enjoy 
-crafting content, Taipy enables you to express your creativity and engage your audience 
-effortlessly.
-
-Are you ready to start crafting captivating Tweets? Head over to Taipy's Tweet Generation demo 
-page today and discover the enchantment of AI-powered content generation with Taipy.
+```$pip install taipy```
