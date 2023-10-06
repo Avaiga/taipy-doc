@@ -19,27 +19,29 @@ This page allows to conduct an Exploratory Data Analysis (EDA). You have the opt
 to select among two types of graph (scatter plot or histogram) and choose the data 
 content you want to explore with the "Select x" button.
 
-<img src=churn-classification-data-visualization-scatter widht ="615">
+![Data Visualization](images/churn-classification-data-visualization-scatter.png){width=80%}
 
-<img src=churn-classification-data-Visualization-histogram widht ="615">
+![Histogram](images/churn-classification-data-Visualization-histogram.png){width=80%}
 
 ## Page 2: Model Manager
 
 Here, users can access the performance results of the selected algorithm.
 Users can choose an algorithm and chart type to visualize predictions on a validation dataset.
 
-<img src=churn-classification-model-manager widht ="615">
+![Model Manager](images/churn-classification-model-manager.png){width=80%}
 
 ## Page 3: Model Comparison
 
 This page displays the performance of two models side by side, facilitating easy comparison.
 
-<img src=churn-classification-model-comparison widht ="615">
+![Model Comparison](images/churn-classification-model-comparison.png){width=80%}
 
 ## Page 4: Databases
 
 Through this page, access to various datasets, including: training dataset, test dataset, forecast, 
 scoring results, and the Confusion Matrix of the selected algorithm.
 Users can also download specified data frames as CSV files.
-  
-<img src=churn-classification-databases widht ="615">
+
+![Databases](images/churn-classification-databases.png){width=80%}  
+
+```$pip install taipy```

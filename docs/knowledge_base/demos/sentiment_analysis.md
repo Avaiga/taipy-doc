@@ -21,8 +21,7 @@ the input box, and Taipy will quickly evaluate the sentiments conveyed
 in the text. This is perfect for rapidly gauging the sentiments in social
 media comments, customer reviews, or any text you come across online.
 
-<img src=sentiment-analysis-line width="615">
-
+![Line](images/sentiment-analysis-line.png){width=80%}
 
 ## Page 2: Text - Uploading and Analyzing Text Files
 The second page, named "Text" allows users to upload entire text files for 
@@ -32,6 +31,6 @@ expressed throughout the document. This feature is particularly useful
 for processing longer texts such as articles, reports, or extensive 
 customer feedback.
 
-<img src=sentiment-analysis-text width="615">
+![Text](images/sentiment-analysis-text.png){width=80%}
 
 ```$pip install taipy```

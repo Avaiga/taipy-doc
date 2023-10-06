@@ -13,18 +13,18 @@ for individuals and businesses seeking to improve their social media presence.
 This application highlights several key features:
 
 1. **AI-Powered Content Creation:** Taipy leverages GPT-3's
-   Davinci engine to predict and generate text based on user inputs,
-   resulting in captivating Tweets.
+    Davinci engine to predict and generate text based on user inputs,
+    resulting in captivating Tweets.
 
 2. **Image Integration with DALL·E:** The application seamlessly
-   integrates DALL·E, OpenAI's image creation model, to generate images
-   that complement the Tweet text, creating visually appealing and unique content.
+    integrates DALL·E, OpenAI's image creation model, to generate images
+    that complement the Tweet text, creating visually appealing and unique content.
 
 3. **Style Transfer:** Users can infuse the style of a specific
-   Twitter account into their Tweet, making it feel more authentic and aligned with their desired audience.
+    Twitter account into their Tweet, making it feel more authentic and aligned with their 
+    desired audience.
 
-<img src=tweet-generation width="615">
-
+![Tweet Generation](images/tweet-generation.){width=80%}
 
 # How to generate Tweets
 This demo allows users to produce engaging Tweets that connect with their audience.

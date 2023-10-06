@@ -17,7 +17,7 @@ expanding the menu list.
   3. Display results, highlighting loss in blue on a bar chart.
   4. Switch algorithms to compare material waste.
 
-<img src= bar-cutting-bar-Visualization] width="615">
+![Bar Cutting Visualization](images/bar-cutting-bar-Visualization.png){width=80%}
 
 To access additional information, you can open the Parameters panel 
 (Taipy Expandable) to review the input data related to the selected case, 
@@ -30,29 +30,31 @@ These metrics provide insights into the loss, which can be visualized as
 either a percentage of the total length of the mother bars utilized or as 
 the precise loss value measured in millimeters.
 
-<img src=bar-cutting-Metrics width ="615">
+![Bar Cutting Metrics](images/bar-cutting-Metrics.png){width=80%}
 
 ## Page 3: Compare Models
 - Compare Baseline and Optim models' performance side by side.
 
-<img src=bar-cutting-model-comparison width ="615">
+![Bar Cutting comparison](images/bar-cutting-model-comparison.png){width=80%}
 
 
 ## Page 4: Compare Cases
 Assess the performance of each model across various scenarios. This 
 represents one of Taipy's most valuable features.
 
-<img src=bar-cutting-compare-cases width ="615">
+![Bar Cutting Comparison](images/bar-cutting-compare-cases.png){width=80%}
 
 ## Page 5: Databases
 Results are neatly summarized in a table, allowing you to select the case, 
 model and table. The results are then accessible for download in CSV format.
 
-<img src=bar-cutting-databases width ="615">
+![Bar Cutting Databases](images/bar-cutting-databases.png){width=80%}
+
 
 
 # Disclaimer
-Code for this demo is not publicly available yet. [Contact us](https://www.taipy.io/contact-us/) for a sample.
+Code for this demo is not publicly available yet. [Contact us](https://www.taipy.io/contact-us/) 
+for a sample.
 
 
 ```$pip install taipy```

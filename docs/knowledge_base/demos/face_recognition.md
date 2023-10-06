@@ -15,14 +15,15 @@ thanks to the robust [OpenCV library](https://opencv.org/).
 
 ## How to use the Application
 
-1. While opening the application, you'll see yourself accross your webcam. A red square surrounding your face with someone else's name.
+1. While opening the application, you'll see yourself across your webcam. A red square 
+   surrounding your face with someone else's name.
    
-2. Train the model to recognize you by clicking the "Capture" button and giving your name several times.
+2. Train the model to recognize you by clicking the "Capture" button and giving your name 
+   several times.
    
 3. Click now the "Re-train" button. Your name should now appear. The model recognizes you now.
 
-<img src=face-recognition width="615">
-
+![Face Recognition](images/face-recognition.jpg){width=80%}
 
 **Quick note**: Enable your browser's camera usage option.
 

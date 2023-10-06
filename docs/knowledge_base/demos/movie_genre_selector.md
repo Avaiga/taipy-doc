@@ -21,7 +21,7 @@ To explore and select movie genres, follow these simple steps:
 2. Enjoy seven personalized movie recommendations based on your
 genre choices.
 
-<img src=movie-genre-selector width="615">
+![Movie Genre Selector](images/movie-genre-selector.png){width=80%}
 
 
 ```$pip install taipy```

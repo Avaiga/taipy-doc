@@ -1,5 +1,5 @@
-Production planning is pivotal in manufacturing, optimizing resources to meet 
-demand while minimizing costs. This demo offers a solution for efficient production and cost management.
+Production planning is pivotal in manufacturing, optimizing resources to meet demand while 
+minimizing costs. This demo offers a solution for efficient production and cost management.
 
 [Try it live](https://production-planning.taipy.cloud/Data-Visualization) 
 
@@ -23,7 +23,7 @@ Upon registering with a new account (name & password), the first page is display
 The primary chart depicts future demand for finished products A (FPA) and B (FPB) 
 over the next 11 months, with the current month marked as month 0.
 
-<img src=production-planning-data-visualization width="615">
+![Data Visualization](images/production-planning-data-visualization.png){width=80%}
 
 Just above the chart, by clicking "Expand here," you can access an expandable Taipy front-end 
 containing initial production data at time 0 (current month): stock & production levels, 
@@ -40,14 +40,14 @@ scenarios for re-optimization based on modified parameters.
 
 Initially, no scenario is available, and the Year/Month corresponds to the current month.
 
-<img src=production-planning-Scenario-Manager-no-scenario width="615">
+![No scenario](images/production-planning-Scenario-Manager-no-scenario.png){width=80%}
 
 ### Creating your first scenario
 
 When creating a new scenario, two new selectors, "Back Orders Cost" and "Stock Cost," 
 appear above the main chart, displaying input data for the scenario.
 
-<img src=production-planning-Scenario-Manager-new-scenario width="615">
+![New scenario](images/production-planning-Scenario-Manager-new-scenario.png){width=80%}
 
 An optimization algorithm quickly finds the optimal production levels, respecting capacity
 constraints and optimizing costs. Results can be displayed as time series or pie charts, and 
@@ -65,20 +65,20 @@ This panel enables you to modify parameters categorized into three sections:
 Compare two scenarios from the same month using metrics such as costs, 
 purchases, and productions.
 
-<img src=production-planning-Compare-Scenario width="615">
+![Compare scenario](images/production-planning-Compare-Scenario.png){width=80%}
 
 ## Page 4: Compare Cycles
 
 Compare monthly stock and backorder costs from January 2021 to the present 
 month using stacked bar charts.
 
-<img src=production-planning-Compare-Cycles width="615">
+![Compare Cycles](images/production-planning-Compare-Cycles.png){width=80%}
 
 ## Page 5: Datasources
 
 Access and display various tables associated with a selected scenario. 
 Conveniently download data tables in CSV format.
 
-<img src=production-planning-databases width="615">
+![Databases](images/production-planning-databases.png){width=80%}
 
 ```$pip install taipy```
