@@ -1,43 +1,38 @@
-In the realm of financial markets, data is king. The ability to quickly and easily visualize 
-historical stock data and make predictions is a game-changer for investors and financial 
-analysts. Our Stock Visualization demo, built with Taipy and powered by the 
-[Prophet](https://facebook.github.io/prophet/docs/quick_start.html) library, offers a 
-revolutionary approach to achieving this.
+In the realm of financial markets, data is king. The ability 
+to quickly and easily visualize 
+historical stock data and make predictions is a game-changer 
+for investors and financial 
+analysts. 
+
+This demo, built with Taipy and powered by the 
+[Prophet library](https://facebook.github.io/prophet/docs/quick_start.html),
+offers a revolutionary approach to achieving this.
+
+## [Try it live](https://stock-visualization.taipy.cloud/) 
+
+## [Get it on GitHub](https://github.com/Avaiga/demo-stock-visualization)
 
 
-# Unlocking the Potential of Stock Visualization
+# Understanding the Application
+This one-page demo's primary objective is to illustrate how effortlessly you 
+can build a forecast data visualization dashboard using Taipy. 
 
-Traditionally, reviewing a stock's past performance meant doing manual Google searches and dealing 
-with time-consuming data gathering. Thanks to Taipy and the Yahoo Finance library, obtaining critical stock 
-information like opening and closing prices and trading volume now takes just seconds. We've used the capabilities 
-of Taipy's tools to build an interactive and user-friendly dashboard for stock data, 
-offering insights readily accessible to you.
+This fully interactive web application 
+can be created with fewer than 120 lines of Python code.
 
+<img src=stock-visualization width="650">
 
-# Building an Interactive Data Visualization Dashboard
-
-Our demo's primary objective is to illustrate how effortlessly you can build a data visualization dashboard using Taipy. 
-What's truly remarkable is that this fully interactive and highly tailored web application 
-can be created with fewer than 120 lines of Python code, a feat that was previously unheard 
-of before Taipy's introduction.
-
-<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/c82bfbd1-1698-49d0-bcb6-d8cbc683c19d width="650">
-
-
-
-# Harnessing Prophet for Predictions
-
-Forecasting stock trends is a vital part of financial analysis. In our demo, we make use of Meta's Prophet library 
+Forecasting stock trends is a vital part of financial analysis. In this demo, Meta's Prophet library is used
 to offer stock predictions for the upcoming 1 to 5 years. This predictive feature empowers users to make 
 informed choices with the assistance of Taipy.
 
+## How to use the Application
+1. Select the period of prediction
+2. Select the ticker, which is the algorithm that will provide the predictions
+3. Select the number of years to predict from 1 to 5
+4. Click on "_Update period and ticker_"
+5. Enjoy your predictions...
+6. Try it repeatedly using different algorithms to compare the results.
+7. Optional: by clicking on the "_More info_" button at the bottom, you'll get the insights as a table.
 
-# Conclusion
-
-Our Stock Visualization demo highlights the capability of Taipy GUI and Prophet in streamlining 
-data visualization for financial insights. Whether you're an investor seeking historical data 
-or an analyst predicting future trends, our dashboard provides a user-friendly platform to improve your 
-decision-making process.
-
-Feel free to explore the application, include new stock tickers in the list, and discover how Taipy 
-can convert financial data into actionable insights.
+```$pip install taipy```
