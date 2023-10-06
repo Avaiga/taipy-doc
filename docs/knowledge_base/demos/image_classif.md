@@ -14,7 +14,7 @@ with interactive graphics.
 
 ## Video 2: [Interactive Image Classification with Taipy](https://youtu.be/iICxa4tK9jk?si=fi42idYdQv_EVac5)
 
-In the second video, we'll dive into creating custom pipelines with Taipy back-end and TensorFlow
+In the second video, we'll dive into creating custom pipelines with Taipy and TensorFlow
 to enhance your machine learning workflows.
 
 ```$pip install taipy```
