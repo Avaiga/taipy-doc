@@ -8,5 +8,6 @@ within a graphical user interface (GUI) application.
 This includes switching between pages, handling their content, and providing navigation options 
 for users to move between them.
 
-To discover more about managing multiple graphical pages, click on the tutorial video
-[here](https://www.youtube.com/watch?v=w-tMYCB-I3A).
+To learn more about managing multiple graphical pages, watch the tutorial video:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/w-tMYCB-I3A?feature=oembed" frameborder="0" allowfullscreen></iframe>

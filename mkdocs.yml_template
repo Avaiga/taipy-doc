@@ -44,7 +44,7 @@ nav:
             - "4 - Scenario page": knowledge_base/tutorials/complete_application/step_04/step_04.md
             - "5 - Performance page": knowledge_base/tutorials/complete_application/step_05/step_05.md
         - "Markdown Syntax": knowledge_base/tutorials/markdown_syntax.md
-        - "Data Dashboard": knowledge_base/tutorials/data-dashboard.md
+        - "Data Dashboard": knowledge_base/tutorials/data_dashboard.md
         - "Changing Line Types Using Charts": knowledge_base/tutorials/charts.md
         - "Manage Multiple Graphical Pages": knowledge_base/tutorials/graphical_pages.md
         - "Partials in Taipy": knowledge_base/tutorials/partials.md
@@ -52,13 +52,20 @@ nav:
         - "Data Nodes and Tasks": knowledge_base/tutorials/data_nodes.md
     - "Demos":
         - knowledge_base/demos/index.md
+        - "Sales Dashboard": knowledge_base/demos/sales_dashboard.md
         - "Tweet generation": knowledge_base/demos/tweet_generation.md
         - "Face Recognition": knowledge_base/demos/face_recognition.md
         - "Sentiment Analysis": knowledge_base/demos/sentiment_analysis.md
+        - "Optimize Bar Cut Sizes": knowledge_base/demos/bar_cutting.md
+        - "Image Classification": knowledge_base/demos/image_classif.md
+        - "Churn Classification": knowledge_base/demos/churn_classification.md
+        - "Production Planning": knowledge_base/demos/production-planning.md
+        - "Stock Visualization": knowledge_base/demos/stock-visualization.md
         - "COVID Dashboard": knowledge_base/demos/covid_dashboard.md
         - "Movie genre selector": knowledge_base/demos/movie_genre_selector.md
     - "Tips and tricks":
         - knowledge_base/tips/index.md
+        - "Jupyter Notebooks": knowledge_base/tips/jupyter_notebooks/index.md
   - "Manuals":
     - manuals/index.md
     - "User Manuals":

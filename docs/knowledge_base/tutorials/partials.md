@@ -12,5 +12,6 @@ Additionally, two other essential visual elements help you structure your applic
 - **Pane:** A pane is another type of pop-up window with distinct behavior aimed at improving 
   the user's interaction with the application.
 
-To discover more about partials in Taipy, click on the tutorial video 
-[here](https://www.youtube.com/watch?v=gFyfGk4_wEM).
+To learn more about partials in Taipy, watch the tutorial video:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/gFyfGk4_wEM?feature=oembed" frameborder="0" allowfullscreen></iframe>
