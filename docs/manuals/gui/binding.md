@@ -8,7 +8,7 @@ change those variable values.
 Consider the following application:
 
 <a name="first-example"></a>
-```py linenums="1"
+```python linenums="1"
 from taipy import Gui
 
 x = 1234
@@ -87,7 +87,7 @@ to import the global variables if they are not used in the Python code of the mo
     We create a *pages* package, where we can create the file `page.py`, which is the module file
     where the page would be declared:
 
-    ```py linenums="1"  title="pages/page.py"
+    ```python linenums="1"  title="pages/page.py"
     from taipy.gui import Markdown
 
     page = Markdown("""# Expression evaluation
@@ -106,7 +106,7 @@ to import the global variables if they are not used in the Python code of the mo
     the page that we just created above. That would be done in the file `main.py`,
     defining the *\_\_main\_\_* module of our application:
 
-    ```py  linenums="1" title="main.py"
+    ```python  linenums="1" title="main.py"
     from taipy.gui import Gui, Markdown
     from pages.page import page
 
@@ -169,7 +169,7 @@ defined.
     (no matter what its name is) and invoke this function from the global *on_init()* callback.
 
     The code for the module would look like this:
-    ```py title="page.py"
+    ```python title="page.py"
 
     ...
     my_variable = ""
@@ -185,7 +185,7 @@ defined.
     be done in the global *on_init()* callback.
 
     Here is how the main module would invoke this initialization function:
-    ```py title="main.py"
+    ```python title="main.py"
     # Create an alias for on_init() in the page module
     from page import on_init as page_on_init
 
@@ -206,7 +206,7 @@ defined.
     The root page also has a button that, when pressed, invokes the callback function
     *button_pressed()*:
 
-    ```py title="main.py"
+    ```python title="main.py"
     from taipy.gui import Gui, Markdown
     from page import sub_page
 
@@ -229,7 +229,7 @@ defined.
     ```
 
     Here is the code for the *page* module, where *sub_page* is defined:
-    ```py title="page.py"
+    ```python title="page.py"
     from taipy.gui import Markdown
 
     def button_pressed(state):

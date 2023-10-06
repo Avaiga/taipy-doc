@@ -51,7 +51,7 @@ be a somewhat complex operation.
 Here is a situation where you may need to use [*rebuild*](#p-rebuild): your application displays
 a table, and you want to provide a way to interactively change the order of its columns.<br/>
 Here is what the application code would look like:
-```py  title="table.py"
+```python  title="table.py"
 from taipy.gui import Gui
 
 # x: [1..5]

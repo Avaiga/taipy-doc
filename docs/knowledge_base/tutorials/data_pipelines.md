@@ -9,5 +9,6 @@ your data nodes (representing your datasets) with tasks (which are the Python fu
 to execute). Configuring these scenarios becomes a breeze when you use the user-friendly Taipy 
 Studio interface.
 
-To discover more about managing data pipelines with scenarios, click on the tutorial video 
-[here](https://www.youtube.com/watch?v=c2hMbr4HCA0).
+To learn more about managing data with scenarios, watch the tutorial video:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/c2hMbr4HCA0?feature=oembed" frameborder="0" allowfullscreen></iframe>

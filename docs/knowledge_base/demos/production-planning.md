@@ -1,135 +1,84 @@
-[Production planning](https://en.wikipedia.org/wiki/Production_planning) is a critical part of manufacturing, 
-making sure that resources are used efficiently to meet demand while keeping costs low. 
-Taipy's Production Planning demo provides a comprehensive solution for optimizing production 
-and cost management. In this demo, we will explore this application that tackles 
-the complexities of production planning.
+Production planning is pivotal in manufacturing, optimizing resources to meet 
+demand while minimizing costs. This demo offers a solution for efficient production and cost management.
 
-# Understanding Production Planning
+[Try it live](https://production-planning.taipy.cloud/Data-Visualization) 
 
-Production planning involves strategically arranging resources, materials, and processes 
-to achieve production objectives efficiently. It's a vital function in manufacturing because 
-it directly influences product quality, delivery schedules, and overall profitability.
+[Get it on GitHub](https://github.com/Avaiga/demo-production-planning)
 
-# Significance of Production Planning in Manufacturing
+# Understanding the Application
+The application consists of five pages accessible via the left panel 
+by expanding the menu list.
 
-In manufacturing, production planning is crucial for operational success. 
-It makes sure that the correct products are made in the right amounts and on schedule, 
-all while managing costs effectively. Effective production planning leads to several key benefits:
+The problem revolves around planning production for two finished products: 
+FPA (table) & FPB (stool). Each Finished Product is crafted from two raw
+products: RPA (oak wood) and RPB (pine planks).
 
-1. Optimal Resource Utilization: 
-    It helps allocate resources efficiently, preventing overproduction and shortages.
+In this demo, an optimization algorithm, based on the PuLP open-source math 
+solver, determines the optimal production levels for FPA & FPB, minimizing 
+costs while adhering to specific constraints (explained below).
 
-2. Cost Reduction: 
-    Proper planning minimizes production costs, including inventory holding costs and overtime 
-    labor expenses.
+## Page 1: Data Visualization
+Upon registering with a new account (name & password), the first page is displayed.
 
-3. Meeting Customer Demand: 
-    It ensures that products are available when customers need them, enhancing customer 
-    satisfaction.
-
-4. Improved Quality: 
-    Production planning contributes to consistent product quality by minimizing rush orders and 
-    last-minute changes.
-
-Taipy's Production Planning application tackles these manufacturing challenges directly, 
-offering a straightforward platform to improve production processes and control costs.
-
-# The Production Planning Application
-
-Let's explore each page's functionality of Taipy's [Production Planning](https://production-planning.taipy.cloud/) demo. 
-You can select different visualizations across the left panel given:
-
-**1. Data Visualization**
-
-Upon registration with a new account, the initial page reveals critical data visualization elements. 
-A central chart depicts the anticipated demand for both finished products, FPA and FPB, 
+The primary chart depicts future demand for finished products A (FPA) and B (FPB) 
 over the next 11 months, with the current month marked as month 0.
-<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/39a5551a-17a1-4615-b20e-6e08e391d516 alt ="data viz" width="650">
 
-Expanding the Taipy interface allows you to access detailed information for the current month (time 0). 
-This includes the levels of Initial stock, Incoming purchases,  Initial production and Demand of the upcoming months, 
-all presented in a table format.
+<img src=production-planning-data-visualization width="615">
 
-<img src="https://github.com/Avaiga/taipy-doc/assets/31435778/6e02ba92-3ad8-410f-b0c2-87581557bec2"alt =" data viz 2" width="650">
-
-
-**2. Scenario Manager**
-
-This central hub empowers users to create, configure, and optimize production scenarios. 
-
-**Playing with existing scenarios**
-
-It allows you to select a specific year and month, generating two distinct scenarios for 
-that month. For each scenario, you can choose from various data categories to visualize, 
-including costs, purchases, productions, stocks, and backorders...
-
-Once you've selected the data of interest, you can also pick the preferred 
-visualization type: either a line chart or a pie chart. 
-These graphical representations provide clear insights and trends.
-
-Furthermore, we've added two sliders for adjusting backorder costs and stock costs, giving you 
-precise control over these parameters to analyze their impact.
-
-<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/3295f8d0-9a97-40d8-88d6-041b70b0901f alt= Scenario Manager" width="650">
+Just above the chart, by clicking "Expand here," you can access an expandable Taipy front-end 
+containing initial production data at time 0 (current month): stock & production levels, 
+incoming raw material orders, and demand, all presented in a table.
 
 
-**Creating a New Scenario**
+## Page 2: Scenario Manager
 
-To create a new scenario, follow these steps:
+Create, configure, and optimize production scenarios.
 
-1. Select the current month and year.
+This is the main page of the application, where users can create new scenarios, adjust 
+scenario parameters (on the 'Scenario Configuration' side of the page), and re-submit 
+scenarios for re-optimization based on modified parameters.
 
-2. Click on the "Show configuration" button.
-3. A new configuration panel will appear on the right side of the screen, offering three selectors:
-   capacity constraints, objective weights, and initial parameters.
-5. Choose your desired parameters using the selectors.
-6. Click the "New Scenario" button at the bottom.
-7. Your new scenario is now built and ready for analysis.
+Initially, no scenario is available, and the Year/Month corresponds to the current month.
 
-   
-This section streamlines the process of creating scenarios, making it easy to explore different 
-configurations and optimize your production planning.
-In summary, the "Scenario Manager" tab provides finer control over your scenarios, letting you 
-choose displayed data chart types and adjust costs for in-depth analysis.
+<img src=production-planning-Scenario-Manager-no-scenario width="615">
 
-<img width="650" src="https://github.com/Avaiga/taipy-doc/assets/31435778/4bfeeabe-26b7-43f3-b45e-9db0dca4c2ff" alt="create new scenario">
+### Creating your first scenario
 
-**3. Compare Scenarios**
+When creating a new scenario, two new selectors, "Back Orders Cost" and "Stock Cost," 
+appear above the main chart, displaying input data for the scenario.
 
-This section allows you to compare two scenarios from the same month using the same metrics mentioned earlier 
-(costs, purchases, productions, stocks, and back orders...).
-It provides a clear example of how the Scenario Manager can be used effectively and highlights the strength of Taipy.
+<img src=production-planning-Scenario-Manager-new-scenario width="615">
 
-<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/94388f23-255a-4f3b-a7ed-99325076a8e1 width="650" alt ="Compare scenario">
+An optimization algorithm quickly finds the optimal production levels, respecting capacity
+constraints and optimizing costs. Results can be displayed as time series or pie charts, and 
+different graphs can be selected by choosing the data to display (costs, productions, etc.).
 
-**4. Compare Cycles**
+### Modifying the Parameters
+This panel enables you to modify parameters categorized into three sections:
 
-You may have noticed that on the previous tab, "Compare Scenarios," we compared two scenarios per month. 
-On this tab, we extend our comparison across all months, from January 2021 to the current month, using two key
-metrics: the cost of stock and the cost of back orders.
-
-This tab provides a visual representation of these two metrics in the form of stacked bar charts. 
-It allows you to gain insights into how these costs have evolved over time, providing a broader 
-perspective on your production planning performance across multiple months.   
-
-<img src= https://github.com/Avaiga/taipy-doc/assets/31435778/ce25db95-8931-4947-8167-e335ffcfacc1 width="650" alt ="Compare cycles">
+1. **Capacity Constraints:** Modify capacity values for different products (finished and raw).
+2. **Objectives Weights:** Emphasize minimizing a specific cost (stock or backordering).
+3. **Initial Parameters:** Modify other parameters like Initial Stock and Unit Cost.
 
 
-**5. Datasources** 
+## Page 3: Compare Scenarios
+Compare two scenarios from the same month using metrics such as costs, 
+purchases, and productions.
 
-You can access and display various tables (data frames) associated with a selected scenario. 
-Furthermore, data tables can be conveniently downloaded in CSV format using the 'Download Table' button.
-Explore this powerful Production Planning demo, utilizing Taipy's capabilities to streamline 
-production planning, optimize costs, and achieve efficient resource allocation.
-<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/d7180fdb-732c-4987-a565-fb32643c65c4 width="650" alt = "datasources">
+<img src=production-planning-Compare-Scenario width="615">
 
+## Page 4: Compare Cycles
 
-# Conclusion
+Compare monthly stock and backorder costs from January 2021 to the present 
+month using stacked bar charts.
 
-Taipy's Production Planning demo showcases the strength of technology in dealing with 
-intricate manufacturing issues. Whether you're visualizing data, handling scenarios, adjusting parameters, 
-or assessing production performance, Taipy makes everything simpler, enabling businesses 
-to use data for smarter production planning.
+<img src=production-planning-Compare-Cycles width="615">
 
-Take the time to explore the application, dive into production optimization, and 
-see for yourself how Taipy simplifies production planning in the manufacturing industry.
+## Page 5: Datasources
+
+Access and display various tables associated with a selected scenario. 
+Conveniently download data tables in CSV format.
+
+<img src=production-planning-databases width="615">
+
+```$pip install taipy```

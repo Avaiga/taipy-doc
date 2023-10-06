@@ -27,7 +27,7 @@ in the upper right corner of the Jupyter interface.<br/>
 Then start creating the Notebook content.
 
 Enter the following code into the first Notebook cell:
-```py linenums="1"
+```python linenums="1"
 from taipy.gui import Gui, Markdown
 
 page = Markdown("""

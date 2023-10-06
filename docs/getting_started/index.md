@@ -34,8 +34,10 @@ Let's craft a basic "Hello World" scenario:
 ![Hello World Example](hello_world.svg){width=50%}
 
 The graph involves:
-- An input data node named *name*.
-- A task, *build_message*, that processes the *name* data node and outputs a *message* data node.
+
+- An input data node named *input_name*.
+
+- A task, referring to the function *build_message()*, that processes the *input_name* data node and outputs a *message* data node.
 
 ### Setting It Up
 
@@ -49,9 +51,9 @@ The graph involves:
         return f"Hello {name}!"
     
     
-    name_data_node_cfg = Config.configure_data_node(id="input_name")
+    input_name_data_node_cfg = Config.configure_data_node(id="input_name")
     message_data_node_cfg = Config.configure_data_node(id="message")
-    build_msg_task_cfg = Config.configure_task("build_msg", build_message, name_data_node_cfg, message_data_node_cfg)
+    build_msg_task_cfg = Config.configure_task("build_msg", build_message, input_name_data_node_cfg, message_data_node_cfg)
     scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_task_cfg])
     ```
 
@@ -117,14 +119,6 @@ Here's a simple GUI set up for our "Hello World" scenario:
 ```python linenums="1"
 from taipy import Gui
 
-hello_scenario = None
-input_name = "Taipy"
-message = None
-
-def submit_scenario(state):
-    state.hello_scenario.input_name.write(state.input_name)
-    state.hello_scenario.submit(wait=True)
-    state.message = hello_scenario.message.read()
 
 page = """
 Name: <|{input_name}|input|>
@@ -133,19 +127,92 @@ Name: <|{input_name}|input|>
 Message: <|{message}|text|>
 """
 
+input_name = "Taipy"
+message = None
+
+
+def submit_scenario(state):
+    state.scenario.input_name.write(state.input_name)
+    state.scenario.submit(wait=True)
+    state.message = scenario.message.read()
+
+
 if __name__ == "__main__":
     Core().run()
-    hello_scenario = tp.create_scenario(scenario_cfg)
+    scenario = tp.create_scenario(scenario_cfg)
     Gui(page).run()
 ```
 
 To get the complete example, including the user interface code, download it here:
 <a href="./hello_world.py" download>`hello_world.py`</a>
 
-TO DO: explain the code above and result below
+Now, let’s explain the key elements of this code:
 
-![GUI Result](result.png){width=50%}
+```python
+from taipy import Gui
+import taipy as tp
 
+page = """
+Name: <|{input_name}|input|>
+<|submit|button|on_action=submit_scenario|>
+Message: <|{message}|text|>
+"""
+```
+
+**Pages**
+
+Taipy pages can be defined in multiple ways: Markdown, Html or Python. The *page* 
+variable is a Markdown representation of the user interface. 
+It uses standard Markdown syntax as well as visual elements.
+
+**Visual elements**
+
+Taipy offers various visual elements that can interact with your Python variables and 
+environment. It allows you to display variables, modify them, and interact with the application.
+
+Here is a generic example of one: `<|{variable}|visual_element_type|...|>`. *variable* is 
+the main property of the visual element and is usually what is displayed or modified through the visual element.
+
+In our initial example: 
+
+- *input_name* is bound to an input and text field, allowing the user’s input to be directly stored in the *input_name* variable.
+
+- *message* is connected to a text field, allowing you to display changing content to the user.
+
+#### Interactivity Through Actions
+
+Actions, like `on_action=submit_scenario`, allow visual elements like buttons to trigger specific functions, enhancing the interactivity of the application.
+
+```python
+def submit_scenario(state):
+    scenario.input_name.write(state.input_name)
+    scenario.submit()
+    state.message = scenario.message.read()
+```
+
+Every callback, including *submit_scenario()*, receives a `State^` object as its first parameter. 
+This state represents a user's connection and is used to read and set variables while 
+the user is interacting with the program. It makes it possible for Taipy to handle multiple users simultaneously.
+
+While *scenario* is available to everyone using the program, *state.input_name* and *state.input* are specific to the user who interacts with them. 
+This design ensures that each user's actions are separate and efficiently controlled, 
+while variables like *scenario* are global variables.
+
+
+In the *submit_scenario()* function, the *input_name* entered by the user on the interface is saved to the scenario. 
+After submission, the outcome is retrieved and stored in the *message* variable, which is then shown on the user interface due to the connection between them.
+
+```python
+if __name__ == "__main__":
+    tp.Core().run()
+    scenario = tp.create_scenario(scenario_cfg)
+    Gui(page).run()
+```
+
+The main part of the application starts by setting up the Core services, generating a scenario, and starting the GUI, 
+which makes the interactive interface active and functional.
+
+![GUI Result](result.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ---
 

@@ -302,7 +302,7 @@ of the variable that holds that dictionary as the value of the `properties` prop
 
     As this syntax can be cumbersome, you might prefer to define a simple Python dictionary:
 
-    ```py linenums="1"
+    ```python linenums="1"
     dialog_props = {
       "title":       "Select an item in the list",
       "labels":      "Cancel;Validate",
