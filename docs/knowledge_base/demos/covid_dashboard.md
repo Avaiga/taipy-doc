@@ -1,54 +1,44 @@
-Access to real-time data and insights has become vital in a world profoundly impacted by the COVID-19 pandemic. 
-Introducing our COVID-19 Dashboard, a multi-page application that illustrates the synergy between Taipy. 
-In this demonstration, we'll guide you through this robust dashboard, highlighting its capacity 
-to visualize COVID-19 data and even forecast future trends.
+In the realm of COVID-19 data analysis, access to real-time insights is paramount.
+Introducing the COVID-19 Dashboard, a multi-page Taipy application, designed for
+in-depth data visualization and trend forecasting.
 
+[Try it live](https://covid-dashboard.taipy.cloud/Country) 
 
-# Exploring the COVID-19 Dashboard
-Our [COVID-19 Dashboard](https://covid-dashboard.taipy.cloud/Country) is created to give 
-a simple but complete look at COVID-19 information for the year 2020. 
-Here are some of the important things it can do:
+[Get it on GitHub](https://github.com/Avaiga/demo-covid-dashboard)
 
-## 1. **Country Page and Pie Chart Representation**
+# Understanding the Application
+The application comprises four pages accessible via the upper tabs : Country, Map, Predictions, World.
 
-The Country page provides detailed statistics about COVID-19 in a particular country. Users can easily pick 
-a different country and switch between showing data cumulatively or in density form. 
-There's also an interactive line chart on this page that helps users see the data in a dynamic way. As well as 
-a pie chart that showcases the distribution of COVID-19 cases among Confirmed, Recovered, and Deaths, 
-offering a clear and intuitive way to understand the data.
+## Page 1: Country
+- Detailed country-specific COVID-19 statistics.
+- Easily switch between cumulative and density data views.
+- Interactive line chart for dynamic data exploration.
+- Pie chart illustrating case distribution (Confirmed, Recovered, Deaths).
 
-<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/3b6abcf2-cafe-4582-99a8-8eec485cd1fc width="650">
+<img src=covid-dashboard-country width ="615">
 
-## 2. **Interactive Map**
+## Page 2: Map
+Visual representation of COVID-19 impact through dynamic color-coded maps.
 
-The Map page presents an interesting way to examine COVID-19 data. The colors and sizes on the map change 
-dynamically depending on the number of deaths in each place, showing a visual representation 
-of how the pandemic has affected different areas.
+<img src=covid-dashboard-map width ="615">
 
-## 3. **Predictions**
+## Page 3: Predictions
+Generate COVID-19 predictions by creating scenarios and selecting prediction
+dates. This is generated with an ARIMA and a Linear Regression algorithms defined as predictions_x and predictions_y.
 
-The Predictions page allows users to make predictions about future COVID-19 data. Users can do this by naming 
-their scenario and choosing a date for their prediction. This prediction is then made for a specific country. 
-The dashboard keeps a record of all these scenarios, making it simple for users to look at 
-and compare their predictions.
+How to use it:
 
-## 4. **World Page**
+1. Initiate a new scenario by assigning it a name.
+2. Specify a prediction date.
+3. Choose a country.
+4. Click the "Submit" button and here we go!
+5. To view your scenario, access it in the Scenario tab located within the Results section.
 
-The World page displays global COVID-19 statistics using line charts and pie charts. 
-Users can switch between seeing the exact numbers or how COVID-19 has affected different countries 
-relative to each other, giving a complete picture of the pandemic's worldwide extent.
+<img src=covid-dashboard-country width ="615">
 
-<img src=https://github.com/Avaiga/taipy-doc/assets/31435778/9f3d7390-2b57-4a29-84f2-038165bbeb86 width="650">
+## Page 4: World
+Global COVID-19 statistics summarized via line and pie charts. The Comparison of Covid countries' impact can be seen by changing the toggle between ‘Absolute’ and ‘Relative’.  
 
+<img src=covid-dashboard-world width ="615">
 
-# Conclusion
-
-Our COVID-19 Dashboard is a testament to Taipy's power in building applications using front-end
-capabilities for informative and interactive data visualization and back-end capabilities for
-smart scenario computation. In a world where data-driven insights are more critical than ever,
-this dashboard provides a valuable tool for visualizing and predicting COVID-19 trends.
-
-Take some time to explore the dashboard, experiment with various scenarios, and better understand 
-the pandemic's global effects. The combination of Taipy Core and Taipy GUI has smoothly produced 
-a versatile and user-friendly application that can help individuals and organizations make informed choices 
-during these difficult times.
+```$pip install taipy```
