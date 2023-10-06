@@ -13,17 +13,17 @@ expertise. Taipy covers both front-end and back-end requirements to expedite app
 development, from initial prototypes to production ready solutions.
 
 - **User interface creation:** 
-  Design user interfaces effortlessly. You don't need prior web design knowledge to create 
-  interactive multi-page applications. With extended Markdown syntax, you can craft dynamic 
-  web pages with ease. No knowledge of web development is required!
-
-- **Pipeline orchestration:**
-  With data caching, parallel task execution, and data source scoping Taipy makes it efficient 
-  for developers to model complex pipelines and for end-users to visualize, run, and monitor them.
+  Design user interfaces effortlessly. You don't need prior web design or web 
+  development knowledge to create interactive multi-page applications. You can craft dynamic 
+  web pages with ease.
 
 - **Scenario and data management:**
   Taipy is designed specifically for data-driven applications. Setting up scenarios, orchestrating 
   data flows and pipelines, and accessing data requires minimal Python setup.
+
+- **Pipeline orchestration:**
+  With data caching, parallel task execution, and data source scoping Taipy makes it efficient 
+  for developers to model complex pipelines and for end-users to visualize, run, and monitor them.
 
 ## Quick Access
 
