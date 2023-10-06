@@ -56,6 +56,7 @@ nav:
         - "Tweet generation": knowledge_base/demos/tweet_generation.md
         - "Face Recognition": knowledge_base/demos/face_recognition.md
         - "Sentiment Analysis": knowledge_base/demos/sentiment_analysis.md
+        - "Optimize Bar Cut Sizes": knowledge_base/demos/bar_cutting.md
         - "Image Classification": knowledge_base/demos/image_classif.md
         - "Churn Classification": knowledge_base/demos/churn_classification.md
         - "Production Planning": knowledge_base/demos/production-planning.md
