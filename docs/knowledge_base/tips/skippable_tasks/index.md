@@ -116,15 +116,10 @@ any changes to my input Data nodes in any way.
 
 ```py
 tp.submit(scenario)
-print("Results (sum):", scenario.sum.read())
-
+print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;,scenario.sum.read())
 ```
 
-```py
-[...] [Taipy] [INFO]   job   JOB_multiply_and_add_...d   is
-skipped.
-Results (sum): 23
-```
+![Leveraging Skippability in Taipy Tasks](skippable_tasks_5.png){width=100%}
 
 As expected, Taipy is skipping the Task because the input parameters haven't changed. 
 If there are multiple tasks in this scenario, Taipy may skip several of them.
@@ -165,11 +160,14 @@ Let's revisit our previous code and modify the Data nodes to have a Global scope
 
 ```py
 from taipy.config import Config
-
-model_cfg = Config.configure_data_node("model", default_path="model.p")
-predictions_cfg = Config.configure_data_node("predictions")
-task_cfg = Config.configure_task("task", predict, model_cfg, predictions_cfg)
-scenario_cfg = Config.configure_scenario_from_tasks("scenario", [task_cfg])
+model_cfg = Config.configure_data_node(&amp;amp;amp;quot;model&amp;amp;amp;quot;, 
+                                       default_path=&amp;amp;amp;quot;model.p&amp;amp;amp;quot;)
+predictions_cfg = Config.configure_data_node(&amp;amp;amp;quot;predictions&amp;amp;amp;quot;)
+task_cfg = Config.configure_task(&amp;amp;amp;quot;task&amp;amp;amp;quot;,
+                              predict,
+                              model_cfg,
+                              predictions_cfg)
+scenario_cfg = Config.configure_scenario_from_tasks(&amp;amp;amp;quot;scenario&amp;amp;amp;quot;, [task_cfg])
 ```
 
 The first line creates a scenario consisting of Data nodes, tasks, and pipelines. 
