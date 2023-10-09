@@ -9,7 +9,7 @@ full functionality since it involves building a front-end and a
 back-end. Here, the backend involves the execution of a very simple 
 pipeline (made of a single task). Note that Taipy is designed to build 
 much more complex pipelines (with many tasks)!
-The pipeline (referred as ‘scenario’ in Taipy) here  filters the movie 
+The pipeline (referred as ‘scenario’ in Taipy) here filters the movie 
 data based on the selected genre. Whenever you modify the genre selection, 
 the pipeline will automatically run and display a chart presenting the seven 
 most popular movies within that genre.
