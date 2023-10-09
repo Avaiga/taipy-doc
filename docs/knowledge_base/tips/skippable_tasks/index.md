@@ -44,7 +44,10 @@ The order in which you supply Data nodes to the Task is critical.
 Taipy calls the function using the parameters in the same order as the Data nodes, 
 and the results are returned in that exact order.
 
-<iframe width="640" height="360" src="https://www.taipy.io/wp-content/uploads/2023/04/full_config.mp4?_=1" frameborder="0" allowfullscreen></iframe>
+<video width="640" height="360" controls>
+  <source src="setting_up_nodes_for_tasks.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ```py
 from taipy.config import Config
@@ -78,11 +81,14 @@ by preventing unnecessary computations, which saves time and resources.
 
 Let’s take the previous execution graph and set *skippable=True* to our Task.
 
-<iframe width="640" height="360" src="https://www.taipy.io/wp-content/uploads/2023/04/skippable.mp4?_=2" frameborder="0" allowfullscreen></iframe>
+<video width="640" height="360" controls>
+  <source src="use_case.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ```py
 ...
-task_cfg = Config.configure_task(&amp;amp;amp;quot;multiply_and_add&amp;amp;amp;quot;,
+task_cfg = Config.configure_task("multiply_and_add",
                                   function=multiply_and_add,
                                   input=[nb_1_cfg, nb_2_cfg],
                                   output=[sum_cfg, product_cfg], skippable=True)
@@ -94,22 +100,31 @@ With the code below, we create and submit an instance of this scenario configura
 ```py
 scenario = tp.create_scenario(scenario_cfg)
 tp.submit(scenario)
-print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;, scenario.sum.read())
+print("Results (sum):", scenario.sum.read())
 ```
 
-![Leveraging Skippability in Taipy Tasks](skippable_tasks_4.png){width=100%}
+```py
+[...] [Taipy] [INFO]   job   JOB_multiply_and_add_...   is
+completed.
+Results (sum): 23
+```
 
 The task associated with my Task has been completed, which means that my function has been executed.
 
 The line below is resubmitting the scenario, but please note that I haven't made 
 any changes to my input Data nodes in any way.
 
-```python linenums="1"
+```py
 tp.submit(scenario)
-print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;,scenario.sum.read())
+print("Results (sum):", scenario.sum.read())
+
 ```
 
-![Leveraging Skippability in Taipy Tasks](skippable_tasks_5.png){width=100%}
+```py
+[...] [Taipy] [INFO]   job   JOB_multiply_and_add_...d   is
+skipped.
+Results (sum): 23
+```
 
 As expected, Taipy is skipping the Task because the input parameters haven't changed. 
 If there are multiple tasks in this scenario, Taipy may skip several of them.
@@ -120,10 +135,14 @@ In this case, the value of *nb_1* is updated from 21 to 42.
 ```py
 scenario.nb_1.write(42)
 tp.submit(scenario)
-print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;, scenario.sum.read())
+print("Results (sum):", scenario.sum.read())
 ```
 
-![Leveraging Skippability in Taipy Tasks](skippable_tasks_6.png){width=100%}
+```py
+[...] [Taipy] [INFO]   job   JOB_multiply_and_add_...   is
+completed.
+Results (sum): 44
+```
 
 The input changed, so Taipy will re-execute my Task and give the appropriate results (44).
 
@@ -139,18 +158,18 @@ skipped across different scenarios.
 
 Let's revisit our previous code and modify the Data nodes to have a Global scope.
 
-<iframe width="640" height="360" src="https://www.taipy.io/wp-content/uploads/2023/03/predict.mp4?_=3" frameborder="0" allowfullscreen></iframe>
+<video width="640" height="360" controls>
+  <source src="using_global_data_nodes.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ```py
 from taipy.config import Config
-model_cfg = Config.configure_data_node(&amp;amp;amp;quot;model&amp;amp;amp;quot;, 
-                                       default_path=&amp;amp;amp;quot;model.p&amp;amp;amp;quot;)
-predictions_cfg = Config.configure_data_node(&amp;amp;amp;quot;predictions&amp;amp;amp;quot;)
-task_cfg = Config.configure_task(&amp;amp;amp;quot;task&amp;amp;amp;quot;,
-                              predict,
-                              model_cfg,
-                              predictions_cfg)
-scenario_cfg = Config.configure_scenario_from_tasks(&amp;amp;amp;quot;scenario&amp;amp;amp;quot;, [task_cfg])
+
+model_cfg = Config.configure_data_node("model", default_path="model.p")
+predictions_cfg = Config.configure_data_node("predictions")
+task_cfg = Config.configure_task("task", predict, model_cfg, predictions_cfg)
+scenario_cfg = Config.configure_scenario_from_tasks("scenario", [task_cfg])
 ```
 
 The first line creates a scenario consisting of Data nodes, tasks, and pipelines. 
@@ -159,12 +178,17 @@ Following this, we submit it.
 ```py
 scenario_1 = tp.create_scenario(scenario_cfg)
 tp.submit(scenario_1)
-print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;, scenario_1.sum.read())
+print("Results (sum):", scenario_1.sum.read())
 ```
 
-![Using Global Data Nodes](skippable_tasks_7.png){width=100%}
+```py
+[...] [Taipy] [INFO]   job   JOB_task_multiply_and_add_...   is
+completed.
+```
 
-![Using Global Data Nodes](skippable_tasks_8.png){width=100%}
+```py
+Results (sum): 23
+```
 
 The only task has been completed, and the results have been computed.
 
@@ -175,10 +199,14 @@ Instead, it will reuse the ones that were created by *scenario_1*.
 ```py
 scenario_2 = tp.create_scenario(scenario_cfg)
 tp.submit(scenario_2)
-print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;, scenario_2.sum.read())
+print("Results (sum):", scenario_2.sum.read())
 ```
 
-![Using Global Data Nodes](skippable_tasks_9.png){width=100%}
+```py
+[...] [Taipy] [INFO]   job   JOB_task_multiply_and_add_...   is
+skipped.
+Results (sum): 23
+```
 
 Taipy skips the Task if the input Data nodes have not changed and reuses the existing output's Data.
 
