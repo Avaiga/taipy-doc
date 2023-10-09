@@ -9,7 +9,7 @@ and manage complex workflows, such as data processing pipelines.
 
 When engineers create Directed Acyclic Graphs (DAGs), they often leave out certain tasks. 
 This common practice allows tasks to be orchestrated in a more dynamic and advanced way. 
-One of the key features of Taipy's back-end is skippable tasks, which can be skipped under specific conditions. 
+One of the key features of Taipy's back-end is *skippable* tasks, which can be skipped under specific conditions. 
 In this article, we'll explore how skippable tasks work in Taipy and how to use them effectively.
 
 ## Setting up Data Nodes for Tasks
@@ -25,12 +25,12 @@ It contains:
 
 Before you start using skippable tasks, it's important to configure your tasks correctly 
 with their Data nodes. You can refer to our previous article or 
-documentation for more details on [Data nodes](https://www.taipy.io/tips/the-data-nodes/).
+documentation for more details on [Data nodes](../../../tips/the_data_nodes/).
 
-For instance, let's say you have a function like **multiply_and_add()** that takes two parameters 
+For instance, let's say you have a function like *multiply_and_add()* that takes two parameters 
 and returns two values. How can you represent this function as a Taipy Task?
 
-```python
+```py
 def multiply_and_add(nb1, nb2):
     return nb1 + nb2, nb1 * nb2
 ```
@@ -46,7 +46,7 @@ and the results are returned in that exact order.
 
 <iframe width="640" height="360" src="https://www.taipy.io/wp-content/uploads/2023/04/full_config.mp4?_=1" frameborder="0" allowfullscreen></iframe>
 
-```python
+```py
 from taipy.config import Config
 model_cfg = Config.configure_data_node("model", default_path="model.p")
 predictions_cfg = Config.configure_data_node("predictions")
@@ -54,16 +54,17 @@ task_cfg = Config.configure_task("task", predict, model_cfg, predictions_cfg)
 scenario_cfg = Config.configure_scenario("scenario", [task_cfg])
 ```
 
-In this example, the **multiply_and_add()** function takes two parameters (**nb1** and **nb2**). 
+In this example, the *multiply_and_add()* function takes two parameters (*nb1* and *nb2*). 
 It returns two values: the product and the sum. 
-We create configurations for the input Data nodes (**nb_1_cfg** and **nb_2_cfg** in this order) 
-and the output Data nodes (**sum_cfg** and **product_cfg**).
+We create configurations for the input Data nodes (*nb_1_cfg* and *nb_2_cfg* in this order) 
+and the output Data nodes (*sum_cfg* and *product_cfg*).
 
 Finally, we configure the Task with the appropriate input and output Data nodes.
 
 ## Leveraging Skippability in Taipy Tasks
 
-Skippability is an optional setting that you can enable when configuring a Task. 
+Skippability is an optional setting that you can enable when configuring a Task.
+
 When you set skippable to True, Taipy will skip executing the Task 
 if its input Data nodes have not changed since the last execution. 
 In other words, if running the task again would produce the same output, it is skipped.
@@ -75,11 +76,11 @@ by preventing unnecessary computations, which saves time and resources.
 
 ## Use Case
 
-Let’s take the previous execution graph and set **skippable=True** to our Task.
+Let’s take the previous execution graph and set *skippable=True* to our Task.
 
 <iframe width="640" height="360" src="https://www.taipy.io/wp-content/uploads/2023/04/skippable.mp4?_=2" frameborder="0" allowfullscreen></iframe>
 
-```python linenums="1"
+```py
 ...
 task_cfg = Config.configure_task(&amp;amp;amp;quot;multiply_and_add&amp;amp;amp;quot;,
                                   function=multiply_and_add,
@@ -90,7 +91,7 @@ task_cfg = Config.configure_task(&amp;amp;amp;quot;multiply_and_add&amp;amp;amp;
 
 With the code below, we create and submit an instance of this scenario configuration.
 
-```python linenums="1"
+```py
 scenario = tp.create_scenario(scenario_cfg)
 tp.submit(scenario)
 print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;, scenario.sum.read())
@@ -114,9 +115,9 @@ As expected, Taipy is skipping the Task because the input parameters haven't cha
 If there are multiple tasks in this scenario, Taipy may skip several of them.
 
 The code below shows what happens when we submit the scenario after making a change to an input Data node. 
-In this case, the value of **nb_1** is updated from 21 to 42.
+In this case, the value of *nb_1* is updated from 21 to 42.
 
-```python linenums="1"
+```py
 scenario.nb_1.write(42)
 tp.submit(scenario)
 print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;, scenario.sum.read())
@@ -140,7 +141,7 @@ Let's revisit our previous code and modify the Data nodes to have a Global scope
 
 <iframe width="640" height="360" src="https://www.taipy.io/wp-content/uploads/2023/03/predict.mp4?_=3" frameborder="0" allowfullscreen></iframe>
 
-```python linenums="1"
+```py
 from taipy.config import Config
 model_cfg = Config.configure_data_node(&amp;amp;amp;quot;model&amp;amp;amp;quot;, 
                                        default_path=&amp;amp;amp;quot;model.p&amp;amp;amp;quot;)
@@ -155,7 +156,7 @@ scenario_cfg = Config.configure_scenario_from_tasks(&amp;amp;amp;quot;scenario&a
 The first line creates a scenario consisting of Data nodes, tasks, and pipelines. 
 Following this, we submit it.
 
-```python linenums="1"
+```py
 scenario_1 = tp.create_scenario(scenario_cfg)
 tp.submit(scenario_1)
 print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;, scenario_1.sum.read())
@@ -169,9 +170,9 @@ The only task has been completed, and the results have been computed.
 
 Now, let's create another scenario. 
 This new scenario won't create new Global Data nodes (both input and output). 
-Instead, it will reuse the ones that were created by **scenario_1**.
+Instead, it will reuse the ones that were created by *scenario_1*.
 
-```python linenums="1"
+```py
 scenario_2 = tp.create_scenario(scenario_cfg)
 tp.submit(scenario_2)
 print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;, scenario_2.sum.read())
@@ -187,7 +188,7 @@ Taipy uses the last modification date of a Data Node to determine if an input Da
 This modification date can be altered in three ways:
 
 - When you submit a Task or a scenario, it automatically updates the last modification date.
-- You can manually update it by writing: `<Data node>.write(…)`.
+- You can manually update it by writing: `DataNode.write()`.
 - Taipy also monitors the last modification date of the file that your Data Node refers to. 
   If you (or a separate process) modify a file (e.g., CSV, JSON, etc.) that the Data Node is linked to, 
   Taipy detects this change and adjusts the skippable logic accordingly.
