@@ -104,14 +104,17 @@ class VisElementsStep(SetupStep):
                 if not default_property and parent_element_desc.get(__class__.DEFAULT_PROPERTY, False):
                     default_property = parent_element_desc[__class__.DEFAULT_PROPERTY]
                 return default_property
-            for element_type, element_desc in self.elements.items():
+            def resolve_inheritance(element_type, element_desc):
                 if parent_types := element_desc.get(__class__.INHERITS, None):
                     del element_desc[__class__.INHERITS]
                     default_property = element_desc[__class__.DEFAULT_PROPERTY]
                     for parent_type in parent_types:
                         parent_desc = self.elements[parent_type]
+                        resolve_inheritance(parent_type, parent_desc)
                         default_property = merge(element_desc, parent_desc, default_property)
                     element_desc[__class__.DEFAULT_PROPERTY] = default_property
+            for element_type, element_desc in self.elements.items():
+                resolve_inheritance(element_type, element_desc)
 
         self.elements = {}
         self.categories = {}
