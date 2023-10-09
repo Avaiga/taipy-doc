@@ -82,7 +82,7 @@ Let’s take the previous execution graph and set *skippable=True* to our Task.
 
 ```py
 ...
-task_cfg = Config.configure_task(&amp;amp;amp;quot;multiply_and_add&amp;amp;amp;quot;,
+task_cfg = Config.configure_task("multiply_and_add",
                                   function=multiply_and_add,
                                   input=[nb_1_cfg, nb_2_cfg],
                                   output=[sum_cfg, product_cfg], skippable=True)
@@ -94,7 +94,7 @@ With the code below, we create and submit an instance of this scenario configura
 ```py
 scenario = tp.create_scenario(scenario_cfg)
 tp.submit(scenario)
-print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;, scenario.sum.read())
+print("Results (sum):", scenario.sum.read())
 ```
 
 ![Leveraging Skippability in Taipy Tasks](skippable_tasks_4.png){width=100%}
@@ -106,7 +106,7 @@ any changes to my input Data nodes in any way.
 
 ```python linenums="1"
 tp.submit(scenario)
-print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;,scenario.sum.read())
+print("Results (sum):", scenario.sum.read())
 ```
 
 ![Leveraging Skippability in Taipy Tasks](skippable_tasks_5.png){width=100%}
@@ -120,7 +120,7 @@ In this case, the value of *nb_1* is updated from 21 to 42.
 ```py
 scenario.nb_1.write(42)
 tp.submit(scenario)
-print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;, scenario.sum.read())
+print("Results (sum):", scenario.sum.read())
 ```
 
 ![Leveraging Skippability in Taipy Tasks](skippable_tasks_6.png){width=100%}
@@ -143,14 +143,10 @@ Let's revisit our previous code and modify the Data nodes to have a Global scope
 
 ```py
 from taipy.config import Config
-model_cfg = Config.configure_data_node(&amp;amp;amp;quot;model&amp;amp;amp;quot;, 
-                                       default_path=&amp;amp;amp;quot;model.p&amp;amp;amp;quot;)
-predictions_cfg = Config.configure_data_node(&amp;amp;amp;quot;predictions&amp;amp;amp;quot;)
-task_cfg = Config.configure_task(&amp;amp;amp;quot;task&amp;amp;amp;quot;,
-                              predict,
-                              model_cfg,
-                              predictions_cfg)
-scenario_cfg = Config.configure_scenario_from_tasks(&amp;amp;amp;quot;scenario&amp;amp;amp;quot;, [task_cfg])
+model_cfg = Config.configure_data_node("model",  default_path="model.p")
+predictions_cfg = Config.configure_data_node("predictions")
+task_cfg = Config.configure_task("task", predict, model_cfg, predictions_cfg)
+scenario_cfg = Config.configure_scenario_from_tasks("scenario", [task_cfg])
 ```
 
 The first line creates a scenario consisting of Data nodes, tasks, and pipelines. 
@@ -159,7 +155,7 @@ Following this, we submit it.
 ```py
 scenario_1 = tp.create_scenario(scenario_cfg)
 tp.submit(scenario_1)
-print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;, scenario_1.sum.read())
+print("Results (sum):", scenario_1.sum.read())
 ```
 
 ![Using Global Data Nodes](skippable_tasks_7.png){width=100%}
@@ -175,7 +171,7 @@ Instead, it will reuse the ones that were created by *scenario_1*.
 ```py
 scenario_2 = tp.create_scenario(scenario_cfg)
 tp.submit(scenario_2)
-print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;, scenario_2.sum.read())
+print("Results (sum):", scenario_2.sum.read())
 ```
 
 ![Using Global Data Nodes](skippable_tasks_9.png){width=100%}
