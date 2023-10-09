@@ -90,7 +90,7 @@ class VisElementsStep(SetupStep):
                 element_desc[__class__.DEFAULT_PROPERTY] = default_property
 
             # Resolve inheritance
-            def merge(element_desc, parent_element_desc, default_property, FL_et, FL_pet) -> Optional[str]:
+            def merge(element_desc, parent_element_desc, default_property: str) -> Optional[str]:
                 element_properties = element_desc.get(__class__.PROPERTIES, [])
                 element_property_names = [p[__class__.NAME] for p in element_properties]
                 for property in parent_element_desc.get(__class__.PROPERTIES, []):
@@ -107,21 +107,19 @@ class VisElementsStep(SetupStep):
                 if not default_property and parent_element_desc.get(__class__.DEFAULT_PROPERTY, False):
                     default_property = parent_element_desc[__class__.DEFAULT_PROPERTY]
                 return default_property
-            def resolve_inheritance(element_desc, FL_et):
+            def resolve_inheritance(element_desc):
                 if parent_types := element_desc.get(__class__.INHERITS, None):
                     del element_desc[__class__.INHERITS]
                     original_default_property = element_desc[__class__.DEFAULT_PROPERTY]
                     default_property = original_default_property
                     for parent_type in parent_types:
                         parent_desc = self.elements[parent_type]
-                        resolve_inheritance(parent_desc, parent_type)
-                        default_property = merge(element_desc, parent_desc, default_property, FL_et, parent_type)
+                        resolve_inheritance(parent_desc)
+                        default_property = merge(element_desc, parent_desc, default_property)
                     if original_default_property != default_property:
                         element_desc[__class__.DEFAULT_PROPERTY] = default_property
-            #for element_desc in self.elements.values():
-            #    resolve_inheritance( element_desc)
-            for element_name, element_desc in self.elements.items():
-                resolve_inheritance(element_desc, element_name)
+            for element_desc in self.elements.values():
+                resolve_inheritance( element_desc)
 
         self.elements = {}
         self.categories = {}
