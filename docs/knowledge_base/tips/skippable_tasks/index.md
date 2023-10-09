@@ -158,14 +158,10 @@ Let's revisit our previous code and modify the Data nodes to have a Global scope
 
 ```py
 from taipy.config import Config
-model_cfg = Config.configure_data_node(&amp;amp;amp;quot;model&amp;amp;amp;quot;, 
-                                       default_path=&amp;amp;amp;quot;model.p&amp;amp;amp;quot;)
-predictions_cfg = Config.configure_data_node(&amp;amp;amp;quot;predictions&amp;amp;amp;quot;)
-task_cfg = Config.configure_task(&amp;amp;amp;quot;task&amp;amp;amp;quot;,
-                              predict,
-                              model_cfg,
-                              predictions_cfg)
-scenario_cfg = Config.configure_scenario_from_tasks(&amp;amp;amp;quot;scenario&amp;amp;amp;quot;, [task_cfg])
+model_cfg = Config.configure_data_node("model", default_path="model.p")
+predictions_cfg = Config.configure_data_node("predictions")
+task_cfg = Config.configure_task("task", predict, model_cfg, predictions_cfg)
+scenario_cfg = Config.configure_scenario_from_tasks("scenario", [task_cfg])
 ```
 
 The first line creates a scenario consisting of Data nodes, tasks, and pipelines. 
