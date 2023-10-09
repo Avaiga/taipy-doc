@@ -1,5 +1,5 @@
 This demo showcases how to optimize the bar-cutting process 
-to  minimize waste. Bar-cutting optimization minimizes waste 
+to minimize waste. Bar-cutting optimization minimizes waste 
 by choosing optimal cutting patterns. This is crucial in industries 
 with significant material costs such as Steel, Timber, etc.
 
