@@ -24,7 +24,7 @@ This application highlights several key features:
     Twitter account into their Tweet, making it feel more authentic and aligned with their 
     desired audience.
 
-![Tweet Generation](images/tweet-generation.){width=80%}
+![Tweet Generation](images/tweet-generation.png){width=80%}
 
 # How to generate Tweets
 This demo allows users to produce engaging Tweets that connect with their audience.
