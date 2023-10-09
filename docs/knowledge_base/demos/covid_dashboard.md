@@ -1,5 +1,5 @@
 In the realm of COVID-19 data analysis, access to real-time insights is paramount.
-Introducing the COVID-19 Dashboard, a multi-page Taipy application, designed for
+Introducing the COVID-19 Dashboard, a multi-page Taipy application designed for
 in-depth data visualization and trend forecasting.
 
 [Try it live](https://covid-dashboard.taipy.cloud/Country) 
@@ -26,7 +26,7 @@ Visual representation of COVID-19 impact through dynamic color-coded maps.
 
 ## Page 3: Predictions
 Generate COVID-19 predictions by creating scenarios and selecting prediction
-dates. This is generated with an ARIMA and a Linear Regression algorithms defined as 
+dates. This is generated with an ARIMA and Linear Regression algorithms defined as 
 predictions_x and predictions_y.
 
 How to use it:
@@ -34,14 +34,14 @@ How to use it:
 1. Initiate a new scenario by assigning it a name.
 2. Specify a prediction date.
 3. Choose a country.
-4. Click the "Submit" button and here we go!
-5. To view your scenario, access it in the Scenario tab located within the Results section.
+4. Click the "Submit" button, and here we go!
+5. To view your scenario, you can just access it in the Scenario tab located within the Results section.
 
-![Country](images/covid-dashboard-country.png){width=80%}
+![Country](images/covid-dashboard-prediction.png){width=80%}
 
 
 ## Page 4: World
-Global COVID-19 statistics summarized via line and pie charts. The Comparison of Covid 
+Global COVID-19 statistics are summarized via line and pie charts. The Comparison of Covid 
 countries' impact can be seen by changing the toggle between ‘Absolute’ and ‘Relative’.  
 
 ![World](images/covid-dashboard-world.png){width=80%}
