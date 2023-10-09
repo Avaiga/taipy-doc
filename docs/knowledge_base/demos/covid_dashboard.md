@@ -1,6 +1,7 @@
-In the realm of COVID-19 data analysis, access to real-time insights is paramount.
-Introducing the COVID-19 Dashboard, a multi-page Taipy application designed for
-in-depth data visualization and trend forecasting.
+This demo visualizes a Covid dataset for the year 2020. 
+Pages show different graphs and information on Covid. 
+A Prediction page is also present to predict the number of casualties.
+
 
 [Try it live](https://covid-dashboard.taipy.cloud/Country) 
 
@@ -11,38 +12,42 @@ The application comprises four pages accessible via the upper tabs: Country, Map
 World.
 
 ## Page 1: Country
-- Detailed country-specific COVID-19 statistics.
+- Country-specific COVID-19 statistics.
 - Easily switch between cumulative and density data views.
-- Interactive line chart for dynamic data exploration.
+- Interactive bar chart for dynamic data exploration.
 - Pie chart illustrating case distribution (Confirmed, Recovered, Deaths).
+
 
 ![Country](images/covid-dashboard-country.png){width=80%}
 
 ## Page 2: Map
-Visual representation of COVID-19 impact through dynamic color-coded maps.
+Visual representation of COVID-19 impact through dynamic zoomable color-coded maps.
 
 ![Map](images/covid-dashboard-map.png){width=80%}
 
 
 ## Page 3: Predictions
-Generate COVID-19 predictions by creating scenarios and selecting prediction
-dates. This is generated with an ARIMA and Linear Regression algorithms defined as 
-predictions_x and predictions_y.
+Generate COVID-19 predictions by creating scenarios for different 
+Prediction dates and different countries.. This generates 2 different 
+predictions (prediction_x in orange and prediction_y in green) using respectively 
+an ARIMA model and a Linear Regression model. 
 
 How to use it:
 
 1. Initiate a new scenario by assigning it a name.
 2. Specify a prediction date.
 3. Choose a country.
-4. Click the "Submit" button, and here we go!
-5. To view your scenario, you can just access it in the Scenario tab located within the Results section.
+4. Click the "Submit" button and here we go!
+5. To view your scenario, access it in the Scenario tab located within the Results section.
+
 
 ![Country](images/covid-dashboard-prediction.png){width=80%}
 
 
 ## Page 4: World
-Global COVID-19 statistics are summarized via line and pie charts. The Comparison of Covid 
-countries' impact can be seen by changing the toggle between ‘Absolute’ and ‘Relative’.  
+Global COVID-19 statistics are summarized via line and pie charts. 
+The Comparison of Covid countries' impact can be seen by changing the toggle between ‘Absolute’ and ‘Relative’.
+
 
 ![World](images/covid-dashboard-world.png){width=80%}
 
