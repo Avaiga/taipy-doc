@@ -30,7 +30,7 @@ documentation for more details on [Data nodes](https://www.taipy.io/tips/the-dat
 For instance, let's say you have a function like **multiply_and_add()** that takes two parameters 
 and returns two values. How can you represent this function as a Taipy Task?
 
-```python linenums="1"
+```python
 def multiply_and_add(nb1, nb2):
     return nb1 + nb2, nb1 * nb2
 ```
@@ -46,16 +46,12 @@ and the results are returned in that exact order.
 
 <iframe width="640" height="360" src="https://www.taipy.io/wp-content/uploads/2023/04/full_config.mp4?_=1" frameborder="0" allowfullscreen></iframe>
 
-```python linenums="1"
+```python
 from taipy.config import Config
-model_cfg = Config.configure_data_node(&amp;amp;amp;quot;model&amp;amp;amp;quot;, 
-                                       default_path=&amp;amp;amp;quot;model.p&amp;amp;amp;quot;)
-predictions_cfg = Config.configure_data_node(&amp;amp;amp;quot;predictions&amp;amp;amp;quot;)
-task_cfg = Config.configure_task(&amp;amp;amp;quot;task&amp;amp;amp;quot;,
-                              predict,
-                              model_cfg,
-                              predictions_cfg)
-scenario_cfg = Config.configure_scenario_from_tasks(&amp;amp;amp;quot;scenario&amp;amp;amp;quot;, [task_cfg])
+model_cfg = Config.configure_data_node("model", default_path="model.p")
+predictions_cfg = Config.configure_data_node("predictions")
+task_cfg = Config.configure_task("task", predict, model_cfg, predictions_cfg)
+scenario_cfg = Config.configure_scenario("scenario", [task_cfg])
 ```
 
 In this example, the **multiply_and_add()** function takes two parameters (**nb1** and **nb2**). 
@@ -183,7 +179,7 @@ print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;, scenario_2.sum.read())
 
 ![Using Global Data Nodes](skippable_tasks_9.png){width=100%}
 
-Taipy reuses the existing Data nodes and skips the Task if the input Data nodes have not changed.
+Taipy skips the Task if the input Data nodes have not changed and reuses the existing output's Data.
 
 ## Manual Changes
 
