@@ -57,6 +57,7 @@ class VisElementsStep(SetupStep):
             with open(elements_json_path) as elements_json_file:
                 loaded_elements = json.load(elements_json_file)
 
+            new_elements = {}
             for category, elements in loaded_elements.items():
                 if category not in self.categories:
                     self.categories[category] = []
@@ -75,9 +76,10 @@ class VisElementsStep(SetupStep):
                     element_desc["prefix"] = prefix
                     element_desc["doc_path"] = doc_pages_path
                     element_desc["source"] = elements_json_path
-                    self.elements[element_type] = element_desc
+                    new_elements[element_type] = element_desc
+            self.elements.update(new_elements)
             # Find default property for all element types
-            for element_type, element_desc in self.elements.items():
+            for element_type, element_desc in new_elements.items():
                 default_property = None
                 if properties := element_desc.get(__class__.PROPERTIES, None):
                     for property in properties:
@@ -86,8 +88,9 @@ class VisElementsStep(SetupStep):
                                 default_property = property[__class__.NAME]
                             del property[__class__.DEFAULT_PROPERTY]
                 element_desc[__class__.DEFAULT_PROPERTY] = default_property
+
             # Resolve inheritance
-            def merge(element_desc, parent_element_desc, default_property) -> Optional[str]:
+            def merge(element_desc, parent_element_desc, default_property, FL_et, FL_pet) -> Optional[str]:
                 element_properties = element_desc.get(__class__.PROPERTIES, [])
                 element_property_names = [p[__class__.NAME] for p in element_properties]
                 for property in parent_element_desc.get(__class__.PROPERTIES, []):
@@ -104,17 +107,21 @@ class VisElementsStep(SetupStep):
                 if not default_property and parent_element_desc.get(__class__.DEFAULT_PROPERTY, False):
                     default_property = parent_element_desc[__class__.DEFAULT_PROPERTY]
                 return default_property
-            def resolve_inheritance(element_type, element_desc):
+            def resolve_inheritance(element_desc, FL_et):
                 if parent_types := element_desc.get(__class__.INHERITS, None):
                     del element_desc[__class__.INHERITS]
-                    default_property = element_desc[__class__.DEFAULT_PROPERTY]
+                    original_default_property = element_desc[__class__.DEFAULT_PROPERTY]
+                    default_property = original_default_property
                     for parent_type in parent_types:
                         parent_desc = self.elements[parent_type]
-                        resolve_inheritance(parent_type, parent_desc)
-                        default_property = merge(element_desc, parent_desc, default_property)
-                    element_desc[__class__.DEFAULT_PROPERTY] = default_property
-            for element_type, element_desc in self.elements.items():
-                resolve_inheritance(element_type, element_desc)
+                        resolve_inheritance(parent_desc, parent_type)
+                        default_property = merge(element_desc, parent_desc, default_property, FL_et, parent_type)
+                    if original_default_property != default_property:
+                        element_desc[__class__.DEFAULT_PROPERTY] = default_property
+            #for element_desc in self.elements.values():
+            #    resolve_inheritance( element_desc)
+            for element_name, element_desc in self.elements.items():
+                resolve_inheritance(element_desc, element_name)
 
         self.elements = {}
         self.categories = {}
@@ -123,33 +130,30 @@ class VisElementsStep(SetupStep):
 
         # Check that documented elements have a default property and a doc file,
         # and that their properties have the mandatory settings.
-        def check_elements(self) -> None:
-            for category, element_type in [(c, e) for c,elts in self.categories.items() for e in elts]:
-                if category == "undocumented":
-                    continue
-                element_desc = self.elements[element_type]
-                if not __class__.DEFAULT_PROPERTY in element_desc:
-                    raise ValueError(
-                        f"FATAL - No default property for element type '{element_type}'"
-                    )
-                if not __class__.PROPERTIES in element_desc:
-                    raise ValueError(
-                        f"FATAL - No properties for element type '{element_type}'"
-                    )
-                template_path = f"{element_desc['doc_path']}/{element_type}.md_template"            
-                if not os.access(template_path, os.R_OK):
-                    raise FileNotFoundError(
-                        f"FATAL - Could not find template doc file for element type '{element_type}' at {template_path}"
-                    )
-                # Check completeness
-                for property in element_desc[__class__.PROPERTIES]:
-                    for n in ["type", "doc"]:
-                        if not n in property:
-                            raise ValueError(
-                                f"FATAL - No value for '{n}' in the '{property[__class__.NAME]}' properties of element type '{element_type}' in {element_desc['source']}"
-                            )
-
-        check_elements(self)
+        for category, element_type in [(c, e) for c,elts in self.categories.items() for e in elts]:
+            if category == "undocumented":
+                continue
+            element_desc = self.elements[element_type]
+            if not __class__.DEFAULT_PROPERTY in element_desc:
+                raise ValueError(
+                    f"FATAL - No default property for element type '{element_type}'"
+                )
+            if not __class__.PROPERTIES in element_desc:
+                raise ValueError(
+                    f"FATAL - No properties for element type '{element_type}'"
+                )
+            template_path = f"{element_desc['doc_path']}/{element_type}.md_template"            
+            if not os.access(template_path, os.R_OK):
+                raise FileNotFoundError(
+                    f"FATAL - Could not find template doc file for element type '{element_type}' at {template_path}"
+                )
+            # Check completeness
+            for property in element_desc[__class__.PROPERTIES]:
+                for n in ["type", "doc"]:
+                    if not n in property:
+                        raise ValueError(
+                            f"FATAL - No value for '{n}' in the '{property[__class__.NAME]}' properties of element type '{element_type}' in {element_desc['source']}"
+                        )
 
     # Generate element doc pages for that category
     # Find first level 2 or 3 header
@@ -200,13 +204,16 @@ class VisElementsStep(SetupStep):
 """
             STAR = "(&#9733;)"
             default_property_name = element_desc[__class__.DEFAULT_PROPERTY]
-            for property in element_desc[__class__.PROPERTIES]:
-                name  = property[__class__.NAME]
-                type  = property["type"]
-                default_value  = property.get("default_value", None)
-                doc  = property.get("doc", None)
+            # Convert properties array to a dict
+            property_descs = { p["name"]: p for p in element_desc[__class__.PROPERTIES]}
+            for property_name in [default_property_name] + list(filter(lambda x: x != default_property_name, property_descs.keys())):
+                property_desc = property_descs[property_name]
+                name  = property_desc[__class__.NAME]
+                type  = property_desc["type"]
+                default_value  = property_desc.get("default_value", None)
+                doc  = property_desc.get("doc", None)
                 if not default_value:
-                    default_value = "<i>Required</i>" if property.get("required", False) else ""
+                    default_value = "<i>Required</i>" if property_desc.get("required", False) else ""
                 full_name = f"<code id=\"p-{re.sub('<[^>]+>', '', name)}\">"
                 if name == default_property_name:
                     full_name += f"<u><bold>{name}</bold></u></code><sup><a href=\"#dv\">{STAR}</a></sup>"
