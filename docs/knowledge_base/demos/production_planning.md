@@ -59,7 +59,7 @@ and "Stock Cost," appear above an empty main chart (no plan generated yet)..
 
 ![New scenario](images/production-planning-Scenario-Manager-new-scenario.png){width=80%}
 
-Click on “New Scenario” to launch the optimization algorithm, which 
+Click on "New Scenario" to launch the optimization algorithm, which 
 quickly finds the optimal production levels, respecting the capacity 
 constraints and optimizing costs. 
 Results can be displayed as time series or pie charts, and different 
@@ -72,12 +72,12 @@ On the right-hand side of this panel, you can modify various parameters categori
 - **Capacity Constraints**: Modify capacity values for different products (finished and raw).
 - **Objectives Weights**: Emphasize minimizing a specific cost (stock or backordering).
 - **Initial Parameters**: Modify other parameters like Initial Stock and Unit Cost.
-By “Playing” with these parameters, you can create several scenarios.
+By "Playing" with these parameters, you can create several scenarios.
 
 
 
 ## Page 3: Compare Scenarios
-To Compare two scenarios, select them then click on the “compare scenario” button. 
+To Compare two scenarios, select them then click on the "compare scenario" button. 
 You can select different comparison metrics  such as costs, purchases, and production levels, etc.
 
 
@@ -85,15 +85,15 @@ You can select different comparison metrics  such as costs, purchases, and produ
 
 ## Page 4: Compare Cycles
 
-This demo also introduces the concept of ‘Cycles”. 
+This demo also introduces the concept of ‘Cycles". 
 In this manufacturing context, the cycle is monthly. 
 This implies that scenarios are created each month. 
 Only one of the generated scenarios will be chosen as the 
-‘official scenario’, this scenario is referred as the “Primary” scenario. 
+‘official scenario’, this scenario is referred as the "Primary" scenario. 
 
 This demo already contains many scenarios generated from the 
-previous months. The “Evolution of costs” bar chart displays 
-the performance for every single “primary’ scenario generated 
+previous months. The "Evolution of costs" bar chart displays 
+the performance for every single "primary’ scenario generated 
 every month for the past few years. Compare monthly stock and 
 backorder costs from January 2021 to the present month using stacked bar charts.
 

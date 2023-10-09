@@ -11,9 +11,9 @@ To visualize them expand the menu list by just clicking inside this left panel
 
 ## Page 1: Bar Visualization
 
-1. Load the selected dataset by choosing from two cases (“Case 1”or “Case 2”).
-2. Select one algorithm (amongst the two algorithms proposed): the “Baseline” or the “Optim Model”. 
-3. Click on “RUN”
+1. Load the selected dataset by choosing from two cases ("Case 1"or "Case 2").
+2. Select one algorithm (amongst the two algorithms proposed): the "Baseline" or the "Optim Model". 
+3. Click on "RUN"
 4. Within seconds, the results get displayed, highlighting material loss in blue on a bar chart.
 5. Switch algorithms to compare material waste.
 
