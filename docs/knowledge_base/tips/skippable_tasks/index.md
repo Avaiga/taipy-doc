@@ -119,8 +119,6 @@ tp.submit(scenario)
 print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;,scenario.sum.read())
 ```
 
-![Leveraging Skippability in Taipy Tasks](skippable_tasks_5.png){width=100%}
-
 As expected, Taipy is skipping the Task because the input parameters haven't changed. 
 If there are multiple tasks in this scenario, Taipy may skip several of them.
 
