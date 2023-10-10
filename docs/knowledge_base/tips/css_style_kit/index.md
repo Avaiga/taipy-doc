@@ -46,7 +46,7 @@ These can be used to make certain parts of your pages more noticeable or to cont
 
 For instance, you can use a container to add some space around your Markdown content.
 
-```python linenums="1"
+```python
 <|container|
 ...
 |>
