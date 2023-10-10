@@ -209,7 +209,7 @@ theme:
   font:
     text: Lato
   icon:
-    logo: taipy-logo
+    logo: taipy-logo-icon
     repo: fontawesome/brands/git-alt
   palette:
     - media: "(prefers-color-scheme: light)"
