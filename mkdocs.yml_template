@@ -14,11 +14,11 @@ nav:
   - "Getting Started":
     - getting_started/index.md
   - "Knowledge Base":
-    - knowledge_base/index.md
+    - "Knowledge Base": knowledge_base/index.md
     - "Tutorials":
         - knowledge_base/tutorials/index.md
         - "Understanding GUI":
-            - knowledge_base/tutorials/understanding_gui/index.md
+            - "Understanding GUI": knowledge_base/tutorials/understanding_gui/index.md
             - "1 - First Web page": knowledge_base/tutorials/understanding_gui/step_01/step_01.md
             - "2 - Visual elements": knowledge_base/tutorials/understanding_gui/step_02/step_02.md
             - "3 - Interactions": knowledge_base/tutorials/understanding_gui/step_03/step_03.md
@@ -27,15 +27,14 @@ nav:
             - "6 - Page layouts": knowledge_base/tutorials/understanding_gui/step_06/step_06.md
             - "7 - Multi-pages, navbars, and menus": knowledge_base/tutorials/understanding_gui/step_07/step_07.md
         - "Scenario management Overview":
-            - knowledge_base/tutorials/scenario_management_overview/index.md
+            - "Scenario management Overview": knowledge_base/tutorials/scenario_management_overview/index.md
             - "1 - Scenario config and run": knowledge_base/tutorials/scenario_management_overview/step_01/step_01.md
-            - "2 - Data Node types": knowledge_base/tutorials/scenario_management_overview/step_02/step_02.md
-            - "3 - Cycles": knowledge_base/tutorials/scenario_management_overview/step_03/step_03.md
-            - "4 - Scopes": knowledge_base/tutorials/scenario_management_overview/step_04/step_04.md
-            - "5 - Skipping tasks": knowledge_base/tutorials/scenario_management_overview/step_05/step_05.md
-            - "6 - Execution modes": knowledge_base/tutorials/scenario_management_overview/step_06/step_06.md
-            - "7 - Scenario comparison": knowledge_base/tutorials/scenario_management_overview/step_07/step_07.md
-            - "8 - Scenario subscription": knowledge_base/tutorials/scenario_management_overview/step_08/step_08.md
+            - "4 - Cycles": knowledge_base/tutorials/scenario_management_overview/step_04/step_04.md
+            - "5 - Scopes": knowledge_base/tutorials/scenario_management_overview/step_05/step_05.md
+            - "6 - Skipping tasks": knowledge_base/tutorials/scenario_management_overview/step_06/step_06.md
+            - "7 - Execution modes": knowledge_base/tutorials/scenario_management_overview/step_07/step_07.md
+            - "8 - Scenario comparison": knowledge_base/tutorials/scenario_management_overview/step_08/step_08.md
+            - "9 - Scenario subscription": knowledge_base/tutorials/scenario_management_overview/step_09/step_09.md
         - "Build a complete application":
             - "Build a complete application": knowledge_base/tutorials/complete_application/index.md
             - "1 - Data visualization page": knowledge_base/tutorials/complete_application/step_01/step_01.md
@@ -51,7 +50,7 @@ nav:
         - "Manage Data Pipelines with Scenarios": knowledge_base/tutorials/data_pipelines.md
         - "Data Nodes and Tasks": knowledge_base/tutorials/data_nodes.md
     - "Demos":
-        - knowledge_base/demos/index.md
+        - "Demos": knowledge_base/demos/index.md
         - "Sales Dashboard": knowledge_base/demos/sales_dashboard.md
         - "Tweet generation": knowledge_base/demos/tweet_generation.md
         - "Face Recognition": knowledge_base/demos/face_recognition.md
@@ -64,7 +63,7 @@ nav:
         - "COVID Dashboard": knowledge_base/demos/covid_dashboard.md
         - "Movie genre selector": knowledge_base/demos/movie_genre_selector.md
     - "Tips and tricks":
-        - knowledge_base/tips/index.md
+        - "Tips and tricks": knowledge_base/tips/index.md
         - "Jupyter Notebooks": knowledge_base/tips/jupyter_notebooks/index.md
   - "Manuals":
     - manuals/index.md
