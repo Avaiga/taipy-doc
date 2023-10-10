@@ -19,7 +19,6 @@ This application highlights several key features:
 2. **Image Integration with DALL·E**: The application seamlessly integrates
    DALL·E, OpenAI's image creation model, to generate images that
    complement the Tweet text, creating visually appealing content.
-
    
 3. **Style Transfer**: Users can infuse the style of a specific
    Twitter account into their Tweet, making it feel more authentic
