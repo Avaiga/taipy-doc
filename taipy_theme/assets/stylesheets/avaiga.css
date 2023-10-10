@@ -119,15 +119,30 @@
   }
 }
 
+.md-header__title-wrapper{
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
 .md-header .md-logo img,
 .md-header .md-logo svg{
   height: 1.5rem;
 }
 
+.md-header__title-wrapper .md-header__title{
+  margin-left: 0;
+}
+
+.md-header__title .md-site-name{
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
 @media screen and (max-width: 76.1875em){
   .md-header .md-logo {
     display: block;
-    flex: 1;
+    flex: 0 0 auto;
   }
 }
 
@@ -151,7 +166,7 @@
 }
 
 .md-header .md-tabs{
-  flex: 1;
+  flex: 0 0 auto;
   width: auto;
   background-color: transparent;
   color: currentColor;
