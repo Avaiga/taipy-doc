@@ -1,6 +1,174 @@
+---
+hide:
+  - toc
+---
+
 Learn how to use Taipy and improve your skills with the following tutorials.
 
-# Tutorials
+<!-- Quick accesses -->
+<div class="tp-row tp-row--gutter-sm">
+
+  <div class="tp-col-12 tp-col-md-4 d-flex">
+    <a class="tp-content-card tp-content-card--primary" href="tutorials">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="images/icon-tutorials.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h3>Tutorials</h3>
+        <p>
+          Follow our tutorials and get the core concepts of Taipy.
+        </p>
+      </div> 
+    </a>
+  </div>
+
+  <div class="tp-col-12 tp-col-md-4 d-flex">
+    <a class="tp-content-card tp-content-card--beta" href="demos">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="images/icon-demos.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h3>Demos</h3>
+        <p>
+          See Taipy in action in our demo applications.
+        </p>
+      </div> 
+    </a>
+  </div>
+
+  <div class="tp-col-12 tp-col-md-4 d-flex">
+    <a class="tp-content-card tp-content-card--alpha" href="tips">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="images/icon-tips.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h3>Tips</h3>
+        <p>
+          Learn some tips and tricks to take your Taipy applications further.
+        </p>
+      </div> 
+    </a>
+  </div>
+</div>
+
+<hr class="tp-separator">
+
+<!-- Filters -->
+<ul class="tp-pills-list tp-pills-filter">
+  <li>
+    <input type="checkbox" name="filter-all" id="filter-all" checked>
+    <label class="tp-pill" for="filter-all">
+      <span>all</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-frontend" id="filter-frontend">
+    <label class="tp-pill" for="filter-frontend">
+      <span>Front-end</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-backend" id="filter-backend">
+    <label class="tp-pill" for="filter-backend">
+      <span>Back-end</span>
+    </label>
+  </li>
+</ul>
+
+## Tutorials
+
+<ul class="tp-cards-list">
+  <li>
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/understanding_gui">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Understanding GUI</h4>
+        <p>
+          Understand basic knowledge of Taipy GUI creating of a multi-page NLP application.
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li>
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/understanding_gui">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tutorials/images/icon-video.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Understanding GUI</h4>
+        <p>
+          Understand basic knowledge of Taipy GUI creating of a multi-page NLP application.
+        </p>
+      </div> 
+    </a>
+  </li>
+</ul>
+
+## Demos
+
+<ul class="tp-cards-list">
+  <li>
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Understanding GUI</h4>
+        <p>
+          Understand basic knowledge of Taipy GUI creating of a multi-page NLP application.
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li>
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-video.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Understanding GUI</h4>
+        <p>
+          Understand basic knowledge of Taipy GUI creating of a multi-page NLP application.
+        </p>
+      </div> 
+    </a>
+  </li>
+</ul>
+
+## Tips
+
+<ul class="tp-cards-list">
+  <li>
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Understanding GUI</h4>
+        <p>
+          Understand basic knowledge of Taipy GUI creating of a multi-page NLP application.
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li>
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tips/images/icon-video.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Understanding GUI</h4>
+        <p>
+          Understand basic knowledge of Taipy GUI creating of a multi-page NLP application.
+        </p>
+      </div> 
+    </a>
+  </li>
+</ul>
+
+
 | Id  | Title                                                                                    | description                                                                                                                                                                                                                                                                                                                                                                                                                                        | keywords                                                |
 |:----|:-----------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|
 | 1   | [Understanding GUI](tutorials/understanding_gui/index.md)                                | Gain a fundamental understanding of creating a multi-page NLP application using Taipy front-end.                                                                                                                                                                                                                                                                                                                                                   | Application front-end building                          |
