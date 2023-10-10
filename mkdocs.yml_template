@@ -67,7 +67,7 @@ nav:
         - "Jupyter Notebooks": knowledge_base/tips/jupyter_notebooks/index.md
         - "Skippable Tasks": knowledge_base/tips/skippable_tasks/index.md
         - "Taipy Cloud": knowledge_base/tips/taipy_cloud_deploy/index.md
-        - "CSS Style Kit": knowledge_base/tips/the_css_style_kit/index.md
+        - "Stylekit": knowledge_base/tips/css_style_kit/index.md
         - "Data Nodes": knowledge_base/tips/the_data_nodes/index.md
         - "Using Tables": knowledge_base/tips/using_tables/index.md
         - "Multi-page Application": knowledge_base/tips/multipage_application/index.md
