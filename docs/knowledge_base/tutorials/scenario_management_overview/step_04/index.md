@@ -1,11 +1,15 @@
 *Estimated Time for Completion: 30 minutes; Difficulty Level: Intermediate*
 
-In this section, we will explore the intricate relationship between [Scopes](../../../../manuals/core/concepts/scope.md) and [Cycles](../../../../manuals/core/concepts/cycle.md), two core concepts that helps managing Data Nodes and scenarios effectively in Taipy.
+In this section, we will explore the intricate relationship between
+[Scopes](../../../../manuals/core/concepts/scope.md) and 
+[Cycles](../../../../manuals/core/concepts/cycle.md), two core concepts 
+that helps manage data nodes and scenarios effectively in Taipy.
 
 
 # Cycles
 
-[Cycles](../../../../manuals/core/concepts/cycle.md) have been introduced to reflect business situations companies frequently encounter and can be extremely useful. 
+[Cycles](../../../../manuals/core/concepts/cycle.md) have been introduced to reflect 
+business situations companies frequently encounter and can be extremely useful. 
 
 For example, a big fast-food chain wants to predict its store sales every week. When they create a scenario 
 for a particular week, it has to be linked to that specific week. Usually, there will be just one scenario 
@@ -16,7 +20,7 @@ Note that Cycles can be ignored entirely if the business problem has no time fre
 
 ## Advantages of Cycles:
 
-- **Time-Based Organization:** Cycles facilitate the organization and analysis of scenarios over specific time periods.
+- **Time-Based Organization:** Cycles facilitate the organization and analysis of scenarios over specific periods.
 
 - **Primary Scenario Identification:** Cycles allow the designation of a primary scenario for reference or official analysis.
 
@@ -37,7 +41,7 @@ def filter_by_month(df, month):
 ```
 
 
-![](config.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Configuration](config.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Configuration
 
@@ -55,7 +59,7 @@ def filter_by_month(df, month):
 
     === "Python configuration"
 
-        The configuration is the same as the last step except for the scenario and task configuration. A new parameter is added for the frequency.
+        A parameter is added in the scenario configuration for the frequency.
 
         ```python
         from taipy.config import Frequency
@@ -67,20 +71,20 @@ def filter_by_month(df, month):
         month_values_cfg =  Config.configure_data_node(id="month_values")
 
         task_filter_cfg = Config.configure_task(id="filter_by_month",
-                                                     function=filter_by_month,
-                                                     input=[historical_data_cfg, month_cfg],
-                                                     output=month_values_cfg)
+                                                function=filter_by_month,
+                                                input=[historical_data_cfg, month_cfg],
+                                                output=month_values_cfg)
 
 
         scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                                            task_configs=[task_filter_cfg],
-                                                            frequency=Frequency.MONTHLY)
+                                                 task_configs=[task_filter_cfg],
+                                                 frequency=Frequency.MONTHLY)
 
         ```
 
 
-Since we have specified 
-`frequency=Frequency.MONTHLY`, the corresponding scenario when created is automatically attached to the correct period (month). 
+Since we have specified `frequency=Frequency.MONTHLY`, the corresponding scenario when
+created, is automatically attached to the correct period (month). 
 
 The Cycle which a Scenario belongs to is based on the _creation_date_ of the scenario. It can be "attached" 
 to a specific cycle by manually setting its _creation_date_, as we are doing in the following example.
@@ -98,12 +102,13 @@ scenario_2 = tp.create_scenario(scenario_cfg,
 ```
 
 Scenario 1 and Scenario 2 are two separate scenario entities created using the same scenario configuration. 
-They are part of the same Cycle but have different Data Nodes. By default, each scenario instance 
+They are part of the same Cycle but have different data nodes. By default, each scenario instance 
 has its own data node instances, and they are not shared with any other scenario. 
 
 ## Interplay between Scopes and Cycles
 
-Cycles are generated according to the _creation_date_ of scenarios. The scope, on the other hand, determines how data nodes are shared within these cycles and scenarios.
+Cycles are generated according to the _creation_date_ of scenarios. The scope, on the other
+hand, determines how data nodes are shared within these cycles and scenarios.
 
 # Scopes
 
@@ -124,7 +129,7 @@ Let's change the configuration of our data nodes:
 
 - *month_values*: same for *month_values*.
 
-![](config_scope.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Configuration with Scope](config_scope.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 !!! example "Configuration"
 
@@ -138,7 +143,8 @@ Let's change the configuration of our data nodes:
 
     === "Python configuration"
 
-        The configuration is the same as the last step except for the scenario and task configuration. A new parameter is added for the frequency.
+        The configuration is the same as the last step except for the data node 
+        configurations. New parameter are added for scopes.
 
         ```python
         from taipy.config import Frequency, Scope
@@ -186,7 +192,8 @@ first scenario created for a cycle is primary.
 
 ### Python code associated to primary scenarios
 
-[`tp.set_primary(<Scenario>)`](../../../../manuals/core/entities/scenario-cycle-mgt.md/#promote-a-scenario-as-primary) allows changing the primary scenario in a Cycle.
+[`tp.set_primary(<Scenario>)`](../../../../manuals/core/entities/scenario-cycle-mgt.md/#promote-a-scenario-as-primary) 
+allows changing the primary scenario in a Cycle.
 
 `<Scenario>.is_primary` identifies as a boolean whether the scenario is primary or not.
 
@@ -220,8 +227,9 @@ Scenario 2: Primary? False True
 
 ### GUI-Core visual elements
 
-You can utilize GUI-Core elements to control Cycles. Cycles can be seen in either the *scenario_selector* or *data_node_selector*. 
-Additionally, it's possible to designate a scenario as primary directly through the `scenario` visual element.
+You can utilize GUI-Core elements to control Cycles. Cycles can be seen in either the
+*scenario_selector* or *data_node_selector*. Additionally, it's possible to designate a scenario
+as primary directly through the `scenario` visual element.
 
 ```python
 data_node = None
@@ -235,13 +243,15 @@ tp.Gui("""<|{scenario}|scenario_selector|>
 
 ## Conclusion
 
-By understanding the dynamics between scopes and cycles, developers can effectively manage data nodes and scenarios to suit specific business needs and scenarios. Experiment with different configurations to gain deeper insights into their functionalities and applications.
+By understanding the dynamics between scopes and cycles, developers can effectively manage
+data nodes and scenarios to suit specific business needs and scenarios. Experiment with
+different configurations to gain deeper insights into their functionalities and applications.
 
 
 # Entire code
 
 ```python
-from taipy.core.config import Config, Frequency, Scope
+from taipy.config import Config, Frequency, Scope
 import taipy as tp
 import datetime as dt
 import pandas as pd
@@ -263,14 +273,14 @@ month_values_cfg =  Config.configure_data_node(id="month_data",
 
 
 task_filter_cfg = Config.configure_task(id="filter_by_month",
-                                                 function=filter_by_month,
-                                                 input=[historical_data_cfg, month_cfg],
-                                                 output=month_values_cfg)
+                                        function=filter_by_month,
+                                        input=[historical_data_cfg, month_cfg],
+                                        output=month_values_cfg)
 
 
 scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                                    task_configs=[task_filter_cfg],
-                                                    frequency=Frequency.MONTHLY)
+                                         task_configs=[task_filter_cfg],
+                                         frequency=Frequency.MONTHLY)
 
 Config.export('config_04.toml')
 
