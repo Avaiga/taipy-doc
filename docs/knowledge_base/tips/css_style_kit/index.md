@@ -5,7 +5,7 @@ It comes with pre-made CSS styles, so your application will look great without y
 
 But that's not all – you can also make your application look even nicer with some customization.
 
-![CSS Style Kit](css_style_kit.png){width=100%}
+![Stylekit](css_style_kit.png){width=100%}
 
 The Stylekit has some great features:
 
