@@ -1,24 +1,24 @@
 
 Prepare for a big change in your Taipy applications! 
-The new CSS Style Kit is here and it will make your application look even better. 
-It comes with pre-made styles, so your application will look great without you having to do much.
+The Stylekit is here and it will make your application look even better. 
+It comes with pre-made CSS styles, so your application will look great without you having to do much.
 
 But that's not all – you can also make your application look even nicer with some customization.
 
 ![CSS Style Kit](css_style_kit.png){width=100%}
 
-The CSS Style Kit has some great features:
+The Stylekit has some great features:
 
 - It has ready-made styles for Taipy elements.
 - You can change things like color or spacing easily by modifying CSS variables.
 - There are also utility CSS classes to make elements look more appealing.
 
-By default, the CSS Style Kit is turned on, so it affects how your page looks. 
-If you want to turn it off, you can do so by setting the CSS Style Kit parameter of the Gui.run() method to False.
+By default, the Stylekit is turned on, so it affects how your page looks. 
+If you want to turn it off, you can do so by setting the Stylekit parameter of the `Gui.run()` method to False.
 
 ## Main CSS Variables
 
-The CSS Style Kit provides a long list of variables that affect how your Taipy application pages look. 
+The Stylekit provides a long list of variables that affect how your Taipy application pages look. 
 It also offers predefined CSS classes for things like changing text style, 
 adding space around elements, adjusting how things are displayed, 
 and making elements more or less see-through.
@@ -28,7 +28,7 @@ You can easily add color or center it.
 
 Now, let's use it in our application:
 
-```python linenums="1"
+```python
 &lt;|text-center| Taipy **App**{: .color-primary} |&gt;
  
 or
@@ -41,7 +41,7 @@ Let’s apply it to our application.
 
 ![Main CSS Variables](css_style_kit_2.png){width=100%}
 
-The CSS Style Kit also offers styled sections like containers, cards, headers, and sidebars. 
+The Stylekit also offers styled sections like containers, cards, headers, and sidebars. 
 These can be used to make certain parts of your pages more noticeable or to control their size and position.
 
 For instance, you can use a container to add some space around your Markdown content.
@@ -54,7 +54,7 @@ For instance, you can use a container to add some space around your Markdown con
 
 This will create a card to put your Markdown/Visual elements in.
 
-```python linenums="1"
+```python
 <|card|
 ...
 |>
@@ -67,10 +67,10 @@ and we've also created a card for the parameters at the top.
 
 ## Creating Your Own Theme!
 
-You can also make changes to the default theme of the CSS Style Kit. 
+You can also make changes to the default theme of the Stylekit. 
 Simply define a group of variables with initial values and then override them 
-by setting the CSS Style Kit parameter in the Gui.run() method using a dictionary.
+by setting the Stylekit parameter in the `Gui.run()` method using a dictionary.
 
-To sum it up, the CSS Style Kit is a groundbreaking feature for Taipy applications, 
+To sum it up, the Stylekit is a groundbreaking feature for Taipy applications, 
 providing remarkable options for customization and control over how your application looks. 
 Don't pass up the chance to enhance the appearance of your Taipy application!
