@@ -65,6 +65,16 @@ nav:
     - "Tips and tricks":
         - "Tips and tricks": knowledge_base/tips/index.md
         - "Jupyter Notebooks": knowledge_base/tips/jupyter_notebooks/index.md
+        - "Skippable Tasks": knowledge_base/tips/skippable_tasks/index.md
+        - "Taipy Cloud": knowledge_base/tips/taipy_cloud_deploy/index.md
+        - "Stylekit": knowledge_base/tips/css_style_kit/index.md
+        - "Data Nodes": knowledge_base/tips/the_data_nodes/index.md
+        - "Using Tables": knowledge_base/tips/using_tables/index.md
+        - "Multi-page Application": knowledge_base/tips/multipage_application/index.md
+        - "Long Running Callbacks": knowledge_base/tips/long_running_callbacks/index.md
+        - "Taipy Application on Colab with Ngrok": knowledge_base/tips/colab_with_ngrok/index.md
+        - "Scenarios": knowledge_base/tips/scenarios/index.md
+        - "Callbacks in Taipy": knowledge_base/tips/the_on_change_callback/index.md
   - "Manuals":
     - manuals/index.md
     - "User Manuals":
