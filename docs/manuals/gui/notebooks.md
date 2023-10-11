@@ -1,7 +1,3 @@
----
-title: "Running in Notebooks"
----
-
 You can create and run a Taipy Graphical User Interface from a Jupyter Notebook.
 
 In this situation, the web server that Taipy relies on will run on a separate thread,

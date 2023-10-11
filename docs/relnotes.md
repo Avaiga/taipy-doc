@@ -201,8 +201,8 @@ Not published yet.
 
 Not published yet.
 
-This release contains all of [`taipy` 3.0](Link to Taipy pypi)
-as well as additional features.
+This release contains all of [`taipy` 3.0](https://pypi.org/project/taipy/3.0.0) as well as
+additional features.
 
 ### New Features
 
