@@ -41,13 +41,13 @@ two Pickle data nodes: one for getting data in and one for sending data out.
   We haven't told it where to get data from yet.
 
 <video width="640" height="360" controls>
-  <source src="https://www.taipy.io/wp-content/uploads/2023/03/predict.mp4?_=1.mp4" type="video/mp4">
+  <source src="pickle-data-node.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
 Once you've set up this basic graph, the next step is to create a scenario using it and then submit it for execution.
 
-```python linenums="1"
+```python
 scenario = tp.create_scenario(scenario_cfg)
 tp.submit(scenario)
 ```
@@ -87,7 +87,7 @@ The predefined tabular data nodes in Taipy include:
 These data nodes allow you to work with tabular data from different sources with ease.
 
 <video width="640" height="360" controls>
-  <source src="https://www.taipy.io/wp-content/uploads/2023/03/csv.mp4?_=2" type="video/mp4">
+  <source src="tabular-data-nodes.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -118,7 +118,7 @@ Here, we'll demonstrate how you can change the exposed type from the default Pan
 to other types, such as *Numpy arrays*:
 
 <video width="640" height="360" controls>
-  <source src="https://www.taipy.io/wp-content/uploads/2023/03/exposed_type.mp4" type="video/mp4">
+  <source src="tabular-data-nodes_2.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
