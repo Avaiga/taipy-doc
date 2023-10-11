@@ -4,6 +4,10 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Beginner*
 
+By the end of this tutorial, you will have all the bases to create a little application using the scenario management of Taipy.
+
+![Scenario management demo](demo.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+
 Before looking at some code examples, to apprehend what is a *Scenario*, you need to 
 understand the *Data node* and *Task* concepts.
 
@@ -50,7 +54,7 @@ def predict(historical_temperature: pd.DataFrame, date_to_forecast: str) -> floa
 ```
 The scenario can be represented as the following graph:
 
-![Simple scenario](config_01.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb (210,210,210);border-radius:7px" }
+![Simple scenario](config.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb (210,210,210);border-radius:7px" }
 
 Three Data Nodes are being configured (**historical_temperature**, **date_to_forecast** and 
 **predictions**). The task **predict** links the three Data Nodes through the Python function.
@@ -71,9 +75,9 @@ Three Data Nodes are being configured (**historical_temperature**, **date_to_for
 
         # Configuration of tasks
         predict_cfg = Config.configure_task(id="predict",
-                                                function=predict,
-                                                input=[historical_temperature_cfg, date_to_forecast_cfg],
-                                                output=predictions_cfg)
+                                            function=predict,
+                                            input=[historical_temperature_cfg, date_to_forecast_cfg],
+                                            output=predictions_cfg)
 
         # Configuration of scenario
         scenario_cfg = Config.configure_scenario(id="my_scenario", task_configs=[predict_cfg])
@@ -88,7 +92,7 @@ Three Data Nodes are being configured (**historical_temperature**, **date_to_for
         lets you edit and view a TOML file that will be used in our code.
 
         <video controls width="400">
-            <source src="/step_01/config_01.mp4" type="video/mp4">
+            <source src="/step_01/config.mp4" type="video/mp4">
         </video>
 
         To use this configuration in our code (`main.py` for example), we must load it and 
@@ -177,12 +181,16 @@ def save(state):
 date = None
 scenario_md = """
 <|{scenario}|scenario_selector|>
+
+Put a Date
 <|{date}|date|on_change=save|active={scenario}|>
+
+Run the scenario
 <|{scenario}|scenario|>
 <|{scenario}|scenario_dag|>
 
-<|Refresh|button|on_action={lambda s: s.assign("scenario", scenario)}|>
-<|{scenario.predictions.read() if scenario else ''}|>
+View all the information on your prediction here
+<|{scenario.predictions if scenario else None}|data_node|>
 """
 
 tp.Gui(scenario_md).run()
@@ -200,11 +208,13 @@ creating a Scenario based application connected to your pipelines has never been
 from taipy import Config
 import taipy as tp
 import pandas as pd
+import datetime as dt
 
 
 data = pd.read_csv("https://raw.githubusercontent.com/Avaiga/taipy-getting-started-core/develop/src/daily-min-temperatures.csv")
 
-# User function used by Taipy
+
+# Normal function used by Taipy
 def predict(historical_temperature: pd.DataFrame, date_to_forecast: str) -> float:
     print(f"Running baseline...")
     historical_temperature['Date'] = pd.to_datetime(historical_temperature['Date'])
@@ -215,7 +225,7 @@ def predict(historical_temperature: pd.DataFrame, date_to_forecast: str) -> floa
     return historical_same_day['Temp'].mean()
 
 # Configuration of Data Nodes
-historical_temperature_cfg = Config.configure_data_node("historical_temperature", default_data=data)
+historical_temperature_cfg = Config.configure_data_node("historical_temperature")
 date_to_forecast_cfg = Config.configure_data_node("date_to_forecast")
 predictions_cfg = Config.configure_data_node("predictions")
 
@@ -226,11 +236,22 @@ predictions_cfg = Config.configure_task("predict",
                                         predictions_cfg)
 
 # Configuration of scenario
-scenario_cfg = Config.configure_scenario(id="my_scenario", task_configs=[predictions_cfg])
+scenario_cfg = Config.configure_scenario(id="my_scenario", 
+                                                    task_configs=[predictions_cfg])
+
+Config.export('config.toml')
 
 if __name__ == '__main__':
     # Run of the Core
     tp.Core().run()
+
+    # Creation of the scenario and execution
+    scenario = tp.create_scenario(scenario_cfg)
+    scenario.historical_temperature.write(data)
+    scenario.date_to_forecast.write(dt.datetime.now())
+    tp.submit(scenario)
+
+    print("Value at the end of task", scenario.predictions.read())
 
     def save(state):
         state.scenario.historical_temperature.write(data)
@@ -240,12 +261,16 @@ if __name__ == '__main__':
     date = None
     scenario_md = """
 <|{scenario}|scenario_selector|>
+
+Put a Date
 <|{date}|date|on_change=save|active={scenario}|>
+
+Run the scenario
 <|{scenario}|scenario|>
 <|{scenario}|scenario_dag|>
 
-<|Refresh|button|on_action={lambda s: s.assign("scenario", scenario)}|>
-<|{scenario.predictions.read() if scenario else ''}|>
+View all the information on your prediction here
+<|{scenario.predictions if scenario else None}|data_node|>
 """
 
     tp.Gui(scenario_md).run()
