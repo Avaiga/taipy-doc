@@ -1,8 +1,6 @@
-# Controls
-
 Controls are user interface objects representing data. Users can interact with these controls.
 
-## Standard controls
+# Standard controls
 
 Standard controls can be used in all situations when a user interface is needed.
 These controls are elements representing generic data.<br/>
@@ -19,7 +17,7 @@ Here is the list of all available controls in Taipy:
 
 [TOC]
 
-## Scenario management controls
+# Scenario management controls
 
 Some controls are dedicated to Scenario Management. These controls let users select
 Entities and interact with them.

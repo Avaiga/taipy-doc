@@ -141,13 +141,13 @@ Results:
 ```
 [2022-12-22 16:20:02,740][Taipy][INFO] job JOB_predict_... is completed.
 Value at the end of task 23.45
-```    
+```
 
-In this code, you can see how to create and submit scenarios, retrieve data nodes, 
-read and write data. Many other functions are described in the manuals, in particular in the 
-[taipy](../../../../manuals/reference/pkg_taipy.md), 
-[scenario](../../../../manuals/core/entities/scenario-cycle-mgt/) and 
-[data node](../../../../manuals/core/entities/data-node-mgt/) documentation pages.
+In this code, you can see how to create and submit scenarios, retrieve data nodes,
+read and write data. Many other functions are described in the manuals, in particular in the
+[taipy](../../../../manuals/reference/pkg_taipy.md),
+[scenario](../../../../manuals/core/entities/scenario-cycle-mgt.md) and
+[data node](../../../../manuals/core/entities/data-node-mgt.md) documentation pages.
 
 # Visual elements
 
@@ -188,8 +188,10 @@ scenario_md = """
 tp.Gui(scenario_md).run()
 ```
 
-The [Scenario management visual elements](../../../../manuals/gui/corelements/index.md)
-provide all the necessary controls to manage and access scenarios and data nodes. In fact,
+The
+[Scenario management controls](../../../../manuals/gui/viselements/controls/#scenario-management-controls)
+http://127.0.0.1:8000/en/develop/manuals/
+provide all the necessary features to access and manage scenarios and data nodes. In fact,
 creating a Scenario based application connected to your pipelines has never been simpler.
 
 ![Scenario management demo](demo.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }

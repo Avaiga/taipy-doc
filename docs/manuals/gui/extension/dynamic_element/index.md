@@ -2,7 +2,7 @@
 
 The [previous section on static elements](../static_element.md) exposes
 how element libraries and elements are defined. A major limitation with
-static elements is that you cannot change their property values at run-time.
+static elements is that you cannot change their property values at runtime.
 In Taipy GUI, you can [bind Python variables or expressions](../../binding.md)
 to properties so that the user interface is immediately updated should the application
 modify the value of a variable.

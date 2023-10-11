@@ -1,12 +1,10 @@
-# User Interface Configuration
-
 Applications created using the `taipy.gui` package can be configured
 for different use cases or environments.
 
 This section describes how to configure an application and
 explains different deployment scenarios.
 
-## Configuring the `Gui` instance
+# Configuring the `Gui` instance
 
 The `Gui^` instance of your application has many parameters that
 you can modify to accommodate your environment (such as development
@@ -52,6 +50,8 @@ Here is the list of the configuration parameters you can use in
      is overridden to "threading" to use the Flask built-in development server.<br/>
      To avoid warnings from the web socket layer when using the *debug* mode, make sure
      you install the *simple-websocket* optional package.<br/>
+     If *debug* is set to True, exceptions in user code will show the stack trace in the
+     application's console.<br/>
      You can force the *debug* mode using the *--debug* option when launching
      your application.<br/>
      Or you can force **not** to use the *debug* mode using the *--no_debug* option
@@ -207,7 +207,7 @@ Here is the list of the configuration parameters you can use in
    To run the Taipy GUI service with some other Taipy services, please refer to the
    [Running Taipy services](../run-deploy/run/running_services.md) section.
 
-## Using an external web server
+# Using an external web server
 
 Taipy user interfaces can be served by external servers. This happens when
 you already have a web application running and want to add the GUI capabilities
@@ -242,7 +242,7 @@ When *gui* is run (in line 11), Taipy will not create a server of its own.
 Instead, it will serve your GUI pages using the *flask_app* server created
 in line 4.
 
-## Protect your application files
+# Protect your application files
 
 When the `Gui^` instance runs, it creates a web server that serves the
 registered pages, with the root of the site located where the `__main__`
@@ -271,7 +271,7 @@ If a user requests a file whose path matches one that appears in `.taipyignore`
 then the Taipy web server returns an HTTP error 404 (Not Found), protecting
 your file from being downloaded without your consent.
 
-## Accessing your app from the Web
+# Accessing your app from the Web
 
 [Ngrok](https://ngrok.com/) provides a way to expose your local application
 to the public Internet. This allows anyone to access your application

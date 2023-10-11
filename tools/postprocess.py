@@ -141,6 +141,7 @@ def on_post_build(env):
                             + f"<h1{match.group(1)}>{match.group(2)}</h1>"
                             + html_content[match.end():])
                         file_was_changed = True
+                    #"""
                     # Collapse doubled <h1>/<h2> page titles
                     REPEATED_H1_H2 = re.compile(
                         r"<h1>(.*?)</h1>\s*<h2\s+(id=\".*?\")>\1(<a\s+class=\"headerlink\".*?</a>)?</h2>", re.M | re.S
@@ -148,6 +149,7 @@ def on_post_build(env):
                     html_content, n_changes = REPEATED_H1_H2.subn('<h1 \\2>\\1\\3</h1>', html_content)
                     if n_changes != 0:
                         file_was_changed = True
+                    #"""
                     # Specific processing for Getting Started documentation files
                     if "getting_started" in filename:
                         GS_H1_H2 = re.compile(r"<h1>(.*?)</h1>(.*?<h2.*?>\1)<", re.M | re.S)
@@ -392,10 +394,17 @@ def on_post_build(env):
                                 file_was_changed = True
                                 html_content = new_content + html_content[last_location:]
 
-                    # Add breadcrumbs to Taipy GUI's control, part and core element pages
+                    # Processing for visual element pages:
+                    # - Remove <tt> from title
+                    # - Add breadcrumbs to Taipy GUI's control, part and core element pages
                     fn_match = re.search(r"(/|\\)gui\1(vis|cor)elements\1(.*?)\1index.html", filename)
                     element_category = None
                     if fn_match is not None:
+                        if title_match := re.search(r"<title><tt>(.*?)</tt> - Taipy</title>", html_content):
+                            html_content = (html_content[:title_match.start()]
+                                            + f"<title>{title_match.group(1)} - Taipy</title>"
+                                            + html_content[title_match.end():])
+                            file_was_changed = True
                         if category_match := re.search(r"<!--\s+Category:\s+(\w+)\s+-->", html_content):
                             element_category = category_match[1]
                         elif re.match(r"^charts(/|\\).*$", fn_match[3]):
