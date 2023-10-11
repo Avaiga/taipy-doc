@@ -2,14 +2,14 @@ Allows uploading a file content.
 
 The upload can be triggered by pressing a button, or drag-and-dropping a file on top of the control.
 
-## Styling
+# Styling
 
 All the file selector controls are generated with the "taipy-file_selector" CSS class. You can use this class
 name to select the file selector controls on your page and apply style.
 
-## Usage
+# Usage
 
-### Default behavior
+## Default behavior
 
 The variable specified in _content_ is populated by a local filename when the transfer is completed.
 
@@ -27,7 +27,7 @@ The variable specified in _content_ is populated by a local filename when the tr
         <taipy:file_selector>{content}</taipy:file_selector>
         ```
 
-### Standard configuration
+## Standard configuration
 
 A specific _label_ can be shown besides the standard icon. 
 The function name provided as _on_action_ is called when the transfer is completed.
@@ -48,7 +48,7 @@ Upon dragging a file over the button, the _drop_message_ content is displayed as
         <taipy:file_selector on_action="function_name" extensions=".csv,.xlsx" drop_message="Drop Message">{content}</taipy:file_selector>
         ```
 
-### Multiple files upload
+## Multiple files upload
 
 The user can transfer multiple files at once by setting the _multiple_ property to True.
 

@@ -1,5 +1,3 @@
-# The Stylekit
-
 Taipy GUI comes with predefined cascading stylesheets that solidify your application's
 general look and feel. Those stylesheets also make it far easier to customize styles.</br>
 All those stylesheets are grouped in what is called the *Stylekit*.
@@ -13,11 +11,11 @@ The Stylekit provides a few useful features:
 - Utility CSS classes that can be used to make some elements appear with appealing
   attributes.
 
-## Using the Stylekit
+# Using the Stylekit
 
 The Stylekit can apply to your pages if you choose and you can customize most of its properties.
 
-### Enabling or disabling the Stylekit
+## Enabling or disabling the Stylekit
 
 By default, the Stylekit is enabled: the Stylekit stylesheets are loaded with your application
 and impact all your application's page rendering.
@@ -32,7 +30,7 @@ gui.run(stylekit=False)
 Note that setting [*stylekit*](../configuration.md#p-stylekit) to True is equivalent to using the
 default variable values of the Stylekit.
 
-### Customizing the Stylekit
+## Customizing the Stylekit
 
 The Stylekit defines a set of [variables](#variables) with default values. Those variables can be
 overloaded by setting the [*stylekit*](../configuration.md#p-stylekit) parameter of the `Gui.run()^`
@@ -52,7 +50,7 @@ gui.run(stylekit=stylekit)
 The exhaustive list of all the Stylekit variables can be found in the
 [Variables](#variables) section below.
 
-## Variables
+# Variables
 
 The Stylekit defines several variables that impact the overall style of your Taipy GUI
 application pages. The values for these variables can be overloaded by providing a dictionary
@@ -94,7 +92,7 @@ Notes:
   ```
   to one of your stylesheets.
 
-## CSS custom properties
+# CSS custom properties
 
 The Stylekit defines a set of custom properties used in style definitions to produce homogeneous
 user interfaces, allowing one to change a single property and have it propagated in all the styles.
@@ -102,7 +100,7 @@ user interfaces, allowing one to change a single property and have it propagated
 Besides the CSS custom properties derived from the [Stylekit variables](#variables), there are
 a few more that the Stylekit styles rely on.
 
-### Color
+## Color
 
 These properties are used to indicate what color to apply in styles.
 
@@ -128,7 +126,7 @@ Note that using [*--color-background*](#p-color-background), [*--color-paper*](#
 the setting of colors based on the theme the user has chosen.<br/>
 That is not the case if you explicitly use *--color-background-light*, for example.
 
-### Typography
+## Typography
 
 These properties are used to indicate what text settings to apply in styles.
 
@@ -152,7 +150,7 @@ therefore, propagated to all text sizes.<br/>
 If accessibility is not a concern in your application and you feel more comfortable setting the
 font sizes in "px", you are, of course, free to do so.
 
-### Spacing
+## Spacing
 
 These properties are used to add horizontal or vertical spacing between elements.<br/>
 They all are multiple of the base *--spacing1* variable, ensuring a natural layout.
@@ -167,7 +165,7 @@ They all are multiple of the base *--spacing1* variable, ensuring a natural layo
 | <a name="p-spacing5"></a>*--spacing5*         | `calc(var(--spacing1) * 5)`   | Quintuple of [*--spacing1*](#p-spacing1) |
 | <a name="p-spacing6"></a>*--spacing6*         | `calc(var(--spacing1) * 6)`   | Sixfold of [*--spacing1*](#p-spacing1) |
 
-### Other properties
+## Other properties
 
 There are a few more CSS custom properties that the Stylekit relies on in classes that
 can [style sections](#styled-sections):
@@ -178,12 +176,12 @@ can [style sections](#styled-sections):
 | <a name="p-element-padding"></a>*--element-padding* | `var(--spacing2)` | The inner margins of sections using the [*card*](#card) or [*sidebar*](#sidebar) classes. |
 | <a name="p-sidebar-min-width"></a>*--sidebar-min-width* | 15rem | The minimum width of sections using the [*sidebar*](#sidebar) class. |
 
-## CSS classes
+# CSS classes
 
 The Stylekit defined several pre-defined CSS classes that are based on the 
 [CSS custom properties](#css-custom-properties) described above.
 
-### Color
+## Color
 
 You can use the classes called *color_&lt;keyword&gt;* and *bg_&lt;keyword&gt;* to apply a text
 or a background color to your elements.<br/>
@@ -223,11 +221,11 @@ Here is the list of available classes:
 All these classes are defined using the "!important" priority setting, overriding all
 previous styling rules.
 
-### Typography
+## Typography
 
 Typography classes let you style text fragments.
 
-#### Headers
+### Headers
 
 You can give any text fragment a heading style using one of three methods:
 
@@ -256,7 +254,7 @@ This is how you can do the same thing in Markdown text:
 ### My heading ### {: .h5}
 ```
 
-#### Body text
+### Body text
 
 A few classes are available to style body text:
 
@@ -289,7 +287,7 @@ Notes:
 - Using specific font weights may require your application to load the appropriate fonts
   to render correctly.
 
-### Spacing
+## Spacing
 
 These Stylekit classes let you add margins and padding to elements:
 
@@ -326,7 +324,7 @@ These Stylekit classes let you add margins and padding to elements:
 All these classes are defined using the "!important" priority setting, overriding all
 previous styling rules.
 
-### Display
+## Display
 
 A few classes in the Stylekit have an impact on the CSS *display* property of the element
 they apply to:
@@ -342,7 +340,7 @@ they apply to:
 All these classes are defined using the "!important" priority setting, overriding all
 previous styling rules.
 
-### Opacity
+## Opacity
 
 The Stylekit provides a handful of CSS classes that deal with element opacity:
 
@@ -355,7 +353,7 @@ The Stylekit provides a handful of CSS classes that deal with element opacity:
 All these classes are defined using the "!important" priority setting, overriding all
 previous styling rules.
 
-## Leveraging the selected theme
+# Leveraging the selected theme
 
 The CSS custom properties are set in the `:root` selector. 
 
@@ -388,7 +386,7 @@ The same technique can be used to customize CSS classes based on the theme:
 }
 ```
 
-## Styled Sections
+# Styled Sections
 
 The Stylekit defines a few CSS classes that provide widely used styles for sections.<br/>
 Although these can be used for any visual element, they are typically applied to the
@@ -404,7 +402,7 @@ The classes that the Stylekit define for this purpose are:
 - [*header*](#header)
 - [*sidebar*](#sidebar)
 
-### `container` ###
+## `container`
 
 The *container* class prevents the block it applies to from consuming all the available space.
 
@@ -443,7 +441,7 @@ Note that we leverage the Markdown syntax to create a [`part`](../viselements/pa
 - The default property name of the *part* block is *class_name*. So `<|container container-bg|`
   is equivalent to `<|part|class_name=container container-bg|`.
 
-### `card`
+## `card`
 
 The *card* class produces an elevated block to display the section in the flow of the page.
 
@@ -475,7 +473,7 @@ Here is how the page would be rendered:
   <figcaption>The <i>card</i> section style</figcaption>
 </figure>
 
-### `header`
+## `header`
 
 The *header* class can be applied on a [`layout`](../viselements/layout.md) or a
 [`part`](../viselements/part.md) block to make it stand out from the content as an elevated bar.
@@ -512,7 +510,7 @@ Here is how the rendered page looks like:
   <figcaption>The <i>header</i> section style</figcaption>
 </figure>
 
-### `sidebar`
+## `sidebar`
 
 The *sidebar* class produces an elevated area filling the entire height of the page and standing out from the general background and content.
 
@@ -524,4 +522,3 @@ The *sidebar* class uses two custom properties:
 - [*--element-padding*](#p-element-padding): to add padding around its content.
 - [*--sidebar-min-width*](#p-sidebar-min-width): the minimum width of the section. This can be useful
   to implement a responsive design to your pages.
-

@@ -1,12 +1,12 @@
 A series of toggle buttons that the user can select.
 
-## Details
+# Details
 
 Each button is represented by a string, an image or both.
 
 You can use an arbitrary type for all the items (see the [example](#use-arbitrary-objects)).
 
-## Styling
+# Styling
 
 All the toggle controls are generated with the "taipy-toggle" CSS class. You can use this class
 name to select the toggle controls on your page and apply style.
@@ -18,10 +18,12 @@ toggle controls:
   Resets the theme toggle position in the page flow (especially for the theme mode toggle).
 - *nolabel*<br/>
   Hides the toggle control's label.
+- *taipy-navbar*<br/>
+  Gives the toggle control the look and feel of a [`navbar`](navbar.md).
 
-## Usage
+# Usage
 
-### Display a list of string
+## Display a list of string
 
 You can create a list of toggle buttons from a series of strings:
 
@@ -39,10 +41,11 @@ You can create a list of toggle buttons from a series of strings:
         <taipy:toggle lov="Item 1;Item 2;Item 3">{value}</taipy:toggle>
         ```
 
-### Unselect value
+## Unselect value
 
 In a toggle control, all buttons might be unselected. Therefore there is no value selected.
-In that case, the value of the property _unselected_value_ is assigned if specified.
+In that case, the value of the property [*unselected_value*](#p-unselected_value) is assigned if
+specified.
 
 !!! example "Page content"
 
@@ -58,7 +61,7 @@ In that case, the value of the property _unselected_value_ is assigned if specif
         <taipy:toggle lov="Item 1;Item 2;Item 3" unselected_value="No Value">{value}</taipy:toggle>
         ```
 
-### Display a list of tuples
+## Display a list of tuples
 
 A toggle control that returns an id while selecting a label or `Icon^`.
 
@@ -76,7 +79,7 @@ A toggle control that returns an id while selecting a label or `Icon^`.
         <taipy:toggle value="{sel}" lov="{[('id1', 'Label 1'), ('id2', Icon('/images/icon.png', 'Label 2'),('id3', 'Label 3')]}" />
         ```
 
-### Use arbitrary objects
+## Use arbitrary objects
 
 Assuming your Python code has created a list of objects:
 ```py3
@@ -111,9 +114,9 @@ can use the following fragment:
         <taipy:toggle lov="{users}" type="User" adapter="{lambda u: (u.id, u.name)}">{user_sel}</taipy:toggle>
         ```
 
-In this example, we are using the Python list _users_ as the toggle's _list of values_.
+In this example, we are using the Python list *users* as the toggle's *list of values*.
 Because the control needs a way to convert the list items (which are instances of the class
-_User_) into a string that can be displayed, we are using an _adapter_: a function that converts
-an object, whose type must be provided to the _type_ property, to a tuple. The first element
-of the tuple is used to reference the selection (therefore those elements should be unique
+*User*) into a string that can be displayed, we are using an *adapter*: a function that converts
+an object, whose type must be provided to the [*type*](#p-type) property, to a tuple. The first
+element of the tuple is used to reference the selection (therefore those elements should be unique
 among all the items) and the second element is the string that turns out to be displayed.

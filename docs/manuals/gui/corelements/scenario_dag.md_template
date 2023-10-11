@@ -1,6 +1,6 @@
 Displays the DAG of a scenario.
 
-## Details
+# Details
 
 When the [*scenario*](#p-scenario) property is set to an instance of `Scenario^`, the control
 displays a graphical representation of its DAG.

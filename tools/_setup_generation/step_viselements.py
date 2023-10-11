@@ -158,7 +158,7 @@ class VisElementsStep(SetupStep):
     def generate_pages(self, category: str, md_path: str) -> None:
         FIRST_PARA_RE = re.compile(r"(^.*?)(:?\n\n)", re.MULTILINE | re.DOTALL)
         # Find first level 2 or 3 header
-        FIRST_HEADER2_RE = re.compile(r"(^.*?)(\n###?\s+)", re.MULTILINE | re.DOTALL)
+        FIRST_HEADER_RE = re.compile(r"(^.*?)(\n#+\s+)", re.MULTILINE | re.DOTALL)
 
         md_template = ""
         with open(f"{md_path}_template") as template_file:
@@ -188,7 +188,7 @@ class VisElementsStep(SetupStep):
 
             # Build properties table
             properties_table = """
-## Properties\n\n
+# Properties\n\n
 <table>
 <thead>
     <tr>
@@ -235,13 +235,13 @@ class VisElementsStep(SetupStep):
                 )
 
             # Insert title and properties in element documentation
-            match = FIRST_HEADER2_RE.match(element_documentation)
+            match = FIRST_HEADER_RE.match(element_documentation)
             if not match:
                 raise ValueError(
-                    f"Couldn't locate first header2 in documentation for element '{element_type}'"
+                    f"Couldn't locate first header in documentation for element '{element_type}'"
                 )
             before_properties = match.group(1)
-            after_properties = match.group(2) + element_documentation[match.end() :]
+            after_properties = match.group(2)+element_documentation[match.end() :]
 
             # Chart hook
             if element_type == "chart":
@@ -251,9 +251,8 @@ class VisElementsStep(SetupStep):
 
             with open(f"{element_desc['doc_path']}/{element_type}.md", "w") as md_file:
                 md_file.write(
-                    "---\nhide:\n  - navigation\n---\n\n"
+                    f"---\ntitle: <tt>{element_type}</tt>\nhide:\n  - navigation\n---\n\n"
                     + f"<!-- Category: {category} -->\n"
-                    + f"# <tt>{element_type}</tt>\n\n"
                     + before_properties
                     + properties_table
                     + after_properties
@@ -291,8 +290,6 @@ class VisElementsStep(SetupStep):
     # file whose path is in self.charts_home_html_path
     # This should be inserted before the first level 1 header
     def chart_page_hook(self, element_documentation: str, before: str, after: str) -> tuple[str, str]:
-        FIRST_HEADER1_RE = re.compile(r"(^.*?)(\n#\s+)", re.MULTILINE | re.DOTALL)
-
         with open(self.charts_home_html_path, "r") as html_fragment_file:
             chart_gallery = html_fragment_file.read()
             # The chart_gallery begins with a comment where all sub-sections
@@ -311,9 +308,9 @@ class VisElementsStep(SetupStep):
             if match:
                 chart_sections += f"- [{match.group(2)}](charts/{match.group(1)}.md)\n"
 
-        match = FIRST_HEADER1_RE.match(element_documentation)
+        match = re.match(r"(^.*?)(?:\n#\s+)", element_documentation, re.MULTILINE | re.DOTALL)
         if not match:
             raise ValueError(
                 f"Couldn't locate first header1 in documentation for element 'chart'"
             )
-        return (match.group(1) + chart_gallery + match.group(2) + before[match.end() :], after + chart_sections)
+        return (match.group(1) + chart_gallery + before[match.end() :], after + chart_sections)

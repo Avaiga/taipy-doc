@@ -7,6 +7,13 @@ hide:
 This documentation page lists the migration paths of Taipy releases as they
 were published.
 
+# From 2.x to 3.0
+
+In Taipy GUI 3.0, the `on_action` callback signature was unified across all controls: the third
+parameter (*action*) was dropped. The *payload* dictionary parameter that used to be in fourth
+place is now in third place and contains an *action* key that is set to the action name if you used
+to use *action*.
+
 # From 2.0 to 2.1
 
 In Taipy version 2.1, the version management system has been introduced. For
