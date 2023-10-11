@@ -98,7 +98,7 @@ Not published yet.
 3.0.0
 
 - :warning: The *action* parameter of the `on_action` callback was removed for every control.<br/>
-  The signature of all *on_action8 callbacks is now unified to the following:
+  The signature of all *on_action()* callback functions are now unified to the following:
     - *state* (`State^`): the state of the client invoking that callback;
     - *id* (str): the identifier of the visual element that triggers that callback;
     - *payload* (dict): a dictionary that provides additional information to the callback.<br/>
