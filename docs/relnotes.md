@@ -43,7 +43,7 @@ Not published yet.
   information.
 - The [`file_download`](manuals/gui/viselements/file_download.md) control now lets developers
   generate the file content dynamically, at download time.<br/>
-  Please check the [example](manuals/gui/viselements/file_download.md/#dynamic-content) for more
+  Please check the [example](manuals/gui/viselements/file_download.md#dynamic-content) for more
   information.
 - A new CSS class called *toggle-navbar* was added to the
   [Stylekit](manuals/gui/styling/stylekit.md) to give a
