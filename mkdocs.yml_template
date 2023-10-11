@@ -7,8 +7,6 @@ repo_name: taipy
 #strict: true
 copyright: © [YEAR] Avaiga
 nav:
-  - Home:
-    - index.md
   - "Install Taipy":
     - installation/index.md
   - "Getting Started":
@@ -74,14 +72,14 @@ nav:
           - manuals/gui/index.md
           - "Pages": manuals/gui/pages.md
           - "Visual Elements":
-             - manuals/gui/viselements/index.md
+             - "Introduction to Visual Elements": manuals/gui/viselements/index.md
              - "Controls": manuals/gui/viselements/controls.md
              - "Blocks": manuals/gui/viselements/blocks.md
           - "Binding variables": manuals/gui/binding.md
           - "Callbacks": manuals/gui/callbacks.md
           - "Notifications": manuals/gui/notifications.md
           - "Styling":
-             - manuals/gui/styling/index.md
+             - "Styling": manuals/gui/styling/index.md
              - "The Stylekit": manuals/gui/styling/stylekit.md
           - "Configuration": manuals/gui/configuration.md
           - "Using Notebooks": manuals/gui/notebooks.md
