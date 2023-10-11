@@ -130,7 +130,8 @@ when dealing with data sources that don't have a predefined Taipy Data node.
 With a Generic data node, you can tailor it to access data in specific formats or from custom sources.
 
 For more detailed information and guidance on using the Generic data node 
-and customizing it to your specific needs, I recommend checking the [Taipy documentation](../../../manuals/core/config/data-node-config/#generic), 
+and customizing it to your specific needs, I recommend checking the 
+[Taipy documentation](../../../manuals/core/config/data-node-config/#generic), 
 which will provide you with step-by-step instructions and examples.
 
 Taipy integrates two other predefined storage types to work with documents. 
