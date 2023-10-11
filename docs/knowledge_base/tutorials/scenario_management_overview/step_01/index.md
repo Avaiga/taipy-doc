@@ -4,7 +4,8 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Beginner*
 
-By the end of this tutorial, you will have all the bases to create a little application using the scenario management of Taipy.
+By the end of this tutorial, you will have all the bases to create a little application using the 
+scenario management of Taipy.
 
 ![Scenario management demo](demo.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
@@ -197,7 +198,7 @@ tp.Gui(scenario_md).run()
 ```
 
 The
-[Scenario management controls](../../../../manuals/gui/viselements/controls/#scenario-management-controls)
+[Scenario management controls](../../../../manuals/gui/viselements/controls.md#scenario-management-controls)
 http://127.0.0.1:8000/en/develop/manuals/
 provide all the necessary features to access and manage scenarios and data nodes. In fact,
 creating a Scenario based application connected to your pipelines has never been simpler.
