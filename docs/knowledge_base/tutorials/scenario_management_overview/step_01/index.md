@@ -236,8 +236,7 @@ predictions_cfg = Config.configure_task("predict",
                                         predictions_cfg)
 
 # Configuration of scenario
-scenario_cfg = Config.configure_scenario(id="my_scenario", 
-                                                    task_configs=[predictions_cfg])
+scenario_cfg = Config.configure_scenario(id="my_scenario", task_configs=[predictions_cfg])
 
 Config.export('config.toml')
 
