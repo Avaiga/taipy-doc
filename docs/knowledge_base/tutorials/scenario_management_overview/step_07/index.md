@@ -1,6 +1,5 @@
-> You can download the code for
-<a href="./../src/step_07.py" download>Step 7</a> 
-or all the steps <a href="./../src/src.zip" download>here</a>. 
+> You can download the code 
+<a href="./../src/step_07.py" download>here</a>. 
 
 # Executing jobs
 
