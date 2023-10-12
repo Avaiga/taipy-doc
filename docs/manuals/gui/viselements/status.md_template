@@ -1,6 +1,6 @@
 Displays a status or a list of statuses.
 
-## Details
+# Details
 
 Every status line has a message to be displayed and a status priority.
 
@@ -21,14 +21,14 @@ When a list of statuses is provided, the status control can be expanded to show 
 status entries. Users can then remove individual statuses if [*without_close*](#p-without_close)
 is set to False (which is the default value).
 
-## Styling
+# Styling
 
 All the status controls are generated with the "taipy-status" CSS class. You can use this class
 name to select the status controls on your page and apply style.
 
-## Usage
+# Usage
 
-### Show a simple status
+## Show a simple status
 
 To show a simple `status` control, you would define a Python variable:
 
@@ -70,7 +70,7 @@ status = {
 }
 ```
 
-### Show a list of statuses
+## Show a list of statuses
 
 The `status` control can show several status items. They are initially collapsed, where the
 control shows the number of statuses with a status priority corresponding to the highest priority
@@ -125,9 +125,10 @@ has removed the third status entry:
     <figcaption>After the removal of a status</figcaption>
 </figure>
 
-### Prevent status dismissal
+## Prevent status dismissal
 
-If you don't want the user to be allowed to dismiss the displayed statuses, you can set the *without_close* property to True:
+If you don't want the user to be allowed to dismiss the displayed statuses, you can set the
+[*without_close*](#p-without_close) property to True:
 
 !!! example "Page content"
 

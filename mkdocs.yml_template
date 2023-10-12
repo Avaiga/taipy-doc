@@ -7,8 +7,6 @@ repo_name: taipy
 #strict: true
 copyright: © [YEAR] Avaiga
 nav:
-  - Home:
-    - index.md
   - "Install Taipy":
     - installation/index.md
   - "Getting Started":
@@ -22,7 +20,7 @@ nav:
             - "1 - First Web page": knowledge_base/tutorials/understanding_gui/step_01/step_01.md
             - "2 - Visual elements": knowledge_base/tutorials/understanding_gui/step_02/step_02.md
             - "3 - Interactions": knowledge_base/tutorials/understanding_gui/step_03/step_03.md
-            - "4 - Charts": knowledge_base/tutorials/understanding_gui/step_04/step_04.md
+            - "4 - Charts": knowledge_base/tutorials/understanding_gui/step_04/step_04/index.md
             - "5 - Python expressions in properties": knowledge_base/tutorials/understanding_gui/step_05/step_05.md
             - "6 - Page layouts": knowledge_base/tutorials/understanding_gui/step_06/step_06.md
             - "7 - Multi-pages, navbars, and menus": knowledge_base/tutorials/understanding_gui/step_07/step_07.md
@@ -83,14 +81,14 @@ nav:
           - manuals/gui/index.md
           - "Pages": manuals/gui/pages.md
           - "Visual Elements":
-             - manuals/gui/viselements/index.md
+             - "Introduction to Visual Elements": manuals/gui/viselements/index.md
              - "Controls": manuals/gui/viselements/controls.md
              - "Blocks": manuals/gui/viselements/blocks.md
           - "Binding variables": manuals/gui/binding.md
           - "Callbacks": manuals/gui/callbacks.md
           - "Notifications": manuals/gui/notifications.md
           - "Styling":
-             - manuals/gui/styling/index.md
+             - "Styling": manuals/gui/styling/index.md
              - "The Stylekit": manuals/gui/styling/stylekit.md
           - "Configuration": manuals/gui/configuration.md
           - "Using Notebooks": manuals/gui/notebooks.md

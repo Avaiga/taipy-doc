@@ -54,12 +54,17 @@ if __name__ == '__main__':
     date = None
     scenario_md = """
 <|{scenario}|scenario_selector|>
+
+Put a Date
 <|{date}|date|on_change=save|active={scenario}|>
+
+Run the scenario
 <|{scenario}|scenario|>
 <|{scenario}|scenario_dag|>
 
-<|Refresh|button|on_action={lambda s: s.assign("scenario", scenario)}|>
-<|{scenario.predictions.read() if scenario else ''}|>
+View all the information on your prediction here
+<|{scenario.predictions if scenario else None}|data_node|>
 """
 
     tp.Gui(scenario_md).run()
+    

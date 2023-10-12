@@ -14,14 +14,14 @@ The content can be dynamically generated when the user requests it.
 The download can be triggered when clicking on a button or can be performed automatically (see the
 [*auto* property](#p-auto)).
 
-## Styling
+# Styling
 
 All the file download controls are generated with the "taipy-file_download" CSS class. You can use this class
 name to select the file download controls on your page and apply style.
 
-## Usage
+# Usage
 
-### Default behavior
+## Default behavior
 
 Allows downloading *content* when content is a file path or some content.
 
@@ -39,7 +39,7 @@ Allows downloading *content* when content is a file path or some content.
         <taipy:file_download>{content}</taipy:file_download>
         ```
 
-### Standard configuration
+## Standard configuration
 
 The [*label*](#p-label) property can be set to specify the label used as the button text next to
 the download icon.
@@ -64,7 +64,7 @@ saving the downloaded file (depending on the browser validation rules).
         <taipy:file_download on_action="function_name"  name="filename">{content}</taipy:file_download>
         ```
 
-### Preview file in the browser
+## Preview file in the browser
 
 The file content can be visualized in the browser (if supported and in another tab) by setting
 [*bypass_preview*](#p-bypass_preview) to False.
@@ -83,7 +83,7 @@ The file content can be visualized in the browser (if supported and in another t
         <taipy:file_download bypass_preview="False">{content}</taipy:file_download>
         ```
 
-### Automatic download
+## Automatic download
 
 The file content can be downloaded automatically (when the page shows and when the content is set)
 when [*auto*](#p-auto) is set to True.
@@ -102,7 +102,7 @@ when [*auto*](#p-auto) is set to True.
         <taipy:file_download auto="True">{content}</taipy:file_download>
         ```
 
-### Dynamic content {data-source="gui:doc/examples/controls/file_download-dynamic.py"}
+## Dynamic content {data-source="gui:doc/examples/controls/file_download-dynamic.py"}
 
 There are situations when the content to be downloaded cannot or should not be ready before the
 user presses the download button.<br/>
@@ -111,7 +111,7 @@ process takes a lot of time and depends on user-defined parameters. In this situ
 want to spend time and resources generating data that may not be used after all.
 
 The property [*content*](#p-content) of the `file_download` control can be set to None to handle
-these occasions. In this case, the [*on_action*](#p-on_action) callback is invoked immediately
+these circumstances. In this case, the [*on_action*](#p-on_action) callback is invoked immediately
 after the user has pressed the download button and is in charge of generating the data then
 triggering the download operation.
 
@@ -188,7 +188,7 @@ The control definition looks like this:
         <taipy:file_download on_action="download_pi">{None}</taipy:file_download>
         ```
 
-### Content in a temporary file {data-source="gui:doc/examples/controls/file_download-dynamic-temp-file.py"}
+## Content in a temporary file {data-source="gui:doc/examples/controls/file_download-dynamic-temp-file.py"}
 
 In the previous example, we could generate and store all our data in a buffer and then send it so
 Taipy would create a data URL to handle the transfer.<br/>

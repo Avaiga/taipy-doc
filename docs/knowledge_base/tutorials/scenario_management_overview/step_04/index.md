@@ -192,7 +192,7 @@ first scenario created for a cycle is primary.
 
 ### Python code associated to primary scenarios
 
-[`tp.set_primary(<Scenario>)`](../../../../manuals/core/entities/scenario-cycle-mgt.md/#promote-a-scenario-as-primary) 
+[`tp.set_primary(<Scenario>)`](../../../../manuals/core/entities/scenario-cycle-mgt.md#promote-a-scenario-as-primary) 
 allows changing the primary scenario in a Cycle.
 
 `<Scenario>.is_primary` identifies as a boolean whether the scenario is primary or not.

@@ -1,6 +1,6 @@
 Displays a list of the Data Node entities that can be selected.
 
-## Details
+# Details
 
 The control displays a tree selector where all data node entities are listed.<br/>
 If [*display_cycles*](#p-display_cycles) is set to False, the cycles are not represented.

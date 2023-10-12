@@ -9,13 +9,12 @@ There is a simplified Markdown syntax to create a `part`, where the element name
 `<|` just before the end of the line indicates the beginning of a `part` element;
 `|>` at the beginning of a line indicates the end of the `part` definition.
 
-
-## Styling
+# Styling
 
 All the part blocks are generated with the "taipy-part" CSS class. You can use this class
 name to select the part blocks on your page and apply style.
 
-### [Stylekit](../styling/stylekit.md) support
+## [Stylekit](../styling/stylekit.md) support
 
 The [Stylekit](../styling/stylekit.md) provides specific classes that you can use to style part
 blocks:
@@ -51,9 +50,9 @@ Markdown short syntax for parts:
 Creates a `part` that has the [*card*](../styling/stylekit.md#card) class defined
 in the Stylekit.
 
-## Usage
+# Usage
 
-### Grouping controls
+## Grouping controls
 
 The most straightforward use of the `part` block is to group different visual elements in a single
 element to make it easy to manipulate.
@@ -77,7 +76,7 @@ element to make it easy to manipulate.
         </taipy:part>
         ```
 
-### Showing and hiding controls
+## Showing and hiding controls
 
 If you set the [*render*](#p-render) property to False, the `part` is not rendered
 at all:
@@ -104,7 +103,7 @@ at all:
 If the value of [*render*](#p-render) is bound to a Boolean value, the `part` will show or hide its
 elements according to the value of the bound variable.
 
-### Styling parts
+## Styling parts
 
 The default property name of the `part` block is [*class_name*](#p-class_name). This allows setting
 a CSS class to a `part` with a very simple Markdown syntax:
@@ -121,7 +120,7 @@ a CSS class to a `part` with a very simple Markdown syntax:
 This creates a `part` block that is applied the *css-class* CSS class defined in the
 application stylesheets.
 
-### Part showing a page
+## Part showing a page
 
 The content of the part can be specified as an existing page name or an URL using the *page*
 property.
@@ -169,7 +168,7 @@ Note that you may have to tune the value of the [*height*](#p-height) property s
 page  controls the layout if you omit it. This would be set to a CSS dimension value (typically
 "100%" when the part appears inside a [`layout`](layout.md) block).
 
-### Part showing a partial
+## Part showing a partial
 
 The content of the part can be specified as a `Partial^` instance using the [*partial*](#p-partial)
 property.

@@ -223,7 +223,6 @@ Learn how to use Taipy and improve your skills with the following tutorials.
 </ul>
 
 # Demos
-
 <ul class="tp-cards-list">
   <li>
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/sales_dashboard/">
@@ -472,4 +471,3 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </div> 
     </a>
   </li>
-</ul>
