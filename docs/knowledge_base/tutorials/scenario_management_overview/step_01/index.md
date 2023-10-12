@@ -1,5 +1,8 @@
-> You can download the code for this
-<a href="./../src/step_01.py" download>Tutorial</a>. 
+> You can download the code 
+<a href="/scenario_management.py" download>here</a>. Here is the 
+<a href="/scenario_management_toml.py" download>Python version</a> 
+with the 
+<a href="/config.toml" download>TOML file</a>
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Beginner*
 
@@ -92,7 +95,7 @@ Three Data Nodes are being configured (**historical_temperature**, **date_to_for
         lets you edit and view a TOML file that will be used in our code.
 
         <video controls width="400">
-            <source src="/step_01/config.mp4" type="video/mp4">
+            <source src="./config.mp4" type="video/mp4">
         </video>
 
         To use this configuration in our code (`main.py` for example), we must load it and 
@@ -100,7 +103,7 @@ Three Data Nodes are being configured (**historical_temperature**, **date_to_for
         scenarios.
 
         ```python
-        Config.load('config_01.toml')
+        Config.load('config.toml')
 
         # my_scenario is the id of the scenario configured
         scenario_cfg = Config.scenarios['my_scenario']
