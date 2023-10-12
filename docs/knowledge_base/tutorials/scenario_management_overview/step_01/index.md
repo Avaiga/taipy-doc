@@ -1,6 +1,5 @@
-> You can download the code for
-<a href="./../src/step_01.py" download>Step 1</a> 
-or all the steps <a href="./../src/src.zip" download>here</a>. 
+> You can download the code for this
+<a href="./../src/step_01.py" download>Tutorial</a>. 
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Beginner*
 
