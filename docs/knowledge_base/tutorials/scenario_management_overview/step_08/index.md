@@ -1,25 +1,22 @@
-> You can download the code for
-<a href="./../src/step_08.py" download>Step 8</a> 
-or all the steps <a href="./../src/src.zip" download>here</a>. 
-
-# Comparing scenarios
+> You can download the code 
+<a href="./../src/step_08.py" download>here</a>. 
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Advanced*
 
-![](config_08.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![](config.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 Taipy offers a way to compare data nodes across scenarios by including a function directly in the configuration of the scenario.
 
 ## Step 1: The first step consists in declaring on which data nodes to apply the comparison functions:
 
-In this example, we want to apply a comparison to the '_output_' Data Node. It is indicated in the comparators parameter of the `configure_scenario()`.
+In this example, we want to apply a comparison to the '_output_' Data Node. It is indicated in the comparators parameter of the `configure_scenario`.
 
 ```python
 scenario_cfg = Config.configure_scenario(id="multiply_scenario",
-                                                    name="my_scenario",
-                                                    tasks_configs=[first_task_cfg,
-                                                                   second_task_cfg],
-                                                    comparators={output_data_node_cfg.id: compare_function},)
+                                         name="my_scenario",
+                                         tasks_configs=[first_task_cfg,
+                                                        second_task_cfg],
+                                         comparators={output_data_node_cfg.id: compare_function},)
 ```
 ## Step 2: Implement the comparison function (`compare_function()`) used above.
 
@@ -40,7 +37,7 @@ def compare_function(*data_node_results):
     return compare_result
 ```
 
-Now, the `compare_scenarios()` can be used within Taipy.
+Now, the `compare_scenarios` can be used within Taipy.
 
 ```python
 tp.Core().run()
@@ -62,7 +59,6 @@ Results:
 ```
 
 # Entire code
-
 
 ```python
 from taipy.core.config import Config, Frequency
@@ -111,9 +107,9 @@ def compare_function(*data_node_results):
 
 
 scenario_cfg = Config.configure_scenario(id="multiply_scenario",
-                                                    name="my_scenario",
-                                                    task_configs=[first_task_cfg, second_task_cfg],
-                                                    comparators={output_cfg.id: compare_function})
+                                         name="my_scenario",
+                                         task_configs=[first_task_cfg, second_task_cfg],
+                                         comparators={output_cfg.id: compare_function})
 
 
 if __name__=="__main__":
@@ -129,6 +125,4 @@ if __name__=="__main__":
     scenario_2.submit()
     
     print(tp.compare_scenarios(scenario_1, scenario_2))
-
-    tp.Rest().run()
 ```
