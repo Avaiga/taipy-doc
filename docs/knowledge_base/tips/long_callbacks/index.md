@@ -15,7 +15,17 @@ and shows how they can improve the user experience.
 Imagine a situation where a callback starts a duty that requires a lot of resources and time to finish. 
 To make this work, we can use a straightforward approach:
 
-![Executing a time-consuming work in the Background](long_running_callbacks_2.png){width=100%}
+```py
+from taipy.gui import State, invoke_long_callback, notify
+ 
+def heavy_function(...):
+    # Do something that takes time...
+    ...
+ 
+def on_action(state):
+    notify(state, &quot;info&quot;, &quot;Heavy task started&quot;)
+    invoke_long_callback(state, heavy_function, [...heavy_function arguments...])
+```
 
 In the previous example, the Taipy function called `invoke_long_callback()^` manages the resource-intensive task. 
 It sets up a separate background thread to run the `heavy_function()`, allowing the rest of the application to continue running. 
@@ -26,7 +36,19 @@ The `on_action` function gets activated by a user action, like clicking a button
 Moreover, you can send notifications to the user's browser or update visual elements depending on the status of the ongoing process. 
 Taipy offers a way to receive notifications when the task is complete, as shown below:
 
-![Monitoring Task Status](long_running_callbacks_3.png){width=100%}
+```py
+...
+ 
+def heavy_function_status(state, status):
+    if status:
+        notify(state, &quot;success&quot;, &quot;The heavy task has finished!&quot;)
+    else:
+        notify(state, &quot;error&quot;, &quot;The heavy task has failed&quot;)
+ 
+def on_action(state, id, action):
+    invoke_long_callback(state, heavy_function, [...heavy_function arguments...],
+                         heavy_function_status)
+```
 
 In this example, we introduce the *heavy_function_status()* function, which is invoked by the `invoke_long_callback()^` method. 
 When the callback is finished, this function is called. 
@@ -38,7 +60,15 @@ on whether the processing was successful or not.
 
 To update the State according to the returned value from *heavy_function()*, you can modify *heavy_function_status()* as follows:
 
-![Updating the Application State](long_running_callbacks_4.png){width=100%}
+```py
+def heavy_function_status(state, status, result):
+    if status:
+        notify(state, &quot;success&quot;, &quot;The heavy task has finished!&quot;)
+        # Actualize the State with the function result
+        state.result = result
+    else:
+        notify(state, &quot;error&quot;, &quot;The heavy task has failed&quot;)
+```
 
 We added a parameter called *result*, which represents the return value of the *heavy_function()*. When the *heavy_function()* 
 completes successfully (*status* is True), 
@@ -47,7 +77,12 @@ This allows you to access the result in other parts of your application or displ
 
 Make sure that the *heavy_function()* returns a value. For example:
 
-![Updating the Application State](long_running_callbacks_5.png){width=100%}
+
+```py
+def heavy_function(...):
+    ...
+    return result
+```
 
 When you update the State with the result of the *heavy_function()*, you make sure that the user interface shows 
 the result of the resource-intensive task. 
@@ -58,7 +93,23 @@ This creates a smooth and seamless user experience.
 Occasionally, it's useful to give regular updates on the progress of a long-running task. Taipy's `invoke_long_callback()^` 
 provides a convenient method to accomplish this:
 
-![Tracking Task Progress](long_running_callbacks_6.png){width=100%}
+```py
+...
+ 
+def heavy_function_status(state, status):
+    if isinstance(status, bool):
+        if status:
+            notify(state, &quot;success&quot;, &quot;The heavy task has finished!&quot;)
+        else:
+            notify(state, &quot;error&quot;, &quot;The heavy task has failed somehow.&quot;)
+    else:
+        notify(state, &quot;info&quot;, &quot;The heavy task is still running...&quot;)
+ 
+def on_action(state):
+    invoke_long_callback(state, heavy_function, [...heavy_function arguments...],
+                         heavy_function_status, [...heavy_function_status arguments...],
+                         5000)
+```
 
 In the code above, when you include a *period* parameter, the *heavy_function_status()* function will be regularly activated 
 at the set interval, such as every 5 seconds. 
