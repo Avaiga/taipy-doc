@@ -1,5 +1,5 @@
 > You can download the code 
-<a href="./../src/step_09.py" download>here</a>. 
+<a href="/scenario_subscription.py" download>here</a>. 
 
 # Subscribing to a scenario
 
@@ -158,7 +158,7 @@ scenario_cfg = Config.configure_scenario(id="my_scenario",
                                           name="my_scenario")
 
 
-Config.export("config_09.toml")
+Config.export("config.toml")
 
 if __name__=="__main__":
     tp.Core().run()

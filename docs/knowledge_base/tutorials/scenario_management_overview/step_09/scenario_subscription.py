@@ -85,4 +85,3 @@ if __name__=="__main__":
 <|{scenario_1}|scenario|on_submission_change=on_submission_status_change|>
 """
     Gui(scenario_md).run()
-
