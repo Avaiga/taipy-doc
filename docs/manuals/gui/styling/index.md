@@ -1,5 +1,3 @@
-# Styling
-
 As mentioned several times, page content is parsed and converted to be sent
 to the user's browser. The final page content actually is pure HTML that one can apply
 some style to, providing the best user experience.
@@ -14,7 +12,7 @@ development of specific styles to apply to pages.<br/>
 The Stylekit is documented in the [Stylekit section](stylekit.md) of this documentation,
 where you can find all the information on how to use and customize it.
 
-## Style sheets
+# Style sheets
 
 There are two ways you can apply a stylesheet to your application:
 
@@ -31,12 +29,12 @@ There are two ways you can apply a stylesheet to your application:
 Beside explicit style sheets, you can also modify the global theme, as
 described in the [section on Themes](#themes).
 
-## Applying style
+# Applying style
 
 Once the style sheets are set for the application, you can start learning about
 how styles can be applied to pages.
 
-### Global styles
+## Global styles
 
 As in any web application, the root element (`:root`) is available for global
 style settings.<br/>
@@ -50,7 +48,7 @@ font size, you could write:
 And all pages will appear twice as big.
 
 
-### Styling Markdown
+## Styling Markdown
 
 Thanks to the [*Attribute Lists*](https://python-markdown.github.io/extensions/attr_list/)
 extension, the Markdown text can hold attributes used for styling.
@@ -109,7 +107,7 @@ Please check the documentation for the *Attribute Lists* extension for more info
     uses &lt;div&gt; tags. This allows more complex structures in pages,
     such as elements within elements.
 
-### Main page style
+## Main page style
 
 The top-most element of the generated page is a &lt;div&gt; element with
 the 'id' attribute set to "root".
@@ -117,12 +115,12 @@ the 'id' attribute set to "root".
 If you need to reference the top-most element of your page, you 
 can select it in your CSS stylesheets using the selector: `div#root`.
 
-### Visual elements-specific styles
+## Visual elements-specific styles
 
 You can apply some style to any visual element you have added to
 your pages.
 
-#### Using CSS classes
+### Using CSS classes
 
 Every visual element is assigned a CSS class that depends on the type
 of the element.<br/>
@@ -170,7 +168,7 @@ a space character:
 This Markdown fragment gets converted into an HTML element with three CSS classes
 assigned: *taipy-button*, *option*, and *testing*.
 
-#### Using the HTML 'id' attribute
+### Using the HTML 'id' attribute
 
 You can use the *id* property of all visual elements to generate an
 HTML id that can be used by CSS styling.
@@ -206,7 +204,7 @@ capitalize the text of buttons.
   </div>
 
 
-## Themes
+# Themes
 
 The visual elements that Taipy GUI generates are extensions of
 [Material UI](https://mui.com/) components. This components library has great
@@ -253,5 +251,3 @@ See the impact of setting this custom theme:
     <figcaption>Themed button</figcaption>
     </figure>
   </div>
-
-

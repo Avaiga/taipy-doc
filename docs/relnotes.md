@@ -33,15 +33,25 @@ Not published yet.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 3.0.0
 
-- TODO
-- The [`file_download` control](manuals/gui/viselements/file_download.md) now lets developers
-  generate the file content dynamically, at download time.<br/>
-  Please check the [example](manuals/gui/viselements/file_download.md/#dynamic-content) for more
+- Builder API - TODO
+- You can now update variables on all clients using the *shared variables* concept. See
+  the `Gui.add_shared_variable()^` and `State.dispatch()^` methods for details.
+- You can now invoke a callback for all clients using the `broadcast_callback()^` function.
+- The [`slider`](manuals/gui/viselements/slider.md) control can now handle several knobs, allowing
+  for range selection.<br/>
+  Please check the [example](manuals/gui/viselements/slider.md##multi-selection) for more
   information.
-- Sliders with multiple knobs
-- dispatch()
-- Builder API
-
+- The [`file_download`](manuals/gui/viselements/file_download.md) control now lets developers
+  generate the file content dynamically, at download time.<br/>
+  Please check the [example](manuals/gui/viselements/file_download.md#dynamic-content) for more
+  information.
+- A new CSS class called *toggle-navbar* was added to the
+  [Stylekit](manuals/gui/styling/stylekit.md) to give a
+  [`toggle`](manuals/gui/viselements/toggle.md) control the aspect of a
+  [`navbar`](manuals/gui/viselements/navbar.md).
+- The [`chart`](manuals/gui/viselements/chart.md) control now supports the
+  [*treemap*](manuals/gui/viselements/charts/treemap.md) and
+  [*waterfall*](manuals/gui/viselements/charts/waterfall.md) chart types.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 3.0.0
@@ -87,6 +97,29 @@ Not published yet.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 3.0.0
 
+- :warning: The *action* parameter of the `on_action` callback was removed for every control.<br/>
+  The signature of all *on_action()* callback functions are now unified to the following:
+    - *state* (`State^`): the state of the client invoking that callback;
+    - *id* (str): the identifier of the visual element that triggers that callback;
+    - *payload* (dict): a dictionary that provides additional information to the callback.<br/>
+      This dictionary now has the additional *action* key that is set to the action name.
+  This change not only impact the *on_action* callback of all controls that support it, but in
+  an exactly similar manner the following callback signatures:
+     - *on_range_change* in the [`chart`](manuals/gui/viselements/chart.md) control;
+     - *on_edit*, *on_add*, and *on_delete* in the [`table`](manuals/gui/viselements/table.md)
+       control;
+     - *on_close* in the [`pane`](manuals/gui/viselements/pane.md) block.
+- The `navigate()^` function has an additional parameter *params* that is used to add query
+  parameters to the requested URL. The query parameters can be retrieved in the `on_navigate`
+  callback.
+- The *on_action* parameter of the `download()^` function can be a function and not just a function
+  name.
+- Setting the *debug* parameter of `Gui.run()^` to True provides stack traces to be shown in the
+  console when exceptions occur in user code.
+
+<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
+3.0.0
+
 - A `ScenarioConfig^` graph is now created directly from `TaskConfig^` and
   `DataNodeConfig^`. Consequently, `PipelineConfig` has been removed. For more
   information, refer to [Configure a scenario](./manuals/core/config/scenario-config.md).
@@ -125,7 +158,37 @@ Not published yet.
 
 - The callback function set to the *on_action* parameter of the function `download()^` may
   be called too early. It is now ensured to be invoked *after* the download operation is
-  performed.
+  performed.<br/>
+  See [issue #916](https://github.com/Avaiga/taipy-gui/issues/916).
+- Setting the [*properties*](manuals/gui/viselements/index.md#generic-properties) property of
+  a visual element as the returned value from a function may not succeed.</br>
+  See [issue #897](https://github.com/Avaiga/taipy-gui/issues/897).
+- Variables imported by an `import *` directive are not handled properly in the state of
+  a callback defined in the importing module.</br>
+  See [issue #908](https://github.com/Avaiga/taipy-gui/issues/908).
+- The [`date`](manuals/gui/viselements/date.md) control does not use the *format* property if
+  *with_time* is not set.<br/>
+  See [issue #909](https://github.com/Avaiga/taipy-gui/issues/909).
+- The [`date`](manuals/gui/viselements/date.md) control uses the `datetime.date` type and does not
+  apply tiem zones if time is not involved.<br/>
+  See [issue #895](https://github.com/Avaiga/taipy-gui/issues/895) and
+  [issue #923](https://github.com/Avaiga/taipy-gui/issues/923).
+- Updating a [`chart`](manuals/gui/viselements/chart.md) control data may cause data congestion or
+  display flickering.<br/>
+  See [issue #864](https://github.com/Avaiga/taipy-gui/issues/864) and
+  [issue #932](https://github.com/Avaiga/taipy-gui/issues/932).
+- Selection in a [`chart`](manuals/gui/viselements/chart.md) with type *pie* type is not properly
+  handled.<br/>
+  See [issue #919](https://github.com/Avaiga/taipy-gui/issues/919).
+- Hover text doesn't show properly in a [`selector`](manuals/gui/viselements/selector.md) that is
+  crowded.<br/>
+  See [issue #927](https://github.com/Avaiga/taipy-gui/issues/927).
+- Options with a long text in a [`selector`](manuals/gui/viselements/selector.md) cannot be
+  deselected.<br/>
+  See [issue #917](https://github.com/Avaiga/taipy-gui/issues/917).
+- The [`table`](manuals/gui/viselements/toggle.md) control does not support undefined date values
+  from Pandas data frames.<br/>
+  See [issue #886](https://github.com/Avaiga/taipy-gui/issues/886).
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 3.0.0
@@ -138,8 +201,8 @@ Not published yet.
 
 Not published yet.
 
-This release contains all of [`taipy` 3.0](Link to Taipy pypi)
-as well as additional features.
+This release contains all of [`taipy` 3.0](https://pypi.org/project/taipy/3.0.0) as well as
+additional features.
 
 ### New Features
 

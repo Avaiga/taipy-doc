@@ -8,12 +8,12 @@ A filtering feature is available to display only a subset of the items.
 
 You can use an arbitrary type for all the items (see the [example](#binding-to-a-list-of-objects)).
 
-## Styling
+# Styling
 
 All the selector controls are generated with the "taipy-selector" CSS class. You can use this class
 name to select the selector controls on your page and apply style.
 
-### [Stylekit](../styling/stylekit.md) support
+## [Stylekit](../styling/stylekit.md) support
 
 The [Stylekit](../styling/stylekit.md) provides a specific class that you can use to style selector controls:
 
@@ -21,9 +21,9 @@ The [Stylekit](../styling/stylekit.md) provides a specific class that you can us
     If a selector control uses the *fullwidth* class, then it uses the whole available
     horizontal space.
 
-## Usage
+# Usage
 
-### Display a list of string
+## Display a list of string
 
 You can create a selector on a series of strings:
 
@@ -41,7 +41,7 @@ You can create a selector on a series of strings:
         <taipy:selector lov="Item 1;Item 2;Item 3">{value}</taipy:selector>
         ```
 
-### Display as a dropdown
+## Display as a dropdown
 
 !!! example "Page content"
 
@@ -58,7 +58,7 @@ You can create a selector on a series of strings:
         ```
 
 
-### Display with filter and multiple selection
+## Display with filter and multiple selection
 
 You can add a filter input field that lets you display only strings that match the filter value.
 
@@ -77,7 +77,7 @@ You can add a filter input field that lets you display only strings that match t
         ```
 
 
-### Display a list of tuples
+## Display a list of tuples
 
 A selector control that returns an id while selecting a label or `Icon^`.
 
@@ -95,10 +95,10 @@ A selector control that returns an id while selecting a label or `Icon^`.
         <taipy:selector value="{sel}" lov="{[('id1', 'Label 1'), ('id2', Icon('/images/icon.png', 'Label 2'),('id3', 'Label 3')]}" />
         ```
 
-### Display a list of objects
+## Display a list of objects
 
 Assuming your Python code has created a list of object:
-```py3
+```py
 class User:
     def __init__(self, id, name, birth_year):
         self.id, self.name, self.birth_year = (id, name, birth_year)
@@ -130,9 +130,9 @@ can use the following fragment.
         <taipy:selector lov="{users}" type="User" adapter="{lambda u: (u.id, u.name)}">{user_sel}</taipy:selector>
         ```
 
-In this example, we are using the Python list _users_ as the selector's _list of values_.
+In this example, we are using the Python list *users* as the selector's *list of values*.
 Because the control needs a way to convert the list items (which are instances of the class
-_User_) into a string that can be displayed, we are using an _adapter_: a function that converts
-an object, whose type must be provided to the _type_ property, to a tuple. The first element
+*User*) into a string that can be displayed, we are using an *adapter*: a function that converts
+an object, whose type must be provided to the *type* property, to a tuple. The first element
 of the tuple is used to reference the selection (therefore those elements should be unique
 among all the items) and the second element is the string that turns out to be displayed.

@@ -47,7 +47,7 @@ the default configuration applies if some values are not provided.
 
         Below is the Python code corresponding to the design above.
 
-        ```py linenums="1" title="my_config.py"
+        ```python linenums="1" title="my_config.py"
         from datetime import datetime
         from my_functions import write_orders_plan, compare, plan, predict, train
         from taipy import Config, Frequency, Scope
@@ -116,7 +116,7 @@ the default configuration applies if some values are not provided.
 
         The following module "my_function" is imported in the Python configuration.
 
-        ```py linenums="1" title="my_functions.py"
+        ```python linenums="1" title="my_functions.py"
         import pandas as pd
 
         def write_orders_plan(data: pd.DataFrame):
@@ -252,7 +252,7 @@ the default configuration applies if some values are not provided.
 Taipy also provides file configuration. Indeed, a _TOML_ file can be explicitly provided by the developer to the Taipy
 application using Python coding such as:
 
-```py linenums="1"
+```python linenums="1"
 from taipy import Config
 
 Config.override("config.toml")
@@ -305,7 +305,7 @@ and refer to it with the following Taipy configuration:
 
 === "Python configuration"
 
-    ```py linenums="1"
+    ```python linenums="1"
     from taipy import Config
 
     Config.configure_global_app(password="ENV[PWD]", max_nb_users="ENV[NB_USERS]")

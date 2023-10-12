@@ -7,35 +7,32 @@ repo_name: taipy
 #strict: true
 copyright: © [YEAR] Avaiga
 nav:
-  - Home:
-    - index.md
   - "Install Taipy":
     - installation/index.md
   - "Getting Started":
     - getting_started/index.md
   - "Knowledge Base":
-    - knowledge_base/index.md
+    - "Knowledge Base": knowledge_base/index.md
     - "Tutorials":
         - knowledge_base/tutorials/index.md
         - "Understanding GUI":
-            - knowledge_base/tutorials/understanding_gui/index.md
+            - "Understanding GUI": knowledge_base/tutorials/understanding_gui/index.md
             - "1 - First Web page": knowledge_base/tutorials/understanding_gui/step_01/step_01.md
             - "2 - Visual elements": knowledge_base/tutorials/understanding_gui/step_02/step_02.md
             - "3 - Interactions": knowledge_base/tutorials/understanding_gui/step_03/step_03.md
-            - "4 - Charts": knowledge_base/tutorials/understanding_gui/step_04/step_04.md
+            - "4 - Charts": knowledge_base/tutorials/understanding_gui/step_04/step_04/index.md
             - "5 - Python expressions in properties": knowledge_base/tutorials/understanding_gui/step_05/step_05.md
             - "6 - Page layouts": knowledge_base/tutorials/understanding_gui/step_06/step_06.md
             - "7 - Multi-pages, navbars, and menus": knowledge_base/tutorials/understanding_gui/step_07/step_07.md
         - "Scenario management Overview":
-            - knowledge_base/tutorials/scenario_management_overview/index.md
+            - "Scenario management Overview": knowledge_base/tutorials/scenario_management_overview/index.md
             - "1 - Scenario config and run": knowledge_base/tutorials/scenario_management_overview/step_01/step_01.md
-            - "2 - Data Node types": knowledge_base/tutorials/scenario_management_overview/step_02/step_02.md
-            - "3 - Cycles": knowledge_base/tutorials/scenario_management_overview/step_03/step_03.md
-            - "4 - Scopes": knowledge_base/tutorials/scenario_management_overview/step_04/step_04.md
-            - "5 - Skipping tasks": knowledge_base/tutorials/scenario_management_overview/step_05/step_05.md
-            - "6 - Execution modes": knowledge_base/tutorials/scenario_management_overview/step_06/step_06.md
-            - "7 - Scenario comparison": knowledge_base/tutorials/scenario_management_overview/step_07/step_07.md
-            - "8 - Scenario subscription": knowledge_base/tutorials/scenario_management_overview/step_08/step_08.md
+            - "4 - Cycles": knowledge_base/tutorials/scenario_management_overview/step_04/step_04.md
+            - "5 - Scopes": knowledge_base/tutorials/scenario_management_overview/step_05/step_05.md
+            - "6 - Skipping tasks": knowledge_base/tutorials/scenario_management_overview/step_06/step_06.md
+            - "7 - Execution modes": knowledge_base/tutorials/scenario_management_overview/step_07/step_07.md
+            - "8 - Scenario comparison": knowledge_base/tutorials/scenario_management_overview/step_08/step_08.md
+            - "9 - Scenario subscription": knowledge_base/tutorials/scenario_management_overview/step_09/step_09.md
         - "Build a complete application":
             - "Build a complete application": knowledge_base/tutorials/complete_application/index.md
             - "1 - Data visualization page": knowledge_base/tutorials/complete_application/step_01/step_01.md
@@ -44,28 +41,38 @@ nav:
             - "4 - Scenario page": knowledge_base/tutorials/complete_application/step_04/step_04.md
             - "5 - Performance page": knowledge_base/tutorials/complete_application/step_05/step_05.md
         - "Markdown Syntax": knowledge_base/tutorials/markdown_syntax.md
-        - "Data Dashboard": knowledge_base/tutorials/data-dashboard.md
+        - "Data Dashboard": knowledge_base/tutorials/data_dashboard.md
         - "Changing Line Types Using Charts": knowledge_base/tutorials/charts.md
         - "Manage Multiple Graphical Pages": knowledge_base/tutorials/graphical_pages.md
         - "Partials in Taipy": knowledge_base/tutorials/partials.md
         - "Manage Data Pipelines with Scenarios": knowledge_base/tutorials/data_pipelines.md
         - "Data Nodes and Tasks": knowledge_base/tutorials/data_nodes.md
     - "Demos":
-        - knowledge_base/demos/index.md
+        - "Demos": knowledge_base/demos/index.md
         - "Sales Dashboard": knowledge_base/demos/sales_dashboard.md
         - "Tweet generation": knowledge_base/demos/tweet_generation.md
         - "Face Recognition": knowledge_base/demos/face_recognition.md
         - "Sentiment Analysis": knowledge_base/demos/sentiment_analysis.md
+        - "Optimize Bar Cut Sizes": knowledge_base/demos/bar_cutting.md
         - "Image Classification": knowledge_base/demos/image_classif.md
         - "Churn Classification": knowledge_base/demos/churn_classification.md
-        - "Production Planning": knowledge_base/demos/production-planning.md
-        - "Stock Visualization": knowledge_base/demos/stock-visualization.md
+        - "Production Planning": knowledge_base/demos/production_planning.md
+        - "Stock Visualization": knowledge_base/demos/stock_visualization.md
         - "COVID Dashboard": knowledge_base/demos/covid_dashboard.md
         - "Movie genre selector": knowledge_base/demos/movie_genre_selector.md
     - "Tips and tricks":
-        - knowledge_base/tips/index.md
+        - "Tips and tricks": knowledge_base/tips/index.md
         - "Jupyter Notebooks": knowledge_base/tips/jupyter_notebooks/index.md
-        - "Long Running Callbacks": knowledge_base/tips/long_callbacks/index.md
+        - "Skippable Tasks": knowledge_base/tips/skippable_tasks/index.md
+        - "Taipy Cloud": knowledge_base/tips/taipy_cloud_deploy/index.md
+        - "Stylekit": knowledge_base/tips/css_style_kit/index.md
+        - "Data Nodes": knowledge_base/tips/the_data_nodes/index.md
+        - "Using Tables": knowledge_base/tips/using_tables/index.md
+        - "Multi-page Application": knowledge_base/tips/multipage_application/index.md
+        - "Long Running Callbacks": knowledge_base/tips/long_running_callbacks/index.md
+        - "Taipy Application on Colab with Ngrok": knowledge_base/tips/colab_with_ngrok/index.md
+        - "Scenarios": knowledge_base/tips/scenarios/index.md
+        - "Callbacks in Taipy": knowledge_base/tips/the_on_change_callback/index.md
   - "Manuals":
     - manuals/index.md
     - "User Manuals":
@@ -74,14 +81,14 @@ nav:
           - manuals/gui/index.md
           - "Pages": manuals/gui/pages.md
           - "Visual Elements":
-             - manuals/gui/viselements/index.md
+             - "Introduction to Visual Elements": manuals/gui/viselements/index.md
              - "Controls": manuals/gui/viselements/controls.md
              - "Blocks": manuals/gui/viselements/blocks.md
           - "Binding variables": manuals/gui/binding.md
           - "Callbacks": manuals/gui/callbacks.md
           - "Notifications": manuals/gui/notifications.md
           - "Styling":
-             - manuals/gui/styling/index.md
+             - "Styling": manuals/gui/styling/index.md
              - "The Stylekit": manuals/gui/styling/stylekit.md
           - "Configuration": manuals/gui/configuration.md
           - "Using Notebooks": manuals/gui/notebooks.md
@@ -210,7 +217,7 @@ theme:
   font:
     text: Lato
   icon:
-    logo: taipy-logo
+    logo: taipy-logo-icon
     repo: fontawesome/brands/git-alt
   palette:
     - media: "(prefers-color-scheme: light)"
