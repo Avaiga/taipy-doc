@@ -1,4 +1,3 @@
-# Long Running Callbacks
 
 Tasks in web applications can take a lot of time, which can lead to problems with communication between 
 the server (Python application) and the client (web browser).
