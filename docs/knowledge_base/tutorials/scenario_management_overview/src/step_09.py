@@ -9,8 +9,6 @@ def double(nb):
     return nb * 2
 
 def add(nb):
-    print("Wait 10 seconds in add function")
-    time.sleep(10)
     return nb + 10
 
 
@@ -40,16 +38,17 @@ def callback_scenario_state(scenario, job):
         scenario (Scenario): the scenario of the job changed
         job (_type_): the job that has its status changed
     """
-    print(scenario.name)
+    print(f'{job.id} to {job.status}')
+
     if job.status == Status.COMPLETED:
         for data_node in job.task.output.values():
-            print(data_node.read())
+            print("Data node value:", data_node.read())
 
 # Configuration of scenario
 scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                                    task_configs=[first_task_cfg,
+                                         task_configs=[first_task_cfg,
                                                                   second_task_cfg],
-                                                    name="my_scenario")
+                                          name="my_scenario")
 
 
 Config.export("config_09.toml")
@@ -60,7 +59,30 @@ if __name__=="__main__":
     scenario_1.subscribe(callback_scenario_state)
 
     scenario_1.submit(wait=True)
-    
-    tp.Rest().run()
 
+
+from taipy.gui import Gui, notify
+
+def on_submission_status_change(state=None, submittable=None, details=None):
+    submission_status = details.get('submission_status')
+
+    if submission_status == 'COMPLETED':
+        print(f"{submittable.name} has completed.")
+        notify(state, 'success', 'Completed!')
+        # Add additional actions here, like updating the GUI or logging the completion.
+    
+    elif submission_status == 'FAILED':
+        print(f"{submittable.name} has failed.")
+        notify(state, 'error', 'Completed!')
+        # Handle failure, like sending notifications or logging the error.
+    
+    # Add more conditions for other statuses as needed.
+
+
+
+if __name__=="__main__":
+    scenario_md = """
+<|{scenario_1}|scenario|on_submission_change=on_submission_status_change|>
+"""
+    Gui(scenario_md).run()
 
