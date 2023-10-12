@@ -97,7 +97,7 @@ def on_submission_status_change(state, submittable, details):
 
 When creating a GUI for your scenarios, you can associate this function with a visual element for real-time updates. For example:
 
-```html
+```
 <|{scenario}|scenario|on_submission_change=on_submission_status_change|>
 ```
 
