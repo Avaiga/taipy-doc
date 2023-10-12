@@ -55,7 +55,7 @@ JOB_add_... to Status.COMPLETED
 Data node value: 52
 ```
 
-### Real-time feedback on the GUI
+## Real-time feedback on the GUI
 
 The `on_submission_change` property extends this functionality in a 
 GUI setting. It triggers a specific function upon each 
@@ -64,13 +64,13 @@ ensures that users are always informed of the current status, from SUBMITTED to
 COMPLETED or CANCELED, enhancing user experience through immediate feedback and 
 interaction.
 
-### Parameters of the Function
+## Parameters of the Function
 
 - `state (State)`: The state instance.
 - `submittable (Submittable)`: The entity, usually a Scenario, that was submitted.
 - `details (dict)`: Details on this callback's invocation, including the new status of the submission and the Job causing the status change.
 
-### Handling Different Submission Statuses
+## Handling Different Submission Statuses
 
 Here’s an example of how you can use this property in your code:
 
@@ -93,7 +93,7 @@ def on_submission_status_change(state, submittable, details):
     # Add more conditions for other statuses as needed.
 ```
 
-### Implementing in GUI
+## Implementing in GUI
 
 When creating a GUI for your scenarios, you can associate this function with a visual element for real-time updates. For example:
 
@@ -128,14 +128,14 @@ output_cfg = Config.configure_data_node("output")
 
 # Configuration of tasks
 first_task_cfg = Config.configure_task("double",
-                                    double,
-                                    input_cfg,
-                                    intermediate_cfg)
+                                       double,
+                                       input_cfg,
+                                       intermediate_cfg)
 
 second_task_cfg = Config.configure_task("add",
-                                    add,
-                                    intermediate_cfg,
-                                    output_cfg)
+                                        add,
+                                        intermediate_cfg,
+                                        output_cfg)
 
 
 def callback_scenario_state(scenario, job):
@@ -153,12 +153,9 @@ def callback_scenario_state(scenario, job):
 
 # Configuration of scenario
 scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                         task_configs=[first_task_cfg,
-                                                                  second_task_cfg],
-                                          name="my_scenario")
+                                         task_configs=[first_task_cfg, second_task_cfg],
+                                         name="my_scenario")
 
-
-Config.export("config.toml")
 
 if __name__=="__main__":
     tp.Core().run()
@@ -184,7 +181,6 @@ def on_submission_status_change(state=None, submittable=None, details=None):
         # Handle failure, like sending notifications or logging the error.
     
     # Add more conditions for other statuses as needed.
-
 
 
 if __name__=="__main__":
