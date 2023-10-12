@@ -1,5 +1,5 @@
 > You can download the code 
-<a href="./../src/step_08.py" download>here</a>. 
+<a href="/scenario_comparison.py" download>here</a>. 
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Advanced*
 
