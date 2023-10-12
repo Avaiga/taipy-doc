@@ -36,18 +36,12 @@ Now, without any more delay, let's get started with the coding!
 
 # Concepts
 
-1. [Scenario configuration and run](step_01/step_01.md)
+1. [Scenario configuration and run](step_01/index.md)
 
-3. [Data Node types](step_03/step_03.md)
+2. [Cycles & Scopes](step_04/index.md)
 
-4. [Cycles](step_04/step_04.md)
+3. [Execution modes](step_07/index.md)
 
-5. [Scopes](step_05/step_05.md)
+4. [Scenario comparison](step_08/index.md)
 
-6. [Skipping tasks](step_06/step_06.md)
-
-7. [Execution modes](step_07/step_07.md)
-
-8. [Scenario comparison](step_08/step_08.md)
-
-9. [Scenario subscription](step_09/step_09.md)
+5. [Scenario subscription](step_09/index.md)

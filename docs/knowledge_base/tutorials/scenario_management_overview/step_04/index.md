@@ -1,3 +1,9 @@
+> You can download the code 
+<a href="/scope_and_cycle.py" download>here</a>. Here is the 
+<a href="/scope_and_cycle_toml.py" download>Python version</a> 
+with the 
+<a href="/config.toml" download>TOML file</a>
+
 *Estimated Time for Completion: 30 minutes; Difficulty Level: Intermediate*
 
 In this section, we will explore the intricate relationship between
@@ -55,7 +61,7 @@ def filter_by_month(df, month):
 
         - Add the frequency property for the scenario and put "MONTHLY:FREQUENCY" (DAYLY, WEEKLY, MONTHLY, YEARLY)
         
-        - Load the new [configuration](../src/config_04.toml) in the code
+        - Load the new [configuration](../config.toml) in the code
 
     === "Python configuration"
 
