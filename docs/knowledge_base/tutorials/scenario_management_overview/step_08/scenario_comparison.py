@@ -63,3 +63,4 @@ if __name__=="__main__":
     scenario_2.submit()
     
     print(tp.compare_scenarios(scenario_1, scenario_2))
+    
