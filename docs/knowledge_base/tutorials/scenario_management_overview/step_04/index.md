@@ -2,7 +2,10 @@
 <a href="/scope_and_cycle.py" download>here</a>. Here is the 
 <a href="/scope_and_cycle_toml.py" download>Python version</a> 
 with the 
-<a href="/config.toml" download>TOML file</a>
+<a href="/config.toml" download>TOML file</a>. 
+Two datasets have also to be downloaded (
+<a href="/config.toml" download>here</a> and 
+<a href="/config.toml" download>here</a>).
 
 *Estimated Time for Completion: 30 minutes; Difficulty Level: Intermediate*
 
@@ -55,7 +58,7 @@ def filter_by_month(df, month):
 
     === "Taipy Studio"
 
-        ![](config_04.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+        ![](config.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
         
         - Construct the configuration
 
@@ -141,7 +144,7 @@ Let's change the configuration of our data nodes:
 
     === "Taipy Studio"
 
-        ![](config_05.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+        ![](config_scope.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
         
         - Change the Scope of historical_data to be global
         
@@ -288,7 +291,6 @@ scenario_cfg = Config.configure_scenario(id="my_scenario",
                                          task_configs=[task_filter_cfg],
                                          frequency=Frequency.MONTHLY)
 
-Config.export('config_04.toml')
 
 if __name__ == '__main__':
     tp.Core().run()
