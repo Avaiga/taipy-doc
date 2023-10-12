@@ -1,6 +1,9 @@
-> You can download the code for
-<a href="./../src/step_07.py" download>Step 7</a> 
-or all the steps <a href="./../src/src.zip" download>here</a>. 
+> You can download the code 
+<a href="/job_execution.py" download>here</a>. Here is the 
+<a href="/job_execution_toml.py" download>Python version</a> 
+with the 
+<a href="/config.toml" download>TOML file</a>
+. 
 
 # Executing jobs
 
@@ -13,7 +16,7 @@ Changing the execution mode can be useful for running multiple tasks in parallel
 
 - _development_ mode: synchronous. The default execution mode is _development_.
 
-In this step, we define a new configuration and functions to showcase the two execution modes.
+We define a configuration and functions to showcase the two execution modes.
 
 ```python
 # Normal function used by Taipy
@@ -26,7 +29,7 @@ def add(nb):
     return nb + 10
 ```
 
-![](config_07.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Configuration](config.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 This line of code alters the execution mode. Setting it to _standalone_ makes Taipy Core work asynchronously. 
 In this configuration, a maximum of two tasks can run simultaneously.
@@ -64,7 +67,7 @@ if __name__=="__main__":
     scenario_1.submit(wait=True, timeout=5)
 ```
 
-## Entire code
+# Entire code
 
 
 ```python
@@ -92,20 +95,21 @@ output_cfg = Config.configure_data_node("output")
 
 # Configuration of tasks
 first_task_cfg = Config.configure_task("double",
-                                    double,
-                                    input_cfg,
-                                    intermediate_cfg)
+                                       double,
+                                       input_cfg,
+                                       intermediate_cfg)
 
 second_task_cfg = Config.configure_task("add",
-                                    add,
-                                    intermediate_cfg,
-                                    output_cfg)
+                                        add,
+                                        intermediate_cfg,
+                                        output_cfg)
 
 # Configuration of the pipeline and scenario
 scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                                    task_configs=[first_task_cfg,
-                                                                  second_task_cfg])
+                                         task_configs=[first_task_cfg,
+                                                       second_task_cfg])
 
+Config.export("config_07.toml")
 
 if __name__=="__main__":
     tp.Core().run()

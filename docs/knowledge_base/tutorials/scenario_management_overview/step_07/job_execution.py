@@ -33,10 +33,10 @@ second_task_cfg = Config.configure_task("add",
 
 # Configuration of the pipeline and scenario
 scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                                    task_configs=[first_task_cfg,
-                                                                  second_task_cfg])
+                                         task_configs=[first_task_cfg,
+                                                       second_task_cfg])
 
-Config.export("config_07.toml")
+Config.export("config.toml")
 
 if __name__=="__main__":
     tp.Core().run()
