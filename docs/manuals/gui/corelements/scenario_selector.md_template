@@ -3,7 +3,7 @@ Select scenarios from the list of all Taipy Core scenario entities.
 The scenario selector shows all the scenario entities handled by Taipy Core and lets the user
 select a scenario from a list, create new scenarios or edit existing scenarios.
 
-## Details
+# Details
 
 The scenario selector displays a tree selector where scenarios are grouped based on their cycle
 (if the property [*display_cycles*](#p-display_cycles) has not been set to False).<br/>
@@ -48,7 +48,7 @@ Notice how the primary scenario for a cycle is immediately flagged as "primary" 
 not to show that icon by setting the [*show_primary_flag*](#p-show_primary_flag) property to
 False).
 
-### Editing a scenario
+## Editing a scenario
 
 Users can press the pencil icon located next to the scenario labels. When that happens, a dialog
 box similar to the scenario creation dialog is displayed to let users modify the scenario
@@ -69,7 +69,7 @@ The Delete button deletes the edited scenario.
 
 Note that there is no way to change the scenario configuration or its creation date.
 
-### Selecting a scenario
+## Selecting a scenario
 
 When the user selects a scenario in the tree selector, the [*value*](#p-value) property is
 set to the selected entity and the [*on_change*](#p-on_change) callback is invoked. The

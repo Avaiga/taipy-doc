@@ -7,5 +7,6 @@ Markdown syntax is a simple way to format plain text and structure documents. It
 add things like headings, lists, links, images, and emphasis to text without needing complex 
 HTML or formatting tools.
 
-To discover more about the Taipy Markdown syntax, click on the tutorial video 
-[here](https://www.youtube.com/watch?v=OpHAncCb8Zo&t=1s).
+To learn more about Taipy Markdown syntax, watch the tutorial video:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/OpHAncCb8Zo?feature=oembed" frameborder="0" allowfullscreen></iframe>

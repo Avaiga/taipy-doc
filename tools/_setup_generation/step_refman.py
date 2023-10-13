@@ -340,7 +340,7 @@ class RefManStep(SetupStep):
                 os.mkdir(package_path)
                 package_output_path = os.path.join(package_path, "index.md")
                 self.navigation += (
-                    f"- {package}:\n  - {RefManStep.REFERENCE_REL_PATH}/pkg_{package}/index.md\n"
+                    f"- \"<code>{package}</code>\":\n  - {RefManStep.REFERENCE_REL_PATH}/pkg_{package}/index.md\n"
                 )
             else:
                 high_package_group = None
@@ -355,9 +355,11 @@ class RefManStep(SetupStep):
                         )
                     package_group = high_package_group
                     self.navigation += f"- {package_group}:\n"
+                package_nav_entry = package
                 if package_group:
                     self.navigation += "  "
-                self.navigation += f"- {package}: {RefManStep.REFERENCE_REL_PATH}/pkg_{package}.md\n"
+                    package_nav_entry = package[len(package_group):]
+                self.navigation += f"- \"<code>{package_nav_entry}</code>\": {RefManStep.REFERENCE_REL_PATH}/pkg_{package}.md\n"
                 package_output_path = os.path.join(
                     self.REFERENCE_DIR_PATH, f"pkg_{package}.md"
                 )
@@ -387,8 +389,6 @@ class RefManStep(SetupStep):
                     ]
 
             with open(package_output_path, "w") as package_output_file:
-                package_output_file.write(f'---\ntitle: "{package}" package\n---\n\n')
-                package_output_file.write(f"# Package: `{package}`\n\n")
                 if package in module_doc and module_doc[package]:
                     package_output_file.write(module_doc[package])
                 package_grouped = package == package_group

@@ -1,8 +1,8 @@
 Displays a data set as tabular data.
 
-## Details
+# Details
 
-### Data types
+## Data types
 
 All the data sets represented in the table control must be assigned to
 its [*data*](#p-data) property.
@@ -24,7 +24,7 @@ The supported types for the [*data*](#p-data) property are:
 - A Numpy series:<br/>
     Taipy internally builds a Pandas DataFrame with the provided *data*.
  
-### Display modes
+## Display modes
 
 The table component supports three display modes:
 
@@ -35,7 +35,7 @@ The table component supports three display modes:
 - *auto_loading*: the pages are loaded on demand depending on the visible area. That is the behavior when
   the [*auto_loading*](#p-auto_loading) property is set to True.
 
-### The *rebuild* property
+## The *rebuild* property
 
 When the application modifies the value of a dynamic property, the impact of the change is
 immediately reflected on the application page. However, changing the value of properties that are
@@ -51,7 +51,7 @@ be a somewhat complex operation.
 Here is a situation where you may need to use [*rebuild*](#p-rebuild): your application displays
 a table, and you want to provide a way to interactively change the order of its columns.<br/>
 Here is what the application code would look like:
-```py  title="table.py"
+```python  title="table.py"
 from taipy.gui import Gui
 
 # x: [1..5]
@@ -116,12 +116,12 @@ refresh was needed.
 Make sure, when you are using the [*rebuild*](#p-rebuild) property, that no performance impact is
 so bad that it would ruin the user experience.
 
-## Styling
+# Styling
 
 All the table controls are generated with the "taipy-table" CSS class. You can use this class
 name to select the tables on your page and apply style.
 
-### [Stylekit](../styling/stylekit.md) support
+## [Stylekit](../styling/stylekit.md) support
 
 The [Stylekit](../styling/stylekit.md) provides a CSS custom property:
 
@@ -139,7 +139,7 @@ tables:
 - *rows-similar*<br/>
   Removes the even-odd striped background so all rows have the same background.
 
-### Dynamic styling
+## Dynamic styling
 
 You can modify the style of entire rows or specific table cells based on any criteria, including
 the table data itself.
@@ -167,9 +167,9 @@ Based on these parameters, the function must return a string that defines a CSS 
 be added to the CSS classes for this table row or this specific cell.<br/>
 The [example](#styling-rows) below shows how this works.
 
-## Usage
+# Usage
 
-### Show tabular data
+## Show tabular data
 
 Suppose you want to display the data set defined as follows:
 
@@ -248,7 +248,7 @@ You can change how many rows are displayed simultaneously using the
 [*page_size*](#p-page_size) and [*page_size_options*](#p-page_size_options) properties.
 
 If you want to display all the rows at the same time, you can change the control definition
-to add the [*show_all](#p-show_all):
+to set the [*show_all*](#p-show_all) to True:
 
 !!! example "Page content"
     === "Markdown"
@@ -273,7 +273,7 @@ Setting the [*allow_all_rows*](#p-allow_all_rows) property to True for a paginat
 adds the 'All' option to the page size options, so the user can switch from one mode to
 the other.
 
-### Show specific columns
+## Show specific columns
 
 If you want to display a specific set of columns, you can use the [*columns*](#p-columns)
 property to indicate what columns should be displayed.
@@ -299,7 +299,7 @@ And the *y2* column is not displayed any longer:
     <figcaption>Specifying the visible columns</figcaption>
 </figure>
 
-### Styling rows
+## Styling rows
 
 To give a specific style to a table row, you will use the [*style*](#p-style) property.<br/>
 This property holds a function that is invoked when each row is rendered, and it must return
@@ -372,8 +372,7 @@ in the control definition:
         <taipy:table data="{data}" style="{lambda s, idx, r: "blue-cell" if idx % 2 == 0 else "red-cell"}" />
         ```
 
-
-### Aggregation
+## Aggregation
 
 To get the aggregation functionality in your table, you must indicate which columns can be aggregated
 and how to perform the aggregation.
@@ -404,7 +403,7 @@ perform this aggregation. The value of this property, which is a string, can be:
         <taipy:table data="{data}" group_by[Group column]="True" apply[Apply column]="count" />
         ```
 
-### Cell tooltips
+## Cell tooltips
 
 You can specify a tooltip for specific table cells.
 
