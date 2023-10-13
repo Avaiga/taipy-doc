@@ -33,7 +33,7 @@ example, but you can add as many as you need.
 
 ## Defining the Pages
 
-To make it simpler, we'll ensure that each page does not affect any other page. In other words, 
+To make it simple, we'll ensure that each page does not affect any other page. In other words, 
 when you do something on one page, it won't affect the other pages. We'll discuss how pages 
 interact with each other in the second part of this series.
 
@@ -60,7 +60,7 @@ we could add these lines:
 ## Running the Multi-Page Application
 
 Up to this point, we've structured our multi-page Taipy application by keeping two one-page 
-applications in a sub-folder named "pages."
+applications in a sub-folder named `pages`.
 
 Now, the next step is to create and define our main module, `main.py` within the `app/` folder. 
 After that, we'll initialize our multi-page Gui object.
@@ -74,7 +74,7 @@ scripts we previously created. Then, we made a dictionary called `pages`:
 2. Each value in the dictionary is the `Markdown^` object for that page.
 
 In the end, we provided this *pages* dictionary as an argument to the *pages* parameter of the 
-Taipy Gui object. Then, we called its *run* method, and that's how we got our first Taipy 
+`Gui` object. Then, we called its `run()` method, and that's how we got our first Taipy 
 multi-page application working!
 
 If you open your web browser and go to **localhost:5000** (assuming you're using the 
@@ -101,7 +101,7 @@ for adding navigation to your multi-page application, making it more user-friend
 One straightforward technique to make your application's navigation more appealing is by utilizing 
 the Taipy [`navbar`](../../../manuals/gui/viselements/navbar.md) control. To incorporate the 
 navbar into the home page, all you need to do is add a single line to the beginning of the 
-`home_md` page definition:
+*home_md* page definition:
 
 ![The navbar](multipage_application_9.png){width=100%}
 
@@ -109,8 +109,8 @@ By default, the navbar control automatically creates an entry for each page in t
 dictionary, requiring no further required specification of properties - making it a quick and 
 easy way to add navigation.
 
-However, the code change above only added a navbar to the home_md page - we would still need to 
-make the same change to temperature_md and any other page we have in our application. A better 
+However, the code change above only added a navbar to the *home_md* page - we would still need to 
+make the same change to *temperature_md* and any other page we have in our application. A better 
 alternative that does not require any code modification in any of the pages is to add a
 **root page**.
 
@@ -122,7 +122,7 @@ utilize the [root page](../../../manuals/gui/pages.md#root-page):
 Since every page inherits the root page, you can easily make every page inherit the navbar control 
 by adding just one line to `main.py`.<br/>
 
-As an additional tip, you can use HTML *center* tags to center the *navbar* on the page: 
+As an additional tip, you can use HTML *center* tags to center the `navbar` on the page: 
 `<center><|navbar|></center>`
 
 The concept of the *root* page is more advanced in Taipy and will be explored in more detail in 
@@ -130,18 +130,18 @@ Part 2 of this Taipy multi-page series.
 
 ### 2. The navigate function
 
-The `taipy.gui.navigate` function is self-explanatory in its purpose, it is used to navigate to 
-other pages. For example, this is a code snippet of the  `navigate()^` function being used to 
+The `navigate()^` function is self-explanatory in its purpose, it is used to navigate to 
+other pages. For example, this is a code snippet of the `navigate()^` function being used to 
 navigate to the *home* page when the [button](../../../manuals/gui/viselements/button.md) 
 control is clicked:
 
 ![The navigate function](multipage_application_11.png){width=100%}
 
-Naturally, this function is only used within callbacks. To use  `navigate()^`, we simply pass along 
-the `state` variable present in all callbacks, as well as the name of the page we wish to go to. 
+Naturally, this function is only used within callbacks. To use `navigate()^`, we simply pass along 
+the *state* variable present in all callbacks, as well as the name of the page we wish to go to. 
 In the example above, the user will be directed to the */home* page.
 
-The  `navigate()^` function provides a lot of flexibility to the developer to manage navigation 
+The `navigate()^` function provides a lot of flexibility to the developer to manage navigation 
 in the application beyond what the navbar offers. For example, we can manage:
 
 1. After executing some process, direct the user to either the /success or /failure page 
@@ -173,11 +173,11 @@ We define two properties for the menu control:
     `pages` (other than "/") — functionally equivalent to `page_names = ["home", "temperature"]`. 
     Refer to the [menu](../../../manuals/gui/viselements/menu.md) for more details, such as for 
     setting icons and labels.
-2. *on_action=menu_action*: Assigns the `menu_action` function as the callback function which is 
+2. `on_action=menu_action`: Assigns the `menu_action` function as the callback function which is 
     executed when the user clicks an item from the menu.
 
-We define the `menu_action` function with the parameters as stated in the menu control 
-documentation, then call `navigate(state, page)` to direct the user to the selected `page`. In 
+We define the *menu_action()* function with the parameters as stated in the menu control 
+documentation, then call `navigate(state, page)^` to direct the user to the selected *page*. In 
 practice, we effectively have the same functionality as the navbar, but had to do a bit more 
 work to expressly create that functionality.
 
@@ -187,7 +187,7 @@ Finally, the simplest way to implement navigation in Taipy is with a hyperlink:
 
 ![Hyperlinks](multipage_application_13.png){width=100%}
 
-This results in the following clickable **temperature** text, which directs the user to the 
+This results in the following clickable "/temperature" text, which directs the user to the 
 */temperature* URL:
 
 ![Hyperlinks](multipage_application_14.png){width=50%}
@@ -198,6 +198,5 @@ In preparation for Part 2 of the **Taipy Tips: Building a Multi-Page Application
 can anticipate learning about the following topics:
 
 1. Accessing state variables across multiple pages, enabling interaction between pages.
-2. Gaining insight into how Taipy GUI searches for variables and functions utilized in Markdown 
-    pages.
+2. Gaining insight into how Taipy GUI searches for variables and functions utilized in pages.
 3. Practical code examples to illustrate these concepts.
