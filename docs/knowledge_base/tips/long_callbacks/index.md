@@ -1,12 +1,13 @@
 
-Tasks (server side functions) in web applications can take a lot of time, which can lead to 
+Tasks (server-side functions) in web applications can take a lot of time, which can lead to 
 problems with communication between the server (Python application) and the client (web browser).
-
-![Long Running Callbacks](long_running_callbacks.png){width=100%}
 
 Taipy offers a valuable feature known as "long-running callbacks" to tackle this problem. These 
 callbacks enable the server to handle resource-intensive processing in the background, ensuring 
 a responsive user interface. 
+
+![Long Running Callbacks](long_running_callbacks.png){width=100%}
+
 
 This article discusses the concept of long-running callbacks in Taipy, provides usage examples, 
 and illustrates how they enhance the overall user experience.
@@ -28,10 +29,10 @@ finish. To make this work, we can use a straightforward approach:
         invoke_long_callback(state, heavy_function, [...heavy_function arguments...])
 ```
 
-In the previous example, the Taipy function called `invoke_long_callback()^` manages the 
-resource-intensive function. It sets up a separate background thread to run `heavy_function()`, 
+In the previous example, the Taipy function, ' invoke_long_callback()^, manages the 
+resource-intensive function. It sets up a separate background thread to run `heavy_function(),` 
 allowing the rest of the application to continue running. The `on_action()` function gets 
-activated by a user action, like clicking a button, for instance.
+activated by a user action, like clicking a button.
 
 # Monitoring Function Status
 
@@ -51,10 +52,10 @@ function completes, as shown below:
                              heavy_function_status)
 ```
 
-In this example, we introduce the `heavy_function_status()` function, which is invoked by the 
-`invoke_long_callback()^` method. When the callback is finished, this function is called. 
+In this example, we introduce the `heavy_function_status()` function, which the
+`invoke_long_callback()^` method invokes. When the callback is finished, this function is called. 
 
-This gives you the opportunity to provide the necessary notifications or make updates to the 
+This allows you to provide the necessary notifications or make updates to the 
 user interface depending on whether the processing was successful or not.
 
 # Handling Function Result
@@ -85,7 +86,7 @@ Make sure that the `heavy_function()` returns a value. For example:
         return result
 ```
 
-When you update the State with the result of `heavy_function()`, you make sure that the user 
+When you update the State with the result of `heavy_function()`, you ensure that the user 
 interface shows the result of the resource-intensive function. This creates a smooth and seamless 
 user experience.
 
@@ -110,14 +111,14 @@ Taipy's `invoke_long_callback()^` provides a convenient method to accomplish thi
                              5000)
 ```
 
-In the code above in line 13, when you include a *period* parameter, the `heavy_function_status()`
+In the code above, in line 13, when you include a *period* parameter, the `heavy_function_status()`
 function will be regularly activated at the set interval, such as every 5 seconds. This allows 
-your user interface to show live updates, keeping the end user informed about the ongoing work.
+your user interface to show live updates, informing the end user about ongoing work.
 
 # Conclusion
 
-Taipy's long-running callbacks make it much easier to handle time-consuming tasks in web 
-applications. By running demanding functions in the background, Taipy ensures that the user 
-interface stays quick to respond and avoids potential communication timeouts. With the option to 
+Taipy's long-running callbacks make handling time-consuming tasks in web
+applications much easier. By running demanding functions in the background, Taipy ensures that the user 
+interface responds quickly and avoids potential communication timeouts. With the option to 
 keep an eye on the function's progress and offer updates, developers can create a smooth user 
 experience, even when dealing with hefty operations.
