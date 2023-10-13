@@ -18,4 +18,5 @@ commands to streamline your web application development. Here is a list of avail
 - [:material-arrow-right: taipy version](version.md): Obtain the installed Taipy version using this command to keep
   track of the Taipy library's current release.
 
-- [:material-arrow-right: taipy migrate](migrate.md): This command allows users of Taipy `version 2.0` to migrate their Taipy entities to `version 3.0` when upgrading Taipy version.
+- [:material-arrow-right: taipy migrate](migrate.md): This command allows users of Taipy
+`version 2.x` to migrate their Taipy entities to `version 3.0` when upgrading Taipy version.

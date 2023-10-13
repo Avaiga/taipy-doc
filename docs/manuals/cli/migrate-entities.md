@@ -14,9 +14,13 @@ The migrate CLI has one argument, `--repository-type` that accepts 3 values: `fi
 `sql`, and `mongo`. Each repository type must be succeeded of additional arguments, as
 decribed below:
 
-- *filesystem* must be succeeded by the path to the filesystem folder that holds your Taipy application data. It corresponds to the `storage_folder` attribute in the configuration `CORE` section. If it has not been changed explicitly the value is `.data` inside the application root directory if it has not been provided explicitly.
+- *filesystem* must be succeeded by the path to the filesystem folder that holds your Taipy
+application data. It corresponds to the `storage_folder` attribute in the configuration `CORE`
+section. If it has not been changed explicitly the value is `.data` inside the application root
+directory if it has not been provided explicitly.
 - *sql* must be succeeded by the path to the sqlite file that holds your Taipy Application data.
-- *mongo* must be succeded by the credentials to access the mongo database that holds your Taipy Application data. The credentials must follow the order: `host`, `port`, `username` and `password`.
+- *mongo* must be succeeded by the credentials to access the mongo database that holds
+your Taipy Application data. The credentials must follow the order: `host`, `port`, `username`, and `password`.
 
 To display the help section of `taipy migrate` CLI, you can run the `taipy help migrate` command.
 Alternatively, you can use the *--help* or *-h* options by running `taipy migrate --help` or `taipy migrate -h`.
