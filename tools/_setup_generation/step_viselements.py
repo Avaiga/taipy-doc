@@ -282,8 +282,14 @@ class VisElementsStep(SetupStep):
                 md_template = md_template.replace(f"[{prefix}TOC]", toc[prefix]+"</div>\n")
             md_file.write(md_template)
 
+    def generate_builder_api(self, category: str) -> None:
+        for element_type in self.categories[category]:
+            element_desc = self.elements[element_type]
+            print(f"FLE generate_builder_api-Element {element_type}, {element_desc}")
+
     def setup(self, setup: Setup) -> None:
         self.generate_pages("controls", self.controls_path)
+        self.generate_builder_api("controls")
         self.generate_pages("blocks", self.blocks_path)
 
     # Special case for charts: we want to insert the chart gallery that is stored in the
