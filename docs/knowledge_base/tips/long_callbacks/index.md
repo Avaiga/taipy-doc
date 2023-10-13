@@ -1,6 +1,6 @@
 
-Tasks in web applications can take a lot of time, which can lead to problems with 
-communication between the server (Python application) and the client (web browser).
+Tasks (server side functions) in web applications can take a lot of time, which can lead to 
+problems with communication between the server (Python application) and the client (web browser).
 
 ![Long Running Callbacks](long_running_callbacks.png){width=100%}
 
@@ -11,7 +11,7 @@ a responsive user interface.
 This article discusses the concept of long-running callbacks in Taipy, provides usage examples, 
 and illustrates how they enhance the overall user experience.
 
-# Running functions in Background
+# Running Functions in Background
 
 Imagine a situation where a callback starts a duty that requires a lot of resources and time to 
 finish. To make this work, we can use a straightforward approach:
@@ -57,7 +57,7 @@ In this example, we introduce the `heavy_function_status()` function, which is i
 This gives you the opportunity to provide the necessary notifications or make updates to the 
 user interface depending on whether the processing was successful or not.
 
-# Handling Heavy Function results
+# Handling Function Result
 
 To update the State according to the returned value from `heavy_function()`, you can modify 
 `heavy_function_status()` as follows:
@@ -89,7 +89,7 @@ When you update the State with the result of `heavy_function()`, you make sure t
 interface shows the result of the resource-intensive function. This creates a smooth and seamless 
 user experience.
 
-# Tracking Task Progress
+# Tracking Function Progress
 
 Occasionally, it's useful to give regular updates on the progress of a long-running task.
 Taipy's `invoke_long_callback()^` provides a convenient method to accomplish this:
