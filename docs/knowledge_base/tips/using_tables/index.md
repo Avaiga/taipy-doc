@@ -1,7 +1,7 @@
 
 Tables in Taipy are not just for showing data, they also let you control things. When you're 
-making an app with data (which Taipy is great at!), you can use Taipy's tables and their cool 
-features.
+making an application with data (which Taipy is great at!), you can use Taipy's tables and their 
+cool features.
 
 ![Tables in Taipy](using_tables.png){width=100%}
 
@@ -260,7 +260,7 @@ comprehensively. If you're seeking a feature that we didn't address here, be sur
 the [documentation](../../../manuals/gui/viselements/table.md) for more information!
 
 Lastly, here's the code that combines all the features we discussed in this article, 
-used to create the app shown at the beginning of the article:
+used to create the application shown at the beginning of the article:
 
 ```python
 from taipy.gui import Gui, Markdown, notify
