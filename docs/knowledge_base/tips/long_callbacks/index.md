@@ -8,7 +8,6 @@ a responsive user interface.
 
 ![Long Running Callbacks](long_running_callbacks.png){width=100%}
 
-
 This article discusses the concept of long-running callbacks in Taipy, provides usage examples, 
 and illustrates how they enhance the overall user experience.
 
@@ -29,8 +28,8 @@ finish. To make this work, we can use a straightforward approach:
         invoke_long_callback(state, heavy_function, [...heavy_function arguments...])
 ```
 
-In the previous example, the Taipy function, ' invoke_long_callback()^, manages the 
-resource-intensive function. It sets up a separate background thread to run `heavy_function(),` 
+In the previous example, the Taipy function `invoke_long_callback()^` manages the 
+resource-intensive function. It sets up a separate background thread to run `heavy_function()`, 
 allowing the rest of the application to continue running. The `on_action()` function gets 
 activated by a user action, like clicking a button.
 
@@ -117,8 +116,8 @@ your user interface to show live updates, informing the end user about ongoing w
 
 # Conclusion
 
-Taipy's long-running callbacks make handling time-consuming tasks in web
-applications much easier. By running demanding functions in the background, Taipy ensures that the user 
-interface responds quickly and avoids potential communication timeouts. With the option to 
-keep an eye on the function's progress and offer updates, developers can create a smooth user 
-experience, even when dealing with hefty operations.
+Taipy's long-running callbacks make handling time-consuming tasks in web applications much 
+easier. By running demanding functions in the background, Taipy ensures that the user interface 
+responds quickly and avoids potential communication timeouts. With the option to keep an eye on 
+the function's progress and offer updates, developers can create a smooth user experience, even 
+when dealing with hefty operations.
