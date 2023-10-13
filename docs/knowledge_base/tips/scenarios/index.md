@@ -40,28 +40,33 @@ tasks and pipelines can work on their own and can even run at the same time, doi
 
 ## Scenario Configuration and Creation
 
-To instantiate a Taipy scenario, users first need to configure it with the "Config.configure_scenario()" method. They need to set certain things like a name, the tasks it uses, 
-how often it runs, what it compares, and its properties.
-Then users can create a scenario with the `create_scenario()` method passing as a parameter the scenario configuration.
+To instantiate a Taipy scenario, users first need to configure it with the 
+"Config.configure_scenario()" method. They need to set certain things like a name, the tasks it 
+uses, how often it runs, what it compares, and its properties. Then users can create a scenario 
+with the `create_scenario()` method passing as a parameter the scenario configuration.
 
 ## Accessing and Managing Scenarios
 
-Taipy offers different ways to work with scenarios. You can do things like getting a scenario by its ID, getting all scenarios, making one scenario the main one, and comparing scenarios.
+Taipy offers different ways to work with scenarios. You can do things like getting a scenario by 
+its ID, getting all scenarios, making one scenario the main one, and comparing scenarios.
 
-Users can also add tags to scenarios to keep them organized, and they can save scenarios in JSON format to look at later or share with others.
+Users can also add tags to scenarios to keep them organized, and they can save scenarios in JSON 
+format to look at later or share with others.
 
 ![Accessing and Managing Scenarios](scenario_3.png){width=100%}
 
-The primary benefit of having a scenario is to access the Data Nodes of the different scenarios that are made. With the data generated for each scenario, we can analyze that scenario. 
-The basic format is `<scenario>.<Data Node name>.read()`.
+The primary benefit of having a scenario is to access the Data Nodes of the different scenarios 
+that are made. With the data generated for each scenario, we can analyze that scenario. The 
+basic format is `<scenario>.<Data Node name>.read()`.
 
 ## Scenario management visual elements
 
-The 
-[Scenario management visual elements](../../../manuals/gui/viselements/controls.md)
-allow you to include visual elements in the Taipy backend. This makes it easier than ever to build a web application that matches your backend.
+The [Scenario management visual elements](../../../manuals/gui/viselements/controls.md)
+allow you to include visual elements in the Taipy backend. This makes it easier than ever to 
+build a web application that matches your backend.
 
-You can add these few lines of code to your script's configuration to create a web application that lets you:
+You can add these few lines of code to your script's configuration to create a web application 
+that lets you:
 
 - Choose from the scenarios you've made.
 - Create new scenarios.
@@ -72,6 +77,10 @@ You can add these few lines of code to your script's configuration to create a w
 
 # Conclusion
 
-Taipy scenarios are a strong and adaptable tool that businesses can use to investigate different situations with different assumptions. This helps in making smart decisions and analyzing their effects.
+Taipy scenarios are a strong and adaptable tool that businesses can use to investigate different 
+situations with different assumptions. This helps in making smart decisions and analyzing their 
+effects.
 
-By using Taipy scenarios, companies can gain a deeper understanding of what might happen as a result of their choices. This knowledge allows them to make informed decisions that can lead to success in their business.
+By using Taipy scenarios, companies can gain a deeper understanding of what might happen as a 
+result of their choices. This knowledge allows them to make informed decisions that can lead to 
+success in their business.
