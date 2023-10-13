@@ -17,7 +17,7 @@ def predict(historical_temperature: pd.DataFrame, date_to_forecast: str) -> floa
     ]
     return historical_same_day['Temp'].mean()
 
-Config.load('config_01.toml')
+Config.load('config.toml')
 
 if __name__ == '__main__':
     scenario_cfg = Config.scenarios['my_scenario']
@@ -50,20 +50,3 @@ if __name__ == '__main__':
 """
 
     tp.Gui(scenario_md).run()
-
-
-Config.load('config_01.toml')
-
-if __name__ == '__main__':    
-    # my_scenario is the id of the scenario configured
-    scenario_cfg = Config.scenarios['my_scenario']
-
-
-    # Run of the Core
-    tp.Core().run()
-
-    # Creation of the scenario and execution
-    scenario = tp.create_scenario(scenario_cfg)
-    tp.submit(scenario)
-
-    print("Value at the end of task", scenario.output.read())
