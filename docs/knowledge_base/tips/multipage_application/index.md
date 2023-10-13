@@ -120,7 +120,8 @@ utilize the [root page](../../../manuals/gui/pages.md#root-page):
 ![The navbar](multipage_application_10.png){width=100%}
 
 Since every page inherits the root page, you can easily make every page inherit the navbar control 
-by adding just one line to `main.py`. 
+by adding just one line to `main.py`.<br/>
+
 As an additional tip, you can use HTML *center* tags to center the *navbar* on the page: 
 `<center><|navbar|></center>`
 
@@ -130,16 +131,17 @@ Part 2 of this Taipy multi-page series.
 ### 2. The navigate function
 
 The `taipy.gui.navigate` function is self-explanatory in its purpose, it is used to navigate to 
-other pages. For example, this is a code snippet of the `navigate` function being used to navigate 
-to the *home* page when the [button](../../../manuals/gui/viselements/button.md) control is clicked:
+other pages. For example, this is a code snippet of the  `navigate()^` function being used to 
+navigate to the *home* page when the [button](../../../manuals/gui/viselements/button.md) 
+control is clicked:
 
 ![The navigate function](multipage_application_11.png){width=100%}
 
-Naturally, this function is only used within callbacks. To use `navigate`, we simply pass along 
+Naturally, this function is only used within callbacks. To use  `navigate()^`, we simply pass along 
 the `state` variable present in all callbacks, as well as the name of the page we wish to go to. 
 In the example above, the user will be directed to the */home* page.
 
-The `navigate` function provides a lot of flexibility to the developer to manage navigation 
+The  `navigate()^` function provides a lot of flexibility to the developer to manage navigation 
 in the application beyond what the navbar offers. For example, we can manage:
 
 1. After executing some process, direct the user to either the /success or /failure page 
@@ -148,7 +150,7 @@ in the application beyond what the navbar offers. For example, we can manage:
 2. Direct the user back to the /home page when an exception occurs 
     by using navigate in [on_exception](../../../manuals/gui/callbacks.md#exception-handling).
 
-If you prefer, you can replicate the functionality of the *navbar* using the `navigate` feature 
+If you prefer, you can replicate the functionality of the *navbar* using the `navigate()^` feature 
 with a different control, like a [selector](../../../manuals/gui/viselements/selector.md) 
 control or [tree](../../../manuals/gui/viselements/tree.md) control. In this example, let's 
 combine the `navigate` feature with the [menu](../../../manuals/gui/viselements/menu.md) control
@@ -160,13 +162,13 @@ The menu navigation was implemented by modifying `main.py` to the following:
 
 ![The navigate function](multipage_application_12.png){width=100%}
 
-Unlike *navbar* which automatically populates its *lov* (list of values) with the page names 
+Unlike `navbar` which automatically populates its *lov* (list of values) with the page names 
 and intrinsically navigates the user to the selected page when it is interacted with, the code 
 example above using the menu control and navigate is a little more verbose.
 
 We define two properties for the menu control:
 
-1. *lov={page_names}*: The list of values which may be selected from the menu. 
+1. `lov={page_names}`: The list of values which may be selected from the menu. 
     In this case, we interpolate the `page_names` variable, which we then assign the keys from 
     `pages` (other than "/") — functionally equivalent to `page_names = ["home", "temperature"]`. 
     Refer to the [menu](../../../manuals/gui/viselements/menu.md) for more details, such as for 
