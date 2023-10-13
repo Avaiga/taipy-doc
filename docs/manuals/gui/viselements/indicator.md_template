@@ -3,14 +3,14 @@ Displays a label on a red to green scale at a specific position.
 The _min_ value can be greater than the _max_ value.<br/>
 The value will be maintained between min and max.
 
-## Styling
+# Styling
 
 All the indicator controls are generated with the "taipy-indicator" CSS class. You can use this class
 name to select the indicator controls on your page and apply style.
 
-## Usage
+# Usage
 
-### Minimal usage
+## Minimal usage
 
 Shows a message at a specified position between min and max.
 
@@ -28,7 +28,7 @@ Shows a message at a specified position between min and max.
         <taipy:indicator value="{val}" min="0" max ="100">message</taipy:indicator>
         ```
 
-### Formatting the message
+## Formatting the message
 
 A _format_ can be applied to the message. 
 
@@ -47,7 +47,7 @@ A _format_ can be applied to the message.
         ```
 
 
-### Vertical indicators
+## Vertical indicators
 
 The _orientation_ can be specified to "vertical" (or "v") to create a vertical indicator.
 
@@ -65,7 +65,7 @@ The _orientation_ can be specified to "vertical" (or "v") to create a vertical i
         <taipy:indicator orientation="vertical" value="10">message</taipy:indicator>
         ```
 
-### Dimensions
+## Dimensions
 
 Properties _width_ and _height_ can be specified depending of the _orientation_.
 

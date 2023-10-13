@@ -1,4 +1,5 @@
 ---
+title: Migration
 hide:
   - navigation
 ---
@@ -6,7 +7,14 @@ hide:
 This documentation page lists the migration paths of Taipy releases as they
 were published.
 
-## From 2.0 to 2.1
+# From 2.x to 3.0
+
+In Taipy GUI 3.0, the `on_action` callback signature was unified across all controls: the third
+parameter (*action*) was dropped. The *payload* dictionary parameter that used to be in fourth
+place is now in third place and contains an *action* key that is set to the action name if you used
+to use *action*.
+
+# From 2.0 to 2.1
 
 In Taipy version 2.1, the version management system has been introduced. For
 applications created with a Taipy Core version &#8804 2.0, the first time it
@@ -17,7 +25,7 @@ to this version. Depending on the mode used to run the application,
 (Refer to [versioning documentation](manuals/core/versioning/index.md)
 for details) we propose the following migration paths:
 
-### Using default or development mode
+## Using default or development mode
 
 Please refer to the [Development mode](manuals/core/versioning/development_mode.md)
 documentation page for more details on how to run Taipy in development mode.
@@ -31,7 +39,7 @@ using the version management system. Please refer to the
 [Version management system](manuals/core/versioning/index.md) documentation page
 for more details.
 
-### Using experiment or production mode
+## Using experiment or production mode
 
 Please refer to the [Experiment mode](manuals/core/versioning/experiment_mode.md) or
 [Production mode](manuals/core/versioning/experiment_mode.md) documentation pages

@@ -1,10 +1,8 @@
-# Pages
-
 Pages are the basis for the user interface. Pages hold text, images, or
 controls that display information that the application needs to publish and
 interact with the application data through visual elements.
 
-## Defining pages
+# Defining pages
 
 Taipy lets you create as many pages as you want, with whatever content you need.
 Pages are created using sub-classes of the (`Page^`) class which convert some text
@@ -14,17 +12,17 @@ rendered on the client device.
 Converting text into page content is done according to these steps:
 
 - The text is parsed to locate the Taipy-specific constructs. These constructs
-  let you insert _visual elements_ that can be _controls_ or _blocks_. Visual
-  Elements result in  the creation of potentially complex HTML components;
+  let you insert *visual elements* that can be *controls* or *blocks*. Visual
+  Elements result in the creation of potentially complex HTML components;
 
 - Visual element properties are read, and Taipy binds the application
   variables that are used, if any;
 
-- Potentially, _callbacks_ are located and connected from the rendered page back
+- Potentially, *callbacks* are located and connected from the rendered page back
   to the Python code in order to watch user events (the notion of callbacks is detailed
   in the section [Callbacks](callbacks.md)).
 
-### Defining the page content
+## Defining the page content
 
 Page content is defined by a regular string, containing text in one
 of two syntaxes:
@@ -40,7 +38,7 @@ of two syntaxes:
     may prefer to use raw HTML content, so you have all the power of the
     HTML grammar to organize your page content.
 
-#### Using Markdown
+### Using Markdown
 
 One of the page description formats is the [Markdown](https://en.wikipedia.org/wiki/Markdown)
 markup language.
@@ -49,13 +47,13 @@ Taipy uses [Python Markdown](https://python-markdown.github.io/) to translate Ma
 text to web pages. Many language extensions are used to make it easier to create
 nice looking pages that users can enjoy. Specifically, Taipy uses the following
 [Markdown extensions](https://python-markdown.github.io/extensions/):
-[_Admonition_](https://python-markdown.github.io/extensions/admonition/),
-[_Attribute Lists_](https://python-markdown.github.io/extensions/attr_list/),
-[_Fenced Code Blocks_](https://python-markdown.github.io/extensions/fenced_code_blocks/),
-[_Meta-Data_](https://python-markdown.github.io/extensions/meta_data/),
-[_Markdown in HTML_](https://python-markdown.github.io/extensions/md_in_html/),
-[_Sane Lists_](https://python-markdown.github.io/extensions/sane_lists/)
-and [_Tables_](https://python-markdown.github.io/extensions/tables/).
+[*Admonition*](https://python-markdown.github.io/extensions/admonition/),
+[*Attribute Lists*](https://python-markdown.github.io/extensions/attr_list/),
+[*Fenced Code Blocks*](https://python-markdown.github.io/extensions/fenced_code_blocks/),
+[*Meta-Data*](https://python-markdown.github.io/extensions/meta_data/),
+[*Markdown in HTML*](https://python-markdown.github.io/extensions/md_in_html/),
+[*Sane Lists*](https://python-markdown.github.io/extensions/sane_lists/)
+and [*Tables*](https://python-markdown.github.io/extensions/tables/).
 Please refer to the Python Markdown package documentation to get information on how to use
 these.
 
@@ -67,15 +65,15 @@ from taipy.gui import Markdown
 md_page = Markdown("""
 # Page title
 
-Any [_Markdown_](https://en.wikipedia.org/wiki/Markdown) content can be used here.
+Any [*Markdown*](https://en.wikipedia.org/wiki/Markdown) content can be used here.
 """)
 ```
 
-You then have, in the _md_page_ variable, the definition of a page
+You then have, in the *md_page* variable, the definition of a page
 whose content is defined by Markdown text.
 
 !!! Note "Markdown link syntax"
-    You can use Markdown's native _link_ syntax to easily create links
+    You can use Markdown's native *link* syntax to easily create links
     from one page to another.
 
     If, for example, your application has two pages (see below how to create such
@@ -94,7 +92,7 @@ they need). The details on how visual elements are located and interpreted with 
 content can be found in the [Markdown Syntax](viselements/index.md#markdown) section
 about Visual Elements definition.
 
-#### Using HTML
+### Using HTML
 
 HTML can also be used as the text grammar for creating pages. You don't need to
 create the header and body part: Taipy takes care of this for you.
@@ -112,7 +110,7 @@ content can be used here.
 """)
 ```
 
-You then have, in the _html_page_ variable, the definition of a page
+You then have, in the *html_page* variable, the definition of a page
 whose content is defined from HTML text.
 
 Taipy identifies visual element definitions by finding tags that belong
@@ -120,7 +118,7 @@ to the `taipy` namespace. You can find details on how to create visual
 elements using HTML in the [HTML Syntax](viselements/index.md#html) section
 about Visual Elements definition.
 
-### Registering the page
+## Registering the page
 
 Once you have created an instance of a page renderer for a specific piece of
 text, you can register that page to the `Gui^` instance used by your application.
@@ -135,7 +133,7 @@ from taipy import Gui
 Gui("# This is my page title")
 ```
 If you run this Python script and connect a browser to the web server address
-(usually _localhost:5000_), you can see your title displayed in a blank page.
+(usually *localhost:5000*), you can see your title displayed in a blank page.
 
 Of course, the text can be stored in a Python variable and used in the `Gui^`
 constructor:
@@ -166,15 +164,15 @@ Note that if pages are created in different modules, the variables that they can
 to visual elements may have a scope limited to their origin module. See
 [Page scopes](binding.md#scope-for-variable-binding) for more details.
 
-### Viewing the page
+## Viewing the page
 
 When the user browser connects to the web server, requesting the indicated page,
 the rendering takes place (involving the retrieval of the application variable
 values), so you can see your application's state and interact with it.
 
-## Root page
+# Root page
 
-The _Root_ page is the page located at the top of the web application.
+The *Root* page is the page located at the top of the web application.
 The name of this page is `"/"` (or the value of the [*base_url*](configuration.md#p-base_url)
 configuration setting).
 
@@ -187,7 +185,7 @@ creates a page from the Markdown content that you provide and adds this page to 
 run by pointing a web browser to the root of the web server address (by default, that would
 be `http://127.0.0.1:5000/`).
 
-### Single-page applications
+## Single-page applications
 
 If your application has several pages, you would usually create them with different names,
 so the user can navigate from page to page (using the `navigate()^` function or the
@@ -205,7 +203,7 @@ for your runtime environment.<br/>
 Although technically, every Taipy web application *is* a SPA, this notion makes sense only
 when using several pages.
 
-If your Taipy application has defined a _root_ page, then the content of this page is
+If your Taipy application has defined a *root* page, then the content of this page is
 generated before the content of the page you need to display. This makes it very easy to
 design an application with the same header (such as a banner and a navigation bar)
 for all its pages.
@@ -243,12 +241,13 @@ for all its pages.
     to refer to the [Running Taipy services](../run-deploy/run/running_services.md)
     section.
 
-### The `<|content|>` pseudo-control
+## The `<|content|>` pseudo-control
 
 Your application may also need to hold a footer on all the pages it uses.<br/>
 You can use the pseudo-control `<|content|>` to achieve the expected result: this
-visual element is not _really_ a control: It is a placeholder for page content, used in the
-root page of your application, and is replaced by the target page content when the application runs.
+visual element is not *really* a control: It is a placeholder for page content, used in the
+root page of your application, and is replaced by the target page content when the application
+runs.
 
 !!! example
 
@@ -276,7 +275,7 @@ root page of your application, and is replaced by the target page content when t
     have the footer line (*'This application was created...'*) in all the pages of
     your application.
 
-## Dialogs
+# Dialogs
 
 Applications sometimes need to prompt the user to indicate a situation or request
 input of some sort. Dialogs are forms that can be displayed on top of the page
@@ -312,14 +311,14 @@ user's response.
 Please refer to the documentation page on the [`dialog`](viselements/dialog.md)
 control for more details and examples.
 
-## Partials
+# Partials
 
 There are page fragments that you may want to repeat on different pages. In that situation,
 you will want to use the *Partial* concept: a *Partial* is similar to a page (and built
 in a very similar way) that can be used multiple times in different visual elements.
 This prevents you from having to repeat yourself when creating your user interfaces.
 
-To create a _Partial_, you must call the method `(Gui.)add_partial()^` on the *Gui*
+To create a *Partial*, you must call the method `(Gui.)add_partial()^` on the *Gui*
 instance of your application. You must give this function a page definition (a string or
 an instance of `Markdown^` or `Html^`), and it returns an instance of `Partial^` that can
 be used in visual elements that use them.
@@ -345,7 +344,7 @@ be used in visual elements that use them.
 You can take a look at the documentation of the [`dialog`](viselements/dialog.md) or
 [`pane`](viselements/pane.md) to see how these *Partials* can be used in pages.
 
-## Panes
+# Panes
 
 Modern user interfaces also provide small pages that pop out and be removed for
 temporary use, such as providing specific parameters for the application. Taipy lets
@@ -357,7 +356,7 @@ disappears when the user clicks outside its area.
 A pane can be defined using the `Partial^` class, or directly in the page
 definition.
 
-## Local resources
+# Local resources
 
 Pages sometimes need to access local resources from a page. That is the case for
 example if an image needs to be inserted: the path to the image must be provided.
@@ -366,9 +365,9 @@ You can indicate, using the parameter *path_mapping* of the
 [`Gui` constructor](Gui.__init__()^), where those resources are located on the file
 system.
 
-## Status page
+# Status page
 
-The _Status_ page is a special page that the user can access by requesting the "/taipy.status.json"
+The *Status* page is a special page that the user can access by requesting the "/taipy.status.json"
 page.
 
 This returns a customizable JSON representation of the state of the application as a dictionary
