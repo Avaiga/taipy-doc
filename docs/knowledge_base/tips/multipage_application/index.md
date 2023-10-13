@@ -50,8 +50,8 @@ pages work independently:
 - The `temperature_md` page lets a user convert temperatures from Fahrenheit (°F) to Celsius (°C).
 
 Usually, if we were making a simple one-page application, we'd give one of our pages (Taipy 
-[Markdown](https://docs.taipy.io/en/latest/manuals/reference/taipy.gui.Markdown/) or 
-[HTML](https://docs.taipy.io/en/latest/manuals/reference/taipy.gui.Html/) objects) to the 
+[Markdown](../../../manuals/reference/taipy.gui.Markdown.md) or 
+[HTML](../../../manuals/reference/taipy.gui.Html.md) objects) to the 
 `taipy.gui.Gui` constructor. For example, to turn `home.py` into a one-page Taipy application, 
 we could add these lines:
 
@@ -62,29 +62,28 @@ we could add these lines:
 Up to this point, we've structured our multi-page Taipy application by keeping two one-page 
 applications in a sub-folder named "pages."
 
-Now, the next step is to create and define our main module, `main.py` within the *app* directory. 
+Now, the next step is to create and define our main module, `main.py` within the `app/` folder. 
 After that, we'll initialize our multi-page Gui object.
 
 ![Defining a Multi-Page Application](multipage_application_6.png){width=100%}
 
-We started by importing two Markdown objects, *home_md* and *temperature_md* from the two 
+We started by importing two Markdown objects, `home_md` and `temperature_md` from the two 
 scripts we previously created. Then, we made a dictionary called `pages`:
 
 1. Each key in the dictionary specifies the URL where you can access that page.
-2. Each value in the dictionary is the *Markdown* object for that page.
+2. Each value in the dictionary is the `Markdown^` object for that page.
 
 In the end, we provided this *pages* dictionary as an argument to the *pages* parameter of the 
 Taipy Gui object. Then, we called its *run* method, and that's how we got our first Taipy 
 multi-page application working!
 
 If you open your web browser and go to **localhost:5000** (assuming you're using the 
-[default port](https://docs.taipy.io/en/latest/manuals/reference/taipy.gui.Gui/#taipy.gui.gui.Gui.run)), 
-you'll see the following:
+[default port](../../../manuals/reference/taipy.gui.Gui.md)), you'll see the following:
 
 ![Defining a Multi-Page Application](multipage_application_7.png){width=50%}
 
 You're directed to the */home* URL automatically because it was the first page listed in the
-*pages* dictionary, and that's where you'll find our first page!
+`pages` dictionary, and that's where you'll find our first page!
 
 If you change the URL from */home* to */temperature*, you will see the following:
 
@@ -92,32 +91,31 @@ If you change the URL from */home* to */temperature*, you will see the following
 
 ## Navigating between pages
 
-Manually changing the URL to navigate between pages isn't ideal. 
-Taipy provides several methods for adding navigation to your multi-page application, 
-making it more user-friendly and intuitive.
+Manually changing the URL to navigate between pages isn't ideal. Taipy provides several methods 
+for adding navigation to your multi-page application, making it more user-friendly and intuitive.
 
 ### 1. The navbar
 
 ![The navbar](multipage_application_9.gif){width=50%}
 
-One straightforward method to make your application's navigation more appealing 
-is by utilizing the Taipy navbar control. 
-To incorporate the navbar into the home page, all you need to do is add a single line 
-to the beginning of the "home_md" page definition:
+One straightforward technique to make your application's navigation more appealing is by utilizing 
+the Taipy [`navbar`](../../../manuals/gui/viselements/navbar.md) control. To incorporate the 
+navbar into the home page, all you need to do is add a single line to the beginning of the 
+`home_md` page definition:
 
 ![The navbar](multipage_application_9.png){width=100%}
 
-By default, the navbar control automatically creates an entry for each page in the *pages*
-dictionary, requiring no further required specification of properties — making it a quick and 
+By default, the navbar control automatically creates an entry for each page in the `pages`
+dictionary, requiring no further required specification of properties - making it a quick and 
 easy way to add navigation.
 
-However, the code change above only added a navbar to the home_md page — we would still need to 
-make the same change to temperature_md and any other page we have in our application. 
-A better alternative that doesn’t require any code modification in any of the pages is to add a
+However, the code change above only added a navbar to the home_md page - we would still need to 
+make the same change to temperature_md and any other page we have in our application. A better 
+alternative that does not require any code modification in any of the pages is to add a
 **root page**.
 
 Rather than modifying each page to include the navbar, we can also simply modify `main.py` to 
-utilize the [root page](https://docs.taipy.io/en/latest/manuals/gui/pages/#root-page):
+utilize the [root page](../../../manuals/gui/pages.md#root-page):
 
 ![The navbar](multipage_application_10.png){width=100%}
 
@@ -126,15 +124,14 @@ by adding just one line to `main.py`.
 As an additional tip, you can use HTML *center* tags to center the *navbar* on the page: 
 `<center><|navbar|></center>`
 
-The concept of the *root* page is more advanced in Taipy and will be explored 
-in more detail in Part 2 of this Taipy multi-page series.
+The concept of the *root* page is more advanced in Taipy and will be explored in more detail in 
+Part 2 of this Taipy multi-page series.
 
 ### 2. The navigate function
 
 The `taipy.gui.navigate` function is self-explanatory in its purpose, it is used to navigate to 
 other pages. For example, this is a code snippet of the `navigate` function being used to navigate 
-to the *home* page when the 
-[button](https://docs.taipy.io/en/latest/manuals/gui/viselements/button/) control is clicked:
+to the *home* page when the [button](../../../manuals/gui/viselements/button.md) control is clicked:
 
 ![The navigate function](multipage_application_11.png){width=100%}
 
@@ -149,15 +146,12 @@ in the application beyond what the navbar offers. For example, we can manage:
     depending on the process status. 
    
 2. Direct the user back to the /home page when an exception occurs 
-    by using navigate in
-    [on_exception](https://docs.taipy.io/en/latest/manuals/gui/callbacks/#exception-handling).
+    by using navigate in [on_exception](../../../manuals/gui/callbacks.md#exception-handling).
 
 If you prefer, you can replicate the functionality of the *navbar* using the `navigate` feature 
-with a different control, like a 
-[selector](https://docs.taipy.io/en/latest/manuals/gui/viselements/selector/) control or 
-[tree](https://docs.taipy.io/en/latest/manuals/gui/viselements/tree/) control. 
-In this example, let's combine the `navigate` feature with the 
-[menu](https://docs.taipy.io/en/latest/manuals/gui/viselements/menu/) control 
+with a different control, like a [selector](../../../manuals/gui/viselements/selector.md) 
+control or [tree](../../../manuals/gui/viselements/tree.md) control. In this example, let's 
+combine the `navigate` feature with the [menu](../../../manuals/gui/viselements/menu.md) control
 (a collapsible side panel) to create the following app:
 
 ![The navigate function](multipage_application_11.gif){width=50%}
@@ -175,8 +169,8 @@ We define two properties for the menu control:
 1. *lov={page_names}*: The list of values which may be selected from the menu. 
     In this case, we interpolate the `page_names` variable, which we then assign the keys from 
     `pages` (other than "/") — functionally equivalent to `page_names = ["home", "temperature"]`. 
-    Refer to the [menu](https://docs.taipy.io/en/latest/manuals/gui/viselements/menu/) for more 
-    details, such as for setting icons and labels.
+    Refer to the [menu](../../../manuals/gui/viselements/menu.md) for more details, such as for 
+    setting icons and labels.
 2. *on_action=menu_action*: Assigns the `menu_action` function as the callback function which is 
     executed when the user clicks an item from the menu.
 
