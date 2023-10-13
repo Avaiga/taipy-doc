@@ -37,9 +37,8 @@ The graph involves:
 
 - An input data node named *input_name*.
 
-- A task, referring to the function *build_message()*, that processes the *input_name* data node and outputs a *message* data node.
-
-### Setting It Up
+- A task, referring to the function *build_message()*, that processes the *input_name* data node 
+    and outputs a *message* data node.
 
 1. **Configuration**: Set up the execution graph with the following Python code:
 
@@ -171,17 +170,20 @@ Taipy offers various visual elements that can interact with your Python variable
 environment. It allows you to display variables, modify them, and interact with the application.
 
 Here is a generic example of one: `<|{variable}|visual_element_type|...|>`. *variable* is 
-the main property of the visual element and is usually what is displayed or modified through the visual element.
+the main property of the visual element and is usually what is displayed or modified through the 
+visual element.
 
 In our initial example: 
 
-- *input_name* is bound to an input and text field, allowing the user’s input to be directly stored in the *input_name* variable.
+- *input_name* is bound to an input and text field, allowing the user’s input to be directly 
+    stored in the *input_name* variable.
 
 - *message* is connected to a text field, allowing you to display changing content to the user.
 
-#### Interactivity Through Actions
+### Interactivity Through Actions
 
-Actions, like `on_action=submit_scenario`, allow visual elements like buttons to trigger specific functions, enhancing the interactivity of the application.
+Actions, like `on_action=submit_scenario`, allow visual elements like buttons to trigger 
+specific functions, enhancing the interactivity of the application.
 
 ```python
 def submit_scenario(state):
@@ -192,15 +194,18 @@ def submit_scenario(state):
 
 Every callback, including *submit_scenario()*, receives a `State^` object as its first parameter. 
 This state represents a user's connection and is used to read and set variables while 
-the user is interacting with the program. It makes it possible for Taipy to handle multiple users simultaneously.
+the user is interacting with the program. It makes it possible for Taipy to handle multiple 
+users simultaneously.
 
-While *scenario* is available to everyone using the program, *state.input_name* and *state.input* are specific to the user who interacts with them. 
-This design ensures that each user's actions are separate and efficiently controlled, 
-while variables like *scenario* are global variables.
+While*scenario* is available to everyone using the program, *state.input_name* and 
+*state.input* are specific to the user who interacts with them. This design ensures that each 
+user's actions are separate and efficiently controlled, while variables like *scenario* are 
+global variables.
 
 
-In the *submit_scenario()* function, the *input_name* entered by the user on the interface is saved to the scenario. 
-After submission, the outcome is retrieved and stored in the *message* variable, which is then shown on the user interface due to the connection between them.
+In the *submit_scenario()* function, the *input_name* entered by the user on the interface is 
+saved to the scenario. After submission, the outcome is retrieved and stored in the *message* 
+variable, which is then shown on the user interface due to the connection between them.
 
 ```python
 if __name__ == "__main__":
@@ -209,8 +214,8 @@ if __name__ == "__main__":
     Gui(page).run()
 ```
 
-The main part of the application starts by setting up the Core services, generating a scenario, and starting the GUI, 
-which makes the interactive interface active and functional.
+The main part of the application starts by setting up the Core services, generating a scenario, 
+and starting the GUI, which makes the interactive interface active and functional.
 
 ![GUI Result](result.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 

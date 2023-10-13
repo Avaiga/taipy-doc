@@ -15,7 +15,7 @@ and the front-end would immediately reflect the new string content.
 
 Starting from the code mentioned above, here is how you would declare this new element:
 
-```py hl_lines="8 15-17"
+```python hl_lines="8 15-17"
 from taipy.gui.extension import ElementLibrary, Element, ElementProperty, PropertyType
 
 class ExampleLibrary(ElementLibrary):
@@ -87,7 +87,7 @@ const ColoredLabel = (props: ColoredLabelProps) => {
 export default ColoredLabel;
 ```
 We use the
-[`useDynamicProperty()`](../../../../reference_guiext/modules/#usedynamicproperty)
+[`useDynamicProperty()`](../../../reference_guiext/modules.md#usedynamicproperty)
 hook provided by the Taipy GUI Extension API to retrieve the value of the dynamic
 property. This hook returns the latest updated value.<br/>
 
@@ -129,7 +129,7 @@ In the Markdown definition of the page, we add a button:
 <|Add a character|button|id=addChar|>
 ```
 
-And implement the *on_action* callback to react to the user pressing this button:
+And implement the `on_action` callback to react to the user pressing this button:
 ```py
 def on_action(state, id):
   if id == "addChar":

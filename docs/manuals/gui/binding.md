@@ -1,5 +1,3 @@
-# Binding variables
-
 It will often be useful to display information stored in application data.<br/>
 To achieve this goal, Taipy allows [visual elements](viselements/index.md)
 to relate directly to application variables, display their values, and
@@ -8,7 +6,7 @@ change those variable values.
 Consider the following application:
 
 <a name="first-example"></a>
-```py linenums="1"
+```python linenums="1"
 from taipy import Gui
 
 x = 1234
@@ -23,7 +21,7 @@ The variable `x` contains the value <|{x}|>.
 When this program runs (and a web browser is directed to the running server), the
 root page displays the value of the variable *x*, as it was defined in your code.
 
-## Expressions
+# Expressions
 
 Values that you can use in controls and blocks can be more than raw variable values.
 You can create complete expressions, just like you would use
@@ -50,7 +48,7 @@ and the double of *x* will be displayed on your page.
     right-justification format (`{string:>n}`) does not impact the resulting
     display.
 
-## Scope for variable binding
+# Scope for variable binding
 
 In the tiny example above, the entire application holds a single page.
 The bound variable (*x*) is defined in the same, unique module.
@@ -87,7 +85,7 @@ to import the global variables if they are not used in the Python code of the mo
     We create a *pages* package, where we can create the file `page.py`, which is the module file
     where the page would be declared:
 
-    ```py linenums="1"  title="pages/page.py"
+    ```python linenums="1"  title="pages/page.py"
     from taipy.gui import Markdown
 
     page = Markdown("""# Expression evaluation
@@ -106,7 +104,7 @@ to import the global variables if they are not used in the Python code of the mo
     the page that we just created above. That would be done in the file `main.py`,
     defining the *\_\_main\_\_* module of our application:
 
-    ```py  linenums="1" title="main.py"
+    ```python  linenums="1" title="main.py"
     from taipy.gui import Gui, Markdown
     from pages.page import page
 
@@ -140,7 +138,7 @@ to import the global variables if they are not used in the Python code of the mo
     Nevertheless, the evaluation of the expression is performed properly, using
     those two variables.
 
-### Local callback functions
+## Local callback functions
 
 This principle applies to callback functions as well: when a function name is found
 in a page definition, this function is first searched in the page scope (the module where
@@ -169,7 +167,7 @@ defined.
     (no matter what its name is) and invoke this function from the global *on_init()* callback.
 
     The code for the module would look like this:
-    ```py title="page.py"
+    ```python title="page.py"
 
     ...
     my_variable = ""
@@ -182,10 +180,10 @@ defined.
 
     Note that we have called the initialization function *on_init()*, but that's really just
     a way to make the code easier to understand: what we want to do here is exactly what should
-    be done in the global *on_init()* callback.
+    be done in the global `on_init` callback.
 
     Here is how the main module would invoke this initialization function:
-    ```py title="main.py"
+    ```python title="main.py"
     # Create an alias for on_init() in the page module
     from page import on_init as page_on_init
 
@@ -195,8 +193,8 @@ defined.
 
     Now when the application is initialized from the main module, the global *on_init()* function
     invokes the page module's *on_init()* function with the received *state*. The access to the
-    state in the page module's *on_init()* function will properly impact the variable in the correct
-    page scope.
+    state in the page module's *on_init()* function will properly impact the variable in the
+    correct page scope.
 
 !!! example
     Here is an example of how this local callback binding is done. This example has a main module
@@ -206,7 +204,7 @@ defined.
     The root page also has a button that, when pressed, invokes the callback function
     *button_pressed()*:
 
-    ```py title="main.py"
+    ```python title="main.py"
     from taipy.gui import Gui, Markdown
     from page import sub_page
 
@@ -229,7 +227,7 @@ defined.
     ```
 
     Here is the code for the *page* module, where *sub_page* is defined:
-    ```py title="page.py"
+    ```python title="page.py"
     from taipy.gui import Markdown
 
     def button_pressed(state):
@@ -249,7 +247,7 @@ defined.
     you press the button from the sub page (defined in the *page* module). then it is the function
     *button_pressed()* defined in the *page* module that gets called. 
 
-### Page scope in callbacks
+## Page scope in callbacks
 
 All callback functions are invoked with a state object as their first parameter.<br/>
 From that state, one can access the variables of the application. However, the state
@@ -283,7 +281,7 @@ is defined.
     Similarly, *state["\_\_main\_\_"].x* always refers to the global *x* variable, defined in the
     main module.
 
-## List of values
+# List of values
 
 Some controls (such as [selector](viselements/selector.md) or [tree](viselements/tree.md))
 represent one or several values stored in a *list of values* (or *LoV*, for short).
@@ -328,7 +326,7 @@ property. This will be the original value of the selection in the *LoV* unless
 your control has set the property *value_by_id* to True, then the selected value
 will be the unique identifier of the value in the *LoV*.
 
-### Custom LoVs
+## Custom LoVs
 
 You can create a *LoV* from any series of objects.
 
@@ -377,7 +375,7 @@ used in 'regular' *LoV*s.
       return (version["name"], f"Version {version["name"]} ({version["date"]})")
     ```
 
-### *LoV* for trees
+## *LoV* for trees
 
 The [tree](viselements/tree.md) control needs an additional item in
 each value of the *LoV*: each element of the *LoV* represents a node
@@ -421,7 +419,7 @@ The Markdown fragment that would be used in a page would look like this:
 <|{selected_intrument}|tree|lov={intruments}|>
 ```
 
-## Tabular values
+# Tabular values
 
 The [chart](viselements/chart.md) and [table](viselements/table.md) controls
 represent tabular data. This data can be provided as a
@@ -475,7 +473,7 @@ This is how Taipy internally stores the tabular data:
     In controls that are bound to *data*, the name of the 'y' column of the second
     DataFrame must be the string "1/y" .
 
-## Lambda expressions
+# Lambda expressions
 
 Some control properties can be assigned lambda expressions to simplify the
 code.

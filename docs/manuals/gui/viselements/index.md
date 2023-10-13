@@ -1,5 +1,3 @@
-# Introduction to Visual Elements
-
 *Visual Elements* are user interface objects displayed on a given page.
 Visual elements reflect some application data or give the page some structuring
 or layout information. Most visual elements allow users to interact with the page content.
@@ -22,14 +20,14 @@ may want to jump directly to the list of the available visual elements:
 
 [:material-arrow-right: List of available blocks](blocks.md)
 
-## Properties
+# Properties
 
 Each visual element has a type and a set of properties.
 To add a visual component to a page, appropriate syntax must be used,
 indicating the type of visual element and the
 properties of the element.
 
-### Property name
+## Property name
 
 Every element type has a default property name that holds its 'main'
 representation: a string for a text element, an array for a selector, or
@@ -38,7 +36,7 @@ a numerical value for a slider.
 To set the value for this property, the short syntax for the visual
 element syntax can be used.
 
-### Property value
+## Property value
 
 Every property value can be set to a value that depends on the property type or a
 formatted string literal, also known as an *f-string*. This string may reference variable
@@ -57,12 +55,12 @@ names defined in the code, and the value of the property is set to the evaluated
     [`table`](table.md#the-rebuild-property) controls for more information.
 
 
-## Syntax
+# Syntax
 
 You create visual elements using either a specific Markdown syntax (see the
 `Markdown^` class) or specific HTML tags (see the `Html^` class).
 
-### Markdown
+## Markdown
 
 The basic syntax for creating Taipy constructs in Markdown is: `<|...|...|>` (opening with a
 *less than* character followed by a vertical bar character &#151; sometimes called
@@ -123,8 +121,8 @@ fragment similar to:
     ignored without any warning.
 
 !!! important "Indentation and block elements: element tag identifiers"
-    Markdown depends heavily on text indentation to decide whether or not a new paragraph or section
-    should be created.<br/>
+    Markdown depends heavily on text indentation to decide whether or not a new paragraph or
+    section should be created.<br/>
     When dealing with block elements to create sections on your page, you might be
     tempted to indent the opening element tags, so the Markdown text is easier to read.
 
@@ -157,11 +155,11 @@ fragment similar to:
     Unfortunately, this indentation may break the Markdown parsing, and your page will not look
     how you expected.
 
-    Taipy GUI provides a way for you to simplify the match of a closing element tag with its opening
-    element tag.<br/>
-    You can use, instead of the '<|...|>' sequence, the '<*id*|...|*id*>' where *id* must be a valid
-    Python identifier. Then the parsing of the Markdown content will indicate structural problems
-    (like element tags that don't match), and you can find matching element tags easier.
+    Taipy GUI provides a way for you to simplify the match of a closing element tag with its
+    opening element tag.<br/>
+    You can use, instead of the '<|...|>' sequence, the '<*id*|...|*id*>' where *id* must be a
+    valid Python identifier. Then the parsing of the Markdown content will indicate structural
+    problems (like element tags that don't match), and you can find matching element tags easier.
 
     The example above could use this feature:
     ```
@@ -176,7 +174,7 @@ fragment similar to:
     |main_section>
     ```
 
-#### Some examples
+### Some examples
 
 !!! example "Multiple properties"
     You can have several properties defined in the same control fragment:
@@ -221,7 +219,7 @@ There are very few exceptions to the `<|control_type|...|>` syntax, which
 are described in their respective documentation section. The most obvious exception is the
 [`text`](text.md) control, which can be created without even mentioning its type.
 
-### HTML
+## HTML
 
 If you choose to embed Taipy visual elements into existing HTML pages, you can use the
 following syntax:
@@ -255,7 +253,7 @@ is equivalent to
       In the HTML used by Taipy, you can mention an attribute with no value. It would
       be equivalent to setting it to `True`.
 
-## Generic properties
+# Generic properties
 
 Every visual element type has the following properties:
 
@@ -271,7 +269,7 @@ Every visual element type has the following properties:
 All or most Taipy visual elements expose similar properties that can be used generically
 across your pages.
 
-### The `id` property
+## The `id` property
 
 You can specify an identifier for a specific visual element.
 
@@ -280,11 +278,11 @@ can use it in your CSS selectors. You can look at the [Styling](../styling/index
 section for more information.
 
 !!! note
-    This identifier is also sent to the *on_action* callback if this visual
+    This identifier is also sent to the `on_action` callback if this visual
     element can trigger actions (see [Actions](../callbacks.md#actions)
     for details).
 
-### The `properties` property
+## The `properties` property
 
 There are situations where your visual element may need a lot of different properties.
 This is typically the case for complex visual elements like the
@@ -302,7 +300,7 @@ of the variable that holds that dictionary as the value of the `properties` prop
 
     As this syntax can be cumbersome, you might prefer to define a simple Python dictionary:
 
-    ```py linenums="1"
+    ```python linenums="1"
     dialog_props = {
       "title":       "Select an item in the list",
       "labels":      "Cancel;Validate",
@@ -316,11 +314,11 @@ of the variable that holds that dictionary as the value of the `properties` prop
     <|{show_dialog}|dialog|properties=dialog_props|>
     ```
 
-### The `propagate` property
+## The `propagate` property
 
 There are situations where you don't want a variable bound to a control value (such
 as the knob location of a slider) to be updated immediately when the user manipulates
-the control. You may for example want to check the received value in the *on_change*
+the control. You may for example want to check the received value in the `on_change`
 callback and decide to use this new value or not.<br/>
 This is the purpose of the *propagate* property.
 
@@ -334,5 +332,5 @@ control is updated when the user modifies the value represented by the control.
     value that this function receives is the new requested value, but this value is
     **not** set to the variable bound to the control.
 
-Besides those common properties, every visual element type has a specific set of properties that you
-can use, listed in the documentation page for each visual element.
+Besides those common properties, every visual element type has a specific set of properties that
+you can use, listed in the documentation page for each visual element.

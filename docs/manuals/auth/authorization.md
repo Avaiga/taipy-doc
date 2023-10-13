@@ -199,16 +199,13 @@ information output.
 Taipy GUI Enterprise edition uses role traits to select pages that
 user can display.
 
-The `AuthorizedPage^` class lets you specify a role traits filter where
-both the *success* and *failure* cases must be a page renderer (whether
-a `Markdown^` or an `Html^` instance - see the
-[section on Page Renderers](../gui/pages.md/#defining-the-page-content) for more
-information).<br/>
-Instead of calling `Gui.add_page()` for the page renderer, you will
-use the same API, providing the defined `AuthorizedPage^` instance.</br>
-When the requested page is an `AuthorizedPage^`, the role traits filter
-is triggered so that the relevant page renderer is used to display the
-page that the user can see and interact with.
+The `AuthorizedPage^` class lets you specify a role traits filter where both the *success* and
+*failure* cases must be a page renderer (whether a `Markdown^` or an `Html^` instance - see the
+[section on Page Renderers](../gui/pages.md#defining-the-page-content) for more information).<br/>
+Instead of calling `Gui.add_page()` for the page renderer, you will use the same API, providing the
+defined `AuthorizedPage^` instance.</br>
+When the requested page is an `AuthorizedPage^`, the role traits filter is triggered so that the
+relevant page renderer is used to display the page that the user can see and interact with.
 
 The documentation for `AuthorizedPage^` shows an example of how to use
 this functionality.
@@ -218,11 +215,13 @@ this functionality.
 You can control the access to the functionalities exposed by the entities of Taipy
 Core.
 
-Taipy Core uses four predefined user roles names that can be assigned to users. Each of these predefined roles provide a different set of capabilities and are described in details below.
+Taipy Core uses four predefined user roles names that can be assigned to users. Each of these
+predefined roles provide a different set of capabilities and are described in details below.
 
 !!! note
     "Caution: If the application relies on the LDAP authentication, note that Taipy does
-    not provide functions to populate the predefined user roles to the user's LDAP server. The user is expected to populate the roles themselves."
+    not provide functions to populate the predefined user roles to the user's LDAP server. The user
+    is expected to populate the roles themselves."
 
 ### "TAIPY_READER"
 
