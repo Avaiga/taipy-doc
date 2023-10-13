@@ -11,118 +11,113 @@ a responsive user interface.
 This article discusses the concept of long-running callbacks in Taipy, provides usage examples, 
 and illustrates how they enhance the overall user experience.
 
-# Example 1: Executing a Heavy Task in the Background
+# Running functions in Background
 
 Imagine a situation where a callback starts a duty that requires a lot of resources and time to 
 finish. To make this work, we can use a straightforward approach:
 
-```py
-from taipy.gui import State, invoke_long_callback, notify
- 
-def heavy_function(...):
-    # Do something that takes time...
-    ...
- 
-def on_action(state):
-    notify(state, "info", "Heavy task started")
-    invoke_long_callback(state, heavy_function, [...heavy_function arguments...])
+```python
+    from taipy.gui import State, invoke_long_callback, notify
+     
+    def heavy_function(...):
+        # Do something that takes time...
+        ...
+     
+    def on_action(state):
+        notify(state, "info", "Heavy function started")
+        invoke_long_callback(state, heavy_function, [...heavy_function arguments...])
 ```
 
 In the previous example, the Taipy function called `invoke_long_callback()^` manages the 
-resource-intensive task. It sets up a separate background thread to run the `heavy_function()`, 
-allowing the rest of the application to continue running. 
-The `on_action` function gets activated by a user action, like clicking a button, for instance.
+resource-intensive function. It sets up a separate background thread to run `heavy_function()`, 
+allowing the rest of the application to continue running. The `on_action()` function gets 
+activated by a user action, like clicking a button, for instance.
 
-# Example 2: Monitoring Task Status
+# Monitoring Function Status
 
 Moreover, you can send notifications to the user's browser or update visual elements depending 
-on the status of the ongoing process. Taipy offers a way to receive notifications when the task 
-is complete, as shown below:
+on the status of the ongoing process. Taipy offers a way to receive notifications when the 
+function completes, as shown below:
 
-```py
-...
- 
-def heavy_function_status(state, status):
-    if status:
-        notify(state, "success", "The heavy task has finished!")
-    else:
-        notify(state, "error", "The heavy task has failed")
- 
-def on_action(state, id, action):
-    invoke_long_callback(state, heavy_function, [...heavy_function arguments...],
-                         heavy_function_status)
+```python
+    def heavy_function_status(state, status):
+        if status:
+            notify(state, "success", "The heavy function has finished!")
+        else:
+            notify(state, "error", "The heavy function has failed")
+     
+    def on_action(state, id, action):
+        invoke_long_callback(state, heavy_function, [...heavy_function arguments...],
+                             heavy_function_status)
 ```
 
-In this example, we introduce the *heavy_function_status()* function, which is invoked by the 
+In this example, we introduce the `heavy_function_status()` function, which is invoked by the 
 `invoke_long_callback()^` method. When the callback is finished, this function is called. 
 
 This gives you the opportunity to provide the necessary notifications or make updates to the 
 user interface depending on whether the processing was successful or not.
 
-# Handling heavy_function results: Updating the Application State
+# Handling Heavy Function results
 
-To update the State according to the returned value from *heavy_function()*, you can modify 
-*heavy_function_status()* as follows:
+To update the State according to the returned value from `heavy_function()`, you can modify 
+`heavy_function_status()` as follows:
 
-```py
-def heavy_function_status(state, status, result):
-    if status:
-        notify(state, "success", "The heavy task has finished!")
-        # Actualize the State with the function result
-        state.result = result
-    else:
-        notify(state, "error", "The heavy task has failed")
+```python linenums="1"
+    def heavy_function_status(state, status, result):
+        if status:
+            notify(state, "success", "The heavy function has finished!")
+            # Actualize the State with the function result
+            state.result = result
+        else:
+            notify(state, "error", "The heavy function has failed")
 ```
 
-We added a parameter called *result*, which represents the return value of the 
-*heavy_function()*. When the *heavy_function()* completes successfully (*status* is True), we 
-update the State with the result by assigning it to a state variable 
-(e.g., `state.result = result`). This allows you to access the result in other parts of your 
-application or display it to the user as needed.
+We added a parameter called `result`, which represents the return value of `heavy_function()`. 
+When `heavy_function()` completes successfully (`status` is `True`), we update the State with 
+the result by assigning it to a state variable (cf. line 5). This allows you to access the 
+result in other parts of your application or display it to the user as needed.
 
-Make sure that the *heavy_function()* returns a value. For example:
+Make sure that the `heavy_function()` returns a value. For example:
 
-```py
-def heavy_function(...):
-    ...
-    return result
+```python
+    def heavy_function(...):
+        ...
+        return result
 ```
 
-When you update the State with the result of the *heavy_function()*, you make sure that the user 
-interface shows the result of the resource-intensive task. This creates a smooth and seamless 
+When you update the State with the result of `heavy_function()`, you make sure that the user 
+interface shows the result of the resource-intensive function. This creates a smooth and seamless 
 user experience.
 
-# Example 3: Tracking Task Progress
+# Tracking Task Progress
 
 Occasionally, it's useful to give regular updates on the progress of a long-running task.
 Taipy's `invoke_long_callback()^` provides a convenient method to accomplish this:
 
-```py
-...
- 
-def heavy_function_status(state, status):
-    if isinstance(status, bool):
-        if status:
-            notify(state, "success", "The heavy task has finished!")
+```python linenums="1"
+    def heavy_function_status(state, status):
+        if isinstance(status, bool):
+            if status:
+                notify(state, "success", "The heavy function has finished!")
+            else:
+                notify(state, "error", "The heavy function has failed somehow.")
         else:
-            notify(state, "error", "The heavy task has failed somehow.")
-    else:
-        notify(state, "info", "The heavy task is still running...")
- 
-def on_action(state):
-    invoke_long_callback(state, heavy_function, [...heavy_function arguments...],
-                         heavy_function_status, [...heavy_function_status arguments...],
-                         5000)
+            notify(state, "info", "The heavy function is still running...")
+     
+    def on_action(state):
+        invoke_long_callback(state, heavy_function, [...heavy_function arguments...],
+                             heavy_function_status, [...heavy_function_status arguments...],
+                             5000)
 ```
 
-In the code above, when you include a *period* parameter, the *heavy_function_status()*
+In the code above in line 13, when you include a *period* parameter, the `heavy_function_status()`
 function will be regularly activated at the set interval, such as every 5 seconds. This allows 
 your user interface to show live updates, keeping the end user informed about the ongoing work.
 
 # Conclusion
 
 Taipy's long-running callbacks make it much easier to handle time-consuming tasks in web 
-applications. By running demanding tasks in the background, Taipy ensures that the user 
+applications. By running demanding functions in the background, Taipy ensures that the user 
 interface stays quick to respond and avoids potential communication timeouts. With the option to 
-keep an eye on the task's progress and offer updates, developers can create a smooth user 
+keep an eye on the function's progress and offer updates, developers can create a smooth user 
 experience, even when dealing with hefty operations.
