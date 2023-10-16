@@ -4,7 +4,7 @@ Taipy 3.0 provides a CLI option to update entities from older Taipy versions to 
 is recommended to update the Taipy application code to Taipy 3.0 before executing the
 entities migration.
 
-!!! important "Supported Taipy versions"
+!!! note "Supported Taipy versions"
 
     The migration supports **Taipy 2.0** or newer.
 

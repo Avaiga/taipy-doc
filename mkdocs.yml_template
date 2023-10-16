@@ -8,9 +8,9 @@ repo_name: taipy
 copyright: © [YEAR] Avaiga
 nav:
   - "Install Taipy":
-    - installation/index.md
+    - "Install Taipy": installation/index.md
   - "Getting Started":
-    - getting_started/index.md
+    - "Getting Started": getting_started/index.md
   - "Knowledge Base":
     - "Knowledge Base": knowledge_base/index.md
     - "Tutorials":
@@ -208,7 +208,7 @@ nav:
   - "Release Notes": relnotes.md
   - "Contributing":
     - "Contributing to Taipy": contributing/contributing.md
-    - "Contributors": credits/contributors.md
+    - "Contributors": contributing/contributors.md
     - "Code of conduct": contributing/code_of_conduct.md
 theme:
   name: material

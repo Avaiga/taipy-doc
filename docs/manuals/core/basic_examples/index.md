@@ -127,7 +127,7 @@ Hello Kylian Mbappe!
     method are called to edit and retrieve the data.
 
 
-!!! important
+!!! note
 
     Please refer to the [Getting started with Core](../../../getting_started/getting-started-core/index.md)
     manual for a more realistic use case.

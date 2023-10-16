@@ -48,7 +48,7 @@ To expose the Taipy REST APIs, the Taipy REST server must first be started.
    * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
    ```
 
-!!! Note "When running the Taipy REST server, you will also run `Core^`"
+!!! note "When running the Taipy REST server, you will also run `Core^`"
 
 !!! info "Running the REST service"
     To run the Taipy REST service with the other Taipy services, please refer to the
@@ -63,7 +63,7 @@ HTTP requests to the various APIs exposed. The exhaustive list of APIs is availa
 The following presents a simple usage example of a Taipy REST API. It shows how to retrieve all data nodes
 using either the curl command line REST client or a python REST client (the `requests` package).
 
-!!! Example
+!!! example
 
     === "Curl"
         ```shell

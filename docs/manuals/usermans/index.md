@@ -8,7 +8,7 @@ If you are just starting with Taipy, you may want to look at the
 [Getting Started document](../../getting_started/installation.md)
 in order to see a step-by-step example of a complete Taipy application.
 
-!!! important "Supported Python versions"
+!!! note "Supported Python versions"
 
     Taipy requires **Python 3.8** or newer.
 

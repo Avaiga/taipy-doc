@@ -22,7 +22,7 @@ In this example, we scaffold a new application using the default Taipy template,
 minimalized Taipy application.
 
 
-!!! Info
+!!! info
 
   In the prompt, we can see the question and the default value in the square brackets.
   We can provide an answer or press enter to use the default value.

@@ -1,4 +1,4 @@
-!!! important "Supported Python versions"
+!!! note "Supported Python versions"
 
     Taipy requires **Python 3.8** or newer.
 

@@ -72,7 +72,7 @@ elements to be inserted in the resulting page.
 The most common use of this construct is to create controls. Taipy expects the control type
 name to appear between the two first vertical bar characters (as in `<|control|...}>`).
 
-!!! important "Shortcut for the default property"
+!!! note "Shortcut for the default property"
     If the first fragment text is not the name of a control type, Taipy will consider this
     fragment to be the default value for the default property of the control, whose type name
     must then appear as the second element.
@@ -120,7 +120,7 @@ fragment similar to:
     If you set a property that a visual element does not recognize, it is
     ignored without any warning.
 
-!!! important "Indentation and block elements: element tag identifiers"
+!!! note "Indentation and block elements: element tag identifiers"
     Markdown depends heavily on text indentation to decide whether or not a new paragraph or
     section should be created.<br/>
     When dealing with block elements to create sections on your page, you might be
@@ -293,7 +293,7 @@ difficult to read. Something you can do about this is create a Python dictionary
 contains all the key-value pairs for your properties (name and value), then use the name
 of the variable that holds that dictionary as the value of the `properties` property.
 
-!!! Example
+!!! example
 
     Say your Markdown content needs the following control:
     `<|dialog|title=Select an item in the list|open={show_dialog}|labels=Cancel;Validate|page_id=page|close_label=Cancel|>`

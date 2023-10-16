@@ -36,7 +36,7 @@ code. This configuration can be done using methods from the `Config^` class. Thi
 be used during the application development phase. It overrides the default configuration:
 the default configuration applies if some values are not provided.
 
-!!! Example "Design of the application to configure"
+!!! example "Design of the application to configure"
 
     ![scenarios](../pic/scenarios.svg){ align=left }
 

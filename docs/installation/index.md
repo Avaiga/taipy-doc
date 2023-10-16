@@ -1,14 +1,14 @@
 ---
+title: Install Taipy
 hide:
   - navigation
 ---
 
-# Install Taipy
 Welcome to the installation section of the Taipy web application builder! This section will 
 guide you through the seamless and straightforward process of setting up and deploying your own 
 powerful web applications.
 
-## Prerequisite
+# Prerequisite
 
 Before installing Taipy, ensure you have Python (version 3.8 or above) and 
 [pip](https://pip.pypa.io) installed on your system. If you don't have pip installed, you can 
@@ -33,7 +33,7 @@ $ conda install pip
 
 To install Taipy, you have several options depending on your needs and preferences.
 
-## Installing Taipy - Stable release
+# Installing Taipy - Stable release
 
 The preferred method to install Taipy is by using **pip**. Open your terminal or command prompt 
 and run the following command:
@@ -44,7 +44,7 @@ $ pip install taipy
 
 This command will download and install the most recent stable release of Taipy.
 
-## Installing Taipy in a Conda Environment
+# Installing Taipy in a Conda Environment
 
 Conda is an open-source package management system and environment management system that runs on 
 Windows, macOS, and Linux. 
@@ -65,7 +65,7 @@ environment, follow these steps:
     $ pip install taipy
     ```
 
-## Installing Taipy from Source
+# Installing Taipy from Source
 
 If you want to work with the latest development version or contribute to the project, you can 
 install Taipy from the source code.

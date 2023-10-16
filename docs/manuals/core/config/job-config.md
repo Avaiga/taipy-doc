@@ -36,13 +36,13 @@ The _development_ mode can be activated with the following config:
     mode = "development"
     ```
 
-!!! Note
+!!! note
 
     Note that if no mode is configured, the development mode is used.
 
 # Standalone mode
 
-!!! Warning
+!!! warning
 
     We do not encourage using standalone mode in an interactive Python environment such as Jupyter
     Notebook or iPython. However, if you find the need for it, please note that when using the
@@ -110,7 +110,7 @@ For example, the following configuration will allow Taipy to run up to eight `Jo
     nb_of_workers = "8:int"
     ```
 
-!!! Note
+!!! note
 
     If no value is provided in the _nb_of_workers_ setting in the configuration, Taipy will set this value to 1.
 

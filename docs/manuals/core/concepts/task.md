@@ -27,7 +27,7 @@ the task configuration `TaskConfig^` that must be provided when instantiating a 
     predictions**_ as input data nodes and returns the _**production orders**_ as output.
 
 
-!!! Important
+!!! note
     The data nodes _sales history_, _current month_, and _capacity_ are considered as **input**
     data nodes since no task computes them.<br/>
     The _trained model_ and _sales predictions_' data nodes are considered as **intermediate** data nodes while

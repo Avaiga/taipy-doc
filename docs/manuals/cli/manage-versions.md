@@ -89,7 +89,7 @@ d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:1
 1.0                                    Experiment             2023-01-12 09:10:35
 ```
 
-!!! Warning
+!!! warning
 
     You can not use an existing version as the new version name, since it may cause different
     versions to overlap each other.

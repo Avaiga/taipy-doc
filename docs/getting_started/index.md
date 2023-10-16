@@ -17,7 +17,7 @@ first application with ease.
     $ pip install taipy
     ```
 
-!!! info "Other installation options"
+??? info "Other installation options"
 
     For alternative installation methods or if you're lacking Python or pip, refer to the 
     [installation page](../installation/index.md).

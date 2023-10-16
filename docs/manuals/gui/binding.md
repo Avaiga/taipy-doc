@@ -66,7 +66,7 @@ module, then the variable is sought in the *\_\_main\_\_* module (typically, whe
 We call *page scopes* the context where the variables are located: first, the module
 where the page is defined, then the main module.
 
-!!! important "Defining a page scope"
+!!! note "Defining a page scope"
     A page scope, where variables used in a page definition are searched, is the module
     where the page *instance* (an instance of the `Markdown^` or the `Html^` classes),
     **not** the text of the page.
@@ -150,7 +150,7 @@ rely on page scopes to determine which is invoked when a callback is triggered: 
 GUI favors the callback functions that are defined in the module where the page itself is
 defined.
 
-!!! important "Global callback functions"
+!!! note "Global callback functions"
     The way you can define local callback functions does not apply to global callbacks
     such as `on_action()`. There can be only one global callback, defined in the main
     module.

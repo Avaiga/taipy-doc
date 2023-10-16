@@ -36,7 +36,7 @@ path to the file and the Python class used to represent a CSV line.
     history**_, the _**trained model**_, the _**current month**_, the _**sales predictions**_, the production
     _**capacity**_, and the _**production orders**_.
 
-!!! Note
+!!! note
 
     Taipy proposes various predefined _data nodes_ corresponding to the most popular _storage types_. More details on
     the [Data node configuration page](../config/data-node-config.md)

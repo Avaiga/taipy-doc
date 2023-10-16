@@ -41,7 +41,7 @@ Taipy Enterprise edition supports three authentication protocols:
      See the [LDAP Authenticator](#ldap-authenticator) below for more information.
 
 
-!!! Note "Default authenticator"
+!!! note "Default authenticator"
     Most applications will use a single authenticator. This authenticator is called
     the *default authenticator* and is created automatically when `login()^` is called
     for the first time or when any `Authenticator^` for any protocol is created,
@@ -91,7 +91,7 @@ are provided.
 To create a *None* authenticator, you can instantiate an `Authenticator^` object
 setting the *protocol* argument of the constructor to "none".
 
-!!! Note "Using Taipy configuration to set default authenticator"
+!!! note "Using Taipy configuration to set default authenticator"
     To set the *default authenticator* to `none` you can use the authentication configuration either in Python or TOML:
 
     === "Python configuration"
@@ -147,7 +147,7 @@ to the username when calling `Authenticator.login()^`:
    - `authenticator.login("user1", "anything_else")` will raise the `InvalidCredentials^`
      exception, rejecting the login attempt.
 
-!!! Note "Using Taipy configuration to set default authenticator"
+!!! note "Using Taipy configuration to set default authenticator"
     To set the *default authenticator* to a Taipy authenticator with roles, you can use the authentication
     configuration either in Python or Toml:
 
@@ -209,7 +209,7 @@ Note that these values are the one resulting from the example of  the
 Calling `login("user1", "pass123")^` will result in a valid `Credentials^`
 instance where the assigned roles is an empty set.
 
-!!! Note "Using Taipy configuration to set default authenticator"
+!!! note "Using Taipy configuration to set default authenticator"
     To set the *default authenticator* to a Taipy authenticator with passwords, you can use the authentication
     configuration either in Python or Toml:
 
@@ -280,7 +280,7 @@ user3 - Logged in. Roles={'role1', 'role2', 'TAIPY_ADMIN'}
 Note that, because "user3" was not constrained by any password, we need
 to use the username as the password value for this user.
 
-!!! Note "Using Taipy configuration to set default authenticator"
+!!! note "Using Taipy configuration to set default authenticator"
     To set the *default authenticator* to a Taipy authenticator with roles and passwords, you can use the authentication
     configuration either in Python or Toml:
 
@@ -405,11 +405,11 @@ to properly connect to the directory service:
   If you are using the Taipy configuration, the value for this argument
   is retrieved if needed from _**Config.authentication_config.base_dn**_.
 
-!!! important "LDAP server support"
+!!! note "LDAP server support"
     Using the LDAP authentication protocol assumes that an LDAP server is set up.
     Taipy provides no support for setting up the server.
 
-!!! Note "Using Taipy configuration to set default authenticator"
+!!! note "Using Taipy configuration to set default authenticator"
     To set the *default authenticator* to an LDAP authenticator you can use the authentication configuration either in
     Python or Toml:
 

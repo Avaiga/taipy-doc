@@ -28,7 +28,7 @@ class ContributorsStep(SetupStep):
         self.TEMPLATE_SUFFIX = "_template"
 
     def enter(self, setup: Setup):
-        self.PATH = os.path.join(setup.docs_dir, "credits", "contributors.md")
+        self.PATH = os.path.join(setup.docs_dir, "contributing", "contributors.md")
 
     def get_id(self) -> str:
         return "contributors"
@@ -136,7 +136,6 @@ class ContributorsStep(SetupStep):
             return requests.get(url, headers=headers)
         else:
             return requests.get(url)
-
 
     def exit(self, setup: Setup):
         pass
