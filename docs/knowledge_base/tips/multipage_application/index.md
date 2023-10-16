@@ -25,7 +25,7 @@ start creating your own intuitive and insightful applications with Taipy.
 While it's possible to create a multi-page Taipy application in a single script, it's often a 
 good practice to organize your code into a folder structure like this:
 
-```py
+```python
 app/
 ├─ main.py
 ├─ pages/
@@ -45,7 +45,7 @@ interact with each other in the second part of this series.
 
 Now, let's examine the code for each of our page modules.
 
-```py
+```python
 ### home.py
  
 from taipy.gui import Markdown
@@ -59,7 +59,7 @@ home_md = Markdown("""
 """)
 ```
 
-```py
+```python
 ### temperature.py
  
 from taipy.gui import Markdown
@@ -86,7 +86,7 @@ Usually, if we were making a simple one-page application, we'd give one of our p
 `[`Gui` constructor](Gui.init()^)` constructor. For example, to turn `home.py` into a one-page Taipy application, 
 we could add these lines:
 
-```py
+```python
 ### home.py, as a standalone one-page app
  
 from taipy.gui import Markdown, Gui
@@ -105,6 +105,23 @@ applications in a sub-folder named `pages`.
 
 Now, the next step is to create and define our main module, `main.py` within the `app/` folder. 
 After that, we'll initialize our multi-page Gui object.
+
+```python
+### main.py
+ 
+from taipy.gui import Gui
+from pages.home import home_md
+from pages.temperature import temperature_md
+ 
+pages = {
+ 
+"home": home_md,
+"temperature": temperature_md,
+ 
+}
+ 
+Gui(pages=pages).run(dark_mode=False)
+```
 
 We started by importing two Markdown objects, `home_md` and `temperature_md` from the two 
 scripts we previously created. Then, we made a dictionary called `pages`:
@@ -142,7 +159,7 @@ the Taipy [`navbar`](../../../manuals/gui/viselements/navbar.md) control. To inc
 navbar into the home page, all you need to do is add a single line to the beginning of the 
 *home_md* page definition:
 
-```py
+```python
 ### home.py, with navbar
  
 from taipy.gui import Markdown
@@ -170,7 +187,7 @@ alternative that does not require any code modification in any of the pages is t
 Rather than modifying each page to include the navbar, we can also simply modify `main.py` to 
 utilize the [root page](../../../manuals/gui/pages.md#root-page):
 
-```py
+```python
 ### main.py, with root page navbar
  
 from taipy.gui import Gui
@@ -202,7 +219,7 @@ other pages. For example, this is a code snippet of the `navigate()^` function b
 navigate to the *home* page when the [button](../../../manuals/gui/viselements/button.md) 
 control is clicked:
 
-```py
+```python
 from taipy.gui import navigate
  
 md = "<|Click to go Home|button|on_action=go_home|>"
@@ -233,7 +250,7 @@ combine the `navigate` feature with the [menu](../../../manuals/gui/viselements/
 
 The menu navigation was implemented by modifying `main.py` to the following:
 
-```py
+```python
 ### main.py, with menu navigation
  
 from taipy.gui import Gui, navigate
@@ -278,7 +295,7 @@ work to expressly create that functionality.
 
 Finally, the simplest way to implement navigation in Taipy is with a hyperlink:
 
-```py
+```python
 ### home.py, hyperlink to temperature
  
 from taipy.gui import Markdown
