@@ -50,6 +50,7 @@
   --md-paper-shadow: 0 0 0 1px var(--md-default-border-color);
   --md-paper-shadow-hover: 0 0 24px var(--md-default-fg-color--lighter);
   --tp-content-card-padding: 1.5rem;
+  --tp-content-card-image-size: 7.5rem;
   --tp-pill-shadow-active: 0 0 0 1px var(--md-primary-fg-color);
 
   /* Animations */
@@ -326,6 +327,16 @@
   font-size: var(--md-body-font-size--small);
 }
 
+.tp-tag{
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--md-primary-fg-color);
+  font-size: 0.6rem;
+  font-family: monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
 /* ---------- ADMONITIONS ---------- */
 
 .md-typeset .admonition{
@@ -527,7 +538,7 @@ a.tp-pill{
   justify-content: flex-start;
   align-items: stretch;
   padding: var(--tp-content-card-padding);
-  border-radius: 0.5em;
+  border-radius: 0.8rem;
   background: var(--md-paper-bg-color);
   color: var(--md-default-fg-color);
   overflow: hidden;
@@ -639,6 +650,18 @@ a.tp-pill{
 }
 .tp-content-card--small .tp-content-card-icon{
   height: 2rem;
+}
+
+.tp-content-card-image{
+  margin-top: 0;
+  width: var(--tp-content-card-image-size);
+  height: var(--tp-content-card-image-size) !important;
+  border-radius: 0.4rem;
+  box-shadow: var(--md-paper-shadow);
+  object-fit: cover;
+}
+.tp-content-card--small .tp-content-card-image{
+  --tp-content-card-image-size: 6rem;
 }
 
 .tp-content-card-readmore{
