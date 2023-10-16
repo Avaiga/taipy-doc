@@ -25,9 +25,9 @@ Below is the list of all the optional arguments:
 
 ## List capabilities with the --help option
 
-To display the help message of the `manage-version` command, you can run `taipy help manage-versions` command.
-Alternatively, you can use the *--help* or *-h* options by running `taipy manage-versions --help`
-or `taipy manage-versions -h`.
+To display the help message of the `manage-version` command, you can run 
+`taipy help manage-versions` command. Alternatively, you can use the *--help* or *-h* options by 
+running `taipy manage-versions --help` or `taipy manage-versions -h`.
 
 ```console
 $ taipy help manage-versions
@@ -64,7 +64,8 @@ d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:1
 
 In the example above, there are 5 versions of the application:
 
-- The development version "d74ec95e-6b98-4612-b50b-d171599fa3e9" which is also the latest version used.
+- The development version "d74ec95e-6b98-4612-b50b-d171599fa3e9" which is also the latest 
+    version used.
 - Two experiment versions "7a24dbb8-bdf6-4c84-9ddf-7b921abc5df9" and "3.0".
 - Two production versions "1.0" and "2.0".
 

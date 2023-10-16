@@ -57,15 +57,16 @@ Taipy Enterprise edition supports three authentication protocols:
     To summarize:
 
     - The first `Authenticator^` that is created becomes the application's
-      default authenticator.
+        default authenticator.
     - When `login()^` is called:
 
-        - A default authenticator is created if there is none, based on the authentication configuration.
+        - A default authenticator is created if there is none, based on the authentication
+            configuration.
         - If Taipy could not find the configuration allowing to create such a default
-          authenticator, a *None* authenticator is created and set as the default
-          authenticator.
+            authenticator, a *None* authenticator is created and set as the default
+            authenticator.
         - The default authenticator's `(Authenticator.)login()^` function is invoked
-          with the arguments that were provided to `login()^`.
+            with the arguments that were provided to `login()^`.
 
 
 Beside their specific parameters, all authenticators have two parameters that you
@@ -92,7 +93,8 @@ To create a *None* authenticator, you can instantiate an `Authenticator^` object
 setting the *protocol* argument of the constructor to "none".
 
 !!! note "Using Taipy configuration to set default authenticator"
-    To set the *default authenticator* to `none` you can use the authentication configuration either in Python or TOML:
+    To set the *default authenticator* to `none` you can use the authentication configuration 
+    either in Python or TOML:
 
     === "Python configuration"
 
@@ -120,9 +122,8 @@ The Taipy Authenticator is an internal authenticator originally designed for
 testing purposes, so an application can test authentication and authorization features
 without having to install and deploy a real authentication server.
 
-A Taipy Authenticator is created by the
-[`Authenticator` constructor](Authenticator.__init__()^) when invoked with the
-*protocol* argument set to "taipy".
+A Taipy Authenticator is created by the [`Authenticator` constructor](Authenticator.__init__()^) 
+when invoked with the *protocol* argument set to "taipy".
 
 You can set the *roles*' argument to a dictionary that associates a set of role
 names to every username you want to grant login access to.<br/>
@@ -148,8 +149,8 @@ to the username when calling `Authenticator.login()^`:
      exception, rejecting the login attempt.
 
 !!! note "Using Taipy configuration to set default authenticator"
-    To set the *default authenticator* to a Taipy authenticator with roles, you can use the authentication
-    configuration either in Python or Toml:
+    To set the *default authenticator* to a Taipy authenticator with roles, you can use the 
+    authentication configuration either in Python or Toml:
 
     === "Python configuration"
 
@@ -183,16 +184,14 @@ to the username when calling `Authenticator.login()^`:
         ```
 ### Password-protected authentication
 
-The Taipy Authenticator can password-protect the creation of credentials,
-using the *passwords*' argument of the
-[`Authenticator` constructor](Authenticator.__init__()^). This argument expects a
-dictionary that associates a username with a password. However, in order not to
-expose these passwords, the password values need to be hashed before they are given
-to the application (in the `Authenticator^` constructor -- using the *passwords*
-or in the authentication configuration).<br/>
-In the *passwords* argument, the dictionary actually associates a username
-with a hashed value for the password. See the [section below](#creating-hashed-passwords)
-to learn how to create hashed password values.
+The Taipy Authenticator can password-protect the creation of credentials, using the *passwords*' 
+argument of the [`Authenticator` constructor](Authenticator.__init__()^). This argument expects 
+a dictionary that associates a username with a password. However, in order not to expose these 
+passwords, the password values need to be hashed before they are given to the application (in the 
+`Authenticator^` constructor -- using the *passwords* or in the authentication configuration).<br/>
+In the *passwords* argument, the dictionary actually associates a username with a hashed value 
+for the password. See the [section below](#creating-hashed-passwords) to learn how to create 
+hashed password values.
 
 You can indicate what are the declared users' passwords:
 ```
@@ -206,12 +205,13 @@ authenticator = Authenticator("taipy", passwords=passwords)
 Note that these values are the one resulting from the example of  the
 [creating hashed passwords](#creating-hashed-passwords) section below.
 
-Calling `login("user1", "pass123")^` will result in a valid `Credentials^`
-instance where the assigned roles is an empty set.
+Calling `login("user1", "pass123")^` will result in a valid `Credentials^` instance where the 
+assigned roles is an empty set.
 
 !!! note "Using Taipy configuration to set default authenticator"
-    To set the *default authenticator* to a Taipy authenticator with passwords, you can use the authentication
-    configuration either in Python or Toml:
+
+    To set the *default authenticator* to a Taipy authenticator with passwords, you can use the 
+    authentication configuration either in Python or Toml:
 
     === "Python configuration"
 
@@ -242,10 +242,9 @@ instance where the assigned roles is an empty set.
         taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
         ```
 
-Of course, you can combine both roles and password for any given user, using
-both the *roles* and *passwords* arguments of the
-[`Authenticator` constructor](Authenticator.__init__()^), or using its
-*config* argument:
+Of course, you can combine both roles and password for any given user, using both the *roles* 
+and *passwords* arguments of the [`Authenticator` constructor](Authenticator.__init__()^), or 
+using its *config* argument:
 ```
 users={
     "roles": {
@@ -277,12 +276,13 @@ user2 - Logged in. Roles={'role2', 'TAIPY_ADMIN'}
 user3 - Logged in. Roles={'role1', 'role2', 'TAIPY_ADMIN'}
 ```
 
-Note that, because "user3" was not constrained by any password, we need
-to use the username as the password value for this user.
+Note that, because "user3" was not constrained by any password, we need to use the username as 
+the password value for this user.
 
 !!! note "Using Taipy configuration to set default authenticator"
-    To set the *default authenticator* to a Taipy authenticator with roles and passwords, you can use the authentication
-    configuration either in Python or Toml:
+
+    To set the *default authenticator* to a Taipy authenticator with roles and passwords, you 
+    can use the authentication configuration either in Python or Toml:
 
     === "Python configuration"
 
@@ -325,35 +325,32 @@ to use the username as the password value for this user.
 
 ### Creating hashed passwords
 
-Taipy provides two ways of creating a hashed password provided the plain text
-representation of the password:
+Taipy provides two ways of creating a hashed password provided the plain text representation of 
+the password:
 
-   - API: You can use function `hash_taipy_password()^` that, given a plain
-     text string, returns the hashed value for it.
+- API: You can use function `hash_taipy_password()^` that, given a plain text string, returns 
+    the hashed value for it.
 
-   - CLI: The `taipy.auth` module has an entry point that can be invoked from
-     the CLI, using the `-m` option of Python, and the `-p` option of the
-     `taipy.auth` module. Below is an example of how to use the CLI option.
+- CLI: The `taipy.auth` module has an entry point that can be invoked from
+    the CLI, using the `-m` option of Python, and the `-p` option of the
+    `taipy.auth` module. Below is an example of how to use the CLI option.
 
-Note that only the first 16 characters of the plain text password are
-used when creating the hashed password.
+Note that only the first 16 characters of the plain text password are used when creating the 
+hashed password.
 
-Before you use any of these two ways for creating hashed passwords, you must come
-up with a secret hash value. This value is used to generate unique hashed passwords.
-This value must be set to the 'TAIPY_AUTH_HASH' environment variable in
-order to generate hashed passwords, as well as when running the application,
-so passwords can be verified.<br/>
+Before you use any of these two ways for creating hashed passwords, you must come up with a 
+secret hash value. This value is used to generate unique hashed passwords. This value must be 
+set to the 'TAIPY_AUTH_HASH' environment variable in order to generate hashed passwords, as well 
+as when running the application, so passwords can be verified.<br/>
 The value of 'TAIPY_AUTH_HASH' can be any string value.</br>
-The value of 'TAIPY_AUTH_HASH' **must** be the same when generating the
-hashed passwords and when running the application that invokes the `login()^`
-function.
+The value of 'TAIPY_AUTH_HASH' **must** be the same when generating the hashed passwords and 
+when running the application that invokes the `login()^` function.
 
 !!! example "Create a hashed password using the API"
-    Here is an example of how you can create a hashed password using
-    the Taipy API.
+    
+    Here is an example of how you can create a hashed password using the Taipy API.
 
-    We assume that the environment variable 'TAIPY_AUTH_HASH' is set
-    to "Taipy".
+    We assume that the environment variable 'TAIPY_AUTH_HASH' is set to "Taipy".
 
     ```
     from taipy.auth import hash_taipy_password
@@ -372,11 +369,10 @@ function.
     ```
 
 !!! example "Create a hashed password using the CLI"
-    Here is an example of how you can create hashed passwords using
-    the Taipy CLI.
 
-    Here again, we assume that the environment variable 'TAIPY_AUTH_HASH' is
-    set to "Taipy".
+    Here is an example of how you can create hashed passwords using the Taipy CLI.
+
+    Here again, we assume that the environment variable 'TAIPY_AUTH_HASH' is set to "Taipy".
 
     ```
     <b>$ </b>python -m taipy.auth -p pass123 pass1234
@@ -387,31 +383,32 @@ function.
     hash(pass1234)=JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe
     ```
 
-    Note that the hashed values are the same as in the first example. This is
-    entirely due to the fact that we have used the same secret hashing value
-    in 'TAIPY_AUTH_HASH'.
+    Note that the hashed values are the same as in the first example. This is entirely due to 
+    the fact that we have used the same secret hashing value in 'TAIPY_AUTH_HASH'.
 
 ## LDAP Authenticator
 
 Taipy also provide support for LDAP authentication.
 
-The LDAP authenticator has two specific parameters that need to be provided in order
-to properly connect to the directory service:
+The LDAP authenticator has two specific parameters that need to be provided in order to properly 
+connect to the directory service:
 
 - *server*: the URL of the LDAP server that we want to connect to.<br/>
-  If you are using the Taipy configuration, the value for this argument
-  is retrieved if needed from _**Config.authentication_config.server**_.
+    If you are using the Taipy configuration, the value for this argument
+    is retrieved if needed from _**Config.authentication_config.server**_.
 - *base_dn*: the base distinguished name for that LDAP server.<br/>
-  If you are using the Taipy configuration, the value for this argument
-  is retrieved if needed from _**Config.authentication_config.base_dn**_.
+    If you are using the Taipy configuration, the value for this argument
+    is retrieved if needed from _**Config.authentication_config.base_dn**_.
 
 !!! note "LDAP server support"
-    Using the LDAP authentication protocol assumes that an LDAP server is set up.
-    Taipy provides no support for setting up the server.
+  
+    Using the LDAP authentication protocol assumes that an LDAP server is set up. Taipy provides 
+    no support for setting up the server.
 
 !!! note "Using Taipy configuration to set default authenticator"
-    To set the *default authenticator* to an LDAP authenticator you can use the authentication configuration either in
-    Python or Toml:
+    
+    To set the *default authenticator* to an LDAP authenticator you can use the authentication 
+    configuration either in Python or Toml:
 
     === "Python configuration"
 

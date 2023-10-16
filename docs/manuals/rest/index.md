@@ -1,67 +1,73 @@
 # Taipy REST
 
-The Taipy REST package is a python library made to provide a REST server on top of [Taipy Core](../about.
-md#taipy-core).
-The purpose is to automate the use of Taipy Core features by exposing REST APIs.
+The Taipy REST package is a python library made to provide a REST server on top of 
+[Taipy Core](../core/index.md). The purpose is to automate the use of Taipy Core features by 
+exposing REST APIs.
 
-The Taipy REST APIs allows users to create, read, update, run and remove Taipy entities (including cycles, scenarios,
-sequences, tasks, jobs and data nodes) through REST APIs. For more details about Taipy entities, please refer to [Core
-concepts documentation](../core/concepts/index.md).
+The Taipy REST APIs allows users to create, read, update, run and remove Taipy entities 
+(including cycles, scenarios, sequences, tasks, jobs and data nodes) through REST APIs. For more 
+details about Taipy entities, please refer to 
+[Core concepts documentation](../core/concepts/index.md).
 
-It is particularly useful when it comes to integrating a Taipy application in a more complex IT ecosystem.
+It is particularly useful when it comes to integrating a Taipy application in a more complex IT 
+ecosystem.
 
 ## Running Taipy REST server
 
 To expose the Taipy REST APIs, the Taipy REST server must first be started.
 
-1. Configure your Taipy Core application. For more details on Taipy Core configuration, please refer to the
-   [Core configuration documentation](../core/config/index.md).
+1. Configure your Taipy Core application. For more details on Taipy Core configuration, please 
+    refer to the [Core configuration documentation](../core/config/index.md).
 
-2. The REST server do not require any configuration in most of the use cases. However, as an advanced user, you may
-   want to configure your Taipy REST server. Indeed, Taipy REST server relies
-   on [Flask](https://flask.palletsprojects.com/en/2.2.x/#). The three following Flask parameters are exposed by Taipy:
-       - `testing` is a boolean parameter used to run the Flask application on testing mode. Default value is False.
-       - `env` is an optional string parameter used as the application environment.
-       - `secret_key` is an optional parameter used as the application server secret key.<br>
-   <br>
-   These parameters can be set using the `GlobalAppConfig^` properties. Here is an example:
-   ``` python
-   from taipy import Config
-
-   Config.configure_global_app(testing=True,
-                               env="production",
-                               secret_key="5f352379324c22463451387a0aec5d2f")
-   ```
+2. The REST server do not require any configuration in most of the use cases. However, as an 
+    advanced user, you may want to configure your Taipy REST server. Indeed, Taipy REST server 
+    relies on [Flask](https://flask.palletsprojects.com/en/2.2.x/#). The three following Flask 
+    parameters are exposed by Taipy:
+        - `testing` is a boolean parameter used to run the Flask application on testing mode. 
+            Default value is False.
+        - `env` is an optional string parameter used as the application environment.
+        - `secret_key` is an optional parameter used as the application server secret key.<br>
+    <br>
+    These parameters can be set using the `GlobalAppConfig^` properties. Here is an example:
+    ``` python
+    from taipy import Config
+ 
+    Config.configure_global_app(testing=True,
+                                env="production",
+                                secret_key="5f352379324c22463451387a0aec5d2f")
+    ```
 
 3. Finally, you can run Taipy REST server as follows:
-   ``` python
-   import taipy as tp
-
-   rest_service = tp.Rest()
-   tp.run(rest_service)
-   ```
-   Below is the output of the previous Python code execution.
-   ```
-   * Serving Flask app 'taipy.rest.app' (lazy loading)
-   * Environment: None
-   * Debug mode: off
-   * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
-   ```
+    ``` python
+    import taipy as tp
+ 
+    rest_service = tp.Rest()
+    tp.run(rest_service)
+    ```
+    Below is the output of the previous Python code execution.
+    ```
+    * Serving Flask app 'taipy.rest.app' (lazy loading)
+    * Environment: None
+    * Debug mode: off
+    * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+    ```
 
 !!! note "When running the Taipy REST server, you will also run `Core^`"
 
 !!! info "Running the REST service"
+
     To run the Taipy REST service with the other Taipy services, please refer to the
     [taipy.run() function](../run-deploy/run/running_services.md) page.
 
 ## Using Taipy REST APIs
 
-Once your Taipy REST server is up and running, the REST APIs are exposed. Any REST client can be used to make some
-HTTP requests to the various APIs exposed. The exhaustive list of APIs is available on the
-[REST API](../reference_rest/index.md) reference manual.
+Once your Taipy REST server is up and running, the REST APIs are exposed. Any REST client can be 
+used to make some HTTP requests to the various APIs exposed. The exhaustive list of APIs is 
+available on the [REST API](../reference_rest/index.md) reference manual.
 
-The following presents a simple usage example of a Taipy REST API. It shows how to retrieve all data nodes
-using either the curl command line REST client or a python REST client (the `requests` package).
+The following presents a simple usage example of a Taipy REST API. It shows how to retrieve all 
+data nodes using either the curl command line REST client or a python REST client (the 
+`requests` package).
 
 !!! example
 
@@ -69,11 +75,12 @@ using either the curl command line REST client or a python REST client (the `req
         ```shell
             curl -X GET https://localhost:5000/api/v1/datanodes/
         ```
-        In this example the REST server is exposing APIs on `localhost` on the port `5000`. To retrieve all data nodes,
-        we need to call the `datanodes` entry point without any parameter using the `GET` HTTP method.
+        In this example the REST server is exposing APIs on `localhost` on the port `5000`. To 
+        retrieve all data nodes, we need to call the `datanodes` entry point without any 
+        parameter using the `GET` HTTP method.
 
-        The output of the previous call is the list of all existing data nodes in `JSON` format. In the present
-        example, we have two data nodes returned as follows:
+        The output of the previous call is the list of all existing data nodes in `JSON` format. 
+        In the present example, we have two data nodes returned as follows:
         ``` JSON
         [{
             "last_edit_date": null,
@@ -112,11 +119,12 @@ using either the curl command line REST client or a python REST client (the `req
 
             response = requests.get("https://localhost:5000/api/v1/datanodes/")
         ```
-        In this example the REST server is exposing APIs on `localhost` on the port `5000`. To retrieve all data nodes,
-        we need to call the `datanodes` entry point without any parameter using the `GET` HTTP method.
+        In this example the REST server is exposing APIs on `localhost` on the port `5000`. To 
+        retrieve all data nodes, we need to call the `datanodes` entry point without any 
+        parameter using the `GET` HTTP method.
 
-        The output of the previous call is the list of all existing data nodes in `JSON` format. In the present
-        example, we have two data nodes returned as follows:
+        The output of the previous call is the list of all existing data nodes in `JSON` format.
+        In the present example, we have two data nodes returned as follows:
         ``` JSON
         [{
             "last_edit_date": null,

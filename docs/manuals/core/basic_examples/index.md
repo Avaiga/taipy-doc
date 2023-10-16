@@ -98,10 +98,9 @@ to the function `build_message()` and writes the result in the output data node.
 Line 6 reads and prints the output data node *message* that has been written by the execution
 of the scenario `zinedine_scenario`.
 
-In line 8, we use the same scenario configuration to instantiate a second scenario: `kylian_scenario`.
-Similarly, in lines 9-11, we write some value in its input data node, submit it and print the result written
-in its output data node.
-
+In line 8, we use the same scenario configuration to instantiate a second scenario: 
+`kylian_scenario`. Similarly, in lines 9-11, we write some value in its input data node, submit 
+it and print the result written in its output data node.
 
 Here is the complete python code corresponding to the example:
 <a href="./code_example/basic_example.py" download>`basic_example.py`</a>
@@ -118,16 +117,17 @@ Hello Kylian Mbappe!
 !!! note
 
     This third step consists in calling the various Core APIs to access, manage and submit the Taipy
-    entities. Typically it is implemented in Python functions that are called by a graphical interface
-    built with [Taipy GUI](../../gui/index.md).
+    entities. Typically it is implemented in Python functions that are called by a graphical 
+    interface built with [Taipy GUI](../../gui/index.md).
 
     For example, the `tp.create_scenario()` or the `tp.submit()`
-    methods are called when clicking respectively on a "create scenario" or "submit scenario" buttons.
-    When displaying a data node in a graphical component (chart, table, etc. ) the `read()` and `write()`
-    method are called to edit and retrieve the data.
+    methods are called when clicking respectively on a "create scenario" or "submit scenario" 
+    buttons. When displaying a data node in a graphical component (chart, table, etc. ) the 
+    `read()` and `write()` method are called to edit and retrieve the data.
 
 
 !!! note
 
-    Please refer to the [Getting started with Core](../../../getting_started/getting-started-core/index.md)
-    manual for a more realistic use case.
+    Please refer to the 
+    [Scenario management](../../../knowledge_base/tutorials/scenario_management_overview/index.md)
+    tutorial for a more realistic use case.

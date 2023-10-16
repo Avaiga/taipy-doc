@@ -11,34 +11,38 @@ Two datasets have also to be downloaded (
 
 In this section, we will explore the intricate relationship between
 [Scopes](../../../../manuals/core/concepts/scope.md) and 
-[Cycles](../../../../manuals/core/concepts/cycle.md), two core concepts 
-that helps manage data nodes and scenarios effectively in Taipy.
+[Cycles](../../../../manuals/core/concepts/cycle.md), two core concepts that help manage data 
+nodes and scenarios effectively in Taipy.
 
 
 # Cycles
 
-[Cycles](../../../../manuals/core/concepts/cycle.md) have been introduced to reflect 
-business situations companies frequently encounter and can be extremely useful. 
+[Cycles](../../../../manuals/core/concepts/cycle.md) have been introduced to reflect business 
+situations companies frequently encounter and can be extremely useful. 
 
-For example, a big fast-food chain wants to predict its store sales every week. When they create a scenario 
-for a particular week, it has to be linked to that specific week. Usually, there will be just one scenario 
-used for all the scenarios created for a particular week. 
+For example, a big fast-food chain wants to predict its store sales every week. When they create 
+a scenario for a particular week, it has to be linked to that specific week. Usually, there will 
+be just one scenario used for all the scenarios created for a particular week. 
 This special 'official' scenario is called the 'Primary' scenario in Taipy.
 
 Note that Cycles can be ignored entirely if the business problem has no time frequency. 
 
 ## Advantages of Cycles:
 
-- **Time-Based Organization:** Cycles facilitate the organization and analysis of scenarios over specific periods.
+- **Time-Based Organization:** Cycles facilitate the organization and analysis of scenarios over 
+    specific periods.
 
-- **Primary Scenario Identification:** Cycles allow the designation of a primary scenario for reference or official analysis.
+- **Primary Scenario Identification:** Cycles allow the designation of a primary scenario for
+    reference or official analysis.
 
 - **Enhanced Data Consistency:**
-   They ensure data and parameter consistency across scenarios linked to a specific time period.
+    They ensure data and parameter consistency across scenarios linked to a specific time period.
 
-- **Custom Frequency:** Cycles can be customized to various frequencies to align with specific business needs.
+- **Custom Frequency:** Cycles can be customized to various frequencies to align with specific 
+    business needs.
 
-- **Scenario Comparison:** Cycles make it easier to compare and analyze different scenarios within the same time frame.
+- **Scenario Comparison:** Cycles make it easier to compare and analyze different scenarios 
+    within the same time frame.
 
 ## Example: Filtering by Month
 
@@ -64,7 +68,7 @@ def filter_by_month(df, month):
 
         - Add the frequency property for the scenario and put "MONTHLY:FREQUENCY" (DAYLY, WEEKLY, MONTHLY, YEARLY)
         
-        - Load the new [configuration](../config.toml) in the code
+        - Load the new [configuration](./config.toml) in the code
 
     === "Python configuration"
 
@@ -92,11 +96,12 @@ def filter_by_month(df, month):
         ```
 
 
-Since we have specified `frequency=Frequency.MONTHLY`, the corresponding scenario when
-created, is automatically attached to the correct period (month). 
+Since we have specified `frequency=Frequency.MONTHLY`, the corresponding scenario when created, 
+is automatically attached to the correct period (month). 
 
-The Cycle which a Scenario belongs to is based on the _creation_date_ of the scenario. It can be "attached" 
-to a specific cycle by manually setting its _creation_date_, as we are doing in the following example.
+The Cycle which a Scenario belongs to is based on the _creation_date_ of the scenario. It can be 
+"attached" to a specific cycle by manually setting its _creation_date_, as we are doing in the 
+following example.
 
 
 ```python
@@ -110,9 +115,9 @@ scenario_2 = tp.create_scenario(scenario_cfg,
                                 name="Scenario 2022/10/5")
 ```
 
-Scenario 1 and Scenario 2 are two separate scenario entities created using the same scenario configuration. 
-They are part of the same Cycle but have different data nodes. By default, each scenario instance 
-has its own data node instances, and they are not shared with any other scenario. 
+Scenario 1 and Scenario 2 are two separate scenario entities created using the same scenario 
+configuration. They are part of the same Cycle but have different data nodes. By default, each 
+scenario instance has its own data node instances, and they are not shared with any other scenario. 
 
 ## Interplay between Scopes and Cycles
 
@@ -122,7 +127,8 @@ hand, determines how data nodes are shared within these cycles and scenarios.
 # Scopes
 
 Sharing data nodes between entities allows you to organize and manage your data better. 
-It avoids data dupplications and allows Taipy to better manage execution (see [skippable tasks](...)).
+It avoids data duplications and allows Taipy to better manage execution (see 
+[skippable tasks](../../../tips/skippable_tasks/index.md)).
 The developer may decide:
 
 - `Scope.SCENARIO` (_default_): Having one data node for each scenario.
@@ -168,7 +174,8 @@ Let's change the configuration of our data nodes:
         ```
 
 
-Defining the _month_ of scenario 1 will also determine the _month_ of scenario 2 since they share the same Data Node. 
+Defining the _month_ of scenario 1 will also determine the _month_ of scenario 2 since they 
+share the same Data Node. 
 
 ```python
 scenario_1.month.write(10)
@@ -188,7 +195,8 @@ Month Data Node of Scenario 2: 10
 ```
 
 In this unusual example where both scenarios are in the same cycle and all their data nodes 
-are at least with a Cycle Scope, executing one is the same as executing the other as they share all their data nodes.
+are at least with a Cycle Scope, executing one is the same as executing the other as they share 
+all their data nodes.
 
 # Going further into Cycles
 
