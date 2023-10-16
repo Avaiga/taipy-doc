@@ -1,10 +1,10 @@
 
-Are you tired of messy and confusing dashboards that make it hard to find the information you need? 
-If so, it might be a good idea to switch to multi-page applications!
+Are you tired of messy and confusing dashboards that make it hard to find the information you 
+need? If so, it might be a good idea to switch to multi-page applications!
 
 ![Multi-page Application](multipage_application.png){width=100%}
 
-Multipage applications allow you to organize your data and visualizations into separate pages, 
+Multi-page applications allow you to organize your data and visualizations into separate pages, 
 making it easier to navigate and focus on specific insights. At Taipy, we understand how 
 important clear and effective data visualization is, which is why we've created a multi-page 
 feature that lets you build user-friendly dashboards that are easy to understand.
@@ -25,7 +25,7 @@ start creating your own intuitive and insightful applications with Taipy.
 While it's possible to create a multi-page Taipy application in a single script, it's often a 
 good practice to organize your code into a folder structure like this:
 
-```python
+```console
 app/
 ├─ main.py
 ├─ pages/
@@ -45,9 +45,7 @@ interact with each other in the second part of this series.
 
 Now, let's examine the code for each of our page modules.
 
-```python
-### home.py
- 
+```python title="home.py"
 from taipy.gui import Markdown
  
 text = "Welcome to the Taipy multi-page tutorial app!"
@@ -59,9 +57,7 @@ home_md = Markdown("""
 """)
 ```
 
-```python
-### temperature.py
- 
+```python title="temperature.py"
 from taipy.gui import Markdown
  
 def fahrenheit_to_celsius(fahrenheit):
@@ -72,6 +68,10 @@ celsius = fahrenheit_to_celsius(fahrenheit)
  
 temperature_md = Markdown("""
 # Fahrenheit to Celsius
+
+Farenheit: <|{fahrenheit}|>
+Celsius: <|{celsius}|>
+""")
 ```
 
 No need to worry if you don't understand all the code details! What's important is that both 
@@ -83,12 +83,11 @@ pages work independently:
 Usually, if we were making a simple one-page application, we'd give one of our pages (Taipy 
 [Markdown](../../../manuals/reference/taipy.gui.Markdown.md) or 
 [HTML](../../../manuals/reference/taipy.gui.Html.md) objects) to the 
-`[`Gui` constructor](Gui.init()^)` constructor. For example, to turn `home.py` into a one-page Taipy application, 
+`[`Gui` constructor](Gui.init()^)` constructor. For example, to turn `home.py` into a one-page 
+Taipy application, 
 we could add these lines:
 
-```python
-### home.py, as a standalone one-page app
- 
+```python title="home.py, as a standalone one-page app"
 from taipy.gui import Markdown, Gui
  
 # same code as before
@@ -106,21 +105,14 @@ applications in a sub-folder named `pages`.
 Now, the next step is to create and define our main module, `main.py` within the `app/` folder. 
 After that, we'll initialize our multi-page Gui object.
 
-```python
-### main.py
- 
+```python title="main.py"
 from taipy.gui import Gui
 from pages.home import home_md
 from pages.temperature import temperature_md
  
-pages = {
+pages = {"home": home_md, "temperature": temperature_md}
  
-"home": home_md,
-"temperature": temperature_md,
- 
-}
- 
-Gui(pages=pages).run(dark_mode=False)
+Gui(pages=pages).run()
 ```
 
 We started by importing two Markdown objects, `home_md` and `temperature_md` from the two 
@@ -159,9 +151,7 @@ the Taipy [`navbar`](../../../manuals/gui/viselements/navbar.md) control. To inc
 navbar into the home page, all you need to do is add a single line to the beginning of the 
 *home_md* page definition:
 
-```python
-### home.py, with navbar
- 
+```python title="home.py, with navbar"
 from taipy.gui import Markdown
  
 text = "Welcome to the converter app!"
@@ -187,9 +177,7 @@ alternative that does not require any code modification in any of the pages is t
 Rather than modifying each page to include the navbar, we can also simply modify `main.py` to 
 utilize the [root page](../../../manuals/gui/pages.md#root-page):
 
-```python
-### main.py, with root page navbar
- 
+```python title="main.py, with root page navbar"
 from taipy.gui import Gui
 from pages.home import home_md
 from pages.temperature import temperature_md
@@ -200,7 +188,7 @@ pages = {
     "temperature": temperature_md,
 }
  
-Gui(pages=pages).run(dark_mode=False)
+Gui(pages=pages).run()
 ```
 
 Since every page inherits the root page, you can easily make every page inherit the navbar control 
@@ -250,9 +238,7 @@ combine the `navigate` feature with the [menu](../../../manuals/gui/viselements/
 
 The menu navigation was implemented by modifying `main.py` to the following:
 
-```python
-### main.py, with menu navigation
- 
+```python title="main.py, with menu navigation"
 from taipy.gui import Gui, navigate
 from pages.home import home_md
 from pages.temperature import temperature_md
@@ -269,7 +255,7 @@ def menu_action(state, id, action, payload):
     navigate(state, page)
  
 gui = Gui(pages=pages)
-gui.run(dark_mode=False, run_browser=False, use_reloader=True)
+gui.run(run_browser=False, use_reloader=True)
 ```
 
 Unlike `navbar` which automatically populates its *lov* (list of values) with the page names 
@@ -295,9 +281,7 @@ work to expressly create that functionality.
 
 Finally, the simplest way to implement navigation in Taipy is with a hyperlink:
 
-```python
-### home.py, hyperlink to temperature
- 
+```python title="main.py, with hyperlink to temperature page"
 from taipy.gui import Markdown
  
 home_md = Markdown("""
