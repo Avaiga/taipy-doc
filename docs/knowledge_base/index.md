@@ -231,7 +231,10 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Sales Dashboard </h4>
-        <p> ? </p>
+        <p> Check out our Sales Dashboard demo. It reads Excel files and shows valuable insights.
+            You can filter data by city, customer, and gender to find specific metrics and use 
+            two dynamic charts for trend analysis.
+        </p>
       </div> 
     </a>
   </li>
@@ -242,7 +245,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Tweet Generation </h4>
-        <p> ? </p>
+        <p> Experience the AI-powered Tweet Generation. Create compelling Tweets effortlessly 
+            using GPT-3's Davinci engine for text and DALL·E for images. 
+        </p>
       </div> 
     </a>
   </li>
@@ -253,7 +258,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Real-time Face Recognition </h4>
-        <p> ? </p>
+        <p> Explore real-time face detection and recognition demo. Learn how to create custom UI 
+            components and use OpenCV for accurate face identification.
+        </p>
       </div> 
     </a>
   </li>
@@ -264,7 +271,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Sentiment Analysis: Detect emotional tones from a text </h4>
-        <p> ? </p>
+        <p> Explore the power of Taipy's sentiment analysis capabilities with our two-page 
+            application. Analyze user input and uploaded text to uncover sentiments effortlessly. 
+        </p>
       </div> 
     </a>
   </li>
@@ -275,7 +284,10 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Optimize Bar Cut Sizes </h4>
-        <p> ? </p>
+        <p> Try out our Bar Cut Optimization demo. It uses Taipy to optimize bar cut sizes for two 
+            scenarios with distinct algorithms that reduces raw material waste in a visually 
+            intuitive way.
+        </p>
       </div> 
     </a>
   </li>
@@ -286,7 +298,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Image Classification </h4>
-        <p> ? </p>
+        <p> Explore our interactive image classification application built with Taipy, Nvidia CUDA, 
+            and TensorFlow.
+        </p>
       </div> 
     </a>
   </li>
@@ -297,7 +311,10 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Churn Classification </h4>
-        <p> ? </p>
+        <p> Explore our Churn Classification demo. Use Taipy for data analysis, model management,
+            and model comparison in churn prediction. Witness the capabilities of Taipy in 
+            streamlining and improving decision-making.
+        </p>
       </div> 
     </a>
   </li>
@@ -308,7 +325,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Production Planning </h4>
-        <p> ? </p>
+        <p> Discover our Production Planning demo application that optimize production, reduce 
+            costs, and simulate manufacturing scenarios. 
+        </p>
       </div> 
     </a>
   </li>
@@ -319,7 +338,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Stock Visualization </h4>
-        <p> ? </p>
+        <p> Explore the Stock Visualization Dashboard that leverages Taipy GUI and Prophet to 
+            visualize historical stock data and make predictions over 5 years.
+        </p>
       </div> 
     </a>
   </li>
@@ -330,7 +351,10 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Covid Dashboard </h4>
-        <p> ? </p>
+        <p> Discover our minimalist yet powerful COVID-19 dashboard. View and forecast COVID-19
+            data for various countries, interact with maps, and gain insights into the global 
+            pandemic impact.
+        </p>
       </div> 
     </a>
   </li>
@@ -341,7 +365,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Movie Genre Selector </h4>
-        <p> ? </p>
+        <p> Explore Movie Genre Selector demo. See how this user-friendly tool helps you 
+            effortlessly discover movies from your favorite movie genres.
+        </p>
       </div> 
     </a>
   </li>
@@ -357,7 +383,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Scenarios </h4>
-        <p> ? </p>
+        <p> A Taipy scenario represents a run that can be an instance of a business problem to 
+            solve on data and parameter sets.
+        </p>
       </div> 
     </a>
   </li>
@@ -368,7 +396,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Share your App with Colab and Ngrok </h4>
-        <p> ? </p>
+        <p> Learn how to share on the Internet your Taipy Application created on Google Colab (a 
+            high-performance Notebook with CPU and GPU access for Deep Learning), using Ngrok.
+        </p>
       </div> 
     </a>
   </li>
@@ -379,7 +409,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Jupyter Notebooks </h4>
-        <p> ? </p>
+        <p> Optimize your coding experience with Taipy in Jupyter Notebooks. Learn essential 
+            functions for seamless front-end updates without the need to restart the kernel. 
+        </p>
       </div> 
     </a>
   </li>
@@ -390,7 +422,10 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Long-running Callbacks </h4>
-        <p> ? </p>
+        <p> Discover the 'long-running callbacks' feature of Taipy GUI, ensuring responsiveness 
+            during lengthy tasks. This article provides practical examples, highlighting the 
+            potential for improved user experiences.        
+        </p>
       </div> 
     </a>
   </li>
@@ -401,7 +436,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Multi-page Applications </h4>
-        <p> ? </p>
+        <p> Organize your data flows and visualizations in multi-pages applications, resulting in 
+            user-friendly and intuitive user interface.
+        </p>
       </div> 
     </a>
   </li>
@@ -412,7 +449,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Using tables </h4>
-        <p> ? </p>
+        <p> Discover the power of Taipy front-end tables – your go-to for data presentation and 
+            control. Learn key settings and features for effortless table creation within data 
+            applications. </p>
       </div> 
     </a>
   </li>
@@ -423,7 +462,10 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Data Nodes </h4>
-        <p> ? </p>
+        <p> Explore Taipy data nodes and understand their central role in accessing data from 
+            various sources. This article serves as your gateway to comprehending data nodes 
+            in Taipy.
+        </p>
       </div> 
     </a>
   </li>
@@ -434,7 +476,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Stylekit </h4>
-        <p> ? </p>
+        <p> Learn how to tailor your Taipy applications appearance with the CSS StyleKit. Easily 
+            change the visual style with pre-made stylesheets, CSS variables, and utility classes.
+        </p>
       </div> 
     </a>
   </li>
@@ -445,7 +489,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Skippable tasks </h4>
-        <p> ? </p>
+        <p> Explore the 'skippable' task feature to improve your efficiency in pipeline 
+            orchestration.
+        </p>
       </div> 
     </a>
   </li>
@@ -456,7 +502,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Callbacks </h4>
-        <p> ? </p>
+        <p> Discover the on-change callbacks in Taipy. Understand how these Python functions 
+            turn your user interface into a fully interactive multi-user web application. 
+        </p>
       </div> 
     </a>
   </li>
@@ -467,7 +515,8 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       </header>
       <div class="tp-content-card-body">
         <h4> Taipy Cloud </h4>
-        <p> ? </p>
+        <p> Share your application on the web. Learn the simplicity of deploying and hosting your 
+            Taipy application on the Taipy Cloud. </p>
       </div> 
     </a>
   </li>
