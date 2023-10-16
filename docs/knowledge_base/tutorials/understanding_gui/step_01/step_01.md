@@ -5,8 +5,7 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 !!! warning "For Notebooks"
 
-    The "Getting Started" Notebook is available
-    [here](../../../../getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI,
+    The Notebook is available [here](../getting_started.ipynb). In Taipy GUI,
     the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 # Step 1: First Web page

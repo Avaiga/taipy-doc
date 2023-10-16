@@ -2,7 +2,8 @@
 
     Taipy requires **Python 3.8** or newer.
 
-Welcome to the **Tutorial** for using Taipy frontend. This guide will demonstrate how to utilize Taipy to build an interactive web application.
+Welcome to the **Tutorial** for using Taipy frontend. This guide will demonstrate how to utilize
+Taipy to build an interactive web application.
 
 ![GUI application](step_07/result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
@@ -14,9 +15,9 @@ Taipy aims to simplify web application development:
 
 - Offers intuitive visualization using Markdown syntax.
 
-In each part of the **"Tutorial"** we'll emphasize the basic principles of *Taipy*. 
-It's important to note that each step builds on the code from the previous one. 
-By the end of the final step, you'll be equipped with the ability to create your own Taipy application.
+In each part of the **"Tutorial"** we'll emphasize the basic principles of *Taipy*. It's 
+important to note that each step builds on the code from the previous one. By the end of the 
+final step, you'll be equipped with the ability to create your own Taipy application.
 
 ## Before we begin
 
@@ -27,8 +28,8 @@ $ pip install taipy
 ```
 
 Once you finish step 5, the application will include a Natural Language Processing (NLP) algorithm 
-for demonstration purposes. Note that this algorithm is compatible only with Python versions 3.8 to 3.10. 
-To incorporate this NLP feature, you'll need to install Transformers and Torch. 
+for demonstration purposes. Note that this algorithm is compatible only with Python versions 3.8 
+to 3.10. To incorporate this NLP feature, you'll need to install Transformers and Torch. 
 However, if you prefer, you can proceed with the tutorial guide without using this algorithm.   
 
 ``` console
@@ -46,11 +47,14 @@ $ pip install transformers
 
 ## Using Notebooks
 
-This **Tutorial** is for Python scripts (*.py*) only. If you want to use **Jupyter Notebooks**, download this [notebook](../../../../getting_started/getting-started-gui/getting_started.ipynb).
+This **Tutorial** is for Python scripts (*.py*) only. If you want to use **Jupyter Notebooks**, 
+download this [notebook](./getting_started.ipynb).
 
 ## Taipy Studio
 
-[Taipy Studio](../../../manuals/studio/index.md) is a VS Code extension that provides an auto-completion of Taipy visual elements. Creating a Taipy application can be done more easily and quickly through Taipy Studio.
+[Taipy Studio](../../../manuals/studio/index.md) is a VS Code extension that provides an 
+auto-completion of Taipy visual elements. Creating a Taipy application can be done more easily 
+and quickly through Taipy Studio.
 
 So, without further delay, let's begin to code!
 
