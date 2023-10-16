@@ -47,7 +47,7 @@ Follow our tutorials and get the core concepts of Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="scenario_management_overview">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-icon" src="images/icon-video.svg">
+        <img class="tp-content-card-icon" src="images/icon-code.svg">
       </header>
       <div class="tp-content-card-body">
         <h4>Scenario management Overview</h4>
@@ -75,7 +75,7 @@ Follow our tutorials and get the core concepts of Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="markdown_syntax">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-icon" src="images/icon-code.svg">
+        <img class="tp-content-card-icon" src="images/icon-video.svg">
       </header>
       <div class="tp-content-card-body">
         <h4>Single-page application using augmented Markdown syntax</h4>
@@ -91,7 +91,7 @@ Follow our tutorials and get the core concepts of Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="data_dashboard">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-icon" src="images/icon-code.svg">
+        <img class="tp-content-card-icon" src="images/icon-video.svg">
       </header>
       <div class="tp-content-card-body">
         <h4> Interactive Data Dashboard </h4>
@@ -106,7 +106,7 @@ Follow our tutorials and get the core concepts of Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="charts">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-icon" src="images/icon-code.svg">
+        <img class="tp-content-card-icon" src="images/icon-video.svg">
       </header>
       <div class="tp-content-card-body">
         <h4> Change line types using charts </h4>
@@ -121,7 +121,7 @@ Follow our tutorials and get the core concepts of Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="graphical_pages">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-icon" src="images/icon-code.svg">
+        <img class="tp-content-card-icon" src="images/icon-video.svg">
       </header>
       <div class="tp-content-card-body">
         <h4> Manage multiple pages </h4>
@@ -135,7 +135,7 @@ Follow our tutorials and get the core concepts of Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="partials">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-icon" src="images/icon-code.svg">
+        <img class="tp-content-card-icon" src="images/icon-video.svg">
       </header>
       <div class="tp-content-card-body">
         <h4> Organize your application with Partials, Dialogs, and Panes </h4>
@@ -150,7 +150,7 @@ Follow our tutorials and get the core concepts of Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="scenario_mgt_concepts">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-icon" src="images/icon-code.svg">
+        <img class="tp-content-card-icon" src="images/icon-video.svg">
       </header>
       <div class="tp-content-card-body">
         <h4> Scenario management basic concepts </h4>
@@ -165,7 +165,7 @@ Follow our tutorials and get the core concepts of Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="execution">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-icon" src="images/icon-code.svg">
+        <img class="tp-content-card-icon" src="images/icon-video.svg">
       </header>
       <div class="tp-content-card-body">
         <h4> Submit Scenarios and Tasks </h4>
