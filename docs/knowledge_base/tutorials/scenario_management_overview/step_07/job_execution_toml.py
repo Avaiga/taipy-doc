@@ -14,7 +14,7 @@ def add(nb):
     return nb + 10
 
 
-Config.load('config_07.toml')
+Config.load('config.toml')
 Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
 
 

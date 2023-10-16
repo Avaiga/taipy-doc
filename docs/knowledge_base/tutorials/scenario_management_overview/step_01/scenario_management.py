@@ -32,7 +32,7 @@ predictions_cfg = Config.configure_task("predict",
 scenario_cfg = Config.configure_scenario(id="my_scenario", 
                                                     task_configs=[predictions_cfg])
 
-Config.export('config_01.toml')
+Config.export('config.toml')
 
 if __name__ == '__main__':
     # Run of the Core
