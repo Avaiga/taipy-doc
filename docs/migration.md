@@ -9,6 +9,39 @@ were published.
 
 # From 2.x to 3.0
 
+In Taipy Core 3.0 we deprecated the `pipeline` concept in favor of [sequence](./manuals/core/entities/sequence-mgt.md). This also means that `configure_pipeline` from Taipy Config was removed, making it necessary to update your config code. Take for instance the following config on `Taipy 2.4`:
+
+```python linenums="1"
+from taipy import Config
+
+# Omiting multiply_task_cfg creation
+
+pipeline_cfg = Config.configure_pipeline(
+  "pipeline_1",
+  task_configs=[multiply_task_cfg]
+)
+
+scenario_cfg = Config.configure_scenario(
+  "multiply_scenario",
+  pipeline_configs=[pipeline_cfg]
+)
+```
+
+Now, `configure_scenario` takes task configs as parameter in place of pipeline configs, so to update the config above to `Taipy 3.0` is just a matter of:
+
+```python linenums="1"
+from taipy import Config
+
+# Omiting multiply_task_cfg creation
+scenario_cfg = Config.configure_scenario(
+  "multiply_scenario",
+  task_configs=[pipeline_cfg]
+)
+```
+
+After migrating the code config, we recommend that you take advantage of `Taipy CLI`
+[migration tool](./manuals/cli/migrate-entities.md).
+
 In Taipy GUI 3.0, the `on_action` callback signature was unified across all controls: the third
 parameter (*action*) was dropped. The *payload* dictionary parameter that used to be in fourth
 place is now in third place and contains an *action* key that is set to the action name if you used
