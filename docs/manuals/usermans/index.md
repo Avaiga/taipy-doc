@@ -1,5 +1,3 @@
-# About Taipy's User Manuals
-
 This User Manual covers all the topics and concepts that you can find in Taipy. For each topic, 
 we are trying to provide as many examples as possible so that you as a Taipy user can perform a 
 specific task.
@@ -12,7 +10,7 @@ complete Taipy application.
 
     Taipy requires **Python 3.8** or newer.
 
-## Quick Access
+# Quick Access
 
 These topics are the most visited ones, we thought you’d like to have a glance at them!
 
@@ -45,7 +43,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
   </div>
 </div>
 
-## Graphical User Interface (GUI) - `taipy.gui`
+# Graphical User Interface (GUI) - `taipy.gui`
 
 The `taipy.gui^` package allows you to design an effective Graphic User Interface.
 It provides many interactive widgets, controls, and presentative elements to enhance the
@@ -53,7 +51,7 @@ user’s experience.
 
 [:material-arrow-right: GUI User Manual](../gui/index.md)
 
-## Taipy Core - `taipy.core`
+# Taipy Core - `taipy.core`
 
 The `taipy.core^` package is a Python library designed to build powerful and customized 
 data-driven back-end applications. It provides the necessary tools to help Python developers 
@@ -68,7 +66,7 @@ end-user through user-defined scenarios, interactive data, smart job orchestrati
 
 [:material-arrow-right: Description of Taipy Core entities](../core/entities/index.md)
 
-## Taipy REST - `taipy.rest`
+# Taipy REST - `taipy.rest`
 
 The `taipy.rest` package allows you to access Taipy Core functionalities such as scenarios 
 management, sequences and task orchestration, data management, etc., through a dedicated REST API.
@@ -78,6 +76,6 @@ efficiently.
 
 [:material-arrow-right: Taipy REST User Manual](../rest/index.md)
 
-## Deployment
+# Deployment
 
 [:material-arrow-right: Running & Deploying section](../run-deploy/index.md)

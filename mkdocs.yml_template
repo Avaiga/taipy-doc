@@ -72,9 +72,9 @@ nav:
         - "Callbacks in Taipy": knowledge_base/tips/the_on_change_callback/index.md
         - "Taipy Cloud": knowledge_base/tips/taipy_cloud_deploy/index.md
   - "Manuals":
-    - manuals/index.md
+    - "About Taipy's Manuals": manuals/index.md
     - "User Manuals":
-      - manuals/usermans/index.md
+      - "About Taipy's User Manuals": manuals/usermans/index.md
       - Taipy GUI:
           - manuals/gui/index.md
           - "Pages": manuals/gui/pages.md
