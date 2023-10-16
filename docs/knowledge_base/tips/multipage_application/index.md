@@ -25,7 +25,13 @@ start creating your own intuitive and insightful applications with Taipy.
 While it's possible to create a multi-page Taipy application in a single script, it's often a 
 good practice to organize your code into a folder structure like this:
 
-![Building a Basic Multi-Page Application](multipage_application_2.png){width=100%}
+```py
+app/
+├─ main.py
+├─ pages/
+│ ├─ home.py
+│ ├─ temperature.py
+```
 
 In this arrangement, every submodule in the **pages** folder (like `home.py` and `temperature.py`) 
 holds the code for each page in our application. We're demonstrating with just two pages in this 
@@ -39,9 +45,34 @@ interact with each other in the second part of this series.
 
 Now, let's examine the code for each of our page modules.
 
-![Defining the Pages](multipage_application_3.png){width=100%}
+```py
+### home.py
+ 
+from taipy.gui import Markdown
+ 
+text = "Welcome to the Taipy multi-page tutorial app!"
+ 
+home_md = Markdown("""
+# Home
+ 
+<|{text}|>
+""")
+```
 
-![Defining the Pages](multipage_application_4.png){width=100%}
+```py
+### temperature.py
+ 
+from taipy.gui import Markdown
+ 
+def fahrenheit_to_celsius(fahrenheit):
+    return (fahrenheit - 32) * 5 / 9
+ 
+fahrenheit = 100
+celsius = fahrenheit_to_celsius(fahrenheit)
+ 
+temperature_md = Markdown("""
+# Fahrenheit to Celsius
+```
 
 No need to worry if you don't understand all the code details! What's important is that both 
 pages work independently:
@@ -55,7 +86,17 @@ Usually, if we were making a simple one-page application, we'd give one of our p
 `taipy.gui.Gui` constructor. For example, to turn `home.py` into a one-page Taipy application, 
 we could add these lines:
 
-![Defining the Pages](multipage_application_5.png){width=100%}
+```py
+### home.py, as a standalone one-page app
+ 
+from taipy.gui import Markdown, Gui
+ 
+# same code as before
+ 
+home_md = Markdown(…) # same content as before
+ 
+Gui(page=home_md).run() # or simply, Gui(home_md).run()
+```
 
 ## Running the Multi-Page Application
 
@@ -65,7 +106,22 @@ applications in a sub-folder named `pages`.
 Now, the next step is to create and define our main module, `main.py` within the `app/` folder. 
 After that, we'll initialize our multi-page Gui object.
 
-![Defining a Multi-Page Application](multipage_application_6.png){width=100%}
+```py
+### main.py
+ 
+from taipy.gui import Gui
+from pages.home import home_md
+from pages.temperature import temperature_md
+ 
+pages = {
+ 
+“home”: home_md,
+“temperature”: temperature_md,
+ 
+}
+ 
+Gui(pages=pages).run(dark_mode=False)
+```
 
 We started by importing two Markdown objects, `home_md` and `temperature_md` from the two 
 scripts we previously created. Then, we made a dictionary called `pages`:
@@ -79,6 +135,7 @@ multi-page application working!
 
 If you open your web browser and go to **localhost:5000** (assuming you're using the 
 [default port](../../../manuals/reference/taipy.gui.Gui.md)), you'll see the following:
+
 
 ![Defining a Multi-Page Application](multipage_application_7.png){width=50%}
 
@@ -103,7 +160,21 @@ the Taipy [`navbar`](../../../manuals/gui/viselements/navbar.md) control. To inc
 navbar into the home page, all you need to do is add a single line to the beginning of the 
 *home_md* page definition:
 
-![The navbar](multipage_application_9.png){width=100%}
+```py
+### home.py, with navbar
+ 
+from taipy.gui import Markdown
+ 
+text = "Welcome to the converter app!"
+ 
+home_md = Markdown("""
+<|navbar|>
+ 
+# Home
+ 
+<|{text}|>
+""")
+```
 
 By default, the navbar control automatically creates an entry for each page in the `pages`
 dictionary, requiring no further required specification of properties - making it a quick and 
@@ -117,7 +188,21 @@ alternative that does not require any code modification in any of the pages is t
 Rather than modifying each page to include the navbar, we can also simply modify `main.py` to 
 utilize the [root page](../../../manuals/gui/pages.md#root-page):
 
-![The navbar](multipage_application_10.png){width=100%}
+```py
+### main.py, with root page navbar
+ 
+from taipy.gui import Gui
+from pages.home import home_md
+from pages.temperature import temperature_md
+ 
+pages = {
+    "/": "<|navbar|>",
+    "home": home_md,
+    "temperature": temperature_md,
+}
+ 
+Gui(pages=pages).run(dark_mode=False)
+```
 
 Since every page inherits the root page, you can easily make every page inherit the navbar control 
 by adding just one line to `main.py`.<br/>
@@ -135,7 +220,13 @@ other pages. For example, this is a code snippet of the `navigate()^` function b
 navigate to the *home* page when the [button](../../../manuals/gui/viselements/button.md) 
 control is clicked:
 
-![The navigate function](multipage_application_11.png){width=100%}
+```py
+from taipy.gui import navigate
+ 
+md = "<|Click to go Home|button|on_action=go_home|>"
+def go_home(state):
+    navigate(state, "home")
+```
 
 Naturally, this function is only used within callbacks. To use `navigate()^`, we simply pass along 
 the *state* variable present in all callbacks, as well as the name of the page we wish to go to. 
@@ -160,7 +251,27 @@ combine the `navigate` feature with the [menu](../../../manuals/gui/viselements/
 
 The menu navigation was implemented by modifying `main.py` to the following:
 
-![The navigate function](multipage_application_12.png){width=100%}
+```py
+### main.py, with menu navigation
+ 
+from taipy.gui import Gui, navigate
+from pages.home import home_md
+from pages.temperature import temperature_md
+ 
+pages = {
+    "/": "<|menu|lov={page_names}|on_action=menu_action|>",
+    "home": home_md,
+    "temperature": temperature_md,
+}
+page_names = [page for page in pages.keys() if page != "/"]
+ 
+def menu_action(state, id, action, payload):
+    page = payload["args"][0]
+    navigate(state, page)
+ 
+gui = Gui(pages=pages)
+gui.run(dark_mode=False, run_browser=False, use_reloader=True)
+```
 
 Unlike `navbar` which automatically populates its *lov* (list of values) with the page names 
 and intrinsically navigates the user to the selected page when it is interacted with, the code 
@@ -185,7 +296,17 @@ work to expressly create that functionality.
 
 Finally, the simplest way to implement navigation in Taipy is with a hyperlink:
 
-![Hyperlinks](multipage_application_13.png){width=100%}
+```py
+### home.py, hyperlink to temperature
+ 
+from taipy.gui import Markdown
+ 
+home_md = Markdown("""
+# Home
+ 
+Go to [temperature](/temperature) page.
+""")
+```
 
 This results in the following clickable "/temperature" text, which directs the user to the 
 */temperature* URL:
