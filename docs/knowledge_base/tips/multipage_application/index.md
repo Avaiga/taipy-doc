@@ -83,7 +83,7 @@ pages work independently:
 Usually, if we were making a simple one-page application, we'd give one of our pages (Taipy 
 [Markdown](../../../manuals/reference/taipy.gui.Markdown.md) or 
 [HTML](../../../manuals/reference/taipy.gui.Html.md) objects) to the 
-`taipy.gui.Gui` constructor. For example, to turn `home.py` into a one-page Taipy application, 
+`[`Gui` constructor](Gui.init()^)` constructor. For example, to turn `home.py` into a one-page Taipy application, 
 we could add these lines:
 
 ```py
@@ -262,8 +262,8 @@ example above using the menu control and navigate is a little more verbose.
 We define two properties for the menu control:
 
 1. `lov={page_names}`: The list of values which may be selected from the menu. 
-    In this case, we interpolate the `page_names` variable, which we then assign the keys from 
-    `pages` (other than "/") — functionally equivalent to `page_names = ["home", "temperature"]`. 
+    In this case, we interpolate the *page_names* variable, which we then assign the keys from 
+    *pages* (other than "/") — functionally equivalent to `page_names = ["home", "temperature"]`. 
     Refer to the [menu](../../../manuals/gui/viselements/menu.md) for more details, such as for 
     setting icons and labels.
 2. `on_action=menu_action`: Assigns the `menu_action` function as the callback function which is 
