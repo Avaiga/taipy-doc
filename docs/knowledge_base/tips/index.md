@@ -92,7 +92,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="multipage_application">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/icon-code.svg">
+        <img class="tp-content-card-image" src="multipage_application/multipage_application.png">
       </header>
       <div class="tp-content-card-body">
         <h4>Multi-page Applications</h4>
