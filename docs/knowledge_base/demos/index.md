@@ -29,15 +29,46 @@ Let's explore demos of applications made with Taipy.
 
 <ul class="tp-row tp-row--gutter-sm">
   <li class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="sentiment_analysis">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="sales_dashboard">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
       </header>
       <div class="tp-content-card-body">
-        <h4>Sentiment Analysis</h4>
+        <h4> Sales Dashboard </h4>
         <span class="tp-tag">Front-end | Back-end</span>
-        <p>
-          Explore the power of Taipy's sentiment analysis capabilities with our two-page application. Analyze user input and uploaded text to uncover sentiments effortlessly. 
+        <p> Check out our Sales Dashboard demo. It reads Excel files and shows valuable insights.
+            You can filter data by city, customer, and gender to find specific metrics and use 
+            two dynamic charts for trend analysis.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tweet_generation">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Tweet Generation </h4>
+        <span class="tp-tag">Front-end | Back-end</span>
+        <p> Experience the AI-powered Tweet Generation. Create compelling Tweets effortlessly 
+            using GPT-3's Davinci engine for text and DALL·E for images. 
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="face_recognition">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Real-time Face Recognition </h4>
+        <span class="tp-tag">Front-end | Back-end</span>
+        <p> Explore real-time face detection and recognition demo. Learn how to create custom UI 
+            components and use OpenCV for accurate face identification.
         </p>
       </div> 
     </a>
@@ -49,41 +80,120 @@ Let's explore demos of applications made with Taipy.
         <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
       </header>
       <div class="tp-content-card-body">
-        <h4>Sentiment Analysis</h4>
+        <h4>Sentiment Analysis: Detect emotional tones from a text</h4>
         <span class="tp-tag">Front-end | Back-end</span>
-        <p>
-          Explore the power of Taipy's sentiment analysis capabilities with our two-page application. Analyze user input and uploaded text to uncover sentiments effortlessly. 
+        <p> Explore the power of Taipy's sentiment analysis capabilities with our two-page 
+            application. Analyze user input and uploaded text to uncover sentiments effortlessly. 
         </p>
       </div> 
     </a>
   </li>
 
   <li class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="sentiment_analysis">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="bar_cutting">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
       </header>
       <div class="tp-content-card-body">
-        <h4>Sentiment Analysis</h4>
+        <h4>Optimize Bar Cut Sizes</h4>
         <span class="tp-tag">Front-end | Back-end</span>
-        <p>
-          Explore the power of Taipy's sentiment analysis capabilities with our two-page application. Analyze user input and uploaded text to uncover sentiments effortlessly. 
+        <p> Try out our Bar Cut Optimization demo. It uses Taipy to optimize bar cut sizes for two 
+            scenarios with distinct algorithms that reduces raw material waste in a visually 
+            intuitive way.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="image_classif">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Image Classification</h4>
+        <span class="tp-tag">Front-end | Back-end</span>
+        <p> Explore our interactive image classification application built with Taipy, Nvidia CUDA, 
+            and TensorFlow.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="churn_classification">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Churn Classification</h4>
+        <span class="tp-tag">Front-end | Back-end</span>
+        <p> Explore our Churn Classification demo. Use Taipy for data analysis, model management,
+            and model comparison in churn prediction. Witness the capabilities of Taipy in 
+            streamlining and improving decision-making.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="production_planning">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Production Planning</h4>
+        <span class="tp-tag">Front-end | Back-end</span>
+        <p> Discover our Production Planning demo application that optimize production, reduce 
+            costs, and simulate manufacturing scenarios. 
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="stock_visualization">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Stock Visualization</h4>
+        <span class="tp-tag">Front-end | Back-end</span>
+        <p> Explore the Stock Visualization Dashboard that leverages Taipy GUI and Prophet to 
+            visualize historical stock data and make predictions over 5 years.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="covid_dashboard">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Covid Dashboard</h4>
+        <span class="tp-tag">Front-end | Back-end</span>
+        <p> Discover our minimalist yet powerful COVID-19 dashboard. View and forecast COVID-19
+            data for various countries, interact with maps, and gain insights into the global 
+            pandemic impact.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="movie_genre_selector">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Movie Genre Selector</h4>
+        <span class="tp-tag">Front-end | Back-end</span>
+        <p> Explore Movie Genre Selector demo. See how this user-friendly tool helps you 
+            effortlessly discover movies from your favorite movie genres.
         </p>
       </div> 
     </a>
   </li>
 </ul>
-
-| Id  | Title                                                                                                    | description                                                                                                                                                                                                                                                               |                                                                 keywords |
-|:----|:---------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------:|
-| 1   | [Sentiment Analysis with Taipy: Unlock Insights from Text](sentiment_analysis.md)                  | Explore the power of Taipy's sentiment analysis capabilities with our two-page application. Analyze user input and uploaded text to uncover sentiments effortlessly.                                                                                                      |                                            Sentiment Analysis with Taipy |
-| 2   | [Real-time Face Recognition with Taipy: A Powerful Demo](face_recognition.md)                      | Explore real-time face detection and recognition with Taipy's intuitive GUI component. Learn how to create custom UI components and utilize OpenCV for accurate face identification.                                                                                      |                                              Face Recognition with Taipy |
-| 3   | [Exploring Movie Genres with Taipy: A Genre Selector Demo](movie_genre_selector.md)                | Dive into the world of movies and genres with Taipy's Genre Selector demo. Learn how to use this intuitive tool to discover your favorite movie genres effortlessly.                                                                                                      |                                          Movie Genre Selector with Taipy |
-| 4   | [Create Unique Tweets with Taipy: Tweet Generation Demo](tweet_generation.md)                      | Discover the magic of AI-powered Tweet Generation with Taipy's innovative platform. Craft engaging Tweets effortlessly using GPT-3's Davinci engine for text and DALL·E for images.                                                                                       |                                              AI-Powered Tweet Generation |
-| 5   | [Data Visualization Made Easy with Taipy: Sales Dashboard Demo](sales_dashboard.md)                | Explore the power of Taipy's Sales Dashboard demo, a tool that reads Excel files and displays insightful results. Filter data by city, customer, and gender to uncover specific metrics and utilize two dynamic charts for trend analysis.                                |                                               Sales Dashboard with Taipy |
-| 6   | [Interactive Image Classification with Taipy, Nvidia CUDA, and TensorFlow](image_classif.md)       | Dive into our video tutorial series and learn how to create interactive image classification applications using Taipy, Nvidia CUDA, and TensorFlow. Explore the power of Taipy for ML workflows and get ready for part 2 on data pipelines.                               | Interactive Image Classification with Taipy, Nvidia CUDA, and TensorFlow |
-| 7   | [Building a Comprehensive COVID-19 Dashboard with Taipy](covid_dashboard.md)                       | Explore the capabilities of Taipy as we showcase the creation of a minimalist yet powerful COVID-19 dashboard. Visualize and predict COVID-19 data for different countries, explore interactive maps, and gain insights into the global impact of the pandemic.           |                          COVID-19 Data Visualization, Pandemic Dashboard |
-| 8   | [Empowering Financial Insights: Stock Visualization with Taipy and Prophet](stock_visualization.md)| Explore the Stock Visualization demo, a stock data dashboard that leverages Taipy GUI and Prophet to visualize historical stock data and make predictions for the next 1 to 5 years. Discover the power of Taipy in simplifying data visualization for financial insights.|                               Stock Visualization with Taipy and Prophet |
-| 9   | [Predictive Power Unleashed: Churn Classification with Taipy](churn_classification.md)            | Dive into the Churn Classification demo, a powerful application that leverages Taipy for exploratory data analysis, model management, and comparing predictive models. Discover the potential of Taipy in streamlining churn prediction and enhancing decision-making.    |                                          Churn Classification with Taipy |
-| 10  | [Streamlining Production Planning with Taipy: The Ultimate Solution](production_planning.md)       | Explore the Production Planning demo, a powerful application that leverages Taipy's capabilities to optimize production levels, minimize costs, and simulate scenarios for a manufacturing process. Discover how Taipy simplifies complex production planning.            |                                           Production Planning with Taipy |
-| 11  | [Precision Cutting Unleashed: Bar Cutting Optimization with Taipy](bar_cutting.md)                 | Explore the Bar Cutting demo, a powerful application that leverages Taipy to optimize bar cutting for two cases using different algorithms. Discover how Taipy streamlines the cutting process and minimizes losses in a visually intuitive manner.                       |                                      Bar Cutting Optimization with Taipy |
