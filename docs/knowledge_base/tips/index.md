@@ -31,7 +31,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="scenarios">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="../demos/images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/icon-code.svg">
       </header>
       <div class="tp-content-card-body">
         <h4> Scenarios </h4>
@@ -46,7 +46,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="colab_with_ngrok">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="../demos/images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/icon-code.svg">
       </header>
       <div class="tp-content-card-body">
         <h4>Share your App with Colab and Ngrok</h4>
@@ -61,7 +61,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="jupyter_notebooks">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="../demos/images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="jupyter_notebooks/jupyter_notebooks_1.png">
       </header>
       <div class="tp-content-card-body">
         <h4>Jupyter Notebooks</h4>
@@ -76,7 +76,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="long_running_callbacks">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="../demos/images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/icon-code.svg">
       </header>
       <div class="tp-content-card-body">
         <h4>Long-running Callbacks</h4>
@@ -92,7 +92,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="multipage_application">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="../demos/images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/icon-code.svg">
       </header>
       <div class="tp-content-card-body">
         <h4>Multi-page Applications</h4>
@@ -107,7 +107,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="using_tables">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="../demos/images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="using_tables/using_tables.png">
       </header>
       <div class="tp-content-card-body">
         <h4> Using Tables </h4>
@@ -123,7 +123,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="the_data_nodes">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="../demos/images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="the_data_nodes/data_notes.png">
       </header>
       <div class="tp-content-card-body">
         <h4> Data Nodes </h4>
@@ -139,7 +139,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="css_style_kit">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="../demos/images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="css_style_kit/css_style_kit.png">
       </header>
       <div class="tp-content-card-body">
         <h4> Stylekit </h4>
@@ -154,7 +154,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="skippable_tasks">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="../demos/images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="skippable_tasks/skippable_tasks.png">
       </header>
       <div class="tp-content-card-body">
         <h4> Skippable tasks </h4>
@@ -169,7 +169,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="the_on_change_callback">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="../demos/images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/icon-code.svg">
       </header>
       <div class="tp-content-card-body">
         <h4> Callbacks </h4>
@@ -184,7 +184,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="taipy_cloud_deploy">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="../demos/images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="taipy_cloud_deploy/taipy_cloud.png">
       </header>
       <div class="tp-content-card-body">
         <h4> Taipy Cloud </h4>

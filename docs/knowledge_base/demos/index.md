@@ -31,7 +31,7 @@ Let's explore demos of applications made with Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="sales_dashboard">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/demo-sales-dashboard.jpg">
       </header>
       <div class="tp-content-card-body">
         <h4> Sales Dashboard </h4>
@@ -47,7 +47,7 @@ Let's explore demos of applications made with Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tweet_generation">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/tweet-generation.png">
       </header>
       <div class="tp-content-card-body">
         <h4> Tweet Generation </h4>
@@ -62,7 +62,7 @@ Let's explore demos of applications made with Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="face_recognition">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/face-recognition.jpg">
       </header>
       <div class="tp-content-card-body">
         <h4> Real-time Face Recognition </h4>
@@ -92,7 +92,7 @@ Let's explore demos of applications made with Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="bar_cutting">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/bar-cutting-bar-Visualization.png">
       </header>
       <div class="tp-content-card-body">
         <h4>Optimize Bar Cut Sizes</h4>
@@ -108,7 +108,7 @@ Let's explore demos of applications made with Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="image_classif">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/icon-code.svg">
       </header>
       <div class="tp-content-card-body">
         <h4>Image Classification</h4>
@@ -123,7 +123,7 @@ Let's explore demos of applications made with Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="churn_classification">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/churn-classification-data-Visualization-histogram.png">
       </header>
       <div class="tp-content-card-body">
         <h4>Churn Classification</h4>
@@ -139,7 +139,7 @@ Let's explore demos of applications made with Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="production_planning">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/production-planning-data-visualization.png">
       </header>
       <div class="tp-content-card-body">
         <h4>Production Planning</h4>
@@ -154,7 +154,7 @@ Let's explore demos of applications made with Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="stock_visualization">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/stock-visualization.png">
       </header>
       <div class="tp-content-card-body">
         <h4>Stock Visualization</h4>
@@ -169,7 +169,7 @@ Let's explore demos of applications made with Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="covid_dashboard">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/covid-dashboard-country.png">
       </header>
       <div class="tp-content-card-body">
         <h4>Covid Dashboard</h4>
@@ -185,7 +185,7 @@ Let's explore demos of applications made with Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="movie_genre_selector">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
+        <img class="tp-content-card-image" src="images/movie-genre-selector.png">
       </header>
       <div class="tp-content-card-body">
         <h4>Movie Genre Selector</h4>
