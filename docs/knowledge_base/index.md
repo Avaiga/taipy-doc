@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-Learn how to use Taipy and improve your skills with the following tutorials.
+Learn how to use Taipy and improve your skills.
 
 <!-- Quick accesses -->
 <div class="tp-row tp-row--gutter-sm">
