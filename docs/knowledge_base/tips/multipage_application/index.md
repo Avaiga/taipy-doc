@@ -106,23 +106,6 @@ applications in a sub-folder named `pages`.
 Now, the next step is to create and define our main module, `main.py` within the `app/` folder. 
 After that, we'll initialize our multi-page Gui object.
 
-```py
-### main.py
- 
-from taipy.gui import Gui
-from pages.home import home_md
-from pages.temperature import temperature_md
- 
-pages = {
- 
-“home”: home_md,
-“temperature”: temperature_md,
- 
-}
- 
-Gui(pages=pages).run(dark_mode=False)
-```
-
 We started by importing two Markdown objects, `home_md` and `temperature_md` from the two 
 scripts we previously created. Then, we made a dictionary called `pages`:
 
@@ -135,7 +118,6 @@ multi-page application working!
 
 If you open your web browser and go to **localhost:5000** (assuming you're using the 
 [default port](../../../manuals/reference/taipy.gui.Gui.md)), you'll see the following:
-
 
 ![Defining a Multi-Page Application](multipage_application_7.png){width=50%}
 
