@@ -516,7 +516,9 @@ Learn how to use Taipy and improve your skills with the following tutorials.
       <div class="tp-content-card-body">
         <h4> Taipy Cloud </h4>
         <p> Share your application on the web. Learn the simplicity of deploying and hosting your 
-            Taipy application on the Taipy Cloud. </p>
+            Taipy application on the Taipy Cloud. 
+        </p>
       </div> 
     </a>
   </li>
+</ul>
