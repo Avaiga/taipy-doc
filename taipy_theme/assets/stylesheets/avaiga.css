@@ -81,6 +81,12 @@
   --md-hue: 270; 
 }
 
+@media screen and (max-width: 59.9375em){
+  html{
+    font-size: 100%;
+  }
+}
+
 .md-grid{
   max-width: var(--md-grid-max-width);
 }
