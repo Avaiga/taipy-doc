@@ -59,6 +59,56 @@ Follow our tutorials and get the core concepts of Taipy.
   </li>
 
   <li class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="cycles_scopes">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Cycles and Scopes </h4>
+        <p>
+          Share your Data Nodes across multiple scenarios with Cycles and Scopes. 
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="job_execution">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Job Execution mode</h4>
+        <p> Increase efficiency running your scenarios making your Job Execution asynchronous. </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="scenario_comparison">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Scenario Comparison</h4>
+        <p> Learn best practices to compare scenarios easily. </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="scenario_subscription">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Scenario Subscription </h4>
+        <p> Connect to your scenario executions to get the most recent updates. </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="complete_application">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-code.svg">
