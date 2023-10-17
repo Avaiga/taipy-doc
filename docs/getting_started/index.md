@@ -4,8 +4,11 @@ hide:
   - navigation
 ---
 
-Dive into Taipy with this beginner-friendly guide. Learn to install, configure, and deploy your 
+Dive into Taipy with this beginner-friendly guide. Learn to install, configure, and create your 
 first application with ease.
+
+![GUI Result](result.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+
 
 # Installation with pip
 
