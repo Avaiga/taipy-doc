@@ -105,6 +105,56 @@ Learn how to use Taipy and improve your skills.
     </a>
   </li>
   <li>
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/cycles_scopes/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Cycles and Scopes</h4>
+        <p>
+          Share your Data Nodes across multiple scenarios with Cycles and Scopes. 
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li>
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/job_execution/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Job Execution mode</h4>
+        <p>
+            Increase efficiency running your scenarios making your Job Execution asynchronous. 
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li>
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/scenario_comparison/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Scenario Comparison</h4>
+        <p> Learn best practices to compare scenarios easily.
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li>
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/scenario_subscription/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Scenario Subscription</h4>
+        <p> Connect to your scenario executions to get the most recent updates.
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li>
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/complete_application/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">

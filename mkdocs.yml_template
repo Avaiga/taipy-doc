@@ -27,8 +27,8 @@ nav:
         - "Scenario management Overview": knowledge_base/tutorials/scenario_management_overview/index.md
         - "Cycles and Scopes": knowledge_base/tutorials/cycles_scopes/index.md
         - "Job Execution mode": knowledge_base/tutorials/job_execution/index.md
-        - "Scenario comparison": knowledge_base/tutorials/scenario_comparison/index.md
-        - "Scenario subscription": knowledge_base/tutorials/scenario_subscription/index.md
+        - "Scenario Comparison": knowledge_base/tutorials/scenario_comparison/index.md
+        - "Scenario Subscription": knowledge_base/tutorials/scenario_subscription/index.md
         - "Build a complete application":
             - "Build a complete application": knowledge_base/tutorials/complete_application/index.md
             - "1 - Data visualization page": knowledge_base/tutorials/complete_application/step_01/step_01.md
