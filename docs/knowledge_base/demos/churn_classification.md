@@ -4,11 +4,8 @@ more cost-effective than acquiring new ones. By identifying
 customers who may leave early and applying retention strategies, 
 businesses can lower churn rates and boost customer loyalty.
 
-
-
-[Try it live](https://churn-classification.taipy.cloud/Data-Visualization) 
-
-[Get it on GitHub](https://github.com/Avaiga/demo-churn-classification)
+[Try it live](https://churn-classification.taipy.cloud/Data-Visualization){: .tp-btn target='blank' }
+[Get it on GitHub](https://github.com/Avaiga/demo-churn-classification){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
 The application comprises four pages accessible via the left panel.

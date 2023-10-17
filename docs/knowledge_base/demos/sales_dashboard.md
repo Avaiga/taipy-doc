@@ -2,11 +2,8 @@ This demo allows users to extract data from an Excel file and derive meaningful 
 When Users apply filters based on city, customer type, and gender, Taipy automatically refreshes 
 the two charts: "_Sales by hour_" and "_Sales by product_".
 
-
-[Try it live](https://sales-dashboard.taipy.cloud/) 
-
-[Get it on GitHub](https://github.com/Avaiga/demo-sales-dashboard)
-
+[Try it live](https://sales-dashboard.taipy.cloud/){: .tp-btn target='blank' }
+[Get it on GitHub](https://github.com/Avaiga/demo-sales-dashboard){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
 This demo is a one-page application.

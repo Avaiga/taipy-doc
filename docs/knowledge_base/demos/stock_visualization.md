@@ -5,10 +5,8 @@ This demo, built with Taipy and powered by the
 [Prophet library](https://facebook.github.io/prophet/docs/quick_start.html),
 offers a way to achieve this.
 
-## [Try it live](https://stock-visualization.taipy.cloud/) 
-
-## [Get it on GitHub](https://github.com/Avaiga/demo-stock-visualization)
-
+[Try it live](https://stock-visualization.taipy.cloud/){: .tp-btn target='blank' }
+[Get it on GitHub](https://github.com/Avaiga/demo-stock-visualization){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
 This one-page demo's primary objective is to illustrate how 
