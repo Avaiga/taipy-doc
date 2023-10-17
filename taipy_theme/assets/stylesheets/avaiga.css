@@ -421,6 +421,48 @@ a.ext-link::after{
   display: flex;
 } 
 
+/* ---------- ---------- ---------- BUTTONS ---------- ---------- ---------- */
+
+.tp-btn{
+  margin-right: 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.5rem;
+  padding: 0.4rem 1rem;
+  background-color: var(--md-primary-fg-color);
+  border-radius: 50rem;
+  color: white !important;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tp-btn--accent{
+  background: var(--md-accent-fg-color);
+}
+.tp-btn--alpha{
+  background: var(--md-accessory-color-alpha);
+}
+.tp-btn--beta{
+  background: var(--md-accessory-color-beta);
+}
+.tp-btn--gamma{
+  background: var(--md-accessory-color-gamma);
+}
+.tp-btn--delta{
+  background: var(--md-accessory-color-delta);
+}
+
+.tp-btn:hover{
+  background-color: hsla(var(--md-hue),50%,15%,1);
+}
+
+.tp-btn.ext-link::after{
+  height: auto;
+}
+
 /* ---------- ---------- ---------- TOOLTIP ---------- ---------- ---------- */
 
 .tp-tooltip{
