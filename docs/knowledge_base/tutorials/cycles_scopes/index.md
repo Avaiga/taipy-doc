@@ -10,14 +10,14 @@ Two datasets have also to be downloaded (
 *Estimated Time for Completion: 30 minutes; Difficulty Level: Intermediate*
 
 In this section, we will explore the intricate relationship between
-[Scopes](../../../../manuals/core/concepts/scope.md) and 
-[Cycles](../../../../manuals/core/concepts/cycle.md), two core concepts that help manage data 
+[Scopes](../../../manuals/core/concepts/scope.md) and 
+[Cycles](../../../manuals/core/concepts/cycle.md), two core concepts that help manage data 
 nodes and scenarios effectively in Taipy.
 
 
 # Cycles
 
-[Cycles](../../../../manuals/core/concepts/cycle.md) have been introduced to reflect business 
+[Cycles](../../../manuals/core/concepts/cycle.md) have been introduced to reflect business 
 situations companies frequently encounter and can be extremely useful. 
 
 For example, a big fast-food chain wants to predict its store sales every week. When they create 
@@ -128,7 +128,7 @@ hand, determines how data nodes are shared within these cycles and scenarios.
 
 Sharing data nodes between entities allows you to organize and manage your data better. 
 It avoids data duplications and allows Taipy to better manage execution (see 
-[skippable tasks](../../../tips/skippable_tasks/index.md)).
+[skippable tasks](../../tips/skippable_tasks/index.md)).
 The developer may decide:
 
 - `Scope.SCENARIO` (_default_): Having one data node for each scenario.
@@ -209,7 +209,7 @@ first scenario created for a cycle is primary.
 
 ### Python code associated to primary scenarios
 
-[`tp.set_primary(<Scenario>)`](../../../../manuals/core/entities/scenario-cycle-mgt.md#promote-a-scenario-as-primary) 
+[`tp.set_primary(<Scenario>)`](../../../manuals/core/entities/scenario-cycle-mgt.md#promote-a-scenario-as-primary) 
 allows changing the primary scenario in a Cycle.
 
 `<Scenario>.is_primary` identifies as a boolean whether the scenario is primary or not.
