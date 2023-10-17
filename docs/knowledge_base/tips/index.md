@@ -184,7 +184,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="taipy_cloud_deploy">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="taipy_cloud_deploy/taipy_cloud.png">
+        <img class="tp-content-card-image" src="taipy_cloud_deploy/logo_artwork.png">
       </header>
       <div class="tp-content-card-body">
         <h4> Taipy Cloud </h4>
