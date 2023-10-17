@@ -8,7 +8,12 @@ This documentation page lists the migration paths of Taipy releases as they were
 
 # From 2.x to 3.0
 
-1. In Taipy Core 3.0 we deprecated the `pipeline` concept in favor of 
+1. In Taipy GUI 3.0, the `on_action` callback signature was unified across all controls: the third
+    parameter (*action*) was dropped. The *payload* dictionary parameter that used to be in fourth
+    place is now in third place and contains an *action* key that is set to the action name if you 
+    used to use *action*.
+
+2. In Taipy Core 3.0 we deprecated the `pipeline` concept in favor of 
     [sequence](./manuals/core/entities/sequence-mgt.md). This also means that `configure_pipeline` 
     from Taipy Config was removed, making it necessary to update your config code. Take for 
     instance the following config on `Taipy 2.4`:
@@ -19,13 +24,13 @@ This documentation page lists the migration paths of Taipy releases as they were
     # Omiting multiply_task_cfg creation
     
     pipeline_cfg = Config.configure_pipeline(
-      "pipeline_1",
-      task_configs=[multiply_task_cfg]
+        "pipeline_1",
+        task_configs=[multiply_task_cfg]
     )
     
     scenario_cfg = Config.configure_scenario(
-      "multiply_scenario",
-      pipeline_configs=[pipeline_cfg]
+        "multiply_scenario",
+        pipeline_configs=[pipeline_cfg]
     )
     ```
 
@@ -36,19 +41,16 @@ This documentation page lists the migration paths of Taipy releases as they were
     from taipy import Config
 
     # Omiting multiply_task_cfg creation
+
     scenario_cfg = Config.configure_scenario(
-      "multiply_scenario",
-      task_configs=[pipeline_cfg]
+        "multiply_scenario",
+        task_configs=[multiply_task_cfg]
     )
     ```
 
-    After migrating the code config, we recommend that you take advantage of `Taipy CLI`
+    After migrating the code, we recommend that you take advantage of `Taipy CLI`
     [migration tool](./manuals/cli/migrate-entities.md).
 
-2. In Taipy GUI 3.0, the `on_action` callback signature was unified across all controls: the third
-    parameter (*action*) was dropped. The *payload* dictionary parameter that used to be in fourth
-    place is now in third place and contains an *action* key that is set to the action name if you 
-    used to use *action*.
 
 # From 2.0 to 2.1
 
