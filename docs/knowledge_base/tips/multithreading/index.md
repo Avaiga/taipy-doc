@@ -1,12 +1,12 @@
-Taipy can display data that is generated in a separate thread. This is useful for displaying real-time data from a sensor or a simulation.
+Taipy can display data that is generated in a separate thread. This is useful for displaying real-time data from a sensor or a simulator. For example displaying in a dashboard the information from sensors measuring air pollution around a city, or displaying CPU usage of a server.
 
 <p align="center">
   <img src="realtime_dashboard.png" alt="Dashboard Example" width="80%"/>
 </p>
 
 In this article, we will code a simple example where:
-- A sender.py script will generate a random number and send it through a socket.
-- A receiver.py script will receive and display the number in a Taipy app.
+- A `sender.py` script will generate a random number and send it through a socket.
+- A `receiver.py` script will receive and display the number in a Taipy application.
 
 <p align="center">
   <img src="vscode_screen.png" alt="VSCode Screenshot" width="80%"/>
@@ -14,9 +14,9 @@ In this article, we will code a simple example where:
 
 ## Step 1: Create the Sender Script
 
-Here is the code for the sender.py script:
+Here is the code for the `sender.py` script:
 
-```python
+```python title="sender.py"
 import time
 import socket
 
@@ -34,7 +34,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         time.sleep(5)
 ```
 
-This script will generate a random number between 1 and 100, send it through a socket, and wait 5 seconds before sending another number.
+This script generates a random number between 1 and 100, sends it through a socket, and waits 5 seconds before sending another number.
 
 ## Step 2: Create the Receiver Script
 
@@ -42,7 +42,7 @@ Coding the receiver script requires multiple steps:
 
 1. Imports and defining the socket parameters.
 
-```python
+```python title="receiver.py"
 import socket
 from threading import Thread
 from taipy.gui import Gui, State, invoke_callback, get_state_id
@@ -51,20 +51,20 @@ HOST = "127.0.0.1"
 PORT = 5050
 ```
 
-2. We gather the list of state_ids. These are identifiers of the clients connected to our Taipy app. We need this list to choose which client to send the data to.
+2. We gather the list of state identifiers. These are identifiers of the clients connected to our Taipy application. We need this list to choose which client to send the data to.
 
-```python
+```python title="receiver.py"
 state_id_list = []
 
 def on_init(state: State):
     state_id = get_state_id(state)
-    if (state_id := get_state_id(state)) is not None and state_id != "":
+    if (state_id := get_state_id(state)) is not None:
         state_id_list.append(state_id)
 ```
 
-3. We create a function to listen to the socket. When the socket receives data, it triggers a callback to send the data to the Taipy app of one of the connected clients.
+3. We create a function to listen to the socket. When the socket receives data, it triggers a callback to send the data to the Taipy application for one of the connected clients.
 
-```python
+```python title="receiver.py"
 def client_handler(gui: Gui, state_id_list: list):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((HOST, PORT))
@@ -86,9 +86,9 @@ def update_received_data(state: State, val):
     state.received_data = val
 ```
 
-4. We create the Taipy app to display the data. We run both the client_handler and the Taipy app in separate threads.
+4. We create the Taipy application to display the data. The *client_handler()* function and the application itself are run in different threads.
 
-```python
+```python title="receiver.py"
 received_data = 0
 
 md = """
@@ -105,9 +105,9 @@ t = Thread(
 )
 t.start()
 
-gui.run(run_browser=False)
+gui.run(title="Receiver Page")
 ```
 
 ## Step 3: Run the Scripts
 
-Run the receiver.py script first, then the sender.py script in another terminal. The receiver will receive and display the sender's data in the Taipy app.
+Run the `receiver.py` script first, then the `sender.py` script in another terminal. The receiver will receive and display the sender's data in the Taipy application.
