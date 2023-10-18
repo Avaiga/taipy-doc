@@ -195,4 +195,17 @@ Tips and Tricks!
       </div> 
     </a>
   </li>
+  <li class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="multithreading">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="multithreading/realtime_dashboard.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Multithreading </h4>
+        <span class="tp-tag">Front-end </span>
+        <p> Display data sent from another thread in real-time to your Taipy application.
+        </p>
+      </div> 
+    </a>
+  </li>
 </ul>
