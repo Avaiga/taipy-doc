@@ -1,4 +1,7 @@
-Taipy can display data that is generated in a separate thread. This is useful for displaying real-time data from a sensor or a simulator. For example displaying in a dashboard the information from sensors measuring air pollution around a city, or displaying CPU usage of a server.
+Taipy can display data that is generated in a separate thread. This is useful for displaying
+real-time data from a sensor or a simulator. For example displaying in a dashboard the
+information from sensors measuring air pollution around a city, or displaying CPU usage of
+a server.
 
 <p align="center">
   <img src="realtime_dashboard.png" alt="Dashboard Example" width="80%"/>
@@ -34,7 +37,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         time.sleep(5)
 ```
 
-This script generates a random number between 1 and 100, sends it through a socket, and waits 5 seconds before sending another number.
+This script generates a random number between 1 and 100, sends it through a socket, and waits
+5 seconds before sending another number.
 
 ## Step 2: Create the Receiver Script
 
@@ -51,7 +55,8 @@ HOST = "127.0.0.1"
 PORT = 5050
 ```
 
-2. We gather the list of state identifiers. These are identifiers of the clients connected to our Taipy application. We need this list to choose which client to send the data to.
+2. We gather the list of state identifiers. These are identifiers of the clients connected to
+our Taipy application. We need this list to choose which client to send the data to.
 
 ```python title="receiver.py"
 state_id_list = []
@@ -62,7 +67,8 @@ def on_init(state: State):
         state_id_list.append(state_id)
 ```
 
-3. We create a function to listen to the socket. When the socket receives data, it triggers a callback to send the data to the Taipy application for one of the connected clients.
+3. We create a function to listen to the socket. When the socket receives data, it triggers a
+callback to send the data to the Taipy application for one of the connected clients.
 
 ```python title="receiver.py"
 def client_handler(gui: Gui, state_id_list: list):
@@ -86,7 +92,8 @@ def update_received_data(state: State, val):
     state.received_data = val
 ```
 
-4. We create the Taipy application to display the data. The *client_handler()* function and the application itself are run in different threads.
+4. We create the Taipy application to display the data. The *client_handler()* function and
+the application itself are run in different threads.
 
 ```python title="receiver.py"
 received_data = 0
@@ -110,4 +117,5 @@ gui.run(title="Receiver Page")
 
 ## Step 3: Run the Scripts
 
-Run the `receiver.py` script first, then the `sender.py` script in another terminal. The receiver will receive and display the sender's data in the Taipy application.
+Run the `receiver.py` script first, then the `sender.py` script in another terminal. The
+receiver will receive and display the sender's data in the Taipy application.
