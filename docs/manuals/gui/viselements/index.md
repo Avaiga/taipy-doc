@@ -8,7 +8,7 @@ There are two types of *Visual Elements*:
      Beside the generic controls provided in Taipy GUI and listed in [this section](controls.md),
      the `taipy` package come with a dedicated set of Taipy GUI controls that let users display and
      interact with [Taipy Core entities](../../core/entities/index.md). These controls are listed
-     in the [Core back-end controls](../corelements/index.md) section.
+     in the [Scenario Management controls](../controls.md#scenario-management-controls) section.
 
    - *Blocks* let you organize controls (or blocks) in pages to provide the best
     possible user experience.
