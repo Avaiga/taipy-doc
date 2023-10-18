@@ -439,6 +439,18 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
+    <li>
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/iframes">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> iFrames </h4>
+        <p> Use iFrame to embody any HTML inside your Taipy app.
+        </p>
+      </div> 
+    </a>
+  </li>
   <li>
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/colab_with_ngrok">
       <header class="tp-content-card-header">

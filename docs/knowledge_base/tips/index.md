@@ -105,6 +105,20 @@ Tips and Tricks!
   </li>
 
   <li class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="iframes">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>iFrames</h4>
+        <span class="tp-tag">Front-end </span>
+        <p> Use iFrame to embody any HTML inside your Taipy app.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="using_tables">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="using_tables/using_tables.png">
