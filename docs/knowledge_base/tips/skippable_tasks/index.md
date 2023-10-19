@@ -72,7 +72,7 @@ When you set skippable to True, Taipy will skip executing the Task
 if its input Data nodes have not changed since the last execution. 
 In other words, if running the task again would produce the same output, it is skipped.
 
-This feature can significantly improve the performance of your pipeline 
+This feature can significantly improve the performance of your data workflow 
 by preventing unnecessary computations, which saves time and resources.
 
 ![Leveraging Skippability in Taipy Tasks](skippable_tasks_3.png){width=70%}
@@ -141,7 +141,7 @@ The input changed, so Taipy will re-execute my Task and give the appropriate res
 
 ## Using Global Data Nodes
 
-Skipping tasks doesn't only happen when you resubmit a scenario or pipeline; 
+Skipping tasks doesn't only happen when you resubmit a scenario; 
 it can also occur when creating and submitting a completely new scenario with Global Data nodes.
 
 For instance, if you want to preprocess a raw data set and make the result accessible globally 
@@ -161,10 +161,10 @@ from taipy.config import Config
 model_cfg = Config.configure_data_node("model", default_path="model.p")
 predictions_cfg = Config.configure_data_node("predictions")
 task_cfg = Config.configure_task("task", predict, model_cfg, predictions_cfg)
-scenario_cfg = Config.configure_scenario_from_tasks("scenario", [task_cfg])
+scenario_cfg = Config.configure_scenario("scenario", [task_cfg])
 ```
 
-The first line creates a scenario consisting of Data nodes, tasks, and pipelines. 
+The first line creates a scenario consisting of Data nodes, and tasks. 
 Following this, we submit it.
 
 ```py
@@ -216,7 +216,7 @@ This modification date can be altered in three ways:
 ## Conclusion
 
 In conclusion, Taipy simplifies the management of complex workflows and their execution. 
-The use of skippable tasks allows developers to enhance pipeline performance significantly 
+The use of skippable tasks allows developers to enhance performance significantly 
 by avoiding redundant computations, ultimately saving time and resources for end users. 
 Skippable tasks can be applied in various scenarios, including when resubmitting scenarios 
 or making manual changes to Data nodes.
