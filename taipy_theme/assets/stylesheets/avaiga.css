@@ -194,8 +194,16 @@
   align-items: center;
 }
 
-/* ---------- ---------- ---------- MOBILE SIDEBAR (DRAWER) ---------- ---------- ---------- */
+/* ---------- ---------- ---------- SIDEBAR (DRAWER) ---------- ---------- ---------- */
+[dir=ltr] .md-sidebar__inner {
+  padding-right: calc(100% - 15rem);
+}
 
+[dir=rtl] .md-sidebar__inner {
+  padding-left: calc(100% - 15rem)
+}
+
+/* ---------- ---------- ---------- MOBILE SIDEBAR (DRAWER) ---------- ---------- ---------- */
 @media screen and (max-width: 76.1875em){
   .md-sidebar__inner > .md-nav > .md-nav__title{
     height: auto;

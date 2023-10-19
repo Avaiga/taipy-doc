@@ -217,11 +217,9 @@ Learn how to use Taipy and improve your skills.
         <img class="tp-content-card-icon" src="tutorials/images/icon-video.svg">
       </header>
       <div class="tp-content-card-body">
-        <h4> Manage multiple pages </h4>
+        <h4> Organize your page layouts </h4>
         <p>
-          Learn how to organize your code with multiple page applications in this insightful 
-          video tutorial.
-        </p>
+          Learn how to organize your pages in this insightful video tutorial.
       </div> 
     </a>
   </li>
@@ -248,9 +246,9 @@ Learn how to use Taipy and improve your skills.
       <div class="tp-content-card-body">
         <h4> Scenario management basic concepts </h4>
         <p>
-          Learn how to use Taipy Studio graphical editor interface to configure your pipeline 
-          orchestration in this enlightening video tutorial. Explore Scenario management main 
-          concepts: Data Node, Task, and Scenario.
+          Learn how to use Taipy Studio graphical editor interface to configure your scenarios in 
+          this enlightening video tutorial. Explore Scenario management main concepts: Data 
+          Node, Task, and Scenario.
         </p>
       </div> 
     </a>
@@ -264,8 +262,7 @@ Learn how to use Taipy and improve your skills.
         <h4> Submit Scenarios and Tasks </h4>
         <p>
           Dive into a real-world use case, where we demonstrate the step-by-step process of 
-          harnessing your data's potential with Taipy back-end key components: Data nodes and 
-          Tasks.
+          harnessing your data's potential with Data nodes and Tasks.
         </p>
       </div> 
     </a>
@@ -498,7 +495,7 @@ Learn how to use Taipy and improve your skills.
       </header>
       <div class="tp-content-card-body">
         <h4> Multi-page Applications </h4>
-        <p> Organize your data flows and visualizations in multi-pages applications, resulting in 
+        <p> Organize your data visualizations in multi-page applications, resulting in 
             user-friendly and intuitive user interface.
         </p>
       </div> 
@@ -564,8 +561,7 @@ Learn how to use Taipy and improve your skills.
       </header>
       <div class="tp-content-card-body">
         <h4> Callbacks </h4>
-        <p> Discover the on-change callbacks in Taipy. Understand how these Python functions 
-            turn your user interface into a fully interactive multi-user web application. 
+        <p> Make your multi-user graphical interface fully interactive using the on-change callback.
         </p>
       </div> 
     </a>
@@ -579,6 +575,18 @@ Learn how to use Taipy and improve your skills.
         <h4> Taipy Cloud </h4>
         <p> Share your application on the web. Learn the simplicity of deploying and hosting your 
             Taipy application on the Taipy Cloud. 
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li>
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/multithreading">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Multithreading </h4>
+        <p> Display data sent from another thread in real-time to your Taipy application.
         </p>
       </div> 
     </a>

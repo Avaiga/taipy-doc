@@ -51,7 +51,7 @@ And the chart definition is the following:
 
 Here is the resulting chart:
 
-![Styling a line chart](others1.png)
+<!-- ![Styling a line chart](others1.png) -->
 
 ### Multiple charts
 
@@ -162,7 +162,7 @@ and longitude coordinates.
 
 Here is how this looks on the page:
 
-![Plotting on a map](others-maps1.png)
+<!-- ![Plotting on a map](others-maps1.png) -->
 
 
 ### Tracking selection

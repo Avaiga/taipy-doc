@@ -174,10 +174,9 @@ Follow our tutorials and get the core concepts of Taipy.
         <img class="tp-content-card-icon" src="images/icon-video.svg">
       </header>
       <div class="tp-content-card-body">
-        <h4> Manage multiple pages </h4>
+        <h4> Organize your page layouts </h4>
         <p>
-          Learn how to organize your code with multiple page applications in this insightful 
-          video tutorial.
+          Learn how to organize your pages in this insightful video tutorial.
         </p>
       </div> 
     </a>
@@ -205,9 +204,9 @@ Follow our tutorials and get the core concepts of Taipy.
       <div class="tp-content-card-body">
         <h4> Scenario management basic concepts </h4>
         <p>
-          Learn how to use Taipy Studio graphical editor interface to configure your pipeline 
-          orchestration in this enlightening video tutorial. Explore Scenario management main 
-          concepts: Data Node, Task, and Scenario.
+          Learn how to use Taipy Studio graphical editor interface to configure your scenarios in 
+          this enlightening video tutorial. Explore Scenario management main concepts: Data 
+          Node, Task, and Scenario.
         </p>
       </div> 
     </a>
@@ -221,8 +220,7 @@ Follow our tutorials and get the core concepts of Taipy.
         <h4> Submit Scenarios and Tasks </h4>
         <p>
           Dive into a real-world use case, where we demonstrate the step-by-step process of 
-          harnessing your data's potential with Taipy back-end key components: Data nodes and 
-          Tasks.
+          harnessing your data's potential with Data nodes and Tasks.
         </p>
       </div> 
     </a>

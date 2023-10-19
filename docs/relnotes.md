@@ -33,7 +33,8 @@ Not published yet.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 3.0.0
 
-- Builder API - TODO
+- A new package holds the [*Page Builder API*](manuals/gui/page_builder.md): a set of classes that
+  let you define the pages for your application entirely with Python.
 - You can now update variables on all clients using the *shared variables* concept. See
     the `Gui.add_shared_variable()^` and `State.dispatch()^` methods for details.
 - You can now invoke a callback for all clients using the `broadcast_callback()^` function.
