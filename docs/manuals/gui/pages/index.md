@@ -4,10 +4,21 @@ interact with the application data through visual elements.
 
 # Defining pages
 
-Taipy lets you create as many pages as you want, with whatever content you need.
-Pages are created using sub-classes of the (`Page^`) class which convert some text
-(inside the application code or from an external file) into HTML content sent and
-rendered on the client device.
+Taipy lets you create as many pages as you want, with whatever content you need.<br/>
+Pages can be defined using two different techniques:
+
+- you can create a textual description of the page (inside the application code or from an external
+  file) that will get transformed into HTML content sent and rendered on the client device.
+- you can create pages entirely by code, using the [Page Builder](../page_builder.md) package.<br/>
+  This package provides a way to create any visual element, organize them within blocks, and
+  create pages to hold them.
+
+This section focuses exclusively on the text-to-page process, which is the typically preferred
+manner: the text provides kind of a preview of the page and can also structure the elements.<br/>
+If you want to generate page content, the [Page Builder](../page_builder.md) API may be a better
+fit: using the Python language, you can create loops or conditionals that would otherwise be
+complicated to produce with a text-only description. Please refer to
+[this section](../page_builder.md) if this is what you need.
 
 Converting text into page content is done according to these steps:
 
@@ -20,7 +31,7 @@ Converting text into page content is done according to these steps:
 
 - Potentially, *callbacks* are located and connected from the rendered page back
   to the Python code in order to watch user events (the notion of callbacks is detailed
-  in the section [Callbacks](callbacks.md)).
+  in the section [Callbacks](../callbacks.md)).
 
 ## Defining the page content
 
@@ -72,7 +83,7 @@ Any [*Markdown*](https://en.wikipedia.org/wiki/Markdown) content can be used her
 You then have, in the *md_page* variable, the definition of a page
 whose content is defined by Markdown text.
 
-!!! Note "Markdown link syntax"
+!!! note "Markdown link syntax"
     You can use Markdown's native *link* syntax to easily create links
     from one page to another.
 
@@ -89,7 +100,7 @@ whose content is defined by Markdown text.
 Besides the extensions listed above, Taipy adds its own extension that can parse
 Taipy-specific constructs that allow for defining visual elements (and all the properties
 they need). The details on how visual elements are located and interpreted with Markdown
-content can be found in the [Markdown Syntax](viselements/index.md#markdown) section
+content can be found in the [Markdown Syntax](../viselements/index.md#markdown) section
 about Visual Elements definition.
 
 ### Using HTML
@@ -115,7 +126,7 @@ whose content is defined from HTML text.
 
 Taipy identifies visual element definitions by finding tags that belong
 to the `taipy` namespace. You can find details on how to create visual
-elements using HTML in the [HTML Syntax](viselements/index.md#html) section
+elements using HTML in the [HTML Syntax](../viselements/index.md#html) section
 about Visual Elements definition.
 
 ## Registering the page
@@ -162,7 +173,7 @@ will be *localhost:5000/page1* or *localhost:5000/page2*.
 
 Note that if pages are created in different modules, the variables that they can bind
 to visual elements may have a scope limited to their origin module. See
-[Page scopes](binding.md#scope-for-variable-binding) for more details.
+[Page scopes](../binding.md#scope-for-variable-binding) for more details.
 
 ## Viewing the page
 
@@ -173,7 +184,7 @@ values), so you can see your application's state and interact with it.
 # Root page
 
 The *Root* page is the page located at the top of the web application.
-The name of this page is `"/"` (or the value of the [*base_url*](configuration.md#p-base_url)
+The name of this page is `"/"` (or the value of the [*base_url*](../configuration.md#p-base_url)
 configuration setting).
 
 If your application uses only one page, this is typically where it would be created:
@@ -189,7 +200,7 @@ be `http://127.0.0.1:5000/`).
 
 If your application has several pages, you would usually create them with different names,
 so the user can navigate from page to page (using the `navigate()^` function or the
-[`navbar`](viselements/navbar.md) control).<br/>
+[`navbar`](../viselements/navbar.md) control).<br/>
 However, you can still have a root page for your application (with the name: `"/"`).
 In this situation, Taipy creates a
 [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application)
@@ -238,7 +249,7 @@ for all its pages.
 !!! tip "Running multiple services"
 
     If you need to run the Taipy GUI service with other Taipy services, you may need
-    to refer to the [Running Taipy services](../run-deploy/run/running_services.md)
+    to refer to the [Running Taipy services](../../run-deploy/run/running_services.md)
     section.
 
 ## The `<|content|>` pseudo-control
@@ -281,7 +292,7 @@ Applications sometimes need to prompt the user to indicate a situation or reques
 input of some sort. Dialogs are forms that can be displayed on top of the page
 the user is looking at, prompting for some input.
 
-To create a dialog, you will use a [`dialog`](viselements/dialog.md) control in your
+To create a dialog, you will use a [`dialog`](../viselements/dialog.md) control in your
 page. The dialog holds a page content or a *Partial* (see [Partials](#partials)).
 
 You can control whether the dialog is visible or not, and what to do when the end-user
@@ -308,7 +319,7 @@ user's response.
        Gui(page).run()
     ```
 
-Please refer to the documentation page on the [`dialog`](viselements/dialog.md)
+Please refer to the documentation page on the [`dialog`](../viselements/dialog.md)
 control for more details and examples.
 
 # Partials
@@ -341,14 +352,14 @@ be used in visual elements that use them.
        gui.run()
     ```
 
-You can take a look at the documentation of the [`dialog`](viselements/dialog.md) or
-[`pane`](viselements/pane.md) to see how these *Partials* can be used in pages.
+You can take a look at the documentation of the [`dialog`](../viselements/dialog.md) or
+[`pane`](../viselements/pane.md) to see how these *Partials* can be used in pages.
 
 # Panes
 
 Modern user interfaces also provide small pages that pop out and be removed for
 temporary use, such as providing specific parameters for the application. Taipy lets
-you create such elements using the [pane](viselements/pane.md) block.
+you create such elements using the [pane](../viselements/pane.md) block.
 
 A pane can appear from any border of your page, next to or on top of the page, and
 disappears when the user clicks outside its area.
@@ -408,7 +419,7 @@ In this example, *gui.user_status.x* is set to 1234 (as initialized in the appli
 *gui.user_status.info* is the string defined in the `on_status()` function.
 
 !!! note "Extended status"
-    If the [*extended_status*](configuration.md#p-extended_status) parameter is set to True,
+    If the [*extended_status*](../configuration.md#p-extended_status) parameter is set to True,
     the dictionary associated with the *gui* key is augmented with runtime information of the
     application, such as the version of the Taipy GUI package that is running, the version of
     the Python interpreter that is running the application, the list of the extension

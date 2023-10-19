@@ -27,7 +27,7 @@ sudo pip install uwsgi gevent
 sudo ln -s `pwd`/.local/bin/uwsgi /usr/bin/uwsgi
 ```
 
-!!! Note
+!!! note
 
     If you are using a SQL database based on Microsoft SQL Server, you need to install your corresponding
     [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
@@ -103,7 +103,7 @@ In our example, we store this application in the variable *web_app* (see line 3)
 
 Make sure you upload this code on your target machine and install your dependencies with *pip*.
 
-!!! important "Entry point"
+!!! note "Entry point"
     The entry point filename and the application variable name are important for the proper configuration
     of the *uWSGI* web application server. Please, keep them as is or adapt the configuration.
 

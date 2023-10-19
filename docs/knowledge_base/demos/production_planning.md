@@ -1,9 +1,8 @@
 Production planning is pivotal in manufacturing, optimizing resources to meet 
 demand while minimizing costs. This demo offers a solution for efficient production and cost management.
 
-[Try it live](https://production-planning.taipy.cloud/Data-Visualization) 
-
-[Get it on GitHub](https://github.com/Avaiga/demo-production-planning)
+[Try it live](https://production-planning.taipy.cloud/Data-Visualization){: .tp-btn target='blank' }
+[Get it on GitHub](https://github.com/Avaiga/demo-production-planning){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
 The application consists of five pages accessible via the left panel by expanding the menu list.

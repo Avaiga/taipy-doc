@@ -4,9 +4,9 @@ In a Taipy application, running the Core service is required to execute jobs. To
 can run different Taipy services, please refer to the
 [Running Taipy services](../../run-deploy/run/running_services.md) page.
 
-!!! important "Preventing configuration update when the Taipy Core service is running"
+!!! note "Preventing configuration update when the Taipy Core service is running"
 
-    After running the Core service, all configuration will be blocked from update to prepare for job execution.
+    After running the Core service, all configuration are blocked from update.
 
 In this section, it is assumed that <a href="./code_example/my_config.py" download>`my_config.py`</a>
 module contains a Taipy configuration already implemented.
@@ -41,7 +41,7 @@ tp.submit(scenario)
 tp.Core().run()
 ```
 
-!!! Note "Another syntax."
+!!! note "Another syntax."
     To submit a scenario, you can also use the method `Scenario.submit()^`:
 
     ```python linenums="1"
@@ -94,7 +94,7 @@ In line 5, we retrieve the sequence named `sales_sequence` from the created scen
 sequence for execution. The `taipy.submit()^` method triggers the submission of all the sequence's tasks. When
 submitting a sequence, you can also use the two parameters _wait_ and _timeout_.
 
-!!! Note "Another syntax."
+!!! note "Another syntax."
     To submit a sequence, you can also use the method `Sequence.submit()^`:
 
     ```python linenums="1"
@@ -125,7 +125,7 @@ job = tp.submit(task)
 In line 5, we retrieve the task named `predicting` from the created scenario. In line 7, we submit this
 task for execution. When submitting a task, you can also use the two parameters _wait_ and _timeout_.
 
-!!! Note "Another syntax."
+!!! note "Another syntax."
     To submit a task, you can also use the method `Task.submit()^`:
 
     ```python linenums="1"
@@ -180,7 +180,7 @@ Deleting a Job can raise an `JobNotDeletedException^` if the `Status^` of the Jo
 `FAILED`. You can overcome this behaviour by forcing the deletion with the _force_ parameter set to True:
 `taipy.delete_job(job, force=True)`.
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp
@@ -355,7 +355,7 @@ You can also unsubscribe to scenarios by using `taipy.unsubscribe_scenario(funct
 or `tp.unsubscribe_sequence(function)` for sequences. Same as for subscription, the un-subscription
 can be global, or you can specify the scenario or sequence by passing it as a parameter.
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp

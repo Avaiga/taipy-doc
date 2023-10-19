@@ -2,7 +2,7 @@ Taipy provides you three runnable services: Taipy GUI, Taipy REST, and Taipy Cor
 calling the method _run()_ from the service instance either `Gui^`, `Rest^`, or `Core^`. You can also use
 `taipy.run()` to run multiple service(s) together.
 
-!!! important "Running from the main module"
+!!! note "Running from the main module"
 
     As you can see in the following examples, the code to run a Taipy service is set within a `if` block checking if
     the special variable `__name__` equals to `"__main__"`. It's a standard boilerplate code that protects users from

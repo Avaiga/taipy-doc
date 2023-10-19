@@ -3,13 +3,11 @@ Pages show different graphs and information on Covid.
 A Prediction page is also present to predict the number of casualties.
 
 
-[Try it live](https://covid-dashboard.taipy.cloud/Country) 
-
-[Get it on GitHub](https://github.com/Avaiga/demo-covid-dashboard)
+[Try it live](https://covid-dashboard.taipy.cloud/Country){: .tp-btn target='blank' }
+[Get it on GitHub](https://github.com/Avaiga/demo-covid-dashboard){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
-The application comprises four pages accessible via the upper tabs: Country, Map, Predictions, 
-World.
+The application comprises four pages accessible via the upper tabs: Country, Map, Predictions, World.
 
 ## Page 1: Country
 - Country-specific COVID-19 statistics.

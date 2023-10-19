@@ -83,7 +83,9 @@ def remove_dummy_h3(content: str, ids: Dict[str, str]) -> str:
 
 
 def on_post_build(env):
-    "Post-build actions for Taipy documentation"
+    """
+    Post-build actions for Taipy documentation
+    """
 
     log = logging.getLogger("mkdocs")
     site_dir = env.conf["site_dir"]
@@ -380,7 +382,7 @@ def on_post_build(env):
                             html_content = new_content + html_content[last_location:]
 
                     # Rename the GUI Extension API type aliases
-                    if "reference_guiext" in filename:
+                    elif "reference_guiext" in filename:
                         for in_out in [("TaipyAction", "Action", "../interfaces/Action"),
                                        ("TaipyContext", "Context", "#context")]:
                             LINK_RE = re.compile(f"<code>{in_out[0]}</code>")
@@ -431,6 +433,34 @@ def on_post_build(env):
                                             + article_match.group(2)
                                             + html_content[article_match.end():])
                             file_was_changed = True
+                    # Processing for the page builder API:
+                    fn_match = re.search(r"(/|\\)reference\1taipy\.gui\.builder.(.*?)\1index.html", filename)
+                    if fn_match is not None:
+                        element_name = fn_match[2]
+                        # Default value of properties appear as "dynamic(type" as "indexed(type"
+                        prop_re = re.compile(r"<tr>\s*<td><code>.*?</code></td>"
+                                           + r"\s*<td>\s*<code>(.*?)</code>\s*</td>\s*<td>",
+                                             re.S)
+                        new_content = ""
+                        last_location = 0
+                        for prop in prop_re.finditer(html_content):
+                            if default_value_re := re.match("(dynamic|indexed)\((.*)", prop[1]):
+                                new_content += html_content[last_location:prop.start(1)]
+                                new_content += f"{default_value_re[2]}<br/><small><i>{default_value_re[1]}</i></small>"
+                                last_location = prop.end(1)
+                        if last_location:
+                            file_was_changed = True
+                            html_content = new_content + html_content[last_location:]
+                        # '<i>default value</i>' -> <i>default value</i>
+                        dv_re = re.compile(r"&\#39;&lt;i&gt;(.*?)&lt;/i&gt;&\#39;", re.S)
+                        new_content = ""
+                        last_location = 0
+                        for dv in dv_re.finditer(html_content):
+                            new_content += html_content[last_location:dv.start()] + f"<i>{dv[1]}</i>"
+                            last_location = dv.end()
+                        if last_location:
+                            file_was_changed = True
+                            html_content = new_content + html_content[last_location:]
                     # Handle title and header in packages documentation file
                     FONT_SIZE_CHANGE=''
                     def code(s: str) -> str:
@@ -464,6 +494,7 @@ def on_post_build(env):
             sources = ", ".join(sorted(fixed_cross_refs[dest]))
             log.info(f"FIXED cross-ref to '{dest}' from {sources}")
 
+
 # ################################################################################
 # Functions that are used in the postprocessing phase.
 # I wish we could move them elsewhere, but couldn't figure out how
@@ -488,6 +519,7 @@ def process_data_source_attr(html: str, env):
         return (True, new_content + html[last_location:])
     else:
         return (False, None)
+
 
 def process_links_to_github(html: str, env):
     _LINK_RE = re.compile(r"(?<=href=\"https://github.com/Avaiga/)(taipy-gui/tree/)\[BRANCH\](.*?\")")

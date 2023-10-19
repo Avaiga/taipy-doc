@@ -13,7 +13,7 @@
 
 [Azure App Service](https://learn.microsoft.com/en-us/azure/app-service/) is a managed platform that simplifies web application deployment, scaling, and management. Azure Web App, a service within App Service, specializes in hosting and managing web applications. As a Python developer, you can leverage Azure Web App to quickly deploy and run your Python-based web applications in a scalable, hassle-free environment.
 
-!!! Note
+!!! note
 
     You can create Azure App Service and Azure Web App using Azure Portal, VS Code, Azure Tools extension pack, or Azure CLI. In this section, we focus on Azure CLI.
 

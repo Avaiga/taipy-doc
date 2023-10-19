@@ -4,14 +4,16 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 !!! warning "For Notebooks"
 
-    The "Getting Started" Notebook is available [here](../../../../getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
+    The "Getting Started" Notebook is available [here](../getting_started.ipynb). In Taipy GUI, 
+    the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 # Step 7: Multi-pages, navbars, and menus
 
-Taipy significantly simplifies the process of building a multi-page application. To create a multi-page application, 
-you need to define a dictionary of pages. In this example, we will create three Pages: 
-a Root page and two additional pages (page 1 & page 2). We will incorporate Visual elements, 
-such as a menu or navbar, on the Root page to facilitate navigation between page 1 and page 2.
+Taipy significantly simplifies the process of building a multi-page application. To create a 
+multi-page application, you need to define a dictionary of pages. In this example, we will 
+create three Pages: a Root page and two additional pages (page 1 & page 2). We will incorporate 
+Visual elements, such as a menu or navbar, on the Root page to facilitate navigation between 
+page 1 and page 2.
 
 
 ```python
@@ -35,9 +37,11 @@ Gui(pages=pages).run()
 
 ## Navigating between pages
 
-- [menu](../../../../manuals/gui/viselements/menu.md): creates a menu on the left to navigate through the pages.
+- [menu](../../../../manuals/gui/viselements/menu.md): creates a menu on the left to navigate 
+    through the pages.
 
-`<|menu|label=Menu|lov={lov_pages}|on_action=on_menu|>`. For example, this code creates a menu with two pages:
+    `<|menu|label=Menu|lov={lov_pages}|on_action=on_menu|>`. For example, this code creates a menu 
+    with two pages:
 
 ```python
 from taipy.gui import Gui, navigate
@@ -64,7 +68,8 @@ Gui(pages=pages).run()
 
 ![Menu](menu.png){ width=500 style="margin:auto;display:block" }
 
-- [navbar](../../../../manuals/gui/viselements/navbar.md): creates an element to navigate through the Taipy pages by default
+- [navbar](../../../../manuals/gui/viselements/navbar.md): creates an element to navigate 
+    through the Taipy pages by default
 
 ```python
 from taipy.gui import Gui
@@ -88,7 +93,7 @@ Gui(pages=pages).run()
  
 ## Back to the code
 
-The Markdown created in our previous steps will be the first page (named _page_) of the application. 
+The Markdown created in our previous steps will be the first page (named _page_) of the application.
 
 ![Previous Markdown](first_markdown.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
@@ -132,7 +137,8 @@ def analyze_file(state):
     state.path = None
 ```    
 
-This little code below assembles our previous page and this new page. The _navbar_ in the root page is also visible on both pages allowing for easy switching between pages. 
+This little code below assembles our previous page and this new page. The _navbar_ in the root 
+page is also visible on both pages allowing for easy switching between pages. 
 
 ```python
 
@@ -146,4 +152,4 @@ pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
 Gui(pages=pages).run()
 ```
 
-![Multi Pages](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Multi-Pages](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
