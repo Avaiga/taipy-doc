@@ -81,7 +81,7 @@ nav:
           - manuals/gui/index.md
           - "Pages":
              - manuals/gui/pages/index.md
-             - "Page Builder API": manuals/gui/page_builder.md
+             - "Using code": manuals/gui/page_builder.md
           - "Visual Elements":
              - "Introduction to Visual Elements": manuals/gui/viselements/index.md
              - "Controls": manuals/gui/viselements/controls.md

@@ -432,20 +432,30 @@ def on_post_build(env):
                                             + html_content[article_match.end():])
                             file_was_changed = True
                     # Processing for the page builder API:
-                    # - Default value of properties are generated as "dynamic(type"
                     fn_match = re.search(r"(/|\\)reference\1taipy\.gui\.builder.(.*?)\1index.html", filename)
                     if fn_match is not None:
                         element_name = fn_match[2]
+                        # Default value of properties appear as "dynamic(type" as "indexed(type"
                         prop_re = re.compile(r"<tr>\s*<td><code>.*?</code></td>"
                                            + r"\s*<td>\s*<code>(.*?)</code>\s*</td>\s*<td>",
                                              re.S)
                         new_content = ""
                         last_location = 0
                         for prop in prop_re.finditer(html_content):
-                            if default_value_re := re.match("dynamic\((.*)", prop[1]):
+                            if default_value_re := re.match("(dynamic|indexed)\((.*)", prop[1]):
                                 new_content += html_content[last_location:prop.start(1)]
-                                new_content += f"{default_value_re[1]}<br/><small><i>dynamic</i></small>"
+                                new_content += f"{default_value_re[2]}<br/><small><i>{default_value_re[1]}</i></small>"
                                 last_location = prop.end(1)
+                        if last_location:
+                            file_was_changed = True
+                            html_content = new_content + html_content[last_location:]
+                        # '<i>default value</i>' -> <i>default value</i>
+                        dv_re = re.compile(r"&\#39;&lt;i&gt;(.*?)&lt;/i&gt;&\#39;", re.S)
+                        new_content = ""
+                        last_location = 0
+                        for dv in dv_re.finditer(html_content):
+                            new_content += html_content[last_location:dv.start()] + f"<i>{dv[1]}</i>"
+                            last_location = dv.end()
                         if last_location:
                             file_was_changed = True
                             html_content = new_content + html_content[last_location:]
