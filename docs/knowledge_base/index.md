@@ -483,7 +483,7 @@ Learn how to use Taipy and improve your skills.
       </header>
       <div class="tp-content-card-body">
         <h4> Multi-page Applications </h4>
-        <p> Organize your data flows and visualizations in multi-pages applications, resulting in 
+        <p> Organize your data visualizations in multi-page applications, resulting in 
             user-friendly and intuitive user interface.
         </p>
       </div> 
