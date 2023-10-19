@@ -117,7 +117,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li keywords="scenario task job job_execution scenario_submission configuration standalone workers">
+  <li keywords="scenario task job job_execution scenario_submission configuration standalone">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/job_execution/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
