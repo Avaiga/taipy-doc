@@ -12,11 +12,14 @@
 # [VISELEMENTS_DIR_PATH]/[controls|blocks].md_template
 # are also completed with generated table of contents.
 # ################################################################################
-from .setup import Setup, SetupStep
 import json
 import os
 import re
+import sys
 from typing import Dict, List, Optional
+
+from .setup import Setup, SetupStep
+from io import StringIO
 
 class VisElementsStep(SetupStep):
     DEFAULT_PROPERTY = "default_property"
@@ -29,7 +32,7 @@ class VisElementsStep(SetupStep):
 
     def get_description(self) -> str:
         return "Extraction of the visual elements documentation"
-    
+
     def enter(self, setup: Setup):
         self.VISELEMENTS_DIR_PATH = setup.manuals_dir + "/gui/viselements"
         self.CORELEMENTS_DIR_PATH = setup.manuals_dir + "/gui/corelements"
@@ -45,15 +48,20 @@ class VisElementsStep(SetupStep):
             raise FileNotFoundError(
                 f"FATAL - Could not read {template_path} Markdown template"
             )
-        self.charts_home_html_path = self.VISELEMENTS_DIR_PATH + "/charts/home.html_fragment"
+        self.charts_home_html_path = (
+            self.VISELEMENTS_DIR_PATH + "/charts/home.html_fragment"
+        )
         if not os.access(self.charts_home_html_path, os.R_OK):
             raise FileNotFoundError(
                 f"FATAL - Could not read {self.charts_home_html_path} html fragment"
             )
+
         # Load Taipy GUI and Taipy elements
         # -----------------------------------------------------------
         # Load elements, check basic features and resolve inheritance
-        def load_elements(self, elements_json_path: str, prefix: str, doc_pages_path: str) -> None:
+        def load_elements(
+            self, elements_json_path: str, prefix: str, doc_pages_path: str
+        ) -> None:
             with open(elements_json_path) as elements_json_file:
                 loaded_elements = json.load(elements_json_file)
 
@@ -69,7 +77,10 @@ class VisElementsStep(SetupStep):
                             f"FATAL - Duplicate element type '{element_type}' in {elements_json_path}"
                         )
                     element_desc = element[1]
-                    if not __class__.PROPERTIES in element_desc and not __class__.INHERITS in element_desc:
+                    if (
+                        not __class__.PROPERTIES in element_desc
+                        and not __class__.INHERITS in element_desc
+                    ):
                         raise ValueError(
                             f"FATAL - No properties in element type '{element_type}' in {elements_json_path}"
                         )
@@ -90,13 +101,17 @@ class VisElementsStep(SetupStep):
                 element_desc[__class__.DEFAULT_PROPERTY] = default_property
 
             # Resolve inheritance
-            def merge(element_desc, parent_element_desc, default_property: str) -> Optional[str]:
+            def merge(
+                element_desc, parent_element_desc, default_property: str
+            ) -> Optional[str]:
                 element_properties = element_desc.get(__class__.PROPERTIES, [])
                 element_property_names = [p[__class__.NAME] for p in element_properties]
                 for property in parent_element_desc.get(__class__.PROPERTIES, []):
                     property_name = property[__class__.NAME]
                     if property_name in element_property_names:
-                        element_property = element_properties[element_property_names.index(property_name)]
+                        element_property = element_properties[
+                            element_property_names.index(property_name)
+                        ]
                         for n in ["type", "default_value", "doc"]:
                             if not n in element_property and n in property:
                                 element_property[n] = property[n]
@@ -104,9 +119,12 @@ class VisElementsStep(SetupStep):
                         element_property_names.append(property_name)
                         element_properties.append(property)
                 element_desc[__class__.PROPERTIES] = element_properties
-                if not default_property and parent_element_desc.get(__class__.DEFAULT_PROPERTY, False):
+                if not default_property and parent_element_desc.get(
+                    __class__.DEFAULT_PROPERTY, False
+                ):
                     default_property = parent_element_desc[__class__.DEFAULT_PROPERTY]
                 return default_property
+
             def resolve_inheritance(element_desc):
                 if parent_types := element_desc.get(__class__.INHERITS, None):
                     del element_desc[__class__.INHERITS]
@@ -115,20 +133,35 @@ class VisElementsStep(SetupStep):
                     for parent_type in parent_types:
                         parent_desc = self.elements[parent_type]
                         resolve_inheritance(parent_desc)
-                        default_property = merge(element_desc, parent_desc, default_property)
+                        default_property = merge(
+                            element_desc, parent_desc, default_property
+                        )
                     if original_default_property != default_property:
                         element_desc[__class__.DEFAULT_PROPERTY] = default_property
+
             for element_desc in self.elements.values():
-                resolve_inheritance( element_desc)
+                resolve_inheritance(element_desc)
 
         self.elements = {}
         self.categories = {}
-        load_elements(self, setup.root_dir + "/taipy/gui/viselements.json", "", self.VISELEMENTS_DIR_PATH)
-        load_elements(self, setup.root_dir + "/taipy/gui_core/viselements.json", "core_", self.CORELEMENTS_DIR_PATH)
+        load_elements(
+            self,
+            setup.root_dir + "/taipy/gui/viselements.json",
+            "",
+            self.VISELEMENTS_DIR_PATH,
+        )
+        load_elements(
+            self,
+            setup.root_dir + "/taipy/gui_core/viselements.json",
+            "core_",
+            self.CORELEMENTS_DIR_PATH,
+        )
 
         # Check that documented elements have a default property and a doc file,
         # and that their properties have the mandatory settings.
-        for category, element_type in [(c, e) for c,elts in self.categories.items() for e in elts]:
+        for category, element_type in [
+            (c, e) for c, elts in self.categories.items() for e in elts
+        ]:
             if category == "undocumented":
                 continue
             element_desc = self.elements[element_type]
@@ -140,7 +173,7 @@ class VisElementsStep(SetupStep):
                 raise ValueError(
                     f"FATAL - No properties for element type '{element_type}'"
                 )
-            template_path = f"{element_desc['doc_path']}/{element_type}.md_template"            
+            template_path = f"{element_desc['doc_path']}/{element_type}.md_template"
             if not os.access(template_path, os.R_OK):
                 raise FileNotFoundError(
                     f"FATAL - Could not find template doc file for element type '{element_type}' at {template_path}"
@@ -164,7 +197,9 @@ class VisElementsStep(SetupStep):
         with open(f"{md_path}_template") as template_file:
             md_template = template_file.read()
         if not md_template:
-            raise FileNotFoundError(f"FATAL - Could not read {md_path}_template markdown template")
+            raise FileNotFoundError(
+                f"FATAL - Could not read {md_path}_template markdown template"
+            )
         prefixes = set([desc["prefix"] for desc in self.elements.values()])
         toc = {}
         for prefix in prefixes:
@@ -185,6 +220,7 @@ class VisElementsStep(SetupStep):
                     f"Couldn't locate first paragraph in documentation for element '{element_type}'"
                 )
             first_documentation_paragraph = match.group(1)
+            element_desc['short_doc'] = first_documentation_paragraph
 
             # Build properties table
             properties_table = """
@@ -203,18 +239,30 @@ class VisElementsStep(SetupStep):
             STAR = "(&#9733;)"
             default_property_name = element_desc[__class__.DEFAULT_PROPERTY]
             # Convert properties array to a dict
-            property_descs = { p["name"]: p for p in element_desc[__class__.PROPERTIES]}
-            for property_name in [default_property_name] + list(filter(lambda x: x != default_property_name, property_descs.keys())):
+            property_descs = {p["name"]: p for p in element_desc[__class__.PROPERTIES]}
+            for property_name in [default_property_name] + list(
+                filter(lambda x: x != default_property_name, property_descs.keys())
+            ):
                 property_desc = property_descs[property_name]
-                name  = property_desc[__class__.NAME]
-                type  = property_desc["type"]
-                default_value  = property_desc.get("default_value", None)
-                doc  = property_desc.get("doc", None)
+                name = property_desc[__class__.NAME]
+                type = property_desc["type"]
+                if m := re.match(r"dynamic\((.*?)\)", type):
+                    type = f"<code>{m[1]}</code><br/><i>dynamic</i>"
+                elif m := re.match(r"indexed\((.*?)\)", type):
+                    type = f"<code>{m[1]}</code><br/><i>indexed</i>"
+                else:
+                    type = f"<code>{type}</code>"
+                default_value = property_desc.get("default_value", None)
+                doc = property_desc.get("doc", None)
                 if not default_value:
-                    default_value = "<i>Required</i>" if property_desc.get("required", False) else ""
+                    default_value = (
+                        "<i>Required</i>"
+                        if property_desc.get("required", False)
+                        else ""
+                    )
                 full_name = f"<code id=\"p-{re.sub('<[^>]+>', '', name)}\">"
                 if name == default_property_name:
-                    full_name += f"<u><bold>{name}</bold></u></code><sup><a href=\"#dv\">{STAR}</a></sup>"
+                    full_name += f'<u><bold>{name}</bold></u></code><sup><a href="#dv">{STAR}</a></sup>'
                 else:
                     full_name += f"{name}</code>"
                 properties_table += (
@@ -241,11 +289,13 @@ class VisElementsStep(SetupStep):
                     f"Couldn't locate first header in documentation for element '{element_type}'"
                 )
             before_properties = match.group(1)
-            after_properties = match.group(2)+element_documentation[match.end() :]
+            after_properties = match.group(2) + element_documentation[match.end() :]
 
             # Chart hook
             if element_type == "chart":
-                values = self.chart_page_hook(element_documentation, before_properties, after_properties)
+                values = self.chart_page_hook(
+                    element_documentation, before_properties, after_properties
+                )
                 before_properties = values[0]
                 after_properties = values[1]
 
@@ -259,7 +309,11 @@ class VisElementsStep(SetupStep):
                 )
             e = element_type  # Shortcut
             d = "../corelements/" if prefix == "core_" else ""
-            s = " style=\"font-size: .8em;\"" if e == "scenario_selector" or e == "data_node_selector" else ""
+            s = (
+                ' style="font-size: .8em;"'
+                if e == "scenario_selector" or e == "data_node_selector"
+                else ""
+            )
             return (
                 f'<a class="tp-ve-card" href="../{d}{e}/">\n'
                 + f"<div{s}>{e}</div>\n"
@@ -279,22 +333,126 @@ class VisElementsStep(SetupStep):
 
         with open(md_path, "w") as md_file:
             for prefix in prefixes:
-                md_template = md_template.replace(f"[{prefix}TOC]", toc[prefix]+"</div>\n")
+                md_template = md_template.replace(
+                    f"[{prefix}TOC]", toc[prefix] + "</div>\n"
+                )
             md_file.write(md_template)
+
+    def generate_builder_api(self) -> None:
+        separator = "# Generated code for Page Builder"
+        py_file = "taipy/gui/builder/__init__.py"
+        py_content = None
+        with open(py_file, "r") as file:
+            py_content = file.read()
+        # Remove generated code
+        if m := re.search(f"\\n*{separator}", py_content):
+            py_content = py_content[:m.start(0)+1]
+
+        def generate(self, category, base_class: str) -> str:
+
+            element_types = self.categories[category]
+            def build_doc(property, desc, indent: int):
+                type = desc['type']
+                dynamic = ""
+                dynamic_re = re.match(r"^dynamic\(\s*(.*)\s*\)$", type)
+                if False and dynamic_re:
+                    type = dynamic_re[1]
+                    dynamic = " (<i>dynamic</i>)"
+                doc = ""
+                if "doc" in desc:
+                    doc = str(desc["doc"]).replace("\n", f'\n{(indent+4)*" "}').replace("<br/>", f'<br/>\n{(indent+4)*" "}')
+                default_value = f'{desc["default_value"]}' if "default_value" in desc else ""
+                if m := re.match(r"^(<i>.*?</i>)$", default_value):
+                    default_value = f"\"{m[1]}\""
+                elif m := re.match(r"^`(.*?)`$", default_value):
+                    default_value = f"{m[1]}"
+                elif default_value == "scatter" or default_value == "lines+markers":
+                    default_value = f"\"{default_value}\""
+                if default_value:
+                    try:
+                        x = eval(default_value)
+                    except:
+                        raise SyntaxError(f"Default value for property '{property}' of element '{element_type}' is not a valid Python expression ({default_value})")
+                return (f"{property}={default_value if default_value else 'None'}, ", 
+                        f"{indent*' '}{desc['name']} ({type}){dynamic}: {doc}\n")
+
+            template = f"""
+
+class [element_type]({base_class}):
+    '''[short_doc]
+
+    This class represents the [control_or_block] documented in the [element_md_page] section.
+    '''
+    _ELEMENT_NAME: str
+    def __init__(self, [arguments]) -> None:
+        '''Create a new `[element_type]` element.
+
+        Arguments:
+            [arguments_doc]
+        '''
+        ...
+"""
+
+            buffer = StringIO()
+            docline_in_template = next(l for l in template.splitlines() if l.lstrip().startswith("[arguments_doc]"))
+            doc_indent = len(docline_in_template) - len(docline_in_template.lstrip())
+
+            for element_type in element_types:
+                desc = self.elements[element_type]
+                properties = desc["properties"]
+                default_prop = next(
+                    p for p in properties if p["name"] == desc["default_property"]
+                )
+                doc = build_doc(default_prop['name'], default_prop, doc_indent)
+                arguments = doc[0]
+                arguments_doc = doc[1]
+                for property in properties:
+                    property_name = property["name"]
+                    if property_name != desc["default_property"] and not "[" in property_name:
+                        doc = build_doc(property_name, property, doc_indent)
+                        arguments += doc[0]
+                        arguments_doc += doc[1]
+                # Process short doc
+                short_doc = desc["short_doc"]
+                if m := re.search(r"(\[`(\w+)`\]\()\2\.md\)", short_doc):
+                    short_doc = short_doc[:m.start()]+f"{m[1]}../gui/viselements/{m[2]}.md)"+short_doc[m.end():]
+                # Link to element doc page
+                element_md_location = "corelements" if desc["prefix"] == "core_" else "viselements"
+                element_md_page = f"[`{element_type}`](../gui/{element_md_location}/{element_type}.md)"
+                buffer.write(template.replace("[element_type]", element_type)
+                                     .replace("[element_md_page]", element_md_page)
+                                     .replace("[arguments]", arguments)
+                                     .replace("[short_doc]", short_doc)
+                                     .replace("[control_or_block]", "control" if category=="controls" else "block")
+                                     .replace(" "*doc_indent+"[arguments_doc]\n", arguments_doc))
+            s = buffer.getvalue()
+            return buffer.getvalue()
+
+        with open(py_file, "wt") as file:
+            file.write(py_content)
+            file.write(f"\n\n{separator}\n\n")
+            file.write(f"from ._element import _Block, _Control\n\n")
+            file.write(generate(self, "controls", "_Control"))
+            file.write(generate(self, "blocks",   "_Block"))
 
     def setup(self, setup: Setup) -> None:
         self.generate_pages("controls", self.controls_path)
         self.generate_pages("blocks", self.blocks_path)
+        self.generate_builder_api()
 
     # Special case for charts: we want to insert the chart gallery that is stored in the
     # file whose path is in self.charts_home_html_path
     # This should be inserted before the first level 1 header
-    def chart_page_hook(self, element_documentation: str, before: str, after: str) -> tuple[str, str]:
+    def chart_page_hook(
+        self, element_documentation: str, before: str, after: str
+    ) -> tuple[str, str]:
         with open(self.charts_home_html_path, "r") as html_fragment_file:
             chart_gallery = html_fragment_file.read()
             # The chart_gallery begins with a comment where all sub-sections
             # are listed.
-        SECTIONS_RE = re.compile(r"^(?:\s*<!--\s+)(.*?)(?:-->)", re.MULTILINE | re.DOTALL)
+        SECTIONS_RE = re.compile(
+            r"^(?:\s*<!--\s+)(.*?)(?:-->)", re.MULTILINE | re.DOTALL
+        )
         match = SECTIONS_RE.match(chart_gallery)
         if not match:
             raise ValueError(
@@ -308,9 +466,14 @@ class VisElementsStep(SetupStep):
             if match:
                 chart_sections += f"- [{match.group(2)}](charts/{match.group(1)}.md)\n"
 
-        match = re.match(r"(^.*?)(?:\n#\s+)", element_documentation, re.MULTILINE | re.DOTALL)
+        match = re.match(
+            r"(^.*?)(?:\n#\s+)", element_documentation, re.MULTILINE | re.DOTALL
+        )
         if not match:
             raise ValueError(
                 f"Couldn't locate first header1 in documentation for element 'chart'"
             )
-        return (match.group(1) + chart_gallery + before[match.end() :], after + chart_sections)
+        return (
+            match.group(1) + chart_gallery + before[match.end() :],
+            after + chart_sections,
+        )

@@ -1,4 +1,4 @@
-Select scenarios from the list of all Taipy Core scenario entities.
+Select scenarios from the list of all scenario entities.
 
 The scenario selector shows all the scenario entities handled by Taipy Core and lets the user
 select a scenario from a list, create new scenarios or edit existing scenarios.

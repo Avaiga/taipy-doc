@@ -77,7 +77,9 @@ nav:
       - "About Taipy's User Manuals": manuals/usermans/index.md
       - Taipy GUI:
           - manuals/gui/index.md
-          - "Pages": manuals/gui/pages.md
+          - "Pages":
+             - manuals/gui/pages/index.md
+             - "Using code": manuals/gui/page_builder.md
           - "Visual Elements":
              - "Introduction to Visual Elements": manuals/gui/viselements/index.md
              - "Controls": manuals/gui/viselements/controls.md
