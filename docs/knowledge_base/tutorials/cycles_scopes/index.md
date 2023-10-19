@@ -242,9 +242,9 @@ Scenario 2: Primary? False True
 - `tp.get_primary(<Cycle>)`: returns the primary scenario of the Cycle.
 
 
-### GUI-Core visual elements
+### Scenario management visual elements
 
-You can utilize GUI-Core elements to control Cycles. Cycles can be seen in either the
+You can use Scenario management visual elements to control Cycles. Cycles can be seen in either the
 *scenario_selector* or *data_node_selector*. Additionally, it's possible to designate a scenario
 as primary directly through the `scenario` visual element.
 
