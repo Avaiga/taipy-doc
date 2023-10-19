@@ -12,7 +12,7 @@ To access the Page Builder classes, you must import the
 
 To create a new page, you must call the `(taipy.gui.builder.)Page^` constructor. This
 object not only represents a page, but is also a
-[Python context manager](https://docs.python.org/3/library/contextlib.html): you will create the
+[Python context manager](https://docs.python.org/3/library/contextlib.html): You will create the
 elements this page holds within the `with` block.
 
 Here is an example of how to create a page using the Page Builder:
@@ -27,8 +27,8 @@ with tgb.Page() as page:
 Gui(page).run()
 ```
 
-The *page* object, after it has been added the required elements, is added to the `Gui` instance
-as it would be done for any other page type.
+Elements are added in the `with` block for the *page* object.<br/>
+Then, the page is added to the `Gui` instance, as it would be done for any other page type.
 
 # Adding elements
 
@@ -46,6 +46,13 @@ When run, the application would show a page looking like this:
     <figcaption>An empty input field</figcaption>
 </figure>
 
+Note that elements can also be added to a page using the `(builder.)Page.add()^` method.<br/>
+The code above could have been written as:
+```py
+page = tgb.Page()
+page.add(tgb.input())
+```
+
 # Setting property values
 
 Let's now add another element and set the element properties to achieve something more
@@ -56,8 +63,14 @@ with tgb.Page() as page:
     tgb.input("John", label="First name")
 ```
 
-The `html^` element that is added lets us add a label to the page, as the text content of the
-generated `<p>` tag.
+The `html^` element lets us add a label to the page showing the text content of the generated
+`<p>` tag.
+
+This code could have been written differently for an identical result:
+```py
+page = tgb.Page()
+page.add(tgb.html("p", "User information:")).add(tgb.input("John", label="First name"))
+```
 
 Note how, in the `input^` control, we use the property names of the control as parameters to the
 class constructor.
@@ -92,7 +105,7 @@ The impact of this change is reflected in the page:
     <figcaption>Styling HTML</figcaption>
 </figure>
 
-You can see that, compared to the previous example, the label uses a bold font weight.
+Compared to the previous example, you can see that the label uses a bold font weight.
 
 # Binding variables
 
