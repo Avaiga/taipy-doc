@@ -174,8 +174,7 @@ Tips and Tricks!
       <div class="tp-content-card-body">
         <h4> Callbacks </h4>
         <span class="tp-tag">Front-end </span>
-        <p> Discover the on-change callbacks in Taipy. Understand how these Python functions 
-            turn your user interface into a fully interactive multi-user web application. 
+        <p> Make your multi-user graphical interface fully interactive using the on-change callback.
         </p>
       </div> 
     </a>
@@ -196,19 +195,6 @@ Tips and Tricks!
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="the_on_change_callback">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="taipy_cloud_deploy/logo_artwork.png">
-      </header>
-      <div class="tp-content-card-body">
-        <h4> On Change Callback </h4>
-        <span class="tp-tag">Front-end </span>
-        <p> Make your multi-user graphical interface fully interactive using the on-change callback.
-        </p>
-      </div> 
-    </a>
-  </li>
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="multithreading">
       <header class="tp-content-card-header">
