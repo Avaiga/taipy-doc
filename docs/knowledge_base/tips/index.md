@@ -107,7 +107,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="iframes">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/icon-code.svg">
+        <img class="tp-content-card-image" src="iframes/iframes_illustration.png">
       </header>
       <div class="tp-content-card-body">
         <h4>iFrames</h4>

@@ -2,6 +2,9 @@ This tips explains how to use iframes to embed interactive visualizations in web
 applications. Specifically, we will use an example to demonstrate how to embed a 
 Sankey Diagram in an iframe.
 
+![iFrame illustration](iframes_illustration.png){width=100%}
+
+
 Let's dive right in!
 
 ## What is an iFrame?
