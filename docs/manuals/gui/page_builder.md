@@ -22,7 +22,7 @@ import src.taipy.gui.builder as tgb
 
 
 with tgb.Page() as page:
-  # add your visual elements here
+    # add your visual elements here
 
 Gui(page).run()
 ```
@@ -35,7 +35,7 @@ as it would be done for any other page type.
 Creating the element classes within a Page context is enough to add them to the page:
 ```py
 with tgb.Page() as page:
-  tgb.input()
+    tgb.input()
 ```
 
 In this example, we add an empty [`input`](viselements/input.md) control.<br/>
@@ -46,18 +46,18 @@ When run, the application would show a page looking like this:
     <figcaption>An empty input field</figcaption>
 </figure>
 
-
-# Setting properties
+# Setting property values
 
 Let's now add another element and set the element properties to achieve something more
 significant:
 ```
 with tgb.Page() as page:
-  tgb.html("p", "User information:")
-  tgb.input("John", label="First name")
+    tgb.html("p", "User information:")
+    tgb.input("John", label="First name")
 ```
 
-The `html^` element that is added lets us add a label to the page.
+The `html^` element that is added lets us add a label to the page, as the text content of the
+generated `<p>` tag.
 
 Note how, in the `input^` control, we use the property names of the control as parameters to the
 class constructor.
@@ -65,7 +65,7 @@ class constructor.
 The first parameter is set to the element's default property. Because *value* is the default
 property for the [`input`](viselements/input.md) control, we could have built the control using:
 ```py
-  tgb.input(label="First name", value="John")
+    tgb.input(label="First name", value="John")
 ```
 And the result would be exactly identical.
 
@@ -81,7 +81,7 @@ must be valid from the HTML standard standpoint.
 
 Here is how we could modify the creation of the `html` element by changing its style:
 ```
-  tgb.html("p", "User information:", style="font-weight=700")
+    tgb.html("p", "User information:", style="font-weight=700")
 ```
 
 The impact of this change is reflected in the page:
@@ -104,8 +104,8 @@ The new code looks like this:
 first_name="John"
 
 with tgb.Page() as page:
-  tgb.html("p", "User information:")
-  tgb.input("{first_name}", label="First name")
+    tgb.html("p", "User information:")
+    tgb.input("{first_name}", label="First name")
 ```
 
 And the result is identical to what was shown above.
@@ -121,13 +121,13 @@ last_name="Carpenter"
 age=43
 
 with tgb.Page() as page:
-  tgb.html("p", "User information:")
-  with tgb.layout("4 1"):
-    with tgb.part():
-      tgb.input("{first_name}", label="First name")
-      tgb.input("{last_name}", label="Last name")
-      tgb.input("{age}", label="Age")
-    tgb.button("Submit")
+    tgb.html("p", "User information:")
+    with tgb.layout("4 1"):
+        with tgb.part():
+            tgb.input("{first_name}", label="First name")
+            tgb.input("{last_name}", label="Last name")
+            tgb.input("{age}", label="Age")
+        tgb.button("Submit")
 ```
 
 The `layout` block is defined as having two columns, where the first column is four times larger
@@ -139,3 +139,62 @@ Here is the resulting display:
     <img src="../tgb-5-l.png" class="visible-light"/>
     <figcaption>Controls layout</figcaption>
 </figure>
+
+# Invoking callbacks
+
+Because you can set functions to callback properties, the binding to callback functions is more
+flexible than when you define page content using text.
+
+## Default callbacks
+
+Default callbacks are invoked if not explicitly assigned to callback properties.
+
+Consider the following script:
+```py
+from src.taipy.gui import Gui
+import src.taipy.gui.builder as tgb
+
+def on_action(state, id):
+    if id == "my_button":
+        # Do something...
+        pass
+
+with tgb.Page() as page:
+    tgb.button("Press me", id="my_button")
+
+Gui(page).run()
+```
+
+The `button^` does not define its *on_action* property: Taipy looks for an *on_action()* function
+in the code and invokes it when the button is pressed.
+
+## Named callbacks
+
+The name of the callback function can also be used as a callback property value.
+
+The code changes would be like this:
+```py
+def my_button_pressed(state, id):
+    # Do something...
+    pass
+
+with tgb.Page() as page:
+    tgb.button("Press me", on_action="my_button_pressed")
+```
+
+The `button^` does not define its *on_action* property: Taipy looks for a *on_action()* function
+in the code and invokes it when the button is pressed.
+
+## Functions as callbacks
+
+You can also use the Python function as a callback property value:
+```py
+def my_button_pressed(state, id):
+    # Do something...
+    pass
+
+with tgb.Page() as page:
+    tgb.button("Press me", on_action=my_button_pressed)
+```
+
+This would have the same behavior as in the case where you would have used the function name.

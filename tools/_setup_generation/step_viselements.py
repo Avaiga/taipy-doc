@@ -246,6 +246,12 @@ class VisElementsStep(SetupStep):
                 property_desc = property_descs[property_name]
                 name = property_desc[__class__.NAME]
                 type = property_desc["type"]
+                if m := re.match(r"dynamic\((.*?)\)", type):
+                    type = f"<code>{m[1]}</code><br/><i>dynamic</i>"
+                elif m := re.match(r"indexed\((.*?)\)", type):
+                    type = f"<code>{m[1]}</code><br/><i>indexed</i>"
+                else:
+                    type = f"<code>{type}</code>"
                 default_value = property_desc.get("default_value", None)
                 doc = property_desc.get("doc", None)
                 if not default_value:
