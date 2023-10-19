@@ -572,6 +572,18 @@ Learn how to use Taipy and improve your skills.
     </a>
   </li>
   <li>
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/the_on_change_callback">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> On Change Callback </h4>
+        <p> Make your multi-user graphical interface fully interactive using the on-change callback. 
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li>
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/multithreading">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
