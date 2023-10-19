@@ -583,4 +583,16 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
+  <li>
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/multithreading">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Multithreading </h4>
+        <p> Display data sent from another thread in real-time to your Taipy application.
+        </p>
+      </div> 
+    </a>
+  </li>
 </ul>
