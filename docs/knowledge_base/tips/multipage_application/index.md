@@ -175,7 +175,7 @@ alternative that does not require any code modification in any of the pages is t
 **root page**.
 
 Rather than modifying each page to include the navbar, we can also simply modify `main.py` to 
-utilize the [root page](../../../manuals/gui/pages.md#root-page):
+utilize the [root page](../../../manuals/gui/pages/index.md#root-page):
 
 ```python title="main.py, with root page navbar"
 from taipy.gui import Gui
