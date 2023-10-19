@@ -78,7 +78,7 @@ Learn how to use Taipy and improve your skills.
 # Tutorials
 
 <ul class="tp-cards-list">
-  <li keywords="gui vizelement input text button chart navbar table layout part expandable menu state interactive multi-page callback on-change markdown">
+  <li keywords="gui vizelement input text button chart navbar table layout part expandable menu state interactive multi-page callback on_change markdown">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/understanding_gui">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
@@ -91,7 +91,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li keywords="scenario task datanode configuration scenario_submission scenario_selector dag on-change">
+  <li keywords="scenario task datanode configuration scenario_submission scenario_selector dag on_change">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/scenario_management_overview/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
@@ -550,7 +550,7 @@ Learn how to use Taipy and improve your skills.
       </header>
       <div class="tp-content-card-body">
         <h4> Callbacks </h4>
-        <p> Make your multi-user graphical interface fully interactive using the on-change callback.
+        <p> Make your multi-user graphical interface fully interactive using the on_change callback.
         </p>
       </div> 
     </a>
