@@ -24,7 +24,7 @@ RUN pip install -r requirements.txt
 CMD python main.py
 ```
 
-!!! Note
+!!! note
 
     If you are using a SQL database based on Microsoft SQL Server, you need to add the following commands
     before installing your application:

@@ -4,13 +4,18 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 !!! warning "For Notebooks"
 
-    The "Getting Started" Notebook is available [here](../../../../getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
+    The Notebook is available [here](../getting_started.ipynb). In Taipy GUI, 
+    the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 # Step 5: Python expression in properties
 
-As shown before, parameters and variables in Taipy are dynamic. The same applies for every type of object, even data frames. Therefore, you can perform operations on data frames, and Taipy GUI will show real-time results on the GUI. These changes occur through the `=` assignment like `state.xxx = yyy` (`state.text = "Example"`).
+As shown before, parameters and variables in Taipy are dynamic. The same applies for every type 
+of object, even data frames. Therefore, you can perform operations on data frames, and Taipy GUI 
+will show real-time results on the GUI. These changes occur through the `=` assignment like 
+`state.xxx = yyy` (`state.text = "Example"`).
 
-Any expression containing `xxx` in the Markdown will propagate the changes and reload related elements. It can be  simple charts or tables, but it can also be an expression like this:
+Any expression containing `xxx` in the Markdown will propagate the changes and reload related 
+elements. It can be  simple charts or tables, but it can also be an expression like this:
 
 ```python
 """
@@ -30,12 +35,15 @@ This kind of expression creates direct connections between visual elements witho
 
 ## A use case for NLP - Part 1
 
-The code for NLP is provided here, although it's not directly related to Taipy. It will come into play in Part 2 when we wrap a GUI around this NLP engine.
+The code for NLP is provided here, although it's not directly related to Taipy. It will come 
+into play in Part 2 when we wrap a GUI around this NLP engine.
 
 Before executing this step, you should have `pip install torch` and `pip install transformers`. 
-The model will be downloaded and utilized in this code snippet. Note that Torch is currently only accessible for Python versions between 3.8 and 3.10.
+The model will be downloaded and utilized in this code snippet. Note that Torch is currently 
+only accessible for Python versions between 3.8 and 3.10.
 
-If you encounter difficulties installing these packages, you can simply provide a dictionary of random numbers as the output for the `analyze_text(text)` function.
+If you encounter difficulties installing these packages, you can simply provide a dictionary of 
+random numbers as the output for the `analyze_text(text)` function.
 
 
 ```python

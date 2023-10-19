@@ -3,7 +3,7 @@ to minimize waste. Bar-cutting optimization minimizes waste
 by choosing optimal cutting patterns. This is crucial in industries 
 with significant material costs such as Steel, Timber, etc.
 
-[Try it Live](https://bar-cutting.taipy.cloud/Databases)
+[Try it live](https://bar-cutting.taipy.cloud/Databases){: .tp-btn target='blank' }
 
 # Understand the Application
 The application comprises five pages accessible via the left panel. 

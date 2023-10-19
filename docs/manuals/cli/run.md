@@ -7,27 +7,30 @@ To start the Taipy application, you can run:
 $ taipy run main.py
 ```
 
-!!! note "Using the 'python' command"
+??? note "Using the 'python' command"
 
-    An alternative way to run your application is to use the `python` command, which runs the Python interpreter.
+    An alternative way to run your application is to use the `python` command, which runs the
+    Python interpreter.
 
     ```console
     $ python main.py
     ```
-    However, when working with command-line arguments, Taipy arguments can be confused with arguments
-    of other libraries or your application's arguments. To avoid this confusion, we recommend
-    using the `taipy run` command, which is more robust in avoiding any command-line argument conflict.
+    However, when working with command-line arguments, Taipy arguments can be confused with 
+    arguments of other libraries or your application's arguments. To avoid this confusion, we 
+    recommend using the `taipy run` command, which is more robust in avoiding any command-line 
+    argument conflict.
 
 ## With Taipy arguments
 
-Taipy CLI will parse internal arguments (interpreted by Taipy) and pass the others to your Taipy application.
-For specific descriptions and usages of each argument, refer to:
+Taipy CLI will parse internal arguments (interpreted by Taipy) and pass the others to your Taipy 
+application. For specific descriptions and usages of each argument, refer to:
 
 - [Configuring the `Gui` instance](../gui/configuration.md#configuring-the-gui-instance)
-- [Configuring version management system using the CLI](../core/versioning/configuration.md#configure-using-the-cli)
+- [Configuring version management using the CLI](../core/versioning/configuration.md#configure-using-the-cli)
 
 To display the list of available Taipy arguments, you can run the `taipy help run` command.
-Alternatively, you can use the *--help* or *-h* options by running `taipy run --help` or `taipy run -h`.
+Alternatively, you can use the *--help* or *-h* options by running `taipy run --help` or
+`taipy run -h`.
 
 ```console
 $ taipy help run
@@ -118,6 +121,6 @@ to your application.
 $ taipy run main.py --port 8080 external-args --host data.server.com --port 2714 --debug
 ```
 
-In this example, your Taipy application will be started on *localhost:8080* with *debug* off since we
-do not specify *--debug* parameter for Taipy. Meanwhile, your application will run with *--debug*
-parameter and read data from *data.server.com:2714*.
+In this example, your Taipy application will be started on *localhost:8080* with *debug* off 
+since we do not specify *--debug* parameter for Taipy. Meanwhile, your application will run with 
+*--debug* parameter and read data from *data.server.com:2714*.

@@ -1,14 +1,16 @@
 ---
+title: Getting Started with Taipy
 hide:
   - navigation
 ---
 
-# Getting Started with Taipy
-
-Dive into Taipy with this beginner-friendly guide. Learn to install, configure, and deploy your 
+Dive into Taipy with this beginner-friendly guide. Learn to install, configure, and create your 
 first application with ease.
 
-## Installation with pip
+![GUI Result](result.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+
+
+# Installation with pip
 
 1. **Prerequisites**: Ensure you have Python (version 3.8 or higher) and 
     [pip](https://pip.pypa.io)installed.
@@ -18,12 +20,12 @@ first application with ease.
     $ pip install taipy
     ```
 
-!!! info "Other installation options"
+??? info "Other installation options"
 
     For alternative installation methods or if you're lacking Python or pip, refer to the 
     [installation page](../installation/index.md).
 
-## Your First Taipy Scenario
+# Your First Taipy Scenario
 
 A Taipy *Scenario* models pipeline executions. Think of it as an execution graph where tasks or 
 functions collaborate and exchange data. You have full control over how complex your scenario 
@@ -109,7 +111,7 @@ The graph involves:
     Hello Taipy!
     ```
 
-## Build a graphical interface
+# Build a graphical interface
 
 While we've used Taipy's Python APIs to handle our scenario, it usually works seamlessly with a 
 graphical interface, also created using Taipy, to provide a more user-friendly experience. 
@@ -180,7 +182,7 @@ In our initial example:
 
 - *message* is connected to a text field, allowing you to display changing content to the user.
 
-### Interactivity Through Actions
+## Interactivity Through Actions
 
 Actions, like `on_action=submit_scenario`, allow visual elements like buttons to trigger 
 specific functions, enhancing the interactivity of the application.

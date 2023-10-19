@@ -27,7 +27,7 @@ A task also holds various properties accessible as an attribute of the task:
   [Data node management page](../entities/data-node-mgt.md) for more detail). The default value of
   *skippable* is False.
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp
@@ -87,7 +87,7 @@ task_2 = sequence.predicting  # "predicting" is the config_id of the predicting 
 Tasks can also be retrieved using `taipy.get_entities_by_config_id()^` providing the config_id.
 This method returns the list of all existing tasks instantiated from the config_id provided as a parameter.
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp
@@ -108,7 +108,7 @@ To access the parent entities of a task (scenarios or sequences), you can
 use either the method `Task.get_parents()^` or the function
 `taipy.get_parents()^`. Both return the parents of the task.
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp

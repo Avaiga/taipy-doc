@@ -35,7 +35,8 @@ It can handle various types of Python stuff like strings, numbers, lists, dictio
 models (for machine learning or other things), and data tables. Here's some code that uses 
 two Pickle data nodes: one for getting data in and one for sending data out.
 
-- *model* is an input *Pickle* data node. It looks at a Pickle file called *model.p* and gets data from there.
+- *model* is an input *Pickle* data node. It looks at a Pickle file called *model.p* and gets 
+    data from there.
 
 - *predictions* is an output data node, but right now, it doesn't have any data in it. 
   We haven't told it where to get data from yet.
@@ -45,7 +46,8 @@ two Pickle data nodes: one for getting data in and one for sending data out.
   Your browser does not support the video tag.
 </video>
 
-Once you've set up this basic graph, the next step is to create a scenario using it and then submit it for execution.
+Once you've set up this basic graph, the next step is to create a scenario using it and then 
+submit it for execution.
 
 ```python
 scenario = tp.create_scenario(scenario_cfg)
@@ -57,8 +59,8 @@ When submitting the scenario (for execution), Taipy:
 - executes the *predict()* function,
 - and writes the results in a Pickle file.
 
-Taipy makes things easy by handling the paths for Pickle files automatically if you haven't defined them. 
-This simplifies the configuration process. When you create several scenarios, 
+Taipy makes things easy by handling the paths for Pickle files automatically if you haven't 
+defined them. This simplifies the configuration process. When you create several scenarios, 
 the output data nodes from each scenario will automatically point to separate Pickle files.
 
 ```py
@@ -92,10 +94,10 @@ These data nodes allow you to work with tabular data from different sources with
 </video>
 
 To use Tabular data nodes in Taipy, you only need to include them in the configuration 
-and specify certain parameters, like a default path for CSV or Parquet files. 
-It's important to note that you can change this path during runtime. 
-For instance, if you create a new scenario, you can instruct the Tabular data nodes 
-to save the results in a different file or directory, which helps you avoid overwriting previous data.
+and specify certain parameters, like a default path for CSV or Parquet files. It's important to 
+note that you can change this path during runtime. For instance, if you create a new scenario, 
+you can instruct the Tabular data nodes to save the results in a different file or directory, 
+which helps you avoid overwriting previous data.
 
 ```py
 scenario = tp.create_scenario(scenario_cfg)
@@ -107,10 +109,11 @@ When you submit the scenario described above for execution in Taipy, the followi
 - Taipy reads the CSV file named `data.csv` because it is the input data node.
 
 - It takes the data from the CSV file and passes it to the *some_preprocessing()* function 
-  using the chosen exposed type, which is typically a Pandas DataFrame by default.
+    using the chosen exposed type, which is typically a Pandas DataFrame by default.
 
 - After the processing is done, Taipy writes or overwrites the result, 
-  which is typically in the form of a Pandas DataFrame, into the Parquet file located at *data.parquet*. 
+    which is typically in the form of a Pandas DataFrame, into the Parquet file located at 
+    *data.parquet*. 
 
 - This Parquet file may overwrite any existing data in that file if it already exists.
 
@@ -124,21 +127,21 @@ to other types, such as *Numpy arrays*:
 
 ## Generic Data Nodes
 
-The **Generic** data node in Taipy is a flexible option that users can customize 
-to include their own *read()* and *write()* functions. This feature is particularly useful 
-when dealing with data sources that don't have a predefined Taipy Data node. 
-With a Generic data node, you can tailor it to access data in specific formats or from custom sources.
+The **Generic** data node in Taipy is a flexible option that users can customize to include 
+their own *read()* and *write()* functions. This feature is particularly useful when dealing 
+with data sources that don't have a predefined Taipy Data node. With a Generic data node, you 
+can tailor it to access data in specific formats or from custom sources.
 
-For more detailed information and guidance on using the Generic data node 
-and customizing it to your specific needs, I recommend checking the 
-[Taipy documentation](../../../manuals/core/config/data-node-config/#generic), 
+For more detailed information and guidance on using the Generic data node and customizing it to 
+your specific needs, I recommend checking the 
+[Taipy documentation](../../../manuals/core/config/data-node-config.md#generic), 
 which will provide you with step-by-step instructions and examples.
 
-Taipy integrates two other predefined storage types to work with documents. 
-Check the documentation for more details.
+Taipy integrates two other predefined storage types to work with documents. Check the 
+documentation for more details.
 
-- [Mongo](../../../manuals/core/config/data-node-config/#mongo-collection)
-- [Json](../../../manuals/core/config/data-node-config/#json)
+- [Mongo](../../../manuals/core/config/data-node-config.md#mongo-collection)
+- [Json](../../../manuals/core/config/data-node-config.md#json)
 
 ## Conclusion
 

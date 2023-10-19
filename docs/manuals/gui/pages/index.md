@@ -83,7 +83,7 @@ Any [*Markdown*](https://en.wikipedia.org/wiki/Markdown) content can be used her
 You then have, in the *md_page* variable, the definition of a page
 whose content is defined by Markdown text.
 
-!!! Note "Markdown link syntax"
+!!! note "Markdown link syntax"
     You can use Markdown's native *link* syntax to easily create links
     from one page to another.
 

@@ -36,7 +36,7 @@ Three parameters can be given to the scenario creation method :
 -   The `name` parameter is optional as well. Any string can be provided as a `name`. It can be used to display
     the scenario in a user interface.
 
-!!! Example
+!!! example
 
     === "Scenario creation with parameters"
         Using the [`my_config.py`](./code_example/my_config.py) module, here is an example of how to create a scenario.

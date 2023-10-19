@@ -83,7 +83,9 @@ def remove_dummy_h3(content: str, ids: Dict[str, str]) -> str:
 
 
 def on_post_build(env):
-    "Post-build actions for Taipy documentation"
+    """
+    Post-build actions for Taipy documentation
+    """
 
     log = logging.getLogger("mkdocs")
     site_dir = env.conf["site_dir"]
@@ -492,6 +494,7 @@ def on_post_build(env):
             sources = ", ".join(sorted(fixed_cross_refs[dest]))
             log.info(f"FIXED cross-ref to '{dest}' from {sources}")
 
+
 # ################################################################################
 # Functions that are used in the postprocessing phase.
 # I wish we could move them elsewhere, but couldn't figure out how
@@ -516,6 +519,7 @@ def process_data_source_attr(html: str, env):
         return (True, new_content + html[last_location:])
     else:
         return (False, None)
+
 
 def process_links_to_github(html: str, env):
     _LINK_RE = re.compile(r"(?<=href=\"https://github.com/Avaiga/)(taipy-gui/tree/)\[BRANCH\](.*?\")")

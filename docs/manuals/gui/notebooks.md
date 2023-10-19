@@ -15,7 +15,7 @@ jupyter notebook
 Your browser should open a new window, connected to the Jupyter server, where you can create
 and manipulate Notebooks.
 
-!!! Note "Example code"
+!!! note "Example code"
     You may want to load the [Notebook source](gui_example.ipynb) file directly within
     Jupyter and move from cell to cell instead of entering the code in the following
     steps.
@@ -69,7 +69,7 @@ gui.state.value = 50
 ```
 When you run this cell, the new value is reflected both in the text and the slider.
 
-!!! important "The gui.state property"
+!!! note "The gui.state property"
     This property is provided **only** in the context of Notebooks, where there is a single
     connection to the server, allowing to access a single '*state*'.
 

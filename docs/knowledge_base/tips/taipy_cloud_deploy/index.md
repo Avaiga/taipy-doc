@@ -3,7 +3,7 @@ Welcome to Taipy Cloud, the platform designed to make application deployment eas
 ensuring accessibility and stability. In this detailed guide, we will take you through 
 the process of deploying a Taipy application on Taipy Cloud. 
 
-![Taipy Cloud](taipy_cloud.png){width=100%}
+![Taipy Cloud](logo_artwork.png){width=100%}
 
 We'll cover everything from configuration to testing.
 

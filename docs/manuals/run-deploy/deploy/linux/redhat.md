@@ -44,7 +44,7 @@ sudo mv `pwd`/.local/bin/uwsgi /usr/bin/uwsgi
 sudo restorecon /usr/bin/uwsgi
 ```
 
-!!! Note
+!!! note
 
     If you are using a SQL database based on Microsoft SQL Server, you need to install your corresponding
     [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
@@ -113,7 +113,7 @@ In our example, we store this application in the variable _web_app_ (see line 3)
 
 Make sure you upload this code on your targeted machine and install your dependencies with _pip_.
 
-!!! important
+!!! note
     The entry point filename and the app variable name are important for the proper configuration of
     the *uWSGI* web application server. Please, keep them as is or adapt the configuration.
 
@@ -180,7 +180,7 @@ Then restart _Nginx_:
 sudo systemctl restart nginx
 ```
 
-!!! Note
+!!! note
     This configuration is only for HTTP. If you need an HTTPS connection, please read the [Nginx documentation](https://nginx.org/en/docs/http/configuring_https_servers.html).
 
 

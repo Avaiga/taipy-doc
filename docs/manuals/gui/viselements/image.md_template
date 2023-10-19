@@ -1,6 +1,6 @@
 A control that can display an image.
 
-!!! Note "Image format"
+!!! note "Image format"
     Note that if the content is provided as a buffer of bytes, it can be converted
     to an image content if and only if you have installed the
     [`python-magic`](https://pypi.org/project/python-magic/) Python package (as well

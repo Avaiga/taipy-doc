@@ -1,6 +1,6 @@
-[Try it live](https://demo-movie-genre.taipy.cloud/) 
 
-[Get it on GitHub](https://github.com/Avaiga/demo-movie-genre)
+[Try it live](https://demo-movie-genre.taipy.cloud/){: .tp-btn target='blank' }
+[Get it on GitHub](https://github.com/Avaiga/demo-movie-genre){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
 This demo illustrates Taipy's capability to analyze CSV files 

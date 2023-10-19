@@ -135,7 +135,7 @@ The default `SCENARIO` scope is used. Since the data node config corresponds to 
 pre-existing pickle file, a default path "path/to/my/model.p" is provided. We also
 added an optional custom description.
 
-!!! Note
+!!! note
 
     To configure a pickle data node, it is equivalent to using the method
     `Config.configure_pickle_data_node()^` or the method `Config.configure_data_node()^`
@@ -199,7 +199,7 @@ In lines 18-21, we add another CSV data node configuration with the identifier "
 The default `SCENARIO` scope is used again. Since we have a custom class called `SaleRow`
 that is defined for this CSV file, we provide it as the *exposed_type* parameter.
 
-!!! Note
+!!! note
 
     To configure a CSV data node, it is equivalent to using the method
     `Config.configure_csv_data_node()^` or the method `Config.configure_data_node()^`
@@ -273,7 +273,7 @@ In lines 17-21, we add another Excel data node configuration. The identifier is
 pre-defined for this Excel file, we provide it in the exposed_type**. We also provide
 the list of specific sheets we want to use as the *sheet_name* parameter.
 
-!!! Note
+!!! note
 
     To configure an Excel data node, it is equivalent to using the method
     `Config.configure_excel_data_node()^` or the method `Config.configure_data_node()^`
@@ -281,7 +281,7 @@ the list of specific sheets we want to use as the *sheet_name* parameter.
 
 ## SQL Table
 
-!!! Important
+??? note
 
     - To be able to use a `SQLTableDataNode^` with Microsoft SQL Server you need to run
     internal dependencies with `pip install taipy[mssql]` and install your corresponding
@@ -366,7 +366,7 @@ this SQL table data node will read and write to the SQLite database stored at "d
 When the data node is read, it reads all the rows from the table "sales", and when the
 data node is written, it deletes all the data in the table and insert the new data.
 
-!!! Note
+!!! note
 
     To configure a SQL table data node, it is equivalent to using the method
     `Config.configure_sql_table_data_node()^` or the method `Config.configure_data_node()^`
@@ -374,7 +374,7 @@ data node is written, it deletes all the data in the table and insert the new da
 
 ## SQL
 
-!!! Important
+??? note
 
     - To be able to use a `SQLDataNode^` with Microsoft SQL Server you need to install
     internal dependencies with `pip install taipy[mssql]` and install your corresponding
@@ -471,7 +471,7 @@ Here, the database username and password are unnecessary. The folder containing 
 file is "database", with the file extension is ".sqlite3". Since the database name is "taipy", this
 SQL table data node will read and write to the SQLite database stored at "database/taipy.sqlite3".
 
-!!! Note
+!!! note
 
     To configure a SQL data node, it is equivalent to using the method
     `Config.configure_sql_data_node()^` or the method `Config.configure_data_node()^`
@@ -557,7 +557,7 @@ and *decoder*:
 "sales_history". The default `SCENARIO` scope is used. The encoder and decoder are the
 custom encoder and decoder defined above.
 
-!!! Note
+!!! note
 
     To configure a JSON data node, it is equivalent to using the method
     `Config.configure_json_data_node()^` or the method `Config.configure_data_node()^`
@@ -600,7 +600,7 @@ section, the following parameters can be provided:
   `read_kwargs= {"engine": "fastparquet", "compression": "gzip"}` will override the *engine* and
   *compression* properties of the data node.
 
-!!! Tip
+!!! tip
 
     The `ParquetDataNode.read_with_kwargs^` and `ParquetDataNode.write_with_kwargs^`
     methods provide an alternative for specifying keyword arguments at runtime. See examples
@@ -654,13 +654,13 @@ Note that even though line 10 specifies the *compression* as "snappy", since the
 key was also provided in the _write_kwargs_ dictionary on line 4, the last value is used, hence
 the *compression* is None.
 
-!!! Note
+!!! note
 
     To configure a Parquet data node, it is equivalent to using the method
     `Config.configure_parquet_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="parquet"`.
 
-!!! Info
+!!! info
 
     Taipy ParquetDataNode wraps
     [`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html)
@@ -724,7 +724,7 @@ Without these two methods, the default decoder will map the key of each document
 the corresponding property of a `DailyMinTemp` object, and the default encoder will
 convert `DailyMinTemp` object's properties to a dictionary without any special formatting.
 
-!!! Note
+!!! note
 
     To configure a Mongo collection data node, it is equivalent to using the method
     `Config.configure_mongo_collection_data_node()^` or the method `Config.configure_data_node()^`
@@ -752,7 +752,7 @@ can be provided:
 - _**write_fct_args**_ represents the parameters passed to the *write_fct* to write
   the data. It must be a `List` type object.
 
-!!! Note
+!!! note
 
     At least one of the *read_fct* or *write_fct* is required to configure a generic data node.
 
@@ -797,7 +797,7 @@ comments=false
 %}
 ```
 
-!!! Note
+!!! note
 
     To configure a generic data node, it is equivalent to using the method
     `Config.configure_generic_data_node()^` or the method `Config.configure_data_node()^`
@@ -825,12 +825,12 @@ comments=false
 In this example, we configure an *in_memory* data node with the id "date".
 The scope is `SCENARIO` (default value), and default data is provided.
 
-!!! Warning
+!!! warning
 
     Since the data is stored in memory, it cannot be used in a multi-process environment.
     (See [Job configuration](job-config.md#standalone) for more details).
 
-!!! Note
+!!! note
 
     To configure an in_memory data node, it is equivalent to using the method
     `Config.configure_in_memory_data_node()^` or the method `Config.configure_data_node()^`

@@ -43,7 +43,7 @@ This method is proper when you want to create a data node that is independent of
 you can create a data node that stores the dataset for training a model, then filter, lock, or modify the data node
 independently from the scenarios. Afterward, you can use this data node in multiple scenarios.
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp
@@ -52,7 +52,7 @@ independently from the scenarios. Afterward, you can use this data node in multi
     sale_history_datanode = tp.create_global_data_node(sales_history_cfg)
     ```
 
-!!! Warning
+!!! warning
 
     The `taipy.create_global_data_node()^` method only accepts data node configuration with `GLOBAL` scope. If
     a data node configuration with a different scope is provided, the method will raise the
@@ -65,7 +65,7 @@ independently from the scenarios. Afterward, you can use this data node in multi
 The first method to access a **data node** is by calling the `taipy.get()^` method
 passing the data node id as a parameter:
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp
@@ -84,7 +84,7 @@ passing the data node id as a parameter:
 The data nodes that are part of a **scenario**, **sequence**, or **task** can be directly accessed as attributes by
 using their config_id:
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp
@@ -110,7 +110,7 @@ using their config_id:
 Data nodes can be retrieved by using `taipy.get_entities_by_config_id()^` providing the config_id.
 This method returns the list of all existing data nodes instantiated from the config_id provided as a parameter.
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp
@@ -129,7 +129,7 @@ This method returns the list of all existing data nodes instantiated from the co
 
 All data nodes that are part of a **scenario** or a **sequence** can be directly accessed as attributes:
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp
@@ -150,7 +150,7 @@ All data nodes that are part of a **scenario** or a **sequence** can be directly
 All the data nodes can be retrieved using the method `taipy.get_data_nodes()^` which returns a list of all existing
 data nodes.
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp
@@ -166,7 +166,7 @@ data nodes.
 To access the content of a data node you can use the `DataNode.read()^` method. The read method returns the data
 stored in the data node according to the type of data node:
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp
@@ -186,7 +186,7 @@ To write some data on the data node, like the output of a task, you can use the 
 method takes a data object (string, dictionary, lists, NumPy arrays, Pandas dataframes, etc. based on the data
 node type and its exposed type) as a parameter and writes it on the data node:
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp
@@ -1152,7 +1152,7 @@ to the data node.
 
 Correspondingly, In memory data node can write any data object that is valid data for a Python variable.
 
-!!! Warning
+!!! warning
 
     Since the data is stored in memory, it cannot be used in a multiprocess environment.
     (See [Job configuration](../config/job-config.md#standalone) for more details).
@@ -1182,7 +1182,7 @@ temp_data = data_node["field_name"]
 temp_data[(temp_data == 14) | (temp_data == 10)]
 ```
 
-!!! Warning
+!!! warning
 
     For now, the `DataNode.filter()^` method is only implemented for `CSVDataNode^`, `ExcelDataNode^`,
     `SQLTableDataNode^`, `SQLDataNode` with `"pandas"` as the _**exposed_type**_ value.
@@ -1192,7 +1192,7 @@ temp_data[(temp_data == 14) | (temp_data == 10)]
 To get the parent entities of a data node (scenarios, sequences, or tasks) you can use either the method
 `DataNode.get_parents()^` or the function `taipy.get_parents()^`. Both return the parents of the data node.
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp

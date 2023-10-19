@@ -4,44 +4,51 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 !!! warning "For Notebooks"
 
-    The "Getting Started" Notebook is available [here](../../../../getting_started/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
-    It is important to check the [Notebook](../../../../getting_started/getting_started.ipynb) content and see the [documentation](../../../../manuals/gui/notebooks.md).
+    The Notebook is available [here](../getting_started.ipynb). In Taipy GUI, the process to 
+    execute a Jupyter Notebook is different from executing a Python Script.
+    It is important to check the [Notebook](../getting_started.ipynb) 
+    content and see the [documentation](../../../../manuals/gui/notebooks.md).
 
 
 # Step 6: Page layout
 
-You've successfully built a comprehensive forecasting application capable of making predictions for multiple days 
-with various parameters in just a few steps. Nevertheless, there is room for substantial improvement 
-in the page's layout. We'll introduce three new helpful controls to enhance the page's visual appeal. 
-These controls are:
+You've successfully built a comprehensive forecasting application capable of making predictions 
+for multiple days with various parameters in just a few steps. Nevertheless, there is room for 
+substantial improvement in the page's layout. We'll introduce three new helpful controls to 
+enhance the page's visual appeal. These controls are:
 
-- [part](../../../../manuals/gui/viselements/part.md): creates a group of text/visual elements. A useful property of `part` is _render_. If set to False, it will not display the part. This allows the developer to hide a group of visual elements dynamically.
+- [part](../../../../manuals/gui/viselements/part.md): creates a group of text/visual elements. 
+    A useful property of `part` is _render_. If set to False, it will not display the part. This 
+    allows the developer to hide a group of visual elements dynamically.
 
-```
-<|part|render={bool_variable}|
-Text
-Or visual elements...
-|>
-```
+    ```
+    <|part|render={bool_variable}|
+    Text
+    Or visual elements...
+    |>
+    ```
 
-- [layout](../../../../manuals/gui/viselements/layout.md): creates invisible columns where you can put your texts and visual elements. The _columns_ property indicates the width and number of columns. Here, we create three columns of the same width.
+- [layout](../../../../manuals/gui/viselements/layout.md): creates invisible columns where you 
+    can put your texts and visual elements. The _columns_ property indicates the width and number 
+    of columns. Here, we create three columns of the same width.
 
-```
-<|layout|columns=1 1 1|
-Button in first column <|Press|button|>
+    ```
+    <|layout|columns=1 1 1|
+    Button in first column <|Press|button|>
+    
+    Second column
+    
+    Third column
+    |>
+    ```
+    
+    ![Layout](layout.png){ width=500 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-Second column
 
-Third column
-|>
-```
+- [expandable](../../../../manuals/gui/viselements/expandable.md): creates a block that can 
+    expand or shrink.
 
-![Layout](layout.png){ width=500 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
-
-
-- [expandable](../../../../manuals/gui/viselements/expandable.md): creates a block that can expand or shrink.
-
-![expandable](expandable.png){ width=500 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+    ![expandable](expandable.png){ width=500 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
 ## Back to the code
