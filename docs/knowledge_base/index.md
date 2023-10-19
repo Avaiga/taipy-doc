@@ -78,7 +78,7 @@ Learn how to use Taipy and improve your skills.
 # Tutorials
 
 <ul class="tp-cards-list">
-  <li keywords="gui vizelement input text button chart navbar table layout part expandable menu state interactive multi-page page callback on-change markdown">
+  <li keywords="gui vizelement input text button chart navbar table layout part expandable menu state interactive multi-page callback on-change markdown">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/understanding_gui">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
