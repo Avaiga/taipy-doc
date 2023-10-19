@@ -1,5 +1,3 @@
-# iFrames and Interactive Visualizations
-
 This tips explains how to use iframes to embed interactive visualizations in web 
 applications. Specifically, we will use an example to demonstrate how to embed a 
 Sankey Diagram in an iframe.
