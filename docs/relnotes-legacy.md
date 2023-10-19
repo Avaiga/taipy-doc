@@ -1,16 +1,15 @@
 ---
+title: Release Notes for Legacy Taipy versions
 hide:
   - navigation
 ---
-
-# Release Notes for Legacy Taipy versions
 
 This is the list of changes to legacy major Taipy releases as they were published.
 
 The Release Notes for the latest major version of Taipy can be found in
 [this page](relnotes.md).
 
-## Community edition: 2.3
+# Community edition: 2.3
 
 Published on 2023-06.
 
@@ -20,7 +19,7 @@ Published on 2023-06.
 [`taipy-core` 2.3](https://pypi.org/project/taipy-core/2.3.0/) and
 [`taipy-rest` 2.3](https://pypi.org/project/taipy-rest/2.3.0/) packages.
 
-### New Features
+## New Features
 
 <h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
 2.3.0
@@ -83,7 +82,7 @@ Published on 2023-06.
 - The configuration of a version can now be compared with another one by running
   `$ taipy manage-versions --compare-config <version_1> <version_2>` from the CLI.
 
-### Improvements and changes
+## Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
 2.3.2
@@ -125,7 +124,7 @@ Published on 2023-06.
   the up-to-date duration of a data node.
 - Add support for SQLAlchemy 2.0
 
-### Significant bug fixes
+## Significant bug fixes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.3.0
@@ -139,7 +138,7 @@ Published on 2023-06.
   of time.<br/>
   See [issue #777](https://github.com/Avaiga/taipy-gui/issues/777).
 
-### Deprecations
+## Deprecations
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.3.2
@@ -158,7 +157,7 @@ Published on 2023-06.
 - `PipelineConfig` has been deprecated and will be combined with `ScenarioConfig^` in future updates.
 - `taipy.create_pipeline()` has been deprecated.
 
-## Community edition: 2.2
+# Community edition: 2.2
 
 Published on 2023-04.
 
@@ -168,7 +167,7 @@ Published on 2023-04.
 [`taipy-core` 2.2](https://pypi.org/project/taipy-core/2.2.2/) and
 [`taipy-rest` 2.2](https://pypi.org/project/taipy-rest/2.2.1/) packages.
 
-### New Features
+## New Features
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.2.0
@@ -182,7 +181,7 @@ Published on 2023-04.
   controls have a new property called *rebuild* that can be used if you need to entirely change the
   data they rely on, including their structure.
 
-### Improvements and changes
+## Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.2.0
@@ -206,7 +205,7 @@ Published on 2023-04.
   in an *iframe*.<br/>
   See [issue #621](https://github.com/Avaiga/taipy-gui/issues/621).
 
-### Significant bug fixes
+## Significant bug fixes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.2.0
@@ -233,7 +232,7 @@ Published on 2023-04.
   To avoid conflict between engines, the default value of the _db_driver_ parameter in a SQL or a SQL table data
   node configuration has been removed.
 
-## Studio: 1.0
+# Studio: 1.0
 
 Published on 2023-02.
 
@@ -254,7 +253,7 @@ It mainly provides:
 You can refer to the [Taipy Studio User Manual](manuals/studio/index.md) section for more
 information.
 
-## Community edition: 2.1
+# Community edition: 2.1
 
 Published on 2023-01.
 
@@ -267,7 +266,7 @@ Published on 2023-01.
 Please refer to the [Migration page](./migration.md#from-2.0-to-2.1) for
 details on how to migrate from version older than 2.1.
 
-### New Features
+## New Features
 
 <h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
 2.1
@@ -323,7 +322,7 @@ details on how to migrate from version older than 2.1.
 - The **sql** _repository_type_ is now available on community edition to store Core entities in an
   SQL database. See [SQL storage section](./manuals/core/config/core-config.md).
 
-### Improvements and changes
+## Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.1.0
@@ -354,7 +353,7 @@ details on how to migrate from version older than 2.1.
   by either a Taipy task execution or an external factor. This behavior is limited to file-based
   data nodes: CSV, Excel, JSON, and pickle data nodes only.
 
-### Significant bug fixes
+## Significant bug fixes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.1.2
@@ -363,7 +362,7 @@ details on how to migrate from version older than 2.1.
   from "openpyxl>=3.0.7,<4.0" to "openpyxl>=3.0.7,<3.1" to match the version used by
   [Modin](https://modin.readthedocs.io/en/stable/).
 
-## Community edition: 2.0
+# Community edition: 2.0
 
 Published on 2022-10.
 
@@ -373,7 +372,7 @@ Published on 2022-10.
 [`taipy-core` 2.0](https://pypi.org/project/taipy-core/2.0.3/) and
 [`taipy-rest` 2.0](https://pypi.org/project/taipy-rest/2.0.0/) packages.
 
-### New Features
+## New Features
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.0.0
@@ -416,7 +415,7 @@ Published on 2022-10.
 - The new `taipy-config` package was exposed to be used by any other Taipy package for configuration and logging.
 
 
-### Improvements and changes
+## Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.0.0
@@ -440,7 +439,7 @@ Published on 2022-10.
 - The messages of the various Exceptions that can be raised have been improved to help the users
   debug their applications.
 
-### Significant bug fixes
+## Significant bug fixes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.0.2
@@ -463,26 +462,26 @@ Published on 2022-10.
 - Do not update `last_edit_date` when a job fails or is abandoned.
   See [issue #366](https://github.com/Avaiga/taipy-core/issues/366).
 
-### Deprecations
+## Deprecations
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.0.0
 
 - The field `*nb_of_workers*` within the Config has been deprecated in favor of `*max_nb_of_workers*`.
 
-## Enterprise edition: 2.0
+# Enterprise edition: 2.0
 
 Published on 2022-10.
 
-### New Features
+## New Features
 
 - SQLLite or MongoDB databases can now be used as alternatives to the filesystem to store Taipy entities.
 
-### Improvements and changes
+## Improvements and changes
 
 - Simplification of the authentication API.
 
-## Community edition: 1.1
+# Community edition: 1.1
 
 Published on 2022-06.
 
@@ -492,7 +491,7 @@ Published on 2022-06.
 [`taipy-rest` 1.1](https://pypi.org/project/taipy-rest/1.1.0/) packages.
 
 
-### Improvements and changes
+## Improvements and changes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 1.1.3
@@ -540,7 +539,7 @@ Published on 2022-06.
   the number of times Taipy will retry in case of error.
 - Performance improvements when reading and writing entities.
 
-### Significant bug fixes
+## Significant bug fixes
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 1.1.3
@@ -561,7 +560,7 @@ Published on 2022-06.
 - Taipy supports HTTPS via reverse proxies.<br/>
   See [issue #263](https://github.com/Avaiga/taipy-gui/issues/263).
 
-### Deprecations
+## Deprecations
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 1.1.0
@@ -574,21 +573,23 @@ Published on 2022-06.
 - The _edition_in_progress_ attribute of data nodes is now deprecated.<br/>
   _edit_in_progress_ must be used instead.
 
-## Enterprise edition: 1.1
+# Enterprise edition: 1.1
+
+!!! warning
 
 Published on 2022-06.
 
 This release contains all of [`taipy` 1.1](https://pypi.org/project/taipy/1.1.0/)
 as well as additional features.
 
-### Features
+## Features
 
 - User authentication.
 - Authorization checks for all entities.
 - Job recovery mechanism on application restart.
 - Page generation based on the user's identity.
 
-## Community edition: 1.0
+# Community edition: 1.0
 
 Published on 2022-04.
 
@@ -597,7 +598,7 @@ Published on 2022-04.
 [`taipy-core` 1.0](https://pypi.org/project/taipy-core/1.0.3/) and
 [`taipy-rest` 1.0](https://pypi.org/project/taipy-rest/1.0.1/) packages.
 
-### Features
+## Features
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 1.0.0

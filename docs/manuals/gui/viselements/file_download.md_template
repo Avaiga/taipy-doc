@@ -4,7 +4,7 @@ The content to be sent to the user's browser can be a file, a URL, or any data s
 a buffer of bytes.<br/>
 The content can be dynamically generated when the user requests it.
 
-!!! Note "Image format"
+!!! note "Image format"
     Note that if the content is provided as a buffer of bytes, it can be converted
     to image content if and only if you have installed the
     [`python-magic`](https://pypi.org/project/python-magic/) Python package (as well

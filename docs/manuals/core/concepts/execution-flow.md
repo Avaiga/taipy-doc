@@ -1,6 +1,6 @@
 # Execution flow
 
-!!! important "Reminder: Config vs Entities"
+!!! note "Reminder: Config vs Entities"
 
     The **data nodes**, **tasks**, and **scenarios** concepts have two types of Taipy objects related to them:
     **configurations** and runtime **entities**. **Sequences** also has its configuration object that is provided through

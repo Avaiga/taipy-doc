@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from datetime import datetime
 import re
 import shutil
+import sys
 from typing import List
 
 
@@ -19,13 +20,16 @@ class Setup(ABC):
         self.docs_dir = self.root_dir + "/docs"
         self.manuals_dir = self.docs_dir + "/manuals"
         self.tools_dir = self.root_dir + "/tools"
-        # self.requested_steps can be used to specify which steps should
-        # be performed.
-        # Until there are command line options to control this,
-        # you can initialize this field with a list of step ids.
-        # At this time, we have: "getting_started", "refman", "rest", "viselements"
-        # and "guiext".
+        # self.requested_steps, if not None, indicates which steps should be performed.
         self.requested_steps = None
+        if len(sys.argv) > 1:
+            self.requested_steps = []
+            for step_id in sys.argv[1:]:
+                if not [step for step in steps if step_id == step.get_id()]:
+                    raise SystemError(f"FATAL - '{step_id}' is not a valid step identifier")
+            for step in steps:
+                if step.get_id() in sys.argv[1:]:
+                    self.requested_steps.append(step)
         self.mkdocs_yml_template_content = None
         self.MKDOCS_YML_PATH = self.root_dir + "/mkdocs.yml"
         self.MKDOCS_YML_TEMPLATE_PATH = self.MKDOCS_YML_PATH + "_template"
@@ -37,7 +41,7 @@ class Setup(ABC):
             )
         self.steps = []
         for step in steps:
-            if self.requested_steps is None or step.get_id() in self.requested_steps:
+            if not self.requested_steps or step in self.requested_steps:
                 self.steps.append(step)
                 step.enter(self)
             else:

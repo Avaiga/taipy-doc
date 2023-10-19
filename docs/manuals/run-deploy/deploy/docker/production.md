@@ -44,7 +44,7 @@ ENTRYPOINT [ "gunicorn", "-k", "geventwebsocket.gunicorn.workers.GeventWebSocket
 CMD [ "<main>:<app>" ]
 ```
 
-!!! Note
+!!! note
 
     If you are using a SQL database based on Microsoft SQL Server, you need to add the following commands
     before creating the user:

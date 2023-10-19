@@ -56,7 +56,7 @@ This section aims at defining the following Taipy Core concepts.
 - A [Scope](scope.md) represents the _visibility_ of a data node in the graph of entities, and the level of its
   owner (Scenario, Cycle, Global).
 
-!!! important "Definition: Config vs Entities"
+!!! note "Definition: Config vs Entities"
 
     Among the concepts described in this section, **data nodes**, **tasks**, and **scenarios** have
     two types of Taipy objects related to them: _configuration_ objects and _runtime_ objects.

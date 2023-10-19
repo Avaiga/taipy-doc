@@ -4,18 +4,20 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 !!! warning "For Notebooks"
 
-    The "Getting Started" Notebook is available [here](../../../../getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
+    The Notebook is available [here](../getting_started.ipynb). In Taipy GUI, 
+    the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 # Step 2: Visual elements
 
-You can incorporate various visual elements into the basic code demonstrated in Step 1. 
-In this step, we will illustrate how to utilize visual elements such as charts, sliders, tables, and more within the graphical interface.
+You can incorporate various visual elements into the basic code demonstrated in Step 1. In this 
+step, we will illustrate how to utilize visual elements such as charts, sliders, tables, and 
+more within the graphical interface.
 
 ## Visual elements
 
 Taipy GUI can be considered as an **augmented** Markdown; it adds the concept of 
-**[Visual elements](../../../../manuals/gui/viselements/index.md)** on top of all the Markdown syntax. A visual 
-element is a Taipy graphical object displayed on the client. It can be a 
+**[Visual elements](../../../../manuals/gui/viselements/index.md)** on top of all the Markdown 
+syntax. A visual element is a Taipy graphical object displayed on the client. It can be a 
 [slider](../../../../manuals/gui/viselements/slider.md), a 
 [chart](../../../../manuals/gui/viselements/chart.md), a 
 [table](../../../../manuals/gui/viselements/table.md), an 

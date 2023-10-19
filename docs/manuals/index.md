@@ -1,5 +1,3 @@
-# About Taipy's Manuals
-
 The Taipy manuals are split into two categories:
 
 - [**User Manuals**](usermans/index.md): these manuals provide information on how to use different

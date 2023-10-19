@@ -71,7 +71,8 @@ Here is the list of the configuration parameters you can use in
      indicates how far from the border of the windows should your interface be. The default value
      avoids elements getting glued to the window borders, improving appearance.
    - <a name="p-system_notification"></a>*system_notification* (bool, default: True): if True,
-     notifications will be sent by the system as well as the browser, should the *system_notification* parameter in the call to (`notify()^`) be set to None. If False, the
+     notifications will be sent by the system as well as the browser, should the
+     *system_notification* parameter in the call to (`notify()^`) be set to None. If False, the
      default behavior is to not use system notifications.<br/>
      See the section on [Notifications](notifications.md) for details.
    - <a name="p-notification_duration"></a>*notification_duration* (int, default: 3000): the time,
@@ -113,11 +114,11 @@ Here is the list of the configuration parameters you can use in
      [Accessing your app from the Web](#accessing-your-app-from-the-web) for details.
    - <a name="p-change_delay"></a>*change_delay* (int, default: None): the delay, in milliseconds,
      used by some controls (namely [`slider`](viselements/slider.md),
-     [`input`](viselements/input.md), and [`number`](viselements/number.md)) before the user actions
-     are sent to the backend server for further processing. This can be used when there is a
-     significant network latency: user actions would then get stacked up on the front-end before the
-     back-end had a chance to receive them, resulting in a poor user experience. This value should
-     be less than 300 to ensure a smooth interaction with the control.<br/>
+     [`input`](viselements/input.md), and [`number`](viselements/number.md)) before the user
+     actions are sent to the backend server for further processing. This can be used when there is
+     a significant network latency: user actions would then get stacked up on the front-end before
+     the back-end had a chance to receive them, resulting in a poor user experience. This value
+     should be less than 300 to ensure a smooth interaction with the control.<br/>
      The default value of None indicates that Taipy GUI does not use any delay.
    - <a name="p-propagate"></a>*propagate* (bool, default: True): the default value that is used
      for every *propagate* property value, for all controls. Please look at the section on the
@@ -143,15 +144,15 @@ Here is the list of the configuration parameters you can use in
      can be found in the documentation section for
      [Plotly's layout template](https://plotly.com/javascript/reference/layout/#layout-template).
    - <a name="p-extended_status"></a>*extended_status* (bool, default: False): if set to True, the
-     [status page](pages.md#status-page) output is augmented with additional information.
+     [status page](pages/index.md#status-page) output is augmented with additional information.
    - <a name="p-flask_log"></a>*flask_log* (bool, default: False): if set to True, you can get a
      complete, real-time log from the Flask server. This may be useful when trying to find out why
      a request does not behave as expected.
-   - <a name="p-notebook_proxy"></a>*notebook_proxy* (bool, default: True): this setting only matters
-     when running Taipy GUI in the context of Notebooks. If set to True, which is the default, the
-     exposed port number (the one set in the [*port*](#p-port) parameter) is just a proxy port to a
-     dynamically generated port so that the user can stop and restart the server without depending
-     on how quickly the kernel can clean up its resources.<br/>
+   - <a name="p-notebook_proxy"></a>*notebook_proxy* (bool, default: True): this setting only
+     matters when running Taipy GUI in the context of Notebooks. If set to True, which is the
+     default, the exposed port number (the one set in the [*port*](#p-port) parameter) is just a
+     proxy port to a dynamically generated port so that the user can stop and restart the server
+     without depending on how quickly the kernel can clean up its resources.<br/>
      See the section on [running Taipy GUI in Notebooks](notebooks.md) for more details.
    - <a name="p-single_client"></a>*single_client* (bool, default: False): set to True if only a
      single client can connect. False, which is the default value, indicates that multiple clients
@@ -194,8 +195,8 @@ Here is the list of the configuration parameters you can use in
      or run the server, and it is up to the programmer to use the Flask instance returned by
      `Gui.run()^` or `Gui.get_flask_app()^` so it is served by the target web server.
    - <a name="p-base_url"></a>*base_url* (str or None, default: "/"): a string used as a prefix to
-     the path part of the exposed URL, so one can deploy a Taipy GUI application in a path different
-     from the root of the web site.
+     the path part of the exposed URL, so one can deploy a Taipy GUI application in a path
+     different from the root of the web site.
    - <a name="p-allow_unsafe_werkzeug"></a>*allow_unsafe_werkzeug* (bool, default: False): hides
      some [Flask-SocketIO](https://pypi.org/project/Flask-SocketIO/) runtime errors in some
      debugging scenarios. This is set to True when [*debug*](#p-debug) is set to True.

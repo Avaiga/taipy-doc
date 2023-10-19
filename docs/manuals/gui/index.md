@@ -26,11 +26,13 @@ Users can also interact with some of those elements to trigger application code
 that can change the displayed information, produce more data to visualize or move to a
 completely different page.
 
-The generated web pages are built from a set of template text files that you
-provide, where you would have planted placeholders that will display application
-data. The application end users can then see and interact with the application. We call these representative and interactive objects: *visual elements*.
+The generated web pages are built from a set of template text files that you provide, where you
+would have planted placeholders that will display application data. The application end users can
+then see and interact with the application. We call these representative and interactive objects:
+*visual elements*.
 
-To describe the content of pages, Taipy comes the support for two template formats, handled by the classes `Markdown^` and `Html^`.
+To describe the content of pages, Taipy comes the support for two template formats, handled by the
+classes `Markdown^` and `Html^`.
 
 The basic principle is that you create pages as you need them, give them a name
 so you can indicate to your browser how to access these pages, and provide these pages to
@@ -42,6 +44,7 @@ when Taipy transforms the page you had created into some HTML
 content sent back to the client so the user can see the application interface
 and start using it.
 
-!!! info "You can find more information on how pages are created and used in Taipy application in the [Pages](pages.md) section."
+!!! info "You can find more information on how pages are created and used in Taipy application in
+the [Pages](pages/index.md) section."
 
 !!! info "To run the Taipy GUI service with some other Taipy services, please refer to the [Running Taipy services](../run-deploy/run/running_services.md) page"

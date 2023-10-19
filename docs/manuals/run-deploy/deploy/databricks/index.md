@@ -2,11 +2,11 @@
 
 Databricks is a standard platform for data scientists and big data engineers. It can provide a web-based development environment connected to your data source within your cloud provider. Nevertheless, Databricks does not provide a direct path to developing a web application. This documentation will show you how to adapt your infrastructure so that you can create a Taipy application in your Databricks environment.
 
-!!! Note
+!!! note
 
     Taipy is currently only available with Databricks **Standard** runtimes.
 
-!!! Warning
+!!! warning
 
     We recommend using Databricks deployments for testing or demonstration purposes only.
 
@@ -18,7 +18,7 @@ In the current section, we consider the following as prerequisites:
 - A Linux-based machine that can communicate with your local machine and Databricks.
 - [:material-arrow-right: Running a Taipy application](../../run/index.md)
 
-!!! Note
+!!! note
 
     If you don't have a Linux-based machine, you can use a cloud provider like Microsoft Azure to [create one](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal?tabs=ubuntu).
 
@@ -61,7 +61,7 @@ In the end, the browser sends a request to Nginx on the Linux-based machine; Ngi
 Here is the technical architecture of the solution:
 ![Technical architecture](./images/technical-architecture.svg)
 
-!!! Warning
+!!! warning
 
     The Linux-based machine should be accessible from your network and from Databricks.
 
@@ -102,7 +102,7 @@ Go to the "Apps" panel and select "Web Terminal". It opens a new tab with a shel
 In this shell, enter the following command, replacing `username` and `machine-ip` with your values:
 ```ssh -R 8080:127.0.0.1:5000 <username>@<machine-ip>```
 
-!!! Note
+!!! note
 
     If your SSH authentication is based on certificates, remember to upload them on Databricks.
 

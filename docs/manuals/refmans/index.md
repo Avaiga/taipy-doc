@@ -1,3 +1,12 @@
 # About Taipy's Reference Manuals
 
-TODO
+Taipy exposes different application programming interfaces (API) that can be used for different
+purposes.
+
+- All the Python packages defined by Taipy (Community and Enterprise editions) are documented in
+  the [Python APIs](../reference/index.md) section.
+- The REST API for Scenario Management is exposed in the [REST APIs](../reference_rest/index.md)
+  section.
+- The Javascript library that can be used to extend the Taipy GUI element set is documented in the
+  [Typescript APIs](../reference_guiext/index.md) section.
+
