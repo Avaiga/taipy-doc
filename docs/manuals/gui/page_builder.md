@@ -81,16 +81,18 @@ must be valid from the HTML standard standpoint.
 
 Here is how we could modify the creation of the `html` element by changing its style:
 ```
-    tgb.html("p", "User information:", style="font-weight=700")
+    tgb.html("p", "User information:", style="font-weight:bold;")
 ```
 
 The impact of this change is reflected in the page:
-TODO
+
 <figure>
     <img src="../tgb-3-d.png" class="visible-dark" />
     <img src="../tgb-3-l.png" class="visible-light"/>
     <figcaption>Styling HTML</figcaption>
 </figure>
+
+You can see that, compared to the previous example, the label uses a bold font weight.
 
 # Binding variables
 
