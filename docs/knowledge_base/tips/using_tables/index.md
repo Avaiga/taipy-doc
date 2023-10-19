@@ -34,7 +34,7 @@ Gui(page=main_md).run()
 The table definition `<|{food_df}|table|>` (a syntax often used in Taipy) has these parts:
 
 1. `{food_df}`: This is a variable that holds data, like what someone ate in a day.
-2. *table*: This is the name of the control.
+2. `table`: This is control type name.
 
 In this example, the data in *food_df* is a **pandas DataFrame**. If it works better for what 
 you're doing, you can also use regular Python lists or NumPy arrays.
@@ -167,7 +167,7 @@ the table's appearance when applying our **highlight-row** style.
 ## Modifying Data
 
 Tables offer various properties for modifying data within the table. Notably, the *on_edit*, 
-*on_add*, and *on_delete* properties can receive a user-defined **callback** function. This 
+*on_add*, and *on_delete* properties can receive user-defined **callback** functions. This 
 function is executed when you interact with the table, but it only appears when you specify the 
 relevant data modification property.
 
