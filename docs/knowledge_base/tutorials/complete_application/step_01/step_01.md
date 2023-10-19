@@ -67,7 +67,7 @@ ensuring that changes made by one client don't affect others.
 
 ## Callbacks
 
-You can include [Callbacks](../../../../manuals/gui/callbacks.md) in each visual element, 
+Most visual element include [callbacks](../../../../manuals/gui/callbacks.md), 
 enabling you to modify variables according to user actions. For further details, explore local 
 callbacks and global callbacks.
 
@@ -75,7 +75,7 @@ callbacks and global callbacks.
 - The name of the modified variable. (optional)
 - Its new value. (optional)
 
-Here's an example of `on_change()` function to update *state.dataset_week* based on the selected 
+Here's an example of of setting the `on_change` callback function to update *state.dataset_week* based on the selected 
 week from the slider:
 
 ```markdown
