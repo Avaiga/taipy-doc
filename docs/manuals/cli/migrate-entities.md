@@ -57,7 +57,7 @@ To migrate the entities of a Taipy application with a sqlite repository. We can 
 following command:
 
 ```console
-$ taipy migrate --repository-type filesystem ~/taipy.sqlite3
+$ taipy migrate --repository-type sql ~/taipy.sqlite3
 ```
 
 Where  `~/taipy.sqlite3` is the path to the sqlite file that holds the Taipy application data.
@@ -88,7 +88,7 @@ $ taipy migrate --repository-type filesystem .data --skip-backup
 ```
 
 However, it is recommended to create the backup and test your application in a Taipy 3.0 environment
-so that you can restore the entities later in case of any issue.
+so that you can restore the entities later in case of any issues.
 
 To restore the entities from the backup folder, you can use the `--restore` option. This option
 will restore the entities from the backup folder and remove the backup folder.
