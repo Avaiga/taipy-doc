@@ -80,10 +80,10 @@ pages work independently:
 - The `home_md` page shows a welcome message.
 - The `temperature_md` page lets a user convert temperatures from Fahrenheit (°F) to Celsius (°C).
 
-Usually, if we were making a simple one-page application, we'd give one of our pages (Taipy 
-[Markdown](../../../manuals/reference/taipy.gui.Markdown.md), Python or 
+Usually, if we were making a simple one-page application, we'd give one of our pages (created with 
+[Markdown](../../../manuals/gui/pages/index.md#using-markdown), [Python](../../../manuals/gui/page_builder.md) or 
 [HTML](../../../manuals/reference/taipy.gui.Html.md) objects) to the 
-`Gui` constructor. For example, to turn `home.py` into a one-page 
+[`Gui` constructor](Gui.init()^) constructor. For example, to turn `home.py` into a one-page 
 Taipy application, 
 we could add these lines:
 
