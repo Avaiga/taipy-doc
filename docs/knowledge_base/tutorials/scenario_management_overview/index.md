@@ -71,6 +71,8 @@ Three Data Nodes are being configured (**historical_temperature**, **date_to_for
         Here is the code to configure a simple scenario.
 
         ```python
+         from taipy import Config
+
         # Configuration of Data Nodes
         historical_temperature_cfg = Config.configure_data_node("historical_temperature")
         date_to_forecast_cfg = Config.configure_data_node("date_to_forecast")
