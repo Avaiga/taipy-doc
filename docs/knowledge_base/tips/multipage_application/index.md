@@ -81,9 +81,9 @@ pages work independently:
 - The `temperature_md` page lets a user convert temperatures from Fahrenheit (°F) to Celsius (°C).
 
 Usually, if we were making a simple one-page application, we'd give one of our pages (Taipy 
-[Markdown](../../../manuals/reference/taipy.gui.Markdown.md) or 
+[Markdown](../../../manuals/reference/taipy.gui.Markdown.md), Python or 
 [HTML](../../../manuals/reference/taipy.gui.Html.md) objects) to the 
-`[`Gui` constructor](Gui.init()^)` constructor. For example, to turn `home.py` into a one-page 
+`Gui` constructor. For example, to turn `home.py` into a one-page 
 Taipy application, 
 we could add these lines:
 
