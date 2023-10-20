@@ -4,7 +4,6 @@ Sankey Diagram in an iframe.
 
 ![iFrame illustration](iframes_illustration.png){width=100%}
 
-
 Let's dive right in!
 
 ## What is an iFrame?
@@ -59,8 +58,6 @@ def sankey_graph(df):
     return fig
 ```
 
-
-
 In this code snippet, we first process the recruitment data, then create a Sankey 
 Diagram using the processed data. The *sankey_graph* function takes a pandas 
 DataFrame *df* as input, processes the data, and then returns a Plotly *fig* object 
@@ -70,7 +67,6 @@ Now, we want to embed this Sankey Diagram in our web application. To do this, we
 use the *get_user_content_url* function to embed the Plotly *fig* object in an iFrame.
 
 Here is how we can do it:
-
 
 ```python
 from taipy.gui import Gui, get_user_content_url, notify
