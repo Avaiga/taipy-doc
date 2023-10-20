@@ -10,14 +10,13 @@ migration.
 
 ## Migrate entities
 
-The main and required argument of the 'migrate' CLI is `--repository-type`, which first accepts one
+The required argument of the 'migrate' CLI is `--repository-type`, which first accepts one
 of the three following values: "filesystem", "sql", and "mongo". Each repository type can be
 followed by additional arguments:
 
 - *filesystem* can be followed by the path to the filesystem folder that holds your Taipy
   application data. It corresponds to the "storage_folder" attribute in the configuration "CORE"
-  section. The default value is ".data" in the application root directory if it has not been
-  provided explicitly.
+  section. If not provided explicitly, the default value is ".data" in the application root directory.
 - *sql* must be followed by the path to the sqlite file that holds your Taipy Application data.
 - *mongo* can be followed by the credentials to access the mongo database that holds
   your Taipy Application data. The credentials must follow the order: "host", "port", "username",
@@ -36,11 +35,11 @@ options:
   -h, --help            show this help message and exit
   --repository-type REPOSITORY_TYPE [REPOSITORY_TYPE ...]
                         The type of repository to migrate. If filesystem or sql, a path to the
-                        database folder/.sqlite file should be informed. In case of mongo host,
-                        port, user and password must be informed, if left empty it is assumed
+                        database folder/.sqlite file should be informed. In the case of MongoDB host,
+                        port, user, and password must be informed, if left empty it is assumed
                         default values
   --skip-backup         Skip the backup of entities before migration.
-  --restore             Restore the migration of entities from backup folder.
+  --restore             Restore the migration of entities from the backup folder.
   --remove-backup       Remove the backup of entities. Only use this option if the migration was
                         successful.
 ```
@@ -89,7 +88,7 @@ $ taipy migrate --repository-type filesystem .data --skip-backup
 ```
 
 However, it is recommended to create the backup and test your application in a Taipy 3.0 environment
-so that you can restore the entities latter in case of any issue.
+so that you can restore the entities later in case of any issue.
 
 To restore the entities from the backup folder, you can use the `--restore` option. This option
 will restore the entities from the backup folder and remove the backup folder.
