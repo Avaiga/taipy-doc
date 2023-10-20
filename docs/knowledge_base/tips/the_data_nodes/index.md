@@ -5,7 +5,7 @@ two important things in Taipy: Data nodes and Tasks.
 
 Data nodes are like a bridge to get data from different places. 
 They help us access data easily. This article is mostly about data nodes, 
-what they do, and how we use them in Taipy pipelines.
+what they do, and how we use them in Taipy scenarios.
 
 Data nodes in Taipy are like tools to work with data. They don't hold data themselves, 
 but they know how to get it from different places. 
@@ -13,24 +13,24 @@ Think of a data node as something that can read and write data, and it's really 
 
 Now, we'll talk about two types of data nodes:
 
-- **Input Data Nodes**: These are data nodes that help us bring data into our system.
+- **Input data nodes**: These are data nodes that help us bring data into our system.
 
-- **Output Data Nodes**: These are data nodes that help us send data out of our system.
+- **Output data nodes**: These are data nodes that help us send data out of our system.
 
 So, data nodes are like helpers for handling data, 
 and they come in these two varieties: input and output.
 
-![Data Nodes](data_notes_2.svg){width=100%}
+![data nodes](data_notes_2.svg){width=100%}
 
-Taipy has a set of predefined data nodes ready to be used when configuring your pipelines. 
+Taipy has a set of predefined data nodes ready to be used when configuring your data workflow. 
 
 Here’s the list of predefined data nodes:
 
-![Data Nodes](data_notes.png){width=70%}
+![data nodes](data_notes.png){width=70%}
 
 ## Pickle Data Node
 
-The Pickle data node is the standard data node in Taipy. 
+The [Pickle](../../../manuals/core/config/data-node-config.md#Pickle) data node is the standard data node in Taipy. 
 It can handle various types of Python stuff like strings, numbers, lists, dictionaries, 
 models (for machine learning or other things), and data tables. Here's some code that uses 
 two Pickle data nodes: one for getting data in and one for sending data out.
@@ -61,7 +61,7 @@ When submitting the scenario (for execution), Taipy:
 
 Taipy makes things easy by handling the paths for Pickle files automatically if you haven't 
 defined them. This simplifies the configuration process. When you create several scenarios, 
-the output data nodes from each scenario will automatically point to separate Pickle files.
+the output data nodes from each scenario will automatically point to separate files.
 
 ```py
 scenario_2 = tp.create_scenario(scenario_cfg)
@@ -72,19 +72,20 @@ In this example, when we create a second scenario, it also brings in a new pair 
 *model* and *predictions*. The *model* data node still points to the same Pickle file because 
 its path was set by the developer in advance. However, the new *predictions* data node points 
 to a different Pickle file. Taipy creates this new Pickle file on the fly during runtime, 
-so it's separate from the one used in the first scenario.
+so it's separate from the one used in the first scenario. All data nodes that writes in 
+the local system share this behavior. 
 
-## Tabular Data Nodes
+## Tabular data nodes
 
 Tabular data nodes in Taipy are a collection of data nodes designed for handling tabular data. 
 By default, the data they point to is presented to the user or developer as a Pandas DataFrame. 
 
 The predefined tabular data nodes in Taipy include:
 
-- SQL
-- CSV
-- Excel
-- Parquet
+- [SQL](../../../manuals/core/config/data-node-config.md#SQL)
+- [CSV](../../../manuals/core/config/data-node-config.md#CSV)
+- [Excel](../../../manuals/core/config/data-node-config.md#Excel)
+- [Parquet](../../../manuals/core/config/data-node-config.md#Parquet)
 
 These data nodes allow you to work with tabular data from different sources with ease.
 
@@ -125,7 +126,7 @@ to other types, such as *Numpy arrays*:
   Your browser does not support the video tag.
 </video>
 
-## Generic Data Nodes
+## Generic data nodes
 
 The **Generic** data node in Taipy is a flexible option that users can customize to include 
 their own *read()* and *write()* functions. This feature is particularly useful when dealing 
@@ -133,9 +134,9 @@ with data sources that don't have a predefined Taipy Data node. With a Generic d
 can tailor it to access data in specific formats or from custom sources.
 
 For more detailed information and guidance on using the Generic data node and customizing it to 
-your specific needs, I recommend checking the 
-[Taipy documentation](../../../manuals/core/config/data-node-config.md#generic), 
-which will provide you with step-by-step instructions and examples.
+your specific needs, check the 
+[Taipy documentation](../../../manuals/core/config/data-node-config.md#generic). It will 
+provide you with step-by-step instructions and examples.
 
 Taipy integrates two other predefined storage types to work with documents. Check the 
 documentation for more details.
@@ -147,7 +148,7 @@ documentation for more details.
 
 As mentioned before, data nodes serve as references to data sources, 
 and they hide the complexities of how data is stored and fetched. 
-This simplifies the process of working with data within a pipeline or a complete web application.
+This simplifies the process of working with data within a complete web application.
 
 Furthermore, Taipy's capability to model data nodes enables it to eliminate redundant tasks. 
 Taipy can recognize situations where inputs have remained unchanged between two runs, 
