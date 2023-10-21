@@ -35,7 +35,8 @@ default) in the `run()` method. For example, `Gui(...).run(port=xxxx)`. Other pa
 [here](../../../../manuals/gui/configuration.md#configuring-the-gui-instance).
 
 
-Keep in mind that you have the option to format your text. Taipy uses different ways to create pages: [Markdown](../../../manuals/gui/pages/index.md#using-markdown), [Python](../../../manuals/gui/page_builder.md) or 
+Keep in mind that you have the option to format your text. Taipy uses different ways to create
+pages: [Markdown](../../../manuals/gui/pages/index.md#using-markdown), [Python](../../../manuals/gui/page_builder.md) or 
 [HTML](../../../manuals/reference/taipy.gui.Html.md) objects. Here is the Markdown syntax to style your
 text  and more. Therefore, `#` creates a title, `##` makes a subtitle. Put your text in `*` for
 *italics* or in `**` to have it in **bold**.
