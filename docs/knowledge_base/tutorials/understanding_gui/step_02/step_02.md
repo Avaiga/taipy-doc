@@ -16,7 +16,8 @@ more within the graphical interface.
 ## Visual elements
 
 When using the Mardown syntax, Taipy augments it with the concept of 
-**[visual elements](../../../../manuals/gui/viselements/index.md)**. A visual element is a Taipy graphical object displayed on the client. It can be a 
+**[visual elements](../../../../manuals/gui/viselements/index.md)**. A visual element is a
+Taipy graphical object displayed on the client. It can be a 
 [slider](../../../../manuals/gui/viselements/slider.md), a 
 [chart](../../../../manuals/gui/viselements/chart.md), a 
 [table](../../../../manuals/gui/viselements/table.md), an 
