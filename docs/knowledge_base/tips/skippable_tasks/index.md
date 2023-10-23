@@ -1,7 +1,7 @@
 
 Taipy is a Python library that's user-friendly and made for creating web applications 
 with interactive interfaces that handle data. 
-This article is all about Taipy's back-end capabilities. 
+This tip is all about Taipy's back-end capabilities. 
 Just as a reminder, the main goal of Taipy's back-end is to help you build 
 and manage complex workflows, such as data processing pipelines.
 
@@ -10,7 +10,7 @@ and manage complex workflows, such as data processing pipelines.
 When engineers create Directed Acyclic Graphs (DAGs), they often leave out certain tasks. 
 This common practice allows tasks to be orchestrated in a more dynamic and advanced way. 
 One of the key features of Taipy's back-end is *skippable* tasks, which can be skipped under specific conditions. 
-In this article, we'll explore how skippable tasks work in Taipy and how to use them effectively.
+In this tip, we'll explore how skippable tasks work in Taipy and how to use them effectively.
 
 ## Setting up Data Nodes for Tasks
 
@@ -24,7 +24,7 @@ It contains:
 ![Setting up Data Nodes for Tasks](skippable_tasks_2.png){width=100%}
 
 Before you start using skippable tasks, it's important to configure your tasks correctly 
-with their Data nodes. You can refer to our previous article or 
+with their Data nodes. You can refer to 
 documentation for more details on [Data nodes](../../tips/the_data_nodes/index.md).
 
 For instance, let's say you have a function like *multiply_and_add()* that takes two parameters 
@@ -216,7 +216,7 @@ This modification date can be altered in three ways:
 ## Conclusion
 
 In conclusion, Taipy simplifies the management of complex workflows and their execution. 
-The use of skippable tasks allows developers to enhance performance significantly 
+The use of skippable tasks allows developers to enhance efficiency significantly 
 by avoiding redundant computations, ultimately saving time and resources for end users. 
 Skippable tasks can be applied in various scenarios, including when resubmitting scenarios 
 or making manual changes to Data nodes.
