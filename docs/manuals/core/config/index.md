@@ -21,7 +21,7 @@ your application and its entities.
 
     More details on the **entities** are available in the [Entities](../entities/index.md) chapter.
 
-!!! important
+!!! warning
 
     All configuration objects must be created before running Core service to avoid any conflict.
 

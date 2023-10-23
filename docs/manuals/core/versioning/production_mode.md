@@ -139,7 +139,7 @@ $ taipy run main.py --production 1.0 --force
 
 As you can see, the application is run successfully after updating the configuration.
 
-!!! Warning
+!!! warning
 
     By forcing the configuration update, you must be aware that old entities instantiated before
     the configuration change may not be compatible.

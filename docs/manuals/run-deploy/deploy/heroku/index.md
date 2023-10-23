@@ -5,7 +5,7 @@ and test applications for free.
 
 The following documentation allows quick deployments on this platform for sharing applications.
 
-!!! important
+!!! warning
     This documentation targets **test** and **development** contexts only. We recommend not
     to deploy applications in a production environment when sensitive data is involved.
 

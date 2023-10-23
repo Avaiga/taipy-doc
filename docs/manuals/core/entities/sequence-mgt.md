@@ -26,7 +26,7 @@ add data_nodes, parent_ids
 - Each nested entity is also exposed as an attribute of the sequence. The attribute name corresponds to the
   *config_id* of the nested entity.
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp
@@ -89,7 +89,7 @@ To get the parent entities of a sequence (i.e., scenarios) you can use either th
 the function
 `taipy.get_parents()^`. Both return the parents of the sequence.
 
-!!! Example
+!!! example
 
     ```python linenums="1"
     import taipy as tp

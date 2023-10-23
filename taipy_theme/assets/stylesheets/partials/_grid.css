@@ -11,6 +11,15 @@
   gap: var(--tp-grid-gutter);
 }
 
+ul.tp-row{
+  margin-left: 0 !important;
+  display: flex !important;
+}
+ul.tp-row li{
+  margin-left: 0 !important;
+  list-style: none !important;
+}
+
 .tp-row--gutter-sm{
   --tp-grid-gutter: 1rem;
 }

@@ -167,7 +167,7 @@ Line 25 indicates that only the data nodes instantiated from `data_node_cfg` are
 The comments in lines 3-8, gives you an idea of what the `compare_function()` function computes depending
 on the given input parameters.
 
-!!! Info
+!!! info
 
     Please refer to the [scenario entity comparison](../entities/scenario-cycle-mgt.md) section to see
     how to compare scenarios using the comparators defined in a `ScenarioConfig^`.
