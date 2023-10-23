@@ -118,8 +118,7 @@ To address this issue, you can modify the *change_delay* parameter in one of the
 
 - **Globally**: To adjust the delay for all of Taipy's visual elements.
   ```python
-  Gui(pages=pages).run(change_delay=800,
-  ngrok_token="TaIpY19D3Pl0YaPp07C0laB199NgR0k93TaIpY19D3Pl0")
+  Gui(pages=pages).run(change_delay=800, ngrok_token=<Authtoken>)
   ```
 
 # Reload after modification
