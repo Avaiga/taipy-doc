@@ -106,10 +106,21 @@ To address this issue, you can modify the *change_delay* parameter in one of the
 
 - **Locally**: You can make changes to this parameter locally, directly within the Taipy visual 
   element.
-  ![Update the delay parameter](Sharing_Taipy_Ngrok_6.png){width=100%}
+  ```python
+  page = """
+  # Getting started with Taipy GUI
+  <|layout|columns=1 1|
+  <|
+  My text: <|{text}|>
+  Enter a word:
+  <|{text}|input|change_delay=800|>
+  ```
 
 - **Globally**: To adjust the delay for all of Taipy's visual elements.
-  ![Update the delay parameter](Sharing_Taipy_Ngrok_7.png){width=100%}
+  ```python
+  Gui(pages=pages).run(change_delay=800,
+  ngrok_token="TaIpY19D3Pl0YaPp07C0laB199NgR0k93TaIpY19D3Pl0")
+  ```
 
 # Reload after modification
 
@@ -127,27 +138,43 @@ re-executions required. You can learn more about this in the
 Here are the new cells to add:
 
 1. Import Markdown:
-   ![Modification of the markdown](Sharing_Taipy_Ngrok_8.png){width=100%}
+   ```python
+   from taipy.gui import Gui, Markdown
+   ```
 
-2. Set empty new page:
-   ![Modification of the markdown](Sharing_Taipy_Ngrok_9.png){width=100%}
+2. Set empty new page:  
+   ```python
+   new_page=Markdown("")
+   ```
 
-3. Set content to `new_page`:
-   ![Modification of the markdown](Sharing_Taipy_Ngrok_10.png){width=100%}
+3. Set content to `new_page`: 
+   ```python
+   new_page.set_content(page)
+   ```
 
 4. Update the `pages` definition:
-   ![Modification of the markdown](Sharing_Taipy_Ngrok_11.png){width=100%}
+   ```python
+   pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
+         "line":new_page,
+         "text":page_file}
+   ```
 
 ## Variable modification with `gui.reload`
 
-1. Add this step
-   ![Variable modification](Sharing_Taipy_Ngrok_12.png){width=100%}
+1. Add this step:
+   ```python
+   gui=Gui(pages=pages)
+   ```
 
-2. Update your `tp.run(gui)`
-   ![Variable modification](Sharing_Taipy_Ngrok_13.png){width=100%}
+2. Update your `tp.run(gui)`:  
+   ```python
+   gui.run()
+   ```
 
-3. Add the `gui.reload` function
-   ![Variable modification](Sharing_Taipy_Ngrok_14.png){width=100%}
+3. Add the `gui.reload` function:
+   ```python
+   gui.reload()
+   ```
 
 After you've made your modifications, just rerun the cell where you made the changes and 
 activate the reload function. Refresh your application page to view the updates you've made.
