@@ -31,7 +31,21 @@ Next, for February, they make a new plan using updated information for that mont
 doing this every month, which helps the company adjust its production plans as things change and 
 new information comes in.
 
-![Monthly Production Planning](scenario_1.png){width=100%}
+```python
+import taipy as tp
+from datetime import datetime
+import my_config
+ 
+# Creating a scenario for January
+january_scenario = tp.create_scenario(my_config.monthly_scenario_cfg,
+                   creation_date=datetime(2023, 1, 1),
+                   name="Scenario for January")
+ 
+# Creating a scenario for February
+february_scenario = tp.create_scenario(my_config.monthly_scenario_cfg,
+                   creation_date=datetime(2023, 2, 1),
+                   name="Scenario for February")
+```
 
 # Scenarios
 
@@ -45,6 +59,18 @@ To instantiate a Taipy scenario, users first need to configure it with the
 uses, how often it runs, what it compares, and its properties. Then users can create a scenario 
 with the `create_scenario()` method passing as a parameter the scenario configuration.
 
+```python
+from taipy import Config
+ 
+# Creation of Data Nodes, Tasks, ...
+...
+ 
+ 
+# Creating a scenario configuration from task configurations
+scenario_cfg_from_tasks = Config.configure_scenario_from_tasks("multiply_scenario",
+                                     [task_cfg])
+```
+
 ## Accessing and Managing Scenarios
 
 Taipy offers different ways to work with scenarios. You can do things like getting a scenario by 
@@ -53,7 +79,28 @@ its ID, getting all scenarios, making one scenario the main one, and comparing s
 Users can also add tags to scenarios to keep them organized, and they can save scenarios in JSON 
 format to look at later or share with others.
 
-![Accessing and Managing Scenarios](scenario_3.png){width=100%}
+```python
+# Get a scenario by id
+scenario_retrieved = tp.get(scenario.id)
+ 
+# Get all scenarios
+all_scenarios = tp.get_scenarios()
+ 
+# Get primary scenarios
+all_primary_scenarios = tp.get_primary_scenarios()
+ 
+# Promote a scenario as primary
+tp.set_primary(scenario)
+ 
+# Compare scenarios (use the compare function defined in the configuration)
+comparison_results = tp.compare_scenarios(january_scenario, february_scenario, data_node_config_id="sales_predictions")
+ 
+# Tag a scenario
+tp.tag(scenario, "my_tag")
+ 
+# Export a scenario
+tp.export(scenario.id, folder_path="./monthly_scenario")
+```
 
 The primary benefit of having a scenario is to access the Data Nodes of the different scenarios 
 that are made. With the data generated for each scenario, we can analyze that scenario. The 
@@ -73,7 +120,21 @@ that lets you:
 - Submit them.
 - View the configuration used by the scenario.
 
-![Scenario management visual elements](scenario_4.png){width=100%}
+```python
+from taipy import Gui
+ 
+...
+ 
+scenario = None
+ 
+scenario_md = ""
+<|{scenario}|scenario_selector|>
+<|{scenario}|scenario|>
+<|{scenario}|scenario_dag|>
+"""
+ 
+Gui(scenario_md).run()
+```
 
 # Conclusion
 
