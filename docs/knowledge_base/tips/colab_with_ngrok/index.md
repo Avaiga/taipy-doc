@@ -107,12 +107,6 @@ To address this issue, you can modify the *change_delay* parameter in one of the
 - **Locally**: You can make changes to this parameter locally, directly within the Taipy visual 
   element.
   ```python
-  page = """
-  # Getting started with Taipy GUI
-  <|layout|columns=1 1|
-  <|
-  My text: <|{text}|>
-  Enter a word:
   <|{text}|input|change_delay=800|>
   ```
 
