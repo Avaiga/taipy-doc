@@ -34,9 +34,9 @@ Gui(page=main_md).run()
 The table definition `<|{food_df}|table|>` (a syntax often used in Taipy) has these parts:
 
 1. `{food_df}`: This is a variable that holds data, like what someone ate in a day.
-2. `table`: This is the name of the control.
+2. `table`: This is control type name.
 
-In this example, the data in `food_df` is a **pandas DataFrame**. If it works better for what 
+In this example, the data in *food_df* is a **pandas DataFrame**. If it works better for what 
 you're doing, you can also use regular Python lists or NumPy arrays.
 
 When you run the code above, you get a page that looks like this:
@@ -66,7 +66,7 @@ Note that the **Meal** and **Name** columns don't have a specific aggregation fu
 so they default to `first`.
 
 As a side note, if it's more suitable for your needs, you can create a separate table to display 
-the aggregated data. To do this, you can make a new DataFrame (e.g., `df_agg`) from *df* with 
+the aggregated data. To do this, you can make a new DataFrame (e.g., *df_agg*) from *df* with 
 the desired changes, connect it to a new table, and update the new DataFrame when *df* changes. 
 However, this topic is about showing toggleable aggregation by dynamically updating the same table.
 
@@ -93,9 +93,9 @@ As with all control Boolean properties, we can remove the '=True' part, making i
 
 You can customize the style of a table in Taipy using two properties:
 
-1. `class_name`: This property allows you to apply a CSS class to the entire table.
+1. *class_name*: This property allows you to apply a CSS class to the entire table.
 
-2. `style`: With this property, you can apply a CSS class to specific rows, which you specify in 
+2. *style*: With this property, you can apply a CSS class to specific rows, which you specify in 
     Python.
 
 ### Property 1: class_name
@@ -152,7 +152,7 @@ main_md = Markdown("<|{food_df}|table|properties=table_properties|>")
 # or Markdown("<|{food_df}|table|class_name=rows-bordered rows-similar|style=table_style|>")
 ```
 
-```python
+```css
 /* main.css */
 .highlight-row td {
     background-color: yellow;
@@ -166,8 +166,8 @@ the table's appearance when applying our **highlight-row** style.
 
 ## Modifying Data
 
-Tables offer various properties for modifying data within the table. Notably, the `on_edit`, 
-`on_add`, and `on_delete` properties can receive a user-defined **callback** function. This 
+Tables offer various properties for modifying data within the table. Notably, the *on_edit*, 
+*on_add*, and *on_delete* properties can receive user-defined **callback** functions. This 
 function is executed when you interact with the table, but it only appears when you specify the 
 relevant data modification property.
 
@@ -176,9 +176,9 @@ ourselves to match our specific needs. We're also including the
 [notify](../../../manuals/gui/notifications.md) function within our data modification callback 
 functions to send notifications to the user about their changes.
 
-## Editing (`on_edit`)
+## Editing (*on_edit*)
 
-When the `on_edit` property is used, new buttons with a pencil icon are added to each cell. 
+When the *on_edit* property is used, new buttons with a pencil icon are added to each cell. 
 Clicking it allows the user to modify the value of that cell, 
 then clicking the tick triggers the callback function:
 
@@ -211,10 +211,10 @@ This is because state variables should be updated by assignment to the variable 
 we instead create a copy of the DataFrame, modify the relevant cell, then assign it back to 
 *state.food_df*.
 
-## Adding (`on_add`)
+## Adding (*on_add*)
 
-Adding and deleting are quite similar to editing. When you specify the `on_add` property, a 
-`button` with a 'plus' icon is included, and when clicked, it triggers the defined `on_add` 
+Adding and deleting are quite similar to editing. When you specify the *on_add* property, a 
+`button` with a 'plus' icon is included, and when clicked, it triggers the defined *on_add* 
 callback function.
 
 ![Adding](tables-on_add.gif){width=100%}
@@ -235,7 +235,7 @@ This code simply adds a new empty row to the top of the table (DataFrame).
 You can customize the callback function accordingly if your use case requires 
 some columns to have a default or set value.
 
-## Deleting (`on_delete`)
+## Deleting (*on_delete*)
 
 Finally, the deletion process works as follows:
 
@@ -288,7 +288,7 @@ def food_df_on_edit(state, var_name, payload):
     notify(state, "I", f"Edited value from '{old_value}' to '{value}'. (index '{index}', column '{col}')")
  
  
-def food_df_on_delete(state, var_name, action, payload):
+def food_df_on_delete(state, var_name, payload):
     index = payload["index"] # row index
  
     state.food_df = state.food_df.drop(index=index)

@@ -80,10 +80,11 @@ pages work independently:
 - The `home_md` page shows a welcome message.
 - The `temperature_md` page lets a user convert temperatures from Fahrenheit (°F) to Celsius (°C).
 
-Usually, if we were making a simple one-page application, we'd give one of our pages (Taipy 
-[Markdown](../../../manuals/reference/taipy.gui.Markdown.md) or 
-[HTML](../../../manuals/reference/taipy.gui.Html.md) objects) to the 
-`[`Gui` constructor](Gui.init()^)` constructor. For example, to turn `home.py` into a one-page 
+Usually, if we were making a simple one-page application, we'd give one of our pages (created
+with [Markdown](../../../manuals/gui/pages/index.md#using-markdown),
+[HTML](../../../manuals/gui/pages/index.md#using-html) or
+[Python code](../../../manuals/gui/page_builder.md) to the 
+[`Gui` constructor](Gui.init()^) constructor. For example, to turn `home.py` into a one-page 
 Taipy application, 
 we could add these lines:
 
@@ -175,7 +176,7 @@ alternative that does not require any code modification in any of the pages is t
 **root page**.
 
 Rather than modifying each page to include the navbar, we can also simply modify `main.py` to 
-utilize the [root page](../../../manuals/gui/pages.md#root-page):
+utilize the [root page](../../../manuals/gui/pages/index.md#root-page):
 
 ```python title="main.py, with root page navbar"
 from taipy.gui import Gui

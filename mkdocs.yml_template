@@ -61,7 +61,7 @@ nav:
         - "Scenarios": knowledge_base/tips/scenarios/index.md
         - "Taipy Application on Colab with Ngrok": knowledge_base/tips/colab_with_ngrok/index.md
         - "Jupyter Notebooks": knowledge_base/tips/jupyter_notebooks/index.md
-        - "Long Running Callbacks": knowledge_base/tips/long_running_callbacks/index.md
+        - "Long Running Callbacks": knowledge_base/tips/long_callbacks/index.md
         - "Multi-page Application": knowledge_base/tips/multipage_application/index.md
         - "Using Tables": knowledge_base/tips/using_tables/index.md
         - "Data Nodes": knowledge_base/tips/the_data_nodes/index.md
@@ -69,6 +69,7 @@ nav:
         - "Skippable Tasks": knowledge_base/tips/skippable_tasks/index.md
         - "Callbacks in Taipy": knowledge_base/tips/the_on_change_callback/index.md
         - "Taipy Cloud": knowledge_base/tips/taipy_cloud_deploy/index.md
+        - "iFrames and Interactive Visualizations": knowledge_base/tips/iframes/index.md
         - "Real-time data visualization": knowledge_base/tips/multithreading/index.md
   - "Manuals":
     - "About Taipy's Manuals": manuals/index.md
