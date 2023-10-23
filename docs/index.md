@@ -1,4 +1,5 @@
 ---
+title: Welcome to Taipy Documentation!
 hide:
   - navigation
   - toc
@@ -6,71 +7,24 @@ hide:
 
 # Welcome to Taipy Documentation!
 
-Taipy is an open-source library to easily develop data-driven web applications in pure Python.
+Taipy is a Python open-source library designed for easy development of data-driven web applications.
 
-Taipy is a versatile tool suitable for developers and businesses, regardless of their coding 
-expertise. Taipy covers both front-end and back-end requirements to expedite application 
-development, from initial prototypes to production ready solutions.
-
-- **User interface creation:** 
-  Design user interfaces effortlessly. You don't need prior web design or web 
-  development knowledge to create interactive multi-page applications. You can craft dynamic 
-  web pages with ease.
-
-- **Scenario and data management:**
-  Taipy is designed specifically for data-driven applications. Setting up scenarios, orchestrating 
-  data flows and pipelines, and accessing data requires minimal Python setup.
-
-- **Pipeline orchestration:**
-  With data caching, parallel task execution, and data source scoping Taipy makes it efficient 
-  for developers to model complex pipelines and for end-users to visualize, run, and monitor them.
-
-## Quick Access
-
-These frequently visited topics have been highlighted for your quick reference.
+Taipy covers both front-end and back-end. It has been designed to expedite application development,
+from initial prototypes to production-ready applications.
 
 <div class="tp-row tp-row--gutter-sm">
-  <div class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card" href="getting_started/">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-icon icon-light" src="images/icons/flag-w.svg">
-        <img class="tp-content-card-icon icon-dark" src="images/icons/flag.svg">
-        <h3>Getting Started</h3>
-      </header>
-      <p>
-        In this guide, you will build a complete Taipy web application step by step. It covers 
-some of the important concepts in Taipy. It's useful for both beginners and experienced Python 
-programmers who are trying out Taipy for the first time.
-      </p>
-      <span class="tp-content-card-readmore">Read more</span>
-    </a>
-  </div>
   <div class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card" href="manuals/gui/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon icon-light" src="images/icons/dashboard-w.svg">
         <img class="tp-content-card-icon icon-dark" src="images/icons/dashboard.svg">
-        <h3>User interface</h3>
+        <h3>User interface creation</h3>
       </header>
+      <img src="images/gui_creation.gif">
       <p>
-        This is Taipy GUI user manual. It describes the concepts and elements you need to create 
-strong web apps quickly. From GUI pages, controls, blocks, visual elements, binding Python 
-variables, callbacks, styling, extending Taipy, etc. Also, for our users working on Notebooks, 
-we do provide information on how to run Taipy from Notebooks.
-      </p>
-      <span class="tp-content-card-readmore">Read more</span>
-    </a>
-  </div>
-  <div class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card" href="manuals/gui/viselements/chart/">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-icon icon-light" src="images/icons/bar-chart-w.svg">
-        <img class="tp-content-card-icon icon-dark" src="images/icons/bar-chart.svg">
-        <h3>Charts</h3>
-      </header>
-      <p>
-        One crucial part of Taipy's graphical user interface (GUI) is its graphing library. This 
-library offers a wide range of customizable ways to visualize data.
+        Design user interfaces effortlessly. You don't need prior web design or web 
+        development knowledge to create interactive multi-page applications. You can craft dynamic 
+        web pages with ease.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
@@ -80,24 +34,22 @@ library offers a wide range of customizable ways to visualize data.
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon icon-light" src="images/icons/menu_book-w.svg">
         <img class="tp-content-card-icon icon-dark" src="images/icons/menu_book.svg">
-        <h3>Scenario</h3>
+        <h3>Scenario and Data Management</h3>
       </header>
+      <img src="images/scenario_and_data_mgt.gif">
       <p>
-        Taipy Scenario represents a specific business problem (modeled as a pipeline) that you 
-solve using data and different sets of parameters. Scenarios let you create different versions 
-of the same problem with different assumptions, which is really helpful for making decisions 
-when you need to analyze the potential impact of different scenarios.
+        Create scenarios for efficient pipeline orchestration, easy data and parameter access, and 
+        effective monitoring of outputs and KPIs. Taipy speeds up the developer's work and 
+        empowers end-users to efficiently visualize, execute, and oversee scenarios.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
     </a>
   </div>
 </div>
 
-## Build your UI with dozens of visual elements
+# Quick Access
 
-Taipy provides many GUI components (referred to as "Taipy Controls") that are the essential 
-bricks for building web applications. Below, you'll find a clear explanation of each term, 
-explained in the context of the Taipy web application builder.
+**Build your UI with dozens of visual elements:**
 
 <ul class="tp-pills-list">
   <li>
@@ -158,7 +110,7 @@ explained in the context of the Taipy web application builder.
   </li>
 </ul>
 
-## Main Taipy functionalities
+**Main Taipy functionalities:**
 
 <ul class="tp-pills-list">
   <li>
