@@ -33,7 +33,7 @@ can be.
 
 Let's craft a basic "Hello World" scenario:
 
-![Hello World Example](hello_world.svg){width=50%}
+![Hello World Example](hello_world.svg){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 The graph involves:
 
