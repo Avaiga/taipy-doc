@@ -14,16 +14,14 @@ immediately.
 If no created scenario has been created yet, the tree selector will appear empty. The default
 behavior, controlled by the [*show_add_button*](#p-show_add_button) property, is to display a
 button letting users create new scenarios:
-
 <figure class="tp-center">
   <img src="../scenario_selector-empty-d.png" class="visible-dark"  width="80%"/>
   <img src="../scenario_selector-empty-l.png" class="visible-light" width="80%"/>
-  <figcaption>No scenario to select</figcaption>
+  <figcaption>Empty scenario selector</figcaption>
 </figure>
 
 When the user presses that button, a form appears so that the settings of the new scenario can be
 set:
-
 <figure class="tp-center">
   <img src="../scenario_selector-create-d.png" class="visible-dark"  width="60%"/>
   <img src="../scenario_selector-create-l.png" class="visible-light" width="60%"/>
@@ -37,7 +35,6 @@ right side of the property key and value fields.
 
 When several new scenarios are created, the scenario selector will list all the scenarios,
 potentially grouped in their relevant cycle:
-
 <figure class="tp-center">
   <img src="../scenario_selector-filled-d.png" class="visible-dark"  width="60%"/>
   <img src="../scenario_selector-filled-l.png" class="visible-light" width="60%"/>
@@ -55,7 +52,6 @@ box similar to the scenario creation dialog is displayed to let users modify the
 settings.
 
 Here is how this dialog box looks like:
-
 <figure class="tp-center">
   <img src="../scenario_selector-edition-d.png" class="visible-dark"  width="60%"/>
   <img src="../scenario_selector-edition-l.png" class="visible-light" width="60%"/>

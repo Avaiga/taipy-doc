@@ -74,7 +74,6 @@ Here is how the chart control could be defined:
         ```
 
 And here is how the resulting chart would look:
-
 <figure>
     <img src="../waterfall-simple-d.png" class="visible-dark" />
     <img src="../waterfall-simple-l.png" class="visible-light"/>
@@ -173,7 +172,6 @@ Here is the complete definition of the chart:
         ```
 
 And here is what the resulting chart looks like:
-
 <figure>
     <img src="../waterfall-styling-d.png" class="visible-dark" />
     <img src="../waterfall-styling-l.png" class="visible-light"/>
@@ -237,7 +235,6 @@ The definition of the chart control is straightforward:
         ```
 
 The resulting chart looks like this:
-
 <figure>
     <img src="../waterfall-period_levels-d.png" class="visible-dark" />
     <img src="../waterfall-period_levels-l.png" class="visible-light"/>

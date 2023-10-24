@@ -85,7 +85,6 @@ Here is the chart control definition:
         ```
 
 Here is the resulting figure:
-
 <figure>
     <img src="../radar-simple-d.png" class="visible-dark" />
     <img src="../radar-simple-l.png" class="visible-light" />
@@ -154,7 +153,6 @@ The chart definition uses all those different objects:
         ```
 
 The chart created above looks like this:
-
 <figure>
     <img src="../radar-multiple-d.png" class="visible-dark" />
     <img src="../radar-multiple-l.png" class="visible-light" />

@@ -60,7 +60,6 @@ And the chart definition is the following:
         ```
 
 Here is the resulting chart:
-
 <figure>
     <img src="../pie-simple-d.png" class="visible-dark" />
     <img src="../pie-simple-l.png" class="visible-light"/>
@@ -121,7 +120,6 @@ The chart definition uses all these variables:
         ```
 
 The colored pie chart renders as follows:
-
 <figure>
     <img src="../pie-styling-d.png" class="visible-dark" />
     <img src="../pie-styling-l.png" class="visible-light"/>
@@ -243,7 +241,6 @@ Here is the chart definition that uses all those settings:
         ```
 
 Here is the resulting display:
-
 <figure>
     <img src="../pie-multiple-d.png" class="visible-dark" />
     <img src="../pie-multiple-l.png" class="visible-light"/>

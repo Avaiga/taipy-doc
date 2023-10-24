@@ -43,7 +43,6 @@ We can do that using inline Python code in the page definition text:
         ```
 
 Here is how this chart is displayed:
-
 <figure>
     <img src="../basics-simple-d.png" class="visible-dark" />
     <img src="../basics-simple-l.png" class="visible-light"/>
@@ -97,7 +96,6 @@ property [*y*](../chart.md#p-y) of the chart control is set to "Y", which is the
 name of the column in the DataFrame where the values for *y* are stored.
 
 The resulting image is the following:
-
 <figure>
     <img src="../basics-xrange-d.png" class="visible-dark" />
     <img src="../basics-xrange-l.png" class="visible-light"/>
@@ -151,7 +149,6 @@ a setting to use the dictionary *layout*:
 As you can see, we also added a title to the chart.
 
 The result is the following:
-
 <figure>
     <img src="../basics-title-d.png" class="visible-dark" />
     <img src="../basics-title-l.png" class="visible-light"/>
@@ -202,7 +199,6 @@ Here is what the chart definition looks like:
         Taipy allows this syntax, nevertheless.
 
 And now our chart displays the two traces, one for each *y* series:
-
 <figure>
     <img src="../basics-multiple-d.png" class="visible-dark" />
     <img src="../basics-multiple-l.png" class="visible-light"/>
@@ -253,7 +249,6 @@ The chart control definition has not changed:
 Compared to the previous example, we have divided all the values of the second
 *y* series by 50, resulting in a plot that is hardly readable, as you can see in
 the result:
-
 <figure>
     <img src="../basics-two-y-axis-1-d.png" class="visible-dark" />
     <img src="../basics-two-y-axis-1-l.png" class="visible-light"/>
@@ -310,7 +305,6 @@ See how we leverage the property [*yaxis*](../chart.md#p-yaxis), indicating that
 indexed trace (2) relies on the axis we have created in the chart layout.
 
 The resulting plot is far more relevant:
-
 <figure>
     <img src="../basics-two-y-axis-2-d.png" class="visible-dark" />
     <img src="../basics-two-y-axis-2-l.png" class="visible-light"/>
@@ -352,7 +346,6 @@ is pretty straightforward:
         ```
 
 And the result is exactly what you expect:
-
 <figure>
     <img src="../basics-timeline-d.png" class="visible-dark" />
     <img src="../basics-timeline-l.png" class="visible-light"/>

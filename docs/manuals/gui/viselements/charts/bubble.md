@@ -66,7 +66,6 @@ The chart definition looks like this:
         ```
 
 The result looks like this:
-
 <figure>
     <img src="../bubble-simple-d.png" class="visible-dark" />
     <img src="../bubble-simple-l.png" class="visible-light"/>
@@ -115,7 +114,6 @@ The chart definition remains exactly the same as in the example above:
         ```
 
 And the resulting chart looks like this:
-
 <figure>
     <img src="../bubble-symbols-d.png" class="visible-dark" />
     <img src="../bubble-symbols-l.png" class="visible-light"/>
@@ -172,7 +170,6 @@ proper column name:
         ```
 
 Here is the result:
-
 <figure>
     <img src="../bubble-hover-d.png" class="visible-dark" />
     <img src="../bubble-hover-l.png" class="visible-light"/>

@@ -97,7 +97,6 @@ Trace number 2 (the Fine trace) is defined by *x[2]* and *y[2]*, and uses
 the series *data[1]\["x"\]* and *data[1]\["Fine"\]*.
 
 Here is what the resulting plot looks like:
-
 <figure>
     <img src="../advanced-unbalanced-datasets-d.png" class="visible-dark" />
     <img src="../advanced-unbalanced-datasets-l.png" class="visible-light"/>
@@ -180,7 +179,6 @@ Adding the annotations to the chart control is a matter of setting the
         ```
 
 Here is how the annotated chart control shows on the page:
-
 <figure>
     <img src="../advanced-annotations-d.png" class="visible-dark" />
     <img src="../advanced-annotations-l.png" class="visible-light"/>
@@ -260,7 +258,6 @@ Here is the definition of the chart control:
         ```
 
 And here is what the resulting chart looks like:
-
 <figure>
     <img src="../advanced-shapes-d.png" class="visible-dark" />
     <img src="../advanced-shapes-l.png" class="visible-light"/>
@@ -340,7 +337,6 @@ Here is the definition of the chart and text controls:
         ```
 
 And here is what the resulting page looks like:
-
 <figure>
     <img src="../advanced-selection-d.png" class="visible-dark" />
     <img src="../advanced-selection-l.png" class="visible-light"/>

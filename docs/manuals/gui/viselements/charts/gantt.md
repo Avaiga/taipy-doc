@@ -132,7 +132,6 @@ Here is how we defined the chart control:
         ```
 
 The resulting Gantt chart looks like this:
-
 <figure>
     <img src="../gantt-simple-d.png" class="visible-dark" />
     <img src="../gantt-simple-l.png" class="visible-light"/>

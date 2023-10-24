@@ -113,7 +113,6 @@ That dictionary is then used in the chart control definition:
         ```
 
 Here is the result:
-
 <figure>
     <img src="../continuous-error-simple-d.png" class="visible-dark" />
     <img src="../continuous-error-simple-l.png" class="visible-light"/>
@@ -253,7 +252,6 @@ The chart definition has not changed:
         ```
 
 And the chart looks like this:
-
 <figure>
     <img src="../continuous-error-multiple-d.png" class="visible-dark" />
     <img src="../continuous-error-multiple-l.png" class="visible-light"/>
