@@ -110,7 +110,7 @@ To use Tabular data nodes in Taipy, you only need to include them in the configu
 and specify certain parameters, like a default path for CSV or Parquet files. It's important to 
 note that you can change this path during runtime. For instance, if you create a new scenario, 
 you can instruct the Tabular data nodes to save the results in a different file or directory, 
-which helps you avoid overwriting previous data. Taipy can also manage where files are written if no *default_path* has been given.
+thereby preventing the overwriting of previous data. Taipy can also manage file destinations in cases where no 'default_path' has been specified.
 
 ```py
 scenario = tp.create_scenario(scenario_cfg)
