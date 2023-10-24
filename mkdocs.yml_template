@@ -14,7 +14,7 @@ nav:
   - "Knowledge Base":
     - "Knowledge Base": knowledge_base/index.md
     - "Tutorials":
-        - knowledge_base/tutorials/index.md
+        - "Tutorials": knowledge_base/tutorials/index.md
         - "Understanding GUI":
             - "Understanding GUI": knowledge_base/tutorials/understanding_gui/index.md
             - "1 - First Web page": knowledge_base/tutorials/understanding_gui/step_01/step_01.md
