@@ -84,7 +84,7 @@ hide:
   </li>
   <li>
     <input type="checkbox" name="filter-table" id="filter-table" value="table">
-    <label class="tp-pill" for="filter-navbar">
+    <label class="tp-pill" for="filter-table">
       <span>Table</span>
     </label>
   </li>
@@ -221,8 +221,8 @@ hide:
     </label>
   </li>
   <li>
-    <input type="checkbox" name="filter-storage_type" id="filter-storage_type" value="storage_type">
-    <label class="tp-pill" for="filter-storage_type">
+    <input type="checkbox" name="filter-partials" id="filter-partials" value="partials">
+    <label class="tp-pill" for="filter-partials">
       <span>Partials</span>
     </label>
   </li>
@@ -317,7 +317,7 @@ hide:
       </div> 
     </a>
   </li>
-  <li data-keywords="scenario datanode configuration cycle scope submission ">
+  <li data-keywords="scenario datanode configuration cycle scope submission">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/cycles_scopes/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
@@ -787,7 +787,7 @@ hide:
         <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
       </header>
       <div class="tp-content-card-body">
-        <h4> Multithreading </h4>
+        <h4> Real-time data visualization </h4>
         <p> Display data sent from another thread in real-time to your Taipy application.
         </p>
       </div> 
