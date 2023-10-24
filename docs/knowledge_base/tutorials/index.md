@@ -10,6 +10,12 @@ Follow our tutorials and get the core concepts of Taipy.
 <!-- Filters -->
 <ul class="tp-pills-list tp-pills-filter">
   <li>
+    <input type="checkbox" name="filter-all" id="filter-all" value="all" checked>
+    <label class="tp-pill" for="filter-all">
+      <span>All</span>
+    </label>
+  </li>
+  <li>
     <input type="checkbox" name="filter-gui" id="filter-gui" value="gui">
     <label class="tp-pill" for="filter-gui">
       <span>GUI</span>

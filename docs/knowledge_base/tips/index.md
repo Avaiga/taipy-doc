@@ -8,6 +8,12 @@ Tips and Tricks!
 <!-- Filters -->
 <ul class="tp-pills-list tp-pills-filter">
   <li>
+    <input type="checkbox" name="filter-all" id="filter-all" value="all" checked>
+    <label class="tp-pill" for="filter-all">
+      <span>All</span>
+    </label>
+  </li>
+  <li>
     <input type="checkbox" name="filter-gui" id="filter-gui" value="gui">
     <label class="tp-pill" for="filter-gui">
       <span>GUI</span>
@@ -237,7 +243,7 @@ Tips and Tricks!
   </li>
 </ul>
 
-<ul class="tp-row tp-row--gutter-sm">
+<ul class="tp-row tp-row--gutter-sm tp-filtered">
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario cycle configuration datanode dag">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="scenarios">
       <header class="tp-content-card-header">

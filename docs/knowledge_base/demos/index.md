@@ -8,6 +8,12 @@ Let's explore demos of applications made with Taipy.
 <!-- Filters -->
 <ul class="tp-pills-list tp-pills-filter">
   <li>
+    <input type="checkbox" name="filter-all" id="filter-all" value="all" checked>
+    <label class="tp-pill" for="filter-all">
+      <span>All</span>
+    </label>
+  </li>
+  <li>
     <input type="checkbox" name="filter-gui" id="filter-gui" value="gui">
     <label class="tp-pill" for="filter-gui">
       <span>GUI</span>
@@ -237,7 +243,7 @@ Let's explore demos of applications made with Taipy.
   </li>
 </ul>
 
-<ul class="tp-row tp-row--gutter-sm">
+<ul class="tp-row tp-row--gutter-sm tp-filtered">
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui dashboard vizelement layout chart">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="sales_dashboard">
       <header class="tp-content-card-header">
