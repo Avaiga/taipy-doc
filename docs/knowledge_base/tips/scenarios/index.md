@@ -49,8 +49,9 @@ february_scenario = tp.create_scenario(my_config.monthly_scenario_cfg,
 
 # Scenarios
 
-Taipy scenarios include one or more sets of tasks that are meant to do specific jobs. These 
-tasks and pipelines can work on their own and can even run at the same time, doing different things.
+Taipy scenarios include tasks and data nodes modeling any kind of data workflow. These tasks can 
+be submitted as a whole submitting the scenario or independently if needed. When it is 
+possible, Taipy runs the tasks in parallel.
 
 ## Scenario Configuration and Creation
 
