@@ -33,13 +33,6 @@ function handleAll(callback) {
     // If no other checkbox is checked, check the "all" checkbox
     const otherFiltersChecked = newFilters.length > 0;
     document.getElementById('filter-all').checked = !otherFiltersChecked;
-    // If every other is checked, just check "All" instead
-    if (newFilters.length === filters.length - 1 ){
-      filters.forEach(checkbox => {
-        const isFilterAll = checkbox.value === 'all';
-        checkbox.checked = isFilterAll;
-      });  
-    }
   }
 
   if (callback){
@@ -61,35 +54,36 @@ function applyFilters(callback) {
     const shouldBeDisplayed = activeFilters.includes('all') || itemKeywords.some(keyword => activeFilters.includes(keyword));
     item.classList.toggle('is-hidden', !shouldBeDisplayed);
   });
-
-  if (callback){
-    return callback();
-  }
 }
 
 function handleEmptyList() {
   lists.forEach(list => {
-    const isEmpty = list.querySelectorAll('li.is-hidden').length === list.childElementCount;
     const emptyStateClassName = 'emptyState-message';
     const existingMessages = list.querySelectorAll('.' + emptyStateClassName);
-
-    console.log(existingMessages);
-    
-    // Remove existing message
-    if (existingMessages.length !== null){
-      existingMessages.forEach(message => {
-        list.removeChild(message);
-      });
+    const hasExistingMessages = existingMessages.length > 0;
+    let isEmpty = false;
+    // Mark list as empty if all <li> have the "is-hidden" class, 
+    // apart from the messages <li> that could already exist
+    if ( 
+      (!hasExistingMessages && list.querySelectorAll('li.is-hidden').length === list.childElementCount)
+      || (hasExistingMessages && list.querySelectorAll('li.is-hidden').length === list.childElementCount - existingMessages.length)
+    ){
+      isEmpty = true;
     }
 
     // Add message if list is empty after filtering
-    if (isEmpty){
+    if (isEmpty && !hasExistingMessages){
       const emptyStateMessage = document.createElement('li');
       emptyStateMessage.className = emptyStateClassName;
       emptyStateMessage.innerHTML = `
         <p>No items match your filter criteria</p>
       `;
       list.appendChild(emptyStateMessage);
+    } else if (!isEmpty && hasExistingMessages){
+      // Remove existing message
+      existingMessages.forEach(message => {
+        list.removeChild(message);
+      });
     }
   });  
 }
