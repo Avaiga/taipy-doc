@@ -51,9 +51,14 @@ and the results are returned in that exact order.
 
 ```py
 from taipy.config import Config
-model_cfg = Config.configure_data_node("model", default_path="model.p")
-predictions_cfg = Config.configure_data_node("predictions")
-task_cfg = Config.configure_task("task", predict, model_cfg, predictions_cfg)
+
+nb_1_cfg = Config.configure_data_node('nb1')
+nb_2_cfg = Config.configure_data_node('nb2')
+
+sum_cfg = Config.configure_data_node('sum')
+product_cfg = Config.configure_data_node('product')
+
+task_cfg = Config.configure_task("task", multiply_and_add, [nb_1_cfg, nb_2_cfg], [sum_cfg, product_cfg])
 scenario_cfg = Config.configure_scenario("scenario", [task_cfg])
 ```
 
@@ -116,7 +121,7 @@ any changes to my input Data nodes in any way.
 
 ```py
 tp.submit(scenario)
-print(&amp;amp;amp;quot;Results (sum):&amp;amp;amp;quot;,scenario.sum.read())
+print("Results (sum):", scenario.sum.read())
 ```
 
 As expected, Taipy is skipping the Task because the input parameters haven't changed. 
@@ -157,10 +162,15 @@ Let's revisit our previous code and modify the Data nodes to have a Global scope
 </video>
 
 ```py
-from taipy.config import Config
-model_cfg = Config.configure_data_node("model", default_path="model.p")
-predictions_cfg = Config.configure_data_node("predictions")
-task_cfg = Config.configure_task("task", predict, model_cfg, predictions_cfg)
+from taipy.config import Config, Scope
+
+nb_1_cfg = Config.configure_data_node('nb1', scope=Scope.GLOBAL)
+nb_2_cfg = Config.configure_data_node('nb2', scope=Scope.GLOBAL)
+
+sum_cfg = Config.configure_data_node('sum', scope=Scope.GLOBAL)
+product_cfg = Config.configure_data_node('product', scope=Scope.GLOBAL)
+
+task_cfg = Config.configure_task("task", multiply_and_add, [nb_1_cfg, nb_2_cfg], [sum_cfg, product_cfg])
 scenario_cfg = Config.configure_scenario("scenario", [task_cfg])
 ```
 
