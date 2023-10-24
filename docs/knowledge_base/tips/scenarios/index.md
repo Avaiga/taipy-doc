@@ -4,7 +4,7 @@ tool for running and saving sets of tasks. They can create different versions of
 problem with different guesses. This helps users understand the effects and possibilities, which 
 are really important for big decisions.
 
-![Scenarios](scenario_1_2.png){width=100%}
+![Scenarios](scenario.png){width=100%}
 
 In this article, we will examine Taipy scenarios more closely. We will explore what they can do 
 and how they can be useful when making decisions.
@@ -38,13 +38,13 @@ import my_config
  
 # Creating a scenario for January
 january_scenario = tp.create_scenario(my_config.monthly_scenario_cfg,
-                   creation_date=datetime(2023, 1, 1),
-                   name="Scenario for January")
+                                      creation_date=datetime(2023, 1, 1),
+                                      name="Scenario for January")
  
 # Creating a scenario for February
 february_scenario = tp.create_scenario(my_config.monthly_scenario_cfg,
-                   creation_date=datetime(2023, 2, 1),
-                   name="Scenario for February")
+                                       creation_date=datetime(2023, 2, 1),
+                                       name="Scenario for February")
 ```
 
 # Scenarios
@@ -62,13 +62,12 @@ with the `create_scenario()` method passing as a parameter the scenario configur
 ```python
 from taipy import Config
  
-# Creation of Data Nodes, Tasks, ...
+# Configuration of Data Nodes, Tasks, ...
 ...
- 
- 
+  
 # Creating a scenario configuration from task configurations
 scenario_cfg_from_tasks = Config.configure_scenario_from_tasks("multiply_scenario",
-                                     [task_cfg])
+                                                               [task_cfg])
 ```
 
 ## Accessing and Managing Scenarios
