@@ -91,7 +91,7 @@ function handleEmptyList() {
       const emptyStateMessage = document.createElement('li');
       emptyStateMessage.className = emptyStateClassName;
       emptyStateMessage.innerHTML = `
-        <p>No items match your filter criteria</p>
+        <p>No items match your filter criteria.</p>
       `;
       list.appendChild(emptyStateMessage);
     } else if (!isEmpty && hasExistingMessages){
