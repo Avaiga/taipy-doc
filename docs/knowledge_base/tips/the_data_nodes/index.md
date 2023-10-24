@@ -4,7 +4,7 @@ It can do many things, but we're going to talk about
 two important things in Taipy: Data nodes and Tasks.
 
 Data nodes are like a bridge to get data from different places. 
-They help us access data easily. This article is mostly about data nodes, 
+They help us access data easily. This tip is mostly about data nodes, 
 what they do, and how we use them in Taipy scenarios.
 
 Data nodes in Taipy are like tools to work with data. They don't hold data themselves, 
@@ -45,6 +45,18 @@ two Pickle data nodes: one for getting data in and one for sending data out.
   <source src="pickle-data-node.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+
+The Python configuration translates as the code below:
+
+```py
+from taipy.config import Config
+
+model_cfg = Config.configure_data_node("model", default_path="model.p")
+predictions_cfg = Config.configure_data_node("predictions")
+task_cfg = Config.configure_task("task", predict, model_cfg, predictions_cfg)
+
+scenario_cfg = Config.configure_scenario("my_scenario", [task_cfg])
+```
 
 Once you've set up this basic graph, the next step is to create a scenario using it and then 
 submit it for execution.
@@ -98,7 +110,7 @@ To use Tabular data nodes in Taipy, you only need to include them in the configu
 and specify certain parameters, like a default path for CSV or Parquet files. It's important to 
 note that you can change this path during runtime. For instance, if you create a new scenario, 
 you can instruct the Tabular data nodes to save the results in a different file or directory, 
-which helps you avoid overwriting previous data.
+thereby preventing the overwriting of previous data. Taipy can also manage file destinations in cases where no 'default_path' has been specified.
 
 ```py
 scenario = tp.create_scenario(scenario_cfg)
