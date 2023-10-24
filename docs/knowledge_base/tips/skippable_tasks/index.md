@@ -58,7 +58,7 @@ nb_2_cfg = Config.configure_data_node('nb2')
 sum_cfg = Config.configure_data_node('sum')
 product_cfg = Config.configure_data_node('product')
 
-task_cfg = Config.configure_task("task", multiply_and_add, [nb_1_cfg, nb_2_cfg], [sum_cfg, product_cfg])
+task_cfg = Config.configure_task("multiply_and_add", multiply_and_add, [nb_1_cfg, nb_2_cfg], [sum_cfg, product_cfg])
 scenario_cfg = Config.configure_scenario("scenario", [task_cfg])
 ```
 
@@ -170,7 +170,7 @@ nb_2_cfg = Config.configure_data_node('nb2', scope=Scope.GLOBAL)
 sum_cfg = Config.configure_data_node('sum', scope=Scope.GLOBAL)
 product_cfg = Config.configure_data_node('product', scope=Scope.GLOBAL)
 
-task_cfg = Config.configure_task("task", multiply_and_add, [nb_1_cfg, nb_2_cfg], [sum_cfg, product_cfg])
+task_cfg = Config.configure_task("multiply_and_add", multiply_and_add, [nb_1_cfg, nb_2_cfg], [sum_cfg, product_cfg])
 scenario_cfg = Config.configure_scenario("scenario", [task_cfg])
 ```
 
