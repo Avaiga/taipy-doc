@@ -2,9 +2,6 @@
 hide:
   - toc
 ---
-
-Learn how to use Taipy and improve your skills.
-
 <!-- Quick accesses -->
 <div class="tp-row tp-row--gutter-sm">
 
@@ -58,7 +55,7 @@ Learn how to use Taipy and improve your skills.
   <li>
     <input type="checkbox" name="filter-all" id="filter-all" value="all" checked>
     <label class="tp-pill" for="filter-all">
-      <span>all</span>
+      <span>All</span>
     </label>
   </li>
   <li>
