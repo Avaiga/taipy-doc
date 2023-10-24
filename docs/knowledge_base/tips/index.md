@@ -208,7 +208,6 @@ Tips and Tricks!
       </div> 
     </a>
   </li>
-
   <li class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="iframes">
       <header class="tp-content-card-header">
