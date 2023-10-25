@@ -52,7 +52,7 @@ page1_md="## This is page 1"
 page2_md="## This is page 2"
 
 
-def on_menu(state, var_name, function_name, info):
+def on_menu(state, action, info):
     page = info['args'][0]
     navigate(state, to=page)
    
