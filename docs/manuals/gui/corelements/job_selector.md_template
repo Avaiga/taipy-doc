@@ -101,7 +101,8 @@ The control's properties [*show_id*](#p-show_id),
 [*show_submit_sequences*](#p-show_submit_sequences) let you indicate what columns the job
 selector control displays.
 
-We can define our control so the job identifiers and the submission dates are not shown:
+We can define our control so the job identifiers and the submission dates are not shown, to have a
+more compact display:
 !!! example "Page content"
 
     === "Markdown"

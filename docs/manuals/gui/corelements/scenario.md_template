@@ -16,10 +16,15 @@ Here is what the control would look like when representing a scenario entity:
 </figure>
 
 Next the scenario's label at the top of the control and if the scenario is *primary* in its cycle,
-there would be an icon showing the letter 'P'.<br/>
+there would be an icon showing a flag.<br/>
 On the right side of the label, a 'play' button can trigger the scenario submission.
 
-The user can see the scenario's tags in the 'Tags' section. Tags can 
+The user can see the scenario's tags in the 'Tags' section.<br/>
+To add a tag, simply enter some text in the tags area and press 'Enter'. You can create as many
+tags as you want. When you are done, and you want to add those tags to the scenario, press the
+'Apply' button located to the right of the tags area.<br/>
+You can cancel your actions by pressing the 'Cancel' button.
+
 If the scenario has sequences, the user can submit each sequence independently by pressing the
 'play' button to the right of the sequence's label.
 

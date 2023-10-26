@@ -30,7 +30,7 @@ set:
 
 In this form, the user must indicate which scenario configuration should be used and specify the
 scenario creation date.<br/>
-Custom properties can also be added to the new scenario by pressing the "+" button located on the
+Custom properties can also be added to the new scenario by pressing the '+' button located on the
 right side of the property key and value fields.
 
 When several new scenarios are created, the scenario selector will list all the scenarios,
@@ -58,10 +58,14 @@ Here is how this dialog box looks like:
   <figcaption>Editing a scenario</figcaption>
 </figure>
 
-The user can change the scenario label and custom properties then press the Apply button to
+The user can change the scenario label and custom properties then press the 'Apply' button to
 propagate the changes.<br/>
-The Cancel button closes the dialog without changing anything.<br/>
-The Delete button deletes the edited scenario.
+To add a new custom property, the user has to fill the 'Key' and 'Value' fields in the 'Custom
+Properties' section, then press the '+' button.<br/>
+A custom property can be removed by pressing the trash button next to it.<br/>
+
+The 'Cancel' button closes the dialog without changing anything.<br/>
+The 'Delete' button deletes the edited scenario.
 
 Note that there is no way to change the scenario configuration or its creation date.
 
@@ -72,3 +76,107 @@ set to the selected entity and the [*on_change*](#p-on_change) callback is invok
 application can then use the selected value.
 
 If no scenario is selected, [*value*](#p-value) is set no None.
+
+# Usage
+
+## Customizing the creation
+
+You can set the [*on_creation*](#p-on_creation) property to a callback function that lets you
+customize how a new scenario is created when pressing the 'Add Scenario' button.
+
+This callback function expects three parameters:
+
+- *state*: the `State^` of the user;
+- *id*: the identifier of the control, if any;
+- *payload*: a dictionary that contains the following keys:
+    - *action*: the name of the callback function;
+    - *config*: the `ScenarioConfig^` that was selected in the dialog;
+    - *date*: a `datetime.datetime` object representing the date and time when the creation was
+      requested;
+    - *label*: the scenario label as specified in the dialog. This string is used as the scenario
+      name;
+    - *properties*: a dictionary that contains all the custom properties that the user has defined
+      in the creation dialog.
+
+The *payload* parameter contains all the information that is needed to create a new scenario. In
+the callback function, you can use these parameters to customize the new scenario creation further.
+
+- If all those parameters look just fine in terms of what needs to be achieved, the callback
+  function can simply return None. That will get Taipy to carry on with the scenario creation with
+  no customization whatsoever.<br/>
+  That is the default behavior of a `scenario_selector` control that has no value in its
+  [*on_creation*](#p-on_creation).
+- If the parameters (typically the custom property keys or values) are invalid in the application's
+  context, you may want to refuse the creation of the scenario. In this case, the callback function
+  should return a string that provides visual feedback to the user (or an empty string if this
+  is not needed).
+- You can also create the scenario in the function callback and return it. This is the opportunity
+  to change the scenario creation parameters to fit the application's needs.
+
+Here is an example of a creation callback function that deals with these three situations.
+
+Imagine that the application, if the user has added the "index" custom property to a scenario,
+needs to check that the property value is valid and transform it before the scenario is actually
+created.<br/>
+In our example, we expect the user to set a positive integer value to the property "index". The
+code will check that the value is valid and replace it with a string representation of this value
+minus one, prefixed with the sharp ('#') sign.<br/>
+Here is the code for the creation callback function:
+
+```py linenums="1"
+def check_index(state, id, payload):
+  # Retrieve the custom properties
+    properties = payload.get("properties", None)
+    if not properties or not "index" in properties:
+        # No custom 'index' property
+        # Create a regular scenario
+        return None
+    # Read the 'index' property
+    index = None
+    try:
+        index = int(properties["index"])
+        # Invalid value: must be greater than 1
+        if index < 1:
+            return "'index' must be strictly positive"
+        # Replace the property value
+        properties["index"] = f"#{index-1}"
+    except: # Invalid value: not an integer
+        return "'index' property is not a valid integer"
+    # Create a new scenario with the same configuration, label, and date
+    scenario = tp.create_scenario(payload["config"], payload["date"], payload["label"])
+    # Set the scenario properties
+    scenario.properties.update(properties)
+    return scenario
+```
+
+When the user requests the creation of a new scenario, the creation dialog pops up. When fields
+are properly set (only the label is mandatory), the user will press the 'Create' button to confirm
+the scenario creation.<br/>
+At this time, the application will invoke the creation callback to customize the scenario
+parameters.
+
+Lines 4-7 deal with the case where the *index* custom property was *not* set. In this case, we want
+to do nothing special and carry on with the regular creation of the control, returning None from
+the callback function.
+
+Line 9-18 verify that the *index* custom property is a valid integer greater than one. If this is
+not the case, an error message is returned to the user for correction.
+
+Finally, lines 20-22 take care of creating the scenario with the new settings.<br/>
+This scenario is returned by the callback function to let Taipy know it was created properly.
+
+The scenario selector control definition needs to have the [*on_creation*](#p-on_creation) property
+set to the function:
+!!! example "Page content"
+
+    === "Markdown"
+
+        ```
+        <|{scenario}|scenario_selector|on_creation=check_index|>
+        ```
+  
+    === "HTML"
+
+        ```html
+        <taipy:scenario_selector on_creation="check_index">{scenario}</taipy:scenario_selector>
+        ```
