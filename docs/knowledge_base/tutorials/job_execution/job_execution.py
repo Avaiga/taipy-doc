@@ -31,7 +31,7 @@ second_task_cfg = Config.configure_task("add",
                                         intermediate_cfg,
                                         output_cfg)
 
-# Configuration of the pipeline and scenario
+# Configuration of the scenario
 scenario_cfg = Config.configure_scenario(id="my_scenario",
                                          task_configs=[first_task_cfg,
                                                        second_task_cfg])
