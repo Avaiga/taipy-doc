@@ -327,10 +327,18 @@
   font-size: var(--md-h6-font-size);
 }
 
-.md-typeset code,
+.md-typeset p code,
 .md-typeset pre > code, 
 .highlighttable .linenos{
   font-size: var(--md-body-font-size--small);
+}
+.md-typeset h1 code,
+.md-typeset h2 code,
+.md-typeset h3 code,
+.md-typeset h4 code,
+.md-typeset h5 code,
+.md-typeset h6 code{
+  font-size: 1em;
 }
 
 .tp-tag{
