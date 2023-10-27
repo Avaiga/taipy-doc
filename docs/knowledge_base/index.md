@@ -2,9 +2,6 @@
 hide:
   - toc
 ---
-
-Learn how to use Taipy and improve your skills.
-
 <!-- Quick accesses -->
 <div class="tp-row tp-row--gutter-sm">
 
@@ -56,29 +53,65 @@ Learn how to use Taipy and improve your skills.
 <!-- Filters -->
 <ul class="tp-pills-list tp-pills-filter">
   <li>
-    <input type="checkbox" name="filter-all" id="filter-all" checked>
+    <input type="checkbox" name="filter-all" id="filter-all" value="all" checked>
     <label class="tp-pill" for="filter-all">
-      <span>all</span>
+      <span>All</span>
     </label>
   </li>
   <li>
-    <input type="checkbox" name="filter-frontend" id="filter-frontend">
-    <label class="tp-pill" for="filter-frontend">
-      <span>Front-end</span>
+    <input type="checkbox" name="filter-gui" id="filter-gui" value="gui">
+    <label class="tp-pill" for="filter-gui">
+      <span>GUI</span>
     </label>
   </li>
   <li>
-    <input type="checkbox" name="filter-backend" id="filter-backend">
-    <label class="tp-pill" for="filter-backend">
-      <span>Back-end</span>
+    <input type="checkbox" name="filter-dashboard" id="filter-dashboard" value="dashboard">
+    <label class="tp-pill" for="filter-dashboard">
+      <span>Dashboard</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-scenario" id="filter-scenario" value="scenario">
+    <label class="tp-pill" for="filter-scenario">
+      <span>Scenario</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-studio" id="filter-studio" value="studio">
+    <label class="tp-pill" for="filter-studio">
+      <span>Taipy Studio</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-ai" id="filter-ai" value="ai">
+    <label class="tp-pill" for="filter-ai">
+      <span>Machine Learning</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-optimization" id="filter-optimization" value="optimization">
+    <label class="tp-pill" for="filter-optimization">
+      <span>Optimization</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-stylekit" id="filter-stylekit" value="stylekit">
+    <label class="tp-pill" for="filter-stylekit">
+      <span>Stylekit</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-cloud" id="filter-cloud" value="cloud">
+    <label class="tp-pill" for="filter-cloud">
+      <span>Taipy Cloud</span>
     </label>
   </li>
 </ul>
 
 # Tutorials
 
-<ul class="tp-cards-list">
-  <li data-keywords="gui vizelement input text button chart navbar table layout part expandable menu state interactive multi-page callback on_change markdown">
+<ul class="tp-cards-list tp-filtered">
+  <li data-keywords="gui vizelement chart navbar table layout part menu state multi-page callback markdown">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/understanding_gui">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
@@ -91,7 +124,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li data-keywords="scenario task datanode configuration scenario_submission scenario_selector dag on_change">
+  <li data-keywords="scenario task datanode configuration submission dag">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/scenario_management_overview/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
@@ -104,7 +137,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li data-keywords="scenario datanode configuration cycle scope scenario_submission scenario_selector data_node_selector">
+  <li data-keywords="scenario datanode configuration cycle scope submission">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/cycles_scopes/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
@@ -117,7 +150,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li data-keywords="scenario task job job_execution scenario_submission configuration standalone">
+  <li data-keywords="scenario task job submission configuration standalone">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/job_execution/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
@@ -130,7 +163,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li data-keywords="scenario scenario_comparison datanode datanode_comparison configuration">
+  <li data-keywords="scenario comparison datanode configuration">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/scenario_comparison/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
@@ -142,7 +175,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li data-keywords="scenario subscription job job_status gui notify">
+  <li data-keywords="scenario subscription job gui notify">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/scenario_subscription/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
@@ -154,7 +187,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li data-keywords="gui vizelement scenario_selector data_node_selector date number button chart state multi-page callback markdown scenario task storage_type scope datanode configuration">
+  <li data-keywords="gui vizelement chart state multi-page callback markdown scenario task storage_type scope datanode configuration">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/complete_application/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
@@ -182,7 +215,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li data-keywords="gui dashboard markdown vizelement layout navbar chart button date table file_download file_selector callback">
+  <li data-keywords="gui dashboard markdown vizelement layout navbar chart table callback">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/data_dashboard">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-video.svg">
@@ -211,7 +244,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li data-keywords="gui markdown multi-page expandable navbar layout part blocks">
+  <li data-keywords="gui markdown multi-page navbar layout part">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/graphical_pages">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-video.svg">
@@ -224,7 +257,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li data-keywords="gui markdown partials dialog pane">
+  <li data-keywords="gui markdown partials">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/partials">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-video.svg">
@@ -254,7 +287,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li data-keywords="scenario task datanode configuration studio job job_execution">
+  <li data-keywords="scenario task datanode configuration studio job">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/execution">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tutorials/images/icon-video.svg">
@@ -271,8 +304,8 @@ Learn how to use Taipy and improve your skills.
 </ul>
 
 # Demos
-<ul class="tp-cards-list">
-  <li data-keywords="gui dashboard vizelement layout expandable chart">
+<ul class="tp-cards-list tp-filtered">
+  <li data-keywords="gui dashboard vizelement layout chart">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/sales_dashboard/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
@@ -366,7 +399,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li data-keywords="gui optimization scenario cycle scenario_comparison">
+  <li data-keywords="gui optimization scenario cycle comparison">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/production_planning/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
@@ -392,7 +425,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li data-keywords="gui ai dashboard multi-page maps scenario scenario_selector datanode_selector">
+  <li data-keywords="gui ai dashboard multi-page maps scenario datanode">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/covid_dashboard/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
@@ -423,8 +456,8 @@ Learn how to use Taipy and improve your skills.
 
 # Tips & Tricks
 
-<ul class="tp-cards-list">
-  <li data-keywords="scenario cycle configuration datanode scenario_selector dag">
+<ul class="tp-cards-list tp-filtered">
+  <li data-keywords="scenario cycle configuration datanode dag">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/scenarios">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
@@ -530,7 +563,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li data-keywords="scenario task datanode job job_execution scenario_submission configuration">
+  <li data-keywords="scenario task datanode job submission configuration">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/skippable_tasks">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
@@ -543,7 +576,7 @@ Learn how to use Taipy and improve your skills.
       </div> 
     </a>
   </li>
-  <li data-keywords="gui callback on_change">
+  <li data-keywords="gui callback">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/the_on_change_callback">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
@@ -574,7 +607,7 @@ Learn how to use Taipy and improve your skills.
         <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
       </header>
       <div class="tp-content-card-body">
-        <h4> Multithreading </h4>
+        <h4> Real-time data visualization </h4>
         <p> Display data sent from another thread in real-time to your Taipy application.
         </p>
       </div> 

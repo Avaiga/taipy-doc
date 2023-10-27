@@ -8,27 +8,45 @@ Tips and Tricks!
 <!-- Filters -->
 <ul class="tp-pills-list tp-pills-filter">
   <li>
-    <input type="checkbox" name="filter-all" id="filter-all" checked>
+    <input type="checkbox" name="filter-all" id="filter-all" value="all" checked>
     <label class="tp-pill" for="filter-all">
-      <span>all</span>
+      <span>All</span>
     </label>
   </li>
   <li>
-    <input type="checkbox" name="filter-frontend" id="filter-frontend">
-    <label class="tp-pill" for="filter-frontend">
-      <span>Front-end</span>
+    <input type="checkbox" name="filter-gui" id="filter-gui" value="gui">
+    <label class="tp-pill" for="filter-gui">
+      <span>GUI</span>
     </label>
   </li>
   <li>
-    <input type="checkbox" name="filter-backend" id="filter-backend">
-    <label class="tp-pill" for="filter-backend">
-      <span>Back-end</span>
+    <input type="checkbox" name="filter-dashboard" id="filter-dashboard" value="dashboard">
+    <label class="tp-pill" for="filter-dashboard">
+      <span>Dashboard</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-scenario" id="filter-scenario" value="scenario">
+    <label class="tp-pill" for="filter-scenario">
+      <span>Scenario</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-stylekit" id="filter-stylekit" value="stylekit">
+    <label class="tp-pill" for="filter-stylekit">
+      <span>Stylekit</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-cloud" id="filter-cloud" value="cloud">
+    <label class="tp-pill" for="filter-cloud">
+      <span>Taipy Cloud</span>
     </label>
   </li>
 </ul>
 
-<ul class="tp-row tp-row--gutter-sm">
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+<ul class="tp-row tp-row--gutter-sm tp-filtered">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario cycle configuration datanode dag">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="scenarios">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/icon-code.svg">
@@ -43,7 +61,7 @@ Tips and Tricks!
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui notebook deployment">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="colab_with_ngrok">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/icon-code.svg">
@@ -58,7 +76,7 @@ Tips and Tricks!
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui notebook">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="jupyter_notebooks">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="jupyter_notebooks/jupyter_notebooks_1.png">
@@ -73,7 +91,7 @@ Tips and Tricks!
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui callback">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="long_running_callbacks">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/icon-code.svg">
@@ -89,7 +107,7 @@ Tips and Tricks!
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui multi-page navbar">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="multipage_application">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="multipage_application/multipage_application.png">
@@ -104,7 +122,7 @@ Tips and Tricks!
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement tables callback stylekit">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="using_tables">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="using_tables/using_tables.png">
@@ -120,7 +138,7 @@ Tips and Tricks!
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario datanode storage_type configuration">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="the_data_nodes">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="the_data_nodes/data_notes.png">
@@ -136,7 +154,7 @@ Tips and Tricks!
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui stylekit">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="css_style_kit">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="css_style_kit/css_style_kit.png">
@@ -151,7 +169,7 @@ Tips and Tricks!
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario task datanode job submission configuration">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="skippable_tasks">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="skippable_tasks/skippable_tasks.png">
@@ -166,7 +184,7 @@ Tips and Tricks!
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui callback">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="the_on_change_callback">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/icon-code.svg">
@@ -180,7 +198,7 @@ Tips and Tricks!
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="cloud deployment">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="taipy_cloud_deploy">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="taipy_cloud_deploy/logo_artwork.png">
@@ -195,20 +213,20 @@ Tips and Tricks!
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui dashboard">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="multithreading">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="multithreading/realtime_dashboard.png">
       </header>
       <div class="tp-content-card-body">
-        <h4> Multithreading </h4>
+        <h4> Real-time data visualization </h4>
         <span class="tp-tag">Front-end </span>
         <p> Display data sent from another thread in real-time to your Taipy application.
         </p>
       </div> 
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement chart">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="iframes">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="iframes/iframes_illustration.png">

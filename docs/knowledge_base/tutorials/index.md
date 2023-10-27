@@ -10,27 +10,39 @@ Follow our tutorials and get the core concepts of Taipy.
 <!-- Filters -->
 <ul class="tp-pills-list tp-pills-filter">
   <li>
-    <input type="checkbox" name="filter-all" id="filter-all" checked>
+    <input type="checkbox" name="filter-all" id="filter-all" value="all" checked>
     <label class="tp-pill" for="filter-all">
-      <span>all</span>
+      <span>All</span>
     </label>
   </li>
   <li>
-    <input type="checkbox" name="filter-frontend" id="filter-frontend">
-    <label class="tp-pill" for="filter-frontend">
-      <span>Front-end</span>
+    <input type="checkbox" name="filter-gui" id="filter-gui" value="gui">
+    <label class="tp-pill" for="filter-gui">
+      <span>GUI</span>
     </label>
   </li>
   <li>
-    <input type="checkbox" name="filter-backend" id="filter-backend">
-    <label class="tp-pill" for="filter-backend">
-      <span>Back-end</span>
+    <input type="checkbox" name="filter-dashboard" id="filter-dashboard" value="dashboard">
+    <label class="tp-pill" for="filter-dashboard">
+      <span>Dashboard</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-scenario" id="filter-scenario" value="scenario">
+    <label class="tp-pill" for="filter-scenario">
+      <span>Scenario</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-studio" id="filter-studio" value="studio">
+    <label class="tp-pill" for="filter-studio">
+      <span>Taipy Studio</span>
     </label>
   </li>
 </ul>
 
-<ul class="tp-row tp-row--gutter-sm">
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+<ul class="tp-row tp-row--gutter-sm tp-filtered">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement chart navbar table layout part menu state multi-page callback markdown">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="understanding_gui">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-code.svg">
@@ -44,7 +56,7 @@ Follow our tutorials and get the core concepts of Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario task datanode configuration submission dag">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="scenario_management_overview">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-code.svg">
@@ -58,7 +70,7 @@ Follow our tutorials and get the core concepts of Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario datanode configuration cycle scope submission">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="cycles_scopes">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-code.svg">
@@ -72,7 +84,7 @@ Follow our tutorials and get the core concepts of Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario task job submission configuration standalone">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="job_execution">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-code.svg">
@@ -84,7 +96,7 @@ Follow our tutorials and get the core concepts of Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario comparison datanode configuration">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="scenario_comparison">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-code.svg">
@@ -96,7 +108,7 @@ Follow our tutorials and get the core concepts of Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario subscription job gui notify">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="scenario_subscription">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-code.svg">
@@ -108,7 +120,7 @@ Follow our tutorials and get the core concepts of Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement chart state multi-page callback markdown scenario task storage_type scope datanode configuration">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="complete_application">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-code.svg">
@@ -122,7 +134,7 @@ Follow our tutorials and get the core concepts of Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui markdown vizelement">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="markdown_syntax">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-video.svg">
@@ -138,7 +150,7 @@ Follow our tutorials and get the core concepts of Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui dashboard markdown vizelement layout navbar chart table callback">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="data_dashboard">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-video.svg">
@@ -153,7 +165,8 @@ Follow our tutorials and get the core concepts of Taipy.
       </div> 
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui markdown vizelement chart">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="charts">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-video.svg">
@@ -167,8 +180,8 @@ Follow our tutorials and get the core concepts of Taipy.
       </div> 
     </a>
   </li>
-  </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui markdown multi-page navbar layout part">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="graphical_pages">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-video.svg">
@@ -181,7 +194,8 @@ Follow our tutorials and get the core concepts of Taipy.
       </div> 
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui markdown partials">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="partials">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-video.svg">
@@ -196,7 +210,8 @@ Follow our tutorials and get the core concepts of Taipy.
       </div> 
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario datanode task studio">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="scenario_mgt_concepts">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-video.svg">
@@ -211,7 +226,8 @@ Follow our tutorials and get the core concepts of Taipy.
       </div> 
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario task datanode configuration studio job">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="execution">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-video.svg">

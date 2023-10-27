@@ -243,6 +243,8 @@ theme:
     - content.code.copy
 extra_css:
   - assets/stylesheets/avaiga.css
+extra_javascript:
+  - assets/js/filter.js
 markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
