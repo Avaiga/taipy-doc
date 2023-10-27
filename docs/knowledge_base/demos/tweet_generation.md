@@ -40,6 +40,3 @@ To create captivating Tweets, follow these steps:
    
 5. Enjoy your unique Tweet, combining text and image
    for maximum impact.
-
-
-```$pip install taipy```

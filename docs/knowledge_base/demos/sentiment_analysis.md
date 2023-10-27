@@ -31,5 +31,3 @@ or extensive customer feedback.
 
 
 ![Text](images/sentiment-analysis-text.png){width=80%}
-
-```$pip install taipy```

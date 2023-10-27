@@ -30,5 +30,3 @@ This predictive feature empowers users to make informed choices with the assista
 5. See your predictions in the Forecast Data Panel...
 6. Try it repeatedly using different tickers to compare the results.
 7. Optional: You'll get the prediction ranges as a table by clicking on the "More info" button at the bottom.
-
-```$pip install taipy```

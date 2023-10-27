@@ -14,5 +14,3 @@ Image Classifier with interactive graphics.
 
 In the second video, we'll dive into creating custom pipelines with Taipy and TensorFlow
 to enhance your machine learning workflows.
-
-```$pip install taipy```

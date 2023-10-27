@@ -105,5 +105,3 @@ Access and display various tables associated with
 a selected scenario. Conveniently download data tables in CSV format.
 
 ![Databases](images/production-planning-databases.png){width=80%}
-
-```$pip install taipy```

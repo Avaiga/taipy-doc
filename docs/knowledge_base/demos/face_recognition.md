@@ -25,5 +25,3 @@ thanks to the robust [OpenCV library](https://opencv.org/).
 ![Face Recognition](images/face-recognition.jpg){width=80%}
 
 **Quick note**: Enable your browser's camera usage option.
-
-```$pip install taipy```

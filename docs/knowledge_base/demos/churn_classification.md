@@ -45,5 +45,3 @@ selected algorithm. Users can also download specified data frames as CSV files.
 
 
 ![Databases](images/churn-classification-databases.png){width=80%}  
-
-```$pip install taipy```
