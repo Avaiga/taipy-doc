@@ -83,7 +83,6 @@ Note how the *options* dictionary is set for the first trace only: we do not wan
 to appear on our *perfect sine* graph.
 
 Here is the result:
-
 <figure>
     <img src="../error-bars-simple-d.png" class="visible-dark"  />
     <img src="../error-bars-simple-l.png" class="visible-light" />
@@ -159,7 +158,6 @@ Here is the chart control definition that is used:
 The *orientation* property is set to "h" so the bar chart is displayed horizontally.
 
 The resulting image looks like this:
-
 <figure>
     <img src="../error-bars-asymmetric-d.png" class="visible-dark" />
     <img src="../error-bars-asymmetric-l.png" class="visible-light"/>

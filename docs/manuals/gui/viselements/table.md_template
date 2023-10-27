@@ -262,7 +262,6 @@ to set the [*show_all*](#p-show_all) to True:
 
 Now the table displays all the data rows, and the scrollbar lets you navigate among all of
 them:
-
 <figure class="tp-center">
     <img src="../table-show_all-d.png" class="visible-dark"  width="50%"/>
     <img src="../table-show_all-l.png" class="visible-light" width="50%"/>
@@ -351,7 +350,6 @@ To use this style, we can adjust the control definition used above so it looks l
         ```
 
 The resulting display will be what we expected:
-
 <figure class="tp-center">
     <img src="../table-rowstyle-d.png" class="visible-dark"  width="50%"/>
     <img src="../table-rowstyle-l.png" class="visible-light" width="50%"/>

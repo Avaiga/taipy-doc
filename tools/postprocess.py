@@ -444,7 +444,7 @@ def on_post_build(env):
                         new_content = ""
                         last_location = 0
                         for prop in prop_re.finditer(html_content):
-                            if default_value_re := re.match("(dynamic|indexed)\((.*)", prop[1]):
+                            if default_value_re := re.match(r"(dynamic|indexed)\((.*)", prop[1]):
                                 new_content += html_content[last_location:prop.start(1)]
                                 new_content += f"{default_value_re[2]}<br/><small><i>{default_value_re[1]}</i></small>"
                                 last_location = prop.end(1)

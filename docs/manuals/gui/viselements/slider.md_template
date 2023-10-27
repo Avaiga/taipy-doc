@@ -222,7 +222,6 @@ The slider control definition is the following:
         ```
 
 And this is what this date range picker looks like:
-
 <figure>
     <img src="../slider-date-range-d.png" class="visible-dark" />
     <img src="../slider-date-range-l.png" class="visible-light"/>

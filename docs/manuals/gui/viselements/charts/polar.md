@@ -78,7 +78,6 @@ Note that we set [*mode*](../chart.md#p-mode) to "lines" to keep only the
 lines of the trace and no markers on every data point.
 
 Here is the result:
-
 <figure>
     <img src="../polar-simple-d.png" class="visible-dark" />
     <img src="../polar-simple-l.png" class="visible-light"/>
@@ -135,7 +134,6 @@ The chart control definition is:
 ....
 
 Here is the result:
-
 <figure>
     <img src="../polar-area-d.png" class="visible-dark" />
     <img src="../polar-area-l.png" class="visible-light"/>
@@ -204,7 +202,6 @@ Here is the chart control definition:
         ```
 
 Here is what the chart looks like:
-
 <figure>
     <img src="../polar-multiple-d.png" class="visible-dark" />
     <img src="../polar-multiple-l.png" class="visible-light"/>
@@ -271,7 +268,6 @@ The chart control definition can now be written:
         ```
 
 Here are our two traces, gathered in the same chart:
-
 <figure>
     <img src="../polar-sector-d.png" class="visible-dark" />
     <img src="../polar-sector-l.png" class="visible-light"/>
@@ -347,7 +343,6 @@ The chart control definition is straightforward:
         ```
 
 The two traces appear in the chart, mirroring one another:
-
 <figure>
     <img src="../polar-angular-axis-d.png" class="visible-dark" />
     <img src="../polar-angular-axis-l.png" class="visible-light"/>
@@ -486,7 +481,6 @@ Here is the very simple chart control definition:
         ```
 
 The chart control will display the current local time on every refresh:
-
 <figure>
     <img src="../polar-tick-texts-d.png" class="visible-dark" />
     <img src="../polar-tick-texts-l.png" class="visible-light"/>

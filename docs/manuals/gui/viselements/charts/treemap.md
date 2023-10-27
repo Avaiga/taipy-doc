@@ -79,7 +79,6 @@ Here is how the chart control is declared:
         ```
 
 And this is what the resulting chart looks like:
-
 <figure>
     <img src="../treemap-simple-d.png" class="visible-dark"  width="80%"/>
     <img src="../treemap-simple-l.png" class="visible-light" width="80%"/>
@@ -139,7 +138,6 @@ The *tree.name* and *tree.parent* arrays are used respectively in the
 [*labels*](../chart.md#p-labels) and [*parents*](../chart.md#p-parents) properties.
 
 Here is the resulting chart:
-
 <figure>
     <img src="../treemap-hierarchical-d.png" class="visible-dark" />
     <img src="../treemap-hierarchical-l.png" class="visible-light" />
@@ -149,7 +147,6 @@ Here is the resulting chart:
 Note that clicking in a given rectangle gets the chart to drill into that specific data point.
 The chart then represents the path to the selected area as a breadcrumbs bar at the top so
 the user can return to any level.
-
 <figure>
     <img src="../treemap-hierarchical2-d.png" class="visible-dark" />
     <img src="../treemap-hierarchical2-l.png" class="visible-light" />
@@ -235,7 +232,6 @@ The chart control definition uses this dataset:
         ```
 
 Here is what the chart looks like on the page:
-
 <figure>
     <img src="../treemap-hierarchical-values-d.png" class="visible-dark" />
     <img src="../treemap-hierarchical-values-l.png" class="visible-light" />

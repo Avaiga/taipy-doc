@@ -89,7 +89,6 @@ The chart definition uses all those objects to create the control:
         ```
 
 The control renders as shown here:
-
 <figure>
     <img src="../map-simple-d.png" class="visible-dark" />
     <img src="../map-simple-l.png" class="visible-light"/>
@@ -201,7 +200,6 @@ control definition is really short:
         ```
 
 Here is how the chart control is displayed:
-
 <figure>
     <img src="../map-lines-d.png" class="visible-dark" />
     <img src="../map-lines-l.png" class="visible-light"/>
@@ -273,7 +271,6 @@ Here is how the chart control is defined:
         ```
 
 Here is the resulting chart display:
-
 <figure>
     <img src="../map-bubbles-d.png" class="visible-dark" />
     <img src="../map-bubbles-l.png" class="visible-light"/>

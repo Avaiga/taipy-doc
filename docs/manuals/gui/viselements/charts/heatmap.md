@@ -73,7 +73,6 @@ Here is how you would define the chart control to represent this data:
         ```
 
 And here is how the resulting chart will look like on the page:
-
 <figure>
     <img src="../heatmap-simple-d.png" class="visible-dark" />
     <img src="../heatmap-simple-l.png" class="visible-light" />
@@ -134,7 +133,6 @@ Here is how the data is referenced from the chart control:
   of *data*
 
 And the chart displays as expected:
-
 <figure>
     <img src="../heatmap-unbalanced-d.png" class="visible-dark" />
     <img src="../heatmap-unbalanced-l.png" class="visible-light" />
@@ -174,7 +172,6 @@ control:
         ```
 
 Here is how the page looks like:
-
 <figure>
     <img src="../heatmap-colorscale-d.png" class="visible-dark" />
     <img src="../heatmap-colorscale-l.png" class="visible-light" />
@@ -258,7 +255,6 @@ The chart definition will appear as follows:
         ```
 
 And the result looks like this:
-
 <figure>
     <img src="../heatmap-annotated-d.png" class="visible-dark" />
     <img src="../heatmap-annotated-l.png" class="visible-light" />
@@ -334,7 +330,6 @@ Note how the [*x*](../chart.md#p-x) and [*y*](../chart.md#p-y) properties are se
 coordinate array we computed (in *data[1]*).
 
 Here is resulting chart:
-
 <figure>
     <img src="../heatmap-unequal-cell-sizes-d.png" class="visible-dark" />
     <img src="../heatmap-unequal-cell-sizes-l.png" class="visible-light" />

@@ -7,8 +7,6 @@ repo_name: taipy
 #strict: true
 copyright: © [YEAR] Avaiga
 nav:
-  - "Install Taipy":
-    - "Install Taipy": installation/index.md
   - "Getting Started":
     - "Getting Started": getting_started/index.md
   - "Knowledge Base":

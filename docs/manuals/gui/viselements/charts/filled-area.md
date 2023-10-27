@@ -62,7 +62,6 @@ Note that we have not set the [*type*](../chart.md#p-type) property, which defau
 "scatter". This is what we want for our filled area chart.
 
 The resulting chart is displayed as follows:
-
 <figure>
     <img src="../filled-area-simple-d.png" class="visible-dark" />
     <img src="../filled-area-simple-l.png" class="visible-light" />
@@ -117,7 +116,6 @@ Note that we set *mode* to "none" in order to remove the dots that would otherwi
 displayed at each data point.
 
 Here is what the result looks like:
-
 <figure>
     <img src="../filled-area-overlay-d.png" class="visible-dark" />
     <img src="../filled-area-overlay-l.png" class="visible-light" />
@@ -169,7 +167,6 @@ The chart control definition will use that dictionary:
         ```
 
 Here is the resulting display:
-
 <figure>
     <img src="../filled-area-stacked-d.png" class="visible-dark" />
     <img src="../filled-area-stacked-l.png" class="visible-light" />
@@ -236,7 +233,6 @@ Here is how we would define our chart control:
         ```
 
 The chart looks like this:
-
 <figure>
     <img src="../filled-area-normalized-d.png" class="visible-dark" />
     <img src="../filled-area-normalized-l.png" class="visible-light" />

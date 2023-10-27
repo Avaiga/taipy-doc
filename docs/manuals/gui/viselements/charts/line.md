@@ -65,7 +65,6 @@ Here is the definition of the chart control:
         ```
 
 The page now shows the following chart:
-
 <figure>
     <img src="../line-style-d.png" class="visible-dark" />
     <img src="../line-style-l.png" class="visible-light"/>
@@ -118,7 +117,6 @@ column (the *text[2]*) property at the *y* coordinate indicated in the
 'Max' column (the *y[2]*), as raw text (the *mode[2]* property).
 
 Here is the resulting chart:
-
 <figure>
     <img src="../line-text-d.png" class="visible-dark" />
     <img src="../line-text-l.png" class="visible-light"/>
