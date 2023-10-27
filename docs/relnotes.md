@@ -17,9 +17,9 @@ This is the list of changes to Taipy releases as they were published.
     If you are using a legacy version, please refer to the 
     [Legacy Release Notes](relnotes-legacy.md) page.
 
-# Community edition: 3.0 (Work in progress)
+# Community edition: 3.0
 
-Not published yet.
+Published on 2023-10.
 
 ## New Features
 
@@ -196,9 +196,9 @@ Not published yet.
     task then running the application again would raise an error.<br/>
     See [issue #743](https://github.com/Avaiga/taipy-core/issues/743).
 
-# Enterprise edition: 3.0 (Work in progress)
+# Enterprise edition: 3.0 
 
-Not published yet.
+Published on 2023-10.
 
 This release contains all of [`taipy` 3.0](https://pypi.org/project/taipy/3.0.0) as well as
 additional features.
