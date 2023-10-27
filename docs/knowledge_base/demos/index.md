@@ -8,27 +8,45 @@ Let's explore demos of applications made with Taipy.
 <!-- Filters -->
 <ul class="tp-pills-list tp-pills-filter">
   <li>
-    <input type="checkbox" name="filter-all" id="filter-all" checked>
+    <input type="checkbox" name="filter-all" id="filter-all" value="all" checked>
     <label class="tp-pill" for="filter-all">
-      <span>all</span>
+      <span>All</span>
     </label>
   </li>
   <li>
-    <input type="checkbox" name="filter-frontend" id="filter-frontend">
-    <label class="tp-pill" for="filter-frontend">
-      <span>Front-end</span>
+    <input type="checkbox" name="filter-gui" id="filter-gui" value="gui">
+    <label class="tp-pill" for="filter-gui">
+      <span>GUI</span>
     </label>
   </li>
   <li>
-    <input type="checkbox" name="filter-backend" id="filter-backend">
-    <label class="tp-pill" for="filter-backend">
-      <span>Back-end</span>
+    <input type="checkbox" name="filter-dashboard" id="filter-dashboard" value="dashboard">
+    <label class="tp-pill" for="filter-dashboard">
+      <span>Dashboard</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-scenario" id="filter-scenario" value="scenario">
+    <label class="tp-pill" for="filter-scenario">
+      <span>Scenario</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-ai" id="filter-ai" value="ai">
+    <label class="tp-pill" for="filter-ai">
+      <span>Machine Learning</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-optimization" id="filter-optimization" value="optimization">
+    <label class="tp-pill" for="filter-optimization">
+      <span>Optimization</span>
     </label>
   </li>
 </ul>
 
-<ul class="tp-row tp-row--gutter-sm">
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+<ul class="tp-row tp-row--gutter-sm tp-filtered">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui dashboard vizelement layout chart">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="sales_dashboard">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/demo-sales-dashboard.jpg">
@@ -44,7 +62,7 @@ Let's explore demos of applications made with Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tweet_generation">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/tweet-generation.png">
@@ -59,7 +77,7 @@ Let's explore demos of applications made with Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="face_recognition">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/face-recognition.jpg">
@@ -74,7 +92,7 @@ Let's explore demos of applications made with Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="sentiment_analysis">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/sentiment-analysis-line.png">
@@ -89,7 +107,7 @@ Let's explore demos of applications made with Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui optimization scenario">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="bar_cutting">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/bar-cutting-bar-Visualization.png">
@@ -105,7 +123,7 @@ Let's explore demos of applications made with Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai classification">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="image_classif">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/icon-code.svg">
@@ -120,7 +138,7 @@ Let's explore demos of applications made with Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai classification scenario">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="churn_classification">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/churn-classification-data-Visualization-histogram.png">
@@ -136,7 +154,7 @@ Let's explore demos of applications made with Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui optimization scenario cycle comparison">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="production_planning">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/production-planning-data-visualization.png">
@@ -151,7 +169,7 @@ Let's explore demos of applications made with Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai dashboard">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="stock_visualization">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/stock-visualization.png">
@@ -166,7 +184,7 @@ Let's explore demos of applications made with Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai dashboard multi-page maps scenario datanode">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="covid_dashboard">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/covid-dashboard-country.png">
@@ -182,7 +200,7 @@ Let's explore demos of applications made with Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai dashboard">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="movie_genre_selector">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/movie-genre-selector.png">
