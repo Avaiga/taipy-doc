@@ -6,7 +6,7 @@ are really important for big decisions.
 
 ![Scenarios](scenario.png){width=100%}
 
-In this article, we will examine Taipy scenarios more closely. We will explore what they can do 
+In this tip, we will examine Taipy scenarios more closely. We will explore what they can do 
 and how they can be useful when making decisions.
 
 As a reminder, Taipy [scenarios](../../../manuals/core/concepts/scenario.md) are one of the 
@@ -16,7 +16,7 @@ fundamental concept in Taipy.
 
 A Taipy scenario is like a test run of a business problem using specific data and settings.
 
-Users can make, save, change, and run different scenarios in one application. This makes it easy 
+You can make, save, change, and run different scenarios in one application. This makes it easy 
 to study various versions of a business problem. It's really useful for businesses that need to 
 consider many scenarios with different ideas to make the best choice.
 
@@ -56,7 +56,7 @@ possible, Taipy runs the tasks in parallel.
 ## Scenario Configuration and Creation
 
 To instantiate a Taipy scenario, users first need to configure it with the 
-"Config.configure_scenario()" method. They need to set certain things like a name, the tasks it 
+`Config.configure_scenario()` method. They need to set certain things like a name, the tasks it 
 uses, how often it runs, what it compares, and its properties. Then users can create a scenario 
 with the `create_scenario()` method passing as a parameter the scenario configuration.
 
@@ -67,8 +67,8 @@ from taipy import Config
 ...
   
 # Creating a scenario configuration from task configurations
-scenario_cfg_from_tasks = Config.configure_scenario_from_tasks("multiply_scenario",
-                                                               [task_cfg])
+scenario_cfg = Config.configure_scenario("multiply_scenario",
+                                         task_configs=[task_cfg])
 ```
 
 ## Accessing and Managing Scenarios
@@ -76,10 +76,16 @@ scenario_cfg_from_tasks = Config.configure_scenario_from_tasks("multiply_scenari
 Taipy offers different ways to work with scenarios. You can do things like getting a scenario by 
 its ID, getting all scenarios, making one scenario the main one, and comparing scenarios.
 
-Users can also add tags to scenarios to keep them organized, and they can save scenarios in JSON 
-format to look at later or share with others.
+You can also add tags to scenarios to keep them organized. If you want to 
+transfer your scenario from one environment to the other, 
+it is possible to export them with the last command.
 
 ```python
+...
+
+# Run of the Core service
+tp.Core().run()
+
 # Get a scenario by id
 scenario_retrieved = tp.get(scenario.id)
  
@@ -103,8 +109,8 @@ tp.export(scenario.id, folder_path="./monthly_scenario")
 ```
 
 The primary benefit of having a scenario is to access the Data Nodes of the different scenarios 
-that are made. With the data generated for each scenario, we can analyze that scenario. The 
-basic format is `<scenario>.<Data Node name>.read()`.
+that are made. Accessing a data node is as as simple as `<scenario>.<Data Node name>.read()`. 
+By exploring the data nodes, end users can analyse the results of their data workflow and make decisions upon it.
 
 ## Scenario management visual elements
 
@@ -122,17 +128,19 @@ that lets you:
 
 ```python
 from taipy import Gui
- 
+import taipy as tp
+
 ...
  
 scenario = None
  
-scenario_md = ""
+scenario_md = """
 <|{scenario}|scenario_selector|>
 <|{scenario}|scenario|>
 <|{scenario}|scenario_dag|>
 """
- 
+
+tp.Core().run()
 Gui(scenario_md).run()
 ```
 

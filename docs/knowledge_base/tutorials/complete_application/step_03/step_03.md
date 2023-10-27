@@ -66,11 +66,11 @@ The graph below represents the scenario to configure, where tasks are in orange 
 
 ### Input Data Nodes Configuration
 
-These are the input Data Nodes. They stand for the variables in Taipy when a 
-pipeline is run. However, initially, we need to set them up to build the DAG.
+These are the input Data Nodes. They stand for the variables/data sources in Taipy when a 
+scenario is run. However, initially, we need to set them up to build the DAG.
 
 - *initial_dataset* is simply the initial CSV file. Taipy needs some parameters to read this data: *path* and 
-  *header*. The `scope` is global; each scenario or pipeline has the same initial dataset.
+  *header*. The `scope` is global; each scenario has the same initial dataset.
 
 - *day* is the beginning of the predictions. The default value is the 26th of July. It means the training data will 
   end before the 26th of July, and predictions will begin on this day.
