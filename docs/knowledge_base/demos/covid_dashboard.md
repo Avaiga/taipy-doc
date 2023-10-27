@@ -48,6 +48,3 @@ The Comparison of Covid countries' impact can be seen by changing the toggle bet
 
 
 ![World](images/covid-dashboard-world.png){width=80%}
-
-
-```$pip install taipy```

@@ -59,6 +59,3 @@ model and table. The results are then accessible for download in CSV format.
 
 # Disclaimer
 Code for this demo is not publicly available yet. Contact us for a sample.
-
-
-```$pip install taipy```
