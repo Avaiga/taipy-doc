@@ -1,11 +1,10 @@
-Displays and modifies the definition of a data node.
+Displays and edits of a data node.
 
-The data node viewer control displays the information defining a data node entity and lets
-users customize it.
+The data node viewer control displays a data node entity's information and lets users edit it.
 
 # Details
 
-The data viewer displays the attributes of the data node set to the [*data_node*](#p-data_node)
+The data node viewer displays the attributes of the data node set to the [*data_node*](#p-data_node)
 property:
 <figure class="tp-center">
   <img src="../data_node-init-d.png" class="visible-dark"  width="70%"/>
@@ -16,7 +15,7 @@ property:
 The topmost section shows the data node's label and storage type.<br/>
 The arrow button lets the user collapse or expand the whole control.
 
-The lower section is made of three tabs where different information is accessible.
+The lower section is made of three tabs whose content is described below.
 
 ## The 'Properties' tab
 
@@ -31,8 +30,9 @@ The label of the data node can be changed using the 'Label' field: click in the 
 the content, then press the 'Apply' button (with the ✓ icon.)<br/>
 To cancel the change, press the 'Cancel' button (with the ⨉ icon).
 
-If the data node is owned by a scenario or a cycle, and if [*show_owner*](#p-show_owner) property,
-the label of the owning entity appears in the 'Owner' information line:
+If the data node is owned by a scenario or a cycle, and if the [*show_owner*](#p-show_owner)
+property is set to True (which is its default value), the label of the owning entity appears in the
+'Owner' information line:
 <figure class="tp-center">
   <img src="../data_node-properties-owner-d.png" class="visible-dark"  width="70%"/>
   <img src="../data_node-properties-owner-l.png" class="visible-light" width="70%"/>
@@ -112,7 +112,7 @@ The other option is the 'Chart' mode.
 Tabular data can be edited in the 'Table' mode only, as described in
 [this section](#editing-tabular-data).
 
-### Table mode
+#### Table mode
 
 Here is an example of tabular data represented in a table:
 <figure class="tp-center">
@@ -125,7 +125,7 @@ The down-down button labeled 'Columns' lets the user select the dataset columns 
 represented in the table.<br/>
 The 'Reset view' button resets that setting so all columns are visible.
 
-#### Editing tabular data
+##### Editing tabular data
 
 The tabular mode has an 'Edit data' switch in the top-right corner of the 'Data' section.
 If this switch is turned on, the user can edit the table cells by clicking the relevant pencil
@@ -140,7 +140,7 @@ The user will typically edit several cells before quitting the edit mode.<br/>
 When values are correctly updated manually, the user can set a comment (that will appear in the
 data node history) and quit the edit mode.
 
-### Chart mode
+#### Chart mode
 
 The chart mode displays the data node's referenced data in a chart that can be customized:
 <figure class="tp-center">

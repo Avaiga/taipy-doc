@@ -27,7 +27,7 @@ pinned): only pinned data nodes will then appear in the list.
 Assuming we are in the following situation:
 <figure class="tp-center">
   <img src="../data_node_selector-pin1-d.png" class="visible-dark"  />
-  <img src="../data_node_selector-pin2-l.png" class="visible-light" />
+  <img src="../data_node_selector-pin1-l.png" class="visible-light" />
   <figcaption>Crowded data node selector</figcaption>
 </figure>
 

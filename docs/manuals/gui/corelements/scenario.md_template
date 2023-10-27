@@ -15,8 +15,8 @@ Here is what the control would look like when representing a scenario entity:
   <figcaption>Viewing the parameters of a scenario</figcaption>
 </figure>
 
-Next the scenario's label at the top of the control and if the scenario is *primary* in its cycle,
-there would be an icon showing a flag.<br/>
+Next to the scenario's label at the top of the control and if the scenario is *primary* in its
+cycle, there is an icon showing a flag.<br/>
 On the right side of the label, a 'play' button can trigger the scenario submission.
 
 The user can see the scenario's tags in the 'Tags' section.<br/>
