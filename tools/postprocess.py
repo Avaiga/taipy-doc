@@ -94,12 +94,13 @@ def on_post_build(env):
         with open(site_dir + "/manuals/xrefs") as xrefs_file:
             xrefs = json.load(xrefs_file)
     if xrefs is None:
-        log.error(f"Could not find xrefs in /manuals/xrefs")
+        log.error(f"Could not read xrefs in 'manuals/xrefs'")
     x_packages = set()
     for ps in xrefs.values():
-        x_packages.add(ps[0])
-        if ps[2]:
-            x_packages.update(ps[2])
+        if isinstance(ps, list):
+            x_packages.add(ps[0])
+            if ps[2]:
+                x_packages.update(ps[2])
     manuals_files_path = os.path.join(site_dir, "manuals")
     ref_files_path = os.path.join(manuals_files_path, "reference")
     fixed_cross_refs = {}
@@ -199,6 +200,9 @@ def on_post_build(env):
                             entry = groups[1][:-1]
                             dest = xrefs.get(entry)
                             if dest:
+                                # TODO - locate actual XREF
+                                if isinstance(dest, int):
+                                    dest = xrefs.get(f"{entry}/0") # WRONG
                                 package = dest[0]
                                 method = groups[2]
                             else: # Package?
@@ -211,6 +215,9 @@ def on_post_build(env):
                                     package = entry
                                     dest = xrefs.get(groups[2])
                                     if dest:
+                                        # TODO - locate actual XREF
+                                        if isinstance(dest, int):
+                                            dest = xrefs.get(f"{groups[2]}/0") # WRONG
                                         # Rename package if necessary
                                         if package != dest[0] and package in dest[2]:
                                             dest_package = dest[0]
@@ -218,6 +225,9 @@ def on_post_build(env):
                         else:
                             dest = xrefs.get(groups[2])
                             if dest:
+                                # TODO - locate actual XREF
+                                if isinstance(dest, int):
+                                    dest = xrefs.get(f"{groups[2]}/0") # WRONG
                                 package = dest[0]
                                 entry = groups[2]
                             else: # Package?
@@ -349,6 +359,9 @@ def on_post_build(env):
                             class_ = type_[0][:-1] # Remove ^
                             packages = xrefs.get(class_)
                             if packages:
+                                # TODO - Retrieve the actual XREF
+                                if isinstance(packages, int):
+                                    packages = xrefs.get(f"{class_}/0") # WRONG
                                 typing_xref_found = True
                                 new_content = f"<a href=\"{rel_path}/{packages[0]}.{class_}\">{class_}</a>"
                                 new_table_line = new_table_line.replace(f"{class_}^", new_content)
