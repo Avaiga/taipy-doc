@@ -215,7 +215,7 @@ Let's explore demos of applications made with Taipy.
     </a>
   </li>
 
-  <li class="tp-col-12 tp-col-md-6 d-flex">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai scenario datanode dag configuration">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="drift_detection">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/drift-detection-pipeline.png">
