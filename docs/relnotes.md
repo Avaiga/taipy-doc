@@ -94,7 +94,7 @@ Published on 2023-10.
 
 ## Improvements and changes
 
-<h4><strong><code>taipy-core</code></strong> 3.0.0</h4>
+<h4><strong><code>taipy-gui</code></strong> 3.0.0</h4>
 
 - :warning: The *action* parameter of the `on_action` callback was removed for every control.<br/>
     The signature of all *on_action()* callback functions are now unified to the following:
