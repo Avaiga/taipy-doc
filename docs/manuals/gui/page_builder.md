@@ -38,7 +38,8 @@ with tgb.Page() as page:
     tgb.input()
 ```
 
-In this example, we add an empty [`input`](viselements/input.md) control.<br/>
+In this example, we add an empty [`input`](viselements/input.md) control by creating a new instance
+of the `(builder.)input^` class.<br/>
 When run, the application would show a page looking like this:
 <figure>
     <img src="../tgb-1-d.png" class="visible-dark" />

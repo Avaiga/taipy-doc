@@ -10,11 +10,11 @@ or all the steps <a href="./../src/src.zip" download>here</a>.
 
 # Step 1: First Web page
 
-You only need one line of code to create your first Taipy web page. Just create a `Gui` object with
-a string and run it. 
+You only need one line of code to create your first Taipy web page. Just create a `Gui^` object
+with a string and run it. 
 
 In the console, you'll find a client link. All you need to do is copy and paste it into your web
-browser to open your first Taipy web client!
+browser to open your first Taipy page!
 
 
 ```python
@@ -30,15 +30,15 @@ will cause the application to automatically reload when you make changes to a fi
 application and save it. It's typically used in development mode.
 
 If you wish to run multiple servers concurrently, you can modify the server port number (5000 by
-default) in the `run()` method. For example, `Gui(...).run(port=xxxx)`. Other paramters to the
+default) in the `run()` method. For example, `Gui(...).run(port=xxxx)`. Other parameters to the
 `run()` method can be found
 [here](../../../../manuals/gui/configuration.md#configuring-the-gui-instance).
 
 
 Keep in mind that you have the option to format your text. Taipy uses different ways to create
-pages: [Markdown](../../../manuals/gui/pages/index.md#using-markdown),
-[HTML](../../../manuals/gui/pages/index.md#using-html) or
-[Python code](../../../manuals/gui/page_builder.md). Here is the Markdown syntax to style your
+pages: [Markdown](../../../../manuals/gui/pages/index.md#using-markdown),
+[HTML](../../../../manuals/gui/pages/index.md#using-html) or
+[Python code](../../../../manuals/gui/page_builder.md). Here is the Markdown syntax to style your
 text  and more. Therefore, `#` creates a title, `##` makes a subtitle. Put your text in `*` for
 *italics* or in `**` to have it in **bold**.
 
