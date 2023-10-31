@@ -8,41 +8,51 @@ set class = class ~ " md-header--shadow md-header--lifted" %} {% elif
 <header class="{{ class }}" data-md-component="header">
   <div class="md-header__top-bar">
     <div class="md-grid">
-      <!-- Color palette -->
-      {% if config.theme.palette %} {% if not config.theme.palette is mapping %}
-      <div class="md-header__color-mode">
-        <form class="md-header__option" data-md-component="palette">
-          {% for option in config.theme.palette %} {% set scheme = option.scheme
-          | d("default", true) %} {% set primary = option.primary | d("indigo",
-          true) %} {% set accent = option.accent | d("indigo", true) %}
-          <input
-            class="md-option"
-            data-md-color-media="{{ option.media }}"
-            data-md-color-scheme="{{ scheme | replace(' ', '-') }}"
-            data-md-color-primary="{{ primary | replace(' ', '-') }}"
-            data-md-color-accent="{{ accent | replace(' ', '-') }}"
+      <div class="md-header__top-bar__start">
+        <!-- Color palette -->
+        {% if config.theme.palette %} {% if not config.theme.palette is mapping %}
+        <div class="md-header__color-mode">
+          <form class="md-header__option" data-md-component="palette">
+            {% for option in config.theme.palette %} {% set scheme = option.scheme
+            | d("default", true) %} {% set primary = option.primary | d("indigo",
+            true) %} {% set accent = option.accent | d("indigo", true) %}
+            <input
+              class="md-option"
+              data-md-color-media="{{ option.media }}"
+              data-md-color-scheme="{{ scheme | replace(' ', '-') }}"
+              data-md-color-primary="{{ primary | replace(' ', '-') }}"
+              data-md-color-accent="{{ accent | replace(' ', '-') }}"
+              {% if option.toggle %}
+                aria-label="{{ option.toggle.name }}"
+              {% else %}
+                aria-hidden="true"
+              {% endif %}
+              type="radio"
+              name="__palette"
+              id="__palette_{{ loop.index }}"
+            />
             {% if option.toggle %}
-              aria-label="{{ option.toggle.name }}"
-            {% else %}
-              aria-hidden="true"
-            {% endif %}
-            type="radio"
-            name="__palette"
-            id="__palette_{{ loop.index }}"
-          />
-          {% if option.toggle %}
-          <label
-            class="md-header__button md-icon"
-            title="{{ option.toggle.name }}"
-            for="__palette_{{ loop.index0 or loop.length }}"
-            hidden
-          >
-            {% include ".icons/" ~ option.toggle.icon ~ ".svg" %}
-          </label>
-          {% endif %} {% endfor %}
-        </form>
+            <label
+              class="md-header__button md-icon"
+              title="{{ option.toggle.name }}"
+              for="__palette_{{ loop.index0 or loop.length }}"
+              hidden
+            >
+              {% include ".icons/" ~ option.toggle.icon ~ ".svg" %}
+            </label>
+            {% endif %} {% endfor %}
+          </form>
+        </div>
+        {% endif %} {% endif %}
+        <div class="md-header__links">
+          <span class="md-header__links__trigger">Taipy products</span>
+          <ul class="md-header__links__list">
+            <li><a href="https://www.taipy.io/taipy-enterprise/" target="_blank">Taipy Enterprise</a></li>
+            <li><a href="https://www.taipy.io/get-started-with-taipy-cloud/" target="_blank">Taipy Cloud</a></li>
+            <li><a href="https://talk-to-taipy.taipy.cloud/" target="_blank">Talk To Taipy</a></li>
+          </ul>
+        </div>
       </div>
-      {% endif %} {% endif %}
 
       <!-- Repository information -->
       {% if config.repo_url %}
