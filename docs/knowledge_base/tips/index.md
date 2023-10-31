@@ -49,7 +49,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario cycle configuration datanode dag">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="scenarios">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/icon-code.svg">
+        <img class="tp-content-card-image" src="scenarios/scenario.png">
       </header>
       <div class="tp-content-card-body">
         <h4> Scenarios </h4>
@@ -64,7 +64,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui notebook deployment">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="colab_with_ngrok">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/icon-code.svg">
+        <img class="tp-content-card-image" src="colab_with_ngrok/Sharing_Taipy_Ngrok_1.png">
       </header>
       <div class="tp-content-card-body">
         <h4>Share your App with Colab and Ngrok</h4>
@@ -94,7 +94,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui callback">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="long_running_callbacks">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/icon-code.svg">
+        <img class="tp-content-card-image" src="long_callbacks/long_running_callbacks.png">
       </header>
       <div class="tp-content-card-body">
         <h4>Long-running Callbacks</h4>
@@ -157,7 +157,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui stylekit">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="css_style_kit">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="css_style_kit/css_style_kit.png">
+        <img class="tp-content-card-image" src="css_style_kit/style_kit.png">
       </header>
       <div class="tp-content-card-body">
         <h4> Stylekit </h4>
@@ -187,7 +187,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui callback">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="the_on_change_callback">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/icon-code.svg">
+        <img class="tp-content-card-image" src="the_on_change_callback/callbacks_flowchart-1.png">
       </header>
       <div class="tp-content-card-body">
         <h4> Callbacks </h4>
