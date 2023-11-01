@@ -763,9 +763,9 @@ execute a list of queries returned by the query builder:
     ```python
     data = pandas.DataFrame(
         [
-            {"date": "01/08/2019", "product_id": 1 "number_of_products": 450},
-            {"date": "01/08/2019", "product_id": 3 "number_of_products": 320},
-            {"date": "01/08/2019", "product_id": 4 "number_of_products": 350},
+            {"date": "01/08/2019", "product_id": 1, "number_of_products": 450},
+            {"date": "01/08/2019", "product_id": 3, "number_of_products": 320},
+            {"date": "01/08/2019", "product_id": 4, "number_of_products": 350},
         ]
     )
 
