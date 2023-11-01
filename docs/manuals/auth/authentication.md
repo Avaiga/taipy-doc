@@ -8,14 +8,14 @@ one. This process ensures that a user that logs in really is who she or
 he claims to be.
 
 In Taipy Enterprise, the authentication process is achieve by the
-`Authenticator^` class and indirectly by the `login()^` function:
+`Authenticator^` class and indirectly by the `(auth.)login()^` function:
 this function creates and returns a `Credentials^` object that
 represents the user in the application.</br>
 The returned `Credentials^` instance contains the set of roles assigned to
 the user in the authentication system.
 
-The programmer can create an authenticator manually (see
-[`Authenticator` constructor](Authenticator.__init__()^) for more information)
+The programmer can create an authenticator manually (see the
+`Authenticator.__init__^`(`Authenticator` constructor) for more information)
 if the kind of authenticator needed by the application is known
 (that is, what authentication protocol the application plans to rely on). The
 programmer can alternatively use the `login()^` function that will create
@@ -49,7 +49,7 @@ Taipy Enterprise edition supports three authentication protocols:
 
     You can retrieve the default authenticator using the function `Authenticator.get_default()^`.
 
-    If `login()^` or `Authenticator.get_default()^` are called before any authenticator
+    If `(auth.)login()^` or `Authenticator.get_default()^` are called before any authenticator
     was created, Taipy looks for an `AUTHENTICATION` config section (see `AuthenticationConfig^`
     for more details).
     This config section, if present, is used to instantiate the *default Authenticator*.
@@ -70,7 +70,7 @@ Taipy Enterprise edition supports three authentication protocols:
 
 
 Beside their specific parameters, all authenticators have two parameters that you
-can provide in the [`Authenticator` constructor](Authenticator.__init__()^):
+can provide in the `Authenticator.__init__^`(`Authenticator` constructor):
 
 - *secret_key*: a string that is used to encrypt the user credentials. Because
   credentials are transmitted back and forth when running Taipy on a server
@@ -122,7 +122,7 @@ The Taipy Authenticator is an internal authenticator originally designed for
 testing purposes, so an application can test authentication and authorization features
 without having to install and deploy a real authentication server.
 
-A Taipy Authenticator is created by the [`Authenticator` constructor](Authenticator.__init__()^) 
+A Taipy Authenticator is created by the `Authenticator.__init__^`(`Authenticator` constructor)
 when invoked with the *protocol* argument set to "taipy".
 
 You can set the *roles*' argument to a dictionary that associates a set of role
@@ -185,7 +185,7 @@ to the username when calling `Authenticator.login()^`:
 ### Password-protected authentication
 
 The Taipy Authenticator can password-protect the creation of credentials, using the *passwords*' 
-argument of the [`Authenticator` constructor](Authenticator.__init__()^). This argument expects 
+argument of the `Authenticator.__init__^`(`Authenticator` constructor). This argument expects 
 a dictionary that associates a username with a password. However, in order not to expose these 
 passwords, the password values need to be hashed before they are given to the application (in the 
 `Authenticator^` constructor -- using the *passwords* or in the authentication configuration).<br/>
@@ -243,7 +243,7 @@ assigned roles is an empty set.
         ```
 
 Of course, you can combine both roles and password for any given user, using both the *roles* 
-and *passwords* arguments of the [`Authenticator` constructor](Authenticator.__init__()^), or 
+and *passwords* arguments of the `Authenticator.__init__^`(`Authenticator` constructor), or 
 using its *config* argument:
 ```
 users={

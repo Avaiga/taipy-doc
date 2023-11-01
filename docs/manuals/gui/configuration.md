@@ -17,7 +17,7 @@ method of your `Gui` instance using the *kwargs* parameter.
     All parameters can also be set to any values and stored as a list of key-value
     pairs in a text file for your `Gui` instance to consume. The name of this file
     is the one provided as the *env_filename* parameter to the
-    [`Gui` constructor](Gui.__init__()^).
+    `Gui.__init__()^`(`Gui` constructor).
 
     If you have such a configuration file, then the value associated with a
     configuration parameter will override the one provided in the `(Gui.)run()^`

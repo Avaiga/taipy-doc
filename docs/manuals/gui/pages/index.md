@@ -373,20 +373,20 @@ Pages sometimes need to access local resources from a page. That is the case for
 example if an image needs to be inserted: the path to the image must be provided.
 
 You can indicate, using the parameter *path_mapping* of the
-[`Gui` constructor](Gui.__init__()^), where those resources are located on the file
+`Gui.__init__^`(`Gui` constructor), where those resources are located on the file
 system.
 
 # Status page
 
-The *Status* page is a special page that the user can access by requesting the "/taipy.status.json"
-page.
+The *Status* page is a special page that the user can access by requesting the page at
+"/taipy.status.json".
 
 This returns a customizable JSON representation of the state of the application as a dictionary
 where the key "gui" is set to a dictionary containing the information you might need to dig into
 the state of the application without changing the definition of the pages.
 
 The "user_status" key of the "gui" entry is set to a dictionary that is initialized by
-the user-defined `on_status()` global function. This function is invoked when the end-user
+the user-defined *on_status()* global function. This function is invoked when the end-user
 requests the "/taipy.status.json" page; it receives a single argument: the current application
 *state* (an instance of the `State^` class).<br/>
 This function should return a dictionary where you can define any key or value of your choice.
@@ -414,9 +414,9 @@ Value of x: <|{x}|>
 When this application is running, the "/taipy.status.json" page shows a JSON representation of
 a dictionary with a single key, "gui". The value associated with this key is another dictionary
 with the single key, "user_status". And the value associated with that key is the dictionary
-returned by `on_status()`.<br/>
+returned by *on_status()*.<br/>
 In this example, *gui.user_status.x* is set to 1234 (as initialized in the application), and
-*gui.user_status.info* is the string defined in the `on_status()` function.
+*gui.user_status.info* is the string defined in the *on_status()* function.
 
 !!! note "Extended status"
     If the [*extended_status*](../configuration.md#p-extended_status) parameter is set to True,

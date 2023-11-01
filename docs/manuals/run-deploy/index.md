@@ -1,5 +1,3 @@
-# Running and Deploying Taipy applications
-
 Although Taipy applications are regular Python applications, there are
 many use cases that you, as an application developer, can face when it comes
 to developing, debugging, testing, and deploying.
@@ -24,7 +22,7 @@ configure the system where you want the application to run:
 - The application can run locally on your machine.<br/>
   It can, however, be exposed to external users through the Internet if that is something
   you need.
-- The application can be deployed to [Taipy Cloud](deploy/taipy-cloud.md), that
+- The application can be deployed to [Taipy Cloud](deploy/taipy-cloud/index.md), that
   provides the hardware, management and supervision utilities to host your application outside
   your IT environment.
 - Vendors provide different services that deal with computing, storage, database, and networking

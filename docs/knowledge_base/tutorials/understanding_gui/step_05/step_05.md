@@ -1,32 +1,32 @@
 > You can download the code for
-<a href="./../src/step_05.py" download>Step 5</a> 
-or all the steps <a href="./../src/src.zip" download>here</a>. 
+<a href="./../src/step_05.py" download>Step 5</a>
+or all the steps <a href="./../src/src.zip" download>here</a>.
 
 !!! warning "For Notebooks"
 
-    The Notebook is available [here](../getting_started.ipynb). In Taipy GUI, 
+    The Notebook is available [here](../tutorial.ipynb). In Taipy GUI,
     the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 # Step 5: Python expression in properties
 
-As shown before, parameters and variables in Taipy are dynamic. The same applies for every type 
-of object, even data frames. Therefore, you can perform operations on data frames, and Taipy GUI 
-will show real-time results on the GUI. These changes occur through the `=` assignment like 
+As shown before, parameters and variables in Taipy are dynamic. The same applies for every type
+of object, even data frames. Therefore, you can perform operations on data frames, and Taipy GUI
+will show real-time results on the GUI. These changes occur through the `=` assignment like
 `state.xxx = yyy` (`state.text = "Example"`).
 
-Any expression containing `xxx` in the Markdown will propagate the changes and reload related 
+Any expression containing `xxx` in the Markdown will propagate the changes and reload related
 elements. It can be  simple charts or tables, but it can also be an expression like this:
 
 ```python
 """
 ## Positive
-<|{np.mean(dataframe['Score Pos'])}|text|>
+<|{np.mean(dataframe["Score Pos"])}|text|>
 
 ## Neutral
-<|{np.mean(dataframe['Score Neu'])}|text|>
+<|{np.mean(dataframe["Score Neu"])}|text|>
 
 ## Negative
-<|{np.mean(dataframe['Score Neg'])}|text|>
+<|{np.mean(dataframe["Score Neg"])}|text|>
 """
 ```
 
@@ -35,14 +35,14 @@ This kind of expression creates direct connections between visual elements witho
 
 ## A use case for NLP - Part 1
 
-The code for NLP is provided here, although it's not directly related to Taipy. It will come 
+The code for NLP is provided here, although it's not directly related to Taipy. It will come
 into play in Part 2 when we wrap a GUI around this NLP engine.
 
-Before executing this step, you should have `pip install torch` and `pip install transformers`. 
-The model will be downloaded and utilized in this code snippet. Note that Torch is currently 
+Before executing this step, you should have `pip install torch` and `pip install transformers`.
+The model will be downloaded and utilized in this code snippet. Note that Torch is currently
 only accessible for Python versions between 3.8 and 3.10.
 
-If you encounter difficulties installing these packages, you can simply provide a dictionary of 
+If you encounter difficulties installing these packages, you can simply provide a dictionary of
 random numbers as the output for the `analyze_text(text)` function.
 
 
@@ -59,47 +59,44 @@ model = AutoModelForSequenceClassification.from_pretrained(MODEL)
 
 def analyze_text(text):
     # Run for Roberta Model
-    encoded_text = tokenizer(text, return_tensors='pt')
+    encoded_text = tokenizer(text, return_tensors="pt")
     output = model(**encoded_text)
     scores = output[0][0].detach().numpy()
     scores = softmax(scores)
-    
-    return {"Text":text,
-            "Score Pos":scores[2],
-            "Score Neu":scores[1],
-            "Score Neg":scores[0],
-            "Overall":scores[2]-scores[0]}
 
+    return {"Text": text,
+            "Score Pos": scores[2],
+            "Score Neu": scores[1],
+            "Score Neg": scores[0],
+            "Overall": scores[2]-scores[0]}
 ```
-
 
 ## A use case for NLP - Part 2
 
-The code below uses this concept to create metrics on the data frame generated. 
+The code below uses this concept to create metrics on the data frame generated.
 
 
-```python     
+```python
 import numpy as np
-import pandas as pd 
+import pandas as pd
 from taipy.gui import Gui, notify
 
 text = "Original text"
 
-dataframe = pd.DataFrame({"Text":[''],
-                          "Score Pos":[0.33],
-                          "Score Neu":[0.33],
-                          "Score Neg":[0.33],
-                          "Overall":[0]})
+dataframe = pd.DataFrame({"Text": [""],
+                          "Score Pos": [0.33],
+                          "Score Neu": [0.33],
+                          "Score Neg": [0.33],
+                          "Overall": [0]})
 
 
 def local_callback(state):
-    notify(state, 'Info', f'The text is: {state.text}', True)
+    notify(state, "Info", f"The text is: {state.text}", True)
     temp = state.dataframe.copy()
     scores = analyze_text(state.text)
     temp.loc[len(temp)] = scores
     state.dataframe = temp
     state.text = ""
-
 
 
 page = """
@@ -114,13 +111,13 @@ Enter a word:
 <|Analyze|button|on_action=local_callback|>
 
 ## Positive
-<|{np.mean(dataframe['Score Pos'])}|text|format=%.2f|>
+<|{np.mean(dataframe["Score Pos"])}|text|format=%.2f|>
 
 ## Neutral
-<|{np.mean(dataframe['Score Neu'])}|text|format=%.2f|>
+<|{np.mean(dataframe["Score Neu"])}|text|format=%.2f|>
 
 ## Negative
-<|{np.mean(dataframe['Score Neg'])}|text|format=%.2f|>
+<|{np.mean(dataframe["Score Neg"])}|text|format=%.2f|>
 
 <|{dataframe}|table|>
 

@@ -40,7 +40,7 @@ development of graphical components.
 The declaration of a dynamic element looks very similar to the declaration of a static
 element.<br/>
 The fundamental change is that if the *render_xhtml* argument of the
-[`Element` constructor](Element.__init__()^) is not set or is not a function
+`Element.__init__()^`(`Element` constructor) is not set or is not a function
 then the element is considered *dynamic*. That is, implemented using a React
 component. You can specify the name of the component using the *react_component*
 argument. If you don't, Taipy GUI will use a capitalized camel case transformation
@@ -102,13 +102,13 @@ Here are the key things to know when creating a React component that implements 
 front-end for a custom visual element:
 
 - The component name should be one used when the element is declared, using the
-  *react_component* argument of the [`Element` constructor](Element.__init__()^).<br/>
+  *react_component* argument of the `Element.__init__()^`(`Element` constructor).<br/>
   If this parameter is not used, Taipy GUI uses a camel case transformation of the element
   name.
 - All component source files are bundled in a JavaScript library. We are using
   [*webpack*](https://webpack.js.org/) for this purpose.
 - Components must be exported by the JavaScript library with the same name as the one
-  used in the [`Element` constructor](Element.__init__()^).
+  used in the `Element.__init__()^`(`Element` constructor).
 - Property names must be valid Python identifiers.
 - The camel case transformation of the property names, with a lowercase initial letter, are
   used to name the keys of the *props* argument for the React component.<br/>
@@ -116,7 +116,7 @@ front-end for a custom visual element:
   for this argument: each property of the interface should have the transformed name
   of the element property.<br/>
   Note that you can overwrite the name of the property in the React component by using
-  the *js_name* argument of the [`ElementProperty` constructor](ElementProperty.__init__()^).
+  the *js_name* argument of the  `ElementProperty.__init__()^`(`ElementProperty` constructor).
 - Dynamic properties use two keys in the functional component *props* argument:
 
     - The (transformed) property name as described above;

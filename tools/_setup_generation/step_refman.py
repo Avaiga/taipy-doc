@@ -145,6 +145,8 @@ class RefManStep(SetupStep):
                             flush=True,
                         )
                 full_name = f"{e.__module__}.{entry}"
+                # Entry module: e.__module__
+                # Current module: module.__name__
                 if entry_info := entries.get(full_name):
                     packages = entry_info["packages"]
                     if module.__name__ != Setup.ROOT_PACKAGE:
