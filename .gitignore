@@ -105,6 +105,7 @@ site/
 
 # python notebook
 *.ipynb
+!docs/knowledge_base/tutorials/understanding_gui/tutorial.ipynb
 
 # Doc generation
 mkdocs.yml

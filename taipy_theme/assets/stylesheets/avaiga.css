@@ -210,11 +210,14 @@
     right: auto;
     top: auto;
   }
-}
 @media screen and (max-width: 59.9375em){
   .md-nav__source{
     background-color: var(--md-primary-fg-color);
   }
+}
+}
+[dir=ltr] .md-sidebar__inner {
+  padding-right: calc(100% - 12rem);
 }
 
 /* ---------- ---------- ---------- NAVS ---------- ---------- ---------- */

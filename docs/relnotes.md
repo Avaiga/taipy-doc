@@ -17,6 +17,10 @@ This is the list of changes to Taipy releases as they were published.
     If you are using a legacy version, please refer to the 
     [Legacy Release Notes](relnotes-legacy.md) page.
 
+# Community edition: 3.1
+
+(Work in progress)
+
 # Community edition: 3.0
 
 Published on 2023-10.
@@ -38,7 +42,7 @@ Published on 2023-10.
 - You can now invoke a callback for all clients using the `broadcast_callback()^` function.
 - The [`slider`](manuals/gui/viselements/slider.md) control can now handle several knobs, 
     allowing for range selection.<br/>
-    Please check the [example](manuals/gui/viselements/slider.md##multi-selection) for more
+    Please check the [example](manuals/gui/viselements/slider.md#multi-selection) for more
     information.
 - The [`file_download`](manuals/gui/viselements/file_download.md) control now lets developers
     generate the file content dynamically, at download time.<br/>
@@ -94,7 +98,7 @@ Published on 2023-10.
 
 ## Improvements and changes
 
-<h4><strong><code>taipy-core</code></strong> 3.0.0</h4>
+<h4><strong><code>taipy-gui</code></strong> 3.0.0</h4>
 
 - :warning: The *action* parameter of the `on_action` callback was removed for every control.<br/>
     The signature of all *on_action()* callback functions are now unified to the following:

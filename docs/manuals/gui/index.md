@@ -44,7 +44,10 @@ when Taipy transforms the page you had created into some HTML
 content sent back to the client so the user can see the application interface
 and start using it.
 
-!!! info "You can find more information on how pages are created and used in Taipy application in
-the [Pages](pages/index.md) section."
+!!! info "More information"
+    You can find more information on how pages are created and used in Taipy application in
+    the [Pages](pages/index.md) section.
 
-!!! info "To run the Taipy GUI service with some other Taipy services, please refer to the [Running Taipy services](../run-deploy/run/running_services.md) page"
+!!! info "Multiple services"
+    To run the Taipy GUI service with some other Taipy services, please refer to the
+    [Running Taipy services](../run-deploy/run/running_services.md) page.
