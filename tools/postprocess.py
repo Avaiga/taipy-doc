@@ -468,9 +468,19 @@ def on_post_build(env):
                 if file_was_changed:
                     with open(filename, "w") as html_file:
                         html_file.write(html_content)
-            # Remove '.md_template' files
-            elif f.endswith(".md_template"):
-                os.remove(os.path.join(root, f))
+            # Replace path to doc in '.ipynb' files
+            elif f.endswith(".ipynb"):
+                filename = os.path.join(root, f)
+                with open(filename) as ipynb_file:
+                    try:
+                        content = ipynb_file.read()
+                    except Exception as e:
+                        print(f"Couldn't read Notebook file {filename}")
+                        raise e
+                    (new_content, n) = re.subn("(?<=https://docs.taipy.io/en/)latest", f"{env.conf['branch']}", content)
+                    if n > 0:
+                        with open(filename, "w") as ipynb_file:
+                            ipynb_file.write(new_content)
     if fixed_cross_refs:
         for dest in sorted(fixed_cross_refs.keys()):
             sources = ", ".join(sorted(fixed_cross_refs[dest]))
