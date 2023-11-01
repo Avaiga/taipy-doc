@@ -33,6 +33,12 @@ This is the list of changes to Taipy releases as they were published.
 
 ## Significant bug fixes
 
+<h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
+
+- Can not write to a SQLDataNode or a SQLTableDataNode using examples provided by the
+    documentation.<br/>
+    See [issue #816](https://github.com/Avaiga/taipy-core/issues/816).
+
 
 # Community edition: 3.0
 
