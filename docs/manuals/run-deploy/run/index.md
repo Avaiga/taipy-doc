@@ -1,5 +1,3 @@
-# Running a Taipy application
-
 Depending on the task that the application is addressing, there are several execution
 use cases that can be considered for running a Taipy application.
 

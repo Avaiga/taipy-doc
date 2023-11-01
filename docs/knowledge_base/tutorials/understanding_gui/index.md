@@ -48,7 +48,7 @@ $ pip install transformers
 ## Using Notebooks
 
 This **Tutorial** is for Python scripts (*.py*) only. If you want to use **Jupyter Notebooks**, 
-download this [notebook](./getting_started.ipynb).
+download this [notebook](./tutorial.ipynb).
 
 ## Taipy Studio
 

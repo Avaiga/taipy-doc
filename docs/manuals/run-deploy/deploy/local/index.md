@@ -4,5 +4,5 @@ considered if you want to temporarily expose an application for remote users ove
 An easy path to follow is to use [Ngrok](https://ngrok.com/), which can open access to remote
 systems without having to reconfigure the network settings.<br/>
 A step-by-step documentation on how to use Ngrok to deploy a Taipy GUI application can be
-found in the [section](../../gui/configuration.md#accessing-your-app-from-the-web) exposing
+found in the [section](../../../gui/configuration.md#accessing-your-app-from-the-web) exposing
 how to access your application remotely.
