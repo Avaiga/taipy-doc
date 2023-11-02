@@ -171,7 +171,7 @@ to the username when calling `Authenticator.login()^`:
         user3 = ["role1", "role2", "TAIPY_ADMIN"]
         ```
 
-        ```python title="main.py"
+        ```py title="main.py"
         Config.load("config.toml")
         taipy.auth.login("user1", "user1")  # returns a valid Credentials instance
         taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
@@ -228,7 +228,7 @@ the assigned roles is an empty set.
         user2 = "JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe"
         ```
 
-        ```python title="main.py"
+        ```py title="main.py"
         Config.load("config.toml")
         taipy.auth.login("user1", "pass123")  # returns a valid Credentials instance
         taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
@@ -306,7 +306,7 @@ the password value for this user.
         user2 = "JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe"
         ```
 
-        ```python title="main.py"
+        ```py title="main.py"
         Config.load("config.toml")
         taipy.auth.login("user1", "pass123")  # returns a valid Credentials instance
         taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
@@ -420,7 +420,7 @@ connect to the directory service:
         auth_session_duration = 600   # 60 seconds is 10 minutes,
         ```
 
-        ```python title="main.py"
+        ```py title="main.py"
         Config.load("config.toml")
 
         taipy.auth.login("user1", "pass123")
