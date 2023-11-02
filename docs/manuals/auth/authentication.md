@@ -18,7 +18,7 @@ The programmer can create an authenticator manually (see the
 `Authenticator.__init__^`(`Authenticator` constructor) for more information)
 if the kind of authenticator needed by the application is known
 (that is, what authentication protocol the application plans to rely on). The
-programmer can alternatively use the `login()^` function that will create
+programmer can alternatively use the `(auth.)login()^` function that will create
 an `Authenticator^` the first time it is invoked.
 
 Each kind of `Authenticator^` implements an *authentication protocol* that provides
@@ -28,7 +28,7 @@ to a user.
 Taipy Enterprise edition supports three authentication protocols:
 
    - "none": The *None* authenticator does not check the user password in
-      `login()` and always validates the login process by creating a `Credentials^`
+      `(auth.)login()^` and always validates the login process by creating a `Credentials^`
       instance that holds an empty role set.<br/>
       See the [*None* Authenticator](#none-authenticator) below for more information.
 
@@ -43,7 +43,7 @@ Taipy Enterprise edition supports three authentication protocols:
 
 !!! note "Default authenticator"
     Most applications will use a single authenticator. This authenticator is called
-    the *default authenticator* and is created automatically when `login()^` is called
+    the *default authenticator* and is created automatically when `(auth.)login()^` is called
     for the first time or when any `Authenticator^` for any protocol is created,
     whichever comes first.
 
@@ -65,8 +65,8 @@ Taipy Enterprise edition supports three authentication protocols:
         - If Taipy could not find the configuration allowing to create such a default
             authenticator, a *None* authenticator is created and set as the default
             authenticator.
-        - The default authenticator's `(Authenticator.)login()^` function is invoked
-            with the arguments that were provided to `login()^`.
+        - The default authenticator's `(Authenticator.)login()^` method is invoked
+            with the arguments that were provided to `(auth.)login()^`.
 
 
 Beside their specific parameters, all authenticators have two parameters that you
@@ -97,16 +97,13 @@ setting the *protocol* argument of the constructor to "none".
     either in Python or TOML:
 
     === "Python configuration"
-
-        ```
+        ```python title="main.py"
         Config.configure_authentication(protocol="none")
         taipy.auth.login("whatever_username", "any_password")  # always returns a valid Credentials instance
         ```
 
     === "TOML configuration"
-
         ```toml title="config.toml"
-
         [AUTHENTICATION]
         protocol = "none"
         ```
@@ -128,7 +125,7 @@ when invoked with the *protocol* argument set to "taipy".
 You can set the *roles*' argument to a dictionary that associates a set of role
 names to every username you want to grant login access to.<br/>
 Here is how you typically create a Taipy authenticator:
-```
+```python
 from taipy.auth import Authenticator
 roles={
   "user1": ["role1", "TAIPY_READER"],
@@ -150,11 +147,10 @@ to the username when calling `Authenticator.login()^`:
 
 !!! note "Using Taipy configuration to set default authenticator"
     To set the *default authenticator* to a Taipy authenticator with roles, you can use the 
-    authentication configuration either in Python or Toml:
+    authentication configuration either in Python or TOML:
 
     === "Python configuration"
-
-        ```
+        ```python title="main.py"
         Config.configure_authentication(protocol="taipy",
                                         roles={
                                             "user1": ["role1", "TAIPY_READER"],
@@ -165,9 +161,7 @@ to the username when calling `Authenticator.login()^`:
         ```
 
     === "TOML configuration"
-
         ```toml title="config.toml"
-
         [AUTHENTICATION]
         protocol="taipy"
 
@@ -177,7 +171,7 @@ to the username when calling `Authenticator.login()^`:
         user3 = ["role1", "role2", "TAIPY_ADMIN"]
         ```
 
-        ```python title="main.py"
+        ```py title="main.py"
         Config.load("config.toml")
         taipy.auth.login("user1", "user1")  # returns a valid Credentials instance
         taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
@@ -194,7 +188,7 @@ for the password. See the [section below](#creating-hashed-passwords) to learn h
 hashed password values.
 
 You can indicate what are the declared users' passwords:
-```
+```python title="main.py"
 from taipy.auth import Authenticator
 passwords={
   "user1": "eSwebyvpEElWbZNTNqpW7rNQPDPyJSm",
@@ -205,17 +199,16 @@ authenticator = Authenticator("taipy", passwords=passwords)
 Note that these values are the one resulting from the example of  the
 [creating hashed passwords](#creating-hashed-passwords) section below.
 
-Calling `login("user1", "pass123")^` will result in a valid `Credentials^` instance where the 
-assigned roles is an empty set.
+Calling `(auth.)login("user1", "pass123")^` will result in a valid `Credentials^` instance where
+the assigned roles is an empty set.
 
 !!! note "Using Taipy configuration to set default authenticator"
 
     To set the *default authenticator* to a Taipy authenticator with passwords, you can use the 
-    authentication configuration either in Python or Toml:
+    authentication configuration either in Python or TOML:
 
     === "Python configuration"
-
-        ```
+        ```python title="main.py"
         Config.configure_authentication(protocol="taipy",
                                         passwords={
                                             "user1": "eSwebyvpEElWbZNTNqpW7rNQPDPyJSm",
@@ -225,7 +218,6 @@ assigned roles is an empty set.
         ```
 
     === "TOML configuration"
-
         ```toml title="config.toml"
 
         [AUTHENTICATION]
@@ -236,7 +228,7 @@ assigned roles is an empty set.
         user2 = "JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe"
         ```
 
-        ```python title="main.py"
+        ```py title="main.py"
         Config.load("config.toml")
         taipy.auth.login("user1", "pass123")  # returns a valid Credentials instance
         taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
@@ -245,7 +237,7 @@ assigned roles is an empty set.
 Of course, you can combine both roles and password for any given user, using both the *roles* 
 and *passwords* arguments of the `Authenticator.__init__^`(`Authenticator` constructor), or 
 using its *config* argument:
-```
+```python title="main.py"
 users={
     "roles": {
         "user1": "role1",
@@ -257,16 +249,16 @@ users={
         "user2": "JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe"
     }
 }
-auth = Authenticator("taipy", config=users)
+authenticator = Authenticator("taipy", config=users)
 ```
 
 With this authenticator, if you run the code:
-```
-user1 = auth.login("user1", pass1)
+```python
+user1 = authenticator.login("user1", pass1)
 print(f"user1 - Logged in. Roles={user1.get_roles()}")
-user2 = auth.login("user2", pass2)
+user2 = authenticator.login("user2", pass2)
 print(f"user2 - Logged in. Roles={user2.get_roles()}")
-user3 = auth.login("user3", "user3")
+user3 = authenticator.login("user3", "user3")
 print(f"user3 - Logged in. Roles={user3.get_roles()}")
 ```
 You get the following output:
@@ -282,11 +274,10 @@ the password value for this user.
 !!! note "Using Taipy configuration to set default authenticator"
 
     To set the *default authenticator* to a Taipy authenticator with roles and passwords, you 
-    can use the authentication configuration either in Python or Toml:
+    can use the authentication configuration either in Python or TOML:
 
     === "Python configuration"
-
-        ```
+        ```python title="main.py"
         Config.configure_authentication(protocol="taipy",
                                         roles={
                                             "user1": "role1",
@@ -301,9 +292,7 @@ the password value for this user.
         ```
 
     === "TOML configuration"
-
         ```toml title="config.toml"
-
         [AUTHENTICATION]
         protocol="taipy"
 
@@ -317,7 +306,7 @@ the password value for this user.
         user2 = "JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe"
         ```
 
-        ```python title="main.py"
+        ```py title="main.py"
         Config.load("config.toml")
         taipy.auth.login("user1", "pass123")  # returns a valid Credentials instance
         taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
@@ -328,7 +317,7 @@ the password value for this user.
 Taipy provides two ways of creating a hashed password provided the plain text representation of 
 the password:
 
-- API: You can use function `hash_taipy_password()^` that, given a plain text string, returns 
+- API: You can use the function `hash_taipy_password()^` that, given a plain text string, returns 
     the hashed value for it.
 
 - CLI: The `taipy.auth` module has an entry point that can be invoked from
@@ -344,7 +333,7 @@ set to the 'TAIPY_AUTH_HASH' environment variable in order to generate hashed pa
 as when running the application, so passwords can be verified.<br/>
 The value of 'TAIPY_AUTH_HASH' can be any string value.</br>
 The value of 'TAIPY_AUTH_HASH' **must** be the same when generating the hashed passwords and 
-when running the application that invokes the `login()^` function.
+when running the application that invokes the `(auth.)login()^` function.
 
 !!! example "Create a hashed password using the API"
     
@@ -352,7 +341,7 @@ when running the application that invokes the `login()^` function.
 
     We assume that the environment variable 'TAIPY_AUTH_HASH' is set to "Taipy".
 
-    ```
+    ```python
     from taipy.auth import hash_taipy_password
 
     pass1 = "pass123"
@@ -374,8 +363,8 @@ when running the application that invokes the `login()^` function.
 
     Here again, we assume that the environment variable 'TAIPY_AUTH_HASH' is set to "Taipy".
 
-    ```
-    <b>$ </b>python -m taipy.auth -p pass123 pass1234
+    ```sh
+    $ python -m taipy.auth -p pass123 pass1234
     ```
     Produces the following output:
     ```
@@ -395,10 +384,10 @@ connect to the directory service:
 
 - *server*: the URL of the LDAP server that we want to connect to.<br/>
     If you are using the Taipy configuration, the value for this argument
-    is retrieved if needed from _**Config.authentication_config.server**_.
+    is retrieved if needed from _**Config.AUTHENTICATION.server**_.
 - *base_dn*: the base distinguished name for that LDAP server.<br/>
     If you are using the Taipy configuration, the value for this argument
-    is retrieved if needed from _**Config.authentication_config.base_dn**_.
+    is retrieved if needed from _**Config.AUTHENTICATION.base_dn**_.
 
 !!! note "LDAP server support"
   
@@ -408,18 +397,17 @@ connect to the directory service:
 !!! note "Using Taipy configuration to set default authenticator"
     
     To set the *default authenticator* to an LDAP authenticator you can use the authentication 
-    configuration either in Python or Toml:
+    configuration either in Python or TOML:
 
     === "Python configuration"
+        ```python title="main.py"
+            Config.configure_authentication(protocol="ldap",
+                                            server="ldap://0.0.0.0",
+                                            base_dn="dc=example,dc=org",
+                                            secret_key = "my-ultra-secure-and-ultra-long-secret",
+                                            auth_session_duration = 600,)   # 60 seconds is 10 minutes
 
-    ```
-        Config.configure_global_app(auth_protocol="ldap",
-                                    server="ldap://0.0.0.0",
-                                    base_dn="dc=example,dc=org",
-                                    secret_key = "my-ultra-secure-and-ultra-long-secret",
-                                    auth_session_duration = 600,)   # 60 seconds is 10 minutes
-
-    ```
+        ```
 
     === "TOML configuration"
         ```toml title="config.toml"
@@ -432,7 +420,7 @@ connect to the directory service:
         auth_session_duration = 600   # 60 seconds is 10 minutes,
         ```
 
-        ```python title="main.py"
+        ```py title="main.py"
         Config.load("config.toml")
 
         taipy.auth.login("user1", "pass123")
