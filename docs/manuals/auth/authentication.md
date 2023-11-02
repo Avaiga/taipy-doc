@@ -97,7 +97,7 @@ setting the *protocol* argument of the constructor to "none".
     either in Python or TOML:
 
     === "Python configuration"
-        ```py title="main.py"
+        ```python title="main.py"
         Config.configure_authentication(protocol="none")
         taipy.auth.login("whatever_username", "any_password")  # always returns a valid Credentials instance
         ```
@@ -125,7 +125,7 @@ when invoked with the *protocol* argument set to "taipy".
 You can set the *roles*' argument to a dictionary that associates a set of role
 names to every username you want to grant login access to.<br/>
 Here is how you typically create a Taipy authenticator:
-```py
+```python
 from taipy.auth import Authenticator
 roles={
   "user1": ["role1", "TAIPY_READER"],
@@ -150,7 +150,7 @@ to the username when calling `Authenticator.login()^`:
     authentication configuration either in Python or TOML:
 
     === "Python configuration"
-        ```py title="main.py"
+        ```python title="main.py"
         Config.configure_authentication(protocol="taipy",
                                         roles={
                                             "user1": ["role1", "TAIPY_READER"],
@@ -188,7 +188,7 @@ for the password. See the [section below](#creating-hashed-passwords) to learn h
 hashed password values.
 
 You can indicate what are the declared users' passwords:
-```py title="main.py"
+```python title="main.py"
 from taipy.auth import Authenticator
 passwords={
   "user1": "eSwebyvpEElWbZNTNqpW7rNQPDPyJSm",
@@ -208,7 +208,7 @@ the assigned roles is an empty set.
     authentication configuration either in Python or TOML:
 
     === "Python configuration"
-        ```py title="main.py"
+        ```python title="main.py"
         Config.configure_authentication(protocol="taipy",
                                         passwords={
                                             "user1": "eSwebyvpEElWbZNTNqpW7rNQPDPyJSm",
@@ -237,7 +237,7 @@ the assigned roles is an empty set.
 Of course, you can combine both roles and password for any given user, using both the *roles* 
 and *passwords* arguments of the `Authenticator.__init__^`(`Authenticator` constructor), or 
 using its *config* argument:
-```py title="main.py"
+```python title="main.py"
 users={
     "roles": {
         "user1": "role1",
@@ -253,7 +253,7 @@ authenticator = Authenticator("taipy", config=users)
 ```
 
 With this authenticator, if you run the code:
-```py
+```python
 user1 = authenticator.login("user1", pass1)
 print(f"user1 - Logged in. Roles={user1.get_roles()}")
 user2 = authenticator.login("user2", pass2)
@@ -277,7 +277,7 @@ the password value for this user.
     can use the authentication configuration either in Python or TOML:
 
     === "Python configuration"
-        ```py title="main.py"
+        ```python title="main.py"
         Config.configure_authentication(protocol="taipy",
                                         roles={
                                             "user1": "role1",
@@ -341,7 +341,7 @@ when running the application that invokes the `(auth.)login()^` function.
 
     We assume that the environment variable 'TAIPY_AUTH_HASH' is set to "Taipy".
 
-    ```py
+    ```python
     from taipy.auth import hash_taipy_password
 
     pass1 = "pass123"
@@ -400,7 +400,7 @@ connect to the directory service:
     configuration either in Python or TOML:
 
     === "Python configuration"
-        ```py title="main.py"
+        ```python title="main.py"
             Config.configure_authentication(protocol="ldap",
                                             server="ldap://0.0.0.0",
                                             base_dn="dc=example,dc=org",
