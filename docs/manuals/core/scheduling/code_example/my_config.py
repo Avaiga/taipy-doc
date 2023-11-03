@@ -6,8 +6,8 @@ from taipy import Config, Frequency, Scope
 
 
 def write_orders_plan(data: pd.DataFrame):
-    insert_data = list(data[["date", "product_id", "number_of_products"]].itertuples(index=False, name=None))
-    return ["DELETE FROM orders", ("INSERT INTO orders VALUES (?, ?, ?)", insert_data)]
+    insert_data = data[["date", "product_id", "number_of_products"]].to_dict("records")
+    return ["DELETE FROM orders", ("INSERT INTO orders VALUES (:date, :product_id, :number_of_products)", insert_data)]
 
 
 def train(sales_history: pd.DataFrame):
