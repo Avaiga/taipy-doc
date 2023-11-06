@@ -1163,29 +1163,201 @@ Correspondingly, In memory data node can write any data object that is valid dat
 It is also possible to partially read the contents of data nodes, which comes in handy when dealing
 with large amounts of data.
 This can be achieved by providing an operator, a Tuple of (*field_name*, *value*, *comparison_operator*),
-or a list of operators to the `DataNode.filter()^` method:
+or a list of operators to the `DataNode.filter()^` method.
 
-```python linenums="1"
-data_node.filter(
-    [("field_name", 14, Operator.EQUAL), ("field_name", 10, Operator.EQUAL)],
-    JoinOperator.OR
+Assume that the content of the data node can be represented by the following table.
+
+!!! example "Data sample"
+
+    | date       | nb_sales |
+    |------------|----------|
+    | 12/24/2018 | 1550     |
+    | 12/25/2018 | 2315     |
+    | 12/26/2018 | 1832     |
+
+In the following example, the `DataNode.filter()^` method will return all the records from the data node
+where the value of the "nb_sales" field is equal to 1550.
+The following examples represent the results when read from a data node with different _exposed_type_:
+
+```python
+filtered_data = data_node.filter(("nb_sales", 1550, Operator.EQUAL))
+```
+
+!!! example "The value of `filtered_data` where "nb_sales" is equal to 1550"
+
+    === "exposed_type = "pandas""
+
+        ```python
+        pandas.DataFrame
+        (
+                     date  nb_sales
+            0  12/24/2018      1550
+        )
+        ```
+
+    === "exposed_type = "modin""
+
+        ```python
+        modin.pandas.DataFrame
+        (
+                     date  nb_sales
+            0  12/24/2018      1550
+        )
+        ```
+
+    === "exposed_type = "numpy""
+
+        ```python
+        numpy.array([
+            ["12/24/2018", "1550"]
+        ])
+        ```
+
+    === "exposed_type = SaleRow"
+        ```python
+        [SaleRow("12/24/2018", 1550)]
+        ```
+
+If a list of operators is provided, it is necessary to provide a join operator that will be
+used to combine the filtered results from the operators. The default join operator is `JoinOperator.AND`.
+
+In the following example, the `DataNode.filter()^` method will return all the records from the data node
+where the value of the "nb_sales" field is greater or equal to 1000 and less than 2000.
+The following examples represent the results when read from a data node with different _exposed_type_:
+
+```python
+filtered_data = data_node.filter(
+    [("nb_sales", 1000, Operator.GREATER_OR_EQUAL), ("nb_sales", 2000, Operator.LESS_THAN)]
 )
 ```
 
-If a list of operators is provided, it is necessary to provide a join operator that will be
-used to combine the filtered results from the operators.
+!!! example "The value of `filtered_data` where "nb_sales" is greater or equal to 1000 and less than 2000"
 
-It is also possible to use pandas style filtering:
+    === "exposed_type = "pandas""
 
-```python linenums="1"
-temp_data = data_node["field_name"]
-temp_data[(temp_data == 14) | (temp_data == 10)]
+        ```python
+        pandas.DataFrame
+        (
+                     date  nb_sales
+            0  12/24/2018      1550
+            1  12/26/2018      1832
+        )
+        ```
+
+    === "exposed_type = "modin""
+
+        ```python
+        modin.pandas.DataFrame
+        (
+                     date  nb_sales
+            0  12/24/2018      1550
+            1  12/26/2018      1832
+        )
+        ```
+
+    === "exposed_type = "numpy""
+
+        ```python
+        numpy.array(
+            [
+                ["12/24/2018", "1550"],
+                ["12/26/2018", "1832"]
+            ]
+        )
+        ```
+
+    === "exposed_type = SaleRow"
+        ```python
+        [
+            SaleRow("12/24/2018", 1550),
+            SaleRow("12/26/2018", 1832),
+        ]
+        ```
+
+In another example, the `DataNode.filter()^` method will return all the records from the data node
+where the value of the "nb_sales" field is equal to 1550 or greater than 2000.
+The following examples represent the results when read from a data node with different _exposed_type_:
+
+```python
+filtered_data = data_node.filter(
+    [("nb_sales", 1550, Operator.EQUAL), ("nb_sales", 2000, Operator.GREATER_THAN)],
+    JoinOperator.OR,
+)
 ```
 
-!!! warning
+!!! example "The value of `filtered_data` where "nb_sales" is equal to 1550 or greater than 2000"
 
-    For now, the `DataNode.filter()^` method is only implemented for `CSVDataNode^`, `ExcelDataNode^`,
-    `SQLTableDataNode^`, `SQLDataNode` with `"pandas"` as the _**exposed_type**_ value.
+    === "exposed_type = "pandas""
+
+        ```python
+        pandas.DataFrame
+        (
+                     date  nb_sales
+            0  12/24/2018      1550
+            1  12/25/2018      2315
+        )
+        ```
+
+    === "exposed_type = "modin""
+
+        ```python
+        modin.pandas.DataFrame
+        (
+                     date  nb_sales
+            0  12/24/2018      1550
+            1  12/25/2018      2315
+        )
+        ```
+
+    === "exposed_type = "numpy""
+
+        ```python
+        numpy.array(
+            [
+                ["12/24/2018", "1550"],
+                ["12/25/2018", "2315"],
+            ]
+        )
+        ```
+
+    === "exposed_type = SaleRow"
+        ```python
+        [
+            SaleRow("12/24/2018", 1550),
+            SaleRow("12/25/2018", 2315),
+        ]
+        ```
+
+With Pandas or Modin data frame as the exposed type, it is also possible to use pandas indexing
+and filtering style:
+
+```python
+sale_data = data_node["nb_sales"]
+
+filtered_data = data_node[(data_node["nb_sales"] == 1550) | (data_node["nb_sales"] > 2000)]
+```
+
+Similarly, with numpy array exposed type, it is possible to use numpy style indexing and filtering
+style:
+
+```python
+sale_data = data_node[:, 1]
+
+filtered_data = data_node[(data_node[:, 1] == 1550) | (data_node[:, 1] > 2000)]
+```
+
+!!! warning "Supported data types"
+
+    For now, the `DataNode.filter()^` method and the indexing/filtering style are only implemented
+    for data as:
+
+    - a Pandas or Modin data frame,
+    - a Numpy array,
+    - a list of objects,
+    - a list of dictionaries.
+
+    Other data types are not supported.
+
 
 # Get parent scenarios, sequences and tasks
 
