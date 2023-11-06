@@ -1167,7 +1167,7 @@ or a list of operators to the `DataNode.filter()^` method.
 
 Assume that the content of the data node can be represented by the following table.
 
-!!! example "Example data"
+!!! example "Data sample"
 
     | date       | nb_sales |
     |------------|----------|
@@ -1176,19 +1176,19 @@ Assume that the content of the data node can be represented by the following tab
     | 12/26/2018 | 1832     |
 
 In the following example, the `DataNode.filter()^` method will return all the records from the data node
-where the value of the "nb_sales" field is equal to 1500.
+where the value of the "nb_sales" field is equal to 1550.
 The following examples represent the results when read from a data node with different _exposed_type_:
 
 ```python
 filtered_data = data_node.filter(("nb_sales", 1550, Operator.EQUAL))
 ```
 
-!!! example "Filter data where "nb_sales" is equal to 1550"
+!!! example "The value of `filtered_data` where "nb_sales" is equal to 1550"
 
     === "exposed_type = "pandas""
 
         ```python
-        filtered_data = pandas.DataFrame
+        pandas.DataFrame
         (
                      date  nb_sales
             0  12/24/2018      1550
@@ -1198,7 +1198,7 @@ filtered_data = data_node.filter(("nb_sales", 1550, Operator.EQUAL))
     === "exposed_type = "modin""
 
         ```python
-        filtered_data = modin.pandas.DataFrame
+        modin.pandas.DataFrame
         (
                      date  nb_sales
             0  12/24/2018      1550
@@ -1208,14 +1208,14 @@ filtered_data = data_node.filter(("nb_sales", 1550, Operator.EQUAL))
     === "exposed_type = "numpy""
 
         ```python
-        filtered_data = numpy.array([
+        numpy.array([
             ["12/24/2018", "1550"]
         ])
         ```
 
     === "exposed_type = SaleRow"
         ```python
-        filtered_data = [SaleRow("12/24/2018", 1550)]
+        [SaleRow("12/24/2018", 1550)]
         ```
 
 If a list of operators is provided, it is necessary to provide a join operator that will be
@@ -1231,12 +1231,12 @@ filtered_data = data_node.filter(
 )
 ```
 
-!!! example "Filter data where "nb_sales" is greater or equal to 1000 and less than 2000"
+!!! example "The value of `filtered_data` where "nb_sales" is greater or equal to 1000 and less than 2000"
 
     === "exposed_type = "pandas""
 
         ```python
-        filtered_data = pandas.DataFrame
+        pandas.DataFrame
         (
                      date  nb_sales
             0  12/24/2018      1550
@@ -1247,7 +1247,7 @@ filtered_data = data_node.filter(
     === "exposed_type = "modin""
 
         ```python
-        filtered_data = modin.pandas.DataFrame
+        modin.pandas.DataFrame
         (
                      date  nb_sales
             0  12/24/2018      1550
@@ -1258,7 +1258,7 @@ filtered_data = data_node.filter(
     === "exposed_type = "numpy""
 
         ```python
-        filtered_data = numpy.array(
+        numpy.array(
             [
                 ["12/24/2018", "1550"],
                 ["12/26/2018", "1832"]
@@ -1268,7 +1268,7 @@ filtered_data = data_node.filter(
 
     === "exposed_type = SaleRow"
         ```python
-        filtered_data = [
+        [
             SaleRow("12/24/2018", 1550),
             SaleRow("12/26/2018", 1832),
         ]
@@ -1285,12 +1285,12 @@ filtered_data = data_node.filter(
 )
 ```
 
-!!! example "Filter data where "nb_sales" is equal to 1550 or greater than 2000"
+!!! example "The value of `filtered_data` where "nb_sales" is equal to 1550 or greater than 2000"
 
     === "exposed_type = "pandas""
 
         ```python
-        filtered_data = pandas.DataFrame
+        pandas.DataFrame
         (
                      date  nb_sales
             0  12/24/2018      1550
@@ -1301,7 +1301,7 @@ filtered_data = data_node.filter(
     === "exposed_type = "modin""
 
         ```python
-        filtered_data = modin.pandas.DataFrame
+        modin.pandas.DataFrame
         (
                      date  nb_sales
             0  12/24/2018      1550
@@ -1312,7 +1312,7 @@ filtered_data = data_node.filter(
     === "exposed_type = "numpy""
 
         ```python
-        filtered_data = numpy.array(
+        numpy.array(
             [
                 ["12/24/2018", "1550"],
                 ["12/25/2018", "2315"],
@@ -1322,7 +1322,7 @@ filtered_data = data_node.filter(
 
     === "exposed_type = SaleRow"
         ```python
-        filtered_data = [
+        [
             SaleRow("12/24/2018", 1550),
             SaleRow("12/25/2018", 2315),
         ]
@@ -1334,7 +1334,7 @@ and filtering style:
 ```python
 sale_data = data_node["nb_sales"]
 
-filtered_data = data_node[(data_node["nb_sales"] == 1500) | (data_node["nb_sales"] > 2000)]
+filtered_data = data_node[(data_node["nb_sales"] == 1550) | (data_node["nb_sales"] > 2000)]
 ```
 
 Similarly, with numpy array exposed type, it is possible to use numpy style indexing and filtering
@@ -1343,7 +1343,7 @@ style:
 ```python
 sale_data = data_node[:, 1]
 
-filtered_data = data_node[(data_node[:, 1] == 1500) | (data_node[:, 1] > 2000)]
+filtered_data = data_node[(data_node[:, 1] == 1550) | (data_node[:, 1] > 2000)]
 ```
 
 !!! warning "Supported data types"
