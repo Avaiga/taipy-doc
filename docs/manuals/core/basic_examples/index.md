@@ -66,6 +66,23 @@ strongly recommend using it.
 
 In line 4, we simply instantiate and run a Core service.
 
+!!! warning "Core service should be run only once"
+
+    At a given time, there should be only one Core service running. If a Core service instance
+    is already running, running another Core service will raise an exception.
+
+    To stop a Core service instance, you can use the `stop()` method.
+
+    ```python linenums="1"
+    from taipy import Core
+
+    if __name__ == "__main__":
+        core = Core()
+        core.run()
+        ...
+        core.stop()
+    ```
+
 ## Creating Scenarios and accessing data
 
 Now you can create and manage *Scenarios*, submit the graph of *Tasks* for execution, and access 

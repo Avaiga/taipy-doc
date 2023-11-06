@@ -41,5 +41,16 @@ The output on the console indicates that all entities of the development version
     In a Notebook environment, development mode is applied by default when the run method of
     the Core service is called.
 
-    This means all entities of the development version are cleaned every time `Core().run()` is invoked
-    in a code cell.
+    This means all entities of the development version are cleaned every time a Core service is
+    run in a code cell.
+
+    To run and stop a Core service instance, you can use the `run()` and `stop()` methods.
+
+    ```python linenums="1"
+    from taipy import Core
+
+    core = Core()
+    core.run()
+    ...
+    core.stop()
+    ```

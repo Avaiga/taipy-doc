@@ -17,9 +17,28 @@ This is the list of changes to Taipy releases as they were published.
     If you are using a legacy version, please refer to the 
     [Legacy Release Notes](relnotes-legacy.md) page.
 
+
 # Community edition: 3.1
 
 (Work in progress)
+
+## New Features
+
+## Improvements and changes
+
+<h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
+
+- Running the Core service more than one time will raise an exception to prevent
+    multiple instances of the Core service to run at the same time.
+
+## Significant bug fixes
+
+<h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
+
+- Can not write to a SQLDataNode or a SQLTableDataNode using examples provided by the
+    documentation.<br/>
+    See [issue #816](https://github.com/Avaiga/taipy-core/issues/816).
+
 
 # Community edition: 3.0
 
