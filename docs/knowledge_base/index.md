@@ -614,13 +614,13 @@ hide:
     </a>
   </li>
   <li data-keywords="gui vizelement chart">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/third_party_objects">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/3rd_party_components">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
       </header>
       <div class="tp-content-card-body">
-        <h4> Incorporate Third-Party Components </h4>
-        <p> Use part to embed any HTML inside your Taipy app.
+        <h4> Integrate Third-Party Components </h4>
+        <p> Use the `part` visual element to embed any HTML inside your application.
         </p>
       </div> 
     </a>

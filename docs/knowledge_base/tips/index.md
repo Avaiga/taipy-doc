@@ -233,9 +233,9 @@ Tips and Tricks!
         <img class="tp-content-card-image" src="third_party_objects/part_illustration.png">
       </header>
       <div class="tp-content-card-body">
-        <h4>Incorporate Third-Party Components </h4>
+        <h4> Integrate Third-Party Components </h4>
         <span class="tp-tag">Front-end </span>
-        <p> Use part to embed any HTML inside your Taipy app.
+        <p> Use the `part` visual element to embed any HTML inside your application.
         </p>
       </div> 
     </a>
