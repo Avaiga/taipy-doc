@@ -1,246 +1,207 @@
 Configuration elements defined in a configuration file are grouped
 by type; each element type has a specific section in the
-"Taipy Configs" panel.
+**Taipy Configs** panel.
 
-# Data Nodes configuration
+## Data Nodes configuration
 
-The "Data Nodes" section list all the Data Node configuration defined in the selected
+The **Data Nodes** section list all the Data Node configuration defined in the selected
 configuration file.
 
-## Creating a new Data Node configuration
+### Creating a new Data Node configuration
 
-Press the '+' sign that appears when you hover the title of the Data Nodes section of
-the "Taipy Configs" panel.<br/>
+Press the '+' sign that appears when you hover the title of the **Data Nodes** section of
+the **Taipy Configs** panel.<br/>
 Taipy Studio will prompt you for an identifier for this new Data Node configuration
 element.<br/>
 Note that you cannot set the identifier of a new Data Node element to one
 already used by another.
 
 Default values are provided for the essential properties of the new Data Node configuration
-element: *storage_type* is set to "pickle" and *scope* is set to "SCENARIO:SCOPE".<br/>
+element: *storage_type* is set to "pickle", and *scope* is set to "SCENARIO:SCOPE".<br/>
 The properties for the new element are displayed in the DETAILS section of the
-"Taipy Configs" panel.
+**Taipy Configs** panel.
 
-## Renaming a Data Node configuration
+### Renaming a Data Node configuration
+
+Right-click a Data Node identifier in the **Data Nodes** section and select the "Rename"
+option.<br/>
+Note that you cannot set the new identifier of a Data Node element to one that is already used by
+another Data Node element.
+
+The new name of a Data Node element is propagated to the Task configurations that reference it.
+
+### Deleting a Data Node configuration
 
 Right-click a Data Node identifier in the Data Node section and select the
-"Rename node" option.<br/>
-Note that you cannot set the new identifier of a Data Node element to one
-that is already used by another Data Node element.
-
-The new name of a Data Node element is propagated to the Task configurations
-that reference it.
-
-## Deleting a Data Node configuration
-
-Right-click a Data Node identifier in the Data Node section and select the
-"Delete node from configuration" option.<br/>
+"Delete from configuration" option.<br/>
 Taipy Studio will prompt you to confirm you really want to remove that
 element from the configuration file.
 
-## Locate in the Graph View
+### Locate in the Graph View
 
-If a [Graph View](graphview.md) is active,
+If a [Graph View](graphview.md) is active and showing a Scenario configuration,
 you add a specific Data Node configuration element to that view by selecting
 the "Add/Show in active View" menu option that pops when you right-click the
 relevant element identifier.
 
 If that Data Node configuration element is already present in the Graph View,
-then the view is panned so you can spot it easily.
+the view is panned so you can spot it easily.
 
-## Properties
+### Properties
 
-The "Details" section will let you:
+The **Details** section will let you:
 
 - Change the Data Node configuration identifier.
 - Specify the storage type property.
 - Specify the scope property.
 - Add Data Node-specific properties and values that Taipy Core can use.
 
-# Tasks configuration
+## Tasks configuration
 
-The "Tasks" section list all the Task configuration elements defined in the selected
+The **Tasks** section lists all the Task configuration elements defined in the selected
 configuration file.
 
-## Creating a new Task configuration
+### Creating a new Task configuration
 
-Press the '+' sign that appears when you hover the title of the Tasks section of the
-"Taipy Configs" panel.<br/>
+Press the '+' sign that appears when you hover the title of the **Tasks** section of the
+**Taipy Configs** panel.<br/>
 Taipy Studio will prompt you for an identifier for this new Task configuration
 element.<br/>
 Note that you cannot set the identifier of a new Task element to one
 already used by another.
 
 Default values are provided for the essential properties of the new Task configuration
-element: *inputs* and *outputs* are set to an empty list and *skippable* is set to
+element: *inputs* and *outputs* are set to an empty list, and *skippable* is set to
 "False:bool".<br/>
 The properties for the new element are displayed in the DETAILS section of the
 "Taipy Configs" panel.
 
-## Renaming a Task configuration
+### Renaming a Task configuration
 
-Right-click a Task identifier in the Tasks section and select the
-"Rename node" option.<br/>
-Note that you cannot set the new identifier of a Task element to one
-that is already used by another Task element.
+Right-click a Task identifier in the **Tasks** section and select the "Rename" option.<br/>
+Note that you cannot set the new identifier of a Task element to one that is already used by
+another Task element.
 
-The new name of a Task element is propagated to the Pipeline configurations
-that reference it.
+The new name of a Task element is propagated to the Scenario configurations that reference it.
 
-## Deleting a Task configuration
+### Deleting a Task configuration
 
-Right-click a Task identifier in the Tasks section and select the
-"Delete node from configuration" option.<br/>
+Right-click a Task element identifier in the **Tasks** section and select the
+"Delete from configuration" option.<br/>
 Taipy Studio will prompt you to confirm you really want to remove that
 element from the configuration file.
 
-## Locate in the Graph View
+### Locate in the Graph View
 
-If a [Graph View](graphview.md) is active,
+If a [Graph View](graphview.md) is active and showing a Scenario configuration,
 you add a specific Task configuration element to that view by selecting
 the "Add/Show in active View" menu option that pops when you right-click the
 relevant element identifier.<br/>
 Note that adding the Task configuration element to the Graph View also
-adds the dependent Data Node configuration elements that it depends on.
-
-If the Graph View represents a Pipeline configuration, then the Task
-configuration is added to that Pipeline configuration.
+adds the dependent Data Node configuration elements it depends on.
 
 If that Task configuration element is already present in the Graph View,
-then the view is panned so you can spot it easily.
+then the view is panned so you can spot the Task element easily.
 
-## Properties
+### Properties
 
-The "Details" section will let you:
+The **Details** section will let you:
 
 - Change the Task configuration identifier.
 - Change the input and output Data Nodes used by this Task configuration.<br/>
     You can pick the Data Node configurations from the list of
     configured Data Nodes in the selected configuration file.
 - Specify the function used by this Task configuration.<br/>
-    You will select the module to locate the function, then the function
+    You will select the module to locate the function, then the name of the function
     itself.<br/>
-    Note that if you right-click the function name in the Details section,
+    If you right-click the function name in the **Details** section,
     you can select the "Show Source" menu option. This opens an editor showing
     the source code at the location where the function is defined.
 - Specify whether this Task configuration is *skippable* or not.
 
-# Pipelines configuration
+## Scenarios configuration
 
-The "Pipelines" section list all the Pipeline configuration elements defined in the selected
+The **Scenarios** section lists all the Scenario configuration elements defined in the selected
 configuration file.
 
-## Creating a new Pipeline configuration
+If a Scenario configuration element contains one or more sequences, its node can be expanded to
+reveal the Sequence elements the Scenario configuration defines.
 
-Press the '+' sign that appears when you hover the title of the Pipelines section of the
-"Taipy Configs" panel.<br/>
-Taipy Studio will prompt you for an identifier for this new Pipeline configuration
-element.<br/>
-Note that you cannot set the identifier of a new Pipeline element to one
-already used by another.
+### Creating a new Scenario configuration
 
-Default values are provided for the essential properties of the new Pipeline configuration
-element: *tasks* is set to an empty list.<br/>
-The properties for the new element are displayed in the DETAILS section of the
-"Taipy Configs" panel.
-
-## Renaming a Pipeline configuration
-
-Right-click a Pipeline identifier in the Pipelines section and select the
-"Rename node" option.<br/>
-Note that you cannot set the new identifier of a Pipeline element to one
-already used by another.
-
-The new name of a Pipeline element is propagated to the Scenario configurations
-that reference it.
-
-## Deleting a Pipeline configuration
-
-Right-click a Pipeline identifier in the Pipelines section and select the
-"Delete node from configuration" option.<br/>
-Taipy Studio will prompt you to confirm you really want to remove that
-element from the configuration file.
-
-## Showing in a Graph View
-
-Right-click a Pipeline identifier in the Pipelines section and select the
-"Show View" option.<br/>
-Taipy Studio will create a [Graph View](graphview.md) that represents
-the Pipeline configuration element you selected.
-
-## Locate in the Graph View
-
-If a [Graph View](graphview.md) is active,
-you add a specific Pipeline configuration element to that view by selecting
-the "Add/Show in active View" menu option that pops when you right-click the
-relevant element identifier.
-
-If the Graph View represents a Scenario configuration, then the Pipeline
-configuration is added to that Scenario configuration.
-
-If that Pipeline configuration element is already present in the Graph View,
-then the view is panned so you can spot it easily.
-
-## Properties
-
-The "Details" section will let you:
-
-- Change the Pipeline configuration identifier.
-- Change the Tasks used by this Pipeline configuration.<br/>
-    You can pick the Task configurations from the list of configured
-    Tasks in the selected configuration file.
-
-# Scenarios configuration
-
-The "Scenarios" section list all the Scenario configuration elements defined in the selected
-configuration file.
-
-## Creating a new Scenario configuration
-
-Press the '+' sign that appears when you hover the title of the Scenarios section of
-the "Taipy Configs" panel.<br/>
+Press the '+' sign that appears when you hover the title of the **Scenarios** section of
+the **Taipy Configs** panel.<br/>
 Taipy Studio will prompt you for an identifier for this new Scenario configuration
 element.<br/>
 Note that you cannot set the identifier of a new Scenario element to one
 already used by another.
 
 Default values are provided for the essential properties of the new Scenario configuration
-element: *pipelines* is set to an empty list.<br/>
+element: *sequences* is set to an empty list.<br/>
 The properties for the new element are displayed in the DETAILS section of the
 "Taipy Configs" panel.
 
-## Renaming a Scenario configuration
+### Renaming a Scenario configuration
 
-Right-click a Scenario identifier in the Scenarios section and select the
+Right-click a Scenario identifier in the **Scenarios** section and select the
 "Rename node" option.<br/>
 Note that you cannot set the new identifier of a Scenario element to one
 already used by another.
 
-## Deleting a Scenario configuration
+### Deleting a Scenario configuration
 
-Right-click a Scenario identifier in the Scenarios section and select the
-"Delete node from configuration" option.<br/>
+Right-click a Scenario identifier in the **Scenarios** section and select the
+"Delete from configuration" option.<br/>
 Taipy Studio will prompt you to confirm you really want to remove that
 element from the configuration file.
 
-## Showing in a Graph View
+### Showing in a Graph View
 
-Right-click a Scenario identifier in the Scenarios section and select the
+Right-click a Scenario identifier in the **Scenarios** section and select the
 "Show View" option.<br/>
-Taipy Studio will create a [Graph View](graphview.md) that represents
-the Scenario configuration element you selected.
+Taipy Studio will create a [Graph View](graphview.md) representing the selected Scenario
+configuration element.
 
-The Graph View will represent all the Pipeline configuration elements
-referenced by this Scenario configuration and all the dependent
-Task and Data Node configuration elements.
+The Graph View will represent all the configuration elements referenced by this Scenario
+configuration (all the dependent Task and Data Node configuration elements).
 
-## Properties
+### Adding a sequence
 
-The "Details" section will let you:
+Press the '+' sign that appears next to a **Scenario** configuration name in the **Scenarios**
+section of the **Taipy Configs** panel.<br/>
+Taipy Studio will prompt you for an identifier for a new sequence in this Scenario configuration
+element.<br/>
+Note that you cannot set the identifier of a sequence to one already used in this Scenario
+configuration element.
 
-- Change the Scenario configuration identifier.
-- Change the Pipelines used by this Scenario configuration.<br/>
-    You can pick the Pipeline configurations from the list of
-    configured Pipelines in the selected configuration file.
-- Specify the frequency used by this Scenario configuration.
-- Specify comparator functions used by this Scenario configuration.
+### Renaming a sequence
+
+Right-click a Sequence identifier in the list of child nodes of a Scenario element in the
+**Scenarios** section and select the "Rename" option.<br/>
+Note that you cannot set the new identifier of a sequence to one that is already used by the
+selected Scenario configuration element.
+
+### Deleting a sequence
+
+Right-click a Sequence identifier in the list of child nodes of a Scenario element in the
+**Scenarios** section and select the "Delete from configuration" option.<br/>
+Taipy Studio will prompt you to confirm you really want to remove that
+element from the configuration file.
+
+### Properties
+
+If a Scenario configuration element is selected in the **Scenarios** section, the **Details**
+section displays the details of that Scenario element and lets you:
+
+- Change the identifier of the Scenario configuration element.
+- Change the Tasks used by this Scenario configuration.<br/>
+    Selecting the value of the *tasks* field will prompt you to select the Tasks configuration
+    elements you want to reference from the Scenario configuration element.
+
+If a sequence of a Scenario configuration element is selected in the **Scenarios** section, the
+**Details** section displays the details of that sequence and lets you:
+
+- Change the sequence identifier.
+- Change the Tasks used by this sequence.
+
+

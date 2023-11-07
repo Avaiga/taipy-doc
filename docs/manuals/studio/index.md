@@ -1,5 +1,3 @@
-# Taipy Studio
-
 Taipy Studio is an extension to [Visual Studio Code](https://code.visualstudio.com/)
 that significantly accelerates the development of Taipy applications.
 
@@ -13,7 +11,7 @@ This tool addresses two major areas:
     which depend on configuration elements.
 
     Taipy Studio provides a graphical editor where you can create and configure
-    the elements of your configurations stored in toml files that your Taipy
+    the elements of your configurations stored in TOML files that your Taipy
     application can load at runtime. The editor can represent sequences and
     scenarios as graphs, where nodes are DataNodes or Tasks.
 
@@ -33,7 +31,7 @@ This tool addresses two major areas:
     text fragments.
 
     It is also tricky to locate typos and errors in the Markdown text.
-    Taipy Studio will spot these problems for you and report them in the
+    Taipy Studio will spot these problems and report them in the
     *Problems* view. It can often provide a *Quick Fix* action that can solve
     your syntactic problem in no time.
 
