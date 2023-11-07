@@ -1,5 +1,3 @@
-# Building configurations
-
 Applications that rely on [Taipy Core](../../core/index.md) need to define
 a [Configuration](../../core/config/index.md) where the data flow is
 described.<br/>
@@ -10,7 +8,7 @@ section).
 
 Taipy Studio provides ways to design graphically Taipy application configurations.
 Within the Visual Studio Code environment, you can create configuration elements (for
-Data Nodes, Tasks, Pipelines, and Scenarios), specify the properties for those elements,
+Data Nodes, Tasks, and Scenarios), specify the properties for those elements,
 and use a visual representation of those configuration elements as a graph.
 
 <p align="center">
@@ -23,43 +21,45 @@ runtime by Taipy applications as described in the
 
 ## Introduction
 
-Taipy Studio has a dedicated panel called "Taipy Configs", where mostly everything
+Taipy Studio has a dedicated panel called **Taipy Configs**, where almost everything
 happens. To open this panel, use the "View > Open View..." menu option and search
 for the view called "Taipy Configs".
 
 The view appears like this:
 
 <p align="center">
-  <img src="../images/config_panel.png" width="30%"/>
+  <img src="../images/config_panel.png" width="40%"/>
 </p>
 
 This panel is split into several sections that let the user access all the
 configuration elements:
 
-- Config Files: holds a list of configuration files (`*.toml`) that exist in the
+- **Config Files**: holds a list of configuration files (`*.toml`) that exist in the
     project.<br/>
     The user can select a configuration file in this list to populate the other
     sections of the Taipy Configs view.
-- Data Nodes: holds the list of
+- **Data Nodes**: holds the list of
     [Data Node configurations](../../core/config/data-node-config.md) defined
     in the selected configuration file.<br/>
     The user can select a Data Node configuration in this list to access all its
     properties in the Details section (see below).
-- Tasks: holds the list of
+- **Tasks**: holds the list of
     [Task configurations](../../core/config/task-config.md) defined
     in the selected configuration file.<br/>
     The user can select a Task configuration in this list to access all its
     properties in the Details section (see below).
-- Scenarios: holds the list of
+- **Scenarios**: holds the list of
     [Scenario configurations](../../core/config/scenario-config.md) defined
     in the selected configuration file.<br/>
+    Each Scenario configuration element may contain sequences that appear as child nodes of the
+    scenario element.<br/>
     The user can select a Scenario configuration in this list to access all its
     properties in the Details section (see below).
-- Details: When a configuration element is selected, the Details section displays
+- **Details**: When a configuration element is selected, the Details section displays
     all the properties of this configuration element and allows the user to
     modify these properties.
 
-Using these different sections, you can add, rename or remove configuration
+Using these different sections, you can add, rename, or remove configuration
 elements, as well as change their properties in the "Details" section.
 
 All your actions impact the selected configuration file;
