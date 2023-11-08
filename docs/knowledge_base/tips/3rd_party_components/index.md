@@ -5,7 +5,7 @@ components into your applications. These components could be anything from inter
 visualizations to videos or other web pages. This article will demonstrate how to 
 effectively include these external resources in your web app.
 
-![Part illustration](part_illustration.png)
+![Part illustration](part_illustration.png){width=100%}
 
 ## Example: Embedding a Sankey Diagram
 
