@@ -5,14 +5,16 @@ components into your applications. These components could be anything from inter
 visualizations to videos or other web pages. This article will demonstrate how to 
 effectively include these external resources in your web app.
 
-## Example: Embedding a Sankey Diagram
+![Part illustration](part_illustration.png)
 
-![Sankey Diagram](sankey_diagram.png){width=100%}
+## Example: Embedding a Sankey Diagram
 
 Let's explore a practical example of how to integrate a Sankey Diagram into a web 
 application. A Sankey Diagram is a visualization tool used to represent the flow of 
 resources or information between multiple entities. It finds applications in energy 
 studies, cost analysis, and network analysis.
+
+![Sankey Diagram](sankey_diagram.png){width=100%}
 
 In our scenario, we have a Python application that processes recruitment data, performs 
 analysis, and generates a Sankey Diagram using [Plotly](https://plotly.com/), a Python library for interactive 
