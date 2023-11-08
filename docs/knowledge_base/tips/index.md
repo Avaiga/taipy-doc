@@ -230,7 +230,7 @@ Tips and Tricks!
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement chart">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="third_party_objects">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="third_party_objects/part_illustration.png">
+        <img class="tp-content-card-image" src="3rd_party_components/part_illustration.png">
       </header>
       <div class="tp-content-card-body">
         <h4> Integrate Third-Party Components </h4>
