@@ -119,7 +119,7 @@ Here's a simple GUI set up for our "Hello World" scenario:
 ```python linenums="1"
 import taipy as tp
 
-# Configuration of scenario
+# Previous configuration of scenario
 ...
 
 page = """
@@ -150,8 +150,8 @@ if __name__ == "__main__":
 Now, let’s explain the key elements of this code:
 
 ```python
-from taipy import Gui
 import taipy as tp
+
 
 page = """
 Name: <|{input_name}|input|>
@@ -213,7 +213,7 @@ variable, which is then shown on the user interface.
 if __name__ == "__main__":
     tp.Core().run()
     scenario = tp.create_scenario(scenario_cfg)
-    Gui(page).run()
+    tp.Gui(page).run()
 ```
 
 The main part of the application starts by setting up the Core service, generating a scenario, 
