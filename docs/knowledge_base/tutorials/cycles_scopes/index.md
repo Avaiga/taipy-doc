@@ -17,32 +17,23 @@ nodes and scenarios effectively in Taipy.
 
 # Cycles
 
-[Cycles](../../../manuals/core/concepts/cycle.md) have been introduced to reflect business 
-situations companies frequently encounter and can be extremely useful. 
+Using [Cycles](../../../manuals/core/concepts/cycle.md) allow you to:
 
-For example, a big fast-food chain wants to predict its store sales every week. When they create 
-a scenario for a particular week, it has to be linked to that specific week. Usually, there will 
-be just one scenario used for all the scenarios created for a particular week. 
-This special 'official' scenario is called the 'Primary' scenario in Taipy.
+- Share variables between scenarios in the same time frame
 
-Note that Cycles can be ignored entirely if the business problem has no time frequency. 
+For example, if I have three sales prediction scenarios for the month of June, I do 
+not have to duplicate the data for each scenario. I can share the June sales data 
+between the three scenarios.
 
-## Advantages of Cycles:
+- Better organize the data nodes in your application
 
-- **Time-Based Organization:** Cycles facilitate the organization and analysis of scenarios over 
-    specific periods.
+![Data Node Selector](data_node_selector.png){ width=30% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-- **Primary Scenario Identification:** Cycles allow the designation of a primary scenario for
-    reference or official analysis.
 
-- **Enhanced Data Consistency:**
-    They ensure data and parameter consistency across scenarios linked to a specific time period.
+Here we have a single month_data node for all scenarios of October 2022 and it 
+is part of the October 2022 cycle. I do not need to create a new data node for each scenario and clutter my application.
 
-- **Custom Frequency:** Cycles can be customized to various frequencies to align with specific 
-    business needs.
 
-- **Scenario Comparison:** Cycles make it easier to compare and analyze different scenarios 
-    within the same time frame.
 
 ## Example: Filtering by Month
 
@@ -257,6 +248,8 @@ tp.Gui("""<|{scenario}|scenario_selector|>
           <|{scenario}|scenario_dag|>
           <|{data_node}|data_node_selector|>""").run()
 ```
+
+![Visual Elements](visual_elements.png){ width=60% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Conclusion
 
