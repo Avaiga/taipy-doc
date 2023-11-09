@@ -108,7 +108,7 @@ The graph involves:
     Hello Taipy!
     ```
 
-    [Get the scenario code](./hello_world_scenario.py){: .tp-btn target='blank'}
+    [Get the code](./hello_world_scenario.py){: .tp-btn target='blank'}
 
 # Build a graphical interface
 
