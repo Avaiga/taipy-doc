@@ -504,7 +504,7 @@ hide:
       <div class="tp-content-card-body">
         <h4> Long-running Callbacks </h4>
         <p> Discover the 'long-running callbacks' feature of Taipy GUI, ensuring responsiveness 
-            during lengthy tasks. This article provides practical examples, highlighting the 
+            during lengthy tasks. This tip provides practical examples, highlighting the 
             potential for improved user experiences.        
         </p>
       </div> 
@@ -544,7 +544,7 @@ hide:
       <div class="tp-content-card-body">
         <h4> Data Nodes </h4>
         <p> Explore Taipy data nodes and understand their central role in accessing data from 
-            various sources. This article serves as your gateway to comprehending data nodes 
+            various sources. This tip serves as your gateway to comprehending data nodes 
             in Taipy.
         </p>
       </div> 
@@ -614,13 +614,13 @@ hide:
     </a>
   </li>
   <li data-keywords="gui vizelement chart">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/iframes">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/3rd_party_components">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
       </header>
       <div class="tp-content-card-body">
-        <h4> iFrames and Interactive Visualizations </h4>
-        <p> Use iFrame to embed any HTML inside your Taipy app.
+        <h4> Integrate Third-Party Components </h4>
+        <p> Use the `part` visual element to embed any HTML inside your application.
         </p>
       </div> 
     </a>
