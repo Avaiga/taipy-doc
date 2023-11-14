@@ -24,6 +24,17 @@ This is the list of changes to Taipy releases as they were published.
 
 ## New Features
 
+<h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
+
+- The `DataNode.filter()^` method and the indexing/filtering style now also support filtering a
+    Numpy array, a list of objects, and a list of dictionaries.<br/>
+    For more information, refer to [Filter data node](./manuals/core/entities/data-node-mgt.md#filter-read-results).
+
+- You can now append new data to a data node using the `DataNode.append()^` method. The method is
+    available for `CSVDataNode`, `ExcelDataNode`, `JSONDataNode`, `ParquetDataNode`, `SQLDataNode`,
+    `SQLTableDataNode`, and `MongoCollectionDataNode`.<br/>
+    For more information, refer to [Append new data to a data node](./manuals/core/entities/data-node-mgt.md#append-new-data-to-a-data-node).
+
 ## Improvements and changes
 
 <h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
