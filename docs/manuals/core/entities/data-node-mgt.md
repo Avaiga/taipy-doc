@@ -158,7 +158,7 @@ data nodes.
     # Retrieve all data nodes
     data_nodes = tp.get_data_nodes()
 
-    data_nodes #[DataNode 1, DataNode 2, ..., DataNode N]
+    data_nodes # [DataNode 1, DataNode 2, ..., DataNode N]
     ```
 
 # Read / Write a data node
@@ -203,7 +203,7 @@ node type and its exposed type) as a parameter and writes it on the data node:
     # Writes the dictionary on the data node
     data_node.write(data)
 
-    # returns the new data stored on the data node
+    # Returns the new data stored on the data node
     data_retrieved = data_node.read()
     ```
 
@@ -747,10 +747,10 @@ file based on the _exposed_type_ parameter:
     )
     ```
 
-When writing to a SQL data node, Taipy will first pass the data to _write_query_builder_ and then
+When writing to a SQL data node, Taipy will first pass the data to *write_query_builder* and then
 execute a list of queries returned by the query builder:
 
-- The _write_query_builder_ parameter of `orders_cfg` in this example is defined as the
+- The *write_query_builder* parameter of `orders_cfg` in this example is defined as the
   `write_orders_plan()` method.
 - After being called with the write data as a `pd.DataFrame`, the `write_orders_plan()`
   method will return a list of SQL queries.
@@ -1157,6 +1157,430 @@ Correspondingly, In memory data node can write any data object that is valid dat
     Since the data is stored in memory, it cannot be used in a multiprocess environment.
     (See [Job configuration](../config/job-config.md#standalone) for more details).
 
+
+# Append new data to a data node
+
+To append new data to the data node, you can use the `DataNode.append()^` method. The method takes
+a data object (string, dictionary, lists, NumPy arrays, Pandas dataframes, etc. based on the data
+node type and its exposed type) as a parameter and writes it on the data node without deleting
+existing data.
+
+!!! example
+
+    ```python linenums="1"
+    import taipy as tp
+    import my_config
+
+    # Creating a scenario from a config
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+    # Retrieve a data node
+    data_node = scenario.sales_history
+
+    data = [{"product": "a", "qty": "2"}, {"product": "b", "qty": "4"}]
+
+    # Append the dictionary to the data node
+    data_node.append(data)
+
+    # Returns the new data stored on the data node
+    data_retrieved = data_node.read()
+    ```
+
+!!! warning "Supported data node types"
+
+    The `DataNode.append()^` method is only implemented for:
+
+    - `CSVDataNode`
+    - `ExcelDataNode`
+    - `JSONDataNode`
+    - `ParquetDataNode`
+    - `SQLDataNode`
+    - `SQLTableDataNode`
+    - `MongoCollectionDataNode`.
+
+    Other data node types are not supported.
+
+## CSV
+
+Similar to writing, when appending new data to a CSV data node, the `CSVDataNode.append()^` method
+can take several datatype as the input:
+
+- list, numpy array
+- dictionary, or list of dictionaries
+- pandas dataframes
+
+The following examples will append new data to the path of the CSV data node:
+
+!!! example "`data_node.append()` examples"
+
+    === "list"
+        When appending a list to CSV data node, each element of a list contains 1 row of data.
+
+        ```python
+        # append a list
+        data_node.append(
+            ["12/24/2018", "12/25/2018", "12/26/2018"]
+        )
+        # or append a list of lists
+        data_node.append(
+            [
+                ["12/24/2018", 1550],
+                ["12/25/2018", 2315],
+                ["12/26/2018", 1832],
+            ]
+        )
+        ```
+
+    === "numpy array"
+
+        ```python
+        data_node.append(
+            np.array([
+                ["12/24/2018", 1550],
+                ["12/24/2018", 2315],
+                ["12/24/2018", 1832],
+            ])
+        )
+        ```
+
+    === "dictionary"
+
+        ```python
+        # "list" form
+        data_node.append(
+            {
+                "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
+                "nb_sales": [1550, 2315, 1832]
+            }
+        )
+        # "records" form
+        data_node.append(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/24/2018", "nb_sales": 2315},
+                {"date": "12/24/2018", "nb_sales": 1832},
+            ]
+        )
+        ```
+
+    === "pandas dataframes"
+
+        ```python
+        data = pandas.DataFrame(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/24/2018", "nb_sales": 2315},
+                {"date": "12/24/2018", "nb_sales": 1832},
+            ]
+        )
+
+        data_node.append(data)
+        ```
+
+## Excel
+
+Similar to writing, when appending data to an Excel data node, the `ExcelDataNode.append()^` method can take several datatype as the input:
+
+- list, numpy array
+- dictionary, or list of dictionaries
+- pandas dataframes
+
+Without specified sheet names, the new data will be append to the first sheet of the excel file.
+
+!!! example "`data_node.append()` examples"
+
+    === "list"
+        When appending a list to Excel data node, each element of a list contains 1 row of data.
+
+        ```python
+        # append a list
+        data_node.append(
+            ["12/24/2018", "12/25/2018", "12/26/2018"]
+        )
+        # or append a list of lists
+        data_node.append(
+            [
+                ["12/24/2018", 1550],
+                ["12/25/2018", 2315],
+                ["12/26/2018", 1832],
+            ]
+        )
+        ```
+
+    === "numpy array"
+
+        ```python
+        data_node.append(
+            np.array([
+                ["12/24/2018", 1550],
+                ["12/25/2018", 2315],
+                ["12/26/2018", 1832],
+            ])
+        )
+        ```
+
+    === "dictionary"
+
+        ```python
+        # "list" form
+        data_node.append(
+            {
+                "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
+                "nb_sales": [1550, 2315, 1832]
+            }
+        )
+        # "records" form
+        data_node.append(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/25/2018", "nb_sales": 2315},
+                {"date": "12/26/2018", "nb_sales": 1832},
+            ]
+        )
+        ```
+
+    === "pandas dataframes"
+
+        ```python
+        data = pandas.DataFrame(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/25/2018", "nb_sales": 2315},
+                {"date": "12/26/2018", "nb_sales": 1832},
+            ]
+        )
+
+        data_node.append(data)
+        ```
+
+You can also append new data to multiple sheets by specifying the sheet names as the keys of a
+dictionary as follow.
+
+!!! example "`data_node.append()` example with specified sheet names"
+
+    ```python
+    data = {
+        "Sheet1": pandas.DataFrame(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/25/2018", "nb_sales": 2315},
+                {"date": "12/26/2018", "nb_sales": 1832},
+            ]
+        ),
+        "Sheet2": pandas.DataFrame(
+            [
+                {"date": "12/24/2019", "nb_sales": 1930},
+                {"date": "12/25/2019", "nb_sales": 2550},
+                {"date": "12/26/2019", "nb_sales": 1741},
+            ]
+        ),
+    }
+
+    data_node.append(data)
+    ```
+
+
+## SQL Table
+
+Similar to writing, when appending data to a SQL Table data node, the `SQLTableDataNode.append()^` method can take several datatype as the input:
+
+- list of lists or list of tuples
+- numpy array
+- dictionary, or list of dictionaries
+- pandas dataframes
+
+The following examples will append new data to the SQL Table data node:
+
+!!! example "`data_node.append()` examples"
+
+    === "list"
+
+        ```python
+        # append a list of lists
+        data_node.append(
+            [
+                ["12/24/2018", 1550],
+                ["12/25/2018", 2315],
+                ["12/26/2018", 1832],
+            ]
+        )
+
+        # or append a list of tuples
+        data_node.append(
+            [
+                ("12/24/2018", 1550),
+                ("12/25/2018", 2315),
+                ("12/26/2018", 1832),
+            ]
+        )
+        ```
+
+    === "numpy array"
+
+        ```python
+        data = np.array(
+            [
+                ["12/24/2018", 1550],
+                ["12/25/2018", 2315],
+                ["12/26/2018", 1832],
+            ]
+        )
+
+        data_node.append(data)
+        ```
+
+    === "dictionary"
+
+        ```python
+        # append 1 record to the SQL table
+        data_node.append(
+            {"date": "12/24/2018", "nb_sales": 1550}
+        )
+
+        # append multiple records using a list of dictionaries
+        data_node.append(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/25/2018", "nb_sales": 2315},
+                {"date": "12/26/2018", "nb_sales": 1832},
+            ]
+        )
+        ```
+
+    === "pandas dataframes"
+
+        ```python
+        data = pandas.DataFrame(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/25/2018", "nb_sales": 2315},
+                {"date": "12/26/2018", "nb_sales": 1832},
+            ]
+        )
+
+        data_node.append(data)
+        ```
+
+## SQL
+
+To append new data to a SQL data node, the *append_query_builder* property needs to be defined
+when configuring the [SQL Data Node configuration](../config/data-node-config.md#sql).
+
+Similar to writing, when appending to a SQL data node, Taipy will first pass the data to the
+*append_query_builder* and then execute a list of queries returned by the query builder.
+
+## JSON
+
+Similar to writing, when appending data to a JSON data node, the `JSONDataNode.append()^` method can
+take a list, a dictionary, or a list of dictionaries as the input.
+
+!!! example "Append new data to a JSON data node"
+
+    === "Append dictionaries"
+
+        ```python
+        data = [
+            {"date": "12/24/2018", "nb_sales": 1550},
+            {"date": "12/25/2018", "nb_sales": 2315},
+            {"date": "12/26/2018", "nb_sales": 1832},
+        ]
+        data_node.append(data)
+        ```
+
+## Parquet
+
+!!! warning
+
+    - To be able to append new data to a Parquet data node, you need to install the optional
+    "fastparquet" dependency with `pip install taipy[fastparquet]`.
+
+When appending data to a Parquet data node, the `ParquetDataNode.append()^` method can take several
+datatype as the input depending on the _exposed type_:
+
+- pandas dataframes
+- modin dataframes
+- any object, which will be passed to the `pd.DataFrame` constructor (e.g., list of dictionaries)
+
+Note that the column names of the dataframes should be exactly similar to existing data in the
+Parquet data node.
+
+The following examples will append to the path of the Parquet data node:
+
+!!! example "`data_node.append()` examples"
+
+    === "pandas dataframes"
+
+        ```python
+        data = pandas.DataFrame(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/24/2018", "nb_sales": 2315},
+                {"date": "12/24/2018", "nb_sales": 1832},
+            ]
+        )
+
+        data_node.append(data)
+        ```
+
+    === "dictionary"
+
+        ```python
+        # "list" form
+        data_node.append(
+            {
+                "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
+                "nb_sales": [1550, 2315, 1832]
+            }
+        )
+
+        # "records" form
+        data_node.append(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/24/2018", "nb_sales": 2315},
+                {"date": "12/24/2018", "nb_sales": 1832},
+            ]
+        )
+        ```
+
+    === "modin dataframes"
+
+        ```python
+        data = modin.pandas.DataFrame(
+            [
+                {"date": "12/24/2018", "nb_sales": 1550},
+                {"date": "12/24/2018", "nb_sales": 2315},
+                {"date": "12/24/2018", "nb_sales": 1832},
+            ]
+        )
+
+        data_node.append(data)
+        ```
+
+!!! warning "Append numpy arrays"
+
+    Appending numpy arrays to a Parquet data node will result in an error since there is no column
+    name in numpy arrays. You should convert it to a dataframe with proper columns before appending.
+
+
+## Mongo collection
+
+Similar to writing, when appending data to a Mongo collection data node, the
+`MongoCollectionDataNode.append()^` method takes a list of objects as instances of a document class
+defined by _**custom_document**_ as the input.
+
+!!! example "Append new data to a Mongo collection data node using default document class"
+
+    ```python
+    from taipy.core import MongoDefaultDocument
+
+    data = [
+        MongoDefaultDocument(date="12/24/2018", nb_sales=1550),
+        MongoDefaultDocument(date="12/25/2018", nb_sales=2315),
+        MongoDefaultDocument(date="12/26/2018", nb_sales=1832),
+    ]
+    data_node.append(data)
+    ```
 
 # Filter read results
 
