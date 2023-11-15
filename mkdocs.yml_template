@@ -54,6 +54,7 @@ nav:
         - "Stock Visualization": knowledge_base/demos/stock_visualization.md
         - "COVID Dashboard": knowledge_base/demos/covid_dashboard.md
         - "Movie Genre Selector": knowledge_base/demos/movie_genre_selector.md
+        - "Realtime Pollution Dashboard" : knowledge_base/demos/pollution_sensors.md
     - "Tips and tricks":
         - "Tips and tricks": knowledge_base/tips/index.md
         - "Scenarios": knowledge_base/tips/scenarios/index.md

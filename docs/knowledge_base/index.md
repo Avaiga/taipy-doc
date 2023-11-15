@@ -452,6 +452,19 @@ hide:
       </div> 
     </a>
   </li>
+  <li data-keywords="gui dashboard vizelement layout chart">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/pollution_sensors/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Realtime Pollution Dashboard </h4>
+        <p> Displays real-time pollution data from sensors around a factory. The data is streamed
+            from another server and displayed in a dashboard.
+        </p>
+      </div> 
+    </a>
+  </li>
 </ul>
 
 # Tips & Tricks
