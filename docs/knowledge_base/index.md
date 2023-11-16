@@ -333,6 +333,18 @@ hide:
     </a>
   </li>
   <li data-keywords="gui ai">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/background_remover/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Background Remover </h4>
+        <p> Background Remover simplifies background removal of your images with automatic detection, an interactive interface, and efficient Python code. 
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li data-keywords="gui ai">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/face_recognition/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
