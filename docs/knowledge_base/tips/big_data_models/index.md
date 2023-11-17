@@ -11,7 +11,7 @@ This article focuses on the seamless integration of Dask (for handling out-of-co
  with Taipy, a Python library used for pipeline orchestration and scenario management.
 
 ## 1. Sample Application
-Integrating Dask and Taipy is demonstrated best with an example. In this article, we’ll 
+Integrating Dask and Taipy is demonstrated best with an example. In this article, we'll 
 consider a Taipy data workflow with 4 tasks:
 
 - Data Preprocessing and Customer Scoring: 
@@ -55,7 +55,7 @@ Register each pipeline execution as a "Scenario" (a graph of tasks and data node
 Precisely trace the lineage of each pipeline execution; and
 Compare scenarios with ease, monitor KPIs and provide invaluable insight for troubleshooting and fine-tuning parameters.
 2. Pipeline versioning
-Taipy’s robust scenario management enables you to adapt your pipelines to evolving project demands effortlessly.
+Taipy's robust scenario management enables you to adapt your pipelines to evolving project demands effortlessly.
 
 3. Smart task orchestration
 
@@ -67,7 +67,7 @@ feature provides a built-in control over the execution of your tasks with:
 which to bypass.
 
 4. Modular approach to task orchestration
-Modularity isn’t just a buzzword with Taipy; it’s a core principle. Setting up tasks and 
+Modularity isn't just a buzzword with Taipy; it's a core principle. Setting up tasks and 
 data sources that can be used interchangeably, resulting in a cleaner, more maintainable codebase.
 <hr/>
 
@@ -77,7 +77,7 @@ Dask is a popular Python package for distributed computing. The Dask API impleme
 familiar Pandas, Numpy and Scikit-learn APIs — which makes learning and using Dask much 
 more pleasant for the many data scientists whom are already familiar with these APIs.
 
-If you’re new to Dask, check out the excellent [10-minute Introduction to Dask](https://docs.dask.org/en/stable/10-minutes-to-dask.html) by the Dask team.
+If you're new to Dask, check out the excellent [10-minute Introduction to Dask](https://docs.dask.org/en/stable/10-minutes-to-dask.html) by the Dask team.
 <hr/>
 
 
@@ -358,7 +358,7 @@ Executing a Taipy scenario involves:
 - Running the Taipy Core service; and
 - Creating and submitting the scenario for execution.
 
-Here’s the basic code template:
+Here's the basic code template:
 
 ```python
 import taipy as tp
@@ -374,7 +374,7 @@ scenario_1.submit()  # Submit the Scenario for execution
 
 
 ## Skip unnecessary task executions
-One of Taipy’s most practical features is its ability to skip a task execution if its output is already computed. Let’s explore this with some scenarios:
+One of Taipy's most practical features is its ability to skip a task execution if its output is already computed. Let's explore this with some scenarios:
 
 ### Changing Payment Threshold
 ```python
@@ -411,7 +411,7 @@ scenario_1.submit()
 
 **What Happens:** Here, only Task 4 is affected, and Taipy executes only this task, skipping the rest.
 
-Taipy’s smart task skipping is not just a time-saver; it’s a resource optimizer that becomes incredibly useful when dealing with large datasets.
+Taipy's smart task skipping is not just a time-saver; it's a resource optimizer that becomes incredibly useful when dealing with large datasets.
 
 <hr/>
 
@@ -446,7 +446,7 @@ First, install the [Taipy Studio](https://marketplace.visualstudio.com/items?ite
 
 ![Icons](images/icons.png){width=80% style="margin:auto;display:block"}
 
-The first item is for adding a Data Node. You can link any Python object to Taipy’s Data 
+The first item is for adding a Data Node. You can link any Python object to Taipy's Data 
 Nodes.
 The second item is for adding a Task. A Task can be linked to a predefined Python 
 function.
@@ -459,9 +459,9 @@ in a configuration.
 1. **Input Data Node:** Create a Data Node named "*path_to_data*", then navigate to the 
 Details tab, add a new property "*default_data*", and paste "*data/customers_data.csv*" 
 as the path to your dataset.
-2. Intermediate Data Nodes: We’ll need to add four more Data Nodes: "*scored_df"*, 
-"*segmented_customer_df*", "*segment_result*", "*high_value_summary_df*". With Taipy’s 
-intelligent design, you don’t need to configure anything for these intermediate data 
+2. Intermediate Data Nodes: We'll need to add four more Data Nodes: "*scored_df"*, 
+"*segmented_customer_df*", "*segment_result*", "*high_value_summary_df*". With Taipy's 
+intelligent design, you don't need to configure anything for these intermediate data 
 nodes; the system handles them smartly.
 
 3. **Intermediate Data Nodes with Defaults:** We finally define four more intermediate 
@@ -481,11 +481,11 @@ Data Nodes with the "*default_data*" property set to the following:
 ### Tasks
 Clicking on the Add Task button, you can configure a new Task. Add four Tasks, then **link each Task to the appropriate function** under the Details tab. Taipy Studio will scan through your project folder and provide a categorized list of functions to choose from, sorted by the Python file.
 
-**Task 1** (```preprocess_and_score```): In Taipy studio, you’d click the Task icon to add a new Task. You’d specify the input as "*path_to_data*" and the output as "*scored_df*". Then, under the Details tab, you’d link this Task to the algos.```algo.preprocess_and_score``` function.
+**Task 1** (```preprocess_and_score```): In Taipy studio, you'd click the Task icon to add a new Task. You'd specify the input as "*path_to_data*" and the output as "*scored_df*". Then, under the Details tab, you'd link this Task to the algos.```algo.preprocess_and_score``` function.
 
 ![preprocess](images/preprocess.png){width=80% style="margin:auto;display:block"}
 
-**Task 2** (```featurization_and_segmentation```): Similar to Task 1, you’d specify the inputs ("*scored_df*", "*payment_threshold*", "*score_threshold*") and the output ("*segmented_customer_df*"). Link this Task to the ```algos.algo.featurization_and_segmentation``` function.
+**Task 2** (```featurization_and_segmentation```): Similar to Task 1, you'd specify the inputs ("*scored_df*", "*payment_threshold*", "*score_threshold*") and the output ("*segmented_customer_df*"). Link this Task to the ```algos.algo.featurization_and_segmentation``` function.
 
 ![Featurization](images/featurization.png){width=80% style="margin:auto;display:block"}
 
