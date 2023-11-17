@@ -2,7 +2,7 @@
 
 A guide to building models that are bigger than your computer memory.
 
-Data pipelines are the backbone of any data-intensive project. As datasets grow beyond memory size (“out-of-core”), handling them efficiently becomes challenging. [Dask](https://docs.dask.org/en/stable/) enables effortless management of large datasets (out-of-core), offering great compatibility with Numpy and Pandas.
+Data pipelines are the backbone of any data-intensive project. As datasets grow beyond memory size ("out-of-core"), handling them efficiently becomes challenging. [Dask](https://docs.dask.org/en/stable/) enables effortless management of large datasets (out-of-core), offering great compatibility with Numpy and Pandas.
 
 This article focuses on the seamless integration of Dask (for handling out-of-core data) with Taipy, a Python library used for pipeline orchestration and scenario management.
 
@@ -26,24 +26,22 @@ The application will comprise of the following 5 files:
 
 ```
 algos/
-├─ algo.py  #Our existing code with 4 tasks
+├─ algo.py  # Our existing code with 4 tasks
 data/
 ├─ SMALL_amazon_customers_data.csv  #  A sample dataset
-app.ipynb  #Jupyter Notebook for running our sample data application
-config.py  #Taipy configuration which models our data workflow
-config.toml  #(Optional) Taipy configuration in TOML made using Taipy Studio
+app.ipynb  # Jupyter Notebook for running our sample data application
+config.py  # Taipy configuration which models our data workflow
+config.toml  # (Optional) Taipy configuration in TOML made using Taipy Studio
 ```
 <hr/>
 
 ## 2. Introducing Taipy — A Comprehensive Solution
 Taipy is more than just another orchestration tool. Especially designed for ML engineers, data scientists, and Python developers, Taipy brings several essential and simple features.
 
-> It would be awesome if you could add a [star⭐to our repository!](https://github.com/Avaiga/taipy) We’re getting close to 1000 ⭐, thanks to you ❤
-
 Here are some key elements that make Taipy a compelling choice:
 
 1. Pipeline execution registry — This feature enables developers and end-users to:
-Register each pipeline execution as a “Scenario” (a graph of tasks and data nodes);
+Register each pipeline execution as a "Scenario" (a graph of tasks and data nodes);
 Precisely trace the lineage of each pipeline execution; and
 Compare scenarios with ease, monitor KPIs and provide invaluable insight for troubleshooting and fine-tuning parameters.
 2. Pipeline versioning
@@ -53,7 +51,7 @@ Taipy’s robust scenario management enables you to adapt your pipelines to evol
 Taipy allows the developer to model the network of tasks and data sources easily. This feature provides a built-in control over the execution of your tasks with:
 
     - Parallel execution of your tasks; and
-    - Task “skipping”, i.e., choosing which tasks to execute and
+    - Task "skipping", i.e., choosing which tasks to execute and
 which to bypass.
 4. Modular approach to task orchestration
 Modularity isn’t just a buzzword with Taipy; it’s a core principle. Setting up tasks and data sources that can be used interchangeably, resulting in a cleaner, more maintainable codebase.
@@ -212,7 +210,7 @@ def high_value_cust_summary_statistics(df: pd.DataFrame, segment_analysis: pd.Da
 ## Task 1 — Data Preprocessing and Customer Scoring
 Python function: ```preprocess_and_score```
 
-This is the first step in your pipeline and perhaps the most crucial. It reads a large dataset using **Dask**, designed for larger-than-memory computation. It then calculates a “Customer Score” in a DataFrame named scored_df, based on various metrics like “*TotalPurchaseAmount*”, “*NumberOfPurchases*”, and “*AverageReviewScore*”.
+This is the first step in your pipeline and perhaps the most crucial. It reads a large dataset using **Dask**, designed for larger-than-memory computation. It then calculates a "Customer Score" in a DataFrame named scored_df, based on various metrics like "*TotalPurchaseAmount*", "*NumberOfPurchases*", and "*AverageReviewScore*".
 
 After reading and processing the dataset with Dask, this task will output a Pandas DataFrame for further use in the remaining 3 tasks.
 
@@ -233,11 +231,11 @@ This task performs an in-depth analysis of the high-value customer segment and r
 ## 5. Modelling the Workflow in Taipy (config.py)
 
 ![Taipy DAG](images/dag.png){width=80%}
-Taipy DAG — Taipy “Tasks” in orange and “Data Nodes” in blue.
+Taipy DAG — Taipy "Tasks" in orange and "Data Nodes" in blue.
 
-In this section, we will create the Taipy configuration which models the variables/parameters (represented as ["Data Nodes"](../../../manuals/core/concepts/data-node/)) and functions (represented as [“Tasks”](../../../manuals/core/concepts/task/)) in Taipy.
+In this section, we will create the Taipy configuration which models the variables/parameters (represented as ["Data Nodes"](../../../manuals/core/concepts/data-node/)) and functions (represented as ["Tasks"](../../../manuals/core/concepts/task/)) in Taipy.
 
-Notice that this configuration in the following ```config.pyscript``` is akin to defining variables and functions — except that we are instead defining “blueprint variables” (Data Nodes) and “blueprint functions” (Tasks). We are informing Taipy on how to call the functions we defined earlier, default values of Data Nodes (which we may overwrite at runtime), and if Tasks may be skipped:
+Notice that this configuration in the following ```config.pyscript``` is akin to defining variables and functions — except that we are instead defining "blueprint variables" (Data Nodes) and "blueprint functions" (Tasks). We are informing Taipy on how to call the functions we defined earlier, default values of Data Nodes (which we may overwrite at runtime), and if Tasks may be skipped:
 
 ```python title="config.py"
 from taipy import Config
@@ -417,36 +415,36 @@ The third item is for adding a Scenario. Taipy allows you to have more than one 
 <hr/>
 
 ### Data Nodes
-1. **Input Data Node:** Create a Data Node named “*path_to_data*”, then navigate to the Details tab, add a new property “*default_data*”, and paste “*data/customers_data.csv*” as the path to your dataset.
-2. Intermediate Data Nodes: We’ll need to add four more Data Nodes: “*scored_df”*, “*segmented_customer_df*”, “*segment_result*”, “*high_value_summary_df*”. With Taipy’s intelligent design, you don’t need to configure anything for these intermediate data nodes; the system handles them smartly.
-3. **Intermediate Data Nodes with Defaults:** We finally define four more intermediate Data Nodes with the “*default_data*” property set to the following:
-- payment_threshold: “1000:int”
+1. **Input Data Node:** Create a Data Node named "*path_to_data*", then navigate to the Details tab, add a new property "*default_data*", and paste "*data/customers_data.csv*" as the path to your dataset.
+2. Intermediate Data Nodes: We’ll need to add four more Data Nodes: "*scored_df"*, "*segmented_customer_df*", "*segment_result*", "*high_value_summary_df*". With Taipy’s intelligent design, you don’t need to configure anything for these intermediate data nodes; the system handles them smartly.
+3. **Intermediate Data Nodes with Defaults:** We finally define four more intermediate Data Nodes with the "*default_data*" property set to the following:
+- payment_threshold: "1000:int"
 
 ![Data Nodes](images/data_nodes.png){width=80%}{width=80%}
 
 
-- score_threshold: “1.5:float”
-- metric: “mean”
-- summary_statistic_type: “median”
+- score_threshold: "1.5:float"
+- metric: "mean"
+- summary_statistic_type: "median"
 
 <hr/>
 
 ### Tasks
 Clicking on the Add Task button, you can configure a new Task. Add four Tasks, then **link each Task to the appropriate function** under the Details tab. Taipy Studio will scan through your project folder and provide a categorized list of functions to choose from, sorted by the Python file.
 
-**Task 1** (```preprocess_and_score```): In Taipy studio, you’d click the Task icon to add a new Task. You’d specify the input as “*path_to_data*” and the output as “*scored_df*”. Then, under the Details tab, you’d link this Task to the algos.```algo.preprocess_and_score``` function.
+**Task 1** (```preprocess_and_score```): In Taipy studio, you’d click the Task icon to add a new Task. You’d specify the input as "*path_to_data*" and the output as "*scored_df*". Then, under the Details tab, you’d link this Task to the algos.```algo.preprocess_and_score``` function.
 
 ![preprocess](images/preprocess.png){width=80%}
 
-**Task 2** (```featurization_and_segmentation```): Similar to Task 1, you’d specify the inputs (”*scored_df*”, ”*payment_threshold*”, ”*score_threshold*”) and the output (”*segmented_customer_df*”). Link this Task to the ```algos.algo.featurization_and_segmentation``` function.
+**Task 2** (```featurization_and_segmentation```): Similar to Task 1, you’d specify the inputs ("*scored_df*", "*payment_threshold*", "*score_threshold*") and the output ("*segmented_customer_df*"). Link this Task to the ```algos.algo.featurization_and_segmentation``` function.
 
 ![Featurization](images/featurization.png){width=80%}
 
-**Task 3** (```segment_analysis```): Inputs would be “*segmented_customer_df*” and “*metric*”, and the output would be “*segment_result*”. Link to the ```algos.algo.segment_analysis``` function.
+**Task 3** (```segment_analysis```): Inputs would be "*segmented_customer_df*" and "*metric*", and the output would be "*segment_result*". Link to the ```algos.algo.segment_analysis``` function.
 
 ![Segment Analysis](images/segment_analysis.png){width=80%}
 
-**Task 4** (```high_value_cust_summary_statistic```): Inputs include “*segment_result*”, “*segmented_customer_df*”, and “*summary_statistic_type*”. The output is “*high_value_summary_df*”. Link to the algos.algo.```high_value_cust_summary_statistics``` function.
+**Task 4** (```high_value_cust_summary_statistic```): Inputs include "*segment_result*", "*segmented_customer_df*", and "*summary_statistic_type*". The output is "*high_value_summary_df*". Link to the algos.algo.```high_value_cust_summary_statistics``` function.
 
 ![High Value](images/high_value.png){width=80%}
 
