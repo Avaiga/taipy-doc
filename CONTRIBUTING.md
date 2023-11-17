@@ -137,3 +137,98 @@ your issue.
 If you need to add to Taipy a new dependency, do not forget to add it in the `Pipfile` and the `setup.py`.
 Keep in mind that dependency is a vector of attack. The Taipy team limits the usage of external dependencies at the
 minimum.
+
+## Contributing to taipy-doc Knowledge Base
+
+Here is a small section if you can specifically want to contribute to the [Knowledge Base](docs/knowledge_base/index.md) section. Follow these steps to add your article, tip, or demo to the documentation.
+
+### Steps:
+
+#### 1. Create a Folder
+
+Create a folder to organize your tip, demo, or tutorial. Use a clear and concise name for the folder that represents the content. For example:
+
+```
+docs/knowledge_base/tips/your_folder/
+```
+
+#### 2. Add Content
+
+Place your images and Markdown files in the created folder. Name the 
+Markdown file "*index.md*".
+
+#### 3. Update Section Index
+
+Change the *index.md* file in the specific section (e.g., tips, demos, tutorials) to include a new card for your contribution. You need:
+
+- Correct Keywords: : you can see the filters inside the file you are editing.
+- A correct href to the folder
+- A correct Title
+- Choose an image (optional)
+- A correct Description
+
+Example:
+
+```
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="PUT YOUR KEYWORDS HERE">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="big_PUT YOUR HREF HERE">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="PUT YOUR IMAGE HERE">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> PUT YOUR TITLE HERE </h4>
+        <span class="tp-tag"> PUT SOME TAG (Frontend or Backend or both) </span>
+        <p> PUT YOUR DESCRIPTION HERE
+        </p>
+      </div> 
+    </a>
+  </li>
+```
+
+#### 4. Update Knowledge Base Index
+
+Change the [*index.md*](docs/knowledge_base/index.md) file in the *knowledge_base* folder to add a new card 
+for your contribution in the correct section. You need:
+
+- Correct Keywords: you can see the filters inside this *index.md*.
+- A correct href to the folder
+- A correct Title
+- A correct Description
+
+Example:
+
+```
+  <li data-keywords="PUT KEYWORDS HERE">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="PUT HREF HERE">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> PUT TITLE HERE </h4>
+        <p> PUT DESCRIPTION HERE
+        </p>
+      </div> 
+    </a>
+  </li>
+```
+
+#### 5. Update mkdocs.yml_template
+
+Add the new Markdown file to the "mkdocs.yml_template" file in the appropriate section.
+
+```
+"Title of the Article": knowledge_base/tips/your_folder/index.md
+```
+
+#### Checklist:
+
+- Ensure no spaces in filenames.
+- Check for unrecognized characters. Building the documentation will help you know 
+if any are present.
+- Break lines in the Markdown file before 100 characters.
+- Use relative links to taipy doc (.md). To express 
+`https://docs.taipy.io/en/latest/manuals/studio/config/` in a tip article, write 
+`../../../manuals/studio/config/index.md`.
+- Follow conventions for styling code, variables, etc.
+- Check the level of titles in the Markdown file.
+- Build the doc and test the page. See [INSTALLATION.md](INSTALLATION.md)
