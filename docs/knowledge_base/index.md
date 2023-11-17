@@ -638,7 +638,7 @@ hide:
       </div> 
     </a>
   </li>
-    <li data-keywords="scenario task datanode job configuration">
+  <li data-keywords="scenario task datanode job configuration">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/big_data_models">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
