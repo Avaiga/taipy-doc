@@ -625,4 +625,16 @@ hide:
       </div> 
     </a>
   </li>
+  <li data-keywords="scenario task datanode job configuration">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/big_data_models">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Big data models vs. Computer memory </h4>
+        <p> A guide to building models that are bigger than your computer memory.
+        </p>
+      </div> 
+    </a>
+  </li>
 </ul>
