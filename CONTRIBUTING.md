@@ -140,7 +140,7 @@ minimum.
 
 ## Contributing to taipy-doc Knowledge Base
 
-Here is a small section if you can specifically want to contribute to the [Knowledge Base](docs/knowledge_base/index.md) section. Follow these steps to add your article, tip, or demo to the documentation.
+Here is a small section if you specifically want to contribute to the [Knowledge Base](docs/knowledge_base/index.md) section. Follow these steps to add your article, tip, or demo to the documentation.
 
 ### Steps:
 
