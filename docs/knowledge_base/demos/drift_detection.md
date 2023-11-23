@@ -46,5 +46,3 @@ means that the probability of both datasets of blood pressure coming from the sa
 is a drift in the blood pressure column.
 
 ![Results](images/drift-detection-step-3.png){width=80%}
-
-```$pip install taipy```
