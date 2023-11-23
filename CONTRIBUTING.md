@@ -148,7 +148,8 @@ article, tip, or demo to the documentation.
 
 #### 1. Create a Folder
 
-Create a folder to organize your tip, demo, or tutorial. Use a clear and concise name for the folder that represents the content. For example:
+Create a folder to organize your tip, demo, or tutorial. Use a clear and concise name for the
+folder that represents the content. For example:
 
 ```
 docs/knowledge_base/tips/your_folder/
