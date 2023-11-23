@@ -223,7 +223,9 @@ Let's explore demos of applications made with Taipy.
       <div class="tp-content-card-body">
         <h4>Drift Detection</h4>
         <span class="tp-tag">Front-end | Back-end</span>
-        <p> Showcases the ability to select inputs and execute and visualize outputs of data pipelines in a Taipy application by using the example of detecting drift on a dataset.
+        <p> Showcases the ability to select inputs and execute and visualize outputs of data
+            pipelines in a Taipy application by using the example of detecting drift on a
+            dataset.
         </p>
       </div> 
     </a>
