@@ -66,7 +66,6 @@ The chart definition is the following:
         ```
 
 The chart is displayed like this:
-
 <figure>
     <img src="../candlestick-simple-d.png" class="visible-dark" />
     <img src="../candlestick-simple-l.png" class="visible-light"/>
@@ -137,7 +136,6 @@ We use these dictionaries in the chart definition:
         ```
 
 This is what the customized candlestick chart looks like:
-
 <figure>
     <img src="../candlestick-styling-d.png" class="visible-dark" />
     <img src="../candlestick-styling-l.png" class="visible-light"/>
@@ -201,7 +199,6 @@ As you can see, Taipy deals with *datetime* objects as well as specific
 types from Pandas, transparently.
 
 Here is the result:
-
 <figure>
     <img src="../candlestick-timeseries-d.png" class="visible-dark" />
     <img src="../candlestick-timeseries-l.png" class="visible-light"/>

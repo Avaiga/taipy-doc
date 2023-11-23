@@ -70,7 +70,6 @@ The chart definition looks like this:
 Note how the [*mode*](../chart.md#p-mode) property is set to "markers".
 
 The resulting chart is:
-
 <figure>
     <img src="../scatter-classification-d.png" class="visible-dark" />
     <img src="../scatter-classification-l.png" class="visible-light"/>
@@ -128,7 +127,6 @@ To have Taipy use those styles, we must modify the chart definition:
         ```
 
 That generates the following chart:
-
 <figure>
     <img src="../scatter-styling-d.png" class="visible-dark" />
     <img src="../scatter-styling-l.png" class="visible-light"/>
@@ -217,7 +215,6 @@ layout settings:
         ```
 
 The resulting chart displays as:
-
 <figure>
     <img src="../scatter-more-styling-d.png" class="visible-dark" />
     <img src="../scatter-more-styling-l.png" class="visible-light"/>
@@ -274,7 +271,6 @@ x values for the first trace should be retrieved from the column called *x* in t
 element of the data array (0 indicating the first array element).
 
 The chart representing the linear regression result is the following:
-
 <figure>
     <img src="../scatter-regression-d.png" class="visible-dark" />
     <img src="../scatter-regression-l.png" class="visible-light"/>

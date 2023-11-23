@@ -68,7 +68,6 @@ property, and the volume in the [*x*](../chart.md#p-x) property of the chart con
         ```
 
 The resulting chart looks like this:
-
 <figure>
     <img src="../funnel-simple-d.png" class="visible-dark" />
     <img src="../funnel-simple-l.png" class="visible-light"/>
@@ -125,7 +124,6 @@ legend.
         <taipy:chart type="funnel" x="{x}" y="Types" name="{names}">{data}</taipy:chart>
         ```
 The resulting chart looks like this:
-
 <figure>
     <img src="../funnel-multiple-d.png" class="visible-dark" />
     <img src="../funnel-multiple-l.png" class="visible-light"/>
@@ -186,7 +184,6 @@ The definition of the chart control references the two dictionaries that we have
         ```
 
 And here is how the resulting funnel chart is displayed:
-
 <figure>
     <img src="../funnel-styling-d.png" class="visible-dark" />
     <img src="../funnel-styling-l.png" class="visible-light" />
@@ -243,7 +240,6 @@ to [*values*](../chart.md#p-values):
         ```
 
 The funnel area chart we just created looks like this:
-
 <figure>
     <img src="../funnel-area-d.png" class="visible-dark" />
     <img src="../funnel-area-l.png" class="visible-light" />
@@ -350,7 +346,6 @@ specific trace should be rendered.
         ```
 
 This is the resulting chart:
-
 <figure>
     <img src="../funnel-area-multiple-d.png" class="visible-dark" />
     <img src="../funnel-area-multiple-l.png" class="visible-light" />

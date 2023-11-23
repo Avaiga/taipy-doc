@@ -17,21 +17,53 @@ This is the list of changes to Taipy releases as they were published.
     If you are using a legacy version, please refer to the 
     [Legacy Release Notes](relnotes-legacy.md) page.
 
-# Community edition: 3.0 (Work in progress)
 
-Not published yet.
+# Community edition: 3.1
+
+(Work in progress)
 
 ## New Features
 
-<h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
-3.0.0
+<h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
+
+- The `DataNode.filter()^` method and the indexing/filtering style now also support filtering a
+    Numpy array, a list of objects, and a list of dictionaries.<br/>
+    For more information, refer to [Filter data node](./manuals/core/entities/data-node-mgt.md#filter-read-results).
+
+- You can now append new data to a data node using the `DataNode.append()^` method. The method is
+    available for `CSVDataNode`, `ExcelDataNode`, `JSONDataNode`, `ParquetDataNode`, `SQLDataNode`,
+    `SQLTableDataNode`, and `MongoCollectionDataNode`.<br/>
+    For more information, refer to [Append new data to a data node](./manuals/core/entities/data-node-mgt.md#append-new-data-to-a-data-node).
+
+## Improvements and changes
+
+<h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
+
+- Running the Core service more than one time will raise an exception to prevent
+    multiple instances of the Core service to run at the same time.
+
+## Significant bug fixes
+
+<h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
+
+- Can not write to a SQLDataNode or a SQLTableDataNode using examples provided by the
+    documentation.<br/>
+    See [issue #816](https://github.com/Avaiga/taipy-core/issues/816).
+
+
+# Community edition: 3.0
+
+Published on 2023-10.
+
+## New Features
+
+<h4><strong><code>taipy</code></strong> 3.0.0</h4>
 
 - Taipy application can now be run with the Taipy command-line interface (CLI) using the 
     `taipy run` command. For more information, refer to 
     [Run application in Taipy CLI](./manuals/cli/run.md).
 
-<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
-3.0.0
+<h4><strong><code>taipy-gui</code></strong> 3.0.0</h4>
 
 - A new package holds the [*Page Builder API*](manuals/gui/page_builder.md): a set of classes that
   let you define the pages for your application entirely with Python.
@@ -40,7 +72,7 @@ Not published yet.
 - You can now invoke a callback for all clients using the `broadcast_callback()^` function.
 - The [`slider`](manuals/gui/viselements/slider.md) control can now handle several knobs, 
     allowing for range selection.<br/>
-    Please check the [example](manuals/gui/viselements/slider.md##multi-selection) for more
+    Please check the [example](manuals/gui/viselements/slider.md#multi-selection) for more
     information.
 - The [`file_download`](manuals/gui/viselements/file_download.md) control now lets developers
     generate the file content dynamically, at download time.<br/>
@@ -54,8 +86,7 @@ Not published yet.
     [*treemap*](manuals/gui/viselements/charts/treemap.md) and
     [*waterfall*](manuals/gui/viselements/charts/waterfall.md) chart types.
 
-<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
-3.0.0
+<h4><strong><code>taipy-core</code></strong> 3.0.0</h4>
 
 - A production version of a Taipy application can now be provided with **migration functions** to
     automatically migrate entities and keep them compatible with previous versions.<br/>
@@ -89,8 +120,7 @@ Not published yet.
     sections.
 
 
-<h6 style="font-size: 1.2em"><strong><code>taipy-template</code></strong></h6>
-3.0.0
+<h4><strong><code>taipy-template</code></strong> 3.0.0</h4>
 
 - A new template named "scenario-management" is available. For more information on creating
     a new Taipy application with the new "scenario-management" template, refer to the 
@@ -98,8 +128,7 @@ Not published yet.
 
 ## Improvements and changes
 
-<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
-3.0.0
+<h4><strong><code>taipy-gui</code></strong> 3.0.0</h4>
 
 - :warning: The *action* parameter of the `on_action` callback was removed for every control.<br/>
     The signature of all *on_action()* callback functions are now unified to the following:
@@ -121,8 +150,7 @@ Not published yet.
 - Setting the *debug* parameter of `Gui.run()^` to True provides stack traces to be shown in the
     console when exceptions occur in user code.
 
-<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
-3.0.0
+<h4><strong><code>taipy-core</code></strong> 3.0.0</h4>
 
 - :warning: A `ScenarioConfig^` graph is now created directly from `TaskConfig^` and
     `DataNodeConfig^`. Consequently, `PipelineConfig` has been removed. For more
@@ -151,8 +179,7 @@ Not published yet.
 - The deprecated `taipy.create_pipeline()` method has been removed.
 - Function `DataNode.track_edit` has been made public.
 
-<h6 style="font-size: 1.2em"><strong><code>taipy-template</code></strong></h6>
-3.0.0
+<h4><strong><code>taipy-template</code></strong> 3.0.0</h4>
 
 - The default template also supports creating a multi-pages application with Core and Rest 
     services. These options are available when creating a new application from the template.
@@ -161,8 +188,7 @@ Not published yet.
 
 ## Significant bug fixes
 
-<h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
-3.0.0
+<h4><strong><code>taipy-gui</code></strong> 3.0.0</h4>
 
 - The callback function set to the *on_action* parameter of the function `download()^` may
     be called too early. It is now ensured to be invoked *after* the download operation is
@@ -198,16 +224,15 @@ Not published yet.
     from Pandas data frames.<br/>
     See [issue #886](https://github.com/Avaiga/taipy-gui/issues/886).
 
-<h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
-3.0.0
+<h4><strong><code>taipy-core</code></strong> 3.0.0</h4>
 
 - When running the Core service in development mode, changing the name of the function used by a 
     task then running the application again would raise an error.<br/>
     See [issue #743](https://github.com/Avaiga/taipy-core/issues/743).
 
-# Enterprise edition: 3.0 (Work in progress)
+# Enterprise edition: 3.0 
 
-Not published yet.
+Published on 2023-10.
 
 This release contains all of [`taipy` 3.0](https://pypi.org/project/taipy/3.0.0) as well as
 additional features.

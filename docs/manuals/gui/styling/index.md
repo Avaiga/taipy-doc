@@ -17,7 +17,7 @@ where you can find all the information on how to use and customize it.
 There are two ways you can apply a stylesheet to your application:
 
 - Global style sheet.<br/>
-  The *css_file* parameter of the [`Gui` constructor](Gui.__init__()^) lets you specify a CSS file
+  The *css_file* parameter of the `Gui.__init__^`(`Gui` constructor) lets you specify a CSS file
   that your application will use for every page. The default value for this parameter is a file
   located next to your main Python script, with the same name except for the extension that must be
   '.css'.

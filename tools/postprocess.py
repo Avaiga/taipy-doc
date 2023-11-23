@@ -2,19 +2,25 @@
 #
 # Syntax for cross-references to the Reference Manual:
 #   `ClassName^`
-#       generates a link from `ClassName` to the class doc page
+#       generates a link from `ClassName` to the class doc page.
 #   `functionName(*)^`
-#       generates a link from `functionName(*)` to the function doc page
+#       generates a link from `functionName(*)` to the function doc section.
 #   `ClassName.methodName(*)^`
-#       generates a link from `ClassName.methodName(*)` to the method
-#       doc page.
+#       generates a link from `ClassName.methodName(*)` to the method doc section.
 #   `(ClassName.)methodName(*)^`
-#       generates a link from `methodName(*)` to the method doc page.
+#       generates a link from `methodName(*)` to the method doc section, hiding the class name.
 #   `package.functionName(*)^`
-#       generates a link from `functionName` to the function doc page
+#       generates a link from `package.functionName(*)` to the function doc section.
 #   `(package.)functionName(*)^`
-#       generates a link from `functionName` to the function doc page,
-#       hiding the package.
+#       generates a link from `functionName(*)` to the function doc section, hiding the package.
+#   `(package.)ClassName^`
+#       generates a link from `ClassName` to the class doc page, hiding the package.
+#   `(package.)ClassName.methodName(*)^`
+#       generates a link from `ClassName.methodName(*)` to the method doc section, hiding the
+#       package.
+#   `(package.ClassName.)methodName(*)^`
+#       generates a link from `methodName(*)` to the method doc section, hiding the package and the
+#       class name.
 # ######################################################################
 import os
 import re
@@ -33,13 +39,15 @@ def define_env(env):
 TOC_ENTRY_PART1 = r"<li\s*class=\"md-nav__item\">\s*<a\s*href=\""
 TOC_ENTRY_PART2 = r"\"\s*class=\"md-nav__link\">([^<]*)</a>\s*</li>\s*"
 # XREF_RE details:
-#  group(1) - A potential opening '('.
-#  group(2) - The package, class or function name with a trailing '.'.
+#  group(1) - The package, class or function name with a trailing '.'.
 #    Can be empty.
-#  group(3) - The name of a method, or the last sub-package name.
-#  group(4) - The function parameters, with their ().
-XREF_RE = re.compile(r"<code>(\()?((?:[^\d\W]\w*\.)*)"
-                     + r"(?:\))?([^\d\W]\w*)(\(.*?\))?\^</code>")
+#    This text will not appear as the anchor text.
+#  group(2) - The name of a class, function, method... This text will appear in the anchor text
+#  group(3) - The function parameters, with their (). Can be empty.
+#  group(4) - The anchor text. Can be empty, then group(2)+group(3) is used.
+## XREF_RE = re.compile(r"<code>(\()?((?:[^\d\W]\w*\.)*)"
+##                     + r"(?:\))?([^\d\W][\w\.]*)(\(.*?\))?\^<\/code>")
+XREF_RE = re.compile(r"<code>(?:\(([\w*\.]*)\))?([\.\w]*)(\(.*?\))?\^<\/code>(?:\(([^\)]*)\))?")
 
 
 def find_dummy_h3_entries(content: str) -> Dict[str, str]:
@@ -90,16 +98,22 @@ def on_post_build(env):
     log = logging.getLogger("mkdocs")
     site_dir = env.conf["site_dir"]
     xrefs = {}
+    multi_xrefs = {}
     if os.path.exists(site_dir + "/manuals/xrefs"):
         with open(site_dir + "/manuals/xrefs") as xrefs_file:
             xrefs = json.load(xrefs_file)
     if xrefs is None:
-        log.error(f"Could not find xrefs in /manuals/xrefs")
+        log.error(f"Could not read xrefs in 'manuals/xrefs'")
     x_packages = set()
-    for ps in xrefs.values():
-        x_packages.add(ps[0])
-        if ps[2]:
-            x_packages.update(ps[2])
+    for xref, xref_desc in xrefs.items():
+        if isinstance(xref_desc, list):
+            x_packages.add(xref_desc[0])
+            if xref_desc[2]:
+                x_packages.update(xref_desc[2])
+        else:
+            descs = [xrefs[f"{xref}/{i}"] for i in range(0, xref_desc)]
+            # If unspecified, the first xref will be used (the one with the shortests package)
+            multi_xrefs[xref] = sorted(descs, key=lambda p: len(p[0]))
     manuals_files_path = os.path.join(site_dir, "manuals")
     ref_files_path = os.path.join(manuals_files_path, "reference")
     fixed_cross_refs = {}
@@ -181,92 +195,57 @@ def on_post_build(env):
                     new_content = ""
                     last_location = 0
                     for xref in XREF_RE.finditer(html_content):
-                        groups = xref.groups()
-                        # function_name -> None, function_name, None, *
-                        # class_name -> None, class_name, None, *
-                        # package.class.function_name -> None, package.class., function_name, *
-                        # (package.class.)function_name -> '(', package.class., function_name, *
-                        # package.class_name -> None, package., class_name, *
-                        # class_name.method_name -> None, class_name., method_name, *
-                        # (class_name.)method_name -> '(', class_name., method_name, *
-                        dest = None
-                        package = None
-                        entry = None
-                        method = None
-                        dest_package = None
-                        if groups[1]:
-                            # Class.Method?
-                            entry = groups[1][:-1]
-                            dest = xrefs.get(entry)
-                            if dest:
-                                package = dest[0]
-                                method = groups[2]
-                            else: # Package?
-                                full_package = f"{groups[1]}{groups[2]}"
-                                if full_package in x_packages:
-                                    package = full_package
-                                    entry = None
-                                    dest = True
-                                else: # Package.entry?
-                                    package = entry
-                                    dest = xrefs.get(groups[2])
-                                    if dest:
-                                        # Rename package if necessary
-                                        if package != dest[0] and package in dest[2]:
-                                            dest_package = dest[0]
-                                        entry = groups[2]
-                        else:
-                            dest = xrefs.get(groups[2])
-                            if dest:
-                                package = dest[0]
-                                entry = groups[2]
-                            else: # Package?
-                                if groups[2] in x_packages:
-                                    package = groups[2]
-                                    dest = True
-                        if not dest:
-                            (dir, file) = os.path.split(filename)
-                            (dir, dir1) = os.path.split(dir)
-                            (dir, dir2) = os.path.split(dir)
-                            bad_xref = re.sub(r"</?code>", "`", xref.group(0))
-                            message = f"Unresolve crossref '{bad_xref}' found in "
-                            if file == "index.html":
-                                (dir, dir3) = os.path.split(dir)
-                                log.error(f"{message}{dir3}/{dir2}/{dir1}.md")
+                        all_parts = (xref[1] + xref[2]) if xref[1] else xref[2]
+                        parts = all_parts.split(".")
+                        c_name: str = parts.pop() # Class of function name
+                        m_name: str = None # Method name
+                        # Get potential destination link descriptor from last part
+                        desc = xrefs.get(c_name)
+                        # Check for class.method (looking at part before last)
+                        if len(parts) > 0:
+                            potential_class_name = parts[-1]
+                            if class_xref := xrefs.get(potential_class_name):
+                                desc = class_xref
+                                m_name = c_name
+                                c_name = potential_class_name
+                                parts.pop()
+                        if isinstance(desc, int):
+                            if parts:
+                                package = "." . join(parts)
+                                desc = next(d for d in multi_xrefs.get(c_name) if d[0].endswith(package))
                             else:
-                                log.error(f"{message}{dir2}/{dir1}/{file}")
-                            continue
-                        if dest_package is None:
-                            dest_package = package
-                        new_content += html_content[last_location:xref.start()]
-                        new_content += f"<a href=\"{rel_path}/"
-                        if entry:
-                            new_content += f"{dest_package}.{entry}/"
-                            if method:
-                                new_content += f"index.html#{dest[1]}.{entry}.{method}\"><code>"
-                                if not groups[0]:
-                                    new_content += f"{entry}."
-                                new_content += f"{method}"
+                                desc = multi_xrefs.get(c_name)[0]
+                        link = None
+                        if not desc:
+                            if os.path.exists(f"{ref_files_path}/pkg_{all_parts}/index.html"):
+                                link = f"pkg_{all_parts}"
                             else:
-                                new_content += f"\"><code>"
-                                # FIX:
-                                # This block would add the destination package name
-                                # before the entry name, in the link body.
-                                # That's usualy what we do not want.
-                                # It is kept until no bad impact is found.
-                                #if not groups[0]:
-                                #    new_content += f"{package}."
-                                new_content += entry
+                                (dir, file) = os.path.split(filename)
+                                (dir, dir1) = os.path.split(dir)
+                                (dir, dir2) = os.path.split(dir)
+                                message = f"Unresolve crossref '{re.sub(r'</?code>', '`', xref[0])}' found in "
+                                if file == "index.html":
+                                    (dir, dir3) = os.path.split(dir)
+                                    log.error(f"{message}{dir3}/{dir2}/{dir1}.md")
+                                else:
+                                    log.error(f"{message}{dir2}/{dir1}/{file}")
                         else:
-                            new_content += f"pkg_{dest_package}"
-                            if method:
-                                new_content += method
-                            new_content += "/\"><code>"
-                            if not groups[0]:
-                                new_content += f"{package}"
-                            if method:
-                                new_content += f".{method}"
-                        new_content += f"{groups[3] if groups[3] else ''}</code></a>"
+                            link = f"{desc[0]}.{c_name}"
+                            if m_name:
+                                link += f"/index.html#{desc[0]}.{c_name}.{m_name}"
+                        if link:
+                            new_content += html_content[last_location:xref.start()]
+                            new_content += f"<a href=\"{rel_path}/{link}\">"
+                            if xref[4]: # Anchor text
+                                new_content += xref[4]
+                            elif xref[2] or xref[3]:
+                                new_content += "<code>"
+                                if xref[2]: new_content += xref[2]
+                                if xref[3]: new_content += xref[3]
+                                new_content += "</code>"
+                            else:
+                                new_content += f"<b>NO CONTENT</b>"
+                            new_content += f"</a>"
                         last_location = xref.end()
                     if last_location:
                         file_was_changed = True
@@ -349,6 +328,9 @@ def on_post_build(env):
                             class_ = type_[0][:-1] # Remove ^
                             packages = xrefs.get(class_)
                             if packages:
+                                # TODO - Retrieve the actual XREF
+                                if isinstance(packages, int):
+                                    packages = xrefs.get(f"{class_}/0") # WRONG
                                 typing_xref_found = True
                                 new_content = f"<a href=\"{rel_path}/{packages[0]}.{class_}\">{class_}</a>"
                                 new_table_line = new_table_line.replace(f"{class_}^", new_content)
@@ -444,7 +426,7 @@ def on_post_build(env):
                         new_content = ""
                         last_location = 0
                         for prop in prop_re.finditer(html_content):
-                            if default_value_re := re.match("(dynamic|indexed)\((.*)", prop[1]):
+                            if default_value_re := re.match(r"(dynamic|indexed)\((.*)", prop[1]):
                                 new_content += html_content[last_location:prop.start(1)]
                                 new_content += f"{default_value_re[2]}<br/><small><i>{default_value_re[1]}</i></small>"
                                 last_location = prop.end(1)
@@ -486,9 +468,19 @@ def on_post_build(env):
                 if file_was_changed:
                     with open(filename, "w") as html_file:
                         html_file.write(html_content)
-            # Remove '.md_template' files
-            elif f.endswith(".md_template"):
-                os.remove(os.path.join(root, f))
+            # Replace path to doc in '.ipynb' files
+            elif f.endswith(".ipynb"):
+                filename = os.path.join(root, f)
+                with open(filename) as ipynb_file:
+                    try:
+                        content = ipynb_file.read()
+                    except Exception as e:
+                        print(f"Couldn't read Notebook file {filename}")
+                        raise e
+                    (new_content, n) = re.subn("(?<=https://docs.taipy.io/en/)latest", f"{env.conf['branch']}", content)
+                    if n > 0:
+                        with open(filename, "w") as ipynb_file:
+                            ipynb_file.write(new_content)
     if fixed_cross_refs:
         for dest in sorted(fixed_cross_refs.keys()):
             sources = ", ".join(sorted(fixed_cross_refs[dest]))

@@ -53,7 +53,6 @@ Now the chart control definition can be as simple as:
         ```
 
 This would produce the image below:
-
 <figure>
     <img src="../histogram-simple-d.png" class="visible-dark" />
     <img src="../histogram-simple-l.png" class="visible-light"/>
@@ -103,7 +102,6 @@ And use it in your chart control, as a *y* value this time:
         ```
 
 The resulting chart looks as follows:
-
 <figure>
     <img src="../histogram-horizontal-d.png" class="visible-dark" />
     <img src="../histogram-horizontal-l.png" class="visible-light"/>
@@ -172,7 +170,6 @@ And let's define our chart using these settings:
         ```
 
 Here is what the resulting chart looks like:
-
 <figure>
     <img src="../histogram-overlay-d.png" class="visible-dark" />
     <img src="../histogram-overlay-l.png" class="visible-light"/>
@@ -224,7 +221,6 @@ The chart control definition would reference those objects:
         ```
 
 To result in the following figure:
-
 <figure>
     <img src="../histogram-stacked-d.png" class="visible-dark" />
     <img src="../histogram-stacked-l.png" class="visible-light"/>
@@ -266,7 +262,6 @@ The chart control is defined as:
         ```
 
 The resulting chart looks like this:
-
 <figure>
     <img src="../histogram-cumulative-d.png" class="visible-dark" />
     <img src="../histogram-cumulative-l.png" class="visible-light"/>
@@ -314,7 +309,6 @@ And use those in the definition for our histogram chart:
         ```
 
 Here is what the chart looks like:
-
 <figure>
     <img src="../histogram-normalize-d.png" class="visible-dark" />
     <img src="../histogram-normalize-l.png" class="visible-light"/>
@@ -388,7 +382,6 @@ the chart control:
         ```
 
 The page shows:
-
 <figure>
     <img src="../histogram-binning-function-d.png" class="visible-dark" />
     <img src="../histogram-binning-function-l.png" class="visible-light"/>
@@ -449,7 +442,6 @@ We will use those objects in the definition for the chart control:
         ```
 
 To generate the following chart:
-
 <figure>
     <img src="../histogram-nbins-d.png" class="visible-dark" />
     <img src="../histogram-nbins-l.png" class="visible-light"/>

@@ -400,6 +400,9 @@ provided:
 - _**write_query_builder**_ is a callable function that takes in the data as an input
   parameter and returns a list of SQL queries to be executed when the write method is
   called.
+- _**append_query_builder**_ is a callable function that takes in the data as an input
+  parameter and returns a list of SQL queries to be executed when the append method is
+  called.
 - _**db_username**_ represents the database username that will be used by Taipy to access
   the database. Required by *"mssql"*, *"mysql"*, and *"postgresql"* engines.
 - _**db_password**_ represents the database user's password that will be used by Taipy to

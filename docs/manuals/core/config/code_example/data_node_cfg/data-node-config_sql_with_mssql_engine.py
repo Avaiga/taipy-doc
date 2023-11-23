@@ -2,11 +2,10 @@ from taipy import Config
 import pandas as pd
 
 def write_query_builder(data: pd.DataFrame):
-    insert_data = list(
-        data[["date", "nb_sales"]].itertuples(index=False, name=None))
+    insert_data = data[["date", "nb_sales"]].to_dict("records")
     return [
         "DELETE FROM sales",
-        ("INSERT INTO sales VALUES (?, ?)", insert_data)
+        ("INSERT INTO sales VALUES (:date, :nb_sales)", insert_data)
     ]
 
 sales_history_cfg = Config.configure_sql_data_node(

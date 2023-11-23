@@ -61,7 +61,6 @@ All we did is set the [*type*](../chart.md#p-type) property to "bar", and the
 following chart is displayed on the page (the blue color is not related to what
 party the elected president belongs to - it is just the default color that Plotly
 has picked up):
-
 <figure>
     <img src="../bar-simple-d.png" class="visible-dark" />
     <img src="../bar-simple-l.png" class="visible-light"/>
@@ -103,7 +102,6 @@ the two data sets to be represented in *y[1]* and *y[2]*.
 
 
 Here is how this new data set is represented:
-
 <figure>
     <img src="../bar-multiple-d.png" class="visible-dark" />
     <img src="../bar-multiple-l.png" class="visible-light"/>
@@ -140,7 +138,6 @@ And use this dictionary in the definition of the chart:
         ```
 
 Here is the resulting image:
-
 <figure>
     <img src="../bar-stacked-d.png" class="visible-dark" />
     <img src="../bar-stacked-l.png" class="visible-light"/>
@@ -226,7 +223,6 @@ Now let's use this dictionary in the definition of the chart:
         ```
 
 Here is the result:
-
 <figure>
     <img src="../bar-facing-d.png" class="visible-dark" />
     <img src="../bar-facing-l.png" class="visible-light"/>

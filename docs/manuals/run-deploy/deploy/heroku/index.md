@@ -1,5 +1,3 @@
-# Deploy on Heroku
-
 [Heroku](https://heroku.com) is a Cloud provider that allows you to deploy developpment
 and test applications for free.
 

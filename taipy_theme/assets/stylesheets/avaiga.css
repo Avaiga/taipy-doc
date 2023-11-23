@@ -210,11 +210,14 @@
     right: auto;
     top: auto;
   }
-}
 @media screen and (max-width: 59.9375em){
   .md-nav__source{
     background-color: var(--md-primary-fg-color);
   }
+}
+}
+[dir=ltr] .md-sidebar__inner {
+  padding-right: calc(100% - 12rem);
 }
 
 /* ---------- ---------- ---------- NAVS ---------- ---------- ---------- */
@@ -327,10 +330,18 @@
   font-size: var(--md-h6-font-size);
 }
 
-.md-typeset code,
+.md-typeset p code,
 .md-typeset pre > code, 
 .highlighttable .linenos{
   font-size: var(--md-body-font-size--small);
+}
+.md-typeset h1 code,
+.md-typeset h2 code,
+.md-typeset h3 code,
+.md-typeset h4 code,
+.md-typeset h5 code,
+.md-typeset h6 code{
+  font-size: 1em;
 }
 
 .tp-tag{
