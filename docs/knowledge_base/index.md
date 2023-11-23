@@ -459,7 +459,9 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Drift Detection </h4>
-        <p> Showcases the ability to select inputs and execute and visualize outputs of data pipelines in a Taipy application by using the example of detecting drift on a dataset.
+        <p> Showcases the ability to select inputs and execute and visualize outputs of data
+            pipelines in a Taipy application by using the example of detecting drift on a
+            dataset.
         </p>
       </div> 
     </a>
