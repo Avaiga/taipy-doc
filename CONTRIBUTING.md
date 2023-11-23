@@ -162,7 +162,8 @@ Markdown file "*index.md*".
 
 #### 3. Update Section Index
 
-Change the *index.md* file in the specific section (e.g., tips, demos, tutorials) to include a new card for your contribution. You need:
+Change the *index.md* file in the specific section (e.g., tips, demos, tutorials) to include a
+new card for your contribution. You need:
 
 - Correct Keywords: : you can see the filters inside the file you are editing.
 - A correct href to the folder
