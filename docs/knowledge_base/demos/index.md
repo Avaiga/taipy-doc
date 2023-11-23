@@ -78,6 +78,20 @@ Let's explore demos of applications made with Taipy.
   </li>
 
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="background_remover">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/background_remover.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Background Remover </h4>
+        <span class="tp-tag">Front-end | Back-end</span>
+        <p> Background Remover simplifies background removal of your images with automatic detection, an interactive interface, and efficient Python code.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="face_recognition">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/face-recognition.jpg">
