@@ -80,7 +80,7 @@ Let's explore demos of applications made with Taipy.
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="background_remover">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="images/background_remover.png">
+        <img class="tp-content-card-image" src="images/background-remover.png">
       </header>
       <div class="tp-content-card-body">
         <h4> Background Remover </h4>
