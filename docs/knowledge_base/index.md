@@ -477,7 +477,6 @@ hide:
       </div> 
     </a>
   </li>
-
   <li data-keywords="gui ai scenario datanode dag configuration">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/drift_detection/">
       <header class="tp-content-card-header">
@@ -492,7 +491,6 @@ hide:
       </div> 
     </a>
   </li>
-
   <li data-keywords="gui dashboard vizelement layout chart">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/pollution_sensors/">
       <header class="tp-content-card-header">

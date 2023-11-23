@@ -55,6 +55,7 @@ nav:
         - "Stock Visualization": knowledge_base/demos/stock_visualization.md
         - "COVID Dashboard": knowledge_base/demos/covid_dashboard.md
         - "Movie Genre Selector": knowledge_base/demos/movie_genre_selector.md
+        - "Drift Detection": knowledge_base/demos/drift_detection.md
         - "Realtime Pollution Dashboard" : knowledge_base/demos/pollution_sensors.md
         - "Background Remover" : knowledge_base/demos/background_remover.md
         - "TalkToTaipy" : knowledge_base/demos/talk_to_taipy.md
