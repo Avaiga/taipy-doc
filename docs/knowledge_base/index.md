@@ -464,6 +464,20 @@ hide:
       </div> 
     </a>
   </li>
+  <li data-keywords="gui ai scenario datanode dag configuration">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/drift_detection/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Drift Detection </h4>
+        <p> Showcases the ability to select inputs and execute and visualize outputs of data
+            pipelines in a Taipy application by using the example of detecting drift on a
+            dataset.
+        </p>
+      </div> 
+    </a>
+  </li>
   <li data-keywords="gui dashboard vizelement layout chart">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/pollution_sensors/">
       <header class="tp-content-card-header">
