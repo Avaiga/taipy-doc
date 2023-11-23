@@ -204,6 +204,7 @@ While *scenario* is available to everyone, *state.input_name* and
 user's actions are separate and efficiently controlled, while variables like *scenario* are 
 global variables.
 
+![State illustration](state_illustration.png){width=70% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 In the *submit_scenario()* function, the *input_name* entered by the user on the interface is 
 saved to the scenario. After submission, the outcome is retrieved and stored in the *message* 
