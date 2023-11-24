@@ -8,13 +8,13 @@ This is the list of changes to Taipy releases as they were published.
 
 !!! note "Migration"
 
-    Please refer to the [Migration page](./migration.md) for potential migration paths for your 
+    Please refer to the [Migration page](./migration.md) for potential migration paths for your
     applications implemented on legacy Taipy versions.
 
 !!! note "Legacy Releases"
 
     This page shows the changes that were made in the most recent major release of Taipy.<br/>
-    If you are using a legacy version, please refer to the 
+    If you are using a legacy version, please refer to the
     [Legacy Release Notes](relnotes-legacy.md) page.
 
 
@@ -34,6 +34,10 @@ This is the list of changes to Taipy releases as they were published.
     available for `CSVDataNode`, `ExcelDataNode`, `JSONDataNode`, `ParquetDataNode`, `SQLDataNode`,
     `SQLTableDataNode`, and `MongoCollectionDataNode`.<br/>
     For more information, refer to [Append new data to a data node](./manuals/core/entities/data-node-mgt.md#append-new-data-to-a-data-node).
+
+- When submitting a `Scenario^`, a `Sequence^` or a `Task^`, we will create a `Submission^` entity internally, which will hold all of the
+    metadata related to the submission such as its overall status, its submission date, the ids of the `Job^` involved, etc. The latest
+    `Submission^` of a `Scenario^`, a `Sequence^` or a `Task^` can be retrieved by calling the new `taipy.get_latest_submission()^` method.
 
 ## Improvements and changes
 
@@ -59,8 +63,8 @@ Published on 2023-10.
 
 <h4><strong><code>taipy</code></strong> 3.0.0</h4>
 
-- Taipy application can now be run with the Taipy command-line interface (CLI) using the 
-    `taipy run` command. For more information, refer to 
+- Taipy application can now be run with the Taipy command-line interface (CLI) using the
+    `taipy run` command. For more information, refer to
     [Run application in Taipy CLI](./manuals/cli/run.md).
 
 <h4><strong><code>taipy-gui</code></strong> 3.0.0</h4>
@@ -70,7 +74,7 @@ Published on 2023-10.
 - You can now update variables on all clients using the *shared variables* concept. See
     the `Gui.add_shared_variable()^` and `State.dispatch()^` methods for details.
 - You can now invoke a callback for all clients using the `broadcast_callback()^` function.
-- The [`slider`](manuals/gui/viselements/slider.md) control can now handle several knobs, 
+- The [`slider`](manuals/gui/viselements/slider.md) control can now handle several knobs,
     allowing for range selection.<br/>
     Please check the [example](manuals/gui/viselements/slider.md#multi-selection) for more
     information.
@@ -104,14 +108,14 @@ Published on 2023-10.
 
     * `Submittable.get_inputs()^` retrieves input data nodes of a `Submittable` entity;
     * `Submittable.get_outputs()^` retrieves output data nodes of a `Submittable` entity;
-    * `Submittable.get_intermediate()^` retrieves intermediate data nodes of a `Submittable` 
+    * `Submittable.get_intermediate()^` retrieves intermediate data nodes of a `Submittable`
         entity;
     * `Submittable.is_ready_to_run()^` checks if an entity is ready to be run;
     * `Submittable.data_nodes_being_edited()^` retrieves data nodes that are being edited
         of a `Submittable^` entity.
 
-- New functions exposed by the `taipy` module: 
-    * `taipy.is_deletable()^` checks if an entity can be deleted; 
+- New functions exposed by the `taipy` module:
+    * `taipy.is_deletable()^` checks if an entity can be deleted;
     * `taipy.exists()^` checks if an entity exists.
 - The encoding type of CSVDataNode and JSONDataNode can now be configured using the
     *encoding* parameter. For more information, please refer to
@@ -123,7 +127,7 @@ Published on 2023-10.
 <h4><strong><code>taipy-template</code></strong> 3.0.0</h4>
 
 - A new template named "scenario-management" is available. For more information on creating
-    a new Taipy application with the new "scenario-management" template, refer to the 
+    a new Taipy application with the new "scenario-management" template, refer to the
     documentation page on [templates](./manuals/cli/create.md#from-a-specific-template).
 
 ## Improvements and changes
@@ -136,7 +140,7 @@ Published on 2023-10.
     - *id* (str): the identifier of the visual element that triggers that callback;
     - *payload* (dict): a dictionary that provides additional information to the callback.<br/>
         This dictionary now has the additional *action* key that is set to the action name.
-        This change not only impact the *on_action* callback of all controls that support it, 
+        This change not only impact the *on_action* callback of all controls that support it,
         but in an exactly similar manner the following callback signatures:
          - *on_range_change* in the [`chart`](manuals/gui/viselements/chart.md) control;
          - *on_edit*, *on_add*, and *on_delete* in the [`table`](manuals/gui/viselements/table.md)
@@ -160,8 +164,8 @@ Published on 2023-10.
     together independently of the other tasks of the scenario. For more information,
     refer to `Scenario.add_sequence()^` and `Scenario.remove_sequence()^`.
 - `Scope.PIPELINE` has been removed from possible `Scope^` values.
-- The `root_folder`, `storage_folder`, `read_entity_retry`, `repository_type`, and 
-    `repository_properties` attributes of the `GlobalAppConfig^` have been moved to the 
+- The `root_folder`, `storage_folder`, `read_entity_retry`, `repository_type`, and
+    `repository_properties` attributes of the `GlobalAppConfig^` have been moved to the
     `CoreSection^`.<br/>
     Please refer to the [Core configuration page](manuals/core/config/core-config.md) for details.
 - The `clean_entities` attribute has been removed from the `CoreSection^`. Correspondingly, the
@@ -172,16 +176,16 @@ Published on 2023-10.
 - The deprecated `nb_of_workers` attribute of the JobConfig has been removed.
 - The deprecated `parent_id` attribute of a DataNode, Task, Pipeline, or Scenario entity, has
     been removed.
-- The deprecated `last_edition_date` and `edition_in_progress` attributes of a DataNode entity 
+- The deprecated `last_edition_date` and `edition_in_progress` attributes of a DataNode entity
     have been removed.
-- The deprecated `DataNode.lock_edition()` and `DataNode.unlock_edition()` methods have been 
+- The deprecated `DataNode.lock_edition()` and `DataNode.unlock_edition()` methods have been
     removed.
 - The deprecated `taipy.create_pipeline()` method has been removed.
 - Function `DataNode.track_edit` has been made public.
 
 <h4><strong><code>taipy-template</code></strong> 3.0.0</h4>
 
-- The default template also supports creating a multi-pages application with Core and Rest 
+- The default template also supports creating a multi-pages application with Core and Rest
     services. These options are available when creating a new application from the template.
 - The "multi-page-gui" template has been removed. Please use the default instead to create
     a Taipy multi-pages application.
@@ -226,11 +230,11 @@ Published on 2023-10.
 
 <h4><strong><code>taipy-core</code></strong> 3.0.0</h4>
 
-- When running the Core service in development mode, changing the name of the function used by a 
+- When running the Core service in development mode, changing the name of the function used by a
     task then running the application again would raise an error.<br/>
     See [issue #743](https://github.com/Avaiga/taipy-core/issues/743).
 
-# Enterprise edition: 3.0 
+# Enterprise edition: 3.0
 
 Published on 2023-10.
 
@@ -239,8 +243,8 @@ additional features.
 
 ## New Features
 
-- Python functions including scenario management methods can be scheduled to run at a specific 
-    time using the new `taipy.Scheduler^` API. For more information, refer to 
+- Python functions including scenario management methods can be scheduled to run at a specific
+    time using the new `taipy.Scheduler^` API. For more information, refer to
     [Schedule a method](./manuals/core/scheduling/index.md).
 
 ## Improvements and changes
