@@ -35,9 +35,10 @@ This is the list of changes to Taipy releases as they were published.
     `SQLTableDataNode`, and `MongoCollectionDataNode`.<br/>
     For more information, refer to [Append new data to a data node](./manuals/core/entities/data-node-mgt.md#append-new-data-to-a-data-node).
 
-- When submitting a `Scenario^`, a `Sequence^` or a `Task^`, we will create a `Submission^` entity internally, which will hold all of the
-    metadata related to the submission such as its overall status, its submission date, the ids of the `Job^` involved, etc. The latest
-    `Submission^` of a `Scenario^`, a `Sequence^` or a `Task^` can be retrieved by calling the new `taipy.get_latest_submission()^` method.
+- When submitting a `Scenario^`, a `Sequence^` or a `Task^`, Taipy automatically creates a
+`Submission^` entity. It holds the metadata related to the submission such as its overall
+submission status, its submission date, the ids of the `Job^` involved, etc. 
+The latest `Submission^` of a `Scenario^`, a `Sequence^`, or a `Task^` can be retrieved by calling the new `taipy.get_latest_submission()^` method.
 
 ## Improvements and changes
 
