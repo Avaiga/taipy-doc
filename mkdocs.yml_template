@@ -56,7 +56,7 @@ nav:
         - "Movie Genre Selector": knowledge_base/demos/movie_genre_selector.md
         - "Drift Detection": knowledge_base/demos/drift_detection.md
         - "Realtime Pollution Dashboard" : knowledge_base/demos/pollution_sensors.md
-        - "Background Remover" : knowledge_base/demos/background-remover.md
+        - "Background Remover" : knowledge_base/demos/background_remover.md
     - "Tips and tricks":
         - "Tips and tricks": knowledge_base/tips/index.md
         - "Scenarios": knowledge_base/tips/scenarios/index.md
