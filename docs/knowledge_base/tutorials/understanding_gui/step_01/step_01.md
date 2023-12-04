@@ -23,18 +23,23 @@ from taipy import Gui
 Gui(page="# Getting started with *Taipy*").run(debug=True) # use_reloader=True
 ```
 
-The `debug=True` parameter instructs Taipy to operate in debug mode. This means Taipy will provide a 
-stack trace of the errors within the application—a valuable feature during development.
+The run method accepts different useful parameters:
 
-By default, the page won't refresh on its own after you make a code modification.
+- _debug_: instructs Taipy to operate in debug mode. This means Taipy will provide a 
+stack trace of the errors within the application—a valuable feature during 
+development.
 
-If you want to alter this behavior, you can set the *use_reloader* parameter of the `run()` method
-to True. This will cause the application to automatically reload when you make changes to a file in
-your application and save it. It's typically used in development mode.
+![Debug mode](debug_mode.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-If you wish to run multiple servers concurrently, you can modify the server port number (5000 by
-default) in the `run()` method. For example, `Gui(...).run(port=xxxx)`. Other parameters to the
-`run()` method can be found
+- _use_reloader_: By default, the page won't refresh on its own after you make a code 
+modification. If you want to alter this behavior, you can set the *use_reloader* to 
+True. The application will automatically reload when you make changes to a file in 
+your application and save it.
+
+- _port_: If you wish to run multiple servers concurrently, you can modify the server 
+port number (5000 by default).
+
+Other parameters of the `run()` method can be found
 [here](../../../../manuals/gui/configuration.md#configuring-the-gui-instance).
 
 
