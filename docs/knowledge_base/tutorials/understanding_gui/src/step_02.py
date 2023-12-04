@@ -10,4 +10,4 @@ My text: <|{text}|>
 <|{text}|input|>
 """
 
-Gui(page).run()
+Gui(page).run(debug=True)
