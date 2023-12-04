@@ -20,8 +20,11 @@ browser to open your first Taipy page!
 ```python
 from taipy import Gui
 
-Gui(page="# Getting started with *Taipy*").run() # use_reloader=True
+Gui(page="# Getting started with *Taipy*").run(debug=True) # use_reloader=True
 ```
+
+The `debug=True` parameter instructs Taipy to operate in debug mode. This means Taipy will provide a 
+stack trace of the errors within the application—a valuable feature during development.
 
 By default, the page won't refresh on its own after you make a code modification.
 

@@ -124,7 +124,7 @@ Enter a word:
 <|{dataframe}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|>
 """
 
-Gui(page).run()
+Gui(page).run(debug=True)
 ```
 
 

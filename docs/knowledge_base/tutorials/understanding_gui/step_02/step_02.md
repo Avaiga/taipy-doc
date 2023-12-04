@@ -63,7 +63,7 @@ My text: <|{text}|>
 <|{text}|input|>
 """
 
-Gui(page).run()
+Gui(page).run(debug=True)
 ```
 
 ![Visual Elements](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
