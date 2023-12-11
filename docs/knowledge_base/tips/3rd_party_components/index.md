@@ -61,12 +61,13 @@ To integrate this *map* object into our web application, we need to create the H
 version of this object. Here is the code that achieves this:
 
 ```python
-import io
+import tempfile
 
 def expose_folium(map):
-    buffer = io.StringIO()
-    map.save(buffer)
-    return buffer.getvalue()
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as temp_file:
+        map.save(temp_file.name)
+        with open(temp_file.name, "rb") as f:
+            return f.read()
 ```
 
 In this code, the function *expose_folium()* converts a Folium object (*map*) to HTML, a 
@@ -97,19 +98,19 @@ Finally, we can embed the Folium Map within our web application using the follow
 ```
 
 You can adjust the layout by changing its width and height. This element seamlessly 
-integrates the Folium Map into your web app, providing an engaging user experience.
+integrates the Folium Map into your web app.
 
 [Get the entire code](./example.py){: .tp-btn target='blank'}
 
 ## Conclusion
 
 Incorporating third-party components into your web applications is a powerful technique 
-that can greatly enhance user engagement. You can achieve this by converting external 
+that can greatly enhance user experience. You can achieve this by converting external 
 content into HTML and seamlessly integrating it into your web app.
 
-This article demonstrated how to embed a Folium Map in your web application using this 
-method. This approach ensures that the integrated content doesn't interfere with your 
-page and provides a secure user experience.
+This article demonstrated how to embed a Folium Map using this method. This approach 
+also ensures that the integrated content doesn't interfere with your page and provides a 
+secure user experience.
 
 # Entire Code
 
