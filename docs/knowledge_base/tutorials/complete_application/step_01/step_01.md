@@ -1,5 +1,5 @@
 > The full code is available
-<a href="./../src/src.zip" download>here</a>.
+<a href="../../src/src.zip" download>here</a>.
 
 This is a guide for creating a Data Visualization page for our example. The page includes 
 interactive visual elements for showcasing data from a CSV file.
