@@ -14,7 +14,7 @@ from initial prototypes to production-ready applications.
 
 <div class="tp-row tp-row--gutter-sm">
   <div class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card" href="manuals/gui/">
+    <a class="tp-content-card" href="knowledge_base/tutorials/understanding_gui/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon icon-light" src="images/icons/dashboard-w.svg">
         <img class="tp-content-card-icon icon-dark" src="images/icons/dashboard.svg">
@@ -30,7 +30,7 @@ from initial prototypes to production-ready applications.
     </a>
   </div>
   <div class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card" href="manuals/core/concepts/scenario/">
+    <a class="tp-content-card" href="knowledge_base/tutorials/scenario_management_overview/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon icon-light" src="images/icons/menu_book-w.svg">
         <img class="tp-content-card-icon icon-dark" src="images/icons/menu_book.svg">
