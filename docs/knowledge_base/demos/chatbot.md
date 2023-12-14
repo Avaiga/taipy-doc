@@ -1,0 +1,16 @@
+A GPT-3 chatbot created with Taipy. This application can be used 
+as a template for any application that requires LLM inference.
+
+[Try it live](https://demo-llm-chat.taipy.cloud/){: .tp-btn target='blank' }
+[Get it on GitHub](https://github.com/Avaiga/demo-llm-chat){: .tp-btn .tp-btn--accent target='blank' }
+
+# Understanding the Application
+This application allows the user to chat with GPT-3 by sending 
+its input to the OpenAI API and returning the conversation in 
+a chat window. The user is also able to come back to a previous 
+conversation and continue it.
+
+![ChatBot](images/chatbot_roundconv.png){width=100%}
+
+A tutorial on how to write this application and similar 
+LLM inference applications is available [here](../tutorials/chatbot/index.md).

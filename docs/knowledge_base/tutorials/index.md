@@ -134,6 +134,20 @@ Follow our tutorials and get the core concepts of Taipy.
     </a>
   </li>
 
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement markdown">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="chatbot">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>LLM ChatBot</h4>
+        <p>
+          Create a chatbot website using Taipy and an LLM API.
+        </p>
+      </div> 
+    </a>
+  </li>
+
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui markdown vizelement">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="markdown_syntax">
       <header class="tp-content-card-header">
