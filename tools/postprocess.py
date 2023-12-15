@@ -499,8 +499,13 @@ def process_data_source_attr(html: str, env):
         ref = m.group(3)
         repo_m = re.search(r"^([\w\d]+):", ref)
         if repo_m:
-            ref = ("https://github.com/Avaiga/taipy-" +
-                   f"{repo_m.group(0)[:-1]}/blob/{env.conf['branch']}/{ref[repo_m.end():]}")
+            target = ref[repo_m.end():]
+            if target.startswith("doc/"): #gui/examples/charts/advanced-annotations.py
+                target = f"{repo_m.group(0)[:-1]}/{target[4:]}"
+                ref = f"https://github.com/Avaiga/taipy/blob/{env.conf['branch']}/doc/{target}"
+            else:
+                logging.warning("Suspicious data-source attribute: {m.group(0)}")
+                ref = f"https://github.com/Avaiga/taipy-{repo_m.group(0)[:-1]}/blob/{env.conf['branch']}/{target}"
         new_content += (html[last_location:m.start()]
                         + f"{m.group(1)}{m.group(4)}"
                         + f"\n<small>You can download the entire source code used in this "
@@ -514,7 +519,7 @@ def process_data_source_attr(html: str, env):
 
 
 def process_links_to_github(html: str, env):
-    _LINK_RE = re.compile(r"(?<=href=\"https://github.com/Avaiga/)(taipy-gui/tree/)\[BRANCH\](.*?\")")
+    _LINK_RE = re.compile(r"(?<=href=\"https://github.com/Avaiga/)(taipy/tree/)\[BRANCH\](.*?\")")
     new_content = ""
     last_location = 0
     for m in _LINK_RE.finditer(html):
