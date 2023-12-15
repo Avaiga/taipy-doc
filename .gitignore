@@ -110,7 +110,7 @@ site/
 # Doc generation
 mkdocs.yml
 /taipy
-/gui
+/taipy-fe
 docs/manuals/reference/**/*.md
 !docs/manuals/reference/index.md
 docs/manuals/gui/controls.md
