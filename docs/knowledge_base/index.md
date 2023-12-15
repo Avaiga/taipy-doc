@@ -491,6 +491,18 @@ hide:
       </div> 
     </a>
   </li>
+  <li data-keywords="gui vizelement layout chart ai">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/talk_to_taipy/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> TalkToTaipy </h4>
+        <p> Explore datasets using only natural language using TalkToTaipy!
+        </p>
+      </div> 
+    </a>
+  </li>
 </ul>
 
 # Tips & Tricks

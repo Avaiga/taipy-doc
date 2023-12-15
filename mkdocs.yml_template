@@ -57,6 +57,7 @@ nav:
         - "Drift Detection": knowledge_base/demos/drift_detection.md
         - "Realtime Pollution Dashboard" : knowledge_base/demos/pollution_sensors.md
         - "Background Remover" : knowledge_base/demos/background_remover.md
+        - "TalkToTaipy" : knowledge_base/demos/talk_to_taipy.md
     - "Tips and tricks":
         - "Tips and tricks": knowledge_base/tips/index.md
         - "Scenarios": knowledge_base/tips/scenarios/index.md
