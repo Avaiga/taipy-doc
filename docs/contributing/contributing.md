@@ -53,14 +53,17 @@ sprint is attached to the `current sprint`. Please, do not work on it, the Taipy
 
 # Code organization
 
-Taipy is organized in several repositories:
+The Taipy source code is located in the is organized [taipy](https://github.com/Avaiga/taipy)
+repository, in the `taipy` directory.
 
-- [taipy-config](https://github.com/Avaiga/taipy-config).
-- [taipy-core](https://github.com/Avaiga/taipy-core).
-- [taipy-gui](https://github.com/Avaiga/taipy-gui).
-- [taipy-rest](https://github.com/Avaiga/taipy-rest).
-- [taipy-templates](https://github.com/Avaiga/taipy-templates).
-- [taipy](https://github.com/Avaiga/taipy) brings previous packages in a single one.
+Packages sources are organized in sub-directories from there:
+
+- `taipy-config`
+- `taipy-core`
+- `taipy-gui`
+- `taipy-rest`
+- `taipy-templates`
+
 
 # Best practices
 
