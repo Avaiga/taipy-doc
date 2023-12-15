@@ -491,6 +491,18 @@ hide:
       </div> 
     </a>
   </li>
+  <li data-keywords="gui dashboard vizelement layout chart ai multi-page classification">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/fraud_detection/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Fraud Detection </h4>
+        <p> A Taipy Application that analyzes credit card transactions to detect fraud.
+        </p>
+      </div> 
+    </a>
+  </li>
 </ul>
 
 # Tips & Tricks
