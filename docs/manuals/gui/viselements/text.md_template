@@ -22,7 +22,7 @@ select the text controls on your page and apply style.
 
 You can represent a variable value as a simple, static text:
 
-!!! example "Page content"
+!!! example "Definition"
 
     === "Markdown"
 
@@ -36,6 +36,14 @@ You can represent a variable value as a simple, static text:
         <taipy:text>{value}</taipy:text>
         ```
 
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.text("{value}")
+        ```
+
 ## Formatted output
 
 If your value is a floating point value, you can use the [*format*](#p-format) property to indicate
@@ -43,16 +51,6 @@ what the output format should be used.
 
 To display a floating point value with two decimal places:
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{value}|text|format=%.2f|>
-        ```
-
-    === "HTML"
-
-        ```html
-        <taipy:text format="%.2f">{value}</taipy:text>
-        ```
+!!! taipy-element
+    default={value}
+    format=%.2f
