@@ -20,36 +20,12 @@ The [Stylekit](../styling/stylekit.md) provides a specific class that you can us
 
 The list of all pages registered in the Gui instance is used to build the navbar.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|navbar|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:navbar></taipy:navbar>
-        ```
-
+!!! taipy-element
 
 ## Defining a custom navbar
 
-The *lov* property is used to define the list of elements that are displayed.
+The [*lov*](#p-lov) property is used to define the list of elements that are displayed.<br/>
 If a lov element id starts with "http", the page is opened in another tab.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|navbar|lov={[("page1", "Page 1"), ("http://www.google.com", "Google")]}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:navbar lov={[("page1", "Page 1"), ("http://www.google.com", "Google")]}></taipy:navbar>
-        ```
+!!! taipy-element
+    lov={[("page1", "Page 1"), ("http://www.google.com", "Google")]}

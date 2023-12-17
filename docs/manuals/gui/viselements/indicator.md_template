@@ -70,5 +70,5 @@ the value of [*orientation*](#p-orientation).
         import taipy.gui.builder as tgb
         ...
         tgb.indicator("{Value 1}", value="{val1}", width="50vw")
-        tgb.indicator("{Value 2}", value="{val1}", orientation="vertical", width="50vw")
+        tgb.indicator("{Value 2}", value="{val2}", orientation="vertical", width="50vw")
         ```

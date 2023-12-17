@@ -222,8 +222,8 @@ class VisElementsStep(SetupStep):
             first_documentation_paragraph = match.group(1)
             element_desc['short_doc'] = first_documentation_paragraph
 
-            DEF_RE = re.compile(r"^!!!\s+taipy-element\s*?\n((?:\s+\w+(?::\w+)?\s*=\s*.*\n)*)", re.M)
-            PROP_RE = re.compile(r"(\w+)(?::(\w+))?\s*=\s*(.*)\n", re.M)
+            DEF_RE = re.compile(r"^!!!\s+taipy-element\s*?\n((?:\s+\w+(?:\[.*?\])?(?::\w+)?\s*=\s*.*\n)*)", re.M)
+            PROP_RE = re.compile(r"(\w+(?:\[.*?\])?)(?::(\w+))?\s*=\s*(.*)\n", re.M)
             new_documentation = ""
             last_location = 0
             for definition in DEF_RE.finditer(element_documentation):
@@ -291,7 +291,6 @@ class VisElementsStep(SetupStep):
                 new_documentation += "        ```python\n"
                 new_documentation += "        import taipy.gui.builder as tgb\n        ...\n"
                 new_documentation += f"        tgb.{element_type}("
-                prefix = ""
                 def builder_value(value: str, type: str) -> str:
                     if type == "f":
                         return value
@@ -299,12 +298,15 @@ class VisElementsStep(SetupStep):
                         return value.title()
                     value = value.replace("\"", "'")
                     return f"\"{value}\""
+                prefix = ""
                 if default_property:
                     new_documentation += f"\"{default_property}\""
                     prefix = ", "
                 for n, v, t in properties:
                     new_documentation += f"{prefix}{n}={builder_value(v, t)}"
                     prefix = ", "
+                    if "[" in n:
+                        print(f"WARNING - Property '{n}' in examples for {element_type}")
                 new_documentation += f")\n"
                 new_documentation += f"        ```\n"
                 last_location = definition.end()

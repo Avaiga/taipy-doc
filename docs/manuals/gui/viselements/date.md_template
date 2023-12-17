@@ -17,7 +17,7 @@ The [Stylekit](../styling/stylekit.md) provides a specific class that you can us
 
 ## Using the full date and time
 
-Assuming a variable _dt_ contains a Python `datetime` object, you can create
+Assuming a variable *dt* contains a Python `datetime` object, you can create
 a date selector that represents it:
 
 !!! taipy-element
@@ -25,7 +25,7 @@ a date selector that represents it:
 
 ## Using only the date
 
-If you don't need to use the date, you can do so:
+If you don't need to use the time, you can set the [*with_time*](#p-with_time) property to False:
 
 !!! taipy-element
     default={dt}
