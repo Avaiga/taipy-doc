@@ -117,6 +117,7 @@ docs/manuals/gui/controls.md
 docs/manuals/gui/blocks.md
 docs/manuals/gui/viselements/*.md
 !docs/manuals/gui/viselements/index.md
+docs/manuals/gui/viselements/charts/*.md
 docs/manuals/gui/corelements/*.md
 docs/manuals/xrefs
 !docs/manuals/gui/gui_example.ipynb

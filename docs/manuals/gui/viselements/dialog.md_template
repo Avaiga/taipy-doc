@@ -13,7 +13,6 @@ name to select the dialogs on your page and apply style.
 ## Showing or hiding a dialog
 
 The default property, [*open*](#p-open), indicates whether the dialog is visible or not:
-
 !!! taipy-element
     default={show_dialog}
     on_action={lambda s: s.assign("show_dialog", False)}

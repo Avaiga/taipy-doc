@@ -466,7 +466,6 @@ class [element_type]({base_class}):
             match = SECTION_RE.match(line)
             if match:
                 type = match.group(1)
-                print(f"Chart {type=}")
                 chart_sections += f"- [{match.group(2)}](charts/{type}.md)\n"
                 template_doc_path = f"{charts_md_dir}/{type}.md_template"
                 # Generate chart type documentation page if possible
