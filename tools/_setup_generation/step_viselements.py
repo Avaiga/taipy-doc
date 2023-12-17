@@ -222,97 +222,8 @@ class VisElementsStep(SetupStep):
             first_documentation_paragraph = match.group(1)
             element_desc['short_doc'] = first_documentation_paragraph
 
-            DEF_RE = re.compile(r"^!!!\s+taipy-element\s*?\n((?:\s+\w+(?:\[.*?\])?(?::\w+)?\s*=\s*.*\n)*)", re.M)
-            PROP_RE = re.compile(r"(\w+(?:\[.*?\])?)(?::(\w+))?\s*=\s*(.*)\n", re.M)
-            new_documentation = ""
-            last_location = 0
-            for definition in DEF_RE.finditer(element_documentation):
-                new_documentation += element_documentation[last_location:definition.start()]
-                default_property = ""
-                properties = []
-                for p in PROP_RE.finditer(definition.group(1)):
-                    if p[1] == "default":
-                        default_property = p[3]
-                    else:
-                        properties.append((p[1], p[3], p[2] if p[2] else "-"))
-                new_documentation += "!!! example \"Definition\"\n\n"
-                # Markdown format
-                def md_property_value(property: str, value: str, type: str) -> str:
-                    if type.startswith("b"):
-                        if value.lower() == "true":
-                            return property
-                        if value.lower() != "false":
-                            raise ValueError(
-                                f"Invalid value for Boolean property '{property}' in '{element_type}.md_template'"
-                            )
-                        if type.endswith("dont"):
-                            return f"don't {property}"
-                        return f"not {property}"
-                    return f"{property}={value}"
-                new_documentation += "    === \"Markdown\"\n\n"
-                new_documentation += "        ```\n"
-                new_documentation += "        <|"
-                if default_property:
-                    new_documentation += f"{default_property}|"
-                new_documentation += f"{element_type}|"
-                for n, v, t in properties:
-                    new_documentation += f"{md_property_value(n, v, t)}|"
-                new_documentation += ">\n"
-                new_documentation += "        ```\n\n"
-                # HTML format
-
-                def html_value(property: str, value: str, type: str) -> str:
-                    if type.startswith("b"):
-                        if value.lower() == "true":
-                            return f"{property}"
-                        else:
-                            value = value.lower()
-                    value = value.replace("\"", "'")
-                    return f"{property}=\"{value}\""
-                new_documentation += "    === \"HTML\"\n\n"
-                new_documentation += "        ```html\n"
-                new_documentation += f"        <taipy:{element_type}"
-                html_1 = ""
-                html_2 = ""
-                if properties:
-                    for n, v, t in properties:
-                        html_1 += f" {html_value(n, v, t)}"
-                if default_property:
-                    html_1 += f">"
-                    html_2 = f"{default_property}</taipy:{element_type}>"
-                else:
-                    html_1 += f"/>"
-                new_documentation += f"{html_1}"
-                if len(html_1) > 120 and html_2:
-                    new_documentation += f"\n        "
-                new_documentation += f"{html_2}\n        ```\n\n"
-                # Page Builder syntax
-                new_documentation += "    === \"Python\"\n\n"
-                new_documentation += "        ```python\n"
-                new_documentation += "        import taipy.gui.builder as tgb\n        ...\n"
-                new_documentation += f"        tgb.{element_type}("
-                def builder_value(value: str, type: str) -> str:
-                    if type == "f":
-                        return value
-                    if type.startswith("b"):
-                        return value.title()
-                    value = value.replace("\"", "'")
-                    return f"\"{value}\""
-                prefix = ""
-                if default_property:
-                    new_documentation += f"\"{default_property}\""
-                    prefix = ", "
-                for n, v, t in properties:
-                    new_documentation += f"{prefix}{n}={builder_value(v, t)}"
-                    prefix = ", "
-                    if "[" in n:
-                        print(f"WARNING - Property '{n}' in examples for {element_type}")
-                new_documentation += f")\n"
-                new_documentation += f"        ```\n"
-                last_location = definition.end()
-            if last_location:
-                element_documentation = new_documentation + element_documentation[last_location:]
-
+            element_documentation = self.process_element_md_file(element_type, element_documentation)
+            
             # Build properties table
             properties_table = """
 # Properties\n\n
@@ -384,11 +295,10 @@ class VisElementsStep(SetupStep):
 
             # Chart hook
             if element_type == "chart":
-                values = self.chart_page_hook(
-                    element_documentation, before_properties, after_properties
+                before_properties, after_properties = self.chart_page_hook(
+                    element_documentation, before_properties, after_properties,
+                    f"{element_desc['doc_path']}/charts"
                 )
-                before_properties = values[0]
-                after_properties = values[1]
 
             with open(f"{element_desc['doc_path']}/{element_type}.md", "w") as md_file:
                 md_file.write(
@@ -535,7 +445,7 @@ class [element_type]({base_class}):
     # file whose path is in self.charts_home_html_path
     # This should be inserted before the first level 1 header
     def chart_page_hook(
-        self, element_documentation: str, before: str, after: str
+        self, element_documentation: str, before: str, after: str, charts_md_dir: str
     ) -> tuple[str, str]:
         with open(self.charts_home_html_path, "r") as html_fragment_file:
             chart_gallery = html_fragment_file.read()
@@ -555,7 +465,17 @@ class [element_type]({base_class}):
         for line in match.group(1).splitlines():
             match = SECTION_RE.match(line)
             if match:
-                chart_sections += f"- [{match.group(2)}](charts/{match.group(1)}.md)\n"
+                type = match.group(1)
+                print(f"Chart {type=}")
+                chart_sections += f"- [{match.group(2)}](charts/{type}.md)\n"
+                template_doc_path = f"{charts_md_dir}/{type}.md_template"
+                # Generate chart type documentation page if possible
+                if os.access(template_doc_path, os.R_OK):
+                    with open(template_doc_path, "r") as template_doc_file:
+                        documentation = template_doc_file.read()
+                        documentation = self.process_element_md_file('chart', documentation)
+                    with open(f"{charts_md_dir}/{type}.md", "w") as md_file:
+                        md_file.write(documentation)
 
         match = re.match(
             r"(^.*?)(?:\n#\s+)", element_documentation, re.MULTILINE | re.DOTALL
@@ -568,3 +488,94 @@ class [element_type]({base_class}):
             match.group(1) + chart_gallery + before[match.end() :],
             after + chart_sections,
         )
+    
+    def process_element_md_file(self, type: str, documentation: str) -> str:
+        DEF_RE = re.compile(r"^!!!\s+taipy-element\s*?\n((?:\s+\w+(?:\[.*?\])?(?::\w+)?\s*=\s*.*\n)*)", re.M)
+        PROP_RE = re.compile(r"(\w+(?:\[.*?\])?)(?::(\w+))?\s*=\s*(.*)\n", re.M)
+        new_documentation = ""
+        last_location = 0
+        for definition in DEF_RE.finditer(documentation):
+            new_documentation += documentation[last_location:definition.start()]
+            default_property = ""
+            properties = []
+            for p in PROP_RE.finditer(definition.group(1)):
+                if p[1] == "default":
+                    default_property = p[3]
+                else:
+                    properties.append((p[1], p[3], p[2] if p[2] else "-"))
+            new_documentation += "!!! example \"Definition\"\n\n"
+            # Markdown format
+            def md_property_value(property: str, value: str, type: str) -> str:
+                if type.startswith("b"):
+                    if value.lower() == "true":
+                        return property
+                    if value.lower() != "false":
+                        raise ValueError(
+                            f"Invalid value for Boolean property '{property}' in '{type}.md_template'"
+                        )
+                    if type.endswith("dont"):
+                        return f"don't {property}"
+                    return f"not {property}"
+                return f"{property}={value}"
+            new_documentation += "    === \"Markdown\"\n\n"
+            new_documentation += "        ```\n"
+            new_documentation += "        <|"
+            if default_property:
+                new_documentation += f"{default_property}|"
+            new_documentation += f"{type}|"
+            for n, v, t in properties:
+                new_documentation += f"{md_property_value(n, v, t)}|"
+            new_documentation += ">\n"
+            new_documentation += "        ```\n\n"
+            # HTML format
+
+            def html_value(property: str, value: str, type: str) -> str:
+                if type.startswith("b"):
+                    if value.lower() == "true":
+                        return f"{property}"
+                    else:
+                        value = value.lower()
+                value = value.replace("\"", "'")
+                return f"{property}=\"{value}\""
+            new_documentation += "    === \"HTML\"\n\n"
+            new_documentation += "        ```html\n"
+            new_documentation += f"        <taipy:{type}"
+            html_1 = ""
+            html_2 = ""
+            if properties:
+                for n, v, t in properties:
+                    html_1 += f" {html_value(n, v, t)}"
+            if default_property:
+                html_1 += f">"
+                html_2 = f"{default_property}</taipy:{type}>"
+            else:
+                html_1 += f"/>"
+            new_documentation += f"{html_1}"
+            if len(html_1) > 120 and html_2:
+                new_documentation += f"\n        "
+            new_documentation += f"{html_2}\n        ```\n\n"
+            # Page Builder syntax
+            new_documentation += "    === \"Python\"\n\n"
+            new_documentation += "        ```python\n"
+            new_documentation += "        import taipy.gui.builder as tgb\n        ...\n"
+            new_documentation += f"        tgb.{type}("
+            def builder_value(value: str, type: str) -> str:
+                if type == "f":
+                    return value
+                if type.startswith("b"):
+                    return value.title()
+                value = value.replace("\"", "'")
+                return f"\"{value}\""
+            prefix = ""
+            if default_property:
+                new_documentation += f"\"{default_property}\""
+                prefix = ", "
+            for n, v, t in properties:
+                new_documentation += f"{prefix}{n}={builder_value(v, t)}"
+                prefix = ", "
+                if "[" in n:
+                    print(f"WARNING - Property '{n}' in examples for {type}")
+            new_documentation += f")\n"
+            new_documentation += f"        ```\n"
+            last_location = definition.end()
+        return new_documentation + documentation[last_location:] if documentation else documentation

@@ -30,7 +30,7 @@ of the Plotly documentation
 
 Here is how we can create a filled area chart to represent the number of items sold every
 weekday:
-```py
+```python
 data = {
     "Day":   ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
     "Items": [32, 25, 86, 60, 70],
@@ -43,20 +43,11 @@ options = {
 ```
 
 The chart control definition is straightforward:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|x=Day|y=Items|options={options}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart x="Day" y="Items" options="{options}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    x=Day
+    y=Items
+    options={options}
 
 Note that we have not set the [*type*](../chart.md#p-type) property, which defaults to
 "scatter". This is what we want for our filled area chart.
@@ -74,7 +65,7 @@ Suppose we want also to visualize the price of the items.<br/>
 One way of doing this could be to overlay the two traces on top of each other.
 
 Here is an example that does just that:
-```py
+```python
 data = {
     "Day":   [ "Mon", "Tue", "Wed", "Thu", "Fri" ],
     "Items": [ 32, 25, 86, 60, 70],
@@ -96,21 +87,13 @@ chart, using overlay.
 The *options* dictionary holds the *fill* setting for both traces.
 
 Let's use that in our chart control definition:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|mode=none|x=Day|y[1]=Items|y[2]=Price|options={options}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart mode="none" x="Day" y[1]="Items" y[2]="Price" options="{options}">
-            {data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    mode=none
+    x=Day
+    y[1]=Items
+    y[2]=Price
+    options={options}
 
 Note that we set *mode* to "none" in order to remove the dots that would otherwise be
 displayed at each data point.
@@ -130,7 +113,7 @@ To do this, you need to set the *stackgroup* of the dictionary set to
 the [*options*](../chart.md#p-options) property of the chart control to a group name.
 
 Here is some code that demonstrates this:
-```py
+```python
 data = {
     "Month":  [
       "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -147,24 +130,15 @@ options = {
     # Group all traces in the same stack group
     "stackgroup": "first_group"
 }
+```
 
 The chart control definition will use that dictionary:
-
-```
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|mode=none|x=Month|y={items}|options={options}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart mode="none" x="month" y="{items}" options="{options}">
-            {data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    mode=none
+    x=Month
+    y={items}
+    options={options}
 
 Here is the resulting display:
 <figure>
@@ -181,7 +155,7 @@ percentage of the overall total.
 
 Suppose we want to show the ratio of cosmetic products sales across different regions in
 a hypothetic company:
-```py
+```python
 data = {
     "Products": [
         "Nail polish", "Eyebrow pencil", "Rouge", "Lipstick",
@@ -216,21 +190,13 @@ layout = {
 Note how the first trace's options have the *groupnorm* property set to "percent".
 
 Here is how we would define our chart control:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|mode=none|x=Products|y={ys}|options={options}|layout={layout}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart mode="none" x="Products" y="{ys}" options="{options}" layout="{layout}">
-            {data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    mode=none
+    x=Products
+    y={ys}
+    options={options}
+    layout={layout}
 
 The chart looks like this:
 <figure>

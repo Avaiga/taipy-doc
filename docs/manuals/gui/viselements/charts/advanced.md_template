@@ -36,7 +36,7 @@ represent the same function (x squared) on two different intervals.
   on the interval [-4, 4].
 
 Here is the code that does just that:
-```py
+```python
 # The first data set uses the x interval [-10..10],
 # with one point at every other unit
 x1_range = [x*2 for x in range(-5, 6)]
@@ -75,21 +75,12 @@ As you can see, the array *data* has two elements:
 To use these series in the chart control, the [*x*](../chart.md#p-x) and
 [*y*](../chart.md#p-y) properties must indicate which trace they refer to and be
 set with the indexed data set syntax as shown below:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|x[1]=0/x|y[1]=0/Coarse|x[2]=1/x|y[2]=1/Fine|>
-        ```
-
-    === "HTML"
-
-        ```html
-        <taipy:chart x[1]="0/x" y[1]="0/Coarse" x[2]="1/x" y[2]="1/Fine">
-            {data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    x[1]=0/x
+    y[1]=0/Coarse
+    x[2]=1/x
+    y[2]=1/Fine
 
 Trace number 1 (the Coarse trace) is defined by *x[1]* and *y[1]*, and uses
 the series *data[0]\["x"\]* and *data[0]\["Coarse"\]*;<br/>
@@ -115,7 +106,7 @@ look at the documentation on the
 page on Plotly's website.
 
 Here is an example demonstrating how you can add annotations to your chart controls:
-```py
+```python
 # Function to plot: x^3/3 - x
 def f(x):
     return x*x*x/3-x
@@ -163,20 +154,9 @@ text information, location, font setting, etc.
 
 Adding the annotations to the chart control is a matter of setting the
 [*layout*](../chart.md#p-layout) property of the chart control to that object:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|layout={layout}|>
-        ```
-
-    === "HTML"
-
-        ```html
-        <taipy:chart layout="{layout}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    layout={layout}
 
 Here is how the annotated chart control shows on the page:
 <figure>
@@ -196,7 +176,7 @@ The documentation for shape descriptors can be found in the
 page on Plotly's website.
 
 Here is some code that creates shapes on top of a chart control:
-```py
+```python
 # Function to plot: x^3/3-x
 def f(x):
     return x*x*x/3-x
@@ -242,20 +222,9 @@ the parameters that configure how and where to render it.<br/>
 Note how we indicate the size of the shape, using the *shape_size* variable.
 
 Here is the definition of the chart control:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|layout={layout}|>
-        ```
-
-    === "HTML"
-
-        ```html
-        <taipy:chart layout="{layout}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    layout={layout}
 
 And here is what the resulting chart looks like:
 <figure>
@@ -273,7 +242,7 @@ indexes. It is updated when the user selects points on the chart.
 
 Here is some code that calculates the mean of the values of the selected points of
 a chart control:
-```py
+```python
 # x = [0..20]
 x = list(range(0, 21))
 
@@ -313,7 +282,7 @@ bar above the chart and force the Box select tool.
 
 Here is the definition of the chart and text controls:
 
-!!! example "Page content"
+!!! example "Definition"
 
     === "Markdown"
 
@@ -334,6 +303,14 @@ Here is the definition of the chart and text controls:
 
         <taipy:chart selected="{selected_indices}" layout="{layout}"
             plot_config="{config}">{data}</taipy:chart>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.chart("{data}", selected="{selected_indices}", layout="{layout}", plot_config="{config}")
         ```
 
 And here is what the resulting page looks like:

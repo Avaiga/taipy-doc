@@ -33,7 +33,7 @@ radar chart automatically arranges all categories along the angular axis.
 
 Here is an example that demonstrates the use of a radar chart to display
 the relative usage of programming languages among developers:
-```py
+```python
 data = {
     # List of programming languages
     "Language": [
@@ -68,21 +68,13 @@ options = {
 ```
 
 Here is the chart control definition:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=scatterpolar|r=%|theta=Language|options={options}|layout={layout}|>
-        ```
-
-    === "HTML"
-
-        ```html
-        <taipy:chart type="scatterpolar" r="%" theta="Language"
-            options="{options}" layout="{layout}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=scatterpolar
+    r=%
+    theta=Language
+    options={options}
+    layout={layout}
 
 Here is the resulting figure:
 <figure>
@@ -98,7 +90,7 @@ where a given data set performs better or worse than another for a given categor
 
 This example shows how to use a radar chart that displays two distinct data sets using
 the same categories:
-```py
+```python
 # Skill categories
 skills=["HTML", "CSS", "Java", "Python", "PHP", "JavaScript", "Photoshop"]
 data = [
@@ -136,21 +128,14 @@ theta = ["0/Skills",  "1/Skills"]
 ```
 
 The chart definition uses all those different objects:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=scatterpolar|name={names}|r={r}|theta={theta}|options={options}|layout={layout}|>
-        ```
-
-    === "HTML"
-
-        ```html
-        <taipy:chart type="scatterpolar" name="{names}" r="{r}" theta="{theta}"
-            options="{options}" layout="{layout}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=scatterpolar
+    name={names}
+    r={r}
+    theta={theta}
+    options={options}
+    layout={layout}
 
 The chart created above looks like this:
 <figure>
