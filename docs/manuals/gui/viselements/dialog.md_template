@@ -25,7 +25,6 @@ def button_action(state, id):
     state.show_dialog = True
 ```
 
-
 ## Specifying labels and actions
 
 Several properties let you specify the buttons to show,
