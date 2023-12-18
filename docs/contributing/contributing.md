@@ -53,7 +53,7 @@ sprint is attached to the `current sprint`. Please, do not work on it, the Taipy
 
 # Code organization
 
-The Taipy source code is located in the is organized [taipy](https://github.com/Avaiga/taipy)
+The Taipy source code is located in the [taipy](https://github.com/Avaiga/taipy)
 repository, in the `taipy` directory.
 
 Packages sources are organized in sub-directories from there:
