@@ -48,27 +48,16 @@ trace in blue and apply a dash style to the 'regular' temperature
 plot.
 
 Here is the definition of the chart control:
-!!! example "Definition"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|mode=lines|x=Date|y[1]=Temp°C|y[2]=Min|y[3]=Max|line[1]=dash|color[2]=blue|color[3]=red|>
-        ```
-
-    === "HTML"
-
-        ```html
-        <taipy:chart mode="lines" x="Date" y[1]="Temp°C" y[2]="Min" y[3]="Max" line[1]="dash" color[2]="blue" color[3]="red">{data}</taipy:chart>
-        ```
-
-    === "Python"
-
-        ```python
-        import taipy.gui.builder as tgb
-        ...
-        tgb.chart("{data}", mode="lines", x="Date", y[1]="Temp°C", y[2]="Min", y[3]="Max", line[1]="dash", color[2]="blue", color[3]="red")
-        ```
+!!! taipy-element
+    default={data}
+    mode=lines
+    x=Date
+    y[1]=Temp°C
+    y[2]=Min
+    y[3]=Max
+    line[1]=dash
+    color[2]=blue
+    color[3]=red
 
 The page now shows the following chart:
 <figure>
@@ -100,27 +89,13 @@ Note that this new column (*WeekN*) is mainly filled with None values: we only a
 information on Sundays.
 
 Let us use this column as a source for displaying text in our chart:
-!!! example "Definition"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|x=Date|y[1]=Temp°C|y[2]=Max|mode[2]=text|text[2]=WeekN|>
-        ```
-
-    === "HTML"
-
-        ```html
-        <taipy:chart x="Date" y[1]="Temp°C" y[2]="Max" mode[2]="text" text[2]="WeekN">{data}</taipy:chart>
-        ```
-
-    === "Python"
-
-        ```python
-        import taipy.gui.builder as tgb
-        ...
-        tgb.chart("{data}", x="Date", y[1]="Temp°C", y[2]="Max", mode[2]="text", text[2]="WeekN")
-        ```
+!!! taipy-element
+    default={data}
+    x=Date
+    y[1]=Temp°C
+    y[2]=Max
+    mode[2]=text
+    text[2]=WeekN
 
 We use the [*mode[]*](../chart.md#p-mode) indexed property to indicate that, for
 the second trace, we want to display the text itself.<br/>

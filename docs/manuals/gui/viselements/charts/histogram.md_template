@@ -32,25 +32,14 @@ The simplest histogram would use a data set and represent the number of
 data points that fall in a given bin (between two fixed values).
 
 Let us create an array of random numbers that represent a Gaussian distribution:
-```py
+```python
 data = [random.gauss(0, 5) for i in range(1000)]
 ```
 
 Now the chart control definition can be as simple as:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=histogram|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="histogram">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=histogram
 
 This would produce the image below:
 <figure>
@@ -63,7 +52,7 @@ Note that the label under the x axis appears as '0'. That's because we
 did not name our data set.<br/>
 To have a more appealing x axis label, we could have defined *data*
 as a dictionary:
-```py
+```python
 data = {
   "Input": [random.gauss(0, 5) for i in range(1000)]
 }
@@ -79,27 +68,17 @@ we can simply set the data set as the value of the [*y*](../chart.md#p-y) proper
 of the chart control (instead of [*x*](../chart.md#p-x)).
 
 Let us create a data set (same as above, really):
-```py
+```python
 data = {
     "Count": [random.random() for i in range(100)]
 }
 ```
 
 And use it in your chart control, as a *y* value this time:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=histogram|y=Count|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="histogram" y="Count">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=histogram
+    y=Count
 
 The resulting chart looks as follows:
 <figure>
@@ -120,7 +99,7 @@ To overlay the data set traces, you need to set the *barmode* property of
 
 Let us create an array of two random data sets then prepare the objects that customize
 the histogram chart:
-```py
+```python
 # Data is made of two random data sets
 data = [
     {
@@ -153,21 +132,11 @@ layout = {
 ```
 
 And let's define our chart using these settings:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=histogram|options={options}|layout={layout}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="histogram" options="{options}" layout="{layout}">
-          {data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=histogram
+    options={options}
+    layout={layout}
 
 Here is what the resulting chart looks like:
 <figure>
@@ -184,7 +153,7 @@ The *barmode* property of the value set to the [*layout*](../chart.md#p-layout) 
 be set to "stack" to achieve this.
 
 Using the two random data sets defined by:
-```py
+```python
 # Array of two data sets
 data = {
     "A": [random.random() for i in range(200)],
@@ -204,21 +173,13 @@ layout = {
 ```
 
 The chart control definition would reference those objects:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=histogram|x[1]=A|x[2]=B|name={names}|layout={layout}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="histogram" x[1]="A" x[2]="B"
-          name="{names}" layout="{layout}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=histogram
+    x[1]=A
+    x[2]=B
+    name={names}
+    layout={layout}
 
 To result in the following figure:
 <figure>
@@ -233,7 +194,8 @@ Histograms can also represent the sum of the number of observations, bin after
 bin.<br/>
 Taipy can represent such a histogram using the *cumulative* property of the value set
 to the [*options*](../chart.md#p-options) chart control property.
-```py
+
+```python
 # Random data set
 data = [random.random() for i in range(500)]
 
@@ -246,20 +208,10 @@ options = {
 ```
 
 The chart control is defined as:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=histogram|options={options}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="histogram" options="{options}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=histogram
+    options={options}
 
 The resulting chart looks like this:
 <figure>
@@ -282,7 +234,7 @@ in your situation (see the
 on the Plotly site for details).
 
 We can define a random data set and the histogram options with this code:
-```py
+```python
 # Random data set
 data = [random.random() for i in range(100)]
 
@@ -293,20 +245,10 @@ options = {
 ```
 
 And use those in the definition for our histogram chart:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=histogram|options={options}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="histogram" options="{options}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=histogram
+    options={options}
 
 Here is what the chart looks like:
 <figure>
@@ -323,7 +265,7 @@ a given bin appears in the data instead of the usual cumulated quantity in each
 bin.
 
 Here is the code that we can use to reflect that functionality:
-```py
+```python
 # Initial data set. y = count_of(x)
 samples = {
     "x": ["Apples", "Apples", "Apples", "Oranges", "Bananas", "Oranges"],
@@ -366,20 +308,10 @@ trace will sum the *y* values for each bin.
 Because there are quite a few settings, we group them in a single dictionary that we
 can then use as the value to the property [*properties*](../chart.md#p-properties) of
 the chart control:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=histogram|properties={properties}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="histogram" properties="{properties}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=histogram
+    properties={properties}
 
 The page shows:
 <figure>
@@ -397,7 +329,7 @@ Use the *nbinsx* property of the dictionary set to the
 number.
 
 Here is the code we are using in this example:
-```py
+```python
 # Random set of 100 samples
 samples = { "x": [random.gauss() for i in range(100)] }
 
@@ -426,20 +358,11 @@ layout = {
 ```
 
 We will use those objects in the definition for the chart control:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=histogram|options={options}|layout={layout}>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="histogram" options="{options} layout="{layout}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=histogram
+    options={options}
+    layout={layout}
 
 To generate the following chart:
 <figure>

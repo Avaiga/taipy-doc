@@ -11,7 +11,6 @@ next to one another and look at a global change over time.
 Taipy creates a bar chart when the [*type*](../chart.md#p-type) property for a trace
 in the chart control is set to "bar".
 
-
 ## Key properties
 
 | Name            | Value           | Notes   |
@@ -33,7 +32,7 @@ election in the US since 1852 (source
 [Wikipedia](https://en.wikipedia.org/wiki/List_of_United_States_presidential_elections_by_popular_vote_margin])).
 
 The Python code will look like this:
-```py
+```python
 percentages=[(1852,50.83), (1856,45.29), ..., (2016,46.09), (2020,51.31)]
 data = pandas.DataFrame(percentages, columns= ["Year", "%"])
 ```
@@ -42,20 +41,11 @@ A Pandas DataFrame is built from a list of tuples that hold the election year
 and the percentage of votes the winner has received globally.
 
 The definition of a bar chart that represents this data will look like this:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=bar|x=Year|y=%|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="bar" x="Year" y="%">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=bar
+    x=Year
+    y=%
 
 All we did is set the [*type*](../chart.md#p-type) property to "bar", and the
 following chart is displayed on the page (the blue color is not related to what
@@ -73,7 +63,7 @@ Say you want to display the score of the winning side next to the
 score of the losing side.
 
 Starting with a smaller version of the data set used above, you can write:
-```py
+```python
 percentages=[(1852,50.83), (1856,45.29), ..., (1924,54.04), (1928,58.21)]
 data = pandas.DataFrame(percentages, columns= ["Year", "Won"])
 # Add the Lost column (100-Won)
@@ -86,20 +76,12 @@ of *percentages*.
 To represent it, we will change the definition of the chart control, splitting
 the two data sets to be represented in *y[1]* and *y[2]*.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=bar|x=Year|y[1]=Won|y[2]=Lost|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="bar" x="Year" y[1]="Won" y[2]="Lost">{data}</taipy:chart>
-        ```
-
+!!! taipy-element
+    default={data}
+    type=bar
+    x=Year
+    y[1]=Won
+    y[2]=Lost
 
 Here is how this new data set is represented:
 <figure>
@@ -117,25 +99,18 @@ We are reusing the same DataFrame as in the example above.
 
 To indicate that we want a stacked representation, you must
 create a *layout* dictionary:
-```py
+```python
 layout={ "barmode": "stack" }
 ```
 
 And use this dictionary in the definition of the chart:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=bar|x=Year|y[1]=Won|y[2]=Lost|layout={layout}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="bar" x="Year" y[1]="Won" y[2]="Lost" layout="{layout}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=bar
+    x=Year
+    y[1]=Won
+    y[2]=Lost
+    layout={layout}
 
 Here is the resulting image:
 <figure>
@@ -158,7 +133,7 @@ enjoying that activity on each side of a common vertical axis, represented
 as two horizontal bars facing each other.
 
 We have a DataFrame that holds the information we want to represent:
-```py
+```python
 data = pd.DataFrame({
     "Hobbies": [
         "Archery", "Tennis", "Football", "Basket", "Volley",
@@ -176,7 +151,7 @@ value in a single dictionary, which we will later use as the value for the
 [*properties*](../chart.md#p-properties) control property.
 
 Here is our property dictionary:
-```py
+```python
 properties = {
     # Shared y values
     "y":              "Hobbies",
@@ -207,20 +182,10 @@ Also, note that the *layout* property is set as well: we indicate in its
 and we hide the legend using the *showlegend* property.
 
 Now let's use this dictionary in the definition of the chart:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=bar|properties={properties}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="bar" properties="{properties}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=bar
+    properties={properties}
 
 Here is the result:
 <figure>

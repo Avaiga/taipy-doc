@@ -219,7 +219,7 @@ A complete example of a custom extension library that holds both a static elemen
 dynamic elements is accessible with its entire source code and build process in
 the `doc/extension` directory under the root directory of the Taipy GUI installation.<br/>
 You can also take a look at this extension library example directly on
-[GitHub](https://github.com/Avaiga/taipy-gui/tree/[BRANCH]/doc/extension).
+[GitHub](https://github.com/Avaiga/taipy/tree/[BRANCH]/doc/gui/extension).
 
 This example defines a subclass of `ElementLibrary^` called `ExampleLibrary` that
 holds several examples of custom elements.

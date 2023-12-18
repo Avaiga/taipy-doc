@@ -30,7 +30,7 @@ A simple use case for bubble charts is a data set where data points have a relat
 size, and opacity to be applied for their representation.
 
 Here is a small example of this:
-```py
+```python
 data = {
     "x": [1, 2, 3],
     "y": [1, 2, 3],
@@ -50,20 +50,12 @@ The dictionary *marker* indicates the name of the columns from the data set that
 are used to set the color, size, and opacity of each data point representation.
 
 The chart definition looks like this:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|mode=markers|x=x|y=y|marker={marker}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart mode="markers" x="x" y="y" marker="{marker}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    mode=markers
+    x=x
+    y=y
+    marker={marker}
 
 The result looks like this:
 <figure>
@@ -79,7 +71,7 @@ the *symbol* property of the dictionary used in the chart control's
 [*marker*](../chart.md#p-marker) property.
 
 Here is an example that demonstrates this:
-```py
+```python
 data = {
     "x": [1, 2, 3, 4, 5],
     "y": [10, 7, 4, 1, 5],
@@ -98,20 +90,12 @@ marker = {
 ```
 
 The chart definition remains exactly the same as in the example above:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|mode=markers|x=x|y=y|marker={marker}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart mode="markers" x="x" y="y" marker="{marker}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    mode=markers
+    x=x
+    y=y
+    marker={marker}
 
 And the resulting chart looks like this:
 <figure>
@@ -129,7 +113,7 @@ to the [*text*](../chart.md#p-text) property of the chart control to indicate
 what this text should be, for every data point.
 
 Here is some code that defines hover texts for a bubble chart:
-```py
+```python
 data = {
     "x": [1, 2, 3],
     "y": [1, 2, 3],
@@ -153,21 +137,13 @@ marker = {
 
 The chart definition needs to set the [*text*](../chart.md#p-text) property to the
 proper column name:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|mode=markers|x=x|y=y|marker={marker}|text=Texts|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart mode="markers" x="x" y="y" marker="{marker}" text="Texts">
-            {data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    mode=markers
+    x=x
+    y=y
+    marker={marker}
+    text=Texts
 
 Here is the result:
 <figure>

@@ -32,7 +32,7 @@ error band.
 
 We create the shape of the error band from the input data that is applied
 a random error displacement, positively and negatively:
-```py
+```python
 # Common axis for all data: [1..10]
 x = list(range(1, 11))
 # Sample data
@@ -97,20 +97,9 @@ Note that because there are many properties to configure the chart
 control, we use the dictionary *properties* that holds them all.
 
 That dictionary is then used in the chart control definition:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|properties={properties}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart properties="{properties}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    properties={properties}
 
 Here is the result:
 <figure>
@@ -134,7 +123,7 @@ we could have gotten our groceries from. This defines our ranges, for every type
 of item.
 
 Here is the code that does that:
-```py
+```python
 # Data is collected from January 1st, 2010, every month
 start_date = datetime.datetime(year=2010, month=1, day=1)
 period = dateutil.relativedelta.relativedelta(months=1)
@@ -236,20 +225,9 @@ Because we now have to handle six different traces, it is not surprising to
 see the dictionary *properties* to be quite populated.
 
 The chart definition has not changed:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|properties={properties}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart properties="{properties}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    properties={properties}
 
 And the chart looks like this:
 <figure>
@@ -260,4 +238,3 @@ And the chart looks like this:
 
 This chart clearly shows how the price for cherries varies significantly more
 over the year than for apples or bananas.
-

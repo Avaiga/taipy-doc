@@ -52,19 +52,8 @@ The [Stylekit](../styling/stylekit.md) provides specific classes that you can us
 The button label, which is the button control's default property, is simply displayed as the button
 text.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|Button Label|button|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:button>Button Label</taipy:button>
-        ```
+!!! taipy-element
+    default=Button Label
 
 <figure>
     <img src="../button-simple-d.png" class="visible-dark" />
@@ -86,17 +75,6 @@ def button_pressed(state):
 Then refer to this function in the definition of the control, as the value of the button's
 [*on_action*](#p-on_action) property:
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|Button Label|button|on_action=button_pressed|>
-        ```
-
-    === "HTML"
-
-        ```html
-        <taipy:button on_action="button_pressed">Button Label</taipy:button>
-        ```
-
+!!! taipy-element
+    default=Button Label
+    on_action:f=button_pressed
