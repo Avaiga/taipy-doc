@@ -231,7 +231,7 @@ def style_conv(state: State, idx: int, row: int) -> str:
 We then apply this function to the table by adding the `style` property
 
 ```python
-<|{conversation}|table|show_all|width=100%|style=style_conv|>
+<|{conversation}|table|show_all|style=style_conv|>
 ```
 
 And voilà:
