@@ -4,8 +4,9 @@ A Taipy Application that analyzes credit card transactions to detect fraud.
 [Get it on GitHub](https://github.com/Avaiga/demo-fraud-detection){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
-This application shows a list of credit card transactions. The user can select a date range to predict fraud on.
- The application will then use an XGB model to mark potentially fraudulent transactions in red or yellow. 
+This application shows a list of credit card transactions. The user can select a date range to
+predict fraud. The application will then use an XGB model to mark potentially fraudulent
+transactions in red or yellow. 
 
 ![List of Transactions Page](images/fraud_transactions.png){width=100%}
 
