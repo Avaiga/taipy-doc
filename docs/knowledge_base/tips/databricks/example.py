@@ -96,7 +96,7 @@ class Databricks:
 
 default_param = {"param1": "value1", "param2": "value2"}
 
-ENDPOINT = "<JOB ENDPOINT>"
+ENDPOINT = os.environ["JobEndpoint"]
 
 def predict(parameters):
     databricks = Databricks(os.environ['DatabricksBearerToken'],
@@ -125,7 +125,7 @@ task_databricks_cfg = Config.configure_task("databricks",
                                             function=predict,
                                             output=[results_cfg])
 
-scenario_cfg = Config.configure_scenario("scenario", task_config=[task_databricks_cfg])
+scenario_cfg = Config.configure_scenario("scenario", task_configs=[task_databricks_cfg])
 
 
 # main.py
