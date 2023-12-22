@@ -43,11 +43,11 @@ If you need to use the date and time, you can do so by setting `with_time` prope
     === "Markdown"
 
         ```
-        <|{dt}|date|with_time=True|>
+        <|{dt}|date|with_time|>
         ```
   
     === "HTML"
 
         ```html
-        <taipy:date with_time="True">{dt}</taipy:date>
+        <taipy:date with_time>{dt}</taipy:date>
         ```
