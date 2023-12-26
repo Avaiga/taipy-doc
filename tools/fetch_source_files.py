@@ -13,7 +13,7 @@ TOP_DIR = os.path.dirname(ROOT_DIR)
 # Where all the code from all directories/repositories is copied
 DEST_DIR_NAME = "taipy"
 
-REPOS = ["config", "core", "gui", "rest", "taipy", "templates"]
+REPOS = ["taipy"]
 PRIVATE_REPOS = ["auth", "enterprise"]
 
 OPTIONAL_PACKAGES = {
@@ -143,8 +143,9 @@ os.makedirs(DEST_DIR)
 safe_rmtree(os.path.join(TOOLS_PATH, DEST_DIR_NAME))
 
 pipfile_packages = {}
-PIPFILE_PACKAGE_RE = re.compile(r"(.*?)\s?=\s?(.*)")
+PIPFILE_PACKAGE_RE = re.compile(r"(..*?)\s?=\s?(.*)")
 
+frontend_dir = os.path.join(ROOT_DIR, f"taipy-fe")
 
 # Fetch files
 def move_files(repo: str, src_path: str):
@@ -196,13 +197,6 @@ def move_files(repo: str, src_path: str):
                        text=True)
         os.chdir(saved_dir)
     else:
-        tmp_dir = os.path.join(ROOT_DIR, f"{repo}.tmp")
-        safe_rmtree(tmp_dir)
-        gui_dir = os.path.join(ROOT_DIR, f"gui") if repo == "taipy-gui" else None
-        if repo == "taipy-gui" and os.path.isdir(gui_dir):
-            if os.path.isdir(os.path.join(gui_dir, "node_modules")):
-                shutil.move(os.path.join(gui_dir, "node_modules"), os.path.join(ROOT_DIR, f"gui_node_modules"))
-            shutil.rmtree(gui_dir)
         try:
             def copy_source(src_path: str, repo: str):
                 def copy(item: str, src: str, dst: str, rel_path: str):
@@ -229,26 +223,33 @@ def move_files(repo: str, src_path: str):
                 dest_path = os.path.join(ROOT_DIR, "taipy")
                 if not os.path.exists(dest_path):
                     os.makedirs(dest_path)
-                src_path = os.path.join(src_path, "src", "taipy")
-                for item in os.listdir(src_path):
-                    copy(item, src_path, dest_path, "")
+                sources_path = os.path.join(src_path, "taipy")
+                # Packages using the 'src' directory to hold source files
+                if not os.path.exists(sources_path):
+                    sources_path = os.path.join(src_path, "src", "taipy")
+                for item in os.listdir(sources_path):
+                    copy(item, sources_path, dest_path, "")
             copy_source(src_path, repo)
 
-            if gui_dir:
-                if not os.path.isdir(gui_dir):
-                    os.mkdir(gui_dir)
-                src_gui_dir = os.path.join(src_path, "gui")
-                shutil.copytree(os.path.join(src_gui_dir, "src"), os.path.join(gui_dir, "src"))
-                for f in [f for f in os.listdir(src_gui_dir) if f.endswith(".md") or f.endswith(".json")]:
-                    shutil.copy(os.path.join(src_gui_dir, f), os.path.join(gui_dir, f))
-                if os.path.isdir(os.path.join(ROOT_DIR, "gui_node_modules")):
-                    shutil.move(os.path.join(ROOT_DIR, "gui_node_modules"), os.path.join(gui_dir, "node_modules"))
+            # Copy Taipy GUI front end code
+            if repo == "taipy":
+                if not os.path.isdir(frontend_dir):
+                    os.mkdir(frontend_dir)
+                fe_src_dir = os.path.join(src_path, "frontend", "taipy-gui")
+                shutil.copytree(os.path.join(fe_src_dir, "src"), os.path.join(frontend_dir, "src"))
+                for f in [f for f in os.listdir(fe_src_dir) if f.endswith(".md") or f.endswith(".json")]:
+                    shutil.copy(os.path.join(fe_src_dir, f), os.path.join(frontend_dir, f))
         finally:
             pass
             """
             shutil.rmtree(tmp_dir)
             """
 
+frontend_dir = os.path.join(ROOT_DIR, f"taipy-fe")
+if os.path.isdir(os.path.join(frontend_dir, "node_modules")):
+    shutil.move(os.path.join(frontend_dir, "node_modules"), os.path.join(ROOT_DIR, f"fe_node_modules"))
+if os.path.isdir(os.path.join(frontend_dir)):
+    shutil.rmtree(frontend_dir)
 
 for repo in repo_defs.keys():
     if repo_defs[repo].get("skip", False):
@@ -258,7 +259,10 @@ for repo in repo_defs.keys():
     if version == "local":
         src_path = repo_defs[repo]['path']
         if not args.no_pull:
-            subprocess.run(f"\"{git_path}\" pull {src_path}", shell=True, capture_output=True, text=True)
+            cwd = os.getcwd()
+            os.chdir(src_path)
+            subprocess.run(f"\"{git_path}\" pull", shell=True, capture_output=True, text=True)
+            os.chdir(cwd)
         print(f"    Copying from {src_path}...", flush=True)
         move_files(repo, src_path)
     else:
@@ -290,6 +294,9 @@ for repo in repo_defs.keys():
 
 
         shutil.rmtree(clone_dir, onerror=handleRemoveReadonly)
+
+if os.path.isdir(os.path.join(ROOT_DIR, "fe_node_modules")) and os.path.isdir(os.path.join(frontend_dir)):
+    shutil.move(os.path.join(ROOT_DIR, "fe_node_modules"), os.path.join(frontend_dir, "node_modules"))
 
 # Manually add the taipy.run() function.
 # TODO: Automate this, grabbing the function from the 'taipy' repository,

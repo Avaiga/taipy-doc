@@ -1,18 +1,18 @@
 > You can download the code for
-<a href="./../src/step_07.py" download>Step 7</a> 
-or all the steps <a href="./../src/src.zip" download>here</a>. 
+<a href="../../src/step_07.py" download>Step 7</a>
+or all the steps <a href="../../src/src.zip" download>here</a>.
 
 !!! warning "For Notebooks"
 
-    The "Getting Started" Notebook is available [here](../getting_started.ipynb). In Taipy GUI, 
+    The "Getting Started" Notebook is available [here](../tutorial.ipynb). In Taipy GUI,
     the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 # Step 7: Multi-pages, navbars, and menus
 
-Taipy significantly simplifies the process of building a multi-page application. To create a 
-multi-page application, you need to define a dictionary of pages. In this example, we will 
-create three Pages: a Root page and two additional pages (page 1 & page 2). We will incorporate 
-Visual elements, such as a menu or navbar, on the Root page to facilitate navigation between 
+Taipy significantly simplifies the process of building a multi-page application. To create a
+multi-page application, you need to define a dictionary of pages. In this example, we will
+create three pages: a *root* page and two additional pages (page 1 & page 2). We will incorporate
+visual elements, such as a menu or navbar, on the root page to facilitate navigation between
 page 1 and page 2.
 
 
@@ -37,11 +37,11 @@ Gui(pages=pages).run()
 
 ## Navigating between pages
 
-- [menu](../../../../manuals/gui/viselements/menu.md): creates a menu on the left to navigate 
+- [menu](../../../../manuals/gui/viselements/menu.md): creates a menu on the left to navigate
     through the pages.
 
-    `<|menu|label=Menu|lov={lov_pages}|on_action=on_menu|>`. For example, this code creates a menu 
-    with two pages:
+    `<|menu|label=Menu|lov={lov_pages}|on_action=on_menu|>`. For example, this code creates a menu
+    with two options:
 
 ```python
 from taipy.gui import Gui, navigate
@@ -53,10 +53,10 @@ page2_md="## This is page 2"
 
 
 def on_menu(state, action, info):
-    page = info['args'][0]
+    page = info["args"][0]
     navigate(state, to=page)
-   
-   
+
+
 pages = {
     "/": root_md,
     "Page-1": page1_md,
@@ -68,16 +68,16 @@ Gui(pages=pages).run()
 
 ![Menu](menu.png){ width=500 style="margin:auto;display:block" }
 
-- [navbar](../../../../manuals/gui/viselements/navbar.md): creates an element to navigate 
+- [navbar](../../../../manuals/gui/viselements/navbar.md): creates an element to navigate
     through the Taipy pages by default
 
 ```python
 from taipy.gui import Gui
 
 
-root_md="<|navbar|>"
-page1_md="## This is page 1"
-page2_md="## This is page 2"
+root_md = "<|navbar|>"
+page1_md = "## This is page 1"
+page2_md = "## This is page 2"
 
 pages = {
     "/": root_md,
@@ -87,10 +87,10 @@ pages = {
 
 Gui(pages=pages).run()
 ```
- 
+
 ![Navbar](navbar.png){ width=500 style="margin:auto;display:block" }
 
- 
+
 ## Back to the code
 
 The Markdown created in our previous steps will be the first page (named _page_) of the application.
@@ -107,7 +107,7 @@ path = ""
 treatment = 0
 
 page_file = """
-<|{path}|file_selector|extensions=.txt|label=Upload .txt file|on_action=analyze_file|> <|{f'Downloading {treatment}%...'}|>
+<|{path}|file_selector|extensions=.txt|label=Upload .txt file|on_action=analyze_file|> <|{f"Downloading {treatment}%..."}|>
 
 
 <|Table|expandable|
@@ -120,12 +120,12 @@ page_file = """
 def analyze_file(state):
     state.dataframe2 = dataframe2
     state.treatment = 0
-    with open(state.path,"r", encoding='utf-8') as f:
+    with open(state.path,"r", encoding="utf-8") as f:
         data = f.read()
         # split lines and eliminates duplicates
-        file_list = list(dict.fromkeys(data.replace('\n', ' ').split(".")[:-1]))
-    
-    
+        file_list = list(dict.fromkeys(data.replace("\n", " ").split(".")[:-1]))
+
+
     for i in range(len(file_list)):
         text = file_list[i]
         state.treatment = int((i+1)*100/len(file_list))
@@ -133,21 +133,19 @@ def analyze_file(state):
         scores = analyze_text(text)
         temp.loc[len(temp)] = scores
         state.dataframe2 = temp
-        
-    state.path = None
-```    
 
-This little code below assembles our previous page and this new page. The _navbar_ in the root 
-page is also visible on both pages allowing for easy switching between pages. 
+    state.path = None
+```
+
+This little code below assembles our previous page and this new page. The `navbar` in the root
+page is also visible on both pages allowing for easy switching between pages.
 
 ```python
-
 # One root page for common content
 # The two pages that were created
 pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
          "line":page,
          "text":page_file}
-
 
 Gui(pages=pages).run()
 ```

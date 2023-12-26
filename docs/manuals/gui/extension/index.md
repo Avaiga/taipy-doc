@@ -71,7 +71,7 @@ As we have seen, custom visual element descriptors are associated with the name 
 the element as it appears on pages in the dictionary returned by the
 `(ElementLibrary.)get_elements()^` method.
 
-The [`Element` constructor](Element.__init__()^) needs a description of all the properties
+The `Element.__init__^`(`Element` constructor) needs a description of all the properties
 that this element holds, as well as how this element is rendered.
 
 ```py
@@ -92,7 +92,7 @@ All elements must indicate what their default property name is. That is used in 
 pages as the first fragment of the `<|...|>` construct or the value located in the
 text part of an element tag in HTML pages.<br/>
 Of course, *default_property_name* must be one of the keys of the properties dictionary
-provided to the [`Element` constructor](Element.__init__()^).
+provided to the `Element.__init__`(`Element` constructor).
 
 ## Rendering Elements
 
@@ -101,15 +101,14 @@ of the element and its interactions. Both approaches deliver HTML fragments that
 inserted into the page when it is requested.
 
 - Static elements.<br/>
-  A static visual element cannot interact with the underlying application.
-  It can be used just like any other element in a page, but its properties are not
-  bound to application variables: if a variable value is modified, it does not
-  impact the representation of the element on the page.<br/>
-  Static elements are implemented by creating a string that holds the XHTML text (that is,
-  HTML that respects the XML syntax, where all tags must be closed) that is inserted in
-  the page displayed by the browser. This string is computed and returned by the function
-  set to the *render_xhtml* parameter of the
-  [`Element` constructor](Element.__init__()^).<br/>
+  A static visual element cannot interact with the underlying application.<br/>
+  It can be used just like any other element in a page, but its properties are not bound to
+  application variables: if a variable value is modified, it does not impact the representation of
+  the element on the page.<br/>
+  Static elements are implemented by creating a string that holds the XHTML text (that is, HTML
+  that respects the XML syntax, where all tags must be closed) that is inserted in the page
+  displayed by the browser. This string is computed and returned by the function set to the
+  *render_xhtml* parameter of the `Element.__init__^`(`Element` constructor).<br/>
   Please go to the [Static Elements](static_element.md) section for
   a complete description of how to implement your own custom static elements.
 
@@ -122,7 +121,7 @@ inserted into the page when it is requested.
   [TypeScript](https://www.typescriptlang.org/) programming language (that builds on
   JavaScript).<br/>
   You indicate that a custom element is dynamic by setting the *react_component* parameter of
-  the [`Element` constructor](Element.__init__()^) to the name of the React component that
+  the `Element.__init__^`(`Element` constructor) to the name of the React component that
   must be created to render the element.<br/>
   The section on [Dynamic Elements](dynamic_element/index.md) provides an introduction to
   custom dynamic elements.
@@ -188,7 +187,8 @@ Each of these entries needs some explanation:
 - `<package dir>/`: The root directory for the extension library. This contains all the Python
   (and potentially TypeScript/JavaScript code) needed to build the extension library.<br/>
   The name of this directory is used as the name of the root directory for the Python package.
-- `<package dir>/__init__.py`: Required to make `<package dir>` a valid Python package directory.</br>
+- `<package dir>/__init__.py`: Required to make `<package dir>` a valid Python package
+  directory.</br>
   It is also the right place to import the library class because it is easier from the developer's
   standpoint when a Taipy GUI application imports the extension library.
 - `<package dir>/library.py`: The implementation file for the extension library.<br/>
@@ -219,7 +219,7 @@ A complete example of a custom extension library that holds both a static elemen
 dynamic elements is accessible with its entire source code and build process in
 the `doc/extension` directory under the root directory of the Taipy GUI installation.<br/>
 You can also take a look at this extension library example directly on
-[GitHub](https://github.com/Avaiga/taipy-gui/tree/[BRANCH]/doc/extension).
+[GitHub](https://github.com/Avaiga/taipy/tree/[BRANCH]/doc/gui/extension).
 
 This example defines a subclass of `ElementLibrary^` called `ExampleLibrary` that
 holds several examples of custom elements.

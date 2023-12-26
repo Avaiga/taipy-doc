@@ -333,6 +333,18 @@ hide:
     </a>
   </li>
   <li data-keywords="gui ai">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/background_remover/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Background Remover </h4>
+        <p> Background Remover simplifies background removal of your images with automatic detection, an interactive interface, and efficient Python code. 
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li data-keywords="gui ai">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/face_recognition/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
@@ -452,6 +464,45 @@ hide:
       </div> 
     </a>
   </li>
+  <li data-keywords="gui ai scenario datanode dag configuration">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/drift_detection/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Drift Detection </h4>
+        <p> Showcases the ability to select inputs and execute and visualize outputs of data
+            pipelines in a Taipy application by using the example of detecting drift on a
+            dataset.
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li data-keywords="gui dashboard vizelement layout chart">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/pollution_sensors/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Realtime Pollution Dashboard </h4>
+        <p> Displays real-time pollution data from sensors around a factory. The data is streamed
+            from another server and displayed in a dashboard.
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li data-keywords="gui dashboard vizelement layout chart ai multi-page classification">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/fraud_detection/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Fraud Detection </h4>
+        <p> A Taipy Application that analyzes credit card transactions to detect fraud.
+        </p>
+      </div> 
+    </a>
+  </li>
 </ul>
 
 # Tips & Tricks
@@ -504,7 +555,7 @@ hide:
       <div class="tp-content-card-body">
         <h4> Long-running Callbacks </h4>
         <p> Discover the 'long-running callbacks' feature of Taipy GUI, ensuring responsiveness 
-            during lengthy tasks. This article provides practical examples, highlighting the 
+            during lengthy tasks. This tip provides practical examples, highlighting the 
             potential for improved user experiences.        
         </p>
       </div> 
@@ -544,7 +595,7 @@ hide:
       <div class="tp-content-card-body">
         <h4> Data Nodes </h4>
         <p> Explore Taipy data nodes and understand their central role in accessing data from 
-            various sources. This article serves as your gateway to comprehending data nodes 
+            various sources. This tip serves as your gateway to comprehending data nodes 
             in Taipy.
         </p>
       </div> 
@@ -614,13 +665,25 @@ hide:
     </a>
   </li>
   <li data-keywords="gui vizelement chart">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/iframes">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/3rd_party_components">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
       </header>
       <div class="tp-content-card-body">
-        <h4> iFrames and Interactive Visualizations </h4>
-        <p> Use iFrame to embed any HTML inside your Taipy app.
+        <h4> Integrate Third-Party Components </h4>
+        <p> Use the `part` visual element to embed any HTML inside your application.
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li data-keywords="scenario task datanode job configuration">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/big_data_models">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Big data models vs. Computer memory </h4>
+        <p> A guide to building models that are bigger than your computer memory.
         </p>
       </div> 
     </a>

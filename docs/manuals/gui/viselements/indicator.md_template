@@ -1,12 +1,12 @@
 Displays a label on a red to green scale at a specific position.
 
-The _min_ value can be greater than the _max_ value.<br/>
+The *min* value **can** be greater than the *max* value.<br/>
 The value will be maintained between min and max.
 
 # Styling
 
-All the indicator controls are generated with the "taipy-indicator" CSS class. You can use this class
-name to select the indicator controls on your page and apply style.
+All the indicator controls are generated with the "taipy-indicator" CSS class. You can use this
+class name to select the indicator controls on your page and apply style.
 
 # Usage
 
@@ -14,75 +14,61 @@ name to select the indicator controls on your page and apply style.
 
 Shows a message at a specified position between min and max.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|message|indicator|value={val}|min=0|max=100|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:indicator value="{val}" min="0" max ="100">message</taipy:indicator>
-        ```
+!!! taipy-element
+    default=Value
+    value={val}
+    min=0
+    max=100
 
 ## Formatting the message
 
+The [*format*](#p-format) property can be set to the format of the value to be displayed.
+
 A _format_ can be applied to the message. 
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{50}|indicator|format=%.2f|value=10|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:indicator format="%.2f" value="10">{50}</taipy:indicator>
-        ```
-
+!!! taipy-element
+    default=50
+    format=%.2f
+    value=10
 
 ## Vertical indicators
 
-The _orientation_ can be specified to "vertical" (or "v") to create a vertical indicator.
+The [*orientation*](#p-orientation) property can be specified to "vertical" (or "v") to create a
+vertical indicator.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|message|indicator|orientation=v|value=10|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:indicator orientation="vertical" value="10">message</taipy:indicator>
-        ```
+!!! taipy-element
+    default=Value
+    orientation=v
+    value=10
 
 ## Dimensions
 
-Properties _width_ and _height_ can be specified depending of the _orientation_.
+The properties [*width*](#p-width) and [*height*](#p-height) can be specified, depending on
+the value of [*orientation*](#p-orientation).
 
-!!! example "Page content"
+!!! example "Definition"
 
     === "Markdown"
 
         ```
-        <|message|indicator|value={val}|width=50vw|>
+        <|Value 1|indicator|value={val1}|width=50vw|>
 
-        <|message|indicator|value={val}|orientation=vertical|height=50vh|>
+        <|Value 2|indicator|value={val2}|orientation=vertical|height=50vh|>
         ```
   
     === "HTML"
 
         ```html
-        <taipy:indicator value="{val}" width="50vw">message</taipy:indicator>
+        <taipy:indicator value="{val1}" width="50vw">Value 1</taipy:indicator>
 
-        <taipy:indicator value="{val}" orientation="vertical" height="50vh">message</taipy:indicator>
+        <taipy:indicator value="{val2}" orientation="vertical" height="50vh">Value 2</taipy:indicator>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.indicator("{Value 1}", value="{val1}", width="50vw")
+        tgb.indicator("{Value 2}", value="{val2}", orientation="vertical", width="50vw")
         ```

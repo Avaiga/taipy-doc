@@ -29,19 +29,19 @@ It exposes all the necessary attributes and methods to manage the configuration.
     ```python linenums="1"
     from taipy import Config
 
-    Confi.job_config
+    Config.job_config
     ```
 - The [Core configuration](core-config.md) as a `CoreSection^`:
     ```python linenums="1"
     from taipy import Config
 
-    Confi.core
+    Config.core
     ```
 - The Global configuration as a `GlobalAppConfig^`:
     ```python linenums="1"
     from taipy import Config
 
-    Confi.global_config
+    Config.global_config
     ```
 
 [:material-arrow-right: The next section introduces the data node configuration](data-node-config.md).

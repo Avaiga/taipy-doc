@@ -75,7 +75,7 @@ as *dynamic* (where the type name is prefixed with 'dynamic_'), it would neverth
 reflect changes in the bound variable values.
 
 In the declaration of a static element, the call to the
-[`Element` constructor](Element.__init__()^) must provide the *render_xhtml*
+`Element.__init__()^`(`Element` constructor) must provide the *render_xhtml*
 argument with a function that generates the XHTML fragment that represents
 this element.
 

@@ -57,12 +57,12 @@ in the Stylekit.
 The most straightforward use of the `part` block is to group different visual elements in a single
 element to make it easy to manipulate.
 
-!!! example "Page content"
+!!! example "Definition"
     === "Markdown"
         ```
         <|
         ...
-        <|{Some Content}|>
+        <|{some_content}|>
         ...
         |>
         ```
@@ -70,10 +70,19 @@ element to make it easy to manipulate.
     === "HTML"
         ```html
         <taipy:part>
-        ...
-        <taipy:text>{Some Content}</taipy:text>
-        ...
+            ...
+            <taipy:text>{some_content}</taipy:text>
+            ...
         </taipy:part>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.part()
+            tgb.text("{some_content}")
         ```
 
 ## Showing and hiding controls
@@ -86,18 +95,27 @@ at all:
         ```
         <|part|don't render|
         ...
-        <|{Some Content}|>
+        <|{some_content}|>
         ...
         |>
         ```
 
     === "HTML"
         ```html
-        <taipy:part render="False">
+        <taipy:part render="false">
             ...
-            <taipy:text>{Some Content}</taipy:text>
+            <taipy:text>{some_content}</taipy:text>
             ...
         </taipy:part>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.part(render=False)
+            tgb.text("{some_content}")
         ```
 
 If the value of [*render*](#p-render) is bound to a Boolean value, the `part` will show or hide its
@@ -129,22 +147,13 @@ You can embed an existing Taipy GUI page within another page using the [*page*](
 setting it to a page name.<br/>
 If your application has registered the *page_name* page, you can show it on another page using the
 following page definition:
-
-!!! example "Page content"
-    === "Markdown"
-        ```
-        <|part|page=page_name|>
-        ```
-
-    === "HTML"
-        ```html
-        <taipy:part page="page_name"/>
-        ```
+!!! taipy-element
+    page=page_name
 
 You can also embed an external web page, setting the [*page*](#p-page) property to the URL
 (starting with `http://` or `https://`) you want to render:
 
-!!! example "Page content"
+!!! example "Definition"
     === "Markdown"
         ```
         Here is the Wikipedia home page:
@@ -156,6 +165,14 @@ You can also embed an external web page, setting the [*page*](#p-page) property 
         <p>Here is the Wikipedia home page:</p>
         <taipy:part page="https://www.wikipedia.org/" height="500px"/>
         ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.html("p", "Here is the Wikipedia home page:")
+        with tgb.part(page="https://www.wikipedia.org/", height="500px")
 
 The resulting page will be displayed as this:
 <figure class="tp-center">
@@ -173,13 +190,5 @@ page  controls the layout if you omit it. This would be set to a CSS dimension v
 The content of the part can be specified as a `Partial^` instance using the [*partial*](#p-partial)
 property.
 
-!!! example "Page content"
-    === "Markdown"
-        ```
-        <|part|partial={partial}|>
-        ```
-
-    === "HTML"
-        ```html
-        <taipy:part partial="{partial}" />
-        ```
+!!! taipy-element
+    partial={partial}

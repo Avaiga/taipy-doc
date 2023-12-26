@@ -94,10 +94,9 @@ The graph involves:
     - Line 6 reads and prints the output data node *message* written by the execution of the 
         scenario *hello_scenario*.
 
-4. **Run the application**: For your convenience, you can get the complete code here:
-    <a href="./hello_world_scenario.py" download>`hello_world_scenario.py`</a>
+4. **Run the application**: 
 
-    Run the application with the Taipy CLI command:
+    With the Taipy CLI command:
 
     ``` console
     $ taipy run hello_world_scenario.py
@@ -109,6 +108,8 @@ The graph involves:
     Hello Taipy!
     ```
 
+    [Get the scenario code](./hello_world_scenario.py){: .tp-btn target='blank'}
+
 # Build a graphical interface
 
 While we've used Taipy's Python APIs to handle our scenario, it usually works seamlessly with a 
@@ -116,8 +117,10 @@ graphical interface, also created using Taipy, to provide a more user-friendly e
 Here's a simple GUI set up for our "Hello World" scenario:
 
 ```python linenums="1"
-from taipy import Gui
+import taipy as tp
 
+# Previous configuration of scenario
+...
 
 page = """
 Name: <|{input_name}|input|>
@@ -137,19 +140,18 @@ def submit_scenario(state):
 
 
 if __name__ == "__main__":
-    Core().run()
+    tp.Core().run()
     scenario = tp.create_scenario(scenario_cfg)
-    Gui(page).run()
+    tp.Gui(page).run()
 ```
 
-To get the complete example, including the user interface code, download it here:
-<a href="./hello_world.py" download>`hello_world.py`</a>
+[Get the whole code](./hello_world.py){: .tp-btn target='blank'}
 
 Now, let’s explain the key elements of this code:
 
 ```python
-from taipy import Gui
 import taipy as tp
+
 
 page = """
 Name: <|{input_name}|input|>
@@ -194,27 +196,28 @@ def submit_scenario(state):
 
 Every callback, including *submit_scenario()*, receives a `State^` object as its first parameter. 
 This state represents a user's connection and is used to read and set variables while 
-the user is interacting with the program. It makes it possible for Taipy to handle multiple 
+the user is interacting with the application. It makes it possible for Taipy to handle multiple 
 users simultaneously.
 
-While*scenario* is available to everyone using the program, *state.input_name* and 
+While *scenario* is available to everyone, *state.input_name* and 
 *state.input* are specific to the user who interacts with them. This design ensures that each 
 user's actions are separate and efficiently controlled, while variables like *scenario* are 
 global variables.
 
+![State illustration](state_illustration.png){width=70% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 In the *submit_scenario()* function, the *input_name* entered by the user on the interface is 
 saved to the scenario. After submission, the outcome is retrieved and stored in the *message* 
-variable, which is then shown on the user interface due to the connection between them.
+variable, which is then shown on the user interface.
 
 ```python
 if __name__ == "__main__":
     tp.Core().run()
     scenario = tp.create_scenario(scenario_cfg)
-    Gui(page).run()
+    tp.Gui(page).run()
 ```
 
-The main part of the application starts by setting up the Core services, generating a scenario, 
+The main part of the application starts by setting up the Core service, generating a scenario, 
 and starting the GUI, which makes the interactive interface active and functional.
 
 ![GUI Result](result.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }

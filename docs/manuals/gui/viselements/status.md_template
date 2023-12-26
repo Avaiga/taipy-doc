@@ -32,26 +32,15 @@ name to select the status controls on your page and apply style.
 
 To show a simple `status` control, you would define a Python variable:
 
-```py
+```python
 status = ("error", "An error has occurred.")
 ```
 
 This variable can be used as the value of the property [*value*](#p-value) of
 the `status` control:
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{value}|status|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:status>{value}</taipy:status>
-        ```
+!!! taipy-element
+    default={value}
 
 The control is displayed as follows:
 <figure>
@@ -63,7 +52,7 @@ The control is displayed as follows:
 Note that the variable *status* could have been defined as a dictionary to achieve the
 same result:
 
-```py
+```python
 status = {
     "status": "error",
     "message": "An error has occurred."
@@ -78,7 +67,7 @@ in the status list.
 
 You can create a list of status items as a Python variable:
 
-```py
+```python
 status = [
     ("warning", "Task is launched."),
     ("warning", "Taks is waiting."),
@@ -89,19 +78,8 @@ status = [
 
 The declaration of the control remains the same:
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{value}|status|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:status>{value}</taipy:status>
-        ```
+!!! taipy-element
+    default={value}
 
 The control is initially displayed as this:
 <figure>
@@ -130,19 +108,9 @@ has removed the third status entry:
 If you don't want the user to be allowed to dismiss the displayed statuses, you can set the
 [*without_close*](#p-without_close) property to True:
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{value}|status|without_close|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:status without_close="True">{value}</taipy:status>
-        ```
+!!! taipy-element
+    default={value}
+    without_close:b=True
 
 With the same array as above, here is what the expanded control looks like:
 <figure>

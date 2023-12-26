@@ -37,10 +37,10 @@ class GuiExtRefManStep(SetupStep):
     def setup(self, setup: Setup) -> None:
         if self.npm_path:
             saved_cwd = os.getcwd()
-            gui_path = os.path.join(setup.root_dir, "gui")
+            gui_path = os.path.join(setup.root_dir, "taipy-fe")
             os.chdir(gui_path)
             print(f"... Installing node modules...", flush=True)
-            subprocess.run(f"{self.npm_path} run inst", shell=True)
+            subprocess.run(f"{self.npm_path} i", shell=True)
             print(f"... Generating documentation...", flush=True)
             subprocess.run(f"{self.npm_path} run mkdocs", shell=True)
             # Process and copy files to docs/manuals

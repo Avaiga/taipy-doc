@@ -1,10 +1,10 @@
 > You can download the code for
-<a href="./../src/step_03.py" download>Step 3</a> 
-or all the steps <a href="./../src/src.zip" download>here</a>. 
+<a href="../../src/step_03.py" download>Step 3</a>
+or all the steps <a href="../../src/src.zip" download>here</a>.
 
 !!! warning "For Notebooks"
 
-    The Notebook is available [here](../getting_started.ipynb). In Taipy GUI, 
+    The Notebook is available [here](../tutorial.ipynb). In Taipy GUI,
     the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 # Step 3: Interaction
@@ -17,21 +17,21 @@ Now, the page has several visual elements:
 
 Taipy GUI manages everything in the background.
 
-To go further with Taipy GUI, let's introduce the concept of **state**. Thanks to this state 
+To go further with Taipy GUI, let's introduce the concept of **state**. Thanks to this state
 concept, Taipy natively provides multi-user GUI apps.
 
 ## Multi-user - state
 
-Try to open a few clients with the same URL. You will see that every client is independent of 
-each other; you can change *text* on a client, and *text* will not change in other clients. This 
+Try to open a few clients with the same URL. You will see that every client is independent of
+each other; you can change *text* on a client, and *text* will not change in other clients. This
 is due to the concept of **state**.
 
-The state holds the value of all the variables used in the user interface for one specific 
+The state holds the value of all the variables used in the user interface for one specific
 connection.
 
-For example, in the beginning, `state.text = 'Original text'`. When *text* is modified by the 
-input (through a given graphical client), this is, in fact, *state.text* that is modified, not 
-*text* (the global Python variable). Therefore, if you open two different clients, *text* will 
+For example, in the beginning, `state.text = 'Original text'`. When *text* is modified by the
+input (through a given graphical client), this is, in fact, *state.text* that is modified, not
+*text* (the global Python variable). Therefore, if you open two different clients, *text* will
 have two state values (*state.text*), one for each client.
 
 In the code below, this concept will be used to:
@@ -40,25 +40,25 @@ In the code below, this concept will be used to:
 
 - Reset the input when the text equals "Reset".
 
-## How to connect two variables - the *[on_change()](../../../../manuals/gui/callbacks.md)* function
+## How to connect two variables - the [`on_change`](../../../../manuals/gui/callbacks.md) callback
 
-In *Taipy*, the `on_change()` function is a "special" function. **Taipy** will check if you 
-created and will use a function with this name. Whenever the state of a variable is modified, 
+In *Taipy*, the `on_change()` function is a "special" function. **Taipy** will check if you
+created and will use a function with this name. Whenever the state of a variable is modified,
 the *callback* function is called with three parameters:
 
 - state (the state object containing all the variables);
 
 - The name of the modified variable;
 
-- Its value.
+- The new value for this variable.
 
-Here, `on_change()` will be called whenever the text's value (*state.text*) changes. If a 
-variable is changed in this function, Taipy will propagate this change automatically to the 
+Here, *on_change()* will be called whenever the text's value (*state.text*) changes. If a
+variable is changed in this function, Taipy will propagate this change automatically to the
 associated visual elements.
 
-Other callbacks specific to visual elements exist. They are named _on_change_ or _on_action_. 
-For example, a button has an _on_action_ property. When the button is pressed, Taipy will call 
-the function referenced in the _on_action_ property.
+Other callbacks specific to visual elements exist. They are named `on_change` or `on_action`.
+For example, a button has an _on_action_ property. When the button is pressed, Taipy will call
+the callback function referenced in the `on_action` property.
 
 ```python
 from taipy.gui import Gui, notify
@@ -86,11 +86,11 @@ def on_change(state, var_name, var_value):
         return
 
 
-Gui(page).run()
+Gui(page).run(debug=True)
 ```
 
 ![Interactive GUI](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-[_notify()_](../../../../manuals/gui/notifications.md) is a Taipy GUI function that creates a 
-notification with text. The user can pass multiple parameters, including the _state_, the 
-_notification_type_, and the _message_.
+[`notify()`](../../../../manuals/reference/taipy.gui.notify.md) is a Taipy GUI function that creates a
+[notification](../../../../manuals/gui/notifications.md) with some information. The user can pass multiple parameters, including the *state*, the
+*notification_type*, and the *message*.

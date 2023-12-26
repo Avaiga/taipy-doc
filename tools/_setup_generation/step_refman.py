@@ -28,94 +28,6 @@ class RefManStep(SetupStep):
         "taipy.enterprise",
     ]
 
-    # Force API items to be exposed in a given package
-    # (item_pattern, destination_package)
-    # or ([item_pattern...], destination_package)
-    FORCE_PACKAGE = [
-        # GUI
-        ("taipy.gui.*.(Gui|State|Markdown|Page)", "taipy.gui"),
-        # Core
-        ("typing.*", "taipy.core"),
-        ("taipy.core._core.Core", "taipy.core"),
-        ("taipy.core.common.mongo_default_document.MongoDefaultDocument", "taipy.core.common"),
-        ("taipy.core.common.frequency.Frequency", "taipy.core"),
-        ("taipy.core.common.scope.Scope", "taipy.core"),
-        ("taipy.core.config.*", "taipy.core.config"),
-        ("taipy.core.cycle.cycle_id.CycleId", "taipy.core"),
-        ("taipy.core.cycle.cycle.Cycle", "taipy.core"),
-        ("taipy.core.data.data_node_id.DataNodeId", "taipy.core"),
-        ("taipy.core.data.data_node_id.Edit", "taipy.core"),
-        ("taipy.core.data.*.*DataNode", "taipy.core.data"),
-        ("taipy.core.data.data_node.DataNode", "taipy.core"),
-        ("taipy.core.data.operator.Operator", "taipy.core.data.operator"),
-        ("taipy.core.data.operator.JoinOperator", "taipy.core.data.operator"),
-        ("taipy.core.exceptions.exceptions.*", "taipy.core.exceptions"),
-        ("taipy.core.job.job_id.JobId", "taipy.core"),
-        ("taipy.core.job.job.Job", "taipy.core"),
-        ("taipy.core.job.status.Status", "taipy.core"),
-        ("taipy.core.notification.CoreEventConsumerBase", "taipy.core.notification"),
-        ("taipy.core.notification.EventEntityType", "taipy.core.notification"),
-        ("taipy.core.notification.EventOperation", "taipy.core.notification"),
-        ("taipy.core.notification.Event", "taipy.core.notification"),
-        ("taipy.core.notification.Notifier", "taipy.core.notification"),
-        ("taipy.core.sequence.sequence_id.SequenceId", "taipy.core"),
-        ("taipy.core.sequence.sequence.Sequence", "taipy.core"),
-        ("taipy.core.scenario.scenario_id.ScenarioId", "taipy.core"),
-        ("taipy.core.scenario.scenario.Scenario", "taipy.core"),
-        ("taipy.core.scenario.scenario_id.ScenarioId", "taipy.core"),
-        ("taipy.core.sequence.sequence.Sequence", "taipy.core"),
-        ("taipy.core.sequence.sequence_id.SequenceId", "taipy.core"),
-        ("taipy.core.taipy.cancel_job", "taipy.core"),
-        ("taipy.core.taipy.clean_all_entities", "taipy.core"),
-        ("taipy.core.taipy.clean_all_entities_by_version", "taipy.core"),
-        ("taipy.core.taipy.compare_scenarios", "taipy.core"),
-        ("taipy.core.taipy.create_global_data_node", "taipy.core"),
-        ("taipy.core.taipy.create_sequence", "taipy.core"),
-        ("taipy.core.taipy.create_scenario", "taipy.core"),
-        ("taipy.core.taipy.delete", "taipy.core"),
-        ("taipy.core.taipy.delete_job", "taipy.core"),
-        ("taipy.core.taipy.delete_jobs", "taipy.core"),
-        ("taipy.core.taipy.export_scenario", "taipy.core"),
-        ("taipy.core.taipy.exists", "taipy.core"),
-        ("taipy.core.taipy.get", "taipy.core"),
-        ("taipy.core.taipy.get_cycles", "taipy.core"),
-        ("taipy.core.taipy.get_cycles_scenarios", "taipy.core"),
-        ("taipy.core.taipy.get_data_nodes", "taipy.core"),
-        ("taipy.core.taipy.get_entities_by_config_id", "taipy.core"),
-        ("taipy.core.taipy.get_jobs", "taipy.core"),
-        ("taipy.core.taipy.get_latest_job", "taipy.core"),
-        ("taipy.core.taipy.get_parents", "taipy.core"),
-        ("taipy.core.taipy.get_sequences", "taipy.core"),
-        ("taipy.core.taipy.get_primary", "taipy.core"),
-        ("taipy.core.taipy.get_primary_scenarios", "taipy.core"),
-        ("taipy.core.taipy.get_scenarios", "taipy.core"),
-        ("taipy.core.taipy.get_tasks", "taipy.core"),
-        ("taipy.core.taipy.is_deletable", "taipy.core"),
-        ("taipy.core.taipy.is_promotable", "taipy.core"),
-        ("taipy.core.taipy.is_submittable", "taipy.core"),
-        ("taipy.core.taipy.set", "taipy.core"),
-        ("taipy.core.taipy.set_primary", "taipy.core"),
-        ("taipy.core.taipy.submit", "taipy.core"),
-        ("taipy.core.taipy.subscribe_sequence", "taipy.core"),
-        ("taipy.core.taipy.subscribe_scenario", "taipy.core"),
-        ("taipy.core.taipy.tag", "taipy.core"),
-        ("taipy.core.taipy.unsubscribe_sequence", "taipy.core"),
-        ("taipy.core.taipy.unsubscribe_scenario", "taipy.core"),
-        ("taipy.core.taipy.untag", "taipy.core"),
-        ("taipy.core.task.task_id.TaskId", "taipy.core"),
-        ("taipy.core.task.task.Task", "taipy.core"),
-        # Config
-        ("taipy.config.config.Config", "taipy.config"),
-        ("taipy.config.checker.issue.Issue", "taipy.config"),
-        ("taipy.config.checker.issue_collector.IssueCollector", "taipy.config"),
-        ("taipy.config.common.scope.Scope", "taipy.core.config"),
-        ("taipy.config.common.frequency.Frequency", "taipy.core.config"),
-        ("taipy.config.unique_section.*", "taipy.config"),
-        # Rest
-        ("taipy.rest.rest.Rest", "taipy.rest"),
-        # Auth
-        ("taipy.auth.config.authentication_config.AuthenticationConfig", "taipy.auth.config"),
-    ]
     # Entries that should be hidden for the time being
     HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback"]
     # Where the Reference Manual files are generated (MUST BE relative to docs_dir)
@@ -181,6 +93,7 @@ class RefManStep(SetupStep):
             loaded_modules.add(module)
             if not module.__name__.startswith(Setup.ROOT_PACKAGE):
                 return
+            entry: str
             for entry in dir(module):
                 # Private?
                 if entry.startswith("_"):
@@ -188,7 +101,7 @@ class RefManStep(SetupStep):
                 e = getattr(module, entry)
                 if hasattr(e, "__class__") and e.__class__.__name__.startswith("_"):
                     continue
-                entry_type = None
+                entry_type: str = None
                 if hasattr(e, "__module__") and e.__module__:
                     # Handling alias Types
                     if e.__module__.startswith(Setup.ROOT_PACKAGE):  # For local build
@@ -232,34 +145,25 @@ class RefManStep(SetupStep):
                             flush=True,
                         )
                 full_name = f"{e.__module__}.{entry}"
+                # Entry module: e.__module__
+                # Current module: module.__name__
                 if entry_info := entries.get(full_name):
                     packages = entry_info["packages"]
-                    new_packages = []
-                    add_package = None
-                    # Current module is prefix to known packages?
-                    for package in packages:
-                        if package.startswith(module.__name__):
-                            add_package = module.__name__
+                    if module.__name__ != Setup.ROOT_PACKAGE:
+                        # Is current module a parent of known packages? Use that instead if yes
+                        child_idxs = [i for i, p in enumerate(packages) if p.startswith(module.__name__)]
+                        if child_idxs:
+                            for index in reversed(child_idxs):
+                                del packages[index]
+                            packages.append(module.__name__)
                         else:
-                            new_packages.append(package)
-                    if add_package:
-                        new_packages.insert(0, add_package)
-                        packages = new_packages
-                    # Any known package is prefix to module?
-                    add_package = module.__name__
-                    for package in packages:
-                        if module.__name__.startswith(package):
-                            add_package = None
-                            break
-                    if add_package:
-                        new_packages.append(add_package)
-                    entry_info["packages"] = new_packages
+                        # Is any known package a parent of the current module? If yes ignore it
+                            parent_idxs = [i for i, p in enumerate(packages) if module.__name__.startswith(p)]
+                            if not parent_idxs:
+                                packages.append(module.__name__)
                 else:
                     if doc is None:
-                        print(
-                            f"WARNING - {e.__name__} [in {e.__module__}] has no doc",
-                            flush=True,
-                        )
+                        print(f"WARNING - {e.__name__} [in {e.__module__}] has no doc", flush=True)
                     entries[full_name] = {
                         "name": entry,
                         "module": e.__module__,
@@ -267,6 +171,11 @@ class RefManStep(SetupStep):
                         "doc": doc,
                         "packages": [module.__name__],
                     }
+                if module.__name__ == Setup.ROOT_PACKAGE:
+                    entry = entries[full_name]
+                    entry["at_root"] = True
+                    if Setup.ROOT_PACKAGE in entry["packages"]:
+                        entry["packages"].remove(Setup.ROOT_PACKAGE)
 
         taipy_config_dir = os.path.join(setup.tools_dir, "taipy", "config")
         config_backup_path = os.path.join(taipy_config_dir, "config.py.bak")
@@ -275,31 +184,40 @@ class RefManStep(SetupStep):
 
         read_module(__import__(Setup.ROOT_PACKAGE))
 
-        FORCE_PACKAGE_REGEXPS = []
-
-        def convert_to_pattern(input, dest):
-            pattern = "^" + input.replace(".", "\\.").replace("*", ".*") + "$"
-            FORCE_PACKAGE_REGEXPS.append((re.compile(pattern), dest))
-
-        for force_package in RefManStep.FORCE_PACKAGE:
-            if isinstance(force_package[0], list):
-                for fp in force_package[0]:
-                    convert_to_pattern(fp, force_package[1])
+        # Compute destination package for each entry
+        for entry, entry_desc in entries.items():
+            doc_package = None # Where this entity should be exposed
+            module = entry_desc["module"]
+            packages = entry_desc["packages"]
+            # If no packages, it has to be at the root level
+            if not packages:
+                if not entry_desc.get("at_root", False):
+                    raise SystemError(f"FATAL - Entry '{entry}' has no package, and not in root")
+                doc_package = Setup.ROOT_PACKAGE
             else:
-                convert_to_pattern(force_package[0], force_package[1])
-        for entry, entry_info in entries.items():
-            # Entries with multiple packages
-            # if len(entry_info["packages"]) != 1:
-            #     print(f"MULTIPLE PACKAGES - Entry {entry}")
-            for force_package in FORCE_PACKAGE_REGEXPS:
-                if force_package[0].match(entry):
-                    entry_info["force_package"] = force_package[1]
-                    break
+                # If visible from a package above entry module, pick this one
+                parents = list(filter(lambda p: module.startswith(p), packages))
+                if len(parents) > 1:
+                    raise SystemError(
+                        "FATAL - Entry '{entry}' has several matching parent packages ([packages])"
+                    )
+                elif len(parents) == 0:
+                    if len(packages) == 1:
+                        doc_package = packages[0]
+                    else:
+                        package_groups = list(filter(lambda p: p in RefManStep.PACKAGE_GROUPS, packages))
+                        if len(package_groups) == 1:
+                            doc_package = package_groups[0]
+                else:
+                    doc_package = parents[0]
+            if doc_package is None:
+                raise SystemError(f"FATAL - Entry '{entry}' has no target package")
+            entry_desc["doc_package"] = doc_package
 
         # Group entries by package
         package_to_entries = {}
         for entry, info in entries.items():
-            package = info.get("force_package", info["packages"][0])
+            package = info["doc_package"]
             if package in package_to_entries:
                 package_to_entries[package].append(info)
             else:
@@ -365,6 +283,39 @@ class RefManStep(SetupStep):
                 )
                 package_output_path = os.path.join(self.REFERENCE_DIR_PATH, f"pkg_{package}.md")
 
+            def update_xrefs(name, type, force_package, module, others):
+                if not others:
+                    print(f"{name}")
+                    pass
+                # xrefs:
+                # entry_name <-> [ exposed_package, entry_module, other_packages]
+                #   or
+                # name <-> <number of similar entries> (int)
+                # +  entry_name/<index> <-> [ exposed_package, entry_module, other_packages]
+                type_name = "Function" if type == FUNCTION_ID else "Class" if type == CLASS_ID else "Type"
+                if xref := xrefs.get(name):
+                    if force_package == xref[0]:
+                        raise SystemError(
+                            f"FATAL -  - {type_name} {name} exposed in {force_package} already declared as {xref[0]}.{xref[1]}"
+                            )
+                    print(f"NOTE: duplicate entry {name} - {xref[0]}/{force_package}")
+                    #print(f"WARNING - {'Function' if type == FUNCTION_ID else 'Class'} {name} already declared as {xref[0]}.{xref[1]}")
+                    xref_array = []
+                    if isinstance(xref, int): # If there already are duplicates
+                        for index in range(0..int(xref)):
+                            xref = xrefs.get(f"{name}/{index}")
+                            if force_package == xref[0]:
+                                raise SystemError(
+                                    "FATAL -  - {type_name} {name} exposed in {force_package} already declared as {xref[0]}.{xref[1]}"
+                                    )
+                        xrefs[f"{name}/{index}"] = [ force_package, module, others ]
+                    else: # Create multiple indexed entries for 'name'
+                        xrefs[name] = 2
+                        xrefs[f"{name}/0"] = xref
+                        xrefs[f"{name}/1"] = [ force_package, module, others ]
+                else:
+                    xrefs[name] = [force_package, module, others ]
+
             def generate_entries(entry_infos, package, type, package_output_file, in_group):
                 in_group = "../" if in_group else ""
                 for entry_info in sorted(entry_infos, key=lambda i: i["name"]):
@@ -378,15 +329,7 @@ class RefManStep(SetupStep):
                     output_path = os.path.join(self.REFERENCE_DIR_PATH, f"{force_package}.{name}.md")
                     with open(output_path, "w") as output_file:
                         output_file.write("---\nhide:\n  - navigation\n---\n\n" + f"::: {force_package}.{name}\n")
-                    if xref := xrefs.get(name):
-                        print(
-                            f"ERROR - {'Function' if type == FUNCTION_ID else 'Class'} {name} already declared as {xref[0]}.{xref[1]}"
-                        )
-                    xrefs[name] = [
-                        force_package,
-                        entry_info["module"],
-                        entry_info["packages"],
-                    ]
+                    update_xrefs(name, type, force_package, entry_info["module"], entry_info["packages"])
 
             with open(package_output_path, "w") as package_output_file:
                 if package in module_doc and module_doc[package]:
@@ -397,13 +340,7 @@ class RefManStep(SetupStep):
                     for type in types:
                         name = type["name"]
                         package_output_file.write(f"   - `{name}`" + f"{': ' + type.get('doc', ' - NOT DOCUMENTED')}\n")
-                        if name in xrefs:
-                            print(f"WARNING - Type {package}.{name} already declared in {xrefs[name]}")
-                        xrefs[name] = [
-                            package,
-                            entry_info["module"],
-                            entry_info.get("final_package"),
-                        ]
+                        update_xrefs(name, TYPE_ID, package, entry_info["module"], entry_info.get("packages"))
                 if functions:
                     package_output_file.write(f"## Functions\n\n")
                     generate_entries(
@@ -421,9 +358,10 @@ class RefManStep(SetupStep):
 
         # Filter out packages that are the exposed package and appear in the packages list
         for entry, entry_desc in xrefs.items():
-            package = entry_desc[0]
-            if entry_desc[2]:
-                entry_desc[2] = [p for p in entry_desc[2] if p != package]
+            if not isinstance(entry_desc, int):
+                package = entry_desc[0]
+                if entry_desc[2]:
+                    entry_desc[2] = [p for p in entry_desc[2] if p != package]
         with open(self.XREFS_PATH, "w") as xrefs_output_file:
             xrefs_output_file.write(json.dumps(xrefs))
 

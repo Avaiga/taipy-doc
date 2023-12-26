@@ -16,38 +16,16 @@ name to select the pane blocks on your page and apply style.
 ## Showing or hiding a pane
 
 The default property, [*open*](#p-open), indicates whether the pane is visible or not:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{show}|pane|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:pane>{show}</taipy:pane>
-        ```
+!!! taipy-element
+    default={show}
 
 ## Choosing where the pane appears
 
 The [*anchor*](#p-anchor) property defines on which side of the display the pane is shown.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{show}|pane|anchor=left|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:pane anchor="left">{show}</taipy:pane>
-        ```
+!!! taipy-element
+    default={show}
+    anchor=left
 
 ## Showing the pane beside the page content
 
@@ -60,8 +38,7 @@ the Markdown syntax, you can leverage the
 [Stylekit](../styling/stylekit.md).
 
 Here is a full example of how to do this:
-
-```py
+```python
 from taipy.gui import Gui
 
 show_pane=True
@@ -88,15 +65,15 @@ which opens the pane again.
 
 The content of the pane can be specified directly inside the pane block.
 
-!!! example "Page content"
+!!! example "Definition"
 
     === "Markdown"
 
         ```
         <|{show}|pane|
-            ...
-            <|{some content}|>
-            ...
+        ...
+        <|{some_content}|>
+        ...
         |>
         ```
   
@@ -105,9 +82,18 @@ The content of the pane can be specified directly inside the pane block.
         ```html
         <taipy:pane open={show}>
             ...
-            <taipy:text>{some content}</taipy:text>
+            <taipy:text>{some_content}</taipy:text>
             ...
         </taipy:pane>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.pane("{show}")
+            tgb.text("{some_content}")
         ```
 
 ## Pane with page
@@ -115,35 +101,15 @@ The content of the pane can be specified directly inside the pane block.
 The content of the pane can be specified as an existing page name using the [*page*](#p-page)
 property.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{show}|pane|page=page_name|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:pane page="page_name">{show}</taipy:pane>
-        ```
+!!! taipy-element
+    default={show}
+    page=page_name
 
 ## Pane with partial
 
 The content of the pane can be specified as a `Partial^` instance using the
 [*partial*](#p-partial) property.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{show}|pane|partial={partial}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:pane partial="{partial}">{show}</taipy:pane>
-        ```
+!!! taipy-element
+    default={show}
+    partial={partial}

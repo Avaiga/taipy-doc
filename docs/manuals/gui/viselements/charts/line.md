@@ -33,7 +33,7 @@ You can style plots using the [*line[]*](../chart.md#p-line) and
 Say we have captured daily temperature measurements: the mean, maximum
 and minimum values for every day. This data set can easily be stored in a
 dictionary that Taipy will convert to a Pandas DataFrame:
-```py
+```python
 data = {
     "Date": pandas.date_range("<start-date>", periods=100, freq="D"),
     "Temp°C": [-15,-12.9,...100 records total...,7.2,10.2],
@@ -48,20 +48,26 @@ trace in blue and apply a dash style to the 'regular' temperature
 plot.
 
 Here is the definition of the chart control:
-
-!!! example "Page content"
+!!! example "Definition"
 
     === "Markdown"
 
         ```
         <|{data}|chart|mode=lines|x=Date|y[1]=Temp°C|y[2]=Min|y[3]=Max|line[1]=dash|color[2]=blue|color[3]=red|>
         ```
-  
+
     === "HTML"
 
         ```html
-        <taipy:chart mode="lines" x="Date" y[1]="Temp°C" y[2]="Min" y[3]="Max"
-                     line[1]="dash" color[2]="blue" color[3]="red">{data}</taipy:chart>
+        <taipy:chart mode="lines" x="Date" y[1]="Temp°C" y[2]="Min" y[3]="Max" line[1]="dash" color[2]="blue" color[3]="red">{data}</taipy:chart>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.chart("{data}", mode="lines", x="Date", y[1]="Temp°C", y[2]="Min", y[3]="Max", line[1]="dash", color[2]="blue", color[3]="red")
         ```
 
 The page now shows the following chart:
@@ -83,7 +89,7 @@ be displayed at the relevant (*x*, *y*) location.
 
 We can reuse the dataset of the example above and add a column to
 the data dictionary, holding the week number as a text:
-```py
+```python
 data = {
 ...
 "WeekN": [f"W{i//7}" if i%7==0 else None for i in range(0, 100)]
@@ -94,20 +100,26 @@ Note that this new column (*WeekN*) is mainly filled with None values: we only a
 information on Sundays.
 
 Let us use this column as a source for displaying text in our chart:
-
-!!! example "Page content"
+!!! example "Definition"
 
     === "Markdown"
 
         ```
         <|{data}|chart|x=Date|y[1]=Temp°C|y[2]=Max|mode[2]=text|text[2]=WeekN|>
         ```
-  
+
     === "HTML"
 
         ```html
-        <taipy:chart x="Date" y[1]="Temp°C"
-                     mode[2]="text" y[2]="Max" text[2]="WeekN">{data}</taipy:chart>
+        <taipy:chart x="Date" y[1]="Temp°C" y[2]="Max" mode[2]="text" text[2]="WeekN">{data}</taipy:chart>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.chart("{data}", x="Date", y[1]="Temp°C", y[2]="Max", mode[2]="text", text[2]="WeekN")
         ```
 
 We use the [*mode[]*](../chart.md#p-mode) indexed property to indicate that, for

@@ -72,4 +72,4 @@ def local_callback(state):
     state.dataframe = temp
     state.text = ""
 
-Gui(page).run()
+Gui(page).run(debug=True)

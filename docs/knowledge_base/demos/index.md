@@ -78,6 +78,20 @@ Let's explore demos of applications made with Taipy.
   </li>
 
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="background_remover">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/background-remover.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Background Remover </h4>
+        <span class="tp-tag">Front-end | Back-end</span>
+        <p> Background Remover simplifies background removal of your images with automatic detection, an interactive interface, and efficient Python code.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="face_recognition">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/face-recognition.jpg">
@@ -210,6 +224,51 @@ Let's explore demos of applications made with Taipy.
         <span class="tp-tag">Front-end | Back-end</span>
         <p> Explore Movie Genre Selector demo. See how this user-friendly tool helps you 
             effortlessly discover movies from your favorite movie genres.
+        </p>
+      </div> 
+    </a>
+  </li>
+  
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai scenario datanode dag configuration">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="drift_detection">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/drift-detection-pipeline.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Drift Detection</h4>
+        <span class="tp-tag">Front-end | Back-end</span>
+        <p> Showcases the ability to select inputs and execute and visualize outputs of data
+            pipelines in a Taipy application by using the example of detecting drift on a
+            dataset.
+        </p>
+      </div> 
+    </a>
+  </li>
+  
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui dashboard vizelement layout chart">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="pollution_sensors">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/pollution_dashboard.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Realtime Pollution Dashboard</h4>
+        <span class="tp-tag">Front-end | Back-end</span>
+        <p> Displays real-time pollution data from sensors around a factory. The data is streamed
+            from another server and displayed in a dashboard.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui dashboard vizelement layout chart ai multi-page classification">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="pollution_sensors">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/fraud_threshold.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Fraud Detection</h4>
+        <span class="tp-tag">Front-end</span>
+        <p> A Taipy Application that analyzes credit card transactions to detect fraud.
         </p>
       </div> 
     </a>

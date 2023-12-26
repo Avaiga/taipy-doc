@@ -23,4 +23,4 @@ def on_change(state, var_name, var_value):
         return
 
 
-Gui(page).run()
+Gui(page).run(debug=True)

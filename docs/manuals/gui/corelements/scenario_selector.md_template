@@ -123,7 +123,7 @@ code will check that the value is valid and replace it with a string representat
 minus one, prefixed with the sharp ('#') sign.<br/>
 Here is the code for the creation callback function:
 
-```py linenums="1"
+```python linenums="1"
 def check_index(state, id, payload):
   # Retrieve the custom properties
     properties = payload.get("properties", None)
@@ -167,16 +167,6 @@ This scenario is returned by the callback function to let Taipy know it was crea
 
 The scenario selector control definition needs to have the [*on_creation*](#p-on_creation) property
 set to the function:
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{scenario}|scenario_selector|on_creation=check_index|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:scenario_selector on_creation="check_index">{scenario}</taipy:scenario_selector>
-        ```
+!!! taipy-element
+    default={scenario}
+    on_creation:f=check_index
