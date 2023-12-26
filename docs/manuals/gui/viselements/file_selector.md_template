@@ -39,7 +39,7 @@ Upon dragging a file over the button, the _drop_message_ content is displayed as
     === "Markdown"
 
         ```
-        <|{content}|file_selector|label=Download File|on_action=function_name|extensions=.csv,.xlsx|drop_message=Drop Message|>
+        <|{content}|file_selector|label=Select File|on_action=function_name|extensions=.csv,.xlsx|drop_message=Drop Message|>
         ```
   
     === "HTML"
