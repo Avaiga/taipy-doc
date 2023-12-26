@@ -208,7 +208,7 @@ hide:
       <div class="tp-content-card-body">
         <h4>LLM ChatBot</h4>
         <p>
-          Create a chatbot website using Taipy and an LLM API. 
+          Create a chatbot interface using Taipy and an LLM API. 
         </p>
       </div> 
     </a>
