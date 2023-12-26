@@ -18,4 +18,4 @@ are requested, and return the actual files according to the application setting.
     Please look into the `doc/extension` directory where Taipy GUI is
     installed for more information.<br/>
     You can also look at this example directly on
-    [GitHub](https://github.com/Avaiga/taipy-gui/tree/develop/doc/extension).
+    [GitHub](https://github.com/Avaiga/taipy/tree/[BRANCH]/doc/gui/extension).

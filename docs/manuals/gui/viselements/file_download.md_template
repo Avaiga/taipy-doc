@@ -25,19 +25,8 @@ name to select the file download controls on your page and apply style.
 
 Allows downloading *content* when content is a file path or some content.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{content}|file_download|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:file_download>{content}</taipy:file_download>
-        ```
+!!! taipy-element
+    default={content}
 
 ## Standard configuration
 
@@ -50,57 +39,29 @@ The function name provided as [*on_action*](#p-on_action) is called when the dow
 The [*name*](#p-name) property is used as the default file name proposed to the user when
 saving the downloaded file (depending on the browser validation rules).
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{content}|file_download|label=Download File|on_action=function_name|name=filename|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:file_download on_action="function_name"  name="filename">{content}</taipy:file_download>
-        ```
+!!! taipy-element
+    default={content}
+    label=Download File
+    on_action:f=function_name
+    name=filename
 
 ## Preview file in the browser
 
 The file content can be visualized in the browser (if supported and in another tab) by setting
 [*bypass_preview*](#p-bypass_preview) to False.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{content}|file_download|don't bypass_preview|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:file_download bypass_preview="False">{content}</taipy:file_download>
-        ```
+!!! taipy-element
+    default={content}
+    bypass_preview:b_dont=False
 
 ## Automatic download
 
 The file content can be downloaded automatically (when the page shows and when the content is set)
 when [*auto*](#p-auto) is set to True.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{content}|file_download|auto|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:file_download auto="True">{content}</taipy:file_download>
-        ```
+!!! taipy-element
+    default={content}
+    auto:b=True
 
 ## Dynamic content {data-source="gui:doc/examples/controls/file_download-dynamic.py"}
 
@@ -174,19 +135,10 @@ function `download()^`, where we convert the string content to a byte buffer usi
 function.
 
 The control definition looks like this:
-!!! example "Page content"
 
-    === "Markdown"
-
-        ```
-        <|{None}|file_download|on_action=download_pi|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:file_download on_action="download_pi">{None}</taipy:file_download>
-        ```
+!!! taipy-element
+    default={None}
+    on_action:f=download_pi
 
 ## Content in a temporary file {data-source="gui:doc/examples/controls/file_download-dynamic-temp-file.py"}
 

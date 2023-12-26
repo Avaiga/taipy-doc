@@ -35,7 +35,7 @@ the relevant daily information for an entire month.
 
 Note that we use the Python [*yfinance* package](https://pypi.org/project/yfinance/)
 to query the historical data:
-```py
+```python
 # Extraction of a month of stock data for AAPL using the
 # yfinance package (see https://pypi.org/project/yfinance/).
 ticker = yfinance.Ticker("AAPL")
@@ -49,21 +49,14 @@ The *x* axis will be appropriately labeled "Date", thanks to the additional
 column.
 
 The chart definition is the following:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{stock}|chart|type=candlestick|x=Date|open=Open|close=Close|low=Low|high=High|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="candlestick" x="Date" open="Open" close="Close"
-            low="Low" high="High">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={stock}
+    type=candlestick
+    x=Date
+    open=Open
+    close=Close
+    low=Low
+    high=High
 
 The chart is displayed like this:
 <figure>
@@ -79,7 +72,7 @@ greater than *open*) and red candlestick bars when the value decreases.<br/>
 
 Here is some code that applies colors of our choosing to the candlesticks. This code
 also removes the *range slider* (the thin candlestick overview under the main area):
-```py
+```python
 # Extraction of a few days of stock historical data for AAPL using
 # the yfinance package (see https://pypi.org/project/yfinance/).
 # The returned value is a Pandas DataFrame.
@@ -119,21 +112,16 @@ We have added two dictionaries (*options* and *layout*) that let us
 customize how the chart is ultimately rendered.
 
 We use these dictionaries in the chart definition:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{stock}|chart|type=candlestick|x=Date|open=Open|close=Close|low=Low|high=High|options={options}|layout={layout}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="candlestick" x="Date" open="Open" close="Close"
-            low="Low" high="High" options="{options}" layout="{layout}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={stock}
+    type=candlestick
+    x=Date
+    open=Open
+    close=Close
+    low=Low
+    high=High
+    options={options}
+    layout={layout}
 
 This is what the customized candlestick chart looks like:
 <figure>
@@ -150,7 +138,7 @@ contains a series of *Timestamp* instances from the Pandas library.
 
 You can create your own time series using the common *datetime* type that are
 available in all Python implementations in the *datetime* package:
-```py
+```python
 # Retrieved history:
 # (Open, Close, Low, High)
 stock_history = [
@@ -180,21 +168,15 @@ data = {
 ```
 
 The chart definition is straightforward:
+!!! taipy-element
+    default={stock}
+    type=candlestick
+    x=Date
+    open=Open
+    close=Close
+    low=Low
+    high=High
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=candlestick|x=Date|open=Open|close=Close|low=Low|high=High|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="candlestick" x="Date" open="Open" close="Close"
-            low="Low" high="High">{data}</taipy:chart>
-        ```
 As you can see, Taipy deals with *datetime* objects as well as specific
 types from Pandas, transparently.
 

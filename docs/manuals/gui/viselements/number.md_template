@@ -19,16 +19,5 @@ The [Stylekit](../styling/stylekit.md) provides a specific class that you can us
 
 You can create a `number` input field bound to a numerical variable with the following content:
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{value}|number|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:number>{value}</taipy:number>
-        ```
+!!! taipy-element
+    default={value}

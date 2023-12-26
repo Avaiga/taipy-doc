@@ -30,7 +30,7 @@ Here is a simple example demonstrating how to plot a line between two
 georeferenced locations.
 
 The code that defines all necessary data structures looks like this:
-```py
+```python
 # Flight start and end locations
 data = {
     # Hartsfield-Jackson Atlanta International Airport 
@@ -72,21 +72,14 @@ In the dictionary stored in *layout["geo"]*, you can spot a handful of settings
 tuning how the map is rendered under the line.
 
 The chart definition uses all those objects to create the control:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=scattergeo|mode=lines|lat=lat|lon=lon|line={line}|layout={layout}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="scattergeo" mode="lines" lat="lat" lon="lon"
-            line="{line}" layout="{layout}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=scattergeo
+    mode=lines
+    lat=lat
+    lon=lon
+    line={line}
+    layout={layout}
 
 The control renders as shown here:
 <figure>
@@ -119,7 +112,7 @@ its type). The association of the trace data to the element index in *data* is
 done by adding the *lat[n]* and *lon[n]* keys to the dictionary.
 
 Here is the complete code:
-```py
+```python
 airports = {
     "AMS": {"lat": 52.31047296675518, "lon": 4.76819929439927},
     "ATL": {"lat": 33.64086185344307, "lon": -84.43600501711686},
@@ -184,20 +177,9 @@ for i, flight in enumerate(flights):
 
 Because the *properties* holds everything that the chart control needs, the
 control definition is really short:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|chart|properties={properties}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart properties="{properties}" />
-        ```
+!!! taipy-element
+    default={data}
+    properties={properties}
 
 Here is how the chart control is displayed:
 <figure>
@@ -214,7 +196,7 @@ In the following code, the array *cities* holds a series of cities with their lo
 and human population.<br/>
 We create a Pandas DataFrame that holds the full information, where we add two
 columns that the chart control can use to build the bubbles themselves:
-```py
+```python
 cities = [
     {"name": "Tokyo", "lat": 35.6839, "lon": 139.7744, "population": 39105000},
     {"name": "Jakarta", "lat": -6.2146, "lon": 106.8451, "population": 35362000},
@@ -254,21 +236,15 @@ holding generated data that the chart control can automatically convert to visua
 information.
 
 Here is how the chart control is defined:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=scattergeo|mode=markers|lat=lat|lon=lon|marker={marker}|text=text|layout={layout}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="scattergeo" mode="markers" lat="lat" lon="lon"
-            marker="{marker}" text="text" layout="{layout}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=scattergeo
+    mode=markers
+    lat=lat
+    lon=lon
+    marker={marker}
+    text=text
+    layout={layout}
 
 Here is the resulting chart display:
 <figure>

@@ -33,7 +33,7 @@ and the other is the same sine trace, except that the *y* values of its data poi
 displaced randomly in a range that we define (in *error_ranges*).
 
 Here is the code that implements that:
-```py
+```python
 # Number of samples
 max_x = 20
 # x values: [0..max_x-1]
@@ -64,20 +64,12 @@ options = {
 
 The chart control definition sets *y[1]* and *y[2]* to represent the two series (respectively
 *y* and *perfect_y*):
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|x=x|y[1]=y1|y[2]=y2|options[1]={options}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart x="x" y[1]="y1" y[2]="y2" options[1]="{options}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    x=x
+    y[1]=y1
+    y[2]=y2
+    options[1]={options}
 
 Note how the *options* dictionary is set for the first trace only: we do not want error bars
 to appear on our *perfect sine* graph.
@@ -104,7 +96,7 @@ Here is an example that demonstrates how to implement this. This example uses a
 as well.
 
 The code is the following:
-```py
+```python
 # Number of samples
 n_samples = 10
 # y values: [0..n_samples-1]
@@ -139,21 +131,13 @@ Note how the *options* dictionary is a bit lengthier compared to the one in the 
 - The *color* property indicates the color used to draw the error bars.
 
 Here is the chart control definition that is used:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=bar|x=x|y=y|orientation=h|options={options}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="bar" x="x" y="y1" orientation="h" options="{options}">
-            {data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=bar
+    x=x
+    y=y
+    orientation=h
+    options={options}
 
 The *orientation* property is set to "h" so the bar chart is displayed horizontally.
 

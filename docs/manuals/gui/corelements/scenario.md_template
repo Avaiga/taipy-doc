@@ -63,21 +63,11 @@ A few properties (namely [*show_submit*](#p-show_submit), [*show_delete*](#p-sho
 
 Here is the definition of such a control where the *tags*, *properties* and *sequences* sections
 are hidden:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{scenario}|scenario|don't show_tags|don't show_properties|don't show_sequences|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:scenario show_tags="false" show_properties"false" show_sequences"false">{scenario}
-        </taipy:scenario>
-        ```
+!!! taipy-element
+    default={scenario}
+    show_tags:b_dont=False
+    show_properties:b_dont=False
+    show_sequences:b_dont=False
 
 The control appears as follows, in a more compact manner:
 <figure>

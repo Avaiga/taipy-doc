@@ -32,7 +32,7 @@ Waterfall charts are typically used for describing cash flow: the initial value 
 and how it evolves with time.
 
 Here is a dataset that could represent such a flow:
-```py
+```python
 data = {
     "Day":   ["Mon", "Tue", "Wed", "Thu", "Fri"],
     "Values": [10, -5, 20, -10, 30],
@@ -47,7 +47,7 @@ The waterfall chart needs to know if values are absolute or relative. To specify
 need an additional array that is used as the [*measure*](../chart.md#p-measure) property for the
 chart:
 
-```py
+```python
 data = {
     ...
     "Measure": ["absolute", "relative", "relative", "relative", "relative"]
@@ -58,20 +58,12 @@ The "Measure" array indicates that all values except for the first must be consi
 (adding to or subtracting from the preceding running total).
 
 Here is how the chart control could be defined:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|type=waterfall|chart|x=Day|y=Values|measure=Measure|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="waterfall" x="Day" y="Values" measure="Measure">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=waterfall
+    x=Day
+    y=Values
+    measure=Measure
 
 And here is how the resulting chart would look:
 <figure>
@@ -91,7 +83,7 @@ scores.<br/>
 This is where styling comes in handy.
 
 Here is a dataset that represents the score achieved on a 9-hole golf course:
-```py
+```python
 n_holes = 9
 
 data = {
@@ -112,7 +104,7 @@ last "value" will not be used in our example. Instead, at the location of this "
 want to display the running total: the cumulative difference between the actual score and the par
 for each hole. All those differences are stored in another array that we store in the *data*
 dictionary:
-```py
+```python
 data["Diff"] = [data["Score"][i]-data["Par"][i] for i in range(0,n_holes)] + [None]
 ```
 
@@ -122,7 +114,7 @@ differences, with an additional None value, to the dataset used by the chart, as
 key "Diff".<br/>
 This array will be the value represented by our chart, showing, for each hole, the score relative
 to the par. To indicate how to represent this array, we must add to the *data* dataset the *measure*:
-```py
+```python
 data = {
     ...
     "M": n_holes * [ "relative" ] + ["total"]
@@ -141,7 +133,7 @@ Here is how we can style our chart to get the colors of the boxes to reflect the
 the scores. A dictionary must be created with the appropriate keys associated with values that
 indicate what style should be applied to the chart:
 
-```py
+```python
 options = {
     "decreasing": {
         "marker" : { "color": "green" }
@@ -156,20 +148,13 @@ The "decreasing" and "increasing" keys hold dictionaries that define the color t
 when displaying the chart boxes.
 
 Here is the complete definition of the chart:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|type=waterfall|chart|x=Hole|y=Diff|measure=M|options={options}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="waterfall" x="{Hole}" y="Diff" measure="{M}" options="{options}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=waterfall
+    x=Hole
+    y=Diff
+    measure=M
+    options={options}
 
 And here is what the resulting chart looks like:
 <figure>
@@ -190,7 +175,7 @@ easy to read.
 
 To achieve this with Taipy GUI, you need to create a slightly more complex dataset than
 in the examples above:
-```py
+```python
 data = [
     {
         # The quarterly periods are grouped by year
@@ -216,23 +201,15 @@ of the timeline periods. This is referred to as "0/Period" by the chart control.
 control refers to these with the "1/" prefix.<br/>
 Note that we use the three types of measurements in the "Measure" array: we set the initial value
 as an *absolute* value, then variations as *relative*, and the final value, which appears as a None
-value in the "Cash Flow" array, is measured as a *total*. The chart will do the maths for you.
+value in the "Cash Flow" array, is measured as a *total*. The chart will do the math for you.
 
 The definition of the chart control is straightforward:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|type=waterfall|chart|x=0/Period|y=1/Cash Flow|measure=1/Measure|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="waterfall" x="0/Period" y="1/Cash Flow" measure="1/Measure">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=waterfall
+    x=0/Period
+    y=1/Cash Flow
+    measure=1/Measure
 
 The resulting chart looks like this:
 <figure>

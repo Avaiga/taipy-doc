@@ -273,4 +273,18 @@ Let's explore demos of applications made with Taipy.
       </div> 
     </a>
   </li>
+  
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui dashboard vizelement layout chart ai multi-page classification">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="pollution_sensors">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/fraud_threshold.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Fraud Detection</h4>
+        <span class="tp-tag">Front-end</span>
+        <p> A Taipy Application that analyzes credit card transactions to detect fraud.
+        </p>
+      </div> 
+    </a>
+  </li>
 </ul>
