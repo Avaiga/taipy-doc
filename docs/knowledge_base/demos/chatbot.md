@@ -9,7 +9,7 @@ its input to the OpenAI API and returning the conversation in
 a chat window. The user is also able to come back to a previous 
 conversation and continue it.
 
-![ChatBot](images/chatbot_roundconv.png){width=100%}
+![ChatBot](images/chatbot_meds_conv.png){width=100%}
 
 A tutorial on how to write this application and similar 
 LLM inference applications is available [here](../tutorials/chatbot/index.md).
