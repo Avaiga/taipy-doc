@@ -13,20 +13,20 @@ In this tutorial we will create a simple chatbot website using Taipy.
 Here we will use OpenAI's API with GPT-3. This tutorial can easily
  be adapted to other LLMs.
 
-## Table of Contents
+# Table of Contents
 - [Step 1: Install Requirements](#step-1-install-requirements)
 - [Step 2: Imports](#step-2-imports)
 - [Step 3: Initialize variables](#step-3-initialize-variables)
-- [Step 5: Create a function to generate responses](#step-5-create-a-function-to-generate-responses)
-- [Step 6: Create a function to add the new messages to the conversation](#step-6-create-a-function-to-add-the-new-messages-to-the-conversation)
-- [Step 7: Create the User Interface](#step-7-create-the-user-interface)
-- [Step 8: Run the application](#step-8-run-the-application)
-- [Step 9: Styling](#step-9-styling)
-- [Step 10: More features](#step-10-more-features)
-- [Step 11: Deploying the app to Taipy Cloud](#step-11-deploying-the-app-to-taipy-cloud)
+- [Step 4: Create a function to generate responses](#step-4-create-a-function-to-generate-responses)
+- [Step 5: Create a function to add the new messages to the conversation](#step-5-create-a-function-to-add-the-new-messages-to-the-conversation)
+- [Step 6: Create the User Interface](#step-6-create-the-user-interface)
+- [Step 7: Run the application](#step-7-run-the-application)
+- [Step 8: Styling](#step-8-styling)
+- [Step 9: More features](#step-9-more-features)
+- [Step 10: Deploying the app to Taipy Cloud](#step-10-deploying-the-app-to-taipy-cloud)
 
 
-## Step 1: Install Requirements
+# Step 1: Install Requirements
 
 Create a `requirements.txt` file with the following content:
 
@@ -41,7 +41,7 @@ Install the requirements using pip in a terminal:
 pip install -r requirements.txt
 ```
 
-## Step 2: Imports
+# Step 2: Imports
 
 Create a `main.py` file with the following imports:
 
@@ -50,7 +50,7 @@ from taipy.gui import Gui, State, notify
 import openai
 ```
 
-## Step 3: Initialize variables
+# Step 3: Initialize variables
 
 Initialize the following variables in the main.py file:
 
@@ -66,7 +66,7 @@ current_user_message = ""
 - `conversation` is a dictionary that will store the conversation history to be displayed
 - `current_user_message` is the current message that the user is typing
 
-## Step 5: Create a function to generate responses
+# Step 4: Create a function to generate responses
 
 **This step is the one that needs to be adapted if you want to 
 use a different LLM.**
@@ -105,7 +105,7 @@ def request(state: State, prompt: str) -> str:
     return response.choices[0].message.content
 ```
 
-## Step 6: Create a function to add the new messages to the conversation
+# Step 5: Create a function to add the new messages to the conversation
 
 Create a function that gets triggered when the user sends a 
 message. This function will add the user's message to the context, 
@@ -134,7 +134,7 @@ def send_message(state: State) -> None:
     state.current_user_message = ""
 ```
 
-## Step 7: Create the User Interface
+# Step 6: Create the User Interface
 
 In Taipy, one way to define pages is to use Markdown strings. Here we use a 
 [table](../../../manuals/gui/viselements/table.md_template) to display the
@@ -150,7 +150,7 @@ page = """
 """
 ```
 
-## Step 8: Run the application
+# Step 7: Run the application
 
 Finally we run the application:
 
@@ -164,7 +164,7 @@ And here is the result:
   <img src="chatbot_first_result.png" alt="Render of the app" width="80%"/>
 </p>
 
-## Step 9: Styling
+# Step 8: Styling
 
 The app's style is Taipy's default stylekit. We are going to 
 make some changes so that it looks more like a chat app.
@@ -240,14 +240,14 @@ And voilà:
   <img src="chatbot_plane.png" alt="The styled application" width="80%"/>
 </p>
 
-## Step 10: More features
+# Step 9: More features
 
 I have added notifications, a sidebar with a button to clear the conversation 
 and a history of previous conversations. I won't go into the 
 details of how to do this here, but you can find the full code 
 in the [GitHub repository](https://github.com/Avaiga/demo-llm-chat)
 
-## Step 11: Deploying the app to Taipy Cloud
+# Step 10: Deploying the app to Taipy Cloud
 
 We are now going to deploy the app to Taipy Cloud so it is 
 accessible from anyone with a link.
