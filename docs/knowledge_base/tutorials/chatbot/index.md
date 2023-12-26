@@ -155,7 +155,8 @@ page = """
 Finally we run the application:
 
 ```python
-Gui(page).run(dark_mode=True, title="Taipy Chat")
+if __name__ == "__main__":
+    Gui(page).run(dark_mode=True, title="Taipy Chat")
 ```
 
 And here is the result:
