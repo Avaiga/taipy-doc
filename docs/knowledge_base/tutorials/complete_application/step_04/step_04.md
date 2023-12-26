@@ -1,5 +1,5 @@
 > The full code is available
-<a href="./../src/src.zip" download>here</a>.
+<a href="../../src/src.zip" download>here</a>.
 
 The Scenario Page is a part of the application designed for creating and 
 customizing prediction scenarios using time series data. End-users can modify different parameters 

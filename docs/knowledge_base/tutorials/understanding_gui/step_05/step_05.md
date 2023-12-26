@@ -1,6 +1,6 @@
 > You can download the code for
-<a href="./../src/step_05.py" download>Step 5</a>
-or all the steps <a href="./../src/src.zip" download>here</a>.
+<a href="../../src/step_05.py" download>Step 5</a>
+or all the steps <a href="../../src/src.zip" download>here</a>.
 
 !!! warning "For Notebooks"
 

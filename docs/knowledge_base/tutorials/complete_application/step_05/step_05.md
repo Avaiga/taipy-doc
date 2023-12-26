@@ -1,5 +1,5 @@
 > The full code is available
-<a href="./../src/src.zip" download>here</a>.
+<a href="../../src/src.zip" download>here</a>.
 
 The Performance Page is a section of the application that permits users to compare the performance metrics, 
 including Root Mean Squared Error and Mean Absolute Error, across various scenarios. 
