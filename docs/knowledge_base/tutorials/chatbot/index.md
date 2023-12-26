@@ -11,7 +11,7 @@ In this tutorial we will create a simple chatbot website using Taipy.
 
 
 Here we will use OpenAI's API with GPT-3. This tutorial can easily
- be adapted to other LLMs.
+be adapted to other LLMs.
 
 # Table of Contents
 - [Step 1: Install Requirements](#step-1-install-requirements)
