@@ -29,7 +29,7 @@ is displayed as a temporary label for the button.
 
 !!! taipy-element
     default={content}
-    label=Download File
+    label=Select File
     on_action:f=function_name
     extensions=.csv,.xlsx
     drop_message=Drop Message
