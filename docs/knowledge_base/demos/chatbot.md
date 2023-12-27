@@ -1,4 +1,5 @@
-This demo showcases Taipy's ability to enable end-users to run inference using LLMs. Here, we use GPT-3 to create a chatbot and display the conversation in an interactive chat interface.
+This demo showcases Taipy's ability to enable end-users to run inference using LLMs. Here, we
+use GPT-3 to create a chatbot and display the conversation in an interactive chat interface.
 
 [Try it live](https://demo-llm-chat.taipy.cloud/){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-llm-chat){: .tp-btn .tp-btn--accent target='blank' }
