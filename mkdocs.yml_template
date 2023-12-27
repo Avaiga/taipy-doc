@@ -41,7 +41,7 @@ nav:
         - "Partials in Taipy": knowledge_base/tutorials/partials.md
         - "Scenario Management concepts": knowledge_base/tutorials/scenario_mgt_concepts.md
         - "Submitting Scenario and Tasks": knowledge_base/tutorials/execution.md
-        - "Manage Taipy application versions": knowledge_base/tutorials/version_management.md
+        - "Manage application versions": knowledge_base/tutorials/version_management.md
     - "Demos":
         - "Demos": knowledge_base/demos/index.md
         - "Sales Dashboard": knowledge_base/demos/sales_dashboard.md
