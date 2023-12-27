@@ -1,5 +1,3 @@
-Creating a Chatbot Website using Taipy
-
 In this tutorial we will create a simple chatbot website using Taipy.
 
 [Try it live](https://demo-llm-chat.taipy.cloud/){: .tp-btn target='blank' }
@@ -56,17 +54,17 @@ current_user_message = ""
 
 # Step 4: Create a function to generate responses
 
-**This step is the one that needs to be adapted if you want to 
+**This step is the one that needs to be adapted if you want to
 use a different LLM.**
 
-Initialize the OpenAI client with your API key. You can find 
+Initialize the OpenAI client with your API key. You can find
 your API key [here](https://platform.openai.com/api-keys).
 
 ```python
 client = openai.Client(api_key="ENTER_YOUR_API_KEY_HERE")
 ```
 
-Create a function that takes as input a string `prompt` which 
+Create a function that takes as input a string `prompt` which
 is the user message and returns a string which is the response from the LLM.
 
 ```python
@@ -95,9 +93,9 @@ def request(state: State, prompt: str) -> str:
 
 # Step 5: Create a function to add the new messages to the conversation
 
-Create a function that gets triggered when the user sends a 
-message. This function will add the user's message to the context, 
-send it to the API, get the response, add the response to the 
+Create a function that gets triggered when the user sends a
+message. This function will add the user's message to the context,
+send it to the API, get the response, add the response to the
 context and to the displayed conversation.
 
 ```python
@@ -124,11 +122,11 @@ def send_message(state: State) -> None:
 
 # Step 6: Create the User Interface
 
-In Taipy, one way to define pages is to use Markdown strings. Here we use a 
+In Taipy, one way to define pages is to use Markdown strings. Here we use a
 [table](../../../manuals/gui/viselements/table.md_template) to display the
- `conversation` dictionary and an 
- [input](../../../manuals/gui/viselements/input) so that the 
- user can type their message. When the user presses enter, 
+ `conversation` dictionary and an
+ [input](../../../manuals/gui/viselements/input) so that the
+ user can type their message. When the user presses enter,
  the `send_message` function is triggered.
 
 ```python
@@ -155,10 +153,10 @@ And here is the result:
 
 # Step 8: Styling
 
-The app's style is Taipy's default stylekit. We are going to 
+The app's style is Taipy's default stylekit. We are going to
 make some changes so that it looks more like a chat app.
 
-First in a `main.css` file, create styles to display user and 
+First in a `main.css` file, create styles to display user and
 AI messages differently:
 
 ```css
@@ -192,8 +190,8 @@ AI messages differently:
 }
 ```
 
-We now need to tell Taipy to apply these styles to the rows in 
-the table. We'll first create a function that will return the 
+We now need to tell Taipy to apply these styles to the rows in
+the table. We'll first create a function that will return the
 correct class name for each row:
 
 ```python
@@ -231,17 +229,17 @@ And voilà:
 
 # Step 9: More features
 
-I have added notifications, a sidebar with a button to clear the conversation 
-and a history of previous conversations. I won't go into the 
-details of how to do this here, but you can find the full code 
+I have added notifications, a sidebar with a button to clear the conversation
+and a history of previous conversations. I won't go into the
+details of how to do this here, but you can find the full code
 in the [GitHub repository](https://github.com/Avaiga/demo-llm-chat)
 
 # Step 10: Deploying the app to Taipy Cloud
 
-We are now going to deploy the app to Taipy Cloud so it is 
+We are now going to deploy the app to Taipy Cloud so it is
 accessible from anyone with a link.
 
-Firstly we need to store the API key in an environment variable. 
+Firstly we need to store the API key in an environment variable.
 Replace the line that defines `client` in [Step 5](#step-5-create-a-function-to-generate-responses) with:
 
 ```python
@@ -249,8 +247,8 @@ import os
 client = openai.Client(api_key = os.environ["OPENAI_API_KEY"])
 ```
 
-Now, instead of having our API key in the code, the app will look 
-for it in the environment variables. 
+Now, instead of having our API key in the code, the app will look
+for it in the environment variables.
 
 We can now deploy the app to Taipy Cloud:
 1. Connect to [Taipy Cloud](https://cloud.taipy.io/) and sign in
@@ -265,7 +263,7 @@ We can now deploy the app to Taipy Cloud:
 </p>
 
 
-After a while, your app should be running and will be accessible 
+After a while, your app should be running and will be accessible
 from the displayed link!
 
 <p align="center">

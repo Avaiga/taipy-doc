@@ -34,7 +34,7 @@ nav:
             - "3 - Scenario configuration": knowledge_base/tutorials/complete_application/step_03/step_03.md
             - "4 - Scenario page": knowledge_base/tutorials/complete_application/step_04/step_04.md
             - "5 - Performance page": knowledge_base/tutorials/complete_application/step_05/step_05.md
-        - "LLM ChatBot": knowledge_base/tutorials/chatbot/index.md
+        - "Creating an LLM ChatBot": knowledge_base/tutorials/chatbot/index.md
         - "Markdown Syntax": knowledge_base/tutorials/markdown_syntax.md
         - "Data Dashboard": knowledge_base/tutorials/data_dashboard.md
         - "Changing Line Types Using Charts": knowledge_base/tutorials/charts.md
