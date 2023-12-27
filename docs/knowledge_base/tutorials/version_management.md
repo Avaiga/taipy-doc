@@ -55,11 +55,11 @@ $ git commit -m "Create experiment version 1.0"
 # Switching between versions
 
 A commonly used Git workflow is to use `git checkout` to switch to a different branch and work on
-a new application version. Let's create a new Git branch called `experiment-1.1` and switch to it:
+a new application version. Let's create a new Git branch called `1.1` and switch to it:
 
 ```console
-$ git checkout -b experiment-1.1
-Switched to a new branch 'experiment-1.1'
+$ git checkout -b 1.1
+Switched to a new branch '1.1'
 ```
 
 After modifying the application code (to experiment with a new algorithm for example), we can run
@@ -77,11 +77,11 @@ $ git add .
 $ git commit -m "create experiment version 1.1"
 ```
 
-Similarly, we can create a new branch `experiment-1.2` and create a new application version in it:
+Similarly, we can create a new branch `1.2` and create a new application version in it:
 
 ```console
-$ git checkout -b experiment-1.2
-Switched to a new branch 'experiment-1.2'
+$ git checkout -b 1.2
+Switched to a new branch '1.2'
 ...
 # modify the application code and run the application
 ...
@@ -93,7 +93,7 @@ The entities of all three versions 1.0, 1.1, and 1.2 are still stored in the `.d
 We can switch back to the version 1.1 of the application and run it again:
 
 ```console
-$ git checkout experiment-1.1
+$ git checkout 1.1
 $ taipy run main.py --experiment 1.1
 ```
 
