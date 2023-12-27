@@ -57,7 +57,8 @@ nav:
         - "Movie Genre Selector": knowledge_base/demos/movie_genre_selector.md
         - "Realtime Pollution Dashboard" : knowledge_base/demos/pollution_sensors.md
         - "Background Remover" : knowledge_base/demos/background_remover.md
-        - "LLM ChatBot" : knowledge_base/demos/chatbot.md
+        - "TalkToTaipy" : knowledge_base/demos/talk_to_taipy.md
+        - "Creating an LLM Chatbot" : knowledge_base/demos/chatbot.md
         - "Fraud Detection": knowledge_base/demos/fraud_detection.md
     - "Tips and tricks":
         - "Tips and tricks": knowledge_base/tips/index.md
