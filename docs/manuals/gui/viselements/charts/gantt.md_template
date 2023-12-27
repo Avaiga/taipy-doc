@@ -67,7 +67,7 @@ Here is a simple example of using the chart control to display a Gantt chart.
 We want to display, over time, the span of several tasks.
 
 Here is the code that we use:
-```py
+```python
 # Tasks definitions
 tasks = ["Plan", "Research", "Design", "Implement", "Test", "Deliver"]
 # Task durations, in days
@@ -115,21 +115,14 @@ particular, the ordering of the tasks is reversed; otherwise, the first task wou
 at the bottom of the chart.
 
 Here is how we defined the chart control:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=bar|orientation=h|y=Task|x=Date|base=start|layout={layout}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="bar" orientation="h" y="Task" x="Date" base="start"
-            layout={layout}>{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=bar
+    orientation=h
+    y=Task
+    x=Date
+    base=start
+    layout={layout}
 
 The resulting Gantt chart looks like this:
 <figure>

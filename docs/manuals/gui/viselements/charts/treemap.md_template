@@ -50,7 +50,7 @@ size that is proportional to a value from the dataset.
 
 Here is an example where we create a treemap where rectangles reflect the few first Fibonacci
 numbers:
-```py
+```python
 # Data set: the first 10 elements of the Fibonacci sequence
 n_numbers = 10
 fibonacci = [0, 1]
@@ -63,20 +63,11 @@ data = {
 ```
 
 Here is how the chart control is declared:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=treemap|labels=index|values=fibonacci|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="treemap" labels="index" values="fibonacci">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=treemap
+    labels=index
+    values=fibonacci
 
 And this is what the resulting chart looks like:
 <figure>
@@ -97,7 +88,7 @@ Setting the *parents* value to an empty string indicates that the element should
 root level.
 
 Here is a short example demonstrating this use case:
-```py
+```python
 # Partial family tree of the British House of Windsor
 # Source: https://en.wikipedia.org/wiki/Family_tree_of_the_British_royal_family
 tree = {
@@ -119,20 +110,11 @@ In this dataset, the first element of the *name* array, labeled "Queen Victoria"
 root level since the first element of the *parent* array is set to an empty string.
 
 Here is the chart control definition:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{tree}|chart|type=treemap|labels=name|parents=parent|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="treemap" labels="name" parents="parent">{tree}</taipy:chart>
-        ```
+!!! taipy-element
+    default={tree}
+    type=treemap
+    labels=name
+    parents=parent
 
 The *tree.name* and *tree.parent* arrays are used respectively in the
 [*labels*](../chart.md#p-labels) and [*parents*](../chart.md#p-parents) properties.
@@ -166,7 +148,7 @@ that represents a continent and where the size of the country's rectangle is pro
 the surface of the country.
 
 Here is the initial data set we will be working with, stored as a dictionary:
-```py
+```python
 # Major countries and their surface (in km2), for every continent
 # Source: https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_area
 continents = {
@@ -188,7 +170,7 @@ We need to convert that dictionary to a format that is applicable for the chart 
 arrays where each array stores the relevant information in a flat manner.
 
 Here is the code that transforms the *continents* into precisely that:
-```py
+```python
 name=[]
 surface=[]
 continent=[]
@@ -216,20 +198,12 @@ continent and each country for that continent.<br/>
 Finally, we create the *data* variable that holds all the information in the proper format.
 
 The chart control definition uses this dataset:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=treemap|labels=names|values=surfaces|parents=continent|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="treemap" labels="names" values="surfaces" parents="continent">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=treemap
+    labels=names
+    values=surfaces
+    parents=continent
 
 Here is what the chart looks like on the page:
 <figure>

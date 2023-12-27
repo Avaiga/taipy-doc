@@ -38,7 +38,7 @@ This example displays a heatmap representing the temperatures, in °C, in some c
 a given season (of the northern hemisphere).
 
 We define the dataset to be displayed as a simple dictionary:
-```py
+```python
 data = {
     "Temperatures": [[17.2, 27.4, 28.6, 21.5],
                      [5.6, 15.1, 20.2, 8.1],
@@ -58,19 +58,12 @@ Here is how you would define the chart control to represent this data:
 - The two axes are referenced by the [*x*](../chart.md#p-x) and [*y*](../chart.md#p-y)
   properties.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Cities|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="heatmap" z="Temperatures" x="Seasons" y="Cities">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=heatmap
+    z=Temperatures
+    x=Seasons
+    y=Cities
 
 And here is how the resulting chart will look like on the page:
 <figure>
@@ -86,7 +79,7 @@ axes was the same.
 
 If you needed to add another city to be represented on the *y* axis, you would need
 to change the definition of the source dataset:
-```py
+```python
 data = [
     {
         "Temperatures": [[17.2, 27.4, 28.6, 21.5],
@@ -108,20 +101,12 @@ of 4.
 
 To reference which value array to use on which axes, the declaration
 of the control must change slightly:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=heatmap|z=0/Temperatures|x=1/Seasons|y=0/Cities|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="heatmap" z="0/Temperatures" x="1/Seasons" y="0/Cities">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=heatmap
+    z=0/Temperatures
+    x=1/Seasons
+    y=0/Cities
 
 Here is how the data is referenced from the chart control:
 
@@ -149,27 +134,19 @@ in the [Colorscales](https://plotly.com/javascript/colorscales/) page of the
 
 We are reusing the code of the first example, where we add a new variable to hold the
 options for our chart control:
-```py
+```python
 options = { "colorscale": "Portland" }
 ```
 
 And reference that dictionary in the [*options*](../chart.md#p-options) property of the
 control:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Cities|options={options}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="heatmap" z="Temperatures" x="Seasons" y="Cities" options="{options}">
-            {data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=heatmap
+    z=Temperatures
+    x=Seasons
+    y=Cities
+    options={options}
 
 Here is how the page looks like:
 <figure>
@@ -188,7 +165,7 @@ example.
 
 Here is the code that is needed (we use the same definition for *data* as in the previous
 example):
-```py
+```python
 layout = {
     # This array contains the information we want to display in the cells
     # These are filled later
@@ -238,21 +215,13 @@ property of the chart, then fill its *annotations* property for every city and e
 season, storing a formatted string representing the temperature.
 
 The chart definition will appear as follows:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=heatmap|z=Temperatures|x=Seasons|y=Cities|layout={layout}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="heatmap" z="Temperatures" x="Seasons" y="Cities" layout="{layout}">
-            {data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=heatmap
+    z=Temperatures
+    x=Seasons
+    y=Cities
+    layout={layout}
 
 And the result looks like this:
 <figure>
@@ -267,7 +236,7 @@ You may need to specify the size of each heatmap cell, both in the horizontal an
 dimensions.
 
 Let's consider the following code:
-```py
+```python
 grid_size = 10
 data = [
     {
@@ -310,21 +279,14 @@ Note how *data[1]* holds the two properties *x* and *y* that provide the size
 of each cell on the relevant axis.
 
 Here is how you would create the control definition:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=heatmap|z=0/z|x=1/x|y=1/y|layout={layout}|options={options}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="heatmap" z="0/z" x="1/x" y="1/y" layout="{layout}" options="{options}">
-            {data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=heatmap
+    z=0/z
+    x=1/x
+    y=1/y
+    layout={layout}
+    options={options}
 
 Note how the [*x*](../chart.md#p-x) and [*y*](../chart.md#p-y) properties are set to the
 coordinate array we computed (in *data[1]*).
@@ -344,7 +306,8 @@ Here is an example of displaying a [Golden spiral](https://en.wikipedia.org/wiki
 on top of a heatmap representing a Fibonacci sequence. This example was more or less
 translated to Python from the
 [Plotly.js documentation](https://plotly.com/javascript/heatmaps/).
-```py
+
+```python
 # Return the x and y coordinates of the spiral for the given angle
 def spiral(th):
     a = 1.120529
@@ -413,21 +376,14 @@ ys = ["1/y", "2/ySpiral"]
 ```
 
 Here is how the chart is declared:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type={types}|z[1]=0/z|x={xs}|y={ys}|layout={layout}|options={options}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="{types}" z[1]="0/z" x="{xs}" y="{ys}"
-            layout="layout" options="options">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type={types}
+    z[1]=0/z
+    x={xs}
+    y={ys}
+    layout={layout}
+    options={options}
 
 Note that we need to create two separate traces, with two different types ("heatmap" and "scatter") listed in *types*.<br/>
 The data that defines those two traces are retrieved from *data* using their corresponding

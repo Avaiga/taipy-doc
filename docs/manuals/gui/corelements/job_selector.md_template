@@ -103,19 +103,10 @@ selector control displays.
 
 We can define our control so the job identifiers and the submission dates are not shown, to have a
 more compact display:
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{job}|job_selector|don't show_id|don't show_date|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:job_selector show_id="false" show_date"false">{job}</taipy:job_selector>
-        ```
+!!! taipy-element
+    default={job}
+    show_id:b_dont=False
+    show_date:b_dont=False
 
 Here is what the control would look like:
 <figure class="tp-center">

@@ -259,7 +259,10 @@ for repo in repo_defs.keys():
     if version == "local":
         src_path = repo_defs[repo]['path']
         if not args.no_pull:
-            subprocess.run(f"\"{git_path}\" pull {src_path}", shell=True, capture_output=True, text=True)
+            cwd = os.getcwd()
+            os.chdir(src_path)
+            subprocess.run(f"\"{git_path}\" pull", shell=True, capture_output=True, text=True)
+            os.chdir(cwd)
         print(f"    Copying from {src_path}...", flush=True)
         move_files(repo, src_path)
     else:

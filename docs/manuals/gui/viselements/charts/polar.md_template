@@ -35,7 +35,7 @@ equation to represent, based on an angular value.
 
 Here is an example of such a chart. We are creating a parametric curve that will
 result in a nice-looking polar chart:
-```py
+```python
 # One data point for each degree
 theta = range(0, 360)
 
@@ -56,20 +56,10 @@ The *data* object is built with a linear range of values for *theta* and
 a computed series of *r* values.
 
 We can use this object in the definition of the chart we want to display:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=scatterpolar|mode=lines|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="scatterpolar" mode="lines">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=scatterpolar
+    mode=lines
 
 We don't need to explicitly set the [*r*](../chart.md#p-r) and [*theta*](../chart.md#p-theta)
 properties because *data* has two data sets, with the respective names.
@@ -90,7 +80,7 @@ Filling an area in a polar chart is only a matter of setting the *fill* property
 the value assigned to the [*options*](../chart.md#p-options) property of the chart control.
 
 Here is an example that uses the same data set (in *data*) as in the previous example:
-```py
+```python
 options = {
     "fill": "toself"
 }
@@ -115,25 +105,14 @@ The *options* object forces the trace to be filled.<br/>
 *layout* is configured to remove all axis information as well as the legend.
 
 The chart control definition is:
+!!! taipy-element
+    default={data}
+    type=scatterpolar
+    mode=none
+    layout={layout}
+    options={options}
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=scatterpolar|mode=none|layout={layout}|options={options}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="scatterpolar" mode="none" layout="{layout}" options="{options}">
-            {data}</taipy:chart>
-        ```
-
-....
-
-Here is the result:
+Here is the resulting rendering:
 <figure>
     <img src="../polar-area-d.png" class="visible-dark" />
     <img src="../polar-area-l.png" class="visible-light"/>
@@ -146,7 +125,7 @@ Several traces can be displayed in the same polar chart. The [*r*](../chart.md#p
 indexed property can refer to different data.
 
 Here is how to create several traces:
-```py
+```python
 # One data point for each degree
 theta = range(0, 360)
 
@@ -185,21 +164,13 @@ Three traces are used, stored in the array *r*.
 The *layout* object ensures that only the traces will be rendered.
 
 Here is the chart control definition:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=scatterpolar|mode=lines|r={r}|theta=theta|layout={layout}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="scatterpolar" mode="lines" r="{r}" theta="theta" layout="{layout}">
-            {data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=scatterpolar
+    mode=lines
+    r={r}
+    theta=theta
+    layout={layout}
 
 Here is what the chart looks like:
 <figure>
@@ -214,7 +185,7 @@ It may be necessary not to display the entire 360° of the chart but instead sel
 range of angles to represent: a *sector*.
 
 Here is some code that does that:
-```py
+```python
 # Sample small plot definition
 trace = {
     "r": [1, 2, 3, 4, 1],
@@ -252,20 +223,11 @@ Note that for the layout to be correctly applied, you need to name the subplots
 these names in the *layout* object.
 
 The chart control definition can now be written:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=scatterpolar|layout={layout}|options={options}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="scatterpolar" layout="{layout}" options="{options}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=scatterpolar
+    layout={layout}
+    options={options}
 
 Here are our two traces, gathered in the same chart:
 <figure>
@@ -280,7 +242,7 @@ The angular axis can be tuned to set its origin wherever needed. It can
 also be oriented, and the angular values can appear in different units.
 
 Here is a demonstration of these capabilities:
-```py
+```python
 # Create a star shape
 data = {
         "r": [3, 1] * 5 + [3],
@@ -327,20 +289,11 @@ layout = {
 The two traces have very different settings for their angular axis.
 
 The chart control definition is straightforward:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=scatterpolar|layout={layout}|options={options}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="scatterpolar" layout="{layout}" options="{options}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=scatterpolar
+    layout={layout}
+    options={options}
 
 The two traces appear in the chart, mirroring one another:
 <figure>
@@ -355,7 +308,7 @@ You can also customize what the tick texts are: what text is at what location on
 
 Here is an example that uses a chart control to show the current time in a way that looks like
 a wall clock:
-```py
+```python
 def generate_hand_shapes():
     # Retrieve and store the current, local time
     time_now = datetime.now()
@@ -465,20 +418,10 @@ to refresh the data so that every refresh of the display will compute and displa
 time.
 
 Here is the very simple chart control definition:
-
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{data}|chart|type=scatterpolar|properties={properties}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:chart type="scatterpolar" properties="{properties}">{data}</taipy:chart>
-        ```
+!!! taipy-element
+    default={data}
+    type=scatterpolar
+    properties={properties}
 
 The chart control will display the current local time on every refresh:
 <figure>
