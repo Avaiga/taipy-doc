@@ -200,6 +200,19 @@ hide:
       </div> 
     </a>
   </li>
+  <li data-keywords="gui vizelement markdown">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/chatbot/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>LLM ChatBot</h4>
+        <p>
+          Create a chatbot interface using Taipy and an LLM API. 
+        </p>
+      </div> 
+    </a>
+  </li>
   <li data-keywords="gui markdown vizelement">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/markdown_syntax">
       <header class="tp-content-card-header">
@@ -460,6 +473,60 @@ hide:
         <h4> Movie Genre Selector </h4>
         <p> Explore Movie Genre Selector demo. See how this user-friendly tool helps you 
             effortlessly discover movies from your favorite movie genres.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li data-keywords="gui ai scenario datanode dag configuration">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/drift_detection/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Drift Detection </h4>
+        <p> Showcases the ability to select inputs and execute and visualize outputs of data
+            pipelines in a Taipy application by using the example of detecting drift on a
+            dataset.
+        </p>
+      </div> 
+    </a>
+  </li>
+  <li data-keywords="gui dashboard vizelement layout chart">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/pollution_sensors/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Realtime Pollution Dashboard </h4>
+        <p> Displays real-time pollution data from sensors around a factory. The data is streamed
+            from another server and displayed in a dashboard.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li data-keywords="gui vizelement ai">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/chatbot/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> LLM ChatBot </h4>
+        <p> A chatbot that uses OpenAI's API with GPT-3. Can be used as a template for implementing apps that use LLM inference.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li data-keywords="gui dashboard vizelement layout chart ai multi-page classification">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/fraud_detection/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Fraud Detection </h4>
+        <p> A Taipy Application that analyzes credit card transactions to detect fraud.
         </p>
       </div> 
     </a>
