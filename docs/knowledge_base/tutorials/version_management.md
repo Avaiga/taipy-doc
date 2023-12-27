@@ -43,8 +43,8 @@ Now you're ready to manage your Taipy application with Git and Taipy version man
 By default, a Taipy application runs in development mode, which means entities from previous
 development run are deleted before running the application. To save the entities of a run, you
 can create a new experiment version of your application by running your Taipy application with the
-`--experiment` option to the `taipy` command. Let's name the experiment version `1.0` and commit the version
-to Git.
+`--experiment` option to the `taipy` command. After running the application to make sure that it
+works, let's name the experiment version `1.0` and commit the version to Git.
 
 ```console
 $ taipy run main.py --experiment 1.0
