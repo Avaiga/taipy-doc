@@ -200,6 +200,19 @@ hide:
       </div> 
     </a>
   </li>
+  <li data-keywords="gui vizelement markdown">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/chatbot/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="tutorials/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>LLM ChatBot</h4>
+        <p>
+          Create a chatbot interface using Taipy and an LLM API. 
+        </p>
+      </div> 
+    </a>
+  </li>
   <li data-keywords="gui markdown vizelement">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tutorials/markdown_syntax">
       <header class="tp-content-card-header">
@@ -491,6 +504,20 @@ hide:
       </div> 
     </a>
   </li>
+
+  <li data-keywords="gui vizelement ai">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/chatbot/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="demos/images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> LLM ChatBot </h4>
+        <p> A chatbot that uses OpenAI's API with GPT-3. Can be used as a template for implementing apps that use LLM inference.
+        </p>
+      </div> 
+    </a>
+  </li>
+
   <li data-keywords="gui dashboard vizelement layout chart ai multi-page classification">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="demos/fraud_detection/">
       <header class="tp-content-card-header">
