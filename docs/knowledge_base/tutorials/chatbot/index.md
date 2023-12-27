@@ -1,4 +1,4 @@
-# Creating a Chatbot Website using Taipy
+Creating a Chatbot Website using Taipy
 
 In this tutorial we will create a simple chatbot website using Taipy.
 
@@ -12,18 +12,6 @@ In this tutorial we will create a simple chatbot website using Taipy.
 
 Here we will use OpenAI's API with GPT-3. This tutorial can easily
 be adapted to other LLMs.
-
-# Table of Contents
-- [Step 1: Install Requirements](#step-1-install-requirements)
-- [Step 2: Imports](#step-2-imports)
-- [Step 3: Initialize variables](#step-3-initialize-variables)
-- [Step 4: Create a function to generate responses](#step-4-create-a-function-to-generate-responses)
-- [Step 5: Create a function to add the new messages to the conversation](#step-5-create-a-function-to-add-the-new-messages-to-the-conversation)
-- [Step 6: Create the User Interface](#step-6-create-the-user-interface)
-- [Step 7: Run the application](#step-7-run-the-application)
-- [Step 8: Styling](#step-8-styling)
-- [Step 9: More features](#step-9-more-features)
-- [Step 10: Deploying the app to Taipy Cloud](#step-10-deploying-the-app-to-taipy-cloud)
 
 
 # Step 1: Install Requirements
