@@ -290,7 +290,7 @@ Let's explore demos of applications made with Taipy.
   </li>
   
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui dashboard vizelement layout chart ai multi-page classification">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="pollution_sensors">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="fraud_detection">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="images/fraud_threshold.png">
       </header>
