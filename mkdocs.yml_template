@@ -5,7 +5,7 @@ site_author: taipy.io
 repo_url: https://github.com/avaiga/taipy
 repo_name: taipy
 #strict: true
-copyright: © [YEAR] Avaiga
+copyright: © 2021-[YEAR] Avaiga
 nav:
   - "Getting Started":
     - "Getting Started": getting_started/index.md
