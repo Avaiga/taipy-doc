@@ -17,8 +17,8 @@ elements this page holds within the `with` block.
 
 Here is an example of how to create a page using the Page Builder:
 ```py
-from src.taipy.gui import Gui
-import src.taipy.gui.builder as tgb
+from taipy.gui import Gui
+import taipy.gui.builder as tgb
 
 
 with tgb.Page() as page:
