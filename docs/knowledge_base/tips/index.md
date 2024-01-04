@@ -254,4 +254,18 @@ Tips and Tricks!
       </div> 
     </a>
   </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario task">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="databricks">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="images/icon-code.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Integrating Databricks </h4>
+        <span class="tp-tag"> Back-end </span>
+        <p> A guide to integrate Databricks with Taipy scenarios.
+        </p>
+      </div> 
+    </a>
+  </li>
 </ul>

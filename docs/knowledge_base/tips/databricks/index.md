@@ -1,7 +1,5 @@
-# Integrating Databricks Jobs with Taipy Scenarios
-
-Integration to other services to process jobs and functions is sometimes necessary. 
-This tip shows how to use Taipy scenarios and platforms like Databricks simultaneously. 
+Integration with other services to process jobs and functions is sometimes necessary. 
+This tip shows how to use Taipy scenarios with platforms like Databricks simultaneously. 
 Taipy scenarios serve as a potent tool for orchestrating tasks and examining various 
 versions of a business problem. In this article, we'll look into the integration of 
 Databricks jobs with Taipy scenarios, showcasing how this can elevate your data 
@@ -64,7 +62,7 @@ dbutils.notebook.exit(data[:5])
 ```
 
 `dbutils.widgets.get("param1")`: is how you can get the parameters passed to your job. 
-Note that results and parameters are stringify. No complex objects can be passed 
+Note that results and parameters are stringified. No complex objects can be passed 
 through this interface.
 
 - **Test in Notebook:** Test your code within the notebook to ensure it runs 
@@ -166,7 +164,7 @@ As you can see, multiple values are used to connect to Databricks and to the rig
 - *DatabricksClusterName*: the name of the cluster to be used.
 
 Now, this `predict` function is usable by Taipy inside a scenario. A potential 
-integration into the configuration is as followed:
+integration into the configuration is as follows:
 
 ```python
 from taipy.config import Config
@@ -201,9 +199,9 @@ print(scenario.result.read())
 
 [Download the code](./example.py){: .tp-btn target='blank' }
 
-## Unlocking the Potential: Databricks + Taipy
+## Databricks + Taipy
 
 In conclusion, the integration of Databricks jobs with Taipy scenarios is unlocked by 
-creating a class handling Databricks job. This class can then be used inside Taipy as a 
+creating a class for handling Databricks jobs. This class can then be used inside Taipy as a 
 normal task. With this capability, you can incorporate Databricks workflows with Taipy 
 to give insights for your decision-making processes, for example.
