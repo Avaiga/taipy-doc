@@ -163,5 +163,5 @@ def on_init(state):
 
 example = "<|part|page={uc_url}|height=800px|>"
 
-Gui(example).run(debug=True)
+Gui(example).run()
 ```
