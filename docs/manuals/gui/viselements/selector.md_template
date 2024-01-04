@@ -27,73 +27,37 @@ The [Stylekit](../styling/stylekit.md) provides a specific class that you can us
 
 You can create a selector on a series of strings:
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{value}|selector|lov=Item 1;Item 2;Item 3|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:selector lov="Item 1;Item 2;Item 3">{value}</taipy:selector>
-        ```
+!!! taipy-element
+    default={value}
+    lov=Item 1;Item 2;Item 3
 
 ## Display as a dropdown
 
-!!! example "Page content"
+To make the selector control a drop-down selector, you can set the [*dropdown*](#p-dropdown)
+property to True:
 
-    === "Markdown"
-
-        ```
-        <|{value}|selector|lov=Item 1;Item 2;Item 3|dropdown|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:selector lov="Item 1;Item 2;Item 3" dropdown="True">{value}</taipy:selector>
-        ```
-
+!!! taipy-element
+    default={value}
+    lov=Item 1;Item 2;Item 3
+    dropdown:b=True
 
 ## Display with filter and multiple selection
 
 You can add a filter input field that lets you display only strings that match the filter value.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{value}|selector|lov=Item 1;Item 2;Item 3|multiple|filter|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:selector lov="Item 1;Item 2;Item 3" multiple="True" filter="True">{value}</taipy:selector>
-        ```
-
+!!! taipy-element
+    default={value}
+    lov=Item 1;Item 2;Item 3
+    filter:b=True
+    multiple:b=True
 
 ## Display a list of tuples
 
 A selector control that returns an id while selecting a label or `Icon^`.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{sel}|selector|lov={[("id1", "Label 1"), ("id2", Icon("/images/icon.png", "Label 2"),("id3", "Label 3")]}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:selector value="{sel}" lov="{[('id1', 'Label 1'), ('id2', Icon('/images/icon.png', 'Label 2'),('id3', 'Label 3')]}" />
-        ```
+!!! taipy-element
+    default={sel}
+    lov={[("id1", "Label 1"), ("id2", Icon("/images/icon.png", "Label 2"),("id3", "Label 3")]}
 
 ## Display a list of objects
 
@@ -116,23 +80,15 @@ user_sel = users[2]
 If you want to create a selector control that lets you pick a specific user, you
 can use the following fragment.
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{user_sel}|selector|lov={users}|type=User|adapter={lambda u: (u.id, u.name)}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:selector lov="{users}" type="User" adapter="{lambda u: (u.id, u.name)}">{user_sel}</taipy:selector>
-        ```
+!!! taipy-element
+    default={user_sel}
+    lov={users}
+    type=User
+    adapter={lambda u: (u.id, u.name)}
 
 In this example, we are using the Python list *users* as the selector's *list of values*.
 Because the control needs a way to convert the list items (which are instances of the class
 *User*) into a string that can be displayed, we are using an *adapter*: a function that converts
-an object, whose type must be provided to the *type* property, to a tuple. The first element
-of the tuple is used to reference the selection (therefore those elements should be unique
+an object, whose type must be provided to the [*type*](#p-type) property, to a tuple. The first
+element of the tuple is used to reference the selection (therefore those elements should be unique
 among all the items) and the second element is the string that turns out to be displayed.

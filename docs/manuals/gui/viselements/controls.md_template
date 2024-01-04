@@ -10,7 +10,7 @@ advanced graphical controls such as selectors, tables, and charts.
 !!! note "Available in Taipy GUI, Taipy Community, and Enterprise editions"
 
     The controls listed in this section are provided in the
-    [`taipy-gui`](https://pypi.org/project/taip-gui/) Python package. These controls are
+    [`taipy-gui`](https://pypi.org/project/taipy-gui/) Python package. These controls are
     also present when [`taipy`](https://pypi.org/project/taipy/) is installed.
 
 Here is the list of all available controls in Taipy:

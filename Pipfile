@@ -5,15 +5,14 @@ name = "pypi"
 
 [packages]
 "backports.zoneinfo" = {version="==0.2.1", markers="python_version < '3.9'", extras=["tzdata"]}
-apispec = {extras = ["yaml"], version = "==5.0"}
+apispec = {extras = ["yaml"], version = "==6.3"}
 apispec-webframeworks = "==0.5.2"
 bcrypt = "==3.2.2"
+boto3 = "==1.29.1"
 cookiecutter = "==2.1.1"
 deepdiff = "==6.2.2"
 flask = "==3.0.0"
 flask-cors = "==4.0.0"
-flask-marshmallow = ">=0.14"
-flask-migrate = ">=3.0"
 flask-restful = ">=0.3.9"
 flask-socketio = "==5.3.6"
 gevent = "==23.7.0"
@@ -22,15 +21,16 @@ gitignore-parser = "==0.1.1"
 kthread = "==0.2.3"
 ldap3 = "==2.9.1"
 markdown = "==3.4.4"
-markupsafe = "==2.1.1"
+marshmallow = "==3.20.1"
 modin = "==0.23.0"
 networkx = "==2.6"
 openpyxl = "==3.1.2"
+opentelemetry-api = ">=1.20.0"
+opentelemetry-exporter-otlp = ">=1.20.0"
+opentelemetry-sdk = ">=1.20.0"
 pandas = "==2.0.0"
-passlib = "==1.7.4"
 pyarrow = "==10.0.1"
 pymongo = {extras = ["srv"], version = "==4.2.0"}
-pyngrok = "==5.1"
 python-dotenv = "==1.0.0"
 python-magic = {version = "==0.4.24", markers="sys_platform != 'win32'"}
 python-magic-bin = {version = "==0.4.14", markers="sys_platform == 'win32'"}

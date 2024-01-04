@@ -40,7 +40,7 @@ a classification algorithm. The result is three numerical arrays:
 - The *y* values for the samples that belong to the class 'B'. The value
   is set to Nan if it does not belong to class 'B'.
 
-```py
+```python
 x_range = [ 0.64,  1.05, ...1000 values..., -0.7, -1.2]
 a_values = [ nan, nan, 1.04, -1.01, ...1000 values..., 1.6, 1.45, nan ]
 b_values = [ -2.1, -0.99, nan, nan, ...1000 values..., nan, nan, 2.12]
@@ -52,19 +52,26 @@ data = pd.DataFrame({
 ```
 
 The chart definition looks like this:
-
-!!! example "Page content"
+!!! example "Definition"
 
     === "Markdown"
 
         ```
         <|{data}|chart|mode=markers|x=x|y[1]=Class A|y[2]=Class B|>
         ```
-  
+
     === "HTML"
 
         ```html
         <taipy:chart mode="markers" x="x" y[1]="Class A" y[2]="Class B">{data}</taipy:chart>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.chart("{data}", mode="markers", x="x", y[1]="Class A", y[2]="Class B")
         ```
 
 Note how the [*mode*](../chart.md#p-mode) property is set to "markers".
@@ -94,7 +101,7 @@ documentation page.
 Here is how we can change the size and shape of the markers that are used in
 our previous example (with fewer data points). We need to create two
 dictionaries that hold the values we want to impact:
-```py
+```python
 marker_A = {
     "symbol": "circle-open",
     "size": 16
@@ -109,21 +116,26 @@ We are requesting that the markers have different shape to represent different d
 and the markers for the B data set are slightly bigger.
 
 To have Taipy use those styles, we must modify the chart definition:
-
-!!! example "Page content"
+!!! example "Definition"
 
     === "Markdown"
 
         ```
-        <|{data}|chart|mode=markers|x=x|y[1]=Class A|marker[1]={marker_A}|y[2]=Class B|marker[2]={marker_B}>
+        <|{data}|chart|mode=markers|x=x|y[1]=Class A|marker[1]={marker_A}|y[2]=Class B|marker[2]={marker_B}|>
         ```
-  
+
     === "HTML"
 
         ```html
-        <taipy:chart mode="markers" x="x"
-            y[1]="Class A" marker[1]="{marker_A}" 
-            y[2]="Class B" marker[2]="{marker_B}">{data}</taipy:chart>
+        <taipy:chart mode="markers" x="x" y[1]="Class A" marker[1]="{marker_A}" y[2]="Class B" marker[2]="{marker_B}">{data}</taipy:chart>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.chart("{data}", mode="markers", x="x", y[1]="Class A", marker[1]="{marker_A}", y[2]="Class B", marker[2]="{marker_B}")
         ```
 
 That generates the following chart:
@@ -138,7 +150,7 @@ That generates the following chart:
 Changing the style of markers can also be set for each individual data point.
 
 Consider the following array of three data sets:
-```py
+```python
 data = [
     { "x": [1, 2, 3, 4], "y": [10, 11, 12, 13] },
     { "x": [1, 2, 3, 4], "y": [11, 12, 13, 14] },
@@ -148,7 +160,7 @@ data = [
 
 We can create an array of *marker* dictionaries, on for every trace, where
 we indicate how data points will be represented:
-```py
+```python
 markers = [
     # First data set is represented by increasingly large
     # disks, getting more and more opaque
@@ -179,7 +191,7 @@ markers = [
 
 We can further customize the whole chart be creating a *layout* dictionary and
 use it in our chart:
-```py
+```python
 layout = {
     # Hide the chart legend
     "showlegend": False,
@@ -198,20 +210,26 @@ The chart definition can now use this array as the value for the indexed propert
 [*marker*](../chart.md#p-marker): each item applies to consecutive traces.<br/>
 We also set the [*layout*](../chart.md#p-layout) property to apply the global
 layout settings:
-
-!!! example "Page content"
+!!! example "Definition"
 
     === "Markdown"
 
         ```
         <|{data}|chart|mode=markers|marker={markers}|layout={layout}|>
         ```
-  
+
     === "HTML"
 
         ```html
-        <taipy:chart mode="markers"
-                     marker="{markers}" layout="{layout}">{data}</taipy:chart>
+        <taipy:chart mode="markers" marker="{markers}" layout="{layout}">{data}</taipy:chart>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.chart("{data}", mode="markers", marker="{markers}", layout="{layout}")
         ```
 
 The resulting chart displays as:
@@ -231,7 +249,7 @@ markers. The chart will represent an array of two Data Frames: one for the
 original data points and one for the computed regression line.
 
 Here is the code that defines the source data for the chart:
-```py
+```python
 data = [
   {
     "x": [ 0.13, -0.49, ..., 1.89, -0.97 ],
@@ -249,22 +267,28 @@ The values *x* and *Regression* could be computed, for example, using the
 from the [`scikit-learn` package](https://scikit-learn.org/stable/).
 
 The chart definition uses the two data sets and their columns:
-
-!!! example "Page content"
+!!! example "Definition"
 
     === "Markdown"
 
         ```
         <|{data}|chart|mode[1]=markers|x[1]=0/x|y[1]=0/y|mode[2]=line|x[2]=1/x|y[2]=1/Regression|>
         ```
-  
+
     === "HTML"
 
         ```html
-        <taipy:chart
-            mode[1]="markers" x[1]="0/x" y[1]="0/y"
-            mode[2]="line"    x[2]="1/x" y[2]="1/Regression">{data}</taipy:chart>
+        <taipy:chart mode[1]="markers" x[1]="0/x" y[1]="0/y" mode[2]="line" x[2]="1/x" y[2]="1/Regression">{data}</taipy:chart>
         ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.chart("{data}", mode[1]="markers", x[1]="0/x", y[1]="0/y", mode[2]="line", x[2]="1/x", y[2]="1/Regression")
+        ```
+
 See how, using the *mode[]*, *x[]*, and *y[]* properties, the two plots are defined.<br/>
 Also note how the data sets are referenced: `x[1]` being set to `0/x` indicates that the
 x values for the first trace should be retrieved from the column called *x* in the first

@@ -17,37 +17,16 @@ The [Stylekit](../styling/stylekit.md) provides a specific class that you can us
 
 ## Using the full date and time
 
-Assuming a variable _dt_ contains a Python `datetime` object, you can create
+Assuming a variable *dt* contains a Python `datetime` object, you can create
 a date selector that represents it:
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{dt}|date|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:date>{dt}</taipy:date>
-        ```
+!!! taipy-element
+    default={dt}
 
 ## Using only the date
 
-If you don't need to use the date, you can do so:
+If you don't need to use the time, you can set the [*with_time*](#p-with_time) property to False:
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{dt}|date|not with_time|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:date with_time="false">{dt}</taipy:date>
-        ```
+!!! taipy-element
+    default={dt}
+    with_time:b=False
