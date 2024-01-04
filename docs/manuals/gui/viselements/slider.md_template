@@ -17,19 +17,8 @@ name to select the sliders on your page and apply style.
 
 A numeric value can easily be represented and interacted with using the following content:
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{value}|slider|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:slider>{value}</taipy:slider>
-        ```
+!!! taipy-element
+    default={value}
 
 The page contains a slider that looks like this:
 <figure>
@@ -46,19 +35,10 @@ The user can pick the slider knob and move it around to select a value within th
 You can specify, in the [*min*](#p-min) and [*max*](#p-max) properties, what bounds the selected
 value should be constrained to:
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{value}|slider|min=1|max=10|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:slider min="1" max="10">{value}</taipy:slider>
-        ```
+!!! taipy-element
+    default={value}
+    min=1
+    max=10
 
 The resulting slider looks like this:
 <figure>
@@ -72,19 +52,9 @@ The resulting slider looks like this:
 A slider can also be vertical if the [*orientation*](#p-orientation) property is set to a string
 beginning with the letter "v".
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{value}|slider|orientation=vert|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:slider orientation="vert">{value}</taipy:slider>
-        ```
+!!! taipy-element
+    default={value}
+    orientation=vert
 
 And now the slider is displayed vertically:
 <figure>
@@ -98,19 +68,9 @@ And now the slider is displayed vertically:
 A slider can also allow users to select a value from a list of predefined values.<br/>
 To do this, you must set the [*lov*](#p-lov) property to a list of values:
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{value}|slider|lov=XXS;XS;S;M;L;XL;XXL|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:slider lov="XXS;XS;S;M;L;XL;XXL">{value}</taipy:slider>
-        ```
+!!! taipy-element
+    default={value}
+    lov=XXS;XS;S;M;L;XL;XXL
 
 Then only those values are accessible by the user:
 <figure>
@@ -134,19 +94,8 @@ values = [20, 40, 80]
 
 And use this variable as the [*value*](#p-value) property value:
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{values}|slider|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:slider>{values}</taipy:slider>
-        ```
+!!! taipy-element
+    default={values}
 
 Because the initial value is an array with three values, the slider is displayed with three knobs
 that the user can move:
@@ -207,19 +156,9 @@ This callback will receive, in *var_value*, the array of the two selected dates.
 
 The slider control definition is the following:
 
-!!! example "Page content"
-
-    === "Markdown"
-
-        ```
-        <|{dates}|slider|lov={all_dates_str}|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:slider lov="{all_dates_str}">{dates}</taipy:slider>
-        ```
+!!! taipy-element
+    default={dates}
+    lov={all_dates_str}
 
 And this is what this date range picker looks like:
 <figure>

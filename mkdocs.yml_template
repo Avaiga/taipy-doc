@@ -5,7 +5,7 @@ site_author: taipy.io
 repo_url: https://github.com/avaiga/taipy
 repo_name: taipy
 #strict: true
-copyright: © [YEAR] Avaiga
+copyright: © 2021-[YEAR] Avaiga
 nav:
   - "Getting Started":
     - "Getting Started": getting_started/index.md
@@ -34,6 +34,7 @@ nav:
             - "3 - Scenario configuration": knowledge_base/tutorials/complete_application/step_03/step_03.md
             - "4 - Scenario page": knowledge_base/tutorials/complete_application/step_04/step_04.md
             - "5 - Performance page": knowledge_base/tutorials/complete_application/step_05/step_05.md
+        - "Creating an LLM ChatBot": knowledge_base/tutorials/chatbot/index.md
         - "Markdown Syntax": knowledge_base/tutorials/markdown_syntax.md
         - "Data Dashboard": knowledge_base/tutorials/data_dashboard.md
         - "Changing Line Types Using Charts": knowledge_base/tutorials/charts.md
@@ -41,6 +42,7 @@ nav:
         - "Partials in Taipy": knowledge_base/tutorials/partials.md
         - "Scenario Management concepts": knowledge_base/tutorials/scenario_mgt_concepts.md
         - "Submitting Scenario and Tasks": knowledge_base/tutorials/execution.md
+        - "Manage application versions": knowledge_base/tutorials/version_management.md
     - "Demos":
         - "Demos": knowledge_base/demos/index.md
         - "Sales Dashboard": knowledge_base/demos/sales_dashboard.md
@@ -57,6 +59,9 @@ nav:
         - "Drift Detection": knowledge_base/demos/drift_detection.md
         - "Realtime Pollution Dashboard" : knowledge_base/demos/pollution_sensors.md
         - "Background Remover" : knowledge_base/demos/background_remover.md
+        - "TalkToTaipy" : knowledge_base/demos/talk_to_taipy.md
+        - "Creating an LLM Chatbot" : knowledge_base/demos/chatbot.md
+        - "Fraud Detection": knowledge_base/demos/fraud_detection.md
     - "Tips and tricks":
         - "Tips and tricks": knowledge_base/tips/index.md
         - "Scenarios": knowledge_base/tips/scenarios/index.md

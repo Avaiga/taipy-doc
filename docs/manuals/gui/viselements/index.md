@@ -245,13 +245,23 @@ is equivalent to
     that make it easier to use in the context of describing Taipy pages.
 
     - Attribute names that be array elements.
-      Some visual elements (such as the [`chart`](chart.md) control) need
-      indexed properties. An attribute name such as *y[1]* is valid in the Taipy context,
-      where it would not be in the raw HTML grammar.
+      Some visual elements (such as the [`chart`](chart.md) control) need *indexed* properties.
+      An attribute name such as *y[1]* is valid in the Taipy context, where it would not be in the
+      raw HTML grammar.
 
     - Empty attribute value.
       In the HTML used by Taipy, you can mention an attribute with no value. It would
       be equivalent to setting it to `True`.
+
+    - Boolean attribute value.
+      The [HTML specification](http://www.w3.org/TR/html5/) indicates that if a Boolean attribute
+      is omitted in the tag definition, its value defaults to 'false'. This is not the case
+      for Taipy's visual elements: some Boolean property values default to 'true'.<br/>
+      To set an element property to 'false', you must explicitly indicate it:
+      `<taipy:e bool_attr="false"/>`.<br/>
+      Note that the paragraph above indicates that one can specify no value for a property,
+      resulting in setting it to 'true', which does respect the HTML specification:
+      `<taipy:e bool_attr/>` is equivalent to `<taipy:e bool_attr="true"/>`.
 
 # Generic properties
 
