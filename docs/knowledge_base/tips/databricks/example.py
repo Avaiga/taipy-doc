@@ -41,7 +41,7 @@ class Databricks:
         except:
             return "Error when connecting to the DataBricks Cluster"
 
-    def get(self, endpoint, dataset=None, timeout=BASIC_TIMEOUT):
+    def run_and_get_results (self, endpoint, dataset=None, timeout=BASIC_TIMEOUT):
         """
         Call a Databricks jobs base on the endpoint, wait the end of the job and return the result
         The timeout is approximate
@@ -103,11 +103,11 @@ def predict(parameters):
                             os.environ['DatabricksEndpoint'])
 
     try:
-        return databricks.get(ENDPOINT, parameters)
+        return databricks.run_and_get_results(ENDPOINT, parameters)
     except Exception as e:
         try:
             logging.info("Taipy tries predict a second time")
-            return databricks.get(ENDPOINT, parameters)
+            return databricks.run_and_get_results(ENDPOINT, parameters)
         except Exception as e:
             logging.info(f'Error during the databricks call\n{e}')
             return None
@@ -131,9 +131,10 @@ scenario_cfg = Config.configure_scenario("scenario", task_configs=[task_databric
 # main.py
 import taipy as tp 
 
-tp.Core().run()
+if __name__ == "__main__":
+    tp.Core().run()
 
-scenario = tp.create_scenario(scenario_cfg)
+    scenario = tp.create_scenario(scenario_cfg)
 
-scenario.submit()
-print(scenario.result.read())
+    scenario.submit()
+    print(scenario.result.read())

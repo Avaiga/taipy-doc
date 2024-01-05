@@ -1,5 +1,5 @@
-Integration with other services to process jobs and functions is sometimes necessary. 
-This tip shows how to use Taipy scenarios with platforms like Databricks simultaneously. 
+Integration with other platforms to execute jobs and functions is sometimes necessary. 
+This tip shows how to integrate Taipy scenarios with platforms like Databricks. 
 Taipy scenarios serve as a potent tool for orchestrating tasks and examining various 
 versions of a business problem. In this article, we'll look into the integration of 
 Databricks jobs with Taipy scenarios, showcasing how this can elevate your data 
@@ -118,7 +118,7 @@ class Databricks:
     def status(self):
         # Check cluster status...
 
-    def get(self, endpoint, dataset=None, timeout=BASIC_TIMEOUT):
+    def run_and_get_results(self, endpoint, dataset=None, timeout=BASIC_TIMEOUT):
         """
         Call a Databricks job based on the endpoint, wait for job completion, and return the result.
         The timeout is approximate.
@@ -145,11 +145,11 @@ def predict(parameters):
                             os.environ['DatabricksEndpoint'])
 
     try:
-        return databricks.get(ENDPOINT, parameters)
+        return databricks.run_and_get_results(ENDPOINT, parameters)
     except Exception as e:
         try:
             logging.info("Taipy tries predict a second time")
-            return databricks.get(ENDPOINT, parameters)
+            return databricks.run_and_get_results(ENDPOINT, parameters)
         except Exception as e:
             logging.info(f'Error during the databricks call\n{e}')
             return None
@@ -189,12 +189,13 @@ proper results.
 ```python
 import taipy as tp 
 
-tp.Core().run()
+if __name__ == "__main__":
+    tp.Core().run()
 
-scenario = tp.create_scenario(scenario_cfg)
+    scenario = tp.create_scenario(scenario_cfg)
 
-scenario.submit()
-print(scenario.result.read())
+    scenario.submit()
+    print(scenario.result.read())
 ```
 
 [Download the code](./example.py){: .tp-btn target='blank' }
