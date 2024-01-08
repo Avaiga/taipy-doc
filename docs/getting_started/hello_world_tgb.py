@@ -34,7 +34,7 @@ def submit_scenario(state):
 
 with tgb.Page() as page:
     tgb.text("Name:")
-    tgb.input("{input_name}")
+    tgb.input(input_name)
     tgb.button("Submit", on_action=submit_scenario)
 
     tgb.text("Message {message}")
