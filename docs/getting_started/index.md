@@ -180,7 +180,7 @@ Here's a simple GUI set up for our "Hello World" scenario:
 
         with tgb.Page() as page:
             tgb.text("Name:")
-            tgb.input(input_name)
+            tgb.input("{input_name}")
             tgb.button("Submit", on_action=submit_scenario)
             tgb.text("Message {message}")
 
@@ -211,7 +211,7 @@ Here's a simple GUI set up for our "Hello World" scenario:
 
         with tgb.Page() as page:
             tgb.text("Name:")
-            tgb.input(input_name)
+            tgb.input("{input_name}")
             tgb.button("Submit", on_action=submit_scenario)
             tgb.text("Message {message}")
         ```
@@ -223,7 +223,7 @@ Taipy offers various visual elements that can interact with your Python variable
 environment. It allows you to display variables, modify them, and interact with the application.
 
 Here is a generic example of one: `<|{variable}|visual_element_type|...|>` with Markdown or 
-`tgb.visual_element_type(variable, ...)` with the Python API. *variable* is 
+`tgb.visual_element_type("{variable}", ...)` with the Python API. *variable* is 
 the main property of the visual element and is usually what is displayed or modified through the 
 visual element.
 
