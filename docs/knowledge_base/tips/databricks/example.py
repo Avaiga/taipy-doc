@@ -6,7 +6,7 @@ import os
 
 BASIC_TIMEOUT = 60 * 15
 INTERMEDIATE_TIMEOUT = 60
-CLUSTER_NAME = os.environ['DatabricksClusterName']
+CLUSTER_NAME = "cluster_name"
 
 class Databricks:
     def __init__(self, token, databricks_endpoint, *args, **kwargs):
@@ -96,7 +96,7 @@ class Databricks:
 
 default_param = {"param1": "value1", "param2": "value2"}
 
-ENDPOINT = os.environ["JobEndpoint"]
+ENDPOINT = "job_endpoint"
 
 def predict(parameters):
     databricks = Databricks(os.environ['DatabricksBearerToken'],

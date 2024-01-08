@@ -102,7 +102,7 @@ import logging
 import os
 
 
-CLUSTER_NAME = os.environ['DatabricksClusterName']
+CLUSTER_NAME = "cluster_name"
 BASIC_TIMEOUT = 60 * 15
 INTERMEDIATE_TIMEOUT = 60
 
@@ -138,7 +138,7 @@ results seamlessly within the Taipy framework.
 ```python
 default_param = {"param1": "value1", "param2": "value2"}
 
-ENDPOINT = os.environ['JobEndpoint']
+ENDPOINT = "job_endpoint"
 
 def predict(parameters):
     databricks = Databricks(os.environ['DatabricksBearerToken'],
@@ -158,10 +158,8 @@ def predict(parameters):
 
 As you can see, multiple values are used to connect to Databricks and to the right job.
 
-- *JobEndpoint*: the name of the job.
 - *DatabricksBearerToken*: your bearer token. Create one using this [tutorial](https://docs.databricks.com/en/dev-tools/auth/pat.html).
 - *DatabricksEndpoint*: Databricks endpoint which is the base URL of your Databricks (example: *xxxyyyyzzz.azuredatabricks.net*).
-- *DatabricksClusterName*: the name of the cluster to be used.
 
 Now, this `predict` function is usable by Taipy inside a scenario. A potential 
 integration into the configuration is as follows:
