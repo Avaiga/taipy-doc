@@ -169,7 +169,7 @@ Here's a simple GUI set up for our "Hello World" scenario:
     === "Python"
 
         Taipy pages can be defined in multiple ways: Markdown, Html or Python. *page* is built through 
-        the Taipy Gui Builder.
+        the Page Builder API.
 
         ```python linenums="1"
         import taipy as tp
