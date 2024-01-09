@@ -108,11 +108,8 @@ class RefManStep(SetupStep):
                         if e.__class__.__name__ == "NewType":
                             entry_type = TYPE_ID
                     elif e.__module__ == "typing" and hasattr(e, "__name__"):  # For Readthedoc build
-                        # Manually remove class from 'typing'
-                        if e.__name__ == "NewType":
-                            continue
-                        # Manually remove function from 'typing'
-                        if e.__name__ == "overload":
+                        # Manually remove classes from 'typing'
+                        if e.__name__ in ["NewType", "TypeVar", "overload"]:
                             continue
                         entry_type = TYPE_ID
                     else:
