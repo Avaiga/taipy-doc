@@ -212,7 +212,10 @@ def on_post_build(env):
                         if isinstance(desc, int):
                             if parts:
                                 package = "." . join(parts)
-                                desc = next(d for d in multi_xrefs.get(c_name) if d[0].endswith(package))
+                                try:
+                                    desc = next(d for d in multi_xrefs.get(c_name) if d[0].endswith(package))
+                                except Exception:
+                                    desc = None
                             else:
                                 desc = multi_xrefs.get(c_name)[0]
                         link = None
