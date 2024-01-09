@@ -14,7 +14,7 @@ TOP_DIR = os.path.dirname(ROOT_DIR)
 DEST_DIR_NAME = "taipy"
 
 REPOS = ["taipy"]
-PRIVATE_REPOS = ["auth", "enterprise"]
+PRIVATE_REPOS = ["enterprise"]
 
 OPTIONAL_PACKAGES = {
     "gui": ["pyarrow", "pyngrok", "python-magic", "python-magic-bin"]
