@@ -299,8 +299,6 @@ class RefManStep(SetupStep):
                             f"FATAL -  - {type_name} {name} exposed in {force_package} already declared as {xref[0]}.{xref[1]}"
                             )
                     print(f"NOTE: duplicate entry {name} - {xref[0]}/{force_package}")
-                    #print(f"WARNING - {'Function' if type == FUNCTION_ID else 'Class'} {name} already declared as {xref[0]}.{xref[1]}")
-                    xref_array = []
                     if isinstance(xref, int): # If there already are duplicates
                         for index in range(0..int(xref)):
                             xref = xrefs.get(f"{name}/{index}")
@@ -336,13 +334,13 @@ class RefManStep(SetupStep):
                     package_output_file.write(module_doc[package])
                 package_grouped = package == package_group
                 if types:
-                    package_output_file.write(f"## Types\n\n")
+                    package_output_file.write("## Types\n\n")
                     for type in types:
                         name = type["name"]
                         package_output_file.write(f"   - `{name}`" + f"{': ' + type.get('doc', ' - NOT DOCUMENTED')}\n")
                         update_xrefs(name, TYPE_ID, package, entry_info["module"], entry_info.get("packages"))
                 if functions:
-                    package_output_file.write(f"## Functions\n\n")
+                    package_output_file.write("## Functions\n\n")
                     generate_entries(
                         functions,
                         package,
@@ -351,7 +349,7 @@ class RefManStep(SetupStep):
                         package_grouped,
                     )
                 if classes:
-                    package_output_file.write(f"## Classes\n\n")
+                    package_output_file.write("## Classes\n\n")
                     generate_entries(classes, package, CLASS_ID, package_output_file, package_grouped)
 
         self.add_external_methods_to_config_class(setup)
@@ -368,12 +366,12 @@ class RefManStep(SetupStep):
     @staticmethod
     def add_external_methods_to_config_class(setup: Setup):
         if not os.path.exists("config_doc.txt"):
-            print(f"WARNING - No methods found to inject to Config documentation!")
+            print("WARNING - No methods found to inject to Config documentation")
             return
 
         # Get code of methods to inject
         with open("config_doc.txt", "r") as f:
-            print(f"INFO - Injecting methods to Config documentation.")
+            print("INFO - Injecting methods to Config documentation.")
             methods_to_inject = f.read()
 
         # Delete temporary file
