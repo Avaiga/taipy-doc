@@ -116,62 +116,114 @@ While we've used Taipy's Python APIs to handle our scenario, it usually works se
 graphical interface, also created using Taipy, to provide a more user-friendly experience. 
 Here's a simple GUI set up for our "Hello World" scenario:
 
-```python linenums="1"
-import taipy as tp
+!!! example "GUI creation"
 
-# Previous configuration of scenario
-...
+    === "Markdown"
 
-page = """
-Name: <|{input_name}|input|>
-<|submit|button|on_action=submit_scenario|>
+        Taipy pages can be defined in multiple ways: Markdown, Html or Python. *page* is the Markdown representation of the page.
 
-Message: <|{message}|text|>
-"""
+        ```python linenums="1"
+        import taipy as tp
 
-input_name = "Taipy"
-message = None
+        # Previous configuration of scenario
+        ...
 
+        page = """
+        Name: <|{input_name}|input|>
+        <|submit|button|on_action=submit_scenario|>
 
-def submit_scenario(state):
-    state.scenario.input_name.write(state.input_name)
-    state.scenario.submit(wait=True)
-    state.message = scenario.message.read()
+        Message: <|{message}|text|>
+        """
 
-
-if __name__ == "__main__":
-    tp.Core().run()
-    scenario = tp.create_scenario(scenario_cfg)
-    tp.Gui(page).run()
-```
-
-[Get the whole code](./hello_world.py){: .tp-btn target='blank'}
-
-Now, let’s explain the key elements of this code:
-
-```python
-import taipy as tp
+        input_name = "Taipy"
+        message = None
 
 
-page = """
-Name: <|{input_name}|input|>
-<|submit|button|on_action=submit_scenario|>
-Message: <|{message}|text|>
-"""
-```
+        def submit_scenario(state):
+            state.scenario.input_name.write(state.input_name)
+            state.scenario.submit(wait=True)
+            state.message = scenario.message.read()
 
-**Pages**
 
-Taipy pages can be defined in multiple ways: Markdown, Html or Python. The *page* 
-variable is a Markdown representation of the user interface. 
-It uses standard Markdown syntax as well as visual elements.
+        if __name__ == "__main__":
+            tp.Core().run()
+            scenario = tp.create_scenario(scenario_cfg)
+            tp.Gui(page).run()
+        ```
+
+        [Get the whole code](./hello_world_md.py){: .tp-btn target='blank'}
+
+        Now, let’s explain the key elements of this code:
+
+        ```python
+        import taipy as tp
+
+
+        page = """
+        Name: <|{input_name}|input|>
+        <|submit|button|on_action=submit_scenario|>
+        Message: <|{message}|text|>
+        """
+        ```
+
+    === "Python"
+
+        Taipy pages can be defined in multiple ways: Markdown, Html or Python. *page* is built through 
+        the Page Builder API.
+
+        ```python linenums="1"
+        import taipy as tp
+        import taipy.gui.builder as tgb
+
+        # Previous configuration of scenario
+        ...
+
+        with tgb.Page() as page:
+            tgb.text("Name:")
+            tgb.input("{input_name}")
+            tgb.button("Submit", on_action=submit_scenario)
+            tgb.text("Message {message}")
+
+
+        input_name = "Taipy"
+        message = None
+
+
+        def submit_scenario(state):
+            state.scenario.input_name.write(state.input_name)
+            state.scenario.submit(wait=True)
+            state.message = scenario.message.read()
+
+
+        if __name__ == "__main__":
+            tp.Core().run()
+            scenario = tp.create_scenario(scenario_cfg)
+            tp.Gui(page).run()
+        ```
+
+        [Get the whole code](./hello_world_tgb.py){: .tp-btn target='blank'}
+
+        Now, let’s explain the key elements of this code:
+
+        ```python
+        import taipy as tp
+
+
+        with tgb.Page() as page:
+            tgb.text("Name:")
+            tgb.input("{input_name}")
+            tgb.button("Submit", on_action=submit_scenario)
+            tgb.text("Message {message}")
+        ```
+
 
 **Visual elements**
 
 Taipy offers various visual elements that can interact with your Python variables and 
 environment. It allows you to display variables, modify them, and interact with the application.
 
-Here is a generic example of one: `<|{variable}|visual_element_type|...|>`. *variable* is 
+Here is a generic example of one: `<|{variable}|visual_element_type|...|>` with Markdown or 
+`tgb.visual_element_type("{variable}", ...)` with the Python API. *variable* is 
 the main property of the visual element and is usually what is displayed or modified through the 
 visual element.
 
@@ -185,7 +237,7 @@ In our initial example:
 ## Interactivity Through Actions
 
 Actions, like `on_action=submit_scenario`, allow visual elements like buttons to trigger 
-specific functions, enhancing the interactivity of the application.
+specific functions.
 
 ```python
 def submit_scenario(state):
@@ -218,7 +270,7 @@ if __name__ == "__main__":
 ```
 
 The main part of the application starts by setting up the Core service, generating a scenario, 
-and starting the GUI, which makes the interactive interface active and functional.
+and starting the GUI, which makes the interface active and functional.
 
 ![GUI Result](result.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
