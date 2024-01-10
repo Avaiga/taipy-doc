@@ -78,6 +78,7 @@ nav:
         - "Integrate Third-Party Components": knowledge_base/tips/3rd_party_components/index.md
         - "Real-time data visualization": knowledge_base/tips/multithreading/index.md
         - "Big data models vs. Computer memory": knowledge_base/tips/big_data_models/index.md
+        - "Integrating Databricks": knowledge_base/tips/databricks/index.md
   - "Manuals":
     - "About Taipy's Manuals": manuals/index.md
     - "User Manuals":
