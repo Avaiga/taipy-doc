@@ -40,7 +40,7 @@ for version in args.version:
             if not repo.startswith("taipy"):
                 repo = f"taipy-{repo}"
             version = version[colon + 1:]
-        except ValueError as e:
+        except ValueError:
             pass
         version_match = CATCH_VERSION_RE.fullmatch(version)
         if not version_match:
@@ -53,7 +53,7 @@ for version in args.version:
                 if version_match.group(3):
                     tag += version_match.group(3)
     if repo:
-        if not repo in repo_defs:
+        if repo not in repo_defs:
             raise ValueError(f"'{repo}' is not a valid repository name.")
         repo_defs[repo]["version"] = version
         repo_defs[repo]["tag"] = tag
@@ -107,17 +107,17 @@ for repo in repo_defs.keys():
                     continue
                 else:
                     raise SystemError(f"Couldn't query branches from {github_root}{repo}.")
-            if not f"release/{version}\n" in cmd.stdout:
+            if f"release/{version}\n" not in cmd.stdout:
                 raise ValueError(f"No branch 'release/{version}' in repository '{repo}'.")
             tag = repo_defs[repo]["tag"]
             if tag:
                 cmd = subprocess.run(f"\"{git_path}\" ls-remote -t --refs {github_root}{repo}.git", shell=True,
                                      capture_output=True, text=True)
-                if not f"refs/tags/{tag}\n" in cmd.stdout:
+                if f"refs/tags/{tag}\n" not in cmd.stdout:
                     raise ValueError(f"No tag '{tag}' in repository '{repo}'.")
 
 if args.check:
-    print(f"Fetch should perform properly with the following settings:")
+    print("Fetch should perform properly with the following settings:")
     for repo in repo_defs.keys():
         if not repo_defs[repo].get("skip", False):
             version = repo_defs[repo]['version']
@@ -145,7 +145,7 @@ safe_rmtree(os.path.join(TOOLS_PATH, DEST_DIR_NAME))
 pipfile_packages = {}
 PIPFILE_PACKAGE_RE = re.compile(r"(..*?)\s?=\s?(.*)")
 
-frontend_dir = os.path.join(ROOT_DIR, f"taipy-fe")
+frontend_dir = os.path.join(ROOT_DIR, "taipy-fe")
 
 # Fetch files
 def move_files(repo: str, src_path: str):
@@ -167,7 +167,7 @@ def move_files(repo: str, src_path: str):
                     if match and not match.group(1).startswith("taipy"):
                         package = match.group(1).lower()
                         version = match.group(2)
-                        if repo_optional_packages is None or not package in repo_optional_packages:
+                        if repo_optional_packages is None or package not in repo_optional_packages:
                             if package in pipfile_packages:
                                 versions = pipfile_packages[package]
                                 if version in versions:
@@ -245,9 +245,9 @@ def move_files(repo: str, src_path: str):
             shutil.rmtree(tmp_dir)
             """
 
-frontend_dir = os.path.join(ROOT_DIR, f"taipy-fe")
+frontend_dir = os.path.join(ROOT_DIR, "taipy-fe")
 if os.path.isdir(os.path.join(frontend_dir, "node_modules")):
-    shutil.move(os.path.join(frontend_dir, "node_modules"), os.path.join(ROOT_DIR, f"fe_node_modules"))
+    shutil.move(os.path.join(frontend_dir, "node_modules"), os.path.join(ROOT_DIR, "fe_node_modules"))
 if os.path.isdir(os.path.join(frontend_dir)):
     shutil.rmtree(frontend_dir)
 
@@ -285,7 +285,8 @@ for repo in repo_defs.keys():
         # For some reason, we need to protect the removal of the clone dirs...
         # See https://stackoverflow.com/questions/1213706/what-user-do-python-scripts-run-as-in-windows
         def handleRemoveReadonly(func, path, exc):
-            import errno, stat
+            import errno
+            import stat
             if func == os.unlink and exc[1].errno == errno.EACCES:
                 os.chmod(path, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)  # 0777
                 func(path)
@@ -354,7 +355,7 @@ if pipfile_path:
                             # Remove 'extras' from modin package requirements
                             version = re.sub(r"\{\s*extras.*?,\s*version\s*=\s*(.*?)\s*}", r"\1", version)
                         new_pipfile.write(f"{package} = {version}\n")
-                        if not package in legacy_pipfile_packages:
+                        if package not in legacy_pipfile_packages:
                             pipfile_changes.append(f"Package '{package}' added ({version})")
                         elif legacy_pipfile_packages[package] != version:
                             pipfile_changes.append(
@@ -375,14 +376,14 @@ if pipfile_path:
     for package, version in legacy_pipfile_packages.items():
         pipfile_changes.append(f"Package '{package}' removed ({version})")
     if pipfile_changes:
-        print(f"Pipfile was updated (Pipfile.bak saved):")
+        print("Pipfile was updated (Pipfile.bak saved):")
         for change in pipfile_changes:
             print(f"- {change}")
         shutil.move(pipfile_path, os.path.join(ROOT_DIR, "Pipfile.bak"))
         shutil.move(new_pipfile_path, pipfile_path)
-        print(f"You may want to rebuild you virtual environment:")
-        print(f"  - pipenv --rm")
-        print(f"  - pipenv install --dev")
+        print("You may want to rebuild you virtual environment:")
+        print("  - pipenv --rm")
+        print("  - pipenv install --dev")
     else:
-        print(f"No changes in Pipfile")
+        print("No changes in Pipfile")
         os.remove(new_pipfile_path)
