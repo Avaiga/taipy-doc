@@ -2,6 +2,7 @@
 Catalog content:
 this is parsed by the setup_generation script.
 
+basics:Basic concepts
 line:Line charts
 scatter:Scatter charts
 bar:Bar charts
