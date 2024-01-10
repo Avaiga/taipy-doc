@@ -711,7 +711,7 @@ Published on 2022-06.
   See this [section](manuals/gui/binding.md#scope-for-variable-binding) for details.
 - The [`chart`](manuals/gui/viselements/chart.md) control can display georeferenced data on top
   of maps.<br/>
-  See this [example](manuals/gui/viselements/charts/others.md#plotting-on-a-map) for details.
+  See this [example](manuals/gui/viselements/charts/map.md#bubbles-on-map) for details.
 - The [`input`](manuals/gui/viselements/input.md) and [`slider`](manuals/gui/viselements/slider.md)
   controls have a new _change_delay_ property that lets you tune how fast you want to propagate
   changes.<br/>

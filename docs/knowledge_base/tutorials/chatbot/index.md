@@ -48,9 +48,9 @@ conversation = {
 current_user_message = ""
 ```
 
-- `context` is the initial context for the conversation, the LLM will use this to understand what behaviour is expected from it.
-- `conversation` is a dictionary that will store the conversation history to be displayed
-- `current_user_message` is the current message that the user is typing
+- *context* is the initial context for the conversation, the LLM will use this to understand what behavior is expected from it.
+- *conversation* is a dictionary that will store the conversation history to be displayed
+- *current_user_message* is the current message that the user is typing
 
 # Step 4: Create a function to generate responses
 
@@ -64,7 +64,7 @@ your API key [here](https://platform.openai.com/api-keys).
 client = openai.Client(api_key="ENTER_YOUR_API_KEY_HERE")
 ```
 
-Create a function that takes as input a string `prompt` which
+Create a function that takes as input a string *prompt* which
 is the user message and returns a string which is the response from the LLM.
 
 ```python
@@ -123,11 +123,11 @@ def send_message(state: State) -> None:
 # Step 6: Create the User Interface
 
 In Taipy, one way to define pages is to use Markdown strings. Here we use a
-[table](../../../manuals/gui/viselements/table.md_template) to display the
- `conversation` dictionary and an
- [input](../../../manuals/gui/viselements/input) so that the
+[table](../../../manuals/gui/viselements/table.md) to display the
+ *conversation* dictionary and an
+ [input](../../../manuals/gui/viselements/input.md) so that the
  user can type their message. When the user presses enter,
- the `send_message` function is triggered.
+ the *send_message()* function is triggered.
 
 ```python
 page = """
@@ -153,7 +153,7 @@ And here is the result:
 
 # Step 8: Styling
 
-The app's style is Taipy's default stylekit. We are going to
+The app's style is Taipy's default Stylekit. We are going to
 make some changes so that it looks more like a chat app.
 
 First in a `main.css` file, create styles to display user and
@@ -240,7 +240,7 @@ We are now going to deploy the app to Taipy Cloud so it is
 accessible from anyone with a link.
 
 Firstly we need to store the API key in an environment variable.
-Replace the line that defines `client` in [Step 5](#step-5-create-a-function-to-generate-responses) with:
+Replace the line that defines *client* in [Step 5](#step-5-create-a-function-to-generate-responses) with:
 
 ```python
 import os
@@ -251,6 +251,7 @@ Now, instead of having our API key in the code, the app will look
 for it in the environment variables.
 
 We can now deploy the app to Taipy Cloud:
+
 1. Connect to [Taipy Cloud](https://cloud.taipy.io/) and sign in
 2. Click on "Add Machine" and fill in the fields
 3. Select the created machine and click on "Add app"
