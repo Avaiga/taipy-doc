@@ -6,7 +6,7 @@ Databricks jobs with Taipy scenarios, showcasing how this can elevate your data
 processing capabilities.
 
 TO DO, put illustration
-![Databricks](Databricks.png){width=100%}
+![Databricks](databricks.png){width=100%}
 
 ## Scenarios and Databricks Integration
 
