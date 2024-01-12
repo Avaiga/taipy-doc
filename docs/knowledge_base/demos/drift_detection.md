@@ -5,6 +5,7 @@ pipelines in a Taipy application. Here, we use the example of detecting drift on
 [Get it on GitHub](https://github.com/Avaiga/demo-drift-detection){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
+
 Data drift is a concept used mainly in machine learning, where the distribution of inference data strays 
 from the distribution of training data. Various factors, such as changes in the underlying data source, 
 changes in the data collection process, or changes in the data storage process, can cause data drift. 
@@ -19,7 +20,7 @@ series coming from the same distribution. If the probability is under a threshol
 is drift.
 
 The dataset used in this app has both numerical (age, body mass index, blood pressure) and categorical 
-(sex) columns. That is why we start by separating these columns first. Then, we run a statistical test 
+(sex) columns. That is why we start by separating these columns. Then, we run a statistical test 
 for each column to detect drift (Kolmogorov for numerical, Chi-squared for categorical).
 
 ![Pipeline](images/drift-detection-pipeline.png){width=80%}
@@ -28,7 +29,7 @@ for each column to detect drift (Kolmogorov for numerical, Chi-squared for categ
 
 1. Select the comparison dataset:
 
-Here, we are selecting data_big, a dataset similar to the dataset of reference but with rows with higher 
+Here, we are selecting *data_big*, a dataset similar to the reference dataset but with rows with higher 
 blood pressure values. We see on the blood pressure distribution chart that the distribution of the comparison 
 dataset in red is shifted to the right compared to the reference dataset in green.
 
