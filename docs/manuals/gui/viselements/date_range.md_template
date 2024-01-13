@@ -1,12 +1,98 @@
-A control that can display and specify a range of date or times.
+A control that can display and specify a range of dates or times.
+
+The user is expected to select the starting and ending dates defining the date range, typically
+stored as the first and second element of an array of `datetime.date` or `datetime.datetime`
+objects.<br/>
+Note that the control does *not* check whether the first day precedes the second one: should the
+application enforce that, it must be programmed accordingly.
 
 # Styling
 
-All the date controls are generated with the "taipy-date_range" CSS class. You can use this class
-name to select the date selectors on your page and apply style.
+All the date range controls are generated with the "taipy-date_range" CSS class. You can use this
+class name to select the date range selectors on your page and apply style.
 
 # Usage
 
-## Simple date range selection
+## Selecting a date range
 
-TODO:
+The [*dates*](#p-dates) property (which is the default property for this control) must be set to an
+array of two `datetime.date` objects, representing the selected start and end dates of the range.
+
+Assuming the variable *dates* was defined by the following code:
+
+```python
+import datetime
+
+start_date = datetime.date(1756, 1, 27)
+end_date   = datetime.date(1791, 12, 5)
+dates = [start_date, end_date]
+```
+
+The definition of the date range selector is as simple as: 
+
+!!! taipy-element
+    default={dates}
+
+The date range selector looks like this:
+<figure>
+    <img src="../date_range-simple-d.png" class="visible-dark" />
+    <img src="../date_range-simple-l.png" class="visible-light"/>
+    <figcaption>Date range selector</figcaption>
+</figure>
+
+An `on_change` callback can be set to retrieve the user's selection:
+
+```python
+def on_change(s: State, name: str, value: any):
+    if name == "dates":
+        # value[0] is set to the first selected date
+        # value[1] is set to the first selected date
+```
+
+## Selecting a range with times
+
+You can set the [*with_time*](#p-with_time) property to True to display the range time: the
+dates should then be instances of `datetime.datetime`.
+
+Here is some code that defines the date range with specific time values:
+
+```python
+import datetime
+
+start_date = datetime.date(2023, 3, 26, 7, 37)
+end_date   = datetime.date(2023, 3, 26, 19, 2)
+dates = [start_date, end_date]
+```
+
+The control definition just has the [*with_time*](#p-with_time) property set to True:
+
+!!! taipy-element
+    default={dates}
+    with_time:b=True
+
+Here is how the date range selector looks like:
+<figure>
+    <img src="../date_range-with_time-d.png" class="visible-dark" />
+    <img src="../date_range-with_time-l.png" class="visible-light"/>
+    <figcaption>Date range selector with time</figcaption>
+</figure>
+
+## Custom labels
+
+The [*label_start*](#p-label_start) and [*label_end*](#p-label_end) properties can be used to
+label the date fields to provide context to the user.
+
+Here is how a hotel reservation application may declare a date range selector with appropriate
+labels for booking a given period:
+
+!!! taipy-element
+    default={dates}
+    label_start=Check-in
+    label_end=Check-out
+
+Here is how the date range selector looks like:
+<figure>
+    <img src="../date_range-labels-d.png" class="visible-dark" />
+    <img src="../date_range-labels-l.png" class="visible-light"/>
+    <figcaption>Labels on the date fields</figcaption>
+</figure>
