@@ -839,6 +839,32 @@ The scope is `SCENARIO` (default value), and default data is provided.
     `Config.configure_in_memory_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="in_memory"`.
 
+## Amazon Web Service S3 Object
+A `S3ObjectDataNode^` is a specific data node used to model data stored in a
+S3 bucket. To add a new *S3Object* data node configuration, the
+`Config.configure_s3_object_data_node()^` method can be used. In addition to
+the generic parameters described in the [Data node configuration](data-node-config.md)
+section, multiple parameters can be provided.
+
+- _**aws_access_key**_ represents the Amazon Web Services identity account.
+- _**aws_secret_access_key**_ represents the Amazon Web Services access key to authenticate programmatic requests.
+- _**aws_region**_ represnets the geographic area where Amazon Web Services (AWS) infrastructure is located.
+- _**aws_s3_bucket_name**_ represnts the name aof the Amazon Web Service S3 bucket.
+- _**aws_s3_object_key**_ represents the name of the object(file) that has to be read or written.
+- _**aws _s3_object_parameters**_  represents additional arguments to be passed to interact with the AWS service.
+
+In this example, we configure an *s3_object* data node with the id "my_s3_objec":
+
+- Its scope is the default value `SCENARIO`.
+- The object_key name  is "taipy_object"
+
+```python linenums="1"
+{%
+include-markdown "./code_example/data_node_cfg/data-node-config_mongo-complete.py"
+comments=false
+%}
+```
+
 # Default data node configuration
 
 By default, if there is no information provided when configuring a datanode (except for the mandatory _**id**_),
@@ -894,12 +920,5 @@ properties in lines 3-14.
 Then we configure 3 similar data nodes, `users_data_cfg`, `retail_data_cfg`, and `wholesale_data_cfg` in lines 16-33,
 by using the `Config.configure_data_node_from()^` method with `product_data_cfg` as the source configuration, only
 changing the table name and the scope of the new data nodes.
-
-## Amazon Web Service S3 Object
-A `S3ObjectDataNode^` is a specific data node used to model data stored in a
-S3 bucket. To add a new *S3Object* data node configuration, the
-`Config.configure_s3_object_data_node()^` method can be used. In addition to
-the generic parameters described in the [Data node configuration](data-node-config.md)
-section, multiple parameters can be provided.
 
 [:material-arrow-right: The next section introduces the task configuration](task-config.md).
