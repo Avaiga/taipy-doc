@@ -5,9 +5,10 @@ use GPT-3 to create a chatbot and display the conversation in an interactive cha
 [Get it on GitHub](https://github.com/Avaiga/demo-llm-chat){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
-This application allows the user to chat with GPT-3 by sending 
+
+This application allows the user to chat with [GPT-3](https://openai.com/blog/gpt-3-apps) by sending 
 its input to the OpenAI API and returning the conversation in 
-a chat window. The user is also able to come back to a previous 
+a chat window. The user can also return to a previous 
 conversation and continue it.
 
 ![ChatBot](images/chatbot_meds_conv.png){width=100%}
