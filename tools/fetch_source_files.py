@@ -384,7 +384,7 @@ if pipfile_path:
             print(f"- {change}")
         shutil.move(pipfile_path, os.path.join(ROOT_DIR, "Pipfile.bak"))
         shutil.move(new_pipfile_path, pipfile_path)
-        rint(f"You may want to rebuild you virtual environment:")
+        print(f"You may want to rebuild you virtual environment:")
         print(f"  - pipenv --rm")
         print(f"  - pipenv install --dev")
     else:
