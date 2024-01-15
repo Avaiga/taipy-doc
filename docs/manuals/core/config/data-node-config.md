@@ -76,7 +76,7 @@ Taipy proposes predefined *data nodes* corresponding to the most popular
 does not need to spend much time configuring the *storage types* or the
 *query system*. A predefined data node will often satisfy the user's
 required format: pickle, CSV, SQL table, MongoDB collection, Excel sheet,
-etc.
+Amazon Web Service S3 Object etc.
 
 The various predefined *storage types* are typically used for input data.
 Indeed, the input data is usually provided by external sources, where
@@ -894,5 +894,12 @@ properties in lines 3-14.
 Then we configure 3 similar data nodes, `users_data_cfg`, `retail_data_cfg`, and `wholesale_data_cfg` in lines 16-33,
 by using the `Config.configure_data_node_from()^` method with `product_data_cfg` as the source configuration, only
 changing the table name and the scope of the new data nodes.
+
+## Amazon Web Service S3 Object
+A `S3ObjectDataNode^` is a specific data node used to model data stored in a
+S3 bucket. To add a new *S3Object* data node configuration, the
+`Config.configure_s3_object_data_node()^` method can be used. In addition to
+the generic parameters described in the [Data node configuration](data-node-config.md)
+section, multiple parameters can be provided.
 
 [:material-arrow-right: The next section introduces the task configuration](task-config.md).
