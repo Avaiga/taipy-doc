@@ -32,7 +32,7 @@ The attributes available on data nodes are:
     ["excel"](#excel), ["json"](#json), ["mongo_collection"](#mongo-collection),
     ["parquet"](#parquet), ["sql"](#sql), ["sql_table"](#sql_table),
     ["in_memory"](#in-memory), ["generic"](#generic) or
-    ["Amazon Web Service S3 Object"](#Amazon Web Service S3 Object).<br/>
+    ["Amazon Web Service S3 Object"](#amazon-web-service-s3-object).<br/>
     As explained in the following subsections, depending on the *storage_type*, other
     configuration attributes must be provided in the *properties* parameter.
 - Any other custom attribute can be provided through the parameter _**properties**_,
