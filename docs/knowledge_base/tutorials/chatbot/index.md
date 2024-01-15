@@ -1,4 +1,4 @@
-In this tutorial we will create a simple chatbot website using Taipy.
+In this tutorial, we will create a simple chatbot website using Taipy.
 
 [Try it live](https://demo-llm-chat.taipy.cloud/){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-llm-chat){: .tp-btn .tp-btn--accent target='blank' }
@@ -8,7 +8,7 @@ In this tutorial we will create a simple chatbot website using Taipy.
 </p>
 
 
-Here we will use OpenAI's API with [GPT-3](https://openai.com/blog/gpt-3-apps). This tutorial can easily
+We will use OpenAI's API with [GPT-3](https://openai.com/blog/gpt-3-apps). This tutorial can easily
 be adapted to other LLMs.
 
 
@@ -48,13 +48,13 @@ conversation = {
 current_user_message = ""
 ```
 
-- *context* is the initial context for the conversation, the LLM will use this to understand what behavior is expected from it.
-- *conversation* is a dictionary that will store the conversation history to be displayed
+- *context* is the initial context for the conversation; the LLM will use this to understand what behavior is expected from it.
+- *conversation* is a dictionary that stores the conversation history to be displayed
 - *current_user_message* is the current message that the user is typing
 
 # Step 4: Create a function to generate responses
 
-**This step is the one that needs to be adapted if you want to
+**This step must be adapted if you want to
 use a different LLM.**
 
 Initialize the OpenAI client with your API key. You can find
@@ -64,8 +64,8 @@ your API key [here](https://platform.openai.com/api-keys).
 client = openai.Client(api_key="ENTER_YOUR_API_KEY_HERE")
 ```
 
-Create a function that takes as input a string *prompt* which
-is the user message and returns a string which is the response from the LLM.
+Create a function that takes as input a string *prompt*, which
+is the user message and returns a string, which is the response from the LLM.
 
 ```python
 def request(state: State, prompt: str) -> str:
@@ -94,9 +94,9 @@ def request(state: State, prompt: str) -> str:
 # Step 5: Create a function to add the new messages to the conversation
 
 Create a function that gets triggered when the user sends a
-message. This function will add the user's message to the context,
-send it to the API, get the response, add the response to the
-context and to the displayed conversation.
+message. This function adds the user's message to the context,
+sends it to the API, gets the response, and adds the response to the
+context and the displayed conversation.
 
 ```python
 def send_message(state: State) -> None:
@@ -138,14 +138,14 @@ page = """
 
 # Step 7: Run the application
 
-Finally we run the application:
+Finally, we run the application:
 
 ```python
 if __name__ == "__main__":
-    Gui(page).run(dark_mode=True, title="Taipy Chat")
+    Gui(page).run(title="Taipy Chat")
 ```
 
-And here is the result:
+Here is the result:
 
 <p align="center">
   <img src="chatbot_first_result.png" alt="Render of the app" width="80%"/>
@@ -153,10 +153,10 @@ And here is the result:
 
 # Step 8: Styling
 
-The app's style is Taipy's default Stylekit. We are going to
+The application's style is Taipy's default Stylekit. We are going to
 make some changes so that it looks more like a chat app.
 
-First in a `main.css` file, create styles to display user and
+First, in a `main.css` file, create styles to display the user and
 AI messages differently:
 
 ```css
@@ -190,8 +190,8 @@ AI messages differently:
 }
 ```
 
-We now need to tell Taipy to apply these styles to the rows in
-the table. We'll first create a function that will return the
+We now need to get Taipy to apply these styles to the rows in
+the table. We'll first create a function that returns the
 correct class name for each row:
 
 ```python
@@ -230,15 +230,15 @@ And voilà:
 # Step 9: More features
 
 We can add notifications, a sidebar with a button to clear the conversation
-and a history of previous conversations. You can find the full code
+and a history of previous discussions. You can find the complete code
 in the [GitHub repository](https://github.com/Avaiga/demo-llm-chat)
 
 # Step 10: Deploying the application to Taipy Cloud
 
-We are now going to deploy the application to Taipy Cloud so it is
+We are now going to deploy the application to Taipy Cloud, so it is
 accessible from anyone with a link.
 
-Firstly we need to store the API key in an environment variable.
+Firstly, we need to store the API key in an environment variable.
 Replace the line that defines *client* in [Step 5](#step-5-create-a-function-to-generate-responses) with:
 
 ```python
