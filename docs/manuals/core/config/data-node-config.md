@@ -31,7 +31,8 @@ The attributes available on data nodes are:
     The possible values are ["pickle"](#pickle) (**the default value**), ["csv"](#csv),
     ["excel"](#excel), ["json"](#json), ["mongo_collection"](#mongo-collection),
     ["parquet"](#parquet), ["sql"](#sql), ["sql_table"](#sql_table),
-    ["in_memory"](#in-memory), or ["generic"](#generic).<br/>
+    ["in_memory"](#in-memory), ["generic"](#generic) or
+    ["Amazon Web Service S3 Object"](#Amazon Web Service S3 Object).<br/>
     As explained in the following subsections, depending on the *storage_type*, other
     configuration attributes must be provided in the *properties* parameter.
 - Any other custom attribute can be provided through the parameter _**properties**_,
@@ -860,7 +861,7 @@ In this example, we configure an *s3_object* data node with the id "my_s3_objec"
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data_node_cfg/data-node-config_mongo-complete.py"
+include-markdown "./code_example/data_node_cfg/data-node-config-aws-s3.py"
 comments=false
 %}
 ```
