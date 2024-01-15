@@ -8,7 +8,7 @@ In this tutorial we will create a simple chatbot website using Taipy.
 </p>
 
 
-Here we will use OpenAI's API with GPT-3. This tutorial can easily
+Here we will use OpenAI's API with [GPT-3](https://openai.com/blog/gpt-3-apps). This tutorial can easily
 be adapted to other LLMs.
 
 
@@ -73,7 +73,7 @@ def request(state: State, prompt: str) -> str:
     Send a prompt to the GPT-3 API and return the response.
 
     Args:
-        - state: The current state of the app.
+        - state: The current state.
         - prompt: The prompt to send to the API.
 
     Returns:
@@ -104,7 +104,7 @@ def send_message(state: State) -> None:
     Send the user's message to the API and update the conversation.
 
     Args:
-        - state: The current state of the app.
+        - state: The current state.
     """
     # Add the user's message to the context
     state.context += f"Human: \n {state.current_user_message}\n\n AI:"
@@ -229,14 +229,13 @@ And voilà:
 
 # Step 9: More features
 
-I have added notifications, a sidebar with a button to clear the conversation
-and a history of previous conversations. I won't go into the
-details of how to do this here, but you can find the full code
+We can add notifications, a sidebar with a button to clear the conversation
+and a history of previous conversations. You can find the full code
 in the [GitHub repository](https://github.com/Avaiga/demo-llm-chat)
 
-# Step 10: Deploying the app to Taipy Cloud
+# Step 10: Deploying the application to Taipy Cloud
 
-We are now going to deploy the app to Taipy Cloud so it is
+We are now going to deploy the application to Taipy Cloud so it is
 accessible from anyone with a link.
 
 Firstly we need to store the API key in an environment variable.
