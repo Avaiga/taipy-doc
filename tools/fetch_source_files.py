@@ -146,6 +146,8 @@ pipfile_packages = {}
 PIPFILE_PACKAGE_RE = re.compile(r"(.*?)\s?=\s?(.*)")
 
 
+frontend_dir = os.path.join(ROOT_DIR, f"taipy-fe")
+
 # Fetch files
 def move_files(repo: str, src_path: str):
     # Read Pipfile dependency packages
@@ -249,6 +251,12 @@ def move_files(repo: str, src_path: str):
             shutil.rmtree(tmp_dir)
             """
 
+
+frontend_dir = os.path.join(ROOT_DIR, f"taipy-fe")
+if os.path.isdir(os.path.join(frontend_dir, "node_modules")):
+    shutil.move(os.path.join(frontend_dir, "node_modules"), os.path.join(ROOT_DIR, f"fe_node_modules"))
+if os.path.isdir(os.path.join(frontend_dir)):
+    shutil.rmtree(frontend_dir)
 
 for repo in repo_defs.keys():
     if repo_defs[repo].get("skip", False):

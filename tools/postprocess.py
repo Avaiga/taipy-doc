@@ -99,11 +99,12 @@ def on_post_build(env):
     site_dir = env.conf["site_dir"]
     xrefs = {}
     multi_xrefs = {}
-    if os.path.exists(site_dir + "/manuals/xrefs"):
-        with open(site_dir + "/manuals/xrefs") as xrefs_file:
+    xrefs_path = "manuals/xrefs"
+    if os.path.exists(f"{site_dir}/{xrefs_path}"):
+        with open(f"{site_dir}/{xrefs_path}") as xrefs_file:
             xrefs = json.load(xrefs_file)
-    if xrefs is None:
-        log.error(f"Could not read xrefs in 'manuals/xrefs'")
+    if not xrefs:
+        log.error(f"Could not read any xrefs from '{xrefs_path}'")
     x_packages = set()
     for xref, xref_desc in xrefs.items():
         if isinstance(xref_desc, list):
@@ -130,7 +131,7 @@ def on_post_build(env):
                     try:
                         html_content = html_file.read()
                     except Exception as e:
-                        print(f"Couldn't read HTML file {filename}")
+                        log.error(f"Couldn't read HTML file {filename}")
                         raise e
                     # Rebuild coherent links from TOC to sub-pages
                     ids = find_dummy_h3_entries(html_content)
@@ -178,7 +179,7 @@ def on_post_build(env):
                         if n_changes != 0:
                             file_was_changed = True
                         GS_IPYNB = re.compile(r"(<a\s*href=\"([^\"]*?)\.ipynb\")\s*>", re.M | re.S)
-                        html_content, n_changes = GS_IPYNB.subn(f"\\1 download>", html_content)
+                        html_content, n_changes = GS_IPYNB.subn(r"\1 download>", html_content)
                         if n_changes != 0:
                             file_was_changed = True
                     # Add external link icons (and open in new tab)
@@ -223,7 +224,7 @@ def on_post_build(env):
                                 (dir, file) = os.path.split(filename)
                                 (dir, dir1) = os.path.split(dir)
                                 (dir, dir2) = os.path.split(dir)
-                                message = f"Unresolve crossref '{re.sub(r'</?code>', '`', xref[0])}' found in "
+                                message = f"Unresolved crossref '{re.sub(r'</?code>', '`', xref[0])}' found in "
                                 if file == "index.html":
                                     (dir, dir3) = os.path.split(dir)
                                     log.error(f"{message}{dir3}/{dir2}/{dir1}.md")
@@ -240,12 +241,14 @@ def on_post_build(env):
                                 new_content += xref[4]
                             elif xref[2] or xref[3]:
                                 new_content += "<code>"
-                                if xref[2]: new_content += xref[2]
-                                if xref[3]: new_content += xref[3]
+                                if xref[2]:
+                                    new_content += xref[2]
+                                if xref[3]:
+                                    new_content += xref[3]
                                 new_content += "</code>"
                             else:
-                                new_content += f"<b>NO CONTENT</b>"
-                            new_content += f"</a>"
+                                new_content += "<b>NO CONTENT</b>"
+                            new_content += "</a>"
                         last_location = xref.end()
                     if last_location:
                         file_was_changed = True
@@ -269,7 +272,7 @@ def on_post_build(env):
                             (dir, dir1) = os.path.split(dir)
                             (dir, dir2) = os.path.split(dir)
                             bad_xref = xref.group(0)
-                            message = f"Unresolve crossref '{bad_xref}' found in "
+                            message = f"Unresolved crossref '{bad_xref}' found in "
                             if file == "index.html":
                                 (dir, dir3) = os.path.split(dir)
                                 log.error(f"{message}{dir3}/{dir2}/{dir1}.md")
@@ -399,7 +402,7 @@ def on_post_build(env):
                         if article_match := ARTICLE_RE.search(html_content):
                             repl = "\n<ul class=\"tp-bc\">"
                             if fn_match[2] == "cor":
-                                repl += f"<li><a href=\"../../viselements\"><b>Visual Elements</b></a></li>"
+                                repl += "<li><a href=\"../../viselements\"><b>Visual Elements</b></a></li>"
                                 repl += "<li><a href=\"../../viselements/controls/#scenario-management-controls\"><b>Scenario management controls</b></a></li>"
                             else:
                                 chart_part = "../" if element_category == "chart" else ""
@@ -418,7 +421,6 @@ def on_post_build(env):
                     # Processing for the page builder API:
                     fn_match = re.search(r"(/|\\)reference\1taipy\.gui\.builder.(.*?)\1index.html", filename)
                     if fn_match is not None:
-                        element_name = fn_match[2]
                         # Default value of properties appear as "dynamic(type" as "indexed(type"
                         prop_re = re.compile(r"<tr>\s*<td><code>.*?</code></td>"
                                            + r"\s*<td>\s*<code>(.*?)</code>\s*</td>\s*<td>",
@@ -444,22 +446,21 @@ def on_post_build(env):
                             file_was_changed = True
                             html_content = new_content + html_content[last_location:]
                     # Handle title and header in packages documentation file
-                    FONT_SIZE_CHANGE=''
                     def code(s: str) -> str:
                         return f"<code><font size='+2'>{s}</font></code>"
 
                     fn_match = re.search(r"manuals(/|\\)reference\1pkg_taipy\1index.html", filename)
                     if fn_match is not None: # The root 'taipy' package
-                        html_content = re.sub(f"(<h1>)taipy(</h1>)", f"\\1{code('taipy')}\\2", html_content)
+                        html_content = re.sub(r"(<h1>)taipy(</h1>)", f"\\1{code('taipy')}\\2", html_content)
                         file_was_changed = True
                     fn_match = re.search(r"manuals(/|\\)reference\1pkg_taipy(\..*)\1index.html", filename)
                     if fn_match is not None:
                         pkg = fn_match[2]
                         sub_match = re.search(r"(\.\w+)(\..*)", pkg)
                         if sub_match is None:
-                            html_content = re.sub(f"(<title>)Index\\s", f"\\1taipy{pkg} ", html_content)
-                            html_content = re.sub(f"(<h1>)Index(</h1>)", f"\\1{code('taipy'+pkg)}\\2", html_content)
-                            html_content = re.sub(f"(<h1>){pkg}(</h1>)", f"\\1{code('taipy'+pkg)}\\2", html_content)
+                            html_content = re.sub(r"(<title>)Index\s", f"\\1taipy{pkg} ", html_content)
+                            html_content = re.sub(r"(<h1>)Index(</h1>)", f"\\1{code('taipy'+pkg)}\\2", html_content)
+                            html_content = re.sub(r"(<h1>){pkg}(</h1>)", f"\\1{code('taipy'+pkg)}\\2", html_content)
                         else:
                             html_content = re.sub(f"(<title>)({sub_match[2]})\\s", f"\\1taipy{sub_match[1]}\\2 ", html_content)
                             html_content = re.sub(f"(<h1>)(?:<code>){sub_match[2]}(?:</code>)(</h1>)", f"\\1{code('taipy'+pkg)}\\2", html_content)
@@ -475,7 +476,7 @@ def on_post_build(env):
                     try:
                         content = ipynb_file.read()
                     except Exception as e:
-                        print(f"Couldn't read Notebook file {filename}")
+                        log.error(f"Couldn't read Notebook file {filename}")
                         raise e
                     (new_content, n) = re.subn("(?<=https://docs.taipy.io/en/)latest", f"{env.conf['branch']}", content)
                     if n > 0:
@@ -499,11 +500,16 @@ def process_data_source_attr(html: str, env):
         ref = m.group(3)
         repo_m = re.search(r"^([\w\d]+):", ref)
         if repo_m:
-            ref = ("https://github.com/Avaiga/taipy-" +
-                   f"{repo_m.group(0)[:-1]}/blob/{env.conf['branch']}/{ref[repo_m.end():]}")
+            target = ref[repo_m.end():]
+            if target.startswith("doc/"):
+                target = f"{repo_m.group(0)[:-1]}/{target[4:]}"
+                ref = f"https://github.com/Avaiga/taipy/blob/{env.conf['branch']}/doc/{target}"
+            else:
+                logging.warning("Suspicious data-source attribute: {m.group(0)}")
+                ref = f"https://github.com/Avaiga/taipy-{repo_m.group(0)[:-1]}/blob/{env.conf['branch']}/{target}"
         new_content += (html[last_location:m.start()]
                         + f"{m.group(1)}{m.group(4)}"
-                        + f"\n<small>You can download the entire source code used in this "
+                        + "\n<small>You can download the entire source code used in this "
                         + f"section from the <a href=\"{ref}\">GitHub repository</a>.</small>"
                         )
         last_location = m.end()

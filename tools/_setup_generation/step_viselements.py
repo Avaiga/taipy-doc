@@ -15,8 +15,7 @@
 import json
 import os
 import re
-import sys
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 
 from .setup import Setup, SetupStep
 from io import StringIO
@@ -78,8 +77,8 @@ class VisElementsStep(SetupStep):
                         )
                     element_desc = element[1]
                     if (
-                        not __class__.PROPERTIES in element_desc
-                        and not __class__.INHERITS in element_desc
+                        __class__.PROPERTIES not in element_desc
+                        and __class__.INHERITS not in element_desc
                     ):
                         raise ValueError(
                             f"FATAL - No properties in element type '{element_type}' in {elements_json_path}"
@@ -113,7 +112,7 @@ class VisElementsStep(SetupStep):
                             element_property_names.index(property_name)
                         ]
                         for n in ["type", "default_value", "doc"]:
-                            if not n in element_property and n in property:
+                            if n not in element_property and n in property:
                                 element_property[n] = property[n]
                     else:
                         element_property_names.append(property_name)
@@ -165,11 +164,11 @@ class VisElementsStep(SetupStep):
             if category == "undocumented":
                 continue
             element_desc = self.elements[element_type]
-            if not __class__.DEFAULT_PROPERTY in element_desc:
+            if __class__.DEFAULT_PROPERTY not in element_desc:
                 raise ValueError(
                     f"FATAL - No default property for element type '{element_type}'"
                 )
-            if not __class__.PROPERTIES in element_desc:
+            if __class__.PROPERTIES not in element_desc:
                 raise ValueError(
                     f"FATAL - No properties for element type '{element_type}'"
                 )
@@ -181,7 +180,7 @@ class VisElementsStep(SetupStep):
             # Check completeness
             for property in element_desc[__class__.PROPERTIES]:
                 for n in ["type", "doc"]:
-                    if not n in property:
+                    if n not in property:
                         raise ValueError(
                             f"FATAL - No value for '{n}' in the '{property[__class__.NAME]}' properties of element type '{element_type}' in {element_desc['source']}"
                         )
@@ -351,7 +350,7 @@ class VisElementsStep(SetupStep):
         def generate(self, category, base_class: str) -> str:
 
             element_types = self.categories[category]
-            def build_doc(property, desc, indent: int):
+            def build_doc(property: str, desc, indent: int):
                 type = desc['type']
                 dynamic = ""
                 dynamic_re = re.match(r"^dynamic\(\s*(.*)\s*\)$", type)
@@ -360,7 +359,18 @@ class VisElementsStep(SetupStep):
                     dynamic = " (<i>dynamic</i>)"
                 doc = ""
                 if "doc" in desc:
-                    doc = str(desc["doc"]).replace("\n", f'\n{(indent+4)*" "}').replace("<br/>", f'<br/>\n{(indent+4)*" "}')
+                    doc = str(desc["doc"])
+                    # Update internal links
+                    new_doc = ""
+                    last_loc = 0
+                    INNER_HREF = re.compile(r"(?<=<a\shref=\")(#|\.)")
+                    for a in INNER_HREF.finditer(doc):
+                        new_doc += doc[last_loc:a.start()]
+                        new_doc += f"../../gui/viselements/{element_type}/{a.group(0)}"
+                        last_loc = a.end()
+                    if last_loc:
+                        doc = new_doc + doc[last_loc:]
+                    doc = doc.replace("\n", f'\n{(indent+4)*" "}').replace("<br/>", f'<br/>\n{(indent+4)*" "}')
                 default_value = f'{desc["default_value"]}' if "default_value" in desc else ""
                 if m := re.match(r"^(<i>.*?</i>)$", default_value):
                     default_value = f"\"{m[1]}\""
@@ -370,8 +380,8 @@ class VisElementsStep(SetupStep):
                     default_value = f"\"{default_value}\""
                 if default_value:
                     try:
-                        x = eval(default_value)
-                    except:
+                        _ = eval(default_value)
+                    except Exception:
                         raise SyntaxError(f"Default value for property '{property}' of element '{element_type}' is not a valid Python expression ({default_value})")
                 return (f"{property}={default_value if default_value else 'None'}, ", 
                         f"{indent*' '}{desc['name']} ({type}){dynamic}: {doc}\n")
@@ -408,7 +418,7 @@ class [element_type]({base_class}):
                 arguments_doc = doc[1]
                 for property in properties:
                     property_name = property["name"]
-                    if property_name != desc["default_property"] and not "[" in property_name:
+                    if property_name != desc["default_property"] and "[" not in property_name:
                         doc = build_doc(property_name, property, doc_indent)
                         arguments += doc[0]
                         arguments_doc += doc[1]
@@ -425,13 +435,12 @@ class [element_type]({base_class}):
                                      .replace("[short_doc]", short_doc)
                                      .replace("[control_or_block]", "control" if category=="controls" else "block")
                                      .replace(" "*doc_indent+"[arguments_doc]\n", arguments_doc))
-            s = buffer.getvalue()
             return buffer.getvalue()
 
         with open(py_file, "wt") as file:
             file.write(py_content)
             file.write(f"\n\n{separator}\n\n")
-            file.write(f"from ._element import _Block, _Control\n\n")
+            file.write("from ._element import _Block, _Control\n\n")
             file.write(generate(self, "controls", "_Control"))
             file.write(generate(self, "blocks",   "_Block"))
 
@@ -471,9 +480,101 @@ class [element_type]({base_class}):
         )
         if not match:
             raise ValueError(
-                f"Couldn't locate first header1 in documentation for element 'chart'"
+                "Couldn't locate first header1 in documentation for element 'chart'"
             )
         return (
             match.group(1) + chart_gallery + before[match.end() :],
             after + chart_sections,
         )
+
+    
+    def process_element_md_file(self, type: str, documentation: str) -> str:
+        DEF_RE = re.compile(r"^!!!\s+taipy-element\s*?\n((?:\s+\w+(?:\[.*?\])?(?::\w+)?\s*=\s*.*\n)*)", re.M)
+        PROP_RE = re.compile(r"(\w+(?:\[.*?\])?)(?::(\w+))?\s*=\s*(.*)\n", re.M)
+        new_documentation = ""
+        last_location = 0
+        for definition in DEF_RE.finditer(documentation):
+            new_documentation += documentation[last_location:definition.start()]
+            default_property = ""
+            properties = []
+            for p in PROP_RE.finditer(definition.group(1)):
+                if p[1] == "default":
+                    default_property = p[3]
+                else:
+                    properties.append((p[1], p[3], p[2] if p[2] else "-"))
+            new_documentation += "!!! example \"Definition\"\n\n"
+            # Markdown format
+            def md_property_value(property: str, value: str, type: str) -> str:
+                if type.startswith("b"):
+                    if value.lower() == "true":
+                        return property
+                    if value.lower() != "false":
+                        raise ValueError(
+                            f"Invalid value for Boolean property '{property}' in '{type}.md_template'"
+                        )
+                    if type.endswith("dont"):
+                        return f"don't {property}"
+                    return f"not {property}"
+                return f"{property}={value}"
+            new_documentation += "    === \"Markdown\"\n\n"
+            new_documentation += "        ```\n"
+            new_documentation += "        <|"
+            if default_property:
+                new_documentation += f"{default_property}|"
+            new_documentation += f"{type}|"
+            for n, v, t in properties:
+                new_documentation += f"{md_property_value(n, v, t)}|"
+            new_documentation += ">\n"
+            new_documentation += "        ```\n\n"
+            # HTML format
+
+            def html_value(property: str, value: str, type: str) -> str:
+                if type.startswith("b"):
+                    if value.lower() == "true":
+                        return f"{property}"
+                    else:
+                        value = value.lower()
+                value = value.replace("\"", "'")
+                return f"{property}=\"{value}\""
+            new_documentation += "    === \"HTML\"\n\n"
+            new_documentation += "        ```html\n"
+            new_documentation += f"        <taipy:{type}"
+            html_1 = ""
+            html_2 = ""
+            if properties:
+                for n, v, t in properties:
+                    html_1 += f" {html_value(n, v, t)}"
+            if default_property:
+                html_1 += ">"
+                html_2 = f"{default_property}</taipy:{type}>"
+            else:
+                html_1 += "/>"
+            new_documentation += f"{html_1}"
+            if len(html_1) > 120 and html_2:
+                new_documentation += "\n        "
+            new_documentation += f"{html_2}\n        ```\n\n"
+            # Page Builder syntax
+            new_documentation += "    === \"Python\"\n\n"
+            new_documentation += "        ```python\n"
+            new_documentation += "        import taipy.gui.builder as tgb\n        ...\n"
+            new_documentation += f"        tgb.{type}("
+            def builder_value(value: str, type: str) -> str:
+                if type == "f":
+                    return value
+                if type.startswith("b"):
+                    return value.title()
+                value = value.replace("\"", "'")
+                return f"\"{value}\""
+            prefix = ""
+            if default_property:
+                new_documentation += f"\"{default_property}\""
+                prefix = ", "
+            for n, v, t in properties:
+                new_documentation += f"{prefix}{n}={builder_value(v, t)}"
+                prefix = ", "
+                if "[" in n:
+                    print(f"WARNING - Property '{n}' in examples for {type}")
+            new_documentation += ")\n"
+            new_documentation += "        ```\n"
+            last_location = definition.end()
+        return new_documentation + documentation[last_location:] if documentation else documentation
