@@ -240,4 +240,18 @@ Tips and Tricks!
       </div> 
     </a>
   </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario task datanode job configuration">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="big_data_models">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="big_data_models/images/big_data_models.gif">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Big data models vs. Computer memory </h4>
+        <span class="tp-tag">Front-end </span>
+        <p> A guide to building models that are bigger than your computer memory.
+        </p>
+      </div> 
+    </a>
+  </li>
 </ul>
