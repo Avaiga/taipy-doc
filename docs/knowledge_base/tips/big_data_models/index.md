@@ -1,5 +1,3 @@
-
-
 A guide to building models that are bigger than your computer memory.
 
 Data pipelines are the backbone of any data-intensive project. As datasets grow beyond 
