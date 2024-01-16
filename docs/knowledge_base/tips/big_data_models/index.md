@@ -10,7 +10,7 @@ enables effortless management of large datasets
 This article focuses on the seamless integration of Dask (for handling out-of-core data)
  with Taipy, a Python library used for pipeline orchestration and scenario management.
 
-## 1. Sample Application
+# 1. Sample Application
 Integrating Dask and Taipy is demonstrated best with an example. In this article, we'll 
 consider a Taipy data workflow with four tasks:
 
@@ -43,7 +43,7 @@ config.toml  # (Optional) Taipy configuration in TOML made using Taipy Studio
 ```
 <hr/>
 
-## 2. Introducing Taipy — A Comprehensive Solution
+# 2. Introducing Taipy — A Comprehensive Solution
 
 Taipy is more than just another orchestration tool. Specially designed for ML engineers, 
 data scientists, and Python developers, Taipy brings several essential and straightforward features.
@@ -80,7 +80,7 @@ data sources that can be used interchangeably, resulting in a cleaner, more main
 
 <hr/>
 
-## 3. Introducing Dask
+# 3. Introducing Dask
 
 Dask is a popular Python package for distributed computing. The Dask API implements the 
 familiar Pandas, Numpy, and Scikit-learn APIs — which makes learning and using Dask much 
@@ -92,7 +92,7 @@ by the Dask team.
 
 <hr/>
 
-## 4. Application: Customer Analysis (algos/algo.py)
+# 4. Application: Customer Analysis (algos/algo.py)
 
 ![Taipy Graph](images/graph.png){width=80% style="margin:auto;display:block"}
 
@@ -235,7 +235,7 @@ def high_value_cust_summary_statistics(df: pd.DataFrame, segment_analysis: pd.Da
     return result_df
 ```
     
-### Task 1 — Data Preprocessing and Customer Scoring (*preprocess_and_score()*)
+## Task 1 — Data Preprocessing and Customer Scoring (*preprocess_and_score()*)
 
 This is the first step in your pipeline and perhaps the most crucial. It reads a large 
 dataset using **Dask**, designed for larger-than-memory computation. It then calculates a 
@@ -245,21 +245,21 @@ dataset using **Dask**, designed for larger-than-memory computation. It then cal
 After reading and processing the dataset with Dask, this task will output a Pandas 
 DataFrame for further use in the remaining three tasks.
 
-### Task 2 — Feature Engineering and Segmentation (*featurization_and_segmentation()*)
+## Task 2 — Feature Engineering and Segmentation (*featurization_and_segmentation()*)
 
 This task takes the scored DataFrame and adds new features, such as high spending indicators It also segments the customers based on their scores.
 
-### Task 3 — Segment Analysis (*segment_analysis()*)
+## Task 3 — Segment Analysis (*segment_analysis()*)
 
 This task takes the segmented DataFrame and performs a group-wise analysis based on the 
 customer segments to calculate various metrics.
 
-### Task 4 — Summary Statistics for Customers (*high_value_cust_summary_statistics()*)
+## Task 4 — Summary Statistics for Customers (*high_value_cust_summary_statistics()*)
 
 This task performs an in-depth analysis of the high-value customer segment and returns 
 summary statistics.
 
-## 5. Modeling the Workflow in Taipy (config.py)
+# 5. Modeling the Workflow in Taipy (config.py)
 
 ![Taipy DAG](images/dag.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
@@ -356,7 +356,7 @@ You can read more about configuring Scenarios, Tasks, and Data Nodes in the
 [documentation here](../../../manuals/core/config/index.md).
 
 
-## 6. Scenario Creation and Execution
+# 6. Scenario Creation and Execution
 
 Executing a Taipy scenario involves:
 
@@ -381,12 +381,12 @@ if __name__ == "__main__":
 ```
 
 
-### Skip unnecessary task executions
+## Skip unnecessary task executions
 
 One of Taipy's most practical features is its ability to skip a task execution if its output is 
 already computed. Let's explore this with some scenarios:
 
-#### Changing Payment Threshold
+### Changing Payment Threshold
 
 ```python
 # Changing Payment Threshold to 1600
@@ -400,7 +400,7 @@ scenario_1.submit()
 affects Task 2. In this case, we see more than a 50% reduction in execution time by running 
 your pipeline with Taipy.
 
-#### Changing Metric for Segment Analysis
+### Changing Metric for Segment Analysis
 
 ```python
 # Changing metric to median
@@ -414,7 +414,7 @@ scenario_1.submit()
 and Task 2.
 
 
-#### Changing Summary Statistic Type
+### Changing Summary Statistic Type
 ```python
 # Changing summary_statistic_type to max
 scenario_1.summary_statistic_type.write("max")
@@ -432,7 +432,7 @@ incredibly useful when dealing with large datasets.
 <hr/>
 
 
-## 7. Taipy Studio
+# 7. Taipy Studio
 
 If you have VS Code, you may use [Taipy Studio](../../../manuals/studio/config/index.md) 
 to build the Taipy *config.toml* configuration file in place of defining the 
@@ -451,7 +451,7 @@ extension using the Extension Marketplace.
 
 <hr/>
 
-### Creating the Configuration
+## Creating the Configuration
 
 **1 - Create a Config File**: In VS Code, navigate to Taipy Studio and initiate a new TOML 
 configuration file by clicking the + button on the parameters window.
@@ -475,7 +475,7 @@ The third item is for adding a Scenario. Taipy allows you to have more than one 
 in a configuration.
 <hr/>
 
-### Data Nodes
+## Data Nodes
 
 1. **Input Data Node:** Create a Data Node named *path_to_data*, then navigate to the 
 Details tab, add a new property *default_data*, and paste "*data/customers_data.csv*" 
@@ -499,7 +499,7 @@ Data Nodes with the *default_data* property set to the following:
 
 <hr/>
 
-### Tasks
+## Tasks
 
 Clicking on the Add Task button, you can configure a new Task. Add four Tasks, then **link each Task 
 to the appropriate function** under the Details tab. Taipy Studio will scan through your project 
@@ -537,7 +537,7 @@ Inputs include *segment_result*,
 
 ![High Value](images/high_value.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-## Conclusion
+# Conclusion
 
 Taipy offers an **intelligent way to build and manage data pipelines**. The skippable 
 feature, in particular, makes it a powerful tool for optimizing computational resources 
