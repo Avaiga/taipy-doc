@@ -245,7 +245,8 @@ DataFrame for further use in the remaining three tasks.
 
 ## Task 2 — Feature Engineering and Segmentation (*featurization_and_segmentation()*)
 
-This task takes the scored DataFrame and adds new features, such as high spending indicators It also segments the customers based on their scores.
+This task takes the scored DataFrame and adds new features, such as high spending indicators It
+also segments the customers based on their scores.
 
 ## Task 3 — Segment Analysis (*segment_analysis()*)
 
