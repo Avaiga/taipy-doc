@@ -125,5 +125,4 @@ docs/manuals/reference_rest/*.md
 !docs/manuals/reference_rest/index.md
 docs/manuals/reference_guiext/
 docs/contributing/contributors.md
-node_modules/
-
+fe_node_modules/
