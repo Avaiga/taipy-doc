@@ -1,5 +1,13 @@
+---
+title: Real-time Face Recognition
+category: demos
+type: code
+data-keywords: gui ai
+short-description: Explore real-time face detection and recognition demo using a Taipy UI with OpenCV.
+img: images/face-recognition.jpg
+---
 This demo seamlessly integrates face recognition into our platform,
-offering a user-friendly real-time face detection experience using 
+offering a user-friendly real-time face detection experience using
 your webcam.Just as a reminder, face recognition technology enables
 computers to identify human faces in images and videos.
 
@@ -8,18 +16,18 @@ computers to identify human faces in images and videos.
 
 # Understanding the Application
 
-This one page demo provides real-time face detection capabilities 
-thanks to the robust [OpenCV library](https://opencv.org/). 
+This one page demo provides real-time face detection capabilities
+thanks to the robust [OpenCV library](https://opencv.org/).
 
 
 ## How to use the Application
 
-1. While opening the application, you'll see yourself across your webcam. A red square 
+1. While opening the application, you'll see yourself across your webcam. A red square
    surrounding your face with someone else's name.
-   
-2. Train the model to recognize you by clicking the "Capture" button and giving your name 
+
+2. Train the model to recognize you by clicking the "Capture" button and giving your name
    several times.
-   
+
 3. Click now the "Re-train" button. Your name should now appear. The model recognizes you now.
 
 ![Face Recognition](images/face-recognition.jpg){width=80%}

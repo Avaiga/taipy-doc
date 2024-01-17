@@ -83,7 +83,7 @@ class Setup(ABC):
 
     # Move the top package directory to 'tools' when generating the Reference
     # Manual, or when using Taipy classes.
-    # MkDocs needs it at the root level so we will have to move it back.
+    # MkDocs needs it at the root level, so we will have to move it back.
     def move_package_to_tools(self, package: str) -> None:
         shutil.move(f"{self.root_dir}/{package}", f"{self.tools_dir}/{package}")
 
@@ -118,6 +118,7 @@ class SetupStep(ABC):
 
 def run_setup(root_dir: str, steps: List[SetupStep] = None):
     if not steps:
+        from .step_knowledge_base import KnowledgeBaseStep
         from .step_viselements import VisElementsStep
         from .step_refman import RefManStep
         from .step_rest_refman import RestRefManStep
@@ -125,11 +126,12 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
         from .step_contributors import ContributorsStep
 
         steps = [
+            KnowledgeBaseStep(),
             VisElementsStep(),
             RefManStep(),
             RestRefManStep(),
             GuiExtRefManStep(),
-            ContributorsStep()
+            ContributorsStep(),
         ]
     setup = Setup(root_dir, steps)
     setup.setup()

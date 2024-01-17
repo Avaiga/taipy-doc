@@ -1,12 +1,19 @@
+---
+title: Scenario management basic concepts
+category: tutorials
+type: video
+data-keywords: scenario datanode task studio
+short-description: Discover Taipy Studio, a graphical interface to configure your scenarios.
+---
 # Manage Data Pipelines with Scenarios
 
-Build, control, and run your data pipelines effortlessly with Taipy. Taipy simplifies the 
-process of designing pipelines, handling data, and coordinating data movement through a feature 
+Build, control, and run your data pipelines effortlessly with Taipy. Taipy simplifies the
+process of designing pipelines, handling data, and coordinating data movement through a feature
 known as scenario management.
 
-In Taipy, a Scenario is specifically crafted for modeling pipelines and data flows. It connects 
-your data nodes (representing your datasets) with tasks (which are the Python functions you want 
-to execute). Configuring these scenarios becomes a breeze when you use the user-friendly Taipy 
+In Taipy, a Scenario is specifically crafted for modeling pipelines and data flows. It connects
+your data nodes (representing your datasets) with tasks (which are the Python functions you want
+to execute). Configuring these scenarios becomes a breeze when you use the user-friendly Taipy
 Studio interface.
 
 To learn more about managing data with scenarios, watch the tutorial video:

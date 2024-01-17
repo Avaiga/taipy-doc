@@ -1,5 +1,13 @@
-This demo visualizes a Covid dataset for the year 2020. 
-Pages show different graphs and information on Covid. 
+---
+title: Covid Dashboard
+category: demos
+type: code
+data-keywords: gui ai dashboard multi-page maps scenario datanode
+short-description: Forecast COVID-19 data for various countries, interact with maps, and gain insights into the global pandemic impact.
+img: images/covid-dashboard-country.png
+---
+This demo visualizes a Covid dataset for the year 2020.
+Pages show different graphs and information on Covid.
 A Prediction page is also present to predict the number of casualties.
 
 
@@ -25,10 +33,10 @@ Visual representation of COVID-19 impact through dynamic zoomable color-coded ma
 
 
 ## Page 3: Predictions
-Generate COVID-19 predictions by creating scenarios for different 
-Prediction dates and different countries.. This generates 2 different 
-predictions (prediction_x in orange and prediction_y in green) using respectively 
-an ARIMA model and a Linear Regression model. 
+Generate COVID-19 predictions by creating scenarios for different
+Prediction dates and different countries.. This generates 2 different
+predictions (prediction_x in orange and prediction_y in green) using respectively
+an ARIMA model and a Linear Regression model.
 
 How to use it:
 
@@ -43,7 +51,7 @@ How to use it:
 
 
 ## Page 4: World
-Global COVID-19 statistics are summarized via line and pie charts. 
+Global COVID-19 statistics are summarized via line and pie charts.
 The Comparison of Covid countries' impact can be seen by changing the toggle between ‘Absolute’ and ‘Relative’.
 
 

@@ -1,5 +1,12 @@
-> You can download the code 
-<a href="/scenario_subscription.py" download>here</a>. 
+---
+title: Scenario Subscription
+category: tutorials
+type: code
+data-keywords: scenario subscription job gui notify
+short-description: Connect to your scenario executions to get the most recent updates.
+---
+> You can download the code
+<a href="/scenario_subscription.py" download>here</a>.
 
 # Subscribing to a scenario
 
@@ -57,11 +64,11 @@ Data node value: 52
 
 ## Real-time feedback on the GUI
 
-The `on_submission_change` property extends this functionality in a 
-GUI setting. It triggers a specific function upon each 
-submission status change, enabling real-time updates to the user interface. This 
-ensures that users are always informed of the current status, from SUBMITTED to 
-COMPLETED or CANCELED, enhancing user experience through immediate feedback and 
+The `on_submission_change` property extends this functionality in a
+GUI setting. It triggers a specific function upon each
+submission status change, enabling real-time updates to the user interface. This
+ensures that users are always informed of the current status, from SUBMITTED to
+COMPLETED or CANCELED, enhancing user experience through immediate feedback and
 interaction.
 
 ## Parameters of the Function
@@ -79,17 +86,17 @@ from taipy.gui import Gui, notify
 
 def on_submission_status_change(state, submittable, details):
     submission_status = details.get('submission_status')
-    
+
     if submission_status == 'COMPLETED':
         print(f"{submittable.name} has completed.")
         notify(state, 'success', 'Completed!')
         # Add additional actions here, like updating the GUI or logging the completion.
-    
+
     elif submission_status == 'FAILED':
         print(f"{submittable.name} has failed.")
         notify(state, 'error', 'Completed!')
         # Handle failure, like sending notifications or logging the error.
-    
+
     # Add more conditions for other statuses as needed.
 ```
 
@@ -169,17 +176,17 @@ from taipy.gui import Gui, notify
 
 def on_submission_status_change(state=None, submittable=None, details=None):
     submission_status = details.get('submission_status')
-    
+
     if submission_status == 'COMPLETED':
         print(f"{submittable.name} has completed.")
         notify(state, 'success', 'Completed!')
         # Add additional actions here, like updating the GUI or logging the completion.
-    
+
     elif submission_status == 'FAILED':
         print(f"{submittable.name} has failed.")
         notify(state, 'error', 'Completed!')
         # Handle failure, like sending notifications or logging the error.
-    
+
     # Add more conditions for other statuses as needed.
 
 
