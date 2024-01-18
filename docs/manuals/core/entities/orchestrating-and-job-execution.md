@@ -11,7 +11,7 @@ can run different Taipy services, please refer to the
 In this section, it is assumed that <a href="./code_example/my_config.py" download>`my_config.py`</a>
 module contains a Taipy configuration already implemented.
 
-To execute a scenario, you need to call the `taipy.submit()^` method. It returns a `Submission^` containing
+To execute a scenario, you need to call the `taipy.submit()^` function. It returns a `Submission^` object containing
 the information about the submission of the scenario such as the created `Job^`s representing a `Task^` in
 the submitted scenario:
 
