@@ -79,7 +79,7 @@ taipy waits until all the submitted jobs are finished, or the timeout expires (w
 first).
 
 It is also possible to submit a single sequence using the same `taipy.submit()^` function. It returns
-a `Submission^` containing the information about the submission of the sequence such as the created `Job^`s
+a `Submission^` object containing the information about the submission of the sequence such as the created `Job^`s
 representing a `Task^` in the submitted sequence:
 
 ```python linenums="1"
