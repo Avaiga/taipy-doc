@@ -18,10 +18,6 @@ This is the list of changes to Taipy releases as they were published.
     [Legacy Release Notes](relnotes-legacy.md) page.
 
 
-# Community edition: 3.1
-
-(Work in progress)
-
 ## New Features
 
 <h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
