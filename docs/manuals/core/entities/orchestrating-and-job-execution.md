@@ -170,7 +170,7 @@ Here is the list of the `Submission^`'s attributes:
 - `BLOCKED`: The submission has been blocked because it has been finished with a job being blocked.
 - `RUNNING`: The submission has its jobs currently being executed.
 - `CANCELED`: The submission has been submitted but its execution has been canceled.
-- `FAILED`: The submission has a job failed during its execution.
+- `FAILED`: The submission has a job that failed during its execution.
 - `COMPLETED`: The submission has successfully been executed.
 
 ## Get/Delete Submission
