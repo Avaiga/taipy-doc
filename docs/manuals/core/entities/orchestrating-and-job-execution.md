@@ -182,7 +182,7 @@ A `Submission^` object is created when a `Scenario^`, a `Sequence^` or a `Task^`
 
 A Submission can be deleted using the `taipy.delete()^` function.
 
-Deleting a Submission can raise an `SubmissionNotDeletedException^` if the `Status^` of the Submission is not `CANCELED`,
+Deleting a Submission can raise a `SubmissionNotDeletedException^` if the `Status^` of the Submission is not `CANCELED`,
 `COMPLETED`, `FAILED` or `UNDEFINED`.
 
 !!! example
