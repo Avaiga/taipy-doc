@@ -11,7 +11,9 @@ can run different Taipy services, please refer to the
 In this section, it is assumed that <a href="./code_example/my_config.py" download>`my_config.py`</a>
 module contains a Taipy configuration already implemented.
 
-To execute a scenario, you need to call the `taipy.submit()^` method. It returns a list of created `Job^`s:
+To execute a scenario, you need to call the `taipy.submit()^` method. It returns a `Submission^` containing
+the information about the submission of the scenario such as the created `Job^`s representing a `Task^` in
+the submitted scenario:
 
 ```python linenums="1"
 import taipy as tp
@@ -21,7 +23,7 @@ tp.Core().run()
 
 scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-jobs = tp.submit(scenario)
+submission = tp.submit(scenario)
 ```
 
 In line 6, we create a new scenario from a scenario configuration and submit it for execution (line 8).
@@ -34,11 +36,11 @@ after the Taipy Core service is started.
 import taipy as tp
 import my_config
 
+tp.Core().run()
+
 scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
 tp.submit(scenario)
-
-tp.Core().run()
 ```
 
 !!! note "Another syntax."
@@ -76,7 +78,9 @@ is no limit to the wait time. If _wait_ is True and _timeout_ is specified,
 taipy waits until all the submitted jobs are finished, or the timeout expires (which ever occurred
 first).
 
-It is also possible to submit a single sequence using the same `taipy.submit()^` method. It returns a list of created `Job^`s:
+It is also possible to submit a single sequence using the same `taipy.submit()^` method. It returns
+a `Submission^` containing the information about the submission of the sequence such as the created `Job^`s
+representing a `Task^` in the submitted sequence:
 
 ```python linenums="1"
 import taipy as tp
@@ -87,7 +91,7 @@ tp.Core().run()
 scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 sequence = scenario.sales_sequence
 
-jobs = tp.submit(sequence)
+submission = tp.submit(sequence)
 ```
 
 In line 5, we retrieve the sequence named `sales_sequence` from the created scenario. In line 7, we submit this
@@ -108,7 +112,8 @@ submitting a sequence, you can also use the two parameters _wait_ and _timeout_.
     sequence.submit()
     ```
 
-You can also submit a single task with the same `taipy.submit()^` method. It returns the created `Job^`:
+You can also submit a single task with the same `taipy.submit()^` method. It returns a `Submission^` containing
+the information about the submission of the task such as the created `Job^` representing the submitted `Task^`:
 
 ```python linenums="1"
 import taipy as tp
@@ -119,7 +124,7 @@ tp.Core().run()
 scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 task = scenario.predicting
 
-job = tp.submit(task)
+submission = tp.submit(task)
 ```
 
 In line 5, we retrieve the task named `predicting` from the created scenario. In line 7, we submit this
@@ -139,14 +144,95 @@ task for execution. When submitting a task, you can also use the two parameters 
     task.submit()
     ```
 
+# Submission
+
+Each time a `Scenario^`, a `Sequence^` or a `Task^` is submitted, a new `Submission^` entity is created.
+
+## Submission attributes
+
+Here is the list of the `Submission^`'s attributes:
+
+- _entity_id_: The identifier of the entity that was submitted.
+- _id_: The identifier of the `Submission^` entity.
+- _jobs_: A list of jobs.
+- _properties_: A dictionary of additional properties.
+- _creation_date_: The date of this submission's creation.
+- _submission_status_: The current status of this submission.
+- _version_: The string indicates the application version of the submission to instantiate.
+  If not provided, the latest version is used.
+
+## Submission Status
+
+- `SUBMITTED`: The submission has been submitted for execution but not processed yet by the orchestrator.
+- `UNDEFINED`: The submission's jobs have been submitted for execution but got some undefined status changes.
+- `PENDING`: The submission has been enqueued by the orchestrator. It is waiting for an executor to be available
+   for its execution.
+- `BLOCKED`: The submission has been blocked because it has been finished with a job being blocked.
+- `RUNNING`: The submission has its jobs currently being executed.
+- `CANCELED`: The submission has been submitted but its execution has been canceled.
+- `FAILED`: The submission has a job failed during its execution.
+- `COMPLETED`: The submission has successfully been executed.
+
+## Get/Delete Submission
+
+`Submission^` is created when a `Scenario^`, a `Sequence^` or a `Task^` is submitted.
+
+- You can get the latest submission of a `Scenario^`, a `Sequence^` or a `Task^` with `taipy.get_latest_job()^`.
+- You can retrieve a `Submission^` from its id by using the `taipy.get()^` method.
+
+A Submission can be deleted using the `taipy.delete()^` method.
+
+Deleting a Submission can raise an `SubmissionNotDeletedException^` if the `Status^` of the Submission is not `CANCELED`,
+`COMPLETED`, `FAILED` or `UNDEFINED`.
+
+!!! example
+
+    ```python linenums="1"
+    import taipy as tp
+
+    def double(nb):
+        return nb * 2
+
+    print(f'(1) Number of submission: {len(tp.get_submissions())}.')
+
+    # Create a scenario then submit it.
+    input_data_node_config = tp.configure_data_node("input", default_data=21)
+    output_data_node_config = tp.configure_data_node("output")
+    task_config = tp.configure_task("double_task", double)
+    scenario_config = tp.configure_scenario("my_scenario", [task_config])
+
+    tp.Core().run()
+
+    scenario = tp.create_scenario(scenario_config)
+    tp.submit(scenario)
+
+    # Retrieve all submission.
+    print(f'(2) Number of submissions: {len(tp.get_submissions())}.')
+
+    # Get the latest created submission of the scenario.
+    tp.get_latest_submission(scenario)
+
+    # Then delete it.
+    tp.delete(submission)
+    print(f'(3) Number of submissions: {len(tp.get_submissions())}.')
+    ```
+
+This example will produce the following output:
+
+```
+(1) Number of submissions: 0.
+(2) Number of submissions: 1.
+(3) Number of submissions: 0.
+```
+
 # Job
 
-Each time a task is submitted (through a `Scenario^` or a `Sequence^` submission), a new
+Each time a task is orchestrated (through a `Scenario^`, a `Sequence^` or a `Task^` submission), a new
 `Job^` entity is instantiated.
 
 ## Job attributes
 
-Here is the list of the job's attributes:
+Here is the list of the `Job^`'s attributes:
 
 - _task_: The `Task^` of the job.
 - _force_: The force attribute is `True` if the execution of the job has been forced.
