@@ -152,7 +152,7 @@ Each time a `Scenario^`, a `Sequence^` or a `Task^` is submitted, a new `Submiss
 
 Here is the list of the `Submission^`'s attributes:
 
-- _entity_id_: The identifier of the entity that was submitted.
+- *entity_id*: The identifier of the entity that was submitted.
 - _id_: The identifier of the `Submission^` entity.
 - _jobs_: A list of jobs.
 - _properties_: A dictionary of additional properties.
