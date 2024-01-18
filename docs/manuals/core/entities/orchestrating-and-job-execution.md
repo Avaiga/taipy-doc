@@ -178,7 +178,7 @@ Here is the list of the `Submission^`'s attributes:
 A `Submission^` object is created when a `Scenario^`, a `Sequence^` or a `Task^` is submitted.
 
 - You can get the latest submission of a `Scenario^`, a `Sequence^` or a `Task^` with `taipy.get_latest_job()^`.
-- You can retrieve a `Submission^` from its id by using the `taipy.get()^` method.
+- You can retrieve a `Submission^` from its id by using the `taipy.get()^` function.
 
 A Submission can be deleted using the `taipy.delete()^` method.
 
