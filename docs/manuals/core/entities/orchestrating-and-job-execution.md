@@ -180,7 +180,7 @@ A `Submission^` object is created when a `Scenario^`, a `Sequence^` or a `Task^`
 - You can get the latest submission of a `Scenario^`, a `Sequence^` or a `Task^` with `taipy.get_latest_job()^`.
 - You can retrieve a `Submission^` from its id by using the `taipy.get()^` function.
 
-A Submission can be deleted using the `taipy.delete()^` method.
+A Submission can be deleted using the `taipy.delete()^` function.
 
 Deleting a Submission can raise an `SubmissionNotDeletedException^` if the `Status^` of the Submission is not `CANCELED`,
 `COMPLETED`, `FAILED` or `UNDEFINED`.
