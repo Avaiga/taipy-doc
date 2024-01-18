@@ -112,7 +112,7 @@ submitting a sequence, you can also use the two parameters _wait_ and _timeout_.
     sequence.submit()
     ```
 
-You can also submit a single task with the same `taipy.submit()^` method. It returns a `Submission^` containing
+You can also submit a single task with the same `taipy.submit()^` function. It returns a `Submission^` object containing
 the information about the submission of the task such as the created `Job^` representing the submitted `Task^`:
 
 ```python linenums="1"
