@@ -165,7 +165,7 @@ Here is the list of the `Submission^`'s attributes:
 
 - `SUBMITTED`: The submission has been submitted for execution but not processed yet by the orchestrator.
 - `UNDEFINED`: The submission's jobs have been submitted for execution but got some undefined status changes.
-- `PENDING`: The submission has been enqueued by the orchestrator. It is waiting for an executor to be available
+- `PENDING`: The orchestrator has enqueued the submission. It is waiting for an available worker to start executing a first job.
    for its execution.
 - `BLOCKED`: The submission is blocked by at least one blocked job waiting for its input data nodes to be ready.
 - `RUNNING`: The submission has its jobs currently being executed.
