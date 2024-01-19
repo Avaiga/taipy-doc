@@ -51,9 +51,9 @@ class RefManStep(SetupStep):
         # Clean REFERENCE_DIR_PATH directory
         for p in os.listdir(self.REFERENCE_DIR_PATH):
             fp = os.path.join(self.REFERENCE_DIR_PATH, p)
-            if re.match("^(pkg_)?taipy(\..*)?\.md$", p):
+            if re.match(r"^(pkg_)?taipy(\..*)?\.md$", p):
                 os.remove(fp)
-            elif os.path.isdir(fp) and re.match("^pkg_taipy(\..*)?$", p):
+            elif os.path.isdir(fp) and re.match(r"^pkg_taipy(\..*)?$", p):
                 shutil.rmtree(fp)
 
         saved_dir = os.getcwd()

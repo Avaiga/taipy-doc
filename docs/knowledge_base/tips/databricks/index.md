@@ -5,7 +5,6 @@ versions of a business problem. In this article, we'll look into the integration
 Databricks jobs with Taipy scenarios, showcasing how this can elevate your data 
 processing capabilities.
 
-TO DO, put illustration
 ![Databricks](databricks.png){width=100%}
 
 ## Scenarios and Databricks Integration
@@ -40,8 +39,8 @@ have widgets/parameters and get the results of your job.
 Databricks job. This code can include data processing, analysis, or any other tasks you 
 need to perform.
 
-Here is an example of a Notebook where parameters are passed to the job and results are 
-then being retrieved:
+Here is an example of a Databrick Notebook where parameters are passed to the job 
+and results are then being retrieved:
 
 ```python
 import pandas as pd
@@ -62,7 +61,7 @@ dbutils.notebook.exit(data[:5])
 ```
 
 `dbutils.widgets.get("param1")`: is how you can get the parameters passed to your job. 
-Note that results and parameters are stringified. No complex objects can be passed 
+Note that results and parameters are stringified. All JSON-compatible objects can be passed 
 through this interface.
 
 - **Test in Notebook:** Test your code within the notebook to ensure it runs 
@@ -92,7 +91,7 @@ provides logs and detailed information about the job's progress.
 ## Databricks Class: Bridging the Gap
 
 To seamlessly integrate Databricks jobs with scenarios, we introduce the `Databricks` 
-class. This class facilitates communication with Databricks clusters, enabling users to 
+class. This class is to be used within your own Taipy project. It facilitates communication with Databricks clusters, enabling users to 
 trigger jobs and retrieve results.
 
 ```python
@@ -133,7 +132,8 @@ class Databricks:
 ```
 
 The `Databricks` class allows users to trigger jobs, monitor their status, and retrieve 
-results seamlessly within the Taipy framework.
+results seamlessly within the Taipy framework. You can now add in your project a 
+function that runs and retrieves the appropriate results.
 
 ```python
 default_param = {"param1": "value1", "param2": "value2"}

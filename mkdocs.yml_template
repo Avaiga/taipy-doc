@@ -27,8 +27,8 @@ nav:
         - "Job Execution mode": knowledge_base/tutorials/job_execution/index.md
         - "Scenario Comparison": knowledge_base/tutorials/scenario_comparison/index.md
         - "Scenario Subscription": knowledge_base/tutorials/scenario_subscription/index.md
-        - "Build a complete application":
-            - "Build a complete application": knowledge_base/tutorials/complete_application/index.md
+        - "First Realistic application":
+            - "First Realistic application": knowledge_base/tutorials/complete_application/index.md
             - "1 - Data visualization page": knowledge_base/tutorials/complete_application/step_01/step_01.md
             - "2 - Algorithms used": knowledge_base/tutorials/complete_application/step_02/step_02.md
             - "3 - Scenario configuration": knowledge_base/tutorials/complete_application/step_03/step_03.md
@@ -79,6 +79,8 @@ nav:
         - "Real-time data visualization": knowledge_base/tips/multithreading/index.md
         - "Big data models vs. Computer memory": knowledge_base/tips/big_data_models/index.md
         - "Integrating Databricks": knowledge_base/tips/databricks/index.md
+        - "Using PySpark for Big Data": knowledge_base/tips/pyspark/index.md
+        - "Charts for Big Data": knowledge_base/tips/decimator/index.md
   - "Manuals":
     - "About Taipy's Manuals": manuals/index.md
     - "User Manuals":
