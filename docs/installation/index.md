@@ -10,7 +10,7 @@ powerful web applications.
 
 # Prerequisite
 
-Before installing Taipy, ensure you have Python (version 3.8 or above) and 
+Before installing Taipy, ensure you have Python (**between version 3.8 and 3.11**) and 
 [pip](https://pip.pypa.io) installed on your system. If you don't have pip installed, you can 
 follow these steps to install it:
 
@@ -43,6 +43,33 @@ $ pip install taipy
 ```
 
 This command will download and install the most recent stable release of Taipy.
+
+
+# Installing Taipy with Colab
+
+Google Colab is a popular and free Jupyter notebook environment that requires no setup 
+and runs entirely in the cloud. To install Taipy in Google Colab, follow these simple 
+steps:
+
+1. **Open a new Colab notebook**: Visit [Google Colab](https://colab.research.google.com) 
+and start a new notebook.
+
+2. **Run the installation command**: In a new cell, enter the following command and run 
+the cell:
+
+    ``` python
+    !pip install --ignore-installed taipy
+    ```
+
+    This command installs the latest stable release of Taipy in your Colab environment.
+
+3. **Start building your app**: Follow this 
+[tip](../knowledge_base/tips/colab_with_ngrok/index.md) to build and your Taipy web 
+application directly within the Colab notebook. 
+
+!!! tip
+    Remember that Google Colab environments are ephemeral. If you disconnect or restart 
+    your Colab session, you will need to reinstall Taipy.
 
 # Installing Taipy in a Conda Environment
 
