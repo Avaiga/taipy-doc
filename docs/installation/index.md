@@ -27,7 +27,7 @@ follow these steps to install it:
 Alternatively, if you are using a Conda environment, you can install pip using the following 
 command:
 
-``` console
+```console
 $ conda install pip
 ```
 
@@ -38,7 +38,7 @@ To install Taipy, you have several options depending on your needs and preferenc
 The preferred method to install Taipy is by using **pip**. Open your terminal or command prompt 
 and run the following command:
 
-``` console
+```console
 $ pip install taipy
 ```
 
@@ -57,14 +57,14 @@ and start a new notebook.
 2. **Run the installation command**: In a new cell, enter the following command and run 
 the cell:
 
-    ``` python
+    ```python
     !pip install --ignore-installed taipy
     ```
 
     This command installs the latest stable release of Taipy in your Colab environment.
 
 3. **Start building your app**: Follow this 
-[tip](../knowledge_base/tips/colab_with_ngrok/index.md) to build and your Taipy web 
+[tip](../knowledge_base/tips/colab_with_ngrok/index.md) to build and run your Taipy web 
 application directly within the Colab notebook. 
 
 !!! tip
@@ -80,7 +80,7 @@ If you prefer to work within a [Conda](https://docs.conda.io/projects/conda/en/l
 environment, follow these steps:
 
 1. Create a new **Conda** environment (replace **env-name** with your desired environment name):
-    ``` console
+    ```console
     $ conda create -n env-name
     ```
 2. Activate the newly created environment:
@@ -88,7 +88,7 @@ environment, follow these steps:
     $ conda activate env-name
     ```
 3. Install Taipy within the Conda environment using pip:
-    ``` console
+    ```console
     $ pip install taipy
     ```
 
@@ -98,21 +98,21 @@ If you want to work with the latest development version or contribute to the pro
 install Taipy from the source code.
 
 - Clone the public repository from GitHub (you'll need Git installed for this method):
-    ``` console
+    ```console
     $ git clone git://github.com/avaiga/taipy
     ```
 
 Or,  
   
 - Download the tarball directly from GitHub:
-    ``` console
+    ```console
     $ curl -OJL https://github.com/avaiga/taipy/tarball/main
     ```
 
 Once you have the source code, navigate to the directory containing the Taipy source code and 
 run the following command:
 
-``` console
+```console
 $ pip install .
 ```
 
