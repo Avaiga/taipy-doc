@@ -12,12 +12,12 @@ first application with ease.
 
 # Installation with pip
 
-1. **Prerequisites**: Ensure you have Python (version 3.8 or higher) and 
+1. **Prerequisites**: Ensure you have Python (**version between 3.8 and 3.11**) and 
     [pip](https://pip.pypa.io)installed.
 
 2. **Installation Command**: Run the following in your terminal or command prompt:
     ``` console
-    $ pip install taipy
+    pip install taipy
     ```
 
 For alternative installation methods or if you're lacking Python or pip, refer to the 
