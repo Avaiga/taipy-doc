@@ -385,7 +385,7 @@ To write with custom column names, use the `CSVDataNode.write_with_column_names(
 When reading from an Excel data node, Taipy returns the data of the Excel file based on the _exposed_type_ parameter.
 Check out [Excel Data Node configuration](../config/data-node-config.md#excel) for more details on _exposed_type_.
 
-For the example in this section, assume that `sales_history_cfg` is an _Excel_ data node
+For the example in this section, assume that *sales_history_cfg* is an *Excel* data node
 configuration with `default_path="path/sales.xlsx"`.
 
 Assume that the content of the `sales.xlsx` file is the following.
@@ -542,7 +542,7 @@ To write with custom column names, use the `ExcelDataNode.write_with_column_name
 When reading from a SQL Table data node, Taipy returns the data of the SQL Table file based on the _exposed_type_ parameter.
 Check out [SQL Table Data Node configuration](../config/data-node-config.md#sql-table) for more details on _exposed_type_.
 
-For the example in this section, assume that `sales_history_cfg` is a _SQL Table_ data node configuration with `table_name="sales"`.
+For the example in this section, assume that *sales_history_cfg* is a *SQL Table* data node configuration with `table_name="sales"`.
 
 Assume that the content of the `"sales"` table is the following.
 
@@ -688,7 +688,7 @@ node:
 A SQL data node is designed to give the user more flexibility on how to read and write to SQL table
 (or multiple SQL tables).
 
-Let's consider the `orders_cfg` in <a href="../code_example/my_config.py" download>`my_config.py`</a>
+Let's consider the *orders_cfg* in <a href="../code_example/my_config.py" download>`my_config.py`</a>
 which configures a SQL data node.
 
 When reading from a SQL data node, Taipy executes the read query and returns the data of the SQL
@@ -801,7 +801,7 @@ also encode and decode:
 - A [`datetime.datetime`](https://docs.python.org/3/library/datetime.html#datetime-objects) object.
 - A [dataclass](https://docs.python.org/3/library/dataclasses.html) object.
 
-For the example in this section, assume that `sales_history_cfg` is a _JSON_ data node configuration
+For the example in this section, assume that *sales_history_cfg* is a *JSON* data node configuration
 with `default_path="path/sales.json"`.
 
 !!! example "Read and write from a JSON data node using default _encoder_ and _decoder_"
@@ -1092,7 +1092,7 @@ MongoDB, including but not limited to:
 - Object (embedded document object).
 - Arrays − arrays or list or multiple values.
 
-For the example in this section, assume that `sales_history_cfg` is a _Mongo collection_ data node
+For the example in this section, assume that *sales_history_cfg* is a *Mongo collection* data node
 configuration.
 
 Check out [MongoDB supported data types](https://www.mongodb.com/docs/manual/reference/bson-types/) for more details.
