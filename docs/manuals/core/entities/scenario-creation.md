@@ -1,4 +1,4 @@
-In this section, it is assumed that <a href="./code_example/my_config.py" download>`my_config.py`</a>
+In this section, it is assumed that <a href="../code_example/my_config.py" download>`my_config.py`</a>
 module contains a Taipy configuration already implemented.
 
 # Scenario creation
@@ -39,7 +39,7 @@ Three parameters can be given to the scenario creation method :
 !!! example
 
     === "Scenario creation with parameters"
-        Using the [`my_config.py`](./code_example/my_config.py) module, here is an example of how to create a scenario.
+        Using the <a href="../code_example/my_config.py" download>`my_config.py`</a> module, here is an example of how to create a scenario.
 
         ```python  linenums="1"
             import taipy as tp
