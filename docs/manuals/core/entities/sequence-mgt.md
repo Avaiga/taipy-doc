@@ -2,7 +2,7 @@ The [Entities' creation](scenario-creation.md) section provides documentation on
 that we know how to create a new `Sequence^`, this section focuses on describing the sequence's attributes
 and utility methods.
 
-In this section, it is assumed that the <a href="./code_example/my_config.py" download>`my_config.py`</a>
+In this section, it is assumed that the <a href="../code_example/my_config.py" download>`my_config.py`</a>
 module contains an already implemented configuration.
 
 # Sequence attributes
