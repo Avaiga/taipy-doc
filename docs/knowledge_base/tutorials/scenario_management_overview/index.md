@@ -38,14 +38,24 @@ employed to generate various instances of scenarios.
 
 # Configuring a Scenario
 
+First, we'll import the necessary libraries and load a dataset:
+
+```python
+from taipy import Config
+import taipy as tp
+import pandas as pd
+import datetime as dt
+
+
+data = pd.read_csv("https://raw.githubusercontent.com/Avaiga/taipy-getting-started-core/develop/src/daily-min-temperatures.csv")
+```
+
 Think about the most basic pipeline: one function that needs two things to work – some data and a
 date. It uses these to generate a prediction for that date.
 
 See the code for this function below:
 
 ```python
-import pandas as pd
-
 def predict(historical_temperature: pd.DataFrame, date_to_forecast: str) -> float:
     print(f"Running baseline...")
     historical_temperature['Date'] = pd.to_datetime(historical_temperature['Date'])
@@ -71,8 +81,6 @@ Three Data Nodes are being configured (**historical_temperature**, **date_to_for
         Here is the code to configure a simple scenario.
 
         ```python
-         from taipy import Config
-
         # Configuration of Data Nodes
         historical_temperature_cfg = Config.configure_data_node("historical_temperature")
         date_to_forecast_cfg = Config.configure_data_node("date_to_forecast")
@@ -131,8 +139,6 @@ configuration. Still, no scenario has been run yet. `tp.submit(<Scenario>)` is t
 that triggers the run of all the scenario-related tasks.
 
 ```python
-import taipy as tp
-
 # Run of the Core
 tp.Core().run()
 
@@ -175,8 +181,6 @@ Add these few lines to the code of your script. This creates a web application, 
 - access their properties.
 
 ```python
-import taipy as tp
-
 def save(state):
     # write values of Data Node to submit scenario
     state.scenario.historical_temperature.write(data)
