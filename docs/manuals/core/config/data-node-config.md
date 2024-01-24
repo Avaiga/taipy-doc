@@ -857,7 +857,7 @@ section, multiple parameters can be provided.
 In this example, we configure a *s3_object* data node with the id "my_s3_object":
 
 - Its scope is the default value `SCENARIO`.
-- The object_key name is "taipy_object"
+- The object_key name is "taipy_object".
 
 ```python linenums="1"
 {%
