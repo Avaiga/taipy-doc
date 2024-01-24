@@ -77,7 +77,7 @@ Taipy proposes predefined *data nodes* corresponding to the most popular
 does not need to spend much time configuring the *storage types* or the
 *query system*. A predefined data node will often satisfy the user's
 required format: pickle, CSV, SQL table, MongoDB collection, Excel sheet,
-Amazon Web Service S3 Object etc.
+Amazon Web Service S3 Object, etc.
 
 The various predefined *storage types* are typically used for input data.
 Indeed, the input data is usually provided by external sources, where
@@ -847,17 +847,17 @@ S3 bucket. To add a new *S3Object* data node configuration, the
 the generic parameters described in the [Data node configuration](data-node-config.md)
 section, multiple parameters can be provided.
 
-- _**aws_access_key**_ represents the Amazon Web Services identity account.
-- _**aws_secret_access_key**_ represents the Amazon Web Services access key to authenticate programmatic requests.
-- _**aws_region**_ represnets the geographic area where Amazon Web Services (AWS) infrastructure is located.
-- _**aws_s3_bucket_name**_ represnts the name aof the Amazon Web Service S3 bucket.
-- _**aws_s3_object_key**_ represents the name of the object(file) that has to be read or written.
-- _**aws _s3_object_parameters**_  represents additional arguments to be passed to interact with the AWS service.
+- _**aws_access_key**_ represents the Amazon Web Services (AWS) identity account.
+- _**aws_secret_access_key**_ represents the AWS access key to authenticate programmatic requests.
+- _**aws_region**_ represnets the geographic area where the AWS infrastructure is located.
+- _**aws_s3_bucket_name**_ represnts the name of the AWS S3 bucket.
+- _**aws_s3_object_key**_ represents the name of the object (file) that needs to be read or written.
+- _**aws _s3_object_parameters**_ represents additional arguments to be passed to interact with the AWS service.
 
-In this example, we configure an *s3_object* data node with the id "my_s3_objec":
+In this example, we configure a *s3_object* data node with the id "my_s3_object":
 
 - Its scope is the default value `SCENARIO`.
-- The object_key name  is "taipy_object"
+- The object_key name is "taipy_object"
 
 ```python linenums="1"
 {%
