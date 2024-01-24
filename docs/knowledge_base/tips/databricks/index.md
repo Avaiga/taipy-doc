@@ -1,3 +1,12 @@
+---
+title: Integrating Databricks
+category: tips
+type: code
+data-keywords: scenario task
+short-description: A guide to integrate Databricks with Taipy scenarios.
+img: databricks.png
+---
+
 Integration with other platforms to execute jobs and functions is sometimes necessary. 
 This tip shows how to integrate Taipy scenarios with platforms like Databricks. 
 Taipy scenarios serve as a potent tool for orchestrating tasks and examining various 

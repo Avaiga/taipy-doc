@@ -1,3 +1,12 @@
+---
+title: Using PySpark for Big Data
+category: tips
+type: code
+data-keywords: scenario task
+short-description: Build, Visualize and Launch Big Data DAGs.
+img: images/front.png
+---
+
 Taipy is a powerful workflow orchestration tool with an easy-to-use framework to 
 apply to your existing data applications with little effort. Taipy is built on a 
 solid foundation of concepts - Scenarios, Tasks, and Data Nodes - which are robust 

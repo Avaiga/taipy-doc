@@ -1,3 +1,12 @@
+---
+title: Charts for Big Data
+category: tips
+type: code
+data-keywords: gui ai
+short-description: Taming Big Data without crashing.
+img: images/front.png
+---
+
 This article aims to show how to minimize the volume of data transiting 
 between the application and the GUI client without losing the information.
 
