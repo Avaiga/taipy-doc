@@ -80,7 +80,7 @@ app/
 You can find the contents of each file (other than *penguins.csv*, which you can 
 get from [palmerpenguins repository](https://github.com/allisonhorst/palmerpenguins/blob/main/inst/extdata/penguins.csv)) in code blocks within this article.
 
-# 1. The Spark Application (*penguin_spark_app.py*)
+# The Spark Application
 
 Usually, we run PySpark tasks with the `spark-submit` command line utility. You can read 
 more about the what and the why of submitting Spark jobs in their documentation 
@@ -161,7 +161,7 @@ parameters**:
 - *input-csv-path*: Path to the input penguin CSV file; and
 - *output-csv-path*: Path to save the output CSV file after processing by the Spark app.
 
-# 2. The Taipy configuration (*config.py*)
+# The Taipy configuration
 
 At this point, we have our *penguin_spark_app.py* PySpark application and need to create 
 **a Taipy task to run this PySpark application**.
@@ -395,7 +395,7 @@ However, we also defined a *validity_period* of 1 day for the *processed_penguin
 node, so Taipy will still re-run the task if the DataFrame was last cached more than a 
 day ago.
 
-# 3. Building a GUI (*main.py*)
+# Building a GUI
 
 We'll complete our application by **building the GUI** which we saw at the beginning of 
 this article:

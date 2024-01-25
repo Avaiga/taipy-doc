@@ -16,7 +16,7 @@ processing capabilities.
 
 ![Databricks](databricks.png){width=100%}
 
-## Scenarios and Databricks Integration
+# Scenarios and Databricks Integration
 
 Creating and executing jobs on Databricks involves several steps, from setting up your
 Databricks workspace to defining and running jobs. Here's a step-by-step guide on how
@@ -27,7 +27,7 @@ scenarios:
 
 - A Databricks Workspace.
 
-### 1. Create a Databricks Notebook
+**1 - Create a Databricks Notebook**
 
 - **Navigate to Workspace:** In Databricks, navigate to the workspace where you want to
 create the notebook.
@@ -38,7 +38,7 @@ create the notebook.
 - **Define Notebook Details:** Enter a name for your notebook, choose the language
 (e.g., Python, Scala, or SQL), and select the cluster you want to use.
 
-### 2. Define Databricks Job Logic
+** 2 - Define Databricks Job Logic**
 
 - **Create the Cluster**: Go to the Compute section to create a cluster with your
 packages required by your code. You would also need to install `dbutils` to be able to
@@ -76,7 +76,7 @@ through this interface.
 - **Test in Notebook:** Test your code within the notebook to ensure it runs
 successfully.
 
-### 3. Create a Databricks Job
+**3 - Create a Databricks Job**
 
 - **Convert Notebook to Job:** Once your code is ready, convert the notebook into a
 job. Click on the "File" menu in the notebook and select "Jobs" > "Create Job."
@@ -89,7 +89,7 @@ job. Click on the "File" menu in the notebook and select "Jobs" > "Create Job."
 
 - **Advanced Options:** Configure any advanced options based on your requirements.
 
-### 4. Run and Monitor the Databricks Job
+** 4 - Run and Monitor the Databricks Job**
 
 - **Run the Job:** After configuring the job settings, click "Run Now" to execute the job immediately.
 
@@ -97,7 +97,7 @@ job. Click on the "File" menu in the notebook and select "Jobs" > "Create Job."
 provides logs and detailed information about the job's progress.
 
 
-## Databricks Class: Bridging the Gap
+# Databricks Class: Bridging the Gap
 
 To seamlessly integrate Databricks jobs with scenarios, we introduce the `Databricks` 
 class. This class is to be used within your own Taipy project. It facilitates communication with Databricks clusters, enabling users to 
@@ -207,7 +207,7 @@ if __name__ == "__main__":
 
 [Download the code](./example.py){: .tp-btn target='blank' }
 
-## Databricks + Taipy
+# Databricks + Taipy
 
 In conclusion, the integration of Databricks jobs with Taipy scenarios is unlocked by
 creating a class for handling Databricks jobs. This class can then be used inside Taipy as a
