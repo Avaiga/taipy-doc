@@ -48,7 +48,7 @@ have widgets/parameters and get the results of your job.
 Databricks job. This code can include data processing, analysis, or any other tasks you
 need to perform.
 
-Here is an example of a Databrick Notebook where parameters are passed to the job 
+Here is an example of a Databricks Notebook where parameters are passed to the job 
 and results are then being retrieved:
 
 ```python

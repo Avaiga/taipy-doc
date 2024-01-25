@@ -4,7 +4,7 @@ category: tips
 type: code
 data-keywords: scenario task
 short-description: Build, Visualize and Launch Big Data DAGs.
-img: images/front.png
+img: pyspark/images/front.png
 ---
 
 Taipy is a powerful workflow orchestration tool with an easy-to-use framework to 

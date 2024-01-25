@@ -4,7 +4,7 @@ category: tips
 type: code
 data-keywords: gui ai
 short-description: Taming Big Data without crashing.
-img: images/front.png
+img: decimator/images/front.png
 ---
 
 This article aims to show how to minimize the volume of data transiting 
