@@ -1,7 +1,7 @@
 Tasks get created when scenarios are created. Please refer to the
 [Entities' creation](scenario-creation.md) section for more details.
 
-In this section, it is assumed that <a href="./code_example/my_config.py" download>`my_config.py`</a>
+In this section, it is assumed that <a href="../code_example/my_config.py" download>`my_config.py`</a>
 module contains a Taipy configuration already implemented.
 
 # Task attributes

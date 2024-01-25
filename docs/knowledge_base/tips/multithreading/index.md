@@ -1,3 +1,11 @@
+---
+title: Real-time data visualization with multithreading
+category: tips
+type: code
+data-keywords: gui dashboard
+short-description: Display data sent from another thread in real-time to your Taipy application.
+img: multithreading/realtime_dashboard.png
+---
 Taipy can display data that is generated in a separate thread. This is useful for displaying
 real-time data from a sensor or a simulator. For example displaying in a dashboard the
 information from sensors measuring air pollution around a city, or displaying CPU usage of

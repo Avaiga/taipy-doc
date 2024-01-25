@@ -1,5 +1,12 @@
-> You can download the code 
-<a href="/scenario_comparison.py" download>here</a>. 
+---
+title: Scenario Comparison
+category: tutorials
+type: code
+data-keywords: scenario comparison datanode configuration
+short-description: Learn best practices to compare scenarios easily.
+---
+> You can download the code
+<a href="/scenario_comparison.py" download>here</a>.
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Advanced*
 
@@ -126,6 +133,6 @@ if __name__=="__main__":
 
     scenario_1.submit()
     scenario_2.submit()
-    
+
     print(tp.compare_scenarios(scenario_1, scenario_2))
 ```

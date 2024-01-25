@@ -83,7 +83,7 @@ for repo in repo_defs.keys():
         repo_path = os.path.join(TOP_DIR, repo)
         repo_defs[repo]["path"] = repo_path
         if not os.path.isdir(repo_path):
-            if repo in PRIVATE_REPOS:
+            if repo in PRIVATE_REPOS or repo[6:] in PRIVATE_REPOS:
                 repo_defs[repo]["skip"] = True
             else:
                 raise IOError(f"Repository '{repo}' must be cloned in \"{TOP_DIR}\".")

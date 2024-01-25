@@ -4,7 +4,7 @@ category: tips
 type: code
 data-keywords: scenario task
 short-description: A guide to integrate Databricks with Taipy scenarios.
-img: databricks.png
+img: databricks/databricks.png
 ---
 
 Integration with other platforms to execute jobs and functions is sometimes necessary. 
@@ -18,9 +18,9 @@ processing capabilities.
 
 ## Scenarios and Databricks Integration
 
-Creating and executing jobs on Databricks involves several steps, from setting up your 
-Databricks workspace to defining and running jobs. Here's a step-by-step guide on how 
-to create and run jobs on Databricks, which can be seamlessly integrated with Taipy 
+Creating and executing jobs on Databricks involves several steps, from setting up your
+Databricks workspace to defining and running jobs. Here's a step-by-step guide on how
+to create and run jobs on Databricks, which can be seamlessly integrated with Taipy
 scenarios:
 
 **Requirements:**
@@ -29,23 +29,23 @@ scenarios:
 
 ### 1. Create a Databricks Notebook
 
-- **Navigate to Workspace:** In Databricks, navigate to the workspace where you want to 
+- **Navigate to Workspace:** In Databricks, navigate to the workspace where you want to
 create the notebook.
 
-- **Create a Notebook:** Click on the "Workspace" tab, then select "Create" and choose 
+- **Create a Notebook:** Click on the "Workspace" tab, then select "Create" and choose
 "Notebook."
 
-- **Define Notebook Details:** Enter a name for your notebook, choose the language 
+- **Define Notebook Details:** Enter a name for your notebook, choose the language
 (e.g., Python, Scala, or SQL), and select the cluster you want to use.
 
 ### 2. Define Databricks Job Logic
 
-- **Create the Cluster**: Go to the Compute section to create a cluster with your 
-packages required by your code. You would also need to install `dbutils` to be able to 
+- **Create the Cluster**: Go to the Compute section to create a cluster with your
+packages required by your code. You would also need to install `dbutils` to be able to
 have widgets/parameters and get the results of your job.
 
-- **Write Code:** In the notebook, write the code that defines the logic of your 
-Databricks job. This code can include data processing, analysis, or any other tasks you 
+- **Write Code:** In the notebook, write the code that defines the logic of your
+Databricks job. This code can include data processing, analysis, or any other tasks you
 need to perform.
 
 Here is an example of a Databrick Notebook where parameters are passed to the job 
@@ -70,15 +70,15 @@ dbutils.notebook.exit(data[:5])
 ```
 
 `dbutils.widgets.get("param1")`: is how you can get the parameters passed to your job. 
-Note that results and parameters are stringified. All JSON-compatible objects can be passed 
+Note that results and parameters are stringified. Only JSON-serializable objects can be passed 
 through this interface.
 
-- **Test in Notebook:** Test your code within the notebook to ensure it runs 
+- **Test in Notebook:** Test your code within the notebook to ensure it runs
 successfully.
 
 ### 3. Create a Databricks Job
 
-- **Convert Notebook to Job:** Once your code is ready, convert the notebook into a 
+- **Convert Notebook to Job:** Once your code is ready, convert the notebook into a
 job. Click on the "File" menu in the notebook and select "Jobs" > "Create Job."
 
 - **Configure Job Settings:**
@@ -93,7 +93,7 @@ job. Click on the "File" menu in the notebook and select "Jobs" > "Create Job."
 
 - **Run the Job:** After configuring the job settings, click "Run Now" to execute the job immediately.
 
-- **Monitor Job Execution:** Monitor the job execution in real-time. Databricks 
+- **Monitor Job Execution:** Monitor the job execution in real-time. Databricks
 provides logs and detailed information about the job's progress.
 
 
@@ -170,7 +170,7 @@ As you can see, multiple values are used to connect to Databricks and to the rig
 - *DatabricksBearerToken*: your bearer token. Create one using this [tutorial](https://docs.databricks.com/en/dev-tools/auth/pat.html).
 - *DatabricksEndpoint*: Databricks endpoint which is the base URL of your Databricks (example: *xxxyyyyzzz.azuredatabricks.net*).
 
-Now, this `predict` function is usable by Taipy inside a scenario. A potential 
+Now, this *predict()* function is usable by Taipy inside a scenario. A potential
 integration into the configuration is as follows:
 
 ```python
@@ -190,11 +190,11 @@ task_databricks_cfg = Config.configure_task("databricks",
 scenario_cfg = Config.configure_scenario("scenario", task_config=[task_databricks_cfg])
 ```
 
-Now, that the scenario is configured, it can be created and executed to retrieve the 
+Now, that the scenario is configured, it can be created and executed to retrieve the
 proper results.
 
 ```python
-import taipy as tp 
+import taipy as tp
 
 if __name__ == "__main__":
     tp.Core().run()
@@ -209,7 +209,7 @@ if __name__ == "__main__":
 
 ## Databricks + Taipy
 
-In conclusion, the integration of Databricks jobs with Taipy scenarios is unlocked by 
-creating a class for handling Databricks jobs. This class can then be used inside Taipy as a 
-normal task. With this capability, you can incorporate Databricks workflows with Taipy 
+In conclusion, the integration of Databricks jobs with Taipy scenarios is unlocked by
+creating a class for handling Databricks jobs. This class can then be used inside Taipy as a
+normal task. With this capability, you can incorporate Databricks workflows with Taipy
 to give insights for your decision-making processes, for example.

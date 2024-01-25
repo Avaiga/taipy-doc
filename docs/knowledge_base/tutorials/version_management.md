@@ -1,3 +1,10 @@
+---
+title: Manage application versions with Git
+category: tutorials
+type: video
+data-keywords: scenario configuration versioning
+short-description: Leverage Taipy version management and Git branches to deal with multiple versions of your application.
+---
 When developing and deploying a Taipy application, it is straightforward to manage Taipy entities
 (scenarios, tasks, data nodes, etc.) and keep them up-to-date when the configuration changes.
 
