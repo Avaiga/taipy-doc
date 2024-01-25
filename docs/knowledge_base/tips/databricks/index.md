@@ -14,7 +14,7 @@ versions of a business problem. In this article, we'll look into the integration
 Databricks jobs with Taipy scenarios, showcasing how this can elevate your data 
 processing capabilities.
 
-![Databricks](databricks.png){width=100%}
+![Databricks](databricks.png){width=50% style="margin:auto;display:block;"}
 
 # Scenarios and Databricks Integration
 
@@ -38,7 +38,7 @@ create the notebook.
 - **Define Notebook Details:** Enter a name for your notebook, choose the language
 (e.g., Python, Scala, or SQL), and select the cluster you want to use.
 
-** 2 - Define Databricks Job Logic**
+**2 - Define Databricks Job Logic**
 
 - **Create the Cluster**: Go to the Compute section to create a cluster with your
 packages required by your code. You would also need to install `dbutils` to be able to
