@@ -3,7 +3,7 @@ title: Drift Detection - Detect drift in a dataset
 category: demos
 type: code
 data-keywords: gui ai scenario datanode dag configuration
-short-description: Learn how to expose scenarios and pipeline executions to your end-users with this input dataset drift detection.
+short-description: Expose scenarios and pipeline executions to your end-users with this input dataset drift detection.
 img: images/drift-detection-pipeline.png
 ---
 This demo aims to showcase the ability to select inputs and execute and visualize outputs of data
