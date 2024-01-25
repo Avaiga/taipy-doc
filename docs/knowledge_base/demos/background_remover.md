@@ -3,7 +3,7 @@ title: Background Remover
 category: demos
 type: code
 data-keywords: gui ai
-short-description: An interactive interface, and efficient Python code to easily remove image backgrounds with automatic detection.
+short-description: An interactive application to easily remove image backgrounds using automatic detection.
 img: images/background-remover.png
 ---
 Background Remover is an image processing application built using Taipy. The objective is
