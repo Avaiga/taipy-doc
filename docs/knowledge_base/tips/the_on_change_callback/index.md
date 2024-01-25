@@ -6,7 +6,7 @@ data-keywords: gui callback
 short-description: Make your multi-user graphical interface fully interactive using the on_change callback.
 img: the_on_change_callback/callbacks_flowchart-1.png
 ---
-In Taipy, an on_change callback is a Python function which is executed when some application
+In Taipy, an `on_change` callback triggers a Python function which is executed when some application
 variable is modified. This callback is used for implementing some behavior after the user
 performs an action, such as dragging a slider to define the value of some parameter or typing
 some text into an input box.

@@ -38,7 +38,7 @@ def add(nb):
 
 ![Configuration](config.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-This line of code alters the execution mode. Setting it to _standalone_ makes Taipy Core work asynchronously.
+This line of code alters the execution mode. Setting it to *standalone* makes Taipy Core work asynchronously.
 In this configuration, a maximum of two tasks can run simultaneously.
 
 ```python

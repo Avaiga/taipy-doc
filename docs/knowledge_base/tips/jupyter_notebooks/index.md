@@ -3,7 +3,7 @@ title: Jupyter Notebooks and Taipy GUI
 category: tips
 type: code
 data-keywords: gui notebook
-short-description: Coding experience with Taipy in Jupyter Notebooks to seamless update your GUI without the need to restart the kernel.
+short-description: Seamlessly update the User Interface in a Jupyter Notebook without restarting the kernel.
 img: jupyter_notebooks/jupyter_notebooks_1.png
 ---
 ![Taipy GUI in Jupyter Notebooks](jupyter_notebooks_1.png){width=100%}

@@ -114,7 +114,7 @@ scenario_2 = tp.create_scenario(scenario_cfg,
 ```
 
 Scenario 1 and Scenario 2 are two separate scenario entities created using the same scenario
-configuration. They are part of the same Cycle but have different data nodes. By default, each
+configuration. They are part of the same `Cycle` but have different data nodes. By default, each
 scenario instance has its own data node instances, and they are not shared with any other scenario.
 
 ## Interplay between Scopes and Cycles
@@ -172,7 +172,7 @@ Let's change the configuration of our data nodes:
         ```
 
 
-Defining the _month_ of scenario 1 will also determine the _month_ of scenario 2 since they
+Defining the *month* of scenario 1 will also determine the *month* of scenario 2 since they
 share the same Data Node.
 
 ```python
@@ -193,22 +193,22 @@ Month Data Node of Scenario 2: 10
 ```
 
 In this unusual example where both scenarios are in the same cycle and all their data nodes
-are at least with a Cycle Scope, executing one is the same as executing the other as they share
+are at least with a `Cycle` Scope, executing one is the same as executing the other as they share
 all their data nodes.
 
 # Going further into Cycles
 
 ## Primary scenarios
 
-In each Cycle, there is a primary scenario. A primary scenario is interesting because
-it represents the important scenario of the Cycle, the reference. By default, the
+In each `Cycle`, there is a primary scenario. A primary scenario is interesting because
+it represents the important scenario of the `Cycle`, the reference. By default, the
 first scenario created for a cycle is primary.
 
 
 ### Python code associated to primary scenarios
 
 [`tp.set_primary(<Scenario>)`](../../../manuals/core/entities/scenario-cycle-mgt.md#promote-a-scenario-as-primary)
-allows changing the primary scenario in a Cycle.
+allows changing the primary scenario in a `Cycle`.
 
 `<Scenario>.is_primary` identifies as a boolean whether the scenario is primary or not.
 

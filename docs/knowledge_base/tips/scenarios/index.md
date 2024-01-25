@@ -66,7 +66,7 @@ possible, Taipy runs the tasks in parallel.
 To instantiate a Taipy scenario, users first need to configure it with the
 `Config.configure_scenario()` method. They need to set certain things like a name, the tasks it
 uses, how often it runs, what it compares, and its properties. Then users can create a scenario
-with the `create_scenario()` method passing as a parameter the scenario configuration.
+with the `create_scenario()` function passing as a parameter the scenario configuration.
 
 ```python
 from taipy import Config

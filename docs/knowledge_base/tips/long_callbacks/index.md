@@ -3,7 +3,7 @@ title: Long-running Callbacks
 category: tips
 type: code
 data-keywords: gui callback
-short-description: Discover the 'long-running callbacks' feature of Taipy to ensure responsiveness during lengthy tasks.
+short-description: Preserve the user interface responsiveness during lengthy tasks using Taipy's 'long-running callbacks' feature.
 img: long_callbacks/long_running_callbacks.png
 ---
 Tasks (server-side functions) in web applications can take a lot of time, which can lead to
@@ -58,15 +58,15 @@ function completes, as shown below:
                              heavy_function_status)
 ```
 
-In this example, we introduce the `heavy_function_status()` function, which the
-`invoke_long_callback()^` method invokes. When the callback is finished, this function is called.
+In this example, we introduce the *heavy_function_status()* function, which the
+*invoke_long_callback()^* function invokes. When the callback is finished, this function is called.
 
 This allows you to provide the necessary notifications or make updates to the
 user interface depending on whether the processing was successful or not.
 
 # Handling Function Result
 
-To update the State according to the returned value from `heavy_function()`, you can modify
+To update the `State` according to the returned value from *heavy_function()*, you can modify
 `heavy_function_status()` as follows:
 
 ```python linenums="1"
@@ -79,8 +79,8 @@ To update the State according to the returned value from `heavy_function()`, you
             notify(state, "error", "The heavy function has failed")
 ```
 
-We added a parameter called `result`, which represents the return value of `heavy_function()`.
-When `heavy_function()` completes successfully (`status` is `True`), we update the State with
+We added a parameter called *result*, which represents the return value of *heavy_function()*.
+When *heavy_function()* completes successfully (*status* is True), we update the `State` with
 the result by assigning it to a state variable (cf. line 5). This allows you to access the
 result in other parts of your application or display it to the user as needed.
 
@@ -92,7 +92,7 @@ Make sure that the `heavy_function()` returns a value. For example:
         return result
 ```
 
-When you update the State with the result of `heavy_function()`, you ensure that the user
+When you update the State with the result of *heavy_function()*, you ensure that the user
 interface shows the result of the resource-intensive function. This creates a smooth and seamless
 user experience.
 

@@ -169,7 +169,7 @@ As you can see, multiple values are used to connect to Databricks and to the rig
 - *DatabricksBearerToken*: your bearer token. Create one using this [tutorial](https://docs.databricks.com/en/dev-tools/auth/pat.html).
 - *DatabricksEndpoint*: Databricks endpoint which is the base URL of your Databricks (example: *xxxyyyyzzz.azuredatabricks.net*).
 
-Now, this `predict` function is usable by Taipy inside a scenario. A potential
+Now, this *predict()* function is usable by Taipy inside a scenario. A potential
 integration into the configuration is as follows:
 
 ```python

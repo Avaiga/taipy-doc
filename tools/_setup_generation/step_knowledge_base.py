@@ -65,6 +65,7 @@ class KnowledgeBaseStep(SetupStep):
         self.TIPS_FOLDER_PATHS = os.path.join(setup.docs_dir, self.KNOWLEDGE_BASE_FOLDER_NAME, "tips")
         self.TIPS_INDEX_PATH = os.path.join(self.TIPS_FOLDER_PATHS, "index.md")
         self.TIPS_INDEX_TPL_PATH = os.path.join(self.TIPS_FOLDER_PATHS, "index.md_template")
+
     def get_id(self) -> str:
         return "knowledge_base"
 

@@ -3,7 +3,7 @@ title: Share your App with Colab and Ngrok
 category: tips
 type: code
 data-keywords: gui notebook deployment
-short-description: Share on the Internet your Taipy Application created on Google Colab using Ngrok.
+short-description: Share your Taipy application created with Google Colab on the Internet using Ngrok.
 img: colab_with_ngrok/Sharing_Taipy_Ngrok_1.png
 ---
 For people who want to create strong graphical interfaces without needing to be an expert in GUI
@@ -143,12 +143,12 @@ Here are the new cells to add:
    from taipy.gui import Gui, Markdown
    ```
 
-2. Set empty new page:
+2. Create an empty new page:
    ```python
    new_page=Markdown("")
    ```
 
-3. Set content to `new_page`:
+3. Set the page content:
    ```python
    new_page.set_content(page)
    ```

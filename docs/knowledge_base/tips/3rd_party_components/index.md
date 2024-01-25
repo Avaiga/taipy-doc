@@ -3,7 +3,7 @@ title: Integrate Third-Party Components
 category: tips
 type: code
 data-keywords: gui vizelement chart
-short-description: Use the `part` visual element to embed any HTML inside your application.
+short-description: Embed any HTML inside your application.
 img: 3rd_party_components/part_illustration.png
 ---
 In the world of web development, it's often necessary to integrate third-party components
@@ -81,7 +81,7 @@ In this code, the function *expose_folium()* converts a Folium object (*map*) to
 mandatory step in integrating any third-party component into your application.
 
 We now proceed to register a function for the object type we want to display. The code below
-means that when Taipy encounters a *Map* type in the *content* property, it will use the
+means that when Taipy encounters a `Map` type in the *content* property, it will use the
 *expose_folium* function to convert it to HTML and display it on the page.
 
 ```python

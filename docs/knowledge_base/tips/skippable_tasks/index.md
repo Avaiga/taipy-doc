@@ -3,7 +3,7 @@ title: Skippable tasks
 category: tips
 type: code
 data-keywords: scenario task datanode job submission configuration
-short-description: Explore the 'skippable' task feature to improve your efficiency in pipeline orchestration.
+short-description: Improve the efficiency in pipeline orchestration with the 'skippable' task feature.
 img: skippable_tasks/skippable_tasks.png
 ---
 Taipy is a Python library that's user-friendly and made for creating web applications

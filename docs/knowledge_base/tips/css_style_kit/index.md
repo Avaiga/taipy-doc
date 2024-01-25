@@ -25,7 +25,7 @@ If you want to turn it off, you can do so by setting the Stylekit parameter of t
 
 ## Main CSS Variables
 
-The Stylekit provides a long list of variables that affect how your Taipy application pages look.
+The Stylekit provides a set of variables that affect the look of your Taipy application pages.
 It also offers predefined CSS classes for things like changing text style,
 adding space around elements, adjusting how things are displayed,
 and making elements more or less see-through.

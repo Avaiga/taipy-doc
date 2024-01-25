@@ -3,7 +3,7 @@ title: Organize your application with Partials, Dialogs, and Panes
 category: tutorials
 type: video
 data-keywords: gui markdown partials dialog pane
-short-description: Explore the utility of Dialogs, Panes, and partials to be efficient creating an interactive user interface.
+short-description: Explore the utility of Dialogs, Panes, and partials to efficiently create interactive user interfaces.
 ---
 # Partials in Taipy
 
