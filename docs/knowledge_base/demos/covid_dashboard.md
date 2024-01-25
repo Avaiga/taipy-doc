@@ -34,7 +34,7 @@ Visual representation of COVID-19 impact through dynamic zoomable color-coded ma
 
 ## Page 3: Predictions
 Generate COVID-19 predictions by creating scenarios for different
-Prediction dates and different countries.. This generates 2 different
+prediction dates and different countries. This generates two different
 predictions (prediction_x in orange and prediction_y in green) using respectively
 an ARIMA model and a Linear Regression model.
 
