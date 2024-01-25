@@ -1,12 +1,20 @@
-Through these two videos, we take you on a journey to create interactive image 
+---
+title: Image Classification
+category: demos
+type: code
+data-keywords: gui ai classification
+short-description: Explore our interactive image classification application built with Taipy, Nvidia CUDA, and TensorFlow.
+img: images/icon-code.svg
+---
+Through these two videos, we take you on a journey to create interactive image
 classification applications using Taipy, [Nvidia CUDA](https://developer.nvidia.com/cuda-toolkit)
-, and [TensorFlow](https://www.tensorflow.org/). 
+, and [TensorFlow](https://www.tensorflow.org/).
 
 [Get it on GitHub](https://github.com/Avaiga/demo-image-classification-part-1){: .tp-btn .tp-btn--accent target='blank' }
 
 # Video 1: [Building an Interactive Image Classification Application with Taipy and Nvidia CUDA](https://youtu.be/WWBmd-yG4B8?si=mnpkGpiMEfJT6EMD)
 
-This beginner-to-intermediate level tutorial will walk you through wrapping a Deep Learning 
+This beginner-to-intermediate level tutorial will walk you through wrapping a Deep Learning
 Image Classifier with interactive graphics.
 
 

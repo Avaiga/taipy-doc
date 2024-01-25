@@ -126,3 +126,7 @@ docs/manuals/reference_rest/*.md
 docs/manuals/reference_guiext/
 docs/contributing/contributors.md
 fe_node_modules/
+/docs/knowledge_base/demos/index.md
+/docs/knowledge_base/tips/index.md
+/docs/knowledge_base/tutorials/index.md
+/docs/knowledge_base/index.md

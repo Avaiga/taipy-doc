@@ -1,21 +1,29 @@
-In the world of web development, it's often necessary to integrate third-party components 
-into your applications. These components could range from interactive visualizations to 
-videos or other web pages. This article will demonstrate how to effectively include 
+---
+title: Integrate Third-Party Components
+category: tips
+type: code
+data-keywords: gui vizelement chart
+short-description: Embed any HTML inside your application.
+img: 3rd_party_components/part_illustration.png
+---
+In the world of web development, it's often necessary to integrate third-party components
+into your applications. These components could range from interactive visualizations to
+videos or other web pages. This article will demonstrate how to effectively include
 external resources, focusing on embedding a Folium Map into a web application.
 
 ![Part illustration](part_illustration.png){width=100%}
 
 ## Example: Embedding a Folium Map
 
-Let's explore a practical example of integrating a Folium Map into a web 
-application. Folium is a powerful visualization tool for representing various maps, 
+Let's explore a practical example of integrating a Folium Map into a web
+application. Folium is a powerful visualization tool for representing various maps,
 finding applications in energy studies, cost analysis, and network analysis.
 
 ![Folium Map](folium_map.png){width=100%}
 
-In our scenario, we have a Python application that processes recruitment data, performs 
-analysis, and generates a Folium Map using 
-[Folium](https://python-visualization.github.io/folium/), a Python library for creating 
+In our scenario, we have a Python application that processes recruitment data, performs
+analysis, and generates a Folium Map using
+[Folium](https://python-visualization.github.io/folium/), a Python library for creating
 interactive maps.
 
 Here's a code snippet creating a Folium object:
@@ -56,7 +64,7 @@ def folium_map():
 
 ## Integrating the Folium Map
 
-To integrate this *map* object into our web application, we need to create the HTML 
+To integrate this *map* object into our web application, we need to create the HTML
 version of this object. Here is the code that achieves this:
 
 ```python
@@ -69,11 +77,11 @@ def expose_folium(map):
             return f.read()
 ```
 
-In this code, the function *expose_folium()* converts a Folium object (*map*) to HTML, a 
+In this code, the function *expose_folium()* converts a Folium object (*map*) to HTML, a
 mandatory step in integrating any third-party component into your application.
 
-We now proceed to register a function for the object type we want to display. The code below 
-means that when Taipy encounters a *Map* type in the *content* property, it will use the 
+We now proceed to register a function for the object type we want to display. The code below
+means that when Taipy encounters a `Map` type in the *content* property, it will use the
 *expose_folium* function to convert it to HTML and display it on the page.
 
 ```python
@@ -88,19 +96,19 @@ Finally, we can embed the Folium Map using the following the `part` component:
 <|part|content={folium_map()}|>
 ```
 
-You can adjust the layout by changing its width and height. This element seamlessly 
+You can adjust the layout by changing its width and height. This element seamlessly
 integrates the Folium Map into your web app.
 
 [Get the entire code](./example.py){: .tp-btn target='blank'}
 
 ## Conclusion
 
-Incorporating third-party components into your web applications is a powerful technique 
-to enhance user experience significantly. You can achieve this by converting external 
+Incorporating third-party components into your web applications is a powerful technique
+to enhance user experience significantly. You can achieve this by converting external
 content into HTML and seamlessly integrating it into your web app.
 
-This article demonstrated how to embed a Folium Map using this method. This approach 
-also ensures that the integrated content doesn't interfere with your page and provides a 
+This article demonstrated how to embed a Folium Map using this method. This approach
+also ensures that the integrated content doesn't interfere with your page and provides a
 secure user experience.
 
 # Entire Code

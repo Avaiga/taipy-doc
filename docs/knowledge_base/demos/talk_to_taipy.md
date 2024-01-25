@@ -1,3 +1,11 @@
+---
+title: TalkToTaipy
+category: demos
+type: code
+data-keywords: gui vizelement layout chart ai
+short-description: Explore datasets using only natural language using TalkToTaipy!
+img: images/talk_to_taipy_image.jpeg
+---
 Explore datasets using only natural language using TalkToTaipy!
 
 [Try it live](https://talk-to-taipy.taipy.cloud/){: .tp-btn target='blank' }

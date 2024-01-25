@@ -1,3 +1,10 @@
+---
+title: LLM ChatBot
+category: tutorials
+type: code
+data-keywords: gui vizelement markdown
+short-description: Create a chatbot interface using Taipy and an LLM API.
+---
 In this tutorial we will create a simple chatbot website using Taipy.
 
 [Try it live](https://demo-llm-chat.taipy.cloud/){: .tp-btn target='blank' }
