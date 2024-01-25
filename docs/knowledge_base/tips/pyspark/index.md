@@ -14,8 +14,8 @@ in allowing developers to easily model their pipelines, even when using 3rd part
 packages without explicit support.
 
 
-> If you're already familiar with PySpark and Taipy, you can skip ahead to "2. The 
-Taipy configuration (*config.py*)". That section dives right into defining a 
+> If you're already familiar with PySpark and Taipy, you can skip ahead to "The 
+Taipy configuration". That section dives right into defining a 
 function for a Taipy task to run a PySpark application. Otherwise, read on!
 
 ![Illustration](images/front.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
