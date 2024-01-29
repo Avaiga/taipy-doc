@@ -17,6 +17,7 @@ This article focuses on the seamless integration of Dask (for handling out-of-co
  with Taipy, a Python library used for pipeline orchestration and scenario management.
 
 # Sample Application
+
 Integrating Dask and Taipy is demonstrated best with an example. In this article, we'll
 consider a Taipy data workflow with four tasks:
 
