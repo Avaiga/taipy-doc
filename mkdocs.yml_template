@@ -291,18 +291,21 @@ watch:
   - tools/postprocess.py
 extra:
   social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/avaiga/taipy
+      name: Github
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/hS95mtBnrj
+      name: Discord
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/channel/UCYZyGVj-fPgUSITZnsOQoDg
+      name: YouTube
     - icon: fontawesome/brands/x-twitter
       link: https://twitter.com/Taipy_io
       name: Tweet
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/taipy-io/
       name: LinkedIn
-    - icon: fontawesome/brands/youtube
-      link: https://www.youtube.com/channel/UCYZyGVj-fPgUSITZnsOQoDg
-      name: YouTube
-    - icon: fontawesome/brands/github
-      link: https://github.com/avaiga/taipy
-      name: Github
     - icon: material/email
       link: "mailto:dev@taipy.io"
   # to enable disqus, uncomment the following and put your disqus id below
