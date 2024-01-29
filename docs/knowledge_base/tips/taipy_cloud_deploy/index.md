@@ -44,7 +44,7 @@ Machines can be tailored to meet your specific needs, and when you click **Add m
 on the Taipy Cloud dashboard, you can configure several parameters:
 
 - **Machine name**: Provide a unique name for your machine.
-- **Python version**: Choose from a Python version 3.8, 3.9, 3.10, or 3.11.
+- **Python version**: Choose from a Python version 3.8, 3.9, 3.10, 3.11, or 3.12.
 - **Machine size**: Select from Small, Medium, or Large, depending on your application's requirements.
   Larger machines can handle more complex applications simultaneously. The default setting is a small-size machine.
   If you're a first-time user of Taipy Cloud, you'll also be prompted to create a username and password.

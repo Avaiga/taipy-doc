@@ -26,6 +26,9 @@ This is the list of changes to Taipy releases as they were published.
 
 <h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
 
+- Taipy and all its dependencies now support Python 3.12.<br/>
+  See [Python documentation](https://docs.python.org/3/whatsnew/3.12.html) for details.
+
 - The `DataNode.filter()^` method and the indexing/filtering style now also support filtering a
     Numpy array, a list of objects, and a list of dictionaries.<br/>
     For more information, refer to [Filter data node](./manuals/core/entities/data-node-mgt.md#filter-read-results).
