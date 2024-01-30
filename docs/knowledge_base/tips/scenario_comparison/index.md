@@ -1,12 +1,13 @@
 ---
 title: Scenario Comparison
-category: tutorials
+category: tips
 type: code
 data-keywords: scenario comparison datanode configuration
 short-description: Learn best practices to compare scenarios easily.
+img: images/icon-code.svg
 ---
 > You can download the code
-<a href="/scenario_comparison.py" download>here</a>.
+<a href="./scenario_comparison.py" download>here</a>.
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Advanced*
 
