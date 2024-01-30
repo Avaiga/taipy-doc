@@ -73,7 +73,7 @@ nav:
         - "Job Execution mode": knowledge_base/tips/job_execution/index.md
         - "Scenario Comparison": knowledge_base/tips/scenario_comparison/index.md
         - "Scenario Subscription": knowledge_base/tips/scenario_subscription/index.md
-        - "Manage application versions": knowledge_base/tips/version_management/version_management.md
+        - "Manage application versions": knowledge_base/tips/version_management/index.md
   - "Manuals":
     - "About Taipy's Manuals": manuals/index.md
     - "User Manuals":
