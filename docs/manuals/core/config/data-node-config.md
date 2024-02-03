@@ -31,7 +31,8 @@ The attributes available on data nodes are:
     The possible values are ["pickle"](#pickle) (**the default value**), ["csv"](#csv),
     ["excel"](#excel), ["json"](#json), ["mongo_collection"](#mongo-collection),
     ["parquet"](#parquet), ["sql"](#sql), ["sql_table"](#sql_table),
-    ["in_memory"](#in-memory), or ["generic"](#generic).<br/>
+    ["in_memory"](#in-memory), ["generic"](#generic) or
+    ["Amazon Web Service S3 Object"](#amazon-web-service-s3-object).<br/>
     As explained in the following subsections, depending on the *storage_type*, other
     configuration attributes must be provided in the *properties* parameter.
 - Any other custom attribute can be provided through the parameter _**properties**_,
@@ -76,7 +77,7 @@ Taipy proposes predefined *data nodes* corresponding to the most popular
 does not need to spend much time configuring the *storage types* or the
 *query system*. A predefined data node will often satisfy the user's
 required format: pickle, CSV, SQL table, MongoDB collection, Excel sheet,
-etc.
+Amazon Web Service S3 Object, etc.
 
 The various predefined *storage types* are typically used for input data.
 Indeed, the input data is usually provided by external sources, where
@@ -838,6 +839,32 @@ The scope is `SCENARIO` (default value), and default data is provided.
     To configure an in_memory data node, it is equivalent to using the method
     `Config.configure_in_memory_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="in_memory"`.
+
+## Amazon Web Service S3 Object
+A `S3ObjectDataNode^` is a specific data node used to model data stored in a
+S3 bucket. To add a new *S3Object* data node configuration, the
+`Config.configure_s3_object_data_node()^` method can be used. In addition to
+the generic parameters described in the [Data node configuration](data-node-config.md)
+section, multiple parameters can be provided.
+
+- _**aws_access_key**_ represents the Amazon Web Services (AWS) identity account.
+- _**aws_secret_access_key**_ represents the AWS access key to authenticate programmatic requests.
+- _**aws_region**_ represnets the geographic area where the AWS infrastructure is located.
+- _**aws_s3_bucket_name**_ represnts the name of the AWS S3 bucket.
+- _**aws_s3_object_key**_ represents the name of the object (file) that needs to be read or written.
+- _**aws _s3_object_parameters**_ represents additional arguments to be passed to interact with the AWS service.
+
+In this example, we configure a *s3_object* data node with the id "my_s3_object":
+
+- Its scope is the default value `SCENARIO`.
+- The object_key name is "taipy_object".
+
+```python linenums="1"
+{%
+include-markdown "./code_example/data_node_cfg/data-node-config-aws-s3.py"
+comments=false
+%}
+```
 
 # Default data node configuration
 
