@@ -1,4 +1,3 @@
-# Let's welcome users with our s3 object
 import taipy as tp
 import boto3
 from taipy import Config, Core
