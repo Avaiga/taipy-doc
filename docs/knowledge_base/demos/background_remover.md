@@ -1,3 +1,11 @@
+---
+title: Background Remover
+category: demos
+type: code
+data-keywords: gui ai
+short-description: An interactive application to easily remove image backgrounds using automatic detection.
+img: images/background-remover.png
+---
 Background Remover is an image processing application built using Taipy. The objective is
 to simplify the process of removing backgrounds from images. This demo showcases how you
 can achieve this effortlessly using Taipy and offers a peek into the code.
@@ -23,7 +31,7 @@ background-removed output.
 - **Code Efficiency:** Achieves the background removal task in just a few lines of Python
 code.
 
-This one-page demo uses [`rembg`](https://github.com/danielgatis/rembg) and the [OpenCV library](https://opencv.org/) 
+This one-page demo uses [`rembg`](https://github.com/danielgatis/rembg) and the [OpenCV library](https://opencv.org/)
 to remove the background of pictures.
 
 # How to Use the Application

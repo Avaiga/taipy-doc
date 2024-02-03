@@ -1,9 +1,16 @@
-> You can download the code 
-<a href="/job_execution.py" download>here</a>. Here is the 
-<a href="/job_execution_toml.py" download>Python version</a> 
-with the 
+---
+title: Job Execution modes
+category: tutorials
+type: code
+data-keywords: scenario task job submission configuration standalone cluster
+short-description: Increase efficiency running your scenarios making your Job Execution asynchronous.
+---
+> You can download the code
+<a href="/job_execution.py" download>here</a>. Here is the
+<a href="/job_execution_toml.py" download>Python version</a>
+with the
 <a href="/config.toml" download>TOML file</a>
-. 
+.
 
 # Executing jobs
 
@@ -31,7 +38,7 @@ def add(nb):
 
 ![Configuration](config.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-This line of code alters the execution mode. Setting it to _standalone_ makes Taipy Core work asynchronously. 
+This line of code alters the execution mode. Setting it to *standalone* makes Taipy Core work asynchronously.
 In this configuration, a maximum of two tasks can run simultaneously.
 
 ```python

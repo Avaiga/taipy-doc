@@ -1,0 +1,121 @@
+---
+hide:
+  - toc
+---
+<!-- Quick accesses -->
+<div class="tp-row tp-row--gutter-sm">
+
+  <div class="tp-col-12 tp-col-md-4 d-flex">
+    <a class="tp-content-card tp-content-card--primary" href="tutorials">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="images/icon-tutorials.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h3>Tutorials</h3>
+        <p>
+          Follow our tutorials and get the core concepts of Taipy.
+        </p>
+      </div>
+    </a>
+  </div>
+
+  <div class="tp-col-12 tp-col-md-4 d-flex">
+    <a class="tp-content-card tp-content-card--beta" href="demos">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="images/icon-demos.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h3>Demos</h3>
+        <p>
+          See Taipy in action in our demo applications.
+        </p>
+      </div>
+    </a>
+  </div>
+
+  <div class="tp-col-12 tp-col-md-4 d-flex">
+    <a class="tp-content-card tp-content-card--alpha" href="tips">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="images/icon-tips.svg">
+      </header>
+      <div class="tp-content-card-body">
+        <h3>Tips</h3>
+        <p>
+          Learn some tips and tricks to take your Taipy applications further.
+        </p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<hr class="tp-separator">
+
+<!-- Filters -->
+<ul class="tp-pills-list tp-pills-filter">
+  <li>
+    <input type="checkbox" name="filter-all" id="filter-all" value="all" checked>
+    <label class="tp-pill" for="filter-all">
+      <span>All</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-gui" id="filter-gui" value="gui">
+    <label class="tp-pill" for="filter-gui">
+      <span>GUI</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-dashboard" id="filter-dashboard" value="dashboard">
+    <label class="tp-pill" for="filter-dashboard">
+      <span>Dashboard</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-scenario" id="filter-scenario" value="scenario">
+    <label class="tp-pill" for="filter-scenario">
+      <span>Scenario</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-studio" id="filter-studio" value="studio">
+    <label class="tp-pill" for="filter-studio">
+      <span>Taipy Studio</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-ai" id="filter-ai" value="ai">
+    <label class="tp-pill" for="filter-ai">
+      <span>Machine Learning</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-optimization" id="filter-optimization" value="optimization">
+    <label class="tp-pill" for="filter-optimization">
+      <span>Optimization</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-stylekit" id="filter-stylekit" value="stylekit">
+    <label class="tp-pill" for="filter-stylekit">
+      <span>Stylekit</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-cloud" id="filter-cloud" value="cloud">
+    <label class="tp-pill" for="filter-cloud">
+      <span>Taipy Cloud</span>
+    </label>
+  </li>
+</ul>
+
+# Tutorials
+
+[LIST_OF_TUTORIALS]
+
+# Demos
+
+[LIST_OF_DEMOS]
+
+# Tips & Tricks
+
+[LIST_OF_TIPS]

@@ -22,8 +22,8 @@ from initial prototypes to production-ready applications.
       </header>
       <img src="images/gui_creation.gif">
       <p>
-        Design user interfaces effortlessly. You don't need prior web design or web 
-        development knowledge to create interactive multi-page applications. You can craft dynamic 
+        Design user interfaces effortlessly. You don't need prior web design or web
+        development knowledge to create interactive multi-page applications. You can craft dynamic
         web pages with ease.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
@@ -38,8 +38,8 @@ from initial prototypes to production-ready applications.
       </header>
       <img src="images/scenario_and_data_mgt.gif">
       <p>
-        Create scenarios for efficient pipeline orchestration, easy data and parameter access, and 
-        effective monitoring of outputs and KPIs. Taipy speeds up the developer's work and 
+        Create scenarios for efficient pipeline orchestration, easy data and parameter access, and
+        effective monitoring of outputs and KPIs. Taipy speeds up the developer's work and
         empowers end-users to efficiently visualize, execute, and oversee scenarios.
       </p>
       <span class="tp-content-card-readmore">Read more</span>
@@ -67,7 +67,7 @@ from initial prototypes to production-ready applications.
       <div class="tp-tooltip">
         <img src="manuals/gui/viselements/table-d.png"/>
         <p>
-          A table presents data in rows and columns, often used in web applications for structured 
+          A table presents data in rows and columns, often used in web applications for structured
           data display and interaction.
         </p>
       </div>
@@ -118,21 +118,13 @@ from initial prototypes to production-ready applications.
       <span>Structure Pages</span>
     </a>
   </li>
-  <li>
-    <a class="tp-pill" href="manuals/core/config/scenario-config/#from-task-configs">
-      <span>Configure Scenario</span>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="manuals/core/entities/scenario-creation/">
-      <span>Instantiate Scenario</span>
-    </a>
-  </li>
-  <li>
-    <a class="tp-pill" href="manuals/core/entities/orchestrating-and-job-execution/#submit-a-scenario-sequence-or-task/">
-      <span>Submit Scenario</span>
-    </a>
-  </li>
+    <li>
+      <div class="tp-pill">
+        <a href="manuals/core/config/scenario-config/#from-task-configs">Configure</a>,
+        <a href="manuals/core/entities/scenario-creation/">instantiate</a> and
+        <a href="manuals/core/entities/orchestrating-and-job-execution/#submit-a-scenario-sequence-or-task/">submit</a> Scenario
+      </div>
+    </li>
   <li>
     <a class="tp-pill" href="manuals/core/versioning/">
       <span>Manage versions</span>

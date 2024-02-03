@@ -1,17 +1,24 @@
-> You can download the code 
-<a href="/scope_and_cycle.py" download>here</a>. Here is the 
-<a href="/scope_and_cycle_toml.py" download>Python version</a> 
-with the 
-<a href="/config.toml" download>TOML file</a>. 
+---
+title: Cycles and Scopes
+category: tutorials
+type: code
+data-keywords: scenario datanode configuration cycle scope submission
+short-description: Share your Data Nodes across multiple scenarios with Cycles and Scopes.
+---
+> You can download the code
+<a href="/scope_and_cycle.py" download>here</a>. Here is the
+<a href="/scope_and_cycle_toml.py" download>Python version</a>
+with the
+<a href="/config.toml" download>TOML file</a>.
 Two datasets have also to be downloaded (
-<a href="/config.toml" download>here</a> and 
+<a href="/config.toml" download>here</a> and
 <a href="/config.toml" download>here</a>).
 
 *Estimated Time for Completion: 30 minutes; Difficulty Level: Intermediate*
 
 In this section, we will explore the intricate relationship between
-[Scopes](../../../manuals/core/concepts/scope.md) and 
-[Cycles](../../../manuals/core/concepts/cycle.md), two core concepts that help manage data 
+[Scopes](../../../manuals/core/concepts/scope.md) and
+[Cycles](../../../manuals/core/concepts/cycle.md), two core concepts that help manage data
 nodes and scenarios effectively in Taipy.
 
 
@@ -21,8 +28,8 @@ Using [Cycles](../../../manuals/core/concepts/cycle.md) allow you to:
 
 - Share variables between scenarios in the same time frame
 
-For example, if I have three sales prediction scenarios for the month of June, I do 
-not have to duplicate the data for each scenario. I can share the June sales data 
+For example, if I have three sales prediction scenarios for the month of June, I do
+not have to duplicate the data for each scenario. I can share the June sales data
 between the three scenarios.
 
 - Better organize the data nodes in your application
@@ -30,7 +37,7 @@ between the three scenarios.
 ![Data Node Selector](data_node_selector.png){ width=30% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
-Here we have a single month_data node for all scenarios of October 2022 and it 
+Here we have a single month_data node for all scenarios of October 2022 and it
 is part of the October 2022 cycle. I do not need to create a new data node for each scenario and clutter my application.
 
 
@@ -39,7 +46,7 @@ is part of the October 2022 cycle. I do not need to create a new data node for e
 
 ```python
 def filter_by_month(df, month):
-    df['Date'] = pd.to_datetime(df['Date']) 
+    df['Date'] = pd.to_datetime(df['Date'])
     df = df[df['Date'].dt.month == month]
     return df
 ```
@@ -54,11 +61,11 @@ def filter_by_month(df, month):
     === "Taipy Studio"
 
         ![](config.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
-        
+
         - Construct the configuration
 
         - Add the frequency property for the scenario and put "MONTHLY:FREQUENCY" (DAYLY, WEEKLY, MONTHLY, YEARLY)
-        
+
         - Load the new [configuration](./config.toml) in the code
 
     === "Python configuration"
@@ -87,11 +94,11 @@ def filter_by_month(df, month):
         ```
 
 
-Since we have specified `frequency=Frequency.MONTHLY`, the corresponding scenario when created, 
-is automatically attached to the correct period (month). 
+Since we have specified `frequency=Frequency.MONTHLY`, the corresponding scenario when created,
+is automatically attached to the correct period (month).
 
-The Cycle which a Scenario belongs to is based on the _creation_date_ of the scenario. It can be 
-"attached" to a specific cycle by manually setting its _creation_date_, as we are doing in the 
+The Cycle which a Scenario belongs to is based on the _creation_date_ of the scenario. It can be
+"attached" to a specific cycle by manually setting its _creation_date_, as we are doing in the
 following example.
 
 
@@ -106,9 +113,9 @@ scenario_2 = tp.create_scenario(scenario_cfg,
                                 name="Scenario 2022/10/5")
 ```
 
-Scenario 1 and Scenario 2 are two separate scenario entities created using the same scenario 
-configuration. They are part of the same Cycle but have different data nodes. By default, each 
-scenario instance has its own data node instances, and they are not shared with any other scenario. 
+Scenario 1 and Scenario 2 are two separate scenario entities created using the same scenario
+configuration. They are part of the same `Cycle` but have different data nodes. By default, each
+scenario instance has its own data node instances, and they are not shared with any other scenario.
 
 ## Interplay between Scopes and Cycles
 
@@ -117,8 +124,8 @@ hand, determines how data nodes are shared within these cycles and scenarios.
 
 # Scopes
 
-Sharing data nodes between entities allows you to organize and manage your data better. 
-It avoids data duplications and allows Taipy to better manage execution (see 
+Sharing data nodes between entities allows you to organize and manage your data better.
+It avoids data duplications and allows Taipy to better manage execution (see
 [skippable tasks](../../tips/skippable_tasks/index.md)).
 The developer may decide:
 
@@ -142,14 +149,14 @@ Let's change the configuration of our data nodes:
     === "Taipy Studio"
 
         ![](config_scope.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
-        
+
         - Change the Scope of historical_data to be global
-        
+
         - Change the Scope of month_data and month to be Cycle
 
     === "Python configuration"
 
-        The configuration is the same as the last step except for the data node 
+        The configuration is the same as the last step except for the data node
         configurations. New parameter are added for scopes.
 
         ```python
@@ -161,12 +168,12 @@ Let's change the configuration of our data nodes:
 
         month_cfg =  Config.configure_data_node(id="month", scope=Scope.CYCLE)
         month_values_cfg =  Config.configure_data_node(id="month_values", scope=Scope.CYCLE)
-   
+
         ```
 
 
-Defining the _month_ of scenario 1 will also determine the _month_ of scenario 2 since they 
-share the same Data Node. 
+Defining the *month* of scenario 1 will also determine the *month* of scenario 2 since they
+share the same Data Node.
 
 ```python
 scenario_1.month.write(10)
@@ -185,23 +192,23 @@ Month Data Node of Scenario 1: 10
 Month Data Node of Scenario 2: 10
 ```
 
-In this unusual example where both scenarios are in the same cycle and all their data nodes 
-are at least with a Cycle Scope, executing one is the same as executing the other as they share 
+In this unusual example where both scenarios are in the same cycle and all their data nodes
+are at least with a `Cycle` Scope, executing one is the same as executing the other as they share
 all their data nodes.
 
 # Going further into Cycles
 
 ## Primary scenarios
 
-In each Cycle, there is a primary scenario. A primary scenario is interesting because 
-it represents the important scenario of the Cycle, the reference. By default, the 
+In each `Cycle`, there is a primary scenario. A primary scenario is interesting because
+it represents the important scenario of the `Cycle`, the reference. By default, the
 first scenario created for a cycle is primary.
 
 
 ### Python code associated to primary scenarios
 
-[`tp.set_primary(<Scenario>)`](../../../manuals/core/entities/scenario-cycle-mgt.md#promote-a-scenario-as-primary) 
-allows changing the primary scenario in a Cycle.
+[`tp.set_primary(<Scenario>)`](../../../manuals/core/entities/scenario-cycle-mgt.md#promote-a-scenario-as-primary)
+allows changing the primary scenario in a `Cycle`.
 
 `<Scenario>.is_primary` identifies as a boolean whether the scenario is primary or not.
 
@@ -268,7 +275,7 @@ import pandas as pd
 
 
 def filter_by_month(df, month):
-    df['Date'] = pd.to_datetime(df['Date']) 
+    df['Date'] = pd.to_datetime(df['Date'])
     df = df[df['Date'].dt.month == month]
     return df
 
@@ -309,7 +316,7 @@ if __name__ == '__main__':
     print("Month Data Node of Scenario 2:", scenario_2.month.read())
 
     scenario_1.submit()
-    
+
     before_set_1 = scenario_1.is_primary
     before_set_2 = scenario_2.is_primary
 

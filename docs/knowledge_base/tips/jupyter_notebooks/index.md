@@ -1,3 +1,11 @@
+---
+title: Jupyter Notebooks and Taipy GUI
+category: tips
+type: code
+data-keywords: gui notebook
+short-description: Seamlessly update the User Interface in a Jupyter Notebook without restarting the kernel.
+img: jupyter_notebooks/jupyter_notebooks_1.png
+---
 ![Taipy GUI in Jupyter Notebooks](jupyter_notebooks_1.png){width=100%}
 
 Taipy's built-in support for Jupyter Notebooks offers us:
@@ -17,7 +25,7 @@ To solve this and enhance the experience of using Taipy in Jupyter Notebook, we 
 
 1. [Page.set_content()](../../../manuals/reference/taipy.gui.Page.md#taipy.gui.page.Page.set_content):
    Use this method when you update the content of a page.
-    
+
 2. [Gui.reload()](../../../manuals/reference/taipy.gui.Gui.md#taipy.gui.gui.Gui.reload): Use this
    method when you modify a variable that's used in a page.
 
