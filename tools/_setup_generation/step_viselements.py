@@ -450,8 +450,8 @@ class [element_type]({base_class}):
         self.generate_pages("blocks", self.blocks_path)
         self.generate_builder_api()
 
-    # Special case for charts: we want to insert the chart demos that is stored in the
-    # file whose path is in self.charts_home_html_path
+    # Special case for charts: we want to insert the chart demos that 
+    # is stored in the file whose path is in self.charts_home_html_path
     # This should be inserted before the first level 1 header
     def chart_page_hook(
         self, element_documentation: str, before: str, after: str, charts_md_dir: str
