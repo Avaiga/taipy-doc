@@ -114,9 +114,7 @@ class KnowledgeBaseStep(SetupStep):
                     if not sub_folder.startswith("index.md"):
                         item = FileItem(folder_path, sub_folder)
                         items.append(item)
-            except NoHeader as e:
-                print(f"WARNING - ", e)
-            except WrongHeader as e:
+            except (NoHeader, WrongHeader) as e:
                 print(f"WARNING - ", e)
         return items
 

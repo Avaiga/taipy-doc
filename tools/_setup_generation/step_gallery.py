@@ -39,8 +39,8 @@ class GalleryStep(SetupStep):
 
 
     def enter(self, setup: Setup):
-        self.GALLERY_FOLDER_PATH = os.path.join(setup.docs_dir, self.GALLERY_FOLDER_NAME)
-        self.GALLERY_INDEX_PATH = os.path.join(setup.docs_dir, self.GALLERY_FOLDER_NAME, "index.md")
+        self.GALLERY_INDEX_TEMPLATE_PATH = os.path.join(self.GALLERY_FOLDER_PATH, "index.md_template")
+        self.GALLERY_INDEX_PATH = os.path.join(self.GALLERY_FOLDER_PATH, "index.md")
         self.GALLERY_INDEX_TEMPLATE_PATH = os.path.join(setup.docs_dir, self.GALLERY_FOLDER_NAME, "index.md_template")
   
     def get_id(self) -> str:
@@ -58,7 +58,7 @@ class GalleryStep(SetupStep):
             self.gallery = self._build_gallery_content(gallery_items)
             self._update_gallery_index_file()
 
-            print(f"{len(gallery_items)} gallery processed.")
+            print(f"{len(gallery_items)} gallery items processed.")
         except Exception as e:
             print(f"WARNING - Exception raised while generating the gallery index:\n{e}")
 
@@ -84,9 +84,7 @@ class GalleryStep(SetupStep):
                     if not sub_folder.startswith("index.md"):
                         item = FileItem(folder_path, sub_folder)
                         items.append(item)
-            except NoHeader as e:
-                print(f"WARNING - ", e)
-            except WrongHeader as e:
+            except (NoHeader, WrongHeader) as e:
                 print(f"WARNING - ", e)
         return items
 
