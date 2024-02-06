@@ -32,16 +32,16 @@ class GalleryStep(SetupStep):
     GALLERY_PLACEHOLDER = r"\[LIST_FOR_GALLERY\]"
 
     def __init__(self):
-        self.GALLERY_FOLDER_PATHS = None
+        self.GALLERY_FOLDER_PATH = None
         self.GALLERY_INDEX_PATH = None
-        self.GALLERY_INDEX_TPL_PATH = None
+        self.GALLERY_INDEX_TEMPLATE_PATH = None
         self.gallery = ""
 
 
     def enter(self, setup: Setup):
-        self.GALLERY_INDEX_TEMPLATE_PATH = os.path.join(self.GALLERY_FOLDER_PATH, "index.md_template")
+        self.GALLERY_FOLDER_PATH = os.path.join(setup.docs_dir, self.GALLERY_FOLDER_NAME)
         self.GALLERY_INDEX_PATH = os.path.join(self.GALLERY_FOLDER_PATH, "index.md")
-        self.GALLERY_INDEX_TEMPLATE_PATH = os.path.join(setup.docs_dir, self.GALLERY_FOLDER_NAME, "index.md_template")
+        self.GALLERY_INDEX_TEMPLATE_PATH = os.path.join(self.GALLERY_FOLDER_PATH, "index.md_template")
   
     def get_id(self) -> str:
         return "gallery"
