@@ -254,4 +254,46 @@ Tips and Tricks!
       </div> 
     </a>
   </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="decimator">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="decimator/images/front.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Charts for Big Data </h4>
+        <span class="tp-tag">Front-end </span>
+        <p> Taming Big Data without crashing.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario task">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="databricks">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="databricks/databricks.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Integrating Databricks </h4>
+        <span class="tp-tag">Front-end </span>
+        <p> A guide to integrate Databricks with Taipy scenarios.
+        </p>
+      </div> 
+    </a>
+  </li>
+
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario task">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="pyspark">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="pyspark/images/front.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4> Using PySpark for Big Data </h4>
+        <span class="tp-tag">Front-end </span>
+        <p> Build, Visualize and Launch Big Data DAGs.
+        </p>
+      </div> 
+    </a>
+  </li>
 </ul>
