@@ -22,4 +22,4 @@ conversation and continue it.
 ![ChatBot](images/chatbot_meds_conv.png){width=100%}
 
 A tutorial on how to write this application and similar
-LLM inference applications is available [here](../tutorials/chatbot/index.md).
+LLM inference applications is available [here](../tutorials/4_chatbot/index.md).

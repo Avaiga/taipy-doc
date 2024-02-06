@@ -1,15 +1,16 @@
 ---
 title: Job Execution modes
-category: tutorials
+category: tips
 type: code
 data-keywords: scenario task job submission configuration standalone cluster
 short-description: Increase efficiency running your scenarios making your Job Execution asynchronous.
+img: images/icon-code.svg
 ---
 > You can download the code
-<a href="/job_execution.py" download>here</a>. Here is the
-<a href="/job_execution_toml.py" download>Python version</a>
+<a href="./job_execution.py" download>here</a>. Here is the
+<a href="./job_execution_toml.py" download>Python version</a>
 with the
-<a href="/config.toml" download>TOML file</a>
+<a href="./config.toml" download>TOML file</a>
 .
 
 # Executing jobs

@@ -6,10 +6,10 @@ data-keywords: scenario task datanode configuration submission dag
 short-description: Learn how to give your end-users the power of managing multiple scenarios.
 ---
 > You can download the code
-<a href="/scenario_management.py" download>here</a>. Here is the
-<a href="/scenario_management_toml.py" download>Python version</a>
+<a href="./scenario_management.py" download>here</a>. Here is the
+<a href="./scenario_management_toml.py" download>Python version</a>
 with the
-<a href="/config.toml" download>TOML file</a>
+<a href="./config.toml" download>TOML file</a>
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Beginner*
 

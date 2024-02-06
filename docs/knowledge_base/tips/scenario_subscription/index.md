@@ -1,12 +1,13 @@
 ---
 title: Scenario Subscription
-category: tutorials
+category: tips
 type: code
 data-keywords: scenario subscription job gui notify
 short-description: Connect to your scenario executions to get the most recent updates.
+img: images/icon-code.svg
 ---
 > You can download the code
-<a href="/scenario_subscription.py" download>here</a>.
+<a href="./scenario_subscription.py" download>here</a>.
 
 # Subscribing to a scenario
 

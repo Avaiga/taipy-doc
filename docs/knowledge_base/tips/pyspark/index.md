@@ -404,7 +404,7 @@ this article:
 
 
 If you're unfamiliar with Taipy's GUI capabilities, you can find a quickstart 
-[here](../../tutorials/understanding_gui/index.md). In any case, you can copy and paste 
+[here](../../tutorials/1_understanding_gui/index.md). In any case, you can copy and paste 
 the following code for *app/main.py* since it isn't our focus:
 
 ```python title="app/main.py"

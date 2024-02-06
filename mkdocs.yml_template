@@ -14,35 +14,23 @@ nav:
     - "Tutorials":
         - "Tutorials": knowledge_base/tutorials/index.md
         - "Understanding GUI":
-            - "Understanding GUI": knowledge_base/tutorials/understanding_gui/index.md
-            - "1 - First Web page": knowledge_base/tutorials/understanding_gui/step_01/step_01.md
-            - "2 - Visual elements": knowledge_base/tutorials/understanding_gui/step_02/step_02.md
-            - "3 - Interactions": knowledge_base/tutorials/understanding_gui/step_03/step_03.md
-            - "4 - Charts": knowledge_base/tutorials/understanding_gui/step_04/step_04.md
-            - "5 - Python expressions in properties": knowledge_base/tutorials/understanding_gui/step_05/step_05.md
-            - "6 - Page layouts": knowledge_base/tutorials/understanding_gui/step_06/step_06.md
-            - "7 - Multi-pages, navbars, and menus": knowledge_base/tutorials/understanding_gui/step_07/step_07.md
-        - "Scenario management Overview": knowledge_base/tutorials/scenario_management_overview/index.md
-        - "Cycles and Scopes": knowledge_base/tutorials/cycles_scopes/index.md
-        - "Job Execution mode": knowledge_base/tutorials/job_execution/index.md
-        - "Scenario Comparison": knowledge_base/tutorials/scenario_comparison/index.md
-        - "Scenario Subscription": knowledge_base/tutorials/scenario_subscription/index.md
+            - "Understanding GUI": knowledge_base/tutorials/1_understanding_gui/index.md
+            - "1 - First Web page": knowledge_base/tutorials/1_understanding_gui/step_01/step_01.md
+            - "2 - Visual elements": knowledge_base/tutorials/1_understanding_gui/step_02/step_02.md
+            - "3 - Interactions": knowledge_base/tutorials/1_understanding_gui/step_03/step_03.md
+            - "4 - Charts": knowledge_base/tutorials/1_understanding_gui/step_04/step_04.md
+            - "5 - Python expressions in properties": knowledge_base/tutorials/1_understanding_gui/step_05/step_05.md
+            - "6 - Page layouts": knowledge_base/tutorials/1_understanding_gui/step_06/step_06.md
+            - "7 - Multi-pages, navbars, and menus": knowledge_base/tutorials/1_understanding_gui/step_07/step_07.md
+        - "Scenario management Overview": knowledge_base/tutorials/2_scenario_management_overview/index.md
         - "First Realistic application":
-            - "First Realistic application": knowledge_base/tutorials/complete_application/index.md
-            - "1 - Data visualization page": knowledge_base/tutorials/complete_application/step_01/step_01.md
-            - "2 - Algorithms used": knowledge_base/tutorials/complete_application/step_02/step_02.md
-            - "3 - Scenario configuration": knowledge_base/tutorials/complete_application/step_03/step_03.md
-            - "4 - Scenario page": knowledge_base/tutorials/complete_application/step_04/step_04.md
-            - "5 - Performance page": knowledge_base/tutorials/complete_application/step_05/step_05.md
-        - "Creating an LLM ChatBot": knowledge_base/tutorials/chatbot/index.md
-        - "Markdown Syntax": knowledge_base/tutorials/markdown_syntax.md
-        - "Data Dashboard": knowledge_base/tutorials/data_dashboard.md
-        - "Changing Line Types Using Charts": knowledge_base/tutorials/charts.md
-        - "Manage Multiple Pages": knowledge_base/tutorials/graphical_pages.md
-        - "Partials in Taipy": knowledge_base/tutorials/partials.md
-        - "Scenario Management concepts": knowledge_base/tutorials/scenario_mgt_concepts.md
-        - "Submitting Scenario and Tasks": knowledge_base/tutorials/execution.md
-        - "Manage application versions": knowledge_base/tutorials/version_management.md
+            - "First Realistic application": knowledge_base/tutorials/3_complete_application/index.md
+            - "1 - Data visualization page": knowledge_base/tutorials/3_complete_application/step_01/step_01.md
+            - "2 - Algorithms used": knowledge_base/tutorials/3_complete_application/step_02/step_02.md
+            - "3 - Scenario configuration": knowledge_base/tutorials/3_complete_application/step_03/step_03.md
+            - "4 - Scenario page": knowledge_base/tutorials/3_complete_application/step_04/step_04.md
+            - "5 - Performance page": knowledge_base/tutorials/3_complete_application/step_05/step_05.md
+        - "Creating an LLM ChatBot": knowledge_base/tutorials/4_chatbot/index.md
     - "Demos":
         - "Demos": knowledge_base/demos/index.md
         - "Sales Dashboard": knowledge_base/demos/sales_dashboard.md
@@ -81,6 +69,11 @@ nav:
         - "Integrating Databricks": knowledge_base/tips/databricks/index.md
         - "Using PySpark for Big Data": knowledge_base/tips/pyspark/index.md
         - "Charts for Big Data": knowledge_base/tips/decimator/index.md
+        - "Cycles and Scopes": knowledge_base/tips/cycles_scopes/index.md
+        - "Job Execution mode": knowledge_base/tips/job_execution/index.md
+        - "Scenario Comparison": knowledge_base/tips/scenario_comparison/index.md
+        - "Scenario Subscription": knowledge_base/tips/scenario_subscription/index.md
+        - "Manage application versions": knowledge_base/tips/version_management/index.md
   - "Manuals":
     - "About Taipy's Manuals": manuals/index.md
     - "User Manuals":

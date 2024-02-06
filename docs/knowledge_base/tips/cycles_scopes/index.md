@@ -1,18 +1,19 @@
 ---
 title: Cycles and Scopes
-category: tutorials
+category: tips
 type: code
 data-keywords: scenario datanode configuration cycle scope submission
 short-description: Share your Data Nodes across multiple scenarios with Cycles and Scopes.
+img: images/icon-code.svg
 ---
 > You can download the code
-<a href="/scope_and_cycle.py" download>here</a>. Here is the
-<a href="/scope_and_cycle_toml.py" download>Python version</a>
+<a href="./scope_and_cycle.py" download>here</a>. Here is the
+<a href="./scope_and_cycle_toml.py" download>Python version</a>
 with the
-<a href="/config.toml" download>TOML file</a>.
+<a href="./config.toml" download>TOML file</a>.
 Two datasets have also to be downloaded (
-<a href="/config.toml" download>here</a> and
-<a href="/config.toml" download>here</a>).
+<a href="./time_series.csv" download>here</a> and
+<a href="./time_series_2.csv" download>here</a>).
 
 *Estimated Time for Completion: 30 minutes; Difficulty Level: Intermediate*
 
@@ -258,7 +259,7 @@ tp.Gui("""<|{scenario}|scenario_selector|>
 
 ![Visual Elements](visual_elements.png){ width=60% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-## Conclusion
+# Conclusion
 
 By understanding the dynamics between scopes and cycles, developers can effectively manage
 data nodes and scenarios to suit specific business needs and scenarios. Experiment with
