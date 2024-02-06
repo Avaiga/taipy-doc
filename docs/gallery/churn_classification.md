@@ -1,6 +1,6 @@
 ---
 title: Churn Classification - Predict customer churn
-category: demos
+category: gallery
 type: code
 data-keywords: gui ai classification scenario
 short-description: Leverage Scenario management and comparison to improve decision making on a Churn prediction demo.

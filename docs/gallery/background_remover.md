@@ -1,6 +1,6 @@
 ---
 title: Background Remover
-category: demos
+category: gallery
 type: code
 data-keywords: gui ai
 short-description: An interactive application to easily remove image backgrounds using automatic detection.

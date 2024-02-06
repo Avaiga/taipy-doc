@@ -450,25 +450,25 @@ class [element_type]({base_class}):
         self.generate_pages("blocks", self.blocks_path)
         self.generate_builder_api()
 
-    # Special case for charts: we want to insert the chart gallery that is stored in the
+    # Special case for charts: we want to insert the chart demos that is stored in the
     # file whose path is in self.charts_home_html_path
     # This should be inserted before the first level 1 header
     def chart_page_hook(
         self, element_documentation: str, before: str, after: str, charts_md_dir: str
     ) -> tuple[str, str]:
         with open(self.charts_home_html_path, "r") as html_fragment_file:
-            chart_gallery = html_fragment_file.read()
-            # The chart_gallery begins with a comment where all sub-sections
+            chart_demos = html_fragment_file.read()
+            # The chart_demos begins with a comment where all sub-sections
             # are listed.
         SECTIONS_RE = re.compile(
             r"^(?:\s*<!--\s+)(.*?)(?:-->)", re.MULTILINE | re.DOTALL
         )
-        match = SECTIONS_RE.match(chart_gallery)
+        match = SECTIONS_RE.match(chart_demos)
         if not match:
             raise ValueError(
                 f"{self.charts_home_html_path} should begin with an HTML comment that lists the chart types"
             )
-        chart_gallery = "\n" + chart_gallery[match.end() :]
+        chart_demos = "\n" + chart_demos[match.end() :]
         SECTION_RE = re.compile(r"^([\w-]+):(.*)$")
         chart_sections = ""
         for line in match.group(1).splitlines():
@@ -493,7 +493,7 @@ class [element_type]({base_class}):
                 "Couldn't locate first header1 in documentation for element 'chart'"
             )
         return (
-            match.group(1) + chart_gallery + before[match.end() :],
+            match.group(1) + chart_demos + before[match.end() :],
             after + chart_sections,
         )
     

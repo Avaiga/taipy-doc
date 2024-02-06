@@ -1,6 +1,6 @@
 ---
 title: TalkToTaipy
-category: demos
+category: gallery
 type: code
 data-keywords: gui vizelement layout chart ai
 short-description: Explore datasets using only natural language using TalkToTaipy!

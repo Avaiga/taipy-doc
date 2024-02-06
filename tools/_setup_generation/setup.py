@@ -119,6 +119,7 @@ class SetupStep(ABC):
 def run_setup(root_dir: str, steps: List[SetupStep] = None):
     if not steps:
         from .step_knowledge_base import KnowledgeBaseStep
+        from .step_gallery import GalleryStep
         from .step_viselements import VisElementsStep
         from .step_refman import RefManStep
         from .step_rest_refman import RestRefManStep
@@ -126,6 +127,7 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
         from .step_contributors import ContributorsStep
 
         steps = [
+            GalleryStep(),
             KnowledgeBaseStep(),
             VisElementsStep(),
             RefManStep(),

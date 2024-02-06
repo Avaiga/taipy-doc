@@ -1,6 +1,6 @@
 ---
 title: Image Classification
-category: demos
+category: gallery
 type: code
 data-keywords: gui ai classification
 short-description: Explore our interactive image classification application built with Taipy, Nvidia CUDA, and TensorFlow.

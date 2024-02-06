@@ -1,6 +1,6 @@
 ---
 title: Production Planning - Optimize production and cost management
-category: demos
+category: gallery
 type: code
 data-keywords: gui optimization scenario cycle comparison
 short-description: Simulate manufacturing scenarios and optimize production quantities to reduce production costs.

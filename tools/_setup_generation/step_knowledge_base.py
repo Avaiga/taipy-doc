@@ -1,7 +1,7 @@
 # ##########################################################################################
 # Step to generate the list of knowledge base items in the knowledge base index page
 #
-# The knowledge base index page is generated from the tutorials, demos and tips folders.
+# The knowledge base index page is generated from the tutorials and tips folders.
 # Each folder contains a list of sub folders, each sub folder is a knowledge base item.
 # Each item has an index.md file with a header containing the necessary information to
 # generate the list of items in the knowledge base index page.
@@ -9,7 +9,7 @@
 # The header of an item is a multiline header starting with '---' and ending with '---'.
 # The header contains the following information:
 # - title: The title of the item
-# - category: The category of the item (tutorials, demos or tips)
+# - category: The category of the item (tutorials or tips)
 # - type: The type of the item (code, video or article)
 # - data-keywords: A comma separated list of keywords
 # - short_description: A short description of the item
@@ -20,8 +20,8 @@ import re
 from typing import List
 
 from .setup import SetupStep, Setup
-from .step_knowedge_base import FolderItem, FileItem, Item
-from .step_knowedge_base.exceptions import WrongHeader, NoHeader, NoIndexFile
+from .items import FolderItem, FileItem, Item
+from .items.exceptions import WrongHeader, NoHeader, NoIndexFile
 
 
 class KnowledgeBaseStep(SetupStep):
@@ -31,7 +31,6 @@ class KnowledgeBaseStep(SetupStep):
 
     # The placeholders in the knowledge base index file to be replaced by the generated content
     TUTORIALS_PLACEHOLDER = r"\[LIST_OF_TUTORIALS\]"
-    DEMOS_PLACEHOLDER = r"\[LIST_OF_DEMOS\]"
     TIPS_PLACEHOLDER = r"\[LIST_OF_TIPS\]"
 
     def __init__(self):
@@ -40,16 +39,11 @@ class KnowledgeBaseStep(SetupStep):
         self.TUTORIALS_FOLDER_PATHS = None
         self.TUTORIALS_INDEX_PATH = None
         self.TUTORIALS_INDEX_TPL_PATH = None
-        self.DEMOS_FOLDER_PATHS = None
-        self.DEMOS_INDEX_PATH = None
-        self.DEMOS_INDEX_TPL_PATH = None
         self.TIPS_FOLDER_PATHS = None
         self.TIPS_INDEX_PATH = None
         self.TIPS_INDEX_TPL_PATH = None
         self.tutorials_on_kb = ""
         self.tutorials = ""
-        self.demos_on_kb = ""
-        self.demos = ""
         self.tips_on_kb = ""
         self.tips = ""
 
@@ -59,9 +53,6 @@ class KnowledgeBaseStep(SetupStep):
         self.TUTORIALS_FOLDER_PATHS = os.path.join(setup.docs_dir, self.KNOWLEDGE_BASE_FOLDER_NAME, "tutorials")
         self.TUTORIALS_INDEX_PATH = os.path.join(self.TUTORIALS_FOLDER_PATHS, "index.md")
         self.TUTORIALS_INDEX_TPL_PATH = os.path.join(self.TUTORIALS_FOLDER_PATHS, "index.md_template")
-        self.DEMOS_FOLDER_PATHS = os.path.join(setup.docs_dir, self.KNOWLEDGE_BASE_FOLDER_NAME, "demos")
-        self.DEMOS_INDEX_PATH = os.path.join(self.DEMOS_FOLDER_PATHS, "index.md")
-        self.DEMOS_INDEX_TPL_PATH = os.path.join(self.DEMOS_FOLDER_PATHS, "index.md_template")
         self.TIPS_FOLDER_PATHS = os.path.join(setup.docs_dir, self.KNOWLEDGE_BASE_FOLDER_NAME, "tips")
         self.TIPS_INDEX_PATH = os.path.join(self.TIPS_FOLDER_PATHS, "index.md")
         self.TIPS_INDEX_TPL_PATH = os.path.join(self.TIPS_FOLDER_PATHS, "index.md_template")
@@ -74,9 +65,8 @@ class KnowledgeBaseStep(SetupStep):
 
     def setup(self, setup: Setup) -> None:
         try:
-            # Parse the tutorials, demos and tips folders and get all the items
+            # Parse the tutorials and tips folders and get all the items
             tutorials_items = self._get_list_of_items(self.TUTORIALS_FOLDER_PATHS)
-            demos_items = self._get_list_of_items(self.DEMOS_FOLDER_PATHS)
             tips_items = self._get_list_of_items(self.TIPS_FOLDER_PATHS)
 
             # Generate content for the tutorials index page
@@ -85,13 +75,6 @@ class KnowledgeBaseStep(SetupStep):
                                     self.TUTORIALS_INDEX_PATH,
                                     self.TUTORIALS_PLACEHOLDER,
                                     self.tutorials)
-
-            # Generate content for the demos index page
-            self.demos = self._build_demos_content(demos_items)
-            self._update_index_file(self.DEMOS_INDEX_TPL_PATH,
-                                    self.DEMOS_INDEX_PATH,
-                                    self.DEMOS_PLACEHOLDER,
-                                    self.demos)
 
             # Generate content for the tips index page
             self.tips = self._build_tips_content(tips_items)
@@ -102,11 +85,10 @@ class KnowledgeBaseStep(SetupStep):
 
             # Generate content for the kb index page
             self.tutorials_on_kb = self._build_content(tutorials_items)
-            self.demos_on_kb = self._build_content(demos_items)
             self.tips_on_kb = self._build_content(tips_items)
             self._update_kb_index_file()
 
-            print(f"{len(tutorials_items)} tutorials, {len(demos_items)} demos and {len(tips_items)} tips processed.")
+            print(f"{len(tutorials_items)} tutorials and {len(tips_items)} tips processed.")
         except Exception as e:
             print(f"WARNING - Exception raised while generating the knowledge base index:\n{e}")
 
@@ -149,16 +131,6 @@ class KnowledgeBaseStep(SetupStep):
         return "\n".join(lines)
 
     @staticmethod
-    def _build_demos_content(items: List[Item]) -> str:
-        lines: List[str] = list()
-        lines.append('<ul class="tp-row tp-row--gutter-sm tp-filtered">')
-        for item in items:
-            content = item.generate_content_for_demos()
-            lines.append(content)
-        lines.append("</ul>")
-        return "\n".join(lines)
-
-    @staticmethod
     def _build_tips_content(items: List[Item]) -> str:
         lines: List[str] = list()
         lines.append('<ul class="tp-row tp-row--gutter-sm tp-filtered">')
@@ -193,7 +165,6 @@ class KnowledgeBaseStep(SetupStep):
         with open(self.KB_INDEX_TEMPLATE_PATH) as kb_index_file:
             kb_index_content = kb_index_file.read()
         kb_index_content = self._replace(self.TUTORIALS_PLACEHOLDER, self.tutorials_on_kb, kb_index_content)
-        kb_index_content = self._replace(self.DEMOS_PLACEHOLDER, self.demos_on_kb, kb_index_content)
         kb_index_content = self._replace(self.TIPS_PLACEHOLDER, self.tips_on_kb, kb_index_content)
         with open(self.KB_INDEX_PATH, "w") as kb_index_file:
             kb_index_file.write(kb_index_content)

@@ -1,6 +1,6 @@
 ---
 title: Sales Dashboard
-category: demos
+category: gallery
 type: code
 data-keywords: gui dashboard vizelement layout chart
 short-description: Check out our Sales Dashboard demo that shows valuable insights by exposing Excel files as a web application.

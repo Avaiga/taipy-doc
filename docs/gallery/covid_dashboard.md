@@ -1,6 +1,6 @@
 ---
 title: Covid Dashboard
-category: demos
+category: gallery
 type: code
 data-keywords: gui ai dashboard multi-page maps scenario datanode
 short-description: Forecast COVID-19 data for various countries, interact with maps, and gain insights into the global pandemic impact.

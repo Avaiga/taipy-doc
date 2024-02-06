@@ -1,6 +1,6 @@
 ---
 title: LLM ChatBot
-category: demos
+category: gallery
 type: code
 data-keywords: gui vizelement ai
 short-description: Leverage this chatbot demo using OpenAI's API with GPT-3 to use it as a template for an LLM inference application.
@@ -22,4 +22,4 @@ conversation and continue it.
 ![ChatBot](images/chatbot_meds_conv.png){width=100%}
 
 A tutorial on how to write this application and similar
-LLM inference applications is available [here](../tutorials/4_chatbot/index.md).
+LLM inference applications is available [here](../knowledge_base/tutorials/4_chatbot/index.md).

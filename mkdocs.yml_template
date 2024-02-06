@@ -31,25 +31,6 @@ nav:
             - "4 - Scenario page": knowledge_base/tutorials/3_complete_application/step_04/step_04.md
             - "5 - Performance page": knowledge_base/tutorials/3_complete_application/step_05/step_05.md
         - "Creating an LLM ChatBot": knowledge_base/tutorials/4_chatbot/index.md
-    - "Demos":
-        - "Demos": knowledge_base/demos/index.md
-        - "Sales Dashboard": knowledge_base/demos/sales_dashboard.md
-        - "Tweet Generation": knowledge_base/demos/tweet_generation.md
-        - "Real-time Face Recognition": knowledge_base/demos/face_recognition.md
-        - "Sentiment Analysis": knowledge_base/demos/sentiment_analysis.md
-        - "Optimize Bar Cut Sizes": knowledge_base/demos/bar_cutting.md
-        - "Image Classification": knowledge_base/demos/image_classif.md
-        - "Churn Classification": knowledge_base/demos/churn_classification.md
-        - "Production Planning": knowledge_base/demos/production_planning.md
-        - "Stock Visualization": knowledge_base/demos/stock_visualization.md
-        - "COVID Dashboard": knowledge_base/demos/covid_dashboard.md
-        - "Movie Genre Selector": knowledge_base/demos/movie_genre_selector.md
-        - "Drift Detection": knowledge_base/demos/drift_detection.md
-        - "Realtime Pollution Dashboard" : knowledge_base/demos/pollution_sensors.md
-        - "Background Remover" : knowledge_base/demos/background_remover.md
-        - "TalkToTaipy" : knowledge_base/demos/talk_to_taipy.md
-        - "Creating an LLM Chatbot" : knowledge_base/demos/chatbot.md
-        - "Fraud Detection": knowledge_base/demos/fraud_detection.md
     - "Tips and tricks":
         - "Tips and tricks": knowledge_base/tips/index.md
         - "Scenarios": knowledge_base/tips/scenarios/index.md
@@ -208,6 +189,30 @@ nav:
       - "GUI Extension API":
         - manuals/reference_guiext/index.md
         - "taipy-gui module": manuals/reference_guiext/modules.md
+  - "Gallery":
+    - "Gallery": gallery/index.md
+    - "Finance":
+      - "Sales Dashboard": gallery/sales_dashboard.md
+      - "Fraud Detection": gallery/fraud_detection.md
+      - "Stock Visualization": gallery/stock_visualization.md
+    - "Decision Making Tools":
+      - "Production Planning": gallery/production_planning.md
+      - "Optimize Bar Cut Sizes": gallery/bar_cutting.md
+      - "Churn Classification": gallery/churn_classification.md
+      - "Drift Detection": gallery/drift_detection.md
+    - "LLM":
+      - "Tweet Generation": gallery/tweet_generation.md
+      - "Sentiment Analysis": gallery/sentiment_analysis.md
+      - "TalkToTaipy" : gallery/talk_to_taipy.md
+      - "Creating an LLM Chatbot" : gallery/chatbot.md
+    - "Visualization":
+      - "COVID Dashboard": gallery/covid_dashboard.md
+      - "Image Classification": gallery/image_classif.md
+      - "Realtime Pollution Dashboard" : gallery/pollution_sensors.md
+    - "Other":
+      - "Background Remover" : gallery/background_remover.md
+      - "Real-time Face Recognition": gallery/face_recognition.md
+      - "Movie Genre Selector": gallery/movie_genre_selector.md
   - "Release Notes": relnotes.md
   - "Contributing":
     - "Contributing to Taipy": contributing/contributing.md

@@ -1,6 +1,6 @@
 ---
 title: Fraud Detection
-category: demos
+category: gallery
 type: code
 data-keywords: gui dashboard vizelement layout chart ai multi-page classification
 short-description: A Taipy Application that analyzes credit card transactions to detect fraud.
