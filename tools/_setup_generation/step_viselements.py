@@ -222,7 +222,7 @@ class VisElementsStep(SetupStep):
             element_desc['short_doc'] = first_documentation_paragraph
 
             element_documentation = self.process_element_md_file(element_type, element_documentation)
-            
+
             # Build properties table
             properties_table = """
 # Properties\n\n
@@ -384,7 +384,7 @@ class VisElementsStep(SetupStep):
                         _ = eval(default_value)
                     except Exception:
                         raise SyntaxError(f"Default value for property '{property}' of element '{element_type}' is not a valid Python expression ({default_value})")
-                return (f"{property}={default_value if default_value else 'None'}, ", 
+                return (f"{property}={default_value if default_value else 'None'}, ",
                         f"{indent*' '}{desc['name']} ({type}){dynamic}: {doc}\n")
 
             template = f"""
@@ -450,25 +450,25 @@ class [element_type]({base_class}):
         self.generate_pages("blocks", self.blocks_path)
         self.generate_builder_api()
 
-    # Special case for charts: we want to insert the chart demos that 
+    # Special case for charts: we want to insert the chart gallery that
     # is stored in the file whose path is in self.charts_home_html_path
     # This should be inserted before the first level 1 header
     def chart_page_hook(
         self, element_documentation: str, before: str, after: str, charts_md_dir: str
     ) -> tuple[str, str]:
         with open(self.charts_home_html_path, "r") as html_fragment_file:
-            chart_demos = html_fragment_file.read()
-            # The chart_demos begins with a comment where all sub-sections
+            chart_gallery = html_fragment_file.read()
+            # The chart_gallery begins with a comment where all sub-sections
             # are listed.
         SECTIONS_RE = re.compile(
             r"^(?:\s*<!--\s+)(.*?)(?:-->)", re.MULTILINE | re.DOTALL
         )
-        match = SECTIONS_RE.match(chart_demos)
+        match = SECTIONS_RE.match(chart_gallery)
         if not match:
             raise ValueError(
                 f"{self.charts_home_html_path} should begin with an HTML comment that lists the chart types"
             )
-        chart_demos = "\n" + chart_demos[match.end() :]
+        chart_gallery = "\n" + chart_gallery[match.end() :]
         SECTION_RE = re.compile(r"^([\w-]+):(.*)$")
         chart_sections = ""
         for line in match.group(1).splitlines():
@@ -493,10 +493,10 @@ class [element_type]({base_class}):
                 "Couldn't locate first header1 in documentation for element 'chart'"
             )
         return (
-            match.group(1) + chart_demos + before[match.end() :],
+            match.group(1) + chart_gallery + before[match.end() :],
             after + chart_sections,
         )
-    
+
     def process_element_md_file(self, type: str, documentation: str) -> str:
         DEF_RE = re.compile(r"^!!!\s+taipy-element\s*?\n((?:\s+\w+(?:\[.*?\])?(?::\w+)?\s*=\s*.*\n)*)", re.M)
         PROP_RE = re.compile(r"(\w+(?:\[.*?\])?)(?::(\w+))?\s*=\s*(.*)\n", re.M)
