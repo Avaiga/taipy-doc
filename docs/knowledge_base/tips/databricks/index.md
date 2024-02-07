@@ -4,7 +4,7 @@ category: tips
 type: code
 data-keywords: scenario task
 short-description: A guide to integrate Databricks with Taipy scenarios.
-img: databricks/databricks.png
+img: databricks/images/databricks.png
 ---
 
 Integration with other platforms to execute jobs and functions is sometimes necessary. 
@@ -14,7 +14,7 @@ versions of a business problem. In this article, we'll look into the integration
 Databricks jobs with Taipy scenarios, showcasing how this can elevate your data 
 processing capabilities.
 
-![Databricks](databricks.png){width=50% style="margin:auto;display:block;"}
+![Databricks](images/databricks.png){width=50% style="margin:auto;display:block;"}
 
 # Scenarios and Databricks Integration
 
@@ -205,7 +205,7 @@ if __name__ == "__main__":
     print(scenario.result.read())
 ```
 
-[Download the code](./example.py){: .tp-btn target='blank' }
+[Download the code](./src/example.py){: .tp-btn target='blank' }
 
 # Databricks + Taipy
 

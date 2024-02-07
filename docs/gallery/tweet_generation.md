@@ -31,7 +31,7 @@ This application highlights several key features:
    and aligned with their desired audience.
 
 
-![Tweet Generation](images/tweet-generation.png){width=80%}
+![Tweet Generation](images/tweet-generation.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 # How to generate Tweets
 To create captivating Tweets, follow these steps:

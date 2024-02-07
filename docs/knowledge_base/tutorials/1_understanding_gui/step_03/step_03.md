@@ -1,13 +1,11 @@
-> You can download the code for
-<a href="../../src/step_03.py" download>Step 3</a>
-or all the steps <a href="../../src/src.zip" download>here</a>.
+[Download Step 3](./../src/step_03.py){: .tp-btn target='blank' }
+[Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 !!! warning "For Notebooks"
 
     The Notebook is available [here](../tutorial.ipynb). In Taipy GUI,
     the process to execute a Jupyter Notebook is different from executing a Python Script.
 
-# Step 3: Interaction
 
 Now, the page has several visual elements:
 
@@ -89,7 +87,7 @@ def on_change(state, var_name, var_value):
 Gui(page).run(debug=True)
 ```
 
-![Interactive GUI](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Interactive GUI](images/result.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 [`notify()`](../../../../manuals/reference/taipy.gui.notify.md) is a Taipy GUI function that creates a
 [notification](../../../../manuals/gui/notifications.md) with some information. The user can pass multiple parameters, including the *state*, the

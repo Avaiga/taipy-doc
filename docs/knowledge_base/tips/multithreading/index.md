@@ -4,16 +4,16 @@ category: tips
 type: code
 data-keywords: gui dashboard
 short-description: Display data sent from another thread in real-time to your Taipy application.
-img: multithreading/realtime_dashboard.png
+img: multithreading/images/realtime_dashboard.png
 ---
 Taipy can display data that is generated in a separate thread. This is useful for displaying
 real-time data from a sensor or a simulator. For example displaying in a dashboard the
 information from sensors measuring air pollution around a city, or displaying CPU usage of
 a server.
 
-<p align="center">
-  <img src="realtime_dashboard.png" alt="Dashboard Example" width="80%"/>
-</p>
+
+![Dashboard Example](images/realtime_dashboard.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+
 
 The dashboard displayed in this image is available [here](../../../gallery/pollution_sensors.md)
 
@@ -21,9 +21,11 @@ In this article, we will code a simple example where:
 - A `sender.py` script will generate a random number and send it through a socket.
 - A `receiver.py` script will receive and display the number in a Taipy application.
 
-<p align="center">
-  <img src="vscode_screen.png" alt="VSCode Screenshot" width="80%"/>
-</p>
+
+
+![VSCode Screenshot](images/vscode_screen.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+
+
 
 ## Step 1: Create the Sender Script
 

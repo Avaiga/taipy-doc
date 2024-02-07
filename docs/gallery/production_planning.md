@@ -29,7 +29,7 @@ The primary chart depicts future demand for finished products A (FPA)
 and B (FPB) over the next 11 months, with the current month marked as month 0.
 
 
-![Data Visualization](images/production-planning-data-visualization.png){width=80%}
+![Data Visualization](images/production-planning-data-visualization.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 Just above the chart, by clicking "Expand here," you can access an expandable
 Taipy front-end containing initial production data at time 0 (current month):
@@ -46,7 +46,7 @@ and re-submit scenarios for re-optimization based on modified parameters.
 Initially, no scenario is available, and the Year/Month corresponds to the current month.
 
 
-![No scenario](images/production-planning-Scenario-Manager-no-scenario.png){width=80%}
+![No scenario](images/production-planning-Scenario-Manager-no-scenario.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ### Creating your first scenario
 
@@ -64,7 +64,7 @@ When creating a first scenario, two key indicators , "Back Order Cost"
 and "Stock Cost," appear above an empty main chart (no plan generated yet)..
 
 
-![New scenario](images/production-planning-Scenario-Manager-new-scenario.png){width=80%}
+![New scenario](images/production-planning-Scenario-Manager-new-scenario.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 Click on "New Scenario" to launch the optimization algorithm, which
 quickly finds the optimal production levels, respecting the capacity
@@ -88,7 +88,7 @@ To Compare two scenarios, select them then click on the "compare scenario" butto
 You can select different comparison metrics  such as costs, purchases, and production levels, etc.
 
 
-![Compare scenario](images/production-planning-Compare-Scenario.png){width=80%}
+![Compare scenario](images/production-planning-Compare-Scenario.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Page 4: Compare Cycles
 
@@ -105,11 +105,11 @@ every month for the past few years. Compare monthly stock and
 backorder costs from January 2021 to the present month using stacked bar charts.
 
 
-![Compare Cycles](images/production-planning-Compare-Cycles.png){width=80%}
+![Compare Cycles](images/production-planning-Compare-Cycles.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Page 5: Datasources
 
 Access and display various tables associated with
 a selected scenario. Conveniently download data tables in CSV format.
 
-![Databases](images/production-planning-databases.png){width=80%}
+![Databases](images/production-planning-databases.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }

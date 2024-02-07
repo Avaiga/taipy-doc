@@ -1,13 +1,11 @@
-> You can download the code for
-<a href="../../src/step_02.py" download>Step 2</a>
-or all the steps <a href="../../src/src.zip" download>here</a>.
+[Download Step 2](./../src/step_02.py){: .tp-btn target='blank' }
+[Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 !!! warning "For Notebooks"
 
     The Notebook is available [here](../tutorial.ipynb). In Taipy GUI,
     the process to execute a Jupyter Notebook is different from executing a Python Script.
 
-# Step 2: Visual elements
 
 You can incorporate various visual elements into the basic code demonstrated in Step 1. In this
 step, we will illustrate how to utilize visual elements such as charts, sliders, tables, and
@@ -66,4 +64,4 @@ My text: <|{text}|>
 Gui(page).run(debug=True)
 ```
 
-![Visual Elements](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Visual Elements](images/result.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }

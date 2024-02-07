@@ -1,13 +1,11 @@
-> You can download the code for
-<a href="../../src/step_07.py" download>Step 7</a>
-or all the steps <a href="../../src/src.zip" download>here</a>.
+[Download Step 7](./../src/step_07.py){: .tp-btn target='blank' }
+[Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 !!! warning "For Notebooks"
 
     The "Getting Started" Notebook is available [here](../tutorial.ipynb). In Taipy GUI,
     the process to execute a Jupyter Notebook is different from executing a Python Script.
 
-# Step 7: Multi-pages, navbars, and menus
 
 Taipy significantly simplifies the process of building a multi-page application. To create a
 multi-page application, you need to define a dictionary of pages. In this example, we will
@@ -66,7 +64,7 @@ pages = {
 Gui(pages=pages).run()
 ```
 
-![Menu](menu.png){ width=500 style="margin:auto;display:block" }
+![Menu](images/menu.png){ width=40% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 - [navbar](../../../../manuals/gui/viselements/navbar.md): creates an element to navigate
     through the Taipy pages by default
@@ -88,14 +86,14 @@ pages = {
 Gui(pages=pages).run()
 ```
 
-![Navbar](navbar.png){ width=500 style="margin:auto;display:block" }
+![Navbar](images/navbar.png){ width=40% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
 ## Back to the code
 
 The Markdown created in our previous steps will be the first page (named _page_) of the application.
 
-![Previous Markdown](first_markdown.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Previous Markdown](images/first_markdown.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 Then, let’s create our second page, which contains a page to analyze an entire text.
 
@@ -150,4 +148,4 @@ pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
 Gui(pages=pages).run()
 ```
 
-![Multi-Pages](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Multi-Pages](images/result.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }

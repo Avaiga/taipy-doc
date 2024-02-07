@@ -25,9 +25,9 @@ You have the option to select among two types of graph (scatter plot or histogra
 and choose the data content you want to explore with the "Select x" selector.
 
 
-![Data Visualization](images/churn-classification-data-visualization-scatter.png){width=80%}
+![Data Visualization](images/churn-classification-data-visualization-scatter.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-![Histogram](images/churn-classification-data-Visualization-histogram.png){width=80%}
+![Histogram](images/churn-classification-data-Visualization-histogram.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Page 2: Model Manager
 
@@ -36,14 +36,14 @@ Here, users can access the performance results of the selected algorithm. Users 
 - A chart type to visualize predictions on a validation dataset.
 
 
-![Model Manager](images/churn-classification-model-manager.png){width=80%}
+![Model Manager](images/churn-classification-model-manager.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Page 3: Model Comparison
 
 This page displays the performance of two models side by side, facilitating easy comparison.
 
 
-![Model Comparison](images/churn-classification-model-comparison.png){width=80%}
+![Model Comparison](images/churn-classification-model-comparison.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Page 4: Databases
 
@@ -52,4 +52,4 @@ test dataset, forecast, scoring results, and the Confusion Matrix of the
 selected algorithm. Users can also download specified data frames as CSV files.
 
 
-![Databases](images/churn-classification-databases.png){width=80%}
+![Databases](images/churn-classification-databases.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }

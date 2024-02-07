@@ -1,13 +1,11 @@
-> You can download the code for
-<a href="../../src/step_05.py" download>Step 5</a>
-or all the steps <a href="../../src/src.zip" download>here</a>.
+[Download Step 5](./../src/step_05.py){: .tp-btn target='blank' }
+[Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 !!! warning "For Notebooks"
 
     The Notebook is available [here](../tutorial.ipynb). In Taipy GUI,
     the process to execute a Jupyter Notebook is different from executing a Python Script.
 
-# Step 5: Python expression in properties
 
 As shown before, parameters and variables in Taipy are dynamic. The same applies for every type
 of object, even data frames. Therefore, you can perform operations on data frames, and Taipy GUI
@@ -128,4 +126,4 @@ Gui(page).run(debug=True)
 ```
 
 
-![Python expression](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Python expression](images/result.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }

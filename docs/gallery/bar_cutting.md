@@ -26,7 +26,7 @@ To visualize them expand the menu list by just clicking inside this left panel
 5. Switch algorithms to compare material waste.
 
 
-![Bar Cutting Visualization](images/bar-cutting-bar-Visualization.png){width=80%}
+![Bar Cutting Visualization](images/bar-cutting-bar-Visualization.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 To access additional information, you can open the Parameters panel
 (Taipy Expandable) to review the input data related to the selected
@@ -41,12 +41,12 @@ visualized as either a percentage of the total length of the mother
 bars utilized or as the precise loss value measured in millimeters.
 
 
-![Bar Cutting Metrics](images/bar-cutting-Metrics.png){width=80%}
+![Bar Cutting Metrics](images/bar-cutting-Metrics.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Page 3: Compare Models
 Compare Baseline and Optim models' performance side by side.
 
-![Bar Cutting comparison](images/bar-cutting-model-comparison.png){width=80%}
+![Bar Cutting comparison](images/bar-cutting-model-comparison.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
 ## Page 4: Compare Cases
@@ -54,14 +54,14 @@ Assess the performance of each model across various scenarios.
 This represents one of Taipy's most valuable features.
 
 
-![Bar Cutting Comparison](images/bar-cutting-compare-cases.png){width=80%}
+![Bar Cutting Comparison](images/bar-cutting-compare-cases.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Page 5: Databases
 Results are neatly summarized in a table, allowing you to select the case,
 model and table. The results are then accessible for download in CSV format.
 
 
-![Bar Cutting Databases](images/bar-cutting-databases.png){width=80%}
+![Bar Cutting Databases](images/bar-cutting-databases.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
 

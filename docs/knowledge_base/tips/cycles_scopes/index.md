@@ -6,14 +6,6 @@ data-keywords: scenario datanode configuration cycle scope submission
 short-description: Share your Data Nodes across multiple scenarios with Cycles and Scopes.
 img: images/icon-code.svg
 ---
-> You can download the code
-<a href="./scope_and_cycle.py" download>here</a>. Here is the
-<a href="./scope_and_cycle_toml.py" download>Python version</a>
-with the
-<a href="./config.toml" download>TOML file</a>.
-Two datasets have also to be downloaded (
-<a href="./time_series.csv" download>here</a> and
-<a href="./time_series_2.csv" download>here</a>).
 
 *Estimated Time for Completion: 30 minutes; Difficulty Level: Intermediate*
 
@@ -22,6 +14,7 @@ In this section, we will explore the intricate relationship between
 [Cycles](../../../manuals/core/concepts/cycle.md), two core concepts that help manage data
 nodes and scenarios effectively in Taipy.
 
+[Download the code](./src/scope_and_cycle.zip){: .tp-btn target='blank' }
 
 # Cycles
 
@@ -35,7 +28,7 @@ between the three scenarios.
 
 - Better organize the data nodes in your application
 
-![Data Node Selector](data_node_selector.png){ width=30% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Data Node Selector](images/data_node_selector.png){ width=30% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
 Here we have a single month_data node for all scenarios of October 2022 and it
@@ -53,7 +46,7 @@ def filter_by_month(df, month):
 ```
 
 
-![Configuration](config.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Configuration](images/config.svg){ width=80% style="margin:auto;display:block" }
 
 ## Configuration
 
@@ -61,13 +54,13 @@ def filter_by_month(df, month):
 
     === "Taipy Studio"
 
-        ![](config.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+        ![](images/config.gif){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
         - Construct the configuration
 
         - Add the frequency property for the scenario and put "MONTHLY:FREQUENCY" (DAYLY, WEEKLY, MONTHLY, YEARLY)
 
-        - Load the new [configuration](./config.toml) in the code
+        - Load the new [configuration](./src/config.toml) in the code
 
     === "Python configuration"
 
@@ -143,13 +136,13 @@ Let's change the configuration of our data nodes:
 
 - *month_values*: same for *month_values*.
 
-![Configuration with Scope](config_scope.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Configuration with Scope](images/config_scope.svg){ width=90% style="margin:auto;display:block" }
 
 !!! example "Configuration"
 
     === "Taipy Studio"
 
-        ![](config_scope.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+        ![](images/config_scope.gif){ width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
         - Change the Scope of historical_data to be global
 
@@ -257,7 +250,7 @@ tp.Gui("""<|{scenario}|scenario_selector|>
           <|{data_node}|data_node_selector|>""").run()
 ```
 
-![Visual Elements](visual_elements.png){ width=60% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Visual Elements](images/visual_elements.png){ width=60% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 # Conclusion
 

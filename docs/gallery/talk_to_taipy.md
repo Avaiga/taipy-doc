@@ -21,6 +21,6 @@ LLM model hosted on Azure. The user prompt entered on the Taipy app gets sent to
 model, which uses few-shot learning to generate pandas code to manipulate the data and
 Taipy code to create the visualization.
 
-![An example use of TTT](images/talk_to_taipy_example.gif){width=100%}
+![An example use of TTT](images/talk_to_taipy_example.gif){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-![What are the 5 most profitable cities?](images/talk_to_taipy_image.jpeg){width=100%}
+![What are the 5 most profitable cities?](images/talk_to_taipy_image.jpeg){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }

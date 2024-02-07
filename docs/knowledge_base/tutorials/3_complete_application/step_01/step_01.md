@@ -1,10 +1,9 @@
-> The full code is available
-<a href="../../src/src.zip" download>here</a>.
+[Download the code](./../src/src.zip){: .tp-btn target='blank' }
 
 This is a guide for creating a Data Visualization page for our example. The page includes 
 interactive visual elements for showcasing data from a CSV file.
 
-![Interactive GUI](result.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Interactive GUI](images/result.gif){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Importing the Dataset
 

@@ -6,16 +6,10 @@ data-keywords: scenario task job submission configuration standalone cluster
 short-description: Increase efficiency running your scenarios making your Job Execution asynchronous.
 img: images/icon-code.svg
 ---
-> You can download the code
-<a href="./job_execution.py" download>here</a>. Here is the
-<a href="./job_execution_toml.py" download>Python version</a>
-with the
-<a href="./config.toml" download>TOML file</a>
-.
-
-# Executing jobs
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Advanced*
+
+[Download the code](./src/job_execution.zip){: .tp-btn target='blank' }
 
 Taipy has [different ways](../../../manuals/core/config/job-config.md) to execute the code.
 Changing the execution mode can be useful for running multiple tasks in parallel.
@@ -37,7 +31,7 @@ def add(nb):
     return nb + 10
 ```
 
-![Configuration](config.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Configuration](images/config.svg){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 This line of code alters the execution mode. Setting it to *standalone* makes Taipy Core work asynchronously.
 In this configuration, a maximum of two tasks can run simultaneously.

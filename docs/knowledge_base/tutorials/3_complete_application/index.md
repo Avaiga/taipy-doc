@@ -12,7 +12,7 @@ short-description: Build a complete realistic application from scratch from back
 This tutorial guide will walk you through creating a complete application from the front end to
 the back end. You don't need any prior knowledge to complete this tutorial.
 
-![Tutorial application](step_01/overview.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Tutorial application](step_01/images/overview.gif){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 Each step concentrates on fundamental ideas about *Taipy*.
 

@@ -1,5 +1,4 @@
-> The full code is available
-<a href="../../src/src.zip" download>here</a>.
+[Download the code](./../src/src.zip){: .tp-btn target='blank' }
 
 # Scenario
 
@@ -61,7 +60,7 @@ of items sold in a given store on a 15-min basis.
 
 The graph below represents the scenario to configure, where tasks are in orange and data nodes in blue.
 
-![Configuration](config_toml.png){ width=700 style="margin:auto;display:block" }
+![Configuration](images/config_toml.png){ width=90% style="margin:auto;display:block" }
 
 
 ### Input Data Nodes Configuration
@@ -139,7 +138,7 @@ It will take your initial dataset (input Data Node),
 clean it (calling the `clean_data` function) and generate the cleaned dataset Data Node.
 This task will only execute once thanks to the skippability feature of Taipy.
 
-![Clean Data](clean_data.svg){ width=300 style="margin:auto;display:block" }
+![Clean Data](images/clean_data.svg){ width=50% style="margin:auto;display:block" }
 
 ```python
 clean_data_task_cfg = Config.configure_task(id="clean_data",
@@ -155,7 +154,7 @@ This task will use the cleaned dataset and make predictions based on your specif
 
 *Day*, *Number of predictions* and *Max Capacity*.
 
-![Predict Baseline](predict_baseline.svg){ width=300 style="margin:auto;display:block" }
+![Predict Baseline](images/predict_baseline.svg){ width=50% style="margin:auto;display:block" }
 
 ```python
 predict_baseline_task_cfg = Config.configure_task(id="predict_baseline",

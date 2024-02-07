@@ -1,5 +1,4 @@
-> The full code is available
-<a href="../../src/src.zip" download>here</a>.
+[Download the code](./../src/src.zip){: .tp-btn target='blank' }
 
 The application includes functions for various tasks, including data cleaning, creating baseline predictions, 
 utilizing machine learning (ML) for predictions, computing metrics, and generating a dataset for displaying the predictions.
@@ -101,7 +100,7 @@ def create_predictions_dataset(predictions_baseline, predictions_ml, day, n_pred
 	
 The following Python code corresponds to the `algorithms/algorithms.py` file. Chaining all the functions together can be represented as the following graph:
 
-![Execution Graph](config_toml.png){ width=700 style="margin:auto;display:block" }
+![Execution Graph](images/config_toml.png){ width=90% style="margin:auto;display:block" }
 
 ```python
 # For the sake of clarity, we have used an AutoRegressive model rather than a pure ML model such as:

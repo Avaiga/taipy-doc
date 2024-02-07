@@ -1,14 +1,11 @@
-> You can download the code for
-<a href="../../src/step_01.py" download>Step 1</a>
-or all the steps <a href="../../src/src.zip" download>here</a>.
-
+[Download Step 1](./../src/step_01.py){: .tp-btn target='blank' }
+[Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 !!! warning "For Notebooks"
 
     The Notebook is available [here](../tutorial.ipynb). In Taipy GUI,
     the process to execute a Jupyter Notebook is different from executing a Python Script.
 
-# Step 1: First Web page
 
 You only need one line of code to create your first Taipy web page. Just create a `Gui^` object
 with a string and run it.
@@ -29,7 +26,7 @@ The run method accepts different useful parameters:
 stack trace of the errors within the application—a valuable feature during 
 development.
 
-![Debug mode](debug_mode.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Debug mode](images/debug_mode.png){ width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 - _use_reloader_: By default, the page won't refresh on its own after you make a code 
 modification. If you want to alter this behavior, you can set the *use_reloader* to 
@@ -51,4 +48,4 @@ text  and more. Therefore, `#` creates a title, `##` makes a subtitle. Put your 
 *italics* or in `**` to have it in **bold**.
 
 
-![First Web Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![First Web Page](images/result.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }

@@ -4,7 +4,7 @@ category: tips
 type: code
 data-keywords: scenario task datanode job submission configuration
 short-description: Improve the efficiency in pipeline orchestration with the 'skippable' task feature.
-img: skippable_tasks/skippable_tasks.png
+img: skippable_tasks/images/skippable_tasks.png
 ---
 Taipy is a Python library that's user-friendly and made for creating web applications
 with interactive interfaces that handle data.
@@ -12,7 +12,7 @@ This tip is all about Taipy's back-end capabilities.
 Just as a reminder, the main goal of Taipy's back-end is to help you build
 and manage complex workflows, such as data processing pipelines.
 
-![Skippable Tasks](skippable_tasks.png){width=100%}
+![Skippable Tasks](images/skippable_tasks.png){width=100% style="margin:auto;display:block" }
 
 When engineers create Directed Acyclic Graphs (DAGs), they often leave out certain tasks.
 This common practice allows tasks to be orchestrated in a more dynamic and advanced way.
@@ -28,7 +28,7 @@ It contains:
 - Input and output Data nodes.
 - The Python function that you've defined and want to use.
 
-![Setting up Data Nodes for Tasks](skippable_tasks_2.png){width=100%}
+![Setting up Data Nodes for Tasks](images/skippable_tasks_2.png){width=90% style="margin:auto;display:block" }
 
 Before you start using skippable tasks, it's important to configure your tasks correctly
 with their Data nodes. You can refer to
@@ -52,7 +52,7 @@ Taipy calls the function using the parameters in the same order as the Data node
 and the results are returned in that exact order.
 
 <video width="640" height="360" controls>
-  <source src="setting_up_nodes_for_tasks.mp4" type="video/mp4">
+  <source src="images/setting_up_nodes_for_tasks.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -87,14 +87,14 @@ In other words, if running the task again would produce the same output, it is s
 This feature can significantly improve the performance of your data workflow
 by preventing unnecessary computations, which saves time and resources.
 
-![Leveraging Skippability in Taipy Tasks](skippable_tasks_3.png){width=70%}
+![Leveraging Skippability in Taipy Tasks](images/skippable_tasks_3.png){width=90% style="margin:auto;display:block" }
 
 ## Use Case
 
 Let’s take the previous execution graph and set *skippable=True* to our Task.
 
 <video width="640" height="360" controls>
-  <source src="use_case.mp4" type="video/mp4">
+  <source src="images/use_case.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -164,7 +164,7 @@ skipped across different scenarios.
 Let's revisit our previous code and modify the Data nodes to have a Global scope.
 
 <video width="640" height="360" controls>
-  <source src="using_global_data_nodes.mp4" type="video/mp4">
+  <source src="images/using_global_data_nodes.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 

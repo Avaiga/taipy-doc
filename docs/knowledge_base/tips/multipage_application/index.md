@@ -4,12 +4,12 @@ category: tips
 type: code
 data-keywords: gui multi-page navbar
 short-description: Design your application with multiple pages, resulting in a user-friendly and intuitive user interface.
-img: multipage_application/multipage_application.png
+img: multipage_application/images/multipage_application.png
 ---
 Are you tired of messy and confusing dashboards that make it hard to find the information you
 need? If so, it might be a good idea to switch to multi-page applications!
 
-![Multi-page Application](multipage_application.png){width=100%}
+![Multi-page Application](images/multipage_application.png){width=90% style="margin:auto;display:block" }
 
 Multi-page applications allow you to organize your data and visualizations into separate pages,
 making it easier to navigate and focus on specific insights. At Taipy, we understand how
@@ -136,14 +136,14 @@ multi-page application working!
 If you open your web browser and go to **localhost:5000** (assuming you're using the
 [default port](../../../manuals/reference/taipy.gui.Gui.md)), you'll see the following:
 
-![Defining a Multi-Page Application](multipage_application_7.png){width=50%}
+![Defining a Multi-Page Application](images/multipage_application_7.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 You're directed to the */home* URL automatically because it was the first page listed in the
 `pages` dictionary, and that's where you'll find our first page!
 
 If you change the URL from */home* to */temperature*, you will see the following:
 
-![Defining a Multi-Page Application](multipage_application_8.png){width=50%}
+![Defining a Multi-Page Application](images/multipage_application_8.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Navigating between pages
 
@@ -152,7 +152,7 @@ for adding navigation to your multi-page application, making it more user-friend
 
 ### 1. The navbar
 
-![The navbar](multipage_application_9.gif){width=50%}
+![The navbar](images/multipage_application_9.gif){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 One straightforward technique to make your application's navigation more appealing is by utilizing
 the Taipy [`navbar`](../../../manuals/gui/viselements/navbar.md) control. To incorporate the
@@ -242,7 +242,7 @@ control or [tree](../../../manuals/gui/viselements/tree.md) control. In this exa
 combine the `navigate` feature with the [menu](../../../manuals/gui/viselements/menu.md) control
 (a collapsible side panel) to create the following app:
 
-![The navigate function](multipage_application_11.gif){width=50%}
+![The navigate function](images/multipage_application_11.gif){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 The menu navigation was implemented by modifying `main.py` to the following:
 
@@ -302,7 +302,7 @@ Go to [temperature](/temperature) page.
 This results in the following clickable "/temperature" text, which directs the user to the
 */temperature* URL:
 
-![Hyperlinks](multipage_application_14.png){width=50%}
+![Hyperlinks](images/multipage_application_14.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 # Part 2 - Advanced Multi-Page Applications
 

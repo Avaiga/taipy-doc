@@ -1,13 +1,11 @@
-> You can download the code for
-<a href="../../src/step_04.py" download>Step 4</a>
-or all the steps <a href="../../src/src.zip" download>here</a>.
+[Download Step 4](./../src/step_04.py){: .tp-btn target='blank' }
+[Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 !!! warning "For Notebooks"
 
     The Notebook is available [here](../tutorial.ipynb). In Taipy GUI,
     the process to execute a Jupyter Notebook is different from executing a Python Script.
 
-# Step 4: Charts
 
 Charts are an essential part of Taipy (and of any Web application!). A chart is just another
 visual element with many properties to customize it.
@@ -112,4 +110,4 @@ page = """
 ```
 
 
-![Charts](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Charts](images/result.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }

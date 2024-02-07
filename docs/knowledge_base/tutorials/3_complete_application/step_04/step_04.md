@@ -1,5 +1,4 @@
-> The full code is available
-<a href="../../src/src.zip" download>here</a>.
+[Download the code](./../src/src.zip){: .tp-btn target='blank' }
 
 The Scenario Page is a part of the application designed for creating and 
 customizing prediction scenarios using time series data. End-users can modify different parameters 
@@ -7,7 +6,7 @@ for the prediction, such as the prediction date, maximum capacity,
 and the number of predictions. This page also includes a chart displaying historical data 
 and predictions generated using both machine learning and baseline methods.
 
-![Scenario Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Scenario Page](images/result.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 The Scenario Page is constructed using a combination of Markdown and Python code. Below is a detailed explanation.
 

@@ -101,7 +101,7 @@ by the Dask team.
 
 # Application: Customer Analysis
 
-![Taipy Graph](images/graph.png){width=80% style="margin:auto;display:block"}
+![Taipy Graph](images/graph.png){width=70% style="margin:auto;display:block"}
 
 Our existing code (without Taipy) comprises 4 functions (in orange), which you can also see in the graph above:
 
@@ -271,7 +271,7 @@ summary statistics.
 
 # Modeling the Workflow
 
-![Taipy DAG](images/dag.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Taipy DAG](images/dag.png){width=100% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 <center>
 Taipy DAG — Taipy "Tasks" in orange and "Data Nodes" in blue.
@@ -453,7 +453,7 @@ Taipy Studio provides a graphical editor where you can create your Taipy configu
 **stored in TOML** files that your Taipy application can load to run. The editor
 represents Scenarios as graphs, where nodes are Data Nodes and Tasks.
 
-![Taipy Studio](images/studio.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Taipy Studio](images/studio.png){width=100% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 First, install the
 [Taipy Studio](https://marketplace.visualstudio.com/items?itemName=Taipy.taipy-studio)
@@ -521,7 +521,7 @@ In Taipy Studio, click the Task icon to add a new Task.
 You'd specify the input as *path_to_data* and the output as *scored_df*. Then, under the Details tab,
 you'd link this Task to the *algo.preprocess_and_score()* function.
 
-![preprocess](images/preprocess.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![preprocess](images/preprocess.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 **Task 2** (*featurization_and_segmentation*):
 
@@ -530,14 +530,14 @@ Similar to Task 1, you'd specify the inputs
 
 Link this Task to the *algos.algo.featurization_and_segmentation()* function.
 
-![Featurization](images/featurization.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Featurization](images/featurization.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 **Task 3** (*segment_analysis*):
 
 Inputs would be *segmented_customer_df* and *metric*, and the output
 would be *segment_result*. Link to the *algos.algo.segment_analysis()* function.
 
-![Segment Analysis](images/segment_analysis.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Segment Analysis](images/segment_analysis.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 **Task 4** (*high_value_cust_summary_statistic*):
 
@@ -545,7 +545,7 @@ Inputs include *segment_result*,
 *segmented_customer_df*, and *summary_statistic_type*. The output is
 *high_value_summary_df*. Link to the algos.algo *high_value_cust_summary_statistics()* function.
 
-![High Value](images/high_value.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![High Value](images/high_value.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 # Conclusion
 

@@ -4,7 +4,7 @@ category: tips
 type: code
 data-keywords: gui stylekit
 short-description: Easily change the visual style of your applications with pre-made stylesheets, CSS variables, and utility classes.
-img: css_style_kit/style_kit.png
+img: css_style_kit/images/style_kit.png
 ---
 Prepare for a big change in your Taipy applications!
 The Stylekit is here and it will make your application look even better.
@@ -12,7 +12,7 @@ It comes with pre-made CSS styles, so your application will look great without y
 
 But that's not all – you can also make your application look even nicer with some customization.
 
-![Stylekit](css_style_kit.png){width=100%}
+![Stylekit](images/css_style_kit.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 The Stylekit has some great features:
 
@@ -46,7 +46,7 @@ Taipy **App**{: .color-primary}
 
 Let’s apply it to our application.
 
-![Main CSS Variables](css_style_kit_2.png){width=100%}
+![Main CSS Variables](images/css_style_kit_2.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 The Stylekit also offers styled sections like containers, cards, headers, and sidebars.
 These can be used to make certain parts of your pages more noticeable or to control their size and position.
@@ -70,7 +70,7 @@ This will create a card to put your Markdown/Visual elements in.
 In this example, we put a container around the entire application,
 and we've also created a card for the parameters at the top.
 
-![Main CSS Variables](css_style_kit_3.png){width=100%}
+![Main CSS Variables](images/css_style_kit_3.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Creating Your Own Theme!
 

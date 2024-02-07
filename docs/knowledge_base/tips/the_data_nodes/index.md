@@ -4,7 +4,7 @@ category: tips
 type: code
 data-keywords: scenario datanode storage_type configuration
 short-description: Understand data nodes and their central role in accessing data from various sources.
-img: the_data_nodes/data_notes.png
+img: the_data_nodes/images/data_notes.png
 ---
 Taipy is a Python tool for making web applications that use data.
 It can do many things, but we're going to talk about
@@ -27,13 +27,13 @@ Now, we'll talk about two types of data nodes:
 So, data nodes are like helpers for handling data,
 and they come in these two varieties: input and output.
 
-![data nodes](data_notes_2.svg){width=100%}
+![data nodes](images/data_notes_2.svg){width=90% style="margin:auto;display:block" }
 
 Taipy has a set of predefined data nodes ready to be used when configuring your data workflow.
 
 Here’s the list of predefined data nodes:
 
-![data nodes](data_notes.png){width=70%}
+![data nodes](images/data_notes.png){width=90% style="margin:auto;display:block" }
 
 ## Pickle Data Node
 
@@ -49,7 +49,7 @@ two Pickle data nodes: one for getting data in and one for sending data out.
   We haven't told it where to get data from yet.
 
 <video width="640" height="360" controls>
-  <source src="pickle-data-node.mp4" type="video/mp4">
+  <source src="images/pickle-data-node.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -109,7 +109,7 @@ The predefined tabular data nodes in Taipy include:
 These data nodes allow you to work with tabular data from different sources with ease.
 
 <video width="640" height="360" controls>
-  <source src="tabular-data-nodes.mp4" type="video/mp4">
+  <source src="images/tabular-data-nodes.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -141,7 +141,7 @@ Here, we'll demonstrate how you can change the exposed type from the default Pan
 to other types, such as *Numpy arrays*:
 
 <video width="640" height="360" controls>
-  <source src="tabular-data-nodes_2.mp4" type="video/mp4">
+  <source src="images/tabular-data-nodes_2.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 

@@ -12,7 +12,7 @@ short-description: Understand basic knowledge of Taipy GUI creating of a multi-p
 Welcome to the **Tutorial** for using Taipy frontend. This guide will demonstrate how to utilize
 Taipy to build an interactive web application.
 
-![GUI application](step_07/result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![GUI application](step_07/images/result.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 Taipy aims to simplify web application development:
 
