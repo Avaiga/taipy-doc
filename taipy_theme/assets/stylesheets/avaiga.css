@@ -903,6 +903,20 @@ a.md-content__button{
   border-bottom: var(--md-default-border-color);
 }
 
+/* ---------- ---------- ---------- IMAGES ---------- ---------- ---------- */
+
+.tp-image-border {
+  margin:auto;
+  display:block;
+  border: 4px solid rgb(210,210,210);
+  border-radius:7px
+}
+
+.tp-image {
+  margin:auto;
+  display:block;
+}
+
 /* ---------- ---------- ---------- Breadcrumbs ---------- ---------- ---------- */
 .tp-bc {
   margin-left: 0.8rem;

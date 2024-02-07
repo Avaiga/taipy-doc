@@ -31,7 +31,7 @@ def add(nb):
     return nb + 10
 ```
 
-![Configuration](images/config.svg){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Configuration](images/config.svg){ width=90% : .tp-image-border }
 
 This line of code alters the execution mode. Setting it to *standalone* makes Taipy Core work asynchronously.
 In this configuration, a maximum of two tasks can run simultaneously.

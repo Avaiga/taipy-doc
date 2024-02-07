@@ -14,7 +14,7 @@ versions of a business problem. In this article, we'll look into the integration
 Databricks jobs with Taipy scenarios, showcasing how this can elevate your data 
 processing capabilities.
 
-![Databricks](images/databricks.png){width=50% style="margin:auto;display:block;"}
+![Databricks](images/databricks.png){width=50% : .tp-image}
 
 # Scenarios and Databricks Integration
 

@@ -5,7 +5,7 @@ including Root Mean Squared Error and Mean Absolute Error, across various scenar
 The page displays a table and two bar charts for comparing these metrics between baseline and 
 machine learning predictions.
 
-![Performance Page](images/result.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Performance Page](images/result.png){ width=90% : .tp-image-border }
 
 # Markdown
 

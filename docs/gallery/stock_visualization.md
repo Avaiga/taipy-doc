@@ -22,7 +22,7 @@ you can build a forecast data visualization dashboard effortlessly using Taipy.
 This fully interactive web application can be created with fewer than 120 lines of Python code.
 
 
-![Stock Visualization](images/stock-visualization.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Stock Visualization](images/stock-visualization.png){width=90% : .tp-image-border }
 
 Forecasting stock trends is a vital part of financial analysis. In this demo,
 Meta's Prophet library offers stock predictions for 1 to 5 years.

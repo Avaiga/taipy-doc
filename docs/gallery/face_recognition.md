@@ -30,6 +30,6 @@ thanks to the robust [OpenCV library](https://opencv.org/).
 
 3. Click now the "Re-train" button. Your name should now appear. The model recognizes you now.
 
-![Face Recognition](images/face-recognition.jpg){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Face Recognition](images/face-recognition.jpg){width=90% : .tp-image-border }
 
 **Quick note**: Enable your browser's camera usage option.

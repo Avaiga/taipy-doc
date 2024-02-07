@@ -126,4 +126,4 @@ Gui(page).run(debug=True)
 ```
 
 
-![Python expression](images/result.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Python expression](images/result.png){ width=90% : .tp-image-border }

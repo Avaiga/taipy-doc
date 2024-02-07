@@ -11,7 +11,7 @@ In this tutorial we will create a simple chatbot website using Taipy.
 [Get it on GitHub](https://github.com/Avaiga/demo-llm-chat){: .tp-btn .tp-btn--accent target='blank' }
 
 
-![Render of the app](images/chatbot_roundconv.png){width=100% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Render of the app](images/chatbot_roundconv.png){width=100% : .tp-image-border }
 
 
 Here we will use OpenAI's API with [GPT-3](https://openai.com/blog/gpt-3-apps). This tutorial can easily
@@ -153,7 +153,7 @@ if __name__ == "__main__":
 
 And here is the result:
 
-![Render of the app](images/chatbot_first_result.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Render of the app](images/chatbot_first_result.png){width=90% : .tp-image-border }
 
 # Step 8: Styling
 
@@ -227,7 +227,7 @@ We then apply this function to the table by adding the `style` property
 
 And voilà:
 
-![The styled application](images/chatbot_plane.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![The styled application](images/chatbot_plane.png){width=90% : .tp-image-border }
 
 # Step 9: More features
 
@@ -260,11 +260,11 @@ We can now deploy the app to Taipy Cloud:
 5. In the "Environment Variables" tab, create a new environment variable called `OPENAI_API_KEY` and paste your API key as the value like in the image below
 6. Press "Deploy app"
 
-![Environment Variables Tab](images/chatbot_env_var.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Environment Variables Tab](images/chatbot_env_var.png){width=90% : .tp-image-border }
 
 After a while, your app should be running and will be accessible
 from the displayed link!
 
-![Taipy Cloud Interface](images/chatbot_cloud.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Taipy Cloud Interface](images/chatbot_cloud.png){width=90% : .tp-image-border }
 
-![The final application](images/chatbot_roundconv.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![The final application](images/chatbot_roundconv.png){width=90% : .tp-image-border }

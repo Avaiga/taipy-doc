@@ -11,7 +11,7 @@ variable is modified. This callback is used for implementing some behavior after
 performs an action, such as dragging a slider to define the value of some parameter or typing
 some text into an input box.
 
-![Callback](images/callbacks_demo.gif){width=40% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Callback](images/callbacks_demo.gif){width=40% : .tp-image-border }
 
 Note that Taipy supports various types of callbacks which serve different purposes
 although this tip focuses on just one.
@@ -43,7 +43,7 @@ For instance, in Taipy, this may happen when a user:
 2. Selects a date using the [date](../../../manuals/gui/viselements/date.md) control; or
 3. Selects an item from the [selector](../../../manuals/gui/viselements/selector.md) control
 
-![Example 1](images/callbacks_demo_fahrenheit_to_celsius_cropped-1.gif){width=40% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Example 1](images/callbacks_demo_fahrenheit_to_celsius_cropped-1.gif){width=40% : .tp-image-border }
 
 Let’s demonstrate local callbacks with a small example.
 This simple app allows a user to select a temperature in degrees Fahrenheit
@@ -99,7 +99,7 @@ and updates the state variable of celsius, displaying its new value.
 The next improvement to our app is yet another simple one: add a new number control to display
 the temperature in kelvin.
 
-![Example 2](images/callbacks_demo_fahrenheit_to_celsius.gif){width=40% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Example 2](images/callbacks_demo_fahrenheit_to_celsius.gif){width=40% : .tp-image-border }
 
 Take a look at the updated code:
 
@@ -148,7 +148,7 @@ of celsius is modified.
 This is a perfect use case for the global on_change callback function. Take a look at this handy
 flowchart which determines the type of on_change function that would be called:
 
-![Example 2](images/callbacks_flowchart-1.png){width=100% style="margin:auto;display:block" }
+![Example 2](images/callbacks_flowchart-1.png){width=100% : .tp-image }
 
 This flowchart visualizes the process in which Taipy determines which *on_change* function would
 be called.

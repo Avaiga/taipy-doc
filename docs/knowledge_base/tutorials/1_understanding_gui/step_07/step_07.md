@@ -64,7 +64,7 @@ pages = {
 Gui(pages=pages).run()
 ```
 
-![Menu](images/menu.png){ width=40% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Menu](images/menu.png){ width=40% : .tp-image-border }
 
 - [navbar](../../../../manuals/gui/viselements/navbar.md): creates an element to navigate
     through the Taipy pages by default
@@ -86,14 +86,14 @@ pages = {
 Gui(pages=pages).run()
 ```
 
-![Navbar](images/navbar.png){ width=40% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Navbar](images/navbar.png){ width=40% : .tp-image-border }
 
 
 ## Back to the code
 
 The Markdown created in our previous steps will be the first page (named _page_) of the application.
 
-![Previous Markdown](images/first_markdown.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Previous Markdown](images/first_markdown.png){ width=90% : .tp-image-border }
 
 Then, let’s create our second page, which contains a page to analyze an entire text.
 
@@ -148,4 +148,4 @@ pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
 Gui(pages=pages).run()
 ```
 
-![Multi-Pages](images/result.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Multi-Pages](images/result.png){ width=90% : .tp-image-border }

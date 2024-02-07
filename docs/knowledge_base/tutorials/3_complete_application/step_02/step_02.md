@@ -100,7 +100,7 @@ def create_predictions_dataset(predictions_baseline, predictions_ml, day, n_pred
 	
 The following Python code corresponds to the `algorithms/algorithms.py` file. Chaining all the functions together can be represented as the following graph:
 
-![Execution Graph](images/config_toml.png){ width=90% style="margin:auto;display:block" }
+![Execution Graph](images/config_toml.png){ width=90% : .tp-image }
 
 ```python
 # For the sake of clarity, we have used an AutoRegressive model rather than a pure ML model such as:

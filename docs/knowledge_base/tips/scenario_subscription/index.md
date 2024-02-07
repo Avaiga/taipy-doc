@@ -37,7 +37,7 @@ def callback_scenario_state(scenario, job):
 
 A scenario can then subscribe to this callback. For example, a scenario with this configuration:
 
-![Configuration](images/config.svg){ width=90% style="margin:auto;display:block" }
+![Configuration](images/config.svg){ width=90% : .tp-image }
 
 ```python
 scenario = tp.create_scenarios(scenario_cfg)

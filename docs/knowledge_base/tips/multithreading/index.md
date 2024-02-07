@@ -12,7 +12,7 @@ information from sensors measuring air pollution around a city, or displaying CP
 a server.
 
 
-![Dashboard Example](images/realtime_dashboard.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Dashboard Example](images/realtime_dashboard.png){width=90% : .tp-image-border }
 
 
 The dashboard displayed in this image is available [here](../../../gallery/pollution_sensors.md)
@@ -23,7 +23,7 @@ In this article, we will code a simple example where:
 
 
 
-![VSCode Screenshot](images/vscode_screen.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![VSCode Screenshot](images/vscode_screen.png){width=90% : .tp-image-border }
 
 
 

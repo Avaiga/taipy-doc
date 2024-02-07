@@ -26,7 +26,7 @@ The run method accepts different useful parameters:
 stack trace of the errors within the application—a valuable feature during 
 development.
 
-![Debug mode](images/debug_mode.png){ width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Debug mode](images/debug_mode.png){ width=80% : .tp-image-border }
 
 - _use_reloader_: By default, the page won't refresh on its own after you make a code 
 modification. If you want to alter this behavior, you can set the *use_reloader* to 
@@ -48,4 +48,4 @@ text  and more. Therefore, `#` creates a title, `##` makes a subtitle. Put your 
 *italics* or in `**` to have it in **bold**.
 
 
-![First Web Page](images/result.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![First Web Page](images/result.png){ width=90% : .tp-image-border }

@@ -39,13 +39,13 @@ enhance the page's visual appeal. These controls are:
     |>
     ```
 
-    ![Layout](images/layout.png){ width=70% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+    ![Layout](images/layout.png){ width=70% : .tp-image-border }
 
 
 - [expandable](../../../../manuals/gui/viselements/expandable.md): creates a block that can
     expand or shrink.
 
-    ![expandable](images/expandable.png){ width=70% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+    ![expandable](images/expandable.png){ width=70% : .tp-image-border }
 
 
 ## Back to the code
@@ -84,5 +84,5 @@ Enter a word:
 """
 ```
 
-![Layout](images/result.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Layout](images/result.png){ width=90% : .tp-image-border }
 

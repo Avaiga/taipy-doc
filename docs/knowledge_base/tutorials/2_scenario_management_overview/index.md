@@ -13,7 +13,7 @@ short-description: Learn how to give your end-users the power of managing multip
 By the end of this tutorial, you will have all the bases to create a little application using the
 scenario management of Taipy.
 
-![Scenario management demo](images/demo.gif){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Scenario management demo](images/demo.gif){ width=90% : .tp-image-border }
 
 Before looking at some code examples, to apprehend what is a *Scenario*, you need to
 understand the *Data node* and *Task* concepts.
@@ -71,7 +71,7 @@ def predict(historical_temperature: pd.DataFrame, date_to_forecast: str) -> floa
 ```
 The scenario can be represented as the following graph:
 
-![Simple scenario](images/config.svg){ width=80% style="margin:auto;display:block;border: 4px solid rgb (210,210,210);border-radius:7px" }
+![Simple scenario](images/config.svg){ width=80% : .tp-image }
 
 Three Data Nodes are being configured (**historical_temperature**, **date_to_forecast** and
 **predictions**). The task **predict** links the three Data Nodes through the Python function.
@@ -214,7 +214,7 @@ The
 provide all the necessary features to access and manage scenarios and data nodes. In fact,
 creating a Scenario based application connected to your pipelines has never been simpler.
 
-![Scenario management demo](images/demo.gif){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Scenario management demo](images/demo.gif){ width=90% : .tp-image-border }
 
 # Entire code
 

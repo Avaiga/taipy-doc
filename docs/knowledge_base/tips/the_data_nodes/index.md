@@ -27,13 +27,13 @@ Now, we'll talk about two types of data nodes:
 So, data nodes are like helpers for handling data,
 and they come in these two varieties: input and output.
 
-![data nodes](images/data_notes_2.svg){width=90% style="margin:auto;display:block" }
+![data nodes](images/data_notes_2.svg){width=90% : .tp-image }
 
 Taipy has a set of predefined data nodes ready to be used when configuring your data workflow.
 
 Here’s the list of predefined data nodes:
 
-![data nodes](images/data_notes.png){width=90% style="margin:auto;display:block" }
+![data nodes](images/data_notes.png){width=90% : .tp-image }
 
 ## Pickle Data Node
 

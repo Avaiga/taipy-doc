@@ -10,7 +10,7 @@ Tables in Taipy are not just for showing data, they also let you control things.
 making an application with data (which Taipy is great at!), you can use Taipy's tables and their
 cool features.
 
-![Tables in Taipy](images/using_tables.png){width=90% style="margin:auto;display:block" }
+![Tables in Taipy](images/using_tables.png){width=90% : .tp-image }
 
 This article shows you the settings most people want when they make tables. If you want to do
 something with tables that's not in this article, you can check the
@@ -18,7 +18,7 @@ something with tables that's not in this article, you can check the
 
 You can see all the code with the table features we talked about at the end of this article.
 
-![Tables in Taipy](images/tables-full-demo-1.gif){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Tables in Taipy](images/tables-full-demo-1.gif){width=50% : .tp-image-border }
 
 First, let's see how you make tables in Taipy:
 
@@ -48,7 +48,7 @@ you're doing, you can also use regular Python lists or NumPy arrays.
 
 When you run the code above, you get a page that looks like this:
 
-![Tables in Taipy](images/using_tables_2.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Tables in Taipy](images/using_tables_2.png){width=50% : .tp-image-border }
 
 To add aggregation to our table, we need to specify the column to group, and the aggregation
 function to be performed. In our food tracker example, an application could be to:
@@ -81,7 +81,7 @@ However, this topic is about showing toggleable aggregation by dynamically updat
 
 We can add filters to our table.
 
-![Filtering Data](images/tables-filter.gif){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Filtering Data](images/tables-filter.gif){width=50% : .tp-image-border }
 
 Filters help us choose specific data by using one or more columns. For instance, we can pick
 only the values above 300 in the **Calories** column or just view **Breakfast** in the **Meal**
@@ -140,7 +140,7 @@ to assign CSS classes to individual rows in the table. For instance, we can assi
 user-defined **highlight-row** CSS class to rows where the **Category** column is **Dessert** to
 give them a yellow background.
 
-![Property style](images/using_tables_3.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Property style](images/using_tables_3.png){width=50% : .tp-image-border }
 
 The style property accepts a function. This function is applied to each row of the table and
 returns a string specifying the CSS class to be used for that particular row. To create the
@@ -189,7 +189,7 @@ When the *on_edit* property is used, new buttons with a pencil icon are added to
 Clicking it allows the user to modify the value of that cell,
 then clicking the tick triggers the callback function:
 
-![Editing](images/tables-on_edit.gif){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Editing](images/tables-on_edit.gif){width=50% : .tp-image-border }
 
 The following code can be used to implement basic editing functionality:
 
@@ -224,7 +224,7 @@ Adding and deleting are quite similar to editing. When you specify the *on_add* 
 `button` with a 'plus' icon is included, and when clicked, it triggers the defined *on_add*
 callback function.
 
-![Adding](images/tables-on_add.gif){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Adding](images/tables-on_add.gif){width=50% : .tp-image-border }
 
 We can implement the functionality above as follows:
 
@@ -246,7 +246,7 @@ some columns to have a default or set value.
 
 Finally, the deletion process works as follows:
 
-![Deleting](images/tables-on_delete.gif){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Deleting](images/tables-on_delete.gif){width=50% : .tp-image-border }
 
 We can implement basic functionality with the following code:
 

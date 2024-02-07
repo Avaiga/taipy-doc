@@ -24,12 +24,12 @@ The application comprises four pages accessible via the upper tabs: Country, Map
 - Pie chart illustrating case distribution (Confirmed, Recovered, Deaths).
 
 
-![Country](images/covid-dashboard-country.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Country](images/covid-dashboard-country.png){width=90% : .tp-image-border }
 
 ## Page 2: Map
 Visual representation of COVID-19 impact through dynamic zoomable color-coded maps.
 
-![Map](images/covid-dashboard-map.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Map](images/covid-dashboard-map.png){width=90% : .tp-image-border }
 
 
 ## Page 3: Predictions
@@ -47,7 +47,7 @@ How to use it:
 5. To view your scenario, access it in the Scenario tab located within the Results section.
 
 
-![Country](images/covid-dashboard-prediction.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Country](images/covid-dashboard-prediction.png){width=90% : .tp-image-border }
 
 
 ## Page 4: World
@@ -55,4 +55,4 @@ Global COVID-19 statistics are summarized via line and pie charts.
 The Comparison of Covid countries' impact can be seen by changing the toggle between ‘Absolute’ and ‘Relative’.
 
 
-![World](images/covid-dashboard-world.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![World](images/covid-dashboard-world.png){width=90% : .tp-image-border }

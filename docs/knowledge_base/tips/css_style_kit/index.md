@@ -12,7 +12,7 @@ It comes with pre-made CSS styles, so your application will look great without y
 
 But that's not all – you can also make your application look even nicer with some customization.
 
-![Stylekit](images/css_style_kit.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Stylekit](images/css_style_kit.png){width=90% : .tp-image-border }
 
 The Stylekit has some great features:
 
@@ -46,7 +46,7 @@ Taipy **App**{: .color-primary}
 
 Let’s apply it to our application.
 
-![Main CSS Variables](images/css_style_kit_2.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Main CSS Variables](images/css_style_kit_2.png){width=90% : .tp-image-border }
 
 The Stylekit also offers styled sections like containers, cards, headers, and sidebars.
 These can be used to make certain parts of your pages more noticeable or to control their size and position.
@@ -70,7 +70,7 @@ This will create a card to put your Markdown/Visual elements in.
 In this example, we put a container around the entire application,
 and we've also created a card for the parameters at the top.
 
-![Main CSS Variables](images/css_style_kit_3.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Main CSS Variables](images/css_style_kit_3.png){width=90% : .tp-image-border }
 
 ## Creating Your Own Theme!
 

@@ -12,7 +12,7 @@ This tip is all about Taipy's back-end capabilities.
 Just as a reminder, the main goal of Taipy's back-end is to help you build
 and manage complex workflows, such as data processing pipelines.
 
-![Skippable Tasks](images/skippable_tasks.png){width=100% style="margin:auto;display:block" }
+![Skippable Tasks](images/skippable_tasks.png){width=100% : .tp-image }
 
 When engineers create Directed Acyclic Graphs (DAGs), they often leave out certain tasks.
 This common practice allows tasks to be orchestrated in a more dynamic and advanced way.
@@ -28,7 +28,7 @@ It contains:
 - Input and output Data nodes.
 - The Python function that you've defined and want to use.
 
-![Setting up Data Nodes for Tasks](images/skippable_tasks_2.png){width=90% style="margin:auto;display:block" }
+![Setting up Data Nodes for Tasks](images/skippable_tasks_2.png){width=90% : .tp-image }
 
 Before you start using skippable tasks, it's important to configure your tasks correctly
 with their Data nodes. You can refer to
@@ -87,7 +87,7 @@ In other words, if running the task again would produce the same output, it is s
 This feature can significantly improve the performance of your data workflow
 by preventing unnecessary computations, which saves time and resources.
 
-![Leveraging Skippability in Taipy Tasks](images/skippable_tasks_3.png){width=90% style="margin:auto;display:block" }
+![Leveraging Skippability in Taipy Tasks](images/skippable_tasks_3.png){width=90% : .tp-image }
 
 ## Use Case
 

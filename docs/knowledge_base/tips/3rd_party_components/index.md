@@ -12,7 +12,7 @@ into your applications. These components could range from interactive visualizat
 videos or other web pages. This article will demonstrate how to effectively include
 external resources, focusing on embedding a Folium Map into a web application.
 
-![Part illustration](images/part_illustration.png){width=80% style="margin:auto;display:block" }
+![Part illustration](images/part_illustration.png){width=80% : .tp-image }
 
 ## Example: Embedding a Folium Map
 
@@ -20,7 +20,7 @@ Let's explore a practical example of integrating a Folium Map into a web
 application. Folium is a powerful visualization tool for representing various maps,
 finding applications in energy studies, cost analysis, and network analysis.
 
-![Folium Map](images/folium_map.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Folium Map](images/folium_map.png){width=90% : .tp-image-border }
 
 In our scenario, we have a Python application that processes recruitment data, performs
 analysis, and generates a Folium Map using

@@ -110,4 +110,4 @@ page = """
 ```
 
 
-![Charts](images/result.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Charts](images/result.png){ width=90% : .tp-image-border }

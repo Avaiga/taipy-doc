@@ -10,7 +10,7 @@ Welcome to Taipy Cloud, the platform designed to make application deployment eas
 ensuring accessibility and stability. In this detailed guide, we will take you through
 the process of deploying a Taipy application on Taipy Cloud.
 
-![Taipy Cloud](images/logo_artwork.png){width=90% style="margin:auto;display:block" }
+![Taipy Cloud](images/logo_artwork.png){width=90% : .tp-image }
 
 We'll cover everything from configuration to testing.
 
@@ -53,7 +53,7 @@ on the Taipy Cloud dashboard, you can configure several parameters:
 These configurations enable you to customize your machine according to your application's
 needs and access important information about its performance.
 
-![Create a Machine](images/taipy_cloud_2.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Create a Machine](images/taipy_cloud_2.png){width=90% : .tp-image-border }
 
 ## Step 4: Create an Application
 
@@ -63,7 +63,7 @@ For now, there is none; let’s make one.
 Click **Add App** and upload your Taipy Application’s zip file.
 Specify the names of your main script and `requirements.txt` file.
 
-![Create an Application](images/taipy_cloud_3.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Create an Application](images/taipy_cloud_3.png){width=90% : .tp-image-border }
 
 Additionally, you can choose a custom name for your application and URL,
 which will be displayed as `<Deployment name>.taipy.cloud`.

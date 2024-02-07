@@ -28,7 +28,7 @@ between the three scenarios.
 
 - Better organize the data nodes in your application
 
-![Data Node Selector](images/data_node_selector.png){ width=30% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Data Node Selector](images/data_node_selector.png){ width=30% : .tp-image-border }
 
 
 Here we have a single month_data node for all scenarios of October 2022 and it
@@ -46,7 +46,7 @@ def filter_by_month(df, month):
 ```
 
 
-![Configuration](images/config.svg){ width=80% style="margin:auto;display:block" }
+![Configuration](images/config.svg){ width=80% : .tp-image }
 
 ## Configuration
 
@@ -54,7 +54,7 @@ def filter_by_month(df, month):
 
     === "Taipy Studio"
 
-        ![](images/config.gif){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+        ![](images/config.gif){ width=90% : .tp-image-border }
 
         - Construct the configuration
 
@@ -136,13 +136,13 @@ Let's change the configuration of our data nodes:
 
 - *month_values*: same for *month_values*.
 
-![Configuration with Scope](images/config_scope.svg){ width=90% style="margin:auto;display:block" }
+![Configuration with Scope](images/config_scope.svg){ width=90% : .tp-image }
 
 !!! example "Configuration"
 
     === "Taipy Studio"
 
-        ![](images/config_scope.gif){ width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+        ![](images/config_scope.gif){ width=80% : .tp-image-border }
 
         - Change the Scope of historical_data to be global
 
@@ -250,7 +250,7 @@ tp.Gui("""<|{scenario}|scenario_selector|>
           <|{data_node}|data_node_selector|>""").run()
 ```
 
-![Visual Elements](images/visual_elements.png){ width=60% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Visual Elements](images/visual_elements.png){ width=60% : .tp-image-border }
 
 # Conclusion
 

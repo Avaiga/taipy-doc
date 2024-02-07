@@ -87,7 +87,7 @@ def on_change(state, var_name, var_value):
 Gui(page).run(debug=True)
 ```
 
-![Interactive GUI](images/result.png){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Interactive GUI](images/result.png){ width=90% : .tp-image-border }
 
 [`notify()`](../../../../manuals/reference/taipy.gui.notify.md) is a Taipy GUI function that creates a
 [notification](../../../../manuals/gui/notifications.md) with some information. The user can pass multiple parameters, including the *state*, the

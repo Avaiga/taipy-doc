@@ -13,7 +13,7 @@ Taipy offers a valuable feature known as "long-running callbacks" to tackle this
 callbacks enable the server to handle resource-intensive processing in the background, ensuring
 a responsive user interface.
 
-![Long Running Callbacks](images/long_running_callbacks.png){width=90% style="margin:auto;display:block" }
+![Long Running Callbacks](images/long_running_callbacks.png){width=90% : .tp-image }
 
 This article discusses the concept of long-running callbacks in Taipy, provides usage examples,
 and illustrates how they enhance the overall user experience.

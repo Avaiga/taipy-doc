@@ -12,7 +12,7 @@ tool for running and saving sets of tasks. They can create different versions of
 problem with different guesses. This helps users understand the effects and possibilities, which
 are really important for big decisions.
 
-![Scenarios](images/scenario.png){width=90% style="margin:auto;display:block" }
+![Scenarios](images/scenario.png){width=90% : .tp-image }
 
 In this tip, we will examine Taipy scenarios more closely. We will explore what they can do
 and how they can be useful when making decisions.

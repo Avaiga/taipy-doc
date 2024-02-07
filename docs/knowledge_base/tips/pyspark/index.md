@@ -18,7 +18,7 @@ packages without explicit support.
 Taipy configuration". That section dives right into defining a 
 function for a Taipy task to run a PySpark application. Otherwise, read on!
 
-![Illustration](images/front.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Illustration](images/front.png){width=90% : .tp-image-border }
 
 
 This article will employ a simple example to demonstrate how we can integrate 
@@ -50,7 +50,7 @@ processing. However, this dataset is accessible, and **its size is irrelevant fo
 demonstrating Spark's integration with Taipy**. You may duplicate the data as many 
 times as you need if you must test this with a larger dataset.
 
-![Application DAG](images/app_DAG.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Application DAG](images/app_DAG.png){width=90% : .tp-image-border }
 
 We'll design a workflow which performs **two main tasks**:
 
@@ -153,7 +153,7 @@ by mean;
 
 Thereafter, the contents of *app/output.csv* should be exactly as follows:
 
-![CSV Table](images/table_csv.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![CSV Table](images/table_csv.png){width=90% : .tp-image-border }
 
 Also, note that we have coded the **Spark application to receive two command line 
 parameters**:
@@ -268,7 +268,7 @@ provides a graphical editor for building a Taipy *.toml* configuration file.
 
 We are particularly interested in the code section which produces this part of the DAG:
 
-![RPySpark DAG](images/spark_DAG.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![RPySpark DAG](images/spark_DAG.png){width=90% : .tp-image-border }
 
 
 Let's extract and examine the relevant section of the *config.py* script which creates 
@@ -400,7 +400,7 @@ day ago.
 We'll complete our application by **building the GUI** which we saw at the beginning of 
 this article:
 
-![User Interface](images/GUI.png){width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![User Interface](images/GUI.png){width=90% : .tp-image-border }
 
 
 If you're unfamiliar with Taipy's GUI capabilities, you can find a quickstart 

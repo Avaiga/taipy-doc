@@ -9,7 +9,7 @@ img: images/icon-code.svg
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Advanced*
 
-![Configuration](images/config.svg){ width=90% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Configuration](images/config.svg){ width=90% : .tp-image-border }
 
 Taipy offers a way to compare data nodes across scenarios by including a function directly in the configuration of the scenario.
 
