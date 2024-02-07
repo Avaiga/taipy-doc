@@ -15,7 +15,7 @@ The [Stylekit](../styling/stylekit.md) provides a specific class that you can us
 
 # Usage
 
-## Using the full date and time
+## Using only the date
 
 Assuming a variable _dt_ contains a Python `datetime` object, you can create
 a date selector that represents it:
@@ -34,20 +34,20 @@ a date selector that represents it:
         <taipy:date>{dt}</taipy:date>
         ```
 
-## Using only the date
+## Using the full date and time
 
-If you don't need to use the date, you can do so:
+If you need to use the date and time, you can do so by setting `with_time` property to `True`:
 
 !!! example "Page content"
 
     === "Markdown"
 
         ```
-        <|{dt}|date|not with_time|>
+        <|{dt}|date|with_time|>
         ```
   
     === "HTML"
 
         ```html
-        <taipy:date with_time="false">{dt}</taipy:date>
+        <taipy:date with_time>{dt}</taipy:date>
         ```
