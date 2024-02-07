@@ -222,7 +222,7 @@ class VisElementsStep(SetupStep):
             element_desc['short_doc'] = first_documentation_paragraph
 
             element_documentation = self.process_element_md_file(element_type, element_documentation)
-            
+
             # Build properties table
             properties_table = """
 # Properties\n\n
@@ -384,7 +384,7 @@ class VisElementsStep(SetupStep):
                         _ = eval(default_value)
                     except Exception:
                         raise SyntaxError(f"Default value for property '{property}' of element '{element_type}' is not a valid Python expression ({default_value})")
-                return (f"{property}={default_value if default_value else 'None'}, ", 
+                return (f"{property}={default_value if default_value else 'None'}, ",
                         f"{indent*' '}{desc['name']} ({type}){dynamic}: {doc}\n")
 
             template = f"""
@@ -450,8 +450,8 @@ class [element_type]({base_class}):
         self.generate_pages("blocks", self.blocks_path)
         self.generate_builder_api()
 
-    # Special case for charts: we want to insert the chart gallery that is stored in the
-    # file whose path is in self.charts_home_html_path
+    # Special case for charts: we want to insert the chart gallery that
+    # is stored in the file whose path is in self.charts_home_html_path
     # This should be inserted before the first level 1 header
     def chart_page_hook(
         self, element_documentation: str, before: str, after: str, charts_md_dir: str
@@ -496,7 +496,7 @@ class [element_type]({base_class}):
             match.group(1) + chart_gallery + before[match.end() :],
             after + chart_sections,
         )
-    
+
     def process_element_md_file(self, type: str, documentation: str) -> str:
         DEF_RE = re.compile(r"^!!!\s+taipy-element\s*?\n((?:\s+\w+(?:\[.*?\])?(?::\w+)?\s*=\s*.*\n)*)", re.M)
         PROP_RE = re.compile(r"(\w+(?:\[.*?\])?)(?::(\w+))?\s*=\s*(.*)\n", re.M)

@@ -1,6 +1,6 @@
 ---
 title: Realtime Pollution Dashboard
-category: demos
+category: gallery
 type: code
 data-keywords: gui dashboard vizelement layout chart
 short-description: Streams real-time pollution data from sensors and shows air quality on a map.
@@ -20,4 +20,4 @@ displays it on a dashboard. The dashboard is updated in real-time as new data is
 
 ![Pollution Dashboard](images/pollution_dashboard.png){width=100%}
 
-A tutorial on visualizing data streamed from another thread is available [here](../tips/multithreading/index.md).
+A tutorial on visualizing data streamed from another thread is available [here](../knowledge_base/tips/multithreading/index.md).

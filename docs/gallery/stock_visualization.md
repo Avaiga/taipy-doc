@@ -1,6 +1,6 @@
 ---
 title: Stock Visualization and Prediction
-category: demos
+category: gallery
 type: code
 data-keywords: gui ai dashboard
 short-description: Leverage Taipy and Prophet to visualize historical stock data and make predictions over 5 years.

@@ -10,7 +10,6 @@
 
 - [ ] The navigation panel includes the changes I made.
 - [ ] The `knowledge_base` page includes the new page I want to add.
-- [ ] The `knowledge_base/demos` page includes the new demo I want to add.
 - [ ] The `knowledge_base/tutorials` page includes the new tutorial I want to add.
 - [ ] The `knowledge_base/tips` page includes the new tip I want to add.
 - [ ] The new demo/tip/tutorial page is correct. The title, the subtitles, the table of content, the links,

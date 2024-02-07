@@ -20,20 +20,6 @@ hide:
   </div>
 
   <div class="tp-col-12 tp-col-md-4 d-flex">
-    <a class="tp-content-card tp-content-card--beta" href="demos">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-icon" src="images/icon-demos.svg">
-      </header>
-      <div class="tp-content-card-body">
-        <h3>Demos</h3>
-        <p>
-          See Taipy in action in our demo applications.
-        </p>
-      </div>
-    </a>
-  </div>
-
-  <div class="tp-col-12 tp-col-md-4 d-flex">
     <a class="tp-content-card tp-content-card--alpha" href="tips">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="images/icon-tips.svg">
@@ -111,10 +97,6 @@ hide:
 # Tutorials
 
 [LIST_OF_TUTORIALS]
-
-# Demos
-
-[LIST_OF_DEMOS]
 
 # Tips & Tricks
 

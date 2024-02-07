@@ -1,6 +1,6 @@
 ---
 title: Movie Genre Selector
-category: demos
+category: gallery
 type: code
 data-keywords: gui ai dashboard
 short-description: Explore this user-friendly interface to help you discover movies from your favorite movie genres.

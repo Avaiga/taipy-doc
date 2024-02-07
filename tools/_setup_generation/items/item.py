@@ -5,7 +5,7 @@ from .exceptions import WrongHeader, NoHeader, NoIndexFile
 
 
 class Item:
-    CATEGORIES = ["tutorials", "demos", "tips"]
+    CATEGORIES = ["tutorials", "gallery", "tips"]
     TYPES = ["code", "video", "article"]
 
     def __init__(self, parent_path: str, file_path: str):
@@ -51,7 +51,7 @@ class Item:
         lines.append(f'  </li>')
         return "\n".join(lines)
 
-    def generate_content_for_demos(self) -> str:
+    def generate_content_for_gallery(self) -> str:
         """Generate content of an HTML list item."""
         lines: List[str] = list()
         lines.append(f'  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="{self.data_keywords}">')
@@ -62,7 +62,6 @@ class Item:
         lines.append(f'      </header>')
         lines.append(f'      <div class="tp-content-card-body">')
         lines.append(f'        <h4>{self.title}</h4>')
-        lines.append(f'        <span class="tp-tag">Front-end | Back-end</span>')
         lines.append(f'        <p>')
         lines.append(f'          {self.short_description}')
         lines.append(f'        </p>')
@@ -72,7 +71,7 @@ class Item:
         return "\n".join(lines)
 
     def generate_content_for_tips(self) -> str:
-        return self.generate_content_for_demos()
+        return self.generate_content_for_gallery()
 
     def generate_content_for_kb(self) -> str:
         """Generate content of an HTML list item."""
@@ -92,6 +91,7 @@ class Item:
         lines.append(f'    </a>')
         lines.append(f'  </li>')
         return "\n".join(lines)
+
 
     def _read_header(self, file: TextIO) -> Dict[str, str]:
         """Read a multiline header starting with '---' and ending with '---'."""
