@@ -4,7 +4,7 @@ category: tips
 type: code
 data-keywords: gui notebook deployment
 short-description: Share your Taipy application created with Google Colab on the Internet using Ngrok.
-img: colab_with_ngrok/Sharing_Taipy_Ngrok_1.png
+img: colab_with_ngrok/images/Sharing_Taipy_Ngrok_1.png
 ---
 For people who want to create strong graphical interfaces without needing to be an expert in GUI
 (Graphical User Interface), Taipy is definitely the solution.
@@ -23,7 +23,7 @@ In this article, we will demonstrate how to put a Taipy application on Notebooks
 on the Google Colab platform. We will achieve this by creating a public URL using
 [Ngrok](https://ngrok.com/).
 
-![Problem statement](Sharing_Taipy_Ngrok_1.png){width=80%}
+![Problem statement](images/Sharing_Taipy_Ngrok_1.png){width=90% : .tp-image }
 
 To begin, let's briefly explain what Ngrok and Google Colab are.
 
@@ -64,12 +64,12 @@ earlier, Google Colab is hosted on a server, not on your local machine.
 
 On the Ngrok website (create a hyperlink to Ngrok website), create a free account.
 
-![Get your Authtoken on Ngrok](Sharing_Taipy_Ngrok_2.png){width=50%}
+![Get your Authtoken on Ngrok](images/Sharing_Taipy_Ngrok_2.png){width=50% : .tp-image-border }
 
 After you've created your account, you can obtain your personal AuthToken. We require this
 AuthToken to establish the tunnel for our Taipy application.
 
-![Get your Authtoken on Ngrok](Sharing_Taipy_Ngrok_3.png){width=60%}
+![Get your Authtoken on Ngrok](images/Sharing_Taipy_Ngrok_3.png){width=60% : .tp-image-border }
 
 Head to Ngrok website and obtain your tunnel Authtoken.
 
@@ -89,12 +89,13 @@ provided by Ngrok.
 
 Executing this last step will generate a public URL from Ngrok in the terminal.
 
-![Share our Taipy application in Google Colab with Ngrok](Sharing_Taipy_Ngrok_5.png){width=70%}
-![Share our Taipy application in Google Colab with Ngrok](Sharing_Taipy_Ngrok_5_1.png){width=70%}
+![Share our Taipy application in Google Colab with Ngrok](images/Sharing_Taipy_Ngrok_5.png){width=70% : .tp-image-border }
+
+![Share our Taipy application in Google Colab with Ngrok](images/Sharing_Taipy_Ngrok_5_1.png){width=70% : .tp-image-border }
 
 Now, please click on the Ngrok Public URL link to access our application.
 
-![Share our Taipy application in Google Colab with Ngrok](taipy_ngrok_app.gif){width=100%}
+![Share our Taipy application in Google Colab with Ngrok](images/taipy_ngrok_app.gif){width=90% : .tp-image-border }
 
 Congratulations! You have successfully created and launched our multi-page Taipy application
 from Colab!

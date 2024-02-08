@@ -18,6 +18,6 @@ This application shows pollution levels around a factory in real-time. The data 
 another server and sent to this Taipy application via a WebSocket. Taipy then processes the data and
 displays it on a dashboard. The dashboard is updated in real-time as new data is received.
 
-![Pollution Dashboard](images/pollution_dashboard.png){width=100%}
+![Pollution Dashboard](images/pollution_dashboard.png){width=90% : .tp-image-border }
 
 A tutorial on visualizing data streamed from another thread is available [here](../knowledge_base/tips/multithreading/index.md).

@@ -1,6 +1,5 @@
-> You can download the code for
-<a href="../../src/step_06.py" download>Step 6</a>
-or all the steps <a href="../../src/src.zip" download>here</a>.
+[Download Step 6](./../src/step_06.py){: .tp-btn target='blank' }
+[Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 !!! warning "For Notebooks"
 
@@ -9,7 +8,6 @@ or all the steps <a href="../../src/src.zip" download>here</a>.
     It is important to check the [Notebook](../tutorial.ipynb)
     content and see the [documentation](../../../../manuals/gui/notebooks.md).
 
-# Step 6: Page layout
 
 You have successfully built a comprehensive forecasting application capable of making predictions
 for multiple days with various parameters in just a few steps. Nevertheless, there is room for
@@ -41,13 +39,13 @@ enhance the page's visual appeal. These controls are:
     |>
     ```
 
-    ![Layout](layout.png){ width=500 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+    ![Layout](images/layout.png){ width=70% : .tp-image-border }
 
 
 - [expandable](../../../../manuals/gui/viselements/expandable.md): creates a block that can
     expand or shrink.
 
-    ![expandable](expandable.png){ width=500 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+    ![expandable](images/expandable.png){ width=70% : .tp-image-border }
 
 
 ## Back to the code
@@ -86,5 +84,5 @@ Enter a word:
 """
 ```
 
-![Layout](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Layout](images/result.png){ width=90% : .tp-image-border }
 

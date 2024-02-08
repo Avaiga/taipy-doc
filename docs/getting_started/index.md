@@ -7,7 +7,7 @@ hide:
 Dive into Taipy with this beginner-friendly guide. Learn to install, configure, and create your
 first application with ease.
 
-![GUI Result](result.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![GUI Result](result.png){width=50% : .tp-image-border }
 
 
 # Installation with pip
@@ -31,7 +31,7 @@ can be.
 
 Let's craft a basic "Hello World" scenario:
 
-![Hello World Example](hello_world.svg){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Hello World Example](hello_world.svg){width=50% : .tp-image-border }
 
 The graph involves:
 
@@ -256,7 +256,7 @@ While *scenario* is available to everyone, *state.input_name* and
 user's actions are separate and efficiently controlled, while variables like *scenario* are
 global variables.
 
-![State illustration](state_illustration.png){width=70% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![State illustration](state_illustration.png){width=70% : .tp-image-border }
 
 In the *submit_scenario()* function, the *input_name* entered by the user on the interface is
 saved to the scenario. After submission, the outcome is retrieved and stored in the *message*
@@ -272,7 +272,7 @@ if __name__ == "__main__":
 The main part of the application starts by setting up the Core service, generating a scenario,
 and starting the GUI, which makes the interface active and functional.
 
-![GUI Result](result.png){width=50% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![GUI Result](result.png){width=50% : .tp-image-border }
 
 ---
 

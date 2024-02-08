@@ -25,8 +25,7 @@ brief sentence or a longer paragraph, just type or paste the
 text into the input box, and Taipy will quickly evaluate the
 sentiment conveyed in the text.
 
-
-![Line](images/sentiment-analysis-line.png){width=80%}
+![Line](images/sentiment-analysis-line.png){width=90% : .tp-image-border }
 
 ## Page 2: Text - Uploading and Analyzing Text Files
 The second page, named "Text" allows users to upload
@@ -37,5 +36,4 @@ expressed throughout the document. This feature is
 useful for processing longer texts such as articles, reports,
 or extensive customer feedback.
 
-
-![Text](images/sentiment-analysis-text.png){width=80%}
+![Text](images/sentiment-analysis-text.png){width=90% : .tp-image-border }

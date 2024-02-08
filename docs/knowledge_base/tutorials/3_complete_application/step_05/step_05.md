@@ -1,12 +1,11 @@
-> The full code is available
-<a href="../../src/src.zip" download>here</a>.
+[Download the code](./../src/src.zip){: .tp-btn target='blank' }
 
 The Performance Page is a section of the application that permits users to compare the performance metrics, 
 including Root Mean Squared Error and Mean Absolute Error, across various scenarios. 
 The page displays a table and two bar charts for comparing these metrics between baseline and 
 machine learning predictions.
 
-![Performance Page](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Performance Page](images/result.png){ width=90% : .tp-image-border }
 
 # Markdown
 

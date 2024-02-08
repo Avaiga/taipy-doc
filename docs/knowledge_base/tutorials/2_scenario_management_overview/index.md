@@ -5,18 +5,15 @@ type: code
 data-keywords: scenario task datanode configuration submission dag
 short-description: Learn how to give your end-users the power of managing multiple scenarios.
 ---
-> You can download the code
-<a href="./scenario_management.py" download>here</a>. Here is the
-<a href="./scenario_management_toml.py" download>Python version</a>
-with the
-<a href="./config.toml" download>TOML file</a>
+
+[Download the code](./src/scenario_management.zip){: .tp-btn target='blank' }
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Beginner*
 
 By the end of this tutorial, you will have all the bases to create a little application using the
 scenario management of Taipy.
 
-![Scenario management demo](demo.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Scenario management demo](images/demo.gif){ width=90% : .tp-image-border }
 
 Before looking at some code examples, to apprehend what is a *Scenario*, you need to
 understand the *Data node* and *Task* concepts.
@@ -74,7 +71,7 @@ def predict(historical_temperature: pd.DataFrame, date_to_forecast: str) -> floa
 ```
 The scenario can be represented as the following graph:
 
-![Simple scenario](config.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb (210,210,210);border-radius:7px" }
+![Simple scenario](images/config.svg){ width=80% : .tp-image }
 
 Three Data Nodes are being configured (**historical_temperature**, **date_to_forecast** and
 **predictions**). The task **predict** links the three Data Nodes through the Python function.
@@ -112,7 +109,7 @@ Three Data Nodes are being configured (**historical_temperature**, **date_to_for
         lets you edit and view a TOML file that will be used in our code.
 
         <video controls width="400">
-            <source src="./config.mp4" type="video/mp4">
+            <source src="./images/config.mp4" type="video/mp4">
         </video>
 
         To use this configuration in our code (`main.py` for example), we must load it and
@@ -214,11 +211,10 @@ tp.Gui(scenario_md).run()
 
 The
 [Scenario management controls](../../../manuals/gui/viselements/controls.md#scenario-management-controls)
-http://127.0.0.1:8000/en/develop/manuals/
 provide all the necessary features to access and manage scenarios and data nodes. In fact,
 creating a Scenario based application connected to your pipelines has never been simpler.
 
-![Scenario management demo](demo.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Scenario management demo](images/demo.gif){ width=90% : .tp-image-border }
 
 # Entire code
 

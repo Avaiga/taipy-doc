@@ -4,9 +4,9 @@ category: tips
 type: code
 data-keywords: gui notebook
 short-description: Seamlessly update the User Interface in a Jupyter Notebook without restarting the kernel.
-img: jupyter_notebooks/jupyter_notebooks_1.png
+img: jupyter_notebooks/images/jupyter_notebooks_1.png
 ---
-![Taipy GUI in Jupyter Notebooks](jupyter_notebooks_1.png){width=100%}
+![Taipy GUI in Jupyter Notebooks](images/jupyter_notebooks_1.png){width=90% : .tp-image }
 
 Taipy's built-in support for Jupyter Notebooks offers us:
 
@@ -15,7 +15,7 @@ notebooks.
 
 2. A safe environment for trying out Taipy's numerous features and functionalities.
 
-![Taipy GUI in Jupyter Notebooks](jupyter_notebooks_2.png){width=100%}
+![Taipy GUI in Jupyter Notebooks](images/jupyter_notebooks_2.png){width=90% : .tp-image-border }
 
 When using Taipy in Python scripts (.py), we typically have to rerun the script whenever we make
 changes to our code. In Jupyter Notebook (.ipynb), the equivalent would be to restart the kernel
@@ -33,29 +33,29 @@ To solve this and enhance the experience of using Taipy in Jupyter Notebook, we 
 
 The code below illustrates how to create a basic Taipy web application in a Jupyter Notebook:
 
-![Modifying Page Content](jupyter_notebooks_3.png){width=100%}
+![Modifying Page Content](images/jupyter_notebooks_3.png){width=90% : .tp-image-border }
 
 When we wish to alter the contents of *page_md*, we might be tempted to (incorrectly) modify and
 re-run our existing [page](../../../manuals/reference/taipy.gui.Page.md) definition cell, like this:
 
-![Modifying Page Content](jupyter_notebooks_4.png){width=100%}
+![Modifying Page Content](images/jupyter_notebooks_4.png){width=90% : .tp-image-border }
 
 However, taking this approach will NOT produce the desired result on our webpage. Instead, we
 should utilize the `Page.set_content()^` method, such as `page_md.set_content("New content")`, like
 this:
 
-![Modifying Page Content](jupyter_notebooks_5.png){width=100%}
+![Modifying Page Content](images/jupyter_notebooks_5.png){width=90% : .tp-image-border }
 
 Simply running the new cell (and refreshing the browser) will correctly update our web page.
 
-![Modifying Page Content](notebook_set_content_no_browser.gif){width=100%}
+![Modifying Page Content](images/notebook_set_content_no_browser.gif){width=90% : .tp-image-border }
 
 # Modifying Variable
 
 Another common task is to change the value of a variable used in our Page definition. Consider the
 following Jupyter Notebook as an example:
 
-![Modifying Variable](jupyter_notebooks_6.png){width=100%}
+![Modifying Variable](images/jupyter_notebooks_6.png){width=90% : .tp-image-border }
 
 In this example, if we want to change the value of the *title* variable (e.g.,
 `title = "Taipy GUI in Jupyter Notebook"``), we need to inform Taipy of the changes by calling
@@ -63,7 +63,7 @@ the `Gui.reload()^` method (e.g., `gui.reload()`).<br/>
 This ensures that the most recent variable values are loaded from the Jupyter session namespace.
 After running the cell, refresh your browser to view the updated changes.
 
-![Modifying Variable](notebook_gui_reload.gif){width=100%}
+![Modifying Variable](images/notebook_gui_reload.gif){width=90% : .tp-image-border }
 
 This doesn't only relate to variables on pages, but also to
 [callback functions](../../../manuals/gui/callbacks.md) like `on_change` or user-defined callbacks.

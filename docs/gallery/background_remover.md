@@ -13,7 +13,7 @@ can achieve this effortlessly using Taipy and offers a peek into the code.
 [Try it live](https://background-remover.taipy.cloud/){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-remove-background){: .tp-btn .tp-btn--accent target='blank' }
 
-![Background Remover](images/background-remover.png){width=80%}
+![Background Remover](images/background-remover.png){width=90% : .tp-image-border }
 
 # Understanding the Application
 

@@ -10,7 +10,7 @@ img: decimator/images/front.png
 This article aims to show how to minimize the volume of data transiting 
 between the application and the GUI client without losing the information.
 
-![Illustration](images/front.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Illustration](images/front.png){width=90% : .tp-image }
 
 When we talk about Data, we refer to large Tabular data with plenty of 
 columns and even more rows. If we consider a table (data frame, array, etc.) with 
@@ -186,7 +186,7 @@ On the other hand, a commented visualization of the results obtained can be
 interesting. Here is a typical curve in front of which a data analyst should make 
 decisions:
 
-![Initial Curve](images/initial_curve.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Initial Curve](images/initial_curve.png){width=70% : .tp-image-border }
 
 <center>
 Initial Curve
@@ -216,13 +216,13 @@ of an application.
 
 Here is the result of executing this algorithm on the initial dataset:
 
-![Min-Max 500](images/minmax_500.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Min-Max 500](images/minmax_500.png){width=70% : .tp-image-border }
 
 <center>
 500 points
 </center>
 
-![Min-Max 100](images/minmax_100.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Min-Max 100](images/minmax_100.png){width=70% : .tp-image-border }
 
 <center>
 100 points
@@ -238,13 +238,13 @@ of the curve, where slight variation is visible.
 
 If we execute this algorithm on our dataset, we obtain the following curves:
 
-![LTTB 500](images/lttb_500.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![LTTB 500](images/lttb_500.png){width=70% : .tp-image-border }
 
 <center>
 500 points
 </center>
 
-![LTTB 100](images/lttb_100.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![LTTB 100](images/lttb_100.png){width=70% : .tp-image-border }
 
 <center>
 100 points
@@ -261,13 +261,13 @@ eliminated one of the two.
 
 The third algorithm gives the following curves:
 
-![Ramer-Douglas 500](images/ramer_douglas_500.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Ramer-Douglas 500](images/ramer_douglas_500.png){width=70% : .tp-image-border }
 
 <center>
 500 points
 </center>
 
-![Ramer-Douglas 100](images/ramer_douglas_100.png){width=80% style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Ramer-Douglas 100](images/ramer_douglas_100.png){width=70% : .tp-image-border }
 
 <center>
 100 points

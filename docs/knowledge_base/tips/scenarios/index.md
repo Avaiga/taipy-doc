@@ -4,7 +4,7 @@ category: tips
 type: code
 data-keywords: scenario cycle configuration datanode dag
 short-description: A Taipy scenario models an instance of your end-user business problem to solve on data and parameter sets.
-img: scenarios/scenario.png
+img: scenarios/images/scenario.png
 ---
 In the fast-moving world of business today, people who make decisions need to adapt fast to
 changes and look at different possibilities to make smart choices. Taipy scenarios are a strong
@@ -12,7 +12,7 @@ tool for running and saving sets of tasks. They can create different versions of
 problem with different guesses. This helps users understand the effects and possibilities, which
 are really important for big decisions.
 
-![Scenarios](scenario.png){width=100%}
+![Scenarios](images/scenario.png){width=90% : .tp-image }
 
 In this tip, we will examine Taipy scenarios more closely. We will explore what they can do
 and how they can be useful when making decisions.

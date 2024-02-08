@@ -21,7 +21,7 @@ This generally causes a performance issue called training-serving skew, where th
 is not used for the distribution of the inference data and fails to generalize.
 
 
-![Data Distributions](images/drift-detection-distributions.png){width=80%}
+![Data Distributions](images/drift-detection-distributions.png){width=90% : .tp-image-border }
 
 Statistical tests exist to detect drift in a dataset. These tests calculate the probability of two
 series coming from the same distribution. If the probability is under a threshold, we consider that there
@@ -31,7 +31,7 @@ The dataset used in this app has both numerical (age, body mass index, blood pre
 (sex) columns. That is why we start by separating these columns. Then, we run a statistical test
 for each column to detect drift (Kolmogorov for numerical, Chi-squared for categorical).
 
-![Pipeline](images/drift-detection-pipeline.png){width=80%}
+![Pipeline](images/drift-detection-pipeline.png){width=90% : .tp-image-border }
 
 # How to use the Application
 
@@ -41,11 +41,11 @@ Here, we are selecting *data_big*, a dataset similar to the reference dataset bu
 blood pressure values. We see on the blood pressure distribution chart that the distribution of the comparison
 dataset in red is shifted to the right compared to the reference dataset in green.
 
-![Shifted Distribution](images/drift-detection-step-1.png){width=80%}
+![Shifted Distribution](images/drift-detection-step-1.png){width=90% : .tp-image-border }
 
 2. Run the scenario by clicking here:
 
-![Run Scenario](images/drift-detection-step-2.png){width=80%}
+![Run Scenario](images/drift-detection-step-2.png){width=90% : .tp-image-border }
 
 3. Visualize the results at the bottom of the page:
 
@@ -54,4 +54,4 @@ means that the probability of both datasets of blood pressure coming from the sa
 5%. We can reject the hypothesis that both datasets come from the same distribution and conclude that there
 is a drift in the blood pressure column.
 
-![Results](images/drift-detection-step-3.png){width=80%}
+![Results](images/drift-detection-step-3.png){width=90% : .tp-image-border }

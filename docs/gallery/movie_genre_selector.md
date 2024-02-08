@@ -29,4 +29,4 @@ To explore and select movie genres, follow these simple steps:
 1. Choose your favorite genre on the scrolling menu.
 2. Enjoy seven personalized movie recommendations based on your genre choices.
 
-![Movie Genre Selector](images/movie-genre-selector.png){width=80%}
+![Movie Genre Selector](images/movie-genre-selector.png){width=90% : .tp-image-border }

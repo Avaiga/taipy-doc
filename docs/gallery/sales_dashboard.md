@@ -16,7 +16,7 @@ the two charts: "_Sales by hour_" and "_Sales by product_".
 # Understanding the Application
 This demo is a one-page application.
 
-![Dashboard](images/demo-sales-dashboard.jpg){width=80%}
+![Dashboard](images/demo-sales-dashboard.jpg){width=90% : .tp-image-border }
 
 The dashboard includes filters and two interactive charts:
 "_Sales by hour_" and "_Sales by product_".

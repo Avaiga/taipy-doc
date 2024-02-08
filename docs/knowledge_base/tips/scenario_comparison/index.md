@@ -6,14 +6,14 @@ data-keywords: scenario comparison datanode configuration
 short-description: Learn best practices to compare scenarios easily.
 img: images/icon-code.svg
 ---
-> You can download the code
-<a href="./scenario_comparison.py" download>here</a>.
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Advanced*
 
-![Configuration](config.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Configuration](images/config.svg){ width=90% : .tp-image-border }
 
 Taipy offers a way to compare data nodes across scenarios by including a function directly in the configuration of the scenario.
+
+[Download the code](./src/scenario_comparison.py){: .tp-btn target='blank' }
 
 # Comparing scenarios
 

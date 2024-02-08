@@ -6,10 +6,6 @@ data-keywords: scenario subscription job gui notify
 short-description: Connect to your scenario executions to get the most recent updates.
 img: images/icon-code.svg
 ---
-> You can download the code
-<a href="./scenario_subscription.py" download>here</a>.
-
-# Subscribing to a scenario
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Advanced*
 
@@ -17,6 +13,8 @@ To perform an action after a job status change, you can
 [subscribe a function](../../../manuals/core/entities/orchestrating-and-job-execution.md#subscribe-to-job-execution)
 to a scenario. When there is a status change, this function is triggered. This feature enables the
 creation of logs or specific events for the Taipy GUI.
+
+[Download the code](./src/scenario_subscription.py){: .tp-btn target='blank' }
 
 ```python
 def callback_scenario_state(scenario, job):
@@ -39,7 +37,7 @@ def callback_scenario_state(scenario, job):
 
 A scenario can then subscribe to this callback. For example, a scenario with this configuration:
 
-![Configuration](config.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Configuration](images/config.svg){ width=90% : .tp-image }
 
 ```python
 scenario = tp.create_scenarios(scenario_cfg)
@@ -63,7 +61,7 @@ JOB_add_... to Status.COMPLETED
 Data node value: 52
 ```
 
-## Real-time feedback on the GUI
+# Real-time feedback on the GUI
 
 The `on_submission_change` property extends this functionality in a
 GUI setting. It triggers a specific function upon each
@@ -72,13 +70,13 @@ ensures that users are always informed of the current status, from SUBMITTED to
 COMPLETED or CANCELED, enhancing user experience through immediate feedback and
 interaction.
 
-## Parameters of the Function
+# Parameters of the Function
 
 - `state (State)`: The state instance.
 - `submittable (Submittable)`: The entity, usually a Scenario, that was submitted.
 - `details (dict)`: Details on this callback's invocation, including the new status of the submission and the Job causing the status change.
 
-## Handling Different Submission Statuses
+# Handling Different Submission Statuses
 
 Here’s an example of how you can use this property in your code:
 
@@ -101,7 +99,7 @@ def on_submission_status_change(state, submittable, details):
     # Add more conditions for other statuses as needed.
 ```
 
-## Implementing in GUI
+# Implementing in GUI
 
 When creating a GUI for your scenarios, you can associate this function with a visual element for real-time updates. For example:
 
