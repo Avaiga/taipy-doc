@@ -7,14 +7,9 @@
 
 ## Production ready Dockerfile
 
-The following Dockerfile contains the minimum configuration settings for you to deploy your application to
-production.
+The following Dockerfile contains the minimum configuration settings to deploy your application to production.
 
-This template assumes that you provide a `requirements.txt` file with all the Python dependencies of your
-application.
-
-Make sure you update the Docker command `CMD` with the appropriate file name and Flask settings for your
-application as describe in [Running a Taipy application](../../run/index.md).
+This template assumes that you provide a `requirements.txt` file with all the Python dependencies of your application and that your application entry point is the file `main.py.`
 
 ```
 # Your Python version
@@ -31,17 +26,18 @@ USER taipy
 WORKDIR /home/taipy
 ENV PATH="${PATH}:/home/taipy/.local/bin"
 
-# Update pip and install Gunicorn with a suitable worker
+# Update pip
 RUN python -m pip install --upgrade pip
-RUN python -m pip install gunicorn gevent-websocket
+
+# Install application's dependencies
+COPY requirements.txt .
+RUN python -m pip install -r requirements.txt
 
 # Install your application
 COPY . .
-RUN python -m pip install -r requirements.txt
 
 # Start up command
-ENTRYPOINT [ "gunicorn", "-k", "geventwebsocket.gunicorn.workers.GeventWebSocketWorker", "-w", "1", "--bind=0.0.0.0:5000", "--timeout", "1800" ]
-CMD [ "<main>:<app>" ]
+ENTRYPOINT [ "python", "main.py", "-P", "5000", "-H", "0.0.0.0", "--no-reloader" ]
 ```
 
 !!! note
@@ -57,11 +53,7 @@ CMD [ "<main>:<app>" ]
 
 ## Production ready Docker Compose
 
-It is not recommended to expose Gunicorn to the Internet. It is better to let [Nginx](https://nginx.org)
-handle [this responsibility](https://docs.gunicorn.org/en/stable/deploy.html).
-
-Beside your `docker-compose.yaml`, create a file named `nginx.conf` with
-[the following content](./nginx.conf).
+Exposing your application directly to the Internet is not recommended. Let [Nginx](https://nginx.org) handle this responsibility better for security and reliability. Consequently, beside your `docker-compose.yaml`, create a file named `nginx.conf` with [the following content](./nginx.conf).
 
 Then, update your `docker-compose.yaml`:
 ```yaml
@@ -70,7 +62,7 @@ services:
   taipy:
     build: ""
   nginx:
-    image: nginx:1.23
+    image: nginx:1.25
     ports:
        - "5000:80"
     volumes:
