@@ -352,7 +352,7 @@ class VisElementsStep(SetupStep):
 
             element_types = self.categories[category]
             def build_doc(property: str, desc, indent: int):
-                type = desc['type']
+                type = desc["type"]
                 dynamic = ""
                 dynamic_re = re.match(r"^dynamic\(\s*(.*)\s*\)$", type)
                 if False and dynamic_re:
@@ -414,7 +414,7 @@ class [element_type]({base_class}):
                 default_prop = next(
                     p for p in properties if p["name"] == desc["default_property"]
                 )
-                doc = build_doc(default_prop['name'], default_prop, doc_indent)
+                doc = build_doc(default_prop["name"], default_prop, doc_indent)
                 arguments = doc[0]
                 arguments_doc = doc[1]
                 for property in properties:

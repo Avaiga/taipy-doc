@@ -8,9 +8,43 @@ representations of datasets with all sorts of customization capabilities. Taipy
 exposes the Plotly components through the `chart` control and heavily depends on
 the underlying implementation.
 
-The core principles of creating charts in Taipy are explained in the
-[Basic concepts](charts/basics.md) section.<br/>
-Advanced concepts are described in the [Advanced features](charts/advanced.md) section.
+There are many types of data representation that one can choose from, listed in the
+[Chart types catalog](#chart-types-catalog) section, and each of these utilize specific
+sets of the chart control properties.<br/>
+For more general information on how to use the Taipy GUI chart control, we may want to look at
+these two sections that provide more generic information on the control and how to use it in
+specific situations best:
+
+<div class="tp-row tp-row--gutter-sm">
+
+  <div class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--beta" href="../charts/basics/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="../chart-basics-icon.svg" width="100px"/>
+      </header>
+      <div class="tp-content-card-body">
+        <h3>Basic concepts</h3>
+        <p>
+          The core principles of creating charts in Taipy.
+        </p>
+      </div>
+    </a>
+  </div>
+
+  <div class="tp-col-12 tp-col-md-6 d-flex">
+    <a class="tp-content-card tp-content-card--alpha" href="../charts/advanced/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon" src="../chart-advanced.icon.svg" width="80px"/>
+      </header>
+      <div class="tp-content-card-body">
+        <h3>Advanced topics</h3>
+        <p>
+          Leverage the Plotly library capabilities to provide tailored information and interaction.
+        </p>
+      </div>
+    </a>
+  </div>
+</div>
 
 # Details
 
@@ -103,6 +137,27 @@ or slightly shorter (and if there are no more than three traces):
 ```
 page = "<|...|chart|...|i_property={value1}|i_property[2]={value2}|i_property[3]={value3}|...|>"
 ```
+
+## The *figure* property
+
+As mentioned above, the chart control is implemented using the
+[plotly.js](https://plotly.com/javascript/) front-end library, and hides part of its complexity
+using the control's properties. However [Plotly](https://plotly.com/) comes with the handy
+[Plotly for Python](https://plotly.com/python/) library that lets programmers define their charts
+entirely in Python.<br/>
+
+If you are familiar with the Plotly Python API or if you have found, among the plethora of
+examples available on the Internet, a piece of code that produce something close to your
+expectations, you may feel like it can be tricky to mimic that the 'Taipy GUI way', using the chart
+control and its properties.<br/>
+However you can easily reuse your Python code using the [*figure*](#p-figure) property: this can be
+set to an instance of `plotly.graph_objects.Figure`, which is the class used by Plotly Python to
+handle the entire definition of a graph. When the chart is rendered on the page, it displays
+exactly what was defined using the Plotly Python API.
+
+Please check the
+[Plotly Python example](charts/advanced.md#using-the-ploty-python-library)
+for more details.
 
 ## The *rebuild* property {data-source="gui:doc/examples/charts/example-rebuild.py"}
 
