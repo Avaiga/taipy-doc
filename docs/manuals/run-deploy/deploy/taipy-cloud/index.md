@@ -145,12 +145,6 @@ unnecessary large files. Use compression when possible.
 - **Security**: Always ensure your SSH keys are secure and not shared with unauthorized 
 individuals.
 
-By following these steps, you can securely manage your files and data on Taipy Cloud 
-using SSH or FileZilla, facilitating easier updates and managing your application's 
-assets. This connectivity ensures that you have the flexibility to maintain and update 
-your application efficiently, enhancing its performance and reliability on the Taipy 
-Cloud platform.
-
 In conclusion, Taipy Cloud is an easy platform for deploying your Taipy applications 
 with ease.
 By following these straightforward steps, you can ensure that your application remains 
