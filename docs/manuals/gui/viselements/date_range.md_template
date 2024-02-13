@@ -6,6 +6,14 @@ objects.<br/>
 Note that the control does *not* check whether the first day precedes the second one: should the
 application enforce that, it must be programmed accordingly.
 
+!!! warning "Warning on Windows"
+
+    When you are using dates earlier than January 1st, 1970 (the UNIX epoch) in a date range
+    control on a Windows system, you may receive a warning in the console where the script was run,
+    indicating a raised exception in `datetime.astimezone()`.<br/>
+    This is a known problem in the Python implementation, referenced in the
+    [Python issue tracker](https://bugs.python.org/issue36759), that Taipy has no workaround for.
+
 # Details
 
 The [*format*](#p-format) property lets you indicate how to display the date objects set to the
