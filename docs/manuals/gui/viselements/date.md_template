@@ -1,5 +1,15 @@
 A control that can display and specify a formatted date, with or without time.
 
+# Details
+
+The [*format*](#p-format) property lets you indicate how to display the date object set to the
+[*date*](#p-date) property. Note that the format is used only when [*editable*](#p-editable) is set
+to False (the date control is read-only).<br/>
+This property can be set to a format string that is consumed by the
+[date-fns.format()](https://date-fns.org/docs/format) function. The documentation for this
+function provides all the different format strings you might need.<br/>
+For more information, you can look at the [formatting example](#formatting-the-date) below.
+
 # Styling
 
 All the date controls are generated with the "taipy-date" CSS class. You can use this class
@@ -15,18 +25,86 @@ The [Stylekit](../styling/stylekit.md) provides a specific class that you can us
 
 # Usage
 
-## Using the full date and time
-
-Assuming a variable *dt* contains a Python `datetime` object, you can create
-a date selector that represents it:
-
-!!! taipy-element
-    default={dt}
-
 ## Using only the date
 
-If you don't need to use the time, you can set the [*with_time*](#p-with_time) property to False:
+Assuming a variable *date* contains a Python `datetime` object:
+```python
+import datetime
+
+date = datetime.datetime(1789, 7, 14, 17, 5, 12)
+```
+
+You can create a date selector that represents it with the following definition:
 
 !!! taipy-element
-    default={dt}
-    with_time:b=False
+    default={date}
+
+The resulting control appears on the page similarly to:
+
+<figure>
+    <img src="../date-simple-d.png" class="visible-dark" />
+    <img src="../date-simple-l.png" class="visible-light"/>
+    <figcaption>A date selector</figcaption>
+    </figure>
+
+Note that because the [*with_time*](#p-with_time) property is set to False by default, only the
+date part of the *date* object is displayed.
+
+## Using the full date and time
+
+If you do need to use the time, you can set the [*with_time*](#p-with_time) property to True.<br/>
+Keeping the definition of the *date* object from the example above, we can change the definition
+of the control to:
+
+!!! taipy-element
+    default={date}
+    with_time:b=True
+
+Then the date selector shows like this:
+<figure>
+    <img src="../date-with_time-d.png" class="visible-dark" />
+    <img src="../date-with_time-l.png" class="visible-light"/>
+    <figcaption>A date and time selector</figcaption>
+</figure>
+
+## Formatting the date
+
+To format the date on the page, you must set the [*editable*](#p-editable) property to False.<br/>
+Here is a definition of a read-only date selector control using the same *date* variable definition
+as above:
+
+!!! taipy-element
+    default={date}
+    editable:b=False
+
+Here is how the control is displayed:
+<figure>
+    <img src="../date-not_editable-d.png" class="visible-dark" />
+    <img src="../date-not_editable-l.png" class="visible-light"/>
+    <figcaption>A read-only date selector</figcaption>
+</figure>
+
+When not editable, the `date` control looks just like a [`text`](text.md) control showing the
+date object.<br/>
+You can, however, control how to display that object by setting the [*format*](#p-format) property
+to a formatting string as documented in the [date-fns.format()](https://date-fns.org/docs/format)
+function.<br/>
+Here is the definition of the `date` control where the [*format*](#p-format) property is set. Note
+that, according to the [date-fns.format() documentation](https://date-fns.org/docs/format):
+
+- "eeee" is replaced by the name of the day of the week
+- "LLLL" is replaced by the name of the month
+- "do" is replaced by the day of the month (including st, nd, and so forth)
+- "y" is replaced by the year
+
+!!! taipy-element
+    default={date}
+    editable:b=False
+    format=eeee LLLL do, y
+
+The formatted date appears in the control:
+<figure>
+    <img src="../date-format-d.png" class="visible-dark" />
+    <img src="../date-format-l.png" class="visible-light"/>
+    <figcaption>A formatted date</figcaption>
+</figure>

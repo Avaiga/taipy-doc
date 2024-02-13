@@ -6,6 +6,14 @@ objects.<br/>
 Note that the control does *not* check whether the first day precedes the second one: should the
 application enforce that, it must be programmed accordingly.
 
+# Details
+
+The [*format*](#p-format) property lets you indicate how to display the date objects set to the
+[*dates*](#p-dates) property. Note that the format is used only when [*editable*](#p-editable) is
+set to False (the date range control is read-only).<br/>
+The [`date`](date.md) control has the same property. Please look at this control's documentation
+for more information on this property.
+
 # Styling
 
 All the date range controls are generated with the "taipy-date_range" CSS class. You can use this
