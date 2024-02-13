@@ -1,0 +1,9 @@
+A control that lets user enter their user name and password.
+
+# Styling
+
+All the login controls are generated with the "taipy-login" CSS class. You can use this class
+name to select the login controls and apply style.
+
+# Usage
+

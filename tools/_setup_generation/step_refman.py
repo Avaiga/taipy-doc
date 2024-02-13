@@ -282,28 +282,25 @@ class RefManStep(SetupStep):
 
             def update_xrefs(name, type, force_package, module, others):
                 if not others:
-                    print(f"{name}")
+                    print(f"NOTE - {name} has no 'others' in update_xrefs")
                     pass
                 # xrefs:
                 # entry_name <-> [ exposed_package, entry_module, other_packages]
                 #   or
                 # name <-> <number of similar entries> (int)
                 # +  entry_name/<index> <-> [ exposed_package, entry_module, other_packages]
-                type_name = "Function" if type == FUNCTION_ID else "Class" if type == CLASS_ID else "Type"
                 if xref := xrefs.get(name):
-                    if force_package == xref[0]:
-                        raise SystemError(
-                            f"FATAL -  - {type_name} {name} exposed in {force_package} already declared as {xref[0]}.{xref[1]}"
-                            )
-                    print(f"NOTE: duplicate entry {name} - {xref[0]}/{force_package}")
                     if isinstance(xref, int): # If there already are duplicates
-                        for index in range(0..int(xref)):
+                        last_index = int(xref)
+                        for index in range(last_index):
                             xref = xrefs.get(f"{name}/{index}")
                             if force_package == xref[0]:
+                                t_name = "Function" if type == FUNCTION_ID else "Class" if type == CLASS_ID else "Type"
                                 raise SystemError(
-                                    "FATAL -  - {type_name} {name} exposed in {force_package} already declared as {xref[0]}.{xref[1]}"
+                                    f"FATAL - {t_name} {name} exposed in {force_package} already declared as {xref[0]}.{xref[1]}"
                                     )
-                        xrefs[f"{name}/{index}"] = [ force_package, module, others ]
+                        xrefs[f"{name}/{last_index}"] = [ force_package, module, others ]
+                        xrefs[name] = last_index+1
                     else: # Create multiple indexed entries for 'name'
                         xrefs[name] = 2
                         xrefs[f"{name}/0"] = xref
