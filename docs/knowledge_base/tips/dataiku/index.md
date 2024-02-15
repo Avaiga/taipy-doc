@@ -7,15 +7,20 @@ short-description: A guide to integrate Dataiku with Taipy.
 img: dataiku/images/dataiku.png
 ---
 
-Integration with external platforms is often essential for executing tasks and functions efficiently. This article presents a comprehensive guide on integrating Dataiku with Taipy, a tool for orchestrating tasks and exploring various iterations of business problems. By integrating Dataiku projects with Taipy, users can enhance their data processing and visualization capabilities.
+Integrating Dataiku with Taipy enhances your data analysis and processing workflows. This synergy enables users to efficiently handle, analyze, and visualize data. The guide walks you through setting up your environment, connecting to Dataiku, and fetching data for visualization within Taipy's flexible framework.
+
+By integrating Dataiku projects with Taipy scenarios, you gain streamlined workflows for data manipulation and scenario management. This involves creating custom functions for interacting with Dataiku's API to read from and write to datasets, seamlessly blending Dataiku's data processing capabilities with Taipy's task orchestration and data management.
+
 
 ![Dataiku](images/dataiku.png){width=90% : .tp-image}
 
-# Simplified Integration: Streamlining Metric Visualization
+# Simple Integration: Visualization
 
 ## Setting Up Your Environment
 
-Begin by ensuring that you have the required libraries installed. You'll need `dataiku-api-client` for accessing Dataiku and `taipy-gui` for building the GUI. Install these libraries using pip:
+Begin by ensuring that you have the required libraries installed. You'll need 
+`dataiku-api-client` for accessing Dataiku and `taipy-gui` for building the GUI. 
+Install these libraries using pip:
 
 ```bash
 pip install dataiku-api-client taipy pandas
@@ -23,7 +28,9 @@ pip install dataiku-api-client taipy pandas
 
 ## Connecting to Dataiku
 
-Use the `DSSClient` from the `dataikuapi` package to establish a connection with your Dataiku instance. Replace `"http://your-dataiku-instance.com"` and `"your_api_key"` with your actual Dataiku host and API key.
+Use the `DSSClient` from the `dataikuapi` package to establish a connection with 
+your Dataiku instance. Replace `"http://your-dataiku-instance.com"` and 
+`"your_api_key"` with your actual Dataiku host and API key.
 
 ```python
 from dataikuapi import DSSClient
@@ -36,7 +43,9 @@ client = DSSClient(host, apiKey)
 
 ## Retrieving Data from Dataiku
 
-Fetch data from your Dataiku projects by iterating through the projects and collecting relevant metrics for each model. This example code retrieves metrics like AUC and organizes them into a `pandas.DataFrame`.
+Fetch data from your Dataiku projects by iterating through the projects and 
+collecting relevant metrics for each model. This example code retrieves metrics like 
+AUC and organizes them into a `pandas.DataFrame`.
 
 ```python
 metrics_table = []
@@ -49,13 +58,12 @@ for project_keys in client.list_project_keys():
             active_id = model.get_active_version().get("id", None)
             metrics = model.get_metric_values(active_id)
             for metric in metrics.raw['metrics']:
-                if metric['metric']['metricType'] == "AUC":
-                    value = metric['lastValues'][0]['value']
-                    metrics_table.append({'Project': project_label,
-                                          'ModelId': model_id['id'],
-                                          'ActiveId': active_id,
-                                          'MetricType': "AUC",
-                                          'Value': value})
+                value = metric['lastValues'][0]['value']
+                metrics_table.append({'Project': project_label,
+                                        'ModelId': model_id['id'],
+                                        'ActiveId': active_id,
+                                        'MetricType': metric['metric']['metricType'],
+                                        'Value': value})
         except Exception as e:
             print(e)
             pass
@@ -65,7 +73,9 @@ metrics_df = pd.DataFrame(metrics_table)
 
 ## Preparing Data for Visualization
 
-Before visualization, you may need to further prepare your data. For instance, you can concatenate certain columns to form a unique identifier or name for each entry. Here, we add a 'Name' column to our DataFrame.
+Before visualization, you may need to further prepare your data. For instance, you 
+can concatenate certain columns to form a unique identifier or name for each entry. 
+Here, we add a 'Name' column to our DataFrame.
 
 ```python
 metrics_df['Name'] = metrics_df[['Project', 'ModelId', 'MetricType']].agg(' - '.join, axis=1)
@@ -73,7 +83,9 @@ metrics_df['Name'] = metrics_df[['Project', 'ModelId', 'MetricType']].agg(' - '.
 
 ## Creating and Running a Taipy Application
 
-Define the GUI using Taipy's markdown-like syntax. This GUI will include dynamic selectors for projects and metrics, a table to display data, and a bar chart for visualizing metric values.
+Define the GUI using Taipy's markdown-like syntax. This GUI will include dynamic 
+selectors for projects and metrics, a table to display data, and a bar chart for 
+visualizing metric values.
 
 ```python
 from taipy.gui import Gui
@@ -104,33 +116,41 @@ md = """
 Gui(md).run()
 ```
 
+[Download the code](./src/metrics_visualization.py){: .tp-btn target='blank' }
 
 
 # Dataiku Projects with Taipy Scenarios
 
 ## Scenarios and Dataiku Integration
 
-Creating and executing projects on Dataiku involves several steps, from setting up your Dataiku instance to defining and running projects. Here's a step-by-step guide on how to seamlessly integrate Dataiku projects with Taipy scenarios:
+Creating and executing projects on Dataiku involves several steps, from setting up 
+your Dataiku instance to defining and running projects. Here's a step-by-step guide 
+on how to seamlessly integrate Dataiku projects with Taipy scenarios:
 
 **Requirements:**
 
 - A Dataiku Instance.
+- A knowledge of the Dataiku Python API
 
 **1 - Create a Dataiku Project**
 
-- **Navigate to Dataiku DSS:** Access the dashboard where you want to create the project.
+- **Navigate to Dataiku DSS:** Access the dashboard where you want to create the 
+project.
 
 - **Create a Project:** Click on the "New Project" button and select "Create."
 
-- **Define Project Details:** Enter a name for your project and choose the type of project you wish to create (e.g., Visual Analysis, Data Preparation).
+- **Define Project Details:** Enter a name for your project and choose the type of 
+project you wish to create (e.g., Visual Analysis, Data Preparation).
 
-**2 - Define Dataiku Project Logic**
+**2 - Define a Scenario**
 
-- **Prepare the Data:** Create datasets, recipes, and models required for your project in the Flow section.
+- **Prepare the Data:** Create datasets, recipes, and models required for your project in the scenario section.
 
-- **Write Code:** Write code for data processing, analysis, or any other tasks within notebooks or custom recipes.
+- **Write Code:** Write code for data processing, analysis, or any other tasks 
+within notebooks or custom recipes.
 
-Here's an example of how parameters can be used in a Dataiku project to control the workflow and obtain results:
+Here's an example of how parameters can be used in a Dataiku project to control the 
+workscenario and obtain results:
 
 ```python
 # Assuming a Python code environment in Dataiku
@@ -142,24 +162,160 @@ dataset = dataiku.Dataset("my_dataset")
 df = dataset.get_dataframe()
 
 # Processing
-processed_df = df[df['column'] > 100]  # Example of data processing based on a condition
+# Example of data processing based on a condition
+processed_df = df[df['column'] > 100] 
 
 # Saving results
 output_dataset = dataiku.Dataset("processed_dataset")
 output_dataset.write_with_schema(processed_df)
 ```
 
-- **Test in Project:** Ensure that your workflow runs successfully within the project.
+- **Test in Project:** Ensure that your workscenario runs successfully within the 
+project.
+
+- **Create a Dataiku Scenario:** Create a scenario based on your flow or project. 
+Add a scenario with a key. Add steps to this scenario so that it runs your code. 
 
 **3 - Integrate with Taipy**
 
-- **API Calls or Plugins:** Use Dataiku's API or develop plugins to seamlessly integrate with Taipy scenarios for job triggering and result retrieval.
+- **API Calls or Plugins:** Use Dataiku's API or develop plugins to seamlessly 
+integrate with Taipy scenarios for job triggering and result retrieval.
 
-By adapting the given Dataiku API script to work with a generic data node in Taipy, you can define reading and writing functions to interact with Dataiku datasets. Then, configure a generic data node to use these functions for data handling.
+By adapting the given Dataiku API script to work with a generic data node in Taipy, 
+you can define reading and writing functions to interact with Dataiku datasets. 
+Then, configure a generic data node to use these functions for data handling.
 
-Configure input and output data nodes to handle data exchange with Dataiku:
+To adapt the given Dataiku API script to work with a generic data node in a 
+framework like Taipy, you would first define the reading and writing functions that 
+interact with your Dataiku datasets. Then, you configure a generic data node to use 
+these functions for data handling. The concept involves creating custom functions to 
+interact with Dataiku's API for reading from and writing to datasets, and then 
+integrating these functions into Taipy's data node configuration.
+
+Here is how you could adapt the script:
+
+1. **Define Custom Read and Write Functions:**
+
+These functions will be responsible for interfacing with Dataiku's API, similar to 
+how you directly interacted with the Dataiku datasets in the original script.
 
 ```python
+from dataikuapi import DSSClient
+import pandas as pd
+
+# Create your own read function for your data or use this one
+def read_data_from_dataiku(dataset_name, project_key, host, api_key):
+    """
+    Fetches a dataset from Dataiku DSS and returns it as a pandas DataFrame.
+    
+    It checks if a cached version of the dataset exists and is up-to-date before
+    fetching data from Dataiku DSS. If the cached version is outdated or nonexistent,
+    it fetches the data, updates the cache, and then returns the data.
+    
+    Parameters:
+    - dataset_name: Name of the dataset to fetch.
+    - project_key: Key of the project containing the dataset.
+    - host: URL of the Dataiku DSS instance.
+    - api_key: Authentication API key for Dataiku DSS.
+    
+    Returns:
+    - A pandas DataFrame containing the dataset.
+    """
+    cache_path = f"{cache_dir}/{dataset_name}.csv"
+    try:
+        client = DSSClient(host, api_key)
+        project = client.get_project(project_key)
+        dataset = project.get_dataset(dataset_name)
+        last_modified_on = dataset.get_info().info.get('timeline', {}).get('lastModifiedOn', 0)
+
+        # Convert to datetime for comparison
+        last_modified_datetime = pd.to_datetime(last_modified_on, unit='ms')
+
+        # Check cache validity
+        cache_is_valid = os.path.exists(cache_path) and \
+            tp.get_entities_by_config_id(dataset_name+'_dataiku')[0].last_edit_date > last_modified_datetime
+
+        if cache_is_valid:
+            print(f"Reading {dataset_name} from cache.")
+            return pd.read_csv(cache_path)
+
+        # Fetching data from Dataiku
+        columns = [column['name'] for column in dataset.get_schema()['columns']]
+        data_list = list(dataset.iter_rows())
+        data = pd.DataFrame(data=data_list, columns=columns)
+
+        # Updating cache
+        os.makedirs(cache_dir, exist_ok=True)
+        data.to_csv(cache_path, index=False)
+        print(f"Data for {dataset_name} fetched and cached.")
+    except Exception as e:
+        print(f"Error fetching {dataset_name} from Dataiku DSS: {e}")
+        data = pd.DataFrame()  # Return an empty DataFrame in case of error
+
+    return data
+
+
+# Create your own write function for your data or use this one
+def write_data_to_dataiku(data, dataset_name, project_key, host, api_key):
+    """
+    Writes data from a pandas DataFrame to a specified Dataiku DSS dataset.
+    
+    This function checks if the columns in the DataFrame match the target dataset's schema.
+    If they match, it updates the dataset with the new data. If not, it prints a warning.
+    
+    Parameters:
+    - data: pandas DataFrame containing the data to write.
+    - dataset_name: Name of the dataset to update.
+    - project_key: Key of the project containing the dataset.
+    - host: URL of the Dataiku DSS instance.
+    - api_key: Authentication API key for Dataiku DSS.
+    """
+    cache_path = f"{cache_dir}/{dataset_name}.csv"
+    try:
+        client = DSSClient(host, api_key)
+        project = client.get_project(project_key)
+        dataset = project.get_dataset(dataset_name)
+        target_cols = [column['name'] for column in dataset.get_schema()['columns']]
+        new_cols = list(data.columns)
+
+        # Ensure column names in DataFrame match the target dataset schema
+        if set(target_cols) == set(new_cols):
+            os.makedirs(cache_dir, exist_ok=True)
+            data.to_csv(cache_path, index=False)
+            
+            with open(cache_path, "rb") as fp:
+                try:
+                    # Attempt to clear the dataset and upload new file
+                    dataset.clear()
+                    dataset.uploaded_add_file(fp, f"{dataset_name}.csv")
+                    print(f"Data successfully written to {dataset_name} in Dataiku DSS.")
+                except Exception as e:
+                    print(f"Failed to upload data to {dataset_name}: {e}")
+        else:
+            print("Column mismatch: The columns in the DataFrame do not match the target dataset's schema.")
+    except Exception as e:
+        print(f"An error occurred while processing {dataset_name}: {e}")
+
+```
+
+Now, you can configure your data nodes. This will allow you to access 
+```python
+from taipy import Config, Scope
+import os
+
+cache_dir = ".cache_dataiku"
+os.makedirs(cache_dir, exist_ok=True)
+
+# Configuration Constants
+HOST = "HOST"
+API_KEY = "API"
+PROJECT_KEY = "PROJECT_KEY"
+SCENARIO_ID = "SCENARIO_ID"
+INPUT_DATASET_NAME = "INPUT_DATASET_NAME"
+OUTPUT_DATASET_NAME = "OUTPUT_DATASET_NAME"
+
+response_cfg = Config.configure_data_node(id="response")
+
 # Configure input and output data nodes for Dataiku datasets
 input_data_node_cfg = Config.configure_generic_data_node(
     id="input_dataiku_dataset",
@@ -178,47 +334,63 @@ output_data_node_cfg = Config.configure_generic_data_node(
 )
 ```
 
-### Simplifying the Task: Triggering Dataiku Flows
+### Simplifying the Task: Triggering Dataiku scenarios
 
-With data nodes handling data autonomously, tasks now focus on action triggers, such as starting Dataiku flows. Let's assume we have a function `trigger_dataiku_flow` that initiates a specific flow within a Dataiku project:
+With data nodes handling data autonomously, tasks now focus on action triggers, such 
+as starting Dataiku scenarios. Let's assume we have a function 
+`trigger_dataiku_scenario` that initiates a specific scenario within a Dataiku 
+project:
 
 ```python
-# Task function to trigger a Dataiku flow
-def trigger_dataiku_flow(input_data, output_data):
-    # Logic to start a specific flow in Dataiku
-    # This could involve API calls to Dataiku to start a job or scenario
-    pass
+def run_dataiku_scenario():
+    """Executes a specified Dataiku scenario."""
+    try:
+        client = DSSClient(HOST, API_KEY)
+        project = client.get_project(PROJECT_KEY)
+        scenario = project.get_scenario(SCENARIO_ID)
+        scenario.run_and_wait()
+        return scenario
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return False
 ```
 
-Configure a Taipy task that uses these data nodes and triggers the Dataiku flow:
+Configure a Taipy task that uses these data nodes and triggers the Dataiku scenario:
 
 ```python
-# Task configuration to trigger a Dataiku flow
-trigger_flow_task_cfg = Config.configure_task(
-    id="trigger_dataiku_flow_task",
-    function=trigger_dataiku_flow,
-    inputs=[input_data_node_cfg],
-    outputs=[output_data_node_cfg]
+# Task configuration to trigger a Dataiku scenario
+trigger_scenario_task_cfg = Config.configure_task(
+    id="trigger_dataiku_scenario_task",
+    function=run_dataiku_scenario,
+    input=[],
+    output=[response_cfg]
 )
 ```
 
-### Crafting the Scenario: Orchestrating the Flow
+### Crafting the Scenario: Orchestrating the scenario
 
-Now, encapsulate the task within a scenario configuration to define a complete workflow, including data preparation, triggering the Dataiku flow, and post-processing:
+Now, encapsulate the task within a scenario configuration to define a complete 
+workscenario, including data preparation, triggering the Dataiku scenario, and 
+post-processing:
 
 ```python
-# Scenario configuration incorporating the Dataiku flow trigger task
-dataiku_flow_scenario_cfg = Config.configure_scenario(
-    id="dataiku_flow_scenario",
-    task_configs=[trigger_flow_task_cfg]
+# Scenario configuration incorporating the Dataiku scenario trigger task
+dataiku_scenario_cfg = Config.configure_scenario(
+    id="dataiku_scenario",
+    task_configs=[trigger_scenario_task_cfg],
+    additional_data_node_configs=[input_dataiku_cfg, output_dataiku_cfg]
 )
 ```
 
-This scenario outlines a workflow where Taipy manages the overall process, including the initiation of Dataiku flows, with data nodes autonomously handling data exchanges with Dataiku.
+This scenario outlines a workscenario where Taipy manages the overall process, 
+including the initiation of Dataiku scenarios, with data nodes autonomously handling 
+data exchanges with Dataiku.
 
 ### Execution: Bringing It All Together
 
-To execute the scenario, use Taipy's execution model. This initiates the configured workflow, including autonomous data exchange with Dataiku and triggering the specified flow:
+To execute the scenario, use Taipy's execution model. This initiates the configured 
+workscenario, including autonomous data exchange with Dataiku and triggering the 
+specified scenario:
 
 ```python
 import taipy as tp
@@ -226,7 +398,7 @@ import taipy as tp
 # Create and execute the scenario
 if __name__ == "__main__":
     tp.Core().run()
-    scenario = tp.create_scenario(dataiku_flow_scenario_cfg)
+    scenario = tp.create_scenario(dataiku_scenario_scenario_cfg)
     scenario.submit()
 
     scenario = None
@@ -250,6 +422,16 @@ View all the information on output dataset here:
     tp.Gui(scenario_md).run()
 ```
 
-This streamlined approach, where tasks focus on action triggers (like starting Dataiku flows) while data nodes manage data reading and writing, enhances the interaction between the end user and its data and models.
+[Download the code](./src/scenario_dataiku.py){: .tp-btn target='blank' }
 
-In conclusion, integrating Dataiku with Taipy provides a powerful solution for streamlining data processing, visualization, and workflow orchestration. By leveraging Taipy's scenario management and Dataiku's robust capabilities, organizations can enhance efficiency, scalability, and collaboration in their data workflows. This integration enables seamless interaction between Dataiku projects and Taipy, facilitating the creation and scalability data-driven applications.
+This streamlined approach, where tasks focus on action triggers (like starting 
+Dataiku scenarios) while data nodes manage data reading and writing, enhances the 
+interaction between the end user and its data and models.
+
+In conclusion, integrating Dataiku with Taipy provides a powerful solution for 
+streamlining data processing, visualization, and workscenario orchestration. By 
+leveraging Taipy's scenario management and Dataiku's robust capabilities, 
+organizations can enhance efficiency, scalability, and collaboration in their data 
+workscenarios. This integration enables seamless interaction between Dataiku 
+projects and Taipy, facilitating the creation and scalability data-driven 
+applications.
