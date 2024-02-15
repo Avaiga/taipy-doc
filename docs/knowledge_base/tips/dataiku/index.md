@@ -17,7 +17,7 @@ data manipulation and scenario management. This involves creating custom functio
 interacting with Dataiku's API to read from and write to datasets, seamlessly blending 
 Dataiku's data processing capabilities with Taipy's task orchestration and data management.
 
-![Dataiku](images/dataiku.png){width=90% : .tp-image-border}
+![Dataiku](images/dataiku.png){width=90% : .tp-image}
 
 # Simple Integration: Visualization
 
@@ -49,7 +49,7 @@ your Dataiku instance. Replace `"http://your-dataiku-instance.com"` and
 ```python
 from dataikuapi import DSSClient
 
-host = "http://your-dataiku-instance.com"
+host = "HOST"
 apiKey = "your_api_key"
 
 client = DSSClient(host, apiKey)
@@ -95,11 +95,11 @@ Here, we add a 'Name' column to our DataFrame.
 metrics_df['Name'] = metrics_df[['Project', 'ModelId', 'MetricType']].agg(' - '.join, axis=1)
 ```
 
-## Creating and Running a Taipy Application
+## Creating a Taipy Application
 
-Define the GUI using Taipy's markdown-like syntax. This GUI will include dynamic 
-selectors for projects and metrics, a table to display data, and a bar chart for 
-visualizing metric values.
+Create your own Taipy application to visualize all this information. It can 
+include dynamic selectors for projects and metrics, a table to display 
+data, and a bar chart for visualizing metric values.
 
 ```python
 from taipy.gui import Gui
@@ -132,7 +132,7 @@ Gui(md).run()
 
 [Download the code](./src/metrics_visualization.py){: .tp-btn target='blank' }
 
-![Metrics Visualization](images/metrics_visualization.png){width=90% : .tp-image}
+![Metrics Visualization](images/metrics_visualization.png){width=90% : .tp-image-border}
 
 # Run a Dataiku pipeline from your Taipy application
 
@@ -159,8 +159,7 @@ By adapting the given Dataiku API script to work with a generic data node in Tai
 you can define reading and writing functions to interact with Dataiku datasets. 
 Then, configure a generic data node to use these functions for data handling.
 
-1. **Define Custom Read and Write Functions:**
-
+## Custom Dataiku Data Nodes
 
 To adapt the given Dataiku API script to work with a generic data node in a 
 framework like Taipy, you would first define the reading and writing functions that 
@@ -312,7 +311,7 @@ output_data_node_cfg = Config.configure_generic_data_node(
 )
 ```
 
-## Simplifying the Task: Triggering Dataiku scenarios
+## Triggering Dataiku scenarios
 
 With data nodes handling data autonomously, tasks now focus on action triggers, such 
 as starting Dataiku scenarios. Let's assume we have a function 
@@ -345,7 +344,7 @@ trigger_scenario_task_cfg = Config.configure_task(
 )
 ```
 
-## Crafting the Scenario: Orchestrating the scenario
+## Configuring the Scenario
 
 Now, encapsulate the task within a scenario configuration to define a complete 
 workscenario, including data preparation, triggering the Dataiku scenario, and 
