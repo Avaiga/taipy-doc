@@ -48,7 +48,7 @@ nav:
         - "Real-time data visualization": knowledge_base/tips/multithreading/index.md
         - "Big data models vs. Computer memory": knowledge_base/tips/big_data_models/index.md
         - "Integrating Databricks": knowledge_base/tips/databricks/index.md
-        - "Integrating Dataiku": knowledge_base/tips/dataiku/index.md
+        - "Integrating with Dataiku": knowledge_base/tips/dataiku/index.md
         - "Using PySpark for Big Data": knowledge_base/tips/pyspark/index.md
         - "Charts for Big Data": knowledge_base/tips/decimator/index.md
         - "Cycles and Scopes": knowledge_base/tips/cycles_scopes/index.md

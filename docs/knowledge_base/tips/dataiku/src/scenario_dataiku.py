@@ -162,23 +162,24 @@ dataiku_scenario_cfg = Config.configure_scenario(
 
 # GUI Markdown content
 scenario_md = """
+<|1 1|layout|
 <|{scenario}|scenario_selector|>
 
-Input Dataset:
+<|{scenario}|scenario|>
+|>
 
+<|job_selector|>
+
+<|1 1|layout|
+Input Dataset:
 <|{scenario.Customer_Orders_dataiku if scenario else None}|data_node|>
 
-Run the scenario:
-
-<|{scenario}|scenario|>
-<|{scenario}|scenario_dag|>
-
-View all the information on output dataset here:
-
+Output Dataset:
 <|{scenario.result_dataiku if scenario else None}|data_node|>
+|>
+
+<|{scenario}|scenario_dag|>
 """
-
-
 
 # Main execution block with GUI setup
 if __name__ == "__main__":

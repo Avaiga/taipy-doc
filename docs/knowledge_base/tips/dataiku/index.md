@@ -1,5 +1,5 @@
 ---
-title: Integrating Dataiku
+title: Integrating with Dataiku
 category: tips
 type: code
 data-keywords: scenario task
@@ -7,18 +7,26 @@ short-description: A guide to integrate Dataiku with Taipy.
 img: dataiku/images/dataiku.png
 ---
 
-Integrating Dataiku with Taipy enhances your data analysis and processing workflows. This synergy enables users to efficiently handle, analyze, and visualize data. The guide walks you through setting up your environment, connecting to Dataiku, and fetching data for visualization within Taipy's flexible framework.
+Integrating Dataiku with Taipy enhances your data analysis and processing workflows. 
+This connection enables users to efficiently handle, analyze, and visualize data. 
+The guide walks you through setting up your environment, connecting to Dataiku, and 
+fetching data for visualization within Taipy's flexible framework.
 
-By integrating Dataiku projects with Taipy scenarios, you gain streamlined workflows for data manipulation and scenario management. This involves creating custom functions for interacting with Dataiku's API to read from and write to datasets, seamlessly blending Dataiku's data processing capabilities with Taipy's task orchestration and data management.
+By integrating Dataiku projects with Taipy scenarios, you gain streamlined workflows for 
+data manipulation and scenario management. This involves creating custom functions for 
+interacting with Dataiku's API to read from and write to datasets, seamlessly blending 
+Dataiku's data processing capabilities with Taipy's task orchestration and data management.
 
-
-![Dataiku](images/dataiku.png){width=90% : .tp-image}
+![Dataiku](images/dataiku.png){width=90% : .tp-image-border}
 
 # Simple Integration: Visualization
 
+First, let's integrate with Dataiku just by visualizing different data and metrics 
+fetched from our Dataiku projects.
+
 ## Setting Up Your Environment
 
-Begin by ensuring that you have the required libraries installed. You'll need 
+Start by ensuring that you have the required libraries installed. You'll need 
 `dataiku-api-client` for accessing Dataiku and `taipy-gui` for building the GUI. 
 Install these libraries using pip:
 
@@ -27,6 +35,12 @@ pip install dataiku-api-client taipy pandas
 ```
 
 ## Connecting to Dataiku
+
+**Requirements:**
+
+- A Dataiku Instance.
+- A Dataiku Project.
+- A knowledge of the Dataiku Python API
 
 Use the `DSSClient` from the `dataikuapi` package to establish a connection with 
 your Dataiku instance. Replace `"http://your-dataiku-instance.com"` and 
@@ -73,7 +87,7 @@ metrics_df = pd.DataFrame(metrics_table)
 
 ## Preparing Data for Visualization
 
-Before visualization, you may need to further prepare your data. For instance, you 
+Before visualization, you may need to prepare your data further. For instance, you 
 can concatenate certain columns to form a unique identifier or name for each entry. 
 Here, we add a 'Name' column to our DataFrame.
 
@@ -118,65 +132,25 @@ Gui(md).run()
 
 [Download the code](./src/metrics_visualization.py){: .tp-btn target='blank' }
 
+![Metrics Visualization](images/metrics_visualization.png){width=90% : .tp-image}
 
-# Dataiku Projects with Taipy Scenarios
+# Run a Dataiku pipeline from your Taipy application
 
-## Scenarios and Dataiku Integration
+The integration process involves using Dataiku's Python API to create a bridge 
+between Taipy and Dataiku, enabling you to trigger scenarios and manage data 
+workflows within your Taipy application.
 
 Creating and executing projects on Dataiku involves several steps, from setting up 
-your Dataiku instance to defining and running projects. Here's a step-by-step guide 
-on how to seamlessly integrate Dataiku projects with Taipy scenarios:
+your Dataiku instance to defining and running projects. 
 
 **Requirements:**
 
 - A Dataiku Instance.
+- A Dataiku Project.
+- A Dataiku Scenario that we want to run from a Taipy application
 - A knowledge of the Dataiku Python API
 
-**1 - Create a Dataiku Project**
-
-- **Navigate to Dataiku DSS:** Access the dashboard where you want to create the 
-project.
-
-- **Create a Project:** Click on the "New Project" button and select "Create."
-
-- **Define Project Details:** Enter a name for your project and choose the type of 
-project you wish to create (e.g., Visual Analysis, Data Preparation).
-
-**2 - Define a Scenario**
-
-- **Prepare the Data:** Create datasets, recipes, and models required for your project in the scenario section.
-
-- **Write Code:** Write code for data processing, analysis, or any other tasks 
-within notebooks or custom recipes.
-
-Here's an example of how parameters can be used in a Dataiku project to control the 
-workscenario and obtain results:
-
-```python
-# Assuming a Python code environment in Dataiku
-import dataiku
-import pandas as pd
-
-# Accessing a dataset
-dataset = dataiku.Dataset("my_dataset")
-df = dataset.get_dataframe()
-
-# Processing
-# Example of data processing based on a condition
-processed_df = df[df['column'] > 100] 
-
-# Saving results
-output_dataset = dataiku.Dataset("processed_dataset")
-output_dataset.write_with_schema(processed_df)
-```
-
-- **Test in Project:** Ensure that your workscenario runs successfully within the 
-project.
-
-- **Create a Dataiku Scenario:** Create a scenario based on your flow or project. 
-Add a scenario with a key. Add steps to this scenario so that it runs your code. 
-
-**3 - Integrate with Taipy**
+**Integrate with Taipy**
 
 - **API Calls or Plugins:** Use Dataiku's API or develop plugins to seamlessly 
 integrate with Taipy scenarios for job triggering and result retrieval.
@@ -185,16 +159,15 @@ By adapting the given Dataiku API script to work with a generic data node in Tai
 you can define reading and writing functions to interact with Dataiku datasets. 
 Then, configure a generic data node to use these functions for data handling.
 
+1. **Define Custom Read and Write Functions:**
+
+
 To adapt the given Dataiku API script to work with a generic data node in a 
 framework like Taipy, you would first define the reading and writing functions that 
 interact with your Dataiku datasets. Then, you configure a generic data node to use 
 these functions for data handling. The concept involves creating custom functions to 
 interact with Dataiku's API for reading from and writing to datasets, and then 
 integrating these functions into Taipy's data node configuration.
-
-Here is how you could adapt the script:
-
-1. **Define Custom Read and Write Functions:**
 
 These functions will be responsible for interfacing with Dataiku's API, similar to 
 how you directly interacted with the Dataiku datasets in the original script.
@@ -298,7 +271,12 @@ def write_data_to_dataiku(data, dataset_name, project_key, host, api_key):
 
 ```
 
-Now, you can configure your data nodes. This will allow you to access 
+Now, it's time to set up your data nodes from these custom functions. 
+This enablies a better integration of Taipy's scenarios and data management 
+capabilities with Dataiku. This setup empowers you to read and write data 
+efficiently, track changes, and use the data node with pipelines crucial for 
+your application.
+
 ```python
 from taipy import Config, Scope
 import os
@@ -334,7 +312,7 @@ output_data_node_cfg = Config.configure_generic_data_node(
 )
 ```
 
-### Simplifying the Task: Triggering Dataiku scenarios
+## Simplifying the Task: Triggering Dataiku scenarios
 
 With data nodes handling data autonomously, tasks now focus on action triggers, such 
 as starting Dataiku scenarios. Let's assume we have a function 
@@ -367,7 +345,7 @@ trigger_scenario_task_cfg = Config.configure_task(
 )
 ```
 
-### Crafting the Scenario: Orchestrating the scenario
+## Crafting the Scenario: Orchestrating the scenario
 
 Now, encapsulate the task within a scenario configuration to define a complete 
 workscenario, including data preparation, triggering the Dataiku scenario, and 
@@ -386,7 +364,7 @@ This scenario outlines a workscenario where Taipy manages the overall process,
 including the initiation of Dataiku scenarios, with data nodes autonomously handling 
 data exchanges with Dataiku.
 
-### Execution: Bringing It All Together
+## Execution: Bringing It All Together
 
 To execute the scenario, use Taipy's execution model. This initiates the configured 
 workscenario, including autonomous data exchange with Dataiku and triggering the 
@@ -399,24 +377,26 @@ import taipy as tp
 if __name__ == "__main__":
     tp.Core().run()
     scenario = tp.create_scenario(dataiku_scenario_scenario_cfg)
-    scenario.submit()
 
     scenario = None
     scenario_md = """
+<|1 1|layout|
 <|{scenario}|scenario_selector|>
 
-Input Dataset:
-
-<|{scenario.input_dataiku_dataset if scenario else None}|data_node|>
-
-Run the scenario:
-
 <|{scenario}|scenario|>
+|>
+
+<|job_selector|>
+
+<|1 1|layout|
+Input Dataset:
+<|{scenario.Customer_Orders_dataiku if scenario else None}|data_node|>
+
+Output Dataset:
+<|{scenario.result_dataiku if scenario else None}|data_node|>
+|>
+
 <|{scenario}|scenario_dag|>
-
-View all the information on output dataset here:
-
-<|{scenario.output_dataiku_dataset if scenario else None}|data_node|>
 """
 
     tp.Gui(scenario_md).run()
@@ -424,13 +404,15 @@ View all the information on output dataset here:
 
 [Download the code](./src/scenario_dataiku.py){: .tp-btn target='blank' }
 
-This streamlined approach, where tasks focus on action triggers (like starting 
+![Dataiku Scenario](images/scenario_dataiku.png){width=90% : .tp-image-border}
+
+This approach, where tasks focus on action triggers (like starting 
 Dataiku scenarios) while data nodes manage data reading and writing, enhances the 
 interaction between the end user and its data and models.
 
-In conclusion, integrating Dataiku with Taipy provides a powerful solution for 
-streamlining data processing, visualization, and workscenario orchestration. By 
-leveraging Taipy's scenario management and Dataiku's robust capabilities, 
+In conclusion, integrating Dataiku with Taipy provides a powerful 
+solution for data processing, visualization, and workscenario orchestration. 
+By leveraging Taipy's scenario management and Dataiku's robust capabilities, 
 organizations can enhance efficiency, scalability, and collaboration in their data 
 workscenarios. This integration enables seamless interaction between Dataiku 
 projects and Taipy, facilitating the creation and scalability data-driven 

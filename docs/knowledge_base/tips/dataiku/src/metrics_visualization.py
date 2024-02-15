@@ -2,7 +2,7 @@ from dataikuapi import DSSClient
 from taipy.gui import Gui 
 import pandas as pd
 
-host = "https://design.ds-platform.ondku.net/"
+host = "HOST"
 apiKey = "API_KEY"
 
 c = DSSClient(host, apiKey)
