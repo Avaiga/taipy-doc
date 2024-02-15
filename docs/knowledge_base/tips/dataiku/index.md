@@ -31,7 +31,7 @@ Start by ensuring that you have the required libraries installed. You'll need
 Install these libraries using pip:
 
 ```bash
-pip install dataiku-api-client taipy pandas
+pip install dataiku-api-client taipy
 ```
 
 ## Connecting to Dataiku
