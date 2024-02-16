@@ -349,7 +349,7 @@ trigger_scenario_task_cfg = Config.configure_task(
 ## Configuring the Scenario
 
 Now, encapsulate the task within a scenario configuration to define a complete 
-workscenario, including data preparation, triggering the Dataiku scenario, and 
+scenario, including data preparation, triggering the Dataiku scenario, and 
 post-processing:
 
 ```python
@@ -361,14 +361,14 @@ dataiku_scenario_cfg = Config.configure_scenario(
 )
 ```
 
-This scenario outlines a workscenario where Taipy manages the overall process, 
+This scenario outlines a scenario where Taipy manages the overall process, 
 including the initiation of Dataiku scenarios, with data nodes autonomously handling 
 data exchanges with Dataiku.
 
 ## Execution: Bringing It All Together
 
 To execute the scenario, use Taipy's execution model. This initiates the configured 
-workscenario, including autonomous data exchange with Dataiku and triggering the 
+scenario, including autonomous data exchange with Dataiku and triggering the 
 specified scenario:
 
 ```python
@@ -412,9 +412,9 @@ Dataiku scenarios) while data nodes manage data reading and writing, enhances th
 interaction between the end user and its data and models.
 
 In conclusion, integrating Dataiku with Taipy provides a powerful 
-solution for data processing, visualization, and workscenario orchestration. 
+solution for data processing, visualization, and scenario orchestration. 
 By leveraging Taipy's scenario management and Dataiku's robust capabilities, 
 organizations can enhance efficiency, scalability, and collaboration in their data 
-workscenarios. This integration enables seamless interaction between Dataiku 
+scenarios. This integration enables seamless interaction between Dataiku 
 projects and Taipy, facilitating the creation and scalability data-driven 
 applications.
