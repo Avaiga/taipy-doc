@@ -17,7 +17,7 @@ data manipulation and scenario management. This involves creating custom functio
 interacting with Dataiku's API to read from and write to datasets, seamlessly blending 
 Dataiku's data processing capabilities with Taipy's task orchestration and data management.
 
-![Dataiku](images/dataiku.png){width=90% : .tp-image}
+![Dataiku](images/dataiku.png){width=70% : .tp-image}
 
 # Simple Integration: Visualization
 
@@ -288,26 +288,28 @@ HOST = "HOST"
 API_KEY = "API"
 PROJECT_KEY = "PROJECT_KEY"
 SCENARIO_ID = "SCENARIO_ID"
-INPUT_DATASET_NAME = "INPUT_DATASET_NAME"
-OUTPUT_DATASET_NAME = "OUTPUT_DATASET_NAME"
+INPUT_DATASET_NAME = "input"
+OUTPUT_DATASET_NAME = "output"
 
 response_cfg = Config.configure_data_node(id="response")
 
-# Configure input and output data nodes for Dataiku datasets
-input_data_node_cfg = Config.configure_generic_data_node(
-    id="input_dataiku_dataset",
-    read_fct=custom_read_from_dataiku,
+# Taipy Configuration for Dataiku integration
+input_dataiku_cfg = Config.configure_generic_data_node(
+    id=INPUT_DATASET_NAME + "_dataiku",
+    read_fct=read_data_from_dataiku,
     read_fct_args=[INPUT_DATASET_NAME, PROJECT_KEY, HOST, API_KEY],
-    write_fct=custom_write_to_dataiku,
-    write_fct_args=[INPUT_DATASET_NAME, PROJECT_KEY, HOST, API_KEY]
+    write_fct=write_data_to_dataiku,
+    write_fct_args=[INPUT_DATASET_NAME, PROJECT_KEY, HOST, API_KEY],
+    scope=Scope.GLOBAL
 )
 
-output_data_node_cfg = Config.configure_generic_data_node(
-    id="output_dataiku_dataset",
-    read_fct=custom_read_from_dataiku,
+output_dataiku_cfg = Config.configure_generic_data_node(
+    id=OUTPUT_DATASET_NAME + "_dataiku",
+    read_fct=read_data_from_dataiku,
     read_fct_args=[OUTPUT_DATASET_NAME, PROJECT_KEY, HOST, API_KEY],
-    write_fct=custom_write_to_dataiku,
-    write_fct_args=[OUTPUT_DATASET_NAME, PROJECT_KEY, HOST, API_KEY]
+    write_fct=write_data_to_dataiku,
+    write_fct_args=[OUTPUT_DATASET_NAME, PROJECT_KEY, HOST, API_KEY],
+    scope=Scope.GLOBAL
 )
 ```
 
@@ -389,10 +391,10 @@ if __name__ == "__main__":
 
 <|1 1|layout|
 Input Dataset:
-<|{scenario.Customer_Orders_dataiku if scenario else None}|data_node|>
+<|{scenario.input_dataiku if scenario else None}|data_node|>
 
 Output Dataset:
-<|{scenario.result_dataiku if scenario else None}|data_node|>
+<|{scenario.output_dataiku if scenario else None}|data_node|>
 |>
 
 <|{scenario}|scenario_dag|>

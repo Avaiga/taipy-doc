@@ -14,8 +14,8 @@ HOST = "HOST"
 API_KEY = "API_KEY"
 PROJECT_KEY = "PROJECT_KEY"
 SCENARIO_ID = "SCENARIO_ID"
-INPUT_DATASET_NAME = "INPUT_DATASET_NAME"
-OUTPUT_DATASET_NAME = "OUTPUT_DATASET_NAME"
+INPUT_DATASET_NAME = "input"
+OUTPUT_DATASET_NAME = "output"
 
 # Custom functions for interacting with Dataiku datasets
 def read_data_from_dataiku(dataset_name, project_key, host, api_key):
@@ -172,10 +172,10 @@ scenario_md = """
 
 <|1 1|layout|
 Input Dataset:
-<|{scenario.Customer_Orders_dataiku if scenario else None}|data_node|>
+<|{scenario.input_dataiku if scenario else None}|data_node|>
 
 Output Dataset:
-<|{scenario.result_dataiku if scenario else None}|data_node|>
+<|{scenario.output_dataiku if scenario else None}|data_node|>
 |>
 
 <|{scenario}|scenario_dag|>
