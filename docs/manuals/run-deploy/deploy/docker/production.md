@@ -9,7 +9,8 @@
 
 The following Dockerfile contains the minimum configuration settings to deploy your application to production.
 
-This template assumes that you provide a `requirements.txt` file with all the Python dependencies of your application and that your application entry point is the file `main.py.`
+This template assumes that you provide a `requirements.txt` file with all the Python
+dependencies of your application and that your application entry point is the file `main.py.`
 
 ```
 # Your Python version
