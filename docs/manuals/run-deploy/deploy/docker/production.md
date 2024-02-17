@@ -54,7 +54,10 @@ ENTRYPOINT [ "python", "main.py", "-P", "5000", "-H", "0.0.0.0", "--no-reloader"
 
 ## Production ready Docker Compose
 
-Exposing your application directly to the Internet is not recommended. Let [Nginx](https://nginx.org) handle this responsibility better for security and reliability. Consequently, beside your `docker-compose.yaml`, create a file named `nginx.conf` with [the following content](./nginx.conf).
+Exposing your application directly to the Internet is not recommended. Letting
+[Nginx](https://nginx.org) handle the responsibility is better for security and reliability.
+Consequently, besides your `docker-compose.yaml`, create a file named `nginx.conf` with 
+[the following content](./nginx.conf).
 
 Then, update your `docker-compose.yaml`:
 ```yaml
