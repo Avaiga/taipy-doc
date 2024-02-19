@@ -30,13 +30,6 @@ pandas
     on a Linux environment.
 
 
-!!! Note
-    For uploading large data sets or sizable files, please use the `/home/user/data`
-     directory. This location preserves your data across deployments. To transfer your 
-     files, establish a connection to your machine using 
-     [SSH or Filezilla](#connect-with-ssh-or-filezilla) and upload your data 
-     directly to this directory.
-
 ## Step 2: Create an Account on Taipy Cloud
 
 Visit [taipy.io/cloud/](https://www.taipy.io/cloud/) and sign up for an account or sign 
@@ -136,13 +129,11 @@ files.
 
 ### Best Practices for File Transfer
 
-- **Organize Your Files**: Keep your data organized in the `/home/user/data` directory to 
-ensure persistence across deployments.
 
 - **Manage File Sizes**: To optimize performance and deployment times, avoid uploading 
-unnecessary large files. Use compression when possible.
+unnecessary large files including `__pycache__`, *virtualenv* and *git* files. Use compression when possible.
 
-- **Security**: Always ensure your SSH keys are secure and not shared with unauthorized 
+- **Security**: Always ensure your keys and passwords are secure and not shared with unauthorized 
 individuals.
 
 In conclusion, Taipy Cloud is an easy platform for deploying your Taipy applications 
