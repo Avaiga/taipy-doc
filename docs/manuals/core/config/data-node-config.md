@@ -284,14 +284,14 @@ the list of specific sheets we want to use as the *sheet_name* parameter.
 
 ??? note
 
-    - To be able to use a `SQLTableDataNode^` with Microsoft SQL Server you need to run
-    internal dependencies with `pip install taipy[mssql]` and install your corresponding
+    - To be able to use a `SQLTableDataNode^` with Microsoft SQL Server, you need to run
+    optional dependencies with `pip install taipy[mssql]` and install your corresponding
     [Microsoft ODBC Driver for SQLServer](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
-    - To be able to use a `SQLTableDataNode^` with MySQL Server you need to run internal
+    - To be able to use a `SQLTableDataNode^` with MySQL Server, you need to run optional
     dependencies with `pip install taipy[mysql]` and install your corresponding
     [MySQL Driver for MySQL](https://pypi.org/project/PyMySQL/).
-    - To be able to use a `SQLTableDataNode^` with PostgreSQL Server you need to run
-    internal dependencies with `pip install taipy[postgresql]` and install your corresponding
+    - To be able to use a `SQLTableDataNode^` with PostgreSQL Server, you need to run
+    optional dependencies with `pip install taipy[postgresql]` and install your corresponding
     [Postgres JDBC Driver for PostgreSQL](https://www.postgresql.org/docs/7.4/jdbc-use.html).
 
 
@@ -377,14 +377,14 @@ data node is written, it deletes all the data in the table and insert the new da
 
 ??? note
 
-    - To be able to use a `SQLDataNode^` with Microsoft SQL Server you need to install
-    internal dependencies with `pip install taipy[mssql]` and install your corresponding
+    - To be able to use a `SQLDataNode^` with Microsoft SQL Server, you need to install
+    optional dependencies with `pip install taipy[mssql]` and install your corresponding
     [Microsoft ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
-    - To be able to use a `SQLDataNode^` with MySQL Server you need to install internal
+    - To be able to use a `SQLDataNode^` with MySQL Server, you need to install optional
     dependencies with `pip install taipy[mysql]` and install your corresponding
     [MySQL Driver for MySQL](https://pypi.org/project/PyMySQL/).
-    - To be able to use a `SQLDataNode^` with PostgreSQL Server you need to install
-    internal dependencies with `pip install taipy[postgresql]` and install your corresponding
+    - To be able to use a `SQLDataNode^` with PostgreSQL Server, you need to install
+    optional dependencies with `pip install taipy[postgresql]` and install your corresponding
     [Postgres JDBC Driver for PostgreSQL](https://www.postgresql.org/docs/7.4/jdbc-use.html).
 
 A `SQLDataNode^` is a specific data node used to model data stored in a SQL Database. To
@@ -569,6 +569,11 @@ custom encoder and decoder defined above.
 
 ## Parquet
 
+??? note
+
+    - To be able to use a `ParquetDataNode^`, you need to install
+    optional dependencies with `pip install taipy[parquet]`.
+
 A `ParquetDataNode^` data node is a specific data node used to model
 [Parquet](https://parquet.apache.org/) file data. The `Config.configure_parquet_data_node()^`
 adds a new *Parquet* data node configuration. In addition to the generic
@@ -585,8 +590,7 @@ section, the following parameters can be provided:
   can be changed at runtime right after its instantiation.<br/>
 
 - _**engine**_ represents the Parquet library to use.<br/>
-  Possible values are *"fastparquet"* or *"pyarrow"*. The default value is *"pyarrow"*.<br/>
-  Using the *"fastparquet"* engine requires installation with `pip install taipy[fastparquet]`.
+  Possible values are *"fastparquet"* or *"pyarrow"*. The default value is *"pyarrow"*.
 
 - _**compression**_ is the name of the compression to use.<br/>
   Possible values are *"snappy"*, *"gzip"*, *"brotli"* and None. The default value is
@@ -672,6 +676,11 @@ the *compression* is None.
     methods for reading and writing Parquet data, respectively.
 
 ## Mongo Collection
+
+??? note
+
+    - To be able to use a `MongoCollectionDataNode^`, you need to install
+    optional dependencies with `pip install taipy[mongo]`.
 
 A `MongoCollectionDataNode^` is a specific data node used to model data stored in a
 Mongo collection. To add a new *mongo_collection* data node configuration, the
@@ -841,7 +850,13 @@ The scope is `SCENARIO` (default value), and default data is provided.
     with parameter `storage_type="in_memory"`.
 
 ## Amazon Web Service S3 Object
-A `S3ObjectDataNode^` is a specific data node used to model data stored in a
+
+??? note
+
+    - To be able to use a `S3ObjectDataNode^`, you need to install
+    optional dependencies with `pip install taipy[s3]`.
+
+An `S3ObjectDataNode^` is a specific data node used to model data stored in an
 S3 bucket. To add a new *S3Object* data node configuration, the
 `Config.configure_s3_object_data_node()^` method can be used. In addition to
 the generic parameters described in the [Data node configuration](data-node-config.md)
@@ -852,12 +867,13 @@ section, multiple parameters can be provided.
 - _**aws_region**_ represnets the geographic area where the AWS infrastructure is located.
 - _**aws_s3_bucket_name**_ represnts the name of the AWS S3 bucket.
 - _**aws_s3_object_key**_ represents the name of the object (file) that needs to be read or written.
-- _**aws _s3_object_parameters**_ represents additional arguments to be passed to interact with the AWS service.
+- _**aws_s3_object_parameters**_ represents additional arguments to be passed to interact with AWS.
 
-In this example, we configure a *s3_object* data node with the id "my_s3_object":
+In this example, we configure an *s3_object* data node with the id "my_s3_object":
 
 - Its scope is the default value `SCENARIO`.
 - The object_key name is "taipy_object".
+- An additional argument is passed to the AWS S3 to set the max age of the cache.
 
 ```python linenums="1"
 {%
