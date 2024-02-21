@@ -5,18 +5,18 @@ from .exceptions import WrongHeader, NoHeader, NoIndexFile
 
 
 class Item:
-    CATEGORIES = ["tutorials", "gallery", "tips"]
+    CATEGORIES = ["fundamentals", "scenario_management", "visuals", "integration", "large_data", "gallery"]
     TYPES = ["code", "video", "article"]
 
     def __init__(self, parent_path: str, file_path: str):
-        self.parent_path = parent_path  # ex: docs/knowledge_base/tips
-        self.file_path = file_path  # ex: docs/knowledge_base/tips/charts.md or docs/knowledge_base/tips/charts/index.md
+        self.parent_path = parent_path
+        self.file_path = file_path
         if not os.path.exists(self.file_path):
             raise NoIndexFile(f"File {self.file_path} not found")
         with open(self.file_path) as file:
             self.header = self._read_header(file)
             self.title = self.header.get("title")
-            self.category = self.header.get("category", "tips")
+            self.category = self.header.get("category", "scenario_management")
             self.type = self.header.get("type", "code")
             self.data_keywords = self.header.get("data-keywords")
             self.short_description = self.header.get("short-description")
@@ -31,25 +31,6 @@ class Item:
     def icon(self) -> str:
         """Return the icon path."""
         return f"images/icon-{self.type}.svg"
-
-    def generate_content_for_tutorials(self) -> str:
-        """Generate content of an HTML list item."""
-        lines: List[str] = list()
-        lines.append(f'  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="{self.data_keywords}">')
-        lines.append(f'    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="'
-                     f'{self.href}">')
-        lines.append(f'      <header class="tp-content-card-header">')
-        lines.append(f'        <img class="tp-content-card-icon" src="{self.icon}">')
-        lines.append(f'      </header>')
-        lines.append(f'      <div class="tp-content-card-body">')
-        lines.append(f'        <h4>{self.title}</h4>')
-        lines.append(f'        <p>')
-        lines.append(f'          {self.short_description}')
-        lines.append(f'        </p>')
-        lines.append(f'      </div>')
-        lines.append(f'    </a>')
-        lines.append(f'  </li>')
-        return "\n".join(lines)
 
     def generate_content_for_gallery(self) -> str:
         """Generate content of an HTML list item."""
@@ -70,28 +51,8 @@ class Item:
         lines.append(f'  </li>')
         return "\n".join(lines)
 
-    def generate_content_for_tips(self) -> str:
+    def generate_content_for_article(self) -> str:
         return self.generate_content_for_gallery()
-
-    def generate_content_for_kb(self) -> str:
-        """Generate content of an HTML list item."""
-        lines: List[str] = list()
-        lines.append(f'  <li data-keywords="{self.data_keywords}">')
-        lines.append(f'    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="'
-                     f'{self.category + "/" + self.href}">')
-        lines.append(f'      <header class="tp-content-card-header">')
-        lines.append(f'        <img class="tp-content-card-icon" src="{self.category + "/" + self.icon}">')
-        lines.append(f'      </header>')
-        lines.append(f'      <div class="tp-content-card-body">')
-        lines.append(f'        <h4>{self.title}</h4>')
-        lines.append(f'        <p>')
-        lines.append(f'          {self.short_description}')
-        lines.append(f'        </p>')
-        lines.append(f'      </div>')
-        lines.append(f'    </a>')
-        lines.append(f'  </li>')
-        return "\n".join(lines)
-
 
     def _read_header(self, file: TextIO) -> Dict[str, str]:
         """Read a multiline header starting with '---' and ending with '---'."""

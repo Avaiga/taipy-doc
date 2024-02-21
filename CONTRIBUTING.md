@@ -138,90 +138,64 @@ If you need to add to Taipy a new dependency, do not forget to add it in the `Pi
 Keep in mind that dependency is a vector of attack. The Taipy team limits the usage of external dependencies at the
 minimum.
 
-## Contributing to taipy-doc Knowledge Base
+## Contributing to taipy-doc Tutorials
 
 Here is a small section if you specifically want to contribute to the 
-[Knowledge Base](docs/knowledge_base/index.md) section. Follow these steps to add your
+[Tutorials](docs/tutorials/index.md) section. Follow these steps to add your
 article, tip, or demo to the documentation.
 
 ### Steps:
 
 #### 1. Create a Folder
 
-Create a folder to organize your tip, demo, or tutorial. Use a clear and concise name for the
+Create a folder to organize your tutorial. Use a clear and concise name for the
 folder that represents the content. For example:
 
 ```
-docs/knowledge_base/tips/your_folder/
+docs/tutorials/{category}/your_folder/
 ```
+
+Category is the category of the article (fundamentals, visuals, scenario 
+management, integration or large data).
 
 #### 2. Add Content
 
 Place your images and Markdown files in the created folder. Name the 
 Markdown file "*index.md*".
 
-#### 3. Update Section Index
+#### 3. Add Metadata to the content
 
-Change the *index.md* file in the specific section (e.g., tips, gallery, tutorials) to include a
-new card for your contribution. You need:
+The header contains the following information:
+- title: The title of the item
+- category: The category of the item (fundamentals, visuals, scenario 
+management, integration or large data)
+- type: The type of the item (code, video or article)
+- data-keywords: A comma separated list of keywords
+- short_description: A short description of the item
 
-- Correct Keywords: : you can see the filters inside the file you are editing.
-- A correct href to the folder
-- A correct Title
-- Choose an image (optional)
-- A correct Description
+This header will be used to display the article in the correct pages. 
 
-Example:
-
-```
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="PUT YOUR KEYWORDS HERE">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="big_PUT YOUR HREF HERE">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="PUT YOUR IMAGE HERE">
-      </header>
-      <div class="tp-content-card-body">
-        <h4> PUT YOUR TITLE HERE </h4>
-        <span class="tp-tag"> PUT SOME TAG (Frontend or Backend or both) </span>
-        <p> PUT YOUR DESCRIPTION HERE
-        </p>
-      </div> 
-    </a>
-  </li>
-```
-
-#### 4. Update Knowledge Base Index
-
-Change the [*index.md*](docs/knowledge_base/index.md) file in the *knowledge_base* folder to add a new card 
-for your contribution in the correct section. You need:
-
-- Correct Keywords: you can see the filters inside this *index.md*.
-- A correct href to the folder
-- A correct Title
-- A correct Description
-
-Example:
+**Example:**
 
 ```
-  <li data-keywords="PUT KEYWORDS HERE">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="PUT HREF HERE">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
-      </header>
-      <div class="tp-content-card-body">
-        <h4> PUT TITLE HERE </h4>
-        <p> PUT DESCRIPTION HERE
-        </p>
-      </div> 
-    </a>
-  </li>
+---
+title: Scenarios
+category: scenario_management
+type: code
+data-keywords: scenario cycle configuration datanode dag
+short-description: A Taipy scenario models an instance of your end-user business problem to solve on data and parameter sets.
+img: 1_scenarios/images/scenario.png
+---
+
+And here is the content of my article...
 ```
 
-#### 5. Update mkdocs.yml_template
+#### 4. Update mkdocs.yml_template
 
 Add the new Markdown file to the "mkdocs.yml_template" file in the appropriate section.
 
 ```
-"Title of the Article": knowledge_base/tips/your_folder/index.md
+"Title of the Article": tutorials/{category}/your_folder/index.md
 ```
 
 #### Checklist:

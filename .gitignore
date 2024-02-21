@@ -105,7 +105,7 @@ site/
 
 # python notebook
 *.ipynb
-!docs/knowledge_base/tutorials/1_understanding_gui/tutorial.ipynb
+!docs/tutorials/fundamentals/1_understanding_gui/tutorial.ipynb
 
 # Doc generation
 mkdocs.yml
@@ -127,6 +127,8 @@ docs/manuals/reference_guiext/
 docs/contributing/contributors.md
 fe_node_modules/
 /docs/gallery/index.md
-/docs/knowledge_base/tips/index.md
-/docs/knowledge_base/tutorials/index.md
-/docs/knowledge_base/index.md
+/docs/tutorials/scenario_management/index.md
+/docs/tutorials/visuals/index.md
+/docs/tutorials/integration/index.md
+/docs/tutorials/large_data/index.md
+/docs/tutorials/fundamentals/index.md
