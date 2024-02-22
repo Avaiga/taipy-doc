@@ -167,11 +167,12 @@ Markdown file "*index.md*".
 
 The header contains the following information:
 - title: The title of the item
-- category: The category of the item (fundamentals, visuals, scenario 
-management, integration or large data)
+- category: The category of the item (fundamentals, visuals, scenario_management, 
+integration or large data)
 - type: The type of the item (code, video or article)
 - data-keywords: A comma separated list of keywords
-- short_description: A short description of the item
+- short-description: A short description of the item
+- img: The path to the image associated with the item
 
 This header will be used to display the article in the correct pages. 
 

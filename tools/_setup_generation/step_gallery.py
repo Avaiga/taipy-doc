@@ -8,10 +8,12 @@
 # The header of an item is a multiline header starting with '---' and ending with '---'.
 # The header contains the following information:
 # - title: The title of the item
-# - category: The category of the item (fundamentals, visuals, scenario_management, integration, large_data or gallery)
+# - category: The category of the item (fundamentals, visuals, scenario_management, 
+# integration, large_data or gallery)
 # - type: The type of the item (code, video or article)
 # - data-keywords: A comma separated list of keywords
-# - short_description: A short description of the item
+# - short-description: A short description of the item
+# - img: The path to the image associated with the item
 #
 # ##########################################################################################
 import os
