@@ -8,7 +8,6 @@ Learn out to build Taipy applications through tutorials!
 
 <!-- Quick accesses -->
 <div class="tp-row tp-row--gutter-sm">
-
   <div class="tp-col-12 tp-col-md-4 d-flex">
     <a class="tp-content-card tp-content-card--primary" href="fundamentals">
       <header class="tp-content-card-header">
