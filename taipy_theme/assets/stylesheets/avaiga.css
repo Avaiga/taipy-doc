@@ -43,7 +43,7 @@
 
   /* Layout */
   --md-grid-max-width: 75rem;
-  --md-content-max-width: 65rem;
+  --md-content-max-width: 50rem;
   --md-grid-padding-x: 1rem;
   --md-content-padding-y: 2rem;
   --md-sidebar-width: 16rem;
@@ -707,6 +707,11 @@ a.tp-pill{
   margin-top: 0;
   height: 4rem;
 }
+
+.md-typeset .tp-content-card-icon--small{
+  height: 2rem;
+}
+
 .tp-content-card--small .tp-content-card-icon{
   height: 2rem;
 }

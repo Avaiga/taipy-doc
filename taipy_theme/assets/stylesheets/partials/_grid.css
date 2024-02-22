@@ -115,11 +115,6 @@ ul.tp-row li{
     max-width: 100%;
   }
 
-  .tp-row > .tp-col-md-tutorials {
-    flex: 0 0 calc((100% * 1 / 5) - var(--tp-grid-gutter));
-    max-width: calc((100% * 1 / 5) - var(--tp-grid-gutter));
-  }
-
   .tp-row > .tp-col-md-1 {
     flex: 0 0 calc((100% * 1 / 12) - var(--tp-grid-gutter));
     max-width: calc((100% * 1 / 12) - var(--tp-grid-gutter));
