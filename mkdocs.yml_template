@@ -197,27 +197,32 @@ nav:
   - "Gallery":
     - "Gallery": gallery/index.md
     - "Finance":
-      - "Sales Dashboard": gallery/sales_dashboard.md
-      - "Fraud Detection": gallery/fraud_detection.md
-      - "Stock Visualization": gallery/stock_visualization.md
-    - "Decision Making Tools":
-      - "Production Planning": gallery/production_planning.md
-      - "Optimize Bar Cut Sizes": gallery/bar_cutting.md
-      - "Churn Classification": gallery/churn_classification.md
-      - "Drift Detection": gallery/drift_detection.md
+      - "Finance": gallery/finance/index.md
+      - "Sales Dashboard": gallery/finance/sales_dashboard/index.md
+      - "Fraud Detection": gallery/finance/fraud_detection/index.md
+      - "Stock Visualization": gallery/finance/stock_visualization/index.md
+    - "Decision Support":
+      - "Decision Support": gallery/decision_support/index.md
+      - "Production Planning": gallery/decision_support/production_planning/index.md
+      - "Optimize Bar Cut Sizes": gallery/decision_support/bar_cutting/index.md
+      - "Churn Classification": gallery/decision_support/churn_classification/index.md
+      - "Drift Detection": gallery/decision_support/drift_detection/index.md
     - "LLM":
-      - "Tweet Generation": gallery/tweet_generation.md
-      - "Sentiment Analysis": gallery/sentiment_analysis.md
-      - "TalkToTaipy" : gallery/talk_to_taipy.md
-      - "Creating an LLM Chatbot" : gallery/chatbot.md
+      - "LLM": gallery/llm/index.md
+      - "Tweet Generation": gallery/llm/tweet_generation/index.md
+      - "Sentiment Analysis": gallery/llm/sentiment_analysis/index.md
+      - "TalkToTaipy" : gallery/llm/talk_to_taipy/index.md
+      - "Creating an LLM Chatbot" : gallery/llm/chatbot/index.md
     - "Visualization":
-      - "COVID Dashboard": gallery/covid_dashboard.md
-      - "Image Classification": gallery/image_classif.md
-      - "Realtime Pollution Dashboard" : gallery/pollution_sensors.md
+      - "Visualization": gallery/visualization/index.md
+      - "COVID Dashboard": gallery/visualization/covid_dashboard/index.md
+      - "Image Classification": gallery/visualization/image_classif/index.md
+      - "Realtime Pollution Dashboard" : gallery/visualization/pollution_sensors/index.md
     - "Other":
-      - "Background Remover" : gallery/background_remover.md
-      - "Real-time Face Recognition": gallery/face_recognition.md
-      - "Movie Genre Selector": gallery/movie_genre_selector.md
+      - "Other": gallery/other/index.md
+      - "Background Remover": gallery/other/background_remover/index.md
+      - "Real-time Face Recognition": gallery/other/face_recognition/index.md
+      - "Movie Genre Selector": gallery/other/movie_genre_selector/index.md
   - "Release Notes": relnotes.md
   - "Contributing":
     - "Contributing to Taipy": contributing/contributing.md

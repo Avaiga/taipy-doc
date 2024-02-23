@@ -5,6 +5,80 @@ hide:
 
 Let's explore applications made with Taipy.
 
+
+<!-- Quick accesses -->
+<div class="tp-row tp-row--gutter-sm">
+  <div class="tp-col-12 tp-col-md-4 d-flex">
+    <a class="tp-content-card tp-content-card--delta" href="fundamentals">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon--small" src="images/monitoring.svg">
+        <h3>Finance</h3>
+      </header>
+      <div class="tp-content-card-body">
+        <p>
+          Master the basics of creating Taipy applications.
+        </p>
+      </div>
+    </a>
+  </div>
+
+  <div class="tp-col-12 tp-col-md-4 d-flex">
+    <a class="tp-content-card tp-content-card--gamma" href="visuals">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon--small" src="images/rocket_launch.svg">
+        <h3>Decision Support</h3>
+      </header>
+      <div class="tp-content-card-body">
+        <p>
+          Discover how to enhance your Taipy applications with visuals.
+        </p>
+      </div>
+    </a>
+  </div>
+
+  <div class="tp-col-12 tp-col-md-4 d-flex">
+    <a class="tp-content-card tp-content-card--beta" href="scenario_management">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon--small" src="images/model.svg">
+        <h3>LLM</h3>
+      </header>
+      <div class="tp-content-card-body">
+        <p>
+          Uncover strategies for effective scenario and data management.
+        </p>
+      </div>
+    </a>
+  </div>
+
+  <div class="tp-col-12 tp-col-md-4 d-flex">
+    <a class="tp-content-card tp-content-card--alpha" href="integration">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon--small" src="images/visualize.svg">
+        <h3>Visualization</h3>
+      </header>
+      <div class="tp-content-card-body">
+        <p>
+          Explore integration between Taipy and other platforms and libraries.
+        </p>
+      </div>
+    </a>
+  </div>
+
+  <div class="tp-col-12 tp-col-md-4 d-flex">
+    <a class="tp-content-card tp-content-card--primary" href="large_data">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon--small" src="images/package.svg">
+        <h3>Other</h3>
+      </header>
+      <div class="tp-content-card-body">
+        <p>
+          Learn to manage and manipulate large datasets.
+        </p>
+      </div>
+    </a>
+  </div>
+</div>
+
 <!-- Filters -->
 <ul class="tp-pills-list tp-pills-filter">
   <li>
@@ -45,4 +119,4 @@ Let's explore applications made with Taipy.
   </li>
 </ul>
 
-[LIST_FOR_GALLERY]
+[LIST_OF_ITEMS]

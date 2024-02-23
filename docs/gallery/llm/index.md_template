@@ -1,0 +1,42 @@
+---
+hide:
+  - toc
+---
+
+Follow our tutorials and get the core concepts of Taipy.
+
+<!-- Filters -->
+<ul class="tp-pills-list tp-pills-filter">
+  <li>
+    <input type="checkbox" name="filter-all" id="filter-all" value="all" checked>
+    <label class="tp-pill" for="filter-all">
+      <span>All</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-gui" id="filter-gui" value="gui">
+    <label class="tp-pill" for="filter-gui">
+      <span>GUI</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-dashboard" id="filter-dashboard" value="dashboard">
+    <label class="tp-pill" for="filter-dashboard">
+      <span>Dashboard</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-scenario" id="filter-scenario" value="scenario">
+    <label class="tp-pill" for="filter-scenario">
+      <span>Scenario</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-studio" id="filter-studio" value="studio">
+    <label class="tp-pill" for="filter-studio">
+      <span>Taipy Studio</span>
+    </label>
+  </li>
+</ul>
+
+[LIST_OF_ITEMS]
