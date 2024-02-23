@@ -52,7 +52,7 @@ Learn out to build Taipy applications through tutorials!
   </div>
 
   <div class="tp-col-12 tp-col-md-4 d-flex">
-    <a class="tp-content-card tp-content-card--gamma" href="integration">
+    <a class="tp-content-card tp-content-card--accent" href="integration">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon--small" src="images/imagesearch_roller.svg">
         <h3>Integration</h3>
