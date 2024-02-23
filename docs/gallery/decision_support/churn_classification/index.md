@@ -1,8 +1,7 @@
 ---
 title: Churn Classification - Predict customer churn
-category: gallery
-type: code
-data-keywords: gui ai classification scenario
+category: decision_support
+data-keywords: ai classification scenario
 short-description: Leverage Scenario management and comparison to improve decision making on a Churn prediction demo.
 img: churn_classification/images/churn-classification-data-Visualization-histogram.png
 ---

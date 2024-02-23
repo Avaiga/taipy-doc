@@ -14,12 +14,6 @@ Explore integration between Taipy and other platforms and libraries.
     </label>
   </li>
   <li>
-    <input type="checkbox" name="filter-gui" id="filter-gui" value="gui">
-    <label class="tp-pill" for="filter-gui">
-      <span>GUI</span>
-    </label>
-  </li>
-  <li>
     <input type="checkbox" name="filter-dashboard" id="filter-dashboard" value="dashboard">
     <label class="tp-pill" for="filter-dashboard">
       <span>Dashboard</span>

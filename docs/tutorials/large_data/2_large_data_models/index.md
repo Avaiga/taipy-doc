@@ -1,7 +1,6 @@
 ---
 title: Large data models vs. Computer memory — Taipy and Dask
 category: large_data
-type: code
 data-keywords: scenario task datanode job configuration
 short-description: A guide to building models that are bigger than your computer memory.
 img: 2_large_data_models/images/big_data_models.gif

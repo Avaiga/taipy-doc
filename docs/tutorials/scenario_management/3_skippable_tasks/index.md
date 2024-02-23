@@ -1,7 +1,6 @@
 ---
 title: Skippable tasks
 category: scenario_management
-type: code
 data-keywords: scenario task datanode job submission configuration
 short-description: Improve the efficiency in pipeline orchestration with the 'skippable' task feature.
 img: 3_skippable_tasks/images/skippable_tasks.png

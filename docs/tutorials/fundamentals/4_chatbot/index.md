@@ -1,7 +1,6 @@
 ---
 title: LLM ChatBot
 category: fundamentals
-type: code
 data-keywords: gui vizelement markdown
 short-description: Create a chatbot interface using Taipy and an LLM API.
 img: 4_chatbot/images/chatbot_roundconv.png

@@ -9,7 +9,7 @@ Let's explore applications made with Taipy.
 <!-- Quick accesses -->
 <div class="tp-row tp-row--gutter-sm">
   <div class="tp-col-12 tp-col-md-4 d-flex">
-    <a class="tp-content-card tp-content-card--delta" href="fundamentals">
+    <a class="tp-content-card tp-content-card--delta" href="finance">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon--small" src="images/monitoring.svg">
         <h3>Finance</h3>
@@ -23,7 +23,7 @@ Let's explore applications made with Taipy.
   </div>
 
   <div class="tp-col-12 tp-col-md-4 d-flex">
-    <a class="tp-content-card tp-content-card--gamma" href="visuals">
+    <a class="tp-content-card tp-content-card--accent" href="decision_support">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon--small" src="images/rocket_launch.svg">
         <h3>Decision Support</h3>
@@ -37,7 +37,7 @@ Let's explore applications made with Taipy.
   </div>
 
   <div class="tp-col-12 tp-col-md-4 d-flex">
-    <a class="tp-content-card tp-content-card--beta" href="scenario_management">
+    <a class="tp-content-card tp-content-card--beta" href="llm">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon--small" src="images/model.svg">
         <h3>LLM</h3>
@@ -51,7 +51,7 @@ Let's explore applications made with Taipy.
   </div>
 
   <div class="tp-col-12 tp-col-md-4 d-flex">
-    <a class="tp-content-card tp-content-card--alpha" href="integration">
+    <a class="tp-content-card tp-content-card--alpha" href="visualization">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon--small" src="images/visualize.svg">
         <h3>Visualization</h3>
@@ -65,7 +65,7 @@ Let's explore applications made with Taipy.
   </div>
 
   <div class="tp-col-12 tp-col-md-4 d-flex">
-    <a class="tp-content-card tp-content-card--primary" href="large_data">
+    <a class="tp-content-card tp-content-card--primary" href="other">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon--small" src="images/package.svg">
         <h3>Other</h3>
@@ -85,12 +85,6 @@ Let's explore applications made with Taipy.
     <input type="checkbox" name="filter-all" id="filter-all" value="all" checked>
     <label class="tp-pill" for="filter-all">
       <span>All</span>
-    </label>
-  </li>
-  <li>
-    <input type="checkbox" name="filter-gui" id="filter-gui" value="gui">
-    <label class="tp-pill" for="filter-gui">
-      <span>GUI</span>
     </label>
   </li>
   <li>

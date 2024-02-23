@@ -10,7 +10,7 @@
 # The header contains the following information:
 # - title: The title of the item
 # - category: The category of the item (fundamentals, visuals, scenario_management, 
-# integration, large_data or gallery)
+# integration, large_data, finance, decision_support, llm, visualization or other)
 # - data-keywords: A comma separated list of keywords
 # - short-description: A short description of the item
 # - img: The path to the image associated with the item
@@ -58,18 +58,16 @@ class GalleryStep(SetupStep):
         return "Generates the list of items for the gallery index page from various content types."
 
     def setup(self, setup: Setup):
-        contents = ""
+        items_info = {}
         for content_type, paths in self.content_types.items():
             items = self._get_list_of_items(paths["folder_path"])
-            content = self._build_content(items)
+            content, items_info_category = self._build_content(items)
             self._update_index_file(paths["index_path"], content)
             print(f"{len(items)} {content_type} items processed.")
-            contents += content
-
-        self._update_gallery_index_file(contents)
+            items_info.update(items_info_category)
+        content = self._build_content_for_main_index(items_info)
+        self._update_gallery_index_file(content)
         
-
-
     def _get_list_of_items(self, folder_path) -> List[Item]:
         items = []
         for sub_folder in os.listdir(folder_path):
@@ -83,11 +81,22 @@ class GalleryStep(SetupStep):
         return items
 
     def _build_content(self, items: List[Item]) -> str:
+        items_info = {}
         lines: List[str] = list()
         lines.append('<ul class="tp-row tp-row--gutter-sm tp-filtered">')
         for item in items:
+            items_info[item.img] = item.generate_content_for_article(main_index=True)
             content = item.generate_content_for_article()
             lines.append(content)
+        lines.append("</ul>")
+        return "\n".join(lines), items_info
+
+    def _build_content_for_main_index(self, items_info: dict):
+        items_info = dict(sorted(items_info.items()))
+        lines: List[str] = list()
+        lines.append('<ul class="tp-row tp-row--gutter-sm tp-filtered">')
+        for item in items_info.values():
+            lines.append(item)
         lines.append("</ul>")
         return "\n".join(lines)
 

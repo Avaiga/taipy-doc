@@ -1,7 +1,6 @@
 ---
 title: Long-running Callbacks
 category: visuals
-type: code
 data-keywords: gui callback
 short-description: Preserve the user interface responsiveness during lengthy tasks using Taipy's 'long-running callbacks' feature.
 img: 4_long_callbacks/images/long_running_callbacks.png

@@ -1,7 +1,6 @@
 ---
 title: Manage application versions with Git
 category: scenario_management
-type: code
 data-keywords: scenario configuration versioning
 short-description: Leverage Taipy version management and Git branches to deal with multiple versions of your application.
 img: images/icon-code.svg

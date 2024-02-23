@@ -1,7 +1,6 @@
 ---
 title: Scenario Subscription
 category: scenario_management
-type: code
 data-keywords: scenario subscription job gui notify
 short-description: Connect to your scenario executions to get the most recent updates.
 img: images/icon-code.svg

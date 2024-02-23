@@ -14,12 +14,6 @@ Follow our tutorials and get the core concepts of Taipy.
     </label>
   </li>
   <li>
-    <input type="checkbox" name="filter-gui" id="filter-gui" value="gui">
-    <label class="tp-pill" for="filter-gui">
-      <span>GUI</span>
-    </label>
-  </li>
-  <li>
     <input type="checkbox" name="filter-dashboard" id="filter-dashboard" value="dashboard">
     <label class="tp-pill" for="filter-dashboard">
       <span>Dashboard</span>
@@ -32,9 +26,15 @@ Follow our tutorials and get the core concepts of Taipy.
     </label>
   </li>
   <li>
-    <input type="checkbox" name="filter-studio" id="filter-studio" value="studio">
-    <label class="tp-pill" for="filter-studio">
-      <span>Taipy Studio</span>
+    <input type="checkbox" name="filter-ai" id="filter-ai" value="ai">
+    <label class="tp-pill" for="filter-ai">
+      <span>Machine Learning</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-optimization" id="filter-optimization" value="optimization">
+    <label class="tp-pill" for="filter-optimization">
+      <span>Optimization</span>
     </label>
   </li>
 </ul>

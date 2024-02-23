@@ -1,8 +1,7 @@
 ---
 title: Optimize Bar Cut Sizes to Minimize Waste
-category: gallery
-type: code
-data-keywords: gui optimization scenario
+category: decision_support
+data-keywords: optimization scenario
 short-description: Use two scenarios with distinct algorithms to reduces raw material waste by bar cut sizes optimizations.
 img: bar_cutting/images/bar-cutting-bar-Visualization.png
 ---

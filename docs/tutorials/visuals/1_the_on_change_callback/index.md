@@ -1,7 +1,6 @@
 ---
 title: Callbacks
 category: visuals
-type: code
 data-keywords: gui callback
 short-description: Make your multi-user graphical interface fully interactive using the on_change callback.
 img: 1_the_on_change_callback/images/callbacks_flowchart-1.png

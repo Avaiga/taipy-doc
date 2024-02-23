@@ -1,7 +1,6 @@
 ---
 title: Stylekit
 category: visuals
-type: code
 data-keywords: gui stylekit
 short-description: Easily change the visual style of your applications with pre-made stylesheets, CSS variables, and utility classes.
 img: 6_css_style_kit/images/style_kit.png

@@ -1,7 +1,6 @@
 ---
 title: Cycles and Scopes
 category: scenario_management
-type: code
 data-keywords: scenario datanode configuration cycle scope submission
 short-description: Share your Data Nodes across multiple scenarios with Cycles and Scopes.
 img: images/icon-code.svg

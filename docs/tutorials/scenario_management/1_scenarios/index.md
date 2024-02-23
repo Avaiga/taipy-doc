@@ -1,7 +1,6 @@
 ---
 title: Scenarios
 category: scenario_management
-type: code
 data-keywords: scenario cycle configuration datanode dag
 short-description: A Taipy scenario models an instance of your end-user business problem to solve on data and parameter sets.
 img: 1_scenarios/images/scenario.png

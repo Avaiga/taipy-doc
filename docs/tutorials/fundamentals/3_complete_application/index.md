@@ -1,7 +1,6 @@
 ---
 title: First Realistic application
 category: fundamentals
-type: code
 data-keywords: gui vizelement chart state multi-page callback markdown scenario task storage_type scope datanode configuration
 short-description: Build a complete realistic application from scratch from back-end to front-end.
 img: 3_complete_application/step_04/images/result.png

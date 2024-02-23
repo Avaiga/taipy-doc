@@ -1,8 +1,7 @@
 ---
 title: TalkToTaipy
-category: gallery
-type: code
-data-keywords: gui vizelement layout chart ai
+category: llm
+data-keywords: dashboard vizelement layout chart ai
 short-description: Explore datasets using only natural language using TalkToTaipy!
 img: talk_to_taipy/images/talk_to_taipy_image.jpeg
 ---

@@ -1,7 +1,6 @@
 ---
 title: Integrate Third-Party Components
 category: integration
-type: code
 data-keywords: gui vizelement chart
 short-description: Embed any HTML inside your application.
 img: 1_3rd_party_components/images/part_illustration.png

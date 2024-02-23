@@ -1,7 +1,6 @@
 ---
 title: Share your App with Colab and Ngrok
 category: integration
-type: code
 data-keywords: gui notebook deployment
 short-description: Share your Taipy application created with Google Colab on the Internet using Ngrok.
 img: 2_colab_with_ngrok/images/Sharing_Taipy_Ngrok_1.png
