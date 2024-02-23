@@ -9,8 +9,8 @@ class Item:
     TYPES = ["code", "video", "article"]
 
     def __init__(self, parent_path: str, file_path: str):
-        self.parent_path = parent_path
-        self.file_path = file_path
+        self.parent_path = parent_path # ex: docs/tutorials/fundamentals
+        self.file_path = file_path # ex: docs/tutorials/fundamentals/1_understanding_gui/index.md
         if not os.path.exists(self.file_path):
             raise NoIndexFile(f"File {self.file_path} not found")
         with open(self.file_path) as file:
