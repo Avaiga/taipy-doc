@@ -23,7 +23,10 @@ your application and its entities.
 
 !!! warning
 
-    All configuration objects must be created before running Core service to avoid any conflict.
+    All configuration objects must be created before instantiating any entity or running the Core service.
+
+    Any modification to the configuration objects after the Core service has been started or an entity has been
+    instantiated will raise an error.
 
 This chapter is dedicated to the configuration and focuses on the various **configs** objects. Its sections are
 organized as follows:
