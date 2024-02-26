@@ -58,7 +58,7 @@ Learn out to build Taipy applications through tutorials!
       </header>
       <div class="tp-content-card-body">
         <p>
-          Explore integration between Taipy and other platforms and libraries.
+          Explore integration with Taipy and other platforms and libraries.
         </p>
       </div>
     </a>
@@ -83,7 +83,7 @@ Learn out to build Taipy applications through tutorials!
 
 <ul class="tp-row tp-row--gutter-sm tp-filtered">
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement chart navbar table layout part menu state multi-page callback markdown">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="1_understanding_gui/">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="fundamentals/1_understanding_gui/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="fundamentals/1_understanding_gui/step_07/images/result.png">
       </header>
@@ -96,7 +96,7 @@ Learn out to build Taipy applications through tutorials!
     </a>
   </li>
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario task datanode configuration submission dag">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="2_scenario_management_overview/">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="fundamentals/2_scenario_management_overview/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="fundamentals/2_scenario_management_overview/images/screen.png">
       </header>
@@ -109,7 +109,7 @@ Learn out to build Taipy applications through tutorials!
     </a>
   </li>
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement chart state multi-page callback markdown scenario task storage_type scope datanode configuration">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="3_complete_application/">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="fundamentals/3_complete_application/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="fundamentals/3_complete_application/step_04/images/result.png">
       </header>

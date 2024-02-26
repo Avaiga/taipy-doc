@@ -14,7 +14,7 @@ a server.
 ![Dashboard Example](images/realtime_dashboard.png){width=90% : .tp-image-border }
 
 
-The dashboard displayed in this image is available [here](../../../gallery/pollution_sensors.md)
+The dashboard displayed in this image is available [here](../../../gallery/visualization/pollution_sensors/index.md)
 
 In this article, we will code a simple example where:
 - A `sender.py` script will generate a random number and send it through a socket.

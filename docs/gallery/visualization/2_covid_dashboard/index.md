@@ -3,7 +3,7 @@ title: Covid Dashboard
 category: visualization
 data-keywords: ai dashboard multi-page maps scenario datanode
 short-description: Forecast COVID-19 data for various countries, interact with maps, and gain insights into the global pandemic impact.
-img: covid_dashboard/images/covid-dashboard-country.png
+img: 2_covid_dashboard/images/covid-dashboard-country.png
 ---
 This demo visualizes a Covid dataset for the year 2020.
 Pages show different graphs and information on Covid.

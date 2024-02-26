@@ -3,7 +3,7 @@ title: TalkToTaipy
 category: llm
 data-keywords: dashboard vizelement layout chart ai
 short-description: Explore datasets using only natural language using TalkToTaipy!
-img: talk_to_taipy/images/talk_to_taipy_image.jpeg
+img: 6_talk_to_taipy/images/talk_to_taipy_image.jpeg
 ---
 Explore datasets using only natural language using TalkToTaipy!
 

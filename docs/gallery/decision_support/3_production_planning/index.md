@@ -3,7 +3,7 @@ title: Production Planning - Optimize production and cost management
 category: decision_support
 data-keywords: optimization scenario cycle comparison
 short-description: Simulate manufacturing scenarios and optimize production quantities to reduce production costs.
-img: production_planning/images/production-planning-data-visualization.png
+img: 3_production_planning/images/production-planning-data-visualization.png
 ---
 Production planning is pivotal in manufacturing, optimizing resources to meet
 demand while minimizing costs. This demo offers a solution for efficient production and cost management.

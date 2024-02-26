@@ -126,9 +126,9 @@ docs/manuals/reference_rest/*.md
 docs/manuals/reference_guiext/
 docs/contributing/contributors.md
 fe_node_modules/
-/docs/gallery/index.md
-/docs/tutorials/scenario_management/index.md
-/docs/tutorials/visuals/index.md
-/docs/tutorials/integration/index.md
-/docs/tutorials/large_data/index.md
-/docs/tutorials/fundamentals/index.md
+docs/gallery/index.md
+docs/tutorials/scenario_management/index.md
+docs/tutorials/visuals/index.md
+docs/tutorials/integration/index.md
+docs/tutorials/large_data/index.md
+docs/tutorials/fundamentals/index.md

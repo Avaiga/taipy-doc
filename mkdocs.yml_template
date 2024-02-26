@@ -198,12 +198,12 @@ nav:
     - "Gallery": gallery/index.md
     - "Finance":
       - "Finance": gallery/finance/index.md
-      - "Sales Dashboard": gallery/finance/sales_dashboard/index.md
+      - "Sales Dashboard": gallery/finance/4_sales_dashboard/index.md
       - "Fraud Detection": gallery/finance/fraud_detection/index.md
-      - "Stock Visualization": gallery/finance/stock_visualization/index.md
+      - "Stock Visualization": gallery/finance/1_stock_visualization/index.md
     - "Decision Support":
       - "Decision Support": gallery/decision_support/index.md
-      - "Production Planning": gallery/decision_support/production_planning/index.md
+      - "Production Planning": gallery/decision_support/3_production_planning/index.md
       - "Optimize Bar Cut Sizes": gallery/decision_support/bar_cutting/index.md
       - "Churn Classification": gallery/decision_support/churn_classification/index.md
       - "Drift Detection": gallery/decision_support/drift_detection/index.md
@@ -211,11 +211,11 @@ nav:
       - "LLM": gallery/llm/index.md
       - "Tweet Generation": gallery/llm/tweet_generation/index.md
       - "Sentiment Analysis": gallery/llm/sentiment_analysis/index.md
-      - "TalkToTaipy" : gallery/llm/talk_to_taipy/index.md
-      - "Creating an LLM Chatbot" : gallery/llm/chatbot/index.md
+      - "TalkToTaipy" : gallery/llm/6_talk_to_taipy/index.md
+      - "Creating an LLM Chatbot" : gallery/llm/5_chatbot/index.md
     - "Visualization":
       - "Visualization": gallery/visualization/index.md
-      - "COVID Dashboard": gallery/visualization/covid_dashboard/index.md
+      - "COVID Dashboard": gallery/visualization/2_covid_dashboard/index.md
       - "Image Classification": gallery/visualization/image_classif/index.md
       - "Realtime Pollution Dashboard" : gallery/visualization/pollution_sensors/index.md
     - "Other":

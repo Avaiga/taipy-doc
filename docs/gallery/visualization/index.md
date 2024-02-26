@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-Follow our tutorials and get the core concepts of Taipy.
+Delve into applications that focus on visualization.
 
 <!-- Filters -->
 <ul class="tp-pills-list tp-pills-filter">
@@ -40,10 +40,10 @@ Follow our tutorials and get the core concepts of Taipy.
 </ul>
 
 <ul class="tp-row tp-row--gutter-sm tp-filtered">
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai dashboard multi-page maps scenario datanode">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="covid_dashboard/">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="ai dashboard multi-page maps scenario datanode">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="2_covid_dashboard/">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="covid_dashboard/images/covid-dashboard-country.png">
+        <img class="tp-content-card-image" src="2_covid_dashboard/images/covid-dashboard-country.png">
       </header>
       <div class="tp-content-card-body">
         <h4>Covid Dashboard</h4>
@@ -53,7 +53,7 @@ Follow our tutorials and get the core concepts of Taipy.
       </div>
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai classification">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="dashboard ai classification">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="image_classif/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="image_classif/images/icon-code.svg">
@@ -66,7 +66,7 @@ Follow our tutorials and get the core concepts of Taipy.
       </div>
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui dashboard vizelement layout chart">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="dashboard vizelement layout chart">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="pollution_sensors/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="pollution_sensors/images/pollution_dashboard.png">

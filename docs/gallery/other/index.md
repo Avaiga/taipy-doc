@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-Follow our tutorials and get the core concepts of Taipy.
+See other applications using Taipy.
 
 <!-- Filters -->
 <ul class="tp-pills-list tp-pills-filter">
@@ -40,7 +40,7 @@ Follow our tutorials and get the core concepts of Taipy.
 </ul>
 
 <ul class="tp-row tp-row--gutter-sm tp-filtered">
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="ai">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="background_remover/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="background_remover/images/background-remover.png">
@@ -53,7 +53,7 @@ Follow our tutorials and get the core concepts of Taipy.
       </div>
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="ai">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="face_recognition/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="face_recognition/images/face-recognition.jpg">
@@ -66,7 +66,7 @@ Follow our tutorials and get the core concepts of Taipy.
       </div>
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai dashboard">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="ai dashboard">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="movie_genre_selector/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="movie_genre_selector/images/movie-genre-selector.png">

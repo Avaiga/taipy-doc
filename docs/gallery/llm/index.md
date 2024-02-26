@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-Follow our tutorials and get the core concepts of Taipy.
+Uncover a list of applications using LLM.
 
 <!-- Filters -->
 <ul class="tp-pills-list tp-pills-filter">
@@ -40,10 +40,10 @@ Follow our tutorials and get the core concepts of Taipy.
 </ul>
 
 <ul class="tp-row tp-row--gutter-sm tp-filtered">
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement ai">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="chatbot/">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="vizelement ai">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="5_chatbot/">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="chatbot/images/chatbot_meds_conv.png">
+        <img class="tp-content-card-image" src="5_chatbot/images/chatbot_meds_conv.png">
       </header>
       <div class="tp-content-card-body">
         <h4>LLM ChatBot</h4>
@@ -53,7 +53,20 @@ Follow our tutorials and get the core concepts of Taipy.
       </div>
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="dashboard vizelement layout chart ai">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="6_talk_to_taipy/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="6_talk_to_taipy/images/talk_to_taipy_image.jpeg">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>TalkToTaipy</h4>
+        <p>
+          Explore datasets using only natural language using TalkToTaipy!
+        </p>
+      </div>
+    </a>
+  </li>
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="dashboard ai">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="sentiment_analysis/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="sentiment_analysis/images/sentiment-analysis-line.png">
@@ -66,20 +79,7 @@ Follow our tutorials and get the core concepts of Taipy.
       </div>
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement layout chart ai">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="talk_to_taipy/">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="talk_to_taipy/images/talk_to_taipy_image.jpeg">
-      </header>
-      <div class="tp-content-card-body">
-        <h4>TalkToTaipy</h4>
-        <p>
-          Explore datasets using only natural language using TalkToTaipy!
-        </p>
-      </div>
-    </a>
-  </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="ai">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tweet_generation/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="tweet_generation/images/tweet-generation.png">

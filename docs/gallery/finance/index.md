@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-Follow our tutorials and get the core concepts of Taipy.
+Explore financial applications using Taipy.
 
 <!-- Filters -->
 <ul class="tp-pills-list tp-pills-filter">
@@ -40,23 +40,23 @@ Follow our tutorials and get the core concepts of Taipy.
 </ul>
 
 <ul class="tp-row tp-row--gutter-sm tp-filtered">
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui dashboard vizelement layout chart ai multi-page classification">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="fraud_detection/">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="ai dashboard">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="1_stock_visualization/">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="fraud_detection/images/fraud_threshold.png">
+        <img class="tp-content-card-image" src="1_stock_visualization/images/stock-visualization.png">
       </header>
       <div class="tp-content-card-body">
-        <h4>Fraud Detection</h4>
+        <h4>Stock Visualization and Prediction</h4>
         <p>
-          A Taipy Application that analyzes credit card transactions to detect fraud.
+          Leverage Taipy and Prophet to visualize historical stock data and make predictions over 5 years.
         </p>
       </div>
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui dashboard vizelement layout chart">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="sales_dashboard/">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="dashboard vizelement layout chart">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="4_sales_dashboard/">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="sales_dashboard/images/demo-sales-dashboard.jpg">
+        <img class="tp-content-card-image" src="4_sales_dashboard/images/demo-sales-dashboard.jpg">
       </header>
       <div class="tp-content-card-body">
         <h4>Sales Dashboard</h4>
@@ -66,15 +66,15 @@ Follow our tutorials and get the core concepts of Taipy.
       </div>
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai dashboard">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="stock_visualization/">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="dashboard vizelement layout chart ai multi-page classification">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="fraud_detection/">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="stock_visualization/images/stock-visualization.png">
+        <img class="tp-content-card-image" src="fraud_detection/images/fraud_threshold.png">
       </header>
       <div class="tp-content-card-body">
-        <h4>Stock Visualization and Prediction</h4>
+        <h4>Fraud Detection</h4>
         <p>
-          Leverage Taipy and Prophet to visualize historical stock data and make predictions over 5 years.
+          A Taipy Application that analyzes credit card transactions to detect fraud.
         </p>
       </div>
     </a>

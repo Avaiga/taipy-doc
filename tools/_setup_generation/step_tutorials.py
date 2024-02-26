@@ -60,7 +60,7 @@ class TutorialsStep(SetupStep):
     def setup(self, setup: Setup):
         for content_type, paths in self.content_types.items():
             items = self._get_list_of_items(paths["folder_path"])
-            content, _ = self._build_content(items)
+            content = self._build_content(items)
             self._update_index_file(paths["index_path"], content)
             print(f"{len(items)} {content_type} items processed.")
 

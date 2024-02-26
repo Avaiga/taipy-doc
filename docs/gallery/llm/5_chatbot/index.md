@@ -3,7 +3,7 @@ title: LLM ChatBot
 category: llm
 data-keywords: vizelement ai
 short-description: Leverage this chatbot demo using OpenAI's API with GPT-3 to use it as a template for an LLM inference application.
-img: chatbot/images/chatbot_meds_conv.png
+img: 5_chatbot/images/chatbot_meds_conv.png
 ---
 This demo showcases Taipy's ability to enable end-users to run inference using LLMs. Here, we
 use GPT-3 to create a chatbot and display the conversation in an interactive chat interface.
@@ -21,4 +21,4 @@ conversation and continue it.
 ![ChatBot](images/chatbot_meds_conv.png){width=100% : .tp-image-border }
 
 A tutorial on how to write this application and similar
-LLM inference applications is available [here](../tutorials/fundamentals/4_chatbot/index.md).
+LLM inference applications is available [here](../../../tutorials/fundamentals/4_chatbot/index.md).

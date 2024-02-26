@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-Follow our tutorials and get the core concepts of Taipy.
+Discover applications built to support decisions.
 
 <!-- Filters -->
 <ul class="tp-pills-list tp-pills-filter">
@@ -40,7 +40,20 @@ Follow our tutorials and get the core concepts of Taipy.
 </ul>
 
 <ul class="tp-row tp-row--gutter-sm tp-filtered">
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui optimization scenario">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="optimization scenario cycle comparison">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="3_production_planning/">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-image" src="3_production_planning/images/production-planning-data-visualization.png">
+      </header>
+      <div class="tp-content-card-body">
+        <h4>Production Planning - Optimize production and cost management</h4>
+        <p>
+          Simulate manufacturing scenarios and optimize production quantities to reduce production costs.
+        </p>
+      </div>
+    </a>
+  </li>
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="optimization scenario">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="bar_cutting/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="bar_cutting/images/bar-cutting-bar-Visualization.png">
@@ -53,7 +66,7 @@ Follow our tutorials and get the core concepts of Taipy.
       </div>
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai classification scenario">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="ai classification scenario">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="churn_classification/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="churn_classification/images/churn-classification-data-Visualization-histogram.png">
@@ -66,7 +79,7 @@ Follow our tutorials and get the core concepts of Taipy.
       </div>
     </a>
   </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui ai scenario datanode dag configuration">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="ai scenario datanode dag configuration">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="drift_detection/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-image" src="drift_detection/images/drift-detection-pipeline.png">
@@ -75,19 +88,6 @@ Follow our tutorials and get the core concepts of Taipy.
         <h4>Drift Detection - Detect drift in a dataset</h4>
         <p>
           Expose scenarios and pipeline executions to your end-users with this input dataset drift detection.
-        </p>
-      </div>
-    </a>
-  </li>
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui optimization scenario cycle comparison">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="production_planning/">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="production_planning/images/production-planning-data-visualization.png">
-      </header>
-      <div class="tp-content-card-body">
-        <h4>Production Planning - Optimize production and cost management</h4>
-        <p>
-          Simulate manufacturing scenarios and optimize production quantities to reduce production costs.
         </p>
       </div>
     </a>
