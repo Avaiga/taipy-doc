@@ -1,0 +1,42 @@
+---
+hide:
+  - toc
+---
+
+Learn to manage and manipulate large datasets.
+
+<!-- Filters -->
+<ul class="tp-pills-list tp-pills-filter">
+  <li>
+    <input type="checkbox" name="filter-all" id="filter-all" value="all" checked>
+    <label class="tp-pill" for="filter-all">
+      <span>All</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-dashboard" id="filter-dashboard" value="dashboard">
+    <label class="tp-pill" for="filter-dashboard">
+      <span>Dashboard</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-scenario" id="filter-scenario" value="scenario">
+    <label class="tp-pill" for="filter-scenario">
+      <span>Scenario</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-stylekit" id="filter-stylekit" value="stylekit">
+    <label class="tp-pill" for="filter-stylekit">
+      <span>Stylekit</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-cloud" id="filter-cloud" value="cloud">
+    <label class="tp-pill" for="filter-cloud">
+      <span>Taipy Cloud</span>
+    </label>
+  </li>
+</ul>
+
+[LIST_OF_ITEMS]

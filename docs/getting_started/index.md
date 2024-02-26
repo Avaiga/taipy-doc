@@ -277,4 +277,4 @@ and starting the GUI, which makes the interface active and functional.
 ---
 
 For more realistic and advanced use cases, check out our
-[Knowledge Base](../knowledge_base/index.md), or [Manuals](../manuals/index.md) pages.
+[Tutorials](../tutorials/index.md), or [Manuals](../manuals/index.md) pages.

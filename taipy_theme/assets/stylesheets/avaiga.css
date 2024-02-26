@@ -707,6 +707,11 @@ a.tp-pill{
   margin-top: 0;
   height: 4rem;
 }
+
+.md-typeset .tp-content-card-icon--small{
+  height: 2rem;
+}
+
 .tp-content-card--small .tp-content-card-icon{
   height: 2rem;
 }
