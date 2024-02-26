@@ -1,7 +1,6 @@
 ---
 title: Using tables
 category: visuals
-type: code
 data-keywords: gui vizelement tables callback stylekit
 short-description: Learn key settings and features for effortless table creation within data applications.
 img: 2_using_tables/images/using_tables.png

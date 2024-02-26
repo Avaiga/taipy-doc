@@ -1,7 +1,6 @@
 ---
 title: Charts for Large Data
 category: large_data
-type: code
 data-keywords: gui ai
 short-description: Taming Large Data without crashing.
 img: 3_decimator/images/front.png

@@ -1,7 +1,6 @@
 ---
 title: Data Nodes
 category: scenario_management
-type: code
 data-keywords: scenario datanode storage_type configuration
 short-description: Understand data nodes and their central role in accessing data from various sources.
 img: 2_the_data_nodes/images/data_notes.png

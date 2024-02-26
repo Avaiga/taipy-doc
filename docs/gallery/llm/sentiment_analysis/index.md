@@ -1,8 +1,7 @@
 ---
 title: Sentiment Analysis - Detect emotional tones from a text
-category: gallery
-type: code
-data-keywords: gui ai
+category: llm
+data-keywords: dashboard ai
 short-description: Analyze user input and uploaded text to uncover sentiments effortlessly.
 img: sentiment_analysis/images/sentiment-analysis-line.png
 ---

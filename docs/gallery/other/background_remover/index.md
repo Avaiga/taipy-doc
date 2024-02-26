@@ -1,8 +1,7 @@
 ---
 title: Background Remover
-category: gallery
-type: code
-data-keywords: gui ai
+category: other
+data-keywords: ai
 short-description: An interactive application to easily remove image backgrounds using automatic detection.
 img: background_remover/images/background-remover.png
 ---

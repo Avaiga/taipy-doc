@@ -1,7 +1,6 @@
 ---
 title: Understanding GUI
 category: fundamentals
-type: code
 data-keywords: gui vizelement chart navbar table layout part menu state multi-page callback markdown
 short-description: Understand basic knowledge of Taipy GUI creating of a multi-page NLP application.
 img: 1_understanding_gui/step_07/images/result.png

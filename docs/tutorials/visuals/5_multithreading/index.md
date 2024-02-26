@@ -1,7 +1,6 @@
 ---
 title: Real-time data visualization with multithreading
 category: visuals
-type: code
 data-keywords: gui dashboard
 short-description: Display data sent from another thread in real-time to your Taipy application.
 img: 5_multithreading/images/realtime_dashboard.png

@@ -1,8 +1,7 @@
 ---
 title: LLM ChatBot
-category: gallery
-type: code
-data-keywords: gui vizelement ai
+category: llm
+data-keywords: vizelement ai
 short-description: Leverage this chatbot demo using OpenAI's API with GPT-3 to use it as a template for an LLM inference application.
 img: chatbot/images/chatbot_meds_conv.png
 ---

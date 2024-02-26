@@ -1,8 +1,7 @@
 ---
 title: Tweet Generation
-category: gallery
-type: code
-data-keywords: gui ai
+category: llm
+data-keywords: ai
 short-description: Experience the AI-powered Tweet Generation. Automate Tweets using GPT-3's Davinci engine and DALL·E.
 img: tweet_generation/images/tweet-generation.png
 ---

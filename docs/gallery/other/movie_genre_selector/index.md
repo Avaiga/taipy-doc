@@ -1,8 +1,7 @@
 ---
 title: Movie Genre Selector
-category: gallery
-type: code
-data-keywords: gui ai dashboard
+category: other
+data-keywords: ai dashboard
 short-description: Explore this user-friendly interface to help you discover movies from your favorite movie genres.
 img: movie_genre_selector/images/movie-genre-selector.png
 ---

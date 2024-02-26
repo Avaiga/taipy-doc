@@ -1,8 +1,7 @@
 ---
 title: Image Classification
-category: gallery
-type: code
-data-keywords: gui ai classification
+category: visualization
+data-keywords: dashboard ai classification
 short-description: Explore our interactive image classification application built with Taipy, Nvidia CUDA, and TensorFlow.
 img: image_classif/images/icon-code.svg
 ---

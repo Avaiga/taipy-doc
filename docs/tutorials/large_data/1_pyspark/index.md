@@ -1,7 +1,6 @@
 ---
 title: Using PySpark for Large Data
 category: large_data
-type: code
 data-keywords: scenario task
 short-description: Build, Visualize and Launch Large Data DAGs.
 img: 1_pyspark/images/front.png

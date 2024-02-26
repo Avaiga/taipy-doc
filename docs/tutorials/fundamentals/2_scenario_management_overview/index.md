@@ -1,7 +1,6 @@
 ---
 title: Scenario management Overview
 category: fundamentals
-type: code
 data-keywords: scenario task datanode configuration submission dag
 short-description: Learn how to give your end-users the power of managing multiple scenarios.
 img: 2_scenario_management_overview/images/screen.png

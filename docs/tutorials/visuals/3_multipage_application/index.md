@@ -1,7 +1,6 @@
 ---
 title: Multi-page Applications
 category: visuals
-type: code
 data-keywords: gui multi-page navbar
 short-description: Design your application with multiple pages, resulting in a user-friendly and intuitive user interface.
 img: 3_multipage_application/images/multipage_application.png
