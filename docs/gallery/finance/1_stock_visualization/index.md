@@ -8,7 +8,6 @@ img: 1_stock_visualization/images/stock-visualization.png
 In the realm of financial markets, data is king. The ability to quickly and easily visualize
 historical stock data and making predictions is essential  for investors and financial analysts.
 This demo, built with Taipy and powered by the
-
 [Prophet library](https://facebook.github.io/prophet/docs/quick_start.html),
 offers a way to achieve this.
 
@@ -16,6 +15,7 @@ offers a way to achieve this.
 [Get it on GitHub](https://github.com/Avaiga/demo-stock-visualization){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
+
 This one-page demo's primary objective is to illustrate how
 you can build a forecast data visualization dashboard effortlessly using Taipy.
 This fully interactive web application can be created with fewer than 120 lines of Python code.
