@@ -108,10 +108,10 @@ comments=false
 ```console
 $ taipy run main.py --production 1.0
 [2023-01-25 12:52:05,484][Taipy][ERROR] The configuration for version 1.0 conflicts with the current configuration:
-    DATA_NODE "input" has attribute "path" added: input.pkl
-    DATA_NODE "output" has attribute "path" added: output.pkl
-    DATA_NODE "input" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
-    DATA_NODE "output" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
+    DATA_NODE "my_input" has attribute "path" added: input.pkl
+    DATA_NODE "my_output" has attribute "path" added: output.pkl
+    DATA_NODE "my_input" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
+    DATA_NODE "my_output" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     TASK "example_algorithm" has attribute "skippable" modified: False:bool -> True:bool
 
 Please add a new production version with migration functions.
@@ -127,10 +127,10 @@ the version's configuration before re-running the application.
 ```console
 $ taipy run main.py --production 1.0 --force
 [2023-07-04 10:25:41][Taipy][ERROR] The configuration for version 1.0 conflicts with the current configuration:
-    DATA_NODE "input" has attribute "path" added: input.pkl
-    DATA_NODE "output" has attribute "path" added: output.pkl
-    DATA_NODE "input" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
-    DATA_NODE "output" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
+    DATA_NODE "my_input" has attribute "path" added: input.pkl
+    DATA_NODE "my_output" has attribute "path" added: output.pkl
+    DATA_NODE "my_input" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
+    DATA_NODE "my_output" has attribute "scope" modified: SCENARIO:SCOPE -> GLOBAL:SCOPE
     TASK "example_algorithm" has attribute "skippable" modified: False:bool -> True:bool
 [2023-07-04 10:25:41][Taipy][WARNING] Option --force is detected, overriding the configuration of version 1.0 ...
 [2023-07-04 10:25:41][Taipy][INFO] Version 1.0 is already a production version.
@@ -204,13 +204,13 @@ This method requires the following parameters.
 ```python
 Config.add_migration_function(
     target_version="2.0",
-    config="input",
+    config="my_input",
     migration_fct=migrate_datanode_scope,
 )
 
 Config.add_migration_function(
     target_version="2.0",
-    config="output",
+    config="my_output",
     migration_fct=migrate_datanode_scope,
 )
 

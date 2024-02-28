@@ -188,6 +188,7 @@ Deleting a Submission can raise a `SubmissionNotDeletedException^` if the `Statu
 !!! example
 
     ```python linenums="1"
+    from taipy import Config
     import taipy as tp
 
     def double(nb):
@@ -196,10 +197,10 @@ Deleting a Submission can raise a `SubmissionNotDeletedException^` if the `Statu
     print(f'(1) Number of submission: {len(tp.get_submissions())}.')
 
     # Create a scenario then submit it.
-    input_data_node_config = tp.configure_data_node("input", default_data=21)
-    output_data_node_config = tp.configure_data_node("output")
-    task_config = tp.configure_task("double_task", double)
-    scenario_config = tp.configure_scenario("my_scenario", [task_config])
+    input_data_node_config = Config.configure_data_node("my_input", default_data=21)
+    output_data_node_config = Config.configure_data_node("my_output")
+    task_config = Config.configure_task("double_task", double)
+    scenario_config = Config.configure_scenario("my_scenario", [task_config])
 
     tp.Core().run()
 
@@ -270,6 +271,7 @@ Deleting a Job can raise an `JobNotDeletedException^` if the `Status^` of the Jo
 
     ```python linenums="1"
     import taipy as tp
+    from taipy import Config
 
     def double(nb):
         return nb * 2
@@ -277,10 +279,10 @@ Deleting a Job can raise an `JobNotDeletedException^` if the `Status^` of the Jo
     print(f'(1) Number of jobs: {len(tp.get_jobs())}.')
 
     # Create a scenario then submit it.
-    input_data_node_config = tp.configure_data_node("input", default_data=21)
-    output_data_node_config = tp.configure_data_node("output")
-    task_config = tp.configure_task("double_task", double)
-    scenario_config = tp.configure_scenario("my_scenario", [task_config])
+    input_data_node_config = Config.configure_data_node("my_input", default_data=21)
+    output_data_node_config = Config.configure_data_node("my_output")
+    task_config = Config.configure_task("double_task", double)
+    scenario_config = Config.configure_scenario("my_scenario", [task_config])
 
     tp.Core().run()
 
@@ -328,11 +330,11 @@ Jobs are created when a task is submitted.
     print(f'(1) Number of jobs: {len(tp.get_jobs())}.')
 
     # Create a scenario then submit it.
-    input_data_node_cfg = tp.configure_data_node("input", default_data=21)
-    output_data_node_cfg = tp.configure_data_node("output")
-    double_task_config = tp.configure_task("double_task", double, input_data_node_cfg, output_data_node_cfg)
-    print_task_config = tp.configure_task("print_task", print, output_data_node_cfg)
-    scenario_config = tp.configure_scenario("my_scenario", [double_task_config, print_task_config])
+    input_data_node_cfg = Config.configure_data_node("my_input", default_data=21)
+    output_data_node_cfg = Config.configure_data_node("my_output")
+    double_task_config = Config.configure_task("double_task", double, input_data_node_cfg, output_data_node_cfg)
+    print_task_config = Config.configure_task("print_task", print, output_data_node_cfg)
+    scenario_config = Config.configure_scenario("my_scenario", [double_task_config, print_task_config])
 
     tp.Core().run()
 
@@ -380,11 +382,11 @@ This example produces the following output:
     print(f'(1) Number of jobs: {len(tp.get_jobs())}.')
 
     # Create a scenario then submit it.
-    input_data_node_cfg = tp.configure_data_node("input", default_data=21)
-    output_data_node_cfg = tp.configure_data_node("output")
-    double_task_config = tp.configure_task("double_task", double, input_data_node_cfg, output_data_node_cfg)
-    print_task_config = tp.configure_task("print_task", print, output_data_node_cfg)
-    scenario_config = tp.configure_scenario("my_scenario", [double_task_config, print_task_config])
+    input_data_node_cfg = Config.configure_data_node("my_input", default_data=21)
+    output_data_node_cfg = Config.configure_data_node("my_output")
+    double_task_config = Config.configure_task("double_task", double, input_data_node_cfg, output_data_node_cfg)
+    print_task_config = Config.configure_task("print_task", print, output_data_node_cfg)
+    scenario_config = Config.configure_scenario("my_scenario", [double_task_config, print_task_config])
 
     tp.Core().run()
 
@@ -458,10 +460,10 @@ can be global, or you can specify the scenario or sequence by passing it as a pa
     def my_subscriber_multi_param(scenario, job, params):
         print(f"my_subscriber_multi_param: params {params}; task '{job.task.config_id}'.")
 
-    task_1 = tp.configure_task("my_task_1", do_nothing)
-    task_2 = tp.configure_task("my_task_2", do_nothing)
-    scenario_1 = tp.configure_scenario("my_scenario", [task, task])
-    scenario_2 = tp.configure_scenario("my_scenario", [task, task])
+    task_1 = Config.configure_task("my_task_1", do_nothing)
+    task_2 = Config.configure_task("my_task_2", do_nothing)
+    scenario_1 = Config.configure_scenario("my_scenario", [task, task])
+    scenario_2 = Config.configure_scenario("my_scenario", [task, task])
 
     tp.Core().run()
 

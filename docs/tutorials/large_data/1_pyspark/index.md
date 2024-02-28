@@ -200,7 +200,7 @@ island_cfg = Config.configure_data_node(id="island")  # "Biscoe", "Dream", "Torg
 sex_cfg = Config.configure_data_node(id="sex")  # "male", "female"
 
 output_cfg = Config.configure_json_data_node(
-    id="output",
+    id="my_output",
 )
 
 # -------------------- Tasks --------------------
@@ -484,7 +484,7 @@ main_md = """
 
 ## Output
 
-**<|{str(selected_scenario.output.read()) if selected_scenario and selected_scenario.output.is_ready_for_reading else 'Submit the scenario using the left panel.'}|text|raw|class_name=color-primary|>**
+**<|{str(selected_scenario.my_output.read()) if selected_scenario and selected_scenario.my_output.is_ready_for_reading else 'Submit the scenario using the left panel.'}|text|raw|class_name=color-primary|>**
 
 ## Data node inspector
 
