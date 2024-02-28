@@ -11,9 +11,9 @@ def add(nb):
 
 
 # Configuration of Data Nodes
-input_cfg = Config.configure_data_node("input", default_data=21)
+input_cfg = Config.configure_data_node("my_input", default_data=21)
 intermediate_cfg = Config.configure_data_node("intermediate")
-output_cfg = Config.configure_data_node("output")
+output_cfg = Config.configure_data_node("my_output")
 
 # Configuration of tasks
 first_task_cfg = Config.configure_task("double",
@@ -56,8 +56,8 @@ if __name__=="__main__":
     scenario_1 = tp.create_scenario(scenario_cfg)
     scenario_2 = tp.create_scenario(scenario_cfg)
 
-    scenario_1.input.write(10)
-    scenario_2.input.write(8)
+    scenario_1.my_input.write(10)
+    scenario_2.my_input.write(8)
 
     scenario_1.submit()
     scenario_2.submit()

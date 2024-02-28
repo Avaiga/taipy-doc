@@ -173,7 +173,7 @@ Now, this *predict()* function is usable by Taipy inside a scenario. A potential
 integration into the configuration is as follows:
 
 ```python
-from taipy.config import Config
+from taipy import Config
 
 params_cfg = Config.configure_data_node("params",
                                         default_data={"param1": "value1",

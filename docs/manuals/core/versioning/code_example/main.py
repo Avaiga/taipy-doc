@@ -7,8 +7,8 @@ def example_algorithm(entry: str):
     return entry
 
 
-input_cfg = Config.configure_data_node("input", default_data="a_string")
-output_cfg = Config.configure_data_node("output")
+input_cfg = Config.configure_data_node("my_input", default_data="a_string")
+output_cfg = Config.configure_data_node("my_output")
 task_cfg = Config.configure_task("example_algorithm", example_algorithm, input_cfg, output_cfg)
 scenario_cfg = Config.configure_scenario("my_scenario", [task_cfg])
 

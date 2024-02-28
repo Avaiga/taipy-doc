@@ -104,9 +104,9 @@ To compare the configuration between 2 versions, you can run the version managem
 $ taipy manage-versions --compare-config 1.0 2.0
 [2023-01-25 12:52:05,484][Taipy][INFO] Differences between version 1.0 Configuration and version 2.0 Configuration:
 Added object:
-        DATA_NODE "output" has attribute "description" added: What a description
+        DATA_NODE "my_output" has attribute "description" added: What a description
 ```
-In this example, from the comparison output, we can see that the data node "output" of version 2.0
+In this example, from the comparison output, we can see that the data node "my_output" of version 2.0
 has a newly added attribute named "description".
 
 ## Delete a version
