@@ -79,6 +79,7 @@ class TutorialsStep(SetupStep):
     def _build_content(self, items: List[Item]) -> str:
         lines: List[str] = list()
         lines.append('<ul class="tp-row tp-row--gutter-sm tp-filtered">')
+        items = sorted(items, key=lambda item: item.href)
         for item in items:
             content = item.generate_content_for_article()
             lines.append(content)

@@ -84,6 +84,7 @@ class GalleryStep(SetupStep):
         items_info = {}
         lines: List[str] = list()
         lines.append('<ul class="tp-row tp-row--gutter-sm tp-filtered">')
+        items = sorted(items, key=lambda item: item.href)
         for item in items:
             items_info[item.img] = item.generate_content_for_article(main_index=True)
             content = item.generate_content_for_article()
