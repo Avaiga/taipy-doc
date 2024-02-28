@@ -91,7 +91,7 @@ Here are a few of the essential properties. You can also look at the
     ```python
     data = {"x_col": [0, 1, 2], "y_col1": [4, 1, 2], "y_col_2": [3, 1, 2]}
     with tgb.Page() as page:
-        tgb.chart("{data}", x="x_col", y_1="y_col1", y_2="y_col_2")
+        tgb.chart("{data}", x="x_col", y__1="y_col1", y__2="y_col_2")
     ```
 
 
@@ -106,7 +106,7 @@ Here are a few of the essential properties. You can also look at the
     ```python
     data = {"x_col": [0, 1, 2], "y_col1": [4, 1, 2], "y_col_2": [3, 1, 2]}
     with tgb.Page() as page:
-        tgb.chart("{data}", x="x_col", y_1="y_col1", y_2="y_col_2", color_1="green")
+        tgb.chart("{data}", x="x_col", y__1="y_col1", y__2="y_col_2", color__1="green")
     ```
 
 
@@ -128,7 +128,7 @@ chart.
     ```python
     data = {"x_col": [0, 1, 2], "y_col1": [4, 1, 2], "y_col_2": [3, 1, 2]}
     with tgb.Page() as page:
-        tgb.chart("{data}", x="x_col", y_1="y_col1", y_2="y_col_2", type_1="bar")
+        tgb.chart("{data}", x="x_col", y__1="y_col1", y__2="y_col_2", type__1="bar")
     ```
 
 ## Code

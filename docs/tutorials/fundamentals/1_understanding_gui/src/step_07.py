@@ -22,7 +22,7 @@ Enter a word:
 
 
 <|Table|expandable|
-<|{dataframe}|table|width=100%|number_format=%.2f|>
+<|{dataframe}|table|number_format=%.2f|>
 |>
 |>
 
@@ -81,7 +81,7 @@ page_file = """
 <br/>
 
 <|Table|expandable|
-<|{dataframe2}|table|width=100%|number_format=%.2f|>
+<|{dataframe2}|table|number_format=%.2f|>
 |>
 
 <br/>
