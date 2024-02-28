@@ -87,6 +87,8 @@ This is the list of changes to Taipy releases as they were published.
 
 - Running the Core service more than one time will raise an exception to prevent multiple instances
   of the Core service to run at the same time.
+- Running the Core service or creating an entity by `taipy.create_scenario()` or
+  `taipy.create_global_data_node()` will block the Configuration from being modified.
 
 ## Significant bug fixes
 
