@@ -22,7 +22,7 @@ Enter a word:
 
 
 <|Table|expandable|
-<|{dataframe}|table|width=100%|number_format=%.2f|>
+<|{dataframe}|table|number_format=%.2f|>
 |>
 |>
 
@@ -76,12 +76,12 @@ path = ""
 treatment = 0
 
 page_file = """
-<|{path}|file_selector|extensions=.txt|label=Upload .txt file|on_action=analyze_file|> <|{f'Downloading {treatment}%...'}|>
+<|{path}|file_selector|extensions=.txt|label=Upload .txt file|on_action=analyze_file|> <|Downloading {treatment}%...|>
 
 <br/>
 
 <|Table|expandable|
-<|{dataframe2}|table|width=100%|number_format=%.2f|>
+<|{dataframe2}|table|number_format=%.2f|>
 |>
 
 <br/>

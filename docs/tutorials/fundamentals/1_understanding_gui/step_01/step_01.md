@@ -1,4 +1,4 @@
-[Download Step 1](./../src/step_01.py){: .tp-btn target='blank' }
+[Download Step 1](./../src/step_01.zip){: .tp-btn target='blank' }
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 !!! warning "For Notebooks"

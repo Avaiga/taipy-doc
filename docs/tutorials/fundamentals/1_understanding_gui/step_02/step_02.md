@@ -1,4 +1,4 @@
-[Download Step 2](./../src/step_02.py){: .tp-btn target='blank' }
+[Download Step 2](./../src/step_02.zip){: .tp-btn target='blank' }
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 !!! warning "For Notebooks"
@@ -25,11 +25,31 @@ Taipy graphical object displayed on the client. It can be a
 
 Every visual element follows a similar syntax:
 
-`<|{variable}|visual_element_name|param_1=param_1|param_2=param_2| ... |>`.
+=== "Markdown"
+    ```
+    <|{variable}|visual_element_name|param_1=param_1|param_2=param_2| ... |>
+    ``` 
+=== "Python"
+    ```python
+    tgb.visual_element_name("{variable}", param_1=param_1, param_2=param_2, ...)
+    ``` 
+    
+    The inclusion of *variable* within `"{...}"` tells Taipy to show and use the 
+    real-time value of *variable*. Rather than re-executing the entire script, 
+    Taipy intelligently adjusts only the necessary elements of the GUI to reflect 
+    changes, ensuring a responsive and performance-optimized user experience.
 
 For example, a [slider](../../../../manuals/gui/viselements/slider.md) is written this way :
 
-`<|{variable}|slider|min=min_value|max=max_value|>`.
+
+=== "Markdown"
+    ```
+    <|{variable}|slider|min=min_value|max=max_value|>
+    ``` 
+=== "Python"
+    ```python
+    tgb.slider("{variable}", min=min_value, max=max_value, ...)
+    ``` 
 
 To include each visual element you want in your web page, you should incorporate the syntax
 mentioned above within your markdown string, which represents your page.
@@ -41,27 +61,50 @@ For example, at the beginning of the page, if you want to display:
 
 Here is the overall syntax:
 
-```
-<|{text}|>
-<|{text}|input|>
-```
+=== "Markdown"
+    ```
+    <|{text}|>
+    <|{text}|input|>
+    ```
+=== "Python"
+    ```python
+    tgb.text("{text}")
+    tgb.input("{text}")
+    ``` 
+
 
 Here is the combined code:
 
-```python
-from taipy.gui import Gui
+=== "Markdown"
+    ```python
+    from taipy.gui import Gui
 
-text = "Original text"
+    text = "Original text"
 
-page = """
-# Getting started with Taipy GUI
+    page = """
+    # Getting started with Taipy GUI
 
-My text: <|{text}|>
+    My text: <|{text}|>
 
-<|{text}|input|>
-"""
+    <|{text}|input|>
+    """
 
-Gui(page).run(debug=True)
-```
+    Gui(page).run(debug=True)
+    ```
+=== "Python"
+    ```python
+    from taipy.gui import Gui
+    import taipy.gui.builder as tgb
+
+    text = "Original text"
+
+    with tgb.Page() as page:
+        tgb.text("Getting started with Taipy GUI", class_name="h1")
+        tgb.text("My text: {text}")
+
+        tgb.input("{text}")
+
+    Gui(page).run(debug=True)
+    ```
 
 ![Visual Elements](images/result.png){ width=90% : .tp-image-border }

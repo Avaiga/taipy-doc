@@ -22,7 +22,7 @@ Enter a word:
 
 
 <|Table|expandable|
-<|{dataframe}|table|width=100%|number_format=%.2f|>
+<|{dataframe}|table|number_format=%.2f|>
 |>
 |>
 

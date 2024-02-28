@@ -42,6 +42,7 @@ However, if you prefer, you can proceed with the tutorial guide without using th
 ``` console
 $ pip install torch
 $ pip install transformers
+$ pip install scipy
 ```
 
 !!! info
