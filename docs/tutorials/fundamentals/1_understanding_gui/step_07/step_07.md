@@ -251,7 +251,7 @@ Then, let’s create our second page, which contains a page to analyze an entire
                         on_action=analyze_file)
         tgb.text("Downloading {treatment}%...")
 
-        with tgb.expendable("Table"):
+        with tgb.expandable("Table"):
             tgb.table("{dataframe2}")
 
         tgb.chart("{dataframe2}", type="bar", x="Text",

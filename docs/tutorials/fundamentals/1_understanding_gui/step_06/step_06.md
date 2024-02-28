@@ -113,7 +113,7 @@ of columns. Here, we create three columns of the same width.
                 tgb.button("Analyze", on_action=local_callback)
 
             with tgb.expandable("Table"):
-                tgb.table("{dataframe}", width="100%", number_format="%.2f")
+                tgb.table("{dataframe}", number_format="%.2f")
 
         with tgb.layout(columns="1 1 1"):
             with tgb.part():
