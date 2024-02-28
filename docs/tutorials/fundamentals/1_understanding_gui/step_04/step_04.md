@@ -25,6 +25,8 @@ Here is one of the simplest code to create a chart:
     ```
 
 
+Different formats can be passed to a chart element: a list, a Numpy array, or a Pandas Dataframe.
+
 You can also use Plotly Python to create a figure object and inject it in the chart:
 
 === "Markdown"
@@ -54,7 +56,6 @@ You can also use Plotly Python to create a figure object and inject it in the ch
     Gui(page).run()
     ```
 
-Different formats can be passed to a chart element: a list, a Numpy array, or a Pandas Dataframe.
 
 ## Different useful properties
 
