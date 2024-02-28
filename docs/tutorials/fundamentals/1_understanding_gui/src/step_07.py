@@ -76,7 +76,7 @@ path = ""
 treatment = 0
 
 page_file = """
-<|{path}|file_selector|extensions=.txt|label=Upload .txt file|on_action=analyze_file|> <|{f'Downloading {treatment}%...'}|>
+<|{path}|file_selector|extensions=.txt|label=Upload .txt file|on_action=analyze_file|> <|Downloading {treatment}%...|>
 
 <br/>
 
