@@ -33,6 +33,11 @@ Every visual element follows a similar syntax:
     ```python
     tgb.visual_element_name("{variable}", param_1=param_1, param_2=param_2, ...)
     ``` 
+    
+    The inclusion of *variable* within `"{...}"` tells Taipy to show and use the 
+    real-time value of *variable*. Rather than re-executing the entire script, 
+    Taipy intelligently adjusts only the necessary elements of the GUI to reflect 
+    changes, ensuring a responsive and performance-optimized user experience.
 
 For example, a [slider](../../../../manuals/gui/viselements/slider.md) is written this way :
 
