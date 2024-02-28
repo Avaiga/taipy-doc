@@ -24,7 +24,7 @@ Now, we'll talk about two types of data nodes:
 - **Output data nodes**: These are data nodes that help us send data out of our system.
 
 So, data nodes are like helpers for handling data,
-and they come in these two varieties: input and output.
+and they come in these two varieties: *my_input* and *my_output*.
 
 ![data nodes](images/data_notes_2.svg){width=90% : .tp-image }
 
