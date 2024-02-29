@@ -19,15 +19,6 @@ Next to the scenario's label at the top of the control and if the scenario is *p
 cycle, there is an icon showing a flag.<br/>
 On the right side of the label, a 'play' button can trigger the scenario submission.
 
-The user can see the scenario's tags in the 'Tags' section.<br/>
-To add a tag, simply enter some text in the tags area and press 'Enter'. You can create as many
-tags as you want. When you are done, and you want to add those tags to the scenario, press the
-'Apply' button located to the right of the tags area.<br/>
-You can cancel your actions by pressing the 'Cancel' button.
-
-If the scenario has sequences, the user can submit each sequence independently by pressing the
-'play' button to the right of the sequence's label.
-
 The user can click the scenario label to change it:
 <figure class="tp-center">
   <img src="../scenario-edit-label-d.png" class="visible-dark"  width="60%"/>
@@ -37,6 +28,21 @@ The user can click the scenario label to change it:
 
 The user must click the 'check' button to apply the change or the 'cross' button to cancel the
 operation.
+
+The user can see the scenario's tags in the 'Tags' section.<br/>
+To add a tag, enter text in the tags area and press 'Enter'. You can create as many tags as you
+want. When you have created all the tags and want to add those tags to the scenario, press the
+'Apply' button to the right of the tags area.<br/>
+You can cancel your actions by pressing the 'Cancel' button.
+
+The 'Sequences' section presents the potential sequences of the scenario.<br/>
+To add a sequence, press the 'Add +' button. A new sequence is then created, for which you must
+provide a name (note each sequence must have a unique name).<br/>
+To edit a sequence, click anywhere on its row. You can then rename it and select its tasks.<br/>
+To delete a sequence, click the trash icon of its row.
+
+If the scenario has sequences, the user can submit each sequence independently by pressing the
+'Submit' button to the right of the sequence's label.
 
 Users can also add or modify custom properties. Click on an existing property name or value to
 modify it, and the "New Property Key" label or "Value" next to it to create a new custom
