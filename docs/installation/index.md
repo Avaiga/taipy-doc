@@ -10,7 +10,7 @@ powerful web applications.
 
 # Prerequisite
 
-Before installing Taipy, ensure you have Python (**between version 3.8 and 3.12**) and
+Before installing Taipy, ensure you have Python (**version 3.8 or later**) and
 [pip](https://pip.pypa.io) installed on your system. If you don't have pip installed, you can
 follow these steps to install it:
 

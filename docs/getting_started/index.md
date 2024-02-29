@@ -7,12 +7,12 @@ hide:
 Dive into Taipy with this beginner-friendly guide. Learn to install, configure, and create your
 first application with ease.
 
-![GUI Result](images/result.png){width=80% : .tp-image-border }
+![Dynamic Chart Application](images/result.png){width=80% : .tp-image-border }
 
 # Installation with pip
 
-1. **Prerequisites**: Ensure you have Python (**version superior than 3.8**) and
-    [pip](https://pip.pypa.io)installed.
+1. **Prerequisites**: Ensure you have Python (**version 3.8 or later**) and
+    [pip](https://pip.pypa.io) installed.
 
 2. **Installation Command**: Run the following in your terminal or command prompt:
     ``` console
@@ -24,7 +24,7 @@ For alternative installation methods or if you're lacking Python or pip, refer t
 
 # Build a graphical interface
 
-In this section, you'll create a GUI application that includes a slider to adjust a 
+In this section, you'll create an application that includes a slider to adjust a 
 parameter, which in turn affects a data visualization chart. This example 
 demonstrates how Taipy can be used to create interactive and dynamic web 
 applications.
@@ -59,21 +59,8 @@ applications.
 
         data = compute_data(value)
 
-        Gui(page).run(title="Frontend Demo")
-        ```
-
-        Now, let’s explain the key elements of this code:
-
-        ```python
-        page = """
-        # Taipy *Getting Started*
-
-        Value: <|{value}|text|>
-
-        <|{value}|slider|on_change=on_slider|>
-
-        <|{data}|chart|>
-        """
+        if __name__ == "__main__":
+            Gui(page).run(title="Dynamic chart")
         ```
 
     === "Python"
@@ -102,23 +89,11 @@ applications.
 
         data = compute_data(value)
 
-        Gui(page=page).run(title="Frontend Demo")
+        if __name__ == "__main__":
+            Gui(page=page).run(title="Dynamic chart")
         ```
 
-        Now, let’s explain the key elements of this code:
-
-        ```python
-        import taipy as tp
-        import taipy.gui.builder as tgb
-
-
-        with tgb.Page() as page:
-            tgb.text(value="Taipy Getting Started", class_name="h1")
-            tgb.text(value="Value: {value}")
-            tgb.slider(value="{value}", on_change=on_slider)
-            tgb.chart(data="{data}") 
-        ```
-
+Now, let’s explain the key elements of this code:
 
 **Visual elements**
 
@@ -132,10 +107,10 @@ visual element.
 
 In our initial example:
 
-- *value* is bound to a slider and text field, allowing the user’s input to be directly 
+- *value* is bound to a slider and a text, allowing the user’s input to be directly 
 stored in the *value* variable.
-- *data* is created through the *compute_data()* function and reactive to the 
-slider's value. It is viewed in the application as a chart.
+- *data* is created through in *compute_data()* function and is updated depending on the  
+slider's value. It is represented in the application as a chart.
 
 
 ## Interactivity Through Actions
@@ -153,28 +128,28 @@ This state represents a user's connection and is used to read and set variables 
 the user is interacting with the application. It makes it possible for Taipy to handle multiple
 users simultaneously.
 
-*state.value* are specific to the user who interacts with them. This design ensures that each
-user's actions are separate and efficiently controlled, while other variables could be 
-global variables.
+*state.value* is specific to the user who interacts with the application. 
+This design ensures that each user's actions are separate and efficiently 
+controlled, while other variables could be global variables.
 
 ![State illustration](images/state_illustration.png){width=70% : .tp-image-border }
 
 In the *on_slider()* function, the *value* selected by the user on the interface is
-propagated to the *data* variable. The outcome is then viewed inside the chart.
+propagated to the *data* variable. The outcome is then used to update the chart.
 
 ```python
 if __name__ == "__main__":
-    Gui(page=page).run(title="Frontend Demo")
+    Gui(page=page).run(title="Dynamic chart")
 ```
 
-This code starts the GUI, which makes the interface active and functional.
+This code starts the UI server, which makes the interface active and functional.
 
-![GUI Result](images/result.png){width=80% : .tp-image-border }
+![Dynamic Chart Application](images/dynamic_chart.gif){width=70% : .tp-image-border }
 
 ---
 
 For more realistic and advanced use cases, check out our
-[Tutorials](../tutorials/index.md), or [Manuals](../manuals/index.md) pages.
+[Gallery](../gallery/index.md), or [Manuals](../manuals/index.md) pages.
 
 <div class="tp-row tp-row--gutter-sm">
   <div class="tp-col-12 tp-col-md-4 d-flex">
