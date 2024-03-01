@@ -19,7 +19,7 @@ This is the list of changes to Taipy releases as they were published.
 
 # Community edition: 3.1
 
-Published on 2024-02.
+Work in progress.
 
 [`taipy` 3.1](https://pypi.org/project/taipy/3.1.0/) contains the latest
 [`taipy-config` 3.1](https://pypi.org/project/taipy-config/3.1.0/),
@@ -95,7 +95,7 @@ Published on 2024-02.
 
 # Enterprise edition: 3.1
 
-Published on 2024-02.
+Work in progress.
 
 This release contains all of [`taipy` 3.1](https://pypi.org/project/taipy/3.1.0) as well as
 additional features.
