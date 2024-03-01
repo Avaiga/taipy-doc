@@ -82,6 +82,8 @@ This is the list of changes to Taipy releases as they were published.
 
 - The [`toggle`](manuals/gui/viselements/toggle.md) control appears as a switch button if its
   [*value*](manuals/gui/viselements/toggle.md/#p-value) property ... TODO
+- The [`scenario`](manuals/gui/corelements/scenario.md) control lets you add, modify and edit
+  sequences.
 
 <h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
 
