@@ -10,8 +10,20 @@ img: 2_scenario_management_overview/images/screen.png
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Beginner*
 
-By the end of this tutorial, you will have all the bases to create a little application using the
-scenario management of Taipy.
+
+Taipy brings a suite of features to streamline data pipeline orchestration:
+
+- It registers each pipeline execution, enabling users to monitor KPIs over time 
+and benchmark different runs providing *what-if* scenarios.
+- Taipy includes ready-to-use UI components for pipeline interaction—allowing for the 
+selection of inputs and parameters, execution and tracking of pipelines, and 
+visualization of results.
+- Taipy efficiently manages computations, avoiding unnecessary reruns of unchanged data.
+- Taipy easily integrates with most popular data sources.
+- It supports concurrent computing, enhancing processing speed and scalability.
+
+By the end of this tutorial, you'll have a solid foundation to develop a simple 
+application leveraging Taipy's scenario management capabilities.
 
 ![Scenario management demo](images/demo.gif){ width=90% : .tp-image-border }
 
@@ -60,7 +72,7 @@ date. It uses these to generate a prediction for that date.
 See the code for this function below:
 
 ```python
-def predict(historical_temperature: pd.DataFrame, date_to_forecast: str) -> float:
+def predict(historical_temperature: pd.DataFrame, date_to_forecast: dt.datetime) -> float:
     print(f"Running baseline...")
     historical_temperature['Date'] = pd.to_datetime(historical_temperature['Date'])
     historical_same_day = historical_temperature.loc[
@@ -189,6 +201,7 @@ def save(state):
     # write values of Data Node to submit scenario
     state.scenario.historical_temperature.write(data)
     state.scenario.date_to_forecast.write(state.date)
+    state.refresh('scenario')
     tp.gui.notify(state, "s", "Saved! Ready to submit")
 
 date = None
@@ -229,7 +242,7 @@ data = pd.read_csv("https://raw.githubusercontent.com/Avaiga/taipy-getting-start
 
 
 # Normal function used by Taipy
-def predict(historical_temperature: pd.DataFrame, date_to_forecast: str) -> float:
+def predict(historical_temperature: pd.DataFrame, date_to_forecast: dt.datetime) -> float:
     print(f"Running baseline...")
     historical_temperature['Date'] = pd.to_datetime(historical_temperature['Date'])
     historical_same_day = historical_temperature.loc[

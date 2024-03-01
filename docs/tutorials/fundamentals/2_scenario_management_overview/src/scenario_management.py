@@ -8,7 +8,7 @@ data = pd.read_csv("https://raw.githubusercontent.com/Avaiga/taipy-getting-start
 
 
 # Normal function used by Taipy
-def predict(historical_temperature: pd.DataFrame, date_to_forecast: str) -> float:
+def predict(historical_temperature: pd.DataFrame, date_to_forecast: dt.datetime) -> float:
     print(f"Running baseline...")
     historical_temperature['Date'] = pd.to_datetime(historical_temperature['Date'])
     historical_same_day = historical_temperature.loc[
@@ -49,6 +49,7 @@ if __name__ == '__main__':
     def save(state):
         state.scenario.historical_temperature.write(data)
         state.scenario.date_to_forecast.write(state.date)
+        state.refresh('scenario')
         tp.gui.notify(state, "s", "Saved! Ready to submit")
 
     date = None
@@ -63,7 +64,7 @@ Run the scenario
 <|{scenario}|scenario_dag|>
 
 View all the information on your prediction here
-<|{scenario.predictions if scenario else None}|data_node|>
+<|{scenario.predictions}|data_node|>
 """
 
     tp.Gui(scenario_md).run()
