@@ -6,10 +6,8 @@ short-description: Learn how to give your end-users the power of managing multip
 img: 2_scenario_management_overview/images/screen.png
 ---
 
-[Download the code](./src/scenario_management.zip){: .tp-btn target='blank' }
 
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Beginner*
-
 
 Taipy brings a suite of features to streamline data pipeline orchestration:
 
@@ -21,6 +19,8 @@ visualization of results.
 - Taipy efficiently manages computations, avoiding unnecessary reruns of unchanged data.
 - Taipy easily integrates with most popular data sources.
 - It supports concurrent computing, enhancing processing speed and scalability.
+
+[Download the code](./src/scenario_management.zip){: .tp-btn target='blank' }
 
 By the end of this tutorial, you'll have a solid foundation to develop a simple 
 application leveraging Taipy's scenario management capabilities.
