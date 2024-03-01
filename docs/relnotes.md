@@ -45,8 +45,10 @@ This is the list of changes to Taipy releases as they were published.
   the [section on the *figure* property](manuals/gui/viselements/chart.md#the-figure-property) for
   more information.
 - User content in [`part`](manuals/gui/viselements/part.md). TODO
-- A new control called [`date_selector`] is available if you need to represent and edit date
-  ranges in your application pages.
+- A new control called [`date_range`](manuals/gui/viselements/date_range.md) is available if
+  you need to represent and edit date ranges in your application pages.
+- A new control called [`login`](manuals/gui/viselements/login.md) is available if you need users
+  to authenticate in your application.
 
 <h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
 
