@@ -42,10 +42,15 @@ if __name__ == "__main__":
     date = None
     scenario_md = """
 <|{scenario}|scenario_selector|>
+
+Select a Date
 <|{date}|date|on_change=save|active={scenario}|>
+
+Run the scenario
 <|{scenario}|scenario|>
 <|{scenario}|scenario_dag|>
 
+View all the information on your prediction here
 <|{scenario.predictions}|data_node|>
 """
 

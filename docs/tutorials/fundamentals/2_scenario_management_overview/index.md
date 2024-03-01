@@ -208,7 +208,7 @@ date = None
 scenario_md = """
 <|{scenario}|scenario_selector|>
 
-Put a Date
+Select a Date
 <|{date}|date|on_change=save|active={scenario}|>
 
 Run the scenario
@@ -216,7 +216,7 @@ Run the scenario
 <|{scenario}|scenario_dag|>
 
 View all the information on your prediction here
-<|{scenario.predictions if scenario else None}|data_node|>
+<|{scenario.predictions}|data_node|>
 """
 
 tp.Gui(scenario_md).run()
@@ -282,13 +282,14 @@ if __name__ == '__main__':
     def save(state):
         state.scenario.historical_temperature.write(data)
         state.scenario.date_to_forecast.write(state.date)
+        state.refresh('scenario')
         tp.gui.notify(state, "s", "Saved! Ready to submit")
 
     date = None
     scenario_md = """
 <|{scenario}|scenario_selector|>
 
-Put a Date
+Select a Date
 <|{date}|date|on_change=save|active={scenario}|>
 
 Run the scenario
@@ -296,7 +297,7 @@ Run the scenario
 <|{scenario}|scenario_dag|>
 
 View all the information on your prediction here
-<|{scenario.predictions if scenario else None}|data_node|>
+<|{scenario.predictions}|data_node|>
 """
 
     tp.Gui(scenario_md).run()
