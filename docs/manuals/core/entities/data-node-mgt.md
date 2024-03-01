@@ -1154,7 +1154,7 @@ Correspondingly, In memory data node can write any data object that is valid dat
     (See [Job configuration](../config/job-config.md#standalone) for more details).
 
 
-# Append new data to a data node
+# Append
 
 To append new data to the data node, you can use the `DataNode.append()^` method. The method takes
 a data object (string, dictionary, lists, NumPy arrays, Pandas dataframes, etc. based on the data
@@ -1578,7 +1578,7 @@ defined by _**custom_document**_ as the input.
     data_node.append(data)
     ```
 
-# Filter read results
+# Filter
 
 It is also possible to partially read the contents of data nodes, which comes in handy when dealing
 with large amounts of data.
