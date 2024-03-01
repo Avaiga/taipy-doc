@@ -154,16 +154,16 @@ Published on 2023-10.
 - A new class `Submittable^` models entities that can be submitted for execution.
   It is an Abstract class instantiated by `Scenario^` and `Sequence^`.
   It can be handy to use the new following `Submittable^` methods:
-  * `Submittable.get_inputs()^` retrieves input data nodes of a `Submittable` entity;
-  * `Submittable.get_outputs()^` retrieves output data nodes of a `Submittable` entity;
-  * `Submittable.get_intermediate()^` retrieves intermediate data nodes of a `Submittable`
-    entity;
-  * `Submittable.is_ready_to_run()^` checks if an entity is ready to be run;
-  * `Submittable.data_nodes_being_edited()^` retrieves data nodes that are being edited
-      of a `Submittable^` entity.
+    * `Submittable.get_inputs()^` retrieves input data nodes of a `Submittable` entity;
+    * `Submittable.get_outputs()^` retrieves output data nodes of a `Submittable` entity;
+    * `Submittable.get_intermediate()^` retrieves intermediate data nodes of a `Submittable`
+        entity;
+    * `Submittable.is_ready_to_run()^` checks if an entity is ready to be run;
+    * `Submittable.data_nodes_being_edited()^` retrieves data nodes that are being edited
+        of a `Submittable^` entity.
 - New functions exposed by the `taipy` module:
-  * `taipy.is_deletable()^` checks if an entity can be deleted;
-  * `taipy.exists()^` checks if an entity exists.
+    * `taipy.is_deletable()^` checks if an entity can be deleted;
+    * `taipy.exists()^` checks if an entity exists.
 - The encoding type of CSVDataNode and JSONDataNode can now be configured using the
   *encoding* parameter. For more information, please refer to
   [Configure a CSVDataNode](./manuals/core/config/data-node-config.md#csv)
@@ -181,17 +181,17 @@ Published on 2023-10.
 <h4><strong><code>taipy-gui</code></strong> 3.0.0</h4>
 
 - :warning: The *action* parameter of the `on_action` callback was removed for every control.<br/>
-  The signature of all *on_action()* callback functions are now unified to the following:
-  - *state* (`State^`): the state of the client invoking that callback;
-  - *id* (str): the identifier of the visual element that triggers that callback;
-  - *payload* (dict): a dictionary that provides additional information to the callback.<br/>
-    This dictionary now has the additional *action* key that is set to the action name.
-    This change not only impact the *on_action* callback of all controls that support it,
-    but in an exactly similar manner the following callback signatures:
-    - *on_range_change* in the [`chart`](manuals/gui/viselements/chart.md) control;
-    - *on_edit*, *on_add*, and *on_delete* in the [`table`](manuals/gui/viselements/table.md)
-      control;
-    - *on_close* in the [`pane`](manuals/gui/viselements/pane.md) block.
+    The signature of all *on_action()* callback functions are now unified to the following:
+    - *state* (`State^`): the state of the client invoking that callback;
+    - *id* (str): the identifier of the visual element that triggers that callback;
+    - *payload* (dict): a dictionary that provides additional information to the callback.<br/>
+      This dictionary now has the additional *action* key that is set to the action name.
+      This change not only impact the *on_action* callback of all controls that support it,
+      but in an exactly similar manner the following callback signatures:
+        - *on_range_change* in the [`chart`](manuals/gui/viselements/chart.md) control;
+        - *on_edit*, *on_add*, and *on_delete* in the [`table`](manuals/gui/viselements/table.md)
+          control;
+        - *on_close* in the [`pane`](manuals/gui/viselements/pane.md) block.
 - The `navigate()^` function has an additional parameter *params* that is used to add query
   parameters to the requested URL. The query parameters can be retrieved in the `on_navigate`
   callback.
@@ -271,8 +271,8 @@ Published on 2023-10.
   deselected.<br/>
   See [issue #917](https://github.com/Avaiga/taipy-gui/issues/917).
 - The [`table`](manuals/gui/viselements/toggle.md) control does not support undefined date values
-  from Pandas data frames.<br/>
-  See [issue #886](https://github.com/Avaiga/taipy-gui/issues/886).
+    from Pandas data frames.<br/>
+    See [issue #886](https://github.com/Avaiga/taipy-gui/issues/886).
 
 <h4><strong><code>taipy-core</code></strong> 3.0.0</h4>
 
