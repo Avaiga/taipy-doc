@@ -8,14 +8,14 @@ data = pd.read_csv("https://raw.githubusercontent.com/Avaiga/taipy-getting-start
 
 
 # Normal function used by Taipy
-def predict(historical_temperature: pd.DataFrame, date_to_forecast: str) -> float:
+def predict(historical_temperature: pd.DataFrame, date_to_forecast: dt.datetime) -> float:
     print(f"Running baseline...")
-    historical_temperature['Date'] = pd.to_datetime(historical_temperature['Date'])
+    historical_temperature["Date"] = pd.to_datetime(historical_temperature["Date"])
     historical_same_day = historical_temperature.loc[
-        (historical_temperature['Date'].dt.day == date_to_forecast.day) &
-        (historical_temperature['Date'].dt.month == date_to_forecast.month)
+        (historical_temperature["Date"].dt.day == date_to_forecast.day) &
+        (historical_temperature["Date"].dt.month == date_to_forecast.month)
     ]
-    return historical_same_day['Temp'].mean()
+    return historical_same_day["Temp"].mean()
 
 # Configuration of Data Nodes
 historical_temperature_cfg = Config.configure_data_node("historical_temperature")
@@ -32,9 +32,9 @@ predictions_cfg = Config.configure_task("predict",
 scenario_cfg = Config.configure_scenario(id="my_scenario", 
                                                     task_configs=[predictions_cfg])
 
-Config.export('config.toml')
+Config.export("config.toml")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Run of the Core
     tp.Core().run()
 
@@ -49,13 +49,14 @@ if __name__ == '__main__':
     def save(state):
         state.scenario.historical_temperature.write(data)
         state.scenario.date_to_forecast.write(state.date)
+        state.refresh("scenario")
         tp.gui.notify(state, "s", "Saved! Ready to submit")
 
     date = None
     scenario_md = """
 <|{scenario}|scenario_selector|>
 
-Put a Date
+Select a Date
 <|{date}|date|on_change=save|active={scenario}|>
 
 Run the scenario
@@ -63,7 +64,7 @@ Run the scenario
 <|{scenario}|scenario_dag|>
 
 View all the information on your prediction here
-<|{scenario.predictions if scenario else None}|data_node|>
+<|{scenario.predictions}|data_node|>
 """
 
     tp.Gui(scenario_md).run()
