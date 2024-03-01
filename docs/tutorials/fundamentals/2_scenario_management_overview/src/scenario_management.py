@@ -23,14 +23,14 @@ date_to_forecast_cfg = Config.configure_data_node("date_to_forecast")
 predictions_cfg = Config.configure_data_node("predictions")
 
 # Configuration of tasks
-predictions_cfg = Config.configure_task("predict",
+task_predict_cfg = Config.configure_task("predict",
                                         predict,
                                         [historical_temperature_cfg, date_to_forecast_cfg],
                                         predictions_cfg)
 
 # Configuration of scenario
 scenario_cfg = Config.configure_scenario(id="my_scenario", 
-                                                    task_configs=[predictions_cfg])
+                                         task_configs=[task_predict_cfg])
 
 Config.export("config.toml")
 

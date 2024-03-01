@@ -103,13 +103,14 @@ Three Data Nodes are being configured (**historical_temperature**, **date_to_for
         predictions_cfg = Config.configure_data_node("predictions")
 
         # Configuration of tasks
-        predict_cfg = Config.configure_task(id="predict",
+        task_predict_cfg = Config.configure_task(id="predict",
                                             function=predict,
                                             input=[historical_temperature_cfg, date_to_forecast_cfg],
                                             output=predictions_cfg)
 
         # Configuration of scenario
-        scenario_cfg = Config.configure_scenario(id="my_scenario", task_configs=[predict_cfg])
+        scenario_cfg = Config.configure_scenario(id="my_scenario",
+                                                 task_configs=[task_predict_cfg])
         ```
 
     === "Using Taipy Studio"
