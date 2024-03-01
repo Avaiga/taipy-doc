@@ -21,7 +21,7 @@ COPY . /app
 RUN pip install -r requirements.txt
 
 # Start up command
-CMD python main.py
+CMD python main.py -P 5000 -H 0.0.0.0 --debug
 ```
 
 !!! note
