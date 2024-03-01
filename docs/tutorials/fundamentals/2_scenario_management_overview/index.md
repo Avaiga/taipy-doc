@@ -12,7 +12,7 @@ img: 2_scenario_management_overview/images/screen.png
 Taipy brings a suite of features to streamline data pipeline orchestration:
 
 - It registers each pipeline execution, enabling users to monitor KPIs over time 
-and benchmark different runs providing *what-if* scenarios.
+and benchmark different runs, providing *what-if* scenarios.
 - Taipy includes ready-to-use UI components for pipeline interaction—allowing for the 
 selection of inputs and parameters, execution and tracking of pipelines, and 
 visualization of results.
