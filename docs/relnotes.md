@@ -52,24 +52,23 @@ This is the list of changes to Taipy releases as they were published.
 
 - The `DataNode.filter()^` method and the indexing/filtering style now also support filtering a
   Numpy array, a list of objects, and a list of dictionaries.<br/>
-  For more information, refer to
-  [Filter data node](./manuals/core/entities/data-node-mgt.md#filter-read-results).
+  For more information, please refer to
+  [Filter a data node](./manuals/core/entities/data-node-mgt.md#filter).
 - You can now append new data to a data node using the `DataNode.append()^` method. The method is
   available for `CSVDataNode`, `ExcelDataNode`, `JSONDataNode`, `ParquetDataNode`, `SQLDataNode`,
   `SQLTableDataNode`, and `MongoCollectionDataNode`.<br/>
-  For more information, refer to
-  [Append new data to a data node](./manuals/core/entities/data-node-mgt.md#append-new-data-to-a-data-node).
-- A new class called `Submission^` was added. It holds the meta-data (such as its status or
-  submission date) of all entities that are submitted: `Scenario^`, `Sequence^`, and
-  `Task^`.<br/>
-  The function `taipy.get_latest_submission()^` was also added to retrieve the last submitted
-  entity. For more information, refer to [TODO]().
+  For more information, please refer to
+  [Append a data node](./manuals/core/entities/data-node-mgt.md#append).
+- A new class called `Submission^` holds meta-data (such as its status or
+  submission date) related to a submitted entity: `Scenario^`, `Sequence^`, and/or `Task^`.<br/>
+  The function `taipy.get_latest_submission()^` returns the last submission of a given entity.<br/>
+  For more information, please refer to
+  [Submission](./manuals/core/entities/orchestrating-and-job-execution.md#submission).
 - `taipy.submit()^`, `Scenario.submit()^`, `Sequence.submit()^`, and `Task.submit()^` now return a
   `Submission^` entity.
-- The `modin` exposed type as been deprecated. When used, a fallback on Pandas is applied.<br/>
-  For more information, refer to [issue #631](https://github.com/Avaiga/taipy/issues/631).
-- New S3DataNode.<br/>
-  For more information, refer to [TODO]().
+- A New predefined data node named `S3ObjectDataNode^` has been implemented.<br/>
+  For more information, please refer to
+  [S3ObjectDataNode](./manuals/core/config/data-node-config.md#amazon-web-service-s3-object).
 
 ## Improvements and changes
 
@@ -77,28 +76,34 @@ This is the list of changes to Taipy releases as they were published.
 
 - Task nodes in the [`scenario_dag`](manuals/gui/corelements/scenario_dag.md) control dynamically
   reflect the status of related jobs for the user that submitted scenarios or sequences. TODO
+- The [`scenario`](manuals/gui/corelements/scenario.md) control lets you add, modify and edit
+  sequences.
 
 <h4><strong><code>taipy-gui</code></strong> 3.1.0</h4>
 
 - The [`toggle`](manuals/gui/viselements/toggle.md) control appears as a switch button if its
-  [*value*](manuals/gui/viselements/toggle.md/#p-value) property ... TODO
-- The [`scenario`](manuals/gui/corelements/scenario.md) control lets you add, modify and edit
-  sequences.
+  [*value*](manuals/gui/viselements/toggle.md#p-value) property ... TODO
 
 <h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
 
-- Running the Core service more than one time will raise an exception to prevent multiple instances
-  of the Core service to run at the same time.
+- The `modin` exposed type as been deprecated. When used, a fallback on Pandas is applied.<br/>
+  See [issue #631](https://github.com/Avaiga/taipy/issues/631) for details.
+- Running twice the Core service raises an exception to prevent running multiple instances
+  at the same time.
 - Running the Core service or creating an entity by `taipy.create_scenario()` or
-  `taipy.create_global_data_node()` will block the Configuration from being modified.
+  `taipy.create_global_data_node()` blocks the Configuration from being modified.
 
-## Significant bug fixes
+# Enterprise edition: 3.1
 
-<h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
+(Work in progress - the following link is invalid for the time being)
 
-- Can not write to a SQLDataNode or a SQLTableDataNode using examples provided by the
-  documentation.<br/>
-  See [issue #816](https://github.com/Avaiga/taipy-core/issues/816).
+This release contains all of [`taipy` 3.1](https://pypi.org/project/taipy/3.1.0) as well as
+additional features.
+
+## New Features
+
+- A new job execution mode named *cluster mode* is available. It enables to run the jobs
+  on a cluster of dedicated machines in a remote, distributed and scalable environment.
 
 # Community edition: 3.0
 
@@ -125,8 +130,7 @@ Published on 2023-10.
   information.
 - The [`file_download`](manuals/gui/viselements/file_download.md) control now lets developers
   generate the file content dynamically, at download time.<br/>
-  Please check the [example](manuals/gui/viselements/file_download.md#dynamic-content) for more
-  information.
+  Please check the [example](manuals/gui/viselements/file_download.md#dynamic-content) for more information.
 - A new CSS class called *toggle-navbar* was added to the
   [Stylekit](manuals/gui/styling/stylekit.md) to give a
   [`toggle`](manuals/gui/viselements/toggle.md) control the aspect of a
@@ -184,10 +188,10 @@ Published on 2023-10.
       This dictionary now has the additional *action* key that is set to the action name.
       This change not only impact the *on_action* callback of all controls that support it,
       but in an exactly similar manner the following callback signatures:
-         - *on_range_change* in the [`chart`](manuals/gui/viselements/chart.md) control;
-         - *on_edit*, *on_add*, and *on_delete* in the [`table`](manuals/gui/viselements/table.md)
-           control;
-         - *on_close* in the [`pane`](manuals/gui/viselements/pane.md) block.
+        - *on_range_change* in the [`chart`](manuals/gui/viselements/chart.md) control;
+        - *on_edit*, *on_add*, and *on_delete* in the [`table`](manuals/gui/viselements/table.md)
+          control;
+        - *on_close* in the [`pane`](manuals/gui/viselements/pane.md) block.
 - The `navigate()^` function has an additional parameter *params* that is used to add query
   parameters to the requested URL. The query parameters can be retrieved in the `on_navigate`
   callback.
