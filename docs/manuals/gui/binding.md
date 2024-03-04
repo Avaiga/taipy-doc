@@ -31,8 +31,8 @@ In the [example code above](#first-example), you could replace `<|{x}|>` by `<|{
 and the double of *x* will be displayed on your page.
 
 !!! note "Arbitrary expressions"
-    You can create complex expressions such as `|{x} and {y}|` to concatenate
-    two variable values, or whatever your imagination and application requirements are.
+    You can create complex expressions such as `|{x} and {y}|` (using the Markdown syntax) to
+    concatenate two variable values, or whatever your imagination and application requirements are.
 
 !!! note "Formatting"
     F-string formatting is also available in property value expressions:
@@ -55,7 +55,7 @@ The bound variable (*x*) is defined in the same, unique module.
 
 In larger applications, we may want to create Python modules that hold
 Taipy pages, binding visual elements to local variables. That allows for
-a clearer organization of the code, where application variables used in
+a clearer code organization, where application variables used in
 only a few pages can sit next to the page definition.
 
 When Taipy finds a variable in a page (that is, in a Python expression set to
@@ -68,22 +68,22 @@ where the page is defined, then the main module.
 
 !!! note "Defining a page scope"
     A page scope, where variables used in a page definition are searched, is the module
-    where the page *instance* (an instance of the `Markdown^` or the `Html^` classes),
-    **not** the text of the page.
+    where the page *instance* (an instance of the `Markdown^`, `Html^` or
+    `(taipy.)gui.builder.Page^` classes), **not** the text of the page.
 
 This mechanism allows pages to bind to local variables declared on their own module.
 These variables may not be exposed to other modules of the application.<br/>
 Global variables (the ones declared in the *\_\_main\_\_* module), on the other hand, can
 be used in all page content definitions. The module where the page is defined does not need
-to import the global variables if they are not used in the Python code of the module.
+to import the global variables if they are not used in the Python code for that module.
 
 !!! example "Example"
     Say you want to create a page that represents some evaluation of an expression using two
-    variables. The first variable would be global for the application. But the second variable
+    variables. The first variable would be global for the application. But, the second variable
     does not need to be exposed to the rest of the application, so we store it as a local
     variable in the module where the page is defined.<br/>
-    We create a *pages* package, where we can create the file `page.py`, which is the module file
-    where the page would be declared:
+    We create a *pages* package. In this package we create the file `page.py`, which is the module
+    file where we would declare the page:
 
     ```python linenums="1"  title="pages/page.py"
     from taipy.gui import Markdown
@@ -100,9 +100,9 @@ to import the global variables if they are not used in the Python code of the mo
     The page also references the variable *local_value* (line 7), defined locally in
     this module.
 
-    Now let's create the main module of the application, adding a home page, and reusing
-    the page that we just created above. That would be done in the file `main.py`,
-    defining the *\_\_main\_\_* module of our application:
+    Now, let's create the main module of the application, add a home page, and reuse
+    the page we just created above. That would be done in the file `main.py`, defining the
+    *\_\_main\_\_* module of our application:
 
     ```python  linenums="1" title="main.py"
     from taipy.gui import Gui, Markdown
@@ -440,11 +440,11 @@ directly in the definition of the properties of your control.
 
 This is how Taipy internally stores the tabular data:
 
-- If the data is a dictionary, Taipy creates a DataFrame directly from it.
-- If the data is a list of scalar values, Taipy creates a DataFrame with a single
+- If the data is a dictionary, Taipy creates a Pandas DataFrame directly from it.
+- If the data is a list of scalar values, Taipy creates a Pandas DataFrame with a single
   column called '0'.
 - If the data is a list of lists:
-  - If all the lists have the same length, then Taipy creates a DataFrame with
+  - If all the lists have the same length, then Taipy creates a Pandas DataFrame with
     one column for each list, in the order of the list data.
     The column names are the list index.
   - If the lengths of the lists differ, Taipy creates an internal list of
@@ -462,8 +462,8 @@ This is how Taipy internally stores the tabular data:
 
     To select a column for a control, you must provide the name of this column,
     prefixed with the index of the data and a slash character.<br/>
-    For example, suppose your data set is defined with the following Python code:
-    ```py
+    For example, suppose you have defined a data set with the following Python code:
+    ```python
     dataframe_1 = pd.DataFrame({'x': [i for i in range(10)],
                                 'y': [i for i in range(10)]} )
     dataframe_2 = pd.DataFrame({'x': [i for i in range(10)],
@@ -471,7 +471,7 @@ This is how Taipy internally stores the tabular data:
     data = [ dataframe_1, dataframe_2 ]
     ```
     In controls that are bound to *data*, the name of the 'y' column of the second
-    DataFrame must be the string "1/y" .
+    DataFrame must be the string "1/y".
 
 # Lambda expressions
 
@@ -489,9 +489,9 @@ callback function.
 Because Python prevents any assignment from being performed in the body of a lambda
 expression, you cannot update the *state* object directly. However, the `State^`
 class exposes the method `(State.)assign()^` that allows working around
-that limitation. Here is how you can change the value of the variable *toggle*
-directly from the Markdown definition of your page, within the body of the
-definition of a button:
+that limitation.<br/>
+Here is how you can change the value of the variable *toggle* directly from the Markdown definition
+of your page, within the body of the definition of a button:
 ```
 <|Toggle|button|on_action={lambda state: s.assign("toggle", not state.toggle)}|>
 ```

@@ -1,12 +1,20 @@
 Displays data sets in a chart or a group of charts.
 
 The chart control is based on the [plotly.js](https://plotly.com/javascript/)
-graphs library.
-
+graphs library.<br/>
 Plotly is a graphing library that provides a vast number of visual
 representations of datasets with all sorts of customization capabilities. Taipy
 exposes the Plotly components through the `chart` control and heavily depends on
 the underlying implementation.
+
+!!! tip "Using the Python API for Plotly"
+
+    You may be familiar with the
+    [Plotly Open Source Graphing Library for Python](https://plotly.com/python/) or find a piece of
+    code written in Python that produces a Plotly chart close to your objective. In this
+    situation, consider using the [*figure*](#p-figure) property of the chart control: this property
+    lets you define your chart entirely in Python using Plotly's API.<br/>
+    Please read the [section of the *figure* property](#the-figure-property) for more information.
 
 There are many types of data representation that one can choose from, listed in the
 [Chart types catalog](#chart-types-catalog) section, and each of these utilize specific

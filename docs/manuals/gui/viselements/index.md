@@ -33,8 +33,7 @@ Every element type has a default property name that holds its 'main'
 representation: a string for a text element, an array for a selector, or
 a numerical value for a slider.
 
-To set the value for this property, the short syntax for the visual
-element syntax can be used.
+To set the value for this property, the short syntax for the visual element syntax can be used.
 
 ## Property value
 
@@ -57,10 +56,12 @@ names defined in the code, and the value of the property is set to the evaluated
 
 # Syntax
 
-You create visual elements using either a specific Markdown syntax (see the
-`Markdown^` class) or specific HTML tags (see the `Html^` class).
+Depending on the technique you have used to create your application pages (see the section on
+[Page](../pages/index.md)), visual elements are created with specific syntaxes:
 
 ## Markdown
+
+This applies when the page is defined using [Markdown](../pages/markdown.md).
 
 The basic syntax for creating Taipy constructs in Markdown is: `<|...|...|>` (opening with a
 *less than* character followed by a vertical bar character &#151; sometimes called
@@ -103,10 +104,10 @@ fragment similar to:
 ```
 
 !!! note "Multiple properties"
-    You can have as many property name-property value pairs as needed, and all of the space
+    You can have as many property name-property value pairs as needed and all of the space
     characters of the property value part *are* significant:<br/>
     The fragment `<|Content |text|>` will be displayed as the string "Content" followed by a
-    space character, because it is part of the property value (in this case, the *default*
+    space character because it is part of the property value (in this case, the *default*
     property value, which is the property called *value* for the [`text`](text.md) control)
 
 !!! note "Shortcut for Boolean properties"
@@ -205,7 +206,7 @@ fragment similar to:
     ```
 
     Prefixing a Boolean property name with "no&blank;", "not&blank;", "don't&blank;" or
-    "dont&blank;" and not setting the propery value is equivalent to setting that property to
+    "dont&blank;" and not setting the property value is equivalent to setting that property to
     False:
     ```
     <|button|active=False|>
@@ -220,6 +221,8 @@ are described in their respective documentation section. The most obvious except
 [`text`](text.md) control, which can be created without even mentioning its type.
 
 ## HTML
+
+This applies when the page is defined using [HTML](../pages/html.md).
 
 If you choose to embed Taipy visual elements into existing HTML pages, you can use the
 following syntax:
@@ -262,6 +265,17 @@ is equivalent to
       Note that the paragraph above indicates that one can specify no value for a property,
       resulting in setting it to 'true', which does respect the HTML specification:
       `<taipy:e bool_attr/>` is equivalent to `<taipy:e bool_attr="true"/>`.
+
+## Page Builder API
+
+If you use Python code to create pages, the
+[Page Builder](../../reference/pkg_taipy.gui.builder.md) package provides the API for all the
+available visual elements.
+
+To set a property to a value, you will use the property name as a named parameter to the element's
+API.<br/>
+Note that to bind variables to an element's property, you must set that property to a string
+defining an expression referencing the variables.
 
 # Generic properties
 

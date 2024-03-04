@@ -55,4 +55,4 @@ def on_login(state: State, id, login_args):
 ```
 
 If the user closes the control, the application opens the *anonymous* page.<br/>
-Otherwise, the _authenticated_* page opens, and the *state* has stored the username.
+Otherwise, the *authenticated* page opens, and the *state* has stored the username.

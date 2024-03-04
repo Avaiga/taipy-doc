@@ -31,12 +31,14 @@ would have planted placeholders that will display application data. The applicat
 then see and interact with the application. We call these representative and interactive objects:
 *visual elements*.
 
-To describe the content of pages, Taipy comes the support for two template formats, handled by the
-classes `Markdown^` and `Html^`.
+To describe the content of pages, Taipy comes with support for three different mechanisms: there are
+two template formats, handled by the classes `Markdown^` and `Html^`, and a pure Python way of
+creating pages using the `(taipy.)gui.builder.Page^` class. This is described in the
+[Pages](pages/index.md) section.
 
-The basic principle is that you create pages as you need them, give them a name
-so you can indicate to your browser how to access these pages, and provide these pages to
-the `Gui^` instance used in your application.
+The basic principle is that you create pages as needed, give them a name to indicate to your browser
+how to access these pages, and provide these pages to the `Gui^` instance used in your
+application.
 
 When you invoke the `(Gui.)run()^` method of the `Gui^`, a web server is
 started and allows web clients to connect to it then request pages. This is
