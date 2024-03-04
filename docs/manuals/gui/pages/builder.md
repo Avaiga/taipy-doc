@@ -1,22 +1,26 @@
+---
+title: The Page Builder API
+---
+
 The Page Builder API is a set of classes located in the
-[`taipy.gui.builder`](../reference/pkg_taipy.gui.builder.md) package that lets users
+[`taipy.gui.builder`](../../reference/pkg_taipy.gui.builder.md) package that lets users
 create Taipy GUI pages entirely from Python code.
 
 This package contains a class for every visual element available in Taipy, including those
-defined in [extension libraries](extension/index.md).
+defined in [extension libraries](../extension/index.md).
 
 To access the Page Builder classes, you must import the
-[`taipy.gui.builder`](../reference/pkg_taipy.gui.builder.md) package in your script.
+[`taipy.gui.builder`](../../reference/pkg_taipy.gui.builder.md) package in your script.
 
 # Generating a new page
 
 To create a new page, you must call the `(taipy.gui.builder.)Page^` constructor. This
-object not only represents a page, but is also a
+object not only represents a page but is also a
 [Python context manager](https://docs.python.org/3/library/contextlib.html): You will create the
 elements this page holds within the `with` block.
 
 Here is an example of how to create a page using the Page Builder:
-```py
+```python
 from taipy.gui import Gui
 import taipy.gui.builder as tgb
 
@@ -33,13 +37,13 @@ Then, the page is added to the `Gui` instance, as it would be done for any other
 # Adding elements
 
 Creating the element classes within a Page context is enough to add them to the page:
-```py
+```python
 with tgb.Page() as page:
     tgb.input()
 ```
 
-In this example, we add an empty [`input`](viselements/input.md) control by creating a new instance
-of the `(builder.)input^` class.<br/>
+In this example, we add an empty [`input`](../viselements/input.md) control by creating a new
+instance of the `(builder.)input^` class.<br/>
 When run, the application would show a page looking like this:
 <figure>
     <img src="../tgb-1-d.png" class="visible-dark" />
@@ -49,7 +53,7 @@ When run, the application would show a page looking like this:
 
 Note that elements can also be added to a page using the `(builder.)Page.add()^` method.<br/>
 The code above could have been written as:
-```py
+```python
 page = tgb.Page()
 page.add(tgb.input())
 ```
@@ -58,7 +62,7 @@ page.add(tgb.input())
 
 Let's now add another element and set the element properties to achieve something more
 significant:
-```
+```python
 with tgb.Page() as page:
     tgb.html("p", "User information:")
     tgb.input("John", label="First name")
@@ -68,7 +72,7 @@ The `html^` element lets us add a label to the page showing the text content of 
 `<p>` tag.
 
 This code could have been written differently for an identical result:
-```py
+```python
 page = tgb.Page()
 page.add(tgb.html("p", "User information:")).add(tgb.input("John", label="First name"))
 ```
@@ -77,11 +81,11 @@ Note how, in the `input^` control, we use the property names of the control as p
 class constructor.
 <br/>
 The first parameter is set to the element's default property. Because *value* is the default
-property for the [`input`](viselements/input.md) control, we could have built the control using:
-```py
+property for the [`input`](../viselements/input.md) control, we could have built the control using:
+```python
     tgb.input(label="First name", value="John")
 ```
-And the result would be exactly identical.
+And the result would be identical.
 
 Now, here is what the page looks like after those changes:
 <figure>
@@ -94,7 +98,7 @@ The `html^` element can also be set specific properties. The name and values of 
 must be valid from the HTML standard standpoint.
 
 Here is how we could modify the creation of the `html` element by changing its style:
-```
+```python
     tgb.html("p", "User information:", style="font-weight:bold;")
 ```
 
@@ -116,7 +120,7 @@ that contains a Python expression that depends on the variables.
 Here is how we would use a Python variable to hold the text handled in the `input` control we
 have used so far.<br/>
 The new code looks like this:
-```py
+```python
 first_name="John"
 
 with tgb.Page() as page:
@@ -126,12 +130,28 @@ with tgb.Page() as page:
 
 And the result is identical to what was shown above.
 
+!!! warning "Expression vs. value"
+    Note that you **can not** bind a variable by setting the property to the variable value, as in:
+    ```python
+       ...
+       tgb.input(first_name, label="First name")
+    ```
+    This code would indeed set the value of the default property of the `input` control to the value
+    of *first_name*. The control would correctly display the content of the string.<br/>
+    However, because Python passes the information *by value*, Taipy loses the reference to the
+    variable *first_name*, and there is no binding.<br/>
+    Note that although we could trick Python and perform the binding anyway, doing this would
+    change the semantics of the Python language, which is certainly not what we want to achieve.
+
+    To bind elements to variables, you *must* use a string that contains an expression that
+    references those variables.
+
 # Using blocks
 
 The Taipy GUI blocks can help organize the elements on the page.
 
 In the following code, we use the `layout^` block to organize the controls on the page: 
-```py
+```python
 first_name="John"
 last_name="Carpenter"
 age=43
@@ -166,7 +186,7 @@ flexible than when you define page content using text.
 Default callbacks are invoked if not explicitly assigned to callback properties.
 
 Consider the following script:
-```py
+```python
 from src.taipy.gui import Gui
 import src.taipy.gui.builder as tgb
 
@@ -182,14 +202,14 @@ Gui(page).run()
 ```
 
 The `button^` does not define its *on_action* property: Taipy looks for an *on_action()* function
-in the code and invokes it when the button is pressed.
+in the code and invokes it when the user presses the button.
 
 ## Named callbacks
 
 The name of the callback function can also be used as a callback property value.
 
 The code changes would be like this:
-```py
+```python
 def my_button_pressed(state, id):
     # Do something...
     pass
@@ -199,12 +219,12 @@ with tgb.Page() as page:
 ```
 
 The `button^` does not define its *on_action* property: Taipy looks for a *on_action()* function
-in the code and invokes it when the button is pressed.
+in the code and invokes it when the user presses the button.
 
 ## Functions as callbacks
 
 You can also use the Python function as a callback property value:
-```py
+```python
 def my_button_pressed(state, id):
     # Do something...
     pass

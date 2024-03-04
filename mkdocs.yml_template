@@ -68,7 +68,6 @@ nav:
           - "Taipy GUI": manuals/gui/index.md
           - "Pages":
              - "Pages": manuals/gui/pages/index.md
-             - "Using code": manuals/gui/page_builder.md
           - "Visual Elements":
              - "Introduction to Visual Elements": manuals/gui/viselements/index.md
              - "Controls": manuals/gui/viselements/controls.md
@@ -87,12 +86,12 @@ nav:
              - "Dynamic Elements":
                 - manuals/gui/extension/dynamic_element/index.md
                 - "Scalar properties": manuals/gui/extension/dynamic_element/scalar_props.md
-      - Taipy Core:
-          - manuals/core/index.md
+      - "Taipy Core":
+          - "Taipy Core": manuals/core/index.md
           - 'Basic example: Hello world!':
               - manuals/core/basic_examples/index.md
           - "Concepts":
-              - manuals/core/concepts/index.md
+              - "Taipy's Core concepts": manuals/core/concepts/index.md
               - "Data node": manuals/core/concepts/data-node.md
               - "Task": manuals/core/concepts/task.md
               - "Sequence": manuals/core/concepts/sequence.md
@@ -130,7 +129,7 @@ nav:
       - "Taipy REST":
           - manuals/rest/index.md
       - "Authentication and Roles":
-          - manuals/auth/index.md
+          - "Authentication and Roles": manuals/auth/index.md
           - "Authentication": manuals/auth/authentication.md
           - "Authorization": manuals/auth/authorization.md
       - "Taipy command-line interface":

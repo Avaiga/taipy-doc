@@ -121,7 +121,7 @@ Published on 2023-10.
 
 <h4><strong><code>taipy-gui</code></strong> 3.0.0</h4>
 
-- A new package holds the [*Page Builder API*](manuals/gui/page_builder.md): a set of classes that
+- A new package holds the [*Page Builder API*](manuals/gui/pages/builder.md): a set of classes that
   let you define the pages for your application entirely with Python.
 - You can now update variables on all clients using the *shared variables* concept. See
   the `Gui.add_shared_variable()^` and `State.dispatch()^` methods for details.

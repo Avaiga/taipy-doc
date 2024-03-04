@@ -44,7 +44,7 @@ Want to be part of the _Taipy Doc_ community? Check out our [`CODE_OF_CONDUCT.md
 
 ## Directory Structure
 
-- `docs`: Documentation content (mainly as markdown files) used by mkdocs to generate the Taipy documentation set.
+- `docs`: Documentation content (mainly as Markdown files) used by mkdocs to generate the Taipy documentation set.
 - `tools`: Mkdocs and other tools used to build the Taipy documentation set.
 - `CODE_OF_CONDUCT.md`: Code of conduct for members and contributors of _taipy-doc_.
 - `CONTRIBUTING.md`: Instructions to contribute to _taipy-doc_.

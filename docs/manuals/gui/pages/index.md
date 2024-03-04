@@ -4,141 +4,75 @@ interact with the application data through visual elements.
 
 # Defining pages
 
-Taipy lets you create as many pages as you want, with whatever content you need.<br/>
-Pages can be defined using two different techniques:
-
-- you can create a textual description of the page (inside the application code or from an external
-  file) that will get transformed into HTML content sent and rendered on the client device.
-- you can create pages entirely by code, using the [Page Builder](../page_builder.md) package.<br/>
-  This package provides a way to create any visual element, organize them within blocks, and
-  create pages to hold them.
-
-This section focuses exclusively on the text-to-page process, which is the typically preferred
-manner: the text provides kind of a preview of the page and can also structure the elements.<br/>
-If you want to generate page content, the [Page Builder](../page_builder.md) API may be a better
-fit: using the Python language, you can create loops or conditionals that would otherwise be
-complicated to produce with a text-only description. Please refer to
-[this section](../page_builder.md) if this is what you need.
-
-Converting text into page content is done according to these steps:
-
-- The text is parsed to locate the Taipy-specific constructs. These constructs
-  let you insert *visual elements* that can be *controls* or *blocks*. Visual
-  Elements result in the creation of potentially complex HTML components;
-
-- Visual element properties are read, and Taipy binds the application
-  variables that are used, if any;
-
-- Potentially, *callbacks* are located and connected from the rendered page back
-  to the Python code in order to watch user events (the notion of callbacks is detailed
-  in the section [Callbacks](../callbacks.md)).
+Taipy lets you create as many pages as you require with whatever content you need.
 
 ## Defining the page content
 
-Page content is defined by a regular string, containing text in one
-of two syntaxes:
+Pages can be defined using two different techniques:
 
-- Markdown: a lightweight markup language widely used for creating
-    documentation pages. This would be the ideal format if you are not
-    familiar with web page definition, and would like to create a good
-    visual rendering quickly.<br/>
-    Taipy has an augmented implementation of Markdown that makes it simple to
-    organize the page content in sections or grids.
+- Text templates:<br/>
+  You can create textual descriptions of pages (inside the application code or from an external
+  file) that will get transformed into HTML content sent and rendered on the client device.<br/>
+  This technique comes in two flavors: [Markdown](markdown.md) and [HTML](html.md). You can pick the
+  type you feel more comfortable with and create page templates using that type (see note below).
+- Python code:<br/>
+  you can create pages using Python code exclusively using the APIs provided by the
+  [Page Builder](builder.md) package.<br/>
+  This package makes it possible to create any visual element, organize them within blocks, and
+  create pages to hold them, entirely using the Python language.
 
-- HTML: if you are more experienced in developing web user interfaces, you
-    may prefer to use raw HTML content, so you have all the power of the
-    HTML grammar to organize your page content.
+!!! tip "Choosing how to create pages"
 
-### Using Markdown
+    Choosing between the Markdown format, HTML content, or Python code depends on several
+    parameters:
+   
+    - Use [Markdown](markdown.md) when:
 
-One of the page description formats is the [Markdown](https://en.wikipedia.org/wiki/Markdown)
-markup language.
+        - You need to create a page in a few minutes;
+        - You want to benefit from the [Taipy Studio preview](../../studio/gui.md#page-preview)
+          feature;
+        - You have no experience in UI development, especially on the web;
+        - The text layout is close enough to your final presentation objectives.
+    
+    - Use [HTML](html.md) when:
 
-Taipy uses [Python Markdown](https://python-markdown.github.io/) to translate Markdown
-text to web pages. Many language extensions are used to make it easier to create
-nice looking pages that users can enjoy. Specifically, Taipy uses the following
-[Markdown extensions](https://python-markdown.github.io/extensions/):
-[*Admonition*](https://python-markdown.github.io/extensions/admonition/),
-[*Attribute Lists*](https://python-markdown.github.io/extensions/attr_list/),
-[*Fenced Code Blocks*](https://python-markdown.github.io/extensions/fenced_code_blocks/),
-[*Meta-Data*](https://python-markdown.github.io/extensions/meta_data/),
-[*Markdown in HTML*](https://python-markdown.github.io/extensions/md_in_html/),
-[*Sane Lists*](https://python-markdown.github.io/extensions/sane_lists/)
-and [*Tables*](https://python-markdown.github.io/extensions/tables/).
-Please refer to the Python Markdown package documentation to get information on how to use
-these.
+        - You have experience in HTML;
+        - You have a set of HTML files that you want to complement with Taipy GUI visual elements
+          and connect to a Python backend application;
+        - You need a precise page structure.
 
-Creating a page that display HTML content is straightforward:
+    - Use Python with the [Page Builder API](builder.md) when:
 
-```py
-from taipy.gui import Markdown
+        - You are familiar with the Python language and Python libraries that help build web
+          applications (like [gradio](https://www.gradio.app/));
+        - You need to decide at runtime what elements should be created and how. This usually
+          involves control of the code flow (using tests or loops), which is more difficult to
+          achieve using text templates.
 
-md_page = Markdown("""
-# Page title
 
-Any [*Markdown*](https://en.wikipedia.org/wiki/Markdown) content can be used here.
-""")
-```
+When the rendering of a page occurs, the following steps take place:
 
-You then have, in the *md_page* variable, the definition of a page
-whose content is defined by Markdown text.
+- If the page is text-based (Markdown or HTML), the text is parsed to locate the Taipy-specific
+  constructs. These constructs designate [*visual elements*](../viselements/index.md) that can
+  represent data and be interacted with by the user. Visual Elements result in the creation of
+  potentially complex HTML code;
 
-!!! note "Markdown link syntax"
-    You can use Markdown's native *link* syntax to easily create links
-    from one page to another.
+- The properties of the Visual element are read, and Taipy binds the application variables that are
+  used, if any. See the [section about Binding](../binding.md) for details;
 
-    If, for example, your application has two pages (see below how to create such
-    an application, where pages would be called "page1" and "page2"), you can
-    create a link to "page2" from "page1" by adding the following
-    Markdown fragment in the definition of "page1":
-    ```
-    ...
-    Go to [Second Page](/page2) for more information.
-    ...
-    ```
-
-Besides the extensions listed above, Taipy adds its own extension that can parse
-Taipy-specific constructs that allow for defining visual elements (and all the properties
-they need). The details on how visual elements are located and interpreted with Markdown
-content can be found in the [Markdown Syntax](../viselements/index.md#markdown) section
-about Visual Elements definition.
-
-### Using HTML
-
-HTML can also be used as the text grammar for creating pages. You don't need to
-create the header and body part: Taipy takes care of this for you.
-
-Creating a page that displays HTML content is straightforward:
-
-```py
-from taipy.gui import Html
-
-html_page = Html("""
-<h1>Page title</h1>
-
-Any <a href="https://en.wikipedia.org/wiki/HTML"><i>HTML</i></a>
-content can be used here.
-""")
-```
-
-You then have, in the *html_page* variable, the definition of a page
-whose content is defined from HTML text.
-
-Taipy identifies visual element definitions by finding tags that belong
-to the `taipy` namespace. You can find details on how to create visual
-elements using HTML in the [HTML Syntax](../viselements/index.md#html) section
-about Visual Elements definition.
+- Potentially, *callbacks* are searched in the visual element properties and connected from the
+  rendered page back to the Python code in order to watch user events (the notion of callbacks is
+  detailed in the [section about Callbacks](../callbacks.md)).
 
 ## Registering the page
 
-Once you have created an instance of a page renderer for a specific piece of
-text, you can register that page to the `Gui^` instance used by your application.
+Once you have created an instance of a page renderer for a specific piece of text or Python code,
+you can register that page to the `Gui^` instance used by your application.
 
-The `Gui^` constructor can accept the raw content of a page as Markdown text
-and creates a new page for you. That would be the easier way to create
-applications that have a single page. Here is how you can create and register
-a page in a Taipy application:
-```py
+The `Gui^` constructor can accept the raw content of a page as Markdown text and create a new page
+for you. That would be the easier way to create applications that have a single page. Here is how
+you can create and register a page, defined as Markdown content, in a Taipy application:
+```python
 from taipy import Gui
 
 Gui("# This is my page title")
@@ -148,7 +82,7 @@ If you run this Python script and connect a browser to the web server address
 
 Of course, the text can be stored in a Python variable and used in the `Gui^`
 constructor:
-```py
+```python
 ...
 md = "# This is my page title"
 Gui(md)
@@ -159,11 +93,11 @@ using `Gui.add_page()^`. To add multiple pages in a single call, you will
 use `Gui.add_pages()^` or create the `Gui^` instance using the *pages*
 argument. In those situations, you have to create a Python dictionary that
 associates a page with its name:
-```
+```python
 ...
 pages = {
-  'page1': Markdown("# My first page"),
-  'page2': Markdown("# My second page")
+  "page1": Markdown("# My first page"),
+  "page2": Markdown("# My second page")
 }
 Gui(pages=pages)
 ```
@@ -188,7 +122,7 @@ The name of this page is `"/"` (or the value of the [*base_url*](../configuratio
 configuration setting).
 
 If your application uses only one page, this is typically where it would be created:
-```py
+```python
   Gui(page="# Page Content")
 ```
 creates a page from the Markdown content that you provide and adds this page to the new
@@ -222,7 +156,7 @@ for all its pages.
 !!! example
 
     Here is an example of a Taipy application that holds several pages:
-    ```py
+    ```python
        from taipy import Gui
 
        root_md="# Multi-page application"
@@ -262,7 +196,7 @@ runs.
 
 !!! example
 
-    ```py
+    ```python
        from taipy import Gui
 
        root_md="""
@@ -304,7 +238,7 @@ user's response.
     Here is an example of how you would create a dialog, directly in your Markdown
     content:
 
-    ``` py
+    ```python
        ...
        page="""
        ...
@@ -339,7 +273,7 @@ be used in visual elements that use them.
     Here is an example of how you would create a `Partial^`, in the situation where the
     dialog created in the [example above](#dialogs) would be needed in different pages:
 
-    ``` py
+    ```python
        ...
        gui = Gui()
        prompt_user = gui.add_partial(
@@ -393,7 +327,7 @@ This function should return a dictionary where you can define any key or value o
 
 Here is a short example to demonstrate the status page customization:
 
-```py
+```python
 from taipy.gui import Gui, State
 
 x = 1234

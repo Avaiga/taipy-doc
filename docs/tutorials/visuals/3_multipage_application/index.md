@@ -89,7 +89,7 @@ pages work independently:
 Usually, if we were making a simple one-page application, we'd give one of our pages (created
 with [Markdown](../../../manuals/gui/pages/index.md#using-markdown),
 [HTML](../../../manuals/gui/pages/index.md#using-html) or
-[Python code](../../../manuals/gui/page_builder.md) to the
+[Python code](../../../manuals/gui/pages/builder.md) to the
 `Gui.__init__^`(`Gui` constructor). For example, to turn `home.py` into a one-page
 Taipy application,
 we could add these lines:
