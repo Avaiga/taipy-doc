@@ -129,7 +129,7 @@ nav:
       - "Taipy REST":
           - manuals/rest/index.md
       - "Authentication and Roles":
-          - "Authentication and Roles": manuals/auth/index.md
+          - "Authentication and Authorization": manuals/auth/index.md
           - "Authentication": manuals/auth/authentication.md
           - "Authorization": manuals/auth/authorization.md
       - "Taipy command-line interface":
