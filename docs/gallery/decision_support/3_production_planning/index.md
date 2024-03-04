@@ -1,5 +1,5 @@
 ---
-title: Production Planning - Optimize production and cost management
+title: Production Planning
 category: decision_support
 data-keywords: optimization scenario cycle comparison
 short-description: Simulate manufacturing scenarios and optimize production quantities to reduce production costs.

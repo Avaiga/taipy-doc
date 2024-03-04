@@ -1,5 +1,5 @@
 ---
-title: Jupyter Notebooks and Taipy GUI
+title: Jupyter Notebooks and Taipy
 category: integration
 data-keywords: gui notebook
 short-description: Seamlessly update the User Interface in a Jupyter Notebook without restarting the kernel.

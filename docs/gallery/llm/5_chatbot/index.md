@@ -2,7 +2,7 @@
 title: LLM ChatBot
 category: llm
 data-keywords: vizelement ai
-short-description: Leverage this chatbot demo using OpenAI's API with GPT-3 to use it as a template for an LLM inference application.
+short-description: Leverage this chatbot using OpenAI's API with GPT-3 to use it as a template for an LLM inference application.
 img: 5_chatbot/images/chatbot_meds_conv.png
 ---
 This demo showcases Taipy's ability to enable end-users to run inference using LLMs. Here, we
