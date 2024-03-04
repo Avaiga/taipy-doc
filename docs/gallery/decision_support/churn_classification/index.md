@@ -1,5 +1,5 @@
 ---
-title: Churn Classification - Predict customer churn
+title: Churn Classification
 category: decision_support
 data-keywords: ai classification scenario
 short-description: Leverage Scenario management and comparison to improve decision making on a Churn prediction demo.

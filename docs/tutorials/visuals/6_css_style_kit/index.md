@@ -35,7 +35,7 @@ You can easily add color or center it.
 Now, let's use it in our application:
 
 ```python
-&lt;|text-center| Taipy **App**{: .color-primary} |&gt;
+<|text-center| Taipy **App**{: .color-primary} |>
 
 or
 

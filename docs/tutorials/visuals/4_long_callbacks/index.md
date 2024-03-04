@@ -2,9 +2,10 @@
 title: Long-running Callbacks
 category: visuals
 data-keywords: gui callback
-short-description: Preserve the user interface responsiveness during lengthy tasks using Taipy's 'long-running callbacks' feature.
+short-description: Preserve the user interface responsiveness during lengthy tasks.
 img: 4_long_callbacks/images/long_running_callbacks.png
 ---
+
 Tasks (server-side functions) in web applications can take a lot of time, which can lead to
 problems with communication between the server (Python application) and the client (web browser).
 
