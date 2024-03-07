@@ -39,12 +39,15 @@ This is the list of changes to Taipy releases as they were published.
 
 - The [`chart`](manuals/gui/viselements/chart.md) control has a new property called *figure* that
   expects an instance of `plotly.graph_objects.Figure`. This class is provided by the
-  [Plotly Open Source Graphing Library for Python](https://plotly.com/python/) so you can create
+[Plotly Open Source Graphing Library for Python](https://plotly.com/python/) so you can create
   all sorts of graphs in Python.<br/>
   See the [`figure` property](manuals/gui/viselements/chart.md#p-figure) of the `chart` control and
   the [section on the *figure* property](manuals/gui/viselements/chart.md#the-figure-property) for
   more information.
-- User content in [`part`](manuals/gui/viselements/part.md). TODO
+- The [`part`](manuals/gui/viselements/part.md) block has a new property called *content* that
+  lets developers integrate any third-party library that can generate HTML.<br/>
+  See the documentation for the [`part`](manuals/gui/viselements/part.md) block and the examples
+  using *content providers* for more information.
 - A new control called [`date_range`](manuals/gui/viselements/date_range.md) is available if
   you need to represent and edit date ranges in your application pages.
 - A new control called [`login`](manuals/gui/viselements/login.md) is available if you need users
@@ -77,14 +80,18 @@ This is the list of changes to Taipy releases as they were published.
 <h4><strong><code>taipy</code></strong> 3.1.0</h4>
 
 - Task nodes in the [`scenario_dag`](manuals/gui/corelements/scenario_dag.md) control dynamically
-  reflect the status of related jobs for the user that submitted scenarios or sequences. TODO
+  reflect the status of related jobs for the user that submitted scenarios or sequences.
 - The [`scenario`](manuals/gui/corelements/scenario.md) control lets you add, modify and edit
   sequences.
+- The [`data_node`](manuals/gui/corelements/data_node.md) control can now represent collections.
 
 <h4><strong><code>taipy-gui</code></strong> 3.1.0</h4>
 
+- The [`table`](manuals/gui/viselements/table.md) control supports enumerated values.<br/>
+  TODO
 - The [`toggle`](manuals/gui/viselements/toggle.md) control appears as a switch button if its
-  [*value*](manuals/gui/viselements/toggle.md#p-value) property ... TODO
+  [*value*](manuals/gui/viselements/toggle.md#p-value) property holds a Boolean value.>br/>
+  TODO
 
 <h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
 
@@ -94,6 +101,17 @@ This is the list of changes to Taipy releases as they were published.
   at the same time.
 - Running the Core service or creating an entity by `taipy.create_scenario()` or
   `taipy.create_global_data_node()` blocks the Configuration from being modified.
+
+## Significant bug fixes
+
+<h4><strong><code>taipy-gui</code></strong> 3.1.0</h4>
+
+- Selectors with dropdown menus cannot be deactivated.<br/>
+  See [issue #894](https://github.com/Avaiga/taipy/issues/894).
+- Problems scoping non-global variables used in Partials.<br/>
+  See [issue #561](https://github.com/Avaiga/taipy/issues/561).
+- Important error messages are mangled.<br/>
+  See [issue #560](https://github.com/Avaiga/taipy/issues/560).
 
 # Enterprise edition: 3.1
 
@@ -243,7 +261,7 @@ Published on 2023-10.
 <h4><strong><code>taipy-gui</code></strong> 3.0.0</h4>
 
 - The callback function set to the *on_action* parameter of the function `download()^` may
-  b called too early. It is now ensured to be invoked *after* the download operation is
+  be called too early. It is now ensured to be invoked *after* the download operation is
   performed.<br/>
   See [issue #916](https://github.com/Avaiga/taipy-gui/issues/916).
 - Setting the [*properties*](manuals/gui/viselements/index.md#generic-properties) property of
