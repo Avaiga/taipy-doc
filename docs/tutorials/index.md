@@ -4,7 +4,7 @@ hide:
   - toc
 ---
 
-Learn out to build Taipy applications through tutorials!
+Learn how to build Taipy applications through tutorials!
 
 <!-- Quick accesses -->
 <div class="tp-row tp-row--gutter-sm">
