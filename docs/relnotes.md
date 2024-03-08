@@ -90,8 +90,7 @@ Published on 2024-03.
 - The [`table`](manuals/gui/viselements/table.md) control supports enumerated values.<br/>
   TODO
 - The [`toggle`](manuals/gui/viselements/toggle.md) control appears as a switch button if its
-  [*value*](manuals/gui/viselements/toggle.md#p-value) property holds a Boolean value.>br/>
-  TODO
+  [*value*](manuals/gui/viselements/toggle.md#p-value) property holds a Boolean value.
 
 <h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
 
