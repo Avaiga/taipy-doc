@@ -57,7 +57,8 @@ If you complete all those steps and a part's *content* property is set to an ins
 the HTML code and render the part.
 
 Of course, because *content* is a dynamic property, you can create content that updates when some
-variables change. See the TODO example for a demonstration of that feature.
+variables change. See the [example on custom providers](#integrating-third-party-graphics)  for a
+demonstration of that feature.
 
 !!! note "Predefined Content Providers"
     Out-of-the-box, Taipy GUI can handle *content* values that are:
