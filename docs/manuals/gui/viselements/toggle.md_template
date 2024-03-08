@@ -2,9 +2,28 @@ A series of toggle buttons that the user can select.
 
 # Details
 
-Each button is represented by a string, an image or both.
+You can use a string, an image, or both in each button.
 
-You can use an arbitrary type for all the items (see the [example](#use-arbitrary-objects)).
+A typical representation would be like this image:
+<figure class="tp-center">
+    <img src="../toggle-lov-d.png" class="visible-dark"  width="80%"/>
+    <img src="../toggle-lov-l.png" class="visible-light" width="80%"/>
+    <figcaption>Toggle control with three buttons</figcaption>
+</figure>
+In this example, the [*lov*](#p-lov) property of the control is a list of three string elements. If
+the user selects one of the elements, [*value*](#p-value) is updated accordingly to the selected
+string.
+
+Note that if the variable bound to [*value*](#p-value) is a Boolean value, then the control displays
+a switch control:
+<figure class="tp-center">
+    <img src="../toggle-switch-d.png" class="visible-dark"  width="80%"/>
+    <img src="../toggle-switch-l.png" class="visible-light" width="80%"/>
+    <figcaption>Toggle control bound to a Boolean variable</figcaption>
+</figure>
+The property [*value*](#p-value) reflects the control's status as a Boolean value.
+
+You can also use an arbitrary type for all the items (see the [example](#use-arbitrary-objects)).
 
 # Styling
 
@@ -53,7 +72,7 @@ A toggle control that returns an id while selecting a label or `Icon^`.
 ## Use arbitrary objects
 
 Assuming your Python code has created a list of objects:
-```py3
+```python
 class User:
     def __init__(self, id, name, birth_year):
         self.id, self.name, self.birth_year = (id, name, birth_year)
