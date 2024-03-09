@@ -10,30 +10,237 @@ its [*data*](#p-data) property.
 The supported types for the [*data*](#p-data) property are:
 
 - A list of values:<br/>
-    When receiving a *data* that is just a series of values, the table is made of a single column holding
-    the values at the corresponding index. The column name is then "0".
+  When receiving a *data* that is just a series of values, the table is made of a single column
+  holding the values at the corresponding index. The column name is then "0".
 - A [Pandas DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html):<br/>
-    Taipy tables then use the same column names as the DataFrame's.
+  Taipy tables then use the same column names as the DataFrame's.
 - A dictionary:<br/>
-    The value is converted into a Pandas DataFrame where each key/value pair is converted
-    to a column named *key* and the associated value. Note that this will work only when
-    all the values of the dictionary keys are series that have the same length.
+  The value is converted into a Pandas DataFrame where each key/value pair is converted
+  to a column named *key* and the associated value. Note that this method only works when all the
+  dictionary's values are series of identical lengths.
 - A list of lists of values:<br/>
-    All the lists must be the same length. The table control creates one row for each list in the
-    collection.
+  All the lists must be the same length. The table control creates one row for each list in the
+  collection.
 - A Numpy series:<br/>
-    Taipy internally builds a Pandas DataFrame with the provided *data*.
+  Taipy internally builds a Pandas DataFrame with the provided *data*.
  
 ## Display modes
 
 The table component supports three display modes:
 
-- *paginated*: you can choose the page size and page size options. The [*allow_all_rows*](#p-allow_all_rows)
-  property makes it possible to add an option to show a page with all rows.
-- *unpaginated*: all rows and no page are shown. That is the setting when the [*show_all*](#p-show_all)
-  property is set to True.
-- *auto_loading*: the pages are loaded on demand depending on the visible area. That is the behavior when
-  the [*auto_loading*](#p-auto_loading) property is set to True.
+- *paginated*: you can choose the page size and page size options. The
+  [*allow_all_rows*](#p-allow_all_rows) property allows adding an option to show a page with all
+  rows.
+- *unpaginated*: all rows and no page are shown. That is the setting when the
+  [*show_all*](#p-show_all) property is set to True.
+- *auto_loading*: the pages are loaded on demand depending on the visible area. That is the behavior
+  when the [*auto_loading*](#p-auto_loading) property is set to True.
+
+## Editing the table content
+
+The table control provides interface elements that help modify the represented data.<br/>
+However, because the data may have been modified before it is displayed (when [*data*](#p-data) is a
+dictionary, for example) and because you may need to control what values are allowed in the table,
+the control does *not* modify the underlying data structure it represents. Instead, different
+callbacks are invoked in different situations, with all the needed information to implement the
+actual impact of the user actions.
+
+Here are the different actions provided by the table control.
+
+### Adding a row
+
+If the control has its [*on_add*](#p-on_add) property set to a callback function, an icon appears in
+the top-left corner of the table:
+<figure class="tp-center">
+    <img src="../table-add-icon-d.png" class="visible-dark"  width="40%"/>
+    <img src="../table-add-icon-l.png" class="visible-light" width="40%"/>
+    <figcaption>"Add" icon in the top-left corner of the table</figcaption>
+</figure>
+The user can click this icon to add a row to the table. This action triggers the callback function
+set to the [*on_add*](#p-on_add) property. The function should create and insert a new row.
+
+The implementation of the callback function depends very much on the data structure of the value
+used in [*data*](#p-data).<br/>
+Here is a potential implementation of such a callback function.<br/>
+Assuming that the value of the control's *data* property is a Pandas DataFrame and that its *on_add*
+property is set to *insert_row*:
+```python
+def insert_row(state: State, var_name: str, payload):
+    df = state.data
+    # Save the insertion index
+    index = payload["index"]
+    # Create the new row (Column value types must match the original DataFrame's)
+    new_row = ["Julius Caesar", -100]
+    if index > 0:
+        # Column names and value types must match the original DataFrame
+        new_df = pd.DataFrame(new_row, columns=["Name", "BirthYear"])
+        # Split the DataFrame
+        rows_before = df.loc[:index-1]
+        rows_after = df.loc[index+1:]
+        state.data = pd.concat([rows_before, new_df, rows_after], ignore_index=True)
+    else:
+        # Insert as the new first row
+        state.data.loc[-1] = new_row  # Insert the new row
+        state.data.index = state.data.index + 1  # Shift index
+        state.data = state.data.sort_index()
+```
+
+Note that the page refreshes instantly after the action: because we set *state.data* to a
+new value.
+
+### Deleting a row
+
+If the control has its [*on_delete*](#p-on_delete) property set to a callback function, each row
+of the table displays a 'trash' icon to its left:
+<figure class="tp-center">
+    <img src="../table-delete-icon-d.png" class="visible-dark"  width="50%"/>
+    <img src="../table-delete-icon-l.png" class="visible-light" width="50%"/>
+    <figcaption>Trash icon to the left of a row</figcaption>
+</figure>
+The user can click on this icon to delete the row.<br/>
+The icon then turns to the following:
+<figure class="tp-center">
+    <img src="../table-delete-icon-confirm-d.png" class="visible-dark"  width="50%"/>
+    <img src="../table-delete-icon-confirm-l.png" class="visible-light" width="50%"/>
+    <figcaption>Validating row deletion</figcaption>
+</figure>
+The user must then choose between validating the deletion (checkmark icon) or canceling the
+operation (cross icon).
+
+If the user confirms the deletion, Taipy GUI invokes the callback function set to the
+[*on_delete*](#p-on_delete) property.
+
+Here is a potential implementation of such a callback function.<br/>
+We assume that the control's *data* property is set to a Pandas DataFrame, and that its *on_delete*
+property is set to *remove_row*:
+```python
+def remove_row(state: State, var_name: str, payload):
+    state.data = state.data.drop(payload["index"])
+```
+The implementation is straightforward: we use the Pandas API to remove a row from the DataFrame and
+set the new DataFrame to the state slot. The display updates on the spot.
+
+### Editing cells
+
+If the table's [*on_edit*](#p-on_edit) property is set, an "Edit" icon appears on the right end of
+each cell. Users can click this icon to modify the values of individual cells.<br/>
+Here is how this icon looks:
+<figure class="tp-center">
+    <img src="../table-edit-icon-d.png" class="visible-dark"  width="80%"/>
+    <img src="../table-edit-icon-l.png" class="visible-light" width="80%"/>
+    <figcaption>Edit icon to the right of a cell</figcaption>
+</figure>
+
+When the user clicks this icon, the cell becomes editable:
+<figure class="tp-center">
+    <img src="../table-edit-value-d.png" class="visible-dark"/>
+    <img src="../table-edit-value-l.png" class="visible-light"/>
+    <figcaption>Editing the cell value</figcaption>
+</figure>
+The user can enter a new cell value and click the check (✓) icon (or press the Enter key) to
+validate the entry.<br/>
+The user may also click the cancel (🗙) icon (or press the Tab key) to cancel the operation.
+
+!!! note "Enumerated values"
+    A table control can be defined so that values are constrained to predefined values. In this
+    situation, the interaction for editing value is slightly different, as described in the
+    [section on enumerated values](#enumerated-values).
+
+If the operation is validated, the control triggers the function set to the [*on_edit*](#p-on_edit)
+property to process the new value.
+
+The code for this function may vary deeply depending on the data structure of the [*data*](#p-data)
+property and the value types.
+
+Here is an implementation of that callback function in the situation where *data* is a Pandas
+DataFrame (and *on_edit* is set to *edit_value*):
+```python
+def edit_value(state: State, var_name: str, payload):
+    state.data.at[payload["index"], payload["col"]] = payload["value"]
+    state.refresh(var_name)
+```
+We invoke the Pandas API to modify the impacted cell using the information provided in the *payload*
+parameter of the callback function.
+
+Note that in this code, we must explicitly call `State.refresh()^` to update the display because
+the value of *state.data* has **not** changed, and Taipy GUI is unaware of the change in its value.
+
+## Enumerated values
+
+You can indicate that columns of the table hold values that must be one among a list of predefined
+values. These are called "enumerated" columns.<br/>
+Although Taipy GUI has no control over the values that are stored in the data provided to a table
+control, it can help drive or restrict values when a user interacts with the table to modify those
+values.
+
+To illustrate this feature with an example, consider the following table:
+<figure class="tp-center">
+    <img src="../table-enum-example-d.png" class="visible-dark"/>
+    <img src="../table-enum-example-l.png" class="visible-light"/>
+    <figcaption>A table with an enumerated column</figcaption>
+</figure>
+This table contains a list of city names, along with their corresponding country, continent, and
+population (in millions).
+
+The user can edit any of the table cells. However, it would make edition (and validation) easier if
+(at least) the "Continent" column was constrained so that the user could only provide valid
+continent names.<br/>
+This situation is precisely the purpose of enumerated columns. To indicate that a column is
+enumerated, you must set its [*lov*](#p-lov[column_name]) indexed property to a list of valid values
+("lov" stands for "list of values").<br/>
+In our example, we need to create a list of valid continent names and set this list as the value of
+the *lov[Continent]* property.
+
+The Python code would be:
+```python
+all_continents = ["Africa", "America", "Antarctica", "Asia", "Europe", "Oceania"]
+```
+
+And the table definition would use the variable *all_continents*:
+!!! taipy-element
+    default={data}
+    lov[Continent]={all_continents}
+    on_edit=cell_edit
+
+If the user requests the change of a cell from the Continent column, this is how the cell would look
+like:
+<figure class="tp-center">
+    <img src="../table-edit-enum-d.png" class="visible-dark"/>
+    <img src="../table-edit-enum-l.png" class="visible-light"/>
+    <figcaption>Editing an enumerated value</figcaption>
+</figure>
+
+Note that there now is a button that, if pressed, displays a drop-down list of predefined values
+that the user can choose from:
+<figure class="tp-center">
+    <img src="../table-edit-enum-menu-d.png" class="visible-dark"/>
+    <img src="../table-edit-enum-menu-l.png" class="visible-light"/>
+    <figcaption>List of predefined values to pick from</figcaption>
+</figure>
+
+These values are, as expected, the ones listed in the *all_continents* variable defined above.<br/>
+If the user enters a value that is **not** in the list and validates, the table control refuses to
+use this new value: it is not in the *lov* for that column.
+
+!!! note "Value restrictions"
+    In the example above, the user can select a continent name from the list when editing a cell
+    from the Continent column. No value except the ones from the enumeration is accepted in the
+    cell.
+
+    In some situations, the enumeration should be considered more as a list of recommendations and
+    not so much as a list of allowed values.<br/>
+    A typical case would be a column that expects to store color names. Although the application can
+    provide a predefined list of color names to the user (because they are the most common ones,
+    like "Red", "Orange", "Yellow", "Green", "Blue", and "Violet" from the rainbow colors), the user
+    may want to enter valid color names such as "Rose" or "Maroon".
+
+    You can allow that by setting the first element of the *lov* for that column to None.<br/>
+    If you define:
+    ```python
+    predefined_colors = [None, "Red", "Orange", "Yellow", "Green", "Blue", "Violet"]
+    ```
+    Then, setting the *lov* for the color name column to *predefined_colors* will guide users who
+    want to change a value in that column but will **not** enforce the validated value.
 
 ## The *rebuild* property
 
@@ -144,9 +351,9 @@ tables:
 You can modify the style of entire rows or specific table cells based on any criteria, including
 the table data itself.
 
-When Taipy creates the rows and the cells, it can add a specific CSS class to the generated elements.
-This class name is the string returned by the function set to the [*style*](#p-style) property for entire rows,
-or [*style[column_name]*](#p-style[column_name]) for specific cells.
+When Taipy creates the rows and the cells, it can add a specific CSS class to the generated
+elements. This class name is the string returned by the function set to the [*style*](#p-style)
+property for entire rows, or [*style[column_name]*](#p-style[column_name]) for specific cells.
 
 The signature of this function depends on which *style* property you use:
 
