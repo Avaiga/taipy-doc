@@ -511,7 +511,7 @@ class [element_type]({base_class}):
                     default_property = p[3]
                 else:
                     properties.append((p[1], p[3], p[2] if p[2] else "-"))
-            new_documentation += "!!! example \"Definition\"\n\n"
+            new_documentation += "!!! example \"Definition\"\n"
             # Markdown format
             def md_property_value(property: str, value: str, type: str) -> str:
                 if type.startswith("b"):
@@ -525,7 +525,7 @@ class [element_type]({base_class}):
                         return f"don't {property}"
                     return f"not {property}"
                 return f"{property}={value}"
-            new_documentation += "    === \"Markdown\"\n\n"
+            new_documentation += "\n    === \"Markdown\"\n\n"
             new_documentation += "        ```\n"
             new_documentation += "        <|"
             if default_property:
@@ -534,9 +534,8 @@ class [element_type]({base_class}):
             for n, v, t in properties:
                 new_documentation += f"{md_property_value(n, v, t)}|"
             new_documentation += ">\n"
-            new_documentation += "        ```\n\n"
+            new_documentation += "        ```\n"
             # HTML format
-
             def html_value(property: str, value: str, type: str) -> str:
                 if type.startswith("b"):
                     if value.lower() == "true":
@@ -545,7 +544,7 @@ class [element_type]({base_class}):
                         value = value.lower()
                 value = value.replace("\"", "'")
                 return f"{property}=\"{value}\""
-            new_documentation += "    === \"HTML\"\n\n"
+            new_documentation += "\n    === \"HTML\"\n\n"
             new_documentation += "        ```html\n"
             new_documentation += f"        <taipy:{type}"
             html_1 = ""
@@ -561,29 +560,41 @@ class [element_type]({base_class}):
             new_documentation += f"{html_1}"
             if len(html_1) > 120 and html_2:
                 new_documentation += "\n        "
-            new_documentation += f"{html_2}\n        ```\n\n"
-            # Page Builder syntax
-            new_documentation += "    === \"Python\"\n\n"
-            new_documentation += "        ```python\n"
-            new_documentation += "        import taipy.gui.builder as tgb\n        ...\n"
-            new_documentation += f"        tgb.{type}("
-            def builder_value(value: str, type: str) -> str:
-                if type == "f":
-                    return value
-                if type.startswith("b"):
-                    return value.title()
-                value = value.replace("\"", "'")
-                return f"\"{value}\""
-            prefix = ""
-            if default_property:
-                new_documentation += f"\"{default_property}\""
-                prefix = ", "
+            new_documentation += f"{html_2}\n        ```\n"
+            # Page Builder syntax "^$"
+            BP_IDX_PROP_RE = re.compile(r"^(.*?)\[([\w\d]+)\]$", re.M)
+            generate_page_builer_api = True
+            pb_properties = []
             for n, v, t in properties:
-                new_documentation += f"{prefix}{n}={builder_value(v, t)}"
-                prefix = ", "
                 if "[" in n:
-                    print(f"WARNING - Property '{n}' in examples for {type}")
-            new_documentation += ")\n"
-            new_documentation += "        ```\n"
+                    if (idx_prop_match := BP_IDX_PROP_RE.match(n)) is None:
+                        print(f"WARNING - Property '{n}' in examples for {type} prevents Python code generation")
+                        generate_page_builer_api = False
+                    else:
+                        pname = f"{idx_prop_match[1]}__{idx_prop_match[2]}"
+                        pb_properties.append((pname, v, t))
+                else:
+                    pb_properties.append((n, v, t))
+            if generate_page_builer_api:
+                new_documentation += "\n    === \"Python\"\n\n"
+                new_documentation += "        ```python\n"
+                new_documentation += "        import taipy.gui.builder as tgb\n        ...\n"
+                new_documentation += f"        tgb.{type}("
+                def builder_value(value: str, type: str) -> str:
+                    if type == "f":
+                        return value
+                    if type.startswith("b"):
+                        return value.title()
+                    value = value.replace("\"", "'")
+                    return f"\"{value}\""
+                prefix = ""
+                if default_property:
+                    new_documentation += f"\"{default_property}\""
+                    prefix = ", "
+                for n, v, t in pb_properties:
+                    new_documentation += f"{prefix}{n}={builder_value(v, t)}"
+                    prefix = ", "
+                new_documentation += ")\n"
+                new_documentation += "        ```\n"
             last_location = definition.end()
         return new_documentation + documentation[last_location:] if documentation else documentation

@@ -112,6 +112,19 @@ The impact of this change is reflected in the page:
 
 Compared to the previous example, you can see that the label uses a bold font weight.
 
+!!! warning "Indexed properties"
+    Some elements of Taipy GUI (such as [`chart`](../viselements/chart.md),
+    [`table`](../viselements/table.md), or [`layout`](../viselements/layout.md)) have *indexed
+    properties*. The syntax to express these property names, where the *root name* of the property
+    is followed by the index value between square brackets, is not supported in the Page Builder
+    API.<br/>
+    To express an index property with the Page Builder API, you must create an argument name made
+    of the root name of the property, followed by two underscore characters, followed by the index
+    value: `the_property[the_index]` in [Markdown](../pages/markdown.md) or [HTML](../pages/html.md)
+    must be expressed as an argument called `the_property__the_index` in the Page Builder API.
+
+    The Page Builder API does support index values that are not Python identifiers or literals.
+
 # Binding variables
 
 You can bind your application variables to a property value by setting the property to a string
