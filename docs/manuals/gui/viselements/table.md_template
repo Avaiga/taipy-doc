@@ -139,7 +139,7 @@ When the user clicks this icon, the cell becomes editable:
 </figure>
 The user can enter a new cell value and click the check (✓) icon (or press the Enter key) to
 validate the entry.<br/>
-The user may also click the cancel (🗙) icon (or press the Tab key) to cancel the operation.
+The user may also click the cancel (🗙) icon (or press the Esc key) to cancel the operation.
 
 !!! note "Enumerated values"
     A table control can be defined so that values are constrained to predefined values. In this
