@@ -71,7 +71,7 @@ Published on 2024-03.
   [Submission](./manuals/core/entities/orchestrating-and-job-execution.md#submission).
 - `taipy.submit()^`, `Scenario.submit()^`, `Sequence.submit()^`, and `Task.submit()^` now return a
   `Submission^` entity.
-- A New predefined data node named `S3ObjectDataNode^` has been implemented.<br/>
+- A new predefined data node named `S3ObjectDataNode^` has been implemented.<br/>
   For more information, please refer to
   [S3ObjectDataNode](./manuals/core/config/data-node-config.md#amazon-web-service-s3-object).
 
@@ -81,14 +81,17 @@ Published on 2024-03.
 
 - Task nodes in the [`scenario_dag`](manuals/gui/corelements/scenario_dag.md) control dynamically
   reflect the status of related jobs for the user that submitted scenarios or sequences.
-- The [`scenario`](manuals/gui/corelements/scenario.md) control lets you add, modify and edit
+- The [`scenario`](manuals/gui/corelements/scenario.md) control lets you add, modify, and edit
   sequences.
 - The [`data_node`](manuals/gui/corelements/data_node.md) control can now represent collections.
 
 <h4><strong><code>taipy-gui</code></strong> 3.1.0</h4>
 
-- The [`table`](manuals/gui/viselements/table.md) control supports enumerated values.<br/>
-  TODO
+- The [`table`](manuals/gui/viselements/table.md) control supports enumerated values. That allows
+  for a better user experience when users edit cell values.<br/>
+  See the
+  [section on enumerated values in tables](manuals/gui/viselements/table.md/#enumerated-values) for
+  the details.
 - The [`toggle`](manuals/gui/viselements/toggle.md) control appears as a switch button if its
   [*value*](manuals/gui/viselements/toggle.md#p-value) property holds a Boolean value.
 

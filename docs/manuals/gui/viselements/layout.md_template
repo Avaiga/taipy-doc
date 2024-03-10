@@ -208,7 +208,7 @@ running on a mobile device.
         ```python
         import taipy.gui.builder as tgb
         ...
-        with tgb.layout(columns="50px 1fr 50px", columns[mobile]="1 1")
+        with tgb.layout(columns="50px 1fr 50px", columns__mobile="1 1")
             with tgb.part()
                 tgb.text("1st column content")
             with tgb.part()
