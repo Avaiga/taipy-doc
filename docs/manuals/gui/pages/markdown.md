@@ -60,21 +60,13 @@ about Visual Elements definition.
 
 !!! tip "Commenting Markdown"
     The Markdown syntax does not explicitly indicate how to insert comments in the text.
-    However, you can:
-
-    - Use HTML comments anywhere in the Markdown text:<br/>
-      Fragments that look like:
-      ```
-      <!-- This is a comment -->
-      ```
-      will be ignored.
-    - Use a link-like construct as a new line in the Markdown body:<br/>
-      Both:
-      ```
-      [//]: <> (This is also a comment.)
-      ```
-      and
-      ```
-      [//]: # (This is another comment.)
-      ```
-      will be ignored, as long as they appear as a single line.
+    However, you can use a link-like construct as a new line in the Markdown body:<br/>
+    Both:
+    ```
+    [//]: <> (This is a comment.)
+    ```
+    and
+    ```
+    [//]: # (This is another comment.)
+    ```
+    will be ignored as long as they appear as a single line in the Markdown content.

@@ -36,6 +36,13 @@ The control definition can be as simple as:
 !!! taipy-element
     default=Welcome to Taipy!
 
+With this control, the page will look like this:
+<figure class="tp-center">
+    <img src="../login-init-d.png" class="visible-dark"  width="80%"/>
+    <img src="../login-init-l.png" class="visible-light" width="80%"/>
+    <figcaption>Login control after username and password were provided</figcaption>
+</figure>
+
 You may improve on the following simple code to implement what to do when users interact with
 this control:
 ```python
