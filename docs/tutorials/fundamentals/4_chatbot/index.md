@@ -14,7 +14,7 @@ In this tutorial we will create a simple chatbot website using Taipy.
 ![Render of the app](images/chatbot_roundconv.png){width=100% : .tp-image-border }
 
 
-Here we will use OpenAI's API with [GPT-3](https://openai.com/blog/gpt-3-apps). This tutorial can easily
+Here we will use OpenAI's API with GPT-4. This tutorial can easily
 be adapted to other LLMs.
 
 
@@ -49,7 +49,7 @@ Initialize the following variables in the main.py file:
 ```python
 context = "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.\n\nHuman: Hello, who are you?\nAI: I am an AI created by OpenAI. How can I help you today? "
 conversation = {
-    "Conversation": ["Who are you?", "Hi! I am GPT-3. How can I help you today?"]
+    "Conversation": ["Who are you?", "Hi! I am GPT-4. How can I help you today?"]
 }
 current_user_message = ""
 ```
@@ -76,7 +76,7 @@ is the user message and returns a string which is the response from the LLM.
 ```python
 def request(state: State, prompt: str) -> str:
     """
-    Send a prompt to the GPT-3 API and return the response.
+    Send a prompt to the GPT-4 API and return the response.
 
     Args:
         - state: The current state.
@@ -92,7 +92,7 @@ def request(state: State, prompt: str) -> str:
                 "content": f"{prompt}",
             }
         ],
-        model="gpt-3.5-turbo",
+        model="gpt-4-turbo-preview",
     )
     return response.choices[0].message.content
 ```
