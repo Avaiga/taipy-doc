@@ -3,7 +3,7 @@ title: Measuring Industry Agglomeration
 category: visualization
 data-keywords: dashboard maps
 short-description: Explore where industries are concentrated and how they are distributed across the United States.
-img: industry_agglom/images/map_image.png
+img: 7_industry_agglom/images/map_image.png
 ---
 
 Explore where industries are concentrated and how they are distributed across 

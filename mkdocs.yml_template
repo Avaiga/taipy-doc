@@ -215,7 +215,7 @@ nav:
     - "Visualization":
       - "Visualization": gallery/visualization/index.md
       - "COVID Dashboard": gallery/visualization/2_covid_dashboard/index.md
-      - "Measuring Industry Agglomeration": gallery/visualization/industry_agglom/index.md
+      - "Measuring Industry Agglomeration": gallery/visualization/7_industry_agglom/index.md
       - "Image Classification": gallery/visualization/image_classif/index.md
       - "Realtime Pollution Dashboard" : gallery/visualization/pollution_sensors/index.md
     - "Other":
