@@ -391,27 +391,9 @@ spiral = create_spiral()
 ```
 
 And use the variable *spiral* in the definition of the `part` block:
-!!! example "Definition"
-
-    === "Markdown"
-
-        ```
-        <|part|content={spiral}|height=520px|>
-        ```
-
-    === "HTML"
-
-        ```html
-        <taipy:part content="{spiral}" height="520px"/>
-        ```
-
-    === "Python"
-
-        ```python
-        import taipy.gui.builder as tgb
-        ...
-        tgb.part(content="{spiral}", height="520px")
-        ```
+!!! taipy-element
+    content={spiral}
+    height=520px
 
 Here is what the result looks like:
 <figure class="tp-center">
