@@ -6,7 +6,48 @@ The selector can let the user select multiple items.
 
 A filtering feature is available to display only a subset of the items.
 
-You can use an arbitrary type for all the items (see the [example](#binding-to-a-list-of-objects)).
+You can use an arbitrary type for all the items (see the [example](#display-a-list-of-objects)).
+
+# Details
+
+By default, the selector control displays elements as a series of texts:
+<figure>
+    <img src="../selector-default-d.png" class="visible-dark" />
+    <img src="../selector-default-l.png" class="visible-light"/>
+    <figcaption>A selector with several items </figcaption>
+</figure>
+The user can select an item that appears highlighted in the control.
+
+If the [*multiple*](#p-multiple) property is True, then the list appears as a series of toggle
+buttons that users can select and deselect:
+<figure>
+    <img src="../selector-multiple-d.png" class="visible-dark" />
+    <img src="../selector-multiple-l.png" class="visible-light"/>
+    <figcaption>Multiple selection</figcaption>
+</figure>
+Then several items can be selected, and the [*value*](#p-value) property is set to an array that
+stores those items.
+
+## Display modes
+
+The [*mode*](#p-mode) property can be set to "check" or "radio" to change the way the selector
+is represented:
+
+- If [*mode*](#p-mode) is set to "check", the control displays as a list of toggle buttons:
+    <figure>
+        <img src="../selector-check-d.png" class="visible-dark" />
+        <img src="../selector-check-l.png" class="visible-light"/>
+        <figcaption>"check" mode</figcaption>
+    </figure>  
+    The [*multiple*](#p-multiple) property is forced to True.
+
+- If [*mode*](#p-mode) is set to "radio", the control displays a list of radio buttons:
+    <figure>
+        <img src="../selector-radio-d.png" class="visible-dark" />
+        <img src="../selector-radio-l.png" class="visible-light"/>
+        <figcaption>"radio" mode</figcaption>
+    </figure>  
+    The [*multiple*](#p-multiple) property is forced to False.
 
 # Styling
 
@@ -15,11 +56,11 @@ name to select the selector controls on your page and apply style.
 
 ## [Stylekit](../styling/stylekit.md) support
 
-The [Stylekit](../styling/stylekit.md) provides a specific class that you can use to style selector controls:
+The [Stylekit](../styling/stylekit.md) provides a specific class that you can use to style selector
+controls:
 
 * *fullwidth*<br/>
-    If a selector control uses the *fullwidth* class, then it uses the whole available
-    horizontal space.
+    If a selector control uses the *fullwidth* class, it uses the whole available horizontal space.
 
 # Usage
 
@@ -33,8 +74,8 @@ You can create a selector on a series of strings:
 
 ## Display as a dropdown
 
-To make the selector control a drop-down selector, you can set the [*dropdown*](#p-dropdown)
-property to True:
+You can set the [*dropdown*](#p-dropdown) property to True to make the selector control a drop-down
+selector.
 
 !!! taipy-element
     default={value}
@@ -43,7 +84,7 @@ property to True:
 
 ## Display with filter and multiple selection
 
-You can add a filter input field that lets you display only strings that match the filter value.
+You can add a filter input field to display only strings that match the filter value.
 
 !!! taipy-element
     default={value}
@@ -62,7 +103,7 @@ A selector control that returns an id while selecting a label or `Icon^`.
 ## Display a list of objects
 
 Assuming your Python code has created a list of object:
-```py
+```python
 class User:
     def __init__(self, id, name, birth_year):
         self.id, self.name, self.birth_year = (id, name, birth_year)
@@ -86,9 +127,9 @@ can use the following fragment.
     type=User
     adapter={lambda u: (u.id, u.name)}
 
-In this example, we are using the Python list *users* as the selector's *list of values*.
+In this example, we use the Python list *users* as the selector's *list of values*.<br/>
 Because the control needs a way to convert the list items (which are instances of the class
-*User*) into a string that can be displayed, we are using an *adapter*: a function that converts
+*User*) into displayable strings, we are using an *adapter*: a function that converts
 an object, whose type must be provided to the [*type*](#p-type) property, to a tuple. The first
-element of the tuple is used to reference the selection (therefore those elements should be unique
-among all the items) and the second element is the string that turns out to be displayed.
+element of the tuple is used to reference the selection (therefore, those elements should be unique
+among all the items), and the second element is the string that turns out to be displayed.
