@@ -282,9 +282,10 @@ details on how to migrate from version older than 2.1.
   See [issue #501](https://github.com/Avaiga/taipy-gui/issues/501) or
   [this section](manuals/gui/configuration.md#protect-your-application-files) for
   details.
-- Charts can use a [Decimator]() instance that cleverly filters data
-  points out to greatly improve performance.<br/>
-  See the [Decimator documentation]() for more details.
+- Charts can use the new `Decimator^` class to cleverly filter data points out to significantly
+  improve performance.<br/>
+  See the paragraph on [large datasets](manuals/gui/viselements/chart.md#large-datasets) for
+  specific information.
 - Charts now support polar, funnel, candlesticks and many other types of charts.<br/>
   See the [chart control](manuals/gui/viselements/chart.md) section for details.
 - Charts now support the dark theme automatically.

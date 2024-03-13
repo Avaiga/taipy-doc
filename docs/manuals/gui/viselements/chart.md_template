@@ -167,6 +167,41 @@ Please check the
 [Plotly Python example](charts/advanced.md#using-the-ploty-python-library)
 for more details.
 
+## Large datasets
+
+Displaying large datasets poses several challenges, both from a technical and user experience
+standpoint. These challenges can impact performance, usability, and the overall effectiveness of
+data presentation.
+
+The most prominent issues are:
+
+- Performance Issues<br/>
+    - Loading Time: Large datasets can significantly increase the display time of your application,
+      leading to a poor user experience.
+    - Memory Usage: Keeping large amounts of data in memory can strain client devices, potentially
+      leading to browser crashes or sluggish performance.
+    - Network Performance: Transmitting large datasets over the network can be slow and expensive in
+      terms of bandwidth, especially for users on limited data plans or slow connections.
+- User Experience Challenges<br/>
+    - Designing visualizations that scale well with the size of the data and remain informative and
+      actionable can be challenging.
+- Technical Limitations<br/>
+  Browsers have limitations on how much data they can efficiently process and display, which can
+  restrict the amount of data that can be shown at one time.
+
+The chart control provides different classes that can help deliver relevant representations of large
+data sets by applying a technical method called *data decimation*.<br/>
+Data decimation involves reducing the volume of data to be sent to the browser and displayed without
+significantly losing the usefulness of the original data. The goal is to make visualization more
+efficient while retaining the essential characteristics of the data.
+
+The [`taipy.gui.data`](../../reference/pkg_taipy.gui.data.md) package defines implementations of
+different decimation algorithms in classes that inherit the `Decimator^` class.
+
+To use these algorithms and manage the challenges posed by representing large datasets, you must
+instantiate the decimator class that best matches the dataset you are dealing with and set the
+instance to the [`decimator`](#p-decimator) property of the chart control that represents the data.
+
 ## The *rebuild* property {data-source="gui:doc/examples/charts/example-rebuild.py"}
 
 Some of the chart control's properties may result in Taipy GUI having to entirely reconstruct the
