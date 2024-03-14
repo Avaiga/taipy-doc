@@ -38,8 +38,8 @@ At this point, two methods are overloaded:
 
 ## Declaring a custom visual element {data-source="gui:doc/extension/example_library/example_library.py"}
 
-We are going to create a static custom visual element: this element
-will be called "fraction", located in a new library called "example".<br/>
+We are going to create a static custom visual element: this element will be called "fraction",
+located in a new library called "example".<br/>
 The element has two properties, called *numerator* and *denominator*.  This element displays the
 values of its property as a fraction:
 
@@ -80,8 +80,11 @@ argument with a function that generates the XHTML fragment that represents
 this element.
 
 !!! note "XHTML vs. HTML"
-    XHTML is a stricter version of HTML that is an XML application. In particular,
-    in XHTML:
+    The definition of the element must be expressed as XHTML content, just like when the application
+    creates `Html^` pages.<br/>
+    You can find details on this syntax in the
+    [XHTML for pages section](../pages/html.md#xhtml-is-required). In short, XHTML is a stricter
+    version of HTML that is an XML application. In particular:
 
     - Elements **must** be properly nested.
     - Elements **must** be properly closed.
