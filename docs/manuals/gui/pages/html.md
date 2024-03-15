@@ -52,11 +52,10 @@ Here are the rules that the page definition must follow:
 
 # Event handlers
 
-Because of Cross Site Scripting (XSS) concerns, when Taipy GUI interprets the HTML content, it will
-drop the event handlers set on native HTML elements.
+Taipy GUI drops the event handlers explicitly set using native HTML elements' attributes.
 
-Here is an example of such a use case.<br/>
-This is a Taipy application that creates a page entirely defined in HTML:
+Here is an example of HTML content in this situation. A Taipy application creates a page entirely
+defined in HTML as follows:
 ```python linenums="1"
 from taipy.gui import Gui, Html
 
@@ -82,13 +81,14 @@ Gui(page).run()
 ```
 
 In line 16, you can spot where the HTML button is created, along with its event handler: the
-function *send_the_alert()*, defined in line 9, is called when the user presses the button.
+function *send_the_alert()*, defined in line 9, should be called when the user presses the button.
 
-But if you run this application and press the button, you will *not* witness the invocation of the
+But if you run this application and press the button, you will *not* observe the invocation of the
 function. That is because when Taipy converts the HTML input into the page sent to the browser, it
 removes the event handlers of the HTML elements.
 
-To fix this problem, you must set the event handler by code when the page is executed on the client.
+To fix this problem, you must set the event handler by code when the JavaScript code runs on the
+client.<br/>
 Here is a version of the variable *page* that fixes the problem:
 
 ```python linenums="3"
@@ -113,6 +113,6 @@ page = Html("""
 """)
 ```
 
-Notice that, in line 18 where the button element is defined, the setting of the event handler has
-disappeared. Instead, in lines 12 and 13, we indicate that when the button emits the "click" event,
-the function should be invoked.
+Notice that, in line 18, where the button element is defined, the setting of the event handler has
+disappeared. Instead, in lines 12 and 13, we indicate that the function should be invoked when the
+button emits the "click" event.
