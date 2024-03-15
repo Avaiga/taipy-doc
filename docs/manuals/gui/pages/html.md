@@ -52,7 +52,8 @@ Here are the rules that the page definition must follow:
 
 # Event handlers
 
-Taipy GUI drops the event handlers explicitly set using native HTML elements' attributes.
+You cannot declare event handlers explicitly in HTML elements because Taipy GUI cannot use the event
+handlers' attribute value.
 
 Here is an example of HTML content in this situation. A Taipy application creates a page entirely
 defined in HTML as follows:
