@@ -64,7 +64,7 @@ Taipy is organized in several repositories:
 Taipy's repositories follow the [PEP 8](https://www.python.org/dev/peps/pep-0008/) and
 [PEP 484](https://www.python.org/dev/peps/pep-0484/) coding convention.
 
-## Javascript
+## JavaScript
 
 Taipy's repositories follow the [W3Schools](https://www.w3schools.com/js/js_conventions.asp) and
 [Google](https://google.github.io/styleguide/tsguide.html) coding convention.
