@@ -7,6 +7,6 @@ purposes.
   the [Python APIs](../reference/index.md) section.
 - The REST API for Scenario Management is exposed in the [REST APIs](../reference_rest/index.md)
   section.
-- The Javascript library that can be used to extend the Taipy GUI element set is documented in the
+- The JavaScript library that can be used to extend the Taipy GUI element set is documented in the
   [Typescript APIs](../reference_guiext/index.md) section.
 
