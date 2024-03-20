@@ -115,6 +115,12 @@ This is the list of changes to Taipy releases as they were published.
 - Important error messages are mangled.<br/>
   See [issue #560](https://github.com/Avaiga/taipy/issues/560).
 
+<h4><strong><code>taipy-core</code></strong> 3.1.1</h4>
+
+- The signatures for `Config.configure_sql_data_node()`, `Config.configure_s3_object_data_node()`, and
+  `configure_core()` methods are out-of-date.<br/>
+  See [issue #1014](https://github.com/Avaiga/taipy/issues/1014).
+
 # Enterprise edition: 3.1
 
 (Work in progress - the following link is invalid for the time being)
