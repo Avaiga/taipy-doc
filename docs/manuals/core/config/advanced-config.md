@@ -263,7 +263,7 @@ Here is an example of a _TOML_ file overriding the code configuration provided a
 ```toml linenums="1" title="folder/config.toml"
 [JOB]
 mode = "standalone"
-nb_of_workers = 5
+max_nb_of_workers = 5
 
 [DATA_NODE.sales_history]
 storage_type="csv"

@@ -82,8 +82,8 @@ You can configure the _standalone_ mode with the following config:
     mode = "standalone"
     ```
 
-To execute multiple `Job^`s simultaneously, you can set the _nb_of_workers_ to an integer value greater
-than 1. That starts each `Job^` in a dedicated process with _nb_of_workers_ as the limit of concurrent
+To execute multiple `Job^`s simultaneously, you can set the _max_nb_of_workers_ to an integer value greater
+than 1. That starts each `Job^` in a dedicated process with _max_nb_of_workers_ as the limit of concurrent
 processes that can run simultaneously.
 
 For example, the following configuration will allow Taipy to run up to eight `Job^`s simultaneously:
@@ -93,7 +93,7 @@ For example, the following configuration will allow Taipy to run up to eight `Jo
     ```python  linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(mode="standalone", nb_of_workers=8)
+    Config.configure_job_executions(mode="standalone", max_nb_of_workers=8)
     ```
 
 === "TOML configuration "
@@ -107,11 +107,11 @@ For example, the following configuration will allow Taipy to run up to eight `Jo
     ```toml linenums="1" title="config.toml"
     [JOB]
     mode = "standalone"
-    nb_of_workers = "8:int"
+    max_nb_of_workers = "8:int"
     ```
 
 !!! note
 
-    If no value is provided in the _nb_of_workers_ setting in the configuration, Taipy will set this value to 1.
+    If no value is provided in the _max_nb_of_workers_ setting in the configuration, Taipy will set this value to 1.
 
 [:material-arrow-right: The next section introduces the configuration checker](config-checker.md).
