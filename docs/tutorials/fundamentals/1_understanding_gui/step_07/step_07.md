@@ -43,12 +43,12 @@ could have one page created with Markdown and another with the Python API.
     # Add a navbar to switch from one page to the other
     with tgb.Page() as root_page:
         tgb.navbar()
-        tgb.text("Multi-page application", class_name="h1")
+        tgb.text("# Multi-page application", mode="md")
 
     with tgb.Page() as page_1:
-        tgb.text("This is page 1", class_name="h2")
+        tgb.text("## This is page 1", mode="md")
     with tgb.Page() as page_2:
-        tgb.text("This is page 1", class_name="h2")
+        tgb.text("## This is page 2", mode="md")
 
     pages = {
         "/": root_page,
@@ -114,9 +114,9 @@ For example, this code creates a menu with two options:
                  on_action=on_menu)
 
     with tgb.Page() as page_1:
-        tgb.text("This is page 1", class_name="h2")
+        tgb.text("## This is page 1", mode="md")
     with tgb.Page() as page_2:
-        tgb.text("This is page 1", class_name="h2")
+        tgb.text("## This is page 2", mode="md")
 
     pages = {
         "/": root_page,
@@ -155,12 +155,12 @@ through the Taipy pages by default
     # Add a navbar to switch from one page to the other
     with tgb.Page() as root_page:
         tgb.navbar()
-        tgb.text("Multi-page application", class_name="h1")
+        tgb.text("# Multi-page application", mode="md")
 
     with tgb.Page() as page_1:
-        tgb.text("This is page 1", class_name="h2")
+        tgb.text("## This is page 1", mode="md")
     with tgb.Page() as page_2:
-        tgb.text("This is page 1", class_name="h2")
+        tgb.text("## This is page 2", mode="md")
 
     pages = {
         "/": root_page,
