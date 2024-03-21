@@ -82,7 +82,7 @@ applications.
             state.data = compute_data(state.value)
 
         with tgb.Page() as page:
-            tgb.text(value="Taipy Getting Started", class_name="h1")
+            tgb.text(value="# Taipy Getting Started", mode="md")
             tgb.text(value="Value: {value}")
             tgb.slider(value="{value}", on_change=on_slider)
             tgb.chart(data="{data}") 
