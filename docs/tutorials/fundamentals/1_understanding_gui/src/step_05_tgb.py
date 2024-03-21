@@ -45,20 +45,20 @@ def local_callback(state):
 with tgb.Page() as page:
     tgb.toggle(theme=True)
 
-    tgb.text("Getting started with Taipy GUI", class_name="h1")
+    tgb.text("# Getting started with Taipy GUI", mode="md")
     tgb.text("My text: {text}")
 
     tgb.input("{text}")
     tgb.button("Analyze", on_action=local_callback)
 
     # Displaying sentiment scores and overall sentiment
-    tgb.text("Positive", class_name="h2")
+    tgb.text("## Positive", mode="md")
     tgb.text("{np.mean(dataframe['Score Pos'])}", format="%.2f")
     
-    tgb.text("Neutral", class_name="h2")
+    tgb.text("## Neutral", mode="md")
     tgb.text("{np.mean(dataframe['Score Neu'])}", format="%.2f")
 
-    tgb.text("Negative", class_name="h2")
+    tgb.text("## Negative", mode="md")
     tgb.text("{np.mean(dataframe['Score Neg'])}", format="%.2f")
 
     tgb.table("{dataframe}", number_format="%.2f")

@@ -9,6 +9,8 @@ img: 4_long_callbacks/images/long_running_callbacks.png
 Tasks (server-side functions) in web applications can take a lot of time, which can lead to
 problems with communication between the server (Python application) and the client (web browser).
 
+[See example code](./src/long_callbacks.py){: .tp-btn target='blank' }
+
 Taipy offers a valuable feature known as "long-running callbacks" to tackle this problem. These
 callbacks enable the server to handle resource-intensive processing in the background, ensuring
 a responsive user interface.
@@ -121,10 +123,19 @@ In the code above, in line 13, when you include a *period* parameter, the `heavy
 function will be regularly activated at the set interval, such as every 5 seconds. This allows
 your user interface to show live updates, informing the end user about ongoing work.
 
-# Conclusion
+# Conclusion and code
 
 Taipy's long-running callbacks make handling time-consuming tasks in web applications much
 easier. By running demanding functions in the background, Taipy ensures that the user interface
 responds quickly and avoids potential communication timeouts. With the option to keep an eye on
 the function's progress and offer updates, developers can create a smooth user experience, even
 when dealing with hefty operations.
+
+![Approximating Pi](images/approx_pi.png){width=90% : .tp-image }
+
+```python
+{%
+include-markdown "./src/long_callbacks.py"
+comments=false
+%}
+```
