@@ -20,7 +20,7 @@ def local_callback(state):
 with tgb.Page() as page:
     tgb.toggle(theme=True)
 
-    tgb.text("Getting started with Taipy GUI", class_name="h1")
+    tgb.text("# Getting started with Taipy GUI", mode="md")
     tgb.text("My text: {text}")
 
     tgb.input("{text}")

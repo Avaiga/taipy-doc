@@ -117,13 +117,13 @@ of columns. Here, we create three columns of the same width.
 
         with tgb.layout(columns="1 1 1"):
             with tgb.part():
-                tgb.text("Positive", class_name="h2")
+                tgb.text("## Positive", mode="md")
                 tgb.text("{np.mean(dataframe['Score Pos'])}", format="%.2f")
             with tgb.part():
-                tgb.text("Neutral", class_name="h2")
+                tgb.text("## Neutral", mode="md")
                 tgb.text("{np.mean(dataframe['Score Neu'])}", format="%.2f")
             with tgb.part():
-                tgb.text("Negative", class_name="h2")
+                tgb.text("## Negative", mode="md")
                 tgb.text("{np.mean(dataframe['Score Neg'])}", format="%.2f")
 
         tgb.chart("{dataframe}", type="bar", x="Text", y__1="Score Pos", y__2="Score Neu", y__3="Score Neg", y__4="Overall",
