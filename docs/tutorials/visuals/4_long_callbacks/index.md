@@ -131,6 +131,8 @@ responds quickly and avoids potential communication timeouts. With the option to
 the function's progress and offer updates, developers can create a smooth user experience, even
 when dealing with hefty operations.
 
+![Approximating Pi](images/approx_pi.png){width=90% : .tp-image }
+
 ```python
 {%
 include-markdown "./src/long_callbacks.py"
