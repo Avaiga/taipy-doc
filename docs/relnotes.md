@@ -44,6 +44,9 @@ This is the list of changes to Taipy releases as they were published.
 
 <h4><strong><code>taipy-core</code></strong> 3.2.0 </h4>
 
+- In standalone job execution mode, the default value of *max_nb_of_workers* is now 2 instead of 1.
+  For more information, please refer to [Job execution configuration](./manuals/core/config/job-config.md).
+
 ## Significant bug fixes
 
 <h4><strong><code>taipy-gui</code></strong> 3.2.0</h4>
