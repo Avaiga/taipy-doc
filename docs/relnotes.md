@@ -17,9 +17,47 @@ This is the list of changes to Taipy releases as they were published.
     If you are using a legacy version (pre-3.0), please refer to the
     [Legacy Release Notes](relnotes-legacy.md) page.
 
-# Community edition: 3.1
+# Community edition: 3.2
 
 (Work in progress - the following links are invalid for the time being)
+
+[`taipy` 3.2](https://pypi.org/project/taipy/3.2.0/) contains the latest
+[`taipy-config` 3.2](https://pypi.org/project/taipy-config/3.2.0/),
+[`taipy-gui` 3.2](https://pypi.org/project/taipy-gui/3.2.0/),
+[`taipy-core` 3.2](https://pypi.org/project/taipy-core/3.2.0/),
+[`taipy-templates` 3.2](https://pypi.org/project/taipy-templates/3.2.0/), and
+[`taipy-rest` 3.2](https://pypi.org/project/taipy-rest/3.2.0/) packages.
+
+## New Features
+
+<h4><strong><code>taipy</code></strong> 3.2.0</h4>
+
+<h4><strong><code>taipy-gui</code></strong> 3.2.0</h4>
+
+<h4><strong><code>taipy-core</code></strong> 3.2.0 </h4>
+
+## Improvements and changes
+
+<h4><strong><code>taipy</code></strong> 3.2.0</h4>
+
+<h4><strong><code>taipy-gui</code></strong> 3.2.0</h4>
+
+<h4><strong><code>taipy-core</code></strong> 3.2.0 </h4>
+
+## Significant bug fixes
+
+<h4><strong><code>taipy-gui</code></strong> 3.2.0</h4>
+
+<h4><strong><code>taipy-core</code></strong> 3.2.1</h4>
+
+# Enterprise edition: 3.2
+
+(Work in progress - the following link is invalid for the time being)
+
+This release contains all of [`taipy` 3.2](https://pypi.org/project/taipy/3.2.0) as well as
+additional features.
+
+# Community edition: 3.1
 
 [`taipy` 3.1](https://pypi.org/project/taipy/3.1.0/) contains the latest
 [`taipy-config` 3.1](https://pypi.org/project/taipy-config/3.1.0/),
@@ -122,8 +160,6 @@ This is the list of changes to Taipy releases as they were published.
   See [issue #1014](https://github.com/Avaiga/taipy/issues/1014).
 
 # Enterprise edition: 3.1
-
-(Work in progress - the following link is invalid for the time being)
 
 This release contains all of [`taipy` 3.1](https://pypi.org/project/taipy/3.1.0) as well as
 additional features.
