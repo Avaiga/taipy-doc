@@ -55,7 +55,7 @@ This script generates a random number between 1 and 100, sends it through a sock
 
 Coding the receiver script requires multiple steps:
 
-1. Imports and defining the socket parameters.
+- Imports and defining the socket parameters.
 
 ```python title="receiver.py"
 import socket
@@ -66,7 +66,7 @@ HOST = "127.0.0.1"
 PORT = 5050
 ```
 
-2. We gather the list of state identifiers. These are identifiers of the clients connected to
+- We gather the list of state identifiers. These are identifiers of the clients connected to
 our Taipy application. We need this list to choose which client to send the data to.
 
 ```python title="receiver.py"
@@ -78,7 +78,7 @@ def on_init(state: State):
         state_id_list.append(state_id)
 ```
 
-3. We create a function to listen to the socket. When the socket receives data, it triggers a
+- We create a function to listen to the socket. When the socket receives data, it triggers a
 callback to send the data to the Taipy application for one of the connected clients.
 
 ```python title="receiver.py"
@@ -103,7 +103,7 @@ def update_received_data(state: State, val):
     state.received_data = val
 ```
 
-4. We create the Taipy application to display the data. The *client_handler()* function and
+- We create the Taipy application to display the data. The *client_handler()* function and
 the application itself are run in different threads.
 
 ```python title="receiver.py"
