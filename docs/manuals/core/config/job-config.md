@@ -4,8 +4,8 @@ available in Taipy: the `standalone` mode and the `development` mode.
 
 # Development mode
 
-With the _development_ mode, the jobs are synchronously executed one by one. The jobs are directly executed
-in the main thread at the submission. Note that with the _development_ mode, the submit method waits for the
+With the *development* mode, the jobs are synchronously executed one by one. The jobs are directly executed
+in the main thread at the submission. Note that with the *development* mode, the submit method waits for the
 jobs to be finished before to return. Please refer to the
 [submit entity](../entities/orchestrating-and-job-execution.md#submit-a-scenario-sequence-or-task) section to
 the see how to submit jobs.
@@ -13,7 +13,7 @@ the see how to submit jobs.
 It is particularly handy to test a job execution and/or investigate an issue in the function
 executed.
 
-The _development_ mode can be activated with the following config:
+The *development* mode can be activated with the following config:
 
 === "Python configuration"
 
@@ -51,15 +51,15 @@ The _development_ mode can be activated with the following config:
     interactive platform. For reference, please visit:
     [multiprocessing - Process-based parallelism](https://docs.python.org/3/library/multiprocessing.html#using-a-pool-of-workers)
 
-With the _standalone_ mode, a `Job^` runs in its own execution context, in an asynchronous manner.
+With the *standalone* mode, a `Job^` runs in its own execution context, in an asynchronous manner.
 At the submission, the job is queued. It is dequeued in a different thread and sent to a dedicated process to be
 executed.
-Note that with the _standalone_ mode, the submit method in not blocking and returns after the job is queued.
+Note that with the *standalone* mode, the submit method in not blocking and returns after the job is queued.
 It means the submit method can return before the job finishes or even before it is dequeued. Please refer to
 the [submit entity](../entities/orchestrating-and-job-execution.md#submit-a-scenario-sequence-or-task) section
 to the see how to submit jobs.
 
-You can configure the _standalone_ mode with the following config:
+You can configure the *standalone* mode with the following config:
 
 === "Python configuration"
 
@@ -82,9 +82,13 @@ You can configure the _standalone_ mode with the following config:
     mode = "standalone"
     ```
 
-To execute multiple `Job^`s simultaneously, you can set the _max_nb_of_workers_ to an integer value greater
-than 1. That starts each `Job^` in a dedicated process with _max_nb_of_workers_ as the limit of concurrent
+To execute multiple `Job^`s simultaneously, you can set the *max_nb_of_workers* to an integer value greater
+than 1. That starts each `Job^` in a dedicated process with *max_nb_of_workers* as the limit of concurrent
 processes that can run simultaneously.
+
+!!! note
+
+    The default value of *max_nb_of_workers* is 2.
 
 For example, the following configuration will allow Taipy to run up to eight `Job^`s simultaneously:
 
@@ -109,9 +113,5 @@ For example, the following configuration will allow Taipy to run up to eight `Jo
     mode = "standalone"
     max_nb_of_workers = "8:int"
     ```
-
-!!! note
-
-    If no value is provided in the _max_nb_of_workers_ setting in the configuration, Taipy will set this value to 1.
 
 [:material-arrow-right: The next section introduces the configuration checker](config-checker.md).
