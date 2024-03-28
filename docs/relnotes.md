@@ -46,6 +46,9 @@ This is the list of changes to Taipy releases as they were published.
 
 - In standalone job execution mode, the default value of *max_nb_of_workers* is now 2 instead of 1.
   For more information, please refer to [Job execution configuration](./manuals/core/config/job-config.md).
+- When using the Taipy command-line interface, if an unsupported argument is provided, the CLI
+  will display a message indicating the invalid argument. If the invalid argument is possibly a
+  typo, the CLI will suggest the closest valid argument.
 
 ## Significant bug fixes
 
