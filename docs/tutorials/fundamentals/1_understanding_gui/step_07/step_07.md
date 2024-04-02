@@ -52,8 +52,8 @@ could have one page created with Markdown and another with the Python API.
 
     pages = {
         "/": root_page,
-        "page1": page1,
-        "page2": page2
+        "page1": page_1,
+        "page2": page_2
     }
     Gui(pages=pages).run()
     ```
@@ -120,8 +120,8 @@ For example, this code creates a menu with two options:
 
     pages = {
         "/": root_page,
-        "page1": page1,
-        "page2": page2
+        "page1": page_1,
+        "page2": page_2
     }
     Gui(pages=pages).run()
     ```
@@ -164,8 +164,8 @@ through the Taipy pages by default
 
     pages = {
         "/": root_page,
-        "page1": page1,
-        "page2": page2
+        "page1": page_1,
+        "page2": page_2
     }
     Gui(pages=pages).run()
     ```
