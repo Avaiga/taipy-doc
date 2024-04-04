@@ -100,8 +100,6 @@ nav:
             - manuals/run-deploy/deploy/index.md
             - "On the local machine":
                 - manuals/run-deploy/deploy/local_machine.md
-            - "On Taipy Cloud":
-                - manuals/run-deploy/deploy/taipy-cloud.md
             - "On Linux servers":
                 - manuals/run-deploy/deploy/linux/index.md
                 - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md
