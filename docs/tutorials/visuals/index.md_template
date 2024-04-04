@@ -31,12 +31,6 @@ Discover how to enhance your Taipy applications with visuals.
       <span>Stylekit</span>
     </label>
   </li>
-  <li>
-    <input type="checkbox" name="filter-cloud" id="filter-cloud" value="cloud">
-    <label class="tp-pill" for="filter-cloud">
-      <span>Taipy Cloud</span>
-    </label>
-  </li>
 </ul>
 
 [LIST_OF_ITEMS]
