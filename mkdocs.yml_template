@@ -73,7 +73,6 @@ nav:
         - "Stylekit": knowledge_base/tips/css_style_kit/index.md
         - "Skippable Tasks": knowledge_base/tips/skippable_tasks/index.md
         - "Callbacks in Taipy": knowledge_base/tips/the_on_change_callback/index.md
-        - "Taipy Cloud": knowledge_base/tips/taipy_cloud_deploy/index.md
         - "Integrate Third-Party Components": knowledge_base/tips/3rd_party_components/index.md
         - "Real-time data visualization": knowledge_base/tips/multithreading/index.md
         - "Big data models vs. Computer memory": knowledge_base/tips/big_data_models/index.md
@@ -171,8 +170,6 @@ nav:
               - "Deploying a Taipy application": manuals/run-deploy/deploy/index.md
               - "On the local machine":
                   - "Deploying locally": manuals/run-deploy/deploy/local/index.md
-              - "On Taipy Cloud":
-                  - "Deploying on Taipy Cloud": manuals/run-deploy/deploy/taipy-cloud/index.md
               - "On Linux servers":
                   - "Deploying on a Linux system": manuals/run-deploy/deploy/linux/index.md
                   - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md

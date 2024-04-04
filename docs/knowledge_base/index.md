@@ -15,7 +15,7 @@ hide:
         <p>
           Follow our tutorials and get the core concepts of Taipy.
         </p>
-      </div> 
+      </div>
     </a>
   </div>
 
@@ -29,7 +29,7 @@ hide:
         <p>
           See Taipy in action in our demo applications.
         </p>
-      </div> 
+      </div>
     </a>
   </div>
 
@@ -43,7 +43,7 @@ hide:
         <p>
           Learn some tips and tricks to take your Taipy applications further.
         </p>
-      </div> 
+      </div>
     </a>
   </div>
 </div>
@@ -100,12 +100,6 @@ hide:
       <span>Stylekit</span>
     </label>
   </li>
-  <li>
-    <input type="checkbox" name="filter-cloud" id="filter-cloud" value="cloud">
-    <label class="tp-pill" for="filter-cloud">
-      <span>Taipy Cloud</span>
-    </label>
-  </li>
 </ul>
 
 # Tutorials
@@ -121,7 +115,7 @@ hide:
         <p>
           Understand basic knowledge of Taipy GUI creating of a multi-page NLP application.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="scenario task datanode configuration submission dag">
@@ -132,9 +126,9 @@ hide:
       <div class="tp-content-card-body">
         <h4>Scenario management Overview</h4>
         <p>
-          Learn Scenario Management fundamental features. 
+          Learn Scenario Management fundamental features.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="scenario datanode configuration cycle scope submission">
@@ -145,9 +139,9 @@ hide:
       <div class="tp-content-card-body">
         <h4>Cycles and Scopes</h4>
         <p>
-          Share your Data Nodes across multiple scenarios with Cycles and Scopes. 
+          Share your Data Nodes across multiple scenarios with Cycles and Scopes.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="scenario task job submission configuration standalone">
@@ -158,9 +152,9 @@ hide:
       <div class="tp-content-card-body">
         <h4>Job Execution mode</h4>
         <p>
-            Increase efficiency running your scenarios making your Job Execution asynchronous. 
+            Increase efficiency running your scenarios making your Job Execution asynchronous.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="scenario comparison datanode configuration">
@@ -172,7 +166,7 @@ hide:
         <h4>Scenario Comparison</h4>
         <p> Learn best practices to compare scenarios easily.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="scenario subscription job gui notify">
@@ -184,7 +178,7 @@ hide:
         <h4>Scenario Subscription</h4>
         <p> Connect to your scenario executions to get the most recent updates.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui vizelement chart state multi-page callback markdown scenario task storage_type scope datanode configuration">
@@ -195,9 +189,9 @@ hide:
       <div class="tp-content-card-body">
         <h4>First Realistic application</h4>
         <p>
-          Build a complete realistic application from scratch from back-end to front-end. 
+          Build a complete realistic application from scratch from back-end to front-end.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui vizelement markdown">
@@ -208,9 +202,9 @@ hide:
       <div class="tp-content-card-body">
         <h4>LLM ChatBot</h4>
         <p>
-          Create a chatbot interface using Taipy and an LLM API. 
+          Create a chatbot interface using Taipy and an LLM API.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui markdown vizelement">
@@ -221,11 +215,11 @@ hide:
       <div class="tp-content-card-body">
         <h4>Single-page application using augmented Markdown syntax</h4>
         <p>
-          Watch and learn how to develop a web application page using augmented Markdown syntax 
-          with Taipy. Explore variable bindings and discover how to incorporate visual elements 
+          Watch and learn how to develop a web application page using augmented Markdown syntax
+          with Taipy. Explore variable bindings and discover how to incorporate visual elements
           such as sliders and charts.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui dashboard markdown vizelement layout navbar chart table callback">
@@ -236,11 +230,11 @@ hide:
       <div class="tp-content-card-body">
         <h4> Interactive Data Dashboard </h4>
         <p>
-          Discover Taipy visual elements to create an interactive data dashboard. You'll learn 
-          how to upload data, customize settings, and use various visualization tools to enhance 
+          Discover Taipy visual elements to create an interactive data dashboard. You'll learn
+          how to upload data, customize settings, and use various visualization tools to enhance
           your web app, all without needing HTML, CSS, or JavaScript.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui markdown vizelement chart">
@@ -251,10 +245,10 @@ hide:
       <div class="tp-content-card-body">
         <h4> Change line types using charts </h4>
         <p>
-          Discover crafting line charts for your Taipy application in this instructional video. 
+          Discover crafting line charts for your Taipy application in this instructional video.
           Walk you through the process using a basic time series dataset with two variables.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui markdown multi-page navbar layout part">
@@ -267,7 +261,7 @@ hide:
         <p>
           Learn how to organize your pages in this insightful video tutorial.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui markdown partials">
@@ -278,11 +272,11 @@ hide:
       <div class="tp-content-card-body">
         <h4> Organize your application with Partials, Dialogs, and Panes </h4>
         <p>
-          Explore the power of Partials in Taipy GUI with this video tutorial. Learn how 
-          to streamline development, enhance clarity, and create efficient pages and 
+          Explore the power of Partials in Taipy GUI with this video tutorial. Learn how
+          to streamline development, enhance clarity, and create efficient pages and
           components. Discover the utility of Dialogs and Panes for an improved user interface.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="scenario datanode task studio">
@@ -293,11 +287,11 @@ hide:
       <div class="tp-content-card-body">
         <h4> Scenario management basic concepts </h4>
         <p>
-          Learn how to use Taipy Studio graphical editor interface to configure your scenarios in 
-          this enlightening video tutorial. Explore Scenario management main concepts: Data 
+          Learn how to use Taipy Studio graphical editor interface to configure your scenarios in
+          this enlightening video tutorial. Explore Scenario management main concepts: Data
           Node, Task, and Scenario.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="scenario task datanode configuration studio job">
@@ -308,10 +302,10 @@ hide:
       <div class="tp-content-card-body">
         <h4> Submit Scenarios and Tasks </h4>
         <p>
-          Dive into a real-world use case, where we demonstrate the step-by-step process of 
+          Dive into a real-world use case, where we demonstrate the step-by-step process of
           harnessing your data's potential with Data nodes and Tasks.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 </ul>
@@ -326,10 +320,10 @@ hide:
       <div class="tp-content-card-body">
         <h4> Sales Dashboard </h4>
         <p> Check out our Sales Dashboard demo. It reads Excel files and shows valuable insights.
-            You can filter data by city, customer, and gender to find specific metrics and use 
+            You can filter data by city, customer, and gender to find specific metrics and use
             two dynamic charts for trend analysis.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui ai">
@@ -339,10 +333,10 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Tweet Generation </h4>
-        <p> Experience the AI-powered Tweet Generation. Create compelling Tweets effortlessly 
-            using GPT-3's Davinci engine for text and DALL·E for images. 
+        <p> Experience the AI-powered Tweet Generation. Create compelling Tweets effortlessly
+            using GPT-3's Davinci engine for text and DALL·E for images.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui ai">
@@ -352,9 +346,9 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Background Remover </h4>
-        <p> Background Remover simplifies background removal of your images with automatic detection, an interactive interface, and efficient Python code. 
+        <p> Background Remover simplifies background removal of your images with automatic detection, an interactive interface, and efficient Python code.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui ai">
@@ -364,10 +358,10 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Real-time Face Recognition </h4>
-        <p> Explore real-time face detection and recognition demo. Learn how to create custom UI 
+        <p> Explore real-time face detection and recognition demo. Learn how to create custom UI
             components and use OpenCV for accurate face identification.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui ai">
@@ -377,10 +371,10 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Sentiment Analysis: Detect emotional tones from a text </h4>
-        <p> Explore the power of Taipy's sentiment analysis capabilities with our two-page 
-            application. Analyze user input and uploaded text to uncover sentiments effortlessly. 
+        <p> Explore the power of Taipy's sentiment analysis capabilities with our two-page
+            application. Analyze user input and uploaded text to uncover sentiments effortlessly.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui optimization scenario">
@@ -390,11 +384,11 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Optimize Bar Cut Sizes </h4>
-        <p> Try out our Bar Cut Optimization demo. It uses Taipy to optimize bar cut sizes for two 
-            scenarios with distinct algorithms that reduces raw material waste in a visually 
+        <p> Try out our Bar Cut Optimization demo. It uses Taipy to optimize bar cut sizes for two
+            scenarios with distinct algorithms that reduces raw material waste in a visually
             intuitive way.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui ai classification">
@@ -404,10 +398,10 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Image Classification </h4>
-        <p> Explore our interactive image classification application built with Taipy, Nvidia CUDA, 
+        <p> Explore our interactive image classification application built with Taipy, Nvidia CUDA,
             and TensorFlow.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui ai classification scenario">
@@ -418,10 +412,10 @@ hide:
       <div class="tp-content-card-body">
         <h4> Churn Classification </h4>
         <p> Explore our Churn Classification demo. Use Taipy for data analysis, model management,
-            and model comparison in churn prediction. Witness the capabilities of Taipy in 
+            and model comparison in churn prediction. Witness the capabilities of Taipy in
             streamlining and improving decision-making.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui optimization scenario cycle comparison">
@@ -431,10 +425,10 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Production Planning </h4>
-        <p> Discover our Production Planning demo application that optimize production, reduce 
-            costs, and simulate manufacturing scenarios. 
+        <p> Discover our Production Planning demo application that optimize production, reduce
+            costs, and simulate manufacturing scenarios.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui ai dashboard">
@@ -444,10 +438,10 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Stock Visualization </h4>
-        <p> Explore the Stock Visualization Dashboard that leverages Taipy GUI and Prophet to 
+        <p> Explore the Stock Visualization Dashboard that leverages Taipy GUI and Prophet to
             visualize historical stock data and make predictions over 5 years.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui ai dashboard multi-page maps scenario datanode">
@@ -458,10 +452,10 @@ hide:
       <div class="tp-content-card-body">
         <h4> Covid Dashboard </h4>
         <p> Discover our minimalist yet powerful COVID-19 dashboard. View and forecast COVID-19
-            data for various countries, interact with maps, and gain insights into the global 
+            data for various countries, interact with maps, and gain insights into the global
             pandemic impact.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui ai dashboard">
@@ -471,10 +465,10 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Movie Genre Selector </h4>
-        <p> Explore Movie Genre Selector demo. See how this user-friendly tool helps you 
+        <p> Explore Movie Genre Selector demo. See how this user-friendly tool helps you
             effortlessly discover movies from your favorite movie genres.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui ai scenario datanode dag configuration">
@@ -488,7 +482,7 @@ hide:
             pipelines in a Taipy application by using the example of detecting drift on a
             dataset.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui dashboard vizelement layout chart">
@@ -501,7 +495,7 @@ hide:
         <p> Displays real-time pollution data from sensors around a factory. The data is streamed
             from another server and displayed in a dashboard.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -514,7 +508,7 @@ hide:
         <h4> TalkToTaipy </h4>
         <p> Explore datasets using only natural language using TalkToTaipy!
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -527,7 +521,7 @@ hide:
         <h4> LLM ChatBot </h4>
         <p> A chatbot that uses OpenAI's API with GPT-3. Can be used as a template for implementing apps that use LLM inference.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -540,7 +534,7 @@ hide:
         <h4> Fraud Detection </h4>
         <p> A Taipy Application that analyzes credit card transactions to detect fraud.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 </ul>
@@ -555,10 +549,10 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Scenarios </h4>
-        <p> A Taipy scenario represents a run that can be an instance of a business problem to 
+        <p> A Taipy scenario represents a run that can be an instance of a business problem to
             solve on data and parameter sets.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui notebook deployment">
@@ -568,10 +562,10 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Share your App with Colab and Ngrok </h4>
-        <p> Learn how to share on the Internet your Taipy Application created on Google Colab (a 
+        <p> Learn how to share on the Internet your Taipy Application created on Google Colab (a
             high-performance Notebook with CPU and GPU access for Deep Learning), using Ngrok.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui notebook">
@@ -581,10 +575,10 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Jupyter Notebooks </h4>
-        <p> Optimize your coding experience with Taipy in Jupyter Notebooks. Learn essential 
-            functions for seamless front-end updates without the need to restart the kernel. 
+        <p> Optimize your coding experience with Taipy in Jupyter Notebooks. Learn essential
+            functions for seamless front-end updates without the need to restart the kernel.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui callback">
@@ -594,11 +588,11 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Long-running Callbacks </h4>
-        <p> Discover the 'long-running callbacks' feature of Taipy GUI, ensuring responsiveness 
-            during lengthy tasks. This tip provides practical examples, highlighting the 
-            potential for improved user experiences.        
+        <p> Discover the 'long-running callbacks' feature of Taipy GUI, ensuring responsiveness
+            during lengthy tasks. This tip provides practical examples, highlighting the
+            potential for improved user experiences.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui multi-page navbar">
@@ -608,10 +602,10 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Multi-page Applications </h4>
-        <p> Organize your data visualizations in multi-page applications, resulting in 
+        <p> Organize your data visualizations in multi-page applications, resulting in
             user-friendly and intuitive user interface.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui vizelement tables callback stylekit">
@@ -621,10 +615,10 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Using tables </h4>
-        <p> Discover the power of Taipy front-end tables – your go-to for data presentation and 
-            control. Learn key settings and features for effortless table creation within data 
+        <p> Discover the power of Taipy front-end tables – your go-to for data presentation and
+            control. Learn key settings and features for effortless table creation within data
             applications. </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="scenario datanode storage_type configuration">
@@ -634,11 +628,11 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Data Nodes </h4>
-        <p> Explore Taipy data nodes and understand their central role in accessing data from 
-            various sources. This tip serves as your gateway to comprehending data nodes 
+        <p> Explore Taipy data nodes and understand their central role in accessing data from
+            various sources. This tip serves as your gateway to comprehending data nodes
             in Taipy.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui stylekit">
@@ -648,10 +642,10 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Stylekit </h4>
-        <p> Learn how to tailor your Taipy applications appearance with the CSS StyleKit. Easily 
+        <p> Learn how to tailor your Taipy applications appearance with the CSS StyleKit. Easily
             change the visual style with pre-made stylesheets, CSS variables, and utility classes.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="scenario task datanode job submission configuration">
@@ -661,10 +655,10 @@ hide:
       </header>
       <div class="tp-content-card-body">
         <h4> Skippable tasks </h4>
-        <p> Explore the 'skippable' task feature to improve your efficiency in pipeline 
+        <p> Explore the 'skippable' task feature to improve your efficiency in pipeline
             orchestration.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui callback">
@@ -676,20 +670,7 @@ hide:
         <h4> Callbacks </h4>
         <p> Make your multi-user graphical interface fully interactive using the on_change callback.
         </p>
-      </div> 
-    </a>
-  </li>
-  <li data-keywords="cloud deployment">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="tips/taipy_cloud_deploy">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-icon" src="tips/images/icon-code.svg">
-      </header>
-      <div class="tp-content-card-body">
-        <h4> Taipy Cloud </h4>
-        <p> Share your application on the web. Learn the simplicity of deploying and hosting your 
-            Taipy application on the Taipy Cloud. 
-        </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui dashboard">
@@ -701,7 +682,7 @@ hide:
         <h4> Real-time data visualization </h4>
         <p> Display data sent from another thread in real-time to your Taipy application.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui vizelement chart">
@@ -713,7 +694,7 @@ hide:
         <h4> Integrate Third-Party Components </h4>
         <p> Use the `part` visual element to embed any HTML inside your application.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="scenario task datanode job configuration">
@@ -725,7 +706,7 @@ hide:
         <h4> Big data models vs. Computer memory </h4>
         <p> A guide to building models that are bigger than your computer memory.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="gui ai">
@@ -737,7 +718,7 @@ hide:
         <h4> Charts for Big Data </h4>
         <p> Taming Big Data without crashing.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="scenario task">
@@ -749,7 +730,7 @@ hide:
         <h4> Integrating Databricks </h4>
         <p> A guide to integrate Databricks with Taipy scenarios.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
   <li data-keywords="scenario task">
@@ -761,7 +742,7 @@ hide:
         <h4> Using PySpark for Big Data </h4>
         <p> Build, Visualize and Launch Big Data DAGs.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 </ul>
