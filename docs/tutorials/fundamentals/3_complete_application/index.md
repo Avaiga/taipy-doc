@@ -45,7 +45,7 @@ $ pip install statsmodels
     `pip install taipy` is the preferred method to install the latest stable version of Taipy.
 
     If you don't have [pip](https://pip.pypa.io) installed, this
-    [Taipy installation guide](../../../installation/index.md)
+    [Taipy installation guide](../../../installation.md)
     can guide you through the process.
 
 
