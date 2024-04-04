@@ -30,13 +30,6 @@ Uncover strategies for effective scenario and data management.
     <label class="tp-pill" for="filter-stylekit">
       <span>Stylekit</span>
     </label>
-  </li>
-  <li>
-    <input type="checkbox" name="filter-cloud" id="filter-cloud" value="cloud">
-    <label class="tp-pill" for="filter-cloud">
-      <span>Taipy Cloud</span>
-    </label>
-  </li>
 </ul>
 
 [LIST_OF_ITEMS]
