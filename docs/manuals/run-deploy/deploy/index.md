@@ -3,8 +3,6 @@ may need to deploy it on a remote environment, for end users to be able to use i
 
 Here are the different situations that Taipy can address:
 
-- [Taipy Cloud](taipy-cloud/index.md): deploy the application on the
-  [Taipy Cloud](https://www.taipy.io/cloud/) platform;
 - [Windows](windows/index.md): deploy the application on a Windows Server system;
 - [Linux](linux/index.md): deploy the application on a server running Linux;
 - [Docker](docker/index.md): running the application in a container;
@@ -15,8 +13,6 @@ Here are the different situations that Taipy can address:
 - [Databricks](databricks/index.md): deploy the application on the
   [Databricks](https://www.databricks.com/) platform;
 
-
-## [Taipy Cloud](taipy-cloud/index.md)
 
 ## [Windows](windows/index.md)
 
