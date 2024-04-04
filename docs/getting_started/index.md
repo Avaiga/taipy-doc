@@ -20,13 +20,13 @@ first application with ease.
     ```
 
 For alternative installation methods or if you're lacking Python or pip, refer to the
-[installation page](../installation/index.md).
+[installation page](../installation.md).
 
 # Build a graphical interface
 
-In this section, you'll create an application that includes a slider to adjust a 
-parameter, which in turn affects a data visualization chart. This example 
-demonstrates how Taipy can be used to create interactive and dynamic web 
+In this section, you'll create an application that includes a slider to adjust a
+parameter, which in turn affects a data visualization chart. This example
+demonstrates how Taipy can be used to create interactive and dynamic web
 applications.
 
 !!! example "GUI creation"
@@ -69,7 +69,7 @@ applications.
         the Page Builder API.
 
         ```python linenums="1"
-        from taipy.gui import Gui 
+        from taipy.gui import Gui
         import taipy.gui.builder as tgb
         from math import cos, exp
 
@@ -85,7 +85,7 @@ applications.
             tgb.text(value="# Taipy Getting Started", mode="md")
             tgb.text(value="Value: {value}")
             tgb.slider(value="{value}", on_change=on_slider)
-            tgb.chart(data="{data}") 
+            tgb.chart(data="{data}")
 
         data = compute_data(value)
 
@@ -107,15 +107,15 @@ visual element.
 
 In our initial example:
 
-- *value* is bound to a slider and a text, allowing the user’s input to be directly 
+- *value* is bound to a slider and a text, allowing the user’s input to be directly
 stored in the *value* variable.
-- *data* is created through in *compute_data()* function and is updated depending on the  
+- *data* is created through in *compute_data()* function and is updated depending on the
 slider's value. It is represented in the application as a chart.
 
 
 ## Interactivity Through Actions
 
-Actions, like `on_change=on_slider`, allow visual elements like slider or input 
+Actions, like `on_change=on_slider`, allow visual elements like slider or input
 to trigger specific functions.
 
 ```python
@@ -128,8 +128,8 @@ This state represents a user's connection and is used to read and set variables 
 the user is interacting with the application. It makes it possible for Taipy to handle multiple
 users simultaneously.
 
-*state.value* is specific to the user who interacts with the application. 
-This design ensures that each user's actions are separate and efficiently 
+*state.value* is specific to the user who interacts with the application.
+This design ensures that each user's actions are separate and efficiently
 controlled, while other variables could be global variables.
 
 ![State illustration](images/state_illustration.png){width=70% : .tp-image-border }
