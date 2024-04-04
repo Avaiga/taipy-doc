@@ -37,12 +37,6 @@ Tips and Tricks!
       <span>Stylekit</span>
     </label>
   </li>
-  <li>
-    <input type="checkbox" name="filter-cloud" id="filter-cloud" value="cloud">
-    <label class="tp-pill" for="filter-cloud">
-      <span>Taipy Cloud</span>
-    </label>
-  </li>
 </ul>
 
 <ul class="tp-row tp-row--gutter-sm tp-filtered">
@@ -54,10 +48,10 @@ Tips and Tricks!
       <div class="tp-content-card-body">
         <h4> Scenarios </h4>
         <span class="tp-tag">Back-end | Test</span>
-        <p> A Taipy scenario represents a run that can be an instance of a business problem to 
+        <p> A Taipy scenario represents a run that can be an instance of a business problem to
             solve on data and parameter sets.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -69,10 +63,10 @@ Tips and Tricks!
       <div class="tp-content-card-body">
         <h4>Share your App with Colab and Ngrok</h4>
         <span class="tp-tag">Front-end | Back-end</span>
-        <p> Learn how to share on the Internet your Taipy Application created on Google Colab (a 
+        <p> Learn how to share on the Internet your Taipy Application created on Google Colab (a
             high-performance Notebook with CPU and GPU access for Deep Learning), using Ngrok.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -84,10 +78,10 @@ Tips and Tricks!
       <div class="tp-content-card-body">
         <h4>Jupyter Notebooks</h4>
         <span class="tp-tag">Front-end </span>
-        <p> Optimize your coding experience with Taipy in Jupyter Notebooks. Learn essential 
-            functions for seamless front-end updates without the need to restart the kernel. 
+        <p> Optimize your coding experience with Taipy in Jupyter Notebooks. Learn essential
+            functions for seamless front-end updates without the need to restart the kernel.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -99,11 +93,11 @@ Tips and Tricks!
       <div class="tp-content-card-body">
         <h4>Long-running Callbacks</h4>
         <span class="tp-tag">Front-end </span>
-        <p> Discover the 'long-running callbacks' feature of Taipy GUI, ensuring responsiveness 
-            during lengthy tasks. This article provides practical examples, highlighting the 
-            potential for improved user experiences.        
+        <p> Discover the 'long-running callbacks' feature of Taipy GUI, ensuring responsiveness
+            during lengthy tasks. This article provides practical examples, highlighting the
+            potential for improved user experiences.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -115,10 +109,10 @@ Tips and Tricks!
       <div class="tp-content-card-body">
         <h4>Multi-page Applications</h4>
         <span class="tp-tag">Front-end </span>
-        <p> Organize your data flows and visualizations in multi-pages applications, resulting in 
+        <p> Organize your data flows and visualizations in multi-pages applications, resulting in
             user-friendly and intuitive user interface.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -130,11 +124,11 @@ Tips and Tricks!
       <div class="tp-content-card-body">
         <h4> Using Tables </h4>
         <span class="tp-tag">Front-end </span>
-        <p> Discover the power of Taipy front-end tables – your go-to for data presentation and 
-            control. Learn key settings and features for effortless table creation within data 
-            applications. 
+        <p> Discover the power of Taipy front-end tables – your go-to for data presentation and
+            control. Learn key settings and features for effortless table creation within data
+            applications.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -146,11 +140,11 @@ Tips and Tricks!
       <div class="tp-content-card-body">
         <h4> Data Nodes </h4>
         <span class="tp-tag">Front-end </span>
-        <p> Explore Taipy data nodes and understand their central role in accessing data from 
-            various sources. This article serves as your gateway to comprehending data nodes 
+        <p> Explore Taipy data nodes and understand their central role in accessing data from
+            various sources. This article serves as your gateway to comprehending data nodes
             in Taipy.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -162,10 +156,10 @@ Tips and Tricks!
       <div class="tp-content-card-body">
         <h4> Stylekit </h4>
         <span class="tp-tag">Front-end </span>
-        <p> Learn how to tailor your Taipy applications appearance with the CSS StyleKit. Easily 
+        <p> Learn how to tailor your Taipy applications appearance with the CSS StyleKit. Easily
             change the visual style with pre-made stylesheets, CSS variables, and utility classes.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -177,10 +171,10 @@ Tips and Tricks!
       <div class="tp-content-card-body">
         <h4> Skippable tasks </h4>
         <span class="tp-tag">Front-end </span>
-        <p> Explore the 'skippable' task feature to improve your efficiency in pipeline 
+        <p> Explore the 'skippable' task feature to improve your efficiency in pipeline
             orchestration.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -194,22 +188,7 @@ Tips and Tricks!
         <span class="tp-tag">Front-end </span>
         <p> Make your multi-user graphical interface fully interactive using the on-change callback.
         </p>
-      </div> 
-    </a>
-  </li>
-
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="cloud deployment">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="taipy_cloud_deploy">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="taipy_cloud_deploy/logo_artwork.png">
-      </header>
-      <div class="tp-content-card-body">
-        <h4> Taipy Cloud </h4>
-        <span class="tp-tag">Front-end </span>
-        <p> Share your application on the web. Learn the simplicity of deploying and hosting your 
-            Taipy application on the Taipy Cloud. 
-        </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -223,7 +202,7 @@ Tips and Tricks!
         <span class="tp-tag">Front-end </span>
         <p> Display data sent from another thread in real-time to your Taipy application.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -237,7 +216,7 @@ Tips and Tricks!
         <span class="tp-tag">Front-end </span>
         <p> Use the `part` visual element to embed any HTML inside your application.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -251,7 +230,7 @@ Tips and Tricks!
         <span class="tp-tag">Front-end </span>
         <p> A guide to building models that are bigger than your computer memory.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -265,7 +244,7 @@ Tips and Tricks!
         <span class="tp-tag">Front-end </span>
         <p> Taming Big Data without crashing.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -279,7 +258,7 @@ Tips and Tricks!
         <span class="tp-tag">Front-end </span>
         <p> A guide to integrate Databricks with Taipy scenarios.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 
@@ -293,7 +272,7 @@ Tips and Tricks!
         <span class="tp-tag">Front-end </span>
         <p> Build, Visualize and Launch Big Data DAGs.
         </p>
-      </div> 
+      </div>
     </a>
   </li>
 </ul>

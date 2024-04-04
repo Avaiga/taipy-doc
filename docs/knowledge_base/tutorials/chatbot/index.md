@@ -233,10 +233,9 @@ We can add notifications, a sidebar with a button to clear the conversation
 and a history of previous discussions. You can find the complete code
 in the [GitHub repository](https://github.com/Avaiga/demo-llm-chat)
 
-# Step 10: Deploying the application to Taipy Cloud
+# Step 10: Secure your API key using an environment variable
 
-We are now going to deploy the application to Taipy Cloud, so it is
-accessible from anyone with a link.
+We now want to deploy the application, so it is accessible from anyone with a link.
 
 Firstly, we need to store the API key in an environment variable.
 Replace the line that defines *client* in [Step 5](#step-5-create-a-function-to-generate-responses) with:
@@ -249,27 +248,4 @@ client = openai.Client(api_key = os.environ["OPENAI_API_KEY"])
 Now, instead of having our API key in the code, the app will look
 for it in the environment variables.
 
-We can now deploy the app to Taipy Cloud:
-
-1. Connect to [Taipy Cloud](https://cloud.taipy.io/) and sign in
-2. Click on "Add Machine" and fill in the fields
-3. Select the created machine and click on "Add app"
-4. Zip the `main.py`, `main.css` and `requirements.txt` files and upload the zip file to the "App files" field. Fill in the other fields
-5. In the "Environment Variables" tab, create a new environment variable called `OPENAI_API_KEY` and paste your API key as the value like in the image below
-6. Press "Deploy app"
-
-<p align="center">
-  <img src="chatbot_env_var.png" alt="Environment Variables Tab" width="80%"/>
-</p>
-
-
-After a while, your app should be running and will be accessible
-from the displayed link!
-
-<p align="center">
-  <img src="chatbot_cloud.png" alt="Taipy Cloud Interface" width="80%"/>
-</p>
-
-<p align="center">
-  <img src="chatbot_roundconv.png" alt="The final application" width="80%"/>
-</p>
+We can now securely deploy the app.

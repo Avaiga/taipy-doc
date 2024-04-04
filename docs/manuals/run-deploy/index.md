@@ -22,13 +22,9 @@ configure the system where you want the application to run:
 - The application can run locally on your machine.<br/>
   It can, however, be exposed to external users through the Internet if that is something
   you need.
-- The application can be deployed to [Taipy Cloud](deploy/taipy-cloud/index.md), that
-  provides the hardware, management and supervision utilities to host your application outside
-  your IT environment.
 - Vendors provide different services that deal with computing, storage, database, and networking
   management.<br/>
-  These offers can also be a relevant alternative to host your Taipy applications and
-  provide them to external users.
+  These offers can be relevant to host your Taipy applications and provide them to external users.
 
 ## [Running a Taipy application](run/index.md)
 
