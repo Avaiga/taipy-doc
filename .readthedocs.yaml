@@ -13,6 +13,8 @@ build:
     pre_install:
       - python -c "import platform; print(f\"Building on {platform.uname()}\")"
       - python tools/fetch_source_files.py MKDOCS
+      - mv Pipfile Pipfile.orig
+      - grep -v python-magic-bin Pipfile.orig >Pipfile
       - cat Pipfile
       - pip install --upgrade pip
       - pip install pipenv
