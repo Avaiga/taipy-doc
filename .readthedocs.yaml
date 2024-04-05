@@ -11,12 +11,12 @@ build:
     nodejs: "18"
   jobs:
     pre_install:
-      - npm install -g npm@9.4.0
       - python tools/fetch_source_files.py MKDOCS
       - pip install pipenv
       - pipenv install --dev
+      - pipenv run pip freeze >requirements.txt
       - pipenv run python tools/setup_generation.py
-      - pipenv run pip freeze > requirements.txt
+      - npm install -g npm@9.4.0
 python:
    install:
    - requirements: requirements.txt
