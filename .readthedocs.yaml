@@ -11,7 +11,7 @@ build:
     nodejs: "18"
   jobs:
     pre_install:
-      - python -c "import platform; print(f'Building on {platform.uname()}')"
+      - python -c "import platform; print(f\"Building on {platform.uname()}\")"
       - python tools/fetch_source_files.py MKDOCS
       - cat Pipfile
       - pip install --upgrade pip
