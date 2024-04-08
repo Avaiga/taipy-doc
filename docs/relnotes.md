@@ -65,12 +65,14 @@ additional features.
 
 # Community edition: 3.1
 
-[`taipy` 3.1](https://pypi.org/project/taipy/3.1.0/) contains the latest
-[`taipy-config` 3.1](https://pypi.org/project/taipy-config/3.1.0/),
-[`taipy-gui` 3.1](https://pypi.org/project/taipy-gui/3.1.0/),
-[`taipy-core` 3.1](https://pypi.org/project/taipy-core/3.1.0/),
-[`taipy-templates` 3.1](https://pypi.org/project/taipy-templates/3.1.0/), and
-[`taipy-rest` 3.1](https://pypi.org/project/taipy-rest/3.1.0/) packages.
+Published on 2024-03.
+
+[`taipy` 3.1](https://pypi.org/project/taipy/3.1.1/) contains the latest
+[`taipy-config` 3.1](https://pypi.org/project/taipy-config/3.1.1/),
+[`taipy-gui` 3.1](https://pypi.org/project/taipy-gui/3.1.1/),
+[`taipy-core` 3.1](https://pypi.org/project/taipy-core/3.1.1/),
+[`taipy-templates` 3.1](https://pypi.org/project/taipy-templates/3.1.1/), and
+[`taipy-rest` 3.1](https://pypi.org/project/taipy-rest/3.1.1/) packages.
 
 ## New Features
 
@@ -150,7 +152,21 @@ additional features.
 
 ## Significant bug fixes
 
-<h4><strong><code>taipy-gui</code></strong> 3.1.0</h4>
+<h4><strong><code>taipy</code></strong></h4>
+
+<h5>3.1.1</h5>
+
+- Data is not shown or not automatically refreshed in
+  [Data Node viewer](manuals/gui/corelements/data_node.md).<br/>
+  See [issue #908](https://github.com/Avaiga/taipy/issues/908) and
+  [issue #950](https://github.com/Avaiga/taipy/issues/950).
+- Data Nodes holding dates may not show in
+  [Data Node viewers](manuals/gui/corelements/data_node.md).<br/>
+  See [issue #1043](https://github.com/Avaiga/taipy/issues/1043).
+
+<h4><strong><code>taipy-gui</code></strong></h4>
+
+<h5>3.1.0</h5>
 
 - Selectors with dropdown menus cannot be deactivated.<br/>
   See [issue #894](https://github.com/Avaiga/taipy/issues/894).
@@ -159,13 +175,17 @@ additional features.
 - Important error messages are mangled.<br/>
   See [issue #560](https://github.com/Avaiga/taipy/issues/560).
 
-<h4><strong><code>taipy-core</code></strong> 3.1.1</h4>
+<h4><strong><code>taipy-core</code></strong></h4>
+
+<h5>3.1.1</h5>
 
 - The signatures for `Config.configure_sql_data_node()`, `Config.configure_s3_object_data_node()`, and
   `configure_core()` methods are out-of-date.<br/>
   See [issue #1014](https://github.com/Avaiga/taipy/issues/1014).
 
 # Enterprise edition: 3.1
+
+Published on 2024-03.
 
 This release contains all of [`taipy` 3.1](https://pypi.org/project/taipy/3.1.0) as well as
 additional features.
