@@ -74,6 +74,7 @@ Published on 2024-03.
 [`taipy-templates` 3.1](https://pypi.org/project/taipy-templates/3.1.1/), and
 [`taipy-rest` 3.1](https://pypi.org/project/taipy-rest/3.1.1/) packages.
 
+
 ## New Features
 
 <h4><strong><code>taipy</code></strong> 3.1.0</h4>
@@ -198,6 +199,12 @@ additional features.
 # Community edition: 3.0
 
 Published on 2023-10.
+
+!!! warning Error([#1180](https://github.com/Avaiga/taipy/issues/1180)) when downgrading from Taipy 3.1 to Taipy 3.0 
+    
+    If you are experiencing an error downgrading to Taipy 3.0, please 
+    reinstall Taipy with options `--no-cache-dir -I` like so: 
+      `pip install --no-cache-dir -I taipy==3.0.0`
 
 ## New Features
 
