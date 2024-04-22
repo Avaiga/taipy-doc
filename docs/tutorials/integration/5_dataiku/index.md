@@ -23,13 +23,17 @@ Dataiku's data processing capabilities with Taipy's task orchestration and data 
 
 # Taipy Application in Dataiku DSS
 
+We'll begin by developing an application directly within Dataiku DSS. This approach allows you to 
+utilize the comprehensive dataiku package, packed with powerful features, and seamlessly integrate 
+your Taipy application into your existing ecosystem.
+
 ## Prerequisites:
 - Ensure that Code Studios is enabled for your instance.
 - You must have a Code Environment with Taipy installed and Python version 3.8 or higher.
 
 ## Step-by-Step Guide:
 
-First, Log in to your Dataiku DSS instance and create a new project or enter an existing project.
+First, log in to your Dataiku DSS instance and create a new project or enter an existing project.
 
 ### Create a new "Code Studio"
 
