@@ -55,6 +55,7 @@ nav:
         - "Taipy Application on Colab with Ngrok": tutorials/integration/2_colab_with_ngrok/index.md
         - "Jupyter Notebooks": tutorials/integration/3_jupyter_notebooks/index.md
         - "Integrating Databricks": tutorials/integration/4_databricks/index.md
+        - "Integration with Dataiku": tutorials/integration/5_dataiku/index.md
     - "Large Data":
         - "Large Data": tutorials/large_data/index.md
         - "Using PySpark for Large Data": tutorials/large_data/1_pyspark/index.md
