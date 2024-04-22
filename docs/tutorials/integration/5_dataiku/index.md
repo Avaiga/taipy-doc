@@ -28,8 +28,8 @@ utilize the comprehensive dataiku package, packed with powerful features, and se
 your Taipy application into your existing ecosystem.
 
 ## Prerequisites:
-- Ensure that Code Studios is enabled for your instance.
-- You must have a Code Environment with Taipy installed and Python version 3.8 or higher.
+- Ensure that [Code Studios](https://knowledge.dataiku.com/latest/code/work-environment/tutorial-first-code-studio.html) is enabled for your instance.
+- You must have a [Code Environment](https://doc.dataiku.com/dss/latest/code-envs/index.html) with Taipy installed and Python version 3.8 or higher.
 
 ## Step-by-Step Guide:
 
@@ -103,8 +103,11 @@ The exposed port should be 5000, as set in the Entrypoint block. You can find th
 
 # Simple Integration: Visualization
 
-First, let's integrate with Dataiku just by visualizing different data and metrics 
-fetched from our Dataiku projects.
+You've learned how to use Taipy within Dataiku. Next, we'll cover how to extract and display 
+information from Dataiku projects. You'll be able to visualize various data and metrics from your 
+Dataiku projects. Remember, we'll utilize the `dataiku-api-client` for retrieving information when 
+building applications outside the Dataiku ecosystem. If you're following the first tutorial, you can 
+directly use the `dataiku` package.
 
 ## Setting Up Your Environment
 
@@ -122,7 +125,7 @@ pip install dataiku-api-client taipy
 
 - A Dataiku Instance.
 - A Dataiku Project.
-- A knowledge of the Dataiku Python API
+- A knowledge of the Dataiku Python API.
 
 Use the `DSSClient` from the `dataikuapi` package to establish a connection with 
 your Dataiku instance. Replace `"http://your-dataiku-instance.com"` and 
