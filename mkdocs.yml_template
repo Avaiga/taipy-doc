@@ -12,174 +12,172 @@ nav:
   - "Tutorials":
     - "Tutorials": tutorials/index.md
     - "Fundamentals":
-        - "Fundamentals": tutorials/fundamentals/index.md
-        - "Understanding GUI":
-            - "Understanding GUI": tutorials/fundamentals/1_understanding_gui/index.md
-            - "1 - First Web page": tutorials/fundamentals/1_understanding_gui/step_01/step_01.md
-            - "2 - Visual elements": tutorials/fundamentals/1_understanding_gui/step_02/step_02.md
-            - "3 - Interactions": tutorials/fundamentals/1_understanding_gui/step_03/step_03.md
-            - "4 - Charts": tutorials/fundamentals/1_understanding_gui/step_04/step_04.md
-            - "5 - Python expressions in properties": tutorials/fundamentals/1_understanding_gui/step_05/step_05.md
-            - "6 - Page layouts": tutorials/fundamentals/1_understanding_gui/step_06/step_06.md
-            - "7 - Multi-pages, navbars, and menus": tutorials/fundamentals/1_understanding_gui/step_07/step_07.md
-        - "Scenario management Overview": tutorials/fundamentals/2_scenario_management_overview/index.md
-        - "First Realistic application":
-            - "First Realistic application": tutorials/fundamentals/3_complete_application/index.md
-            - "1 - Data visualization page": tutorials/fundamentals/3_complete_application/step_01/step_01.md
-            - "2 - Algorithms used": tutorials/fundamentals/3_complete_application/step_02/step_02.md
-            - "3 - Scenario configuration": tutorials/fundamentals/3_complete_application/step_03/step_03.md
-            - "4 - Scenario page": tutorials/fundamentals/3_complete_application/step_04/step_04.md
-            - "5 - Performance page": tutorials/fundamentals/3_complete_application/step_05/step_05.md
-        - "Creating an LLM ChatBot": tutorials/fundamentals/4_chatbot/index.md
+      - "Fundamentals": tutorials/fundamentals/index.md
+      - "Understanding GUI":
+        - "Understanding GUI": tutorials/fundamentals/1_understanding_gui/index.md
+        - "1 - First Web page": tutorials/fundamentals/1_understanding_gui/step_01/step_01.md
+        - "2 - Visual elements": tutorials/fundamentals/1_understanding_gui/step_02/step_02.md
+        - "3 - Interactions": tutorials/fundamentals/1_understanding_gui/step_03/step_03.md
+        - "4 - Charts": tutorials/fundamentals/1_understanding_gui/step_04/step_04.md
+        - "5 - Python expressions in properties": tutorials/fundamentals/1_understanding_gui/step_05/step_05.md
+        - "6 - Page layouts": tutorials/fundamentals/1_understanding_gui/step_06/step_06.md
+        - "7 - Multi-pages, navbars, and menus": tutorials/fundamentals/1_understanding_gui/step_07/step_07.md
+      - "Scenario management Overview": tutorials/fundamentals/2_scenario_management_overview/index.md
+      - "First Realistic application":
+        - "First Realistic application": tutorials/fundamentals/3_complete_application/index.md
+        - "1 - Data visualization page": tutorials/fundamentals/3_complete_application/step_01/step_01.md
+        - "2 - Algorithms used": tutorials/fundamentals/3_complete_application/step_02/step_02.md
+        - "3 - Scenario configuration": tutorials/fundamentals/3_complete_application/step_03/step_03.md
+        - "4 - Scenario page": tutorials/fundamentals/3_complete_application/step_04/step_04.md
+        - "5 - Performance page": tutorials/fundamentals/3_complete_application/step_05/step_05.md
+      - "Creating an LLM ChatBot": tutorials/fundamentals/4_chatbot/index.md
     - "Visuals":
-        - "Visuals": tutorials/visuals/index.md
-        - "Callbacks in Taipy": tutorials/visuals/1_the_on_change_callback/index.md
-        - "Using Tables": tutorials/visuals/2_using_tables/index.md
-        - "Multi-page Application": tutorials/visuals/3_multipage_application/index.md
-        - "Long Running Callbacks": tutorials/visuals/4_long_callbacks/index.md
-        - "Real-time data visualization": tutorials/visuals/5_multithreading/index.md
-        - "Stylekit": tutorials/visuals/6_css_style_kit/index.md
+      - "Visuals": tutorials/visuals/index.md
+      - "Callbacks in Taipy": tutorials/visuals/1_the_on_change_callback/index.md
+      - "Using Tables": tutorials/visuals/2_using_tables/index.md
+      - "Multi-page Application": tutorials/visuals/3_multipage_application/index.md
+      - "Long Running Callbacks": tutorials/visuals/4_long_callbacks/index.md
+      - "Real-time data visualization": tutorials/visuals/5_multithreading/index.md
+      - "Stylekit": tutorials/visuals/6_css_style_kit/index.md
     - "Scenario Management":
-        - "Scenario Management": tutorials/scenario_management/index.md
-        - "Scenarios": tutorials/scenario_management/1_scenarios/index.md
-        - "Data Nodes": tutorials/scenario_management/2_the_data_nodes/index.md
-        - "Skippable Tasks": tutorials/scenario_management/3_skippable_tasks/index.md
-        - "Cycles and Scopes": tutorials/scenario_management/4_cycles_scopes/index.md
-        - "Job Execution mode": tutorials/scenario_management/5_job_execution/index.md
-        - "Scenario Comparison": tutorials/scenario_management/6_scenario_comparison/index.md
-        - "Scenario Subscription": tutorials/scenario_management/7_scenario_subscription/index.md
-        - "Manage application versions": tutorials/scenario_management/8_version_management/index.md
+      - "Scenario Management": tutorials/scenario_management/index.md
+      - "Scenarios": tutorials/scenario_management/1_scenarios/index.md
+      - "Data Nodes": tutorials/scenario_management/2_the_data_nodes/index.md
+      - "Skippable Tasks": tutorials/scenario_management/3_skippable_tasks/index.md
+      - "Cycles and Scopes": tutorials/scenario_management/4_cycles_scopes/index.md
+      - "Job Execution mode": tutorials/scenario_management/5_job_execution/index.md
+      - "Scenario Comparison": tutorials/scenario_management/6_scenario_comparison/index.md
+      - "Scenario Subscription": tutorials/scenario_management/7_scenario_subscription/index.md
+      - "Manage application versions": tutorials/scenario_management/8_version_management/index.md
     - "Integration":
-        - "Integration": tutorials/integration/index.md
-        - "Integrate Third-Party Components": tutorials/integration/1_3rd_party_components/index.md
-        - "Taipy Application on Colab with Ngrok": tutorials/integration/2_colab_with_ngrok/index.md
-        - "Jupyter Notebooks": tutorials/integration/3_jupyter_notebooks/index.md
-        - "Integrating Databricks": tutorials/integration/4_databricks/index.md
+      - "Integration": tutorials/integration/index.md
+      - "Integrate Third-Party Components": tutorials/integration/1_3rd_party_components/index.md
+      - "Taipy Application on Colab with Ngrok": tutorials/integration/2_colab_with_ngrok/index.md
+      - "Jupyter Notebooks": tutorials/integration/3_jupyter_notebooks/index.md
+      - "Integrating Databricks": tutorials/integration/4_databricks/index.md
     - "Large Data":
-        - "Large Data": tutorials/large_data/index.md
-        - "Using PySpark for Large Data": tutorials/large_data/1_pyspark/index.md
-        - "Large data models vs. Computer memory": tutorials/large_data/2_large_data_models/index.md
-        - "Charts for Large Data": tutorials/large_data/3_decimator/index.md
+      - "Large Data": tutorials/large_data/index.md
+      - "Using PySpark for Large Data": tutorials/large_data/1_pyspark/index.md
+      - "Large data models vs. Computer memory": tutorials/large_data/2_large_data_models/index.md
+      - "Charts for Large Data": tutorials/large_data/3_decimator/index.md
   - "Manuals":
     - "About Taipy's Manuals": manuals/index.md
     - "User Manuals":
       - "About Taipy's User Manuals": manuals/usermans/index.md
       - "Taipy GUI":
-          - "Taipy GUI": manuals/gui/index.md
-          - "Pages":
-             - "Pages": manuals/gui/pages/index.md
-          - "Visual Elements":
-             - "Introduction to Visual Elements": manuals/gui/viselements/index.md
-             - "Controls": manuals/gui/viselements/controls.md
-             - "Blocks": manuals/gui/viselements/blocks.md
-          - "Binding variables": manuals/gui/binding.md
-          - "Callbacks": manuals/gui/callbacks.md
-          - "Notifications": manuals/gui/notifications.md
-          - "Styling":
-             - "Styling": manuals/gui/styling/index.md
-             - "The Stylekit": manuals/gui/styling/stylekit.md
-          - "Configuration": manuals/gui/configuration.md
-          - "Using Notebooks": manuals/gui/notebooks.md
-          - "Extension":
-             - manuals/gui/extension/index.md
-             - "Static Elements": manuals/gui/extension/static_element.md
-             - "Dynamic Elements":
-                - manuals/gui/extension/dynamic_element/index.md
-                - "Scalar properties": manuals/gui/extension/dynamic_element/scalar_props.md
+        - "Taipy GUI": manuals/gui/index.md
+        - "Pages":
+          - "Pages": manuals/gui/pages/index.md
+        - "Visual Elements":
+          - "Introduction to Visual Elements": manuals/gui/viselements/index.md
+          - "Controls": manuals/gui/viselements/controls.md
+          - "Blocks": manuals/gui/viselements/blocks.md
+        - "Binding variables": manuals/gui/binding.md
+        - "Callbacks": manuals/gui/callbacks.md
+        - "Notifications": manuals/gui/notifications.md
+        - "Styling":
+          - "Styling": manuals/gui/styling/index.md
+          - "The Stylekit": manuals/gui/styling/stylekit.md
+        - "Configuration": manuals/gui/configuration.md
+        - "Using Notebooks": manuals/gui/notebooks.md
+        - "Extension":
+          - manuals/gui/extension/index.md
+          - "Static Elements": manuals/gui/extension/static_element.md
+          - "Dynamic Elements":
+            - manuals/gui/extension/dynamic_element/index.md
+            - "Scalar properties": manuals/gui/extension/dynamic_element/scalar_props.md
       - "Taipy Core":
-          - "Taipy Core": manuals/core/index.md
-          - 'Basic example: Hello world!':
-              - manuals/core/basic_examples/index.md
-          - "Concepts":
-              - "Taipy's Core concepts": manuals/core/concepts/index.md
-              - "Data node": manuals/core/concepts/data-node.md
-              - "Task": manuals/core/concepts/task.md
-              - "Sequence": manuals/core/concepts/sequence.md
-              - "Scenario": manuals/core/concepts/scenario.md
-              - "Cycle": manuals/core/concepts/cycle.md
-              - "Job": manuals/core/concepts/job.md
-              - "Execution flow": manuals/core/concepts/execution-flow.md
-              - "Scope": manuals/core/concepts/scope.md
-          - "Configuration":
-              - manuals/core/config/index.md
-              - "Config": manuals/core/config/config.md
-              - "Data node configs": manuals/core/config/data-node-config.md
-              - "Task configs": manuals/core/config/task-config.md
-              - "Scenario configs": manuals/core/config/scenario-config.md
-              - "Core config": manuals/core/config/core-config.md
-              - "Job execution config": manuals/core/config/job-config.md
-              - "Config checker": manuals/core/config/config-checker.md
-              - "Advanced configuration": manuals/core/config/advanced-config.md
-          - "Entities":
-              - manuals/core/entities/index.md
-              - "Entities' creation": manuals/core/entities/scenario-creation.md
-              - "Scenario and cycle management": manuals/core/entities/scenario-cycle-mgt.md
-              - "Sequence management": manuals/core/entities/sequence-mgt.md
-              - "Task management": manuals/core/entities/task-mgt.md
-              - "Data node management": manuals/core/entities/data-node-mgt.md
-              - "Job execution": manuals/core/entities/orchestrating-and-job-execution.md
-          - "Version Management":
-              - manuals/core/versioning/index.md
-              - "Configuration": manuals/core/versioning/configuration.md
-              - "Development mode": manuals/core/versioning/development_mode.md
-              - "Experiment mode": manuals/core/versioning/experiment_mode.md
-              - "Production mode": manuals/core/versioning/production_mode.md
-          - "Scheduling":
-              - manuals/core/scheduling/index.md
+        - "Taipy Core": manuals/core/index.md
+        - 'Basic example: Hello world!':
+          - manuals/core/basic_examples/index.md
+        - "Concepts":
+          - "Taipy's Core concepts": manuals/core/concepts/index.md
+          - "Data node": manuals/core/concepts/data-node.md
+          - "Task": manuals/core/concepts/task.md
+          - "Sequence": manuals/core/concepts/sequence.md
+          - "Scenario": manuals/core/concepts/scenario.md
+          - "Cycle": manuals/core/concepts/cycle.md
+          - "Job": manuals/core/concepts/job.md
+          - "Execution flow": manuals/core/concepts/execution-flow.md
+          - "Scope": manuals/core/concepts/scope.md
+        - "Configuration":
+          - manuals/core/config/index.md
+          - "Config": manuals/core/config/config.md
+          - "Data node configs": manuals/core/config/data-node-config.md
+          - "Task configs": manuals/core/config/task-config.md
+          - "Scenario configs": manuals/core/config/scenario-config.md
+          - "Core config": manuals/core/config/core-config.md
+          - "Job execution config": manuals/core/config/job-config.md
+          - "Config checker": manuals/core/config/config-checker.md
+          - "Advanced configuration": manuals/core/config/advanced-config.md
+        - "Entities":
+          - manuals/core/entities/index.md
+          - "Entities' creation": manuals/core/entities/scenario-creation.md
+          - "Scenario and cycle management": manuals/core/entities/scenario-cycle-mgt.md
+          - "Sequence management": manuals/core/entities/sequence-mgt.md
+          - "Task management": manuals/core/entities/task-mgt.md
+          - "Data node management": manuals/core/entities/data-node-mgt.md
+          - "Job execution": manuals/core/entities/orchestrating-and-job-execution.md
+        - "Version Management":
+          - manuals/core/versioning/index.md
+          - "Configuration": manuals/core/versioning/configuration.md
+          - "Development mode": manuals/core/versioning/development_mode.md
+          - "Experiment mode": manuals/core/versioning/experiment_mode.md
+          - "Production mode": manuals/core/versioning/production_mode.md
+        - "Scheduling":
+          - manuals/core/scheduling/index.md
       - "Taipy REST":
-          - manuals/rest/index.md
+        - manuals/rest/index.md
       - "Authentication and Roles":
-          - "Authentication and Authorization": manuals/auth/index.md
-          - "Authentication": manuals/auth/authentication.md
-          - "Authorization": manuals/auth/authorization.md
+        - "Authentication and Authorization": manuals/auth/index.md
+        - "Authentication": manuals/auth/authentication.md
+        - "Authorization": manuals/auth/authorization.md
       - "Taipy command-line interface":
-          - manuals/cli/index.md
-          - "help": manuals/cli/help.md
-          - "create": manuals/cli/create.md
-          - "run": manuals/cli/run.md
-          - "manage-versions": manuals/cli/manage-versions.md
-          - "version": manuals/cli/version.md
+        - manuals/cli/index.md
+        - "help": manuals/cli/help.md
+        - "create": manuals/cli/create.md
+        - "run": manuals/cli/run.md
+        - "manage-versions": manuals/cli/manage-versions.md
+        - "version": manuals/cli/version.md
       - "Running & Deploying":
-          - "Running and Deploying Taipy applications": manuals/run-deploy/index.md
-          - "Running":
-              - "Running a Taipy application": manuals/run-deploy/run/index.md
-              - "The run() function": manuals/run-deploy/run/running_services.md
-              - "Using an external web server": manuals/run-deploy/run/external_web_server.md
-              - "Protect private files": manuals/run-deploy/run/protect_files.md
-          - "Deployment":
-              - "Deploying a Taipy application": manuals/run-deploy/deploy/index.md
-              - "On the local machine":
-                  - "Deploying locally": manuals/run-deploy/deploy/local/index.md
-              - "On Linux servers":
-                  - "Deploying on a Linux system": manuals/run-deploy/deploy/linux/index.md
-                  - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md
-                  - "RHEL": manuals/run-deploy/deploy/linux/redhat.md
-              - "On Windows Server":
-                  - "Deploying on Windows Server": manuals/run-deploy/deploy/windows/index.md
-              - "Using Docker":
-                  - manuals/run-deploy/deploy/docker/index.md
-                  - "For development": manuals/run-deploy/deploy/docker/development.md
-                  - "For production": manuals/run-deploy/deploy/docker/production.md
-              - "On Azure":
-                  - "Deploying on Azure": manuals/run-deploy/deploy/azure/index.md
-  #            - "On Clever Cloud":
-  #                - manuals/run-deploy/deploy/clever-cloud.md
-              - "On Heroku":
-                  - "Deploying on Heroku": manuals/run-deploy/deploy/heroku/index.md
-                  - "Setup": manuals/run-deploy/deploy/heroku/setup.md
-                  - "Based on Git": manuals/run-deploy/deploy/heroku/git.md
-                  - "Based on Docker": manuals/run-deploy/deploy/heroku/docker.md
-              - "On Databricks":
-                  - "Deploying on Databricks": manuals/run-deploy/deploy/databricks/index.md
-      - "Taipy Studio":
-          - "Taipy Studio": manuals/studio/index.md
-          - "Building configurations":
-             - "Building configurations": manuals/studio/config/index.md
-             - "Managing configuration files": manuals/studio/config/files.md
-             - "Configuring elements": manuals/studio/config/elements.md
-             - "Graph views": manuals/studio/config/graphview.md
-             - "Text edition": manuals/studio/config/textedition.md
-          - "GUI Markdown support": manuals/studio/gui.md
+        - "Running and Deploying Taipy applications": manuals/run-deploy/index.md
+        - "Running":
+          - "Running a Taipy application": manuals/run-deploy/run/index.md
+          - "The run() function": manuals/run-deploy/run/running_services.md
+          - "Using an external web server": manuals/run-deploy/run/external_web_server.md
+          - "Protect private files": manuals/run-deploy/run/protect_files.md
+        - "Deployment":
+          - "Deploying a Taipy application": manuals/run-deploy/deploy/index.md
+          - "On the local machine":
+              - "Deploying locally": manuals/run-deploy/deploy/local/index.md
+          - "On Linux servers":
+            - "Deploying on a Linux system": manuals/run-deploy/deploy/linux/index.md
+            - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md
+            - "RHEL": manuals/run-deploy/deploy/linux/redhat.md
+          - "On Windows Server":
+            - "Deploying on Windows Server": manuals/run-deploy/deploy/windows/index.md
+          - "Using Docker":
+            - manuals/run-deploy/deploy/docker/index.md
+            - "For development": manuals/run-deploy/deploy/docker/development.md
+            - "For production": manuals/run-deploy/deploy/docker/production.md
+          - "On Azure":
+            - "Deploying on Azure": manuals/run-deploy/deploy/azure/index.md
+          - "On Heroku":
+            - "Deploying on Heroku": manuals/run-deploy/deploy/heroku/index.md
+            - "Setup": manuals/run-deploy/deploy/heroku/setup.md
+            - "Based on Git": manuals/run-deploy/deploy/heroku/git.md
+            - "Based on Docker": manuals/run-deploy/deploy/heroku/docker.md
+          - "On Databricks":
+            - "Deploying on Databricks": manuals/run-deploy/deploy/databricks/index.md
+    - "Taipy Studio":
+      - "Taipy Studio": manuals/studio/index.md
+      - "Building configurations":
+        - "Building configurations": manuals/studio/config/index.md
+        - "Managing configuration files": manuals/studio/config/files.md
+        - "Configuring elements": manuals/studio/config/elements.md
+        - "Graph views": manuals/studio/config/graphview.md
+        - "Text edition": manuals/studio/config/textedition.md
+      - "GUI Markdown support": manuals/studio/gui.md
     - "Reference Manuals":
       - manuals/refmans/index.md
       - "Python Reference Manual":
