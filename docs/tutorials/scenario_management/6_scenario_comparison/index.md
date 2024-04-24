@@ -93,6 +93,8 @@ with tgb.Page() as compare_page:
 Gui(compare_page).run()
 ```
 
+![Comparison GUI](images/comparison.png){ width=90% : .tp-image-border }
+
 # Entire code
 
 Here is the entire code to recreate the example. A GUI has been created to show the results.

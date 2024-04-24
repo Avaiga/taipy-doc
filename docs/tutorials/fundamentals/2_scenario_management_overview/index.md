@@ -142,11 +142,11 @@ The configuration is done! Let's use it to instantiate scenarios and submit them
 
 First, run the Core service in your code (`tp.Core().run()`). Then, you can play with Taipy:
 
-- create scenarios ([`tp.create_scenario(<ScenarioConfig>)`](../../../manuals/core/entities/data-node-mgt.md#read-write-a-data-node)),
+- create scenarios ([`tp.create_scenario(<ScenarioConfig>)`](../../scenario_management/1_scenarios.md#scenario-configuration-and-creation)),
 
 - write your input data nodes ([`<Data Node>.write(<new value>)`](../../../manuals/core/entities/data-node-mgt.md#read-write-a-data-node)),
 
-- submit them to run the task ([`<Scenario>.submit()`](../../../manuals/core/entities/data-node-mgt.md#read-write-a-data-node)),
+- submit them to run the task ([`<Scenario>.submit()`](../../scenario_management/1_scenarios.md#scenario-configuration-and-creation)),
 
 - read your output data node ([`<Data Node>.read()`](../../../manuals/core/entities/data-node-mgt.md#read-write-a-data-node)).
 

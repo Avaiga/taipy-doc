@@ -53,7 +53,6 @@ scenario_cfg = Config.configure_scenario(
     comparators={revenue_output_cfg.id: compare_revenue}
 )
 
-Config.export("config_pricing.toml")
 
 if __name__=="__main__":
     core = tp.Core()
@@ -79,7 +78,7 @@ if __name__=="__main__":
     import taipy.gui.builder as tgb 
 
     with tgb.Page() as compare_page:
-        tgb.text("# Compare Scenarios")
+        tgb.text("# Compare Scenarios", mode="md")
 
         tgb.chart("{comparisons_revenue}", type="bar", x="Scenarios", y="Revenues")
         tgb.table("{comparisons_revenue}")
