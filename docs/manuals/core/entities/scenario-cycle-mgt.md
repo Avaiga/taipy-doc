@@ -231,13 +231,20 @@ be raised.
 # Export a scenario
 
 You can export a scenario with its related entities in `JSON` format into a folder using `taipy.export_scenario()^`.
-This method takes as parameters the scenario id and the path to the export folder.
+This method takes as the parameters:
 
-!!! warning
+- *scenario_id* represents the id of the scenario to export.
+- *folder_path* represents the path to the export folder.
+  If the path exists and the override parameter is False, the `ExportFolderAlreadyExist^` exception is raised.
+- *override* (bool): is a boolean indicating if the export folder will be overridden when it exists. The
+  default value is False.
+- *include_data* is a boolean indicating if the data files of file-based data nodes are exported. File-based
+  data nodes include Pickle, CSV, Excel, Parquet, and JSON data nodes. If the scenario has a data node that
+  is not file-based, a warning will be logged, and the data of that data node will not be exported. The
+  default value is False.
 
-    The `folder_path` will be **overwritten** if it does exist.
-
-Alternatively, you can use the `Scenario.export()^` method.
+Alternatively, you can use the `Scenario.export()^` method and provide the same parameters except for the
+*scenario_id* parameter.
 
 ```python linenums="1"
 import taipy as tp
@@ -245,9 +252,35 @@ import my_config
 
 scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-tp.export(scenario.id, folder_path="./monthly_scenario")
+tp.export(scenario.id, folder_path="./monthly_scenario", override=True, include_data=True)
 # or
-scenario.export(folder_path="./monthly_scenario")
+scenario.export(folder_path="./monthly_scenario", override=True, include_data=True)
+```
+
+!!! note
+
+    The entity in the export folder may not work correctly due to the data path of the exported
+    file-based data nodes.
+
+    For the scenario to work correctly, please import the scenario into the current Taipy application
+    using the `taipy.import_scenario()^` method.
+
+# Import a scenario
+
+You can import a scenario with its related entities and data files from a folder in `JSON`
+format using `taipy.import_scenario()^` into the current version of the Taipy application.
+This method takes as the parameters:
+
+- *folder_path* represents the folder path to the scenario to import. The folder should contain all
+  related entities of the scenario, and all entities should belong to the same version that is
+  compatible with the current Taipy application version.
+- *override* (bool): is a boolean indicating if the scenario will be overridden when it exists.
+  The default value is False.
+
+```python linenums="1"
+import taipy as tp
+
+imported_scenario = tp.import_scenario(folder_path="./monthly_scenario", override=True)
 ```
 
 # Cycle attributes
