@@ -142,16 +142,16 @@ The configuration is done! Let's use it to instantiate scenarios and submit them
 
 First, run the Core service in your code (`tp.Core().run()`). Then, you can play with Taipy:
 
-- create scenarios,
+- create scenarios ([`tp.create_scenario(<ScenarioConfig>)`](../../../manuals/core/entities/data-node-mgt.md#read-write-a-data-node)),
 
-- write your input data nodes,
+- write your input data nodes ([`<Data Node>.write(<new value>)`](../../../manuals/core/entities/data-node-mgt.md#read-write-a-data-node)),
 
-- submit them to run the task
+- submit them to run the task ([`<Scenario>.submit()`](../../../manuals/core/entities/data-node-mgt.md#read-write-a-data-node)),
 
-- read your output data node.
+- read your output data node ([`<Data Node>.read()`](../../../manuals/core/entities/data-node-mgt.md#read-write-a-data-node)).
 
-Creating a scenario (`tp.create_scenario(<Scenario Config>)`) creates all its related entities
-(**tasks**, **Data Nodes**, etc). These entities are being created thanks to the previous
+Creating a scenario creates all its related entities (**tasks**, **Data Nodes**, etc). 
+These entities are being created thanks to the previous
 configuration. Still, no scenario has been run yet. `tp.submit(<Scenario>)` is the line of code
 that triggers the run of all the scenario-related tasks.
 
@@ -176,10 +176,34 @@ Value at the end of task 23.45
 ```
 
 In this code, you can see how to create and submit scenarios, retrieve data nodes,
-read and write data. Many other functions are described in the manuals, in particular in the
-[taipy](../../../manuals/reference/pkg_taipy.md),
-[scenario](../../../manuals/core/entities/scenario-cycle-mgt.md) and
-[data node](../../../manuals/core/entities/data-node-mgt.md) documentation pages.
+read and write data. 
+
+!!! note "Some useful functions"
+
+    As a quick note, here are some other basic functions to use for data and scenario managament.
+
+    - [`tp.get_scenarios()`](../../../manuals/core/entities/scenario-cycle-mgt.md/#get-all-scenarios): this function returns the list of all the scenarios.
+
+
+    For instance, the following Python code retrieves all the scenarios, extracts their names, 
+    and pairs them with their respective predictions. The names and predictions are then 
+    compiled into a list:
+
+    ```python
+    print([(s.name, s.predictions.read()) for s in tp.get_scenarios()])
+    ```
+
+    - [`tp.get(<Taipy object ID>)`](../../../manuals/core/entities/data-node-mgt.md#get-data-node): this function returns an entity based on the id of the entity.
+
+    - [`tp.delete(<Taipy object ID>)`](../../../manuals/core/entities/scenario-cycle-mgt.md#delete-a-scenario): this function deletes the entity and nested elements based on the id of the entity.
+
+    You can also have a look to this [tutorial](../../scenario_management/6_scenario_comparison/index.md) 
+    to learn how scenarios can be compared easily. 
+    Many other functions are described in the manuals, in particular in the
+    [scenario](../../../manuals/core/entities/scenario-cycle-mgt.md) 
+    and
+    [data node](../../../manuals/core/entities/data-node-mgt.md) 
+    documentation pages.
 
 # Visual elements
 
