@@ -12,7 +12,6 @@ the QSR, such as sales made on drinks or the number of transactions made at the 
 counter.
 
 [Try it live](https://qsr-fcst.taipy.cloud/data){: .tp-btn target='blank' }
-[Get it on GitHub](https://github.com/Avaiga/demo-qsr-sales-forecasting-dashboard){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
 
