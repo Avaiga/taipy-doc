@@ -10,7 +10,6 @@ build:
     python: "3.9"
   jobs:
     pre_install:
-      - rm -rf .
       - git clone https://$GITHUB_TOKEN@github.com/Avaiga/taipy-designer.git
       - mv taipy-designer/documentation/* .
       - pipenv install --dev
