@@ -13,6 +13,7 @@ build:
       - rm -rf docs taipy_theme
       - git clone https://$GITHUB_TOKEN@github.com/Avaiga/taipy-designer.git
       - mv taipy-designer/documentation/* .
+      - pip install pipenv
       - pipenv install --dev
       - pipenv run pip freeze >requirements.txt
       - cat requirements.txt
