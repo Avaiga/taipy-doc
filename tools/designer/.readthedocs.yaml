@@ -1,0 +1,16 @@
+version: 2
+
+
+mkdocs:
+  configuration: mkdocs.designer.yml
+
+build:
+  os: ubuntu-20.04
+  tools:
+    python: "3.9"
+  jobs:
+    pre_install:
+      - git clone https://$GITHUB_TOKEN@github.com/Avaiga/taipy-designer.git
+python:
+   install:
+   - requirements: tools/designer/requirements.txt
