@@ -2,7 +2,7 @@ version: 2
 
 
 mkdocs:
-  configuration: mkdocs.designer.yml
+  configuration: taipy-designer/mkdocs_taipy.yml
 
 build:
   os: ubuntu-20.04
