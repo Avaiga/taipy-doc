@@ -17,13 +17,13 @@ counter.
 
 This application showcases various capabilities of Taipy, including:
 
-1. The use of Taipy Core to manage the forecasting process -- encapsulating each forecast 
-execution as a *Scenario*, persisting the parameters and results for future reference and 
-evaluation.
+1. The use of Taipy Scenario management to handle the forecasting process -- 
+encapsulating each forecast execution as a *Scenario*, persisting the parameters 
+and results for future reference and evaluation.
 2. The use of Taipy GUI to easily create a multi-page application, featuring a navigation 
 sidebar and a top panel for selecting a *Scenario*, where both panels are present and 
 used on every page.
-3. Demonstrates a mini version of a real implemented system that uses Taipy to to 
+3. Demonstrates a mini version of a real implemented system that uses Taipy to 
 facilitate their sales forecasting.
 
 ## Home Page
