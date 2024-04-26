@@ -65,3 +65,7 @@ side panel. Here, the user can view the actual and forecast sales of different s
 the same chart.
 
 ![Compare Page](images/comparison_page.png){width=90% : .tp-image-border }
+
+# Disclaimer: Enterprise License
+
+The code for this demo is only available in the Taipy Enterprise License.
