@@ -200,6 +200,7 @@ nav:
       - "Fraud Detection": gallery/finance/fraud_detection/index.md
     - "Decision Support":
       - "Decision Support": gallery/decision_support/index.md
+      - "QSR Sales Forecasting": gallery/decision_support/3a_qsr_sales_forecasting/index.md
       - "Production Planning": gallery/decision_support/3_production_planning/index.md
       - "Optimize Bar Cut Sizes": gallery/decision_support/bar_cutting/index.md
       - "Churn Classification": gallery/decision_support/churn_classification/index.md

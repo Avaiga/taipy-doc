@@ -5,7 +5,6 @@ hide:
 
 Let's explore applications made with Taipy.
 
-
 <!-- Quick accesses -->
 <div class="tp-row tp-row--gutter-sm">
   <div class="tp-col-12 tp-col-md-4 d-flex">
@@ -30,7 +29,7 @@ Let's explore applications made with Taipy.
       </header>
       <div class="tp-content-card-body">
         <p>
-          Discover applications built to support decisions.
+          Discover decision support applications for what-if analysis.
         </p>
       </div>
     </a>
