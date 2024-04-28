@@ -3,7 +3,7 @@ title: QSR Sales Forecasting
 category: decision_support
 data-keywords: ai scenario datanode dag configuration
 short-description: Perform sales forecasting for a renowned quick service restaurant (QSR) franchise.
-img: 3a_qsr_sales_forecasting/images/forecast_page.png
+img: 3_qsr_sales_forecasting/images/forecast_page.png
 ---
 This demo is a scaled-down version of a production application using Taipy, which 
 performs sales forecasting for a renowned quick service restaurant (QSR) franchise. This 
@@ -65,3 +65,7 @@ side panel. Here, the user can view the actual and forecast sales of different s
 the same chart.
 
 ![Compare Page](images/comparison_page.png){width=90% : .tp-image-border }
+
+# Disclaimer: Enterprise License
+
+The code for this demo is only available in the Taipy Enterprise License.

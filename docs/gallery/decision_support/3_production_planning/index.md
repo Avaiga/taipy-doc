@@ -112,7 +112,3 @@ Access and display various tables associated with
 a selected scenario. Conveniently download data tables in CSV format.
 
 ![Databases](images/production-planning-databases.png){width=90% : .tp-image-border }
-
-# Disclaimer: Enterprise License
-
-The code for this demo is only available in the Taipy Enterprise License.
