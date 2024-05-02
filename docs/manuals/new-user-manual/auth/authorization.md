@@ -39,7 +39,7 @@ Calling the `(RoleTraits.)get_traits()^` method of this filter
 with credentials that hold the "MagicRole" role will return the value
 True (the *success* value).<br/>
 False (the *failure* value) is returned if the credentials do not have the
-"MagicRole" role, .
+"MagicRole" role.
 
 Let's create a user and see what happens:
 ```
@@ -178,7 +178,7 @@ the "exec" role, the informative string should be the result of calling
 Other users, if they have the "sales" role will see the result of calling
 *results_for_sales*.
 
-Finally, users that have neither the "exec" or the "sales" roles will be
+Finally, users that have neither the "exec" nor the "sales" roles will be
 presented the result of the *results_for_others* function.
 
 Now if a user is authenticated with the *user* credentials, printing
@@ -187,7 +187,7 @@ the relevant information is done with the following code:
 print(f"Results: {result_filter.get_traits(user)()}")
 ```
 The role traits are retrieved from the filter for that particular user.
-Because we know these traits are a function, we evaluate it so we get the
+Because we know these traits are a function, we evaluate it, so we get the
 expected string at the end of the journey.
 
 Note that is a user has both the "exec" and the "sales" roles (the CSO, COO
