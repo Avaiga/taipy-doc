@@ -62,6 +62,115 @@ nav:
       - "Charts for Large Data": tutorials/large_data/3_decimator/index.md
   - "Manuals":
     - "About Taipy's Manuals": manuals/index.md
+
+    - "New User Manual":
+      - "About Taipy's User Manuals": manuals/new-user-manual/index.md
+      - "User interface":
+        - manuals/new-user-manual/gui/index.md
+        - "Graphical controls": manuals/new-user-manual/gui/controls.md
+        - "Variable binding": manuals/new-user-manual/gui/binding.md
+        - "Callbacks": manuals/new-user-manual/gui/callbacks.md
+        - "Pages": manuals/new-user-manual/gui/pages/index.md
+        - "Layout":
+          - "Blocks": manuals/new-user-manual/gui/layout/blocks.md
+          - "Styling":
+              - manuals/new-user-manual/gui/layout/styling/index.md
+              - "The Stylekit": manuals/new-user-manual/gui/layout/styling/stylekit.md
+        - "Notifications": manuals/new-user-manual/gui/notifications.md
+        - "Extension libraries":
+          - manuals/new-user-manual/gui/extension/index.md
+          - "Static Elements": manuals/new-user-manual/gui/extension/static_element.md
+          - "Dynamic Elements":
+            - manuals/new-user-manual/gui/extension/dynamic_element/index.md
+            - "Scalar properties": manuals/new-user-manual/gui/extension/dynamic_element/scalar_props.md
+
+      - "Data integration":
+        - manuals/new-user-manual/data-integration/index.md
+        - "Data node": manuals/new-user-manual/data-integration/data-node-concept.md
+        - "Data node config": manuals/new-user-manual/data-integration/data-node-config.md
+        - "Data node usage": manuals/new-user-manual/data-integration/data-node-usage.md
+        - "Scope": manuals/new-user-manual/data-integration/scope.md
+
+      - "Scenario Management":
+        - manuals/new-user-manual/scenario-mgt/index.md
+        - "Hello world!":
+          - manuals/new-user-manual/scenario-mgt/basic_examples/index.md
+        - "Scenario": manuals/new-user-manual/scenario-mgt/scenario-concept.md
+        - "Scenario config":
+          - "Task config": manuals/new-user-manual/scenario-mgt/configuration/task-config.md
+          - "Scenario config": manuals/new-user-manual/scenario-mgt/configuration/scenario-config.md
+        - "Scenario creation": manuals/new-user-manual/scenario-mgt/scenario-creation.md
+        - "Scenario and cycles management": manuals/new-user-manual/scenario-mgt/scenario-cycle-mgt.md
+        - "Sequences management": manuals/new-user-manual/scenario-mgt/sequence-mgt.md
+        - "Task management": manuals/new-user-manual/scenario-mgt/task-mgt.md
+        - "Scenario Execution": manuals/new-user-manual/scenario-mgt/scenario-execution.md
+
+      - "Configuration":
+        - manuals/new-user-manual/configuration/index.md
+        - "Configuring GUI Service": manuals/new-user-manual/configuration/gui.md
+        - "Configuring Core Service": manuals/new-user-manual/configuration/core-config.md
+        - "Configuring Job Execution ": manuals/new-user-manual/configuration/job-config.md
+        - "Config Checker": manuals/new-user-manual/configuration/config-checker.md
+        - "Advanced configuration": manuals/new-user-manual/configuration/advanced-config.md
+
+      - "Versioning System":
+        - manuals/new-user-manual/versioning/index.md
+        - "Development mode": manuals/new-user-manual/versioning/development_mode.md
+        - "Experiment mode": manuals/new-user-manual/versioning/experiment_mode.md
+        - "Production mode": manuals/new-user-manual/versioning/production_mode.md
+
+      - "Authentication and Roles":
+        - "Authentication and Authorization": manuals/new-user-manual/auth/index.md
+        - "Authentication": manuals/new-user-manual/auth/authentication.md
+        - "Authorization": manuals/new-user-manual/auth/authorization.md
+
+      - "Scheduler":
+        - manuals/new-user-manual/scheduling/index.md
+
+      - "Command-line interface":
+        - manuals/cli/index.md
+        - "help": manuals/cli/help.md
+        - "create": manuals/cli/create.md
+        - "run": manuals/cli/run.md
+        - "manage-versions": manuals/cli/manage-versions.md
+        - "version": manuals/cli/version.md
+
+      - "Using Notebooks": manuals/new-user-manual/notebooks.md
+
+      - "REST APIs":
+        - manuals/new-user-manual/rest/index.md
+
+      - "Running & Deploying":
+        - "Running and Deploying Taipy applications": manuals/run-deploy/index.md
+        - "Running":
+          - "Running a Taipy application": manuals/run-deploy/run/index.md
+          - "The run() function": manuals/run-deploy/run/running_services.md
+          - "Using an external web server": manuals/run-deploy/run/external_web_server.md
+          - "Protect private files": manuals/run-deploy/run/protect_files.md
+        - "Deployment":
+          - "Deploying a Taipy application": manuals/run-deploy/deploy/index.md
+          - "On the local machine":
+            - "Deploying locally": manuals/run-deploy/deploy/local/index.md
+          - "On Linux servers":
+            - "Deploying on a Linux system": manuals/run-deploy/deploy/linux/index.md
+            - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md
+            - "RHEL": manuals/run-deploy/deploy/linux/redhat.md
+          - "On Windows Server":
+            - "Deploying on Windows Server": manuals/run-deploy/deploy/windows/index.md
+          - "Using Docker":
+            - manuals/run-deploy/deploy/docker/index.md
+            - "For development": manuals/run-deploy/deploy/docker/development.md
+            - "For production": manuals/run-deploy/deploy/docker/production.md
+          - "On Azure":
+            - "Deploying on Azure": manuals/run-deploy/deploy/azure/index.md
+          - "On Heroku":
+            - "Deploying on Heroku": manuals/run-deploy/deploy/heroku/index.md
+            - "Setup": manuals/run-deploy/deploy/heroku/setup.md
+            - "Based on Git": manuals/run-deploy/deploy/heroku/git.md
+            - "Based on Docker": manuals/run-deploy/deploy/heroku/docker.md
+          - "On Databricks":
+            - "Deploying on Databricks": manuals/run-deploy/deploy/databricks/index.md
+
     - "User Manuals":
       - "About Taipy's User Manuals": manuals/usermans/index.md
       - "Taipy GUI":
@@ -69,7 +178,7 @@ nav:
         - "Pages":
           - "Pages": manuals/gui/pages/index.md
         - "Visual Elements":
-          - "Introduction to Visual Elements": manuals/gui/viselements/index.md
+          - "Introduction to Visual Elements": manuals/gui/viselements/index.md ###############################
           - "Controls": manuals/gui/viselements/controls.md
           - "Blocks": manuals/gui/viselements/blocks.md
         - "Binding variables": manuals/gui/binding.md
@@ -87,7 +196,7 @@ nav:
             - manuals/gui/extension/dynamic_element/index.md
             - "Scalar properties": manuals/gui/extension/dynamic_element/scalar_props.md
       - "Taipy Core":
-        - "Taipy Core": manuals/core/index.md
+        - "Taipy Core": manuals/core/index.md ###############################
         - 'Basic example: Hello world!':
           - manuals/core/basic_examples/index.md
         - "Concepts":
