@@ -36,7 +36,7 @@ Here’s the list of predefined data nodes:
 
 ## Pickle Data Node
 
-The [Pickle](../../../manuals/core/config/data-node-config.md#Pickle) data node is the standard data node in Taipy.
+The [Pickle](../../../manuals/core/config/data-node-config.md#pickle) data node is the standard data node in Taipy.
 It can handle various types of Python stuff like strings, numbers, lists, dictionaries,
 models (for machine learning or other things), and data tables. Here's some code that uses
 two Pickle data nodes: one for getting data in and one for sending data out.
@@ -100,10 +100,10 @@ By default, the data they point to is presented to the user or developer as a Pa
 
 The predefined tabular data nodes in Taipy include:
 
-- [SQL](../../../manuals/core/config/data-node-config.md#SQL)
-- [CSV](../../../manuals/core/config/data-node-config.md#CSV)
-- [Excel](../../../manuals/core/config/data-node-config.md#Excel)
-- [Parquet](../../../manuals/core/config/data-node-config.md#Parquet)
+- [SQL](../../../manuals/core/config/data-node-config.md#sql)
+- [CSV](../../../manuals/core/config/data-node-config.md#csv)
+- [Excel](../../../manuals/core/config/data-node-config.md#excel)
+- [Parquet](../../../manuals/core/config/data-node-config.md#parquet)
 
 These data nodes allow you to work with tabular data from different sources with ease.
 
