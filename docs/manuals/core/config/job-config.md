@@ -6,9 +6,9 @@ available in Taipy: the *standalone* mode, the *development* mode, and the *clus
 
 With the *development* mode, the jobs are synchronously executed one by one. The jobs are directly executed
 in the main thread at the submission. Note that with the *development* mode, the submit method waits for the
-jobs to be finished before to return. Please refer to the
-[submit entity](../entities/orchestrating-and-job-execution.md#submit-a-scenario-sequence-or-task) section to
-the see how to submit jobs.
+jobs to be finished before returning. Please refer to the
+[submit entity](../entities/orchestrating-and-job-execution.md#submit-a-scenario-sequence-or-task) section
+on how to submit jobs.
 
 It is particularly handy to test a job execution and/or investigate an issue in the function
 executed.
@@ -54,10 +54,10 @@ The *development* mode can be activated with the following config:
 With the *standalone* mode, a `Job^` runs in its own execution context, in an asynchronous manner.
 At the submission, the job is queued. It is dequeued in a different thread and sent to a dedicated process to be
 executed.
-Note that with the *standalone* mode, the submit method in not blocking and returns after the job is queued.
+Note that with the *standalone* mode, the submit method is not blocking and returns after the job is queued.
 It means the submit method can return before the job finishes or even before it is dequeued. Please refer to
 the [submit entity](../entities/orchestrating-and-job-execution.md#submit-a-scenario-sequence-or-task) section
-to the see how to submit jobs.
+on how to submit jobs.
 
 You can configure the *standalone* mode with the following config:
 
@@ -125,10 +125,10 @@ local or on a remote machine, in an asynchronous manner. At the submission, the 
 RabbitMQ queue. When there is a worker available, the job is dequeued and sent to the worker
 environment to be executed.
 
-Note that with the *cluster* mode, the submit method in not blocking and returns after the job is queued.
+Note that with the *cluster* mode, the submit method is not blocking and returns after the job is queued.
 It means the submit method can return before the job finishes or even before it is dequeued. Please refer to
 the [submit entity](../entities/orchestrating-and-job-execution.md#submit-a-scenario-sequence-or-task) section
-to the see how to submit jobs.
+on how to submit jobs.
 
 You can configure the *cluster* mode with the following config:
 
@@ -173,7 +173,8 @@ The worker service will start and listen to the RabbitMQ queue for incoming jobs
 
 !!! note "Number of worker environments"
 
-    The number of the active worker environments limit the number of concurrent jobs that can run simultaneously.
+    The number of active worker environments limits the number of concurrent jobs that can run simultaneously.
+
     If there is no worker available, the job is queued in the RabbitMQ queue until a worker is available.
 
 [:material-arrow-right: The next section introduces the configuration checker](config-checker.md).
