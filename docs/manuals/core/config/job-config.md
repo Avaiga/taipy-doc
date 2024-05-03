@@ -1,5 +1,5 @@
-The `JobConfig^` allows the developer to configure the Taipy behavior for job executions. Two main modes are
-available in Taipy: the `standalone` mode and the `development` mode.
+The `JobConfig^` allows the developer to configure the Taipy behavior for job executions. There are three modes
+available in Taipy: the *standalone* mode, the *development* mode, and the *cluster* mode
 
 
 # Development mode
@@ -113,5 +113,67 @@ For example, the following configuration will allow Taipy to run up to eight `Jo
     mode = "standalone"
     max_nb_of_workers = "8:int"
     ```
+
+# Cluster mode
+
+!!! warning "Available in Taipy Enterprise edition"
+
+    This section is relevant only to the Enterprise edition of Taipy.
+
+With the *cluster* mode, a `Job^` runs in its own environment (a worker environment), which can be
+local or on a remote machine, in an asynchronous manner. At the submission, the job is queued in a
+RabbitMQ queue. When there is a worker available, the job is dequeued and sent to the worker
+environment to be executed.
+
+Note that with the *cluster* mode, the submit method in not blocking and returns after the job is queued.
+It means the submit method can return before the job finishes or even before it is dequeued. Please refer to
+the [submit entity](../entities/orchestrating-and-job-execution.md#submit-a-scenario-sequence-or-task) section
+to the see how to submit jobs.
+
+You can configure the *cluster* mode with the following config:
+
+=== "Python configuration"
+
+    ```python linenums="1"
+    from taipy import Config
+
+    Config.configure_job_executions(mode="cluster")
+    ```
+
+=== "TOML configuration"
+
+    ```python linenums="1"
+    from taipy import Config
+
+    Config.load("config.toml")
+    ```
+
+    ```toml linenums="1" title="config.toml"
+    [JOB]
+    mode = "cluster"
+    ```
+
+To set up a worker environment, some requirements must be met:
+
+- The worker environment must have access to the same Taipy application as the main environment.
+- The worker environment must have the same Python environment as the main environment.
+- The worker environment must have access to the same RabbitMQ server as the main environment.
+- The worker environment must have access to the data of the data nodes as the main environment.
+  This includes:
+  - The shared drive(s) containing the data for file-based data nodes.
+  - The database server(s) containing the data for database-based data nodes.
+
+To start the worker service in the worker environment, you can use the following command:
+
+```console
+$ taipy run-worker --application-path /path/to/your/taipy/application
+```
+where you can provide the path to the Taipy application. The default path is the current working directory.
+The worker service will start and listen to the RabbitMQ queue for incoming jobs.
+
+!!! note "Number of worker environments"
+
+    The number of the active worker environments limit the number of concurrent jobs that can run simultaneously.
+    If there is no worker available, the job is queued in the RabbitMQ queue until a worker is available.
 
 [:material-arrow-right: The next section introduces the configuration checker](config-checker.md).
