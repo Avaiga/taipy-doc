@@ -43,6 +43,10 @@ This is the list of changes to Taipy releases as they were published.
 - New `Scenario.import()^` method and `taipy.import_scenario()^` method can be used to import a scenario from an
   export archive file. For more information, please refer to
   [Import a scenario](./manuals/core/entities/scenario-cycle-mgt.md#import-a-scenario).
+- The `taipy.get_scenarios()` and `taipy.get_primary_scenarios()^` methods now accept optional parameters to
+  sort the output list of scenarios by name, id, creation date, or tag. For more information, please refer to
+  [Get all scenarios](./manuals/core/entities/scenario-cycle-mgt.md#get-all-scenarios) and
+  [Get primary scenarios](./manuals/core/entities/scenario-cycle-mgt.md#get-primary-scenarios).
 
 ## Improvements and changes
 
