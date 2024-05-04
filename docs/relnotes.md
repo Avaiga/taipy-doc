@@ -66,7 +66,10 @@ This is the list of changes to Taipy releases as they were published.
 
 <h4><strong><code>taipy-gui</code></strong> 3.2.0</h4>
 
-<h4><strong><code>taipy-core</code></strong> 3.2.1</h4>
+<h4><strong><code>taipy-core</code></strong> 3.2.0</h4>
+
+- `DataNode.is_up_to_date^` raises an error when the data node has never been written.<br/>
+  See [issue #1198](https://github.com/Avaiga/taipy/issues/1198).
 
 # Enterprise edition: 3.2
 
