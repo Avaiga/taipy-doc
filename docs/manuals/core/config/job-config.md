@@ -120,10 +120,14 @@ For example, the following configuration will allow Taipy to run up to eight `Jo
 
     This section is relevant only to the Enterprise edition of Taipy.
 
-With the *cluster* mode, a `Job^` runs in its own environment (a worker environment), which can be
-local or on a remote machine, in an asynchronous manner. At the submission, the job is queued in a
-RabbitMQ queue. When there is a worker available, the job is dequeued and sent to the worker
-environment to be executed.
+The *cluster* mode is designed to make a Taipy application executes jobs on a remote cluster of
+distributed workers. The number of machines available in the cluster is unlimited, so the
+application becomes fully scalable horizontally. It can also be adjusted dynamically depending on
+some load metric.
+
+With the *cluster* mode, a `Job^` asynchronously runs in its own environment. At the submission,
+the job is queued in a RabbitMQ queue. When there is a worker available, the job is dequeued and
+sent to the worker environment to be executed.
 
 Note that with the *cluster* mode, the submit method is not blocking and returns after the job is queued.
 It means the submit method can return before the job finishes or even before it is dequeued. Please refer to
