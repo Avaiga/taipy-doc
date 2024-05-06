@@ -1,16 +1,16 @@
 ---
-title: Integrating with Dataiku
-category: tips
-type: code
+title: Integration with Dataiku
+category: integration
 data-keywords: scenario task
 short-description: A guide to integrate Dataiku with Taipy.
-img: dataiku/images/dataiku.png
+img: 5_dataiku/images/dataiku.png
 ---
 
 Integrating Dataiku with Taipy enhances your data analysis and processing workflows. 
-This connection enables users to efficiently handle, analyze, and visualize data. 
-The guide walks you through setting up your environment, connecting to Dataiku, and 
-fetching data for visualization within Taipy's flexible framework.
+This connection enables users to efficiently handle, analyze, and visualize data from inside 
+or outside Dataiku. 
+The guide walks you through setting up your environment, creating an application in Dataiku DSS, 
+connecting to Dataiku, and fetching data for visualization within Taipy's flexible framework.
 
 By integrating Dataiku projects with Taipy scenarios, you gain streamlined workflows for 
 data manipulation and scenario management. This involves creating custom functions for 
@@ -19,10 +19,95 @@ Dataiku's data processing capabilities with Taipy's task orchestration and data 
 
 ![Dataiku](images/dataiku.png){width=70% : .tp-image}
 
+
+
+# Taipy Application in Dataiku DSS
+
+We'll begin by developing an application directly within Dataiku DSS. This approach allows you to 
+utilize the comprehensive dataiku package, packed with powerful features, and seamlessly integrate 
+your Taipy application into your existing ecosystem.
+
+## Prerequisites:
+- Ensure that [Code Studios](https://knowledge.dataiku.com/latest/code/work-environment/tutorial-first-code-studio.html) is enabled for your instance.
+- You must have a [Code Environment](https://doc.dataiku.com/dss/latest/code-envs/index.html) with Taipy installed and Python version 3.8 or higher.
+
+## Step-by-Step Guide:
+
+First, log in to your Dataiku DSS instance and create a new project or enter an existing project.
+
+### Create a new "Code Studio"
+
+- Navigate to "Code Studios"
+
+![Step 3 Image](images/code_studio.png){width=50% : .tp-image-border}
+
+
+- Click on "+ NEW CODE STUDIO".
+
+- Follow the link in the description for templates.
+
+![Step 4 Image](images/new_code_studio.png){width=50% : .tp-image-border}
+
+### Add a template to Code Studio:
+
+- Create a new template by clicking on "+ CREATE CODE STUDIO TEMPLATE".
+
+You can either name your new template or import one using the dropdown arrow next to the button.
+
+- Configure your Code Studio:
+
+   - Go to "Definition".
+
+    ![Definition](images/definition.png){width=90% : .tp-image-border}
+
+   - Add three blocks:
+
+     - **Code Environment**: Select the Code Environment where Taipy is installed.
+
+     - **Visual Studio Code**: Enable the "Launch for Webapps" option.
+
+     - **Entrypoint**: Add a label (e.g., "taipy"), enable both "Launch for Webapps" and "Expose port". 
+
+     Specify an "Exposed port label" (e.g., "taipy") and the exposed port (5000, the default port for Taipy).
+
+   ![Step 6 Image](images/blocks.png){width=90% : .tp-image-border}
+
+- Save and Build your template
+
+Then, return to Code Studios to create a Code Studio using this template, which should now appear in the list.
+
+### Use the template in your Code Studio
+
+- Launch the studio and begin creating your first Taipy application.
+
+- In the run settings, use:
+
+```python
+<Gui>.run(..., base_url="/code-studios/<PROJECT_NAME>/<CODE_STUDIO_ID>/<EXPOSED_PORT>/")
+``` 
+
+The exposed port should be 5000, as set in the Entrypoint block. You can find these details easily in the URL:
+
+![URL Details Image](images/url_details_image.png){width=90% : .tp-image-border}
+
+### Access your application
+
+- Navigate to the Taipy tab in Code Studio.
+
+![Application Tab Image](images/application_tab_image.png){width=90% : .tp-image-border}
+
+- Refresh the port and you should see your application live.
+
+![Application Refresh](images/application_resfresh.png){width=90% : .tp-image-border}
+
+
 # Simple Integration: Visualization
 
-First, let's integrate with Dataiku just by visualizing different data and metrics 
-fetched from our Dataiku projects.
+You've learned how to use Taipy within Dataiku. Next, we'll cover how to extract and display 
+information from Dataiku projects. You'll be able to visualize various data and metrics from your 
+Dataiku projects. Remember, we'll utilize the `dataiku-api-client` for retrieving information when 
+building applications outside the Dataiku ecosystem. If you're following the first tutorial, you can 
+directly use the `dataiku` package.
 
 ## Setting Up Your Environment
 
@@ -40,7 +125,7 @@ pip install dataiku-api-client taipy
 
 - A Dataiku Instance.
 - A Dataiku Project.
-- A knowledge of the Dataiku Python API
+- A knowledge of the Dataiku Python API.
 
 Use the `DSSClient` from the `dataikuapi` package to establish a connection with 
 your Dataiku instance. Replace `"http://your-dataiku-instance.com"` and 

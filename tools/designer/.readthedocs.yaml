@@ -1,0 +1,22 @@
+version: 2
+
+
+mkdocs:
+  configuration: mkdocs_taipy.yml
+
+build:
+  os: ubuntu-20.04
+  tools:
+    python: "3.9"
+  jobs:
+    pre_install:
+      - rm -rf docs taipy_theme
+      - git clone https://$GITHUB_TOKEN@github.com/Avaiga/taipy-designer.git
+      - mv taipy-designer/documentation/* .
+      - pip install pipenv
+      - pipenv install --dev
+      - pipenv run pip freeze >requirements.txt
+      - cat requirements.txt
+python:
+   install:
+   - requirements: requirements.txt

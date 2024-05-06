@@ -36,6 +36,14 @@ This is the list of changes to Taipy releases as they were published.
 
 <h4><strong><code>taipy-core</code></strong> 3.2.0 </h4>
 
+- The `Scenario.export()^` method or `taipy.export_scenario()^` method now supports exporting file-based data
+  nodes' data to the export folder if the path exists.
+- The `Scenario.export()^` method or `taipy.export_scenario()^` method now export a zip archive instead of a
+  folder. For more information, please refer to [Export a scenario](./manuals/core/entities/scenario-cycle-mgt.md#export-a-scenario).
+- New `Scenario.import()^` method and `taipy.import_scenario()^` method can be used to import a scenario from an
+  export archive file. For more information, please refer to
+  [Import a scenario](./manuals/core/entities/scenario-cycle-mgt.md#import-a-scenario).
+
 ## Improvements and changes
 
 <h4><strong><code>taipy</code></strong> 3.2.0</h4>
@@ -49,12 +57,19 @@ This is the list of changes to Taipy releases as they were published.
 - When using the Taipy command-line interface, if an unsupported argument is provided, the CLI
   will display a message indicating the invalid argument. If the invalid argument is possibly a
   typo, the CLI will suggest the closest valid argument.
+- The `Scenario.export()^` method or `taipy.export_scenario()^` method now raise the `ExportPathAlreadyExistss^`
+  exception if the export path already exists. You can explicitly set the `overwrite` parameter to True to
+  overwrite the existing export path. For more information, please refer to
+  [Export a scenario](./manuals/core/entities/scenario-cycle-mgt.md#export-a-scenario).
 
 ## Significant bug fixes
 
 <h4><strong><code>taipy-gui</code></strong> 3.2.0</h4>
 
-<h4><strong><code>taipy-core</code></strong> 3.2.1</h4>
+<h4><strong><code>taipy-core</code></strong> 3.2.0</h4>
+
+- `DataNode.is_up_to_date^` raises an error when the data node has never been written.<br/>
+  See [issue #1198](https://github.com/Avaiga/taipy/issues/1198).
 
 # Enterprise edition: 3.2
 
@@ -73,6 +88,7 @@ Published on 2024-03.
 [`taipy-core` 3.1](https://pypi.org/project/taipy-core/3.1.1/),
 [`taipy-templates` 3.1](https://pypi.org/project/taipy-templates/3.1.1/), and
 [`taipy-rest` 3.1](https://pypi.org/project/taipy-rest/3.1.1/) packages.
+
 
 ## New Features
 
@@ -198,6 +214,12 @@ additional features.
 # Community edition: 3.0
 
 Published on 2023-10.
+
+!!! warning Error([#1180](https://github.com/Avaiga/taipy/issues/1180)) when downgrading from Taipy 3.1 to Taipy 3.0 
+    
+    If you are experiencing an error downgrading to Taipy 3.0, please 
+    reinstall Taipy with options `--no-cache-dir -I` like so: 
+      `pip install --no-cache-dir -I taipy==3.0.0`
 
 ## New Features
 
