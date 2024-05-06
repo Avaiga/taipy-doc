@@ -1,5 +1,5 @@
-The `JobConfig^` allows the developer to configure the Taipy behavior for job executions. There are three modes
-available in Taipy: the *standalone* mode, the *development* mode, and the *cluster* mode
+`JobConfig^` allows the developer to configure the Taipy behavior for job executions. There are three modes
+available in Taipy: *standalone*, *development*, and *cluster*.
 
 
 # Development mode
@@ -54,7 +54,7 @@ The *development* mode can be activated with the following config:
 With the *standalone* mode, a `Job^` runs in its own execution context, in an asynchronous manner.
 At the submission, the job is queued. It is dequeued in a different thread and sent to a dedicated process to be
 executed.
-Note that with the *standalone* mode, the submit method is not blocking and returns after the job is queued.
+Note that with the *standalone* mode, the `(Scenario.)submit()^` method is not blocking and returns after the job is queued.
 It means the submit method can return before the job finishes or even before it is dequeued. Please refer to
 the [submit entity](../entities/orchestrating-and-job-execution.md#submit-a-scenario-sequence-or-task) section
 on how to submit jobs.
@@ -120,17 +120,17 @@ For example, the following configuration will allow Taipy to run up to eight `Jo
 
     This section is relevant only to the Enterprise edition of Taipy.
 
-The *cluster* mode is designed to make a Taipy application executes jobs on a remote cluster of
+The *cluster* mode is designed to make Taipy applications execute jobs on a remote cluster of
 distributed workers. The number of machines available in the cluster is unlimited, so the
 application becomes fully scalable horizontally. It can also be adjusted dynamically depending on
-some load metric.
+some load metrics.
 
-With the *cluster* mode, a `Job^` asynchronously runs in its own environment. At the submission,
+With the *cluster* mode, a `Job^` asynchronously runs in its own environment. When submitted,
 the job is queued in a RabbitMQ queue. When there is a worker available, the job is dequeued and
 sent to the worker environment to be executed.
 
-Note that with the *cluster* mode, the submit method is not blocking and returns after the job is queued.
-It means the submit method can return before the job finishes or even before it is dequeued. Please refer to
+Note that with the *cluster* mode, the `(Scenario.)submit()^` method is not blocking and returns after the job is queued.
+This means the `submit()` method can return before the job finishes or even before it is dequeued. Please refer to
 the [submit entity](../entities/orchestrating-and-job-execution.md#submit-a-scenario-sequence-or-task) section
 on how to submit jobs.
 
