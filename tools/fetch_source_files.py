@@ -92,7 +92,7 @@ for repo in repo_defs.keys():
             cmd = subprocess.run(f"\"{git_path}\" ls-remote -q -h {github_root}{repo}.git", shell=True, capture_output=True,
                                  text=True)
             if cmd.returncode:
-                if repo in PRIVATE_REPOS:
+                if repo in PRIVATE_REPOS or repo[6:] in PRIVATE_REPOS:
                     repo_defs[repo]["skip"] = True
                     continue
                 else:
@@ -102,7 +102,7 @@ for repo in repo_defs.keys():
             cmd = subprocess.run(f"\"{git_path}\" ls-remote --exit-code --heads {github_root}{repo}.git", shell=True,
                                  capture_output=True, text=True)
             if cmd.returncode:
-                if repo in PRIVATE_REPOS:
+                if repo in PRIVATE_REPOS or repo[6:] in PRIVATE_REPOS:
                     repo_defs[repo]["skip"] = True
                     continue
                 else:
