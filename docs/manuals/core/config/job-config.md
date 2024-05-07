@@ -159,10 +159,10 @@ You can configure the *cluster* mode with the following config:
 
 To set up a worker environment, some requirements must be met:
 
-- The worker environment must have access to the same Taipy application as the main environment.
-- The worker environment must have the same Python environment as the main environment.
-- The worker environment must have access to the same RabbitMQ server as the main environment.
-- The worker environment must have access to the data of the data nodes as the main environment.
+- The workers must have access to the same Taipy application as the main environment.
+- The main application and the workers must have the same Python environment.
+- The main application and the workers must have access to the same RabbitMQ server.
+- The main application and the workers must have access to the data referenced by the the data nodes.
   This includes:
   - The shared drive(s) containing the data for file-based data nodes.
   - The database server(s) containing the data for database-based data nodes.
