@@ -47,7 +47,7 @@ two Pickle data nodes: one for getting data in and one for sending data out.
 - *predictions* is an output data node, but right now, it doesn't have any data in it.
   We haven't told it where to get data from yet.
 
-<video width="640" height="360" controls>
+<video width="640" height="360" controls class="tp-video">
   <source src="images/pickle-data-node.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
@@ -107,7 +107,7 @@ The predefined tabular data nodes in Taipy include:
 
 These data nodes allow you to work with tabular data from different sources with ease.
 
-<video width="640" height="360" controls>
+<video width="640" height="360" controls class="tp-video">
   <source src="images/tabular-data-nodes.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
@@ -139,7 +139,7 @@ When you submit the scenario described above for execution in Taipy, the followi
 Here, we'll demonstrate how you can change the exposed type from the default Pandas DataFrame
 to other types, such as *Numpy arrays*:
 
-<video width="640" height="360" controls>
+<video width="640" height="360" controls class="tp-video">
   <source src="images/tabular-data-nodes_2.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>

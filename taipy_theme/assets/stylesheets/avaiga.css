@@ -922,6 +922,14 @@ a.md-content__button{
   display:block;
 }
 
+/* ---------- ---------- ---------- VIDEOS ---------- ---------- ---------- */
+
+.tp-video {
+  margin: auto;
+  display: block;
+}
+
+
 /* ---------- ---------- ---------- Breadcrumbs ---------- ---------- ---------- */
 .tp-bc {
   margin-left: 0.8rem;
