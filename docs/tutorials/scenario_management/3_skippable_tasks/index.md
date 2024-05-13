@@ -50,7 +50,7 @@ The order in which you supply Data nodes to the Task is critical.
 Taipy calls the function using the parameters in the same order as the Data nodes,
 and the results are returned in that exact order.
 
-<video width="640" height="360" controls>
+<video width="640" height="360" controls class="tp-video">
   <source src="images/setting_up_nodes_for_tasks.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
@@ -92,7 +92,7 @@ by preventing unnecessary computations, which saves time and resources.
 
 Let’s take the previous execution graph and set *skippable=True* to our Task.
 
-<video width="640" height="360" controls>
+<video width="640" height="360" controls class="tp-video">
   <source src="images/use_case.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
@@ -162,7 +162,7 @@ skipped across different scenarios.
 
 Let's revisit our previous code and modify the Data nodes to have a Global scope.
 
-<video width="640" height="360" controls>
+<video width="640" height="360" controls class="tp-video">
   <source src="images/using_global_data_nodes.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
