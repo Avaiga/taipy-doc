@@ -1,4 +1,4 @@
-A data node is one of the most important concepts in Taipy Core. It does not contain the data itself but holds all
+A data node is an important concept in Taipy. It does not contain the data itself but holds all
 the necessary information to read and write the actual data. It can be seen as a dataset descriptor or data reference.
 
 A _data node_ can reference any data:
@@ -39,7 +39,7 @@ path to the file and the Python class used to represent a CSV line.
 !!! note
 
     Taipy proposes various predefined _data nodes_ corresponding to the most popular _storage types_. More details on
-    the [Data node configuration page](../config/data-node-config.md)
+    the [Data node configuration page](data-node-config.md)
 
     In our example, the sales history is a CSV file received, for instance, from a company record system. We use
     the predefined CSV data node to model the _**sales history**_.
@@ -51,5 +51,4 @@ path to the file and the Python class used to represent a CSV line.
 
 A data node's attributes are populated based on its data node configuration `DataNodeConfig^` that must be
 provided when instantiating a new data node. (Please refer to the
-[`configuration details`](../config/data-node-config.md) documentation for more
-details on configuration).
+[`configuration details`](data-node-config.md) documentation for more details on configuration).

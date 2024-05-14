@@ -1,0 +1,63 @@
+Displays a list of the Data Node entities that can be selected.
+
+# Details
+
+The control displays a tree selector where all data node entities are listed.<br/>
+If [*display_cycles*](#p-display_cycles) is set to False, the cycles are not represented.
+
+In an application that would have created a few data nodes, some of them being scoped at the
+scenario level, here is what the data node selector would look like:
+<figure class="tp-center">
+  <img src="../data_node_selector-init-d.png" class="visible-dark"  width="70%"/>
+  <img src="../data_node_selector-init-l.png" class="visible-light" width="70%"/>
+  <figcaption>The list of selectable data nodes</figcaption>
+</figure>
+
+Data nodes are organized in their owning scenario and cycle, when relevant.
+
+When the user selects a data node, the [*on_change*](#p-on_change) callback is invoked so that
+the application can use the selected value. The value is set to the [*value*](#p-value) property.
+
+<h2>Pins</h2/>
+
+When there are many data nodes in your application, the user can filter out a set of data nodes
+by *pinning* them and then set the *Pinned only* switch (that is active only if some data nodes are
+pinned): only pinned data nodes will then appear in the list.
+
+Assuming we are in the following situation:
+<figure class="tp-center">
+  <img src="../data_node_selector-pin1-d.png" class="visible-dark"  />
+  <img src="../data_node_selector-pin1-l.png" class="visible-light" />
+  <figcaption>Crowded data node selector</figcaption>
+</figure>
+
+If the user wants to focus only on the 'initial_dataset' and the data nodes from the scenario
+called 'Peter's', she can click on the pin icon next to these two items. Here is what the display
+would look like:
+<figure class="tp-center">
+  <img src="../data_node_selector-pin2-d.png" class="visible-dark"  />
+  <img src="../data_node_selector-pin2-l.png" class="visible-light" />
+  <figcaption>Data node selector with pinned items</figcaption>
+</figure>
+
+Here is what the control looks like after the 'Pinned only' switch was set and the scenario item
+was expanded:
+<figure class="tp-center">
+  <img src="../data_node_selector-pin3-d.png" class="visible-dark"  />
+  <img src="../data_node_selector-pin3-l.png" class="visible-light" />
+  <figcaption>Filtering pinned data nodes</figcaption>
+</figure>
+
+You can see that only the pinned data nodes are visible.
+
+Note that the cycle item is not pinned because the other scenarios it contains are not,  either.
+
+- If all data nodes for a scenario or a cycle are pinned, the scenario or cycle item is itself
+  pinned.
+- A scenario or cycle item appears *not pinned* if any of its data nodes is not pinned.
+- *Pinning* a scenario item pins all its data nodes.</br>
+  *Unpinning* a scenario item unpins all its data nodes.
+- *Pinning* a cycle item pins all the data nodes of all its scenarios.</br>
+  *Unpinning* a cycle item unpins all the data nodes of all its scenarios.
+
+To reveal all existing data nodes, the *Pinned only* switch must be turned off.

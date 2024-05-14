@@ -1,9 +1,3 @@
-Data nodes get created when scenarios are created. Please refer to the
-[Entities' creation](scenario-creation.md) section for more details.
-
-In this section, it is assumed that <a href="../code_example/my_config.py" download>`my_config.py`</a>
-module contains a Taipy configuration already implemented.
-
 # Data node attributes
 
 A `DataNode^` entity is identified by a unique identifier `id` that Taipy generates.
@@ -14,34 +8,42 @@ A data node also holds various properties and attributes accessible through the 
 - _**id**_: The unique identifier of this data node.
 - _**name**_: The user-readable name of the data node.
 - _**owner_id**_: The identifier of the owner (scenario_id, cycle_id) or None.
-- _**last_edit_date**_: The date and time of the last data modification made through Taipy.
-    Note that **only** for file-based data nodes (CSV, Excel, pickle, JSON, Parquet, ...), the
-    file's last modification date is used to compute the _**last_edit_date**_ value. That means if a file is modified
-    manually or by an external process, the _**last_edit_date**_ value is automatically updated within Taipy.
-- _**edits**_: The ordered list of `Edit^`s, representing the successive modifications of the data node.
-- _**version**_: The string indicates the application version of the data node to instantiate.
-    If not provided, the current version is used.
-- _**validity_period**_: The duration since the last edit date for which the data node can be considered up-to-date.
-    Once the validity period has passed, the data node is considered stale and relevant tasks will run
-    even if they are skippable (see the [Task management page](task-mgt.md) for more details).
+- _**last_edit_date**_: The date and time of the last data modification made through
+    Taipy. Note that **only** for file-based data nodes (CSV, Excel, pickle, JSON,
+    Parquet, ...), the file's last modification date is used to compute the
+    _**last_edit_date**_ value. That means if a file is modified manually or by an
+    external process, the _**last_edit_date**_ value is automatically updated
+    within Taipy.
+- _**edits**_: The ordered list of `Edit^`s, representing the successive modifications
+    of the data node.
+- _**version**_: The string indicates the application version of the data node
+    to instantiate. If not provided, the current version is used.
+- _**validity_period**_: The duration since the last edit date for which the
+    data node can be considered up-to-date. Once the validity period has passed,
+    the data node is considered stale and relevant tasks will run even if they
+    are skippable (see the [Task management page](../scenario-mgt/task-mgt.md)
+    for more details).
     If *validity_period* is set to None, the data node is always up-to-date.
-- _**edit_in_progress**_: The boolean flag signals if the data node is locked for modification.
+- _**edit_in_progress**_: The boolean flag signals if the data node is locked
+    for modification.
 - _**properties**_: The dictionary of additional arguments.
 
 # Create a data node
 
 There are 2 methods to create data nodes in Taipy.
 
-The first method is creating a scenario via the `taipy.create_scenario()^` method. This method takes a scenario
-configuration as a parameter and returns the created scenario, and all data nodes that are related to the scenario will
-be built alongside the scenario. Please refer to the [Scenario creation page](./scenario-creation.md) for details.
+The first method is creating a global data node using the
+`taipy.create_global_data_node()^` method. This method takes a data
+node configuration as a parameter and returns the created data node.
+This method is proper when you want to use a data node independently
+of a scenario, even if the data node is part of a scenario.
 
-The second method is directly creating a global data node using the `taipy.create_global_data_node()^` method.
-This method takes a data node configuration as a parameter and returns the created data node.
-
-This method is proper when you want to create a data node that is independent of any cycle or scenario. For example,
-you can create a data node that stores the dataset for training a model, then filter, lock, or modify the data node
-independently from the scenarios. Afterward, you can use this data node in multiple scenarios.
+The second method is creating a scenario via the `taipy.create_scenario()^`
+method. This method takes a scenario configuration as a parameter and
+returns the created scenario, and all data nodes that are related to
+the scenario will be built alongside the scenario. Please refer to
+the [Scenario management section](../scenario-mgt/index.md) for more
+details on scenarios.
 
 !!! example
 
@@ -54,9 +56,9 @@ independently from the scenarios. Afterward, you can use this data node in multi
 
 !!! warning
 
-    The `taipy.create_global_data_node()^` method only accepts data node configuration with `GLOBAL` scope. If
-    a data node configuration with a different scope is provided, the method will raise the
-    `DataNodeConfigIsNotGlobal^` exception.
+    The `taipy.create_global_data_node()^` method only accepts data node configuration
+    with `GLOBAL` scope. If a data node configuration with a different scope is provided,
+    the method will raise the `DataNodeConfigIsNotGlobal^` exception.
 
 # Get data nodes
 
@@ -81,8 +83,8 @@ passing the data node id as a parameter:
 
 ## Get data nodes by config_id
 
-The data nodes that are part of a **scenario**, **sequence**, or **task** can be directly accessed as attributes by
-using their config_id:
+The data nodes that are part of a **scenario**, **sequence**, or **task**
+can be directly accessed as attributes by using their config_id:
 
 !!! example
 
@@ -107,8 +109,9 @@ using their config_id:
     task.sales_history
     ```
 
-Data nodes can be retrieved by using `taipy.get_entities_by_config_id()^` providing the config_id.
-This method returns the list of all existing data nodes instantiated from the config_id provided as a parameter.
+Data nodes can be retrieved by using `taipy.get_entities_by_config_id()^`
+providing the config_id. This method returns the list of all existing data
+nodes instantiated from the config_id provided as a parameter.
 
 !!! example
 
@@ -127,7 +130,8 @@ This method returns the list of all existing data nodes instantiated from the co
 
 ##  Get all data nodes
 
-All data nodes that are part of a **scenario** or a **sequence** can be directly accessed as attributes:
+All data nodes that are part of a **scenario** or a **sequence** can be
+directly accessed as attributes:
 
 !!! example
 
@@ -147,8 +151,8 @@ All data nodes that are part of a **scenario** or a **sequence** can be directly
     sequence.data_nodes
     ```
 
-All the data nodes can be retrieved using the method `taipy.get_data_nodes()^` which returns a list of all existing
-data nodes.
+All the data nodes can be retrieved using the method `taipy.get_data_nodes()^`
+which returns a list of all existing data nodes.
 
 !!! example
 
@@ -163,8 +167,9 @@ data nodes.
 
 # Read / Write a data node
 
-To access the content of a data node you can use the `DataNode.read()^` method. The read method returns the data
-stored in the data node according to the type of data node:
+To access the data referred by data node you can use the `DataNode.read()^`
+method. The read method returns the data stored in the data node according to
+the type of data node:
 
 !!! example
 
@@ -182,9 +187,11 @@ stored in the data node according to the type of data node:
     data_node.read()
     ```
 
-To write some data on the data node, like the output of a task, you can use the `DataNode.write()^` method. The
-method takes a data object (string, dictionary, lists, NumPy arrays, Pandas dataframes, etc. based on the data
-node type and its exposed type) as a parameter and writes it on the data node:
+To write some data on the data node, like the output of a task,
+you can use the `DataNode.write()^` method. The method takes a
+data object (string, dictionary, lists, NumPy arrays, Pandas
+dataframes, etc. based on the data node type and its exposed
+type) as a parameter and writes it on the data node:
 
 !!! example
 
@@ -209,9 +216,11 @@ node type and its exposed type) as a parameter and writes it on the data node:
 
 ## Pickle
 
-When reading from a Pickle data node, Taipy returns whichever data stored in the pickle file.
+When reading from a Pickle data node, Taipy returns whichever
+data stored in the pickle file.
 
-Pickle data node can write any data object that can be picked, including but not limited to:
+Pickle data node can write any data object that can be picked,
+including but not limited to:
 
 - integers, floating-point numbers.
 - strings, bytes, or bytearrays.
@@ -227,7 +236,7 @@ for more details.
 ## CSV
 
 When reading from a CSV data node, Taipy returns the data of the CSV file based on the _exposed_type_ parameter.
-Check out [CSV Data Node configuration](../config/data-node-config.md#csv) for more details on _exposed_type_.
+Check out [CSV Data Node configuration](data-node-config.md#csv) for more details on _exposed_type_.
 
 Assume that the content of the `sales.csv` file is the following.
 
@@ -248,18 +257,6 @@ The following examples represent the results when reading from a CSV data node w
 
         ```python
         pandas.DataFrame
-        (
-                     date  nb_sales
-            0  12/24/2018      1550
-            1  12/25/2018      2315
-            2  12/26/2018      1832
-        )
-        ```
-
-    === "exposed_type = "modin""
-
-        ```python
-        modin.pandas.DataFrame
         (
                      date  nb_sales
             0  12/24/2018      1550
@@ -383,7 +380,7 @@ To write with custom column names, use the `CSVDataNode.write_with_column_names(
 ## Excel
 
 When reading from an Excel data node, Taipy returns the data of the Excel file based on the _exposed_type_ parameter.
-Check out [Excel Data Node configuration](../config/data-node-config.md#excel) for more details on _exposed_type_.
+Check out [Excel Data Node configuration](data-node-config.md#excel) for more details on _exposed_type_.
 
 For the example in this section, assume that *sales_history_cfg* is an *Excel* data node
 configuration with `default_path="path/sales.xlsx"`.
@@ -406,18 +403,6 @@ The following examples represent the results when reading from an Excel data nod
 
         ```python
         pandas.DataFrame
-        (
-                     date  nb_sales
-            0  12/24/2018      1550
-            1  12/25/2018      2315
-            2  12/26/2018      1832
-        )
-        ```
-
-    === "exposed_type = "modin""
-
-        ```python
-        modin.pandas.DataFrame
         (
                      date  nb_sales
             0  12/24/2018      1550
@@ -539,10 +524,13 @@ To write with custom column names, use the `ExcelDataNode.write_with_column_name
 
 ## SQL Table
 
-When reading from a SQL Table data node, Taipy returns the data of the SQL Table file based on the _exposed_type_ parameter.
-Check out [SQL Table Data Node configuration](../config/data-node-config.md#sql-table) for more details on _exposed_type_.
+When reading from a SQL Table data node, Taipy returns the data of the SQL Table
+file based on the _exposed_type_ parameter. Check out
+[SQL Table Data Node configuration](data-node-config.md#sql-table) for more details
+on _exposed_type_.
 
-For the example in this section, assume that *sales_history_cfg* is a *SQL Table* data node configuration with `table_name="sales"`.
+For the example in this section, assume that *sales_history_cfg* is a *SQL Table*
+data node configuration with `table_name="sales"`.
 
 Assume that the content of the `"sales"` table is the following.
 
@@ -554,7 +542,8 @@ Assume that the content of the `"sales"` table is the following.
     | 2  | 12/25/2018 | 2315     |
     | 3  | 12/26/2018 | 1832     |
 
-The following examples represent the results when reading from a SQL Table data node with different _exposed_type_:
+The following examples represent the results when reading from a SQL Table data
+node with different _exposed_type_:
 
 !!! example "`data_node.read()` returns"
 
@@ -562,18 +551,6 @@ The following examples represent the results when reading from a SQL Table data 
 
         ```python
         pandas.DataFrame
-        (
-               ID        date  nb_sales
-            0   1  12/24/2018      1550
-            1   2  12/25/2018      2315
-            2   3  12/26/2018      1832
-        )
-        ```
-
-    === "exposed_type = "modin""
-
-        ```python
-        modin.pandas.DataFrame
         (
                ID        date  nb_sales
             0   1  12/24/2018      1550
@@ -603,15 +580,16 @@ The following examples represent the results when reading from a SQL Table data 
         ]
         ```
 
-When writing data to a SQL Table data node, the `SQLTableDataNode.write()^` method can take several datatype as the input:
+When writing data to a SQL Table data node, the `SQLTableDataNode.write()^`
+method can take several datatype as the input:
 
 - list of lists or list of tuples
 - numpy array
 - dictionary, or list of dictionaries
 - pandas dataframes
 
-Assume that the "ID" column is the auto-increment primary key. The following examples will write to the SQL Table data
-node:
+Assume that the "ID" column is the auto-increment primary key. The following
+examples will write to the SQL Table data node:
 
 !!! example "`data_node.write()` examples"
 
@@ -685,8 +663,8 @@ node:
 
 ## SQL
 
-A SQL data node is designed to give the user more flexibility on how to read and write to SQL table
-(or multiple SQL tables).
+A SQL data node is designed to give the user more flexibility on how to
+read and write to SQL table (or multiple SQL tables).
 
 Let's consider the *orders_cfg* in <a href="../code_example/my_config.py" download>`my_config.py`</a>
 which configures a SQL data node.
@@ -696,7 +674,7 @@ file based on the _exposed_type_ parameter:
 
 - The _exposed_type_ parameter of `orders_cfg` is undefined, therefore it takes the default value
   as "pandas".
-  Check out [SQL Data Node configuration](../config/data-node-config.md#sql) for more details on
+  Check out [SQL Data Node configuration](data-node-config.md#sql) for more details on
   _exposed_type_.
 - The _read_query_ of `orders_cfg` is
     ```sql
@@ -704,8 +682,9 @@ file based on the _exposed_type_ parameter:
     FROM orders INNER JOIN products
     ON orders.product_id=products.ID
     ```
-- When reading from the SQL data node using `data_node.read()` method, Taipy will execute the above
-  query and return a `pandas.DataFrame` represents the "orders" table inner join with the "products" table.
+- When reading from the SQL data node using `data_node.read()` method, Taipy
+  will execute the above query and return a `pandas.DataFrame` represents the
+  "orders" table inner join with the "products" table.
 
 !!! example "A selection from the "orders" table"
 
@@ -780,10 +759,11 @@ execute a list of queries returned by the query builder:
 
 ## JSON
 
-When reading from a JSON data node, Taipy will return a dictionary or a list based on the format of the JSON file.
+When reading from a JSON data node, Taipy will return a dictionary or a
+list based on the format of the JSON file.
 
-When writing data to a JSON data node, the `JSONDataNode.write()^` method can take a list,
-dictionary, or list of dictionaries as the input.
+When writing data to a JSON data node, the `JSONDataNode.write()^` method
+can take a list, dictionary, or list of dictionaries as the input.
 
 In JSON, values must be one of the following data types:
 
@@ -915,13 +895,13 @@ with `default_path="path/sales.json"`.
         The read method will return a list of SaleRow objects as `data` when written.
 
 You can also specify custom JSON _**encoder**_ and _**decoder**_ to handle different data types.
-Check out [JSON Data Node configuration](../config/data-node-config.md#json) for more details on
+Check out [JSON Data Node configuration](data-node-config.md#json) for more details on
 how to config custom JSON _**encoder**_ and _**decoder**_.
 
 ## Parquet
 
 When read from a Parquet data node, Taipy returns the data of the Parquet file based on _exposed_type_ parameter.
-Check out [Parquet Data Node configuration](../config/data-node-config.md#parquet) for more details on _exposed_type_.
+Check out [Parquet Data Node configuration](data-node-config.md#parquet) for more details on _exposed_type_.
 
 Assume that the content of the `sales.parquet` file populates the following table.
 
@@ -941,18 +921,6 @@ The following examples represent the results when read from Parquet data node wi
 
         ```python
         pandas.DataFrame
-        (
-                     date  nb_sales
-            0  12/24/2018      1550
-            1  12/25/2018      2315
-            2  12/26/2018      1832
-        )
-        ```
-
-    === "exposed_type = "modin""
-
-        ```python
-        modin.pandas.DataFrame
         (
                      date  nb_sales
             0  12/24/2018      1550
@@ -986,7 +954,6 @@ When writing data to a Parquet data node, the `ParquetDataNode.write()^` method 
 datatype as the input depending on the _exposed type_:
 
 - pandas dataframes
-- modin dataframes
 - numpy arrays
 - any object, which will be passed to the `pd.DataFrame` constructor (e.g., list of dictionaries)
 
@@ -1029,27 +996,13 @@ The following examples will write to the path of the Parquet data node:
         )
         ```
 
-    === "modin dataframes"
-
-        ```python
-        data = modin.pandas.DataFrame(
-            [
-                {"date": "12/24/2018", "nb_sales": 1550},
-                {"date": "12/24/2018", "nb_sales": 2315},
-                {"date": "12/24/2018", "nb_sales": 1832},
-            ]
-        )
-
-        data_node.write(data)
-        ```
-
 Additionally, Parquet data node entities also expose two new methods, namely: `ParquetDataNode.read_with_kwargs^`
 and `ParquetDataNode.write_with_kwargs^`. These two methods may be used to pass additional keyword arguments
 to the pandas
 [`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html)
 and [`pandas.DataFrame.to_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html)
 methods, **on top of the arguments which were defined in the
-[ParquetDataNode configuration](../config/data-node-config.md#parquet)**.
+[ParquetDataNode configuration](data-node-config.md#parquet)**.
 
 The following examples demonstrate reading and writing to a Parquet data node with additional keyword arguments:
 
@@ -1125,7 +1078,7 @@ Check out [MongoDB supported data types](https://www.mongodb.com/docs/manual/ref
 You can also specify custom document class to handle specific attribute, encode and decode data when
 reading and writing to the Mongo collection.
 
-Check out [Mongo collection Data Node configuration](../config/data-node-config.md#mongo-collection)
+Check out [Mongo collection Data Node configuration](data-node-config.md#mongo-collection)
 for more details on how to config a custom
 document class.
 
@@ -1151,7 +1104,7 @@ Correspondingly, In memory data node can write any data object that is valid dat
 !!! warning
 
     Since the data is stored in memory, it cannot be used in a multiprocess environment.
-    (See [Job configuration](../config/job-config.md#standalone) for more details).
+    (See [Job configuration](../configuration/job-config.md#standalone) for more details).
 
 
 # Append
@@ -1275,13 +1228,14 @@ The following examples will append new data to the path of the CSV data node:
 
 ## Excel
 
-Similar to writing, when appending data to an Excel data node, the `ExcelDataNode.append()^` method can take several datatype as the input:
+Similar to writing, when appending data to an Excel data node, the `ExcelDataNode.append()^`
+method can take several datatype as the input:
 
 - list, numpy array
 - dictionary, or list of dictionaries
 - pandas dataframes
 
-Without specified sheet names, the new data will be append to the first sheet of the excel file.
+Without specified sheet names, the new data will be appended to the first sheet of the Excel file.
 
 !!! example "`data_node.append()` examples"
 
@@ -1350,7 +1304,7 @@ Without specified sheet names, the new data will be append to the first sheet of
         ```
 
 You can also append new data to multiple sheets by specifying the sheet names as the keys of a
-dictionary as follow.
+dictionary as follows.
 
 !!! example "`data_node.append()` example with specified sheet names"
 
@@ -1378,7 +1332,8 @@ dictionary as follow.
 
 ## SQL Table
 
-Similar to writing, when appending data to a SQL Table data node, the `SQLTableDataNode.append()^` method can take several datatype as the input:
+Similar to writing, when appending data to a SQL Table data node, the `SQLTableDataNode.append()^`
+method can take several datatype as the input:
 
 - list of lists or list of tuples
 - numpy array
@@ -1467,8 +1422,8 @@ Similar to writing, when appending to a SQL data node, Taipy will first pass the
 
 ## JSON
 
-Similar to writing, when appending data to a JSON data node, the `JSONDataNode.append()^` method can
-take a list, a dictionary, or a list of dictionaries as the input.
+Similar to writing, when appending data to a JSON data node, the `JSONDataNode.append()^`
+method can take a list, a dictionary, or a list of dictionaries as the input.
 
 !!! example "Append new data to a JSON data node"
 
@@ -1494,7 +1449,6 @@ When appending data to a Parquet data node, the `ParquetDataNode.append()^` meth
 datatype as the input depending on the _exposed type_:
 
 - pandas dataframes
-- modin dataframes
 - any object, which will be passed to the `pd.DataFrame` constructor (e.g., list of dictionaries)
 
 Note that the column names of the dataframes should be exactly similar to existing data in the
@@ -1537,20 +1491,6 @@ The following examples will append to the path of the Parquet data node:
                 {"date": "12/24/2018", "nb_sales": 1832},
             ]
         )
-        ```
-
-    === "modin dataframes"
-
-        ```python
-        data = modin.pandas.DataFrame(
-            [
-                {"date": "12/24/2018", "nb_sales": 1550},
-                {"date": "12/24/2018", "nb_sales": 2315},
-                {"date": "12/24/2018", "nb_sales": 1832},
-            ]
-        )
-
-        data_node.append(data)
         ```
 
 !!! warning "Append numpy arrays"
@@ -1615,16 +1555,6 @@ filtered_data = data_node.filter(("nb_sales", 1550, Operator.EQUAL))
         )
         ```
 
-    === "exposed_type = "modin""
-
-        ```python
-        modin.pandas.DataFrame
-        (
-                     date  nb_sales
-            0  12/24/2018      1550
-        )
-        ```
-
     === "exposed_type = "numpy""
 
         ```python
@@ -1657,17 +1587,6 @@ filtered_data = data_node.filter(
 
         ```python
         pandas.DataFrame
-        (
-                     date  nb_sales
-            0  12/24/2018      1550
-            1  12/26/2018      1832
-        )
-        ```
-
-    === "exposed_type = "modin""
-
-        ```python
-        modin.pandas.DataFrame
         (
                      date  nb_sales
             0  12/24/2018      1550
@@ -1718,17 +1637,6 @@ filtered_data = data_node.filter(
         )
         ```
 
-    === "exposed_type = "modin""
-
-        ```python
-        modin.pandas.DataFrame
-        (
-                     date  nb_sales
-            0  12/24/2018      1550
-            1  12/25/2018      2315
-        )
-        ```
-
     === "exposed_type = "numpy""
 
         ```python
@@ -1748,7 +1656,7 @@ filtered_data = data_node.filter(
         ]
         ```
 
-With Pandas or Modin data frame as the exposed type, it is also possible to use pandas indexing
+With Pandas data frame as the exposed type, it is also possible to use pandas indexing
 and filtering style:
 
 ```python
@@ -1771,7 +1679,7 @@ filtered_data = data_node[(data_node[:, 1] == 1550) | (data_node[:, 1] > 2000)]
     For now, the `DataNode.filter()^` method and the indexing/filtering style are only implemented
     for data as:
 
-    - a Pandas or Modin data frame,
+    - a Pandas data frame,
     - a Numpy array,
     - a list of objects,
     - a list of dictionaries.
@@ -1804,5 +1712,3 @@ To get the parent entities of a data node (scenarios, sequences, or tasks) you c
     tp.get_parents(data_node)
     # {'scenarios': [Scenario 1], 'sequences': [Sequence 1], 'tasks': [Task 1]}
     ```
-
-[:material-arrow-right: The next section shows the job orchestration and execution](orchestrating-and-job-execution.md).
