@@ -41,7 +41,9 @@ function handleAll(callback) {
   else {
     // If no other checkbox is checked, check the "all" checkbox
     const otherFiltersChecked = newFilters.length > 0;
+    if ( document.getElementById('filter-all') ){
     document.getElementById('filter-all').checked = !otherFiltersChecked;
+    }
   }
 
   if (callback){

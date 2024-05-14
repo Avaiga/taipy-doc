@@ -121,7 +121,7 @@ Three Data Nodes are being configured (**historical_temperature**, **date_to_for
         Taipy Studio. In fact, Taipy Studio is an editor of a TOML file specific to Taipy. It
         lets you edit and view a TOML file that will be used in our code.
 
-        <video controls width="400">
+        <video controls width="400" class="tp-video" >
             <source src="./images/config.mp4" type="video/mp4">
         </video>
 
