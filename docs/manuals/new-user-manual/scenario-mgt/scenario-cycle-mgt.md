@@ -230,14 +230,22 @@ be raised.
 
 # Export a scenario
 
-You can export a scenario with its related entities in `JSON` format into a folder using `taipy.export_scenario()^`.
-This method takes as parameters the scenario id and the path to the export folder.
+You can export a scenario with its related entities into an archive zip file using `taipy.export_scenario()^`.
+This method takes as the parameters:
 
-!!! warning
+- *scenario_id* represents the id of the scenario to export.
+- *output_path* represents the path to export the scenario. The path should include the file name
+  without the extension or with the ".zip" extension. If the path exists and the override parameter
+  is False, the `ExportPathAlreadyExists^` exception is raised.
+- *override* (bool): is a boolean indicating if the export folder will be overridden when it exists.
+  The default value is False.
+- *include_data* is a boolean indicating if the data files of file-based data nodes are exported. File-based
+  data nodes include Pickle, CSV, Excel, Parquet, and JSON data nodes. If the scenario has a data node that
+  is not file-based, a warning will be logged, and the data of that data node will not be exported. The
+  default value is False.
 
-    The `folder_path` will be **overwritten** if it does exist.
-
-Alternatively, you can use the `Scenario.export()^` method.
+Alternatively, you can use the `Scenario.export()^` method and provide the same parameters except for the
+*scenario_id* parameter.
 
 ```python linenums="1"
 import taipy as tp
@@ -245,10 +253,33 @@ import my_config
 
 scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-tp.export(scenario.id, folder_path="./monthly_scenario")
+tp.export(scenario.id, output_path="./monthly_scenario.zip", override=True, include_data=True)
 # or
-scenario.export(folder_path="./monthly_scenario")
+scenario.export(output_path="./monthly_scenario.zip", override=True, include_data=True)
 ```
+
+# Import a scenario
+
+You can import a scenario with its related entities and data files from the exported archive file
+using `taipy.import_scenario()^` into the current version of the Taipy application. This method
+takes as the parameters:
+
+- *input_path* represents the path to the archive scenario to import. The archive scenario should
+  contain all related entities of the scenario, and all entities should belong to the same version
+  that is compatible with the current Taipy application version.
+- *override* (bool): is a boolean indicating if the scenario will be overridden when it exists.
+  The default value is False.
+
+```python linenums="1"
+import taipy as tp
+
+imported_scenario = tp.import_scenario(input_path="./monthly_scenario.zip", override=True)
+```
+
+!!! warning "Error
+
+    If there is an error during the import process, the imported scenario and other imported entities
+    will be deleted, and the error will be logged.
 
 # Cycle attributes
 
