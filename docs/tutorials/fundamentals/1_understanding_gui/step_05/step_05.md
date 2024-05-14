@@ -1,19 +1,16 @@
 [Download Step 5](./../src/step_05.zip){: .tp-btn target='blank' }
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
-!!! warning "For Notebooks"
-
-    The Notebook is available [here](../tutorial.ipynb). In Taipy GUI,
-    the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 
 As shown before, parameters and variables in Taipy are dynamic. The same applies for every type
-of object, even data frames. Therefore, you can perform operations on data frames, and Taipy GUI
+of object, even data frames. Therefore, you can perform operations on data frames, and Taipy
 will show real-time results on the GUI. These changes occur through the `=` assignment like
 `state.xxx = yyy` (`state.text = "Example"`).
 
-Any expression containing `xxx` in the Markdown will propagate the changes and reload related
+Any expression containing `xxx` propagates the changes and reloads related
 elements. It can be  simple charts or tables, but it can also be an expression like this:
+
 === "Markdown"
     ```python
     """
@@ -205,7 +202,7 @@ The code below uses this concept to create metrics on the data frame generated.
                 color__1="green", color__2="grey", color__3="red", type__4="line")
 
     # Initialize the GUI with the updated dataframe
-    Gui(page, state={"dataframe": dataframe}).run(debug=True)
+    Gui(page).run(debug=True)
     ```
 
 

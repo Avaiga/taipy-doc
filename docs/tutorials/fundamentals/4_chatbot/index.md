@@ -137,7 +137,7 @@ In Taipy, one way to define pages is to use Markdown strings. Here we use a
 
 ```python
 page = """
-<|{conversation}|table|show_all|width=100%|>
+<|{conversation}|table|show_all|>
 <|{current_user_message}|input|label=Write your message here...|on_action=send_message|class_name=fullwidth|>
 """
 ```
