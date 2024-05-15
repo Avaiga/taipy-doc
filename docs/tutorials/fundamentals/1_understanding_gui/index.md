@@ -57,6 +57,8 @@ pip install torch transformers scipy
 [Taipy Studio](../../../manuals/studio/index.md) is a VS Code extension for 
 auto-completing Taipy visual elements. It makes creating applications faster and easier.
 
+![Taipy Studio Demo](../images/taipy-studio.gif){width=90% .tp-image-border}
+
 So, without further delay, let's begin to code!
 
 ## Tutorial Steps
