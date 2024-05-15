@@ -1,6 +1,16 @@
+In this section, we delve into the specifics of configuring Data nodes in Taipy.
+
 # New data node config
-To create an instance of a `DataNode^`entity, a `DataNodeConfig^` must first be created
-using the function `Config.configure_data_node()^`.
+A `DataNode^` is created by first defining a configuration using a `DataNodeConfig^` object.
+This configuration can be used to instantiate one (or multiple) *Data node(s)* with the
+desired properties, such as its type, storage mechanism, or any additional parameters required
+for reading and writing the related data.
+
+To create a `DataNode^`, you first need to define a data node configuration using a
+`DataNodeConfig^` object. This configuration can be used to instantiate one (or multiple)
+*Data node(s)* with the desired properties.
+
+To create a `DataNodeConfig^` use the function `Config.configure_data_node()^`.
 
 ```python linenums="1"
 {%
@@ -13,7 +23,7 @@ We configured a simple data node in the previous code by providing an identifier
 as the string "data_node_cfg". The `Config.configure_data_node()^` method actually
 creates a data node configuration, and registers it in the `Config^` singleton.
 
-The attributes available on data nodes are:
+The attributes available on data node configuration are:
 
 - _**id**_ is the string identifier of the data node config.<br/>
     It is a **mandatory** parameter and must be a unique and valid Python identifier.
@@ -21,17 +31,20 @@ The attributes available on data nodes are:
     It corresponds to the [scope](scope.md) of the data node that will be instantiated
     from the data node configuration. The **default value** is `Scope.SCENARIO`.
 - _**validity_period**_ is a [timedelta object](https://docs.python.org/3/library/datetime.html#timedelta-objects)
-    that represents the duration since the last edit date for which the data node can be considered valid.
-    Once the validity period has passed, the data node is considered stale and relevant tasks will run even if they are
-    skippable (see the [Task configs page](../scenario-mgt/configuration/task-config.md) for more details).
-    If *validity_period* is set to the default value None, the data node is always up-to-date.
+    that represents the duration since the last edit date for which the data node can
+    be considered valid.Once the validity period has passed, the data node is considered
+    stale and relevant tasks will run even if they are skippable (see the
+    [Task configs page](../scenario-mgt/configuration/task-config.md) for more details).
+    If *validity_period* is set to the default value None, the data node is always
+    up-to-date.
 - _**storage_type**_ is an attribute that indicates the storage type of the
     data node.<br/>
-    The possible values are ["pickle"](#pickle) (**the default value**), ["csv"](#csv),
-    ["excel"](#excel), ["json"](#json), ["mongo_collection"](#mongo-collection),
-    ["parquet"](#parquet), ["sql"](#sql), ["sql_table"](#sql_table),
-    ["in_memory"](#in-memory), ["generic"](#generic) or
-    ["Amazon Web Service S3 Object"](#amazon-web-service-s3-object).<br/>
+    The possible values are ["pickle"](#pickle) (**the default value**),
+    ["generic"](#generic), ["csv"](#csv), ["excel"](#excel),
+    ["json"](#json), ["mongo_collection"](#mongo-collection),
+    ["parquet"](#parquet), ["sql"](#sql), ["sql_table"](#sql-table),
+    ["Amazon Web Service S3 Object"](#amazon-web-service-s3-object),
+    or ["in_memory"](#in-memory). <br/>
     As explained in the following subsections, depending on the *storage_type*, other
     configuration attributes must be provided in the *properties'* parameter.
 - Any other custom attribute can be provided through the parameter _**properties**_,
@@ -46,7 +59,8 @@ The attributes available on data nodes are:
 
 !!! warning "Reserved keys"
 
-    Note that we cannot use the word "_entity_owner" as a key in the properties as it has been reserved for internal use.
+    Note that we cannot use the word "_entity_owner" as a key in the properties as it has been
+    reserved for internal use.
 
 Below are two examples of data node configurations.
 
@@ -843,6 +857,39 @@ comments=false
 %}
 ```
 
+## In memory
+
+An `InMemoryDataNode^` is a specific data node used to model any data in the RAM. The
+`Config.configure_in_memory_data_node()^` method is used to add a new in_memory
+data node configuration. In addition to the generic parameters described in the
+[Data node configuration](data-node-config.md) section, an optional parameter can be
+provided:
+
+- If the _**default_data**_ is given as a parameter of the data node configuration,
+  the data node entity is automatically written with the corresponding value (note
+  that any serializable Python object can be used) upon its instantiation.
+
+```python linenums="1"
+{%
+include-markdown "./code_example/data_node_cfg/data-node-config_memory.py"
+comments=false
+%}
+```
+
+In this example, we configure an *in_memory* data node with the id "date".
+The scope is `SCENARIO` (default value), and default data is provided.
+
+!!! warning
+
+    Since the data is stored in memory, it cannot be used in a multi-process environment.
+    (See [Job configuration](job-config.md#standalone) for more details).
+
+!!! note
+
+    To configure an in_memory data node, it is equivalent to using the method
+    `Config.configure_in_memory_data_node()^` or the method `Config.configure_data_node()^`
+    with parameter `storage_type="in_memory"`.
+
 # Default data node configuration
 
 By default, if there is no information provided when configuring a datanode
@@ -885,39 +932,6 @@ Then we configure 5 data nodes:
   is `"csv"`, which is different from the `"sql_table"` configured in line 9, the
   default data node configuration is ignored. Therefore, the scope of
   `forecast_data_cfg` is `SCENARIO` by default.
-
-## In memory
-
-An `InMemoryDataNode^` is a specific data node used to model any data in the RAM. The
-`Config.configure_in_memory_data_node()^` method is used to add a new in_memory
-data node configuration. In addition to the generic parameters described in the
-[Data node configuration](data-node-config.md) section, an optional parameter can be
-provided:
-
-- If the _**default_data**_ is given as a parameter of the data node configuration,
-  the data node entity is automatically written with the corresponding value (note
-  that any serializable Python object can be used) upon its instantiation.
-
-```python linenums="1"
-{%
-include-markdown "./code_example/data_node_cfg/data-node-config_memory.py"
-comments=false
-%}
-```
-
-In this example, we configure an *in_memory* data node with the id "date".
-The scope is `SCENARIO` (default value), and default data is provided.
-
-!!! warning
-
-    Since the data is stored in memory, it cannot be used in a multi-process environment.
-    (See [Job configuration](job-config.md#standalone) for more details).
-
-!!! note
-
-    To configure an in_memory data node, it is equivalent to using the method
-    `Config.configure_in_memory_data_node()^` or the method `Config.configure_data_node()^`
-    with parameter `storage_type="in_memory"`.
 
 # Configure a data node from another configuration
 

@@ -87,11 +87,10 @@ nav:
 
       - "Data integration":
         - "Data integration": manuals/new-user-manual/data-integration/index.md
-        - "Data node": manuals/new-user-manual/data-integration/data-node-concept.md
         - "Data node config": manuals/new-user-manual/data-integration/data-node-config.md
         - "Data node usage": manuals/new-user-manual/data-integration/data-node-usage.md
-        - "Data node history": manuals/new-user-manual/data-integration/data-node-history.md
-        - "Scope: Data variation": manuals/new-user-manual/data-integration/scope.md
+        - "Data node history adn validity": manuals/new-user-manual/data-integration/data-node-history.md
+        - "Scope and Scenario": manuals/new-user-manual/data-integration/scope.md
 
       - "Scenario Management":
         - "Scenario Management": manuals/new-user-manual/scenario-mgt/index.md
@@ -106,8 +105,7 @@ nav:
           - "Sequence management": manuals/new-user-manual/scenario-mgt/sequence-mgt.md
           - "Task management": manuals/new-user-manual/scenario-mgt/task-mgt.md
 
-      - "Cycle: Recurrent Scenarios": manuals/new-user-manual/scenario-mgt/scenario-cycle-mgt.md
-
+      - "Cycle Management": manuals/new-user-manual/scenario-mgt/scenario-cycle-mgt.md
 
       - "Configuration":
         - "Configuration": manuals/new-user-manual/configuration/index.md
