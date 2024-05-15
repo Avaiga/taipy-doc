@@ -3,13 +3,15 @@
 
 
 
-You can incorporate various visual elements into the basic code demonstrated in Step 1. This step illustrates how to utilize visual elements such as charts, sliders, tables, and
+You can incorporate various visual elements into the basic code demonstrated in Step 1. 
+This step illustrates how to utilize visual elements such as charts, sliders, tables, and
 more within the graphical interface.
 
 Taipy uses different ways to create
 pages: [Markdown](../../../../manuals/gui/pages/index.md#using-markdown),
 [HTML](../../../../manuals/gui/pages/index.md#using-html) or
-[Python code](../../../../manuals/gui/pages/builder.md). You can choose which you want to learn in the code snippets below.
+[Python code](../../../../manuals/gui/pages/builder.md). You can choose which you want 
+to learn in the code snippets below.
 
 ## Visual elements
 

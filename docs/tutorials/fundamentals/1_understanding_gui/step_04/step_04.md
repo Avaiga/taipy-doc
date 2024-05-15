@@ -2,8 +2,7 @@
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 
-
-Charts are an essential part of Taipy (and of any Web application). A chart is just another
+Charts are an essential part of Taipy (and of any Web application). A chart is just another 
 visual element with many properties to customize it.
 
 Here is one of the simplest code to create a chart:
@@ -55,11 +54,12 @@ You can also use Plotly Python to create a *Figure* object and inject it in the 
 
 ## Useful properties
 
-Taipy charts are based on Plotly charts. More than any other visual element, charts have a lot of
+Taipy charts are based on Plotly charts. More than any other visual element, charts have a lot of 
 properties.
 
-Here are a few of the essential properties. You can also look at the
+Here are a few of the essential properties. You can also look at the 
 [documentation](../../../../manuals/gui/viselements/chart.md) for more information.
+
  - x and y are used to define the chart axis.
 
 === "Markdown"
@@ -75,7 +75,6 @@ Here are a few of the essential properties. You can also look at the
     ```
 
  - x and y can be indexed to add more traces to the chart:
-
 
 === "Markdown"
     ```python
@@ -103,12 +102,11 @@ Here are a few of the essential properties. You can also look at the
         tgb.chart("{data}", x="x_col", y__1="y_col1", y__2="y_col_2", color__1="green")
     ```
 
-
 ## Types of charts
 
-Different types are available: maps, bar charts, pie charts, line charts, and 3D charts, ... To
+Different types are available: maps, bar charts, pie charts, line charts, and 3D charts, ... To 
 know how to use them quickly, types are listed [here](../../../../manuals/gui/viselements/chart.md).
-If compatible, two types like *scatter*, *line*, and *bar* can also be used together on the same
+If compatible, two types like *scatter*, *line*, and *bar* can also be used together on the same 
 chart.
 
 

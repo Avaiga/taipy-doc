@@ -16,9 +16,9 @@ concept, Taipy natively provides multi-user GUI apps.
 
 ## Multi-user - state
 
-Try to open a few clients with the same URL and different browsers. You will see that every client is independent of
-each other; you can change *text* on a client, and *text* will not change in other clients. This
-is due to the concept of **state**.
+Try to open a few clients with the same URL and different browsers. You will see that every 
+client is independent of each other; you can change *text* on a client, and *text* will 
+not change in other clients. This is due to the concept of **state**.
 
 The state holds the value of all the variables used in the user interface for one specific
 connection.
@@ -115,6 +115,6 @@ the callback function referenced in the `on_action` property.
 
 ![Interactive GUI](images/result.png){ width=90% : .tp-image-border }
 
-[`notify()`](../../../../manuals/reference/taipy.gui.notify.md) is a Taipy function that creates a
-[notification](../../../../manuals/gui/notifications.md) with some information. The user can pass multiple parameters, including the *state*, the
-*notification_type*, and the *message*.
+[`notify()`](../../../../manuals/reference/taipy.gui.notify.md) is a Taipy function that creates a 
+[notification](../../../../manuals/gui/notifications.md) with some information. The user can pass 
+multiple parameters, including the *state*, the *notification_type*, and the *message*.
