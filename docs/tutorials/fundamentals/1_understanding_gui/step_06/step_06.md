@@ -2,13 +2,11 @@
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 
-
-We'll introduce three new helpful controls to
-enhance the page's visual appeal. These controls are:
+We'll introduce three new helpful controls to enhance the page's visual appeal. These controls are:
 
 - [part](../../../../manuals/gui/viselements/part.md): creates a group of text/visual elements. 
-A useful property of `part` is *render*. If set to False, it will not display the part. This 
-allows the developer to hide a group of visual elements dynamically.
+A useful property of `part` is *render*. If set to False, it will not display the part. 
+This allows the developer to hide a group of visual elements dynamically.
 
 === "Markdown"
     ```
@@ -54,8 +52,8 @@ of columns. Here, we create three columns of the same width.
     ![Layout](images/layout.png){ width=70% : .tp-image-border }
 
 
-- [expandable](../../../../manuals/gui/viselements/expandable.md): creates a block that can
-    expand or shrink.
+- [expandable](../../../../manuals/gui/viselements/expandable.md): creates a block that can 
+expand or shrink.
 
     ![expandable](images/expandable.png){ width=70% : .tp-image-border }
 
@@ -123,4 +121,3 @@ of columns. Here, we create three columns of the same width.
     ```
 
 ![Layout](images/result.png){ width=90% : .tp-image-border }
-

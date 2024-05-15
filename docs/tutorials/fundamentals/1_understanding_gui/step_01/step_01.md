@@ -2,11 +2,11 @@
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 
-You only need one line of code to create your first Taipy web page. Just create a `Gui^` object
-with a string and run it.
+You only need one line of code to create your first Taipy web page. Just create a `Gui^` 
+object with a string and run it.
 
-In the console, you'll find a client link. All you need to do is copy and paste it into your web
-browser to open your first Taipy page!
+In the console, you'll find a client link. All you need to do is copy and paste it into 
+your web browser to open your first Taipy page!
 
 
 ```python
