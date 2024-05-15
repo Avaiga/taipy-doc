@@ -89,7 +89,7 @@ nav:
         - "Data integration": manuals/new-user-manual/data-integration/index.md
         - "Data node config": manuals/new-user-manual/data-integration/data-node-config.md
         - "Data node usage": manuals/new-user-manual/data-integration/data-node-usage.md
-        - "Data node history adn validity": manuals/new-user-manual/data-integration/data-node-history.md
+        - "Data node history and validity": manuals/new-user-manual/data-integration/data-node-history.md
         - "Scope and Scenario": manuals/new-user-manual/data-integration/scope.md
 
       - "Scenario Management":

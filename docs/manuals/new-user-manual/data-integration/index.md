@@ -1,16 +1,16 @@
-In this section, we explore how to integrate data into your Taipy application using *Data nodes*.
+In this section, we explore how to integrate data into your Taipy application using *data nodes*.
 A `DataNode^` is the cornerstone of Taipy's data management capabilities, providing a flexible
 and consistent way to handle data from various sources. Whether your data resides in files,
-in databases, in custom data stores, or on local or remote environments, *Data nodes* simplify
+in databases, in custom data stores, or on local or remote environments, *data nodes* simplify
 the process of accessing, processing, and managing your data.
 
 # What is a Data Node?
-A *Data node* in Taipy is an abstraction that represents some data. It provides a uniform
+A *data node* in Taipy is an abstraction that represents some data. It provides a uniform
 interface for reading and writing data, regardless of the underlying storage mechanism.
 This abstraction allows you to focus on your application's logic without worrying about the
 intricacies of data management.
 
-A *Data node* does not contain the data itself but holds all the necessary information to
+A *data node* does not contain the data itself but holds all the necessary information to
 read and write the actual data. It can be seen as a dataset descriptor or data reference.
 It is design to model data:
 
@@ -24,36 +24,36 @@ It is design to model data:
 - For any usage: independent data or data related to others through data processing pipelines
     or scenarios.
 
-To create a *Data node*, you first need to define a data node configuration using a
+To create a *data node*, you first need to define a data node configuration using a
 `DataNodeConfig^` object. This configuration is used to instantiate one (or multiple)
-*Data node(s)* with the desired properties.
+*data node(s)* with the desired properties.
 
 # Why use Data Nodes?
 The main advantages of using data nodes in a Taipy project are:
 
 1. **Easy to configure**:
     Thanks to the various predefined data nodes, many types of data can be easily integrated.
-    For more details, see the [Data node configuration](data-node-config.md).
+    For more details, see the [data node configuration](data-node-config.md) page.
 
 2. **Easy to use**:
     Taipy already implements the necessary utility methods to create, get, read, write, filter,
-    or append data nodes. For more details, see the [Data node usage](data-node-usage.md).
+    or append data nodes. For more details, see the [data node usage](data-node-usage.md) page.
 
 3. **Taipy visual elements**:
     Benefit from smart visual elements to empower end users just in one line of code.
     Manage, display, and edit data nodes in a user-friendly graphical interface.
-    For more details, see the [Data node selector](viselemts/data_node_selector.md) or
-    the [Data node viewer](viselemts/data_node.md).
+    For more details, see the [data node selector](viselemts/data_node_selector.md) or
+    the [data node viewer](viselemts/data_node.md) pages.
 
 4. **Data history and validity period**:
     Keep track of the data editing history, and monitor the data validity.
-    For more information, see the [Data node history](data-node-history.md).
+    For more information, see the [data node history](data-node-history.md) page.
 
 5. **Support for multiple versions of a dataset**:
     Easily manage different versions or variations of your dataset within the same
-    application. For more information, see the [Scenario and scope](scope.md).
+    application. For more information, see the [scenario and scope](scope.md) page.
 
 6. **Seamless integration into data processing pipelines**:
     Data pipelines in Taipy are modeled as Scenarios. They can be seen as execution graphs,
     connecting data nodes through tasks. For more information, see the
-    [Scenario Management](../scenario-mgt/index.md) documentation.
+    [scenario Management](../scenario-mgt/index.md) part.

@@ -1,16 +1,12 @@
-In this section, we delve into the specifics of configuring Data nodes in Taipy.
+In this section, we delve into the specifics of configuring *data nodes* in Taipy.
 
-# New data node config
+# Create a data node config
 A `DataNode^` is created by first defining a configuration using a `DataNodeConfig^` object.
-This configuration can be used to instantiate one (or multiple) *Data node(s)* with the
-desired properties, such as its type, storage mechanism, or any additional parameters required
-for reading and writing the related data.
+This configuration is used to instantiate one (or multiple) *data node(s)* with the desired
+properties, such as its type, storage mechanism, or any additional parameters required for
+reading and writing related data.
 
-To create a `DataNode^`, you first need to define a data node configuration using a
-`DataNodeConfig^` object. This configuration can be used to instantiate one (or multiple)
-*Data node(s)* with the desired properties.
-
-To create a `DataNodeConfig^` use the function `Config.configure_data_node()^`.
+To create a `DataNodeConfig^` use the function `Config.configure_data_node()^`:
 
 ```python linenums="1"
 {%
@@ -19,27 +15,24 @@ comments=false
 %}
 ```
 
-We configured a simple data node in the previous code by providing an identifier
-as the string "data_node_cfg". The `Config.configure_data_node()^` method actually
-creates a data node configuration, and registers it in the `Config^` singleton.
+In the code above, we configured a simple data node by providing an identifier "dataset".
+The `Config.configure_data_node()^` method creates a data node configuration, and registers
+it in the `Config^` singleton.
+
+## Config attributes
 
 The attributes available on data node configuration are:
 
-- _**id**_ is the string identifier of the data node config.<br/>
-    It is a **mandatory** parameter and must be a unique and valid Python identifier.
-- _**scope**_ is a `Scope^`.<br/>
-    It corresponds to the [scope](scope.md) of the data node that will be instantiated
-    from the data node configuration. The **default value** is `Scope.SCENARIO`.
-- _**validity_period**_ is a [timedelta object](https://docs.python.org/3/library/datetime.html#timedelta-objects)
-    that represents the duration since the last edit date for which the data node can
-    be considered valid.Once the validity period has passed, the data node is considered
-    stale and relevant tasks will run even if they are skippable (see the
-    [Task configs page](../scenario-mgt/configuration/task-config.md) for more details).
+- _**id**_ (mandatory): A unique and valid Python string identifier of the data node config.
+- _**scope**_: A `Scope^` indicating the data node's [scope](scope.md). <br/>
+    The possible values are `Scope.SCENARIO`, `Scope.CYCLE`, or `Scope.GLOBAL`.
+    Default is `Scope.SCENARIO`.
+- _**validity_period**_: A [timedelta object](https://docs.python.org/3/library/datetime.html#timedelta-objects)
+    representing how long the data node is considered valid. <br/>
     If *validity_period* is set to the default value None, the data node is always
-    up-to-date.
-- _**storage_type**_ is an attribute that indicates the storage type of the
-    data node.<br/>
-    The possible values are ["pickle"](#pickle) (**the default value**),
+    up-to-date.  Default is None.
+- _**storage_type**_: Indicates the storage type of the data node. <br/>
+    Possible values includes ["pickle"](#pickle) (**default**),
     ["generic"](#generic), ["csv"](#csv), ["excel"](#excel),
     ["json"](#json), ["mongo_collection"](#mongo-collection),
     ["parquet"](#parquet), ["sql"](#sql), ["sql_table"](#sql-table),
@@ -47,12 +40,8 @@ The attributes available on data node configuration are:
     or ["in_memory"](#in-memory). <br/>
     As explained in the following subsections, depending on the *storage_type*, other
     configuration attributes must be provided in the *properties'* parameter.
-- Any other custom attribute can be provided through the parameter _**properties**_,
-    a kwargs dictionary accepting any number of custom parameters (a description,
-    a label, a tag, etc.) (It is recommended to read
-    [doc](https://realpython.com/python-kwargs-and-args/) if you are not familiar with
-    **kwargs arguments)
-    <br/>
+- _**properties**_: A kwargs dictionary for any custom parameters (e.g., description,
+    label, tag, etc.) <br/>
     This *properties* dictionary is used to configure the parameters specific to each
     storage type. It is copied in the dictionary properties of all the data nodes
     instantiated from this data node configuration.<br/>
@@ -62,53 +51,51 @@ The attributes available on data node configuration are:
     Note that we cannot use the word "_entity_owner" as a key in the properties as it has been
     reserved for internal use.
 
-Below are two examples of data node configurations.
+## Examples
 
+**Simple data node configuration:**
 ```python linenums="1"
 {%
-include-markdown "./code_example/data_node_cfg/data-node-config_two-examples.py"
+include-markdown "./code_example/data_node_cfg/data-node-config_example_1.py"
 comments=false
 %}
 ```
+In this example, we configure a data node with the id "date". The default scope is `SCENARIO`,
+and the *storage_type* is set to the default value "pickle". An optional custom property,
+*description*, is added.
 
-In lines 4-7, we configured a simple data node with the id "date_cfg". The default value for *scope*
-is `SCENARIO`. The *storage_type* is set to the default value "pickle".<br/>
-An optional custom property called *description* is also added: this property is
-propagated to the data nodes instantiated from this config.
-
-In lines 9-16, we add another data node configuration with the id "model_cfg". The *scope* is set to
-`CYCLE` so that all the scenarios from the same cycle will share the corresponding data nodes. The
-*storage_type* is "pickle". The *validity_period* is set to 2 days, which indicate that the data node
-is going to stale after 2 days of being modified. Finally, two optional custom properties are added:
-a *description* string and an integer *code*. These two properties are propagated to the data nodes
-instantiated from this config.
+**Advanced data Node configuration:**
+```python linenums="1"
+{%
+include-markdown "./code_example/data_node_cfg/data-node-config_example_2.py"
+comments=false
+%}
+```
+In this example, we configure a data node with the id "model". The *scope* is set to `CYCLE`,
+the *storage_type* is "pickle", and the *validity_period* is 2 days. Two custom properties,
+*description* and *code*, are also added.
 
 # Storage type
+Taipy provides a range of predefined *data nodes* corresponding to popular storage types.
+These predefined *data nodes* offer a convenient solution for Python developers, sparing
+them the effort of configuring storage types or query systems. Whether your data is
+stored in pickle files, CSV documents, SQL tables, MongoDB collections, Excel sheets,
+or other formats, Taipy's predefined data nodes likely have you covered.
 
-Taipy proposes predefined *data nodes* corresponding to the most popular
-*storage types*. Thanks to predefined *data nodes*, the Python developer
-does not need to spend much time configuring the *storage types* or the
-*query system*. A predefined data node will often satisfy the user's
-required format: pickle, CSV, SQL table, MongoDB collection, Excel sheet,
-Amazon Web Service S3 Object, etc.
+These predefined data nodes are primarily designed for handling input data, which often
+originates from external sources with predetermined formats. For developers working with
+intermediate or output *data nodes*, where specific storage type requirements may not be
+as critical, the default storage type of pickle is often sufficient and requires no
+additional configuration.
 
-The various predefined *storage types* are typically used for input data.
-Indeed, the input data is usually provided by external sources, where
-the Python developer user does not control the format.
+However, if a more tailored approach to storing, reading, and writing data is needed,
+Taipy offers the Generic data node. This versatile data node allows developers to work
+with any storage type or query system by providing custom Python functions for reading
+and writing data. For more details on using the Generic data node, refer to the
+[generic data node config](#generic) section.
 
-For intermediate or output *data nodes*, the developer often does not have
-any particular specifications regarding the *storage type*. In such a case,
-using the default *storage type* pickle that does not require any
-configuration is recommended.
-
-If a more specific method to store, read and write the data is needed, Taipy
-provides a Generic data node that can be used for any storage type (or any
-kind of query system). The developer only needs to provide two Python
-functions, one for reading and one for writing the data. Please refer to the
-[generic data node config section](#generic) for more details on generic data
-node.
-
-All predefined data nodes are described in the subsequent sections.
+Explore the subsequent sections to learn more about the predefined data nodes available
+in Taipy and how they can streamline your data management tasks.
 
 ## Pickle
 
