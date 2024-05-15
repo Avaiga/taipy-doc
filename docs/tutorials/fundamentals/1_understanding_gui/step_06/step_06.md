@@ -1,17 +1,9 @@
 [Download Step 6](./../src/step_06.zip){: .tp-btn target='blank' }
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
-!!! warning "For Notebooks"
-
-    The Notebook is available [here](../tutorial.ipynb). In Taipy GUI, the process to
-    execute a Jupyter Notebook is different from executing a Python Script.
-    It is important to check the [Notebook](../tutorial.ipynb)
-    content and see the [documentation](../../../../manuals/gui/notebooks.md).
 
 
-You have successfully built a comprehensive forecasting application capable of making predictions
-for multiple days with various parameters in just a few steps. Nevertheless, there is room for
-substantial improvement in the page's layout. We'll introduce three new helpful controls to
+We'll introduce three new helpful controls to
 enhance the page's visual appeal. These controls are:
 
 - [part](../../../../manuals/gui/viselements/part.md): creates a group of text/visual elements. 
@@ -88,7 +80,7 @@ of columns. Here, we create three columns of the same width.
 
 
     <|Table|expandable|
-    <|{dataframe}|table|width=100%|>
+    <|{dataframe}|table|>
     |>
     |>
 

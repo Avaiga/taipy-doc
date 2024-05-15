@@ -81,7 +81,7 @@ Learn how to build Taipy applications through tutorials!
 
 ## Favorites
 
-<ul class="tp-row tp-row--gutter-sm tp-filtered">
+<ul class="tp-row tp-row--gutter-sm">
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement chart navbar table layout part menu state multi-page callback markdown">
     <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="fundamentals/1_understanding_gui/">
       <header class="tp-content-card-header">

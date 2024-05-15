@@ -88,7 +88,7 @@ job. Click on the "File" menu in the notebook and select "Jobs" > "Create Job."
 
 - **Advanced Options:** Configure any advanced options based on your requirements.
 
-** 4 - Run and Monitor the Databricks Job**
+**4 - Run and Monitor the Databricks Job**
 
 - **Run the Job:** After configuring the job settings, click "Run Now" to execute the job immediately.
 

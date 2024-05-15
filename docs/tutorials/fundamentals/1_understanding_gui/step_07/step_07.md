@@ -1,10 +1,6 @@
 [Download Step 7](./../src/step_07.zip){: .tp-btn target='blank' }
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
-!!! warning "For Notebooks"
-
-    The "Getting Started" Notebook is available [here](../tutorial.ipynb). In Taipy GUI,
-    the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 
 Taipy significantly simplifies the process of building a multi-page application. To create a 
