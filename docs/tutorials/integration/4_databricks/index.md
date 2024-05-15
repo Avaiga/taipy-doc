@@ -7,9 +7,10 @@ img: 4_databricks/images/databricks.png
 ---
 
 Integrating Taipy with Databricks is a great way to build user-centric applications. 
-Taipy GUIs and back-end will transform your Databricks models into interactive, 
-production-ready applications for end-users. This article presents the best practice for 
-integrating both platforms: calling Databricks jobs from a Taipy application. 
+Taipy GUIs and SDM (Scenario and Data Management) will transform your Databricks models 
+into interactive, production-ready applications for end-users. This article presents the 
+best practice for integrating both platforms: calling Databricks jobs from a Taipy 
+application. 
 
 More specifically, this article demonstrates how to integrate Taipy scenarios with 
 Databricks jobs. Taipy’s scenarios serve as a potent tool for orchestrating tasks and 
