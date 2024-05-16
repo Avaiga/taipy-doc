@@ -68,6 +68,13 @@ The previous code results in adding an edit with the following content:
 The append method can also be used for tabular data nodes with any parameter,
 resulting in the same edit content.
 
+## Writing from a GUI
+Using the [Data node viewer](viselemts/data_node.md) to write data, an end user
+can easily add a comment to the edit. The edits can be viewed in the history tab of
+the data node viewer.
+
+![The history tab of a data node viewer](./img/data_node_history/data-node-history_example.png){ align=center }
+
 ## Writing by a Job execution
 
 Another way to write a data node is to execute a task that has the data node as
@@ -94,13 +101,6 @@ data_node.track_edit(comment="From external system")
 ```console
 {'timestamp': datetime.datetime(2024, 5, 14, 20, 12, 27, 856928), 'comment': 'From external system'}
 ```
-
-## Writing from a GUI
-Using the [Data node viewer](viselemts/data_node.md) to write data, an end user
-can easily add a comment to the edit. The edits can be viewed in the history tab of
-the data node viewer.
-
-![The history tab of a data node viewer](./img/data_node_history/data-node-history_example.png){ align=center }
 
 # Validity period
 
