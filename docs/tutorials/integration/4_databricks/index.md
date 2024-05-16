@@ -13,8 +13,8 @@ best practice for integrating both platforms: calling Databricks jobs from a Tai
 application. 
 
 More specifically, this article demonstrates how to integrate Taipy scenarios with 
-Databricks jobs. Taipy’s scenarios serve as a potent tool for orchestrating tasks and 
-performing 'what-if' analysis (i.e. examining various versions of a business problem). 
+Databricks jobs. Taipy's scenarios serve as a potent tool for orchestrating tasks and 
+performing 'what-if' analysis (i.e., examining various versions of a business problem). 
 
 
 ![Databricks](images/databricks.png){width=50% : .tp-image}
@@ -22,7 +22,7 @@ performing 'what-if' analysis (i.e. examining various versions of a business pro
 # Scenarios and Databricks Integration
 
 Creating and executing jobs on Databricks involves several steps, from setting up your
-Databricks workspace to define and run jobs. Here's a step-by-step guide on how
+Databricks workspace to defining and running jobs. Here's a step-by-step guide on how
 to create and run jobs on Databricks, which can be seamlessly integrated with Taipy
 scenarios:
 
@@ -44,8 +44,8 @@ create the notebook.
 **2 - Define Databricks Job Logic**
 
 - **Create the Cluster**: Go to the Compute section to create a cluster with the
-packages required by your code. You would also need to install `dbutils` to 
-have widgets/parameters and get the results for your job.
+packages your code requires. You would also need to install `dbutils` to 
+have widgets/parameters and get the results of your job.
 
 - **Write Code:** In the notebook, write the code that defines the logic of your
 Databricks job. This code can include data processing, analysis, or any other tasks you
