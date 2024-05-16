@@ -90,7 +90,7 @@ nav:
         - "Data node config": manuals/new-user-manual/data-integration/data-node-config.md
         - "Data node usage": manuals/new-user-manual/data-integration/data-node-usage.md
         - "Data node history and validity": manuals/new-user-manual/data-integration/data-node-history.md
-        - "Alternative Data nodes and Scenarios": manuals/new-user-manual/data-integration/data-node-alternatives.md
+        - "Data nodes and Scenarios": manuals/new-user-manual/data-integration/data-node-alternatives.md
 
       - "Scenario Management":
         - "Scenario Management": manuals/new-user-manual/scenario-mgt/index.md
