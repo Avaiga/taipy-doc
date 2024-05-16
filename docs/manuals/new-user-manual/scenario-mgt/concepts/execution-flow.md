@@ -86,4 +86,4 @@ To enable the difference in behavior, Taipy introduces the concept of Scope. In 
 by-default behavior: the _SCOPE_ default value is `SCENARIO`. While Option 2 corresponds to setting the
 scope to a level above `SCENARIO` (either `CYCLE` or `GLOBAL`).
 
-[:material-arrow-right: The next section introduces the Scope concept.](../../data-integration/scope.md)
+[:material-arrow-right: The next section introduces the Scope concept.](../../data-integration/data-node-alternative.md)

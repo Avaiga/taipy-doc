@@ -24,7 +24,7 @@ it in the `Config^` singleton.
 The attributes available on data node configuration are:
 
 - _**id**_ (mandatory): A unique and valid Python string identifier of the data node config.
-- _**scope**_: A `Scope^` indicating the data node's [scope](scope.md). <br/>
+- _**scope**_: A `Scope^` indicating the data node's [scope](data-node-alternative.md). <br/>
     The possible values are `Scope.SCENARIO`, `Scope.CYCLE`, or `Scope.GLOBAL`.
     Default is `Scope.SCENARIO`.
 - _**validity_period**_: A [timedelta object](https://docs.python.org/3/library/datetime.html#timedelta-objects)

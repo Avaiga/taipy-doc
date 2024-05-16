@@ -18,8 +18,8 @@ It is design to model data:
     or list of parameters, etc.) or a more complex object (e.g. a file, a machine learning
     model, a list of custom objects, the result of a database query, etc.).
 
-- For any type: internal or external data, local or remote data, historical data, a set
-    of parameters, a trained model, etc.
+- For any type: internal or external data, local or remote data, historical data, a parameter
+    or a parameter set, a trained model, etc.
 
 - For any usage: independent data or data related to others through data processing pipelines
     or scenarios.
@@ -49,9 +49,9 @@ The main advantages of using data nodes in a Taipy project are:
     Keep track of the data editing history, and monitor the data validity.
     For more information, see the [data node history](data-node-history.md) page.
 
-5. **Support for multiple versions of a dataset**:
-    Easily manage different versions or variations of your dataset within the same
-    application. For more information, see the [scenario and scope](scope.md) page.
+5. **Support for multiple alternative datasets**:
+    Easily manage alternative data nodes as different versions or variations of your dataset within the same
+    application. For more information, see the [scenario and scope](data-node-alternative.md) page.
 
 6. **Seamless integration into data processing pipelines**:
     Data pipelines in Taipy are modeled as Scenarios. They can be seen as execution graphs,

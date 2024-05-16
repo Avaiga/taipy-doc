@@ -30,7 +30,7 @@ A data node also holds various properties and attributes accessible through the 
 
 # Create a data node
 
-There are 2 methods to create data nodes in Taipy.
+There are two methods to create data nodes in Taipy.
 
 The first method is creating a global data node using the
 `taipy.create_global_data_node()^` method. This method takes a data node configuration

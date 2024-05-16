@@ -58,7 +58,7 @@ This section aims at defining the following Taipy Core concepts.
   A cycle is defined thanks to the **_Frequency_** of scenarios. For instance, if scenarios have a
   weekly frequency, then each cycle represents a particular week, and every scenario will be
   attached to a particular cycle (i.e. a week).
-- A [Scope](../../data-integration/scope.md) represents the *visibility* of a data node in the graph of entities, and the
+- A [Scope](../../data-integration/data-node-alternative.md) represents the *visibility* of a data node in the graph of entities, and the
   level of its owner (Scenario, Cycle, Global).
 
 !!! note "Definition: Config vs Entities"
