@@ -51,7 +51,7 @@ The main advantages of using data nodes in a Taipy project are:
 
 5. **Support for multiple alternative datasets**:
     Easily manage alternative data nodes as different versions or variations of your dataset within the same
-    application. For more information, see the [scenario and scope](data-node-alternative.md) page.
+    application. For more information, see the [Data nodes and scenarios](data-node-alternative.md) page.
 
 6. **Seamless integration into data processing pipelines**:
     Data pipelines in Taipy are modeled as Scenarios. They can be seen as execution graphs,
