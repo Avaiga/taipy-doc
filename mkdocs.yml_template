@@ -85,14 +85,14 @@ nav:
             - manuals/new-user-manual/gui/extension/dynamic_element/index.md
             - "Scalar properties": manuals/new-user-manual/gui/extension/dynamic_element/scalar_props.md
 
-      - "Data management and integration":
+      - "Data integration and management":
         - "Data management and integration": manuals/new-user-manual/data-integration/index.md
         - "Data node config": manuals/new-user-manual/data-integration/data-node-config.md
         - "Data node usage": manuals/new-user-manual/data-integration/data-node-usage.md
         - "Data node history and validity": manuals/new-user-manual/data-integration/data-node-history.md
-        - "Data nodes and Scenarios": manuals/new-user-manual/data-integration/data-node-alternatives.md
+        - "Data nodes and Scenario": manuals/new-user-manual/data-integration/data-node-and-scenario.md
 
-      - "Scenario Management":
+      - "Data Pipelines":
         - "Scenario Management": manuals/new-user-manual/scenario-mgt/index.md
         - "Hello world!": manuals/new-user-manual/scenario-mgt/basic_examples/index.md
         - "Scenario": manuals/new-user-manual/scenario-mgt/scenario-concept.md
@@ -105,7 +105,7 @@ nav:
           - "Sequence management": manuals/new-user-manual/scenario-mgt/sequence-mgt.md
           - "Task management": manuals/new-user-manual/scenario-mgt/task-mgt.md
 
-      - "Cycle Management": manuals/new-user-manual/scenario-mgt/scenario-cycle-mgt.md
+      - "Scenario Management": manuals/new-user-manual/scenario-mgt/scenario-cycle-mgt.md
 
       - "Configuration":
         - "Configuration": manuals/new-user-manual/configuration/index.md
