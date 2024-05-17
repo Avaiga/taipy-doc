@@ -1,16 +1,12 @@
 [Download Step 7](./../src/step_07.zip){: .tp-btn target='blank' }
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
-!!! warning "For Notebooks"
-
-    The "Getting Started" Notebook is available [here](../tutorial.ipynb). In Taipy GUI,
-    the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 
 Taipy significantly simplifies the process of building a multi-page application. To create a 
 multi-page application, you need to define a dictionary of pages. In this example, we will
-create three pages: a *root* page and two additional pages (page 1 & page 2). We will incorporate
-visual elements, such as a menu or navbar, on the root page to facilitate navigation between
+create three pages: a *root* page and two additional pages (page 1 & page 2). We will incorporate 
+visual elements, such as a menu or navbar, on the root page to facilitate navigation between 
 page 1 and page 2.
 
 Note that you can create pages differently using Markdown, Python or HTML. You 

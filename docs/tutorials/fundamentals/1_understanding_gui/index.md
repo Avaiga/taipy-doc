@@ -5,79 +5,66 @@ data-keywords: gui vizelement chart navbar table layout part menu state multi-pa
 short-description: Understand basic knowledge of Taipy GUI creating of a multi-page NLP application.
 img: 1_understanding_gui/step_07/images/result.png
 ---
-!!! note "Supported Python versions"
 
+!!! note "Supported Python versions"
     Taipy requires **Python 3.8** or newer.
 
-Welcome to the **Tutorial** for using Taipy frontend. This guide will demonstrate how to utilize
-Taipy to build an interactive web application.
+Welcome to the **Taipy Tutorial**! Learn to build interactive web applications 
+effortlessly.
 
-![GUI application](step_07/images/result.png){width=90% : .tp-image-border }
+This tutorial focuses on creating an application that analyses the sentiment behind words 
+and sentences. While creating this application, you'll learn all the Taipy basic 
+principles.
 
-Taipy aims to simplify web application development:
+![GUI application](step_07/images/result.png){width=90% .tp-image-border}
 
-- Accelerates application building.
 
-- Streamlines management of variables and events.
+### Why Taipy?
 
-- Offers intuitive visualization using Markdown syntax.
+- **Speed:** Quickly develop robust applications.
+- **Simplicity:** Easy management of variables and events.
+- **Visualization:** Intuitive and clear visual elements.
 
-In each part of the **"Tutorial"** we'll emphasize the basic principles of *Taipy*. It's
-important to note that each step builds on the code from the previous one. By the end of the
-final step, you'll be equipped with the ability to create your own Taipy application.
+Each step in this **Tutorial** builds on the previous one. By the end, you'll be ready to 
+create your own Taipy applications.
 
-## Before we begin
+## Getting Started
 
-**Taipy** package requires Python 3.8 or newer;
+This tutorial is for Python scripts (*.py*). If you prefer **Jupyter Notebooks**, read 
+this [documentation](../../../manuals/gui/notebooks.md) and follow the tutorial 
+accordingly.
 
-``` console
-$ pip install taipy
+### Installation
+
+Ensure you have Python 3.8 or newer, then install Taipy:
+
+```bash
+pip install taipy
 ```
 
-Once you finish step 5, the application will include a Natural Language Processing (NLP) algorithm
-for demonstration purposes. Note that this algorithm is compatible only with Python versions 3.8
-to 3.10. To incorporate this NLP feature, you'll need to install Transformers and Torch.
-However, if you prefer, you can proceed with the tutorial guide without using this algorithm.
+For the NLP feature (Python 3.8 to 3.10), install:
 
-``` console
-$ pip install torch
-$ pip install transformers
-$ pip install scipy
+```bash
+pip install torch transformers scipy
 ```
 
 !!! info
-
-    `pip install taipy` is the preferred method to install the latest stable version of Taipy.
-
-    If you don't have [pip](https://pip.pypa.io) installed, this
-    [Python installation guide](http://docs.python-guide.org/en/latest/starting/installation/)
-    can guide you through the process.
-
-## Using Notebooks
-
-This **Tutorial** is for Python scripts (*.py*) only. If you want to use **Jupyter Notebooks**,
-download this [notebook](./tutorial.ipynb).
+    Use `pip install taipy` for the latest stable version. Need help with pip? Check out 
+    the [installation guide](http://docs.python-guide.org/en/latest/starting/installation/).
 
 ## Taipy Studio
 
-[Taipy Studio](../../../manuals/studio/index.md) is a VS Code extension that provides an
-auto-completion of Taipy visual elements. Creating a Taipy application can be done more easily
-and quickly through Taipy Studio.
+[Taipy Studio](../../../manuals/studio/index.md) is a VS Code extension for 
+auto-completing Taipy visual elements. It makes creating applications faster and easier.
 
 So, without further delay, let's begin to code!
 
-## Steps
+## Tutorial Steps
 
 1. [First Web page](step_01/step_01.md)
-
 2. [Visual elements](step_02/step_02.md)
-
 3. [Interaction](step_03/step_03.md)
-
 4. [Charts](step_04/step_04.md)
-
-5. [Python expression in properties](step_05/step_05.md)
-
+5. [Python expressions in properties](step_05/step_05.md)
 6. [Page layout](step_06/step_06.md)
-
 7. [Multi-pages, navbars, and menus](step_07/step_07.md)

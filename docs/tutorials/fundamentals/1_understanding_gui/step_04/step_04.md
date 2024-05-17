@@ -1,13 +1,8 @@
 [Download Step 4](./../src/step_04.zip){: .tp-btn target='blank' }
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
-!!! warning "For Notebooks"
 
-    The Notebook is available [here](../tutorial.ipynb). In Taipy GUI,
-    the process to execute a Jupyter Notebook is different from executing a Python Script.
-
-
-Charts are an essential part of Taipy (and of any Web application!). A chart is just another
+Charts are an essential part of Taipy (and of any Web application). A chart is just another 
 visual element with many properties to customize it.
 
 Here is one of the simplest code to create a chart:
@@ -27,7 +22,7 @@ Here is one of the simplest code to create a chart:
 
 Different formats can be passed to a chart element: a list, a Numpy array, or a Pandas Dataframe.
 
-You can also use Plotly Python to create a figure object and inject it in the chart:
+You can also use Plotly Python to create a *Figure* object and inject it in the chart:
 
 === "Markdown"
     ```python
@@ -57,15 +52,15 @@ You can also use Plotly Python to create a figure object and inject it in the ch
     ```
 
 
-## Different useful properties
+## Useful properties
 
-Taipy charts are based on Plotly charts. More than any other visual element, charts have a lot of
+Taipy charts are based on Plotly charts. More than any other visual element, charts have a lot of 
 properties.
 
-Here are a few of the essential properties. You can also look at the
+Here are a few of the essential properties. You can also look at the 
 [documentation](../../../../manuals/gui/viselements/chart.md) for more information.
- - x and y are used to define the axis of the chart. Note that even if data inside columns are
-   dynamic, the name of columns to display in a chart are not.
+
+ - x and y are used to define the chart axis.
 
 === "Markdown"
     ```python
@@ -81,7 +76,6 @@ Here are a few of the essential properties. You can also look at the
 
  - x and y can be indexed to add more traces to the chart:
 
-
 === "Markdown"
     ```python
     data = {"x_col": [0, 1, 2], "y_col_1": [4, 2, 1], "y_col_2": [3, 1, 2]}
@@ -93,7 +87,6 @@ Here are a few of the essential properties. You can also look at the
     with tgb.Page() as page:
         tgb.chart("{data}", x="x_col", y__1="y_col1", y__2="y_col_2")
     ```
-
 
  - Taipy provides a lot of different options to customize graphs. _color_ is one of them:
 
@@ -109,12 +102,11 @@ Here are a few of the essential properties. You can also look at the
         tgb.chart("{data}", x="x_col", y__1="y_col1", y__2="y_col_2", color__1="green")
     ```
 
+## Types of charts
 
-## Different types of charts
-
-Different types are available: maps, bar charts, pie charts, line charts, and 3D charts, ... To
+Different types are available: maps, bar charts, pie charts, line charts, and 3D charts, ... To 
 know how to use them quickly, types are listed [here](../../../../manuals/gui/viselements/chart.md).
-If compatible, two types like *scatter*, *line*_, and *bar* can also be used together on the same
+If compatible, two types like *scatter*, *line*, and *bar* can also be used together on the same 
 chart.
 
 
@@ -177,8 +169,9 @@ A chart is added to our code to visualize the score given by our NLP algorithm t
 
 ## Quick tip to write visual elements
 
-To make coding easier, each visual element has a property called *properties* that you can directly
-set to a Python dictionary of properties. To recreate the graph shown above, you can to the following:
+To make coding easier, each visual element has a property called *properties*. You can set 
+properties directly through it with a Python dictionary of properties. To recreate the 
+graph shown above, you can to the following:
 
 === "Markdown"
     ```python

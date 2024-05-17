@@ -1,17 +1,12 @@
 [Download Step 1](./../src/step_01.zip){: .tp-btn target='blank' }
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
-!!! warning "For Notebooks"
 
-    The Notebook is available [here](../tutorial.ipynb). In Taipy GUI,
-    the process to execute a Jupyter Notebook is different from executing a Python Script.
+You only need one line of code to create your first Taipy web page. Just create a `Gui^` 
+object with a string and run it.
 
-
-You only need one line of code to create your first Taipy web page. Just create a `Gui^` object
-with a string and run it.
-
-In the console, you'll find a client link. All you need to do is copy and paste it into your web
-browser to open your first Taipy page!
+In the console, you'll find a client link. All you need to do is copy and paste it into 
+your web browser to open your first Taipy page!
 
 
 ```python
@@ -38,14 +33,5 @@ port number (5000 by default).
 
 Other parameters of the `run()` method can be found
 [here](../../../../manuals/gui/configuration.md#configuring-the-gui-instance).
-
-
-Keep in mind that you have the option to format your text. Taipy uses different ways to create
-pages: [Markdown](../../../../manuals/gui/pages/index.md#using-markdown),
-[HTML](../../../../manuals/gui/pages/index.md#using-html) or
-[Python code](../../../../manuals/gui/pages/builder.md). Here is the Markdown syntax to style your
-text  and more. Therefore, `#` creates a title, `##` makes a subtitle. Put your text in `*` for
-*italics* or in `**` to have it in **bold**.
-
 
 ![First Web Page](images/result.png){ width=90% : .tp-image-border }
