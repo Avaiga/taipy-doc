@@ -13,7 +13,7 @@ histogram:Histograms
 heatmap:Heatmaps
 error-bars:Error bars
 continuous-error:Continuous error
-box-plot:Box plots
+#TODO#box-plot:Box plots
 polar:Polar charts
 radar:Radar charts
 candlestick:Candlestick charts
