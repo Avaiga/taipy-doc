@@ -15,7 +15,7 @@ in different situations. It also shows basic customization hints.
 | [*type*](../chart.md#p-type)      | `bar`          |  |
 | [*data*](../chart.md#p-data)      | Array, dictionary or Pandas DataFrame.         |  |
 | [*x*](../chart.md#p-x), [*y*](../chart.md#p-y), [*z*](../chart.md#p-z), [*theta*](../chart.md#p-theta), [*r*](../chart.md#p-r), [*lat*](../chart.md#p-lat), [*lon*](../chart.md#p-lon), [*high*](../chart.md#p-high), [*low*](../chart.md#p-low), [*close*](../chart.md#p-close), [*open*](../chart.md#p-open)       | Array or column name.  | Property name depends on the base chart coordinate system.  |
-| [*option*](../chart.md#p-option)  | dictionary  | Options that are specific to a trace.  |
+| [*options*](../chart.md#p-options)  | dictionary  | Options that are specific to a trace.  |
 | [*layout*](../chart.md#p-layout)  | dictionary  | Layout settings applied globally to the chart control.  |
 
 ## Examples

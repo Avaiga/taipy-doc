@@ -97,9 +97,8 @@ filters.
 The control's properties [*show_id*](#p-show_id),
 [*show_submitted_label*](#p-show_submitted_label), [*show_submitted_id*](#p-show_submitted_id),
 [*show_submission_id*](#p-show_submission_id), [*show_date*](#p-show_date),
-[*show_cancel*](#p-show_cancel), and [*show_delete*](#p-show_delete), and
-[*show_submit_sequences*](#p-show_submit_sequences) let you indicate what columns the job
-selector control displays.
+[*show_cancel*](#p-show_cancel), and [*show_delete*](#p-show_delete) let you indicate what columns
+the job selector control displays.
 
 We can define our control so the job identifiers and the submission dates are not shown, to have a
 more compact display:

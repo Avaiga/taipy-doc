@@ -263,7 +263,7 @@ Published on 2023-01.
 [`taipy-core` 2.1](https://pypi.org/project/taipy-core/2.1.0/) and
 [`taipy-rest` 2.1](https://pypi.org/project/taipy-rest/2.1.0/) packages.
 
-Please refer to the [Migration page](./migration.md#from-2.0-to-2.1) for
+Please refer to the [Migration page](./migration.md#from-20-to-21) for
 details on how to migrate from version older than 2.1.
 
 ## New Features
@@ -290,7 +290,7 @@ details on how to migrate from version older than 2.1.
   See the [chart control](manuals/gui/viselements/chart.md) section for details.
 - Charts now support the dark theme automatically.
 - Tooltips can be set on individual table cells.<br/>
-  See the [example](manuals/gui/viselements/table.md#cell-tooltip) for more information.
+  See the [example](manuals/gui/viselements/table.md#cell-tooltips) for more information.
 - [Long running callbacks](manuals/gui/callbacks.md#long-running-callbacks) have
   been improved to allow for easily returning a value.<br/>
   See the documentation of the `invoke_long_callback()^` function or the
