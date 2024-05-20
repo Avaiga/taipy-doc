@@ -8,8 +8,8 @@ This step illustrates how to utilize visual elements such as charts, sliders, ta
 more within the graphical interface.
 
 Taipy uses different ways to create
-pages: [Markdown](../../../../manuals/gui/pages/index.md#using-markdown),
-[HTML](../../../../manuals/gui/pages/index.md#using-html) or
+pages: [Markdown](../../../../manuals/gui/pages/markdown.md),
+[HTML](../../../../manuals/gui/pages/html.md) or
 [Python code](../../../../manuals/gui/pages/builder.md). You can choose which you want 
 to learn in the code snippets below.
 

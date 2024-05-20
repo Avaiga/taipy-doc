@@ -3,7 +3,7 @@ a [Configuration](../../core/config/index.md) where the data flow is
 described.<br/>
 This configuration can be coded in Python and tuned using environment variables
 (as described in the
-[advanced configuration](../../core/config/advanced-config.md#Python-code-configuration)
+[advanced configuration](../../core/config/advanced-config.md#python-code-configuration)
 section).
 
 Taipy Studio provides ways to design graphically Taipy application configurations.

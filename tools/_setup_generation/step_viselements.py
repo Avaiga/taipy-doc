@@ -463,8 +463,7 @@ class [element_type]({base_class}):
         SECTIONS_RE = re.compile(
             r"^(?:\s*<!--\s+)(.*?)(?:-->)", re.MULTILINE | re.DOTALL
         )
-        match = SECTIONS_RE.match(chart_gallery)
-        if not match:
+        if not (match := SECTIONS_RE.match(chart_gallery)):
             raise ValueError(
                 f"{self.charts_home_html_path} should begin with an HTML comment that lists the chart types"
             )
@@ -472,8 +471,7 @@ class [element_type]({base_class}):
         SECTION_RE = re.compile(r"^([\w-]+):(.*)$")
         chart_sections = ""
         for line in match.group(1).splitlines():
-            match = SECTION_RE.match(line)
-            if match:
+            if match := SECTION_RE.match(line):
                 type = match.group(1)
                 chart_sections += f"- [{match.group(2)}](charts/{type}.md)\n"
                 template_doc_path = f"{charts_md_dir}/{type}.md_template"
