@@ -869,7 +869,7 @@ The scope is `SCENARIO` (default value), and default data is provided.
 !!! warning
 
     Since the data is stored in memory, it cannot be used in a multi-process environment.
-    (See [Job configuration](job-config.md#standalone) for more details).
+    (See [Job configuration](job-config.md#standalone-mode) for more details).
 
 !!! note
 

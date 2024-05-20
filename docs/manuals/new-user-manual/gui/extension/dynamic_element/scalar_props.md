@@ -1,7 +1,7 @@
 # Scalar properties
 
-In this section, we are going to add a dynamic custom element to the custom element
-library started in the [Static Elements](../static_element.md#declaring-the-extension-library-data-sourceguidocextensionexample_libraryexample_librarypy)
+In this section, we will add a dynamic custom element to the custom element library, which we
+started to create in the [Static Elements](../static_element.md#declaring-the-extension-library)
 section.
 
 This dynamic element will be using a property that holds a scalar value.<br/>

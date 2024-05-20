@@ -132,6 +132,7 @@ These properties are used to indicate what text settings to apply in styles.
 
 | CSS custom property     | Default value | Comments                       |
 | ----------------------- | ------------- | ------------------------------ |
+| <a name="p-font-family"></a>*--font_family* | [*font_family*](#v-font-family) variable value (default: Lato, Arial, sans-serif) | Font family used by elements. |
 | *--font-size-h1*        | 2.5rem        | Font size for `h1` headings.   |
 | *--font-size-h2*        | 2rem          | Font size for `h2` headings.   |
 | *--font-size-h3*        | 1.75rem       | Font size for `h3` headings.   |
