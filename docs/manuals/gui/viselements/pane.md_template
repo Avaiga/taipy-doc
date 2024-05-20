@@ -56,10 +56,10 @@ This button can be pressed to open the persistent pane:
 Gui(page=page).run()
 ```
 
-The pane is initially opened. If you close it, the bound variable [*show_pane*](#p-show_pane) is
-updated (set to False).<br/>
-Pressing the button sets the variable [*show_pane*](#p-show_pane) to True using a lambda callback,
-which opens the pane again.
+The pane is initially opened. If you close it, the bound variable *show_pane* is updated
+(set to False).<br/>
+Pressing the button sets the variable *show_pane* to True using a lambda callback, which opens the
+pane again.
 
 ## Pane as block element
 

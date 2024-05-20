@@ -132,6 +132,7 @@ These properties are used to indicate what text settings to apply in styles.
 
 | CSS custom property     | Default value | Comments                       |
 | ----------------------- | ------------- | ------------------------------ |
+| <a name="p-font-family"></a>*--font_family* | [*font_family*](#v-font-family) variable value (default: Lato, Arial, sans-serif) | Font family used by elements. |
 | *--font-size-h1*        | 2.5rem        | Font size for `h1` headings.   |
 | *--font-size-h2*        | 2rem          | Font size for `h2` headings.   |
 | *--font-size-h3*        | 1.75rem       | Font size for `h3` headings.   |
@@ -172,6 +173,8 @@ can [style sections](#styled-sections):
 
 | CSS custom property                           | Default value                 | Comments                  |
 | --------------------------------------------- | ----------------------------- | ------------------------- |
+| <a name="p-border-radius"></a>*--border-radius* | [*border_radius*](#v-border-radius) variable value (default: 8) | Border radius used by elements. |
+| <a name="p-input-button-height"></a>*--input-button-height* | [*input_button_height*](#v-input-button-height) variable value (default: 48px) | Height of matching button and input controls. |
 | <a name="p-container-max-width"></a>*--container-max-width* | 75rem | The maximum width of section that use the [*container*](#container) CSS class. |
 | <a name="p-element-padding"></a>*--element-padding* | `var(--spacing2)` | The inner margins of sections using the [*card*](#card) or [*sidebar*](#sidebar) classes. |
 | <a name="p-sidebar-min-width"></a>*--sidebar-min-width* | 15rem | The minimum width of sections using the [*sidebar*](#sidebar) class. |

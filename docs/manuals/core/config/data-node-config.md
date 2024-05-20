@@ -30,7 +30,7 @@ The attributes available on data nodes are:
     data node.<br/>
     The possible values are ["pickle"](#pickle) (**the default value**), ["csv"](#csv),
     ["excel"](#excel), ["json"](#json), ["mongo_collection"](#mongo-collection),
-    ["parquet"](#parquet), ["sql"](#sql), ["sql_table"](#sql_table),
+    ["parquet"](#parquet), ["sql"](#sql), ["sql_table"](#sql-table),
     ["in_memory"](#in-memory), ["generic"](#generic) or
     ["Amazon Web Service S3 Object"](#amazon-web-service-s3-object).<br/>
     As explained in the following subsections, depending on the *storage_type*, other
@@ -538,7 +538,7 @@ and *decoder*:
 - In lines 5-7, we define a custom class `SaleRow`, representing data in a JSON object.
 
 - In lines 9-30, we define a custom encoder and decoder for the `SaleRow` class.
-    - When [writing a JSONDataNode](../entities/data-node-mgt.md#write-data-node),
+    - When [writing a JSONDataNode](../entities/data-node-mgt.md#json),
     the `SaleRowEncoder` encodes a `SaleRow` object in JSON format. For example,
     after the creation of the scenario `scenario`,
         ```python
@@ -841,7 +841,7 @@ The scope is `SCENARIO` (default value), and default data is provided.
 !!! warning
 
     Since the data is stored in memory, it cannot be used in a multi-process environment.
-    (See [Job configuration](job-config.md#standalone) for more details).
+    (See [Job configuration](job-config.md#standalone-mode) for more details).
 
 !!! note
 

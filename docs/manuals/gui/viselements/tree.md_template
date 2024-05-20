@@ -6,8 +6,8 @@ The tree can let the user select multiple items.
 
 A filtering feature is available to display only a subset of the items.
 
-You can use an arbitrary type for all the items (see the [example](#binding-to-a-list-of-objects)).
-
+You can use an arbitrary type for all the items (see the
+[example](#display-a-hierarchy-of-arbitrary-objects)).
 
 # Styling
 
