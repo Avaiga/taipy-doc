@@ -1,4 +1,4 @@
-A scenario configuration is necessary to instantiate a [Scenario](../scenario.md). To create a
+A scenario configuration is necessary to instantiate a `Scenario^`. To create a
 `ScenarioConfig^`, you can use the `Config.configure_scenario()^` method with the following parameters:
 
 - _**id**_: The id of a new scenario configuration to be created. This id is **mandatory** and must
