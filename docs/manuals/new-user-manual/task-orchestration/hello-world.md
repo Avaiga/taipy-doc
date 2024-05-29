@@ -1,14 +1,8 @@
-Taipy provides the key concept of *Scenario* . Among other functionalities, a *Scenario*
-represents an instance of a data science problem with its datasets (modeled as *Data nodes* in
-Taipy Core) and holds the algorithms used to solve the problem. The algorithms are modeled as an
-execution graph (a Directed Acyclic Graph or DAG) that can be seen as a succession of functions
-(or *Tasks*) that exchange data. With Taipy Core, you can model simple or very complex algorithms.
-
 This section aims to build a *Hello world* example to show how to quickly configure, create and
 submit a scenario. The following picture represents the scenario execution graph made of two
 data nodes (blue boxes) and one task (orange box).
 
-![hello world example](../pic/hello_world.svg){width=75%}
+![hello world example](img/hello-world/hello-world.svg){width=75%}
 
 It first consists in one data node named *input_name*. It represents an input data node.
 Then a task named *build message* takes the first data node and returns a second data node named
@@ -118,7 +112,7 @@ In line 8, we use the same scenario configuration to instantiate a second scenar
 it and print the result written in its output data node.
 
 Here is the complete python code corresponding to the example:
-<a href="./code_example/basic_example.py" download>`basic_example.py`</a>
+<a href="./code_example/hello-world/hello-world.py" download>`hello-world.py`</a>
 
 And here is the expected output.
 
@@ -136,10 +130,13 @@ Hello Kylian Mbappe!
     interface built with [Taipy GUI](../../gui/index.md).
 
     For example, the `tp.create_scenario()` or the `tp.submit()`
-    methods are called when clicking respectively on a "create scenario" or "submit scenario"
-    buttons. When displaying a data node in a graphical component (chart, table, etc. ) the
-    `read()` and `write()` method are called to edit and retrieve the data.
+    methods are called when clicking respectively on a "create scenario"
+    or "submit scenario" buttons. When displaying a data node in a graphical
+    component (chart, table, etc. ) the `read()` and `write()` method are called
+    to edit and retrieve the data.
 
+    The [scenario selector](viselemts/scenario_selector.md) and the
+    [scenario viewer](viselemts/scenario.md) are designed for this purpose.
 
 !!! note
 

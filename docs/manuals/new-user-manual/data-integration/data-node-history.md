@@ -14,7 +14,7 @@ data node modifications.
 
 ```python
 {%
-include-markdown "./code_example/data_node_history/data-node-history_example.py"
+include-markdown "./code_example/data-node-history/data-node-history-example.py"
 comments=false
 %}
 ```
@@ -23,7 +23,7 @@ comments=false
     As shown in the previous code, one way to write a data node is to execute a task
     that has the data node as output. If you are not yet familiar with the concepts of
     task or Scenario, you can refer to the
-    [Scenario Management](../scenario-mgt/index.md) section.
+    [Task orchestration](../task-orchestration/index.md) section.
 
 ## Retrieve edits
 
@@ -73,7 +73,7 @@ Using the [Data node viewer](viselemts/data_node.md) to write data, an end user
 can easily add a comment to the edit. The edits can be viewed in the history tab of
 the data node viewer.
 
-![The history tab of a data node viewer](./img/data_node_history/data-node-history_example.png){ align=center }
+![The history tab of a data node viewer](img/data-node-history/data-node-history-example.png){ align=center }
 
 ## Writing by a Job execution
 

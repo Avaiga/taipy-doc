@@ -85,27 +85,34 @@ nav:
             - manuals/new-user-manual/gui/extension/dynamic_element/index.md
             - "Scalar properties": manuals/new-user-manual/gui/extension/dynamic_element/scalar_props.md
 
-      - "Data integration and management":
-        - "Data management and integration": manuals/new-user-manual/data-integration/index.md
+      - "Data integration":
+        - "Data integration": manuals/new-user-manual/data-integration/index.md
         - "Data node config": manuals/new-user-manual/data-integration/data-node-config.md
         - "Data node usage": manuals/new-user-manual/data-integration/data-node-usage.md
         - "Data node history and validity": manuals/new-user-manual/data-integration/data-node-history.md
-        - "Data nodes and Scenario": manuals/new-user-manual/data-integration/data-node-and-scenario.md
 
-      - "Data Pipelines":
-        - "Scenario Management": manuals/new-user-manual/scenario-mgt/index.md
-        - "Hello world!": manuals/new-user-manual/scenario-mgt/basic_examples/index.md
-        - "Scenario": manuals/new-user-manual/scenario-mgt/scenario-concept.md
-        - "Scenario config":
-          - "Task config": manuals/new-user-manual/scenario-mgt/configuration/task-config.md
-          - "Scenario config": manuals/new-user-manual/scenario-mgt/configuration/scenario-config.md
-        - "Scenario Creation": manuals/new-user-manual/scenario-mgt/scenario-creation.md
-        - "Scenario Execution":
-          - "Scenario Execution": manuals/new-user-manual/scenario-mgt/scenario-execution.md
-          - "Sequence management": manuals/new-user-manual/scenario-mgt/sequence-mgt.md
-          - "Task management": manuals/new-user-manual/scenario-mgt/task-mgt.md
+      - "Task orchestration":
+        - "Scenarios for Task orchestration": manuals/new-user-manual/task-orchestration/index.md
+        - "Hello world!": manuals/new-user-manual/task-orchestration/hello-world.md
+        - "Scenario Config": manuals/new-user-manual/task-orchestration/scenario-config.md
+        - "Scenario Creation": manuals/new-user-manual/task-orchestration/scenario-creation.md
+        - "Scenario Submission": manuals/new-user-manual/task-orchestration/scenario-execution.md
 
-      - "Scenario Management": manuals/new-user-manual/scenario-mgt/scenario-cycle-mgt.md
+      - "What-if-analysis":
+        - "Scenarios for What-if-analysis": manuals/new-user-manual/what-if-analysis/index.md
+        - "Multiple scenarios": manuals/new-user-manual/what-if-analysis/multiple-scenarios.md
+        - "Scopes, Scenarios and cycles": manuals/new-user-manual/what-if-analysis/scenarios-cycles.md
+        - "Scenarios comparators": manuals/new-user-manual/what-if-analysis/scenario-comparators.md
+
+      - "Scenario and Data Management":
+        - "Scenario and Data Management": manuals/new-user-manual/scenario-mgt/index.md
+        - "Data node": manuals/new-user-manual/data-integration/data-node-usage.md
+        - "Task": manuals/new-user-manual/scenario-mgt/task-mgt.md
+        - "Scenario": manuals/new-user-manual/scenario-mgt/scenario-mgt.md
+        - "Sequence": manuals/new-user-manual/scenario-mgt/sequence-mgt.md
+        - "Cycle": manuals/new-user-manual/scenario-mgt/cycle-mgt.md
+        - "Job": manuals/new-user-manual/scenario-mgt/job-mgt.md
+        - "Submission": manuals/new-user-manual/scenario-mgt/submission-mgt.md
 
       - "Configuration":
         - "Configuration": manuals/new-user-manual/configuration/index.md
@@ -115,12 +122,6 @@ nav:
         - "Config Checker": manuals/new-user-manual/configuration/config-checker.md
         - "Advanced configuration": manuals/new-user-manual/configuration/advanced-config.md
 
-      - "Versioning System":
-        - "Versioning System": manuals/new-user-manual/versioning/index.md
-        - "Development mode": manuals/new-user-manual/versioning/development_mode.md
-        - "Experiment mode": manuals/new-user-manual/versioning/experiment_mode.md
-        - "Production mode": manuals/new-user-manual/versioning/production_mode.md
-
       - "Authentication and Roles":
         - "Authentication and Authorization": manuals/new-user-manual/auth/index.md
         - "Authentication": manuals/new-user-manual/auth/authentication.md
@@ -129,6 +130,14 @@ nav:
       - "Scheduler":
         - "Scheduler": manuals/new-user-manual/scheduling/index.md
 
+      - "Versioning System":
+        - "Versioning System": manuals/new-user-manual/versioning/index.md
+        - "Development mode": manuals/new-user-manual/versioning/development_mode.md
+        - "Experiment mode": manuals/new-user-manual/versioning/experiment_mode.md
+        - "Production mode": manuals/new-user-manual/versioning/production_mode.md
+
+      - "REST APIs": manuals/new-user-manual/rest/index.md
+
       - "Command-line interface":
         - "Command-line interface": manuals/cli/index.md
         - "help": manuals/cli/help.md
@@ -136,10 +145,6 @@ nav:
         - "run": manuals/cli/run.md
         - "manage-versions": manuals/cli/manage-versions.md
         - "version": manuals/cli/version.md
-
-      - "Using Notebooks": manuals/new-user-manual/notebooks.md
-
-      - "REST APIs": manuals/new-user-manual/rest/index.md
 
       - "Running & Deploying":
         - "Running and Deploying Taipy applications": manuals/run-deploy/index.md
@@ -172,6 +177,8 @@ nav:
           - "On Databricks":
             - "Deploying on Databricks": manuals/run-deploy/deploy/databricks/index.md
 
+      - "Using Notebooks": manuals/new-user-manual/notebooks.md
+
     - "User Manuals":
       - "About Taipy's User Manuals": manuals/usermans/index.md
       - "Taipy GUI":
@@ -197,7 +204,7 @@ nav:
             - manuals/gui/extension/dynamic_element/index.md
             - "Scalar properties": manuals/gui/extension/dynamic_element/scalar_props.md
       - "Taipy Core":
-        - "Taipy Core": manuals/core/index.md ###############################
+        - "Taipy Core": manuals/core/index.md
         - 'Basic example: Hello world!':
           - manuals/core/basic_examples/index.md
         - "Concepts":

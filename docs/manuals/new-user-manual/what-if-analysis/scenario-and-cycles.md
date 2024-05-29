@@ -1,21 +1,12 @@
-In Taipy, managing multiple alternative data nodes is essential for use cases where
-data evolves over time, experiments need to be conducted with different datasets or
-parameter sets, or when data needs to be preserved for auditing and comparison purposes.
+Indtroduction of page
 
-This functionality is seamlessly integrated into Taipy's data management framework
-thanks to *scenarios* and data node *scopes*.
+# Why using scenario with cycles?
 
-# Why creating multiple alternative data nodes?
-Supporting multiple alternative datasets allows you to:
-
-- **Track Changes:** Keep a history of data changes for audit and rollback purposes.
-- **Experiment:** Perform A/B testing or compare model performance across different
-    datasets or different parameter sets.
-- **Ensure Consistency:** Maintain data integrity and consistency across different
-    scenarios and cycles.
-- **Facilitate Collaboration:** Enable different teams to work on various datasets
-    without interference.
-
+- Motivation and advantages
+- Can be used for time-based analyses like monthly forecasts, weekly results, daily reports, etc.
+- Ideal for recurring business cases
+- Share the same data nodes across multiple scenarios
+-
 # What is a Scenario?
 A `Scenario^` in Taipy represents an instance of a business problem. Among other features
 scenarios own data nodes. Two different scenarios can own two alternative data nodes (from the
@@ -25,10 +16,10 @@ each one based on a different data version.
 *Scenarios* can can be used for what-if analysis, A/B testing, and comparing
 different business strategies over specific time periods (called `Cycle^`) or conditions.
 
-For more details on scenarios, please refer to the [Scenario Management](../scenario-mgt)
-documentation.
+For more details on scenarios, please refer to the [Scenario Management](../scenario-mgt/index.md)
+page.
 
-# What is a Scope?
+# What is a Data node Scope?
 
 Taipy allows you to instantiate multiple alternative data nodes from the same `DataNodeConfig^`
 by leveraging the `Scope^` concept. This approach helps in managing data nodes efficiently
@@ -53,20 +44,37 @@ The *scope* can be set to one of the following values:
 By configuring the scope appropriately, you can control how your data nodes are created or
 re-used by scenarios.
 
-# Creating Scenarios and alternative data nodes
+# What is a Cycle?
+
+- Created from the scenario at its instantiation.
+
+- Contains a time period with a start and end date.
+
+- Based on the scenario creation date and its frequency
+
+# Creating Scenarios and cycles
 
 To create alternative data nodes with different scopes, you need to use *scenarios*.
 A `Scenario^` is instantiated from a `ScenarioConfig^`, which encapsulates `DataNodeConfig^`
 configurations with their defined scopes. When a scenario is instantiated, data nodes are created
-or reused depending on the scope of their DataNodeConfig.
+or reused depending on the scope of their configurations.
 
 To create alternative data nodes with different scopes, you need to:
-1. Configure the data nodes with the desired scopes using the various `Config.configure_data_node()^` methods.
-2. Configure the scenarios with the data node configurations using the `Config.configure_scenario()^` method.
-3. Instantiate multiple scenarios using `create_scenario()^` function to create alternative data nodes
-    with different scopes.
+1. Configure the data nodes with the desired scopes using the various
+    `Config.configure_data_node()^` methods.<br>
+    For more details, see the [data node configuration](../data-integration/data-node-config.md) page.
 
-## Example
+2. Configure the scenarios with the data node configurations as additional data nodes using
+    the `Config.configure_scenario()^` method.<br>
+    For more details, see the [scenario configuration](../scenario-mgt/scenario-config.md)
+    page.
+
+3. Instantiate multiple scenarios using `create_scenario()^` function to create alternative
+    data nodes with different scopes.<br>
+    For more details, see the [scenario usage](../scenario-mgt/scenario-mgt.md)
+    page.
+
+# Example
 
 Let's consider a simple example where a company wants to predict its sales for the next month.
 The company has a trained model that predicts sales based on the current month and historical
@@ -82,44 +90,36 @@ We can have the following:
 
 The following code snippet shows how to configure the data nodes with different scopes:
 
-```python
-from taipy import Config, Frequency, Scope
-import taipy as tp
-from datetime import datetime
-
-# Configure data nodes with different scopes
-hist_cfg = Config.configure_csv_data_node("sales_history", scope=Scope.GLOBAL)
-model_cfg = Config.configure_data_node("trained_model", scope=Scope.CYCLE)
-month_cfg = Config.configure_data_node("current_month", scope=Scope.CYCLE)
-predictions_cfg = Config.configure_data_node("sales_predictions", scope=Scope.CYCLE)
-capacity_cfg = Config.configure_data_node("capacity", scope=Scope.SCENARIO)
-orders_cfg = Config.configure_sql_data_node("production_orders",
-                                            scope=Scope.SCENARIO,
-                                            db_name="taipy",
-                                            db_engine="sqlite",
-                                            table_name="sales")
-
-# Configure scenarios
-scenario_cfg = Config.configure_scenario("scenario", frequency=Frequency.MONTHLY, additional_data_node_configs=[
-    hist_cfg,
-    model_cfg,
-    month_cfg,
-    predictions_cfg,
-    capacity_cfg,
-    orders_cfg])
-
-# Instantiate three scenarios
-jan_scenario_high = tp.create_scenario(scenario_cfg, creation_date=datetime(2024, 1, 1))
-jan_scenario_low = tp.create_scenario(scenario_cfg, creation_date=datetime(2024, 1, 1))
-feb_scenario_low = tp.create_scenario(scenario_cfg, creation_date=datetime(2024, 2, 1))
+```python linenums="1"
+{%
+include-markdown "./code-example/data-node-scopes/sales-forecasts-and-prod-orders.py"
+comments=false
+%}
 ```
 
-In this example, the historical sales data node is shared across all scenarios, while the
+The code example above aims at configuring a `ScenarioConfig^` to instantiate scenarios.
+
+## Data node configuration
+
+The data node configurations are created with the `Config.configure_data_node()^` method.
+For more details, see the [data node config](../data-integration/data-node-config.md) page.
+
+The historical sales data node is shared across all scenarios, while the
 trained model, current month, and sales predictions data nodes are unique to each cycle.
 The capacity and production orders data nodes are unique to each scenario.
 
+## Scenario configuration
+
 Once the data nodes are configured, you can configure a scenario. The `Config.configure_scenario()^`
-method allows you to specify the frequency of the scenario and the data node configurations.
+method allows you to specify the frequency and returns the scenario configuration `ScenarioConfig^`.
+
+!!! note
+    This example only have additional data node configurations. Note that you can also
+    add data node configurations along with task configurations if needed.<br>
+    For more details, see the [scenario configuration](../scenario-mgt/scenario-config.md)
+    page.
+
+## Scenario Instantiation
 
 The `create_scenario()^` function is then used to instantiate the scenarios. Three scenarios are
 created in this example with two cycles: two scenarios for the January cycle, and one for February cycle.
@@ -130,4 +130,4 @@ Along with the scenarios, a total of thirteen data nodes are created:
 
 By using scenarios and scopes, you can manage alternative data nodes efficiently. You can use
 the utility methods provided by Taipy to access, read, write, and manage data nodes.
-For more details, see the [data node usage](data-node-usage.md) page.
+For more details, see the [data node usage](../data-integration/data-node-usage.md) page.
