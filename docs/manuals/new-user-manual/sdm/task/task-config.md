@@ -15,7 +15,7 @@ Here is a simple example:
 
 ```python linenums="1"
 {%
-include-markdown "./code-example/task_cfg/task-config_simple.py"
+include-markdown "./code-example/task-config/task-config-simple.py"
 comments=false
 %}
 ```
@@ -39,7 +39,7 @@ lists of `DataNodeConfig^` objects.
 
 ```python linenums="1"
 {%
-include-markdown "./code-example/task_cfg/task-config_multiple.py"
+include-markdown "./code-example/task-config/task-config-multiple.py"
 comments=false
 %}
 ```
@@ -53,5 +53,3 @@ In lines 11-12, two data nodes are configured. They will be used as the function
 
 Finally, in lines 14-17, we create the task configuration with the id *foo* representing
 the function *multiply_and_add*. It expects two *input* data nodes and two *output* data nodes.
-
-[:material-arrow-right: The next section introduces the scenario configuration](../TODO%20configuration/scenario-config.md).
