@@ -114,4 +114,4 @@ definition. To create and submit scenarios, you need to:
     [Taipy GUI](../../gui/index.md). The [scenario viewer](viselemts/scenario.md) is
     designed for this purpose.
 
-Please refer to the [hello world](hello_world.md) page to get a basic example.
+Please refer to the [hello world](hello-world.md) page to get a basic example.

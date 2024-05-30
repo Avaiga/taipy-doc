@@ -1,16 +1,20 @@
-The [Entities' creation](scenario-creation.md) section provides documentation on `Sequence^` creation. Now
-that we know how to create a new `Sequence^`, this section focuses on describing the sequence's attributes
-and utility methods.
+This page provides documentation on `Sequence^` management.
 
-In this section, it is assumed that the <a href="../code-example/my_config.py" download>`my_config.py`</a>
-module contains an already implemented configuration.
+TODO:
+What is a sequence?
+
+# Sequence creation
+
+TODO
+- Main principle
+- Through scenario config Cross-ref to the scenario configuration
+- Cross-ref to the scenario index
 
 # Sequence attributes
 
-A sequence is identified by a unique identifier `id` that Taipy generates. A sequence also holds
-various properties accessible as an attribute of the sequence:
-
-add data_nodes, parent_ids
+A sequence is identified by a unique identifier `id` that Taipy generates.
+A sequence also holds various properties accessible as an attribute of the
+sequence:
 
 - _**subscribers**_: The list of Tuples (callback, params) representing the subscribers.
 - _**properties**_: The complete dictionary of the sequence properties. It includes a copy of the properties of
@@ -21,7 +25,7 @@ add data_nodes, parent_ids
     data node's _config_id_ (while the value is the data node itself).
 - _**owner_id**_: The identifier of the owner, which can be a scenario, cycle, or None.
 - _**version**_: The string indicates the application version of the sequence to instantiate. If not provided,
-  the current version is used. For more details, refer to [version management](../versioning/index.md).
+  the current version is used. For more details, refer to [version management](../../versioning/index.md).
 - Each property of the _**properties**_ dictionary is also directly exposed as an attribute.
 - Each nested entity is also exposed as an attribute of the sequence. The attribute name corresponds to the
   *config_id* of the nested entity.

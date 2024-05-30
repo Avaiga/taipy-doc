@@ -108,10 +108,9 @@ nav:
       - "Scenario and Data Management":
         - "Scenario and Data Management": manuals/new-user-manual/sdm/index.md
         - "Data node":
-          - "Data node": manuals/new-user-manual/data-integration/data-node-usage.md
-          - "Data node config": manuals/new-user-manual/data-integration/data-node-config.md
-          - "Data node selector": manuals/new-user-manual/data-integration/data-node-usage.md
-          - "Data node viewer": manuals/new-user-manual/data-integration/data-node-usage.md
+          - "Data node": manuals/new-user-manual/sdm/data-node/index.md
+          - "Data node selector": manuals/new-user-manual/sdm/data-node/data-node-selector.md
+          - "Data node viewer": manuals/new-user-manual/sdm/data-node/data-node-viewer.md
         - "Task":
           - "Task": manuals/new-user-manual/sdm/task/index.md
           - "Task config": manuals/new-user-manual/sdm/task-config.md
