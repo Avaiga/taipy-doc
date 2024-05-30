@@ -73,6 +73,7 @@ nav:
         - "Callbacks": manuals/new-user-manual/gui/callbacks.md
         - "Pages": manuals/new-user-manual/gui/pages/index.md
         - "Layout":
+          - "Layout": manuals/new-user-manual/gui/layout/index.md
           - "Blocks": manuals/new-user-manual/gui/layout/blocks.md
           - "Styling":
               - manuals/new-user-manual/gui/layout/styling/index.md
@@ -105,14 +106,27 @@ nav:
         - "Scenarios comparators": manuals/new-user-manual/what-if-analysis/scenario-comparators.md
 
       - "Scenario and Data Management":
-        - "Scenario and Data Management": manuals/new-user-manual/scenario-mgt/index.md
-        - "Data node": manuals/new-user-manual/data-integration/data-node-usage.md
-        - "Task": manuals/new-user-manual/scenario-mgt/task-mgt.md
-        - "Scenario": manuals/new-user-manual/scenario-mgt/scenario-mgt.md
-        - "Sequence": manuals/new-user-manual/scenario-mgt/sequence-mgt.md
-        - "Cycle": manuals/new-user-manual/scenario-mgt/cycle-mgt.md
-        - "Job": manuals/new-user-manual/scenario-mgt/job-mgt.md
-        - "Submission": manuals/new-user-manual/scenario-mgt/submission-mgt.md
+        - "Scenario and Data Management": manuals/new-user-manual/sdm/index.md
+        - "Data node":
+          - "Data node": manuals/new-user-manual/data-integration/data-node-usage.md
+          - "Data node config": manuals/new-user-manual/data-integration/data-node-config.md
+          - "Data node selector": manuals/new-user-manual/data-integration/data-node-usage.md
+          - "Data node viewer": manuals/new-user-manual/data-integration/data-node-usage.md
+        - "Task":
+          - "Task": manuals/new-user-manual/sdm/task/index.md
+          - "Task config": manuals/new-user-manual/sdm/task-config.md
+        - "Scenario":
+          - "Scenario": manuals/new-user-manual/sdm/scenario/index.md
+          - "Scenario config": manuals/new-user-manual/sdm/scenario/scenario-config.md
+          - "Scenario viewer": manuals/new-user-manual/sdm/scenario/scenario-viewer.md
+          - "Scenario selector": manuals/new-user-manual/sdm/scenario/scenario-selector.md
+          - "Scenario DAG": manuals/new-user-manual/sdm/scenario/scenario-dag.md
+        - "Job":
+          - "Job": manuals/new-user-manual/sdm/job/index.md
+          - "Job": manuals/new-user-manual/sdm/job/job-selector.md
+        - "Submission": manuals/new-user-manual/sdm/submission/index.md
+        - "Sequence": manuals/new-user-manual/sdm/sequence/index.md
+        - "Cycle": manuals/new-user-manual/sdm/cycle/index.md
 
       - "Configuration":
         - "Configuration": manuals/new-user-manual/configuration/index.md

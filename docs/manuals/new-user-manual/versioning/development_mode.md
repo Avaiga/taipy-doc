@@ -10,7 +10,7 @@ In the following, we consider a basic Taipy Core application `main.py`:
 
 ```python linenums="1" title="main.py"
 {%
-include-markdown "./code_example/main.py"
+include-markdown "./code-example/main.py"
 comments=false
 %}
 ```

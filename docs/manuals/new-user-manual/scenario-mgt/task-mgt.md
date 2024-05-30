@@ -1,7 +1,7 @@
 Tasks get created when scenarios are created. Please refer to the
 [Entities' creation](scenario-creation.md) section for more details.
 
-In this section, it is assumed that <a href="../code_example/my_config.py" download>`my_config.py`</a>
+In this section, it is assumed that <a href="../code-example/my_config.py" download>`my_config.py`</a>
 module contains a Taipy configuration already implemented.
 
 # Task attributes
@@ -20,7 +20,7 @@ A task also holds various properties accessible as an attribute of the task:
   The function returns as many parameters as there are data nodes in the *output* attribute. Each
   *function*'s returned value corresponds to the parameter of an output data node `write()` method.
 - _**version**_: The string indicates the application version of the task to instantiate.
-  If not provided, the current version is used. Refer to the [version management](../sdm/versioning/index.md)
+  If not provided, the current version is used. Refer to the [version management](../versioning/index.md)
   page for more details.
 - _**skippable**_: Boolean attribute indicating if a task execution can be skipped when all output
   data nodes are up-to-date (see the *validity_period* attribute in the

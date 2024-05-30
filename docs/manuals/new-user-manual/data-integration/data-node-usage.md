@@ -21,7 +21,7 @@ A data node also holds various properties and attributes accessible through the 
 - _**validity_period**_: The duration since the last edit date for which the
     data node can be considered up-to-date. Once the validity period has passed,
     the data node is considered stale and relevant tasks will run even if they
-    are skippable (see the [Task management page](../scenario-mgt/task-mgt.md)
+    are skippable (see the [Task management page](../sdm/task/task-usage.md)
     for more details).
     If *validity_period* is set to None, the data node is always up-to-date.
 - _**edit_in_progress**_: The boolean flag signals if the data node is locked
@@ -41,7 +41,7 @@ part of a scenario.
 The second method is creating a scenario via the `taipy.create_scenario()^` method. This
 method takes a scenario configuration as a parameter and returns the created scenario,
 and all data nodes that are related to the scenario will be built alongside the scenario.
-Please refer to the [Scenario management section](../scenario-mgt/index.md) for more
+Please refer to the [Scenario management section](../sdm/scenario/scenario-usage.md) for more
 details on scenarios.
 
 !!! example
@@ -665,7 +665,7 @@ examples will write to the SQL Table data node:
 A SQL data node is designed to give the user more flexibility on how to
 read and write to SQL table (or multiple SQL tables).
 
-Let's consider the *orders_cfg* in <a href="../code_example/my_config.py" download>`my_config.py`</a>
+Let's consider the *orders_cfg* in <a href="../code-example/my_config.py" download>`my_config.py`</a>
 which configures a SQL data node.
 
 When reading from a SQL data node, Taipy executes the read query and returns the data of the SQL

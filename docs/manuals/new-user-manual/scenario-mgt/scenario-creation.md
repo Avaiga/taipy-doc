@@ -1,4 +1,4 @@
-In this section, it is assumed that <a href="../code_example/my_config.py" download>`my_config.py`</a>
+In this section, it is assumed that <a href="../code-example/my_config.py" download>`my_config.py`</a>
 module contains a Taipy configuration already implemented.
 
 Scenarios are the most used entities in Taipy. The `taipy.create_scenario()^` function can be used to create a new
@@ -38,7 +38,7 @@ Three parameters can be given to the scenario creation method :
 !!! example
 
     === "Scenario creation with parameters"
-        Using the <a href="../code_example/my_config.py" download>`my_config.py`</a> module, here is an example of how to create a scenario.
+        Using the <a href="../code-example/my_config.py" download>`my_config.py`</a> module, here is an example of how to create a scenario.
 
         ```python  linenums="1"
             import taipy as tp

@@ -1,7 +1,7 @@
 The [previous section](scenario-creation.md) provided documentation on `Scenario^` creation. Now that we know how to
 create a new `Scenario^`, this section will describe the scenario's attributes and the various utility methods.
 
-In this section, it is assumed that the <a href="../code_example/my_config.py" download>`my_config.py`</a>
+In this section, it is assumed that the <a href="../code-example/my_config.py" download>`my_config.py`</a>
 module contains a Taipy configuration already implemented.
 
 # Scenario attributes

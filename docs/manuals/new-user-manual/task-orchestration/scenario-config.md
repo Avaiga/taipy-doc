@@ -5,7 +5,7 @@ orchestration.
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/scenario-config/scenario-config-from-task-cfg.py"
+include-markdown "./code-example/scenario-config/scenario-config-from-task-cfg.py"
 comments=false
 %}
 ```
@@ -36,7 +36,7 @@ already been created:
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/scenario-config/with-sequences.py"
+include-markdown "./code-example/scenario-config/with-sequences.py"
 comments=false
 %}
 ```
@@ -45,7 +45,7 @@ An alternative way to add sequences to a scenario configuration is to use the `a
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/scenario-config/alternative-with-sequences.py"
+include-markdown "./code-example/scenario-config/alternative-with-sequences.py"
 comments=false
 %}
 ```
@@ -54,7 +54,7 @@ We can also remove sequences after providing them in your scenario configuration
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/scenario-config/alternative-with-sequences.py"
+include-markdown "./code-example/scenario-config/alternative-with-sequences.py"
 comments=false
 %}
 ```

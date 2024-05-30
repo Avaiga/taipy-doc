@@ -14,7 +14,7 @@ data node modifications.
 
 ```python
 {%
-include-markdown "./code_example/data-node-history/data-node-history-example.py"
+include-markdown "./code-example/data-node-history/data-node-history-example.py"
 comments=false
 %}
 ```
@@ -79,7 +79,7 @@ the data node viewer.
 
 Another way to write a data node is to execute a task that has the data node as
 output. If you are not yet familiar with the concepts of job, task or scenario,
-you can refer to the [Scenario Management](../scenario-mgt/index.md) section.
+you can refer to the [Task orchestration](../task-orchestration/index.md) section.
 
 When a data node is written by a job execution, the job id is automatically added
 to the edit. Executing a Job results in adding an edit to the output data nodes

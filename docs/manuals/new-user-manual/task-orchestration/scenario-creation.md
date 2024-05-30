@@ -27,7 +27,7 @@ Three parameters can be given to the scenario creation method :
 
         ```python
         {%
-        include-markdown "./code_example/scenario-creation/scenario-creation.py"
+        include-markdown "./code-example/scenario-creation/scenario-creation.py"
         comments=false
         %}
         ```
@@ -39,7 +39,7 @@ Three parameters can be given to the scenario creation method :
 
         ```python
         {%
-        include-markdown "./code_example/scenario-creation/scenario-creation-with-params.py"
+        include-markdown "./code-example/scenario-creation/scenario-creation-with-params.py"
         comments=false
         %}
         ```

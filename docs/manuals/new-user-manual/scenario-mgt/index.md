@@ -1,6 +1,6 @@
 Motivation for scenario management
 
-# Scenario
+# Scenario and Data management
 
 Taipy provides the key concept of *Scenario*. Among other functionalities, a *Scenario*
 represents an instance of a data science problem with its datasets (modeled as *Data nodes* in Taipy)

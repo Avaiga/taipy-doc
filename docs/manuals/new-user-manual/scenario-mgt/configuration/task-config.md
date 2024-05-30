@@ -15,7 +15,7 @@ Here is a simple example:
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/task_cfg/task-config_simple.py"
+include-markdown "./code-example/task_cfg/task-config_simple.py"
 comments=false
 %}
 ```
@@ -39,7 +39,7 @@ lists of `DataNodeConfig^` objects.
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/task_cfg/task-config_multiple.py"
+include-markdown "./code-example/task_cfg/task-config_multiple.py"
 comments=false
 %}
 ```

@@ -66,16 +66,16 @@ production-ready applications with ease for their end-users. Here are some key b
     tasks, your end-users can run their data processing pipelines smoothly and quickly while
     minimizing resource costs. For more details on how to create, submit and manage scenarios,
     see the [scenario creation](scenario-creation.md), [scenario submission](scenario-execution.md),
-    [scenario management](../scenario-mgt/index.md) pages.
+    [scenario management](../sdm/scenario/index.md) pages.
 
 3. **Taipy visual elements**:
     Benefit from a comprehensive set of visual elements to empower end users just in one line
     of code. Manage, display, edit, submit scenarios in a user-friendly graphical interface.
-    For more details, see the [scenario selector](viselemts/scenario_selector.md),
-    the [scenario viewer](viselemts/scenario.md), and the [scenario DAG](viselemts/dag.md)
+    For more details, see the [scenario selector](../sdm/scenario/scenario-selector.md),
+    the [scenario viewer](../sdm/scenario/scenario-viewer.md), and the [scenario DAG](../sdm/scenario/scenario-dag.md)
     pages.<br>
     A job selector is also available to monitor the jobs (task executions) and the scenario
-    submissions. For more details, see the [job selector](viselemts/job_selector.md) page.
+    submissions. For more details, see the [job selector](../sdm/job/job-selector.md) page.
 
 4.  **Integration with Existing Tools:**
     Integrate seamlessly with any Python library or any external model such as

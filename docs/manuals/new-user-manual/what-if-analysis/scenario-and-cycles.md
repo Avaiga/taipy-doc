@@ -16,7 +16,8 @@ each one based on a different data version.
 *Scenarios* can can be used for what-if analysis, A/B testing, and comparing
 different business strategies over specific time periods (called `Cycle^`) or conditions.
 
-For more details on scenarios, please refer to the [Scenario Management](../scenario-mgt/index.md)
+For more details on scenarios, please refer to the
+[Scenario and Data Management](../sdm/index.md)
 page.
 
 # What is a Data node Scope?
@@ -66,12 +67,12 @@ To create alternative data nodes with different scopes, you need to:
 
 2. Configure the scenarios with the data node configurations as additional data nodes using
     the `Config.configure_scenario()^` method.<br>
-    For more details, see the [scenario configuration](../scenario-mgt/scenario-config.md)
+    For more details, see the [scenario configuration](../sdm/scenario/scenario-config.md)
     page.
 
 3. Instantiate multiple scenarios using `create_scenario()^` function to create alternative
     data nodes with different scopes.<br>
-    For more details, see the [scenario usage](../scenario-mgt/scenario-mgt.md)
+    For more details, see the [scenario](../sdm/scenario/index.md)
     page.
 
 # Example
@@ -116,7 +117,7 @@ method allows you to specify the frequency and returns the scenario configuratio
 !!! note
     This example only have additional data node configurations. Note that you can also
     add data node configurations along with task configurations if needed.<br>
-    For more details, see the [scenario configuration](../scenario-mgt/scenario-config.md)
+    For more details, see the [scenario configuration](../sdm/scenario/scenario-config.md)
     page.
 
 ## Scenario Instantiation

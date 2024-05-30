@@ -2,7 +2,7 @@ The [Entities' creation](scenario-creation.md) section provides documentation on
 that we know how to create a new `Sequence^`, this section focuses on describing the sequence's attributes
 and utility methods.
 
-In this section, it is assumed that the <a href="../code_example/my_config.py" download>`my_config.py`</a>
+In this section, it is assumed that the <a href="../code-example/my_config.py" download>`my_config.py`</a>
 module contains an already implemented configuration.
 
 # Sequence attributes
@@ -21,7 +21,7 @@ add data_nodes, parent_ids
     data node's _config_id_ (while the value is the data node itself).
 - _**owner_id**_: The identifier of the owner, which can be a scenario, cycle, or None.
 - _**version**_: The string indicates the application version of the sequence to instantiate. If not provided,
-  the current version is used. For more details, refer to [version management](../sdm/versioning/index.md).
+  the current version is used. For more details, refer to [version management](../versioning/index.md).
 - Each property of the _**properties**_ dictionary is also directly exposed as an attribute.
 - Each nested entity is also exposed as an attribute of the sequence. The attribute name corresponds to the
   *config_id* of the nested entity.

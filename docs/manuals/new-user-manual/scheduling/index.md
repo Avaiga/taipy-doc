@@ -9,13 +9,13 @@ the capabilities related to scenario management and job execution. It is assumed
 [Taipy Core entities](../entities/index.md) described in a previous chapter.
 
 Let’s assume also that the configuration represented in the picture below is implemented in the
-module <a href="./code_example/my_config.py" download>`my_config.py`</a>.
+module <a href="./code-example/my_config.py" download>`my_config.py`</a>.
 
 === "Module my_config.py"
 
     ```python linenums="1"
     {%
-    include-markdown "./code_example/my_config.py"
+    include-markdown "./code-example/my_config.py"
     comments=false
     %}
     ```

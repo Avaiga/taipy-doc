@@ -5,7 +5,7 @@ the application is stable and running in a production environment.
 In the following, we consider the basic Taipy Core application `main.py` for all our examples:
 ```python linenums="1" title="main.py"
 {%
-include-markdown "./code_example/main.py"
+include-markdown "./code-example/main.py"
 comments=false
 %}
 ```
@@ -100,7 +100,7 @@ Let's assume multiple changes have been made to the configuration in `main.py`.
 
 ```python linenums="1" title="main.py"
 {%
-include-markdown "./code_example/main_with_multiple_changes.py"
+include-markdown "./code-example/main_with_multiple_changes.py"
 comments=false
 %}
 ```

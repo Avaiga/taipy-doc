@@ -112,7 +112,7 @@ In line 8, we use the same scenario configuration to instantiate a second scenar
 it and print the result written in its output data node.
 
 Here is the complete python code corresponding to the example:
-<a href="./code_example/hello-world/hello-world.py" download>`hello-world.py`</a>
+<a href="./code-example/hello-world/hello-world.py" download>`hello-world.py`</a>
 
 And here is the expected output.
 

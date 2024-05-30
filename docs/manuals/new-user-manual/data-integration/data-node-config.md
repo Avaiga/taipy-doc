@@ -10,7 +10,7 @@ To create a `DataNodeConfig^` use the function `Config.configure_data_node()^`:
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_simple.py"
+include-markdown "./code-example/data-node-config/data-node-config_simple.py"
 comments=false
 %}
 ```
@@ -56,7 +56,7 @@ The attributes available on data node configuration are:
 **Simple data node configuration:**
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_example_1.py"
+include-markdown "./code-example/data-node-config/data-node-config_example_1.py"
 comments=false
 %}
 ```
@@ -67,7 +67,7 @@ and the *storage_type* is set to the default value "pickle". An optional custom 
 **Advanced data Node configuration:**
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_example_2.py"
+include-markdown "./code-example/data-node-config/data-node-config_example_2.py"
 comments=false
 %}
 ```
@@ -123,7 +123,7 @@ parameters can be provided.
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_pickle.py"
+include-markdown "./code-example/data-node-config/data-node-config_pickle.py"
 comments=false
 %}
 ```
@@ -170,7 +170,7 @@ can be provided:
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_generic-text.py"
+include-markdown "./code-example/data-node-config/data-node-config_generic-text.py"
 comments=false
 %}
 ```
@@ -194,7 +194,7 @@ custom delimiter when writing and reading a CSV file.
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_generic-csv.py"
+include-markdown "./code-example/data-node-config/data-node-config_generic-csv.py"
 comments=false
 %}
 ```
@@ -204,7 +204,7 @@ preparation:
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_generic-data-prep.py"
+include-markdown "./code-example/data-node-config/data-node-config_generic-data-prep.py"
 comments=false
 %}
 ```
@@ -252,7 +252,7 @@ provided:
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_csv.py"
+include-markdown "./code-example/data-node-config/data-node-config_csv.py"
 comments=false
 %}
 ```
@@ -320,7 +320,7 @@ parameters are provided.
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_excel.py"
+include-markdown "./code-example/data-node-config/data-node-config_excel.py"
 comments=false
 %}
 ```
@@ -406,7 +406,7 @@ database engine is `mssql` (short for Microsoft SQL).
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_sql-table_with_mssql_engine.py"
+include-markdown "./code-example/data-node-config/data-node-config_sql-table_with_mssql_engine.py"
 comments=false
 %}
 ```
@@ -424,7 +424,7 @@ In the next example, we configure a *SQL table* data node with the database engi
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_sql-table_with_sqlite_engine.py"
+include-markdown "./code-example/data-node-config/data-node-config_sql-table_with_sqlite_engine.py"
 comments=false
 %}
 ```
@@ -506,7 +506,7 @@ database engine is `mssql` (short for Microsoft SQL).
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_sql_with_mssql_engine.py"
+include-markdown "./code-example/data-node-config/data-node-config_sql_with_mssql_engine.py"
 comments=false
 %}
 ```
@@ -536,7 +536,7 @@ In the next example, we configure a *SQL table* data node with the database engi
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_sql_with_sqlite_engine.py"
+include-markdown "./code-example/data-node-config/data-node-config_sql_with_sqlite_engine.py"
 comments=false
 %}
 ```
@@ -579,7 +579,7 @@ provided:
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_json.py"
+include-markdown "./code-example/data-node-config/data-node-config_json.py"
 comments=false
 %}
 ```
@@ -597,7 +597,7 @@ and [dataclass](https://docs.python.org/3/library/dataclasses.html) object.
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_json-with-encoder.py"
+include-markdown "./code-example/data-node-config/data-node-config_json-with-encoder.py"
 comments=false
 %}
 ```
@@ -699,7 +699,7 @@ section, the following parameters can be provided:
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_parquet-simple.py"
+include-markdown "./code-example/data-node-config/data-node-config_parquet-simple.py"
 comments=false
 %}
 ```
@@ -709,7 +709,7 @@ In lines 3-5, we configure a basic Parquet data node. The only two required para
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_parquet-complete.py"
+include-markdown "./code-example/data-node-config/data-node-config_parquet-complete.py"
 comments=false
 %}
 ```
@@ -773,7 +773,7 @@ section, multiple parameters can be provided.
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_mongo-collection.py"
+include-markdown "./code-example/data-node-config/data-node-config_mongo-collection.py"
 comments=false
 %}
 ```
@@ -789,7 +789,7 @@ In this example, we configure a *mongo_collection* data node with the id "histor
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_mongo-complete.py"
+include-markdown "./code-example/data-node-config/data-node-config_mongo-complete.py"
 comments=false
 %}
 ```
@@ -839,7 +839,7 @@ In this example, we configure an *s3_object* data node with the id "my_s3_object
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config-aws-s3.py"
+include-markdown "./code-example/data-node-config/data-node-config-aws-s3.py"
 comments=false
 %}
 ```
@@ -858,7 +858,7 @@ provided:
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_memory.py"
+include-markdown "./code-example/data-node-config/data-node-config_memory.py"
 comments=false
 %}
 ```
@@ -894,7 +894,7 @@ configuration will:
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config_default.py"
+include-markdown "./code-example/data-node-config/data-node-config_default.py"
 comments=false
 %}
 ```
@@ -942,7 +942,7 @@ method. This method accepts the following parameters:
 
 ```python linenums="1"
 {%
-include-markdown "./code_example/data-node-config/data-node-config-from-another-configuration.py"
+include-markdown "./code-example/data-node-config/data-node-config-from-another-configuration.py"
 comments=false
 %}
 ```

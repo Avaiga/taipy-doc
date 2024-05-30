@@ -23,7 +23,7 @@ To see how you can run different Taipy services, please refer to the
 
     After running the Core service, all configuration are blocked from update.
 
-In this section, it is assumed that <a href="../code_example/my_config.py" download>`my_config.py`</a>
+In this section, it is assumed that <a href="../code-example/my_config.py" download>`my_config.py`</a>
 module contains a Taipy configuration already implemented.
 
 To execute a scenario, you need to call the `taipy.submit()^` function. It returns a `Submission^` object containing

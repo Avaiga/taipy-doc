@@ -10,7 +10,7 @@ In addition to holding data nodes, *scenarios* can be attached to a `Cycle^` to 
 business cases. This is ideal for time-based analyses like monthly forecasts, weekly
 results, daily reports, etc.
 
-For more details on scenarios, please refer to the [Scenario Management](../scenario-mgt/index.md)
+For more details on scenarios, please refer to the [Scenario and Data Management](../sdm/index.md)
 page.
 
 # Motivation and advantages
@@ -52,13 +52,13 @@ Here is the main principle:
 2. **Configuring Scenarios**: A `ScenarioConfig` is a configuration object used to instantiate
     *scenarios*. It encapsulates scenario-specific settings such as data node configurations,
     *task* configurations, scenario comparators, or frequency for cycle management.<br>
-    For more details, see the [scenario configuration](../scenario-mgt/scenario-config.md)
+    For more details, see the [scenario configuration](../sdm/scenario/scenario-config.md)
     page.
 
 3. **Instantiating and comparing Scenarios**: At runtime, an end user can create as many new
     *scenarios* as he/she wants from the same `ScenarioConfig`. Each one contains its own set
     of *data nodes*. This allows an end user to compare the scenarios' data.<br>
-    For more details, see the [scenario configuration](../scenario-mgt/scenario-mgt.md)
+    For more details, see the [scenario](../sdm/scenario/index.md)
     page.
 
 

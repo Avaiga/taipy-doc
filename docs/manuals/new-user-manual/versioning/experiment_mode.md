@@ -20,7 +20,7 @@ In the following, we consider a basic Taipy Core application `main.py`:
 
 ```python linenums="1" title="main.py"
 {%
-include-markdown "./code_example/main.py"
+include-markdown "./code-example/main.py"
 comments=false
 %}
 ```
@@ -115,7 +115,7 @@ Let's assume a small change has been made to the configuration in `main.py`. A c
 
 ```python linenums="1" title="main.py"
 {%
-include-markdown "./code_example/main_with_small_change.py"
+include-markdown "./code-example/main_with_small_change.py"
 comments=false
 %}
 ```
