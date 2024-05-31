@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 A `Task^` is a runnable Python function provided by the developer. It represents one of the
 steps that the developer wants to implement in her sequence.
 

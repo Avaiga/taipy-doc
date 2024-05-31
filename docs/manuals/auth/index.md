@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 !!! warning "Available in Taipy Enterprise edition"
 
     This chapter is relevant only to the Enterprise edition of Taipy.

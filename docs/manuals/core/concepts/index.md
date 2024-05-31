@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 Taipy Core is an application builder designed to help Python developers turn their data algorithms
 into an interactive production-ready data-driven application. Taipy Core provides the necessary
 concepts for modeling, executing, and monitoring algorithms. The main Taipy concept to model an

@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 The `Config^` class is a singleton as the entry point for the Taipy Core configuration. It is accessible
 using the following import:
 

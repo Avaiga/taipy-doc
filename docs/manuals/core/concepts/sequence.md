@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 A `Sequence^` is designed to model an algorithm. It represents a direct acyclic graph of input, intermediate, and output
 data nodes linked together by tasks. A *sequence* is a set of tasks designed to perform functions.
 

@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 Data applications are often used to solve business problems that operate periodically (i.e. in time cycles).
 
 Examples:

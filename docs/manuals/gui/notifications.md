@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 Taipy provides a way to inform users that some action is taking place
 as an informative message that does not impact the user interaction.
 

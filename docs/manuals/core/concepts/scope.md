@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 The `Scope^` of a data node is an enum among the following values :
 
 - `Scope.SCENARIO` (Default value)

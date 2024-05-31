@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 A task configuration is necessary to instantiate a [Task](../concepts/task.md). To create a
 `TaskConfig^`, you can use the `Config.configure_task()^` method with the following parameters:
 

@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 The Taipy Core package is a Python library designed to build powerful and customized data-driven
 back-end applications. It provides the necessary tools to help Python developers transform their
 algorithms into a complete back-end application. It brings algorithm management to another level:
