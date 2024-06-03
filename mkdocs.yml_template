@@ -210,6 +210,7 @@ nav:
       - "TalkToTaipy" : gallery/llm/6_talk_to_taipy/index.md
       - "Sentiment Analysis": gallery/llm/sentiment_analysis/index.md
       - "Tweet Generation": gallery/llm/tweet_generation/index.md
+      - "Vision ChatBot": gallery/llm/7_vision_chatbot/index.md
     - "Visualization":
       - "Visualization": gallery/visualization/index.md
       - "COVID Dashboard": gallery/visualization/2_covid_dashboard/index.md
