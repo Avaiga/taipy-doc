@@ -809,6 +809,45 @@ in the control definition:
         ...
         tgb.table("{data}", style={lambda s, idx, r: "blue-cell" if idx % 2 == 0 else "red-cell"}) />
         ```
+## Styling column
+
+To style a specific column, you need to modify the example codes of [Styling rows](#styling-rows) 
+
+Here is how a column styling function can be defined:
+
+```python
+def even_odd_style(_1, _2, index, _3, _4, _5):
+    if index % 2:
+        return "blue-cell"
+    else:
+        return "red-cell"
+```
+
+Here is modified CSS content:
+
+```css
+.blue-cell {
+    color: white;
+    background-color: blue;
+}
+.red-cell {
+    color: yellow;
+    background-color: red;
+}
+```
+
+To apply the style to a specific column, we need to specify the column in the style property.  
+
+!!! taipy-element
+    default={data}
+    style[y1]:f=even_odd_style
+
+The resulting display will be what we expected:
+<figure class="tp-center">
+    <img src="../table-columnstyle-d.png" class="visible-dark"  width="50%"/>
+    <img src="../table-columnstyle-l.png" class="visible-light" width="50%"/>
+    <figcaption>Styling the column</figcaption>
+</figure>
 
 ## Aggregation
 
