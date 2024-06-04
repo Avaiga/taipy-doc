@@ -39,6 +39,7 @@ nav:
       - "Long Running Callbacks": tutorials/visuals/4_long_callbacks/index.md
       - "Real-time data visualization": tutorials/visuals/5_multithreading/index.md
       - "Stylekit": tutorials/visuals/6_css_style_kit/index.md
+      - "Multi-user": tutorials/visuals/7_multi_user/index.md
     - "Scenario Management":
       - "Scenario Management": tutorials/scenario_management/index.md
       - "Scenarios": tutorials/scenario_management/1_scenarios/index.md
