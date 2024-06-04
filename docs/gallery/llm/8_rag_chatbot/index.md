@@ -3,7 +3,7 @@ title: RAG Chatbot
 category: llm
 data-keywords: vizelement ai
 short-description: A chatbot to ask questions about pdf files using RAG
-img: 7_vision_chatbot/images/rag_screen.png
+img: 8_rag_chatbot/images/rag_screen.png
 ---
 This demo showcases Taipy's ability to enable end-users to run inference using LLMs. 
 Here, we use Langchain to query Mistral's LLM model hosted on HuggingFace to ask questions 
