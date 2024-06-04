@@ -606,8 +606,8 @@ The resulting image looks like this:
 The example above had only six lines of data. If we change the *x_range* definition
 to create far more data lines, we come up with a table with much more data to display:
 ```python
-# x_range = [-10, -9.98, ..., 9.98, 10.0] - 1000 x values
-x_range = [round(20*i/1000-10, 2) for i in range(0, 1001)]
+# large_x_range = [-10, -9.98, ..., 9.98, 10.0] - 1000 x values
+large_x_range = [round(20*i/1000-10, 2) for i in range(0, 1001)]
 
 data = {
     "x": large_x_range,
