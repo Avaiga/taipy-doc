@@ -68,16 +68,13 @@ nav:
       - "About Taipy's User Manuals": manuals/new-user-manual/index.md
       - "User interface":
         - "User interface": manuals/new-user-manual/gui/index.md
-        - "Visual elements": manuals/new-user-manual/gui/controls.md
+        - "Visual elements": manuals/new-user-manual/gui/viselements/index.md
+        - "Pages": manuals/new-user-manual/gui/pages/index.md
         - "Variable binding": manuals/new-user-manual/gui/binding.md
         - "Callbacks": manuals/new-user-manual/gui/callbacks.md
-        - "Pages": manuals/new-user-manual/gui/pages/index.md
-        - "Layout":
-          - "Layout": manuals/new-user-manual/gui/layout/index.md
-          - "Blocks": manuals/new-user-manual/gui/layout/blocks.md
-          - "Styling":
-              - manuals/new-user-manual/gui/layout/styling/index.md
-              - "The Stylekit": manuals/new-user-manual/gui/layout/styling/stylekit.md
+        - "Styling":
+            - manuals/new-user-manual/gui/styling/index.md
+            - "The Stylekit": manuals/new-user-manual/gui/styling/stylekit.md
         - "Notifications": manuals/new-user-manual/gui/notifications.md
         - "Extension libraries":
           - "Extension libraries": manuals/new-user-manual/gui/extension/index.md

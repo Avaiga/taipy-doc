@@ -1,0 +1,663 @@
+---
+title: <tt>part</tt>
+hide:
+  - navigation
+---
+
+<!-- Category: blocks -->
+Displays its children in a block.
+
+The `part` block is used to group visual elements into a single element.
+This allows to show or hide them in one action and be placed as a unique element in a
+[`Layout`](layout.md) cell.
+
+There is a simplified Markdown syntax to create a `part`, where the element name is optional:
+
+`<|` just before the end of the line indicates the beginning of a `part` element;
+`|>` at the beginning of a line indicates the end of the `part` definition.
+
+# Properties
+
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+<td nowrap><code id="p-class_name"><u><bold>class_name</bold></u></code><sup><a href="#dv">(&#9733;)</a></sup></td>
+<td><code>str</code><br/><i>dynamic</i></td>
+<td nowrap></td>
+<td><p>A list of CSS class names, separated by white spaces, that will be associated with the generated HTML Element.<br/>These class names are added to the default <code>taipy-part</code>.</p></td>
+</tr>
+<tr>
+<td nowrap><code id="p-render">render</code></td>
+<td><code>bool</code><br/><i>dynamic</i></td>
+<td nowrap>True</td>
+<td><p>If True, this part is visible on the page.<br/>If False, the part is hidden and its content is not displayed.</p></td>
+</tr>
+<tr>
+<td nowrap><code id="p-page">page</code></td>
+<td><code>str</code><br/><i>dynamic</i></td>
+<td nowrap></td>
+<td><p>The page to show as the content of the block (page name if defined or a URL in an <i>iframe</i>).<br/>This should not be defined if <i>partial</i> is set.</p></td>
+</tr>
+<tr>
+<td nowrap><code id="p-height">height</code></td>
+<td><code>str</code><br/><i>dynamic</i></td>
+<td nowrap></td>
+<td><p>The height, in CSS units, of this block.</p></td>
+</tr>
+<tr>
+<td nowrap><code id="p-content">content</code></td>
+<td><code>any</code><br/><i>dynamic</i></td>
+<td nowrap></td>
+<td><p>The content provided to the part. See the documentation section on content providers.</p></td>
+</tr>
+<tr>
+<td nowrap><code id="p-partial">partial</code></td>
+<td><code>Partial</code></td>
+<td nowrap></td>
+<td><p>A Partial object that holds the content of the block.<br/>This should not be defined if <i>page</i> is set.</p></td>
+</tr>
+<tr>
+<td nowrap><code id="p-id">id</code></td>
+<td><code>str</code></td>
+<td nowrap></td>
+<td><p>The identifier that will be assigned to the rendered HTML component.</p></td>
+</tr>
+<tr>
+<td nowrap><code id="p-properties">properties</code></td>
+<td><code>dict[str, any]</code></td>
+<td nowrap></td>
+<td><p>Bound to a dictionary that contains additional properties for this element.</p></td>
+</tr>
+<tr>
+<td nowrap><code id="p-hover_text">hover_text</code></td>
+<td><code>str</code><br/><i>dynamic</i></td>
+<td nowrap></td>
+<td><p>The information that is displayed when the user hovers over this element.</p></td>
+</tr>
+  </tbody>
+</table>
+
+<p><sup id="dv">(&#9733;)</sup><a href="#p-class_name" title="Jump to the default property documentation."><code>class_name</code></a> is the default property for this visual element.</p>
+
+# Details
+
+You can use the `part` block to group several visual elements into a single element. That makes it
+far easier to deal with page layout.
+
+## The *content* property
+
+The value of the [*content*](#p-content) property can be an instance of a specific class from which
+it is possible to generate HTML content. The `part` block can encapsulate this HTML code and allows
+for integrating any third-party content into a Taipy GUI page.
+
+Here is how this property is managed:
+
+- You have an instance of a class (*ContentType*) that holds data you want to create a
+  representation of.<br/>
+  Let's assume that a variable *my_content* stores this instance.
+- In the application page, you create a `part` element that references *my_content* in the value
+  for its [*content*](#p-content) property:
+  ```
+  <|part|content={my_content}|>
+  ```
+- You need a function that transforms that instance into an HTML string that is injected into the
+  final page.<br/>
+  We call such a function a *content provider*. A content provider takes a single argument: an
+  instance of the content type it can transform. It returns a string containing the HTML code,
+  resulting in the transformation of the instance.<br/>
+  In our example, let's assume that this function is called *my_content_provider()*. Its definition
+  must, therefore, be:
+  ```python
+  def my_content_provider(my_instance: ContentType) -> str:
+    ...
+    # Return the transformed 'my_instance' as an HTML string
+    ...
+  ```
+- You must tell Taipy GUI which content provider to use when a `part` element has a specific type
+  set in its *content* property.<br/>
+  Use the static function `Gui.register_content_provider()^` to do this: this function associates a
+  type with its content provider.<br/>
+  In our situation, we would call:
+  ```python
+  Gui.register_content_provider(ContentType, my_content_provider)
+  ```
+
+If you complete all those steps and a part's *content* property is set to an instance of
+*ContentType*, then when needed, Taipy will call the *my_content_provider()* function to generate
+the HTML code and render the part.
+
+Of course, because *content* is a dynamic property, you can create content that updates when some
+variables change. See the [example on custom providers](#integrating-third-party-graphics)  for a
+demonstration of that feature.
+
+!!! note "Predefined Content Providers"
+    Out-of-the-box, Taipy GUI can handle *content* values that are:
+
+    - An instance of the
+      [`matplotlib.figure.Figure`](https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html)
+      class.<br/>
+      The part embeds the Matplotlib image.
+    - An instance of the
+      [`plotly.graph_objs.Figure`](https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html)
+      class.<br/>
+      The part block encapsulates the Plotly figure as an inline frame. This technique is less
+      flexible than using the
+      [*figure* property of the `chart` control](../viselements/chart.md#the-figure-property)
+      because it does not provide callbacks to the application.
+
+# Styling
+
+All the part blocks are generated with the "taipy-part" CSS class. You can use this class
+name to select the part blocks on your page and apply style.
+
+## [Stylekit](../styling/stylekit.md) support
+
+The [Stylekit](../styling/stylekit.md) provides specific classes that you can use to style part
+blocks:
+
+- *align-item-top*<br/>
+  If this part block is inside a [`layout`](layout.md) block, this CSS class aligns the part
+  content to the top of the layout column it belongs to.
+- *align-item-center*<br/>
+  If this part block is inside a [`layout`](layout.md) block, this CSS class vertically aligns
+  the part content to the center of the layout column it belongs to.
+- *align-item-bottom*<br/>
+  If this part block is inside a [`layout`](layout.md) block, this CSS class vertically aligns
+  the part content to the bottom of the layout column it belongs to.
+- *align-item-stretch*<br/>
+  If this part block is inside a [`layout`](layout.md) block, this CSS class 
+  gives the part the same height as the highest item in the row where this part
+  appears in the layout.
+
+The Stylekit also has several classes that can be used to style part blocks,
+as described in the [Styled Sections](../styling/stylekit.md#styled-sections)
+documentation.<br/>
+Because the default property of the *part* block is *class_name*, you can use the
+Markdown short syntax for parts:
+
+```
+<|card|
+...
+(card content)
+...
+|>
+```
+
+Creates a `part` that has the [*card*](../styling/stylekit.md#card) class defined
+in the Stylekit.
+
+# Usage
+
+## Grouping controls
+
+The most straightforward use of the `part` block is to group different visual elements in a single
+element to make it easy to manipulate.
+
+!!! example "Definition"
+    === "Markdown"
+        ```
+        <|
+        ...
+        <|{some_content}|>
+        ...
+        |>
+        ```
+
+    === "HTML"
+        ```html
+        <taipy:part>
+            ...
+            <taipy:text>{some_content}</taipy:text>
+            ...
+        </taipy:part>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.part()
+            tgb.text("{some_content}")
+        ```
+
+## Showing and hiding controls
+
+If you set the [*render*](#p-render) property to False, the `part` is not rendered
+at all:
+
+!!! example "Page content"
+    === "Markdown"
+        ```
+        <|part|don't render|
+        ...
+        <|{some_content}|>
+        ...
+        |>
+        ```
+
+    === "HTML"
+        ```html
+        <taipy:part render="false">
+            ...
+            <taipy:text>{some_content}</taipy:text>
+            ...
+        </taipy:part>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.part(render=False)
+            tgb.text("{some_content}")
+        ```
+
+If the value of [*render*](#p-render) is bound to a Boolean value, the `part` will show or hide its
+elements according to the value of the bound variable.
+
+## Styling parts
+
+The default property name of the `part` block is [*class_name*](#p-class_name). This allows setting
+a CSS class to a `part` with a very simple Markdown syntax:
+
+!!! example "Markdown content"
+    ```
+    <|css-class|
+    ...
+    (part content)
+    ...
+    |>
+    ```
+
+This creates a `part` block that is applied the *css-class* CSS class defined in the
+application stylesheets.
+
+## Part showing a page
+
+The content of the part can be specified as an existing page name or an URL using the *page*
+property.
+
+You can embed an existing Taipy GUI page within another page using the [*page*](#p-page) property,
+setting it to a page name.<br/>
+If your application has registered the *page_name* page, you can show it on another page using the
+following page definition:
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        <|part|page=page_name|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:part page="page_name"/>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.part(page="page_name")
+        ```
+
+You can also embed an external web page, setting the [*page*](#p-page) property to the URL
+(starting with `http://` or `https://`) you want to render:
+
+!!! example "Definition"
+    === "Markdown"
+        ```
+        Here is the Wikipedia home page:
+        <|part|page=https://www.wikipedia.org/|height=500px|>
+        ```
+
+    === "HTML"
+        ```html
+        <p>Here is the Wikipedia home page:</p>
+        <taipy:part page="https://www.wikipedia.org/" height="500px"/>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.html("p", "Here is the Wikipedia home page:")
+        with tgb.part(page="https://www.wikipedia.org/", height="500px")
+
+The resulting page will be displayed as this:
+<figure class="tp-center">
+    <img src="../part-url-d.png" class="visible-dark"  width="80%"/>
+    <img src="../part-url-l.png" class="visible-light" width="80%"/>
+    <figcaption>Embedding an external web page</figcaption>
+</figure>
+
+Note that you may have to tune the value of the [*height*](#p-height) property since the external
+page  controls the layout if you omit it. This would be set to a CSS dimension value (typically
+"100%" when the part appears inside a [`layout`](layout.md) block).
+
+## Part showing a partial
+
+The content of the part can be specified as a `Partial^` instance using the [*partial*](#p-partial)
+property.
+
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        <|part|partial={partial}|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:part partial="{partial}"/>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.part(partial="{partial}")
+        ```
+
+## Integrating a Matplotlib output
+
+We can set the [*content*](#p-content) property to an instance of the `matplotlib.figure.Figure`
+class. As explained in the [section on the *content*](#the-content-property), this class is
+automatically recognized by Taipy GUI, and the Matplotlib output is inserted in the part.
+
+Here is an example, largely inspired by an example of the
+[Matplotlib Gallery](https://matplotlib.org/stable/gallery/lines_bars_and_markers/fill.html).<br/>
+Consider the code below:
+```python
+from matplotlib.figure import Figure
+import numpy as np
+
+def koch_snowflake(order, scale=10):
+    def _complex(order):
+        if order == 0:
+            # initial triangle
+            angles = np.array([0, 120, 240]) + 90
+            return scale / np.sqrt(3) * np.exp(np.deg2rad(angles) * 1j)
+        else:
+            ZR = 0.5 - 0.5j * np.sqrt(3) / 3
+
+            p1 = _complex(order - 1)  # start points
+            p2 = np.roll(p1, shift=-1)  # end points
+            dp = p2 - p1  # connection vectors
+
+            new_points = np.empty(len(p1) * 4, dtype=np.complex128)
+            new_points[::4] = p1
+            new_points[1::4] = p1 + dp / 3
+            new_points[2::4] = p1 + dp * ZR
+            new_points[3::4] = p1 + dp / 3 * 2
+            return new_points
+
+    points = _complex(order)
+    x, y = points.real, points.imag
+    return x, y
+
+figure = Figure(figsize=(5, 5))
+plot = figure.subplots(1, 1)
+x, y = koch_snowflake(4)
+plot.fill(x, y, facecolor='none', edgecolor='purple', linewidth=2)
+```
+The function *koch_snowflake()* computes the points that define the shape of a
+[Koch snowflake](https://en.wikipedia.org/wiki/Koch_snowflake) - a fractal curve.
+
+We then create a `matplotlib.figure.Figure`, stored in *figure*, that displays this shape.
+
+We can define the `part` block that uses this figure with the following:
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        <|part|content={figure}|height=520px|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:part content="{figure}" height="520px"/>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.part(content="{figure}", height="520px")
+        ```
+
+Note that because the part knows nothing about the dimensions of its content, we have to set a
+reasonable and explicit value for the [*height*](#p-height) property.
+
+Here is the result on the page:
+<figure class="tp-center">
+    <img src="../part-content-matplotlib-d.png" class="visible-dark"  width="80%"/>
+    <img src="../part-content-matplotlib-l.png" class="visible-light" width="80%"/>
+    <figcaption>Using the Matplotlib content provider</figcaption>
+</figure>
+
+## Integrating third-party graphics
+
+The value of the [*content*](#p-content) property can be any instance of a class that Taipy GUI
+can use to generate output.<br/>
+We are using the concept of *content providers* to achieve this.
+
+Consider the following code:
+```python
+from io import StringIO
+import math
+
+
+class Spiral:
+    def __init__(self) -> None:
+        self.size = 500  # Size of the shape
+        self.nturns = 5  # Number of full rounds
+        self.points_per_round = 100  # Number of points in one full round
+
+    def get_svg(self) -> str:
+        s = StringIO()
+        # Generate header
+        s.write(
+            f'<svg width="{self.size}" height="{self.size}" '
+            f'viewBox="-{self.size/2} {-self.size/2} {self.size} {self.size}" '
+            'xmlns="http://www.w3.org/2000/svg">'
+            # Start path
+            '<path d="'
+        )
+        theta = 0  # Initial angle
+        d_theta = (
+            2 * math.pi / self.points_per_round
+        )  # Angle increment for each segment
+        initial_radius = 0
+        expansion = 0.025
+        type = "M"  # SVG segment type. Initial 'M' (move) then 'L' (line)
+        for turn in range(self.nturns * self.points_per_round):
+            r = initial_radius + expansion * theta  # Radius at this angle
+            x = self.size * r * math.cos(theta) / 2
+            y = self.size * r * math.sin(theta) / 2
+            s.write(f"{type}{x:.1f} {y:.1f} ")
+            type = "L"
+            theta += d_theta
+        # End path and svg tag
+        s.write('" stroke="red" fill="none"/></svg>')
+        return s.getvalue()
+```
+The class *Spiral* has a method called *get_svg()* that returns the SVG code to display a spiral.
+
+To integrate that SVG element into the `part` and display the spiral, we must create and register
+a content provider for the *Spiral* class.<br/>
+Here is how to do that:
+```python
+def spiral_to_text(spiral: Spiral) -> str:
+    return spiral.get_svg()
+
+Gui.register_content_provider(Spiral, spiral_to_text)
+```
+The *spiral_to_text()* function is the content provider for the class *Spiral*. In this situation,
+it just returns the result of invoking *Spiral.get_svg()* for the object the function has received.
+
+The call to `Gui.register_content_provider()^` tells Taipy GUI to use this content provider when the
+*content* property of a `part` stores a *Spiral* instance.
+
+
+We can create an instance of the *Spiral* class:
+```python
+spiral = create_spiral()
+```
+
+And use the variable *spiral* in the definition of the `part` block:
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        <|part|content={spiral}|height=520px|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:part content="{spiral}" height="520px"/>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.part(content="{spiral}", height="520px")
+        ```
+
+Here is what the result looks like:
+<figure class="tp-center">
+    <img src="../part-content-custom-d.png" class="visible-dark"  width="80%"/>
+    <img src="../part-content-custom-l.png" class="visible-light" width="80%"/>
+    <figcaption>Using a custom content provider</figcaption>
+</figure>
+
+Now, let's improve this example by adding user interaction.<br/>
+We will use a variable called *expansion* to control how fast the spiral grows, initialized to
+the value 25:
+```python
+expansion = 25
+```
+
+We need to change slightly the code of *Spiral* to leverage this parameter:
+```python
+class Spiral:
+    def __init__(self, expansion: int) -> None:
+        self.size = 500  # Size of the shape
+        self.nturns = 5  # Number of full rounds
+        self.points_per_round = 100  # Number of points in one full round
+        self.expansion = expansion
+
+    def get_svg(self) -> str:
+        s = StringIO()
+        # Generate header
+        s.write(
+            f'<svg width="{self.size}" height="{self.size}" '
+            f'viewBox="-{self.size/2} {-self.size/2} {self.size} {self.size}" '
+            'xmlns="http://www.w3.org/2000/svg">'
+            # Start path
+            '<path d="'
+        )
+        theta = 0  # Initial angle
+        d_theta = (
+            2 * math.pi / self.points_per_round
+        )  # Angle increment for each segment
+        initial_radius = 0
+        type = "M"  # SVG segment type. Initial 'M' (move) then 'L' (line)
+        for turn in range(self.nturns * self.points_per_round):
+            r = initial_radius + self.expansion * theta / 1000 # Radius at this angle
+            x = self.size * r * math.cos(theta) / 2
+            y = self.size * r * math.sin(theta) / 2
+            s.write(f"{type}{x:.1f} {y:.1f} ")
+            type = "L"
+            theta += d_theta
+        # End path and svg tag
+        s.write('" stroke="red" fill="none"/></svg>')
+        return s.getvalue()
+```
+*expansion* is now a data member of the class. The radius of the spiral at every angle depends on
+its value.
+
+In the page, add a [`slider`](slider.md) control bound to this variable:
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        <|{expansion}|slider|min=1|max=1000|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:slider min="1" max="1000">{expansion}</taipy:slider>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.slider("{expansion}", min=1, max=1000)
+        ```
+
+
+Now, we modify the definition of the part content to dynamically create a *Spiral* instance with a
+new expansion value when the slider moves:
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        <|part|content={Spiral(expansion)}|height=520px|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:part content="{Spiral(expansion)}" height="520px"/>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.part(content="{Spiral(expansion)}", height="520px")
+        ```
+
+Here are two images resulting from two different slider knob positions:
+<figure class="tp-center">
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <img style="float:left; width: 30%;" src="../part-content-custom2-d.png" class="visible-dark"/>
+        <img style="float:left; width: 30%;" src="../part-content-custom3-d.png" class="visible-dark"/>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <img style="float:left; width: 30%;" src="../part-content-custom2-l.png" class="visible-light"/>
+        <img style="float:left; width: 30%;" src="../part-content-custom3-l.png" class="visible-light"/>
+    </div>
+    <figcaption>Dynamic content</figcaption>
+</figure>

@@ -1,0 +1,14 @@
+A control that provides the user interface for chatting.
+
+# Details
+
+TODO
+
+# Styling
+
+All the date controls are generated with the "taipy-chat" CSS class. You can use this class
+name to select the date selectors on your page and apply style.
+
+# Usage
+
+TODO

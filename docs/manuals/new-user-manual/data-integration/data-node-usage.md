@@ -1686,7 +1686,7 @@ filtered_data = data_node[(data_node[:, 1] == 1550) | (data_node[:, 1] > 2000)]
     Other data types are not supported.
 
 
-# Get parent scenarios, sequences and tasks
+# Get parents
 
 To get the parent entities of a data node (scenarios, sequences, or tasks) you can use either the method
 `DataNode.get_parents()^` or the function `taipy.get_parents()^`. Both return the parents of the data node.

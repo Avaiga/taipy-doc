@@ -1,0 +1,41 @@
+Controls are user interface objects representing data. Users can interact with these controls.
+
+# Standard controls
+
+Standard controls can be used in all situations when a user interface is needed.
+These controls are elements representing generic data.<br/>
+Here, you can find common graphical controls such as push buttons and sliders, as well as more
+advanced graphical controls such as selectors, tables, and charts.
+
+!!! note "Available in Taipy GUI, Taipy Community, and Enterprise editions"
+
+    The controls listed in this section are provided in the
+    [`taipy-gui`](https://pypi.org/project/taipy-gui/) Python package. These controls are
+    also present when [`taipy`](https://pypi.org/project/taipy/) is installed.
+
+Here is the list of all available controls in Taipy:
+
+[standard-TOC]
+
+# Scenario management controls
+
+Some controls are dedicated to Scenario Management. These controls let users select
+Entities and interact with them.
+
+!!! warning "Available in Taipy Community and Enterprise editions"
+
+    The controls listed in this section are available only if the
+    [`taipy`](https://pypi.org/project/taipy/) Python package is installed. These controls are
+    **not** present if only [`taipy-gui`](https://pypi.org/project/taipy-gui/) is installed.
+
+Here is the list of all the scenario management-related controls that are available in Taipy:
+
+[core_TOC]
+
+
+# Blocks controls
+
+Blocks are visual elements that allow for grouping user interface elements.
+Here is the list of all available block elements in Taipy:
+
+[block_TOC]

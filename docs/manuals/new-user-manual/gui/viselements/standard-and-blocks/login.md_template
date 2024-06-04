@@ -1,0 +1,65 @@
+A control that lets users enter their username and password.
+
+If your application needs to authenticate the end user, you can use the `login` control that
+provides the username/password input fields pair, ready to use.
+
+This control stands on its own on an authentication page, and the application should navigate
+to another page when the user has entered his user and password information (or canceled the
+input).
+
+# Details
+
+If the user presses the 'Close' button (the cross at the top-right corner of the control), the
+`on_action` callback is invoked with the two first elements of the array `payload.args`
+(representing the input username and password) set to None.<br/>
+This is how the application can know whether the user tried to provide the username and password
+or if the authentication was canceled.
+
+!!! warning "Using the Taipy Enterprise edition"
+
+    If your application uses the Enterprise edition of Taipy, you can invoke the function
+    `taipy.enterprise.gui.login()^` with the appropriate field to authenticate your session.
+
+# Styling
+
+All the login controls are generated with the "taipy-login" CSS class. You can use this class
+name to select the login controls and apply style.
+
+# Usage
+
+## Typical use
+
+You create a `login` control in a page to check for the user's credentials and navigate to the
+appropriate page afterward.
+
+The control definition can be as simple as:
+!!! taipy-element
+    default=Welcome to Taipy!
+
+With this control, the page will look like this:
+<figure class="tp-center">
+    <img src="../login-init-d.png" class="visible-dark"  width="80%"/>
+    <img src="../login-init-l.png" class="visible-light" width="80%"/>
+    <figcaption>Login control after username and password were provided</figcaption>
+</figure>
+
+You may improve on the following simple code to implement what to do when users interact with
+this control:
+```python
+def on_login(state: State, id, login_args):
+    username, password = login_args["args"][:2]
+    if username is None: # The user canceled the login request
+        return navigate(s, "anonymous")
+
+    # Check whether the username/password is a valid pair
+    # Using Taipy Enterprise edition, you could use:
+    #   credentials = taipy.enterprise.gui.login(state, username, password)
+    ...
+
+    #     # Store the username in the state
+    state.username = username
+    navigate(s, "authenticated")
+```
+
+If the user closes the control, the application opens the *anonymous* page.<br/>
+Otherwise, the *authenticated* page opens, and the *state* has stored the username.

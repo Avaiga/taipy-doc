@@ -1,0 +1,162 @@
+Displays and edits of a data node.
+
+The data node viewer control displays a data node entity's information and lets users edit it.
+
+# Details
+
+The data node viewer displays the attributes of the data node set to the [*data_node*](#p-data_node)
+property:
+<figure class="tp-center">
+  <img src="../data_node-init-d.png" class="visible-dark"  width="70%"/>
+  <img src="../data_node-init-l.png" class="visible-light" width="70%"/>
+  <figcaption>The Data Node viewer</figcaption>
+</figure>
+
+The topmost section shows the data node's label and storage type.<br/>
+The arrow button lets the user collapse or expand the whole control.
+
+The lower section is made of three tabs whose content is described below.
+
+## The 'Data' tab
+
+The section is visible only if the [*show_data*](#p-show_data) property is set to True (which is
+its default value).
+
+In this section, the user can visualize the data referenced by the selected data node and change
+the data interactively.
+
+Depending on the data type the data node uses, there are two display and edit modes.
+
+### Scalar data
+
+When the data node refers to a scalar value, it is displayed as a simple text:
+<figure class="tp-center">
+  <img src="../data_node-data-scalar-d.png" class="visible-dark"  width="70%"/>
+  <img src="../data_node-data-scalar-l.png" class="visible-light" width="70%"/>
+  <figcaption>Scalar value</figcaption>
+</figure>
+
+To edit the data node, the user can click the line where the value is displayed:
+<figure class="tp-center">
+  <img src="../data_node-data-scalar-edit-d.png" class="visible-dark"  width="70%"/>
+  <img src="../data_node-data-scalar-edit-l.png" class="visible-light" width="70%"/>
+  <figcaption>Editing a scalar value</figcaption>
+</figure>
+Note that a 'Comment' field allows the user to explain why this value is changed. This information
+is part of the history of the data node.
+
+When the new value is entered, the user presses the 'Apply' (✓) or the 'Cancel' (⨉) button to
+apply or cancel the change, respectively.
+
+### Tabular data
+
+Tabular data can be represented in tables or charts.<br/>
+The way the data is represented depends on the setting of the representation switch located in the
+top-left corner of the 'Properties' section:
+<figure class="tp-center">
+  <img src="../data_node-data-tabular-switch-d.png" class="visible-dark"  width="70%"/>
+  <img src="../data_node-data-tabular-switch-l.png" class="visible-light" width="70%"/>
+  <figcaption>Data representation switch</figcaption>
+</figure>
+
+In the image above, the switch is set to the 'Table' mode.<br/>
+The other option is the 'Chart' mode.
+
+Tabular data can be edited only in the 'Table' mode, as described in
+[this section](#editing-tabular-data).
+
+#### Table mode
+
+Here is an example of tabular data represented in a table:
+<figure class="tp-center">
+  <img src="../data_node-data-tabular-table-d.png" class="visible-dark"  width="70%"/>
+  <img src="../data_node-data-tabular-table-l.png" class="visible-light" width="70%"/>
+  <figcaption>Tabular data in a table</figcaption>
+</figure>
+
+The 'Columns' drop-down button allows the user to select which dataset columns to represent in the
+table.<br/>
+The 'Reset view' button resets that setting so all columns are visible.
+
+##### Editing tabular data
+
+The tabular mode has an 'Edit data' switch in the top-right corner of the 'Data' section.
+If this switch is turned on, the user can edit the table cells by clicking the relevant pencil
+button next to cell values:
+<figure class="tp-center">
+  <img src="../data_node-data-tabular-edit-d.png" class="visible-dark"  width="70%"/>
+  <img src="../data_node-data-tabular-edit-l.png" class="visible-light" width="70%"/>
+  <figcaption>Editing tabular data</figcaption>
+</figure>
+
+The user will typically edit several cells before quitting the edit mode.<br/>
+When values are correctly updated manually, the user can set a comment (that will appear in the
+data node history) and quit the edit mode.
+
+#### Chart mode
+
+The chart mode displays the data node's referenced data in a chart that can be customized:
+<figure class="tp-center">
+  <img src="../data_node-data-tabular-chart-d.png" class="visible-dark"  width="70%"/>
+  <img src="../data_node-data-tabular-chart-l.png" class="visible-light" width="70%"/>
+  <figcaption>Tabular data in a chart</figcaption>
+</figure>
+
+Several traces can be added (using the '+ Add trace' button), and their respective settings can be
+indicated (in the 'Category', 'x', and 'y' drop-down menus).<br/>
+The user can also indicate that traces should be represented as accumulating values, setting
+the 'Cumulative' switch *on*.<br/>
+Here is an example of a data node that references data with several columns, represented as a
+cumulative area chart:
+<figure class="tp-center">
+  <img src="../data_node-data-tabular-chart-2-d.png" class="visible-dark"  width="70%"/>
+  <img src="../data_node-data-tabular-chart-2-l.png" class="visible-light" width="70%"/>
+  <figcaption>Tabular data in a chart</figcaption>
+</figure>
+
+## The 'Properties' tab
+
+From this tab, you can access the attributes of the data node:
+<figure class="tp-center">
+  <img src="../data_node-properties-d.png" class="visible-dark"  width="70%"/>
+  <img src="../data_node-properties-l.png" class="visible-light" width="70%"/>
+  <figcaption>The Properties section</figcaption>
+</figure>
+
+The label of the data node can be changed using the 'Label' field: click in the value area, change
+the content, then press the 'Apply' button (with the ✓ icon.)<br/>
+To cancel the change, press the 'Cancel' button (with the ⨉ icon).
+
+If the data node has has an owner (a scenario or a cycle) and if the [*show_owner*](#p-show_owner)
+property is set to True (which is its default value), the label of the owning entity appears in the
+'Owner' information line:
+<figure class="tp-center">
+  <img src="../data_node-properties-owner-d.png" class="visible-dark"  width="70%"/>
+  <img src="../data_node-properties-owner-l.png" class="visible-light" width="70%"/>
+  <figcaption>The data node is owned by a scenario</figcaption>
+</figure>
+When the selected data node is owned by a scenario, a button is visible next to the scenario's
+label. This button can be pressed to display the list of the owning scenarios so the user can
+select one from there. As a result, any variable bound to the [*scenario*](#p-scenario) is set to
+the selected scenario entity: the application can use that to update other parts of the page from
+an `on_change` callback.
+
+The section at the bottom lists the custom properties for the selected data node. This is visible
+only if the [*show_properties*](#p-show_properties) property is set to True (which is its default
+value).<br/>
+The user can create new properties by clicking the 'New Property Key' line, providing a property
+name and value, and then pressing the 'Apply' button (with the ✓ icon.).<br/>
+The user can cancel the creation of a new property by pressing the 'Cancel' button (with the ⨉
+icon).<br/>
+The user can delete a property by selecting it and pressing the *trash* button.
+
+## The 'History' tab
+
+The section is visible only if the [*show_history*](#p-show_history) is set to True (which is its
+default value).
+
+In this section, the user has access to the chronological list of changes applied to the selected
+data node.
+
+Each history entry holds the date and time when the change was done and potentially some
+information on the data changes.

@@ -1,0 +1,83 @@
+Displays and modify the definition of a scenario.
+
+# Details
+
+The *scenario control* displays the information stored in a given scenario, lets the user change
+its parameters at runtime, and provides ways to submit it or one of its sequences.
+
+When the [*scenario*](#p-scenario) property is set to a `Scenario^` instance, the control displays
+the information for that scenario.
+
+Here is what the control would look like when representing a scenario entity:
+<figure class="tp-center">
+  <img src="../scenario-init-d.png" class="visible-dark"  width="75%"/>
+  <img src="../scenario-init-l.png" class="visible-light" width="75%"/>
+  <figcaption>Viewing the parameters of a scenario</figcaption>
+</figure>
+
+Next to the scenario's label at the top of the control and if the scenario is *primary* in its
+cycle, there is an icon showing a flag.<br/>
+On the right side of the label, a 'play' button can trigger the scenario submission.
+
+The user can click the scenario label to change it:
+<figure class="tp-center">
+  <img src="../scenario-edit-label-d.png" class="visible-dark"  width="60%"/>
+  <img src="../scenario-edit-label-l.png" class="visible-light" width="60%"/>
+  <figcaption>Editing the scenario label</figcaption>
+</figure>
+
+The user must click the 'check' button to apply the change or the 'cross' button to cancel the
+operation.
+
+The user can see the scenario's tags in the 'Tags' section.<br/>
+To add a tag, enter text in the tags area and press 'Enter'. You can create as many tags as you
+want. When you have created all the tags and want to add those tags to the scenario, press the
+'Apply' button to the right of the tags area.<br/>
+You can cancel your actions by pressing the 'Cancel' button.
+
+The 'Sequences' section presents the potential sequences of the scenario.<br/>
+To add a sequence, press the 'Add +' button. A new sequence is then created, for which you must
+provide a name (note each sequence must have a unique name).<br/>
+To edit a sequence, click anywhere on its row. You can then rename it and select its tasks.<br/>
+To delete a sequence, click the trash icon of its row.
+
+If the scenario has sequences, the user can submit each sequence independently by pressing the
+'Submit' button to the right of the sequence's label.
+
+Users can also add or modify custom properties. Click on an existing property name or value to
+modify it, and the "New Property Key" label or "Value" next to it to create a new custom
+property.<br/>
+Here is what the section looks like when the user requests the creation of a new property:
+<figure class="tp-center">
+  <img src="../scenario-edit-props-d.png" class="visible-dark"  />
+  <img src="../scenario-edit-props-l.png" class="visible-light" />
+  <figcaption>Editing custom properties</figcaption>
+</figure>
+
+To delete a custom property, the user must select it, then press The 'trash' button that appears on
+the right side.
+
+# Usage
+
+## Show or hide sections
+
+A few properties (namely [*show_submit*](#p-show_submit), [*show_delete*](#p-show_delete),
+[*show_config*](#p-show_config), [*show_cycle*](#p-show_cycle), [*show_tags*](#p-show_tags), 
+[*show_properties*](#p-show_properties), [*show_sequences*](#p-show_sequences), and
+[*show_submit_sequences*](#p-show_submit_sequences)) let you customize what sections of the
+`scenario` control are visible.
+
+Here is the definition of such a control where the *tags*, *properties* and *sequences* sections
+are hidden:
+!!! taipy-element
+    default={scenario}
+    show_tags:b_dont=False
+    show_properties:b_dont=False
+    show_sequences:b_dont=False
+
+The control appears as follows, in a more compact manner:
+<figure>
+    <img src="../scenario-flags-d.png" class="visible-dark" />
+    <img src="../scenario-flags-l.png" class="visible-light"/>
+    <figcaption>Hiding some sections</figcaption>
+</figure>
