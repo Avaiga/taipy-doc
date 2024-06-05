@@ -14,14 +14,14 @@ A data node also holds various properties and attributes accessible through the 
     _**last_edit_date**_ value. That means if a file is modified manually or by an
     external process, the _**last_edit_date**_ value is automatically updated
     within Taipy.
-- _**edits**_: The ordered list of `Edit^`s, representing the successive modifications
-    of the data node.
+- _**edits**_: The ordered list of `Edit`s representing the successive modifications
+    of the data node. See the [Edit](data-node-history.md#Edits) section for more details.
 - _**version**_: The string indicates the application version of the data node
     to instantiate. If not provided, the current version is used.
 - _**validity_period**_: The duration since the last edit date for which the
     data node can be considered up-to-date. Once the validity period has passed,
     the data node is considered stale and relevant tasks will run even if they
-    are skippable (see the [Task management page](../sdm/task/task-usage.md)
+    are skippable (see the [Task management page](../sdm/task/index.md)
     for more details).
     If *validity_period* is set to None, the data node is always up-to-date.
 - _**edit_in_progress**_: The boolean flag signals if the data node is locked
@@ -41,8 +41,7 @@ part of a scenario.
 The second method is creating a scenario via the `taipy.create_scenario()^` method. This
 method takes a scenario configuration as a parameter and returns the created scenario,
 and all data nodes that are related to the scenario will be built alongside the scenario.
-Please refer to the [Scenario management section](../sdm/scenario/scenario-usage.md) for more
-details on scenarios.
+See the [Scenario management page](../sdm/scenario/index.md) for more details on scenarios.
 
 !!! example
 

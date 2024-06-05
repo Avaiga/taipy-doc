@@ -69,9 +69,9 @@ The append method can also be used for tabular data nodes with any parameter,
 resulting in the same edit content.
 
 ## Writing from a GUI
-Using the [Data node viewer](viselemts/data_node.md) to write data, an end user
-can easily add a comment to the edit. The edits can be viewed in the history tab of
-the data node viewer.
+Using the [Data node viewer](../gui/viselements/corelements/data_node.md) to write
+data, an end user can easily add a comment to the edit. The edits can be viewed in
+the history tab of the data node viewer.
 
 ![The history tab of a data node viewer](img/data-node-history/data-node-history-example.png){ align=center }
 

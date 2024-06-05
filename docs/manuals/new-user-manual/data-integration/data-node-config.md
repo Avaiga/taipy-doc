@@ -24,9 +24,11 @@ it in the `Config^` singleton.
 The attributes available on data node configuration are:
 
 - _**id**_ (mandatory): A unique and valid Python string identifier of the data node config.
-- _**scope**_: A `Scope^` indicating the data node's [scope](data-node-alternative.md). <br/>
+- _**scope**_: A `Scope^` enumeration indicating the data node's "visibility".
     The possible values are `Scope.SCENARIO`, `Scope.CYCLE`, or `Scope.GLOBAL`.
-    Default is `Scope.SCENARIO`.
+    Default is `Scope.SCENARIO`.<br/>
+    The scope is mainly designed for what-if-analysis and scenario management. For more
+    information, see the [Scenarios and What-if-analysis](../what-if-analysis/index.md) page.
 - _**validity_period**_: A [timedelta object](https://docs.python.org/3/library/datetime.html#timedelta-objects)
     representing how long the data node is considered valid. <br/>
     If *validity_period* is set to the default value None, the data node is always
@@ -102,8 +104,8 @@ in Taipy and how they can streamline your data management tasks.
 A `PickleDataNode^` is a specific data node used to model *pickle* data.
 The `Config.configure_pickle_data_node()^` method configures a new *pickle*
 data node configuration. In addition to the generic parameters described in
-the [Data node configuration](data-node-config.md) section, two optional
-parameters can be provided.
+the [Data node configuration attributes](data-node-config.md#config-attributes)
+section, two optional parameters can be provided.
 
 - _**default_path**_ represents the default file path used to read and write
   the data of the data nodes instantiated from the *pickle* configuration.<br/>
@@ -147,8 +149,8 @@ added an optional custom description.
 A `GenericDataNode^` is a specific data node used to model generic data types where the
 user defines the read and the write functions. The `Config.configure_generic_data_node()^`
 method adds a new *generic* data node configuration. In addition to the parameters described
-in the [Data node configuration](data-node-config.md) section, the following parameters
-can be provided:
+in the [Data node configuration attributes](data-node-config.md#config-attributes) section,
+the following parameters can be provided:
 
 - _**read_fct**_ represents a Python function, which is used to read the data.
   More optional parameters can be passed through the _**read_fct_args**_ parameter.
@@ -220,8 +222,8 @@ comments=false
 A `CSVDataNode^` data node is a specific data node used to model CSV file data. To
 add a new *CSV* data node configuration, the `Config.configure_csv_data_node()^` method
 can be used. In addition to the generic parameters described in the
-[Data node configuration](data-node-config.md) section, the following parameters can be
-provided:
+[Data node configuration attributes](data-node-config.md#config-attributes)
+section, the following parameters can be provided:
 
 - _**default_path**_ represents the default file path used to read and write
   data pointed by the data nodes instantiated from the *csv* configuration.<br/>
@@ -282,8 +284,8 @@ that is defined for this CSV file, we provide it as the *exposed_type* parameter
 An `ExcelDataNode^` is a specific data node used to model xlsx file data. To add a
 new _Excel_ data node configuration, the `Config.configure_excel_data_node()^` method
 can be used. In addition to the generic parameters described in the
-[Data node configuration](data-node-config.md) section, a mandatory and three optional
-parameters are provided.
+[Data node configuration attributes](data-node-config.md#config-attributes)
+section, a mandatory and three optional parameters are provided.
 
 - _**default_path**_ represents the default file path used to read and write
   data pointed by the data nodes instantiated from the *Excel* configuration.<br/>
@@ -366,8 +368,8 @@ the list of specific sheets we want to use as the *sheet_name* parameter.
 A `SQLTableDataNode^` is a specific data node that models data stored in a single SQL
 table. To add a new *SQL table* data node configuration, the
 `Config.configure_sql_table_data_node()^` method can be used. In addition to the generic
-parameters described in the [Data node configuration](data-node-config.md) section, the
-following parameters can be provided:
+parameters described in the [Data node configuration attributes](data-node-config.md#config-attributes)
+section, the following parameters can be provided:
 
 - _**db_name**_ represents the name of the database.
 - _**db_engine**_ represents the engine of the database.<br/>
@@ -459,8 +461,8 @@ data node is written, it deletes all the data in the table and insert the new da
 A `SQLDataNode^` is a specific data node used to model data stored in a SQL Database. To
 add a new *SQL* data node configuration, the `Config.configure_sql_data_node()^` method can
 be used. In addition to the generic parameters described in the
-[Data node configuration](data-node-config.md) section, the following parameters can be
-provided:
+[Data node configuration attributes](data-node-config.md#config-attributes) section,
+the following parameters can be provided:
 
 - _**db_name**_ represents the name of the database.
 - _**db_engine**_ represents the engine of the database.<br/>
@@ -556,8 +558,8 @@ SQL table data node will read and write to the SQLite database stored at "databa
 A `JSONDataNode^` is a predefined data node that models JSON file data. The
 `Config.configure_json_data_node()^` method adds a new *JSON* data node configuration.
 In addition to the generic parameters described in the
-[Data node configuration](data-node-config.md) section, the following parameters can be
-provided:
+[Data node configuration attributes](data-node-config.md#config-attributes)
+section, the following parameters can be provided:
 
 - _**default_path**_ represents the default file path used to read and write
   data pointed by the data nodes instantiated from the *json* configuration.<br/>
@@ -647,7 +649,7 @@ custom encoder and decoder defined above.
 A `ParquetDataNode^` data node is a specific data node used to model
 [Parquet](https://parquet.apache.org/) file data. The `Config.configure_parquet_data_node()^`
 adds a new *Parquet* data node configuration. In addition to the generic
-parameters described in the [Data node configuration](data-node-config.md)
+parameters described in the [Data node configuration attributes](data-node-config.md#config-attributes)
 section, the following parameters can be provided:
 
 - _**default_path**_ represents the default file path used to read and write
@@ -753,7 +755,8 @@ the *compression* is None.
 A `MongoCollectionDataNode^` is a specific data node used to model data stored in a
 Mongo collection. To add a new *mongo_collection* data node configuration, the
 `Config.configure_mongo_collection_data_node()^` method can be used. In addition to
-the generic parameters described in the [Data node configuration](data-node-config.md)
+the generic parameters described in the
+[Data node configuration attributes](data-node-config.md#config-attributes)
 section, multiple parameters can be provided.
 
 - _**db_name**_ represents the name of the database in MongoDB.
@@ -821,7 +824,8 @@ convert `DailyMinTemp` object's properties to a dictionary without any special f
 An `S3ObjectDataNode^` is a specific data node used to model data stored in an
 S3 bucket. To add a new *S3Object* data node configuration, the
 `Config.configure_s3_object_data_node()^` method can be used. In addition to
-the generic parameters described in the [Data node configuration](data-node-config.md)
+the generic parameters described in the
+[Data node configuration attributes](data-node-config.md#config-attributes)
 section, multiple parameters can be provided.
 
 - _**aws_access_key**_ represents the Amazon Web Services (AWS) identity account.
@@ -849,8 +853,8 @@ comments=false
 An `InMemoryDataNode^` is a specific data node used to model any data in the RAM. The
 `Config.configure_in_memory_data_node()^` method is used to add a new in_memory
 data node configuration. In addition to the generic parameters described in the
-[Data node configuration](data-node-config.md) section, an optional parameter can be
-provided:
+[Data node configuration attributes](data-node-config.md#config-attributes)
+section, an optional parameter can be provided:
 
 - If the _**default_data**_ is given as a parameter of the data node configuration,
   the data node entity is automatically written with the corresponding value (note

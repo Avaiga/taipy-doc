@@ -87,6 +87,7 @@ nav:
         - "Data integration": manuals/new-user-manual/data-integration/index.md
         - "Data node config": manuals/new-user-manual/data-integration/data-node-config.md
         - "Data node usage": manuals/new-user-manual/data-integration/data-node-usage.md
+        - "Visual elements": manuals/new-user-manual/data-integration/data-node-vizelmts.md
         - "Data node history and validity": manuals/new-user-manual/data-integration/data-node-history.md
 
       - "Task orchestration":

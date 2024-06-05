@@ -42,8 +42,8 @@ The main advantages of using data nodes in a Taipy project are:
 3. **Taipy visual elements**:
     Benefit from smart visual elements to empower end users just in one line of code.
     Manage, display, and edit data nodes in a user-friendly graphical interface.
-    For more details, see the [data node selector](viselemts/data_node_selector.md) or
-    the [data node viewer](viselemts/data_node.md) pages.
+    For more details, see the [data node selector](data-node-vizelmts.md#data-node-selector) or
+    the [data node viewer](data-node-vizelmts.md#data-node-viewer) pages.
 
 4. **Data history and validity period**:
     Keep track of the data editing history, and monitor the data validity.

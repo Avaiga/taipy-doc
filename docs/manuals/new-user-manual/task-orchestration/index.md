@@ -19,7 +19,7 @@ highly complex.
         task processing a single input data node, the *raw data*, and returning a single
         output data node, the *cleaned data*.
 
-        ![Simple scenario](img/simple-algo.svg){ margin-left=25% width=52%}
+        ![Simple scenario](img/index/simple-algo.svg){ margin-left=25% width=52%}
 
     === "Linear example with two functions"
 
@@ -29,7 +29,7 @@ highly complex.
         intermediate data node *cleaned data* and returns a single output data node
         named *filtered data*.
 
-        ![Linear scenario](img/linear-algo.svg)
+        ![Linear scenario](img/index/linear-algo.svg)
 
     === "Branching example"
 
@@ -37,7 +37,7 @@ highly complex.
         below, the task *generating* does not have any input. On the contrary, the task
         *aggregating* takes multiple inputs and returns multiple outputs.
 
-        ![Branching scenario](img/branching-algo.svg)
+        ![Branching scenario](img/index/branching-algo.svg)
 
 - A `DataNode^` (the dark blue boxes) represents a reference to a dataset or a parameter
     set. For more details, please refer to the [data node integration](../data-integration/index.md)
