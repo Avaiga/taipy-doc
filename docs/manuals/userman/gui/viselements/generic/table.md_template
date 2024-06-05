@@ -811,19 +811,19 @@ in the control definition:
         ```
 ## Styling column
 
-To style a specific column, you need to modify the example codes of [Styling rows](#styling-rows) 
+To style a specific column, you need to modify the example codes of [Styling rows](#styling-rows). 
 
 Here is how a column styling function can be defined:
 
 ```python
-def even_odd_style(_1, _2, index, _3, _4, _5):
+def even_odd_style(state, value, index, row, column_name):
     if index % 2:
         return "blue-cell"
     else:
         return "red-cell"
 ```
 
-Here is modified CSS content:
+Here is the related CSS content:
 
 ```css
 .blue-cell {
@@ -842,7 +842,7 @@ To apply the style to a specific column, we need to specify the column in the st
     default={data}
     style[y1]:f=even_odd_style
 
-The resulting display will be what we expected:
+As expected, the result is a table where the style of the columns changes depending on the index:
 <figure class="tp-center">
     <img src="../table-columnstyle-d.png" class="visible-dark"  width="50%"/>
     <img src="../table-columnstyle-l.png" class="visible-light" width="50%"/>
