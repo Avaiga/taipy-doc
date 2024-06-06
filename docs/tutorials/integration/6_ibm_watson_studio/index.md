@@ -8,14 +8,15 @@ img: 6_watson_studio/images/watson_studio.png
 
 Integrating Taipy with IBM Watson Studio is a great way to build user-centric applications. 
 Taipy GUIs and SDM (Scenario and Data Management) will transform your Watson Studio jobs/models 
-into interactive, production-ready applications for end-users. This article presents how to call Watson Studio jobs from a Taipy 
-application.
+into interactive, production-ready applications for end-users. This article presents how to call 
+Watson Studio jobs from a Taipy application.
 
 
-By integrating IBM Watson Studio projects with Taipy scenarios, you gain streamlined workflows for 
-data manipulation and scenario management. This involves creating custom jobs for 
-interacting with IBM Watson Studio's API to read from and write to datasets, execute code, seamlessly blending 
-Watson Studio capabilities with Taipy's task orchestration and data management.
+By integrating IBM Watson Studio projects with Taipy scenarios, you gain streamlined workflows 
+for data manipulation and scenario management. This involves creating custom jobs for 
+interacting with IBM Watson Studio's API to read from and write to datasets, execute 
+code, seamlessly blending Watson Studio capabilities with Taipy's task orchestration and 
+data management.
 
 ![Watson Studio](images/watson_studio.png){width=50% : .tp-image}
 
@@ -43,8 +44,8 @@ create the notebook.
 
 **2 - Define Watson Studio Job Logic**
 
-- **Create the Environment**: Go to the "Environments" section to create a runtime environment with the 
-packages required by your code.
+- **Create the Environment**: Go to the "Environments" section to create a runtime 
+environment with the packages required by your code.
 
 - **Write Code:** In the notebook, write the code that defines the logic of your 
 Watson Studio job. This code can include data processing, analysis, or any other tasks you 
@@ -81,7 +82,8 @@ successfully.
 
 **3 - Create a Watson Studio Job**
 
-- **Convert Notebook to Job:** Follow this [tutorial](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=jobs-creating-in-notebook-editor) to create a job from your Notebook.
+- **Convert Notebook to Job:** Follow this [tutorial](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=jobs-creating-in-notebook-editor) 
+to create a job from your Notebook.
 
 **4 - Run and Monitor the Watson Studio Job**
 
@@ -147,8 +149,10 @@ As you can see, multiple values are used to connect to Watson Studio and to the 
 
 - *JOB_ID*: The job ID. You can find it in the IBM Watson Studio URL.
 - *WATSON_BEARER_TOKEN*: Create one by requesting one through an API call. Here is a 
-[tutorial to create an API Key](https://cloud.ibm.com/docs/account?topic=account-userapikey) and here to [create the Bearer Token from the API Key](https://cloud.ibm.com/docs/account?topic=account-iamtoken_from_apikey).
-- *WATSON_ENDPOINT*: The API endpoint of IBM Watson Studio. It depends on your location. For example: `"https://api.eu-de.dataplatform.cloud.ibm.com"`
+[tutorial to create an API Key](https://cloud.ibm.com/docs/account?topic=account-userapikey) 
+and here to [create the Bearer Token from the API Key](https://cloud.ibm.com/docs/account?topic=account-iamtoken_from_apikey).
+- *WATSON_ENDPOINT*: The API endpoint of IBM Watson Studio. It depends on your location. 
+For example: `"https://api.eu-de.dataplatform.cloud.ibm.com"`
 - *PROJECT_ID*: Your Watson Studio project ID. You can find it in the IBM Watson Studio URL.
 
 This *predict()* function is usable by Taipy inside a scenario. A potential 
@@ -198,4 +202,3 @@ within Taipy and benefit from:
 - Great scalable interactive graphics
 - Taipy’s what-if analysis, supported by its scenario management,
 - Support for different end-user profiles, etc.
-
