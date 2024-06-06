@@ -16,7 +16,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
 
 <div class="tp-row tp-row--gutter-sm">
   <div class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card" href="../gui/viselements/index.md">
+    <a class="tp-content-card" href="../gui/viselements/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon icon-light" src="../../images/icons/visual-element-w.svg">
         <img class="tp-content-card-icon icon-dark" src="../../images/icons/visual-element.svg">
