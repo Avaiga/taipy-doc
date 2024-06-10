@@ -7,6 +7,14 @@ The upload can be triggered by pressing a button, or drag-and-dropping a file on
 All the file selector controls are generated with the "taipy-file_selector" CSS class. You can use this class
 name to select the file selector controls on your page and apply style.
 
+### [Stylekit](../styling/stylekit.md) support
+
+The [Stylekit](../styling/stylekit.md) provides a specific class that you can use to style date selectors:
+
+* *fullwidth*<br/>
+    If a date selector uses the *fullwidth* class, then it uses the whole available
+    horizontal space.
+
 # Usage
 
 ## Default behavior
