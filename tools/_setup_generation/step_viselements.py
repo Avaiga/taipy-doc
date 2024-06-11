@@ -249,7 +249,7 @@ class VisElementsStep(SetupStep):
             ):
                 property_desc = property_descs[property_name]
                 name = property_desc[__class__.NAME]
-                doc = property_desc.get("doc", None)
+                doc = property_desc.get("doc", "")
                 if doc.startswith("UNDOCUMENTED"):
                     continue
                 type = property_desc["type"]
