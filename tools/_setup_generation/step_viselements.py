@@ -89,6 +89,7 @@ class VisElementsStep(SetupStep):
                     new_elements[element_type] = element_desc
             self.elements.update(new_elements)
             # Find default property for all element types
+            # and remove hidden properties.
             for element_type, element_desc in new_elements.items():
                 default_property = None
                 if properties := element_desc.get(__class__.PROPERTIES, None):
@@ -97,6 +98,8 @@ class VisElementsStep(SetupStep):
                             if property[__class__.DEFAULT_PROPERTY]:
                                 default_property = property[__class__.NAME]
                             del property[__class__.DEFAULT_PROPERTY]
+                        if property.get("hide", False):
+                            property["doc"] = "UNDOCUMENTED"
                 element_desc[__class__.DEFAULT_PROPERTY] = default_property
 
             # Resolve inheritance
@@ -246,6 +249,9 @@ class VisElementsStep(SetupStep):
             ):
                 property_desc = property_descs[property_name]
                 name = property_desc[__class__.NAME]
+                doc = property_desc.get("doc", None)
+                if doc.startswith("UNDOCUMENTED"):
+                    continue
                 type = property_desc["type"]
                 if m := re.match(r"dynamic\((.*?)\)", type):
                     type = f"<code>{m[1]}</code><br/><i>dynamic</i>"
@@ -254,7 +260,6 @@ class VisElementsStep(SetupStep):
                 else:
                     type = f"<code>{type}</code>"
                 default_value = property_desc.get("default_value", None)
-                doc = property_desc.get("doc", None)
                 if not default_value:
                     default_value = (
                         "<i>Required</i>"
