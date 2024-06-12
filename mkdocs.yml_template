@@ -39,6 +39,7 @@ nav:
       - "Long Running Callbacks": tutorials/visuals/4_long_callbacks/index.md
       - "Real-time data visualization": tutorials/visuals/5_multithreading/index.md
       - "Stylekit": tutorials/visuals/6_css_style_kit/index.md
+      - "Multi-user": tutorials/visuals/7_multi_user/index.md
     - "Scenario Management":
       - "Scenario Management": tutorials/scenario_management/index.md
       - "Scenarios": tutorials/scenario_management/1_scenarios/index.md
@@ -335,12 +336,14 @@ nav:
       - "LLM": gallery/llm/index.md
       - "Creating an LLM Chatbot" : gallery/llm/5_chatbot/index.md
       - "TalkToTaipy" : gallery/llm/6_talk_to_taipy/index.md
+      - "Vision ChatBot": gallery/llm/7_vision_chatbot/index.md
+      - "RAG ChatBot": gallery/llm/8_rag_chatbot/index.md
       - "Sentiment Analysis": gallery/llm/sentiment_analysis/index.md
       - "Tweet Generation": gallery/llm/tweet_generation/index.md
     - "Visualization":
       - "Visualization": gallery/visualization/index.md
       - "COVID Dashboard": gallery/visualization/2_covid_dashboard/index.md
-      - "Measuring Industry Agglomeration": gallery/visualization/7_industry_agglom/index.md
+      - "US Industry Distribution": gallery/visualization/7_industry_agglom/index.md
       - "Image Classification": gallery/visualization/image_classif/index.md
       - "Realtime Pollution Dashboard" : gallery/visualization/pollution_sensors/index.md
     - "Other":
