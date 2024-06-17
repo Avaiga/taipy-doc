@@ -32,14 +32,15 @@ nav:
             - "5 - Performance page": tutorials/fundamentals/3_complete_application/step_05/step_05.md
         - "Creating an LLM ChatBot": tutorials/fundamentals/4_chatbot/index.md
     - "Visuals":
-        - "Visuals": tutorials/visuals/index.md
-        - "Callbacks in Taipy": tutorials/visuals/1_the_on_change_callback/index.md
-        - "Using Tables": tutorials/visuals/2_using_tables/index.md
-        - "Multi-page Application": tutorials/visuals/3_multipage_application/index.md
-        - "Long Running Callbacks": tutorials/visuals/4_long_callbacks/index.md
-        - "Real-time data visualization": tutorials/visuals/5_multithreading/index.md
-        - "Stylekit": tutorials/visuals/6_css_style_kit/index.md
-        - "Multi-user": tutorials/visuals/7_multi_user/index.md
+      - "Visuals": tutorials/visuals/index.md
+      - "Callbacks in Taipy": tutorials/visuals/1_the_on_change_callback/index.md
+      - "Using Tables": tutorials/visuals/2_using_tables/index.md
+      - "Multi-page Application": tutorials/visuals/3_multipage_application/index.md
+      - "Long Running Callbacks": tutorials/visuals/4_long_callbacks/index.md
+      - "Content update with Partials": tutorials/visuals/4_partials/index.md
+      - "Real-time data visualization": tutorials/visuals/5_multithreading/index.md
+      - "Stylekit": tutorials/visuals/6_css_style_kit/index.md
+      - "Multi-user": tutorials/visuals/7_multi_user/index.md
     - "Scenario Management":
         - "Scenario Management": tutorials/scenario_management/index.md
         - "Scenarios": tutorials/scenario_management/1_scenarios/index.md
