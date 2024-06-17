@@ -22,12 +22,20 @@ In this article, we will walk through a simple example where:
 
 Here is the code for the main script:
 
-```python linenums="1"
-{%
-include-markdown "./src/example.py"
-comments=false
-%}
-```
+=== "Markdown"
+    ```python linenums="1"
+    {%
+    include-markdown "./src/example_md.py"
+    comments=false
+    %}    ``` 
+=== "Python"
+    ```python linenums="1"
+    {%
+    include-markdown "./src/example.py"
+    comments=false
+    %}
+    ``` 
+
 
 This script creates a button that, when clicked, updates the list of links displayed on 
 the page. The links component is encapsulated within a partial, making it reusable and 
@@ -56,11 +64,20 @@ updated later.
 The partial needs to be placed within the layout where it will be displayed. You can 
 include it in one or multiple places within your layout.
 
-```python
-with tgb.Page() as main_page:
-    tgb.button('Add links', on_action=simulate_adding_more_links)
-    tgb.part(partial="{link_partial}")
-```
+=== "Markdown"
+    ```python linenums="1"
+    main_page = """
+    <|Add links|button|on_action=simulate_adding_more_links|>
+    <|part|partial={link_partial}|>
+    """
+    ``` 
+=== "Python"
+    ```python linenums="1"
+    with tgb.Page() as main_page:
+        tgb.button('Add links', on_action=simulate_adding_more_links)
+        tgb.part(partial="{link_partial}")
+    ``` 
+
 
 In this code, `tgb.part(partial="{link_partial}")` is where the partial will be shown. 
 You can place this partial in multiple locations within your layout if needed.
@@ -70,19 +87,35 @@ You can place this partial in multiple locations within your layout if needed.
 To dynamically update the partial, you use the `update_content` method. This can be done 
 using either the Markdown syntax or the Python API by providing a page to this method.
 
-```python
-def refresh_links(state):
-    with tgb.Page() as link_part:
-        with tgb.layout("1 1 1"):
-            for link in state.links:
-                link_name, link_url = link
-                with tgb.part("card"):
-                    tgb.text(link_name, class_name="h2")
-                    tgb.text('Quick description here if you like')
-                    tgb.html('a', f'Click here to go to {link_name}', href=link_url)
-                    # You could use any visual element you like
-    state.link_partial.update_content(state, link_part)
-```
+=== "Markdown"
+    ```python linenums="1"
+    def refresh_links(state):
+        partial_md = ""
+        partial_md += "<|layout|columns=1 1 1|\n"
+        for link in state.links:
+            link_name, link_url = link
+            partial_md += "<|card|\n"
+            partial_md += f"## {link_name}\n"
+            partial_md += "Quick description here if you like\n"
+            partial_md += f"[Click here to go to {link_name}]({link_url})\n"
+            partial_md += "|>\n"
+        partial_md += "|>\n"
+        state.link_partial.update_content(state, partial_md)
+    ``` 
+=== "Python"
+    ```python linenums="1"
+    def refresh_links(state):
+        with tgb.Page() as link_part:
+            with tgb.layout("1 1 1"):
+                for link in state.links:
+                    link_name, link_url = link
+                    with tgb.part("card"):
+                        tgb.text(link_name, class_name="h2")
+                        tgb.text('Quick description here if you like')
+                        tgb.html('a', f'Click here to go to {link_name}', href=link_url)
+                        # You could use any visual element you like
+        state.link_partial.update_content(state, link_part)
+    ``` 
 
 We create a new `link_part` page using the Taipy builder API in this function. We then 
 use `state.link_partial.update_content(state, link_part)` to update the partial content. 
@@ -106,30 +139,8 @@ The `refresh_links` function generates new content using the builder API.
 `state.link_partial.update_content(state, link_part)` updates the partial with the new 
 content.
 
-By following these steps, you can create dynamic and reusable components in your Taipy 
-application, making it easier to manage and update your UI efficiently.
-
-## Example with Markdown Syntax
-
-If you prefer using Markdown syntax to update the partial content, you can do so like 
-this:
-
-```python
-def change_partial(state):
-    title_int = int(state.title)
-    new_md = f"# Heading {title_int}\nThis is a level {title_int} heading."
-    new_md += "<|{some_var}|slider|max={100*int(title_int)}|>"
-    state.p.update_content(state, new_md)
-```
-
-In this example, `new_md` contains the new Markdown content, and 
-`state.p.update_content(state, new_md)` updates the partial with this content.
-
-Understanding these concepts allows you to leverage Taipy partials to create more dynamic 
-and responsive GUIs.
-
 # Conclusion
 
 Taipy partials are a powerful feature for creating reusable and dynamically updatable 
-components in your GUI applications. They allow for incremental development and testing, 
-simplifying the management of complex UIs.
+components in your GUI applications. Understanding these concepts allows you to leverage 
+Taipy partials to create more dynamic and responsive GUIs.
