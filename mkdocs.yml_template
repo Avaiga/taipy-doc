@@ -37,6 +37,7 @@ nav:
       - "Using Tables": tutorials/visuals/2_using_tables/index.md
       - "Multi-page Application": tutorials/visuals/3_multipage_application/index.md
       - "Long Running Callbacks": tutorials/visuals/4_long_callbacks/index.md
+      - "Content update with Partials": tutorials/visuals/4_partials/index.md
       - "Real-time data visualization": tutorials/visuals/5_multithreading/index.md
       - "Stylekit": tutorials/visuals/6_css_style_kit/index.md
       - "Multi-user": tutorials/visuals/7_multi_user/index.md
