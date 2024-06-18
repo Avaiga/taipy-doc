@@ -15,7 +15,7 @@ Taipy offers a valuable feature known as "long-running callbacks" to tackle this
 callbacks enable the server to handle resource-intensive processing in the background, ensuring
 a responsive user interface.
 
-![Long Running Callbacks](images/long_running_callbacks.png){width=90% : .tp-image }
+![Long Running Callbacks](images/long_running_callbacks.png){width=50% : .tp-image-border}
 
 This article discusses the concept of long-running callbacks in Taipy, provides usage examples,
 and illustrates how they enhance the overall user experience.
@@ -99,6 +99,47 @@ interface shows the result of the resource-intensive function. This creates a sm
 user experience.
 
 # Tracking Function Progress
+
+## Trigger update from *heavy_function*
+
+In some cases, it is beneficial to trigger updates from within the `heavy_function` 
+itself. This can be done using the `invoke_callback` function to send updates to the 
+client during the execution of the long-running task.
+
+Here's an example:
+
+```python
+{%
+include-markdown "./src/trigger_update.py"
+comments=false
+%}
+```
+
+In this example, the `heavy_function` uses the `invoke_callback` function to send updates 
+to the client at different stages of the task. The `user_status` function appends these 
+updates to the `logs` state variable, which is then displayed in the user interface.
+
+1. **heavy_function**:
+   - It calls `invoke_callback` at different stages to send progress updates to the 
+   `user_status` function.
+   - After completing the task, it returns the result.
+
+2. **user_status**:
+   - It updates the `logs` state variable with the progress information.
+
+3. **status_fct**:
+   - It updates the `result` state variable with the final result of the `heavy_function`.
+
+4. **respond**:
+   - It initiates the long-running task by calling `invoke_long_callback` with the 
+   `heavy_function` and associated status function.
+
+By using this approach, you can provide real-time updates to the user interface directly 
+from within the `heavy_function`, enhancing the user experience by keeping them informed 
+about the progress of the long-running task.
+
+
+## Regular Updates with Time Intervals
 
 Occasionally, it's useful to give regular updates on the progress of a long-running task.
 Taipy's `invoke_long_callback()^` provides a convenient method to accomplish this:
