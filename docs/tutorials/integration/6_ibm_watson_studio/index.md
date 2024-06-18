@@ -3,7 +3,7 @@ title: Integrating Watson Studio
 category: integration
 data-keywords: scenario task
 short-description: A guide to integrate Watson Studio with Taipy scenarios.
-img: 6_watson_studio/images/watson_studio.png
+img: 6_ibm_watson_studio/images/illustration_Waston.png
 ---
 
 Integrating Taipy with IBM Watson Studio is a great way to build user-centric applications. 
@@ -18,7 +18,7 @@ interacting with IBM Watson Studio's API to read from and write to datasets, exe
 code, seamlessly blending Watson Studio capabilities with Taipy's 
 data management and interactive graphics.
 
-![Watson Studio](images/watson_studio.png){width=50% : .tp-image}
+![Watson Studio](images/illustration_Waston.png){width=50% : .tp-image}
 
 # Scenarios and Watson Studio Integration
 
