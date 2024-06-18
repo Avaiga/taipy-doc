@@ -65,11 +65,16 @@ param2 = os.getenv("param2")
 print("Parameter 1:", param1)
 print("Parameter 2:", param2)
 
-# Your code
-data = pd.read_csv("https://raw.githubusercontent.com/Avaiga/taipy-getting-started-core/develop/src/daily-min-temperatures.csv")
+def dummy(param1, param2):
+    # create your code and logic
+    data = pd.read_csv("https://raw.githubusercontent.com/Avaiga/taipy-getting-started-core/develop/src/daily-min-temperatures.csv")
 
-# Results sent as the output of the job
-result = data[:5]
+    # Results sent as the output of the job
+    result = data[:5]
+    return result
+
+result = dummy(param1, param2)
+
 print(result)
 ```
 
