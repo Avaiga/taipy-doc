@@ -36,12 +36,6 @@ This is the list of changes to Taipy releases as they were published.
 
 <h4><strong><code>taipy-core</code></strong> 3.2.0 </h4>
 
-- The `Scenario.export()^` method or `taipy.export_scenario()^` method now supports exporting file-based data
-  nodes' data to the export folder if the path exists.
-- The `Scenario.export()^` method or `taipy.export_scenario()^` method now export a zip archive instead of a
-  folder. For more information, please refer to [Export a scenario](./manuals/core/entities/scenario-cycle-mgt.md#export-a-scenario).
-- The new `taipy.import_scenario()^` method can be used to import a scenario from an exported archive. For more
-  information, please refer to [Import a scenario](./manuals/core/entities/scenario-cycle-mgt.md#import-a-scenario).
 - The `taipy.get_scenarios()` and `taipy.get_primary_scenarios()^` methods now accept optional parameters to
   sort the output list of scenarios by name, id, creation date, or tag. For more information, please refer to
   [Get all scenarios](./manuals/core/entities/scenario-cycle-mgt.md#get-all-scenarios) and
@@ -60,10 +54,8 @@ This is the list of changes to Taipy releases as they were published.
 - When using the Taipy command-line interface, if an unsupported argument is provided, the CLI
   will display a message indicating the invalid argument. If the invalid argument is possibly a
   typo, the CLI will suggest the closest valid argument.
-- The `Scenario.export()^` method or `taipy.export_scenario()^` method now raise the `ExportPathAlreadyExistss^`
-  exception if the export path already exists. You can explicitly set the `overwrite` parameter to True to
-  overwrite the existing export path. For more information, please refer to
-  [Export a scenario](./manuals/core/entities/scenario-cycle-mgt.md#export-a-scenario).
+- The `Scenario.export()` and `taipy.export_scenario()` have been transfered from the Community edition
+  to the Enterprise edition as it is more suitable for enterprise applications.
 
 ## Significant bug fixes
 
@@ -80,6 +72,21 @@ This is the list of changes to Taipy releases as they were published.
 
 This release contains all of [`taipy` 3.2](https://pypi.org/project/taipy/3.2.0) as well as
 additional features.
+
+## New Features
+
+- The `taipy.export_scenario()^` has been transfered from the Community edition to the Enterprise edition as
+  it is more suitable for enterprise applications.
+- The `taipy.export_scenario()^` method now supports exporting file-based data nodes' data to the export folder
+  if the path exists.
+- The `taipy.export_scenario()^` method now export a zip archive instead of a
+  folder. For more information, please refer to [Export a scenario](./manuals/core/entities/scenario-cycle-mgt.md#export-a-scenario).
+- The `taipy.export_scenario()^` method now raise the `ExportPathAlreadyExists^`
+  exception if the export path already exists. You can explicitly set the `overwrite` parameter to True to
+  overwrite the existing export path. For more information, please refer to
+  [Export a scenario](./manuals/core/entities/scenario-cycle-mgt.md#export-a-scenario).
+- The new `taipy.import_scenario()^` method can be used to import a scenario from an exported archive. For more
+  information, please refer to [Import a scenario](./manuals/core/entities/scenario-cycle-mgt.md#import-a-scenario).
 
 # Community edition: 3.1
 
