@@ -65,11 +65,18 @@ param2 = dbutils.widgets.get("param2")
 print("Parameter 1:", param1)
 print("Parameter 2:", param2)
 
-# Your code
-data = pd.read_csv("https://raw.githubusercontent.com/Avaiga/taipy-getting-started-core/develop/src/daily-min-temperatures.csv")
+def dummy(param1, param2):
+    # create your code and logic
+    data = pd.read_csv("https://raw.githubusercontent.com/Avaiga/taipy-getting-started-core/develop/src/daily-min-temperatures.csv")
+
+    # Results sent as the output of the job
+    result = data[:5]
+    return result
+
+result = dummy(param1, param2)
 
 # Results sent as the output of the job
-dbutils.notebook.exit(data[:5])
+dbutils.notebook.exit(result)
 ```
 
 `dbutils.widgets.get("param1")`: is how you can get the parameters passed to your job. 

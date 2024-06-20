@@ -58,6 +58,7 @@ nav:
         - "Jupyter Notebooks": tutorials/integration/3_jupyter_notebooks/index.md
         - "Integrating Databricks": tutorials/integration/4_databricks/index.md
         - "Integration with Dataiku": tutorials/integration/5_dataiku/index.md
+        - "Integration with IBM Watson Studio": tutorials/integration/6_ibm_watson_studio/index.md
     - "Large Data":
       - "Large Data": tutorials/large_data/index.md
       - "Using PySpark for Large Data": tutorials/large_data/1_pyspark/index.md
