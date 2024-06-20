@@ -75,8 +75,6 @@ additional features.
 
 ## New Features
 
-- The `taipy.export_scenario()^` has been transfered from the Community edition to the Enterprise edition as
-  it is more suitable for enterprise applications.
 - The `taipy.export_scenario()^` method now supports exporting file-based data nodes' data to the export folder
   if the path exists.
 - The `taipy.export_scenario()^` method now export a zip archive instead of a
