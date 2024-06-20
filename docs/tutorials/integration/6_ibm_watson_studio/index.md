@@ -7,7 +7,7 @@ img: 6_ibm_watson_studio/images/illustration_Waston.png
 ---
 
 Integrating Taipy with IBM Watson Studio is a great way to build user-centric applications. 
-Taipy GUIs and SDM (Scenario and Data Management) will transform your Watson Studio jobs/models 
+Taipy capabilities, in particular the GUIs and the what-if analysis, will transform your Watson Studio jobs/models  
 into interactive, production-ready applications for end-users. This article presents how to call 
 Watson Studio jobs from a Taipy application.
 
@@ -180,7 +180,7 @@ task_watson_studio_cfg = Config.configure_task("watson_studio",
 scenario_cfg = Config.configure_scenario("scenario", task_config=[task_watson_studio_cfg])
 ```
 
-Now that the scenario is configured, it can be created and executed to retrieve the 
+Now that the scenario is configured, it can be instantiated and executed to retrieve the 
 proper results.
 
 ```python
