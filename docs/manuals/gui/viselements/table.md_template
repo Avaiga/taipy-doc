@@ -36,6 +36,202 @@ The table component supports three display modes:
 - *auto_loading*: the pages are loaded on demand depending on the visible area. That is the behavior
   when the [*auto_loading*](#p-auto_loading) property is set to True.
 
+## Customizing columns
+
+The `table` control has properties that let you customize which columns are displayed and in what
+order and apply a number format to the numerical and date values.
+
+You can use the [*columns*](#p-columns) property to customize what columns are displayed and how
+they should be displayed.
+
+To demonstrate the capabilities of [*columns*](#p-columns), we will use the following dataset:
+```python title="Creating the dataset"
+data = {
+    "date" : [datetime.datetime(year=2000, month=3, day=d) for d in [12, 15, 18, 19, 31]],
+    "volume" : [6533, 1578, 1881, 2373, 8646],
+    "price" : [152.611, 168.582, 193.798, 101.025, 159.071],
+}
+```
+This data represents the volume and price of exchanges of some imaginary shares on the stock market
+for a few dates in March 2000.
+
+### Default settings
+
+Let's create a table control without specifying the [*columns*](#p-columns) property:
+!!! taipy-element
+    default={data}
+
+With that definition, the representation of the control is similar to the following image:
+<figure class="tp-center">
+    <img src="../table-format1-d.png" class="visible-dark" />
+    <img src="../table-format1-l.png" class="visible-light"/>
+    <figcaption>Displaying all the columns</figcaption>
+</figure>
+
+### Selecting columns
+
+Let's say you don't want to display the *volume* column. To indicate that, you can specify the
+list of column names to display in the [*columns*](#p-columns) property:
+!!! taipy-element
+    default={data}
+    columns=date;price
+
+Here is how the table appears with that definition:
+<figure class="tp-center">
+    <img src="../table-format2-d.png" class="visible-dark" />
+    <img src="../table-format2-l.png" class="visible-light"/>
+    <figcaption>Displaying specific columns</figcaption>
+</figure>
+
+### Formatting numbers globally
+
+The *price* column displays values with too many decimal places, which is unusual for displaying
+a price.<br/>
+The [*number_format*](#p-number_format) property can be set to a format string that applies to
+all numerical values in the table. The syntax for this string is specified by the Python string
+*format()* function.
+
+The following control definition indicates that all numbers should be represented with two decimal
+places:
+!!! taipy-element
+    default={data}
+    number_format=%.02f
+
+And the result looks like this:
+<figure class="tp-center">
+    <img src="../table-format3-d.png" class="visible-dark" />
+    <img src="../table-format3-l.png" class="visible-light"/>
+    <figcaption>Formatting the numerical values</figcaption>
+</figure>
+
+Although we only have two decimal places for stock prices, which was the point of setting the
+[*number_format*](#p-number_format) property, the format has impacted all numerical values,
+including the values of the *volume* column, which is not what we want: volumes are integer values,
+they should have to decimal places at all.
+
+### Formatting numbers in specific columns
+
+You can provide a specific format for a particular column by setting the [*columns*](#p-columns)
+property to a dictionary that indicates what format should be used for what columns.
+
+The keys of this dictionary must be a column name, and the value for a given key must be another
+dictionary with specific key/value pairs.<br/>
+For our use case, we just want to use a format for the *value* column.
+
+Here is how we can define the dictionary that can be used by the table control to apply the format
+where it is required:
+```python title="Format for a column"
+columns = {
+    "date" : {},
+    "volume" : {},
+    "price" : {"format": "$%.02f"},
+}
+```
+There is one entry for every column we want to display, and the *price* column has a specific
+setting that indicates what format to use: a dollar sign followed by the value with two decimal
+places.
+
+We can set that dictionary to the [*columns*](#p-columns) property:
+!!! taipy-element
+    default={data}
+    columns={columns}
+
+Here is how the table now looks:
+<figure class="tp-center">
+    <img src="../table-format4-d.png" class="visible-dark" />
+    <img src="../table-format4-l.png" class="visible-light"/>
+    <figcaption>Formatting a specific column</figcaption>
+</figure>
+You can see that the format only impacts the values of the *price* column.
+
+### Setting the column titles
+
+By default, a column title reflects the name of the collection that it represents. You can change
+that by setting the *title* key of a column-specific dictionary.
+
+Let's specify a column definition that customizes the column titles:
+```python title="Column titles"
+columns = {
+    "date" : {"title": "Date"},
+    "volume" : {"title": "Volume"},
+    "price" : {"title": "Price ($)", "format": "%.02f"},
+}
+```
+
+Using the control definition that we have used in the example above, here is how the table looks
+like:
+<figure class="tp-center">
+    <img src="../table-format5-d.png" class="visible-dark" />
+    <img src="../table-format5-l.png" class="visible-light"/>
+    <figcaption>Custom column titles</figcaption>
+</figure>
+
+### Formatting dates
+
+You can use the [*date_format*](#p-date_format) property to format dates in the table.
+This property uses the syntax of the [`date-fns.format()`](https://date-fns.org/docs/format)
+function to convert a `datetime` object to a string.
+
+With the same dataset, here is a table control definition that uses the
+[*date_format*](#p-date_format) property:
+!!! taipy-element
+    default={data}
+    date_format=MMM do
+
+The value "MMM do" indicates that the conversion of the date to a string will begin with the
+abbreviation of the month name, followed by the day number in the month with the index suffix.
+
+See how the dates of the *date* column are now represented:
+<figure class="tp-center">
+    <img src="../table-format6-d.png" class="visible-dark" />
+    <img src="../table-format6-l.png" class="visible-light"/>
+    <figcaption>Formatting dates</figcaption>
+</figure>
+
+Note that if you need to apply a date format to a specific column, you need to create a columns
+dictionary as demonstrated above and set the *format* property for the columns that contain the
+date values.
+
+### Ordering columns
+
+When looking at stock exchange data tables, the most common representation is to display the stock
+price before the exchanged volume. The default behavior of the `table` control is to show the
+columns in the order they appear in the object set to the [*data*](#p-data) property.
+
+To reorder the columns, you can define the control with the [*columns*](#p-columns) property set to
+a list of column names in the order you want them displayed:
+!!! taipy-element
+    default={data}
+    columns=date;price;volume
+
+This definition produces the following table representation:
+<figure class="tp-center">
+    <img src="../table-format7-d.png" class="visible-dark" />
+    <img src="../table-format7-l.png" class="visible-light"/>
+    <figcaption>Columns reordered</figcaption>
+</figure>
+
+An alternative way to order columns that could be more suitable for your situation is to provide
+an index value (starting at 0) to the *index* property of the dictionary set for the appropriate
+column in a dictionary set to the [*columns*](#p-columns) property.
+
+You can define a dictionary as follows:
+```python title="Column order"
+columns = {
+    "date" : {"index": 0},
+    "volume" : {"index": 2},
+    "price" : {"index": 1},
+}
+```
+The value of the *index* property for each column indicates the order in which you want to see the
+column organized.<br/>
+The definition of the control would use that dictionary:
+!!! taipy-element
+    default={data}
+    columns={columns}
+
+And the resulting display would be the same.
+
 ## Editing the table content
 
 The table control provides interface elements that help modify the represented data.<br/>
@@ -395,7 +591,6 @@ data = {
 
 You can use the following control declaration to display all these numbers
 in a table:
-
 !!! taipy-element
     default={data}
 
@@ -424,7 +619,6 @@ data = {
 ```
 
 We can use the same table control definition:
-
 !!! taipy-element
     default={data}
 
@@ -442,7 +636,6 @@ You can change how many rows are displayed simultaneously using the
 
 If you want to display all the rows at the same time, you can change the control definition
 to set the [*show_all*](#p-show_all) to True:
-
 !!! taipy-element
     default={data}
     show_all:b=True
@@ -466,7 +659,6 @@ property to indicate what columns should be displayed.
 
 Here is how you would define the table control if you want to hide the column *y2*
 from the examples above:
-
 !!! taipy-element
     default={data}
     columns=x;y1
@@ -476,6 +668,75 @@ And the *y2* column is not displayed any longer:
     <img src="../table-columns-d.png" class="visible-dark"  width="50%"/>
     <img src="../table-columns-l.png" class="visible-light" width="50%"/>
     <figcaption>Specifying the visible columns</figcaption>
+</figure>
+
+## Formatting values {data-source="gui:doc/examples/controls/table-formatting.py"}
+
+The `table` control has different means to let you specify what format to apply when displaying
+numerical  or date values:
+
+- The [*number_format*](#p-number_format) property specifies what format applies to all numerical
+  values in the table data.<br/>
+  The syntax for this property is defined by the `format()` method of the Python `string` type.
+- The [*date_format*](#p-date_format) property specifies what format applies to all date values
+   in the table data.<br/>
+  The syntax for this property is defined by the JavaScript
+  [`date-fns.format()`](https://date-fns.org/docs/format) function.
+
+In some situations, you need each column to be represented with a dedicated format definition.<br/>
+When this happens, you can use the dictionary version of the [*columns*](#columns) property to
+indicate the format to apply to each column, as described
+[above](#formatting-numbers-in-specific-columns). 
+
+Consider the following data set:
+```python title="Dataset definition"
+stock = {
+    "date": [
+        datetime.datetime(year=2000, month=12, day=20),
+        datetime.datetime(year=2000, month=12, day=21),
+        datetime.datetime(year=2000, month=12, day=22),
+        ...
+    ]
+    "price": [119.88, 112.657, 164.5, 105.42, 188.36, 103.9, 143.97, 160.11, 136.3, 174.06],
+    "change": [7.814, -5.952, 0.01, 8.781, 7.335, 6.623, -6.635, -6.9, 0.327, -0.089],
+    "volume": [773, 2622, 2751, 1108, 7400, 3772, 9398, 4444, 9264, 1108],
+}
+```
+This dataset represents the price, value change, and volume of exchanged shares on the stock
+market for an imaginary tick on some consecutive days.
+
+Standard formatting requirements could be:
+
+- The date values should be represented with only the month name and the day of the month.<br/>
+  The format to apply is "MMM d".
+- The price values must have two significative decimal places and hold the currency symbol.<br/>
+  The format to apply is "$%.02f": a dollar sign followed by the value with two decimal places.
+- The change values must have a single decimal place.<br/>
+  The format to apply is "%.01f": the value with one decimal place.
+- The title of each column must be capitalized.<br/>
+  We can force the column titles to: "Date", "Price", "% change" and "Volume"
+
+The implementation of these requirements requires the creation of a *columns* dictionary defined
+as follows:
+```python title="Column customization"
+columns = {
+    "date" : {"title": "Data", "format": "MMM d"},
+    "price" : {"title": "Price", "format": "$%.02f"},
+    "change" : {"title": "% change", "format": "%.01f"},
+    "volume" : {"title": "Volume"}
+}
+```
+
+We can use this dictionary in the table definition:
+!!! taipy-element
+    default={data}
+    columns=columns={columns}
+
+The resulting display reflects what is requested:
+<figure class="tp-center">
+    <img src="../table-formatting-d.png" class="visible-dark"  width="90%"/>
+    <img src="../table-formatting-l.png" class="visible-light" width="90%"/>
+    <figcaption>Formatted columns</figcaption>
 </figure>
 
 ## Styling rows
@@ -517,7 +778,6 @@ Note that the style selectors use the CSS child combinator selector "&gt;" to ta
 that hold a `td` element (the cells themselves).
 
 To use this style, we can adjust the control definition used above so it looks like this:
-
 !!! taipy-element
     default={data}
     style:f=even_odd_style
@@ -547,7 +807,7 @@ in the control definition:
         ```python
         import taipy.gui.builder as tgb
         ...
-        tgb.table("{data}", style="{lambda s, idx, r: 'blue-cell' if idx % 2 == 0 else 'red-cell'}" />
+        tgb.table("{data}", style={lambda s, idx, r: "blue-cell" if idx % 2 == 0 else "red-cell"}) />
         ```
 
 ## Aggregation
@@ -592,7 +852,6 @@ The signature of this function expects five optional parameters:
 
 Based on these parameters, the function must return a string that defines a tooltip used as the
 cell's tooltip text.
-
 !!! taipy-element
     default={data}
     tooltip={lambda state, val, idx: "A tooltip" if idx % 2 == 0 else "Another tooltip"}
