@@ -107,7 +107,7 @@ And the result looks like this:
 Although we only have two decimal places for stock prices, which was the point of setting the
 [*number_format*](#p-number_format) property, the format has impacted all numerical values,
 including the values of the *volume* column, which is not what we want: volumes are integer values,
-they should have to decimal places at all.
+they should have no decimal places at all.
 
 ### Formatting numbers in specific columns
 
