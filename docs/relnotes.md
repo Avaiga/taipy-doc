@@ -41,6 +41,11 @@ This is the list of changes to Taipy releases as they were published.
   [Get all scenarios](./manuals/core/entities/scenario-cycle-mgt.md#get-all-scenarios) and
   [Get primary scenarios](./manuals/core/entities/scenario-cycle-mgt.md#get-primary-scenarios).
 
+<h4><strong><code>taipy-templates</code></strong> 3.2.0 </h4>
+
+- Creating a new application using any template now also support initializing the application as a
+  Git repository.
+
 ## Improvements and changes
 
 <h4><strong><code>taipy</code></strong> 3.2.0</h4>
@@ -85,6 +90,7 @@ additional features.
   [Export a scenario](./manuals/core/entities/scenario-cycle-mgt.md#export-a-scenario).
 - The new `taipy.import_scenario()^` method can be used to import a scenario from an exported archive. For more
   information, please refer to [Import a scenario](./manuals/core/entities/scenario-cycle-mgt.md#import-a-scenario).
+- The default template now supports authentication and authorization features.
 
 # Community edition: 3.1
 
