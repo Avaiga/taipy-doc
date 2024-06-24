@@ -90,7 +90,7 @@ additional features.
   [Export a scenario](./manuals/core/entities/scenario-cycle-mgt.md#export-a-scenario).
 - The new `taipy.import_scenario()^` method can be used to import a scenario from an exported archive. For more
   information, please refer to [Import a scenario](./manuals/core/entities/scenario-cycle-mgt.md#import-a-scenario).
-- The default template now supports authentication and authorization features.
+- The default application template now supports authentication and authorization features.
 
 # Community edition: 3.1
 
