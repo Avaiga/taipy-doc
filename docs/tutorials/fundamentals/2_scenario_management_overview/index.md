@@ -249,6 +249,8 @@ Add these few lines to the code of your script. This creates a web application, 
     ```
 === "Python"
     ```python
+    import taipy.gui.builder as tgb
+
     def save(state):
         # write values of Data Node to submit scenario
         state.scenario.historical_temperature.write(data)

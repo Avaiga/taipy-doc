@@ -53,4 +53,4 @@ if __name__ == "__main__":
         tgb.text("View all the information on your prediction here")
         tgb.data_node("{scenario.predictions}")
 
-    tp.Gui(scenario_md).run()
+    tp.Gui(scenario_page).run()
