@@ -1,6 +1,6 @@
-This section aims to build a *Hello world* example to show how to quickly configure, create and
-submit a scenario. The following picture represents the scenario execution graph made of two
-data nodes (blue boxes) and one task (orange box).
+This section aims to build a *Hello world* example for task orchestration. It shows how to
+quickly configure, create and submit a scenario. The following picture represents the scenario
+execution graph made of two data nodes (blue boxes) and one task (orange box).
 
 ![hello world example](img/hello-world/hello-world.svg){width=75%}
 
@@ -12,21 +12,14 @@ Building the corresponding Taipy Core application requires three easy steps.
 
 # Configuring the application
 
-The purpose is to configure the structure of the execution graph. It includes in particular the
-configuration of the data nodes, tasks, and scenarios.
+The purpose is to configure the structure of the execution graph through the configuration
+of the data nodes, tasks, and scenarios.
 
 ```python linenums="1"
-from taipy import Config
-
-
-def build_message(name: str):
-    return f"Hello {name}!"
-
-
-name_data_node_cfg = Config.configure_data_node(id="input_name")
-message_data_node_cfg = Config.configure_data_node(id="message")
-build_msg_task_cfg = Config.configure_task("build_msg", build_message, name_data_node_cfg, message_data_node_cfg)
-scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_task_cfg])
+{%
+include-markdown "./code-example/hello-world/config.py"
+comments=false
+%}
 ```
 
 In lines 4-5, we define the function used later in the task to configure.
@@ -135,8 +128,8 @@ Hello Kylian Mbappe!
     component (chart, table, etc. ) the `read()` and `write()` method are called
     to edit and retrieve the data.
 
-    The [scenario selector](viselemts/scenario_selector.md) and the
-    [scenario viewer](viselemts/scenario.md) are designed for this purpose.
+    The [scenario selector](../gui/viselements/corelements/scenario_selector.md) and the
+    [scenario viewer](../gui/viselements/corelements/scenario.md) are designed for this purpose.
 
 !!! note
 

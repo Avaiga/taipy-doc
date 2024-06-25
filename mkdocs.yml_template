@@ -98,7 +98,8 @@ nav:
         - "Hello world!": manuals/new-user-manual/task-orchestration/hello-world.md
         - "Scenario Config": manuals/new-user-manual/task-orchestration/scenario-config.md
         - "Scenario Creation": manuals/new-user-manual/task-orchestration/scenario-creation.md
-        - "Scenario Submission": manuals/new-user-manual/task-orchestration/scenario-execution.md
+        - "Scenario Submission": manuals/new-user-manual/task-orchestration/scenario-submission.md
+        - "Visual elements": manuals/new-user-manual/task-orchestration/vizelmts.md
 
       - "What-if-analysis":
         - "Scenarios for What-if-analysis": manuals/new-user-manual/what-if-analysis/index.md

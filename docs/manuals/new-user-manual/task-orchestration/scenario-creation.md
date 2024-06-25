@@ -23,7 +23,7 @@ Three parameters can be given to the scenario creation method :
     === "Scenario creation without parameters"
 
         In this example, only the mandatory parameter config is provided. The creation_date
-        is set to the current datetime and the name is `None`.
+        is set by default to the current datetime and the name is `None`.
 
         ```python
         {%

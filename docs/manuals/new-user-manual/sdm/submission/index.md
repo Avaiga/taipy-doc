@@ -10,7 +10,7 @@ new unique `Submission^` entity is instantiated.
 
 TODO
 - Main principle
-- Cross-ref to the [Scenario submission](../../task-orchestration/scenario-execution.md) page.
+- Cross-ref to the [Scenario submission](../../task-orchestration/scenario-submission.md) page.
 
 # Submission attributes
 

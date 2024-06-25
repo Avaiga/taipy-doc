@@ -1,4 +1,4 @@
-Taipy provide some visual elements dedicated to the Data Node Management. These elements are the
+Taipy provides some visual elements dedicated to the Data Node Management. These elements are the
 Data Node Selector and the Data Node Viewer.
 
 # Data Node Selector
@@ -28,7 +28,7 @@ the selectable data nodes.
 <figure class="tp-center">
 <img src="../img/data-node-vizelmts/data-node-viewer-default-behavior.png" class="visible-dark" width="70%"/>
 <img src="../img/data-node-vizelmts/data-node-viewer-default-behavior.png" class="visible-light" width="70%"/>
-<figcaption>The list of selectable data nodes</figcaption>
+<figcaption>The data node viewer</figcaption>
 </figure>
 
 Three main sections are displayed as three tabs: the data itself, the data node's

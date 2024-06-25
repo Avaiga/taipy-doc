@@ -3,15 +3,15 @@ orchestration.
 
 # From task configurations
 
+The code below aims at configuring a `ScenarioConfig^` from a single `TaskConfig^`
+to instantiate a simple scenario computing the double of a given number.
+
 ```python linenums="1"
 {%
 include-markdown "./code-example/scenario-config/scenario-config-from-task-cfg.py"
 comments=false
 %}
 ```
-
-The code above aims at configuring a `ScenarioConfig^` to instantiate a simple scenario
-computing the double of a given number.
 
 Two data node configurations are created with the `Config.configure_data_node()^` method.
 One "input" for the number to double and one "output" for the result. For more details,
@@ -26,8 +26,9 @@ passing the task configuration as parameter.
 
 # Adding sequence descriptions
 
-A `Sequence^` is a subset of scenario tasks that can be executed together, without any other
-tasks. In the scenario configuration, we can describe the sequences to be created along
+A `Sequence^` is a subset of scenario tasks that can be executed together, independently of
+the other tasks. The sequences can be created directly on scenario instances, at run time,
+but they can also be describes in the scenario configurations, so they can be created along
 with the scenario creation.
 
 Here is a simple example assuming the task configurations
@@ -41,7 +42,8 @@ comments=false
 %}
 ```
 
-An alternative way to add sequences to a scenario configuration is to use the `add_sequences()` method.
+An alternative way to add sequences to a scenario configuration is to use the `add_sequences()`
+method.
 
 ```python linenums="1"
 {%

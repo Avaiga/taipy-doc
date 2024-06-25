@@ -3,10 +3,9 @@ submitting Taipy *Scenarios*.
 
 # What is a Scenario?
 
-Taipy provides the key concept of `Scenario^` to model an instance of a
-business problem. Among other functionalities, a *scenario* provides the
-functionalities for modeling, executing and monitoring algorithms. It models an
-algorithm as an execution graph (a Directed Acyclic Graph or DAG) to solve
+Taipy provides the key concept of `Scenario^`. Among other functionalities,
+a *scenario* provides the functionalities for modeling, executing and monitoring algorithms.
+It models an algorithm as an execution graph (a Directed Acyclic Graph or DAG) to solve
 a data science problem. The execution graph can be seen as a succession of functions
 (or `Task^`) that exchange data (or `DataNode^`). Scenarios can range from simple to
 highly complex.
@@ -19,7 +18,11 @@ highly complex.
         task processing a single input data node, the *raw data*, and returning a single
         output data node, the *cleaned data*.
 
-        ![Simple scenario](img/index/simple-algo.svg){ margin-left=25% width=52%}
+        <figure class="tp-center">
+        <img src="img/index/simple-algo.svg" class="visible-dark" width="400">
+        <img src="img/index/simple-algo.svg" class="visible-light" width="400">
+        <figcaption>Simple scenario</figcaption>
+        </figure>
 
     === "Linear example with two functions"
 
@@ -29,7 +32,11 @@ highly complex.
         intermediate data node *cleaned data* and returns a single output data node
         named *filtered data*.
 
-        ![Linear scenario](img/index/linear-algo.svg)
+        <figure class="tp-center">
+        <img src="img/index/linear-algo.svg" class="visible-dark" width="600"/>
+        <img src="img/index/linear-algo.svg" class="visible-light" width="600"/>
+        <figcaption>Linear scenario</figcaption>
+        </figure>
 
     === "Branching example"
 
@@ -37,10 +44,14 @@ highly complex.
         below, the task *generating* does not have any input. On the contrary, the task
         *aggregating* takes multiple inputs and returns multiple outputs.
 
-        ![Branching scenario](img/index/branching-algo.svg)
+        <figure class="tp-center">
+        <img src="img/index/branching-algo.svg" class="visible-dark" width="800"/>
+        <img src="img/index/branching-algo.svg" class="visible-light" width="800"/>
+        <figcaption>Branching scenario</figcaption>
+        </figure>
 
 - A `DataNode^` (the dark blue boxes) represents a reference to a dataset or a parameter
-    set. For more details, please refer to the [data node integration](../data-integration/index.md)
+    set. For more details, please refer to the [data integration](../data-integration/index.md)
     section.<br/>
     A data node can be shared by multiple tasks as input or output.
 - A `Task^` (the orange boxes) can be seen as a function receiving data node(s) as input
@@ -48,7 +59,7 @@ highly complex.
 
 # Why use Scenarios?
 
-Using Taipy for data processing and task execution  offers several distinct advantages
+Using Taipy for data processing and task execution offers several distinct advantages
 that cater to the needs of data scientists and developers aiming to build robust,
 production-ready applications with ease for their end-users. Here are some key benefits:
 
@@ -57,27 +68,26 @@ production-ready applications with ease for their end-users. Here are some key b
     and data nodes is simple. For more details on how to configure scenarios, see the
     [scenario configuration](scenario-config.md) page. <br>
     Taipy Studio, an extension for [Visual Studio Code](https://code.visualstudio.com/),
-    enhances the user experience by providing a graphical editor for scenario configurations.
+    enhances the user experience by providing a graphical editor to build a scenario configuration.
+    <br>
     For more details, see the [Taipy Studio](../../studio/index.md) page.
 
 2. **Efficient Orchestration and execution**:
     Taipy already implements utility methods to create, manage, submit your scenarios.
-    With support for parallelism, horizontal auto-scalability, remote execution, and skippable
+    With support for parallelism, remote execution, horizontal scalability, and skippable
     tasks, your end-users can run their data processing pipelines smoothly and quickly while
-    minimizing resource costs. For more details on how to create, submit and manage scenarios,
-    see the [scenario creation](scenario-creation.md), [scenario submission](scenario-execution.md),
+    minimizing resource costs. <br>
+    For more details on how to create, submit and manage scenarios,
+    see the [scenario creation](scenario-creation.md), [scenario submission](scenario-submission.md),
     [scenario management](../sdm/scenario/index.md) pages.
 
 3. **Taipy visual elements**:
     Benefit from a comprehensive set of visual elements to empower end users just in one line
-    of code. Manage, display, edit, submit scenarios in a user-friendly graphical interface.
-    For more details, see the [scenario selector](../sdm/scenario/scenario-selector.md),
-    the [scenario viewer](../sdm/scenario/scenario-viewer.md), and the [scenario DAG](../sdm/scenario/scenario-dag.md)
-    pages.<br>
-    A job selector is also available to monitor the jobs (task executions) and the scenario
-    submissions. For more details, see the [job selector](../sdm/job/job-selector.md) page.
+    of code. Manage, display, edit, and submit scenarios in a user-friendly graphical interface.
+    <br>
+    For more details, see the [visual elements](vizelmts.md) page.<br>
 
-4.  **Integration with Existing Tools:**
+4.  **Integration with existing Tools:**
     Integrate seamlessly with any Python library or any external model such as
     [Scikit learn](https://scikit-learn.org/),
     [MLlib](https://spark.apache.org/docs/latest/ml-guide.html),
@@ -97,21 +107,25 @@ definition. To create and submit scenarios, you need to:
     method and consists in defining the scenario structure and the execution graph. For that
     the data nodes and tasks must have been configured using `Config.configure_data_node()^`
     and `Config.configure_task()^` methods.
+    <br>
     For more details, see the [scenario configuration](scenario-config.md) page.
 
 2. **Create a scenario:**
     Instantiating a scenario from its configuration is done programmatically with the
     `create_scenario()^` function. When a scenario is instantiated, related tasks and data nodes
-    are instantiated from their configurations as well.<br>
+    are instantiated from their configurations as well.
+    For more details, see the [scenario creation](scenario-creation.md) page.<br>
     Typically, this step is done by an end-user using the graphical interface built with
-    [Taipy GUI](../../gui/index.md). The [scenario selector](viselemts/scenario_selector.md)
-    natively includes a scenario creation capability.
+    [Taipy GUI](../../gui/index.md). In particular, the
+    [scenario selector](../gui/viselements/corelements/scenario_selector.md) natively includes a
+    scenario creation capability.
 
 3. **Submit a scenario for execution:**
-    Submitting a scenario is done programmatically through the `submit()^` method.
-    For more details, see the [scenario execution](scenario-execution.md) page.<br>
+    Submitting a scenario for an execution is done programmatically through the `submit()^`
+    method. <br>
+    For more details, see the [scenario submission](scenario-submission.md) page.<br>
     Typically, this step is done by an end-user using the graphical interface built with
-    [Taipy GUI](../../gui/index.md). The [scenario viewer](viselemts/scenario.md) is
+    [Taipy GUI](../../gui/index.md). The [scenario viewer](../gui/viselements/corelements/scenario.md) is
     designed for this purpose.
 
 Please refer to the [hello world](hello-world.md) page to get a basic example.

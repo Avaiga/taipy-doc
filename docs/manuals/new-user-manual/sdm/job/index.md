@@ -10,7 +10,7 @@ Every time a task is orchestrated (through a `Scenario^`, a `Sequence^` or a `Ta
 
 TODO
 - Main principle
-- Cross-ref to the [Task orchestration](../../task-orchestration/scenario-execution.md) page.
+- Cross-ref to the [Task orchestration](../../task-orchestration/scenario-submission.md) page.
 
 # Graphical User Interface
 
