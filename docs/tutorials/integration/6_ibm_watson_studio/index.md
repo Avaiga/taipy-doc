@@ -13,7 +13,7 @@ Watson Studio jobs from a Taipy application.
 
 
 By integrating IBM Watson Studio projects with Taipy scenarios, you can streamline 
-workflows for “what-if” analysis and scenario comparison, which are crucial for 
+workflows for "what-if" analysis and scenario comparison, which are crucial for 
 developing robust Decision Support Systems for your end-users. This integration involves 
 creating custom jobs to interact with IBM Watson Studio's API, allowing you to read from 
 and write to datasets, execute code, and seamlessly combine Watson Studio's capabilities 
