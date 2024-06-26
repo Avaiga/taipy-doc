@@ -1,7 +1,7 @@
 ---
 title: Churn Classification
 category: decision_support
-data-keywords: ai classification scenario
+data-keywords: ai classification scenario enterprise
 short-description: Leverage Scenario management and comparison to improve decision making on a Churn prediction demo.
 img: churn_classification/images/churn-classification-data-Visualization-histogram.png
 ---
@@ -11,8 +11,16 @@ more cost-effective than acquiring new ones. By identifying
 customers who may leave early and applying retention strategies,
 businesses can lower churn rates and boost customer loyalty.
 
-[Try it live](https://churn-classification.taipy.cloud/Data-Visualization){: .tp-btn target='blank' }
-[Get it on GitHub](https://github.com/Avaiga/demo-churn-classification){: .tp-btn .tp-btn--accent target='blank' }
+!!! note "Taipy Enterprise edition"
+
+    Taipy provides robust, business-focused applications tailored for enterprise environments. To 
+    maintain standards of security and customization, these applications are proprietary like this 
+    application. If you’re looking for solutions that are immediately deployable and customizable to 
+    your business needs, we invite you to try them out and contact us for more detailed information.
+
+    [Try it live](https://churn-classification.taipy.cloud/Data-Visualization){: .tp-btn target='blank' }
+    [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
+
 
 # Understanding the Application
 The application comprises four pages accessible via the left panel.

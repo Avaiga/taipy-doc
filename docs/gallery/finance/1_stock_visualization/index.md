@@ -1,7 +1,7 @@
 ---
 title: Stock Prediction
 category: finance
-data-keywords: ai dashboard
+data-keywords: ai dashboard community
 short-description: Leverage Taipy and Prophet to visualize historical stock data and make predictions over 5 years.
 img: 1_stock_visualization/images/stock-visualization.png
 ---
