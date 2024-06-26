@@ -71,6 +71,3 @@ model and table. The results are then accessible for download in CSV format.
 
 ![Bar Cutting Databases](images/bar-cutting-databases.png){width=90% : .tp-image-border }
 
-# Disclaimer
-
-Code for this demo is not publicly available yet. Contact us for a sample.
