@@ -13,7 +13,10 @@ counter.
 
 !!! note "Enterprise application"
 
-    Taipy provides robust, business-focused applications tailored for enterprise environments. To maintain standards of security and customization, these applications are proprietary like this application. If you’re looking for solutions that are immediately deployable and customizable to your business needs, we invite you to try them out and contact us for more detailed information.
+    Taipy provides robust, business-focused applications tailored for enterprise environments. To 
+    maintain standards of security and customization, these applications are proprietary like this 
+    application. If you’re looking for solutions that are immediately deployable and customizable to 
+    your business needs, we invite you to try them out and contact us for more detailed information.
 
     [Try it live](https://qsr-fcst.taipy.cloud/data){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
