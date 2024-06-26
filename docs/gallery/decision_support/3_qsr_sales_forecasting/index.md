@@ -11,7 +11,7 @@ business problem involves time series forecasting for several core business acti
 the QSR, such as sales made on drinks or the number of transactions made at the front 
 counter.
 
-!!! note "Enterprise application"
+!!! note "Taipy Enterprise edition"
 
     Taipy provides robust, business-focused applications tailored for enterprise environments. To 
     maintain standards of security and customization, these applications are proprietary like this 

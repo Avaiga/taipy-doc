@@ -7,7 +7,7 @@ img: fraud_detection/images/fraud_threshold.png
 ---
 A Taipy Application that analyzes credit card transactions to detect fraud.
 
-!!! note "Enterprise application"
+!!! note "Taipy Enterprise edition"
 
     Taipy provides robust, business-focused applications tailored for enterprise environments. To 
     maintain standards of security and customization, these applications are proprietary like this 

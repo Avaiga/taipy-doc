@@ -113,13 +113,13 @@ Let's explore applications made with Taipy.
   <li>
     <input type="checkbox" name="filter-community" id="filter-community" value="community">
     <label class="tp-pill" for="filter-community">
-      <span>Community</span>
+      <span>Community edition</span>
     </label>
   </li>
   <li>
     <input type="checkbox" name="filter-enterprise" id="filter-enterprise" value="enterprise">
     <label class="tp-pill" for="filter-enterprise">
-      <span>Enterprise</span>
+      <span>Enterprise edition</span>
     </label>
   </li>
 </ul>

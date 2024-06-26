@@ -8,7 +8,7 @@ img: 3_production_planning/images/production-planning-data-visualization.png
 Optimizing resources to meet demand while minimizing costs is pivotal in manufacturing. This is why 
 production planning tools are mandatory in manufacturing.
 
-!!! note "Enterprise application"
+!!! note "Taipy Enterprise edition"
 
     Taipy provides robust, business-focused applications tailored for enterprise environments. To 
     maintain standards of security and customization, these applications are proprietary like this 
@@ -37,8 +37,9 @@ and B (FPB) over the next 11 months, with the current month marked as month 0.
 
 ![Data Visualization](images/production-planning-data-visualization.png){width=90% : .tp-image-border }
 
-Just above the chart, by clicking "Expand here," you can access an expandable containing initial 
-production data at time 0 (current month): stock & production levels, incoming raw material orders, 
+Just above the chart, by clicking "Expand here," you can access an you can 
+access an expandable block containing the initial production data at time 
+0 (current month): stock & production levels, incoming raw material orders, 
 and demand, all presented in a table.
 
 ## Page 2: Scenario Manager

@@ -11,7 +11,7 @@ more cost-effective than acquiring new ones. By identifying
 customers who may leave early and applying retention strategies,
 businesses can lower churn rates and boost customer loyalty.
 
-!!! note "Enterprise application"
+!!! note "Taipy Enterprise edition"
 
     Taipy provides robust, business-focused applications tailored for enterprise environments. To 
     maintain standards of security and customization, these applications are proprietary like this 

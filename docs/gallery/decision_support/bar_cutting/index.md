@@ -10,7 +10,7 @@ to minimize waste. Bar-cutting optimization minimizes waste
 by choosing optimal cutting patterns. This is crucial in industries
 with significant material costs such as Steel, Timber, etc.
 
-!!! note "Enterprise application"
+!!! note "Taipy Enterprise edition"
 
     Taipy provides robust, business-focused applications tailored for enterprise environments. To 
     maintain standards of security and customization, these applications are proprietary like this 

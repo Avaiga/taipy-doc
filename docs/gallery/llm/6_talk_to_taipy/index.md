@@ -7,7 +7,7 @@ img: 6_talk_to_taipy/images/talk_to_taipy_image.jpeg
 ---
 Explore datasets using only natural language using TalkToTaipy!
 
-!!! note "Enterprise application"
+!!! note "Taipy Enterprise edition"
 
     Taipy provides robust, business-focused applications tailored for enterprise environments. To 
     maintain standards of security and customization, these applications are proprietary like this 
