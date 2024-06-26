@@ -1,6 +1,6 @@
 The Taipy manuals are split into two categories:
 
-- [**User Manuals**](usermans/index.md): these manuals provide information on how to use different
+- [**User Manuals**](userman/index.md): these manuals provide information on how to use different
    features of Taipy. These manuals are organized by major topic provided in the complete Taipy
    offering:
 
@@ -19,4 +19,4 @@ The Taipy manuals are split into two categories:
 
     [:material-arrow-right: Python Reference Manual](reference/index.md)</br/>
     [:material-arrow-right: REST Reference Manual](reference_rest/index.md)</br/>
-    [:material-arrow-right: JavaScript Reference Manual](reference_guiext/index.md)</br/> 
+    [:material-arrow-right: JavaScript Reference Manual](reference_guiext/index.md)</br/>

@@ -68,79 +68,79 @@ nav:
     - "About Taipy's Manuals": manuals/index.md
 
     - "New User Manual":
-      - "About Taipy's User Manuals": manuals/new-user-manual/index.md
+      - "About Taipy's User Manuals": manuals/userman/index.md
       - "User interface":
-        - "User interface": manuals/new-user-manual/gui/index.md
-        - "Visual elements": manuals/new-user-manual/gui/viselements/index.md
-        - "Pages": manuals/new-user-manual/gui/pages/index.md
-        - "Variable binding": manuals/new-user-manual/gui/binding.md
-        - "Callbacks": manuals/new-user-manual/gui/callbacks.md
+        - "User interface": manuals/userman/gui/index.md
+        - "Visual elements": manuals/userman/gui/viselements/index.md
+        - "Pages": manuals/userman/gui/pages/index.md
+        - "Variable binding": manuals/userman/gui/binding.md
+        - "Callbacks": manuals/userman/gui/callbacks.md
         - "Styling":
-            - manuals/new-user-manual/gui/styling/index.md
-            - "The Stylekit": manuals/new-user-manual/gui/styling/stylekit.md
-        - "Notifications": manuals/new-user-manual/gui/notifications.md
+            - manuals/userman/gui/styling/index.md
+            - "The Stylekit": manuals/userman/gui/styling/stylekit.md
+        - "Notifications": manuals/userman/gui/notifications.md
         - "Extension libraries":
-          - "Extension libraries": manuals/new-user-manual/gui/extension/index.md
-          - "Static Elements": manuals/new-user-manual/gui/extension/static_element.md
+          - "Extension libraries": manuals/userman/gui/extension/index.md
+          - "Static Elements": manuals/userman/gui/extension/static_element.md
           - "Dynamic Elements":
-            - manuals/new-user-manual/gui/extension/dynamic_element/index.md
-            - "Scalar properties": manuals/new-user-manual/gui/extension/dynamic_element/scalar_props.md
+            - manuals/userman/gui/extension/dynamic_element/index.md
+            - "Scalar properties": manuals/userman/gui/extension/dynamic_element/scalar_props.md
 
       - "Data integration":
-        - "Data integration": manuals/new-user-manual/data-integration/index.md
-        - "Data node config": manuals/new-user-manual/data-integration/data-node-config.md
-        - "Data node usage": manuals/new-user-manual/data-integration/data-node-usage.md
-        - "Visual elements": manuals/new-user-manual/data-integration/data-node-vizelmts.md
-        - "Data node history and validity": manuals/new-user-manual/data-integration/data-node-history.md
+        - "Data integration": manuals/userman/data-integration/index.md
+        - "Data node config": manuals/userman/data-integration/data-node-config.md
+        - "Data node usage": manuals/userman/data-integration/data-node-usage.md
+        - "Visual elements": manuals/userman/data-integration/data-node-vizelmts.md
+        - "Data node history and validity": manuals/userman/data-integration/data-node-history.md
 
       - "Task orchestration":
-        - "Scenarios for Task orchestration": manuals/new-user-manual/task-orchestration/index.md
-        - "Hello world!": manuals/new-user-manual/task-orchestration/hello-world.md
-        - "Scenario Config": manuals/new-user-manual/task-orchestration/scenario-config.md
-        - "Scenario Creation": manuals/new-user-manual/task-orchestration/scenario-creation.md
-        - "Scenario Submission": manuals/new-user-manual/task-orchestration/scenario-submission.md
-        - "Visual elements": manuals/new-user-manual/task-orchestration/vizelmts.md
+        - "Scenarios for Task orchestration": manuals/userman/task-orchestration/index.md
+        - "Hello world!": manuals/userman/task-orchestration/hello-world.md
+        - "Scenario Config": manuals/userman/task-orchestration/scenario-config.md
+        - "Scenario Creation": manuals/userman/task-orchestration/scenario-creation.md
+        - "Scenario Submission": manuals/userman/task-orchestration/scenario-submission.md
+        - "Visual elements": manuals/userman/task-orchestration/vizelmts.md
 
       - "What-if-analysis":
-        - "Scenarios for What-if-analysis": manuals/new-user-manual/what-if-analysis/index.md
-        - "Multiple scenarios": manuals/new-user-manual/what-if-analysis/multiple-scenarios.md
-        - "Scopes, Scenarios and cycles": manuals/new-user-manual/what-if-analysis/scenarios-cycles.md
-        - "Scenarios comparators": manuals/new-user-manual/what-if-analysis/scenario-comparators.md
+        - "Scenarios for What-if-analysis": manuals/userman/what-if-analysis/index.md
+        - "Multiple scenarios": manuals/userman/what-if-analysis/multiple-scenarios.md
+        - "Scopes, Scenarios and cycles": manuals/userman/what-if-analysis/scenarios-cycles.md
+        - "Scenarios comparators": manuals/userman/what-if-analysis/scenario-comparators.md
 
       - "Scenario and Data Management":
-        - "Scenario and Data Management": manuals/new-user-manual/sdm/index.md
+        - "Scenario and Data Management": manuals/userman/sdm/index.md
         - "Data node":
-          - "Data node": manuals/new-user-manual/sdm/data-node/index.md
-          - "Data node selector": manuals/new-user-manual/sdm/data-node/data-node-selector.md
-          - "Data node viewer": manuals/new-user-manual/sdm/data-node/data-node-viewer.md
+          - "Data node": manuals/userman/sdm/data-node/index.md
+          - "Data node selector": manuals/userman/sdm/data-node/data-node-selector.md
+          - "Data node viewer": manuals/userman/sdm/data-node/data-node-viewer.md
         - "Task":
-          - "Task": manuals/new-user-manual/sdm/task/index.md
-          - "Task config": manuals/new-user-manual/sdm/task-config.md
+          - "Task": manuals/userman/sdm/task/index.md
+          - "Task config": manuals/userman/sdm/task-config.md
         - "Scenario":
-          - "Scenario": manuals/new-user-manual/sdm/scenario/index.md
-          - "Scenario config": manuals/new-user-manual/sdm/scenario/scenario-config.md
-          - "Scenario viewer": manuals/new-user-manual/sdm/scenario/scenario-viewer.md
-          - "Scenario selector": manuals/new-user-manual/sdm/scenario/scenario-selector.md
-          - "Scenario DAG": manuals/new-user-manual/sdm/scenario/scenario-dag.md
+          - "Scenario": manuals/userman/sdm/scenario/index.md
+          - "Scenario config": manuals/userman/sdm/scenario/scenario-config.md
+          - "Scenario viewer": manuals/userman/sdm/scenario/scenario-viewer.md
+          - "Scenario selector": manuals/userman/sdm/scenario/scenario-selector.md
+          - "Scenario DAG": manuals/userman/sdm/scenario/scenario-dag.md
         - "Job":
-          - "Job": manuals/new-user-manual/sdm/job/index.md
-          - "Job": manuals/new-user-manual/sdm/job/job-selector.md
-        - "Submission": manuals/new-user-manual/sdm/submission/index.md
-        - "Sequence": manuals/new-user-manual/sdm/sequence/index.md
-        - "Cycle": manuals/new-user-manual/sdm/cycle/index.md
+          - "Job": manuals/userman/sdm/job/index.md
+          - "Job": manuals/userman/sdm/job/job-selector.md
+        - "Submission": manuals/userman/sdm/submission/index.md
+        - "Sequence": manuals/userman/sdm/sequence/index.md
+        - "Cycle": manuals/userman/sdm/cycle/index.md
 
       - "Configuration":
-        - "Configuration": manuals/new-user-manual/configuration/index.md
-        - "Configuring GUI Service": manuals/new-user-manual/configuration/gui.md
-        - "Configuring Core Service": manuals/new-user-manual/configuration/core-config.md
-        - "Configuring Job Execution ": manuals/new-user-manual/configuration/job-config.md
-        - "Config Checker": manuals/new-user-manual/configuration/config-checker.md
-        - "Advanced configuration": manuals/new-user-manual/configuration/advanced-config.md
+        - "Configuration": manuals/userman/configuration/index.md
+        - "Configuring GUI Service": manuals/userman/configuration/gui.md
+        - "Configuring Core Service": manuals/userman/configuration/core-config.md
+        - "Configuring Job Execution ": manuals/userman/configuration/job-config.md
+        - "Config Checker": manuals/userman/configuration/config-checker.md
+        - "Advanced configuration": manuals/userman/configuration/advanced-config.md
 
       - "Authentication and Roles":
-        - "Authentication and Authorization": manuals/new-user-manual/auth/index.md
-        - "Authentication": manuals/new-user-manual/auth/authentication.md
-        - "Authorization": manuals/new-user-manual/auth/authorization.md
+        - "Authentication and Authorization": manuals/userman/auth/index.md
+        - "Authentication": manuals/userman/auth/authentication.md
+        - "Authorization": manuals/userman/auth/authorization.md
 
       - "Scheduler":
         - "Scheduler": manuals/new-user-manual/scheduling/index.md
@@ -195,7 +195,7 @@ nav:
       - "Using Notebooks": manuals/new-user-manual/notebooks.md
 
     - "User Manuals":
-      - "About Taipy's User Manuals": manuals/usermans/index.md
+      - "About Taipy's User Manuals": manuals/userman/index.md
       - "Taipy GUI":
         - "Taipy GUI": manuals/gui/index.md
         - "Pages":

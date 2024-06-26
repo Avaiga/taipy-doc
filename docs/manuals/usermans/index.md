@@ -1,9 +1,9 @@
-This User Manual covers all the topics and concepts that you can find in Taipy. For each topic, 
-we are trying to provide as many examples as possible so that you as a Taipy user can perform a 
+This User Manual covers all the topics and concepts that you can find in Taipy. For each topic,
+we are trying to provide as many examples as possible so that you as a Taipy user can perform a
 specific task.
 
-If you are just starting with Taipy, you may want to look at the 
-[Getting Started](../../getting_started/index.md) in order to see a step-by-step example of a 
+If you are just starting with Taipy, you may want to look at the
+[Getting Started](../../getting_started/index.md) in order to see a step-by-step example of a
 complete Taipy application.
 
 !!! note "Supported Python versions"
@@ -16,7 +16,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
 
 <div class="tp-row tp-row--gutter-sm">
   <div class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card tp-content-card--beta" href="../gui/viselements/">
+    <a class="tp-content-card tp-content-card--beta" href="../gui/viselements">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="../../images/icons/visual-element-w.svg">
         <h3>Visual elements</h3>
@@ -49,11 +49,11 @@ user’s experience.
 
 # Taipy Core - `taipy.core`
 
-The `taipy.core^` package is a Python library designed to build powerful and customized 
-data-driven back-end applications. It provides the necessary tools to help Python developers 
+The `taipy.core^` package is a Python library designed to build powerful and customized
+data-driven back-end applications. It provides the necessary tools to help Python developers
 transform their algorithms into a complete back-end application.
 
-Taipy Core brings algorithm management to another level: algorithms are now connected to the 
+Taipy Core brings algorithm management to another level: algorithms are now connected to the
 end-user through user-defined scenarios, interactive data, smart job orchestration, etc.
 
 [:material-arrow-right: Definition of Taipy Core concepts](../core/concepts/index.md),
@@ -64,10 +64,10 @@ end-user through user-defined scenarios, interactive data, smart job orchestrati
 
 # Taipy REST - `taipy.rest`
 
-The `taipy.rest` package allows you to access Taipy Core functionalities such as scenarios 
+The `taipy.rest` package allows you to access Taipy Core functionalities such as scenarios
 management, sequences and task orchestration, data management, etc., through a dedicated REST API.
-This package aims to provide a solution to easily integrate Taipy applications with other IT 
-systems. The API comes with multiple endpoints for you to work with Taipy Core conveniently and 
+This package aims to provide a solution to easily integrate Taipy applications with other IT
+systems. The API comes with multiple endpoints for you to work with Taipy Core conveniently and
 efficiently.
 
 [:material-arrow-right: Taipy REST User Manual](../rest/index.md)

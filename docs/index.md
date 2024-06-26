@@ -141,7 +141,7 @@ from initial prototypes to production-ready applications.
     </a>
   </li>
     <li>
-    <a class="tp-pill" href="manuals/usermans/">
+    <a class="tp-pill" href="manuals/userman/">
       <span>…</span>
       <div class="tp-tooltip">
         <p>Browse the complete list of features.</p>

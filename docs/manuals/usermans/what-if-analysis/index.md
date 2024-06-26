@@ -23,15 +23,15 @@ The main advantage of using *scenarios* for what-if analysis are:
     or parameter set. It is essential for use cases where experiments need to be
     conducted with different assumptions, or when data needs to be preserved for
     auditing and comparison purposes.<br>
-    For more details, see the [Multiple scenarios](../what-if-analysis/multiple-scenarios.md) page.
+    For more details, see the [Multiple scenarios](md) page.
 
 - **Temporal Analysis**: Use cycles for recurring business cases, ideal for time-based
     analyses like monthly forecasts.<br>
-    For more details, see the [Scopes, scenarios and cycles](../what-if-analysis/scenario-and-cycles.md) page.
+    For more details, see the [Scopes, scenarios and cycles](.md) page.
 
 - **Flexibility**: Easily manage and compare multiple scenarios for various business situations.
     <br>
-    For more details, see the [Scenario comparators](../what-if-analysis/scenario-comparators.md) page.
+    For more details, see the [Scenario comparators](s.md) page.
 
 # Main principle
 

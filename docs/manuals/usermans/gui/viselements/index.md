@@ -1,0 +1,239 @@
+Controls are user interface objects representing data. Users can interact with these controls.
+
+# Standard controls
+
+Standard controls can be used in all situations when a user interface is needed.
+These controls are elements representing generic data.<br/>
+Here, you can find common graphical controls such as push buttons and sliders, as well as more
+advanced graphical controls such as selectors, tables, and charts.
+
+!!! note "Available in Taipy GUI, Taipy Community, and Enterprise editions"
+
+    The controls listed in this section are provided in the
+    [`taipy-gui`](https://pypi.org/project/taipy-gui/) Python package. These controls are
+    also present when [`taipy`](https://pypi.org/project/taipy/) is installed.
+
+Here is the list of all available controls in Taipy:
+
+<div class="tp-ve-cards">
+<a class="tp-ve-card" href="./standard-and-blocks/text/">
+<div>text</div>
+<img class="tp-ve-l" src="standard-and-blocks/text-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/text-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/text-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/text-dh.png"/>
+<p>Displays a value as a static text.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/button/">
+<div>button</div>
+<img class="tp-ve-l" src="standard-and-blocks/button-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/button-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/button-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/button-dh.png"/>
+<p>A control that can trigger a function when pressed.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/input/">
+<div>input</div>
+<img class="tp-ve-l" src="standard-and-blocks/input-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/input-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/input-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/input-dh.png"/>
+<p>A control that displays some text that can potentially be edited.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/slider/">
+<div>slider</div>
+<img class="tp-ve-l" src="standard-and-blocks/slider-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/slider-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/slider-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/slider-dh.png"/>
+<p>Displays and allows the user to set a value within a range.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/number/">
+<div>number</div>
+<img class="tp-ve-l" src="standard-and-blocks/number-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/number-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/number-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/number-dh.png"/>
+<p>A kind of [`input`](input.md) that handles numbers.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/toggle/">
+<div>toggle</div>
+<img class="tp-ve-l" src="standard-and-blocks/toggle-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/toggle-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/toggle-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/toggle-dh.png"/>
+<p>A series of toggle buttons that the user can select.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/date/">
+<div>date</div>
+<img class="tp-ve-l" src="standard-and-blocks/date-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/date-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/date-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/date-dh.png"/>
+<p>A control that can display and specify a formatted date, with or without time.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/date_range/">
+<div>date_range</div>
+<img class="tp-ve-l" src="standard-and-blocks/date_range-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/date_range-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/date_range-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/date_range-dh.png"/>
+<p>A control that can display and specify a range of dates or times.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/chart/">
+<div>chart</div>
+<img class="tp-ve-l" src="standard-and-blocks/chart-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/chart-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/chart-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/chart-dh.png"/>
+<p>Displays data sets in a chart or a group of charts.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/table/">
+<div>table</div>
+<img class="tp-ve-l" src="standard-and-blocks/table-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/table-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/table-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/table-dh.png"/>
+<p>Displays a data set as tabular data.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/selector/">
+<div>selector</div>
+<img class="tp-ve-l" src="standard-and-blocks/selector-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/selector-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/selector-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/selector-dh.png"/>
+<p>A control that allows for selecting items from a list of choices.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/navbar/">
+<div>navbar</div>
+<img class="tp-ve-l" src="standard-and-blocks/navbar-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/navbar-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/navbar-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/navbar-dh.png"/>
+<p>A navigation bar control.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/image/">
+<div>image</div>
+<img class="tp-ve-l" src="standard-and-blocks/image-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/image-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/image-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/image-dh.png"/>
+<p>A control that can display an image.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/indicator/">
+<div>indicator</div>
+<img class="tp-ve-l" src="standard-and-blocks/indicator-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/indicator-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/indicator-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/indicator-dh.png"/>
+<p>Displays a label on a red to green scale at a specific position.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/status/">
+<div>status</div>
+<img class="tp-ve-l" src="standard-and-blocks/status-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/status-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/status-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/status-dh.png"/>
+<p>Displays a status or a list of statuses.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/file_download/">
+<div>file_download</div>
+<img class="tp-ve-l" src="standard-and-blocks/file_download-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/file_download-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/file_download-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/file_download-dh.png"/>
+<p>Allows downloading of a file content.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/file_selector/">
+<div>file_selector</div>
+<img class="tp-ve-l" src="standard-and-blocks/file_selector-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/file_selector-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/file_selector-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/file_selector-dh.png"/>
+<p>Allows uploading a file content.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/login/">
+<div>login</div>
+<img class="tp-ve-l" src="standard-and-blocks/login-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/login-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/login-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/login-dh.png"/>
+<p>A control that lets users enter their username and password.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/chat/">
+<div>chat</div>
+<img class="tp-ve-l" src="./standard-and-blocks/chat-l.png"/><img class="tp-ve-lh" src="./standard-and-blocks/chat-lh.png"/>
+<img class="tp-ve-d" src="./standard-and-blocks/chat-d.png"/><img class="tp-ve-dh" src="./standard-and-blocks/chat-dh.png"/>
+<p>A control that provides the user interface for chatting.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/menu/">
+<div>menu</div>
+<img class="tp-ve-l" src="standard-and-blocks/menu-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/menu-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/menu-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/menu-dh.png"/>
+<p>Shows a left-side menu.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/dialog/">
+<div>dialog</div>
+<img class="tp-ve-l" src="standard-and-blocks/dialog-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/dialog-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/dialog-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/dialog-dh.png"/>
+<p>A modal dialog.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/tree/">
+<div>tree</div>
+<img class="tp-ve-l" src="standard-and-blocks/tree-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/tree-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/tree-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/tree-dh.png"/>
+<p>A control that allows for selecting items from a hierarchical view of items.</p>
+</a>
+</div>
+
+
+# Scenario and Data Management controls
+
+Some controls are dedicated to Scenario Management. These controls let users select
+Entities and interact with them.
+
+!!! warning "Available in Taipy Community and Enterprise editions"
+
+    The controls listed in this section are available only if the
+    [`taipy`](https://pypi.org/project/taipy/) Python package is installed. These controls are
+    **not** present if only [`taipy-gui`](https://pypi.org/project/taipy-gui/) is installed.
+
+Here is the list of all the scenario management-related controls that are available in Taipy:
+
+<div class="tp-ve-cards">
+<a class="tp-ve-card" href="./corelements/scenario_selector/">
+<div style="font-size: .8em;">scenario_selector</div>
+<img class="tp-ve-l" src="corelements/scenario_selector-l.png"/><img class="tp-ve-lh" src="corelements/scenario_selector-lh.png"/>
+<img class="tp-ve-d" src="corelements/scenario_selector-d.png"/><img class="tp-ve-dh" src="corelements/scenario_selector-dh.png"/>
+<p>Select scenarios from the list of all scenario entities.</p>
+</a>
+<a class="tp-ve-card" href="./corelements/scenario/">
+<div>scenario</div>
+<img class="tp-ve-l" src="corelements/scenario-l.png"/><img class="tp-ve-lh" src="corelements/scenario-lh.png"/>
+<img class="tp-ve-d" src="corelements/scenario-d.png"/><img class="tp-ve-dh" src="corelements/scenario-dh.png"/>
+<p>Displays and modify the definition of a scenario.</p>
+</a>
+<a class="tp-ve-card" href="./corelements/scenario_dag/">
+<div>scenario_dag</div>
+<img class="tp-ve-l" src="corelements/scenario_dag-l.png"/><img class="tp-ve-lh" src="corelements/scenario_dag-lh.png"/>
+<img class="tp-ve-d" src="corelements/scenario_dag-d.png"/><img class="tp-ve-dh" src="corelements/scenario_dag-dh.png"/>
+<p>Displays the DAG of a scenario.</p>
+</a>
+<a class="tp-ve-card" href="./corelements/data_node_selector/">
+<div style="font-size: .8em;">data_node_selector</div>
+<img class="tp-ve-l" src="corelements/data_node_selector-l.png"/><img class="tp-ve-lh" src="corelements/data_node_selector-lh.png"/>
+<img class="tp-ve-d" src="corelements/data_node_selector-d.png"/><img class="tp-ve-dh" src="corelements/data_node_selector-dh.png"/>
+<p>Displays a list of the Data Node entities that can be selected.</p>
+</a>
+<a class="tp-ve-card" href="./corelements/data_node/">
+<div>data_node</div>
+<img class="tp-ve-l" src="corelements/data_node-l.png"/><img class="tp-ve-lh" src="corelements/data_node-lh.png"/>
+<img class="tp-ve-d" src="corelements/data_node-d.png"/><img class="tp-ve-dh" src=./corelements/data_node-dh.png"/>
+<p>Displays and edits of a data node.</p>
+</a>
+<a class="tp-ve-card" href="./corelements/job_selector/">
+<div>job_selector</div>
+<img class="tp-ve-l" src="corelements/job_selector-l.png"/><img class="tp-ve-lh" src="corelements/job_selector-lh.png"/>
+<img class="tp-ve-d" src="corelements/job_selector-d.png"/><img class="tp-ve-dh" src="corelements/job_selector-dh.png"/>
+<p>Select jobs from the list of all job entities.</p>
+</a>
+</div>
+
+
+# Block elements
+
+Blocks are visual elements that allow for grouping user interface elements.
+Here is the list of all available block elements in Taipy:
+
+<div class="tp-ve-cards">
+<a class="tp-ve-card" href="./standard-and-blocks/part/">
+<div>part</div>
+<img class="tp-ve-l" src="standard-and-blocks/part-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/part-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/part-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/part-dh.png"/>
+<p>Displays its children in a block.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/expandable/">
+<div>expandable</div>
+<img class="tp-ve-l" src="standard-and-blocks/expandable-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/expandable-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/expandable-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/expandable-dh.png"/>
+<p>Displays its child elements in a collapsible area.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/layout/">
+<div>layout</div>
+<img class="tp-ve-l" src="standard-and-blocks/layout-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/layout-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/layout-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/layout-dh.png"/>
+<p>Organizes its children into cells in a regular grid.</p>
+</a>
+<a class="tp-ve-card" href="./standard-and-blocks/pane/">
+<div>pane</div>
+<img class="tp-ve-l" src="standard-and-blocks/pane-l.png"/><img class="tp-ve-lh" src="standard-and-blocks/pane-lh.png"/>
+<img class="tp-ve-d" src="standard-and-blocks/pane-d.png"/><img class="tp-ve-dh" src="standard-and-blocks/pane-dh.png"/>
+<p>A side pane.</p>
+</a>
+</div>
+
+
