@@ -37,6 +37,18 @@ Uncover a list of applications using LLM.
       <span>Optimization</span>
     </label>
   </li>
+  <li>
+    <input type="checkbox" name="filter-community" id="filter-community" value="community">
+    <label class="tp-pill" for="filter-community">
+      <span>Community</span>
+    </label>
+  </li>
+  <li>
+    <input type="checkbox" name="filter-enterprise" id="filter-enterprise" value="enterprise">
+    <label class="tp-pill" for="filter-enterprise">
+      <span>Enterprise</span>
+    </label>
+  </li>
 </ul>
 
 [LIST_OF_ITEMS]
