@@ -1,7 +1,7 @@
 ---
 title: Real-time Face Recognition
 category: other
-data-keywords: ai
+data-keywords: ai community
 short-description: Real-time face detection and recognition demo using a Taipy UI with OpenCV.
 img: face_recognition/images/face-recognition.jpg
 ---

@@ -1,17 +1,27 @@
 ---
 title: Production Planning
 category: decision_support
-data-keywords: optimization scenario cycle comparison
+data-keywords: optimization scenario cycle comparison enterprise
 short-description: Simulate manufacturing scenarios and optimize production quantities to reduce production costs.
 img: 3_production_planning/images/production-planning-data-visualization.png
 ---
-Production planning is pivotal in manufacturing, optimizing resources to meet
-demand while minimizing costs. This demo offers a solution for efficient production and cost management.
+Optimizing resources to meet demand while minimizing costs is pivotal in manufacturing. This is why 
+production planning tools are mandatory in manufacturing.
 
-[Try it live](https://production-planning.taipy.cloud/Data-Visualization){: .tp-btn target='blank' }
-[Get it on GitHub](https://github.com/Avaiga/demo-production-planning){: .tp-btn .tp-btn--accent target='blank' }
+!!! note "Taipy Enterprise edition"
+
+    Taipy provides robust, business-focused applications tailored for enterprise environments. To 
+    maintain standards of security and customization, these applications are proprietary like this 
+    application. If you’re looking for solutions that are immediately deployable and customizable to 
+    your business needs, we invite you to try them out and contact us for more detailed information.
+
+    [Try it live](https://production-planning.taipy.cloud/Data-Visualization){: .tp-btn target='blank' }
+    [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
+
+![New scenario](images/production-planning-Scenario-Manager-new-scenario.png){width=90% : .tp-image-border }
 
 # Understanding the Application
+
 The application consists of five pages accessible via the left panel by expanding the menu list.
 The problem revolves around planning production for two finished products:
 FPA (a wooden table) & FPB (a wooden stool). Each Finished Product is crafted
@@ -20,21 +30,17 @@ In this demo, an optimization algorithm, based on the PuLP open-source math solv
 determines the optimal production levels for FPA & FPB, minimizing costs while
 adhering to specific production constraints (explained below).
 
-
 ## Page 1: Data Visualization
-Upon registering with a new account (name & password), the first page is displayed.
 
 The primary chart depicts future demand for finished products A (FPA)
 and B (FPB) over the next 11 months, with the current month marked as month 0.
 
-
 ![Data Visualization](images/production-planning-data-visualization.png){width=90% : .tp-image-border }
 
-Just above the chart, by clicking "Expand here," you can access an expandable
-Taipy front-end containing initial production data at time 0 (current month):
-stock & production levels, incoming raw material orders, and demand, all presented in a table.
-
-
+Just above the chart, by clicking "Expand here," you can access an you can 
+access an expandable block containing the initial production data at time 
+0 (current month): stock & production levels, incoming raw material orders, 
+and demand, all presented in a table.
 
 ## Page 2: Scenario Manager
 
@@ -73,6 +79,7 @@ graphs can be selected by choosing the data to display (costs, productions, etc.
 
 
 ### Modifying the Parameters
+
 On the right-hand side of this panel, you can modify various parameters categorized into three sections:
 
 - **Capacity Constraints**: Modify capacity values for different products (finished and raw).
@@ -83,6 +90,7 @@ By "Playing" with these parameters, you can create several scenarios.
 
 
 ## Page 3: Compare Scenarios
+
 To Compare two scenarios, select them then click on the "compare scenario" button.
 You can select different comparison metrics  such as costs, purchases, and production levels, etc.
 
