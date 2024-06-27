@@ -36,5 +36,5 @@ jan_scenario_low.capacity.write(500 ) # Set the capacity to 500 units
 
 # Create a scenario for February with low capacity
 feb_scenario_low = tp.create_scenario(scenario_cfg)
-feb_scenario_low.current_month.write(datetime(2024, 2, 1)  # Set the month )to February 2024
+feb_scenario_low.current_month.write(datetime(2024, 2, 1))  # Set the month )to February 2024
 feb_scenario_low.capacity.write(500)  # Set the capacity to 500 units

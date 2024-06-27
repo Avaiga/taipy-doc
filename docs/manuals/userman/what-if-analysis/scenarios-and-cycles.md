@@ -93,7 +93,7 @@ The following code snippet shows how to configure the data nodes with different 
 
 ```python linenums="1"
 {%
-include-markdown "./code-example/data-node-scopes/sales-forecasts-and-prod-orders.py"
+include-markdown "./code-example/scenarios-and-cycles/sales-forecasts-and-prod-orders.py"
 comments=false
 %}
 ```
