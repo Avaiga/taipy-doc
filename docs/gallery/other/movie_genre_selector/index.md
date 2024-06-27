@@ -1,7 +1,7 @@
 ---
 title: Movie Genre Selector
 category: other
-data-keywords: ai dashboard
+data-keywords: ai dashboard community
 short-description: Explore this user-friendly interface to help you discover movies from your favorite movie genres.
 img: movie_genre_selector/images/movie-genre-selector.png
 ---

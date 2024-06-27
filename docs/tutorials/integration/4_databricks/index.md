@@ -14,7 +14,7 @@ application.
 
 More specifically, this article demonstrates how to integrate Taipy scenarios with 
 Databricks jobs. Taipy's scenarios serve as a potent tool for orchestrating tasks and 
-performing 'what-if' analysis (i.e., examining various versions of a business problem). 
+performing "what-if" analysis (i.e. examining various versions of a business problem). 
 
 
 ![Databricks](images/databricks.png){width=50% : .tp-image}
