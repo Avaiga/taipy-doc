@@ -77,7 +77,7 @@ node configurations that are not connected to the execution graph. These
 configurations can be added to the scenario configuration using the
 `Config.configure_scenario()^` method.
 
-For more details, see the [Data node scopes](../what-if-analysis/multiple-scenarios.md) page.
+For more examples, see the [Multiple scenarios](../what-if-analysis/multiple-scenarios.md) page.
 
 # Frequency for cycle management
 
@@ -85,8 +85,8 @@ A `ScenarioConfig^` can also hold a frequency to model recurrent business proble
 to solve. When a frequency is provided to a configuration, the scenarios instantiated
 from this configuration are automatically attached to the `Cycle^` (a time period)
 corresponding to the date of the scenario creation.
-For more details, on scopes and cycles see the
-[Recurrent Scenarios](../../what-if-analysis/scenarios-and-cycles.md) page.
+For more details on cycles see the
+[Recurrent Scenarios](../what-if-analysis/scenarios-and-cycles.md) page.
 
 # Adding scenario comparator
 
