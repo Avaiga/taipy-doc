@@ -1,13 +1,21 @@
 ---
 title: TalkToTaipy
 category: llm
-data-keywords: dashboard vizelement layout chart ai
+data-keywords: dashboard vizelement layout chart ai enterprise
 short-description: Explore datasets using only natural language using TalkToTaipy!
 img: 6_talk_to_taipy/images/talk_to_taipy_image.jpeg
 ---
 Explore datasets using only natural language using TalkToTaipy!
 
-[Try it live](https://talk-to-taipy.taipy.cloud/){: .tp-btn target='blank' }
+!!! note "Taipy Enterprise edition"
+
+    Taipy provides robust, business-focused applications tailored for enterprise environments. To 
+    maintain standards of security and customization, these applications are proprietary like this 
+    application. If you’re looking for solutions that are immediately deployable and customizable to 
+    your business needs, we invite you to try them out and contact us for more detailed information.
+
+    [Try it live](https://talk-to-taipy.taipy.cloud/){: .tp-btn target='blank' }
+    [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
 

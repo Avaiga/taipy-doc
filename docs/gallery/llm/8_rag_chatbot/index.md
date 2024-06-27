@@ -1,7 +1,7 @@
 ---
 title: RAG Chatbot
 category: llm
-data-keywords: vizelement ai
+data-keywords: vizelement ai community
 short-description: A chatbot to ask questions about pdf files using RAG
 img: 8_rag_chatbot/images/rag_screen.png
 ---
