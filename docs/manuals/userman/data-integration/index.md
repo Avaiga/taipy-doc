@@ -1,16 +1,16 @@
-In this section, we explore how to integrate data into your Taipy application using _data nodes_.
+In this section, we explore how to integrate data into your Taipy application using *data nodes*.
 A `DataNode^` is the cornerstone of Taipy's data management capabilities, providing a flexible
 and consistent way to handle data from various sources. Whether your data resides in files,
-in databases, in custom data stores, or on local or remote environments, _data nodes_ simplify
+in databases, in custom data stores, or on local or remote environments, *data nodes* simplify
 the process of accessing, processing, and managing your data.
 
 # What is a Data Node?
-A _data node_ in Taipy is an abstraction that represents some data. It provides a uniform
+A *data node* in Taipy is an abstraction that represents some data. It provides a uniform
 interface for reading and writing data, regardless of the underlying storage mechanism.
 This abstraction allows you to focus on your application's logic without worrying about the
 intricacies of data management.
 
-A _data node_ does not contain the data itself but holds all the necessary information to
+A *data node* does not contain the data itself but holds all the necessary information to
 read and write the actual data. It can be seen as a dataset descriptor or data reference.
 It is design to model data:
 
@@ -26,7 +26,7 @@ It is design to model data:
 
 To create a data node, you first need to define a data node configuration using a
 `DataNodeConfig^` object. This configuration is used to instantiate one (or multiple)
-_data node(s)_ with the desired properties.
+*data node(s)* with the desired properties.
 
 # Why use Data Nodes?
 The main advantages of using data nodes in a Taipy project are:
@@ -50,8 +50,8 @@ The main advantages of using data nodes in a Taipy project are:
     For more information, see the [data node history](data-node-history.md) page.
 
 5. **Seamless integration with Task orchestration and Scenario management**:
-    Data pipelines in Taipy are modeled as execution graphs within _scenarios_ connecting data nodes
-    through _tasks_. Task orchestration and scenario management are key features of Taipy.
+    Data pipelines in Taipy are modeled as execution graphs within *scenarios* connecting data nodes
+    through *tasks*. Task orchestration and scenario management are key features of Taipy.
     For more information, see the [Task orchestration](../task-orchestration/index.md) or
     [Scenario and Data Management](../sdm/index.md) pages.
 

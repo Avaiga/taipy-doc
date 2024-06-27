@@ -34,8 +34,8 @@ A `ScenarioConfig^` can also hold a frequency to model recurrent business proble
 to solve. When a frequency is provided to a configuration, the scenarios instantiated
 from this configuration are automatically attached to the `Cycle^` (a time period)
 corresponding to the date of the scenario creation.
-For more details, see the [Scopes, scenarios and cycles](../../what-if-analysis/scenario-and-cycles.md)
-page.
+For more details, on scopes and cycles see the
+[Recurrent Scenarios](../../what-if-analysis/scenarios-and-cycles.md) page.
 
 # Adding scenario comparator
 

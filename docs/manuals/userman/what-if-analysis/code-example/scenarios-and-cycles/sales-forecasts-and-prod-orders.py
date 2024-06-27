@@ -25,6 +25,17 @@ scenario_cfg = Config.configure_scenario("scenario", frequency=Frequency.MONTHLY
                                              orders_cfg])
 
 # Instantiate three scenarios
+# Create a scenario for January with high capacity
 jan_scenario_high = tp.create_scenario(scenario_cfg, datetime(2024, 1, 1))
+jan_scenario_high.current_month.write(jan_scenario_high.creation_date)  # Set the month to January 2024
+jan_scenario_high.capacity.write(10000)  # Set the capacity to 10,000 units
+
+# Create another scenario for January with low capacity
 jan_scenario_low = tp.create_scenario(scenario_cfg, datetime(2024, 1, 1))
+jan_scenario_low.current_month.write(jan_scenario_low.creation_date)  # Set the month to January 2024
+jan_scenario_low.capacity.write(500 ) # Set the capacity to 500 units
+
+# Create a scenario for February with low capacity
 feb_scenario_low = tp.create_scenario(scenario_cfg, datetime(2024, 2, 1))
+feb_scenario_low.current_month.write(feb_scenario_low.creation_date)  # Set the month to February 2024
+feb_scenario_low.capacity.write(500)  # Set the capacity to 500 units

@@ -102,10 +102,10 @@ for each scenario. The `create_scenario()^` function is used to instantiate the 
 
 The example above demonstrates how to create different scenarios from the same configuration.
 Three scenarios are created and different data are set to their data nodes (such as the
-current_month and the capacity). This allows you to model and analyze different
-business conditions or what-if scenarios. Each scenario is independent of the
-others. You can use the utility methods provided by Taipy to access, read, write, compare,
-and manage data nodes and scenarios.
+current_month and the capacity). This allows you to model and analyze different business
+conditions or what-if scenarios. Each scenario is independent of the others. You can use the
+utility methods provided by Taipy to access, read, write, compare, and manage data nodes and
+scenarios.
 
 !!! important "User Interface"
 

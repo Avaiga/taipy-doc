@@ -28,9 +28,10 @@ The main advantages of using *scenarios* for what-if analysis are:
     auditing and comparison purposes.<br>
     For more details, see the [Multiple scenarios](multiple-scenarios.md) page.
 
-- **Temporal Analysis**: Use cycles for recurring business cases, ideal for time-based
-    analyses like weekly forecasts, monthly planning, etc.<br>
-    For more details, see the [Scopes, scenarios and cycles](scenario-and-cycles.md) page.
+- **Temporal Analysis**: Use cycles and data node scope for recurring business
+    cases, ideal for time-based analyses like weekly forecasts, monthly planning,
+    etc.<br>
+    For more details, see the [Recurrent scenarios](scenarios-and-cycles.md) page.
 
 - **Easy to use**: Easily manage and compare multiple scenarios for various business situations.
     <br>
