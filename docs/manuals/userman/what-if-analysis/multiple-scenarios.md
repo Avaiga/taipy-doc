@@ -70,17 +70,18 @@ configuration is then used to instantiate three scenarios.
 
 ## Data node configuration
 
-Most of the data nodes are configured with the `Config.configure_data_node()^` method. This is
-the standard way to use when there is no constraint on the data storage format. As you can see
-in the example, some data nodes are configured using other methods like
-`Config.configure_csv_data_node()^` or `Config.configure_sql_data_node()^`. These methods
-are designed to facilitate the configuration when the data format is constrained. Many
-predefined data nodes are available in Taipy. For more details, see the
+The default way of configuring a data node is through the `Config.configure_data_node()^` method.
+It returns a `DataNodeConfig^` object. This is the standard way when there is no constraint on
+the data storage format. As you can see in the example, some data nodes are configured using
+other methods like `Config.configure_csv_data_node()^` or `Config.configure_sql_data_node()^`.
+These methods are designed to facilitate the configuration when the data format is constrained.
+Most of the time, the format is constraint by a third party component that you need to integrate
+with. Many predefined data nodes are available in Taipy. For more details, see the
 [data node configuration](../data-integration/data-node-config.md) page.
 
 ## Scenario configuration
 
-Once the data nodes are configured, you can configure your scenarios. The
+Once you have all your data nodes configurations `DataNodeConfig`, you can configure your scenarios. The
 `Config.configure_scenario()^` method takes the data node configurations as parameter
 and returns the scenario configuration `ScenarioConfig^`.
 
@@ -106,10 +107,13 @@ business conditions or what-if scenarios. Each scenario is independent of the
 others. You can use the utility methods provided by Taipy to access, read, write, compare,
 and manage data nodes and scenarios.
 
-Note that the scenarios are created and edited programmatically in this example. A user interface
-is often used to let end-users create the scenarios and set the data. In particular, the visual
-elements [scenario selector](../gui/viselements/corelements/scenario_selector.md),
-[scenario viewer](../gui/viselements/corelements/scenario.md),
-[data node selector](../gui/viselements/corelements/data_node_selector.md), and
-[data node viewer](../gui/viselements/corelements/data_node.md) are designed to facilitate the
-creation and management of scenarios.
+!!! important "User Interface"
+
+    Note that the scenarios are created and edited programmatically in this example. A Taipy
+    user interface is often used to let end-users create their own scenarios and set the data.
+    In particular, the visual elements
+    [scenario selector](../gui/viselements/corelements/scenario_selector.md),
+    [scenario viewer](../gui/viselements/corelements/scenario.md),
+    [data node selector](../gui/viselements/corelements/data_node_selector.md), and
+    [data node viewer](../gui/viselements/corelements/data_node.md) are designed to facilitate
+    the creation and management of scenarios.
