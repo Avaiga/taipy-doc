@@ -68,7 +68,7 @@ nav:
   - "Manuals":
     - "About Taipy's Manuals": manuals/index.md
 
-    - "New User Manual":
+    - "Taipy":
       - "About Taipy's User Manuals": manuals/userman/index.md
       - "User interface":
         - "User interface": manuals/userman/gui/index.md
@@ -144,56 +144,77 @@ nav:
         - "Authorization": manuals/userman/auth/authorization.md
 
       - "Scheduler":
-        - "Scheduler": manuals/new-user-manual/scheduling/index.md
+        - "Scheduler": manuals/userman/scheduling/index.md
 
       - "Versioning System":
-        - "Versioning System": manuals/new-user-manual/versioning/index.md
-        - "Development mode": manuals/new-user-manual/versioning/development_mode.md
-        - "Experiment mode": manuals/new-user-manual/versioning/experiment_mode.md
-        - "Production mode": manuals/new-user-manual/versioning/production_mode.md
+        - "Versioning System": manuals/userman/versioning/index.md
+        - "Development mode": manuals/userman/versioning/development_mode.md
+        - "Experiment mode": manuals/userman/versioning/experiment_mode.md
+        - "Production mode": manuals/userman/versioning/production_mode.md
 
-      - "REST APIs": manuals/new-user-manual/rest/index.md
+      - "REST APIs": manuals/userman/rest/index.md
 
-      - "Command-line interface":
-        - "Command-line interface": manuals/cli/index.md
-        - "help": manuals/cli/help.md
-        - "create": manuals/cli/create.md
-        - "run": manuals/cli/run.md
-        - "manage-versions": manuals/cli/manage-versions.md
-        - "version": manuals/cli/version.md
+      - "Using Notebooks": manuals/userman/notebooks.md
 
-      - "Running & Deploying":
-        - "Running and Deploying Taipy applications": manuals/run-deploy/index.md
-        - "Running":
-          - "Running a Taipy application": manuals/run-deploy/run/index.md
-          - "The run() function": manuals/run-deploy/run/running_services.md
-          - "Using an external web server": manuals/run-deploy/run/external_web_server.md
-          - "Protect private files": manuals/run-deploy/run/protect_files.md
-        - "Deployment":
-          - "Deploying a Taipy application": manuals/run-deploy/deploy/index.md
-          - "On the local machine":
-            - "Deploying locally": manuals/run-deploy/deploy/local/index.md
-          - "On Linux servers":
-            - "Deploying on a Linux system": manuals/run-deploy/deploy/linux/index.md
-            - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md
-            - "RHEL": manuals/run-deploy/deploy/linux/redhat.md
-          - "On Windows Server":
-            - "Deploying on Windows Server": manuals/run-deploy/deploy/windows/index.md
-          - "Using Docker":
-            - manuals/run-deploy/deploy/docker/index.md
-            - "For development": manuals/run-deploy/deploy/docker/development.md
-            - "For production": manuals/run-deploy/deploy/docker/production.md
-          - "On Azure":
-            - "Deploying on Azure": manuals/run-deploy/deploy/azure/index.md
-          - "On Heroku":
-            - "Deploying on Heroku": manuals/run-deploy/deploy/heroku/index.md
-            - "Setup": manuals/run-deploy/deploy/heroku/setup.md
-            - "Based on Git": manuals/run-deploy/deploy/heroku/git.md
-            - "Based on Docker": manuals/run-deploy/deploy/heroku/docker.md
-          - "On Databricks":
-            - "Deploying on Databricks": manuals/run-deploy/deploy/databricks/index.md
+    - "Command-line interface":
+      - "Command-line interface": manuals/cli/index.md
+      - "help": manuals/cli/help.md
+      - "create": manuals/cli/create.md
+      - "run": manuals/cli/run.md
+      - "manage-versions": manuals/cli/manage-versions.md
+      - "version": manuals/cli/version.md
 
-      - "Using Notebooks": manuals/new-user-manual/notebooks.md
+    - "Running & Deploying":
+      - "Running and Deploying Taipy applications": manuals/run-deploy/index.md
+      - "Running":
+        - "Running a Taipy application": manuals/run-deploy/run/index.md
+        - "The run() function": manuals/run-deploy/run/running_services.md
+        - "Using an external web server": manuals/run-deploy/run/external_web_server.md
+        - "Protect private files": manuals/run-deploy/run/protect_files.md
+      - "Deployment":
+        - "Deploying a Taipy application": manuals/run-deploy/deploy/index.md
+        - "On the local machine":
+          - "Deploying locally": manuals/run-deploy/deploy/local/index.md
+        - "On Linux servers":
+          - "Deploying on a Linux system": manuals/run-deploy/deploy/linux/index.md
+          - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md
+          - "RHEL": manuals/run-deploy/deploy/linux/redhat.md
+        - "On Windows Server":
+          - "Deploying on Windows Server": manuals/run-deploy/deploy/windows/index.md
+        - "Using Docker":
+          - manuals/run-deploy/deploy/docker/index.md
+          - "For development": manuals/run-deploy/deploy/docker/development.md
+          - "For production": manuals/run-deploy/deploy/docker/production.md
+        - "On Azure":
+          - "Deploying on Azure": manuals/run-deploy/deploy/azure/index.md
+        - "On Heroku":
+          - "Deploying on Heroku": manuals/run-deploy/deploy/heroku/index.md
+          - "Setup": manuals/run-deploy/deploy/heroku/setup.md
+          - "Based on Git": manuals/run-deploy/deploy/heroku/git.md
+          - "Based on Docker": manuals/run-deploy/deploy/heroku/docker.md
+        - "On Databricks":
+          - "Deploying on Databricks": manuals/run-deploy/deploy/databricks/index.md
+
+    - "Taipy Studio":
+      - "Taipy Studio": manuals/studio/index.md
+      - "Building configurations":
+        - "Building configurations": manuals/studio/config/index.md
+        - "Managing configuration files": manuals/studio/config/files.md
+        - "Configuring elements": manuals/studio/config/elements.md
+        - "Graph views": manuals/studio/config/graphview.md
+        - "Text edition": manuals/studio/config/textedition.md
+      - "GUI Markdown support": manuals/studio/gui.md
+    - "Reference Manuals":
+      - manuals/refmans/index.md
+      - "Python Reference Manual":
+        - manuals/reference/index.md
+        [REFERENCE_CONTENT]
+      - "REST API":
+        - manuals/reference_rest/index.md
+        [REST_REFERENCE_CONTENT]
+      - "GUI Extension API":
+        - manuals/reference_guiext/index.md
+        - "taipy-gui module": manuals/reference_guiext/modules.md
 
     - "User Manuals":
       - "About Taipy's User Manuals": manuals/userman/index.md
@@ -302,26 +323,7 @@ nav:
             - "Based on Docker": manuals/run-deploy/deploy/heroku/docker.md
           - "On Databricks":
             - "Deploying on Databricks": manuals/run-deploy/deploy/databricks/index.md
-    - "Taipy Studio":
-      - "Taipy Studio": manuals/studio/index.md
-      - "Building configurations":
-        - "Building configurations": manuals/studio/config/index.md
-        - "Managing configuration files": manuals/studio/config/files.md
-        - "Configuring elements": manuals/studio/config/elements.md
-        - "Graph views": manuals/studio/config/graphview.md
-        - "Text edition": manuals/studio/config/textedition.md
-      - "GUI Markdown support": manuals/studio/gui.md
-    - "Reference Manuals":
-      - manuals/refmans/index.md
-      - "Python Reference Manual":
-        - manuals/reference/index.md
-        [REFERENCE_CONTENT]
-      - "REST API":
-        - manuals/reference_rest/index.md
-        [REST_REFERENCE_CONTENT]
-      - "GUI Extension API":
-        - manuals/reference_guiext/index.md
-        - "taipy-gui module": manuals/reference_guiext/modules.md
+
   - "Gallery":
     - "Gallery": gallery/index.md
     - "Finance":
