@@ -13,8 +13,9 @@ into interactive, production-ready applications for end-users.
 !!! warning "Available in Taipy Enterprise edition"
 
     The documentation pages for connecting Taipy and Databricks are provided as 
-    part of Taipy Enterprise
-
+    part of Taipy Enterprise.
+    
+    [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 The Enterprise documentation demonstrates how to integrate Taipy scenarios with 
 Databricks jobs. Taipy's scenarios serve as a potent tool for orchestrating tasks and 
