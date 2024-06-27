@@ -1,4 +1,4 @@
-Indtroduction of page
+Introduction of page
 
 # Why using scenario with cycles?
 

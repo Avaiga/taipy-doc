@@ -15,15 +15,16 @@ orders_cfg = Config.configure_sql_data_node("production_orders",
                                             table_name="sales")
 
 # Configure scenarios
-scenario_cfg = Config.configure_scenario("scenario", frequency=Frequency.MONTHLY, additional_data_node_configs=[
-    hist_cfg,
-    model_cfg,
-    month_cfg,
-    predictions_cfg,
-    capacity_cfg,
-    orders_cfg])
+scenario_cfg = Config.configure_scenario("scenario", frequency=Frequency.MONTHLY,
+                                         additional_data_node_configs=[
+                                             hist_cfg,
+                                             model_cfg,
+                                             month_cfg,
+                                             predictions_cfg,
+                                             capacity_cfg,
+                                             orders_cfg])
 
 # Instantiate three scenarios
-jan_scenario_high = tp.create_scenario(scenario_cfg, creation_date=datetime(2024, 1, 1))
-jan_scenario_low = tp.create_scenario(scenario_cfg, creation_date=datetime(2024, 1, 1))
-feb_scenario_low = tp.create_scenario(scenario_cfg, creation_date=datetime(2024, 2, 1))
+jan_scenario_high = tp.create_scenario(scenario_cfg, datetime(2024, 1, 1))
+jan_scenario_low = tp.create_scenario(scenario_cfg, datetime(2024, 1, 1))
+feb_scenario_low = tp.create_scenario(scenario_cfg, datetime(2024, 2, 1))

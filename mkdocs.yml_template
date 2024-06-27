@@ -64,6 +64,7 @@ nav:
       - "Using PySpark for Large Data": tutorials/large_data/1_pyspark/index.md
       - "Large data models vs. Computer memory": tutorials/large_data/2_large_data_models/index.md
       - "Charts for Large Data": tutorials/large_data/3_decimator/index.md
+
   - "Manuals":
     - "About Taipy's Manuals": manuals/index.md
 
