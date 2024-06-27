@@ -23,17 +23,17 @@ it in the `Config^` singleton.
 
 The attributes available on data node configuration are:
 
-- _**id**_ (mandatory): A unique and valid Python string identifier of the data node config.
-- _**scope**_: A `Scope^` enumeration indicating the data node's "visibility".
+- **id** (mandatory): A unique and valid Python string identifier of the data node config.
+- **scope**: A `Scope^` enumeration indicating the data node's "visibility".
     The possible values are `Scope.SCENARIO`, `Scope.CYCLE`, or `Scope.GLOBAL`.
     Default is `Scope.SCENARIO`.<br/>
     The scope is mainly designed for what-if-analysis and scenario management. For more
     information, see the [Scenarios and What-if-analysis](../what-if-analysis/index.md) page.
-- _**validity_period**_: A [timedelta object](https://docs.python.org/3/library/datetime.html#timedelta-objects)
+- **validity_period**: A [timedelta object](https://docs.python.org/3/library/datetime.html#timedelta-objects)
     representing how long the data node is considered valid. <br/>
     If *validity_period* is set to the default value None, the data node is always
     up-to-date.  Default is None.
-- _**storage_type**_: Indicates the storage type of the data node. <br/>
+- **storage_type**: Indicates the storage type of the data node. <br/>
     Possible values includes ["pickle"](#pickle) (**default**),
     ["generic"](#generic), ["csv"](#csv), ["excel"](#excel),
     ["json"](#json), ["mongo_collection"](#mongo-collection),
@@ -42,7 +42,7 @@ The attributes available on data node configuration are:
     or ["in_memory"](#in-memory). <br/>
     As explained in the following subsections, depending on the *storage_type*, other
     configuration attributes must be provided in the *properties'* parameter.
-- _**properties**_: A kwargs dictionary for any custom parameters (e.g., description,
+- **properties**: A kwargs dictionary for any custom parameters (e.g., description,
     label, tag, etc.) <br/>
     This *properties* dictionary is used to configure the parameters specific to each
     storage type. It is copied in the dictionary properties of all the data nodes
@@ -107,7 +107,7 @@ data node configuration. In addition to the generic parameters described in
 the [Data node configuration attributes](data-node-config.md#config-attributes)
 section, two optional parameters can be provided.
 
-- _**default_path**_ represents the default file path used to read and write
+- **default_path** represents the default file path used to read and write
   the data of the data nodes instantiated from the *pickle* configuration.<br/>
   It is used to populate the path property of the entities (*pickle* data nodes)
   instantiated from the *pickle* data node configuration. That means by default
@@ -119,7 +119,7 @@ section, two optional parameters can be provided.
   (more details on the Taipy storage folder configuration are available in the
   [Core configuration](../configuration/core-config.md) documentation).
 
-- _**default_data**_ indicates data automatically written to the data node
+- **default_data** indicates data automatically written to the data node
   *pickle* upon creation.<br/>
   Any serializable Python object can be used. The default value is None.
 
@@ -152,18 +152,18 @@ method adds a new *generic* data node configuration. In addition to the paramete
 in the [Data node configuration attributes](data-node-config.md#config-attributes) section,
 the following parameters can be provided:
 
-- _**read_fct**_ represents a Python function, which is used to read the data.
-  More optional parameters can be passed through the _**read_fct_args**_ parameter.
+- **read_fct** represents a Python function, which is used to read the data.
+  More optional parameters can be passed through the **read_fct_args** parameter.
 
-- _**write_fct**_ represents a Python function, which is used to write/serialize the data.
+- **write_fct** represents a Python function, which is used to write/serialize the data.
   The provided function must have at least one parameter to receive data to be written.
   It must be the first parameter. More optional parameters can be passed through the
-  _**write_fct_args**_ parameter.
+  **write_fct_args** parameter.
 
-- _**read_fct_args**_ represents the parameters passed to the *read_fct* to
+- **read_fct_args** represents the parameters passed to the *read_fct* to
   read/de-serialize the data. It must be a `List` type object.
 
-- _**write_fct_args**_ represents the parameters passed to the *write_fct* to write
+- **write_fct_args** represents the parameters passed to the *write_fct* to write
   the data. It must be a `List` type object.
 
 !!! note

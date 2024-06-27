@@ -3,30 +3,30 @@
 A `DataNode^` entity is identified by a unique identifier `id` that Taipy generates.
 A data node also holds various properties and attributes accessible through the entity:
 
-- _**config_id**_: The id of the data node config.
-- _**scope**_: The scope of this data node (scenario, etc.).
-- _**id**_: The unique identifier of this data node.
-- _**name**_: The user-readable name of the data node.
-- _**owner_id**_: The identifier of the owner (scenario_id, cycle_id) or None.
-- _**last_edit_date**_: The date and time of the last data modification made through
+- **config_id**: The id of the data node config.
+- **scope**: The scope of this data node (scenario, etc.).
+- **id**: The unique identifier of this data node.
+- **name**: The user-readable name of the data node.
+- **owner_id**: The identifier of the owner (scenario_id, cycle_id) or None.
+- **last_edit_date**: The date and time of the last data modification made through
     Taipy. Note that **only** for file-based data nodes (CSV, Excel, pickle, JSON,
     Parquet, ...), the file's last modification date is used to compute the
-    _**last_edit_date**_ value. That means if a file is modified manually or by an
-    external process, the _**last_edit_date**_ value is automatically updated
+    **last_edit_date** value. That means if a file is modified manually or by an
+    external process, the **last_edit_date** value is automatically updated
     within Taipy.
-- _**edits**_: The ordered list of `Edit`s representing the successive modifications
+- **edits**: The ordered list of `Edit`s representing the successive modifications
     of the data node. See the [Edit](data-node-history.md#Edits) section for more details.
-- _**version**_: The string indicates the application version of the data node
+- **version**: The string indicates the application version of the data node
     to instantiate. If not provided, the current version is used.
-- _**validity_period**_: The duration since the last edit date for which the
+- **validity_period**: The duration since the last edit date for which the
     data node can be considered up-to-date. Once the validity period has passed,
     the data node is considered stale and relevant tasks will run even if they
     are skippable (see the [Task management page](../sdm/task/index.md)
     for more details).
     If *validity_period* is set to None, the data node is always up-to-date.
-- _**edit_in_progress**_: The boolean flag signals if the data node is locked
+- **edit_in_progress**: The boolean flag signals if the data node is locked
     for modification.
-- _**properties**_: The dictionary of additional arguments.
+- **properties**: The dictionary of additional arguments.
 
 # Create a data node
 
