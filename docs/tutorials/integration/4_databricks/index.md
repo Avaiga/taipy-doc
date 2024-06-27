@@ -6,14 +6,18 @@ short-description: A guide to integrate Databricks with Taipy scenarios.
 img: 4_databricks/images/databricks.png
 ---
 
-Integrating Taipy with Databricks is a great way to build user-centric applications. 
-Taipy GUIs and SDM (Scenario and Data Management) will transform your Databricks models 
+Integrating a Taipy application with Databricks allows you to quickly build a 
+web application on top of your Databricks notebooks. You can easily put your 
+algorithms into end-users hands. Taipy will transform your Databricks models 
 into interactive, production-ready applications for end-users.
 
 !!! note "Available in Taipy Enterprise edition"
 
     The documentation pages for connecting Taipy and Databricks are provided as 
     part of Taipy Enterprise.
+
+    <iframe width="560" height="315" class="tp-video" src="https://www.youtube.com/embed/4mYHbORZpHk?si=b47uLOcFHr5ASyz_" title="Databricks integration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
