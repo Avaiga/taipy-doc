@@ -34,6 +34,7 @@ class Item:
 
     def generate_content_for_article(self, main_index=False) -> str:
         """Generate content of an HTML list item."""
+        tags_lov = [("enterprise", "Enterprise edition")]
         path_to_img = '/'.join([self.category, self.img]) if main_index else self.img
         href = '/'.join([self.category, self.href]) if main_index else self.href
         lines: List[str] = list()
@@ -45,6 +46,9 @@ class Item:
         lines.append(f'      </header>')
         lines.append(f'      <div class="tp-content-card-body">')
         lines.append(f'        <h4>{self.title}</h4>')
+        for tag in tags_lov:
+            if tag[0] in self.data_keywords:
+                lines.append(f'        <span class="tp-tag">{tag[1]}</span>')
         lines.append(f'        <p>')
         lines.append(f'          {self.short_description}')
         lines.append(f'        </p>')

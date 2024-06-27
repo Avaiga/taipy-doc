@@ -1,7 +1,7 @@
 ---
 title: US Industry Distribution
 category: visualization
-data-keywords: dashboard maps
+data-keywords: dashboard maps community
 short-description: Explore where industries are concentrated and how they are distributed across the United States.
 img: 7_industry_agglom/images/map_image.png
 ---
