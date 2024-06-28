@@ -68,7 +68,7 @@ nav:
   - "Manuals":
     - "About Taipy's Manuals": manuals/index.md
 
-    - "Taipy":
+    - "User Manual":
       - "About Taipy's User Manuals": manuals/userman/index.md
       - "User interface":
         - "User interface": manuals/userman/gui/index.md
@@ -204,6 +204,7 @@ nav:
         - "Graph views": manuals/studio/config/graphview.md
         - "Text edition": manuals/studio/config/textedition.md
       - "GUI Markdown support": manuals/studio/gui.md
+
     - "Reference Manuals":
       - manuals/refmans/index.md
       - "Python Reference Manual":

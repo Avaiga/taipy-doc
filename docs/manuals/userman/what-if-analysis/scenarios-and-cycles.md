@@ -153,6 +153,7 @@ are created in this example with two *cycles*: two scenarios for the January cyc
 February cycle.
 
 Along with the *scenarios*, a total of thirteen *data nodes* are created:
+
 - one unique sales_history data node,
 - two (one per cycle) trained_model, two current_month, and two sales_predictions data nodes,
 - three (one per scenario) capacity, and three production_orders data nodes.
