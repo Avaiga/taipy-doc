@@ -324,6 +324,9 @@ def run(*services: t.Union[Gui, Rest, Core], **kwargs) -> t.Optional[t.Union[Gui
 # Generate Pipfile from package dependencies from all repositories
 pipfile_path = os.path.join(ROOT_DIR, "Pipfile")
 pipfile_message = "WARNING: Package versions mismatch in Pipfiles - Pipfile not updated."
+# Hack that forces the numpy package to be "<2.0.0"
+if "numpy" not in pipfile_packages:
+    pipfile_packages["numpy"] = {"\"<2.0.0\"": "taipy-doc"}
 for package, versions in pipfile_packages.items():
     if len(versions) != 1:
         if pipfile_message:
