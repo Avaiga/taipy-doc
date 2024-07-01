@@ -5,10 +5,12 @@ data-keywords: optimization scenario enterprise
 short-description: Use two scenarios with distinct algorithms to reduces raw material waste by bar cut sizes optimizations.
 img: bar_cutting/images/bar-cutting-bar-Visualization.png
 ---
-This demo showcases how to optimize the bar-cutting process
-to minimize waste. Bar-cutting optimization minimizes waste
-by choosing optimal cutting patterns. This is crucial in industries
-with significant material costs such as Steel, Timber, etc.
+
+This demo showcases how to optimize the bar-cutting process to minimize waste. 
+Bar-cutting optimization minimizes waste by choosing optimal cutting patterns. This is 
+crucial in industries with significant material costs, such as Steel and timber. This 
+demo embeds a powerful optimization engine that has demonstrated huge savings for several 
+large companies. It can easily be extended to cater for specific requirements.
 
 !!! note "Taipy Enterprise edition"
 
