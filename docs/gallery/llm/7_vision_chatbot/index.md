@@ -1,7 +1,7 @@
 ---
 title: Vision Chatbot
 category: llm
-data-keywords: vizelement ai
+data-keywords: vizelement ai community
 short-description: A simple chatbot to talk and send images to GPT-4o
 img: 7_vision_chatbot/images/gpt4o_screen.png
 ---
