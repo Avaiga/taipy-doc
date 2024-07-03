@@ -50,13 +50,63 @@ The main advantages of using data nodes in a Taipy project are:
     For more information, see the [data node history](data-node-history.md) page.
 
 5. **Seamless integration with Task orchestration and Scenario management**:
-    Data pipelines in Taipy are modeled as execution graphs within *scenarios* connecting data nodes
-    through *tasks*. Task orchestration and scenario management are key features of Taipy.
-    For more information, see the [Task orchestration](../task-orchestration/index.md) or
-    [Scenario and Data Management](../sdm/index.md) pages.
+    Data pipelines in Taipy are modeled as execution graphs within *scenarios* connecting
+    data nodes through *tasks*. Task orchestration and scenario management are key features of
+    Taipy. For more information, see the [Task orchestration](../task-orchestration/index.md)
+    or [Scenario and Data Management](../sdm/index.md) pages.
 
 6. **Support multiple alternative datasets for What-if-analysis**:
-    Easily manage alternative data nodes as different versions or variations of your dataset within the same
-    application. This is particularly useful for What-if-analysis.
+    Easily manage alternative data nodes as different versions or variations of your dataset
+    within the same application. This is particularly useful for What-if-analysis.
     For more information, see the [Scenarios and What-if-analysis](../what-if-analysis/index.md) page.
 
+# How to use Data Nodes?
+
+A `DataNode^` is instantiated from a `DataNodeConfig^` object. It encapsulates the necessary
+information to create the data node (e.g. the data source, the data format, the data type, the
+way to read and write the data).
+
+To integrate a data node into your Taipy application, you need to follow these steps:
+
+1. **Define a DataNodeConfig**:
+    Create a global `DataNodeConfig` object using the various predefined methods available
+    in Taipy such as `Config.configure_data_node()`, `Config.configure_csv_data_node()`,
+   `Config.configure_json_data_node()`, etc. <br>
+    For more details, see the [data node configuration](data-node-config.md) page.
+
+2. **Instantiate a DataNode**:
+    Once you have defined the data node configuration, you can instantiate your `DataNode`.
+    Use the `tp.create_global_data_node()` method.<br>
+    For more details, see the [data node usage](data-node-usage.md#create-a-data-node) page.
+
+3. **Access or visualize your Data**:
+    You can now retrieve your `DataNode^`, Read, write, filter, or append data as needed.
+    For more details, see the [data node usage](data-node-usage.md) page. <br>
+    You can also use the Taipy visual elements to manage, display, and edit your data nodes.
+    For more details, see the [data node visual elements](data-node-vizelmts.md) page.
+
+
+!!! examples "Data integration"
+
+    === "Data integration with data access"
+
+        Here is an example of how to integrate some data and use a global data node:
+
+        ```python linenums="1"
+        {%
+        include-markdown "./code-example/index/complete-data-integration-example.py"
+        comments=false
+        %}
+        ```
+
+    === "Data integration with user interface"
+
+        Here is another example of how to integrate some data and visualize it using the
+        data node visual elements:
+
+        ```python linenums="1"
+        {%
+        include-markdown "./code-example/index/complete-data-integration-example-with-user-interface.py"
+        comments=false
+        %}
+        ```
