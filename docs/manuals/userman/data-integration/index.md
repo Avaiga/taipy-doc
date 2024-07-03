@@ -100,7 +100,9 @@ To integrate a data node into your Taipy application, you need to follow these s
         ```
 
         The previous code snippet shows how to configure a data node, instantiate it,
-        retrieve it, write some data, and read it back.
+        retrieve it, write some data, and read it back.<br>
+        Here is the complete python code corresponding to the example:
+        <a href="./code-example/index/complete-data-integration-example.py" download>`data-integration-example.py`</a>
 
     === "Data integration with user interface"
 
@@ -117,4 +119,6 @@ To integrate a data node into your Taipy application, you need to follow these s
         In the previous code snippet three data node configurations are created. Some
         default data is passed to each of them. Then, the data nodes are instantiated.
         Finally, a GUI service is started with two visual elements to visualize and edit
-        the data nodes though a user-friendly interface.
+        the data nodes though a user-friendly interface.<br>
+        Here is the complete python code corresponding to the example:
+        <a href="./code-example/index/complete-data-integration-example.py" download>`data-integration-example-with-user-interface.py`</a>
