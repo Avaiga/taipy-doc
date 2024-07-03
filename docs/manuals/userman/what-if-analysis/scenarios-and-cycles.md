@@ -169,8 +169,8 @@ and manage data nodes and scenarios.
 !!! important "User Interface"
 
     Note that the scenarios are created and edited programmatically in this example. A Taipy
-    user interface is often used to let end-users create their own scenarios and set the data.
-    In particular, the visual elements
+    user interface is often used to let end-users create their own scenarios, manage their cycles
+    and set the data. In particular, the visual elements
     [scenario selector](../gui/viselements/corelements/scenario_selector.md),
     [scenario viewer](../gui/viselements/corelements/scenario.md),
     [data node selector](../gui/viselements/corelements/data_node_selector.md), and

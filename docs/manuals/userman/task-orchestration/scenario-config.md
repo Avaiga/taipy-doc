@@ -93,5 +93,5 @@ For more details on cycles see the
 A `ScenarioConfig^` can also hold some scenario comparators. A scenario comparator is a
 user function used to compare multiple scenarios from the same configuration.
 For more details, see the
-[scenario comparator](../what-if-analysis/scenario-comparators.md)
+[scenario comparison](../what-if-analysis/scenario-comparison.md)
 page.

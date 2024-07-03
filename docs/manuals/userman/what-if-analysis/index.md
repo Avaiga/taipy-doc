@@ -35,7 +35,7 @@ The main advantages of using *scenarios* for what-if analysis are:
 
 - **Easy to use**: Easily manage and compare multiple scenarios for various business situations.
     <br>
-    For more details, see the [Scenario comparators](scenario-comparators.md) page.
+    For more details, see the [Scenario comparison](scenario-comparison.md) page.
 
 # How to use Scenarios?
 
@@ -65,6 +65,6 @@ Here is the main principle:
     one contains its own set of *data nodes*. This allows an end user to compare the
     scenarios' data.<br>
     For more details, see the [multiple scenarios](multiple-scenarios.md) and
-    [scenario comparators](scenario-comparators.md) pages.
+    [scenario comparison](scenario-comparison.md) pages.
 
 

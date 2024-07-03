@@ -106,7 +106,7 @@ nav:
         - "Scenarios for What-if-analysis": manuals/userman/what-if-analysis/index.md
         - "Multiple scenarios": manuals/userman/what-if-analysis/multiple-scenarios.md
         - "Recurrent scenarios": manuals/userman/what-if-analysis/scenarios-and-cycles.md
-        - "Scenarios comparators": manuals/userman/what-if-analysis/scenario-comparators.md
+        - "Scenario comparison": manuals/userman/what-if-analysis/scenario-comparison.md
 
       - "Scenario and Data Management":
         - "Scenario and Data Management": manuals/userman/sdm/index.md
