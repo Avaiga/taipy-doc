@@ -86,7 +86,7 @@ To integrate a data node into your Taipy application, you need to follow these s
     For more details, see the [data node visual elements](data-node-vizelmts.md) page.
 
 
-!!! examples "Data integration"
+!!! examples "Examples"
 
     === "Data integration with data access"
 
@@ -99,6 +99,9 @@ To integrate a data node into your Taipy application, you need to follow these s
         %}
         ```
 
+        The previous code snippet shows how to configure a data node, instantiate it,
+        retrieve it, write some data, and read it back.
+
     === "Data integration with user interface"
 
         Here is another example of how to integrate some data and visualize it using the
@@ -110,3 +113,8 @@ To integrate a data node into your Taipy application, you need to follow these s
         comments=false
         %}
         ```
+
+        In the previous code snippet three data node configurations are created. Some
+        default data is passed to each of them. Then, the data nodes are instantiated.
+        Finally, a GUI service is started with two visual elements to visualize and edit
+        the data nodes though a user-friendly interface.
