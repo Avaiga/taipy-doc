@@ -52,13 +52,13 @@ The main advantages of using data nodes in a Taipy project are:
 5. **Seamless integration with Task orchestration and Scenario management**:
     Data pipelines in Taipy are modeled as execution graphs within *scenarios* connecting
     data nodes through *tasks*. Task orchestration and scenario management are key features of
-    Taipy. For more information, see the [Task orchestration](../task-orchestration/index.md)
-    or [Scenario and Data Management](../sdm/index.md) pages.
+    Taipy. For more information, see the [task orchestration](../task-orchestration/index.md)
+    or [scenario and data management](../sdm/index.md) pages.
 
-6. **Support multiple alternative datasets for What-if-analysis**:
+6. **Support multiple alternative datasets for What-if analysis**:
     Easily manage alternative data nodes as different versions or variations of your dataset
-    within the same application. This is particularly useful for What-if-analysis.
-    For more information, see the [Scenarios and What-if-analysis](../what-if-analysis/index.md) page.
+    within the same application. This is particularly useful for What-if analysis.
+    For more information, see the [what-if analysis](../what-if-analysis/index.md) page.
 
 # How to use Data Nodes?
 

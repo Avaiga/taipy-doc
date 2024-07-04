@@ -1,12 +1,12 @@
 Taipy provides some visual elements dedicated to the Data Node Management. These elements are the
-Data Node Selector and the Data Node Viewer.
+data node selector and the data node viewer.
 
-# Data Node Selector
+# Data node selector
 The `data_node_selector` control displays all data node entities that can be selected.
 
 The default usage is really simple. It does not require any specific configuration to display
 the selectable data nodes. The following image shows the default behavior of the
-`data_node_selector` control.
+data node selector control.
 
 <figure class="tp-center">
 <img src="../img/data-node-vizelmts/data-node-selector-default-behavior.png" class="visible-dark"/>
@@ -17,9 +17,9 @@ the selectable data nodes. The following image shows the default behavior of the
 Thanks to its rich configurability, you can customize the display of the data node selector,
 for example, by adding a search bar, adding a filter or a sort capability, grouping the
 data nodes by scenarios and cycles, etc. For more details, see the
-[Data node selector](../gui/viselements/corelements/data_node_selector.md) page.
+[data node selector](../gui/viselements/corelements/data_node_selector.md) page.
 
-# Data Node Viewer
+# Data node viewer
 The `data_node` control displays a data node's information and lets end-users edit it.
 
 The default usage is really simple. It does not require any specific configuration to display
@@ -52,7 +52,7 @@ displayed. The following two images show the data node viewer displaying a table
 <figcaption>Graphical view of some tabular data</figcaption>
 </figure>
 
-For more details, see the [Data node viewer](../gui/viselements/corelements/data_node.md) page.
+For more details, see the [data node viewer](../gui/viselements/corelements/data_node.md) page.
 
 # Data management interface
 
@@ -65,8 +65,8 @@ data management workflow.
 
     === "Data management interface"
         The following image shows an example of how to combine the `data_node_selector` and the
-        `data_node_viewer` controls for data management. On the top, the `data_node_selector`
-        displays all the data nodes that can be selected. Below, the `data_node_viewer` displays
+        `data_node` controls for data management. On the top, the `data_node_selector`
+        displays all the data nodes that can be selected. Below, the `data_node` displays
         the selected data node.
 
         <figure class="tp-center">

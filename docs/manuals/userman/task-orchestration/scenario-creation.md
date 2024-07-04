@@ -6,7 +6,7 @@ provided as a parameter. The scenario's creation also triggers the creation of t
 related entities that do not exist yet (data nodes, tasks, sequences). These entities
 are created according to the configuration provided, and particularly on the scope of
 the data nodes. For more details on scopes, see the
-[Recurrent Scenario](../what-if-analysis/scenarios-and-cycles.md) page.
+[recurrent scenario](../what-if-analysis/scenarios-and-cycles.md) page.
 
 Three parameters can be given to the scenario creation method :
 

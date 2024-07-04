@@ -1,7 +1,7 @@
 Among other functionalities, a data node keep track of the data editing history and
 the period of validity.
 
-# Edits
+# What is an Edit?
 Every time a data is written using the data node methods, a new `Edit` entry is
 added on the head of the list of edits. An `Edit` corresponds to a data modification.
 It contains the timestamp of the modification, and some other information such as the
@@ -23,9 +23,9 @@ comments=false
     As shown in the previous code, one way to write a data node is to execute a task
     that has the data node as output. If you are not yet familiar with the concepts of
     task or Scenario, you can refer to the
-    [Task orchestration](../task-orchestration/index.md) section.
+    [task orchestration](../task-orchestration/index.md) section.
 
-## Retrieve edits
+## Retrieve Edits
 
 Two methods are available to retrieve the edits from a data node:
 
@@ -69,7 +69,7 @@ The append method can also be used for tabular data nodes with any parameter,
 resulting in the same edit content.
 
 ## Writing from a GUI
-Using the [Data node viewer](../gui/viselements/corelements/data_node.md) to write
+Using the [data node viewer](../gui/viselements/corelements/data_node.md) to write
 data, an end user can easily add a comment to the edit. The edits can be viewed in
 the history tab of the data node viewer.
 
@@ -79,7 +79,7 @@ the history tab of the data node viewer.
 
 Another way to write a data node is to execute a task that has the data node as
 output. If you are not yet familiar with the concepts of job, task or scenario,
-you can refer to the [Task orchestration](../task-orchestration/index.md) section.
+you can refer to the [task orchestration](../task-orchestration/index.md) section.
 
 When a data node is written by a job execution, the job id is automatically added
 to the edit. Executing a Job results in adding an edit to the output data nodes

@@ -15,13 +15,13 @@ A data node also holds various properties and attributes accessible through the 
     external process, the **last_edit_date** value is automatically updated
     within Taipy.
 - **edits**: The ordered list of `Edit`s representing the successive modifications
-    of the data node. See the [Edit](data-node-history.md#Edits) section for more details.
+    of the data node. See the [edit](data-node-history.md#Edits) section for more details.
 - **version**: The string indicates the application version of the data node
     to instantiate. If not provided, the current version is used.
 - **validity_period**: The duration since the last edit date for which the
     data node can be considered up-to-date. Once the validity period has passed,
     the data node is considered stale and relevant tasks will run even if they
-    are skippable (see the [Task management page](../sdm/task/index.md)
+    are skippable (see the [task management page](../sdm/task/index.md)
     for more details).
     If *validity_period* is set to None, the data node is always up-to-date.
 - **edit_in_progress**: The boolean flag signals if the data node is locked
@@ -41,7 +41,7 @@ part of a scenario.
 The second method is creating a scenario via the `taipy.create_scenario()^` method. This
 method takes a scenario configuration as a parameter and returns the created scenario,
 and all data nodes that are related to the scenario will be built alongside the scenario.
-See the [Scenario management page](../sdm/scenario/index.md) for more details on scenarios.
+For more details on scenarios, see the [scenario management](../sdm/scenario/index.md) page.
 
 !!! example
 
@@ -227,14 +227,14 @@ including but not limited to:
 - instances of classes with picklable properties.
 
 Check out
-[What can be pickled and unpickled?](https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled)
+[what can be pickled and unpickled?](https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled)
 for more details.
 
 
 ## CSV
 
 When reading from a CSV data node, Taipy returns the data of the CSV file based on the _exposed_type_ parameter.
-Check out [CSV Data Node configuration](data-node-config.md#csv) for more details on _exposed_type_.
+Check out [CSV data node configuration](data-node-config.md#csv) for more details on _exposed_type_.
 
 Assume that the content of the `sales.csv` file is the following.
 
@@ -378,7 +378,7 @@ To write with custom column names, use the `CSVDataNode.write_with_column_names(
 ## Excel
 
 When reading from an Excel data node, Taipy returns the data of the Excel file based on the _exposed_type_ parameter.
-Check out [Excel Data Node configuration](data-node-config.md#excel) for more details on _exposed_type_.
+Check out [Excel data node configuration](data-node-config.md#excel) for more details on _exposed_type_.
 
 For the example in this section, assume that *sales_history_cfg* is an *Excel* data node
 configuration with `default_path="path/sales.xlsx"`.
@@ -524,7 +524,7 @@ To write with custom column names, use the `ExcelDataNode.write_with_column_name
 
 When reading from a SQL Table data node, Taipy returns the data of the SQL Table
 file based on the _exposed_type_ parameter. Check out
-[SQL Table Data Node configuration](data-node-config.md#sql-table) for more details
+[SQL table data node configuration](data-node-config.md#sql-table) for more details
 on _exposed_type_.
 
 For the example in this section, assume that *sales_history_cfg* is a *SQL Table*
@@ -672,7 +672,7 @@ file based on the _exposed_type_ parameter:
 
 - The _exposed_type_ parameter of `orders_cfg` is undefined, therefore it takes the default value
   as "pandas".
-  Check out [SQL Data Node configuration](data-node-config.md#sql) for more details on
+  Check out [SQL data node configuration](data-node-config.md#sql) for more details on
   _exposed_type_.
 - The _read_query_ of `orders_cfg` is
     ```sql
@@ -893,13 +893,13 @@ with `default_path="path/sales.json"`.
         The read method will return a list of SaleRow objects as `data` when written.
 
 You can also specify custom JSON _**encoder**_ and _**decoder**_ to handle different data types.
-Check out [JSON Data Node configuration](data-node-config.md#json) for more details on
+Check out [JSON data node configuration](data-node-config.md#json) for more details on
 how to config custom JSON _**encoder**_ and _**decoder**_.
 
 ## Parquet
 
 When read from a Parquet data node, Taipy returns the data of the Parquet file based on _exposed_type_ parameter.
-Check out [Parquet Data Node configuration](data-node-config.md#parquet) for more details on _exposed_type_.
+Check out [Parquet data node configuration](data-node-config.md#parquet) for more details on _exposed_type_.
 
 Assume that the content of the `sales.parquet` file populates the following table.
 
@@ -1000,7 +1000,7 @@ to the pandas
 [`pandas.read_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html)
 and [`pandas.DataFrame.to_parquet`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html)
 methods, **on top of the arguments which were defined in the
-[ParquetDataNode configuration](data-node-config.md#parquet)**.
+[Parquet data node configuration](data-node-config.md#parquet)**.
 
 The following examples demonstrate reading and writing to a Parquet data node with additional keyword arguments:
 
@@ -1076,7 +1076,7 @@ Check out [MongoDB supported data types](https://www.mongodb.com/docs/manual/ref
 You can also specify custom document class to handle specific attribute, encode and decode data when
 reading and writing to the Mongo collection.
 
-Check out [Mongo collection Data Node configuration](data-node-config.md#mongo-collection)
+Check out [Mongo collection data node configuration](data-node-config.md#mongo-collection)
 for more details on how to config a custom
 document class.
 
@@ -1413,7 +1413,7 @@ The following examples will append new data to the SQL Table data node:
 ## SQL
 
 To append new data to a SQL data node, the *append_query_builder* property needs to be defined
-when configuring the [SQL Data Node configuration](../config/data-node-config.md#sql).
+when configuring the [SQL data node configuration](../config/data-node-config.md#sql).
 
 Similar to writing, when appending to a SQL data node, Taipy will first pass the data to the
 *append_query_builder* and then execute a list of queries returned by the query builder.

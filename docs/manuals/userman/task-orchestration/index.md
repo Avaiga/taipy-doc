@@ -97,7 +97,7 @@ production-ready applications with ease for their end-users. Here are some key b
     Any Python function can be used as a Taipy *task*, and any data source can be used as
     a *data node*.
 
-# How to use scenarios?
+# How to use Scenarios?
 
 A `Scenario^` is instantiated from a `ScenarioConfig^`, which encapsulates the execution graph
 definition. To create and submit scenarios, you need to:

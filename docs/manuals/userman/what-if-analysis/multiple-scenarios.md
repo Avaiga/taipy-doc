@@ -76,9 +76,9 @@ with. Many predefined data nodes are available in Taipy. For more details, see t
 
 ## Scenario configuration
 
-Once you have all your data nodes configurations `DataNodeConfig`, you can configure your scenarios. The
-`Config.configure_scenario()^` method takes the data node configurations as parameter
-and returns the scenario configuration `ScenarioConfig^`.
+Once you have all your data nodes configurations `DataNodeConfig`, you can configure your
+scenarios. The `Config.configure_scenario()^` method takes the data node configurations as
+parameter and returns the scenario configuration `ScenarioConfig^`.
 
 ??? note "Configure scenarios from task configurations"
 

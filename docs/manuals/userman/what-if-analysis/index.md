@@ -1,4 +1,4 @@
-In this section, we explore how to use *Scenarios* for What-if-analysis in Taipy.
+In this section, we explore how to use *scenarios* for what-if analysis in Taipy.
 What-if analysis is all about exploring different scenarios to see how variable
 changes affect outcomes. It's essentially asking "What if?" questions and examining
 the results.
@@ -14,7 +14,7 @@ recurring business cases. This is ideal for time-based analyses like monthly for
 weekly results, daily reports, etc.
 
 For more details on scenarios, please refer to the
-[Scenario and Data Management](../sdm/index.md) page.
+[scenario and data management](../sdm/index.md) page.
 
 # Why use Scenarios?
 
@@ -26,16 +26,16 @@ The main advantages of using *scenarios* for what-if analysis are:
     or parameter set. It is essential for use cases where experiments need to be
     conducted with different assumptions, or when data needs to be preserved for
     auditing and comparison purposes.<br>
-    For more details, see the [Multiple scenarios](multiple-scenarios.md) page.
+    For more details, see the [multiple scenarios](multiple-scenarios.md) page.
 
 - **Temporal Analysis**: Use cycles and data node scope for recurring business
     cases, ideal for time-based analyses like weekly forecasts, monthly planning,
     etc.<br>
-    For more details, see the [Recurrent scenarios](scenarios-and-cycles.md) page.
+    For more details, see the [recurrent scenarios](scenarios-and-cycles.md) page.
 
 - **Easy to use**: Easily manage and compare multiple scenarios for various
     business situations.<br>
-    For more details, see the [Scenario comparison](scenario-comparison.md) page.
+    For more details, see the [scenario comparison](scenario-comparison.md) page.
 
 # How to use Scenarios?
 
@@ -51,7 +51,7 @@ Here is the main principle:
     They represent any data such as input datasets, parameters, intermediate data, kpis, results
     or output dataset. They are instantiated from `DataNodeConfig` objects.
     <br>
-    For more details on *data nodes*, see the [Data integration](../data-integration/index.md)
+    For more details on *data nodes*, see the [data integration](../data-integration/index.md)
     page.
 
 2. **Configuring Scenarios**: A `ScenarioConfig` is a configuration object used to instantiate
@@ -64,7 +64,7 @@ Here is the main principle:
     can create as many new *scenarios* as he/she wants from the same `ScenarioConfig`. Each
     one contains its own set of *data nodes*.<br>
     For more details and examples, see the [multiple scenarios](multiple-scenarios.md) and
-    [Recurrent scenarios](scenarios-and-cycles.md) pages.
+    [recurrent scenarios](scenarios-and-cycles.md) pages.
 
 4. **Comparing scenarios**: At runtime, you can compare multiple scenarios by comparing the
     data nodes from the same data node configuration.<br>

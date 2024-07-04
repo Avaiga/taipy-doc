@@ -95,21 +95,21 @@ nav:
         - "Data node history and validity": manuals/userman/data-integration/data-node-history.md
 
       - "Task orchestration":
-        - "Scenarios for Task orchestration": manuals/userman/task-orchestration/index.md
+        - "Scenarios for task orchestration": manuals/userman/task-orchestration/index.md
         - "Hello world!": manuals/userman/task-orchestration/hello-world.md
-        - "Scenario Config": manuals/userman/task-orchestration/scenario-config.md
-        - "Scenario Creation": manuals/userman/task-orchestration/scenario-creation.md
-        - "Scenario Submission": manuals/userman/task-orchestration/scenario-submission.md
+        - "Scenario config": manuals/userman/task-orchestration/scenario-config.md
+        - "Scenario creation": manuals/userman/task-orchestration/scenario-creation.md
+        - "Scenario submission": manuals/userman/task-orchestration/scenario-submission.md
         - "Visual elements": manuals/userman/task-orchestration/vizelmts.md
 
-      - "What-if-analysis":
-        - "Scenarios for What-if-analysis": manuals/userman/what-if-analysis/index.md
+      - "What-if analysis":
+        - "Scenarios for what-if analysis": manuals/userman/what-if-analysis/index.md
         - "Multiple scenarios": manuals/userman/what-if-analysis/multiple-scenarios.md
         - "Recurrent scenarios": manuals/userman/what-if-analysis/scenarios-and-cycles.md
         - "Scenario comparison": manuals/userman/what-if-analysis/scenario-comparison.md
 
-      - "Scenario and Data Management":
-        - "Scenario and Data Management": manuals/userman/sdm/index.md
+      - "Scenario and data management":
+        - "Scenario and data management": manuals/userman/sdm/index.md
         - "Data node":
           - "Data node": manuals/userman/sdm/data-node/index.md
           - "Data node selector": manuals/userman/sdm/data-node/data-node-selector.md
@@ -132,22 +132,22 @@ nav:
 
       - "Configuration":
         - "Configuration": manuals/userman/configuration/index.md
-        - "Configuring GUI Service": manuals/userman/configuration/gui.md
-        - "Configuring Core Service": manuals/userman/configuration/core-config.md
-        - "Configuring Job Execution ": manuals/userman/configuration/job-config.md
-        - "Config Checker": manuals/userman/configuration/config-checker.md
+        - "Configuring GUI service": manuals/userman/configuration/gui.md
+        - "Configuring Core service": manuals/userman/configuration/core-config.md
+        - "Configuring job execution ": manuals/userman/configuration/job-config.md
+        - "Config checker": manuals/userman/configuration/config-checker.md
         - "Advanced configuration": manuals/userman/configuration/advanced-config.md
 
-      - "Authentication and Roles":
-        - "Authentication and Authorization": manuals/userman/auth/index.md
+      - "Authentication and roles":
+        - "Authentication and authorization": manuals/userman/auth/index.md
         - "Authentication": manuals/userman/auth/authentication.md
         - "Authorization": manuals/userman/auth/authorization.md
 
       - "Scheduler":
         - "Scheduler": manuals/userman/scheduling/index.md
 
-      - "Versioning System":
-        - "Versioning System": manuals/userman/versioning/index.md
+      - "Versioning system":
+        - "Versioning system": manuals/userman/versioning/index.md
         - "Development mode": manuals/userman/versioning/development_mode.md
         - "Experiment mode": manuals/userman/versioning/experiment_mode.md
         - "Production mode": manuals/userman/versioning/production_mode.md
@@ -164,8 +164,8 @@ nav:
       - "manage-versions": manuals/cli/manage-versions.md
       - "version": manuals/cli/version.md
 
-    - "Running & Deploying":
-      - "Running and Deploying Taipy applications": manuals/run-deploy/index.md
+    - "Running & deploying":
+      - "Running and deploying Taipy applications": manuals/run-deploy/index.md
       - "Running":
         - "Running a Taipy application": manuals/run-deploy/run/index.md
         - "The run() function": manuals/run-deploy/run/running_services.md

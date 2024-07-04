@@ -15,7 +15,7 @@ comments=false
 
 Two data node configurations are created with the `Config.configure_data_node()^` method.
 One "input" for the number to double and one "output" for the result. For more details,
-see the [data node config](../data-integration/data-node-config.md) page.
+see the [data node configuration](../data-integration/data-node-config.md) page.
 
 Then, a task configuration `double_task_cfg` is created using the `Config.configure_task()^`
 method. It takes as parameter the input and output data node configurations and the function
@@ -77,7 +77,7 @@ node configurations that are not connected to the execution graph. These
 configurations can be added to the scenario configuration using the
 `Config.configure_scenario()^` method.
 
-For more examples, see the [Multiple scenarios](../what-if-analysis/multiple-scenarios.md) page.
+For more examples, see the [multiple scenarios](../what-if-analysis/multiple-scenarios.md) page.
 
 # Frequency for cycle management
 

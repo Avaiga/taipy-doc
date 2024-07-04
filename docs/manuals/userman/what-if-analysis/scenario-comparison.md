@@ -54,7 +54,8 @@ include-markdown "./code-example/scenario-comparison/comparison-example.py"
 comments=false
 %}
 ```
-Here is the <a href="./code-example/scenario-comparison/comparison-example.py" download>complete python code</a>
+Here is the
+<a href="./code-example/scenario-comparison/comparison-example.py" download>complete python code</a>
 corresponding to the example.
 
 
