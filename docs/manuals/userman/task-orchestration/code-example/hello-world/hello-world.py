@@ -1,13 +1,10 @@
-from taipy import Config, Core
-
-import taipy as tp
-
-
 def build_message(name: str):
     return f"Hello {name}!"
 
 
 if __name__ == "__main__":
+    import taipy as tp
+    from taipy import Config, Core
 
     name_data_node_cfg = Config.configure_data_node(id="input_name")
     message_data_node_cfg = Config.configure_data_node(id="message")

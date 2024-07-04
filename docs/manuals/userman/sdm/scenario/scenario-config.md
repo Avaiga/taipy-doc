@@ -26,7 +26,19 @@ A scenario configuration `ScenarioConfig^` holds some data node configurations. 
 configurations can be added to the scenario configuration using the
 `Config.configure_scenario()^` method.
 
-For more details, see the [What-if-analysis](../../what-if-analysis/multiple-scenarios.md) page.
+Here is a simple example assuming the data node configuration `additional_dn_cfg` have
+already been created:
+
+```python linenums="1"
+from taipy import Config, Scope
+
+data_node_cfg = Config.configure_data_node("data", scope=Scope.GLOBAL)
+scenario_cfg = Config.configure_scenario("scenario_with_one_data_node",
+                                         additional_data_nodes=[data_node_cfg])
+```
+
+For a complete example, see the
+[Multiple scenario](../../what-if-analysis/multiple-scenarios.md#example) section.
 
 # Frequency for cycle management
 

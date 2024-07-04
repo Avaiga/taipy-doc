@@ -33,8 +33,8 @@ The main advantages of using *scenarios* for what-if analysis are:
     etc.<br>
     For more details, see the [Recurrent scenarios](scenarios-and-cycles.md) page.
 
-- **Easy to use**: Easily manage and compare multiple scenarios for various business situations.
-    <br>
+- **Easy to use**: Easily manage and compare multiple scenarios for various
+    business situations.<br>
     For more details, see the [Scenario comparison](scenario-comparison.md) page.
 
 # How to use Scenarios?
@@ -62,9 +62,10 @@ Here is the main principle:
 
 3. **Instantiating multiple scenarios with alternative data nodes**: At runtime, an end-user
     can create as many new *scenarios* as he/she wants from the same `ScenarioConfig`. Each
-    one contains its own set of *data nodes*. This allows an end user to compare the
-    scenarios' data.<br>
+    one contains its own set of *data nodes*.<br>
     For more details, see the [multiple scenarios](multiple-scenarios.md) and
+    [Recurrent scenarios](scenarios-and-cycles.md) pages.
+
+4. **Comparing scenarios**: At runtime, you can compare multiple scenarios by comparing the
+    data nodes from the same data node configuration.
     [scenario comparison](scenario-comparison.md) pages.
-
-

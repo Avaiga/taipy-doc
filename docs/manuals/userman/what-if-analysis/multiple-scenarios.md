@@ -1,4 +1,4 @@
-This section explains how to create multiple scenarios with Taipy.
+This section explains how to create multiple *scenarios* with Taipy.
 
 Supporting multiple scenarios with alternative datasets or parameter sets allows you to:
 
@@ -18,8 +18,6 @@ When a scenario is instantiated, data nodes are also created.
 To create multiple scenarios with alternative data nodes, you need to:
 
 1. Configure the data nodes using the various `Config.configure_data_node()^` methods.<br>
-    For more details, see the [data node configuration](../data-integration/data-node-config.md)
-    page.
 
 2. Configure the scenarios with the data node configurations using the
     `Config.configure_scenario()^` method.<br>
@@ -32,12 +30,9 @@ To create multiple scenarios with alternative data nodes, you need to:
         For more details, see the [task orchestration](../task-orchestration/scenario-config.md)
         page.
 
-    For more details, see the [scenario configuration](../sdm/scenario/scenario-config.md)
-    page.
-
 3. Instantiate multiple scenarios using `create_scenario()^` function. The alternative
-    data nodes (and tasks) are created along with the new scenarios.<br>
-    For more details, see the [scenario](../sdm/scenario/index.md) page.
+    data nodes (and tasks) are created along with the new scenarios.
+
 
 # Example
 
@@ -85,14 +80,15 @@ Once you have all your data nodes configurations `DataNodeConfig`, you can confi
 `Config.configure_scenario()^` method takes the data node configurations as parameter
 and returns the scenario configuration `ScenarioConfig^`.
 
-??? note "Scenario with Tasks"
+??? note "Configure scenarios from task configurations"
 
-    This example only have additional data node configurations. Note that you can also
-    add data node configurations along with task configurations if needed.<br>
+    For simplicity purpose, we only consider scenario configurations made of additional
+    data node configurations. Note that you can also add data node configurations along
+    with task configurations if your scenario use case require some data processingneeded.<br>
     For more details, see the [task orchestration](../task-orchestration/scenario-config.md)
     page.
 
-For more details, see the
+For more details on the various way of creating a scenario configuration, see the
 [scenario configuration](../sdm/scenario/scenario-config.md) page.
 
 ## Scenario Creations
@@ -106,6 +102,8 @@ current_month and the capacity). This allows you to model and analyze different 
 conditions or what-if scenarios. Each scenario is independent of the others. You can use the
 utility methods provided by Taipy to access, read, write, compare, and manage data nodes and
 scenarios.
+For more details, see the [scenario](../sdm/scenario/index.md) and
+[data node](../sdm/data-node/index.md) pages.
 
 !!! important "User Interface"
 
@@ -117,3 +115,4 @@ scenarios.
     [data node selector](../gui/viselements/corelements/data_node_selector.md), and
     [data node viewer](../gui/viselements/corelements/data_node.md) are designed to facilitate
     the creation and management of scenarios.
+

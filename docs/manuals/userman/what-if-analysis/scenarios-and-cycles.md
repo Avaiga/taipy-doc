@@ -69,18 +69,12 @@ the scope of their configurations.
 
 To create cycles and alternative data nodes with different scopes, you need to:
 1. Configure the data nodes with the desired scopes using the various
-    `Config.configure_data_node()^` methods.<br>
-    For more details, see the [data node configuration](../data-integration/data-node-config.md) page.
+    `Config.configure_data_node()^` methods.
 
-2. Configure the scenarios with the data node configurations using
-    the `Config.configure_scenario()^` method.<br>
-    For more details, see the [scenario configuration](../sdm/scenario/scenario-config.md)
-    page.
+2. Configure the scenarios with a *frequency* using the `Config.configure_scenario()^` method.
 
 3. Instantiate multiple scenarios using `create_scenario()^` function to create alternative
-    data nodes with different scopes.<br>
-    For more details, see the [scenario](../sdm/scenario/index.md)
-    page.
+    data nodes with different scopes.
 
 # Example
 
@@ -125,12 +119,14 @@ three scenarios.
 ## Data node configuration
 
 The data node configurations are created with the `Config.configure_data_node()^` method.
-For more details, see the [data node config](../data-integration/data-node-config.md) page.
 
 Pay a particular attention to the *scope* attribute of the data node configurations.
 In this example, the historical sales data node is shared across all scenarios, while the
 trained model, current month, and sales predictions data nodes are unique to each cycle.
 The capacity and production orders data nodes are unique to each scenario.
+
+For more details on how to configure data nodes, see the
+[data node configuration](../data-integration/data-node-config.md) page.
 
 ## Scenario configuration
 
@@ -145,6 +141,9 @@ method allows you to specify the *frequency* attribute and returns the scenario 
     adds the task's input and output data node configurations.<br>
     For more details, see the [task orchestration](../task-orchestration/scenario-config.md)
     page.
+
+For more details on the various way of creating a scenario configuration, see the
+[scenario configuration](../sdm/scenario/scenario-config.md) page.
 
 ## Scenario Instantiation
 
@@ -165,6 +164,9 @@ same cycle and the global data node with all scenarios.
 
 You can use the utility methods provided by Taipy to access, read, write, compare,
 and manage data nodes and scenarios.
+
+For more details, see the [scenario](../sdm/scenario/index.md) and
+[data node](../sdm/data-node/index.md) pages.
 
 !!! important "User Interface"
 
