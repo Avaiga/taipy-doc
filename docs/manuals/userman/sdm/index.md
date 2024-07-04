@@ -9,7 +9,7 @@ solve their data science problems. It democratizes access to advanced data proce
 and analysis tools, enabling non-technical users to leverage complex algorithms for
 their business needs.
 
-# What is a Scenario?
+# Scenario: A central concept
 
 Taipy provides the key concept of *Scenario*. Among other functionalities, a *Scenario*
 represents an instance of a data science problem with its datasets (modeled as *Data nodes*)
@@ -45,7 +45,9 @@ complex algorithms.
 
         ![Linear scenario](img/branching-algo.svg)
 
-A few concepts are essential to leverage Scenario and Data management.
+# Main concepts
+
+A few concepts are essential to leverage scenario and data management.
 
 - A `DataNode^` (the dark blue boxes) represents a reference to a dataset, a parameter or any data.
   A data node can be used/shared by multiple tasks as input or output. It can refer to any type of
@@ -72,7 +74,6 @@ A few concepts are essential to leverage Scenario and Data management.
 - A `Scope^` represents the *visibility* of a data node in the graph of entities, and the
   level of its owner (Scenario, Cycle, Global).
 
-# Main principle
 
 !!! important "Definition: Config vs Entities"
 
@@ -90,18 +91,34 @@ A few concepts are essential to leverage Scenario and Data management.
     Then, each **entity** is instantiated from a **config** at run time (most often by end-users).
     Note also that the same **config** can be used to instantiate multiple **entities**.
 
-## Configuration
+## Main principles
 
-- TODO : Configuration
-- To define your business problem and your algorithms.
-- Use the Config singleton entrypoint to create your configurations.
+To benefit from scenario and data management in your Taipy application, three steps have to be
+followed. Note that these steps are not necessarily sequential, and can be done simultaneously,
+or iteratively base on some end-users' feedback.
 
-## Usage
+1. **Scenario design:**
+    Identify the data nodes and tasks of your scenarios, and how they need to be connected.
+    This is an important step, as it will define the behavior of your application.<br>
+    Usually, it consists in identifying the application data (input datasets, parameters,
+    variables, intermediate datasets, models, output data, kpis, results, etc.) that will be
+    modeled as data nodes, and the Python functions (preprocessing, feature engineering, algorithms,
+    training, testing, fitting, post-processing, etc.) that will be modeled as tasks.
 
-- How to use a Scenario? => usage
+2. **Scenario configuration:**
+    Configure your application. In particular, you need to configure your data nodes, tasks, and
+    scenarios based on the first step: Scenario design.
+    You can use the `Config.configure_data_node()^`, `Config.configure_task()^`, and
+    `Config.configure_scenario()^` methods to configure your scenarios with the execution graphs.
 
-## Graphical controls
+    ??? Note "About the `Config`"
 
-- How to visualize a data node? => core viz
+        The `Config` is a singleton object that is used to configure the whole application,
+        not only the data and scenarios.
+        For more information, see the [configuration](../configuration/index.md) page.
 
-
+3. **User interface implementation:**
+    Implement the user interface pages that will allow end-users to create, edit, and submit
+    scenarios. This is typically done using the Taipy GUI components that are using
+    predefined or user defined callbacks triggered when end-users interact with them.<br>
+    These callbacks often use the scenario and data management APIs.

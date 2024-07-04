@@ -1,16 +1,69 @@
-This page describes the `Task^` management. It explains how to create tasks,
-access their attributes, and retrieve them.
+This page describes the `Task^` management. It explains how to configure, create and use tasks.
 
-# Task Configuration
+# Task configuration
 
-TODO:
-Cross-ref to the
-[Task configuration](../../task-orchestration/scenario-config.md#from-task-configurations) section.
+A task configuration is necessary to instantiate a `Task^`. To create a
+`TaskConfig^`, you can use the `Config.configure_task()^` method with the following parameters:
 
-# Task Creation
+- _**id**_: The id of the task configuration to be created. This id is **mandatory** and must
+  be a unique and valid Python identifier.
+- _**function**_: The function to execute.
+- _**inputs**_: The input data nodes referring to the *function*'s parameter(s) data to be
+  executed.
+- _**outputs**_: The output data nodes referring to the result(s) data of the *function*
+  to be executed.
+- _**skippable**_: Boolean attribute indicating if the task execution can be skipped if
+  all output data nodes are up-to-date (see the *validity_period* attribute in the
+  [data node configuration](../../data-integration/data-node-config.md#config-attributes)
+  page). The default value of *skippable* is False.
+
+Here is a simple example:
+
+```python linenums="1"
+{%
+include-markdown "./code-example/task-config-simple.py"
+comments=false
+%}
+```
+
+In the example above, we created a `TaskConfig^` named `double_task_cfg`.
+
+In lines 4-5, we define a function `double()`, to be used in a `Task^`
+instantiated from the task config. It takes a single parameter and returns a single value.
+
+In lines 8-9, two data node configurations are created. They will be used respectively as
+argument and result of the function `double()`.
+
+Finally, on line 12-16, we create the task configuration with the id *double_task*. It
+represents the function `double()` that expects an *input* data node as a parameter and
+returns an *output* data node. On line 13, the Task configuration has been set as `skippable`.
+That means when submitting a Task entity instantiated from this TaskConfig, Taipy will skip
+its execution if its input data nodes haven't changed since the previous execution.
+
+Because a Task can have several inputs and outputs, `Config.configure_task()^` can receive
+lists of `DataNodeConfig^` objects.
+
+```python linenums="1"
+{%
+include-markdown "./code-example/task-config-multiple.py"
+comments=false
+%}
+```
+
+In lines 4-5, we define a function with two parameters and two return values.
+
+In lines 8-9, two data nodes configurations are created. They will be used as the
+function arguments.
+
+In lines 11-12, two data nodes are configured. They will be used as the function results.
+
+Finally, in lines 14-17, we create the task configuration with the id *foo* representing
+the function *multiply_and_add*. It expects two *input* data nodes and two *output* data nodes.
+
+# Task creation
+
 Tasks get created when scenarios are created. For more details, see the
-[Scenario creation](../scenario/index.md#scenario-creation) section.
-
+[scenario creation](../scenario/index.md#scenario-creation) section.
 
 # Task attributes
 
@@ -21,74 +74,56 @@ A task also holds various properties accessible as an attribute of the task:
 - _**input**_ is the list of input data nodes.
 - _**output**_ is the list of output data nodes.
 - _**function**_ is the Python function associated with the Task config.<br/>
-  The *function* takes as many parameters as there are data nodes in the *input* attribute. Each parameter corresponds
-  to the return value of an input data node `read()` method.<br/>
+  The *function* takes as many parameters as there are data nodes in the *input* attribute.
+  Each parameter corresponds to the return value of an input data node `read()` method.<br/>
   The function returns as many parameters as there are data nodes in the *output* attribute. Each
   *function*'s returned value corresponds to the parameter of an output data node `write()` method.
 - _**version**_: The string indicates the application version of the task to instantiate.
-  If not provided, the current version is used. Refer to the [version management](../../versioning/index.md)
-  page for more details.
+  If not provided, the current version is used. Refer to the
+  [version management](../../versioning/index.md) page for more details.
 - _**skippable**_: Boolean attribute indicating if a task execution can be skipped when all output
   data nodes are up-to-date (see the *validity_period* attribute in the
-  [Data node management page](../entities/data-node-mgt.md) for more detail). The default value of
-  *skippable* is False.
+  [data node management](../../data-integration/data-node-config.md#config-attributes)
+  page). The default value of *skippable* is False.
 
 !!! example
 
     ```python linenums="1"
-    import taipy as tp
-    import my_config
-
-    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
-    task = scenario.predicting
-
-    # the config_id is an attribute of the task. Here it equals "predicting"
-    task.config_id
-
-    # the function to be executed with data from input data
-    # nodes and returns value for output data nodes.
-    task.function # predict
-
-    # input is the list of input data nodes of the task
-    task.input # [trained_model_cfg, current_month_cfg]
-
-    # output is the list of output data nodes of the task
-    task.output # [sales_predictions_cfg]
-
-    # the current_month data node entity is exposed as an attribute of the task
-    current_month_data_node = task.current_month
+    {%
+    include-markdown "./code-example/attribute-example.py"
+    comments=false
+    %}
     ```
-
-Taipy exposes multiple methods to manage the various tasks.
 
 # Get Tasks
 
-The first method to access a job is from its id by using the `taipy.get()^` method.
+## get a task by id
 
-```python linenums="1"
-import taipy as tp
-import my_config
+The first method to access a task is from its id by using the `taipy.get()^` method.
 
-scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
-task = scenario.training
-task_retrieved = tp.get(task.id)
-# task == task_retrieved
-```
+!!! example
+
+    ```python linenums="1"
+    {%
+    include-markdown "./code-example/get-task-by-id.py"
+    comments=false
+    %}
+    ```
 
 Here, the two variables `task` and `task_retrieved` are equal.
 
-All the jobs can be retrieved using the method `taipy.get_tasks()^`.
-
-# Get tasks by config id
+## Get tasks by config id
 
 A task can be retrieved from a scenario or a sequence, by accessing the task config_id attribute.
 
-```python linenums="1"
-task_1 = scenario.predicting  # "predicting" is the config_id of the predicting Task in the scenario
-sequence = scenario.sales
-task_2 = sequence.predicting  # "predicting" is the config_id of the predicting Task in the sequence
-# task_1 == task_2
-```
+!!! example
+
+    ```python linenums="1"
+    {%
+    include-markdown "./code-example/get-task-by-config-id.py"
+    comments=false
+    %}
+    ```
 
 Tasks can also be retrieved using `taipy.get_entities_by_config_id()^` providing the config_id.
 This method returns the list of all existing tasks instantiated from the config_id provided as a parameter.
@@ -106,6 +141,41 @@ This method returns the list of all existing tasks instantiated from the config_
     # Get all training tasks by config id, this will return a list of 2 training tasks
     # created alongside the 2 scenarios.
     all_training_tasks = tp.get_entities_by_config_id("training")
+    ```
+
+## Get all tasks
+
+All tasks that are part of a **scenario** or a **sequence** can be
+directly accessed as attributes:
+
+!!! example
+
+    ```python linenums="1"
+    import taipy as tp
+    import my_config
+
+    # Creating a scenario from a config
+    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+
+    # Access all the tasks from the scenario
+    scenario.tasks
+
+    # Access the sequence 'sales' from the scenario and
+    # then access all the tasks from the sequence
+    sequence = scenario.sales
+    sequence.tasks
+    ```
+
+All the tasks can be retrieved using the method `taipy.get_tasks()^`.
+which returns the list of all existing tasks.
+
+!!! example
+
+    ```python linenums="1"
+    import taipy as tp
+
+    # Retrieve all tasks
+    tasks = tp.get_tasks()
     ```
 
 # Get parent scenarios and sequences
@@ -135,4 +205,12 @@ use either the method `Task.get_parents()^` or the function
     tp.get_parents(task)
     ```
 
-[:material-arrow-right: The next section shows the data node management](data-node-mgt.md).
+# Submit a task
+
+A `Task^` is a submittable entity. You can submit a task with the `taipy.submit()^` function
+or the `Task.submit()^` method. Submitting a task automatically creates a `Job^` modeling the
+`Task^` execution and returns a `Submission^` object containing the information about the
+submission of the task such as the created `Job^` and the submission status.
+
+For more details and examples on how to submit a task, see the
+[scenario submission](../../task-orchestration/scenario-submission.md#submit-a-task) page.

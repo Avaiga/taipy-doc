@@ -60,7 +60,7 @@ For more details on scenarios, see the [scenario management](../sdm/scenario/ind
 
 # Get data nodes
 
-## Get a data node by the id
+## Get a data node by id
 
 The first method to access a **data node** is by calling the `taipy.get()^` method
 passing the data node id as a parameter:
