@@ -128,4 +128,37 @@ definition. To create and submit scenarios, you need to:
     [Taipy GUI](../../gui/index.md). The [scenario viewer](../gui/viselements/corelements/scenario.md) is
     designed for this purpose.
 
-Please refer to the [hello world](hello-world.md) page to get a basic example.
+
+!!! example
+
+    === "Hello world"
+
+        Please refer to the [hello world](hello-world.md) page to get a didactic example.
+
+    === "Complete example"
+
+        The following code shows a complete example of how to create a scenario configuration
+        and submit it for execution. It consists of creating a dumb function named "do_nothing"
+        and used to configure a scenario. The scenario configuration is then used to instantiate
+        a scenario and submit it for execution.
+
+        ```python linenums="1"
+        {%
+        include-markdown "./code-example/index/complete-example.py"
+        comments=false
+        %}
+        ```
+
+    === "With user interface"
+
+        The following code shows a complete example of how to have a quick user interface for
+        scenario execution. It consists of creating a dumb function named "identity" and used
+        to create a scenario configuration. A user interface is created with three controls
+        allowing to create and execute scenarios.
+
+        ```python linenums="1"
+        {%
+        include-markdown "./code-example/index/example-with-gui.py"
+        comments=false
+        %}
+        ```

@@ -166,15 +166,17 @@ can be global, or you can specify the scenario or sequence by passing it as a pa
 
     ```console
     Submit: scenario_1
-    my_global_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
-    my_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
-    my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_1 .
-    my_subscriber: scenario 'my_scenario_1' ; task 'my_task_2'.
-    my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_2'.
+      my_global_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
+      my_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
+      my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_1'.
+      my_subscriber: scenario 'my_scenario_1' ; task 'my_task_2'.
+      my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_2'.
     Submit: scenario_2
-    my_global_subscriber: scenario 'my_scenario_2'; task 'my_task_1'.
+      my_global_subscriber: scenario 'my_scenario_2'; task 'my_task_1'.
     Unsubscribe to my_global_subscriber for scenario_1
     Submit: scenario_1
-    my_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
-    my_subscriber: scenario 'my_scenario_1'; task 'my_task_2'.
+      my_subscriber: scenario 'my_scenario_1'; task 'my_task_1'.
+      my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_1'.
+      my_subscriber: scenario 'my_scenario_1'; task 'my_task_2'.
+      my_subscriber_multi_param: params ["my_param_1", 42]; task 'my_task_2'.
     ```
