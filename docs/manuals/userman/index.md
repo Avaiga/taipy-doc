@@ -41,8 +41,8 @@ These topics are the most visited ones, we thought you’d like to have a glance
 
 # Graphical User Interface (GUI) - `taipy.gui`
 
-The `taipy.gui^` package allows you to design an effective Graphic User Interface.
-It provides many interactive widgets, controls, and presentative elements to enhance the
+The `taipy.gui^` package allows you to design an effective Graphical User Interface.
+It provides many interactive widgets, controls, and visual elements to enhance the
 user’s experience.
 
 [:material-arrow-right: GUI User Manual](../gui/index.md)

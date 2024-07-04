@@ -148,6 +148,9 @@ definition. To create and submit scenarios, you need to:
         comments=false
         %}
         ```
+        Here is the
+        <a href="./code-example/index/complete-example.py" download>complete python code</a>
+        corresponding to the example.
 
     === "With user interface"
 
@@ -162,3 +165,6 @@ definition. To create and submit scenarios, you need to:
         comments=false
         %}
         ```
+        Here is the
+        <a href="./code-example/index/example-with-gui.py" download>complete python code</a>
+        corresponding to the example.
