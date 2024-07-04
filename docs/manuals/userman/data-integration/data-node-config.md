@@ -130,10 +130,10 @@ comments=false
 %}
 ```
 
-In lines 4-6, we configure a simple pickle data node with the id "date_cfg".
+In lines 4-6, we configure a simple pickle data node with the id "date".
 The scope is `SCENARIO` (default value), and default data is provided.
 
-In lines 8-11, we add another pickle data node configuration with the id "model_cfg".
+In lines 8-11, we add another pickle data node configuration with the id "model".
 The default `SCENARIO` scope is used. Since the data node config corresponds to a
 pre-existing pickle file, a default path "path/to/my/model.p" is provided. We also
 added an optional custom description.
@@ -909,17 +909,17 @@ for a SQL table data node in lines 3-14.
 
 Then we configure 5 data nodes:
 
-- Line 16 configures a SQL Table data node `products_data_cfg`. By providing
+- a SQL Table data node `products_data_cfg`. By providing
   only the _**id**_, `products_data_cfg` has the exact same properties as the
   default data node configuration as above, which reads and writes to the "products" table.
-- Line 17 configures a SQL Table data node `users_data_cfg`. By also providing
+- a SQL Table data node `users_data_cfg`. By also providing
   `table_name="users"`, this data node reads and writes to the "users" table.
-- Lines 18 and 19 configure 2 SQL Table data nodes, one using
+- two SQL Table data nodes, one using
   `Config.configure_data_node()^` with `storage_type="sql_table"`, one using
   `Config.configure_sql_table_data_node()^`. Since both have the same _**storage_type**_
   as the default data node configuration, both have the same properties except for
   the table name.
-- Line 21 configures a CSV data node `forecast_data_cfg`. Since the _**storage_type**_
+- a CSV data node `forecast_data_cfg`. Since the _**storage_type**_
   is `"csv"`, which is different from the `"sql_table"` configured in line 9, the
   default data node configuration is ignored. Therefore, the scope of
   `forecast_data_cfg` is `SCENARIO` by default.
