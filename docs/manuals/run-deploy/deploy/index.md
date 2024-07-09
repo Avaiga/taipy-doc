@@ -1,28 +1,7 @@
-When you have developed and tested a Taipy application, on your local system, you
-may need to deploy it on a remote environment, for end users to be able to use it.
+Taipy applications are designed to be easily deployable and customizable. Once deployed, they can natively support multiple users with authentication and authorization. Taipy is cloud-agnostic and can be deployed on any cloud provider or on-premises.
 
-Here are the different situations that Taipy can address:
+!!! note "Taipy Enterprise edition"
 
-- [Windows](windows/index.md): deploy the application on a Windows Server system;
-- [Linux](linux/index.md): deploy the application on a server running Linux;
-- [Docker](docker/index.md): running the application in a container;
-- [Azure](azure/index.md): deploy the application on the
-  [Azure](https://azure.microsoft.com/en-us/) platform;
-- [Heroku](heroku/index.md): deploy the application on the
-  [Heroku](https://www.heroku.com/home) platform;
-- [Databricks](databricks/index.md): deploy the application on the
-  [Databricks](https://www.databricks.com/) platform;
+    Taipy Deployment Support, Scripts and Documentation are only available in the Enterprise edition. Please contact us for more information:
 
-
-## [Windows](windows/index.md)
-
-## [Linux](linux/index.md)
-
-## [Docker](docker/index.md)
-
-## [Azure](azure/index.md)
-
-## [Heroku](heroku/index.md)
-
-## [Databricks](databricks/index.md)
-
+    [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
