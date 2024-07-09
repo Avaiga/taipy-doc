@@ -17,6 +17,8 @@ and attached to scenarios at their creation.
     sales forecast scenarios can be attached to the same monthly cycle. Each one
     forecasting sales under different conditions.
 
+For more details on how recurrent scenarios, please refer to the
+[recurrent scenarios](../../what-if-analysis/scenarios-and-cycles.md) page.
 
 # Cycle attributes
 
