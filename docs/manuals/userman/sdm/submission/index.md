@@ -1,6 +1,6 @@
 This page describes how to manage *submissions* in a Taipy application.
 
-A submission is created every time an entity (`Scenario^`, a `Sequence^` or a `Task^`)
+A `Submission^` is created every time an entity (`Scenario^`, a `Sequence^` or a `Task^`)
 is submitted for execution. It holds the list of jobs created during the submission process,
 and the submission's status.
 
