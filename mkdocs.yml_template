@@ -117,15 +117,14 @@ nav:
         - "Scenario":
           - "Scenario": manuals/userman/sdm/scenario/index.md
           - "Scenario config": manuals/userman/sdm/scenario/scenario-config.md
-          - "Scenario viewer": manuals/userman/sdm/scenario/scenario-viewer.md
-          - "Scenario selector": manuals/userman/sdm/scenario/scenario-selector.md
-          - "Scenario DAG": manuals/userman/sdm/scenario/scenario-dag.md
+        - "Submission":
+          - "Submission": manuals/userman/sdm/submission/index.md
         - "Job":
           - "Job": manuals/userman/sdm/job/index.md
-          - "Job": manuals/userman/sdm/job/job-selector.md
-        - "Submission": manuals/userman/sdm/submission/index.md
-        - "Sequence": manuals/userman/sdm/sequence/index.md
-        - "Cycle": manuals/userman/sdm/cycle/index.md
+        - "Sequence":
+          - "Sequence": manuals/userman/sdm/sequence/index.md
+        - "Cycle":
+          - "Cycle": manuals/userman/sdm/cycle/index.md
 
       - "Configuration":
         - "Configuration": manuals/userman/configuration/index.md

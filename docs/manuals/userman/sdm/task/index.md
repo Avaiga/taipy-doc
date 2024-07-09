@@ -1,4 +1,10 @@
-This page describes the `Task^` management. It explains how to configure, create and use tasks.
+This page describes how to manage *tasks* in Taipy. It explains how to configure,
+create and use *tasks*.
+
+A `Task^` is a submittable entity that represents a function to execute. It is
+created from a `TaskConfig^` and can be submitted to the Taipy orchestration
+for execution. It brings together the user code as function, the inputs and
+the outputs as data nodes (instances of the `DataNode^` class).
 
 # Task configuration
 
@@ -17,53 +23,62 @@ A task configuration is necessary to instantiate a `Task^`. To create a
   [data node configuration](../../data-integration/data-node-config.md#config-attributes)
   page). The default value of *skippable* is False.
 
-Here is a simple example:
+!!! example
 
-```python linenums="1"
-{%
-include-markdown "./code-example/task-config-simple.py"
-comments=false
-%}
-```
+    === "Single input and output"
 
-In the example above, we created a `TaskConfig^` named `double_task_cfg`.
+        ```python linenums="1"
+        {%
+        include-markdown "./code-example/task-config-simple.py"
+        comments=false
+        %}
+        ```
 
-In lines 4-5, we define a function `double()`, to be used in a `Task^`
-instantiated from the task config. It takes a single parameter and returns a single value.
+        In the example above, we created a `TaskConfig^` named `double_task_cfg`.
 
-In lines 8-9, two data node configurations are created. They will be used respectively as
-argument and result of the function `double()`.
+        In lines 4-5, we define a function `double()`, to be used in a `Task^`
+        instantiated from the task config. It takes a single parameter and returns
+        a single value.
 
-Finally, on line 12-16, we create the task configuration with the id *double_task*. It
-represents the function `double()` that expects an *input* data node as a parameter and
-returns an *output* data node. On line 13, the Task configuration has been set as `skippable`.
-That means when submitting a Task entity instantiated from this TaskConfig, Taipy will skip
-its execution if its input data nodes haven't changed since the previous execution.
+        In lines 8-9, two data node configurations are created. They will be used
+        respectively as argument and result of the function `double()`.
 
-Because a Task can have several inputs and outputs, `Config.configure_task()^` can receive
-lists of `DataNodeConfig^` objects.
+        Finally, on line 12-16, we create the task configuration with the id *double_task*.
+        It represents the function `double()` that expects an *input* data node as a parameter
+        and returns an *output* data node. On line 13, the Task configuration has been set as
+        `skippable`. That means when submitting a Task entity instantiated from this TaskConfig,
+        Taipy will skip its execution if its input data nodes haven't changed since the previous
+        execution.
 
-```python linenums="1"
-{%
-include-markdown "./code-example/task-config-multiple.py"
-comments=false
-%}
-```
+    === "Multiple inputs and outputs"
 
-In lines 4-5, we define a function with two parameters and two return values.
+        Because a Task can have several inputs and outputs, `Config.configure_task()^` can
+        receive lists of `DataNodeConfig^` objects.
 
-In lines 8-9, two data nodes configurations are created. They will be used as the
-function arguments.
+        ```python linenums="1"
+        {%
+        include-markdown "./code-example/task-config-multiple.py"
+        comments=false
+        %}
+        ```
 
-In lines 11-12, two data nodes are configured. They will be used as the function results.
+        In lines 4-5, we define a function with two parameters and two return values.
 
-Finally, in lines 14-17, we create the task configuration with the id *foo* representing
-the function *multiply_and_add*. It expects two *input* data nodes and two *output* data nodes.
+        In lines 8-9, two data nodes configurations are created. They will be used as the
+        function arguments.
+
+        In lines 11-12, two data nodes are configured. They will be used as the function
+        results.
+
+        Finally, in lines 14-17, we create the task configuration with the id *foo*
+        representing the function *multiply_and_add*. It expects two *input* data nodes
+        and two *output* data nodes.
 
 # Task creation
 
-Tasks get created when scenarios are created. For more details, see the
-[scenario creation](../scenario/index.md#scenario-creation) section.
+Tasks get created when scenarios are created using the `taipy.create_scenario()^` method.
+
+For more details, see the [scenario creation](../scenario/index.md#scenario-creation) page.
 
 # Task attributes
 
@@ -88,6 +103,10 @@ A task also holds various properties accessible as an attribute of the task:
 
 !!! example
 
+    The code below uses the `monthly_scenario_cfg` configuration imported from the
+    <a href="../code-example/index/my_config.py" download>`my_config.py`</a>
+    module to shows the task attributes.
+
     ```python linenums="1"
     {%
     include-markdown "./code-example/attribute-example.py"
@@ -95,13 +114,17 @@ A task also holds various properties accessible as an attribute of the task:
     %}
     ```
 
-# Get Tasks
+# Get tasks
 
-## get a task by id
+## Get tasks by id
 
 The first method to access a task is from its id by using the `taipy.get()^` method.
 
 !!! example
+
+    The code below uses the `monthly_scenario_cfg` configuration imported from the
+    <a href="../code-example/index/my_config.py" download>`my_config.py`</a>
+    module to demonstrate how to get a task by its id.
 
     ```python linenums="1"
     {%
@@ -118,6 +141,10 @@ A task can be retrieved from a scenario or a sequence, by accessing the task con
 
 !!! example
 
+    The code below uses the `monthly_scenario_cfg` configuration imported from the
+    <a href="../code-example/index/my_config.py" download>`my_config.py`</a>
+    module to demonstrate how to get a task by its configuration id.
+
     ```python linenums="1"
     {%
     include-markdown "./code-example/get-task-by-config-id.py"
@@ -130,17 +157,15 @@ This method returns the list of all existing tasks instantiated from the config_
 
 !!! example
 
+    The code below uses the `monthly_scenario_cfg` configuration imported from the
+    <a href="../code-example/index/my_config.py" download>`my_config.py`</a>
+    module to demonstrate how to get tasks by configuration id.
+
     ```python linenums="1"
-    import taipy as tp
-    import my_config
-
-    # Create 2 scenarios, which will also create 2 trainig tasks.
-    scenario_1 = tp.create_scenario(my_config.monthly_scenario_cfg)
-    scenario_2 = tp.create_scenario(my_config.monthly_scenario_cfg)
-
-    # Get all training tasks by config id, this will return a list of 2 training tasks
-    # created alongside the 2 scenarios.
-    all_training_tasks = tp.get_entities_by_config_id("training")
+    {%
+    include-markdown "./code-example/get-entities-by-config-id.py"
+    comments=false
+    %}
     ```
 
 ## Get all tasks
@@ -150,20 +175,15 @@ directly accessed as attributes:
 
 !!! example
 
+    The code below uses the `monthly_scenario_cfg` configuration imported from the
+    <a href="../code-example/index/my_config.py" download>`my_config.py`</a>
+    module to demonstrate how to get all tasks from a scenario.
+
     ```python linenums="1"
-    import taipy as tp
-    import my_config
-
-    # Creating a scenario from a config
-    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
-
-    # Access all the tasks from the scenario
-    scenario.tasks
-
-    # Access the sequence 'sales' from the scenario and
-    # then access all the tasks from the sequence
-    sequence = scenario.sales
-    sequence.tasks
+    {%
+    include-markdown "./code-example/get-all-tasks.py"
+    comments=false
+    %}
     ```
 
 All the tasks can be retrieved using the method `taipy.get_tasks()^`.
@@ -186,23 +206,15 @@ use either the method `Task.get_parents()^` or the function
 
 !!! example
 
+    The code below uses the `monthly_scenario_cfg` configuration imported from the
+    <a href="../code-example/index/my_config.py" download>`my_config.py`</a>
+    module to demonstrate how to get parent entities from a task.
+
     ```python linenums="1"
-    import taipy as tp
-    import my_config
-
-    # Create a scenario from a config
-    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
-
-    # Retrieve a task
-    task = scenario.training_cfg
-
-    # Retrieve the parent entities of the task. The returned value is
-    # {'scenarios': [Scenario 1], 'sequences': [Sequence 1]}
-    parent_entities = task.get_parents()
-
-    # Retrieve the parent entities of the task. The return value is
-    # {'scenarios': [Scenario 1], 'sequences': [Sequence 1]}
-    tp.get_parents(task)
+    {%
+    include-markdown "./code-example/get-parents.py"
+    comments=false
+    %}
     ```
 
 # Submit a task

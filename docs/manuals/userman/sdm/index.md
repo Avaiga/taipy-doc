@@ -9,7 +9,7 @@ solve their data science problems. It democratizes access to advanced data proce
 and analysis tools, enabling non-technical users to leverage complex algorithms for
 their business needs.
 
-# Scenario: A central concept
+# Scenario
 
 Taipy provides the key concept of *Scenario*. Among other functionalities, a *Scenario*
 represents an instance of a data science problem with its datasets (modeled as *Data nodes*)
@@ -74,24 +74,7 @@ A few concepts are essential to leverage scenario and data management.
 - A `Scope^` represents the *visibility* of a data node in the graph of entities, and the
   level of its owner (Scenario, Cycle, Global).
 
-
-!!! important "Definition: Config vs Entities"
-
-    Among the concepts described in this section, **data nodes**, **tasks**, and **scenarios**
-    have two types of Taipy objects related to them: *configuration* objects and *runtime* objects.
-
-    To differentiate them, the configuration objects are named **_configs_** (`DataNodeConfig`,
-    `TaskConfig`, and `ScenarioConfig`). In contrast, the runtime objects (`DataNode`, `Task`, and
-    `Scenario`) are called **_entities_**.
-
-    One thing to wrap your head around (it may not be very intuitive for everyone at first) is that
-    the **configs** are really just configuration objects describing the characteristics and the
-    behaviors of the concepts they relate to. **Configs** can be seen as generators and created
-    at the development time (by developers).
-    Then, each **entity** is instantiated from a **config** at run time (most often by end-users).
-    Note also that the same **config** can be used to instantiate multiple **entities**.
-
-## Main principles
+# Overview
 
 To benefit from scenario and data management in your Taipy application, three steps have to be
 followed. Note that these steps are not necessarily sequential, and can be done simultaneously,
@@ -110,6 +93,24 @@ or iteratively base on some end-users' feedback.
     scenarios based on the first step: Scenario design.
     You can use the `Config.configure_data_node()^`, `Config.configure_task()^`, and
     `Config.configure_scenario()^` methods to configure your scenarios with the execution graphs.
+
+    !!! important "Definition: Config vs Entities"
+
+        Among the concepts described in this section, **data nodes**, **tasks**, and **scenarios**
+        require some configuration information to be created. They have a *configuration* object
+        attached to their *runtime* objects.
+
+        To differentiate them, the configuration objects are named **_configs_** (`DataNodeConfig`,
+        `TaskConfig`, and `ScenarioConfig`). In contrast, the runtime objects (`DataNode`, `Task`, and
+        `Scenario`) are called **_entities_**.
+
+        One thing to wrap your head around (it may not be very intuitive for everyone at first) is that
+        the **configs** are really just configuration objects describing the characteristics and the
+        behaviors of the concepts they relate to. **Configs** can be seen as generators and created
+        at the development time (by developers). They are not meant to be exposed to end-users.
+
+        Then, each **entity** is instantiated from a **config** at run time (most often by end-users).
+        Note also that the same **config** can be used to instantiate multiple **entities**.
 
     ??? Note "About the `Config`"
 

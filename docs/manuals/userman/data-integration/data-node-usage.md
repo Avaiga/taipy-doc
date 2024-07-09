@@ -38,11 +38,6 @@ The first method is creating a global data node using the
 when you want to use a data node independently of a scenario, even if the data node is
 part of a scenario.
 
-The second method is creating a scenario via the `taipy.create_scenario()^` method. This
-method takes a scenario configuration as a parameter and returns the created scenario,
-and all data nodes that are related to the scenario will be built alongside the scenario.
-For more details on scenarios, see the [scenario management](../sdm/scenario/index.md) page.
-
 !!! example
 
     ```python linenums="1"
@@ -57,6 +52,12 @@ For more details on scenarios, see the [scenario management](../sdm/scenario/ind
     The `taipy.create_global_data_node()^` method only accepts data node configuration
     with `GLOBAL` scope. If a data node configuration with a different scope is provided,
     the method will raise the `DataNodeConfigIsNotGlobal^` exception.
+
+The second method is creating a scenario via the `taipy.create_scenario()^` method. This
+method takes a scenario configuration as a parameter and returns the created scenario,
+and all data nodes that are related to the scenario will be built alongside the scenario.
+For more details on scenarios, see the
+[scenario management](../sdm/scenario/index.md#scenario-creation) page.
 
 # Get data nodes
 
