@@ -30,7 +30,7 @@ class RestRefManStep(SetupStep):
             setup.move_package_to_root(Setup.ROOT_PACKAGE)
 
     def generate_rest_refman_pages(self, setup: Setup):
-        REST_REF_DIR_PATH = setup.manuals_dir + "/reference_rest"
+        REST_REF_DIR_PATH = setup.ref_manuals_dir + "/reference_rest"
         from taipy.rest.app import create_app as rest_create_app
 
         app = rest_create_app()

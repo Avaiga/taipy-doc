@@ -115,8 +115,8 @@ docs/manuals/userman/gui/viselements/standard-and-blocks/*.md
 !docs/manuals/userman/gui/viselements/standard-and-blocks/index.md
 docs/manuals/userman/gui/viselements/standard-and-blocks/charts/*.md
 docs/manuals/userman/gui/viselements/corelements/*.md
-docs/manuals/xrefs
 !docs/manuals/userman/gui/gui_example.ipynb
+docs/manuals/xrefs
 docs/manuals/refmans/reference/**/*.md
 !docs/manuals/refmans/reference/index.md
 docs/manuals/refmans/reference_rest/*.md
@@ -124,12 +124,12 @@ docs/manuals/refmans/reference_rest/*.md
 docs/manuals/refmans/reference_guiext/
 docs/contributing/contributors.md
 fe_node_modules/
-docs/gallery/index.md
 docs/tutorials/scenario_management/index.md
 docs/tutorials/visuals/index.md
 docs/tutorials/integration/index.md
 docs/tutorials/large_data/index.md
 docs/tutorials/fundamentals/index.md
+docs/gallery/index.md
 docs/gallery/finance/index.md
 docs/gallery/decision_support/index.md
 docs/gallery/llm/index.md

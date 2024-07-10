@@ -31,7 +31,7 @@ class RefManStep(SetupStep):
     # Entries that should be hidden for the time being
     HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback"]
     # Where the Reference Manual files are generated (MUST BE relative to docs_dir)
-    REFERENCE_REL_PATH = "manuals/reference"
+    REFERENCE_REL_PATH = "manuals/refmans/reference"
 
     def __init__(self):
         self.navigation = None

@@ -17,6 +17,6 @@ The Taipy manuals are split into two categories:
 - [**Reference Manuals**](refmans/index.md): all the exposed APIs are fully documented here.<br/>
    There is one Reference Manual for each technology involved in Taipy:
 
-    [:material-arrow-right: Python Reference Manual](reference/index.md)</br/>
-    [:material-arrow-right: REST Reference Manual](reference_rest/index.md)</br/>
-    [:material-arrow-right: JavaScript Reference Manual](reference_guiext/index.md)</br/>
+    [:material-arrow-right: Python Reference Manual](refmans/reference/index.md)</br/>
+    [:material-arrow-right: REST Reference Manual](refmans/reference_rest/index.md)</br/>
+    [:material-arrow-right: JavaScript Reference Manual](refmans/reference_guiext/index.md)</br/>
