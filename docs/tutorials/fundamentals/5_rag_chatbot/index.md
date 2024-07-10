@@ -22,7 +22,7 @@ consider using Docker Compose:
 Step 1: 
 
 ```bash
-git clone -b rag --single-branch git@github.com:Avaiga/demo-gpt-4o.git
+git clone -b rag --single-branch https://github.com/Avaiga/demo-gpt-4o.git
 ```
 
 Step 2: 
