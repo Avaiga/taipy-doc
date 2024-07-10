@@ -1,9 +1,9 @@
-Applications that rely on [Taipy Core](../../core/index.md) need to define
-a [Configuration](../../core/config/index.md) where the data flow is
+Applications that rely on Taipy Scenarios need to define a
+[Configuration](../../userman/sdm/scenario/scenario-config.md) where the data flow is
 described.<br/>
 This configuration can be coded in Python and tuned using environment variables
 (as described in the
-[advanced configuration](../../core/config/advanced-config.md#python-code-configuration)
+[advanced configuration](../../userman/configuration/advanced-config.md#python-code-configuration)
 section).
 
 Taipy Studio provides ways to design graphically Taipy application configurations.
@@ -17,7 +17,7 @@ and use a visual representation of those configuration elements as a graph.
 
 Taipy Studio stores those configurations in TOML files. These files can be used at
 runtime by Taipy applications as described in the
-[note on Studio](../../core/config/advanced-config.md#studio).
+[note on Studio](../../userman/configuration/advanced-config.md#studio).
 
 ## Introduction
 
@@ -39,17 +39,17 @@ configuration elements:
     The user can select a configuration file in this list to populate the other
     sections of the Taipy Configs view.
 - **Data Nodes**: holds the list of
-    [Data Node configurations](../../core/config/data-node-config.md) defined
+    [Data Node configurations](../../userman/data-integration/data-node-config.md) defined
     in the selected configuration file.<br/>
     The user can select a Data Node configuration in this list to access all its
     properties in the Details section (see below).
 - **Tasks**: holds the list of
-    [Task configurations](../../core/config/task-config.md) defined
+    [Task configurations](../../userman/task-orchestration/scenario-config.md) defined
     in the selected configuration file.<br/>
     The user can select a Task configuration in this list to access all its
     properties in the Details section (see below).
 - **Scenarios**: holds the list of
-    [Scenario configurations](../../core/config/scenario-config.md) defined
+    [Scenario configurations](../../userman/sdm/scenario/scenario-config.md) defined
     in the selected configuration file.<br/>
     Each Scenario configuration element may contain sequences that appear as child nodes of the
     scenario element.<br/>

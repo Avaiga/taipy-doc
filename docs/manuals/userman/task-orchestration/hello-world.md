@@ -120,7 +120,7 @@ Hello Kylian Mbappe!
 
     This third step consists in calling the various Core APIs to access, manage and submit the
     Taipy entities. Typically it is implemented in Python functions that are called by a
-    graphical interface built with [Taipy GUI](../../gui/index.md).
+    graphical interface built with [Taipy GUI](../gui/index.md).
 
     For example, the `tp.create_scenario()` or the `tp.submit()`
     methods are called when clicking respectively on a "create scenario"

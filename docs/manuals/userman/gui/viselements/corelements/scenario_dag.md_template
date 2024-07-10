@@ -13,7 +13,7 @@ Here is what the control looks like when connected to a scenario instance:
 </figure>
 
 The visual representation of the Data Nodes and Tasks is the same as the one used in the
-[Taipy Studio extension](../../studio/config/graphview.md).
+[Taipy Studio extension](../../../../studio/config/graphview.md).
 
 The toolbar, which can be removed by setting the [*show_toolbar*](#p-show_toolbar) property to
 False, contains a button that adapts the rendering area zoom factor to the graph representation.

@@ -79,7 +79,7 @@ The application is running locally; you can access it with the browser on the UR
     library that Flash depends on and will disappear when using the web server.<br/>
     Some versions of Werkzeug may even raise an exception in that situation, preventing you from running
     the application. You will then need to set the
-    [*allow_unsafe_werkzeug*](../../../gui/configuration.md#p-allow_unsafe_werkzeug) configuration
+    [*allow_unsafe_werkzeug*](../../../userman/configuration/gui-config.md#p-allow_unsafe_werkzeug) configuration
     parameter to True (or set the *allow_unsafe_werkzeug* parameter of `Gui.run()^` to True).
 
 ## Prepare the application for deployment
@@ -87,9 +87,9 @@ The application is running locally; you can access it with the browser on the UR
 Deploying your application to a remote environment needs a bit of configuration.
 
 Make sure you turn off the Debug mode (which is the default) by setting the
-[*debug*](../../../gui/configuration.md#p-debug) parameter of `Gui.run()^` to False.<br>
+[*debug*](../../../userman/configuration/gui-config.md#p-debug) parameter of `Gui.run()^` to False.<br>
 You must also inform Taipy not to run the application server on its own but rather delegate the
-execution by setting the parameter [*run_server*](../../../gui/configuration.md#p-run_server)
+execution by setting the parameter [*run_server*](../../../userman/configuration/gui-config.md#p-run_server)
 of the call to `Gui.run()^` to False.<br>
 The name of the variable where the web application is stored is used in the *uWSGI* configuration:
 this allows the web server to load the web application:

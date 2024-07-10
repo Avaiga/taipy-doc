@@ -5,9 +5,9 @@ A control that can trigger a function when pressed.
 All the button controls are generated with the "taipy-button" CSS class. You can use this class
 name to select the buttons on your page and apply style.
 
-## [Stylekit](../styling/stylekit.md) support
+## [Stylekit](../../styling/stylekit.md) support
 
-The [Stylekit](../styling/stylekit.md) provides specific classes that you can use to style buttons:
+The [Stylekit](../../styling/stylekit.md) provides specific classes that you can use to style buttons:
 
 * *secondary*<br/>*error*<br/>*warning*<br/>*success*<br/>
     Buttons are normally displayed using the value of the *color_primary* Stylekit variable.
@@ -15,7 +15,7 @@ The [Stylekit](../styling/stylekit.md) provides specific classes that you can us
     the *color_secondary*, *color_error*, *color_warning* and *color_success* Stylekit variable
     values.
 
-    The Markdown content: 
+    The Markdown content:
     ```
     <|Error|button|class_name=error|><|Secondary|button|class_name=secondary|>
     ```
@@ -30,7 +30,7 @@ The [Stylekit](../styling/stylekit.md) provides specific classes that you can us
 * *plain*<br/>
     The button is filled with a plain color rather than just outlined.
 
-    The Markdown content: 
+    The Markdown content:
     ```
     <|Button 1|button|><|Button 2|button|class_name=plain|>
     ```

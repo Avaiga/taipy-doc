@@ -130,7 +130,7 @@ values = [
     value2,
     value3
 ]
-    
+
 page = "<|...|chart|...|i_property={values}|...|>"
 ```
 
@@ -284,9 +284,9 @@ button, the page will reflect the change without explicit refresh:
 All the chart controls are generated with the "taipy-chart" CSS class. You can use this class
 name to select the charts on your page and apply style.
 
-## [Stylekit](../styling/stylekit.md) support
+## [Stylekit](../../styling/stylekit.md) support
 
-The [Stylekit](../styling/stylekit.md) provides a specific class that you can use to style charts:
+The [Stylekit](../../styling/stylekit.md) provides a specific class that you can use to style charts:
 
 * *has-background*<br/>
     When the chart control uses the *has-background* class, the rendering of the chart

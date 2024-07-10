@@ -116,7 +116,7 @@ definition. To create and submit scenarios, you need to:
     are instantiated from their configurations as well.
     For more details, see the [scenario creation](scenario-creation.md) page.<br>
     Typically, this step is done by an end-user using the graphical interface built with
-    [Taipy GUI](../../gui/index.md). In particular, the
+    [Taipy GUI](../gui/index.md). In particular, the
     [scenario selector](../gui/viselements/corelements/scenario_selector.md) natively includes a
     scenario creation capability.
 
@@ -125,7 +125,7 @@ definition. To create and submit scenarios, you need to:
     method. <br>
     For more details, see the [scenario submission](scenario-submission.md) page.<br>
     Typically, this step is done by an end-user using the graphical interface built with
-    [Taipy GUI](../../gui/index.md). The [scenario viewer](../gui/viselements/corelements/scenario.md) is
+    [Taipy GUI](../gui/index.md). The [scenario viewer](../gui/viselements/corelements/scenario.md) is
     designed for this purpose.
 
 

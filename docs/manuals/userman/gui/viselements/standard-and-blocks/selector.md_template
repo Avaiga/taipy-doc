@@ -38,7 +38,7 @@ is represented:
         <img src="../selector-check-d.png" class="visible-dark" />
         <img src="../selector-check-l.png" class="visible-light"/>
         <figcaption>"check" mode</figcaption>
-    </figure>  
+    </figure>
     The [*multiple*](#p-multiple) property is forced to True.
 
 - If [*mode*](#p-mode) is set to "radio", the control displays a list of radio buttons:
@@ -46,7 +46,7 @@ is represented:
         <img src="../selector-radio-d.png" class="visible-dark" />
         <img src="../selector-radio-l.png" class="visible-light"/>
         <figcaption>"radio" mode</figcaption>
-    </figure>  
+    </figure>
     The [*multiple*](#p-multiple) property is forced to False.
 
 # Styling
@@ -54,9 +54,9 @@ is represented:
 All the selector controls are generated with the "taipy-selector" CSS class. You can use this class
 name to select the selector controls on your page and apply style.
 
-## [Stylekit](../styling/stylekit.md) support
+## [Stylekit](../../styling/stylekit.md) support
 
-The [Stylekit](../styling/stylekit.md) provides a specific class that you can use to style selector
+The [Stylekit](../../styling/stylekit.md) provides a specific class that you can use to style selector
 controls:
 
 * *fullwidth*<br/>

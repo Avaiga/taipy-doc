@@ -44,7 +44,7 @@ To be able to run your app, Heroku will need the following files:
     web: python main.py -H 0.0.0.0 -P $PORT
     ```
     Note that we are using the *-H* and *-P* options (as described in the
-    [Taipy GUI Configuration section](../../../gui/configuration.md#configuring-the-gui-instance))
+    [Taipy GUI Configuration section](../../../userman/gui/configuration/gui-config.md#configuring-the-gui-instance))
     to provide Taipy with the appropriate host and port settings for the web
     application.
 

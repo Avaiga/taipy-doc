@@ -30,7 +30,7 @@ You can also use an arbitrary type for all the items (see the [example](#use-arb
 All the toggle controls are generated with the "taipy-toggle" CSS class. You can use this class
 name to select the toggle controls on your page and apply style.
 
-The [Stylekit](../styling/stylekit.md) also provides specific CSS classes that you can use to style
+The [Stylekit](../../styling/stylekit.md) also provides specific CSS classes that you can use to style
 toggle controls:
 
 - *relative*<br/>

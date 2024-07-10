@@ -150,7 +150,8 @@ compatible with each other. Let's dive deeper into this topic in the next sectio
 
 # Production version with migration functions
 
-First, without overriding the configuration of version 1.0, let's use the [scenario selector](../../gui/corelements/scenario_selector.md) to create a scenario for June.
+First, without overriding the configuration of version 1.0, let's use the
+[scenario selector](../gui/viselements/corelements/scenario_selector.md) to create a scenario for June.
 
 ![June scenario in production version 1.0](img/scenario_selector_for_production_ver1.png)
 
@@ -221,7 +222,8 @@ Config.add_migration_function(
 )
 ```
 
-After registering the migration functions, we can rerun the application. Let's use the [scenario selector](../../gui/corelements/scenario_selector.md) to create a scenario for the month of July:
+After registering the migration functions, we can rerun the application. Let's use the
+[scenario selector](../gui/viselements/corelements/scenario_selector.md) to create a scenario for the month of July:
 
 ![July scenario in production version 2.0](img/scenario_selector_for_production_ver2.png)
 

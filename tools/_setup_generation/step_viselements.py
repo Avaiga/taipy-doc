@@ -5,11 +5,11 @@
 # and the blocks document pages.
 #
 # For each visual element, this script combines its property list and core
-# documentation, and generates full Markdown files in [VISELEMENTS_DIR_PATH]. All
+# documentation, and generates full Markdown files in [STANDARD_AND_BLOCKS_DIR_PATH]. All
 # these files ultimately get integrated in the global doc set.
 #
 # The skeleton documentation files
-# [VISELEMENTS_DIR_PATH]/[controls|blocks].md_template
+# [STANDARD_AND_BLOCKS_DIR_PATH]/[controls|blocks].md_template
 # are also completed with generated table of contents.
 # ################################################################################
 import json
@@ -33,22 +33,23 @@ class VisElementsStep(SetupStep):
         return "Extraction of the visual elements documentation"
 
     def enter(self, setup: Setup):
-        self.VISELEMENTS_DIR_PATH = setup.manuals_dir + "/gui/viselements"
-        self.CORELEMENTS_DIR_PATH = setup.manuals_dir + "/gui/corelements"
-        self.controls_path = f"{self.VISELEMENTS_DIR_PATH}/controls.md"
+        self.VISELEMENTS_DIR_PATH = setup.manuals_dir + "/userman/gui/viselements"
+        self.STANDARD_AND_BLOCKS_DIR_PATH = setup.manuals_dir + "/userman/gui/viselements/standard-and-blocks"
+        self.CORELEMENTS_DIR_PATH = setup.manuals_dir + "/userman/gui/viselements/corelements"
+        self.controls_path = f"{self.STANDARD_AND_BLOCKS_DIR_PATH}/controls.md"
         template_path = f"{self.controls_path}_template"
         if not os.access(template_path, os.R_OK):
             raise FileNotFoundError(
                 f"FATAL - Could not read {template_path} Markdown template"
             )
-        self.blocks_path = f"{self.VISELEMENTS_DIR_PATH}/blocks.md"
+        self.blocks_path = f"{self.STANDARD_AND_BLOCKS_DIR_PATH}/blocks.md"
         template_path = f"{self.blocks_path}_template"
         if not os.access(template_path, os.R_OK):
             raise FileNotFoundError(
                 f"FATAL - Could not read {template_path} Markdown template"
             )
         self.charts_home_html_path = (
-            self.VISELEMENTS_DIR_PATH + "/charts/home.html_fragment"
+            self.STANDARD_AND_BLOCKS_DIR_PATH + "/charts/home.html_fragment"
         )
         if not os.access(self.charts_home_html_path, os.R_OK):
             raise FileNotFoundError(
@@ -150,7 +151,7 @@ class VisElementsStep(SetupStep):
             self,
             setup.root_dir + "/taipy/gui/viselements.json",
             "",
-            self.VISELEMENTS_DIR_PATH,
+            self.STANDARD_AND_BLOCKS_DIR_PATH,
         )
         load_elements(
             self,
@@ -388,7 +389,8 @@ class VisElementsStep(SetupStep):
                     try:
                         _ = eval(default_value)
                     except Exception:
-                        raise SyntaxError(f"Default value for property '{property}' of element '{element_type}' is not a valid Python expression ({default_value})")
+                        raise SyntaxError(f"Default value for property '{property}' of element '{element_type}' is "
+                                          f"not a valid Python expression ({default_value})")
                 return (f"{property}={default_value if default_value else 'None'}, ",
                         f"{indent*' '}{desc['name']} ({type}){dynamic}: {doc}\n")
 
