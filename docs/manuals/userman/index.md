@@ -47,7 +47,7 @@ user’s experience.
 
 [:material-arrow-right: GUI User Manual](gui/index.md)
 
-# Taipy Core - `taipy.core`
+# Scenario and Data Management - `taipy.core`
 
 The `taipy.core^` package is a Python library designed to build powerful and customized
 data-driven back-end applications. It provides the necessary tools to help Python developers
