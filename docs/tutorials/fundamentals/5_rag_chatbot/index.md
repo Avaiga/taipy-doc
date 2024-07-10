@@ -39,7 +39,7 @@ docker compose up
 
 # Step 1: Imports
 
-Begin by importing the packages which we’ll be using for this application:
+Begin by importing the packages which we'll be using for this application:
 
 ```python
 from taipy.gui import Gui, notify
@@ -64,7 +64,7 @@ Our example RAG chatbot will use:
 
 # Step 2: LLM
 
-The first step is to create a *query_llm* function which takes the user’s question or instruction, and returns the
+The first step is to create a *query_llm* function which takes the user's question or instruction, and returns the
 response from the LLM. The RAG-functionality used in this tutorial is **framework-agnostic** — the code is easily
 adaptable for you to use your favorite models that best fit your use case. As a starting point, you may copy our example
 using LangChain to serve the Mistral-7B-Instruct-v0.2 LLM from Hugging Face.
@@ -97,7 +97,7 @@ def query_llm(query_message):
 ```
 
 At this point, whether you used the above example or wrote your own function, we should now have a *query_llm* function
-which **takes the user query string and returns the model’s response string**. Additionally, the model’s context
+which **takes the user query string and returns the model's response string**. Additionally, the model's context
 includes the contents of the PDF files in the `pdfs/` folder.
 
 # Step 3: Initialize GUI variables
@@ -132,7 +132,7 @@ following image, the panel highlighted by the green box is a partial:
 
 ![The panel within the green box is a partial](images/conv_partial.png){width=90% : .tp-image-border }
 
-By using a partial, we can continually generate new chat bubbles by updating the partial’s content, representing the
+By using a partial, we can continually generate new chat bubbles by updating the partial's content, representing the
 ongoing conversation between the user and LLM.
 
 Furthermore, we also defined the [*on_init*](../../../manuals/gui/callbacks.md/#initialize-a-new-connection) callback
@@ -195,11 +195,11 @@ def send_message(state):
     state.query_message = ""
 ```
 
-This function calls the *create_conv* function **twice**: First to add the **user’s message** to the chat UI, then a
+This function calls the *create_conv* function **twice**: First to add the **user's message** to the chat UI, then a
 second time shortly after the *query_llm* function finishes execution and returns the **LLM output**.
 
 Again, the "*style*" key take the values of "*user_message*" or "*assistant_message*" which correspond to CSS classes
-that we’ll use to style each message as a chat bubble.
+that we'll use to style each message as a chat bubble.
 
 # Step 6: Callback to reset the chat
 
