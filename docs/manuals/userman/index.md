@@ -45,7 +45,7 @@ The `taipy.gui^` package allows you to design an effective Graphical User Interf
 It provides many interactive widgets, controls, and visual elements to enhance the
 user’s experience.
 
-[:material-arrow-right: GUI User Manual](../gui/index.md)
+[:material-arrow-right: GUI User Manual](gui/index.md)
 
 # Taipy Core - `taipy.core`
 
@@ -56,11 +56,11 @@ transform their algorithms into a complete back-end application.
 Taipy Core brings algorithm management to another level: algorithms are now connected to the
 end-user through user-defined scenarios, interactive data, smart job orchestration, etc.
 
-[:material-arrow-right: Definition of Taipy Core concepts](../core/concepts/index.md),
+[:material-arrow-right: Data Integration](data-integration/index.md),
 
-[:material-arrow-right: Documentation on Taipy Core configuration](../core/config/index.md),
+[:material-arrow-right: Task orchestration](task-orchestration/index.md),
 
-[:material-arrow-right: Description of Taipy Core entities](../core/entities/index.md)
+[:material-arrow-right: What-if-analysis](what-if-analysis/index.md)
 
 # Taipy REST - `taipy.rest`
 
@@ -70,7 +70,7 @@ This package aims to provide a solution to easily integrate Taipy applications w
 systems. The API comes with multiple endpoints for you to work with Taipy Core conveniently and
 efficiently.
 
-[:material-arrow-right: Taipy REST User Manual](../rest/index.md)
+[:material-arrow-right: Taipy REST User Manual](rest/index.md)
 
 # Deployment
 
