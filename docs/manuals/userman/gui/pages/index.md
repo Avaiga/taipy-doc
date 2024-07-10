@@ -29,7 +29,7 @@ Pages can be defined using two different techniques:
     - Use [Markdown](markdown.md) when:
 
         - You need to create a page in a few minutes;
-        - You want to benefit from the [Taipy Studio preview](../../studio/gui.md#page-preview)
+        - You want to benefit from the [Taipy Studio preview](../../../studio/gui.md#page-preview)
           feature;
         - You have no experience in UI development, especially on the web;
         - The text layout is close enough to your final presentation objectives.
@@ -58,11 +58,11 @@ When the rendering of a page occurs, the following steps take place:
   potentially complex HTML code;
 
 - The properties of the Visual element are read, and Taipy binds the application variables that are
-  used, if any. See the [section about Binding](../../binding.md) for details;
+  used, if any. See the [section about Binding](../binding.md) for details;
 
 - Potentially, *callbacks* are searched in the visual element properties and connected from the
   rendered page back to the Python code in order to watch user events (the notion of callbacks is
-  detailed in the [section about Callbacks](../../callbacks.md)).
+  detailed in the [section about Callbacks](../callbacks.md)).
 
 ## Registering the page
 
@@ -107,7 +107,7 @@ will be *localhost:5000/page1* or *localhost:5000/page2*.
 
 Note that if pages are created in different modules, the variables that they can bind
 to visual elements may have a scope limited to their origin module. See
-[Page scopes](../../binding.md#scope-for-variable-binding) for more details.
+[Page scopes](../binding.md#scope-for-variable-binding) for more details.
 
 ## Viewing the page
 
@@ -118,8 +118,8 @@ values), so you can see your application's state and interact with it.
 # Root page
 
 The *Root* page is the page located at the top of the web application.
-The name of this page is `"/"` (or the value of the [*base_url*](../configuration.md#p-base_url)
-configuration setting).
+The name of this page is `"/"` (or the value of the
+[*base_url*](../../configuration/gui-config.md#p-base_url) configuration setting).
 
 If your application uses only one page, this is typically where it would be created:
 ```python
@@ -134,7 +134,7 @@ be `http://127.0.0.1:5000/`).
 
 If your application has several pages, you would usually create them with different names,
 so the user can navigate from page to page (using the `navigate()^` function or the
-[`navbar`](../viselements/navbar.md) control).<br/>
+[`navbar`](../viselements/standard-and-blocks/navbar.md) control).<br/>
 However, you can still have a root page for your application (with the name: `"/"`).
 In this situation, Taipy creates a
 [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application)
@@ -183,7 +183,7 @@ for all its pages.
 !!! tip "Running multiple services"
 
     If you need to run the Taipy GUI service with other Taipy services, you may need
-    to refer to the [Running Taipy services](../../run-deploy/run/running_services.md)
+    to refer to the [Running Taipy services](../../../run-deploy/run/running_services.md)
     section.
 
 ## The `<|content|>` pseudo-control
@@ -226,7 +226,7 @@ Applications sometimes need to prompt the user to indicate a situation or reques
 input of some sort. Dialogs are forms that can be displayed on top of the page
 the user is looking at, prompting for some input.
 
-To create a dialog, you will use a [`dialog`](../viselements/dialog.md) control in your
+To create a dialog, you will use a [`dialog`](../viselements/standard-and-blocks/dialog.md) control in your
 page. The dialog holds a page content or a *Partial* (see [Partials](#partials)).
 
 You can control whether the dialog is visible or not, and what to do when the end-user
@@ -253,7 +253,7 @@ user's response.
        Gui(page).run()
     ```
 
-Please refer to the documentation page on the [`dialog`](../viselements/dialog.md)
+Please refer to the documentation page on the [`dialog`](../viselements/standard-and-blocks/dialog.md)
 control for more details and examples.
 
 # Partials
@@ -286,14 +286,14 @@ be used in visual elements that use them.
        gui.run()
     ```
 
-You can take a look at the documentation of the [`dialog`](../viselements/dialog.md) or
-[`pane`](../viselements/pane.md) to see how these *Partials* can be used in pages.
+You can take a look at the documentation of the [`dialog`](../viselements/standard-and-blocks/dialog.md) or
+[`pane`](../viselements/standard-and-blocks/pane.md) to see how these *Partials* can be used in pages.
 
 # Panes
 
 Modern user interfaces also provide small pages that pop out and be removed for
 temporary use, such as providing specific parameters for the application. Taipy lets
-you create such elements using the [pane](../viselements/pane.md) block.
+you create such elements using the [pane](../viselements/standard-and-blocks/pane.md) block.
 
 A pane can appear from any border of your page, next to or on top of the page, and
 disappears when the user clicks outside its area.
@@ -353,8 +353,9 @@ In this example, *gui.user_status.x* is set to 1234 (as initialized in the appli
 *gui.user_status.info* is the string defined in the *on_status()* function.
 
 !!! note "Extended status"
-    If the [*extended_status*](../configuration.md#p-extended_status) parameter is set to True,
-    the dictionary associated with the *gui* key is augmented with runtime information of the
-    application, such as the version of the Taipy GUI package that is running, the version of
-    the Python interpreter that is running the application, the list of the extension
+
+    If the [*extended_status*](../../configuration/gui-config.md#p-extended_status) parameter
+    is set to True, the dictionary associated with the *gui* key is augmented with runtime
+    information of the application, such as the version of the Taipy GUI package that is running,
+    the version of the Python interpreter that is running the application, the list of the extension
     libraries that the application has loaded and a few more details.

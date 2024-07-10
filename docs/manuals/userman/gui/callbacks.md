@@ -7,7 +7,7 @@ This object reflects the state of the application variables, for a given end-use
 your application may be used simultaneously by different users connected to the
 same web server (note that setting the _single_client_ configuration parameter to
 False - as explained in the
-[Configuration](configuration.md#configuring-the-gui-instance) section - prevents
+[Configuration](../configuration/gui-config.md#configuring-the-gui-instance) section - prevents
 multiple users from connecting to your application simultaneously, but you still rely
 on the `State^` object to access the application variables that are represented in your
 user interfaces).<br/>
@@ -17,7 +17,8 @@ for reading and writing.
 
 # Variable value change
 
-Some controls (such as [`input`](viselements/input.md) or [`slider`](viselements/slider.md))
+Some controls (such as [`input`](viselements/standard-and-blocks/input.md) or
+[`slider`](viselements/standard-and-blocks/slider.md))
 let the user modify the value they hold.
 In order to control what that _new value_ is and decide whether to use
 it as such, a callback function is called in the application when the user

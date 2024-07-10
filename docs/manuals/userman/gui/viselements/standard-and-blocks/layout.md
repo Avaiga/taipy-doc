@@ -80,9 +80,9 @@ If the _columns_ property contains only digits and spaces, it is considered as f
 All the layout blocks are generated with the "taipy-layout" CSS class. You can use this class
 name to select the layout blocks on your page and apply style.
 
-## [Stylekit](../styling/stylekit.md) support
+## [Stylekit](../../styling/stylekit.md) support
 
-The [Stylekit](../styling/stylekit.md) provides specific classes that you can use to style layout
+The [Stylekit](../../styling/stylekit.md) provides specific classes that you can use to style layout
 blocks:
 
 - *align-columns-top*<br/>
@@ -115,7 +115,7 @@ The default layout contains 2 columns in desktop mode and 1 column in mobile mod
 
         |>
         ```
-  
+
     === "HTML"
 
         ```html
@@ -151,7 +151,7 @@ The *gap* between adjacent cells is set by default to 0.5rem and can be specifie
         ...
         |>
         ```
-  
+
     === "HTML"
 
         ```html
@@ -193,7 +193,7 @@ You can use the `fr` CSS unit so that the middle column use all the available sp
         ...
         |>
         ```
-  
+
     === "HTML"
 
         ```html
@@ -253,7 +253,7 @@ running on a mobile device.
         ...
         |>
         ```
-  
+
     === "HTML"
 
         ```html

@@ -151,7 +151,7 @@ demonstration of that feature.
       class.<br/>
       The part block encapsulates the Plotly figure as an inline frame. This technique is less
       flexible than using the
-      [*figure* property of the `chart` control](../viselements/chart.md#the-figure-property)
+      [*figure* property of the `chart` control](chart.md#the-figure-property)
       because it does not provide callbacks to the application.
 
 # Styling
@@ -159,9 +159,9 @@ demonstration of that feature.
 All the part blocks are generated with the "taipy-part" CSS class. You can use this class
 name to select the part blocks on your page and apply style.
 
-## [Stylekit](../styling/stylekit.md) support
+## [Stylekit](../../styling/stylekit.md) support
 
-The [Stylekit](../styling/stylekit.md) provides specific classes that you can use to style part
+The [Stylekit](../../styling/stylekit.md) provides specific classes that you can use to style part
 blocks:
 
 - *align-item-top*<br/>
@@ -174,12 +174,12 @@ blocks:
   If this part block is inside a [`layout`](layout.md) block, this CSS class vertically aligns
   the part content to the bottom of the layout column it belongs to.
 - *align-item-stretch*<br/>
-  If this part block is inside a [`layout`](layout.md) block, this CSS class 
+  If this part block is inside a [`layout`](layout.md) block, this CSS class
   gives the part the same height as the highest item in the row where this part
   appears in the layout.
 
 The Stylekit also has several classes that can be used to style part blocks,
-as described in the [Styled Sections](../styling/stylekit.md#styled-sections)
+as described in the [Styled Sections](../../styling/stylekit.md#styled-sections)
 documentation.<br/>
 Because the default property of the *part* block is *class_name*, you can use the
 Markdown short syntax for parts:
@@ -192,7 +192,7 @@ Markdown short syntax for parts:
 |>
 ```
 
-Creates a `part` that has the [*card*](../styling/stylekit.md#card) class defined
+Creates a `part` that has the [*card*](../../styling/stylekit.md#card) class defined
 in the Stylekit.
 
 # Usage

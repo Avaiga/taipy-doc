@@ -21,19 +21,19 @@ By default, the Stylekit is enabled: the Stylekit stylesheets are loaded with yo
 and impact all your application's page rendering.
 
 In order *not* to use the Stylekit, you must specify the
-[*stylekit*](../configuration.md#p-stylekit) configuration setting to False, or set it
+[*stylekit*](../../configuration/gui-config.md#p-stylekit) configuration setting to False, or set it
 to False in the call to `Gui.run()^`:
 ```py
 gui.run(stylekit=False)
 ```
 
-Note that setting [*stylekit*](../configuration.md#p-stylekit) to True is equivalent to using the
+Note that setting [*stylekit*](../../configuration/gui-config.md#p-stylekit) to True is equivalent to using the
 default variable values of the Stylekit.
 
 ## Customizing the Stylekit
 
 The Stylekit defines a set of [variables](#variables) with default values. Those variables can be
-overloaded by setting the [*stylekit*](../configuration.md#p-stylekit) parameter of the `Gui.run()^`
+overloaded by setting the [*stylekit*](../../configuration/gui-config.md#p-stylekit) parameter of the `Gui.run()^`
 method to a dictionary: each key of this dictionary represents a Stylekit variable name, and you
 would associate the new value for this variable to that key.
 
@@ -54,7 +54,7 @@ The exhaustive list of all the Stylekit variables can be found in the
 
 The Stylekit defines several variables that impact the overall style of your Taipy GUI
 application pages. The values for these variables can be overloaded by providing a dictionary
-to the [*stylekit*](../configuration.md#p-stylekit) parameter of the `Gui.run()^` method.
+to the [*stylekit*](../../configuration/gui-config.md#p-stylekit) parameter of the `Gui.run()^` method.
 
 Each variable initializes a CSS custom property that you can use in your own stylesheets.<br/>
 Details on the Stylekit's CSS custom properties can be found in the
@@ -391,7 +391,7 @@ The same technique can be used to customize CSS classes based on the theme:
 
 The Stylekit defines a few CSS classes that provide widely used styles for sections.<br/>
 Although these can be used for any visual element, they are typically applied to the
-[*part*](../viselements/part.md) and [*layout*](../viselements/layout.md) block element types.
+[*part*](../viselements/standard-and-blocks/part.md) and [*layout*](../viselements/standard-and-blocks/layout.md) block element types.
 
 These allow for making blocks stand out in pages, or be physically constrained at specific locations
 with specific sizes.
@@ -411,7 +411,7 @@ The maximum width of that container is set by the [*--container-max-width*](#p-c
 custom property. Feel free to override this property in your stylesheets to adapt it to your own
 needs.
 
-Here is an example of the *container* class applied to a [`part`](../viselements/part.md) block.
+Here is an example of the *container* class applied to a [`part`](../viselements/standard-and-blocks/part.md) block.
 In this example, we would have defined the additional class:
 ```css
 .container-bg {
@@ -434,7 +434,7 @@ Then the result will look like this:
   <figcaption>The <i>container</i> section style</figcaption>
 </figure>
 
-Note that we leverage the Markdown syntax to create a [`part`](../viselements/part.md) block:
+Note that we leverage the Markdown syntax to create a [`part`](../viselements/standard-and-blocks/part.md) block:
 
 - The default block element type name is "part", so it can be removed from the opening
   element syntax. This allows to write `<|container container-bg|` instead of
@@ -476,8 +476,8 @@ Here is how the page would be rendered:
 
 ## `header`
 
-The *header* class can be applied on a [`layout`](../viselements/layout.md) or a
-[`part`](../viselements/part.md) block to make it stand out from the content as an elevated bar.
+The *header* class can be applied on a [`layout`](../viselements/standard-and-blocks/layout.md) or a
+[`part`](../viselements/standard-and-blocks/part.md) block to make it stand out from the content as an elevated bar.
 
 *header* does not define any padding. If you need to tune the spacing of the elements
 that appear in the styled section, you can use the [spacing classes](#spacing_1).

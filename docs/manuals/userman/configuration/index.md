@@ -1,74 +1,140 @@
-# Configuration
-
-The `Config^` class is a singleton as the entry point for the Taipy configuration. It is accessible
-using the following import:
+The `Config^` class is a singleton object used as the entry point for the Taipy
+configuration. It is accessible using the following import:
 
 ```python linenums="1"
 from taipy import Config
 ```
 
-!!! note "Reminder: Config vs Entities"
+# Configuration sections
 
-    Throughout the documentation, configuration objects are named **_configs_** (`DataNodeConfig^`, `TaskConfig^`,
-    and `ScenarioConfig^`), while runtime objects (`DataNode^`, `Task^`, `Sequence^`, and `Scenario^`) are called
-    entities.
-
-    One thing to wrap your head around (it may not be very intuitive for everyone at first) is that
-    the **configs** are really just configuration objects specifying the characteristics and behaviors
-    of the runtime concepts they relate to. **Configs** can be seen as generators. Indeed, each
-    **entity** is instantiated from a **config**. Note also that the same **config** can be used to
-    instantiate multiple **entities**.
-
-    More details on the **entities** are available in the [Entities](../entities/index.md) chapter.
+The `Config^` class behaves like a container that holds all the configuration sections
+used to configure the various Taipy components. It is a singleton, meaning that there
+is only one instance of the `Config^` class throughout the whole Taipy execution. However,
+some configuration sections might have multiple instances, such as the data node configurations,
+task configurations, and scenario configurations.
 
 !!! warning
 
-    All configuration objects must be created before instantiating any entity or running the Core service.
+    All configuration objects must be created before running the Core service.
 
-    Any modification to the configuration objects after the Core service has been started or an entity has been
-    instantiated will raise an error.
+    Any modification to the configuration objects after the Core service has been started or
+    an entity has been instantiated will raise an error.
 
-It exposes all the necessary attributes and methods to manage the configuration.
-In particular, it holds:
+The various sections are presented below.
 
-- The data node configurations as a dictionary of `DataNodeConfig^`s:
-    ```python linenums="1"
-    from taipy import Config
+## Data node sections
 
-    Config.data_nodes
-    ```
+The data node sections are exposed as a dictionary of data node configurations
+`DataNodeConfig^`s:
 
-- The task configurations as a dictionary of`TaskConfig^`s:
-    ```python linenums="1"
-    from taipy import Config
+```python linenums="1"
+from taipy import Config
 
-    Config.tasks
-    ```
+Config.data_nodes
+```
 
-- The scenario configurations as a dictionary of `ScenarioConfig^`s:
-    ```python linenums="1"
-    from taipy import Config
+For more details on how to configure data nodes, see the
+[data node configuration](../data-integration/data-node-config.md#create-a-data-node-config) section.
 
-    Config.scenarios
-    ```
+## Task sections
 
-- The job configuration as a `JobConfig^`:
-    ```python linenums="1"
-    from taipy import Config
+The task sections are exposed as a dictionary of task configurations `TaskConfig^`s:
 
-    Config.job_config
-    ```
+```python linenums="1"
+from taipy import Config
 
-- The core configuration as a `CoreSection^`:
-    ```python linenums="1"
-    from taipy import Config
+Config.tasks
+```
 
-    Config.core
-    ```
+For more details on how to configure tasks, see the
+[task configuration](../task-orchestration/scenario-config.md#from-task-configurations) section.
 
-- The Global configuration as a `GlobalAppConfig^`:
-    ```python linenums="1"
-    from taipy import Config
+## Scenario sections
 
-    Config.global_config
-    ```
+The scenario sections are exposed as a dictionary of scenario configurations
+`ScenarioConfig^`s:
+
+```python linenums="1"
+from taipy import Config
+
+Config.scenarios
+```
+
+For more details on how to configure scenarios, see the
+[scenario configuration](../sdm/scenario/scenario-config.md) page.
+
+## Job execution section
+
+The job execution section is exposed as a `JobConfig^`:
+
+```python linenums="1"
+from taipy import Config
+
+Config.job_config
+```
+
+For more details on how to configure job execution, see the
+[job execution configuration](job-config.md) page.
+
+## Core service section
+
+The core service section is exposed as a core configuration `CoreSection^`:
+
+```python linenums="1"
+from taipy import Config
+
+Config.core
+```
+
+For more details on how to configure the core service, see the
+[core configuration](core-config.md) page.
+
+## Gui service section
+
+The gui service section is exposed as a gui configuration `_GuiSection`:
+
+```python linenums="1"
+from taipy import Config
+
+Config.gui
+```
+
+For more details on how to configure the gui service, see the
+[gui configuration](gui-config.md) page.
+
+## Global configuration
+
+The Global configuration as a `GlobalAppConfig^` allows you to add any custom
+configuration that you want to be available throughout the application.
+
+```python linenums="1"
+from taipy import Config
+
+Config.global_config
+```
+
+# Check configuration
+
+Taipy provides a checking mechanism to validate if your configuration is correct.
+The `Config.check()` method returns a collector of issues. Each issue corresponds
+to an inconsistency in the configuration attached to an issue level (`INFO`, `WARNING`,
+`ERROR`). `Config.check()` raises an exception if at least one issue collected has the
+`ERROR` level.
+
+```python linenums="1"
+from taipy import Config
+
+Config.check()
+```
+
+For more details on the issues that the checker could return, see the
+[configuration checker](config-checker.md) page.
+
+# Advanced configuration
+
+By default, one can configure a Taipy application using the `Config^` class with the
+Python API. However, Taipy also provides a way to override some configuration
+parameters using TOML files, through environment variables, or through command-line
+arguments.
+
+For more details, see the [advanced configuration](advanced-config.md) page.

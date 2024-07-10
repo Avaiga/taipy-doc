@@ -34,7 +34,7 @@ then see and interact with the application. We call these representative and int
 To describe the content of pages, Taipy comes with support for three different mechanisms: there are
 two template formats, handled by the classes `Markdown^` and `Html^`, and a pure Python way of
 creating pages using the `(taipy.)gui.builder.Page^` class. This is described in the
-[Pages](layout/pages/index.md) section.
+[Pages](pages/index.md) section.
 
 The basic principle is that you create pages as needed, give them a name to indicate to your browser
 how to access these pages, and provide these pages to the `Gui^` instance used in your
@@ -48,8 +48,8 @@ and start using it.
 
 !!! info "More information"
     You can find more information on how pages are created and used in Taipy application in
-    the [Pages](layout/pages/index.md) section.
+    the [Pages](pages/index.md) section.
 
 !!! info "Multiple services"
     To run the Taipy GUI service with some other Taipy services, please refer to the
-    [Running Taipy services](../run-deploy/run/running_services.md) page.
+    [Running Taipy services](../../run-deploy/run/running_services.md) page.

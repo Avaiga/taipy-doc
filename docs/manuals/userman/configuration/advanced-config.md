@@ -38,7 +38,7 @@ the default configuration applies if some values are not provided.
 
 !!! example "Design of the application to configure"
 
-    ![scenarios](../pic/scenarios.svg){ align=left }
+    ![scenarios](img/scenarios.svg){ align=left }
 
     Let's imagine we want to configure an application corresponding to the design described in the picture. We use
     the following Python configuration code.

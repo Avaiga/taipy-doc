@@ -333,7 +333,7 @@ The supported types for the [*data*](#p-data) property are:
   collection.
 - A Numpy series:<br/>
   Taipy internally builds a Pandas DataFrame with the provided *data*.
- 
+
 ## Display modes
 
 The table component supports three display modes:
@@ -655,15 +655,15 @@ so bad that it would ruin the user experience.
 All the table controls are generated with the "taipy-table" CSS class. You can use this class
 name to select the tables on your page and apply style.
 
-## [Stylekit](../styling/stylekit.md) support
+## [Stylekit](../../styling/stylekit.md) support
 
-The [Stylekit](../styling/stylekit.md) provides a CSS custom property:
+The [Stylekit](../../styling/stylekit.md) provides a CSS custom property:
 
 - *--table-stripe-opacity*<br/>
   This property contains the opacity applied to odd lines of tables.<br/>
   The default value is 0.5.
 
-The [Stylekit](../styling/stylekit.md) also provides specific CSS classes that you can use to style
+The [Stylekit](../../styling/stylekit.md) also provides specific CSS classes that you can use to style
 tables:
 
 - *header-plain*<br/>

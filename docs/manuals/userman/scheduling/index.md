@@ -4,12 +4,13 @@
 
     This section is relevant only to the Enterprise edition of Taipy.
 
-This documentation focuses on providing necessary information to use the Taipy `Scheduler^`, and in particular
-the capabilities related to scenario management and job execution. It is assumed that the reader already knows the
-[Taipy Core entities](../entities/index.md) described in a previous chapter.
+This documentation focuses on providing necessary information to use the
+Taipy `Scheduler^`, and in particular the capabilities related to scenario
+management and job execution.
 
-Let’s assume also that the configuration represented in the picture below is implemented in the
-module <a href="./code-example/my_config.py" download>`my_config.py`</a>.
+Let’s assume also that the configuration represented in the picture below is
+implemented in the module
+<a href="./code-example/my_config.py" download>`my_config.py`</a>.
 
 === "Module my_config.py"
 
@@ -22,7 +23,8 @@ module <a href="./code-example/my_config.py" download>`my_config.py`</a>.
 
 ## Start/Stop the scheduler
 
-To make the scheduler execute the scheduled methods, you must first start the scheduler by using the `start()` method.
+To make the scheduler execute the scheduled methods, you must first
+start the scheduler by using the `start()` method.
 
 ```python
 import taipy as tp
@@ -30,15 +32,18 @@ import taipy as tp
 tp.Scheduler.start()
 ```
 
-Once the scheduler is started, the scheduled methods will run in the background at their specified times.
-While the scheduler is running, you can execute other methods without being blocked by the scheduler.
+Once the scheduler is started, the scheduled methods will run in the
+background at their specified times. While the scheduler is running, you
+can execute other methods without being blocked by the scheduler.
 
 !!! info "Schedule a method before and after starting the scheduler"
 
-    You can schedule a method both before and after starting the scheduler. However, keep in mind that
-    the scheduled method will not run until the scheduler is started.
+    You can schedule a method both before and after starting the scheduler.
+    However, keep in mind that the scheduled method will not run until the
+    scheduler is started.
 
-To stop the scheduler from running the scheduled methods, you can use the `stop()` method.
+To stop the scheduler from running the scheduled methods, you can use the
+`stop()` method.
 
 ```python
 tp.Scheduler.stop()

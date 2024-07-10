@@ -717,7 +717,7 @@ values = [
     value2,
     value3
 ]
-    
+
 page = "<|...|chart|...|i_property={values}|...|>"
 ```
 
@@ -737,7 +737,7 @@ page = "<|...|chart|...|i_property={value1}|i_property[2]={value2}|i_property[3]
 
 As mentioned above, the chart control is implemented using the
 [plotly.js](https://plotly.com/javascript/) front-end library, and hides part of its complexity
-using the control's properties. However [Plotly](https://plotly.com/) comes with the handy
+using the control's properties. However, [Plotly](https://plotly.com/) comes with the handy
 [Plotly for Python](https://plotly.com/python/) library that lets programmers define their charts
 entirely in Python.<br/>
 
@@ -871,9 +871,9 @@ button, the page will reflect the change without explicit refresh:
 All the chart controls are generated with the "taipy-chart" CSS class. You can use this class
 name to select the charts on your page and apply style.
 
-## [Stylekit](../styling/stylekit.md) support
+## [Stylekit](../../styling/stylekit.md) support
 
-The [Stylekit](../styling/stylekit.md) provides a specific class that you can use to style charts:
+The [Stylekit](../../styling/stylekit.md) provides a specific class that you can use to style charts:
 
 * *has-background*<br/>
     When the chart control uses the *has-background* class, the rendering of the chart

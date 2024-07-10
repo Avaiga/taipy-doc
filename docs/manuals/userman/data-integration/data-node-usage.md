@@ -15,13 +15,14 @@ A data node also holds various properties and attributes accessible through the 
     external process, the **last_edit_date** value is automatically updated
     within Taipy.
 - **edits**: The ordered list of `Edit`s representing the successive modifications
-    of the data node. See the [edit](data-node-history.md#Edits) section for more details.
+    of the data node. See the [edit](data-node-history.md#what-is-an-edit) section
+    for more details.
 - **version**: The string indicates the application version of the data node
     to instantiate. If not provided, the current version is used.
 - **validity_period**: The duration since the last edit date for which the
     data node can be considered up-to-date. Once the validity period has passed,
     the data node is considered stale and relevant tasks will run even if they
-    are skippable (see the [task management page](../sdm/task/index.md)
+    are skippable (see the [task management](../sdm/task/index.md) page
     for more details).
     If *validity_period* is set to None, the data node is always up-to-date.
 - **edit_in_progress**: The boolean flag signals if the data node is locked
@@ -1414,7 +1415,7 @@ The following examples will append new data to the SQL Table data node:
 ## SQL
 
 To append new data to a SQL data node, the *append_query_builder* property needs to be defined
-when configuring the [SQL data node configuration](../config/data-node-config.md#sql).
+when configuring the [SQL data node configuration](data-node-config.md#sql).
 
 Similar to writing, when appending to a SQL data node, Taipy will first pass the data to the
 *append_query_builder* and then execute a list of queries returned by the query builder.

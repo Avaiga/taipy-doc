@@ -199,7 +199,7 @@ defined.
 !!! example
     Here is an example of how this local callback binding is done. This example has a main module
     that holds a single page (at the root of the application URL) with a
-    [`navbar`](viselements/navbar.md) control that can navigate to the page *sub_page*, imported
+    [`navbar`](viselements/standard-and-blocks/navbar.md) control that can navigate to the page *sub_page*, imported
     from another module.<br/>
     The root page also has a button that, when pressed, invokes the callback function
     *button_pressed()*:
@@ -283,9 +283,10 @@ is defined.
 
 # List of values
 
-Some controls (such as [selector](viselements/selector.md) or [tree](viselements/tree.md))
-represent one or several values stored in a *list of values* (or *LoV*, for short).
-This notion is a way of describing a set of values that controls can show and select.
+Some controls (such as [selector](viselements/standard-and-blocks/selector.md) or
+[tree](viselements/standard-and-blocks/tree.md)) represent one or several values
+stored in a *list of values* (or *LoV*, for short). This notion is a way of describing
+a set of values that controls can show and select.
 
 Each item in a *list of values*  can hold:
 
@@ -342,7 +343,7 @@ used in 'regular' *LoV*s.
 
     Suppose you want to display a control representing versions
     of the Python programming language. You want to display this list
-    in [selector](viselements/selector.md) and let users select
+    in [selector](viselements/standard-and-blocks/selector.md) and let users select
     a given version.
 
     The *list of values* is an ordered list of descriptors:
@@ -377,7 +378,7 @@ used in 'regular' *LoV*s.
 
 ## *LoV* for trees
 
-The [tree](viselements/tree.md) control needs an additional item in
+The [tree](viselements/standard-and-blocks/tree.md) control needs an additional item in
 each value of the *LoV*: each element of the *LoV* represents a node
 in the tree, and the additional element in each node's tuple must hold
 the child nodes as another *LoV*, or None if it does not have any.
@@ -421,7 +422,8 @@ The Markdown fragment that would be used in a page would look like this:
 
 # Tabular values
 
-The [chart](viselements/chart.md) and [table](viselements/table.md) controls
+The [chart](viselements/standard-and-blocks/chart.md) and
+[table](viselements/standard-and-blocks/table.md) controls
 represent tabular data. This data can be provided as a
 [Pandas DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html),
 a list, a [NumPy array](https://numpy.org/doc/stable/reference/generated/numpy.array.html),

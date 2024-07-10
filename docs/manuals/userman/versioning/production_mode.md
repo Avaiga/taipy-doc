@@ -152,7 +152,7 @@ compatible with each other. Let's dive deeper into this topic in the next sectio
 
 First, without overriding the configuration of version 1.0, let's use the [scenario selector](../../gui/corelements/scenario_selector.md) to create a scenario for June.
 
-![June scenario in production version 1.0](pic/scenario_selector_for_production_ver1.png)
+![June scenario in production version 1.0](img/scenario_selector_for_production_ver1.png)
 
 Let's closely examine the attributes of the data nodes and the task. The scopes of the data nodes are
 `Scope.SCENARIO`, the skippable attribute of the task is False, and the versions of all entities are 1.0.
@@ -223,11 +223,11 @@ Config.add_migration_function(
 
 After registering the migration functions, we can rerun the application. Let's use the [scenario selector](../../gui/corelements/scenario_selector.md) to create a scenario for the month of July:
 
-![July scenario in production version 2.0](pic/scenario_selector_for_production_ver2.png)
+![July scenario in production version 2.0](img/scenario_selector_for_production_ver2.png)
 
 Next, let's access the scenario for the month of June:
 
-![Migrated June scenario in production version 1.0](pic/scenario_selector_for_production_ver1_migrated.png)
+![Migrated June scenario in production version 1.0](img/scenario_selector_for_production_ver1_migrated.png)
 
 We can see that the data node scopes are updated to `GLOBAL`, and the skippable attribute of the task is
 also updated to True. Notice that since we don't migrate the path of the data nodes, the path of the data nodes

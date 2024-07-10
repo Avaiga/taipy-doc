@@ -189,8 +189,8 @@ property evaluates to True.
 
 The parent element must have the *flex* display mode in CSS. To achieve this using
 the Markdown syntax, you can leverage the
-[*d-flex* class](../styling/stylekit.md#c-d-flex) provided in the
-[Stylekit](../styling/stylekit.md).
+[*d-flex* class](../../styling/stylekit.md#c-d-flex) provided in the
+[Stylekit](../../styling/stylekit.md).
 
 Here is a full example of how to do this:
 ```python
@@ -231,7 +231,7 @@ The content of the pane can be specified directly inside the pane block.
         ...
         |>
         ```
-  
+
     === "HTML"
 
         ```html

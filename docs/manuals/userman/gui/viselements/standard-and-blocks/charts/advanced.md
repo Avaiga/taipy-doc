@@ -325,7 +325,7 @@ def on_change(state, var, val):
 ```
 
 The part you should be looking at is the use of the default callback property
-[*on_change*](../../callbacks.md#variable-value-change): it detects the changes in
+[*on_change*](../../../callbacks.md#variable-value-change): it detects the changes in
 *selected_indices* and calculates the mean, which updates the text in the title.
 
 We also create two objects (*layout* and *config*) used to remove the mode

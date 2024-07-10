@@ -262,7 +262,7 @@ layout = {
 }
 ```
 
-We use two traces: the first uses the complete circle, the second uses only a sector, 
+We use two traces: the first uses the complete circle, the second uses only a sector,
 as defined in the *layout* object.<br/>
 Note that for the layout to be correctly applied, you need to name the subplots
 (as done in the *options* object) with names that start with "polar", then reference
@@ -491,7 +491,7 @@ def on_navigate(state, page):
 All the properties for the chart control are stored in the *properties* dictionary, so
 the chart control definition can be concise.
 
-Note how we use the [*on_navigate()*](../../callbacks.md#navigation-callback) callback function
+Note how we use the [*on_navigate()*](../../../callbacks.md#navigation-callback) callback function
 to refresh the data so that every refresh of the display will compute and display the current
 time.
 

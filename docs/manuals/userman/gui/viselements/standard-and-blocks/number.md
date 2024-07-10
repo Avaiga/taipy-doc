@@ -120,9 +120,9 @@ This dictionary has the following keys:
 All the number controls are generated with the "taipy-number" CSS class. You can use this class
 name to select the number controls on your page and apply style.
 
-## [Stylekit](../styling/stylekit.md) support
+## [Stylekit](../../styling/stylekit.md) support
 
-The [Stylekit](../styling/stylekit.md) provides a specific class that you can use to style number controls:
+The [Stylekit](../../styling/stylekit.md) provides a specific class that you can use to style number controls:
 
 * *fullwidth*<br/>
     If a number control uses the *fullwidth* class, then it uses the whole available

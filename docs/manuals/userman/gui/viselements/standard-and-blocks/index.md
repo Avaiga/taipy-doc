@@ -6,9 +6,10 @@ There are two types of *Visual Elements*:
 
    - *Controls* typically represent user data that the user can interact with.<br/>
      Beside the generic controls provided in Taipy GUI and listed in [this section](controls.md),
-     the `taipy` package come with a dedicated set of Taipy GUI controls that let users display and
-     interact with [Taipy Core entities](../../core/entities/index.md). These controls are listed
-     in the [Scenario Management controls](controls.md#scenario-management-controls) section.
+     the `taipy` package come with a dedicated set of Taipy GUI controls that let users
+     display and interact with [Scenario management entities](../../../sdm/index.md).
+     These controls are listed in the
+     [Scenario Management controls](controls.md#scenario-management-controls) section.
 
    - *Blocks* let you organize controls (or blocks) in pages to provide the best
     possible user experience.
@@ -57,11 +58,11 @@ names defined in the code, and the value of the property is set to the evaluated
 # Syntax
 
 Depending on the technique you have used to create your application pages (see the section on
-[Page](../pages/index.md)), visual elements are created with specific syntaxes:
+[Page](../../pages/index.md)), visual elements are created with specific syntaxes:
 
 ## Markdown
 
-This applies when the page is defined using [Markdown](../pages/markdown.md).
+This applies when the page is defined using [Markdown](../../pages/markdown.md).
 
 The basic syntax for creating Taipy constructs in Markdown is: `<|...|...|>` (opening with a
 *less than* character followed by a vertical bar character &#151; sometimes called
@@ -94,7 +95,7 @@ name to appear between the two first vertical bar characters (as in `<|control|.
 
 Every following |-separated fragment is interpreted as a property name-property value
 pair using the syntax: *property\_name=property\_value* (note that *all* space characters
-are significative).  
+are significant).
 
 So creating a visual element in Markdown text is just a matter of inserting a text
 fragment similar to:
@@ -222,7 +223,7 @@ are described in their respective documentation section. The most obvious except
 
 ## HTML
 
-This applies when the page is defined using [HTML](../pages/html.md).
+This applies when the page is defined using [HTML](../../pages/html.md).
 
 If you choose to embed Taipy visual elements into existing HTML pages, you can use the
 following syntax:
@@ -282,7 +283,7 @@ defining an expression referencing the variables.
 Every visual element type has the following properties:
 
 -   `id`: The identifier of the element. This identifier is generated in the HTML component
-    and can be used for [styling](../styling/index.md).
+    and can be used for [styling](../../styling/index.md).
 -   `class_name`: An additional CSS class that is added to the generated HTML component.
     Note that all visual elements are generated with the "taipy-*visual\_element\_type*" CSS
     class set (e.g. the `button` control generates an HTML element that has the
@@ -298,12 +299,12 @@ across your pages.
 You can specify an identifier for a specific visual element.
 
 This identifier is used as the `id` attribute of the generated HTML component so you
-can use it in your CSS selectors. You can look at the [Styling](../styling/index.md)
+can use it in your CSS selectors. You can look at the [Styling](../../styling/index.md)
 section for more information.
 
 !!! note
     This identifier is also sent to the `on_action` callback if this visual
-    element can trigger actions (see [Actions](../callbacks.md#actions)
+    element can trigger actions (see [Actions](../../callbacks.md#actions)
     for details).
 
 ## The `properties` property
@@ -351,7 +352,7 @@ control is updated when the user modifies the value represented by the control.
 
 !!! info
     Note that if there is a function called `on_change()` accessible to the `Gui` instance
-    (see the section on [Variable Value Change](../callbacks.md#variable-value-change) for
+    (see the section on [Variable Value Change](../../callbacks.md#variable-value-change) for
     details), it will be invoked no matter what the *propagate* value is. The variable
     value that this function receives is the new requested value, but this value is
     **not** set to the variable bound to the control.

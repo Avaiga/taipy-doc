@@ -1,12 +1,12 @@
 # REST APIs
 The Taipy REST package is a python library made to provide a REST server on top of
-[Taipy Core](../core/index.md). The purpose is to automate the use of Taipy Core features by
-exposing REST APIs.
+the scenario and data management features. The purpose is to automate the use of
+these features by exposing REST APIs.
 
 The Taipy REST APIs allows users to create, read, update, run and remove Taipy entities
-(including cycles, scenarios, sequences, tasks, jobs and data nodes) through REST APIs. For more
-details about Taipy entities, please refer to
-[Core concepts documentation](../core/concepts/index.md).
+(including cycles, scenarios, sequences, tasks, jobs and data nodes) through REST APIs.
+For more details about Taipy entities, please refer to
+[scenario and data management](../sdm/index.md).
 
 It is particularly useful when it comes to integrating a Taipy application in a more complex IT
 ecosystem.
@@ -15,8 +15,8 @@ ecosystem.
 
 To expose the Taipy REST APIs, the Taipy REST server must first be started.
 
-1. Configure your Taipy Core application. For more details on Taipy Core configuration, please
-    refer to the [Core configuration documentation](../core/config/index.md).
+1. Configure your Taipy application. For more details on Taipy configuration, please
+    refer to the [scenario configuration](../sdm/scenario/scenario-config.md) page.
 
 2. The REST server do not require any configuration in most of the use cases. However, as an
     advanced user, you may want to configure your Taipy REST server. Indeed, Taipy REST server
@@ -56,7 +56,7 @@ To expose the Taipy REST APIs, the Taipy REST server must first be started.
 !!! info "Running the REST service"
 
     To run the Taipy REST service with the other Taipy services, please refer to the
-    [taipy.run() function](../run-deploy/run/running_services.md) page.
+    [taipy.run() function](../../run-deploy/run/running_services.md) page.
 
 ## Using Taipy REST APIs
 

@@ -71,7 +71,6 @@ property.
 
 Here, the two variables `cycle` and `cycle_retrieved` are equal.
 
-
 ## Get all cycles
 
 All the cycles can be retrieved using the method `taipy.get_cycles()^`. This method returns

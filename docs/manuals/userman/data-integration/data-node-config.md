@@ -684,11 +684,11 @@ section, the following parameters can be provided:
 
     The `ParquetDataNode.read_with_kwargs^` and `ParquetDataNode.write_with_kwargs^`
     methods provide an alternative for specifying keyword arguments at runtime. See examples
-    of these methods on the [Data Node Management page](../entities/data-node-mgt.md#parquet).
+    of these methods on the [data node management page](data-node-usage.md#parquet).
 
 - _**exposed_type**_ indicates the data type returned when reading the data node (more examples
   of reading from Parquet data node with different *exposed_type* are available on
-  [read/write a data node](data-node-usage#parquet) documentation):
+  [read/write a data node](data-node-usage.md#parquet) documentation):
     - By default, *exposed_type* is "pandas", and the data node reads the Parquet file
       as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
     - If the *exposed_type* provided is "numpy", the data node reads the Parquet
@@ -873,7 +873,7 @@ The scope is `SCENARIO` (default value), and default data is provided.
 !!! warning
 
     Since the data is stored in memory, it cannot be used in a multi-process environment.
-    (See [Job configuration](job-config.md#standalone-mode) for more details).
+    (See [Job configuration](../configuration/job-config.md#standalone-mode) for more details).
 
 !!! note
 

@@ -16,7 +16,7 @@ Your browser should open a new window connected to the Jupyter server, where you
 and manipulate Notebooks.
 
 !!! note "Example code"
-    You may want to load the [Notebook source](gui_example.ipynb) file directly within
+    You may want to load the [Notebook source](gui/gui_example.ipynb) file directly within
     Jupyter and move from cell to cell instead of entering the code in the following
     steps.
 
@@ -53,7 +53,8 @@ hosting the 'Taipy' Flask app.<br/>
 A new window is created in your browser, displaying the small interface we have just created.<br/>
 Note that the text control automatically displays *value* when you move the slider thumb. That
 shows that Taipy has successfully bound the variable *value* to both the
-[`text`](viselements/text.md) and the [`slider`](viselements/slider.md) controls.
+[`text`](gui/viselements/standard-and-blocks/text.md) and the
+[`slider`](gui/viselements/standard-and-blocks/slider.md) controls.
 
 You can witness the user interface update when you change a variable on the fly. In the context of
 Notebooks, you can directly access the variables that are bound to the user interface:
@@ -130,7 +131,8 @@ After running this cell, the variable *data* holds an array of floating-point va
 some fancy trigonometric function (computed in *compute_data()*) based on some parameter.
 
 If we want to display these values in a chart, we need to change our page to add a
-[`chart`](viselements/chart.md) control to it (and remove the `number` control).<br/>
+[`chart`](gui/viselements/standard-and-blocks/chart.md) control to it (and remove the
+`number` control).<br/>
 You can update the page content on the fly by creating a new cell with the following content:
 ```py title="Cell [5]"
 page.set_content("""
@@ -198,4 +200,4 @@ when a new value is set.
     the context of Notebooks only, the port number used as part of the application URL is a
     proxy to the real served port. Invoking `run()` after `stop()` generates a hidden port
     number that gets used transparently. This behavior is controlled by the
-    [*notebook_proxy*](configuration.md#p-notebook_proxy) configuration setting.
+    [*notebook_proxy*](configuration/gui-config.md#p-notebook_proxy) configuration setting.

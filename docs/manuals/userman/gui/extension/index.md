@@ -180,10 +180,10 @@ Each of these entries needs some explanation:
 
 - `pyproject.toml`: Python project settings file for the extension library package.<br/>
   This is used when building a standalone Python package from all the code that makes
-  an extension library. See the [section on packaging](../extension_packaging.md) for more
+  an extension library. See the [section on packaging](extension_packaging.md) for more
   details.
 - `MANIFEST.in`: Commands to be executed when the Python package is built as a source distribution.
-  The [section on packaging](../extension_packaging.md) explains what this file should contain.
+  The [section on packaging](extension_packaging.md) explains what this file should contain.
 - `<package dir>/`: The root directory for the extension library. This contains all the Python
   (and potentially TypeScript/JavaScript code) needed to build the extension library.<br/>
   The name of this directory is used as the name of the root directory for the Python package.
@@ -230,7 +230,7 @@ make your way from one example to the next.
 - [Custom static elements](static_element.md)
 - [Custom dynamic elements](dynamic_element/index.md)
 - [Using scalar properties](dynamic_element/scalar_props.md)
-- [Using List of Values](../extension_list_of_values.md)
-- [Using tabular data](../extension_data.md)
-- [Accessing assets](../extension_assets.md)
-- [Packaging an element library](../extension_packaging.md)
+- [Using List of Values](extension_list_of_values.md)
+- [Using tabular data](extension_data.md)
+- [Accessing assets](extension_assets.md)
+- [Packaging an element library](extension_packaging.md)
