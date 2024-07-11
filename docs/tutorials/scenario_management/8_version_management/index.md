@@ -12,7 +12,7 @@ In the following, we will use a basic Taipy application example defined in `main
 
 ```python linenums="1" title="main.py"
 {%
-include-markdown "../../../manuals/core/versioning/code_example/main.py"
+include-markdown "../../../manuals/userman/versioning/code-example/main.py"
 comments=false
 %}
 ```

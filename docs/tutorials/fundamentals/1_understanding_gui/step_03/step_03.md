@@ -16,8 +16,8 @@ concept, Taipy natively provides multi-user GUI apps.
 
 ## Multi-user - state
 
-Try to open a few clients with the same URL and different browsers. You will see that every 
-client is independent of each other; you can change *text* on a client, and *text* will 
+Try to open a few clients with the same URL and different browsers. You will see that every
+client is independent of each other; you can change *text* on a client, and *text* will
 not change in other clients. This is due to the concept of **state**.
 
 The state holds the value of all the variables used in the user interface for one specific
@@ -34,7 +34,7 @@ In the code below, this concept will be used to:
 
 - Reset the input when the text equals "Reset".
 
-## How to connect two variables - the [`on_change`](../../../../manuals/gui/callbacks.md) callback
+## How to connect two variables - the [`on_change`](../../../../manuals/userman/gui/callbacks.md) callback
 
 The `on_change()` function is a "special" function. **Taipy** checks if you
 have created it. Whenever the state of a variable is modified,
@@ -115,6 +115,6 @@ the callback function referenced in the `on_action` property.
 
 ![Interactive GUI](images/result.png){ width=90% : .tp-image-border }
 
-[`notify()`](../../../../manuals/reference/taipy.gui.notify.md) is a Taipy function that creates a 
-[notification](../../../../manuals/gui/notifications.md) with some information. The user can pass 
+[`notify()`](../../../../manuals/refmans/reference/taipy.gui.notify.md) is a Taipy function that creates a
+[notification](../../../../manuals/userman/gui/notifications.md) with some information. The user can pass
 multiple parameters, including the *state*, the *notification_type*, and the *message*.

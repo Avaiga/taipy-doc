@@ -15,18 +15,18 @@ $ taipy run main.py
     ```console
     $ python main.py
     ```
-    However, when working with command-line arguments, Taipy arguments can be confused with 
-    arguments of other libraries or your application's arguments. To avoid this confusion, we 
-    recommend using the `taipy run` command, which is more robust in avoiding any command-line 
+    However, when working with command-line arguments, Taipy arguments can be confused with
+    arguments of other libraries or your application's arguments. To avoid this confusion, we
+    recommend using the `taipy run` command, which is more robust in avoiding any command-line
     argument conflict.
 
 ## With Taipy arguments
 
-Taipy CLI will parse internal arguments (interpreted by Taipy) and pass the others to your Taipy 
+Taipy CLI will parse internal arguments (interpreted by Taipy) and pass the others to your Taipy
 application. For specific descriptions and usages of each argument, refer to:
 
-- [Configuring the `Gui` instance](../gui/configuration.md#configuring-the-gui-instance)
-- [Configuring version management using the CLI](../core/versioning/configuration.md#configure-using-the-cli)
+- [Configuring the `Gui` instance](../userman/configuration/gui-config.md#configuring-the-gui-instance)
+- [Configuring version management using the CLI](../userman/versioning/index.md#usage)
 
 To display the list of available Taipy arguments, you can run the `taipy help run` command.
 Alternatively, you can use the *--help* or *-h* options by running `taipy run --help` or
@@ -121,6 +121,6 @@ to your application.
 $ taipy run main.py --port 8080 external-args --host data.server.com --port 2714 --debug
 ```
 
-In this example, your Taipy application will be started on *localhost:8080* with *debug* off 
-since we do not specify *--debug* parameter for Taipy. Meanwhile, your application will run with 
+In this example, your Taipy application will be started on *localhost:8080* with *debug* off
+since we do not specify *--debug* parameter for Taipy. Meanwhile, your application will run with
 *--debug* parameter and read data from *data.server.com:2714*.

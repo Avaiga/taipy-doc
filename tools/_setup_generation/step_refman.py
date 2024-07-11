@@ -320,7 +320,7 @@ class RefManStep(SetupStep):
                     )
                     output_path = os.path.join(self.REFERENCE_DIR_PATH, f"{force_package}.{name}.md")
                     with open(output_path, "w") as output_file:
-                        output_file.write("---\nhide:\n  - navigation\n---\n\n" + f"::: {force_package}.{name}\n")
+                        output_file.write("---\n---\n\n" + f"::: {force_package}.{name}\n")
                     update_xrefs(name, type, force_package, entry_info["module"], entry_info["packages"])
 
             with open(package_output_path, "w") as package_output_file:

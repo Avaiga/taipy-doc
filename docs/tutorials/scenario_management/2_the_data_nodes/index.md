@@ -36,7 +36,8 @@ Here’s the list of predefined data nodes:
 
 ## Pickle Data Node
 
-The [Pickle](../../../manuals/core/config/data-node-config.md#Pickle) data node is the standard data node in Taipy.
+The [Pickle](../../../manuals/userman/data-integration/data-node-config.md#Pickle)
+data node is the standard data node in Taipy.
 It can handle various types of Python stuff like strings, numbers, lists, dictionaries,
 models (for machine learning or other things), and data tables. Here's some code that uses
 two Pickle data nodes: one for getting data in and one for sending data out.
@@ -100,10 +101,10 @@ By default, the data they point to is presented to the user or developer as a Pa
 
 The predefined tabular data nodes in Taipy include:
 
-- [SQL](../../../manuals/core/config/data-node-config.md#SQL)
-- [CSV](../../../manuals/core/config/data-node-config.md#CSV)
-- [Excel](../../../manuals/core/config/data-node-config.md#Excel)
-- [Parquet](../../../manuals/core/config/data-node-config.md#Parquet)
+- [SQL](../../../manuals/userman/data-integration/data-node-config.md#SQL)
+- [CSV](../../../manuals/userman/data-integration/data-node-config.md#CSV)
+- [Excel](../../../manuals/userman/data-integration/data-node-config.md#Excel)
+- [Parquet](../../../manuals/userman/data-integration/data-node-config.md#Parquet)
 
 These data nodes allow you to work with tabular data from different sources with ease.
 
@@ -153,14 +154,14 @@ can tailor it to access data in specific formats or from custom sources.
 
 For more detailed information and guidance on using the Generic data node and customizing it to
 your specific needs, check the
-[Taipy documentation](../../../manuals/core/config/data-node-config.md#generic). It will
+[Taipy documentation](../../../manuals/userman/data-integration/data-node-config.md#generic). It will
 provide you with step-by-step instructions and examples.
 
 Taipy integrates two other predefined storage types to work with documents. Check the
 documentation for more details.
 
-- [Mongo](../../../manuals/core/config/data-node-config.md#mongo-collection)
-- [Json](../../../manuals/core/config/data-node-config.md#json)
+- [Mongo](../../../manuals/userman/data-integration/data-node-config.md#mongo-collection)
+- [Json](../../../manuals/userman/data-integration/data-node-config.md#json)
 
 ## Conclusion
 

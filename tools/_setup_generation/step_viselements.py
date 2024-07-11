@@ -307,7 +307,7 @@ class VisElementsStep(SetupStep):
 
             with open(f"{element_desc['doc_path']}/{element_type}.md", "w") as md_file:
                 md_file.write(
-                    f"---\ntitle: <tt>{element_type}</tt>\nhide:\n  - navigation\n---\n\n"
+                    f"---\ntitle: <tt>{element_type}</tt>\n---\n\n"
                     + f"<!-- Category: {category} -->\n"
                     + before_properties
                     + properties_table

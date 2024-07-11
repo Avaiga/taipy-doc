@@ -18,7 +18,7 @@ Does the application use Rest API? [No]:
 $ cd ./new_application
 $ taipy run app.py
 ```
-In this example, we scaffold a new application using the default Taipy template, which lets us 
+In this example, we scaffold a new application using the default Taipy template, which lets us
 create a simple, minimal Taipy application.
 
 
@@ -29,18 +29,18 @@ create a simple, minimal Taipy application.
 
 
 - The first question defines the application root folder as "new_application"
-- In the second and third questions, we set the main Python file of the application as "app.py" 
+- In the second and third questions, we set the main Python file of the application as "app.py"
     and the web page's title as "App Title".
-- In the 4th question, we clarify that we want a Taipy multi-page GUI application with three 
-    pages, and the page names are "slide_1", "slide_2", and "slide_3". If there is no answer to 
-    this question, the application will be a single page application. Please note that the names 
+- In the 4th question, we clarify that we want a Taipy multi-page GUI application with three
+    pages, and the page names are "slide_1", "slide_2", and "slide_3". If there is no answer to
+    this question, the application will be a single page application. Please note that the names
     must be valid Python identifiers.
-- In the 5th question, we clarify that we want to use scenario management, so the application 
+- In the 5th question, we clarify that we want to use scenario management, so the application
     should include the Taipy Core service.
-- In the 6th question, we chose the default answer is No, meaning we don't want to use Rest API, 
+- In the 6th question, we chose the default answer is No, meaning we don't want to use Rest API,
     so the application should not include the Taipy Rest API service.
 
-Finally, we changed the directory (`cd`) to our newly created folder and started the application 
+Finally, we changed the directory (`cd`) to our newly created folder and started the application
 by running `taipy run app.py`.
 
 ## From a specific template
@@ -57,16 +57,16 @@ $ cd ./new_application
 $ taipy run app.py
 ```
 
-In this example, we scaffold a new Taipy application using the "scenario-management" template, 
-which utilizes [a scenario selector](./../gui/corelements/scenario_selector.md) to allow 
+In this example, we scaffold a new Taipy application using the "scenario-management" template,
+which utilizes [a scenario selector](./../userman/gui/viselements/corelements/scenario_selector.md) to allow
 creating, managing, and running scenarios directly from the GUI page.
 
 Please refer to the next section for a list of templates.
 
 ## List of templates
 
-You can see the list of supported templates by running `taipy help create` command. 
-Alternatively, you can use the *--help* or *-h* options by running `taipy create --help` or 
+You can see the list of supported templates by running `taipy help create` command.
+Alternatively, you can use the *--help* or *-h* options by running `taipy create --help` or
 `taipy create -h`.
 
 ```console

@@ -270,7 +270,7 @@ is equivalent to
 ## Page Builder API
 
 If you use Python code to create pages, the
-[Page Builder](../../reference/pkg_taipy.gui.builder.md) package provides the API for all the
+[Page Builder](../../../../refmans/reference/pkg_taipy.gui.builder.md) package provides the API for all the
 available visual elements.
 
 To set a property to a value, you will use the property name as a named parameter to the element's

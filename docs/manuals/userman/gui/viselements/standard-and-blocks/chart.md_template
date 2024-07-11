@@ -195,7 +195,7 @@ Data decimation involves reducing the volume of data to be sent to the browser a
 significantly losing the usefulness of the original data. The goal is to make visualization more
 efficient while retaining the essential characteristics of the data.
 
-The [`taipy.gui.data`](../../reference/pkg_taipy.gui.data.md) package defines implementations of
+The [`taipy.gui.data`](../../../../refmans/reference/pkg_taipy.gui.data.md) package defines implementations of
 different decimation algorithms in classes that inherit the `Decimator^` class.
 
 To use these algorithms and manage the challenges posed by representing large datasets, you must

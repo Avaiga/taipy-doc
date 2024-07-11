@@ -19,7 +19,7 @@ creating custom jobs to interact with IBM Watson Studio's API, allowing you to r
 and write to datasets, execute code, and seamlessly combine Watson Studio's capabilities
 with Taipy's task and data management.
 
-![Watson Studio](images/illustration_Waston.png){width=50% : .tp-image}
+![Watson Studio](images/illustration_watson.png){width=50% : .tp-image}
 
 # Scenarios and Watson Studio Integration
 

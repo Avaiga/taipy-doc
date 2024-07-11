@@ -6,22 +6,22 @@ short-description: Build, Visualize and Launch Large Data DAGs.
 img: 1_pyspark/images/front.png
 ---
 
-Taipy is a powerful workflow orchestration tool with an easy-to-use framework to 
-apply to your existing data applications with little effort. Taipy is built on a 
-solid foundation of concepts - Scenarios, Tasks, and Data Nodes - which are robust 
-in allowing developers to easily model their pipelines, even when using 3rd party 
+Taipy is a powerful workflow orchestration tool with an easy-to-use framework to
+apply to your existing data applications with little effort. Taipy is built on a
+solid foundation of concepts - Scenarios, Tasks, and Data Nodes - which are robust
+in allowing developers to easily model their pipelines, even when using 3rd party
 packages without explicit support.
 
 
-> If you're already familiar with PySpark and Taipy, you can skip ahead to "The 
-Taipy configuration". That section dives right into defining a 
+> If you're already familiar with PySpark and Taipy, you can skip ahead to "The
+Taipy configuration". That section dives right into defining a
 function for a Taipy task to run a PySpark application. Otherwise, read on!
 
 ![Illustration](images/front.png){width=90% : .tp-image-border }
 
 
-This article will employ a simple example to demonstrate how we can integrate 
-PySpark with Taipy to couple your big data processing needs with smart job 
+This article will employ a simple example to demonstrate how we can integrate
+PySpark with Taipy to couple your big data processing needs with smart job
 execution.
 
 [Get it on GitHub](https://github.com/Avaiga/demo-pyspark-penguin-app){: .tp-btn .tp-btn--accent target='blank' }
@@ -44,9 +44,9 @@ ________________________________________________________________________________
 ____________________________________________________________________________________________________________________
 ```
 
-This dataset only contains 344 records - hardly a dataset that requires Spark for 
-processing. However, this dataset is accessible, and **its size is irrelevant for 
-demonstrating Spark's integration with Taipy**. You may duplicate the data as many 
+This dataset only contains 344 records - hardly a dataset that requires Spark for
+processing. However, this dataset is accessible, and **its size is irrelevant for
+demonstrating Spark's integration with Taipy**. You may duplicate the data as many
 times as you need if you must test this with a larger dataset.
 
 ![Application DAG](images/app_DAG.png){width=90% : .tp-image-border }
@@ -57,7 +57,7 @@ We'll design a workflow which performs **two main tasks**:
 
 - Load the data;
 - Group the data by "*species*", "*island*" and "*sex*";
-- Find the mean of the other columns ("*bill_length_mm*", "*bill_depth_mm*", 
+- Find the mean of the other columns ("*bill_length_mm*", "*bill_depth_mm*",
 "*flipper_length_mm*", "*body_mass_g*");
 - Save the data.
 
@@ -76,22 +76,22 @@ app/
 - penguins.csv  # the data as downloaded from the palmerpenguins git repo
 ```
 
-You can find the contents of each file (other than *penguins.csv*, which you can 
+You can find the contents of each file (other than *penguins.csv*, which you can
 get from [palmerpenguins repository](https://github.com/allisonhorst/palmerpenguins/blob/main/inst/extdata/penguins.csv)) in code blocks within this article.
 
 # The Spark Application
 
-Usually, we run PySpark tasks with the `spark-submit` command line utility. You can read 
-more about the what and the why of submitting Spark jobs in their documentation 
+Usually, we run PySpark tasks with the `spark-submit` command line utility. You can read
+more about the what and the why of submitting Spark jobs in their documentation
 [here](https://spark.apache.org/docs/latest/submitting-applications.html).
 
-We can continue doing the same thing when using Taipy for our workflow orchestration. The 
-only difference is that instead of running a command in the command line, we have our 
-workflow pipeline spawn a [subprocess](https://docs.python.org/3/library/subprocess.html) 
+We can continue doing the same thing when using Taipy for our workflow orchestration. The
+only difference is that instead of running a command in the command line, we have our
+workflow pipeline spawn a [subprocess](https://docs.python.org/3/library/subprocess.html)
 which runs the Spark application using `spark-submit`.
 
-Before getting into that, let's first **take a look at our Spark application**. Glance 
-through the code, then **continue reading on for a brief explanation** of what this 
+Before getting into that, let's first **take a look at our Spark application**. Glance
+through the code, then **continue reading on for a brief explanation** of what this
 script does:
 
 ```python title="app/penguin_spark_app.py"
@@ -131,7 +131,7 @@ if __name__ == "__main__":
     sys.exit(os.EX_OK)
 ```
 
-We can submit this Spark application for execution by entering a command into the 
+We can submit this Spark application for execution by entering a command into the
 terminal like:
 
 
@@ -146,7 +146,7 @@ Which would do the following:
 
 1. Submits the *penguin_spark_app.py* application for local execution on 8 CPU cores;
 2. Loads data from the *app/penguins.csv* CSV file;
-3. Groups by "*species*", "*island*" and "*sex*", then aggregates the remaining columns 
+3. Groups by "*species*", "*island*" and "*sex*", then aggregates the remaining columns
 by mean;
 4. Saves the resultant DataFrame to *app/output.csv*.
 
@@ -154,7 +154,7 @@ Thereafter, the contents of *app/output.csv* should be exactly as follows:
 
 ![CSV Table](images/table_csv.png){width=90% : .tp-image-border }
 
-Also, note that we have coded the **Spark application to receive two command line 
+Also, note that we have coded the **Spark application to receive two command line
 parameters**:
 
 - *input-csv-path*: Path to the input penguin CSV file; and
@@ -162,10 +162,10 @@ parameters**:
 
 # The Taipy configuration
 
-At this point, we have our *penguin_spark_app.py* PySpark application and need to create 
+At this point, we have our *penguin_spark_app.py* PySpark application and need to create
 **a Taipy task to run this PySpark application**.
 
-Again, take a quick glance through the *app/config.py* script and then continue reading 
+Again, take a quick glance through the *app/config.py* script and then continue reading
 on:
 
 
@@ -259,8 +259,8 @@ scenario_cfg = Config.configure_scenario(
 ```
 
 
-You can also **build the Taipy configuration using 
-[Taipy Studio](../../../manuals/studio/index.md)**, a Visual Studio Code extension that 
+You can also **build the Taipy configuration using
+[Taipy Studio](../../../manuals/studio/index.md)**, a Visual Studio Code extension that
 provides a graphical editor for building a Taipy *.toml* configuration file.
 
 ## The PySpark task in Taipy
@@ -270,8 +270,8 @@ We are particularly interested in the code section which produces this part of t
 ![RPySpark DAG](images/spark_DAG.png){width=90% : .tp-image-border }
 
 
-Let's extract and examine the relevant section of the *config.py* script which creates 
-the "*spark_process*" Spark task (and its three associated data nodes) as shown in the 
+Let's extract and examine the relevant section of the *config.py* script which creates
+the "*spark_process*" Spark task (and its three associated data nodes) as shown in the
 image above:
 
 ```python
@@ -325,10 +325,10 @@ spark_process_task_cfg = Config.configure_task(
 )
 ```
 
-Since we designed the *penguin_spark_app.py* Spark application to receive two parameters 
-(*input_csv_path* and *output_csv_path*), we chose to represent these two parameters as 
-Taipy data nodes. Note that **your use case may differ, and you can (and should!) modify 
-the task, function, and associated data nodes** according to your needs. For example, you 
+Since we designed the *penguin_spark_app.py* Spark application to receive two parameters
+(*input_csv_path* and *output_csv_path*), we chose to represent these two parameters as
+Taipy data nodes. Note that **your use case may differ, and you can (and should!) modify
+the task, function, and associated data nodes** according to your needs. For example, you
 may:
 
 1. Have a Spark task that performs some routine ETL and returns nothing;
@@ -357,8 +357,8 @@ Recall that the order of the list elements should retain the following format as
 $ spark-submit [spark-arguments]  [application-arguments]
 ```
 
-Again, depending on our use case, we could specify a different `spark-submit` script 
-path, Spark arguments (we supplied none in our example), or different application 
+Again, depending on our use case, we could specify a different `spark-submit` script
+path, Spark arguments (we supplied none in our example), or different application
 arguments based on our needs.
 
 ## Reading and returning *output_csv_path*
@@ -372,38 +372,38 @@ def spark_process(input_csv_path: str, output_csv_path: str) -> pd.DataFrame:
     df = pd.read_csv(output_csv_path)
 
     return df
-```  
+```
 
-In our case, we want our Taipy task to output the data after it is processed by Spark - 
-so that it can be written to the *processed_penguin_df_cfg* 
-[Parquet data node config](../../../manuals/core/config/data-node-config.md/#parquet). We 
-can do this by manually reading from the output target (in this case, *output_csv_path*) 
+In our case, we want our Taipy task to output the data after it is processed by Spark -
+so that it can be written to the *processed_penguin_df_cfg*
+[Parquet data node config](../../../manuals/userman/data-integration/data-node-config.md#parquet). We
+can do this by manually reading from the output target (in this case, *output_csv_path*)
 and then returning it as a Pandas DataFrame.
 
-However, if you don't need the return data of the Spark application, you can simply have 
+However, if you don't need the return data of the Spark application, you can simply have
 your Taipy task (via the *spark_process* function) return None.
 
 ## Caching the Spark Task
 
-Since we configured *spark_process_task_cfg* with the **_skippable_ property** set to 
-True, when re-executing the scenario, Taipy will **skip the re-execution of the 
-_spark_process_ task** and reuse the persisted task output: the *processed_penguin_df* 
+Since we configured *spark_process_task_cfg* with the **_skippable_ property** set to
+True, when re-executing the scenario, Taipy will **skip the re-execution of the
+_spark_process_ task** and reuse the persisted task output: the *processed_penguin_df*
 Pandas DataFrame.
 
-However, we also defined a *validity_period* of 1 day for the *processed_penguin_df* data 
-node, so Taipy will still re-run the task if the DataFrame was last cached more than a 
+However, we also defined a *validity_period* of 1 day for the *processed_penguin_df* data
+node, so Taipy will still re-run the task if the DataFrame was last cached more than a
 day ago.
 
 # Building a GUI
 
-We'll complete our application by **building the GUI** which we saw at the beginning of 
+We'll complete our application by **building the GUI** which we saw at the beginning of
 this article:
 
 ![User Interface](images/GUI.png){width=90% : .tp-image-border }
 
 
-If you're unfamiliar with Taipy's GUI capabilities, you can find a quickstart 
-[here](../../fundamentals/1_understanding_gui/index.md). In any case, you can copy and paste 
+If you're unfamiliar with Taipy's GUI capabilities, you can find a quickstart
+[here](../../fundamentals/1_understanding_gui/index.md). In any case, you can copy and paste
 the following code for *app/main.py* since it isn't our focus:
 
 ```python title="app/main.py"
@@ -535,10 +535,10 @@ taipy run app/main.py
 
 # Conclusion
 
-Now that you've seen an example of using PySpark with Taipy, try using these two tools to 
+Now that you've seen an example of using PySpark with Taipy, try using these two tools to
 **enhance your data applications**!
 
-If you've struggled with other workflow orchestration tools slowing down your work and 
-getting in your way, don't let it deter you from trying Taipy. Taipy is easy to use and 
-strives not to limit itself to which 3rd party packages you can use it with - **its 
+If you've struggled with other workflow orchestration tools slowing down your work and
+getting in your way, don't let it deter you from trying Taipy. Taipy is easy to use and
+strives not to limit itself to which 3rd party packages you can use it with - **its
 robust and flexible framework makes it easy to adapt it to any data application**.

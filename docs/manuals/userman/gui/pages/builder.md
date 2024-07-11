@@ -3,14 +3,14 @@ title: The Page Builder API
 ---
 
 The Page Builder API is a set of classes located in the
-[`taipy.gui.builder`](../../../../../reference/pkg_taipy.gui.builder.md) package that lets users
+[`taipy.gui.builder`](../../../refmans/reference/pkg_taipy.gui.builder.md) package that lets users
 create Taipy GUI pages entirely from Python code.
 
 This package contains a class for every visual element available in Taipy, including those
 defined in [extension libraries](../extension/index.md).
 
 To access the Page Builder classes, you must import the
-[`taipy.gui.builder`](../../../../reference/pkg_taipy.gui.builder.md) package in your script.
+[`taipy.gui.builder`](../../../refmans/reference/pkg_taipy.gui.builder.md) package in your script.
 
 # Generating a new page
 

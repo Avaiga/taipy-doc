@@ -3,55 +3,55 @@
 
 
 
-You can incorporate various visual elements into the basic code demonstrated in Step 1. 
+You can incorporate various visual elements into the basic code demonstrated in Step 1.
 This step illustrates how to utilize visual elements such as charts, sliders, tables, and
 more within the graphical interface.
 
 Taipy uses different ways to create
-pages: [Markdown](../../../../manuals/gui/pages/markdown.md),
-[HTML](../../../../manuals/gui/pages/html.md) or
-[Python code](../../../../manuals/gui/pages/builder.md). You can choose which you want 
+pages: [Markdown](../../../../manuals/userman/gui/pages/markdown.md),
+[HTML](../../../../manuals/userman/gui/pages/html.md) or
+[Python code](../../../../manuals/userman/gui/pages/builder.md). You can choose which you want
 to learn in the code snippets below.
 
 ## Visual elements
 
-Taipy uses the **[visual element](../../../../manuals/gui/viselements/index.md)** 
+Taipy uses the **[visual element](../../../../manuals/userman/gui/viselements/standard-and-blocks/index.md)**
 concept to bring interactivity to the application. A visual element is a
 Taipy graphical object displayed on the client. It can be a
-[slider](../../../../manuals/gui/viselements/slider.md), a
-[chart](../../../../manuals/gui/viselements/chart.md), a
-[table](../../../../manuals/gui/viselements/table.md), an
-[input](../../../../manuals/gui/viselements/input.md), a
-[menu](../../../../manuals/gui/viselements/menu.md), etc. Check the list
-[here](../../../../manuals/gui/viselements/controls.md).
+[slider](../../../../manuals/userman/gui/viselements/standard-and-blocks/slider.md), a
+[chart](../../../../manuals/userman/gui/viselements/standard-and-blocks/chart.md), a
+[table](../../../../manuals/userman/gui/viselements/standard-and-blocks/table.md), an
+[input](../../../../manuals/userman/gui/viselements/standard-and-blocks/input.md), a
+[menu](../../../../manuals/userman/gui/viselements/standard-and-blocks/menu.md), etc. Check the list
+[here](../../../../manuals/userman/gui/viselements/standard-and-blocks/controls.md).
 
 Every visual element follows a similar syntax:
 
 === "Markdown"
     ```
     <|{variable}|visual_element_name|param_1=param_1|param_2=param_2| ... |>
-    ``` 
+    ```
 === "Python"
     ```python
     tgb.visual_element_name("{variable}", param_1=param_1, param_2=param_2, ...)
-    ``` 
-    
-    The inclusion of *variable* within `"{...}"` tells Taipy to show and use the 
-    real-time value of *variable*. Rather than re-executing the entire script, 
-    Taipy intelligently adjusts only the necessary elements of the GUI to reflect 
+    ```
+
+    The inclusion of *variable* within `"{...}"` tells Taipy to show and use the
+    real-time value of *variable*. Rather than re-executing the entire script,
+    Taipy intelligently adjusts only the necessary elements of the GUI to reflect
     changes, ensuring a responsive and performance-optimized user experience.
 
-For example, a [slider](../../../../manuals/gui/viselements/slider.md) is written this way :
+For example, a [slider](../../../../manuals/userman/gui/viselements/standard-and-blocks/slider.md) is written this way :
 
 
 === "Markdown"
     ```
     <|{variable}|slider|min=min_value|max=max_value|>
-    ``` 
+    ```
 === "Python"
     ```python
     tgb.slider("{variable}", min=min_value, max=max_value, ...)
-    ``` 
+    ```
 
 For example, at the beginning of the page, if you want to display:
 
@@ -70,7 +70,7 @@ Here is the overall syntax:
     ```python
     tgb.text("{text}")
     tgb.input("{text}")
-    ``` 
+    ```
 
 
 Here is the combined code:

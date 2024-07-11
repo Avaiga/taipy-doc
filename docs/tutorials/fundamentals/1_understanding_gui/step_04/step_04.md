@@ -2,7 +2,7 @@
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 
-Charts are an essential part of Taipy (and of any Web application). A chart is just another 
+Charts are an essential part of Taipy (and of any Web application). A chart is just another
 visual element with many properties to customize it.
 
 Here is one of the simplest code to create a chart:
@@ -26,20 +26,20 @@ You can also use Plotly Python to create a *Figure* object and inject it in the 
 
 === "Markdown"
     ```python
-    from taipy.gui import Gui 
+    from taipy.gui import Gui
     import plotly.graph_objects as go
 
     list_to_display = [100/x for x in range(1, 100)]
     fig = go.Figure(data=go.Scatter(y=list_to_display))
 
     page = "<|chart|figure={fig}|>"
-      
+
     Gui(page).run()
     ```
 === "Python"
     ```python
-    from taipy.gui import Gui 
-    import taipy.gui.builder as tgb 
+    from taipy.gui import Gui
+    import taipy.gui.builder as tgb
     import plotly.graph_objects as go
 
     list_to_display = [100/x for x in range(1, 100)]
@@ -47,18 +47,18 @@ You can also use Plotly Python to create a *Figure* object and inject it in the 
 
     with tgb.Page() as page:
         tgb.chart(figure="{fig}")
-      
+
     Gui(page).run()
     ```
 
 
 ## Useful properties
 
-Taipy charts are based on Plotly charts. More than any other visual element, charts have a lot of 
+Taipy charts are based on Plotly charts. More than any other visual element, charts have a lot of
 properties.
 
-Here are a few of the essential properties. You can also look at the 
-[documentation](../../../../manuals/gui/viselements/chart.md) for more information.
+Here are a few of the essential properties. You can also look at the
+[documentation](../../../../manuals/userman/gui/viselements/standard-and-blocks/chart.md) for more information.
 
  - x and y are used to define the chart axis.
 
@@ -104,9 +104,9 @@ Here are a few of the essential properties. You can also look at the
 
 ## Types of charts
 
-Different types are available: maps, bar charts, pie charts, line charts, and 3D charts, ... To 
-know how to use them quickly, types are listed [here](../../../../manuals/gui/viselements/chart.md).
-If compatible, two types like *scatter*, *line*, and *bar* can also be used together on the same 
+Different types are available: maps, bar charts, pie charts, line charts, and 3D charts, ... To
+know how to use them quickly, types are listed [here](../../../../manuals/userman/gui/viselements/standard-and-blocks/chart.md).
+If compatible, two types like *scatter*, *line*, and *bar* can also be used together on the same
 chart.
 
 
@@ -153,7 +153,7 @@ A chart is added to our code to visualize the score given by our NLP algorithm t
         ...
 
         tgb.table("{dataframe}")
-        tgb.chart("{dataframe}", type="bar", x="Text", 
+        tgb.chart("{dataframe}", type="bar", x="Text",
                   y__1="Score Pos", y__2="Score Neu", y__3="Score Neg", y__4="Overall",
                   color__1="green", color__2="grey", color__3="red", type__4="line")
 
@@ -169,8 +169,8 @@ A chart is added to our code to visualize the score given by our NLP algorithm t
 
 ## Quick tip to write visual elements
 
-To make coding easier, each visual element has a property called *properties*. You can set 
-properties directly through it with a Python dictionary of properties. To recreate the 
+To make coding easier, each visual element has a property called *properties*. You can set
+properties directly through it with a Python dictionary of properties. To recreate the
 graph shown above, you can to the following:
 
 === "Markdown"

@@ -9,11 +9,11 @@ img: 1_understanding_gui/step_07/images/result.png
 !!! note "Supported Python versions"
     Taipy requires **Python 3.8** or newer.
 
-Welcome to the **Taipy Tutorial**! Learn to build interactive web applications 
+Welcome to the **Taipy Tutorial**! Learn to build interactive web applications
 effortlessly.
 
-This tutorial focuses on creating an application that analyses the sentiment behind words 
-and sentences. While creating this application, you'll learn all the Taipy basic 
+This tutorial focuses on creating an application that analyses the sentiment behind words
+and sentences. While creating this application, you'll learn all the Taipy basic
 principles.
 
 ![GUI application](step_07/images/result.png){width=90% .tp-image-border}
@@ -25,13 +25,13 @@ principles.
 - **Simplicity:** Easy management of variables and events.
 - **Visualization:** Intuitive and clear visual elements.
 
-Each step in this **Tutorial** builds on the previous one. By the end, you'll be ready to 
+Each step in this **Tutorial** builds on the previous one. By the end, you'll be ready to
 create your own Taipy applications.
 
 ## Getting Started
 
-This tutorial is for Python scripts (*.py*). If you prefer **Jupyter Notebooks**, read 
-this [documentation](../../../manuals/gui/notebooks.md) and follow the tutorial 
+This tutorial is for Python scripts (*.py*). If you prefer **Jupyter Notebooks**, read
+this [documentation](../../../manuals/userman/notebooks.md) and follow the tutorial
 accordingly.
 
 ### Installation
@@ -49,12 +49,12 @@ pip install torch transformers scipy
 ```
 
 !!! info
-    Use `pip install taipy` for the latest stable version. Need help with pip? Check out 
+    Use `pip install taipy` for the latest stable version. Need help with pip? Check out
     the [installation guide](http://docs.python-guide.org/en/latest/starting/installation/).
 
 ## Taipy Studio
 
-[Taipy Studio](../../../manuals/studio/index.md) is a VS Code extension for 
+[Taipy Studio](../../../manuals/studio/index.md) is a VS Code extension for
 auto-completing Taipy visual elements. It makes creating applications faster and easier.
 
 ![Taipy Studio Demo](../images/taipy-studio.gif){width=90% .tp-image-border}

@@ -87,9 +87,9 @@ pages work independently:
 - The `temperature_md` page lets a user convert temperatures from Fahrenheit (°F) to Celsius (°C).
 
 Usually, if we were making a simple one-page application, we'd give one of our pages (created
-with [Markdown](../../../manuals/gui/pages/markdown.md),
-[HTML](../../../manuals/gui/pages/html.md) or
-[Python code](../../../manuals/gui/pages/builder.md) to the
+with [Markdown](../../../manuals/userman/gui/pages/markdown.md),
+[HTML](../../../manuals/userman/gui/pages/html.md) or
+[Python code](../../../manuals/userman/gui/pages/builder.md) to the
 `Gui.__init__^`(`Gui` constructor). For example, to turn `home.py` into a one-page
 Taipy application,
 we could add these lines:
@@ -133,7 +133,7 @@ In the end, we provided this *pages* dictionary as an argument to the *pages* pa
 multi-page application working!
 
 If you open your web browser and go to **localhost:5000** (assuming you're using the
-[default port](../../../manuals/reference/taipy.gui.Gui.md)), you'll see the following:
+[default port](../../../manuals/refmans/reference/taipy.gui.Gui.md)), you'll see the following:
 
 ![Defining a Multi-Page Application](images/multipage_application_7.png){width=50% : .tp-image-border }
 
@@ -154,7 +154,7 @@ for adding navigation to your multi-page application, making it more user-friend
 ![The navbar](images/multipage_application_9.gif){width=50% : .tp-image-border }
 
 One straightforward technique to make your application's navigation more appealing is by utilizing
-the Taipy [`navbar`](../../../manuals/gui/viselements/navbar.md) control. To incorporate the
+the Taipy [`navbar`](../../../manuals/userman/gui/viselements/standard-and-blocks/navbar.md) control. To incorporate the
 navbar into the home page, all you need to do is add a single line to the beginning of the
 *home_md* page definition:
 
@@ -182,7 +182,7 @@ alternative that does not require any code modification in any of the pages is t
 **root page**.
 
 Rather than modifying each page to include the navbar, we can also simply modify `main.py` to
-utilize the [root page](../../../manuals/gui/pages/index.md#root-page):
+utilize the [root page](../../../manuals/userman/gui/pages/index.md#root-page):
 
 ```python title="main.py, with root page navbar"
 from taipy.gui import Gui
@@ -211,7 +211,7 @@ Part 2 of this Taipy multi-page series.
 
 The `navigate()^` function is self-explanatory in its purpose, it is used to navigate to
 other pages. For example, this is a code snippet of the `navigate()^` function being used to
-navigate to the *home* page when the [button](../../../manuals/gui/viselements/button.md)
+navigate to the *home* page when the [button](../../../manuals/userman/gui/viselements/standard-and-blocks/button.md)
 control is clicked:
 
 ```python
@@ -233,12 +233,12 @@ in the application beyond what the navbar offers. For example, we can manage:
     depending on the process status.
 
 2. Direct the user back to the /home page when an exception occurs
-    by using navigate in [on_exception](../../../manuals/gui/callbacks.md#exception-handling).
+    by using navigate in [on_exception](../../../manuals/userman/gui/callbacks.md#exception-handling).
 
 If you prefer, you can replicate the functionality of the *navbar* using the `navigate()^` feature
-with a different control, like a [selector](../../../manuals/gui/viselements/selector.md)
-control or [tree](../../../manuals/gui/viselements/tree.md) control. In this example, let's
-combine the `navigate` feature with the [menu](../../../manuals/gui/viselements/menu.md) control
+with a different control, like a [selector](../../../manuals/userman/gui/viselements/standard-and-blocks/selector.md)
+control or [tree](../../../manuals/userman/gui/viselements/standard-and-blocks/tree.md) control. In this example, let's
+combine the `navigate` feature with the [menu](../../../manuals/userman/gui/viselements/standard-and-blocks/menu.md) control
 (a collapsible side panel) to create the following app:
 
 ![The navigate function](images/multipage_application_11.gif){width=50% : .tp-image-border }
@@ -274,7 +274,7 @@ We define two properties for the menu control:
 1. `lov={page_names}`: The list of values which may be selected from the menu.
     In this case, we interpolate the *page_names* variable, which we then assign the keys from
     *pages* (other than "/") — functionally equivalent to `page_names = ["home", "temperature"]`.
-    Refer to the [menu](../../../manuals/gui/viselements/menu.md) for more details, such as for
+    Refer to the [menu](../../../manuals/userman/gui/viselements/standard-and-blocks/menu.md) for more details, such as for
     setting icons and labels.
 2. `on_action=menu_action`: Assigns the `menu_action` function as the callback function which is
     executed when the user clicks an item from the menu.

@@ -121,14 +121,13 @@ This section describes the various methods to configure the Taipy version manage
             with each field in the TOML file will override the one provided in the Taipy Config.
 
         For more information about how to configure your application using a TOML file, please refer to
-        the [Advanced configuration page](../config/advanced-config.md).
+        the [Advanced configuration page](../configuration/advanced-config.md).
 
     === "Using Python code"
 
         The first method is configuring the `CoreSection^` with the `Config.configure_core()^` method.
-        For more details about the configuration fields, please refer to the [Core config](../config/core-config.md)
-        documentation
-        page.
+        For more details about the configuration fields, please refer to the
+        [Core config](../configuration/core-config.md) page.
 
         ```python linenums="1"
         from taipy import Config

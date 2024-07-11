@@ -204,14 +204,14 @@ nav:
     - "Reference":
       - manuals/refmans/index.md
       - "Python API":
-        - manuals/reference/index.md
+        - manuals/refmans/reference/index.md
         [REFERENCE_CONTENT]
       - "REST API":
-        - manuals/reference_rest/index.md
+        - manuals/refmans/reference_rest/index.md
         [REST_REFERENCE_CONTENT]
       - "GUI Extension API":
-        - manuals/reference_guiext/index.md
-        - "taipy-gui module": manuals/reference_guiext/modules.md
+        - manuals/refmans/reference_guiext/index.md
+        - "taipy-gui module": manuals/refmans/reference_guiext/modules.md
 
   - "Gallery":
     - "Gallery": gallery/index.md

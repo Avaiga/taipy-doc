@@ -62,7 +62,7 @@ To expose the Taipy REST APIs, the Taipy REST server must first be started.
 
 Once your Taipy REST server is up and running, the REST APIs are exposed. Any REST client can be
 used to make some HTTP requests to the various APIs exposed. The exhaustive list of APIs is
-available on the [REST API](../reference_rest/index.md) reference manual.
+available on the [REST API](../../refmans/reference_rest/index.md) reference manual.
 
 The following presents a simple usage example of a Taipy REST API. It shows how to retrieve all
 data nodes using either the curl command line REST client or a python REST client (the
