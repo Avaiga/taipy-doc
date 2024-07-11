@@ -24,14 +24,16 @@ data.
 
         ![Scenario graph](img/execution-flow-entities.svg){ margin-left=25% }
 
-    ==== "Corresponding cnfiguration code"
+        The graph above represents the flow of the scenario. It is an execution graph that contains
+        the data nodes and the tasks of the scenario.
+
+    ==== "Corresponding configuration code"
 
         ```python linenums="1"
         {% include-markdown "./code-example/index/my_config.py" comments=false %}
         ```
 
-    The graph above represents the flow of the scenario. It is an execution graph that contains
-    the data nodes and the tasks of the scenario.
+        The code above shows the configuration of the scenario.
 
     An end-user instantiate a first scenario for January to forecast the demand and generate the
     planning under the January conditions. The scenario contains all the data nodes and tasks he

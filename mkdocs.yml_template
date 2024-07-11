@@ -148,7 +148,7 @@ nav:
         - "Experiment mode": manuals/userman/versioning/experiment_mode.md
         - "Production mode": manuals/userman/versioning/production_mode.md
 
-      - "REST APIs": manuals/userman/rest/index.md
+      - "Exposing REST APIs": manuals/userman/rest/index.md
 
       - "Using Notebooks": manuals/userman/notebooks.md
 
@@ -201,9 +201,9 @@ nav:
         - "Text edition": manuals/studio/config/textedition.md
       - "GUI Markdown support": manuals/studio/gui.md
 
-    - "Reference Manuals":
+    - "Reference":
       - manuals/refmans/index.md
-      - "Python Reference Manual":
+      - "Python API":
         - manuals/reference/index.md
         [REFERENCE_CONTENT]
       - "REST API":
@@ -212,6 +212,7 @@ nav:
       - "GUI Extension API":
         - manuals/reference_guiext/index.md
         - "taipy-gui module": manuals/reference_guiext/modules.md
+
   - "Gallery":
     - "Gallery": gallery/index.md
     - "Finance":
@@ -245,11 +246,14 @@ nav:
       - "Background Remover": gallery/other/background_remover/index.md
       - "Real-time Face Recognition": gallery/other/face_recognition/index.md
       - "Movie Genre Selector": gallery/other/movie_genre_selector/index.md
+
   - "Release Notes": relnotes.md
+
   - "Contributing":
     - "Contributing to Taipy": contributing/contributing.md
     - "Contributors": contributing/contributors.md
     - "Code of conduct": contributing/code_of_conduct.md
+
 theme:
   name: material
   language: en
