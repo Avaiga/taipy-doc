@@ -19,19 +19,25 @@ converse with the chatbot which responds with relevant and current information, 
 This application uses some system dependencies like *tesseract* and *poppler*. To simplify development and deployment,
 consider using Docker Compose:
 
-Step 1: 
+Step 1: Clone the `rag` branch of the Git repository.
 
 ```bash
 git clone -b rag --single-branch https://github.com/Avaiga/demo-gpt-4o.git
 ```
 
-Step 2: 
+Step 2: Change directory to the cloned folder.
 
 ```bash
 cd demo-gpt-4o
 ```
 
-Step 3: 
+Step 3: Create a .env file in the root directory with the following content.
+
+```toml
+HUGGINGFACEHUB_API_TOKEN=[YOUR_ACCESS_TOKEN]
+```
+
+Step 4: Build and run the application with Docker.
 
 ```bash
 docker compose up
