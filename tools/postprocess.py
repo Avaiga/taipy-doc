@@ -404,16 +404,24 @@ def on_post_build(env):
                         ARTICLE_RE = re.compile(r"(<div\s+class=\"md-content\".*?>)(\s*<article)")
                         if article_match := ARTICLE_RE.search(html_content):
                             repl = "\n<ul class=\"tp-bc\">"
-                            if fn_match[2] == "cor":
-                                repl += "<li><a href=\"../../viselements\"><b>Visual Elements</b></a></li>"
-                                repl += "<li><a href=\"../../viselements/controls/#scenario-management-controls\"><b>Scenario management controls</b></a></li>"
+                            print("--------------------->>>>>>")
+                            print(fn_match[2])
+                            print(element_category)
+                            print(filename)
+                            if "corelements" in filename:
+                                repl += "<li><a href=\"../../../viselements\"><b>Visual Elements</b></a></li>"
+                                repl += ("<li><a "
+                                         "href=\"../../../viselements/#scenario-and-data-management-controls\"><b"
+                                         ">Scenario management controls</b></a></li>")
                             else:
                                 chart_part = "../" if element_category == "chart" else ""
-                                repl += f"<li><a href=\"{chart_part}..\"><b>Visual Elements</b></a></li>"
-                                repl += (f"<li><a href=\"{chart_part}../blocks\"><b>Blocks</b></a></li>" if element_category == "blocks"
-                                        else f"<li><a href=\"{chart_part}../controls/#standard-controls\"><b>Standard controls</b></a></li>")
-                                if chart_part:
-                                    repl += f"<li><a href=\"{chart_part}../chart\"><b>Charts</b></a></li>"
+                                repl += f"<li><a href=\"{chart_part}../..\"><b>Visual Elements</b></a></li>"
+                                if element_category == "blocks":
+                                    repl += f"<li><a href=\"{chart_part}../..#blocks-controls\"><b>Blocks</b></a></li>"
+                                else:
+                                    repl += f"<li><a href=\"{chart_part}../..#standard-controls\"><b>Standard controls</b></a></li>"
+                                    if chart_part:
+                                        repl += f"<li><a href=\"{chart_part}../../chart\"><b>Charts</b></a></li>"
                             repl += "</ul>"
                             html_content = (html_content[:article_match.start()]
                                             + article_match.group(1)
