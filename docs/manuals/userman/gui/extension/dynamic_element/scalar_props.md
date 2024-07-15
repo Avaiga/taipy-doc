@@ -2,7 +2,7 @@
 
 In this section, we will add a dynamic custom element to the custom element library, which we
 started to create in the
-[Static Elements](../static_element.md#declaring-the-extension-library-data-sourceguidocextensionexamplelibraryexamplelibrarypy)
+[Static Elements](../static_element.md#declaring-the-extension-library)
 section.
 
 This dynamic element will be using a property that holds a scalar value.<br/>
@@ -88,7 +88,7 @@ const ColoredLabel = (props: ColoredLabelProps) => {
 export default ColoredLabel;
 ```
 We use the
-[`useDynamicProperty()`](../../../reference_guiext/modules.md#usedynamicproperty)
+[`useDynamicProperty()`](../../../../refmans/reference_guiext/modules.md#usedynamicproperty)
 hook provided by the Taipy GUI Extension API to retrieve the value of the dynamic
 property. This hook returns the latest updated value.<br/>
 
@@ -112,7 +112,8 @@ Colored text: <|{label}|example.label|>
 """
 ```
 
-We can see how the *label* property of the control is bound to the Python variable *label*,using the default property syntax.
+We can see how the *label* property of the control is bound to the Python variable
+*label*,using the default property syntax.
 
 When you run this application, the page displays the element like this:
 

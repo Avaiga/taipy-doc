@@ -27,7 +27,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
     </a>
   </div>
   <div class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card tp-content-card--alpha" href="./gui/viselements/chart/">
+    <a class="tp-content-card tp-content-card--alpha" href="./gui/viselements/standard-and-blocks/chart/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon" src="../../images/icons/bar-chart-w.svg">
         <h3>Charts</h3>
@@ -39,39 +39,44 @@ These topics are the most visited ones, we thought you’d like to have a glance
   </div>
 </div>
 
-# Graphical User Interface (GUI) - `taipy.gui`
+# Graphical User Interface (GUI)
 
-The `taipy.gui^` package allows you to design an effective Graphical User Interface.
+As part of Taipy, the `taipy.gui` package allows you to design an effective Graphical User Interface.
 It provides many interactive widgets, controls, and visual elements to enhance the
 user’s experience.
 
 [:material-arrow-right: GUI User Manual](gui/index.md)
 
-# Scenario and Data Management - `taipy.core`
+# Scenario and Data Management
 
-The `taipy.core^` package is a Python library designed to build powerful and customized
-data-driven back-end applications. It provides the necessary tools to help Python developers
-transform their algorithms into a complete back-end application.
+Taipy is a Python library designed to build powerful and customized data-driven applications.
+In particular, it provides the necessary tools to help Python developers transform their
+data science analysis and algorithms into complete full stack applications.
 
-Taipy Core brings algorithm management to another level: algorithms are now connected to the
-end-user through user-defined scenarios, interactive data, smart job orchestration, etc.
+As part of Taipy, the `taipy.core` package brings algorithm management to another level
+speeding the developer work and empowering its end-users letting them manage their
+user-defined scenarios with interactive data and smart job orchestration.
 
-[:material-arrow-right: Data Integration](data-integration/index.md),
+[:material-arrow-right: Data integration](data-integration/index.md),
 
 [:material-arrow-right: Task orchestration](task-orchestration/index.md),
 
 [:material-arrow-right: What-if-analysis](what-if-analysis/index.md)
 
-# Taipy REST - `taipy.rest`
+[:material-arrow-right: Scenario and data management](sdm/index.md)
 
-The `taipy.rest` package allows you to access Taipy Core functionalities such as scenarios
-management, sequences and task orchestration, data management, etc., through a dedicated REST API.
-This package aims to provide a solution to easily integrate Taipy applications with other IT
+The `taipy.rest` package allows you to access some Taipy functionalities such as
+scenarios management, sequences and task orchestration, data management, etc. through
+a dedicated REST API.
+This feature to provides a solution to easily integrate Taipy applications with other IT
 systems. The API comes with multiple endpoints for you to work with Taipy Core conveniently and
 efficiently.
 
 [:material-arrow-right: Taipy REST User Manual](rest/index.md)
 
-# Deployment
+# Authentication and Role
 
-[:material-arrow-right: Running & Deploying section](../run-deploy/index.md)
+Taipy Enterprise Edition provides a simple and secure way to authenticate users and
+manage their roles.
+
+[:material-arrow-right: Authentication and Roles](auth/index.md)

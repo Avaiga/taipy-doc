@@ -9,6 +9,7 @@ copyright: © 2021-[YEAR] Avaiga
 nav:
   - "Getting Started":
     - "Getting Started": getting_started/index.md
+
   - "Tutorials":
     - "Tutorials": tutorials/index.md
     - "Fundamentals":
@@ -247,10 +248,11 @@ nav:
       - "Real-time Face Recognition": gallery/other/face_recognition/index.md
       - "Movie Genre Selector": gallery/other/movie_genre_selector/index.md
 
-  - "Release Notes": relnotes.md
+  - "Release Notes":
+    - "Release Notes": release/index.md
 
   - "Contributing":
-    - "Contributing to Taipy": contributing/contributing.md
+    - "Contributing to Taipy": contributing/index.md
     - "Contributors": contributing/contributors.md
     - "Code of conduct": contributing/code_of_conduct.md
 
@@ -258,6 +260,7 @@ theme:
   name: material
   language: en
   custom_dir: taipy_theme
+  navigation_depth: 1
   font:
     text: Lato
   icon:
@@ -279,9 +282,9 @@ theme:
         icon: material/toggle-switch
         name: Switch to light mode
   features:
+    - navigation.instant
+    - navigation.path
     - navigation.indexes
-    - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.footer
     - content.tabs.link
     - content.code.copy

@@ -1,7 +1,5 @@
 ---
 title: Install Taipy
-hide:
-  - navigation
 ---
 
 Welcome to the installation section of the Taipy web application builder! This section will
@@ -64,7 +62,7 @@ the cell:
     This command installs the latest stable release of Taipy in your Colab environment.
 
 3. **Start building your app**: Follow this
-[tip](tutorials/integration/2_colab_with_ngrok/index.md) to build and run your Taipy web
+[tip](../tutorials/integration/2_colab_with_ngrok/index.md) to build and run your Taipy web
 application directly within the Colab notebook.
 
 !!! tip

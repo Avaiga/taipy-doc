@@ -355,6 +355,7 @@ class RefManStep(SetupStep):
                 if entry_desc[2]:
                     entry_desc[2] = [p for p in entry_desc[2] if p != package]
         with open(self.XREFS_PATH, "w") as xrefs_output_file:
+            print(xrefs.get("taipy.gui", "ACHTUNG!!!"))
             xrefs_output_file.write(json.dumps(xrefs))
 
     @staticmethod

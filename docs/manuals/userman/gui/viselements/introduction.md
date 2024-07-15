@@ -1,32 +1,12 @@
-*Visual Elements* are user interface objects displayed on a given page.
-Visual elements reflect some application data or give the page some structuring
-or layout information. Most visual elements allow users to interact with the page content.
-
-There are two types of *Visual Elements*:
-
-   - *Controls* typically represent user data that the user can interact with.<br/>
-     Beside the generic controls provided in Taipy GUI and listed in [this section](controls.md),
-     the `taipy` package come with a dedicated set of Taipy GUI controls that let users
-     display and interact with [Scenario management entities](../../../sdm/index.md).
-     These controls are listed in the
-     [Scenario Management controls](controls.md#scenario-management-controls) section.
-
-   - *Blocks* let you organize controls (or blocks) in pages to provide the best
-    possible user experience.
-
-If you are familiar with what *Visual Elements* are and how they are declared, you
-may want to jump directly to the list of the available visual elements:
-
-[:material-arrow-right: List of available controls](controls.md)
-
-[:material-arrow-right: List of available blocks](blocks.md)
+---
+title: Introduction to Visual Elements
+---
 
 # Properties
 
 Each visual element has a type and a set of properties.
 To add a visual component to a page, appropriate syntax must be used,
-indicating the type of visual element and the
-properties of the element.
+indicating the type of visual element and the properties of the element.
 
 ## Property name
 
@@ -34,7 +14,8 @@ Every element type has a default property name that holds its 'main'
 representation: a string for a text element, an array for a selector, or
 a numerical value for a slider.
 
-To set the value for this property, the short syntax for the visual element syntax can be used.
+To set the value for this property, the short syntax for the visual element
+syntax can be used.
 
 ## Property value
 
@@ -51,18 +32,17 @@ names defined in the code, and the value of the property is set to the evaluated
     new variable value, which might be slow and hit the user experience.<br/>
     Visual Elements that are costly to render on the browser provide a property called *rebuild*
     that allows one to explicitly request the render of the component. Please check the relevant
-    sections for the [`chart`](chart.md#the-rebuild-property) and
-    [`table`](table.md#the-rebuild-property) controls for more information.
-
+    sections for the [`chart`](standard-and-blocks/chart.md#the-rebuild-property) and
+    [`table`](standard-and-blocks/table.md#the-rebuild-property) controls for more information.
 
 # Syntax
 
 Depending on the technique you have used to create your application pages (see the section on
-[Page](../../pages/index.md)), visual elements are created with specific syntaxes:
+[Page](../pages/index.md)), visual elements are created with specific syntaxes:
 
 ## Markdown
 
-This applies when the page is defined using [Markdown](../../pages/markdown.md).
+This applies when the page is defined using [Markdown](../pages/markdown.md).
 
 The basic syntax for creating Taipy constructs in Markdown is: `<|...|...|>` (opening with a
 *less than* character followed by a vertical bar character &#151; sometimes called
@@ -90,8 +70,9 @@ name to appear between the two first vertical bar characters (as in `<|control|.
     Every visual element has a default property, and using the default property syntax
     (where the default property value appears as the first `||` fragment) underscore,
     but placing it first, the most important property value for this visual element:
-    it would be the content of a [`text`](text.md) control, the label of a [`button`](button.md),
-    or the data set displayed by a [`chart`](chart.md), for example.
+    it would be the content of a [`text`](standard-and-blocks/text.md) control, the
+    label of a [`button`](standard-and-blocks/button.md),
+    or the data set displayed by a [`chart`](standard-and-blocks/chart.md), for example.
 
 Every following |-separated fragment is interpreted as a property name-property value
 pair using the syntax: *property\_name=property\_value* (note that *all* space characters
@@ -105,11 +86,11 @@ fragment similar to:
 ```
 
 !!! note "Multiple properties"
-    You can have as many property name-property value pairs as needed and all of the space
+    You can have as many property name-property value pairs as needed and all the space
     characters of the property value part *are* significant:<br/>
     The fragment `<|Content |text|>` will be displayed as the string "Content" followed by a
     space character because it is part of the property value (in this case, the *default*
-    property value, which is the property called *value* for the [`text`](text.md) control)
+    property value, which is the property called *value* for the [`text`](standard-and-blocks/text.md) control)
 
 !!! note "Shortcut for Boolean properties"
     Should the `=property_value` fragment be missing, the property value is interpreted as the
@@ -123,7 +104,7 @@ fragment similar to:
     ignored without any warning.
 
 !!! note "Indentation and block elements: element tag identifiers"
-    Markdown depends heavily on text indentation to decide whether or not a new paragraph or
+    Markdown depends heavily on text indentation to decide whether a new paragraph or
     section should be created.<br/>
     When dealing with block elements to create sections on your page, you might be
     tempted to indent the opening element tags, so the Markdown text is easier to read.
@@ -185,8 +166,8 @@ fragment similar to:
     ```
 
 !!! example "The *default property* shortcut"
-    The default property name for the control type [`button`](button.md) is *label*. In Taipy,
-    the Markdown text
+    The default property name for the control type [`button`](standard-and-blocks/button.md)
+    is *label*. In Taipy, the Markdown text
     ```
     <|button|label=Some text|>
     ```
@@ -219,11 +200,11 @@ fragment similar to:
 
 There are very few exceptions to the `<|control_type|...|>` syntax, which
 are described in their respective documentation section. The most obvious exception is the
-[`text`](text.md) control, which can be created without even mentioning its type.
+[`text`](standard-and-blocks/text.md) control, which can be created without even mentioning its type.
 
 ## HTML
 
-This applies when the page is defined using [HTML](../../pages/html.md).
+This applies when the page is defined using [HTML](../pages/html.md).
 
 If you choose to embed Taipy visual elements into existing HTML pages, you can use the
 following syntax:
@@ -249,9 +230,9 @@ is equivalent to
     that make it easier to use in the context of describing Taipy pages.
 
     - Attribute names that be array elements.
-      Some visual elements (such as the [`chart`](chart.md) control) need *indexed* properties.
-      An attribute name such as *y[1]* is valid in the Taipy context, where it would not be in the
-      raw HTML grammar.
+      Some visual elements (such as the [`chart`](standard-and-blocks/chart.md) control)
+      need *indexed* properties. An attribute name such as *y[1]* is valid in the Taipy
+      context, where it would not be in the raw HTML grammar.
 
     - Empty attribute value.
       In the HTML used by Taipy, you can mention an attribute with no value. It would
@@ -270,7 +251,7 @@ is equivalent to
 ## Page Builder API
 
 If you use Python code to create pages, the
-[Page Builder](../../../../refmans/reference/pkg_taipy.gui.builder.md) package provides the API for all the
+[Page Builder](../../../refmans/reference/pkg_taipy.gui.builder.md) package provides the API for all the
 available visual elements.
 
 To set a property to a value, you will use the property name as a named parameter to the element's
@@ -283,7 +264,7 @@ defining an expression referencing the variables.
 Every visual element type has the following properties:
 
 -   `id`: The identifier of the element. This identifier is generated in the HTML component
-    and can be used for [styling](../../styling/index.md).
+    and can be used for [styling](../styling/index.md).
 -   `class_name`: An additional CSS class that is added to the generated HTML component.
     Note that all visual elements are generated with the "taipy-*visual\_element\_type*" CSS
     class set (e.g. the `button` control generates an HTML element that has the
@@ -298,23 +279,23 @@ across your pages.
 
 You can specify an identifier for a specific visual element.
 
-This identifier is used as the `id` attribute of the generated HTML component so you
-can use it in your CSS selectors. You can look at the [Styling](../../styling/index.md)
+This identifier is used as the `id` attribute of the generated HTML component, so you
+can use it in your CSS selectors. You can look at the [Styling](../styling/index.md)
 section for more information.
 
 !!! note
     This identifier is also sent to the `on_action` callback if this visual
-    element can trigger actions (see [Actions](../../callbacks.md#actions)
+    element can trigger actions (see [Actions](../callbacks.md#actions)
     for details).
 
 ## The `properties` property
 
 There are situations where your visual element may need a lot of different properties.
 This is typically the case for complex visual elements like the
-[`chart`](chart.md) or the [`table`](table.md) controls.
+[`chart`](standard-and-blocks/chart.md) or the [`table`](standard-and-blocks/table.md) controls.
 
 When an element needs many properties and property values, the content may become
-difficult to read. Something you can do about this is create a Python dictionary that
+difficult to read. Something you can do about this is creating a Python dictionary that
 contains all the key-value pairs for your properties (name and value), then use the name
 of the variable that holds that dictionary as the value of the `properties` property.
 
@@ -352,7 +333,7 @@ control is updated when the user modifies the value represented by the control.
 
 !!! info
     Note that if there is a function called `on_change()` accessible to the `Gui` instance
-    (see the section on [Variable Value Change](../../callbacks.md#variable-value-change) for
+    (see the section on [Variable Value Change](../callbacks.md#variable-value-change) for
     details), it will be invoked no matter what the *propagate* value is. The variable
     value that this function receives is the new requested value, but this value is
     **not** set to the variable bound to the control.

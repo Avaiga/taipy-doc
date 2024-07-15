@@ -345,12 +345,12 @@ def on_post_build(env):
                             html_content = html_content.replace(table_line_to_replace, new_table_line)
 
                     # Replace data-source attributes in h<N> tags to links to
-                    # files in the appropriate repositores.
+                    # files in the appropriate repositories.
                     process = process_data_source_attr(html_content, env)
                     if process[0]:
                         html_content = process[1]
                         file_was_changed = True
-                    # Replace hrefs to GitHub containg [BRANCH] with proper branch name.
+                    # Replace hrefs to GitHub containing [BRANCH] with proper branch name.
                     process = process_links_to_github(html_content, env)
                     if process[0]:
                         html_content = process[1]

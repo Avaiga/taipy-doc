@@ -1,7 +1,3 @@
----
-hide:
-  - navigation
----
 
 # Map plots
 
@@ -33,7 +29,7 @@ The code that defines all necessary data structures looks like this:
 ```python
 # Flight start and end locations
 data = {
-    # Hartsfield-Jackson Atlanta International Airport 
+    # Hartsfield-Jackson Atlanta International Airport
     # to
     # Aéroport de Paris-Charles de Gaulle
     "lat": [33.64, 49.01],

@@ -111,8 +111,11 @@ site/
 mkdocs.yml
 /taipy
 /taipy-fe
+/docs/manuals/userman/gui/viselements/index.md
 docs/manuals/userman/gui/viselements/standard-and-blocks/*.md
 !docs/manuals/userman/gui/viselements/standard-and-blocks/index.md
+!docs/manuals/userman/gui/viselements/standard-and-blocks/blocks.md
+!docs/manuals/userman/gui/viselements/standard-and-blocks/controls.md
 docs/manuals/userman/gui/viselements/standard-and-blocks/charts/*.md
 docs/manuals/userman/gui/viselements/corelements/*.md
 !docs/manuals/userman/gui/gui_example.ipynb

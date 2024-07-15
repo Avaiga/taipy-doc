@@ -122,7 +122,8 @@ By exploring the data nodes, end users can analyse the results of their data wor
 
 ## Scenario management visual elements
 
-The [Scenario management visual elements](../../../manuals/userman/gui/viselements/standard-and-blocks/controls.md)
+The
+[Scenario management visual elements](../../../manuals/userman/gui/viselements/index.md#scenario-and-data-management-controls)
 allow you to include visual elements in the Taipy backend. This makes it easier than ever to
 build a web application that matches your backend.
 

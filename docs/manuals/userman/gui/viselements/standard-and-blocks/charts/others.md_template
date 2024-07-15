@@ -1,11 +1,6 @@
----
-hide:
-  - navigation
----
+# Other features
 
-## Other features
-
-### Pie charts
+## Pie charts
 
 Pie charts is a circular graphic divided into slices that
 represent a numerical quantity. The arc length of each slice is
@@ -42,7 +37,7 @@ And the chart definition is the following:
         ```
         <|{data}|chart|type=pie|x=Area|label=Country|layout={layout}|>
         ```
-  
+
     === "HTML"
 
         ```html
@@ -53,13 +48,13 @@ Here is the resulting chart:
 
 <!-- ![Styling a line chart](others1.png) -->
 
-### Multiple charts
+## Multiple charts
 
 You may want to plot different data sets in the same chart.
 
 In the following example, *data* holds a data frame where two sets of values are stored
 in columns *y1* and *y2* that you want to represent in a chart where the abscissa
-values can be found in column *x*.  
+values can be found in column *x*.
 Labels for the charts can be found in columns *l1* and *l2*.
 
 Furthermore, we want the second dataset to be displayed in red.
@@ -71,7 +66,7 @@ Furthermore, we want the second dataset to be displayed in red.
         ```
         <|{data}|chart|x=x|y[1]=y1|label[1]=l1|y[2]=y2|label[2]=l2|color[2]=red|xaxis[2]=x2|>
         ```
-  
+
         Note how we refer to the different y value sources, using indices.
 
     === "HTML"
@@ -85,7 +80,7 @@ Furthermore, we want the second dataset to be displayed in red.
          xaxis[2]="x2">{data}</taipy:chart>
         ```
 
-### Multiple charts with different dataset sizes
+## Multiple charts with different dataset sizes
 
 In the following example, the value holds an array of dataframe of different length
 *[data1, data2]*. We want to show a first chart with columns *Col A* and *Col B* from the first
@@ -101,7 +96,7 @@ prefixed by the index of the dataframe in the array.
 
         <|{[[26, 34, 46],[34,34],[16, 46, 20, 6]]}|chart|>
         ```
-  
+
         In this second example, we draw 3 charts with *x* the index of the *y* value from each array.
 
     === "HTML"
@@ -113,7 +108,7 @@ prefixed by the index of the dataframe in the array.
          >{[data1, data2]}</taipy:chart>
         ```
 
-### Plotting on a map
+## Plotting on a map
 
 The chart control has support for plotting data on top of maps.
 
@@ -165,7 +160,7 @@ Here is how this looks on the page:
 <!-- ![Plotting on a map](others-maps1.png) -->
 
 
-### Tracking selection
+## Tracking selection
 
 If points selection is enabled in the chart, you can keep track of which point indices
 are selected in a variable.
@@ -184,7 +179,7 @@ are selected in a variable.
         <taipy:chart selected="{selected_indices}" ...>{data}</taipy:chart>
         ```
 
-### Tracking range
+## Tracking range
 
 By specifying a function for *on_range_change*, you can be made aware of chart zoom changes.
 
@@ -202,7 +197,7 @@ By specifying a function for *on_range_change*, you can be made aware of chart z
         <taipy:chart on_range_change="range_change_function_name" ...>{data}</taipy:chart>
         ```
 
-### Sampling data
+## Sampling data
 
 By specifying *limit_rows* as True, charts will adapt the number of points to the viewable area.
 Depending on the algorithm, Some specific points might not be shown on the chart.

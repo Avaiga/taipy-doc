@@ -144,11 +144,11 @@ First, run the Core service in your code (`tp.Core().run()`). Then, you can play
 
 - create scenarios ([`tp.create_scenario(<ScenarioConfig>)`](../../scenario_management/1_scenarios/index.md#scenario-configuration-and-creation)),
 
-- write your input data nodes ([`<Data Node>.write(<new value>)`](../../../manuals/userman/data-integration/data-node-usage.md#read--write-a-data-node)),
+- write your input data nodes ([`<Data Node>.write(<new value>)`](../../../manuals/userman/data-integration/data-node-usage.md#read-write-a-data-node)),
 
 - submit them to run the task ([`<Scenario>.submit()`](../../scenario_management/1_scenarios/index.md#scenario-configuration-and-creation)),
 
-- read your output data node ([`<Data Node>.read()`](../../../manuals/userman/data-integration/data-node-usage.md#read--write-a-data-node)).
+- read your output data node ([`<Data Node>.read()`](../../../manuals/userman/data-integration/data-node-usage.md#read-write-a-data-node)).
 
 Creating a scenario creates all its related entities (**tasks**, **Data Nodes**, etc).
 These entities are being created thanks to the previous
@@ -276,7 +276,7 @@ Add these few lines to the code of your script. This creates a web application, 
     ```
 
 The
-[Scenario management controls](../../../manuals/userman/gui/viselements/standard-and-blocks/controls.md#scenario-management-controls)
+[Scenario management controls](../../../manuals/userman/gui/viselements/index.md#scenario-and-data-management-controls)
 provide all the necessary features to access and manage scenarios and data nodes. In fact,
 creating a Scenario based application connected to your pipelines has never been simpler.
 

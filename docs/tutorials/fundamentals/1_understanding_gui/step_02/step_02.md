@@ -22,8 +22,9 @@ Taipy graphical object displayed on the client. It can be a
 [chart](../../../../manuals/userman/gui/viselements/standard-and-blocks/chart.md), a
 [table](../../../../manuals/userman/gui/viselements/standard-and-blocks/table.md), an
 [input](../../../../manuals/userman/gui/viselements/standard-and-blocks/input.md), a
-[menu](../../../../manuals/userman/gui/viselements/standard-and-blocks/menu.md), etc. Check the list
-[here](../../../../manuals/userman/gui/viselements/standard-and-blocks/controls.md).
+[menu](../../../../manuals/userman/gui/viselements/standard-and-blocks/menu.md), etc.
+Check the complete list
+[here](../../../../manuals/userman/gui/viselements/index.md).
 
 Every visual element follows a similar syntax:
 

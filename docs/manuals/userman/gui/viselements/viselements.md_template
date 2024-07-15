@@ -1,4 +1,22 @@
-Controls are user interface objects representing data. Users can interact with these controls.
+*Visual Elements* are user interface objects displayed on a given page.
+They reflect some application data or give the page some structuring
+or layout information. Most visual elements allow users to interact
+with the page content.
+
+There are two types of *Visual Elements*:
+
+   - *Controls* typically represent user data that the user can interact with.<br/>
+     The generic controls are listed in the [Standard Controls](#standard-controls) section.
+     Some controls dedicated to scenario and data management are available in the
+     [Scenario Management controls](#scenario-and-data-management-controls) section.
+
+   - *Blocks* are listed in the [Block Elements](#block-elements) section.
+    They let you organize controls (or blocks) in pages to provide the best
+    possible user experience.
+
+If you are just starting with Taipy GUI, you may want to look at the
+[introduction](./introduction.md) page. It provides a comprehensive understanding of the
+visual elements, their properties, and how to use them.
 
 # Standard controls
 
@@ -15,9 +33,9 @@ advanced graphical controls such as selectors, tables, and charts.
 
 Here is the list of all available controls in Taipy:
 
-[standard-TOC]
+[controls_TOC]
 
-# Scenario management controls
+# Scenario and Data Management controls
 
 Some controls are dedicated to Scenario Management. These controls let users select
 Entities and interact with them.
@@ -30,7 +48,7 @@ Entities and interact with them.
 
 Here is the list of all the scenario management-related controls that are available in Taipy:
 
-[core_TOC]
+[core_controls_TOC]
 
 
 # Blocks controls
@@ -38,4 +56,4 @@ Here is the list of all the scenario management-related controls that are availa
 Blocks are visual elements that allow for grouping user interface elements.
 Here is the list of all available block elements in Taipy:
 
-[block_TOC]
+[blocks_TOC]

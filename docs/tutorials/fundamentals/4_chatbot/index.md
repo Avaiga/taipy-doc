@@ -240,7 +240,7 @@ in the [GitHub repository](https://github.com/Avaiga/demo-llm-chat)
 We now want to deploy the application, so it is accessible from anyone with a link.
 
 Firstly we need to store the API key in an environment variable.
-Replace the line that defines *client* in [Step 5](#step-5-create-a-function-to-generate-responses) with:
+Replace the line that defines *client* in [Step 5](#step-5-create-a-function-to-add-the-new-messages-to-the-conversation) with:
 
 ```python
 import os

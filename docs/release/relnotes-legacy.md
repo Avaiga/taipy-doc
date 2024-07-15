@@ -1,13 +1,11 @@
 ---
 title: Release Notes for Legacy Taipy versions
-hide:
-  - navigation
 ---
 
 This is the list of changes to legacy major Taipy releases as they were published.
 
 The Release Notes for the latest major version of Taipy can be found in
-[this page](relnotes.md).
+[this page](index.md).
 
 # Community edition: 2.3
 
@@ -29,9 +27,9 @@ Published on 2023-06.
   ready-to-use GUI controls that connect to entities created by Taipy Core. Your application
   can then visualize the Core entities and interact with them.<br/>
   Please check the
-  [list of Core back-end controls](manuals/userman/gui/viselements/standard-and-blocks/controls.md#scenario-management-controls).
+  [list of Core back-end controls](../manuals/userman/gui/viselements/index.md#scenario-and-data-management-controls).
 - New Taipy command-line interface (CLI). Please refer to the
-  [Taipy command-line interface](./manuals/cli/index.md) documentation page for more information.
+  [Taipy command-line interface](../manuals/cli/index.md) documentation page for more information.
 - Users can now create a new Taipy application from a template by running `$ taipy create` from the
   CLI. Besides the default template, "multi-page-gui" template can be chosen with the optional
   `--template` option.
@@ -39,20 +37,20 @@ Published on 2023-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.3.0
 
-- The [`table`](manuals/userman/gui/viselements/standard-and-blocks/table.md) and
-- [`chart`](manuals/userman/gui/viselements/standard-and-blocks/chart.md)
+- The [`table`](../manuals/userman/gui/viselements/standard-and-blocks/table.md) and
+- [`chart`](../manuals/userman/gui/viselements/standard-and-blocks/chart.md)
   controls have a new property called *rebuild* that allows for modifying the control configuration
   at runtime, using properties that are *not* dynamic.<br/>
   See the details in the specific documentation sections for
-  [tables](manuals/userman/gui/viselements/standard-and-blocks/table.md#the-rebuild-property) and
-  [charts](manuals/userman/gui/viselements/standard-and-blocks/chart.md#the-rebuild-property-data-sourceguidocexampleschartsexample-rebuildpy).
-- The [`part` block](manuals/userman/gui/viselements/standard-and-blocks/part.md) now accepts any URL as a value for the
-  [*page* property](manuals/userman/gui/viselements/standard-and-blocks/part.md#p-page). You can then integrate any external
-  web page as demonstrated in [this example](manuals/userman/gui/viselements/standard-and-blocks/part.md#part-showing-a-page).
+  [tables](../manuals/userman/gui/viselements/standard-and-blocks/table.md#the-rebuild-property) and
+  [charts](../manuals/userman/gui/viselements/standard-and-blocks/chart.md#the-rebuild-property).
+- The [`part` block](../manuals/userman/gui/viselements/standard-and-blocks/part.md) now accepts any URL as a value for the
+  [*page* property](../manuals/userman/gui/viselements/standard-and-blocks/part.md#p-page). You can then integrate any external
+  web page as demonstrated in [this example](../manuals/userman/gui/viselements/standard-and-blocks/part.md#part-showing-a-page).
   <br/>
   To better control the layout of external pages, a new
-  [*height* property](manuals/userman/gui/viselements/standard-and-blocks/part.md#p-height) has been added to the the
-  [`part`](manuals/userman/gui/viselements/standard-and-blocks/part.md) element.
+  [*height* property](../manuals/userman/gui/viselements/standard-and-blocks/part.md#p-height) has been added to the
+  [`part`](../manuals/userman/gui/viselements/standard-and-blocks/part.md) element.
 - The `navigate()^` function has an additional parameter called *force* that, when set to True,
   re-renders the page (set to the *to* parameter). This allows to force the evaluation of bound
   variables in complex dependencies situations.
@@ -88,29 +86,29 @@ Published on 2023-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
 2.3.2
 
-- The [expanded](manuals/userman/gui/viselements/corelements/scenario.md#p-expanded) and
-  [show_tags](manuals/userman/gui/viselements/corelements/scenario.md#p-show_tags) properties of the
-  [scenario](manuals/userman/gui/viselements/corelements/scenario.md) control now have a default value of
+- The [expanded](../manuals/userman/gui/viselements/corelements/scenario.md#p-expanded) and
+  [show_tags](../manuals/userman/gui/viselements/corelements/scenario.md#p-show_tags) properties of the
+  [scenario](../manuals/userman/gui/viselements/corelements/scenario.md) control now have a default value of
   False.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.3.2
 
-- Multi-line [input](manuals/userman/gui/viselements/standard-and-blocks/input.md) controls accept the Shift+Enter combination
+- Multi-line [input](../manuals/userman/gui/viselements/standard-and-blocks/input.md) controls accept the Shift+Enter combination
   to create a new line.<br/>
   See [issue #824](https://github.com/Avaiga/taipy-gui/issues/824).
-- [Table](manuals/userman/gui/viselements/standard-and-blocks/table.md) filters adapt to a change of the visible columns.<br/>
+- [Table](../manuals/userman/gui/viselements/standard-and-blocks/table.md) filters adapt to a change of the visible columns.<br/>
   See [issue #822](https://github.com/Avaiga/taipy-gui/issues/822).
 
 2.3.0
 
 - Page scopes (how Taipy GUI finds bound variables in different modules) have been
   improved so any given page can locate a variable in any module that defines a local page.<br/>
-  See the [section on page scopes](manuals/userman/gui/binding.md#scope-for-variable-binding) for more
+  See the [section on page scopes](../manuals/userman/gui/binding.md#scope-for-variable-binding) for more
   information and examples.
-- A new mechanism to start the web server when [using Notebooks](manuals/userman/notebooks.md) was put
+- A new mechanism to start the web server when [using Notebooks](../manuals/userman/notebooks.md) was put
   in place to prevent potential bottlenecks when allocating a port number. This behavior is
-  controlled by the [*notebook_proxy*](manuals/userman/configuration/gui-config.md#p-notebook_proxy) configuration
+  controlled by the [*notebook_proxy*](../manuals/userman/configuration/gui-config.md#p-notebook_proxy) configuration
   parameter.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
@@ -130,10 +128,10 @@ Published on 2023-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.3.0
 
-- The removal of all the [`table`](manuals/userman/gui/viselements/standard-and-blocks/table.md) filters has no immediate effect.
+- The removal of all the [`table`](../manuals/userman/gui/viselements/standard-and-blocks/table.md) filters has no immediate effect.
   <br/>
   See [issue #667](https://github.com/Avaiga/taipy-gui/issues/667).
-- Styling of the [`pane` block](manuals/userman/gui/viselements/standard-and-blocks/pane.md) was not applied properly.<br/>
+- Styling of the [`pane` block](../manuals/userman/gui/viselements/standard-and-blocks/pane.md) was not applied properly.<br/>
   See [issue #766](https://github.com/Avaiga/taipy-gui/issues/766).
 - Some notifications (see `notify()^`) could be missed when there were too many in a small period
   of time.<br/>
@@ -175,10 +173,10 @@ Published on 2023-04.
 
 - A default set of stylesheets are installed with Taipy GUI so that, by
   default, applications benefit from a homogeneous and good-looking
-  style. This is called the [Stylekit](manuals/userman/gui/styling/stylekit.md).<br/>
+  style. This is called the [Stylekit](../manuals/userman/gui/styling/stylekit.md).<br/>
   The Stylekit can be easily customized to fit your application design's
   requirements.
-- The [`table`](manuals/userman/gui/viselements/standard-and-blocks/table.md) and [`chart`](manuals/userman/gui/viselements/standard-and-blocks/chart.md)
+- The [`table`](../manuals/userman/gui/viselements/standard-and-blocks/table.md) and [`chart`](../manuals/userman/gui/viselements/standard-and-blocks/chart.md)
   controls have a new property called *rebuild* that can be used if you need to entirely change the
   data they rely on, including their structure.
 
@@ -187,13 +185,13 @@ Published on 2023-04.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.2.0
 
-- The default property name for the [`part` block](manuals/userman/gui/viselements/standard-and-blocks/part.md)
+- The default property name for the [`part` block](../manuals/userman/gui/viselements/standard-and-blocks/part.md)
   was changed from *render* to *class_name* to allow for directly using the
-  style classes from the [Stylekit](manuals/userman/gui/styling/stylekit.md).<br/>
+  style classes from the [Stylekit](../manuals/userman/gui/styling/stylekit.md).<br/>
   Please check the section on
-  [Styled Sections](manuals/userman/gui/styling/stylekit.md#styled-sections) for
+  [Styled Sections](../manuals/userman/gui/styling/stylekit.md#styled-sections) for
   more information.
-- The [`expandable` block](manuals/userman/gui/viselements/standard-and-blocks/expandable.md) has a new property
+- The [`expandable` block](../manuals/userman/gui/viselements/standard-and-blocks/expandable.md) has a new property
   called *on_change* enabling to set a specific callback when the block is expanded
   or collapsed.
 - Better error messages when parsing Markdown content.
@@ -201,7 +199,7 @@ Published on 2023-04.
   on a generated Python Interface Definition file.
 - The *status* entry point now provides information about the loaded element libraries and
   the elements they define.
-- The `navigate()^` function and the *page* property of the [`part` block](manuals/userman/gui/viselements/standard-and-blocks/part.md)
+- The `navigate()^` function and the *page* property of the [`part` block](../manuals/userman/gui/viselements/standard-and-blocks/part.md)
   can now use, as their target, any URL. In the context of a `part` block, the page will be rendered
   in an *iframe*.<br/>
   See [issue #621](https://github.com/Avaiga/taipy-gui/issues/621).
@@ -214,7 +212,7 @@ Published on 2023-04.
 - Bound variable scope issues fixed when used by elements defined at the root page
   level.<br/>
   See [issue #583](https://github.com/Avaiga/taipy-gui/issues/583).
-- Filters management fixed in the [`table` controls](manuals/userman/gui/viselements/standard-and-blocks/table.md).<br/>
+- Filters management fixed in the [`table` controls](../manuals/userman/gui/viselements/standard-and-blocks/table.md).<br/>
   See [issue #667](https://github.com/Avaiga/taipy-gui/issues/667).
 - Communication with the server may break.<br/>
   See [issue #695](https://github.com/Avaiga/taipy-gui/issues/695).
@@ -251,7 +249,7 @@ It mainly provides:
 - IntelliSense applied to the Markdown syntax extension that Taipy GUI
     uses to define the visual elements in the interface pages.
 
-You can refer to the [Taipy Studio User Manual](manuals/studio/index.md) section for more
+You can refer to the [Taipy Studio User Manual](../manuals/studio/index.md) section for more
 information.
 
 # Community edition: 2.1
@@ -264,7 +262,7 @@ Published on 2023-01.
 [`taipy-core` 2.1](https://pypi.org/project/taipy-core/2.1.0/) and
 [`taipy-rest` 2.1](https://pypi.org/project/taipy-rest/2.1.0/) packages.
 
-Please refer to the [Migration page](./migration.md#from-20-to-21) for
+Please refer to the [Migration page](migration.md#from-20-to-21) for
 details on how to migrate from version older than 2.1.
 
 ## New Features
@@ -281,18 +279,18 @@ details on how to migrate from version older than 2.1.
 - A security feature has been added: the file `.taipyignore`, located next to
   the Python main file, can list the paths that you want to prevent access to.<br/>
   See [issue #501](https://github.com/Avaiga/taipy-gui/issues/501) or
-  [this section](manuals/userman/configuration/gui-config.md#protect-your-application-files) for
+  [this section](../manuals/userman/configuration/gui-config.md#protect-your-application-files) for
   details.
 - Charts can use the new `Decimator^` class to cleverly filter data points out to significantly
   improve performance.<br/>
-  See the paragraph on [large datasets](manuals/userman/gui/viselements/standard-and-blocks/chart.md#large-datasets) for
+  See the paragraph on [large datasets](../manuals/userman/gui/viselements/standard-and-blocks/chart.md#large-datasets) for
   specific information.
 - Charts now support polar, funnel, candlesticks and many other types of charts.<br/>
-  See the [chart control](manuals/userman/gui/viselements/standard-and-blocks/chart.md) section for details.
+  See the [chart control](../manuals/userman/gui/viselements/standard-and-blocks/chart.md) section for details.
 - Charts now support the dark theme automatically.
 - Tooltips can be set on individual table cells.<br/>
-  See the [example](manuals/userman/gui/viselements/standard-and-blocks/table.md#cell-tooltips) for more information.
-- [Long running callbacks](manuals/userman/gui/callbacks.md#long-running-callbacks) have
+  See the [example](../manuals/userman/gui/viselements/standard-and-blocks/table.md#cell-tooltips) for more information.
+- [Long running callbacks](../manuals/userman/gui/callbacks.md#long-running-callbacks) have
   been improved to allow for easily returning a value.<br/>
   See the documentation of the `invoke_long_callback()^` function or the
   [issue #547](https://github.com/Avaiga/taipy-gui/issues/547) for more details.
@@ -307,10 +305,10 @@ details on how to migrate from version older than 2.1.
 - New version management system for Taipy applications. Users can now run an application in development
   mode, save a version of the application as an experiment version, re-run older experiment versions,
   and push a version to production.<br/>
-  See the [Version management system](./manuals/userman/versioning/index.md) documentation page for more details.
-- New data node named [MongoCollectionDataNode](./manuals/userman/data-integration/data-node-config.md#mongo-collection).
+  See the [Version management system](../manuals/userman/versioning/index.md) documentation page for more details.
+- New data node named [MongoCollectionDataNode](../manuals/userman/data-integration/data-node-config.md#mongo-collection).
   It represents the data from a MongoDB collection.
-- New data node named [ParquetDataNode](./manuals/userman/data-integration/data-node-config.md#parquet). It represents
+- New data node named [ParquetDataNode](../manuals/userman/data-integration/data-node-config.md#parquet). It represents
   tabular data stored in the Apache Parquet format.
 - Added support for [Modin](https://modin.readthedocs.io/en/stable/) as a new exposed type.
 - Running the Core service is required to execute jobs. See `Core().run()^` method.
@@ -330,7 +328,7 @@ details on how to migrate from version older than 2.1.
 2.1.0
 
 - The Pie charts now use the *values* property to set values instead of *x*.<br/>
-  See [Pie charts](manuals/userman/gui/viselements/standard-and-blocks/charts/pie.md) for details.
+  See [Pie charts](../manuals/userman/gui/viselements/standard-and-blocks/charts/pie.md) for details.
 - Unselected data points or traces in charts now preserve their original opacity.<br/>
   See [issue #496](https://github.com/Avaiga/taipy-gui/issues/496).
 - `class_name` is now a dynamic property.<br/>
@@ -381,19 +379,19 @@ Published on 2022-10.
 
 - Extension API: custom visual elements can be integrated into Taipy GUI applications.<br/>
   Third party HTML components can be integrated into Taipy GUI pages to address specific use cases.<br/>
-  See [Extension API](manuals/userman/gui/extension/index.md) for details.
+  See [Extension API](../manuals/userman/gui/extension/index.md) for details.
 - New callbacks (`on_init`, `on_navigate`, `on_exception` and `on_status`) can be used to
   initialize a new session, detect navigation events, trigger code when exceptions are raised in
   user code, and invoke code when a *status* page is requested.<br/>
-  See [Callbacks](manuals/userman/gui/callbacks.md) for details.
+  See [Callbacks](../manuals/userman/gui/callbacks.md) for details.
 - New functions allow applications to invoke long-running callbacks without blocking.<br/>
-  See [Long Running Callbacks](manuals/userman/gui/callbacks.md#long-running-callbacks) for
+  See [Long Running Callbacks](../manuals/userman/gui/callbacks.md#long-running-callbacks) for
   details.
 - The Taipy GUI application configuration uses the generic Taipy configuration mechanism exposed in the
   new `taipy-config` package.
 - An application can request the status of the server application using the "status" predefined page.<br/>
 - The new 'base' property of the chart control makes it possible to create Gantt chart-like displays.<br/>
-  See [Gantt Charts](manuals/userman/gui/viselements/standard-and-blocks/charts/gantt.md) for details.
+  See [Gantt Charts](../manuals/userman/gui/viselements/standard-and-blocks/charts/gantt.md) for details.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.0.0
@@ -513,23 +511,23 @@ Published on 2022-06.
   attribute of the `Gui^` class for more details.
 - Page definitions and the bound variables can be isolated in a module to clarify the
   application code organization.<br/>
-  See this [section](manuals/userman/gui/binding.md#scope-for-variable-binding) for details.
-- The [`chart`](manuals/userman/gui/viselements/standard-and-blocks/chart.md) control
+  See this [section](../manuals/userman/gui/binding.md#scope-for-variable-binding) for details.
+- The [`chart`](../manuals/userman/gui/viselements/standard-and-blocks/chart.md) control
   can display geo-referenced data on top of maps.<br/>
-  See this [example](manuals/userman/gui/viselements/standard-and-blocks/charts/map.md#bubbles-on-map)
+  See this [example](../manuals/userman/gui/viselements/standard-and-blocks/charts/map.md#bubbles-on-map)
   for details.
-- The [`input`](manuals/userman/gui/viselements/standard-and-blocks/input.md) and
-- [`slider`](manuals/userman/gui/viselements/standard-and-blocks/slider.md)
+- The [`input`](../manuals/userman/gui/viselements/standard-and-blocks/input.md) and
+- [`slider`](../manuals/userman/gui/viselements/standard-and-blocks/slider.md)
   controls have a new _change_delay_ property that lets you tune how fast you want to propagate
   changes.<br/>
   This allows for a better user experience.
-- The [`input`](manuals/userman/gui/viselements/standard-and-blocks/input.md) control has a new
+- The [`input`](../manuals/userman/gui/viselements/standard-and-blocks/input.md) control has a new
   _password_ property that, if True, obscures the user input.
-- The [`input`](manuals/userman/gui/viselements/standard-and-blocks/input.md),
-- [`number`](manuals/userman/gui/viselements/standard-and-blocks/number.md) and
-  [`selector`](manuals/userman/gui/viselements/standard-and-blocks/selector.md) controls have a
+- The [`input`](../manuals/userman/gui/viselements/standard-and-blocks/input.md),
+- [`number`](../manuals/userman/gui/viselements/standard-and-blocks/number.md) and
+  [`selector`](../manuals/userman/gui/viselements/standard-and-blocks/selector.md) controls have a
   new _label_ property that lets you display a label inside the control.
-- The [`layout`](manuals/userman/gui/viselements/standard-and-blocks/layout.md) block has new
+- The [`layout`](../manuals/userman/gui/viselements/standard-and-blocks/layout.md) block has new
   syntax that makes it easier to define a repetition of column definition.
 - Support for multiple assignment to variables in _on_change()_.
 

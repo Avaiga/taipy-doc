@@ -34,7 +34,7 @@ That being said, let’s go through the two variations of *on_change* callbacks:
 # Example 1: Fahrenheit to Celsius (Local Callback)
 
 Local callbacks are functions that are bound to a specific
-[Taipy control](../../../manuals/userman/gui/viselements/standard-and-blocks/controls.md) (a type of visual element).
+[Taipy control](../../../manuals/userman/gui/viselements/index.md#standard-controls) (a type of visual element).
 This function then gets called when the user interacts with that control.
 For instance, in Taipy, this may happen when a user:
 

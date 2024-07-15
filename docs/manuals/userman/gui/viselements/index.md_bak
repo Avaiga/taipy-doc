@@ -1,4 +1,22 @@
-Controls are user interface objects representing data. Users can interact with these controls.
+*Visual Elements* are user interface objects displayed on a given page.
+They reflect some application data or give the page some structuring
+or layout information. Most visual elements allow users to interact
+with the page content.
+
+There are two types of *Visual Elements*:
+
+   - *Controls* typically represent user data that the user can interact with.<br/>
+     The generic controls are listed in the [Standard Controls](#standard-controls) section.
+     Some controls dedicated to scenario and data management are available in the
+     [Scenario Management controls](#scenario-and-data-management-controls) section.
+
+   - *Blocks* are listed in the [Block Elements](#block-elements) section.
+    They let you organize controls (or blocks) in pages to provide the best
+    possible user experience.
+
+If you are just starting with Taipy GUI, you may want to look at the
+[introduction](./introduction.md) page. It provides a comprehensive understanding of the
+visual elements, their properties, and how to use them.
 
 # Standard controls
 
