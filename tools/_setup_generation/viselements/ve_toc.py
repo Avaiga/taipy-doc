@@ -1,10 +1,8 @@
-class Doc:
+class VisualElement:
 
-    def __init__(self, element_type, category, element_desc, prefix, doc):
+    def __init__(self, element_type, category, doc):
         self.element_type = element_type
         self.category = category
-        self.element_desc = element_desc
-        self.prefix = prefix
         self.doc = doc
 
     def __str__(self):
@@ -20,8 +18,8 @@ class VEToc:
         self.items = []
         self.item_strs = []
 
-    def add(self, element_type, category, element_desc, prefix, doc):
-        self.items.append(Doc(element_type, category, element_desc, prefix, doc))
+    def add(self, element_type, category, doc):
+        self.items.append(VisualElement(element_type, category, doc))
         self.item_strs.append(doc)
 
     def __str__(self):

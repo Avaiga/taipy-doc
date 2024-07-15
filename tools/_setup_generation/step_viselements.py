@@ -39,21 +39,22 @@ class VisElementsStep(SetupStep):
         self.CORELEMENTS_DIR_PATH = setup.manuals_dir + "/userman/gui/viselements/corelements"
         self.TOC_PATH = self.VISELEMENTS_DIR_PATH + "/index.md"
         self.TOC_TEMPLATE_PATH = self.VISELEMENTS_DIR_PATH + "/viselements.md_template"
-
         self.CHARTS_HOME_HTML_PATH = self.STANDARD_AND_BLOCKS_DIR_PATH + "/charts/home.html_fragment"
         self.__check_paths()
 
-        self.loader = VELoader()
-        self.loader.load(setup.root_dir + "/taipy/gui/viselements.json", "", self.STANDARD_AND_BLOCKS_DIR_PATH)
-        self.loader.load(setup.root_dir + "/taipy/gui_core/viselements.json", "core_", self.CORELEMENTS_DIR_PATH)
-        self.loader.check()
-        self.elements = self.loader.elements
-        self.categories = self.loader.categories
+        # Use a VELoader to load all the visual elements from the json files,
+        # check the elements are valid,
+        # and keep only the categories we need for the documentation.
+        loader = VELoader(self.DEFAULT_PROPERTY, self.PROPERTIES, self.INHERITS, self.NAME)
+        loader.load(setup.root_dir + "/taipy/gui/viselements.json", "", self.STANDARD_AND_BLOCKS_DIR_PATH)
+        loader.load(setup.root_dir + "/taipy/gui_core/viselements.json", "core_", self.CORELEMENTS_DIR_PATH)
+        loader.check()
+        categories_to_keep = {"controls", "blocks"}
+        self.categories = {k:loader.categories[k] for k in categories_to_keep if k in loader.categories}
+        self.elements = loader.elements
 
     def setup(self, setup: Setup) -> None:
-        prefixes = set([desc["prefix"] for desc in self.elements.values()])
-        categories = {"controls", "blocks"}
-        tocs = self.__generate_element_pages(prefixes, categories)
+        tocs = self.__generate_element_pages()
         self.__generate_toc_file(tocs)
         self.generate_builder_api()
 
@@ -63,21 +64,18 @@ class VisElementsStep(SetupStep):
         if not os.access(self.CHARTS_HOME_HTML_PATH, os.R_OK):
             raise FileNotFoundError(f"FATAL - Could not read {self.CHARTS_HOME_HTML_PATH} html fragment")
 
-    def __generate_element_pages(self, prefixes, categories) -> Dict[str, str]:
+    def __generate_element_pages(self) -> Dict[str, str]:
         tocs = {}
-        for category in categories:
+        for category in self.categories:
             for element_type in self.categories[category]:
-                element_desc = self.elements[element_type]
-                prefix = element_desc["prefix"]
-                hook = self.__build_hook(prefix, category)
+                hook = self.__build_hook(element_type, category)
                 if hook not in tocs:
                     tocs[hook] = VEToc('<div class="tp-ve-cards">\n', '</div>\n', hook)
-                tocs[hook].add(element_type, category, element_desc, prefix,
-                    self.__generate_element_doc(element_type, category, element_desc, prefix))
+                tocs[hook].add(element_type, category, self.__generate_element_doc(element_type, category))
         return tocs
 
-    def __build_hook(self, prefix: str, category: str) -> str:
-        return f"[{prefix}{category}_TOC]"
+    def __build_hook(self, element_type, category: str) -> str:
+        return f"[{self.elements[element_type]['prefix']}{category}_TOC]"
 
     def __generate_toc_file(self, tocs: Dict[str, VEToc]):
         with open(self.TOC_TEMPLATE_PATH) as template_file:
@@ -89,11 +87,14 @@ class VisElementsStep(SetupStep):
                     md_template = md_template.replace(hook, str(toc))
                 md_file.write(md_template)
 
-    def __generate_element_doc(self, element_type: str, category:str, element_desc: Dict, prefix: str):
+    def __generate_element_doc(self, element_type: str, category: str):
         """
+        Generates the markdown file for a given element type with a given category.
+
         Returns the entry for the Table of Contents that is inserted
         in the global Visual Elements or Core Elements doc page.
         """
+        element_desc = self.elements[element_type]
         template_doc_path = f"{element_desc['doc_path']}/{element_type}.md_template"
         with open(template_doc_path, "r") as template_doc_file:
             element_documentation = template_doc_file.read()
@@ -124,14 +125,14 @@ class VisElementsStep(SetupStep):
 <tbody>
 """
         STAR = "(&#9733;)"
-        default_property_name = element_desc[__class__.DEFAULT_PROPERTY]
+        default_property_name = element_desc[self.DEFAULT_PROPERTY]
         # Convert properties array to a dict
-        property_descs = {p["name"]: p for p in element_desc[__class__.PROPERTIES]}
+        property_descs = {p["name"]: p for p in element_desc[self.PROPERTIES]}
         for property_name in [default_property_name] + list(
             filter(lambda x: x != default_property_name, property_descs.keys())
         ):
             property_desc = property_descs[property_name]
-            name = property_desc[__class__.NAME]
+            name = property_desc[self.NAME]
             doc = property_desc.get("doc", "")
             if doc.startswith("UNDOCUMENTED"):
                 continue
@@ -198,7 +199,7 @@ class VisElementsStep(SetupStep):
                 + after_properties
             )
         e = element_type  # Shortcut
-        d = "corelements/" if prefix == "core_" else "standard-and-blocks/"
+        d = "corelements/" if element_desc["prefix"] == "core_" else "standard-and-blocks/"
         s = (
             ' style="font-size: .8em;"'
             if e == "scenario_selector" or e == "data_node_selector"
