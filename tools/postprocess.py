@@ -404,10 +404,6 @@ def on_post_build(env):
                         ARTICLE_RE = re.compile(r"(<div\s+class=\"md-content\".*?>)(\s*<article)")
                         if article_match := ARTICLE_RE.search(html_content):
                             repl = "\n<ul class=\"tp-bc\">"
-                            print("--------------------->>>>>>")
-                            print(fn_match[2])
-                            print(element_category)
-                            print(filename)
                             if "corelements" in filename:
                                 repl += "<li><a href=\"../../../viselements\"><b>Visual Elements</b></a></li>"
                                 repl += ("<li><a "
