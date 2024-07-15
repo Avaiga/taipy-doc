@@ -56,7 +56,7 @@ class VisElementsStep(SetupStep):
     def setup(self, setup: Setup) -> None:
         tocs = self.__generate_element_pages()
         self.__generate_toc_file(tocs)
-        self.generate_builder_api()
+        self.__generate_builder_api()
 
     def __check_paths(self):
         if not os.access(self.TOC_TEMPLATE_PATH, os.R_OK):
@@ -108,7 +108,7 @@ class VisElementsStep(SetupStep):
         first_documentation_paragraph = match.group(1)
         element_desc['short_doc'] = first_documentation_paragraph
 
-        element_documentation = self.process_element_md_file(element_type, element_documentation)
+        element_documentation = self.__process_element_md_file(element_type, element_documentation)
 
         # Build properties table
         properties_table = """
@@ -185,7 +185,7 @@ class VisElementsStep(SetupStep):
 
         # Chart hook
         if element_type == "chart":
-            before_properties, after_properties = self.chart_page_hook(
+            before_properties, after_properties = self.__chart_page_hook(
                 element_documentation, before_properties, after_properties,
                 f"{element_desc['doc_path']}/charts"
             )
@@ -217,7 +217,7 @@ class VisElementsStep(SetupStep):
         # f"<li><a href=\"../{e}/\"><code>{e}</code></a>: {first_documentation_paragraph}</li>\n"
         # The toc header and footer must then be "<ui>" and "</ul>" respectively.
 
-    def generate_builder_api(self) -> None:
+    def __generate_builder_api(self) -> None:
         separator = "# Generated code for Page Builder"
         py_file = "taipy/gui/builder/__init__.py"
         py_content = None
@@ -328,7 +328,7 @@ class [element_type]({base_class}):
     # Special case for charts: we want to insert the chart gallery that
     # is stored in the file whose path is in self.charts_home_html_path
     # This should be inserted before the first level 1 header
-    def chart_page_hook(
+    def __chart_page_hook(
         self, element_documentation: str, before: str, after: str, charts_md_dir: str
     ) -> tuple[str, str]:
         with open(self.CHARTS_HOME_HTML_PATH, "r") as html_fragment_file:
@@ -354,7 +354,7 @@ class [element_type]({base_class}):
                 if os.access(template_doc_path, os.R_OK):
                     with open(template_doc_path, "r") as template_doc_file:
                         documentation = template_doc_file.read()
-                        documentation = self.process_element_md_file('chart', documentation)
+                        documentation = self.__process_element_md_file('chart', documentation)
                     with open(f"{charts_md_dir}/{type}.md", "w") as md_file:
                         md_file.write(documentation)
 
@@ -370,7 +370,7 @@ class [element_type]({base_class}):
             after + chart_sections,
         )
 
-    def process_element_md_file(self, type: str, documentation: str) -> str:
+    def __process_element_md_file(self, type: str, documentation: str) -> str:
         DEF_RE = re.compile(r"^!!!\s+taipy-element\s*?\n((?:\s+\w+(?:\[.*?\])?(?::\w+)?\s*=\s*.*\n)*)", re.M)
         PROP_RE = re.compile(r"(\w+(?:\[.*?\])?)(?::(\w+))?\s*=\s*(.*)\n", re.M)
         new_documentation = ""
