@@ -29,8 +29,8 @@ interface. You can use various visual elements such as a
 [chart](../../../../manuals/userman/gui/viselements/standard-and-blocks/chart.md), a
 [table](../../../../manuals/userman/gui/viselements/standard-and-blocks/table.md), an
 [input](../../../../manuals/userman/gui/viselements/standard-and-blocks/input.md), a
-[menu](../../../../manuals/userman/gui/viselements/standard-and-blocks/menu.md), etc. Check the list
-[here](../../../../manuals/userman/gui/viselements/standard-and-blocks/index.md). The syntax for adding a visual element is
+[menu](../../../../manuals/userman/gui/viselements/standard-and-blocks/menu.md), etc. Check the complete list
+[here](../../../../manuals/userman/gui/viselements/index.md). The syntax for adding a visual element is
 as follows:
 
 === "Markdown"

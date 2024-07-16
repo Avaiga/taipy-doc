@@ -36,7 +36,7 @@ Here’s the list of predefined data nodes:
 
 ## Pickle Data Node
 
-The [Pickle](../../../manuals/userman/data-integration/data-node-config.md#Pickle)
+The [Pickle](../../../manuals/userman/data-integration/data-node-config.md#pickle)
 data node is the standard data node in Taipy.
 It can handle various types of Python stuff like strings, numbers, lists, dictionaries,
 models (for machine learning or other things), and data tables. Here's some code that uses
@@ -101,10 +101,10 @@ By default, the data they point to is presented to the user or developer as a Pa
 
 The predefined tabular data nodes in Taipy include:
 
-- [SQL](../../../manuals/userman/data-integration/data-node-config.md#SQL)
-- [CSV](../../../manuals/userman/data-integration/data-node-config.md#CSV)
-- [Excel](../../../manuals/userman/data-integration/data-node-config.md#Excel)
-- [Parquet](../../../manuals/userman/data-integration/data-node-config.md#Parquet)
+- [SQL](../../../manuals/userman/data-integration/data-node-config.md#sql)
+- [CSV](../../../manuals/userman/data-integration/data-node-config.md#csv)
+- [Excel](../../../manuals/userman/data-integration/data-node-config.md#excel)
+- [Parquet](../../../manuals/userman/data-integration/data-node-config.md#parquet)
 
 These data nodes allow you to work with tabular data from different sources with ease.
 

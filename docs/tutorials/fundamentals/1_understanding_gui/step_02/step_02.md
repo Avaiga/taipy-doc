@@ -15,7 +15,7 @@ to learn in the code snippets below.
 
 ## Visual elements
 
-Taipy uses the **[visual element](../../../../manuals/userman/gui/viselements/standard-and-blocks/index.md)**
+Taipy uses the **[visual element](../../../../manuals/userman/gui/viselements/index.md)**
 concept to bring interactivity to the application. A visual element is a
 Taipy graphical object displayed on the client. It can be a
 [slider](../../../../manuals/userman/gui/viselements/standard-and-blocks/slider.md), a

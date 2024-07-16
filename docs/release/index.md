@@ -165,7 +165,7 @@ Published on 2024-03.
 - The [`table`](../manuals/userman/gui/viselements/standard-and-blocks/table.md) control supports enumerated values. That allows
   for a better user experience when users edit cell values.<br/>
   See the
-  [section on enumerated values in tables](manuals/userman/gui/viselements/standard-and-blocks/table.md/#enumerated-values) for
+  [section on enumerated values in tables](../manuals/userman/gui/viselements/standard-and-blocks/table.md#enumerated-values) for
   the details.
 - The [`toggle`](../manuals/userman/gui/viselements/standard-and-blocks/toggle.md) control appears as a switch button if its
   [*value*](../manuals/userman/gui/viselements/standard-and-blocks/toggle.md#p-value) property holds a Boolean value.
@@ -369,7 +369,7 @@ Published on 2023-10.
   be called too early. It is now ensured to be invoked *after* the download operation is
   performed.<br/>
   See [issue #916](https://github.com/Avaiga/taipy-gui/issues/916).
-- Setting the [*properties*](../manuals/userman/gui/viselements/standard-and-blocks/index.md#generic-properties) property of
+- Setting the [*properties*](../manuals/userman/gui/viselements/introduction.md#generic-properties) property of
   a visual element as the returned value from a function may not succeed.</br>
   See [issue #897](https://github.com/Avaiga/taipy-gui/issues/897).
 - Variables imported by an `import *` directive are not handled properly in the state of

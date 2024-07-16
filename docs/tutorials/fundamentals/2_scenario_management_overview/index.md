@@ -194,7 +194,7 @@ read and write data.
     print([(s.name, s.predictions.read()) for s in tp.get_scenarios()])
     ```
 
-    - [`tp.get(<Taipy object ID>)`](../../../manuals/userman/data-integration/data-node-usage.md#get-data-node): this function returns an entity based on the id of the entity.
+    - [`tp.get(<Taipy object ID>)`](../../../manuals/userman/data-integration/data-node-usage.md#get-a-data-node-by-id): this function returns an entity based on the id of the entity.
 
     - [`tp.delete(<Taipy object ID>)`](../../../manuals/userman/sdm/scenario/index.md#delete-a-scenario): this function deletes the entity and nested elements based on the id of the entity.
 

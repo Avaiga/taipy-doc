@@ -610,7 +610,7 @@ and *decoder*:
 - In lines 5-7, we define a custom class `SaleRow`, representing data in a JSON object.
 
 - In lines 9-30, we define a custom encoder and decoder for the `SaleRow` class.
-    - When [writing a JSONDataNode](data-node-usage.md#JSON),
+    - When [writing a JSONDataNode](data-node-usage.md#json),
     the `SaleRowEncoder` encodes a `SaleRow` object in JSON format. For example,
     after the creation of the scenario `scenario`,
         ```python
