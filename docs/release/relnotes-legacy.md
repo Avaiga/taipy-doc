@@ -7,6 +7,13 @@ This is the list of changes to legacy major Taipy releases as they were publishe
 The Release Notes for the latest major version of Taipy can be found in
 [this page](index.md).
 
+!!! note "Unsupported released versions"
+
+    Only the current and previous major versions of Taipy are supported.
+
+    Therefore, since Taipy 3.0 was shipped, we no longer provide support for Taipy 1.x. We
+    accordingly removed the documentation for Taipy 1.x from public access.
+
 # Community edition: 2.3
 
 Published on 2023-06.
@@ -475,7 +482,8 @@ Published on 2022-10.
 
 ## New Features
 
-- SQLLite or MongoDB databases can now be used as alternatives to the filesystem to store Taipy entities.
+- SQLLite or MongoDB databases can now be used as alternatives to the filesystem to store Taipy
+  entities.
 
 ## Improvements and changes
 
@@ -511,25 +519,25 @@ Published on 2022-06.
   attribute of the `Gui^` class for more details.
 - Page definitions and the bound variables can be isolated in a module to clarify the
   application code organization.<br/>
-  See this [section](../manuals/userman/gui/binding.md#scope-for-variable-binding) for details.
-- The [`chart`](../manuals/userman/gui/viselements/standard-and-blocks/chart.md) control
+  See this <a href="javascript:void(0)">section</a> for details.
+- The <a href="javascript:void(0)">chart</a> control
   can display geo-referenced data on top of maps.<br/>
-  See this [example](../manuals/userman/gui/viselements/standard-and-blocks/charts/map.md#bubbles-on-map)
+  See this <a href="javascript:void(0)">example</a>
   for details.
-- The [`input`](../manuals/userman/gui/viselements/standard-and-blocks/input.md) and
-- [`slider`](../manuals/userman/gui/viselements/standard-and-blocks/slider.md)
+- The <a href="javascript:void(0)">input</a> and
+- <a href="javascript:void(0)">slider</a>
   controls have a new _change_delay_ property that lets you tune how fast you want to propagate
   changes.<br/>
   This allows for a better user experience.
-- The [`input`](../manuals/userman/gui/viselements/standard-and-blocks/input.md) control has a new
+- The <a href="javascript:void(0)">input</a> control has a new
   _password_ property that, if True, obscures the user input.
-- The [`input`](../manuals/userman/gui/viselements/standard-and-blocks/input.md),
-- [`number`](../manuals/userman/gui/viselements/standard-and-blocks/number.md) and
-  [`selector`](../manuals/userman/gui/viselements/standard-and-blocks/selector.md) controls have a
+- The <a href="javascript:void(0)">input</a>,
+- <a href="javascript:void(0)">number</a> and
+  <a href="javascript:void(0)">selector</a> controls have a
   new _label_ property that lets you display a label inside the control.
-- The [`layout`](../manuals/userman/gui/viselements/standard-and-blocks/layout.md) block has new
-  syntax that makes it easier to define a repetition of column definition.
-- Support for multiple assignment to variables in _on_change()_.
+- The <a href="javascript:void(0)">layout</a> block has new
+  syntax that makes it easier to define a repetition of a column definition.
+- Support for multiple assignments to variables in *on_change()*.
 
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>

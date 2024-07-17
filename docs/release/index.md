@@ -11,9 +11,12 @@ This is the list of changes to Taipy releases as they were published.
 
 !!! note "Legacy Releases"
 
-    This page shows the changes that were made in the most recent major release of Taipy.<br/>
+    This page shows the changes made in the most recent major release of Taipy.<br/>
     If you are using a legacy version (pre-3.0), please refer to the
     [Legacy Release Notes](relnotes-legacy.md) page.
+
+    Note that we support the latest major version and the one before that. Because we have
+    released Taipy 3.0, support and documentation for Taipy 1.x are disrupted.
 
 # Community edition: 3.2
 

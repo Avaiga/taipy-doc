@@ -147,13 +147,13 @@ The CSS rule above will impact your display this way:
 
 <div style="display: flex">
   <figure>
-    <img src="../images/regular-button-d.png" class="visible-dark" />
-    <img src="../images/regular-button-l.png" class="visible-light" />
+    <img src="regular-button-d.png" class="visible-dark" />
+    <img src="regular-button-l.png" class="visible-light" />
     <figcaption>Regular button</figcaption>
     </figure>
   <figure>
-    <img src="../images/rounded-button-d.png" class="visible-dark" />
-    <img src="../images/rounded-button-l.png" class="visible-light" />
+    <img src="rounded-button-d.png" class="visible-dark" />
+    <img src="rounded-button-l.png" class="visible-light" />
     <figcaption>Rounded button</figcaption>
     </figure>
   </div>
@@ -192,13 +192,13 @@ capitalize the text of buttons.
 
 <div style="display: flex">
   <figure>
-    <img src="../images/regular-button-d.png" class="visible-dark" />
-    <img src="../images/regular-button-l.png" class="visible-light" />
+    <img src="regular-button-d.png" class="visible-dark" />
+    <img src="regular-button-l.png" class="visible-light" />
     <figcaption>Regular button</figcaption>
     </figure>
   <figure>
-    <img src="../images/no-case-button-d.png" class="visible-dark" />
-    <img src="../images/no-case-button-l.png" class="visible-light" />
+    <img src="no-case-button-d.png" class="visible-dark" />
+    <img src="no-case-button-l.png" class="visible-light" />
     <figcaption>Uncapitalized button</figcaption>
     </figure>
   </div>
@@ -243,12 +243,12 @@ See the impact of setting this custom theme:
 
 <div style="display: flex">
   <figure>
-    <img src="../images/no-theme-d.png" class="visible-dark" />
-    <img src="../images/no-theme-l.png" class="visible-light"/>
+    <img src="no-theme-d.png" class="visible-dark" />
+    <img src="no-theme-l.png" class="visible-light"/>
     <figcaption>Regular button</figcaption>
     </figure>
   <figure>
-    <img src="../images/theme.png" />
+    <img src="theme.png" />
     <figcaption>Themed button</figcaption>
     </figure>
   </div>

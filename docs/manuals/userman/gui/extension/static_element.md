@@ -143,8 +143,8 @@ Gui(page, libraries=[ExampleLibrary()]).run()
 When the application is run, the page that is shown displays our control as expected:
 
 <figure>
-  <img src="../../images/extension-static1-d.png" class="visible-dark" />
-  <img src="../../images/extension-static1-l.png" class="visible-light" />
+  <img src="../static1-d.png" class="visible-dark" />
+  <img src="../static1-l.png" class="visible-light" />
   <figcaption>Static control</figcaption>
   </figure>
 
@@ -172,8 +172,8 @@ the rendering capabilities of the element.
 If we use this page definition, we get the following display:
 
 <figure>
-  <img src="../../images/extension-static2-d.png" class="visible-dark" />
-  <img src="../../images/extension-static2-l.png" class="visible-light" />
+  <img src="../static2-d.png" class="visible-dark" />
+  <img src="../static2-l.png" class="visible-light" />
   <figcaption>Different use cases</figcaption>
   </figure>
 
