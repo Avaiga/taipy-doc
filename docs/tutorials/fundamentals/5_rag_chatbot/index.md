@@ -37,7 +37,9 @@ Step 3: Create a .env file in the root directory with the following content.
 HUGGINGFACEHUB_API_TOKEN=[YOUR_ACCESS_TOKEN]
 ```
 
-Step 4: Build and run the application with Docker.
+Step 4 (Optional): Add your pdf files to the `pdfs` directory.
+
+Step 5: Build and run the application with Docker.
 
 ```bash
 docker compose up
