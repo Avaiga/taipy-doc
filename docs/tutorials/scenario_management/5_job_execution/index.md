@@ -10,10 +10,12 @@ img: images/icon-code.svg
 
 [Download the code](./src/job_execution.zip){: .tp-btn target='blank' }
 
-Taipy has [different ways](../../../manuals/core/config/job-config.md) to execute the code.
-Changing the execution mode can be useful for running multiple tasks in parallel.
+Taipy has [different modes](../../../manuals/userman/configuration/job-config.md)
+to execute the code. Changing the execution mode can be useful for running multiple
+tasks in parallel.
 
-- _standalone_ mode: asynchronous. Jobs can be run in parallel depending on the graph of execution (if _max_nb_of_workers_ > 1).
+- _standalone_ mode: asynchronous. Jobs can be run in parallel depending on the graph
+    of execution (if _max_nb_of_workers_ > 1).
 
 - _development_ mode: synchronous. The default execution mode is _development_.
 

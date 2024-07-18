@@ -11,10 +11,10 @@ img: 2_scenario_management_overview/images/screen.png
 
 Taipy brings a suite of features to streamline data pipeline orchestration:
 
-- It registers each pipeline execution, enabling users to monitor KPIs over time 
+- It registers each pipeline execution, enabling users to monitor KPIs over time
 and benchmark different runs, providing *what-if* scenarios.
-- Taipy includes ready-to-use UI components for pipeline interaction—allowing for the 
-selection of inputs and parameters, execution and tracking of pipelines, and 
+- Taipy includes ready-to-use UI components for pipeline interaction—allowing for the
+selection of inputs and parameters, execution and tracking of pipelines, and
 visualization of results.
 - Taipy efficiently manages computations, avoiding unnecessary reruns of unchanged data.
 - Taipy easily integrates with most popular data sources.
@@ -22,7 +22,7 @@ visualization of results.
 
 [Download the code](./src/scenario_management.zip){: .tp-btn target='blank' }
 
-By the end of this tutorial, you'll have a solid foundation to develop a simple 
+By the end of this tutorial, you'll have a solid foundation to develop a simple
 application leveraging Taipy's scenario management capabilities.
 
 ![Scenario management demo](images/demo.gif){ width=90% : .tp-image-border }
@@ -30,24 +30,24 @@ application leveraging Taipy's scenario management capabilities.
 Before looking at some code examples, to apprehend what is a *Scenario*, you need to
 understand the *Data node* and *Task* concepts.
 
-- [**Data Nodes**](../../../manuals/core/concepts/data-node.md): represents a variable in Taipy.
+- [**Data Nodes**](../../../manuals/userman/sdm/data-node/index.md): represents a variable in Taipy.
 Data Nodes don't contain the data itself but point to the data and know
   how to retrieve it. These Data Nodes can point to different types of data sources like CSV
   files, Pickle files, databases, etc., and they can represent various types of Python variables
   such as integers, strings, data frames, lists, and more. They are fully generic and can be
   used to represent datasets, parameters, KPIs, intermediate data, or any variable.
 
-- [**Tasks**](../../../manuals/core/concepts/task.md): are the translation of functions in
+- [**Tasks**](../../../manuals/userman/sdm/task/index.md): are the translation of functions in
   Taipy where their inputs and outputs are data nodes.
 
-- [**Scenarios**](../../../manuals/core/concepts/scenario.md): Scenarios are created by
+- [**Scenarios**](../../../manuals/userman/sdm/scenario/index.md): Scenarios are created by
   combining Data Nodes and Tasks to form a graph that maps the execution flow. Each scenario can be
   submitted, resulting in the execution of its tasks.
   End-Users very often require modifying various parameters to reflect different business
   situations. Taipy provide the framework to execute various scenarios under different
   situations (i.e. various data/parameters values set by end-users).
 
-[**Configuration**](../../../manuals/core/config/index.md) is a structure to define scenarios.
+[**Configuration**](../../../manuals/userman/sdm/scenario/scenario-config.md) is a structure to define scenarios.
 It serves as the blueprint for our Directed Acyclic Graph(s) and models the data sources,
 parameters, and tasks. After being defined, a configuration functions like a superclass and is
 employed to generate various instances of scenarios.
@@ -144,13 +144,13 @@ First, run the Core service in your code (`tp.Core().run()`). Then, you can play
 
 - create scenarios ([`tp.create_scenario(<ScenarioConfig>)`](../../scenario_management/1_scenarios/index.md#scenario-configuration-and-creation)),
 
-- write your input data nodes ([`<Data Node>.write(<new value>)`](../../../manuals/core/entities/data-node-mgt.md#read-write-a-data-node)),
+- write your input data nodes ([`<Data Node>.write(<new value>)`](../../../manuals/userman/data-integration/data-node-usage.md#read-write-a-data-node)),
 
 - submit them to run the task ([`<Scenario>.submit()`](../../scenario_management/1_scenarios/index.md#scenario-configuration-and-creation)),
 
-- read your output data node ([`<Data Node>.read()`](../../../manuals/core/entities/data-node-mgt.md#read-write-a-data-node)).
+- read your output data node ([`<Data Node>.read()`](../../../manuals/userman/data-integration/data-node-usage.md#read-write-a-data-node)).
 
-Creating a scenario creates all its related entities (**tasks**, **Data Nodes**, etc). 
+Creating a scenario creates all its related entities (**tasks**, **Data Nodes**, etc).
 These entities are being created thanks to the previous
 configuration. Still, no scenario has been run yet. `tp.submit(<Scenario>)` is the line of code
 that triggers the run of all the scenario-related tasks.
@@ -176,33 +176,34 @@ Value at the end of task 23.45
 ```
 
 In this code, you can see how to create and submit scenarios, retrieve data nodes,
-read and write data. 
+read and write data.
 
 !!! note "Some useful functions"
 
     As a quick note, here are some other basic functions to use for data and scenario managament.
 
-    - [`tp.get_scenarios()`](../../../manuals/core/entities/scenario-cycle-mgt.md/#get-all-scenarios): this function returns the list of all the scenarios.
+    - [`tp.get_scenarios()`](../../../manuals/userman/sdm/scenario/index.md#get-all-scenarios):
+        this function returns the list of all the scenarios.
 
 
-    For instance, the following Python code retrieves all the scenarios, extracts their names, 
-    and pairs them with their respective predictions. The names and predictions are then 
+    For instance, the following Python code retrieves all the scenarios, extracts their names,
+    and pairs them with their respective predictions. The names and predictions are then
     compiled into a list:
 
     ```python
     print([(s.name, s.predictions.read()) for s in tp.get_scenarios()])
     ```
 
-    - [`tp.get(<Taipy object ID>)`](../../../manuals/core/entities/data-node-mgt.md#get-data-node): this function returns an entity based on the id of the entity.
+    - [`tp.get(<Taipy object ID>)`](../../../manuals/userman/data-integration/data-node-usage.md#get-a-data-node-by-id): this function returns an entity based on the id of the entity.
 
-    - [`tp.delete(<Taipy object ID>)`](../../../manuals/core/entities/scenario-cycle-mgt.md#delete-a-scenario): this function deletes the entity and nested elements based on the id of the entity.
+    - [`tp.delete(<Taipy object ID>)`](../../../manuals/userman/sdm/scenario/index.md#delete-a-scenario): this function deletes the entity and nested elements based on the id of the entity.
 
-    You can also have a look to this [tutorial](../../scenario_management/6_scenario_comparison/index.md) 
-    to learn how scenarios can be compared easily. 
+    You can also have a look to this [tutorial](../../scenario_management/6_scenario_comparison/index.md)
+    to learn how scenarios can be compared easily.
     Many other functions are described in the manuals, in particular in the
-    [scenario](../../../manuals/core/entities/scenario-cycle-mgt.md) 
+    [scenario](../../../manuals/userman/sdm/scenario/index.md)
     and
-    [data node](../../../manuals/core/entities/data-node-mgt.md) 
+    [data node](../../../manuals/userman/data-integration/data-node-usage.md)
     documentation pages.
 
 # Visual elements
@@ -275,7 +276,7 @@ Add these few lines to the code of your script. This creates a web application, 
     ```
 
 The
-[Scenario management controls](../../../manuals/gui/viselements/controls.md#scenario-management-controls)
+[Scenario management controls](../../../manuals/userman/gui/viselements/index.md#scenario-and-data-management-controls)
 provide all the necessary features to access and manage scenarios and data nodes. In fact,
 creating a Scenario based application connected to your pipelines has never been simpler.
 

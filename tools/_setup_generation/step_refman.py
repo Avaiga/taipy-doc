@@ -31,7 +31,7 @@ class RefManStep(SetupStep):
     # Entries that should be hidden for the time being
     HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback"]
     # Where the Reference Manual files are generated (MUST BE relative to docs_dir)
-    REFERENCE_REL_PATH = "manuals/reference"
+    REFERENCE_REL_PATH = "manuals/refmans/reference"
 
     def __init__(self):
         self.navigation = None
@@ -320,7 +320,7 @@ class RefManStep(SetupStep):
                     )
                     output_path = os.path.join(self.REFERENCE_DIR_PATH, f"{force_package}.{name}.md")
                     with open(output_path, "w") as output_file:
-                        output_file.write("---\nhide:\n  - navigation\n---\n\n" + f"::: {force_package}.{name}\n")
+                        output_file.write("---\n---\n\n" + f"::: {force_package}.{name}\n")
                     update_xrefs(name, type, force_package, entry_info["module"], entry_info["packages"])
 
             with open(package_output_path, "w") as package_output_file:
@@ -355,6 +355,7 @@ class RefManStep(SetupStep):
                 if entry_desc[2]:
                     entry_desc[2] = [p for p in entry_desc[2] if p != package]
         with open(self.XREFS_PATH, "w") as xrefs_output_file:
+            print(xrefs.get("taipy.gui", "ACHTUNG!!!"))
             xrefs_output_file.write(json.dumps(xrefs))
 
     @staticmethod

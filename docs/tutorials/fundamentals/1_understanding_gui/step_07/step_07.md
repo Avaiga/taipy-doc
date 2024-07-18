@@ -3,13 +3,13 @@
 
 
 
-Taipy significantly simplifies the process of building a multi-page application. To create a 
+Taipy significantly simplifies the process of building a multi-page application. To create a
 multi-page application, you need to define a dictionary of pages. In this example, we will
-create three pages: a *root* page and two additional pages (page 1 & page 2). We will incorporate 
-visual elements, such as a menu or navbar, on the root page to facilitate navigation between 
+create three pages: a *root* page and two additional pages (page 1 & page 2). We will incorporate
+visual elements, such as a menu or navbar, on the root page to facilitate navigation between
 page 1 and page 2.
 
-Note that you can create pages differently using Markdown, Python or HTML. You 
+Note that you can create pages differently using Markdown, Python or HTML. You
 could have one page created with Markdown and another with the Python API.
 
 === "Markdown"
@@ -56,7 +56,7 @@ could have one page created with Markdown and another with the Python API.
 
 ## Navigating between pages
 
-- [menu](../../../../manuals/gui/viselements/menu.md): creates a menu on the left to 
+- [menu](../../../../manuals/userman/gui/viselements/standard-and-blocks/menu.md): creates a menu on the left to
 navigate through the pages.
 
 === "Markdown"
@@ -105,8 +105,8 @@ For example, this code creates a menu with two options:
 
     # Add a navbar to switch from one page to the other
     with tgb.Page() as root_page:
-        tgb.menu(label="Menu", 
-                 lov=[('Page-1', 'Page 1'), ('Page-2', 'Page 2')], 
+        tgb.menu(label="Menu",
+                 lov=[('Page-1', 'Page 1'), ('Page-2', 'Page 2')],
                  on_action=on_menu)
 
     with tgb.Page() as page_1:
@@ -124,7 +124,7 @@ For example, this code creates a menu with two options:
 
 ![Menu](images/menu.png){ width=40% : .tp-image-border }
 
-- [navbar](../../../../manuals/gui/viselements/navbar.md): creates an element to navigate 
+- [navbar](../../../../manuals/userman/gui/viselements/standard-and-blocks/navbar.md): creates an element to navigate
 through the Taipy pages by default
 
 === "Markdown"

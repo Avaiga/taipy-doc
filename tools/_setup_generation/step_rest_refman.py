@@ -30,7 +30,7 @@ class RestRefManStep(SetupStep):
             setup.move_package_to_root(Setup.ROOT_PACKAGE)
 
     def generate_rest_refman_pages(self, setup: Setup):
-        REST_REF_DIR_PATH = setup.manuals_dir + "/reference_rest"
+        REST_REF_DIR_PATH = setup.ref_manuals_dir + "/reference_rest"
         from taipy.rest.app import create_app as rest_create_app
 
         app = rest_create_app()
@@ -100,7 +100,7 @@ class RestRefManStep(SetupStep):
                 if dest_path in enterprise_paths:
                     file.write(Setup.ENTERPRISE_BANNER)
                 file.write(f"{dest_path_desc}\n\n")
-                self.navigation += f"- \"Paths for {dest_path}\": manuals/reference_rest/apis_{dest_path}.md\n"
+                self.navigation += f"- \"Paths for {dest_path}\": {REST_REF_DIR_PATH}/apis_{dest_path}.md\n"
                 path_files[dest_path] = file
 
             file.write(f"# `{path}`\n\n")
@@ -167,7 +167,7 @@ class RestRefManStep(SetupStep):
                     for property, property_desc in properties.items():
                         file.write(f"|{property}|{get_property_type(property_desc, True)}|-|\n")
                     file.write("\n")
-        self.navigation += "- \"Schemas\": manuals/reference_rest/schemas.md\n"
+        self.navigation += "- \"Schemas\": " + REST_REF_DIR_PATH + "/schemas.md\n"
 
 
     def exit(self, setup: Setup):

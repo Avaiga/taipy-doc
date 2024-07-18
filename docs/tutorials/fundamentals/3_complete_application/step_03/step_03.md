@@ -12,17 +12,17 @@ It comes in handy in the context of Machine Learning or Mathematical optimizatio
 
 To apprehend what is a **Scenario**, you need to understand the **Data node** and **Task** concepts.
 
-- [**Data Nodes**](../../../../manuals/core/concepts/data-node.md): are the translation of variables in 
-  Taipy. Data Nodes don't contain the data itself but point to the data and know how to retrieve 
-  it. These Data Nodes can point to different types of data sources like CSV files, Pickle files, databases, etc., 
-  and they can represent various types of Python variables such as integers, strings, data frames, lists, and more. 
+- [**Data Nodes**](../../../../manuals/userman/sdm/data-node/index.md): are the translation of variables in
+  Taipy. Data Nodes don't contain the data itself but point to the data and know how to retrieve
+  it. These Data Nodes can point to different types of data sources like CSV files, Pickle files, databases, etc.,
+  and they can represent various types of Python variables such as integers, strings, data frames, lists, and more.
 
-- [**Tasks**](../../../../manuals/core/concepts/task.md): are the translation of functions in Taipy where their inputs and outputs are data nodes.
+- [**Tasks**](../../../../manuals/userman/sdm/task/index.md): are the translation of functions in Taipy where their inputs and outputs are data nodes.
 
-- [**Scenarios**](../../../../manuals/core/concepts/scenario.md): Scenarios are created by combining Data Nodes and Tasks to form a graph that maps the 
-	execution flow. End-Users very often require modifying  
-  various parameters to reflect different business situations. Taipy provide the 
-  framework to play/execute scenarios under different situations (i.e. various 
+- [**Scenarios**](../../../../manuals/userman/sdm/scenario/index.md): Scenarios are created by combining Data Nodes and Tasks to form a graph that maps the
+	execution flow. End-Users very often require modifying
+  various parameters to reflect different business situations. Taipy provide the
+  framework to play/execute scenarios under different situations (i.e. various
   data/parameters values set by end-users).
 
 
@@ -45,15 +45,15 @@ During Data Node configuration, the developer specifies the type or format of ea
 3- `Scope.GLOBAL`: Finally, extend the scope globally (across all scenarios of all cycles). For example, the initial/historical dataset is usually shared by all the scenarios/cycles. It is unique in the entire application.
 
 
-In a Machine Learning context, it's typical to have multiple training and testing models. In this tutorial, 
-we set up a scenario where we predict the values for the upcoming days based on a specific **day**, 
+In a Machine Learning context, it's typical to have multiple training and testing models. In this tutorial,
+we set up a scenario where we predict the values for the upcoming days based on a specific **day**,
 using two models: a baseline model and a Machine Learning model.
 
 - Retrieval of the initial dataset,
 
 - Data Cleaning,
 
-- Predictions (for *number of predictions*) from **day** onwards. In our example, predictions represents the number 
+- Predictions (for *number of predictions*) from **day** onwards. In our example, predictions represents the number
 of items sold in a given store on a 15-min basis.
 
 - Creation of metrics and of a dataset for visualization.
@@ -65,16 +65,16 @@ The graph below represents the scenario to configure, where tasks are in orange 
 
 ### Input Data Nodes Configuration
 
-These are the input Data Nodes. They stand for the variables/data sources in Taipy when a 
+These are the input Data Nodes. They stand for the variables/data sources in Taipy when a
 scenario is run. However, initially, we need to set them up to build the DAG.
 
-- *initial_dataset* is simply the initial CSV file. Taipy needs some parameters to read this data: *path* and 
+- *initial_dataset* is simply the initial CSV file. Taipy needs some parameters to read this data: *path* and
   *header*. The `scope` is global; each scenario has the same initial dataset.
 
-- *day* is the beginning of the predictions. The default value is the 26th of July. It means the training data will 
+- *day* is the beginning of the predictions. The default value is the 26th of July. It means the training data will
   end before the 26th of July, and predictions will begin on this day.
 
-- *n_predictions* is the number of predictions you want to make while predicting. The default value is 40. A 
+- *n_predictions* is the number of predictions you want to make while predicting. The default value is 40. A
   prediction represents the number of items sold in a given store per 15-minute time slot.
 
 - *max_capacity* is the maximum value that can take a prediction; it is the ceiling of the projections. The default  value is 200. It means that, in our example, the maximum number of items sold per 15 minutes is 200.
@@ -105,7 +105,7 @@ max_capacity_cfg = Config.configure_data_node(id="max_capacity", default_data=20
 
 - *cleaned_dataset* is the dataset after cleaning (after the `clean_data` function).
 
-- *predictions_ml* and *predictions_baseline* are the predictions of the model. They are the output of `predict_baseline()` and `predict_ml()` 
+- *predictions_ml* and *predictions_baseline* are the predictions of the model. They are the output of `predict_baseline()` and `predict_ml()`
   functions.
 
 - *full_dataset* is the concatenation of the predictions.
@@ -115,7 +115,7 @@ max_capacity_cfg = Config.configure_data_node(id="max_capacity", default_data=20
 ```python
 ## Remaining Data Nodes
 cleaned_dataset_cfg = Config.configure_data_node(id="cleaned_dataset",
-                                                 scope=Scope.GLOBAL) 
+                                                 scope=Scope.GLOBAL)
 
 predictions_baseline_cfg = Config.configure_data_node(id="predictions_baseline")
 predictions_ml_cfg = Config.configure_data_node(id="predictions_ml")
@@ -134,7 +134,7 @@ Tasks are the translation of functions in Taipy. Each task has an ID, a function
 ### clean_data task
 
 The first task that you want to create is your `clean_data` task.
-It will take your initial dataset (input Data Node), 
+It will take your initial dataset (input Data Node),
 clean it (calling the `clean_data` function) and generate the cleaned dataset Data Node.
 This task will only execute once thanks to the skippability feature of Taipy.
 
@@ -163,13 +163,13 @@ predict_baseline_task_cfg = Config.configure_task(id="predict_baseline",
                                                   output=predictions_cfg)
 ```
 
-The other tasks (`predict_ml`, `metrics_baseline`, `metrics_ml`, and `full_prediction`) are 
-being configured the same way to get the metrics from the two models and a dataset 
+The other tasks (`predict_ml`, `metrics_baseline`, `metrics_ml`, and `full_prediction`) are
+being configured the same way to get the metrics from the two models and a dataset
 with all the predictions and historical data.
 
 ## Scenario Configuration
 
-All the task and Data Node configurations can create a scenario. These tasks 
+All the task and Data Node configurations can create a scenario. These tasks
 that form an execution graph will be executed when a scenario is submitted.
 
 ```python

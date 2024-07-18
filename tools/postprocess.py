@@ -345,12 +345,12 @@ def on_post_build(env):
                             html_content = html_content.replace(table_line_to_replace, new_table_line)
 
                     # Replace data-source attributes in h<N> tags to links to
-                    # files in the appropriate repositores.
+                    # files in the appropriate repositories.
                     process = process_data_source_attr(html_content, env)
                     if process[0]:
                         html_content = process[1]
                         file_was_changed = True
-                    # Replace hrefs to GitHub containg [BRANCH] with proper branch name.
+                    # Replace hrefs to GitHub containing [BRANCH] with proper branch name.
                     process = process_links_to_github(html_content, env)
                     if process[0]:
                         html_content = process[1]
@@ -404,16 +404,20 @@ def on_post_build(env):
                         ARTICLE_RE = re.compile(r"(<div\s+class=\"md-content\".*?>)(\s*<article)")
                         if article_match := ARTICLE_RE.search(html_content):
                             repl = "\n<ul class=\"tp-bc\">"
-                            if fn_match[2] == "cor":
-                                repl += "<li><a href=\"../../viselements\"><b>Visual Elements</b></a></li>"
-                                repl += "<li><a href=\"../../viselements/controls/#scenario-management-controls\"><b>Scenario management controls</b></a></li>"
+                            if "corelements" in filename:
+                                repl += "<li><a href=\"../../../viselements\"><b>Visual Elements</b></a></li>"
+                                repl += ("<li><a "
+                                         "href=\"../../../viselements/#scenario-and-data-management-controls\"><b"
+                                         ">Scenario management controls</b></a></li>")
                             else:
                                 chart_part = "../" if element_category == "chart" else ""
-                                repl += f"<li><a href=\"{chart_part}..\"><b>Visual Elements</b></a></li>"
-                                repl += (f"<li><a href=\"{chart_part}../blocks\"><b>Blocks</b></a></li>" if element_category == "blocks"
-                                        else f"<li><a href=\"{chart_part}../controls/#standard-controls\"><b>Standard controls</b></a></li>")
-                                if chart_part:
-                                    repl += f"<li><a href=\"{chart_part}../chart\"><b>Charts</b></a></li>"
+                                repl += f"<li><a href=\"{chart_part}../..\"><b>Visual Elements</b></a></li>"
+                                if element_category == "blocks":
+                                    repl += f"<li><a href=\"{chart_part}../..#blocks-controls\"><b>Blocks</b></a></li>"
+                                else:
+                                    repl += f"<li><a href=\"{chart_part}../..#standard-controls\"><b>Standard controls</b></a></li>"
+                                    if chart_part:
+                                        repl += f"<li><a href=\"{chart_part}../../chart\"><b>Charts</b></a></li>"
                             repl += "</ul>"
                             html_content = (html_content[:article_match.start()]
                                             + article_match.group(1)

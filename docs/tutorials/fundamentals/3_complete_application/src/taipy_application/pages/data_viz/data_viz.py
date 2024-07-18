@@ -2,7 +2,7 @@
 The first page of the application.
 Page content is imported from the page_1.md file.
 
-Please refer to ../../manuals/gui/pages for more details.
+Please refer to ../../manuals/userman/gui/pages for more details.
 """
 
 from taipy.gui import Markdown

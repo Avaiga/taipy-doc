@@ -129,9 +129,9 @@ def send_message(state: State) -> None:
 # Step 6: Create the User Interface
 
 In Taipy, one way to define pages is to use Markdown strings. Here we use a
-[table](../../../manuals/gui/viselements/table.md) to display the
+[table](../../../manuals/userman/gui/viselements/standard-and-blocks/table.md) to display the
  *conversation* dictionary and an
- [input](../../../manuals/gui/viselements/input.md) so that the
+ [input](../../../manuals/userman/gui/viselements/standard-and-blocks/input.md) so that the
  user can type their message. When the user presses enter,
  the *send_message()* function is triggered.
 
@@ -240,7 +240,7 @@ in the [GitHub repository](https://github.com/Avaiga/demo-llm-chat)
 We now want to deploy the application, so it is accessible from anyone with a link.
 
 Firstly we need to store the API key in an environment variable.
-Replace the line that defines *client* in [Step 5](#step-5-create-a-function-to-generate-responses) with:
+Replace the line that defines *client* in [Step 5](#step-5-create-a-function-to-add-the-new-messages-to-the-conversation) with:
 
 ```python
 import os

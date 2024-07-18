@@ -9,11 +9,12 @@ providing the path to the script you need to run.
 The application may however have a few requirements that Taipy can address:
 
 - [Running Taipy services](running_services.md): some Taipy functionality can be
-  run as services. That is typically the case for [Taipy GUI](../../gui/index.md) or
-  [Taipy REST](../../rest/index.md), but the execution of [Taipy Core](../../core/index.md) tasks
+  run as services. That is typically the case for [Taipy GUI](../../userman/gui/index.md) or
+  [Taipy REST](../../userman/rest/index.md), but the execution of
+  [Taipy Core](../../userman/task-orchestration/index.md) tasks
   can also be taken care of by a specific service;
 - [Rely on an external web server](external_web_server.md): although
-  [Taipy GUI](../../gui/index.md) and [Taipy REST](../../rest/index.md) provide an internal web
+  [Taipy GUI](../../userman/gui/index.md) and [Taipy REST](../../userman/rest/index.md) provide an internal web
   server, you may need to host the Taipy application in a web server that is already installed in
   your infrastructure.
 - [Protect private files](protect_files.md): because the hosting of an application by a web

@@ -9,6 +9,7 @@ copyright: © 2021-[YEAR] Avaiga
 nav:
   - "Getting Started":
     - "Getting Started": getting_started/index.md
+
   - "Tutorials":
     - "Tutorials": tutorials/index.md
     - "Fundamentals":
@@ -65,115 +66,136 @@ nav:
       - "Using PySpark for Large Data": tutorials/large_data/1_pyspark/index.md
       - "Large data models vs. Computer memory": tutorials/large_data/2_large_data_models/index.md
       - "Charts for Large Data": tutorials/large_data/3_decimator/index.md
+
   - "Manuals":
     - "About Taipy's Manuals": manuals/index.md
-    - "User Manuals":
-      - "About Taipy's User Manuals": manuals/usermans/index.md
-      - "Taipy GUI":
-        - "Taipy GUI": manuals/gui/index.md
-        - "Pages":
-          - "Pages": manuals/gui/pages/index.md
-        - "Visual Elements":
-          - "Introduction to Visual Elements": manuals/gui/viselements/index.md
-          - "Controls": manuals/gui/viselements/controls.md
-          - "Blocks": manuals/gui/viselements/blocks.md
-        - "Binding variables": manuals/gui/binding.md
-        - "Callbacks": manuals/gui/callbacks.md
-        - "Notifications": manuals/gui/notifications.md
-        - "Styling":
-          - "Styling": manuals/gui/styling/index.md
-          - "The Stylekit": manuals/gui/styling/stylekit.md
-        - "Configuration": manuals/gui/configuration.md
-        - "Using Notebooks": manuals/gui/notebooks.md
-        - "Extension":
-          - manuals/gui/extension/index.md
-          - "Static Elements": manuals/gui/extension/static_element.md
+
+    - "User Manual":
+      - "About Taipy's User Manuals": manuals/userman/index.md
+
+      - "User interface":
+        - "User interface": manuals/userman/gui/index.md
+        - "Visual elements":
+          - "Visual elements": manuals/userman/gui/viselements/index.md
+          - "Introduction": manuals/userman/gui/viselements/introduction.md
+          - "Styling":
+              - "Styling": manuals/userman/gui/styling/index.md
+              - "The Stylekit": manuals/userman/gui/styling/stylekit.md
+        - "Pages": manuals/userman/gui/pages/index.md
+        - "Binding variables": manuals/userman/gui/binding.md
+        - "Callbacks": manuals/userman/gui/callbacks.md
+        - "Notifications": manuals/userman/gui/notifications.md
+        - "Extension libraries":
+          - "Extension libraries": manuals/userman/gui/extension/index.md
+          - "Static Elements": manuals/userman/gui/extension/static_element.md
           - "Dynamic Elements":
-            - manuals/gui/extension/dynamic_element/index.md
-            - "Scalar properties": manuals/gui/extension/dynamic_element/scalar_props.md
-      - "Taipy Core":
-        - "Taipy Core": manuals/core/index.md
-        - 'Basic example: Hello world!':
-          - manuals/core/basic_examples/index.md
-        - "Concepts":
-          - "Taipy's Core concepts": manuals/core/concepts/index.md
-          - "Data node": manuals/core/concepts/data-node.md
-          - "Task": manuals/core/concepts/task.md
-          - "Sequence": manuals/core/concepts/sequence.md
-          - "Scenario": manuals/core/concepts/scenario.md
-          - "Cycle": manuals/core/concepts/cycle.md
-          - "Job": manuals/core/concepts/job.md
-          - "Execution flow": manuals/core/concepts/execution-flow.md
-          - "Scope": manuals/core/concepts/scope.md
-        - "Configuration":
-          - manuals/core/config/index.md
-          - "Config": manuals/core/config/config.md
-          - "Data node configs": manuals/core/config/data-node-config.md
-          - "Task configs": manuals/core/config/task-config.md
-          - "Scenario configs": manuals/core/config/scenario-config.md
-          - "Core config": manuals/core/config/core-config.md
-          - "Job execution config": manuals/core/config/job-config.md
-          - "Config checker": manuals/core/config/config-checker.md
-          - "Advanced configuration": manuals/core/config/advanced-config.md
-        - "Entities":
-          - manuals/core/entities/index.md
-          - "Entities' creation": manuals/core/entities/scenario-creation.md
-          - "Scenario and cycle management": manuals/core/entities/scenario-cycle-mgt.md
-          - "Sequence management": manuals/core/entities/sequence-mgt.md
-          - "Task management": manuals/core/entities/task-mgt.md
-          - "Data node management": manuals/core/entities/data-node-mgt.md
-          - "Job execution": manuals/core/entities/orchestrating-and-job-execution.md
-        - "Version Management":
-          - manuals/core/versioning/index.md
-          - "Configuration": manuals/core/versioning/configuration.md
-          - "Development mode": manuals/core/versioning/development_mode.md
-          - "Experiment mode": manuals/core/versioning/experiment_mode.md
-          - "Production mode": manuals/core/versioning/production_mode.md
-        - "Scheduling":
-          - manuals/core/scheduling/index.md
-      - "Taipy REST":
-        - manuals/rest/index.md
-      - "Authentication and Roles":
-        - "Authentication and Authorization": manuals/auth/index.md
-        - "Authentication": manuals/auth/authentication.md
-        - "Authorization": manuals/auth/authorization.md
-      - "Taipy command-line interface":
-        - manuals/cli/index.md
-        - "help": manuals/cli/help.md
-        - "create": manuals/cli/create.md
-        - "run": manuals/cli/run.md
-        - "manage-versions": manuals/cli/manage-versions.md
-        - "version": manuals/cli/version.md
-      - "Running & Deploying":
-        - "Running and Deploying Taipy applications": manuals/run-deploy/index.md
-        - "Running":
-          - "Running a Taipy application": manuals/run-deploy/run/index.md
-          - "The run() function": manuals/run-deploy/run/running_services.md
-          - "Using an external web server": manuals/run-deploy/run/external_web_server.md
-          - "Protect private files": manuals/run-deploy/run/protect_files.md
-        - "Deployment":
-          - "Deploying a Taipy application": manuals/run-deploy/deploy/index.md
-          - "On the local machine":
-              - "Deploying locally": manuals/run-deploy/deploy/local/index.md
-          - "On Linux servers":
-            - "Deploying on a Linux system": manuals/run-deploy/deploy/linux/index.md
-            - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md
-            - "RHEL": manuals/run-deploy/deploy/linux/redhat.md
-          - "On Windows Server":
-            - "Deploying on Windows Server": manuals/run-deploy/deploy/windows/index.md
-          - "Using Docker":
-            - manuals/run-deploy/deploy/docker/index.md
-            - "For development": manuals/run-deploy/deploy/docker/development.md
-            - "For production": manuals/run-deploy/deploy/docker/production.md
-          - "On Azure":
-            - "Deploying on Azure": manuals/run-deploy/deploy/azure/index.md
-          - "On Heroku":
-            - "Deploying on Heroku": manuals/run-deploy/deploy/heroku/index.md
-            - "Setup": manuals/run-deploy/deploy/heroku/setup.md
-            - "Based on Git": manuals/run-deploy/deploy/heroku/git.md
-            - "Based on Docker": manuals/run-deploy/deploy/heroku/docker.md
-          - "On Databricks":
-            - "Deploying on Databricks": manuals/run-deploy/deploy/databricks/index.md
+            - manuals/userman/gui/extension/dynamic_element/index.md
+            - "Scalar properties": manuals/userman/gui/extension/dynamic_element/scalar_props.md
+
+      - "Data integration":
+        - "Data integration": manuals/userman/data-integration/index.md
+        - "Data node config": manuals/userman/data-integration/data-node-config.md
+        - "Data node usage": manuals/userman/data-integration/data-node-usage.md
+        - "Visual elements": manuals/userman/data-integration/data-node-vizelmts.md
+        - "Data node history and validity": manuals/userman/data-integration/data-node-history.md
+
+      - "Task orchestration":
+        - "Scenarios for task orchestration": manuals/userman/task-orchestration/index.md
+        - "Hello world!": manuals/userman/task-orchestration/hello-world.md
+        - "Scenario config": manuals/userman/task-orchestration/scenario-config.md
+        - "Scenario creation": manuals/userman/task-orchestration/scenario-creation.md
+        - "Scenario submission": manuals/userman/task-orchestration/scenario-submission.md
+        - "Visual elements": manuals/userman/task-orchestration/vizelmts.md
+
+      - "What-if analysis":
+        - "Scenarios for what-if analysis": manuals/userman/what-if-analysis/index.md
+        - "Multiple scenarios": manuals/userman/what-if-analysis/multiple-scenarios.md
+        - "Recurrent scenarios": manuals/userman/what-if-analysis/scenarios-and-cycles.md
+        - "Scenario comparison": manuals/userman/what-if-analysis/scenario-comparison.md
+
+      - "Scenario and data management":
+        - "Scenario and data management": manuals/userman/sdm/index.md
+        - "Data node":
+          - "Data node": manuals/userman/sdm/data-node/index.md
+        - "Task":
+          - "Task": manuals/userman/sdm/task/index.md
+        - "Scenario":
+          - "Scenario": manuals/userman/sdm/scenario/index.md
+          - "Scenario config": manuals/userman/sdm/scenario/scenario-config.md
+        - "Submission":
+          - "Submission": manuals/userman/sdm/submission/index.md
+        - "Job":
+          - "Job": manuals/userman/sdm/job/index.md
+        - "Sequence":
+          - "Sequence": manuals/userman/sdm/sequence/index.md
+        - "Cycle":
+          - "Cycle": manuals/userman/sdm/cycle/index.md
+
+      - "Configuration":
+        - "Configuration": manuals/userman/configuration/index.md
+        - "Configuring the GUI application": manuals/userman/configuration/gui-config.md
+        - "Configuring the Core service": manuals/userman/configuration/core-config.md
+        - "Configuring jobs execution": manuals/userman/configuration/job-config.md
+        - "Configuration checker": manuals/userman/configuration/config-checker.md
+        - "Advanced configuration": manuals/userman/configuration/advanced-config.md
+
+      - "Authentication and roles":
+        - "Authentication and authorization": manuals/userman/auth/index.md
+        - "Authentication": manuals/userman/auth/authentication.md
+        - "Authorization": manuals/userman/auth/authorization.md
+
+      - "Scheduler":
+        - "Scheduler": manuals/userman/scheduling/index.md
+
+      - "Versioning system":
+        - "Versioning system": manuals/userman/versioning/index.md
+        - "Development mode": manuals/userman/versioning/development_mode.md
+        - "Experiment mode": manuals/userman/versioning/experiment_mode.md
+        - "Production mode": manuals/userman/versioning/production_mode.md
+
+      - "Exposing REST APIs": manuals/userman/rest/index.md
+
+      - "Using Notebooks": manuals/userman/notebooks.md
+
+    - "Command-line interface":
+      - "Command-line interface": manuals/cli/index.md
+      - "help": manuals/cli/help.md
+      - "create": manuals/cli/create.md
+      - "run": manuals/cli/run.md
+      - "manage-versions": manuals/cli/manage-versions.md
+      - "version": manuals/cli/version.md
+
+    - "Running & deploying":
+      - "Running and deploying Taipy applications": manuals/run-deploy/index.md
+      - "Running":
+        - "Running a Taipy application": manuals/run-deploy/run/index.md
+        - "The run() function": manuals/run-deploy/run/running_services.md
+        - "Using an external web server": manuals/run-deploy/run/external_web_server.md
+        - "Protect private files": manuals/run-deploy/run/protect_files.md
+      - "Deployment":
+        - "Deploying a Taipy application": manuals/run-deploy/deploy/index.md
+        - "On the local machine":
+          - "Deploying locally": manuals/run-deploy/deploy/local/index.md
+        - "On Linux servers":
+          - "Deploying on a Linux system": manuals/run-deploy/deploy/linux/index.md
+          - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md
+          - "RHEL": manuals/run-deploy/deploy/linux/redhat.md
+        - "On Windows Server":
+          - "Deploying on Windows Server": manuals/run-deploy/deploy/windows/index.md
+        - "Using Docker":
+          - manuals/run-deploy/deploy/docker/index.md
+          - "For development": manuals/run-deploy/deploy/docker/development.md
+          - "For production": manuals/run-deploy/deploy/docker/production.md
+        - "On Azure":
+          - "Deploying on Azure": manuals/run-deploy/deploy/azure/index.md
+        - "On Heroku":
+          - "Deploying on Heroku": manuals/run-deploy/deploy/heroku/index.md
+          - "Setup": manuals/run-deploy/deploy/heroku/setup.md
+          - "Based on Git": manuals/run-deploy/deploy/heroku/git.md
+          - "Based on Docker": manuals/run-deploy/deploy/heroku/docker.md
+        - "On Databricks":
+          - "Deploying on Databricks": manuals/run-deploy/deploy/databricks/index.md
+
     - "Taipy Studio":
       - "Taipy Studio": manuals/studio/index.md
       - "Building configurations":
@@ -183,17 +205,19 @@ nav:
         - "Graph views": manuals/studio/config/graphview.md
         - "Text edition": manuals/studio/config/textedition.md
       - "GUI Markdown support": manuals/studio/gui.md
-    - "Reference Manuals":
+
+    - "Reference":
       - manuals/refmans/index.md
-      - "Python Reference Manual":
-        - manuals/reference/index.md
+      - "Python API":
+        - manuals/refmans/reference/index.md
         [REFERENCE_CONTENT]
       - "REST API":
-        - manuals/reference_rest/index.md
+        - manuals/refmans/reference_rest/index.md
         [REST_REFERENCE_CONTENT]
       - "GUI Extension API":
-        - manuals/reference_guiext/index.md
-        - "taipy-gui module": manuals/reference_guiext/modules.md
+        - manuals/refmans/reference_guiext/index.md
+        - "taipy-gui module": manuals/refmans/reference_guiext/modules.md
+
   - "Gallery":
     - "Gallery": gallery/index.md
     - "Finance":
@@ -227,15 +251,20 @@ nav:
       - "Background Remover": gallery/other/background_remover/index.md
       - "Real-time Face Recognition": gallery/other/face_recognition/index.md
       - "Movie Genre Selector": gallery/other/movie_genre_selector/index.md
-  - "Release Notes": relnotes.md
+
+  - "Release Notes":
+    - "Release Notes": release/index.md
+
   - "Contributing":
-    - "Contributing to Taipy": contributing/contributing.md
+    - "Contributing to Taipy": contributing/index.md
     - "Contributors": contributing/contributors.md
     - "Code of conduct": contributing/code_of_conduct.md
+
 theme:
   name: material
   language: en
   custom_dir: taipy_theme
+  navigation_depth: 1
   font:
     text: Lato
   icon:
@@ -257,9 +286,9 @@ theme:
         icon: material/toggle-switch
         name: Switch to light mode
   features:
+    - navigation.instant
+    - navigation.path
     - navigation.indexes
-    - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.footer
     - content.tabs.link
     - content.code.copy

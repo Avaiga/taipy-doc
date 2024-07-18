@@ -1,7 +1,5 @@
 ---
 title: Getting Started with Taipy
-hide:
-  - navigation
 ---
 
 Dive into Taipy with this beginner-friendly guide. Learn to install, configure, and create your
@@ -20,7 +18,7 @@ first application with ease.
     ```
 
 For alternative installation methods or if you're lacking Python or pip, refer to the
-[installation page](../installation.md).
+[installation page](installation.md).
 
 # Build a graphical interface
 

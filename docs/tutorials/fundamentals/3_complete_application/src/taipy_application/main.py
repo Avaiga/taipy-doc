@@ -3,7 +3,7 @@ A multi-page Taipy application, which includes 3 pages:
 - A rootpage which is shared by other pages.
 - Two pages named page_1 and page_2.
 
-Please refer to ../../manuals/gui/pages for more details.
+Please refer to ../../manuals/userman/gui/pages for more details.
 """
 
 from pages import data_viz, scenario_page, performance

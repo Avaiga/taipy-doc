@@ -4,11 +4,9 @@ that significantly accelerates the development of Taipy applications.
 This tool addresses two major areas:
 
 - Building configurations<br/>
-    An application that relies on [Taipy Core](../core/index.md) functionalities needs to build
-    a Taipy [configuration](../core/config/index.md) where DataNode configs, Task configs, etc.
-    are declared.<br/>
-    Running the application usually starts by creating [entities](../core/entities/index.md),
-    which depend on configuration elements.
+    An application that relies on [Taipy Scenarios](../userman/sdm/index.md) functionalities
+    needs to build a Taipy [configuration](../userman/sdm/scenario/scenario-config.md) where
+    DataNode configs, Task configs, etc. are declared.<br/>
 
     Taipy Studio provides a graphical editor where you can create and configure
     the elements of your configurations stored in TOML files that your Taipy
@@ -20,7 +18,7 @@ This tool addresses two major areas:
 
 - Defining Taipy GUI page content with Markdown<br/>
     Taipy GUI exposes an augmented implementation of the
-    [Markdown syntax](../gui/viselements/index.md#markdown) that allows
+    [Markdown syntax](../userman/gui/viselements/introduction.md#markdown) that allows
     for defining visual elements you want to display on your applications'
     pages.
 

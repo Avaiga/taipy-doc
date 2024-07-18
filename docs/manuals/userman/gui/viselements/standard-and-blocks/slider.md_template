@@ -1,0 +1,168 @@
+Displays and allows the user to set a value within a range.
+
+The range is set by the values `min` and `max` which must be integer values.
+
+If the [*lov*](#p-lov) property is used, then the slider can be used to select a value among the
+different choices.
+
+
+# Styling
+
+All the slider controls are generated with the "taipy-slider" CSS class. You can use this class
+name to select the sliders on your page and apply style.
+
+# Usage
+
+## Selecting a value in a range {data-source="gui:doc/examples/controls/slider-simple.py"}
+
+A numeric value can easily be represented and interacted with using the following content:
+
+!!! taipy-element
+    default={value}
+
+The page contains a slider that looks like this:
+<figure>
+    <img src="../slider-simple-d.png" class="visible-dark" />
+    <img src="../slider-simple-l.png" class="visible-light"/>
+    <figcaption>A simple slider</figcaption>
+</figure>
+
+The user can pick the slider knob and move it around to select a value within the default range
+[0, 100].
+
+## Setting the slider range {data-source="gui:doc/examples/controls/slider-range.py"}
+
+You can specify, in the [*min*](#p-min) and [*max*](#p-max) properties, what bounds the selected
+value should be constrained to:
+
+!!! taipy-element
+    default={value}
+    min=1
+    max=10
+
+The resulting slider looks like this:
+<figure>
+    <img src="../slider-range-d.png" class="visible-dark" />
+    <img src="../slider-range-l.png" class="visible-light"/>
+    <figcaption>Custom range</figcaption>
+</figure>
+
+## Changing orientation {data-source="gui:doc/examples/controls/slider-orientation.py"}
+
+A slider can also be vertical if the [*orientation*](#p-orientation) property is set to a string
+beginning with the letter "v".
+
+!!! taipy-element
+    default={value}
+    orientation=vert
+
+And now the slider is displayed vertically:
+<figure>
+    <img src="../slider-orientation-d.png" class="visible-dark" />
+    <img src="../slider-orientation-l.png" class="visible-light"/>
+    <figcaption>Changing the default orientation</figcaption>
+</figure>
+
+## Select among a list of values {data-source="gui:doc/examples/controls/slider-lov.py"}
+
+A slider can also allow users to select a value from a list of predefined values.<br/>
+To do this, you must set the [*lov*](#p-lov) property to a list of values:
+
+!!! taipy-element
+    default={value}
+    lov=XXS;XS;S;M;L;XL;XXL
+
+Then only those values are accessible by the user:
+<figure>
+    <img src="../slider-lov-d.png" class="visible-dark" />
+    <img src="../slider-lov-l.png" class="visible-light"/>
+    <figcaption>List of values</figcaption>
+</figure>
+
+## Multi selection {data-source="gui:doc/examples/controls/slider-multiple.py"}
+
+You can use a slider control to display multiple values and let users select each.<br/>
+To achieve that, the [*value*](#p-value) property must be initially set to an array containing
+the initial values to reflect. The slider will have one knob for each value.<br/>
+When the user moves any of the knobs, the [`on_change`](../../callbacks.md#variable-value-change)
+callback is invoked with the variable value set to an array containing the new selection.
+
+Let's create an initial value for our slider:
+```py
+values = [20, 40, 80]
+```
+
+And use this variable as the [*value*](#p-value) property value:
+
+!!! taipy-element
+    default={values}
+
+Because the initial value is an array with three values, the slider is displayed with three knobs
+that the user can move:
+<figure>
+    <img src="../slider-multiple-d.png" class="visible-dark" />
+    <img src="../slider-multiple-l.png" class="visible-light"/>
+    <figcaption>Multiple values</figcaption>
+</figure>
+
+## Date range selection {data-source="gui:doc/examples/controls/slider-date-range.py"}
+
+You can create a slider to select a date range, combining the use of the [*lov*](#p-lov) property
+with a multi-knob slider.<br/>
+Note that this can work only if your base date range (the one the user can pick from) is small enough
+or it could be tricky for users to select a specific date.
+
+Here is an example that lets you select a date range taken from an entire year.
+
+You need to initialize an array of date strings that will be shown to the user as knobs are moved
+along the slider:
+
+```py
+# Create the list of dates (all year 2000)
+all_dates = {}
+all_dates_str = []
+start_date = date(2000, 1, 1)
+end_date = date(2001, 1, 1)
+a_date = start_date
+while a_date < end_date:
+    date_str = a_date.strftime("%Y/%m/%d")
+    all_dates_str.append(date_str)
+    all_dates[date_str] = a_date
+    a_date += timedelta(days=1)
+
+# Initial selection: first and last day
+dates=[all_dates_str[1], all_dates_str[-1]]
+# These two variables are used in text controls
+start_sel = all_dates[dates[0]]
+end_sel = all_dates[dates[1]]
+```
+
+Now, *all_dates_str* contains the list of all dates the user can choose from. We will use that
+array as the value of the [*value*](#p-value) property.<br/>
+*dates* holds the initial date range selection.
+
+*start_sel* and *end_sel* are string values that can be used in text controls as a visual feedback.<br/>
+We need to update these variables when the user picks new dates:
+
+```py
+def on_change(state, _, var_value):
+    # Update the text controls
+    state.start_sel = all_dates[var_value[0]]
+    state.end_sel = all_dates[var_value[1]]
+```
+
+This callback will receive, in *var_value*, the array of the two selected dates. We can simply update
+*start_sel* and *end_sel* accordingly.
+
+The slider control definition is the following:
+
+!!! taipy-element
+    default={dates}
+    lov={all_dates_str}
+
+And this is what this date range picker looks like:
+<figure>
+    <img src="../slider-date-range-d.png" class="visible-dark" />
+    <img src="../slider-date-range-l.png" class="visible-light"/>
+    <figcaption>Date range selection</figcaption>
+</figure>

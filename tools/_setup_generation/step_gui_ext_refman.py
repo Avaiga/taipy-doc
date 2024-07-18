@@ -20,7 +20,7 @@ class GuiExtRefManStep(SetupStep):
         return "Generating the GUI Extension API documentation"
 
     def enter(self, setup: Setup):
-        self.GUI_EXT_REF_DIR_PATH = setup.manuals_dir + "/reference_guiext"
+        self.GUI_EXT_REF_DIR_PATH = setup.ref_manuals_dir + "/reference_guiext"
         if os.path.exists(self.GUI_EXT_REF_DIR_PATH):
             shutil.rmtree(self.GUI_EXT_REF_DIR_PATH)
         npm_path = shutil.which("npm")

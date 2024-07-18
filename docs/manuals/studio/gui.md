@@ -2,7 +2,7 @@
 
 The Taipy Studio extension leverages the Visual Studio Code text edition functionality
 to accelerate the definition of Taipy GUI pages with the
-[Markdown syntax](../gui/pages/markdown.md):
+[Markdown syntax](../userman/gui/pages/markdown.md):
 
 - [IntelliSense](https://learn.microsoft.com/en-us/visualstudio/ide/using-intellisense)
   can be used in the context of page definition.<br/>
@@ -106,9 +106,9 @@ type, or can be interpreted.
 
 <h5>List of values</h5>
 
-Elements such as [`selector`](../gui/viselements/selector.md) or
-[`toggle`](../gui/viselements/toggle.md) have a property called `lov` that can be set to a
-series of strings. This would be properly handled by the Taipy Studio preview:
+Elements such as [`selector`](../userman/gui/viselements/standard-and-blocks/selector.md) or
+[`toggle`](../userman/gui/viselements/standard-and-blocks/toggle.md) have a property called `lov`
+that can be set to a series of strings. This would be properly handled by the Taipy Studio preview:
 
 <p align="center">
   <img src="../images/preview_lov.png" width="80%"/>
@@ -116,7 +116,8 @@ series of strings. This would be properly handled by the Taipy Studio preview:
 
 <h5>Images</h5>
 
-You can specify the image displayed by a [`image`](../gui/viselements/image.md) control in the
+You can specify the image displayed by a
+[`image`](../userman/gui/viselements/standard-and-blocks/image.md) control in the
 preview area by providing the path to the image file, relative to the root directory of the
 project:
 
@@ -161,7 +162,8 @@ of the Markdown file.
 
 ### Tabular values
 
-The [`table`](../gui/viselements/table.md) and  [`chart`](../gui/viselements/chart.md) controls
+The [`table`](../userman/gui/viselements/standard-and-blocks/table.md) and
+[`chart`](../userman/gui/viselements/standard-and-blocks/chart.md) controls
 can be previewed with relevant data, defined in the mock data file.
 
 <h5>Table values</h5>
@@ -279,7 +281,7 @@ Here is a list of warnings and errors detected by Taipy Studio:
 - Closing tag with unmatched tag id (UCTI).
   <p align="center">
     <img src="../images/diagnostics_ucti.png"/>
-  </p>    
+  </p>
 
 - Invalid property format (PE01).
 

@@ -50,13 +50,16 @@ watchdog = "==4.0.0"
 [dev-packages]
 black = "*"
 isort = "*"
-mkdocs = "*" 
+mkdocs = "*"
+mkdocs-autorefs = "*"
 mkdocs-include-markdown-plugin = "*"
 mkdocs-macros-plugin = "*"
 mkdocs-material = "*"
+mkdocs-material-extensions = "*"
 mkdocstrings = "*"
 mkdocstrings-python = "*"
 mypy = "*"
+requests = "*"
 
 [requires]
 python_version = "3"

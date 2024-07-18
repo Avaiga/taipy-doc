@@ -1,0 +1,52 @@
+Allows uploading a file content.
+
+The upload can be triggered by pressing a button, or drag-and-dropping a file on top of the control.
+
+# Styling
+
+All the file selector controls are generated with the "taipy-file_selector" CSS class. You can use this class
+name to select the file selector controls on your page and apply style.
+
+### [Stylekit](../../styling/stylekit.md) support
+
+The [Stylekit](../../styling/stylekit.md) provides a specific class that you can use to style file selectors:
+
+* *fullwidth*<br/>
+    If a file selector uses the *fullwidth* class, then it uses the whole available
+    horizontal space.
+
+# Usage
+
+## Default behavior
+
+The variable specified in _content_ is populated by a local filename when the transfer is completed.
+
+!!! taipy-element
+    default={content}
+
+## Standard configuration
+
+The [*label*](#p-label) property can be set to a label shown besides the standard icon.<br/>
+The function name provided as [*on_action*](#p-on_action) is called when the transfer is
+completed.<br/>
+The [*extensions*](#p-extensions) property can be used as a list of file name extensions that is
+used to filter the file selection box. This filter is not enforced: the user can select and upload
+any file.<br/>
+Upon dragging a file over the button, the value of the [*drop_message*](#p-drop_message) property
+is displayed as a temporary label for the button.
+
+!!! taipy-element
+    default={content}
+    label=Select File
+    on_action:f=function_name
+    extensions=.csv,.xlsx
+    drop_message=Drop Message
+
+## Multiple files upload
+
+The user can transfer multiple files at once by setting the [*multiple*](#p-multiple) property to
+True.
+
+!!! taipy-element
+    default={content}
+    multiple:b=True

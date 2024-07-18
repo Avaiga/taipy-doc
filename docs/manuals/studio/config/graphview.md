@@ -67,7 +67,7 @@ This row is split into two sections:
 
 To demonstrate the capabilities of the Graph View, we will create the configuration
 described in the
-[Python code configuration](../../core/config/advanced-config.md#python-code-configuration)
+[Python code configuration](../../userman/configuration/advanced-config.md#python-code-configuration)
 example, using the interactive features that Taipy Studio provides.<br/>
 Note that for the sake of conciseness, we will create a Scenario configuration that
 holds only one sequence. When you understand the process, you will see that creating other
@@ -106,7 +106,7 @@ Then, we will create the Data Node and Task configuration elements using the
 After the Task configuration and all three Data Node configurations are created,
 we connect the Out ports to the appropriate In ports by dragging links.
 
-Note how the Details section reflects the selected configuration element. 
+Note how the Details section reflects the selected configuration element.
 
 ### Creating the Scenario configuration
 

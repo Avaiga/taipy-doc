@@ -19,6 +19,8 @@ class Setup(ABC):
         self.root_dir = root_dir.replace("\\", "/")
         self.docs_dir = self.root_dir + "/docs"
         self.manuals_dir = self.docs_dir + "/manuals"
+        self.user_manuals_dir = self.manuals_dir + "/userman"
+        self.ref_manuals_dir = self.manuals_dir + "/refmans"
         self.tools_dir = self.root_dir + "/tools"
         # self.requested_steps, if not None, indicates which steps should be performed.
         self.requested_steps = None

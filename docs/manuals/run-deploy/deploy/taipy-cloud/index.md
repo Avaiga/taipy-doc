@@ -86,7 +86,7 @@ and secrets into your applications.
 
 - **Configuration**: Additionally, you have the option to modify the configuration of
 your Taipy application. This can be done by uploading or changing a
-[configuration](../../../core/versioning/configuration.md) TOML.
+[configuration](../../../userman/configuration/index.md) TOML.
 
 ## Step 5: Test Your App
 
