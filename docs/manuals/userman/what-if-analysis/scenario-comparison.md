@@ -59,12 +59,12 @@ Here is the
 corresponding to the example.
 
 
-## User define function
+## Comparator function
 
-User defined functions are used to compare scenarios on the data nodes (from the
-same configuration). The user defined function takes as input parameters the list
-of the data referred by the data nodes of each scenario to compare. The function
-returns a comparison results in a format that best suits the user needs.
+User defined functions are used as comparator to compare scenarios on the data nodes
+(from the same configuration). The user defined function takes as input parameters
+the list of the data referred by the data nodes of each scenario to compare. The
+function returns a comparison results in a format that best suits the user needs.
 
 In our example, a user function is defined to compare the scenarios on the sales
 predictions data node. The function `compare_revenue` computes the revenue based on

@@ -4,10 +4,10 @@ changes affect outcomes. It's essentially asking "What if?" questions and examin
 the results.
 
 # What is a Scenario?
-A `Scenario^` in Taipy represents an instance of a business problem. Among other features
-scenarios own data nodes. Two different scenarios can own two alternative data nodes
+A `Scenario^` in Taipy represents an instance of a business problem. Among other features,
+a scenario owns some data nodes. Two different scenarios can own two alternative data nodes
 (from the same `DataNodeConfig^`). This is particularly handy when you want to represent
-different situation, assumption or condition, and compare the data between them.
+different situations, assumptions or conditions, and compare the data between them.
 
 In addition to holding data nodes, *scenarios* can be attached to a `Cycle^` to manage
 recurring business cases. This is ideal for time-based analyses like monthly forecasts,
@@ -44,9 +44,9 @@ and instantiating new *scenarios* at runtime. Each *scenario* holding an alterna
 represents a different situation, assumption or condition, and as an end-user you can compare
 the different scenarios to understand the impact of various decisions, or events on your data.
 
-Here is the main principle:
+Here are the main principle:
 
-1. **Configuring data nodes**: The first step consist in configuring the data nodes that will be
+1. **Configuring data nodes**: The first step consists in configuring the data nodes that will be
     instantiated along with the scenarios. *Data nodes* are the building blocks of *scenarios*.
     They represent any data such as input datasets, parameters, intermediate data, kpis, results
     or output dataset. They are instantiated from `DataNodeConfig` objects.
