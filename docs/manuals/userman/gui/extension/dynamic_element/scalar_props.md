@@ -118,8 +118,8 @@ We can see how the *label* property of the control is bound to the Python variab
 When you run this application, the page displays the element like this:
 
 <figure>
-    <img src="../scalar1-d.png" class="visible-dark"  width="80%"/>
-    <img src="../scalar1-l.png" class="visible-light" width="80%"/>
+    <img src="./scalar1-d.png" class="visible-dark"  width="80%"/>
+    <img src="./scalar1-l.png" class="visible-light" width="80%"/>
     <figcaption>Colored Label</figcaption>
 </figure>
 
@@ -142,7 +142,7 @@ def on_action(state, id):
 If the user click the button a few times, this is what the page would look like:
 
 <figure>
-    <img src="../scalar2-d.png" class="visible-dark"  width="80%"/>
-    <img src="../scalar2-l.png" class="visible-light" width="80%"/>
+    <img src="./scalar2-d.png" class="visible-dark"  width="80%"/>
+    <img src="./scalar2-l.png" class="visible-light" width="80%"/>
     <figcaption>With trailing random characters</figcaption>
 </figure>
