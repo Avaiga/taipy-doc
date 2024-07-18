@@ -32,6 +32,7 @@ nav:
         - "4 - Scenario page": tutorials/fundamentals/3_complete_application/step_04/step_04.md
         - "5 - Performance page": tutorials/fundamentals/3_complete_application/step_05/step_05.md
       - "Creating an LLM ChatBot": tutorials/fundamentals/4_chatbot/index.md
+      - "Creating an RAG ChatBot": tutorials/fundamentals/5_rag_chatbot/index.md
     - "Visuals":
       - "Visuals": tutorials/visuals/index.md
       - "Callbacks in Taipy": tutorials/visuals/1_the_on_change_callback/index.md

@@ -69,21 +69,40 @@ We evaluated three different algorithms:
 
 Here is an example of code showing how to use the Min-Max Decimator:
 
-```python
-import yfinance as yf
-from taipy.gui import Gui
-from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
+=== "Markdown"
+    ```python
+    import yfinance as yf
+    from taipy.gui import Gui
+    from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
 
-df_AAPL = yf.Ticker("AAPL").history(interval="1d", period = "100Y")
-df_AAPL["DATE"] = df_AAPL.index.astype('int64').astype(float)
+    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period = "max")
+    df_AAPL["DATE"] = df_AAPL.index.astype('int64').astype(float)
 
-NOP = 500
-decimator_instance = MinMaxDecimator(n_out=NOP)
+    NOP = 500
+    decimator_instance = MinMaxDecimator(n_out=NOP)
 
-page = "<|{df_AAPL}|chart|x=DATE|y=Open|decimator=decimator_instance|>"
+    page = "<|{df_AAPL}|chart|x=DATE|y=Open|decimator=decimator_instance|>"
 
-Gui(page).run(title="Decimator")
-```
+    Gui(page).run(title="Decimator")
+    ```
+=== "Python"
+    ```python
+    import yfinance as yf
+    from taipy.gui import Gui
+    import taipy.gui.builder as tgb
+    from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
+
+    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period="max")
+    df_AAPL["DATE"] = df_AAPL.index.astype("int64").astype(float)
+
+    NOP = 500
+    decimator_instance = MinMaxDecimator(n_out=NOP)
+
+    with tgb.Page() as page:
+        tgb.chart("{df_AAPL}", x="DATE", y="Open", decimator="decimator_instance")
+
+    Gui(page).run(title="Decimator")
+    ```
 
 Let NOP be the desired number of points to be represented on the client side.
 
@@ -98,21 +117,40 @@ For each segment, only the original dataset's two extreme points (on the second 
 
 Here is an example of code showing how to use the LTTB Decimator:
 
-```python
-import yfinance as yf
-from taipy.gui import Gui
-from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
+=== "Markdown"
+    ```python
+    import yfinance as yf
+    from taipy.gui import Gui
+    from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
 
-df_AAPL = yf.Ticker("AAPL").history(interval="1d", period = "100Y")
-df_AAPL["DATE"] = df_AAPL.index.astype('int64').astype(float)
+    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period = "max")
+    df_AAPL["DATE"] = df_AAPL.index.astype('int64').astype(float)
 
-NOP = 500
-decimator_instance = MinMaxDecimator(n_out=NOP)
+    NOP = 500
+    decimator_instance = LTTB(n_out=NOP)
 
-page = "<|{df_AAPL}|chart|x=DATE|y=Open|decimator=decimator_instance|>"
+    page = "<|{df_AAPL}|chart|x=DATE|y=Open|decimator=decimator_instance|>"
 
-Gui(page).run(title="Decimator")
-```
+    Gui(page).run(title="Decimator")
+    ```
+=== "Python"
+    ```python
+    import yfinance as yf
+    from taipy.gui import Gui
+    import taipy.gui.builder as tgb
+    from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
+
+    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period="max")
+    df_AAPL["DATE"] = df_AAPL.index.astype("int64").astype(float)
+
+    NOP = 500
+    decimator_instance = LTTB(n_out=NOP)
+
+    with tgb.Page() as page:
+        tgb.chart("{df_AAPL}", x="DATE", y="Open", decimator="decimator_instance")
+
+    Gui(page).run(title="Decimator")
+    ```
 
 This algorithm is also referred to as "Largest Triangle Three Buckets".
 
@@ -126,21 +164,40 @@ LTTB implementations are available in Python.
 
 Here is an example of code showing how to use the Ramer-Douglas-Peucker Decimator:
 
-```python
-import yfinance as yf
-from taipy.gui import Gui
-from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
+=== "Markdown"
+    ```python
+    import yfinance as yf
+    from taipy.gui import Gui
+    from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
 
-df_AAPL = yf.Ticker("AAPL").history(interval="1d", period = "100Y")
-df_AAPL["DATE"] = df_AAPL.index.astype('int64').astype(float)
+    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period = "max")
+    df_AAPL["DATE"] = df_AAPL.index.astype('int64').astype(float)
 
-NOP = 500
-decimator_instance = RDP(n_out=NOP)
+    NOP = 500
+    decimator_instance = RDP(n_out=NOP)
 
-page = "<|{df_AAPL}|chart|x=DATE|y=Open|decimator=decimator_instance|>"
+    page = "<|{df_AAPL}|chart|x=DATE|y=Open|decimator=decimator_instance|>"
 
-Gui(page).run(title="Decimator")
-```
+    Gui(page).run(title="Decimator")
+    ```
+=== "Python"
+    ```python
+    import yfinance as yf
+    from taipy.gui import Gui
+    import taipy.gui.builder as tgb
+    from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
+
+    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period="max")
+    df_AAPL["DATE"] = df_AAPL.index.astype("int64").astype(float)
+
+    NOP = 500
+    decimator_instance = RDP(n_out=NOP)
+
+    with tgb.Page() as page:
+        tgb.chart("{df_AAPL}", x="DATE", y="Open", decimator="decimator_instance")
+
+    Gui(page).run(title="Decimator")
+    ```
 
 This algorithm uses an entirely different approach. It seeks "important" points in 
 the initial/large datasets. These important points are points that, if removed,  
