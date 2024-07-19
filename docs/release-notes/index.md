@@ -64,6 +64,11 @@ This is the list of changes to Taipy releases as they were published.
 - The `Scenario.export()` and `taipy.export_scenario()` have been transfered from the Community edition
   to the Enterprise edition as it is more suitable for enterprise applications.
 
+<h4><strong><code>taipy-templates</code></strong> 3.2.0 </h4>
+
+- The *--template* option of the `taipy create` command is now renamed to *--application* option
+  to correctly reflect the application template to use when creating a new Taipy application.
+
 ## Significant bug fixes
 
 <h4><strong><code>taipy-gui</code></strong> 3.2.0</h4>
