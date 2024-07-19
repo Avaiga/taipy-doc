@@ -5,8 +5,15 @@ data-keywords: optimization scenario cycle comparison enterprise
 short-description: Simulate manufacturing scenarios and optimize production quantities to reduce production costs.
 img: 3_production_planning/images/production-planning-data-visualization.png
 ---
-Optimizing resources to meet demand while minimizing costs is pivotal in manufacturing. This is why 
-production planning tools are mandatory in manufacturing.
+
+All manufacturers must generate a production plan over a given horizon (here, several 
+months). The objectives are to produce an optimized plan that respects the plant's 
+capacity constraints. The Optimization step ensures that the plan meets as much of the 
+demand as possible while minimizing production costs. 
+
+Although small, this example perfectly illustrates the basic requirements. The 
+application presented here can easily be extended to cater to more complex real use cases.
+
 
 !!! note "Taipy Enterprise edition"
 
