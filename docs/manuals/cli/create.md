@@ -3,7 +3,7 @@
 Taipy provides a comfortable environment for getting started with Taipy via the create command,
 and is the best way to start building a new application with Taipy.
 
-## From the default template
+## From the default application template
 
 To create a simple Taipy application, you can run `taipy create`, then answer a few questions to
 customize your application.
@@ -18,8 +18,8 @@ Does the application use Rest API? [No]:
 $ cd ./new_application
 $ taipy run app.py
 ```
-In this example, we scaffold a new application using the default Taipy template, which lets us
-create a simple, minimal Taipy application.
+In this example, we scaffold a new Taipy application using the default Taipy application template, which
+lets us create a simple, minimal Taipy application.
 
 
 !!! info
@@ -43,12 +43,13 @@ create a simple, minimal Taipy application.
 Finally, we changed the directory (`cd`) to our newly created folder and started the application
 by running `taipy run app.py`.
 
-## From a specific template
+## From a specific application template
 
-You can specify another template using the *--template* option.
+You can specify creating a new application from another application template using the
+*--application* option.
 
 ```console
-$ taipy create --template scenario-management
+$ taipy create --application scenario-management
 Application root folder name [taipy_application]: new_application
 Application main Python file [main.py]: app.py
 Application title [Default title]: App Title
@@ -61,20 +62,20 @@ In this example, we scaffold a new Taipy application using the "scenario-managem
 which utilizes [a scenario selector](./../userman/gui/viselements/corelements/scenario_selector.md) to allow
 creating, managing, and running scenarios directly from the GUI page.
 
-Please refer to the next section for a list of templates.
+Please refer to the next section for a list of application templates.
 
-## List of templates
+## List of application templates
 
-You can see the list of supported templates by running `taipy help create` command.
+You can see the list of supported application templates by running `taipy help create` command.
 Alternatively, you can use the *--help* or *-h* options by running `taipy create --help` or
 `taipy create -h`.
 
 ```console
 $ taipy help create
-usage: taipy create [-h] [--template {default,scenario-management,...}]
+usage: taipy create [-h] [--application {default,scenario-management,...}]
 
 options:
   -h, --help            show this help message and exit
-  --template {default,scenario-management,...}
-                        The Taipy template to create new application.
+  --application {default,scenario-management,...}
+                        The application template name to create a new Taipy application.
 ```

@@ -50,10 +50,10 @@ $ pip install statsmodels
 
 
 Once Taipy is installed, you can use the CLI to scaffold an application folder. Run the create
-command line with default template and answer basic questions as follows:
+command line with default application template and answer basic questions as follows:
 
 ``` console
-> taipy create --template default
+> taipy create --application default
 Application root folder name [taipy_application]:
 Application main Python file [main.py]:
 Application title [Taipy Application]:
