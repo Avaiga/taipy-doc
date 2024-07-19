@@ -5,11 +5,14 @@ data-keywords: ai scenario datanode dag configuration enterprise
 short-description: Perform sales forecasting for a renowned quick service restaurant (QSR) franchise.
 img: 3_qsr_sales_forecasting/images/forecast_page.png
 ---
-This demo is a scaled-down version of a production application using Taipy, which 
-performs sales forecasting for a renowned quick service restaurant (QSR) franchise. This 
-business problem involves time series forecasting for several core business activities of 
-the QSR, such as sales made on drinks or the number of transactions made at the front 
-counter.
+
+This demo is a scaled-down version of a real application using Taipy, which performs 
+sales forecasting for a renowned quick-service restaurant (QSR) franchise. This business 
+problem involves time series forecasting for several drivers (number of items sold, 
+revenue, number of transactions, etc.) for different store sections (drive-thru, counter, café 
+corner, etc.). High-quality sales forecasts are generated using powerful AI models and 
+various data sources. This demo can easily be extended to reflect specific store 
+requirements.
 
 !!! note "Taipy Enterprise edition"
 
