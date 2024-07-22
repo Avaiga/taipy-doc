@@ -209,7 +209,7 @@ nav:
     - "Reference":
       - "About Taipy's Reference Manuals": manuals/refmans/index.md
       - "Python API":
-        - "Taipy Python API packages": manuals/refmans/reference/index.md
+        - "Python APIs": manuals/refmans/reference/index.md
         [REFERENCE_CONTENT]
       - "REST API":
         - "Taipy's REST APIs": manuals/refmans/reference_rest/index.md
