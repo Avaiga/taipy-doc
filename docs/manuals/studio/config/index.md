@@ -19,8 +19,6 @@ Taipy Studio stores those configurations in TOML files. These files can be used 
 runtime by Taipy applications as described in the
 [note on Studio](../../userman/configuration/advanced-config.md#studio).
 
-## Introduction
-
 Taipy Studio has a dedicated panel called **Taipy Configs**, where almost everything
 happens. To open this panel, use the "View > Open View..." menu option and search
 for the view called "Taipy Configs".

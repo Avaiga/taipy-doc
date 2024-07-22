@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 Developing an application in Taipy often requires changing the configuration multiple times.
 Data from a previous run are incompatible with the configuration changes. They should then be
 deleted to try the new configuration version.

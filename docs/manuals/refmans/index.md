@@ -1,5 +1,7 @@
-# About Taipy's Reference Manuals
-
+---
+hide:
+    - toc
+---
 Taipy exposes different application programming interfaces (API) that can be used for different
 purposes.
 

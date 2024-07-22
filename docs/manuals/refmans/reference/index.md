@@ -1,5 +1,7 @@
-# Taipy Python API packages
-
+---
+hide:
+    - toc
+---
 Taipy is made of different Python packages.
 
 The API reference for Taipy is therefore split into several sections.

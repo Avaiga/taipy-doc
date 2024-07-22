@@ -1,7 +1,6 @@
 The `JobConfig^` allows the developer to configure the Taipy behavior for job executions.
 Three modes are available in Taipy: *standalone*, *development*, and *cluster*.
 
-
 # Development mode
 
 With the *development* mode, the jobs are synchronously executed one by one. The jobs are

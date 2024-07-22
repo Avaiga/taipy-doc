@@ -1,4 +1,7 @@
-# Authentication and Authorization
+---
+hide:
+  - toc
+---
 
 !!! warning "Available in Taipy Enterprise edition"
 

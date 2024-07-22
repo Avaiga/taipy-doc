@@ -1,3 +1,7 @@
+---
+hide:
+    - toc
+---
 Deploying your Taipy application on your local machine is an occasional use case that can be
 considered if you want to temporarily expose an application for remote users over the Internet.
 

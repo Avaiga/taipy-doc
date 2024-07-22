@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 Taipy user interfaces can be served by external servers. This happens in situations
 where you already have a web application running, and you want to add the GUI capabilities
 of Taipy to it.

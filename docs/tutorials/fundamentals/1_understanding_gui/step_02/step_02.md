@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 [Download Step 2](./../src/step_02.zip){: .tp-btn target='blank' }
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
@@ -13,9 +18,7 @@ pages: [Markdown](../../../../manuals/userman/gui/pages/markdown.md),
 [Python code](../../../../manuals/userman/gui/pages/builder.md). You can choose which you want
 to learn in the code snippets below.
 
-## Visual elements
-
-Taipy uses the **[visual element](../../../../manuals/userman/gui/viselements/index.md)**
+Taipy uses the [visual element](../../../../manuals/userman/gui/viselements/index.md)
 concept to bring interactivity to the application. A visual element is a
 Taipy graphical object displayed on the client. It can be a
 [slider](../../../../manuals/userman/gui/viselements/generic/slider.md), a

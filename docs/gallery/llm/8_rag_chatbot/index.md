@@ -4,9 +4,11 @@ category: llm
 data-keywords: vizelement ai community
 short-description: A chatbot to ask questions about pdf files using RAG
 img: 8_rag_chatbot/images/rag_screen.png
+hide:
+    - toc
 ---
-This demo showcases Taipy's ability to enable end-users to run inference using LLMs. 
-Here, we use Langchain to query Mistral's LLM model hosted on HuggingFace to ask questions 
+This demo showcases Taipy's ability to enable end-users to run inference using LLMs.
+Here, we use Langchain to query Mistral's LLM model hosted on HuggingFace to ask questions
 about PDF files using RAG.
 
 [Get it on GitHub](https://github.com/Avaiga/demo-gpt-4o/tree/rag){: .tp-btn .tp-btn--accent target='blank' }
@@ -20,5 +22,5 @@ the Taipy interface. This project uses Langchain to query Mistral's LLM model ho
 ![RAG Screenshot](images/rag_screen.png){width=100% : .tp-image-border }
 
 A tutorial on how to write similar
-LLM inference applications is available 
+LLM inference applications is available
 [here](../../../tutorials/fundamentals/4_chatbot/index.md).

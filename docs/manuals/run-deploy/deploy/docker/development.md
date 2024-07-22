@@ -1,10 +1,10 @@
-## Prerequisites
+# Prerequisites
 
 - Minimal knowledge of Docker.
 - Docker must be installed. Check [the official documentation](https://docs.docker.com/engine/install/) for docker installation.
 - Docker-compose must be installed. Check [the official documentation](https://docs.docker.com/compose/install/) for docker-compose installation.
 
-## Development Dockerfile
+# Development Dockerfile
 
 The following example allows you to run your application for development purpose inside a Docker container.
 
@@ -63,7 +63,7 @@ docker rmi my-taipy-app
 ```
 
 
-## Simplify build with docker-compose
+# Simplify build with docker-compose
 
 You can also wrap your build and run steps with `docker-compose`.
 

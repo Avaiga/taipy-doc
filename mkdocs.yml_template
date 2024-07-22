@@ -158,12 +158,12 @@ nav:
       - "Using Notebooks": manuals/userman/notebooks.md
 
     - "Command-line interface":
-      - "Command-line interface": manuals/cli/index.md
-      - "help": manuals/cli/help.md
-      - "create": manuals/cli/create.md
-      - "run": manuals/cli/run.md
-      - "manage-versions": manuals/cli/manage-versions.md
-      - "version": manuals/cli/version.md
+      - "Command-line interface (CLI)": manuals/cli/index.md
+      - "Help": manuals/cli/help.md
+      - "Create": manuals/cli/create.md
+      - "Run": manuals/cli/run.md
+      - "Manage versions": manuals/cli/manage-versions.md
+      - "Version": manuals/cli/version.md
 
     - "Running & deploying":
       - "Running and deploying Taipy applications": manuals/run-deploy/index.md
@@ -183,7 +183,7 @@ nav:
         - "On Windows Server":
           - "Deploying on Windows Server": manuals/run-deploy/deploy/windows/index.md
         - "Using Docker":
-          - manuals/run-deploy/deploy/docker/index.md
+          - "Deploying using Docker": manuals/run-deploy/deploy/docker/index.md
           - "For development": manuals/run-deploy/deploy/docker/development.md
           - "For production": manuals/run-deploy/deploy/docker/production.md
         - "On Azure":
@@ -207,12 +207,12 @@ nav:
       - "GUI Markdown support": manuals/studio/gui.md
 
     - "Reference":
-      - manuals/refmans/index.md
+      - "About Taipy's Reference Manuals": manuals/refmans/index.md
       - "Python API":
-        - manuals/refmans/reference/index.md
+        - "Python APIs": manuals/refmans/reference/index.md
         [REFERENCE_CONTENT]
       - "REST API":
-        - manuals/refmans/reference_rest/index.md
+        - "REST APIs": manuals/refmans/reference_rest/index.md
         [REST_REFERENCE_CONTENT]
       - "GUI Extension API":
         - manuals/refmans/reference_guiext/index.md
@@ -235,7 +235,7 @@ nav:
       - "Drift Detection": gallery/decision_support/drift_detection/index.md
     - "LLM":
       - "LLM": gallery/llm/index.md
-      - "Creating an LLM Chatbot" : gallery/llm/5_chatbot/index.md
+      - "LLM Chatbot" : gallery/llm/5_chatbot/index.md
       - "TalkToTaipy" : gallery/llm/6_talk_to_taipy/index.md
       - "Vision ChatBot": gallery/llm/7_vision_chatbot/index.md
       - "RAG ChatBot": gallery/llm/8_rag_chatbot/index.md
@@ -244,7 +244,7 @@ nav:
     - "Visualization":
       - "Visualization": gallery/visualization/index.md
       - "COVID Dashboard": gallery/visualization/2_covid_dashboard/index.md
-      - "US Industry Distribution": gallery/visualization/7_industry_agglom/index.md
+      - "Industry Distribution": gallery/visualization/7_industry_agglom/index.md
       - "Image Classification": gallery/visualization/image_classif/index.md
       - "Realtime Pollution Dashboard" : gallery/visualization/pollution_sensors/index.md
     - "Other":

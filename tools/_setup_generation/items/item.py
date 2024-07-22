@@ -56,7 +56,7 @@ class Item:
         lines.append(f'    </a>')
         lines.append(f'  </li>')
         return "\n".join(lines)
-    
+
 
     def _read_header(self, file: TextIO) -> Dict[str, str]:
         """Read a multiline header starting with '---' and ending with '---'."""
@@ -66,7 +66,13 @@ class Item:
             raise NoHeader(f"No header found in {self.file_path}")
         line = file.readline()
         while line.strip() != "---":
+            if ":" not in line:
+                line = file.readline()
+                continue
             k, v = self._split_header_line(line)
+            if not k or not v:
+                line = file.readline()
+                continue
             if k in header_content:
                 raise WrongHeader(f"Duplicate key '{k}' in {self.file_path} header.")
             header_content[k] = v
@@ -76,8 +82,12 @@ class Item:
     @staticmethod
     def _split_header_line(header_line: str) -> (str, str):
         """Split a header line to a key and value pair."""
-        key, value = header_line.split(":")
-        return key.strip(), value.strip()
+        split_line = header_line.split(":")
+        if len(split_line) == 2:
+            key, value = split_line
+            return key.strip(), value.strip()
+        return "", ""
+
 
     def _check_header(self):
         """Check the header content."""

@@ -1,7 +1,5 @@
-# REST APIs
-The Taipy REST package is a python library made to provide a REST server on top of
-the scenario and data management features. The purpose is to automate the use of
-these features by exposing REST APIs.
+Taipy offers a service providing a REST API on top of the scenario and data management
+features. The purpose is to automate the use of these features by exposing REST APIs.
 
 The Taipy REST APIs allows users to create, read, update, run and remove Taipy entities
 (including cycles, scenarios, sequences, tasks, jobs and data nodes) through REST APIs.
@@ -11,7 +9,7 @@ For more details about Taipy entities, please refer to
 It is particularly useful when it comes to integrating a Taipy application in a more complex IT
 ecosystem.
 
-## Running Taipy REST server
+# Running Taipy REST server
 
 To expose the Taipy REST APIs, the Taipy REST server must first be started.
 
@@ -58,7 +56,7 @@ To expose the Taipy REST APIs, the Taipy REST server must first be started.
     To run the Taipy REST service with the other Taipy services, please refer to the
     [taipy.run() function](../../run-deploy/run/running_services.md) page.
 
-## Using Taipy REST APIs
+# Using Taipy REST APIs
 
 Once your Taipy REST server is up and running, the REST APIs are exposed. Any REST client can be
 used to make some HTTP requests to the various APIs exposed. The exhaustive list of APIs is

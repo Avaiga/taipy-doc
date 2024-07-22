@@ -4,6 +4,8 @@ category: llm
 data-keywords: vizelement ai community
 short-description: A simple chatbot to talk and send images to GPT-4o
 img: 7_vision_chatbot/images/gpt4o_screen.png
+hide:
+    - toc
 ---
 This demo showcases Taipy's ability to enable end-users to run inference using LLMs. Here, we
 use GPT-4o to create a chatbot and display the conversation in an interactive chat interface.
@@ -21,5 +23,5 @@ but it can also analyse images that the user sends.
 ![ChatBot](images/gpt4o_screen.png){width=100% : .tp-image-border }
 
 A tutorial on how to write similar
-LLM inference applications is available 
+LLM inference applications is available
 [here](../../../tutorials/fundamentals/4_chatbot/index.md).

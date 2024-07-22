@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 The Taipy manuals are split into five categories:
 
 - [**User Manual**](userman/index.md): this manual provides information on how to use different

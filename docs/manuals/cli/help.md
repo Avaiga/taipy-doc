@@ -1,5 +1,7 @@
-# Help
-
+---
+hide:
+  - toc
+---
 A list of available commands provided by Taipy is shown by running the `taipy`, or `taipy help`,
 or `taipy --help` command.
 

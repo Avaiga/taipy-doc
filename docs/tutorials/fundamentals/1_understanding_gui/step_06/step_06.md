@@ -5,60 +5,65 @@
 We'll introduce three new helpful controls to enhance the page's visual appeal. These controls are:
 
 - [part](../../../../manuals/userman/gui/viselements/generic/part.md): creates a group of text/visual elements.
-A useful property of `part` is *render*. If set to False, it will not display the part.
-This allows the developer to hide a group of visual elements dynamically.
+    A useful property of `part` is *render*. If set to False, it will not display the part.
+    This allows the developer to hide a group of visual elements dynamically.
 
-=== "Markdown"
-    ```
-    <|part|render={bool_variable}|
-    Text
-    Or visual elements...
-    |>
-    ```
-=== "Python"
-    ```python
-    ...
-    with tgb.part(render="{bool_variable}"):
-        tgb.text(...)
-        # Or visual elements...
-    ```
+    === "Markdown"
+
+        ```
+        <|part|render={bool_variable}|
+        Text
+        Or visual elements...
+        |>
+        ```
+
+    === "Python"
+
+        ```python
+        ...
+        with tgb.part(render="{bool_variable}"):
+            tgb.text(...)
+            # Or visual elements...
+        ```
 
 - [layout](../../../../manuals/userman/gui/viselements/generic/layout.md): creates invisible columns where you
-can put your texts and visual elements. The *columns* property indicates the width and number
-of columns. Here, we create three columns of the same width.
+    can put your texts and visual elements. The *columns* property indicates the width and number
+    of columns. Here, we create three columns of the same width.
 
-=== "Markdown"
-    ```
-    <|layout|columns=1 1 1|
-    Button in first column <|Press|button|>
+    === "Markdown"
 
-    Second column
+        ```
+        <|layout|columns=1 1 1|
+        Button in first column <|Press|button|>
 
-    Third column
-    |>
-    ```
-=== "Python"
-    ```python
-     with tgb.layout("1 1 1"):
-        with tgb.part(render="{bool_variable}"):
-            tgb.text("Button in first column")
-            tgb.buttton("Press")
+        Second column
 
-        tgb.text("Second column")
+        Third column
+        |>
+        ```
 
-        tgb.text("Third column")
-    ```
+    === "Python"
 
-    ![Layout](images/layout.png){ width=70% : .tp-image-border }
+        ```python
+        with tgb.layout("1 1 1"):
+            with tgb.part(render="{bool_variable}"):
+                tgb.text("Button in first column")
+                tgb.buttton("Press")
 
+            tgb.text("Second column")
+
+            tgb.text("Third column")
+        ```
+
+        ![Layout](images/layout.png){ width=70% : .tp-image-border }
 
 - [expandable](../../../../manuals/userman/gui/viselements/generic/expandable.md): creates a block that can
-expand or shrink.
+    expand or shrink.
 
     ![expandable](images/expandable.png){ width=70% : .tp-image-border }
 
 
-## Back to the code
+Let's get back to the code:
 
 === "Markdown"
     ```python

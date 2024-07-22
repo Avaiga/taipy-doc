@@ -1,3 +1,7 @@
+---
+hide:
+    - toc
+---
 The **Config Files** section holds the list of configuration files (`*.toml`) in your
 project. You will select the one you want to edit from that list.<br/>
 This list shows the base names of all the configuration files. If two configuration files
