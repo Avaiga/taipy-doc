@@ -110,7 +110,7 @@ The *comparison_scenario* DataFrame stores the comparison data, while *metric_se
 
 - **Compare Function**:
 
-The `compare` function takes care of the comparison process. This function is triggered when the user clicks
+The function *compare()* takes care of the comparison process. This function is triggered when the user clicks
 the "Compare" button. It gathers the primary scenarios from the application and then goes through each scenario
 to collect the RMSE and MAE metrics for both baseline and machine learning predictions.
 
