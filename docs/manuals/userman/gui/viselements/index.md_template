@@ -51,9 +51,9 @@ Here is the list of all the scenario management-related controls that are availa
 [core_controls_TOC]
 
 
-# Blocks controls
+# Block elements
 
-Blocks are visual elements that allow for grouping user interface elements.
+Blocks are visual elements that allow for grouping user interface elements.<br/>
 Here is the list of all available block elements in Taipy:
 
 [blocks_TOC]

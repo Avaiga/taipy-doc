@@ -391,7 +391,7 @@ The same technique can be used to customize CSS classes based on the theme:
 
 The Stylekit defines a few CSS classes that provide widely used styles for sections.<br/>
 Although these can be used for any visual element, they are typically applied to the
-[*part*](../viselements/standard-and-blocks/part.md) and [*layout*](../viselements/standard-and-blocks/layout.md) block element types.
+[*part*](../viselements/generic/part.md) and [*layout*](../viselements/generic/layout.md) block element types.
 
 These allow for making blocks stand out in pages, or be physically constrained at specific locations
 with specific sizes.
@@ -411,7 +411,7 @@ The maximum width of that container is set by the [*--container-max-width*](#p-c
 custom property. Feel free to override this property in your stylesheets to adapt it to your own
 needs.
 
-Here is an example of the *container* class applied to a [`part`](../viselements/standard-and-blocks/part.md) block.
+Here is an example of the *container* class applied to a [`part`](../viselements/generic/part.md) block.
 In this example, we would have defined the additional class:
 ```css
 .container-bg {
@@ -434,7 +434,7 @@ Then the result will look like this:
   <figcaption>The <i>container</i> section style</figcaption>
 </figure>
 
-Note that we leverage the Markdown syntax to create a [`part`](../viselements/standard-and-blocks/part.md) block:
+Note that we leverage the Markdown syntax to create a [`part`](../viselements/generic/part.md) block:
 
 - The default block element type name is "part", so it can be removed from the opening
   element syntax. This allows to write `<|container container-bg|` instead of
@@ -476,8 +476,8 @@ Here is how the page would be rendered:
 
 ## `header`
 
-The *header* class can be applied on a [`layout`](../viselements/standard-and-blocks/layout.md) or a
-[`part`](../viselements/standard-and-blocks/part.md) block to make it stand out from the content as an elevated bar.
+The *header* class can be applied on a [`layout`](../viselements/generic/layout.md) or a
+[`part`](../viselements/generic/part.md) block to make it stand out from the content as an elevated bar.
 
 *header* does not define any padding. If you need to tune the spacing of the elements
 that appear in the styled section, you can use the [spacing classes](#spacing_1).

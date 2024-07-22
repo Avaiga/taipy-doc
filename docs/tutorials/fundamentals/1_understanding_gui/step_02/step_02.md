@@ -21,11 +21,11 @@ to learn in the code snippets below.
 Taipy uses the [visual element](../../../../manuals/userman/gui/viselements/index.md)
 concept to bring interactivity to the application. A visual element is a
 Taipy graphical object displayed on the client. It can be a
-[slider](../../../../manuals/userman/gui/viselements/standard-and-blocks/slider.md), a
-[chart](../../../../manuals/userman/gui/viselements/standard-and-blocks/chart.md), a
-[table](../../../../manuals/userman/gui/viselements/standard-and-blocks/table.md), an
-[input](../../../../manuals/userman/gui/viselements/standard-and-blocks/input.md), a
-[menu](../../../../manuals/userman/gui/viselements/standard-and-blocks/menu.md), etc.
+[slider](../../../../manuals/userman/gui/viselements/generic/slider.md), a
+[chart](../../../../manuals/userman/gui/viselements/generic/chart.md), a
+[table](../../../../manuals/userman/gui/viselements/generic/table.md), an
+[input](../../../../manuals/userman/gui/viselements/generic/input.md), a
+[menu](../../../../manuals/userman/gui/viselements/generic/menu.md), etc.
 Check the complete list
 [here](../../../../manuals/userman/gui/viselements/index.md).
 
@@ -45,7 +45,7 @@ Every visual element follows a similar syntax:
     Taipy intelligently adjusts only the necessary elements of the GUI to reflect
     changes, ensuring a responsive and performance-optimized user experience.
 
-For example, a [slider](../../../../manuals/userman/gui/viselements/standard-and-blocks/slider.md) is written this way :
+For example, a [slider](../../../../manuals/userman/gui/viselements/generic/slider.md) is written this way :
 
 
 === "Markdown"

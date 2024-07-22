@@ -154,7 +154,7 @@ for adding navigation to your multi-page application, making it more user-friend
 ![The navbar](images/multipage_application_9.gif){width=50% : .tp-image-border }
 
 One straightforward technique to make your application's navigation more appealing is by utilizing
-the Taipy [`navbar`](../../../manuals/userman/gui/viselements/standard-and-blocks/navbar.md) control. To incorporate the
+the Taipy [`navbar`](../../../manuals/userman/gui/viselements/generic/navbar.md) control. To incorporate the
 navbar into the home page, all you need to do is add a single line to the beginning of the
 *home_md* page definition:
 
@@ -211,7 +211,7 @@ Part 2 of this Taipy multi-page series.
 
 The `navigate()^` function is self-explanatory in its purpose, it is used to navigate to
 other pages. For example, this is a code snippet of the `navigate()^` function being used to
-navigate to the *home* page when the [button](../../../manuals/userman/gui/viselements/standard-and-blocks/button.md)
+navigate to the *home* page when the [button](../../../manuals/userman/gui/viselements/generic/button.md)
 control is clicked:
 
 ```python
@@ -236,9 +236,9 @@ in the application beyond what the navbar offers. For example, we can manage:
     by using navigate in [on_exception](../../../manuals/userman/gui/callbacks.md#exception-handling).
 
 If you prefer, you can replicate the functionality of the *navbar* using the `navigate()^` feature
-with a different control, like a [selector](../../../manuals/userman/gui/viselements/standard-and-blocks/selector.md)
-control or [tree](../../../manuals/userman/gui/viselements/standard-and-blocks/tree.md) control. In this example, let's
-combine the `navigate` feature with the [menu](../../../manuals/userman/gui/viselements/standard-and-blocks/menu.md) control
+with a different control, like a [selector](../../../manuals/userman/gui/viselements/generic/selector.md)
+control or [tree](../../../manuals/userman/gui/viselements/generic/tree.md) control. In this example, let's
+combine the `navigate` feature with the [menu](../../../manuals/userman/gui/viselements/generic/menu.md) control
 (a collapsible side panel) to create the following app:
 
 ![The navigate function](images/multipage_application_11.gif){width=50% : .tp-image-border }
@@ -274,7 +274,7 @@ We define two properties for the menu control:
 1. `lov={page_names}`: The list of values which may be selected from the menu.
     In this case, we interpolate the *page_names* variable, which we then assign the keys from
     *pages* (other than "/") — functionally equivalent to `page_names = ["home", "temperature"]`.
-    Refer to the [menu](../../../manuals/userman/gui/viselements/standard-and-blocks/menu.md) for more details, such as for
+    Refer to the [menu](../../../manuals/userman/gui/viselements/generic/menu.md) for more details, such as for
     setting icons and labels.
 2. `on_action=menu_action`: Assigns the `menu_action` function as the callback function which is
     executed when the user clicks an item from the menu.

@@ -17,8 +17,8 @@ for reading and writing.
 
 # Variable value change
 
-Some controls (such as [`input`](viselements/standard-and-blocks/input.md) or
-[`slider`](viselements/standard-and-blocks/slider.md))
+Some controls (such as [`input`](viselements/generic/input.md) or
+[`slider`](viselements/generic/slider.md))
 let the user modify the value they hold.
 In order to control what that _new value_ is and decide whether to use
 it as such, a callback function is called in the application when the user

@@ -1,4 +1,4 @@
-Displays a label on a red to green scale at a specific position.
+Displays a label on a red-to-green scale at a specific position.
 
 The *min* value **can** be greater than the *max* value.<br/>
 The value will be maintained between min and max.

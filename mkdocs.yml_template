@@ -254,7 +254,7 @@ nav:
       - "Movie Genre Selector": gallery/other/movie_genre_selector/index.md
 
   - "Release Notes":
-    - "Release Notes": release/index.md
+    - "Release Notes": release-notes/index.md
 
   - "Contributing":
     - "Contributing to Taipy": contributing/index.md

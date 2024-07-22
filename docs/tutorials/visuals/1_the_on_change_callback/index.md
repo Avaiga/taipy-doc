@@ -38,9 +38,9 @@ Local callbacks are functions that are bound to a specific
 This function then gets called when the user interacts with that control.
 For instance, in Taipy, this may happen when a user:
 
-1. Drags a [slider](../../../manuals/userman/gui/viselements/standard-and-blocks/slider.md) control to select some number;
-2. Selects a date using the [date](../../../manuals/userman/gui/viselements/standard-and-blocks/date.md) control; or
-3. Selects an item from the [selector](../../../manuals/userman/gui/viselements/standard-and-blocks/selector.md) control
+1. Drags a [slider](../../../manuals/userman/gui/viselements/generic/slider.md) control to select some number;
+2. Selects a date using the [date](../../../manuals/userman/gui/viselements/generic/date.md) control; or
+3. Selects an item from the [selector](../../../manuals/userman/gui/viselements/generic/selector.md) control
 
 ![Example 1](images/callbacks_demo_fahrenheit_to_celsius_cropped-1.gif){width=40% : .tp-image-border }
 
