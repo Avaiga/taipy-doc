@@ -106,7 +106,9 @@ performance = Markdown("pages/performance/performance.md")
 - **Global Variables**:
 
 The variables *comparison_scenario*, *metric_selector*, and *selected_metric* are initialized.
-The *comparison_scenario* DataFrame stores the comparison data, while *metric_selector* holds the options for the metric selector. *selected_metric* is initialized with the default metric, which is the first element of the *metric_selector* list (RMSE).
+The *comparison_scenario* DataFrame stores the comparison data, while *metric_selector* holds
+the options for the metric selector. *selected_metric* is initialized with the default metric,
+which is the first element of the *metric_selector* list (RMSE).
 
 - **Compare Function**:
 
