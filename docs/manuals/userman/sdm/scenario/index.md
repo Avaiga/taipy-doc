@@ -290,7 +290,7 @@ following parameters:
     The default value is "name". If an incorrect sorting key is provided, the scenarios are sorted
     by name.
 - *created_start_time* represents the optional inclusive start date to filter scenarios by creation date.
-- *created_end_time* represents the optional inclusive end date to filter scenarios by creation date.
+- *created_end_time* represents the optional exclusive end date to filter scenarios by creation date.
 
 !!! note
 
@@ -321,7 +321,7 @@ cycles. The list of primary scenarios can be sorted and filtered using the follo
     The default value is "name". If an incorrect sorting key is provided, the scenarios are sorted
     by name.
 - *created_start_time* represents the optional inclusive start date to filter scenarios by creation date.
-- *created_end_time* represents the optional inclusive end date to filter scenarios by creation date.
+- *created_end_time* represents the optional exclusive end date to filter scenarios by creation date.
 
 # Promote a scenario as primary
 
