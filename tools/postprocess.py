@@ -413,7 +413,7 @@ def on_post_build(env):
                                 chart_part = "../" if element_category == "chart" else ""
                                 repl += f"<li><a href=\"{chart_part}../..\"><b>Visual Elements</b></a></li>"
                                 if element_category == "blocks":
-                                    repl += f"<li><a href=\"{chart_part}../..#blocks-controls\"><b>Blocks</b></a></li>"
+                                    repl += f"<li><a href=\"{chart_part}../..#block-elements\"><b>Blocks</b></a></li>"
                                 else:
                                     repl += f"<li><a href=\"{chart_part}../..#standard-controls\"><b>Standard controls</b></a></li>"
                                     if chart_part:

@@ -44,20 +44,20 @@ Published on 2023-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.3.0
 
-- The [`table`](../manuals/userman/gui/viselements/standard-and-blocks/table.md) and
-- [`chart`](../manuals/userman/gui/viselements/standard-and-blocks/chart.md)
+- The [`table`](../manuals/userman/gui/viselements/generic/table.md) and
+- [`chart`](../manuals/userman/gui/viselements/generic/chart.md)
   controls have a new property called *rebuild* that allows for modifying the control configuration
   at runtime, using properties that are *not* dynamic.<br/>
   See the details in the specific documentation sections for
-  [tables](../manuals/userman/gui/viselements/standard-and-blocks/table.md#the-rebuild-property) and
-  [charts](../manuals/userman/gui/viselements/standard-and-blocks/chart.md#the-rebuild-property).
-- The [`part` block](../manuals/userman/gui/viselements/standard-and-blocks/part.md) now accepts any URL as a value for the
-  [*page* property](../manuals/userman/gui/viselements/standard-and-blocks/part.md#p-page). You can then integrate any external
-  web page as demonstrated in [this example](../manuals/userman/gui/viselements/standard-and-blocks/part.md#part-showing-a-page).
+  [tables](../manuals/userman/gui/viselements/generic/table.md#the-rebuild-property) and
+  [charts](../manuals/userman/gui/viselements/generic/chart.md#the-rebuild-property).
+- The [`part` block](../manuals/userman/gui/viselements/generic/part.md) now accepts any URL as a value for the
+  [*page* property](../manuals/userman/gui/viselements/generic/part.md#p-page). You can then integrate any external
+  web page as demonstrated in [this example](../manuals/userman/gui/viselements/generic/part.md#part-showing-a-page).
   <br/>
   To better control the layout of external pages, a new
-  [*height* property](../manuals/userman/gui/viselements/standard-and-blocks/part.md#p-height) has been added to the
-  [`part`](../manuals/userman/gui/viselements/standard-and-blocks/part.md) element.
+  [*height* property](../manuals/userman/gui/viselements/generic/part.md#p-height) has been added to the
+  [`part`](../manuals/userman/gui/viselements/generic/part.md) element.
 - The `navigate()^` function has an additional parameter called *force* that, when set to True,
   re-renders the page (set to the *to* parameter). This allows to force the evaluation of bound
   variables in complex dependencies situations.
@@ -101,10 +101,10 @@ Published on 2023-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.3.2
 
-- Multi-line [input](../manuals/userman/gui/viselements/standard-and-blocks/input.md) controls accept the Shift+Enter combination
+- Multi-line [input](../manuals/userman/gui/viselements/generic/input.md) controls accept the Shift+Enter combination
   to create a new line.<br/>
   See [issue #824](https://github.com/Avaiga/taipy-gui/issues/824).
-- [Table](../manuals/userman/gui/viselements/standard-and-blocks/table.md) filters adapt to a change of the visible columns.<br/>
+- [Table](../manuals/userman/gui/viselements/generic/table.md) filters adapt to a change of the visible columns.<br/>
   See [issue #822](https://github.com/Avaiga/taipy-gui/issues/822).
 
 2.3.0
@@ -135,10 +135,10 @@ Published on 2023-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.3.0
 
-- The removal of all the [`table`](../manuals/userman/gui/viselements/standard-and-blocks/table.md) filters has no immediate effect.
+- The removal of all the [`table`](../manuals/userman/gui/viselements/generic/table.md) filters has no immediate effect.
   <br/>
   See [issue #667](https://github.com/Avaiga/taipy-gui/issues/667).
-- Styling of the [`pane` block](../manuals/userman/gui/viselements/standard-and-blocks/pane.md) was not applied properly.<br/>
+- Styling of the [`pane` block](../manuals/userman/gui/viselements/generic/pane.md) was not applied properly.<br/>
   See [issue #766](https://github.com/Avaiga/taipy-gui/issues/766).
 - Some notifications (see `notify()^`) could be missed when there were too many in a small period
   of time.<br/>
@@ -183,7 +183,7 @@ Published on 2023-04.
   style. This is called the [Stylekit](../manuals/userman/gui/styling/stylekit.md).<br/>
   The Stylekit can be easily customized to fit your application design's
   requirements.
-- The [`table`](../manuals/userman/gui/viselements/standard-and-blocks/table.md) and [`chart`](../manuals/userman/gui/viselements/standard-and-blocks/chart.md)
+- The [`table`](../manuals/userman/gui/viselements/generic/table.md) and [`chart`](../manuals/userman/gui/viselements/generic/chart.md)
   controls have a new property called *rebuild* that can be used if you need to entirely change the
   data they rely on, including their structure.
 
@@ -192,13 +192,13 @@ Published on 2023-04.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.2.0
 
-- The default property name for the [`part` block](../manuals/userman/gui/viselements/standard-and-blocks/part.md)
+- The default property name for the [`part` block](../manuals/userman/gui/viselements/generic/part.md)
   was changed from *render* to *class_name* to allow for directly using the
   style classes from the [Stylekit](../manuals/userman/gui/styling/stylekit.md).<br/>
   Please check the section on
   [Styled Sections](../manuals/userman/gui/styling/stylekit.md#styled-sections) for
   more information.
-- The [`expandable` block](../manuals/userman/gui/viselements/standard-and-blocks/expandable.md) has a new property
+- The [`expandable` block](../manuals/userman/gui/viselements/generic/expandable.md) has a new property
   called *on_change* enabling to set a specific callback when the block is expanded
   or collapsed.
 - Better error messages when parsing Markdown content.
@@ -206,7 +206,7 @@ Published on 2023-04.
   on a generated Python Interface Definition file.
 - The *status* entry point now provides information about the loaded element libraries and
   the elements they define.
-- The `navigate()^` function and the *page* property of the [`part` block](../manuals/userman/gui/viselements/standard-and-blocks/part.md)
+- The `navigate()^` function and the *page* property of the [`part` block](../manuals/userman/gui/viselements/generic/part.md)
   can now use, as their target, any URL. In the context of a `part` block, the page will be rendered
   in an *iframe*.<br/>
   See [issue #621](https://github.com/Avaiga/taipy-gui/issues/621).
@@ -219,7 +219,7 @@ Published on 2023-04.
 - Bound variable scope issues fixed when used by elements defined at the root page
   level.<br/>
   See [issue #583](https://github.com/Avaiga/taipy-gui/issues/583).
-- Filters management fixed in the [`table` controls](../manuals/userman/gui/viselements/standard-and-blocks/table.md).<br/>
+- Filters management fixed in the [`table` controls](../manuals/userman/gui/viselements/generic/table.md).<br/>
   See [issue #667](https://github.com/Avaiga/taipy-gui/issues/667).
 - Communication with the server may break.<br/>
   See [issue #695](https://github.com/Avaiga/taipy-gui/issues/695).
@@ -290,13 +290,13 @@ details on how to migrate from version older than 2.1.
   details.
 - Charts can use the new `Decimator^` class to cleverly filter data points out to significantly
   improve performance.<br/>
-  See the paragraph on [large datasets](../manuals/userman/gui/viselements/standard-and-blocks/chart.md#large-datasets) for
+  See the paragraph on [large datasets](../manuals/userman/gui/viselements/generic/chart.md#large-datasets) for
   specific information.
 - Charts now support polar, funnel, candlesticks and many other types of charts.<br/>
-  See the [chart control](../manuals/userman/gui/viselements/standard-and-blocks/chart.md) section for details.
+  See the [chart control](../manuals/userman/gui/viselements/generic/chart.md) section for details.
 - Charts now support the dark theme automatically.
 - Tooltips can be set on individual table cells.<br/>
-  See the [example](../manuals/userman/gui/viselements/standard-and-blocks/table.md#cell-tooltips) for more information.
+  See the [example](../manuals/userman/gui/viselements/generic/table.md#cell-tooltips) for more information.
 - [Long running callbacks](../manuals/userman/gui/callbacks.md#long-running-callbacks) have
   been improved to allow for easily returning a value.<br/>
   See the documentation of the `invoke_long_callback()^` function or the
@@ -335,7 +335,7 @@ details on how to migrate from version older than 2.1.
 2.1.0
 
 - The Pie charts now use the *values* property to set values instead of *x*.<br/>
-  See [Pie charts](../manuals/userman/gui/viselements/standard-and-blocks/charts/pie.md) for details.
+  See [Pie charts](../manuals/userman/gui/viselements/generic/charts/pie.md) for details.
 - Unselected data points or traces in charts now preserve their original opacity.<br/>
   See [issue #496](https://github.com/Avaiga/taipy-gui/issues/496).
 - `class_name` is now a dynamic property.<br/>
@@ -398,7 +398,7 @@ Published on 2022-10.
   new `taipy-config` package.
 - An application can request the status of the server application using the "status" predefined page.<br/>
 - The new 'base' property of the chart control makes it possible to create Gantt chart-like displays.<br/>
-  See [Gantt Charts](../manuals/userman/gui/viselements/standard-and-blocks/charts/gantt.md) for details.
+  See [Gantt Charts](../manuals/userman/gui/viselements/generic/charts/gantt.md) for details.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.0.0

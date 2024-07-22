@@ -58,7 +58,7 @@ Taipy charts are based on Plotly charts. More than any other visual element, cha
 properties.
 
 Here are a few of the essential properties. You can also look at the
-[documentation](../../../../manuals/userman/gui/viselements/standard-and-blocks/chart.md) for more information.
+[documentation](../../../../manuals/userman/gui/viselements/generic/chart.md) for more information.
 
  - x and y are used to define the chart axis.
 
@@ -105,11 +105,10 @@ Here are a few of the essential properties. You can also look at the
 ## Types of charts
 
 Different types are available: maps, bar charts, pie charts, line charts, and 3D charts, ... To
-know how to use them quickly, types are listed [here](../../../../manuals/userman/gui/viselements/standard-and-blocks/chart.md).
+know how to use them quickly, types are listed
+[here](../../../../manuals/userman/gui/viselements/generic/chart.md).<br/>
 If compatible, two types like *scatter*, *line*, and *bar* can also be used together on the same
 chart.
-
-
 
 === "Markdown"
     ```python

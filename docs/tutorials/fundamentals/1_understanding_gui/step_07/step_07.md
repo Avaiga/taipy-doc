@@ -56,7 +56,7 @@ could have one page created with Markdown and another with the Python API.
 
 ## Navigating between pages
 
-- [menu](../../../../manuals/userman/gui/viselements/standard-and-blocks/menu.md): creates a menu on the left to
+- [menu](../../../../manuals/userman/gui/viselements/generic/menu.md): creates a menu on the left to
 navigate through the pages.
 
 === "Markdown"
@@ -124,7 +124,7 @@ For example, this code creates a menu with two options:
 
 ![Menu](images/menu.png){ width=40% : .tp-image-border }
 
-- [navbar](../../../../manuals/userman/gui/viselements/standard-and-blocks/navbar.md): creates an element to navigate
+- [navbar](../../../../manuals/userman/gui/viselements/generic/navbar.md): creates an element to navigate
 through the Taipy pages by default
 
 === "Markdown"

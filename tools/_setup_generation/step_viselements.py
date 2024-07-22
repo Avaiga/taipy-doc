@@ -1,15 +1,15 @@
 # ################################################################################
 # Taipy GUI Visual Elements documentation.
 #
-# This includes the update of the Table of Contents for both the controls
-# and blocks page.
+# This includes the update of the Table of Contents for the controls and blocks
+# documentation page.
 #
 # For each visual element, this script combines its property list and core
-# documentation, and generates full Markdown files in [STANDARD_AND_BLOCKS_DIR_PATH]. All
+# documentation, and generates full Markdown files in [GENERICELEMENTS_DIR_PATH]. All
 # these files ultimately get integrated in the global doc set.
 #
 # The skeleton documentation files
-# [STANDARD_AND_BLOCKS_DIR_PATH]/[controls|blocks].md_template
+# [GENERICELEMENTS_DIR_PATH]/[controls|blocks].md_template
 # are also completed with generated table of contents.
 # ################################################################################
 import os
@@ -35,18 +35,17 @@ class VisElementsStep(SetupStep):
 
     def enter(self, setup: Setup):
         self.VISELEMENTS_DIR_PATH = setup.manuals_dir + "/userman/gui/viselements"
-        self.STANDARD_AND_BLOCKS_DIR_PATH = setup.manuals_dir + "/userman/gui/viselements/standard-and-blocks"
+        self.GENERICELEMENTS_DIR_PATH = setup.manuals_dir + "/userman/gui/viselements/generic"
         self.CORELEMENTS_DIR_PATH = setup.manuals_dir + "/userman/gui/viselements/corelements"
         self.TOC_PATH = self.VISELEMENTS_DIR_PATH + "/index.md"
-        self.TOC_TEMPLATE_PATH = self.VISELEMENTS_DIR_PATH + "/viselements.md_template"
-        self.CHARTS_HOME_HTML_PATH = self.STANDARD_AND_BLOCKS_DIR_PATH + "/charts/home.html_fragment"
+        self.CHARTS_HOME_HTML_PATH = self.GENERICELEMENTS_DIR_PATH + "/charts/home.html_fragment"
         self.__check_paths()
 
         # Use a VELoader to load all the visual elements from the json files,
         # check the elements are valid,
         # and keep only the categories we need for the documentation.
         loader = VELoader(self.DEFAULT_PROPERTY, self.PROPERTIES, self.INHERITS, self.NAME)
-        loader.load(setup.root_dir + "/taipy/gui/viselements.json", "", self.STANDARD_AND_BLOCKS_DIR_PATH)
+        loader.load(setup.root_dir + "/taipy/gui/viselements.json", "", self.GENERICELEMENTS_DIR_PATH)
         loader.load(setup.root_dir + "/taipy/gui_core/viselements.json", "core_", self.CORELEMENTS_DIR_PATH)
         loader.check()
         categories_to_keep = {"controls", "blocks"}
@@ -59,8 +58,8 @@ class VisElementsStep(SetupStep):
         self.__generate_builder_api()
 
     def __check_paths(self):
-        if not os.access(self.TOC_TEMPLATE_PATH, os.R_OK):
-            raise FileNotFoundError(f"FATAL - Could not read {self.TOC_TEMPLATE_PATH} html fragment")
+        if not os.access(f"{self.TOC_PATH}_template", os.R_OK):
+            raise FileNotFoundError(f"FATAL - Could not read {self.TOC_PATH}_template template file")
         if not os.access(self.CHARTS_HOME_HTML_PATH, os.R_OK):
             raise FileNotFoundError(f"FATAL - Could not read {self.CHARTS_HOME_HTML_PATH} html fragment")
 
@@ -78,10 +77,10 @@ class VisElementsStep(SetupStep):
         return f"[{self.elements[element_type]['prefix']}{category}_TOC]"
 
     def __generate_toc_file(self, tocs: Dict[str, VEToc]):
-        with open(self.TOC_TEMPLATE_PATH) as template_file:
+        with open(f"{self.TOC_PATH}_template") as template_file:
             md_template = template_file.read()
             if not md_template:
-                raise FileNotFoundError(f"FATAL - Could not read {self.TOC_TEMPLATE_PATH}_template markdown template")
+                raise FileNotFoundError(f"FATAL - Could not read {self.TOC_PATH}_template Markdown template")
             with open(self.TOC_PATH, "w") as md_file:
                 for hook, toc in tocs.items():
                     md_template = md_template.replace(hook, str(toc))
@@ -89,7 +88,7 @@ class VisElementsStep(SetupStep):
 
     def __generate_element_doc(self, element_type: str, category: str):
         """
-        Generates the markdown file for a given element type with a given category.
+        Generates the Markdown file for a given element type with a given category.
 
         Returns the entry for the Table of Contents that is inserted
         in the global Visual Elements or Core Elements doc page.
@@ -199,7 +198,7 @@ class VisElementsStep(SetupStep):
                 + after_properties
             )
         e = element_type  # Shortcut
-        d = "corelements/" if element_desc["prefix"] == "core_" else "standard-and-blocks/"
+        d = "corelements/" if element_desc["prefix"] == "core_" else "generic/"
         s = (
             ' style="font-size: .8em;"'
             if e == "scenario_selector" or e == "data_node_selector"
@@ -270,17 +269,17 @@ class VisElementsStep(SetupStep):
             template = f"""
 
 class [element_type]({base_class}):
-    '''[short_doc]
+    \"\"\"[short_doc]
 
     This class represents the [control_or_block] documented in the [element_md_page] section.
-    '''
+    \"\"\"
     _ELEMENT_NAME: str
     def __init__(self, [arguments]) -> None:
-        '''Create a new `[element_type]` element.
+        \"\"\"Create a new `[element_type]` element.
 
         Arguments:
             [arguments_doc]
-        '''
+        \"\"\"
         ...
 """
 
@@ -308,8 +307,8 @@ class [element_type]({base_class}):
                 if m := re.search(r"(\[`(\w+)`\]\()\2\.md\)", short_doc):
                     short_doc = short_doc[:m.start()]+f"{m[1]}../gui/viselements/{m[2]}.md)"+short_doc[m.end():]
                 # Link to element doc page
-                element_md_location = "corelements" if desc["prefix"] == "core_" else "viselements"
-                element_md_page = f"[`{element_type}`](../gui/{element_md_location}/{element_type}.md)"
+                element_md_location = "corelements" if desc["prefix"] == "core_" else "generic"
+                element_md_page = f"[`{element_type}`](../../userman/gui/viselements/{element_md_location}/{element_type}.md)"
                 buffer.write(template.replace("[element_type]", element_type)
                                      .replace("[element_md_page]", element_md_page)
                                      .replace("[arguments]", arguments)

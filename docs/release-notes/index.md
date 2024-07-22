@@ -13,7 +13,7 @@ This is the list of changes to Taipy releases as they were published.
 
     This page shows the changes made in the most recent major release of Taipy.<br/>
     If you are using a legacy version (pre-3.0), please refer to the
-    [Legacy Release Notes](relnotes-legacy.md) page.
+    [Legacy Release Notes](legacy.md) page.
 
     Note that we support the latest major version and the one before that. Because we have
     released Taipy 3.0, support and documentation for Taipy 1.x are disrupted.
@@ -115,20 +115,20 @@ Published on 2024-03.
 
 <h4><strong><code>taipy-gui</code></strong> 3.1.0</h4>
 
-- The [`chart`](../manuals/userman/gui/viselements/standard-and-blocks/chart.md) control has a new property called *figure* that
+- The [`chart`](../manuals/userman/gui/viselements/generic/chart.md) control has a new property called *figure* that
   expects an instance of `plotly.graph_objects.Figure`. This class is provided by the
 [Plotly Open Source Graphing Library for Python](https://plotly.com/python/) so you can create
   all sorts of graphs in Python.<br/>
-  See the [`figure` property](../manuals/userman/gui/viselements/standard-and-blocks/chart.md#p-figure) of the `chart` control and
-  the [section on the *figure* property](../manuals/userman/gui/viselements/standard-and-blocks/chart.md#the-figure-property) for
+  See the [`figure` property](../manuals/userman/gui/viselements/generic/chart.md#p-figure) of the `chart` control and
+  the [section on the *figure* property](../manuals/userman/gui/viselements/generic/chart.md#the-figure-property) for
   more information.
-- The [`part`](../manuals/userman/gui/viselements/standard-and-blocks/part.md) block has a new property called *content* that
+- The [`part`](../manuals/userman/gui/viselements/generic/part.md) block has a new property called *content* that
   lets developers integrate any third-party library that can generate HTML.<br/>
-  See the documentation for the [`part`](../manuals/userman/gui/viselements/standard-and-blocks/part.md) block and the examples
+  See the documentation for the [`part`](../manuals/userman/gui/viselements/generic/part.md) block and the examples
   using *content providers* for more information.
-- A new control called [`date_range`](../manuals/userman/gui/viselements/standard-and-blocks/date_range.md) is available if
+- A new control called [`date_range`](../manuals/userman/gui/viselements/generic/date_range.md) is available if
   you need to represent and edit date ranges in your application pages.
-- A new control called [`login`](../manuals/userman/gui/viselements/standard-and-blocks/login.md) is available if you need users
+- A new control called [`login`](../manuals/userman/gui/viselements/generic/login.md) is available if you need users
   to authenticate in your application.
 
 <h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
@@ -165,13 +165,13 @@ Published on 2024-03.
 
 <h4><strong><code>taipy-gui</code></strong> 3.1.0</h4>
 
-- The [`table`](../manuals/userman/gui/viselements/standard-and-blocks/table.md) control supports enumerated values. That allows
+- The [`table`](../manuals/userman/gui/viselements/generic/table.md) control supports enumerated values. That allows
   for a better user experience when users edit cell values.<br/>
   See the
-  [section on enumerated values in tables](../manuals/userman/gui/viselements/standard-and-blocks/table.md#enumerated-values) for
+  [section on enumerated values in tables](../manuals/userman/gui/viselements/generic/table.md#enumerated-values) for
   the details.
-- The [`toggle`](../manuals/userman/gui/viselements/standard-and-blocks/toggle.md) control appears as a switch button if its
-  [*value*](../manuals/userman/gui/viselements/standard-and-blocks/toggle.md#p-value) property holds a Boolean value.
+- The [`toggle`](../manuals/userman/gui/viselements/generic/toggle.md) control appears as a switch button if its
+  [*value*](../manuals/userman/gui/viselements/generic/toggle.md#p-value) property holds a Boolean value.
 
 <h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
 
@@ -252,20 +252,20 @@ Published on 2023-10.
 - You can now update variables on all clients using the *shared variables* concept. See
   the `Gui.add_shared_variable()^` and `State.dispatch()^` methods for details.
 - You can now invoke a callback for all clients using the `broadcast_callback()^` function.
-- The [`slider`](../manuals/userman/gui/viselements/standard-and-blocks/slider.md) control can now handle several knobs,
+- The [`slider`](../manuals/userman/gui/viselements/generic/slider.md) control can now handle several knobs,
   allowing for range selection.<br/>
-  Please check the [example](../manuals/userman/gui/viselements/standard-and-blocks/slider.md#multi-selection) for more
+  Please check the [example](../manuals/userman/gui/viselements/generic/slider.md#multi-selection) for more
   information.
-- The [`file_download`](../manuals/userman/gui/viselements/standard-and-blocks/file_download.md) control now lets developers
+- The [`file_download`](../manuals/userman/gui/viselements/generic/file_download.md) control now lets developers
   generate the file content dynamically, at download time.<br/>
-  Please check the [example](../manuals/userman/gui/viselements/standard-and-blocks/file_download.md#dynamic-content) for more information.
+  Please check the [example](../manuals/userman/gui/viselements/generic/file_download.md#dynamic-content) for more information.
 - A new CSS class called *toggle-navbar* was added to the
   [Stylekit](../manuals/userman/gui/styling/stylekit.md) to give a
-  [`toggle`](../manuals/userman/gui/viselements/standard-and-blocks/toggle.md) control the aspect of a
-  [`navbar`](../manuals/userman/gui/viselements/standard-and-blocks/navbar.md).
-- The [`chart`](../manuals/userman/gui/viselements/standard-and-blocks/chart.md) control now supports the
-  [*treemap*](../manuals/userman/gui/viselements/standard-and-blocks/charts/treemap.md) and
-  [*waterfall*](../manuals/userman/gui/viselements/standard-and-blocks/charts/waterfall.md) chart types.
+  [`toggle`](../manuals/userman/gui/viselements/generic/toggle.md) control the aspect of a
+  [`navbar`](../manuals/userman/gui/viselements/generic/navbar.md).
+- The [`chart`](../manuals/userman/gui/viselements/generic/chart.md) control now supports the
+  [*treemap*](../manuals/userman/gui/viselements/generic/charts/treemap.md) and
+  [*waterfall*](../manuals/userman/gui/viselements/generic/charts/waterfall.md) chart types.
 
 <h4><strong><code>taipy-core</code></strong> 3.0.0</h4>
 
@@ -316,10 +316,10 @@ Published on 2023-10.
       This dictionary now has the additional *action* key that is set to the action name.
       This change not only impact the *on_action* callback of all controls that support it,
       but in an exactly similar manner the following callback signatures:
-        - *on_range_change* in the [`chart`](../manuals/userman/gui/viselements/standard-and-blocks/chart.md) control;
-        - *on_edit*, *on_add*, and *on_delete* in the [`table`](../manuals/userman/gui/viselements/standard-and-blocks/table.md)
+        - *on_range_change* in the [`chart`](../manuals/userman/gui/viselements/generic/chart.md) control;
+        - *on_edit*, *on_add*, and *on_delete* in the [`table`](../manuals/userman/gui/viselements/generic/table.md)
           control;
-        - *on_close* in the [`pane`](../manuals/userman/gui/viselements/standard-and-blocks/pane.md) block.
+        - *on_close* in the [`pane`](../manuals/userman/gui/viselements/generic/pane.md) block.
 - The `navigate()^` function has an additional parameter *params* that is used to add query
   parameters to the requested URL. The query parameters can be retrieved in the `on_navigate`
   callback.
@@ -378,27 +378,27 @@ Published on 2023-10.
 - Variables imported by an `import *` directive are not handled properly in the state of
   a callback defined in the importing module.</br>
   See [issue #908](https://github.com/Avaiga/taipy-gui/issues/908).
-- The [`date`](../manuals/userman/gui/viselements/standard-and-blocks/date.md) control does not use the *format* property if
+- The [`date`](../manuals/userman/gui/viselements/generic/date.md) control does not use the *format* property if
   *with_time* is not set.<br/>
   See [issue #909](https://github.com/Avaiga/taipy-gui/issues/909).
-- The [`date`](../manuals/userman/gui/viselements/standard-and-blocks/date.md) control uses the `datetime.date` type and does
+- The [`date`](../manuals/userman/gui/viselements/generic/date.md) control uses the `datetime.date` type and does
   not apply time zones if time is not involved.<br/>
   See [issue #895](https://github.com/Avaiga/taipy-gui/issues/895) and
   [issue #923](https://github.com/Avaiga/taipy-gui/issues/923).
-- Updating a [`chart`](../manuals/userman/gui/viselements/standard-and-blocks/chart.md) control data may cause data congestion
+- Updating a [`chart`](../manuals/userman/gui/viselements/generic/chart.md) control data may cause data congestion
   or display flickering.<br/>
   See [issue #864](https://github.com/Avaiga/taipy-gui/issues/864) and
   [issue #932](https://github.com/Avaiga/taipy-gui/issues/932).
-- Selection in a [`chart`](../manuals/userman/gui/viselements/standard-and-blocks/chart.md) with type *pie* type is not
+- Selection in a [`chart`](../manuals/userman/gui/viselements/generic/chart.md) with type *pie* type is not
   properly handled.<br/>
   See [issue #919](https://github.com/Avaiga/taipy-gui/issues/919).
-- Hover text doesn't show properly in a [`selector`](../manuals/userman/gui/viselements/standard-and-blocks/selector.md) that
+- Hover text doesn't show properly in a [`selector`](../manuals/userman/gui/viselements/generic/selector.md) that
   is crowded.<br/>
   See [issue #927](https://github.com/Avaiga/taipy-gui/issues/927).
-- Options with a long text in a [`selector`](../manuals/userman/gui/viselements/standard-and-blocks/selector.md) cannot cbe
+- Options with a long text in a [`selector`](../manuals/userman/gui/viselements/generic/selector.md) cannot cbe
   deselected.<br/>
   See [issue #917](https://github.com/Avaiga/taipy-gui/issues/917).
-- The [`table`](../manuals/userman/gui/viselements/standard-and-blocks/toggle.md) control does not support undefined date values
+- The [`table`](../manuals/userman/gui/viselements/generic/toggle.md) control does not support undefined date values
     from Pandas data frames.<br/>
     See [issue #886](https://github.com/Avaiga/taipy-gui/issues/886).
 

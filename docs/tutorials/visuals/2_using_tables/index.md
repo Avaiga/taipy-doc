@@ -13,7 +13,7 @@ cool features.
 
 This article shows you the settings most people want when they make tables. If you want to do
 something with tables that's not in this article, you can check the
-[table control](../../../manuals/userman/gui/viselements/standard-and-blocks/table.md) documentation for a big list of stuff!
+[table control](../../../manuals/userman/gui/viselements/generic/table.md) documentation for a big list of stuff!
 
 You can see all the code with the table features we talked about at the end of this article.
 
@@ -118,7 +118,7 @@ main_md = Markdown("<|{food_df}|table|class_name=rows-bordered|>")
 ```
 
 To learn more about how Stylekit supports Taipy tables, you can check the documentation
-[here](../../../manuals/userman/gui/viselements/standard-and-blocks/table.md#styling). If you want to explore the
+[here](../../../manuals/userman/gui/viselements/generic/table.md#styling). If you want to explore the
 many features of Stylekit beyond tables in Taipy, you can read this helpful
 [tip article](../../visuals/6_css_style_kit/index.md)!
 
@@ -263,7 +263,7 @@ main_md = Markdown("<|{food_df}|table|on_delete=food_df_on_delete|>")
 
 Once more, please note that this tip article doesn't cover all the features of tables in Taipy
 comprehensively. If you're seeking a feature that we didn't address here, be sure to refer to
-the [documentation](../../../manuals/userman/gui/viselements/standard-and-blocks/table.md) for more information!
+the [documentation](../../../manuals/userman/gui/viselements/generic/table.md) for more information!
 
 Lastly, here's the code that combines all the features we discussed in this article,
 used to create the application shown at the beginning of the article:
