@@ -386,10 +386,12 @@ def on_post_build(env):
 
                     # Processing for visual element pages:
                     # - Remove <tt> from title
-                    # - Add breadcrumbs to Taipy GUI's control, part and core element pages
-                    fn_match = re.search(r"(/|\\)gui\1(vis|cor)elements\1(.*?)\1index.html", filename)
+                    # - Add breadcrumbs to Taipy GUI's standard and scenario mgmt element pages
+                    fn_match = re.search(r"(/|\\)gui\1viselements\1(generic|corelements)\1(.*?)\1index.html", filename)
                     element_category = None
+                    package = None
                     if fn_match is not None:
+                        package = fn_match[2]
                         if title_match := re.search(r"<title><tt>(.*?)</tt> - Taipy</title>", html_content):
                             html_content = (html_content[:title_match.start()]
                                             + f"<title>{title_match.group(1)} - Taipy</title>"
@@ -404,11 +406,10 @@ def on_post_build(env):
                         ARTICLE_RE = re.compile(r"(<div\s+class=\"md-content\".*?>)(\s*<article)")
                         if article_match := ARTICLE_RE.search(html_content):
                             repl = "\n<ul class=\"tp-bc\">"
-                            if "corelements" in filename:
-                                repl += "<li><a href=\"../../../viselements\"><b>Visual Elements</b></a></li>"
-                                repl += ("<li><a "
-                                         "href=\"../../../viselements/#scenario-and-data-management-controls\"><b"
-                                         ">Scenario management controls</b></a></li>")
+                            if package == "corelements":
+                                repl += ("<li><a href=\"../../../viselements\"><b>Visual Elements</b></a></li>"
+                                          "<li><a href=\"../../../viselements/#scenario-and-data-management-controls\">"
+                                          "<b>Scenario management controls</b></a></li>")
                             else:
                                 chart_part = "../" if element_category == "chart" else ""
                                 repl += f"<li><a href=\"{chart_part}../..\"><b>Visual Elements</b></a></li>"
@@ -417,7 +418,7 @@ def on_post_build(env):
                                 else:
                                     repl += f"<li><a href=\"{chart_part}../..#standard-controls\"><b>Standard controls</b></a></li>"
                                     if chart_part:
-                                        repl += f"<li><a href=\"{chart_part}../../chart\"><b>Charts</b></a></li>"
+                                        repl += f"<li><a href=\"{chart_part}../../generic/chart\"><b>Charts</b></a></li>"
                             repl += "</ul>"
                             html_content = (html_content[:article_match.start()]
                                             + article_match.group(1)
