@@ -387,7 +387,7 @@ def on_post_build(env):
                     # Processing for visual element pages:
                     # - Remove <tt> from title
                     # - Add breadcrumbs to Taipy GUI's standard and scenario mgmt element pages
-                    fn_match = re.search(r"(/|\\)gui\1viselements\1(standard-and-blocks|corelements)\1(.*?)\1index.html", filename)
+                    fn_match = re.search(r"(/|\\)gui\1viselements\1(generic|corelements)\1(.*?)\1index.html", filename)
                     element_category = None
                     package = None
                     if fn_match is not None:
