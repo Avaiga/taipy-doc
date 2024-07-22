@@ -212,7 +212,7 @@ nav:
         - "Python APIs": manuals/refmans/reference/index.md
         [REFERENCE_CONTENT]
       - "REST API":
-        - "Taipy's REST APIs": manuals/refmans/reference_rest/index.md
+        - "REST APIs": manuals/refmans/reference_rest/index.md
         [REST_REFERENCE_CONTENT]
       - "GUI Extension API":
         - manuals/refmans/reference_guiext/index.md
