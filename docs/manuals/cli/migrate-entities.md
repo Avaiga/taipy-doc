@@ -11,13 +11,12 @@ migration.
 ## Migrate entities
 
 The required argument of the 'migrate' CLI is `--repository-type`, which first accepts one
-of the three following values: "filesystem", "sql", and "mongo". Each repository type can be
+of the three following values: "filesystem" and "mongo". Each repository type can be
 followed by additional arguments:
 
 - *filesystem* can be followed by the path to the filesystem folder that holds your Taipy
   application data. It corresponds to the "storage_folder" attribute in the configuration "CORE"
   section. If not provided explicitly, the default value is ".data" in the application root directory.
-- *sql* must be followed by the path to the sqlite file that holds your Taipy Application data.
 - *mongo* can be followed by the credentials to access the mongo database that holds
   your Taipy Application data. The credentials must follow the order: "host", "port", "username",
   and "password". The default values are "localhost", "27017", and no username and password respectively.
@@ -34,8 +33,8 @@ usage: taipy migrate [-h] --repository-type REPOSITORY_TYPE [REPOSITORY_TYPE ...
 options:
   -h, --help            show this help message and exit
   --repository-type REPOSITORY_TYPE [REPOSITORY_TYPE ...]
-                        The type of repository to migrate. If filesystem or sql, a path to the
-                        database folder/.sqlite file should be informed. In the case of MongoDB host,
+                        The type of repository to migrate. If filesystem, a path to the
+                        database folder should be informed. In the case of MongoDB host,
                         port, user, and password must be informed, if left empty it is assumed
                         default values
   --skip-backup         Skip the backup of entities before migration.
@@ -53,16 +52,7 @@ $ taipy migrate --repository-type filesystem .data
 
 Where `.data` is the path to the directory that holds the Taipy application data.
 
-To migrate the entities of a Taipy application with a sqlite repository. We can run the
-following command:
-
-```console
-$ taipy migrate --repository-type sql ~/taipy.sqlite3
-```
-
-Where  `~/taipy.sqlite3` is the path to the sqlite file that holds the Taipy application data.
-
-To migrate the entities of a Taipy application with a sqlite repository. We can run the
+To migrate the entities of a Taipy application with a mongo repository. We can run the
 following command:
 
 ```console
