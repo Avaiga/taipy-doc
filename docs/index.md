@@ -52,19 +52,19 @@ from initial prototypes to production-ready applications.
 
 <ul class="tp-pills-list">
   <li>
-    <a class="tp-pill" href="manuals/userman/gui/viselements/standard-and-blocks/chart/">
+    <a class="tp-pill" href="manuals/userman/gui/viselements/generic/chart/">
       <span>Chart</span>
       <div class="tp-tooltip">
-        <img src="manuals/userman/gui/viselements/standard-and-blocks/chart-d.png"/>
+        <img src="manuals/userman/gui/viselements/generic/chart-d.png"/>
         <p>A chart visually depicts data through graphs, charts, or plots.</p>
       </div>
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/userman/gui/viselements/standard-and-blocks/table/">
+    <a class="tp-pill" href="manuals/userman/gui/viselements/generic/table/">
       <span>Table</span>
       <div class="tp-tooltip">
-        <img src="manuals/userman/gui/viselements/standard-and-blocks/table-d.png"/>
+        <img src="manuals/userman/gui/viselements/generic/table-d.png"/>
         <p>
           A table presents data in rows and columns, often used in web applications for structured
           data display and interaction.
@@ -73,34 +73,34 @@ from initial prototypes to production-ready applications.
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/userman/gui/viselements/standard-and-blocks/button/">
+    <a class="tp-pill" href="manuals/userman/gui/viselements/generic/button/">
       <span>Button</span>
       <div class="tp-tooltip">
-        <img src="manuals/userman/gui/viselements/standard-and-blocks/button-d.png" alt="">
+        <img src="manuals/userman/gui/viselements/generic/button-d.png" alt="">
         <p>You can employ this class name to target the buttons on your page and apply styling.</p>
       </div>
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/userman/gui/viselements/standard-and-blocks/input/">
+    <a class="tp-pill" href="manuals/userman/gui/viselements/generic/input/">
       <span>Input</span>
       <div class="tp-tooltip">
-        <img src="manuals/userman/gui/viselements/standard-and-blocks/input-d.png"/>
+        <img src="manuals/userman/gui/viselements/generic/input-d.png"/>
         <p>A control that displays some text that can potentially be edited.</p>
       </div>
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/userman/gui/viselements/standard-and-blocks/slider/">
+    <a class="tp-pill" href="manuals/userman/gui/viselements/generic/slider/">
       <span>Slider</span>
       <div class="tp-tooltip">
-        <img src="manuals/userman/gui/viselements/standard-and-blocks/slider-d.png"/>
+        <img src="manuals/userman/gui/viselements/generic/slider-d.png"/>
         <p>Displays and allows the user to set a value within a range.</p>
       </div>
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/userman/gui/viselements/standard-and-blocks/controls/">
+    <a class="tp-pill" href="manuals/userman/gui/viselements/generic/controls/">
       <span>…</span>
       <div class="tp-tooltip">
         <p>Browse the complete list of visual elements.</p>
@@ -113,7 +113,7 @@ from initial prototypes to production-ready applications.
 
 <ul class="tp-pills-list">
   <li>
-    <a class="tp-pill" href="manuals/userman/gui/viselements/standard-and-blocks/blocks/">
+    <a class="tp-pill" href="manuals/userman/gui/viselements/generic/blocks/">
       <span>Structure Pages</span>
     </a>
   </li>

@@ -112,9 +112,9 @@ mkdocs.yml
 /taipy
 /taipy-fe
 /docs/manuals/userman/gui/viselements/index.md
-docs/manuals/userman/gui/viselements/standard-and-blocks/*.md
-!docs/manuals/userman/gui/viselements/standard-and-blocks/index.md
-docs/manuals/userman/gui/viselements/standard-and-blocks/charts/*.md
+docs/manuals/userman/gui/viselements/generic/*.md
+!docs/manuals/userman/gui/viselements/generic/index.md
+docs/manuals/userman/gui/viselements/generic/charts/*.md
 docs/manuals/userman/gui/viselements/corelements/*.md
 !docs/manuals/userman/gui/gui_example.ipynb
 docs/manuals/xrefs

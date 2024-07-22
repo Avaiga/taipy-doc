@@ -134,7 +134,7 @@ be `http://127.0.0.1:5000/`).
 
 If your application has several pages, you would usually create them with different names,
 so the user can navigate from page to page (using the `navigate()^` function or the
-[`navbar`](../viselements/standard-and-blocks/navbar.md) control).<br/>
+[`navbar`](../viselements/generic/navbar.md) control).<br/>
 However, you can still have a root page for your application (with the name: `"/"`).
 In this situation, Taipy creates a
 [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application)
@@ -226,7 +226,7 @@ Applications sometimes need to prompt the user to indicate a situation or reques
 input of some sort. Dialogs are forms that can be displayed on top of the page
 the user is looking at, prompting for some input.
 
-To create a dialog, you will use a [`dialog`](../viselements/standard-and-blocks/dialog.md) control in your
+To create a dialog, you will use a [`dialog`](../viselements/generic/dialog.md) control in your
 page. The dialog holds a page content or a *Partial* (see [Partials](#partials)).
 
 You can control whether the dialog is visible or not, and what to do when the end-user
@@ -253,7 +253,7 @@ user's response.
        Gui(page).run()
     ```
 
-Please refer to the documentation page on the [`dialog`](../viselements/standard-and-blocks/dialog.md)
+Please refer to the documentation page on the [`dialog`](../viselements/generic/dialog.md)
 control for more details and examples.
 
 # Partials
@@ -286,14 +286,14 @@ be used in visual elements that use them.
        gui.run()
     ```
 
-You can take a look at the documentation of the [`dialog`](../viselements/standard-and-blocks/dialog.md) or
-[`pane`](../viselements/standard-and-blocks/pane.md) to see how these *Partials* can be used in pages.
+You can take a look at the documentation of the [`dialog`](../viselements/generic/dialog.md) or
+[`pane`](../viselements/generic/pane.md) to see how these *Partials* can be used in pages.
 
 # Panes
 
 Modern user interfaces also provide small pages that pop out and be removed for
 temporary use, such as providing specific parameters for the application. Taipy lets
-you create such elements using the [pane](../viselements/standard-and-blocks/pane.md) block.
+you create such elements using the [pane](../viselements/generic/pane.md) block.
 
 A pane can appear from any border of your page, next to or on top of the page, and
 disappears when the user clicks outside its area.

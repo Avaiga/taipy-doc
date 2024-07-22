@@ -53,8 +53,8 @@ hosting the 'Taipy' Flask app.<br/>
 A new window is created in your browser, displaying the small interface we have just created.<br/>
 Note that the text control automatically displays *value* when you move the slider thumb. That
 shows that Taipy has successfully bound the variable *value* to both the
-[`text`](gui/viselements/standard-and-blocks/text.md) and the
-[`slider`](gui/viselements/standard-and-blocks/slider.md) controls.
+[`text`](gui/viselements/generic/text.md) and the
+[`slider`](gui/viselements/generic/slider.md) controls.
 
 You can witness the user interface update when you change a variable on the fly. In the context of
 Notebooks, you can directly access the variables that are bound to the user interface:
@@ -131,7 +131,7 @@ After running this cell, the variable *data* holds an array of floating-point va
 some fancy trigonometric function (computed in *compute_data()*) based on some parameter.
 
 If we want to display these values in a chart, we need to change our page to add a
-[`chart`](gui/viselements/standard-and-blocks/chart.md) control to it (and remove the
+[`chart`](gui/viselements/generic/chart.md) control to it (and remove the
 `number` control).<br/>
 You can update the page content on the fly by creating a new cell with the following content:
 ```py title="Cell [5]"

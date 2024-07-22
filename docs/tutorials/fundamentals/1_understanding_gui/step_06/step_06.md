@@ -4,7 +4,7 @@
 
 We'll introduce three new helpful controls to enhance the page's visual appeal. These controls are:
 
-- [part](../../../../manuals/userman/gui/viselements/standard-and-blocks/part.md): creates a group of text/visual elements.
+- [part](../../../../manuals/userman/gui/viselements/generic/part.md): creates a group of text/visual elements.
 A useful property of `part` is *render*. If set to False, it will not display the part.
 This allows the developer to hide a group of visual elements dynamically.
 
@@ -23,7 +23,7 @@ This allows the developer to hide a group of visual elements dynamically.
         # Or visual elements...
     ```
 
-- [layout](../../../../manuals/userman/gui/viselements/standard-and-blocks/layout.md): creates invisible columns where you
+- [layout](../../../../manuals/userman/gui/viselements/generic/layout.md): creates invisible columns where you
 can put your texts and visual elements. The *columns* property indicates the width and number
 of columns. Here, we create three columns of the same width.
 
@@ -52,7 +52,7 @@ of columns. Here, we create three columns of the same width.
     ![Layout](images/layout.png){ width=70% : .tp-image-border }
 
 
-- [expandable](../../../../manuals/userman/gui/viselements/standard-and-blocks/expandable.md): creates a block that can
+- [expandable](../../../../manuals/userman/gui/viselements/generic/expandable.md): creates a block that can
 expand or shrink.
 
     ![expandable](images/expandable.png){ width=70% : .tp-image-border }

@@ -32,8 +32,8 @@ names defined in the code, and the value of the property is set to the evaluated
     new variable value, which might be slow and hit the user experience.<br/>
     Visual Elements that are costly to render on the browser provide a property called *rebuild*
     that allows one to explicitly request the render of the component. Please check the relevant
-    sections for the [`chart`](standard-and-blocks/chart.md#the-rebuild-property) and
-    [`table`](standard-and-blocks/table.md#the-rebuild-property) controls for more information.
+    sections for the [`chart`](generic/chart.md#the-rebuild-property) and
+    [`table`](generic/table.md#the-rebuild-property) controls for more information.
 
 # Syntax
 
@@ -67,12 +67,11 @@ name to appear between the two first vertical bar characters (as in `<|control|.
     <|default_property_value|visual_element_type|>
     ```
 
-    Every visual element has a default property, and using the default property syntax
-    (where the default property value appears as the first `||` fragment) underscore,
-    but placing it first, the most important property value for this visual element:
-    it would be the content of a [`text`](standard-and-blocks/text.md) control, the
-    label of a [`button`](standard-and-blocks/button.md),
-    or the data set displayed by a [`chart`](standard-and-blocks/chart.md), for example.
+    Every visual element has a default property, and using the default property syntax (where the
+    default property value appears as the first `||` fragment) underscore, but placing it first, the
+    most important property value for this visual element: it would be the content of a
+    [`text`](generic/text.md) control, the label of a [`button`](generic/button.md), or the dataset
+    displayed by a [`chart`](generic/chart.md), for example.
 
 Every following |-separated fragment is interpreted as a property name-property value
 pair using the syntax: *property\_name=property\_value* (note that *all* space characters
@@ -90,7 +89,7 @@ fragment similar to:
     characters of the property value part *are* significant:<br/>
     The fragment `<|Content |text|>` will be displayed as the string "Content" followed by a
     space character because it is part of the property value (in this case, the *default*
-    property value, which is the property called *value* for the [`text`](standard-and-blocks/text.md) control)
+    property value, which is the property called *value* for the [`text`](generic/text.md) control)
 
 !!! note "Shortcut for Boolean properties"
     Should the `=property_value` fragment be missing, the property value is interpreted as the
@@ -166,7 +165,7 @@ fragment similar to:
     ```
 
 !!! example "The *default property* shortcut"
-    The default property name for the control type [`button`](standard-and-blocks/button.md)
+    The default property name for the control type [`button`](generic/button.md)
     is *label*. In Taipy, the Markdown text
     ```
     <|button|label=Some text|>
@@ -200,7 +199,7 @@ fragment similar to:
 
 There are very few exceptions to the `<|control_type|...|>` syntax, which
 are described in their respective documentation section. The most obvious exception is the
-[`text`](standard-and-blocks/text.md) control, which can be created without even mentioning its type.
+[`text`](generic/text.md) control, which can be created without even mentioning its type.
 
 ## HTML
 
@@ -230,7 +229,7 @@ is equivalent to
     that make it easier to use in the context of describing Taipy pages.
 
     - Attribute names that be array elements.
-      Some visual elements (such as the [`chart`](standard-and-blocks/chart.md) control)
+      Some visual elements (such as the [`chart`](generic/chart.md) control)
       need *indexed* properties. An attribute name such as *y[1]* is valid in the Taipy
       context, where it would not be in the raw HTML grammar.
 
@@ -263,19 +262,19 @@ defining an expression referencing the variables.
 
 Every visual element type has the following properties:
 
--   `id`: The identifier of the element. This identifier is generated in the HTML component
+-   *id*: The identifier of the element. This identifier is generated in the HTML component
     and can be used for [styling](../styling/index.md).
--   `class_name`: An additional CSS class that is added to the generated HTML component.
+-   *class_name*: An additional CSS class that is added to the generated HTML component.
     Note that all visual elements are generated with the "taipy-*visual\_element\_type*" CSS
     class set (e.g. the `button` control generates an HTML element that has the
     *taipy-button* CSS class).
--   `properties`: The name of a variable that holds a dictionary where all property name/value
+-   *properties*: The name of a variable that holds a dictionary where all property name/value
     pairs will be used by a given visual element declaration.
 
 All or most Taipy visual elements expose similar properties that can be used generically
 across your pages.
 
-## The `id` property
+## The *id* property
 
 You can specify an identifier for a specific visual element.
 
@@ -288,16 +287,16 @@ section for more information.
     element can trigger actions (see [Actions](../callbacks.md#actions)
     for details).
 
-## The `properties` property
+## The *properties* property
 
-There are situations where your visual element may need a lot of different properties.
-This is typically the case for complex visual elements like the
-[`chart`](standard-and-blocks/chart.md) or the [`table`](standard-and-blocks/table.md) controls.
+There are situations where your visual element may need a lot of different properties. This is
+typically the case for complex visual elements like the [`chart`](generic/chart.md) or the
+[`table`](generic/table.md) controls.
 
 When an element needs many properties and property values, the content may become
-difficult to read. Something you can do about this is creating a Python dictionary that
+difficult to read. Something you can do about this is create a Python dictionary that
 contains all the key-value pairs for your properties (name and value), then use the name
-of the variable that holds that dictionary as the value of the `properties` property.
+of the variable that holds that dictionary as the value of the *properties* property.
 
 !!! example
 
@@ -320,7 +319,7 @@ of the variable that holds that dictionary as the value of the `properties` prop
     <|{show_dialog}|dialog|properties=dialog_props|>
     ```
 
-## The `propagate` property
+## The *propagate* property
 
 There are situations where you don't want a variable bound to a control value (such
 as the knob location of a slider) to be updated immediately when the user manipulates

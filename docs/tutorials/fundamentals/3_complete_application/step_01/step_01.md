@@ -25,11 +25,11 @@ dataset = get_data(path_to_csv)
 
 Taipy introduces the concept of *Visual elements*, which are graphic objects shown on the client
 interface. You can use various visual elements such as a
-[slider](../../../../manuals/userman/gui/viselements/standard-and-blocks/slider.md), a
-[chart](../../../../manuals/userman/gui/viselements/standard-and-blocks/chart.md), a
-[table](../../../../manuals/userman/gui/viselements/standard-and-blocks/table.md), an
-[input](../../../../manuals/userman/gui/viselements/standard-and-blocks/input.md), a
-[menu](../../../../manuals/userman/gui/viselements/standard-and-blocks/menu.md), etc. Check the complete list
+[slider](../../../../manuals/userman/gui/viselements/generic/slider.md), a
+[chart](../../../../manuals/userman/gui/viselements/generic/chart.md), a
+[table](../../../../manuals/userman/gui/viselements/generic/table.md), an
+[input](../../../../manuals/userman/gui/viselements/generic/input.md), a
+[menu](../../../../manuals/userman/gui/viselements/generic/menu.md), etc. Check the complete list
 [here](../../../../manuals/userman/gui/viselements/index.md). The syntax for adding a visual element is
 as follows:
 
@@ -48,7 +48,7 @@ as follows:
     changes, ensuring a responsive and performance-optimized user experience.
 
 
-For example, to add a [slider](../../../../manuals/userman/gui/viselements/standard-and-blocks/slider.md)
+For example, to add a [slider](../../../../manuals/userman/gui/viselements/generic/slider.md)
 that modifies the value of the variable *n_week*, use the following syntax:
 
 === "Markdown"
