@@ -418,7 +418,7 @@ def on_post_build(env):
                                 else:
                                     repl += f"<li><a href=\"{chart_part}../..#standard-controls\"><b>Standard controls</b></a></li>"
                                     if chart_part:
-                                        repl += f"<li><a href=\"{chart_part}../../standard-and-blocks/chart\"><b>Charts</b></a></li>"
+                                        repl += f"<li><a href=\"{chart_part}../../generic/chart\"><b>Charts</b></a></li>"
                             repl += "</ul>"
                             html_content = (html_content[:article_match.start()]
                                             + article_match.group(1)
