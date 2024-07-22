@@ -200,6 +200,7 @@ nav:
       - "Finance": gallery/finance/index.md
       - "Stock Visualization": gallery/finance/1_stock_visualization/index.md
       - "Sales Dashboard": gallery/finance/4_sales_dashboard/index.md
+      - "Commodity Trading": gallery/finance/commodity_trading/index.md
       - "Fraud Detection": gallery/finance/fraud_detection/index.md
     - "Decision Support":
       - "Decision Support": gallery/decision_support/index.md
