@@ -37,8 +37,11 @@ This is the list of changes to Taipy releases as they were published.
 
 <h4><strong><code>taipy-core</code></strong> 3.2.0 </h4>
 
-- The `taipy.get_scenarios()` and `taipy.get_primary_scenarios()^` methods now accept optional parameters to
-  sort the output list of scenarios by name, id, creation date, or tag. For more information, please refer to
+- The `taipy.get_scenarios()` and `taipy.get_primary_scenarios()^` methods now accept optional parameters to:
+
+    - sort the output list of scenarios by name, id, creation date, or tag
+    - filter the output list of scenarios that are created in a specific time range.<br/>
+  For more information, please refer to
   [Get all scenarios](../manuals/userman/sdm/scenario/index.md#get-all-scenarios) and
   [Get primary scenarios](../manuals/userman/sdm/scenario/index.md#get-primary-scenarios).
 

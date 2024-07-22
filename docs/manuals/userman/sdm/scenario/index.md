@@ -272,8 +272,9 @@ from the config_id provided as a parameter.
 
 ## Get all scenarios
 
-All the scenarios can be retrieved using the method `taipy.get_scenarios()^`. This method
-returns the list of all existing scenarios. Here is the list of the parameters:
+All the scenarios can be retrieved using the method `taipy.get_scenarios()^`. This method returns
+the list of all existing scenarios. To filter and sort the list of scenarios, you can use the
+following parameters:
 
 - *cycle* represents the optional `Cycle^` to filter scenarios by. If provided, the list
     contains all the existing scenarios of the cycle.
@@ -288,6 +289,8 @@ returns the list of all existing scenarios. Here is the list of the parameters:
     order for dates, in alphabetical order for name and id, and in lexicographical order for tags.
     The default value is "name". If an incorrect sorting key is provided, the scenarios are sorted
     by name.
+- *created_start_time* represents the optional inclusive start date to filter scenarios by creation date.
+- *created_end_time* represents the optional inclusive end date to filter scenarios by creation date.
 
 !!! note
 
@@ -305,8 +308,8 @@ lists of corresponding scenarios as values.
 The `taipy.get_primary()^` method returns the primary scenario of the cycle given as a
 parameter.
 
-The `taipy.get_primary_scenarios()^` method returns the primary scenarios for all the
-existing cycles. The list of primary scenarios can be sorted using the parameters:
+The `taipy.get_primary_scenarios()^` method returns the primary scenarios for all the existing
+cycles. The list of primary scenarios can be sorted and filtered using the following parameters:
 
 - *is_sorted* represents if the output list of scenarios is sorted using the sorting key.
     The default value is False.
@@ -317,6 +320,8 @@ existing cycles. The list of primary scenarios can be sorted using the parameter
     order for dates, in alphabetical order for name and id, and in lexicographical order for tags.
     The default value is "name". If an incorrect sorting key is provided, the scenarios are sorted
     by name.
+- *created_start_time* represents the optional inclusive start date to filter scenarios by creation date.
+- *created_end_time* represents the optional inclusive end date to filter scenarios by creation date.
 
 # Promote a scenario as primary
 
