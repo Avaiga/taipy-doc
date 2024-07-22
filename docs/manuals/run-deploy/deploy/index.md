@@ -7,7 +7,7 @@ may need to deploy it on a remote environment, for end users to be able to use i
 
 Here are the different situations that Taipy can address:
 
-- [Windows](windows/index.md): deploy the application on a Windows Server system;
+- [Locally](local/index.md): deploy the application on your local system;
 - [Linux](linux/index.md): deploy the application on a server running Linux;
 - [Docker](docker/index.md): running the application in a container;
 - [Azure](azure/index.md): deploy the application on the
