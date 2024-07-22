@@ -174,14 +174,12 @@ nav:
         - "Protect private files": manuals/run-deploy/run/protect_files.md
       - "Deployment":
         - "Deploying a Taipy application": manuals/run-deploy/deploy/index.md
-        - "On the local machine":
+        - "On a local machine":
           - "Deploying locally": manuals/run-deploy/deploy/local/index.md
         - "On Linux servers":
           - "Deploying on a Linux system": manuals/run-deploy/deploy/linux/index.md
           - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md
           - "RHEL": manuals/run-deploy/deploy/linux/redhat.md
-        - "On Windows Server":
-          - "Deploying on Windows Server": manuals/run-deploy/deploy/windows/index.md
         - "Using Docker":
           - manuals/run-deploy/deploy/docker/index.md
           - "For development": manuals/run-deploy/deploy/docker/development.md
@@ -190,9 +188,6 @@ nav:
           - "Deploying on Azure": manuals/run-deploy/deploy/azure/index.md
         - "On Heroku":
           - "Deploying on Heroku": manuals/run-deploy/deploy/heroku/index.md
-          - "Setup": manuals/run-deploy/deploy/heroku/setup.md
-          - "Based on Git": manuals/run-deploy/deploy/heroku/git.md
-          - "Based on Docker": manuals/run-deploy/deploy/heroku/docker.md
         - "On Databricks":
           - "Deploying on Databricks": manuals/run-deploy/deploy/databricks/index.md
 
