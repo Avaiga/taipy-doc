@@ -4,6 +4,8 @@ category: llm
 data-keywords: ai community
 short-description: Experience the AI-powered Tweet Generation. Automate Tweets using GPT-3's Davinci engine and DALL·E.
 img: tweet_generation/images/tweet-generation.png
+hide:
+    - toc
 ---
 This demo uses generative AI to enable users to create one-of-a-kind Tweets with the assistance of AI models.
 It uses [GPT-3](https://openai.com/blog/gpt-3-apps)'s Davinci Engine for text generation and [DALL·E](https://openai.com/dall-e-3)
@@ -16,6 +18,7 @@ seeking to improve their social media presence.
 [Get it on GitHub](https://github.com/Avaiga/demo-tweet-generation){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
+
 This application highlights several key features:
 
 1. **AI-Powered Content Creation**: Taipy leverages GPT-3's
@@ -29,10 +32,10 @@ This application highlights several key features:
    Twitter account into their Tweet, making it feel more authentic
    and aligned with their desired audience.
 
-
 ![Tweet Generation](images/tweet-generation.png){width=90% : .tp-image-border }
 
 # How to generate Tweets
+
 To create captivating Tweets, follow these steps:
 1. Fill out the text prompt creation form, including the topic,
    optional mood parameter, and a Twitter account for style transfer.

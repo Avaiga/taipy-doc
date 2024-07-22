@@ -4,6 +4,8 @@ category: other
 data-keywords: ai community
 short-description: Real-time face detection and recognition demo using a Taipy UI with OpenCV.
 img: face_recognition/images/face-recognition.jpg
+hide:
+    - toc
 ---
 This demo seamlessly integrates face recognition into our platform,
 offering a user-friendly real-time face detection experience using

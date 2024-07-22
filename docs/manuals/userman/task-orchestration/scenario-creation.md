@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 In this section, we provide details on how to instantiate `Scenario^` entities from a
 `ScenarioConfig^`. They are created from the `taipy.create_scenario()^` function.
 

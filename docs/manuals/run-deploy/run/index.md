@@ -19,7 +19,7 @@ The application may however have a few requirements that Taipy can address:
   your infrastructure.
 - [Protect private files](protect_files.md): because the hosting of an application by a web
   server poses risks of exposing files that you want to keep secret, Taipy provides means
-  to setup file access security.
+  to set up file access security.
 
 ## [Running Taipy services](running_services.md)
 

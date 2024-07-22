@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 When the `Gui^` instance runs, it creates a web server that serves the
 registered pages, with the root of the site located where the `__main__`
 Python module file is located.<br/>

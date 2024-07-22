@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 Taipy provides a checking mechanism to validate if your configuration is correct.
 
 You can trigger the check by calling:

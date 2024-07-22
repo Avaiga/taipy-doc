@@ -1,8 +1,8 @@
 [Download the code](./../src/src.zip){: .tp-btn target='blank' }
 
-The Performance Page is a section of the application that permits users to compare the performance metrics, 
-including Root Mean Squared Error and Mean Absolute Error, across various scenarios. 
-The page displays a table and two bar charts for comparing these metrics between baseline and 
+The Performance Page is a section of the application that permits users to compare the performance metrics,
+including Root Mean Squared Error and Mean Absolute Error, across various scenarios.
+The page displays a table and two bar charts for comparing these metrics between baseline and
 machine learning predictions.
 
 ![Performance Page](images/result.png){ width=90% : .tp-image-border }
@@ -51,9 +51,9 @@ Two bar charts that compare the selected metric (RMSE or MAE) between baseline a
 
 A button that triggers the "compare" action when clicked. It is used to initiate the comparison process.
 
-## Python Code
+# Python Code
 
-The following Python code corresponds to the `pages/performance/performance.py` file. 
+The following Python code corresponds to the `pages/performance/performance.py` file.
 
 ```python
 from taipy.gui import Markdown
@@ -105,19 +105,19 @@ performance = Markdown("pages/performance/performance.md")
 
 - **Global Variables**:
 
-The variables *comparison_scenario*, *metric_selector*, and *selected_metric* are initialized. 
+The variables *comparison_scenario*, *metric_selector*, and *selected_metric* are initialized.
 The *comparison_scenario* DataFrame stores the comparison data, while *metric_selector* holds the options for the metric selector. *selected_metric* is initialized with the default metric, which is the first element of the *metric_selector* list (RMSE).
 
 - **Compare Function**:
 
-The `compare` function takes care of the comparison process. This function is triggered when the user clicks 
-the "Compare" button. It gathers the primary scenarios from the application and then goes through each scenario 
+The `compare` function takes care of the comparison process. This function is triggered when the user clicks
+the "Compare" button. It gathers the primary scenarios from the application and then goes through each scenario
 to collect the RMSE and MAE metrics for both baseline and machine learning predictions.
 
 The data is then stored in the *comparison_scenario* DataFrame.
 
 
-The Performance Page in the Python application enables users to compare the effectiveness of different scenarios 
-in making time series predictions. Users can choose between RMSE and MAE metrics and view the comparison results 
-presented as bar charts. This page serves as a valuable tool for evaluating the efficiency of various prediction 
+The Performance Page in the Python application enables users to compare the effectiveness of different scenarios
+in making time series predictions. Users can choose between RMSE and MAE metrics and view the comparison results
+presented as bar charts. This page serves as a valuable tool for evaluating the efficiency of various prediction
 scenarios and can assist in making informed decisions based on performance assessments.

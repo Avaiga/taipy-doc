@@ -1,4 +1,7 @@
-# Get Taipy version
+---
+hide:
+  - toc
+---
 You can check your current installed version of Taipy by running the `taipy --version` (or
 `taipy -v`) command in a terminal (Linux, macOS) or command prompt (Windows).
 

@@ -4,14 +4,16 @@ category: finance
 data-keywords: dashboard vizelement layout chart ai multi-page classification enterprise
 short-description: A Taipy Application that analyzes credit card transactions to detect fraud.
 img: fraud_detection/images/fraud_threshold.png
+hide:
+    - toc
 ---
 A Taipy Application that analyzes credit card transactions to detect fraud.
 
 !!! note "Taipy Enterprise edition"
 
-    Taipy provides robust, business-focused applications tailored for enterprise environments. To 
-    maintain standards of security and customization, these applications are proprietary like this 
-    application. If you’re looking for solutions that are immediately deployable and customizable to 
+    Taipy provides robust, business-focused applications tailored for enterprise environments. To
+    maintain standards of security and customization, these applications are proprietary like this
+    application. If you’re looking for solutions that are immediately deployable and customizable to
     your business needs, we invite you to try them out and contact us for more detailed information.
 
     [Try it live](https://fraud-detection.taipy.cloud/Transactions){: .tp-btn target='blank' }

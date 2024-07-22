@@ -4,6 +4,8 @@ category: llm
 data-keywords: vizelement ai community
 short-description: Leverage this chatbot using OpenAI's API with GPT-4 to use it as a template for an LLM inference application.
 img: 5_chatbot/images/chatbot_meds_conv.png
+hide:
+    - toc
 ---
 This demo showcases Taipy's ability to enable end-users to run inference using LLMs. Here, we
 use GPT-4 to create a chatbot and display the conversation in an interactive chat interface.

@@ -1,5 +1,7 @@
-# Deploying using Docker
-
+---
+hide:
+    - toc
+---
 There are typically two situations where you want to deploy a Taipy application
 using Docker:
 

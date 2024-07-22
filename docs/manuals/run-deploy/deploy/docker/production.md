@@ -1,11 +1,11 @@
-## Prerequisites
+# Prerequisites
 
 - Knowledge of Docker.
 - [Running a Taipy application](../../run/index.md)
 - [Followed steps for development](development.md)
 
 
-## Production ready Dockerfile
+# Production ready Dockerfile
 
 The following Dockerfile contains the minimum configuration settings to deploy your application to production.
 
@@ -52,11 +52,11 @@ ENTRYPOINT [ "python", "main.py", "-P", "5000", "-H", "0.0.0.0", "--no-reloader"
     RUN apt update && ACCEPT_EULA=Y apt install -y msodbcsql18 unixodbc-dev
     ```
 
-## Production ready Docker Compose
+# Production ready Docker Compose
 
 Exposing your application directly to the Internet is not recommended. Letting
 [Nginx](https://nginx.org) handle the responsibility is better for security and reliability.
-Consequently, besides your `docker-compose.yaml`, create a file named `nginx.conf` with 
+Consequently, besides your `docker-compose.yaml`, create a file named `nginx.conf` with
 [the following content](./nginx.conf).
 
 Then, update your `docker-compose.yaml`:
