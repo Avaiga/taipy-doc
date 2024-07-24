@@ -38,8 +38,9 @@ To expose the Taipy REST APIs, the Taipy REST server must first be started.
     ``` python
     import taipy as tp
 
-    rest_service = tp.Rest()
-    tp.run(rest_service)
+    if __name__ == "__main__":
+        rest_service = tp.Rest()
+        tp.run(rest_service)
     ```
     Below is the output of the previous Python code execution.
     ```

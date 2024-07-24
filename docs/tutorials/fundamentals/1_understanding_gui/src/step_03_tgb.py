@@ -1,7 +1,6 @@
-from taipy.gui import Gui, notify
 import taipy.gui.builder as tgb
+from taipy.gui import Gui, notify
 
-text = "Original text"
 
 def on_button_action(state):
     notify(state, 'info', f'The text is: {state.text}')
@@ -12,13 +11,15 @@ def on_change(state, var_name, var_value):
         state.text = ""
         return
 
-# Definition of the page
-with tgb.Page() as page:
-    tgb.text("# Getting started with Taipy GUI", mode="md")
-    tgb.text("My text: {text}")
+if __name__ == "__main__":
+    text = "Original text"
 
-    tgb.input("{text}")
-    tgb.button("Run local", on_action=on_button_action)
+    # Definition of the page
+    with tgb.Page() as page:
+        tgb.text("# Getting started with Taipy GUI", mode="md")
+        tgb.text("My text: {text}")
 
+        tgb.input("{text}")
+        tgb.button("Run local", on_action=on_button_action)
 
-Gui(page).run(debug=True)
+    Gui(page).run(debug=True)

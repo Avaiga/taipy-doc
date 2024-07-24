@@ -1,8 +1,8 @@
-from taipy.core.config import Config
-import taipy as tp
-import datetime as dt
-import pandas as pd
 import time
+
+import taipy as tp
+from taipy.core.config import Config
+
 
 # Normal function used by Taipy
 def double(nb):
@@ -13,13 +13,11 @@ def add(nb):
     time.sleep(10)
     return nb + 10
 
-
-Config.load('config.toml')
-Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
-
-
 if __name__=="__main__":
-    scenario_cfg = Config.scenarios['my_scenario']
+    Config.load("config.toml")
+    Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
+
+    scenario_cfg = Config.scenarios["my_scenario"]
     tp.Core().run()
     scenario_1 = tp.create_scenario(scenario_cfg)
     scenario_2 = tp.create_scenario(scenario_cfg)

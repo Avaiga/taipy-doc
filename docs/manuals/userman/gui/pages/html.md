@@ -11,14 +11,17 @@ Creating a page that displays HTML content needs the application to create an in
 ```python
 from taipy.gui import Html
 
-html_page = Html("""
+if __name__ == "__main__":
+    html_page = Html("""
 <h1>Page title</h1>
 
 Any <a href="https://en.wikipedia.org/wiki/HTML"><i>HTML</i></a>
 content can be used here.
 
 <taipy:button>Press</taipy:button>
-""")
+    """)
+
+    Gui(page).run()
 ```
 
 The *html_page* variable holds a page whose content is defined from HTML text.
@@ -60,7 +63,8 @@ defined in HTML as follows:
 ```python linenums="1"
 from taipy.gui import Gui, Html
 
-page = Html("""
+if __name__ == "__main__":
+    page = Html("""
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,9 +80,9 @@ page = Html("""
     <button id="alert_button" onclick="send_alert();">Send alert</button>
 </body>
 </html>
-""")
+    """)
 
-Gui(page).run()
+    Gui(page).run()
 ```
 
 In line 16, you can spot where the HTML button is created, along with its event handler: the
@@ -92,26 +96,26 @@ To fix this problem, you must set the event handler by code when the JavaScript 
 client.<br/>
 Here is a version of the variable *page* that fixes the problem:
 
-```python linenums="3"
-page = Html("""
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Invoking JavaScript</title>
-    <script type="text/javascript">
-        function send_the_alert() {
-            alert("Just got an alert!")
-        };
-        const alert_button = document.getElementById("alert_button");
-        alert_button.addEventListener("click", send_the_alert);
-    </script>
-</head>
-<body>
-    <h1>Sending an alert</h1>
-    <button id="alert_button">Send alert</button>
-</body>
-</html>
-""")
+```python linenums="4"
+    page = Html("""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Invoking JavaScript</title>
+        <script type="text/javascript">
+            function send_the_alert() {
+                alert("Just got an alert!")
+            };
+            const alert_button = document.getElementById("alert_button");
+            alert_button.addEventListener("click", send_the_alert);
+        </script>
+    </head>
+    <body>
+        <h1>Sending an alert</h1>
+        <button id="alert_button">Send alert</button>
+    </body>
+    </html>
+    """)
 ```
 
 Notice that, in line 18, where the button element is defined, the setting of the event handler has

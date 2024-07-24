@@ -24,11 +24,11 @@ Here is an example of how to create a page using the Page Builder:
 from taipy.gui import Gui
 import taipy.gui.builder as tgb
 
+if __name__ == "__main__":
+    with tgb.Page() as page:
+        # add your visual elements here
 
-with tgb.Page() as page:
-    # add your visual elements here
-
-Gui(page).run()
+    Gui(page).run()
 ```
 
 Elements are added in the `with` block for the *page* object.<br/>
@@ -209,10 +209,11 @@ def on_action(state, id):
         # Do something...
         pass
 
-with tgb.Page() as page:
-    tgb.button("Press me", id="my_button")
+if __name__ == "__main__":
+    with tgb.Page() as page:
+        tgb.button("Press me", id="my_button")
 
-Gui(page).run()
+    Gui(page).run()
 ```
 
 The `button^` does not define its *on_action* property: Taipy looks for an *on_action()* function

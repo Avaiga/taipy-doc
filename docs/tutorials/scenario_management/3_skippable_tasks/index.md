@@ -108,13 +108,13 @@ task_cfg = Config.configure_task("multiply_and_add",
 
 With the code below, we create and submit an instance of this scenario configuration.
 
-```py
+```python
 scenario = tp.create_scenario(scenario_cfg)
 tp.submit(scenario)
 print("Results (sum):", scenario.sum.read())
 ```
 
-```py
+```bash
 [...] [Taipy] [INFO]   job   JOB_multiply_and_add_...   is
 completed.
 Results (sum): 23
@@ -125,7 +125,7 @@ The task associated with my Task has been completed, which means that my functio
 The line below is resubmitting the scenario, but please note that I haven't made
 any changes to my input Data nodes in any way.
 
-```py
+```python
 tp.submit(scenario)
 print("Results (sum):", scenario.sum.read())
 ```
@@ -136,13 +136,13 @@ If there are multiple tasks in this scenario, Taipy may skip several of them.
 The code below shows what happens when we submit the scenario after making a change to an input Data node.
 In this case, the value of *nb_1* is updated from 21 to 42.
 
-```py
+```python
 scenario.nb_1.write(42)
 tp.submit(scenario)
 print("Results (sum):", scenario.sum.read())
 ```
 
-```py
+```bash
 [...] [Taipy] [INFO]   job   JOB_multiply_and_add_...   is
 completed.
 Results (sum): 44
@@ -167,7 +167,7 @@ Let's revisit our previous code and modify the Data nodes to have a Global scope
   Your browser does not support the video tag.
 </video>
 
-```py
+```python
 from taipy.config import Config, Scope
 
 nb_1_cfg = Config.configure_data_node('nb1', scope=Scope.GLOBAL)
@@ -183,18 +183,15 @@ scenario_cfg = Config.configure_scenario("scenario", [task_cfg])
 The first line creates a scenario consisting of Data nodes, and tasks.
 Following this, we submit it.
 
-```py
+```python
 scenario_1 = tp.create_scenario(scenario_cfg)
 tp.submit(scenario_1)
 print("Results (sum):", scenario_1.sum.read())
 ```
 
-```py
+```bash
 [...] [Taipy] [INFO]   job   JOB_task_multiply_and_add_...   is
 completed.
-```
-
-```py
 Results (sum): 23
 ```
 
@@ -204,13 +201,13 @@ Now, let's create another scenario.
 This new scenario won't create new Global Data nodes (both input and output).
 Instead, it will reuse the ones that were created by *scenario_1*.
 
-```py
+```python
 scenario_2 = tp.create_scenario(scenario_cfg)
 tp.submit(scenario_2)
 print("Results (sum):", scenario_2.sum.read())
 ```
 
-```py
+```bash
 [...] [Taipy] [INFO]   job   JOB_task_multiply_and_add_...   is
 skipped.
 Results (sum): 23

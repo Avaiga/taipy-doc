@@ -45,7 +45,8 @@ part of a scenario.
     import taipy as tp
     from my_config import sales_history_cfg
 
-    sale_history_datanode = tp.create_global_data_node(sales_history_cfg)
+    if __name__ == "__main__":
+        sale_history_datanode = tp.create_global_data_node(sales_history_cfg)
     ```
 
 !!! warning
@@ -73,12 +74,13 @@ passing the data node id as a parameter:
     import taipy as tp
     import my_config
 
-    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+    if __name__ == "__main__":
+        scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-    data_node = scenario.sales_history
-    data_node_retrieved = scenario.sales_history
-    data_node = tp.get(data_node.id)
-    # data_node == data_node_retrieved
+        data_node = scenario.sales_history
+        data_node_retrieved = scenario.sales_history
+        data_node = tp.get(data_node.id)
+        # data_node == data_node_retrieved
     ```
 
 ## Get data nodes by config_id
@@ -92,21 +94,22 @@ can be directly accessed as attributes by using their config_id:
     import taipy as tp
     import my_config
 
-    # Creating a scenario from a config
-    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+    if __name__ == "__main__":
+        # Creating a scenario from a config
+        scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-    # Access the data node 'sales_history' from the scenario
-    scenario.sales_history
+        # Access the data node 'sales_history' from the scenario
+        scenario.sales_history
 
-    # Access the sequence 'sales' from the scenario and
-    # then access the data node 'sales_history' from the sequence
-    sequence = scenario.sales
-    sequence.sales_history
+        # Access the sequence 'sales' from the scenario and
+        # then access the data node 'sales_history' from the sequence
+        sequence = scenario.sales
+        sequence.sales_history
 
-    # Access the task 'training' from the sequence and
-    # then access the data node 'sales_history' from the task
-    task = sequence.training
-    task.sales_history
+        # Access the task 'training' from the sequence and
+        # then access the data node 'sales_history' from the task
+        task = sequence.training
+        task.sales_history
     ```
 
 Data nodes can be retrieved by using `taipy.get_entities_by_config_id()^`
@@ -119,13 +122,14 @@ nodes instantiated from the config_id provided as a parameter.
     import taipy as tp
     import my_config
 
-    # Create 2 scenarios, which will also create 2 trained_model data nodes.
-    scenario_1 = tp.create_scenario(my_config.monthly_scenario_cfg)
-    scenario_2 = tp.create_scenario(my_config.monthly_scenario_cfg)
+    if __name__ == "__main__":
+        # Create 2 scenarios, which will also create 2 trained_model data nodes.
+        scenario_1 = tp.create_scenario(my_config.monthly_scenario_cfg)
+        scenario_2 = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-    # Get all data nodes by config_id, this will return a list of 2 trained_model data nodes
-    # created alongside the 2 scenarios.
-    all_trained_model_dns = tp.get_entities_by_config_id("trained_model")
+        # Get all data nodes by config_id, this will return a list of 2 trained_model data nodes
+        # created alongside the 2 scenarios.
+        all_trained_model_dns = tp.get_entities_by_config_id("trained_model")
     ```
 
 ##  Get all data nodes
@@ -139,16 +143,17 @@ directly accessed as attributes:
     import taipy as tp
     import my_config
 
-    # Creating a scenario from a config
-    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+    if __name__ == "__main__":
+        # Creating a scenario from a config
+        scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-    # Access all the data nodes from the scenario
-    scenario.data_nodes
+        # Access all the data nodes from the scenario
+        scenario.data_nodes
 
-    # Access the sequence 'sales' from the scenario and
-    # then access all the data nodes from the sequence
-    sequence = scenario.sales
-    sequence.data_nodes
+        # Access the sequence 'sales' from the scenario and
+        # then access all the data nodes from the sequence
+        sequence = scenario.sales
+        sequence.data_nodes
     ```
 
 All the data nodes can be retrieved using the method `taipy.get_data_nodes()^`
@@ -177,14 +182,15 @@ the type of data node:
     import taipy as tp
     import my_config
 
-    # Creating a scenario from a config
-    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+    if __name__ == "__main__":
+        # Creating a scenario from a config
+        scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-    # Retrieve a data node
-    data_node = scenario.sales_history
+        # Retrieve a data node
+        data_node = scenario.sales_history
 
-    # Returns the content stored on the data node
-    data_node.read()
+        # Returns the content stored on the data node
+        data_node.read()
     ```
 
 To write some data on the data node, like the output of a task,
@@ -199,19 +205,20 @@ type) as a parameter and writes it on the data node:
     import taipy as tp
     import my_config
 
-    # Creating a scenario from a config
-    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+    if __name__ == "__main__":
+        # Creating a scenario from a config
+        scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-    # Retrieve a data node
-    data_node = scenario.sales_history
+        # Retrieve a data node
+        data_node = scenario.sales_history
 
-    data = [{"product": "a", "qty": "2"}, {"product": "b", "qty": "4"}]
+        data = [{"product": "a", "qty": "2"}, {"product": "b", "qty": "4"}]
 
-    # Writes the dictionary on the data node
-    data_node.write(data)
+        # Writes the dictionary on the data node
+        data_node.write(data)
 
-    # Returns the new data stored on the data node
-    data_retrieved = data_node.read()
+        # Returns the new data stored on the data node
+        data_retrieved = data_node.read()
     ```
 
 ## Pickle
@@ -1120,19 +1127,20 @@ existing data.
     import taipy as tp
     import my_config
 
-    # Creating a scenario from a config
-    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+    if __name__ == "__main__":
+        # Creating a scenario from a config
+        scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-    # Retrieve a data node
-    data_node = scenario.sales_history
+        # Retrieve a data node
+        data_node = scenario.sales_history
 
-    data = [{"product": "a", "qty": "2"}, {"product": "b", "qty": "4"}]
+        data = [{"product": "a", "qty": "2"}, {"product": "b", "qty": "4"}]
 
-    # Append the dictionary to the data node
-    data_node.append(data)
+        # Append the dictionary to the data node
+        data_node.append(data)
 
-    # Returns the new data stored on the data node
-    data_retrieved = data_node.read()
+        # Returns the new data stored on the data node
+        data_retrieved = data_node.read()
     ```
 
 !!! warning "Supported data node types"
@@ -1698,17 +1706,18 @@ To get the parent entities of a data node (scenarios, sequences, or tasks) you c
     import taipy as tp
     import my_config
 
-    # Create a scenario from a config
-    scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
+    if __name__ == "__main__":
+        # Create a scenario from a config
+        scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 
-    # Retrieve a data node
-    data_node = scenario.sales_history
+        # Retrieve a data node
+        data_node = scenario.sales_history
 
-    # Retrieve the parent entities of the data node
-    parent_entities = data_node.get_parents()
-    # {'scenarios': [Scenario 1], 'sequences': [Sequence 1], 'tasks': [Task 1]}
+        # Retrieve the parent entities of the data node
+        parent_entities = data_node.get_parents()
+        # {'scenarios': [Scenario 1], 'sequences': [Sequence 1], 'tasks': [Task 1]}
 
-    # Retrieve the parent entities of the data node
-    tp.get_parents(data_node)
-    # {'scenarios': [Scenario 1], 'sequences': [Sequence 1], 'tasks': [Task 1]}
+        # Retrieve the parent entities of the data node
+        tp.get_parents(data_node)
+        # {'scenarios': [Scenario 1], 'sequences': [Sequence 1], 'tasks': [Task 1]}
     ```

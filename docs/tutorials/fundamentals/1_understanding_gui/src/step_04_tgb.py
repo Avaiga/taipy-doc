@@ -1,12 +1,12 @@
-from taipy.gui import Gui, notify
-import taipy.gui.builder as tgb
 import pandas as pd
 
-text = "Original text"
+import taipy.gui.builder as tgb
+from taipy.gui import Gui, notify
+
 
 def local_callback(state):
     notify(state, 'info', f'The text is: {state.text}')
-    
+
     temp = state.dataframe.copy()
     temp.loc[len(temp)] = {"Text":state.text,
                             "Score Pos":0,
@@ -16,26 +16,28 @@ def local_callback(state):
     state.dataframe = temp
     state.text = ""
 
-# Definition of the page
-with tgb.Page() as page:
-    tgb.toggle(theme=True)
+if __name__ == "__main__":
+    text = "Original text"
 
-    tgb.text("# Getting started with Taipy GUI", mode="md")
-    tgb.text("My text: {text}")
+    dataframe = pd.DataFrame({"Text":['Test', 'Other', 'Love'],
+                            "Score Pos":[1, 1, 4],
+                            "Score Neu":[2, 3, 1],
+                            "Score Neg":[1, 2, 0],
+                            "Overall":[0, -1, 4]})
 
-    tgb.input("{text}")
-    tgb.button("Analyze", on_action=local_callback)
+    # Definition of the page
+    with tgb.Page() as page:
+        tgb.toggle(theme=True)
 
-    tgb.table("{dataframe}")
-    tgb.chart("{dataframe}", type="bar", x="Text", 
-              y__1="Score Pos", y__2="Score Neu", y__3="Score Neg", y__4="Overall",
-              color__1="green", color__2="grey", color__3="red", type__4="line")
+        tgb.text("# Getting started with Taipy GUI", mode="md")
+        tgb.text("My text: {text}")
 
+        tgb.input("{text}")
+        tgb.button("Analyze", on_action=local_callback)
 
-dataframe = pd.DataFrame({"Text":['Test', 'Other', 'Love'],
-                          "Score Pos":[1, 1, 4],
-                          "Score Neu":[2, 3, 1],
-                          "Score Neg":[1, 2, 0],
-                          "Overall":[0, -1, 4]})
+        tgb.table("{dataframe}")
+        tgb.chart("{dataframe}", type="bar", x="Text",
+                y__1="Score Pos", y__2="Score Neu", y__3="Score Neg", y__4="Overall",
+                color__1="green", color__2="grey", color__3="red", type__4="line")
 
-Gui(page).run(debug=True)
+    Gui(page).run(debug=True)

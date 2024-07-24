@@ -2,7 +2,6 @@
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 
-
 Taipy significantly simplifies the process of building a multi-page application. To create a
 multi-page application, you need to define a dictionary of pages. In this example, we will
 create three pages: a *root* page and two additional pages (page 1 & page 2). We will incorporate
@@ -16,42 +15,44 @@ could have one page created with Markdown and another with the Python API.
     ```python
     from taipy import Gui
 
-    # Add a navbar to switch from one page to the other
-    root_md = """
-    <|navbar|>
-    # Multi-page application
-    """
-    page1_md = "## This is page 1"
-    page2_md = "## This is page 2"
+    if __name__ == "__main__":
+        # Add a navbar to switch from one page to the other
+        root_md = """
+        <|navbar|>
+        # Multi-page application
+        """
+        page1_md = "## This is page 1"
+        page2_md = "## This is page 2"
 
-    pages = {
-        "/": root_md,
-        "page1": page1_md,
-        "page2": page2_md
-    }
-    Gui(pages=pages).run()
+        pages = {
+            "/": root_md,
+            "page1": page1_md,
+            "page2": page2_md
+        }
+        Gui(pages=pages).run()
     ```
 === "Python"
     ```python
     from taipy import Gui
     import taipy.gui.builder as tgb
 
-    # Add a navbar to switch from one page to the other
-    with tgb.Page() as root_page:
-        tgb.navbar()
-        tgb.text("# Multi-page application", mode="md")
+    if __name__ == "__main__":
+        # Add a navbar to switch from one page to the other
+        with tgb.Page() as root_page:
+            tgb.navbar()
+            tgb.text("# Multi-page application", mode="md")
 
-    with tgb.Page() as page_1:
-        tgb.text("## This is page 1", mode="md")
-    with tgb.Page() as page_2:
-        tgb.text("## This is page 2", mode="md")
+        with tgb.Page() as page_1:
+            tgb.text("## This is page 1", mode="md")
+        with tgb.Page() as page_2:
+            tgb.text("## This is page 2", mode="md")
 
-    pages = {
-        "/": root_page,
-        "page1": page_1,
-        "page2": page_2
-    }
-    Gui(pages=pages).run()
+        pages = {
+            "/": root_page,
+            "page1": page_1,
+            "page2": page_2
+        }
+        Gui(pages=pages).run()
     ```
 
 ## Navigating between pages
@@ -75,23 +76,22 @@ For example, this code creates a menu with two options:
     from taipy.gui import Gui, navigate
 
 
-    root_md="<|menu|label=Menu|lov={[('Page-1', 'Page 1'), ('Page-2', 'Page 2')]}|on_action=menu_option_selected|>"
-    page1_md="## This is page 1"
-    page2_md="## This is page 2"
-
-
     def menu_option_selected(state, action, info):
         page = info["args"][0]
         navigate(state, to=page)
 
+    if __name__ == "__main__":
+        root_md="<|menu|label=Menu|lov={[('Page-1', 'Page 1'), ('Page-2', 'Page 2')]}|on_action=menu_option_selected|>"
+        page1_md="## This is page 1"
+        page2_md="## This is page 2"
 
-    pages = {
-        "/": root_md,
-        "Page-1": page1_md,
-        "Page-2": page2_md
-    }
+        pages = {
+            "/": root_md,
+            "Page-1": page1_md,
+            "Page-2": page2_md
+        }
 
-    Gui(pages=pages).run()
+        Gui(pages=pages).run()
     ```
 === "Python"
     ```python
@@ -103,23 +103,24 @@ For example, this code creates a menu with two options:
         page = info["args"][0]
         navigate(state, to=page)
 
-    # Add a navbar to switch from one page to the other
-    with tgb.Page() as root_page:
-        tgb.menu(label="Menu",
-                 lov=[('Page-1', 'Page 1'), ('Page-2', 'Page 2')],
-                 on_action=menu_option_selected)
+    if __name__ == "__main__":
+        # Add a navbar to switch from one page to the other
+        with tgb.Page() as root_page:
+            tgb.menu(label="Menu",
+                    lov=[('Page-1', 'Page 1'), ('Page-2', 'Page 2')],
+                    on_action=menu_option_selected)
 
-    with tgb.Page() as page_1:
-        tgb.text("## This is page 1", mode="md")
-    with tgb.Page() as page_2:
-        tgb.text("## This is page 2", mode="md")
+            with tgb.Page() as page_1:
+                tgb.text("## This is page 1", mode="md")
+            with tgb.Page() as page_2:
+                tgb.text("## This is page 2", mode="md")
 
-    pages = {
-        "/": root_page,
-        "page1": page_1,
-        "page2": page_2
-    }
-    Gui(pages=pages).run()
+            pages = {
+                "/": root_page,
+                "page1": page_1,
+                "page2": page_2
+            }
+            Gui(pages=pages).run()
     ```
 
 ![Menu](images/menu.png){ width=40% : .tp-image-border }
@@ -131,39 +132,41 @@ through the Taipy pages by default
     ```python
     from taipy import Gui
 
-    # Add a navbar to switch from one page to the other
-    root_md = "<|navbar|>"
-    page1_md = "## This is page 1"
-    page2_md = "## This is page 2"
+    if __name__ == "__main__":
+        # Add a navbar to switch from one page to the other
+        root_md = "<|navbar|>"
+        page1_md = "## This is page 1"
+        page2_md = "## This is page 2"
 
-    pages = {
-        "/": root_md,
-        "page1": page1_md,
-        "page2": page2_md
-    }
-    Gui(pages=pages).run()
+        pages = {
+            "/": root_md,
+            "page1": page1_md,
+            "page2": page2_md
+        }
+        Gui(pages=pages).run()
     ```
 === "Python"
     ```python
     from taipy import Gui
     import taipy.gui.builder as tgb
 
-    # Add a navbar to switch from one page to the other
-    with tgb.Page() as root_page:
-        tgb.navbar()
-        tgb.text("# Multi-page application", mode="md")
+    if __name__ == "__main__":
+        # Add a navbar to switch from one page to the other
+        with tgb.Page() as root_page:
+            tgb.navbar()
+            tgb.text("# Multi-page application", mode="md")
 
-    with tgb.Page() as page_1:
-        tgb.text("## This is page 1", mode="md")
-    with tgb.Page() as page_2:
-        tgb.text("## This is page 2", mode="md")
+        with tgb.Page() as page_1:
+            tgb.text("## This is page 1", mode="md")
+        with tgb.Page() as page_2:
+            tgb.text("## This is page 2", mode="md")
 
-    pages = {
-        "/": root_page,
-        "page1": page_1,
-        "page2": page_2
-    }
-    Gui(pages=pages).run()
+        pages = {
+            "/": root_page,
+            "page1": page_1,
+            "page2": page_2
+        }
+        Gui(pages=pages).run()
     ```
 
 ![Navbar](images/navbar.png){ width=40% : .tp-image-border }

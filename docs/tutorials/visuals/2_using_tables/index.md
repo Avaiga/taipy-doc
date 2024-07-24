@@ -25,16 +25,17 @@ First, let's see how you make tables in Taipy:
 from taipy.gui import Gui, Markdown
 import pandas as pd
 
-food_df = pd.DataFrame({
-    "Meal": ["Lunch", "Dinner", "Lunch", "Lunch", "Breakfast", "Breakfast", "Lunch", "Dinner"],
-    "Category": ["Food", "Food", "Drink", "Food", "Food", "Drink", "Dessert", "Dessert"],
-    "Name": ["Burger", "Pizza", "Soda", "Salad", "Pasta", "Water", "Ice Cream", "Cake"],
-    "Calories": [300, 400, 150, 200, 500, 0, 400, 500],
-})
+if __name__ == "__main__":
+    food_df = pd.DataFrame({
+        "Meal": ["Lunch", "Dinner", "Lunch", "Lunch", "Breakfast", "Breakfast", "Lunch", "Dinner"],
+        "Category": ["Food", "Food", "Drink", "Food", "Food", "Drink", "Dessert", "Dessert"],
+        "Name": ["Burger", "Pizza", "Soda", "Salad", "Pasta", "Water", "Ice Cream", "Cake"],
+        "Calories": [300, 400, 150, 200, 500, 0, 400, 500],
+    })
 
-main_md = Markdown("<|{food_df}|table|>")
+    main_md = Markdown("<|{food_df}|table|>")
 
-Gui(page=main_md).run()
+    Gui(page=main_md).run()
 ```
 
 The table definition `<|{food_df}|table|>` (a syntax often used in Taipy) has these parts:
@@ -273,14 +274,6 @@ from taipy.gui import Gui, Markdown, notify
 import pandas as pd
 
 
-food_df = pd.DataFrame({
-    "Meal": ["Lunch", "Dinner", "Lunch", "Lunch", "Breakfast", "Breakfast", "Lunch", "Dinner"],
-    "Category": ["Food", "Food", "Drink", "Food", "Food", "Drink", "Dessert", "Dessert"],
-    "Name": ["Burger", "Pizza", "Soda", "Salad", "Pasta", "Water", "Ice Cream", "Cake"],
-    "Calories": [300, 400, 150, 200, 500, 0, 400, 500],
-})
-
-
 def food_df_on_edit(state, var_name, payload):
     index = payload["index"] # row index
     col = payload["col"] # column name
@@ -307,23 +300,29 @@ def food_df_on_add(state, var_name, payload):
 
     notify(state, "S", f"Added a new row.")
 
+if __name__ == "__main__":
+    food_df = pd.DataFrame({
+        "Meal": ["Lunch", "Dinner", "Lunch", "Lunch", "Breakfast", "Breakfast", "Lunch", "Dinner"],
+        "Category": ["Food", "Food", "Drink", "Food", "Food", "Drink", "Dessert", "Dessert"],
+        "Name": ["Burger", "Pizza", "Soda", "Salad", "Pasta", "Water", "Ice Cream", "Cake"],
+        "Calories": [300, 400, 150, 200, 500, 0, 400, 500],
+    })
 
-table_properties = {
-    "class_name": "rows-bordered",
-    "filter": True,
-    "on_edit": food_df_on_edit,
-    "on_delete": food_df_on_delete,
-    "on_add": food_df_on_add,
-    "group_by[Category]": True,
-    "apply[Calories]": "sum",
-}
+    table_properties = {
+        "class_name": "rows-bordered",
+        "filter": True,
+        "on_edit": food_df_on_edit,
+        "on_delete": food_df_on_delete,
+        "on_add": food_df_on_add,
+        "group_by[Category]": True,
+        "apply[Calories]": "sum",
+    }
 
-
-main_md = Markdown("""
+    main_md = Markdown("""
 # Daily Calorie Tracker
 
 <|{food_df}|table|properties=table_properties|>
-""")
+    """)
 
-Gui(page=main_md).run()
+    Gui(page=main_md).run()
 ```

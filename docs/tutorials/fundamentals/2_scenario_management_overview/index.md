@@ -156,16 +156,17 @@ configuration. Still, no scenario has been run yet. `tp.submit(<Scenario>)` is t
 that triggers the run of all the scenario-related tasks.
 
 ```python
-# Run of the Core
-tp.Core().run()
+if __name__ == "__main__":
+    # Run of the Core
+    tp.Core().run()
 
-# Creation of the scenario and execution
-scenario = tp.create_scenario(scenario_cfg)
-scenario.historical_temperature.write(data)
-scenario.date_to_forecast.write(dt.datetime.now())
-tp.submit(scenario)
+    # Creation of the scenario and execution
+    scenario = tp.create_scenario(scenario_cfg)
+    scenario.historical_temperature.write(data)
+    scenario.date_to_forecast.write(dt.datetime.now())
+    tp.submit(scenario)
 
-print("Value at the end of task", scenario.predictions.read())
+    print("Value at the end of task", scenario.predictions.read())
 ```
 
 Results:
@@ -259,20 +260,21 @@ Add these few lines to the code of your script. This creates a web application, 
         state.refresh('scenario')
         tp.gui.notify(state, "s", "Saved! Ready to submit")
 
-    date = None
-    with tgb.Page() as scenario_page:
-        tgb.scenario_selector("{scenario}")
-        tgb.text("Select a Date")
-        tgb.date("{date}", on_change=save, active="{scenario}")
+    if __name__ == "__main__":
+        date = None
+        with tgb.Page() as scenario_page:
+            tgb.scenario_selector("{scenario}")
+            tgb.text("Select a Date")
+            tgb.date("{date}", on_change=save, active="{scenario}")
 
-        tgb.text("Run the scenario")
-        tgb.scenario("{scenario}")
-        tgb.scenario_dag("{scenario}")
+            tgb.text("Run the scenario")
+            tgb.scenario("{scenario}")
+            tgb.scenario_dag("{scenario}")
 
-        tgb.text("View all the information on your prediction here")
-        tgb.data_node("{scenario.predictions}")
+            tgb.text("View all the information on your prediction here")
+            tgb.data_node("{scenario.predictions}")
 
-    tp.Gui(scenario_page).run()
+        tp.Gui(scenario_page).run()
     ```
 
 The
