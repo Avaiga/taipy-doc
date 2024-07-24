@@ -88,8 +88,14 @@ integer value greater than 1. That starts each `Job^` in a dedicated process wit
 The default value of *max_nb_of_workers* is 2.
 
 !!! warning
-    In *standalone* mode, it's a good practice to protect the main code with the `if __name__ == "__main":`
-    condition. By doing this, the code will not be re-executed when the subprocesses are spawned.
+
+    In *standalone* mode, when a subprocess is spawned, the code is re-executed except
+    for the code inside the `if __name__ == "__main__":` condition. This can lead to
+    unexpected behavior if the code is not protected.
+
+    Therefore, it's a good practice to protect the main code with the `if __name__ == "__main":`
+    condition in your Taipy application main script. By doing this, the code will not be re-executed
+    when the subprocesses are spawned.
 
 For example, the following configuration will allow Taipy to run up to eight `Job^`s
 simultaneously:

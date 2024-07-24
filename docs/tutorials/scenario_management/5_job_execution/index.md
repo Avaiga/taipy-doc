@@ -38,8 +38,14 @@ This line of code alters the execution mode. Setting it to *standalone* makes Ta
 In this configuration, a maximum of two tasks can run simultaneously.
 
 !!! warning
-    In *standalone* mode, it's a good practice to protect the main code with the `if __name__ == "__main":`
-    condition. By doing this, the code will not be re-executed when the subprocesses are spawned.
+
+    In *standalone* mode, when a subprocess is spawned, the code is re-executed except
+    for the code inside the `if __name__ == "__main__":` condition. This can lead to
+    unexpected behavior if the code is not protected.
+
+    Therefore, it's a good practice to protect the main code with the `if __name__ == "__main":`
+    condition in your Taipy application main script. By doing this, the code will not be re-executed
+    when the subprocesses are spawned.
 
 ```python
 Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
