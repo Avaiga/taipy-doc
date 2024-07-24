@@ -30,7 +30,7 @@ select the text controls on your page and apply style.
 
 The property *value* can be set to any text that will be rendered.<br/>
 This value must be a
-(Formatted string literals)[https://docs.python.org/3/reference/lexical_analysis.html#f-strings]
+[Formatted string literals](https://docs.python.org/3/reference/lexical_analysis.html#f-strings)
 so that if it includes Python expressions (potentially as simple as a variable name), the resulting
 text is displayed.
 
