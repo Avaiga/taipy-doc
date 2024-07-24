@@ -1,11 +1,11 @@
+import taipy as tp
+from taipy import Config
+
+
 def do_nothing(value):
     print(f"do_nothing but printing the value: {value}")
 
-
 if __name__ == "__main__":
-    import taipy as tp
-    from taipy import Config
-
     # Configure a scenario
     value_cfg = Config.configure_data_node("my_value", default_data=42)
     task_cfg = Config.configure_task("my_task", do_nothing, input=[value_cfg])
