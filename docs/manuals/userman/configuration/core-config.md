@@ -12,16 +12,13 @@ Here are the (optional) configurable properties:
     for concurrent access. <br>
     The default value is 1.
 - _**repository_type**_: The type of storage that will be used to hold Taipy entities. Available
-    options are: `filesystem`, `sql` and `mongo`. The filesystem will be used as the default
+    options are: `filesystem` and `mongo`. The filesystem will be used as the default
     repository if no repository type is informed.
 - _**repository_properties**_: A dictionary of properties that will be used to instantiate the
-    chosen repository. Only required if the chosen repository is `sql` or `mongo`.</br>
+    chosen repository. Only required if the chosen repository is `mongo`.</br>
     If _**repository_type**_ is set to `filesystem`, Taipy uses _**root_folder**_ and
     _**storage_folder**_ to store entities. In this case, _**repository_properties**_ attribute
     is not required.</br>
-    If _**repository_type**_ is set to `sql`, the _**db_location**_ attribute is required as the
-    path of a sqlite3 database file. Please refer to
-    [SQL storage section](core-config.md#sql-storage-for-taipy-entities).</br>
     If _**repository_type**_ is set to `mongo`, the possible properties are
     _**mongodb_hostname**_, _**mongodb_user**_, _**mongodb_password**_, _**mongodb_port**_,
     _**application_db**_, _**properties**_. Please refer to
@@ -78,27 +75,6 @@ In this example, we configure:
       Please refer to the [Version management configuration](../../userman/configuration/core-config.md)
       documentation page for more details.
   - In lines 9, a custom *application_name* property are specified.
-
-## SQL storage for Taipy entities
-
-The configuration needed to use a SQL database, through sqlite3 engine, is described in the
-lines 6-7.
-
-```python linenums="1"
-from taipy import Config
-
-Config.configure_core(
-    root_folder=".taipy_root_folder/",
-    storage_folder=".data_folder",
-    repository_type="sql",
-    repository_properties={"db_location": "path_to_sqlite_file/database.db"},
-)
-```
-Taipy creates a table called `taipy_model` in the database described in the configuration, where
-it stores information about the taipy entities.
-
-Here are the configurable properties for the SQL repository:
-    - _**db_location**_: The path of a sqlite3 database file.
 
 ## MongoDB storage for Taipy entities
 
