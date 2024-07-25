@@ -26,7 +26,8 @@ args = CLI(os.path.basename(__file__), REPOS).get_args()
 mkdocs_yml_version = read_doc_version_from_mkdocs_yml_template_file(ROOT_DIR)
 
 # Gather version information for each repository
-repo_defs = {repo if repo == "taipy" else f"taipy-{repo}": {"version": "local", "tag": None} for repo in REPOS + PRIVATE_REPOS}
+repo_defs = {repo if repo == "taipy" else
+             f"taipy-{repo}": {"version": "local", "tag": None} for repo in REPOS + PRIVATE_REPOS}
 CATCH_VERSION_RE = re.compile(r"(^\d+\.\d+?)(?:(\.\d+)(\..*)?)?|develop|local$")
 for version in args.version:
     repo = None
@@ -77,6 +78,7 @@ github_token = os.environ.get("GITHUB_TOKEN", "")
 if github_token:
     github_token += "@"
 github_root = f"https://{github_token}github.com/Avaiga/"
+loggable_github_root = f"https://***@github.com/Avaiga/"
 for repo in repo_defs.keys():
     version = repo_defs[repo]["version"]
     if version == "local":
@@ -89,7 +91,9 @@ for repo in repo_defs.keys():
                 raise IOError(f"Repository '{repo}' must be cloned in \"{TOP_DIR}\".")
     elif version == "develop":
         with GitContext(repo, PRIVATE_REPOS):
-            cmd = subprocess.run(f"\"{git_path}\" ls-remote -q -h {github_root}{repo}.git", shell=True, capture_output=True,
+            cmd = subprocess.run(f"\"{git_path}\" ls-remote -q -h {github_root}{repo}.git",
+                                 shell=True,
+                                 capture_output=True,
                                  text=True)
             if cmd.returncode:
                 if repo in PRIVATE_REPOS or repo[6:] in PRIVATE_REPOS:
@@ -99,20 +103,24 @@ for repo in repo_defs.keys():
                     raise SystemError(f"Problem with {repo}:\nOutput: {cmd.stdout}\nError: {cmd.stderr}")
     else:
         with GitContext(repo, PRIVATE_REPOS):
-            cmd = subprocess.run(f"\"{git_path}\" ls-remote --exit-code --heads {github_root}{repo}.git", shell=True,
-                                 capture_output=True, text=True)
+            cmd = subprocess.run(f"\"{git_path}\" ls-remote --exit-code --heads {github_root}{repo}.git",
+                                 shell=True,
+                                 capture_output=True,
+                                 text=True)
             if cmd.returncode:
                 if repo in PRIVATE_REPOS or repo[6:] in PRIVATE_REPOS:
                     repo_defs[repo]["skip"] = True
                     continue
                 else:
-                    raise SystemError(f"Couldn't query branches from {github_root}{repo}.")
+                    raise SystemError(f"Couldn't query branches from {loggable_github_root}{repo}.")
             if f"release/{version}\n" not in cmd.stdout:
                 raise ValueError(f"No branch 'release/{version}' in repository '{repo}'.")
             tag = repo_defs[repo]["tag"]
             if tag:
-                cmd = subprocess.run(f"\"{git_path}\" ls-remote -t --refs {github_root}{repo}.git", shell=True,
-                                     capture_output=True, text=True)
+                cmd = subprocess.run(f"\"{git_path}\" ls-remote -t --refs {github_root}{repo}.git",
+                                     shell=True,
+                                     capture_output=True,
+                                     text=True)
                 if f"refs/tags/{tag}\n" not in cmd.stdout:
                     raise ValueError(f"No tag '{tag}' in repository '{repo}'.")
 
@@ -121,7 +129,8 @@ if args.check:
     for repo in repo_defs.keys():
         if not repo_defs[repo].get("skip", False):
             version = repo_defs[repo]['version']
-            version = "(local)" if version == "local" else f"branch:{version if version == 'develop' else f'release/{version}'}"
+            version = "(local)" if version == "local" else \
+                f"branch:{version if version == 'develop' else f'release/{version}'}"
             tag = repo_defs[repo]["tag"]
             if tag:
                 version += f" tag:{tag}"
@@ -217,7 +226,8 @@ def move_files(repo: str, src_path: str):
                             with open(full_dst, "r") as f:
                                 dst = f.read()
                             if src != dst:
-                                raise FileExistsError(f"File {rel_path}/{item} already exists and is different (copying repository {repo})")
+                                raise FileExistsError(f"File {rel_path}/{item} "
+                                                      f"already exists and is different (copying repository {repo})")
                         else:
                             shutil.copy(full_src, full_dst)
                 dest_path = os.path.join(ROOT_DIR, "taipy")
@@ -353,13 +363,16 @@ if pipfile_path:
                         version = list(versions.keys())[0]
                         if package == "modin":
                             # Remove 'extras' from modin package requirements
-                            version = re.sub(r"\{\s*extras.*?,\s*version\s*=\s*(.*?)\s*}", r"\1", version)
+                            version = re.sub(r"\{\s*extras.*?,\s*version\s*=\s*(.*?)\s*}",
+                                             r"\1",
+                                             version)
                         new_pipfile.write(f"{package} = {version}\n")
                         if package not in legacy_pipfile_packages:
                             pipfile_changes.append(f"Package '{package}' added ({version})")
                         elif legacy_pipfile_packages[package] != version:
                             pipfile_changes.append(
-                                f"Package '{package}' version changed from {legacy_pipfile_packages[package]} to {version}")
+                                f"Package '{package}' version changed from "
+                                f"{legacy_pipfile_packages[package]} to {version}")
                             del legacy_pipfile_packages[package]
                         else:
                             del legacy_pipfile_packages[package]
