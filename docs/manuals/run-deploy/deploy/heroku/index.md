@@ -1,14 +1,8 @@
-[Heroku](https://heroku.com) is a Cloud provider that allows you to deploy developpment
-and test applications for free.
+This documentation page is available on demand. Please contact us to get it.
 
-The following documentation allows quick deployments on this platform for sharing applications.
+[Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
-!!! warning
-    This documentation targets **test** and **development** contexts only. We recommend not
-    to deploy applications in a production environment when sensitive data is involved.
-
-## Sections
-
-- [Set up your Heroku environment.](setup.md)
-- [Deploy your application with a deployment based on Git.](git.md)
-- [Deploy your application with a deployment based on Docker.](docker.md)
+!!! note "Taipy Enterprise edition"
+    Besides this documentation page, Enterprise Edition customers benefit from 
+    free-of-charge consulting and support to deploy user applications. Check out the
+    [Taipy Enterprise Edition](https://taipy.io/enterprise).
