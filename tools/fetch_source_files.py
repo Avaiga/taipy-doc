@@ -77,6 +77,7 @@ github_token = os.environ.get("GITHUB_TOKEN", "")
 if github_token:
     github_token += "@"
 github_root = f"https://{github_token}github.com/Avaiga/"
+loggable_github_root = f"https://***@github.com/Avaiga/"
 for repo in repo_defs.keys():
     version = repo_defs[repo]["version"]
     if version == "local":
@@ -89,7 +90,9 @@ for repo in repo_defs.keys():
                 raise IOError(f"Repository '{repo}' must be cloned in \"{TOP_DIR}\".")
     elif version == "develop":
         with GitContext(repo, PRIVATE_REPOS):
-            cmd = subprocess.run(f"\"{git_path}\" ls-remote -q -h {github_root}{repo}.git", shell=True, capture_output=True,
+            cmd = subprocess.run(f"\"{git_path}\" ls-remote -q -h {github_root}{repo}.git",
+                                 shell=True,
+                                 capture_output=True,
                                  text=True)
             if cmd.returncode:
                 if repo in PRIVATE_REPOS or repo[6:] in PRIVATE_REPOS:
@@ -99,14 +102,16 @@ for repo in repo_defs.keys():
                     raise SystemError(f"Problem with {repo}:\nOutput: {cmd.stdout}\nError: {cmd.stderr}")
     else:
         with GitContext(repo, PRIVATE_REPOS):
-            cmd = subprocess.run(f"\"{git_path}\" ls-remote --exit-code --heads {github_root}{repo}.git", shell=True,
-                                 capture_output=True, text=True)
+            cmd = subprocess.run(f"\"{git_path}\" ls-remote --exit-code --heads {github_root}{repo}.git",
+                                 shell=True,
+                                 capture_output=True,
+                                 text=True)
             if cmd.returncode:
                 if repo in PRIVATE_REPOS or repo[6:] in PRIVATE_REPOS:
                     repo_defs[repo]["skip"] = True
                     continue
                 else:
-                    raise SystemError(f"Couldn't query branches from {github_root}{repo}.")
+                    raise SystemError(f"Couldn't query branches from {loggable_github_root}{repo}.")
             if f"release/{version}\n" not in cmd.stdout:
                 raise ValueError(f"No branch 'release/{version}' in repository '{repo}'.")
             tag = repo_defs[repo]["tag"]
