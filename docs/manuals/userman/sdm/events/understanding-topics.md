@@ -13,6 +13,34 @@ to be as flexible as possible. For example, we can register to:
 - A scenario deletion
 - Job failures
 
+Topic is defined when you call `Notifier.register()^` method with the following
+parameters:
+
+- _**entity_type**_: If provided, the listener will be notified for all events related to this entity type. 
+    Otherwise, the listener will be notified for events related to all entity types. The possible entity type values
+    are defined in the `EventEntityType^` enum. The possible values are:
+    - CYCLE
+    - SCENARIO
+    - SEQUENCE
+    - TASK
+    - DATA_NODE
+    - JOB
+    - SUBMISSION
+
+- _**entity_id**_: If provided, the listener will be notified for all events related to this entity.
+    Otherwise, the listener will be notified for events related to all entities.
+
+- _**operation**_: If provided, the listener will be notified for all events related to this operation.
+    Otherwise, the listener will be notified for events related to all operations. The possible operation values are 
+    defined in the `EventOperation^` enum. The possible values are:
+    - CREATION
+    - UPDATE
+    - DELETION
+    - SUBMISSION
+
+- _**attribute_name**_: If provided, the listener will be notified for all events related to this entity's attribute.
+    Otherwise, the listener will be notified for events related to all attributes.
+
 !!! example
 
     ```python linenums="1"

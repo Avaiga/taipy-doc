@@ -1,23 +1,21 @@
-When registering to the Notifier, you can specify which events you want to receive by providing topics.
+Event object is used to notify any change in the Core service.
 
-A topic is defined by the combination of an optional entity type, an optional
-entity id, an optional operation, and an optional attribute name. The purpose is
-to be as flexible as possible. For example, we can register to:
+In an `Event^` object, `EventEntityType^` is an Enum representing the entity type. It is used as an attribute of
+the `Event^` object to describe the entity that was changed. The possible operations are `CYCLE`, `SCENARIO`,
+`SEQUENCE`, `TASK`, `DATA_NODE`, `JOB` or `SUBMISSION`.
 
-- All actions emitted by Core
-- All behaviors of scenarios
-- All actions related to a certain data node
-- All task creations
-- A specific data node update
-- A sequence submission
-- A scenario deletion
-- Job failures
+There is also the `EventOperation^`, which is an Enum representing a type of operation performed on a Core entity. 
+It is used as an attribute of the `Event^` object to describe the operation performed on an entity.
+The possible operations are `CREATION`, `UPDATE`, `DELETION`, or `SUBMISSION`.
 
-!!! example
+An event holds the following attributes to represent the change:
 
-    ```python linenums="1"
-    {%
-    include-markdown "./code-example/register-specific-topic-to-notifier.py"
-    comments=false
-     %}
-    ```
+- _**entity_type**_: Type of the entity that was changed (`DataNode^`, `Scenario^`, `Cycle^`, etc. ).
+- _**tasks**_: A list of task configurations.
+- _**entity_id**_: Unique identifier of the entity that was changed.
+- _**operation**_: Enum describing the operation (among `CREATION`, `UPDATE`, `DELETION`, and `SUBMISSION`) 
+    that was performed on the entity.
+- _**attribute_name**_: Name of the entity's attribute changed. Only relevant for `UPDATE` operations
+- _**attribute_value**_: Name of the entity's attribute changed. Only relevant for `UPDATE` operations.
+- _**metadata**_: A dict of additional medata about the source of this event
+- _**creation_date**_: Date and time of the event creation.
