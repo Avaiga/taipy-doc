@@ -199,6 +199,7 @@ nav:
       - "Fraud Detection": gallery/finance/fraud_detection/index.md
     - "Decision Support":
       - "Decision Support": gallery/decision_support/index.md
+      - "Supply Chain": gallery/decision_support/2_supply_chain/index.md
       - "Production Planning": gallery/decision_support/3_production_planning/index.md
       - "QSR Sales Forecasting": gallery/decision_support/3_qsr_sales_forecasting/index.md
       - "Optimize Bar Cut Sizes": gallery/decision_support/bar_cutting/index.md
