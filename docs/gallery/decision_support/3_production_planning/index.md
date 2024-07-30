@@ -3,7 +3,6 @@ title: Production Planning
 category: decision_support
 data-keywords: optimization scenario cycle comparison enterprise
 short-description: Simulate manufacturing scenarios and optimize production quantities to reduce production costs.
-order: 5
 img: 3_production_planning/images/production-planning-data-visualization.png
 ---
 

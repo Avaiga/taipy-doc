@@ -3,7 +3,6 @@ title: QSR Sales Forecasting
 category: decision_support
 data-keywords: ai scenario datanode dag configuration enterprise
 short-description: Perform sales forecasting for a renowned quick service restaurant (QSR) franchise.
-order: 9
 img: 3_qsr_sales_forecasting/images/forecast_page.png
 ---
 
