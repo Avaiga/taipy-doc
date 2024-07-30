@@ -69,9 +69,9 @@ metrics such as total carbon footprint, total cost, and average cost per unit sh
 Charts displaying the volume of demand handled by each warehouse and plant and the number 
 of clients assigned to them are also available.
 
-![Scenario Map](images/scenario_map.png.png){width=90% : .tp-image-border }
+![Scenario Map](images/scenario_map.png){width=90% : .tp-image-border }
 
-![Scenario Sankey](images/scenario_sankey.png.png){width=90% : .tp-image-border }
+![Scenario Sankey](images/scenario_sankey.png){width=90% : .tp-image-border }
 
 
 ## Comparison
