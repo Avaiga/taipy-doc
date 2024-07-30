@@ -49,12 +49,9 @@ products, and 100 customers and their related information. You can also view a m
 showing the locations of potential warehouse sites, production plants, and all customer 
 locations.
 
-
 ![Data page](images/data_page.png){width=90% : .tp-image-border }
 
-
 ## Scenario Management
-
 
 This page allows you to create and modify scenarios. You can adjust parameters such as:
 
@@ -64,9 +61,7 @@ This page allows you to create and modify scenarios. You can adjust parameters s
 - After setting the parameters, you can submit the scenario to launch the optimization 
 engine and get the optimal solution.
 
-
-![Scenario Creation](images/scenario_creation.png){width=90% : .tp-image-border }
-
+![Scenario Creation](images/scenario_creation_page.png){width=90% : .tp-image-border }
 
 The results include a solution map showing the selected warehouses, production plants, 
 customer locations, and routes used to service each customer. Additionally, you can view 
@@ -74,7 +69,10 @@ metrics such as total carbon footprint, total cost, and average cost per unit sh
 Charts displaying the volume of demand handled by each warehouse and plant and the number 
 of clients assigned to them are also available.
 
-![Scenario Results](images/scenario_results.png){width=90% : .tp-image-border }
+![Scenario Map](images/scenario_map.png.png){width=90% : .tp-image-border }
+
+![Scenario Sankey](images/scenario_sankey.png.png){width=90% : .tp-image-border }
+
 
 ## Comparison
 
