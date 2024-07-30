@@ -12,4 +12,25 @@ name to select the date selectors on your page and apply style.
 
 # Usage
 
-TODO
+## Linear Progress
+
+The progress render, which is by default set to False, simply handles that if the progress element should be displayed or not.
+
+!!! example "Defination"
+
+    === "Markdown"
+      ```
+      <|Progress|>
+      ```
+    === "HTML"
+
+      ```
+      <taipy:progress></taipy:progress>
+      ```
+
+    === "Python"
+      ```python
+      import taipy.gui.builder as tgb
+      ...
+      tgb.progress()
+      ```
