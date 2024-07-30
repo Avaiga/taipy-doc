@@ -26,7 +26,7 @@ constraints, including changes in demand, fixed costs, and transportation costs.
     that are immediately deployable and customizable to your business needs, we invite
     you to try them out and contact us for more detailed information.
 
-    [Try it live](https://supply-chain.taipy.cloud){: .tp-btn target='blank' }
+    [Try it live](https://supply-chain-3.taipy.cloud){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 
