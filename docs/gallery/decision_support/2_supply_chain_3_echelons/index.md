@@ -52,7 +52,6 @@ In this application, you can:
 - Execute various scenarios and visualize/analyze the optimal solutions generated.
 - Compare your scenarios to evaluate the best option.
 
-
 ## Data page
 
 This first page presents the input data using:
@@ -94,11 +93,9 @@ Important KPI  metrics are also displayed:
 The chart at the bottom displays the volume of demand handled by each warehouse and plant 
 and the number of clients assigned to them.
 
-
 ![Scenario Map](images/scenario_map.png){width=90% : .tp-image-border }
 
 ![Scenario Sankey](images/scenario_sankey.png){width=90% : .tp-image-border }
-
 
 ## Comparison
 
