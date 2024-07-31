@@ -223,9 +223,10 @@ nav:
       - "Fraud Detection": gallery/finance/fraud_detection/index.md
     - "Decision Support":
       - "Decision Support": gallery/decision_support/index.md
-      - "Supply Chain": gallery/decision_support/2_supply_chain/index.md
+      - "Supply Chain - 3 Echelons": gallery/decision_support/2_supply_chain_3_echelons/index.md
       - "Production Planning": gallery/decision_support/3_production_planning/index.md
       - "QSR Sales Forecasting": gallery/decision_support/3_qsr_sales_forecasting/index.md
+      - "Supply Chain - 2 Echelons": gallery/decision_support/3_supply_chain/index.md
       - "Optimize Bar Cut Sizes": gallery/decision_support/bar_cutting/index.md
       - "Churn Classification": gallery/decision_support/churn_classification/index.md
       - "Drift Detection": gallery/decision_support/drift_detection/index.md
