@@ -84,6 +84,8 @@ engine and get the optimal solution.
 The results include a solution map showing the selected warehouses and the routes used 
 (from plants to warehouses to customers). 
 
+![Scenario Map](images/scenario_map.png){width=90% : .tp-image-border }
+
 Important KPI  metrics are also displayed:
 
 - total carbon footprint,
@@ -92,8 +94,6 @@ Important KPI  metrics are also displayed:
 
 The chart at the bottom displays the volume of demand handled by each warehouse and plant 
 and the number of clients assigned to them.
-
-![Scenario Map](images/scenario_map.png){width=90% : .tp-image-border }
 
 ![Scenario Sankey](images/scenario_sankey.png){width=90% : .tp-image-border }
 
