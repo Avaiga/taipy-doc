@@ -8,8 +8,24 @@ img: 2_supply_chain_3_echelons/images/comparison_page.png
 
 This application is an extension of the 
 [2-Echelon application](../3_supply_chain/index.md). It demonstrates a more comprehensive 
-use case for optimizing multi-echelon supply chains. Here the supply chain network 
-includes the following:
+use case for optimizing multi-echelon supply chains. 
+
+!!! note "Taipy Enterprise edition"
+
+    Taipy provides robust, business-focused applications tailored for enterprise
+    environments. To maintain standards of security and customization, these
+    applications are proprietary like this application. If you're looking for solutions
+    that are immediately deployable and customizable to your business needs, we invite
+    you to try them out and contact us for more detailed information.
+
+    [Try it live](https://supply-chain-3.taipy.cloud){: .tp-btn target='blank' }
+    [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
+
+
+![Supply Chain](images/comparison_page.png){width=90% : .tp-image-border }
+
+
+Here the supply chain network includes the following:
 
 - 4 plants, 
 - 25 potential warehouse sites,
@@ -27,22 +43,6 @@ consisting of:
 
 This application can be easily tailored to suit various supply chain configurations and 
 constraints, including changes in demand, fixed costs, and transportation costs.
-
-
-!!! note "Taipy Enterprise edition"
-
-    Taipy provides robust, business-focused applications tailored for enterprise
-    environments. To maintain standards of security and customization, these
-    applications are proprietary like this application. If you're looking for solutions
-    that are immediately deployable and customizable to your business needs, we invite
-    you to try them out and contact us for more detailed information.
-
-    [Try it live](https://supply-chain-3.taipy.cloud){: .tp-btn target='blank' }
-    [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
-
-
-![Supply Chain](images/comparison_page.png){width=90% : .tp-image-border }
-
 
 # Understanding the Application
 
