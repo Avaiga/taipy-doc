@@ -5,10 +5,6 @@ from .exceptions import WrongHeader, NoHeader, NoIndexFile
 
 
 class Item:
-    CATEGORIES = ["fundamentals", "scenario_management", "visuals", "integration", "large_data",
-                  "finance", "decision_support", "llm", "visualization", "other"]
-    TYPES = ["code", "video", "article"]
-
     def __init__(self, parent_path: str, file_path: str):
         self.parent_path = parent_path # ex: docs/tutorials/fundamentals
         self.file_path = file_path # ex: docs/tutorials/fundamentals/1_understanding_gui/index.md
@@ -17,9 +13,10 @@ class Item:
         with open(self.file_path) as file:
             self.header = self._read_header(file)
             self.title = self.header.get("title")
-            self.category = self.header.get("category", "scenario_management")
+            self.category = self.header.get("category")
             self.data_keywords = self.header.get("data-keywords")
             self.short_description = self.header.get("short-description")
+            self.order = int(self.header.get("order", 0))
             self.img = self.header.get("img")
         self._check_header()
 
@@ -35,8 +32,8 @@ class Item:
     def generate_content_for_article(self, main_index=False) -> str:
         """Generate content of an HTML list item."""
         tags_lov = [("enterprise", "Enterprise edition")]
-        path_to_img = '/'.join([self.category, self.img]) if main_index else self.img
-        href = '/'.join([self.category, self.href]) if main_index else self.href
+        path_to_img = f"items/{self.img}" if main_index else f"../items/{self.img}"
+        href = f"items/{self.href}" if main_index else f"../items/{self.href}"
         lines: List[str] = list()
         lines.append(f'  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="{self.data_keywords}">')
         lines.append(f'    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="'
@@ -94,8 +91,8 @@ class Item:
         errors = []
         if not self.title:
             errors.append(f"Missing title in {self.file_path} header")
-        if self.category not in self.CATEGORIES:
-            errors.append(f"Invalid category '{self.category}' in {self.file_path}")
+        print(f"INFO - Category '{self.category}' in {self.file_path}")
+            # errors.append(f"Invalid category '{self.category}' in {self.file_path}")
         if not self.data_keywords:
             errors.append(f"Missing data-keywords in {self.file_path} header")
         if not self.short_description:

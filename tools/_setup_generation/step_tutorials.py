@@ -10,8 +10,7 @@
 # The header contains the following information:
 # - title: The title of the item
 # - category: The category of the item (fundamentals, visuals, scenario_management, 
-# integration or large data)
-# - type: The type of the item (code, video or article)
+# integration, large_data, finance, decision_support, llm, visualization or other)
 # - data-keywords: A comma separated list of keywords
 # - short-description: A short description of the item
 # - img: The path to the image associated with the item
@@ -28,41 +27,8 @@ from .items.exceptions import WrongHeader, NoHeader, NoIndexFile
 
 class TutorialsStep(SetupStep):
     TUTORIALS_FOLDER_NAME = "tutorials"
-
-    def __init__(self):
-        self.content_types = self._initialize_content_types()
-
-    def _initialize_content_types(self) -> Dict[str, Dict]:
-        # Define your content types here. You can add or remove any type according to your needs.
-        return {
-            "fundamentals": {},
-            "scenario_management": {},
-            "visuals": {},
-            "integration": {},
-            "large_data": {}
-        }
-
-    def enter(self, setup: Setup):
-        tutorials_base_path = os.path.join(setup.docs_dir, self.TUTORIALS_FOLDER_NAME)
-        for content_type in self.content_types.keys():
-            folder_path = os.path.join(tutorials_base_path, content_type)
-            self.content_types[content_type] = {
-                "folder_path": folder_path,
-                "index_path": os.path.join(folder_path, "index.md"),
-            }
-
-    def get_id(self) -> str:
-        return "tutorials_step"
-
-    def get_description(self) -> str:
-        return "Generates the list of items for the tutorials index page from various content types."
-
-    def setup(self, setup: Setup):
-        for content_type, paths in self.content_types.items():
-            items = self._get_list_of_items(paths["folder_path"])
-            content = self._build_content(items)
-            self._update_index_file(paths["index_path"], content)
-            print(f"{len(items)} {content_type} items processed.")
+    APPLICATIONS_FOLDER_NAME = "items"
+    NO_CONTENT_TYPE_FOLDERS = ["images", "items"]
 
     def _get_list_of_items(self, folder_path) -> List[Item]:
         items = []
@@ -76,13 +42,80 @@ class TutorialsStep(SetupStep):
                     print(f"WARNING - ", e)
         return items
 
+    def __init__(self):
+        self.content_types = self._initialize_content_types()
+        self.TUTORIALS_BASE_PATH = None
+        self.APPLICATIONS_BASE_PATH = None
+
+    def _initialize_content_types(self) -> Dict[str, Dict]:
+        # Define your content types here. You can add or remove any type according to your needs.
+        return {}
+
+    def enter(self, setup: Setup):
+        self.TUTORIALS_BASE_PATH = os.path.join(setup.docs_dir, self.TUTORIALS_FOLDER_NAME)
+        self.APPLICATIONS_BASE_PATH = os.path.join(self.TUTORIALS_BASE_PATH, self.APPLICATIONS_FOLDER_NAME)
+
+        items = os.listdir(self.TUTORIALS_BASE_PATH)
+        
+        # Filter out only the directories
+        self.content_types = {item: [] for item in items if os.path.isdir(os.path.join(self.TUTORIALS_BASE_PATH, item)) and item not in self.NO_CONTENT_TYPE_FOLDERS}
+        
+
+        for content_type in self.content_types.keys():
+            folder_path = os.path.join(self.TUTORIALS_BASE_PATH, content_type)
+            self.content_types[content_type] = {
+                "folder_path": folder_path,
+                "index_path": os.path.join(folder_path, "index.md"),
+            }
+
+    def get_id(self) -> str:
+        return "tutorials_step"
+
+    def get_description(self) -> str:
+        return "Generates the list of items for the tutorials index page from various content types."
+
+    def setup(self, setup: Setup):
+        items_info = {}
+        items = self._get_list_of_items(self.APPLICATIONS_BASE_PATH)
+        for content_type, paths in self.content_types.items():
+            sublist_of_items = [items for items in items if items.category == content_type]
+            content, items_info_category = self._build_content(sublist_of_items)
+            self._update_index_file(paths["index_path"], content)
+            print(f"{len(sublist_of_items)} {content_type} items processed.")
+            items_info.update(items_info_category)
+        content = self._build_content_for_main_index(items_info)
+        self._update_tutorials_index_file(content)
+        
+    def _get_list_of_items(self, folder_path) -> List[Item]:
+        items = []
+        for sub_folder in os.listdir(folder_path):
+            path = os.path.join(folder_path, sub_folder)
+            if os.path.isdir(path) and sub_folder != "images":
+                try:
+                    item = FolderItem(folder_path, sub_folder)
+                    items.append(item)
+                except NoIndexFile as e:
+                    print(f"WARNING - ", e)
+        return items
+
     def _build_content(self, items: List[Item]) -> str:
+        items_info = {}
         lines: List[str] = list()
         lines.append('<ul class="tp-row tp-row--gutter-sm tp-filtered">')
-        items = sorted(items, key=lambda item: item.href)
+        items = sorted(items, key=lambda item: item.order)
         for item in items:
+            items_info[(item.category, item.order)] = item.generate_content_for_article(main_index=True)
             content = item.generate_content_for_article()
             lines.append(content)
+        lines.append("</ul>")
+        return "\n".join(lines), items_info
+
+    def _build_content_for_main_index(self, items_info: dict):
+        items_info = dict(sorted(items_info.items()))
+        lines: List[str] = list()
+        lines.append('<ul class="tp-row tp-row--gutter-sm tp-filtered">')
+        for item in items_info.values():
+            lines.append(item)
         lines.append("</ul>")
         return "\n".join(lines)
 
@@ -91,6 +124,13 @@ class TutorialsStep(SetupStep):
             tpl_content = file.read()
         updated_content = re.sub(r"\[LIST_OF_ITEMS\]", content, tpl_content)
         with open(index_path, "w") as file:
+            file.write(updated_content)
+
+    def _update_tutorials_index_file(self, content):
+        with open(self.TUTORIALS_BASE_PATH + "/index.md_template") as file:
+            tpl_content = file.read()
+        updated_content = re.sub(r"\[LIST_OF_ITEMS\]", content, tpl_content)
+        with open(self.TUTORIALS_BASE_PATH + "/index.md", "w") as file:
             file.write(updated_content)
 
     def exit(self, setup: Setup):

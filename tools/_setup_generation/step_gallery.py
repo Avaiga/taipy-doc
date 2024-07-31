@@ -27,23 +27,40 @@ from .items.exceptions import WrongHeader, NoHeader, NoIndexFile
 
 class GalleryStep(SetupStep):
     GALLERY_FOLDER_NAME = "gallery"
+    APPLICATIONS_FOLDER_NAME = "items"
+    NO_CONTENT_TYPE_FOLDERS = ["images", "items"]
+
+    def _get_list_of_items(self, folder_path) -> List[Item]:
+        items = []
+        for sub_folder in os.listdir(folder_path):
+            path = os.path.join(folder_path, sub_folder)
+            if os.path.isdir(path) and sub_folder != "images":
+                try:
+                    item = FolderItem(folder_path, sub_folder)
+                    items.append(item)
+                except NoIndexFile as e:
+                    print(f"WARNING - ", e)
+        return items
 
     def __init__(self):
         self.content_types = self._initialize_content_types()
         self.GALLERY_BASE_PATH = None
+        self.APPLICATIONS_BASE_PATH = None
 
     def _initialize_content_types(self) -> Dict[str, Dict]:
         # Define your content types here. You can add or remove any type according to your needs.
-        return {
-            "finance": {},
-            "decision_support": {},
-            "llm": {},
-            "visualization": {},
-            "other": {}
-        }
+        return {}
 
     def enter(self, setup: Setup):
         self.GALLERY_BASE_PATH = os.path.join(setup.docs_dir, self.GALLERY_FOLDER_NAME)
+        self.APPLICATIONS_BASE_PATH = os.path.join(self.GALLERY_BASE_PATH, self.APPLICATIONS_FOLDER_NAME)
+
+        items = os.listdir(self.GALLERY_BASE_PATH)
+        
+        # Filter out only the directories
+        self.content_types = {item: [] for item in items if os.path.isdir(os.path.join(self.GALLERY_BASE_PATH, item)) and item not in self.NO_CONTENT_TYPE_FOLDERS}
+        
+
         for content_type in self.content_types.keys():
             folder_path = os.path.join(self.GALLERY_BASE_PATH, content_type)
             self.content_types[content_type] = {
@@ -59,11 +76,12 @@ class GalleryStep(SetupStep):
 
     def setup(self, setup: Setup):
         items_info = {}
+        items = self._get_list_of_items(self.APPLICATIONS_BASE_PATH)
         for content_type, paths in self.content_types.items():
-            items = self._get_list_of_items(paths["folder_path"])
-            content, items_info_category = self._build_content(items)
+            sublist_of_items = [items for items in items if items.category == content_type]
+            content, items_info_category = self._build_content(sublist_of_items)
             self._update_index_file(paths["index_path"], content)
-            print(f"{len(items)} {content_type} items processed.")
+            print(f"{len(sublist_of_items)} {content_type} items processed.")
             items_info.update(items_info_category)
         content = self._build_content_for_main_index(items_info)
         self._update_gallery_index_file(content)
@@ -84,9 +102,9 @@ class GalleryStep(SetupStep):
         items_info = {}
         lines: List[str] = list()
         lines.append('<ul class="tp-row tp-row--gutter-sm tp-filtered">')
-        items = sorted(items, key=lambda item: item.href)
+        items = sorted(items, key=lambda item: item.order)
         for item in items:
-            items_info[item.img] = item.generate_content_for_article(main_index=True)
+            items_info[(item.order, item.title)] = item.generate_content_for_article(main_index=True)
             content = item.generate_content_for_article()
             lines.append(content)
         lines.append("</ul>")
