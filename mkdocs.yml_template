@@ -15,57 +15,57 @@ nav:
     - "Fundamentals":
       - "Fundamentals": tutorials/fundamentals/index.md
       - "Understanding GUI":
-        - "Understanding GUI": tutorials/items/understanding_gui/index.md
-        - "1 - First Web page": tutorials/items/understanding_gui/step_01/step_01.md
-        - "2 - Visual elements": tutorials/items/understanding_gui/step_02/step_02.md
-        - "3 - Interactions": tutorials/items/understanding_gui/step_03/step_03.md
-        - "4 - Charts": tutorials/items/understanding_gui/step_04/step_04.md
-        - "5 - Python expressions in properties": tutorials/items/understanding_gui/step_05/step_05.md
-        - "6 - Page layouts": tutorials/items/items/understanding_gui/step_06/step_06.md
-        - "7 - Multi-pages, navbars, and menus": tutorials/items/understanding_gui/step_07/step_07.md
-      - "Scenario management Overview": tutorials/items/scenario_management_overview/index.md
+        - "Understanding GUI": tutorials/articles/understanding_gui/index.md
+        - "1 - First Web page": tutorials/articles/understanding_gui/step_01/step_01.md
+        - "2 - Visual elements": tutorials/articles/understanding_gui/step_02/step_02.md
+        - "3 - Interactions": tutorials/articles/understanding_gui/step_03/step_03.md
+        - "4 - Charts": tutorials/articles/understanding_gui/step_04/step_04.md
+        - "5 - Python expressions in properties": tutorials/articles/understanding_gui/step_05/step_05.md
+        - "6 - Page layouts": tutorials/articles/understanding_gui/step_06/step_06.md
+        - "7 - Multi-pages, navbars, and menus": tutorials/articles/understanding_gui/step_07/step_07.md
+      - "Scenario management Overview": tutorials/articles/scenario_management_overview/index.md
       - "First Realistic application":
-        - "First Realistic application": tutorials/items/complete_application/index.md
-        - "1 - Data visualization page": tutorials/items/complete_application/step_01/step_01.md
-        - "2 - Algorithms used": tutorials/items/complete_application/step_02/step_02.md
-        - "3 - Scenario configuration": tutorials/items/complete_application/step_03/step_03.md
-        - "4 - Scenario page": tutorials/items/complete_application/step_04/step_04.md
-        - "5 - Performance page": tutorials/items/complete_application/step_05/step_05.md
-      - "Creating an LLM ChatBot": tutorials/items/chatbot/index.md
-      - "Creating an RAG ChatBot": tutorials/items/rag_chatbot/index.md
+        - "First Realistic application": tutorials/articles/complete_application/index.md
+        - "1 - Data visualization page": tutorials/articles/complete_application/step_01/step_01.md
+        - "2 - Algorithms used": tutorials/articles/complete_application/step_02/step_02.md
+        - "3 - Scenario configuration": tutorials/articles/complete_application/step_03/step_03.md
+        - "4 - Scenario page": tutorials/articles/complete_application/step_04/step_04.md
+        - "5 - Performance page": tutorials/articles/complete_application/step_05/step_05.md
+      - "Creating an LLM ChatBot": tutorials/articles/chatbot/index.md
+      - "Creating an RAG ChatBot": tutorials/articles/rag_chatbot/index.md
     - "Visuals":
       - "Visuals": tutorials/visuals/index.md
-      - "Callbacks in Taipy": tutorials/items/callbacks/index.md
-      - "Using Tables": tutorials/items/using_tables/index.md
-      - "Multi-page Application": tutorials/items/multipage_application/index.md
-      - "Long Running Callbacks": tutorials/items/long_callbacks/index.md
-      - "Content update with Partials": tutorials/items/partials/index.md
-      - "Real-time data visualization": tutorials/items/multithreading/index.md
-      - "Stylekit": tutorials/items/css_style_kit/index.md
-      - "Multi-user": tutorials/items/multi_user/index.md
+      - "Callbacks in Taipy": tutorials/articles/callbacks/index.md
+      - "Using Tables": tutorials/articles/using_tables/index.md
+      - "Multi-page Application": tutorials/articles/multipage_application/index.md
+      - "Long Running Callbacks": tutorials/articles/long_callbacks/index.md
+      - "Content update with Partials": tutorials/articles/partials/index.md
+      - "Real-time data visualization": tutorials/articles/multithreading/index.md
+      - "Stylekit": tutorials/articles/css_style_kit/index.md
+      - "Multi-user": tutorials/articles/multi_user/index.md
     - "Scenario Management":
       - "Scenario Management": tutorials/scenario_management/index.md
-      - "Scenarios": tutorials/items/scenarios/index.md
-      - "Data Nodes": tutorials/items/the_data_nodes/index.md
-      - "Skippable Tasks": tutorials/items/skippable_tasks/index.md
-      - "Cycles and Scopes": tutorials/items/cycles_scopes/index.md
-      - "Job Execution mode": tutorials/items/job_execution/index.md
-      - "Scenario Comparison": tutorials/items/scenario_comparison/index.md
-      - "Scenario Subscription": tutorials/items/scenario_subscription/index.md
-      - "Manage application versions": tutorials/items/version_management/index.md
+      - "Scenarios": tutorials/articles/scenarios/index.md
+      - "Data Nodes": tutorials/articles/the_data_nodes/index.md
+      - "Skippable Tasks": tutorials/articles/skippable_tasks/index.md
+      - "Cycles and Scopes": tutorials/articles/cycles_scopes/index.md
+      - "Job Execution mode": tutorials/articles/job_execution/index.md
+      - "Scenario Comparison": tutorials/articles/scenario_comparison/index.md
+      - "Scenario Subscription": tutorials/articles/scenario_subscription/index.md
+      - "Manage application versions": tutorials/articles/version_management/index.md
     - "Integration":
         - "Integration": tutorials/integration/index.md
-        - "Integrate Third-Party Components": tutorials/items/3rd_party_components/index.md
-        - "Taipy Application on Colab with Ngrok": tutorials/items/colab_with_ngrok/index.md
-        - "Jupyter Notebooks": tutorials/items/jupyter_notebooks/index.md
-        - "Integrating Databricks": tutorials/items/databricks/index.md
-        - "Integration with Dataiku": tutorials/items/dataiku/index.md
-        - "Integration with IBM Watson Studio": tutorials/items/ibm_watson_studio/index.md
+        - "Integrate Third-Party Components": tutorials/articles/3rd_party_components/index.md
+        - "Taipy Application on Colab with Ngrok": tutorials/articles/colab_with_ngrok/index.md
+        - "Jupyter Notebooks": tutorials/articles/jupyter_notebooks/index.md
+        - "Integrating Databricks": tutorials/articles/databricks/index.md
+        - "Integration with Dataiku": tutorials/articles/dataiku/index.md
+        - "Integration with IBM Watson Studio": tutorials/articles/ibm_watson_studio/index.md
     - "Large Data":
-      - "Large Data": tutorials/items/index.md
-      - "Using PySpark for Large Data": tutorials/items/pyspark/index.md
-      - "Large data models vs. Computer memory": tutorials/items/large_data_models/index.md
-      - "Charts for Large Data": tutorials/items/decimator/index.md
+      - "Large Data": tutorials/articles/index.md
+      - "Using PySpark for Large Data": tutorials/articles/pyspark/index.md
+      - "Large data models vs. Computer memory": tutorials/articles/large_data_models/index.md
+      - "Charts for Large Data": tutorials/articles/decimator/index.md
 
   - "Manuals":
     - "About Taipy's Manuals": manuals/index.md
@@ -217,38 +217,38 @@ nav:
     - "Gallery": gallery/index.md
     - "Finance":
       - "Finance": gallery/finance/index.md
-      - "Stock Visualization": gallery/items/stock_visualization/index.md
-      - "Sales Dashboard": gallery/items/sales_dashboard/index.md
-      - "Commodity Trading": gallery/items/commodity_trading/index.md
-      - "Fraud Detection": gallery/items/fraud_detection/index.md
+      - "Stock Visualization": gallery/articles/stock_visualization/index.md
+      - "Sales Dashboard": gallery/articles/sales_dashboard/index.md
+      - "Commodity Trading": gallery/articles/commodity_trading/index.md
+      - "Fraud Detection": gallery/articles/fraud_detection/index.md
     - "Decision Support":
       - "Decision Support": gallery/decision_support/index.md
-      - "Supply Chain - 3 Echelons": gallery/items/supply_chain_3_echelons/index.md
-      - "Production Planning": gallery/items/production_planning/index.md
-      - "QSR Sales Forecasting": gallery/items/qsr_sales_forecasting/index.md
-      - "Supply Chain - 2 Echelons": gallery/items/supply_chain/index.md
-      - "Optimize Bar Cut Sizes": gallery/items/bar_cutting/index.md
-      - "Churn Classification": gallery/items/churn_classification/index.md
-      - "Drift Detection": gallery/items/drift_detection/index.md
+      - "Supply Chain - 3 Echelons": gallery/articles/supply_chain_3_echelons/index.md
+      - "Production Planning": gallery/articles/production_planning/index.md
+      - "QSR Sales Forecasting": gallery/articles/qsr_sales_forecasting/index.md
+      - "Supply Chain - 2 Echelons": gallery/articles/supply_chain/index.md
+      - "Optimize Bar Cut Sizes": gallery/articles/bar_cutting/index.md
+      - "Churn Classification": gallery/articles/churn_classification/index.md
+      - "Drift Detection": gallery/articles/drift_detection/index.md
     - "LLM":
       - "LLM": gallery/llm/index.md
-      - "LLM Chatbot" : gallery/items/chatbot/index.md
-      - "TalkToTaipy" : gallery/items/talk_to_taipy/index.md
-      - "Vision ChatBot": gallery/items/vision_chatbot/index.md
-      - "RAG ChatBot": gallery/items/rag_chatbot/index.md
-      - "Sentiment Analysis": gallery/items/sentiment_analysis/index.md
-      - "Tweet Generation": gallery/items/tweet_generation/index.md
+      - "LLM Chatbot" : gallery/articles/chatbot/index.md
+      - "TalkToTaipy" : gallery/articles/talk_to_taipy/index.md
+      - "Vision ChatBot": gallery/articles/vision_chatbot/index.md
+      - "RAG ChatBot": gallery/articles/rag_chatbot/index.md
+      - "Sentiment Analysis": gallery/articles/sentiment_analysis/index.md
+      - "Tweet Generation": gallery/articles/tweet_generation/index.md
     - "Visualization":
       - "Visualization": gallery/visualization/index.md
-      - "COVID Dashboard": gallery/items/covid_dashboard/index.md
-      - "Industry Distribution": gallery/items/industry_agglom/index.md
-      - "Image Classification": gallery/items/image_classif/index.md
-      - "Realtime Pollution Dashboard" : gallery/items/pollution_sensors/index.md
+      - "COVID Dashboard": gallery/articles/covid_dashboard/index.md
+      - "Industry Distribution": gallery/articles/industry_agglom/index.md
+      - "Image Classification": gallery/articles/image_classif/index.md
+      - "Realtime Pollution Dashboard" : gallery/articles/pollution_sensors/index.md
     - "Other":
       - "Other": gallery/other/index.md
-      - "Background Remover": gallery/items/background_remover/index.md
-      - "Real-time Face Recognition": gallery/items/face_recognition/index.md
-      - "Movie Genre Selector": gallery/items/movie_genre_selector/index.md
+      - "Background Remover": gallery/articles/background_remover/index.md
+      - "Real-time Face Recognition": gallery/articles/face_recognition/index.md
+      - "Movie Genre Selector": gallery/articles/movie_genre_selector/index.md
 
   - "Release Notes":
     - "Release Notes": release-notes/index.md

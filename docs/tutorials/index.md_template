@@ -82,9 +82,9 @@ Learn how to build Taipy applications through tutorials!
 
 <ul class="tp-row tp-row--gutter-sm">
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement chart navbar table layout part menu state multi-page callback markdown">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="items/understanding_gui/">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="articles/understanding_gui/">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="items/understanding_gui/step_07/images/result.png">
+        <img class="tp-content-card-image" src="articles/understanding_gui/step_07/images/result.png">
       </header>
       <div class="tp-content-card-body">
         <h4>Understanding GUI</h4>
@@ -95,9 +95,9 @@ Learn how to build Taipy applications through tutorials!
     </a>
   </li>
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="scenario task datanode configuration submission dag">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="items/scenario_management_overview/">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="articles/scenario_management_overview/">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="items/scenario_management_overview/images/screen.png">
+        <img class="tp-content-card-image" src="articles/scenario_management_overview/images/screen.png">
       </header>
       <div class="tp-content-card-body">
         <h4>Scenario management Overview</h4>
@@ -108,9 +108,9 @@ Learn how to build Taipy applications through tutorials!
     </a>
   </li>
   <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement chart state multi-page callback markdown scenario task storage_type scope datanode configuration">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="items/complete_application/">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="articles/complete_application/">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="items/complete_application/step_04/images/result.png">
+        <img class="tp-content-card-image" src="articles/complete_application/step_04/images/result.png">
       </header>
       <div class="tp-content-card-body">
         <h4>First Realistic application</h4>

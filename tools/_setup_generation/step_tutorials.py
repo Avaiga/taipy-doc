@@ -27,8 +27,8 @@ from .items.exceptions import WrongHeader, NoHeader, NoIndexFile
 
 class TutorialsStep(SetupStep):
     TUTORIALS_FOLDER_NAME = "tutorials"
-    APPLICATIONS_FOLDER_NAME = "items"
-    NO_CONTENT_TYPE_FOLDERS = ["images", "items"]
+    APPLICATIONS_FOLDER_NAME = "articles"
+    NO_CONTENT_TYPE_FOLDERS = ["images", "articles"]
 
     def _get_list_of_items(self, folder_path) -> List[Item]:
         items = []
