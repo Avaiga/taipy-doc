@@ -35,7 +35,7 @@ nav:
       - "Creating an RAG ChatBot": tutorials/items/rag_chatbot/index.md
     - "Visuals":
       - "Visuals": tutorials/visuals/index.md
-      - "Callbacks in Taipy": tutorials/items/the_on_change_callback/index.md
+      - "Callbacks in Taipy": tutorials/items/callbacks/index.md
       - "Using Tables": tutorials/items/using_tables/index.md
       - "Multi-page Application": tutorials/items/multipage_application/index.md
       - "Long Running Callbacks": tutorials/items/long_callbacks/index.md
