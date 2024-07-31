@@ -91,8 +91,6 @@ class Item:
         errors = []
         if not self.title:
             errors.append(f"Missing title in {self.file_path} header")
-        print(f"INFO - Category '{self.category}' in {self.file_path}")
-            # errors.append(f"Invalid category '{self.category}' in {self.file_path}")
         if not self.data_keywords:
             errors.append(f"Missing data-keywords in {self.file_path} header")
         if not self.short_description:
