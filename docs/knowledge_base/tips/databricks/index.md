@@ -1,3 +1,11 @@
+---
+title: Integrating Databricks
+category: tips
+type: code
+data-keywords: scenario task
+short-description: A guide to integrate Databricks with Taipy scenarios.
+img: databricks/images/databricks.png
+---
 
 Integrating a Taipy application with Databricks allows you to quickly build a
 web application on top of your Databricks notebooks. You can easily put your
