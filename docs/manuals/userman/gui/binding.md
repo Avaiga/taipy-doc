@@ -281,6 +281,32 @@ is defined.
     Similarly, *state["\_\_main\_\_"].x* always refers to the global *x* variable, defined in the
     main module.
 
+# Sharing variables across clients
+
+Your application can share a variable across all the connected users (identified as a new
+connection to the application).<br/>
+The `State^` object that all callbacks receive holds the value of all the bound variables for a
+specific client. If you change that value, it does not impact the other clients' pages.
+
+However, variables declared in the main module of the Python script can be *shared* among all the
+connected users by declaring them as *shared variables*.<br/>
+You can call the function `Gui.add_shared_variable(<variable-name>)^` to achieve that. When you do
+this, modifying the value of `state.<variable-name>` is automatically propagated to every client.
+
+Another way to achieve the same result is to use:
+```
+gui.broadcast_change("<variable-name>", new_value)
+```
+instead of
+```
+state.<variable-name> =  new_value
+```
+
+Using the `Gui.broadcast_change()^` function propagates a new value for a variable to the states of
+every connected user.
+
+The function `Gui.broadcast_changes()^` acts in a similar manner, for multiple variables and values.
+
 # List of values
 
 Some controls (such as [selector](viselements/generic/selector.md) or
