@@ -124,21 +124,21 @@ this:
 
 ## Multi-user chatting {data-source="gui:doc/examples/controls/chat-discuss.py"}
 
-The `chat` control can also be used in another situation: if when you want to develop an application
-allowing several users to share the same chatting space.<br/>
-Here is how this can be created using Taipy GUI.
+You can also use the `chat` control in another situation: when you want to develop an application
+that allows several users to share the same chatting space.<br/>
+Here is how you can create such an application using Taipy GUI.
 
 <h4>General setup</h4>
 
 The application has two pages:
 
 - The first page (called "register") allows users to register for the chatting application.
-- The second page (called "discuss") is the page that shows, using a `chat` control, all the
-  messages that are exchanged. You can consider this page as showing a *channel* in a chat
-  application: several users can send and read messages for all the users of the same community.
+- The second page (called "discuss") shows all the messages exchanged in a `chat` control. You can
+  consider this page as showing a *channel* in a chat application: several users can send and read
+  messages in a community.
 
 Let's describe this first page.<br/>
-The definition of the page looks like:
+The definition of the page is the following:
 ```python
 username = ""
 
@@ -160,8 +160,8 @@ Here is how this page looks like when the user Alice has entered her name:
     <figcaption>Alice is about to register</figcaption>
 </figure>
 
-When the "Submit" button is pressed, the `on_action` callback property is set so that the callback
-function *register()* is invoked.<br/>
+The control's `on_action` callback property is set so that the callback function *register()* is
+invoked when the "Submit" button is pressed.<br/>
 Here is the code of this function:
 ```python linenums="1"
 users: list[str|Icon] = []
@@ -180,8 +180,8 @@ def register(state):
     navigate(state, "discuss")
 ```
 
-In lines 4 to 7, we test if that user name is one of the names stored in the *users* list and
-reject the registration if this is the case.
+In lines 4 to 7, we test whether that user name is one of the names stored in the *users* list and
+reject the registration if it is.
 
 In lines 8 to 12, we add this user name to the *users* list.<br/>
 If we can find an avatar image for that user (a file called "&lt;username>-avatar.png" located next
@@ -195,20 +195,18 @@ Here is the code that defines the "discuss" page:
 messages: list[tuple[str, str, str]] = []
 
 discuss_page = """
-<|toggle|theme|>
-
 <|### Let's discuss, {username}|text|mode=markdown|>
 
 <|{messages}|chat|users={users}|sender_id={username}|on_action=send|>
 """
 ```
 
-This page creates a `chat` control that is bound to the variable *messages* that is initialized to
-an empty list.<br/>
+This page creates a `chat` control that binds its default property ([*messages*](#p-messages_id)) to
+the variable *messages* that is initialized to an empty list.<br/>
 The variables *users* and *username* are bound as expected.
 
-Note that because we have two pages in this application, you must create the `Gui^` instance with
-the *pages* parameter set to a dictionary that holds those pages.<br/>
+Note that because this application has two pages, you must create the `Gui^` instance with the
+*pages* parameter set to a dictionary that holds those pages.<br/>
 Here is the code that initializes and runs the Taipy GUI application:
 ```python
 pages = {"register": register_page, "discuss": discuss_page}
@@ -222,7 +220,7 @@ After the registration, this is the page that Alice will see:
     <figcaption>The chatting area for Alice</figcaption>
 </figure>
 
-We now need to implement the callback function *send()* which is set to the  *on_action* property
+We now need to implement the callback function *send()*, which is set to the *on_action* property
 of the chat control.<br/>
 Here is the code for this function:
 ```python linenums="1"
@@ -232,22 +230,22 @@ def send(state, _: str, payload: dict):
     state.messages = messages
 ```
 
-Just like in the calculator example above, we retrieve the callback parameters on line 2, then
+Like in the calculator example above, we retrieve the callback parameters on line 2 and
 add a new message (on line 3) using the message index as its identifier.<br/>
 The state's variable *messages* is updated on line 4.
 
 <h4>Multi-user considerations</h4>
 
 We want several users to connect to this application and share the messages and the user list
-that we have created.<br/>
+we created.<br/>
 To make that happen, you can use the function `Gui.add_shared_variable()^` to ensure that both
 *messages* and *users* have the same value for every connected user.<br/>
 Let's do that for our use case:
 ```python
 Gui.add_shared_variables("messages", "users")
 ```
-Now, every time any user modifies *messages* or *users*, the impact is propagated to all the
-connected users.
+After that function is invoked, every time any user modifies *messages* or *users*, the impact is
+propagated to all the connected users.
 
 Let's pretend that a new user, Beatrix, connects to the application.<br/>
 Here is the registration page as this user sees it:
@@ -259,7 +257,7 @@ Here is the registration page as this user sees it:
 
 When Beatrix presses the "Submit" button, the *register()* callback function is invoked.<br/>
 Because *users* is a *shared variable*, every client, including Alice, is aware of this new
-registration with their state's *users* variable being updated accordingly.
+registration: their state's *users* variable is updated accordingly and automatically.
 
 Imagine that Alice enters the following message:
 <figure>
@@ -274,8 +272,8 @@ When Alices pressed the send button, she can see the updated `chat` control:
     <img src="../chat-discuss-discuss-a-2-l.png" class="visible-light"/>
     <figcaption>Alice has sent a message</figcaption>
 </figure>
-The sent message appears in a right-aligned bubble, indicating that the current user, Alice, was
-the one that sent this message.
+The message sent appears in a right-aligned bubble, indicating that the current user, Alice, was
+the one who sent this message.
 
 Because both *users* and *messages* are shared among all connected clients, Beatrix will see
 the following page:
@@ -299,10 +297,9 @@ Here are the pages that Alice and Beatrix can see when they start sending messag
     <figcaption>What Beatrix sees</figcaption>
 </figure>
 
-Now let's imagine that a new user, Charles, joins the discussion. The three connected users are
-able to send messages to the group, sharing the bound variables *users* and *messages* so that
-their `chat` controls all represent the same content, with a different layout depending on who
-had sent messages.
+Now, let's imagine that another user, Charles, joins the discussion. The three connected users can
+send messages to the group, sharing the bound variables *users* and *messages* so that their `chat`
+controls all represent the same content, with a different layout depending on who sent messages.
 
 <figure>
     <img src="../chat-discuss-discuss-a-4-d.png" class="visible-dark" />
