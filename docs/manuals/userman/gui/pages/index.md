@@ -53,14 +53,14 @@ Taipy lets you create as many pages as you require with whatever content you nee
         Gui(page).run()
         ```
 
-## Building page content
+## Defining the page content
 
-Building a page can consist of:
+The definition of a page typically consists of:
 
 - Adding visual elements to the page.
 - Binding variables to these elements.
 - Setting properties to these elements.
-- Callbacks can be added to these elements to make your application interactive.
+- Setting callbacks to these elements.
 
 !!! example "Getting Started example"
     === "Markdown"
@@ -75,12 +75,12 @@ Building a page can consist of:
 
         Value: <|{value}|text|>
 
-        <|{value}|slider|on_change=on_slider|>
+        <|{value}|slider|on_change=slider_moved|>
 
         <|{data}|chart|>
         """
 
-        def on_slider(state):
+        def slider_moved(state):
             state.data = compute_data(state.value)
 
         def compute_data(decay:int)->list:
@@ -117,7 +117,7 @@ Building a page can consist of:
         if __name__ == "__main__":
             data = compute_data(value)
 
-            Gui(page=page).run(title="Dynamic chart")
+            Gui(page).run(title="Dynamic chart")
         ```
 
 ## Registering a single page
@@ -136,7 +136,7 @@ Taipy application:
 
     page = "# First page"
 
-    Gui(page=page).run()
+    Gui(page).run()
     ```
 === "add_page function"
     ```python
@@ -146,13 +146,13 @@ Taipy application:
     with tgb.Page() as page:
         tgb.text("# First Page", mode="md")
 
-    Gui()
-    gui.add_page(page)
+    gui = Gui()
+    gui.add_page("first_page", page)
     gui.run()
     ```
 
 If you run this Python script and connect a browser to the web server address
-(usually *localhost:5000*), you can see your title displayed in a blank page.
+(usually *localhost:5000*), you can see your title displayed on an empty page.
 
 # Multi-page application
 

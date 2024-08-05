@@ -81,8 +81,8 @@ nav:
               - "The Stylekit": manuals/userman/gui/styling/stylekit.md
         - "Pages":
           - "Pages": manuals/userman/gui/pages/index.md
-          - "Navigate Between Pages": manuals/userman/gui/pages/navigate/index.md
-          - "Content update with Partials": manuals/userman/gui/pages/partial/index.md
+          - "Navigate between pages": manuals/userman/gui/pages/navigate/index.md
+          - "Content update with partials": manuals/userman/gui/pages/partial/index.md
           - "Dialog": manuals/userman/gui/pages/dialog/index.md
           - "Pane": manuals/userman/gui/pages/pane/index.md
           - "Advanced": manuals/userman/gui/pages/advanced/index.md

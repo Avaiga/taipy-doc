@@ -1,7 +1,7 @@
 Partials can be used within multiple objects in Taipy: [part](../../viselements/generic/part.md), [dialog](../dialog/index.md) and [pane](../pane/index.md). They can be used as a static resusable component like so.
 
 === "Markdown"
-    ```python linenums="1"
+    ```python
     from taipy.gui import Gui
 
     # Define the main page layout
@@ -15,7 +15,7 @@ Partials can be used within multiple objects in Taipy: [part](../../viselements/
     gui.run()
     ```
 === "Python"
-    ```python linenums="1"
+    ```python
     from taipy.gui import Gui
 
     # Define the main page layout
@@ -34,16 +34,17 @@ Taipy's partials feature allows you to create reusable and dynamically updatable
 components in your GUI applications. This is particularly useful for creating consistent 
 layouts and updating content on the fly. 
 
-You are able to update your partial by using the `update_content` method.
+You are able to update your partial by using the `(Partial.)update_content()^` method.
 
 ```python
 state.partial.update_content(state, new_content)
 ```
 
-The `update_content` method takes two arguments: the state object and the new content of the partial.
+The `(Partial.)update_content()^` method expects two arguments: the state object and the new 
+content of the partial.
 
 === "Markdown"
-    ```python linenums="1"
+    ```python
     from taipy.gui import Gui
 
     def change_partial(state):
@@ -61,7 +62,7 @@ The `update_content` method takes two arguments: the state object and the new co
     gui.run()
     ```
 === "Python"
-    ```python linenums="1"
+    ```python
     from taipy.gui import Gui
 
     def change_partial(state):
@@ -89,13 +90,13 @@ You might want to create a list of links that can be dynamically updated:
 Here is the code for the main script:
 
 === "Markdown"
-    ```python linenums="1"
+    ```python
     {%
     include-markdown "./src/example_md.py"
     comments=false
     %}    ``` 
 === "Python"
-    ```python linenums="1"
+    ```python
     {%
     include-markdown "./src/example.py"
     comments=false
@@ -110,7 +111,7 @@ dynamically updatable.
 
 Here's a step-by-step explanation of how partials are used in the provided example:
 
-### Declaring the Partial
+### Declaring the partial
 
 At the end of the script, we declare the partial with the GUI. This is where we 
 initialize the partial with some initial value or content. 
@@ -121,23 +122,23 @@ link_partial = gui.add_partial("")
 gui.run()
 ```
 
-Here, `link_partial` is declared with an empty string. This partial will be dynamically 
+Here, *link_partial* is declared with an empty string. This partial will be dynamically 
 updated later.
 
-### Using the Partial in the Layout
+### Using the partial in the layout
 
 The partial needs to be placed within the layout where it will be displayed. You can 
 include it in one or multiple places within your layout.
 
 === "Markdown"
-    ```python linenums="1"
+    ```python
     main_page = """
     <|Add links|button|on_action=simulate_adding_more_links|>
     <|part|partial={link_partial}|>
     """
     ``` 
 === "Python"
-    ```python linenums="1"
+    ```python
     with tgb.Page() as main_page:
         tgb.button('Add links', on_action=simulate_adding_more_links)
         tgb.part(partial="{link_partial}")
@@ -147,13 +148,13 @@ include it in one or multiple places within your layout.
 In this code, `tgb.part(partial="{link_partial}")` is where the partial will be shown. 
 You can place this partial in multiple locations within your layout if needed.
 
-### Updating the Partial Content
+### Updating the partial content
 
 To dynamically update the partial, you use the `update_content` method. This can be done 
 using either the Markdown syntax or the Python API by providing a page to this method.
 
 === "Markdown"
-    ```python linenums="1"
+    ```python
     def refresh_links(state):
         partial_md = "<|layout|columns=1 1 1|\n"
         for link in state.links:
@@ -167,7 +168,7 @@ using either the Markdown syntax or the Python API by providing a page to this m
         state.link_partial.update_content(state, partial_md)
     ``` 
 === "Python"
-    ```python linenums="1"
+    ```python
     def refresh_links(state):
         with tgb.Page() as link_part:
             with tgb.layout("1 1 1"):

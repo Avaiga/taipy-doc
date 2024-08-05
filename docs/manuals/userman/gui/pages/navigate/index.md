@@ -94,16 +94,16 @@ with properties like the list of pages you can navigate to.
 
 # Using Menu
 
-[Menu](../../viselements/generic/menu.md) creates a menu on the left to
-navigate through the pages.
+The [`menu`](../../viselements/generic/menu.md) control displays a menu to the left of the page, 
+allowing to navigate through the pages.
 
 === "Markdown"
     ```
-    <|menu|label=Menu|lov={lov_pages}|on_action=on_menu|>`
+    <|menu|label=Menu|lov={lov_pages}|on_action=menu_option_selected|>`
     ```
 === "Python"
     ```python
-    tgb.menu(label="Menu", lov=[...], on_action=on_menu)
+    tgb.menu(label="Menu", lov=[...], on_action=menu_option_selected)
     ```
 
 ![Menu](images/menu.png){ width=40% : .tp-image-border }
@@ -115,14 +115,14 @@ For example, this code creates a menu with two options:
     from taipy import Gui, navigate
 
     root_md = """
-    <|menu|label=Menu|lov={[('home', 'Home'), ('about', 'About')]}|on_action=on_menu|>
+    <|menu|label=Menu|lov={[('home', 'Home'), ('about', 'About')]}|on_action=menu_option_selected|>
     # Multi-page application
     """
 
     home_md = "# Home"
     about_md = "# About"
 
-    def on_menu(state, action, info):
+    def menu_option_selected(state, action, info):
         page = info["args"][0]
         navigate(state, to=page)
 
@@ -139,14 +139,14 @@ For example, this code creates a menu with two options:
     from taipy import Gui, navigate
     import taipy.gui.builder as tgb
 
-    def on_menu(state, action, info):
+    def menu_option_selected(state, action, info):
         page = info["args"][0]
         navigate(state, to=page)
 
     with tgb.Page() as root_page:
         tgb.menu(label="Menu",
                 lov=[('home', 'Page 1'), ('about', 'Page 2')],
-                on_action=on_menu)
+                on_action=menu_option_selected)
         tgb.text("# Multi-page application", mode="md")
 
     with tgb.Page() as home_page:
@@ -166,7 +166,7 @@ For example, this code creates a menu with two options:
 
 # Using the `navigate` function
 
-The `navigate` function allows for programmatically controlling navigation 
+The `(Gui.)navigate()^` allows for programmatically controlling navigation 
 within callback functions. You can navigate to a page of this application or 
 an external page.
 
@@ -221,12 +221,12 @@ an external page.
     ```
 
 
-# Using the `on_navigate` function
+# Using the `on_navigate` callback
 
-The `on_navigate` function allows for custom control over navigation, such 
+The `on_navigate` callback allows for customizing the control over navigation, such 
 as redirecting users based on conditions.
 
-See more information for [*on_navigate*](../../callbacks.md#navigation-callback).
+See more information for [`on_navigate`](../../callbacks.md#navigation-callback).
 
 
 === "Markdown"
