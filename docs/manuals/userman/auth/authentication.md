@@ -69,7 +69,7 @@ Taipy Enterprise edition supports three authentication protocols:
             with the arguments that were provided to `(auth.)login()^`.
 
 
-Beside their specific parameters, all authenticators have two parameters that you
+Besides their specific parameters, all authenticators have two parameters that you
 can provide in the `Authenticator.__init__^`(`Authenticator` constructor):
 
 - *secret_key*: a string that is used to encrypt the user credentials. Because

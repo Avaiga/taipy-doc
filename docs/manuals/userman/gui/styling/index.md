@@ -18,15 +18,21 @@ There are two ways you can apply a stylesheet to your application:
 
 - Global style sheet.<br/>
   The *css_file* parameter of the `Gui.__init__^`(`Gui` constructor) lets you specify a CSS file
-  that your application will use for every page. The default value for this parameter is a file
-  located next to your main Python script, with the same name except for the extension that must be
-  '.css'.
+  that your application will use for every page.<br/>
+  The default value for this parameter is a file located next to your main Python script, with the
+  same name except for the extension that must be '.css'.<br/>
+  If such a file does not exist, Taipy GUI will search for a file called `taipy.css` and load it
+  if it exists. This mechanism allows sharing the same stylesheet across all Taipy GUI applications
+  whose main script sits in the same directory.<br/>
+  If you need to apply styles for a specific application but want to benefit from the shared styles
+  defined in `taipy.css`, you can add the directive `@import url("taipy.css");` to your
+  application-specific CSS file.
 
 - Page-specific style.<br/>
   The method `Gui.add_page()^` has a *style* parameter that can be set to CSS content.
   This additional style is applied to the page and **only** this page.
 
-Beside explicit style sheets, you can also modify the global theme, as
+Besides explicit style sheets, you can also modify the global theme, as
 described in the [section on Themes](#themes).
 
 # Applying style

@@ -171,12 +171,13 @@ def create_conv(state):
     return conversation
 ```
 
-Notice that each `tgb.text` element (representing a chat bubble) also contains 2 `class_name`s:
+Notice that each `text` element (representing a chat bubble) also contains two `class_name`s:
 
 1. "*message_base*"; and
 2. "*user_message*" or "*assistant_message*" (via `message['style']`)
 
-These are CSS classes which we will define in a later step, which provide the look-and-feel of a chat UI.
+These are CSS classes which we will define in a later step, which provide the look-and-feel of a
+chat UI.
 
 # Step 5: Callback to query the LLM
 
@@ -203,8 +204,9 @@ def send_message(state):
     state.query_message = ""
 ```
 
-This function calls the *create_conv* function **twice**: First to add the **user's message** to the chat UI, then a
-second time shortly after the *query_llm* function finishes execution and returns the **LLM output**.
+This function calls *create_conv()* **twice**: First to add the **user's message** to the chat UI,
+then a second time shortly after the *query_llm()* function finishes execution and returns the
+**LLM output**.
 
 Again, the "*style*" key take the values of "*user_message*" or "*assistant_message*" which correspond to CSS classes
 that we'll use to style each message as a chat bubble.
