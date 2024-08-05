@@ -6,8 +6,7 @@ links = [("Taipy", "http://taipy.io")]
 
 # Function to refresh the links partial
 def refresh_links(state):
-    partial_md = ""
-    partial_md += "<|layout|columns=1 1 1|\n"
+    partial_md = "<|layout|columns=1 1 1|\n"
     for link in state.links:
         link_name, link_url = link
         partial_md += "<|card|\n"

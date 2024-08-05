@@ -1,22 +1,88 @@
----
-title: Content update with Partials 
-category: visuals
-data-keywords: gui callback
-short-description: Learn how to use Taipy partials to dynamically update and reuse components in your Taipy application.
-img: 4_partials/images/illustration.png
----
+Partials can be used within multiple objects in Taipy: [part](../../viselements/generic/part.md), [dialog](../dialog/index.md) and [pane](../pane/index.md). They can be used as a static resusable component like so.
+
+=== "Markdown"
+    ```python linenums="1"
+    from taipy.gui import Gui
+
+    # Define the main page layout
+    page = """
+    <|part|partial={partial}|>
+    """
+
+    # Create and run the Taipy GUI
+    gui = Gui(page)
+    partial = gui.add_partial("Your first partial")
+    gui.run()
+    ```
+=== "Python"
+    ```python linenums="1"
+    from taipy.gui import Gui
+
+    # Define the main page layout
+    with tgb.Page() as page:
+        tgb.part(partial="{partial}")
+
+    # Create and run the Taipy GUI
+    gui = Gui(page)
+    partial = gui.add_partial("Your first partial")
+    gui.run()
+    ```
+
+# Realtime update of partials
 
 Taipy's partials feature allows you to create reusable and dynamically updatable 
 components in your GUI applications. This is particularly useful for creating consistent 
-layouts and updating content on the fly. For example, you can create a list of links that 
-can be dynamically updated without reloading the entire page.
+layouts and updating content on the fly. 
 
-![Partials Example](images/illustration.png){width=50% : .tp-image-border}
+You are able to update your partial by using the `update_content` method.
 
-In this article, we will walk through a simple example where:
+```python
+state.partial.update_content(state, new_content)
+```
 
-- A main page displays a list of links.
-- The list can be dynamically updated with new links using a button click.
+The `update_content` method takes two arguments: the state object and the new content of the partial.
+
+=== "Markdown"
+    ```python linenums="1"
+    from taipy.gui import Gui
+
+    def change_partial(state):
+        state.partial.update_content(state, "Partial is changed!")
+
+    # Define the main page layout
+    page = """
+    <|part|partial={partial}|>
+    <|Change partial|button|on_action=change_partial|>
+    """
+
+    # Create and run the Taipy GUI
+    gui = Gui(page)
+    partial = gui.add_partial("Your first partial")
+    gui.run()
+    ```
+=== "Python"
+    ```python linenums="1"
+    from taipy.gui import Gui
+
+    def change_partial(state):
+        state.partial.update_content(state, "Partial is changed!")
+
+    # Define the main page layout
+    with tgb.Page() as page:
+        tgb.button('Change partial', on_action=change_partial)
+        tgb.part(partial="{partial}")
+
+    # Create and run the Taipy GUI
+    gui = Gui(page)
+    partial = gui.add_partial("Your first partial")
+    gui.run()
+    ```
+
+Note that this example could have been done without using partials and just by creating a text visual element.
+
+# Example of real case
+
+You might want to create a list of links that can be dynamically updated:
 
 ![Partials Example](images/partials_dashboard.png){width=90% : .tp-image-border}
 
@@ -36,16 +102,15 @@ Here is the code for the main script:
     %}
     ``` 
 
-
 This script creates a button that, when clicked, updates the list of links displayed on 
 the page. The links component is encapsulated within a partial, making it reusable and 
 dynamically updatable.
 
-# Code explanation
+## Code explanation
 
-Here’s a step-by-step explanation of how partials are used in the provided example:
+Here's a step-by-step explanation of how partials are used in the provided example:
 
-## Step 1: Declaring the Partial
+### Declaring the Partial
 
 At the end of the script, we declare the partial with the GUI. This is where we 
 initialize the partial with some initial value or content. 
@@ -59,7 +124,7 @@ gui.run()
 Here, `link_partial` is declared with an empty string. This partial will be dynamically 
 updated later.
 
-## Step 2: Using the Partial in the Layout
+### Using the Partial in the Layout
 
 The partial needs to be placed within the layout where it will be displayed. You can 
 include it in one or multiple places within your layout.
@@ -82,7 +147,7 @@ include it in one or multiple places within your layout.
 In this code, `tgb.part(partial="{link_partial}")` is where the partial will be shown. 
 You can place this partial in multiple locations within your layout if needed.
 
-## Step 3: Updating the Partial Content
+### Updating the Partial Content
 
 To dynamically update the partial, you use the `update_content` method. This can be done 
 using either the Markdown syntax or the Python API by providing a page to this method.
@@ -90,8 +155,7 @@ using either the Markdown syntax or the Python API by providing a page to this m
 === "Markdown"
     ```python linenums="1"
     def refresh_links(state):
-        partial_md = ""
-        partial_md += "<|layout|columns=1 1 1|\n"
+        partial_md = "<|layout|columns=1 1 1|\n"
         for link in state.links:
             link_name, link_url = link
             partial_md += "<|card|\n"
@@ -121,7 +185,7 @@ We create a new `link_part` page using the Taipy builder API in this function. W
 use `state.link_partial.update_content(state, link_part)` to update the partial content. 
 Here, `link_part` is a dynamically generated page that contains the new list of links.
 
-# Points to remember
+## Points to remember
 
 **1 - Declare the Partial:** A partial must be declared with an initial value or content.
 
@@ -138,9 +202,3 @@ layout.
 The `refresh_links` function generates new content using the builder API. 
 `state.link_partial.update_content(state, link_part)` updates the partial with the new 
 content.
-
-# Conclusion
-
-Taipy partials are a powerful feature for creating reusable and dynamically updatable 
-components in your GUI applications. Understanding these concepts allows you to leverage 
-Taipy partials to create more dynamic and responsive GUIs.
