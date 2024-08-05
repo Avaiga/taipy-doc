@@ -55,12 +55,12 @@ Taipy lets you create as many pages as you require with whatever content you nee
 
 ## Building page content
 
-Defining pages is easy. You can then:
+Building a page can consist of:
 
-- Add visual elements to the page.
-- Bound variables to these elements.
-- Set properties to these elements.
-- Add callbacks to these elements to make your application interactive.
+- Adding visual elements to the page.
+- Binding variables to these elements.
+- Setting properties to these elements.
+- Callbacks can be added to these elements to make your application interactive.
 
 !!! example "Getting Started example"
     === "Markdown"
@@ -125,9 +125,10 @@ Defining pages is easy. You can then:
 Once you have created an instance of a page renderer for a specific piece of text or Python code,
 you can register that page to the `Gui^` instance used by your application.
 
-The `Gui^` constructor can accept the raw content of a page as Markdown text, a Page object and create a new page
-for you. That would be the easier way to create applications that have a single page. Here is how
-you can create and register a page, defined as Markdown content, in a Taipy application:
+The `Gui^` constructor can accept the raw content of a page as Markdown text, a Page object and 
+create a new page for you. That would be the easier way to create applications that have a 
+single page. Here is how you can create and register a page, defined as Markdown content, in a 
+Taipy application:
 
 === "page variable"
     ```python
@@ -209,7 +210,7 @@ associates a page with its name:
     ```
 
 In this situation, to see the pages in your browser, the address you will use
-will be *localhost:5000/home* or *localhost:5000/about*.
+will be *localhost:5000/home* or *localhost:5000/about*. Learn how to natigate between pages [here](../pages/navigate/index.md).
 
 Note that if pages are created in different modules, the variables that they can bind
 to visual elements may have a scope limited to their origin module. See
@@ -218,7 +219,8 @@ to visual elements may have a scope limited to their origin module. See
 ## Root page
 
 The *Root* page is the page located at `"/"` (or the value of the
-[*base_url*](../../configuration/gui-config.md#p-base_url) configuration setting). The content of the page will be shown at the top og every page of your application.
+[*base_url*](../../configuration/gui-config.md#p-base_url) configuration setting). 
+The content of the page will be shown at the top of every page of your application.
 
 ## Application header and footer
 
@@ -250,6 +252,7 @@ runs.
        }
        Gui(pages=pages).run()
     ```
+    
     This application does the same as in the previous example, except that you now
     have the footer line (*'This application was created...'*) in all the pages of
     your application.

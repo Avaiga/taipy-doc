@@ -1,47 +1,53 @@
-This documentation page will walk you through creating a multi-page application, using the navbar and menu for navigation, the `navigate` function, and the `on_navigate` function for controlling page transitions.
+This documentation page walks you through using the navbar and menu for 
+navigation, the `navigate` function, and the `on_navigate` function for 
+controlling page transitions.
 
-=== "Markdown"
-    ```python
-    from taipy import Gui
+!!! example "Multi-page application"
+    === "Markdown"
+        ```python
+        from taipy import Gui
 
-    root_md = "# Multi-page application"
-    home_md = "# Home"
-    about_md = "# About"
+        root_md = "# Multi-page application"
+        home_md = "# Home"
+        about_md = "# About"
 
-    pages = {
-        "/": root_md,
-        "home": home_md,
-        "about": about_md
-    }
+        pages = {
+            "/": root_md,
+            "home": home_md,
+            "about": about_md
+        }
 
-    Gui(pages=pages).run()
-    ```
-=== "Python"
-    ```python
-    from taipy import Gui
-    import taipy.gui.builder as tgb
+        Gui(pages=pages).run()
+        ```
+    === "Python"
+        ```python
+        from taipy import Gui
+        import taipy.gui.builder as tgb
 
-    with tgb.Page() as root_page:
-        tgb.text("# Multi-page application", mode="md")
+        with tgb.Page() as root_page:
+            tgb.text("# Multi-page application", mode="md")
 
-    with tgb.Page() as home_page:
-        tgb.text("# Home", mode="md")
+        with tgb.Page() as home_page:
+            tgb.text("# Home", mode="md")
 
-    with tgb.Page() as about_page:
-        tgb.text("# About", mode="md")
+        with tgb.Page() as about_page:
+            tgb.text("# About", mode="md")
 
-    pages = {
-        "/": root_page,
-        "home": home_page,
-        "about": about_page
-    }
+        pages = {
+            "/": root_page,
+            "home": home_page,
+            "about": about_page
+        }
 
-    Gui(pages=pages).run()
-    ```
+        Gui(pages=pages).run()
+        ```
 
 # Using Navbar
 
-[Navbar](../../viselements/generic/navbar.md) is a visual element which by default lets you navigate between pages. You can customize the navbar with properties like the list of pages you are able to navigate to. 
+[Navbar](../../viselements/generic/navbar.md) is a visual element that, 
+by default, lets you navigate between pages. You can customize the navbar 
+with properties like the list of pages you can navigate to. 
+ 
 
 === "Markdown"
     ```python
@@ -160,7 +166,9 @@ For example, this code creates a menu with two options:
 
 # Using the `navigate` function
 
-The `navigate` function allows for programmatically controlling navigation within callback functions. You can navigate to a page of this application or an external page.
+The `navigate` function allows for programmatically controlling navigation 
+within callback functions. You can navigate to a page of this application or 
+an external page.
 
 === "Markdown"
     ```python
@@ -215,7 +223,8 @@ The `navigate` function allows for programmatically controlling navigation withi
 
 # Using the `on_navigate` function
 
-The `on_navigate` function allows for custom control over navigation, such as redirecting users based on conditions. T
+The `on_navigate` function allows for custom control over navigation, such 
+as redirecting users based on conditions.
 
 See more information for [*on_navigate*](../../callbacks.md#navigation-callback).
 
