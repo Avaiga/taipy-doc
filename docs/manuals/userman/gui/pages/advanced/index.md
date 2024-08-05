@@ -4,7 +4,7 @@ Here are some more indepth examples of Taipy pages.
 
 If your application has several pages, you would usually create them with different names,
 so the user can navigate from page to page (using the `navigate()^` function or the
-[`navbar`](../viselements/generic/navbar.md) control).<br/>
+[`navbar`](../../viselements/generic/navbar.md) control).<br/>
 However, you can still have a root page for your application (with the name: `"/"`).
 In this situation, Taipy creates a
 [single-page application (SPA)](https://en.wikipedia.org/wiki/Single-page_application)
@@ -120,7 +120,7 @@ In this example, *gui.user_status.x* is set to 1234 (as initialized in the appli
 When the rendering of a page occurs, the following steps take place:
 
 - If the page is text-based (Markdown or HTML), the text is parsed to locate the Taipy-specific
-  constructs. These constructs designate [*visual elements*](../viselements/index.md) that can
+  constructs. These constructs designate [*visual elements*](../../viselements/index.md) that can
   represent data and be interacted with by the user. Visual Elements result in the creation of
   potentially complex HTML code;
 

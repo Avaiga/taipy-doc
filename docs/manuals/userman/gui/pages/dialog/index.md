@@ -3,7 +3,7 @@ Applications sometimes need to prompt the user to indicate a situation or reques
 input of some sort. Dialogs are forms that can be displayed on top of the page
 the user is looking at, prompting for some input.
 
-To create a dialog, you will use a [`dialog`](../viselements/generic/dialog.md) control in your
+To create a dialog, you will use a [`dialog`](../../viselements/generic/dialog.md) control in your
 page. The dialog holds a page content or a *Partial* (see [Partials](../partial/index.md)).
 
 You can control whether the dialog is visible or not, and what to do when the end-user
@@ -59,5 +59,5 @@ Here is an example of how you would create a dialog:
     ```
     
 
-Please refer to the documentation page on the [`dialog`](../viselements/generic/dialog.md)
+Please refer to the documentation page on the [`dialog`](../../viselements/generic/dialog.md)
 control for more details and examples.
