@@ -252,7 +252,7 @@ runs.
        }
        Gui(pages=pages).run()
     ```
-    
+
     This application does the same as in the previous example, except that you now
     have the footer line (*'This application was created...'*) in all the pages of
     your application.

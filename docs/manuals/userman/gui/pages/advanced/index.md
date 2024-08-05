@@ -53,7 +53,7 @@ for all its pages.
 !!! tip "Running multiple services"
 
     If you need to run the Taipy GUI service with other Taipy services, you may need
-    to refer to the [Running Taipy services](../../../run-deploy/run/running_services.md)
+    to refer to the [Running Taipy services](../../../../run-deploy/run/running_services.md)
     section.
 
 ## Local resources
@@ -109,7 +109,7 @@ In this example, *gui.user_status.x* is set to 1234 (as initialized in the appli
 
 !!! note "Extended status"
 
-    If the [*extended_status*](../../configuration/gui-config.md#p-extended_status) parameter
+    If the [*extended_status*](../../../configuration/gui-config.md#p-extended_status) parameter
     is set to True, the dictionary associated with the *gui* key is augmented with runtime
     information of the application, such as the version of the Taipy GUI package that is running,
     the version of the Python interpreter that is running the application, the list of the extension
@@ -125,8 +125,8 @@ When the rendering of a page occurs, the following steps take place:
   potentially complex HTML code;
 
 - The properties of the Visual element are read, and Taipy binds the application variables that are
-  used, if any. See the [section about Binding](../binding.md) for details;
+  used, if any. See the [section about Binding](../../binding.md) for details;
 
 - Potentially, *callbacks* are searched in the visual element properties and connected from the
   rendered page back to the Python code in order to watch user events (the notion of callbacks is
-  detailed in the [section about Callbacks](../callbacks.md)).
+  detailed in the [section about Callbacks](../../callbacks.md)).
