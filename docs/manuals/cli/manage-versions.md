@@ -23,6 +23,10 @@ Below is the list of all the optional arguments:
 - *--delete-production VERSION* or *-dp VERSION*: Converts the provided production version
   to an experiment version.
 
+!!! warning "Available in Taipy Enterprise edition"
+
+    The *--delete-production* option is relevant only to the Enterprise edition of Taipy.
+
 ## List capabilities with the --help option
 
 To display the help message of the `manage-version` command, you can run
@@ -57,9 +61,7 @@ $ taipy manage-versions --list
 Version number                         Mode                   Creation date
 d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:10
 3.0                                    Experiment             2023-01-18 12:10:55
-2.0                                    Production             2023-01-16 15:10:41
 7a24dbb8-bdf6-4c84-9ddf-7b921abc5df9   Experiment             2023-01-16 17:10:15
-1.0                                    Production             2023-01-12 09:10:35
 ```
 
 In the example above, there are 5 versions of the application:
@@ -67,7 +69,6 @@ In the example above, there are 5 versions of the application:
 - The development version "d74ec95e-6b98-4612-b50b-d171599fa3e9" which is also the latest
     version used.
 - Two experiment versions "7a24dbb8-bdf6-4c84-9ddf-7b921abc5df9" and "3.0".
-- Two production versions "1.0" and "2.0".
 
 ## Rename a version
 To rename a version, you can run the version management command with *--rename* option, providing
@@ -118,9 +119,7 @@ $ taipy manage-versions --list
 Version number                         Mode                   Creation date
 d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:10
 3.0                                    Experiment             2023-01-18 12:10:55
-2.0                                    Production             2023-01-16 15:10:41
 7a24dbb8-bdf6-4c84-9ddf-7b921abc5df9   Experiment             2023-01-16 17:10:15
-1.0                                    Production             2023-01-12 09:10:35
 
 $ taipy manage-versions --delete "1.0"
 Successfully delete version 1.0.
@@ -129,11 +128,14 @@ $ taipy manage-versions --list
 Version number                         Mode                   Creation date
 d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:10
 3.0                                    Experiment             2023-01-18 12:10:55
-2.0                                    Production             2023-01-16 15:10:41
 7a24dbb8-bdf6-4c84-9ddf-7b921abc5df9   Experiment             2023-01-16 17:10:15
 ```
 
 ## Remove a version from production
+
+!!! warning "Available in Taipy Enterprise edition"
+
+    This section is relevant only to the Enterprise edition of Taipy.
 
 To convert a version from production to experiment, you can run the version management command
 with *--delete-production* option.

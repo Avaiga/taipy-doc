@@ -166,7 +166,7 @@ option on the Taipy CLI and provide the version name (see the
 
 ```console
 $ taipy manage-versions --delete 0.1
-Successfully deleted version 0.1 from the production version list.
+Successfully delete version 0.1.
 
 $ taipy manage-versions --list
 Version number                         Mode                   Creation date

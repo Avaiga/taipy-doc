@@ -1,3 +1,7 @@
+!!! warning "Available in Taipy Enterprise edition"
+
+    This section is relevant only to the Enterprise edition of Taipy.
+
 When running a Taipy Core application in *--production* mode, Taipy can access all entities
 attached to the current version or another *production* version. It corresponds to the case where
 the application is stable and running in a production environment.
