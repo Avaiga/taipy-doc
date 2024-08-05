@@ -227,6 +227,7 @@ nav:
       - "Production Planning": gallery/decision_support/3_production_planning/index.md
       - "QSR Sales Forecasting": gallery/decision_support/3_qsr_sales_forecasting/index.md
       - "Supply Chain - 2 Echelons": gallery/decision_support/3_supply_chain/index.md
+      - "Workforce Optimization": gallery/decision_support/4_workforce_optim/index.md
       - "Optimize Bar Cut Sizes": gallery/decision_support/bar_cutting/index.md
       - "Churn Classification": gallery/decision_support/churn_classification/index.md
       - "Drift Detection": gallery/decision_support/drift_detection/index.md
