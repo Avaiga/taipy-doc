@@ -127,10 +127,10 @@ you can register that page to the `Gui^` instance used by your application.
 
 The `Gui^` constructor can accept the raw content of a page as Markdown text, a Page object and 
 create a new page for you. That would be the easier way to create applications that have a 
-single page. Here is how you can create and register a page, defined as Markdown content, in a 
+single page. Here is how you can create and register a page in a 
 Taipy application:
 
-=== "page variable"
+=== "Markdown"
     ```python
     from taipy import Gui
 
@@ -138,7 +138,7 @@ Taipy application:
 
     Gui(page).run()
     ```
-=== "add_page function"
+=== "Python"
     ```python
     from taipy import Gui
     import taipy.gui.builder as tgb
@@ -146,9 +146,7 @@ Taipy application:
     with tgb.Page() as page:
         tgb.text("# First Page", mode="md")
 
-    gui = Gui()
-    gui.add_page("first_page", page)
-    gui.run()
+    Gui(page).run()
     ```
 
 If you run this Python script and connect a browser to the web server address
@@ -208,6 +206,9 @@ associates a page with its name:
     # gui.add_pages(pages)
     # gui.run()
     ```
+
+You could have also used the `(Gui.)add_page()` function.
+
 
 In this situation, to see the pages in your browser, the address you will use
 will be *localhost:5000/home* or *localhost:5000/about*. Learn how to natigate between pages [here](../pages/navigate/index.md).

@@ -92,7 +92,7 @@ with properties like the list of pages you can navigate to.
     Gui(pages=pages).run()
     ```
 
-# Using Menu
+# Using menus
 
 The [`menu`](../../viselements/generic/menu.md) control displays a menu to the left of the page, 
 allowing to navigate through the pages.
@@ -166,7 +166,7 @@ For example, this code creates a menu with two options:
 
 # Using the `navigate` function
 
-The `(Gui.)navigate()^` allows for programmatically controlling navigation 
+The `(Gui.)navigate()^` function allows for programmatically controlling navigation 
 within callback functions. You can navigate to a page of this application or 
 an external page.
 
@@ -250,8 +250,7 @@ See more information for [`on_navigate`](../../callbacks.md#navigation-callback)
         "no_results": no_results_md
     }
 
-    gui = Gui(pages=pages)
-    gui.run()
+    Gui(pages=pages).run()
     ```
 === "Python"
     ```python
@@ -280,6 +279,5 @@ See more information for [`on_navigate`](../../callbacks.md#navigation-callback)
         "no_results": no_results_page
     }
 
-    gui = Gui(pages=pages)
-    gui.run()
+    Gui(pages=pages).run()
     ```
