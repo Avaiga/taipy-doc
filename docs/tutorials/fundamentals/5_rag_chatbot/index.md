@@ -128,10 +128,10 @@ def on_init(state):
 
 We begin by defining the following [state variables](../../../manuals/userman/gui/binding.md) to be used in the application:
 
-1. `query_message`: A string bound to an input box, for the user to enter their query for the model;
-2. `messages`: A list of all messages between the user and LLM;
-3. `messages_dict`: A dictionary used to hold the chat partial content (see next step); and
-4. `conv`: A Taipy [*partial*](../../../manuals/userman/gui/pages/index.md#partials) whose content is updated as new chat
+1. *query_message*: A string bound to an input box, for the user to enter their query for the model;
+2. *messages*: A list of all messages between the user and LLM;
+3. *messages_dict*: A dictionary used to hold the chat partial content (see next step); and
+4. *conv*: A Taipy [`partial`](../../../manuals/userman/gui/pages/partials/index.md) whose content is updated as new chat
    messages are added. Technically, this variable is defined in a later step, but you can see it being used in the
    *on_init* function.
 
