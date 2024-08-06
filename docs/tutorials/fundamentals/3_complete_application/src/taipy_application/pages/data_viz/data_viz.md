@@ -2,6 +2,6 @@
 
 Select week: *<|{n_week}|>*
 
-<|{n_week}|slider|min=1|max=52|on_change=on_slider|>
+<|{n_week}|slider|min=1|max=52|on_change=slider_moved|>
 
 <|{dataset_week}|chart|type=bar|x=Date|y=Value|>

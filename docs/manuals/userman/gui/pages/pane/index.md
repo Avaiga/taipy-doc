@@ -1,3 +1,7 @@
+---
+hide:
+    - toc
+---
 
 Modern user interfaces also provide small pages that pop out and be removed for
 temporary use, such as providing specific parameters for the application. Taipy lets
