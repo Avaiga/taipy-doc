@@ -42,7 +42,7 @@ controlling page transitions.
         Gui(pages=pages).run()
         ```
 
-# Using Navbar
+# Using navbar
 
 [Navbar](../../viselements/generic/navbar.md) is a visual element that, 
 by default, lets you navigate between pages. You can customize the navbar 

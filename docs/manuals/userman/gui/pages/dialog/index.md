@@ -1,3 +1,7 @@
+---
+hide:
+    - toc
+---
 
 Applications sometimes need to prompt the user to indicate a situation or request
 input of some sort. Dialogs are forms that can be displayed on top of the page
