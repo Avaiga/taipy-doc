@@ -61,11 +61,11 @@ navigate through the pages.
 
 === "Markdown"
     ```
-    <|menu|label=Menu|lov={lov_pages}|on_action=on_menu|>`
+    <|menu|label=Menu|lov={lov_pages}|on_action=menu_option_selected|>`
     ```
 === "Python"
     ```python
-    tgb.menu(label="Menu", lov=[...], on_action=on_menu)
+    tgb.menu(label="Menu", lov=[...], on_action=menu_option_selected)
     ```
 
 For example, this code creates a menu with two options:
@@ -75,12 +75,12 @@ For example, this code creates a menu with two options:
     from taipy.gui import Gui, navigate
 
 
-    root_md="<|menu|label=Menu|lov={[('Page-1', 'Page 1'), ('Page-2', 'Page 2')]}|on_action=on_menu|>"
+    root_md="<|menu|label=Menu|lov={[('Page-1', 'Page 1'), ('Page-2', 'Page 2')]}|on_action=menu_option_selected|>"
     page1_md="## This is page 1"
     page2_md="## This is page 2"
 
 
-    def on_menu(state, action, info):
+    def menu_option_selected(state, action, info):
         page = info["args"][0]
         navigate(state, to=page)
 
@@ -99,7 +99,7 @@ For example, this code creates a menu with two options:
     import taipy.gui.builder as tgb
 
 
-    def on_menu(state, action, info):
+    def menu_option_selected(state, action, info):
         page = info["args"][0]
         navigate(state, to=page)
 
@@ -107,7 +107,7 @@ For example, this code creates a menu with two options:
     with tgb.Page() as root_page:
         tgb.menu(label="Menu",
                  lov=[('Page-1', 'Page 1'), ('Page-2', 'Page 2')],
-                 on_action=on_menu)
+                 on_action=menu_option_selected)
 
     with tgb.Page() as page_1:
         tgb.text("## This is page 1", mode="md")

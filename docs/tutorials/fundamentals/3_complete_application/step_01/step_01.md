@@ -129,17 +129,17 @@ Here's an example of of setting the `on_change` callback function to update *sta
 week from the slider:
 
 ```python
-def on_slider(state):
+def slider_moved(state):
     state.dataset_week = dataset[dataset["Date"].dt.isocalendar().week == state.n_week]
 ```
 
 === "Markdown"
     ```markdown
-    <|{n_week}|slider|min=1|max=52|on_change=on_slider|>
+    <|{n_week}|slider|min=1|max=52|on_change=slider_moved|>
     ```
 === "Python"
     ```python
-    tgb.slider("{n_week}", min=1, max=52, on_change=on_slider)
+    tgb.slider("{n_week}", min=1, max=52, on_change=slider_moved)
     ```
 
 # Markdown
@@ -153,7 +153,7 @@ code to the Python API easily. The following Markdown corresponds to the
 
 Select week: *<|{n_week}|>*
 
-<|{n_week}|slider|min=1|max=52|on_change=on_slider|>
+<|{n_week}|slider|min=1|max=52|on_change=slider_moved|>
 
 <|{dataset_week}|chart|type=bar|x=Date|y=Value|>
 ```
@@ -184,7 +184,7 @@ n_week = 10
 # Select the week based on the slider value
 dataset_week = dataset[dataset["Date"].dt.isocalendar().week == n_week]
 
-def on_slider(state):
+def slider_moved(state):
     state.dataset_week = dataset[dataset["Date"].dt.isocalendar().week == state.n_week]
 
 

@@ -37,9 +37,7 @@ nav:
       - "Visuals": tutorials/visuals/index.md
       - "Callbacks in Taipy": tutorials/visuals/1_the_on_change_callback/index.md
       - "Using Tables": tutorials/visuals/2_using_tables/index.md
-      - "Multi-page Application": tutorials/visuals/3_multipage_application/index.md
       - "Long Running Callbacks": tutorials/visuals/4_long_callbacks/index.md
-      - "Content update with Partials": tutorials/visuals/4_partials/index.md
       - "Real-time data visualization": tutorials/visuals/5_multithreading/index.md
       - "Stylekit": tutorials/visuals/6_css_style_kit/index.md
       - "Multi-user": tutorials/visuals/7_multi_user/index.md
@@ -81,7 +79,13 @@ nav:
           - "Styling":
               - "Styling": manuals/userman/gui/styling/index.md
               - "The Stylekit": manuals/userman/gui/styling/stylekit.md
-        - "Pages": manuals/userman/gui/pages/index.md
+        - "Pages":
+          - "Pages": manuals/userman/gui/pages/index.md
+          - "Navigate between pages": manuals/userman/gui/pages/navigate/index.md
+          - "Content update with partials": manuals/userman/gui/pages/partial/index.md
+          - "Dialogs": manuals/userman/gui/pages/dialog/index.md
+          - "Panes": manuals/userman/gui/pages/pane/index.md
+          - "Advanced": manuals/userman/gui/pages/advanced/index.md
         - "Binding variables": manuals/userman/gui/binding.md
         - "Callbacks": manuals/userman/gui/callbacks.md
         - "Notifications": manuals/userman/gui/notifications.md

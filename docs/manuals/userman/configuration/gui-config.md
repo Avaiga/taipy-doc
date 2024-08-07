@@ -145,7 +145,7 @@ Here is the list of the configuration parameters you can use in
      can be found in the documentation section for
      [Plotly's layout template](https://plotly.com/javascript/reference/layout/#layout-template).
    - <a name="p-extended_status"></a>*extended_status* (bool, default: False): if set to True, the
-     [status page](../gui/pages/index.md#status-page) output is augmented with additional information.
+     [status page](../gui/pages/advanced/index.md#status-page) output is augmented with additional information.
    - <a name="p-flask_log"></a>*flask_log* (bool, default: False): if set to True, you can get a
      complete, real-time log from the Flask server. This may be useful when trying to find out why
      a request does not behave as expected.
