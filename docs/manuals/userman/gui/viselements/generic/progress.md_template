@@ -17,17 +17,14 @@ name to select the date selectors on your page and apply style.
 The progress render, which is set by default to True, simply handles that if the progress element should be displayed or not.
 
 !!! taipy-element
-    render=True
 
 !!! taipy-element
     value=50
-    render=True
 
 ## Linear Progress
 
 You can specify if you want the progress element to be linear or circular just by adding - `linear=True`. By default linear is set to False.
 
 !!! taipy-element
-    render=True
     value=50
     linear=True
