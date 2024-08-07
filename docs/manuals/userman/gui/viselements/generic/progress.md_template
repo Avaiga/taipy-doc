@@ -14,8 +14,6 @@ name to select the date selectors on your page and apply style.
 
 ## Circular Progress
 
-The progress render, which is set by default to True, simply handles that if the progress element should be displayed or not.
-
 !!! taipy-element
 
 !!! taipy-element
