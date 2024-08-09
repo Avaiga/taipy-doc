@@ -164,7 +164,7 @@ The control's `on_action` callback property is set so that the callback function
 invoked when the "Submit" button is pressed.<br/>
 Here is the code of this function:
 ```python linenums="1"
-users: list[str|Icon] = []
+users: list[str | Icon] = []
 
 def register(state):
     for user in users:

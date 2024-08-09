@@ -720,10 +720,10 @@ The implementation of these requirements requires the creation of a *columns* di
 as follows:
 ```python title="Column customization"
 columns = {
-    "date" : {"title": "Data", "format": "MMM d"},
-    "price" : {"title": "Price", "format": "$%.02f"},
-    "change" : {"title": "% change", "format": "%.01f"},
-    "volume" : {"title": "Volume"}
+    "date": {"title": "Data", "format": "MMM d"},
+    "price": {"title": "Price", "format": "$%.02f"},
+    "change": {"title": "% change", "format": "%.01f"},
+    "volume": {"title": "Volume"}
 }
 ```
 
