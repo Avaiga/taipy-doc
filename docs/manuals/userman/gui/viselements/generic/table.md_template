@@ -743,7 +743,7 @@ The resulting display reflects what is requested:
 
 To give a specific style to a table row, you will use the [*style*](#p-style) property (note that
 you can find general instructions on how to apply style to visual elements in
-[this page](../../styling.md)).<br/>
+[this page](../../styling/index.md).<br/>
 This property holds a function that is invoked when each row is rendered, and it must return
 the name of a style, defined in CSS.
 

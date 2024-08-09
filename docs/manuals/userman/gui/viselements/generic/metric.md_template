@@ -62,15 +62,17 @@ Renders as such:
 
 ## Setting the gauge type {data-source="gui:doc/examples/controls/metric-type.py"}
 
-You can change the representation to an horizontal bar by setting the [*type*](#p-type) 
+You can change the representation to an horizontal bar by setting the [*type*](#p-type) property to
+"linear".
 
 Here is the definition of a `metric` control that is horizontal:
 !!! taipy-element
     default={value}
     delta={delta}
     threshold={threshold}
+    type=linear
 
-Compared to the previous example, we only added the [*type*](#p-type) parameter, set to "linear".
+Compared to the previous example, we only specified the [*type*](#p-type) parameter.
 
 Here is what this control will look like:
 <figure class="tp-center">
@@ -247,7 +249,7 @@ documentation set.
 
 Here is an example of a *layout* configuration:
 ```python
-value = 50
+value = 45
 layout = {
     "paper_bgcolor": "lightblue",
     "font": {

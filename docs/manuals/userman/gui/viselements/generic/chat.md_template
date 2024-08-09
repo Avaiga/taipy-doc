@@ -201,7 +201,7 @@ discuss_page = """
 """
 ```
 
-This page creates a `chat` control that binds its default property ([*messages*](#p-messages_id)) to
+This page creates a `chat` control that binds its default property ([*messages*](#p-messages)) to
 the variable *messages* that is initialized to an empty list.<br/>
 The variables *users* and *username* are bound as expected.
 
