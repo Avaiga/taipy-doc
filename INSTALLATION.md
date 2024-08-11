@@ -21,7 +21,7 @@ pipenv run python tools/setup_generation.py
 ### 3. Launch the web server
 
 ```bash
-mkdocs serve
+pipenv run mkdocs serve
 ```
 
 This will launch a web server with the local documentation. Everytime you save a file, the server will automatically relaunch the web server so you can see your changes.
