@@ -35,8 +35,10 @@ This is the list of changes to Taipy releases as they were published.
 
 <h4><strong><code>taipy-gui</code></strong> 4.0.0</h4>
 
+- A new control called [`metric`](../manuals/userman/gui/viselements/generic/metric.md) was added
+  to represent significant numerical information such as an industrial KPI.
 - A new control called [`chat`](../manuals/userman/gui/viselements/generic/chat.md) was added
-  to simplify the creation of chatting application.
+  to simplify the creation of chatting applications.
 
 <h4><strong><code>taipy-core</code></strong> 4.0.0 </h4>
 
