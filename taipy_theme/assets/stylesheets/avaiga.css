@@ -969,3 +969,16 @@ ul.tp-bc li a:hover {
   color: var(--md-primary-fg-color--dark);
   text-decoration: underline;
 }
+/* ---------- ---------- ---------- gui code samples ---------- ---------- ---------- */
+div.tp-gcs {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+div.tp-gcs a::before{
+  content: '';
+  display: inline-block;
+  content: url("../images/github-mark-white.svg");
+  width: 1.5em;
+  height: 1.5em;
+}

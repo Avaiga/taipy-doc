@@ -532,8 +532,9 @@ def process_data_source_attr(html: str, env):
                 ref = f"https://github.com/Avaiga/taipy-{repo_m.group(0)[:-1]}/blob/{env.conf['branch']}/{target}"
         new_content += (html[last_location:m.start()]
                         + f"{m.group(1)}{m.group(4)}"
-                        + "\n<small>You can download the entire source code used in this "
-                        + f"section from the <a href=\"{ref}\">GitHub repository</a>.</small>"
+                        + "\n<div class=\"tp-gcs\">"
+                        + f"<a class=\"tp-btn tp-btn--accent\" href=\"{ref}\" target=\"blank\">"
+                        + "See the entire code for this example</a></div>"
                         )
         last_location = m.end()
     if last_location:
