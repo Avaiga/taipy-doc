@@ -87,6 +87,7 @@ the callback function referenced in the `on_action` property.
 === "Python"
     ```python
     from taipy.gui import Gui, notify
+    import taipy.gui.builder as tgb
 
     text = "Original text"
 
