@@ -85,10 +85,17 @@ You can configure the *standalone* mode with the following config:
 To execute multiple `Job^`s simultaneously, you can set the *max_nb_of_workers* to an
 integer value greater than 1. That starts each `Job^` in a dedicated process with
 *max_nb_of_workers* as the limit of concurrent processes that can run simultaneously.
+The default value of *max_nb_of_workers* is 2.
 
-!!! note
+!!! warning
 
-    The default value of *max_nb_of_workers* is 2.
+    In *standalone* mode, when a subprocess is spawned, the code is re-executed except
+    for the code inside the `if __name__ == "__main__":` condition. This can lead to
+    unexpected behavior if the code is not protected.
+
+    Therefore, it's a good practice to protect the main code with the `if __name__ == "__main":`
+    condition in your Taipy application main script. By doing this, the code will not be re-executed
+    when the subprocesses are spawned.
 
 For example, the following configuration will allow Taipy to run up to eight `Job^`s
 simultaneously:
@@ -98,7 +105,9 @@ simultaneously:
     ```python  linenums="1"
     from taipy import Config
 
-    Config.configure_job_executions(mode="standalone", max_nb_of_workers=8)
+    if __name__ == "__main__":
+        Config.configure_job_executions(mode="standalone", max_nb_of_workers=8)
+        ...
     ```
 
 === "TOML configuration "
@@ -106,7 +115,9 @@ simultaneously:
     ```python linenums="1"
     from taipy import Config
 
-    Config.load("config.toml")
+    if __name__ == "__main__":
+        Config.load("config.toml")
+        ...
     ```
 
     ```toml linenums="1" title="config.toml"

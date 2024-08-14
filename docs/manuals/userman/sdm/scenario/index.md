@@ -151,12 +151,12 @@ and other related information.
     ```
 
 By default, Taipy executes the jobs asynchronously. If you want to wait until the submitted
-jobs are finished, you can use the parameters _wait_ and _timeout_.
+jobs are finished, you can use the parameters *wait* and *timeout*.
 
-By default, the parameter _wait_ is False. If it is set to True, Taipy waits until all the
-submitted jobs are finished. The parameter _timeout_ represents a time span in seconds. It
-can be an integer or a float. If _wait_ is True and _timeout_ is not specified or None, there
-is no limit to the wait time. If _wait_ is True and _timeout_ is specified, Taipy waits until
+By default, the parameter *wait* is False. If it is set to True, Taipy waits until all the
+submitted jobs are finished. The parameter *timeout* represents a time span in seconds. It
+can be an integer or a float. If *wait* is True and *timeout* is not specified or None, there
+is no limit to the wait time. If *wait* is True and *timeout* is specified, Taipy waits until
 all the submitted jobs are finished, or the timeout expires (which ever occurred first).
 
 !!! example
@@ -419,6 +419,10 @@ value of _authorized_tags_. From the scenarios that are created from that config
 if you add a tag that is not authorized, an exception will be raised.
 
 # Import/Export Scenarios
+
+!!! warning "Available in Taipy Enterprise edition"
+
+    This section is relevant only to the Enterprise edition of Taipy.
 
 ## Export a scenario
 

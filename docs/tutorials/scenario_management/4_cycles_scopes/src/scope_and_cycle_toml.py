@@ -1,19 +1,20 @@
-from taipy.config import Config, Frequency, Scope
-import taipy as tp
 import datetime as dt
+
 import pandas as pd
+
+import taipy as tp
+from taipy.config import Config
 
 
 def filter_by_month(df, month):
-    df['Date'] = pd.to_datetime(df['Date']) 
+    df['Date'] = pd.to_datetime(df['Date'])
     df = df[df['Date'].dt.month == month]
     return df
 
-
-Config.load('config.toml')
-scenario_cfg = Config.scenarios["my_scenario"]
-
 if __name__ == '__main__':
+    Config.load('config.toml')
+    scenario_cfg = Config.scenarios["my_scenario"]
+
     tp.Core().run()
 
     scenario_1 = tp.create_scenario(scenario_cfg,
@@ -29,7 +30,7 @@ if __name__ == '__main__':
     print("Month Data Node of Scenario 2:", scenario_2.month.read())
 
     scenario_1.submit()
-    
+
     before_set_1 = scenario_1.is_primary
     before_set_2 = scenario_2.is_primary
 
@@ -45,4 +46,3 @@ if __name__ == '__main__':
               <|{scenario}|scenario|>
               <|{scenario}|scenario_dag|>
               <|{data_node}|data_node_selector|>""").run()
-    

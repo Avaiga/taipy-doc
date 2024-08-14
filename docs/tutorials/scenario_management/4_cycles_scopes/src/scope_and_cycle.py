@@ -1,37 +1,38 @@
-from taipy.config import Config, Frequency, Scope
-import taipy as tp
 import datetime as dt
+
 import pandas as pd
+
+import taipy as tp
+from taipy.config import Config, Frequency, Scope
 
 
 def filter_by_month(df, month):
-    df['Date'] = pd.to_datetime(df['Date']) 
+    df['Date'] = pd.to_datetime(df['Date'])
     df = df[df['Date'].dt.month == month]
     return df
 
-
-historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
-                                                     default_path="time_series.csv",
-                                                     scope=Scope.GLOBAL)
-month_cfg =  Config.configure_data_node(id="month",
-                                        scope=Scope.CYCLE)
-month_values_cfg =  Config.configure_data_node(id="month_data",
-                                               scope=Scope.CYCLE)
-
-
-task_filter_cfg = Config.configure_task(id="filter_by_month",
-                                        function=filter_by_month,
-                                        input=[historical_data_cfg, month_cfg],
-                                        output=month_values_cfg)
-
-
-scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                         task_configs=[task_filter_cfg],
-                                         frequency=Frequency.MONTHLY)
-
-Config.export('step_04/onfig.toml')
-
 if __name__ == '__main__':
+    historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
+                                                        default_path="time_series.csv",
+                                                        scope=Scope.GLOBAL)
+    month_cfg =  Config.configure_data_node(id="month",
+                                            scope=Scope.CYCLE)
+    month_values_cfg =  Config.configure_data_node(id="month_data",
+                                                scope=Scope.CYCLE)
+
+
+    task_filter_cfg = Config.configure_task(id="filter_by_month",
+                                            function=filter_by_month,
+                                            input=[historical_data_cfg, month_cfg],
+                                            output=month_values_cfg)
+
+
+    scenario_cfg = Config.configure_scenario(id="my_scenario",
+                                            task_configs=[task_filter_cfg],
+                                            frequency=Frequency.MONTHLY)
+
+    Config.export('step_04/onfig.toml')
+
     tp.Core().run()
 
     scenario_1 = tp.create_scenario(scenario_cfg,
@@ -47,7 +48,7 @@ if __name__ == '__main__':
     print("Month Data Node of Scenario 2:", scenario_2.month.read())
 
     scenario_1.submit()
-    
+
     before_set_1 = scenario_1.is_primary
     before_set_2 = scenario_2.is_primary
 
@@ -63,4 +64,3 @@ if __name__ == '__main__':
               <|{scenario}|scenario|>
               <|{scenario}|scenario_dag|>
               <|{data_node}|data_node_selector|>""").run()
-    

@@ -38,19 +38,21 @@ Taipy lets you create as many pages as you require with whatever content you nee
         ```python
         from taipy import Gui
 
-        page = "# First page"
+        if __name__ == "__main__":
+            page = "# First page"
 
-        Gui(page).run()
+            Gui(page).run()
         ```
     === "Python"
         ```python
         from taipy import Gui
         import taipy.gui.builder as tgb
 
-        with tgb.Page() as page:
-            tgb.text("# First Page", mode="md")
+        if __name__ == "__main__":
+            with tgb.Page() as page:
+                tgb.text("# First Page", mode="md")
 
-        Gui(page).run()
+            Gui(page).run()
         ```
 
 ## Defining the page content
@@ -68,9 +70,16 @@ The definition of a page typically consists of:
         from taipy.gui import Gui
         from math import cos, exp
 
-        value = 10
+        def slider_moved(state):
+            state.data = compute_data(state.value)
 
-        page = """
+        def compute_data(decay:int)->list:
+            return [cos(i/6) * exp(-i*decay/600) for i in range(100)]
+
+        if __name__ == "__main__":
+            value = 10
+
+            page = """
         # Taipy *Getting Started*
 
         Value: <|{value}|text|>
@@ -78,16 +87,8 @@ The definition of a page typically consists of:
         <|{value}|slider|on_change=slider_moved|>
 
         <|{data}|chart|>
-        """
+            """
 
-        def slider_moved(state):
-            state.data = compute_data(state.value)
-
-        def compute_data(decay:int)->list:
-            return [cos(i/6) * exp(-i*decay/600) for i in range(100)]
-
-
-        if __name__ == "__main__":
             data = compute_data(value)
 
             Gui(page).run(title="Dynamic chart")
@@ -99,22 +100,21 @@ The definition of a page typically consists of:
         import taipy.gui.builder as tgb
         from math import cos, exp
 
-        value = 10
-
         def compute_data(decay:int)->list:
             return [cos(i/6) * exp(-i*decay/600) for i in range(100)]
 
         def slider_moved(state):
             state.data = compute_data(state.value)
 
-        with tgb.Page() as page:
-            tgb.text(value="# Taipy Getting Started", mode="md")
-            tgb.text(value="Value: {value}")
-            tgb.slider(value="{value}", on_change=slider_moved)
-            tgb.chart(data="{data}")
-
-
         if __name__ == "__main__":
+            value = 10
+
+            with tgb.Page() as page:
+                tgb.text(value="# Taipy Getting Started", mode="md")
+                tgb.text(value="Value: {value}")
+                tgb.slider(value="{value}", on_change=slider_moved)
+                tgb.chart(data="{data}")
+
             data = compute_data(value)
 
             Gui(page).run(title="Dynamic chart")
@@ -125,28 +125,30 @@ The definition of a page typically consists of:
 Once you have created an instance of a page renderer for a specific piece of text or Python code,
 you can register that page to the `Gui^` instance used by your application.
 
-The `Gui^` constructor can accept the raw content of a page as Markdown text, a Page object and 
-create a new page for you. That would be the easier way to create applications that have a 
-single page. Here is how you can create and register a page in a 
+The `Gui^` constructor can accept the raw content of a page as Markdown text, a Page object and
+create a new page for you. That would be the easier way to create applications that have a
+single page. Here is how you can create and register a page in a
 Taipy application:
 
 === "Markdown"
     ```python
     from taipy import Gui
 
-    page = "# First page"
+    if __name__ == "__main__":
+        page = "# First page"
 
-    Gui(page).run()
+        Gui(page).run()
     ```
 === "Python"
     ```python
     from taipy import Gui
     import taipy.gui.builder as tgb
 
-    with tgb.Page() as page:
-        tgb.text("# First Page", mode="md")
+    if __name__ == "__main__":
+        with tgb.Page() as page:
+            tgb.text("# First Page", mode="md")
 
-    Gui(page).run()
+        Gui(page).run()
     ```
 
 If you run this Python script and connect a browser to the web server address
@@ -164,47 +166,49 @@ associates a page with its name:
     ```python
     from taipy import Gui
 
-    root_md = "# Multi-page application"
-    home_md = "# Home"
-    about_md = "# About"
+    if __name__ == "__main__":
+        root_md = "# Multi-page application"
+        home_md = "# Home"
+        about_md = "# About"
 
-    pages = {
-        "/": root_md,
-        "home": home_md,
-        "about": about_md
-    }
+        pages = {
+            "/": root_md,
+            "home": home_md,
+            "about": about_md
+        }
 
-    Gui(pages=pages).run()
-    # or
-    # gui = Gui()
-    # gui.add_pages(pages)
-    # gui.run()
+        Gui(pages=pages).run()
+        # or
+        # gui = Gui()
+        # gui.add_pages(pages)
+        # gui.run()
     ```
 === "Python"
     ```python
     from taipy import Gui
     import taipy.gui.builder as tgb
 
-    with tgb.Page() as root_page:
-        tgb.text("# Multi-page application", mode="md")
+    if __name__ == "__main__":
+        with tgb.Page() as root_page:
+            tgb.text("# Multi-page application", mode="md")
 
-    with tgb.Page() as home_page:
-        tgb.text("# Home", mode="md")
+        with tgb.Page() as home_page:
+            tgb.text("# Home", mode="md")
 
-    with tgb.Page() as about_page:
-        tgb.text("# About", mode="md")
+        with tgb.Page() as about_page:
+            tgb.text("# About", mode="md")
 
-    pages = {
-        "/": root_page,
-        "home": home_page,
-        "about": about_page
-    }
+        pages = {
+            "/": root_page,
+            "home": home_page,
+            "about": about_page
+        }
 
-    Gui(pages=pages).run()
-    # or
-    # gui = Gui()
-    # gui.add_pages(pages)
-    # gui.run()
+        Gui(pages=pages).run()
+        # or
+        # gui = Gui()
+        # gui.add_pages(pages)
+        # gui.run()
     ```
 
 You could have also used the `(Gui.)add_page()` function.
@@ -220,7 +224,7 @@ to visual elements may have a scope limited to their origin module. See
 ## Root page
 
 The *Root* page is the page located at `"/"` (or the value of the
-[*base_url*](../../configuration/gui-config.md#p-base_url) configuration setting). 
+[*base_url*](../../configuration/gui-config.md#p-base_url) configuration setting).
 The content of the page will be shown at the top of every page of your application.
 
 ## Application header and footer
@@ -234,24 +238,25 @@ runs.
 !!! example
 
     ```python
-       from taipy import Gui
+    from taipy import Gui
 
-       root_md="""
-       # Multi-page application
+    if __name__ == "__main__":
+        root_md="""
+    # Multi-page application
 
-       <|content|>
+    <|content|>
 
-       This application was created with [Taipy](https://www.taipy.io/).
-       """
-       home_md="## Home"
-       about_md="## About"
+    This application was created with [Taipy](https://www.taipy.io/).
+        """
+        home_md="## Home"
+        about_md="## About"
 
-       pages = {
-         "/": root_md,
-         "home": home_md,
-         "about": about_md
-       }
-       Gui(pages=pages).run()
+        pages = {
+            "/": root_md,
+            "home": home_md,
+            "about": about_md
+        }
+        Gui(pages=pages).run()
     ```
 
     This application does the same as in the previous example, except that you now

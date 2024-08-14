@@ -29,12 +29,13 @@ You can also use Plotly Python to create a *Figure* object and inject it in the 
     from taipy.gui import Gui
     import plotly.graph_objects as go
 
-    list_to_display = [100/x for x in range(1, 100)]
-    fig = go.Figure(data=go.Scatter(y=list_to_display))
+    if __name__ == "__main__":
+        list_to_display = [100/x for x in range(1, 100)]
+        fig = go.Figure(data=go.Scatter(y=list_to_display))
 
-    page = "<|chart|figure={fig}|>"
+        page = "<|chart|figure={fig}|>"
 
-    Gui(page).run()
+        Gui(page).run()
     ```
 === "Python"
     ```python
@@ -42,13 +43,14 @@ You can also use Plotly Python to create a *Figure* object and inject it in the 
     import taipy.gui.builder as tgb
     import plotly.graph_objects as go
 
-    list_to_display = [100/x for x in range(1, 100)]
-    fig = go.Figure(data=go.Scatter(y=list_to_display))
+    if __name__ == "__main__":
+        list_to_display = [100/x for x in range(1, 100)]
+        fig = go.Figure(data=go.Scatter(y=list_to_display))
 
-    with tgb.Page() as page:
-        tgb.chart(figure="{fig}")
+        with tgb.Page() as page:
+            tgb.chart(figure="{fig}")
 
-    Gui(page).run()
+        Gui(page).run()
     ```
 
 
@@ -137,13 +139,11 @@ A chart is added to our code to visualize the score given by our NLP algorithm t
     <|{dataframe}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|>
     """
 
-
     dataframe = pd.DataFrame({"Text":['Test', 'Other', 'Love'],
                               "Score Pos":[1, 1, 4],
                               "Score Neu":[2, 3, 1],
                               "Score Neg":[1, 2, 0],
                               "Overall":[0, -1, 4]})
-
     ```
 === "Python"
     ```python
@@ -156,14 +156,11 @@ A chart is added to our code to visualize the score given by our NLP algorithm t
                   y__1="Score Pos", y__2="Score Neu", y__3="Score Neg", y__4="Overall",
                   color__1="green", color__2="grey", color__3="red", type__4="line")
 
-
-
     dataframe = pd.DataFrame({"Text":['Test', 'Other', 'Love'],
                               "Score Pos":[1, 1, 4],
                               "Score Neu":[2, 3, 1],
                               "Score Neg":[1, 2, 0],
                               "Overall":[0, -1, 4]})
-
     ```
 
 ## Quick tip to write visual elements
@@ -208,7 +205,6 @@ graph shown above, you can to the following:
 
     ...
     tgb.chart("{dataframe}", properties=property_chart)
-
     ```
 
 ![Charts](images/result.png){ width=90% : .tp-image-border }

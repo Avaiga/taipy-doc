@@ -1,11 +1,11 @@
+import taipy as tp
+from taipy import Config
+
 
 def double(nb):
     return nb * 2
 
 if __name__ == "__main__":
-    import taipy as tp
-    from taipy import Config
-
     # Create a scenario configuration made of one task configuration
     input_cfg = Config.configure_data_node("my_input", default_data=21)
     output_cfg = Config.configure_data_node("my_output")

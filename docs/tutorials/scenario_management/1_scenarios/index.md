@@ -91,29 +91,30 @@ it is possible to export them with the last command.
 ```python
 ...
 
-# Run of the Core service
-tp.Core().run()
+if __name__ == "__main__":
+    # Run of the Core service
+    tp.Core().run()
 
-# Get a scenario by id
-scenario_retrieved = tp.get(scenario.id)
+    # Get a scenario by id
+    scenario_retrieved = tp.get(scenario.id)
 
-# Get all scenarios
-all_scenarios = tp.get_scenarios()
+    # Get all scenarios
+    all_scenarios = tp.get_scenarios()
 
-# Get primary scenarios
-all_primary_scenarios = tp.get_primary_scenarios()
+    # Get primary scenarios
+    all_primary_scenarios = tp.get_primary_scenarios()
 
-# Promote a scenario as primary
-tp.set_primary(scenario)
+    # Promote a scenario as primary
+    tp.set_primary(scenario)
 
-# Compare scenarios (use the compare function defined in the configuration)
-comparison_results = tp.compare_scenarios(january_scenario, february_scenario, data_node_config_id="sales_predictions")
+    # Compare scenarios (use the compare function defined in the configuration)
+    comparison_results = tp.compare_scenarios(january_scenario, february_scenario, data_node_config_id="sales_predictions")
 
-# Tag a scenario
-tp.tag(scenario, "my_tag")
+    # Tag a scenario
+    tp.tag(scenario, "my_tag")
 
-# Export a scenario
-tp.export(scenario.id, folder_path="./monthly_scenario")
+    # Export a scenario
+    tp.export(scenario.id, folder_path="./monthly_scenario")
 ```
 
 The primary benefit of having a scenario is to access the Data Nodes of the different scenarios
@@ -141,16 +142,16 @@ import taipy as tp
 
 ...
 
-scenario = None
+if __name__ == "__main__":
+    scenario = None
 
-scenario_md = """
-<|{scenario}|scenario_selector|>
-<|{scenario}|scenario|>
-<|{scenario}|scenario_dag|>
-"""
-
-tp.Core().run()
-Gui(scenario_md).run()
+    scenario_md = """
+    <|{scenario}|scenario_selector|>
+    <|{scenario}|scenario|>
+    <|{scenario}|scenario_dag|>
+    """
+    tp.Core().run()
+    Gui(scenario_md).run()
 ```
 
 # Conclusion

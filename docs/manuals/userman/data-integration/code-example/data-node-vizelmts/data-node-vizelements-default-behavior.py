@@ -1,12 +1,14 @@
 from datetime import datetime
-import taipy
-from taipy import Config, Core, Gui, Scope
+
 import pandas as pd
 
-# Creating a data node variable to be bound to the visual element
-data_node = None
+import taipy
+from taipy import Config, Core, Gui, Scope
 
 if __name__ == "__main__":
+    # Creating a data node variable to be bound to the visual element
+    data_node = None
+
     # Creating various data sources. A CSV file, an integer parameter and a datetime object
     pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6]}).to_csv("out.csv")
     parameter, date = 15, datetime.now()

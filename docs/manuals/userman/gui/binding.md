@@ -6,16 +6,18 @@ change those variable values.
 Consider the following application:
 
 <a name="first-example"></a>
+
 ```python linenums="1"
 from taipy import Gui
 
-x = 1234
+if __name__ == "__main__":
+  x = 1234
 
-Gui(page="""
+  Gui(page="""
 # Hello Taipy
 
 The variable `x` contains the value <|{x}|>.
-""").run()
+  """).run()
 ```
 
 When this program runs (and a web browser is directed to the running server), the
@@ -108,24 +110,26 @@ to import the global variables if they are not used in the Python code for that 
     from taipy.gui import Gui, Markdown
     from pages.page import page
 
-    navigation = [("/home", "Home"), ("/page", "Expression")]
-    root_page="""
+    if __name__ == "__main__":
+        navigation = [("/home", "Home"), ("/page", "Expression")]
+        root_page="""
     <|navbar|lov={navigation}|>
-    """
+        """
 
-    home_page="""# Home page
+        home_page="""
+    # Home page
     ...
-    """
+        """
 
-    base_value = 0
+        base_value = 0
 
-    pages={
-        "/": Markdown(root_page),
-        "home": Markdown(home_page),
-        "page": page
-    }
+        pages={
+            "/": Markdown(root_page),
+            "home": Markdown(home_page),
+            "page": page,
+        }
 
-    Gui(pages=pages).run()
+        Gui(pages=pages).run()
     ```
 
     *page* is imported from `pages.page` (that is the file `pages/page.py`) in
@@ -208,22 +212,23 @@ defined.
     from taipy.gui import Gui, Markdown
     from page import sub_page
 
-    navigation = [("/sub_page", "Page")]
-
     def button_pressed(state):
         ...
 
-    root_page="""# Application
+    if __name__ == "__main__":
+        navigation = [("/sub_page", "Page")]
+
+        root_page="""
+    # Application
     <|navbar|lov={navigation}|>
 
     <|Press for action|button|on_action=button_pressed|>
-    """
+        """
 
-    Gui(pages={
-            "/": Markdown(root_page),
-            "sub_page": sub_page
-        }).run()
-    """
+        Gui(pages={
+                "/": Markdown(root_page),
+                "sub_page": sub_page
+            }).run()
     ```
 
     Here is the code for the *page* module, where *sub_page* is defined:

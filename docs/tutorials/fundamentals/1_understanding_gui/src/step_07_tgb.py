@@ -1,25 +1,14 @@
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-from scipy.special import softmax
-import numpy as np
 import pandas as pd
-from taipy.gui import Gui, notify
-import taipy.gui.builder as tgb
+from scipy.special import softmax
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-text = "Original text"
+import taipy.gui.builder as tgb
+from taipy.gui import Gui, notify
 
 # Initialize model and tokenizer
 MODEL = "cardiffnlp/twitter-roberta-base-sentiment"
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL)
-
-# Initial dataframe setup
-dataframe = pd.DataFrame({
-    "Text": [''],
-    "Score Pos": [0.33],
-    "Score Neu": [0.33],
-    "Score Neg": [0.33],
-    "Overall": [0]
-})
 
 def analyze_text(text):
     # Run sentiment analysis model
@@ -27,7 +16,7 @@ def analyze_text(text):
     output = model(**encoded_text)
     scores = output[0][0].detach().numpy()
     scores = softmax(scores)
-    
+
     return {
         "Text": text,
         "Score Pos": scores[2],
@@ -44,38 +33,6 @@ def local_callback(state):
     state.dataframe = temp
     state.text = ""
 
-# GUI layout with tgb
-with tgb.Page() as page:
-    with tgb.layout(columns="1 1"):
-        with tgb.part():
-            tgb.text("My text: {text}")
-            tgb.input("{text}")
-            tgb.button("Analyze", on_action=local_callback)
-
-        with tgb.expandable("Table"):
-            tgb.table("{dataframe}", number_format="%.2f")
-
-    with tgb.layout(columns="1 1 1"):
-        with tgb.part():
-            tgb.text("## Positive", mode="md")
-            tgb.text("{np.mean(dataframe['Score Pos'])}", format="%.2f")
-        with tgb.part():
-            tgb.text("## Neutral", mode="md")
-            tgb.text("{np.mean(dataframe['Score Neu'])}", format="%.2f")
-        with tgb.part():
-            tgb.text("## Negative", mode="md")
-            tgb.text("{np.mean(dataframe['Score Neg'])}", format="%.2f")
-
-    tgb.chart("{dataframe}", type="bar", x="Text", y__1="Score Pos", y__2="Score Neu", y__3="Score Neg", y__4="Overall",
-              color__1="green", color__2="grey", color__3="red", type__4="line")
-
-
-# Second page
-
-dataframe2 = dataframe.copy()
-path = ""
-treatment = 0
-
 def analyze_file(state):
     state.dataframe2 = dataframe2
     state.treatment = 0
@@ -83,7 +40,6 @@ def analyze_file(state):
         data = f.read()
         # split lines and eliminates duplicates
         file_list = list(dict.fromkeys(data.replace("\n", " ").split(".")[:-1]))
-
 
     for i in range(len(file_list)):
         text = file_list[i]
@@ -95,24 +51,66 @@ def analyze_file(state):
 
     state.path = None
 
-with tgb.Page() as page_file:
-    tgb.file_selector("{path}", extensions=".txt", label="Upload .txt file",
-                    on_action=analyze_file)
-    tgb.text("Downloading {treatment}%...")
+if __name__ == "__main__":
+    text = "Original text"
 
-    with tgb.expandable("Table"):
-        tgb.table("{dataframe2}")
+    # Initial dataframe setup
+    dataframe = pd.DataFrame({
+        "Text": [''],
+        "Score Pos": [0.33],
+        "Score Neu": [0.33],
+        "Score Neg": [0.33],
+        "Overall": [0]
+    })
 
-    tgb.chart("{dataframe2}", type="bar", x="Text",
-              y__1="Score Pos", y__2="Score Neu",  y__3="Score Neg", y__4="Overall",
-              color__1="green", color__2="grey", color__3="red", type__4="line",
-              height="800px")
+    # GUI layout with tgb
+    with tgb.Page() as page:
+        with tgb.layout(columns="1 1"):
+            with tgb.part():
+                tgb.text("My text: {text}")
+                tgb.input("{text}")
+                tgb.button("Analyze", on_action=local_callback)
 
-# Run the GUI
-# One root page for common content
-# The two pages that were created
-pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
-         "line":page,
-         "text":page_file}
+            with tgb.expandable("Table"):
+                tgb.table("{dataframe}", number_format="%.2f")
 
-Gui(pages=pages).run(debug=True)
+        with tgb.layout(columns="1 1 1"):
+            with tgb.part():
+                tgb.text("## Positive", mode="md")
+                tgb.text("{np.mean(dataframe['Score Pos'])}", format="%.2f")
+            with tgb.part():
+                tgb.text("## Neutral", mode="md")
+                tgb.text("{np.mean(dataframe['Score Neu'])}", format="%.2f")
+            with tgb.part():
+                tgb.text("## Negative", mode="md")
+                tgb.text("{np.mean(dataframe['Score Neg'])}", format="%.2f")
+
+        tgb.chart("{dataframe}", type="bar", x="Text", y__1="Score Pos", y__2="Score Neu", y__3="Score Neg", y__4="Overall",
+                color__1="green", color__2="grey", color__3="red", type__4="line")
+
+    # Second page
+    dataframe2 = dataframe.copy()
+    path = ""
+    treatment = 0
+
+    with tgb.Page() as page_file:
+        tgb.file_selector("{path}", extensions=".txt", label="Upload .txt file",
+                        on_action=analyze_file)
+        tgb.text("Downloading {treatment}%...")
+
+        with tgb.expandable("Table"):
+            tgb.table("{dataframe2}")
+
+        tgb.chart("{dataframe2}", type="bar", x="Text",
+                y__1="Score Pos", y__2="Score Neu",  y__3="Score Neg", y__4="Overall",
+                color__1="green", color__2="grey", color__3="red", type__4="line",
+                height="800px")
+
+    # Run the GUI
+    # One root page for common content
+    # The two pages that were created
+    pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
+            "line":page,
+            "text":page_file}
+
+    Gui(pages=pages).run(debug=True)

@@ -83,32 +83,34 @@ Here is the combined code:
     ```python
     from taipy.gui import Gui
 
-    text = "Original text"
+    if __name__ == "__main__":
+        text = "Original text"
 
-    page = """
-    # Getting started with Taipy GUI
+        page = """
+        # Getting started with Taipy GUI
 
-    My text: <|{text}|>
+        My text: <|{text}|>
 
-    <|{text}|input|>
-    """
+        <|{text}|input|>
+        """
 
-    Gui(page).run(debug=True)
+        Gui(page).run(debug=True)
     ```
 === "Python"
     ```python
     from taipy.gui import Gui
     import taipy.gui.builder as tgb
 
-    text = "Original text"
+    if __name__ == "__main__":
+        text = "Original text"
 
-    with tgb.Page() as page:
-        tgb.text("# Getting started with Taipy GUI", mode="md")
-        tgb.text("My text: {text}")
+        with tgb.Page() as page:
+            tgb.text("# Getting started with Taipy GUI", mode="md")
+            tgb.text("My text: {text}")
 
-        tgb.input("{text}")
+            tgb.input("{text}")
 
-    Gui(page).run(debug=True)
+        Gui(page).run(debug=True)
     ```
 
 ![Visual Elements](images/result.png){ width=90% : .tp-image-border }

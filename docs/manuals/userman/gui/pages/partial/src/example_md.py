@@ -1,8 +1,5 @@
-from taipy.gui import Gui, navigate
-import taipy.gui.builder as tgb
+from taipy.gui import Gui
 
-# Initial links
-links = [("Taipy", "http://taipy.io")]
 
 # Function to refresh the links partial
 def refresh_links(state):
@@ -27,17 +24,21 @@ def simulate_adding_more_links(state):
     ]
     refresh_links(state)
 
-# Define the main page layout
-main_page = """
-<|Add links|button|on_action=simulate_adding_more_links|>
-<|part|partial={link_partial}|>
-"""
-
 # Initialize the application state
 def on_init(state):
     refresh_links(state)
 
-# Create and run the Taipy GUI
-gui = Gui(main_page)
-link_partial = gui.add_partial("")
-gui.run()
+if __name__ == "__main__":
+    # Initial links
+    links = [("Taipy", "http://taipy.io")]
+
+    # Define the main page layout
+    main_page = """
+<|Add links|button|on_action=simulate_adding_more_links|>
+<|part|partial={link_partial}|>
+    """
+
+    # Create and run the Taipy GUI
+    gui = Gui(main_page)
+    link_partial = gui.add_partial("")
+    gui.run()
