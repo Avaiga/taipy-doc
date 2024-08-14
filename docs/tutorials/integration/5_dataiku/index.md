@@ -20,90 +20,9 @@ Dataiku's data processing capabilities with Taipy's task orchestration and data 
 ![Dataiku](images/dataiku.png){width=70% : .tp-image}
 
 
-
-# Taipy Application in Dataiku DSS
-
-We'll begin by developing an application directly within Dataiku DSS. This approach allows you to 
-utilize the comprehensive dataiku package, packed with powerful features, and seamlessly integrate 
-your Taipy application into your existing ecosystem.
-
-## Prerequisites:
-- Ensure that [Code Studios](https://knowledge.dataiku.com/latest/code/work-environment/tutorial-first-code-studio.html) is enabled for your instance.
-- You must have a [Code Environment](https://doc.dataiku.com/dss/latest/code-envs/index.html) with Taipy installed and Python version 3.8 or higher.
-
-## Step-by-Step Guide:
-
-First, log in to your Dataiku DSS instance and create a new project or enter an existing project.
-
-### Create a new "Code Studio"
-
-- Navigate to "Code Studios"
-
-![Step 3 Image](images/code_studio.png){width=50% : .tp-image-border}
-
-
-- Click on "+ NEW CODE STUDIO".
-
-- Follow the link in the description for templates.
-
-![Step 4 Image](images/new_code_studio.png){width=50% : .tp-image-border}
-
-### Add a template to Code Studio:
-
-- Create a new template by clicking on "+ CREATE CODE STUDIO TEMPLATE".
-
-You can either name your new template or import one using the dropdown arrow next to the button.
-
-- Configure your Code Studio:
-
-   - Go to "Definition".
-
-    ![Definition](images/definition.png){width=90% : .tp-image-border}
-
-   - Add three blocks:
-
-     - **Code Environment**: Select the Code Environment where Taipy is installed.
-
-     - **Visual Studio Code**: Enable the "Launch for Webapps" option.
-
-     - **Entrypoint**: Add a label (e.g., "taipy"), enable both "Launch for Webapps" and "Expose port". 
-
-     Specify an "Exposed port label" (e.g., "taipy") and the exposed port (5000, the default port for Taipy).
-
-   ![Step 6 Image](images/blocks.png){width=90% : .tp-image-border}
-
-- Save and Build your template
-
-Then, return to Code Studios to create a Code Studio using this template, which should now appear in the list.
-
-### Use the template in your Code Studio
-
-- Launch the studio and begin creating your first Taipy application.
-
-- In the run settings, use:
-
-```python
-<Gui>.run(..., base_url="/code-studios/<PROJECT_NAME>/<CODE_STUDIO_ID>/<EXPOSED_PORT>/")
-``` 
-
-The exposed port should be 5000, as set in the Entrypoint block. You can find these details easily in the URL:
-
-![URL Details Image](images/url_details_image.png){width=90% : .tp-image-border}
-
-### Access your application
-
-- Navigate to the Taipy tab in Code Studio.
-
-![Application Tab Image](images/application_tab_image.png){width=90% : .tp-image-border}
-
-- Refresh the port and you should see your application live.
-
-![Application Refresh](images/application_resfresh.png){width=90% : .tp-image-border}
-
-
 # Simple Integration: Visualization
 
-You've learned how to use Taipy within Dataiku. Next, we'll cover how to extract and display 
+We'll cover how to extract and display 
 information from Dataiku projects. You'll be able to visualize various data and metrics from your 
 Dataiku projects. Remember, we'll utilize the `dataiku-api-client` for retrieving information when 
 building applications outside the Dataiku ecosystem. If you're following the first tutorial, you can 
@@ -186,36 +105,96 @@ Create your own Taipy application to visualize all this information. It can
 include dynamic selectors for projects and metrics, a table to display 
 data, and a bar chart for visualizing metric values.
 
-```python
-from taipy.gui import Gui
+=== "Markdown"
+    ```python
+    from taipy.gui import Gui
 
-selected_projects = list(metrics_df['Project'].unique())
-selected_metrics = ["AUC"]  # Initially focusing on AUC metrics.
+    selected_projects = list(metrics_df['Project'].unique())
+    selected_metrics = ["AUC"]  # Initially focusing on AUC metrics.
 
-def show_projects(metrics_df, selected_projects, selected_metrics):
-    return metrics_df[(metrics_df['Project'].isin(selected_projects)) &
-                      (metrics_df['MetricType'].isin(selected_metrics))]
+    def show_projects(metrics_df, selected_projects, selected_metrics):
+        return metrics_df[(metrics_df['Project'].isin(selected_projects)) &
+                        (metrics_df['MetricType'].isin(selected_metrics))]
 
-md = """
-# Dataiku **Overview**{: .color-primary}
+    md = """
+    # Dataiku **Overview**{: .color-primary}
 
-**Projects**
+    **Projects**
 
-<|{selected_projects}|selector|lov={list(metrics_df['Project'].unique())}|dropdown|multiple|class_name=fullwidth|label=Projects|>
+    <|{selected_projects}|selector|lov={list(metrics_df['Project'].unique())}|dropdown|multiple|class_name=fullwidth|label=Projects|>
 
-**Metrics**
+    **Metrics**
 
-<|{selected_metrics}|selector|lov={list(metrics_df['MetricType'].unique())}|dropdown|multiple|class_name=fullwidth|label=Metrics|>
+    <|{selected_metrics}|selector|lov={list(metrics_df['MetricType'].unique())}|dropdown|multiple|class_name=fullwidth|label=Metrics|>
 
-<|{show_projects(metrics_df, selected_projects, selected_metrics)}|table|filter|>
+    <|{show_projects(metrics_df, selected_projects, selected_metrics)}|table|filter|>
 
-<|{show_projects(metrics_df, selected_projects, selected_metrics)}|chart|x=Name|y=Value|type=bar|>
-"""
+    <|{show_projects(metrics_df, selected_projects, selected_metrics)}|chart|x=Name|y=Value|type=bar|>
+    """
 
-Gui(md).run()
-```
+    Gui(md).run()
+    ```
 
-[Download the code](./src/metrics_visualization.py){: .tp-btn target='blank' }
+    [Download the code](./src/metrics_visualization.py){: .tp-btn target='blank' }
+
+=== "Python"
+    ```python
+    from taipy.gui import Gui
+    import taipy.gui.builder as tgb
+
+    selected_projects = list(metrics_df['Project'].unique())
+    selected_metrics = ["AUC"]  # Initially focusing on AUC metrics.
+
+    def show_projects(metrics_df, selected_projects, selected_metrics):
+        return metrics_df[(metrics_df['Project'].isin(selected_projects)) &
+                        (metrics_df['MetricType'].isin(selected_metrics))]
+
+    with tgb.Page() as page:
+        tgb.text("# Dataiku **Overview**", mode="md")
+
+        tgb.text("**Projects**", mode="md")
+
+        tgb.selector(
+            "{selected_projects}",
+            lov=list(metrics_table["Project"].unique()),
+            multiple=True,
+            label="Projects",
+            dropdown=True,
+            class_name="fullwidth",
+        )
+
+        tgb.text("**Metrics**", mode="md")
+
+        tgb.selector(
+            "{selected_metrics}",
+            lov=list(metrics_table["MetricType"].unique()),
+            multiple=True,
+            label="Metrics",
+            dropdown=True,
+            class_name="fullwidth",
+        )
+
+        tgb.table(
+            lambda metrics_table, selected_projects, selected_metrics: show_projects(
+                metrics_table, selected_projects, selected_metrics
+            ),
+            filter=True,
+        )
+
+        tgb.chart(
+            lambda metrics_table, selected_projects, selected_metrics: show_projects(
+                metrics_table, selected_projects, selected_metrics
+            ),
+            x="Name",
+            y="Value",
+            type="bar",
+        )
+
+    Gui(md).run()
+    ```
+
+    [Download the code](./src/metrics_visualization.py){: .tp-btn target='blank' }
+
 
 ![Metrics Visualization](images/metrics_visualization.png){width=90% : .tp-image-border}
 
@@ -456,45 +435,168 @@ To execute the scenario, use Taipy's execution model. This initiates the configu
 scenario, including autonomous data exchange with Dataiku and triggering the 
 specified scenario:
 
-```python
-import taipy as tp
+=== "Markdown"
+    ```python
+    import taipy as tp
 
-# Create and execute the scenario
-if __name__ == "__main__":
-    tp.Core().run()
-    scenario = tp.create_scenario(dataiku_scenario_scenario_cfg)
+    # Create and execute the scenario
+    if __name__ == "__main__":
+        tp.Core().run()
+        scenario = tp.create_scenario(dataiku_scenario_scenario_cfg)
 
-    scenario = None
-    scenario_md = """
-<|1 1|layout|
-<|{scenario}|scenario_selector|>
+        scenario = None
+        scenario_md = """
+    <|1 1|layout|
+    <|{scenario}|scenario_selector|>
 
-<|{scenario}|scenario|>
-|>
+    <|{scenario}|scenario|>
+    |>
 
-<|job_selector|>
+    <|job_selector|>
 
-<|1 1|layout|
-Input Dataset:
-<|{scenario.input_dataiku if scenario else None}|data_node|>
+    <|1 1|layout|
+    Input Dataset:
+    <|{scenario.input_dataiku if scenario else None}|data_node|>
 
-Output Dataset:
-<|{scenario.output_dataiku if scenario else None}|data_node|>
-|>
+    Output Dataset:
+    <|{scenario.output_dataiku if scenario else None}|data_node|>
+    |>
 
-<|{scenario}|scenario_dag|>
-"""
+    <|{scenario}|scenario_dag|>
+    """
 
-    tp.Gui(scenario_md).run()
-```
+        tp.Gui(scenario_md).run()
+    ```
 
-[Download the code](./src/scenario_dataiku.py){: .tp-btn target='blank' }
+    [Download the code](./src/scenario_dataiku.py){: .tp-btn target='blank' }
+
+
+=== "Python"
+    ```python
+    import taipy as tp
+
+    # Create and execute the scenario
+    if __name__ == "__main__":
+        tp.Core().run()
+        scenario = tp.create_scenario(dataiku_scenario_scenario_cfg)
+
+        scenario = None
+        with tgb.Page() as scenario_page:
+            with tgb.layout("1 1"):
+                tgb.scenario_selector("{scenario}")
+                tgb.scenario("{scenario}")
+            tgb.job_selector()
+
+            with tgb.layout("1 1"):
+                with tgb.part():
+                    tgb.text("Input Dataset:")
+                    tgb.data_node("{scenario.input_dataiku if scenario else None}")
+                with tgb.part():
+                    tgb.text("Output Dataset:")
+                    tgb.data_node("{scenario.output_dataiku if scenario else None}")
+
+            tgb.scenario_dag("{scenario}")
+
+
+        tp.Gui(scenario_page).run()
+    ```
+
+    [Download the code](./src/scenario_dataiku_tgb.py){: .tp-btn target='blank' }
+
+
 
 ![Dataiku Scenario](images/scenario_dataiku.png){width=90% : .tp-image-border}
 
 This approach, where tasks focus on action triggers (like starting 
 Dataiku scenarios) while data nodes manage data reading and writing, enhances the 
 interaction between the end user and its data and models.
+
+
+# Taipy Application in Dataiku DSS
+
+We'll begin by developing an application directly within Dataiku DSS. This approach allows you to 
+utilize the comprehensive dataiku package, packed with powerful features, and seamlessly integrate 
+your Taipy application into your existing ecosystem.
+
+!!! warning "Taipy Application in Dataiku DSS"
+    This has some limitations when it comes to publishing the application as a web 
+    app. Creating a web application through Code Studio sometimes results in an 
+    unexpected failure. 
+
+## Prerequisites:
+- Ensure that [Code Studios](https://knowledge.dataiku.com/latest/code/work-environment/tutorial-first-code-studio.html) is enabled for your instance.
+- You must have a [Code Environment](https://doc.dataiku.com/dss/latest/code-envs/index.html) with Taipy installed and Python version 3.8 or higher.
+
+## Step-by-Step Guide:
+
+First, log in to your Dataiku DSS instance and create a new project or enter an existing project.
+
+### Create a new "Code Studio"
+
+- Navigate to "Code Studios"
+
+![Step 3 Image](images/code_studio.png){width=50% : .tp-image-border}
+
+
+- Click on "+ NEW CODE STUDIO".
+
+- Follow the link in the description for templates.
+
+![Step 4 Image](images/new_code_studio.png){width=50% : .tp-image-border}
+
+### Add a template to Code Studio:
+
+- Create a new template by clicking on "+ CREATE CODE STUDIO TEMPLATE".
+
+You can either name your new template or import one using the dropdown arrow next to the button.
+
+- Configure your Code Studio:
+
+   - Go to "Definition".
+
+    ![Definition](images/definition.png){width=90% : .tp-image-border}
+
+   - Add three blocks:
+
+     - **Code Environment**: Select the Code Environment where Taipy is installed.
+
+     - **Visual Studio Code**: Enable the "Launch for Webapps" option.
+
+     - **Entrypoint**: Add a label (e.g., "taipy"), enable both "Launch for Webapps" and "Expose port". 
+
+     Specify an "Exposed port label" (e.g., "taipy") and the exposed port (5000, the default port for Taipy).
+
+   ![Step 6 Image](images/blocks.png){width=90% : .tp-image-border}
+
+- Save and Build your template
+
+Then, return to Code Studios to create a Code Studio using this template, which should now appear in the list.
+
+### Use the template in your Code Studio
+
+- Launch the studio and begin creating your first Taipy application.
+
+- In the run settings, use:
+
+```python
+<Gui>.run(..., base_url="/code-studios/<PROJECT_NAME>/<CODE_STUDIO_ID>/<EXPOSED_PORT>/")
+``` 
+
+The exposed port should be 5000, as set in the Entrypoint block. You can find these details easily in the URL:
+
+![URL Details Image](images/url_details_image.png){width=90% : .tp-image-border}
+
+### Access your application
+
+- Navigate to the Taipy tab in Code Studio.
+
+![Application Tab Image](images/application_tab_image.png){width=90% : .tp-image-border}
+
+- Refresh the port and you should see your application live.
+
+![Application Refresh](images/application_resfresh.png){width=90% : .tp-image-border}
+
+
 
 In conclusion, integrating Dataiku with Taipy provides a powerful 
 solution for data processing, visualization, and scenario orchestration. 
