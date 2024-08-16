@@ -32,7 +32,7 @@ It contains:
 
 Before you start using skippable tasks, it's important to configure your tasks correctly
 with their Data nodes. You can refer to
-documentation for more details on [Data nodes](../../scenario_management/2_the_data_nodes/index.md).
+documentation for more details on [Data nodes](../the_data_nodes/index.md).
 
 For instance, let's say you have a function like *multiply_and_add()* that takes two parameters
 and returns two values. How can you represent this function as a Taipy Task?

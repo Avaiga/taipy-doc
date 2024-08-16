@@ -8,7 +8,7 @@ img: supply_chain_3_echelons/images/comparison_page.png
 ---
 
 This application is an extension of the 
-[2-Echelon application](../3_supply_chain/index.md). It demonstrates a more comprehensive 
+[2-Echelon application](../supply_chain/index.md). It demonstrates a more comprehensive 
 use case for optimizing multi-echelon supply chains. 
 
 !!! note "Taipy Enterprise edition"

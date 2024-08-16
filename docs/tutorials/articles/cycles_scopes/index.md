@@ -121,7 +121,7 @@ hand, determines how data nodes are shared within these cycles and scenarios.
 
 Sharing data nodes between entities allows you to organize and manage your data better.
 It avoids data duplications and allows Taipy to better manage execution (see
-[skippable tasks](../../scenario_management/3_skippable_tasks/index.md)).
+[skippable tasks](../skippable_tasks/index.md)).
 The developer may decide:
 
 - `Scope.SCENARIO` (_default_): Having one data node for each scenario.

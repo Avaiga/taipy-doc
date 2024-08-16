@@ -62,7 +62,7 @@ nav:
         - "Integration with Dataiku": tutorials/articles/dataiku/index.md
         - "Integration with IBM Watson Studio": tutorials/articles/ibm_watson_studio/index.md
     - "Large Data":
-      - "Large Data": tutorials/articles/index.md
+      - "Large Data": tutorials/large_data/index.md
       - "Using PySpark for Large Data": tutorials/articles/pyspark/index.md
       - "Large data models vs. Computer memory": tutorials/articles/large_data_models/index.md
       - "Charts for Large Data": tutorials/articles/decimator/index.md

@@ -10,7 +10,7 @@ For people who want to create strong graphical interfaces without needing to be 
 (Graphical User Interface), Taipy is definitely the solution.
 
 In addition to coding with Python scripts, Taipy works seamlessly in
-[Notebook environments](../3_jupyter_notebooks/index.md). You can use Notebooks on your computer
+[Notebook environments](../jupyter_notebooks/index.md). You can use Notebooks on your computer
 and on platforms like:
 
 - [Google Colab](https://colab.google/)
@@ -133,7 +133,7 @@ are restricted to three re-executions, which might require a kernel restart.
 Nevertheless, Taipy offers built-in functions that enhance the notebook experience with Taipy.
 This eliminates the limitations of the Ngrok free version and enables easy updates with fewer
 re-executions required. You can learn more about this in the
-[linked article](../3_jupyter_notebooks/index.md).
+[linked article](../jupyter_notebooks/index.md).
 
 ## Modification of the Markdown with `Page.set_content`
 

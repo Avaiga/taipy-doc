@@ -25,4 +25,4 @@ but it can also analyse images that the user sends.
 
 A tutorial on how to write similar
 LLM inference applications is available
-[here](../../../tutorials/fundamentals/4_chatbot/index.md).
+[here](../../../tutorials/articles/chatbot/index.md).

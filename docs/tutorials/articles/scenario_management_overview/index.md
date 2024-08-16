@@ -143,11 +143,11 @@ The configuration is done! Let's use it to instantiate scenarios and submit them
 
 First, run the Core service in your code (`tp.Core().run()`). Then, you can play with Taipy:
 
-- create scenarios ([`tp.create_scenario(<ScenarioConfig>)`](../../scenario_management/1_scenarios/index.md#scenario-configuration-and-creation)),
+- create scenarios ([`tp.create_scenario(<ScenarioConfig>)`](../scenarios/index.md#scenario-configuration-and-creation)),
 
 - write your input data nodes ([`<Data Node>.write(<new value>)`](../../../manuals/userman/data-integration/data-node-usage.md#read-write-a-data-node)),
 
-- submit them to run the task ([`<Scenario>.submit()`](../../scenario_management/1_scenarios/index.md#scenario-configuration-and-creation)),
+- submit them to run the task ([`<Scenario>.submit()`](../scenarios/index.md#scenario-configuration-and-creation)),
 
 - read your output data node ([`<Data Node>.read()`](../../../manuals/userman/data-integration/data-node-usage.md#read-write-a-data-node)).
 
@@ -199,7 +199,7 @@ read and write data.
 
     - [`tp.delete(<Taipy object ID>)`](../../../manuals/userman/sdm/scenario/index.md#delete-a-scenario): this function deletes the entity and nested elements based on the id of the entity.
 
-    You can also have a look to this [tutorial](../../scenario_management/6_scenario_comparison/index.md)
+    You can also have a look to this [tutorial](../scenario_comparison/index.md)
     to learn how scenarios can be compared easily.
     Many other functions are described in the manuals, in particular in the
     [scenario](../../../manuals/userman/sdm/scenario/index.md)

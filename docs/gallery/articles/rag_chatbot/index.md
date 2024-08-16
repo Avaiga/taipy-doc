@@ -23,4 +23,4 @@ the Taipy interface. This project uses Langchain to query Mistral's LLM model ho
 
 A tutorial on how to write similar
 LLM inference applications is available
-[here](../../../tutorials/fundamentals/5_rag_chatbot/index.md).
+[here](../../../tutorials/articles/rag_chatbot/index.md).

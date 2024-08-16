@@ -23,4 +23,4 @@ displays it on a dashboard. The dashboard is updated in real-time as new data is
 ![Pollution Dashboard](images/pollution_dashboard.png){width=90% : .tp-image-border }
 
 A tutorial on visualizing data streamed from another thread is available
-[here](../../../tutorials/visuals/5_multithreading/index.md).
+[here](../../../tutorials/articles/multithreading/index.md).

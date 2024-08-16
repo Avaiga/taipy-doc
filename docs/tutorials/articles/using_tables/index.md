@@ -121,7 +121,7 @@ main_md = Markdown("<|{food_df}|table|class_name=rows-bordered|>")
 To learn more about how Stylekit supports Taipy tables, you can check the documentation
 [here](../../../manuals/userman/gui/viselements/generic/table.md#styling). If you want to explore the
 many features of Stylekit beyond tables in Taipy, you can read this helpful
-[tip article](../../visuals/6_css_style_kit/index.md)!
+[tip article](../../articles/css_style_kit/index.md)!
 
 In addition to the handy pre-defined Stylekit classes, you also have the option to define and
 use your own CSS classes. To do this, you can create a CSS file containing your custom style
