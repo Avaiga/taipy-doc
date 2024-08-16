@@ -135,12 +135,27 @@ In Taipy, one way to define pages is to use Markdown strings. Here we use a
  user can type their message. When the user presses enter,
  the *send_message()* function is triggered.
 
-```python
-page = """
-<|{conversation}|table|show_all|>
-<|{current_user_message}|input|label=Write your message here...|on_action=send_message|class_name=fullwidth|>
-"""
-```
+
+=== "Markdown"
+    ```python
+    page = """
+    <|{conversation}|table|show_all|>
+    <|{current_user_message}|input|label=Write your message here...|on_action=send_message|class_name=fullwidth|>
+    """
+    ```
+=== "Python"
+    ```python
+    import taipy.gui.builder as tgb
+
+    with tgb.Page() as page:
+        tgb.table("{conversation}", show_all=True)
+        tgb.input(
+            "{current_user_message}",
+            on_action=send_message,
+            change_delay=-1,
+            label="Write your message here...",
+            class_name="fullwidth",
+        )
 
 # Step 7: Run the application
 

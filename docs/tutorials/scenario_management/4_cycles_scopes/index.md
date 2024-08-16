@@ -240,15 +240,33 @@ You can use Scenario management visual elements to control Cycles. Cycles can be
  `scenario_selector` or `data_node_selector`. Additionally, it's possible to designate a scenario
 as primary directly through the `scenario` visual element.
 
-```python
-data_node = None
-scenario = None
+=== "Markdown"
+    ```python
+    data_node = None
+    scenario = None
 
-tp.Gui("""<|{scenario}|scenario_selector|>
-          <|{scenario}|scenario|>
-          <|{scenario}|scenario_dag|>
-          <|{data_node}|data_node_selector|>""").run()
-```
+    tp.Gui("""<|{scenario}|scenario_selector|>
+            <|{scenario}|scenario|>
+            <|{scenario}|scenario_dag|>
+            <|{data_node}|data_node_selector|>""").run()
+    ```
+=== "Python"
+    ```python
+    import taipy.gui.builder as tgb
+
+    data_node = None
+    scenario = None
+
+    with tgb.Page() as page:
+        tgb.scenario_selector("{scenario}")
+        tgb.scenario("{scenario}")
+        tgb.scenario_dag("{scenario}")
+        tgb.data_node_selector("{data_node}")
+        tgb.data_node("{data_node}")
+
+    tp.Gui(page).run()
+    ```
+
 
 ![Visual Elements](images/visual_elements.png){ width=60% : .tp-image-border }
 

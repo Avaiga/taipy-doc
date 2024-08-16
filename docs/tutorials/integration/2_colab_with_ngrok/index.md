@@ -114,14 +114,21 @@ To address this issue, you can modify the *change_delay* parameter in one of the
 
 - **Locally**: You can make changes to this parameter locally, directly within the Taipy visual
   element.
-  ```python
-  <|{text}|input|change_delay=800|>
-  ```
+
+=== "Markdown" 
+   ```python
+   <|{text}|input|change_delay=800|>
+   ```
+=== "Python"
+   ```python
+   tgb.input("{text}", change_delay=800)
+   ```
 
 - **Globally**: To adjust the delay for all of Taipy's visual elements.
-  ```python
-  Gui(pages=pages).run(change_delay=800, ngrok_token=<Authtoken>)
-  ```
+
+```python
+Gui(pages=pages).run(change_delay=800, ngrok_token=<Authtoken>)
+```
 
 # Reload after modification
 
@@ -145,7 +152,7 @@ Here are the new cells to add:
 
 2. Create an empty new page:
    ```python
-   new_page=Markdown("")
+   new_page = Markdown("")
    ```
 
 3. Set the page content:
@@ -156,8 +163,8 @@ Here are the new cells to add:
 4. Update the `pages` definition:
    ```python
    pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
-         "line":new_page,
-         "text":page_file}
+            "line":new_page,
+            "text":page_file}
    ```
 
 ## Variable modification with `gui.reload`
