@@ -116,7 +116,7 @@ def on_post_build(env):
             # If unspecified, the first xref will be used (the one with the shortests package)
             multi_xrefs[xref] = sorted(descs, key=lambda p: len(p[0]))
     manuals_files_path = os.path.join(site_dir, "manuals")
-    ref_files_path = os.path.join(manuals_files_path, "reference")
+    ref_files_path = os.path.join(manuals_files_path, "refmans", "reference")
     fixed_cross_refs = {}
     for root, _, file_list in os.walk(site_dir):
         for f in file_list:
@@ -383,7 +383,22 @@ def on_post_build(env):
                             if last_location:
                                 file_was_changed = True
                                 html_content = new_content + html_content[last_location:]
-
+                    # Change title of Python reference pages
+                    # - Taipy.module.class -> taipy.module.class
+                    # - Taipy.module.some function -> taipy.module.some_function
+                    elif "refmans/reference" in filename or "refmans\\reference" in filename:
+                        def rewrite_title(s: str, start: int, end: int) -> str:
+                            return (html_content[:start] + "taipy."
+                                    + ".".join(map(lambda x: x.replace(" ", "_"), s.split(".")))
+                                    + html_content[end:])
+                        REF_TITLE_RE = re.compile(r"(?<=<title>)(Taipy\.)(.*)(\s+-\s+Taipy</title>)")
+                        if m := REF_TITLE_RE.search(html_content):
+                            html_content = rewrite_title(m[2], m.start(1), m.end(2))
+                            file_was_changed = True
+                        REF_H1_RE = re.compile(r"(?<=<h1>)(Taipy\.)(.*)</h1>")
+                        if m := REF_H1_RE.search(html_content):
+                            html_content = rewrite_title(m[2], m.start(1), m.end(2))
+                            file_was_changed = True
                     # Processing for visual element pages:
                     # - Remove <tt> from title
                     # - Add breadcrumbs to Taipy GUI's standard and scenario mgmt element pages
@@ -457,11 +472,11 @@ def on_post_build(env):
                     def code(s: str) -> str:
                         return f"<code><font size='+2'>{s}</font></code>"
 
-                    fn_match = re.search(r"manuals(/|\\)reference\1pkg_taipy\1index.html", filename)
+                    fn_match = re.search(r"manuals(/|\\)refmans\1reference\1pkg_taipy\1index.html", filename)
                     if fn_match is not None: # The root 'taipy' package
                         html_content = re.sub(r"(<h1>)taipy(</h1>)", f"\\1{code('taipy')}\\2", html_content)
                         file_was_changed = True
-                    fn_match = re.search(r"manuals(/|\\)reference\1pkg_taipy(\..*)\1index.html", filename)
+                    fn_match = re.search(r"manuals(/|\\)refmans\1reference\1pkg_taipy(\..*)\1index.html", filename)
                     if fn_match is not None:
                         pkg = fn_match[2]
                         sub_match = re.search(r"(\.\w+)(\..*)", pkg)
@@ -517,8 +532,9 @@ def process_data_source_attr(html: str, env):
                 ref = f"https://github.com/Avaiga/taipy-{repo_m.group(0)[:-1]}/blob/{env.conf['branch']}/{target}"
         new_content += (html[last_location:m.start()]
                         + f"{m.group(1)}{m.group(4)}"
-                        + "\n<small>You can download the entire source code used in this "
-                        + f"section from the <a href=\"{ref}\">GitHub repository</a>.</small>"
+                        + "\n<div class=\"tp-gcs\">"
+                        + f"<a class=\"tp-btn tp-btn--accent\" href=\"{ref}\" target=\"blank\">"
+                        + "See the entire code for this example</a></div>"
                         )
         last_location = m.end()
     if last_location:

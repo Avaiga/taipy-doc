@@ -2,7 +2,6 @@
 [Download the entire code](./../src/src.zip){: .tp-btn .tp-btn--accent target='blank' }
 
 
-
 As shown before, parameters and variables in Taipy are dynamic. The same applies for every type
 of object, even data frames. Therefore, you can perform operations on data frames, and Taipy
 will show real-time results on the GUI. These changes occur through the `=` assignment like
@@ -28,7 +27,7 @@ elements. It can be  simple charts or tables, but it can also be an expression l
     ```python
     tgb.text("## Positive", mode="md")
     tgb.text("{np.mean(dataframe['Score Pos'])}")
-    
+
     tgb.text("## Neutral", mode="md")
     tgb.text("{np.mean(dataframe['Score Neu'])}")
 
@@ -41,14 +40,14 @@ This kind of expression creates direct connections between visual elements witho
 
 ## A use case for NLP - Part 1
 
-The code for NLP is provided here, although it's not directly related to Taipy. It will come 
+The code for NLP is provided here, although it's not directly related to Taipy. It will come
 into play in Part 2 when we wrap a GUI around this NLP engine.
 
-Before executing this step, you should have `pip install torch` and `pip install transformers`. 
-The model will be downloaded and utilized in this code snippet. Note that Torch is currently 
+Before executing this step, you should have `pip install torch` and `pip install transformers`.
+The model will be downloaded and utilized in this code snippet. Note that Torch is currently
 only accessible for Python versions between 3.8 and 3.10.
 
-If you encounter difficulties installing these packages, you can simply provide a dictionary of 
+If you encounter difficulties installing these packages, you can simply provide a dictionary of
 random numbers as the output for the `analyze_text(text)` function.
 
 
@@ -87,14 +86,6 @@ The code below uses this concept to create metrics on the data frame generated.
     import pandas as pd
     from taipy.gui import Gui, notify
 
-    text = "Original text"
-
-    dataframe = pd.DataFrame({"Text": [""],
-                            "Score Pos": [0.33],
-                            "Score Neu": [0.33],
-                            "Score Neg": [0.33],
-                            "Overall": [0]})
-
 
     def local_callback(state):
         notify(state, "Info", f"The text is: {state.text}", True)
@@ -104,8 +95,16 @@ The code below uses this concept to create metrics on the data frame generated.
         state.dataframe = temp
         state.text = ""
 
+    if __name__ == "__main__":
+        text = "Original text"
 
-    page = """
+        dataframe = pd.DataFrame({"Text": [""],
+                                "Score Pos": [0.33],
+                                "Score Neu": [0.33],
+                                "Score Neg": [0.33],
+                                "Overall": [0]})
+
+        page = """
     <|toggle|theme|>
 
     # Getting started with Taipy GUI
@@ -128,32 +127,23 @@ The code below uses this concept to create metrics on the data frame generated.
     <|{dataframe}|table|>
 
     <|{dataframe}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|>
-    """
+        """
 
-    Gui(page).run(debug=True)
+        Gui(page).run(debug=True)
     ```
 === "Python"
     ```python
-    from transformers import AutoTokenizer, AutoModelForSequenceClassification
-    from scipy.special import softmax
-    import numpy as np
     import pandas as pd
-    from taipy.gui import Gui, notify
-    import taipy.gui.builder as tgb
+    from scipy.special import softmax
+    from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-    text = "Original text"
+    import taipy.gui.builder as tgb
+    from taipy.gui import Gui, notify
 
     # Model setup
     MODEL = "cardiffnlp/twitter-roberta-base-sentiment"
     tokenizer = AutoTokenizer.from_pretrained(MODEL)
     model = AutoModelForSequenceClassification.from_pretrained(MODEL)
-
-    # Initial dataframe
-    dataframe = pd.DataFrame({"Text":[''],
-                            "Score Pos":[0.33],
-                            "Score Neu":[0.33],
-                            "Score Neg":[0.33],
-                            "Overall":[0]})
 
     def analyze_text(text):
         # Run for Roberta Model
@@ -161,7 +151,7 @@ The code below uses this concept to create metrics on the data frame generated.
         output = model(**encoded_text)
         scores = output[0][0].detach().numpy()
         scores = softmax(scores)
-        
+
         return {"Text":text,
                 "Score Pos":scores[2],
                 "Score Neu":scores[1],
@@ -176,33 +166,43 @@ The code below uses this concept to create metrics on the data frame generated.
         state.dataframe = temp
         state.text = ""
 
-    # Definition of the page with tgb
-    with tgb.Page() as page:
-        tgb.toggle(theme=True)
+    if __name__ == "__main__":
+        text = "Original text"
 
-        tgb.text("# Getting started with Taipy GUI", mode="md")
-        tgb.text("My text: {text}")
+        # Initial dataframe
+        dataframe = pd.DataFrame({"Text":[''],
+                                "Score Pos":[0.33],
+                                "Score Neu":[0.33],
+                                "Score Neg":[0.33],
+                                "Overall":[0]})
 
-        tgb.input("{text}")
-        tgb.button("Analyze", on_action=local_callback)
+        # Definition of the page with tgb
+        with tgb.Page() as page:
+            tgb.toggle(theme=True)
 
-        # Displaying sentiment scores and overall sentiment
-        tgb.text("## Positive", mode="md")
-        tgb.text("{np.mean(dataframe['Score Pos'])}")
-        
-        tgb.text("## Neutral", mode="md")
-        tgb.text("{np.mean(dataframe['Score Neu'])}")
+            tgb.text("# Getting started with Taipy GUI", mode="md")
+            tgb.text("My text: {text}")
 
-        tgb.text("## Negative", mode="md")
-        tgb.text("{np.mean(dataframe['Score Neg'])}")
+            tgb.input("{text}")
+            tgb.button("Analyze", on_action=local_callback)
 
-        tgb.table("{dataframe}", number_format="%.2f")
-        tgb.chart("{dataframe}", type="bar", x="Text", 
-                y__1="Score Pos", y__2="Score Neu", y__3="Score Neg", y__4="Overall",
-                color__1="green", color__2="grey", color__3="red", type__4="line")
+            # Displaying sentiment scores and overall sentiment
+            tgb.text("## Positive", mode="md")
+            tgb.text("{np.mean(dataframe['Score Pos'])}", format="%.2f")
 
-    # Initialize the GUI with the updated dataframe
-    Gui(page).run(debug=True)
+            tgb.text("## Neutral", mode="md")
+            tgb.text("{np.mean(dataframe['Score Neu'])}", format="%.2f")
+
+            tgb.text("## Negative", mode="md")
+            tgb.text("{np.mean(dataframe['Score Neg'])}", format="%.2f")
+
+            tgb.table("{dataframe}", number_format="%.2f")
+            tgb.chart("{dataframe}", type="bar", x="Text",
+                    y__1="Score Pos", y__2="Score Neu", y__3="Score Neg", y__4="Overall",
+                    color__1="green", color__2="grey", color__3="red", type__4="line")
+
+        # Initialize the GUI with the updated dataframe
+        Gui(page).run(debug=True)
     ```
 
 

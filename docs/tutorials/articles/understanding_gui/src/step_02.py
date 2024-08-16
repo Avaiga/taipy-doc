@@ -1,13 +1,14 @@
 from taipy.gui import Gui
 
-text = "Original text"
+if __name__ == "__main__":
+    text = "Original text"
 
-page = """
+    page = """
 # Getting started with Taipy GUI
 
 My text: <|{text}|>
 
 <|{text}|input|>
-"""
+    """
 
-Gui(page).run(debug=True)
+    Gui(page).run(debug=True)

@@ -55,22 +55,23 @@ from taipy.gui import Gui, Markdown
 def fahrenheit_to_celsius(fahrenheit):
     return (fahrenheit - 32) * 5 / 9
 
-fahrenheit = 100
-celsius = fahrenheit_to_celsius(fahrenheit)
+def update_celsius(state):
+    state.celsius = fahrenheit_to_celsius(state.fahrenheit)
 
-md = Markdown("""
+if __name__=="__main__":
+    fahrenheit = 100
+    celsius = fahrenheit_to_celsius(fahrenheit)
+
+    md = Markdown("""
 # Local Callbacks
 ## Fahrenheit:
 <|{fahrenheit}|number|on_change=update_celsius|>
 
 ## Celsius:
 <|{celsius}|number|active=False|>
-""")
+    """)
 
-def update_celsius(state):
-    state.celsius = fahrenheit_to_celsius(state.fahrenheit)
-
-Gui(page=md).run()
+    Gui(page=md).run()
 ```
 
 The relevant line here is line 12, where we defined a number control using the Taipy construct
@@ -107,16 +108,24 @@ Take a look at the updated code:
 from taipy.gui import Gui, Markdown
 
 def fahrenheit_to_celsius(fahrenheit):
-   return (fahrenheit - 32) * 5 / 9
+    return (fahrenheit - 32) * 5 / 9
 
 def celsius_to_kelvin(celsius):
-   return celsius + 273.15
+    return celsius + 273.15
 
-fahrenheit = 100
-celsius = fahrenheit_to_celsius(fahrenheit)
-kelvin = celsius_to_kelvin(celsius)
+def update_celsius(state):
+    state.celsius = fahrenheit_to_celsius(state.fahrenheit)
 
-md = Markdown("""
+def on_change(state, var_name, var_value):
+    if var_name == "celsius":
+        state.kelvin = celsius_to_kelvin(state.celsius)
+
+if __name__=="__main__":
+    fahrenheit = 100
+    celsius = fahrenheit_to_celsius(fahrenheit)
+    kelvin = celsius_to_kelvin(celsius)
+
+    md = Markdown("""
 # Local and Global Callbacks
 ## Fahrenheit:
 <|{fahrenheit}|number|on_change=update_celsius|>
@@ -126,16 +135,9 @@ md = Markdown("""
 
 ## Kelvin:
 <|{kelvin}|number|active=False|>
-""")
+    """)
 
-def update_celsius(state):
-   state.celsius = fahrenheit_to_celsius(state.fahrenheit)
-
-def on_change(state, var_name, var_value):
-   if var_name == "celsius":
-      state.kelvin = celsius_to_kelvin(state.celsius)
-
-Gui(page=md).run(dark_mode=False)
+    Gui(page=md).run(dark_mode=False)
 ```
 
 On line 22, we added a new number control to our app, which is bound to the kelvin variable. The
@@ -195,11 +197,12 @@ def fahrenheit_to_celsius(fahrenheit):
 def celsius_to_kelvin(celsius):
    return celsius + 273.15
 
-fahrenheit = 100
-celsius = fahrenheit_to_celsius(fahrenheit)
-kelvin = celsius_to_kelvin(celsius)
+if __name__=="__main__":
+    fahrenheit = 100
+    celsius = fahrenheit_to_celsius(fahrenheit)
+    kelvin = celsius_to_kelvin(celsius)
 
-md = Markdown("""
+    md = Markdown("""
 # Global Callbacks
 ## Fahrenheit:
 <|{fahrenheit}|number|>
@@ -209,9 +212,9 @@ md = Markdown("""
 
 ## Kelvin:
 <|{celsius_to_kelvin(fahrenheit_to_celsius(fahrenheit))}|number|active=False|>
-""")
+    """)
 
-Gui(page=md).run()
+    Gui(page=md).run()
 ```
 
 Without using any callbacks, we instead simply interpolate the expression to be evaluated into

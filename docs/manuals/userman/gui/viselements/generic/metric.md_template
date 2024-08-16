@@ -1,14 +1,274 @@
 A control that provides a visualization for a specific metric.
 
+A metric must be a numerical value. The value is represented in the `metric` control on a linear
+or a circular gauge.<br/>
+The control can also display a *delta* value, which is meant to give a hint about how the metric
+value is evolving.
+
 # Details
 
-TODO
+The `metric` control provides a graphical representation of a value in a quantitative context.<br/>
+This value can result from a significant computational step or a KPI (Key Performance Indicator) in
+an industrial context.<br/>
+In Taipy GUI, this control is implemented using
+[Plotly's gauge charts](https://plotly.com/javascript/gauge-charts/).
+
+The purpose of the control is to help evaluate a numerical value by graphically representing the
+value in a context using a gauge.<br/>
+A quick look at the control immediately gives relevant information, yet the control still shows
+precise figures that a user can investigate further.
+
+In addition to the main value, the `metric` control also lets you complement the graphs with a
+*delta* value that is meant to express the variation of the main value.
+
+The control provides ways to customize the underlying gauge by setting its global range or the
+colors for sections of that range.
 
 # Styling
 
-All the date controls are generated with the "taipy-metric" CSS class. You can use this class
-name to select the date selectors on your page and apply style.
+All the metric controls are generated with the "taipy-metric" CSS class. You can use this class
+name to select the metric controls on your page and apply style.
 
 # Usage
 
-TODO
+## Simple case {data-source="gui:doc/examples/controls/metric-simple.py"}
+
+The most common use case for the `metric` control is displaying a value on a gauge, with a *delta*
+value indicating how much the value has increased or decreased compared to a previous state.<br/>
+The [*value*](#p-value) property (the default property for this control) holds the value to be
+represented. You can set the [*delta*](#p-delta) property to the value variation.<br/>
+You can also add an indicator of a specific value, such as a threshold value, by setting the
+[*threshold*](#p-threshold) property to the value of that parameter.
+
+Say you have declared the following variables:
+```python
+value = 72
+delta = 15
+threshold = 60
+```
+
+The following definition of the control:
+!!! taipy-element
+    default={value}
+    delta={delta}
+    threshold={threshold}
+
+Renders as such:
+<figure class="tp-center">
+    <img src="../metric-simple-d.png" class="visible-dark"  width="80%"/>
+    <img src="../metric-simple-l.png" class="visible-light" width="80%"/>
+    <figcaption>Simple case</figcaption>
+</figure>
+
+## Setting the gauge type {data-source="gui:doc/examples/controls/metric-type.py"}
+
+You can change the representation to a horizontal bar by setting the [*type*](#p-type) property to
+"linear".
+
+Here is the definition of a `metric` control that is horizontal:
+!!! taipy-element
+    default={value}
+    delta={delta}
+    threshold={threshold}
+    type=linear
+
+Compared to the previous example, we only specified the [*type*](#p-type) parameter.
+
+Here is what this control will look like:
+<figure class="tp-center">
+    <img src="../metric-type-d.png" class="visible-dark"  width="80%"/>
+    <img src="../metric-type-l.png" class="visible-light" width="80%"/>
+    <figcaption>Horizontal gauge</figcaption>
+</figure>
+
+## Setting the gauge range {data-source="gui:doc/examples/controls/metric-range.py"}
+
+You may need to specify the range represented in the gauge.
+
+To achieve that, you simply need to set the [*min*](#p-min) and [*max*](#p-max) properties to
+the appropriate values.
+
+Here is a definition of the metric control that specifies the control range:
+!!! taipy-element
+    default={value}
+    min:f=50
+    max:f=150
+
+Here is how the control is represented:
+<figure class="tp-center">
+    <img src="../metric-range-d.png" class="visible-dark"  width="80%"/>
+    <img src="../metric-range-l.png" class="visible-light" width="80%"/>
+    <figcaption>Setting the control range</figcaption>
+</figure>
+
+## Hiding the value {data-source="gui:doc/examples/controls/metric-hide-value.py"}
+
+If you need only a rough representation of the value, you can hide the precise value itself by
+setting the [*show_value*](#p-show_value) to False.
+
+Here is a straightforward example of this:
+!!! taipy-element
+    default=90
+    show_value:bdont=False
+
+This definition produces the following output that anyone can interpret on the spot:
+<figure class="tp-center">
+    <img src="../metric-hide-value-d.png" class="visible-dark"  width="80%"/>
+    <img src="../metric-hide-value-l.png" class="visible-light" width="80%"/>
+    <figcaption>Hiding the value</figcaption>
+</figure>
+
+## Formating the values {data-source="gui:doc/examples/controls/metric-formats.py"}
+
+The numerical value set to the properties [*value*](#p-value) and [*delta*](#p-delta) can be
+displayed using a formatting string set to the respective properties [*format*](#p-format) and
+[*delta_format*](#p-delta_format).
+
+Here is a speedometer example where the speed unit is relevant. We are using the value
+variation (*delta*) as a percentage.<br/>
+The variables are defined as such:
+```python
+speed = 60
+variation = 15
+``` 
+
+We want to show the units for these two values: the speed expressed in kilometers per hour and 
+its variation as a percentage.<br/>
+Here is the control definition:
+!!! taipy-element
+    default={speed}
+    format=%d km/h
+    delta={variation}
+    delta_format=%d %%
+
+The syntax for the [*format*](#p-format) and [*delta_format*](#p-delta_format) properties is the one
+used by the native `sprintf()` function. In this case, values are both integers.
+
+Here is how the control displays:
+<figure class="tp-center">
+    <img src="../metric-formats-d.png" class="visible-dark"  width="80%"/>
+    <img src="../metric-formats-l.png" class="visible-light" width="80%"/>
+    <figcaption>Formatted values</figcaption>
+</figure>
+
+## Changing the indicator color {data-source="gui:doc/examples/controls/metric-delta_color.py"}
+
+By default, a positive value [*delta*](#p-delta) is rendered in green, indicating a good thing.
+Negative values are displayed in red, hinting at a bad thing.<br/>
+In some situations, this is not the case: you then want to change the color used for the *delta*
+value using the [*delta_color*](#p-delta_color) property.
+
+Measuring the concentration of CO2 gas in the atmosphere is such a situation: an increase in that
+value over time is concerning and would better be colored in red.<br/>
+Here are the variables we want to represent:
+```python
+co2_2014 = 396.37
+co2_2024 = 421.13
+delta = co2_2024-co2_2014
+```
+
+The control definition would be the following:
+!!! taipy-element
+    default={co2_2024}
+    delta={delta}
+    delta_color=invert
+    format=%.1f ppm
+    delta_format=%.1f ppm
+    min:f=300
+    max:f=500
+
+In the range 300 to 500 ppm (parts per million, the unit used to measure the level of CO2), we
+represent the level of CO2 as of January 1st, 2024, and indicate how it evolved for the last ten
+years.<br/>
+The variation is positive but must be shown in red.<br/>
+We have set the [*delta_color*](#p-delta_color) property to "invert" to swap how positive and
+negative values for [*delta*](#p-delta) are interpreted, achieving the following image:
+<figure class="tp-center">
+    <img src="../metric-delta_color-d.png" class="visible-dark"  width="80%"/>
+    <img src="../metric-delta_color-l.png" class="visible-light" width="80%"/>
+    <figcaption>Changing the color of the variation indicator</figcaption>
+</figure>
+
+Note that we could have set the precise colors for the value and delta value using the
+[*delta_color*](#p-delta_color) and [*negative_delta_color*](#p-negative_delta_color)
+properties which are self-explanatory.<br/>
+If [*delta_color*](#p-delta_color) is set to "invert" then positive values of [*delta*](#p-delta)
+are displayed using the color set to [*negative_delta_color*](#p-negative_delta_color), if there is
+one.
+
+## Customizing the gauge colors {data-source="gui:doc/examples/controls/metric-color-map.py"}
+
+You can improve the interpretation of the `metric` control by coloring the gauge area with colors
+that provide information. The [*color_map*](#p-color_map) property lets you do just that.
+
+Here is an example where this is relevant: our `metric` control should display a color depending
+on its wavelength.<br/>
+Here is the definition of the colormap assigning color names to wavelength ranges:
+```python
+color_wl = 530
+color_map = {
+    200: None,
+    380: "violet",
+    435: "blue",
+    500: "cyan",
+    520: "green",
+    565: "yellow",
+    590: "orange",
+    625: "red",
+    740: None,
+}
+```
+
+*color_wl* represents the wavelength of the color we want to represent.
+
+We can use the colormap stored in *color_map* in the control definition:
+!!! taipy-element
+    default={color_wl}
+    color_map={color_map}
+    format=%d nm
+    min=200
+    max=800
+    bar_color=gray
+
+Here is the result:
+<figure class="tp-center">
+    <img src="../metric-color_map-d.png" class="visible-dark"  width="80%"/>
+    <img src="../metric-color_map-l.png" class="visible-light" width="80%"/>
+    <figcaption>Changing the color of the variation indicator</figcaption>
+</figure>
+
+You can immediately spot that the indicated wavelength is a green color.
+
+## Fine tuning the control {data-source="gui:doc/examples/controls/metric-layout.py"}
+
+The property [*layout*](#p-layout) can be set to a dictionary that acutely defines parameters that
+impact the control rendering.<br/>
+The Plotly library defines the configuration of this dictionary. The complete  documentation for
+that object can be found on [this page](https://plotly.com/python/reference/layout/) from the Plotly
+documentation set.
+
+Here is an example of a *layout* configuration:
+```python
+value = 45
+layout = {
+    "paper_bgcolor": "lightblue",
+    "font": {
+        "size": 30,
+        "color": "blue",
+        "family": "Arial",
+    },
+}
+```
+We request that the control be displayed on a light blue background and that the font that displays
+the value be rather large and drawn in blue.
+
+Let us use the dictionary *layout* in the control definition:
+!!! taipy-element
+    default={value}
+    layout={layout}
+
+To obtain the following image:
+<figure class="tp-center">
+    <img src="../metric-layout-dl.png" width="80%"/>
+    <figcaption>Fine tuning the control parameters</figcaption>
+</figure>

@@ -29,7 +29,8 @@ start the scheduler by using the `start()` method.
 ```python
 import taipy as tp
 
-tp.Scheduler.start()
+if __name__ == "__main__":
+    tp.Scheduler.start()
 ```
 
 Once the scheduler is started, the scheduled methods will run in the
@@ -46,7 +47,7 @@ To stop the scheduler from running the scheduled methods, you can use the
 `stop()` method.
 
 ```python
-tp.Scheduler.stop()
+    tp.Scheduler.stop()
 ```
 
 ## Run a method every specific interval
@@ -58,22 +59,23 @@ The interval can be specified in seconds, minutes, hours, days, weeks, days, mon
 import taipy as tp
 from my_config import monthly_scenario_cfg
 
-monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
+if __name__ == "__main__":
+    monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
 
-# Submit a scenario every 3 second/minute/hour/day
-# Starting 3 second/minute/hour/day from now
-tp.Scheduler.every(3).seconds.do(tp.submit, monthly_scenario)
-tp.Scheduler.every(3).minutes.do(tp.submit, monthly_scenario)
-tp.Scheduler.every(3).hours.do(tp.submit, monthly_scenario)
-tp.Scheduler.every(3).days.do(tp.submit, monthly_scenario)
+    # Submit a scenario every 3 second/minute/hour/day
+    # Starting 3 second/minute/hour/day from now
+    tp.Scheduler.every(3).seconds.do(tp.submit, monthly_scenario)
+    tp.Scheduler.every(3).minutes.do(tp.submit, monthly_scenario)
+    tp.Scheduler.every(3).hours.do(tp.submit, monthly_scenario)
+    tp.Scheduler.every(3).days.do(tp.submit, monthly_scenario)
 
-# Submit a scenario every 1 week/month/year
-# Starting 1 week/month/year from now
-tp.Scheduler.every().weeks.do(tp.submit, monthly_scenario)
-tp.Scheduler.every().months.do(tp.submit, monthly_scenario)
-tp.Scheduler.every().years.do(tp.submit, monthly_scenario)
+    # Submit a scenario every 1 week/month/year
+    # Starting 1 week/month/year from now
+    tp.Scheduler.every().weeks.do(tp.submit, monthly_scenario)
+    tp.Scheduler.every().months.do(tp.submit, monthly_scenario)
+    tp.Scheduler.every().years.do(tp.submit, monthly_scenario)
 
-tp.Scheduler.start()
+    tp.Scheduler.start()
 ```
 
 In the above example, we schedule the `tp.submit(monthly_scenario)` method with different intervals.
@@ -134,37 +136,38 @@ yearly scheduled methods. The `on()` method requires the following parameter:
 import taipy as tp
 from my_config import monthly_scenario_cfg
 
-monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
+if __name__ == "__main__":
+    monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
 
-# Submit a scenario every minute at the 23rd second
-tp.Scheduler.every().minute.at(":23").do(tp.submit, monthly_scenario)
+    # Submit a scenario every minute at the 23rd second
+    tp.Scheduler.every().minute.at(":23").do(tp.submit, monthly_scenario)
 
-# Submit a scenario every hour at the 42nd minute
-tp.Scheduler.every().hour.at(":42").do(tp.submit, monthly_scenario)
+    # Submit a scenario every hour at the 42nd minute
+    tp.Scheduler.every().hour.at(":42").do(tp.submit, monthly_scenario)
 
-# Submit a scenario every 5th hour, 20 minutes and 30 seconds in.
-# If current time is 02:00, first execution is at 06:20:30
-tp.Scheduler.every(5).hours.at("20:30").do(tp.submit, monthly_scenario)
+    # Submit a scenario every 5th hour, 20 minutes and 30 seconds in.
+    # If current time is 02:00, first execution is at 06:20:30
+    tp.Scheduler.every(5).hours.at("20:30").do(tp.submit, monthly_scenario)
 
-# Submit a scenario every day at specific HH:MM and next HH:MM:SS
-tp.Scheduler.every().day.at("10:30").do(tp.submit, monthly_scenario)
-tp.Scheduler.every().day.at("12:42:30", "Europe/Amsterdam").do(tp.submit, monthly_scenario)
+    # Submit a scenario every day at specific HH:MM and next HH:MM:SS
+    tp.Scheduler.every().day.at("10:30").do(tp.submit, monthly_scenario)
+    tp.Scheduler.every().day.at("12:42:30", "Europe/Amsterdam").do(tp.submit, monthly_scenario)
 
-# Submit a scenario on a specific day of the week
-tp.Scheduler.every().monday.do(tp.submit, monthly_scenario)
-tp.Scheduler.every().wednesday.at("13:15").do(tp.submit, monthly_scenario)
+    # Submit a scenario on a specific day of the week
+    tp.Scheduler.every().monday.do(tp.submit, monthly_scenario)
+    tp.Scheduler.every().wednesday.at("13:15").do(tp.submit, monthly_scenario)
 
-# Submit a scenario on the 15th of every month
-tp.Scheduler.every().months.at("13:15").on("15").do(tp.submit, monthly_scenario)
-# Submit a scenario on the last day every 2 months
-tp.Scheduler.every(2).months.at("13:15").on("-1").do(tp.submit, monthly_scenario)
+    # Submit a scenario on the 15th of every month
+    tp.Scheduler.every().months.at("13:15").on("15").do(tp.submit, monthly_scenario)
+    # Submit a scenario on the last day every 2 months
+    tp.Scheduler.every(2).months.at("13:15").on("-1").do(tp.submit, monthly_scenario)
 
-# Submit a scenario on January 3rd every year on Amsterdam timezone
-tp.Scheduler.every().years.at("13:15", "Europe/Amsterdam").on("jan 03").do(tp.submit, monthly_scenario)
-# Submit a scenario on the last day of February every year
-tp.Scheduler.every().years.at("13:15").on("feb -1").do(tp.submit, monthly_scenario)
+    # Submit a scenario on January 3rd every year on Amsterdam timezone
+    tp.Scheduler.every().years.at("13:15", "Europe/Amsterdam").on("jan 03").do(tp.submit, monthly_scenario)
+    # Submit a scenario on the last day of February every year
+    tp.Scheduler.every().years.at("13:15").on("feb -1").do(tp.submit, monthly_scenario)
 
-tp.Scheduler.start()
+    tp.Scheduler.start()
 ```
 
 Once scheduled, the first run of the method is based on the current time and the time specified in the `at()` API.
@@ -190,22 +193,23 @@ from datetime import datetime, timedelta, time
 import taipy as tp
 from my_config import monthly_scenario_cfg
 
-monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
+if __name__ == "__main__":
+    monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
 
-# Submit a scenario until a 18:30 today
-tp.Scheduler.every(1).hours.until("18:30").do(tp.submit, monthly_scenario)
+    # Submit a scenario until a 18:30 today
+    tp.Scheduler.every(1).hours.until("18:30").do(tp.submit, monthly_scenario)
 
-# Submit a scenario until a 2030-01-01 18:33
-tp.Scheduler.every(1).hours.until("2030-01-01 18:33").do(tp.submit, monthly_scenario)
+    # Submit a scenario until a 2030-01-01 18:33
+    tp.Scheduler.every(1).hours.until("2030-01-01 18:33").do(tp.submit, monthly_scenario)
 
-# Submit a scenario until today 11:33:42
-tp.Scheduler.every(1).hours.until(time(11, 33, 42)).do(tp.submit, monthly_scenario)
+    # Submit a scenario until today 11:33:42
+    tp.Scheduler.every(1).hours.until(time(11, 33, 42)).do(tp.submit, monthly_scenario)
 
-# Submit a scenario for every hour until the next 8 hours
-tp.Scheduler.every(1).hours.until(timedelta(hours=8)).do(tp.submit, monthly_scenario)
+    # Submit a scenario for every hour until the next 8 hours
+    tp.Scheduler.every(1).hours.until(timedelta(hours=8)).do(tp.submit, monthly_scenario)
 
-# Submit a scenario until a specific datetime
-tp.Scheduler.every(1).months.until(datetime(2030, 1, 1, 12, 30, 0)).do(tp.submit, monthly_scenario)
+    # Submit a scenario until a specific datetime
+    tp.Scheduler.every(1).months.until(datetime(2030, 1, 1, 12, 30, 0)).do(tp.submit, monthly_scenario)
 ```
 
 ## Get all scheduled methods
@@ -216,11 +220,12 @@ To retrieve all scheduled methods from the scheduler, use `tp.Scheduler.get_sche
 import taipy as tp
 from my_config import monthly_scenario_cfg
 
-monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
+if __name__ == "__main__":
+    monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
 
-tp.Scheduler.every().second.do(tp.submit, monthly_scenario)
+    tp.Scheduler.every().second.do(tp.submit, monthly_scenario)
 
-all_scheduled_methods = tp.Scheduler.get_scheduled_methods()
+    all_scheduled_methods = tp.Scheduler.get_scheduled_methods()
 ```
 
 The `tp.Scheduler.get_scheduled_methods()` method returns a list of `ScheduledMethod^` objects, which you can use to
@@ -234,11 +239,12 @@ To remove a scheduled method from the scheduler, use the `tp.Scheduler.cancel_sc
 import taipy as tp
 from my_config import monthly_scenario_cfg
 
-monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
+if __name__ == "__main__":
+    monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
 
-monthly_submit_method = tp.Scheduler.every().second.do(tp.submit, monthly_scenario)
+    monthly_submit_method = tp.Scheduler.every().second.do(tp.submit, monthly_scenario)
 
-tp.Scheduler.cancel_scheduled_method(monthly_submit_method)
+    tp.Scheduler.cancel_scheduled_method(monthly_submit_method)
 ```
 
 To remove all scheduled methods from the scheduler, use `tp.Scheduler.clear()`
@@ -247,11 +253,12 @@ To remove all scheduled methods from the scheduler, use `tp.Scheduler.clear()`
 import taipy as tp
 from my_config import monthly_scenario_cfg
 
-monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
+if __name__ == "__main__":
+    monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
 
-tp.Scheduler.every().second.do(tp.submit, monthly_scenario)
+    tp.Scheduler.every().second.do(tp.submit, monthly_scenario)
 
-tp.Scheduler.clear()
+    tp.Scheduler.clear()
 ```
 
 ## Shortcut for scheduling most used Taipy methods
@@ -268,16 +275,17 @@ Instead of using the `do()` method and specifying the Taipy method to schedule, 
 import taipy as tp
 from my_config import monthly_scenario_cfg
 
-# Creating a new scenario every month using the monthly_scenario_cfg
-tp.Scheduler.every().months.do_create(monthly_scenario_cfg)
+if __name__ == "__main__":
+    # Creating a new scenario every month using the monthly_scenario_cfg
+    tp.Scheduler.every().months.do_create(monthly_scenario_cfg)
 
-# Submit the monthly_scenario every month
-monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
-monthly_submit_method = tp.Scheduler.every().months.do_submit(monthly_scenario)
+    # Submit the monthly_scenario every month
+    monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
+    monthly_submit_method = tp.Scheduler.every().months.do_submit(monthly_scenario)
 
-# Create a new scenario every month using the monthly_scenario_cfg
-# and submit it immediately
-tp.Scheduler.every().months.do_create_and_submit_scenario(monthly_scenario_cfg)
+    # Create a new scenario every month using the monthly_scenario_cfg
+    # and submit it immediately
+    tp.Scheduler.every().months.do_create_and_submit_scenario(monthly_scenario_cfg)
 
-tp.Scheduler.clear()
+    tp.Scheduler.clear()
 ```

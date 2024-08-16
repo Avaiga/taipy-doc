@@ -1,8 +1,8 @@
-if __name__ == "__main__":
-    from taipy import Config
-    import taipy as tp
-    from datetime import datetime
+from datetime import datetime
+import taipy as tp
+from taipy import Config
 
+if __name__ == "__main__":
     # Configure data nodes with different scopes
     hist_cfg = Config.configure_csv_data_node("sales_history")
     model_cfg = Config.configure_data_node("trained_model")

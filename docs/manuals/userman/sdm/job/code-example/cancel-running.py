@@ -1,15 +1,14 @@
 from time import sleep
 
+import taipy as tp
+from taipy import Config
+
 
 def double(nb):
     sleep(5)
     return nb * 2
 
-
 if __name__ == "__main__":
-    import taipy as tp
-    from taipy import Config
-
     print(f'(1) Number of jobs: {len(tp.get_jobs())}.')
 
     # Create a scenario configuration with 2 sequential tasks.

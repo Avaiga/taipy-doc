@@ -1,7 +1,7 @@
-if __name__ == '__main__':
-    import taipy as tp
-    import my_config
+import taipy as tp
+import my_config
 
+if __name__ == '__main__':
     core = tp.Core()
     core.run()
 

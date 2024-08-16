@@ -29,19 +29,20 @@ activates the control in order to change its value.
     ```py
     from taipy.gui import Gui
 
-    md = """
-    # Hello Taipy
-
-    The variable `x` is here: <|{x}|slider|>.
-    """
-
-    x = 50
-
     def on_change(state, var, val):
         if var == "x":
             print(f"'x' was changed to: {val}")
 
-    Gui(page=md).run()
+    if __name__ == "__main__":
+        md = """
+    # Hello Taipy
+
+    The variable `x` is here: <|{x}|slider|>.
+        """
+
+        x = 50
+
+        Gui(page=md).run()
     ```
 
 In the function body, you can check the new value of the variable and decide
@@ -91,16 +92,17 @@ the application that the user has activated those controls somehow.
     ```py
     from taipy import Gui
 
-    md = """
-    # Hello Taipy
-
-    Press <|THIS|button|> button.
-    """
-
     def on_action(state, id):
         print("The button was pressed!")
 
-    Gui(page=md).run()
+    if __name__ == "__main__":
+        md = """
+    # Hello Taipy
+
+    Press <|THIS|button|> button.
+        """
+
+        Gui(page=md).run()
     ```
 
 The default behavior for these controls is to call the *on_action()* function within your

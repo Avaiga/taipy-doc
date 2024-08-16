@@ -44,12 +44,12 @@ applications.
 
         Value: <|{value}|text|>
 
-        <|{value}|slider|on_change=on_slider|>
+        <|{value}|slider|on_change=slider_moved|>
 
         <|{data}|chart|>
         """
 
-        def on_slider(state):
+        def slider_moved(state):
             state.data = compute_data(state.value)
 
         def compute_data(decay:int)->list:
@@ -76,13 +76,13 @@ applications.
         def compute_data(decay:int)->list:
             return [cos(i/6) * exp(-i*decay/600) for i in range(100)]
 
-        def on_slider(state):
+        def slider_moved(state):
             state.data = compute_data(state.value)
 
         with tgb.Page() as page:
             tgb.text(value="# Taipy Getting Started", mode="md")
             tgb.text(value="Value: {value}")
-            tgb.slider(value="{value}", on_change=on_slider)
+            tgb.slider(value="{value}", on_change=slider_moved)
             tgb.chart(data="{data}")
 
         data = compute_data(value)
@@ -113,15 +113,15 @@ slider's value. It is represented in the application as a chart.
 
 ## Interactivity Through Actions
 
-Actions, like `on_change=on_slider`, allow visual elements like slider or input
+Actions, like `on_change=slider_moved`, allow visual elements like slider or input
 to trigger specific functions.
 
 ```python
-def on_slider(state):
+def slider_moved(state):
     state.data = compute_data(state.value)
 ```
 
-Every callback, including *on_slider()*, receives a `State^` object as its first parameter.
+Every callback, including *slider_moved()*, receives a `State^` object as its first parameter.
 This state represents a user's connection and is used to read and set variables while
 the user is interacting with the application. It makes it possible for Taipy to handle multiple
 users simultaneously.
@@ -132,7 +132,7 @@ controlled, while other variables could be global variables.
 
 ![State illustration](images/state_illustration.png){width=70% : .tp-image-border }
 
-In the *on_slider()* function, the *value* selected by the user on the interface is
+In the *slider_moved()* function, the *value* selected by the user on the interface is
 propagated to the *data* variable. The outcome is then used to update the chart.
 
 ```python

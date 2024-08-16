@@ -16,7 +16,8 @@ your web browser to open your first Taipy page!
 ```python
 from taipy import Gui
 
-Gui(page="# Getting started with *Taipy*").run(debug=True) # use_reloader=True
+if __name__ == "__main__":
+    Gui(page="# Getting started with *Taipy*").run(debug=True) # use_reloader=True
 ```
 
 The run method accepts different useful parameters:

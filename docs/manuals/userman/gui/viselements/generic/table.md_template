@@ -684,7 +684,7 @@ numerical  or date values:
   [`date-fns.format()`](https://date-fns.org/docs/format) function.
 
 In some situations, you need each column to be represented with a dedicated format definition.<br/>
-When this happens, you can use the dictionary version of the [*columns*](#columns) property to
+When this happens, you can use the dictionary version of the [*columns*](#p-columns) property to
 indicate the format to apply to each column, as described
 [above](#formatting-numbers-in-specific-columns).
 
@@ -720,17 +720,17 @@ The implementation of these requirements requires the creation of a *columns* di
 as follows:
 ```python title="Column customization"
 columns = {
-    "date" : {"title": "Data", "format": "MMM d"},
-    "price" : {"title": "Price", "format": "$%.02f"},
-    "change" : {"title": "% change", "format": "%.01f"},
-    "volume" : {"title": "Volume"}
+    "date": {"title": "Data", "format": "MMM d"},
+    "price": {"title": "Price", "format": "$%.02f"},
+    "change": {"title": "% change", "format": "%.01f"},
+    "volume": {"title": "Volume"}
 }
 ```
 
 We can use this dictionary in the table definition:
 !!! taipy-element
     default={data}
-    columns=columns={columns}
+    columns={columns}
 
 The resulting display reflects what is requested:
 <figure class="tp-center">
@@ -741,7 +741,9 @@ The resulting display reflects what is requested:
 
 ## Styling rows
 
-To give a specific style to a table row, you will use the [*style*](#p-style) property.<br/>
+To give a specific style to a table row, you will use the [*style*](#p-style) property (note that
+you can find general instructions on how to apply style to visual elements in
+[this page](../../styling/index.md).<br/>
 This property holds a function that is invoked when each row is rendered, and it must return
 the name of a style, defined in CSS.
 
@@ -791,7 +793,6 @@ The resulting display will be what we expected:
 
 Note that the styling function is so simple that we could have made it a lambda, directly
 in the control definition:
-
 !!! example "Alternative definition"
     === "Markdown"
         ```
@@ -836,8 +837,7 @@ Here is the related CSS content:
 }
 ```
 
-To apply the style to a specific column, we need to specify the column in the style property.  
-
+To apply the style to a specific column, we need to specify the column in the style property:
 !!! taipy-element
     default={data}
     style[y1]:f=even_odd_style
@@ -869,6 +869,7 @@ perform this aggregation. The value of this property, which is a string, can be:
   This function receives a single parameter which is the series to aggregate, and it must return a scalar
   value that would result from the aggregation.
 
+This control definition is all it takes to add aggregation functionality to the table:
 !!! taipy-element
     default={data}
     group_by[Group column]:b=True

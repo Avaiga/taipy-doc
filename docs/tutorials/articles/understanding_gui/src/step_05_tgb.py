@@ -1,24 +1,14 @@
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-from scipy.special import softmax
-import numpy as np
 import pandas as pd
-from taipy.gui import Gui, notify
+from scipy.special import softmax
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+
 import taipy.gui.builder as tgb
-
-
-text = "Original text"
+from taipy.gui import Gui, notify
 
 # Model setup
 MODEL = "cardiffnlp/twitter-roberta-base-sentiment"
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL)
-
-# Initial dataframe
-dataframe = pd.DataFrame({"Text":[''],
-                          "Score Pos":[0.33],
-                          "Score Neu":[0.33],
-                          "Score Neg":[0.33],
-                          "Overall":[0]})
 
 def analyze_text(text):
     # Run for Roberta Model
@@ -26,7 +16,7 @@ def analyze_text(text):
     output = model(**encoded_text)
     scores = output[0][0].detach().numpy()
     scores = softmax(scores)
-    
+
     return {"Text":text,
             "Score Pos":scores[2],
             "Score Neu":scores[1],
@@ -41,30 +31,40 @@ def local_callback(state):
     state.dataframe = temp
     state.text = ""
 
-# Definition of the page with tgb
-with tgb.Page() as page:
-    tgb.toggle(theme=True)
+if __name__ == "__main__":
+    text = "Original text"
 
-    tgb.text("# Getting started with Taipy GUI", mode="md")
-    tgb.text("My text: {text}")
+    # Initial dataframe
+    dataframe = pd.DataFrame({"Text":[''],
+                            "Score Pos":[0.33],
+                            "Score Neu":[0.33],
+                            "Score Neg":[0.33],
+                            "Overall":[0]})
 
-    tgb.input("{text}")
-    tgb.button("Analyze", on_action=local_callback)
+    # Definition of the page with tgb
+    with tgb.Page() as page:
+        tgb.toggle(theme=True)
 
-    # Displaying sentiment scores and overall sentiment
-    tgb.text("## Positive", mode="md")
-    tgb.text("{np.mean(dataframe['Score Pos'])}", format="%.2f")
-    
-    tgb.text("## Neutral", mode="md")
-    tgb.text("{np.mean(dataframe['Score Neu'])}", format="%.2f")
+        tgb.text("# Getting started with Taipy GUI", mode="md")
+        tgb.text("My text: {text}")
 
-    tgb.text("## Negative", mode="md")
-    tgb.text("{np.mean(dataframe['Score Neg'])}", format="%.2f")
+        tgb.input("{text}")
+        tgb.button("Analyze", on_action=local_callback)
 
-    tgb.table("{dataframe}", number_format="%.2f")
-    tgb.chart("{dataframe}", type="bar", x="Text", 
-              y__1="Score Pos", y__2="Score Neu", y__3="Score Neg", y__4="Overall",
-              color__1="green", color__2="grey", color__3="red", type__4="line")
+        # Displaying sentiment scores and overall sentiment
+        tgb.text("## Positive", mode="md")
+        tgb.text("{np.mean(dataframe['Score Pos'])}", format="%.2f")
 
-# Initialize the GUI with the updated dataframe
-Gui(page).run(debug=True)
+        tgb.text("## Neutral", mode="md")
+        tgb.text("{np.mean(dataframe['Score Neu'])}", format="%.2f")
+
+        tgb.text("## Negative", mode="md")
+        tgb.text("{np.mean(dataframe['Score Neg'])}", format="%.2f")
+
+        tgb.table("{dataframe}", number_format="%.2f")
+        tgb.chart("{dataframe}", type="bar", x="Text",
+                y__1="Score Pos", y__2="Score Neu", y__3="Score Neg", y__4="Overall",
+                color__1="green", color__2="grey", color__3="red", type__4="line")
+
+    # Initialize the GUI with the updated dataframe
+    Gui(page).run(debug=True)

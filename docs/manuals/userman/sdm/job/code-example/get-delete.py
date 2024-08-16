@@ -1,6 +1,7 @@
 import taipy as tp
 from taipy import Config
 
+
 def double(nb):
     return nb * 2
 

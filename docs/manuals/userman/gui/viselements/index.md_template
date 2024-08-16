@@ -10,7 +10,7 @@ There are two types of *Visual Elements*:
      Some controls dedicated to scenario and data management are available in the
      [Scenario Management controls](#scenario-and-data-management-controls) section.
 
-   - *Blocks* are listed in the [Block Elements](#blocks-controls) section.
+   - *Blocks* are listed in the [Block Elements](#block-elements) section.
     They let you organize controls (or blocks) in pages to provide the best
     possible user experience.
 

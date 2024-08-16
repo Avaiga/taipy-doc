@@ -83,16 +83,16 @@ Taipy makes things easy by handling the paths for Pickle files automatically if 
 defined them. This simplifies the configuration process. When you create several scenarios,
 the output data nodes from each scenario will automatically point to separate files.
 
-```py
+```python
 scenario_2 = tp.create_scenario(scenario_cfg)
 tp.submit(scenario_2)
 ```
 
-In this example, when we create a second scenario, it also brings in a new pair of data nodes:
-*model* and *predictions*. The *model* data node still points to the same Pickle file because
-its path was set by the developer in advance. However, the new *predictions* data node points
-to a different Pickle file. Taipy creates this new Pickle file on the fly during runtime,
-so it's separate from the one used in the first scenario. All data nodes that writes in
+In this example, when we create a second scenario from the same main script, it also brings in
+a new pair of data nodes: *model* and *predictions*. The *model* data node still points to the
+same Pickle file because its path was set by the developer in advance. However, the new *predictions*
+data node points to a different Pickle file. Taipy creates this new Pickle file on the fly during
+runtime, so it's separate from the one used in the first scenario. All data nodes that writes in
 the local system share this behavior.
 
 ## Tabular data nodes
@@ -120,7 +120,7 @@ note that you can change this path during runtime. For instance, if you create a
 you can instruct the Tabular data nodes to save the results in a different file or directory,
 thereby preventing the overwriting of previous data. Taipy can also manage file destinations in cases where no 'default_path' has been specified.
 
-```py
+```python
 scenario = tp.create_scenario(scenario_cfg)
 tp.submit(scenario)
 ```

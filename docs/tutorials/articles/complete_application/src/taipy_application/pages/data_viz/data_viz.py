@@ -24,7 +24,7 @@ n_week = 10
 # Select the week based on the slider value
 dataset_week = dataset[dataset["Date"].dt.isocalendar().week == n_week]
 
-def on_slider(state):
+def slider_moved(state):
     state.dataset_week = dataset[dataset["Date"].dt.isocalendar().week == state.n_week]
 
 

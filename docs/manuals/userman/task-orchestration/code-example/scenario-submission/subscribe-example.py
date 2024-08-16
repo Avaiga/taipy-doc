@@ -1,19 +1,20 @@
+import taipy as tp
+from taipy import Config
+
+
+def do_nothing():
+    ...
+
+def my_global_subscriber(scenario, job):
+    print(f"  my_global_subscriber: scenario '{scenario.config_id}'; task '{job.task.config_id}'.")
+
+def my_subscriber(scenario, job):
+    print(f"  my_subscriber: scenario '{scenario.config_id}'; task '{job.task.config_id}'.")
+
+def my_subscriber_multi_param(scenario, job, params):
+    print(f"  my_subscriber_multi_param: params {params}; task '{job.task.config_id}'.")
+
 if __name__ == "__main__":
-    import taipy as tp
-    from taipy import Config
-
-    def do_nothing():
-        ...
-
-    def my_global_subscriber(scenario, job):
-        print(f"  my_global_subscriber: scenario '{scenario.config_id}'; task '{job.task.config_id}'.")
-
-    def my_subscriber(scenario, job):
-        print(f"  my_subscriber: scenario '{scenario.config_id}'; task '{job.task.config_id}'.")
-
-    def my_subscriber_multi_param(scenario, job, params):
-        print(f"  my_subscriber_multi_param: params {params}; task '{job.task.config_id}'.")
-
     task_1 = Config.configure_task("my_task_1", do_nothing)
     task_2 = Config.configure_task("my_task_2", do_nothing)
     scenario_1 = Config.configure_scenario("my_scenario", [task_1, task_2])

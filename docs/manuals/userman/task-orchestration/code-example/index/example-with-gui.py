@@ -1,15 +1,14 @@
-# Creating a scenario variable and a job variable to be bound to the visual elements
-scenario = None
-job = None
+from taipy import Config, Core, Gui
 
 
 # Implementing a function to be used as a Taipy task in a scenario
 def identity(*values):
     return values
 
-
 if __name__ == "__main__":
-    from taipy import Config, Core, Gui
+    # Creating a scenario variable and a job variable to be bound to the visual elements
+    scenario = None
+    job = None
 
     # Configure a scenario
     in_cfg = Config.configure_data_node(id="inpt", default_data="IN")

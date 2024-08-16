@@ -35,11 +35,9 @@ nav:
       - "Creating an RAG ChatBot": tutorials/articles/rag_chatbot/index.md
     - "Visuals":
       - "Visuals": tutorials/visuals/index.md
-      - "Callbacks in Taipy": tutorials/articles/callbacks/index.md
+      - "Callbacks": tutorials/articles/callbacks/index.md
       - "Using Tables": tutorials/articles/using_tables/index.md
-      - "Multi-page Application": tutorials/articles/multipage_application/index.md
       - "Long Running Callbacks": tutorials/articles/long_callbacks/index.md
-      - "Content update with Partials": tutorials/articles/partials/index.md
       - "Real-time data visualization": tutorials/articles/multithreading/index.md
       - "Stylekit": tutorials/articles/css_style_kit/index.md
       - "Multi-user": tutorials/articles/multi_user/index.md
@@ -81,7 +79,13 @@ nav:
           - "Styling":
               - "Styling": manuals/userman/gui/styling/index.md
               - "The Stylekit": manuals/userman/gui/styling/stylekit.md
-        - "Pages": manuals/userman/gui/pages/index.md
+        - "Pages":
+          - "Pages": manuals/userman/gui/pages/index.md
+          - "Navigate between pages": manuals/userman/gui/pages/navigate/index.md
+          - "Content update with partials": manuals/userman/gui/pages/partial/index.md
+          - "Dialogs": manuals/userman/gui/pages/dialog/index.md
+          - "Panes": manuals/userman/gui/pages/pane/index.md
+          - "Advanced": manuals/userman/gui/pages/advanced/index.md
         - "Binding variables": manuals/userman/gui/binding.md
         - "Callbacks": manuals/userman/gui/callbacks.md
         - "Notifications": manuals/userman/gui/notifications.md

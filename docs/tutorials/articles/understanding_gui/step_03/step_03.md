@@ -59,18 +59,6 @@ the callback function referenced in the `on_action` property.
     ```python
     from taipy.gui import Gui, notify
 
-    text = "Original text"
-
-    # Definition of the page
-    page = """
-    # Getting started with Taipy GUI
-
-    My text: <|{text}|>
-
-    <|{text}|input|>
-
-    <|Run local|button|on_action=on_button_action|>
-    """
 
     def on_button_action(state):
         notify(state, 'info', f'The text is: {state.text}')
@@ -81,14 +69,28 @@ the callback function referenced in the `on_action` property.
             state.text = ""
             return
 
+    if __name__ == "__main__":
+        text = "Original text"
 
-    Gui(page).run(debug=True)
+        # Definition of the page
+        page = """
+        # Getting started with Taipy GUI
+
+        My text: <|{text}|>
+
+        <|{text}|input|>
+
+        <|Run local|button|on_action=on_button_action|>
+        """
+
+        Gui(page).run(debug=True)
     ```
 === "Python"
     ```python
+    import taipy.gui.builder as tgb
     from taipy.gui import Gui, notify
+    import taipy.gui.builder as tgb
 
-    text = "Original text"
 
     def on_button_action(state):
         notify(state, 'info', f'The text is: {state.text}')
@@ -99,16 +101,18 @@ the callback function referenced in the `on_action` property.
             state.text = ""
             return
 
-    # Definition of the page
-    with tgb.Page() as page:
-        tgb.text("# Getting started with Taipy GUI", mode="md")
-        tgb.text("My text: {text}")
+    if __name__ == "__main__":
+        text = "Original text"
 
-        tgb.input("{text}")
+        # Definition of the page
+        with tgb.Page() as page:
+            tgb.text("# Getting started with Taipy GUI", mode="md")
+            tgb.text("My text: {text}")
 
-        tgb.button("Run local", on_action=on_button_action)
+            tgb.input("{text}")
+            tgb.button("Run local", on_action=on_button_action)
 
-    Gui(page).run(debug=True)
+        Gui(page).run(debug=True)
     ```
 
 

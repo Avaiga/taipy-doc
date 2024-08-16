@@ -1,8 +1,8 @@
-from taipy.core.config import Config
-import taipy as tp
-import datetime as dt
-import pandas as pd
 import time
+
+import taipy as tp
+from taipy.core.config import Config
+
 
 # Normal function used by Taipy
 def double(nb):
@@ -13,32 +13,32 @@ def add(nb):
     time.sleep(10)
     return nb + 10
 
-Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
-
-# Configuration of Data Nodes
-input_cfg = Config.configure_data_node("my_input", default_data=21)
-intermediate_cfg = Config.configure_data_node("intermediate", default_data=21)
-output_cfg = Config.configure_data_node("my_output")
-
-# Configuration of tasks
-first_task_cfg = Config.configure_task("double",
-                                       double,
-                                       input_cfg,
-                                       intermediate_cfg)
-
-second_task_cfg = Config.configure_task("add",
-                                        add,
-                                        intermediate_cfg,
-                                        output_cfg)
-
-# Configuration of the scenario
-scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                         task_configs=[first_task_cfg,
-                                                       second_task_cfg])
-
-Config.export("config.toml")
-
 if __name__=="__main__":
+    Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
+
+    # Configuration of Data Nodes
+    input_cfg = Config.configure_data_node("my_input", default_data=21)
+    intermediate_cfg = Config.configure_data_node("intermediate", default_data=21)
+    output_cfg = Config.configure_data_node("my_output")
+
+    # Configuration of tasks
+    first_task_cfg = Config.configure_task("double",
+                                        double,
+                                        input_cfg,
+                                        intermediate_cfg)
+
+    second_task_cfg = Config.configure_task("add",
+                                            add,
+                                            intermediate_cfg,
+                                            output_cfg)
+
+    # Configuration of the scenario
+    scenario_cfg = Config.configure_scenario(id="my_scenario",
+                                            task_configs=[first_task_cfg,
+                                                        second_task_cfg])
+
+    Config.export("config.toml")
+
     tp.Core().run()
     scenario_1 = tp.create_scenario(scenario_cfg)
     scenario_2 = tp.create_scenario(scenario_cfg)

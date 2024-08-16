@@ -1,10 +1,4 @@
-from taipy.gui import Gui, Markdown, invoke_long_callback, notify, State
-
-
-status = 0
-num_iterations = 20_000_000
-pi_list = []
-logs = "Not running"
+from taipy.gui import Gui, Markdown, State, invoke_long_callback, notify
 
 
 def pi_approx(num_iterations: int):
@@ -44,7 +38,7 @@ def heavy_status(state: State, status, pi_list: list):
             notify(state, "success", "Finished")
             state.pi_list = pi_list
         else:
-            notify(state, "error", f"An error was raised")
+            notify(state, "error", "An error was raised")
     else:
         state.status += 1
 
@@ -60,9 +54,13 @@ def on_action(state: State):
         state, pi_approx, [int(state.num_iterations)], heavy_status, [], 1000
     )
 
+if __name__ == "__main__":
+    status = 0
+    num_iterations = 20_000_000
+    pi_list = []
+    logs = "Not running"
 
-page = Markdown(
-    """
+    page = Markdown("""
 # Approximating **Pi**{: .color-primary} using the Leibniz formula
 <|{num_iterations}|number|label=Number of iterations|>
 <|Approximate Pi|button|on_action=on_action|>
@@ -72,15 +70,12 @@ page = Markdown(
 <|card|
 ## Logs
 ### <|{logs}|text|raw|>
-|>	
-"""
-)
+|>
+    """)
 
+    layout = {
+        "xaxis": {"title": "Iteration (Percentage of Total Iterations)"},
+        "yaxis": {"title": "Pi Approximation"},
+    }
 
-layout = {
-    "xaxis": {"title": "Iteration (Percentage of Total Iterations)"},
-    "yaxis": {"title": "Pi Approximation"},
-}
-
-
-Gui(page).run()
+    Gui(page).run()

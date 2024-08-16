@@ -1,6 +1,8 @@
 import pandas as pd
-from taipy import Config
 import taipy as tp
+import taipy.gui.builder as tgb
+from taipy import Config
+from taipy.gui import Gui
 
 
 def compare_revenue(*sales_predictions):
@@ -9,7 +11,6 @@ def compare_revenue(*sales_predictions):
     revenues = {"Scenarios": scenario_names,
                 "Revenues": [sales * unit_price for sales in sales_predictions]}
     return pd.DataFrame(revenues)
-
 
 if __name__ == "__main__":
     # Configure scenario
@@ -39,9 +40,6 @@ if __name__ == "__main__":
     revenues = tp.compare_scenarios(sunny, cloudy, rainy)[sales_cfg.id]["compare_revenue"]
 
     # Create a user interface
-    from taipy.gui import Gui
-    import taipy.gui.builder as tgb
-
     with tgb.Page() as compare_page:
         tgb.chart("{revenues}", type="bar", x="Scenarios", y="Revenues")
         tgb.table("{revenues}")

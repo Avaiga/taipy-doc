@@ -1,16 +1,15 @@
 from taipy import Config, Core, Gui
 
-# Creating a scenario variable and a job variable to be bound to the visual elements
-scenario = None
-job = None
-
 
 # Implementing a function to be used as a Taipy task in a scenario
 def identity(*values):
     return values
 
-
 if __name__ == "__main__":
+    # Creating a scenario variable and a job variable to be bound to the visual elements
+    scenario = None
+    job = None
+
     # Configuring a scenario
     in_cfg = Config.configure_data_node(id="inpt", default_data="IN")
     out_cfg = Config.configure_data_node(id="outpt")

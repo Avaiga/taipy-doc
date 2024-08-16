@@ -1,12 +1,13 @@
-from taipy.gui import Gui
 import taipy.gui.builder as tgb
+from taipy.gui import Gui
 
-text = "Original text"
+if __name__ == "__main__":
+    text = "Original text"
 
-with tgb.Page() as page:
-    tgb.text("# Getting started with Taipy GUI", mode="md")
-    tgb.text("My text: {text}")
+    with tgb.Page() as page:
+        tgb.text("# Getting started with Taipy GUI", mode="md")
+        tgb.text("My text: {text}")
 
-    tgb.input("{text}")
+        tgb.input("{text}")
 
-Gui(page).run(debug=True)
+    Gui(page).run(debug=True)

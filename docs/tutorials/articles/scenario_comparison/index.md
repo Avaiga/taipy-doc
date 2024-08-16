@@ -49,22 +49,23 @@ def compare_revenue(*revenues):
 Now, the `compare_scenarios` can be used within Taipy.
 
 ```python
-core = tp.Core()
-core.run()
+if __name__ == "__main__":
+    core = tp.Core()
+    core.run()
 
-# Create scenarios with different pricing strategies
-scenario_1 = tp.create_scenario(scenario_cfg)
-scenario_2 = tp.create_scenario(scenario_cfg)
+    # Create scenarios with different pricing strategies
+    scenario_1 = tp.create_scenario(scenario_cfg)
+    scenario_2 = tp.create_scenario(scenario_cfg)
 
-scenario_1.price_input.write(120)  # Higher price scenario
-scenario_2.price_input.write(80)   # Lower price scenario
+    scenario_1.price_input.write(120)  # Higher price scenario
+    scenario_2.price_input.write(80)   # Lower price scenario
 
-scenario_1.submit()
-scenario_2.submit()
+    scenario_1.submit()
+    scenario_2.submit()
 
-# Compare the scenarios
-comparisons = tp.compare_scenarios(scenario_1, scenario_2)
-print(comparisons)
+    # Compare the scenarios
+    comparisons = tp.compare_scenarios(scenario_1, scenario_2)
+    print(comparisons)
 ```
 
 Results:
@@ -78,15 +79,15 @@ Results:
 
 # Compare Scenario with a GUI
 
-Taipy can then generate a GUI that compares scenarios easily. Our comparison will be shown through 
+Taipy can then generate a GUI that compares scenarios easily. Our comparison will be shown through
 a chart and a table in this case. This application can be as interactive and complete as possible.
 
 ```python
-from taipy.gui import Gui 
-import taipy.gui.builder as tgb 
+from taipy.gui import Gui
+import taipy.gui.builder as tgb
 
 with tgb.Page() as compare_page:
-    tgb.text("# Compare Scenarios", mode="md)
+    tgb.text("# Compare Scenarios", mode="md")
 
     tgb.chart("{comparisons_revenue}", type="bar", x="Scenarios", y="Revenues")
     tgb.table("{comparisons_revenue}")
@@ -101,10 +102,14 @@ Gui(compare_page).run()
 Here is the entire code to recreate the example. A GUI has been created to show the results.
 
 ```python
-from taipy import Core, Config
-import taipy as tp
-import pandas as pd
 import numpy as np
+import pandas as pd
+
+import taipy as tp
+import taipy.gui.builder as tgb
+from taipy import Config
+from taipy.gui import Gui
+
 
 # Simulation function to predict sales based on pricing
 def predict_sales(price):
@@ -122,26 +127,6 @@ def predict_sales(price):
 def calculate_revenue(price, sales_volume):
     return price * sales_volume
 
-# Data Node configuration
-price_input_cfg = Config.configure_data_node("price_input", default_data=100)
-sales_output_cfg = Config.configure_data_node("sales_output")
-revenue_output_cfg = Config.configure_data_node("revenue_output")
-
-# Task configurations
-predict_sales_task_cfg = Config.configure_task(
-    id="predict_sales",
-    function=predict_sales,
-    input=price_input_cfg,
-    output=sales_output_cfg
-)
-
-calculate_revenue_task_cfg = Config.configure_task(
-    id="calculate_revenue",
-    function=calculate_revenue,
-    input=[price_input_cfg, sales_output_cfg],
-    output=revenue_output_cfg
-)
-
 # Comparator function to compare revenue outputs
 def compare_revenue(*revenues):
     scenario_names = [f"Scenario {i}" for i in range(len(revenues))]
@@ -149,17 +134,35 @@ def compare_revenue(*revenues):
                    "Revenues": list(revenues)}
     return pd.DataFrame(comparisons)
 
-# Scenario configuration
-scenario_cfg = Config.configure_scenario(
-    id="pricing_strategy",
-    task_configs=[predict_sales_task_cfg, calculate_revenue_task_cfg],
-    comparators={revenue_output_cfg.id: compare_revenue}
-)
-
-Config.export("config_pricing.toml")
-
 if __name__=="__main__":
-    core = Core()
+    # Data Node configuration
+    price_input_cfg = Config.configure_data_node("price_input", default_data=100)
+    sales_output_cfg = Config.configure_data_node("sales_output")
+    revenue_output_cfg = Config.configure_data_node("revenue_output")
+
+    # Task configurations
+    predict_sales_task_cfg = Config.configure_task(
+        id="predict_sales",
+        function=predict_sales,
+        input=price_input_cfg,
+        output=sales_output_cfg
+    )
+
+    calculate_revenue_task_cfg = Config.configure_task(
+        id="calculate_revenue",
+        function=calculate_revenue,
+        input=[price_input_cfg, sales_output_cfg],
+        output=revenue_output_cfg
+    )
+
+    # Scenario configuration
+    scenario_cfg = Config.configure_scenario(
+        id="pricing_strategy",
+        task_configs=[predict_sales_task_cfg, calculate_revenue_task_cfg],
+        comparators={revenue_output_cfg.id: compare_revenue}
+    )
+
+    core = tp.Core()
     core.run()
 
     # Create scenarios with different pricing strategies
@@ -171,19 +174,15 @@ if __name__=="__main__":
 
     scenario_1.submit()
     scenario_2.submit()
-    
+
     # Compare the scenarios
     comparisons = tp.compare_scenarios(scenario_1, scenario_2)
     print(comparisons)
 
     comparisons_revenue = comparisons["revenue_output"]['compare_revenue']
 
-    # Creation of an GUI
-    from taipy.gui import Gui 
-    import taipy.gui.builder as tgb 
-
     with tgb.Page() as compare_page:
-        tgb.text("# Compare Scenarios", mode="md)
+        tgb.text("# Compare Scenarios", mode="md")
 
         tgb.chart("{comparisons_revenue}", type="bar", x="Scenarios", y="Revenues")
         tgb.table("{comparisons_revenue}")
