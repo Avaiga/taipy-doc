@@ -1,13 +1,9 @@
-from taipy.gui import Gui, navigate
-import taipy.gui.builder as tgb
+from taipy.gui import Gui
 
-# Initial links
-links = [("Taipy", "http://taipy.io")]
 
 # Function to refresh the links partial
 def refresh_links(state):
-    partial_md = ""
-    partial_md += "<|layout|columns=1 1 1|\n"
+    partial_md = "<|layout|columns=1 1 1|\n"
     for link in state.links:
         link_name, link_url = link
         partial_md += "<|card|\n"
@@ -18,27 +14,37 @@ def refresh_links(state):
     partial_md += "|>\n"
     state.link_partial.update_content(state, partial_md)
 
+
 # Function to simulate adding more links
 def simulate_adding_more_links(state):
     state.links = [
         ("Taipy", "http://taipy.io"),
         ("Taipy Doc", "http://docs.taipy.io"),
         ("Wikipedia", "http://wikipedia.org"),
-        ("Article", "https://betterprogramming.pub/discovering-taipy-and-taipy-gui-e1b664765017")
+        (
+            "Article",
+            "https://betterprogramming.pub/discovering-taipy-and-taipy-gui-e1b664765017",
+        ),
     ]
     refresh_links(state)
 
-# Define the main page layout
-main_page = """
-<|Add links|button|on_action=simulate_adding_more_links|>
-<|part|partial={link_partial}|>
-"""
 
 # Initialize the application state
 def on_init(state):
     refresh_links(state)
 
-# Create and run the Taipy GUI
-gui = Gui(main_page)
-link_partial = gui.add_partial("")
-gui.run()
+
+if __name__ == "__main__":
+    # Initial links
+    links = [("Taipy", "http://taipy.io")]
+
+    # Define the main page layout
+    main_page = """
+<|Add links|button|on_action=simulate_adding_more_links|>
+<|part|partial={link_partial}|>
+    """
+
+    # Create and run the Taipy GUI
+    gui = Gui(main_page)
+    link_partial = gui.add_partial("")
+    gui.run()
