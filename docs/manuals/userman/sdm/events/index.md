@@ -19,7 +19,7 @@ It is represented by an object of class `Event^`. An *event* contains attributes
 Events are particularly useful for:
     - Updating the user interface (e.g., refreshing a list of scenarios when a new one is created)
     - Triggering actions (e.g., automatically submitting a scenario when its input data is updated)
-    - Notifying end-users (e.g., sending a GUI notification when a job fails)    
+    - Notifying end-users (e.g., sending a GUI notification when a job fails)
     - And more
 
 For more details, see the [event](events-description.md) page.
@@ -28,12 +28,13 @@ For more details, see the [event](events-description.md) page.
 
 Taipy provides the `Notifier.register()^` method to register for events. When you register,
 you specify parameters that define the events you want to receive. These parameters allow you to
-filter the events you are interested in. 
+filter the events you are interested in.
 For more details, see the [registration](understanding-topics.md) page.
 
 # How to process events
 
 To process events, follow these steps:
+
 1. Create a new consumer class and extend it from `CoreEventConsumerBase^`.
 2. Implement the `process_event` method to define your specific event-handling behavior.
 3. Register the consumer using the `Notifier.register()^` method to obtain
@@ -49,7 +50,7 @@ that can start consuming events.
      %}
     ```
 
-    This snippet shows a generic way to process all events. However, you might want to 
+    This snippet shows a generic way to process all events. However, you might want to
     specify the types of events you are interested in to avoid processing all the events.
     For more details, see the [registration](understanding-topics.md) page.
 

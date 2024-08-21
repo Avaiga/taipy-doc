@@ -12,7 +12,7 @@ details.
     - **Description**: Specifies the type of entity that has undergone a change. This
         attribute helps identify the nature of the object affected. The possible entity
         types are:
-        
+
         - `CYCLE`
         - `SCENARIO`
         - `SEQUENCE`
@@ -25,11 +25,11 @@ details.
     - **Type**: `EventOperation^` (Enum)
     - **Description**: Indicates the type of operation performed. The `operation` attribute
         is essential for understanding the nature of the change. The possible operations are:
-        
+
         - `CREATION` - An entity has been created.
         - `UPDATE` - An entity has been updated.
         - `DELETION` - An entity has been deleted.
-        - `SUBMISSION` - An entity has been submitted for processing. 
+        - `SUBMISSION` - An entity has been submitted for processing.
 
 3. `entity_id`
     - **Type**: `str`
@@ -56,3 +56,19 @@ details.
 7. `creation_date`
     - **Type**: `datetime`
     - **Description**: The exact date and time the event was created.
+
+!!! example "Scenario creation event"
+    For example, when a scenario is created, an event is emitted with
+    the following attributes:
+        - `entity_type`: `EventEntityType.SCENARIO^`
+        - `operation`: `EventOperation.CREATION^`
+        - `entity_id`: the id of the scenario
+        - `creation_date`: the date and time of the event creation
+
+Events are particularly useful when you want to:
+    - Update the user interface (e.g., update a list of scenarios when a new one is created)
+    - Trigger an action (e.g., automatically submit a scenario when its input data is updated)
+    - Notify end-users (e.g., send a GUI notification to all users when a job fails)
+    - etc.
+
+For more examples, see the [examples](examples.md) page.
