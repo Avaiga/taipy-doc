@@ -23,7 +23,7 @@ nav:
         - "5 - Python expressions in properties": tutorials/articles/understanding_gui/step_05/step_05.md
         - "6 - Page layouts": tutorials/articles/understanding_gui/step_06/step_06.md
         - "7 - Multi-pages, navbars, and menus": tutorials/articles/understanding_gui/step_07/step_07.md
-      - "Scenario management Overview": tutorials/articles/scenario_management_overview/index.md
+      - "Scenario management overview": tutorials/articles/scenario_management_overview/index.md
       - "First Realistic application":
         - "First Realistic application": tutorials/articles/complete_application/index.md
         - "1 - Data visualization page": tutorials/articles/complete_application/step_01/step_01.md

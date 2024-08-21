@@ -3,7 +3,7 @@ title: Scenario Comparison
 category: scenario_management
 data-keywords: scenario comparison datanode configuration
 short-description: Learn best practices to compare scenarios easily.
-order: 16
+order: 17
 img: images/icon-code.svg
 ---
 

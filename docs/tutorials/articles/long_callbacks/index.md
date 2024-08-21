@@ -3,7 +3,7 @@ title: Long-running Callbacks
 category: visuals
 data-keywords: gui callback
 short-description: Preserve the user interface responsiveness during lengthy tasks.
-order: 7
+order: 8
 img: long_callbacks/images/long_running_callbacks.png
 ---
 

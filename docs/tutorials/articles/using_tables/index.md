@@ -3,7 +3,7 @@ title: Using tables
 category: visuals
 data-keywords: gui vizelement tables callback stylekit
 short-description: Learn key settings and features for effortless table creation within data applications.
-order: 6
+order: 7
 img: using_tables/images/using_tables.png
 ---
 Tables in Taipy are not just for showing data, they also let you control things. When you're

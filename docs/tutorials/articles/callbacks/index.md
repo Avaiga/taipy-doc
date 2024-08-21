@@ -3,7 +3,7 @@ title: Callbacks
 category: visuals
 data-keywords: gui callback
 short-description: Make your multi-user graphical interface fully interactive using the on_change callback.
-order: 5
+order: 6
 img: callbacks/images/callbacks_flowchart-1.png
 ---
 In Taipy, an `on_change` callback triggers a Python function which is executed when some application

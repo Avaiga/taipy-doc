@@ -3,6 +3,7 @@ title: RAG ChatBot
 category: fundamentals
 data-keywords: gui vizelement markdown
 short-description: Create an RAG chatbot to ask questions about PDF files.
+order: 5
 img: rag_chatbot/images/rag_screen.png
 ---
 In this tutorial, we will create a Retrieval-Augmented Generation (RAG) chatbot application using Taipy. Users can
