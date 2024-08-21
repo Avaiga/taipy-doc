@@ -1,45 +1,50 @@
-When registering to the Notifier, you can specify which events you want to receive by providing topics.
+Taipy exposes the `Notifier.register()^` method to register to events. The registration
+result is passed to a consumer that processes the events. When you register,
+you specify parameters that define the events you want to process. These parameters and the
+registration mechanism allows you to tailor your event consumer to your application's precise
+needs. For example, you can register to:
+    - All events emitted
+    - All operations related to scenarios
+    - All operations related to a specific data node
+    - All job creations
+    - A specific data node update
+    - A sequence submission
+    - A scenario deletion
+    - Job failures
 
-A topic is defined by the combination of an optional entity type, an optional
-entity id, an optional operation, and an optional attribute name. The purpose is
-to be as flexible as possible. For example, we can register to:
+To register for event notifications, use the `Notifier.register()` method. The following
+parameters define the events you want to process, like a topic of interest:
 
-- All actions emitted by Core
-- All behaviors of scenarios
-- All actions related to a certain data node
-- All task creations
-- A specific data node update
-- A sequence submission
-- A scenario deletion
-- Job failures
+1. `entity_type`
+    - **Type**: `EventEntityType^` (Enum)
+    - **Description**: Specifies the entity type for which you want to receive notifications.
+        If omitted, the consumer will be called for events across all entity types. The
+        possible entity types are:
+        - `CYCLE`
+        - `SCENARIO`
+        - `SEQUENCE`
+        - `TASK`
+        - `DATA_NODE`
+        - `JOB`
+        - `SUBMISSION`
 
-Topic is defined when you call `Notifier.register()^` method with the following
-parameters:
+2. `entity_id`
+    - **Type**: `str`
+    - **Description**: Identifies the specific entity instance to register for. If omitted,
+        the consumer will be called of events for all entities of the specified `entity_type`.
 
-- _**entity_type**_: If provided, the listener will be notified for all events related to this entity type. 
-    Otherwise, the listener will be notified for events related to all entity types. The possible entity type values
-    are defined in the `EventEntityType^` enum. The possible values are:
-    - CYCLE
-    - SCENARIO
-    - SEQUENCE
-    - TASK
-    - DATA_NODE
-    - JOB
-    - SUBMISSION
+3. `operation`
+   - **Type**: `EventOperation^` (Enum)
+   - **Description**: Specifies the type of operation to monitor (e.g., `CREATION`, `UPDATE`,
+       `DELETION`, `SUBMISSION`). If omitted, the consumer will be called for all operations
+       performed on the specified `entity_type`.
 
-- _**entity_id**_: If provided, the listener will be notified for all events related to this entity.
-    Otherwise, the listener will be notified for events related to all entities.
-
-- _**operation**_: If provided, the listener will be notified for all events related to this operation.
-    Otherwise, the listener will be notified for events related to all operations. The possible operation values are 
-    defined in the `EventOperation^` enum. The possible values are:
-    - CREATION
-    - UPDATE
-    - DELETION
-    - SUBMISSION
-
-- _**attribute_name**_: If provided, the listener will be notified for all events related to this entity's attribute.
-    Otherwise, the listener will be notified for events related to all attributes.
+4. `attribute_name`
+   - **Type**: `str`
+   - **Description**: Targets a specific attribute within an entity. This is
+       particularly useful when you are interested in changes to a particular attribute,
+       such as when an attribute's value is updated. If omitted, the consumer will be called
+       for changes to all attributes.
 
 !!! example
 

@@ -1,21 +1,58 @@
-Event object is used to notify any change in the Core service.
+The `Event^` object in Taipy is a notification mechanism for any changes occurring within Taipy Core,
+particularly those related to the Scenario and Data Management. It is a crucial part of the system that allows
+tracking and responding to changes in the state of various entities managed by Taipy, such as data nodes, jobs,
+and scenarios.
 
-In an `Event^` object, `EventEntityType^` is an Enum representing the entity type. It is used as an attribute of
-the `Event^` object to describe the entity that was changed. The possible operations are `CYCLE`, `SCENARIO`,
-`SEQUENCE`, `TASK`, `DATA_NODE`, `JOB` or `SUBMISSION`.
+An `Event^` object is composed of several key attributes that describe what happened, the
+type of operation performed, the entity concerned and its type, and other contextual
+details.
 
-There is also the `EventOperation^`, which is an Enum representing a type of operation performed on a Core entity. 
-It is used as an attribute of the `Event^` object to describe the operation performed on an entity.
-The possible operations are `CREATION`, `UPDATE`, `DELETION`, or `SUBMISSION`.
+1. `entity_type`
+    - **Type**: `EventEntityType^` (Enum)
+    - **Description**: Specifies the type of entity that has undergone a change. This
+        attribute helps identify the nature of the object affected. The possible entity
+        types are:
+        
+        - `CYCLE`
+        - `SCENARIO`
+        - `SEQUENCE`
+        - `TASK`
+        - `DATA_NODE`
+        - `JOB`
+        - `SUBMISSION`
 
-An event holds the following attributes to represent the change:
+2. `operation`
+    - **Type**: `EventOperation^` (Enum)
+    - **Description**: Indicates the type of operation performed. The `operation` attribute
+        is essential for understanding the nature of the change. The possible operations are:
+        
+        - `CREATION` - An entity has been created.
+        - `UPDATE` - An entity has been updated.
+        - `DELETION` - An entity has been deleted.
+        - `SUBMISSION` - An entity has been submitted for processing. 
 
-- _**entity_type**_: Type of the entity that was changed (`DataNode^`, `Scenario^`, `Cycle^`, etc. ).
-- _**tasks**_: A list of task configurations.
-- _**entity_id**_: Unique identifier of the entity that was changed.
-- _**operation**_: Enum describing the operation (among `CREATION`, `UPDATE`, `DELETION`, and `SUBMISSION`) 
-    that was performed on the entity.
-- _**attribute_name**_: Name of the entity's attribute changed. Only relevant for `UPDATE` operations
-- _**attribute_value**_: Name of the entity's attribute changed. Only relevant for `UPDATE` operations.
-- _**metadata**_: A dict of additional medata about the source of this event
-- _**creation_date**_: Date and time of the event creation.
+3. `entity_id`
+    - **Type**: `str`
+    - **Description**: The unique identifier for the entity that has been changed. This
+        ID allows you to precisely identify which object in the system the event refers to.
+
+4. `attribute_name`
+    - **Type**: `str`
+    - **Description**: The name of the specific attribute that has been changed within
+        the entity. This attribute is only relevant for `UPDATE` operations, where
+        a specific field of an entity has been modified.
+
+5. `attribute_value`
+    - **Type**: `Any`
+    - **Description**: The new value of the changed attribute. Like `attribute_name`, this
+        only applies to `UPDATE` operations.
+
+6. `metadata`
+    - **Type**: `dict`
+    - **Description**: A dictionary containing additional metadata about the source of the
+        event. This can include context-specific information that provides more insight into
+        the event's origin or purpose.
+
+7. `creation_date`
+    - **Type**: `datetime`
+    - **Description**: The exact date and time the event was created.
