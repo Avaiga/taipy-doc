@@ -34,14 +34,14 @@ a Taipy application.
   algorithms, investigating the impacts of a parameter change, etc. For more information, please refer to
   [experiment mode](experiment_mode.md).
 
-!!! warning "Available in Taipy Enterprise edition"
-
-    The production mode is relevant only to the Enterprise edition of Taipy.
-
 - In production mode, Taipy considers all existing entities, whether they have been instantiated in
   the current run or in a previous one. It is designed to run an application in a production
   environment with existing entities created in previous runs. For more information, please refer to
   [production mode](production_mode.md).
+
+    !!! warning "Available in Taipy Enterprise edition"
+
+        The production mode is relevant only to the Enterprise edition of Taipy.
 
 ## Versions
 
