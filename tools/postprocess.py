@@ -152,7 +152,7 @@ def on_post_build(env):
                         log.error(f"Couldn't read HTML file {filename}")
                         raise e
 
-                    html_content.replace(
+                    html_content = html_content.replace(
                         """<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">""",
                         """<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
 
@@ -168,14 +168,9 @@ def on_post_build(env):
                 <h4>Manuals</h4>
             </header>
             </a>
-            <a class="tp-content-card tp-content-card--small tp-content-card--alpha" href="http://127.0.0.1:8000/en/develop/manuals/userman/gui/viselements/">
-            <header class="tp-content-card-header">
-                <h4>Visual Elements</h4>
-            </header>
-            </a>
             <a class="tp-content-card tp-content-card--small tp-content-card--beta" href="http://127.0.0.1:8000/en/develop/manuals/refmans/">
             <header class="tp-content-card-header">
-                <h4>Reference</h4>
+                <h4>Visual Elements & Reference</h4>
             </header>
             </a>
 

@@ -52,42 +52,6 @@ set class = class ~ " md-header--shadow md-header--lifted" %} {% elif
         </div>
       </div>
 
-      <!-- Color palette -->
-      {% if config.theme.palette %} {% if not config.theme.palette is mapping %}
-      <div class="md-header__color-mode">
-        <form class="md-header__option" data-md-component="palette">
-          {% for option in config.theme.palette %} {% set scheme = option.scheme
-          | d("default", true) %} {% set primary = option.primary | d("indigo",
-          true) %} {% set accent = option.accent | d("indigo", true) %}
-          <input
-            class="md-option"
-            data-md-color-media="{{ option.media }}"
-            data-md-color-scheme="{{ scheme | replace(' ', '-') }}"
-            data-md-color-primary="{{ primary | replace(' ', '-') }}"
-            data-md-color-accent="{{ accent | replace(' ', '-') }}"
-            {% if option.toggle %}
-              aria-label="{{ option.toggle.name }}"
-            {% else %}
-              aria-hidden="true"
-            {% endif %}
-            type="radio"
-            name="__palette"
-            id="__palette_{{ loop.index }}"
-          />
-          {% if option.toggle %}
-          <label
-            class="md-header__button md-icon"
-            title="{{ option.toggle.name }}"
-            for="__palette_{{ loop.index0 or loop.length }}"
-            hidden
-          >
-            {% include ".icons/" ~ option.toggle.icon ~ ".svg" %}
-          </label>
-          {% endif %} {% endfor %}
-        </form>
-      </div>
-      {% endif %} {% endif %}
-
       <!-- Site language selector -->
       {% if config.extra.alternate %}
       <div class="md-header__option">
@@ -132,6 +96,42 @@ set class = class ~ " md-header--shadow md-header--lifted" %} {% elif
       {% if config.repo_url %}
       <div class="md-header__source">{% include "partials/source.html" %}</div>
       {% endif %}
+
+      <!-- Color palette -->
+      {% if config.theme.palette %} {% if not config.theme.palette is mapping %}
+      <div class="md-header__color-mode">
+        <form class="md-header__option" data-md-component="palette">
+          {% for option in config.theme.palette %} {% set scheme = option.scheme
+          | d("default", true) %} {% set primary = option.primary | d("indigo",
+          true) %} {% set accent = option.accent | d("indigo", true) %}
+          <input
+            class="md-option"
+            data-md-color-media="{{ option.media }}"
+            data-md-color-scheme="{{ scheme | replace(' ', '-') }}"
+            data-md-color-primary="{{ primary | replace(' ', '-') }}"
+            data-md-color-accent="{{ accent | replace(' ', '-') }}"
+            {% if option.toggle %}
+              aria-label="{{ option.toggle.name }}"
+            {% else %}
+              aria-hidden="true"
+            {% endif %}
+            type="radio"
+            name="__palette"
+            id="__palette_{{ loop.index }}"
+          />
+          {% if option.toggle %}
+          <label
+            class="md-header__button md-icon"
+            title="{{ option.toggle.name }}"
+            for="__palette_{{ loop.index0 or loop.length }}"
+            hidden
+          >
+            {% include ".icons/" ~ option.toggle.icon ~ ".svg" %}
+          </label>
+          {% endif %} {% endfor %}
+        </form>
+      </div>
+      {% endif %} {% endif %}
     </div>
   </nav>
 </header>
