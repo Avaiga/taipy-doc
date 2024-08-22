@@ -95,6 +95,15 @@
   font-size: var(--md-body-font-size--small);
 }
 
+.md-nav__link.md-nav__link--active .md-ellipsis{
+  background-color: rgba(255, 68, 0, 0.1);
+  color: var(--md-typeset-a-color) !important;
+  width: 100%;
+  border-radius: 0.25rem;
+  padding: 3px;
+}
+
+
 /* ---------- ---------- ---------- HEADER ---------- ---------- ---------- */
 
 .md-header{
@@ -622,7 +631,7 @@ a.tp-pill{
 }
 
 .tp-content-card--small{
-  --tp-content-card-padding: 1rem;
+  --tp-content-card-padding: 0.5rem;
 }
 
 .tp-content-card.tp-content-card--primary{
@@ -662,7 +671,7 @@ a.tp-pill{
 }
 
 .tp-content-card + .tp-content-card{
-  margin-top: 1rem;
+  margin-top: 0.3rem;
 }
 
 .d-flex > .tp-content-card{

@@ -159,18 +159,28 @@ nav:
 
       - "Exposing REST APIs": manuals/userman/rest/index.md
 
-      - "Using Notebooks": manuals/userman/notebooks.md
+    - "Taipy Ecosystem":
+      - "Command-line interface":
+        - "Command-line interface (CLI)": manuals/cli/index.md
+        - "Help": manuals/cli/help.md
+        - "Create": manuals/cli/create.md
+        - "Run": manuals/cli/run.md
+        - "Manage versions": manuals/cli/manage-versions.md
+        - "Version": manuals/cli/version.md
 
-    - "Command-line interface":
-      - "Command-line interface (CLI)": manuals/cli/index.md
-      - "Help": manuals/cli/help.md
-      - "Create": manuals/cli/create.md
-      - "Run": manuals/cli/run.md
-      - "Manage versions": manuals/cli/manage-versions.md
-      - "Version": manuals/cli/version.md
+      - "Taipy Studio":
+        - "Taipy Studio": manuals/studio/index.md
+        - "Building configurations":
+          - "Building configurations": manuals/studio/config/index.md
+          - "Managing configuration files": manuals/studio/config/files.md
+          - "Configuring elements": manuals/studio/config/elements.md
+          - "Graph views": manuals/studio/config/graphview.md
+          - "Text edition": manuals/studio/config/textedition.md
+        - "GUI Markdown support": manuals/studio/gui.md
 
     - "Running & deploying":
       - "Running and deploying Taipy applications": manuals/run-deploy/index.md
+      - "Using Notebooks": manuals/userman/notebooks.md
       - "Running":
         - "Running a Taipy application": manuals/run-deploy/run/index.md
         - "The run() function": manuals/run-deploy/run/running_services.md
@@ -194,16 +204,6 @@ nav:
           - "Deploying on Heroku": manuals/run-deploy/deploy/heroku/index.md
         - "On Databricks":
           - "Deploying on Databricks": manuals/run-deploy/deploy/databricks/index.md
-
-    - "Taipy Studio":
-      - "Taipy Studio": manuals/studio/index.md
-      - "Building configurations":
-        - "Building configurations": manuals/studio/config/index.md
-        - "Managing configuration files": manuals/studio/config/files.md
-        - "Configuring elements": manuals/studio/config/elements.md
-        - "Graph views": manuals/studio/config/graphview.md
-        - "Text edition": manuals/studio/config/textedition.md
-      - "GUI Markdown support": manuals/studio/gui.md
 
     - "Reference":
       - "About Taipy's Reference Manuals": manuals/refmans/index.md
@@ -288,6 +288,9 @@ theme:
         icon: material/toggle-switch
         name: Switch to light mode
   features:
+    - navigation.sections
+    - navigation.tabs.sticky
+    - navigation.tabs
     - navigation.instant
     - navigation.path
     - navigation.indexes
