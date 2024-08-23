@@ -3,6 +3,7 @@ result is passed to a consumer that processes the events. When you register,
 you specify parameters that define the events you want to process. These parameters and the
 registration mechanism allows you to tailor your event consumer to your application's precise
 needs. For example, you can register to:
+
     - All events emitted
     - All operations related to scenarios
     - All operations related to a specific data node
@@ -54,3 +55,5 @@ parameters define the events you want to process, like a topic of interest:
     comments=false
      %}
     ```
+
+To see complete and realistic examples, see the [examples](examples.md) page.
