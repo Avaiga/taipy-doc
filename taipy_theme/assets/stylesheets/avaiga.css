@@ -49,6 +49,7 @@
   --md-sidebar-width: 16rem;
   --md-paper-shadow: 0 0 0 1px var(--md-default-border-color);
   --md-paper-shadow-hover: 0 0 24px var(--md-default-fg-color--lighter);
+  --md-paper-shadow-hover--small: 0 0 12px var(--md-default-fg-color--lighter);
   --tp-content-card-padding: 1.5rem;
   --tp-content-card-image-size: 7.5rem;
   --tp-pill-shadow-active: 0 0 0 1px var(--md-primary-fg-color);
@@ -100,7 +101,7 @@
   color: var(--md-typeset-a-color) !important;
   width: 100%;
   border-radius: 0.25rem;
-  padding: 3px;
+  padding: 0.05rem;
 }
 
 
@@ -632,6 +633,11 @@ a.tp-pill{
 
 .tp-content-card--small{
   --tp-content-card-padding: 0.5rem;
+}
+
+.tp-content-card--small[href]:hover{
+  color: var(--md-default-fg-color);
+  box-shadow: var(--md-paper-shadow-hover--small) !important;
 }
 
 .tp-content-card.tp-content-card--primary{

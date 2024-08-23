@@ -17,13 +17,13 @@ nav:
       - "Fundamentals": tutorials/fundamentals/index.md
       - "Understanding GUI":
         - "Understanding GUI": tutorials/articles/understanding_gui/index.md
-          - "1 - First Web page": tutorials/articles/understanding_gui/step_01/step_01.md
-          - "2 - Visual elements": tutorials/articles/understanding_gui/step_02/step_02.md
-          - "3 - Interactions": tutorials/articles/understanding_gui/step_03/step_03.md
-          - "4 - Charts": tutorials/articles/understanding_gui/step_04/step_04.md
-          - "5 - Python expressions in properties": tutorials/articles/understanding_gui/step_05/step_05.md
-          - "6 - Page layouts": tutorials/articles/understanding_gui/step_06/step_06.md
-          - "7 - Multi-pages, navbars, and menus": tutorials/articles/understanding_gui/step_07/step_07.md
+        - "1 - First Web page": tutorials/articles/understanding_gui/step_01/step_01.md
+        - "2 - Visual elements": tutorials/articles/understanding_gui/step_02/step_02.md
+        - "3 - Interactions": tutorials/articles/understanding_gui/step_03/step_03.md
+        - "4 - Charts": tutorials/articles/understanding_gui/step_04/step_04.md
+        - "5 - Python expressions in properties": tutorials/articles/understanding_gui/step_05/step_05.md
+        - "6 - Page layouts": tutorials/articles/understanding_gui/step_06/step_06.md
+        - "7 - Multi-pages, navbars, and menus": tutorials/articles/understanding_gui/step_07/step_07.md
       - "Scenario management overview": tutorials/articles/scenario_management_overview/index.md
       - "First Realistic application":
         - "First Realistic application": tutorials/articles/complete_application/index.md
