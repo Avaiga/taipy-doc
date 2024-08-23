@@ -89,6 +89,8 @@ This is the list of changes to Taipy releases as they were published.
   edition to the Enterprise edition as it is more suitable for enterprise applications.
 - Removed support for SQL repository. Taipy community edition now only supports the `filesystem`
   repository type.
+- Two scenarios belonging to the same cycle can new have the same tag.<br/>
+  See [issue #1292](https://github.com/Avaiga/taipy/issues/1292)
 
 <h4><strong><code>taipy-templates</code></strong> 4.0.0 </h4>
 
