@@ -150,7 +150,7 @@ For more realistic and advanced use cases, check out our
 [Gallery](../gallery/index.md), or [Manuals](../manuals/index.md) pages.
 
 <div class="tp-row tp-row--gutter-sm">
-  <div class="tp-col-12 tp-col-md-4 d-flex">
+  <div class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--primary" href="../tutorials/articles/understanding_gui/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon--small" src="images/visualize.svg">
@@ -164,7 +164,7 @@ For more realistic and advanced use cases, check out our
     </a>
   </div>
 
-  <div class="tp-col-12 tp-col-md-4 d-flex">
+  <div class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--alpha" href="../tutorials/articles/scenario_management_overview/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon--small" src="images/scenario.svg">
@@ -173,20 +173,6 @@ For more realistic and advanced use cases, check out our
       <div class="tp-content-card-body">
         <p>
           Uncover strategies for effective scenario and data management.
-        </p>
-      </div>
-    </a>
-  </div>
-
-  <div class="tp-col-12 tp-col-md-4 d-flex">
-    <a class="tp-content-card tp-content-card--beta" href="../tutorials">
-      <header class="tp-content-card-header">
-        <img class="tp-content-card-icon--small" src="images/icon-tutorials.svg">
-        <h3>Tutorials</h3>
-      </header>
-      <div class="tp-content-card-body">
-        <p>
-          Follow tutorials to take your Taipy applications further.
         </p>
       </div>
     </a>

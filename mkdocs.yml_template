@@ -11,7 +11,8 @@ nav:
     - "Onboarding":
       - "Getting Started":
         - "Getting Started": getting_started/index.md
-      - "Installation": getting_started/installation.md
+      - "Installation":
+        - "Installation": getting_started/installation.md
 
     - "Fundamentals":
       - "Fundamentals": tutorials/fundamentals/index.md
@@ -35,7 +36,8 @@ nav:
       - "Creating applications":
         - "LLM ChatBot":
           - "LLM ChatBot": tutorials/articles/chatbot/index.md
-        - "RAG ChatBot": tutorials/articles/rag_chatbot/index.md
+        - "RAG ChatBot":
+          - "RAG ChatBot": tutorials/articles/rag_chatbot/index.md
     - "Integration":
         - "Integration": tutorials/integration/index.md
         - "Integrate Third-Party Components": tutorials/articles/3rd_party_components/index.md
@@ -149,7 +151,8 @@ nav:
       - "Scheduler":
         - "Scheduler": manuals/userman/scheduling/index.md
 
-      - "Exposing REST APIs": manuals/userman/rest/index.md
+      - "Exposing REST APIs":
+        - "Exposing REST APIs": manuals/userman/rest/index.md
 
     - "Running & deploying":
       - "Running and deploying Taipy applications": manuals/run-deploy/index.md
@@ -208,7 +211,25 @@ nav:
       - "text": manuals/userman/gui/viselements/generic/text.md
       - "button": manuals/userman/gui/viselements/generic/button.md
       - "selector": manuals/userman/gui/viselements/generic/selector.md
-      - "chart": manuals/userman/gui/viselements/generic/chart.md
+      - "chart": 
+        - "chart": manuals/userman/gui/viselements/generic/chart.md
+        - "line": manuals/userman>gui/viselements/generic/charts/line.md
+        - "scatter": manuals/userman>gui/viselements/generic/charts/scatter.md
+        - "bar": manuals/userman/gui/viselements/generic/charts/bar.md
+        - "pie": manuals/userman/gui/viselements/generic/charts/pie.md
+        - "histogram": manuals/userman/gui/viselements/generic/charts/histogram.md
+        - "bubble": manuals/userman/gui/viselements/generic/charts/bubble.md
+        - "polar": manuals/userman/gui/viselements/generic/charts/polar.md
+        - "radar": manuals/userman/gui/viselements/generic/charts/radar.md
+        - "treemap": manuals/userman/gui/viselements/generic/charts/treemap.md
+        - "waterfall": manuals/userman/gui/viselements/generic/charts/waterfall.md
+        - "heatmap": manuals/userman/gui/viselements/generic/charts/heatmap.md
+        - "continuous-error": manuals/userman/gui/viselements/generic/charts/continuous-error.md
+        - "error-bars": manuals/userman/gui/viselements/generic/charts/error-bars.md
+        - "filled-area": manuals/userman/gui/viselements/generic/charts/filled-area.md
+        - "funnel": manuals/userman/gui/viselements/generic/charts/funnel.md
+        - "gantt": manuals/userman/gui/viselements/generic/charts/gantt.md
+        - "map": manuals/userman/gui/viselements/generic/charts/map.md
       - "input": manuals/userman/gui/viselements/generic/input.md
       - "number": manuals/userman/gui/viselements/generic/number.md
       - "slider": manuals/userman/gui/viselements/generic/slider.md
@@ -231,7 +252,7 @@ nav:
       - "data_node": manuals/userman/gui/viselements/corelements/data_node.md
       - "job_selector": manuals/userman/gui/viselements/corelements/job_selector.md
     - "Blocks":
-      - "part": manuals/userman/gui/viselements/generic/selector.md
+      - "part": manuals/userman/gui/viselements/generic/part.md
       - "layout": manuals/userman/gui/viselements/generic/layout.md
       - "expandable": manuals/userman/gui/viselements/generic/expandable.md
       - "dialog": manuals/userman/gui/viselements/generic/dialog.md
