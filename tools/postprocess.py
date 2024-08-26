@@ -159,7 +159,7 @@ def on_post_build(env):
 
 
         <div style="margin-bottom: 1rem;">
-            <a class="tp-content-card tp-content-card--small tp-content-card--primary" href="{site_url}/getting_started/">
+            <a class="tp-content-card tp-content-card--small tp-content-card--primary" href="{site_url}getting_started/">
             <header class="tp-content-card-header">
                 <h4>Tutorials</h4>
             </header>
