@@ -174,7 +174,11 @@ def on_post_build(env):
                 <h4>Visual Elements & Reference</h4>
             </header>
             </a>
-
+            <a class="tp-content-card tp-content-card--small tp-content-card--alpha" href="{site_url}gallery/">
+            <header class="tp-content-card-header">
+                <h4>Gallery</h4>
+            </header>
+            </a>
         </div>
 
 """,

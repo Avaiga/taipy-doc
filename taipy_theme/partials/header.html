@@ -82,9 +82,7 @@ set class = class ~ " md-header--shadow md-header--lifted" %} {% elif
       </div>
       {% endif %}
       <!-- Navigation tabs (sticky) -->
-      {% if "navigation.tabs.sticky" in features %} {% if "navigation.tabs" in
-      features %} {% include "partials/tabs.html" %} {% endif %} {% endif %}
-      <!-- Button to open search modal -->
+
       {% if "material/search" in config.plugins %}
       <label class="md-header__button md-icon" for="__search">
         {% include ".icons/material/magnify.svg" %}
