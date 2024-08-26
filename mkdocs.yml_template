@@ -57,7 +57,7 @@ nav:
     - "User interface":
       - "User interface": manuals/userman/gui/index.md
       - "Visual elements":
-        - "Visual elements": manuals/userman/gui/viselements/index.md
+        - "Visual elements": manuals/userman/gui/viselements/introduction.md
       - "Styling":
           - "Styling": manuals/userman/gui/styling/index.md
           - "The Stylekit": manuals/userman/gui/styling/stylekit.md
