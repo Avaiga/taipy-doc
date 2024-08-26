@@ -16,9 +16,7 @@ DEST_DIR_NAME = "taipy"
 REPOS = ["taipy"]
 PRIVATE_REPOS = ["enterprise"]
 
-OPTIONAL_PACKAGES = {
-    "gui": ["pyarrow", "pyngrok", "python-magic", "python-magic-bin"]
-}
+OPTIONAL_PACKAGES = {"gui": ["pyarrow", "pyngrok", "python-magic", "python-magic-bin"]}
 
 args = CLI(os.path.basename(__file__), REPOS).get_args()
 
@@ -26,8 +24,9 @@ args = CLI(os.path.basename(__file__), REPOS).get_args()
 mkdocs_yml_version = read_doc_version_from_mkdocs_yml_template_file(ROOT_DIR)
 
 # Gather version information for each repository
-repo_defs = {repo if repo == "taipy" else
-             f"taipy-{repo}": {"version": "local", "tag": None} for repo in REPOS + PRIVATE_REPOS}
+repo_defs = {
+    repo if repo == "taipy" else f"taipy-{repo}": {"version": "local", "tag": None} for repo in REPOS + PRIVATE_REPOS
+}
 CATCH_VERSION_RE = re.compile(r"(^\d+\.\d+?)(?:(\.\d+)(\..*)?)?|develop|local$")
 for version in args.version:
     repo = None
@@ -40,7 +39,7 @@ for version in args.version:
             repo = version[:colon]
             if not repo.startswith("taipy"):
                 repo = f"taipy-{repo}"
-            version = version[colon + 1:]
+            version = version[colon + 1 :]
         except ValueError:
             pass
         version_match = CATCH_VERSION_RE.fullmatch(version)
@@ -69,8 +68,8 @@ if args.no_pull and all(v["version"] == "local" for v in repo_defs.values()):
     git_command = None
 else:
     git_path = shutil.which(git_command)
-    if git_path is None or subprocess.run(f"\"{git_path}\" --version", shell=True, capture_output=True) is None:
-        raise IOError(f"Couldn't find command \"{git_command}\"")
+    if git_path is None or subprocess.run(f'"{git_path}" --version', shell=True, capture_output=True) is None:
+        raise IOError(f'Couldn\'t find command "{git_command}"')
     git_command = git_path
 
 # Check that directory, branches and tags exist for each repository
@@ -91,10 +90,9 @@ for repo in repo_defs.keys():
                 raise IOError(f"Repository '{repo}' must be cloned in \"{TOP_DIR}\".")
     elif version == "develop":
         with GitContext(repo, PRIVATE_REPOS):
-            cmd = subprocess.run(f"\"{git_path}\" ls-remote -q -h {github_root}{repo}.git",
-                                 shell=True,
-                                 capture_output=True,
-                                 text=True)
+            cmd = subprocess.run(
+                f'"{git_path}" ls-remote -q -h {github_root}{repo}.git', shell=True, capture_output=True, text=True
+            )
             if cmd.returncode:
                 if repo in PRIVATE_REPOS or repo[6:] in PRIVATE_REPOS:
                     repo_defs[repo]["skip"] = True
@@ -103,10 +101,12 @@ for repo in repo_defs.keys():
                     raise SystemError(f"Problem with {repo}:\nOutput: {cmd.stdout}\nError: {cmd.stderr}")
     else:
         with GitContext(repo, PRIVATE_REPOS):
-            cmd = subprocess.run(f"\"{git_path}\" ls-remote --exit-code --heads {github_root}{repo}.git",
-                                 shell=True,
-                                 capture_output=True,
-                                 text=True)
+            cmd = subprocess.run(
+                f'"{git_path}" ls-remote --exit-code --heads {github_root}{repo}.git',
+                shell=True,
+                capture_output=True,
+                text=True,
+            )
             if cmd.returncode:
                 if repo in PRIVATE_REPOS or repo[6:] in PRIVATE_REPOS:
                     repo_defs[repo]["skip"] = True
@@ -117,10 +117,12 @@ for repo in repo_defs.keys():
                 raise ValueError(f"No branch 'release/{version}' in repository '{repo}'.")
             tag = repo_defs[repo]["tag"]
             if tag:
-                cmd = subprocess.run(f"\"{git_path}\" ls-remote -t --refs {github_root}{repo}.git",
-                                     shell=True,
-                                     capture_output=True,
-                                     text=True)
+                cmd = subprocess.run(
+                    f'"{git_path}" ls-remote -t --refs {github_root}{repo}.git',
+                    shell=True,
+                    capture_output=True,
+                    text=True,
+                )
                 if f"refs/tags/{tag}\n" not in cmd.stdout:
                     raise ValueError(f"No tag '{tag}' in repository '{repo}'.")
 
@@ -128,9 +130,12 @@ if args.check:
     print("Fetch should perform properly with the following settings:")
     for repo in repo_defs.keys():
         if not repo_defs[repo].get("skip", False):
-            version = repo_defs[repo]['version']
-            version = "(local)" if version == "local" else \
-                f"branch:{version if version == 'develop' else f'release/{version}'}"
+            version = repo_defs[repo]["version"]
+            version = (
+                "(local)"
+                if version == "local"
+                else f"branch:{version if version == 'develop' else f'release/{version}'}"
+            )
             tag = repo_defs[repo]["tag"]
             if tag:
                 version += f" tag:{tag}"
@@ -189,24 +194,30 @@ def move_files(repo: str, src_path: str):
     if repo.startswith("taipy-getting-started"):
         gs_dir = os.path.join(ROOT_DIR, "docs", "getting_started", repo[6:])
         # safe_rmtree(os.path.join(gs_dir, "src"))
-        for step_dir in [step_dir for step_dir in os.listdir(gs_dir) if
-                         step_dir.startswith("step_") and os.path.isdir(os.path.join(gs_dir, step_dir))]:
+        for step_dir in [
+            step_dir
+            for step_dir in os.listdir(gs_dir)
+            if step_dir.startswith("step_") and os.path.isdir(os.path.join(gs_dir, step_dir))
+        ]:
             safe_rmtree(os.path.join(gs_dir, step_dir))
-        for step_dir in [step_dir for step_dir in os.listdir(src_path) if
-                         step_dir.startswith("step_") and os.path.isdir(os.path.join(src_path, step_dir))]:
+        for step_dir in [
+            step_dir
+            for step_dir in os.listdir(src_path)
+            if step_dir.startswith("step_") and os.path.isdir(os.path.join(src_path, step_dir))
+        ]:
             shutil.copytree(os.path.join(src_path, step_dir), os.path.join(gs_dir, step_dir))
         safe_rmtree(os.path.join(gs_dir, "src"))
         shutil.copytree(os.path.join(src_path, "src"), os.path.join(gs_dir, "src"))
         shutil.copy(os.path.join(src_path, "index.md"), os.path.join(gs_dir, "index.md"))
         saved_dir = os.getcwd()
         os.chdir(os.path.join(ROOT_DIR, "docs", "getting_started", repo[6:]))
-        subprocess.run(f"python {os.path.join(src_path, 'generate_notebook.py')}",
-                       shell=True,
-                       capture_output=True,
-                       text=True)
+        subprocess.run(
+            f"python {os.path.join(src_path, 'generate_notebook.py')}", shell=True, capture_output=True, text=True
+        )
         os.chdir(saved_dir)
     else:
         try:
+
             def copy_source(src_path: str, repo: str):
                 def copy(item: str, src: str, dst: str, rel_path: str):
                     full_src = os.path.join(src, item)
@@ -220,16 +231,19 @@ def move_files(repo: str, src_path: str):
                         for sub_item in os.listdir(full_src):
                             copy(sub_item, full_src, full_dst, rel_path)
                     elif any(item.endswith(ext) for ext in [".py", ".pyi", ".json", ".ipynb"]):
-                        if os.path.isfile(full_dst): # File exists - compare
+                        if os.path.isfile(full_dst):  # File exists - compare
                             with open(full_src, "r") as f:
                                 src = f.read()
                             with open(full_dst, "r") as f:
                                 dst = f.read()
                             if src != dst:
-                                raise FileExistsError(f"File {rel_path}/{item} "
-                                                      f"already exists and is different (copying repository {repo})")
+                                raise FileExistsError(
+                                    f"File {rel_path}/{item} "
+                                    f"already exists and is different (copying repository {repo})"
+                                )
                         else:
                             shutil.copy(full_src, full_dst)
+
                 dest_path = os.path.join(ROOT_DIR, "taipy")
                 if not os.path.exists(dest_path):
                     os.makedirs(dest_path)
@@ -239,6 +253,7 @@ def move_files(repo: str, src_path: str):
                     sources_path = os.path.join(src_path, "src", "taipy")
                 for item in os.listdir(sources_path):
                     copy(item, sources_path, dest_path, "")
+
             copy_source(src_path, repo)
 
             # Copy Taipy GUI front end code
@@ -255,6 +270,7 @@ def move_files(repo: str, src_path: str):
             shutil.rmtree(tmp_dir)
             """
 
+
 frontend_dir = os.path.join(ROOT_DIR, "taipy-fe")
 if os.path.isdir(os.path.join(frontend_dir, "node_modules")):
     shutil.move(os.path.join(frontend_dir, "node_modules"), os.path.join(ROOT_DIR, "fe_node_modules"))
@@ -264,14 +280,14 @@ if os.path.isdir(os.path.join(frontend_dir)):
 for repo in repo_defs.keys():
     if repo_defs[repo].get("skip", False):
         continue
-    version = repo_defs[repo]['version']
+    version = repo_defs[repo]["version"]
     print(f"Fetching file for repository {repo} ({version})", flush=True)
     if version == "local":
-        src_path = repo_defs[repo]['path']
+        src_path = repo_defs[repo]["path"]
         if not args.no_pull:
             cwd = os.getcwd()
             os.chdir(src_path)
-            subprocess.run(f"\"{git_path}\" pull", shell=True, capture_output=True, text=True)
+            subprocess.run(f'"{git_path}" pull', shell=True, capture_output=True, text=True)
             os.chdir(cwd)
         print(f"    Copying from {src_path}...", flush=True)
         move_files(repo, src_path)
@@ -280,29 +296,32 @@ for repo in repo_defs.keys():
         if version != "develop":
             version = f"release/{version}"
         print("    Cloning...", flush=True)
-        subprocess.run(f"\"{git_path}\" clone -b {version} {github_root}{repo}.git {clone_dir}", shell=True,
-                       capture_output=True, text=True)
-        tag = repo_defs[repo]['tag']
+        subprocess.run(
+            f'"{git_path}" clone -b {version} {github_root}{repo}.git {clone_dir}',
+            shell=True,
+            capture_output=True,
+            text=True,
+        )
+        tag = repo_defs[repo]["tag"]
         if tag:
             # Checkout tag version
             saved_dir = os.getcwd()
             os.chdir(clone_dir)
-            subprocess.run(f"\"{git_path}\" checkout {tag}", shell=True, capture_output=True, text=True)
+            subprocess.run(f'"{git_path}" checkout {tag}', shell=True, capture_output=True, text=True)
             os.chdir(saved_dir)
         move_files(repo, clone_dir)
-
 
         # For some reason, we need to protect the removal of the clone dirs...
         # See https://stackoverflow.com/questions/1213706/what-user-do-python-scripts-run-as-in-windows
         def handleRemoveReadonly(func, path, exc):
             import errno
             import stat
+
             if func == os.unlink and exc[1].errno == errno.EACCES:
                 os.chmod(path, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)  # 0777
                 func(path)
             else:
                 raise
-
 
         shutil.rmtree(clone_dir, onerror=handleRemoveReadonly)
 
@@ -323,7 +342,7 @@ def run(*services: t.Union[Gui, Rest, Core], **kwargs) -> t.Optional[t.Union[Gui
     A Taipy service is an instance of a class that runs code as a web application.
 
     Parameters:
-        services (Union[`Gui^`, `Rest^`, `Core^`]): Services to run.<br/>
+        services (Union[`Gui^`, `Rest^`, `Orchestrator^`]): Services to run.<br/>
             If several services are provided, all the services run simultaneously. If this is empty or set to None,
             this method does nothing.
         **kwargs (dict[str, any]): Other parameters to provide to the services.
@@ -363,16 +382,15 @@ if pipfile_path:
                         version = list(versions.keys())[0]
                         if package == "modin":
                             # Remove 'extras' from modin package requirements
-                            version = re.sub(r"\{\s*extras.*?,\s*version\s*=\s*(.*?)\s*}",
-                                             r"\1",
-                                             version)
+                            version = re.sub(r"\{\s*extras.*?,\s*version\s*=\s*(.*?)\s*}", r"\1", version)
                         new_pipfile.write(f"{package} = {version}\n")
                         if package not in legacy_pipfile_packages:
                             pipfile_changes.append(f"Package '{package}' added ({version})")
                         elif legacy_pipfile_packages[package] != version:
                             pipfile_changes.append(
                                 f"Package '{package}' version changed from "
-                                f"{legacy_pipfile_packages[package]} to {version}")
+                                f"{legacy_pipfile_packages[package]} to {version}"
+                            )
                             del legacy_pipfile_packages[package]
                         else:
                             del legacy_pipfile_packages[package]
