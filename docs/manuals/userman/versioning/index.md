@@ -19,7 +19,7 @@ Taipy proposes a **version management system** to:
 ## Modes
 
 Taipy requires a *mode* to run. A mode corresponds to how Taipy behaves at runtime regarding old
-entities instantiated in previous runs. There are three runtime modes that can be used when running
+entities instantiated in previous runs. There are different runtime modes that can be used when running
 a Taipy application.
 
 - In development mode (default mode), Taipy drops all old entities before running the application.
@@ -38,6 +38,10 @@ a Taipy application.
   the current run or in a previous one. It is designed to run an application in a production
   environment with existing entities created in previous runs. For more information, please refer to
   [production mode](production_mode.md).
+
+    !!! warning "Available in Taipy Enterprise edition"
+
+        The production mode is relevant only to the Enterprise edition of Taipy.
 
 ## Versions
 
