@@ -11,8 +11,7 @@ nav:
     - "Onboarding":
       - "Getting Started":
         - "Getting Started": getting_started/index.md
-      - "Installation":
-        - "Installation": getting_started/installation.md
+      - "Installation": getting_started/installation.md
 
     - "Fundamentals":
       - "Fundamentals": tutorials/fundamentals/index.md
@@ -213,8 +212,8 @@ nav:
       - "selector": manuals/userman/gui/viselements/generic/selector.md
       - "chart": 
         - "chart": manuals/userman/gui/viselements/generic/chart.md
-        - "line": manuals/userman>gui/viselements/generic/charts/line.md
-        - "scatter": manuals/userman>gui/viselements/generic/charts/scatter.md
+        - "line": manuals/userman/gui/viselements/generic/charts/line.md
+        - "scatter": manuals/userman/gui/viselements/generic/charts/scatter.md
         - "bar": manuals/userman/gui/viselements/generic/charts/bar.md
         - "pie": manuals/userman/gui/viselements/generic/charts/pie.md
         - "histogram": manuals/userman/gui/viselements/generic/charts/histogram.md
