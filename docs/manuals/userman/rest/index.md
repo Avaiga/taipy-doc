@@ -50,7 +50,7 @@ To expose the Taipy REST APIs, the Taipy REST server must first be started.
     * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
     ```
 
-!!! note "When running the Taipy REST server, you will also run `Core^`"
+!!! note "When running the Taipy REST server, you will also run `Orchestrator^`"
 
 !!! info "Running the REST service"
 
