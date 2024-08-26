@@ -336,7 +336,7 @@ with open(init_path, "a") as init:
     run_method = """
 import typing as t
 
-def run(*services: t.Union[Gui, Rest, Core], **kwargs) -> t.Optional[t.Union[Gui, Rest, Core]]:
+def run(*services: t.Union[Gui, Rest, Orchestrator], **kwargs) -> t.Optional[t.Union[Gui, Rest, Orchestrator]]:
     \"\"\"Run one or multiple Taipy services.
 
     A Taipy service is an instance of a class that runs code as a web application.
