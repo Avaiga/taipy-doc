@@ -1,5 +1,5 @@
 import taipy as tp
-from taipy import Config, Core, Gui
+from taipy import Config, Orchestrator, Gui
 import taipy.gui.builder as tgb
 
 
@@ -22,9 +22,9 @@ if __name__ == "__main__":
             tgb.data_node_selector("{data_node}")
             tgb.data_node("{data_node}")
 
-    core = Core()
+    orchestrator = Orchestrator()
     gui = Gui(page)
-    core.run()
+    orchestrator.run()
     scenario = tp.create_scenario(config=scenario_cfg)
     # Every 10 seconds, submit the scenario
     tp.Scheduler.every(10).seconds.do_submit(scenario)
