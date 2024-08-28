@@ -169,7 +169,7 @@ def on_post_build(env):
                 <h4>User Manual</h4>
             </header>
             </a>
-            <a class="tp-content-card tp-content-card--small tp-content-card--beta" href="{site_url}manuals/userman/refmans/">
+            <a class="tp-content-card tp-content-card--small tp-content-card--beta" href="{site_url}manuals/refmans/">
             <header class="tp-content-card-header">
                 <h4>Reference & Visual Elements</h4>
             </header>
