@@ -166,12 +166,12 @@ def on_post_build(env):
             </a>
             <a class="tp-content-card tp-content-card--small tp-content-card--accent" href="{site_url}manuals/userman/">
             <header class="tp-content-card-header">
-                <h4>Manuals</h4>
+                <h4>User Manual</h4>
             </header>
             </a>
-            <a class="tp-content-card tp-content-card--small tp-content-card--beta" href="{site_url}manuals/userman/gui/viselements/">
+            <a class="tp-content-card tp-content-card--small tp-content-card--beta" href="{site_url}manuals/userman/refmans/">
             <header class="tp-content-card-header">
-                <h4>Visual Elements & Reference</h4>
+                <h4>Reference & Visual Elements</h4>
             </header>
             </a>
             <a class="tp-content-card tp-content-card--small tp-content-card--alpha" href="{site_url}gallery/">

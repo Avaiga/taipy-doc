@@ -8,10 +8,7 @@ repo_name: taipy
 copyright: © 2021-[YEAR] Avaiga
 nav:
   - "Tutorials":
-    - "Onboarding":
-      - "Getting Started":
-        - "Getting Started": getting_started/index.md
-      - "Installation": getting_started/installation.md
+    - "Getting Started": getting_started/index.md
 
     - "Fundamentals":
       - "Fundamentals": tutorials/fundamentals/index.md
@@ -50,15 +47,11 @@ nav:
       - "Charts for Large Data": tutorials/articles/decimator/index.md
 
 
-  - "Manuals":
+  - "User Manual":
     - "About Taipy's User Manuals": manuals/userman/index.md
 
     - "User interface":
       - "User interface": manuals/userman/gui/index.md
-      - "Visual elements": manuals/userman/gui/viselements/introduction.md
-      - "Styling":
-        - "Styling": manuals/userman/gui/styling/index.md
-        - "The Stylekit": manuals/userman/gui/styling/stylekit.md
       - "Pages":
         - "Pages": manuals/userman/gui/pages/index.md
         - "Navigate between pages": manuals/userman/gui/pages/navigate/index.md
@@ -66,8 +59,16 @@ nav:
         - "Dialogs": manuals/userman/gui/pages/dialog/index.md
         - "Panes": manuals/userman/gui/pages/pane/index.md
         - "Advanced": manuals/userman/gui/pages/advanced/index.md
+      - "Visual elements": manuals/userman/gui/viselements/introduction.md
       - "Binding variables": manuals/userman/gui/binding.md
-      - "Callbacks": manuals/userman/gui/callbacks.md
+      - "Callbacks":
+        - "Callbacks": manuals/userman/gui/callbacks/index.md
+        - "Global and Local callbacks": manuals/userman/gui/callbacks/global_and_local_callbacks/index.md
+        - "Asynchronous callbacks": manuals/userman/gui/callbacks/asynchronous_callbacks/index.md
+        - "Core events": manuals/userman/gui/callbacks/core_events/index.md
+      - "Styling":
+        - "Styling": manuals/userman/gui/styling/index.md
+        - "The Stylekit": manuals/userman/gui/styling/stylekit.md
       - "Notifications": manuals/userman/gui/notifications.md
       - "Extension libraries":
         - "Extension libraries": manuals/userman/gui/extension/index.md
@@ -182,7 +183,7 @@ nav:
           - "Deploying on Databricks": manuals/run-deploy/deploy/databricks/index.md
 
 
-    - "Taipy Ecosystem":
+    - "Ecosystem":
       - "Command-line interface":
         - "Command-line interface (CLI)": manuals/cli/index.md
         - "Help": manuals/cli/help.md
@@ -209,7 +210,8 @@ nav:
       - "text": manuals/userman/gui/viselements/generic/text.md
       - "button": manuals/userman/gui/viselements/generic/button.md
       - "selector": manuals/userman/gui/viselements/generic/selector.md
-      - "chart": manuals/userman/gui/viselements/generic/chart.md
+      - "chart":
+        - "chart": manuals/userman/gui/viselements/generic/chart.md
         - "line": manuals/userman/gui/viselements/generic/charts/line.md
         - "scatter": manuals/userman/gui/viselements/generic/charts/scatter.md
         - "bar": manuals/userman/gui/viselements/generic/charts/bar.md
@@ -283,8 +285,8 @@ nav:
       - "Drift Detection": gallery/articles/drift_detection/index.md
     - "LLM":
       - "LLM": gallery/llm/index.md
-      - "LLM Chatbot" : gallery/articles/chatbot/index.md
-      - "TalkToTaipy" : gallery/articles/talk_to_taipy/index.md
+      - "LLM Chatbot": gallery/articles/chatbot/index.md
+      - "TalkToTaipy": gallery/articles/talk_to_taipy/index.md
       - "Vision ChatBot": gallery/articles/vision_chatbot/index.md
       - "RAG ChatBot": gallery/articles/rag_chatbot/index.md
       - "Sentiment Analysis": gallery/articles/sentiment_analysis/index.md
@@ -294,7 +296,7 @@ nav:
       - "COVID Dashboard": gallery/articles/covid_dashboard/index.md
       - "Industry Distribution": gallery/articles/industry_agglom/index.md
       - "Image Classification": gallery/articles/image_classif/index.md
-      - "Realtime Pollution Dashboard" : gallery/articles/pollution_sensors/index.md
+      - "Realtime Pollution Dashboard": gallery/articles/pollution_sensors/index.md
     - "Other":
       - "Other": gallery/other/index.md
       - "Background Remover": gallery/articles/background_remover/index.md
