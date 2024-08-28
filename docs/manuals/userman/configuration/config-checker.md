@@ -34,8 +34,9 @@ Here is the list of the possible issues that the checker could return:
 - An `ERROR` issue is created if the `function` parameter of a `TaskConfig^` is not a callable function.
 - An `ERROR` issue is created if one of the tasks provided in the `sequences` parameters does not does not exist in
   the corresponding list of tasks in `tasks` parameter of the `ScenarioConfig^`.
-- An `ERROR` issue is created if a `ScenarioConfig^` has no task configuration defined or does not correspond to a
-  `TaskConfig` or a list of `TaskConfig^`.
+- An `ERROR` issue is created if a `ScenarioConfig^` has no task configuration defined.
+- An `ERROR` issue is created if any item of a `ScenarioConfig^` task list does not 
+  correspond to a `TaskConfig^`.
 - A `ERROR` issue is created if a `ScenarioConfig^` has no additional data node configuration defined or an additional
   does not correspond to a `DataNodeConfig` or a list of `DataNodeConfig^`.
 - An `ERROR` issue is created if any `DataNodeConfig^` or `TaskConfig^` or sequence of the `ScenarioConfig^` has the same name as
