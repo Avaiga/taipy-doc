@@ -209,8 +209,7 @@ nav:
       - "text": manuals/userman/gui/viselements/generic/text.md
       - "button": manuals/userman/gui/viselements/generic/button.md
       - "selector": manuals/userman/gui/viselements/generic/selector.md
-      - "chart": 
-        - manuals/userman/gui/viselements/generic/chart.md
+      - "chart": manuals/userman/gui/viselements/generic/chart.md
         - "line": manuals/userman/gui/viselements/generic/charts/line.md
         - "scatter": manuals/userman/gui/viselements/generic/charts/scatter.md
         - "bar": manuals/userman/gui/viselements/generic/charts/bar.md
