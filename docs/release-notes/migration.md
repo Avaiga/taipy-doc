@@ -11,7 +11,7 @@ This documentation page lists the migration paths of Taipy releases as they were
     place is now in third place and contains an *action* key that is set to the action name if you
     used to use *action*.
 
-2. In Taipy Core 3.0 we deprecated the `pipeline` concept in favor of
+2. In Taipy 3.0 we deprecated the `pipeline` concept in favor of
     [sequence](../manuals/userman/sdm/sequence/index.md). This also means that `configure_pipeline`
     from Taipy Config was removed, making it necessary to update your config code. Take for
     instance the following config on `Taipy 2.4`:
@@ -53,7 +53,7 @@ This documentation page lists the migration paths of Taipy releases as they were
 # From 2.0 to 2.1
 
 In Taipy version 2.1, the version management system has been introduced. For applications
-created with a Taipy Core version &#8804 2.0, the first time it runs with version 2.1 or later,
+created with a Taipy version &#8804 2.0, the first time it runs with version 2.1 or later,
 no version exists, and so legacy entities are not attached to any version. The overall principle
 is to create a version the first time the application runs with Taipy 2.1 or later and to assign
 all the old entities to this version. Depending on the mode used to run the application,

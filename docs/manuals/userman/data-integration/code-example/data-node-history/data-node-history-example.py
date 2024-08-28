@@ -21,7 +21,7 @@ if __name__ == "__main__":
     data_node.write(100, editor="John", comment="Manual edition: 100", extra="extra data")
 
     # Submit the scenario so that the data node is written again through a job
-    tp.Core().run()
+    tp.Orchestrator().run()
     scenario.submit()
 
     print(data_node.edits)

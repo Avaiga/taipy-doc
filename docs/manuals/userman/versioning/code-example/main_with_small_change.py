@@ -12,6 +12,6 @@ if __name__ == "__main__":
     task_cfg = Config.configure_task("example_algorithm", example_algorithm, input_cfg, output_cfg)
     scenario_cfg = Config.configure_scenario("my_scenario", [task_cfg])
 
-    tp.Core().run()
+    tp.Orchestrator().run()
     tp.create_scenario(scenario_cfg)
     print(f"Number of scenarios: {len(tp.get_scenarios())}")

@@ -92,8 +92,8 @@ it is possible to export them with the last command.
 ...
 
 if __name__ == "__main__":
-    # Run of the Core service
-    tp.Core().run()
+    # Run of the Orchestrator service
+    tp.Orchestrator().run()
 
     # Get a scenario by id
     scenario_retrieved = tp.get(scenario.id)
@@ -150,7 +150,7 @@ if __name__ == "__main__":
     <|{scenario}|scenario|>
     <|{scenario}|scenario_dag|>
     """
-    tp.Core().run()
+    tp.Orchestrator().run()
     Gui(scenario_md).run()
 ```
 

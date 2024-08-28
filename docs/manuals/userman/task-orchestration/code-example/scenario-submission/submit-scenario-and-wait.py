@@ -3,7 +3,7 @@ import my_config
 
 
 if __name__ == "__main__":
-    tp.Core().run()
+    tp.Orchestrator().run()
 
     scenario = tp.create_scenario(my_config.monthly_scenario_cfg)
 

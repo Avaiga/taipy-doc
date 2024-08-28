@@ -10,7 +10,7 @@ In *development* mode, Taipy automatically deletes old entities attached to a pr
 version before running the application. This ensures a fresh start for the application. When running
 an application in development mode, a development version is created.
 
-In the following, we consider a basic Taipy Core application `main.py`:
+In the following, we consider a basic Taipy application `main.py` using scenario and data management:
 
 ```python linenums="1" title="main.py"
 {%
@@ -19,7 +19,7 @@ comments=false
 %}
 ```
 
-By default, a Taipy Core application runs in development mode. You can also explicitly define the
+By default, a Taipy application runs in development mode. You can also explicitly define the
 development mode by running your Taipy application with *--development* or *-dev* option on the CLI.
 
 ```console
@@ -34,27 +34,27 @@ Version number                         Mode                   Creation date
 ```
 
 In the example above, the `taipy run main.py` command runs the application in development mode. The
-command `taipy manage-versions --list` lists all versions of your current Taipy Core application
+command `taipy manage-versions --list` lists all versions of your current Taipy application
 (see the [Manage versions on Taipy CLI page](../../cli/manage-versions.md) for more details).
 
 The output on the console indicates that all entities of the development version
 `9b01399c-67e4-41a4-83d3-121f7210d4e7` are deleted before running the application.
 
-!!! info "Taipy Core application in Notebook environment."
+!!! info "Taipy application in Notebook environment."
 
     In a Notebook environment, development mode is applied by default when the run method of
-    the Core service is called.
+    the Orchestrator service is called.
 
-    This means all entities of the development version are cleaned every time a Core service is
-    run in a code cell.
+    This means all entities of the development version are cleaned every time an Orchestrator
+    service is run in a code cell.
 
-    To run and stop a Core service instance, you can use the `run()` and `stop()` methods.
+    To run and stop an Orchestrator service instance, you can use the `run()` and `stop()` methods.
 
     ```python linenums="1"
-    from taipy import Core
+    from taipy import Orchestrator
 
-    core = Core()
-    core.run()
+    orchestrator = Orchestrator()
+    orchestrator.run()
     ...
-    core.stop()
+    orchestrator.stop()
     ```

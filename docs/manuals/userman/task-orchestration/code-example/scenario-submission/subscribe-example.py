@@ -20,7 +20,7 @@ if __name__ == "__main__":
     scenario_1 = Config.configure_scenario("my_scenario", [task_1, task_2])
     scenario_2 = Config.configure_scenario("my_scenario", [task_1, task_2])
 
-    tp.Core().run()
+    tp.Orchestrator().run()
 
     params = ["my_param_1", 42]
 

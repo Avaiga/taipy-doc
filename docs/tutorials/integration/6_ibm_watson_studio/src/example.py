@@ -46,7 +46,7 @@ class WatsonStudio:
 
     def run_and_get_results(self, job_id, payload, timeout=BASIC_TIMEOUT):
         run_id = self.start_job(job_id, payload)
-        
+
         for _ in range(timeout):
             status = self.get_job_run_status(job_id, run_id)
             if status.upper() not in ['STARTING', 'PENDING', 'RUNNING']:
@@ -90,13 +90,12 @@ scenario_cfg = Config.configure_scenario("scenario", task_configs=[task_databric
 
 
 # main.py
-import taipy as tp 
+import taipy as tp
 
 if __name__ == "__main__":
-    tp.Core().run()
+    tp.Orchestrator().run()
 
     scenario = tp.create_scenario(scenario_cfg)
 
     scenario.submit()
     print(scenario.result.read())
-    

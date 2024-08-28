@@ -28,6 +28,6 @@ pages = {
 
 
 if __name__ == "__main__":
-    tp.Core().run()
+    tp.Orchestrator().run()
     gui = Gui(pages=pages)
     gui.run(title="Taipy Application")

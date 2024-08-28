@@ -10,8 +10,8 @@ img: images/icon-code.svg
 
 ![Configuration](images/config.svg){ width=90% : .tp-image-border }
 
-Taipy offers a way to compare data nodes across scenarios by including a function directly in the 
-configuration of the scenario. This is particularly useful to visualize the differences between 
+Taipy offers a way to compare data nodes across scenarios by including a function directly in the
+configuration of the scenario. This is particularly useful to visualize the differences between
 scenarios and make decision upon it.
 
 [Download the code](./src/scenario_comparison.py){: .tp-btn target='blank' }
@@ -20,7 +20,7 @@ scenarios and make decision upon it.
 
 **Step 1:** Declare data nodes on which the comparison functions are applied.
 
-In this example, we want to apply a comparison to the '_revenues_' Data Node. It is indicated in 
+In this example, we want to apply a comparison to the '_revenues_' Data Node. It is indicated in
 the comparators parameter of the `configure_scenario`.
 
 ```python
@@ -34,7 +34,7 @@ scenario_cfg = Config.configure_scenario(
 
 **Step 2:** Implement the comparison function (`compare_function()`) used above.
 
-_revenues_ is the list of the Output (*revenues*) Data Nodes from all scenarios passed in 
+_revenues_ is the list of the Output (*revenues*) Data Nodes from all scenarios passed in
 the comparator. We iterate through it to compare scenarios.
 
 ```python
@@ -49,8 +49,8 @@ Now, the `compare_scenarios` can be used within Taipy.
 
 ```python
 if __name__ == "__main__":
-    core = tp.Core()
-    core.run()
+    orchestrator = tp.Orchestrator()
+    orchestrator.run()
 
     # Create scenarios with different pricing strategies
     scenario_1 = tp.create_scenario(scenario_cfg)
@@ -161,8 +161,8 @@ if __name__=="__main__":
         comparators={revenue_output_cfg.id: compare_revenue}
     )
 
-    core = tp.Core()
-    core.run()
+    orchestrator = tp.Orchestrator()
+    orchestrator.run()
 
     # Create scenarios with different pricing strategies
     scenario_1 = tp.create_scenario(scenario_cfg)

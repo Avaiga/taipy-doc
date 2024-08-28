@@ -140,7 +140,7 @@ The configuration is done! Let's use it to instantiate scenarios and submit them
 
 # Instantiate Scenario
 
-First, run the Core service in your code (`tp.Core().run()`). Then, you can play with Taipy:
+First, run the Orchestrator service in your code (`tp.Orchestrator().run()`). Then, you can play with Taipy:
 
 - create scenarios ([`tp.create_scenario(<ScenarioConfig>)`](../../scenario_management/1_scenarios/index.md#scenario-configuration-and-creation)),
 
@@ -157,8 +157,8 @@ that triggers the run of all the scenario-related tasks.
 
 ```python
 if __name__ == "__main__":
-    # Run of the Core
-    tp.Core().run()
+    # Run of the Orchestrator
+    tp.Orchestrator().run()
 
     # Creation of the scenario and execution
     scenario = tp.create_scenario(scenario_cfg)

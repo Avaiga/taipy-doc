@@ -1,8 +1,8 @@
 # Version management system
 When developing, maintaining, or deploying a Taipy application, it is challenging
 to keep the Taipy entities (scenarios, tasks, data nodes, etc.) up-to-date when
-the Core configuration changes. Taipy provides Version Management to address these
-central issues.
+the core package configuration changes. Taipy provides Version Management to address
+these central issues.
 
 Indeed, developers can update the configuration (`Config^`) to implement a new feature,
 experiment with an alternative algorithm, fix a bug, create a new data node, etc.

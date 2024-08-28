@@ -1,5 +1,5 @@
 import taipy as tp
-from taipy import Config, Core
+from taipy import Config, Orchestrator
 
 
 def build_message(name: str):
@@ -11,7 +11,7 @@ if __name__ == "__main__":
     build_msg_task_cfg = Config.configure_task("build_msg", build_message, name_data_node_cfg, message_data_node_cfg)
     scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_task_cfg])
 
-    Core().run()
+    Orchestrator().run()
 
     zinedine_scenario = tp.create_scenario(scenario_cfg)
     zinedine_scenario.input_name.write("Zinedine")

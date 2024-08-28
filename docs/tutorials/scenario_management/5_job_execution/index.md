@@ -34,8 +34,9 @@ def add(nb):
 
 ![Configuration](images/config.svg){ width=90% : .tp-image-border }
 
-This line of code alters the execution mode. Setting it to *standalone* makes Taipy Core work asynchronously.
-In this configuration, a maximum of two tasks can run simultaneously.
+This line of code alters the execution mode. Setting it to *standalone* makes Task
+orchestration work asynchronously. In this configuration, a maximum of two tasks can
+run simultaneously.
 
 !!! warning
 
@@ -54,7 +55,7 @@ Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
 
 ```python
 if __name__=="__main__":
-    tp.Core().run()
+    tp.Orchestrator().run()
     scenario_1 = tp.create_scenario(scenario_cfg)
     scenario_2 = tp.create_scenario(scenario_cfg)
 
@@ -74,7 +75,7 @@ Some options for the *submit* function exist:
 
 ```python
 if __name__=="__main__":
-    tp.Core().run()
+    tp.Orchestrator().run()
     scenario_1 = tp.create_scenario(scenario_cfg)
     scenario_1.submit(wait=True)
     scenario_1.submit(wait=True, timeout=5)
@@ -124,7 +125,7 @@ if __name__=="__main__":
 
     Config.export("config.toml")
 
-    tp.Core().run()
+    tp.Orchestrator().run()
     scenario_1 = tp.create_scenario(scenario_cfg)
     scenario_2 = tp.create_scenario(scenario_cfg)
     scenario_1.submit()
