@@ -123,9 +123,9 @@ each scenario's task execution. The `Submission^` object holds the information a
 submission of the scenario such as the *jobs*, the submission status, the submission date,
 and other related information.
 
-??? Note "Running the Core service"
+??? Note "Running the Orchestrator service"
 
-    Running the Core service is required to execute jobs. To see how you can run
+    Running the Orchestrator service is required to execute jobs. To see how you can run
     different Taipy services, please refer to the
     [running Taipy services](../../../run-deploy/run/running_services.md) page.
 

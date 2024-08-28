@@ -21,17 +21,17 @@ OUTPUT_DATASET_NAME = "output"
 def read_data_from_dataiku(dataset_name, project_key, host, api_key):
     """
     Fetches a dataset from Dataiku DSS and returns it as a pandas DataFrame.
-    
+
     It checks if a cached version of the dataset exists and is up-to-date before
     fetching data from Dataiku DSS. If the cached version is outdated or nonexistent,
     it fetches the data, updates the cache, and then returns the data.
-    
+
     Parameters:
     - dataset_name: Name of the dataset to fetch.
     - project_key: Key of the project containing the dataset.
     - host: URL of the Dataiku DSS instance.
     - api_key: Authentication API key for Dataiku DSS.
-    
+
     Returns:
     - A pandas DataFrame containing the dataset.
     """
@@ -71,10 +71,10 @@ def read_data_from_dataiku(dataset_name, project_key, host, api_key):
 def write_data_to_dataiku(data, dataset_name, project_key, host, api_key):
     """
     Writes data from a pandas DataFrame to a specified Dataiku DSS dataset.
-    
+
     This function checks if the columns in the DataFrame match the target dataset's schema.
     If they match, it updates the dataset with the new data. If not, it prints a warning.
-    
+
     Parameters:
     - data: pandas DataFrame containing the data to write.
     - dataset_name: Name of the dataset to update.
@@ -94,7 +94,7 @@ def write_data_to_dataiku(data, dataset_name, project_key, host, api_key):
         if set(target_cols) == set(new_cols):
             os.makedirs(cache_dir, exist_ok=True)
             data.to_csv(cache_path, index=False)
-            
+
             with open(cache_path, "rb") as fp:
                 try:
                     # Attempt to clear the dataset and upload new file
@@ -183,7 +183,7 @@ Output Dataset:
 
 # Main execution block with GUI setup
 if __name__ == "__main__":
-    tp.Core().run()
+    tp.Orchestrator().run()
     scenario = tp.create_scenario(dataiku_scenario_cfg)
     # Run the GUI
     tp.Gui(scenario_md).run(title="Dataiku Integration")

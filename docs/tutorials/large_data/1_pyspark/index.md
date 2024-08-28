@@ -521,7 +521,7 @@ def on_change(state, var_name: str, var_value):
 
 
 if __name__ == "__main__":
-    tp.Core().run()
+    tp.Orchestrator().run()
 
     gui = Gui(main_md)
     gui.run(title="Spark with Taipy")

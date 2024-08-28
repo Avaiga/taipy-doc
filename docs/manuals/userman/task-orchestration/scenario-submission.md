@@ -14,22 +14,23 @@ the jobs, the submission status, and other related information.
 
 # Submit a scenario
 
-In a Taipy application, running the Core service is required to execute jobs.
+In a Taipy application, running the Orchestrator service is required to execute jobs.
 To see how you can run different Taipy services, please refer to the
 [running Taipy services](../../run-deploy/run/running_services.md) page.
 
-!!! note "Preventing configuration update when the Taipy Core service is running"
+!!! note "Preventing configuration update when the Orchestrator service is running"
 
-    After running the Core service, all configuration are blocked from update.
+    After running the Orchestrator service, all configuration are blocked from update.
 
 In this section, it is assumed that
 <a href="../code-example/scenario-submission/my_config.py" download>`my_config.py`</a>
-module contains a Taipy configuration already implemented. For more details on how to configure
-a scenario for Task execution, see the [scenario configuration](scenario-config.md) page.
+module contains a Taipy configuration already implemented. For more details on how to
+configure a scenario for Task execution, see the
+[scenario configuration](scenario-config.md) page.
 
-To execute a scenario, you need to call the `taipy.submit()^` function. It returns a `Submission^` object containing
-the information about the submission of the scenario such as the created `Job^`s representing a `Task^` in
-the submitted scenario:
+To execute a scenario, you need to call the `taipy.submit()^` function. It returns a
+`Submission^` object containing the information about the submission of the scenario
+such as the created `Job^`s representing a `Task^` in the submitted scenario:
 
 ```python linenums="1"
 {%
@@ -38,11 +39,12 @@ comments=false
 %}
 ```
 
-In line 7, we create a new scenario from a scenario configuration and submit it for execution (line 8).
-The `taipy.submit()^` method triggers the submission of all the scenario's tasks.
+In line 7, we create a new scenario from a scenario configuration and submit it for
+execution (line 8). The `taipy.submit()^` method triggers the submission of all the
+scenario's tasks.
 
-The Core service can also be started after `taipy.submit()^` method. Note that jobs can only be executed
-after the Taipy Core service is started:
+The Orchestrator service can also be started after `taipy.submit()^` method. Note that
+jobs can only be executed after the Taipy Orchestrator service is started:
 
 ```python linenums="1"
 {%
@@ -61,8 +63,8 @@ comments=false
     %}
     ```
 
-By default, Taipy will asynchronously execute the jobs. If you want to wait until the submitted jobs
-are finished, you can use the parameter _wait_ and _timeout_:
+By default, Taipy will asynchronously execute the jobs. If you want to wait until the
+submitted jobs are finished, you can use the parameter _wait_ and _timeout_:
 
 ```python linenums="1"
 {%

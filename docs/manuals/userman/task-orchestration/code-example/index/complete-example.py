@@ -11,8 +11,8 @@ if __name__ == "__main__":
     task_cfg = Config.configure_task("my_task", do_nothing, input=[value_cfg])
     scenario_cfg = Config.configure_scenario("my_scenario", [task_cfg])
 
-    # Run the Core service
-    tp.Core().run()
+    # Run the Orchestrator service
+    tp.Orchestrator().run()
 
     # Create a scenario
     scenario = tp.create_scenario(scenario_cfg)

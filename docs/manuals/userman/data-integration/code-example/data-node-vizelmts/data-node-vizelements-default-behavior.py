@@ -3,7 +3,7 @@ from datetime import datetime
 import pandas as pd
 
 import taipy
-from taipy import Config, Core, Gui, Scope
+from taipy import Config, Orchestrator, Gui, Scope
 
 if __name__ == "__main__":
     # Creating a data node variable to be bound to the visual element
@@ -19,7 +19,7 @@ if __name__ == "__main__":
     date_cfg = Config.configure_data_node(id="date", scope=Scope.GLOBAL, default_data=date)
 
     # instantiating the data nodes
-    Core().run()
+    Orchestrator().run()
     taipy.create_global_data_node(ds1_cfg)
     taipy.create_global_data_node(parameter_cfg)
     taipy.create_global_data_node(date_cfg)

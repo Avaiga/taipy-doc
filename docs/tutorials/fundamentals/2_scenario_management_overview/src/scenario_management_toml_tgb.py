@@ -23,8 +23,8 @@ Config.load("config.toml")
 if __name__ == "__main__":
     scenario_cfg = Config.scenarios["my_scenario"]
 
-    # Run of the Core
-    tp.Core().run()
+    # Run of the Orchestrator
+    tp.Orchestrator().run()
 
     # Creation of the scenario and execution
     scenario = tp.create_scenario(scenario_cfg)

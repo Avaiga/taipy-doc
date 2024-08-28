@@ -1,4 +1,5 @@
-The `CoreSection^` holds configuration fields related to the Core service.
+The `CoreSection^` holds configuration fields related to the core package, in particular
+the fields related to the Taipy repository for entity storage.
 
 Here are the (optional) configurable properties:
 

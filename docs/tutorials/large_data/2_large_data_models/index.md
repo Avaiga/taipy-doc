@@ -370,7 +370,7 @@ You can read more about configuring Scenarios, Tasks, and Data Nodes in the
 Executing a Taipy scenario involves:
 
 - Loading the config;
-- Running the Taipy Core service; and
+- Running the Taipy Orchestrator service; and
 - Creating and submitting the scenario for execution.
 
 Here's the basic code template:
@@ -380,7 +380,7 @@ import taipy as tp
 from config import scenario_cfg  # Import the Scenario configuration
 
 if __name__ == "__main__":
-    tp.Core().run()  # Start the Core service
+    tp.Orchestrator().run()  # Start the Orchestrator service
     scenario_1 = tp.create_scenario(scenario_cfg)
 
     # Create a Scenario instance

@@ -18,8 +18,8 @@ if __name__ == "__main__":
     print_task_cfg = Config.configure_task("print_task", print, output_data_node_cfg)
     scenario_cfg = Config.configure_scenario("my_scenario", [double_task_cfg, print_task_cfg])
 
-    # Run the core service.
-    tp.Core().run()
+    # Run the Orchestrator service.
+    tp.Orchestrator().run()
 
     # Create and submit a scenario.
     scenario = tp.create_scenario(scenario_cfg)
