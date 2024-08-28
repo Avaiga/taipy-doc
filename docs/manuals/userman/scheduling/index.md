@@ -8,15 +8,26 @@ This documentation focuses on providing necessary information to use the
 Taipy `Scheduler^`, and in particular the capabilities related to scenario
 management and job execution.
 
-Let’s assume also that the configuration represented in the picture below is
-implemented in the module
-<a href="./code-example/my_config.py" download>`my_config.py`</a>.
+Let’s assume also that the configuration used in the examples in this section is
+implemented in the module <a href="./code-example/my_config.py" download>`my_config.py`</a>.
 
 === "Module my_config.py"
 
     ```python linenums="1"
     {%
     include-markdown "./code-example/my_config.py"
+    comments=false
+    %}
+    ```
+
+The code below is an example of how to use the Taipy `Scheduler^` to schedule a method to run every 10 seconds
+in a Taipy application.
+
+=== "Module main.py"
+
+    ```python linenums="1"
+    {%
+    include-markdown "./code-example/scheduler_example.py"
     comments=false
     %}
     ```
@@ -43,6 +54,24 @@ can execute other methods without being blocked by the scheduler.
     However, keep in mind that the scheduled method will not run until the
     scheduler is started.
 
+By default, the scheduler checks for methods to run every 60 seconds. You can change the interval
+by providing the `interval` parameter to the `start()` method.
+
+```python
+import taipy as tp
+
+if __name__ == "__main__":
+    tp.Scheduler.start(interval=1)
+```
+
+It is intended behavior that the scheduler does not run missed methods.
+For example, if you've registered a method that should run every second and you set the
+interval of the scheduler to one hour, your method won't be run 60 time at each interval but only once.
+
+!!! warning "Scheduler with a short interval"
+    If you set the interval to a very short time, the CPU usage of the scheduler will increase.
+    It is recommended to set the interval to a reasonable value based on the frequency of the scheduled methods.
+
 To stop the scheduler from running the scheduled methods, you can use the
 `stop()` method.
 
@@ -50,17 +79,23 @@ To stop the scheduler from running the scheduled methods, you can use the
     tp.Scheduler.stop()
 ```
 
-## Run a method every specific interval
+## Run a method every specific time period
 
-Taipy `Scheduler^` provides the capability to run a method every specific interval.
-The interval can be specified in seconds, minutes, hours, days, weeks, days, months or years.
+Taipy `Scheduler^` provides the capability to run a method every specific period.
+The period can be specified in seconds, minutes, hours, days, weeks, days, months or years.
+
+!!! info "Schedule a method every second"
+    If a method is scheduled to run every second, the scheduler must be started with an interval of 1 second or lower.
+
+    If the scheduler is started with the default interval of 60 seconds or higher than the period of the scheduled method, the method will not run every second but only every interval of the scheduler.
+
 
 ```python linenums="1"
 import taipy as tp
-from my_config import monthly_scenario_cfg
+from my_config import scenario_cfg
 
 if __name__ == "__main__":
-    monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
+    monthly_scenario = tp.create_scenario(scenario_cfg)
 
     # Submit a scenario every 3 second/minute/hour/day
     # Starting 3 second/minute/hour/day from now
@@ -78,11 +113,11 @@ if __name__ == "__main__":
     tp.Scheduler.start()
 ```
 
-In the above example, we schedule the `tp.submit(monthly_scenario)` method with different intervals.
+In the above example, we schedule the `tp.submit(monthly_scenario)` method with different periods.
 Notice that we chose to submit a scenario as an example, but any Python method can be scheduled.
 
-- First, we need to call the `every()` method and provide the time interval.
-  If not provided, the default interval is 1.
+- First, we need to call the `every()` method and provide the time period.
+  If not provided, the default period is 1.
 - Secondly, the time unit needs to be provided, which can be either
   `seconds`, `minutes`, `hours`, `days`, `weeks`, `months`, or `years`.
 - Finally, we provide the `do()` method with the method to schedule and its parameters.
@@ -90,7 +125,7 @@ Notice that we chose to submit a scenario as an example, but any Python method c
 
 Once scheduled, the method will run in the background. The first run will be:
 
-- the number of interval from the scheduled time, or
+- the number of period from the scheduled time, or
 - at the start of the scheduler if the scheduler is started **after** the time that the method supposed to run.
 
 ## Run a method at a specific time and/or date
@@ -134,10 +169,10 @@ yearly scheduled methods. The `on()` method requires the following parameter:
 
 ```python linenums="1"
 import taipy as tp
-from my_config import monthly_scenario_cfg
+from my_config import scenario_cfg
 
 if __name__ == "__main__":
-    monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
+    monthly_scenario = tp.create_scenario(scenario_cfg)
 
     # Submit a scenario every minute at the 23rd second
     tp.Scheduler.every().minute.at(":23").do(tp.submit, monthly_scenario)
@@ -191,10 +226,10 @@ If only a time is provided, the date is set to today.
 ```python linenums="1"
 from datetime import datetime, timedelta, time
 import taipy as tp
-from my_config import monthly_scenario_cfg
+from my_config import scenario_cfg
 
 if __name__ == "__main__":
-    monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
+    monthly_scenario = tp.create_scenario(scenario_cfg)
 
     # Submit a scenario until a 18:30 today
     tp.Scheduler.every(1).hours.until("18:30").do(tp.submit, monthly_scenario)
@@ -218,10 +253,10 @@ To retrieve all scheduled methods from the scheduler, use `tp.Scheduler.get_sche
 
 ```python linenums="1"
 import taipy as tp
-from my_config import monthly_scenario_cfg
+from my_config import scenario_cfg
 
 if __name__ == "__main__":
-    monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
+    monthly_scenario = tp.create_scenario(scenario_cfg)
 
     tp.Scheduler.every().second.do(tp.submit, monthly_scenario)
 
@@ -237,10 +272,10 @@ To remove a scheduled method from the scheduler, use the `tp.Scheduler.cancel_sc
 
 ```python linenums="1"
 import taipy as tp
-from my_config import monthly_scenario_cfg
+from my_config import scenario_cfg
 
 if __name__ == "__main__":
-    monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
+    monthly_scenario = tp.create_scenario(scenario_cfg)
 
     monthly_submit_method = tp.Scheduler.every().second.do(tp.submit, monthly_scenario)
 
@@ -251,10 +286,10 @@ To remove all scheduled methods from the scheduler, use `tp.Scheduler.clear()`
 
 ```python linenums="1"
 import taipy as tp
-from my_config import monthly_scenario_cfg
+from my_config import scenario_cfg
 
 if __name__ == "__main__":
-    monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
+    monthly_scenario = tp.create_scenario(scenario_cfg)
 
     tp.Scheduler.every().second.do(tp.submit, monthly_scenario)
 
@@ -273,19 +308,19 @@ Instead of using the `do()` method and specifying the Taipy method to schedule, 
 
 ```python linenums="1"
 import taipy as tp
-from my_config import monthly_scenario_cfg
+from my_config import scenario_cfg
 
 if __name__ == "__main__":
-    # Creating a new scenario every month using the monthly_scenario_cfg
-    tp.Scheduler.every().months.do_create(monthly_scenario_cfg)
+    # Creating a new scenario every month using the scenario_cfg
+    tp.Scheduler.every().months.do_create(scenario_cfg)
 
     # Submit the monthly_scenario every month
-    monthly_scenario = tp.create_scenario(monthly_scenario_cfg)
+    monthly_scenario = tp.create_scenario(scenario_cfg)
     monthly_submit_method = tp.Scheduler.every().months.do_submit(monthly_scenario)
 
-    # Create a new scenario every month using the monthly_scenario_cfg
+    # Create a new scenario every month using the scenario_cfg
     # and submit it immediately
-    tp.Scheduler.every().months.do_create_and_submit_scenario(monthly_scenario_cfg)
+    tp.Scheduler.every().months.do_create_and_submit_scenario(scenario_cfg)
 
     tp.Scheduler.clear()
 ```
