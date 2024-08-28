@@ -37,8 +37,8 @@ Here is the list of the possible issues that the checker could return:
 - An `ERROR` issue is created if a `ScenarioConfig^` has no task configuration defined.
 - An `ERROR` issue is created if any item of a `ScenarioConfig^` task list does not 
   correspond to a `TaskConfig^`.
-- A `ERROR` issue is created if a `ScenarioConfig^` has no additional data node configuration defined or an additional
-  does not correspond to a `DataNodeConfig` or a list of `DataNodeConfig^`.
+- A `ERROR` issue is created if any additional data node of a `ScenarioConfig^` does not
+  correspond to a `DataNodeConfig^`.
 - An `ERROR` issue is created if any `DataNodeConfig^` or `TaskConfig^` or sequence of the `ScenarioConfig^` has the same name as
   one of the attributes or properties of the `ScenarioConfig^`.
 - An `ERROR` issue is created if the `frequency` parameter of a `ScenarioConfig^` has an incorrect `Frequency^` value.
