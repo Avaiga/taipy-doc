@@ -161,7 +161,7 @@ using either the Markdown syntax or the Python API by providing a page to this m
             link_name, link_url = link
             partial_md += "<|card|\n"
             partial_md += f"## {link_name}\n"
-            partial_md += "Quick description here if you like\n"
+            partial_md += "Quick description here if you like\n\n"
             partial_md += f"[Click here to go to {link_name}]({link_url})\n"
             partial_md += "|>\n"
         partial_md += "|>\n"
@@ -176,8 +176,8 @@ using either the Markdown syntax or the Python API by providing a page to this m
                     link_name, link_url = link
                     with tgb.part("card"):
                         tgb.text(link_name, class_name="h2")
-                        tgb.text('Quick description here if you like')
-                        tgb.html('a', f'Click here to go to {link_name}', href=link_url)
+                        tgb.text("Quick description here if you like")
+                        tgb.html("a", f"Click here to go to {link_name}", href=link_url)
                         # You could use any visual element you like
         state.link_partial.update_content(state, link_part)
     ``` 
