@@ -440,10 +440,10 @@ specified scenario:
     ```python
     import taipy as tp
 
-# Create and execute the scenario
-if __name__ == "__main__":
-    tp.Orchestrator().run()
-    scenario = tp.create_scenario(dataiku_scenario_scenario_cfg)
+    # Create and execute the scenario
+    if __name__ == "__main__":
+        tp.Orchestrator().run()
+        scenario = tp.create_scenario(dataiku_scenario_scenario_cfg)
 
         scenario = None
         scenario_md = """
