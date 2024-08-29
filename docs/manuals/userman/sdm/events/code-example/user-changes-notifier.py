@@ -40,8 +40,6 @@ class SpecificCoreConsumer(CoreEventConsumerBase):
                     scenario = tp.get(scenario_id)
                     new_value_of_dn = scenario.message.read()
                     self.gui.broadcast_callback(notify_users_of_update, [new_value_of_dn])
-        else:
-            pass
 
 
 #### Notification function to be called ####
