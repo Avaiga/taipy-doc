@@ -1,4 +1,4 @@
-from taipy import Config, Core, Gui
+from taipy import Config, Orchestrator, Gui
 
 
 # Implementing a function to be used as a Taipy task in a scenario
@@ -16,7 +16,7 @@ if __name__ == "__main__":
     task_cfg = Config.configure_task(id="fct", function=identity, input=[in_cfg], output=[out_cfg])
     scenario_cfg = Config.configure_scenario(id="scenario", task_configs=[task_cfg])
 
-    Core().run()
+    Orchestrator().run()
 
     # Running the GUI with a scenario selector, a scenario viewer, and a job selector
     page = ("""<|{scenario}|scenario_selector|>

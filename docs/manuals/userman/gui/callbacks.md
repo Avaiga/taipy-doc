@@ -6,7 +6,7 @@ Every callback function receives a `State^` object as its first parameter.<br/>
 This object reflects the state of the application variables, for a given end-user:
 your application may be used simultaneously by different users connected to the
 same web server (note that setting the _single_client_ configuration parameter to
-False - as explained in the
+True - as explained in the
 [Configuration](../configuration/gui-config.md#configuring-the-gui-instance) section - prevents
 multiple users from connecting to your application simultaneously, but you still rely
 on the `State^` object to access the application variables that are represented in your

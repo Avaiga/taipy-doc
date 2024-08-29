@@ -8,7 +8,7 @@ It first consists in one data node named *input_name*. It represents an input da
 Then a task named *build message* takes the first data node and returns a second data node named
 *message*.
 
-Building the corresponding Taipy Core application requires three easy steps.
+Building the corresponding Taipy application requires three easy steps.
 
 # Configuring the application
 
@@ -33,39 +33,40 @@ Since the function has one parameter and returns one value, the task has one inp
 Finally, in line 11, we configure the execution graph of the scenario providing the previously
 configured task.
 
-# Running Core service
+# Running Orchestrator service
 
-Running Taipy Core as a service allows Taipy to set up all necessary variables to use Core
-functionalities.
+Running Taipy Orchestrator as a service allows Taipy to set up all necessary variables to use
+Scenario and Data Management functionalities.
 
 ``` python linenums="1"
-from taipy import Core
+from taipy import Orchestrator
 
 if __name__ == "__main__":
-    Core().run()
+    Orchestrator().run()
 ```
 
 Line 3 is a standard boilerplate code that ensures the code is executed only from the main
 module. It protects users from accidentally invoking the script when they didn't intend to. We
 strongly recommend using it.
 
-In line 4, we simply instantiate and run a Core service.
+In line 4, we simply instantiate and run a Orchestrator service.
 
-!!! warning "Core service should be run only once"
+!!! warning "Orchestrator service should be run only once"
 
-    At a given time, there should be only one Core service running. If a Core service instance
-    is already running, running another Core service will raise an exception.
+    At a given time, there should be only one Orchestrator service running. If
+    an Orchestrator service instance is already running, running another
+    Orchestrator service will raise an exception.
 
-    To stop a Core service instance, you can use the `stop()` method.
+    To stop a Orchestrator service instance, you can use the `stop()` method.
 
     ```python linenums="1"
-    from taipy import Core
+    from taipy import Orchestrator
 
     if __name__ == "__main__":
-        core = Core()
-        core.run()
+        orchestrator = Orchestrator()
+        orchestrator.run()
         ...
-        core.stop()
+        orchestrator.stop()
     ```
 
 # Creating Scenarios and accessing data
@@ -118,7 +119,7 @@ Hello Kylian Mbappe!
 
 !!! note
 
-    This third step consists in calling the various Core APIs to access, manage and submit the
+    This third step consists in calling the various APIs to access, manage and submit the
     Taipy entities. Typically it is implemented in Python functions that are called by a
     graphical interface built with [Taipy GUI](../gui/index.md).
 
@@ -134,5 +135,5 @@ Hello Kylian Mbappe!
 !!! note
 
     Please refer to the
-    [scenario management](../../../tutorials/fundamentals/2_scenario_management_overview/index.md)
+    [scenario management](../../../tutorials/articles/scenario_management_overview/index.md)
     tutorial for a more realistic use case.

@@ -87,8 +87,17 @@ This is the list of changes to Taipy releases as they were published.
   typo, the CLI will suggest the closest valid argument.
 - The `Scenario.export()` and `taipy.export_scenario()` have been transfered from the Community
   edition to the Enterprise edition as it is more suitable for enterprise applications.
+- The production mode of the version management system has been transfered from the Community edition
+  to the Enterprise edition as it is more suitable for enterprise applications.
 - Removed support for SQL repository. Taipy community edition now only supports the `filesystem`
   repository type.
+- Two scenarios belonging to the same cycle can now have the same tag.<br/>
+  See [issue #1292](https://github.com/Avaiga/taipy/issues/1292).
+- The `Config.check()^` method now raises `ERROR` issues if any data node, task, or sequence of
+  a `ScenarioConfig^` has the same configuration id with another one in the same `ScenarioConfig^`,
+  or any additional property of any configuration has the same name as one of the attributes
+  of the configuration class.<br/>
+  For more information, please refer to [Configuration checker](../manuals/userman/configuration/config-checker.md).
 
 <h4><strong><code>taipy-templates</code></strong> 4.0.0 </h4>
 

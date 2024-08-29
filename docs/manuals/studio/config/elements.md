@@ -54,7 +54,7 @@ The **Details** section will let you:
 - Change the Data Node configuration identifier.
 - Specify the storage type property.
 - Specify the scope property.
-- Add Data Node-specific properties and values that Taipy Core can use.
+- Add Data Node-specific properties and values that Taipy can use.
 
 ## Tasks configuration
 

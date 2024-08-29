@@ -14,19 +14,25 @@ def refresh_links(state):
     partial_md += "|>\n"
     state.link_partial.update_content(state, partial_md)
 
+
 # Function to simulate adding more links
 def simulate_adding_more_links(state):
     state.links = [
         ("Taipy", "http://taipy.io"),
         ("Taipy Doc", "http://docs.taipy.io"),
         ("Wikipedia", "http://wikipedia.org"),
-        ("Article", "https://betterprogramming.pub/discovering-taipy-and-taipy-gui-e1b664765017")
+        (
+            "Article",
+            "https://betterprogramming.pub/discovering-taipy-and-taipy-gui-e1b664765017",
+        ),
     ]
     refresh_links(state)
+
 
 # Initialize the application state
 def on_init(state):
     refresh_links(state)
+
 
 if __name__ == "__main__":
     # Initial links

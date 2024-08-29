@@ -1,4 +1,5 @@
-The `CoreSection^` holds configuration fields related to the Core service.
+The `CoreSection^` holds configuration fields related to the core package, in particular
+the fields related to the Taipy repository for entity storage.
 
 Here are the (optional) configurable properties:
 
@@ -24,7 +25,9 @@ Here are the (optional) configurable properties:
     _**application_db**_, _**properties**_. Please refer to
     [MongoDB storage section](core-config.md#mongodb-storage-for-taipy-entities).
 - _**mode**_: A string that indicates the mode of the version management system.
-    Possible values are *"development"*, *"experiment"*, or *"production"*.
+    Possible values are *"development"* or *"experiment"*. On Enterprise edition of Taipy,
+    *production* mode is also available. Please refer to the
+    [Versioning management](../versioning/index.md) documentation page for more details.
 - _**version_number**_: The identifier of the version. In development mode, the version number
     is ignored.
 - _**force**_: Indicates whether Taipy will override a version even if the configuration has

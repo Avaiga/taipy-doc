@@ -123,9 +123,9 @@ each scenario's task execution. The `Submission^` object holds the information a
 submission of the scenario such as the *jobs*, the submission status, the submission date,
 and other related information.
 
-??? Note "Running the Core service"
+??? Note "Running the Orchestrator service"
 
-    Running the Core service is required to execute jobs. To see how you can run
+    Running the Orchestrator service is required to execute jobs. To see how you can run
     different Taipy services, please refer to the
     [running Taipy services](../../../run-deploy/run/running_services.md) page.
 
@@ -395,14 +395,11 @@ Alternatively, you can use the `Scenario.add_tag()^` method.
     ```
 
 You can retrieve all scenarios that have a specific tag using `taipy.get_scenarios()^` with
-the _tag_ parameter.
-
-Two scenarios belonging to the same cycle can not have the same tag. If a tag
-is already used by an existing scenario from the same cycle, it will be removed from
-that scenario and reassigned to the new scenario.
+the *tag* parameter.
 
 You can remove a tag of a scenario using `taipy.untag()^`. Alternatively, you can use the
-`Scenario.remove_tag()^` method.
+`Scenario.remove_tag()^` method. If the scenario does not have the specified tag, this will
+have no effect.
 
 !!! example
 
@@ -415,7 +412,7 @@ You can remove a tag of a scenario using `taipy.untag()^`. Alternatively, you ca
     ```
 
 You can define a list of authorized tags in the scenario configuration by specifying the
-value of _authorized_tags_. From the scenarios that are created from that configuration,
+value of *authorized_tags*. From the scenarios that are created from that configuration,
 if you add a tag that is not authorized, an exception will be raised.
 
 # Import/Export Scenarios

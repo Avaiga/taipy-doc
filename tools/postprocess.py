@@ -113,7 +113,7 @@ def on_post_build(env):
                 x_packages.update(xref_desc[2])
         else:
             descs = [xrefs[f"{xref}/{i}"] for i in range(0, xref_desc)]
-            # If unspecified, the first xref will be used (the one with the shortests package)
+            # If unspecified, the first xref will be used (the one with the shortest package)
             multi_xrefs[xref] = sorted(descs, key=lambda p: len(p[0]))
     manuals_files_path = os.path.join(site_dir, "manuals")
     ref_files_path = os.path.join(manuals_files_path, "refmans", "reference")

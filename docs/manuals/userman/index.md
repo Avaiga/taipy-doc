@@ -69,8 +69,8 @@ The `taipy.rest` package allows you to access some Taipy functionalities such as
 scenarios management, sequences and task orchestration, data management, etc. through
 a dedicated REST API.
 This feature to provides a solution to easily integrate Taipy applications with other IT
-systems. The API comes with multiple endpoints for you to work with Taipy Core conveniently and
-efficiently.
+systems. The API comes with multiple endpoints for you to work with Scenario and data
+management conveniently and efficiently.
 
 [:material-arrow-right: Taipy REST User Manual](rest/index.md)
 
