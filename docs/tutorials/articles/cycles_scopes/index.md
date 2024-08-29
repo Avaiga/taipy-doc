@@ -12,7 +12,7 @@ img: images/icon-code.svg
 In this section, we will explore the intricate relationship between
 [Scopes](../../../manuals/userman/what-if-analysis/scenarios-and-cycles.md#what-is-a-data-node-scope)
 and [Cycles](../../../manuals/userman/what-if-analysis/scenarios-and-cycles.md#what-is-a-cycle),
-two core concepts that help manage data nodes and scenarios effectively in Taipy.
+two important concepts that help manage data nodes and scenarios effectively in Taipy.
 
 [Download the code](./src/scope_and_cycle.zip){: .tp-btn target='blank' }
 
@@ -98,7 +98,7 @@ following example.
 
 
 ```python
-tp.Core().run()
+tp.Orchestrator().run()
 
 scenario_1 = tp.create_scenario(scenario_cfg,
                                 creation_date=dt.datetime(2022,10,7),
@@ -296,7 +296,7 @@ if __name__ == '__main__':
                                             task_configs=[task_filter_cfg],
                                             frequency=Frequency.MONTHLY)
 
-    tp.Core().run()
+    tp.Orchestrator().run()
 
     scenario_1 = tp.create_scenario(scenario_cfg,
                                     creation_date=dt.datetime(2022,10,7),

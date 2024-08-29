@@ -15,10 +15,10 @@ task configurations, and scenario configurations.
 
 !!! warning
 
-    All configuration objects must be created before running the Core service.
+    All configuration objects must be created before running the Orchestrator service.
 
-    Any modification to the configuration objects after the Core service has been started or
-    an entity has been instantiated will raise an error.
+    Any modification to the configuration objects after the Orchestrator service has been
+    started or an entity has been instantiated will raise an error.
 
 The various sections are presented below.
 
@@ -76,9 +76,9 @@ Config.job_config
 For more details on how to configure job execution, see the
 [job execution configuration](job-config.md) page.
 
-## Core service section
+## Core package section
 
-The core service section is exposed as a core configuration `CoreSection^`:
+The core package section is exposed as a core configuration `CoreSection^`:
 
 ```python linenums="1"
 from taipy import Config
@@ -86,7 +86,7 @@ from taipy import Config
 Config.core
 ```
 
-For more details on how to configure the core service, see the
+For more details on how to configure the core package features, see the
 [core configuration](core-config.md) page.
 
 ## Gui service section

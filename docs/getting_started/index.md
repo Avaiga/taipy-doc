@@ -158,7 +158,7 @@ For more realistic and advanced use cases, check out our
       </header>
       <div class="tp-content-card-body">
         <p>
-          Get the core concepts on how to create a Taipy application.
+          Get the main concepts on how to create a Taipy application.
         </p>
       </div>
     </a>

@@ -136,7 +136,7 @@ In our example, we want our Task configuration to use the function called `plan`
 
 After this final step, the configuration file can be saved from the Graph View
 itself (pressing the `Ctrl-S` key combination). The generated configuration file can be
-used by the Taipy Core application: in the source file `main.py`, you can load this
+used by a Taipy application: in the source file `main.py`, you can load this
 configuration file and submit an entity created from the scenario configuration you just
 have designed:
 
@@ -147,7 +147,7 @@ from taipy import Config
 
 if __name__ == "__main__":
     Config.load("config.toml")
-    tp.Core().run()
+    tp.Orchestrator().run()
 
     # Retrieve the scenario configuration from the Config
     scenario_cfg = Config.scenarios["my_scenario"]

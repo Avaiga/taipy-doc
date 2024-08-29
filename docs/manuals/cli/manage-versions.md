@@ -1,7 +1,8 @@
 # Manage versions
 
 The `taipy manage-versions` command allows a Taipy user to track and manage various versions of
-a Taipy Core application. Please refer to the [Version management](../userman/versioning/index.md)
+an application using scenario and data management. Please refer to the
+[Version management](../userman/versioning/index.md)
 documentation page for more information on creating or re-using a version.
 
 To use the version management system, one can run the `$ taipy manage-versions`
@@ -22,6 +23,10 @@ Below is the list of all the optional arguments:
 
 - *--delete-production VERSION* or *-dp VERSION*: Converts the provided production version
   to an experiment version.
+
+!!! warning "Available in Taipy Enterprise edition"
+
+    The *--delete-production* option is relevant only to the Enterprise edition of Taipy.
 
 ## List capabilities with the --help option
 
@@ -49,7 +54,7 @@ options:
 ```
 
 ## List all versions
-To list all versions of your Taipy Core application, you can run the version management command
+To list all versions of your Taipy application, you can run the version management command
 with *--list* or *-l* option.
 
 ```console
@@ -134,6 +139,10 @@ d74ec95e-6b98-4612-b50b-d171599fa3e9   Development (latest)   2023-01-19 14:45:1
 ```
 
 ## Remove a version from production
+
+!!! warning "Available in Taipy Enterprise edition"
+
+    This section is relevant only to the Enterprise edition of Taipy.
 
 To convert a version from production to experiment, you can run the version management command
 with *--delete-production* option.

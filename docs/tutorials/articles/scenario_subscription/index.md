@@ -176,7 +176,7 @@ if __name__=="__main__":
                                             task_configs=[first_task_cfg, second_task_cfg],
                                             name="my_scenario")
 
-    tp.Core().run()
+    tp.Orchestrator().run()
     scenario_1 = tp.create_scenario(scenario_cfg)
     scenario_1.subscribe(callback_scenario_state)
 

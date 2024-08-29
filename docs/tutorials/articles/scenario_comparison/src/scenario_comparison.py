@@ -58,8 +58,8 @@ if __name__=="__main__":
         comparators={revenue_output_cfg.id: compare_revenue}
     )
 
-    core = tp.Core()
-    core.run()
+    orchestrator = tp.Orchestrator()
+    orchestrator.run()
 
     # Create scenarios with different pricing strategies
     scenario_1 = tp.create_scenario(scenario_cfg)

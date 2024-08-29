@@ -29,14 +29,14 @@ task_predict_cfg = Config.configure_task("predict",
                                         predictions_cfg)
 
 # Configuration of scenario
-scenario_cfg = Config.configure_scenario(id="my_scenario", 
+scenario_cfg = Config.configure_scenario(id="my_scenario",
                                          task_configs=[task_predict_cfg])
 
 Config.export("config.toml")
 
 if __name__ == "__main__":
-    # Run of the Core
-    tp.Core().run()
+    # Run of the Orchestrator
+    tp.Orchestrator().run()
 
     # Creation of the scenario and execution
     scenario = tp.create_scenario(scenario_cfg)
@@ -68,4 +68,3 @@ View all the information on your prediction here
 """
 
     tp.Gui(scenario_md).run()
-    

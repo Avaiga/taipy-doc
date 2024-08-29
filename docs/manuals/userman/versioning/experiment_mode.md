@@ -16,7 +16,7 @@ to this version. It filters out all other entities from different versions, so y
     application eventually with some configuration changes without deleting the
     experiment's entities.
 
-In the following, we consider a basic Taipy Core application `main.py`:
+In the following, we consider a basic Taipy application `main.py`:
 
 ```python linenums="1" title="main.py"
 {%
@@ -79,10 +79,12 @@ the scenarios version "0.1", and filters out the entities of other versions.
 
 # Run an existing version
 
-To run an existing experiment version, there **must not** be any breaking change in the configuration of the application. Any change on the configuration is considered breaking change, except for:
+To run an existing experiment version, there **must not** be any breaking change in
+the configuration of the application. Any change on the configuration is considered
+breaking change, except for:
 - Changes in the job execution configuration.
 - Changes in the GUI configuration.
-- Changes in the Core configuration.
+- Changes in the core package configuration.
 
 You can run a Taipy application on the CLI with *--experiment* option and following by the name of
 the existing version.
@@ -166,7 +168,7 @@ option on the Taipy CLI and provide the version name (see the
 
 ```console
 $ taipy manage-versions --delete 0.1
-Successfully deleted version 0.1 from the production version list.
+Successfully delete version 0.1.
 
 $ taipy manage-versions --list
 Version number                         Mode                   Creation date

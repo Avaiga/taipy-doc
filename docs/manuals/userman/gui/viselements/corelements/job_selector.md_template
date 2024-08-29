@@ -1,6 +1,6 @@
 Select jobs from the list of all job entities.
 
-The job selector shows all the job entities handled by Taipy Core and lets the user
+The job selector shows all the job entities handled by Taipy and lets the user
 select a job or a set of jobs from the list.
 
 # Details

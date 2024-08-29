@@ -36,7 +36,7 @@ lets us create a simple, minimal Taipy application.
     this question, the application will be a single page application. Please note that the names
     must be valid Python identifiers.
 - In the 5th question, we clarify that we want to use scenario management, so the application
-    should include the Taipy Core service.
+    should include the Orchestrator service.
 - In the 6th question, we chose the default answer is No, meaning we don't want to use Rest API,
     so the application should not include the Taipy Rest API service.
 

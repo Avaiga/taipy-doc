@@ -1,8 +1,12 @@
-When running a Taipy Core application in *--production* mode, Taipy can access all entities
+!!! warning "Available in Taipy Enterprise edition"
+
+    This section is relevant only to the Enterprise edition of Taipy.
+
+When running a Taipy application in *--production* mode, Taipy can access all entities
 attached to the current version or another *production* version. It corresponds to the case where
 the application is stable and running in a production environment.
 
-In the following, we consider the basic Taipy Core application `main.py` for all our examples:
+In the following, we consider the basic Taipy application `main.py` for all our examples:
 ```python linenums="1" title="main.py"
 {%
 include-markdown "./code-example/main.py"

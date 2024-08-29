@@ -97,9 +97,9 @@ Published on 2024-03.
 
 - The `modin` exposed type as been deprecated. When used, a fallback on Pandas is applied.<br/>
   See [issue #631](https://github.com/Avaiga/taipy/issues/631) for details.
-- Running twice the Core service raises an exception to prevent running multiple instances
+- Running twice the Orchestrator service raises an exception to prevent running multiple instances
   at the same time.
-- Running the Core service or creating an entity by `taipy.create_scenario()` or
+- Running the Orchestrator service or creating an entity by `taipy.create_scenario()` or
   `taipy.create_global_data_node()` blocks the Configuration from being modified.
 
 ## Significant bug fixes
@@ -261,7 +261,8 @@ Published on 2023-10.
 - The `root_folder`, `storage_folder`, `read_entity_retry`, `repository_type`, and
   `repository_properties` attributes of the `GlobalAppConfig^` have been moved to the
   `CoreSection^`.<br/>
-  Please refer to the [Core configuration page](../manuals/userman/configuration/core-config.md) for details.
+  Please refer to the [Core configuration page](../manuals/userman/configuration/core-config.md)
+  for details.
 - The `clean_entities` attribute has been removed from the `CoreSection^`. Correspondingly, the
   `--clean-entities` option has been removed from the version management CLI.<br/>
   To clean entities of a version, please run your application in development mode, or delete your
@@ -279,7 +280,7 @@ Published on 2023-10.
 
 <h4><strong><code>taipy-template</code></strong> 3.0.0</h4>
 
-- The default template also supports creating a multi-pages application with Core and Rest
+- The default template also supports creating a multi-pages application with Orchestrator and Rest
   services. These options are available when creating a new application from the template.
 - The "multi-page-gui" template has been removed. Please use the default instead to create
   a Taipy multi-pages application.
@@ -324,7 +325,7 @@ Published on 2023-10.
 
 <h4><strong><code>taipy-core</code></strong> 3.0.0</h4>
 
-- When running the Core service in development mode, changing the name of the function used by a
+- When running the Orchestrator service in development mode, changing the name of the function used by a
   task then running the application again would raise an error.<br/>
   See [issue #743](https://github.com/Avaiga/taipy-core/issues/743).
 
@@ -343,7 +344,7 @@ additional features.
 
 ## Improvements and changes
 
-- The job recovery mechanism is now only available when the Core service is run.
+- The job recovery mechanism is now only available when the Orchestrator service is run.
 
 # Community edition: 2.3
 
@@ -360,12 +361,13 @@ Published on 2023-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
 2.3.0
 
-- Core Back-end Controls<br/>
+- Scenario and Data Management Controls<br/>
   Taipy comes, in the [`taipy`](https://pypi.org/project/taipy/) package, with a set of
-  ready-to-use GUI controls that connect to entities created by Taipy Core. Your application
-  can then visualize the Core entities and interact with them.<br/>
+  ready-to-use GUI controls that connect to entities created by Taipy. Your application
+  can then visualize the Taipy entities related to Scenario and Data Management and
+  interact with them.<br/>
   Please check the
-  [list of Core back-end controls](../manuals/userman/gui/viselements/index.md#scenario-and-data-management-controls).
+  [list of Scenario and Data Management controls](../manuals/userman/gui/viselements/index.md#scenario-and-data-management-controls).
 - New Taipy command-line interface (CLI). Please refer to the
   [Taipy command-line interface](../manuals/cli/index.md) documentation page for more information.
 - Users can now create a new Taipy application from a template by running `$ taipy create` from the
@@ -559,7 +561,7 @@ Published on 2023-04.
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.2.3
 
-- Error raised when running Core service in development mode after a function rename in the Config.<br/>
+- Error raised when running Orchestrator service in development mode after a function rename in the Config.<br/>
   See [issue #560](https://github.com/Avaiga/taipy-core/issues/560).
 
 2.2.2
@@ -649,7 +651,7 @@ details on how to migrate from version older than 2.1.
 - New data node named [ParquetDataNode](../manuals/userman/data-integration/data-node-config.md#parquet). It represents
   tabular data stored in the Apache Parquet format.
 - Added support for [Modin](https://modin.readthedocs.io/en/stable/) as a new exposed type.
-- Running the Core service is required to execute jobs. See `Core().run()^` method.
+- Running the Orchestrator service is required to execute jobs. See `Orchestrator().run()^` method.
 - The parent entities of a data node, a task, or a pipeline can be accessed via
   `DataNode.get_parents()^`, `Task.get_parents()^`, or `Pipeline.get_parents()^`, or by passing the
   data node entity, task entity or pipeline entity to the function `taipy.get_parents()^`.
@@ -657,7 +659,7 @@ details on how to migrate from version older than 2.1.
   _last_edit_date_ of the data node.
 - New data node property _is_up_to_date_ equals to `True` if the data node has not expired (refer to
   _expiration_date_ attribute). `False` otherwise.
-- The **sql** _repository_type_ is now available on community edition to store Core entities in an
+- The **sql** _repository_type_ is now available on community edition to store Taipy entities in an
   SQL database.
 
 ## Improvements and changes
@@ -743,9 +745,9 @@ Published on 2022-10.
   method is called on a job whose status is either `RUNNING`, `COMPLETED`, or `SKIPPED`, its subsequent jobs will
   be abandoned while its status remains unchanged. A job whose status is `FAILED`, `CANCELED` or `ABANDONED`
   cannot be canceled.
-- Taipy Core can now be run as a service by using `Core().run()` or `tp.run(Core())`. By running Core
-  as a service, Taipy initializes the scheduler and the job dispatcher based on the provided configuration. The
-  Taipy Core service can be run along with Taipy GUI or Taipy Rest services.
+- Taipy Orchestrator can now be run as a service by using `Orchestrator().run()` or `tp.run(Orchestrator())`. By
+  running Orchestrator as a service, Taipy initializes the scheduler and the job dispatcher based on the provided configuration. The
+  Taipy Orchestrator service can be run along with Taipy GUI or Taipy Rest services.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-config</code></strong></h6>
 2.0.0

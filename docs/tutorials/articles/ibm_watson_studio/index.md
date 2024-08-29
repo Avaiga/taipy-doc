@@ -189,7 +189,7 @@ proper results.
 import taipy as tp
 
 if __name__ == "__main__":
-    tp.Core().run()
+    tp.Orchestrator().run()
 
     scenario = tp.create_scenario(scenario_cfg)
 

@@ -138,7 +138,7 @@ nav:
       - "Configuration":
         - "Configuration": manuals/userman/configuration/index.md
         - "Configuring the GUI application": manuals/userman/configuration/gui-config.md
-        - "Configuring the Core service": manuals/userman/configuration/core-config.md
+        - "Configuring the core features": manuals/userman/configuration/core-config.md
         - "Configuring jobs execution": manuals/userman/configuration/job-config.md
         - "Configuration checker": manuals/userman/configuration/config-checker.md
         - "Advanced configuration": manuals/userman/configuration/advanced-config.md

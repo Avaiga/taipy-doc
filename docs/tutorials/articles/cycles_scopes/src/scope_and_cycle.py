@@ -33,7 +33,7 @@ if __name__ == '__main__':
 
     Config.export('step_04/onfig.toml')
 
-    tp.Core().run()
+    tp.Orchestrator().run()
 
     scenario_1 = tp.create_scenario(scenario_cfg,
                                     creation_date=dt.datetime(2022,10,7),
