@@ -70,7 +70,7 @@ def create_and_submit_scenario(state):
 
 with tgb.Page() as page:
     tgb.text("{value}")
-    tgb.button("Press me!", on_action=create_and_submit_scenario)
+    tgb.button("Create and submit a scenario!", on_action=create_and_submit_scenario)
 
 
 if __name__ == "__main__":
