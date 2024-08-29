@@ -135,5 +135,5 @@ Hello Kylian Mbappe!
 !!! note
 
     Please refer to the
-    [scenario management](../../../tutorials/fundamentals/2_scenario_management_overview/index.md)
+    [scenario management](../../../tutorials/articles/scenario_management_overview/index.md)
     tutorial for a more realistic use case.

@@ -151,7 +151,7 @@ For more realistic and advanced use cases, check out our
 
 <div class="tp-row tp-row--gutter-sm">
   <div class="tp-col-12 tp-col-md-4 d-flex">
-    <a class="tp-content-card tp-content-card--primary" href="../tutorials/fundamentals/1_understanding_gui/">
+    <a class="tp-content-card tp-content-card--primary" href="../tutorials/articles/understanding_gui/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon--small" src="images/visualize.svg">
         <h3>Understanding GUI</h3>
@@ -165,7 +165,7 @@ For more realistic and advanced use cases, check out our
   </div>
 
   <div class="tp-col-12 tp-col-md-4 d-flex">
-    <a class="tp-content-card tp-content-card--alpha" href="../tutorials/fundamentals/2_scenario_management_overview/">
+    <a class="tp-content-card tp-content-card--alpha" href="../tutorials/articles/scenario_management_overview/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon--small" src="images/scenario.svg">
         <h3>Manage Data and Scenarios</h3>
