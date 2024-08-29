@@ -3,7 +3,7 @@ title: Integrating Databricks
 category: integration
 data-keywords: scenario task
 short-description: A guide to integrate Databricks with Taipy scenarios.
-order: 23
+order: 24
 img: databricks/images/databricks.png
 hide:
     - toc

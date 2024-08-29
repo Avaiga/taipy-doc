@@ -3,7 +3,7 @@ title: Background Remover
 category: other
 data-keywords: ai community
 short-description: An interactive application to easily remove image backgrounds using automatic detection.
-order: 13
+order: 14
 img: background_remover/images/background-remover.png
 hide:
     - toc
