@@ -194,7 +194,7 @@ data, and a bar chart for visualizing metric values.
     Gui(md).run()
     ```
 
-    [Download the code](./src/metrics_visualization.py){: .tp-btn target='blank' }
+    [Download the code](./src/metrics_visualization_tgb.py){: .tp-btn target='blank' }
 
 
 ![Metrics Visualization](images/metrics_visualization.png){width=90% : .tp-image-border}
