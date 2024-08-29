@@ -52,19 +52,19 @@ from initial prototypes to production-ready applications.
 
 <ul class="tp-pills-list">
   <li>
-    <a class="tp-pill" href="manuals/userman/gui/viselements/generic/chart/">
+    <a class="tp-pill" href="refmans/gui/viselements/generic/chart/">
       <span>Chart</span>
       <div class="tp-tooltip">
-        <img src="manuals/userman/gui/viselements/generic/chart-d.png"/>
+        <img src="refmans/gui/viselements/generic/chart-d.png"/>
         <p>A chart visually depicts data through graphs, charts, or plots.</p>
       </div>
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/userman/gui/viselements/generic/table/">
+    <a class="tp-pill" href="refmans/gui/viselements/generic/table/">
       <span>Table</span>
       <div class="tp-tooltip">
-        <img src="manuals/userman/gui/viselements/generic/table-d.png"/>
+        <img src="refmans/gui/viselements/generic/table-d.png"/>
         <p>
           A table presents data in rows and columns, often used in web applications for structured
           data display and interaction.
@@ -73,34 +73,34 @@ from initial prototypes to production-ready applications.
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/userman/gui/viselements/generic/button/">
+    <a class="tp-pill" href="refmans/gui/viselements/generic/button/">
       <span>Button</span>
       <div class="tp-tooltip">
-        <img src="manuals/userman/gui/viselements/generic/button-d.png" alt="">
+        <img src="refmans/gui/viselements/generic/button-d.png" alt="">
         <p>You can employ this class name to target the buttons on your page and apply styling.</p>
       </div>
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/userman/gui/viselements/generic/input/">
+    <a class="tp-pill" href="refmans/gui/viselements/generic/input/">
       <span>Input</span>
       <div class="tp-tooltip">
-        <img src="manuals/userman/gui/viselements/generic/input-d.png"/>
+        <img src="refmans/gui/viselements/generic/input-d.png"/>
         <p>A control that displays some text that can potentially be edited.</p>
       </div>
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/userman/gui/viselements/generic/slider/">
+    <a class="tp-pill" href="refmans/gui/viselements/generic/slider/">
       <span>Slider</span>
       <div class="tp-tooltip">
-        <img src="manuals/userman/gui/viselements/generic/slider-d.png"/>
+        <img src="refmans/gui/viselements/generic/slider-d.png"/>
         <p>Displays and allows the user to set a value within a range.</p>
       </div>
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/userman/gui/viselements/generic/controls/">
+    <a class="tp-pill" href="refmans/gui/viselements/generic/controls/">
       <span>…</span>
       <div class="tp-tooltip">
         <p>Browse the complete list of visual elements.</p>
@@ -113,34 +113,34 @@ from initial prototypes to production-ready applications.
 
 <ul class="tp-pills-list">
   <li>
-    <a class="tp-pill" href="manuals/userman/gui/viselements/generic/blocks/">
+    <a class="tp-pill" href="refmans/gui/viselements/generic/blocks/">
       <span>Structure Pages</span>
     </a>
   </li>
     <li>
       <div class="tp-pill">
-        <a href="manuals/userman/sdm/scenario/#scenario-configuration">Configure</a>,
-        <a href="manuals/userman/sdm/scenario/#scenario-creation">instantiate</a> and
-        <a href="manuals/userman/sdm/scenario/#scenario-submission">submit</a> Scenario
+        <a href="userman/sdm/scenario/#scenario-configuration">Configure</a>,
+        <a href="userman/sdm/scenario/#scenario-creation">instantiate</a> and
+        <a href="userman/sdm/scenario/#scenario-submission">submit</a> Scenario
       </div>
     </li>
   <li>
-    <a class="tp-pill" href="manuals/userman/versioning/">
+    <a class="tp-pill" href="userman/advanced_features/versioning/">
       <span>Manage versions</span>
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/cli/">
+    <a class="tp-pill" href="userman/ecosystem/cli/">
       <span>Taipy command-line interface (CLI)</span>
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="manuals/userman/rest/">
+    <a class="tp-pill" href="userman/advanced_features/rest/">
       <span>Expose Taipy's REST APIs</span>
     </a>
   </li>
     <li>
-    <a class="tp-pill" href="manuals/userman/">
+    <a class="tp-pill" href="userman/">
       <span>…</span>
       <div class="tp-tooltip">
         <p>Browse the complete list of features.</p>

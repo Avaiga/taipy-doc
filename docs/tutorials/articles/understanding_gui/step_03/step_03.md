@@ -34,7 +34,7 @@ In the code below, this concept will be used to:
 
 - Reset the input when the text equals "Reset".
 
-## How to connect two variables - the [`on_change`](../../../../manuals/userman/gui/callbacks.md) callback
+## How to connect two variables - the [`on_change`](../../../../userman/gui/callbacks.md) callback
 
 The `on_change()` function is a "special" function. **Taipy** checks if you
 have created it. Whenever the state of a variable is modified,
@@ -119,6 +119,6 @@ the callback function referenced in the `on_action` property.
 
 ![Interactive GUI](images/result.png){ width=90% : .tp-image-border }
 
-[`notify()`](../../../../manuals/refmans/reference/taipy.gui.notify.md) is a Taipy function that creates a
-[notification](../../../../manuals/userman/gui/notifications.md) with some information. The user can pass
+[`notify()`](../../../../refmans/reference/taipy.gui.notify.md) is a Taipy function that creates a
+[notification](../../../../userman/gui/notifications.md) with some information. The user can pass
 multiple parameters, including the *state*, the *notification_type*, and the *message*.

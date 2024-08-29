@@ -18,7 +18,7 @@ This tool addresses two major areas:
 
 - Defining Taipy GUI page content with Markdown<br/>
     Taipy GUI exposes an augmented implementation of the
-    [Markdown syntax](../userman/gui/viselements/introduction.md#markdown) that allows
+    [Markdown syntax](../../../refmans/gui/viselements/introduction.md#markdown) that allows
     for defining visual elements you want to display on your applications'
     pages.
 

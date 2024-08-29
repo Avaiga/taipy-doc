@@ -377,7 +377,7 @@ def spark_process(input_csv_path: str, output_csv_path: str) -> pd.DataFrame:
 
 In our case, we want our Taipy task to output the data after it is processed by Spark -
 so that it can be written to the *processed_penguin_df_cfg*
-[Parquet data node config](../../../manuals/userman/data-integration/data-node-config.md#parquet). We
+[Parquet data node config](../../../userman/data-integration/data-node-config.md#parquet). We
 can do this by manually reading from the output target (in this case, *output_csv_path*)
 and then returning it as a Pandas DataFrame.
 

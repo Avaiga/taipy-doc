@@ -130,9 +130,9 @@ def send_message(state: State) -> None:
 # Step 6: Create the User Interface
 
 In Taipy, one way to define pages is to use Markdown strings. Here we use a
-[table](../../../manuals/userman/gui/viselements/generic/table.md) to display the
+[table](../../../refmans/gui/viselements/generic/table.md) to display the
  *conversation* dictionary and an
- [input](../../../manuals/userman/gui/viselements/generic/input.md) so that the
+ [input](../../../refmans/gui/viselements/generic/input.md) so that the
  user can type their message. When the user presses enter,
  the *send_message()* function is triggered.
 

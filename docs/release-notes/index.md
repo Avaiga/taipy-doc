@@ -35,9 +35,9 @@ This is the list of changes to Taipy releases as they were published.
 
 <h4><strong><code>taipy-gui</code></strong> 4.0.0</h4>
 
-- A new control called [`metric`](../manuals/userman/gui/viselements/generic/metric.md) was added
+- A new control called [`metric`](../refmans/gui/viselements/generic/metric.md) was added
   to represent significant numerical information such as an industrial KPI.
-- A new control called [`chat`](../manuals/userman/gui/viselements/generic/chat.md) was added
+- A new control called [`chat`](../refmans/gui/viselements/generic/chat.md) was added
   to simplify the creation of chatting applications.
 
 <h4><strong><code>taipy-core</code></strong> 4.0.0 </h4>
@@ -48,8 +48,8 @@ This is the list of changes to Taipy releases as they were published.
     - sort the output list of scenarios by name, id, creation date, or tag
     - filter the output list of scenarios that are created in a specific time range.<br/>
   For more information, please refer to
-  [Get all scenarios](../manuals/userman/sdm/scenario/index.md#get-all-scenarios) and
-  [Get primary scenarios](../manuals/userman/sdm/scenario/index.md#get-primary-scenarios).
+  [Get all scenarios](../userman/sdm/scenario/index.md#get-all-scenarios) and
+  [Get primary scenarios](../userman/sdm/scenario/index.md#get-primary-scenarios).
 
 <h4><strong><code>taipy-templates</code></strong> 4.0.0 </h4>
 
@@ -66,14 +66,14 @@ This is the list of changes to Taipy releases as they were published.
   runs a Taipy GUI application, and if there is no file called `<app>.css` at the same location,
   then this CSS file is loaded and applied to all pages. This feature allows you to share styles
   across different Taipy GUI applications.<br/>
-  See the [Styling section](../manuals/userman/gui/styling/index.md#style-sheets) for more
+  See the [Styling section](../userman/gui/styling/index.md#style-sheets) for more
   information.<br/>
   See [issue #1597](https://github.com/Avaiga/taipy/issues/1597) for a description of this
   functionality.
-- In the [`chart`](../manuals/userman/gui/viselements/generic/chart.md) control, the Modebar (that
+- In the [`chart`](../refmans/gui/viselements/generic/chart.md) control, the Modebar (that
   appears when the cart is hovered on) no longer has the Plotly logo button by default.
   You can bring it back by setting the chart's
-  [*plot_config* property](../manuals/userman/gui/viselements/generic/chart.md#p-plot_config)
+  [*plot_config* property](../refmans/gui/viselements/generic/chart.md#p-plot_config)
   to a dictionary with a property called "displaylogo" set to True.<br/>
   See [issue #1600](https://github.com/Avaiga/taipy/issues/1600).
 
@@ -81,7 +81,7 @@ This is the list of changes to Taipy releases as they were published.
 
 - In standalone job execution mode, the default value of *max_nb_of_workers* is now 2 instead of 1.
   For more information, please refer to
-  [Job execution configuration](../manuals/userman/configuration/job-config.md).
+  [Job execution configuration](../userman/configuration/job-config.md).
 - When using the Taipy command-line interface, if an unsupported argument is provided, the CLI
   will display a message indicating the invalid argument. If the invalid argument is possibly a
   typo, the CLI will suggest the closest valid argument.
@@ -97,7 +97,7 @@ This is the list of changes to Taipy releases as they were published.
   a `ScenarioConfig^` has the same configuration id with another one in the same `ScenarioConfig^`,
   or any additional property of any configuration has the same name as one of the attributes
   of the configuration class.<br/>
-  For more information, please refer to [Configuration checker](../manuals/userman/configuration/config-checker.md).
+  For more information, please refer to [Configuration checker](../userman/configuration/config-checker.md).
 
 <h4><strong><code>taipy-templates</code></strong> 4.0.0 </h4>
 
@@ -126,12 +126,12 @@ additional features.
   export folder if the path exists.
 - The `taipy.export_scenario()^` method now exports a zip archive instead of a
   folder. For more information, please refer to
-  [Export a scenario](../manuals/userman/sdm/scenario/index.md#export-a-scenario).
+  [Export a scenario](../userman/sdm/scenario/index.md#export-a-scenario).
 - The `taipy.export_scenario()^` method now raises the `ExportPathAlreadyExists^`
   exception if the export path already exists. You can explicitly set the *overwrite* parameter to
   True to overwrite the existing export path. For more information, please refer to
-  [Export a scenario](../manuals/userman/sdm/scenario/index.md#export-a-scenario).
+  [Export a scenario](../userman/sdm/scenario/index.md#export-a-scenario).
 - The new `taipy.import_scenario()^` method can be used to import a scenario from an exported
   archive. For more information, please refer to
-  [Import a scenario](../manuals/userman/sdm/scenario/index.md#import-a-scenario).
+  [Import a scenario](../userman/sdm/scenario/index.md#import-a-scenario).
 - The default application template now supports authentication and authorization features.

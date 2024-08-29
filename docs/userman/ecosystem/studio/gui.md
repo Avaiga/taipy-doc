@@ -106,8 +106,8 @@ type, or can be interpreted.
 
 <h5>List of values</h5>
 
-Elements such as [`selector`](../userman/gui/viselements/generic/selector.md) or
-[`toggle`](../userman/gui/viselements/generic/toggle.md) have a property called `lov`
+Elements such as [`selector`](../../../refmans/gui/viselements/generic/selector.md) or
+[`toggle`](../../../refmans/gui/viselements/generic/toggle.md) have a property called `lov`
 that can be set to a series of strings. This would be properly handled by the Taipy Studio preview:
 
 <p align="center">
@@ -117,7 +117,7 @@ that can be set to a series of strings. This would be properly handled by the Ta
 <h5>Images</h5>
 
 You can specify the image displayed by a
-[`image`](../userman/gui/viselements/generic/image.md) control in the
+[`image`](../../../refmans/gui/viselements/generic/image.md) control in the
 preview area by providing the path to the image file, relative to the root directory of the
 project:
 
@@ -162,8 +162,8 @@ of the Markdown file.
 
 ### Tabular values
 
-The [`table`](../userman/gui/viselements/generic/table.md) and
-[`chart`](../userman/gui/viselements/generic/chart.md) controls
+The [`table`](../../../refmans/gui/viselements/generic/table.md) and
+[`chart`](../../../refmans/gui/viselements/generic/chart.md) controls
 can be previewed with relevant data, defined in the mock data file.
 
 <h5>Table values</h5>

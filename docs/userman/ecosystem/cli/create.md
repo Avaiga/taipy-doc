@@ -59,7 +59,7 @@ $ taipy run app.py
 ```
 
 In this example, we scaffold a new Taipy application using the "scenario-management" template,
-which utilizes [a scenario selector](./../userman/gui/viselements/corelements/scenario_selector.md) to allow
+which utilizes [a scenario selector](./../../../refmans/gui/viselements/corelements/scenario_selector.md) to allow
 creating, managing, and running scenarios directly from the GUI page.
 
 Please refer to the next section for a list of application templates.

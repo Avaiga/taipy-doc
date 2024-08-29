@@ -13,21 +13,21 @@ This step illustrates how to utilize visual elements such as charts, sliders, ta
 more within the graphical interface.
 
 Taipy uses different ways to create
-pages: [Markdown](../../../../manuals/userman/gui/pages/markdown.md),
-[HTML](../../../../manuals/userman/gui/pages/html.md) or
-[Python code](../../../../manuals/userman/gui/pages/builder.md). You can choose which you want
+pages: [Markdown](../../../../userman/gui/pages/markdown.md),
+[HTML](../../../../userman/gui/pages/html.md) or
+[Python code](../../../../userman/gui/pages/builder.md). You can choose which you want
 to learn in the code snippets below.
 
-Taipy uses the [visual element](../../../../manuals/userman/gui/viselements/index.md)
+Taipy uses the [visual element](../../../../refmans/gui/viselements/index.md)
 concept to bring interactivity to the application. A visual element is a
 Taipy graphical object displayed on the client. It can be a
-[slider](../../../../manuals/userman/gui/viselements/generic/slider.md), a
-[chart](../../../../manuals/userman/gui/viselements/generic/chart.md), a
-[table](../../../../manuals/userman/gui/viselements/generic/table.md), an
-[input](../../../../manuals/userman/gui/viselements/generic/input.md), a
-[menu](../../../../manuals/userman/gui/viselements/generic/menu.md), etc.
+[slider](../../../../refmans/gui/viselements/generic/slider.md), a
+[chart](../../../../refmans/gui/viselements/generic/chart.md), a
+[table](../../../../refmans/gui/viselements/generic/table.md), an
+[input](../../../../refmans/gui/viselements/generic/input.md), a
+[menu](../../../../refmans/gui/viselements/generic/menu.md), etc.
 Check the complete list
-[here](../../../../manuals/userman/gui/viselements/index.md).
+[here](../../../../refmans/gui/viselements/index.md).
 
 Every visual element follows a similar syntax:
 
@@ -45,7 +45,7 @@ Every visual element follows a similar syntax:
     Taipy intelligently adjusts only the necessary elements of the GUI to reflect
     changes, ensuring a responsive and performance-optimized user experience.
 
-For example, a [slider](../../../../manuals/userman/gui/viselements/generic/slider.md) is written this way :
+For example, a [slider](../../../../refmans/gui/viselements/generic/slider.md) is written this way :
 
 
 === "Markdown"

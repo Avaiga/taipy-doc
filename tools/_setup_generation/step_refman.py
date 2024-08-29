@@ -31,7 +31,7 @@ class RefManStep(SetupStep):
     # Entries that should be hidden for the time being
     HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback"]
     # Where the Reference Manual files are generated (MUST BE relative to docs_dir)
-    REFERENCE_REL_PATH = "manuals/refmans/reference"
+    REFERENCE_REL_PATH = "refmans/reference"
 
     def __init__(self):
         self.navigation = None
@@ -44,8 +44,10 @@ class RefManStep(SetupStep):
 
     def enter(self, setup: Setup):
         os.environ["GENERATING_TAIPY_DOC"] = "true"
-        self.REFERENCE_DIR_PATH = os.path.join(setup.docs_dir, RefManStep.REFERENCE_REL_PATH)
-        self.XREFS_PATH = os.path.join(setup.manuals_dir, "xrefs")
+        self.REFERENCE_DIR_PATH = os.path.join(
+            setup.docs_dir, RefManStep.REFERENCE_REL_PATH
+        )
+        self.XREFS_PATH = os.path.join(setup.user_manuals_dir, "xrefs")
 
     def setup(self, setup: Setup) -> None:
         # Clean REFERENCE_DIR_PATH directory
@@ -107,7 +109,9 @@ class RefManStep(SetupStep):
                     if e.__module__.startswith(Setup.ROOT_PACKAGE):  # For local build
                         if e.__class__.__name__ == "NewType":
                             entry_type = TYPE_ID
-                    elif e.__module__ == "typing" and hasattr(e, "__name__"):  # For Readthedoc build
+                    elif e.__module__ == "typing" and hasattr(
+                        e, "__name__"
+                    ):  # For Readthedoc build
                         # Manually remove classes from 'typing'
                         if e.__name__ in ["NewType", "TypeVar", "overload", "cast"]:
                             continue
@@ -135,7 +139,9 @@ class RefManStep(SetupStep):
                     if first_line:
                         if first_line.group(0).startswith("NOT DOCUMENTED"):
                             continue
-                        doc = REMOVE_LINE_SKIPS_RE.subn(" ", first_line.group(0))[0].strip()
+                        doc = REMOVE_LINE_SKIPS_RE.subn(" ", first_line.group(0))[
+                            0
+                        ].strip()
                     else:
                         print(
                             f"WARNING - Couldn't extract doc summary for {e.__name__} in {e.__module__}",
@@ -148,19 +154,30 @@ class RefManStep(SetupStep):
                     packages = entry_info["packages"]
                     if module.__name__ != Setup.ROOT_PACKAGE:
                         # Is current module a parent of known packages? Use that instead if yes
-                        child_idxs = [i for i, p in enumerate(packages) if p.startswith(module.__name__)]
+                        child_idxs = [
+                            i
+                            for i, p in enumerate(packages)
+                            if p.startswith(module.__name__)
+                        ]
                         if child_idxs:
                             for index in reversed(child_idxs):
                                 del packages[index]
                             packages.append(module.__name__)
                         else:
-                        # Is any known package a parent of the current module? If yes ignore it
-                            parent_idxs = [i for i, p in enumerate(packages) if module.__name__.startswith(p)]
+                            # Is any known package a parent of the current module? If yes ignore it
+                            parent_idxs = [
+                                i
+                                for i, p in enumerate(packages)
+                                if module.__name__.startswith(p)
+                            ]
                             if not parent_idxs:
                                 packages.append(module.__name__)
                 else:
                     if doc is None:
-                        print(f"WARNING - {e.__name__} [in {e.__module__}] has no doc", flush=True)
+                        print(
+                            f"WARNING - {e.__name__} [in {e.__module__}] has no doc",
+                            flush=True,
+                        )
                     entries[full_name] = {
                         "name": entry,
                         "module": e.__module__,
@@ -183,13 +200,15 @@ class RefManStep(SetupStep):
 
         # Compute destination package for each entry
         for entry, entry_desc in entries.items():
-            doc_package = None # Where this entity should be exposed
+            doc_package = None  # Where this entity should be exposed
             module = entry_desc["module"]
             packages = entry_desc["packages"]
             # If no packages, it has to be at the root level
             if not packages:
                 if not entry_desc.get("at_root", False):
-                    raise SystemError(f"FATAL - Entry '{entry}' has no package, and not in root")
+                    raise SystemError(
+                        f"FATAL - Entry '{entry}' has no package, and not in root"
+                    )
                 doc_package = Setup.ROOT_PACKAGE
             else:
                 # If visible from a package above entry module, pick this one
@@ -202,7 +221,9 @@ class RefManStep(SetupStep):
                     if len(packages) == 1:
                         doc_package = packages[0]
                     else:
-                        package_groups = list(filter(lambda p: p in RefManStep.PACKAGE_GROUPS, packages))
+                        package_groups = list(
+                            filter(lambda p: p in RefManStep.PACKAGE_GROUPS, packages)
+                        )
                         if len(package_groups) == 1:
                             doc_package = package_groups[0]
                 else:
@@ -254,9 +275,7 @@ class RefManStep(SetupStep):
                 package_path = f"{self.REFERENCE_DIR_PATH}/pkg_{package}"
                 os.mkdir(package_path)
                 package_output_path = os.path.join(package_path, "index.md")
-                self.navigation += (
-                    f"- \"<code>{package}</code>\":\n  - {RefManStep.REFERENCE_REL_PATH}/pkg_{package}/index.md\n"
-                )
+                self.navigation += f'- "<code>{package}</code>":\n  - {RefManStep.REFERENCE_REL_PATH}/pkg_{package}/index.md\n'
             else:
                 high_package_group = None
                 for p in RefManStep.PACKAGE_GROUPS:
@@ -273,12 +292,14 @@ class RefManStep(SetupStep):
                 package_nav_entry = package
                 if package_group:
                     self.navigation += "  "
-                    package_nav_entry = package[len(package_group):]
-                self.navigation += f"- \"<code>{package_nav_entry}</code>\": {RefManStep.REFERENCE_REL_PATH}/pkg_{package}.md\n"
+                    package_nav_entry = package[len(package_group) :]
+                self.navigation += f'- "<code>{package_nav_entry}</code>": {RefManStep.REFERENCE_REL_PATH}/pkg_{package}.md\n'
                 package_output_path = os.path.join(
                     self.REFERENCE_DIR_PATH, f"pkg_{package}.md"
                 )
-                package_output_path = os.path.join(self.REFERENCE_DIR_PATH, f"pkg_{package}.md")
+                package_output_path = os.path.join(
+                    self.REFERENCE_DIR_PATH, f"pkg_{package}.md"
+                )
 
             def update_xrefs(name, type, force_package, module, others):
                 if not others:
@@ -290,25 +311,31 @@ class RefManStep(SetupStep):
                 # name <-> <number of similar entries> (int)
                 # +  entry_name/<index> <-> [ exposed_package, entry_module, other_packages]
                 if xref := xrefs.get(name):
-                    if isinstance(xref, int): # If there already are duplicates
+                    if isinstance(xref, int):  # If there already are duplicates
                         last_index = int(xref)
                         for index in range(last_index):
                             xref = xrefs.get(f"{name}/{index}")
                             if force_package == xref[0]:
-                                t_name = "Function" if type == FUNCTION_ID else "Class" if type == CLASS_ID else "Type"
+                                t_name = (
+                                    "Function"
+                                    if type == FUNCTION_ID
+                                    else "Class" if type == CLASS_ID else "Type"
+                                )
                                 raise SystemError(
                                     f"FATAL - {t_name} {name} exposed in {force_package} already declared as {xref[0]}.{xref[1]}"
-                                    )
-                        xrefs[f"{name}/{last_index}"] = [ force_package, module, others ]
-                        xrefs[name] = last_index+1
-                    else: # Create multiple indexed entries for 'name'
+                                )
+                        xrefs[f"{name}/{last_index}"] = [force_package, module, others]
+                        xrefs[name] = last_index + 1
+                    else:  # Create multiple indexed entries for 'name'
                         xrefs[name] = 2
                         xrefs[f"{name}/0"] = xref
-                        xrefs[f"{name}/1"] = [ force_package, module, others ]
+                        xrefs[f"{name}/1"] = [force_package, module, others]
                 else:
-                    xrefs[name] = [force_package, module, others ]
+                    xrefs[name] = [force_package, module, others]
 
-            def generate_entries(entry_infos, package, type, package_output_file, in_group):
+            def generate_entries(
+                entry_infos, package, type, package_output_file, in_group
+            ):
                 in_group = "../" if in_group else ""
                 for entry_info in sorted(entry_infos, key=lambda i: i["name"]):
                     name = entry_info["name"]
@@ -318,10 +345,20 @@ class RefManStep(SetupStep):
                         + f"{'()' if type == FUNCTION_ID else ''}`]({in_group}{force_package}.{name}.md)"
                         + f"{': ' + entry_info['doc'] if entry_info['doc'] else ' - NOT DOCUMENTED'}\n"
                     )
-                    output_path = os.path.join(self.REFERENCE_DIR_PATH, f"{force_package}.{name}.md")
+                    output_path = os.path.join(
+                        self.REFERENCE_DIR_PATH, f"{force_package}.{name}.md"
+                    )
                     with open(output_path, "w") as output_file:
-                        output_file.write("---\n---\n\n" + f"::: {force_package}.{name}\n")
-                    update_xrefs(name, type, force_package, entry_info["module"], entry_info["packages"])
+                        output_file.write(
+                            "---\n---\n\n" + f"::: {force_package}.{name}\n"
+                        )
+                    update_xrefs(
+                        name,
+                        type,
+                        force_package,
+                        entry_info["module"],
+                        entry_info["packages"],
+                    )
 
             with open(package_output_path, "w") as package_output_file:
                 if package in module_doc and module_doc[package]:
@@ -331,8 +368,17 @@ class RefManStep(SetupStep):
                     package_output_file.write("## Types\n\n")
                     for type in types:
                         name = type["name"]
-                        package_output_file.write(f"   - `{name}`" + f"{': ' + type.get('doc', ' - NOT DOCUMENTED')}\n")
-                        update_xrefs(name, TYPE_ID, package, entry_info["module"], entry_info.get("packages"))
+                        package_output_file.write(
+                            f"   - `{name}`"
+                            + f"{': ' + type.get('doc', ' - NOT DOCUMENTED')}\n"
+                        )
+                        update_xrefs(
+                            name,
+                            TYPE_ID,
+                            package,
+                            entry_info["module"],
+                            entry_info.get("packages"),
+                        )
                 if functions:
                     package_output_file.write("## Functions\n\n")
                     generate_entries(
@@ -344,7 +390,9 @@ class RefManStep(SetupStep):
                     )
                 if classes:
                     package_output_file.write("## Classes\n\n")
-                    generate_entries(classes, package, CLASS_ID, package_output_file, package_grouped)
+                    generate_entries(
+                        classes, package, CLASS_ID, package_output_file, package_grouped
+                    )
 
         self.add_external_methods_to_config_class(setup)
 
@@ -405,15 +453,28 @@ from taipy.core.config.sequence_config import SequenceConfig\n"""
                 "custom_document: Any = <class 'taipy.core.common.mongo_default_document.MongoDefaultDocument'>",
                 "custom_document: Any = MongoDefaultDocument",
             )
-            new_content = new_content.replace("taipy.config.common.scope.Scope", "Scope")
+            new_content = new_content.replace(
+                "taipy.config.common.scope.Scope", "Scope"
+            )
             new_content = new_content.replace("<Scope.SCENARIO: 2>", "Scope.SCENARIO")
-            new_content = new_content.replace("taipy.core.config.data_node_config.DataNodeConfig", "DataNodeConfig")
-            new_content = new_content.replace("taipy.core.config.task_config.TaskConfig", "TaskConfig")
-            new_content = new_content.replace("taipy.core.config.sequence_config.SequenceConfig", "SequenceConfig")
-            new_content = new_content.replace("taipy.config.common.frequency.Frequency", "Frequency")
+            new_content = new_content.replace(
+                "taipy.core.config.data_node_config.DataNodeConfig", "DataNodeConfig"
+            )
+            new_content = new_content.replace(
+                "taipy.core.config.task_config.TaskConfig", "TaskConfig"
+            )
+            new_content = new_content.replace(
+                "taipy.core.config.sequence_config.SequenceConfig", "SequenceConfig"
+            )
+            new_content = new_content.replace(
+                "taipy.config.common.frequency.Frequency", "Frequency"
+            )
             f.write(new_content)
 
     def exit(self, setup: Setup):
-        setup.update_mkdocs_yaml_template(r"^\s*\[REFERENCE_CONTENT\]\s*\n", self.navigation if self.navigation else "")
+        setup.update_mkdocs_yaml_template(
+            r"^\s*\[REFERENCE_CONTENT\]\s*\n",
+            self.navigation if self.navigation else "",
+        )
         if "GENERATING_TAIPY_DOC" in os.environ:
             del os.environ["GENERATING_TAIPY_DOC"]

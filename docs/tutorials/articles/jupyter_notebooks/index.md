@@ -23,10 +23,10 @@ and rerun all cells, which can be cumbersome.
 
 To solve this and enhance the experience of using Taipy in Jupyter Notebook, we should utilize two straightforward functions for updating the user interface after making changes to our code:
 
-1. [Page.set_content()](../../../manuals/refmans/reference/taipy.gui.Page.md#taipy.gui.Page.set_content):
+1. [Page.set_content()](../../../refmans/reference/taipy.gui.Page.md#taipy.gui.Page.set_content):
    Use this method when you update the content of a page.
 
-2. [Gui.reload()](../../../manuals/refmans/reference/taipy.gui.Gui.md#taipy.gui.Gui.reload): Use this
+2. [Gui.reload()](../../../refmans/reference/taipy.gui.Gui.md#taipy.gui.Gui.reload): Use this
    method when you modify a variable that's used in a page.
 
 # Modifying Page Content
@@ -36,7 +36,7 @@ The code below illustrates how to create a basic Taipy web application in a Jupy
 ![Modifying Page Content](images/jupyter_notebooks_3.png){width=90% : .tp-image-border }
 
 When we wish to alter the contents of *page_md*, we might be tempted to (incorrectly) modify and
-re-run our existing [page](../../../manuals/refmans/reference/taipy.gui.Page.md) definition cell, like this:
+re-run our existing [page](../../../refmans/reference/taipy.gui.Page.md) definition cell, like this:
 
 ![Modifying Page Content](images/jupyter_notebooks_4.png){width=90% : .tp-image-border }
 
@@ -66,7 +66,7 @@ After running the cell, refresh your browser to view the updated changes.
 ![Modifying Variable](images/notebook_gui_reload.gif){width=90% : .tp-image-border }
 
 This doesn't only relate to variables on pages, but also to
-[callback functions](../../../manuals/userman/gui/callbacks.md) like `on_change` or user-defined callbacks.
+[callback functions](../../../userman/gui/callbacks.md) like `on_change` or user-defined callbacks.
 
 # Conclusion
 

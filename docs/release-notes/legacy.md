@@ -35,20 +35,20 @@ Published on 2024-03.
 
 <h4><strong><code>taipy-gui</code></strong> 3.1.0</h4>
 
-- The [`chart`](../manuals/userman/gui/viselements/generic/chart.md) control has a new property called *figure* that
+- The [`chart`](../refmans/gui/viselements/generic/chart.md) control has a new property called *figure* that
   expects an instance of `plotly.graph_objects.Figure`. This class is provided by the
 [Plotly Open Source Graphing Library for Python](https://plotly.com/python/) so you can create
   all sorts of graphs in Python.<br/>
-  See the [`figure` property](../manuals/userman/gui/viselements/generic/chart.md#p-figure) of the `chart` control and
-  the [section on the *figure* property](../manuals/userman/gui/viselements/generic/chart.md#the-figure-property) for
+  See the [`figure` property](../refmans/gui/viselements/generic/chart.md#p-figure) of the `chart` control and
+  the [section on the *figure* property](../refmans/gui/viselements/generic/chart.md#the-figure-property) for
   more information.
-- The [`part`](../manuals/userman/gui/viselements/generic/part.md) block has a new property called *content* that
+- The [`part`](../refmans/gui/viselements/generic/part.md) block has a new property called *content* that
   lets developers integrate any third-party library that can generate HTML.<br/>
-  See the documentation for the [`part`](../manuals/userman/gui/viselements/generic/part.md) block and the examples
+  See the documentation for the [`part`](../refmans/gui/viselements/generic/part.md) block and the examples
   using *content providers* for more information.
-- A new control called [`date_range`](../manuals/userman/gui/viselements/generic/date_range.md) is available if
+- A new control called [`date_range`](../refmans/gui/viselements/generic/date_range.md) is available if
   you need to represent and edit date ranges in your application pages.
-- A new control called [`login`](../manuals/userman/gui/viselements/generic/login.md) is available if you need users
+- A new control called [`login`](../refmans/gui/viselements/generic/login.md) is available if you need users
   to authenticate in your application.
 
 <h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
@@ -56,42 +56,42 @@ Published on 2024-03.
 - The `DataNode.filter()^` method and the indexing/filtering style now also support filtering a
   Numpy array, a list of objects, and a list of dictionaries.<br/>
   For more information, please refer to
-  [Filter a data node](../manuals/userman/data-integration/data-node-usage.md#filter).
+  [Filter a data node](../userman/data-integration/data-node-usage.md#filter).
 - You can now append new data to a data node using the `DataNode.append()^` method. The method is
   available for `CSVDataNode`, `ExcelDataNode`, `JSONDataNode`, `ParquetDataNode`, `SQLDataNode`,
   `SQLTableDataNode`, and `MongoCollectionDataNode`.<br/>
   For more information, please refer to
-  [Append a data node](../manuals/userman/data-integration/data-node-usage.md#append).
+  [Append a data node](../userman/data-integration/data-node-usage.md#append).
 - A new class called `Submission^` holds meta-data (such as its status or
   submission date) related to a submitted entity: `Scenario^`, `Sequence^`, and/or `Task^`.<br/>
   The function `taipy.get_latest_submission()^` returns the last submission of a given entity.<br/>
   For more information, please refer to
-  [Submission](../manuals/userman/sdm/submission/index.md).
+  [Submission](../userman/sdm/submission/index.md).
 - `taipy.submit()^`, `Scenario.submit()^`, `Sequence.submit()^`, and `Task.submit()^` now return a
   `Submission^` entity.
 - A new predefined data node named `S3ObjectDataNode^` has been implemented.<br/>
   For more information, please refer to
-  [S3ObjectDataNode](../manuals/userman/data-integration/data-node-config.md#amazon-web-service-s3-object).
+  [S3ObjectDataNode](../userman/data-integration/data-node-config.md#amazon-web-service-s3-object).
 
 ## Improvements and changes
 
 <h4><strong><code>taipy</code></strong> 3.1.0</h4>
 
-- Task nodes in the [`scenario_dag`](../manuals/userman/gui/viselements/corelements/scenario_dag.md) control dynamically
+- Task nodes in the [`scenario_dag`](../refmans/gui/viselements/corelements/scenario_dag.md) control dynamically
   reflect the status of related jobs for the user that submitted scenarios or sequences.
-- The [`scenario`](../manuals/userman/gui/viselements/corelements/scenario.md) control lets you add, modify, and edit
+- The [`scenario`](../refmans/gui/viselements/corelements/scenario.md) control lets you add, modify, and edit
   sequences.
-- The [`data_node`](../manuals/userman/gui/viselements/corelements/data_node.md) control can now represent collections.
+- The [`data_node`](../refmans/gui/viselements/corelements/data_node.md) control can now represent collections.
 
 <h4><strong><code>taipy-gui</code></strong> 3.1.0</h4>
 
-- The [`table`](../manuals/userman/gui/viselements/generic/table.md) control supports enumerated values. That allows
+- The [`table`](../refmans/gui/viselements/generic/table.md) control supports enumerated values. That allows
   for a better user experience when users edit cell values.<br/>
   See the
-  [section on enumerated values in tables](../manuals/userman/gui/viselements/generic/table.md#enumerated-values) for
+  [section on enumerated values in tables](../refmans/gui/viselements/generic/table.md#enumerated-values) for
   the details.
-- The [`toggle`](../manuals/userman/gui/viselements/generic/toggle.md) control appears as a switch button if its
-  [*value*](../manuals/userman/gui/viselements/generic/toggle.md#p-value) property holds a Boolean value.
+- The [`toggle`](../refmans/gui/viselements/generic/toggle.md) control appears as a switch button if its
+  [*value*](../refmans/gui/viselements/generic/toggle.md#p-value) property holds a Boolean value.
 
 <h4><strong><code>taipy-core</code></strong> 3.1.0 </h4>
 
@@ -109,11 +109,11 @@ Published on 2024-03.
 <h5>3.1.1</h5>
 
 - Data is not shown or not automatically refreshed in
-  [Data Node viewer](../manuals/userman/gui/viselements/corelements/data_node.md).<br/>
+  [Data Node viewer](../refmans/gui/viselements/corelements/data_node.md).<br/>
   See [issue #908](https://github.com/Avaiga/taipy/issues/908) and
   [issue #950](https://github.com/Avaiga/taipy/issues/950).
 - Data Nodes holding dates may not show in
-  [Data Node viewers](../manuals/userman/gui/viselements/corelements/data_node.md).<br/>
+  [Data Node viewers](../refmans/gui/viselements/corelements/data_node.md).<br/>
   See [issue #1043](https://github.com/Avaiga/taipy/issues/1043).
 
 <h4><strong><code>taipy-gui</code></strong></h4>
@@ -167,38 +167,38 @@ Published on 2023-10.
 
 <h4><strong><code>taipy-gui</code></strong> 3.0.0</h4>
 
-- A new package holds the [*Page Builder API*](../manuals/userman/gui/pages/builder.md): a set of classes that
+- A new package holds the [*Page Builder API*](../userman/gui/pages/builder.md): a set of classes that
   let you define the pages for your application entirely with Python.
 - You can now update variables on all clients using the *shared variables* concept. See
   the `Gui.add_shared_variable()^` and `State.dispatch()^` methods for details.
 - You can now invoke a callback for all clients using the `broadcast_callback()^` function.
-- The [`slider`](../manuals/userman/gui/viselements/generic/slider.md) control can now handle several knobs,
+- The [`slider`](../refmans/gui/viselements/generic/slider.md) control can now handle several knobs,
   allowing for range selection.<br/>
-  Please check the [example](../manuals/userman/gui/viselements/generic/slider.md#multi-selection) for more
+  Please check the [example](../refmans/gui/viselements/generic/slider.md#multi-selection) for more
   information.
-- The [`file_download`](../manuals/userman/gui/viselements/generic/file_download.md) control now lets developers
+- The [`file_download`](../refmans/gui/viselements/generic/file_download.md) control now lets developers
   generate the file content dynamically, at download time.<br/>
-  Please check the [example](../manuals/userman/gui/viselements/generic/file_download.md#dynamic-content) for more information.
+  Please check the [example](../refmans/gui/viselements/generic/file_download.md#dynamic-content) for more information.
 - A new CSS class called *toggle-navbar* was added to the
-  [Stylekit](../manuals/userman/gui/styling/stylekit.md) to give a
-  [`toggle`](../manuals/userman/gui/viselements/generic/toggle.md) control the aspect of a
-  [`navbar`](../manuals/userman/gui/viselements/generic/navbar.md).
-- The [`chart`](../manuals/userman/gui/viselements/generic/chart.md) control now supports the
-  [*treemap*](../manuals/userman/gui/viselements/generic/charts/treemap.md) and
-  [*waterfall*](../manuals/userman/gui/viselements/generic/charts/waterfall.md) chart types.
+  [Stylekit](../userman/gui/styling/stylekit.md) to give a
+  [`toggle`](../refmans/gui/viselements/generic/toggle.md) control the aspect of a
+  [`navbar`](../refmans/gui/viselements/generic/navbar.md).
+- The [`chart`](../refmans/gui/viselements/generic/chart.md) control now supports the
+  [*treemap*](../refmans/gui/viselements/generic/charts/treemap.md) and
+  [*waterfall*](../refmans/gui/viselements/generic/charts/waterfall.md) chart types.
 
 <h4><strong><code>taipy-core</code></strong> 3.0.0</h4>
 
 - A production version of a Taipy application can now be provided with **migration functions** to
   automatically migrate entities and keep them compatible with previous versions.<br/>
-  For more information, refer to [Production mode](../manuals/userman/versioning/production_mode.md).
+  For more information, refer to [Production mode](../userman/versioning/production_mode.md).
 - A `GLOBAL` scope data node can be created from a data node configuration calling
   the new `taipy.create_global_data_node()^` method.<br/>
   For more information, refer to
-  [Create a data node](../manuals/userman/data-integration/data-node-usage.md#create-a-data-node).
+  [Create a data node](../userman/data-integration/data-node-usage.md#create-a-data-node).
 - A data node configuration can be built from an existing data node configuration.
   For more information, refer to the documentation page on
-  [data node configuration](../manuals/userman/data-integration/data-node-config.md#configure-a-data-node-from-another-configuration).
+  [data node configuration](../userman/data-integration/data-node-config.md#configure-a-data-node-from-another-configuration).
 - A new class `Submittable^` models entities that can be submitted for execution.
   It is an Abstract class instantiated by `Scenario^` and `Sequence^`.
   It can be handy to use the new following `Submittable^` methods:
@@ -214,8 +214,8 @@ Published on 2023-10.
     * `taipy.exists()^` checks if an entity exists.
 - The encoding type of CSVDataNode and JSONDataNode can now be configured using the
   *encoding* parameter. For more information, please refer to
-  [Configure a CSVDataNode](../manuals/userman/data-integration/data-node-config.md#csv)
-  and [Configure a JSONDataNode](../manuals/userman/data-integration/data-node-config.md#json)
+  [Configure a CSVDataNode](../userman/data-integration/data-node-config.md#csv)
+  and [Configure a JSONDataNode](../userman/data-integration/data-node-config.md#json)
   sections.
 
 <h4><strong><code>taipy-template</code></strong> 3.0.0</h4>
@@ -236,10 +236,10 @@ Published on 2023-10.
       This dictionary now has the additional *action* key that is set to the action name.
       This change not only impact the *on_action* callback of all controls that support it,
       but in an exactly similar manner the following callback signatures:
-        - *on_range_change* in the [`chart`](../manuals/userman/gui/viselements/generic/chart.md) control;
-        - *on_edit*, *on_add*, and *on_delete* in the [`table`](../manuals/userman/gui/viselements/generic/table.md)
+        - *on_range_change* in the [`chart`](../refmans/gui/viselements/generic/chart.md) control;
+        - *on_edit*, *on_add*, and *on_delete* in the [`table`](../refmans/gui/viselements/generic/table.md)
           control;
-        - *on_close* in the [`pane`](../manuals/userman/gui/viselements/generic/pane.md) block.
+        - *on_close* in the [`pane`](../refmans/gui/viselements/generic/pane.md) block.
 - The `navigate()^` function has an additional parameter *params* that is used to add query
   parameters to the requested URL. The query parameters can be retrieved in the `on_navigate`
   callback.
@@ -252,7 +252,7 @@ Published on 2023-10.
 
 - :warning: A `ScenarioConfig^` graph is now created directly from `TaskConfig^` and
   `DataNodeConfig^`. Consequently, `PipelineConfig` has been removed. For more
-  information, refer to [Configure a scenario](../manuals/userman/sdm/scenario/scenario-config.md).
+  information, refer to [Configure a scenario](../userman/sdm/scenario/scenario-config.md).
 - :warning: The `Pipeline` object has been removed and replaced by `Sequence^`. A sequence is
   held by a `Scenario^` and represents a subset of its tasks than can be submitted
   together independently of the other tasks of the scenario. For more information,
@@ -261,7 +261,7 @@ Published on 2023-10.
 - The `root_folder`, `storage_folder`, `read_entity_retry`, `repository_type`, and
   `repository_properties` attributes of the `GlobalAppConfig^` have been moved to the
   `CoreSection^`.<br/>
-  Please refer to the [Core configuration page](../manuals/userman/configuration/core-config.md)
+  Please refer to the [Core configuration page](../userman/configuration/core-config.md)
   for details.
 - The `clean_entities` attribute has been removed from the `CoreSection^`. Correspondingly, the
   `--clean-entities` option has been removed from the version management CLI.<br/>
@@ -293,33 +293,33 @@ Published on 2023-10.
   be called too early. It is now ensured to be invoked *after* the download operation is
   performed.<br/>
   See [issue #916](https://github.com/Avaiga/taipy-gui/issues/916).
-- Setting the [*properties*](../manuals/userman/gui/viselements/introduction.md#generic-properties) property of
+- Setting the [*properties*](../userman/gui/viselements/introduction.md#generic-properties) property of
   a visual element as the returned value from a function may not succeed.</br>
   See [issue #897](https://github.com/Avaiga/taipy-gui/issues/897).
 - Variables imported by an `import *` directive are not handled properly in the state of
   a callback defined in the importing module.</br>
   See [issue #908](https://github.com/Avaiga/taipy-gui/issues/908).
-- The [`date`](../manuals/userman/gui/viselements/generic/date.md) control does not use the *format* property if
+- The [`date`](../refmans/gui/viselements/generic/date.md) control does not use the *format* property if
   *with_time* is not set.<br/>
   See [issue #909](https://github.com/Avaiga/taipy-gui/issues/909).
-- The [`date`](../manuals/userman/gui/viselements/generic/date.md) control uses the `datetime.date` type and does
+- The [`date`](../refmans/gui/viselements/generic/date.md) control uses the `datetime.date` type and does
   not apply time zones if time is not involved.<br/>
   See [issue #895](https://github.com/Avaiga/taipy-gui/issues/895) and
   [issue #923](https://github.com/Avaiga/taipy-gui/issues/923).
-- Updating a [`chart`](../manuals/userman/gui/viselements/generic/chart.md) control data may cause data congestion
+- Updating a [`chart`](../refmans/gui/viselements/generic/chart.md) control data may cause data congestion
   or display flickering.<br/>
   See [issue #864](https://github.com/Avaiga/taipy-gui/issues/864) and
   [issue #932](https://github.com/Avaiga/taipy-gui/issues/932).
-- Selection in a [`chart`](../manuals/userman/gui/viselements/generic/chart.md) with type *pie* type is not
+- Selection in a [`chart`](../refmans/gui/viselements/generic/chart.md) with type *pie* type is not
   properly handled.<br/>
   See [issue #919](https://github.com/Avaiga/taipy-gui/issues/919).
-- Hover text doesn't show properly in a [`selector`](../manuals/userman/gui/viselements/generic/selector.md) that
+- Hover text doesn't show properly in a [`selector`](../refmans/gui/viselements/generic/selector.md) that
   is crowded.<br/>
   See [issue #927](https://github.com/Avaiga/taipy-gui/issues/927).
-- Options with a long text in a [`selector`](../manuals/userman/gui/viselements/generic/selector.md) cannot cbe
+- Options with a long text in a [`selector`](../refmans/gui/viselements/generic/selector.md) cannot cbe
   deselected.<br/>
   See [issue #917](https://github.com/Avaiga/taipy-gui/issues/917).
-- The [`table`](../manuals/userman/gui/viselements/generic/toggle.md) control does not support undefined date values
+- The [`table`](../refmans/gui/viselements/generic/toggle.md) control does not support undefined date values
     from Pandas data frames.<br/>
     See [issue #886](https://github.com/Avaiga/taipy-gui/issues/886).
 
@@ -340,7 +340,7 @@ additional features.
 
 - Python functions including scenario management methods can be scheduled to run at a specific
   time using the new `taipy.Scheduler^` API. For more information, refer to
-  [Schedule a method](../manuals/userman/scheduling/index.md).
+  [Schedule a method](../userman/scheduling/index.md).
 
 ## Improvements and changes
 
@@ -367,7 +367,7 @@ Published on 2023-06.
   can then visualize the Taipy entities related to Scenario and Data Management and
   interact with them.<br/>
   Please check the
-  [list of Scenario and Data Management controls](../manuals/userman/gui/viselements/index.md#scenario-and-data-management-controls).
+  [list of Scenario and Data Management controls](../refmans/gui/viselements/index.md#scenario-and-data-management-controls).
 - New Taipy command-line interface (CLI). Please refer to the
   [Taipy command-line interface](../manuals/cli/index.md) documentation page for more information.
 - Users can now create a new Taipy application from a template by running `$ taipy create` from the
@@ -377,20 +377,20 @@ Published on 2023-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.3.0
 
-- The [`table`](../manuals/userman/gui/viselements/generic/table.md) and
-- [`chart`](../manuals/userman/gui/viselements/generic/chart.md)
+- The [`table`](../refmans/gui/viselements/generic/table.md) and
+- [`chart`](../refmans/gui/viselements/generic/chart.md)
   controls have a new property called *rebuild* that allows for modifying the control configuration
   at runtime, using properties that are *not* dynamic.<br/>
   See the details in the specific documentation sections for
-  [tables](../manuals/userman/gui/viselements/generic/table.md#the-rebuild-property) and
-  [charts](../manuals/userman/gui/viselements/generic/chart.md#the-rebuild-property).
-- The [`part` block](../manuals/userman/gui/viselements/generic/part.md) now accepts any URL as a value for the
-  [*page* property](../manuals/userman/gui/viselements/generic/part.md#p-page). You can then integrate any external
-  web page as demonstrated in [this example](../manuals/userman/gui/viselements/generic/part.md#part-showing-a-page).
+  [tables](../refmans/gui/viselements/generic/table.md#the-rebuild-property) and
+  [charts](../refmans/gui/viselements/generic/chart.md#the-rebuild-property).
+- The [`part` block](../refmans/gui/viselements/generic/part.md) now accepts any URL as a value for the
+  [*page* property](../refmans/gui/viselements/generic/part.md#p-page). You can then integrate any external
+  web page as demonstrated in [this example](../refmans/gui/viselements/generic/part.md#part-showing-a-page).
   <br/>
   To better control the layout of external pages, a new
-  [*height* property](../manuals/userman/gui/viselements/generic/part.md#p-height) has been added to the
-  [`part`](../manuals/userman/gui/viselements/generic/part.md) element.
+  [*height* property](../refmans/gui/viselements/generic/part.md#p-height) has been added to the
+  [`part`](../refmans/gui/viselements/generic/part.md) element.
 - The `navigate()^` function has an additional parameter called *force* that, when set to True,
   re-renders the page (set to the *to* parameter). This allows to force the evaluation of bound
   variables in complex dependencies situations.
@@ -426,29 +426,29 @@ Published on 2023-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy</code></strong></h6>
 2.3.2
 
-- The [expanded](../manuals/userman/gui/viselements/corelements/scenario.md#p-expanded) and
-  [show_tags](../manuals/userman/gui/viselements/corelements/scenario.md#p-show_tags) properties of the
-  [scenario](../manuals/userman/gui/viselements/corelements/scenario.md) control now have a default value of
+- The [expanded](../refmans/gui/viselements/corelements/scenario.md#p-expanded) and
+  [show_tags](../refmans/gui/viselements/corelements/scenario.md#p-show_tags) properties of the
+  [scenario](../refmans/gui/viselements/corelements/scenario.md) control now have a default value of
   False.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.3.2
 
-- Multi-line [input](../manuals/userman/gui/viselements/generic/input.md) controls accept the Shift+Enter combination
+- Multi-line [input](../refmans/gui/viselements/generic/input.md) controls accept the Shift+Enter combination
   to create a new line.<br/>
   See [issue #824](https://github.com/Avaiga/taipy-gui/issues/824).
-- [Table](../manuals/userman/gui/viselements/generic/table.md) filters adapt to a change of the visible columns.<br/>
+- [Table](../refmans/gui/viselements/generic/table.md) filters adapt to a change of the visible columns.<br/>
   See [issue #822](https://github.com/Avaiga/taipy-gui/issues/822).
 
 2.3.0
 
 - Page scopes (how Taipy GUI finds bound variables in different modules) have been
   improved so any given page can locate a variable in any module that defines a local page.<br/>
-  See the [section on page scopes](../manuals/userman/gui/binding.md#scope-for-variable-binding) for more
+  See the [section on page scopes](../userman/gui/binding.md#scope-for-variable-binding) for more
   information and examples.
-- A new mechanism to start the web server when [using Notebooks](../manuals/userman/notebooks.md) was put
+- A new mechanism to start the web server when [using Notebooks](../userman/notebooks.md) was put
   in place to prevent potential bottlenecks when allocating a port number. This behavior is
-  controlled by the [*notebook_proxy*](../manuals/userman/configuration/gui-config.md#p-notebook_proxy) configuration
+  controlled by the [*notebook_proxy*](../userman/configuration/gui-config.md#p-notebook_proxy) configuration
   parameter.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
@@ -468,10 +468,10 @@ Published on 2023-06.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.3.0
 
-- The removal of all the [`table`](../manuals/userman/gui/viselements/generic/table.md) filters has no immediate effect.
+- The removal of all the [`table`](../refmans/gui/viselements/generic/table.md) filters has no immediate effect.
   <br/>
   See [issue #667](https://github.com/Avaiga/taipy-gui/issues/667).
-- Styling of the [`pane` block](../manuals/userman/gui/viselements/generic/pane.md) was not applied properly.<br/>
+- Styling of the [`pane` block](../refmans/gui/viselements/generic/pane.md) was not applied properly.<br/>
   See [issue #766](https://github.com/Avaiga/taipy-gui/issues/766).
 - Some notifications (see `notify()^`) could be missed when there were too many in a small period
   of time.<br/>
@@ -513,10 +513,10 @@ Published on 2023-04.
 
 - A default set of stylesheets are installed with Taipy GUI so that, by
   default, applications benefit from a homogeneous and good-looking
-  style. This is called the [Stylekit](../manuals/userman/gui/styling/stylekit.md).<br/>
+  style. This is called the [Stylekit](../userman/gui/styling/stylekit.md).<br/>
   The Stylekit can be easily customized to fit your application design's
   requirements.
-- The [`table`](../manuals/userman/gui/viselements/generic/table.md) and [`chart`](../manuals/userman/gui/viselements/generic/chart.md)
+- The [`table`](../refmans/gui/viselements/generic/table.md) and [`chart`](../refmans/gui/viselements/generic/chart.md)
   controls have a new property called *rebuild* that can be used if you need to entirely change the
   data they rely on, including their structure.
 
@@ -525,13 +525,13 @@ Published on 2023-04.
 <h6 style="font-size: 1.2em"><strong><code>taipy-gui</code></strong></h6>
 2.2.0
 
-- The default property name for the [`part` block](../manuals/userman/gui/viselements/generic/part.md)
+- The default property name for the [`part` block](../refmans/gui/viselements/generic/part.md)
   was changed from *render* to *class_name* to allow for directly using the
-  style classes from the [Stylekit](../manuals/userman/gui/styling/stylekit.md).<br/>
+  style classes from the [Stylekit](../userman/gui/styling/stylekit.md).<br/>
   Please check the section on
-  [Styled Sections](../manuals/userman/gui/styling/stylekit.md#styled-sections) for
+  [Styled Sections](../userman/gui/styling/stylekit.md#styled-sections) for
   more information.
-- The [`expandable` block](../manuals/userman/gui/viselements/generic/expandable.md) has a new property
+- The [`expandable` block](../refmans/gui/viselements/generic/expandable.md) has a new property
   called *on_change* enabling to set a specific callback when the block is expanded
   or collapsed.
 - Better error messages when parsing Markdown content.
@@ -539,7 +539,7 @@ Published on 2023-04.
   on a generated Python Interface Definition file.
 - The *status* entry point now provides information about the loaded element libraries and
   the elements they define.
-- The `navigate()^` function and the *page* property of the [`part` block](../manuals/userman/gui/viselements/generic/part.md)
+- The `navigate()^` function and the *page* property of the [`part` block](../refmans/gui/viselements/generic/part.md)
   can now use, as their target, any URL. In the context of a `part` block, the page will be rendered
   in an *iframe*.<br/>
   See [issue #621](https://github.com/Avaiga/taipy-gui/issues/621).
@@ -552,7 +552,7 @@ Published on 2023-04.
 - Bound variable scope issues fixed when used by elements defined at the root page
   level.<br/>
   See [issue #583](https://github.com/Avaiga/taipy-gui/issues/583).
-- Filters management fixed in the [`table` controls](../manuals/userman/gui/viselements/generic/table.md).<br/>
+- Filters management fixed in the [`table` controls](../refmans/gui/viselements/generic/table.md).<br/>
   See [issue #667](https://github.com/Avaiga/taipy-gui/issues/667).
 - Communication with the server may break.<br/>
   See [issue #695](https://github.com/Avaiga/taipy-gui/issues/695).
@@ -619,18 +619,18 @@ details on how to migrate from version older than 2.1.
 - A security feature has been added: the file `.taipyignore`, located next to
   the Python main file, can list the paths that you want to prevent access to.<br/>
   See [issue #501](https://github.com/Avaiga/taipy-gui/issues/501) or
-  [this section](../manuals/userman/configuration/gui-config.md#protect-your-application-files) for
+  [this section](../userman/configuration/gui-config.md#protect-your-application-files) for
   details.
 - Charts can use the new `Decimator^` class to cleverly filter data points out to significantly
   improve performance.<br/>
-  See the paragraph on [large datasets](../manuals/userman/gui/viselements/generic/chart.md#large-datasets) for
+  See the paragraph on [large datasets](../refmans/gui/viselements/generic/chart.md#large-datasets) for
   specific information.
 - Charts now support polar, funnel, candlesticks and many other types of charts.<br/>
-  See the [chart control](../manuals/userman/gui/viselements/generic/chart.md) section for details.
+  See the [chart control](../refmans/gui/viselements/generic/chart.md) section for details.
 - Charts now support the dark theme automatically.
 - Tooltips can be set on individual table cells.<br/>
-  See the [example](../manuals/userman/gui/viselements/generic/table.md#cell-tooltips) for more information.
-- [Long running callbacks](../manuals/userman/gui/callbacks.md#long-running-callbacks) have
+  See the [example](../refmans/gui/viselements/generic/table.md#cell-tooltips) for more information.
+- [Long running callbacks](../userman/gui/callbacks.md#long-running-callbacks) have
   been improved to allow for easily returning a value.<br/>
   See the documentation of the `invoke_long_callback()^` function or the
   [issue #547](https://github.com/Avaiga/taipy-gui/issues/547) for more details.
@@ -645,10 +645,10 @@ details on how to migrate from version older than 2.1.
 - New version management system for Taipy applications. Users can now run an application in development
   mode, save a version of the application as an experiment version, re-run older experiment versions,
   and push a version to production.<br/>
-  See the [Version management system](../manuals/userman/versioning/index.md) documentation page for more details.
-- New data node named [MongoCollectionDataNode](../manuals/userman/data-integration/data-node-config.md#mongo-collection).
+  See the [Version management system](../userman/versioning/index.md) documentation page for more details.
+- New data node named [MongoCollectionDataNode](../userman/data-integration/data-node-config.md#mongo-collection).
   It represents the data from a MongoDB collection.
-- New data node named [ParquetDataNode](../manuals/userman/data-integration/data-node-config.md#parquet). It represents
+- New data node named [ParquetDataNode](../userman/data-integration/data-node-config.md#parquet). It represents
   tabular data stored in the Apache Parquet format.
 - Added support for [Modin](https://modin.readthedocs.io/en/stable/) as a new exposed type.
 - Running the Orchestrator service is required to execute jobs. See `Orchestrator().run()^` method.
@@ -668,7 +668,7 @@ details on how to migrate from version older than 2.1.
 2.1.0
 
 - The Pie charts now use the *values* property to set values instead of *x*.<br/>
-  See [Pie charts](../manuals/userman/gui/viselements/generic/charts/pie.md) for details.
+  See [Pie charts](../refmans/gui/viselements/generic/charts/pie.md) for details.
 - Unselected data points or traces in charts now preserve their original opacity.<br/>
   See [issue #496](https://github.com/Avaiga/taipy-gui/issues/496).
 - `class_name` is now a dynamic property.<br/>
@@ -719,19 +719,19 @@ Published on 2022-10.
 
 - Extension API: custom visual elements can be integrated into Taipy GUI applications.<br/>
   Third party HTML components can be integrated into Taipy GUI pages to address specific use cases.<br/>
-  See [Extension API](../manuals/userman/gui/extension/index.md) for details.
+  See [Extension API](../userman/gui/extension/index.md) for details.
 - New callbacks (`on_init`, `on_navigate`, `on_exception` and `on_status`) can be used to
   initialize a new session, detect navigation events, trigger code when exceptions are raised in
   user code, and invoke code when a *status* page is requested.<br/>
-  See [Callbacks](../manuals/userman/gui/callbacks.md) for details.
+  See [Callbacks](../userman/gui/callbacks.md) for details.
 - New functions allow applications to invoke long-running callbacks without blocking.<br/>
-  See [Long Running Callbacks](../manuals/userman/gui/callbacks.md#long-running-callbacks) for
+  See [Long Running Callbacks](../userman/gui/callbacks.md#long-running-callbacks) for
   details.
 - The Taipy GUI application configuration uses the generic Taipy configuration mechanism exposed in the
   new `taipy-config` package.
 - An application can request the status of the server application using the "status" predefined page.<br/>
 - The new 'base' property of the chart control makes it possible to create Gantt chart-like displays.<br/>
-  See [Gantt Charts](../manuals/userman/gui/viselements/generic/charts/gantt.md) for details.
+  See [Gantt Charts](../refmans/gui/viselements/generic/charts/gantt.md) for details.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
 2.0.0
