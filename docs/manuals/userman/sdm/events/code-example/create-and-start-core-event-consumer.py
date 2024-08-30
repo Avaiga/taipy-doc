@@ -1,11 +1,14 @@
-from taipy.core.notification import CoreEventConsumerBase, Event, Notifier
 from time import sleep
+
+from taipy.core.notification import CoreEventConsumerBase, Event, Notifier
+
 
 # Define a custom event consumer.
 class MyEventConsumer(CoreEventConsumerBase):
     def process_event(self, event: Event):
         # Custom event processing logic here
         print(f"Received a {event.entity_type} {event.operation} event at : {event.creation_date}")
+
 
 if __name__ == "__main__":
     import taipy as tp
@@ -17,8 +20,8 @@ if __name__ == "__main__":
     scenario_config = Config.configure_scenario("scenario", [print_task_cfg])
 
     # Run the core service.
-    tp.Core().run()
-    
+    orchestrator = tp.Orchestrator().run()
+
     # Register to the Notifier to retrieve a registration id and a registered queue.
     registration_id, registered_queue = Notifier.register()
 
