@@ -1,5 +1,5 @@
 It will often be useful to display information stored in application data.<br/>
-To achieve this goal, Taipy allows [visual elements](viselements/index.md)
+To achieve this goal, Taipy allows [visual elements](../../refmans/gui/viselements/index.md)
 to relate directly to application variables, display their values, and
 change those variable values.
 
