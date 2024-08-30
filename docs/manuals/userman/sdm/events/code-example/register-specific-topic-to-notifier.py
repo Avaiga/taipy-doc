@@ -1,8 +1,11 @@
-from taipy.core.notification import CoreEventConsumerBase, Event, Notifier, EventEntityType, EventOperation
 from time import sleep
+
+from taipy.core.notification import CoreEventConsumerBase, Event, EventEntityType, EventOperation, Notifier
+
 
 def double(nb):
     return nb * 2
+
 
 # Define a custom event consumer.
 class MyEventConsumer(CoreEventConsumerBase):
@@ -10,11 +13,12 @@ class MyEventConsumer(CoreEventConsumerBase):
         # Custom event processing logic here'
         print(f"Received event of type: {event.entity_type}; and of operation: {event.operation}.")
 
+
 if __name__ == "__main__":
     import taipy as tp
     from taipy import Config
 
-    print(f'(1) Number of jobs: {len(tp.get_jobs())}.')
+    print(f"(1) Number of jobs: {len(tp.get_jobs())}.")
 
     # Create a scenario configuration with 2 sequential tasks.
     input_data_node_cfg = Config.configure_data_node("my_input", default_data=21)
@@ -22,8 +26,8 @@ if __name__ == "__main__":
     scenario_config = Config.configure_scenario("my_scenario", [print_task_cfg])
 
     # Run the core service.
-    tp.Core().run()
-    
+    tp.Orchestrator().run()
+
     # Register to the Notifier to retrieve events related to all scenarios' creations.
     registration_id, registered_queue = Notifier.register(EventEntityType.SCENARIO, operation=EventOperation.CREATION)
 
@@ -33,7 +37,7 @@ if __name__ == "__main__":
 
     # Create a scenario and submit it.
     scenario = tp.create_scenario(scenario_config)
-    
+
     sleep(1)
 
     # Stop the consumer and unregister from the Notifier.

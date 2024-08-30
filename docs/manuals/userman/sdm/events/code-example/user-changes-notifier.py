@@ -1,11 +1,11 @@
 import taipy as tp
 import taipy.gui.builder as tgb
-
-##### Configuration and Functions #####
-from taipy import Config, Core, Gui, Scope
+from taipy import Config, Gui, Orchestrator
 from taipy.core import SubmissionStatus
 from taipy.core.notification import CoreEventConsumerBase, EventEntityType, EventOperation, Notifier
 from taipy.gui import notify
+
+##### Configuration and Functions #####
 
 
 def build_message(name: str):
@@ -16,10 +16,22 @@ name_data_node_cfg = Config.configure_data_node(id="input_name", default_data="F
 message_data_node_cfg = Config.configure_data_node(id="message")
 build_msg_task_cfg = Config.configure_task("build_msg", build_message, name_data_node_cfg, message_data_node_cfg)
 scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_task_cfg])
-#### Listen on Core Events ####
-
 
 value = "Default text"
+
+
+#### Notification function to be called ####
+
+
+def notify_users_of_creation(state):
+    state.value = "Scenario created and submitted"
+    notify(state, "s", "Scenario Created")
+
+
+def notify_users_of_update(state, new_value_of_dn):
+    print("Value of Data Node:", new_value_of_dn)
+    state.value = f"Data Node updated with value: {new_value_of_dn}"
+    notify(state, "i", "Data Node Updated")
 
 
 class SpecificCoreConsumer(CoreEventConsumerBase):
@@ -42,20 +54,6 @@ class SpecificCoreConsumer(CoreEventConsumerBase):
                     self.gui.broadcast_callback(notify_users_of_update, [new_value_of_dn])
 
 
-#### Notification function to be called ####
-
-
-def notify_users_of_creation(state):
-    state.value = "Scenario created and submitted"
-    notify(state, "s", "Scenario Created")
-
-
-def notify_users_of_update(state, new_value_of_dn):
-    print("Value of Data Node:", new_value_of_dn)
-    state.value = f"Data Node updated with value: {new_value_of_dn}"
-    notify(state, "i", "Data Node Updated")
-
-
 #### Normal callbacks ####
 
 
@@ -72,8 +70,8 @@ with tgb.Page() as page:
 
 
 if __name__ == "__main__":
-    core = Core()
+    orchestrator = Orchestrator()
     gui = Gui(page)
-    core.run()
+    orchestrator.run()
     SpecificCoreConsumer(gui).start()
     gui.run()
