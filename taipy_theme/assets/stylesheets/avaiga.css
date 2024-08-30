@@ -649,6 +649,14 @@ a.tp-pill{
   --tp-content-card-padding: 1rem;
 }
 
+.tp-content-card--extra-small{
+  --tp-content-card-padding: 0.5rem;
+}
+
+.tp-content-card--extra-small + .tp-content-card--extra-small {
+  margin-top: 0.3rem !important;
+}
+
 .tp-content-card.tp-content-card--primary{
   background: var(--md-primary-fg-color);
 }

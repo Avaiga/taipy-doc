@@ -7,11 +7,8 @@ repo_name: taipy
 #strict: true
 copyright: © 2021-[YEAR] Avaiga
 nav:
-  - "Getting Started":
-    - "Getting Started": getting_started/index.md
-
   - "Tutorials":
-    - "Tutorials": tutorials/index.md
+    - "Getting Started": tutorials/getting_started/index.md
     - "Fundamentals":
       - "Fundamentals": tutorials/fundamentals/index.md
       - "Understanding GUI":
@@ -69,7 +66,7 @@ nav:
     - "About Taipy's User userman": userman/index.md
 
     - "User interface":
-      - "User interface": userman/introduction.md
+      - "User interface": userman/gui/index.md
       - "Pages":
         - "Pages": userman/gui/pages/index.md
         - "Navigate between pages": userman/gui/pages/navigate/index.md
@@ -79,11 +76,7 @@ nav:
         - "Advanced": userman/gui/pages/advanced/index.md
       - "Visual elements": userman/gui/viselements/introduction.md
       - "Binding variables": userman/gui/binding.md
-      - "Callbacks":
-        - "Callbacks": userman/gui/callbacks/index.md
-        - "Global and Local callbacks": userman/gui/callbacks/global_and_local_callbacks/index.md
-        - "Asynchronous callbacks": userman/gui/callbacks/asynchronous_callbacks/index.md
-        - "Core events": userman/gui/callbacks/core_events/index.md
+      - "Callbacks": userman/gui/callbacks.md
       - "Styling":
         - "Styling": userman/gui/styling/index.md
         - "The Stylekit": userman/gui/styling/stylekit.md
@@ -245,10 +238,10 @@ nav:
       - "Fraud Detection": gallery/articles/fraud_detection/index.md
     - "Decision Support":
       - "Decision Support": gallery/decision_support/index.md
+      - "Supply Chain - 2 Echelons": gallery/articles/supply_chain/index.md
       - "Supply Chain - 3 Echelons": gallery/articles/supply_chain_3_echelons/index.md
       - "Production Planning": gallery/articles/production_planning/index.md
       - "QSR Sales Forecasting": gallery/articles/qsr_sales_forecasting/index.md
-      - "Supply Chain - 2 Echelons": gallery/articles/supply_chain/index.md
       - "Optimize Bar Cut Sizes": gallery/articles/bar_cutting/index.md
       - "Churn Classification": gallery/articles/churn_classification/index.md
       - "Drift Detection": gallery/articles/drift_detection/index.md

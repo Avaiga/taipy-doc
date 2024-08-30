@@ -112,7 +112,7 @@ def create_navigation_button(
     site_url: str, buton_label: str, relative_url: str, css_color_class: str
 ) -> str:
     html_for_buton = f"""
-            <a class="tp-content-card tp-content-card--small {css_color_class}" href="{site_url}{relative_url}">
+            <a class="tp-content-card tp-content-card--extra-small {css_color_class}" href="{site_url}{relative_url}">
             <header class="tp-content-card-header">
                 <h4>{buton_label}</h4>
             </header>
@@ -123,18 +123,18 @@ def create_navigation_button(
 
 def create_navigation_buttons(site_url: str) -> str:
     html_for_buttons = """
-        <div class="tp-row tp-row--gutter-sm">
+        <div style="margin-bottom: 1rem;">
 """
     html_for_buttons += create_navigation_button(
         site_url, "Tutorials", "getting_started/", "tp-content-card--primary"
     )
     html_for_buttons += create_navigation_button(
-        site_url, "User Manual", "manuals/userman/", "tp-content-card--accent"
+        site_url, "User Manual", "userman/", "tp-content-card--accent"
     )
     html_for_buttons += create_navigation_button(
         site_url,
         "Reference & Visual Elements",
-        "manuals/refmans/",
+        "refmans/",
         "tp-content-card--beta",
     )
     html_for_buttons += create_navigation_button(
