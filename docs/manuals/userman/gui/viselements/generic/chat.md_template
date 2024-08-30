@@ -37,7 +37,7 @@ Three mandatory properties can configure the `chat` control:
 
 # Styling
 
-All the date controls are generated with the "taipy-chat" CSS class. You can use this class
+All the chat controls are generated with the "taipy-chat" CSS class. You can use this class
 name to select the date selectors on your page and apply style.
 
 # Usage
