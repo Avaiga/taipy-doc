@@ -209,7 +209,6 @@ nav:
     - "LLM":
       - "LLM": gallery/llm/index.md
       - "Creating an LLM Chatbot" : gallery/llm/5_chatbot/index.md
-      - "TalkToTaipy" : gallery/llm/6_talk_to_taipy/index.md
       - "Vision ChatBot": gallery/llm/7_vision_chatbot/index.md
       - "RAG ChatBot": gallery/llm/8_rag_chatbot/index.md
       - "Sentiment Analysis": gallery/llm/sentiment_analysis/index.md
