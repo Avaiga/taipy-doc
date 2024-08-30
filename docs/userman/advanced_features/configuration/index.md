@@ -34,7 +34,7 @@ Config.data_nodes
 ```
 
 For more details on how to configure data nodes, see the
-[data node configuration](../data-integration/data-node-config.md#create-a-data-node-config) section.
+[data node configuration](../../scenario_features/data-integration/data-node-config.md#create-a-data-node-config) section.
 
 ## Task sections
 

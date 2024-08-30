@@ -62,7 +62,7 @@ the cell:
     This command installs the latest stable release of Taipy in your Colab environment.
 
 3. **Start building your app**: Follow this
-[tip](../tutorials/articles/colab_with_ngrok/index.md) to build and run your Taipy web
+[tip](../articles/colab_with_ngrok/index.md) to build and run your Taipy web
 application directly within the Colab notebook.
 
 !!! tip

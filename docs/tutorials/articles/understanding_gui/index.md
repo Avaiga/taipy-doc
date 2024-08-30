@@ -32,7 +32,7 @@ create your own Taipy applications.
 ## Getting Started
 
 This tutorial is for Python scripts (*.py*). If you prefer **Jupyter Notebooks**, read
-this [documentation](../../../userman/notebooks.md) and follow the tutorial
+this [documentation](../../../userman/run-deploy/notebooks.md) and follow the tutorial
 accordingly.
 
 ### Installation

@@ -3,7 +3,7 @@ we are trying to provide as many examples as possible so that you as a Taipy use
 specific task.
 
 If you are just starting with Taipy, you may want to look at the
-[Getting Started](../../getting_started/index.md) in order to see a step-by-step example of a
+[Getting Started](../tutorials/getting_started/index.md) in order to see a step-by-step example of a
 complete Taipy application.
 
 !!! note "Supported Python versions"
@@ -57,13 +57,13 @@ As part of Taipy, the `taipy.core` package brings algorithm management to anothe
 speeding the developer work and empowering its end-users letting them manage their
 user-defined scenarios with interactive data and smart job orchestration.
 
-[:material-arrow-right: Data integration](data-integration/index.md),
+[:material-arrow-right: Data integration](scenario_features/data-integration/index.md),
 
-[:material-arrow-right: Task orchestration](task-orchestration/index.md),
+[:material-arrow-right: Task orchestration](scenario_features/task-orchestration/index.md),
 
-[:material-arrow-right: What-if-analysis](what-if-analysis/index.md)
+[:material-arrow-right: What-if-analysis](scenario_features/what-if-analysis/index.md)
 
-[:material-arrow-right: Scenario and data management](sdm/index.md)
+[:material-arrow-right: Scenario and data management](scenario_features/sdm/index.md)
 
 The `taipy.rest` package allows you to access some Taipy functionalities such as
 scenarios management, sequences and task orchestration, data management, etc. through

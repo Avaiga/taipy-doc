@@ -340,7 +340,7 @@ additional features.
 
 - Python functions including scenario management methods can be scheduled to run at a specific
   time using the new `taipy.Scheduler^` API. For more information, refer to
-  [Schedule a method](../userman/scheduling/index.md).
+  [Schedule a method](../userman/advanced_features/scheduling/index.md).
 
 ## Improvements and changes
 
@@ -446,7 +446,7 @@ Published on 2023-06.
   improved so any given page can locate a variable in any module that defines a local page.<br/>
   See the [section on page scopes](../userman/gui/binding.md#scope-for-variable-binding) for more
   information and examples.
-- A new mechanism to start the web server when [using Notebooks](../userman/notebooks.md) was put
+- A new mechanism to start the web server when [using Notebooks](../userman/run-deploy/notebooks.md) was put
   in place to prevent potential bottlenecks when allocating a port number. This behavior is
   controlled by the [*notebook_proxy*](../userman/advanced_features/configuration/gui-config.md#p-notebook_proxy) configuration
   parameter.
