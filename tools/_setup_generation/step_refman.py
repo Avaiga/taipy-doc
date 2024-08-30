@@ -132,6 +132,7 @@ class RefManStep(SetupStep):
                         read_module(e)
                 if not entry_type:
                     continue
+
                 # Add to all entries
                 doc = e.__doc__
                 if doc:
