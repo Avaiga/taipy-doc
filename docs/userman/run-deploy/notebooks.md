@@ -131,7 +131,7 @@ After running this cell, the variable *data* holds an array of floating-point va
 some fancy trigonometric function (computed in *compute_data()*) based on some parameter.
 
 If we want to display these values in a chart, we need to change our page to add a
-[`chart`](gui/viselements/generic/chart.md) control to it (and remove the
+[`chart`](../../refmans/gui/viselements/generic/chart.md) control to it (and remove the
 `number` control).<br/>
 You can update the page content on the fly by creating a new cell with the following content:
 ```py title="Cell [5]"

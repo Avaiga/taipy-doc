@@ -4,7 +4,7 @@ features. The purpose is to automate the use of these features by exposing REST 
 The Taipy REST APIs allows users to create, read, update, run and remove Taipy entities
 (including cycles, scenarios, sequences, tasks, jobs and data nodes) through REST APIs.
 For more details about Taipy entities, please refer to
-[scenario and data management](../sdm/index.md).
+[scenario and data management](../../scenario_features/sdm/index.md).
 
 It is particularly useful when it comes to integrating a Taipy application in a more complex IT
 ecosystem.
@@ -14,7 +14,7 @@ ecosystem.
 To expose the Taipy REST APIs, the Taipy REST server must first be started.
 
 1. Configure your Taipy application. For more details on Taipy configuration, please
-    refer to the [scenario configuration](../sdm/scenario/scenario-config.md) page.
+    refer to the [scenario configuration](../../scenario_features/sdm/scenario/scenario-config.md) page.
 
 2. The REST server do not require any configuration in most of the use cases. However, as an
     advanced user, you may want to configure your Taipy REST server. Indeed, Taipy REST server

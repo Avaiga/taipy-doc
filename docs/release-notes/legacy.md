@@ -66,7 +66,7 @@ Published on 2024-03.
   submission date) related to a submitted entity: `Scenario^`, `Sequence^`, and/or `Task^`.<br/>
   The function `taipy.get_latest_submission()^` returns the last submission of a given entity.<br/>
   For more information, please refer to
-  [Submission](../userman/sdm/submission/index.md).
+  [Submission](../userman/scenario_features/sdm/submission/index.md).
 - `taipy.submit()^`, `Scenario.submit()^`, `Sequence.submit()^`, and `Task.submit()^` now return a
   `Submission^` entity.
 - A new predefined data node named `S3ObjectDataNode^` has been implemented.<br/>
@@ -252,7 +252,7 @@ Published on 2023-10.
 
 - :warning: A `ScenarioConfig^` graph is now created directly from `TaskConfig^` and
   `DataNodeConfig^`. Consequently, `PipelineConfig` has been removed. For more
-  information, refer to [Configure a scenario](../userman/sdm/scenario/scenario-config.md).
+  information, refer to [Configure a scenario](../userman/scenario_features/sdm/scenario/scenario-config.md).
 - :warning: The `Pipeline` object has been removed and replaced by `Sequence^`. A sequence is
   held by a `Scenario^` and represents a subset of its tasks than can be submitted
   together independently of the other tasks of the scenario. For more information,
@@ -261,7 +261,7 @@ Published on 2023-10.
 - The `root_folder`, `storage_folder`, `read_entity_retry`, `repository_type`, and
   `repository_properties` attributes of the `GlobalAppConfig^` have been moved to the
   `CoreSection^`.<br/>
-  Please refer to the [Core configuration page](../userman/configuration/core-config.md)
+  Please refer to the [Core configuration page](../userman/advanced_features/configuration/core-config.md)
   for details.
 - The `clean_entities` attribute has been removed from the `CoreSection^`. Correspondingly, the
   `--clean-entities` option has been removed from the version management CLI.<br/>

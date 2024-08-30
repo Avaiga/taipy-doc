@@ -61,7 +61,7 @@ Config.scenarios
 ```
 
 For more details on how to configure scenarios, see the
-[scenario configuration](../sdm/scenario/scenario-config.md) page.
+[scenario configuration](../../scenario_features/sdm/scenario/scenario-config.md) page.
 
 ## Job execution section
 

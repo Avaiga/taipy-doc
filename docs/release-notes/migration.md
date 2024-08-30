@@ -12,7 +12,7 @@ This documentation page lists the migration paths of Taipy releases as they were
     used to use *action*.
 
 2. In Taipy 3.0 we deprecated the `pipeline` concept in favor of
-    [sequence](../userman/sdm/sequence/index.md). This also means that `configure_pipeline`
+    [sequence](../userman/scenario_features/sdm/sequence/index.md). This also means that `configure_pipeline`
     from Taipy Config was removed, making it necessary to update your config code. Take for
     instance the following config on `Taipy 2.4`:
 

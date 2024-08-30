@@ -75,7 +75,7 @@ In this example, we configure:
       Note that most of the time, the default values can be used.
   - The *mode* of the version management system to experiment mode, and the *version_number* is
       set to "1.0.0".</br>
-      Please refer to the [Version management configuration](../../userman/configuration/core-config.md)
+      Please refer to the [Version management configuration](../../userman/advanced_features/configuration/core-config.md)
       documentation page for more details.
   - In lines 9, a custom *application_name* property are specified.
 

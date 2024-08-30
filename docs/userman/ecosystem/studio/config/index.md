@@ -1,9 +1,9 @@
 Applications that rely on Taipy Scenarios need to define a
-[Configuration](../../userman/sdm/scenario/scenario-config.md) where the data flow is
+[Configuration](../../../scenario_features/sdm/scenario/scenario-config.md) where the data flow is
 described.<br/>
 This configuration can be coded in Python and tuned using environment variables
 (as described in the
-[advanced configuration](../../userman/configuration/advanced-config.md#python-code-configuration)
+[advanced configuration](../../../advanced_features/configuration/advanced-config.md#python-code-configuration)
 section).
 
 Taipy Studio provides ways to design graphically Taipy application configurations.
@@ -17,7 +17,7 @@ and use a visual representation of those configuration elements as a graph.
 
 Taipy Studio stores those configurations in TOML files. These files can be used at
 runtime by Taipy applications as described in the
-[note on Studio](../../userman/configuration/advanced-config.md#studio).
+[note on Studio](../../userman/advanced_features/configuration/advanced-config.md#studio).
 
 Taipy Studio has a dedicated panel called **Taipy Configs**, where almost everything
 happens. To open this panel, use the "View > Open View..." menu option and search
@@ -47,7 +47,7 @@ configuration elements:
     The user can select a Task configuration in this list to access all its
     properties in the Details section (see below).
 - **Scenarios**: holds the list of
-    [Scenario configurations](../../userman/sdm/scenario/scenario-config.md) defined
+    [Scenario configurations](../../../scenario_features/sdm/scenario/scenario-config.md) defined
     in the selected configuration file.<br/>
     Each Scenario configuration element may contain sequences that appear as child nodes of the
     scenario element.<br/>

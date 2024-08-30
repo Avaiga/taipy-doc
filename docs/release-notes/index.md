@@ -81,7 +81,7 @@ This is the list of changes to Taipy releases as they were published.
 
 - In standalone job execution mode, the default value of *max_nb_of_workers* is now 2 instead of 1.
   For more information, please refer to
-  [Job execution configuration](../userman/configuration/job-config.md).
+  [Job execution configuration](../userman/advanced_features/configuration/job-config.md).
 - When using the Taipy command-line interface, if an unsupported argument is provided, the CLI
   will display a message indicating the invalid argument. If the invalid argument is possibly a
   typo, the CLI will suggest the closest valid argument.
@@ -97,7 +97,7 @@ This is the list of changes to Taipy releases as they were published.
   a `ScenarioConfig^` has the same configuration id with another one in the same `ScenarioConfig^`,
   or any additional property of any configuration has the same name as one of the attributes
   of the configuration class.<br/>
-  For more information, please refer to [Configuration checker](../userman/configuration/config-checker.md).
+  For more information, please refer to [Configuration checker](../userman/advanced_features/configuration/config-checker.md).
 
 <h4><strong><code>taipy-templates</code></strong> 4.0.0 </h4>
 

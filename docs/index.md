@@ -119,9 +119,9 @@ from initial prototypes to production-ready applications.
   </li>
     <li>
       <div class="tp-pill">
-        <a href="userman/sdm/scenario/#scenario-configuration">Configure</a>,
-        <a href="userman/sdm/scenario/#scenario-creation">instantiate</a> and
-        <a href="userman/sdm/scenario/#scenario-submission">submit</a> Scenario
+        <a href="userman/scenario_features/sdm/scenario/#scenario-configuration">Configure</a>,
+        <a href="userman/scenario_features/sdm/scenario/#scenario-creation">instantiate</a> and
+        <a href="userman/scenario_features/sdm/scenario/#scenario-submission">submit</a> Scenario
       </div>
     </li>
   <li>

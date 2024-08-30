@@ -4,8 +4,8 @@ that significantly accelerates the development of Taipy applications.
 This tool addresses two major areas:
 
 - Building configurations<br/>
-    An application that relies on [Taipy Scenarios](../userman/sdm/index.md) functionalities
-    needs to build a Taipy [configuration](../userman/sdm/scenario/scenario-config.md) where
+    An application that relies on [Taipy Scenarios](../../scenario_features//sdm/index.md) functionalities
+    needs to build a Taipy [configuration](../../scenario_features/sdm/scenario/scenario-config.md) where
     DataNode configs, Task configs, etc. are declared.<br/>
 
     Taipy Studio provides a graphical editor where you can create and configure

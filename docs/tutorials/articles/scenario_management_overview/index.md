@@ -31,7 +31,7 @@ application leveraging Taipy's scenario management capabilities.
 Before looking at some code examples, to apprehend what is a *Scenario*, you need to
 understand the *Data node* and *Task* concepts.
 
-- [**Data Nodes**](../../../userman/sdm/data-node/index.md): represents a variable in Taipy.
+- [**Data Nodes**](../../../userman/scenario_features/sdm/data-node/index.md): represents a variable in Taipy.
 Data Nodes don't contain the data itself but point to the data and know
   how to retrieve it. These Data Nodes can point to different types of data sources like CSV
   files, Pickle files, databases, etc., and they can represent various types of Python variables
@@ -48,7 +48,7 @@ Data Nodes don't contain the data itself but point to the data and know
   situations. Taipy provide the framework to execute various scenarios under different
   situations (i.e. various data/parameters values set by end-users).
 
-[**Configuration**](../../../userman/sdm/scenario/scenario-config.md) is a structure to define scenarios.
+[**Configuration**](../../../userman/scenario_features/sdm/scenario/scenario-config.md) is a structure to define scenarios.
 It serves as the blueprint for our Directed Acyclic Graph(s) and models the data sources,
 parameters, and tasks. After being defined, a configuration functions like a superclass and is
 employed to generate various instances of scenarios.

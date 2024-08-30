@@ -12,7 +12,7 @@ It comes in handy in the context of Machine Learning or Mathematical optimizatio
 
 To apprehend what is a **Scenario**, you need to understand the **Data node** and **Task** concepts.
 
-- [**Data Nodes**](../../../../userman/sdm/data-node/index.md): are the translation of variables in
+- [**Data Nodes**](../../../../userman/scenario_features/sdm/data-node/index.md): are the translation of variables in
   Taipy. Data Nodes don't contain the data itself but point to the data and know how to retrieve
   it. These Data Nodes can point to different types of data sources like CSV files, Pickle files, databases, etc.,
   and they can represent various types of Python variables such as integers, strings, data frames, lists, and more.
