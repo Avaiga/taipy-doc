@@ -224,7 +224,7 @@ to visual elements may have a scope limited to their origin module. See
 ## Root page
 
 The *Root* page is the page located at `"/"` (or the value of the
-[*base_url*](../../configuration/gui-config.md#p-base_url) configuration setting).
+[*base_url*](../../advanced_features/configuration/gui-config.md#p-base_url) configuration setting).
 The content of the page will be shown at the top of every page of your application.
 
 ## Application header and footer

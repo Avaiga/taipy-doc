@@ -7,7 +7,7 @@ This object reflects the state of the application variables, for a given end-use
 your application may be used simultaneously by different users connected to the
 same web server (note that setting the _single_client_ configuration parameter to
 True - as explained in the
-[Configuration](../configuration/gui-config.md#configuring-the-gui-instance) section - prevents
+[Configuration](../advanced_features/configuration/gui-config.md#configuring-the-gui-instance) section - prevents
 multiple users from connecting to your application simultaneously, but you still rely
 on the `State^` object to access the application variables that are represented in your
 user interfaces).<br/>

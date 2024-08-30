@@ -31,7 +31,8 @@ nav:
       - "Creating applications" :
         - "Creating an LLM ChatBot":
           - "Creating an LLM ChatBot": tutorials/articles/chatbot/index.md
-        - "Creating an RAG ChatBot": tutorials/articles/rag_chatbot/index.md
+        - "Creating an RAG ChatBot":
+          - "Creating an RAG ChatBot": tutorials/articles/rag_chatbot/index.md
     - "Visuals":
       - "Visuals": tutorials/visuals/index.md
       - "Callbacks": tutorials/articles/callbacks/index.md

@@ -109,7 +109,7 @@ In this example, *gui.user_status.x* is set to 1234 (as initialized in the appli
 
 !!! note "Extended status"
 
-    If the [*extended_status*](../../../configuration/gui-config.md#p-extended_status) parameter
+    If the [*extended_status*](../../../advanced_features/configuration/gui-config.md#p-extended_status) parameter
     is set to True, the dictionary associated with the *gui* key is augmented with runtime
     information of the application, such as the version of the Taipy GUI package that is running,
     the version of the Python interpreter that is running the application, the list of the extension
