@@ -28,8 +28,10 @@ nav:
         - "3 - Scenario configuration": tutorials/articles/complete_application/step_03/step_03.md
         - "4 - Scenario page": tutorials/articles/complete_application/step_04/step_04.md
         - "5 - Performance page": tutorials/articles/complete_application/step_05/step_05.md
-      - "Creating an LLM ChatBot": tutorials/articles/chatbot/index.md
-      - "Creating an RAG ChatBot": tutorials/articles/rag_chatbot/index.md
+      - "Creating applications" :
+        - "Creating an LLM ChatBot":
+          - "Creating an LLM ChatBot": tutorials/articles/chatbot/index.md
+        - "Creating an RAG ChatBot": tutorials/articles/rag_chatbot/index.md
     - "Visuals":
       - "Visuals": tutorials/visuals/index.md
       - "Callbacks": tutorials/articles/callbacks/index.md

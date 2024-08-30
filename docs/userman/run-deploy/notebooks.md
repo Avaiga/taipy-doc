@@ -200,4 +200,4 @@ when a new value is set.
     the context of Notebooks only, the port number used as part of the application URL is a
     proxy to the real served port. Invoking `run()` after `stop()` generates a hidden port
     number that gets used transparently. This behavior is controlled by the
-    [*notebook_proxy*](configuration/gui-config.md#p-notebook_proxy) configuration setting.
+    [*notebook_proxy*](../advanced_features/configuration/gui-config.md#p-notebook_proxy) configuration setting.
