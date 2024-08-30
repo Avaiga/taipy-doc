@@ -116,7 +116,7 @@ or iteratively base on some end-users' feedback.
 
         The `Config` is a singleton object that is used to configure the whole application,
         not only the data and scenarios.
-        For more information, see the [configuration](../configuration/index.md) page.
+        For more information, see the [configuration](../../advanced_features/configuration/index.md) page.
 
 3. **User interface implementation:**
     Implement the user interface pages that will allow end-users to create, edit, and submit

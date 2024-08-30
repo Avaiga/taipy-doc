@@ -95,7 +95,7 @@ A task also holds various properties accessible as an attribute of the task:
   *function*'s returned value corresponds to the parameter of an output data node `write()` method.
 - _**version**_: The string indicates the application version of the task to instantiate.
   If not provided, the current version is used. Refer to the
-  [version management](../../versioning/index.md) page for more details.
+  [version management](../../../advanced_features/versioning/index.md) page for more details.
 - _**skippable**_: Boolean attribute indicating if a task execution can be skipped when all output
   data nodes are up-to-date (see the *validity_period* attribute in the
   [data node management](../../data-integration/data-node-config.md#config-attributes)

@@ -1111,7 +1111,7 @@ Correspondingly, In memory data node can write any data object that is valid dat
 !!! warning
 
     Since the data is stored in memory, it cannot be used in a multiprocess environment.
-    (See [Job configuration](../configuration/job-config.md#standalone-mode) for more details).
+    (See [Job configuration](../../advanced_features/configuration/job-config.md#standalone-mode) for more details).
 
 
 # Append

@@ -37,6 +37,6 @@ your application and save it.
 port number (5000 by default).
 
 Other parameters of the `run()` method can be found
-[here](../../../../userman/configuration/gui-config.md#configuring-the-gui-instance).
+[here](../../../../userman/advanced_features/configuration/gui-config.md#configuring-the-gui-instance).
 
 ![First Web Page](images/result.png){ width=90% : .tp-image-border }

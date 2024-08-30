@@ -176,7 +176,7 @@ all the submitted jobs are finished, or the timeout expires (which ever occurred
 ??? note "Configuring Job execution"
 
     Multiple execution modes are available in Taipy. For more details, see the
-    [configuring job execution](../../configuration/job-config.md) page.
+    [configuring job execution](../../../advanced_features/configuration/job-config.md) page.
 
 # Graphical User Interface
 
@@ -199,7 +199,7 @@ each accessible as an attribute of the scenario:
 - _**subscribers**_ is the list of Tuple(callbacks, params) representing the subscribers.
 - _**version**_: The string indicates the application version of the scenario to instantiate.
     If not provided, the current version is used. For more details, refer to the
-    [version management](../../versioning/index.md) page.
+    [version management](../../../advanced_features/versioning/index.md) page.
 - _**properties**_ is the complete dictionary of the scenario properties. It includes a copy
     of the properties of the scenario configuration, in addition to the properties provided
     at the creation and at runtime.

@@ -117,7 +117,7 @@ section, two optional parameters can be provided.
   can be changed at runtime right after its instantiation.<br/>
   If no value is provided, Taipy will use an internal path in the Taipy storage folder
   (more details on the Taipy storage folder configuration are available in the
-  [core configuration](../configuration/core-config.md) documentation).
+  [core configuration](../../advanced_features/configuration/core-config.md) documentation).
 
 - **default_data** indicates data automatically written to the data node
   *pickle* upon creation.<br/>
@@ -415,7 +415,7 @@ comments=false
 
 In this example, we configure a *SQL table* data node with the id "sales_history".
 Its scope is the default value `SCENARIO`. The database username is "admin", the user's
-password is "password" (refer to [advance configuration](../configuration/advanced-config.md) to pass
+password is "password" (refer to [advance configuration](../../advanced_features/configuration/advanced-config.md) to pass
 password as an environment variable), the database name is "taipy". The table name is "sales".
 To ensure secure connection with the SQL server, "TrustServerCertificate" is defined as "yes"
 in the *db_extra_args*.
@@ -515,7 +515,7 @@ comments=false
 
 In this example, we configure a *SQL* data node with the id "sales_history".
 Its scope is the default value `SCENARIO`. The database username is "admin", the user's
-password is "password" (refer to [advance configuration](../configuration/advanced-config.md)
+password is "password" (refer to [advance configuration](../../advanced_features/configuration/advanced-config.md)
 to pass password as an environment variable), and the database name is "taipy". The read query
 will be "SELECT \* from sales".
 
@@ -873,7 +873,7 @@ The scope is `SCENARIO` (default value), and default data is provided.
 !!! warning
 
     Since the data is stored in memory, it cannot be used in a multi-process environment.
-    (See [Job configuration](../configuration/job-config.md#standalone-mode) for more details).
+    (See [Job configuration](../../advanced_features/configuration/job-config.md#standalone-mode) for more details).
 
 !!! note
 

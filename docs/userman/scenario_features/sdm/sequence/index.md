@@ -56,7 +56,7 @@ It also holds various properties accessible as an attribute of the sequence:
 - _**owner_id**_: The identifier of the owner, which can be a scenario, cycle, or None.
 - _**version**_: The string indicates the application version of the sequence to instantiate.
     If not provided, the current version is used. For more details, refer to
-    [version management](../../versioning/index.md).
+    [version management](../../../advanced_features/versioning/index.md).
 - Each property of the _**properties**_ dictionary is also directly exposed as an attribute.
 - Each nested entity is also exposed as an attribute of the sequence. The attribute name
     corresponds to the *config_id* of the nested entity.

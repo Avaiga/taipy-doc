@@ -70,7 +70,7 @@ production-ready applications with ease for their end-users. Here are some key b
     Taipy Studio, an extension for [Visual Studio Code](https://code.visualstudio.com/),
     enhances the user experience by providing a graphical editor to build a scenario configuration.
     <br>
-    For more details, see the [Taipy Studio](../../studio/index.md) page.
+    For more details, see the [Taipy Studio](../../ecosystem/studio/index.md) page.
 
 2. **Efficient Orchestration and execution**:
     Taipy already implements utility methods to create, manage, submit your scenarios.
@@ -116,7 +116,7 @@ definition. To create and submit scenarios, you need to:
     are instantiated from their configurations as well.
     For more details, see the [scenario creation](scenario-creation.md) page.<br>
     Typically, this step is done by an end-user using the graphical interface built with
-    [Taipy GUI](../gui/index.md). In particular, the
+    [Taipy GUI](../../gui/index.md). In particular, the
     [scenario selector](../../../refmans/gui/viselements/corelements/scenario_selector.md) natively includes a
     scenario creation capability.
 
@@ -125,7 +125,7 @@ definition. To create and submit scenarios, you need to:
     method. <br>
     For more details, see the [scenario submission](scenario-submission.md) page.<br>
     Typically, this step is done by an end-user using the graphical interface built with
-    [Taipy GUI](../gui/index.md). The [scenario viewer](../../../refmans/gui/viselements/corelements/scenario.md) is
+    [Taipy GUI](../../gui/index.md). The [scenario viewer](../../../refmans/gui/viselements/corelements/scenario.md) is
     designed for this purpose.
 
 

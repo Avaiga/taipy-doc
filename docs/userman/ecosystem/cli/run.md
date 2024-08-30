@@ -25,8 +25,8 @@ $ taipy run main.py
 Taipy CLI will parse internal arguments (interpreted by Taipy) and pass the others to your Taipy
 application. For specific descriptions and usages of each argument, refer to:
 
-- [Configuring the `Gui` instance](../userman/configuration/gui-config.md#configuring-the-gui-instance)
-- [Configuring version management using the CLI](../userman/versioning/index.md#usage)
+- [Configuring the `Gui` instance](../../advanced_features/configuration/gui-config.md#configuring-the-gui-instance)
+- [Configuring version management using the CLI](../../advanced_features/versioning/index.md#usage)
 
 To display the list of available Taipy arguments, you can run the `taipy help run` command.
 Alternatively, you can use the *--help* or *-h* options by running `taipy run --help` or

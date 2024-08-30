@@ -142,7 +142,7 @@ the default configuration applies if some values are not provided.
 <a name="studio"></a>
 !!! note "Studio"
 
-    You can use [Taipy Studio](../../studio/index.md) for your Python code configuration. Taipy Studio
+    You can use [Taipy Studio](../../ecosystem/studio/index.md) for your Python code configuration. Taipy Studio
     generates a TOML file that you can load using the following code:
 
     === "Load your Studio config file"

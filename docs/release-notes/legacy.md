@@ -191,7 +191,7 @@ Published on 2023-10.
 
 - A production version of a Taipy application can now be provided with **migration functions** to
   automatically migrate entities and keep them compatible with previous versions.<br/>
-  For more information, refer to [Production mode](../userman/versioning/production_mode.md).
+  For more information, refer to [Production mode](../userman/advanced_features/versioning/production_mode.md).
 - A `GLOBAL` scope data node can be created from a data node configuration calling
   the new `taipy.create_global_data_node()^` method.<br/>
   For more information, refer to
@@ -448,7 +448,7 @@ Published on 2023-06.
   information and examples.
 - A new mechanism to start the web server when [using Notebooks](../userman/notebooks.md) was put
   in place to prevent potential bottlenecks when allocating a port number. This behavior is
-  controlled by the [*notebook_proxy*](../userman/configuration/gui-config.md#p-notebook_proxy) configuration
+  controlled by the [*notebook_proxy*](../userman/advanced_features/configuration/gui-config.md#p-notebook_proxy) configuration
   parameter.
 
 <h6 style="font-size: 1.2em"><strong><code>taipy-core</code></strong></h6>
@@ -619,7 +619,7 @@ details on how to migrate from version older than 2.1.
 - A security feature has been added: the file `.taipyignore`, located next to
   the Python main file, can list the paths that you want to prevent access to.<br/>
   See [issue #501](https://github.com/Avaiga/taipy-gui/issues/501) or
-  [this section](../userman/configuration/gui-config.md#protect-your-application-files) for
+  [this section](../userman/advanced_features/configuration/gui-config.md#protect-your-application-files) for
   details.
 - Charts can use the new `Decimator^` class to cleverly filter data points out to significantly
   improve performance.<br/>
@@ -645,7 +645,7 @@ details on how to migrate from version older than 2.1.
 - New version management system for Taipy applications. Users can now run an application in development
   mode, save a version of the application as an experiment version, re-run older experiment versions,
   and push a version to production.<br/>
-  See the [Version management system](../userman/versioning/index.md) documentation page for more details.
+  See the [Version management system](../userman/advanced_features/versioning/index.md) documentation page for more details.
 - New data node named [MongoCollectionDataNode](../userman/scenario_features/data-integration/data-node-config.md#mongo-collection).
   It represents the data from a MongoDB collection.
 - New data node named [ParquetDataNode](../userman/scenario_features/data-integration/data-node-config.md#parquet). It represents
