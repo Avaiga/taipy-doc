@@ -47,7 +47,7 @@ This documentation page lists the migration paths of Taipy releases as they were
     ```
 
     After migrating the code, we recommend that you take advantage of `Taipy CLI`
-    [migration tool](../manuals/cli/migrate-entities.md).
+    [migration tool](../userman/ecosystem/cli/migrate-entities.md).
 
 
 # From 2.0 to 2.1

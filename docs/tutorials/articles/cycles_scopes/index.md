@@ -10,15 +10,15 @@ img: images/icon-code.svg
 *Estimated Time for Completion: 30 minutes; Difficulty Level: Intermediate*
 
 In this section, we will explore the intricate relationship between
-[Scopes](../../../userman/what-if-analysis/scenarios-and-cycles.md#what-is-a-data-node-scope)
-and [Cycles](../../../userman/what-if-analysis/scenarios-and-cycles.md#what-is-a-cycle),
+[Scopes](../../../userman/scenario_features/what-if-analysis/scenarios-and-cycles.md#what-is-a-data-node-scope)
+and [Cycles](../../../userman/scenario_features/what-if-analysis/scenarios-and-cycles.md#what-is-a-cycle),
 two important concepts that help manage data nodes and scenarios effectively in Taipy.
 
 [Download the code](./src/scope_and_cycle.zip){: .tp-btn target='blank' }
 
 # Cycles
 
-Using [Cycles](../../../userman/what-if-analysis/scenarios-and-cycles.md#what-is-a-cycle)
+Using [Cycles](../../../userman/scenario_features/what-if-analysis/scenarios-and-cycles.md#what-is-a-cycle)
 allow you to:
 
 - Share variables between scenarios in the same time frame
@@ -202,7 +202,7 @@ first scenario created for a cycle is primary.
 
 ### Python code associated to primary scenarios
 
-[`tp.set_primary(<Scenario>)`](../../../userman/sdm/scenario/index.md#promote-a-scenario-as-primary)
+[`tp.set_primary(<Scenario>)`](../../../userman/scenario_features/sdm/scenario/index.md#promote-a-scenario-as-primary)
 allows changing the primary scenario in a `Cycle`.
 
 `<Scenario>.is_primary` identifies as a boolean whether the scenario is primary or not.

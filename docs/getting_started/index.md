@@ -147,7 +147,7 @@ This code starts the UI server, which makes the interface active and functional.
 ---
 
 For more realistic and advanced use cases, check out our
-[Gallery](../gallery/index.md), or [Manuals](../manuals/index.md) pages.
+[Gallery](../gallery/index.md), or [User Manual](../userman/index.md) pages.
 
 <div class="tp-row tp-row--gutter-sm">
   <div class="tp-col-12 tp-col-md-4 d-flex">

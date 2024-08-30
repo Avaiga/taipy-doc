@@ -18,7 +18,7 @@ are really important for big decisions.
 In this tip, we will examine Taipy scenarios more closely. We will explore what they can do
 and how they can be useful when making decisions.
 
-As a reminder, Taipy [scenarios](../../../userman/sdm/scenario/index.md) are one of the
+As a reminder, Taipy [scenarios](../../../userman/scenario_features/sdm/scenario/index.md) are one of the
 fundamental concept in Taipy.
 
 # Taipy Scenarios: An Overview

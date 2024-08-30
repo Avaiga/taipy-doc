@@ -233,8 +233,8 @@ Add the new Markdown file to the "mkdocs.yml_template" file in the appropriate s
 if any are present.
 - Break lines in the Markdown file before 100 characters.
 - Use relative links to taipy doc (.md). To express
-`https://docs.taipy.io/en/latest/manuals/studio/config/` in a tip article, write
-`../../../manuals/studio/config/index.md`.
+`https://docs.taipy.io/en/latest/userman/ecosystem/studio/config/` in a tip article, write
+`../../../userman/ecosystem/studio/config/index.md`.
 - Follow conventions for styling code, variables, etc.
 - Check the level of titles in the Markdown file.
 - Build the doc and test the page. See [INSTALLATION.md](INSTALLATION.md)
@@ -306,8 +306,8 @@ Add the new Markdown file to the "mkdocs.yml_template" file in the appropriate s
 if any are present.
 - Break lines in the Markdown file before 100 characters.
 - Use relative links to taipy doc (.md). To express
-`https://docs.taipy.io/en/latest/manuals/studio/config/` in a tip article, write
-`../../../manuals/studio/config/index.md`.
+`https://docs.taipy.io/en/latest/userman/ecosystem/studio/config/` in a tip article, write
+`../../../userman/ecosystem/studio/config/index.md`.
 - Follow conventions for styling code, variables, etc.
 - Check the level of titles in the Markdown file.
 - Build the doc and test the page. See [INSTALLATION.md](INSTALLATION.md)

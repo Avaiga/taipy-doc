@@ -28,7 +28,7 @@ The following image shows the form to create a new scenario.
 Thanks to its rich configurability, you can greatly customize the display of the scenario
 selector, for example, adding a search bar, adding a filter or a sort capability, grouping
 the scenarios by cycle, etc. For more details, see the
-[scenario selector](../gui/viselements/corelements/scenario_selector.md) page.
+[scenario selector](../../../refmans/gui/viselements/corelements/scenario_selector.md) page.
 
 # Scenario Viewer
 The *scenario viewer* control (`scenario`) displays a scenario's information and lets
@@ -48,7 +48,7 @@ interact with the scenario. In particular, the end-user can submit the scenario 
 using the top right button "Submit". The scenario's sequences are also displayed, and the
 end-user can create, delete or submit them. Most of the fields and interactions are customizable.
 
-For more details, see the [scenario viewer](../gui/viselements/corelements/scenario.md) page.
+For more details, see the [scenario viewer](../../../refmans/gui/viselements/corelements/scenario.md) page.
 
 # Job selector
 The *job selector* control (`job_selector`) displays the list of jobs submitted to a Taipy
@@ -65,7 +65,7 @@ the following display.
 </figure>
 
 Thanks to its rich configurability, you can customize the columns to display in job selector.
-For more details, see the [job selector](../gui/viselements/corelements/job_selector.md) page.
+For more details, see the [job selector](../../../refmans/gui/viselements/corelements/job_selector.md) page.
 
 # Task orchestration interface
 

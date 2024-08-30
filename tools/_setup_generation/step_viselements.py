@@ -134,7 +134,7 @@ class VisElementsStep(SetupStep):
 
         d = "corelements/" if element_desc["prefix"] == "core_" else "generic/"
         self.navigation += (
-            f'- "{element_type}": "/refmans/gui/viselements/{d}{element_type}.md"\n'
+            f'- "{element_type}": refmans/gui/viselements/{d}{element_type}.md\n'
         )
         template_doc_path = f"{element_desc['doc_path']}/{element_type}.md_template"
         with open(template_doc_path, "r") as template_doc_file:
@@ -290,7 +290,7 @@ class VisElementsStep(SetupStep):
                     INNER_HREF = re.compile(r"(?<=<a\shref=\")(#|\.)")
                     for a in INNER_HREF.finditer(doc):
                         new_doc += doc[last_loc : a.start()]
-                        new_doc += f"../../gui/viselements/{element_type}/{a.group(0)}"
+                        new_doc += f"../../../../refmans/gui/viselements/{element_type}/{a.group(0)}"
                         last_loc = a.end()
                     if last_loc:
                         doc = new_doc + doc[last_loc:]
@@ -367,7 +367,7 @@ class [element_type]({base_class}):
                 if m := re.search(r"(\[`(\w+)`\]\()\2\.md\)", short_doc):
                     short_doc = (
                         short_doc[: m.start()]
-                        + f"{m[1]}../gui/viselements/{m[2]}.md)"
+                        + f"{m[1]}../../../refmans/gui/viselements/{m[2]}.md)"
                         + short_doc[m.end() :]
                     )
                 # Link to element doc page

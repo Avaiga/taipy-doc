@@ -111,4 +111,4 @@ Note that the Python API is used in the example to create the user interface, bu
 interface can be done using the Markdown API.
 
 For more details on the various visual elements, see the
-[visual elements](../gui/viselements/index.md) page.
+[visual elements](../../../refmans/gui/viselements/index.md) page.

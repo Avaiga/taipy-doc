@@ -173,8 +173,8 @@ For more details, see the [scenario](../sdm/scenario/index.md) and
     Note that the scenarios are created and edited programmatically in this example. A Taipy
     user interface is often used to let end-users create their own scenarios, manage their cycles
     and set the data. In particular, the visual elements
-    [scenario selector](../gui/viselements/corelements/scenario_selector.md),
-    [scenario viewer](../gui/viselements/corelements/scenario.md),
-    [data node selector](../gui/viselements/corelements/data_node_selector.md), and
-    [data node viewer](../gui/viselements/corelements/data_node.md) are designed to facilitate
+    [scenario selector](../../../refmans/gui/viselements/corelements/scenario_selector.md),
+    [scenario viewer](../../../refmans/gui/viselements/corelements/scenario.md),
+    [data node selector](../../../refmans/gui/viselements/corelements/data_node_selector.md), and
+    [data node viewer](../../../refmans/gui/viselements/corelements/data_node.md) are designed to facilitate
     the creation and management of scenarios.

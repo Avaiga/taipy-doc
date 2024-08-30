@@ -37,12 +37,12 @@ configuration elements:
     The user can select a configuration file in this list to populate the other
     sections of the Taipy Configs view.
 - **Data Nodes**: holds the list of
-    [Data Node configurations](../../userman/data-integration/data-node-config.md) defined
+    [Data Node configurations](../../userman/scenario_features/data-integration/data-node-config.md) defined
     in the selected configuration file.<br/>
     The user can select a Data Node configuration in this list to access all its
     properties in the Details section (see below).
 - **Tasks**: holds the list of
-    [Task configurations](../../userman/task-orchestration/scenario-config.md) defined
+    [Task configurations](../../userman/scenario_features/task-orchestration/scenario-config.md) defined
     in the selected configuration file.<br/>
     The user can select a Task configuration in this list to access all its
     properties in the Details section (see below).

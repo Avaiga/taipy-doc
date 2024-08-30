@@ -126,7 +126,7 @@ def create_navigation_buttons(site_url: str) -> str:
         <div style="margin-bottom: 1rem;">
 """
     html_for_buttons += create_navigation_button(
-        site_url, "Tutorials", "getting_started/", "tp-content-card--primary"
+        site_url, "Tutorials", "tutorials/getting_started/", "tp-content-card--primary"
     )
     html_for_buttons += create_navigation_button(
         site_url, "User Manual", "userman/", "tp-content-card--accent"
@@ -156,7 +156,7 @@ def on_post_build(env):
     site_url = env.conf["site_url"]
     xrefs = {}
     multi_xrefs = {}
-    xrefs_path = "manuals/xrefs"
+    xrefs_path = "userman/xrefs"
     if os.path.exists(f"{site_dir}/{xrefs_path}"):
         with open(f"{site_dir}/{xrefs_path}") as xrefs_file:
             xrefs = json.load(xrefs_file)
@@ -172,8 +172,7 @@ def on_post_build(env):
             descs = [xrefs[f"{xref}/{i}"] for i in range(0, xref_desc)]
             # If unspecified, the first xref will be used (the one with the shortest package)
             multi_xrefs[xref] = sorted(descs, key=lambda p: len(p[0]))
-    manuals_files_path = os.path.join(site_dir, "manuals")
-    ref_files_path = os.path.join(manuals_files_path, "refmans", "reference")
+    ref_files_path = os.path.join(site_dir, "refmans", "reference")
     fixed_cross_refs = {}
     for root, _, file_list in os.walk(site_dir):
         for f in file_list:
@@ -624,21 +623,24 @@ def on_post_build(env):
                         return f"<code><font size='+2'>{s}</font></code>"
 
                     fn_match = re.search(
-                        r"manuals(/|\\)refmans\1reference\1pkg_taipy\1index.html",
+                        r"refmans(/|\\)reference\1pkg_taipy\1index.html",
                         filename,
                     )
-                    if fn_match is not None:  # The root 'taipy' package
+                    if (
+                        fn_match is not None
+                    ):  # The root 'taipy' package# The root 'taipy' package
+                        print(filename, "is good")
                         html_content = re.sub(
                             r"(<h1>)taipy(</h1>)",
                             f"\\1{code('taipy')}\\2",
                             html_content,
                         )
                     fn_match = re.search(
-                        r"manuals(/|\\)refmans\1reference\1pkg_taipy(\..*)\1index.html",
+                        r"refmans(/|\\)reference\1pkg_taipy(\..*)\1index.html",
                         filename,
                     )
                     if fn_match is not None:
-                        pkg = fn_match[2]
+                        pkg = fn_match[1]
                         sub_match = re.search(r"(\.\w+)(\..*)", pkg)
                         if sub_match is None:
                             html_content = re.sub(

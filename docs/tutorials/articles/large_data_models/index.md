@@ -444,7 +444,7 @@ incredibly useful when dealing with large datasets.
 
 # Taipy Studio
 
-If you have VS Code, you may use [Taipy Studio](../../../manuals/studio/config/index.md)
+If you have VS Code, you may use [Taipy Studio](../../../userman/ecosystem/studio/config/index.md)
 to build the Taipy *config.toml* configuration file in place of defining the
 *config.py* script. Taipy Studio allows you to **build and visualize your pipelines with simple
 drag-and-drop interactions**.

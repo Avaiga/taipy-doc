@@ -17,9 +17,9 @@ To apprehend what is a **Scenario**, you need to understand the **Data node** an
   it. These Data Nodes can point to different types of data sources like CSV files, Pickle files, databases, etc.,
   and they can represent various types of Python variables such as integers, strings, data frames, lists, and more.
 
-- [**Tasks**](../../../../userman/sdm/task/index.md): are the translation of functions in Taipy where their inputs and outputs are data nodes.
+- [**Tasks**](../../../../userman/scenario_features/sdm/task/index.md): are the translation of functions in Taipy where their inputs and outputs are data nodes.
 
-- [**Scenarios**](../../../../userman/sdm/scenario/index.md): Scenarios are created by combining Data Nodes and Tasks to form a graph that maps the
+- [**Scenarios**](../../../../userman/scenario_features/sdm/scenario/index.md): Scenarios are created by combining Data Nodes and Tasks to form a graph that maps the
 	execution flow. End-Users very often require modifying
   various parameters to reflect different business situations. Taipy provide the
   framework to play/execute scenarios under different situations (i.e. various

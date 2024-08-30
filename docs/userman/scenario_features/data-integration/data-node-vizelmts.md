@@ -17,7 +17,7 @@ data node selector control.
 Thanks to its rich configurability, you can customize the display of the data node selector,
 for example, by adding a search bar, adding a filter or a sort capability, grouping the
 data nodes by scenarios and cycles, etc. For more details, see the
-[data node selector](../gui/viselements/corelements/data_node_selector.md) page.
+[data node selector](../../../refmans/gui/viselements/corelements/data_node_selector.md) page.
 
 # Data node viewer
 The `data_node` control displays a data node's information and lets end-users edit it.
@@ -52,7 +52,7 @@ displayed. The following two images show the data node viewer displaying a table
 <figcaption>Graphical view of some tabular data</figcaption>
 </figure>
 
-For more details, see the [data node viewer](../gui/viselements/corelements/data_node.md) page.
+For more details, see the [data node viewer](../../../refmans/gui/viselements/corelements/data_node.md) page.
 
 # Data management interface
 

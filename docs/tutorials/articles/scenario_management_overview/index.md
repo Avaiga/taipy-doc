@@ -38,10 +38,10 @@ Data Nodes don't contain the data itself but point to the data and know
   such as integers, strings, data frames, lists, and more. They are fully generic and can be
   used to represent datasets, parameters, KPIs, intermediate data, or any variable.
 
-- [**Tasks**](../../../userman/sdm/task/index.md): are the translation of functions in
+- [**Tasks**](../../../userman/scenario_features/sdm/task/index.md): are the translation of functions in
   Taipy where their inputs and outputs are data nodes.
 
-- [**Scenarios**](../../../userman/sdm/scenario/index.md): Scenarios are created by
+- [**Scenarios**](../../../userman/scenario_features/sdm/scenario/index.md): Scenarios are created by
   combining Data Nodes and Tasks to form a graph that maps the execution flow. Each scenario can be
   submitted, resulting in the execution of its tasks.
   End-Users very often require modifying various parameters to reflect different business
@@ -145,11 +145,11 @@ First, run the Orchestrator service in your code (`tp.Orchestrator().run()`). Th
 
 - create scenarios ([`tp.create_scenario(<ScenarioConfig>)`](../scenarios/index.md#scenario-configuration-and-creation)),
 
-- write your input data nodes ([`<Data Node>.write(<new value>)`](../../../userman/data-integration/data-node-usage.md#read-write-a-data-node)),
+- write your input data nodes ([`<Data Node>.write(<new value>)`](../../../userman/scenario_features/data-integration/data-node-usage.md#read-write-a-data-node)),
 
 - submit them to run the task ([`<Scenario>.submit()`](../scenarios/index.md#scenario-configuration-and-creation)),
 
-- read your output data node ([`<Data Node>.read()`](../../../userman/data-integration/data-node-usage.md#read-write-a-data-node)).
+- read your output data node ([`<Data Node>.read()`](../../../userman/scenario_features/data-integration/data-node-usage.md#read-write-a-data-node)).
 
 Creating a scenario creates all its related entities (**tasks**, **Data Nodes**, etc).
 These entities are being created thanks to the previous
@@ -184,7 +184,7 @@ read and write data.
 
     As a quick note, here are some other basic functions to use for data and scenario managament.
 
-    - [`tp.get_scenarios()`](../../../userman/sdm/scenario/index.md#get-all-scenarios):
+    - [`tp.get_scenarios()`](../../../userman/scenario_features/sdm/scenario/index.md#get-all-scenarios):
         this function returns the list of all the scenarios.
 
 
@@ -196,16 +196,16 @@ read and write data.
     print([(s.name, s.predictions.read()) for s in tp.get_scenarios()])
     ```
 
-    - [`tp.get(<Taipy object ID>)`](../../../userman/data-integration/data-node-usage.md#get-a-data-node-by-id): this function returns an entity based on the id of the entity.
+    - [`tp.get(<Taipy object ID>)`](../../../userman/scenario_features/data-integration/data-node-usage.md#get-a-data-node-by-id): this function returns an entity based on the id of the entity.
 
-    - [`tp.delete(<Taipy object ID>)`](../../../userman/sdm/scenario/index.md#delete-a-scenario): this function deletes the entity and nested elements based on the id of the entity.
+    - [`tp.delete(<Taipy object ID>)`](../../../userman/scenario_features/sdm/scenario/index.md#delete-a-scenario): this function deletes the entity and nested elements based on the id of the entity.
 
     You can also have a look to this [tutorial](../scenario_comparison/index.md)
     to learn how scenarios can be compared easily.
-    Many other functions are described in the manuals, in particular in the
-    [scenario](../../../userman/sdm/scenario/index.md)
+    Many other functions are described in the User Manual, in particular in the
+    [scenario](../../../userman/scenario_features/sdm/scenario/index.md)
     and
-    [data node](../../../userman/data-integration/data-node-usage.md)
+    [data node](../../../userman/scenario_features/data-integration/data-node-usage.md)
     documentation pages.
 
 # Visual elements

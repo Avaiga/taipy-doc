@@ -56,12 +56,12 @@ Published on 2024-03.
 - The `DataNode.filter()^` method and the indexing/filtering style now also support filtering a
   Numpy array, a list of objects, and a list of dictionaries.<br/>
   For more information, please refer to
-  [Filter a data node](../userman/data-integration/data-node-usage.md#filter).
+  [Filter a data node](../userman/scenario_features/data-integration/data-node-usage.md#filter).
 - You can now append new data to a data node using the `DataNode.append()^` method. The method is
   available for `CSVDataNode`, `ExcelDataNode`, `JSONDataNode`, `ParquetDataNode`, `SQLDataNode`,
   `SQLTableDataNode`, and `MongoCollectionDataNode`.<br/>
   For more information, please refer to
-  [Append a data node](../userman/data-integration/data-node-usage.md#append).
+  [Append a data node](../userman/scenario_features/data-integration/data-node-usage.md#append).
 - A new class called `Submission^` holds meta-data (such as its status or
   submission date) related to a submitted entity: `Scenario^`, `Sequence^`, and/or `Task^`.<br/>
   The function `taipy.get_latest_submission()^` returns the last submission of a given entity.<br/>
@@ -71,7 +71,7 @@ Published on 2024-03.
   `Submission^` entity.
 - A new predefined data node named `S3ObjectDataNode^` has been implemented.<br/>
   For more information, please refer to
-  [S3ObjectDataNode](../userman/data-integration/data-node-config.md#amazon-web-service-s3-object).
+  [S3ObjectDataNode](../userman/scenario_features/data-integration/data-node-config.md#amazon-web-service-s3-object).
 
 ## Improvements and changes
 
@@ -163,7 +163,7 @@ Published on 2023-10.
 
 - Taipy application can now be run with the Taipy command-line interface (CLI) using the
   `taipy run` command. For more information, refer to
-  [Run application in Taipy CLI](../manuals/cli/run.md).
+  [Run application in Taipy CLI](../userman/ecosystem/cli/run.md).
 
 <h4><strong><code>taipy-gui</code></strong> 3.0.0</h4>
 
@@ -195,10 +195,10 @@ Published on 2023-10.
 - A `GLOBAL` scope data node can be created from a data node configuration calling
   the new `taipy.create_global_data_node()^` method.<br/>
   For more information, refer to
-  [Create a data node](../userman/data-integration/data-node-usage.md#create-a-data-node).
+  [Create a data node](../userman/scenario_features/data-integration/data-node-usage.md#create-a-data-node).
 - A data node configuration can be built from an existing data node configuration.
   For more information, refer to the documentation page on
-  [data node configuration](../userman/data-integration/data-node-config.md#configure-a-data-node-from-another-configuration).
+  [data node configuration](../userman/scenario_features/data-integration/data-node-config.md#configure-a-data-node-from-another-configuration).
 - A new class `Submittable^` models entities that can be submitted for execution.
   It is an Abstract class instantiated by `Scenario^` and `Sequence^`.
   It can be handy to use the new following `Submittable^` methods:
@@ -214,15 +214,15 @@ Published on 2023-10.
     * `taipy.exists()^` checks if an entity exists.
 - The encoding type of CSVDataNode and JSONDataNode can now be configured using the
   *encoding* parameter. For more information, please refer to
-  [Configure a CSVDataNode](../userman/data-integration/data-node-config.md#csv)
-  and [Configure a JSONDataNode](../userman/data-integration/data-node-config.md#json)
+  [Configure a CSVDataNode](../userman/scenario_features/data-integration/data-node-config.md#csv)
+  and [Configure a JSONDataNode](../userman/scenario_features/data-integration/data-node-config.md#json)
   sections.
 
 <h4><strong><code>taipy-template</code></strong> 3.0.0</h4>
 
 - A new template named "scenario-management" is available. For more information on creating
   a new Taipy application with the new "scenario-management" template, refer to the
-  documentation page on [templates](../manuals/cli/create.md#from-a-specific-template).
+  documentation page on [templates](../userman/ecosystem/cli/create.md#from-a-specific-template).
 
 ## Improvements and changes
 
@@ -267,7 +267,7 @@ Published on 2023-10.
   `--clean-entities` option has been removed from the version management CLI.<br/>
   To clean entities of a version, please run your application in development mode, or delete your
   version with the `--delete` CLI option. For more information, refer to
-  [Taipy command-line interface](../manuals/cli/index.md)
+  [Taipy command-line interface](../userman/ecosystem/cli/index.md)
 - The deprecated `nb_of_workers` attribute of the JobConfig has been removed.
 - The deprecated `parent_id` attribute of a DataNode, Task, Pipeline, or Scenario entity, has
   been removed.
@@ -369,7 +369,7 @@ Published on 2023-06.
   Please check the
   [list of Scenario and Data Management controls](../refmans/gui/viselements/index.md#scenario-and-data-management-controls).
 - New Taipy command-line interface (CLI). Please refer to the
-  [Taipy command-line interface](../manuals/cli/index.md) documentation page for more information.
+  [Taipy command-line interface](../userman/ecosystem/cli/index.md) documentation page for more information.
 - Users can now create a new Taipy application from a template by running `$ taipy create` from the
   CLI. Besides the default template, "multi-page-gui" template can be chosen with the optional
   `--template` option.
@@ -589,7 +589,7 @@ It mainly provides:
 - IntelliSense applied to the Markdown syntax extension that Taipy GUI
     uses to define the visual elements in the interface pages.
 
-You can refer to the [Taipy Studio User Manual](../manuals/studio/index.md) section for more
+You can refer to the [Taipy Studio User Manual](../userman/ecosystem/studio/index.md) section for more
 information.
 
 # Community edition: 2.1
@@ -646,9 +646,9 @@ details on how to migrate from version older than 2.1.
   mode, save a version of the application as an experiment version, re-run older experiment versions,
   and push a version to production.<br/>
   See the [Version management system](../userman/versioning/index.md) documentation page for more details.
-- New data node named [MongoCollectionDataNode](../userman/data-integration/data-node-config.md#mongo-collection).
+- New data node named [MongoCollectionDataNode](../userman/scenario_features/data-integration/data-node-config.md#mongo-collection).
   It represents the data from a MongoDB collection.
-- New data node named [ParquetDataNode](../userman/data-integration/data-node-config.md#parquet). It represents
+- New data node named [ParquetDataNode](../userman/scenario_features/data-integration/data-node-config.md#parquet). It represents
   tabular data stored in the Apache Parquet format.
 - Added support for [Modin](https://modin.readthedocs.io/en/stable/) as a new exposed type.
 - Running the Orchestrator service is required to execute jobs. See `Orchestrator().run()^` method.

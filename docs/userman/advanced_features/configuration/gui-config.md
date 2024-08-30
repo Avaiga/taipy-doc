@@ -96,8 +96,8 @@ Here is the list of the configuration parameters you can use in
    - <a name="p-data_url_max_size"></a>*data_url_max_size* (int or None): the size in bytes below
      which the upload of file content is performed as inline data. If a file content exceeds that
      size, it will create a physical file on the server so the application can read it. This upload
-     mechanism is used by the [`file_download`](../gui/viselements/generic/file_download.md)
-     and the [`image`](../gui/viselements/generic/image.md) controls.<br/>
+     mechanism is used by the [`file_download`](../../../refmans/gui/viselements/generic/file_download.md)
+     and the [`image`](../../../refmans/gui/viselements/generic/image.md) controls.<br/>
      The default value is 50 kB.
    - <a name="p-use_reloader"></a>*use_reloader* (bool, default: False): If True, the application
      watches its Python source file while running and reloads the entire script should the file be
@@ -113,9 +113,9 @@ Here is the list of the configuration parameters you can use in
      [Ngrok](https://ngrok.com/) to expose your application to the Internet. See the section on
      [Accessing your app from the Web](#accessing-your-app-from-the-web) for details.
    - <a name="p-change_delay"></a>*change_delay* (int, default: None): the delay, in milliseconds,
-     used by some controls (namely [`slider`](../gui/viselements/generic/slider.md),
-     [`input`](../gui/viselements/generic/input.md), and
-     [`number`](../gui/viselements/generic/number.md)) before the user
+     used by some controls (namely [`slider`](../../../refmans/gui/viselements/generic/slider.md),
+     [`input`](../../../refmans/gui/viselements/generic/input.md), and
+     [`number`](../../../refmans/gui/viselements/generic/number.md)) before the user
      actions are sent to the backend server for further processing. This can be used when there is
      a significant network latency: user actions would then get stacked up on the front-end before
      the back-end had a chance to receive them, resulting in a poor user experience. This value
@@ -123,7 +123,7 @@ Here is the list of the configuration parameters you can use in
      The default value of None indicates that Taipy GUI does not use any delay.
    - <a name="p-propagate"></a>*propagate* (bool, default: True): the default value that is used
      for every *propagate* property value, for all controls. Please look at the section on the
-     [*propagate* property](../gui/viselements/introduction.md#the-propagate-property) for details.
+     [*propagate* property](../../../refmans/gui/viselements/introduction.md#the-propagate-property) for details.
    - <a name="p-time_zone"></a>*time_zone* (str, default: "client"): indicates how date and time
      values should be interpreted.<br/>
      You can use a TZ database name (as listed in
@@ -132,7 +132,7 @@ Here is the list of the configuration parameters you can use in
      - "client" indicates that the time zone to be used is the web client's.
      - "server" indicates that the time zone to be used is the web server's.
    - <a name="p-upload_folder"></a>*upload_folder* (str or None, default: None): the local path
-     where files are uploaded when using the [`file_selector`](../gui/viselements/generic/file_selector.md)
+     where files are uploaded when using the [`file_selector`](../../../refmans/gui/viselements/generic/file_selector.md)
      control.<br/>
      The default value is the temp directory on the system where the application runs.
    - <a name="p-webapp_path"></a>*webapp_path* (str, None): when working with the Taipy GUI

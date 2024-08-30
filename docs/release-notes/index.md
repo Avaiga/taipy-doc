@@ -48,8 +48,8 @@ This is the list of changes to Taipy releases as they were published.
     - sort the output list of scenarios by name, id, creation date, or tag
     - filter the output list of scenarios that are created in a specific time range.<br/>
   For more information, please refer to
-  [Get all scenarios](../userman/sdm/scenario/index.md#get-all-scenarios) and
-  [Get primary scenarios](../userman/sdm/scenario/index.md#get-primary-scenarios).
+  [Get all scenarios](../userman/scenario_features/sdm/scenario/index.md#get-all-scenarios) and
+  [Get primary scenarios](../userman/scenario_features/sdm/scenario/index.md#get-primary-scenarios).
 
 <h4><strong><code>taipy-templates</code></strong> 4.0.0 </h4>
 
@@ -126,12 +126,12 @@ additional features.
   export folder if the path exists.
 - The `taipy.export_scenario()^` method now exports a zip archive instead of a
   folder. For more information, please refer to
-  [Export a scenario](../userman/sdm/scenario/index.md#export-a-scenario).
+  [Export a scenario](../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
 - The `taipy.export_scenario()^` method now raises the `ExportPathAlreadyExists^`
   exception if the export path already exists. You can explicitly set the *overwrite* parameter to
   True to overwrite the existing export path. For more information, please refer to
-  [Export a scenario](../userman/sdm/scenario/index.md#export-a-scenario).
+  [Export a scenario](../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
 - The new `taipy.import_scenario()^` method can be used to import a scenario from an exported
   archive. For more information, please refer to
-  [Import a scenario](../userman/sdm/scenario/index.md#import-a-scenario).
+  [Import a scenario](../userman/scenario_features/sdm/scenario/index.md#import-a-scenario).
 - The default application template now supports authentication and authorization features.

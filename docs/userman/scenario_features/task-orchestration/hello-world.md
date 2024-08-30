@@ -129,8 +129,8 @@ Hello Kylian Mbappe!
     component (chart, table, etc. ) the `read()` and `write()` method are called
     to edit and retrieve the data.
 
-    The [scenario selector](../gui/viselements/corelements/scenario_selector.md) and the
-    [scenario viewer](../gui/viselements/corelements/scenario.md) are designed for this purpose.
+    The [scenario selector](../../../refmans/gui/viselements/corelements/scenario_selector.md) and the
+    [scenario viewer](../../../refmans/gui/viselements/corelements/scenario.md) are designed for this purpose.
 
 !!! note
 
