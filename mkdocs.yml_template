@@ -91,7 +91,7 @@ nav:
           - userman/gui/extension/dynamic_element/index.md
           - "Scalar properties": userman/gui/extension/dynamic_element/scalar_props.md
 
-    - "Scenario and data management":
+    - "Scenario features":
       - "Data integration":
         - "Data integration": userman/scenario_features/data-integration/index.md
         - "Data node config": userman/scenario_features/data-integration/data-node-config.md
