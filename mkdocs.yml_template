@@ -1,5 +1,5 @@
 site_name: Taipy
-site_url: https://docs.taipy.io/en/develop
+site_url: https://docs.taipy.io/en/doc-add-sections-and-quick-access
 site_description: Documentation for Taipy
 site_author: taipy.io
 repo_url: https://github.com/avaiga/taipy
@@ -7,11 +7,9 @@ repo_name: taipy
 #strict: true
 copyright: © 2021-[YEAR] Avaiga
 nav:
-  - "Getting Started":
+  - "Tutorials":
     - "Getting Started": getting_started/index.md
 
-  - "Tutorials":
-    - "Tutorials": tutorials/index.md
     - "Fundamentals":
       - "Fundamentals": tutorials/fundamentals/index.md
       - "Understanding GUI":
@@ -31,31 +29,14 @@ nav:
         - "3 - Scenario configuration": tutorials/articles/complete_application/step_03/step_03.md
         - "4 - Scenario page": tutorials/articles/complete_application/step_04/step_04.md
         - "5 - Performance page": tutorials/articles/complete_application/step_05/step_05.md
-      - "Creating an LLM ChatBot": tutorials/articles/chatbot/index.md
-      - "Creating an RAG ChatBot": tutorials/articles/rag_chatbot/index.md
-    - "Visuals":
-      - "Visuals": tutorials/visuals/index.md
-      - "Callbacks": tutorials/articles/callbacks/index.md
-      - "Using Tables": tutorials/articles/using_tables/index.md
-      - "Long Running Callbacks": tutorials/articles/long_callbacks/index.md
-      - "Real-time data visualization": tutorials/articles/multithreading/index.md
-      - "Stylekit": tutorials/articles/css_style_kit/index.md
-      - "Multi-user": tutorials/articles/multi_user/index.md
-    - "Scenario Management":
-      - "Scenario Management": tutorials/scenario_management/index.md
-      - "Scenarios": tutorials/articles/scenarios/index.md
-      - "Data Nodes": tutorials/articles/the_data_nodes/index.md
-      - "Skippable Tasks": tutorials/articles/skippable_tasks/index.md
-      - "Cycles and Scopes": tutorials/articles/cycles_scopes/index.md
-      - "Job Execution mode": tutorials/articles/job_execution/index.md
-      - "Scenario Comparison": tutorials/articles/scenario_comparison/index.md
-      - "Scenario Subscription": tutorials/articles/scenario_subscription/index.md
-      - "Manage application versions": tutorials/articles/version_management/index.md
+      - "Creating applications":
+        - "LLM ChatBot":
+          - "LLM ChatBot": tutorials/articles/chatbot/index.md
+        - "RAG ChatBot":
+          - "RAG ChatBot": tutorials/articles/rag_chatbot/index.md
     - "Integration":
         - "Integration": tutorials/integration/index.md
         - "Integrate Third-Party Components": tutorials/articles/3rd_party_components/index.md
-        - "Taipy Application on Colab with Ngrok": tutorials/articles/colab_with_ngrok/index.md
-        - "Jupyter Notebooks": tutorials/articles/jupyter_notebooks/index.md
         - "Integrating Databricks": tutorials/articles/databricks/index.md
         - "Integration with Dataiku": tutorials/articles/dataiku/index.md
         - "Integration with IBM Watson Studio": tutorials/articles/ibm_watson_studio/index.md
@@ -65,43 +46,45 @@ nav:
       - "Large data models vs. Computer memory": tutorials/articles/large_data_models/index.md
       - "Charts for Large Data": tutorials/articles/decimator/index.md
 
-  - "Manuals":
-    - "About Taipy's Manuals": manuals/index.md
 
-    - "User Manual":
-      - "About Taipy's User Manuals": manuals/userman/index.md
+  - "User Manual":
+    - "About Taipy's User Manuals": manuals/userman/index.md
 
-      - "User interface":
-        - "User interface": manuals/userman/gui/index.md
-        - "Visual elements":
-          - "Visual elements": manuals/userman/gui/viselements/index.md
-          - "Introduction": manuals/userman/gui/viselements/introduction.md
-          - "Styling":
-              - "Styling": manuals/userman/gui/styling/index.md
-              - "The Stylekit": manuals/userman/gui/styling/stylekit.md
-        - "Pages":
-          - "Pages": manuals/userman/gui/pages/index.md
-          - "Navigate between pages": manuals/userman/gui/pages/navigate/index.md
-          - "Dynamic page content": manuals/userman/gui/pages/partial/index.md
-          - "Dialogs": manuals/userman/gui/pages/dialog/index.md
-          - "Panes": manuals/userman/gui/pages/pane/index.md
-          - "Advanced": manuals/userman/gui/pages/advanced/index.md
-        - "Binding variables": manuals/userman/gui/binding.md
-        - "Callbacks": manuals/userman/gui/callbacks.md
-        - "Notifications": manuals/userman/gui/notifications.md
-        - "Extension libraries":
-          - "Extension libraries": manuals/userman/gui/extension/index.md
-          - "Static Elements": manuals/userman/gui/extension/static_element.md
-          - "Dynamic Elements":
-            - manuals/userman/gui/extension/dynamic_element/index.md
-            - "Scalar properties": manuals/userman/gui/extension/dynamic_element/scalar_props.md
+    - "User interface":
+      - "User interface": manuals/userman/gui/index.md
+      - "Pages":
+        - "Pages": manuals/userman/gui/pages/index.md
+        - "Navigate between pages": manuals/userman/gui/pages/navigate/index.md
+        - "Dynamic page content": manuals/userman/gui/pages/partial/index.md
+        - "Dialogs": manuals/userman/gui/pages/dialog/index.md
+        - "Panes": manuals/userman/gui/pages/pane/index.md
+        - "Advanced": manuals/userman/gui/pages/advanced/index.md
+      - "Visual elements": manuals/userman/gui/viselements/introduction.md
+      - "Binding variables": manuals/userman/gui/binding.md
+      - "Callbacks":
+        - "Callbacks": manuals/userman/gui/callbacks/index.md
+        - "Global and Local callbacks": manuals/userman/gui/callbacks/global_and_local_callbacks/index.md
+        - "Asynchronous callbacks": manuals/userman/gui/callbacks/asynchronous_callbacks/index.md
+        - "Core events": manuals/userman/gui/callbacks/core_events/index.md
+      - "Styling":
+        - "Styling": manuals/userman/gui/styling/index.md
+        - "The Stylekit": manuals/userman/gui/styling/stylekit.md
+      - "Notifications": manuals/userman/gui/notifications.md
+      - "Extension libraries":
+        - "Extension libraries": manuals/userman/gui/extension/index.md
+        - "Static Elements": manuals/userman/gui/extension/static_element.md
+        - "Dynamic Elements":
+          - manuals/userman/gui/extension/dynamic_element/index.md
+          - "Scalar properties": manuals/userman/gui/extension/dynamic_element/scalar_props.md
 
+    - "Scenario and data management":
       - "Data integration":
         - "Data integration": manuals/userman/data-integration/index.md
         - "Data node config": manuals/userman/data-integration/data-node-config.md
         - "Data node usage": manuals/userman/data-integration/data-node-usage.md
         - "Visual elements": manuals/userman/data-integration/data-node-vizelmts.md
         - "Data node history and validity": manuals/userman/data-integration/data-node-history.md
+        - "Data Nodes cheatsheet": tutorials/scenario_management/2_the_data_nodes/index.md
 
       - "Task orchestration":
         - "Scenarios for task orchestration": manuals/userman/task-orchestration/index.md
@@ -116,6 +99,8 @@ nav:
         - "Multiple scenarios": manuals/userman/what-if-analysis/multiple-scenarios.md
         - "Recurrent scenarios": manuals/userman/what-if-analysis/scenarios-and-cycles.md
         - "Scenario comparison": manuals/userman/what-if-analysis/scenario-comparison.md
+        - "Scenario comparison cheatsheet": tutorials/scenario_management/6_scenario_comparison/index.md
+
 
       - "Scenario and data management":
         - "Scenario and data management": manuals/userman/sdm/index.md
@@ -126,6 +111,9 @@ nav:
         - "Scenario":
           - "Scenario": manuals/userman/sdm/scenario/index.md
           - "Scenario config": manuals/userman/sdm/scenario/scenario-config.md
+          - "Scenarios Cheatsheet": tutorials/scenario_management/1_scenarios/index.md
+          - "Scenario Subscription Cheatsheet": tutorials/scenario_management/7_scenario_subscription/index.md
+
         - "Submission":
           - "Submission": manuals/userman/sdm/submission/index.md
         - "Job":
@@ -134,7 +122,10 @@ nav:
           - "Sequence": manuals/userman/sdm/sequence/index.md
         - "Cycle":
           - "Cycle": manuals/userman/sdm/cycle/index.md
+          - "Cycles and Scopes": tutorials/scenario_management/4_cycles_scopes/index.md
 
+
+    - "Advanced features":
       - "Configuration":
         - "Configuration": manuals/userman/configuration/index.md
         - "Configuring the GUI application": manuals/userman/configuration/gui-config.md
@@ -142,6 +133,14 @@ nav:
         - "Configuring jobs execution": manuals/userman/configuration/job-config.md
         - "Configuration checker": manuals/userman/configuration/config-checker.md
         - "Advanced configuration": manuals/userman/configuration/advanced-config.md
+
+      - "Versioning system":
+        - "Versioning system": manuals/userman/versioning/index.md
+        - "Development mode": manuals/userman/versioning/development_mode.md
+        - "Experiment mode": manuals/userman/versioning/experiment_mode.md
+        - "Production mode": manuals/userman/versioning/production_mode.md
+        - "Manage application versions": tutorials/scenario_management/8_version_management/index.md
+
 
       - "Authentication and roles":
         - "Authentication and authorization": manuals/userman/auth/index.md
@@ -151,41 +150,19 @@ nav:
       - "Scheduler":
         - "Scheduler": manuals/userman/scheduling/index.md
 
-      - "Versioning system":
-        - "Versioning system": manuals/userman/versioning/index.md
-        - "Development mode": manuals/userman/versioning/development_mode.md
-        - "Experiment mode": manuals/userman/versioning/experiment_mode.md
-        - "Production mode": manuals/userman/versioning/production_mode.md
-
-      - "Exposing REST APIs": manuals/userman/rest/index.md
-
-    - "Taipy Ecosystem":
-      - "Command-line interface":
-        - "Command-line interface (CLI)": manuals/cli/index.md
-        - "Help": manuals/cli/help.md
-        - "Create": manuals/cli/create.md
-        - "Run": manuals/cli/run.md
-        - "Manage versions": manuals/cli/manage-versions.md
-        - "Version": manuals/cli/version.md
-
-      - "Taipy Studio":
-        - "Taipy Studio": manuals/studio/index.md
-        - "Building configurations":
-          - "Building configurations": manuals/studio/config/index.md
-          - "Managing configuration files": manuals/studio/config/files.md
-          - "Configuring elements": manuals/studio/config/elements.md
-          - "Graph views": manuals/studio/config/graphview.md
-          - "Text edition": manuals/studio/config/textedition.md
-        - "GUI Markdown support": manuals/studio/gui.md
+      - "Exposing REST APIs":
+        - "Exposing REST APIs": manuals/userman/rest/index.md
 
     - "Running & deploying":
       - "Running and deploying Taipy applications": manuals/run-deploy/index.md
-      - "Using Notebooks": manuals/userman/notebooks.md
+
       - "Running":
         - "Running a Taipy application": manuals/run-deploy/run/index.md
         - "The run() function": manuals/run-deploy/run/running_services.md
         - "Using an external web server": manuals/run-deploy/run/external_web_server.md
         - "Protect private files": manuals/run-deploy/run/protect_files.md
+        - "Running in a Notebook": manuals/userman/notebooks.md
+
       - "Deployment":
         - "Deploying a Taipy application": manuals/run-deploy/deploy/index.md
         - "On a local machine":
@@ -205,17 +182,89 @@ nav:
         - "On Databricks":
           - "Deploying on Databricks": manuals/run-deploy/deploy/databricks/index.md
 
-    - "Reference":
-      - "About Taipy's Reference Manuals": manuals/refmans/index.md
-      - "Python API":
-        - "Python APIs": manuals/refmans/reference/index.md
-        [REFERENCE_CONTENT]
-      - "REST API":
-        - "REST APIs": manuals/refmans/reference_rest/index.md
-        [REST_REFERENCE_CONTENT]
-      - "GUI Extension API":
-        - manuals/refmans/reference_guiext/index.md
-        - "taipy-gui module": manuals/refmans/reference_guiext/modules.md
+
+    - "Ecosystem":
+      - "Command-line interface":
+        - "Command-line interface (CLI)": manuals/cli/index.md
+        - "Help": manuals/cli/help.md
+        - "Create": manuals/cli/create.md
+        - "Run": manuals/cli/run.md
+        - "Manage versions": manuals/cli/manage-versions.md
+        - "Version": manuals/cli/version.md
+
+      - "Taipy Studio":
+        - "Taipy Studio": manuals/studio/index.md
+        - "Building configurations":
+          - "Building configurations": manuals/studio/config/index.md
+          - "Managing configuration files": manuals/studio/config/files.md
+          - "Configuring elements": manuals/studio/config/elements.md
+          - "Graph views": manuals/studio/config/graphview.md
+          - "Text edition": manuals/studio/config/textedition.md
+        - "GUI Markdown support": manuals/studio/gui.md
+
+
+  - "Reference":
+    - "About Taipy's Reference Manuals": manuals/refmans/index.md
+    - "Visual elements":
+      - "Visual elements": manuals/userman/gui/viselements/index.md
+      - "text": manuals/userman/gui/viselements/generic/text.md
+      - "button": manuals/userman/gui/viselements/generic/button.md
+      - "selector": manuals/userman/gui/viselements/generic/selector.md
+      - "chart":
+        - "chart": manuals/userman/gui/viselements/generic/chart.md
+        - "line": manuals/userman/gui/viselements/generic/charts/line.md
+        - "scatter": manuals/userman/gui/viselements/generic/charts/scatter.md
+        - "bar": manuals/userman/gui/viselements/generic/charts/bar.md
+        - "pie": manuals/userman/gui/viselements/generic/charts/pie.md
+        - "histogram": manuals/userman/gui/viselements/generic/charts/histogram.md
+        - "bubble": manuals/userman/gui/viselements/generic/charts/bubble.md
+        - "polar": manuals/userman/gui/viselements/generic/charts/polar.md
+        - "radar": manuals/userman/gui/viselements/generic/charts/radar.md
+        - "treemap": manuals/userman/gui/viselements/generic/charts/treemap.md
+        - "waterfall": manuals/userman/gui/viselements/generic/charts/waterfall.md
+        - "heatmap": manuals/userman/gui/viselements/generic/charts/heatmap.md
+        - "continuous-error": manuals/userman/gui/viselements/generic/charts/continuous-error.md
+        - "error-bars": manuals/userman/gui/viselements/generic/charts/error-bars.md
+        - "filled-area": manuals/userman/gui/viselements/generic/charts/filled-area.md
+        - "funnel": manuals/userman/gui/viselements/generic/charts/funnel.md
+        - "gantt": manuals/userman/gui/viselements/generic/charts/gantt.md
+        - "map": manuals/userman/gui/viselements/generic/charts/map.md
+      - "table": manuals/userman/gui/viselements/generic/table.md
+      - "input": manuals/userman/gui/viselements/generic/input.md
+      - "number": manuals/userman/gui/viselements/generic/number.md
+      - "slider": manuals/userman/gui/viselements/generic/slider.md
+      - "toggle": manuals/userman/gui/viselements/generic/toggle.md
+      - "date": manuals/userman/gui/viselements/generic/date.md
+      - "date_range": manuals/userman/gui/viselements/generic/date_range.md
+      - "file_download": manuals/userman/gui/viselements/generic/file_download.md
+      - "file_selector": manuals/userman/gui/viselements/generic/file_selector.md
+      - "image": manuals/userman/gui/viselements/generic/image.md
+      - "indicator": manuals/userman/gui/viselements/generic/indicator.md
+      - "login": manuals/userman/gui/viselements/generic/login.md
+      - "menu": manuals/userman/gui/viselements/generic/menu.md
+      - "tree": manuals/userman/gui/viselements/generic/tree.md
+      - "navbar": manuals/userman/gui/viselements/generic/navbar.md
+    - "Scenario Management control":
+      - "scenario_selector": manuals/userman/gui/viselements/corelements/scenario_selector.md
+      - "scenario": manuals/userman/gui/viselements/corelements/scenario.md
+      - "data_node_selector": manuals/userman/gui/viselements/corelements/data_node_selector.md
+      - "data_node": manuals/userman/gui/viselements/corelements/data_node.md
+      - "job_selector": manuals/userman/gui/viselements/corelements/job_selector.md
+    - "Blocks":
+      - "part": manuals/userman/gui/viselements/generic/part.md
+      - "layout": manuals/userman/gui/viselements/generic/layout.md
+      - "expandable": manuals/userman/gui/viselements/generic/expandable.md
+      - "dialog": manuals/userman/gui/viselements/generic/dialog.md
+      - "pane": manuals/userman/gui/viselements/generic/pane.md
+    - "Python API":
+      - "Python APIs": manuals/refmans/reference/index.md
+      [REFERENCE_CONTENT]
+    - "REST API":
+      - "REST APIs": manuals/refmans/reference_rest/index.md
+      [REST_REFERENCE_CONTENT]
+    - "GUI Extension API":
+      - manuals/refmans/reference_guiext/index.md
+      - "taipy-gui module": manuals/refmans/reference_guiext/modules.md
 
   - "Gallery":
     - "Gallery": gallery/index.md
@@ -236,8 +285,8 @@ nav:
       - "Drift Detection": gallery/articles/drift_detection/index.md
     - "LLM":
       - "LLM": gallery/llm/index.md
-      - "LLM Chatbot" : gallery/articles/chatbot/index.md
-      - "TalkToTaipy" : gallery/articles/talk_to_taipy/index.md
+      - "LLM Chatbot": gallery/articles/chatbot/index.md
+      - "TalkToTaipy": gallery/articles/talk_to_taipy/index.md
       - "Vision ChatBot": gallery/articles/vision_chatbot/index.md
       - "RAG ChatBot": gallery/articles/rag_chatbot/index.md
       - "Sentiment Analysis": gallery/articles/sentiment_analysis/index.md
@@ -247,20 +296,12 @@ nav:
       - "COVID Dashboard": gallery/articles/covid_dashboard/index.md
       - "Industry Distribution": gallery/articles/industry_agglom/index.md
       - "Image Classification": gallery/articles/image_classif/index.md
-      - "Realtime Pollution Dashboard" : gallery/articles/pollution_sensors/index.md
+      - "Realtime Pollution Dashboard": gallery/articles/pollution_sensors/index.md
     - "Other":
       - "Other": gallery/other/index.md
       - "Background Remover": gallery/articles/background_remover/index.md
       - "Real-time Face Recognition": gallery/articles/face_recognition/index.md
       - "Movie Genre Selector": gallery/articles/movie_genre_selector/index.md
-
-  - "Release Notes":
-    - "Release Notes": release-notes/index.md
-
-  - "Contributing":
-    - "Contributing to Taipy": contributing/index.md
-    - "Contributors": contributing/contributors.md
-    - "Code of conduct": contributing/code_of_conduct.md
 
 theme:
   name: material

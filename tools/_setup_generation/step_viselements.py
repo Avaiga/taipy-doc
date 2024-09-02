@@ -35,21 +35,41 @@ class VisElementsStep(SetupStep):
 
     def enter(self, setup: Setup):
         self.VISELEMENTS_DIR_PATH = setup.manuals_dir + "/userman/gui/viselements"
-        self.GENERICELEMENTS_DIR_PATH = setup.manuals_dir + "/userman/gui/viselements/generic"
-        self.CORELEMENTS_DIR_PATH = setup.manuals_dir + "/userman/gui/viselements/corelements"
+        self.GENERICELEMENTS_DIR_PATH = (
+            setup.manuals_dir + "/userman/gui/viselements/generic"
+        )
+        self.CORELEMENTS_DIR_PATH = (
+            setup.manuals_dir + "/userman/gui/viselements/corelements"
+        )
         self.TOC_PATH = self.VISELEMENTS_DIR_PATH + "/index.md"
-        self.CHARTS_HOME_HTML_PATH = self.GENERICELEMENTS_DIR_PATH + "/charts/home.html_fragment"
+        self.CHARTS_HOME_HTML_PATH = (
+            self.GENERICELEMENTS_DIR_PATH + "/charts/home.html_fragment"
+        )
         self.__check_paths()
 
         # Use a VELoader to load all the visual elements from the json files,
         # check the elements are valid,
         # and keep only the categories we need for the documentation.
-        loader = VELoader(self.DEFAULT_PROPERTY, self.PROPERTIES, self.INHERITS, self.NAME)
-        loader.load(setup.root_dir + "/taipy/gui/viselements.json", "", self.GENERICELEMENTS_DIR_PATH)
-        loader.load(setup.root_dir + "/taipy/gui_core/viselements.json", "core_", self.CORELEMENTS_DIR_PATH)
+        loader = VELoader(
+            self.DEFAULT_PROPERTY, self.PROPERTIES, self.INHERITS, self.NAME
+        )
+        loader.load(
+            setup.root_dir + "/taipy/gui/viselements.json",
+            "",
+            self.GENERICELEMENTS_DIR_PATH,
+        )
+        loader.load(
+            setup.root_dir + "/taipy/gui_core/viselements.json",
+            "core_",
+            self.CORELEMENTS_DIR_PATH,
+        )
         loader.check()
         categories_to_keep = {"controls", "blocks"}
-        self.categories = {k:loader.categories[k] for k in categories_to_keep if k in loader.categories}
+        self.categories = {
+            k: loader.categories[k]
+            for k in categories_to_keep
+            if k in loader.categories
+        }
         self.elements = loader.elements
 
     def setup(self, setup: Setup) -> None:
@@ -59,9 +79,13 @@ class VisElementsStep(SetupStep):
 
     def __check_paths(self):
         if not os.access(f"{self.TOC_PATH}_template", os.R_OK):
-            raise FileNotFoundError(f"FATAL - Could not read {self.TOC_PATH}_template template file")
+            raise FileNotFoundError(
+                f"FATAL - Could not read {self.TOC_PATH}_template template file"
+            )
         if not os.access(self.CHARTS_HOME_HTML_PATH, os.R_OK):
-            raise FileNotFoundError(f"FATAL - Could not read {self.CHARTS_HOME_HTML_PATH} html fragment")
+            raise FileNotFoundError(
+                f"FATAL - Could not read {self.CHARTS_HOME_HTML_PATH} html fragment"
+            )
 
     def __generate_element_pages(self) -> Dict[str, str]:
         tocs = {}
@@ -69,8 +93,12 @@ class VisElementsStep(SetupStep):
             for element_type in self.categories[category]:
                 hook = self.__build_hook(element_type, category)
                 if hook not in tocs:
-                    tocs[hook] = VEToc('<div class="tp-ve-cards">\n', '</div>\n', hook)
-                tocs[hook].add(element_type, category, self.__generate_element_doc(element_type, category))
+                    tocs[hook] = VEToc('<div class="tp-ve-cards">\n', "</div>\n", hook)
+                tocs[hook].add(
+                    element_type,
+                    category,
+                    self.__generate_element_doc(element_type, category),
+                )
         return tocs
 
     def __build_hook(self, element_type, category: str) -> str:
@@ -80,7 +108,9 @@ class VisElementsStep(SetupStep):
         with open(f"{self.TOC_PATH}_template") as template_file:
             md_template = template_file.read()
             if not md_template:
-                raise FileNotFoundError(f"FATAL - Could not read {self.TOC_PATH}_template Markdown template")
+                raise FileNotFoundError(
+                    f"FATAL - Could not read {self.TOC_PATH}_template Markdown template"
+                )
             with open(self.TOC_PATH, "w") as md_file:
                 for hook, toc in tocs.items():
                     md_template = md_template.replace(hook, str(toc))
@@ -105,9 +135,11 @@ class VisElementsStep(SetupStep):
                 f"Couldn't locate first paragraph in documentation for element '{element_type}'"
             )
         first_documentation_paragraph = match.group(1)
-        element_desc['short_doc'] = first_documentation_paragraph
+        element_desc["short_doc"] = first_documentation_paragraph
 
-        element_documentation = self.__process_element_md_file(element_type, element_documentation)
+        element_documentation = self.__process_element_md_file(
+            element_type, element_documentation
+        )
 
         # Build properties table
         properties_table = """
@@ -145,9 +177,7 @@ class VisElementsStep(SetupStep):
             default_value = property_desc.get("default_value", None)
             if not default_value:
                 default_value = (
-                    "<i>Required</i>"
-                    if property_desc.get("required", False)
-                    else ""
+                    "<i>Required</i>" if property_desc.get("required", False) else ""
                 )
             full_name = f"<code id=\"p-{re.sub('<[^>]+>', '', name)}\">"
             if name == default_property_name:
@@ -180,18 +210,20 @@ class VisElementsStep(SetupStep):
                 f"Couldn't locate first header in documentation for element '{element_type}'"
             )
         before_properties = match.group(1)
-        after_properties = match.group(2) + element_documentation[match.end():]
+        after_properties = match.group(2) + element_documentation[match.end() :]
 
         # Chart hook
         if element_type == "chart":
             before_properties, after_properties = self.__chart_page_hook(
-                element_documentation, before_properties, after_properties,
-                f"{element_desc['doc_path']}/charts"
+                element_documentation,
+                before_properties,
+                after_properties,
+                f"{element_desc['doc_path']}/charts",
             )
 
         with open(f"{element_desc['doc_path']}/{element_type}.md", "w") as md_file:
             md_file.write(
-                f"---\ntitle: <tt>{element_type}</tt>\n---\n\n"
+                f"---\ntitle: <tt>{element_type}</tt>\nsearch:\n  boost: 2\n---\n\n"
                 + f"<!-- Category: {category} -->\n"
                 + before_properties
                 + properties_table
@@ -224,11 +256,12 @@ class VisElementsStep(SetupStep):
             py_content = file.read()
         # Remove generated code
         if m := re.search(f"\\n*{separator}", py_content):
-            py_content = py_content[:m.start(0)+1]
+            py_content = py_content[: m.start(0) + 1]
 
         def generate(self, category, base_class: str) -> str:
 
             element_types = self.categories[category]
+
             def build_doc(property: str, desc, indent: int):
                 type = desc["type"]
                 dynamic = ""
@@ -244,27 +277,35 @@ class VisElementsStep(SetupStep):
                     last_loc = 0
                     INNER_HREF = re.compile(r"(?<=<a\shref=\")(#|\.)")
                     for a in INNER_HREF.finditer(doc):
-                        new_doc += doc[last_loc:a.start()]
+                        new_doc += doc[last_loc : a.start()]
                         new_doc += f"../../gui/viselements/{element_type}/{a.group(0)}"
                         last_loc = a.end()
                     if last_loc:
                         doc = new_doc + doc[last_loc:]
-                    doc = doc.replace("\n", f'\n{(indent+4)*" "}').replace("<br/>", f'<br/>\n{(indent+4)*" "}')
-                default_value = f'{desc["default_value"]}' if "default_value" in desc else ""
+                    doc = doc.replace("\n", f'\n{(indent+4)*" "}').replace(
+                        "<br/>", f'<br/>\n{(indent+4)*" "}'
+                    )
+                default_value = (
+                    f'{desc["default_value"]}' if "default_value" in desc else ""
+                )
                 if m := re.match(r"^(<i>.*?</i>)$", default_value):
-                    default_value = f"\"{m[1]}\""
+                    default_value = f'"{m[1]}"'
                 elif m := re.match(r"^`(.*?)`$", default_value):
                     default_value = f"{m[1]}"
                 elif default_value == "scatter" or default_value == "lines+markers":
-                    default_value = f"\"{default_value}\""
+                    default_value = f'"{default_value}"'
                 if default_value:
                     try:
                         _ = eval(default_value)
                     except Exception:
-                        raise SyntaxError(f"Default value for property '{property}' of element '{element_type}' is "
-                                          f"not a valid Python expression ({default_value})")
-                return (f"{property}={default_value if default_value else 'None'}, ",
-                        f"{indent*' '}{desc['name']} ({type}){dynamic}: {doc}\n")
+                        raise SyntaxError(
+                            f"Default value for property '{property}' of element '{element_type}' is "
+                            f"not a valid Python expression ({default_value})"
+                        )
+                return (
+                    f"{property}={default_value if default_value else 'None'}, ",
+                    f"{indent*' '}{desc['name']} ({type}){dynamic}: {doc}\n",
+                )
 
             template = f"""
 
@@ -284,7 +325,11 @@ class [element_type]({base_class}):
 """
 
             buffer = StringIO()
-            docline_in_template = next(l for l in template.splitlines() if l.lstrip().startswith("[arguments_doc]"))
+            docline_in_template = next(
+                l
+                for l in template.splitlines()
+                if l.lstrip().startswith("[arguments_doc]")
+            )
             doc_indent = len(docline_in_template) - len(docline_in_template.lstrip())
 
             for element_type in element_types:
@@ -298,23 +343,37 @@ class [element_type]({base_class}):
                 arguments_doc = doc[1]
                 for property in properties:
                     property_name = property["name"]
-                    if property_name != desc["default_property"] and "[" not in property_name:
+                    if (
+                        property_name != desc["default_property"]
+                        and "[" not in property_name
+                    ):
                         doc = build_doc(property_name, property, doc_indent)
                         arguments += doc[0]
                         arguments_doc += doc[1]
                 # Process short doc
                 short_doc = desc["short_doc"]
                 if m := re.search(r"(\[`(\w+)`\]\()\2\.md\)", short_doc):
-                    short_doc = short_doc[:m.start()]+f"{m[1]}../gui/viselements/{m[2]}.md)"+short_doc[m.end():]
+                    short_doc = (
+                        short_doc[: m.start()]
+                        + f"{m[1]}../gui/viselements/{m[2]}.md)"
+                        + short_doc[m.end() :]
+                    )
                 # Link to element doc page
-                element_md_location = "corelements" if desc["prefix"] == "core_" else "generic"
+                element_md_location = (
+                    "corelements" if desc["prefix"] == "core_" else "generic"
+                )
                 element_md_page = f"[`{element_type}`](../../userman/gui/viselements/{element_md_location}/{element_type}.md)"
-                buffer.write(template.replace("[element_type]", element_type)
-                                     .replace("[element_md_page]", element_md_page)
-                                     .replace("[arguments]", arguments)
-                                     .replace("[short_doc]", short_doc)
-                                     .replace("[control_or_block]", "control" if category=="controls" else "block")
-                                     .replace(" "*doc_indent+"[arguments_doc]\n", arguments_doc))
+                buffer.write(
+                    template.replace("[element_type]", element_type)
+                    .replace("[element_md_page]", element_md_page)
+                    .replace("[arguments]", arguments)
+                    .replace("[short_doc]", short_doc)
+                    .replace(
+                        "[control_or_block]",
+                        "control" if category == "controls" else "block",
+                    )
+                    .replace(" " * doc_indent + "[arguments_doc]\n", arguments_doc)
+                )
             return buffer.getvalue()
 
         with open(py_file, "wt") as file:
@@ -322,7 +381,7 @@ class [element_type]({base_class}):
             file.write(f"\n\n{separator}\n\n")
             file.write("from ._element import _Block, _Control\n\n")
             file.write(generate(self, "controls", "_Control"))
-            file.write(generate(self, "blocks",   "_Block"))
+            file.write(generate(self, "blocks", "_Block"))
 
     # Special case for charts: we want to insert the chart gallery that
     # is stored in the file whose path is in self.charts_home_html_path
@@ -353,7 +412,9 @@ class [element_type]({base_class}):
                 if os.access(template_doc_path, os.R_OK):
                     with open(template_doc_path, "r") as template_doc_file:
                         documentation = template_doc_file.read()
-                        documentation = self.__process_element_md_file('chart', documentation)
+                        documentation = self.__process_element_md_file(
+                            "chart", documentation
+                        )
                     with open(f"{charts_md_dir}/{type}.md", "w") as md_file:
                         md_file.write(documentation)
 
@@ -370,12 +431,15 @@ class [element_type]({base_class}):
         )
 
     def __process_element_md_file(self, type: str, documentation: str) -> str:
-        DEF_RE = re.compile(r"^!!!\s+taipy-element\s*?\n((?:\s+\w+(?:\[.*?\])?(?::\w+)?\s*=\s*.*\n)*)", re.M)
+        DEF_RE = re.compile(
+            r"^!!!\s+taipy-element\s*?\n((?:\s+\w+(?:\[.*?\])?(?::\w+)?\s*=\s*.*\n)*)",
+            re.M,
+        )
         PROP_RE = re.compile(r"(\w+(?:\[.*?\])?)(?::(\w+))?\s*=\s*(.*)\n", re.M)
         new_documentation = ""
         last_location = 0
         for definition in DEF_RE.finditer(documentation):
-            new_documentation += documentation[last_location:definition.start()]
+            new_documentation += documentation[last_location : definition.start()]
             default_property = ""
             properties = []
             for p in PROP_RE.finditer(definition.group(1)):
@@ -383,7 +447,8 @@ class [element_type]({base_class}):
                     default_property = p[3]
                 else:
                     properties.append((p[1], p[3], p[2] if p[2] else "-"))
-            new_documentation += "!!! example \"Definition\"\n"
+            new_documentation += '!!! example "Definition"\n'
+
             # Markdown format
             def md_property_value(property: str, value: str, type: str) -> str:
                 if type.startswith("b"):
@@ -397,7 +462,8 @@ class [element_type]({base_class}):
                         return f"don't {property}"
                     return f"not {property}"
                 return f"{property}={value}"
-            new_documentation += "\n    === \"Markdown\"\n\n"
+
+            new_documentation += '\n    === "Markdown"\n\n'
             new_documentation += "        ```\n"
             new_documentation += "        <|"
             if default_property:
@@ -407,6 +473,7 @@ class [element_type]({base_class}):
                 new_documentation += f"{md_property_value(n, v, t)}|"
             new_documentation += ">\n"
             new_documentation += "        ```\n"
+
             # HTML format
             def html_value(property: str, value: str, type: str) -> str:
                 if type.startswith("b"):
@@ -414,9 +481,10 @@ class [element_type]({base_class}):
                         return f"{property}"
                     else:
                         value = value.lower()
-                value = value.replace("\"", "'")
-                return f"{property}=\"{value}\""
-            new_documentation += "\n    === \"HTML\"\n\n"
+                value = value.replace('"', "'")
+                return f'{property}="{value}"'
+
+            new_documentation += '\n    === "HTML"\n\n'
             new_documentation += "        ```html\n"
             new_documentation += f"        <taipy:{type}"
             html_1 = ""
@@ -440,7 +508,9 @@ class [element_type]({base_class}):
             for n, v, t in properties:
                 if "[" in n:
                     if (idx_prop_match := BP_IDX_PROP_RE.match(n)) is None:
-                        print(f"WARNING - Property '{n}' in examples for {type} prevents Python code generation")
+                        print(
+                            f"WARNING - Property '{n}' in examples for {type} prevents Python code generation"
+                        )
                         generate_page_builer_api = False
                     else:
                         pname = f"{idx_prop_match[1]}__{idx_prop_match[2]}"
@@ -448,20 +518,24 @@ class [element_type]({base_class}):
                 else:
                     pb_properties.append((n, v, t))
             if generate_page_builer_api:
-                new_documentation += "\n    === \"Python\"\n\n"
+                new_documentation += '\n    === "Python"\n\n'
                 new_documentation += "        ```python\n"
-                new_documentation += "        import taipy.gui.builder as tgb\n        ...\n"
+                new_documentation += (
+                    "        import taipy.gui.builder as tgb\n        ...\n"
+                )
                 new_documentation += f"        tgb.{type}("
+
                 def builder_value(value: str, type: str) -> str:
                     if type == "f":
                         return value
                     if type.startswith("b"):
                         return value.title()
-                    value = value.replace("\"", "'")
-                    return f"\"{value}\""
+                    value = value.replace('"', "'")
+                    return f'"{value}"'
+
                 prefix = ""
                 if default_property:
-                    new_documentation += f"\"{default_property}\""
+                    new_documentation += f'"{default_property}"'
                     prefix = ", "
                 for n, v, t in pb_properties:
                     new_documentation += f"{prefix}{n}={builder_value(v, t)}"
@@ -469,4 +543,8 @@ class [element_type]({base_class}):
                 new_documentation += ")\n"
                 new_documentation += "        ```\n"
             last_location = definition.end()
-        return new_documentation + documentation[last_location:] if documentation else documentation
+        return (
+            new_documentation + documentation[last_location:]
+            if documentation
+            else documentation
+        )
