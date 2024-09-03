@@ -32,8 +32,8 @@ names defined in the code, and the value of the property is set to the evaluated
     new variable value, which might be slow and hit the user experience.<br/>
     Visual Elements that are costly to render on the browser provide a property called *rebuild*
     that allows one to explicitly request the render of the component. Please check the relevant
-    sections for the [`chart`](generic/chart.md#the-rebuild-property) and
-    [`table`](generic/table.md#the-rebuild-property) controls for more information.
+    sections for the [`chart`](../../../refmans/gui/viselements/generic/chart.md#the-rebuild-property) and
+    [`table`](../../../refmans/gui/viselements/generic/table.md#the-rebuild-property) controls for more information.
 
 # Syntax
 
@@ -70,8 +70,8 @@ name to appear between the two first vertical bar characters (as in `<|control|.
     Every visual element has a default property, and using the default property syntax (where the
     default property value appears as the first `||` fragment) underscore, but placing it first, the
     most important property value for this visual element: it would be the content of a
-    [`text`](generic/text.md) control, the label of a [`button`](generic/button.md), or the dataset
-    displayed by a [`chart`](generic/chart.md), for example.
+    [`text`](../../../refmans/gui/viselements/generic/text.md) control, the label of a [`button`](../../../refmans/gui/viselements/generic/button.md), or the dataset
+    displayed by a [`chart`](../../../refmans/gui/viselements/generic/chart.md), for example.
 
 Every following |-separated fragment is interpreted as a property name-property value
 pair using the syntax: *property\_name=property\_value* (note that *all* space characters
@@ -89,7 +89,7 @@ fragment similar to:
     characters of the property value part *are* significant:<br/>
     The fragment `<|Content |text|>` will be displayed as the string "Content" followed by a
     space character because it is part of the property value (in this case, the *default*
-    property value, which is the property called *value* for the [`text`](generic/text.md) control)
+    property value, which is the property called *value* for the [`text`](../../../refmans/gui/viselements/generic/text.md) control)
 
 !!! note "Shortcut for Boolean properties"
     Should the `=property_value` fragment be missing, the property value is interpreted as the
@@ -165,7 +165,7 @@ fragment similar to:
     ```
 
 !!! example "The *default property* shortcut"
-    The default property name for the control type [`button`](generic/button.md)
+    The default property name for the control type [`button`](../../../refmans/gui/viselements/generic/button.md)
     is *label*. In Taipy, the Markdown text
     ```
     <|button|label=Some text|>
@@ -199,7 +199,7 @@ fragment similar to:
 
 There are very few exceptions to the `<|control_type|...|>` syntax, which
 are described in their respective documentation section. The most obvious exception is the
-[`text`](generic/text.md) control, which can be created without even mentioning its type.
+[`text`](../../../refmans/gui/viselements/generic/text.md) control, which can be created without even mentioning its type.
 
 ## HTML
 
@@ -229,7 +229,7 @@ is equivalent to
     that make it easier to use in the context of describing Taipy pages.
 
     - Attribute names that be array elements.
-      Some visual elements (such as the [`chart`](generic/chart.md) control)
+      Some visual elements (such as the [`chart`](../../../refmans/gui/viselements/generic/chart.md) control)
       need *indexed* properties. An attribute name such as *y[1]* is valid in the Taipy
       context, where it would not be in the raw HTML grammar.
 
@@ -290,8 +290,8 @@ section for more information.
 ## The *properties* property
 
 There are situations where your visual element may need a lot of different properties. This is
-typically the case for complex visual elements like the [`chart`](generic/chart.md) or the
-[`table`](generic/table.md) controls.
+typically the case for complex visual elements like the [`chart`](../../../refmans/gui/viselements/generic/chart.md) or the
+[`table`](../../../refmans/gui/viselements/generic/table.md) controls.
 
 When an element needs many properties and property values, the content may become
 difficult to read. Something you can do about this is create a Python dictionary that

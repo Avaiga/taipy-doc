@@ -5,7 +5,7 @@ hide:
 
 Modern user interfaces also provide small pages that pop out and be removed for
 temporary use, such as providing specific parameters for the application. Taipy lets
-you create such elements using the [pane](../../viselements/generic/pane.md) block.
+you create such elements using the [pane](../../../../refmans/gui/viselements/generic/pane.md) block.
 
 A pane can appear from any border of your page, next to or on top of the page, and
 disappears when the user clicks outside its area.
@@ -58,4 +58,4 @@ Here is an example of how you would create a pane:
     Gui(page).run()
     ```
 
-Please refer to the documentation page on the [pane](../../viselements/generic/pane.md) control for more details and examples.
+Please refer to the documentation page on the [pane](../../../../refmans/gui/viselements/generic/pane.md) control for more details and examples.

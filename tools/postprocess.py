@@ -556,7 +556,7 @@ def on_post_build(env):
                             if package == "corelements":
                                 repl += (
                                     '<li><a href="../../../viselements"><b>Visual Elements</b></a></li>'
-                                    '<li><a href="../../../viselements/#scenario-and-data-management-controls">'
+                                    '<li><a href="../../../../../refmans/gui/viselements/#scenario-and-data-management-controls">'
                                     "<b>Scenario management controls</b></a></li>"
                                 )
                             else:

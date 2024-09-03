@@ -44,7 +44,7 @@ controlling page transitions.
 
 # Using navbar
 
-[Navbar](../../viselements/generic/navbar.md) is a visual element that, 
+[Navbar](../../../../refmans/gui/viselements/generic/navbar.md) is a visual element that, 
 by default, lets you navigate between pages. You can customize the navbar 
 with properties like the list of pages you can navigate to. 
  
@@ -94,7 +94,7 @@ with properties like the list of pages you can navigate to.
 
 # Using menus
 
-The [`menu`](../../viselements/generic/menu.md) control displays a menu to the left of the page, 
+The [`menu`](../../../../refmans/gui/viselements/generic/menu.md) control displays a menu to the left of the page, 
 allowing to navigate through the pages.
 
 === "Markdown"

@@ -3,7 +3,7 @@ search:
   boost: 2
 ---
 
-Partials can be used within multiple objects in Taipy: [part](../../viselements/generic/part.md), [dialog](../dialog/index.md) and [pane](../pane/index.md). They can be used as a static resusable component like so.
+Partials can be used within multiple objects in Taipy: [part](../../../../refmans/gui/viselements/generic/part.md), [dialog](../dialog/index.md) and [pane](../pane/index.md). They can be used as a static resusable component like so.
 
 === "Markdown"
     ```python

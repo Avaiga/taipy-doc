@@ -42,7 +42,7 @@ with tgb.Page() as page:
     tgb.input()
 ```
 
-In this example, we add an empty [`input`](../viselements/generic/input.md) control by creating a new
+In this example, we add an empty [`input`](../../../refmans/gui/viselements/generic/input.md) control by creating a new
 instance of the `(builder.)input^` class.<br/>
 When run, the application would show a page looking like this:
 <figure>
@@ -81,7 +81,7 @@ Note how, in the `input^` control, we use the property names of the control as p
 class constructor.
 <br/>
 The first parameter is set to the element's default property. Because *value* is the default
-property for the [`input`](../viselements/generic/input.md) control, we could have built the control using:
+property for the [`input`](../../../refmans/gui/viselements/generic/input.md) control, we could have built the control using:
 ```python
     tgb.input(label="First name", value="John")
 ```
@@ -113,9 +113,9 @@ The impact of this change is reflected in the page:
 Compared to the previous example, you can see that the label uses a bold font weight.
 
 !!! warning "Indexed properties"
-    Some elements of Taipy GUI (such as [`chart`](../viselements/generic/chart.md),
-    [`table`](../viselements/generic/table.md), or
-    [`layout`](../viselements/generic/layout.md)) have *indexed
+    Some elements of Taipy GUI (such as [`chart`](../../../refmans/gui/viselements/generic/chart.md),
+    [`table`](../../../refmans/gui/viselements/generic/table.md), or
+    [`layout`](../../../refmans/gui/viselements/generic/layout.md)) have *indexed
     properties*. The syntax to express these property names, where the *root name* of the property
     is followed by the index value between square brackets, is not supported in the Page Builder
     API.<br/>
