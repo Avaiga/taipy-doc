@@ -201,7 +201,7 @@ Taipy GUI Enterprise edition uses role traits to select pages that user can disp
 The `AuthorizedPage^` class lets you specify a role traits filter where both the
 *success* and *failure* cases must be a page renderer (an instance of `Markdown^`,
 `Html^`, or `(taipy.)gui.builder.Page^` instance - see the
-[section on Page Renderers](../gui/pages/index.md#defining-the-page-content) for more
+[section on Page Renderers](../../gui/pages/index.md#defining-the-page-content) for more
 information).<br/>
 Instead of calling `Gui.add_page()` for the page renderer, you will use the same API,
 providing the defined `AuthorizedPage^` instance.</br>

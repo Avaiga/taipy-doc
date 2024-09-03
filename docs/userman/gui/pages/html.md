@@ -28,7 +28,7 @@ The *html_page* variable holds a page whose content is defined from HTML text.
 
 Taipy identifies visual element definitions by finding tags that belong to the `taipy` namespace.
 You can find details on how to create visual elements using HTML in the
-[HTML Syntax](../../../refmans/gui/viselements/introduction.md#html) section about Visual Elements definition.
+[HTML Syntax](../../gui/viselements/introduction.md#html) section about Visual Elements definition.
 
 # XHTML is required
 

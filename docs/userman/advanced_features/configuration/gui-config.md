@@ -74,21 +74,21 @@ Here is the list of the configuration parameters you can use in
      notifications will be sent by the system as well as the browser, should the
      *system_notification* parameter in the call to (`notify()^`) be set to None. If False, the
      default behavior is to not use system notifications.<br/>
-     See the section on [Notifications](../gui/notifications.md) for details.
+     See the section on [Notifications](../../gui/notifications.md) for details.
    - <a name="p-notification_duration"></a>*notification_duration* (int, default: 3000): the time,
      in milliseconds, that notifications should remain visible.<br/>
-     See the section on [Notifications](../gui/notifications.md) for details.
+     See the section on [Notifications](../../gui/notifications.md) for details.
    - <a name="p-watermark"></a>*watermark* (str, default: "Taipy inside"): a faint text appearing
      on top of all application pages.
    - <a name="p-stylekit"></a>*stylekit* (Union[bool, dict[str, int, float], None]): If True or
-     unspecified, use the default [Stylekit](../gui/styling/stylekit.md) for this application.<br/>
-     If False, do not use the [Stylekit](../gui/styling/stylekit.md).<br/>
+     unspecified, use the default [Stylekit](../../gui/styling/stylekit.md) for this application.<br/>
+     If False, do not use the [Stylekit](../../gui/styling/stylekit.md).<br/>
      If this parameter is set to a dictionary, the keys are used as
-     [Stylekit variable](../gui/styling/stylekit.md#variables) names, whose values are
+     [Stylekit variable](../../gui/styling/stylekit.md#variables) names, whose values are
      overloaded by the value indicated in the dictionary.
    - <a name="p-theme"></a>*theme* (dict[str, any] or None): A dictionary that lets you
      customize the theme of your application.<br/>
-     See the [Themes section](../gui/styling/index.md#themes) for details.
+     See the [Themes section](../../gui/styling/index.md#themes) for details.
    - <a name="p-light_theme"></a>*light_theme* (Union[dict[str, any], None]): Similar to the
      [*theme*](#p-theme) setting, but applies to the *light* theme only.
    - <a name="p-dark_theme"></a>*dark_theme* (Union[dict[str, any], None]): Similar to the
@@ -123,7 +123,7 @@ Here is the list of the configuration parameters you can use in
      The default value of None indicates that Taipy GUI does not use any delay.
    - <a name="p-propagate"></a>*propagate* (bool, default: True): the default value that is used
      for every *propagate* property value, for all controls. Please look at the section on the
-     [*propagate* property](../../../refmans/gui/viselements/introduction.md#the-propagate-property) for details.
+     [*propagate* property](../../gui/viselements/introduction.md#the-propagate-property) for details.
    - <a name="p-time_zone"></a>*time_zone* (str, default: "client"): indicates how date and time
      values should be interpreted.<br/>
      You can use a TZ database name (as listed in
@@ -145,7 +145,7 @@ Here is the list of the configuration parameters you can use in
      can be found in the documentation section for
      [Plotly's layout template](https://plotly.com/javascript/reference/layout/#layout-template).
    - <a name="p-extended_status"></a>*extended_status* (bool, default: False): if set to True, the
-     [status page](../gui/pages/advanced/index.md#status-page) output is augmented with additional information.
+     [status page](../../gui/pages/advanced/index.md#status-page) output is augmented with additional information.
    - <a name="p-flask_log"></a>*flask_log* (bool, default: False): if set to True, you can get a
      complete, real-time log from the Flask server. This may be useful when trying to find out why
      a request does not behave as expected.
@@ -154,7 +154,7 @@ Here is the list of the configuration parameters you can use in
      default, the exposed port number (the one set in the [*port*](#p-port) parameter) is just a
      proxy port to a dynamically generated port so that the user can stop and restart the server
      without depending on how quickly the kernel can clean up its resources.<br/>
-     See the section on [running Taipy GUI in Notebooks](../notebooks.md) for more details.
+     See the section on [running Taipy GUI in Notebooks](../../run-deploy/notebooks.md) for more details.
    - <a name="p-single_client"></a>*single_client* (bool, default: False): set to True if only a
      single client can connect. False, which is the default value, indicates that multiple clients
      can connect to the server.<br/>

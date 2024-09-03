@@ -67,7 +67,7 @@ This row is split into two sections:
 
 To demonstrate the capabilities of the Graph View, we will create the configuration
 described in the
-[Python code configuration](../../userman/advanced_features/configuration/advanced-config.md#python-code-configuration)
+[Python code configuration](../../../advanced_features/configuration/advanced-config.md#python-code-configuration)
 example, using the interactive features that Taipy Studio provides.<br/>
 Note that for the sake of conciseness, we will create a Scenario configuration that
 holds only one sequence. When you understand the process, you will see that creating other

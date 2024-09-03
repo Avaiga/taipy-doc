@@ -164,7 +164,7 @@ the configuration. A new scenario has been created.
 
 To delete an experiment version, you can use the `taipy manage-versions` with the *--delete*
 option on the Taipy CLI and provide the version name (see the
-[Manage versions on Taipy CLI page](../../cli/manage-versions.md) for more details).
+[Manage versions on Taipy CLI page](../../ecosystem/cli/manage-versions.md) for more details).
 
 ```console
 $ taipy manage-versions --delete 0.1

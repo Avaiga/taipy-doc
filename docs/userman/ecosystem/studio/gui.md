@@ -2,7 +2,7 @@
 
 The Taipy Studio extension leverages the Visual Studio Code text edition functionality
 to accelerate the definition of Taipy GUI pages with the
-[Markdown syntax](../userman/gui/pages/markdown.md):
+[Markdown syntax](../../gui/pages/markdown.md):
 
 - [IntelliSense](https://learn.microsoft.com/en-us/visualstudio/ide/using-intellisense)
   can be used in the context of page definition.<br/>

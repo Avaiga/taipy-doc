@@ -12,4 +12,4 @@ Taipy 2.3.0
 
 If you don't see a supported version of Taipy, you'll need to either upgrade Taipy or
 perform a fresh install, as described in the
-[Installation page](../../getting_started/installation.md).
+[Installation page](../../../tutorials/getting_started/installation.md).

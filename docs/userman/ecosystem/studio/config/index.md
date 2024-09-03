@@ -17,7 +17,7 @@ and use a visual representation of those configuration elements as a graph.
 
 Taipy Studio stores those configurations in TOML files. These files can be used at
 runtime by Taipy applications as described in the
-[note on Studio](../../userman/advanced_features/configuration/advanced-config.md#studio).
+[note on Studio](../../../advanced_features/configuration/advanced-config.md#studio).
 
 Taipy Studio has a dedicated panel called **Taipy Configs**, where almost everything
 happens. To open this panel, use the "View > Open View..." menu option and search
@@ -37,12 +37,12 @@ configuration elements:
     The user can select a configuration file in this list to populate the other
     sections of the Taipy Configs view.
 - **Data Nodes**: holds the list of
-    [Data Node configurations](../../userman/scenario_features/data-integration/data-node-config.md) defined
+    [Data Node configurations](../../../scenario_features/data-integration/data-node-config.md) defined
     in the selected configuration file.<br/>
     The user can select a Data Node configuration in this list to access all its
     properties in the Details section (see below).
 - **Tasks**: holds the list of
-    [Task configurations](../../userman/scenario_features/task-orchestration/scenario-config.md) defined
+    [Task configurations](../../../scenario_features/task-orchestration/scenario-config.md) defined
     in the selected configuration file.<br/>
     The user can select a Task configuration in this list to access all its
     properties in the Details section (see below).

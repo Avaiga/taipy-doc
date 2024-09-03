@@ -55,7 +55,7 @@ The *md_page* variable contains the definition of a page whose content is define
 Besides the extensions listed above, Taipy adds its own extension that can parse
 Taipy-specific constructs that allow for defining visual elements (and all the properties
 they need). The details on how visual elements are located and interpreted with Markdown
-content can be found in the [Markdown Syntax](../../../refmans/gui/viselements/introduction.md#markdown) section
+content can be found in the [Markdown Syntax](../../gui/viselements/introduction.md#markdown) section
 about Visual Elements definition.
 
 !!! tip "Commenting Markdown"

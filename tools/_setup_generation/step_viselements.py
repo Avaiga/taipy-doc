@@ -75,10 +75,6 @@ class VisElementsStep(SetupStep):
         }
         self.elements = loader.elements
 
-        print(self.elements["text"])
-        print(self.elements["text"].keys())
-        print(self.elements["text"]["properties"])
-
     def setup(self, setup: Setup) -> None:
         tocs = self.__generate_element_pages()
         self.__generate_toc_file(tocs)

@@ -16,7 +16,7 @@ Your browser should open a new window connected to the Jupyter server, where you
 and manipulate Notebooks.
 
 !!! note "Example code"
-    You may want to load the [Notebook source](gui/gui_example.ipynb) file directly within
+    You may want to load the [Notebook source](../gui/gui_example.ipynb) file directly within
     Jupyter and move from cell to cell instead of entering the code in the following
     steps.
 

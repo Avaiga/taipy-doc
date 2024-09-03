@@ -47,7 +47,7 @@ Config.tasks
 ```
 
 For more details on how to configure tasks, see the
-[task configuration](../task-orchestration/scenario-config.md#from-task-configurations) section.
+[task configuration](../../scenario_features/task-orchestration/scenario-config.md#from-task-configurations) section.
 
 ## Scenario sections
 

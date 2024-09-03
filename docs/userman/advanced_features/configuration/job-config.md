@@ -6,7 +6,7 @@ Three modes are available in Taipy: *standalone*, *development*, and *cluster*.
 With the *development* mode, the jobs are synchronously executed one by one. The jobs are
 directly executed in the main thread at the submission. Note that with the *development* mode,
 the submit method waits for the jobs to be finished before to return. Please refer to the
-[submit entity](../task-orchestration/scenario-submission.md) section to the see how to submit
+[submit entity](../../scenario_features/task-orchestration/scenario-submission.md) section to the see how to submit
 jobs.
 
 It is particularly handy to test a job execution and/or investigate an issue in the function
@@ -56,7 +56,7 @@ to a dedicated process to be executed.
 Note that with the *standalone* mode, the `(Scenario.)submit()^` method is not blocking and
 returns after the job is queued. It means the submit method can return before the job finishes
 or even before it is dequeued. Please refer to the
-[submit entity](../task-orchestration/scenario-submission.md) section to the see how to submit
+[submit entity](../../scenario_features/task-orchestration/scenario-submission.md) section to the see how to submit
 jobs.
 
 You can configure the *standalone* mode with the following config:
@@ -144,7 +144,7 @@ the job is dequeued and sent to the worker environment to be executed.
 Note that with the *cluster* mode, the `(Scenario.)submit()^` method is not blocking
 and returns after the job is queued. This means the `submit()` method can return before
 the job finishes or even before it is dequeued. Please refer to the
-[submit entity](../task-orchestration/scenario-submission.md) section on how to submit
+[submit entity](../../scenario_features/task-orchestration/scenario-submission.md) section on how to submit
 jobs.
 
 You can configure the *cluster* mode with the following config:

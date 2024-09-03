@@ -78,7 +78,7 @@ entities, including older versions.
 
 To remove a production version, you can use the `taipy manage-versions` with the *--delete-production*
 option on the Taipy CLI and provide the version name (see the
-[Manage versions on Taipy CLI page](../../cli/manage-versions.md) for more details).
+[Manage versions on Taipy CLI page](../../ecosystem/cli/manage-versions.md) for more details).
 
 ```console
 $ taipy manage-versions --delete-production 0.1

@@ -84,7 +84,7 @@ Then only those values are accessible by the user:
 You can use a slider control to display multiple values and let users select each.<br/>
 To achieve that, the [*value*](#p-value) property must be initially set to an array containing
 the initial values to reflect. The slider will have one knob for each value.<br/>
-When the user moves any of the knobs, the [`on_change`](../../callbacks.md#variable-value-change)
+When the user moves any of the knobs, the [`on_change`](../../../../userman/gui/callbacks.md#variable-value-change)
 callback is invoked with the variable value set to an array containing the new selection.
 
 Let's create an initial value for our slider:

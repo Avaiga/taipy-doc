@@ -52,4 +52,4 @@ and start using it.
 
 !!! info "Multiple services"
     To run the Taipy GUI service with some other Taipy services, please refer to the
-    [Running Taipy services](../../run-deploy/run/running_services.md) page.
+    [Running Taipy services](../run-deploy/run/running_services.md) page.

@@ -14,7 +14,7 @@ Taipy lets you create as many pages as you require with whatever content you nee
     - Use [Markdown](markdown.md) when:
 
         - You need to create a page in a few minutes;
-        - You want to benefit from the [Taipy Studio preview](../../../studio/gui.md#page-preview)
+        - You want to benefit from the [Taipy Studio preview](../../ecosystem/studio/gui.md#page-preview)
           feature;
         - You have no experience in UI development, especially on the web;
         - The text layout is close enough to your final presentation objectives.
