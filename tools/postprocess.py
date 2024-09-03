@@ -629,7 +629,6 @@ def on_post_build(env):
                     if (
                         fn_match is not None
                     ):  # The root 'taipy' package# The root 'taipy' package
-                        print(filename, "is good")
                         html_content = re.sub(
                             r"(<h1>)taipy(</h1>)",
                             f"\\1{code('taipy')}\\2",
