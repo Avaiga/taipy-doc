@@ -18,7 +18,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
   <div class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--beta" href="../refmans/gui/viselements/">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-icon" src="../../images/icons/visual-element-w.svg">
+        <img class="tp-content-card-icon" src="../images/icons/visual-element-w.svg">
         <h3>Visual elements</h3>
       </header>
       <p>
@@ -29,7 +29,7 @@ These topics are the most visited ones, we thought you’d like to have a glance
   <div class="tp-col-12 tp-col-md-6 d-flex">
     <a class="tp-content-card tp-content-card--alpha" href="../refmans/gui/viselements/generic/chart/">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-icon" src="../../images/icons/bar-chart-w.svg">
+        <img class="tp-content-card-icon" src="../images/icons/bar-chart-w.svg">
         <h3>Charts</h3>
       </header>
       <p>

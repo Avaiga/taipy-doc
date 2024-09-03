@@ -222,7 +222,7 @@ Published on 2023-10.
 
 - A new template named "scenario-management" is available. For more information on creating
   a new Taipy application with the new "scenario-management" template, refer to the
-  documentation page on [templates](../userman/ecosystem/cli/create.md#from-a-specific-template).
+  documentation page on [templates](../userman/ecosystem/cli/create.md##from-a-specific-application-template).
 
 ## Improvements and changes
 
