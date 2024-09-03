@@ -17,7 +17,7 @@ and if the action is `CREATION^` or `UPDATE^`.
 
     This snippet shows a how you can capture and process events to notify user whenever
     a new scenario is created or the value of a data node is updated.
-    For more details, see the [registration](understanding-topics.md) page.
+    For more details, see the [registration](understanding-notifier-register.md) page.
 
 # External API triggered with Taipy Event Consumers
 
@@ -35,4 +35,4 @@ and triggers an external API call based on the `JOB^`'s `id`.
 
     This snippet shows a how you can capture and process `JOB^` events when an `UPDATE` is made to the `status`
     of the `JOB^` and request an external API.
-    For more details, see the [registration](understanding-topics.md) page.
+    For more details, see the [registration](understanding-notifier-register.md) page.

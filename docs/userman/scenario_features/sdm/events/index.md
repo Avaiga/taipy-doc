@@ -29,7 +29,7 @@ For more details, see the [event](events-description.md) page.
 Taipy provides the `Notifier.register()^` method to register for events. When you register,
 you specify parameters that define the events you want to receive. These parameters allow you to
 filter the events you are interested in.
-For more details, see the [registration](understanding-topics.md) page.
+For more details, see the [registration](understanding-notifier-register.md) page.
 
 # How to process events
 
@@ -52,6 +52,6 @@ that can start consuming events.
 
     This snippet shows a generic way to process all events. However, you might want to
     specify the types of events you are interested in to avoid processing all the events.
-    For more details, see the [registration](understanding-topics.md) page.
+    For more details, see the [registration](understanding-notifier-register.md) page.
 
 For more realistic examples, see the [common use cases](examples.md) page.

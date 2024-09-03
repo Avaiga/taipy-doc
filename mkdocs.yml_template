@@ -137,6 +137,8 @@ nav:
         - "Cycle":
           - "Cycle": userman/scenario_features/sdm/cycle/index.md
           - "Cycles and Scopes": tutorials/articles/cycles_scopes/index.md
+        - "Event":
+          - "Event": userman/scenario_features/sdm/events/index.md
 
 
     - "Advanced features":
@@ -153,7 +155,6 @@ nav:
         - "Development mode": userman/advanced_features/versioning/development_mode.md
         - "Experiment mode": userman/advanced_features/versioning/experiment_mode.md
         - "Production mode": userman/advanced_features/versioning/production_mode.md
-        - "Manage application versions": tutorials/articles/version_management/index.md
 
 
       - "Authentication and roles":
