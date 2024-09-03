@@ -19,9 +19,9 @@ The download can be triggered when clicking on a button or can be performed auto
 All the file download controls are generated with the "taipy-file_download" CSS class. You can use this class
 name to select the file download controls on your page and apply style.
 
-### [Stylekit](../../styling/stylekit.md) support
+### [Stylekit](../../../../userman/gui/styling/stylekit.md) support
 
-The [Stylekit](../../styling/stylekit.md) provides a specific class that you can use to style file download elements:
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can use to style file download elements:
 
 * *fullwidth*<br/>
     If a file download element uses the *fullwidth* class, then it uses the whole available

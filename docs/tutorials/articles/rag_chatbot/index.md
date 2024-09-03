@@ -269,7 +269,7 @@ Besides that, most of the code affects the layout and structure of the applicati
 
 Several Taipy blocks and elements in our application use the *class_name* property to assign it the given CSS class in
 the generated HTML. Many of these classes like "*sidebar*" and "*fullwidth*" are **predefined in Taipy** — either in the
-[Stylekit](../../../userman/gui/styling/stylekit.md), or in the *Styling* section of the specific element.
+[Stylekit](../../../../userman/gui/styling/stylekit.md), or in the *Styling* section of the specific element.
 
 However, we also used four custom classes to provide the look-and-feel of a chat UI. These are:
 

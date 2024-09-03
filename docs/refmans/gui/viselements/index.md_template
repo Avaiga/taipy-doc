@@ -15,7 +15,7 @@ There are two types of *Visual Elements*:
     possible user experience.
 
 If you are just starting with Taipy GUI, you may want to look at the
-[introduction](./introduction.md) page. It provides a comprehensive understanding of the
+[introduction](../../../userman/gui/viselements/introduction.md) page. It provides a comprehensive understanding of the
 visual elements, their properties, and how to use them.
 
 # Standard controls

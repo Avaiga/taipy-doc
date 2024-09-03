@@ -9,9 +9,9 @@ If the _columns_ property contains only digits and spaces, it is considered as f
 All the layout blocks are generated with the "taipy-layout" CSS class. You can use this class
 name to select the layout blocks on your page and apply style.
 
-## [Stylekit](../../styling/stylekit.md) support
+## [Stylekit](../../../../userman/gui/styling/stylekit.md) support
 
-The [Stylekit](../../styling/stylekit.md) provides specific classes that you can use to style layout
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides specific classes that you can use to style layout
 blocks:
 
 - *align-columns-top*<br/>

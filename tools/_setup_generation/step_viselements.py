@@ -290,7 +290,7 @@ class VisElementsStep(SetupStep):
                     INNER_HREF = re.compile(r"(?<=<a\shref=\")(#|\.)")
                     for a in INNER_HREF.finditer(doc):
                         new_doc += doc[last_loc : a.start()]
-                        new_doc += f"../../../../refmans/gui/viselements/{element_type}/{a.group(0)}"
+                        new_doc += f"../../../refmans/gui/viselements/{element_type}/{a.group(0)}"
                         last_loc = a.end()
                     if last_loc:
                         doc = new_doc + doc[last_loc:]
@@ -367,14 +367,14 @@ class [element_type]({base_class}):
                 if m := re.search(r"(\[`(\w+)`\]\()\2\.md\)", short_doc):
                     short_doc = (
                         short_doc[: m.start()]
-                        + f"{m[1]}../../../refmans/gui/viselements/{m[2]}.md)"
+                        + f"{m[1]}../../refmans/gui/viselements/{m[2]}.md)"
                         + short_doc[m.end() :]
                     )
                 # Link to element doc page
                 element_md_location = (
                     "corelements" if desc["prefix"] == "core_" else "generic"
                 )
-                element_md_page = f"[`{element_type}`](../../../refmans/gui/viselements/{element_md_location}/{element_type}.md)"
+                element_md_page = f"[`{element_type}`](../../refmans/gui/viselements/{element_md_location}/{element_type}.md)"
                 buffer.write(
                     template.replace("[element_type]", element_type)
                     .replace("[element_md_page]", element_md_page)

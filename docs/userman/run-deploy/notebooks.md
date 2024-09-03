@@ -54,7 +54,7 @@ A new window is created in your browser, displaying the small interface we have 
 Note that the text control automatically displays *value* when you move the slider thumb. That
 shows that Taipy has successfully bound the variable *value* to both the
 [`text`](../../refmans/gui/viselements/generic/text.md) and the
-[`slider`](../../refman/gui/viselements/generic/slider.md) controls.
+[`slider`](../../refmans/gui/viselements/generic/slider.md) controls.
 
 You can witness the user interface update when you change a variable on the fly. In the context of
 Notebooks, you can directly access the variables that are bound to the user interface:

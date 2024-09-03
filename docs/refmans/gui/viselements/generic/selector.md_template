@@ -54,9 +54,9 @@ is represented:
 All the selector controls are generated with the "taipy-selector" CSS class. You can use this class
 name to select the selector controls on your page and apply style.
 
-## [Stylekit](../../styling/stylekit.md) support
+## [Stylekit](../../../../userman/gui/styling/stylekit.md) support
 
-The [Stylekit](../../styling/stylekit.md) provides a specific class that you can use to style selector
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can use to style selector
 controls:
 
 * *fullwidth*<br/>

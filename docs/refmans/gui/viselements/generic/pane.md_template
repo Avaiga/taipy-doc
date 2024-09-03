@@ -34,8 +34,8 @@ property evaluates to True.
 
 The parent element must have the *flex* display mode in CSS. To achieve this using
 the Markdown syntax, you can leverage the
-[*d-flex* class](../../styling/stylekit.md#c-d-flex) provided in the
-[Stylekit](../../styling/stylekit.md).
+[*d-flex* class](../../../../userman/gui/styling/stylekit.md#c-d-flex) provided in the
+[Stylekit](../../../../userman/gui/styling/stylekit.md).
 
 Here is a full example of how to do this:
 ```python
