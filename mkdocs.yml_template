@@ -251,7 +251,6 @@ nav:
     - "LLM":
       - "LLM": gallery/llm/index.md
       - "LLM Chatbot" : gallery/articles/chatbot/index.md
-      - "TalkToTaipy" : gallery/articles/talk_to_taipy/index.md
       - "Vision ChatBot": gallery/articles/vision_chatbot/index.md
       - "RAG ChatBot": gallery/articles/rag_chatbot/index.md
       - "Sentiment Analysis": gallery/articles/sentiment_analysis/index.md
