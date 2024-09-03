@@ -116,7 +116,7 @@ docs/refmans/gui/viselements/generic/*.md
 !docs/refmans/gui/viselements/generic/index.md
 docs/refmans/gui/viselements/generic/charts/*.md
 docs/refmans/gui/viselements/corelements/*.md
-!docs/refmans/gui/gui_example.ipynb
+!docs/userman/gui/gui_example.ipynb
 docs/userman/xrefs
 docs/refmans/reference/**/*.md
 !docs/refmans/reference/index.md
@@ -126,6 +126,7 @@ docs/refmans/reference_guiext/
 docs/contributing/contributors.md
 fe_node_modules/
 docs/tutorials/index.md
+docs/tutorials/getting_started/index.md
 docs/tutorials/scenario_management/index.md
 docs/tutorials/visuals/index.md
 docs/tutorials/integration/index.md
