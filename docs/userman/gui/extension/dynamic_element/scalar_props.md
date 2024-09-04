@@ -88,7 +88,7 @@ const ColoredLabel = (props: ColoredLabelProps) => {
 export default ColoredLabel;
 ```
 We use the
-[`useDynamicProperty()`](../../../../refmans/reference_guiext/modules.md#usedynamicproperty)
+[`useDynamicProperty()`](../../../../refmans/reference_guiext/functions/useDynamicProperty.md)
 hook provided by the Taipy GUI Extension API to retrieve the value of the dynamic
 property. This hook returns the latest updated value.<br/>
 

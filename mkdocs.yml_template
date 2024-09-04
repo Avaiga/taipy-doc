@@ -226,7 +226,7 @@ nav:
       [REST_REFERENCE_CONTENT]
     - "GUI Extension API":
       - refmans/reference_guiext/index.md
-      - "taipy-gui module": refmans/reference_guiext/modules.md
+      - "taipy-gui module": refmans/reference_guiext/globals.md
 
   - "Gallery":
     - "Gallery": gallery/index.md
