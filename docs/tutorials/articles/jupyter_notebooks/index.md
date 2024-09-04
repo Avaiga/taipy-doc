@@ -3,7 +3,7 @@ title: Jupyter Notebooks and Taipy
 category: integration
 data-keywords: gui notebook
 short-description: Seamlessly update the User Interface in a Jupyter Notebook without restarting the kernel.
-order: 22
+order: 23
 img: jupyter_notebooks/images/jupyter_notebooks_1.png
 ---
 ![Taipy GUI in Jupyter Notebooks](images/jupyter_notebooks_1.png){width=90% : .tp-image }
