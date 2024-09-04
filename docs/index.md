@@ -113,7 +113,7 @@ from initial prototypes to production-ready applications.
 
 <ul class="tp-pills-list">
   <li>
-    <a class="tp-pill" href="refmans/gui/viselements/generic/blocks/">
+    <a class="tp-pill" href="refmans/gui/viselements/#block-elements">
       <span>Structure Pages</span>
     </a>
   </li>
