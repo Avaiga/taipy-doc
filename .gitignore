@@ -125,8 +125,6 @@ docs/refmans/reference_rest/*.md
 docs/refmans/reference_guiext/
 docs/contributing/contributors.md
 fe_node_modules/
-docs/tutorials/index.md
-docs/tutorials/getting_started/index.md
 docs/tutorials/scenario_management/index.md
 docs/tutorials/visuals/index.md
 docs/tutorials/integration/index.md

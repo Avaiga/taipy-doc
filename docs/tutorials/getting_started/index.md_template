@@ -111,7 +111,7 @@ stored in the *value* variable.
 slider's value. It is represented in the application as a chart.
 
 
-## Interactivity Through Actions
+# Interactivity Through Actions
 
 Actions, like `on_change=slider_moved`, allow visual elements like slider or input
 to trigger specific functions.
