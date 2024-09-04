@@ -66,7 +66,7 @@ nav:
       - "Charts for Large Data": tutorials/articles/decimator/index.md
 
   - "User Manual":
-    - "About Taipy's User userman": userman/index.md
+    - "About Taipy's User manual": userman/index.md
 
     - "User interface":
       - "User interface": userman/gui/index.md
@@ -113,7 +113,6 @@ nav:
         - "Recurrent scenarios": userman/scenario_features/what-if-analysis/scenarios-and-cycles.md
         - "Scenario comparison": userman/scenario_features/what-if-analysis/scenario-comparison.md
 
-
       - "Scenario and data management":
         - "Scenario and data management": userman/scenario_features/sdm/index.md
         - "Data node":
@@ -131,11 +130,15 @@ nav:
           - "Sequence": userman/scenario_features/sdm/sequence/index.md
         - "Cycle":
           - "Cycle": userman/scenario_features/sdm/cycle/index.md
+
       - "Track activities and Trigger actions":
         - "Event": userman/scenario_features/events/index.md
         - "Event description": userman/scenario_features/events/events-description.md
         - "Event subscription": userman/scenario_features/events/understanding-notifier-register.md
         - "Examples": userman/scenario_features/events/examples.md
+
+      - "Exposing REST APIs":
+        - "Exposing REST APIs": userman/advanced_features/rest/index.md
 
     - "Advanced features":
       - "Configuration":
@@ -152,7 +155,6 @@ nav:
         - "Experiment mode": userman/advanced_features/versioning/experiment_mode.md
         - "Production mode": userman/advanced_features/versioning/production_mode.md
 
-
       - "Authentication and roles":
         - "Authentication and authorization": userman/advanced_features/auth/index.md
         - "Authentication": userman/advanced_features/auth/authentication.md
@@ -160,9 +162,6 @@ nav:
 
       - "Scheduler":
         - "Scheduler": userman/advanced_features/scheduling/index.md
-
-      - "Exposing REST APIs":
-        - "Exposing REST APIs": userman/advanced_features/rest/index.md
 
     - "Running & deploying":
       - "Running and deploying Taipy applications": userman/run-deploy/index.md
@@ -193,7 +192,6 @@ nav:
         - "On Databricks":
           - "Deploying on Databricks": userman/run-deploy/deploy/databricks/index.md
 
-
     - "Ecosystem":
       - "Command-line interface":
         - "Command-line interface (CLI)": userman/ecosystem/cli/index.md
@@ -214,7 +212,7 @@ nav:
         - "GUI Markdown support": userman/ecosystem/studio/gui.md
 
   - "Reference":
-    - "About Taipy's Reference userman": refmans/index.md
+    - "About Taipy's Reference manual": refmans/index.md
     - "Visual Elements":
       - "Visual Elements": refmans/gui/viselements/index.md
       [VISELEMENTS_CONTENT]

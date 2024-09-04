@@ -47,7 +47,7 @@ user’s experience.
 
 [:material-arrow-right: GUI User Manual](gui/index.md)
 
-# Scenario and Data Management
+# Scenario features
 
 Taipy is a Python library designed to build powerful and customized data-driven applications.
 In particular, it provides the necessary tools to help Python developers transform their
