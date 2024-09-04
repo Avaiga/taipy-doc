@@ -59,14 +59,17 @@ with tgb.Page() as page:
             tgb.text("# Spark with **Taipy**", mode="md", class_name="color-primary")
             tgb.text("## Scenario", mode="md")
 
-            tgb.scenario_selector("{selected_scenario}", on_creation=scenario_on_creation)
+            tgb.scenario_selector(
+                "{selected_scenario}", on_creation=scenario_on_creation
+            )
 
             tgb.html("hr")
 
             tgb.text("## Scenario info", mode="md")
 
             tgb.scenario(
-                "{selected_scenario}", on_submission_change=scenario_on_submission_change
+                "{selected_scenario}",
+                on_submission_change=scenario_on_submission_change,
             )
 
         with tgb.part(render="{selected_scenario}"):
@@ -100,7 +103,10 @@ with tgb.Page() as page:
 
             tgb.text(
                 lambda selected_scenario: (
-                    str(selected_scenario.output.read()) if selected_scenario and selected_scenario.output.is_ready_for_reading else 'Submit the scenario using the left panel.'
+                    str(selected_scenario.output.read())
+                    if selected_scenario
+                    and selected_scenario.output.is_ready_for_reading
+                    else "Submit the scenario using the left panel."
                 ),
                 mode="raw",
                 class_name="color-primary",
@@ -114,7 +120,9 @@ with tgb.Page() as page:
 
             tgb.text(
                 lambda selected_data_node: (
-                    str(selected_data_node.read()) if selected_data_node and selected_data_node.is_ready_for_reading else None
+                    str(selected_data_node.read())
+                    if selected_data_node and selected_data_node.is_ready_for_reading
+                    else None
                 )
             )
 
@@ -136,7 +144,7 @@ def on_change(state, var_name: str, var_value):
 
 
 if __name__ == "__main__":
-    tp.Core().run()
+    tp.Orchestrator().run()
 
-    gui = Gui(main_md)
+    gui = Gui(page)
     gui.run(title="Spark with Taipy")

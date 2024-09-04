@@ -478,7 +478,7 @@ specified scenario:
 
     # Create and execute the scenario
     if __name__ == "__main__":
-        tp.Core().run()
+        tp.Orchestrator().run()
         scenario = tp.create_scenario(dataiku_scenario_scenario_cfg)
 
         scenario = None
