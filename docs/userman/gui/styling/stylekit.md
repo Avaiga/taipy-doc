@@ -74,8 +74,8 @@ Here is the list of the variables that the Stylekit uses:
 | <a name="v-color-paper-light"></a>*color_paper_light*      | "#FFFFFF" | [*--color-paper-light*](#p-color-paper-light) | Elevated elements (i.e. *card*, *header*, *sidebar*…) background color for the light theme. |
 | <a name="v-color-paper-dark"></a>*color_paper_dark*       | "#1F2F44" | [*--color-paper-dark*](#p-color-paper-dark) | Elevated elements (i.e. *card*, *header*, *sidebar*…) background color for the dark theme. |
 | <a name="v-font-family"></a>*font_family*     | "Lato, Arial, sans-serif" | [*--font-family*](#p-font-family) | Font family. |
-| <a name="v-border-radius"></a>*border_radius*   | 8 | [*--border-radius*](#p-border-radius) | Rounded corners radius. |
-| <a name="v-input-button-height"></a>*input_button_height*    | "48px"    | [*--input-button-height*](#p-input-button-height) | Matching buttons and inputs height. |
+| <a name="v-border-radius"></a>*border_radius*   | 8 | *--border-radius* | Rounded corners radius. |
+| <a name="v-input-button-height"></a>*input_button_height*    | "48px"    | *--input-button-height* | Matching buttons and inputs height. |
 
 Notes:
 
