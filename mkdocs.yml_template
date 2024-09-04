@@ -98,7 +98,6 @@ nav:
         - "Data node usage": userman/scenario_features/data-integration/data-node-usage.md
         - "Visual elements": userman/scenario_features/data-integration/data-node-vizelmts.md
         - "Data node history and validity": userman/scenario_features/data-integration/data-node-history.md
-        - "Data Nodes cheatsheet": tutorials/articles/the_data_nodes/index.md
 
       - "Task orchestration":
         - "Scenarios for task orchestration": userman/scenario_features/task-orchestration/index.md
@@ -113,7 +112,6 @@ nav:
         - "Multiple scenarios": userman/scenario_features/what-if-analysis/multiple-scenarios.md
         - "Recurrent scenarios": userman/scenario_features/what-if-analysis/scenarios-and-cycles.md
         - "Scenario comparison": userman/scenario_features/what-if-analysis/scenario-comparison.md
-        - "Scenario comparison cheatsheet": tutorials/articles/scenario_comparison/index.md
 
 
       - "Scenario and data management":
@@ -125,9 +123,6 @@ nav:
         - "Scenario":
           - "Scenario": userman/scenario_features/sdm/scenario/index.md
           - "Scenario config": userman/scenario_features/sdm/scenario/scenario-config.md
-          - "Scenarios Cheatsheet": tutorials/articles/scenarios/index.md
-          - "Scenario Subscription Cheatsheet": tutorials/articles/scenario_subscription/index.md
-
         - "Submission":
           - "Submission": userman/scenario_features/sdm/submission/index.md
         - "Job":
@@ -136,10 +131,11 @@ nav:
           - "Sequence": userman/scenario_features/sdm/sequence/index.md
         - "Cycle":
           - "Cycle": userman/scenario_features/sdm/cycle/index.md
-          - "Cycles and Scopes": tutorials/articles/cycles_scopes/index.md
-        - "Event":
-          - "Event": userman/scenario_features/sdm/events/index.md
-
+      - "Track activities and Trigger actions":
+        - "Event": userman/scenario_features/events/index.md
+        - "Event description": userman/scenario_features/events/events-description.md
+        - "Event subscription": userman/scenario_features/events/understanding-notifier-register.md
+        - "Examples": userman/scenario_features/events/examples.md
 
     - "Advanced features":
       - "Configuration":
