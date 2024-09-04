@@ -164,7 +164,7 @@ Create a folder to organize your application description. Use a clear and concis
 for the folder that represents the content. For example:
 
 ```
-docs/gallery/{category}/your_folder/
+docs/gallery/articles/your_folder/
 ```
 
 Category is the category of the article (finance, decision_support, llm,
@@ -184,6 +184,7 @@ integration or large data)
 - type: The type of the item (code, video or article)
 - data-keywords: A comma separated list of keywords
 - short-description: A short description of the item
+- order: The order of the item in the gallery
 - img: The path to the image associated with the item
 
 This header will be used to display the article in the correct pages.
@@ -196,6 +197,7 @@ title: Realtime Pollution Dashboard
 category: visualization
 data-keywords: dashboad
 short-description: Streams real-time pollution data from sensors and shows air quality on a map.
+order: 26
 img: pollution_sensors/images/pollution_dashboard.png
 ---
 
@@ -223,7 +225,7 @@ You shall then describe your application in more details.
 Add the new Markdown file to the "mkdocs.yml_template" file in the appropriate section.
 
 ```
-"Title of the Application": gallery/{category}/your_folder/index.md
+"Title of the Application": gallery/articles/your_folder/index.md
 ```
 
 #### Checklist:
@@ -233,8 +235,8 @@ Add the new Markdown file to the "mkdocs.yml_template" file in the appropriate s
 if any are present.
 - Break lines in the Markdown file before 100 characters.
 - Use relative links to taipy doc (.md). To express
-`https://docs.taipy.io/en/latest/manuals/studio/config/` in a tip article, write
-`../../../manuals/studio/config/index.md`.
+`https://docs.taipy.io/en/latest/userman/ecosystem/studio/config/` in a tip article, write
+`../../../userman/ecosystem/studio/config/index.md`.
 - Follow conventions for styling code, variables, etc.
 - Check the level of titles in the Markdown file.
 - Build the doc and test the page. See [INSTALLATION.md](INSTALLATION.md)
@@ -254,7 +256,7 @@ Create a folder to organize your tutorial. Use a clear and concise name for the
 folder that represents the content. For example:
 
 ```
-docs/tutorials/{category}/your_folder/
+docs/tutorials/articles/your_folder/
 ```
 
 Category is the category of the article (fundamentals, visuals, scenario
@@ -273,6 +275,7 @@ The header contains the following information:
 integration or large data)
 - data-keywords: A comma separated list of keywords
 - short-description: A short description of the item
+- order: The order of the item in the tutorials
 - img: The path to the image associated with the item
 
 This header will be used to display the article in the correct pages.
@@ -285,7 +288,8 @@ title: Scenarios
 category: scenario_management
 data-keywords: scenario cycle configuration datanode dag
 short-description: A Taipy scenario models an instance of your end-user business problem to solve on data and parameter sets.
-img: 1_scenarios/images/scenario.png
+order: 26
+img: scenarios/images/scenario.png
 ---
 
 And here is the content of my article...
@@ -296,7 +300,7 @@ And here is the content of my article...
 Add the new Markdown file to the "mkdocs.yml_template" file in the appropriate section.
 
 ```
-"Title of the Article": tutorials/{category}/your_folder/index.md
+"Title of the Article": tutorials/articles/your_folder/index.md
 ```
 
 #### Checklist:
@@ -306,8 +310,8 @@ Add the new Markdown file to the "mkdocs.yml_template" file in the appropriate s
 if any are present.
 - Break lines in the Markdown file before 100 characters.
 - Use relative links to taipy doc (.md). To express
-`https://docs.taipy.io/en/latest/manuals/studio/config/` in a tip article, write
-`../../../manuals/studio/config/index.md`.
+`https://docs.taipy.io/en/latest/userman/ecosystem/studio/config/` in a tip article, write
+`../../../userman/ecosystem/studio/config/index.md`.
 - Follow conventions for styling code, variables, etc.
 - Check the level of titles in the Markdown file.
 - Build the doc and test the page. See [INSTALLATION.md](INSTALLATION.md)

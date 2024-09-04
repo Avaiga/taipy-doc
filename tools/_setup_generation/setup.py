@@ -18,9 +18,8 @@ class Setup(ABC):
     def __init__(self, root_dir: str, steps: List["SetupStep"]):
         self.root_dir = root_dir.replace("\\", "/")
         self.docs_dir = self.root_dir + "/docs"
-        self.manuals_dir = self.docs_dir + "/manuals"
-        self.user_manuals_dir = self.manuals_dir + "/userman"
-        self.ref_manuals_dir = self.manuals_dir + "/refmans"
+        self.user_manuals_dir = self.docs_dir + "/userman"
+        self.ref_manuals_dir = self.docs_dir + "/refmans"
         self.tools_dir = self.root_dir + "/tools"
         # self.requested_steps, if not None, indicates which steps should be performed.
         self.requested_steps = None
@@ -28,7 +27,9 @@ class Setup(ABC):
             self.requested_steps = []
             for step_id in sys.argv[1:]:
                 if not [step for step in steps if step_id == step.get_id()]:
-                    raise SystemError(f"FATAL - '{step_id}' is not a valid step identifier")
+                    raise SystemError(
+                        f"FATAL - '{step_id}' is not a valid step identifier"
+                    )
             for step in steps:
                 if step.get_id() in sys.argv[1:]:
                     self.requested_steps.append(step)
@@ -56,7 +57,10 @@ class Setup(ABC):
             description = step.get_description()
             if description:
                 description = f": {description}"
-            print(f"{line}\n| Step {step_index + 1}/{n_steps}{description}\n{line}", flush=True)
+            print(
+                f"{line}\n| Step {step_index + 1}/{n_steps}{description}\n{line}",
+                flush=True,
+            )
             step.setup(self)
 
     def exit(self):
@@ -74,7 +78,7 @@ class Setup(ABC):
             lines = replacement.split("\n")
             if not lines[-1]:
                 lines = lines[:-1]
-            replacement = "\n".join(map(lambda s: r"\1"+s, lines))+"\n"
+            replacement = "\n".join(map(lambda s: r"\1" + s, lines)) + "\n"
 
         self.mkdocs_yml_template_content = re.sub(
             pattern,

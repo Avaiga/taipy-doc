@@ -26,7 +26,7 @@ class GuiExtRefManStep(SetupStep):
         npm_path = shutil.which("npm")
         if npm_path:
             if " " in npm_path:
-                npm_path = f"\"{npm_path}\""
+                npm_path = f'"{npm_path}"'
             try:
                 subprocess.run(f"{npm_path} --version", shell=True, capture_output=True)
             except OSError:
@@ -43,7 +43,7 @@ class GuiExtRefManStep(SetupStep):
             subprocess.run(f"{self.npm_path} i --omit=optional", shell=True)
             print(f"... Generating documentation...", flush=True)
             subprocess.run(f"{self.npm_path} run mkdocs", shell=True)
-            # Process and copy files to docs/manuals
+            # Process and copy files to docs/userman
             os.mkdir(self.GUI_EXT_REF_DIR_PATH)
             dst_dir = os.path.abspath(self.GUI_EXT_REF_DIR_PATH)
             src_dir = os.path.abspath(os.path.join(gui_path, "reference_guiext"))
@@ -56,7 +56,11 @@ class GuiExtRefManStep(SetupStep):
                         file_content = input.read()
                     match = JS_EXT_RE.search(file_content)
                     if match:
-                        file_content = match.group(2) + match.group(1) + file_content[match.end():]
+                        file_content = (
+                            match.group(2)
+                            + match.group(1)
+                            + file_content[match.end() :]
+                        )
                     path_name = path_name.replace(src_dir, dst_dir)
                     with open(path_name, "w") as output:
                         output.write(file_content)

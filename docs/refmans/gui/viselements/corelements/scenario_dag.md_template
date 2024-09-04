@@ -1,0 +1,20 @@
+Displays the DAG of a scenario.
+
+# Details
+
+When the [*scenario*](#p-scenario) property is set to an instance of `Scenario^`, the control
+displays a graphical representation of its DAG.
+
+Here is what the control looks like when connected to a scenario instance:
+<figure class="tp-center">
+  <img src="../scenario_dag-init-d.png" class="visible-dark"  width="90%"/>
+  <img src="../scenario_dag-init-l.png" class="visible-light" width="90%"/>
+  <figcaption>The DAG of a scenario</figcaption>
+</figure>
+
+The visual representation of the Data Nodes and Tasks is the same as the one used in the
+[Taipy Studio extension](../../../../userman/ecosystem/studio/config/graphview.md).
+
+The toolbar, which can be removed by setting the [*show_toolbar*](#p-show_toolbar) property to
+False, contains a button that adapts the rendering area zoom factor to the graph representation.
+
