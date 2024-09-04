@@ -360,16 +360,17 @@ class [element_type]({base_class}):
                         arguments_doc += doc[1]
                 # Process short doc
                 short_doc = desc["short_doc"]
-                if m := re.search(r"(\[`(\w+)`\]\()\2\.md\)", short_doc):
-                    short_doc = (
-                        short_doc[: m.start()]
-                        + f"{m[1]}../../refmans/gui/viselements/{m[2]}.md)"
-                        + short_doc[m.end() :]
-                    )
                 # Link to element doc page
                 element_md_location = (
                     "corelements" if desc["prefix"] == "core_" else "generic"
                 )
+                if m := re.search(r"(\[`(\w+)`\]\()\2\.md\)", short_doc):
+                    short_doc = (
+                        short_doc[: m.start()]
+                        + f"{m[1]}../../refmans/gui/viselements/{element_md_location}/{m[2]}.md)"
+                        + short_doc[m.end() :]
+                    )
+
                 element_md_page = f"[`{element_type}`](../../refmans/gui/viselements/{element_md_location}/{element_type}.md)"
                 buffer.write(
                     template.replace("[element_type]", element_type)
