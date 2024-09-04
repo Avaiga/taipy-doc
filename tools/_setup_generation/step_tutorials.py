@@ -9,7 +9,7 @@
 # The header of an item is a multiline header starting with '---' and ending with '---'.
 # The header contains the following information:
 # - title: The title of the item
-# - category: The category of the item (fundamentals, visuals, scenario_management, 
+# - category: The category of the item (fundamentals, visuals, scenario_management,
 # integration, large_data, finance, decision_support, llm, visualization or other)
 # - data-keywords: A comma separated list of keywords
 # - short-description: A short description of the item
@@ -25,10 +25,20 @@ from .setup import SetupStep, Setup
 from .items import FolderItem, FileItem, Item
 from .items.exceptions import WrongHeader, NoHeader, NoIndexFile
 
+
 class TutorialsStep(SetupStep):
     TUTORIALS_FOLDER_NAME = "tutorials"
     APPLICATIONS_FOLDER_NAME = "articles"
     NO_CONTENT_TYPE_FOLDERS = ["images", "articles"]
+
+    def __init__(self):
+        self.content_types = self._initialize_content_types()
+        self.TUTORIALS_BASE_PATH = None
+        self.APPLICATIONS_BASE_PATH = None
+
+    def _initialize_content_types(self) -> Dict[str, Dict]:
+        # Define your content types here. You can add or remove any type according to your needs.
+        return {}
 
     def _get_list_of_items(self, folder_path) -> List[Item]:
         items = []
@@ -42,24 +52,14 @@ class TutorialsStep(SetupStep):
                     print(f"WARNING - ", e)
         return items
 
-    def __init__(self):
-        self.content_types = self._initialize_content_types()
-        self.TUTORIALS_BASE_PATH = None
-        self.APPLICATIONS_BASE_PATH = None
-
-    def _initialize_content_types(self) -> Dict[str, Dict]:
-        # Define your content types here. You can add or remove any type according to your needs.
-        return {}
-
     def enter(self, setup: Setup):
         self.TUTORIALS_BASE_PATH = os.path.join(setup.docs_dir, self.TUTORIALS_FOLDER_NAME)
         self.APPLICATIONS_BASE_PATH = os.path.join(self.TUTORIALS_BASE_PATH, self.APPLICATIONS_FOLDER_NAME)
 
         items = os.listdir(self.TUTORIALS_BASE_PATH)
-        
+
         # Filter out only the directories
         self.content_types = {item: [] for item in items if os.path.isdir(os.path.join(self.TUTORIALS_BASE_PATH, item)) and item not in self.NO_CONTENT_TYPE_FOLDERS}
-        
 
         for content_type in self.content_types.keys():
             folder_path = os.path.join(self.TUTORIALS_BASE_PATH, content_type)
@@ -85,7 +85,7 @@ class TutorialsStep(SetupStep):
             items_info.update(items_info_category)
         content = self._build_content_for_main_index(items_info)
         self._update_tutorials_index_file(content)
-        
+
     def _get_list_of_items(self, folder_path) -> List[Item]:
         items = []
         for sub_folder in os.listdir(folder_path):
