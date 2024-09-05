@@ -134,7 +134,7 @@ def create_navigation_buttons(site_url: str) -> str:
     html_for_buttons += create_navigation_button(
         site_url,
         "Reference & Visual Elements",
-        "refmans/",
+        "refmans/gui/viselements/",
         "tp-content-card--beta",
     )
     html_for_buttons += create_navigation_button(

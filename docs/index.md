@@ -100,7 +100,7 @@ from initial prototypes to production-ready applications.
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="refmans/gui/viselements/generic/controls/">
+    <a class="tp-pill" href="refmans/gui/viselements/">
       <span>…</span>
       <div class="tp-tooltip">
         <p>Browse the complete list of visual elements.</p>
@@ -117,16 +117,24 @@ from initial prototypes to production-ready applications.
       <span>Structure Pages</span>
     </a>
   </li>
-    <li>
-      <div class="tp-pill">
-        <a href="userman/scenario_features/sdm/scenario/#scenario-configuration">Configure</a>,
-        <a href="userman/scenario_features/sdm/scenario/#scenario-creation">instantiate</a> and
-        <a href="userman/scenario_features/sdm/scenario/#scenario-submission">submit</a> Scenario
-      </div>
-    </li>
+  <li>
+    <a class="tp-pill" href="userman/scenario_features/data-integration/">
+      <span>Data integration</span>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="userman/scenario_features/task-orchestration/">
+      <span>Task orchestration</span>
+    </a>
+  </li>
+  <li>
+    <a class="tp-pill" href="userman/scenario_features/what-if-analysis/">
+      <span>What if analysis</span>
+    </a>
+  </li>
   <li>
     <a class="tp-pill" href="userman/advanced_features/versioning/">
-      <span>Manage versions</span>
+      <span>Version management</span>
     </a>
   </li>
   <li>
