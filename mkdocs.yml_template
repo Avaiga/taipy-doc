@@ -72,7 +72,7 @@ nav:
       - "User interface": userman/gui/index.md
       - "Pages":
         - "Pages": userman/gui/pages/index.md
-        - "Navigate between pages": userman/gui/pages/navigate/index.md
+        - "Navigation": userman/gui/pages/navigate/index.md
         - "Dynamic page content": userman/gui/pages/partial/index.md
         - "Dialogs": userman/gui/pages/dialog/index.md
         - "Panes": userman/gui/pages/pane/index.md
