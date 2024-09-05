@@ -4,7 +4,7 @@ hide:
 ---
 Taipy can expose REST APIs so an external application can send and receive data to and from any
 Taipy application. Taipy REST Server must first be started. (See the
-[REST User Manual](../../userman/advanced_features/rest/index.md) to learn how to run the `Rest^` server).
+[REST User Manual](../../userman/scenario_features/rest/index.md) to learn how to run the `Rest^` server).
 
 Once the taipy REST server is running, any REST client can make some HTTP requests to the various
 APIs exposed.

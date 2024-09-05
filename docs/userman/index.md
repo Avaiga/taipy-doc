@@ -72,7 +72,7 @@ This feature to provides a solution to easily integrate Taipy applications with 
 systems. The API comes with multiple endpoints for you to work with Scenario and data
 management conveniently and efficiently.
 
-[:material-arrow-right: Taipy REST User Manual](advanced_features/rest/index.md)
+[:material-arrow-right: Taipy REST User Manual](scenario_features/rest/index.md)
 
 # Authentication and Role
 

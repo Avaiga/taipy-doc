@@ -1,6 +1,6 @@
-Examples of using Taipy event notifications to capture and consume *events*.
+This page aims at exposing common use cases using Taipy *events*.
 
-# Real-Time GUI Updates with Taipy Event Consumers
+# Triggering user interface updates
 
 This script defines a custom event consumer class `SpecificCoreConsumer`, which listens
 for all events published by Taipy Core and triggers GUI notification based on those events.
@@ -19,7 +19,7 @@ This snippet shows a how you can capture and process events to notify user whene
 a new scenario is created or the value of a data node is updated.
 For more details, see the [registration](understanding-notifier-register.md) page.
 
-# External API triggered with Taipy Event Consumers
+# Triggering External API Calls
 
 This script defines a custom event consumer class `JobFailureCoreConsumer`, which listens
 for all events published by Taipy Core, when a `JOB` entity's `status` attribute is `UPDATE`,

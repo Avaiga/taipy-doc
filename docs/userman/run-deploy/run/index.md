@@ -10,10 +10,10 @@ The application may however have a few requirements that Taipy can address:
 
 - [Running Taipy services](running_services.md): some Taipy functionality can be
   run as services. That is typically the case for [Taipy GUI](../../gui/index.md),
-  [Taipy REST](../../advanced_features/rest/index.md), or
+  [Taipy REST](../../scenario_features/rest/index.md), or
   [Taipy Orchestrator](../../scenario_features/task-orchestration/index.md).
 - [Rely on an external web server](external_web_server.md): although
-  [Taipy GUI](../../gui/index.md) and [Taipy REST](../../advanced_features/rest/index.md) provide
+  [Taipy GUI](../../gui/index.md) and [Taipy REST](../../scenario_features/rest/index.md) provide
   an internal web server, you may need to host your application in a web server that is already
   installed in your infrastructure.
 - [Protect private files](protect_files.md): because the hosting of an application by a web

@@ -143,7 +143,7 @@ from initial prototypes to production-ready applications.
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="userman/advanced_features/rest/">
+    <a class="tp-pill" href="userman/scenario_features/rest/">
       <span>Expose Taipy's REST APIs</span>
     </a>
   </li>

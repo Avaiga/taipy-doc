@@ -132,13 +132,13 @@ nav:
           - "Cycle": userman/scenario_features/sdm/cycle/index.md
 
       - "Track activities and Trigger actions":
-        - "Event": userman/scenario_features/events/index.md
+        - "Track activities and Trigger actions": userman/scenario_features/events/index.md
         - "Event description": userman/scenario_features/events/events-description.md
-        - "Event subscription": userman/scenario_features/events/understanding-notifier-register.md
+        - "Registration": userman/scenario_features/events/understanding-notifier-register.md
         - "Examples": userman/scenario_features/events/examples.md
 
       - "Exposing REST APIs":
-        - "Exposing REST APIs": userman/advanced_features/rest/index.md
+        - "Exposing REST APIs": userman/scenario_features/rest/index.md
 
     - "Advanced features":
       - "Configuration":
