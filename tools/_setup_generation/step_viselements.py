@@ -29,6 +29,7 @@ class VisElementsStep(SetupStep):
 
     def __init__(self):
         self.navigation = ""
+        self.navigation_by_library = {}
 
     def get_id(self) -> str:
         return "viselements"
@@ -102,6 +103,8 @@ class VisElementsStep(SetupStep):
                     category,
                     self.__generate_element_doc(element_type, category),
                 )
+        for k in self.navigation_by_library:
+            self.navigation += self.navigation_by_library[k]
         return tocs
 
     def __build_hook(self, element_type, category: str) -> str:
@@ -128,10 +131,14 @@ class VisElementsStep(SetupStep):
         """
         element_desc = self.elements[element_type]
 
-        d = "corelements/" if element_desc["prefix"] == "core_" else "generic/"
-        self.navigation += (
-            f'- "{element_type}": refmans/gui/viselements/{d}{element_type}.md\n'
-        )
+        section = "Scenario management elements" if element_desc["prefix"] == "core_" else "Standard elements"
+        folder = "corelements/" if element_desc["prefix"] == "core_" else "generic/"
+        if self.navigation_by_library.get(section) is None:
+            self.navigation_by_library[section] = f'- "{section}":\n'
+        else:
+            self.navigation_by_library[section] += (
+                f'    - "{element_type}": refmans/gui/viselements/{folder}{element_type}.md\n'
+            )
         template_doc_path = f"{element_desc['doc_path']}/{element_type}.md_template"
         with open(template_doc_path, "r") as template_doc_file:
             element_documentation = template_doc_file.read()
@@ -238,17 +245,17 @@ class VisElementsStep(SetupStep):
                 + after_properties
             )
         e = element_type  # Shortcut
-        d = "corelements/" if element_desc["prefix"] == "core_" else "generic/"
+        folder = "corelements/" if element_desc["prefix"] == "core_" else "generic/"
         s = (
             ' style="font-size: .8em;"'
             if e == "scenario_selector" or e == "data_node_selector"
             else ""
         )
         return (
-            f'<a class="tp-ve-card" href="./{d}{e}/">\n'
+            f'<a class="tp-ve-card" href="./{folder}{e}/">\n'
             + f"<div{s}>{e}</div>\n"
-            + f'<img class="tp-ve-l" src="./{d}{e}-l.png"/><img class="tp-ve-lh" src="./{d}{e}-lh.png"/>\n'
-            + f'<img class="tp-ve-d" src="./{d}{e}-d.png"/><img class="tp-ve-dh" src="./{d}{e}-dh.png"/>\n'
+            + f'<img class="tp-ve-l" src="./{folder}{e}-l.png"/><img class="tp-ve-lh" src="./{folder}{e}-lh.png"/>\n'
+            + f'<img class="tp-ve-d" src="./{folder}{e}-d.png"/><img class="tp-ve-dh" src="./{folder}{e}-dh.png"/>\n'
             + f"<p>{first_documentation_paragraph}</p>\n"
             + "</a>\n"
         )
