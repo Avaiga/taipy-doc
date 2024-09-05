@@ -78,6 +78,7 @@ class VisElementsStep(SetupStep):
 
     def setup(self, setup: Setup) -> None:
         tocs = self.__generate_element_pages()
+        self.__build_navigation()
         self.__generate_toc_file(tocs)
         self.__generate_builder_api()
 
@@ -103,12 +104,16 @@ class VisElementsStep(SetupStep):
                     category,
                     self.__generate_element_doc(element_type, category),
                 )
-        for k in self.navigation_by_library:
-            self.navigation += self.navigation_by_library[k]
         return tocs
 
     def __build_hook(self, element_type, category: str) -> str:
         return f"[{self.elements[element_type]['prefix']}{category}_TOC]"
+
+    def __build_navigation(self):
+        for k in self.navigation_by_library:
+            if not k == "Blocks":
+                self.navigation += self.navigation_by_library[k]
+        self.navigation += self.navigation_by_library["Blocks"]
 
     def __generate_toc_file(self, tocs: Dict[str, VEToc]):
         with open(f"{self.TOC_PATH}_template") as template_file:
@@ -122,6 +127,14 @@ class VisElementsStep(SetupStep):
                     md_template = md_template.replace(hook, str(toc))
                 md_file.write(md_template)
 
+    @staticmethod
+    def __get_navigation_section(category: str, prefix:str) -> str:
+        if category == "blocks":
+            return "Blocks"
+        if prefix == "core_":
+            return "Scenario and Data management controls"
+        return "Standard controls"
+
     def __generate_element_doc(self, element_type: str, category: str):
         """
         Generates the Markdown file for a given element type with a given category.
@@ -130,15 +143,13 @@ class VisElementsStep(SetupStep):
         in the global Visual Elements or Core Elements doc page.
         """
         element_desc = self.elements[element_type]
-
-        section = "Scenario management elements" if element_desc["prefix"] == "core_" else "Standard elements"
+        section = self.__get_navigation_section(category, element_desc["prefix"])
         folder = "corelements/" if element_desc["prefix"] == "core_" else "generic/"
         if self.navigation_by_library.get(section) is None:
             self.navigation_by_library[section] = f'- "{section}":\n'
-        else:
-            self.navigation_by_library[section] += (
-                f'    - "{element_type}": refmans/gui/viselements/{folder}{element_type}.md\n'
-            )
+        self.navigation_by_library[section] += (
+            f'    - "{element_type}": refmans/gui/viselements/{folder}{element_type}.md\n'
+        )
         template_doc_path = f"{element_desc['doc_path']}/{element_type}.md_template"
         with open(template_doc_path, "r") as template_doc_file:
             element_documentation = template_doc_file.read()
