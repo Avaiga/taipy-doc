@@ -41,4 +41,11 @@ def folium_map():
 
     
 Gui.register_content_provider(Map, expose_folium)
+
+# import taipy.gui.builder as tgb
+
+# with tgb.Page() as page:
+#     ...
+#     tgb.part(content="{folium_map()}")
+
 Gui("<|part|content={folium_map()}|height=600px|>").run()

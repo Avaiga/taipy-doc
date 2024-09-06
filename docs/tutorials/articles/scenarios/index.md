@@ -137,23 +137,45 @@ that lets you:
 - Submit them.
 - View the configuration used by the scenario.
 
-```python
-from taipy import Gui
-import taipy as tp
 
-...
+=== "Markdown"
+    ```python
+    from taipy import Gui
+    import taipy as tp
 
-if __name__ == "__main__":
-    scenario = None
+    ...
 
-    scenario_md = """
+    if __name__ == "__main__":
+        scenario = None
+
+        scenario_md = """
     <|{scenario}|scenario_selector|>
     <|{scenario}|scenario|>
     <|{scenario}|scenario_dag|>
-    """
-    tp.Orchestrator().run()
-    Gui(scenario_md).run()
-```
+        """
+        tp.Orchestrator().run()
+        Gui(scenario_md).run()
+    ```
+=== "Python"
+    ```python
+    from taipy import Gui
+    import taipy as tp
+    import taipy.gui.builder as tgb
+
+    ...
+
+    if __name__ == "__main__":
+        scenario = None
+
+        with tgb.Page() as page:
+            tgb.scenario_selector("{scenario}")
+            tgb.scenario("{scenario}")
+            tgb.scenario_dag("{scenario}")
+
+        tp.Orchestrator().run()
+        Gui(page).run()
+    ```
+
 
 # Conclusion
 

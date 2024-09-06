@@ -191,7 +191,7 @@ with tgb.Page() as scenario_page:
 
 # Main execution block with GUI setup
 if __name__ == "__main__":
-    tp.Core().run()
+    tp.Orchestrator().run()
     scenario = tp.create_scenario(dataiku_scenario_cfg)
     # Run the GUI
     tp.Gui(scenario_page).run(title="Dataiku Integration")

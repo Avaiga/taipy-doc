@@ -93,9 +93,20 @@ Gui.register_content_provider(Map, expose_folium)
 
 Finally, we can embed the Folium Map using the following the `part` component:
 
-```
-<|part|content={folium_map()}|>
-```
+
+=== "Markdown"
+    ```
+    <|part|content={folium_map()}|>
+    ```
+=== "Python"
+    ```python
+    import taipy.gui.builder as tgb
+
+    with tgb.Page() as page:
+        ...
+        tgb.part(content="{folium_map()}")
+    ```
+
 
 You can adjust the layout by changing its width and height. This element seamlessly
 integrates the Folium Map into your web app.
