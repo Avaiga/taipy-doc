@@ -25,12 +25,12 @@ dataset = get_data(path_to_csv)
 
 Taipy introduces the concept of *Visual elements*, which are graphic objects shown on the client
 interface. You can use various visual elements such as a
-[slider](../../../../manuals/userman/gui/viselements/generic/slider.md), a
-[chart](../../../../manuals/userman/gui/viselements/generic/chart.md), a
-[table](../../../../manuals/userman/gui/viselements/generic/table.md), an
-[input](../../../../manuals/userman/gui/viselements/generic/input.md), a
-[menu](../../../../manuals/userman/gui/viselements/generic/menu.md), etc. Check the complete list
-[here](../../../../manuals/userman/gui/viselements/index.md). The syntax for adding a visual element is
+[slider](../../../../refmans/gui/viselements/generic/slider.md), a
+[chart](../../../../refmans/gui/viselements/generic/chart.md), a
+[table](../../../../refmans/gui/viselements/generic/table.md), an
+[input](../../../../refmans/gui/viselements/generic/input.md), a
+[menu](../../../../refmans/gui/viselements/generic/menu.md), etc. Check the complete list
+[here](../../../../refmans/gui/viselements/index.md). The syntax for adding a visual element is
 as follows:
 
 === "Markdown"
@@ -48,7 +48,7 @@ as follows:
     changes, ensuring a responsive and performance-optimized user experience.
 
 
-For example, to add a [slider](../../../../manuals/userman/gui/viselements/generic/slider.md)
+For example, to add a [slider](../../../../refmans/gui/viselements/generic/slider.md)
 that modifies the value of the variable *n_week*, use the following syntax:
 
 === "Markdown"
@@ -117,7 +117,7 @@ ensuring that changes made by one client don't affect others.
 
 ## Callbacks
 
-Most visual element include [callbacks](../../../../manuals/userman/gui/callbacks.md),
+Most visual element include [callbacks](../../../../userman/gui/callbacks.md),
 enabling you to modify variables according to user actions. For further details, explore local
 callbacks and global callbacks.
 

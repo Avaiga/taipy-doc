@@ -18,7 +18,7 @@ are really important for big decisions.
 In this tip, we will examine Taipy scenarios more closely. We will explore what they can do
 and how they can be useful when making decisions.
 
-As a reminder, Taipy [scenarios](../../../manuals/userman/sdm/scenario/index.md) are one of the
+As a reminder, Taipy [scenarios](../../../userman/scenario_features/sdm/scenario/index.md) are one of the
 fundamental concept in Taipy.
 
 # Taipy Scenarios: An Overview
@@ -125,7 +125,7 @@ By exploring the data nodes, end users can analyse the results of their data wor
 ## Scenario management visual elements
 
 The
-[Scenario management visual elements](../../../manuals/userman/gui/viselements/index.md#scenario-and-data-management-controls)
+[Scenario management visual elements](../../../refmans/gui/viselements/index.md#scenario-and-data-management-controls)
 allow you to include visual elements in the Taipy backend. This makes it easier than ever to
 build a web application that matches your backend.
 

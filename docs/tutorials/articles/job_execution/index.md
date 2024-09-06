@@ -11,7 +11,7 @@ img: images/icon-code.svg
 
 [Download the code](./src/job_execution.zip){: .tp-btn target='blank' }
 
-Taipy has [different modes](../../../manuals/userman/configuration/job-config.md)
+Taipy has [different modes](../../../userman/advanced_features/configuration/job-config.md)
 to execute the code. Changing the execution mode can be useful for running multiple
 tasks in parallel.
 

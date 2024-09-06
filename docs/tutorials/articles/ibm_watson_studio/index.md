@@ -3,7 +3,7 @@ title: Integrating Watson Studio
 category: integration
 data-keywords: scenario task
 short-description: A guide to integrate Watson Studio with Taipy scenarios.
-order: 24
+order: 25
 img: ibm_watson_studio/images/illustration_watson.png
 ---
 

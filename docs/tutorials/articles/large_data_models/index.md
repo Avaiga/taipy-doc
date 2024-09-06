@@ -278,8 +278,8 @@ Taipy DAG — Taipy "Tasks" in orange and "Data Nodes" in blue.
 </center>
 
 In this section, we will create the Taipy configuration, which models the variables/parameters
-(represented as ["Data Nodes"](../../../manuals/userman/sdm/data-node/index.md)) and functions
-(represented as ["Tasks"](../../../manuals/userman/sdm/task/index.md)) in Taipy.
+(represented as ["Data Nodes"](../../../userman/scenario_features/sdm/data-node/index.md)) and functions
+(represented as ["Tasks"](../../../userman/scenario_features/sdm/task/index.md)) in Taipy.
 
 Notice that this configuration in the following `config.py` script is akin to defining
 variables and functions — except that we are instead defining "blueprint variables" (Data
@@ -363,7 +363,7 @@ scenario_cfg = Config.configure_scenario(
 ```
 
 You can read more about configuring Scenarios, Tasks, and Data Nodes in the
-[documentation here](../../../manuals/userman/sdm/scenario/scenario-config.md).
+[documentation here](../../../userman/scenario_features/sdm/scenario/scenario-config.md).
 
 
 # Scenario Creation and Execution
@@ -444,7 +444,7 @@ incredibly useful when dealing with large datasets.
 
 # Taipy Studio
 
-If you have VS Code, you may use [Taipy Studio](../../../manuals/studio/config/index.md)
+If you have VS Code, you may use [Taipy Studio](../../../userman/ecosystem/studio/config/index.md)
 to build the Taipy *config.toml* configuration file in place of defining the
 *config.py* script. Taipy Studio allows you to **build and visualize your pipelines with simple
 drag-and-drop interactions**.

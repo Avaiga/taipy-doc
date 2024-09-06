@@ -127,12 +127,12 @@ def on_init(state):
     state.conv.update_content(state, new_conv)
 ```
 
-We begin by defining the following [state variables](../../../manuals/userman/gui/binding.md) to be used in the application:
+We begin by defining the following [state variables](../../../userman/gui/binding.md) to be used in the application:
 
 1. *query_message*: A string bound to an input box, for the user to enter their query for the model;
 2. *messages*: A list of all messages between the user and LLM;
 3. *messages_dict*: A dictionary used to hold the chat partial content (see next step); and
-4. *conv*: A Taipy [`partial`](../../../manuals/userman/gui/pages/partial/index.md) whose content is updated as new chat
+4. *conv*: A Taipy [`partial`](../../../userman/gui/pages/partial/index.md) whose content is updated as new chat
    messages are added. Technically, this variable is defined in a later step, but you can see it being used in the
    *on_init* function.
 
@@ -144,13 +144,13 @@ following image, the panel highlighted by the green box is a partial:
 By using a partial, we can continually generate new chat bubbles by updating the partial's content, representing the
 ongoing conversation between the user and LLM.
 
-Furthermore, we also defined the [*on_init*](../../../manuals/userman/gui/callbacks.md#initialize-a-new-connection) callback
+Furthermore, we also defined the [*on_init*](../../../userman/gui/callbacks.md#initialize-a-new-connection) callback
 which Taipy implicitly calls when a new connection to the application is made. Now, when a user first connects to the
 application, a greeting is displayed to the user in the partial "chat window".
 
 # Step 4: Function to generate "*partial*" content
 
-You may notice that many [callback functions](../../../manuals/userman/gui/callbacks.md) in this application update the `conv`
+You may notice that many [callback functions](../../../userman/gui/callbacks.md) in this application update the `conv`
 partial with the statement "`state.conv.update_content(state, create_conv(state))`".
 
 In this step, we define the *create_conv* function which generates the partial content. This is done by iterating
@@ -269,7 +269,7 @@ Besides that, most of the code affects the layout and structure of the applicati
 
 Several Taipy blocks and elements in our application use the *class_name* property to assign it the given CSS class in
 the generated HTML. Many of these classes like "*sidebar*" and "*fullwidth*" are **predefined in Taipy** — either in the
-[Stylekit](../../../manuals/userman/gui/styling/stylekit.md), or in the *Styling* section of the specific element.
+[Stylekit](../../../userman/gui/styling/stylekit.md), or in the *Styling* section of the specific element.
 
 However, we also used four custom classes to provide the look-and-feel of a chat UI. These are:
 

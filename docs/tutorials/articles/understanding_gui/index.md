@@ -32,7 +32,7 @@ create your own Taipy applications.
 ## Getting Started
 
 This tutorial is for Python scripts (*.py*). If you prefer **Jupyter Notebooks**, read
-this [documentation](../../../manuals/userman/notebooks.md) and follow the tutorial
+this [documentation](../../../userman/run-deploy/notebooks.md) and follow the tutorial
 accordingly.
 
 ### Installation
@@ -55,7 +55,7 @@ pip install torch transformers scipy
 
 ## Taipy Studio
 
-[Taipy Studio](../../../manuals/studio/index.md) is a VS Code extension for
+[Taipy Studio](../../../userman/ecosystem/studio/index.md) is a VS Code extension for
 auto-completing Taipy visual elements. It makes creating applications faster and easier.
 
 ![Taipy Studio Demo](./images/taipy-studio.gif){width=90% .tp-image-border}

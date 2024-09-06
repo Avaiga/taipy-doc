@@ -3,7 +3,7 @@ title: Integration with Dataiku
 category: integration
 data-keywords: scenario task
 short-description: A guide to integrate Dataiku with Taipy.
-order: 23
+order: 24
 img: dataiku/images/dataiku.png
 ---
 

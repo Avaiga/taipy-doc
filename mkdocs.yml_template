@@ -7,11 +7,8 @@ repo_name: taipy
 #strict: true
 copyright: © 2021-[YEAR] Avaiga
 nav:
-  - "Getting Started":
-    - "Getting Started": getting_started/index.md
-
   - "Tutorials":
-    - "Tutorials": tutorials/index.md
+    - "Getting Started": tutorials/getting_started/index.md
     - "Fundamentals":
       - "Fundamentals": tutorials/fundamentals/index.md
       - "Understanding GUI":
@@ -31,8 +28,11 @@ nav:
         - "3 - Scenario configuration": tutorials/articles/complete_application/step_03/step_03.md
         - "4 - Scenario page": tutorials/articles/complete_application/step_04/step_04.md
         - "5 - Performance page": tutorials/articles/complete_application/step_05/step_05.md
-      - "Creating an LLM ChatBot": tutorials/articles/chatbot/index.md
-      - "Creating an RAG ChatBot": tutorials/articles/rag_chatbot/index.md
+      - "Creating applications" :
+        - "Creating an LLM ChatBot":
+          - "Creating an LLM ChatBot": tutorials/articles/chatbot/index.md
+        - "Creating an RAG ChatBot":
+          - "Creating an RAG ChatBot": tutorials/articles/rag_chatbot/index.md
     - "Visuals":
       - "Visuals": tutorials/visuals/index.md
       - "Callbacks": tutorials/articles/callbacks/index.md
@@ -53,10 +53,10 @@ nav:
       - "Manage application versions": tutorials/articles/version_management/index.md
     - "Integration":
         - "Integration": tutorials/integration/index.md
+        - "Integrating Databricks": tutorials/articles/databricks/index.md
         - "Integrate Third-Party Components": tutorials/articles/3rd_party_components/index.md
         - "Taipy Application on Colab with Ngrok": tutorials/articles/colab_with_ngrok/index.md
         - "Jupyter Notebooks": tutorials/articles/jupyter_notebooks/index.md
-        - "Integrating Databricks": tutorials/articles/databricks/index.md
         - "Integration with Dataiku": tutorials/articles/dataiku/index.md
         - "Integration with IBM Watson Studio": tutorials/articles/ibm_watson_studio/index.md
     - "Large Data":
@@ -65,157 +65,166 @@ nav:
       - "Large data models vs. Computer memory": tutorials/articles/large_data_models/index.md
       - "Charts for Large Data": tutorials/articles/decimator/index.md
 
-  - "Manuals":
-    - "About Taipy's Manuals": manuals/index.md
+  - "User Manual":
+    - "About Taipy's User manual": userman/index.md
 
-    - "User Manual":
-      - "About Taipy's User Manuals": manuals/userman/index.md
+    - "User interface":
+      - "User interface": userman/gui/index.md
+      - "Pages":
+        - "Pages": userman/gui/pages/index.md
+        - "Navigation": userman/gui/pages/navigate/index.md
+        - "Dynamic page content": userman/gui/pages/partial/index.md
+        - "Dialogs": userman/gui/pages/dialog/index.md
+        - "Panes": userman/gui/pages/pane/index.md
+        - "Advanced": userman/gui/pages/advanced/index.md
+      - "Visual elements": userman/gui/viselements/introduction.md
+      - "Binding variables": userman/gui/binding.md
+      - "Callbacks": userman/gui/callbacks.md
+      - "Styling":
+        - "Styling": userman/gui/styling/index.md
+        - "The Stylekit": userman/gui/styling/stylekit.md
+      - "Notifications": userman/gui/notifications.md
+      - "Extension libraries":
+        - "Extension libraries": userman/gui/extension/index.md
+        - "Static Elements": userman/gui/extension/static_element.md
+        - "Dynamic Elements":
+          - userman/gui/extension/dynamic_element/index.md
+          - "Scalar properties": userman/gui/extension/dynamic_element/scalar_props.md
 
-      - "User interface":
-        - "User interface": manuals/userman/gui/index.md
-        - "Visual elements":
-          - "Visual elements": manuals/userman/gui/viselements/index.md
-          - "Introduction": manuals/userman/gui/viselements/introduction.md
-          - "Styling":
-              - "Styling": manuals/userman/gui/styling/index.md
-              - "The Stylekit": manuals/userman/gui/styling/stylekit.md
-        - "Pages":
-          - "Pages": manuals/userman/gui/pages/index.md
-          - "Navigate between pages": manuals/userman/gui/pages/navigate/index.md
-          - "Dynamic page content": manuals/userman/gui/pages/partial/index.md
-          - "Dialogs": manuals/userman/gui/pages/dialog/index.md
-          - "Panes": manuals/userman/gui/pages/pane/index.md
-          - "Advanced": manuals/userman/gui/pages/advanced/index.md
-        - "Binding variables": manuals/userman/gui/binding.md
-        - "Callbacks": manuals/userman/gui/callbacks.md
-        - "Notifications": manuals/userman/gui/notifications.md
-        - "Extension libraries":
-          - "Extension libraries": manuals/userman/gui/extension/index.md
-          - "Static Elements": manuals/userman/gui/extension/static_element.md
-          - "Dynamic Elements":
-            - manuals/userman/gui/extension/dynamic_element/index.md
-            - "Scalar properties": manuals/userman/gui/extension/dynamic_element/scalar_props.md
-
+    - "Scenario features":
       - "Data integration":
-        - "Data integration": manuals/userman/data-integration/index.md
-        - "Data node config": manuals/userman/data-integration/data-node-config.md
-        - "Data node usage": manuals/userman/data-integration/data-node-usage.md
-        - "Visual elements": manuals/userman/data-integration/data-node-vizelmts.md
-        - "Data node history and validity": manuals/userman/data-integration/data-node-history.md
+        - "Data integration": userman/scenario_features/data-integration/index.md
+        - "Data node config": userman/scenario_features/data-integration/data-node-config.md
+        - "Data node usage": userman/scenario_features/data-integration/data-node-usage.md
+        - "Visual elements": userman/scenario_features/data-integration/data-node-vizelmts.md
+        - "Data node history and validity": userman/scenario_features/data-integration/data-node-history.md
 
       - "Task orchestration":
-        - "Scenarios for task orchestration": manuals/userman/task-orchestration/index.md
-        - "Hello world!": manuals/userman/task-orchestration/hello-world.md
-        - "Scenario config": manuals/userman/task-orchestration/scenario-config.md
-        - "Scenario creation": manuals/userman/task-orchestration/scenario-creation.md
-        - "Scenario submission": manuals/userman/task-orchestration/scenario-submission.md
-        - "Visual elements": manuals/userman/task-orchestration/vizelmts.md
+        - "Scenarios for task orchestration": userman/scenario_features/task-orchestration/index.md
+        - "Hello world!": userman/scenario_features/task-orchestration/hello-world.md
+        - "Scenario config": userman/scenario_features/task-orchestration/scenario-config.md
+        - "Scenario creation": userman/scenario_features/task-orchestration/scenario-creation.md
+        - "Scenario submission": userman/scenario_features/task-orchestration/scenario-submission.md
+        - "Visual elements": userman/scenario_features/task-orchestration/vizelmts.md
 
       - "What-if analysis":
-        - "Scenarios for what-if analysis": manuals/userman/what-if-analysis/index.md
-        - "Multiple scenarios": manuals/userman/what-if-analysis/multiple-scenarios.md
-        - "Recurrent scenarios": manuals/userman/what-if-analysis/scenarios-and-cycles.md
-        - "Scenario comparison": manuals/userman/what-if-analysis/scenario-comparison.md
+        - "Scenarios for what-if analysis": userman/scenario_features/what-if-analysis/index.md
+        - "Multiple scenarios": userman/scenario_features/what-if-analysis/multiple-scenarios.md
+        - "Recurrent scenarios": userman/scenario_features/what-if-analysis/scenarios-and-cycles.md
+        - "Scenario comparison": userman/scenario_features/what-if-analysis/scenario-comparison.md
 
       - "Scenario and data management":
-        - "Scenario and data management": manuals/userman/sdm/index.md
+        - "Scenario and data management": userman/scenario_features/sdm/index.md
         - "Data node":
-          - "Data node": manuals/userman/sdm/data-node/index.md
+          - "Data node": userman/scenario_features/sdm/data-node/index.md
         - "Task":
-          - "Task": manuals/userman/sdm/task/index.md
+          - "Task": userman/scenario_features/sdm/task/index.md
         - "Scenario":
-          - "Scenario": manuals/userman/sdm/scenario/index.md
-          - "Scenario config": manuals/userman/sdm/scenario/scenario-config.md
+          - "Scenario": userman/scenario_features/sdm/scenario/index.md
+          - "Scenario config": userman/scenario_features/sdm/scenario/scenario-config.md
         - "Submission":
-          - "Submission": manuals/userman/sdm/submission/index.md
+          - "Submission": userman/scenario_features/sdm/submission/index.md
         - "Job":
-          - "Job": manuals/userman/sdm/job/index.md
+          - "Job": userman/scenario_features/sdm/job/index.md
         - "Sequence":
-          - "Sequence": manuals/userman/sdm/sequence/index.md
+          - "Sequence": userman/scenario_features/sdm/sequence/index.md
         - "Cycle":
-          - "Cycle": manuals/userman/sdm/cycle/index.md
+          - "Cycle": userman/scenario_features/sdm/cycle/index.md
 
+      - "Track activities and Trigger actions":
+        - "Track activities and Trigger actions": userman/scenario_features/events/index.md
+        - "Event description": userman/scenario_features/events/events-description.md
+        - "Registration": userman/scenario_features/events/understanding-notifier-register.md
+        - "Examples": userman/scenario_features/events/examples.md
+
+      - "Exposing REST APIs":
+        - "Exposing REST APIs": userman/scenario_features/rest/index.md
+
+    - "Advanced features":
       - "Configuration":
-        - "Configuration": manuals/userman/configuration/index.md
-        - "Configuring the GUI application": manuals/userman/configuration/gui-config.md
-        - "Configuring the core features": manuals/userman/configuration/core-config.md
-        - "Configuring jobs execution": manuals/userman/configuration/job-config.md
-        - "Configuration checker": manuals/userman/configuration/config-checker.md
-        - "Advanced configuration": manuals/userman/configuration/advanced-config.md
-
-      - "Authentication and roles":
-        - "Authentication and authorization": manuals/userman/auth/index.md
-        - "Authentication": manuals/userman/auth/authentication.md
-        - "Authorization": manuals/userman/auth/authorization.md
-
-      - "Scheduler":
-        - "Scheduler": manuals/userman/scheduling/index.md
+        - "Configuration": userman/advanced_features/configuration/index.md
+        - "Configuring the GUI application": userman/advanced_features/configuration/gui-config.md
+        - "Configuring the Core service": userman/advanced_features/configuration/core-config.md
+        - "Configuring jobs execution": userman/advanced_features/configuration/job-config.md
+        - "Configuration checker": userman/advanced_features/configuration/config-checker.md
+        - "Advanced configuration": userman/advanced_features/configuration/advanced-config.md
 
       - "Versioning system":
-        - "Versioning system": manuals/userman/versioning/index.md
-        - "Development mode": manuals/userman/versioning/development_mode.md
-        - "Experiment mode": manuals/userman/versioning/experiment_mode.md
-        - "Production mode": manuals/userman/versioning/production_mode.md
+        - "Versioning system": userman/advanced_features/versioning/index.md
+        - "Development mode": userman/advanced_features/versioning/development_mode.md
+        - "Experiment mode": userman/advanced_features/versioning/experiment_mode.md
+        - "Production mode": userman/advanced_features/versioning/production_mode.md
 
-      - "Exposing REST APIs": manuals/userman/rest/index.md
+      - "Authentication and roles":
+        - "Authentication and authorization": userman/advanced_features/auth/index.md
+        - "Authentication": userman/advanced_features/auth/authentication.md
+        - "Authorization": userman/advanced_features/auth/authorization.md
 
-      - "Using Notebooks": manuals/userman/notebooks.md
-
-    - "Command-line interface":
-      - "Command-line interface (CLI)": manuals/cli/index.md
-      - "Help": manuals/cli/help.md
-      - "Create": manuals/cli/create.md
-      - "Run": manuals/cli/run.md
-      - "Manage versions": manuals/cli/manage-versions.md
-      - "Version": manuals/cli/version.md
+      - "Scheduler":
+        - "Scheduler": userman/advanced_features/scheduling/index.md
 
     - "Running & deploying":
-      - "Running and deploying Taipy applications": manuals/run-deploy/index.md
+      - "Running and deploying Taipy applications": userman/run-deploy/index.md
+
       - "Running":
-        - "Running a Taipy application": manuals/run-deploy/run/index.md
-        - "The run() function": manuals/run-deploy/run/running_services.md
-        - "Using an external web server": manuals/run-deploy/run/external_web_server.md
-        - "Protect private files": manuals/run-deploy/run/protect_files.md
+        - "Running a Taipy application": userman/run-deploy/run/index.md
+        - "The run() function": userman/run-deploy/run/running_services.md
+        - "Using an external web server": userman/run-deploy/run/external_web_server.md
+        - "Protect private files": userman/run-deploy/run/protect_files.md
+        - "Running in a Notebook": userman/run-deploy/notebooks.md
+
       - "Deployment":
-        - "Deploying a Taipy application": manuals/run-deploy/deploy/index.md
+        - "Deploying a Taipy application": userman/run-deploy/deploy/index.md
         - "On a local machine":
-          - "Deploying locally": manuals/run-deploy/deploy/local/index.md
+          - "Deploying locally": userman/run-deploy/deploy/local/index.md
         - "On Linux servers":
-          - "Deploying on a Linux system": manuals/run-deploy/deploy/linux/index.md
-          - "Ubuntu": manuals/run-deploy/deploy/linux/ubuntu.md
-          - "RHEL": manuals/run-deploy/deploy/linux/redhat.md
+          - "Deploying on a Linux system": userman/run-deploy/deploy/linux/index.md
+          - "Ubuntu": userman/run-deploy/deploy/linux/ubuntu.md
+          - "RHEL": userman/run-deploy/deploy/linux/redhat.md
         - "Using Docker":
-          - "Deploying using Docker": manuals/run-deploy/deploy/docker/index.md
-          - "For development": manuals/run-deploy/deploy/docker/development.md
-          - "For production": manuals/run-deploy/deploy/docker/production.md
+          - "Deploying using Docker": userman/run-deploy/deploy/docker/index.md
+          - "For development": userman/run-deploy/deploy/docker/development.md
+          - "For production": userman/run-deploy/deploy/docker/production.md
         - "On Azure":
-          - "Deploying on Azure": manuals/run-deploy/deploy/azure/index.md
+          - "Deploying on Azure": userman/run-deploy/deploy/azure/index.md
         - "On Heroku":
-          - "Deploying on Heroku": manuals/run-deploy/deploy/heroku/index.md
+          - "Deploying on Heroku": userman/run-deploy/deploy/heroku/index.md
         - "On Databricks":
-          - "Deploying on Databricks": manuals/run-deploy/deploy/databricks/index.md
+          - "Deploying on Databricks": userman/run-deploy/deploy/databricks/index.md
 
-    - "Taipy Studio":
-      - "Taipy Studio": manuals/studio/index.md
-      - "Building configurations":
-        - "Building configurations": manuals/studio/config/index.md
-        - "Managing configuration files": manuals/studio/config/files.md
-        - "Configuring elements": manuals/studio/config/elements.md
-        - "Graph views": manuals/studio/config/graphview.md
-        - "Text edition": manuals/studio/config/textedition.md
-      - "GUI Markdown support": manuals/studio/gui.md
+    - "Ecosystem":
+      - "Command-line interface":
+        - "Command-line interface (CLI)": userman/ecosystem/cli/index.md
+        - "Help": userman/ecosystem/cli/help.md
+        - "Create": userman/ecosystem/cli/create.md
+        - "Run": userman/ecosystem/cli/run.md
+        - "Manage versions": userman/ecosystem/cli/manage-versions.md
+        - "Version": userman/ecosystem/cli/version.md
 
-    - "Reference":
-      - "About Taipy's Reference Manuals": manuals/refmans/index.md
-      - "Python API":
-        - "Python APIs": manuals/refmans/reference/index.md
-        [REFERENCE_CONTENT]
-      - "REST API":
-        - "REST APIs": manuals/refmans/reference_rest/index.md
-        [REST_REFERENCE_CONTENT]
-      - "GUI Extension API":
-        - manuals/refmans/reference_guiext/index.md
-        - "taipy-gui module": manuals/refmans/reference_guiext/modules.md
+      - "Taipy Studio":
+        - "Taipy Studio": userman/ecosystem/studio/index.md
+        - "Building configurations":
+          - "Building configurations": userman/ecosystem/studio/config/index.md
+          - "Managing configuration files": userman/ecosystem/studio/config/files.md
+          - "Configuring elements": userman/ecosystem/studio/config/elements.md
+          - "Graph views": userman/ecosystem/studio/config/graphview.md
+          - "Text edition": userman/ecosystem/studio/config/textedition.md
+        - "GUI Markdown support": userman/ecosystem/studio/gui.md
+
+  - "Reference":
+    - "About Taipy's Reference manual": refmans/index.md
+    - "Visual Elements":
+      - "Visual Elements": refmans/gui/viselements/index.md
+      [VISELEMENTS_CONTENT]
+    - "Python API":
+      - "Python APIs": refmans/reference/index.md
+      [REFERENCE_CONTENT]
+    - "REST API":
+      - "REST APIs": refmans/reference_rest/index.md
+      [REST_REFERENCE_CONTENT]
+    - "GUI Extension API":
+      - refmans/reference_guiext/index.md
+      - "taipy-gui module": refmans/reference_guiext/globals.md
 
   - "Gallery":
     - "Gallery": gallery/index.md
@@ -253,13 +262,6 @@ nav:
       - "Real-time Face Recognition": gallery/articles/face_recognition/index.md
       - "Movie Genre Selector": gallery/articles/movie_genre_selector/index.md
 
-  - "Release Notes":
-    - "Release Notes": release-notes/index.md
-
-  - "Contributing":
-    - "Contributing to Taipy": contributing/index.md
-    - "Contributors": contributing/contributors.md
-    - "Code of conduct": contributing/code_of_conduct.md
 
 theme:
   name: material
@@ -287,6 +289,9 @@ theme:
         icon: material/toggle-switch
         name: Switch to light mode
   features:
+    - navigation.sections
+    - navigation.tabs.sticky
+    - navigation.tabs
     - navigation.instant
     - navigation.path
     - navigation.indexes

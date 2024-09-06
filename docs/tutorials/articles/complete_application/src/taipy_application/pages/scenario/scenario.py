@@ -2,7 +2,7 @@
 The second page of the application.
 Page content is imported from the page_2.md file.
 
-Please refer to ../../manuals/userman/gui/pages for more details.
+Please refer to ../../userman/gui/pages for more details.
 """
 
 from taipy.gui import Markdown, notify
@@ -15,17 +15,20 @@ data_node = None
 day = dt.datetime(2021, 7, 26)
 n_predictions = 40
 max_capacity = 200
-predictions_dataset = {"Date":[dt.datetime(2021, 7, 26)],
-                       "Predicted values ML":[0],
-                       "Predicted values Baseline":[0],
-                       "Historical values":[0]}
+predictions_dataset = {
+    "Date": [dt.datetime(2021, 7, 26)],
+    "Predicted values ML": [0],
+    "Predicted values Baseline": [0],
+    "Historical values": [0],
+}
+
 
 def submission_change(state, submittable, details: dict):
-    if details['submission_status'] == 'COMPLETED':
-        notify(state, "success", 'Scenario completed!')
-        state['scenario'].on_change(state, 'scenario', state.scenario)
+    if details["submission_status"] == "COMPLETED":
+        notify(state, "success", "Scenario completed!")
+        state["scenario"].on_change(state, "scenario", state.scenario)
     else:
-        notify(state, "error", 'Something went wrong!')
+        notify(state, "error", "Something went wrong!")
 
 
 def save(state):

@@ -12,7 +12,7 @@ This documentation page lists the migration paths of Taipy releases as they were
     used to use *action*.
 
 2. In Taipy 3.0 we deprecated the `pipeline` concept in favor of
-    [sequence](../manuals/userman/sdm/sequence/index.md). This also means that `configure_pipeline`
+    [sequence](../userman/scenario_features/sdm/sequence/index.md). This also means that `configure_pipeline`
     from Taipy Config was removed, making it necessary to update your config code. Take for
     instance the following config on `Taipy 2.4`:
 
@@ -47,7 +47,7 @@ This documentation page lists the migration paths of Taipy releases as they were
     ```
 
     After migrating the code, we recommend that you take advantage of `Taipy CLI`
-    [migration tool](../manuals/cli/migrate-entities.md).
+    [migration tool](../userman/ecosystem/cli/migrate-entities.md).
 
 
 # From 2.0 to 2.1
@@ -57,12 +57,12 @@ created with a Taipy version &#8804 2.0, the first time it runs with version 2.1
 no version exists, and so legacy entities are not attached to any version. The overall principle
 is to create a version the first time the application runs with Taipy 2.1 or later and to assign
 all the old entities to this version. Depending on the mode used to run the application,
-(Refer to [versioning documentation](../manuals/userman/versioning/index.md) for details) we propose
+(Refer to [versioning documentation](../userman/advanced_features/versioning/index.md) for details) we propose
 the following migration paths:
 
 ## Using default or development mode
 
-Please refer to the [Development mode](../manuals/userman/versioning/development_mode.md)
+Please refer to the [Development mode](../userman/advanced_features/versioning/development_mode.md)
 documentation page for more details on how to run Taipy in development mode.
 
 The first time you run the application with Taipy 2.1 or later, if you use the _development_
@@ -70,16 +70,16 @@ mode which is the default mode, Taipy automatically creates an _experiment_ vers
 current configuration and assigns all legacy entities to it. The version is named
 "LEGACY-VERSION". Depending on how you want to handle legacy entities, you can now manage your
 newly created version using the version management system. Please refer to the
-[Version management system](../manuals/userman/versioning/index.md) documentation page for more details.
+[Version management system](../userman/advanced_features/versioning/index.md) documentation page for more details.
 
 ## Using experiment or production mode
 
-Please refer to the [Experiment mode](../manuals/userman/versioning/experiment_mode.md) or
-[Production mode](../manuals/userman/versioning/experiment_mode.md) documentation pages for more
+Please refer to the [Experiment mode](../userman/advanced_features/versioning/experiment_mode.md) or
+[Production mode](../userman/advanced_features/versioning/experiment_mode.md) documentation pages for more
 details on how to run Taipy in experiment or production mode.
 
 The first time you run the application with Taipy 2.1 or later, if you use _experiment_ or
 _production_ mode, you can simply provide a version name to create a new version. All legacy
 entities are automatically attached to this version. You can now manage your newly created
 version using the version management system. Please refer to the
-[Version management system](../manuals/userman/versioning/index.md) documentation page for more details.
+[Version management system](../userman/advanced_features/versioning/index.md) documentation page for more details.

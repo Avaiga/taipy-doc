@@ -10,7 +10,7 @@ img: images/icon-code.svg
 *Estimated Time for Completion: 15 minutes; Difficulty Level: Advanced*
 
 To perform an action after a job status change, you can
-[subscribe a function](../../../manuals/userman/task-orchestration/scenario-submission.md#subscribe-to-job-execution)
+[subscribe a function](../../../userman/scenario_features/task-orchestration/scenario-submission.md#subscribe-to-job-execution)
 to a scenario. When there is a status change, this function is triggered. This feature enables the
 creation of logs or specific events for the Taipy GUI.
 

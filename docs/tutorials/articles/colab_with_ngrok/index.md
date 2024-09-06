@@ -3,7 +3,7 @@ title: Use Taipy in Colab with Ngrok
 category: integration
 data-keywords: gui notebook deployment
 short-description: Share your Taipy application created with Google Colab on the Internet using Ngrok.
-order: 21
+order: 22
 img: colab_with_ngrok/images/Sharing_Taipy_Ngrok_1.png
 ---
 For people who want to create strong graphical interfaces without needing to be an expert in GUI
