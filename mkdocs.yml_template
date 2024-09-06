@@ -8,9 +8,9 @@ repo_name: taipy
 copyright: © 2021-[YEAR] Avaiga
 nav:
   - "Tutorials":
-    - "Getting Started": tutorials/getting_started/index.md
     - "Fundamentals":
       - "Fundamentals": tutorials/fundamentals/index.md
+      - "Getting Started": tutorials/getting_started/index.md
       - "Understanding GUI":
         - "Understanding GUI": tutorials/articles/understanding_gui/index.md
         - "1 - First Web page": tutorials/articles/understanding_gui/step_01/step_01.md
