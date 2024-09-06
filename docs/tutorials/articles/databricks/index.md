@@ -9,9 +9,16 @@ hide:
     - toc
 ---
 
-Integrating a Taipy application with Databricks allows you to quickly build a
-web application on top of your Databricks notebooks. You can easily put your
-algorithms and models into end-users hands.
+<div style="display: flex; align-items: center;">
+  <div style="flex: 1;">
+    <p>Integrating a Taipy application with Databricks allows you to quickly build a
+    web application on top of your Databricks notebooks. You can easily put your
+    algorithms and models into end-users hands.</p>
+  </div>
+  <div style="flex: 0 0 10%; ">
+    <img src="images/databricks_validated.png" alt="Databricks Validated Partner Token" style="width: 100%; align-self: center; margin: 0px 20px;">
+  </div>
+</div>
 
 !!! note "Available in Taipy Enterprise edition"
 
