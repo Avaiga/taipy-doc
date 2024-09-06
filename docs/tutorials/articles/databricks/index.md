@@ -13,6 +13,8 @@ Integrating a Taipy application with Databricks allows you to quickly build a
 web application on top of your Databricks notebooks. You can easily put your
 algorithms and models into end-users hands.
 
+![Databricks Validated Partner Token](images/databricks_validated.png){width=20% : .tp-image}
+
 !!! note "Available in Taipy Enterprise edition"
 
     This documentation uses components that are only available in Taipy Enterprise.
