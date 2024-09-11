@@ -9,7 +9,7 @@ This approach significantly enhances the user experience by providing real-time 
 ensuring users are always informed through an interactive and engaging interface.
 
 This script defines a custom event consumer class `SpecificCoreConsumer`, which listens
-for all events published by Taipy Core and triggers GUI notification based on those events.
+for all events published by Taipy and triggers GUI notification based on those events.
 It includes determining if the event is published from a `Scenario^` entity or `DataNode^` entity
 and if the action is `CREATION` or `UPDATE`.
 
