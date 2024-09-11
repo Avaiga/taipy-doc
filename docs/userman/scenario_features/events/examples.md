@@ -34,7 +34,7 @@ approach ensures that critical job status changes are promptly communicated to e
 enhancing the application's monitoring and integration with third-party systems.
 
 This script defines a custom event consumer class `JobFailureCoreConsumer`, which listens
-for all events published by Taipy Core, when a `JOB` entity's `status` attribute is `UPDATE`,
+for all events published by Taipy, when a `JOB` entity's `status` attribute is `UPDATE`,
 and triggers an external API call based on the `JOB`'s `id`.
 
 !!! example
