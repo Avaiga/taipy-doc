@@ -25,7 +25,8 @@ The list of all pages registered in the Gui instance is used to build the navbar
 ## Defining a custom navbar
 
 The [*lov*](#p-lov) property is used to define the list of elements that are displayed.<br/>
+Page names must be prefixed by '/'.<br/>
 If a lov element id starts with "http", the page is opened in another tab.
 
 !!! taipy-element
-    lov={[("page1", "Page 1"), ("http://www.google.com", "Google")]}
+    lov={[("/page1", "Page 1"), ("http://www.google.com", "Google")]}

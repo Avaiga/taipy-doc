@@ -70,6 +70,10 @@ This is the list of changes to Taipy releases as they were published.
   information.<br/>
   See [issue #1597](https://github.com/Avaiga/taipy/issues/1597) for a description of this
   functionality.
+- The [`pane`](../refmans/gui/viselements/generic/pane.md) block has a new property called
+  [*show_button*](../refmans/gui/viselements/generic/pane.md#p-show_button). If set to True,
+  a persistent *open* button renders on the page when the pane is closed so you don't need an
+  external control to let users open the pane.
 - In the [`chart`](../refmans/gui/viselements/generic/chart.md) control, the Modebar (that
   appears when the cart is hovered on) no longer has the Plotly logo button by default.
   You can bring it back by setting the chart's
@@ -85,19 +89,20 @@ This is the list of changes to Taipy releases as they were published.
 - When using the Taipy command-line interface, if an unsupported argument is provided, the CLI
   will display a message indicating the invalid argument. If the invalid argument is possibly a
   typo, the CLI will suggest the closest valid argument.
-- The `Scenario.export()` and `taipy.export_scenario()` have been transfered from the Community
+- The `Scenario.export()` and `taipy.export_scenario()` functions have been transferred from the
+  Community edition to the Enterprise edition as it is more suitable for enterprise applications.
+- The production mode of the version management system has been transferred from the Community
   edition to the Enterprise edition as it is more suitable for enterprise applications.
-- The production mode of the version management system has been transfered from the Community edition
-  to the Enterprise edition as it is more suitable for enterprise applications.
-- Removed support for SQL repository. Taipy community edition now only supports the `filesystem`
-  repository type.
+- Support for for the SQL repository was removed. Taipy Community edition now only supports the
+  `filesystem` repository type.
 - Two scenarios belonging to the same cycle can now have the same tag.<br/>
   See [issue #1292](https://github.com/Avaiga/taipy/issues/1292).
 - The `Config.check()^` method now raises `ERROR` issues if any data node, task, or sequence of
-  a `ScenarioConfig^` has the same configuration id with another one in the same `ScenarioConfig^`,
+  a `ScenarioConfig^` has the same configuration id as another one in the same `ScenarioConfig^`,
   or any additional property of any configuration has the same name as one of the attributes
   of the configuration class.<br/>
-  For more information, please refer to [Configuration checker](../userman/advanced_features/configuration/config-checker.md).
+  For more information, please refer to
+  [Configuration checker](../userman/advanced_features/configuration/config-checker.md).
 
 <h4><strong><code>taipy-templates</code></strong> 4.0.0 </h4>
 
@@ -107,6 +112,10 @@ This is the list of changes to Taipy releases as they were published.
 ## Significant bug fixes
 
 <h4><strong><code>taipy-gui</code></strong> 4.0.0</h4>
+
+- The value of multiline [`input`](../refmans/gui/viselements/generic/pane.md) controls is
+  cleared when the ENTER key is pressed.<br/>
+  See [issue #1762](https://github.com/Avaiga/taipy/issues/1292).
 
 <h4><strong><code>taipy-core</code></strong> 4.0.0</h4>
 
@@ -122,16 +131,16 @@ additional features.
 
 ## New Features
 
-- The `taipy.export_scenario()^` method now supports exporting file-based data nodes' data to the
+- The `taipy.export_scenario()^` function now supports exporting file-based data nodes' data to the
   export folder if the path exists.
-- The `taipy.export_scenario()^` method now exports a zip archive instead of a
+- The `taipy.export_scenario()^` function now exports a zip archive instead of a
   folder. For more information, please refer to
   [Export a scenario](../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
-- The `taipy.export_scenario()^` method now raises the `ExportPathAlreadyExists^`
+- The `taipy.export_scenario()^` function now raises the `ExportPathAlreadyExists^`
   exception if the export path already exists. You can explicitly set the *overwrite* parameter to
   True to overwrite the existing export path. For more information, please refer to
   [Export a scenario](../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
-- The new `taipy.import_scenario()^` method can be used to import a scenario from an exported
+- The new `taipy.import_scenario()^` function can be used to import a scenario from an exported
   archive. For more information, please refer to
   [Import a scenario](../userman/scenario_features/sdm/scenario/index.md#import-a-scenario).
 - The default application template now supports authentication and authorization features.

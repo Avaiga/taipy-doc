@@ -1,3 +1,5 @@
+# Contributing to Taipy
+
 Thanks for your interest in helping improve Taipy! Contributions are welcome, and they are
 greatly appreciated! Every little help and credit will always be given.
 

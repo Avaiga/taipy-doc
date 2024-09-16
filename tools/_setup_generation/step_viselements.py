@@ -210,6 +210,9 @@ class VisElementsStep(SetupStep):
                 full_name += f'<u><bold>{name}</bold></u></code><sup><a href="#dv">{STAR}</a></sup>'
             else:
                 full_name += f"{name}</code>"
+            # Hack to replace the element name placeholder by the actual element name
+            if name == "class_name":
+                doc = doc.replace("[element_type]", element_type)
             properties_table += (
                 "<tr>\n"
                 + f"<td nowrap>{full_name}</td>\n"
