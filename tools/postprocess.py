@@ -229,9 +229,9 @@ def on_post_build(env):
                                 )
                                 new_title = "Taipy p" + new_title[1:]
                         before = (
-                            before[: t_match.start()]
+                            before[: match.start()]
                             + new_title
-                            + before[t_match.end() :]
+                            + before[match.end() :]
                         )
                         html_content = (
                             before
