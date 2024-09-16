@@ -100,7 +100,7 @@ class RestRefManStep(SetupStep):
                 if dest_path in enterprise_paths:
                     file.write(Setup.ENTERPRISE_BANNER)
                 file.write(f"{dest_path_desc}\n\n")
-                self.navigation += f"- \"Paths for {dest_path}\": {REST_REF_DIR_PATH}/apis_{dest_path}.md\n"
+                self.navigation += f'- "Paths for {dest_path}": refmans/reference_rest/apis_{dest_path}.md\n'
                 path_files[dest_path] = file
 
             file.write(f"# `{path}`\n\n")
@@ -122,10 +122,16 @@ class RestRefManStep(SetupStep):
                     file.write("\n")
                 request_body = method_desc.get("requestBody")
                 if request_body is not None:
-                    file.write(f'<div><h4 style="display: inline-block;">Request body:</h4>\n')
-                    schema = request_body["content"]["application/json"]["schema"]["$ref"]
+                    file.write(
+                        f'<div><h4 style="display: inline-block;">Request body:</h4>\n'
+                    )
+                    schema = request_body["content"]["application/json"]["schema"][
+                        "$ref"
+                    ]
                     schema = schema[schema.rfind("/") + 1 :]
-                    file.write(f'<span><a href="schemas.md#{schema.lower()}">{schema}</a></div>\n\n')
+                    file.write(
+                        f'<span><a href="schemas.md#{schema.lower()}">{schema}</a></div>\n\n'
+                    )
                 responses = method_desc.get("responses")
                 if responses is not None:
                     file.write(f"<h4>Responses</h4>\n\n")
@@ -147,11 +153,17 @@ class RestRefManStep(SetupStep):
                                 file.write("    |Name|Type|\n")
                                 file.write("    |---|---|\n")
                                 for property, property_desc in properties.items():
-                                    file.write(f"    |{property}|{get_property_type(property_desc, False)}|\n")
+                                    file.write(
+                                        f"    |{property}|{get_property_type(property_desc, False)}|\n"
+                                    )
                             else:
-                                print(f"No properties in content in response {response} in method {method} of {path}")
+                                print(
+                                    f"No properties in content in response {response} in method {method} of {path}"
+                                )
                         elif response != "404":
-                            print(f"No content in response {response} in method {method} of {path}")
+                            print(
+                                f"No content in response {response} in method {method} of {path}"
+                            )
                         file.write("\n")
 
         for f in path_files.values():
@@ -165,12 +177,14 @@ class RestRefManStep(SetupStep):
                     file.write("|Name|Type|Description|\n")
                     file.write("|---|---|---|\n")
                     for property, property_desc in properties.items():
-                        file.write(f"|{property}|{get_property_type(property_desc, True)}|-|\n")
+                        file.write(
+                            f"|{property}|{get_property_type(property_desc, True)}|-|\n"
+                        )
                     file.write("\n")
-        self.navigation += "- \"Schemas\": " + REST_REF_DIR_PATH + "/schemas.md\n"
-
+        self.navigation += '- "Schemas": ' + "refmans/reference_rest/schemas.md\n"
 
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(
-            r"^\s*\[REST_REFERENCE_CONTENT\]\s*\n", self.navigation if self.navigation else ""
+            r"^\s*\[REST_REFERENCE_CONTENT\]\s*\n",
+            self.navigation if self.navigation else "",
         )

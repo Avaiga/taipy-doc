@@ -20,10 +20,11 @@ To expose the Taipy REST APIs, the Taipy REST server must first be started.
     advanced user, you may want to configure your Taipy REST server. Indeed, Taipy REST server
     relies on [Flask](https://flask.palletsprojects.com/en/2.2.x/#). The three following Flask
     parameters are exposed by Taipy:
-        - `testing` is a boolean parameter used to run the Flask application on testing mode.
-            Default value is False.
-        - `env` is an optional string parameter used as the application environment.
-        - `secret_key` is an optional parameter used as the application server secret key.<br>
+
+    - `testing` is a boolean parameter used to run the Flask application on testing mode.
+        Default value is False.
+    - `env` is an optional string parameter used as the application environment.
+    - `secret_key` is an optional parameter used as the application server secret key.<br>
     <br>
     These parameters can be set using the `GlobalAppConfig^` properties. Here is an example:
     ``` python
