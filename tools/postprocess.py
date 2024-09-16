@@ -108,42 +108,50 @@ def remove_dummy_h3(content: str, ids: Dict[str, str]) -> str:
     return content
 
 
-def create_navigation_button(
-    site_url: str, buton_label: str, relative_url: str, css_color_class: str
-) -> str:
-    html_for_buton = f"""
-            <a class="tp-content-card tp-content-card--extra-small {css_color_class}" href="{site_url}{relative_url}">
-            <header class="tp-content-card-header">
-                <h4>{buton_label}</h4>
-            </header>
-            </a>
-"""
-    return html_for_buton
-
-
 def create_navigation_buttons(site_url: str) -> str:
-    html_for_buttons = """
+    def create_button(
+        site_url: str, label: str, relative_url: str, class_name: str, group: str = ""
+    ) -> str:
+        gclass = " .tp-nav-button-group_element" if group else ""
+        html = f"""
+                <a class="tp-content-card tp-content-card--extra-small {class_name}{gclass}" href="{site_url}{relative_url}">
+                <header class="tp-content-card-header">
+                    <h4>{label}</h4>
+                </header>
+                </a>
+    """
+        if group == "start-group":
+            return "<div class=\"tp-nav-button-group\">" + html
+        elif group == "end-group":
+                return html + "</div>"
+        else:
+            return html
+
+    buttons_html = """
         <div style="margin-bottom: 1rem;">
 """
-    html_for_buttons += create_navigation_button(
-        site_url, "Tutorials", "tutorials/getting_started/", "tp-content-card--primary"
-    )
-    html_for_buttons += create_navigation_button(
-        site_url, "User Manual", "userman/", "tp-content-card--accent"
-    )
-    html_for_buttons += create_navigation_button(
-        site_url,
-        "Reference & Visual Elements",
-        "refmans/gui/viselements/",
-        "tp-content-card--beta",
-    )
-    html_for_buttons += create_navigation_button(
-        site_url, "Gallery", "gallery/", "tp-content-card--alpha"
-    )
-    html_for_buttons += """
+    for desc in [
+        ("Tutorials", "tutorials/getting_started/", "tp-content-card--primary"),
+        ("User Manual", "userman/", "tp-content-card--accent"),
+        (
+            "Visual Elements",
+            "refmans/gui/viselements/",
+            "tp-content-card--beta",
+            "start-group"
+        ),
+        (
+            "Reference",
+            "refmans/",
+            "tp-content-card--beta",
+            "end-group"
+        ),
+        ("Gallery", "gallery/", "tp-content-card--alpha"),
+    ]:
+        buttons_html += create_button(site_url, *desc)
+    buttons_html += """
         </div>
 """
-    return html_for_buttons
+    return buttons_html
 
 
 def on_post_build(env):
@@ -174,6 +182,7 @@ def on_post_build(env):
             multi_xrefs[xref] = sorted(descs, key=lambda p: len(p[0]))
     ref_files_path = os.path.join(site_dir, "refmans", "reference")
     fixed_cross_refs = {}
+    navigation_buttons = create_navigation_buttons(site_url)
     for root, _, file_list in os.walk(site_dir):
         for f in file_list:
             # Remove the *_template files
@@ -193,7 +202,7 @@ def on_post_build(env):
                     html_content = html_content.replace(
                         '<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">',
                         '<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">'
-                        + create_navigation_buttons(site_url),
+                        + navigation_buttons,
                     )
 
                     # Rebuild coherent links from TOC to sub-pages
@@ -540,44 +549,53 @@ def on_post_build(env):
                                 + f"<title>{title_match.group(1)} - Taipy</title>"
                                 + html_content[title_match.end() :]
                             )
+
+                    if False:
+                        # All this code was meant to inject breadcrumbs in the visual elements pages hierarchy to
+                        # simplify navigation.
+                        # With the reordering of the doc that happened just before this change, this seems not to
+                        # be useful any longer.
+                        # Keeping it anyway if we have a change of heart in the short term.
+
                         if category_match := re.search(
                             r"<!--\s+Category:\s+(\w+)\s+-->", html_content
                         ):
                             element_category = category_match[1]
                         elif re.match(r"^charts(/|\\).*$", fn_match[3]):
                             element_category = "chart"
-                    if element_category:
-                        # Insert breadcrumbs
-                        ARTICLE_RE = re.compile(
-                            r"(<div\s+class=\"md-content\".*?>)(\s*<article)"
-                        )
-                        if article_match := ARTICLE_RE.search(html_content):
-                            repl = '\n<ul class="tp-bc">'
-                            if package == "corelements":
-                                repl += (
-                                    '<li><a href="../../../viselements"><b>Visual Elements</b></a></li>'
-                                    '<li><a href="../../../../../refmans/gui/viselements/#scenario-and-data-management-controls">'
-                                    "<b>Scenario management controls</b></a></li>"
-                                )
-                            else:
-                                chart_part = (
-                                    "../" if element_category == "chart" else ""
-                                )
-                                repl += f'<li><a href="{chart_part}../.."><b>Visual Elements</b></a></li>'
-                                if element_category == "blocks":
-                                    repl += f'<li><a href="{chart_part}../..#block-elements"><b>Blocks</b></a></li>'
-                                else:
-                                    repl += f'<li><a href="{chart_part}../..#standard-controls"><b>Standard controls</b></a></li>'
-                                    if chart_part:
-                                        repl += f'<li><a href="{chart_part}../../generic/chart"><b>Charts</b></a></li>'
-                            repl += "</ul>"
-                            html_content = (
-                                html_content[: article_match.start()]
-                                + article_match.group(1)
-                                + repl
-                                + article_match.group(2)
-                                + html_content[article_match.end() :]
+
+                        if element_category:
+                            # Insert breadcrumbs
+                            ARTICLE_RE = re.compile(
+                                r"(<div\s+class=\"md-content\".*?>)(\s*<article)"
                             )
+                            if article_match := ARTICLE_RE.search(html_content):
+                                repl = '\n<ul class="tp-bc">'
+                                if package == "corelements":
+                                    repl += (
+                                        '<li><a href="../../../viselements"><b>Visual Elements</b></a></li>'
+                                        '<li><a href="../../../../../refmans/gui/viselements/#scenario-and-data-management-controls">'
+                                        "<b>Scenario management controls</b></a></li>"
+                                    )
+                                else:
+                                    chart_part = (
+                                        "../" if element_category == "chart" else ""
+                                    )
+                                    repl += f'<li><a href="{chart_part}../.."><b>Visual Elements</b></a></li>'
+                                    if element_category == "blocks":
+                                        repl += f'<li><a href="{chart_part}../..#block-elements"><b>Blocks</b></a></li>'
+                                    else:
+                                        repl += f'<li><a href="{chart_part}../..#standard-controls"><b>Standard controls</b></a></li>'
+                                        if chart_part:
+                                            repl += f'<li><a href="{chart_part}../../generic/chart"><b>Charts</b></a></li>'
+                                repl += "</ul>"
+                                html_content = (
+                                    html_content[: article_match.start()]
+                                    + article_match.group(1)
+                                    + repl
+                                    + article_match.group(2)
+                                    + html_content[article_match.end() :]
+                                )
                     # Processing for the page builder API:
                     fn_match = re.search(
                         r"(/|\\)reference\1taipy\.gui\.builder.(.*?)\1index.html",

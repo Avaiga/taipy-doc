@@ -1,90 +1,86 @@
 A side pane.
 
-Pane allows showing some content on top of the current page.
-The pane is closed when the user clicks outside the area of the pane (triggering a *on_close*
-action).
+The `pane` block allows you to display text and controls on top of the current page or in an area
+that slides next to it.
 
-Pane is a block control.
+# Details
 
-# Styling
+The `pane` block can hold any number of visual elements or be defined as a registered page or
+partial.<br/>
+The [*open*](#p-open) property indicates whether the pane is visible or hidden.
 
-All the pane blocks are generated with the "taipy-pane" CSS class. You can use this class
-name to select the pane blocks on your page and apply style.
+When made visible, the pane window appears on top of the source page:
+<div style="display: flex">
+  <figure>
+    <img src="../pane-intro1-d.png" class="visible-dark" />
+    <img src="../pane-intro1-l.png" class="visible-light" />
+    <figcaption>Pane is closed</figcaption>
+    </figure>
+  <figure>
+    <img src="../pane-intro2-d.png" class="visible-dark" />
+    <img src="../pane-intro2-l.png" class="visible-light" />
+    <figcaption>Pane is opened</figcaption>
+    </figure>
+  </div>
+
+The pane is typically closed when the user clicks outside the area of the pane (triggering the
+*on_close* callback).
+
+Note that if the page is defined so that the pane is initially hidden, your code must provide a way
+to set the [*open*](#p-open) property to True to show it.<br/>
+You can set the [*show_button*](#p-show_button) property to True to get a button the user can click
+to open the pane:
+<figure>
+  <img src="../pane-intro1-button-d.png" class="visible-dark" />
+  <img src="../pane-intro1-button-l.png" class="visible-light" />
+  <figcaption>Closed pane with <i>open</i> button</figcaption>
+  </figure>
+
+The pane can also be shown beside the page setting the [*persistent*](#p-persistent) property, as
+detailed in the examples below:
+<div style="display: flex">
+  <figure>
+    <img src="../pane-intro1-d.png" class="visible-dark" />
+    <img src="../pane-intro1-l.png" class="visible-light" />
+    <figcaption>Pane is closed</figcaption>
+    </figure>
+  <figure>
+    <img src="../pane-intro3-d.png" class="visible-dark" />
+    <img src="../pane-intro3-l.png" class="visible-light" />
+    <figcaption>Pane is opened next to the page</figcaption>
+    </figure>
+  </div>
 
 # Usage
 
-## Showing or hiding a pane
+## Showing or hiding a pane {data-source="gui:doc/examples/controls/pane-simple.py"}
 
-The default property, [*open*](#p-open), indicates whether the pane is visible or not:
-!!! taipy-element
-    default={show}
+Here is a simple application that shows a page with a button that a user can click to open the
+pane.
 
-## Choosing where the pane appears
-
-The [*anchor*](#p-anchor) property defines on which side of the display the pane is shown.
-
-!!! taipy-element
-    default={show}
-    anchor=left
-
-## Showing the pane beside the page content
-
-The pane is shown beside the page content instead of over it if the [*persistent*](#p-persistent)
-property evaluates to True.
-
-The parent element must have the *flex* display mode in CSS. To achieve this using
-the Markdown syntax, you can leverage the
-[*d-flex* class](../../../../userman/gui/styling/stylekit.md#c-d-flex) provided in the
-[Stylekit](../../../../userman/gui/styling/stylekit.md).
-
-Here is a full example of how to do this:
+The default property, [*open*](#p-open), indicates whether the pane is visible or not.<br/>
+We will keep the state of the pane in a variable called *show_pane*:
 ```python
-from taipy.gui import Gui
-
-show_pane=True
-
-page="""
-<|d-flex|
-<|{show_pane}|pane|persistent|width=100px|
-Pane content
-|>
-This button can be pressed to open the persistent pane:
-<|Open|button|on_action={lambda s: s.assign("show_pane", True)}|>
-|>
-"""
-
-Gui(page=page).run()
+show_pane = False
 ```
 
-The pane is initially opened. If you close it, the bound variable *show_pane* is updated
-(set to False).<br/>
-Pressing the button sets the variable *show_pane* to True using a lambda callback, which opens the
-pane again.
-
-## Pane as block element
-
-The content of the pane can be specified directly inside the pane block.
-
+Here is the definition of the main page of the application:
 !!! example "Definition"
 
     === "Markdown"
 
-        ```
-        <|{show}|pane|
-        ...
-        <|{some_content}|>
-        ...
+        ```python
+        page = """
+        # The **pane** block
+
+        <|{show_pane}|pane|
+        Here is the content of the pane.
         |>
-        ```
 
-    === "HTML"
+        This is the content of the page.
 
-        ```html
-        <taipy:pane open={show}>
-            ...
-            <taipy:text>{some_content}</taipy:text>
-            ...
-        </taipy:pane>
+        <|Show pane|button|>
+        """
         ```
 
     === "Python"
@@ -92,24 +88,356 @@ The content of the pane can be specified directly inside the pane block.
         ```python
         import taipy.gui.builder as tgb
         ...
-        with tgb.pane("{show}")
-            tgb.text("{some_content}")
+        with tgb.Page() as page:
+            tgb.text("# The **pane** block", mode="md")
+
+            with tgb.pane("{show_pane}"):
+                tgb.text("Here is the content of the pane.")
+
+            tgb.text("This is the content of the page.")
+
+            tgb.button("Show pane")
         ```
 
-## Pane with page
+We define the `on_action` callback function so that it sets *show_pane* to True:
+```python
+def on_action(state):
+    state.show_pane = True
+```
 
-The content of the pane can be specified as an existing page name using the [*page*](#p-page)
-property.
+Here is how the page shows before and after the open button is pressed:
+<div style="display: flex">
+  <figure>
+    <img src="../pane-simple-d.png" class="visible-dark" />
+    <img src="../pane-simple-l.png" class="visible-light"/>
+    <figcaption>Before open</figcaption>
+    </figure>
+  <figure>
+    <img src="../pane-simple-opened-d.png" class="visible-dark" />
+    <img src="../pane-simple-opened-l.png" class="visible-light"/>
+    <figcaption>After open</figcaption>
+    </figure>
+  </div>
 
-!!! taipy-element
-    default={show}
-    page=page_name
+The pane closes when the user clicks on the original page area.
 
-## Pane with partial
+## Showing or hiding (simplified)  {data-source="gui:doc/examples/controls/pane-simple-lambda.py"}
 
-The content of the pane can be specified as a `Partial^` instance using the
+The previous section explains how to use the `on_action` callback to open the pane when a button is
+pressed. Because the action is so simple (setting a variable to True), this can be simplified using
+a lambda definition as the button's action.
+
+Here is an alternative page definition:
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```python
+        page = """
+        # The **pane** block
+
+        <|{show_pane}|pane|
+        Here is the content of the pane.
+        |>
+
+        This is the content of the page.
+
+        <|Show pane|button|on_action={lambda s: s.assign("show_pane", True)}|>
+        """
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.Page() as page:
+            tgb.text("# The **pane** block", mode="md")
+
+            with tgb.pane("{show_pane}"):
+                tgb.text("Here is the content of the pane.")
+
+            tgb.text("This is the content of the page.")
+
+            tgb.button("Show pane", on_action=lambda s: s.assign("show_pane", True))
+        ```
+
+We set the *on_action* property of the button control to a lambda function that sets the variable
+*show_pane* to true, so the definition of the callback function is no longer needed.
+
+## Choosing where the pane appears {data-source="gui:doc/examples/controls/pane-anchor.py"}
+
+The [*anchor*](#p-anchor) property defines which side of the page the pane is shown on.
+
+Here is a simple page definition demonstrating the use of this property:
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```python
+        page = """
+        <|{show_pane}|pane|anchor=top|height=50px|
+        Here is some text that is displayed at the top of the page in a pane.
+        |>
+
+        # Main page content
+
+        This is the content of the page.
+        """
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.Page() as page:
+            with tgb.pane("{show_pane}", anchor="top", height="50px"):
+                tgb.text("Here is a some text that is displayed at the top of the page in a pane.")
+
+            tgb.text("# Main page content", mode="md")
+
+            tgb.text("This is the content of the page.")
+        ```
+
+With the [*anchor*](#p-anchor) property set to "top", here is how the page appears when the pane
+is visible:
+<figure>
+  <img src="../pane-anchor-d.png" class="visible-dark" />
+  <img src="../pane-anchor-l.png" class="visible-light"/>
+  <figcaption>Pane anchored to the top</figcaption>
+  </figure>
+
+## Showing the pane beside the page content {data-source="gui:doc/examples/controls/pane-persistent.py"}
+
+The pane is shown beside the page content instead of over it if the [*persistent*](#p-persistent)
+property evaluates to True.
+
+!!! important "Styling constraint"
+
+    The parent element of the pane must have its *display* CSS property set to *flex*. A simple way
+    to achieve this is to encapsulate the page content in a `part` block and leverage the
+    [*d-flex* class](../../../../userman/gui/styling/stylekit.md#c-d-flex) provided in the
+    [Stylekit](../../../../userman/gui/styling/stylekit.md).
+
+Here is a little example demonstrating the use of this property.<br/>
+The visibility of the pane is stored in the *show_pane* variable:
+```python
+show_pane = False
+```
+
+The page definition is slightly more complex than in the case where the pane overlaps the main
+page:
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```python
+        page = """
+        <|d-flex|
+        <|{show_pane}|pane|persistent|show_button|width=150px|
+        Here is the content of the pane.
+        |>
+        <|
+        # Main page
+        Here is the content of the page.
+        |>
+        |>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.Page() as page:
+            with tgb.part("d-flex"):
+                with tgb.pane("{show_pane}", persistent=True, show_button=True, width="150px"):
+                    tgb.text("Here is the content of the pane.")
+                with tgb.part():
+                    tgb.text("# Main page", mode="md")
+                    tgb.text("Here is the content of the page.")
+        ```
+
+Note that the pane block has its [*show_button*](#p-show_button) property set to True so we don't
+have to create another control to open the pane.<br/>
+Also note that the entire page is embedded in a "d-flex" part to make if possible to leverage the
+setting of the [*persistent*](#p-persistent) property to True.<br/>
+Finally, the main page's content is defined within a neutral part to ensure its proper layout.
+
+Here is how the page appears when the pane is opened or closed:
+<div style="display: flex">
+  <figure>
+    <img src="../pane-persistent1-d.png" class="visible-dark" />
+    <img src="../pane-persistent1-l.png" class="visible-light"/>
+    <figcaption>Closed pane</figcaption>
+    </figure>
+  <figure>
+    <img src="../pane-persistent2-d.png" class="visible-dark" />
+    <img src="../pane-persistent2-l.png" class="visible-light"/>
+    <figcaption>Opened pane</figcaption>
+    </figure>
+  </div>
+
+## Pane from a page definition {data-source="gui:doc/examples/controls/pane-as-page.py"}
+
+The content of the pane can be specified as an existing page using the [*page*](#p-page) property,
+which can be set to a page name. This can be useful when the pane content definition is complex or
+if your application needs to reuse the pane definition.
+
+Here is a situation where this feature would be helpful.<br/>
+We will create an *Interest Calculator* application: a user can provide an initial invested amount
+and the number of periods to be accounted for, and the user will want to see the accumulated
+amount after those periods.<br/>
+The user can also specify the interest rate using a control displayed only in a retractable pane:
+this value is assumed to change rather rarely and its control would waste valuable space on the
+main page.
+
+The variables used in the application are declared as follows:
+```python
+initial_investment = 100
+periods = 0
+final_amount = initial_investment
+rate = 5
+show_rate = False
+```
+
+The point of the application is to show what would be the future value of the investment (in
+*final_amount*), starting with an amount of *initial_investment* invested at an interest rate of
+*rate* percent per period, accumulated for *periods* periods.<br/>
+The pane visibility is stored in the variable *show_rate*.
+
+We need to define two pages:
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        rate_page = """
+        Rate (in %):
+        <|{rate}|number|>
+        """
+
+        page = """
+        <|{show_rate}|pane|show_button|page=_rate_pane|>
+
+        # Interest Calculator
+        Initial amount: <|{initial_investment}|number|>
+
+        Periods: <|{periods}|number|min=0|max=50|>
+
+        Final amount: <|{final_amount}|text|format=%.2f|>
+        """
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.Page() as rate_page:
+            tgb.text("Rate (in %):")
+            tgb.number("{rate}")
+
+        with tgb.Page() as page:
+            tgb.text("# Interest Calculator", mode="md")
+
+            tgb.pane("{show_rate}", show_button=True, page="_rate_pane")
+
+            tgb.text("Initial amount: ", inline=True)
+            tgb.number("{initial_investment}")
+
+            tgb.text("Periods", inline=True)
+            tgb.number("{periods}", min=0, max=50)
+
+            tgb.text("Final amount: ", inline=True)
+            tgb.text("{final_amount}", format="%.2f", inline=True)
+        ```
+
+The `pane` block has its [*show_button*](#p-show_button) property set to True so we don't need to
+explicitly create a button to show the pane.<br/>
+Note how, in the definition of the `pane` control, we reference the page name "_rate_pane". This
+name, along with the main application page name "main", is registered when creating then starting
+the GUI service:
+```python
+    pages = {
+        "main": page,
+        "_rate_pane": rate_page,
+    }
+    Gui(pages=pages).run()
+```
+
+We create a callback function that computes the accumulated earnings and updates *final_amount*
+accordingly:
+```python
+def on_change(state, var_name: str):
+    progress = pow(1 + state.rate / 100, state.periods)
+    state.final_amount = state.initial_investment * progress
+```
+
+With the pane opened, the resulting page looks like this:
+<figure>
+  <img src="../pane-as-page-d.png" class="visible-dark" />
+  <img src="../pane-as-page-l.png" class="visible-light"/>
+  <figcaption>Pane defined as a page</figcaption>
+  </figure>
+
+When the initial amount and number of periods are set, the user can evaluate the future value of the
+investment. To change the interest rate, the user must click the pane button to open it, and
+set the interest rate as required.
+
+## Pane as a partial
+
+The content of the pane can also be specified as a `Partial^` instance using the
 [*partial*](#p-partial) property.
 
-!!! taipy-element
-    default={show}
-    partial={partial}
+The control definition will then look like this:
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        <|{show_pane}|pane|partial={partial}|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:pane partial="{partial}">{show_pane}</taipy:pane>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.pane("{show_pane}", partial="{partial}")
+        ```
+
+# Styling
+
+All the pane blocks are generated with the "taipy-pane" CSS class. You can use this class
+name to select the pane blocks on your page and apply style.
+
+The pane area leverages the CSS style "MuiDrawer-paper".<br/>
+For example, you can change the pane background color and double the font size in the pane with the
+following CSS rule:
+```CSS
+.taipy-pane .MuiDrawer-paper {
+  background: <color>;
+  font-size: <font-size>;
+}
+```
+
+<div style="display: flex">
+  <figure>
+    <img src="../pane-styling1-d.png" class="visible-dark" />
+    <img src="../pane-styling1-l.png" class="visible-light"/>
+    <figcaption>No style</figcaption>
+    </figure>
+  <figure>
+    <img src="../pane-styling2-d.png" class="visible-dark" />
+    <img src="../pane-styling2-l.png" class="visible-light"/>
+    <figcaption><tt>background: red; font-size: 2em;</tt></figcaption>
+    </figure>
+  </div>

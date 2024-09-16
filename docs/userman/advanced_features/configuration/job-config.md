@@ -177,8 +177,9 @@ To set up a worker environment, some requirements must be met:
 - The main application and the workers must have access to the same RabbitMQ server.
 - The main application and the workers must have access to the data referenced by
   the data nodes. This includes:
-  - The shared drive(s) containing the data for file-based data nodes.
-  - The database server(s) containing the data for database-based data nodes.
+
+    - The shared drive(s) containing the data for file-based data nodes.
+    - The database server(s) containing the data for database-based data nodes.
 
 To start the worker service in the worker environment, you can use the following command:
 

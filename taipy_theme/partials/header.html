@@ -86,6 +86,25 @@
           {% include ".icons/material/magnify.svg" %}
         </label>
   
+        <!-- Manually added as we dropped the tabs for everything else -->
+        <nav class="md-tabs" aria-label="{{ lang.t('tabs') }}" data-md-component="tabs">
+          <div class="md-grid">
+            <ul class="md-tabs__list">
+              <li class="md-tabs__item">
+                <a href="{{ config.site_url }}release-notes/" class="md-tabs__link">
+                  Release Notes
+                </a>
+              </li>
+              <li class="md-tabs__item">
+                <a href="{{ config.site_url }}contributing/" class="md-tabs__link">
+                  Contributing
+                  </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <!-- End of: Manually added as we dropped the tabs for everything else -->
+
         <!-- Search interface -->
         {% include "partials/search.html" %} {% endif %}
   

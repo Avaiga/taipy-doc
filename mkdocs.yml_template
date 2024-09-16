@@ -211,11 +211,12 @@ nav:
           - "Text edition": userman/ecosystem/studio/config/textedition.md
         - "GUI Markdown support": userman/ecosystem/studio/gui.md
 
+  - "Visual Elements":
+    - "Visual Elements": refmans/gui/viselements/index.md
+    [VISELEMENTS_CONTENT]
+
   - "Reference":
     - "About Taipy's Reference manual": refmans/index.md
-    - "Visual Elements":
-      - "Visual Elements": refmans/gui/viselements/index.md
-      [VISELEMENTS_CONTENT]
     - "Python API":
       - "Python APIs": refmans/reference/index.md
       [REFERENCE_CONTENT]

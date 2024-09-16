@@ -1006,11 +1006,28 @@ div.tp-gcs {
   margin-left: auto;
   margin-right: 0;
   text-align: right;
+  a::before {
+      content: '';
+      display: inline-block;
+     content: url("../images/github-mark-white.svg");
+      width: 1.5em;
+      height: 1.5em;
+  }
 }
-div.tp-gcs a::before{
-  content: '';
-  display: inline-block;
-  content: url("../images/github-mark-white.svg");
-  width: 1.5em;
-  height: 1.5em;
+/* ---------- ---------- ---------- Navigation buttons ---------- ---------- ---------- */
+div.tp-nav-button-group {
+    display: flex;
+    gap: 0.1rem;
+    margin: 5px 0 5px 0;
+    width: calc(100% - .1rem);
+    .tp-content-card {
+	flex-basis: 40%;
+	margin-top: 0;
+    }
+    :first-child {
+	flex-basis: 60%;
+    }
+    .tp-content-card--extra-small + .tp-content-card--extra-small {
+	margin-top: 0 !important;
+    }
 }
