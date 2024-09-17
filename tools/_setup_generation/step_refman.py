@@ -44,9 +44,9 @@ class RefManStep(SetupStep):
 
     def enter(self, setup: Setup):
         os.environ["GENERATING_TAIPY_DOC"] = "true"
-        self.REFERENCE_DIR_PATH = os.path.join(
-            setup.docs_dir, RefManStep.REFERENCE_REL_PATH
-        )
+        # ...\docs\refmans\reference
+        self.REFERENCE_DIR_PATH = os.path.join(setup.docs_dir, RefManStep.REFERENCE_REL_PATH)
+        # ...\docs\userman\xrefs
         self.XREFS_PATH = os.path.join(setup.user_manuals_dir, "xrefs")
 
     def setup(self, setup: Setup) -> None:
@@ -109,9 +109,7 @@ class RefManStep(SetupStep):
                     if e.__module__.startswith(Setup.ROOT_PACKAGE):  # For local build
                         if e.__class__.__name__ == "NewType":
                             entry_type = TYPE_ID
-                    elif e.__module__ == "typing" and hasattr(
-                        e, "__name__"
-                    ):  # For Readthedoc build
+                    elif e.__module__ == "typing" and hasattr(e, "__name__"):  # For Readthedoc build
                         # Manually remove classes from 'typing'
                         if e.__name__ in ["NewType", "TypeVar", "overload", "cast"]:
                             continue
@@ -404,7 +402,6 @@ class RefManStep(SetupStep):
                 if entry_desc[2]:
                     entry_desc[2] = [p for p in entry_desc[2] if p != package]
         with open(self.XREFS_PATH, "w") as xrefs_output_file:
-            print(xrefs.get("taipy.gui", "ACHTUNG!!!"))
             xrefs_output_file.write(json.dumps(xrefs))
 
     @staticmethod

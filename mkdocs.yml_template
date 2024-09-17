@@ -7,6 +7,15 @@ repo_name: taipy
 #strict: true
 copyright: © 2021-[YEAR] Avaiga
 nav:
+  - "Release Notes":
+    - "Release Notes": release_notes/index.md
+    - "Legacy": release_notes/legacy.md
+    - "Migration": release_notes/migration.md
+  - "Contributing":
+    - "Contributing": contributing/index.md
+    - "Code of Conduct": contributing/code_of_conduct.md
+    - "Contributors": contributing/contributors.md
+
   - "Tutorials":
     - "Tutorials": tutorials/index.md
     - "Fundamentals":
