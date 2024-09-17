@@ -250,6 +250,7 @@ nav:
       - "LLM Chatbot" : gallery/articles/chatbot/index.md
       - "Vision ChatBot": gallery/articles/vision_chatbot/index.md
       - "RAG ChatBot": gallery/articles/rag_chatbot/index.md
+      - "Talk To Taipy": gallery/articles/talk_to_taipy/index.md
       - "Sentiment Analysis": gallery/articles/sentiment_analysis/index.md
       - "Tweet Generation": gallery/articles/tweet_generation/index.md
     - "Visualization":
