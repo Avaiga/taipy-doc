@@ -7,7 +7,17 @@ repo_name: taipy
 #strict: true
 copyright: © 2021-[YEAR] Avaiga
 nav:
+  - "Release Notes":
+    - "Release Notes": release_notes/index.md
+    - "Legacy": release_notes/legacy.md
+    - "Migration": release_notes/migration.md
+  - "Contributing":
+    - "Contributing": contributing/index.md
+    - "Code of Conduct": contributing/code_of_conduct.md
+    - "Contributors": contributing/contributors.md
+
   - "Tutorials":
+    - "Tutorials": tutorials/index.md
     - "Fundamentals":
       - "Fundamentals": tutorials/fundamentals/index.md
       - "Getting Started": tutorials/getting_started/index.md
@@ -253,6 +263,7 @@ nav:
       - "LLM Chatbot" : gallery/articles/chatbot/index.md
       - "Vision ChatBot": gallery/articles/vision_chatbot/index.md
       - "RAG ChatBot": gallery/articles/rag_chatbot/index.md
+      - "Talk To Taipy": gallery/articles/talk_to_taipy/index.md
       - "Sentiment Analysis": gallery/articles/sentiment_analysis/index.md
       - "Tweet Generation": gallery/articles/tweet_generation/index.md
     - "Visualization":
