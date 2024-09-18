@@ -33,7 +33,7 @@ class DesignerStep(SetupStep):
             raise FileNotFoundError(
                 f"FATAL - Could not read docs/{DesignerStep.PREFIX}/mkdocs.yml_template"
             )
-        self._read_mkdocs_template()
+        self.navigation = self._read_mkdocs_template()
 
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(
@@ -57,7 +57,7 @@ class DesignerStep(SetupStep):
                             navigation.write("  ")
                             navigation.write(navline[indentation:])
                             navigation.write("\n")
-                        self.navigation = navigation.getvalue()
+                        return navigation.getvalue()
                         break
                 elif collect:
                     if not lines:
