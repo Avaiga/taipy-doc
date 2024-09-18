@@ -53,7 +53,7 @@ detailed in the examples below:
 
 # Usage
 
-## Showing or hiding a pane {data-source="gui:doc/examples/controls/pane-simple.py"}
+## Showing or hiding a pane {data-source="gui:doc/examples/blocks/pane-simple/"}
 
 Here is a simple application that shows a page with a button that a user can click to open the
 pane.
@@ -121,7 +121,7 @@ Here is how the page shows before and after the open button is pressed:
 
 The pane closes when the user clicks on the original page area.
 
-## Showing or hiding (simplified)  {data-source="gui:doc/examples/controls/pane-simple-lambda.py"}
+## Showing or hiding (simplified)  {data-source="gui:doc/examples/blocks/pane-simple-lambda/"}
 
 The previous section explains how to use the `on_action` callback to open the pane when a button is
 pressed. Because the action is so simple (setting a variable to True), this can be simplified using
@@ -165,7 +165,7 @@ Here is an alternative page definition:
 We set the *on_action* property of the button control to a lambda function that sets the variable
 *show_pane* to true, so the definition of the callback function is no longer needed.
 
-## Choosing where the pane appears {data-source="gui:doc/examples/controls/pane-anchor.py"}
+## Choosing where the pane appears {data-source="gui:doc/examples/blocks/pane-anchor/"}
 
 The [*anchor*](#p-anchor) property defines which side of the page the pane is shown on.
 
@@ -208,7 +208,7 @@ is visible:
   <figcaption>Pane anchored to the top</figcaption>
   </figure>
 
-## Showing the pane beside the page content {data-source="gui:doc/examples/controls/pane-persistent.py"}
+## Showing the pane beside the page content {data-source="gui:doc/examples/blocks/pane-persistent/"}
 
 The pane is shown beside the page content instead of over it if the [*persistent*](#p-persistent)
 property evaluates to True.
@@ -279,7 +279,7 @@ Here is how the page appears when the pane is opened or closed:
     </figure>
   </div>
 
-## Pane from a page definition {data-source="gui:doc/examples/controls/pane-as-page.py"}
+## Pane from a page definition {data-source="gui:doc/examples/blocks/pane-as-page/"}
 
 The content of the pane can be specified as an existing page using the [*page*](#p-page) property,
 which can be set to a page name. This can be useful when the pane content definition is complex or

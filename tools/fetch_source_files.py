@@ -14,7 +14,7 @@ TOP_DIR = os.path.dirname(ROOT_DIR)
 DEST_DIR_NAME = "taipy"
 
 REPOS = ["taipy"]
-PRIVATE_REPOS = ["enterprise"]
+PRIVATE_REPOS = ["enterprise", "designer"]
 
 OPTIONAL_PACKAGES = {"gui": ["pyarrow", "pyngrok", "python-magic", "python-magic-bin"]}
 
@@ -215,6 +215,19 @@ def move_files(repo: str, src_path: str):
             f"python {os.path.join(src_path, 'generate_notebook.py')}", shell=True, capture_output=True, text=True
         )
         os.chdir(saved_dir)
+    elif repo == "taipy-designer":
+        designer_doc_dir = os.path.join(ROOT_DIR, "docs", "userman", "ecosystem", "designer")
+        safe_rmtree(designer_doc_dir)
+        src_documentation_dir = os.path.join(src_path, "documentation")
+        saved_dir = os.getcwd()
+        os.chdir(saved_dir)
+        subprocess.run(
+            f"python {os.path.join(src_path, 'copy_examples.py')}", shell=True, capture_output=True, text=True
+        )
+        os.chdir(saved_dir)
+        shutil.copytree(os.path.join(src_documentation_dir, "taipy_docs"), designer_doc_dir)
+        shutil.copy(os.path.join(src_documentation_dir, "mkdocs_taipy.yml"),
+                    os.path.join(designer_doc_dir, "mkdocs.yml_template"))
     else:
         try:
 
