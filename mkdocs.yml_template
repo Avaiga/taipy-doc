@@ -221,6 +221,10 @@ nav:
           - "Text edition": userman/ecosystem/studio/config/textedition.md
         - "GUI Markdown support": userman/ecosystem/studio/gui.md
 
+      - "Taipy Designer":
+        - "Taipy Designer": userman/ecosystem/designer/index.md
+      [DESIGNER_CONTENT]
+
   - "Visual Elements":
     - "Visual Elements": refmans/gui/viselements/index.md
     [VISELEMENTS_CONTENT]

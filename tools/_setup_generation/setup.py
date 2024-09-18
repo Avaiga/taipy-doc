@@ -131,6 +131,7 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
         from .step_rest_refman import RestRefManStep
         from .step_gui_ext_refman import GuiExtRefManStep
         from .step_contributors import ContributorsStep
+        from .step_designer import DesignerStep
 
         steps = [
             GalleryStep(),
@@ -140,6 +141,7 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
             RestRefManStep(),
             GuiExtRefManStep(),
             ContributorsStep(),
+            DesignerStep(),
         ]
     setup = Setup(root_dir, steps)
     setup.setup()

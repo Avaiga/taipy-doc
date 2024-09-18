@@ -10,7 +10,7 @@
 # The header contains the following information:
 # - title: The title of the item
 # - category: The category of the item (fundamentals, visuals, scenario_management, 
-# integration, large_data, finance, decision_support, llm, visualization or other)
+#   integration, large_data, finance, decision_support, llm, visualization or other)
 # - data-keywords: A comma separated list of keywords
 # - short-description: A short description of the item
 # - img: The path to the image associated with the item
@@ -69,7 +69,7 @@ class GalleryStep(SetupStep):
             }
 
     def get_id(self) -> str:
-        return "gallery_step"
+        return "gallery"
 
     def get_description(self) -> str:
         return "Generates the list of items for the gallery index page from various content types."

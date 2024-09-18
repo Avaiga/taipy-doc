@@ -30,6 +30,8 @@ class RefManStep(SetupStep):
 
     # Entries that should be hidden for the time being
     HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback"]
+    HIDDEN_ENTRIES_FULL = ["taipy.gui.utils._css.get_style"]
+
     # Where the Reference Manual files are generated (MUST BE relative to docs_dir)
     REFERENCE_REL_PATH = "refmans/reference"
 
@@ -107,9 +109,14 @@ class RefManStep(SetupStep):
                 if hasattr(e, "__module__") and e.__module__:
                     # Handling alias Types
                     if e.__module__.startswith(Setup.ROOT_PACKAGE):  # For local build
+                        # Remove hidden entry
+                        if f"{e.__module__}.{entry}" in RefManStep.HIDDEN_ENTRIES_FULL:
+                            continue
                         if e.__class__.__name__ == "NewType":
                             entry_type = TYPE_ID
-                    elif e.__module__ == "typing" and hasattr(e, "__name__"):  # For Readthedoc build
+                    elif e.__module__ == "typing" and hasattr(
+                        e, "__name__"
+                    ):  # For ReadTheDocs build
                         # Manually remove classes from 'typing'
                         if e.__name__ in ["NewType", "TypeVar", "overload", "cast"]:
                             continue
