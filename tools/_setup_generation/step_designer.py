@@ -13,6 +13,7 @@ from .setup import SetupStep, Setup
 
 class DesignerStep(SetupStep):
     PREFIX = "userman/ecosystem/designer"
+
     def __init__(self):
         self.navigation = ""
 
@@ -41,15 +42,15 @@ class DesignerStep(SetupStep):
             self.navigation if self.navigation else "",
         )
 
-    def _read_mkdocs_template(self) -> None:
+    def _read_mkdocs_template(self) -> str:
         lines = []
         indentation = 0
         with open(self.MKDOCS_TMPL) as file:
             collect = False
             for line in file:
-                if line.startswith("nav:"): # Start collecting navigation
+                if line.startswith("nav:"):  # Start collecting navigation
                     collect = True
-                elif re.match(r"^[\w_]+\s*?:", line): # Stop collecting navigation
+                elif re.match(r"^[\w_]+\s*?:", line):  # Stop collecting navigation
                     if collect:
                         navigation = StringIO()
                         for navline in lines:
@@ -58,16 +59,17 @@ class DesignerStep(SetupStep):
                             navigation.write(navline[indentation:])
                             navigation.write("\n")
                         return navigation.getvalue()
-                        break
                 elif collect:
                     if not lines:
                         # Retrieve initial indentation
                         sline = line.lstrip()
-                        indentation = len(line)-len(sline)
+                        indentation = len(line) - len(sline)
                     sline = line.rstrip()
-                    if sline: # Skip potential empty lines
+                    if sline:  # Skip potential empty lines
                         # Add prefix to doc path
-                        match = re.match(r"^(\s+(?:\".*?\")|(?:[^\"]+))\s*:(:?\s*)", sline)
-                        if match and sline[match.end():]:
+                        match = re.match(
+                            r"^(\s+(?:\".*?\")|(?:[^\"]+))\s*:(:?\s*)", sline
+                        )
+                        if match and sline[match.end() :]:
                             sline = f"{match[1]}: {DesignerStep.PREFIX}/{sline[match.end():]}"
                         lines.append(sline)
