@@ -66,7 +66,7 @@ class ContributorsStep(SetupStep):
 
     def get_contributors(self):
         for url in self.REPO_URLS:
-            response = self.__get(url + "/contents/contributors.txt", ignore404=True)
+            response = self.__get(url + "/contents/contributors.txt")
             public_contributor_logins = []
             if response.status_code == 200:
                 data = response.json()
@@ -126,13 +126,13 @@ class ContributorsStep(SetupStep):
         with open(path, 'w') as file:
             file.write(file_data)
 
-    def __get(self, url, with_token=True, ignore404:bool = False):
+    def __get(self, url, with_token=True):
         if with_token and self.GH_TOKEN:
             headers = {
                 "Accept": "application/vnd.github+json",
                 "Authorization": "Bearer "+self.GH_TOKEN
             }
-            #{'Authorization': f'token {self.GH_TOKEN}'}
+            # {'Authorization': f'token {self.GH_TOKEN}'}
             return requests.get(url, headers=headers)
         else:
             return requests.get(url)
