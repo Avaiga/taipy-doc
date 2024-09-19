@@ -29,8 +29,8 @@ class RefManStep(SetupStep):
     ]
 
     # Entries that should be hidden for the time being
-    HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback"]
-    HIDDEN_ENTRIES_FULL = ["taipy.gui.utils._css.get_style"]
+    HIDDEN_ENTRIES = []
+    HIDDEN_ENTRIES_FULL = []
 
     # Where the Reference Manual files are generated (MUST BE relative to docs_dir)
     REFERENCE_REL_PATH = "refmans/reference"
@@ -382,8 +382,8 @@ class RefManStep(SetupStep):
                             name,
                             TYPE_ID,
                             package,
-                            entry_info["module"],
-                            entry_info.get("packages"),
+                            type["module"],
+                            type.get("packages"),
                         )
                 if functions:
                     package_output_file.write("## Functions\n\n")
