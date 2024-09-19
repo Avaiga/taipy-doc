@@ -1,23 +1,16 @@
 import json
 import os
-import re
-from inspect import isclass, isfunction, ismodule
 
-from .entry import Entry, EntryBuilder
+from .entry import Entry
 from .package import Package
 from ..setup import Setup
 
 
 class Generator:
-    CLASS_ID = "C"
-    FUNCTION_ID = "F"
-    TYPE_ID = "T"
-    FIRST_DOC_LINE_RE = re.compile(r"^(.*?)(:?\n\s*\n|$)", re.DOTALL)
-    REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 
-    def __init__(self, setup: Setup, reference_relative_path):
+    def __init__(self, setup: Setup, reference_relative_path, entries: dict[str, Entry], module_doc: dict[str, str]):
         self.setup = setup
-        self.reference_relative_path = reference_relative_path  # refmans/reference
+        self.ref_relative_path = reference_relative_path  # refmans/reference
         self.REFERENCE_DIR_PATH = os.path.join(setup.docs_dir, reference_relative_path)  # ...\docs\refmans\reference
         self.XREFS_PATH = os.path.join(setup.user_manuals_dir, "xrefs")  # ...\docs\userman\xrefs
         self.PACKAGE_GROUPS = [
@@ -29,15 +22,9 @@ class Generator:
             "taipy.auth",
             "taipy.enterprise",
         ]
-        self.HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback"]
-        self.HIDDEN_ENTRIES_FULL = ["taipy.gui.utils._css.get_style"]
 
-        # Read module outputs
-        self.entries: dict[str, Entry] = {}  # All entries from taipy that are not private or hidden
-        self.module_doc = {}  # Documentation for each module
-        self.loaded_modules = set()  # All the module already processed and loaded
-
-        # Entries
+        self.entries: dict[str, Entry] = entries  # All entries from taipy that are not private or hidden
+        self.module_doc = module_doc
         self.grouped_entries = {}  # All entries grouped by package
 
         # Navigation and xrefs
@@ -45,8 +32,6 @@ class Generator:
         self.xrefs = {}  # All cross-references
 
     def generate(self):
-        # Computes in a recursive way the entries and module_doc.
-        self._read_module(__import__(self.setup.ROOT_PACKAGE))
 
         # Decides in which package an entry should be documented
         self._compute_destination_packages()
@@ -63,9 +48,6 @@ class Generator:
             previous_package_group = package_group
             package_group = self._get_package_group(package_group, p_name)
 
-            # Compute and append the navigation
-            self._compute_navigation(previous_package_group, package_group, p_name)
-
             # Get the documentation path
             package_doc_path = self._get_package_doc_path(p_name)
 
@@ -74,104 +56,11 @@ class Generator:
             # - Update the package entries cross-references
             self._write_package_doc(p_name, package_group, package_doc_path)
 
+            # Compute and append the navigation
+            self._compute_navigation(previous_package_group, package_group, p_name)
+
         # Write the cross-references
         self._write_xrefs()
-
-    def _read_module(self, module):
-        if module in self.loaded_modules:
-            return
-        self.loaded_modules.add(module)
-        if not module.__name__.startswith(self.setup.ROOT_PACKAGE):
-            return
-        simple_name: str
-        for simple_name in dir(module):
-            # Private?
-            if simple_name.startswith("_"):
-                continue
-            e = getattr(module, simple_name)
-            if hasattr(e, "__class__") and e.__class__.__name__.startswith("_"):
-                continue
-
-            # Type ?
-            entry_type: str = None
-            if hasattr(e, "__module__") and e.__module__:
-                # Handling alias Types
-                if e.__module__.startswith(self.setup.ROOT_PACKAGE):  # For local build
-                    # Remove hidden entry
-                    if f"{e.__module__}.{simple_name}" in self.HIDDEN_ENTRIES_FULL:
-                        continue
-                    if e.__class__.__name__ == "NewType":
-                        entry_type = self.TYPE_ID
-                elif e.__module__ == "typing" and hasattr(e, "__name__"):  # For Readthedocs build
-                    # Manually remove classes from 'typing'
-                    if e.__name__ in ["NewType", "TypeVar", "overload", "cast"]:
-                        continue
-                    entry_type = self.TYPE_ID
-                else:
-                    continue
-            # Remove hidden entries
-            if simple_name in self.HIDDEN_ENTRIES:
-                continue
-            # Not a function or a class?
-            if not entry_type:
-                if isclass(e):
-                    entry_type = self.CLASS_ID
-                elif isfunction(e):
-                    entry_type = self.FUNCTION_ID
-                elif ismodule(e):
-                    self.module_doc[e.__name__] = e.__doc__
-                    self._read_module(e)
-            if not entry_type:
-                continue
-
-            # Add doc to all entries
-            if doc := e.__doc__:
-                first_line = self.FIRST_DOC_LINE_RE.match(doc.strip())
-                if first_line:
-                    if first_line.group(0).startswith("NOT DOCUMENTED"):
-                        continue
-                    doc = self.REMOVE_LINE_SKIPS_RE.subn(" ", first_line.group(0))[0].strip()
-                else:
-                    print(f"WARNING - Couldn't extract doc summary for {e.__name__} in {e.__module__}", flush=True)
-            full_name = f"{e.__module__}.{simple_name}"
-            # Entry module: e.__module__
-            # Current module: module.__name__
-            if entry := self.entries.get(full_name):
-                packages = entry.packages
-                if module.__name__ != self.setup.ROOT_PACKAGE:
-                    # Is current module a parent of known packages? Use that instead if yes
-                    child_idxs = [
-                        i
-                        for i, p in enumerate(packages)
-                        if p.startswith(module.__name__)
-                    ]
-                    if child_idxs:
-                        for index in reversed(child_idxs):
-                            del packages[index]
-                        packages.append(module.__name__)
-                    else:
-                        # Is any known package a parent of the current module? If yes ignore it
-                        parent_idxs = [
-                            i
-                            for i, p in enumerate(packages)
-                            if module.__name__.startswith(p)
-                        ]
-                        if not parent_idxs:
-                            packages.append(module.__name__)
-            else:
-                if doc is None:
-                    print(f"WARNING - {e.__name__} [in {e.__module__}] has no doc", flush=True)
-                self.entries[full_name] = EntryBuilder.build_entry(
-                    name=full_name,
-                    simple_name=simple_name,
-                    parent_module=e.__module__,
-                    type=entry_type,
-                    doc=doc,
-                    packages=[module.__name__])
-            if module.__name__ == self.setup.ROOT_PACKAGE:
-                entry = self.entries[full_name]
-                entry.set_at_root()
-                entry.remove_package(self.setup.ROOT_PACKAGE)
 
     def _compute_destination_packages(self):
         for entry in self.entries.values():
@@ -235,15 +124,15 @@ class Generator:
 
     def _compute_navigation(self, previous_package_group, package_group, p_name):
         if p_name in self.PACKAGE_GROUPS:
-            self.navigation += f'- "<code>{p_name}</code>":\n  - {self.reference_relative_path}/pkg_{p_name}/index.md\n'
+            self.navigation += f'- "<code>{p_name}</code>":\n  - {self.ref_relative_path}/pkg_{p_name}/index.md\n'
         else:
             if package_group != previous_package_group:
                 self.navigation += f"- {package_group}:\n"
-            package_nav_entry = p_name
+            pkg_nav_entry = p_name
             if package_group:
                 self.navigation += "  "
-                package_nav_entry = p_name[len(package_group):]
-            self.navigation += f'- "<code>{package_nav_entry}</code>": {self.reference_relative_path}/pkg_{p_name}.md\n'
+                pkg_nav_entry = p_name[len(package_group):]
+            self.navigation += f'- "<code>{pkg_nav_entry}</code>": {self.ref_relative_path}/pkg_{p_name}.md\n'
 
     def _get_package_doc_path(self, p_name):
         if p_name in self.PACKAGE_GROUPS:

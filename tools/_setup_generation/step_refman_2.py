@@ -12,6 +12,7 @@ import os
 from .refman.cleaner import Cleaner
 from .refman.config_handler import ConfigHandler
 from .refman.generator import Generator
+from .refman.reader import Reader
 from .setup import Setup, SetupStep
 
 
@@ -21,6 +22,9 @@ class RefManStep2(SetupStep):
     REFERENCE_REL_PATH = "refmans/reference"
 
     def __init__(self):
+        self.cleaner = None
+        self.config_handler = None
+        self.reader = None
         self.generator = None
 
     def get_id(self) -> str:
@@ -34,7 +38,8 @@ class RefManStep2(SetupStep):
 
     def setup(self, setup: Setup) -> None:
         # Remove previous Reference Manual files before to generate the new ones
-        Cleaner(setup, self.REFERENCE_REL_PATH).clean()
+        self.cleaner = Cleaner(setup, self.REFERENCE_REL_PATH)
+        self.cleaner.clean()
 
         saved_dir = os.getcwd()
         try:
@@ -43,15 +48,19 @@ class RefManStep2(SetupStep):
                 setup.move_package_to_tools(Setup.ROOT_PACKAGE)
 
             # TODO explain what is done here and why
-            config_handler = ConfigHandler(setup)
-            config_handler.back_up()
+            self.config_handler = ConfigHandler(setup)
+            self.config_handler.back_up()
+
+            # Read documentation from the taipy module
+            self.reader = Reader(setup)
+            self.reader.read_module()
 
             # Generate the Ref manual and Cross-references
-            self.generator = Generator(setup, self.REFERENCE_REL_PATH)
+            self.generator = Generator(setup, self.REFERENCE_REL_PATH, self.reader.entries, self.reader.module_doc)
             self.generator.generate()
 
             # TODO explain what is done here and why
-            config_handler.add_external_methods()
+            self.config_handler.add_external_methods()
 
         except Exception as e:
             raise e
