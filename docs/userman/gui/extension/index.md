@@ -141,7 +141,7 @@ its elements:
 To create and use custom visual elements, you need to install the following:
 
 - Taipy GUI 2.0 or higher (included in Taipy and Taipy Enterprise).
-- Python 3.8 or higher.
+- Python 3.9 or higher.
 - If you need to create [dynamic custom visual elements](dynamic_element/index.md), you
   also need to install [Node.js](https://nodejs.org) (version 18 or above).<br/>
   Note that this comes with `npm`, the Node Package Manager.<br/>

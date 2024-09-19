@@ -7,23 +7,23 @@ Server [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) and the Web Server 
 
 ## Upgrading Python
 
-Most _RHEL_ are delivered with a Python version older than 3.8 which is the oldest Python version
-supported by Taipy. If you are in that case, please install Python 3.8 (or newer):
+Most *RHEL* are delivered with a Python version older than 3.9 which is the oldest Python version
+supported by Taipy. If you are in that case, please install Python 3.9 (or newer):
 ```
 sudo dnf install -y gcc openssl-devel bzip2-devel libffi-devel make
-wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tgz
-tar xzf Python-3.8.12.tgz
-rm -rf Python-3.8.12.tgz
-cd Python-3.8.12
+wget https://www.python.org/ftp/python/3.9.12/Python-3.9.12.tgz
+tar xzf Python-3.9.12.tgz
+rm -rf Python-3.9.12.tgz
+cd Python-3.9.12
 sudo ./configure --enable-optimizations
 sudo make altinstall
 cd ..
-sudo rm -r Python-3.8.12
+sudo rm -r Python-3.9.12
 ```
 
 !!! info
     This tutorial specifies the Python version for each command. If your default version is different, you must
-    replace `python3.8` with `python`.
+    replace `python3.9` with `python`.
 
 
 ## Prepare your machine
@@ -39,7 +39,7 @@ The following software should be installed on your target machine:
 You can install all of these packages by running the following command:
 ```
 sudo dnf install -y nginx
-python3.8 -m pip install uwsgi gevent
+python3.9 -m pip install uwsgi gevent
 sudo mv `pwd`/.local/bin/uwsgi /usr/bin/uwsgi
 sudo restorecon /usr/bin/uwsgi
 ```
@@ -67,11 +67,11 @@ taipy
 
 On your local machine, start the application by doing:
 ```console
-$ python3.8 -m pip install -r requirements.txt
+$ python3.9 -m pip install -r requirements.txt
 Collecting taipy
 ...
 Successfully installed taipy
-$ python3.8 app.py
+$ python3.9 app.py
  * Server starting on http://127.0.0.1:5000
  * Serving Flask app 'Taipy' (lazy loading)
  * Environment: production

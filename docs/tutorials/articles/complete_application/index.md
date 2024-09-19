@@ -8,7 +8,7 @@ img: complete_application/step_04/images/result.png
 ---
 !!! note "Supported Python versions"
 
-    Taipy requires **Python 3.8** or newer.
+    Taipy requires **Python 3.9** or newer.
 
 This tutorial guide will walk you through creating a complete application from the front end to
 the back end. You don't need any prior knowledge to complete this tutorial.
@@ -29,7 +29,7 @@ comparison of various predictive outcomes.
 
 Three packages have to be installed:
 
- 1. **Taipy** package, it requires Python 3.8 or newer;
+ 1. **Taipy** package, it requires Python 3.9 or newer;
 
  2. **scikit-learn**: A Machine-Learning package that will be used in the Tutorial user code;
 

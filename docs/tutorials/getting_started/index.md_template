@@ -9,7 +9,7 @@ first application with ease.
 
 # Installation with pip
 
-1. **Prerequisites**: Ensure you have Python (**version 3.8 or later**) and
+1. **Prerequisites**: Ensure you have Python (**version 3.9 or later**) and
     [pip](https://pip.pypa.io) installed.
 
 2. **Installation Command**: Run the following in your terminal or command prompt:
