@@ -3,26 +3,191 @@ A control that can show the progression of some operation.
 
 # Details
 
-TODO
+The progress indicator represents, in a compact way, the ratio of achievement on a scale from 0 to
+100 percent.<br/>
+It is useful in situations where a lengthy process is underway, and the application needs to reflect
+how much of the task has been completed at any given moment.
 
-# Styling
+The progress is represented as a ring, or an horizontal bar if the [*linear*](#p-linear) property is
+set to True.<br/>
+The amount of the shape that is filled correlates with the percentage. The unfilled portion of the
+circle or the bar represents the remaining progress.
 
-All the date controls are generated with the "taipy-progress" CSS class. You can use this class
-name to select the date selectors on your page and apply style.
+The percentage value can be displayed by setting the [*show_value*](#p-show_value) property is set
+to True.<br/>
+The control can also display a title (using the [*title*](#p-title)) that can be displayed at
+different locations, depending on the setting of the [*title_anchor*](#p-title_anchor) property.
+
+Note that is the [*value*](#p-value) property is set to None, the progress control shows an
+*indeterminate* state.
 
 # Usage
 
-## Circular Progress
+## Circular progress indicator {data-source="gui:doc/examples/controls/progress-simple.py"}
 
+The simplest and most compact use case for the progress control is a circular progress
+indicator.<br/>
+How much of the indicator's ring is filled reflects the percentage of achieved progress.
+
+We store the percentage to represent in a Python variable:
+```Python
+value = 72
+```
+
+The control definition is as simple as it gets:
 !!! taipy-element
+    value={value}
 
+And the result looks like this:
+<figure class="tp-center">
+    <img src="../progress-simple-d.png" class="visible-dark"  width="80%"/>
+    <img src="../progress-simple-l.png" class="visible-light" width="80%"/>
+    <figcaption>Circular progress indicator</figcaption>
+</figure>
+
+## Linear progress indicator {data-source="gui:doc/examples/controls/progress-linear.py"}
+
+You can change the representation of the control to a horizontal bar by setting the
+[*linear*](#p-linear) property to True.
+
+Using the same variable as above, this would be the control definition:
 !!! taipy-element
-    value=50
+    value={value}
+    linear:b=True
 
-## Linear Progress
+This is how the control now looks:
+<figure class="tp-center">
+    <img src="../progress-linear-d.png" class="visible-dark"  width="80%"/>
+    <img src="../progress-linear-l.png" class="visible-light" width="80%"/>
+    <figcaption>Linear progress indicator</figcaption>
+</figure>
 
-You can specify if you want the progress element to be linear or circular just by adding - `linear=True`. By default linear is set to False.
+## Adding a title {data-source="gui:doc/examples/controls/progress-title.py"}
 
+The control can show the percentage as a numerical value by setting the
+[*show_value*](#p-show_value) property to True.</br>
+You can add a title to the control with the [*title*](#p-title) property. You can also specify the
+location of the title, relative to the whole control, with the [*title*](#p-title-anchor) property.
+
+With the same variable as above, this is the control definition of a progress indicator showing a
+title above the gauge:
 !!! taipy-element
-    value=50
-    linear=True
+    value={value}
+    title=Loading...
+    title_anchor=top
+    show_value:b=True
+
+The value is displayed explicitly, and the title is shown as expected:
+<figure class="tp-center">
+    <img src="../progress-texts-d.png" class="visible-dark"  width="80%"/>
+    <img src="../progress-texts-l.png" class="visible-light" width="80%"/>
+    <figcaption>Showing a title and the value</figcaption>
+</figure>
+
+# Styling
+
+All the `progress` controls are generated with the "taipy-progress" CSS class. You can use this
+class name to select the date selectors on your page and apply style.
+
+Circular and linear progress indicators have slightly different implementations, impacting how
+styling must be defined.
+
+## Circular indicator {data-source="gui:doc/examples/controls/progress_styling_circular/"}
+
+The implementation of the progress control is based on the
+[MUI CircularProgress](https://mui.com/material-ui/react-progress/#circular) component.<br/>
+The CSS classes that can be used are documented
+[here](https://mui.com/material-ui/api/circular-progress/#classes).
+
+Here is how you can change the ring color and width. The CSS rules that are used are the following:
+```css
+.taipy-progress .MuiCircularProgress-circle {
+    stroke: green;
+    stroke-width: 2;
+}
+```
+The class *MuiCircularProgress-circle* is set on the SVG element that holds the ring.
+
+Here is the impact of this rule:
+<div style="display: flex">
+  <figure>
+    <img src="../progress-styling-circular1-d.png" class="visible-dark" />
+    <img src="../progress-styling-circular1-l.png" class="visible-light"/>
+    <figcaption>No style</figcaption>
+    </figure>
+  <figure>
+    <img src="../progress-styling-circular2-d.png" class="visible-dark" />
+    <img src="../progress-styling-circular2-l.png" class="visible-light"/>
+    <figcaption>Style applied</figcaption>
+    </figure>
+  </div>
+
+## Linear indicator {data-source="gui:doc/examples/controls/progress_styling_linear/"}
+
+The linear version of the progress control relies on the
+[MUI LinearProgress](https://mui.com/material-ui/react-progress/#linear) component.<br/>
+The CSS classes that can be used are documented
+[here](https://mui.com/material-ui/api/linear-progress/#classes).
+
+Here is how you can change the colors of the bar and its height.<br/>
+Here are the CSS rules:
+```css
+.taipy-progress {
+    background-color: red;
+    .MuiLinearProgress-root {
+        height: 30px;
+        .MuiLinearProgress-barColorPrimary {
+            background-color: green;
+         }
+    }
+}
+```
+The *background-color* of the *taipy-progress* part applies to the entire bar.<br/>
+The class *MuiLinearProgress-root* is set on the element holding the complete linear bar and
+*MuiLinearProgress-barColorPrimary* applies to the filled area.
+
+Here is the result of applying this style:
+<div style="display: flex">
+  <figure>
+    <img src="../progress-styling-linear1-d.png" class="visible-dark" />
+    <img src="../progress-styling-linear1-l.png" class="visible-light"/>
+    <figcaption>No style</figcaption>
+    </figure>
+  <figure>
+    <img src="../progress-styling-linear2-d.png" class="visible-dark" />
+    <img src="../progress-styling-linear2-l.png" class="visible-light"/>
+    <figcaption>Style applied</figcaption>
+    </figure>
+  </div>
+
+## Styling texts {data-source="gui:doc/examples/controls/progress-styling-texts.py"}
+
+The progress control provides the CSS class *taipy-progress-value* to the element that displays the
+value.<br/>
+Similarly, the CSS class *taipy-progress-title* applies to the element displaying the title.
+
+The following rules make the value appear in blue and enlarge the size of the font used for the
+title:
+```css
+.taipy-progress-value {
+    color: blue;
+    font-weight: bold;
+}
+.taipy-progress-title {
+    font-size: 1.5em;
+}
+```
+
+Resulting to this:
+<div style="display: flex">
+  <figure>
+    <img src="../progress-styling-texts1-d.png" class="visible-dark" />
+    <img src="../progress-styling-texts1-l.png" class="visible-light"/>
+    <figcaption>No style</figcaption>
+    </figure>
+  <figure>
+    <img src="../progress-styling-texts2-d.png" class="visible-dark" />
+    <img src="../progress-styling-texts2-l.png" class="visible-light"/>
+    <figcaption>Style applied</figcaption>
+    </figure>
+  </div>
