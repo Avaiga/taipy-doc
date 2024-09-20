@@ -13,8 +13,8 @@ class Reader:
     FIRST_DOC_LINE_RE = re.compile(r"^(.*?)(:?\n\s*\n|$)", re.DOTALL)
     REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 
-    HIDDEN_ENTRIES = ["get_context_id", "invoke_state_callback"]
-    HIDDEN_ENTRIES_FULL = ["taipy.gui.utils._css.get_style"]
+    HIDDEN_ENTRIES = []
+    HIDDEN_ENTRIES_FULL = []
 
     def __init__(self, setup: Setup):
         self.setup = setup
