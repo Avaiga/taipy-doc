@@ -3,11 +3,6 @@ A control that can show the progression of some operation.
 
 # Details
 
-The progress indicator represents, in a compact way, the ratio of an achievement on a scale from 0
-to 100 percent.<br/>
-It is useful in situations where a lengthy process is underway, and the application needs to reflect
-how much of the task has been completed at any given moment.
-
 The progress indicator represents, in a compact way, the ratio of achievement on a scale from 0 to
 100 percent.<br/>
 It is useful in situations where a lengthy process is underway, and the application needs to reflect
@@ -22,6 +17,9 @@ The percentage value can be displayed by setting the [*show_value*](#p-show_valu
 to True.<br/>
 The control can also display a title (using the [*title*](#p-title)) that can be displayed at
 different locations, depending on the setting of the [*title_anchor*](#p-title_anchor) property.
+
+Note that is the [*value*](#p-value) property is set to None, the progress control shows an
+*indeterminate* state.
 
 # Usage
 
@@ -94,7 +92,7 @@ class name to select the date selectors on your page and apply style.
 Circular and linear progress indicators have slightly different implementations, impacting how
 styling must be defined.
 
-## Circular indicator {data-source="gui:doc/examples/controls/progress-styling-circular/"}
+## Circular indicator {data-source="gui:doc/examples/controls/progress_styling_circular/"}
 
 The implementation of the progress control is based on the
 [MUI CircularProgress](https://mui.com/material-ui/react-progress/#circular) component.<br/>
@@ -124,7 +122,7 @@ Here is the impact of this rule:
     </figure>
   </div>
 
-## Linear indicator {data-source="gui:doc/examples/controls/progress-styling-linear/"}
+## Linear indicator {data-source="gui:doc/examples/controls/progress_styling_linear/"}
 
 The linear version of the progress control relies on the
 [MUI LinearProgress](https://mui.com/material-ui/react-progress/#linear) component.<br/>
