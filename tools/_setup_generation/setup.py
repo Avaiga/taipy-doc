@@ -72,7 +72,7 @@ class Setup(ABC):
 
     # Utility function to update the MkDocs yml template file
     def update_mkdocs_yaml_template(self, pattern: str, replacement: str):
-        # Retrieve and keep indendation
+        # Retrieve and keep indentation
         if pattern.startswith(r"^\s*"):
             pattern = r"^(\s*)" + pattern[4:]
             lines = replacement.split("\n")

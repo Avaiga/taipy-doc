@@ -9,7 +9,7 @@
 # The header of an item is a multiline header starting with '---' and ending with '---'.
 # The header contains the following information:
 # - title: The title of the item
-# - category: The category of the item (fundamentals, visuals, scenario_management, 
+# - category: The category of the item (fundamentals, visuals, scenario_management,
 #   integration, large_data, finance, decision_support, llm, visualization or other)
 # - data-keywords: A comma separated list of keywords
 # - short-description: A short description of the item
@@ -21,9 +21,10 @@ import os
 import re
 from typing import List, Dict
 
+from .items import FolderItem, Item
+from .items.exceptions import NoIndexFile
 from .setup import SetupStep, Setup
-from .items import FolderItem, FileItem, Item
-from .items.exceptions import WrongHeader, NoHeader, NoIndexFile
+
 
 class GalleryStep(SetupStep):
     GALLERY_FOLDER_NAME = "gallery"
@@ -56,10 +57,10 @@ class GalleryStep(SetupStep):
         self.APPLICATIONS_BASE_PATH = os.path.join(self.GALLERY_BASE_PATH, self.APPLICATIONS_FOLDER_NAME)
 
         items = os.listdir(self.GALLERY_BASE_PATH)
-        
+
         # Filter out only the directories
         self.content_types = {item: [] for item in items if os.path.isdir(os.path.join(self.GALLERY_BASE_PATH, item)) and item not in self.NO_CONTENT_TYPE_FOLDERS}
-        
+
 
         for content_type in self.content_types.keys():
             folder_path = os.path.join(self.GALLERY_BASE_PATH, content_type)
@@ -85,7 +86,7 @@ class GalleryStep(SetupStep):
             items_info.update(items_info_category)
         content = self._build_content_for_main_index(items_info)
         self._update_gallery_index_file(content)
-        
+
     def _get_list_of_items(self, folder_path) -> List[Item]:
         items = []
         for sub_folder in os.listdir(folder_path):

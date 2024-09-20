@@ -36,6 +36,8 @@ class RefManStep(SetupStep):
     REFERENCE_REL_PATH = "refmans/reference"
 
     def __init__(self):
+        self.REFERENCE_DIR_PATH = None
+        self.XREFS_PATH = None
         self.navigation = None
 
     def get_id(self) -> str:
@@ -300,12 +302,7 @@ class RefManStep(SetupStep):
                     self.navigation += "  "
                     package_nav_entry = package[len(package_group) :]
                 self.navigation += f'- "<code>{package_nav_entry}</code>": {RefManStep.REFERENCE_REL_PATH}/pkg_{package}.md\n'
-                package_output_path = os.path.join(
-                    self.REFERENCE_DIR_PATH, f"pkg_{package}.md"
-                )
-                package_output_path = os.path.join(
-                    self.REFERENCE_DIR_PATH, f"pkg_{package}.md"
-                )
+                package_output_path = os.path.join(self.REFERENCE_DIR_PATH, f"pkg_{package}.md")
 
             def update_xrefs(name, type, force_package, module, others):
                 if not others:
@@ -382,8 +379,8 @@ class RefManStep(SetupStep):
                             name,
                             TYPE_ID,
                             package,
-                            entry_info["module"],
-                            entry_info.get("packages"),
+                            type["module"],
+                            type.get("packages"),
                         )
                 if functions:
                     package_output_file.write("## Functions\n\n")
