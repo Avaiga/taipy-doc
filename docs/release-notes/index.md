@@ -122,7 +122,7 @@ This is the list of changes to Taipy releases as they were published.
 
 <h4><strong><code>taipy-core</code></strong> 4.0.0</h4>
 
-- `DataNode.is_up_to_date^` raises an error when the data node has never been written.<br/>
+- `DataNode.is_up_to_date()^` raises an error when the data node has never been written.<br/>
   See [issue #1198](https://github.com/Avaiga/taipy/issues/1198).
 
 # Enterprise edition: 4.0
@@ -134,6 +134,23 @@ additional features.
 
 ## New Features
 
+- Support for [Polars DataFrame Library](https://docs.pola.rs/).<br/>
+  Tabular data nodes (`CSVDataNode^`, `ParquetDataNode^`, `ExcelDataNode^`, `SQLTableDataNode^` and
+  `SQLDataNode`) can now expose the data as Polars objects. They all support
+  [`polars.LazyFrame`](https://docs.pola.rs/api/python/stable/reference/lazyframe/index.html),
+  [`polars.DataFrame`](https://docs.pola.rs/api/python/stable/reference/dataframe/index.html) or
+  [`polars.Series`](https://docs.pola.rs/api/python/stable/reference/series/index.html) as exposed
+  type through the *exposed_type* configuration attribute.<br/>
+  The [`table`](../refmans/gui/viselements/generic/table.md) and
+  [`chart`](../refmans/gui/viselements/generic/chart.md)` controls both have native support for
+  these tabular data types as well.
+- The new `taipy.import_scenario()^` function can be used to import a scenario from an exported
+  archive. For more information, please refer to
+  [Import a scenario](../userman/scenario_features/sdm/scenario/index.md#import-a-scenario).
+- The default application template now supports authentication and authorization features.
+
+## Improvements and changes
+
 - The `taipy.export_scenario()^` function now supports exporting file-based data nodes' data to the
   export folder if the path exists.
 - The `taipy.export_scenario()^` function now exports a zip archive instead of a
@@ -143,7 +160,3 @@ additional features.
   exception if the export path already exists. You can explicitly set the *overwrite* parameter to
   True to overwrite the existing export path. For more information, please refer to
   [Export a scenario](../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
-- The new `taipy.import_scenario()^` function can be used to import a scenario from an exported
-  archive. For more information, please refer to
-  [Import a scenario](../userman/scenario_features/sdm/scenario/index.md#import-a-scenario).
-- The default application template now supports authentication and authorization features.

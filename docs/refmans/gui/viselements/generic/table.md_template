@@ -24,6 +24,13 @@ The supported types for the [*data*](#p-data) property are:
 - A Numpy series:<br/>
   Taipy internally builds a Pandas DataFrame with the provided *data*.
 
+!!! note "Polars data types support"
+    Taipy Enterprise edition provides native support for the
+    [`polars.LazyFrame`](https://docs.pola.rs/api/python/stable/reference/lazyframe/index.html),
+    [`polars.DataFrame`](https://docs.pola.rs/api/python/stable/reference/dataframe/index.html)
+    or [`polars.Series`](https://docs.pola.rs/api/python/stable/reference/series/index.html)
+    data types in the [*data*](#p-data) property, including for edition.
+
 ## Display modes
 
 The table component supports three display modes:
