@@ -8,7 +8,7 @@ img: understanding_gui/step_07/images/result.png
 ---
 
 !!! note "Supported Python versions"
-    Taipy requires **Python 3.8** or newer.
+    Taipy requires **Python 3.9** or newer.
 
 Welcome to the **Taipy Tutorial**! Learn to build interactive web applications
 effortlessly.
@@ -37,13 +37,13 @@ accordingly.
 
 ### Installation
 
-Ensure you have Python 3.8 or newer, then install Taipy:
+Ensure you have Python 3.9 or newer, then install Taipy:
 
 ```bash
 pip install taipy
 ```
 
-For the NLP feature (Python 3.8 to 3.10), install:
+For the NLP feature (Python 3.9 to 3.10), install:
 
 ```bash
 pip install torch transformers scipy

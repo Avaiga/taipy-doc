@@ -60,6 +60,9 @@ This is the list of changes to Taipy releases as they were published.
 
 <h4><strong><code>taipy</code></strong> 4.0.0</h4>
 
+- Taipy and all its dependencies now stop support Python 3.8.<br/>
+  The minimum supported Python version is now 3.9.
+
 <h4><strong><code>taipy-gui</code></strong> 4.0.0</h4>
 
 - Setting up styling: if a file called `taipy.css` sits next to the Python script (`<app>.py`) that

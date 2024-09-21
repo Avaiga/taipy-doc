@@ -8,7 +8,7 @@ MODEL = "cardiffnlp/twitter-roberta-base-sentiment"
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL)
 
-# Torch is, for now, only available for the Python version between 3.8 and 3.10.
+# Torch is, for now, only available for the Python version between 3.9 and 3.10.
 # If you cannot install these packages, just return a dictionary of random numbers for the `analyze_text(text).`
 def analyze_text(text):
     # Run for Roberta Model

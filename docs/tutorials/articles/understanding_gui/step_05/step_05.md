@@ -45,7 +45,7 @@ into play in Part 2 when we wrap a GUI around this NLP engine.
 
 Before executing this step, you should have `pip install torch` and `pip install transformers`.
 The model will be downloaded and utilized in this code snippet. Note that Torch is currently
-only accessible for Python versions between 3.8 and 3.10.
+only accessible for Python versions between 3.9 and 3.10.
 
 If you encounter difficulties installing these packages, you can simply provide a dictionary of
 random numbers as the output for the `analyze_text(text)` function.
