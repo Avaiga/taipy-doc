@@ -526,57 +526,6 @@ refresh was needed.
 Make sure, when you are using the [*rebuild*](#p-rebuild) property, that no performance impact is
 so bad that it would ruin the user experience.
 
-# Styling
-
-All the table controls are generated with the "taipy-table" CSS class. You can use this class
-name to select the tables on your page and apply style.
-
-## [Stylekit](../../../../userman/gui/styling/stylekit.md) support
-
-The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a CSS custom property:
-
-- *--table-stripe-opacity*<br/>
-  This property contains the opacity applied to odd lines of tables.<br/>
-  The default value is 0.5.
-
-The [Stylekit](../../../../userman/gui/styling/stylekit.md) also provides specific CSS classes that you can use to style
-tables:
-
-- *header-plain*<br/>
-  Adds a plain and contrasting background color to the table header.
-- *rows-bordered*<br/>
-  Adds a bottom border to each row.
-- *rows-similar*<br/>
-  Removes the even-odd striped background so all rows have the same background.
-
-## Dynamic styling
-
-You can modify the style of entire rows or specific table cells based on any criteria, including
-the table data itself.
-
-When Taipy creates the rows and the cells, it can add a specific CSS class to the generated
-elements. This class name is the string returned by the function set to the [*style*](#p-style)
-property for entire rows, or [*style[column_name]*](#p-style[column_name]) for specific cells.
-
-The signature of this function depends on which *style* property you use:
-
-   - [*style*](#p-style): this applies to entire rows.<br/>
-     The given function expects three optional parameters:
-     - *state*: the current state
-     - *index*: the index of the row in this table
-     - *row*: all the values for this row
-   - [*style[column_name]*](#p-style[column_name]): this applies to a specific cell.<br/>
-     The given function expects five optional parameters:
-     - *state*: the current state
-     - *value*: the value of the cell
-     - *index*: the index of the row in this table
-     - *row*: all the values for this row
-     - *column_name*: the name of the column for this cell
-
-Based on these parameters, the function must return a string that defines a CSS class name that will
-be added to the CSS classes for this table row or this specific cell.<br/>
-The [example](#styling-rows) below shows how this works.
-
 # Usage
 
 ## Show tabular data
@@ -746,6 +695,104 @@ The resulting display reflects what is requested:
     <figcaption>Formatted columns</figcaption>
 </figure>
 
+## Aggregation
+
+To get the aggregation functionality in your table, you must indicate which columns can be aggregated
+and how to perform the aggregation.
+
+This is done using the indexed [*group_by*](#p-group_by[column_name]) and
+[*apply*](#p-apply[column_name]) properties.
+
+The [*group_by[column_name]*](#p-group_by[column_name]) property, when set to True indicates that the
+column *column_name* can be aggregated.
+
+The function provided in the [*apply[column_name]*](#p-apply[column_name]) property indicates how to
+perform this aggregation. The value of this property, which is a string, can be:
+
+- A built-in function. Available predefined functions are the following: `count`, `sum`, `mean`, `median`,
+  `min`, `max`, `std`, `first` (the default value), and `last`.
+- The name of a user-defined function or a lambda function.<br/>
+  This function receives a single parameter which is the series to aggregate, and it must return a scalar
+  value that would result from the aggregation.
+
+This control definition is all it takes to add aggregation functionality to the table:
+!!! taipy-element
+    default={data}
+    group_by[Group column]:b=True
+    apply[Apply column]=count
+
+## Cell tooltips
+
+You can specify a tooltip for specific table cells.
+
+When Taipy creates the cells, it can add a specific tooltip that you would have set as the
+return value of the function set to the [*tooltip*](#p-tooltip) or
+[*tooltip[column_name]*](#p-tooltip[column_name]) properties.
+
+The signature of this function expects five optional parameters:
+- *state*: the current state.
+- *value*: the value of the cell.
+- *index*: the index of the row in this table.
+- *row*: all the values for this row.
+- *column_name*: the name of the column for this cell.
+
+Based on these parameters, the function must return a string that defines a tooltip used as the
+cell's tooltip text.
+!!! taipy-element
+    default={data}
+    tooltip={lambda state, val, idx: "A tooltip" if idx % 2 == 0 else "Another tooltip"}
+
+# Styling
+
+All the table controls are generated with the "taipy-table" CSS class. You can use this class
+name to select the tables on your page and apply style.
+
+## [Stylekit](../../../../userman/gui/styling/stylekit.md) support
+
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a CSS custom property:
+
+- *--table-stripe-opacity*<br/>
+  This property contains the opacity applied to odd lines of tables.<br/>
+  The default value is 0.5.
+
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) also provides specific CSS classes that
+you can use to style tables:
+
+- *header-plain*<br/>
+  Adds a plain and contrasting background color to the table header.
+- *rows-bordered*<br/>
+  Adds a bottom border to each row.
+- *rows-similar*<br/>
+  Removes the even-odd striped background so all rows have the same background.
+
+## Dynamic styling
+
+You can modify the style of entire rows or specific table cells based on any criteria, including
+the table data itself.
+
+When Taipy creates the rows and the cells, it can add a specific CSS class to the generated
+elements. This class name is the string returned by the function set to the [*style*](#p-style)
+property for entire rows, or [*style[column_name]*](#p-style[column_name]) for specific cells.
+
+The signature of this function depends on which *style* property you use:
+
+   - [*style*](#p-style): this applies to entire rows.<br/>
+     The given function expects three optional parameters:
+     - *state*: the current state
+     - *index*: the index of the row in this table
+     - *row*: all the values for this row
+   - [*style[column_name]*](#p-style[column_name]): this applies to a specific cell.<br/>
+     The given function expects five optional parameters:
+     - *state*: the current state
+     - *value*: the value of the cell
+     - *index*: the index of the row in this table
+     - *row*: all the values for this row
+     - *column_name*: the name of the column for this cell
+
+Based on these parameters, the function must return a string that defines a CSS class name that will
+be added to the CSS classes for this table row or this specific cell.<br/>
+The [example](#styling-rows) below shows how this works.
+
 ## Styling rows
 
 To give a specific style to a table row, you will use the [*style*](#p-style) property (note that
@@ -757,11 +804,11 @@ the name of a style, defined in CSS.
 Here is how a row styling function can be defined:
 
 ```python
-def even_odd_style(_1, index, _2):
-    if index % 2:
-        return "blue-cell"
+def even_odd_style(_1, row, _2):
+    if row % 2:
+        return "blue-row"
     else:
-        return "red-cell"
+        return "red-row"
 ```
 
 We only use the second parameter since, in this straightforward case, we do not need the application
@@ -773,11 +820,11 @@ We need to define what these style names mean. This is done in a CSS stylesheet,
 CSS content would appear:
 
 ```css
-.blue-cell>td {
+.blue-row>td {
     color: white;
     background-color: blue;
 }
-.red-cell>td {
+.red-row>td {
     color: yellow;
     background-color: red;
 }
@@ -793,8 +840,8 @@ To use this style, we can adjust the control definition used above so it looks l
 
 The resulting display will be what we expected:
 <figure class="tp-center">
-    <img src="../table-rowstyle-d.png" class="visible-dark"  width="50%"/>
-    <img src="../table-rowstyle-l.png" class="visible-light" width="50%"/>
+    <img src="../table-rowstyle-d.png" class="visible-dark"  width="75%"/>
+    <img src="../table-rowstyle-l.png" class="visible-light" width="75%"/>
     <figcaption>Styling the rows</figcaption>
 </figure>
 
@@ -856,49 +903,3 @@ As expected, the result is a table where the style of the columns changes depend
     <figcaption>Styling the column</figcaption>
 </figure>
 
-## Aggregation
-
-To get the aggregation functionality in your table, you must indicate which columns can be aggregated
-and how to perform the aggregation.
-
-This is done using the indexed [*group_by*](#p-group_by[column_name]) and
-[*apply*](#p-apply[column_name]) properties.
-
-The [*group_by[column_name]*](#p-group_by[column_name]) property, when set to True indicates that the
-column *column_name* can be aggregated.
-
-The function provided in the [*apply[column_name]*](#p-apply[column_name]) property indicates how to
-perform this aggregation. The value of this property, which is a string, can be:
-
-- A built-in function. Available predefined functions are the following: `count`, `sum`, `mean`, `median`,
-  `min`, `max`, `std`, `first` (the default value), and `last`.
-- The name of a user-defined function or a lambda function.<br/>
-  This function receives a single parameter which is the series to aggregate, and it must return a scalar
-  value that would result from the aggregation.
-
-This control definition is all it takes to add aggregation functionality to the table:
-!!! taipy-element
-    default={data}
-    group_by[Group column]:b=True
-    apply[Apply column]=count
-
-## Cell tooltips
-
-You can specify a tooltip for specific table cells.
-
-When Taipy creates the cells, it can add a specific tooltip that you would have set as the
-return value of the function set to the [*tooltip*](#p-tooltip) or
-[*tooltip[column_name]*](#p-tooltip[column_name]) properties.
-
-The signature of this function expects five optional parameters:
-- *state*: the current state.
-- *value*: the value of the cell.
-- *index*: the index of the row in this table.
-- *row*: all the values for this row.
-- *column_name*: the name of the column for this cell.
-
-Based on these parameters, the function must return a string that defines a tooltip used as the
-cell's tooltip text.
-!!! taipy-element
-    default={data}
-    tooltip={lambda state, val, idx: "A tooltip" if idx % 2 == 0 else "Another tooltip"}

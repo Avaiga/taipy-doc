@@ -29,8 +29,43 @@ There are two ways you can apply a stylesheet to your application:
   application-specific CSS file.
 
 - Page-specific style.<br/>
-  The method `Gui.add_page()^` has a *style* parameter that can be set to CSS content.
-  This additional style is applied to the page and **only** this page.
+    The method `Gui.add_page()^` has a *style* parameter that can be set to CSS content.
+    This additional style is applied to the page (and **only** this page).<br/>
+    Using `(Gui.)add_page()^` is equivalent to using the *style* parameter provided in all the page
+    classes: `Markdown^`, `(taipy.gui.)builder.Page^` and `Html^`.
+
+    The parameter to the *style* parameter is a dictionary where keys describe the CSS selector to
+    apply, and the value is the rule declaration, expressed as a dictionary (each key being the
+    CSS property name and each value being the property value).<br/>
+    Here is an example of defining CSS styling on a page. We will address the `Markdown^` use case,
+    but the situation is identical in the Page Builder and HTML cases.<br/>
+    Consider the following definition:
+    ```python
+    page = Markdown("... markdown content",
+                    style = {
+                      ".taipy-button": {
+                        "background-color": "red"
+                      }
+                    }
+    ```
+    This style creates a single CSS rule that will apply to all `button` controls of this page,
+    giving them a red background color.
+
+    Note that
+    [nested CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Using_CSS_nesting)
+    is supported: the CSS declaration can be a CSS rule itself. Here is an example:
+    ```python
+    page = Markdown("... markdown content",
+                    style = {
+                      ".taipy-slider": {
+                        ".MuiSlider-rail": {
+                          "background-color": "yellow"
+                      }
+                    }
+    ```
+    This style definition will apply the yellow color to the rail of a `slider` control. It does
+    this by selecting all the elements with the ".MuiSlider-rail" class that are a descendants
+    of elements with the ".taipy-slider" class (`slider` controls).
 
 Besides explicit style sheets, you can also modify the global theme, as
 described in the [section on Themes](#themes).
@@ -173,6 +208,139 @@ a space character:
 ```
 This Markdown fragment gets converted into an HTML element with three CSS classes
 assigned: *taipy-button*, *option*, and *testing*.
+
+### Element-specific classes
+
+When declaring the elements of your page, you can set the *class_name* property to one or several
+class names (separated by a white space). These class names will be generated in the HTML output so
+you can apply style to a specific control.
+
+Suppose you have declared the following element in a Markdown page:
+```
+<|Confirm|button|class_name=confirm|>
+```
+
+To make this button green, you can define the following rule:
+```css
+.taipy-button.confirm {
+  background-color: green;
+}
+```
+The button gets a green background color.
+
+You could also change the CSS definition to:
+```css
+.confirm {
+  background-color: green;
+}
+```
+Your page can then display different controls that reuse the "confirm" class (in their *class_name*
+property) to apply the style to all of them automatically.
+
+### Dynamic styling {data-source="gui:doc/examples/styling-dynamic.py"}
+
+The *class_name* property mentioned above is dynamic: the application can alter its value at
+runtime.
+
+Let's imagine a scenario where we can leverage this feature.<br/>
+An application prompts the user for a string using an `input` control and has a 'Validate' button
+that the user can press when the field is filled. However, there is a requirement that the input
+text **must** be five characters long.<br/>
+If the input string does not follow this constraint, the input field should turn red, and an error
+message should be displayed next to is to provide an explanation. Also, the button should be
+disabled to prevent the user from even submitting the text.
+
+Here are the Python variables that we will use to implement these requirements:
+```python
+word = ""
+error_text = ""
+valid = False
+error_cls = None
+``` 
+
+- *word*: the text provided by the user. The page starts with an empty text.
+- *error_text*: the error message shown to the user. We set this string to the empty string to
+  remove it from the page.
+- *valid*: is a Boolean value used to enable or disable the 'Validate' button. Because the initial
+  value of *word* is empty, the button first appears disabled.
+- *error_cls*: is the name of a CSS class that we apply to the input control and the error message.
+  We don't want to apply the class if the input control is empty, so we set this value to empty.
+
+Here is the Markdown definition of the page:
+```py
+page = Markdown(
+    """
+Enter a five-letter word:
+<|{word}|input|class_name={error_cls}|><|{error_text}|text|class_name={error_cls}|>
+
+<|Validate|button|active={valid}|>
+""",
+    style={".invalid-value": {"background-color": "red"}},
+)
+```
+You can spot the `input`, `text`, and `button` controls and how we have bound variables to them.
+
+The *style* parameter of the `Markdown^` constructor defines the "invalid-value" class that changes
+the background color of the elements it is applied to.
+
+Here is the implementation of the `on_change` callback function that computes the visual feedback
+to the user:
+```py linenums="1"
+def on_change(state, var_name, value):
+    if var_name == "word":
+        if value and len(value) != 5:
+            state.error_text = " Five characters are required"
+            state.valid = False
+            state.error_cls = "invalid-value"
+        else:
+            state.error_text = ""
+            state.valid = bool(value)
+            state.error_cls = None
+```
+
+If the input text is not empty but does not contain five characters, we:
+
+- line 4: set the error message to explain what the problem is.
+- line 5: disable the 'Validate' button.
+- line 6: set *error_cls* to the CSS class name that gets applied to the elements representing the
+  input control and the error message. This class, as defined in the *style* parameter of the page
+  constructor, forces a red background color.
+
+If this input text is empty and has five characters, this code:
+
+- line 8: erases the error message by setting its content to the empty string.
+- line 9: enables the 'Validate' button.
+- line 10: removes the CSS class to restore the regular style.
+
+Note how the `input` and `text` controls both use the CSS class "invalid-value", which makes it
+easier to share the same style on different controls.
+
+If you run this application, this page will be displayed:
+<figure class="tp-center">
+    <img src="dynamic1-d.png" class="visible-dark"  width="80%"/>
+    <img src="dynamic1-l.png" class="visible-light" width="80%"/>
+    <figcaption>Initial display</figcaption>
+</figure>
+The 'Validate' button is disabled, but no error is displayed at this point.
+
+When the user enters a five-letter word in the input control, the display becomes:
+<figure class="tp-center">
+    <img src="dynamic2-d.png" class="visible-dark"  width="80%"/>
+    <img src="dynamic2-l.png" class="visible-light" width="80%"/>
+    <figcaption>Valid input</figcaption>
+</figure>
+This is valid input. The button is now enabled.
+
+If the user enters an additional character, the page turns to:
+<figure class="tp-center">
+    <img src="dynamic3-d.png" class="visible-dark"  width="80%"/>
+    <img src="dynamic3-l.png" class="visible-light" width="80%"/>
+    <figcaption>Input is invalid</figcaption>
+</figure>
+This is not valid input any longer. The input control is filled with a red color and the error
+message is displayed. Note that it has a red background as well, as predicted.<br/>
+The button is also disabled to prevent the user from submitting this invalid value.
+
 
 ### Using the HTML 'id' attribute
 

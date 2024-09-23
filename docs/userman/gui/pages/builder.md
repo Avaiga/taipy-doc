@@ -112,6 +112,10 @@ The impact of this change is reflected in the page:
 
 Compared to the previous example, you can see that the label uses a bold font weight.
 
+!!! note "Setting functions"
+    If a property expects a function, you can use a lambda function directly expressed as Python
+    code.
+
 !!! warning "Indexed properties"
     Some elements of Taipy GUI (such as [`chart`](../../../refmans/gui/viselements/generic/chart.md),
     [`table`](../../../refmans/gui/viselements/generic/table.md), or

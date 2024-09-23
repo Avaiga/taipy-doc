@@ -39,6 +39,10 @@ This is the list of changes to Taipy releases as they were published.
   to represent significant numerical information such as an industrial KPI.
 - A new control called [`chat`](../refmans/gui/viselements/generic/chat.md) was added
   to simplify the creation of chatting applications.
+- You can define CSS rules for a specific page using the new *style* parameter of the `Page^`
+  class or using the `Page.set_style()^` method.<br/>
+  See the [section on Styling](../userman/gui/styling/index.md#style-sheets) for more
+  information.
 
 <h4><strong><code>taipy-core</code></strong> 4.0.0 </h4>
 
@@ -65,17 +69,19 @@ This is the list of changes to Taipy releases as they were published.
 
 <h4><strong><code>taipy-gui</code></strong> 4.0.0</h4>
 
-- Setting up styling: if a file called `taipy.css` sits next to the Python script (`<app>.py`) that
-  runs a Taipy GUI application, and if there is no file called `<app>.css` at the same location,
-  then this CSS file is loaded and applied to all pages. This feature allows you to share styles
-  across different Taipy GUI applications.<br/>
-  See the [Styling section](../userman/gui/styling/index.md#style-sheets) for more
-  information.<br/>
+- Setting up styling:<br/>
+  If a file called `taipy.css` sits next to the Python script (`<app>.py`) that runs a Taipy GUI
+  application, and if there is no file called `<app>.css` at the same location, then this CSS file
+  is loaded and applied to all pages. This feature allows you to share styles across different Taipy
+  GUI applications.<br/>
   See [issue #1597](https://github.com/Avaiga/taipy/issues/1597) for a description of this
-  functionality.
+  functionality and the [section on Styling](../userman/gui/styling/index.md#style-sheets) for more
+  information.
+- Most visual elements now implement the *width* property to simplify page layout.<br/>
+  See [issue #1720](https://github.com/Avaiga/taipy/issues/1720).
 - The [`pane`](../refmans/gui/viselements/generic/pane.md) block has a new property called
   [*show_button*](../refmans/gui/viselements/generic/pane.md#p-show_button). If set to True,
-  a persistent *open* button renders on the page when the pane is closed so you don't need an
+  a persistent *open* button appears on the page when the pane is closed so you don't need an
   external control to let users open the pane.
 - In the [`chart`](../refmans/gui/viselements/generic/chart.md) control, the Modebar (that
   appears when the cart is hovered on) no longer has the Plotly logo button by default.
@@ -83,6 +89,18 @@ This is the list of changes to Taipy releases as they were published.
   [*plot_config* property](../refmans/gui/viselements/generic/chart.md#p-plot_config)
   to a dictionary with a property called "displaylogo" set to True.<br/>
   See [issue #1600](https://github.com/Avaiga/taipy/issues/1600).
+- The [`input`](../refmans/gui/viselements/generic/input.md) control has a new *type* property that
+  allows the type of input data the user can enter (such as an email address or a URL) to be set.
+- The [`login`](../refmans/gui/viselements/generic/login.md) control has a new toggle button
+  to show or hide the entered password.
+- Controls defined with the Page Builder API have an additional property called *inline* which,
+  when set to True, will not generate a line skip, to facilitate layout.<br/>
+  See [issue #1725](https://github.com/Avaiga/taipy/issues/1725).
+- Properties that expect a function can now be set to a lambda function in the Page Builder
+  API.<br/>
+  See [issue #1379](https://github.com/Avaiga/taipy/issues/1379).
+- The *decimator* property of the [`chart`](../refmans/gui/viselements/generic/chart.md) control
+  now applies to traces that are only "lines" or "markers".
 
 <h4><strong><code>taipy-core</code></strong> 4.0.0 </h4>
 
@@ -118,7 +136,13 @@ This is the list of changes to Taipy releases as they were published.
 
 - The value of multiline [`input`](../refmans/gui/viselements/generic/pane.md) controls is
   cleared when the ENTER key is pressed.<br/>
-  See [issue #1762](https://github.com/Avaiga/taipy/issues/1292).
+  See [issue #1762](https://github.com/Avaiga/taipy/issues/1762).
+- The [`chart`](../refmans/gui/viselements/generic/chart.md) control properly handles its
+  *selected* property in the case it uses the *figure* property.<br/>
+  See [issue #1786](https://github.com/Avaiga/taipy/issues/1786).
+- Indexed properties can be used in the Page Builder API as described in the information box in
+  [this](../userman/gui/pages/builder.md#setting-property-values) section.<br/>
+  See [issue #1715](https://github.com/Avaiga/taipy/issues/1715).
 
 <h4><strong><code>taipy-core</code></strong> 4.0.0</h4>
 
