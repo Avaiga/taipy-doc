@@ -60,7 +60,7 @@ class RefManStep2(SetupStep):
             self.doc_generator.generate()
 
             # Inject the external methods to the config.py module after its backup
-            self.config_handler.add_external_methods()
+            self.config_handler.inject_documentation()
 
         except Exception as e:
             raise e

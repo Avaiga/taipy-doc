@@ -5,7 +5,9 @@ from ..setup import Setup
 
 
 class ConfigHandler:
-
+    REPL_STR = "sections (Dict[str, Dict[str, Section]]): A dictionary containing all non-unique sections.\n"
+    METHODS_FILE = "config_methods_doc.txt"
+    ATTRIBUTES_FILE = "config_attributes_doc.txt"
     def __init__(self, setup: Setup):
         self.tools_dir = setup.tools_dir
 
@@ -15,24 +17,35 @@ class ConfigHandler:
         if os.path.exists(config_backup_path):
             shutil.move(config_backup_path, os.path.join(taipy_config_dir, "config.py"))
 
-    def add_external_methods(self):
-        if not os.path.exists("config_doc.txt"):
-            print("WARNING - No methods found to inject to Config documentation")
+    def inject_documentation(self):
+        attributes_to_inject = self._read_file(self.ATTRIBUTES_FILE)
+        methods_to_inject = self._read_file(self.METHODS_FILE)
+        self._backup()
+        self._inject_documentation(methods_to_inject, attributes_to_inject)
+
+    @staticmethod
+    def _read_file(file):
+        if not os.path.exists(file):
+            print("WARNING - Nothing found to inject to Config documentation")
             return
 
         # Get code of methods to inject
-        with open("config_doc.txt", "r") as f:
-            print("INFO - Injecting methods to Config documentation.")
-            methods_to_inject = f.read()
+        with open(file, "r") as f:
+            content = f.read()
 
         # Delete temporary file
-        if os.path.exists("config_doc.txt"):
-            os.remove("config_doc.txt")
+        if os.path.exists(file):
+            os.remove(file)
+        return content
 
+    def _backup(self):
         # Backup file taipy/config/config.py
         taipy_config_dir = os.path.join(self.tools_dir, "taipy", "config")
         config_path = os.path.join(taipy_config_dir, "config.py")
         shutil.copyfile(config_path, os.path.join(taipy_config_dir, "config.py.bak"))
+
+    def _inject_documentation(self, methods_to_inject, attributes_to_inject):
+        config_path = os.path.join(self.tools_dir, "taipy", "config", "config.py")
 
         # Read config.py file
         with open(config_path, "r") as f:
@@ -40,23 +53,25 @@ class ConfigHandler:
 
         # Inject imports and code
         imports_to_inject = """
-    from types import NoneType
-    from typing import Any, Callable, Dict, List, Union, Optional
-    import json
-    from .common.scope import Scope
-    from .common.frequency import Frequency
-    from taipy.core.common.mongo_default_document import MongoDefaultDocument
-    from taipy.core.config.job_config import JobConfig
-    from taipy.core.config.data_node_config import DataNodeConfig
-    from taipy.core.config.task_config import TaskConfig
-    from taipy.core.config.scenario_config import ScenarioConfig
-    from taipy.core.config.sequence_config import SequenceConfig\n"""
+from datetime import datetime
+from types import NoneType
+from typing import Any, Callable, Dict, List, Union, Optional
+import json
+from .common.scope import Scope
+from .common.frequency import Frequency
+from taipy.config.section import Section
+from taipy.core.common.mongo_default_document import MongoDefaultDocument
+from taipy.core.config.job_config import JobConfig
+from taipy.core.config.data_node_config import DataNodeConfig
+from taipy.core.config.task_config import TaskConfig
+from taipy.core.config.scenario_config import ScenarioConfig\n"""
         contents.insert(11, imports_to_inject)
         contents.insert(len(contents) - 2, methods_to_inject)
 
         # Fix code injection
         with open(config_path, "w") as f:
             new_content = "".join(contents)
+            new_content = new_content.replace(self.REPL_STR, self.REPL_STR + attributes_to_inject)
             new_content = new_content.replace(
                 "custom_document: Any = <class 'taipy.core.common.mongo_default_document.MongoDefaultDocument'>",
                 "custom_document: Any = MongoDefaultDocument",
@@ -71,10 +86,7 @@ class ConfigHandler:
             new_content = new_content.replace(
                 "taipy.core.config.task_config.TaskConfig", "TaskConfig"
             )
-            new_content = new_content.replace(
-                "taipy.core.config.sequence_config.SequenceConfig", "SequenceConfig"
-            )
-            new_content = new_content.replace(
-                "taipy.config.common.frequency.Frequency", "Frequency"
-            )
+            new_content = new_content.replace("taipy.core.config.sequence_config.SequenceConfig", "SequenceConfig")
+            new_content = new_content.replace("taipy.config.common.frequency.Frequency", "Frequency")
+            new_content = new_content.replace("taipy.config.section.Section", "Section")
             f.write(new_content)
