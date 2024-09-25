@@ -25,7 +25,7 @@ class RefManStep2(SetupStep):
         self.cleaner = None
         self.config_handler = None
         self.reader = None
-        self.generator = None
+        self.doc_generator = None
 
     def get_id(self) -> str:
         return "refman"
@@ -47,19 +47,19 @@ class RefManStep2(SetupStep):
             if not os.path.isdir(os.path.join(setup.tools_dir, Setup.ROOT_PACKAGE)):
                 setup.move_package_to_tools(Setup.ROOT_PACKAGE)
 
-            # TODO explain what is done here and why
+            # Restore the original config.py in case of error during the previous generation
             self.config_handler = ConfigHandler(setup)
-            self.config_handler.back_up()
+            self.config_handler.restore_config_module()
 
             # Read documentation from the taipy module
             self.reader = Reader(setup)
             self.reader.read_module()
 
             # Generate the Ref manual and Cross-references
-            self.generator = Generator(setup, self.REFERENCE_REL_PATH, self.reader.entries, self.reader.module_doc)
-            self.generator.generate()
+            self.doc_generator = Generator(setup, self.REFERENCE_REL_PATH, self.reader.entries, self.reader.module_doc)
+            self.doc_generator.generate()
 
-            # TODO explain what is done here and why
+            # Inject the external methods to the config.py module after its backup
             self.config_handler.add_external_methods()
 
         except Exception as e:
@@ -71,7 +71,7 @@ class RefManStep2(SetupStep):
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(
             r"^\s*\[REFERENCE_CONTENT\]\s*\n",
-            self.generator.navigation if self.generator.navigation else "")
+            self.doc_generator.navigation if self.doc_generator.navigation else "")
 
         if "GENERATING_TAIPY_DOC" in os.environ:
             del os.environ["GENERATING_TAIPY_DOC"]

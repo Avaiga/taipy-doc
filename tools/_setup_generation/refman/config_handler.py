@@ -9,7 +9,7 @@ class ConfigHandler:
     def __init__(self, setup: Setup):
         self.tools_dir = setup.tools_dir
 
-    def back_up(self):
+    def restore_config_module(self):
         taipy_config_dir = os.path.join(self.tools_dir, "taipy", "config")
         config_backup_path = os.path.join(taipy_config_dir, "config.py.bak")
         if os.path.exists(config_backup_path):
