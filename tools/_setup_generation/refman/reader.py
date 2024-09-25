@@ -60,6 +60,7 @@ class Reader:
             # Remove hidden entries
             if simple_name in self.HIDDEN_ENTRIES:
                 continue
+
             # Not a function or a class?
             if not entry_type:
                 if isclass(e):
@@ -73,12 +74,12 @@ class Reader:
                 continue
 
             # Add doc to all entries
-            if doc := e.__doc__:
-                first_line = self.FIRST_DOC_LINE_RE.match(doc.strip())
+            if first_line_doc := e.__doc__:
+                first_line = self.FIRST_DOC_LINE_RE.match(first_line_doc.strip())
                 if first_line:
                     if first_line.group(0).startswith("NOT DOCUMENTED"):
                         continue
-                    doc = self.REMOVE_LINE_SKIPS_RE.subn(" ", first_line.group(0))[0].strip()
+                    first_line_doc = self.REMOVE_LINE_SKIPS_RE.subn(" ", first_line.group(0))[0].strip()
                 else:
                     print(f"WARNING - Couldn't extract doc summary for {e.__name__} in {e.__module__}", flush=True)
             full_name = f"{e.__module__}.{simple_name}"
@@ -107,14 +108,15 @@ class Reader:
                         if not parent_idxs:
                             packages.append(module.__name__)
             else:
-                if doc is None:
+                if first_line_doc is None:
                     print(f"WARNING - {e.__name__} [in {e.__module__}] has no doc", flush=True)
                 self.entries[full_name] = EntryBuilder.build_entry(
                     name=full_name,
                     simple_name=simple_name,
                     parent_module=e.__module__,
-                    type=entry_type,
-                    doc=doc,
+                    entry_type=entry_type,
+                    doc=e.__doc__,
+                    first_line_doc=first_line_doc,
                     packages=[module.__name__])
             if module.__name__ == self.setup.ROOT_PACKAGE:
                 entry = self.entries[full_name]
