@@ -125,7 +125,7 @@ def create_navigation_buttons(site_url: str) -> str:
         elif group == "end-group":
                 return html + "</div>"
         else:
-            return html
+            return "<div class=\"tp-nav-button-single\">" + html + "</div>"
 
     buttons_html = """
         <div style="margin-bottom: 1rem;">

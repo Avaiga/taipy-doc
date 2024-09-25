@@ -56,7 +56,7 @@
   /* Animations */
   --transition-duration-base: 400ms;
   --tooltip-show-delay: 400ms;
-  
+
 }
 
 /* Dark mode */
@@ -78,7 +78,7 @@
 [data-md-color-scheme="default"],
 [data-md-color-scheme="slate"]{
   /* Color */
-  --md-hue: 270; 
+  --md-hue: 270;
 }
 
 @media screen and (max-width: 59.9375em){
@@ -240,7 +240,7 @@
 }
 }
 [dir=ltr] .md-sidebar__inner {
-  padding-right: calc(100% - 12rem);
+  padding-right: calc(100% - 20rem);
 }
 
 /* ---------- ---------- ---------- NAVS ---------- ---------- ---------- */
@@ -273,12 +273,11 @@
   .md-nav--primary .md-nav__link .md-nav__item{
     padding-left: 0.4rem;
   }
-  
+
   .md-nav--primary .md-nav__link,
   .md-nav--primary .md-nav__link > a{
     justify-content: flex-start;
     align-items: center;
-    word-break: break-word;
     gap: 0.25em;
   }
   .md-nav--primary a.md-nav__link:only-child::before,
@@ -297,7 +296,7 @@
   .md-nav--primary .md-nav__item--nested > .md-nav__link::before{
     content: none;
   }
-  
+
   .md-nav--primary .md-nav__link label{
     order: -1;
   }
@@ -316,7 +315,7 @@
 
 .md-content{
   margin-left: auto;
-  margin-right: auto; 
+  margin-right: auto;
   max-width: var(--md-content-max-width);
 }
 
@@ -354,7 +353,7 @@
 }
 
 .md-typeset p code,
-.md-typeset pre > code, 
+.md-typeset pre > code,
 .highlighttable .linenos{
   font-size: var(--md-body-font-size--small);
 }
@@ -429,7 +428,7 @@
 }
 
 /* Display the right icon for the right theme */
-.icon-light{ 
+.icon-light{
   display: none;
 }
 [data-md-color-scheme="slate"] .icon-dark{
@@ -454,7 +453,7 @@ a.ext-link::after{
 
 .d-flex{
   display: flex;
-} 
+}
 
 /* ---------- ---------- ---------- BUTTONS ---------- ---------- ---------- */
 
@@ -586,7 +585,7 @@ a.tp-pill{
 
 .tp-pills-filter input:checked + .tp-pill{
   color: var(--md-primary-fg-color);
-  box-shadow: var(--tp-pill-shadow-active); 
+  box-shadow: var(--tp-pill-shadow-active);
 }
 
 .tp-pill:hover .tp-tooltip{
@@ -727,7 +726,7 @@ a.tp-pill{
 }
 
 .tp-content-card h3,
-.tp-content-card h4, 
+.tp-content-card h4,
 .tp-content-card h5{
   margin: 0;
   flex: 1 1 0;
@@ -968,7 +967,7 @@ a.md-content__button{
   margin-bottom: calc((var(--md-content-padding-y) * -1) + 0.5rem);
   display: flex;
   flex-wrap: wrap;
-  align-items: center; 
+  align-items: center;
   padding: var(--md-content-padding-y) 0 0 0;
   background-color: transparent;
   color: var(--md-default-fg-color--light);
@@ -1019,13 +1018,27 @@ div.tp-nav-button-group {
     display: flex;
     gap: 0.1rem;
     margin: 5px 0 5px 0;
-    width: calc(100% - .1rem);
+    width: calc(100% - 3rem);
     .tp-content-card {
 	flex-basis: 40%;
 	margin-top: 0;
     }
     :first-child {
 	flex-basis: 60%;
+    }
+    .tp-content-card--extra-small + .tp-content-card--extra-small {
+	margin-top: 0 !important;
+    }
+}
+
+div.tp-nav-button-single {
+    display: flex;
+    gap: 0.1rem;
+    margin: 5px 0 5px 0;
+    width: calc(100% - 3rem);
+    .tp-content-card {
+	flex-basis: 100%;
+	margin-top: 0;
     }
     .tp-content-card--extra-small + .tp-content-card--extra-small {
 	margin-top: 0 !important;
