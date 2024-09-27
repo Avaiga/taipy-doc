@@ -51,6 +51,17 @@ This is the list of changes to Taipy releases as they were published.
   [Get all scenarios](../userman/scenario_features/sdm/scenario/index.md#get-all-scenarios) and
   [Get primary scenarios](../userman/scenario_features/sdm/scenario/index.md#get-primary-scenarios).
 
+- When the status of a `Job^` changes, the timestamp of the status change is now recorded.
+  These timestamps can be accessed using the following properties: *submitted_at*, *run_at*,
+  *finished_at*, *execution_duration*, *pending_duration*, and *blocked_duration*.<br/>
+  For more information, please refer to
+  [Job Status](../userman/scenario_features/sdm/job/index.md#job-status).
+
+- The timestamps of the status changes of a `Submission^` are recorded. These timestamps can be
+  accessed using the following properties: *submitted_at*, *run_at*, *finished_at*, *execution_duration*.<br/>
+  For more information, please refer to
+  [Submission Status](../userman/scenario_features/sdm/submission/index.md#submission-status).
+
 <h4><strong><code>taipy-templates</code></strong> 4.0.0 </h4>
 
 - Creating a new application using any template now also supports initializing the application as a
