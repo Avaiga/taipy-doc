@@ -39,6 +39,12 @@ This is the list of changes to Taipy releases as they were published.
   to represent significant numerical information such as an industrial KPI.
 - A new control called [`chat`](../refmans/gui/viselements/generic/chat.md) was added
   to simplify the creation of chatting applications.
+- The [`table`](../refmans/gui/viselements/generic/table.md) control new implements edition
+  functionality out-of-the-box for all the supported data types. You do not have to provide any
+  functions to the *on_edit*, *on_add*, and *on_delete* property any longer. You *can*, however,
+  customize how to process these actions by implementing your own functions.<br/>
+  Please read [this section](../refmans/gui/viselements/generic/table.md#editing-the-table-content)
+  in the `table` documentation page for more details.
 - You can define CSS rules for a specific page using the new *style* parameter of the `Page^`
   class or using the `Page.set_style()^` method.<br/>
   See the [section on Styling](../userman/gui/styling/index.md#style-sheets) for more
@@ -143,6 +149,8 @@ This is the list of changes to Taipy releases as they were published.
 - Indexed properties can be used in the Page Builder API as described in the information box in
   [this](../userman/gui/pages/builder.md#setting-property-values) section.<br/>
   See [issue #1715](https://github.com/Avaiga/taipy/issues/1715).
+- Binding to an element of a collection is now supported.<br/>
+  See [issue #1785](https://github.com/Avaiga/taipy/issues/1785).
 
 <h4><strong><code>taipy-core</code></strong> 4.0.0</h4>
 

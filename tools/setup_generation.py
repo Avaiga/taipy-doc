@@ -16,7 +16,7 @@ steps = None
 # --------------------------------------------------------------------------------
 # You may want to replace that 'step' initial value with a list of steps you
 # want to run.
-# i.e. say you want to run only the Reference Manual generation step.
+# E.g. say you want to run only the Reference Manual generation step.
 # You could add the following code:
 #   from _setup_generation.step_refman import RefManStep
 #   steps = [RefManStep()]

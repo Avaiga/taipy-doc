@@ -451,6 +451,16 @@ The Markdown fragment that would be used in a page would look like this:
 <|{selected_intrument}|tree|lov={intruments}|>
 ```
 
+# Non-literal values
+
+When a value whose type is not a literal type (i.e. a dictionary, a list, ...), assigning a new
+value by simply calling `state.variable = <new_value>` will not propagate to the page.<br/>
+The reason is that it would be too costly to find and communicate to the front-end just the values,
+stored within potentially complex object structures, that actually require updates.
+
+When you are in such a situation, you must call `(State.)refresh()^` method explicitly for a
+refresh to happen: i.e. `state.refresh("variable")`.
+
 # Tabular values
 
 The [chart](../../refmans/gui/viselements/generic/chart.md) and

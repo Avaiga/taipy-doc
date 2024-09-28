@@ -169,6 +169,6 @@ the adapted tuple for each object in the hierarchy:
     default={user_sel}
     lov={users}
     type=User
-    adapter={lambda u: (u.id, u.name, u.children)}
+    adapter=lambda u: (u.id, u.name, u.children)
 
 

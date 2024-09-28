@@ -205,7 +205,7 @@ first scenario created for a cycle is primary.
 [`tp.set_primary(<Scenario>)`](../../../userman/scenario_features/sdm/scenario/index.md#promote-a-scenario-as-primary)
 allows changing the primary scenario in a `Cycle`.
 
-`<Scenario>.is_primary` identifies as a boolean whether the scenario is primary or not.
+`<Scenario>.is_primary` identifies as a Boolean value whether the scenario is primary or not.
 
 ```python
 before_set_1 = scenario_1.is_primary

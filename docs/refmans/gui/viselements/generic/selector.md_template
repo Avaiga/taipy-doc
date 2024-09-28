@@ -125,7 +125,7 @@ can use the following fragment.
     default={user_sel}
     lov={users}
     type=User
-    adapter={lambda u: (u.id, u.name)}
+    adapter=lambda u: (u.id, u.name)
 
 In this example, we use the Python list *users* as the selector's *list of values*.<br/>
 Because the control needs a way to convert the list items (which are instances of the class

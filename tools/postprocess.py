@@ -585,7 +585,7 @@ def on_post_build(env):
                                     if element_category == "blocks":
                                         repl += f'<li><a href="{chart_part}../..#block-elements"><b>Blocks</b></a></li>'
                                     else:
-                                        repl += f'<li><a href="{chart_part}../..#standard-controls"><b>Standard controls</b></a></li>'
+                                        repl += f'<li><a href="{chart_part}../..#generic-controls"><b>Generic controls</b></a></li>'
                                         if chart_part:
                                             repl += f'<li><a href="{chart_part}../../generic/chart"><b>Charts</b></a></li>'
                                 repl += "</ul>"

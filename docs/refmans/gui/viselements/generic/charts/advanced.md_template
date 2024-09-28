@@ -90,7 +90,7 @@ Here is what the resulting plot looks like:
     <figcaption>Unbalanced data sets</figcaption>
 </figure>
 
-## Adding annotations {data-source="gui:doc/examples/charts/advanced-annotations.py"}
+## Adding annotations {data-source="gui:doc/examples/charts/advanced_annotations.py"}
 
 You can add text annotations on top of a chart using the *annotations* property of
 the dictionary set to the [*layout*](../chart.md#p-layout) property of the chart
@@ -316,7 +316,7 @@ And here is what the resulting page looks like:
     <figcaption>Data points selection</figcaption>
 </figure>
 
-## Using the Ploty Python library {data-source="gui:doc/examples/charts/advanced-python-lib.py"}
+## Using the Ploty Python library {data-source="gui:doc/examples/charts/advanced_python_lib.py"}
 
 The chart control of Taipy GUI lets you create graphs that can be more or less complex using
 the control's properties. There are situations, though, when it would be more straightforward to
