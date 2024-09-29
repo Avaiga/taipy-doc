@@ -29,7 +29,7 @@ The supported types for the [*data*](#p-data) property are:
     [`polars.LazyFrame`](https://docs.pola.rs/api/python/stable/reference/lazyframe/index.html),
     [`polars.DataFrame`](https://docs.pola.rs/api/python/stable/reference/dataframe/index.html)
     or [`polars.Series`](https://docs.pola.rs/api/python/stable/reference/series/index.html)
-    data types in the [*data*](#p-data) property, including for edition.
+    data types in the [*data*](#p-data) property, including for edits.
 
 ## Display modes
 
@@ -77,7 +77,7 @@ With that definition, the representation of the control is similar to the follow
 
 ### Selecting columns
 
-Let's say you don't want to display the *volume* column. To indicate that, you can specify the
+Let's say you don't want to display the "volume" column. To indicate that, you can specify the
 list of column names to display in the [*columns*](#p-columns) property:
 !!! taipy-element
     default={data}
@@ -92,7 +92,7 @@ Here is how the table appears with that definition:
 
 ### Formatting numbers globally
 
-The *price* column displays values with too many decimal places, which is unusual for displaying
+The "price" column displays values with too many decimal places, which is unusual for displaying
 a price.<br/>
 The [*number_format*](#p-number_format) property can be set to a format string that applies to
 all numerical values in the table. The syntax for this string is specified by the Python string
@@ -113,7 +113,7 @@ And the result looks like this:
 
 Although we only have two decimal places for stock prices, which was the point of setting the
 [*number_format*](#p-number_format) property, the format has impacted all numerical values,
-including the values of the *volume* column, which is not what we want: volumes are integer values,
+including the values of the "volume" column, which is not what we want: volumes are integer values,
 they should have no decimal places at all.
 
 ### Formatting numbers in specific columns
@@ -123,7 +123,7 @@ property to a dictionary that indicates what format should be used for what colu
 
 The keys of this dictionary must be a column name, and the value for a given key must be another
 dictionary with specific key/value pairs.<br/>
-For our use case, we just want to use a format for the *value* column.
+For our use case, we just want to use a format for the "value" column.
 
 Here is how we can define the dictionary that can be used by the table control to apply the format
 where it is required:
@@ -134,7 +134,7 @@ columns = {
     "price" : {"format": "$%.02f"},
 }
 ```
-There is one entry for every column we want to display, and the *price* column has a specific
+There is one entry for every column we want to display, and the "price" column has a specific
 setting that indicates what format to use: a dollar sign followed by the value with two decimal
 places.
 
@@ -149,7 +149,55 @@ Here is how the table now looks:
     <img src="../table-format4-l.png" class="visible-light"/>
     <figcaption>Formatting a specific column</figcaption>
 </figure>
-You can see that the format only impacts the values of the *price* column.
+You can see that the format only impacts the values of the "price" column.
+
+### Formatting dates
+
+You can use the [*date_format*](#p-date_format) property to format dates in the table.
+This property uses the syntax of the [`date-fns.format()`](https://date-fns.org/docs/format)
+function to convert a `datetime` object to a string.
+
+With the same dataset, here is a table control definition that uses the
+[*date_format*](#p-date_format) property:
+!!! taipy-element
+    default={data}
+    date_format=MMM do
+
+The value "MMM do" indicates that the conversion of the date to a string will begin with the
+abbreviation of the month name, followed by the day number in the month with the index suffix.
+
+See how the dates of the "date" column are now represented:
+<figure class="tp-center">
+    <img src="../table-format6-d.png" class="visible-dark" />
+    <img src="../table-format6-l.png" class="visible-light"/>
+    <figcaption>Formatting dates</figcaption>
+</figure>
+
+Note that if you need to apply a date format to a specific column, you need to create a columns
+dictionary as demonstrated above and set the *format* property for the columns that contain the
+date values.
+
+### Custom formatting
+
+You can specify a Python function as the value of the
+[*format_fn[column_name]*](#p-format_fn[column_name]) property. This function is invoked for every
+cell of the column when the table is rendered. This function allows complete control over the
+formatting, enabling any type of string representation.
+
+The formatting function receives the following parameters:
+
+- <i>state</i> (<code>State^</code>): The current state instance, which can be used to access
+  additional variables required for formatting.
+- <i>value</i> (Any): The cell value to be formatted.
+- <i>index</i> (int): The index of the row containing the cell.
+- <i>row</i> (Any): All the values for the row. You can use values from other columns in the same
+  row to influence the formatting.
+- <i>column_name</i> (str): The name of the column being formatted.
+
+These arguments allow you to create flexible and dynamic formatting logic based on the row, value,
+and state.
+
+For a complete example, refer to [this section](#custom-formats).
 
 ### Setting the column titles
 
@@ -172,32 +220,6 @@ like:
     <img src="../table-format5-l.png" class="visible-light"/>
     <figcaption>Custom column titles</figcaption>
 </figure>
-
-### Formatting dates
-
-You can use the [*date_format*](#p-date_format) property to format dates in the table.
-This property uses the syntax of the [`date-fns.format()`](https://date-fns.org/docs/format)
-function to convert a `datetime` object to a string.
-
-With the same dataset, here is a table control definition that uses the
-[*date_format*](#p-date_format) property:
-!!! taipy-element
-    default={data}
-    date_format=MMM do
-
-The value "MMM do" indicates that the conversion of the date to a string will begin with the
-abbreviation of the month name, followed by the day number in the month with the index suffix.
-
-See how the dates of the *date* column are now represented:
-<figure class="tp-center">
-    <img src="../table-format6-d.png" class="visible-dark" />
-    <img src="../table-format6-l.png" class="visible-light"/>
-    <figcaption>Formatting dates</figcaption>
-</figure>
-
-Note that if you need to apply a date format to a specific column, you need to create a columns
-dictionary as demonstrated above and set the *format* property for the columns that contain the
-date values.
 
 ### Ordering columns
 
@@ -231,7 +253,7 @@ columns = {
 }
 ```
 The value of the *index* property for each column indicates the order in which you want to see the
-column organized.<br/>
+columns organized.<br/>
 The definition of the control would use that dictionary:
 !!! taipy-element
     default={data}
@@ -241,23 +263,40 @@ And the resulting display would be the same.
 
 ## Editing the table content
 
-The table control provides interface elements that help modify the represented data.<br/>
-However, because the data may have been modified before it is displayed (when [*data*](#p-data) is a
-dictionary, for example) and because you may need to control what values are allowed in the table,
-the control does *not* modify the underlying data structure it represents. Instead, different
-callbacks are invoked in different situations, with all the needed information to implement the
-actual impact of the user actions.
+The table control provides interface elements that help modify the bound data.<br/>
+These elements let users:
 
-Here are the different actions provided by the table control.
+- edit cell content;
+- add new rows;
+- delete existing rows.
+
+The presence of these UI elements depends on the control configuration:
+
+- The *edit* button appears next to every cell if [*editable*](#p-editable) is set to True.
+- The *edit* button appears next to cells in a specific column ("column_name") if
+  [*editable[column_name]*](#p-editable) is set to True, even when [*editable*](#p-editable) is set
+  to False.
+- The *edit* button does **not** appear next to a cell in a given column ("column_name") if
+  [*editable*](#p-editable) is set to True, but [*editable[column_name]*](#p-editable) is set to
+  False.
+- The *add row* button appears at the top of the control if [*editable*](#p-editable) is set to
+  True and [*on_add*](#p-on_add) is not False.
+- The *delete row* button appears at the top of the control if [*editable*](#p-editable) is set to
+  True and [*on_delete*](#p-on_delete) is not False.
+
+Here are the different actions provided by the table control and explanations about how you can
+leverage them to fit the needs of your application.
 
 ### Adding a row
 
-If the control has its [*on_add*](#p-on_add) property set to a callback function, an icon appears in
-the top-left corner of the table:
+If the control is editable (whether the [*editable*](#p-editable) property is set to True, or an
+of the table's column as its [*editable[]*](#p-editable[column_name]) property set to True), **and**
+if the [*on_add*](#p-on_add) property is not set to False, an 'Add' icon appears in the top-left
+corner of the table:
 <figure class="tp-center">
     <img src="../table-add-icon-d.png" class="visible-dark"  width="40%"/>
     <img src="../table-add-icon-l.png" class="visible-light" width="40%"/>
-    <figcaption>"Add" icon in the top-left corner of the table</figcaption>
+    <figcaption>'Add' icon in the top-left corner of the table</figcaption>
 </figure>
 The user can click this icon to add a row to the table. This action triggers the callback function
 set to the [*on_add*](#p-on_add) property. The function should create and insert a new row.
@@ -294,11 +333,11 @@ new value.
 ### Deleting a row
 
 If the control has its [*on_delete*](#p-on_delete) property set to a callback function, each row
-of the table displays a 'trash' icon to its left:
+of the table displays a 'Delete' icon to its left:
 <figure class="tp-center">
     <img src="../table-delete-icon-d.png" class="visible-dark"  width="50%"/>
     <img src="../table-delete-icon-l.png" class="visible-light" width="50%"/>
-    <figcaption>Trash icon to the left of a row</figcaption>
+    <figcaption>'Delete' icon to the left of a row</figcaption>
 </figure>
 The user can click on this icon to delete the row.<br/>
 The icon then turns to the following:
@@ -307,8 +346,8 @@ The icon then turns to the following:
     <img src="../table-delete-icon-confirm-l.png" class="visible-light" width="50%"/>
     <figcaption>Validating row deletion</figcaption>
 </figure>
-The user must then choose between validating the deletion (checkmark icon) or canceling the
-operation (cross icon).
+The user must then choose between validating the deletion ('✓' icon) or canceling the
+operation ('🗙' icon).
 
 If the user confirms the deletion, Taipy GUI invokes the callback function set to the
 [*on_delete*](#p-on_delete) property.
@@ -325,13 +364,13 @@ set the new DataFrame to the state slot. The display updates on the spot.
 
 ### Editing cells
 
-If the table's [*on_edit*](#p-on_edit) property is set, an "Edit" icon appears on the right end of
+If the table's [*on_edit*](#p-on_edit) property is not False, an 'Edit' icon appears on the right end of
 each cell. Users can click this icon to modify the values of individual cells.<br/>
 Here is how this icon looks:
 <figure class="tp-center">
     <img src="../table-edit-icon-d.png" class="visible-dark"  width="80%"/>
     <img src="../table-edit-icon-l.png" class="visible-light" width="80%"/>
-    <figcaption>Edit icon to the right of a cell</figcaption>
+    <figcaption>'Edit' icon to the right of a cell</figcaption>
 </figure>
 
 When the user clicks this icon, the cell becomes editable:
@@ -340,14 +379,18 @@ When the user clicks this icon, the cell becomes editable:
     <img src="../table-edit-value-l.png" class="visible-light"/>
     <figcaption>Editing the cell value</figcaption>
 </figure>
-The user can enter a new cell value and click the check (✓) icon (or press the Enter key) to
+The user can enter a new cell value and click the check ('✓') icon (or press the Enter key) to
 validate the entry.<br/>
-The user may also click the cancel (🗙) icon (or press the Esc key) to cancel the operation.
+The user may also click the cancel ('🗙') icon (or press the Esc key) to cancel the operation.
 
 !!! note "Enumerated values"
     A table control can be defined so that values are constrained to predefined values. In this
     situation, the interaction for editing value is slightly different, as described in the
     [section on enumerated values](#enumerated-values).
+
+#### Predefined implementation of on_edit
+
+If [*on_edit*](#p-on_edit) is not False or 
 
 If the operation is validated, the control triggers the function set to the [*on_edit*](#p-on_edit)
 property to process the new value.
@@ -370,81 +413,37 @@ the value of *state.data* has **not** changed, and Taipy GUI is unaware of the c
 
 ## Enumerated values
 
-You can indicate that columns of the table hold values that must be one among a list of predefined
-values. These are called "enumerated" columns.<br/>
-Although Taipy GUI has no control over the values that are stored in the data provided to a table
-control, it can help drive or restrict values when a user interacts with the table to modify those
-values.
+You can designate certain table columns as *enumerated columns*, requiring their values to be
+selected from a predefined list. While Taipy GUI does not control the actual data stored in the
+table, it can restrict user input during editing to ensure only valid values are entered.<br/>
+When a user edits a cell, only values from the predefined list will be selectable.
 
-To illustrate this feature with an example, consider the following table:
-<figure class="tp-center">
-    <img src="../table-enum-example-d.png" class="visible-dark"/>
-    <img src="../table-enum-example-l.png" class="visible-light"/>
-    <figcaption>A table with an enumerated column</figcaption>
-</figure>
-This table contains a list of city names, along with their corresponding country, continent, and
-population (in millions).
 
-The user can edit any of the table cells. However, it would make edition (and validation) easier if
-(at least) the "Continent" column was constrained so that the user could only provide valid
-continent names.<br/>
-This situation is precisely the purpose of enumerated columns. To indicate that a column is
-enumerated, you must set its [*lov*](#p-lov[column_name]) indexed property to a list of valid values
-("lov" stands for "list of values").<br/>
-In our example, we need to create a list of valid continent names and set this list as the value of
-the *lov[Continent]* property.
-
-The Python code would be:
-```python
-all_continents = ["Africa", "America", "Antarctica", "Asia", "Europe", "Oceania"]
-```
-
-And the table definition would use the variable *all_continents*:
-!!! taipy-element
-    default={data}
-    lov[Continent]={all_continents}
-    on_edit=cell_edit
-
-If the user requests the change of a cell from the Continent column, this is how the cell would look
-like:
-<figure class="tp-center">
-    <img src="../table-edit-enum-d.png" class="visible-dark"/>
-    <img src="../table-edit-enum-l.png" class="visible-light"/>
-    <figcaption>Editing an enumerated value</figcaption>
-</figure>
-
-Note that there now is a button that, if pressed, displays a drop-down list of predefined values
-that the user can choose from:
-<figure class="tp-center">
-    <img src="../table-edit-enum-menu-d.png" class="visible-dark"/>
-    <img src="../table-edit-enum-menu-l.png" class="visible-light"/>
-    <figcaption>List of predefined values to pick from</figcaption>
-</figure>
-
-These values are, as expected, the ones listed in the *all_continents* variable defined above.<br/>
-If the user enters a value that is **not** in the list and validates, the table control refuses to
-use this new value: it is not in the *lov* for that column.
+To enable this, use the [*lov*](#p-lov[column_name]) indexed property property for the specific
+column. You must create a list of allowed values for a column (e.g., "MyColumn") and assign this
+list to the [*lov[MyColumn]*](#p-lov[column_name]) property.
 
 !!! note "Value restrictions"
-    In the example above, the user can select a continent name from the list when editing a cell
-    from the Continent column. No value except the ones from the enumeration is accepted in the
-    cell.
+    In most cases the user can select a value name from the predefined list. Only values from this
+    list are accepted in the cell.<br/>   
+    However, in some cases, the predefined list should serve more as a recommendation rather than a
+    strict set of allowed values.
 
-    In some situations, the enumeration should be considered more as a list of recommendations and
-    not so much as a list of allowed values.<br/>
-    A typical case would be a column that expects to store color names. Although the application can
-    provide a predefined list of color names to the user (because they are the most common ones,
-    like "Red", "Orange", "Yellow", "Green", "Blue", and "Violet" from the rainbow colors), the user
-    may want to enter valid color names such as "Rose" or "Maroon".
+    A common example would be a column intended to store color names. The application might provide
+    a list of commonly used colors (e.g., red, orange, yellow, green, blue, and violet), but users
+    may also want to enter other valid color names such as "rose" or "maroon."
 
-    You can allow that by setting the first element of the *lov* for that column to None.<br/>
-    If you define:
+    To allow flexibility while still providing suggestions, you can set the first element of the
+    *lov* list for that column to None. For example:
     ```python
     predefined_colors = [None, "Red", "Orange", "Yellow", "Green", "Blue", "Violet"]
     ```
-    Then, setting the *lov* for the color name column to *predefined_colors* will guide users who
-    want to change a value in that column but will **not** enforce the validated value.
+    By assigning *predefined_colors* to the [*lov*](#p-lov[column_name]) property for the column
+    that holds color names, you can guide users without enforcing strict validation, allowing them
+    to enter other values if needed.
 
+Below is a complete [example](#pick-from-a-list) of this feature.
+    
 ## The *rebuild* property
 
 When the application modifies the value of a dynamic property, the impact of the change is
@@ -557,7 +556,7 @@ The resulting image looks like this:
     <figcaption>A simple table</figcaption>
 </figure>
 
-### Large data
+## Large data
 
 The example above had only six lines of data. If we change the *x_range* definition
 to create far more data lines, we come up with a table with much more data to display:
@@ -613,7 +612,7 @@ the other.
 If you want to display a specific set of columns, you can use the [*columns*](#p-columns)
 property to indicate what columns should be displayed.
 
-Here is how you would define the table control if you want to hide the column *y2*
+Here is how you would define the table control if you want to hide the column "y2"
 from the examples above:
 !!! taipy-element
     default={data}
@@ -695,31 +694,363 @@ The resulting display reflects what is requested:
     <figcaption>Formatted columns</figcaption>
 </figure>
 
+## Custom formats {data-source="gui:doc/examples/controls/table_custom_format.py"}
+
+You can create a Python function to format the cell values according to the specific needs of your
+application. By assigning this function to the [*format_fn[column_name]*](#p-format_fn[column_name])
+property, the function will be used to format the cell values of that particular column when the
+table is displayed. This allows you to have entire control on how data are presented to the user.
+
+Below is a simple example demonstrating this feature.<br/>
+Suppose you are building an application that manages a table with user names and passwords. For
+security reasons, when displaying the table, the passwords will be hidden (e.g., replaced with
+asterisks).<br/>
+However, you will allow the passwords to be visible during editing, where they will appear in plain
+text.
+
+Here is the dataset that we will use, stored in the variable *data*:
+```python
+data = {
+    "User Name": ["johndoe", "janedoe", "admin", "sampleuser", "guestaccount" ],
+    "Password": ["Password123!", "Test@2023", "Admin#789", "SamplePass#1", "Guest!2024"]
+    }
+```
+
+Here is the definition of the table control:
+!!! taipy-element
+    default={data}
+    format_fn[Password]:f=hide_text
+    editable[Password]:b=True
+    show_all:b=True
+    on_add:bno=False
+    on_delete:bno=False
+
+Here are the important property settings to mention:
+
+- The [*format_fn*](#p-format_fn[column_name]) property, for the "Password" column, is set to the
+  *hide_text()* function (described below) to perform the masking of the text.
+- The [*editable[Password]*](#p-editable[column_name]) property is set to True, making only the
+  "Password" column editable.
+- The [*on_add*](#p-on_add) and [*on_delete*](#p-on_delete) properties are both set to False,
+  preventing the user from adding or deleting rows in the table.
+
+Here is the formatting function:
+```python
+def hide_text():
+    return "*" * 8
+```
+This formatting function for the password column does not rely on any of the provided arguments
+(such as the cell value or column name). Instead, it always returns a string of eight asterisks
+("********"), effectively masking the password in the displayed table. The function ensures that
+passwords are consistently hidden regardless of their actual length.
+
+Here is what the table looks like:
+<figure class="tp-center">
+    <img src="../table-custom-format1-d.png" class="visible-dark"  width="90%"/>
+    <img src="../table-custom-format1-l.png" class="visible-light" width="90%"/>
+    <figcaption>Custom format</figcaption>
+</figure>
+
+If the user clicks the *edit* button next to the masked password, the text is revealed, showing the
+actual password in plain text. This allows the user to view or modify the password, but only when
+explicitly editing the field.<br/>
+Here is what the user can see in this situation:
+<figure class="tp-center">
+    <img src="../table-custom-format2-d.png" class="visible-dark"  width="90%"/>
+    <img src="../table-custom-format2-l.png" class="visible-light" width="90%"/>
+    <figcaption>Editing the cell</figcaption>
+</figure>
+
+## Pick from a list {data-source="gui:doc/examples/controls/table_enums.py"}
+
+Here is an example demonstrating how to use enumerated values to guide user input in a table.
+
+As mentioned earlier, you need to set the [*lov*](#p-lov[column_name]) indexed property for columns
+that should only accept values from a predefined list.
+
+To illustrate this feature with an example, consider the following table:
+<figure class="tp-center">
+    <img src="../table-enums-d.png" class="visible-dark"/>
+    <img src="../table-enums-l.png" class="visible-light"/>
+    <figcaption>A table with an enumerated column</figcaption>
+</figure>
+This table contains a list of city names along with their respective  country, continent, and
+population (in millions).
+
+While the user can edit any cell, it would simplify editing and validation if the "Continent" column
+were constrained to only accept valid continent names.</br>
+This is precisely the purpose of *enumerated columns*: To designate a column as enumerated, you must
+set its [*lov*](#p-lov[column_name]) indexed property to a list of allowed values..<br/>
+In this example, we need to create a list of valid continent names and assign it to the
+*lov[Continent]* property.
+
+The Python code for defining the list of valid continents is:
+```python
+all_continents = ["Africa", "America", "Antarctica", "Asia", "Europe", "Oceania"]
+```
+
+The table definition would then reference this *all_continents* variable:
+!!! taipy-element
+    default={data}
+    lov[Continent]={all_continents}
+    editable:b=True
+    on_add:bno=False
+    on_delete:bno=False
+    show_all:b=True
+
+Note that all the cells in table can be edited because [*editable*](#p-editable) is set to
+True.<br/>
+However we prevent users from creating or deleting new rows by setting [*on_add*](#p-on_add) and
+[*on_delete*](#p-on_delete) to False.
+
+When the user attempts to edit a cell in the "Continent" column, it will look like this:
+<figure class="tp-center">
+    <img src="../table-edit-enum-d.png" class="visible-dark"/>
+    <img src="../table-edit-enum-l.png" class="visible-light"/>
+    <figcaption>Editing an enumerated value</figcaption>
+</figure>
+
+A button will appear in the cell, which when clicked, displays a drop-down list of predefined values
+that the user can select from:
+<figure class="tp-center">
+    <img src="../table-edit-enum-menu-d.png" class="visible-dark"/>
+    <img src="../table-edit-enum-menu-l.png" class="visible-light"/>
+    <figcaption>List of predefined values to pick from</figcaption>
+</figure>
+
+## Action on edit {data-source="gui:doc/examples/controls/table_edit_action"}
+
+While the table control includes a built-in mechanism to automatically update the bound data object
+(in the [*data*](#p-data) property) when users edit the table (i.e., by adding or removing rows, or
+modifying cell values), you can also define custom callback functions to handle or restrict these
+changes.<br/>
+This enables you to execute specific actions based on user modifications.
+
+You can achieve this by setting the [*on_add*](#p-on_add), [*on_delete*](#p-on_delete), or
+[*on_edit*](#p-on_edit) on_edit properties.<br/>Below is an example that demonstrates this
+capability:
+
+
+Suppose we are creating an application that displays how a user's assets are distributed across
+various categories. The table would list each category alongside the allocated amount. The purpose
+of the application is to show the percentage of each allocation relative to the user's total assets
+and allow the user to modify the amount allocated to each category.<br/>
+Any changes in the allocation will trigger a recalculation of the distribution across all
+categories.
+
+Below is the Python code that initializes the dataset with arbitrary initial values:
+```py linenums="1"
+categories = ["Real Estate", "Stocks", "Cash", "Retirement", "Other"]
+amounts = [190000, 60000, 100000, 110000, 40000]
+
+def compute_ratio(amounts: list[int]) -> list[int]:
+    total = sum(amounts)
+    return [int((amount / total) * 100) for amount in amounts]
+
+ratio = compute_ratio(amounts)
+
+data = pd.DataFrame({"Category": categories, "Amount": amounts, "%": ratio})
+```
+The *data* variable consists of three distinct series:
+
+- *categories* holds the different asset categories.
+- *amounts* holds the allocated amount for each category.
+- *ratio* holds the percentage of each amount relative to the total assets.<br/>
+  The *compute_ratio()* function (defined on line 4) calculates these percentages and returns a list
+  of integers representing the proportion of each amount.<br/>
+  The initial ratios are computed on line 8 and stored in the *ratio* variable.
+- The complete dataset is assembled in the *data* variable on line 10.
+
+Here is the table control definition:
+!!! taipy-element
+    default={data}
+    editable[Amount]:b=True
+    on_edit:f=update
+    on_add:bno=False
+    on_delete:bno=False
+    show_all:b=True
+
+Setting [*editable[Amount]*](#p-editable[column_name]) to True makes the column editable.<br/>
+Due to the configuration of [*on_edit*](#p-on_edit), when the user modifies a value in the 'Amount'
+column, the *update()* function is invoked.<br/>
+To disable the ability to add or remove rows, the [*on_add*](#p-on_add) and
+[*on_delete*](#p-on_delete) properties are set to False.
+
+This is how the page looks like initially:
+<figure class="tp-center">
+    <img src="../table-edit-action1-d.png" class="visible-dark"/>
+    <img src="../table-edit-action1-l.png" class="visible-light"/>
+    <figcaption>Initial page</figcaption>
+</figure>
+
+Next, let's add functionality to update the "%" column when a user modifies the "Amount"
+column.<br/>
+Here is the definition of the *update()* function:<br/>
+```python linenums="1"
+def update(state: State, var_name: str, payload: dict):
+    with state:
+        state.get_gui().table_on_edit(state, var_name, payload)
+        state.data["%"] = compute_ratio(state.data["Amount"])
+        state.refresh(var_name)
+```
+In line 2, we create a context block (with *state*) to batch changes to the state. This is important
+because modifying both the "Amount" and "%" columns could otherwise trigger unnecessary page
+refreshes.</br>
+Line 3 invokes the default behavior for handling user edits, updating the "Amount" column based on
+the user’s input.</br>
+In line 4, the "%" column is updated by recalculating the ratio of all categories.<br/>
+Finally, line 5 refreshes the *var_name* variable (set to "data") to update the display.
+
+The requirements have now been implemented. Now, let's see how this works.<br/>
+Assume the user enters a new value in a cell in the "Amount" column by pressing the 'Edit' icon
+next to the cell:
+<figure class="tp-center">
+    <img src="../table-edit-action2-d.png" class="visible-dark"/>
+    <img src="../table-edit-action2-l.png" class="visible-light"/>
+    <figcaption>Changing the value of a cell</figcaption>
+</figure>
+
+Now, suppose the user changes the value from 190,000 to 80,000 and confirms the change by pressing
+the '✓' icon. The [*on_edit*](#p-on_edit) setting triggers the invocation of the *update()*
+function, which in turn calls *compute_ratio()* to recalculate all ratios. Once the new ratios are
+stored in the "%" column, the page is refreshed to display the updated results:
+<figure class="tp-center">
+    <img src="../table-edit-action3-d.png" class="visible-dark"/>
+    <img src="../table-edit-action3-l.png" class="visible-light"/>
+    <figcaption>Ratios were recomputed</figcaption>
+</figure>
+
+As you can see, all the ratio values in the "%" column have been updated to reflect the impact of
+the new value.
+
+## Guarding edits {data-source="gui:doc/examples/controls/table_guard_edits.py"}
+
+The [*on_edit*](#p-on_edit) callback is triggered when the content of a cell is edited by the user.
+Your application may need to respond to this event, for instance, to perform computations or update
+related data.<br/>
+While you could use the `on_change` callback to detect changes, doing so would not provide
+contextual information about the specific cell that was modified, which may be useful in certain
+scenarios.
+
+In this example, we use the [*on_edit*](#p-on_edit) callback to address this limitation.<br/>
+This property is set to a function that intercepts the cell edit operations.
+
+We aim to build a small application that helps manage a team of employees. The requirements for the
+application are as follows:
+
+- Team Size: The team should consist of three to six employees.<br/>
+- Salary Adjustment: The salary for each employee should be rounded to the nearest multiple of $500.
+
+The application interface is a table that displays the list of employees, with a column showing the
+proposed salary for each.
+
+- The user can remove a candidate by pressing the "Delete" button in the corresponding row, but the
+  list must contain at least three employees.
+- The user can add a new candidate to the list by pressing the "Add" button, but no more than six
+  employees can be added.
+- The user can edit any employee's salary, and the final amount is rounded to the nearest multiple
+  of $500.
+
+We begin by initializing the variable that stores the list of candidates. It is initially empty:
+```python
+candidates = {"Name": [], "Salary": []}
+```
+
+Next, we define a function that selects a new candidate. The exact implementation of this function
+is not critical - it could retrieve data from a database or other sources containing candidate names
+and their salary expectations. The only important detail is that this function returns a tuple where
+the first element is the candidate’s name, and the second element is their initial salary proposal:
+```python
+def pick_user() -> tuple[str, int]:
+    ...
+```
+
+We can now populate the list with an initial set of four candidates:
+```python
+for candidate in [pick_user() for _ in range(4)]:
+    candidates["Name"].append(candidate[0])
+    candidates["Salary"].append(candidate[1])
+```
+
+Now, we define our table component:
+!taipy-element
+    default={candidates}
+    editable[Salary]:b=True
+    on_edit:f=force_salary
+    on_add:f=check_count
+    on_delete:f=check_count
+    show_all:b=True
+Note that:
+
+- The cells in the "Salary" column are editable.
+- The [*on_edit*](#p-on_edit) property is set to invoke the *force_salary()* function.
+- The [*on_add*](#p-on_add) and [*on_delete*](#p-on_delete) properties are set to invoke the
+  *check_count()* function.
+
+Below is the initial state of the table when the application starts:
+<figure class="tp-center">
+    <img src="../table-edit-react1-d.png" class="visible-dark"/>
+    <img src="../table-edit-react1-l.png" class="visible-light"/>
+    <figcaption>Initial table</figcaption>
+</figure>
+
+To implement the constraint that there should be no less than three candidates in the list, and no
+more than 
+
 ## Aggregation
 
-To get the aggregation functionality in your table, you must indicate which columns can be aggregated
-and how to perform the aggregation.
+To get the aggregation functionality in your table, you must indicate which columns can be
+aggregated and how to perform the aggregation.
 
 This is done using the indexed [*group_by*](#p-group_by[column_name]) and
 [*apply*](#p-apply[column_name]) properties.
 
-The [*group_by[column_name]*](#p-group_by[column_name]) property, when set to True indicates that the
-column *column_name* can be aggregated.
+The [*group_by[column_name]*](#p-group_by[column_name]) property, when set to True indicates that
+the column *column_name* can be aggregated.
 
 The function provided in the [*apply[column_name]*](#p-apply[column_name]) property indicates how to
 perform this aggregation. The value of this property, which is a string, can be:
 
-- A built-in function. Available predefined functions are the following: `count`, `sum`, `mean`, `median`,
-  `min`, `max`, `std`, `first` (the default value), and `last`.
+- A built-in function. Available predefined functions are the following: `count`, `sum`, `mean`,
+  `median`, `min`, `max`, `std`, `first` (the default value), and `last`.
 - The name of a user-defined function or a lambda function.<br/>
-  This function receives a single parameter which is the series to aggregate, and it must return a scalar
-  value that would result from the aggregation.
+  This function receives a single parameter which is the series to aggregate, and it must return a
+  scalar value that would result from the aggregation.
 
 This control definition is all it takes to add aggregation functionality to the table:
-!!! taipy-element
-    default={data}
-    group_by[Group column]:b=True
-    apply[Apply column]=count
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        <|{data}|table|group_by[Group column]|apply[Apply column]=count|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:table group_by[Group column] apply[Apply column]="count">{data}</taipy:table>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.table("{data}", properties="{properties}")
+        ```
+
+        !!! note
+            Note that we are using the [*properties*](#p-properties) property.<br/>
+            This is due to the fact that the column names cannot be used when expressing the indexed
+            property name, which would not be a valid Python identifier. The workaround is to create
+            a dictionary called *properties* that defines those property values:
+            ```python
+            properties = {
+                "group_by[Group column]": True,
+                "apply[Apply column]": "count"
+            }
+            ```
 
 ## Cell tooltips
 
@@ -740,7 +1071,7 @@ Based on these parameters, the function must return a string that defines a tool
 cell's tooltip text.
 !!! taipy-element
     default={data}
-    tooltip={lambda state, val, idx: "A tooltip" if idx % 2 == 0 else "Another tooltip"}
+    tooltip:f=lambda state, val, idx: "A tooltip" if idx % 2 == 0 else "Another tooltip"
 
 # Styling
 
@@ -793,18 +1124,17 @@ Based on these parameters, the function must return a string that defines a CSS 
 be added to the CSS classes for this table row or this specific cell.<br/>
 The [example](#styling-rows) below shows how this works.
 
-## Styling rows
+### Styling rows {data-source="gui:doc/examples/controls/table_styling_rows/"}
 
 To give a specific style to a table row, you will use the [*style*](#p-style) property (note that
 you can find general instructions on how to apply style to visual elements in
-[this page](../../../../userman/gui/styling/index.md).<br/>
+[this page](../../../../userman/gui/styling/index.md)).<br/>
 This property holds a function that is invoked when each row is rendered, and it must return
 the name of a style, defined in CSS.
 
 Here is how a row styling function can be defined:
-
 ```python
-def even_odd_style(_1, row, _2):
+def even_odd_style(_1, row):
     if row % 2:
         return "blue-row"
     else:
@@ -814,11 +1144,10 @@ def even_odd_style(_1, row, _2):
 We only use the second parameter since, in this straightforward case, we do not need the application
 *state* (first parameter) or the values in the row (third parameter).<br/>
 Based on the row index (received in *index*), this function returns the name of the style to apply
-to the row: "blue-cell" if the index is odd, "red-cell" if it is even.
+to the row: "blue-row" if the index is odd, "red-row" if it is even.
 
 We need to define what these style names mean. This is done in a CSS stylesheet, where the following
 CSS content would appear:
-
 ```css
 .blue-row>td {
     color: white;
@@ -844,62 +1173,176 @@ The resulting display will be what we expected:
     <img src="../table-rowstyle-l.png" class="visible-light" width="75%"/>
     <figcaption>Styling the rows</figcaption>
 </figure>
+The "red-row" CSS class applies to every even row and similarly the "blue-row" CSS class for odd
+rows.
 
 Note that the styling function is so simple that we could have made it a lambda, directly
 in the control definition:
 !!! example "Alternative definition"
     === "Markdown"
         ```
-        <|{data}|table|style={lambda s, idx, r: "blue-cell" if idx % 2 == 0 else "red-cell"}|>
+        <|{data}|table|style={lambda _, row: 'blue-row' if row % 2 else 'red-row'}|show_all|>
         ```
 
     === "HTML"
         ```html
-        <taipy:table data="{data}" style="{lambda s, idx, r: 'blue-cell' if idx % 2 == 0 else 'red-cell'}" />
+        <taipy:table data="{data}" style="{lambda _, row: 'blue-row' if row % 2 else 'red-row'}" show_all/>
         ```
 
     === "Python"
         ```python
         import taipy.gui.builder as tgb
         ...
-        tgb.table("{data}", style={lambda s, idx, r: "blue-cell" if idx % 2 == 0 else "red-cell"}) />
+        tgb.table("{data}", style=lambda _, row: "blue-row" if row % 2 else "red-row", show_all=True)
         ```
-## Styling column
+This definition of the control makes the *even_odd_style()* function useless.
 
-To style a specific column, you need to modify the example codes of [Styling rows](#styling-rows). 
+### Styling cells  {data-source="gui:doc/examples/controls/table_styling_cells/"}
 
-Here is how a column styling function can be defined:
+To style specific cells, you must use the [*style[]*](#p-p-style[column_name]) indexed property.
+This property should be set to a function that returns a CSS class name, allowing dynamic styling
+based on the parameters passed to the function. These parameters are:
 
-```python
-def even_odd_style(state, value, index, row, column_name):
-    if index % 2:
-        return "blue-cell"
-    else:
-        return "red-cell"
-```
+- The value of the cell,
+- The index of the row,
+- The value of another column in the same row,
+- The name of the column.
 
-Here is the related CSS content:
+Here is an example of how to use this property.<br/>
+Consider a table with three columns:
 
-```css
-.blue-cell {
+- Column "x" contains integers from 0 to 10.<br/>
+  **Requirement**: Cells in the "x" column should have a background color alternating between two
+  shades of green.
+- Column "y" contains the square of the corresponding values in column "x".<br/>
+  **Requirement**: Cells in the "y" column should have a background color alternating between two
+  shades of red.
+- Column "z" contains random values between 0 and 5.<br/>
+  **Requirement**: Cells in the "z" column should have a background color that varies based on the
+  value: the smaller the value, the lighter the shade of blue.
+
+Here are the CSS classes that this application will use:
+```css linenums="1"
+.reddish {
+    /* Set text color to white */
     color: white;
-    background-color: blue;
+    /* Strong red background */
+    background-color: #bf1313;
 }
-.red-cell {
-    color: yellow;
-    background-color: red;
+.lightreddish {
+    /* Set text color to black */
+    color: black;
+    /* Light red background */
+    background-color: #ff1919;
+    /* Set bold typeface */
+    font-weight: bold;
+}
+.greenish {
+    /* Set text color to white */
+    color: white;
+    /* Green background */
+    background-color: #75bf75;
+}
+.lightgreenish {
+    /* Set text color to black */
+    color: black;
+    /* Light green background */
+    background-color: #9cff9c;
+    /* Set bold typeface */
+    font-weight: bold;
+}
+.col0 {
+    /* Light gray background */
+    background-color: #d0d0d0;
+}
+.col1 {
+    /* Light purple background */
+    background-color: #a4a0cf;
+}
+.col2 {
+    /* Medium purple background */
+    background-color: #7970cf;
+}
+.col3 {
+    /* Darker purple background */
+    background-color: #4e40cf;
+    /* Set text color to white */
+    color: white;
+}
+.col4 {
+    /* Dark purple background */
+    background-color: #2410cf;
+    /* Set text color to white */
+    color: white;
+}
+.col5 {
+    /* Dark blue background */
+    background-color: #1b02a8;
+    /* Set text color to white */
+    color: white;
 }
 ```
 
-To apply the style to a specific column, we need to specify the column in the style property:
+- The "redish" and "lightreddish" classes (lines 1 to 13) will apply to the "x" column. The
+  "reddish" class has a strong red background and uses white text, while the "lightreddish" class
+  uses a lighter red background with black text and bold typeface.
+- The "greenish" and "lightgreenish" classes (lines 15 to 28) will apply to the "y" column. The
+  "greenish" class has a green background with white text, while the lightgreenish class has a
+  lighter green background with black text and bold typeface.
+- The "col0" to "col5" classes (lines 29 to 58) define the background color for the "z" column.
+  These classes create a gradient from light gray ("col0") to dark blue ("col5"). For classes with
+  darker backgrounds (from "col3" to "col5"), white text is used for better readability.
+
+Below is how we configure the table control:
 !!! taipy-element
     default={data}
-    style[y1]:f=even_odd_style
+    style[x]:f=xy_style
+    style[y]:f=xy_style
+    style[z]:f=z_style
+    show_all:b=True
 
-As expected, the result is a table where the style of the columns changes depending on the index:
+Both *style[x]* and *style[y]* are set to the *xy_style()* function defined below.<br/>
+*style[z]* is set to *z_style()*, which functions differently to meet specific requirements.
+
+Here is the definition for *xy_style()* and *z_style()*, used in the control definition:
+```python
+def xy_style(_1, _2, index, _3, column_name):
+    return (
+        ("greenish" if index % 2 else "lightgreenish")
+        if column_name == "x"
+        else ("reddish" if index % 2 else "lightreddish")
+    )
+
+def z_style(_, value):
+    return f"col{value}"
+```
+
+*xy_style()* uses the column name (passed as the *column_name* parameter) and the row index (passed
+as the *index* parameter) to determine the CSS class for each cell:
+
+- If the column is "x", it applies either the "greenish" or "lightgreenish" class, alternating based
+  on the row index (even or odd).
+- For the column "y" (`else` case), it applies either the "reddish" or "lightreddish" class, also
+  alternating based on the row index.
+
+*z_style()* dynamically builds a CSS class name based on the value of the cell, using the *value*
+parameter. For example, if the value is 2, it will return "col2".
+
+The result is a table where each cell is styled with the appropriate CSS class based on its location
+or value, ensuring consistent and logical styling across the table:
 <figure class="tp-center">
-    <img src="../table-columnstyle-d.png" class="visible-dark"  width="50%"/>
-    <img src="../table-columnstyle-l.png" class="visible-light" width="50%"/>
-    <figcaption>Styling the column</figcaption>
+    <img src="../table-styling-cells-d.png" class="visible-dark"  width="80%"/>
+    <img src="../table-styling-cells-l.png" class="visible-light" width="80%"/>
+    <figcaption>Styling the cells</figcaption>
 </figure>
 
+Note that the implementation of *z_style()* is simple enough that it could be replaced with a lambda
+function directly in the control definition:
+!!! taipy-element
+    default={data}
+    style[x]:f=xy_style
+    style[y]:f=xy_style
+    style[z]:f=lambda _, v: f'col{v}'
+    show_all:b=True
+
+In this case, the *z_style()* function would no longer be needed.
