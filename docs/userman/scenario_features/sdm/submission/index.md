@@ -25,7 +25,7 @@ For more details and examples on how to submit scenarios, sequences or tasks, se
 
 # Submission attributes
 
-Here is the list of the `Submission^`'s attributes:
+Here is the list of `Submission^`'s main attributes:
 
 - *entity_id*: The identifier of the entity that was submitted.
 - *id*: The identifier of the `Submission^` entity.
