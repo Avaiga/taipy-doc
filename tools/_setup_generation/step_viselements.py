@@ -317,20 +317,17 @@ class VisElementsStep(SetupStep):
                 default_value = (
                     f'{desc["default_value"]}' if "default_value" in desc else ""
                 )
-                if m := re.match(r"^(<i>.*?</i>)$", default_value):
+                if m := re.match(r"^(<(\w+)>.*?</\2>)$", default_value):
                     default_value = f'"{m[1]}"'
-                elif m := re.match(r"^`(.*?)`$", default_value):
-                    default_value = f"{m[1]}"
-                elif default_value == "scatter" or default_value == "lines+markers":
-                    default_value = f'"{default_value}"'
                 if default_value:
                     try:
                         _ = eval(default_value)
                     except Exception:
-                        raise SyntaxError(
-                            f"Default value for property '{property}' of element '{element_type}' is "
-                            f"not a valid Python expression ({default_value})"
-                        )
+                        if "lambda" not in default_value:
+                            print(
+                                f"WARNING: Default value for property '{property}' of element "
+                                f"'{element_type}' is not a valid Python expression ({default_value})"
+                            )
                 return (
                     f"{property}={default_value if default_value else 'None'}, ",
                     f"{indent*' '}{desc['name']} ({type}){dynamic}: {doc}\n",
@@ -533,7 +530,7 @@ class [element_type]({base_class}):
             new_documentation += f"{html_2}\n        ```\n"
             # Page Builder syntax "^$"
             BP_IDX_PROP_RE = re.compile(r"^(.*?)\[([\w\d]+)\]$", re.M)
-            generate_page_builer_api = True
+            generate_page_builder_api = True
             pb_properties = []
             for n, v, t in properties:
                 if "[" in n:
@@ -541,13 +538,13 @@ class [element_type]({base_class}):
                         print(
                             f"WARNING - Property '{n}' in examples for {type} prevents Python code generation"
                         )
-                        generate_page_builer_api = False
+                        generate_page_builder_api = False
                     else:
                         pname = f"{idx_prop_match[1]}__{idx_prop_match[2]}"
                         pb_properties.append((pname, v, t))
                 else:
                     pb_properties.append((n, v, t))
-            if generate_page_builer_api:
+            if generate_page_builder_api:
                 new_documentation += '\n    === "Python"\n\n'
                 new_documentation += "        ```python\n"
                 new_documentation += (

@@ -25,15 +25,15 @@ For more details and examples on how to submit scenarios, sequences or tasks, se
 
 # Submission attributes
 
-Here is the list of the `Submission^`'s attributes:
+Here is the list of `Submission^`'s main attributes:
 
 - *entity_id*: The identifier of the entity that was submitted.
-- _id_: The identifier of the `Submission^` entity.
-- _jobs_: A list of jobs.
-- _properties_: A dictionary of additional properties.
-- _creation_date_: The date of this submission's creation.
-- _submission_status_: The current status of this submission.
-- _version_: The string indicates the application version of the submission to instantiate.
+- *id*: The identifier of the `Submission^` entity.
+- *jobs*: A list of jobs.
+- *properties*: A dictionary of additional properties.
+- *creation_date*: The date of this submission's creation.
+- *submission_status*: The current status of this submission.
+- *version*: The string indicates the application version of the submission to instantiate.
     If not provided, the latest version is used.
 
 ## Submission Status
@@ -50,6 +50,16 @@ Here is the list of the `Submission^`'s attributes:
 - `CANCELED`: The submission has been submitted but its execution has been canceled.
 - `FAILED`: The submission has a job that failed during its execution.
 - `COMPLETED`: The submission has successfully been executed.
+
+The timestamps of the status changes of a `Submission^` are recorded. These timestamps can be accessed
+using the following properties:
+
+- *submitted_at*: The datetime when the entity of the submission was submitted.
+- *run_at*: The datetime when the first job of the submission started running.
+- *finished_at*: The datetime when the all jobs of the submission finished.
+- *execution_duration*: The duration of the submission execution in seconds, which is the difference between
+  the *finished_at* and *run_at*. If the submisison is not finished, the duration is the difference
+  between the current time and the *run_at*.
 
 # Get/Delete Submission
 
