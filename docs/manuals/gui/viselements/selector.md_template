@@ -8,6 +8,14 @@ A filtering feature is available to display only a subset of the items.
 
 You can use an arbitrary type for all the items (see the [example](#display-a-list-of-objects)).
 
+!!! warning "Default value in the Page Builder API"
+    A known issue in Taipy GUI 3.1 is that you cannot use the default value when creating a
+    `selector` with the Page Builder API. You must explicitly set the *value* parameter:
+
+    `tgb.selector("{my_var}")` will not work properly.
+
+    You have to call: `tgb.selector(value="{my_var}")` to fix that problem.
+
 # Details
 
 By default, the selector control displays elements as a series of texts:
@@ -68,37 +76,106 @@ controls:
 
 You can create a selector on a series of strings:
 
-!!! taipy-element
-    default={value}
-    lov=Item 1;Item 2;Item 3
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        <|{value}|selector|lov=Item 1;Item 2;Item 3|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:selector lov="Item 1;Item 2;Item 3">{value}</taipy:selector>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.selector(value="{value}", lov="Item 1;Item 2;Item 3")
+        ```
 
 ## Display as a dropdown
 
 You can set the [*dropdown*](#p-dropdown) property to True to make the selector control a drop-down
 selector.
 
-!!! taipy-element
-    default={value}
-    lov=Item 1;Item 2;Item 3
-    dropdown:b=True
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        <|{value}|selector|lov=Item 1;Item 2;Item 3|dropdown|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:selector lov="Item 1;Item 2;Item 3" dropdown>{value}</taipy:selector>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.selector(value="{value}", lov="Item 1;Item 2;Item 3", dropdown=True)
+        ```
 
 ## Display with filter and multiple selection
 
 You can add a filter input field to display only strings that match the filter value.
 
-!!! taipy-element
-    default={value}
-    lov=Item 1;Item 2;Item 3
-    filter:b=True
-    multiple:b=True
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        <|{value}|selector|lov=Item 1;Item 2;Item 3|filter|multiple|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:selector lov="Item 1;Item 2;Item 3" filter multiple>{value}</taipy:selector>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.selector(value="{value}", lov="Item 1;Item 2;Item 3", filter=True, multiple=True)
+        ```
 
 ## Display a list of tuples
 
 A selector control that returns an id while selecting a label or `Icon^`.
 
-!!! taipy-element
-    default={sel}
-    lov={[("id1", "Label 1"), ("id2", Icon("/images/icon.png", "Label 2"),("id3", "Label 3")]}
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        <|{sel}|selector|lov={[("id1", "Label 1"), ("id2", Icon("/images/icon.png", "Label 2"),("id3", "Label 3")]}|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:selector lov="{[('id1', 'Label 1'), ('id2', Icon('/images/icon.png', 'Label 2'),('id3', 'Label 3')]}">{sel}</taipy:selector>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.selector(value="{sel}", lov="{[('id1', 'Label 1'), ('id2', Icon('/images/icon.png', 'Label 2'),('id3', 'Label 3')]}")
+        ```
 
 ## Display a list of objects
 
@@ -121,11 +198,27 @@ user_sel = users[2]
 If you want to create a selector control that lets you pick a specific user, you
 can use the following fragment.
 
-!!! taipy-element
-    default={user_sel}
-    lov={users}
-    type=User
-    adapter={lambda u: (u.id, u.name)}
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        <|{user_sel}|selector|lov={users}|type=User|adapter={lambda u: (u.id, u.name)}|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:selector lov="{users}" type="User" adapter="{lambda u: (u.id, u.name)}">{user_sel}</taipy:selector>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.selector(value="{user_sel}", lov="{users}", type="User", adapter="{lambda u: (u.id, u.name)}")
+        ```
 
 In this example, we use the Python list *users* as the selector's *list of values*.<br/>
 Because the control needs a way to convert the list items (which are instances of the class
