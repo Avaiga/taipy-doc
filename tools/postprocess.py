@@ -153,7 +153,7 @@ def on_post_build(env):
                                 new_title = re.sub(r"<a\s+.*?</a>", "", new_title)
                                 new_title, n = re.subn(r"<code>(.*?)</code>", r"\g<1>", new_title)
                                 new_title = "Taipy p" + new_title[1:]
-                        before = before[:t_match.start()] + new_title + before[t_match.end():]
+                        before = before[: match.start()] + new_title + before[match.end():]
                         html_content = (before
                             + f"<h1{match.group(1)}>{match.group(2)}</h1>"
                             + html_content[match.end():])
