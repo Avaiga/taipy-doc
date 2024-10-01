@@ -6,8 +6,8 @@ from ..setup import Setup
 
 class ConfigHandler:
     REPL_STR = "sections (Dict[str, Dict[str, Section]]): A dictionary containing all non-unique sections.\n"
-    METHODS_FILE = "config_methods_doc.txt"
-    ATTRIBUTES_FILE = "config_attributes_doc.txt"
+    METHODS_FILE = "config_doc.txt"
+    # ATTRIBUTES_FILE = "config_attributes_doc.txt"
     def __init__(self, setup: Setup):
         self.tools_dir = setup.tools_dir
 
@@ -18,10 +18,9 @@ class ConfigHandler:
             shutil.move(config_backup_path, os.path.join(taipy_config_dir, "config.py"))
 
     def inject_documentation(self):
-        attributes_to_inject = self._read_file(self.ATTRIBUTES_FILE)
         methods_to_inject = self._read_file(self.METHODS_FILE)
         self._backup()
-        self._inject_documentation(methods_to_inject, attributes_to_inject)
+        self._inject_documentation(methods_to_inject)
 
     @staticmethod
     def _read_file(file):
@@ -44,7 +43,7 @@ class ConfigHandler:
         config_path = os.path.join(taipy_config_dir, "config.py")
         shutil.copyfile(config_path, os.path.join(taipy_config_dir, "config.py.bak"))
 
-    def _inject_documentation(self, methods_to_inject, attributes_to_inject):
+    def _inject_documentation(self, methods_to_inject):
         config_path = os.path.join(self.tools_dir, "taipy", "config", "config.py")
 
         # Read config.py file
@@ -59,19 +58,24 @@ from typing import Any, Callable, Dict, List, Union, Optional
 import json
 from .common.scope import Scope
 from .common.frequency import Frequency
+from taipy.auth.config import AuthenticationConfig
 from taipy.config.section import Section
 from taipy.core.common.mongo_default_document import MongoDefaultDocument
+from taipy.core.config.core_section import CoreSection
 from taipy.core.config.job_config import JobConfig
 from taipy.core.config.data_node_config import DataNodeConfig
 from taipy.core.config.task_config import TaskConfig
-from taipy.core.config.scenario_config import ScenarioConfig\n"""
+from taipy.core.config.scenario_config import ScenarioConfig
+from taipy.enterprise.core.config import MigrationConfig
+from taipy.gui import _GuiSection
+from taipy.enterprise.core.config import TelemetrySection\n"""
+
         contents.insert(11, imports_to_inject)
         contents.insert(len(contents) - 2, methods_to_inject)
 
         # Fix code injection
         with open(config_path, "w") as f:
             new_content = "".join(contents)
-            new_content = new_content.replace(self.REPL_STR, self.REPL_STR + attributes_to_inject)
             new_content = new_content.replace(
                 "custom_document: Any = <class 'taipy.core.common.mongo_default_document.MongoDefaultDocument'>",
                 "custom_document: Any = MongoDefaultDocument",
@@ -83,10 +87,7 @@ from taipy.core.config.scenario_config import ScenarioConfig\n"""
             new_content = new_content.replace(
                 "taipy.core.config.data_node_config.DataNodeConfig", "DataNodeConfig"
             )
-            new_content = new_content.replace(
-                "taipy.core.config.task_config.TaskConfig", "TaskConfig"
-            )
-            new_content = new_content.replace("taipy.core.config.sequence_config.SequenceConfig", "SequenceConfig")
+            new_content = new_content.replace("taipy.core.config.task_config.TaskConfig", "TaskConfig")
             new_content = new_content.replace("taipy.config.common.frequency.Frequency", "Frequency")
             new_content = new_content.replace("taipy.config.section.Section", "Section")
             f.write(new_content)
