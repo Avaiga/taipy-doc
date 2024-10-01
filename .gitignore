@@ -118,6 +118,7 @@ mkdocs.yml
 /docs/refmans/gui/viselements/corelements/*.md
 !/docs/userman/gui/gui_example.ipynb
 /docs/userman/xrefs
+/docs/xrefs
 /docs/refmans/reference/**/*.md
 !/docs/refmans/reference/index.md
 /docs/refmans/reference_rest/*.md

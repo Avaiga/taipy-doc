@@ -164,7 +164,7 @@ def on_post_build(env):
     site_url = env.conf["site_url"]
     xrefs = {}
     multi_xrefs = {}
-    xrefs_path = "userman/xrefs"
+    xrefs_path = "xrefs"
     if os.path.exists(f"{site_dir}/{xrefs_path}"):
         with open(f"{site_dir}/{xrefs_path}") as xrefs_file:
             xrefs = json.load(xrefs_file)
@@ -337,7 +337,9 @@ def on_post_build(env):
                                 else:
                                     log.error(f"{message}{dir2}/{dir1}/{file}")
                         else:
-                            link = f"{desc[0]}.{c_name}"
+                            split = f"{desc[0]}.{c_name}".split(".")
+                            last = split.pop()
+                            link = "pkg_" + "/pkg_".join(split) + "/" + last
                             if m_name:
                                 link += f"/index.html#{desc[0]}.{c_name}.{m_name}"
                         if link:
@@ -358,6 +360,7 @@ def on_post_build(env):
                         last_location = xref.end()
                     if last_location:
                         html_content = new_content + html_content[last_location:]
+
                     # Find 'free' crossrefs to the Reference Manual
                     # Syntax in Markdown is [free text]((class.)method()^) and similar
                     new_content = ""
@@ -369,6 +372,8 @@ def on_post_build(env):
                         + r"(\">.*?</a>)"
                     )
                     for xref in FREE_XREF_RE.finditer(html_content):
+                        print("------------ THIS IS NEVER PRINTED !!!! ------------------")
+                        print(filename)
                         groups = xref.groups()
                         entry = groups[1]
                         method = groups[2]
@@ -428,7 +433,7 @@ def on_post_build(env):
                     #
                     # These fragments appear in single-line <td> blocks.
                     #
-                    # At this point, this code is pretty sub-optimal and heavily
+                    # At this point, this code is pretty suboptimal and heavily
                     # depends on the MkDocs generation. Time will tell if we can
                     # keep it as is...
                     typing_code = re.compile(

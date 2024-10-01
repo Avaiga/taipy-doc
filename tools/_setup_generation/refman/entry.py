@@ -23,7 +23,7 @@ class Entry:
     @property
     def index_documentation(self):
         line = self.first_line_doc if self.first_line_doc else ' - NOT DOCUMENTED'
-        return f"   - [`{self.simple_name}{self.suffix}`]({self.simple_name}/index.md){': ' + line}\n"
+        return f"- [`{self.simple_name}{self.suffix}`]({self.simple_name}/index.md){': ' + line}\n"
 
     def set_at_root(self) -> None:
         self.at_root = True
@@ -93,8 +93,8 @@ class ClassEntry(Entry):
 
     def _compute_navigation(self, folder_path) -> None:
         folders = self._doc_full_name.split(".")
-        self.navigation = (len(folders) - 1) * "    " + f'- "<code>{self.simple_name}</code>":\n'
-        self.navigation += ((len(folders)) * "    " +
+        self.navigation = (len(folders) - 2) * "  " + f'- "<code>{self.simple_name}</code>":\n'
+        self.navigation += ((len(folders)) * "  " +
                             f'- "{self.simple_name} {str(self._get_type_title()).lower()}": '
                             f'{folder_path}/{self.simple_name}/index.md\n')
 

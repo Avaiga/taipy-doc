@@ -127,7 +127,6 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
         from .step_tutorials import TutorialsStep
         from .step_gallery import GalleryStep
         from .step_viselements import VisElementsStep
-        from .step_refman_2 import RefManStep2
         from .step_refman import RefManStep
         from .step_rest_refman import RestRefManStep
         from .step_gui_ext_refman import GuiExtRefManStep
@@ -138,8 +137,7 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
             GalleryStep(),
             TutorialsStep(),
             VisElementsStep(),
-            # RefManStep(),
-            RefManStep2(),
+            RefManStep(),
             RestRefManStep(),
             GuiExtRefManStep(),
             ContributorsStep(),

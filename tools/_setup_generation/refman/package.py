@@ -2,12 +2,14 @@ import os
 from typing import List
 
 from .entry import Entry
+from .xref_updater import XRefUpdater
 
 
 class Package:
 
-    def __init__(self, name: str, setup, relative_ref_dir_path):
+    def __init__(self, name: str, doc, setup, relative_ref_dir_path):
         self.name = name
+        self._set_doc_and_title(doc)
         self.simple_name = name.split(".")[-1]
         self.setup = setup
 
@@ -19,6 +21,20 @@ class Package:
         self.classes: List[Entry] = []
         self.types: List[Entry] = []
         self.navigation = ""
+        self.xrefs = {}
+
+    def _set_doc_and_title(self, doc):
+        if doc and doc.startswith("# "):
+            if "\n" in doc:
+                # Get the title from the module doc directly if the first line is H1
+                self.title, self.doc = doc.split("\n", 1)
+                self.title = self.title[2:]  # Remove # and space
+            else:
+                self.title = doc[2:]
+                self.doc = ""
+        else:
+            self.title = f"<code>{self.name}</code> package"
+            self.doc = doc
 
     def add_entry(self, entry: Entry):
         if entry.is_function():
@@ -30,41 +46,45 @@ class Package:
         else:
             raise SystemError(f"FATAL - Invalid entry type '{entry.type}' for {entry.parent_module}.{entry.name}")
 
-    def generate(self, module_doc) -> None:
+    def generate(self, xref_updater: XRefUpdater) -> None:
         self._compute_navigation()
-        self._write_doc(module_doc)
+        self._write_doc(xref_updater)
 
     def _compute_navigation(self) -> None:
-        folders = self.name.split(".")
-        prefix = ("." if len(folders) > 1 else "")
-        self.navigation = (len(folders) - 1) * "    "
-        self.navigation += f'- "<code>{prefix}{self.simple_name}</code>":\n'
-        self.navigation += len(folders) * "    "
-        self.navigation += f'- "<code>{prefix}{self.simple_name}</code>": {self.rel_file_path}\n'
+        if self.name == "taipy":
+            self.navigation = f'- "<code>{self.simple_name}</code>":\n'
+            self.navigation += f'  - "<code>{self.name}</code>": {self.rel_file_path}\n'
+        else:
+            folders = self.name.split(".")
+            prefix = ("." if len(folders) > 1 else "")
+            self.navigation = (len(folders) - 2) * "  "
+            self.navigation += f'- "<code>{prefix}{self.simple_name}</code>":\n'
+            self.navigation += (len(folders) - 1) * "  "
+            self.navigation += f'- {self.title}: {self.rel_file_path}\n'
 
-    def _write_doc(self, module_doc) -> str:
+    def _write_doc(self, xref_updater) -> str:
         os.makedirs(os.path.join(self.setup.docs_dir, self.rel_package_dir_path), exist_ok=True)
         with open(os.path.join(self.setup.docs_dir, self.rel_file_path), "w") as file:
-            if module_doc:
-                file.write(module_doc)
+            if self.doc:
+                file.write(self.doc)
             if self.types:
                 file.write("# Types\n\n")
                 for type_entry in self.types:
                     simple_name = type_entry.simple_name
-                    file.write(f"   - `{simple_name}`: {type_entry.doc or ' - NOT DOCUMENTED'}\n")
-                    # self._update_entry_xrefs(type_entry, self.name)
+                    file.write(f"- `{simple_name}`: {type_entry.doc or ' - NOT DOCUMENTED'}\n")
+                    xref_updater.update(type_entry, self.name)
             if self.functions:
                 file.write("\n# Functions\n\n")
-                self.__write_entries(self.functions, file)
+                self.__write_entries(self.functions, file, xref_updater)
             if self.classes:
                 file.write("\n# Classes\n\n")
-                self.__write_entries(self.classes, file)
+                self.__write_entries(self.classes, file, xref_updater)
         return self.navigation
 
-    def __write_entries(self, entries: List[Entry], file):
+    def __write_entries(self, entries: List[Entry], file, xref_updater):
         for entry in sorted(entries, key=lambda e: e.simple_name):
             file.write(entry.index_documentation)
             entry.generate(self.setup.docs_dir, self.rel_package_dir_path)
             self.navigation += entry.navigation
-            # self._update_entry_xrefs(entry, self.name)
+            xref_updater.update(entry, self.name)
 

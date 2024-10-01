@@ -19,8 +19,9 @@ class Reader:
     def __init__(self, setup: Setup):
         self.setup = setup
         self.entries: dict[str, Entry] = {}  # All entries from taipy that are not private or hidden
-        self.module_doc = {}  # Documentation for each module
-        self.loaded_modules = set()  # All the module already processed and loaded
+        self.package_doc = {}  # Documentation for each package
+
+        self.loaded_modules = set()  # All the modules already processed and loaded
 
     def read_module(self):
         self._read_module(__import__(self.setup.ROOT_PACKAGE))
@@ -68,7 +69,7 @@ class Reader:
                 elif isfunction(e):
                     entry_type = self.FUNCTION_ID
                 elif ismodule(e):
-                    self.module_doc[e.__name__] = e.__doc__
+                    self.package_doc[e.__name__] = e.__doc__
                     self._read_module(e)
             if not entry_type:
                 continue
