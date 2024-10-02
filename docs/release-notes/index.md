@@ -35,18 +35,29 @@ This is the list of changes to Taipy releases as they were published.
 
 <h4><strong><code>taipy-gui</code></strong> 4.0.0</h4>
 
-- A new control called [`metric`](../refmans/gui/viselements/generic/metric.md) was added
-  to represent significant numerical information such as an industrial KPI.
-- A new control called [`chat`](../refmans/gui/viselements/generic/chat.md) was added
-  to simplify the creation of chatting applications.
-- The [`table`](../refmans/gui/viselements/generic/table.md) control new implements edition
-  functionality out-of-the-box for all the supported data types. You do not have to provide any
-  functions to the *on_edit*, *on_add*, and *on_delete* property any longer. You *can*, however,
-  customize how to process these actions by implementing your own functions.<br/>
-  Please read [this section](../refmans/gui/viselements/generic/table.md#editing-the-table-content)
-  in the `table` documentation page for more details.
-- You can define CSS rules for a specific page using the new *style* parameter of the `Page^`
-  class or using the `Page.set_style()^` method.<br/>
+- A new control, [`metric`](../refmans/gui/viselements/generic/metric.md), has been added to
+  represent significant numerical information, such as industrial KPIs.
+- A new control, [`progress`](../refmans/gui/viselements/generic/progress.md), has been added to
+  provide a compact representation of a process's progress.
+- A new control, [`chat`](../refmans/gui/viselements/generic/chat.md), has been introduced to
+  simplify the development of chat-based applications.
+- The [`table`](../refmans/gui/viselements/generic/table.md) control has new features:
+    - Built-in edit functionality are now available for all supported data types. You no longer need
+      to define functions for the
+      [*on_edit*](../refmans/gui/viselements/generic/table.md#p-on_edit),
+      [*on_add*](../refmans/gui/viselements/generic/table.md#p-on_add), and
+      [*on_delete*](../refmans/gui/viselements/generic/table.md#p-on_delete) properties. However,
+      you can still customize these actions by providing your own functions.<br/>
+      Please read
+      [this section](../refmans/gui/viselements/generic/table.md#editing-the-table-content) for more
+      details.
+    - A new indexed property,
+      [*format_fn[column_name]*](../refmans/gui/viselements/generic/table.md#p-format_fn[column_name])
+      allows you to define a custom Python function to format cell values.<br/>
+      Please look at the
+      [example code](../refmans/gui/viselements/generic/table.md#custom-formatting) for details. 
+- You can define CSS rules for individual pages using the new *style* parameter of the `Page^`
+  class or via the `Page.set_style()^` method.<br/>
   See the [section on Styling](../userman/gui/styling/index.md#style-sheets) for more
   information.
 
@@ -76,37 +87,37 @@ This is the list of changes to Taipy releases as they were published.
 <h4><strong><code>taipy-gui</code></strong> 4.0.0</h4>
 
 - Setting up styling:<br/>
-  If a file called `taipy.css` sits next to the Python script (`<app>.py`) that runs a Taipy GUI
-  application, and if there is no file called `<app>.css` at the same location, then this CSS file
-  is loaded and applied to all pages. This feature allows you to share styles across different Taipy
+  If a file named `taipy.css` is located in the same directory as the Python script (`<app>.py`)
+  running a Taipy GUI application, and no `<app>.css` file exists in the same location, this CSS
+  file will be loaded and applied to all pages. This enables sharing styles across different Taipy
   GUI applications.<br/>
-  See [issue #1597](https://github.com/Avaiga/taipy/issues/1597) for a description of this
-  functionality and the [section on Styling](../userman/gui/styling/index.md#style-sheets) for more
-  information.
-- Most visual elements now implement the *width* property to simplify page layout.<br/>
+  See [issue #1597](https://github.com/Avaiga/taipy/issues/1597) for more details and the
+  [section on Styling](../userman/gui/styling/index.md#style-sheets).
+- Most visual elements now implement the *width* property, simplifying page layout.<br/>
   See [issue #1720](https://github.com/Avaiga/taipy/issues/1720).
-- The [`pane`](../refmans/gui/viselements/generic/pane.md) block has a new property called
-  [*show_button*](../refmans/gui/viselements/generic/pane.md#p-show_button). If set to True,
-  a persistent *open* button appears on the page when the pane is closed so you don't need an
-  external control to let users open the pane.
-- In the [`chart`](../refmans/gui/viselements/generic/chart.md) control, the Modebar (that
-  appears when the cart is hovered on) no longer has the Plotly logo button by default.
-  You can bring it back by setting the chart's
-  [*plot_config* property](../refmans/gui/viselements/generic/chart.md#p-plot_config)
-  to a dictionary with a property called "displaylogo" set to True.<br/>
+- The [`input`](../refmans/gui/viselements/generic/input.md) control has a new
+  [*type*](../refmans/gui/viselements/generic/input.md#p-type) property, allowing you to specify the
+  expected input type (e.g., email address, URL).
+- The [`pane`](../refmans/gui/viselements/generic/pane.md) block now includes a new property,
+  [*show_button*](../refmans/gui/viselements/generic/pane.md#p-show_button). When set to True, a
+  persistent *open* button appears on the page when the pane is closed, eliminating the need for an
+  external control to open the pane.
+- The Modebar in the [`chart`](../refmans/gui/viselements/generic/chart.md) control (visible when
+  the chart is hovered over) no longer includes the Plotly logo button by default. To restore it,
+  set the [*plot_config*](../refmans/gui/viselements/generic/chart.md#p-plot_config) property to a
+  dictionary with `"displaylogo": True`.<br/>
   See [issue #1600](https://github.com/Avaiga/taipy/issues/1600).
-- The [`input`](../refmans/gui/viselements/generic/input.md) control has a new *type* property that
-  allows the type of input data the user can enter (such as an email address or a URL) to be set.
-- The [`login`](../refmans/gui/viselements/generic/login.md) control has a new toggle button
-  to show or hide the entered password.
-- Controls defined with the Page Builder API have an additional property called *inline* which,
-  when set to True, will not generate a line skip, to facilitate layout.<br/>
-  See [issue #1725](https://github.com/Avaiga/taipy/issues/1725).
-- Properties that expect a function can now be set to a lambda function in the Page Builder
-  API.<br/>
-  See [issue #1379](https://github.com/Avaiga/taipy/issues/1379).
 - The *decimator* property of the [`chart`](../refmans/gui/viselements/generic/chart.md) control
   now applies to traces that are only "lines" or "markers".
+- A new toggle button has been added to the [`login`](../refmans/gui/viselements/generic/login.md)
+  control, enabling users to show or hide the entered password.
+- Page Builder API:
+    - Properties that expect a function can now be set to a lambda function in the Page Builder
+      API.<br/>
+      See [issue #1379](https://github.com/Avaiga/taipy/issues/1379).
+    - Controls defined with the Page Builder API have an additional property called *inline* which,
+      when set to True, will not generate a line skip, to facilitate layout.<br/>
+      See [issue #1725](https://github.com/Avaiga/taipy/issues/1725).
 
 <h4><strong><code>taipy-core</code></strong> 4.0.0 </h4>
 

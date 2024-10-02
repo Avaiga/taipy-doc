@@ -10,99 +10,191 @@ You can use an arbitrary type for all the items (see the [example](#display-a-li
 
 # Details
 
-By default, the selector control displays elements as a series of texts:
+By default, the selector control displays elements as a series of text items:
 <figure>
     <img src="../selector-default-d.png" class="visible-dark" />
     <img src="../selector-default-l.png" class="visible-light"/>
     <figcaption>A selector with several items </figcaption>
 </figure>
-The user can select an item that appears highlighted in the control.
+The user can select an item, which is then highlighted within the control.
 
-If the [*multiple*](#p-multiple) property is True, then the list appears as a series of toggle
-buttons that users can select and deselect:
+If the [*multiple*](#p-multiple) property is set to True, the selector displays as a series of
+toggle buttons that users can both select and deselect:
 <figure>
     <img src="../selector-multiple-d.png" class="visible-dark" />
     <img src="../selector-multiple-l.png" class="visible-light"/>
     <figcaption>Multiple selection</figcaption>
 </figure>
-Then several items can be selected, and the [*value*](#p-value) property is set to an array that
-stores those items.
+
+Multiple items can be selected, and the [*value*](#p-value) property is set to an array containing
+the selected items.
 
 ## Display modes
 
-The [*mode*](#p-mode) property can be set to "check" or "radio" to change the way the selector
-is represented:
+The [*mode*](#p-mode) property controls how the selector is displayed and can be set to either
+"check" or "radio".
 
-- If [*mode*](#p-mode) is set to "check", the control displays as a list of toggle buttons:
+- When [*mode*](#p-mode) is set to "check", the control appears as a list of toggle buttons.
     <figure>
         <img src="../selector-check-d.png" class="visible-dark" />
         <img src="../selector-check-l.png" class="visible-light"/>
         <figcaption>"check" mode</figcaption>
     </figure>
-    The [*multiple*](#p-multiple) property is forced to True.
+    The [*multiple*](#p-multiple) property is automatically set to True.
 
-- If [*mode*](#p-mode) is set to "radio", the control displays a list of radio buttons:
+- When the [*mode*](#p-mode) is set to "radio", the control displays as a list of radio buttons.
     <figure>
         <img src="../selector-radio-d.png" class="visible-dark" />
         <img src="../selector-radio-l.png" class="visible-light"/>
         <figcaption>"radio" mode</figcaption>
     </figure>
-    The [*multiple*](#p-multiple) property is forced to False.
-
-# Styling
-
-All the selector controls are generated with the "taipy-selector" CSS class. You can use this class
-name to select the selector controls on your page and apply style.
-
-## [Stylekit](../../../../userman/gui/styling/stylekit.md) support
-
-The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can use to style selector
-controls:
-
-* *fullwidth*<br/>
-    If a selector control uses the *fullwidth* class, it uses the whole available horizontal space.
+    The [*multiple*](#p-multiple) property is automatically set to False
 
 # Usage
 
-## Display a list of string
+## Display a list of string {data-source="gui:doc/examples/controls/selector_list.py"}
 
-You can create a selector on a series of strings:
+To create a selector control for a list of strings, you can use a semicolon-separated string, which
+is assigned to the [*lov*](#p-lov) (List of Values) property.
 
+Below is a control definition that demonstrates this:
 !!! taipy-element
     default={value}
     lov=Item 1;Item 2;Item 3
 
-## Display as a dropdown
+The [*value*](#p-value) property of the selector is bound to the *value* variable. This variable
+should be set to one of the items in the list, ensuring that the selected value corresponds to one
+of the provided list items..<br/>
+For example:
+```python
+value="Item 2"
+```
 
-You can set the [*dropdown*](#p-dropdown) property to True to make the selector control a drop-down
-selector.
+When the user changes the selection, *value* reflects the new selection in the user's state.
 
+With these settings, the control appears as follows:
+<figure class="tp-center">
+    <img src="../selector-list-d.png" class="visible-dark"  width="75%"/>
+    <img src="../selector-list-l.png" class="visible-light" width="75%"/>
+    <figcaption>Simple selector</figcaption>
+</figure>
+
+## Display as a dropdown {data-source="gui:doc/examples/controls/selector_dropdown.py"}
+
+To display the selector as a drop-down menu, set the [*dropdown*](#p-dropdown) property to True:
 !!! taipy-element
     default={value}
     lov=Item 1;Item 2;Item 3
     dropdown:b=True
 
-## Display with filter and multiple selection
+If *value* is set as in the previous example, the control will appear as shown below:
+<figure class="tp-center">
+    <img src="../selector-dropdown1-d.png" class="visible-dark"  width="75%"/>
+    <img src="../selector-dropdown1-l.png" class="visible-light" width="75%"/>
+    <figcaption>Selector with a drop-down button</figcaption>
+</figure>
 
-You can add a filter input field to display only strings that match the filter value.
+Clicking the drop-down button reveals the full list:
+<figure class="tp-center">
+    <img src="../selector-dropdown2-d.png" class="visible-dark"  width="75%"/>
+    <img src="../selector-dropdown2-l.png" class="visible-light" width="75%"/>
+    <figcaption>Selector with the drop-down list</figcaption>
+</figure>
 
+## Display with filter {data-source="gui:doc/examples/controls/selector_filter.py"}
+
+You can add a filter input field to display only the strings that match the filter value.
+
+For example, suppose you want to create a selector that allows users to select from a list of all
+Python built-in functions. You would use the following code:
+```python
+import builtins
+import inspect
+...
+builtin_python_functions = [
+    func
+    for func in dir(builtins)
+    if callable(getattr(builtins, func)) and not inspect.isclass(getattr(builtins, func)) and not func.startswith("_")
+]
+selection = builtin_python_functions[0]
+```
+
+This code stores the list of all Python built-in functions (excluding those that start with "_")
+in the variable *builtin_python_functions*. The selection variable is set to the first element of
+this list.
+
+Here is how to define a selector control that displays this list:
 !!! taipy-element
-    default={value}
-    lov=Item 1;Item 2;Item 3
+    default={selection}
+    lov={builtin_python_functions}
     filter:b=True
     multiple:b=True
 
-## Display a list of tuples
+In this selector, multi-selection is enabled with the [*multiple*](#p-multiple) property set to
+True.
 
-A selector control that returns an id while selecting a label or `Icon^`.
+Here is how the control is displayed:
+<figure class="tp-center">
+    <img src="../selector-filter1-d.png" class="visible-dark"  width="75%"/>
+    <img src="../selector-filter1-l.png" class="visible-light" width="75%"/>
+    <figcaption>Selector with a long list</figcaption>
+</figure>
 
+An input field (labeled "Search field") appears at the top of the control.<br/>
+Note that because the list of items is very long, is not fully represented here.
+
+If the user enters the string "ex" in the search field, only the items containing that string are
+displayed:
+<figure class="tp-center">
+    <img src="../selector-filter2-d.png" class="visible-dark"  width="75%"/>
+    <img src="../selector-filter2-l.png" class="visible-light" width="75%"/>
+    <figcaption>Filtered items</figcaption>
+</figure>
+
+## Display labels and icons {data-source="gui:doc/examples/controls/selector_icon.py"}
+
+You can use the [*lov*](#p-lov) property to display labels or icons in the selector control.<br/>
+Each element of the list-of-values (lov) should be a tuple where:
+
+- The first element is a unique identifier, used in the [*value*](#p-value) property;
+- The second element is the display content, which can be text or an icon.
+
+Let us create a list-of-values (lov) that we want to represent in the selector:
+```python
+lov = [
+    ("id1", "Framework X"),
+    ("id2", Icon("https://docs.taipy.io/en/latest/assets/images/favicon.png", "Taipy")),
+    ("id3", "Framework Y"),
+]
+```
+
+The *lov* variable is set to an array of three tuples.<br/>
+The second one ("id2") represents an icon, using the URL to the image along with the label "Taipy."
+
+The definition below uses the *lov* variable to feed the selector:
 !!! taipy-element
     default={sel}
-    lov={[("id1", "Label 1"), ("id2", Icon("/images/icon.png", "Label 2"),("id3", "Label 3")]}
+    lov={lov}
 
-## Display a list of objects
+Below is how the selector control appears:
+<figure class="tp-center">
+    <img src="../selector-icon-d.png" class="visible-dark"  width="75%"/>
+    <img src="../selector-icon-l.png" class="visible-light" width="75%"/>
+    <figcaption>Using icons in the selector items</figcaption>
+</figure>
 
-Assuming your Python code has created a list of object:
+When using the [*lov*](#p-lov) property, the selector's [*value*](#p-value) property will be set to
+the first element of each tuple in the lov. This allows you to retrieve the unique identifier
+associated with the selected item (or items).
+
+## Display a list of arbitrary objects {data-source="gui:doc/examples/controls/selector_adapter.py"}
+
+The selector control allows any type of object to be used in the list of values (lov) set to the
+[*lov*](#p-lov) property. However, to properly display custom objects, you need to define an
+*adapter* function, which must be set to the [*adapter*](#p-adapter) property. This function
+instructs the selector on how to identify and represent each item in the list.
+
+Assume your application creates a list of User objects in Python as follows:
 ```python
 class User:
     def __init__(self, id, name, birth_year):
@@ -118,18 +210,95 @@ users = [
 user_sel = users[2]
 ```
 
-If you want to create a selector control that lets you pick a specific user, you
-can use the following fragment.
+In this example, a list of *User* objects is created, with each object having an id, name, and
+birth year. The variable *user_sel* is initialized to the third user, "Peter".
 
+The following definition creates a selector that uses this list:
 !!! taipy-element
     default={user_sel}
     lov={users}
     type=User
-    adapter=lambda u: (u.id, u.name)
+    adapter:f=lambda u: (u.id, u.name)
 
-In this example, we use the Python list *users* as the selector's *list of values*.<br/>
-Because the control needs a way to convert the list items (which are instances of the class
-*User*) into displayable strings, we are using an *adapter*: a function that converts
-an object, whose type must be provided to the [*type*](#p-type) property, to a tuple. The first
-element of the tuple is used to reference the selection (therefore, those elements should be unique
-among all the items), and the second element is the string that turns out to be displayed.
+The *users* list is set as the value for the selector's [*lov*](#p-lov) property.<br/>
+The [*value*](#p-value) property is bound to the variable *user_sel*.<br/>
+The adapter function (set to the [*adapter*](#p-adapter) property) is a lambda fonction that
+converts a *User* instance (whose type name is set to the [*type*](#p-type) property) into a
+tuple:
+
+- The first element of the tuple uniquely identifies the item (therefore, those values should be
+  unique among all items).<br/>
+  In our example, that is simply: `u.id`.
+- The second element is the text that the selector displays.<br/>
+  In our example, that is simply: `u.name`.
+
+Below is how the selector control will appear when using this list of values and adapter function:
+<figure class="tp-center">
+    <img src="../selector-adapter-d.png" class="visible-dark"  width="75%"/>
+    <img src="../selector-adapter-l.png" class="visible-light" width="75%"/>
+    <figcaption>Selector using an adapter</figcaption>
+</figure>
+
+The selection (bound to the [*value*](#p-value) property) will be the selected instance of the class
+*User*. This allows your application to directly access the selected *User* object when a choice is
+made.
+
+# Styling
+
+All selector controls are generated with the "taipy-selector" CSS class. You can use this class to
+target selector controls on your page and apply custom styles.
+
+## [Stylekit](../../../../userman/gui/styling/stylekit.md) support
+
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class, *fullwidth*,
+which you can use to style selector controls.
+
+When applied, the *fullwidth* class ensures that the selector control occupies the entire available
+horizontal space.
+
+## Styling rows {data-source="gui:doc/examples/controls/selector_styling.py"}
+
+The selector control list is generated as a collection of items grouped in an element that is
+assigned the "MuiList-root" class. The descendants (the list items) have the
+"MuiListItemButton-root" class applied.
+
+The optional input field used to set a filter includes the "MuiInputBase-root" class.
+
+Here is an example of a CSS rule that applies to selector controls:
+```css
+.taipy-selector {
+    margin: 0px !important;  /* Global margin */
+    .MuiInputBase-root {     /* Input field   */
+        background-color: #572c5f38;
+        color: #221025;
+        border-radius: 0px;
+        height: 50px
+    }
+    .MuiList-root { /* List */
+        height: 70vh;      /* Limit height */
+        overflow-y: auto;  /* show vertical scroll if necessary */
+        .MuiListItemButton-root:nth-child(even) { /* Colors (even) */
+            background-color: lightgrey;
+            color: darkgrey;
+        }
+        .MuiListItemButton-root:nth-child(odd) { /* Colors (even) */
+            background-color: darkgrey;
+            color: lightgrey;
+        }
+    }
+}
+```
+
+This CSS rule:
+
+- Changes the color of the filter input field;
+- Limits the height of the control;
+- Adds a vertical scrollbar to the selector list if necessary;
+- Changes the colors used by the list items, alternating between two flavors of gray.
+
+Here is how the selector control looks like when this rule is applied:
+<figure class="tp-center">
+    <img src="../selector-styling-d.png" class="visible-dark"  width="75%"/>
+    <img src="../selector-styling-l.png" class="visible-light" width="75%"/>
+    <figcaption>Styling the selector control</figcaption>
+</figure>
