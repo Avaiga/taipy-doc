@@ -130,6 +130,29 @@ Compared to the previous example, you can see that the label uses a bold font we
 
     The Page Builder API does support index values that are not Python identifiers or literals.
 
+!!! note "Lambdas as property values"
+    Using a lambda function as a property value simplifies the creation of dynamic user interfaces
+    where elements change based on run-time information. This approach is particularly useful when
+    you need to build loops or handle varying data.
+
+    For example, consider the following dictionary:
+    ```python
+    ages = {
+        "Albert": 58,
+        "Beatrix": 71,
+        "Cecilia": 23
+    }
+    ```
+    We want to generate a series of text elements displaying the name and age of each person in the
+    list. A lambda function makes this straightforward:<br/>
+    ```python
+    for name in ages:
+        tgb.text(lambda ages: f"{name} is {ages.get(name)}")
+    ```
+    In this example, the lambda function accesses the *ages* dictionary from the state. The function
+    dynamically creates text elements based on local variables, such as *name*, allowing to create
+    the expected content.
+
 # Binding variables
 
 You can bind your application variables to a property value by setting the property to a string

@@ -326,6 +326,7 @@ Each item in a *list of values*  can hold:
 - A label: a string that is used when displaying the specific item;
 - An image: an optional `Icon^` that can be used to display the item as a small
   image. Note that icons can also hold a descriptive string.
+- A member of an enumeration class.
 
 A *LoV* can have different types, depending on the use case:
 
@@ -352,6 +353,61 @@ A *LoV* can have different types, depending on the use case:
    - An `Icon^` as the second item.
 
   The Python type of such a *lov* is: List[Tuple[str, `Icon^`]].
+
+- An enumeration class (i.e. a class that inherits from `Enum`).<br/>
+    An enumeration class can be used to define a set of predefined values for a control. You can
+    assign the *lov* (List of Values) property of the control to the enumerated class you want to
+    use.
+
+    For example, consider the following enumeration class definition:
+    ```python
+    class Color(Enum):
+        RED = 0
+        GREEN = 1
+        BLUE = 2
+
+    color = Color.RED
+    ```
+    In the code above, we also define and initialize the *color* variable, which can then be bound
+    to a control’s main value. You can directly use this class as the *lov* value in your
+    control.<br/>
+
+    You can directly use this class as a LoV value in you control.<br/>
+    Here is how you can use the *Color* enumeration class in a
+    [`toggle`](../../refmans/gui/viselements/generic/toggle.md) control:
+    !!! example "Enum as LoV"
+
+        === "Markdown"
+
+            ```
+            <|{color}|toggle|lov={Color}|>
+            ```
+
+        === "HTML"
+
+            ```html
+            <taipy:toggle lov="{Color}">{color}</taipy:toggle>
+            ```
+
+        === "Python"
+
+            ```python
+            import taipy.gui.builder as tgb
+            ...
+            tgb.toggle("{color}", lov="{Color}")
+            ```
+
+    When this control is used in a page, the *color* variable will be updated to reflect the
+    selected value from the Color enumeration.
+
+    !!! note "Page Builder API"
+        If you are working with the Page Builder API, you can assign the enumeration class directly
+        to the *lov* property:
+        ```python
+        tgb.toggle("{color}", lov=Color)
+        ```
+        In this case, the *color* variable will hold the enumeration member value (e.g., 0, 1, 2)
+        instead of the enumeration member itself (e.g., `Color.RED`).
 
 The "selected" value in controls that use *LoV*s are handled in their *value*
 property. This will be the original value of the selection in the *LoV* unless

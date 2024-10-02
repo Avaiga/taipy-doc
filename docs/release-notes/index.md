@@ -60,6 +60,8 @@ This is the list of changes to Taipy releases as they were published.
   class or via the `Page.set_style()^` method.<br/>
   See the [section on Styling](../userman/gui/styling/index.md#style-sheets) for more
   information.
+- *List-of-values* can now be built directly from enumeration classes.<br/>
+  See [the section on LoVs](../userman/gui/binding.md#list-of-values) for more information.
 
 <h4><strong><code>taipy-core</code></strong> 4.0.0 </h4>
 
@@ -93,6 +95,11 @@ This is the list of changes to Taipy releases as they were published.
   GUI applications.<br/>
   See [issue #1597](https://github.com/Avaiga/taipy/issues/1597) for more details and the
   [section on Styling](../userman/gui/styling/index.md#style-sheets).
+- The *style* and *style[column_name]* properties of the
+  [`table`](../refmans/gui/viselements/generic/table.md) control have been
+  renamed to [*row_class_name*](../refmans/gui/viselements/generic/table.md#p-row_class_name) and
+  [*cell_class_name[column_name]*](../refmans/gui/viselements/generic/table.md#p-cell_class_name[column_name]),
+  respectively. A warning message is issued if you use these properties.
 - Most visual elements now implement the *width* property, simplifying page layout.<br/>
   See [issue #1720](https://github.com/Avaiga/taipy/issues/1720).
 - The [`input`](../refmans/gui/viselements/generic/input.md) control has a new
