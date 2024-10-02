@@ -26,15 +26,16 @@ class DesignerStep(SetupStep):
     def setup(self, setup: Setup): ...
 
     def enter(self, setup: Setup):
-        self.DESIGNER_PATH = os.path.join(
-            setup.docs_dir, *DesignerStep.PREFIX.split("/")
-        )
-        self.MKDOCS_TMPL = os.path.join(self.DESIGNER_PATH, "mkdocs.yml_template")
-        if not os.access(self.MKDOCS_TMPL, os.R_OK):
-            raise FileNotFoundError(
-                f"FATAL - Could not read docs/{DesignerStep.PREFIX}/mkdocs.yml_template"
+        if os.path.exists(os.path.join(setup.docs_dir, DesignerStep.PREFIX)):
+            self.DESIGNER_PATH = os.path.join(
+                setup.docs_dir, *DesignerStep.PREFIX.split("/")
             )
-        self.navigation = self._read_mkdocs_template()
+            self.MKDOCS_TMPL = os.path.join(self.DESIGNER_PATH, "mkdocs.yml_template")
+            if not os.access(self.MKDOCS_TMPL, os.R_OK):
+                raise FileNotFoundError(
+                    f"FATAL - Could not read docs/{DesignerStep.PREFIX}/mkdocs.yml_template"
+                )
+            self.navigation = self._read_mkdocs_template()
 
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(
