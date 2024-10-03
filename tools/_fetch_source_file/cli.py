@@ -19,7 +19,7 @@ Valid repository names are:
 """
     ARG_VERSION_HELP_2 = """
 Note that each <version> arguments may overwrite the previous ones.
-i.e.:
+E.g.:
   '2.0 core:1.0' will set all versions to 2.0 except for
     the 'core' repository.
   'core:1.0 2.0' will set version 2.0 for all repositories.

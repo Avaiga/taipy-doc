@@ -487,7 +487,11 @@ class [element_type]({base_class}):
                         )
                     if type.endswith("dont"):
                         return f"don't {property}"
+                    elif type.endswith("no"):
+                        return f"no {property}"
                     return f"not {property}"
+                if value.startswith("lambda"):
+                    return f"{property}={{{value}}}"
                 return f"{property}={value}"
 
             new_documentation += '\n    === "Markdown"\n\n'
@@ -508,6 +512,8 @@ class [element_type]({base_class}):
                         return f"{property}"
                     else:
                         value = value.lower()
+                elif value.startswith("lambda"):
+                    value = f"{{{value}}}"
                 value = value.replace('"', "'")
                 return f'{property}="{value}"'
 
@@ -528,7 +534,8 @@ class [element_type]({base_class}):
             if len(html_1) > 120 and html_2:
                 new_documentation += "\n        "
             new_documentation += f"{html_2}\n        ```\n"
-            # Page Builder syntax "^$"
+
+            # Page Builder syntax
             BP_IDX_PROP_RE = re.compile(r"^(.*?)\[([\w\d]+)\]$", re.M)
             generate_page_builder_api = True
             pb_properties = []

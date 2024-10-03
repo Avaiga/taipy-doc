@@ -94,6 +94,13 @@ The supported types for the [*data*](#p-data) property are:
 - A list of dictionaries<br/>
     The *data* is converted to a list of Pandas DataFrames.
 
+!!! note "Polars data types support"
+    Taipy Enterprise edition provides native support for the
+    [`polars.LazyFrame`](https://docs.pola.rs/api/python/stable/reference/lazyframe/index.html),
+    [`polars.DataFrame`](https://docs.pola.rs/api/python/stable/reference/dataframe/index.html)
+    or [`polars.Series`](https://docs.pola.rs/api/python/stable/reference/series/index.html)
+    data types in the [*data*](#p-data) property.
+
 ## Indexed properties
 
 Chart controls can hold several traces that may display different data sets.<br/>

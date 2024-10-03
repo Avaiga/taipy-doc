@@ -112,6 +112,10 @@ The impact of this change is reflected in the page:
 
 Compared to the previous example, you can see that the label uses a bold font weight.
 
+!!! note "Setting functions"
+    If a property expects a function, you can use a lambda function directly expressed as Python
+    code.
+
 !!! warning "Indexed properties"
     Some elements of Taipy GUI (such as [`chart`](../../../refmans/gui/viselements/generic/chart.md),
     [`table`](../../../refmans/gui/viselements/generic/table.md), or
@@ -125,6 +129,38 @@ Compared to the previous example, you can see that the label uses a bold font we
     must be expressed as an argument called `the_property__the_index` in the Page Builder API.
 
     The Page Builder API does support index values that are not Python identifiers or literals.
+
+## Lambda function as a property value {data-source="gui:doc/examples/builder_lambda_property.py"}
+
+Using a lambda function as a property value simplifies the creation of dynamic user interfaces,
+especially when elements need to change based on run-time information. This approach is particularly
+useful for building loops or handling data that varies at runtime.
+
+For example, consider the following dictionary:
+```python
+persons = {
+    "Albert": 1982,
+    "Beatrix": 1955,
+    "Cecilia": 2003
+}
+```
+
+Suppose we want to create an application that displays the name of each person along with their age,
+based on a target year selected via a [`slider`](../../../refmans/gui/viselements/generic/slider.md)
+control. The slider is bound to the variable *current_year*.
+
+We can use a lambda function to dynamically generate text elements that show each person's name and
+their age for the selected year:<br/>
+```python
+for name, birth_year in persons.items():
+    tgb.text(lambda current_year: f"{name} would be {current_year-birth_year}")
+```
+In this example, the lambda function accesses the *current_year* value from the state and
+dynamically creates text elements using the local variables *name* and *birth_year*. This allows
+the application to update the displayed content based on the selected year.
+
+The names of the parameters for the lambda function must be names of variables that are accessible
+from the current state.
 
 # Binding variables
 
