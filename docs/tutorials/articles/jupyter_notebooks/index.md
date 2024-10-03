@@ -21,12 +21,13 @@ When using Taipy in Python scripts (.py), we typically have to rerun the script 
 changes to our code. In Jupyter Notebook (.ipynb), the equivalent would be to restart the kernel
 and rerun all cells, which can be cumbersome.
 
-To solve this and enhance the experience of using Taipy in Jupyter Notebook, we should utilize two straightforward functions for updating the user interface after making changes to our code:
+To solve this and enhance the experience of using Taipy in Jupyter Notebook, we should utilize
+two straightforward functions for updating the user interface after making changes to our code:
 
-1. [Page.set_content()](../../../refmans/reference/taipy.gui.Page.md#taipy.gui.Page.set_content):
+1. [Page.set_content()](../../../refmans/reference/pkg_taipy/pkg_gui/Page#taipy.gui.Page.set_content):
    Use this method when you update the content of a page.
 
-2. [Gui.reload()](../../../refmans/reference/taipy.gui.Gui.md#taipy.gui.Gui.reload): Use this
+2. [Gui.reload()](../../../refmans/reference/pkg_taipy/pkg_gui/Gui#taipy.gui.Gui.reload): Use this
    method when you modify a variable that's used in a page.
 
 # Modifying Page Content
@@ -36,7 +37,8 @@ The code below illustrates how to create a basic Taipy web application in a Jupy
 ![Modifying Page Content](images/jupyter_notebooks_3.png){width=90% : .tp-image-border }
 
 When we wish to alter the contents of *page_md*, we might be tempted to (incorrectly) modify and
-re-run our existing [page](../../../refmans/reference/taipy.gui.Page.md) definition cell, like this:
+re-run our existing [page](../../../refmans/reference/pkg_taipy/pkg_gui/Page/index.md) definition cell,
+like this:
 
 ![Modifying Page Content](images/jupyter_notebooks_4.png){width=90% : .tp-image-border }
 

@@ -382,14 +382,16 @@ class [element_type]({base_class}):
                 element_md_location = (
                     "corelements" if desc["prefix"] == "core_" else "generic"
                 )
-                if m := re.search(r"(\[`(\w+)`\]\()\2\.md\)", short_doc):
+                if m := (re.search
+                    (r"(\[`(\w+)`\]\()\2\.md\)", short_doc)):
                     short_doc = (
                         short_doc[: m.start()]
-                        + f"{m[1]}../../refmans/gui/viselements/{element_md_location}/{m[2]}.md)"
+                        + f"{m[1]}../../../../../refmans/gui/viselements/{element_md_location}/{m[2]}.md)"
                         + short_doc[m.end() :]
                     )
 
-                element_md_page = f"[`{element_type}`](../../refmans/gui/viselements/{element_md_location}/{element_type}.md)"
+                element_md_page = (f"[`{element_type}`](../../../../../../refmans/gui/viselements/{element_md_location}"
+                                   f"/{element_type}.md)")
                 buffer.write(
                     template.replace("[element_type]", element_type)
                     .replace("[element_md_page]", element_md_page)

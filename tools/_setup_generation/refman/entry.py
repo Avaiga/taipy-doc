@@ -47,7 +47,7 @@ class Entry:
         os.makedirs(os.path.join(docs_path, folder_path, self.simple_name), exist_ok=True)
         with open(os.path.join(docs_path, folder_path, self.simple_name, "index.md"), "w") as file:
             file.write("---\n"
-                       f"title: {self.simple_name} {str(self._get_type_title()).lower()}\n"
+                       f"title: {self.simple_name}{self.suffix} {str(self._get_type_title()).lower()}\n"
                        "---\n\n"
                        f"::: {self._doc_full_name}\n")
 

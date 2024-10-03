@@ -353,8 +353,10 @@ plugins:
             show_root_toc_entry: false
             show_root_full_path: false
             show_category_heading: true
-            show_symbol_type_heading: true
             inherited_members: true
+            filters:
+            - "!^_"
+            - "^__init__$"
             modernize_annotations: true
             show_signature_annotations: true
             separate_signature: true

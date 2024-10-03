@@ -56,7 +56,7 @@ class Package:
             self.navigation += f'  - "<code>{self.name}</code>": {self.rel_file_path}\n'
         else:
             folders = self.name.split(".")
-            prefix = ("." if len(folders) > 1 else "")
+            prefix = ("." if len(folders) > 1 else "taipy.")
             self.navigation = (len(folders) - 2) * "  "
             self.navigation += f'- "<code>{prefix}{self.simple_name}</code>":\n'
             self.navigation += (len(folders) - 1) * "  "

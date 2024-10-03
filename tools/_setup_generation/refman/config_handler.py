@@ -90,4 +90,5 @@ from taipy.enterprise.core.config import TelemetrySection\n"""
             new_content = new_content.replace("taipy.core.config.task_config.TaskConfig", "TaskConfig")
             new_content = new_content.replace("taipy.config.common.frequency.Frequency", "Frequency")
             new_content = new_content.replace("taipy.config.section.Section", "Section")
+            new_content = new_content.replace("@_Classproperty", "@property")
             f.write(new_content)
