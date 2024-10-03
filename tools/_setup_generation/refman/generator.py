@@ -14,7 +14,7 @@ class Generator:
         self.ref_relative_path = reference_relative_path  # refmans/reference
         self.REFERENCE_DIR_PATH = os.path.join(setup.docs_dir, reference_relative_path)  # ...\docs\refmans\reference
         self.PACKAGE_GROUPS = [
-            "taipy.config",
+            "taipy.common",
             "taipy.core",
             "taipy.gui",
             "taipy.gui_core",

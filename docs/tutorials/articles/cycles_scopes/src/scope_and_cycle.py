@@ -3,7 +3,7 @@ import datetime as dt
 import pandas as pd
 
 import taipy as tp
-from taipy.config import Config, Frequency, Scope
+from taipy.common.config import Config, Frequency, Scope
 
 
 def filter_by_month(df, month):

@@ -57,7 +57,7 @@ and the results are returned in that exact order.
 </video>
 
 ```py
-from taipy.config import Config
+from taipy.common.config import Config
 
 nb_1_cfg = Config.configure_data_node('nb1')
 nb_2_cfg = Config.configure_data_node('nb2')
@@ -169,7 +169,7 @@ Let's revisit our previous code and modify the Data nodes to have a Global scope
 </video>
 
 ```python
-from taipy.config import Config, Scope
+from taipy.common.config import Config, Scope
 
 nb_1_cfg = Config.configure_data_node('nb1', scope=Scope.GLOBAL)
 nb_2_cfg = Config.configure_data_node('nb2', scope=Scope.GLOBAL)

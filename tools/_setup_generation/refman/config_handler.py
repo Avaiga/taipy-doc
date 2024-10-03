@@ -7,12 +7,12 @@ from ..setup import Setup
 class ConfigHandler:
     REPL_STR = "sections (Dict[str, Dict[str, Section]]): A dictionary containing all non-unique sections.\n"
     METHODS_FILE = "config_doc.txt"
-    # ATTRIBUTES_FILE = "config_attributes_doc.txt"
+
     def __init__(self, setup: Setup):
         self.tools_dir = setup.tools_dir
 
     def restore_config_module(self):
-        taipy_config_dir = os.path.join(self.tools_dir, "taipy", "config")
+        taipy_config_dir = os.path.join(self.tools_dir, "taipy", "common", "config")
         config_backup_path = os.path.join(taipy_config_dir, "config.py.bak")
         if os.path.exists(config_backup_path):
             shutil.move(config_backup_path, os.path.join(taipy_config_dir, "config.py"))
@@ -38,13 +38,13 @@ class ConfigHandler:
         return content
 
     def _backup(self):
-        # Backup file taipy/config/config.py
-        taipy_config_dir = os.path.join(self.tools_dir, "taipy", "config")
+        # Backup file taipy/common/config/config.py
+        taipy_config_dir = os.path.join(self.tools_dir, "taipy", "common", "config")
         config_path = os.path.join(taipy_config_dir, "config.py")
         shutil.copyfile(config_path, os.path.join(taipy_config_dir, "config.py.bak"))
 
     def _inject_documentation(self, methods_to_inject):
-        config_path = os.path.join(self.tools_dir, "taipy", "config", "config.py")
+        config_path = os.path.join(self.tools_dir, "taipy", "common", "config", "config.py")
 
         # Read config.py file
         with open(config_path, "r") as f:
@@ -59,7 +59,7 @@ import json
 from .common.scope import Scope
 from .common.frequency import Frequency
 from taipy.auth.config import AuthenticationConfig
-from taipy.config.section import Section
+from taipy.common.config.section import Section
 from taipy.core.common.mongo_default_document import MongoDefaultDocument
 from taipy.core.config.core_section import CoreSection
 from taipy.core.config.job_config import JobConfig
@@ -81,14 +81,14 @@ from taipy.enterprise.core.config import TelemetrySection\n"""
                 "custom_document: Any = MongoDefaultDocument",
             )
             new_content = new_content.replace(
-                "taipy.config.common.scope.Scope", "Scope"
+                "taipy.common.config.common.scope.Scope", "Scope"
             )
             new_content = new_content.replace("<Scope.SCENARIO: 2>", "Scope.SCENARIO")
             new_content = new_content.replace(
                 "taipy.core.config.data_node_config.DataNodeConfig", "DataNodeConfig"
             )
             new_content = new_content.replace("taipy.core.config.task_config.TaskConfig", "TaskConfig")
-            new_content = new_content.replace("taipy.config.common.frequency.Frequency", "Frequency")
-            new_content = new_content.replace("taipy.config.section.Section", "Section")
+            new_content = new_content.replace("taipy.common.config.common.frequency.Frequency", "Frequency")
+            new_content = new_content.replace("taipy.common.config.section.Section", "Section")
             new_content = new_content.replace("@_Classproperty", "@property")
             f.write(new_content)
