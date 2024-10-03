@@ -54,18 +54,13 @@ class Package:
         folders = self.name.split(".")
         indentation = ""
         prefix = ""
-        if self.name == "taipy":
-            self.navigation = f'{indentation}- "<code>{prefix}{self.simple_name}</code>":\n'
-            self.navigation += f'{indentation}  - "{self.title}": {self.rel_file_path}\n'
-        elif len(folders) == 2:
+        if len(folders) == 2:
             prefix = "taipy."
-            self.navigation = f'{indentation}- "<code>{prefix}{self.simple_name}</code>":\n'
-            self.navigation += f'{indentation}  - "{self.title}": {self.rel_file_path}\n'
-        else:
+        elif len(folders) > 2:
             indentation = (len(folders) - 2) * "  "
             prefix = "."
-            self.navigation += f'{indentation}- "<code>{prefix}{self.simple_name}</code>":\n'
-            self.navigation += f'{indentation}  - {self.title}: {self.rel_file_path}\n'
+        self.navigation += f'{indentation}- "<code>{prefix}{self.simple_name}</code>":\n'
+        self.navigation += f'{indentation}  - {self.title}: {self.rel_file_path}\n'
 
     def _write_doc(self, xref_updater) -> str:
         os.makedirs(os.path.join(self.setup.docs_dir, self.rel_package_dir_path), exist_ok=True)
