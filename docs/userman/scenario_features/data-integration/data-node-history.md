@@ -135,7 +135,7 @@ an expiration date.
 ## Check validity or expiration date
 
 The validity of a data node can be checked using the `DataNode.is_valid^` property returning
-a boolean.
+a Boolean value.
 
 The expiration date is also available using the `DataNode.expiration_date^` property
 returning a `datetime` object.

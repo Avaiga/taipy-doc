@@ -336,7 +336,7 @@ they apply to:
 | <a name="c-d-flex"></a>*d-flex*         | Makes the element a flexible layout block, so its direct children display horizontally. |
 | <a name="c-d-block"></a>*d-block*        | Displays the element as a block on a new line.                      |
 | <a name="c-d-inline"></a>*d-inline*       | Displays the element inline, horizontally, and treats it like text. |
-| <a name="c-d-inline-block"></a>*d-inline-block* | Displays the element inline but keeps it treated as a block (i.e. for margins, paddings, etc). |
+| <a name="c-d-inline-block"></a>*d-inline-block* | Displays the element inline but keeps it treated as a block (e.g. for margins, paddings, etc). |
 
 All these classes are defined using the "!important" priority setting, overriding all
 previous styling rules.

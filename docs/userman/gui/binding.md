@@ -326,6 +326,7 @@ Each item in a *list of values*  can hold:
 - A label: a string that is used when displaying the specific item;
 - An image: an optional `Icon^` that can be used to display the item as a small
   image. Note that icons can also hold a descriptive string.
+- A member of an enumeration class.
 
 A *LoV* can have different types, depending on the use case:
 
@@ -353,10 +354,71 @@ A *LoV* can have different types, depending on the use case:
 
   The Python type of such a *lov* is: List[Tuple[str, `Icon^`]].
 
+- An enumeration class (i.e. a class that inherits from `Enum`).<br/>
+  You can set a *lov* directly from an enumeration class, as detailed in the
+  ["LoVs as enumerations"](#lovs-as-enumeration) below.
+
 The "selected" value in controls that use *LoV*s are handled in their *value*
 property. This will be the original value of the selection in the *LoV* unless
 your control has set the property *value_by_id* to True, then the selected value
 will be the unique identifier of the value in the *LoV*.
+
+## LoVs as enumeration {data-source="gui:doc/examples/binding_lov_is_enum"}
+
+An enumeration class can be used to define a set of predefined values for a control. You can
+assign the *lov* (List of Values) property of the control to the enumerated class you want to
+use.
+
+For example, consider the following enumeration class definition:
+```python
+class Color(Enum):
+    RED = 0
+    GREEN = 1
+    BLUE = 2
+
+color = Color.RED
+```
+In the code above, we also define and initialize the *color* variable, which can then be bound
+to a control’s main value. You can directly use this class as the *lov* value in your
+control.<br/>
+
+You can directly use this class as a LoV value in you control.<br/>
+Here is how you can use the *Color* enumeration class in a
+[`toggle`](../../refmans/gui/viselements/generic/toggle.md) control:
+!!! example "Enum as LoV"
+
+    === "Markdown"
+
+        ```
+        <|{color}|toggle|lov={Color}|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:toggle lov="{Color}">{color}</taipy:toggle>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.toggle("{color}", lov="{Color}")
+        ```
+
+        You can assign the enumeration class itself directly to the *lov* property
+        ```python
+        tgb.toggle("{color}", lov=Color)
+        ```
+        In this case, the *color* variable will hold the enumeration member's value (e.g., 0, 1, 2)
+        instead of the enumeration member (e.g., the object `Color.RED`).
+
+When this control is used on a page, the *color* variable will be updated to reflect the selected
+member from the *Color* enumeration class.<br/>
+If you're using the Page Builder API and have set the *lov* property to the enumeration class
+directly, the variable will hold the member value (e.g., 0, 1, 2), otherwise, it will hold the
+enumeration member itself (e.g., Color.RED).
 
 ## Custom LoVs
 
@@ -450,6 +512,16 @@ The Markdown fragment that would be used in a page would look like this:
 ```
 <|{selected_intrument}|tree|lov={intruments}|>
 ```
+
+# Non-literal values
+
+When a value whose type is not a literal type (i.e. a dictionary, a list, ...), assigning a new
+value by simply calling `state.variable = <new_value>` will not propagate to the page.<br/>
+The reason is that it would be too costly to find and communicate to the front-end just the values,
+stored within potentially complex object structures, that actually require updates.
+
+When you are in such a situation, you must call `(State.)refresh()^` method explicitly for a
+refresh to happen: i.e. `state.refresh("variable")`.
 
 # Tabular values
 

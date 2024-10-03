@@ -62,18 +62,18 @@ This is how the control now looks:
     <figcaption>Linear progress indicator</figcaption>
 </figure>
 
-## Adding a title {data-source="gui:doc/examples/controls/progress-title.py"}
+## Adding a title {data-source="gui:doc/examples/controls/progress-texts.py"}
 
 The control can show the percentage as a numerical value by setting the
 [*show_value*](#p-show_value) property to True.</br>
 You can add a title to the control with the [*title*](#p-title) property. You can also specify the
-location of the title, relative to the whole control, with the [*title*](#p-title-anchor) property.
+location of the title, relative to the whole control, with the [*title*](#p-title_anchor) property.
 
 With the same variable as above, this is the control definition of a progress indicator showing a
 title above the gauge:
 !!! taipy-element
     value={value}
-    title=Loading...
+    title=Processing...
     title_anchor=top
     show_value:b=True
 

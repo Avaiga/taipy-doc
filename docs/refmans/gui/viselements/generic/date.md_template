@@ -11,8 +11,7 @@ A control that can display and specify a formatted date, with or without time.
 # Details
 
 The [*format*](#p-format) property lets you indicate how to display the date object set to the
-[*date*](#p-date) property. Note that the format is used only when [*editable*](#p-editable) is set
-to False (the date control is read-only).<br/>
+[*date*](#p-date) property.<br/>
 This property can be set to a format string that is consumed by the
 [date-fns.format()](https://date-fns.org/docs/format) function. The documentation for this
 function provides all the different format strings you might need.<br/>
@@ -77,7 +76,6 @@ Then the date selector shows like this:
 
 ## Formatting the date
 
-To format the date on the page, you must set the [*editable*](#p-editable) property to False.<br/>
 Here is a definition of a read-only date selector control using the same *date* variable definition
 as above:
 

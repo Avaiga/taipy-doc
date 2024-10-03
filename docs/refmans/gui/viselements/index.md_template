@@ -6,7 +6,7 @@ with the page content.
 There are two types of *Visual Elements*:
 
    - *Controls* typically represent user data that the user can interact with.<br/>
-     The generic controls are listed in the [Standard Controls](#standard-controls) section.
+     The generic controls are listed in the [Generic Controls](#generic-controls) section.
      Some controls dedicated to scenario and data management are available in the
      [Scenario Management controls](#scenario-and-data-management-controls) section.
 
@@ -18,9 +18,9 @@ If you are just starting with Taipy GUI, you may want to look at the
 [introduction](../../../userman/gui/viselements/introduction.md) page. It provides a comprehensive understanding of the
 visual elements, their properties, and how to use them.
 
-# Standard controls
+# Generic controls
 
-Standard controls can be used in all situations when a user interface is needed.
+Generic controls can be used in all situations when a user interface is needed.
 These controls are elements representing generic data.<br/>
 Here, you can find common graphical controls such as push buttons and sliders, as well as more
 advanced graphical controls such as selectors, tables, and charts.

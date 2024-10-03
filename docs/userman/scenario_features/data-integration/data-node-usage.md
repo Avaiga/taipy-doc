@@ -778,7 +778,7 @@ In JSON, values must be one of the following data types:
 - A number
 - An object (embedded JSON object)
 - An array
-- A boolean
+- A Boolean value
 - `null`
 
 However, the content of a JSON data node can vary. By default, JSON data node provided by Taipy can
@@ -1031,7 +1031,7 @@ column will be read.
     ```
 
 Here, the `ParquetDataNode.write_with_kwargs^` method is used to specify a keyword parameter, _"index"_,
-which is a boolean value determining if the index of the DataFrame should be written. In this case, the
+which is a Boolean value determining if the index of the DataFrame should be written. In this case, the
 index will not be not written.
 
 ## Mongo collection
