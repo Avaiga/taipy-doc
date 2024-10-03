@@ -145,7 +145,7 @@ This code starts the UI server, which makes the interface active and functional.
 To start the Taipy application, create `main.py` with the content provided earlier,
  and run the following command in the terminal:
 ```console
-$ taipy run main.py
+taipy run main.py
 ```
 
 ![Dynamic Chart Application](images/dynamic_chart.gif){width=70% : .tp-image-border }
