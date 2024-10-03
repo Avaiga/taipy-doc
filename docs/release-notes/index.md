@@ -56,12 +56,16 @@ This is the list of changes to Taipy releases as they were published.
       allows you to define a custom Python function to format cell values.<br/>
       Please look at the
       [example code](../refmans/gui/viselements/generic/table.md#custom-formatting) for details. 
+    - A new property, [*use_checkbox*](../refmans/gui/viselements/generic/table.md#p-use_checkbox),
+      can be set to True to display checkboxes in cells containing Boolean values.<br/>
+      This significantly reduces the rendering time for large tables with Boolean columns.
 - You can define CSS rules for individual pages using the new *style* parameter of the `Page^`
   class or via the `Page.set_style()^` method.<br/>
   See the [section on Styling](../userman/gui/styling/index.md#style-sheets) for more
   information.
 - *List-of-values* can now be built directly from enumeration classes.<br/>
-  See [the section on LoVs](../userman/gui/binding.md#list-of-values) for more information.
+  See [the section on enumerated LoVs](../userman/gui/binding.md#lovs-as-enumeration) for more
+  information.
 
 <h4><strong><code>taipy-core</code></strong> 4.0.0 </h4>
 
@@ -131,7 +135,7 @@ This is the list of changes to Taipy releases as they were published.
   control, enabling users to show or hide the entered password.
 - Page Builder API:
     - Properties that expect a function can now be set to a lambda function in the Page Builder
-      API.<br/>
+      API to simplify dynamic generation.<br/>
       See [issue #1379](https://github.com/Avaiga/taipy/issues/1379).
     - Controls defined with the Page Builder API have an additional property called *inline* which,
       when set to True, will not generate a line skip, to facilitate layout.<br/>

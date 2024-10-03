@@ -22,17 +22,13 @@ set to False (the date range control is read-only).<br/>
 The [`date`](date.md) control has the same property. Please look at this control's documentation
 for more information on this property.
 
-# Styling
-
-All the date range controls are generated with the "taipy-date_range" CSS class. You can use this
-class name to select the date range selectors on your page and apply style.
-
 # Usage
 
 ## Selecting a date range
 
 The [*dates*](#p-dates) property (which is the default property for this control) must be set to an
-array of two `datetime.date` objects, representing the selected start and end dates of the range.
+array of two `datetime.date` objects, representing the selected start and end dates of the
+range.
 
 Assuming the variable *dates* was defined by the following code:
 
@@ -112,3 +108,8 @@ Here is how the date range selector looks like:
     <img src="../date_range-labels-l.png" class="visible-light"/>
     <figcaption>Labels on the date fields</figcaption>
 </figure>
+
+# Styling
+
+All the date range controls are generated with the "taipy-date_range" CSS class. You can use this
+class name to select the date range selectors on your page and apply style.

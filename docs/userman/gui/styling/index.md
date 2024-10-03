@@ -237,7 +237,7 @@ You could also change the CSS definition to:
 Your page can then display different controls that reuse the "confirm" class (in their *class_name*
 property) to apply the style to all of them automatically.
 
-### Dynamic styling {data-source="gui:doc/examples/styling-dynamic.py"}
+### Dynamic styling {data-source="gui:doc/examples/styling_dynamic.py"}
 
 The *class_name* property mentioned above is dynamic: the application can alter its value at
 runtime.

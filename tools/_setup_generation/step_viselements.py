@@ -560,7 +560,7 @@ class [element_type]({base_class}):
                 new_documentation += f"        tgb.{type}("
 
                 def builder_value(value: str, type: str) -> str:
-                    if type == "f":
+                    if type in ["n", "f"]:
                         return value
                     if type.startswith("b"):
                         return value.title()

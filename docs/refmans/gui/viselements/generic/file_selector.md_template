@@ -2,19 +2,6 @@ Allows uploading a file content.
 
 The upload can be triggered by pressing a button, or drag-and-dropping a file on top of the control.
 
-# Styling
-
-All the file selector controls are generated with the "taipy-file_selector" CSS class. You can use this class
-name to select the file selector controls on your page and apply style.
-
-### [Stylekit](../../../../userman/gui/styling/stylekit.md) support
-
-The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can use to style file selectors:
-
-* *fullwidth*<br/>
-    If a file selector uses the *fullwidth* class, then it uses the whole available
-    horizontal space.
-
 # Usage
 
 ## Default behavior
@@ -50,3 +37,16 @@ True.
 !!! taipy-element
     default={content}
     multiple:b=True
+
+# Styling
+
+All the file selector controls are generated with the "taipy-file_selector" CSS class. You can use this class
+name to select the file selector controls on your page and apply style.
+
+### [Stylekit](../../../../userman/gui/styling/stylekit.md) support
+
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can use to style file selectors:
+
+* *fullwidth*<br/>
+    If a file selector uses the *fullwidth* class, then it uses the whole available
+    horizontal space.

@@ -1,6 +1,5 @@
 A control that can show the progression of some operation.
 
-
 # Details
 
 The progress indicator represents, in a compact way, the ratio of achievement on a scale from 0 to
@@ -23,7 +22,7 @@ Note that is the [*value*](#p-value) property is set to None, the progress contr
 
 # Usage
 
-## Circular progress indicator {data-source="gui:doc/examples/controls/progress-simple.py"}
+## Circular progress indicator {data-source="gui:doc/examples/controls/progress_simple.py"}
 
 The simplest and most compact use case for the progress control is a circular progress
 indicator.<br/>
@@ -45,7 +44,7 @@ And the result looks like this:
     <figcaption>Circular progress indicator</figcaption>
 </figure>
 
-## Linear progress indicator {data-source="gui:doc/examples/controls/progress-linear.py"}
+## Linear progress indicator {data-source="gui:doc/examples/controls/progress_linear.py"}
 
 You can change the representation of the control to a horizontal bar by setting the
 [*linear*](#p-linear) property to True.
@@ -62,7 +61,7 @@ This is how the control now looks:
     <figcaption>Linear progress indicator</figcaption>
 </figure>
 
-## Adding a title {data-source="gui:doc/examples/controls/progress-texts.py"}
+## Adding a title {data-source="gui:doc/examples/controls/progress_texts.py"}
 
 The control can show the percentage as a numerical value by setting the
 [*show_value*](#p-show_value) property to True.</br>
@@ -160,7 +159,7 @@ Here is the result of applying this style:
     </figure>
   </div>
 
-## Styling texts {data-source="gui:doc/examples/controls/progress-styling-texts.py"}
+## Styling texts {data-source="gui:doc/examples/controls/progress_styling_texts.py"}
 
 The progress control provides the CSS class *taipy-progress-value* to the element that displays the
 value.<br/>
