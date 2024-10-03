@@ -142,8 +142,9 @@ if __name__ == "__main__":
 
 This code starts the UI server, which makes the interface active and functional.
 
-To start the Taipy application, create `main.py` with the content provided earlier, and run the following command in the terminal:
-```
+To start the Taipy application, create `main.py` with the content provided earlier,
+ and run the following command in the terminal:
+```console
 $ taipy run main.py
 ```
 
