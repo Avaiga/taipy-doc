@@ -130,28 +130,37 @@ Compared to the previous example, you can see that the label uses a bold font we
 
     The Page Builder API does support index values that are not Python identifiers or literals.
 
-!!! note "Lambdas as property values"
-    Using a lambda function as a property value simplifies the creation of dynamic user interfaces
-    where elements change based on run-time information. This approach is particularly useful when
-    you need to build loops or handle varying data.
+## Lambda function as a property value {data-source="gui:doc/examples/builder_lambda_property.py"}
 
-    For example, consider the following dictionary:
-    ```python
-    ages = {
-        "Albert": 58,
-        "Beatrix": 71,
-        "Cecilia": 23
-    }
-    ```
-    We want to generate a series of text elements displaying the name and age of each person in the
-    list. A lambda function makes this straightforward:<br/>
-    ```python
-    for name in ages:
-        tgb.text(lambda ages: f"{name} is {ages.get(name)}")
-    ```
-    In this example, the lambda function accesses the *ages* dictionary from the state. The function
-    dynamically creates text elements based on local variables, such as *name*, allowing to create
-    the expected content.
+Using a lambda function as a property value simplifies the creation of dynamic user interfaces,
+especially when elements need to change based on run-time information. This approach is particularly
+useful for building loops or handling data that varies at runtime.
+
+For example, consider the following dictionary:
+```python
+persons = {
+    "Albert": 1982,
+    "Beatrix": 1955,
+    "Cecilia": 2003
+}
+```
+
+Suppose we want to create an application that displays the name of each person along with their age,
+based on a target year selected via a [`slider`](../../../refmans/gui/viselements/generic/slider.md)
+control. The slider is bound to the variable *current_year*.
+
+We can use a lambda function to dynamically generate text elements that show each person's name and
+their age for the selected year:<br/>
+```python
+for name, birth_year in persons.items():
+    tgb.text(lambda current_year: f"{name} would be {current_year-birth_year}")
+```
+In this example, the lambda function accesses the *current_year* value from the state and
+dynamically creates text elements using the local variables *name* and *birth_year*. This allows
+the application to update the displayed content based on the selected year.
+
+The names of the parameters for the lambda function must be names of variables that are accessible
+from the current state.
 
 # Binding variables
 
