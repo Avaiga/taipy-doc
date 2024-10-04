@@ -40,12 +40,13 @@ True.
 
 # Styling
 
-All the file selector controls are generated with the "taipy-file_selector" CSS class. You can use this class
-name to select the file selector controls on your page and apply style.
+All the file selector controls are generated with the "taipy-file-selector" CSS class. You can use
+this class name to select the file selector controls on your page and apply style.
 
 ### [Stylekit](../../../../userman/gui/styling/stylekit.md) support
 
-The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can use to style file selectors:
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can
+use to style file selectors:
 
 * *fullwidth*<br/>
     If a file selector uses the *fullwidth* class, then it uses the whole available

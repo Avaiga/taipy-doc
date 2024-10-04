@@ -185,8 +185,8 @@ In *clean_up()*, we simply delete the temporary file, retrieving its path name f
 
 # Styling
 
-All the file download controls are generated with the "taipy-file_download" CSS class. You can use this class
-name to select the file download controls on your page and apply style.
+All the file download controls are generated with the "taipy-file-download" CSS class. You can use
+this class name to select the file download controls on your page and apply style.
 
 ### [Stylekit](../../../../userman/gui/styling/stylekit.md) support
 
