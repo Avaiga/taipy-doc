@@ -1,5 +1,14 @@
 A control that displays some text that can potentially be edited.
 
+# Usage
+
+## Get user input
+
+You can create an input field bound to a variable with the following content:
+
+!!! taipy-element
+    default={value}
+
 # Styling
 
 All the input controls are generated with the "taipy-input" CSS class. You can use this class
@@ -12,12 +21,3 @@ The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific 
 * *fullwidth*<br/>
     If an input control uses the *fullwidth* class, then it uses the whole available
     horizontal space.
-
-# Usage
-
-## Get user input
-
-You can create an input field bound to a variable with the following content:
-
-!!! taipy-element
-    default={value}

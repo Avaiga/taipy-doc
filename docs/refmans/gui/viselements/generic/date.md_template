@@ -17,22 +17,9 @@ This property can be set to a format string that is consumed by the
 function provides all the different format strings you might need.<br/>
 For more information, you can look at the [formatting example](#formatting-the-date) below.
 
-# Styling
-
-All the date controls are generated with the "taipy-date" CSS class. You can use this class
-name to select the date selectors on your page and apply style.
-
-### [Stylekit](../../../../userman/gui/styling/stylekit.md) support
-
-The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can use to style date selectors:
-
-* *fullwidth*<br/>
-    If a date selector uses the *fullwidth* class, then it uses the whole available
-    horizontal space.
-
 # Usage
 
-## Using only the date
+## Using only the date {data-source="gui:doc/examples/controls/date_simple.py"}
 
 Assuming a variable *date* contains a Python `datetime` object:
 ```python
@@ -57,7 +44,7 @@ The resulting control appears on the page similarly to:
 Note that because the [*with_time*](#p-with_time) property is set to False by default, only the
 date part of the *date* object is displayed.
 
-## Using the full date and time
+## Using the full date and time {data-source="gui:doc/examples/controls/date_with_time.py"}
 
 If you do need to use the time, you can set the [*with_time*](#p-with_time) property to True.<br/>
 Keeping the definition of the *date* object from the example above, we can change the definition
@@ -74,7 +61,7 @@ Then the date selector shows like this:
     <figcaption>A date and time selector</figcaption>
 </figure>
 
-## Formatting the date
+## Formatting the date {data-source="gui:doc/examples/controls/date_format.py"}
 
 Here is a definition of a read-only date selector control using the same *date* variable definition
 as above:
@@ -105,7 +92,6 @@ that, according to the [date-fns.format() documentation](https://date-fns.org/do
 
 !!! taipy-element
     default={date}
-    editable:b=False
     format=eeee LLLL do, y
 
 The formatted date appears in the control:
@@ -113,4 +99,87 @@ The formatted date appears in the control:
     <img src="../date-format-d.png" class="visible-dark" />
     <img src="../date-format-l.png" class="visible-light"/>
     <figcaption>A formatted date</figcaption>
+</figure>
+
+## Date constraints {data-source="gui:doc/examples/controls/date_min_max.py"}
+
+You can set minimum and maximum date boundaries to restrict the user’s date selection.
+
+Assume we define the following date variables:
+```python
+date = datetime.date(2024, 6, 15)
+start = datetime.date(2024, 5, 15)
+end = datetime.date(2024, 7, 15)
+```
+
+Here is the control definition that uses these variables:
+!!! taipy-element
+    default={date}
+    min={start}
+    max={end}
+
+In this example:
+
+- the main value for the control (the [*date*](#p-date)property) is set to *date*;
+- the [*min*](#p-min) property is set so that no date earlier than *start* can be selected;
+- the [*max*](#p-max) property is set so no date later than *end* can be selected.
+
+When the user tries to pick a date in July 2024, the control will look like this:
+<figure>
+    <img src="../date-min-max-d.png" class="visible-dark" />
+    <img src="../date-min-max-l.png" class="visible-light"/>
+    <figcaption>Constrained date choice</figcaption>
+</figure>
+
+Since the maximum date is set to July 15th, all dates after that are grayed out and cannot be
+selected.
+
+# Styling
+
+All the date controls are generated with the "taipy-date" CSS class. You can use this class
+name to select the date selectors on your page and apply style.
+
+### [Stylekit](../../../../userman/gui/styling/stylekit.md) support
+
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can use to style date selectors:
+
+* *fullwidth*<br/>
+    If a date selector uses the *fullwidth* class, then it uses the whole available
+    horizontal space.
+
+## Changing colors {data-source="gui:doc/examples/controls/date_styling.py"}
+
+The date control component consists of an input HTML element styled with the "MuiInputBase-input"
+CSS class, and a popup window (displayed when the calendar icon is pressed) with the
+"MuiDateCalendar-root" class.
+
+Below is an example of CSS rules that apply custom styling to a date control:
+```css
+.taipy-date {
+    .MuiInputBase-root {
+        color: green;
+        .MuiIconButton-root {
+            color: green;
+        }
+    }
+}
+.MuiDateCalendar-root {
+    color: green;
+    .MuiPickersDay-root {
+        color: green;
+    }
+}```
+
+It's important to note that the rule targeting the "MuiDateCalendar-root" class must stand
+independently. This is because it styles the calendar popup, which is not directly associated with
+the element assigned the "taipy-date" class.
+
+These rules change the color of the control's icon and ensures that the same color is applied to
+the text in the calendar selection popup.
+
+Here is the impact of these CSS rules:
+<figure class="tp-center">
+    <img src="../date-styling-d.png" class="visible-dark"  width="75%"/>
+    <img src="../date-styling-l.png" class="visible-light" width="75%"/>
+    <figcaption>Styling the date control</figcaption>
 </figure>

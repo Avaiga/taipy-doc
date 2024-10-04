@@ -75,47 +75,6 @@ demonstration of that feature.
       [*figure* property of the `chart` control](chart.md#the-figure-property)
       because it does not provide callbacks to the application.
 
-# Styling
-
-All the part blocks are generated with the "taipy-part" CSS class. You can use this class
-name to select the part blocks on your page and apply style.
-
-## [Stylekit](../../../../userman/gui/styling/stylekit.md) support
-
-The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides specific classes that you can use to style part
-blocks:
-
-- *align-item-top*<br/>
-  If this part block is inside a [`layout`](layout.md) block, this CSS class aligns the part
-  content to the top of the layout column it belongs to.
-- *align-item-center*<br/>
-  If this part block is inside a [`layout`](layout.md) block, this CSS class vertically aligns
-  the part content to the center of the layout column it belongs to.
-- *align-item-bottom*<br/>
-  If this part block is inside a [`layout`](layout.md) block, this CSS class vertically aligns
-  the part content to the bottom of the layout column it belongs to.
-- *align-item-stretch*<br/>
-  If this part block is inside a [`layout`](layout.md) block, this CSS class
-  gives the part the same height as the highest item in the row where this part
-  appears in the layout.
-
-The Stylekit also has several classes that can be used to style part blocks,
-as described in the [Styled Sections](../../../../userman/gui/styling/stylekit.md#styled-sections)
-documentation.<br/>
-Because the default property of the *part* block is *class_name*, you can use the
-Markdown short syntax for parts:
-
-```
-<|card|
-...
-(card content)
-...
-|>
-```
-
-Creates a `part` that has the [*card*](../../../../userman/gui/styling/stylekit.md#card) class defined
-in the Stylekit.
-
 # Usage
 
 ## Grouping controls
@@ -490,3 +449,44 @@ Here are two images resulting from two different slider knob positions:
     </div>
     <figcaption>Dynamic content</figcaption>
 </figure>
+
+# Styling
+
+All the part blocks are generated with the "taipy-part" CSS class. You can use this class
+name to select the part blocks on your page and apply style.
+
+## [Stylekit](../../../../userman/gui/styling/stylekit.md) support
+
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides specific classes that you can use to style part
+blocks:
+
+- *align-item-top*<br/>
+  If this part block is inside a [`layout`](layout.md) block, this CSS class aligns the part
+  content to the top of the layout column it belongs to.
+- *align-item-center*<br/>
+  If this part block is inside a [`layout`](layout.md) block, this CSS class vertically aligns
+  the part content to the center of the layout column it belongs to.
+- *align-item-bottom*<br/>
+  If this part block is inside a [`layout`](layout.md) block, this CSS class vertically aligns
+  the part content to the bottom of the layout column it belongs to.
+- *align-item-stretch*<br/>
+  If this part block is inside a [`layout`](layout.md) block, this CSS class
+  gives the part the same height as the highest item in the row where this part
+  appears in the layout.
+
+The Stylekit also has several classes that can be used to style part blocks,
+as described in the [Styled Sections](../../../../userman/gui/styling/stylekit.md#styled-sections)
+documentation.<br/>
+Because the default property of the *part* block is *class_name*, you can use the
+Markdown short syntax for parts:
+
+```
+<|card|
+...
+(card content)
+...
+|>
+```
+
+Creates a `part` that has the [*card*](../../../../userman/gui/styling/stylekit.md#card) class defined
+in the Stylekit.

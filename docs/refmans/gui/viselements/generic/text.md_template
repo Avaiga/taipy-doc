@@ -19,14 +19,9 @@ function of Python.
 If the value is a `date` or a `datetime`, then [*format*](#p-format) can be set to a date/time
 formatting string.
 
-# Styling
-
-All the text controls are generated with the "taipy-text" CSS class. You can use this class name to
-select the text controls on your page and apply style.
-
 # Usage
 
-## Display values {data-source="gui:doc/examples/controls/text-simple.py"}
+## Display values {data-source="gui:doc/examples/controls/text_simple.py"}
 
 The property *value* can be set to any text that will be rendered.<br/>
 This value must be a
@@ -46,7 +41,7 @@ displays:
     <figcaption>Showing a variable value</figcaption>
 </figure>
 
-## Formatted output {data-source="gui:doc/examples/controls/text-format.py"}
+## Formatted output {data-source="gui:doc/examples/controls/text_format.py"}
 
 If your value is a floating point value, you can use the [*format*](#p-format) property to indicate
 what the output format should be used.
@@ -69,7 +64,7 @@ Here is the resulting display:
     <figcaption>Formatting a value</figcaption>
 </figure>
 
-## Markdown formatting {data-source="gui:doc/examples/controls/text-md.py"}
+## Markdown formatting {data-source="gui:doc/examples/controls/text_md.py"}
 
 You can use the Markdown markup language to add formatting indications to the text you want to
 render.<br/>
@@ -109,7 +104,7 @@ The control looks like this on the page:
 
 Note that a line break was forced where we expected it.
 
-## Preformatted text {data-source="gui:doc/examples/controls/text-pre.py"}
+## Preformatted text {data-source="gui:doc/examples/controls/text_pre.py"}
 
 You may need to store text that is preformatted (where spaces and line skips are essential). This
 is really useful dealing with source code, for example.<br/>
@@ -138,3 +133,8 @@ This is how the control is displayed:
     <img src="../text-pre-l.png" class="visible-light" width="400px"/>
     <figcaption>Preformatted content</figcaption>
 </figure>
+
+# Styling
+
+All the text controls are generated with the "taipy-text" CSS class. You can use this class name to
+select the text controls on your page and apply style.

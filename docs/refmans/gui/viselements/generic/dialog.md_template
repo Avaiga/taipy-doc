@@ -1,86 +1,185 @@
 A modal dialog.
 
 Dialog allows showing some content over the current page.
-The dialog is closed when the user presses the Cancel or Validate buttons, or clicks outside the area of the dialog (triggering a Cancel action).
+The dialog can be closed when the user presses the Cancel or Validate buttons, or clicks outside the
+area of the dialog (triggering a Cancel action).
 
-# Styling
+# Details
 
-All the dialogs are generated with the "taipy-dialog" CSS class. You can use this class
-name to select the dialogs on your page and apply style.
+The `dialog` element is used to communicate information to the user or to gather input. It typically
+appears as a small window over the main content, prompting the user to make decisions or provide
+information. Dialogs are commonly used in applications for actions such as confirming operations,
+requesting input, or displaying status updates.
 
-# Usage
+Dialogs can contain any type of visual elements, including text, buttons, and so on.<br/>
+Buttons can be generated automatically within the dialog, based on the dialog configuration.
 
-## Showing or hiding a dialog
-
-The default property, [*open*](#p-open), indicates whether the dialog is visible or not:
-!!! taipy-element
-    default={show_dialog}
-    on_action=lambda s: s.assign("show_dialog", False)
-
-With another action that would have previously shown the dialog with:
-
-```python
-def button_action(state, id):
-    state.show_dialog = True
-```
-
-## Specifying labels and actions
-
-Several properties let you specify the buttons to show,
-and the action (callback functions) triggered when buttons are pressed:
-
-!!! taipy-element
-    default={show_dialog}
-    title=Dialog Title
-    page_id=page1
-    on_action:f=dialog_action
-    labels=Validate;Cancel
-
-The implementation of the dialog callback could be:
-
-```python
-def dialog_action(state, id, payload):
-    with state as st:
-        ...
-        # depending on payload["args"][0]: -1 for close icon, 0 for Validate, 1 for Cancel
-        ...
-        st.show_dialog = False
-```
-
-## Dialog as block element
-
-The content of the dialog can be specified directly inside the dialog block.
-
+To add elements to a dialog, you must use block syntax in your code:
 !!! example "Definition"
 
     === "Markdown"
 
         ```
-        <|{show_dialog}|dialog|
-            ...
-            <|{some_content}|>
-            ...
+        <|{is_opened}|dialog|
+        ... more visual elements
+        ... e.g.
+        <|Hello|>
+        <|Confirm|button|>
         |>
         ```
-  
+
     === "HTML"
 
         ```html
-        <taipy:dialog open={show_dialog}>
-            ...
-            <taipy:text>{some_content}</taipy:text>
-            ...
+        <taipy:dialog>{is_opened}
+          <!-- more visual elements -->
+          <!-- e.g. -->
+          <taipy:text>Hello</taipy:text>
+          <taipy:button>Confirm</taipy:button>
         </taipy:dialog>
         ```
 
     === "Python"
+
         ```python
         import taipy.gui.builder as tgb
         ...
-        with tgb.dialog("{show_dialog}"):
-            ...
-            tgb.text("{some_content}")
-            ...
+        with tgb.dialog("{is_opened}")
+            # more visual elements
+            # e.g.
+            tgb.text("Hello")
+            tgb.button("Confirm")
+        ```
+
+In this example, the dialog is opened or closed based on the value of the *is_opened* variable. The
+dialog contains a text element and a button labeled "Confirm."
+
+The content of a dialog can also be defined using Pages or Partials, allowing for the reuse of 
+UI components and better organization of the code.
+
+# Usage
+
+## Showing or hiding a dialog {data-source="gui:doc/examples/blocks/dialog_show_hide"}
+
+The [*open*](#p-open) property of a dialog determines whether the dialog is visible. This property
+is usually bound to a Boolean variable. For example:
+```python
+show_dialog = False
+```
+
+When the user interacts with the dialog, the function set to the [*on_action*](#p-on_action)
+property is triggered. Typically, the dialog should close when the user presses the close button
+(the "X" in the top-right corner). Here's the definition of the function to handle this:
+```python
+def hide(state):
+    state.show_dialog = False
+```
+This function closes the dialog by setting its [*open*](#p-open) property to False.
+
+Here is the definition of the dialog that references the *show_dialog* variable and the *hide()*
+callback function:
+!!! example "Definition"
+
+    === "Markdown"
+
+        ```
+        <|{show_dialog}|dialog|on_action=hide|>
+        ```
+
+	    Note that 
+
+    === "HTML"
+
+        ```html
+        <taipy:dialog on_action="hide">{show_dialog}</taipy:dialog>
+        ```
+
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.dialog("{show_dialog}", on_action=hide)
+        ```
+
+        Since the *hide()* function is straightforward, it can be replaced by a lambda
+        function:<br/>
+        `tgb.dialog("{show_dialog}", on_action=lambda s: s.assign("show_dialog", False))`<br/>
+        With this line, the dialog action is defined as a lambda function that sets *show_dialog* to
+        False, effectively closing the dialog. The *hide()* is not needed any longer.
+
+To open the dialog, the *show_dialog* variable must be set to True. This can be done using a
+callback function triggered by another control (e.g., a button).<br/>
+Here is the definition of this callback function:
+```python
+def show(state):
+    state.show_dialog = True
+```
+
+Below is an example of the dialog's appearance when no content is added inside it:
+<figure>
+    <img src="../dialog-show_hide-d.png" class="visible-dark" />
+    <img src="../dialog-show_hide-l.png" class="visible-light"/>
+    <figcaption>Empty dialog</figcaption>
+</figure>
+
+Since no elements were added to the dialog, it appears empty.<br/>
+However, the dialog can still be interacted with, and it will disappear when the close button is
+pressed.
+
+## Specifying labels and actions {data-source="gui:doc/examples/blocks/dialog_labels"}
+
+The [*labels*](#p-labels) property can be set to a list of strings (or a semi-colon-separated
+string, which Taipy GUI automatically converts into a list). Each element in this list becomes the
+label of a button. These buttons are displayed at the bottom of the dialog, arranged in a row.
+
+The callback function set to the [*on_action*](#p-on_action) property is invoked when any of the
+buttons is pressed. You can determine which button was pressed using the callback's *payload*
+parameter, as shown below.
+
+Here is an example of a dialog that generates a series of buttons:
+!!! taipy-element
+    default={show_dialog}
+    title=Welcome!
+    labels=Couldn't be better;Not my day
+    on_action:f=dialog_action
+
+This definition indicates that:
+
+- The dialog is visible or hidden depending on the value of *show_dialog*;
+- The dialog will display the title "Welcome!".
+- Two buttons must be created at the bottom of the dialog: "Couldn't be better" and "Not my day".
+- When any button or the close button is pressed, the *dialog_action()* callback function is
+  invoked.
+
+Here’s how you can implement the *dialog_action()* function to handle the button presses:
+```python
+def dialog_action(state, _, payload):
+    if payload["args"][0] == 0:
+        ... # The first button was pressed
+    elif payload["args"][0] == 1:  # Second button
+        ... # The second button was pressed
+    else:  # Close button (index == -1)
+        ... # The dialog's Close button was pressed
+    state.show_dialog = False
+```
+
+The payload["args"][0] value indicates which button was pressed:
+- 0: The first button ("Couldn't be better") was pressed.
+- 1: The second button ("Not my day") was pressed.
+- -1: The Close button of the dialog was pressed.
+
+In all cases, the dialog is closed by setting *state.show_dialog* to False.
+
+When *show_dialog* is set to True, the dialog will display two buttons at the bottom:
+<figure>
+    <img src="../dialog-labels-d.png" class="visible-dark" />
+    <img src="../dialog-labels-l.png" class="visible-light"/>
+    <figcaption>Automatic buttons</figcaption>
+</figure>
+
+If the user presses the first button, "COULDN'T BE BETTER", the *dialog_action()* callback will be
+invoked with *payload["args"][0]* set to 0.
 
 ## Dialog with page
 
@@ -99,3 +198,8 @@ The content of the dialog can be specified as a `Partial^` instance using the
 !!! taipy-element
     default={show_dialog}
     partial={partial}
+
+# Styling
+
+All the dialogs are generated with the "taipy-dialog" CSS class. You can use this class
+name to select the dialogs on your page and apply style.

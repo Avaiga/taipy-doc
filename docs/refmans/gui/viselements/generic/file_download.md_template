@@ -14,19 +14,6 @@ The content can be dynamically generated when the user requests it.
 The download can be triggered when clicking on a button or can be performed automatically (see the
 [*auto* property](#p-auto)).
 
-# Styling
-
-All the file download controls are generated with the "taipy-file_download" CSS class. You can use this class
-name to select the file download controls on your page and apply style.
-
-### [Stylekit](../../../../userman/gui/styling/stylekit.md) support
-
-The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can use to style file download elements:
-
-* *fullwidth*<br/>
-    If a file download element uses the *fullwidth* class, then it uses the whole available
-    horizontal space.
-
 # Usage
 
 ## Default behavior
@@ -71,7 +58,7 @@ when [*auto*](#p-auto) is set to True.
     default={content}
     auto:b=True
 
-## Dynamic content {data-source="gui:doc/examples/controls/file_download-dynamic.py"}
+## Dynamic content {data-source="gui:doc/examples/controls/file_download_dynamic.py"}
 
 There are situations when the content to be downloaded cannot or should not be ready before the
 user presses the download button.<br/>
@@ -148,7 +135,7 @@ The control definition looks like this:
     default={None}
     on_action:f=download_pi
 
-## Content in a temporary file {data-source="gui:doc/examples/controls/file_download-dynamic-temp-file.py"}
+## Content in a temporary file {data-source="gui:doc/examples/controls/file_download_dynamic_temp_file.py"}
 
 In the previous example, we could generate and store all our data in a buffer and then send it so
 Taipy would create a data URL to handle the transfer.<br/>
@@ -195,3 +182,16 @@ sets the *on_action* parameter that indicates that, when the file transfer is pe
 function *clean_up()* should be called.<br/>
 In *clean_up()*, we simply delete the temporary file, retrieving its path name from the provided
 *state*.
+
+# Styling
+
+All the file download controls are generated with the "taipy-file-download" CSS class. You can use
+this class name to select the file download controls on your page and apply style.
+
+### [Stylekit](../../../../userman/gui/styling/stylekit.md) support
+
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can use to style file download elements:
+
+* *fullwidth*<br/>
+    If a file download element uses the *fullwidth* class, then it uses the whole available
+    horizontal space.

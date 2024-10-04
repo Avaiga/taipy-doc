@@ -19,13 +19,13 @@ in the chart control is set to "bar".
 
 ## Examples
 
-### Simple bar chart {data-source="gui:doc/examples/charts/bar-simple.py"}
+### Simple bar chart {data-source="gui:doc/examples/charts/bar_simple.py"}
 
 Here is an example of how to use bar charts in an application.
 
 You want to display the popular vote percentage for every presidential
 election in the US since 1852 (source
-[Wikipedia](https://en.wikipedia.org/wiki/List_of_United_States_presidential_elections_by_popular_vote_margin])).
+[Wikipedia](https://en.wikipedia.org/wiki/List_of_United_States_presidential_elections_by_popular_vote_margin)).
 
 The Python code will look like this:
 ```python
@@ -53,7 +53,7 @@ has picked up):
     <figcaption>Simple bar chart</figcaption>
 </figure>
 
-### Multiple data sets {data-source="gui:doc/examples/charts/bar-multiple.py"}
+### Multiple data sets {data-source="gui:doc/examples/charts/bar_multiple.py"}
 
 Say you want to display the score of the winning side next to the
 score of the losing side.
@@ -86,7 +86,7 @@ Here is how this new data set is represented:
     <figcaption>Multiple data sets</figcaption>
 </figure>
 
-### Stacked bar chart {data-source="gui:doc/examples/charts/bar-stacked.py"}
+### Stacked bar chart {data-source="gui:doc/examples/charts/bar_stacked.py"}
 
 When different data sets are available from the same set of *x* values, it
 may be relevant to stack those values in the same bar.
@@ -117,7 +117,7 @@ Here is the resulting image:
 
 And each bar adds up to 100, as expected.
 
-### Facing bar charts {data-source="gui:doc/examples/charts/bar-facing.py"}
+### Facing bar charts {data-source="gui:doc/examples/charts/bar_facing.py"}
 
 It's sometimes helpful to display two bar charts facing each other
 so comparing data is more manageable.
