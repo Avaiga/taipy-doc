@@ -372,8 +372,6 @@ def on_post_build(env):
                         + r"(\">.*?</a>)"
                     )
                     for xref in FREE_XREF_RE.finditer(html_content):
-                        print("------------ THIS IS NEVER PRINTED !!!! ------------------")
-                        print(filename)
                         groups = xref.groups()
                         entry = groups[1]
                         method = groups[2]
