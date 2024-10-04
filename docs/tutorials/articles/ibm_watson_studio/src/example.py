@@ -75,7 +75,7 @@ def predict(parameters):
 
 
 # config.py
-from taipy.config import Config
+from taipy.common.config import Config
 
 params_cfg = Config.configure_data_node("params", default_data={"param1": "value1", "param2": "value2"})
 

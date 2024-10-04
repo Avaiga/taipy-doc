@@ -70,7 +70,8 @@ name to appear between the two first vertical bar characters (as in `<|control|.
     Every visual element has a default property, and using the default property syntax (where the
     default property value appears as the first `||` fragment) underscore, but placing it first, the
     most important property value for this visual element: it would be the content of a
-    [`text`](../../../refmans/gui/viselements/generic/text.md) control, the label of a [`button`](../../../refmans/gui/viselements/generic/button.md), or the dataset
+    [`text`](../../../refmans/gui/viselements/generic/text.md) control, the label of a
+    [`button`](../../../refmans/gui/viselements/generic/button.md), or the dataset
     displayed by a [`chart`](../../../refmans/gui/viselements/generic/chart.md), for example.
 
 Every following |-separated fragment is interpreted as a property name-property value
@@ -89,7 +90,8 @@ fragment similar to:
     characters of the property value part *are* significant:<br/>
     The fragment `<|Content |text|>` will be displayed as the string "Content" followed by a
     space character because it is part of the property value (in this case, the *default*
-    property value, which is the property called *value* for the [`text`](../../../refmans/gui/viselements/generic/text.md) control)
+    property value, which is the property called *value* for the
+    [`text`](../../../refmans/gui/viselements/generic/text.md) control)
 
 !!! note "Shortcut for Boolean properties"
     Should the `=property_value` fragment be missing, the property value is interpreted as the
@@ -250,7 +252,7 @@ is equivalent to
 ## Page Builder API
 
 If you use Python code to create pages, the
-[Page Builder](../../../refmans/reference/pkg_taipy.gui.builder.md) package provides the API for all the
+[Page Builder](../../../refmans/reference/pkg_taipy/pkg_gui/pkg_builder/index.md) package provides the API for all the
 available visual elements.
 
 To set a property to a value, you will use the property name as a named parameter to the element's
@@ -294,7 +296,7 @@ typically the case for complex visual elements like the [`chart`](../../../refma
 [`table`](../../../refmans/gui/viselements/generic/table.md) controls.
 
 When an element needs many properties and property values, the content may become
-difficult to read. Something you can do about this is create a Python dictionary that
+difficult to read. Something you can do about this is to create a Python dictionary that
 contains all the key-value pairs for your properties (name and value), then use the name
 of the variable that holds that dictionary as the value of the *properties* property.
 

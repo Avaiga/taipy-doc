@@ -115,7 +115,7 @@ an expiration date.
     The validity period can be set when configuring a data node as follows:
     ```python
     from datetime import timedelta
-    from taipy.config import Config
+    from taipy.common.config import Config
     import taipy as tp
 
     dataset_cfg = Config.configure_data_node("dataset", validity_period=timedelta(days=7))

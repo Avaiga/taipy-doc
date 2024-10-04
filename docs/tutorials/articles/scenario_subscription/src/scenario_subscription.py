@@ -1,5 +1,5 @@
 import taipy as tp
-from taipy.config import Config
+from taipy.common.config import Config
 from taipy.core import Status
 from taipy.gui import Gui, notify
 

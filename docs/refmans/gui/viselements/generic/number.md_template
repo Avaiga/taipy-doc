@@ -60,7 +60,8 @@ name to select the number controls on your page and apply style.
 
 ## [Stylekit](../../../../userman/gui/styling/stylekit.md) support
 
-The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can use to style number controls:
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can
+use to style number controls:
 
 * *fullwidth*<br/>
     If a number control uses the *fullwidth* class, then it uses the whole available

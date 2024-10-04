@@ -68,7 +68,7 @@ def filter_by_month(df, month):
         A parameter is added in the scenario configuration for the frequency.
 
         ```python
-        from taipy.config import Frequency
+        from taipy.common.config import Frequency
 
         historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
                                                              default_path="time_series.csv")
@@ -155,7 +155,7 @@ Let's change the configuration of our data nodes:
         configurations. New parameter are added for scopes.
 
         ```python
-        from taipy.config import Frequency, Scope
+        from taipy.common.config import Frequency, Scope
 
         historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
                                                              default_path="time_series.csv",
@@ -286,7 +286,7 @@ import datetime as dt
 import pandas as pd
 
 import taipy as tp
-from taipy.config import Config, Frequency, Scope
+from taipy.common.config import Config, Frequency, Scope
 
 
 def filter_by_month(df, month):

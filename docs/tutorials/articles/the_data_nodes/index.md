@@ -57,7 +57,7 @@ two Pickle data nodes: one for getting data in and one for sending data out.
 The Python configuration translates as the code below:
 
 ```py
-from taipy.config import Config
+from taipy.common.config import Config
 
 model_cfg = Config.configure_data_node("model", default_path="model.p")
 predictions_cfg = Config.configure_data_node("predictions")

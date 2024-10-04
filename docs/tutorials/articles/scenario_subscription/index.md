@@ -121,7 +121,7 @@ This visual element will be updated whenever there is a change in the submission
 
 ```python
 import taipy as tp
-from taipy.config import Config
+from taipy.common.config import Config
 from taipy.core import Status
 from taipy.gui import Gui, notify
 
