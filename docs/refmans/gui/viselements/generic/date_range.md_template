@@ -24,7 +24,7 @@ for more information on this property.
 
 # Usage
 
-## Selecting a date range
+## Selecting a date range {data-source="gui:doc/examples/blocks/date_range_simple.py"}
 
 The [*dates*](#p-dates) property (which is the default property for this control) must be set to an
 array of two `datetime.date` objects, representing the selected start and end dates of the
@@ -61,7 +61,7 @@ def on_change(s: State, name: str, value: any):
         # value[1] is set to the first selected date
 ```
 
-## Selecting a range with times
+## Selecting a range with times {data-source="gui:doc/examples/blocks/date_range_with_time.py"}
 
 You can set the [*with_time*](#p-with_time) property to True to display the range time: the
 dates should then be instances of `datetime.datetime`.
@@ -89,7 +89,7 @@ Here is how the date range selector looks like:
     <figcaption>Date range selector with time</figcaption>
 </figure>
 
-## Custom labels
+## Custom labels {data-source="gui:doc/examples/blocks/date_range_labels.py"}
 
 The [*label_start*](#p-label_start) and [*label_end*](#p-label_end) properties can be used to
 label the date fields to provide context to the user.
@@ -111,5 +111,53 @@ Here is how the date range selector looks like:
 
 # Styling
 
-All the date range controls are generated with the "taipy-date_range" CSS class. You can use this
+All the date range controls are generated with the "taipy-date-range" CSS class. You can use this
 class name to select the date range selectors on your page and apply style.
+
+The generated HTML elements have additional specific classes:
+
+- The date picker element for the start date is assigned the "taipy-date-range-picker" and
+  "taipy-date-range-picker-start" classes.
+- The date picker element for the end date is assigned the "taipy-date-range-picker" and
+  "taipy-date-range-picker-end" classes.
+ classes.
+
+## Changing colors {data-source="gui:doc/examples/controls/date_range_styling.py"}
+
+The start and end date pickers contain a date input field with the "MuiInputBase-root" class.
+
+Below are examples of CSS rules that modify the colors of the date range control:
+```css
+.taipy-date-range {
+	.taipy-date-range-picker-start {
+		.MuiInputBase-root {
+			& {
+				color: green;
+			}
+
+			.MuiIconButton-root: {
+				color: green;
+			}
+		}
+	}
+
+	.taipy-date-range-picker-end {
+		.MuiInputBase-root {
+			& {
+				color: orange;
+			}
+
+			.MuiIconButton-root {
+				color: orange;
+			}
+		}
+	}
+}
+```
+
+When these CSS rules are applied, the date range control is styled as shown below:
+<figure class="tp-center">
+    <img src="../date_range_styling-d.png" class="visible-dark"  />
+    <img src="../date_range_styling-l.png" class="visible-light" />
+    <figcaption>Styling the date range control</figcaption>
+</figure>
