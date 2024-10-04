@@ -1380,7 +1380,7 @@ Note that the CSS selectors use the child combinator selector "&gt;" to target e
 To use this style, we can adjust the control definition used above so it looks like this:
 !!! taipy-element
     default={data}
-    style:f=even_odd_class
+    row_class_name:f=even_odd_class
 
 The resulting display will be what we expected:
 <figure class="tp-center">
