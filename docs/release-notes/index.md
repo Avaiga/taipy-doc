@@ -140,6 +140,14 @@ This is the list of changes to Taipy releases as they were published.
     - Controls defined with the Page Builder API have an additional property called *inline* which,
       when set to True, will not generate a line skip, to facilitate layout.<br/>
       See [issue #1725](https://github.com/Avaiga/taipy/issues/1725).
+- The configuration of the `Gui^` object was improved for easier deployment:
+    - The [*port*](../userman/advanced_features/configuration/gui-config.md#p-port) configuration
+      parameter can now be set to "auto". When `Gui.run()^` is executed with this setting, it will
+      attempt to find an available port by automatically trying different port numbers.
+    - A new configuration parameter,
+      [*port_auto_ranges*](../userman/advanced_features/configuration/gui-config.md#p-port_auto_ranges),
+      allows specifying the range of port numbers that Taipy GUI will search when
+      [*port*](../userman/advanced_features/configuration/gui-config.md#p-port) is set to "auto".
 
 <h4><strong><code>taipy-core</code></strong> 4.0.0 </h4>
 

@@ -40,9 +40,12 @@ Here is the list of the configuration parameters you can use in
      This parameter can be overridden using the *-H* or *--host* option
      when launching your application:<br/>
      *-H,--host &lt;hostname>*
-   - <a name="p-port"></a>*port* (int, default: 5000): the port that the server uses.<br/>
+   - <a name="p-port"></a>*port* (int or "auto", default: 5000): the port that the server will
+     use.<br/>
+     When set to "auto", the server will attempt to run on a free port by checking the range of port
+     numbers defined in the [*port_auto_ranges*](#p-port_auto_ranges) configuration parameter.<br/>
      This parameter can be overridden using the *-P* or *--port* option
-     when launching your application:<br/>
+     when launching the application:<br/>
      *-P,--port &lt;port>*
    - <a name="p-debug"></a>*debug* (bool, default: False): set this parameter to True if you want
      to be provided with detailed debugging information messages from the server.<br/>
@@ -159,6 +162,11 @@ Here is the list of the configuration parameters you can use in
      single client can connect. False, which is the default value, indicates that multiple clients
      can connect to the server.<br/>
      Note that this setting is forced to True when running in a Notebook context.
+   - <a name="p-port_auto_ranges"></a>*port_auto_ranges* (list[tuple[int,int]]), default:
+     [(49152, 65535)]: defines the ranges of port numbers to be used when the [*port*](#p-port)
+     configuration parameter is set to "auto"..<br/>
+     This parameter must be a list of tuples, each containing two integers that specify the start
+     and end of a port range.
    - <a name="p-async_mode"></a>*async_mode* (str or None, default: "gevent"): specifies the
      [deployment strategy for SocketIO](https://python-socketio.readthedocs.io/en/latest/server.html#deployment-strategies),
      that Taipy GUI depends on.<br/>
