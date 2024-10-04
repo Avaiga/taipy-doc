@@ -427,7 +427,7 @@
 }
 
 /* Display the right icon for the right theme */
-.icon-light{
+.icon-light {
   display: none;
 }
 [data-md-color-scheme="slate"] .icon-dark{
