@@ -5,7 +5,7 @@ Taipy exposes advanced features that the Plotly library provides. This section
 demonstrates some of those features, when they are needed and how to use them
 in your Taipy application.
 
-## Multiple traces with different dataset sizes {data-source="gui:doc/examples/charts/advanced-unbalanced-datasets.py"}
+## Multiple traces with different dataset sizes {data-source="gui:doc/examples/charts/advanced_unbalanced_datasets.py"}
 
 The [*Adding a trace*](basics.md#adding-a-trace) example explained how to create multiple
 traces on the same chart.<br/>
@@ -161,7 +161,7 @@ Here is how the annotated chart control shows on the page:
     <figcaption>Text annotations</figcaption>
 </figure>
 
-## Adding shapes {data-source="gui:doc/examples/charts/advanced-shapes.py"}
+## Adding shapes {data-source="gui:doc/examples/charts/advanced_shapes.py"}
 
 Shapes can be rendered on top of a chart at defined locations.<br/>
 To create shapes, you must add shape descriptors to the *shapes* property of
@@ -229,7 +229,7 @@ And here is what the resulting chart looks like:
     <figcaption>Shapes on chart</figcaption>
 </figure>
 
-## Tracking selection {data-source="gui:doc/examples/charts/advanced-selection.py"}
+## Tracking selection {data-source="gui:doc/examples/charts/advanced_selection.py"}
 
 The chart control has the [*selected*](../chart.md#p-selected) property
 that can be used to track data point selection in the chart control.<br/>
@@ -383,7 +383,7 @@ When the page is displayed, the Plotly magic operates:
 </figure>
 
 <!--- TODO: when range tracking works.. say... better
-## Tracking range changes {data-source="gui:doc/examples/charts/advanced-range-tracking.py"}
+## Tracking range changes {data-source="gui:doc/examples/charts/advanced_range_tracking.py"}
 
 You can be notified when the visible range of the chart is changed. That happens when the
 user zooms or pans the chart content using the Zoom or Pan tools.

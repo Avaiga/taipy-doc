@@ -1,5 +1,58 @@
 A kind of [`input`](input.md) that handles numbers.
 
+# Usage
+
+## Simple {data-source="gui:doc/examples/controls/number_simple.py"}
+
+The `number` control provides a dedicated field for entering numerical values. It includes up and
+down arrows, allowing users to adjust the value easily without needing to type.
+
+Let’s say you have a numerical variable that you want users to modify:
+```python
+value = 50
+```
+
+You can bind this variable to a `number` control with the following definition:
+definition:
+!!! taipy-element
+    default={value}
+
+Below is an example of how the control would appear on the page:
+<figure>
+    <img src="../number-simple-d.png" class="visible-dark" />
+    <img src="../number-simple-l.png" class="visible-light"/>
+    <figcaption>A 'number' control</figcaption>
+</figure>
+
+## Specifying boundaries {data-source="gui:doc/examples/controls/number_min_max.py"}
+
+You can restrict the range of valid inputs by setting the [*min*](#p-min) and [*max*](#p-max)
+properties for the `number` control.
+
+Using the same variable from the previous example, here’s how you can define a `number` control that
+limits the values between 10 and 60:
+!!! taipy-element
+    default={value}
+    min:n=10
+    max:n=60
+
+While the visual appearance of the control remains the same, users will only be able to input values
+within the specified range.
+
+## Setting the increment step {data-source="gui:doc/examples/controls/number_step.py"}
+
+You can define how much the value changes when the up or down arrows are pressed by setting the
+[*step*](#p-step) property.
+
+Using the same variable from the previous example, here’s how you can define a `number` control
+where the value increases or decreases by 2:
+!!! taipy-element
+    default={value}
+    step:n=2
+
+Although the appearance of the control remains unchanged, pressing the up or down arrow will now
+increment or decrement the value by 2.
+
 # Styling
 
 All the number controls are generated with the "taipy-number" CSS class. You can use this class
@@ -13,12 +66,3 @@ use to style number controls:
 * *fullwidth*<br/>
     If a number control uses the *fullwidth* class, then it uses the whole available
     horizontal space.
-
-# Usage
-
-## Simple
-
-You can create a `number` input field bound to a numerical variable with the following content:
-
-!!! taipy-element
-    default={value}

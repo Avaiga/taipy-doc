@@ -25,21 +25,6 @@ The property [*value*](#p-value) reflects the control's status as a Boolean valu
 
 You can also use an arbitrary type for all the items (see the [example](#use-arbitrary-objects)).
 
-# Styling
-
-All the toggle controls are generated with the "taipy-toggle" CSS class. You can use this class
-name to select the toggle controls on your page and apply style.
-
-The [Stylekit](../../../../userman/gui/styling/stylekit.md) also provides specific CSS classes that you can use to style
-toggle controls:
-
-- *relative*<br/>
-  Resets the theme toggle position in the page flow (especially for the theme mode toggle).
-- *nolabel*<br/>
-  Hides the toggle control's label.
-- *taipy-navbar*<br/>
-  Gives the toggle control the look and feel of a [`navbar`](navbar.md).
-
 # Usage
 
 ## Display a list of string
@@ -102,3 +87,18 @@ Because the control needs a way to convert the list items (which are instances o
 an object, whose type must be provided to the [*type*](#p-type) property, to a tuple. The first
 element of the tuple is used to reference the selection (therefore those elements should be unique
 among all the items) and the second element is the string that turns out to be displayed.
+
+# Styling
+
+All the toggle controls are generated with the "taipy-toggle" CSS class. You can use this class
+name to select the toggle controls on your page and apply style.
+
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) also provides specific CSS classes that you can use to style
+toggle controls:
+
+- *relative*<br/>
+  Resets the theme toggle position in the page flow (especially for the theme mode toggle).
+- *nolabel*<br/>
+  Hides the toggle control's label.
+- *taipy-navbar*<br/>
+  Gives the toggle control the look and feel of a [`navbar`](navbar.md).

@@ -210,7 +210,7 @@ To use these algorithms and manage the challenges posed by representing large da
 instantiate the decimator class that best matches the dataset you are dealing with and set the
 instance to the [`decimator`](#p-decimator) property of the chart control that represents the data.
 
-## The *rebuild* property {data-source="gui:doc/examples/charts/example-rebuild.py"}
+## The *rebuild* property {data-source="gui:doc/examples/charts/example_rebuild.py"}
 
 Some of the chart control's properties may result in Taipy GUI having to entirely reconstruct the
 graphical component running on the front-end (the user's browser). The chart control provides some
@@ -287,6 +287,11 @@ button, the page will reflect the change without explicit refresh:
     <figcaption>After the type was switched, with <i>rebuild</i> set to True</figcaption>
 </figure>
 
+# Usage
+
+Here is a list of several sub-sections that you can check to get more details on a specific
+domain covered by the chart control:
+
 # Styling
 
 All the chart controls are generated with the "taipy-chart" CSS class. You can use this class
@@ -300,9 +305,3 @@ The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific 
     When the chart control uses the *has-background* class, the rendering of the chart
     background is left to the charting library.<br/>
     The default behavior is to render the chart transparently.
-
-# Usage
-
-Here is a list of several sub-sections that you can check to get more details on a specific
-domain covered by the chart control:
-

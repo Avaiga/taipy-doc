@@ -5,15 +5,9 @@ The range is set by the values `min` and `max` which must be integer values.
 If the [*lov*](#p-lov) property is used, then the slider can be used to select a value among the
 different choices.
 
-
-# Styling
-
-All the slider controls are generated with the "taipy-slider" CSS class. You can use this class
-name to select the sliders on your page and apply style.
-
 # Usage
 
-## Selecting a value in a range {data-source="gui:doc/examples/controls/slider-simple.py"}
+## Selecting a value in a range {data-source="gui:doc/examples/controls/slider_simple.py"}
 
 A numeric value can easily be represented and interacted with using the following content:
 
@@ -30,7 +24,7 @@ The page contains a slider that looks like this:
 The user can pick the slider knob and move it around to select a value within the default range
 [0, 100].
 
-## Setting the slider range {data-source="gui:doc/examples/controls/slider-range.py"}
+## Setting the slider range {data-source="gui:doc/examples/controls/slider_range.py"}
 
 You can specify, in the [*min*](#p-min) and [*max*](#p-max) properties, what bounds the selected
 value should be constrained to:
@@ -47,7 +41,7 @@ The resulting slider looks like this:
     <figcaption>Custom range</figcaption>
 </figure>
 
-## Changing orientation {data-source="gui:doc/examples/controls/slider-orientation.py"}
+## Changing orientation {data-source="gui:doc/examples/controls/slider_orientation.py"}
 
 A slider can also be vertical if the [*orientation*](#p-orientation) property is set to a string
 beginning with the letter "v".
@@ -63,7 +57,7 @@ And now the slider is displayed vertically:
     <figcaption>Changing the default orientation</figcaption>
 </figure>
 
-## Select among a list of values {data-source="gui:doc/examples/controls/slider-lov.py"}
+## Select among a list of values {data-source="gui:doc/examples/controls/slider_lov.py"}
 
 A slider can also allow users to select a value from a list of predefined values.<br/>
 To do this, you must set the [*lov*](#p-lov) property to a list of values:
@@ -79,7 +73,7 @@ Then only those values are accessible by the user:
     <figcaption>List of values</figcaption>
 </figure>
 
-## Multi selection {data-source="gui:doc/examples/controls/slider-multiple.py"}
+## Multi selection {data-source="gui:doc/examples/controls/slider_multiple.py"}
 
 You can use a slider control to display multiple values and let users select each.<br/>
 To achieve that, the [*value*](#p-value) property must be initially set to an array containing
@@ -105,7 +99,7 @@ that the user can move:
     <figcaption>Multiple values</figcaption>
 </figure>
 
-## Date range selection {data-source="gui:doc/examples/controls/slider-date-range.py"}
+## Date range selection {data-source="gui:doc/examples/controls/slider_date_range.py"}
 
 You can create a slider to select a date range, combining the use of the [*lov*](#p-lov) property
 with a multi-knob slider.<br/>
@@ -166,3 +160,8 @@ And this is what this date range picker looks like:
     <img src="../slider-date-range-l.png" class="visible-light"/>
     <figcaption>Date range selection</figcaption>
 </figure>
+
+# Styling
+
+All the slider controls are generated with the "taipy-slider" CSS class. You can use this class
+name to select the sliders on your page and apply style.

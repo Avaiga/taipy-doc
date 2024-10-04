@@ -24,14 +24,9 @@ In addition to the main value, the `metric` control also lets you complement the
 The control provides ways to customize the underlying gauge by setting its global range or the
 colors for sections of that range.
 
-# Styling
-
-All the metric controls are generated with the "taipy-metric" CSS class. You can use this class
-name to select the metric controls on your page and apply style.
-
 # Usage
 
-## Simple case {data-source="gui:doc/examples/controls/metric-simple.py"}
+## Simple case {data-source="gui:doc/examples/controls/metric_simple.py"}
 
 The most common use case for the `metric` control is displaying a value on a gauge, with a *delta*
 value indicating how much the value has increased or decreased compared to a previous state.<br/>
@@ -60,7 +55,7 @@ Renders as such:
     <figcaption>Simple case</figcaption>
 </figure>
 
-## Setting the gauge type {data-source="gui:doc/examples/controls/metric-type.py"}
+## Setting the gauge type {data-source="gui:doc/examples/controls/metric_type.py"}
 
 You can change the representation to a horizontal bar by setting the [*type*](#p-type) property to
 "linear".
@@ -81,7 +76,7 @@ Here is what this control will look like:
     <figcaption>Horizontal gauge</figcaption>
 </figure>
 
-## Setting the gauge range {data-source="gui:doc/examples/controls/metric-range.py"}
+## Setting the gauge range {data-source="gui:doc/examples/controls/metric_range.py"}
 
 You may need to specify the range represented in the gauge.
 
@@ -101,7 +96,7 @@ Here is how the control is represented:
     <figcaption>Setting the control range</figcaption>
 </figure>
 
-## Hiding the value {data-source="gui:doc/examples/controls/metric-hide-value.py"}
+## Hiding the value {data-source="gui:doc/examples/controls/metric_hide_value.py"}
 
 If you need only a rough representation of the value, you can hide the precise value itself by
 setting the [*show_value*](#p-show_value) to False.
@@ -118,7 +113,7 @@ This definition produces the following output that anyone can interpret on the s
     <figcaption>Hiding the value</figcaption>
 </figure>
 
-## Formating the values {data-source="gui:doc/examples/controls/metric-formats.py"}
+## Formating the values {data-source="gui:doc/examples/controls/metric_formats.py"}
 
 The numerical value set to the properties [*value*](#p-value) and [*delta*](#p-delta) can be
 displayed using a formatting string set to the respective properties [*format*](#p-format) and
@@ -151,7 +146,7 @@ Here is how the control displays:
     <figcaption>Formatted values</figcaption>
 </figure>
 
-## Changing the indicator color {data-source="gui:doc/examples/controls/metric-delta_color.py"}
+## Changing the indicator color {data-source="gui:doc/examples/controls/metric_delta_color.py"}
 
 By default, a positive value [*delta*](#p-delta) is rendered in green, indicating a good thing.
 Negative values are displayed in red, hinting at a bad thing.<br/>
@@ -196,7 +191,7 @@ If [*delta_color*](#p-delta_color) is set to "invert" then positive values of [*
 are displayed using the color set to [*negative_delta_color*](#p-negative_delta_color), if there is
 one.
 
-## Customizing the gauge colors {data-source="gui:doc/examples/controls/metric-color-map.py"}
+## Customizing the gauge colors {data-source="gui:doc/examples/controls/metric_color_map.py"}
 
 You can improve the interpretation of the `metric` control by coloring the gauge area with colors
 that provide information. The [*color_map*](#p-color_map) property lets you do just that.
@@ -239,7 +234,7 @@ Here is the result:
 
 You can immediately spot that the indicated wavelength is a green color.
 
-## Fine tuning the control {data-source="gui:doc/examples/controls/metric-layout.py"}
+## Fine tuning the control {data-source="gui:doc/examples/controls/metric_layout.py"}
 
 The property [*layout*](#p-layout) can be set to a dictionary that acutely defines parameters that
 impact the control rendering.<br/>
@@ -272,3 +267,8 @@ To obtain the following image:
     <img src="../metric-layout-dl.png" width="80%"/>
     <figcaption>Fine tuning the control parameters</figcaption>
 </figure>
+
+# Styling
+
+All the metric controls are generated with the "taipy-metric" CSS class. You can use this class
+name to select the metric controls on your page and apply style.

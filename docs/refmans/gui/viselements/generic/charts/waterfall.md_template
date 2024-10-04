@@ -22,7 +22,7 @@ of the chart control to "waterfall".
 
 ## Examples
 
-### Simple waterfall chart {data-source="gui:doc/examples/charts/waterfall-simple.py"}
+### Simple waterfall chart {data-source="gui:doc/examples/charts/waterfall_simple.py"}
 
 Waterfall charts are typically used for describing cash flow: the initial value of some deposit
 and how it evolves with time.
@@ -68,7 +68,7 @@ And here is how the resulting chart would look:
     <figcaption>Simple waterfall chart</figcaption>
 </figure>
 
-### Styling {data-source="gui:doc/examples/charts/waterfall-styling.py"}
+### Styling {data-source="gui:doc/examples/charts/waterfall_styling.py"}
 
 By default, waterfall charts display values that increase the total with a green box. Red boxes
 are used to represent values that decrease the current total.<br/>
@@ -159,7 +159,7 @@ And here is what the resulting chart looks like:
     <figcaption>Styling a waterfall chart</figcaption>
 </figure>
 
-### Hierarchical timeline {data-source="gui:doc/examples/charts/waterfall-period_levels.py"}
+### Hierarchical timeline {data-source="gui:doc/examples/charts/waterfall_period_levels.py"}
 
 Waterfall charts are often used to show variations of some quantity that happen at a
 given time in a given period. It is very useful to allow for grouping periods

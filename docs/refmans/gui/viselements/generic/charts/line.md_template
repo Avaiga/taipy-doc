@@ -21,7 +21,7 @@ relevant to this type of chart only.
 
 ## Examples
 
-### Styling lines {data-source="gui:doc/examples/charts/line-style.py"}
+### Styling lines {data-source="gui:doc/examples/charts/line_style.py"}
 
 You can style plots using the [*line[]*](../chart.md#p-line) and
 [*color[]*](../chart.md#p-color) properties.
@@ -62,7 +62,7 @@ The page now shows the following chart:
     <figcaption>Styling a line chart</figcaption>
 </figure>
 
-### Text above plot {data-source="gui:doc/examples/charts/line-texts.py"}
+### Text above plot {data-source="gui:doc/examples/charts/line_texts.py"}
 
 It is sometimes useful to provide textual information on top of a plot.
 Here is how to do that in the context of a line chart.

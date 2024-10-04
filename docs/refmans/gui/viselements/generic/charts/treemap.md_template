@@ -40,7 +40,7 @@ Important notes:
 
 ## Examples
 
-### Simple treemap {data-source="gui:doc/examples/charts/treemap-simple.py"}
+### Simple treemap {data-source="gui:doc/examples/charts/treemap_simple.py"}
 
 A common use of treemap charts is to display a dataset as a set of rectangles, each with a
 size that is proportional to a value from the dataset.
@@ -73,7 +73,7 @@ And this is what the resulting chart looks like:
     <figcaption>Fibonacci numbers</figcaption>
 </figure>
 
-### Hierarchical data {data-source="gui:doc/examples/charts/heatmap-hierarchical.py"}
+### Hierarchical data {data-source="gui:doc/examples/charts/treemap_hierarchical.py"}
 
 A very common use of treemap charts is to represent hierarchical structure: each child element is
 represented as a rectangle within its parent's rectangle.<br/>
@@ -132,7 +132,7 @@ the user can return to any level.
     <figcaption>Drilling down</figcaption>
 </figure>
 
-### Hierarchical values {data-source="gui:doc/examples/charts/treemap-hierarchical-values.py"}
+### Hierarchical values {data-source="gui:doc/examples/charts/treemap_hierarchical_values.py"}
 
 Treemap charts can be used to represent data with rectangles that have a size proportional to
 values and are organized hierarchically.<br/>

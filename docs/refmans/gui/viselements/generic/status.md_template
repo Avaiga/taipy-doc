@@ -21,11 +21,6 @@ When a list of statuses is provided, the status control can be expanded to show 
 status entries. Users can then remove individual statuses if [*without_close*](#p-without_close)
 is set to False (which is the default value).
 
-# Styling
-
-All the status controls are generated with the "taipy-status" CSS class. You can use this class
-name to select the status controls on your page and apply style.
-
 # Usage
 
 ## Show a simple status
@@ -118,3 +113,8 @@ With the same array as above, here is what the expanded control looks like:
     <img src="../status-multiple4-l.png" class="visible-light"/>
     <figcaption>Preventing removals</figcaption>
 </figure>
+
+# Styling
+
+All the status controls are generated with the "taipy-status" CSS class. You can use this class
+name to select the status controls on your page and apply style.

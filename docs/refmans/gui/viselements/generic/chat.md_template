@@ -35,14 +35,9 @@ Three mandatory properties can configure the `chat` control:
     - Element 2: the identifier of the sender.<br/>
       This identifier must appear in the [*users*](#p-users) list.
 
-# Styling
-
-All the chat controls are generated with the "taipy-chat" CSS class. You can use this class
-name to select the date selectors on your page and apply style.
-
 # Usage
 
-## Human-to-machine dialog {data-source="gui:doc/examples/controls/chat-calculator.py"}
+## Human-to-machine dialog {data-source="gui:doc/examples/controls/chat_calculator.py"}
 
 A simple use case where the `chat` control is relevant is if you want to create an application where
 a user can type and send text messages that are processed by some engine, whose role is to generate
@@ -122,7 +117,7 @@ this:
     <figcaption>A Taipy calculator</figcaption>
 </figure>
 
-## Multi-user chatting {data-source="gui:doc/examples/controls/chat-discuss.py"}
+## Multi-user chatting {data-source="gui:doc/examples/controls/chat_discuss.py"}
 
 You can also use the `chat` control in another situation: when you want to develop an application
 that allows several users to share the same chatting space.<br/>
@@ -316,3 +311,8 @@ controls all represent the same content, with a different layout depending on wh
     <img src="../chat-discuss-discuss-c-1-l.png" class="visible-light"/>
     <figcaption>Charles's screen</figcaption>
 </figure>
+
+# Styling
+
+All the chat controls are generated with the "taipy-chat" CSS class. You can use this class
+name to select the date selectors on your page and apply style.
