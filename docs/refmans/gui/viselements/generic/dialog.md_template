@@ -164,7 +164,7 @@ def dialog_action(state, _, payload):
     state.show_dialog = False
 ```
 
-The payload["args"][0] value indicates which button was pressed:
+The *payload["args"]\[0\]* value indicates which button was pressed:
 - 0: The first button ("Couldn't be better") was pressed.
 - 1: The second button ("Not my day") was pressed.
 - -1: The Close button of the dialog was pressed.
@@ -179,7 +179,7 @@ When *show_dialog* is set to True, the dialog will display two buttons at the bo
 </figure>
 
 If the user presses the first button, "COULDN'T BE BETTER", the *dialog_action()* callback will be
-invoked with *payload["args"][0]* set to 0.
+invoked with *payload["args"]\[0\]* set to 0.
 
 ## Dialog with page
 

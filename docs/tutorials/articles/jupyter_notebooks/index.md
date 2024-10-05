@@ -24,10 +24,10 @@ and rerun all cells, which can be cumbersome.
 To solve this and enhance the experience of using Taipy in Jupyter Notebook, we should utilize
 two straightforward functions for updating the user interface after making changes to our code:
 
-1. [Page.set_content()](../../../refmans/reference/pkg_taipy/pkg_gui/Page#taipy.gui.Page.set_content):
+1. [Page.set_content()](../../../refmans/reference/pkg_taipy/pkg_gui/Page/index.md#taipy.gui.Page.set_content):
    Use this method when you update the content of a page.
 
-2. [Gui.reload()](../../../refmans/reference/pkg_taipy/pkg_gui/Gui#taipy.gui.Gui.reload): Use this
+2. [Gui.reload()](../../../refmans/reference/pkg_taipy/pkg_gui/Gui/index.md#taipy.gui.Gui.reload): Use this
    method when you modify a variable that's used in a page.
 
 # Modifying Page Content

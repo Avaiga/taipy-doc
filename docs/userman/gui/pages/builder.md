@@ -3,14 +3,15 @@ title: The Page Builder API
 ---
 
 The Page Builder API is a set of classes located in the
-[`taipy.gui.builder`](../../../refmans/reference/pkg_taipy/pkg_gui/pkg_builder/index.md) package that lets users
-create Taipy GUI pages entirely from Python code.
+[`taipy.gui.builder`](../../../refmans/reference/pkg_taipy/pkg_gui/pkg_builder/index.md) package
+that lets users create Taipy GUI pages entirely from Python code.
 
 This package contains a class for every visual element available in Taipy, including those
 defined in [extension libraries](../extension/index.md).
 
 To access the Page Builder classes, you must import the
-[`taipy.gui.builder`](../../../refmans/reference/pkg_taipy/pkg_gui/pkg_builder/index.md) package in your script.
+[`taipy.gui.builder`](../../../refmans/reference/pkg_taipy/pkg_gui/pkg_builder/index.md) package in
+your script.
 
 # Generating a new page
 
@@ -42,8 +43,8 @@ with tgb.Page() as page:
     tgb.input()
 ```
 
-In this example, we add an empty [`input`](../../../refmans/gui/viselements/generic/input.md) control by creating a new
-instance of the `(builder.)input^` class.<br/>
+In this example, we add an empty [`input`](../../../refmans/gui/viselements/generic/input.md)
+control by creating a new instance of the `(builder.)input^` class.<br/>
 When run, the application would show a page looking like this:
 <figure>
     <img src="../tgb-1-d.png" class="visible-dark" />
@@ -81,7 +82,8 @@ Note how, in the `input^` control, we use the property names of the control as p
 class constructor.
 <br/>
 The first parameter is set to the element's default property. Because *value* is the default
-property for the [`input`](../../../refmans/gui/viselements/generic/input.md) control, we could have built the control using:
+property for the [`input`](../../../refmans/gui/viselements/generic/input.md) control, we could have
+built the control using:
 ```python
     tgb.input(label="First name", value="John")
 ```
@@ -117,7 +119,8 @@ Compared to the previous example, you can see that the label uses a bold font we
     code.
 
 !!! warning "Indexed properties"
-    Some elements of Taipy GUI (such as [`chart`](../../../refmans/gui/viselements/generic/chart.md),
+    Some elements of Taipy GUI (such as
+    [`chart`](../../../refmans/gui/viselements/generic/chart.md),
     [`table`](../../../refmans/gui/viselements/generic/table.md), or
     [`layout`](../../../refmans/gui/viselements/generic/layout.md)) have *indexed
     properties*. The syntax to express these property names, where the *root name* of the property
@@ -237,8 +240,8 @@ Default callbacks are invoked if not explicitly assigned to callback properties.
 
 Consider the following script:
 ```python
-from src.taipy.gui import Gui
-import src.taipy.gui.builder as tgb
+from taipy.gui import Gui
+import taipy.gui.builder as tgb
 
 def on_action(state, id):
     if id == "my_button":
