@@ -197,8 +197,11 @@ def on_post_build(env):
                     except Exception as e:
                         log.error(f"Couldn't read HTML file {filename}")
                         raise e
+            
+                    # Remove useless spaces for improved processing
+                    html_content = re.sub(r"[ \t]+", " ", re.sub(r"\n\s*\n+", "\n\n", html_content))
+                    html_content = html_content.replace("\n\n", "\n")
 
-                    # Add navigation buttons
                     html_content = html_content.replace(
                         '<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">',
                         '<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">'
@@ -322,8 +325,10 @@ def on_post_build(env):
                                 desc = multi_xrefs.get(c_name)[0]
                         link = None
                         if not desc:
+                            # Test for package: a.b.c -> pkg_a/pkg_b/pkg_c
+                            paths = "/".join([f"pkg_{e}" for e in all_parts.split(".")])
                             if os.path.exists(
-                                f"{ref_files_path}/pkg_{all_parts}/index.html"
+                                f"{ref_files_path}/{paths}/index.html"
                             ):
                                 link = f"pkg_{all_parts}"
                             else:
@@ -384,7 +389,7 @@ def on_post_build(env):
                             (dir, dir1) = os.path.split(dir)
                             (dir, dir2) = os.path.split(dir)
                             bad_xref = xref.group(0)
-                            message = f"Unresolved crossref '{bad_xref}' found in "
+                            message = f"Unresolved leftover crossref '{bad_xref}' found in "
                             if file == "index.html":
                                 (dir, dir3) = os.path.split(dir)
                                 log.error(f"{message}{dir3}/{dir2}/{dir1}.md")
@@ -533,6 +538,45 @@ def on_post_build(env):
                         REF_H1_RE = re.compile(r"(?<=<h1>)(Taipy\.)(.*)</h1>")
                         if m := REF_H1_RE.search(html_content):
                             html_content = rewrite_title(m[2], m.start(1), m.end(2))
+                        # Class page?
+                        # Replace 'function' to 'method'
+                        # Add parenthesis to method names
+                        if re.search(r"([/\\])(?!pkg_)\w+\1index.html$", filename) and re.search(r"<title>\w+\s+class\s", html_content):
+                            # Navigation
+                            if m := re.search(r"""(<li\s+class="md-nav__item">\s*
+                                                  <a\s+href="(.*?)-functions"\s+class="md-nav__link">\s*
+                                                  <span\s+class="md-ellipsis">\s*)
+                                                  Functions
+                                                  (?=\s*</span>)""", html_content, re.X):
+                                class_ref = m[2].replace("#", "\\#")
+                                new_content = html_content[0 : m.start()] + m[1] + "Methods"
+                                html_content = html_content[m.end():]
+                                last_location = 0
+                                for m in re.finditer(fr"""(<li\s+class="md-nav__item">\s*
+                                                          <a\s+href="{class_ref}(\.|-)\w+"\s+class="md-nav__link">\s*
+                                                          <span\s+class="md-ellipsis">\s*
+                                                          \w+)
+                                                          (?=\s*</span>)""", html_content, re.X):
+                                    if m[2] == "-":
+                                        # End of the methods list
+                                        break
+                                    new_content += html_content[last_location : m.start()]
+                                    new_content += m[1] + "()"
+                                    last_location = m.end()
+                                if last_location:
+                                    html_content = new_content + html_content[last_location:]
+                            new_content = ""
+                            last_location = 0
+                            for m in re.finditer(r"""<span\s+class="(?:[-\w]+\s+)*doc-function-name(?:\s+[-\w]+)*">
+                                                     \w+
+                                                     (?=\s*</span>)""", html_content, re.X):
+                                new_content += html_content[last_location : m.end()] + "()"
+                                last_location = m.end()
+                            if last_location:
+                                html_content = new_content + html_content[last_location:]
+                            html_content = re.sub(r"(<h2\s+id=\"(?:[\w\.]+)-functions\">)Functions",
+                                                  "\\1Methods", html_content)
+
                     # Processing for visual element pages:
                     # - Remove <tt> from title
                     # - Add breadcrumbs to Taipy GUI's standard and scenario mgmt element pages
