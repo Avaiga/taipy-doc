@@ -164,7 +164,7 @@ Here is the list of the configuration parameters you can use in
      Note that this setting is forced to True when running in a Notebook context.
    - <a name="p-port_auto_ranges"></a>*port_auto_ranges* (list[tuple[int,int]]), default:
      [(49152, 65535)]: defines the ranges of port numbers to be used when the [*port*](#p-port)
-     configuration parameter is set to "auto"..<br/>
+     configuration parameter is set to "auto".<br/>
      This parameter must be a list of tuples, each containing two integers that specify the start
      and end of a port range.
    - <a name="p-async_mode"></a>*async_mode* (str or None, default: "gevent"): specifies the
