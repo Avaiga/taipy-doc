@@ -208,7 +208,7 @@ This is the list of changes to Taipy releases as they were published.
   `ReasonCollection^` as a set of `Reason^` instances. Each reason contains a message
   explaining why the boolean is `False`. The collection is empty if the boolean is `True`
   .<br/>
-  Examples: `is_deletable^`, `exists^`, `is_readable^` etc.
+  Examples: `is_deletable()^`, `exists()^`, `is_readable()^` etc.
   See [issue #1568](https://github.com/Avaiga/taipy/issues/1568).
 - The `Config.check()^` method now raises `ERROR` issues if any data node, task, or sequence of
   a `ScenarioConfig^` has the same configuration id as another one in the same `ScenarioConfig^`,
