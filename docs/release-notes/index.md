@@ -245,11 +245,11 @@ This is the list of changes to Taipy releases as they were published.
 
 - `DataNode.is_up_to_date()^` raises an error when the data node has never been written.<br/>
   See [issue #1198](https://github.com/Avaiga/taipy/issues/1198).
-- Reload the cache on all _build_manager() methods when the *repository_type* is changed.<br/>
+- Reload the cache on all *_build_manager()* methods when the *repository_type* is changed.<br/>
   See [issue #1692](https://github.com/Avaiga/taipy/pull/1692)
 
 <h4><strong><code>taipy-templates</code></strong> 4.0.0</h4>
-- First cli option of the `taipy create` command is skipped if it's before the positional
+- The first cli option of the `taipy create` command is skipped if it's before the positional
   argument. <br/>
   See [issue #1687](https://github.com/Avaiga/taipy/issues/1687).
 
