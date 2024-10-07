@@ -22,8 +22,8 @@ This is the list of changes to Taipy releases as they were published.
 
 (Work in progress - the following links are invalid for the time being)
 
-[`taipy` 4.0](https://pypi.org/project/taipy/4.0.0/) contains the latest
-[`taipy-config` 4.0](https://pypi.org/project/taipy-config/4.0.0/),
+[`taipy` 4.0](https://pypi.org/project/taipy/4.0.0/) depends on the latest
+[`taipy-common` 4.0](https://pypi.org/project/taipy-common/4.0.0/),
 [`taipy-gui` 4.0](https://pypi.org/project/taipy-gui/4.0.0/),
 [`taipy-core` 4.0](https://pypi.org/project/taipy-core/4.0.0/),
 [`taipy-templates` 4.0](https://pypi.org/project/taipy-templates/4.0.0/), and
@@ -32,6 +32,20 @@ This is the list of changes to Taipy releases as they were published.
 ## New Features
 
 <h4><strong><code>taipy</code></strong> 4.0.0</h4>
+
+- The User Experience of the Scenario and Data management Visual elements have been greatly
+  improved by the following new functionalities:
+    - The multiple selection is now available on the data node selector: TODO add details
+    - A filter capability has been added to the data node selector: TODO add details
+    - A sort capability has been added to the data node selector: TODO add details
+    - A search capability has been added to the data node selector: TODO add details
+    - A new detail panel has been added to the job selector: TODO add details
+    - The multiple selection is now available on the scenario selector: TODO add details
+    - A filter capability has been added to the scenario selector: TODO add details
+    - A sort capability has been added to the scenario selector: TODO add details
+    - A search capability has been added to the scenario selector: TODO add details
+    - The data node viewer now offers the possibility to upload/download data for the file
+        based data nodes: TODO add details
 
 <h4><strong><code>taipy-gui</code></strong> 4.0.0</h4>
 
@@ -55,7 +69,7 @@ This is the list of changes to Taipy releases as they were published.
       [*format_fn[column_name]*](../refmans/gui/viselements/generic/table.md#p-format_fn[column_name])
       allows you to define a custom Python function to format cell values.<br/>
       Please look at the
-      [example code](../refmans/gui/viselements/generic/table.md#custom-formatting) for details. 
+      [example code](../refmans/gui/viselements/generic/table.md#custom-formatting) for details.
     - A new property, [*use_checkbox*](../refmans/gui/viselements/generic/table.md#p-use_checkbox),
       can be set to True to display checkboxes in cells containing Boolean values.<br/>
       This significantly reduces the rendering time for large tables with Boolean columns.
@@ -71,28 +85,37 @@ This is the list of changes to Taipy releases as they were published.
 
 - The `taipy.get_scenarios()` and `taipy.get_primary_scenarios()^` methods now accept optional
   parameters to:
-
-    - sort the output list of scenarios by name, id, creation date, or tag
-    - filter the output list of scenarios that are created in a specific time range.<br/>
+      - sort the output list of scenarios by name, id, creation date, or tag
+      - filter the output list of scenarios that are created in a specific time range.<br/>
+  See [issue #393](https://github.com/Avaiga/taipy/issues/393).<br/>
   For more information, please refer to
   [Get all scenarios](../userman/scenario_features/sdm/scenario/index.md#get-all-scenarios) and
   [Get primary scenarios](../userman/scenario_features/sdm/scenario/index.md#get-primary-scenarios).
 
-- When the status of a `Job^` changes, the timestamp of the status change is now recorded.
-  These timestamps can be accessed using the following properties: *submitted_at*, *run_at*,
-  *finished_at*, *execution_duration*, *pending_duration*, and *blocked_duration*.<br/>
-  For more information, please refer to
-  [Job Status](../userman/scenario_features/sdm/job/index.md#job-status).
+- The `Job^` and `Submission^` entities have new attributes based on the record of job
+  status changes. For more information on job statuses, please refer to
+  [Job Status](../userman/scenario_features/sdm/job/index.md#job-status). </br>
+  See [issue #1704](https://github.com/Avaiga/taipy/issues/1704) and
+  [issue #1544](https://github.com/Avaiga/taipy/issues/1544).
+      - The `Job^` entity exposes the following timestamp attributes: *submitted_at*, *run_at*,
+        *finished_at*.
+      - The `Job^` entity exposes the following duration attributes: *execution_duration*,
+        *pending_duration*, and *blocked_duration*.
+      - The `Submission^` entity exposes the following timestamp attributes: *submitted_at*,
+      *run_at*, *finished_at*.
+      - The `Submission^` entity exposes the *execution_duration* attribute.
 
-- The timestamps of the status changes of a `Submission^` are recorded. These timestamps can be
-  accessed using the following properties: *submitted_at*, *run_at*, *finished_at*, *execution_duration*.<br/>
-  For more information, please refer to
-  [Submission Status](../userman/scenario_features/sdm/submission/index.md#submission-status).
+  - Expose an Abstract class `CoreEventConsumerBase^` to implement a custom event consumer.<br/>
+    See [issue #405](https://github.com/Avaiga/taipy/issues/405).<br/>
+    A consumer can be used to listen to Taipy events (mainly CRUD operations on Taipy
+    entities) and react to them. For more information, please refer to the
+    [Track activities and Trigger actions](../userman/scenario_features/events/index.md)
+    documentation page.
 
 <h4><strong><code>taipy-templates</code></strong> 4.0.0 </h4>
 
-- Creating a new application using any template now also supports initializing the application as a
-  Git repository.
+- Creating a new application using any template now also supports initializing the application
+  as a Git repository.
 
 ## Improvements and changes
 
@@ -100,6 +123,9 @@ This is the list of changes to Taipy releases as they were published.
 
 - Taipy and all its dependencies now stop support Python 3.8.<br/>
   The minimum supported Python version is now 3.9.
+- Taipy package structure has been reorganized. The dependency on `taipy-config` has been
+  removed. Taipy now depends on a new `taipy-common` package that includes the configuration
+  features among the common code shared by all `taipy`, `taipy-gui`, and `taipy-core` packages.
 
 <h4><strong><code>taipy-gui</code></strong> 4.0.0</h4>
 
@@ -154,28 +180,50 @@ This is the list of changes to Taipy releases as they were published.
 - In standalone job execution mode, the default value of *max_nb_of_workers* is now 2 instead of 1.
   For more information, please refer to
   [Job execution configuration](../userman/advanced_features/configuration/job-config.md).
+- In standalone job execution mode, the workers are started in a separate process are now
+  started in "spawn" *mp_context* instead of the default from the system.
+- The `Core` service has been deprecated and renamed `Orchestrator`. The `Core` service is still
+  available for backward compatibility but will be removed in a future release.<br/>
+  See [issue #1567](https://github.com/Avaiga/taipy/issues/1567).
 - When using the Taipy command-line interface, if an unsupported argument is provided, the CLI
   will display a message indicating the invalid argument. If the invalid argument is possibly a
   typo, the CLI will suggest the closest valid argument.
 - The `Scenario.export()` and `taipy.export_scenario()` functions have been transferred from the
   Community edition to the Enterprise edition as it is more suitable for enterprise applications.
-- The production mode of the version management system has been transferred from the Community
-  edition to the Enterprise edition as it is more suitable for enterprise applications.
-- Support for for the SQL repository was removed. Taipy Community edition now only supports the
-  `filesystem` repository type.
+- The production mode and the migration configuration of the version management system has been
+  transferred from the Community edition to the Enterprise edition as it is more suitable for
+  enterprise applications.
+- Support for the SQL repository was removed. Taipy Community edition now only supports the
+  `filesystem` repository type.<br/>
+  See [issue #1513](https://github.com/Avaiga/taipy/issues/1513).
+- Support for different encodings in `S3ObjectDataNode^`.<br/>
+  See [issue #680](https://github.com/Avaiga/taipy/issues/680).
+- Reading an `ExcelDataNode^` is more consistent across the various expose types.<br/>
+  See [issue #796](https://github.com/Avaiga/taipy/issues/796).
 - Two scenarios belonging to the same cycle can now have the same tag.<br/>
-  See [issue #1292](https://github.com/Avaiga/taipy/issues/1292).
+  See [issue #1292](https://github.com/Avaiga/taipy/issues/1292).<br/>
+- The custom properties of a `Scenario` are not exposed as attribute anymore.<br/>
+  See [issue #1572](https://github.com/Avaiga/taipy/issues/1572).
+- Methods and functions returning booleans and related to entities now return
+  `ReasonCollection^` as a set of `Reason^` instances. Each reason contains a message
+  explaining why the boolean is `False`. The collection is empty if the boolean is `True`
+  .<br/>
+  Examples: `is_deletable^`, `exists^`, `is_readable^` etc.
+  See [issue #1568](https://github.com/Avaiga/taipy/issues/1568).
 - The `Config.check()^` method now raises `ERROR` issues if any data node, task, or sequence of
   a `ScenarioConfig^` has the same configuration id as another one in the same `ScenarioConfig^`,
   or any additional property of any configuration has the same name as one of the attributes
   of the configuration class.<br/>
-  For more information, please refer to
+  See [issue #1696](https://github.com/Avaiga/taipy/issues/1696) and
+  [issue #411](https://github.com/Avaiga/taipy/issues/411).<br/>
+  For more information on checkers, please refer to
   [Configuration checker](../userman/advanced_features/configuration/config-checker.md).
 
 <h4><strong><code>taipy-templates</code></strong> 4.0.0 </h4>
 
 - The *--template* option of the `taipy create` command is now renamed to *--application* option
-  to correctly reflect the application template to use when creating a new Taipy application.
+  to correctly reflect the application template to use when creating a new Taipy application. <br/>
+  See[issue #1472](https://github.com/Avaiga/taipy/issues/1472)
 
 ## Significant bug fixes
 
@@ -197,6 +245,13 @@ This is the list of changes to Taipy releases as they were published.
 
 - `DataNode.is_up_to_date()^` raises an error when the data node has never been written.<br/>
   See [issue #1198](https://github.com/Avaiga/taipy/issues/1198).
+- Reload the cache on all _build_manager() methods when the *repository_type* is changed.<br/>
+  See [issue #1692](https://github.com/Avaiga/taipy/pull/1692)
+
+<h4><strong><code>taipy-templates</code></strong> 4.0.0</h4>
+- First cli option of the `taipy create` command is skipped if it's before the positional
+  argument. <br/>
+  See [issue #1687](https://github.com/Avaiga/taipy/issues/1687).
 
 # Enterprise edition: 4.0
 
@@ -208,8 +263,8 @@ additional features.
 ## New Features
 
 - Support for [Polars DataFrame Library](https://docs.pola.rs/).<br/>
-  Tabular data nodes (`CSVDataNode^`, `ParquetDataNode^`, `ExcelDataNode^`, `SQLTableDataNode^` and
-  `SQLDataNode`) can now expose the data as Polars objects. They all support
+  Tabular data nodes (`CSVDataNode^`, `ParquetDataNode^`, `ExcelDataNode^`, `SQLTableDataNode^`,
+  and `SQLDataNode^`) can now expose the data as Polars objects. They all support
   [`polars.LazyFrame`](https://docs.pola.rs/api/python/stable/reference/lazyframe/index.html),
   [`polars.DataFrame`](https://docs.pola.rs/api/python/stable/reference/dataframe/index.html) or
   [`polars.Series`](https://docs.pola.rs/api/python/stable/reference/series/index.html) as exposed
@@ -224,12 +279,11 @@ additional features.
 
 ## Improvements and changes
 
-- The `taipy.export_scenario()^` function now supports exporting file-based data nodes' data to the
-  export folder if the path exists.
-- The `taipy.export_scenario()^` function now exports a zip archive instead of a
-  folder. For more information, please refer to
-  [Export a scenario](../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
-- The `taipy.export_scenario()^` function now raises the `ExportPathAlreadyExists^`
-  exception if the export path already exists. You can explicitly set the *overwrite* parameter to
-  True to overwrite the existing export path. For more information, please refer to
-  [Export a scenario](../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
+- The `taipy.export_scenario()^` function now
+    - exports a zip archive instead of a folder.
+    - supports exporting file-based data nodes' data to the exported archive if the path exists.
+    - raises the `ExportPathAlreadyExists^`
+        exception if the export path already exists. You can explicitly set the *overwrite* parameter to
+        True to overwrite the existing export path.
+    For more information, please refer to
+    [Export a scenario](../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
