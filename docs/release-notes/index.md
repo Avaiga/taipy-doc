@@ -204,7 +204,7 @@ This is the list of changes to Taipy releases as they were published.
   See [issue #1292](https://github.com/Avaiga/taipy/issues/1292).<br/>
 - The custom properties of a `Scenario` are not exposed as attribute anymore.<br/>
   See [issue #1572](https://github.com/Avaiga/taipy/issues/1572).
-- Methods and functions returning booleans and related to entities now return
+- Methods and functions returning a Boolean value and related to entities now return
   `ReasonCollection^` as a set of `Reason^` instances. Each reason contains a message
   explaining why the boolean is `False`. The collection is empty if the boolean is `True`
   .<br/>
