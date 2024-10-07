@@ -223,7 +223,7 @@ This is the list of changes to Taipy releases as they were published.
 
 - The *--template* option of the `taipy create` command is now renamed to *--application* option
   to correctly reflect the application template to use when creating a new Taipy application. <br/>
-  See[issue #1472](https://github.com/Avaiga/taipy/issues/1472)
+  See [issue #1472](https://github.com/Avaiga/taipy/issues/1472)
 
 ## Significant bug fixes
 
