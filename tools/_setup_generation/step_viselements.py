@@ -128,7 +128,7 @@ class VisElementsStep(SetupStep):
                 md_file.write(md_template)
 
     @staticmethod
-    def __get_navigation_section(category: str, prefix:str) -> str:
+    def __get_navigation_section(category: str, prefix: str) -> str:
         if category == "blocks":
             return "Blocks"
         if prefix == "core_":
@@ -238,8 +238,8 @@ class VisElementsStep(SetupStep):
             raise ValueError(
                 f"Couldn't locate first header in documentation for element '{element_type}'"
             )
-        before_properties = match.group(1)
-        after_properties = match.group(2) + element_documentation[match.end() :]
+        before_properties = match[1]
+        after_properties = match[2] + element_documentation[match.end() :]
 
         # Chart hook
         if element_type == "chart":
@@ -288,7 +288,6 @@ class VisElementsStep(SetupStep):
             py_content = py_content[: m.start(0) + 1]
 
         def generate(self, category, base_class: str) -> str:
-
             element_types = self.categories[category]
 
             def build_doc(property: str, desc, indent: int):
@@ -382,16 +381,17 @@ class [element_type]({base_class}):
                 element_md_location = (
                     "corelements" if desc["prefix"] == "core_" else "generic"
                 )
-                if m := (re.search
-                    (r"(\[`(\w+)`\]\()\2\.md\)", short_doc)):
+                if m := (re.search(r"(\[`(\w+)`\]\()\2\.md\)", short_doc)):
                     short_doc = (
                         short_doc[: m.start()]
                         + f"{m[1]}../../../../../refmans/gui/viselements/{element_md_location}/{m[2]}.md)"
                         + short_doc[m.end() :]
                     )
 
-                element_md_page = (f"[`{element_type}`](../../../../../../refmans/gui/viselements/{element_md_location}"
-                                   f"/{element_type}.md)")
+                element_md_page = (
+                    f"[`{element_type}`](../../../../../../refmans/gui/viselements/{element_md_location}"
+                    f"/{element_type}.md)"
+                )
                 buffer.write(
                     template.replace("[element_type]", element_type)
                     .replace("[element_md_page]", element_md_page)
@@ -414,7 +414,9 @@ class [element_type]({base_class}):
 
     # Special case for charts: we want to insert the chart gallery that
     # is stored in the file whose path is in self.charts_home_html_path
-    # This should be inserted before the first level 1 header
+    # This should be inserted before the first header.
+    # Simultaneously, we build a list of chart types to point to type pages as text.
+    # This should be inserted before the "Styling" header.
     def __chart_page_hook(
         self, element_documentation: str, before: str, after: str, charts_md_dir: str
     ) -> tuple[str, str]:
@@ -432,12 +434,12 @@ class [element_type]({base_class}):
         chart_gallery = "\n" + chart_gallery[match.end() :]
         SECTION_RE = re.compile(r"^([\w-]+):(.*)$")
         chart_sections = ""
-        for line in match.group(1).splitlines():
+        for line in match[1].splitlines():
             if match := SECTION_RE.match(line):
                 type = match.group(1)
-                chart_sections += f"- [{match.group(2)}](charts/{type}.md)\n"
+                chart_sections += f"\n- [{match.group(2)}](charts/{type}.md)"
+                # Generate chart type documentation page from template, if possible
                 template_doc_path = f"{charts_md_dir}/{type}.md_template"
-                # Generate chart type documentation page if possible
                 if os.access(template_doc_path, os.R_OK):
                     with open(template_doc_path, "r") as template_doc_file:
                         documentation = template_doc_file.read()
@@ -454,9 +456,16 @@ class [element_type]({base_class}):
             raise ValueError(
                 "Couldn't locate first header1 in documentation for element 'chart'"
             )
+        styling_match = re.search(
+            r"\n# Styling\n", after, re.MULTILINE | re.DOTALL
+        )
+        if not styling_match:
+            raise ValueError(
+                "Couldn't locate \"Styling\" header1 in documentation for element 'chart'"
+            )
         return (
-            match.group(1) + chart_gallery + before[match.end() :],
-            after + chart_sections,
+            match[1] + chart_gallery + before[match.end() :],
+            after[: styling_match.start()] + chart_sections + "\n\n" + after[styling_match.start() :]
         )
 
     def __process_element_md_file(self, type: str, documentation: str) -> str:
