@@ -176,39 +176,44 @@ for more details.
 
 ## Large datasets
 
-Displaying large datasets poses several challenges, both from a technical and user experience
-standpoint. These challenges can impact performance, usability, and the overall effectiveness of
-data presentation.
+Displaying large datasets presents several challenges from both technical and user experience
+perspectives. These challenges can impact performance, usability, and the overall effectiveness of
+data visualization.
 
 The most prominent issues are:
 
 - Performance Issues<br/>
-    - Loading Time: Large datasets can significantly increase the display time of your application,
-      leading to a poor user experience.
-    - Memory Usage: Keeping large amounts of data in memory can strain client devices, potentially
-      leading to browser crashes or sluggish performance.
-    - Network Performance: Transmitting large datasets over the network can be slow and expensive in
-      terms of bandwidth, especially for users on limited data plans or slow connections.
+    - Loading Time: Large datasets can significantly increase application load times, leading to a
+      poor user experience;
+    - Memory Usage: Storing large datasets in memory can strain client devices, potentially causing
+      browser crashes or slow performance;
+    - Network Performance: Transmitting large datasets over the network can be slow and
+      resource-intensive, especially for users with limited bandwidth or slow connections.
 - User Experience Challenges<br/>
-    - Designing visualizations that scale well with the size of the data and remain informative and
-      actionable can be challenging.
+  Designing visualizations that effectively scale with large datasets while remaining informative
+  and actionable can be difficult.
 - Technical Limitations<br/>
-  Browsers have limitations on how much data they can efficiently process and display, which can
-  restrict the amount of data that can be shown at one time.
+  Browsers have inherent limits on how much data they can efficiently process and display,
+  restricting the amount of data that can be shown at once.
 
-The chart control provides different classes that can help deliver relevant representations of large
-data sets by applying a technical method called *data decimation*.<br/>
-Data decimation involves reducing the volume of data to be sent to the browser and displayed without
-significantly losing the usefulness of the original data. The goal is to make visualization more
-efficient while retaining the essential characteristics of the data.
+The chart control in Taipy GUI provides several classes that can help manage and visualize large
+datasets by using a technique called *data decimation*.<br/>
+Data decimation reduces the amount of data sent to the browser and displayed without significantly
+losing its value, making visualization more efficient while preserving essential characteristics.
 
-The [`taipy.gui.data`](../../../../refmans/reference/pkg_taipy/pkg_gui/pkg_data/index.md) package
-defines implementations of different decimation algorithms in classes that inherit the `Decimator^`
-class.
+The `taipy.gui.data^` package offers various implementations of decimation algorithms through
+classes that inherit from the `Decimator^` class.
 
-To use these algorithms and manage the challenges posed by representing large datasets, you must
-instantiate the decimator class that best matches the dataset you are dealing with and set the
-instance to the [`decimator`](#p-decimator) property of the chart control that represents the data.
+To leverage these algorithms and handle large datasets efficiently:
+
+- Instantiate the decimator class that best suits your dataset.
+- Assign the instance to the [`decimator`](#p-decimator) property of the chart control representing
+  the data.
+
+An [advanced example](charts/advanced.md#large-datasets) demonstrates when and how decimation can
+be used.<br/>
+This documentation also contains an [article](../../../../tutorials/articles/decimator/index.md)
+that provides details on this feature.
 
 ## The *rebuild* property {data-source="gui:doc/examples/charts/example_rebuild.py"}
 
@@ -299,7 +304,8 @@ name to select the charts on your page and apply style.
 
 ## [Stylekit](../../../../userman/gui/styling/stylekit.md) support
 
-The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can use to style charts:
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides a specific class that you can
+use to style charts:
 
 * *has-background*<br/>
     When the chart control uses the *has-background* class, the rendering of the chart

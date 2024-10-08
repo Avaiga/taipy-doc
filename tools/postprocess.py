@@ -199,8 +199,10 @@ def on_post_build(env):
                         raise e
             
                     # Remove useless spaces for improved processing
-                    html_content = re.sub(r"[ \t]+", " ", re.sub(r"\n\s*\n+", "\n\n", html_content))
-                    html_content = html_content.replace("\n\n", "\n")
+                    # This breaks the code blocks - so needs to avoid the <pre> elements before
+                    # we bring it back.
+                    #html_content = re.sub(r"[ \t]+", " ", re.sub(r"\n\s*\n+", "\n\n", html_content))
+                    #html_content = html_content.replace("\n\n", "\n")
 
                     html_content = html_content.replace(
                         '<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">',
@@ -330,7 +332,7 @@ def on_post_build(env):
                             if os.path.exists(
                                 f"{ref_files_path}/{paths}/index.html"
                             ):
-                                link = f"pkg_{all_parts}"
+                                link = f"{paths}"
                             else:
                                 (dir, file) = os.path.split(filename)
                                 (dir, dir1) = os.path.split(dir)

@@ -1,4 +1,3 @@
-
 # Advanced topics
 
 Taipy exposes advanced features that the Plotly library provides. This section
@@ -89,6 +88,185 @@ Here is what the resulting plot looks like:
     <img src="../advanced-unbalanced-datasets-l.png" class="visible-light"/>
     <figcaption>Unbalanced data sets</figcaption>
 </figure>
+
+## Large datasets {data-source="gui:doc/examples/charts/advanced_large_datasets.py"}
+
+When binding a chart component to a large dataset, performance becomes a critical consideration.
+Large datasets can consume significant system resources, resulting in slower rendering times,
+reduced responsiveness, and overall degraded performance, especially in interactive
+applications.<br/>
+These issues can negatively impact the user experience, particularly when users need to interact
+with or manipulate the chart.
+
+Consider a scenario where an application needs to visualize large datasets, allowing users to
+trigger calculations and make decisions based on the data.<br/>
+Below is a basic example of a large dataset represented in Python:
+```python
+x_values = ...
+Y_values = ...
+data = pd.DataFrame({"X": x_values, "Y": y_values})
+```
+
+In this example, *x_values* could be a sequence of 50,000 integers, while *y_values* is generated
+from a noisy log-sine function, also containing 50,000 samples.
+
+To represent this data using Taipy GUI, you can define a `chart` control as follows:
+!!! taipy-element
+    default={data}
+    type=markers
+    x=X
+    y=Y
+
+The initial chart display with 50,000 data points will look like this:
+<figure>
+    <img src="../advanced_large_datasets_none-d.png" class="visible-dark" />
+    <img src="../advanced_large_datasets_none-l.png" class="visible-light"/>
+    <figcaption>Initial dataset</figcaption>
+</figure>
+
+As seen in the chart, with 50,000 data points, it becomes difficult to interpret the information due
+to over-plotting. Furthermore, rendering such a large dataset takes significant time, and the entire
+dataset must be transmitted to the frontend, further affecting performance.
+
+To improve both application performance and chart readability, it is necessary to reduce the number
+of data points rendered. This can be achieved through techniques such as downsampling, aggregation,
+or filtering, which can limit the volume of data without losing critical insights
+
+<h4>Solution 1: Linear interpolation</h4>
+
+One approach to handle large datasets is to apply linear interpolation. This technique reduces the
+number of data points by approximating the values between points along a straight line, effectively
+downsampling the dataset.
+
+Using Python and the [NumPy](https://numpy.org/) package, this solution can be implemented
+easily and efficiently:
+```python linenums="1"
+x_values = x_values[::100]
+y_values = y_values.reshape(-1, 100)
+y_values = np.mean(y_values, axis=1)
+```
+
+- line 1: The original *x_values* array is reduced by selecting one value for every 100 points.
+- line 2: The *y_values* array is reshaped, grouping every 100 consecutive data points.
+- line 3: The mean of each group of 100 points is calculated, resulting in a smaller dataset.
+
+This results in a dataset with 100 times fewer points, while still preserving the overall shape of
+the original data.
+
+Here is the updated chart using the downsampled (interpolated) dataset:
+<figure>
+    <img src="../advanced_large_datasets_average-d.png" class="visible-dark" />
+    <img src="../advanced_large_datasets_average-l.png" class="visible-light"/>
+    <figcaption>Downsampled dataset</figcaption>
+</figure>
+
+While linear interpolation significantly reduces the dataset size and improves chart performance,
+it has some limitations. Specifically, it smooths out the data, which can obscure important details,
+such as sharp changes or high-frequency fluctuations.<br/>
+With this technique, the noise present in the original sine function has been smoothed away, which
+might not be desirable for data analysts or scientists who need to observe finer data
+characteristics.
+
+<h4>Solution 2: Sub-sampling</h4>
+
+Sub-sampling is a simple technique where a representative subset of the original data is selected,
+for example, by picking every 100th data point. This directly reduces the number of points,
+enhancing performance.
+
+With [NumPy](https://numpy.org/) and Python's slicing syntax, sub-sampling is straightforward:
+```python
+x_values = x_values[::100]
+y_values = y_values[::100]
+```
+Both *x_values* and *y_values* are reduced by selecting every 100th element from the original
+arrays.
+
+As a result, the dataset *data* is reduced to 1/100th of its original size, while still retaining
+the overall shape of the data.
+
+Here is the chart with the sub-sampled dataset:
+<figure>
+    <img src="../advanced_large_datasets_subsampling-d.png" class="visible-dark" />
+    <img src="../advanced_large_datasets_subsampling-l.png" class="visible-light"/>
+    <figcaption>Sub-sampled dataset</figcaption>
+</figure>
+
+However, sub-sampling has its limitations. It may skip over significant trends or abrupt changes in
+the data, especially if key points are not selected. While it's a quick and efficient solution, it
+may result in the loss of critical details in datasets with high-frequency variations or sudden
+transitions.<br/>
+As you can see, only a very few number of noisy data points remain after the sampling, which is
+expected.
+
+<h4>Solution 3: Decimation</h4>
+
+Decimation is a more refined approach to reducing dataset size while preserving essential
+information and trends. By selectively removing data points based on specific criteria, such as
+frequency content or statistical significance, decimation balances performance with data integrity.
+
+
+The `chart` control has a [*decimator*](../chart.md#p-decimator) property that accepts an instance
+of a subclass of `Decimator^`. This class transforms the dataset declared in the
+[*data*](../chart.md#p-data) property, reducing the number of points to be displayed
+while ensuring that key data features are retained.
+
+
+To use decimation, you must instantiate a decimator:
+```python
+decimator = MinMaxDecimator(200)
+```
+
+In this case, the decimator limits the displayed points to 200, which is an extreme reduction, but
+it highlights the effect. For practical usage, typical values range from 1000 to 2000, depending on
+the horizontal resolution of the screen: it's often unnecessary to render more points than a monitor
+can display.
+
+Several decimator types are available, including `MinMaxDecimator^`, `LTTB^`, `RDP^`, and
+`ScatterDecimator^`. Each of these implements different algorithms, better suited for specific
+shapes of data.
+
+To apply the decimator to the chart, set the *decimator* variable to the
+[*decimator*](../chart.md#p-decimator) property:
+!!! taipy-element
+    default={data}
+    type=markers
+    x=X
+    y=Y
+    decimator={decimator}
+
+Here is the resulting chart after applying decimation:
+<figure>
+    <img src="../advanced_large_datasets_decimation-d.png" class="visible-dark" />
+    <img src="../advanced_large_datasets_decimation-l.png" class="visible-light"/>
+    <figcaption>Decimation applied</figcaption>
+</figure>
+
+The chart retains more of the dataset's characteristics compared to simpler methods like
+sub-sampling or linear interpolation. The global sine-like shape is preserved, and the noise remains
+visible.<br/>
+At the same time, performance is greatly improved: only 200 points are rendered instead of 50,000,
+a reduction by a factor of 250.
+
+Note that decimation does not alter nor duplicate the original dataset.<br/>
+You can zoom in and out using the chart's built-in zoom tool to reveal or hide more details
+dynamically.
+
+For example, the following image shows the chart zoomed in on a specific area:
+<figure>
+    <img src="../advanced_large_datasets_decimation-zoom1-d.png" class="visible-dark" />
+    <img src="../advanced_large_datasets_decimation-zoom1-l.png" class="visible-light"/>
+    <figcaption>Selecting an area to zoom in</figcaption>
+</figure>
+
+And here is the result after zooming in:
+<figure>
+    <img src="../advanced_large_datasets_decimation-zoom2-d.png" class="visible-dark" />
+    <img src="../advanced_large_datasets_decimation-zoom2-l.png" class="visible-light"/>
+    <figcaption>Chart after zoom</figcaption>
+</figure>
+
+As you zoom in, more details are revealed, while still adhering to the 200-point limit, ensuring
+smooth performance and responsive interactions.
 
 ## Adding annotations {data-source="gui:doc/examples/charts/advanced_annotations.py"}
 
