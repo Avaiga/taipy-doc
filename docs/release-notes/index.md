@@ -20,7 +20,7 @@ This is the list of changes to Taipy releases as they were published.
 
 # Community edition: 4.0
 
-(Work in progress - the following links are invalid for the time being)
+Published on 2024-10.
 
 [`taipy` 4.0](https://pypi.org/project/taipy/4.0.0/) depends on the latest
 [`taipy-common` 4.0](https://pypi.org/project/taipy-common/4.0.0/),
@@ -255,7 +255,7 @@ This is the list of changes to Taipy releases as they were published.
 
 # Enterprise edition: 4.0
 
-(Work in progress - the following link is invalid for the time being)
+Published on 2024-10.
 
 This release contains all of [`taipy` 4.0](https://pypi.org/project/taipy/4.0.0) as well as
 additional features.
