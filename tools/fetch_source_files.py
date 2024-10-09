@@ -72,9 +72,14 @@ for version in args.version:
 
 # Remap version if necessary
 for repo, version_remap_desc in VERSION_MAP.items():
-    if repo_desc := repo_defs.get(repo, None):
-        if remapped_version := version_remap_desc.get(repo_desc["version"], None):
-            repo_desc["version"] = remapped_version
+    repo_desc = repo_defs.get(repo, None)
+    if repo_desc is None:
+        repo = f"taipy-{repo}"
+        repo_desc = repo_defs.get(repo, None)
+    if repo_desc and (
+        remapped_version := version_remap_desc.get(repo_desc["version"], None)
+    ):
+        repo_desc["version"] = remapped_version
 
 # Test git, if needed
 git_command = "git"
