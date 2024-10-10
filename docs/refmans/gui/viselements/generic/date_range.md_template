@@ -24,14 +24,13 @@ for more information on this property.
 
 # Usage
 
-## Selecting a date range {data-source="gui:doc/examples/blocks/date_range_simple.py"}
+## Selecting a date range {data-source="gui:doc/examples/controls/date_range_simple.py"}
 
 The [*dates*](#p-dates) property (which is the default property for this control) must be set to an
 array of two `datetime.date` objects, representing the selected start and end dates of the
 range.
 
 Assuming the variable *dates* was defined by the following code:
-
 ```python
 import datetime
 
@@ -41,7 +40,6 @@ dates = [start_date, end_date]
 ```
 
 The definition of the date range selector is as simple as: 
-
 !!! taipy-element
     default={dates}
 
@@ -53,7 +51,6 @@ The date range selector looks like this:
 </figure>
 
 An `on_change` callback can be set to retrieve the user's selection:
-
 ```python
 def on_change(s: State, name: str, value: any):
     if name == "dates":
@@ -61,23 +58,21 @@ def on_change(s: State, name: str, value: any):
         # value[1] is set to the first selected date
 ```
 
-## Selecting a range with times {data-source="gui:doc/examples/blocks/date_range_with_time.py"}
+## Selecting a range with times {data-source="gui:doc/examples/controls/date_range_with_time.py"}
 
 You can set the [*with_time*](#p-with_time) property to True to display the range time: the
 dates should then be instances of `datetime.datetime`.
 
 Here is some code that defines the date range with specific time values:
-
 ```python
 import datetime
 
-start_date = datetime.date(2023, 3, 26, 7, 37)
-end_date   = datetime.date(2023, 3, 26, 19, 2)
+start_date = datetime.datetime(2023, 3, 26, 7, 37)
+end_date   = datetime.datetime(2023, 3, 26, 19, 2)
 dates = [start_date, end_date]
 ```
 
 The control definition just has the [*with_time*](#p-with_time) property set to True:
-
 !!! taipy-element
     default={dates}
     with_time:b=True
@@ -89,14 +84,13 @@ Here is how the date range selector looks like:
     <figcaption>Date range selector with time</figcaption>
 </figure>
 
-## Custom labels {data-source="gui:doc/examples/blocks/date_range_labels.py"}
+## Custom labels {data-source="gui:doc/examples/controls/date_range_labels.py"}
 
 The [*label_start*](#p-label_start) and [*label_end*](#p-label_end) properties can be used to
 label the date fields to provide context to the user.
 
 Here is how a hotel reservation application may declare a date range selector with appropriate
 labels for booking a given period:
-
 !!! taipy-element
     default={dates}
     label_start=Check-in
@@ -129,29 +123,29 @@ The start and end date pickers contain a date input field with the "MuiInputBase
 Below are examples of CSS rules that modify the colors of the date range control:
 ```css
 .taipy-date-range {
-	.taipy-date-range-picker-start {
-		.MuiInputBase-root {
-			& {
-				color: green;
-			}
+    .taipy-date-range-picker-start {
+        .MuiInputBase-root {
+            & {
+                color: green;
+            }
 
-			.MuiIconButton-root: {
-				color: green;
-			}
-		}
-	}
+            .MuiIconButton-root: {
+                color: green;
+            }
+        }
+    }
 
-	.taipy-date-range-picker-end {
-		.MuiInputBase-root {
-			& {
-				color: orange;
-			}
+    .taipy-date-range-picker-end {
+        .MuiInputBase-root {
+            & {
+                color: orange;
+            }
 
-			.MuiIconButton-root {
-				color: orange;
-			}
-		}
-	}
+            .MuiIconButton-root {
+                color: orange;
+            }
+        }
+    }
 }
 ```
 
