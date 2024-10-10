@@ -1,3 +1,4 @@
+> **Note:** You are viewing an outdated version of the documentation. For the latest version, please visit [Using Tables in Taipy 4.0](https://docs.taipy.io/en/release-4.0/tutorials/articles/using_tables/).
 
 Tables in Taipy are not just for showing data, they also let you control things. When you're 
 making an application with data (which Taipy is great at!), you can use Taipy's tables and their 
