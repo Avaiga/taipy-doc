@@ -3,7 +3,11 @@ import re
 import shutil
 import subprocess
 
-from _fetch_source_file import CLI, GitContext, read_doc_version_from_mkdocs_yml_template_file
+from _fetch_source_file import (
+    CLI,
+    GitContext,
+    read_doc_version_from_mkdocs_yml_template_file,
+)
 
 # Assuming this script is in taipy-doc/tools
 TOOLS_PATH = os.path.dirname(os.path.abspath(__file__))
@@ -18,6 +22,9 @@ PRIVATE_REPOS = ["enterprise", "designer"]
 
 OPTIONAL_PACKAGES = {"gui": ["pyarrow", "pyngrok", "python-magic", "python-magic-bin"]}
 
+# Ecosystem offering may have a different version than the main Taipy version
+VERSION_MAP = {"designer": {"4.0": "1.2"}}
+
 args = CLI(os.path.basename(__file__), REPOS).get_args()
 
 # Read version from mkdocs.yml template
@@ -25,7 +32,8 @@ mkdocs_yml_version = read_doc_version_from_mkdocs_yml_template_file(ROOT_DIR)
 
 # Gather version information for each repository
 repo_defs = {
-    repo if repo == "taipy" else f"taipy-{repo}": {"version": "local", "tag": None} for repo in REPOS + PRIVATE_REPOS
+    repo if repo == "taipy" else f"taipy-{repo}": {"version": "local", "tag": None}
+    for repo in REPOS + PRIVATE_REPOS
 }
 CATCH_VERSION_RE = re.compile(r"(^\d+\.\d+?)(?:(\.\d+)(\..*)?)?|develop|local$")
 for version in args.version:
@@ -62,13 +70,28 @@ for version in args.version:
             repo_defs[repo]["version"] = version
             repo_defs[repo]["tag"] = tag
 
+# Remap version if necessary
+for repo, version_remap_desc in VERSION_MAP.items():
+    repo_desc = repo_defs.get(repo, None)
+    if repo_desc is None:
+        repo = f"taipy-{repo}"
+        repo_desc = repo_defs.get(repo, None)
+    if repo_desc and (
+        remapped_version := version_remap_desc.get(repo_desc["version"], None)
+    ):
+        repo_desc["version"] = remapped_version
+
 # Test git, if needed
 git_command = "git"
 if args.no_pull and all(v["version"] == "local" for v in repo_defs.values()):
     git_command = None
 else:
     git_path = shutil.which(git_command)
-    if git_path is None or subprocess.run(f'"{git_path}" --version', shell=True, capture_output=True) is None:
+    if (
+        git_path is None
+        or subprocess.run(f'"{git_path}" --version', shell=True, capture_output=True)
+        is None
+    ):
         raise IOError(f'Couldn\'t find command "{git_command}"')
     git_command = git_path
 
@@ -91,14 +114,19 @@ for repo in repo_defs.keys():
     elif version == "develop":
         with GitContext(repo, PRIVATE_REPOS):
             cmd = subprocess.run(
-                f'"{git_path}" ls-remote -q -h {github_root}{repo}.git', shell=True, capture_output=True, text=True
+                f'"{git_path}" ls-remote -q -h {github_root}{repo}.git',
+                shell=True,
+                capture_output=True,
+                text=True,
             )
             if cmd.returncode:
                 if repo in PRIVATE_REPOS or repo[6:] in PRIVATE_REPOS:
                     repo_defs[repo]["skip"] = True
                     continue
                 else:
-                    raise SystemError(f"Problem with {repo}:\nOutput: {cmd.stdout}\nError: {cmd.stderr}")
+                    raise SystemError(
+                        f"Problem with {repo}:\nOutput: {cmd.stdout}\nError: {cmd.stderr}"
+                    )
     else:
         with GitContext(repo, PRIVATE_REPOS):
             cmd = subprocess.run(
@@ -112,9 +140,13 @@ for repo in repo_defs.keys():
                     repo_defs[repo]["skip"] = True
                     continue
                 else:
-                    raise SystemError(f"Couldn't query branches from {loggable_github_root}{repo}.")
+                    raise SystemError(
+                        f"Couldn't query branches from {loggable_github_root}{repo}."
+                    )
             if f"release/{version}\n" not in cmd.stdout:
-                raise ValueError(f"No branch 'release/{version}' in repository '{repo}'.")
+                raise ValueError(
+                    f"No branch 'release/{version}' in repository '{repo}'."
+                )
             tag = repo_defs[repo]["tag"]
             if tag:
                 cmd = subprocess.run(
@@ -161,6 +193,7 @@ PIPFILE_PACKAGE_RE = re.compile(r"(..*?)\s?=\s?(.*)")
 
 frontend_dir = os.path.join(ROOT_DIR, "taipy-fe")
 
+
 # Fetch files
 def move_files(repo: str, src_path: str):
     # Read Pipfile dependency packages
@@ -171,7 +204,9 @@ def move_files(repo: str, src_path: str):
         with open(pipfile_path, "r") as pipfile:
             while True:
                 line = pipfile.readline()
-                if str(line) == "" or (reading_packages and (not line.strip() or line[0] == "[")):
+                if str(line) == "" or (
+                    reading_packages and (not line.strip() or line[0] == "[")
+                ):
                     break
                 line = line.strip()
                 if line == "[packages]":
@@ -181,7 +216,10 @@ def move_files(repo: str, src_path: str):
                     if match and not match.group(1).startswith("taipy"):
                         package = match.group(1).lower()
                         version = match.group(2)
-                        if repo_optional_packages is None or package not in repo_optional_packages:
+                        if (
+                            repo_optional_packages is None
+                            or package not in repo_optional_packages
+                        ):
                             if package in pipfile_packages:
                                 versions = pipfile_packages[package]
                                 if version in versions:
@@ -197,37 +235,55 @@ def move_files(repo: str, src_path: str):
         for step_dir in [
             step_dir
             for step_dir in os.listdir(gs_dir)
-            if step_dir.startswith("step_") and os.path.isdir(os.path.join(gs_dir, step_dir))
+            if step_dir.startswith("step_")
+            and os.path.isdir(os.path.join(gs_dir, step_dir))
         ]:
             safe_rmtree(os.path.join(gs_dir, step_dir))
         for step_dir in [
             step_dir
             for step_dir in os.listdir(src_path)
-            if step_dir.startswith("step_") and os.path.isdir(os.path.join(src_path, step_dir))
+            if step_dir.startswith("step_")
+            and os.path.isdir(os.path.join(src_path, step_dir))
         ]:
-            shutil.copytree(os.path.join(src_path, step_dir), os.path.join(gs_dir, step_dir))
+            shutil.copytree(
+                os.path.join(src_path, step_dir), os.path.join(gs_dir, step_dir)
+            )
         safe_rmtree(os.path.join(gs_dir, "src"))
         shutil.copytree(os.path.join(src_path, "src"), os.path.join(gs_dir, "src"))
-        shutil.copy(os.path.join(src_path, "index.md"), os.path.join(gs_dir, "index.md"))
+        shutil.copy(
+            os.path.join(src_path, "index.md"), os.path.join(gs_dir, "index.md")
+        )
         saved_dir = os.getcwd()
         os.chdir(os.path.join(ROOT_DIR, "docs", "getting_started", repo[6:]))
         subprocess.run(
-            f"python {os.path.join(src_path, 'generate_notebook.py')}", shell=True, capture_output=True, text=True
+            f"python {os.path.join(src_path, 'generate_notebook.py')}",
+            shell=True,
+            capture_output=True,
+            text=True,
         )
         os.chdir(saved_dir)
     elif repo == "taipy-designer":
-        designer_doc_dir = os.path.join(ROOT_DIR, "docs", "userman", "ecosystem", "designer")
+        designer_doc_dir = os.path.join(
+            ROOT_DIR, "docs", "userman", "ecosystem", "designer"
+        )
         safe_rmtree(designer_doc_dir)
         src_documentation_dir = os.path.join(src_path, "documentation")
         saved_dir = os.getcwd()
         os.chdir(saved_dir)
         subprocess.run(
-            f"python {os.path.join(src_path, 'copy_examples.py')}", shell=True, capture_output=True, text=True
+            f"python {os.path.join(src_path, 'copy_examples.py')}",
+            shell=True,
+            capture_output=True,
+            text=True,
         )
         os.chdir(saved_dir)
-        shutil.copytree(os.path.join(src_documentation_dir, "taipy_docs"), designer_doc_dir)
-        shutil.copy(os.path.join(src_documentation_dir, "mkdocs_taipy.yml"),
-                    os.path.join(designer_doc_dir, "mkdocs.yml_template"))
+        shutil.copytree(
+            os.path.join(src_documentation_dir, "taipy_docs"), designer_doc_dir
+        )
+        shutil.copy(
+            os.path.join(src_documentation_dir, "mkdocs_taipy.yml"),
+            os.path.join(designer_doc_dir, "mkdocs.yml_template"),
+        )
     else:
         try:
 
@@ -243,7 +299,9 @@ def move_files(repo: str, src_path: str):
                         rel_path = f"{rel_path}/{item}"
                         for sub_item in os.listdir(full_src):
                             copy(sub_item, full_src, full_dst, rel_path)
-                    elif any(item.endswith(ext) for ext in [".py", ".pyi", ".json", ".ipynb"]):
+                    elif any(
+                        item.endswith(ext) for ext in [".py", ".pyi", ".json", ".ipynb"]
+                    ):
                         if os.path.isfile(full_dst):  # File exists - compare
                             with open(full_src, "r") as f:
                                 src = f.read()
@@ -274,9 +332,17 @@ def move_files(repo: str, src_path: str):
                 if not os.path.isdir(frontend_dir):
                     os.mkdir(frontend_dir)
                 fe_src_dir = os.path.join(src_path, "frontend", "taipy-gui")
-                shutil.copytree(os.path.join(fe_src_dir, "src"), os.path.join(frontend_dir, "src"))
-                for f in [f for f in os.listdir(fe_src_dir) if f.endswith(".md") or f.endswith(".json")]:
-                    shutil.copy(os.path.join(fe_src_dir, f), os.path.join(frontend_dir, f))
+                shutil.copytree(
+                    os.path.join(fe_src_dir, "src"), os.path.join(frontend_dir, "src")
+                )
+                for f in [
+                    f
+                    for f in os.listdir(fe_src_dir)
+                    if f.endswith(".md") or f.endswith(".json")
+                ]:
+                    shutil.copy(
+                        os.path.join(fe_src_dir, f), os.path.join(frontend_dir, f)
+                    )
         finally:
             pass
             """
@@ -286,7 +352,10 @@ def move_files(repo: str, src_path: str):
 
 frontend_dir = os.path.join(ROOT_DIR, "taipy-fe")
 if os.path.isdir(os.path.join(frontend_dir, "node_modules")):
-    shutil.move(os.path.join(frontend_dir, "node_modules"), os.path.join(ROOT_DIR, "fe_node_modules"))
+    shutil.move(
+        os.path.join(frontend_dir, "node_modules"),
+        os.path.join(ROOT_DIR, "fe_node_modules"),
+    )
 if os.path.isdir(os.path.join(frontend_dir)):
     shutil.rmtree(frontend_dir)
 
@@ -300,7 +369,9 @@ for repo in repo_defs.keys():
         if not args.no_pull:
             cwd = os.getcwd()
             os.chdir(src_path)
-            subprocess.run(f'"{git_path}" pull', shell=True, capture_output=True, text=True)
+            subprocess.run(
+                f'"{git_path}" pull', shell=True, capture_output=True, text=True
+            )
             os.chdir(cwd)
         print(f"    Copying from {src_path}...", flush=True)
         move_files(repo, src_path)
@@ -320,7 +391,12 @@ for repo in repo_defs.keys():
             # Checkout tag version
             saved_dir = os.getcwd()
             os.chdir(clone_dir)
-            subprocess.run(f'"{git_path}" checkout {tag}', shell=True, capture_output=True, text=True)
+            subprocess.run(
+                f'"{git_path}" checkout {tag}',
+                shell=True,
+                capture_output=True,
+                text=True,
+            )
             os.chdir(saved_dir)
         move_files(repo, clone_dir)
 
@@ -338,8 +414,13 @@ for repo in repo_defs.keys():
 
         shutil.rmtree(clone_dir, onerror=handleRemoveReadonly)
 
-if os.path.isdir(os.path.join(ROOT_DIR, "fe_node_modules")) and os.path.isdir(os.path.join(frontend_dir)):
-    shutil.move(os.path.join(ROOT_DIR, "fe_node_modules"), os.path.join(frontend_dir, "node_modules"))
+if os.path.isdir(os.path.join(ROOT_DIR, "fe_node_modules")) and os.path.isdir(
+    os.path.join(frontend_dir)
+):
+    shutil.move(
+        os.path.join(ROOT_DIR, "fe_node_modules"),
+        os.path.join(frontend_dir, "node_modules"),
+    )
 
 # Manually add the taipy.run() function.
 # TODO: Automate this, grabbing the function from the 'taipy' repository,
@@ -365,7 +446,9 @@ def run(*services: t.Union[Gui, Rest, Orchestrator], **kwargs) -> t.Optional[t.U
 
 # Generate Pipfile from package dependencies from all repositories
 pipfile_path = os.path.join(ROOT_DIR, "Pipfile")
-pipfile_message = "WARNING: Package versions mismatch in Pipfiles - Pipfile not updated."
+pipfile_message = (
+    "WARNING: Package versions mismatch in Pipfiles - Pipfile not updated."
+)
 for package, versions in pipfile_packages.items():
     if len(versions) != 1:
         if pipfile_message:
@@ -395,10 +478,16 @@ if pipfile_path:
                         version = list(versions.keys())[0]
                         if package == "modin":
                             # Remove 'extras' from modin package requirements
-                            version = re.sub(r"\{\s*extras.*?,\s*version\s*=\s*(.*?)\s*}", r"\1", version)
+                            version = re.sub(
+                                r"\{\s*extras.*?,\s*version\s*=\s*(.*?)\s*}",
+                                r"\1",
+                                version,
+                            )
                         new_pipfile.write(f"{package} = {version}\n")
                         if package not in legacy_pipfile_packages:
-                            pipfile_changes.append(f"Package '{package}' added ({version})")
+                            pipfile_changes.append(
+                                f"Package '{package}' added ({version})"
+                            )
                         elif legacy_pipfile_packages[package] != version:
                             pipfile_changes.append(
                                 f"Package '{package}' version changed from "
