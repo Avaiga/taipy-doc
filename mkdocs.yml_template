@@ -387,6 +387,8 @@ extra:
   # to enable disqus, uncomment the following and put your disqus id below
   # disqus: disqus_id
   generator: false
+exclude_docs: |
+  *.md_template
 # uncomment the following and put your google tracking id below to enable GA
 #google_analytics:
   #- UA-xxx

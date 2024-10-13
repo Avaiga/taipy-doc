@@ -103,8 +103,8 @@ You can customize the style of a table in Taipy using two properties:
 
 1. *class_name*: This property allows you to apply a CSS class to the entire table.
 
-2. *style*: With this property, you can apply a CSS class to specific rows, which you specify in
-    Python.
+2. *row_class_name*: With this property, you can apply a CSS class to specific rows, which you
+   specify in Python.
 
 ### Property 1: class_name
 
@@ -134,17 +134,17 @@ script. For example, if your Taipy application code is in `main.py`, your CSS co
 `main.css` in the same directory. You can find more details about this
 [here](../../../userman/gui/styling/index.md#style-sheets).
 
-### Property 2: style
+### Property 2: row_class_name
 
-To have more precise control over our styling, we can utilize the style property of tables
-to assign CSS classes to individual rows in the table. For instance, we can assign a
-user-defined **highlight-row** CSS class to rows where the **Category** column is **Dessert** to
+To have more precise control over our styling, we can utilize the *row_class_name* property of
+the table control to assign CSS classes to individual rows in the table. For instance, we can assign
+a user-defined **highlight-row** CSS class to rows where the **Category** column is **Dessert** to
 give them a yellow background.
 
 ![Property style](images/using_tables_3.png){width=50% : .tp-image-border }
 
-The style property accepts a function. This function is applied to each row of the table and
-returns a string specifying the CSS class to be used for that particular row. To create the
+The *row_class_name* property accepts a function. This function is applied to each row of the table
+and returns a string specifying the CSS class to be used for that particular row. To create the
 table mentioned above, you can use the following code:
 
 ```python title="main.py"
@@ -153,11 +153,11 @@ def table_style(state, index, row):
 
 table_properties = {
     "class_name": "rows-bordered rows-similar", # optional
-    "style": table_style,
+    "row_class_name": table_style,
 }
 
 main_md = Markdown("<|{food_df}|table|properties=table_properties|>")
-# or Markdown("<|{food_df}|table|class_name=rows-bordered rows-similar|style=table_style|>")
+# or Markdown("<|{food_df}|table|class_name=rows-bordered rows-similar|row_class_name=table_style|>")
 ```
 
 ```css
@@ -170,25 +170,25 @@ main_md = Markdown("<|{food_df}|table|properties=table_properties|>")
 In our code, we also made use of the  *class_name* property mentioned earlier, and we applied
 two Stylekit table classes: **rows-bordered** and **rows-similar**. The **rows-similar** class
 removes the default 0.5 opacity from odd rows. While it wasn't necessary, using it does enhance
-the table's appearance when applying our **highlight-row** style.
+the table's appearance when applying our **highlight-row** CSS class.
 
 ## Modifying Data
 
 Tables offer various properties for modifying data within the table. Notably, the *on_edit*,
-*on_add*, and *on_delete* properties can receive user-defined **callback** functions. This
-function is executed when you interact with the table, but it only appears when you specify the
-relevant data modification property.
+*on_add*, and *on_delete* properties can receive user-defined **callback** functions. These
+functions are executed when you interact with the table. The interaction element appear when the
+table is explicitly defined as *editable*.
 
-Taipy doesn't come with default functions for these properties, so we'll define each function
-ourselves to match our specific needs. We're also including the
-[notify](../../../userman/gui/notifications.md) function within our data modification callback
+Although Taipy comes with default callback function implementation for these properties, we will
+define each function ourselves to match our specific needs. We're also including the
+[*notify()*](../../../userman/gui/notifications.md) function within our data modification callback
 functions to send notifications to the user about their changes.
 
 ## Editing (*on_edit*)
 
-When the *on_edit* property is used, new buttons with a pencil icon are added to each cell.
-Clicking it allows the user to modify the value of that cell,
-then clicking the tick triggers the callback function:
+When the *editable* property is used, new buttons with a pencil icon are added to each cell.
+Clicking it allows the user to modify the value of that cell. If *on_edit* is set to a callback
+function, then clicking the tick triggers the callback function:
 
 ![Editing](images/tables-on_edit.gif){width=50% : .tp-image-border }
 
@@ -208,7 +208,7 @@ def food_df_on_edit(state, var_name, payload):
     state.food_df = new_food_df
     notify(state, "I", f"Edited value from '{old_value}' to '{value}'. (index '{index}', column '{col}')")
 
-main_md = Markdown("<|{food_df}|table|on_edit=food_df_on_edit|>")
+main_md = Markdown("<|{food_df}|table|editable|on_edit=food_df_on_edit|>")
 ```
 
 The table documentation provides more information on the function signature which is slightly
@@ -221,9 +221,9 @@ we instead create a copy of the DataFrame, modify the relevant cell, then assign
 
 ## Adding (*on_add*)
 
-Adding and deleting are quite similar to editing. When you specify the *on_add* property, a
-`button` with a 'plus' icon is included, and when clicked, it triggers the defined *on_add*
-callback function.
+Adding and deleting are quite similar to editing. When *editable* is True, a
+`button` with a 'plus' icon is included, and when clicked, it triggers the callback function
+speficied in the *on_add* property.
 
 ![Adding](images/tables-on_add.gif){width=50% : .tp-image-border }
 
@@ -236,7 +236,7 @@ def food_df_on_add(state, var_name, payload):
 
     notify(state, "S", f"Added a new row.")
 
-main_md = Markdown("<|{food_df}|table|on_add=food_df_on_add|>")
+main_md = Markdown("<|{food_df}|table|editable|on_add=food_df_on_add|>")
 ```
 
 This code simply adds a new empty row to the top of the table (DataFrame).
@@ -258,7 +258,7 @@ def food_df_on_delete(state, var_name, payload):
     state.food_df = state.food_df.drop(index=index)
     notify(state, "E", f"Deleted row at index '{index}'")
 
-main_md = Markdown("<|{food_df}|table|on_delete=food_df_on_delete|>")
+main_md = Markdown("<|{food_df}|table|editable|on_delete=food_df_on_delete|>")
 ```
 
 ## Complete Code
@@ -311,6 +311,7 @@ if __name__ == "__main__":
 
     table_properties = {
         "class_name": "rows-bordered",
+        "editable": True,
         "filter": True,
         "on_edit": food_df_on_edit,
         "on_delete": food_df_on_delete,

@@ -31,7 +31,7 @@ import json
 
 def define_env(env):
     """
-    Mandatory to make this a proper MdDocs macro
+    Mandatory to make this a proper MkDocs macro
     """
     match = re.search(r"/en/(develop|(?:release-(\d+\.\d+)))/$", env.conf["site_url"])
     env.conf["branch"] = (
@@ -108,24 +108,22 @@ def remove_dummy_h3(content: str, ids: Dict[str, str]) -> str:
     return content
 
 
-def create_navigation_buttons(site_url: str) -> str:
-    def create_button(
-        site_url: str, label: str, relative_url: str, class_name: str, group: str = ""
-    ) -> str:
+def create_navigation_buttons() -> str:
+    def create_button(label: str, path: str, class_name: str, group: str = "") -> str:
         gclass = " .tp-nav-button-group_element" if group else ""
         html = f"""
-                <a class="tp-content-card tp-content-card--extra-small {class_name}{gclass}" href="{site_url}{relative_url}">
+                <a class="tp-content-card tp-content-card--extra-small {class_name}{gclass}" href="http://TAIPY_DOCS_URL/{path}">
                 <header class="tp-content-card-header">
                     <h4>{label}</h4>
                 </header>
                 </a>
     """
         if group == "start-group":
-            return "<div class=\"tp-nav-button-group\">" + html
+            return '<div class="tp-nav-button-group">' + html
         elif group == "end-group":
-                return html + "</div>"
+            return html + "</div>"
         else:
-            return "<div class=\"tp-nav-button-single\">" + html + "</div>"
+            return '<div class="tp-nav-button-single">' + html + "</div>"
 
     buttons_html = """
         <div style="margin-bottom: 1rem;">
@@ -137,17 +135,12 @@ def create_navigation_buttons(site_url: str) -> str:
             "Visual Elements",
             "refmans/gui/viselements/",
             "tp-content-card--beta",
-            "start-group"
+            "start-group",
         ),
-        (
-            "Reference",
-            "refmans/",
-            "tp-content-card--beta",
-            "end-group"
-        ),
+        ("Reference", "refmans/", "tp-content-card--beta", "end-group"),
         ("Gallery", "gallery/", "tp-content-card--alpha"),
     ]:
-        buttons_html += create_button(site_url, *desc)
+        buttons_html += create_button(*desc)
     buttons_html += """
         </div>
 """
@@ -160,7 +153,9 @@ def on_post_build(env):
     """
 
     log = logging.getLogger("mkdocs")
+
     site_dir = env.conf["site_dir"]
+    site_dir_unix = site_dir.replace("\\", "/")
     site_url = env.conf["site_url"]
     xrefs = {}
     multi_xrefs = {}
@@ -182,14 +177,12 @@ def on_post_build(env):
             multi_xrefs[xref] = sorted(descs, key=lambda p: len(p[0]))
     ref_files_path = os.path.join(site_dir, "refmans", "reference")
     fixed_cross_refs = {}
-    navigation_buttons = create_navigation_buttons(site_url)
+    # Create navigation button once for all pages
+    navigation_buttons = create_navigation_buttons()
     for root, _, file_list in os.walk(site_dir):
         for f in file_list:
-            # Remove the *_template files
-            if f.endswith("_template"):
-                os.remove(os.path.join(root, f))
             # Post-process generated '.html' files
-            elif f.endswith(".html"):
+            if f.endswith(".html"):
                 filename = os.path.join(root, f)
                 with open(filename) as html_file:
                     try:
@@ -197,19 +190,32 @@ def on_post_build(env):
                     except Exception as e:
                         log.error(f"Couldn't read HTML file {filename}")
                         raise e
-            
+
                     # Remove useless spaces for improved processing
                     # This breaks the code blocks - so needs to avoid the <pre> elements before
                     # we bring it back.
-                    #html_content = re.sub(r"[ \t]+", " ", re.sub(r"\n\s*\n+", "\n\n", html_content))
-                    #html_content = html_content.replace("\n\n", "\n")
+                    # html_content = re.sub(r"[ \t]+", " ", re.sub(r"\n\s*\n+", "\n\n", html_content))
+                    # html_content = html_content.replace("\n\n", "\n")
 
                     html_content = html_content.replace(
                         '<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">',
                         '<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">'
                         + navigation_buttons,
                     )
-
+                    # Replace references to http://TAIPY_DOCS_URL by relative path
+                    new_content = ""
+                    last_location = 0
+                    for m in re.finditer(
+                        r"(?<=href=\")http://TAIPY_DOCS_URL(.*?)(?=\")", html_content
+                    ):
+                        new_content += html_content[
+                            last_location : m.start()
+                        ] + os.path.relpath(f"{site_dir_unix}{m[1]}", root).replace(
+                            "\\", "/"
+                        )
+                        last_location = m.end()
+                    if last_location:
+                        html_content = new_content + html_content[last_location:]
                     # Rebuild coherent links from TOC to sub-pages
                     ids = find_dummy_h3_entries(html_content)
                     if ids:
@@ -234,9 +240,7 @@ def on_post_build(env):
                                 )
                                 new_title = "Taipy p" + new_title[1:]
                         before = (
-                            before[: match.start()]
-                            + new_title
-                            + before[match.end() :]
+                            before[: match.start()] + new_title + before[match.end() :]
                         )
                         html_content = (
                             before
@@ -329,9 +333,7 @@ def on_post_build(env):
                         if not desc:
                             # Test for package: a.b.c -> pkg_a/pkg_b/pkg_c
                             paths = "/".join([f"pkg_{e}" for e in all_parts.split(".")])
-                            if os.path.exists(
-                                f"{ref_files_path}/{paths}/index.html"
-                            ):
+                            if os.path.exists(f"{ref_files_path}/{paths}/index.html"):
                                 link = f"{paths}"
                             else:
                                 (dir, file) = os.path.split(filename)
@@ -391,7 +393,9 @@ def on_post_build(env):
                             (dir, dir1) = os.path.split(dir)
                             (dir, dir2) = os.path.split(dir)
                             bad_xref = xref.group(0)
-                            message = f"Unresolved leftover crossref '{bad_xref}' found in "
+                            message = (
+                                f"Unresolved leftover crossref '{bad_xref}' found in "
+                            )
                             if file == "index.html":
                                 (dir, dir3) = os.path.split(dir)
                                 log.error(f"{message}{dir3}/{dir2}/{dir1}.md")
@@ -543,41 +547,138 @@ def on_post_build(env):
                         # Class page?
                         # Replace 'function' to 'method'
                         # Add parenthesis to method names
-                        if re.search(r"([/\\])(?!pkg_)\w+\1index.html$", filename) and re.search(r"<title>\w+\s+class\s", html_content):
+                        if re.search(
+                            r"([/\\])(?!pkg_)\w+\1index.html$", filename
+                        ) and re.search(r"<title>\w+\s+class\s", html_content):
                             # Navigation
-                            if m := re.search(r"""(<li\s+class="md-nav__item">\s*
-                                                  <a\s+href="(.*?)-functions"\s+class="md-nav__link">\s*
-                                                  <span\s+class="md-ellipsis">\s*)
-                                                  Functions
-                                                  (?=\s*</span>)""", html_content, re.X):
+                            if m := re.search(
+                                r"""(<li\s+class="md-nav__item">\s*
+                                    <a\s+href="(.*?)-functions"\s+class="md-nav__link">\s*
+                                    <span\s+class="md-ellipsis">\s*)
+                                    Functions
+                                    (?=\s*</span>)""",
+                                html_content,
+                                re.X,
+                            ):
                                 class_ref = m[2].replace("#", "\\#")
-                                new_content = html_content[0 : m.start()] + m[1] + "Methods"
-                                html_content = html_content[m.end():]
+                                new_content = (
+                                    html_content[0 : m.start()] + m[1] + "Methods"
+                                )
+                                html_content = html_content[m.end() :]
                                 last_location = 0
-                                for m in re.finditer(fr"""(<li\s+class="md-nav__item">\s*
-                                                          <a\s+href="{class_ref}(\.|-)\w+"\s+class="md-nav__link">\s*
-                                                          <span\s+class="md-ellipsis">\s*
-                                                          \w+)
-                                                          (?=\s*</span>)""", html_content, re.X):
+                                for m in re.finditer(
+                                    rf"""(<li\s+class="md-nav__item">\s*
+                                         <a\s+href="{class_ref}(\.|-)\w+"\s+class="md-nav__link">\s*
+                                         <span\s+class="md-ellipsis">\s*
+                                         \w+)
+                                         (?=\s*</span>)""",
+                                    html_content,
+                                    re.X,
+                                ):
                                     if m[2] == "-":
                                         # End of the methods list
                                         break
-                                    new_content += html_content[last_location : m.start()]
+                                    new_content += html_content[
+                                        last_location : m.start()
+                                    ]
                                     new_content += m[1] + "()"
                                     last_location = m.end()
                                 if last_location:
-                                    html_content = new_content + html_content[last_location:]
+                                    html_content = (
+                                        new_content + html_content[last_location:]
+                                    )
                             new_content = ""
                             last_location = 0
-                            for m in re.finditer(r"""<span\s+class="(?:[-\w]+\s+)*doc-function-name(?:\s+[-\w]+)*">
-                                                     \w+
-                                                     (?=\s*</span>)""", html_content, re.X):
-                                new_content += html_content[last_location : m.end()] + "()"
+                            for m in re.finditer(
+                                r"""<span\s+class="(?:[-\w]+\s+)*doc-function-name(?:\s+[-\w]+)*">
+                                    \w+(?=\s*</span>)""",
+                                html_content,
+                                re.X,
+                            ):
+                                new_content += (
+                                    html_content[last_location : m.end()] + "()"
+                                )
                                 last_location = m.end()
                             if last_location:
-                                html_content = new_content + html_content[last_location:]
-                            html_content = re.sub(r"(<h2\s+id=\"(?:[\w\.]+)-functions\">)Functions",
-                                                  "\\1Methods", html_content)
+                                html_content = (
+                                    new_content + html_content[last_location:]
+                                )
+                            html_content = re.sub(
+                                r"(<h2\s+id=\"(?:[\w\.]+)-functions\">)Functions",
+                                "\\1Methods",
+                                html_content,
+                            )
+
+                        # Page Builder class?
+                        if re.search(
+                            r"([/\\])pkg_gui\1pkg_builder\1\w+\1index.html$", filename
+                        ) and re.search(r"<title>\w+\s+class\s", html_content):
+                            # Replace, in signature, styled strings by None and comment
+                            new_content = ""
+                            last_location = 0
+                            # Find signatures
+                            for s_m in re.finditer(
+                                r"""<div\s+class="doc-signature
+                                                 (.*?)
+                                                 div>""",
+                                html_content,
+                                re.X | re.S,
+                            ):
+                                new_content += html_content[last_location : s_m.start()]
+                                last_location = s_m.end()
+                                signature = s_m[0]
+                                sig_content = ""
+                                sig_location = 0
+                                # Within those signatures, find ill-defined default values
+                                for p_m in re.finditer(
+                                    r"""<span\s+class="s2">
+                                        &quot;(&lt;.*?)&quot;
+                                        </span>
+                                        (<span\s+class="p">,</span>)?""",
+                                    signature,
+                                    re.X | re.S,
+                                ):
+                                    sig_content += signature[sig_location : p_m.start()]
+                                    # Style ill-defined default values in a comment
+                                    comment = re.sub(
+                                        r"&lt;(/)?(i|tt)&gt;", r"<\1\2>", p_m[1]
+                                    )
+                                    sig_content += f'<span class="kc">None</span>{p_m[2]}<span class="sd"> # {comment}</span>'
+                                    sig_location = p_m.end()
+                                if sig_location:
+                                    signature = sig_content + signature[sig_location:]
+                                new_content += signature
+                            if last_location:
+                                html_content = (
+                                    new_content + html_content[last_location:]
+                                )
+                            # Properly style default values, in parameters description
+                            new_content = ""
+                            last_location = 0
+                            # Find parameters default value
+                            for p_m in re.finditer(
+                                r"""<tr\s+class="doc-section-item">
+                                    (?:\s+<td.*?td>){3}
+                                    \s+<td>\s+(<code>&\#39;&lt;.*?)\s+</td>
+                                    \s+</tr>""",
+                                html_content,
+                                re.X | re.S,
+                            ):
+                                new_content += html_content[
+                                    last_location : p_m.start(1)
+                                ]
+                                default_value = re.sub(
+                                    r"<code>&\#39;(.*?)&\#39;</code>", r"\1", p_m[1]
+                                )
+                                default_value = re.sub(
+                                    r"&lt;(/)?(i|tt)&gt;", r"<\1\2>", default_value
+                                )
+                                new_content += default_value
+                                last_location = p_m.end(1)
+                            if last_location:
+                                html_content = (
+                                    new_content + html_content[last_location:]
+                                )
 
                     # Processing for visual element pages:
                     # - Remove <tt> from title
