@@ -29,6 +29,15 @@ This is the list of changes to Taipy releases as they were published.
 [`taipy-templates` 4.0](https://pypi.org/project/taipy-templates/4.0.0/), and
 [`taipy-rest` 4.0](https://pypi.org/project/taipy-rest/4.0.0/) packages.
 
+## Known issues
+
+<h4><strong><code>taipy-gui</code></strong> 4.0.0</h4>
+
+- The [**-H**](../userman/advanced_features/configuration/gui-config.md#p-port) short command line
+  option for setting the server hostname is broken.<br/>
+  Please use the full **--host** option instead.<br/>
+  This issue will be fixed in the next technical release for Taipy GUI.
+
 ## New Features
 
 <h4><strong><code>taipy</code></strong> 4.0.0</h4>
@@ -262,6 +271,10 @@ additional features.
 
 ## New Features
 
+- Authentication now supports
+  [Microsoft Entra ID](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id)
+  including SSO and GUI integration.<br/>
+  TODO - Documentation is in progress.
 - Support for [Polars DataFrame Library](https://docs.pola.rs/).<br/>
   Tabular data nodes (`CSVDataNode^`, `ParquetDataNode^`, `ExcelDataNode^`, `SQLTableDataNode^`,
   and `SQLDataNode^`) can now expose the data as Polars objects. They all support
