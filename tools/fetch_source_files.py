@@ -446,9 +446,7 @@ def run(*services: t.Union[Gui, Rest, Orchestrator], **kwargs) -> t.Optional[t.U
 
 # Generate Pipfile from package dependencies from all repositories
 pipfile_path = os.path.join(ROOT_DIR, "Pipfile")
-pipfile_message = (
-    "WARNING: Package versions mismatch in Pipfiles - Pipfile not updated."
-)
+pipfile_message = "WARNING: Package versions mismatch in Pipfiles - Pipfile not updated."
 for package, versions in pipfile_packages.items():
     if len(versions) != 1:
         if pipfile_message:
