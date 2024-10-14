@@ -1005,11 +1005,28 @@ div.tp-gcs {
   margin-right: 0;
   text-align: right;
   a::before {
-      content: '';
-      display: inline-block;
-     content: url("../images/github-mark-white.svg");
-      width: 1.5em;
-      height: 1.5em;
+    content: '';
+    display: inline-block;
+    content: url("../images/github-mark-white.svg");
+    width: 1.5em;
+    height: 1.5em;
+  }
+}
+/* ---------- Button from Page Builder class to element documentation ---------- */
+/* ved = Visual Element Documentation */
+div.tp-ved {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+  & > .tp-btn {
+      padding-left: 0.4rem;
+  }
+  a::before {
+    content: '';
+    display: inline-block;
+    content: url("../images/element-doc-white.svg");
+    width: 1.5em;
+    height: 1.5em;
   }
 }
 /* ---------- ---------- ---------- Navigation buttons ---------- ---------- ---------- */
