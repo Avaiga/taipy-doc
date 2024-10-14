@@ -609,76 +609,120 @@ def on_post_build(env):
                                 html_content,
                             )
 
-                        # Page Builder class?
-                        if re.search(
-                            r"([/\\])pkg_gui\1pkg_builder\1\w+\1index.html$", filename
-                        ) and re.search(r"<title>\w+\s+class\s", html_content):
-                            # Replace, in signature, styled strings by None and comment
-                            new_content = ""
-                            last_location = 0
-                            # Find signatures
-                            for s_m in re.finditer(
-                                r"""<div\s+class="doc-signature
-                                                 (.*?)
-                                                 div>""",
-                                html_content,
-                                re.X | re.S,
-                            ):
-                                new_content += html_content[last_location : s_m.start()]
-                                last_location = s_m.end()
-                                signature = s_m[0]
-                                sig_content = ""
-                                sig_location = 0
-                                # Within those signatures, find ill-defined default values
-                                for p_m in re.finditer(
-                                    r"""<span\s+class="s2">
-                                        &quot;(&lt;.*?)&quot;
-                                        </span>
-                                        (<span\s+class="p">,</span>)?""",
-                                    signature,
+                            # Page Builder class?
+                            m = re.search(r"([/\\])pkg_gui\1pkg_builder\1(\w+)\1index.html$", filename)
+                            if m and re.search(r"<title>\w+\s+class\s", html_content):
+                                element_type = m[2]
+                                # Replace, in signature, styled strings by None and comment
+                                new_content = ""
+                                last_location = 0
+                                # Find signatures
+                                for s_m in re.finditer(
+                                    r"""<div\s+class="doc-signature
+                                                    (.*?)
+                                                    div>""",
+                                    html_content,
                                     re.X | re.S,
                                 ):
-                                    sig_content += signature[sig_location : p_m.start()]
-                                    # Style ill-defined default values in a comment
-                                    comment = re.sub(
-                                        r"&lt;(/)?(i|tt)&gt;", r"<\1\2>", p_m[1]
+                                    new_content += html_content[
+                                        last_location : s_m.start()
+                                    ]
+                                    last_location = s_m.end()
+                                    signature = s_m[0]
+                                    sig_content = ""
+                                    sig_location = 0
+                                    # Within those signatures, find ill-defined default values
+                                    for p_m in re.finditer(
+                                        r"""<span\s+class="s2">
+                                            &quot;(&lt;.*?)&quot;
+                                            </span>
+                                            (<span\s+class="p">,</span>)?""",
+                                        signature,
+                                        re.X | re.S,
+                                    ):
+                                        sig_content += signature[
+                                            sig_location : p_m.start()
+                                        ]
+                                        # Style ill-defined default values in a comment
+                                        comment = re.sub(
+                                            r"&lt;(/)?(i|tt)&gt;", r"<\1\2>", p_m[1]
+                                        )
+                                        sig_content += f'<span class="kc">None</span>{p_m[2]}<span class="sd"> # {comment}</span>'
+                                        sig_location = p_m.end()
+                                    if sig_location:
+                                        signature = (
+                                            sig_content + signature[sig_location:]
+                                        )
+                                    new_content += signature
+                                if last_location:
+                                    html_content = (
+                                        new_content + html_content[last_location:]
                                     )
-                                    sig_content += f'<span class="kc">None</span>{p_m[2]}<span class="sd"> # {comment}</span>'
-                                    sig_location = p_m.end()
-                                if sig_location:
-                                    signature = sig_content + signature[sig_location:]
-                                new_content += signature
-                            if last_location:
-                                html_content = (
-                                    new_content + html_content[last_location:]
+                                # Properly style default values, in parameters description
+                                # Fix issue with indexed and dynamic properties
+                                new_content = ""
+                                last_location = 0
+                                # Find parameters type and default value
+                                for p_m in re.finditer(
+                                    r"""<tr\s+class="doc-section-item">
+                                        \s+<td.*?td> # name
+                                        \s+<td>\s+<code>\s*(.*?)\s*</code>\s*</td> # type
+                                        \s+<td.*?td> # doc
+                                        \s+<td>\s+<code>\s*(.*?)\s*</code>\s*</td> # default value
+                                        \s+</tr>""",
+                                    html_content,
+                                    re.X | re.S,
+                                ):
+                                    p_type = p_m[1]
+                                    if t_m := re.match(
+                                        r"(dynamic|indexed)\((.*)", p_type
+                                    ):
+                                        p_type = f"{t_m[2]}<br/><small><i>{t_m[1]}</i></small>"
+                                    # A property can be both dynamic and indexed
+                                    if t_m := re.match(
+                                        r"(dynamic|indexed)\((.*)", p_type
+                                    ):
+                                        p_type = f"{t_m[2]}<br/><small><i>{t_m[1]}</i></small>"
+                                    p_def_value = re.sub(
+                                        r"&\#39;(.*?)&\#39;", r"\1", p_m[2]
+                                    )
+                                    p_def_value = re.sub(
+                                        r"&lt;(/)?(i|tt)&gt;", r"<\1\2>", p_def_value
+                                    )
+                                    new_content += (
+                                        html_content[last_location : p_m.start(1)]
+                                        + p_type
+                                        + re.sub(
+                                            r"(?<=<code>taipy-)\[element_type\](?=</code>)",
+                                            element_type,
+                                            html_content[p_m.end(1) : p_m.start(2)],
+                                            re.X | re.S,
+                                        )
+                                        + p_def_value
+                                    )
+                                    last_location = p_m.end(2)
+                                if last_location:
+                                    html_content = (
+                                        new_content + html_content[last_location:]
+                                    )
+                                # Remove "Bases" information
+                                html_content = re.sub(
+                                    r"<p\s+class=\"doc\s+doc-class-bases\">.*?</p>",
+                                    "",
+                                    html_content,
+                                    flags=re.S,
                                 )
-                            # Properly style default values, in parameters description
-                            new_content = ""
-                            last_location = 0
-                            # Find parameters default value
-                            for p_m in re.finditer(
-                                r"""<tr\s+class="doc-section-item">
-                                    (?:\s+<td.*?td>){3}
-                                    \s+<td>\s+(<code>&\#39;&lt;.*?)\s+</td>
-                                    \s+</tr>""",
-                                html_content,
-                                re.X | re.S,
-                            ):
-                                new_content += html_content[
-                                    last_location : p_m.start(1)
-                                ]
-                                default_value = re.sub(
-                                    r"<code>&\#39;(.*?)&\#39;</code>", r"\1", p_m[1]
-                                )
-                                default_value = re.sub(
-                                    r"&lt;(/)?(i|tt)&gt;", r"<\1\2>", default_value
-                                )
-                                new_content += default_value
-                                last_location = p_m.end(1)
-                            if last_location:
-                                html_content = (
-                                    new_content + html_content[last_location:]
-                                )
+                                # Add link to element documentation page
+                                if m := re.search(
+                                    r"<p>data-viselement:\s+(\w+)\s+<a\s+href=\"(.*)(?:\".*?</p>)",
+                                    html_content,
+                                ):
+                                    html_content = (
+                                        html_content[: m.start()]
+                                        + f"""<div class="tp-ved"><a class="tp-btn tp-btn--alpha" href="{m[2]}">
+                                        See full documentation and examples for this {m[1]}</a></div>"""
+                                        + html_content[m.end() :]
+                                    )
 
                     # Processing for visual element pages:
                     # - Remove <tt> from title
@@ -746,45 +790,6 @@ def on_post_build(env):
                                     + article_match.group(2)
                                     + html_content[article_match.end() :]
                                 )
-                    # Processing for the page builder API:
-                    fn_match = re.search(
-                        r"(/|\\)reference\1taipy\.gui\.builder.(.*?)\1index.html",
-                        filename,
-                    )
-                    if fn_match is not None:
-                        # Default value of properties appear as "dynamic(type" as "indexed(type"
-                        prop_re = re.compile(
-                            r"<tr>\s*<td><code>.*?</code></td>"
-                            + r"\s*<td>\s*<code>(.*?)</code>\s*</td>\s*<td>",
-                            re.S,
-                        )
-                        new_content = ""
-                        last_location = 0
-                        for prop in prop_re.finditer(html_content):
-                            if default_value_re := re.match(
-                                r"(dynamic|indexed)\((.*)", prop[1]
-                            ):
-                                new_content += html_content[
-                                    last_location : prop.start(1)
-                                ]
-                                new_content += f"{default_value_re[2]}<br/><small><i>{default_value_re[1]}</i></small>"
-                                last_location = prop.end(1)
-                        if last_location:
-                            html_content = new_content + html_content[last_location:]
-                        # '<i>default value</i>' -> <i>default value</i>
-                        dv_re = re.compile(
-                            r"&\#39;&lt;i&gt;(.*?)&lt;/i&gt;&\#39;", re.S
-                        )
-                        new_content = ""
-                        last_location = 0
-                        for dv in dv_re.finditer(html_content):
-                            new_content += (
-                                html_content[last_location : dv.start()]
-                                + f"<i>{dv[1]}</i>"
-                            )
-                            last_location = dv.end()
-                        if last_location:
-                            html_content = new_content + html_content[last_location:]
 
                     # Handle title and header in packages documentation file
                     def code(s: str) -> str:
