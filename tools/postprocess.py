@@ -610,9 +610,9 @@ def on_post_build(env):
                             )
 
                             # Page Builder class?
-                            if re.search(
-                                r"([/\\])pkg_gui\1pkg_builder\1\w+\1index.html$", filename
-                            ) and re.search(r"<title>\w+\s+class\s", html_content):
+                            m = re.search(r"([/\\])pkg_gui\1pkg_builder\1(\w+)\1index.html$", filename)
+                            if m and re.search(r"<title>\w+\s+class\s", html_content):
+                                element_type = m[2]
                                 # Replace, in signature, styled strings by None and comment
                                 new_content = ""
                                 last_location = 0
@@ -624,7 +624,9 @@ def on_post_build(env):
                                     html_content,
                                     re.X | re.S,
                                 ):
-                                    new_content += html_content[last_location : s_m.start()]
+                                    new_content += html_content[
+                                        last_location : s_m.start()
+                                    ]
                                     last_location = s_m.end()
                                     signature = s_m[0]
                                     sig_content = ""
@@ -638,7 +640,9 @@ def on_post_build(env):
                                         signature,
                                         re.X | re.S,
                                     ):
-                                        sig_content += signature[sig_location : p_m.start()]
+                                        sig_content += signature[
+                                            sig_location : p_m.start()
+                                        ]
                                         # Style ill-defined default values in a comment
                                         comment = re.sub(
                                             r"&lt;(/)?(i|tt)&gt;", r"<\1\2>", p_m[1]
@@ -646,7 +650,9 @@ def on_post_build(env):
                                         sig_content += f'<span class="kc">None</span>{p_m[2]}<span class="sd"> # {comment}</span>'
                                         sig_location = p_m.end()
                                     if sig_location:
-                                        signature = sig_content + signature[sig_location:]
+                                        signature = (
+                                            sig_content + signature[sig_location:]
+                                        )
                                     new_content += signature
                                 if last_location:
                                     html_content = (
@@ -667,26 +673,45 @@ def on_post_build(env):
                                     html_content,
                                     re.X | re.S,
                                 ):
+                                    p_type = p_m[1]
+                                    if t_m := re.match(
+                                        r"(dynamic|indexed)\((.*)", p_type
+                                    ):
+                                        p_type = f"{t_m[2]}<br/><small><i>{t_m[1]}</i></small>"
+                                    # A property can be both dynamic and indexed
+                                    if t_m := re.match(
+                                        r"(dynamic|indexed)\((.*)", p_type
+                                    ):
+                                        p_type = f"{t_m[2]}<br/><small><i>{t_m[1]}</i></small>"
                                     p_def_value = re.sub(
                                         r"&\#39;(.*?)&\#39;", r"\1", p_m[2]
                                     )
                                     p_def_value = re.sub(
                                         r"&lt;(/)?(i|tt)&gt;", r"<\1\2>", p_def_value
                                     )
-                                    p_type = p_m[1]
-                                    if t_m := re.match(r"(dynamic|indexed)\((.*)", p_type):
-                                        p_type = f"{t_m[2]}<br/><small><i>{t_m[1]}</i></small>"
-                                    # A property can be both dynamic and indexed
-                                    if t_m := re.match(r"(dynamic|indexed)\((.*)", p_type):
-                                        p_type = f"{t_m[2]}<br/><small><i>{t_m[1]}</i></small>"
-                                    new_content += html_content[last_location : p_m.start(1)] + p_type + html_content[p_m.end(1) : p_m.start(2)] + p_def_value
+                                    new_content += (
+                                        html_content[last_location : p_m.start(1)]
+                                        + p_type
+                                        + re.sub(
+                                            r"(?<=<code>taipy-)\[element_type\](?=</code>)",
+                                            element_type,
+                                            html_content[p_m.end(1) : p_m.start(2)],
+                                            re.X | re.S,
+                                        )
+                                        + p_def_value
+                                    )
                                     last_location = p_m.end(2)
                                 if last_location:
                                     html_content = (
                                         new_content + html_content[last_location:]
                                     )
                                 # Remove "Bases" information
-                                html_content = re.sub(r"<p\s+class=\"doc\s+doc-class-bases\">.*?</p>", "", html_content, flags=re.S)
+                                html_content = re.sub(
+                                    r"<p\s+class=\"doc\s+doc-class-bases\">.*?</p>",
+                                    "",
+                                    html_content,
+                                    flags=re.S,
+                                )
                                 # Add link to element documentation page
                                 if m := re.search(
                                     r"<p>data-viselement:\s+(\w+)\s+<a\s+href=\"(.*)(?:\".*?</p>)",
