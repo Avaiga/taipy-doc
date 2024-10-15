@@ -155,16 +155,17 @@ This definition indicates that:
 Here’s how you can implement the *dialog_action()* function to handle the button presses:
 ```python
 def dialog_action(state, _, payload):
-    if payload["args"][0] == 0:
-        ... # The first button was pressed
-    elif payload["args"][0] == 1:  # Second button
-        ... # The second button was pressed
-    else:  # Close button (index == -1)
-        ... # The dialog's Close button was pressed
+    if payload["args"][0] == 0:  # The first button was pressed
+        ...
+    elif payload["args"][0] == 1:  # The second button was pressed
+        ...
+    else:  # The dialog's Close button was pressed (index == -1)
+        ...
     state.show_dialog = False
 ```
 
 The *payload["args"]\[0\]* value indicates which button was pressed:
+
 - 0: The first button ("Couldn't be better") was pressed.
 - 1: The second button ("Not my day") was pressed.
 - -1: The Close button of the dialog was pressed.
@@ -178,8 +179,8 @@ When *show_dialog* is set to True, the dialog will display two buttons at the bo
     <figcaption>Automatic buttons</figcaption>
 </figure>
 
-If the user presses the first button, "COULDN'T BE BETTER", the *dialog_action()* callback will be
-invoked with *payload["args"]\[0\]* set to 0.
+If the user presses the first button, "COULDN'T BE BETTER", the *dialog_action()* callback function
+is invoked with *payload["args"]\[0\]* set to 0.
 
 ## Dialog with page
 
