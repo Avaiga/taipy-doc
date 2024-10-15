@@ -55,7 +55,7 @@ An `on_change` callback can be set to retrieve the user's selection:
 def on_change(s: State, name: str, value: any):
     if name == "dates":
         # value[0] is set to the first selected date
-        # value[1] is set to the first selected date
+        # value[1] is set to the second selected date
 ```
 
 ## Selecting a range with times {data-source="gui:doc/examples/controls/date_range_with_time.py"}
