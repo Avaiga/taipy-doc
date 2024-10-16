@@ -258,6 +258,7 @@ nav:
       - "Optimize Bar Cut Sizes": gallery/articles/bar_cutting/index.md
       - "Churn Classification": gallery/articles/churn_classification/index.md
       - "Drift Detection": gallery/articles/drift_detection/index.md
+      - "Supply Chain Monitoring": gallery/articles/supply_chain_monitoring/index.md
     - "LLM":
       - "LLM": gallery/llm/index.md
       - "LLM Chatbot" : gallery/articles/chatbot/index.md
