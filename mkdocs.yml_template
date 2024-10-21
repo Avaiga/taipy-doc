@@ -253,11 +253,12 @@ nav:
       - "Decision Support": gallery/decision_support/index.md
       - "Supply Chain - 2 Echelons": gallery/articles/supply_chain/index.md
       - "Supply Chain - 3 Echelons": gallery/articles/supply_chain_3_echelons/index.md
-      - "Production Planning": gallery/articles/production_planning/index.md
       - "QSR Sales Forecasting": gallery/articles/qsr_sales_forecasting/index.md
+      - "Supply Chain Monitoring": gallery/articles/supply_chain_monitoring/index.md
+      - "Production Planning": gallery/articles/production_planning/index.md
+      - "Drift Detection": gallery/articles/drift_detection/index.md
       - "Optimize Bar Cut Sizes": gallery/articles/bar_cutting/index.md
       - "Churn Classification": gallery/articles/churn_classification/index.md
-      - "Drift Detection": gallery/articles/drift_detection/index.md
     - "LLM":
       - "LLM": gallery/llm/index.md
       - "LLM Chatbot" : gallery/articles/chatbot/index.md
