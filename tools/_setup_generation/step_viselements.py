@@ -337,9 +337,8 @@ class VisElementsStep(SetupStep):
 class [element_type]({base_class}):
     \"\"\"[short_doc]
 
-    This class represents the [control_or_block] documented in the [element_md_page] section.
+    data-viselement: [control_or_block] [element_md_page]
     \"\"\"
-    _ELEMENT_NAME: str
     def __init__(self, [arguments]) -> None:
         \"\"\"Create a new `[element_type]` element.
 
