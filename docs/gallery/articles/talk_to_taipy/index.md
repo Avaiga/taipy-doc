@@ -3,7 +3,7 @@ title: Talk To Taipy
 category: llm
 data-keywords: enterprise vizelement ai
 short-description: Use natural language to ask questions about a car sales dataset. PandasAI will answer with text, tables, and visualizations
-order: 14
+order: 15
 img: talk_to_taipy/images/screenshot.png
 ---
 

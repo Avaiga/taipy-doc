@@ -3,7 +3,7 @@ title: Realtime Pollution Dashboard
 category: visualization
 data-keywords: dashboard vizelement layout chart community
 short-description: Streams real-time pollution data from sensors and shows air quality on a map.
-order: 21
+order: 22
 img: pollution_sensors/images/pollution_dashboard.png
 hide:
     - toc

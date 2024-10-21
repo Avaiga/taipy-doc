@@ -3,7 +3,7 @@ title: Bar Cutting Optimization
 category: decision_support
 data-keywords: optimization scenario enterprise
 short-description: Use two scenarios with distinct algorithms to reduces raw material waste by bar cut sizes optimizations.
-order: 15
+order: 16
 img: bar_cutting/images/bar-cutting-bar-Visualization.png
 ---
 

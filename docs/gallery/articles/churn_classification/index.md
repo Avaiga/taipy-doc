@@ -3,7 +3,7 @@ title: Churn Classification
 category: decision_support
 data-keywords: ai classification scenario enterprise
 short-description: Leverage Scenario management and comparison to improve decision making on a Churn prediction demo.
-order: 16
+order: 17
 img: churn_classification/images/churn-classification-data-Visualization-histogram.png
 ---
 In the fast-paced world of business, retaining customers

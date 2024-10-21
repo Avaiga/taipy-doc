@@ -3,6 +3,7 @@ title: Supply Chain Monitoring
 category: decision_support
 data-keywords: dashboard maps enterprise
 short-description: Supply Chain Monitoring dashboard presented as a simulation.
+order: 6
 img: supply_chain_monitoring/images/home_page.png
 ---
 
