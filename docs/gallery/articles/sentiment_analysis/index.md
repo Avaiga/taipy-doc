@@ -3,7 +3,7 @@ title: Sentiment Analysis - Detect emotional tones from a text
 category: llm
 data-keywords: dashboard ai community
 short-description: Analyze user input and uploaded text to uncover sentiments effortlessly.
-order: 23
+order: 24
 img: sentiment_analysis/images/sentiment-analysis-line.png
 ---
 Sentiment analysis, aka "opinion mining", is a technique in Natural Language Processing (NLP)

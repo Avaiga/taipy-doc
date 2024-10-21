@@ -3,7 +3,7 @@ title: Image Classification
 category: visualization
 data-keywords: dashboard ai classification community
 short-description: Explore our interactive image classification application built with Taipy, Nvidia CUDA, and TensorFlow.
-order: 20
+order: 21
 img: image_classif/images/icon-code.svg
 hide:
     - toc

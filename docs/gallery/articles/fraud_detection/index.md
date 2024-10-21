@@ -3,7 +3,7 @@ title: Fraud Detection
 category: finance
 data-keywords: dashboard vizelement layout chart ai multi-page classification enterprise
 short-description: A Taipy Application that analyzes credit card transactions to detect fraud.
-order: 19
+order: 20
 img: fraud_detection/images/fraud_threshold.png
 hide:
     - toc
