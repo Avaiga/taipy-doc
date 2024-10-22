@@ -423,3 +423,71 @@ connect to the directory service:
         # Returns a valid Credentials instance if the LDAP server validates the password
         # "pass123" for user "user1". Raises an InvalidCredentials exception otherwise.
         ```
+
+# Microsoft Entra ID Authenticator
+
+Taipy also provides support for Microsoft Entra ID authentication.
+
+The Entra ID authenticator has two specific parameters that need to be provided in order to
+properly connect to the Microsoft Entra ID service:
+
+- *client_id*: The client ID of the Entra ID application. The application must be registered in the
+    Azure Entra ID portal and have the required permissions including the "User.Read" and
+    "GroupMember.Read.All" permissions.
+- *tenant_id*: The tenant ID of the Entra ID organization.
+
+!!! note "Entra ID application support"
+    Using the Entra ID authentication protocol assumes that an Entra ID application is set up with
+    the required permissions.
+
+    First, you need to
+    [create an application in the Microsoft Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal)
+    within your organization.
+    Make sure that the Redirect URI of the application is set to `http://localhost`
+    or the URI of your Taipy application.
+
+    The application needs to be [assigned the following permissions](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#assign-a-role-to-the-application):
+
+    - `User.Read` for accessing the logged in user email from the Microsoft Graph API.
+    - `GroupMember.Read.All` for accessing the groups the user is a member of. The groups
+        are used to assign roles to the user.
+
+    From the Entra ID application, [create a new secret in the Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#assign-a-role-to-the-application).
+
+    The secret is only shown once, so make sure to store it in a safe place.
+    You then need to set the `ENTRA_CLIENT_SECRET` environment variable to the secret value.
+    This environment variable is required for logging in with Microsoft Entra ID accounts.
+
+    Taipy provides no support for setting up the application.
+
+!!! note "Using Taipy configuration to create an authenticator"
+
+    To create an authenticator as an Entra ID authenticator, you can use the authentication
+    configuration either in Python or TOML:
+
+    === "Python configuration"
+        ```python title="main.py"
+        Config.configure_authentication(protocol="ldap",
+                                        client_id="my-client-id",
+                                        tenant_id="my-tenant-id",
+                                        secret_key = "my-ultra-secure-and-ultra-long-secret",
+                                        auth_session_duration = 600,)   # 60 seconds is 10 minutes
+        ```
+
+    === "TOML configuration"
+        ```toml title="config.toml"
+        [AUTHENTICATION.entra_id]
+        protocol="entra_id"
+        client_id="my-client-id"
+        tenant_id="my-tenant-id"
+        secret_key = "my-ultra-secure-and-ultra-long-secret"
+        auth_session_duration = 600   # 60 seconds is 10 minutes
+        ```
+
+        ```py title="main.py"
+        Config.load("config.toml")
+
+        taipy.auth.login()
+        # Returns a valid Credentials instance if you have logged in with valid Microsoft account
+        # in your current browser. Raises an InvalidCredentials exception otherwise.
+        ```
