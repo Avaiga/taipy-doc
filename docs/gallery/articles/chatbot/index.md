@@ -3,7 +3,7 @@ title: LLM ChatBot
 category: llm
 data-keywords: vizelement ai community
 short-description: Leverage this chatbot using OpenAI's API with GPT-4 to use it as a template for an LLM inference application.
-order: 7
+order: 9
 img: chatbot/images/chatbot_meds_conv.png
 hide:
     - toc
