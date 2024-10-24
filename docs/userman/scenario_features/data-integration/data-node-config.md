@@ -841,7 +841,7 @@ In this example, we configure an *s3_object* data node with the id "my_s3_object
 
 - Its scope is the default value `SCENARIO`.
 - The object_key name is "taipy_object".
-- An additional argument is passed for configuring both the boto3 client and for setting cache control during object operations.
+- An additional argument is passed for configuring the AWS S3 client and setting cache control during object operations.
 
 ```python linenums="1"
 {%
