@@ -834,7 +834,7 @@ section, multiple parameters can be provided.
 - _**aws_s3_bucket_name**_ represents the name of the AWS S3 bucket.
 - _**aws_s3_object_key**_ represents the name of the object (file) that needs to be read or written.
 - _**aws_s3_client_parameters**_ represents additional parameters for configuring the boto3 client.
-- _**aws_s3_get_object_parameters**_ represents additional parameters to be passed for advanced read operations.
+- _**aws_s3_get_object_parameters**_ represents additional parameters to be passed to the Amazon Web Services (AWS) S3 client get function for advanced reading use cases. Each parameter key must match the name of a parameter of the [`boto3.client.get_object` API](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/get_object.html).
 - _**aws_s3_put_object_parameters**_ represents additional parameters to be passed to the Amazon Web Services (AWS) S3 client put function for advanced writing use cases. Each parameter key must match the name of a parameter of the [`boto3.client.put_object` API](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/put_object.html).
 
 In this example, we configure an *s3_object* data node with the id "my_s3_object":
