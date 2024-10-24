@@ -833,13 +833,15 @@ section, multiple parameters can be provided.
 - _**aws_region**_ represents the geographic area where the AWS infrastructure is located.
 - _**aws_s3_bucket_name**_ represents the name of the AWS S3 bucket.
 - _**aws_s3_object_key**_ represents the name of the object (file) that needs to be read or written.
-- _**aws_s3_object_parameters**_ represents additional arguments to be passed to interact with AWS.
+- _**aws_s3_client_parameters**_ represents additional parameters for advanced use cases to be passed to interact with (AWS) S3 client.
+- _**aws_s3_get_object_parameters**_ represents additional parameters to be passed for advanced read operations.
+- _**aws_s3_put_object_parameters**_ represents additional parameters to be passed for advanced write operations.
 
 In this example, we configure an *s3_object* data node with the id "my_s3_object":
 
 - Its scope is the default value `SCENARIO`.
 - The object_key name is "taipy_object".
-- An additional argument is passed to the AWS S3 to set the max age of the cache.
+- An additional argument is passed for configuring both the boto3 client and for setting cache control during object operations.
 
 ```python linenums="1"
 {%
