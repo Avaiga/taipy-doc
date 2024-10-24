@@ -7,7 +7,7 @@ s3_object_cfg = Config.configure_s3_object_data_node(
     aws_s3_bucket_name="YOUR AWS BUCKET NAME",
     aws_s3_object_key="taipy_object",
     aws_s3_client_parameters={
-        "region_name": "us-east-1"
+        "endpoint_url": "https://s3.custom-endpoint.com"
     },
     aws_s3_get_object_parameters={
         "Range": "bytes=0-1048576"
