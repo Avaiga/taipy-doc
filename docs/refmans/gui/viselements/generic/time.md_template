@@ -1,0 +1,14 @@
+A control that can display and specify a time.
+
+# Details
+
+TODO
+
+# Usage
+
+TODO
+
+# Styling
+
+All the time controls are generated with the "taipy-time" CSS class. You can use this class
+name to select the time selectors on your page and apply style.
