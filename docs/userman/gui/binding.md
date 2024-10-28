@@ -321,42 +321,43 @@ a set of values that controls can show and select.
 
 Each item in a *list of values*  can hold:
 
-- An identifier: an optional string that uniquely identifies an item in the entire
+- **An identifier**: an optional string that uniquely identifies an item in the entire
   list;
-- A label: a string that is used when displaying the specific item;
-- An image: an optional `Icon^` that can be used to display the item as a small
+- **A label**: a string that is used when displaying the specific item;
+- **An image**: an optional `Icon^` that can be used to display the item as a small
   image. Note that icons can also hold a descriptive string.
-- A member of an enumeration class.
+- **A member** of an enumeration class.
 
 A *LoV* can have different types, depending on the use case:
 
-- List of strings: if your items are just a series of strings, you can
+- **List of strings**: if your items are just a series of strings, you can
   create a *LoV* as a List[str] or a single string, where item labels
   are separated by a semicolon (';');
 
-- List with identifier: in situations where items labels may appear
+- **List with identifier**: in situations where items labels may appear
   several times in the same *LoV*, you will need a unique identifier to
   specify which item is represented.<br/>
   In this situation, the *LoV* will be a list of tuples where each tuple
   will contain:
 
-   - A unique identifier as the first item;
-   - A label as the second item.
+    - A unique identifier as the first item;
+    - A label as the second item.
 
-  Therefore, the Python type of such a *LoV* is List[Tuple[str, str]].
+    Therefore, the Python type of such a *LoV* is List[Tuple[str, str]].
 
-- List with images: if you need to represent items with images, you
+- **List with images**: if you need to represent items with images, you
   will create a *LoV* that is a list of tuples where each tuple
   will contain:
 
-   - A unique identifier as the first item;
-   - An `Icon^` as the second item.
+    - A unique identifier as the first item;
+    - An `Icon^` as the second item.
 
-  The Python type of such a *lov* is: List[Tuple[str, `Icon^`]].
+    The Python type of such a *lov* is: List[Tuple[str, `Icon^`]].
 
-- An enumeration class (i.e. a class that inherits from `Enum`).<br/>
-  You can set a *lov* directly from an enumeration class, as detailed in the
-  ["LoVs as enumerations"](#lovs-as-enumeration) below.
+- **An enumeration class** (i.e. a class that inherits from `Enum`).
+  
+    You can set a *lov* directly from an enumeration class, as detailed in the
+    ["LoVs as enumerations"](#lovs-as-enumeration) below.
 
 The "selected" value in controls that use *LoV*s are handled in their *value*
 property. This will be the original value of the selection in the *LoV* unless
