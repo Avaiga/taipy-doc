@@ -165,7 +165,7 @@ nav:
         - "Experiment mode": userman/advanced_features/versioning/experiment_mode.md
         - "Production mode": userman/advanced_features/versioning/production_mode.md
 
-      - "Authentication and roles":
+      - "Authentication and authorization":
         - "Authentication and authorization": userman/advanced_features/auth/index.md
         - "Authentication": userman/advanced_features/auth/authentication.md
         - "Authorization and roles": userman/advanced_features/auth/authorization.md

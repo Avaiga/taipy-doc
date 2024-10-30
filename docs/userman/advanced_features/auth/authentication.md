@@ -24,11 +24,11 @@ It validates the user's identity and retrieves the roles associated with the use
 
 3. Use the `Credentials^` object.<br/>
     To check if a user has a specific role, you can use the `Credentials^` object returned by
-    the `(auth.)login()^` function. The `Credentials^` object has a `get_roles()^` method that
+    the `(auth.)login()^` function. It has a `Credentials.get_roles()^` method that
     returns the roles associated with the user. For more details on how to use the `Credentials^`
     and the roles, please refer to the [Authorization and Roles](authorization.md) section.
 
-# Creating an Authenticator
+# Create Authenticators and Login
 
 You can use the `Config.configure_authentication()^` method to create an authenticator.
 Taipy automatically instantiates the authenticator based on the configuration attributes.
@@ -212,7 +212,7 @@ See the [section below](#creating-hashed-passwords) to learn how to create hashe
 
 !!! usage "Configure an authenticator and login"
 
-    === "Python configuration"
+    === "Using Python configuration"
         ```python title="main.py"
         passwords={
             "user1": "eSwebyvpEElWbZNTNqpW7rNQPDPyJSm", # This is the hashed value of "pass123"
@@ -223,7 +223,7 @@ See the [section below](#creating-hashed-passwords) to learn how to create hashe
         taipy.auth.login("user1", "anything_else")  # raises an InvalidCredentials exception
         ```
 
-    === "TOML configuration"
+    === "Using TOML configuration"
         ```toml title="config.toml"
         [AUTHENTICATION.taipy]
         protocol="taipy"
@@ -255,7 +255,7 @@ See the [section below](#creating-hashed-passwords) to learn how to create hashe
     Of course, you can combine both roles and password for any given user, using both the *roles*
     and *passwords* dictionnaries. Here is an example of how you can do it:
 
-    === "Python configuration"
+    === "Using Python configuration"
         ```python title="main.py"
         roles={
             "user1": "role1",
@@ -269,7 +269,7 @@ See the [section below](#creating-hashed-passwords) to learn how to create hashe
         taipy.auth.login("user1", "anything_else")  # raises an InvalidCredentials exception
         ```
 
-    === "TOML configuration"
+    === "Using TOML configuration"
         ```toml title="config.toml"
         [AUTHENTICATION.taipy]
         protocol="taipy"
@@ -332,7 +332,7 @@ when running the application that invokes the `(auth.)login()^` function.
     Here is an example of how you can create a hashed password. We assume that the environment
     variable 'TAIPY_AUTH_HASH' is set to "Taipy".
 
-    === "using the API"
+    === "Using the API"
 
         ```python
         from taipy.auth import hash_taipy_password
@@ -350,7 +350,7 @@ when running the application that invokes the `(auth.)login()^` function.
         Password 2: JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe
         ```
 
-    === "using the CLI"
+    === "Using the CLI"
         ```sh
         $ python -m taipy.auth -p pass123 pass1234
         ```
@@ -380,7 +380,7 @@ either in Python or TOML or with the `Authenticator^` constructor:
 
 !!! usage "Configure an authenticator and login"
 
-    === "Python configuration"
+    === "Using Python configuration"
         ```python title="main.py"
         Config.configure_authentication(protocol="ldap",
                                         server="ldap://0.0.0.0",
@@ -391,7 +391,7 @@ either in Python or TOML or with the `Authenticator^` constructor:
         taipy.auth.login("user1", "anything_else")  # raises an InvalidCredentials exception otherwise
         ```
 
-    === "TOML configuration"
+    === "Using TOML configuration"
         ```toml title="config.toml"
         [AUTHENTICATION.ldap]
         protocol="ldap"
@@ -417,6 +417,7 @@ either in Python or TOML or with the `Authenticator^` constructor:
                                       auth_session_duration = 600)  # 10 minutes
         taipy.auth.login("user1", "pass123") # returns Credentials if password "pass123" is validated by the LDAP server
         taipy.auth.login("user1", "anything_else")  # raises an InvalidCredentials exception otherwise
+        ```
 
 ## Microsoft Entra ID protocol
 
@@ -461,7 +462,7 @@ in order to properly connect to the Microsoft Entra ID service:
     To create an authenticator as an Entra ID authenticator, you can use the authentication
     configuration either in Python or TOML:
 
-    === "Python configuration"
+    === "Using Python configuration"
         ```python title="main.py"
         Config.configure_authentication(protocol="ldap",
                                         client_id="my-client-id",
@@ -470,7 +471,7 @@ in order to properly connect to the Microsoft Entra ID service:
                                         auth_session_duration = 600)  # 10 minutes
         ```
 
-    === "TOML configuration"
+    === "Using TOML configuration"
         ```toml title="config.toml"
         [AUTHENTICATION.entra_id]
         protocol="entra_id"
