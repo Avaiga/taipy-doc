@@ -168,7 +168,7 @@ nav:
       - "Authentication and roles":
         - "Authentication and authorization": userman/advanced_features/auth/index.md
         - "Authentication": userman/advanced_features/auth/authentication.md
-        - "Authorization": userman/advanced_features/auth/authorization.md
+        - "Authorization and roles": userman/advanced_features/auth/authorization.md
 
       - "Scheduler":
         - "Scheduler": userman/advanced_features/scheduling/index.md

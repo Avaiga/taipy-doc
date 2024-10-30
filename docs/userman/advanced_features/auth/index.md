@@ -19,15 +19,11 @@ the user using the application is two-fold:
      of the `Credentials^` class. That instance holds all the information relevant
      for a given user, whose identity has usually been verified using a password.<br/>
      Credentials hold a set of roles, identified as strings, that the application
-     can use to change its logic.
+     can use to change its logic.<br/>
+     [:material-arrow-right: Authentication in Taipy Enterprise](authentication.md)
 
-   - Authorization: Once a user is identified, the application can use the
+   - Authorization and roles: Once a user is identified, the application can use the
      roles that are assigned to the user in order to change its logic, such
      as allowing a set of operations or preventing the user from performing
-     certain tasks.
-
-Please refer to the following section to get more information:
-
-[:material-arrow-right: Authentication in Taipy Enterprise](authentication.md)
-
-[:material-arrow-right: Authorization in Taipy Enterprise](authorization.md)
+     certain tasks.<br/>
+     [:material-arrow-right: Authorization in Taipy Enterprise](authorization.md)

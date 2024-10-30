@@ -2,75 +2,72 @@
 
     This section is relevant only to the Enterprise edition of Taipy.
 
-Authentication is the process that makes sure a given user exists and
-that the password provided when logging in matches the expected
-one. This process ensures that a user that logs in really is who she or
-he claims to be.
+Authentication is the process to secure user identity in an application.
 
-In Taipy Enterprise, the authentication process is achieve by the
-`Authenticator^` class and indirectly by the `(auth.)login()^` function:
-this function creates and returns a `Credentials^` object that
-represents the user in the application.</br>
-The returned `Credentials^` instance contains the set of roles assigned to
-the user in the authentication system.
+# Authentication process
 
-The developer can create an authenticator manually (see the
-`Authenticator.__init__^`(`Authenticator` constructor) for more information)
-if the kind of authenticator needed by the application is known
-(that is, what authentication protocol the application plans to rely on). The
-developer can alternatively use the `(auth.)login()^` function that will create
-an `Authenticator^` the first time it is invoked.
+In Taipy Enterprise, the authentication process requires an *authenticator* to be configured.
+It validates the user's identity and retrieves the roles associated with the user.
 
-Each kind of `Authenticator^` implements an *authentication protocol* that provides
-services that allows for creating credentials and retrieve the roles associated
-to a user.
+1. Configure an *authenticator*.<br/>
+    An `Authenticator^` implements an *authentication protocol* (`taipy`, `ldap`, `entra-id`,
+    etc.), defining how the user's identity is verified and how the roles are retrieved. The
+    authenticator can be created by Taipy directly based on the authentication configuration
+    or manually calling the `Authenticator` constructor (`Authenticator.__init__^`()).
 
-Taipy Enterprise edition supports the following authentication protocols:
+2. Login the user.<br/>
+    The `(auth.)login()^` function takes a username and a password as arguments and delegates
+    to the authenticator (`(Authenticator.)login()^` method) the user's identity validation.
+    If the username and password are valid, the function creates and returns a `Credentials^`
+    object that represents the user in the application with its roles. It raises an
+    `InvalidCredentials^` exception otherwise.
 
-   - "none": The *None* authenticator does not check the user password in
-      `(auth.)login()^` and always validates the login process by creating a `Credentials^`
-      instance that holds an empty role set.<br/>
-      See the [*None* Authenticator](#none-authenticator) below for more information.
+3. Use the `Credentials^` object.<br/>
+    To check if a user has a specific role, you can use the `Credentials^` object returned by
+    the `(auth.)login()^` function. The `Credentials^` object has a `get_roles()^` method that
+    returns the roles associated with the user. For more details on how to use the `Credentials^`
+    and the roles, please refer to the [Authorization and Roles](authorization.md) section.
 
-   - "Taipy": The *Taipy* authenticator makes sure users actually are declared, can
-     retrieve role sets for those users and can check passwords if required.<br/>
-     See the [Taipy Authenticator](#taipy-authenticator) below for more information.
+# Creating an Authenticator
 
-   - "LDAP": The *LDAP* authenticator is an implementation of the LDAP protocol. It
-     requires a connection to a directory service.<br/>
-     See the [LDAP Authenticator](#ldap-authenticator) below for more information.
+You can use the `Config.configure_authentication()^` method to create an authenticator.
+Taipy automatically instantiates the authenticator based on the configuration attributes.
+Alternatively, you can manually create an authenticator by calling the `Authenticator`
+constructor (`Authenticator.__init__^`()).
 
-   - "Entra ID": The *Entra ID* authenticator is an implementation of the Microsoft
-     Entra ID protocol. It requires a connection to the Microsoft Entra ID application.<br/>
-     See the [Entra ID Authenticator](#entra-id-authenticator) below for more information.
+??? tip "Having different authenticators in different environments"
 
+    Using the `Config.configure_authentication()^` method to create an authenticator is a good
+    practice since it allows you to benefit from the Taipy configuration system to set up
+    different authenticators in different environments. <br/>
+    For instance, you may want to use a *Taipy* protocol in local so you can run and test your
+    application locally. Then you can switch to an *LDAP* protocol when deploying your application
+    to a server without having to change your code base. You just need to use the TOML
+    configuration file to override the default configuration. Please refer to the
+    [advanced configuration](../configuration/advanced-config.md#override-with-file-in-env-variable)
+    section.
 
-!!! note "Default authenticator"
-    An application can have one or multiple authenticators. The authenticators are created
-    automatically when `(auth.)login()^` is called for the first time or when any `Authenticator^`
-    for any protocol is created, whichever comes first.
+Each `Authenticator^` implements an *authentication protocol* among the ones supported by Taipy:
 
-    You can retrieve the list of authenticators using the `Authenticator.get_authenticators()^`
-    method.
+- *none*: The None authenticator does not check the user password in `(auth.)login()^` and always
+    validates the login process by creating a `Credentials^` instance that holds an empty role set.
+    This protocol is basically used when the authentication is de-activated.<br/>
+    See the [None Authenticator](#none-protocol) section below for more information.
 
-    If `(auth.)login()^` or `Authenticator.get_authenticators()^` are called before any
-    authenticator was created, Taipy looks for an `AUTHENTICATION` config section (see
-    `AuthenticationConfig^` for more details). This config section, if present, is used to
-    instantiate the *Authenticator*.
+- *Taipy*: The Taipy authenticator makes sure users are declared, can retrieve role sets for those
+    users and can check passwords if required.<br/>
+    This protocol is used for testing purposes, so an application can test its features without
+    having to install and deploy a real authentication server.<br/>
+    See the [Taipy Authenticator](#taipy-protocol) section below for more information.
 
-    To summarize:
+- *LDAP*: The LDAP authenticator is an implementation of the LDAP protocol. It requires a
+    connection to a directory service.<br/>
+    See the [LDAP Authenticator](#ldap-protocol) section below for more information.
 
-    - All `Authenticator^`s that is created or configured becomes the application's authenticators.
-    - When `login()^` is called:
-
-        - An authenticator is created if there is none, based on the authentication configuration.
-            If the authentication configuration has multiple authenticators, all of them are created.
-        - If Taipy could not find the configuration allowing to create any authenticator, a *None*
-            authenticator is created.
-        - All authenticators' `(Authenticator.)login()^` method are invoked sequentially
-            with the arguments that were provided to `(auth.)login()^` until one of them
-            returns a valid `Credentials^` instance.
-
+- *Entra ID*: The Entra ID authenticator is an implementation of the Microsoft Entra ID protocol.
+    It requires a connection to the Microsoft Entra ID application.<br/>
+    See the [Entra ID Authenticator](#microsoft-entra-id-protocol) section below for more
+    information.
 
 Besides their specific parameters, all authenticators have two parameters that you
 can provide in the `Authenticator.__init__^`(`Authenticator` constructor):
@@ -82,30 +79,35 @@ can provide in the `Authenticator.__init__^`(`Authenticator` constructor):
 - *auth_session_duration*: how long in seconds should the credentials created
   by this authenticator be considered valid.
 
-# 'None' Authenticator
+??? note "Multiple Authenticators in a single application"
 
-The *None* authenticator does not check for user declaration or password match.
-It is designed so that developers can start building secure applications before
-the actual authentication system and processes are defined or deployed.
+    An application can have multiple authenticators, each implementing a different authentication
+    protocol. When the `(auth.)login()^` function is called, it tries to authenticate the user
+    with each authenticator in the order they were created or configured. The first authenticator
+    that returns a valid `Credentials^` object is used to create the `Credentials^` instance.
+
+## 'None' protocol
+
+An authenticator with a *None* protocol does not check for user declaration or password match.
+It is designed so that you can start building applications before the actual authentication system
+is in place.
 
 When the *None* authenticator's `(Authenticator.)login()^` method is called, it always
-returns a valid `Credentials^` object, no matter what username and password
-are provided.
+returns a valid `Credentials^` object, no matter what username and password are provided.
 
-To create a *None* authenticator, you can instantiate an `Authenticator^` object
-setting the *protocol* argument of the constructor to "none".
+The *None* protocol is the default protocol created by Taipy when no authentication configuration
+is provided. You can also create a `none` authenticator with the authentication configuration
+either in Python or TOML or with the `Authenticator^` constructor:
 
-!!! note "Using Taipy configuration to create an authenticator"
-    To create an authenticator `none`, you can use the authentication configuration
-    either in Python or TOML:
+!!! usage "Configure an authenticator and login"
 
-    === "Python configuration"
+    === "Using Python configuration"
         ```python title="main.py"
         Config.configure_authentication(protocol="none")
-        taipy.auth.login("whatever_username", "any_password")  # always returns a valid Credentials instance
+        taipy.auth.login("whatever_username", "any_pwd")  # always returns valid Credentials
         ```
 
-    === "TOML configuration"
+    === "Using TOML configuration"
         ```toml title="config.toml"
         [AUTHENTICATION.none]
         protocol = "none"
@@ -113,57 +115,51 @@ setting the *protocol* argument of the constructor to "none".
 
         ```python title="main.py"
         Config.load("config.toml")
-        taipy.auth.login("whatever_username", "any_password")  # always returns a valid Credentials instance
+        taipy.auth.login("whatever_username", "any_pwd")  # always returns valid Credentials
         ```
 
-# Taipy Authenticator
+    === "Using Authenticator constructor"
+        ```python title="main.py"
+        authenticator = Authenticator(protocol="none")
+        authenticator.login("whatever_username", "any_pwd")  # always returns valid Credentials
+        ```
 
-The Taipy Authenticator is an internal authenticator originally designed for
-testing purposes, so an application can test authentication and authorization features
-without having to install and deploy a real authentication server.
+## Taipy protocol
 
-A Taipy Authenticator is created by the `Authenticator.__init__^`(`Authenticator` constructor)
-when invoked with the *protocol* argument set to "taipy".
+A *Taipy* authenticator is an embedded authenticator originally designed for testing purposes, so an
+application can test its features with authentication and authorization without having to install
+and deploy a real authentication server.
 
-You can set the *roles* argument to a dictionary that associates a set of role
-names to every username you want to grant login access to.<br/>
-Here is how you typically create a Taipy authenticator:
+To use the Taipy authenticator, you need to declare the users and their roles. You can set the
+*roles* to a dictionary that associates a set of role names to every username you want to grant
+login access to. Here is an example of a role dictionary:
+
 ```python
-from taipy.auth import Authenticator
 roles={
   "user1": ["role1", "TAIPY_READER"],
   "user2": ["role2", "TAIPY_ADMIN"],
   "user3": ["role1", "role2", "TAIPY_ADMIN"]
 }
-authenticator = Authenticator("taipy", roles=roles)
 ```
-This creates an authenticator that allows three users log in,
-associating the indicated roles to them.
 
-The previous example declares no passwords. In order to log in, the password must be set
-to the username when calling `Authenticator.login()^`:
+You can create a `Taipy` authenticator with the authentication configuration
+either in Python or TOML or with the `Authenticator^` constructor:
 
-   - `authenticator.login("user1", "user1")` will successfully create and return a valid
-     `Credentials^` instance.
-   - `authenticator.login("user1", "anything_else")` will raise the `InvalidCredentials^`
-     exception, rejecting the login attempt.
+!!! usage "Configure an authenticator and login"
 
-!!! note "Using Taipy configuration to create an authenticator"
-    To create an authenticator as a Taipy authenticator with roles, you can use the
-    authentication configuration either in Python or TOML:
-
-    === "Python configuration"
+    === "Using Python configuration"
         ```python title="main.py"
-        Config.configure_authentication(protocol="taipy",
-                                        roles={
-                                            "user1": ["role1", "TAIPY_READER"],
-                                            "user2": ["role2", "TAIPY_ADMIN"],
-                                            "user3": ["role1", "role2", "TAIPY_ADMIN"]})
-        taipy.auth.login("user1", "user1")  # returns a valid Credentials instance
-        taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
+        roles={
+            "user1": ["role1", "TAIPY_READER"],
+            "user2": ["role2", "TAIPY_ADMIN"],
+            "user3": ["role1", "role2", "TAIPY_ADMIN"]
+        }
+        Config.configure_authentication(protocol="taipy", roles=roles)
+        taipy.auth.login("user1", "user1")  # returns valid Credentials
+        taipy.auth.login("user1", "anything_else")  # raises an InvalidCredentials exception
         ```
 
-    === "TOML configuration"
+    === "Using TOML configuration"
         ```toml title="config.toml"
         [AUTHENTICATION.taipy]
         protocol="taipy"
@@ -176,48 +172,55 @@ to the username when calling `Authenticator.login()^`:
 
         ```py title="main.py"
         Config.load("config.toml")
-        taipy.auth.login("user1", "user1")  # returns a valid Credentials instance
-        taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
+        taipy.auth.login("user1", "user1")  # returns valid Credentials
+        taipy.auth.login("user1", "anything_else")  # raises an InvalidCredentials exception
         ```
-## Password-protected authentication
 
-The Taipy Authenticator can password-protect the creation of credentials, using the *passwords*'
-argument of the `Authenticator.__init__^`(`Authenticator` constructor). This argument expects
-a dictionary that associates a username with a password. However, in order not to expose these
-passwords, the password values need to be hashed before they are given to the application (in the
-`Authenticator^` constructor -- using the *passwords* or in the authentication configuration).<br/>
-In the *passwords* argument, the dictionary actually associates a username with a hashed value
-for the password. See the [section below](#creating-hashed-passwords) to learn how to create
-hashed password values.
+    === "Using Authenticator constructor"
+        ```python title="main.py"
+        roles={
+            "user1": ["role1", "TAIPY_READER"],
+            "user2": ["role2", "TAIPY_ADMIN"],
+            "user3": ["role1", "role2", "TAIPY_ADMIN"]
+        }
+        authenticator = Authenticator("taipy", roles=roles)
+        authenticator.login("user1", "user1")  # returns valid Credentials
+        authenticator.login("user1", "anything_else")  # raises an InvalidCredentials exception
+        ```
 
-You can indicate what are the declared users' passwords:
+### Password-protected authentication
+
+Similarly to the roles, you can also provide passwords for the users in the Taipy authenticator
+to password-protect the creation of credentials.
+
+You can set the *passwords* to a dictionary that associates a password to every username. In order
+not to expose them, the password values need to be hashed before they are given to the application.
+
+Here is an example of a dictionary with hashed passwords:
+
 ```python title="main.py"
-from taipy.auth import Authenticator
 passwords={
   "user1": "eSwebyvpEElWbZNTNqpW7rNQPDPyJSm",
   "user2": "JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe"
 }
-authenticator = Authenticator("taipy", passwords=passwords)
 ```
-Note that these values are the one resulting from the example of  the
-[creating hashed passwords](#creating-hashed-passwords) section below.
 
-Calling `(auth.)login("user1", "pass123")^` will result in a valid `Credentials^` instance where
-the assigned roles is an empty set.
+Note that, because "user3" has no declared password, The *Taipy* protocol considers the username
+and password to be the same. This means that the user can log in with the username as the password.
 
-!!! note "Using Taipy configuration to create an authenticator"
+See the [section below](#creating-hashed-passwords) to learn how to create hashed password values.
 
-    To create an authenticator as a Taipy authenticator with passwords, you can use the
-    authentication configuration either in Python or TOML:
+!!! usage "Configure an authenticator and login"
 
     === "Python configuration"
         ```python title="main.py"
-        Config.configure_authentication(protocol="taipy",
-                                        passwords={
-                                            "user1": "eSwebyvpEElWbZNTNqpW7rNQPDPyJSm",
-                                            "user2": "JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe"})
-        taipy.auth.login("user1", "pass123")  # returns a valid Credentials instance
-        taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
+        passwords={
+            "user1": "eSwebyvpEElWbZNTNqpW7rNQPDPyJSm", # This is the hashed value of "pass123"
+            "user2": "JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe"
+        }
+        Config.configure_authentication(protocol="taipy", passwords=passwords)
+        taipy.auth.login("user1", "pass123")  # returns valid Credentials
+        taipy.auth.login("user1", "anything_else")  # raises an InvalidCredentials exception
         ```
 
     === "TOML configuration"
@@ -232,65 +235,38 @@ the assigned roles is an empty set.
 
         ```py title="main.py"
         Config.load("config.toml")
-        taipy.auth.login("user1", "pass123")  # returns a valid Credentials instance
-        taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
+        taipy.auth.login("user1", "pass123")  # returns valid Credentials
+        taipy.auth.login("user1", "anything_else")  # raises an InvalidCredentials exception
         ```
 
-Of course, you can combine both roles and password for any given user, using both the *roles*
-and *passwords* arguments of the `Authenticator.__init__^`(`Authenticator` constructor), or
-using its *config* argument:
-```python title="main.py"
-users={
-    "roles": {
-        "user1": "role1",
-        "user2": ["role2", "TAIPY_ADMIN"],
-        "user3": ["role1", "role2", "TAIPY_ADMIN"]
-    },
-    "passwords": {
-        "user1": "eSwebyvpEElWbZNTNqpW7rNQPDPyJSm",
-        "user2": "JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe"
-    }
-}
-authenticator = Authenticator("taipy", config=users)
-```
+    === "Using Authenticator constructor"
+        ```python title="main.py"
+        passwords={
+            "user1": "eSwebyvpEElWbZNTNqpW7rNQPDPyJSm", # This is the hashed value of "pass123"
+            "user2": "JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe"
+        }
+        authenticator = Authenticator("taipy", passwords=passwords)
+        authenticator.login("user1", "user1")  # returns valid Credentials
+        authenticator.login("user1", "anything_else")  # raises an InvalidCredentials exception
+        ```
 
-With this authenticator, if you run the code:
-```python
-user1 = authenticator.login("user1", pass1)
-print(f"user1 - Logged in. Roles={user1.get_roles()}")
-user2 = authenticator.login("user2", pass2)
-print(f"user2 - Logged in. Roles={user2.get_roles()}")
-user3 = authenticator.login("user3", "user3")
-print(f"user3 - Logged in. Roles={user3.get_roles()}")
-```
-You get the following output:
-```
-user1 - Logged in. Roles={'role1'}
-user2 - Logged in. Roles={'role2', 'TAIPY_ADMIN'}
-user3 - Logged in. Roles={'role1', 'role2', 'TAIPY_ADMIN'}
-```
+??? example "Combining roles and passwords"
 
-Note that, because "user3" was not constrained by any password, we need to use the username as
-the password value for this user.
-
-!!! note "Using Taipy configuration to create an authenticator"
-
-    To create an authenticator as a Taipy authenticator with roles and passwords, you
-    can use the authentication configuration either in Python or TOML:
+    Of course, you can combine both roles and password for any given user, using both the *roles*
+    and *passwords* dictionnaries. Here is an example of how you can do it:
 
     === "Python configuration"
         ```python title="main.py"
-        Config.configure_authentication(protocol="taipy",
-                                        roles={
-                                            "user1": "role1",
-                                            "user2": ["role2", "TAIPY_ADMIN"],
-                                            "user3": ["role1", "role2", "TAIPY_ADMIN"]},
-                                        passwords={
-                                            "user1": "eSwebyvpEElWbZNTNqpW7rNQPDPyJSm",
-                                            "user2": "JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe"})
-
-        taipy.auth.login("user1", "pass123")  # returns a valid Credentials instance
-        taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
+        roles={
+            "user1": "role1",
+            "user2": ["role2", "TAIPY_ADMIN"],
+            "user3": ["role1", "role2", "TAIPY_ADMIN"]},
+        passwords={
+            "user1": "eSwebyvpEElWbZNTNqpW7rNQPDPyJSm",
+            "user2": "JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe"}
+        Config.configure_authentication(protocol="taipy", roles=roles, passwords=passwords)
+        taipy.auth.login("user1", "pass123")  # returns valid Credentials
+        taipy.auth.login("user1", "anything_else")  # raises an InvalidCredentials exception
         ```
 
     === "TOML configuration"
@@ -310,11 +286,25 @@ the password value for this user.
 
         ```py title="main.py"
         Config.load("config.toml")
-        taipy.auth.login("user1", "pass123")  # returns a valid Credentials instance
-        taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
+        taipy.auth.login("user1", "pass123")  # returns valid Credentials
+        taipy.auth.login("user1", "anything_else")  # raises an InvalidCredentials exception
         ```
 
-## Creating hashed passwords
+    === "Using Authenticator constructor"
+        ```python title="main.py"
+        roles={
+            "user1": "role1",
+            "user2": ["role2", "TAIPY_ADMIN"],
+            "user3": ["role1", "role2", "TAIPY_ADMIN"]},
+        passwords={
+            "user1": "eSwebyvpEElWbZNTNqpW7rNQPDPyJSm",
+            "user2": "JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe"}
+        authenticator = Authenticator("taipy", roles=roles, passwords=passwords)
+        authenticator.login("user1", "pass123")  # returns valid Credentials
+        authenticator.login("user1", "anything_else")  # raises an InvalidCredentials exception
+        ```
+
+### Creating hashed passwords
 
 Taipy provides two ways of creating a hashed password provided the plain text representation of
 the password:
@@ -337,65 +327,58 @@ The value of 'TAIPY_AUTH_HASH' can be any string value.</br>
 The value of 'TAIPY_AUTH_HASH' **must** be the same when generating the hashed passwords and
 when running the application that invokes the `(auth.)login()^` function.
 
-!!! example "Create a hashed password using the API"
+!!! example "Create a hashed password"
 
-    Here is an example of how you can create a hashed password using the Taipy API.
+    Here is an example of how you can create a hashed password. We assume that the environment
+    variable 'TAIPY_AUTH_HASH' is set to "Taipy".
 
-    We assume that the environment variable 'TAIPY_AUTH_HASH' is set to "Taipy".
+    === "using the API"
 
-    ```python
-    from taipy.auth import hash_taipy_password
+        ```python
+        from taipy.auth import hash_taipy_password
 
-    pass1 = "pass123"
-    hashed_pass1 = hash_taipy_password(pass1)
-    print(f"Password 1: {hashed_pass1}")
-    pass2 = "pass1234"
-    hashed_pass2 = hash_taipy_password(pass2)
-    print(f"Password 2: {hashed_pass2}")
-    ```
-    Produces the output:
-    ```
-    Password 1: eSwebyvpEElWbZNTNqpW7rNQPDPyJSm
-    Password 2: JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe
-    ```
+        pass1 = "pass123"
+        hashed_pass1 = hash_taipy_password(pass1)
+        print(f"Password 1: {hashed_pass1}")
+        pass2 = "pass1234"
+        hashed_pass2 = hash_taipy_password(pass2)
+        print(f"Password 2: {hashed_pass2}")
+        ```
+        Produces the output:
+        ```
+        Password 1: eSwebyvpEElWbZNTNqpW7rNQPDPyJSm
+        Password 2: JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe
+        ```
 
-!!! example "Create a hashed password using the CLI"
+    === "using the CLI"
+        ```sh
+        $ python -m taipy.auth -p pass123 pass1234
+        ```
+        Produces the following output:
+        ```
+        hash(pass123)=eSwebyvpEElWbZNTNqpW7rNQPDPyJSm
+        hash(pass1234)=JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe
+        ```
 
-    Here is an example of how you can create hashed passwords using the Taipy CLI.
-
-    Here again, we assume that the environment variable 'TAIPY_AUTH_HASH' is set to "Taipy".
-
-    ```sh
-    $ python -m taipy.auth -p pass123 pass1234
-    ```
-    Produces the following output:
-    ```
-    hash(pass123)=eSwebyvpEElWbZNTNqpW7rNQPDPyJSm
-    hash(pass1234)=JQlZ4IXorPcJYvMLFWE/Gu52XNfavMe
-    ```
-
-    Note that the hashed values are the same as in the first example. This is entirely due to
-    the fact that we have used the same secret hashing value in 'TAIPY_AUTH_HASH'.
-
-# LDAP Authenticator
+## LDAP protocol
 
 Taipy also provide support for LDAP authentication.
 
-The LDAP authenticator has two specific parameters that need to be provided in order to properly
-connect to the directory service:
+An authenticator with the *LDAP*  protocol has two specific parameters that need to be provided
+in order to properly connect to the directory service:
 
 - *server*: the URL of the LDAP server that we want to connect to.<br/>
 - *base_dn*: the base distinguished name for that LDAP server.<br/>
 
-!!! note "LDAP server support"
+??? note "LDAP server management"
 
-    Using the LDAP authentication protocol assumes that an LDAP server is set up. Taipy provides
-    no support for setting up the server.
+    Using the LDAP authentication protocol assumes that an LDAP server is already set up. Taipy
+    do not manage the LDAP server, and provides no support for setting up the server.
 
-!!! note "Using Taipy configuration to create an authenticator"
+You can create an `LDAP` authenticator with the authentication configuration
+either in Python or TOML or with the `Authenticator^` constructor:
 
-    To create an authenticator as an LDAP authenticator, you can use the authentication
-    configuration either in Python or TOML:
+!!! usage "Configure an authenticator and login"
 
     === "Python configuration"
         ```python title="main.py"
@@ -403,7 +386,9 @@ connect to the directory service:
                                         server="ldap://0.0.0.0",
                                         base_dn="dc=example,dc=org",
                                         secret_key = "my-ultra-secure-and-ultra-long-secret",
-                                        auth_session_duration = 600,)   # 60 seconds is 10 minutes
+                                        auth_session_duration = 600)  # 10 minutes
+        taipy.auth.login("user1", "pass123") # returns Credentials if password "pass123" is validated by the LDAP server
+        taipy.auth.login("user1", "anything_else")  # raises an InvalidCredentials exception otherwise
         ```
 
     === "TOML configuration"
@@ -413,32 +398,42 @@ connect to the directory service:
         server="ldap://0.0.0.0"
         base_dn="dc=example,dc=org"
         secret_key = "my-ultra-secure-and-ultra-long-secret"
-        auth_session_duration = 600   # 60 seconds is 10 minutes,
+        auth_session_duration = 600  # 10 minutes,
         ```
 
         ```py title="main.py"
         Config.load("config.toml")
 
-        taipy.auth.login("user1", "pass123")
-        # Returns a valid Credentials instance if the LDAP server validates the password
-        # "pass123" for user "user1". Raises an InvalidCredentials exception otherwise.
+        taipy.auth.login("user1", "pass123") # returns Credentials if password "pass123" is validated by the LDAP server
+        taipy.auth.login("user1", "anything_else")  # raises an InvalidCredentials exception otherwise
         ```
 
-# Microsoft Entra ID Authenticator
+    === "Using Authenticator constructor"
+        ```python title="main.py"
+        authenticator = Authenticator(protocol="ldap",
+                                      server="ldap://
+                                      base_dn="dc=example,dc=org",
+                                      secret_key = "my-ultra-secure-and-ultra-long-secret",
+                                      auth_session_duration = 600)  # 10 minutes
+        taipy.auth.login("user1", "pass123") # returns Credentials if password "pass123" is validated by the LDAP server
+        taipy.auth.login("user1", "anything_else")  # raises an InvalidCredentials exception otherwise
+
+## Microsoft Entra ID protocol
 
 Taipy also provides support for Microsoft Entra ID authentication.
 
-The Entra ID authenticator has two specific parameters that need to be provided in order to
-properly connect to the Microsoft Entra ID service:
+An authenticator using the *Entra ID* protocol has two specific parameters that need to be provided
+in order to properly connect to the Microsoft Entra ID service:
 
 - *client_id*: The client ID of the Entra ID application. The application must be registered in the
     Azure Entra ID portal and have the required permissions including the "User.Read" and
     "GroupMember.Read.All" permissions.
 - *tenant_id*: The tenant ID of the Entra ID organization.
 
-!!! note "Entra ID application support"
-    Using the Entra ID authentication protocol assumes that an Entra ID application is set up with
-    the required permissions.
+??? note "Entra ID application management"
+
+    Using the Entra ID authentication protocol assumes that an Entra ID application is already set up
+    with the required permissions. Taipy don't manage the Entra ID application.
 
     First, you need to
     [create an application in the Microsoft Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal)
@@ -446,7 +441,8 @@ properly connect to the Microsoft Entra ID service:
     Make sure that the Redirect URI of the application is set to `http://localhost`
     or the URI of your Taipy application.
 
-    The application needs to be [assigned the following permissions](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#assign-a-role-to-the-application):
+    The application needs to be [assigned permissions](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#assign-a-role-to-the-application).
+    The required permissions are:
 
     - `User.Read` for accessing the logged in user email from the Microsoft Graph API.
     - `GroupMember.Read.All` for accessing the groups the user is a member of. The groups
@@ -460,7 +456,7 @@ properly connect to the Microsoft Entra ID service:
 
     Taipy provides no support for setting up the application.
 
-!!! note "Using Taipy configuration to create an authenticator"
+!!! usage "Configure an authenticator and login"
 
     To create an authenticator as an Entra ID authenticator, you can use the authentication
     configuration either in Python or TOML:
@@ -471,7 +467,7 @@ properly connect to the Microsoft Entra ID service:
                                         client_id="my-client-id",
                                         tenant_id="my-tenant-id",
                                         secret_key = "my-ultra-secure-and-ultra-long-secret",
-                                        auth_session_duration = 600,)   # 60 seconds is 10 minutes
+                                        auth_session_duration = 600)  # 10 minutes
         ```
 
     === "TOML configuration"
@@ -481,12 +477,24 @@ properly connect to the Microsoft Entra ID service:
         client_id="my-client-id"
         tenant_id="my-tenant-id"
         secret_key = "my-ultra-secure-and-ultra-long-secret"
-        auth_session_duration = 600   # 60 seconds is 10 minutes
+        auth_session_duration = 600 # 10 minutes
         ```
 
         ```py title="main.py"
         Config.load("config.toml")
 
+        taipy.auth.login()
+        # Returns a valid Credentials instance if you have logged in with valid Microsoft account
+        # in your current browser. Raises an InvalidCredentials exception otherwise.
+        ```
+
+    === "Using Authenticator constructor"
+        ```python title="main.py"
+        authenticator = Authenticator(protocol="entra_id",
+                                      client_id="my-client-id",
+                                      tenant_id="my-tenant-id",
+                                      secret_key = "my-ultra-secure-and-ultra-long-secret",
+                                      auth_session_duration = 600)  # 10 minutes
         taipy.auth.login()
         # Returns a valid Credentials instance if you have logged in with valid Microsoft account
         # in your current browser. Raises an InvalidCredentials exception otherwise.

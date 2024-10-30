@@ -1,3 +1,6 @@
+---
+title: Authorization and Roles
+---
 
 !!! warning "Available in Taipy Enterprise edition"
 
