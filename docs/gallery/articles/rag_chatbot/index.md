@@ -3,7 +3,7 @@ title: RAG Chatbot
 category: llm
 data-keywords: vizelement ai community
 short-description: A chatbot to ask questions about pdf files using RAG
-order: 13
+order: 14
 img: rag_chatbot/images/rag_screen.png
 hide:
     - toc

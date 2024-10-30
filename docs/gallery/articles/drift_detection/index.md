@@ -3,7 +3,7 @@ title: Drift Detection
 category: decision_support
 data-keywords: ai scenario datanode dag configuration community
 short-description: Expose scenarios and pipeline executions to your end-users with this input dataset drift detection.
-order: 11
+order: 12
 img: drift_detection/images/drift-detection-pipeline.png
 hide:
     - toc

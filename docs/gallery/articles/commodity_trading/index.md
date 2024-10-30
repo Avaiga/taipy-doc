@@ -3,7 +3,7 @@ title: Commodity Trading
 category: finance
 data-keywords: dashboard vizelement layout chart ai multi-page classification enterprise
 short-description: A Taipy Application that analyzes commodity trading.
-order: 10
+order: 11
 img: commodity_trading/images/commodity_trading.png
 ---
 

@@ -20,10 +20,11 @@ class ContributorsStep(SetupStep):
         self.ORGANIZATION_URL = f"{self.BASE_URL}/orgs/Avaiga"
         self.MEMBERS_URL = f"{self.ORGANIZATION_URL}/members"
         self.REPOS = f"{self.ORGANIZATION_URL}/repos"
+        self.CONTRIBUTORS_URL = f"{self.BASE_URL}/Avaiga/taipy/contributors"
         self.REPO_URLS = []
         self.MEMBERS = {}
         self.CONTRIBUTORS = {}
-        self.ANONYMOUS = ["dependabot[bot]"]
+        self.ANONYMOUS = ["dependabot[bot]", "infrastructure-management[bot]"]
         self.PATH = ""
         self.TEMPLATE_SUFFIX = "_template"
 
@@ -66,32 +67,15 @@ class ContributorsStep(SetupStep):
 
     def get_contributors(self):
         for url in self.REPO_URLS:
-            response = self.__get(url + "/contents/contributors.txt")
-            public_contributor_logins = []
-            if response.status_code == 200:
-                data = response.json()
-                content = data["content"]
-                encoding = data["encoding"]
-                if encoding == 'base64':
-                    file_content = base64.b64decode(content).decode()
-                    public_contributor_logins += file_content.strip().split("\n")
-                else:
-                    print(f"WARNING - Couldn't get contributors from {url}. unknown encoding: {encoding}", flush=True)
-                    continue
-            elif response.status_code == 404:
-                print(f"INFO - No contributors.txt in repository {url[len(self.BASE_URL)+14:]}.", flush=True)
-            else:
-                print(f"WARNING - Couldn't get contributors for {url}. response.status_code: {response.status_code}",
-                      flush=True)
-                continue
-            response = self.__get(url+"/contributors")
+            response = self.__get(url + "/contributors")
             if response.status_code != 200:
-                print(f"WARNING - Couldn't get contributors. response.status_code: {response.status_code}", flush=True)
-                continue
-            for c in response.json():
-                login = c['login']
-                if login not in self.MEMBERS and login not in self.ANONYMOUS and login in public_contributor_logins:
-                    self.CONTRIBUTORS[login] = {"avatar_url": c['avatar_url'], "html_url": c['html_url']}
+                print(f"WARNING - Couldn't get collaborators. response.status_code: {response.status_code}", flush=True)
+                return
+            contributors = response.json()
+            for contrib in contributors:
+                login = contrib['login']
+                if login not in self.CONTRIBUTORS and login not in self.ANONYMOUS:
+                    self.CONTRIBUTORS[login] = {"avatar_url": contrib['avatar_url'], "html_url": contrib['html_url']}
 
     def build_content(self, *members_pattern_tuples):
         pattern_content_tuples = []

@@ -1,3 +1,4 @@
+import os
 from abc import ABC, abstractmethod
 from datetime import datetime
 import re
@@ -131,6 +132,7 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
         from .step_rest_refman import RestRefManStep
         from .step_gui_ext_refman import GuiExtRefManStep
         from .step_contributors import ContributorsStep
+        from .step_file_injection import FileInjectionStep
         from .step_designer import DesignerStep
 
         steps = [
@@ -141,6 +143,21 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
             RestRefManStep(),
             GuiExtRefManStep(),
             ContributorsStep(),
+            FileInjectionStep("installation",
+                              "Generating the installation page.",
+                              "[INSTALLATION]",
+                              os.path.join("taipy-doc-files", "INSTALLATION.md"),
+                              os.path.join("tutorials", "getting_started", "installation.md")),
+            FileInjectionStep("code_of_conduct",
+                              "Generating the code of conduct page.",
+                              "[CODE_OF_CONDUCT]",
+                              os.path.join("taipy-doc-files", "CODE_OF_CONDUCT.md"),
+                              os.path.join("contributing", "code_of_conduct.md")),
+            FileInjectionStep("contributing",
+                              "Generating the contributing page.",
+                              "[CONTRIBUTING]",
+                              os.path.join("taipy-doc-files", "CONTRIBUTING.md"),
+                              os.path.join("contributing", "index.md")),
             DesignerStep(),
         ]
     setup = Setup(root_dir, steps)

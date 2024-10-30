@@ -191,7 +191,7 @@ safe_rmtree(os.path.join(TOOLS_PATH, DEST_DIR_NAME))
 pipfile_packages = {}
 PIPFILE_PACKAGE_RE = re.compile(r"(..*?)\s?=\s?(.*)")
 
-frontend_dir = os.path.join(ROOT_DIR, "taipy-fe")
+# frontend_dir = os.path.join(ROOT_DIR, "taipy-fe")
 
 
 # Fetch files
@@ -327,22 +327,24 @@ def move_files(repo: str, src_path: str):
 
             copy_source(src_path, repo)
 
-            # Copy Taipy GUI front end code
             if repo == "taipy":
+                # Copy Taipy GUI front end code
                 if not os.path.isdir(frontend_dir):
                     os.mkdir(frontend_dir)
                 fe_src_dir = os.path.join(src_path, "frontend", "taipy-gui")
-                shutil.copytree(
-                    os.path.join(fe_src_dir, "src"), os.path.join(frontend_dir, "src")
-                )
-                for f in [
-                    f
-                    for f in os.listdir(fe_src_dir)
-                    if f.endswith(".md") or f.endswith(".json")
-                ]:
-                    shutil.copy(
-                        os.path.join(fe_src_dir, f), os.path.join(frontend_dir, f)
-                    )
+                shutil.copytree(os.path.join(fe_src_dir, "src"), os.path.join(frontend_dir, "src"))
+                for f in [f for f in os.listdir(fe_src_dir) if f.endswith(".md") or f.endswith(".json")]:
+                    shutil.copy(os.path.join(fe_src_dir, f), os.path.join(frontend_dir, f))
+
+                # Copy INSTALLATION.md, CONTRIBUTING.md, and CODE_OF_CONDUCT.md
+                if not os.path.isdir(taipy_documentation_files_dir):
+                    os.mkdir(taipy_documentation_files_dir)
+                shutil.copy(os.path.join(src_path, "INSTALLATION.md"),
+                            os.path.join(taipy_documentation_files_dir, "INSTALLATION.md"))
+                shutil.copy(os.path.join(src_path, "CONTRIBUTING.md"),
+                            os.path.join(taipy_documentation_files_dir, "CONTRIBUTING.md"))
+                shutil.copy(os.path.join(src_path, "CODE_OF_CONDUCT.md"),
+                            os.path.join(taipy_documentation_files_dir, "CODE_OF_CONDUCT.md"))
         finally:
             pass
             """
@@ -358,6 +360,10 @@ if os.path.isdir(os.path.join(frontend_dir, "node_modules")):
     )
 if os.path.isdir(os.path.join(frontend_dir)):
     shutil.rmtree(frontend_dir)
+
+taipy_documentation_files_dir = os.path.join(ROOT_DIR, "taipy-doc-files")
+if os.path.exists(taipy_documentation_files_dir):
+    shutil.rmtree(taipy_documentation_files_dir)
 
 for repo in repo_defs.keys():
     if repo_defs[repo].get("skip", False):
