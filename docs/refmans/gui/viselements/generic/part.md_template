@@ -198,6 +198,7 @@ You can also embed an external web page, setting the [*page*](#p-page) property 
         ...
         tgb.html("p", "Here is the Wikipedia home page:")
         with tgb.part(page="https://www.wikipedia.org/", height="500px")
+        ```
 
 The resulting page will be displayed as this:
 <figure class="tp-center">
