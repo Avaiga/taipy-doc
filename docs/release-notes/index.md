@@ -22,21 +22,21 @@ This is the list of changes to Taipy releases as they were published.
 
 Published on 2024-10.
 
-[`taipy` 4.0](https://pypi.org/project/taipy/4.0.0/) depends on the latest
-[`taipy-common` 4.0](https://pypi.org/project/taipy-common/4.0.0/),
-[`taipy-gui` 4.0](https://pypi.org/project/taipy-gui/4.0.0/),
-[`taipy-core` 4.0](https://pypi.org/project/taipy-core/4.0.0/),
-[`taipy-templates` 4.0](https://pypi.org/project/taipy-templates/4.0.0/), and
-[`taipy-rest` 4.0](https://pypi.org/project/taipy-rest/4.0.0/) packages.
+[`taipy` 4.0](https://pypi.org/project/taipy/4.0.1/) depends on the latest
+[`taipy-common` 4.0](https://pypi.org/project/taipy-common/4.0.1/),
+[`taipy-gui` 4.0](https://pypi.org/project/taipy-gui/4.0.1/),
+[`taipy-core` 4.0](https://pypi.org/project/taipy-core/4.0.1/),
+[`taipy-templates` 4.0](https://pypi.org/project/taipy-templates/4.0.1/), and
+[`taipy-rest` 4.0](https://pypi.org/project/taipy-rest/4.0.1/) packages.
 
-## Known issues
+!!! warning "Upgrading to Taipy 4.0 from 3.x"
 
-<h4><strong><code>taipy-gui</code></strong> 4.0.0</h4>
+    Due to changes in Taipy’s package structure in version 4.0, the previous version of the
+    `taipy-config` package may not be automatically removed during the upgrade process. This could
+    lead to runtime issues as the system may attempt to reference outdated dependencies.
 
-- The [**-H**](../userman/advanced_features/configuration/gui-config.md#p-port) short command line
-  option for setting the server hostname is broken.<br/>
-  Please use the full **--host** option instead.<br/>
-  This issue will be fixed in the next technical release for Taipy GUI.
+    To ensure a clean installation, please manually uninstall Taipy 3.x and then install a fresh
+    Taipy 4.0.
 
 ## New Features
 
@@ -128,7 +128,17 @@ Published on 2024-10.
 
 ## Improvements and changes
 
-<h4><strong><code>taipy</code></strong> 4.0.0</h4>
+<h4><strong><code>taipy</code></strong> 4.0.1</h4>
+
+- The impact of the
+  [*show_properties*](../refmans/gui/viselements/corelements/data_node.md#p-show_properties)
+  property of the [`data_node`](../refmans/gui/viselements/corelements/data_node.md) control was
+  changed. This property now controls whether or not the "Properties" tab is visible.<br/>
+  To show or hide the list of custom properties in the "Properties" tab, you must now use the
+  [*show_custom_properties*](../refmans/gui/viselements/corelements/data_node.md#p-show_custom_properties)
+  property.
+
+<h4>4.0.0</h4>
 
 - Taipy and all its dependencies now stop support Python 3.8.<br/>
   The minimum supported Python version is now 3.9.
@@ -232,13 +242,45 @@ Published on 2024-10.
 
 - The *--template* option of the `taipy create` command is now renamed to *--application* option
   to correctly reflect the application template to use when creating a new Taipy application.<br/>
-  See [issue #1472](https://github.com/Avaiga/taipy/issues/1472)
+  See [issue #1472](https://github.com/Avaiga/taipy/issues/1472).
 
 ## Significant bug fixes
 
-<h4><strong><code>taipy-gui</code></strong> 4.0.0</h4>
+<h4><strong><code>taipy</code></strong> 4.0.1</h4>
 
-- The value of multiline [`input`](../refmans/gui/viselements/generic/pane.md) controls is
+- Scenario selection becomes impossible in the `scenario_selector` control after creating a new
+  Scenario.<br/>
+  See [issue #2169](https://github.com/Avaiga/taipy/issues/2169).
+- The Delete button of the "Edit scenario" dialog of the `scenario_selector` control is disabled 
+  when it should not be.<br/>
+  See [issue #1995](https://github.com/Avaiga/taipy/issues/1995).
+- A warning is issued when a scenario is created from the `scenario_selector` control.<br/>
+  See [issue #2009](https://github.com/Avaiga/taipy/issues/2009).
+- Scenario management controls may not be fully recognized by linters or auto-completion features in
+  some IDEs.<br/>
+  See [issue #1620](https://github.com/Avaiga/taipy/issues/1620).
+
+<h4><strong><code>taipy-gui</code></strong> 4.0.1</h4>
+
+- The `-H` command line option is broken.<br/>
+  You must use the long `--host` option instead to specify the server hostname.
+- The *id* and *payload* parameters of the `on_action` callback functions are swapped.<br/>
+  See [issue #2045](https://github.com/Avaiga/taipy/issues/2045).
+- The chart control refresh may stop rendering automatically if too many data changes are
+  requested. The page must be refreshed manually.<br/>
+  See [issue #1992](https://github.com/Avaiga/taipy/issues/1992).
+- Aggregation in a table control may raise an error if the table has columns holding dates.<br/>
+  See [issue #1994](https://github.com/Avaiga/taipy/issues/1994).
+- Table columns are too narrow if there are many.<br/>
+  See [issue #2082](https://github.com/Avaiga/taipy/issues/2082).
+- Styling is not applied to a [`table`](../refmans/gui/viselements/generic/table.md) control if its
+  [*rebuild*](../refmans/gui/viselements/corelements/data_node.md#p-rebuild) property is set to
+  True.<br/>
+  See [issue #2005](https://github.com/Avaiga/taipy/issues/2005).
+
+<h4>4.0.0</h4>
+
+- The value of multiline [`input`](../refmans/gui/viselements/generic/input.md) controls is
   cleared when the ENTER key is pressed.<br/>
   See [issue #1762](https://github.com/Avaiga/taipy/issues/1762).
 - The [`chart`](../refmans/gui/viselements/generic/chart.md) control properly handles its
@@ -266,7 +308,7 @@ Published on 2024-10.
 
 Published on 2024-10.
 
-This release contains all of [`taipy` 4.0](https://pypi.org/project/taipy/4.0.0) as well as
+This release contains all of [`taipy` 4.0](https://pypi.org/project/taipy/4.0.1) as well as
 additional features.
 
 ## New Features
@@ -292,7 +334,7 @@ additional features.
 
 ## Improvements and changes
 
-- The `taipy.export_scenario()^` function now
+- The `taipy.export_scenario()^` function now:
     - exports a zip archive instead of a folder.
     - supports exporting file-based data nodes' data to the exported archive if the path exists.
     - raises the `ExportPathAlreadyExists^`
