@@ -44,6 +44,8 @@ This is the list of changes to Taipy releases as they were published.
 
 # Community edition: 4.0
 
+Published on 2024-10.
+
 [`taipy` 4.0](https://pypi.org/project/taipy/4.0.1/) depends on the latest
 [`taipy-common` 4.0](https://pypi.org/project/taipy-common/4.0.1/),
 [`taipy-gui` 4.0](https://pypi.org/project/taipy-gui/4.0.1/),
@@ -328,9 +330,9 @@ This is the list of changes to Taipy releases as they were published.
 
 # Enterprise edition: 4.0
 
-(Work in progress - the following link is invalid for the time being)
+Published on 2024-10.
 
-This release contains all of [`taipy` 4.0](https://pypi.org/project/taipy/4.0.0) as well as
+This release contains all of [`taipy` 4.0](https://pypi.org/project/taipy/4.0.1) as well as
 additional features.
 
 ## New Features
@@ -356,7 +358,7 @@ additional features.
 
 ## Improvements and changes
 
-- The `taipy.export_scenario()^` function now
+- The `taipy.export_scenario()^` function now:
     - exports a zip archive instead of a folder.
     - supports exporting file-based data nodes' data to the exported archive if the path exists.
     - raises the `ExportPathAlreadyExists^`
@@ -364,10 +366,3 @@ additional features.
         True to overwrite the existing export path.
     For more information, please refer to
     [Export a scenario](../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
-
-## Significant bug fixes
-
-<h4></strong> 4.0.1</h4>
-
-- The "taipy" development authentication protocol would drop the user roles when the configuration
-  does not explicitly specify the *protocol* parameter name.
