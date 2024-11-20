@@ -96,13 +96,13 @@ setting the *protocol* argument of the constructor to "none".
     To set the *default authenticator* to `none` you can use the authentication configuration
     either in Python or TOML:
 
-    === "Python configuration"
+    === "Using Python configuration"
         ```python title="main.py"
         Config.configure_authentication(protocol="none")
         taipy.auth.login("whatever_username", "any_password")  # always returns a valid Credentials instance
         ```
 
-    === "TOML configuration"
+    === "Using TOML configuration"
         ```toml title="config.toml"
         [AUTHENTICATION]
         protocol = "none"
@@ -149,7 +149,7 @@ to the username when calling `Authenticator.login()^`:
     To set the *default authenticator* to a Taipy authenticator with roles, you can use the
     authentication configuration either in Python or TOML:
 
-    === "Python configuration"
+    === "Using Python configuration"
         ```python title="main.py"
         Config.configure_authentication(protocol="taipy",
                                         roles={
@@ -160,7 +160,7 @@ to the username when calling `Authenticator.login()^`:
         taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
         ```
 
-    === "TOML configuration"
+    === "Using TOML configuration"
         ```toml title="config.toml"
         [AUTHENTICATION]
         protocol="taipy"
@@ -207,7 +207,7 @@ the assigned roles is an empty set.
     To set the *default authenticator* to a Taipy authenticator with passwords, you can use the
     authentication configuration either in Python or TOML:
 
-    === "Python configuration"
+    === "Using Python configuration"
         ```python title="main.py"
         Config.configure_authentication(protocol="taipy",
                                         passwords={
@@ -217,7 +217,7 @@ the assigned roles is an empty set.
         taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
         ```
 
-    === "TOML configuration"
+    === "Using TOML configuration"
         ```toml title="config.toml"
 
         [AUTHENTICATION]
@@ -276,7 +276,7 @@ the password value for this user.
     To set the *default authenticator* to a Taipy authenticator with roles and passwords, you
     can use the authentication configuration either in Python or TOML:
 
-    === "Python configuration"
+    === "Using Python configuration"
         ```python title="main.py"
         Config.configure_authentication(protocol="taipy",
                                         roles={
@@ -291,7 +291,7 @@ the password value for this user.
         taipy.auth.login("user1", "anything_else")  # raise an InvalidCredentials exception
         ```
 
-    === "TOML configuration"
+    === "Using TOML configuration"
         ```toml title="config.toml"
         [AUTHENTICATION]
         protocol="taipy"
@@ -389,7 +389,7 @@ connect to the directory service:
     If you are using the Taipy configuration, the value for this argument
     is retrieved if needed from _**Config.AUTHENTICATION.base_dn**_.
 
-!!! note "LDAP server support"
+??? note "LDAP server support"
 
     Using the LDAP authentication protocol assumes that an LDAP server is set up. Taipy provides
     no support for setting up the server.
@@ -426,4 +426,80 @@ connect to the directory service:
         taipy.auth.login("user1", "pass123")
         # Returns a valid Credentials instance if the LDAP server validates the password
         # "pass123" for user "user1". Raises an InvalidCredentials exception otherwise.
+        ```
+
+# Microsoft Entra ID Authenticator
+
+Taipy provides support for Microsoft Entra ID authentication.
+
+An authenticator using the *Entra ID* protocol has two specific parameters that need to be provided
+in order to properly connect to the Microsoft Entra ID service:
+
+- *client_id*: The client ID of the Entra ID application. The application must be registered in the
+    Azure Entra ID portal and have the required permissions including the "User.Read" and
+    "GroupMember.Read.All" permissions.
+- *tenant_id*: The tenant ID of the Entra ID organization.
+
+??? note "Entra ID application management"
+
+    Using the Entra ID authentication protocol assumes that an Entra ID application is already set
+    up with the required permissions. Taipy doesn't manage the Entra ID application.
+
+    First, you need to
+    [create an application in the Microsoft Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal)
+    within your organization.<br/>
+    Make sure that the Redirect URI of the application is set to `http://localhost`
+    or the URI of your Taipy application.
+
+    The application needs to be
+    [assigned permissions](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#assign-a-role-to-the-application).<br/>
+    The required permissions are:
+
+    - `User.Read` for accessing the logged in user email from the Microsoft Graph API.
+    - `GroupMember.Read.All` for accessing the groups the user is a member of. The groups
+        are used to assign roles to the user.
+
+    From the Entra ID application,
+    [create a new secret in the Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#assign-a-role-to-the-application).
+
+    The secret is only shown once, so make sure to store it in a safe place.
+    You then need to set the `ENTRA_CLIENT_SECRET` environment variable to the secret value.
+    This environment variable is required for logging in with Microsoft Entra ID accounts.
+
+    Taipy provides no support for setting up the application.
+
+!!! usage "Configure an authenticator and login"
+
+    To create an authenticator as an Entra ID authenticator, you can use the authentication
+    configuration either in Python or TOML:
+
+    === "Using Python configuration"
+        ```python title="main.py"
+        Config.configure_authentication(protocol="entra_id",
+                                        client_id="<client-id>",
+                                        tenant_id="<tenant-id>",
+                                        secret_key = "<secure-secret-key>",
+                                        tenant_id="my-tenant-id",
+                                        secret_key = "my-ultra-secure-and-ultra-long-secret",
+                                        auth_session_duration = 600)  # 10 minutes
+        ```
+
+    === "Using TOML configuration"
+        ```toml title="config.toml"
+        [AUTHENTICATION.entra_id]
+        protocol="entra_id"
+        client_id="<client-id>"
+        tenant_id="<tenant-id>"
+        secret_key = "<secure-secret-key>"
+        tenant_id="my-tenant-id"
+        secret_key = "my-ultra-secure-and-ultra-long-secret"
+        auth_session_duration = 3600 # 1 hour
+        ```
+
+        ```py title="main.py"
+        Config.load("config.toml")
+
+        taipy.auth.login()
+        # Returns a valid Credentials instance if you have logged in with valid Microsoft account
+        # in your current browser. Raises an InvalidCredentials exception otherwise.
         ```
