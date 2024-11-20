@@ -66,19 +66,36 @@ Published on 2024-10.
 
 <h4><strong><code>taipy</code></strong> 4.0.0</h4>
 
-- The User Experience of the Scenario and Data management Visual elements have been greatly
-  improved by the following new functionalities:
-    - The multiple selection is now available on the data node selector: TODO add details
-    - A filter capability has been added to the data node selector: TODO add details
-    - A sort capability has been added to the data node selector: TODO add details
-    - A search capability has been added to the data node selector: TODO add details
-    - A new detail panel has been added to the job selector: TODO add details
-    - The multiple selection is now available on the scenario selector: TODO add details
+The User Experience of the Scenario and Data management controls have been greatly improved by the
+following new functionalities:
+
+- [*Scenario Selector*](../refmans/gui/viselements/corelements/scenario_selector.md):
+    - Multiple selection is now available.<br/>
+      See the [*multiple*](../refmans/gui/viselements/corelements/scenario_selector.md#p-multiple)
+      property for more details.
     - A filter capability has been added to the scenario selector: TODO add details
     - A sort capability has been added to the scenario selector: TODO add details
     - A search capability has been added to the scenario selector: TODO add details
-    - The data node viewer now offers the possibility to upload/download data for the file
-        based data nodes: TODO add details
+- [*Data Node Selector*](../refmans/gui/viselements/corelements/data_node_selector.md):
+    - Multiple selection is now available.<br/>
+      See the [*multiple*](../refmans/gui/viselements/corelements/data_node_selector.md#p-multiple)
+      property for more details.
+    - Users can now filter data nodes in the list.<br/>
+      See the
+      [section on Filtering](../refmans/gui/viselements/corelements/data_node_selector.md#filtering)
+      for more details.
+    - Users can now sort data nodes in the list.<br/>
+      See the
+      [section on Sorting](../refmans/gui/viselements/corelements/data_node_selector.md#sorting) for
+      more details.
+    - Users can now search data nodes in the list<br/>
+      See the
+      [section on Searching](../refmans/gui/viselements/corelements/data_node_selector.md#searching)
+      for more details.
+- [*Data Node Viewer*](../refmans/gui/viselements/corelements/data_node.md):
+    - Users can now upload and download data of file-based data nodes.
+- [*Job Selector*](../refmans/gui/viselements/corelements/job_selector.md):
+    - A new detail panel has been added to the job selector.
 
 <h4><strong><code>taipy-gui</code></strong> 4.0.0</h4>
 
@@ -298,7 +315,7 @@ Published on 2024-10.
 - Table columns are too narrow if there are many.<br/>
   See [issue #2082](https://github.com/Avaiga/taipy/issues/2082).
 - Styling is not applied to a [`table`](../refmans/gui/viselements/generic/table.md) control if its
-  [*rebuild*](../refmans/gui/viselements/corelements/data_node.md#p-rebuild) property is set to
+  [*rebuild*](../refmans/gui/viselements/generic/table.md#p-rebuild) property is set to
   True.<br/>
   See [issue #2005](https://github.com/Avaiga/taipy/issues/2005).
 
