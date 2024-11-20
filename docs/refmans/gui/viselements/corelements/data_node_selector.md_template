@@ -2,62 +2,243 @@ Displays a list of the Data Node entities that can be selected.
 
 # Details
 
-The control displays a tree selector where all data node entities are listed.<br/>
-If [*display_cycles*](#p-display_cycles) is set to False, the cycles are not represented.
+The Data Node Selector control displays a tree-like structure listing all available data nodes. This
+visual element list all the available data nodes, potentially organizing them hierarchically based
+on their owning scenario (and cycle if [*display_cycles*](#p-display_cycles) is set to True).
 
-In an application that would have created a few data nodes, some of them being scoped at the
-scenario level, here is what the data node selector would look like:
+In an application where multiple data nodes have been created, some scoped at the scenario level,
+the selector might appear as follows:
 <figure class="tp-center">
-  <img src="../data_node_selector-init-d.png" class="visible-dark"  width="70%"/>
-  <img src="../data_node_selector-init-l.png" class="visible-light" width="70%"/>
+  <img src="../data_node_selector-init-d.png" class="visible-dark"  width="80%"/>
+  <img src="../data_node_selector-init-l.png" class="visible-light" width="80%"/>
   <figcaption>The list of selectable data nodes</figcaption>
 </figure>
 
-Data nodes are organized in their owning scenario and cycle, when relevant.
+Data nodes are organized in their owning scenario and cycle, when relevant.<br/>
+In this example, *cleaned_dataset* and *initial_dataset* are scoped at the
+[`Scope.GLOBAL`](../../../reference/pkg_taipy/pkg_common/pkg_config/Scope/index.md) level.<br/>
+Expanding the 'My scenario' item (by clicking the
+<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#collapse"/></svg>
+- Expand - icon) reveals data nodes scoped at
+[`Scope.SCENARIO`](../../../reference/pkg_taipy/pkg_common/pkg_config/Scope/index.md).
 
-When the user selects a data node, the [*on_change*](#p-on_change) callback is invoked so that
-the application can use the selected value. The value is set to the [*value*](#p-value) property.
+When the user selects a data node, the [*on_change*](#p-on_change) callback is triggered allowing
+the application to respond to the user's selection. The selected node's value is reflected in the
+control's [*value*](#p-value) property.
 
-<h2>Pins</h2/>
+At the top of the control, a toolbar provides additional functionality via a series of icons. These
+icons allow users to perform various actions:
+<figure class="tp-center">
+  <img src="../data_node_selector-toolbar-d.png" class="visible-dark"  width="120%"/>
+  <img src="../data_node_selector-toolbar-l.png" class="visible-light" width="120%"/>
+  <figcaption>Data node selector toolbar</figcaption>
+</figure>
 
-When there are many data nodes in your application, the user can filter out a set of data nodes
-by *pinning* them and then set the *Pinned only* switch (that is active only if some data nodes are
-pinned): only pinned data nodes will then appear in the list.
+Users can interact with the icons in the toolbar to perform various tasks:
+
+- <svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#filter_list"/></svg>
+  : Opens a filter configuration dialog, allowing users to define filters that apply to the list of
+    data nodes.
+- <svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#sort_by_alpha"/></svg>:
+  Enables users to specify sorting preferences for organizing the data nodes in the list.
+- <svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#search_outlined"/></svg>
+  : Toggles the visibility of a text search box, which helps users locate specific data nodes
+  quickly.
+
+<h3 id="filtering">Filtering</h3>
+
+The Filter functionality allows users to refine the list of data nodes by applying one or more
+criteria.
+
+<h4>Opening the Filter dialog</h4>
+
+When the user presses the
+<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#filter_list"/></svg>
+icon (Filter), the following dialog appears:
+<figure class="tp-center">
+  <img src="../data_node_selector-filter1-d.png" class="visible-dark"  width="80%"/>
+  <img src="../data_node_selector-filter1-l.png" class="visible-light" width="80%"/>
+  <figcaption>Initialize filters</figcaption>
+</figure>
+
+All the filters that are currently applied to the list of data nodes is shown. So far, it is
+empty.
+
+<h4>Creating a new filter</h4>
+
+To create a new filter, the user must select a filtering criterion from the dropdown menu in the
+first field:
+<figure class="tp-center">
+  <img src="../data_node_selector-filter2-d.png" class="visible-dark"  width="80%"/>
+  <img src="../data_node_selector-filter2-l.png" class="visible-light" width="80%"/>
+  <figcaption>Filter criteria dialog</figcaption>
+</figure>
+
+After selecting a criterion, the 'Action' dropdown updates with comparison options specific to the
+selected criterion.<br/>
+The available comparisons depend on the type of the selected field:
+
+- Boolean: Options include "is" and "is not." The value field accepts True or False.
+- String: Options include "is," "is not," and "contains." The value field accepts a text
+  value.
+- Number: Options include "equals," "does not equal," "is less than," "is less than or equal to,"
+  "is greater than or equal to" and "is greater than." The value field accepts a numerical
+  value.
+- Date: Options include "is on," "is not on," "is before," "is on or before," "is on or after" and
+  "is after." The value field accepts a date value.
+
+To list all data nodes with labels containing the string "eva", the user would configue a filter as
+follows:
+<figure class="tp-center">
+  <img src="../data_node_selector-filter3-d.png" class="visible-dark"  width="80%"/>
+  <img src="../data_node_selector-filter3-l.png" class="visible-light" width="80%"/>
+  <figcaption>Create a new filter</figcaption>
+</figure>
+
+To add this filter to the filters list, the user must press the
+<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#check"/></svg>
+(Check) icon.<br/>
+Multiple filters can be added as needed.
+
+To close the filter configuration dialog, the user must click outside the dialog area.
+
+Once filters are added, they are applied immediately. The filtered data node list appears as shown:
+<figure class="tp-center">
+  <img src="../data_node_selector-filter4-d.png" class="visible-dark"  width="80%"/>
+  <img src="../data_node_selector-filter4-l.png" class="visible-light" width="80%"/>
+  <figcaption>Filters applied</figcaption>
+</figure>
+
+To remove a filter from the list, the user would open the filters dialog
+(<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#filter_list"/></svg>
+icon), locate the criterion that must be removed and delete it pressing the
+<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#delete"/></svg>
+(Delete) icon.
+
+<h3 id="sorting">Sorting</h3>
+
+The data node selector sorts data nodes by default in alphabetically ascending order based on their
+labels. Grouping is applied according to their respective Cycle or Scenario, if applicable
+
+Users can define custom sorting criteria to modify how data nodes are ordered. This process is
+similar to filtering and allows users to create a sequence of sorting rules applied in order of
+priority.
+
+Each sorting criterion specifies:
+
+- The property of the data node to sort by (e.g., label, last edit date, etc.).
+- The order: either *ascending* or *descending*.
+
+Consider the following initial list of data nodes displayed in the selector:
+<figure class="tp-center">
+  <img src="../data_node_selector-sort1-d.png" class="visible-dark"  width="80%"/>
+  <img src="../data_node_selector-sort1-l.png" class="visible-light" width="80%"/>
+  <figcaption>Initial data nodes list</figcaption>
+</figure>
+
+When the user presses the
+<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#sort_by_alpha"/></svg>
+icon (Sort), the sorting configuration dialog appears:
+<figure class="tp-center">
+  <img src="../data_node_selector-sort2-d.png" class="visible-dark"  width="80%"/>
+  <img src="../data_node_selector-sort2-l.png" class="visible-light" width="80%"/>
+  <figcaption>Sorting configuration dialog</figcaption>
+</figure>
+
+The user can select a property from the dropdown and specify the sorting order: 'asc' (Ascending) or
+'desc' (Descending).
+
+In the following image, the user has selected the 'Label' property, and a descending sort:
+<figure class="tp-center">
+  <img src="../data_node_selector-sort3-d.png" class="visible-dark"  width="80%"/>
+  <img src="../data_node_selector-sort3-l.png" class="visible-light" width="80%"/>
+  <figcaption>Sort criterion configuration</figcaption>
+</figure>
+
+After the sorting criterion is validated (pressing the
+<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#check"/></svg> icon),
+it is added to the sorting criteria list and the criterion is immediately applied to reorder the
+data nodes:
+<figure class="tp-center">
+  <img src="../data_node_selector-sort4-d.png" class="visible-dark"  width="80%"/>
+  <img src="../data_node_selector-sort4-l.png" class="visible-light" width="80%"/>
+  <figcaption>Data nodes sorted by their label</figcaption>
+</figure>
+
+The user can then create additional sorting criteria (which are applied in sequence).<br/>
+To remove a sorting rule, the user can select the
+<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#delete"/></svg> button
+next to the criterion.
+
+To exit the sorting dialog, click anywhere outside the dialog window.
+
+<h3 id="searching">Searching</h3>
+
+The Search feature allows users to quickly locate data nodes by filtering the list based on text
+input.
+
+When the user presses the
+<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#search_outlined"/></svg>
+icon (Search), a search box appears within the data node selector interface:
+<figure class="tp-center">
+  <img src="../data_node_selector-search1-d.png" class="visible-dark"  width="80%"/>
+  <img src="../data_node_selector-search1-l.png" class="visible-light" width="80%"/>
+  <figcaption>Search box in the selector</figcaption>
+</figure>
+
+If text is entered in the search box, the list dynamically updates to display only data nodes with
+labels containing the entered text:
+<figure class="tp-center">
+  <img src="../data_node_selector-search2-d.png" class="visible-dark"  width="80%"/>
+  <img src="../data_node_selector-search2-l.png" class="visible-light" width="80%"/>
+  <figcaption>Search active</figcaption>
+</figure>
+
+To close the search box, the user must press the
+<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#search_off_outlined"/></svg>
+icon (Search off) in the toolbar.
+
+<h3 id="pinning">Pinning</h3>
+
+The Pinning feature allows users to focus on specific data nodes by "pinning" them.</br>
+Pinned data nodes can then be displayed exclusively by enabling the 'Pinned Only' switch. This
+feature is particularly useful when dealing with a large number of data nodes.
 
 Assuming we are in the following situation:
 <figure class="tp-center">
-  <img src="../data_node_selector-pin1-d.png" class="visible-dark"  />
-  <img src="../data_node_selector-pin1-l.png" class="visible-light" />
+  <img src="../data_node_selector-pin1-d.png" class="visible-dark"  width="80%"/>
+  <img src="../data_node_selector-pin1-l.png" class="visible-light" width="80%"/>
   <figcaption>Crowded data node selector</figcaption>
 </figure>
 
-If the user wants to focus only on the 'initial_dataset' and the data nodes from the scenario
-called 'Peter's', she can click on the pin icon next to these two items. Here is what the display
-would look like:
+If the user wants to focus only on the data node called *initial_dataset* and the data nodes from
+the scenario called 'Peter's', she can click the
+<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#push_pin_outlined"/></svg>
+icon (Pin) next to these two items. Here is what the display would look like:
 <figure class="tp-center">
-  <img src="../data_node_selector-pin2-d.png" class="visible-dark"  />
-  <img src="../data_node_selector-pin2-l.png" class="visible-light" />
+  <img src="../data_node_selector-pin2-d.png" class="visible-dark"  width="80%"/>
+  <img src="../data_node_selector-pin2-l.png" class="visible-light" width="80%"/>
   <figcaption>Data node selector with pinned items</figcaption>
 </figure>
 
 Here is what the control looks like after the 'Pinned only' switch was set and the scenario item
 was expanded:
 <figure class="tp-center">
-  <img src="../data_node_selector-pin3-d.png" class="visible-dark"  />
-  <img src="../data_node_selector-pin3-l.png" class="visible-light" />
+  <img src="../data_node_selector-pin3-d.png" class="visible-dark"  width="80%"/>
+  <img src="../data_node_selector-pin3-l.png" class="visible-light" width="80%"/>
   <figcaption>Filtering pinned data nodes</figcaption>
 </figure>
 
 You can see that only the pinned data nodes are visible.
 
-Note that the cycle item is not pinned because the other scenarios it contains are not,  either.
+Note that the cycle item is not pinned because the other scenarios it contains are not, either.
 
-- If all data nodes for a scenario or a cycle are pinned, the scenario or cycle item is itself
+- If all data nodes for a scenario or cycle are pinned, the scenario or cycle item becomes itself
   pinned.
-- A scenario or cycle item appears *not pinned* if any of its data nodes is not pinned.
+- A scenario or cycle item appears *not pinned* if any of its data nodes remain unpinned.
 - *Pinning* a scenario item pins all its data nodes.</br>
   *Unpinning* a scenario item unpins all its data nodes.
-- *Pinning* a cycle item pins all the data nodes of all its scenarios.</br>
-  *Unpinning* a cycle item unpins all the data nodes of all its scenarios.
+- *Pinning* a cycle item pins all the data nodes across all its scenarios.</br>
+  *Unpinning* a cycle item unpins all the data nodes across  all its scenarios.
 
-To reveal all existing data nodes, the *Pinned only* switch must be turned off.
+Turn off the 'Pinned Only' switch to view the complete list of data nodes again.

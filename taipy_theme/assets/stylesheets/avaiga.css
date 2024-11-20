@@ -915,12 +915,19 @@ figure.tp-center {
 [data-md-color-scheme="default"] .visible-dark{
   display: none;
 }
-
 [data-md-color-scheme="slate"] .visible-light{
   display: none;
 }
+
 a.md-content__button{
   display: none;
+}
+
+svg.mui-icon{
+    width: 1.4em;
+    height: 1.4em;
+    vertical-align: middle;
+    fill: currentColor;
 }
 
 .tp-btn-parent,
