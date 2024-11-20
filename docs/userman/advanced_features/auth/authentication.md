@@ -430,7 +430,7 @@ connect to the directory service:
 
 # Microsoft Entra ID Authenticator
 
-Taipy also provides support for Microsoft Entra ID authentication.
+Taipy provides support for Microsoft Entra ID authentication.
 
 An authenticator using the *Entra ID* protocol has two specific parameters that need to be provided
 in order to properly connect to the Microsoft Entra ID service:
