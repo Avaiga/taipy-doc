@@ -447,18 +447,20 @@ in order to properly connect to the Microsoft Entra ID service:
 
     First, you need to
     [create an application in the Microsoft Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal)
-    within your organization.
+    within your organization.<br/>
     Make sure that the Redirect URI of the application is set to `http://localhost`
     or the URI of your Taipy application.
 
-    The application needs to be [assigned permissions](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#assign-a-role-to-the-application).
+    The application needs to be
+    [assigned permissions](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#assign-a-role-to-the-application).<br/>
     The required permissions are:
 
     - `User.Read` for accessing the logged in user email from the Microsoft Graph API.
     - `GroupMember.Read.All` for accessing the groups the user is a member of. The groups
         are used to assign roles to the user.
 
-    From the Entra ID application, [create a new secret in the Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#assign-a-role-to-the-application).
+    From the Entra ID application,
+    [create a new secret in the Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal#assign-a-role-to-the-application).
 
     The secret is only shown once, so make sure to store it in a safe place.
     You then need to set the `ENTRA_CLIENT_SECRET` environment variable to the secret value.
@@ -474,7 +476,9 @@ in order to properly connect to the Microsoft Entra ID service:
     === "Using Python configuration"
         ```python title="main.py"
         Config.configure_authentication(protocol="entra_id",
-                                        client_id="my-client-id",
+                                        client_id="<client-id>",
+                                        tenant_id="<tenant-id>",
+                                        secret_key = "<secure-secret-key>",
                                         tenant_id="my-tenant-id",
                                         secret_key = "my-ultra-secure-and-ultra-long-secret",
                                         auth_session_duration = 600)  # 10 minutes
@@ -484,7 +488,9 @@ in order to properly connect to the Microsoft Entra ID service:
         ```toml title="config.toml"
         [AUTHENTICATION.entra_id]
         protocol="entra_id"
-        client_id="my-client-id"
+        client_id="<client-id>"
+        tenant_id="<tenant-id>"
+        secret_key = "<secure-secret-key>"
         tenant_id="my-tenant-id"
         secret_key = "my-ultra-secure-and-ultra-long-secret"
         auth_session_duration = 600 # 10 minutes
