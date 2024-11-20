@@ -493,7 +493,7 @@ in order to properly connect to the Microsoft Entra ID service:
         secret_key = "<secure-secret-key>"
         tenant_id="my-tenant-id"
         secret_key = "my-ultra-secure-and-ultra-long-secret"
-        auth_session_duration = 600 # 10 minutes
+        auth_session_duration = 3600 # 1 hour
         ```
 
         ```py title="main.py"
