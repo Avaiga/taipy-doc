@@ -443,7 +443,7 @@ in order to properly connect to the Microsoft Entra ID service:
 ??? note "Entra ID application management"
 
     Using the Entra ID authentication protocol assumes that an Entra ID application is already set
-    up with the required permissions. Taipy don't manage the Entra ID application.
+    up with the required permissions. Taipy doesn't manage the Entra ID application.
 
     First, you need to
     [create an application in the Microsoft Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal)
