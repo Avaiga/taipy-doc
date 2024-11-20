@@ -145,7 +145,7 @@ icon (Sort), the sorting configuration dialog appears:
   <figcaption>Sorting configuration dialog</figcaption>
 </figure>
 
-The user can select a property from the dropdown and Specify the sorting order: 'asc' (Ascending) or
+The user can select a property from the dropdown and specify the sorting order: 'asc' (Ascending) or
 'desc' (Descending).
 
 In the following image, the user has selected the 'Label' property, and a descending sort:
