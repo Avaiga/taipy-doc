@@ -3,20 +3,18 @@ that holds a scalar value. However, when dealing with collections of data, such 
 need a more complex approach to support arrays or tables that can be dynamically updated.
 
 In Taipy GUI, tabular data can also be bound to Python variables or expressions, allowing the user
-interface to instantly
-reflect any changes in the underlying data. Custom elements that manage tabular data must declare
-their properties to
-specify the type of data they support, similar to scalar properties, but now using a structure
-suitable for collections.
+interface to instantly reflect any changes in the underlying data. Custom elements that manage
+tabular data must declare their properties to specify the type of data they support, similar to
+scalar properties, but now using a structure suitable for collections.
 This is handled by the PropertyType class, where you can define the type as an array or table
 format, enabling the binding of multidimensional data.
 
-For example, a table element can bind a two-dimensional array or a list of objects to its
-properties. Each time the data in the array changes, the table element automatically refreshes to
-display the updated content in the user interface.<br/>
-This approach leverages TypeScript and JavaScript code in the backend, working with React to
-dynamically generate HTML for tabular displays. By using Taipy GUI’s variable binding capabilities,
-developers can seamlessly update and manage tabular data within the UI.
+For example, the *data* property of a `table` control can be bound to a two-dimensional array or a
+list of objects. When the bound data changes, the table control automatically updates to reflect the
+new content in the user interface.<br/>
+This functionality is implemented using the React library, which dynamically generates HTML for the
+tabular display. By leveraging Taipy GUI's variable binding capabilities, developers can efficiently
+update and manage tabular data in the user interface.
 
 Even if a custom element does not need to update its tabular data dynamically, it can still be
 implemented as a dynamic element to take advantage of the expressivity and flexibility offered by

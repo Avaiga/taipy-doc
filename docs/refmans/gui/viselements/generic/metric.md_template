@@ -138,7 +138,7 @@ Here is the control definition:
 
 The syntax for the [*format*](#p-format) and [*delta_format*](#p-delta_format) properties is the one
 used by the native `sprintf()` function. In this case, values are both integers.<br/>
-Note that in this example, we want to *delta* value to appear with a percent sign suffix. To get
+Note that in this example, we want the *delta* value to appear with a percent sign suffix. To get
 this result, you'll need to use the double percent symbol (%%) in the value for the
 [*delta_format*](#p-delta_format) property. In `sprintf()`, a single percent symbol is used for
 specifying format specifiers, so to actually print a literal percent sign, you need to escape it

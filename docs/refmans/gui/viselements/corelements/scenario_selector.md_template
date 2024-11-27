@@ -6,8 +6,8 @@ select a scenario from a list, create new scenarios or edit existing scenarios.
 # Details
 
 The Scenario Selector is a visual control that displays a tree structure where scenarios are grouped
-by their respective cycles (provided the [*display_cycles*](#p-display_cycles) property is not set)
-to False.
+by their respective cycles (provided the [*display_cycles*](#p-display_cycles) property is not set
+to False).
 
 Here is an example of a populated Scenario Selector:
 <figure class="tp-center">
@@ -89,7 +89,7 @@ In the dialog, users can:
 <li>Modify the Scenario Label,</li>
 <li>Add custom properties by filling in the 'Key' and 'Value' fields in the 'Custom Properties'
     section then pressing the [MUI:Add] icon (Add),</li>
-<li>Remove custom properties by click the [MUI:DeleteOutline] icon (Delete) next to an existing
+<li>Remove custom properties by clicking the [MUI:DeleteOutline] icon (Delete) next to an existing
     custom property.</li>
 </ul>
 
@@ -194,7 +194,7 @@ filtering. This allows users to create a prioritized sequence of sorting rules.
 
 Each sorting criterion specifies:
 
-- The scenario  property to sort by (e.g., label, creation date).
+- The scenario property to sort by (e.g., label, creation date).
 - The sorting direction, either *ascending* ("asc") or *descending* ("desc").
 
 Consider the following initial list of scenarios displayed in the selector:
