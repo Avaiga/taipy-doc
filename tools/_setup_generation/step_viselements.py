@@ -17,6 +17,8 @@ import re
 from io import StringIO
 from typing import Dict
 
+import requests
+
 from .setup import Setup, SetupStep
 from .viselements import VELoader, VEToc
 
@@ -38,14 +40,11 @@ class VisElementsStep(SetupStep):
         return "Extraction of the visual elements documentation"
 
     def enter(self, setup: Setup):
+        self.FE_DIR_PATH = setup.root_dir
         self.VISELEMENTS_DIR_PATH = setup.ref_manuals_dir + "/gui/viselements"
-        self.GENERICELEMENTS_DIR_PATH = (
-            setup.ref_manuals_dir + "/gui/viselements/generic"
-        )
-        self.CORELEMENTS_DIR_PATH = (
-            setup.ref_manuals_dir + "/gui/viselements/corelements"
-        )
         self.TOC_PATH = self.VISELEMENTS_DIR_PATH + "/index.md"
+        self.GENERICELEMENTS_DIR_PATH = self.VISELEMENTS_DIR_PATH + "/generic"
+        self.CORELEMENTS_DIR_PATH = self.VISELEMENTS_DIR_PATH + "/corelements"
         self.CHARTS_HOME_HTML_PATH = (
             self.GENERICELEMENTS_DIR_PATH + "/charts/home.html_fragment"
         )
@@ -75,12 +74,73 @@ class VisElementsStep(SetupStep):
             if k in loader.categories
         }
         self.elements = loader.elements
+        self.mui_icons = None
+
 
     def setup(self, setup: Setup) -> None:
+        self.__generate_mui_icons()
         tocs = self.__generate_element_pages()
         self.__build_navigation()
         self.__generate_toc_file(tocs)
         self.__generate_builder_api()
+
+    # Generate all MUI icons that are used in the front-end code.
+    # - Extract all the reference icons
+    # - Extract each SVG definition
+    # 
+    SVG_ICON_RE = re.compile(r"<symbol\s+id=\"(.*?)\"")
+    MUI_ICON_RE = re.compile(r"import.*?from\s+\"@mui/icons-material/(.*)\"")
+    MUI_ICON_SVG_PATH_RE = re.compile(r"\"path\"\s*,\s*{\s*d\s*:\s*\"(.*?)\"\s*}", re.MULTILINE | re.DOTALL)
+    def __generate_mui_icons(self):
+        mui_icons_path = self.VISELEMENTS_DIR_PATH + "/mui-icons.svg"
+        current_icons = []
+        if os.path.isfile(mui_icons_path):
+            with open(mui_icons_path, "r") as file:
+                content = file.read()
+                current_icons = [m[1] for m in self.SVG_ICON_RE.finditer(content)]
+        
+        self.mui_icons = set()
+        def search_mui_icons(dir_name: str):
+            for file_name in os.listdir(dir_name):
+                if file_name == "node_modules":
+                    continue
+                file_path = os.path.join(dir_name, file_name)
+                if os.path.isdir(file_path):
+                    search_mui_icons(file_path)
+                elif file_name.endswith(".tsx") and ".spec." not in file_name:
+                    with open(file_path, "r") as file:
+                        content = file.read()
+                        for m in self.MUI_ICON_RE.finditer(content):
+                            icon = m[1]
+                            if icon not in self.mui_icons:
+                                self.mui_icons.add(icon)
+        search_mui_icons(self.FE_DIR_PATH)
+        self.mui_icons = sorted(self.mui_icons)
+        if current_icons != self.mui_icons:
+            print("NOTE: Generating MUI icons")
+            MUI_URL = "https://raw.githubusercontent.com/mui/material-ui/refs/heads/master/packages/mui-icons-material/lib/{icon}.js"
+
+            def extract_svg_paths(icon: str) -> list[str]:
+                url = MUI_URL.format(icon=icon)
+                response = requests.get(url)
+                if response.status_code != 200:
+                    raise SystemError(f"WARNING - Couldn't find source for icon {icon}")
+                return [m[1] for m in self.MUI_ICON_SVG_PATH_RE.finditer(response.text)]
+
+            with open(mui_icons_path, "w") as file:
+                print("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"0\" height=\"0\">", file=file)
+                for icon in self.mui_icons:
+                    print(f"  <symbol id=\"{icon}\" viewBox=\"0 0 24 24\">", file=file)
+                    paths = extract_svg_paths(icon)
+                    if len(paths) > 1:
+                        print("    <g>", file=file)
+                        for path in paths:
+                            print(f"      <path d=\"{path}\"/>", file=file)
+                        print("    </g>", file=file)
+                    else:
+                        print(f"    <path d=\"{paths[0]}\"/>", file=file)
+                    print( "  </symbol>", file=file)
+                print("</svg>", file=file)
 
     def __check_paths(self):
         if not os.access(f"{self.TOC_PATH}_template", os.R_OK):
@@ -250,6 +310,13 @@ class VisElementsStep(SetupStep):
                 f"{element_desc['doc_path']}/charts",
             )
 
+        # Check potential MUI icons
+        MUI_ICON_RE = re.compile(r"\[MUI\s*:s*(.*?)s*\]")
+        for m in MUI_ICON_RE.finditer(after_properties):
+            if m[1] not in self.mui_icons:
+                print(f"WARNING: Unknown MUI icon used in element '{element_type}'")
+
+        # Generate the Markdown output
         with open(f"{element_desc['doc_path']}/{element_type}.md", "w") as md_file:
             md_file.write(
                 f"---\ntitle: <tt>{element_type}</tt>\nsearch:\n  boost: 2\n---\n\n"

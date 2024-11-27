@@ -125,6 +125,7 @@ mkdocs.yml
 /docs/gallery/other/index.md
 
 /docs/refmans/gui/viselements/index.md
+/docs/refmans/gui/viselements/mui-icons.svg
 /docs/refmans/gui/viselements/generic/*.md
 !/docs/refmans/gui/viselements/generic/index.md
 /docs/refmans/gui/viselements/generic/charts/*.md

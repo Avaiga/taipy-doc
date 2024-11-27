@@ -17,10 +17,8 @@ the selector might appear as follows:
 Data nodes are organized in their owning scenario and cycle, when relevant.<br/>
 In this example, *cleaned_dataset* and *initial_dataset* are scoped at the
 [`Scope.GLOBAL`](../../../reference/pkg_taipy/pkg_common/pkg_config/Scope/index.md) level.<br/>
-Expanding the 'My scenario' item (by clicking the
-<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#collapse"/></svg>
-- Expand - icon) reveals data nodes scoped at
-[`Scope.SCENARIO`](../../../reference/pkg_taipy/pkg_common/pkg_config/Scope/index.md).
+Expanding the 'My scenario' item (by clicking the [MUI:ChevronRight] icon) reveals data nodes scoped
+at [`Scope.SCENARIO`](../../../reference/pkg_taipy/pkg_common/pkg_config/Scope/index.md).
 
 When the user selects a data node, the [*on_change*](#p-on_change) callback is triggered allowing
 the application to respond to the user's selection. The selected node's value is reflected in the
@@ -31,19 +29,17 @@ icons allow users to perform various actions:
 <figure class="tp-center">
   <img src="../data_node_selector-toolbar-d.png" class="visible-dark"  width="120%"/>
   <img src="../data_node_selector-toolbar-l.png" class="visible-light" width="120%"/>
-  <figcaption>Data node selector toolbar</figcaption>
+  <figcaption>Data Node Selector toolbar</figcaption>
 </figure>
 
 Users can interact with the icons in the toolbar to perform various tasks:
 
-- <svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#filter_list"/></svg>
-  : Opens a filter configuration dialog, allowing users to define filters that apply to the list of
-    data nodes.
-- <svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#sort_by_alpha"/></svg>:
-  Enables users to specify sorting preferences for organizing the data nodes in the list.
-- <svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#search_outlined"/></svg>
-  : Toggles the visibility of a text search box, which helps users locate specific data nodes
-  quickly.
+- [MUI:FilterList]: Opens a filter configuration dialog, allowing users to define filters that apply
+  to the list of data nodes.
+- [MUI:SortByAlpha]: Enables users to specify sorting preferences for organizing the data nodes in
+  the list.
+- [MUI:SearchOutlined]: Toggles the visibility of a text search box, which helps users locate
+  specific data nodes quickly.
 
 <h3 id="filtering">Filtering</h3>
 
@@ -52,16 +48,14 @@ criteria.
 
 <h4>Opening the Filter dialog</h4>
 
-When the user presses the
-<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#filter_list"/></svg>
-icon (Filter), the following dialog appears:
+When the user presses the [MUI:FilterList] icon (Filter), the following dialog appears:
 <figure class="tp-center">
   <img src="../data_node_selector-filter1-d.png" class="visible-dark"  width="80%"/>
   <img src="../data_node_selector-filter1-l.png" class="visible-light" width="80%"/>
   <figcaption>Initialize filters</figcaption>
 </figure>
 
-All the filters that are currently applied to the list of data nodes is shown. So far, it is
+All the filters that are currently applied to the list of data nodes are shown. So far, the list is
 empty.
 
 <h4>Creating a new filter</h4>
@@ -87,7 +81,7 @@ The available comparisons depend on the type of the selected field:
 - Date: Options include "is on," "is not on," "is before," "is on or before," "is on or after" and
   "is after." The value field accepts a date value.
 
-To list all data nodes with labels containing the string "eva", the user would configue a filter as
+To list all data nodes with labels containing the string "eva", the user would configure a filter as
 follows:
 <figure class="tp-center">
   <img src="../data_node_selector-filter3-d.png" class="visible-dark"  width="80%"/>
@@ -95,9 +89,7 @@ follows:
   <figcaption>Create a new filter</figcaption>
 </figure>
 
-To add this filter to the filters list, the user must press the
-<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#check"/></svg>
-(Check) icon.<br/>
+To add this filter to the filters list, the user must press the [MUI:Check] icon (Check).<br/>
 Multiple filters can be added as needed.
 
 To close the filter configuration dialog, the user must click outside the dialog area.
@@ -109,15 +101,12 @@ Once filters are added, they are applied immediately. The filtered data node lis
   <figcaption>Filters applied</figcaption>
 </figure>
 
-To remove a filter from the list, the user would open the filters dialog
-(<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#filter_list"/></svg>
-icon), locate the criterion that must be removed and delete it pressing the
-<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#delete"/></svg>
-(Delete) icon.
+To remove a filter from the list, the user would open the filters dialog ([MUI:FilterList] icon),
+locate the criterion that must be removed and delete it pressing the [MUI:Delete] icon (Delete).
 
 <h3 id="sorting">Sorting</h3>
 
-The data node selector sorts data nodes by default in alphabetically ascending order based on their
+The Data Node Selector sorts data nodes by default in alphabetically ascending order based on their
 labels. Grouping is applied according to their respective Cycle or Scenario, if applicable
 
 Users can define custom sorting criteria to modify how data nodes are ordered. This process is
@@ -136,9 +125,7 @@ Consider the following initial list of data nodes displayed in the selector:
   <figcaption>Initial data nodes list</figcaption>
 </figure>
 
-When the user presses the
-<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#sort_by_alpha"/></svg>
-icon (Sort), the sorting configuration dialog appears:
+When the user presses the [MUI:SortByAlpha] icon (Sort), the sorting configuration dialog appears:
 <figure class="tp-center">
   <img src="../data_node_selector-sort2-d.png" class="visible-dark"  width="80%"/>
   <img src="../data_node_selector-sort2-l.png" class="visible-light" width="80%"/>
@@ -155,10 +142,8 @@ In the following image, the user has selected the 'Label' property, and a descen
   <figcaption>Sort criterion configuration</figcaption>
 </figure>
 
-After the sorting criterion is validated (pressing the
-<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#check"/></svg> icon),
-it is added to the sorting criteria list and the criterion is immediately applied to reorder the
-data nodes:
+After the sorting criterion is validated (pressing the [MUI:Check] icon), it is added to the sorting
+criteria list and the criterion is immediately applied to reorder the data nodes:
 <figure class="tp-center">
   <img src="../data_node_selector-sort4-d.png" class="visible-dark"  width="80%"/>
   <img src="../data_node_selector-sort4-l.png" class="visible-light" width="80%"/>
@@ -166,9 +151,7 @@ data nodes:
 </figure>
 
 The user can then create additional sorting criteria (which are applied in sequence).<br/>
-To remove a sorting rule, the user can select the
-<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#delete"/></svg> button
-next to the criterion.
+To remove a sorting rule, the user can select the [MUI:Delete] button next to the criterion.
 
 To exit the sorting dialog, click anywhere outside the dialog window.
 
@@ -177,9 +160,8 @@ To exit the sorting dialog, click anywhere outside the dialog window.
 The Search feature allows users to quickly locate data nodes by filtering the list based on text
 input.
 
-When the user presses the
-<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#search_outlined"/></svg>
-icon (Search), a search box appears within the data node selector interface:
+When the user presses the [MUI:SearchOutlined] icon (Search), a search box appears within the Data
+Node Selector interface:
 <figure class="tp-center">
   <img src="../data_node_selector-search1-d.png" class="visible-dark"  width="80%"/>
   <img src="../data_node_selector-search1-l.png" class="visible-light" width="80%"/>
@@ -194,9 +176,8 @@ labels containing the entered text:
   <figcaption>Search active</figcaption>
 </figure>
 
-To close the search box, the user must press the
-<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#search_off_outlined"/></svg>
-icon (Search off) in the toolbar.
+To close the search box, the user must press the [MUI:SearchOffOutlined] icon (Search off) in the
+toolbar.
 
 <h3 id="pinning">Pinning</h3>
 
@@ -208,17 +189,16 @@ Assuming we are in the following situation:
 <figure class="tp-center">
   <img src="../data_node_selector-pin1-d.png" class="visible-dark"  width="80%"/>
   <img src="../data_node_selector-pin1-l.png" class="visible-light" width="80%"/>
-  <figcaption>Crowded data node selector</figcaption>
+  <figcaption>Crowded Data Node Selector</figcaption>
 </figure>
 
 If the user wants to focus only on the data node called *initial_dataset* and the data nodes from
-the scenario called 'Peter's', she can click the
-<svg class="mui-icon" viewBox="0 0 24 24"><use href="../../mui-icons.svg#push_pin_outlined"/></svg>
-icon (Pin) next to these two items. Here is what the display would look like:
+the scenario called 'Peter's', she can click the [MUI:PushPinOutlined] icon (Pin) next to these two
+items. Here is what the display would look like:
 <figure class="tp-center">
   <img src="../data_node_selector-pin2-d.png" class="visible-dark"  width="80%"/>
   <img src="../data_node_selector-pin2-l.png" class="visible-light" width="80%"/>
-  <figcaption>Data node selector with pinned items</figcaption>
+  <figcaption>Data Node Selector with pinned items</figcaption>
 </figure>
 
 Here is what the control looks like after the 'Pinned only' switch was set and the scenario item
@@ -239,6 +219,6 @@ Note that the cycle item is not pinned because the other scenarios it contains a
 - *Pinning* a scenario item pins all its data nodes.</br>
   *Unpinning* a scenario item unpins all its data nodes.
 - *Pinning* a cycle item pins all the data nodes across all its scenarios.</br>
-  *Unpinning* a cycle item unpins all the data nodes across  all its scenarios.
+  *Unpinning* a cycle item unpins all the data nodes across all its scenarios.
 
 Turn off the 'Pinned Only' switch to view the complete list of data nodes again.

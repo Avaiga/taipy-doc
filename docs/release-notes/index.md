@@ -35,6 +35,11 @@ This is the list of changes to Taipy releases as they were published.
 
 ## Improvements and changes
 
+- The *unselected_value* property of the [`toggle`](../refmans/gui/viselements/generic/toggle.md)
+  control has been removed.<br/>
+  A toggle control that has no selected item new has its
+  [*value*](../refmans/gui/viselements/generic/toggle.md#p-value) property set to None.
+
 <h4><strong><code>taipy-core</code></strong> 4.1.0</h4>
 
 - `S3ObjectDataNode^` now supports all the parameters of the AWS APIs.<br/>
@@ -55,7 +60,7 @@ Published on 2024-10.
 
 !!! warning "Upgrading to Taipy 4.0 from 3.x"
 
-    Due to changes in Taipy’s package structure in version 4.0, the previous version of the
+    Due to changes in Taipy's package structure in version 4.0, the previous version of the
     `taipy-config` package may not be automatically removed during the upgrade process. This could
     lead to runtime issues as the system may attempt to reference outdated dependencies.
 
@@ -73,9 +78,18 @@ following new functionalities:
     - Multiple selection is now available.<br/>
       See the [*multiple*](../refmans/gui/viselements/corelements/scenario_selector.md#p-multiple)
       property for more details.
-    - A filter capability has been added to the scenario selector: TODO add details
-    - A sort capability has been added to the scenario selector: TODO add details
-    - A search capability has been added to the scenario selector: TODO add details
+    - Users can now filter scenarios in the list.<br/>
+      See the
+      [section on Filtering](../refmans/gui/viselements/corelements/scenario_selector.md#filtering)
+      for more details.
+    - Users can now sort scenarios in the list.<br/>
+      See the
+      [section on Sorting](../refmans/gui/viselements/corelements/scenario_selector.md#sorting) for
+      more details.
+    - Users can now search scenarios in the list<br/>
+      See the
+      [section on Searching](../refmans/gui/viselements/corelements/scenario_selector.md#searching)
+      for more details.
 - [*Data Node Selector*](../refmans/gui/viselements/corelements/data_node_selector.md):
     - Multiple selection is now available.<br/>
       See the [*multiple*](../refmans/gui/viselements/corelements/data_node_selector.md#p-multiple)

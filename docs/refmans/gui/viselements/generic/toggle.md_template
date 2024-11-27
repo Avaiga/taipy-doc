@@ -35,16 +35,16 @@ You can create a list of toggle buttons from a series of strings:
     default={value}
     lov=Item 1;Item 2;Item 3
 
-## Unselect value
+## Deselected state
 
-In a toggle control, all buttons might be unselected. Therefore there is no value selected.
-In that case, the value of the property [*unselected_value*](#p-unselected_value) is assigned if
-specified.
+In a toggle control, all buttons might be unselected when [*allow_unselect*](#p-allow_unselect) is
+set to True.<br/>
+If the user deselects all the toggle items, [*value*](#p-value) is set to None.
 
 !!! taipy-element
     default={value}
     lov=Item 1;Item 2;Item 3
-    unselected_value=No Value
+    allow_unselect:b=True
 
 ## Display a list of tuples
 
