@@ -335,6 +335,8 @@ def move_files(repo: str, src_path: str):
                 shutil.copytree(os.path.join(fe_src_dir, "src"), os.path.join(frontend_dir, "src"))
                 for f in [f for f in os.listdir(fe_src_dir) if f.endswith(".md") or f.endswith(".json")]:
                     shutil.copy(os.path.join(fe_src_dir, f), os.path.join(frontend_dir, f))
+                core_fe_src_dir = os.path.join(src_path, "frontend", "taipy")
+                shutil.copytree(os.path.join(core_fe_src_dir, "src"), os.path.join(frontend_dir, "core_src"))
 
                 # Copy INSTALLATION.md, CONTRIBUTING.md, and CODE_OF_CONDUCT.md
                 if not os.path.isdir(taipy_documentation_files_dir):
