@@ -264,10 +264,6 @@ def on_post_build(env):
                     last_location = 0
                     rel_mui_icons_path = None
                     for m in MUI_ICON_RE.finditer(html_content):
-                        # if "scenario_selector" in filename:
-                        #     print(f"    FOUND '{m[0]}' in {filename}")
-                        #     print(f"     ... before: '{html_content[m.start()-50:m.start()]}'")
-                        #     print(f"     ... after: '{html_content[m.start()-50:m.start()]}'")
                         if not rel_mui_icons_path:
                             rel_mui_icons_path = os.path.relpath(mui_icons_path, filename).replace("\\", "/")[3:]
                         new_content += (html_content[last_location : m.start()] +
