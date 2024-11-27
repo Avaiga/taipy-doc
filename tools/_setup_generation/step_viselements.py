@@ -314,7 +314,7 @@ class VisElementsStep(SetupStep):
         MUI_ICON_RE = re.compile(r"\[MUI\s*:s*(.*?)s*\]")
         for m in MUI_ICON_RE.finditer(after_properties):
             if m[1] not in self.mui_icons:
-                print(f"WARNING: Unknown MUI icon used in element '{element_type}'")
+                print(f"WARNING: Unknown MUI icon '{m[1]}' used in doc for element '{element_type}'")
 
         # Generate the Markdown output
         with open(f"{element_desc['doc_path']}/{element_type}.md", "w") as md_file:
