@@ -39,13 +39,9 @@ class VisElementsStep(SetupStep):
 
     def enter(self, setup: Setup):
         self.VISELEMENTS_DIR_PATH = setup.ref_manuals_dir + "/gui/viselements"
-        self.GENERICELEMENTS_DIR_PATH = (
-            setup.ref_manuals_dir + "/gui/viselements/generic"
-        )
-        self.CORELEMENTS_DIR_PATH = (
-            setup.ref_manuals_dir + "/gui/viselements/corelements"
-        )
         self.TOC_PATH = self.VISELEMENTS_DIR_PATH + "/index.md"
+        self.GENERICELEMENTS_DIR_PATH = self.VISELEMENTS_DIR_PATH + "/generic"
+        self.CORELEMENTS_DIR_PATH = self.VISELEMENTS_DIR_PATH + "/corelements"
         self.CHARTS_HOME_HTML_PATH = (
             self.GENERICELEMENTS_DIR_PATH + "/charts/home.html_fragment"
         )
@@ -75,12 +71,25 @@ class VisElementsStep(SetupStep):
             if k in loader.categories
         }
         self.elements = loader.elements
+        self.mui_icons = None
 
     def setup(self, setup: Setup) -> None:
+        self.__read_mui_icons()
         tocs = self.__generate_element_pages()
         self.__build_navigation()
         self.__generate_toc_file(tocs)
         self.__generate_builder_api()
+
+    # Read MUI icons symbol names from mui-icons.svg if it exists, so we can check references
+    # from Markdown body text.
+    def __read_mui_icons(self):
+        SVG_ICON_RE = re.compile(r"<symbol\s+id=\"(.*?)\"")
+        self.mui_icons = None
+        mui_icons_path = self.VISELEMENTS_DIR_PATH + "/mui-icons.svg"
+        if os.path.isfile(mui_icons_path):
+            with open(mui_icons_path, "r") as file:
+                content = file.read()
+                self.mui_icons = [m[1] for m in SVG_ICON_RE.finditer(content)]
 
     def __check_paths(self):
         if not os.access(f"{self.TOC_PATH}_template", os.R_OK):
@@ -250,6 +259,15 @@ class VisElementsStep(SetupStep):
                 f"{element_desc['doc_path']}/charts",
             )
 
+        # Check potential MUI icons
+        if self.mui_icons is not None:
+            for m in re.finditer(r"\[MUI\s*:s*(.*?)s*\]", after_properties):
+                if m[1] not in self.mui_icons:
+                    print(
+                        f"WARNING: Unknown MUI icon '{m[1]}' used in doc for element '{element_type}'"
+                    )
+
+        # Generate the Markdown output
         with open(f"{element_desc['doc_path']}/{element_type}.md", "w") as md_file:
             md_file.write(
                 f"---\ntitle: <tt>{element_type}</tt>\nsearch:\n  boost: 2\n---\n\n"
@@ -455,16 +473,17 @@ class [element_type]({base_class}):
             raise ValueError(
                 "Couldn't locate first header1 in documentation for element 'chart'"
             )
-        styling_match = re.search(
-            r"\n# Styling\n", after, re.MULTILINE | re.DOTALL
-        )
+        styling_match = re.search(r"\n# Styling\n", after, re.MULTILINE | re.DOTALL)
         if not styling_match:
             raise ValueError(
                 "Couldn't locate \"Styling\" header1 in documentation for element 'chart'"
             )
         return (
             match[1] + chart_gallery + before[match.end() :],
-            after[: styling_match.start()] + chart_sections + "\n\n" + after[styling_match.start() :]
+            after[: styling_match.start()]
+            + chart_sections
+            + "\n\n"
+            + after[styling_match.start() :],
         )
 
     def __process_element_md_file(self, type: str, documentation: str) -> str:

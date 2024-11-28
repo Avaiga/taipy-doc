@@ -1,55 +1,80 @@
 Select scenarios from the list of all scenario entities.
 
-The scenario selector shows all the scenario entities handled by Taipy and lets the user
+The Scenario Selector shows all the scenario entities handled by Taipy and lets the user
 select a scenario from a list, create new scenarios or edit existing scenarios.
 
 # Details
 
-The scenario selector displays a tree selector where scenarios are grouped based on their cycle
-(if the property [*display_cycles*](#p-display_cycles) has not been set to False).<br/>
-If the [*show_primary_flag*](#p-show_primary_flag) property has not been forced to False, the
-label of the primary scenario are overlaid with a small visual hint that lets users spot them
-immediately.
+The Scenario Selector is a visual control that displays a tree structure where scenarios are grouped
+by their respective cycles (provided the [*display_cycles*](#p-display_cycles) property is not set
+to False).
 
-If no created scenario has been created yet, the tree selector will appear empty. The default
-behavior, controlled by the [*show_add_button*](#p-show_add_button) property, is to display a
-button letting users create new scenarios:
+Here is an example of a populated Scenario Selector:
 <figure class="tp-center">
-  <img src="../scenario_selector-empty-d.png" class="visible-dark"  width="80%"/>
-  <img src="../scenario_selector-empty-l.png" class="visible-light" width="80%"/>
-  <figcaption>Empty scenario selector</figcaption>
+  <img src="../scenario_selector-init1-d.png" class="visible-dark"  width="80%"/>
+  <img src="../scenario_selector-init1-l.png" class="visible-light" width="80%"/>
+  <figcaption>Populated Scenario Selector</figcaption>
 </figure>
 
-When the user presses that button, a form appears so that the settings of the new scenario can be
-set:
+In the example above, we observe several created scenarios, including some organized within a cycle,
+as indicated by the
+<svg class="mui-icon" viewBox="0 0 16 16">
+  <path d="m11.16 13.2c.23-.15.3-.46.16-.69-.15-.23-.45-.3-.69-.16-1.95 1.23-4.46.95-6.1-.69-1-1-1.52-2.37-1.43-3.78.02-.28-.19-.51-.47-.53-.27 0-.51.19-.53.47-.1 1.69.52 3.35 1.72 4.55 1.15 1.15 2.66 1.74 4.18 1.74 1.08 0 2.18-.3 3.16-.92z" />
+  <path d="m8.01 2.27c-1.58 0-3.07.62-4.18 1.73-.01.01-.02.03-.03.04v-1.24c0-.28-.22-.5-.5-.5s-.5.22-.5.5v2.81c0 .28.22.5.5.5h2.81c.28 0 .5-.22.5-.5s-.22-.5-.5-.5h-1.9c.11-.14.2-.28.33-.41 1.92-1.92 5.04-1.92 6.96 0 1.61 1.61 1.9 4.18.68 6.11-.15.23-.08.54.15.69.08.05.18.08.27.08.17 0 .33-.08.42-.23 1.47-2.32 1.13-5.41-.82-7.35-1.12-1.12-2.6-1.73-4.19-1.73z" />
+</svg>
+icon.
+
+Additionally, because the [*show_primary_flag*](#p-show_primary_flag) property is enabled by default
+(not explicitly set to False), the primary scenario within each cycle is marked with a
+[MUI:FlagOutlined] icon, allowing users to identify it at a glance.
+
+At the top of the control, a toolbar provides a few icons that let users perform various tasks:
+
+- [MUI:FilterList]: Opens a filter configuration dialog, allowing users to define filters that apply
+  to the list of scenarios. This is described in the [Filtering](#filtering) section.
+- [MUI:SortByAlpha]: Enables users to specify sorting preferences for organizing the scenarios in
+  the list. This is described in the [Sorting](#sorting) section.
+- [MUI:SearchOutlined]: Toggles the visibility of a text search box, which helps users locate
+  specific scenarios quickly. This is described in the [Searching](#searching) section.
+
+## Creating new scenarios
+
+If no scenarios have been created yet, the tree selector will appear empty.<br/>By default, a button
+for creating new scenarios is displayed, controlled by the [*show_add_button*](#p-show_add_button)
+property:
 <figure class="tp-center">
-  <img src="../scenario_selector-create-d.png" class="visible-dark"  width="60%"/>
-  <img src="../scenario_selector-create-l.png" class="visible-light" width="60%"/>
+  <img src="../scenario_selector-empty-d.png" class="visible-dark"  width="60%"/>
+  <img src="../scenario_selector-empty-l.png" class="visible-light" width="60%"/>
+  <figcaption>Empty Scenario Selector</figcaption>
+</figure>
+
+When the 'Add Scenario' button is clicked, a dialog appears, allowing users to configure the new
+scenario's settings:
+<figure class="tp-center">
+  <img src="../scenario_selector-create-d.png" class="visible-dark"  width="80%"/>
+  <img src="../scenario_selector-create-l.png" class="visible-light" width="80%"/>
   <figcaption>Dialog to create a new scenario</figcaption>
 </figure>
 
-In this form, the user must indicate which scenario configuration should be used and specify the
-scenario creation date.<br/>
-Custom properties can also be added to the new scenario by pressing the '+' button located on the
-right side of the property key and value fields.
+In the dialog, users must specify:
 
-When several new scenarios are created, the scenario selector will list all the scenarios,
-potentially grouped in their relevant cycle:
-<figure class="tp-center">
-  <img src="../scenario_selector-filled-d.png" class="visible-dark"  width="60%"/>
-  <img src="../scenario_selector-filled-l.png" class="visible-light" width="60%"/>
-  <figcaption>Showing all the created scenarios</figcaption>
-</figure>
+- The scenario configuration to use,
+- The scenario creation date,
+- The label for the new scenario.
 
-Notice how the primary scenario for a cycle is immediately flagged as "primary" (you may choose
-not to show that icon by setting the [*show_primary_flag*](#p-show_primary_flag) property to
-False).
+Additionally, custom properties can be added to the scenario by clicking the [MUI:Add] button
+(Add) located to the right of the property key and value fields.
+
+After configuring the necessary details:
+
+- Clicking the 'Create' button will create the scenario and add it to the Scenario Selector list.
+- Clicking the 'Cancel' button will close the dialog without saving any changes.
 
 ## Editing a scenario
 
-Users can press the pencil icon located next to the scenario labels. When that happens, a dialog
-box similar to the scenario creation dialog is displayed to let users modify the scenario
-settings.
+To edit an existing scenario, users can click the [MUI:Edit] icon (Edit) located next to the
+scenario item in the tree. This action opens a dialog box similar to the scenario creation dialog,
+allowing users to modify scenario settings.
 
 Here is how this dialog box looks like:
 <figure class="tp-center">
@@ -58,16 +83,21 @@ Here is how this dialog box looks like:
   <figcaption>Editing a scenario</figcaption>
 </figure>
 
-The user can change the scenario label and custom properties then press the 'Apply' button to
-propagate the changes.<br/>
-To add a new custom property, the user has to fill the 'Key' and 'Value' fields in the 'Custom
-Properties' section, then press the '+' button.<br/>
-A custom property can be removed by pressing the trash button next to it.<br/>
+In the dialog, users can:
 
-The 'Cancel' button closes the dialog without changing anything.<br/>
-The 'Delete' button deletes the edited scenario.
+<ul>
+<li>Modify the Scenario Label,</li>
+<li>Add custom properties by filling in the 'Key' and 'Value' fields in the 'Custom Properties'
+    section then pressing the [MUI:Add] icon (Add),</li>
+<li>Remove custom properties by clicking the [MUI:DeleteOutline] icon (Delete) next to an existing
+    custom property.</li>
+</ul>
 
-Note that there is no way to change the scenario configuration or its creation date.
+Note that the scenario configuration and creation date cannot be modified.
+
+The 'Apply' button saves and propagates changes to the scenario.<br/>
+The 'Cancel' button closes the dialog without making any changes.<br/>
+The 'Delete' button permanently deletes the scenario.
 
 ## Selecting a scenario
 
@@ -76,6 +106,157 @@ set to the selected entity and the [*on_change*](#p-on_change) callback is invok
 application can then use the selected value.
 
 If no scenario is selected, [*value*](#p-value) is set no None.
+
+## Filtering
+
+The Filter functionality allows users to refine the list of scenarios by applying one or more
+criteria.
+
+Here is the Scenario Selector list that we will work with to demonstrate this functionality.
+
+<figure class="tp-center">
+  <img src="../scenario_selector-filter1-d.png" class="visible-dark"  width="80%"/>
+  <img src="../scenario_selector-filter1-l.png" class="visible-light" width="80%"/>
+  <figcaption>Scenario Selector content</figcaption>
+</figure>
+
+<h4>Opening the Filter dialog</h4>
+
+When the user presses the [MUI:FilterList] icon (Filter), the following dialog appears:
+<figure class="tp-center">
+  <img src="../scenario_selector-filter2-d.png" class="visible-dark"  width="80%"/>
+  <img src="../scenario_selector-filter2-l.png" class="visible-light" width="80%"/>
+  <figcaption>Initialize filters</figcaption>
+</figure>
+
+All the filters that are currently applied to the list of scenarios are shown. So far, the list is
+empty.
+
+<h4>Creating a new filter criteria</h4>
+
+To create a new filter, the user must select a filtering criterion from the dropdown menu in the
+first field:
+<figure class="tp-center">
+  <img src="../scenario_selector-filter3-d.png" class="visible-dark"  width="80%"/>
+  <img src="../scenario_selector-filter3-l.png" class="visible-light" width="80%"/>
+  <figcaption>Filter criteria dialog</figcaption>
+</figure>
+
+After selecting a criterion, the 'Action' dropdown updates with comparison options specific to the
+selected criterion.<br/>
+The available comparisons depend on the type of the selected field:
+
+- Boolean: Options include "is" and "is not." The value field accepts True or False.
+- String: Options include "is," "is not," and "contains." The value field accepts a text
+  value.
+- Number: Options include "equals," "does not equal," "is less than," "is less than or equal to,"
+  "is greater than or equal to" and "is greater than." The value field accepts a numerical
+  value.
+- Date: Options include "is on," "is not on," "is before," "is on or before," "is on or after" and
+  "is after." The value field accepts a date value.
+
+To list all data nodes with labels containing the string "ina", the user would configure a filter as
+follows:
+<figure class="tp-center">
+  <img src="../scenario_selector-filter4-d.png" class="visible-dark"  width="80%"/>
+  <img src="../scenario_selector-filter4-l.png" class="visible-light" width="80%"/>
+  <figcaption>Create a new filter</figcaption>
+</figure>
+
+To add this filter to the filters list, the user must press the [MUI:Check] (Check) icon.<br/>
+Multiple filters can be added as needed.
+
+To close the filter configuration dialog, the user must click outside the dialog area.
+
+Once filters are added, they are applied immediately. The filtered scenario list appears as shown:
+<figure class="tp-center">
+  <img src="../scenario_selector-filter5-d.png" class="visible-dark"  width="80%"/>
+  <img src="../scenario_selector-filter5-l.png" class="visible-light" width="80%"/>
+  <figcaption>Filters applied</figcaption>
+</figure>
+
+You can see that only scenarios with matching label now appear in the list.<br/>
+The [MUI:FilterList] icon (Filter) in the control's tool bar has an overlay icon indicating that
+a filter with one criterion is currently applied.
+
+<h4>Removing a filter criteria</h4>
+
+To remove a filter from the list, the user would open the filters dialog ([MUI:FilterList] icon),
+locate the criterion that must be removed and delete it pressing the [MUI:Delete] icon (Delete).
+
+## Sorting
+
+By default, the Scenario Selector sorts scenarios in ascending order by their creation date. When
+applicable, scenarios are grouped by their respective Cycle.
+
+Users can customize the sorting order by defining custom sorting criteria, similar to the process of
+filtering. This allows users to create a prioritized sequence of sorting rules.
+
+Each sorting criterion specifies:
+
+- The scenario property to sort by (e.g., label, creation date).
+- The sorting direction, either *ascending* ("asc") or *descending* ("desc").
+
+Consider the following initial list of scenarios displayed in the selector:
+<figure class="tp-center">
+  <img src="../scenario_selector-sort1-d.png" class="visible-dark"  width="80%"/>
+  <img src="../scenario_selector-sort1-l.png" class="visible-light" width="80%"/>
+  <figcaption>Initial scenarios list</figcaption>
+</figure>
+
+Users can click the [MUI:SortByAlpha] icon (Sort) to open the sorting configuration dialog:
+<figure class="tp-center">
+  <img src="../scenario_selector-sort2-d.png" class="visible-dark"  width="80%"/>
+  <img src="../scenario_selector-sort2-l.png" class="visible-light" width="80%"/>
+  <figcaption>Sorting configuration dialog</figcaption>
+</figure>
+
+Users can select a property from the dropdown and specify the sorting order: 'asc' (Ascending) or
+'desc' (Descending).
+
+In the following image, the user has selected the 'Label' property with a descending sort:
+<figure class="tp-center">
+  <img src="../scenario_selector-sort3-d.png" class="visible-dark"  width="80%"/>
+  <img src="../scenario_selector-sort3-l.png" class="visible-light" width="80%"/>
+  <figcaption>Sort criterion configuration</figcaption>
+</figure>
+
+After the sorting criterion is validated (pressing the [MUI:Check] icon), it is added to the sorting
+rules.  The scenarios are immediately reordered according to the applied criteria:
+<figure class="tp-center">
+  <img src="../scenario_selector-sort4-d.png" class="visible-dark"  width="80%"/>
+  <img src="../scenario_selector-sort4-l.png" class="visible-light" width="80%"/>
+  <figcaption>Scenarios sorted by their label</figcaption>
+</figure>
+
+Note the overlay indicator on top of the [MUI:SortByAlpha] icon, indicating that a sorting criterion
+is currently applied.
+
+Additional sorting rules can be created, applied sequentially in the specified order of
+priority.<br/>
+To remove a sorting rule, the user can click the [MUI:Delete] button next to the criterion.
+
+To exit the sorting configuration window, users must click anywhere outside the dialog window.
+
+## Searching
+
+The Search feature allows users to quickly locate scenarios by filtering the list based on text input.
+
+When the user presses the [MUI:SearchOutlined] icon (Search), a search box appears within the Scenario Selector interface:
+<figure class="tp-center">
+  <img src="../scenario_selector-search1-d.png" class="visible-dark"  width="80%"/>
+  <img src="../scenario_selector-search1-l.png" class="visible-light" width="80%"/>
+  <figcaption>Search box in the selector</figcaption>
+</figure>
+
+If text is entered in the search box, the list dynamically updates to display only scenarios with labels containing the entered text:
+<figure class="tp-center">
+  <img src="../scenario_selector-search2-d.png" class="visible-dark"  width="80%"/>
+  <img src="../scenario_selector-search2-l.png" class="visible-light" width="80%"/>
+  <figcaption>Search active</figcaption>
+</figure>
+
+To close the search box, the user must press the [MUI:SearchOffOutlined] icon (Search off) in the toolbar.
 
 # Usage
 
@@ -165,7 +346,7 @@ not the case, an error message is returned to the user for correction.
 Finally, lines 20-22 take care of creating the scenario with the new settings.<br/>
 This scenario is returned by the callback function to let Taipy know it was created properly.
 
-The scenario selector control definition needs to have the [*on_creation*](#p-on_creation) property
+The Scenario Selector control definition needs to have the [*on_creation*](#p-on_creation) property
 set to the function:
 !!! taipy-element
     default={scenario}

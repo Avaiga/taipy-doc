@@ -21,7 +21,7 @@ The supported types for the [*data*](#p-data) property are:
 - A list of lists of values:<br/>
   All the lists must be the same length. The table control creates one row for each list in the
   collection.
-- A Numpy series:<br/>
+- A NumPy series:<br/>
   Taipy internally builds a Pandas DataFrame with the provided *data*.
 
 !!! note "Polars data types support"
@@ -272,16 +272,16 @@ These elements let users:
 
 The presence of these UI elements depends on the control configuration:
 
-- 'Add' icon ('🞣'):
+- [MUI:Add] icon (Add):
     - Appears in the top-left corner of the table when [*editable*](#p-editable) is set to True and
       [*on_add*](#p-on_add) is not set to False.
     - Clicking this icon can add new rows to the table, as described in
       [this section](#adding-a-row).
-- 'Delete' icon ('🗑'):
+- [MUI:Delete] icon (Delete):
     - Appears to the left of each row when [*editable*](#p-editable) is set to True and
       [*on_delete*](#p-on_delete) is not set to False.</br>
     - Clicking this icon can remove rows, as explained in the [this section](#deleting-a-row).
-- 'Edit' icon ('✎'):
+- [MUI:Edit] icon (Edit):
     - Appears to the right of each cell if [*editable*](#p-editable) is set to True.
     - It also appears to the right of each cell in a specific column ("column_name") if
       [*editable[column_name]*](#p-editable[column_name]) is set to True, even when
@@ -297,8 +297,8 @@ leverage them to fit the needs of your application.
 
 When a table control is editable (i.e., either the [*editable*](#p-editable) property is set to True
 or the [*editable[]*](#p-editable[column_name]) property is True for any of the table's columns),
-**and** the [*on_add*](#p-on_add) property is **not** set to False, an 'Add' icon ('🞣') appears in
-the top-left corner of the table:
+**and** the [*on_add*](#p-on_add) property is **not** set to False, an [MUI:Add] icon (Add) appears
+in the top-left corner of the table:
 <figure class="tp-center">
     <img src="../table-add-icon-d.png" class="visible-dark"  width="40%"/>
     <img src="../table-add-icon-l.png" class="visible-light" width="40%"/>
@@ -365,8 +365,8 @@ An [example below](#guarding-edits) demonstrates this functionality in [this sec
 
 When a table control is editable (i.e., either the [*editable*](#p-editable) property is set to True
 or the [*editable[]*](#p-editable[column_name]) property is True for any of the table's columns),
-**and** the [*on_delete*](#p-on_delete) property is **not** set to False, a 'Delete' icon ('🗑')
-appears to the left of each row:
+**and** the [*on_delete*](#p-on_delete) property is **not** set to False, a [MUI:Delete] icon
+(Delete) appears to the left of each row:
 <figure class="tp-center">
     <img src="../table-delete-icon-d.png" class="visible-dark"  width="50%"/>
     <img src="../table-delete-icon-l.png" class="visible-light" width="50%"/>
@@ -380,8 +380,8 @@ Once clicked, the icon changes to the following:
     <img src="../table-delete-icon-confirm-l.png" class="visible-light" width="50%"/>
     <figcaption>Validating row deletion</figcaption>
 </figure>
-The user must then confirm the deletion by clicking the '✓' icon or cancel the operation by clicking
-the '🗙' icon.
+The user must then confirm the deletion by clicking the [MUI:Check] icon (Apply) or cancel the
+operation by clicking the [MUI:Clear] icon (Cancel).
 
 If the deletion is confirmed, Taipy GUI triggers the callback function specified in the
 [*on_delete*](#p-on_delete) property.
@@ -427,8 +427,9 @@ In the [example below](#guarding-edits), there is a demonstration of this functi
 If the [*on_edit*](#p-on_edit) property is not set to False and the table columns are editable
 (i.e., either [*editable[column_name]*](#p-editable[column_name]) is set to True regardless of the
 [*editable*](#p-editable) property value, or [*editable[column_name]*](#p-editable[column_name]) is
-**not** set to False and [*editable*](#p-editable) is set to True), an 'Edit' icon ('✎') appears at
-the right end of each editable cell. Users can click this icon to modify the values of individual
+**not** set to False and [*editable*](#p-editable) is set to True), the [MUI:Edit] icon (Edit)
+appears at the right end of each editable cell. Users can click this icon to modify the values of
+individual
 cells.<br/>
 Here is how this icon looks:
 <figure class="tp-center">
@@ -443,12 +444,12 @@ When the user clicks this icon, the cell becomes editable:
     <img src="../table-edit-value-l.png" class="visible-light"/>
     <figcaption>Editing the cell value</figcaption>
 </figure>
-The user can enter a new value for the cell and either click the check mark (✓) icon or press the
-Enter key to confirm the change. This action triggers the callback function defined by the
+The user can enter a new value for the cell and either click the [MUI:Check] icon (Apply) or press
+the Enter key to confirm the change. This action triggers the callback function defined by the
 [*on_edit*](#p-on_edit) property (or the built-in `Gui.table_on_edit()^` method if
 [*on_edit*](#p-on_edit) is not set) to process the updated value.<br/>
-Alternatively, the user can cancel the operation by clicking the cancel icon ('🗙') or pressing the
-Esc key.
+Alternatively, the user can cancel the operation by clicking the [MUI:Clear] icon (Cancel) or
+pressing the ESC key.
 
 !!! note "Enumerated values"
 
@@ -836,9 +837,9 @@ Here is what the table looks like:
     <figcaption>Custom format</figcaption>
 </figure>
 
-If the user clicks the *edit* button next to the masked password, the text is revealed, showing the
-actual password in plain text. This allows the user to view or modify the password, but only when
-explicitly editing the field.<br/>
+If the user clicks the [MUI:Edit] icon (Edit) next to the masked password, the text is revealed,
+showing the actual password in plain text. This allows the user to view or modify the password, but
+only when explicitly editing the field.<br/>
 Here is what the user can see in this situation:
 <figure class="tp-center">
     <img src="../table-custom-format2-d.png" class="visible-dark"  width="90%"/>
@@ -895,8 +896,8 @@ When the user attempts to edit a cell in the "Continent" column, it will look li
     <figcaption>Editing an enumerated value</figcaption>
 </figure>
 
-A button will appear in the cell, which when clicked, displays a drop-down list of predefined values
-that the user can select from:
+A [MUI:ArrowDropDown] icon (Drop down) appears in the cell, which when clicked, displays a drop-down
+list of predefined values that the user can select from:
 <figure class="tp-center">
     <img src="../table-edit-enum-menu-d.png" class="visible-dark"/>
     <img src="../table-edit-enum-menu-l.png" class="visible-light"/>
@@ -912,9 +913,9 @@ changes.<br/>
 This enables you to execute specific actions based on user modifications.
 
 You can achieve this by setting the [*on_add*](#p-on_add), [*on_delete*](#p-on_delete), or
-[*on_edit*](#p-on_edit) on_edit properties.<br/>Below is an example that demonstrates this
+[*on_edit*](#p-on_edit) on_edit properties.<br/>
+Below is an example that demonstrates this
 capability:
-
 
 Suppose we are creating an application that displays how a user's assets are distributed across
 various categories. The table would list each category alongside the allocated amount. The purpose
@@ -987,8 +988,8 @@ In line 4, the "%" column is updated by recalculating the ratio of all categorie
 Finally, line 5 refreshes the *var_name* variable (set to "data") to update the display.
 
 The requirements have now been implemented. Now, let's see how this works.<br/>
-Assume the user enters a new value in a cell in the "Amount" column by pressing the 'Edit' icon
-next to the cell:
+Assume the user enters a new value in a cell in the "Amount" column by pressing the [MUI:Edit] icon
+(Edit) next to the cell:
 <figure class="tp-center">
     <img src="../table-edit-action2-d.png" class="visible-dark"/>
     <img src="../table-edit-action2-l.png" class="visible-light"/>
@@ -996,9 +997,9 @@ next to the cell:
 </figure>
 
 Now, suppose the user changes the value from 190,000 to 80,000 and confirms the change by pressing
-the '✓' icon. The [*on_edit*](#p-on_edit) setting triggers the invocation of the *update()*
-function, which in turn calls *compute_ratio()* to recalculate all ratios. Once the new ratios are
-stored in the "%" column, the page is refreshed to display the updated results:
+the [MUI:Check] icon (Apply). The [*on_edit*](#p-on_edit) setting triggers the invocation of the
+*update()* function, which in turn calls *compute_ratio()* to recalculate all ratios. Once the new
+ratios are stored in the "%" column, the page is refreshed to display the updated results:
 <figure class="tp-center">
     <img src="../table-edit-action3-d.png" class="visible-dark"/>
     <img src="../table-edit-action3-l.png" class="visible-light"/>
@@ -1029,10 +1030,10 @@ application are as follows:
 The application interface is a table that displays the list of employees, with a column showing the
 proposed salary for each.
 
-- The user can remove a candidate by pressing the "Delete" button in the corresponding row, but the
-  list must contain at least three employees.
-- The user can add a new candidate to the list by pressing the "Add" button, but no more than six
-  employees can be added.
+- The user can remove a candidate by pressing the [MUI:Delete] icon (Delete) in the corresponding
+  row, but the list must contain at least three employees.
+- The user can add a new candidate to the list by pressing the [MUI:Add] icon (Add), but no more
+  than six employees can be added.
 - The user can edit any employee's salary, and the final amount is rounded to the nearest multiple
   of $500.
 
@@ -1106,9 +1107,9 @@ def check_delete(state: State, var_name: str, payload: dict):
   *check_delete()* since there is no need to modify them before forwarding the request.
 
 Starting with the initial state (where four candidates are in the list), a row can be deleted by
-clicking the 'Delete' icon ('🗑') on the corresponding row, and then confirming the action by
-pressing the '✓' icon.<br/>
-Here is what the tale look like after removing the third line:
+clicking the [MUI:Delete] icon (Delete) on the corresponding row, and then confirming the action by
+pressing the [MUI:Check] icon (Apply).<br/>
+Here is what the table look like after removing the third line:
 <figure class="tp-center">
     <img src="../table-guard-edits-del1-d.png" class="visible-dark"/>
     <img src="../table-guard-edits-del1-l.png" class="visible-light"/>
@@ -1150,7 +1151,7 @@ def check_add(state: State, var_name: str, payload: dict):
       the values for the new row, converted to a `list`.
 
 Assuming the application is in its initial state with four candidates, you can add a row by clicking
-the '🞣' icon at the top of the table control.<br/>
+the [MUI:Add] icon (Add) at the top of the table control.<br/>
 The result is displayed like this:
 <figure class="tp-center">
     <img src="../table-guard-edits-add1-d.png" class="visible-dark"/>
@@ -1174,7 +1175,7 @@ be rounded to the nearest multiple of 500.
 Here is the implementation of the *force_salary()* function, which is assigned to the
 [*on_edit*](#p-on_edit) property of the table control in this example:
 
-```python
+```python linenums="1"
 def force_salary(state: State, var_name: str, payload: dict):
     proposed_salary = payload["value"]
     proposed_salary = round(proposed_salary / 500) * 500
@@ -1185,11 +1186,11 @@ def force_salary(state: State, var_name: str, payload: dict):
 Let's explain what this function does line by line:
 
 - Line 2: Retrieves the value entered by the user from the *payload* dictionary, sent by the
-    `on_edit` callback.
+  `on_edit` callback.
 - Line 3: Rounds the value to the nearest multiple of 500, satisfying the constraint, and assign the
-    result to *proposed_salary*.
-- Line 4: Updates the "value" entry of the *payload* dictionary with the rounded salary to ensure the
-    correct value is stored in the dataset.
+  result to *proposed_salary*.
+- Line 4: Updates the "value" entry of the *payload* dictionary with the rounded salary to ensure
+  the correct value is stored in the dataset.
 - Line 5: Delegate the update of the dataset and the control by calling `(Gui.)table_on_edit()^`.
 
 Assume the user enters a random salary value for a candidate:
@@ -1201,9 +1202,9 @@ Assume the user enters a random salary value for a candidate:
 
 Obviously, the proposed value (963852) does not meet  the constraint.
 
-After the user validates the input (clicking the '✓' icon), the *force_salary()* function is invoked
-to automatically adjusts the salary to the nearest multiple of 500, and the updated value is
-displayed:
+After the user validates the input (clicking the [MUI:Check] icon (Apply)), the *force_salary()*
+function is invoked to automatically adjusts the salary to the nearest multiple of 500, and the
+updated value is displayed:
 <figure class="tp-center">
     <img src="../table-guard-edits-edit2-d.png" class="visible-dark"/>
     <img src="../table-guard-edits-edit2-l.png" class="visible-light"/>
@@ -1361,7 +1362,7 @@ We only use the second parameter since, in this straightforward case, we do not 
 Based on the row index (received in *index*), this function returns the name of the CSS class to
 apply to the row: "blue-row" if the index is odd, "red-row" if it is even.
 
-We need to define what these class define. This is done in a CSS stylesheet, where the following
+We need to define what these class define. This is done in a CSS style sheet, where the following
 CSS content would appear:
 ```css
 .blue-row>td {
@@ -1500,7 +1501,7 @@ Here are the CSS classes that this application will use:
 }
 ```
 
-- The "redish" and "light-reddish" classes (lines 1 to 13) will apply to the "x" column. The
+- The "reddish" and "light-reddish" classes (lines 1 to 13) will apply to the "x" column. The
   "reddish" class has a strong red background and uses white text, while the "light-reddish" class
   uses a lighter red background with black text and bold typeface.
 - The "greenish" and "light-greenish" classes (lines 15 to 28) will apply to the "y" column. The

@@ -130,6 +130,7 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
         from .step_refman import RefManStep
         from .step_rest_refman import RestRefManStep
         from .step_gui_ext_refman import GuiExtRefManStep
+        from .step_mui_icons import MuiIconsStep
         from .step_contributors import ContributorsStep
         from .step_designer import DesignerStep
 
@@ -140,6 +141,7 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
             RefManStep(),
             RestRefManStep(),
             GuiExtRefManStep(),
+            MuiIconsStep(),
             ContributorsStep(),
             DesignerStep(),
         ]

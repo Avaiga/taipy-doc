@@ -45,8 +45,8 @@ To edit the data node, the user can click the line where the value is displayed:
 Note that a 'Comment' field allows the user to explain why this value is changed. This information
 is part of the history of the data node.
 
-When the new value is entered, the user presses the 'Apply' (✓) or the 'Cancel' (⨉) button to
-apply or cancel the change, respectively.
+When the new value is entered, the user presses the [MUI:CheckCircle] icon or the [MUI:Cancel] icon
+to apply or cancel the change, respectively.
 
 ### Tabular data
 
@@ -59,8 +59,8 @@ top-left corner of the 'Properties' section:
   <figcaption>Data representation switch</figcaption>
 </figure>
 
-In the image above, the switch is set to the 'Table' mode.<br/>
-The other option is the 'Chart' mode.
+In the image above, the switch is set to the 'Table' mode ([MUI:TableChartOutlined] icon).<br/>
+The other option is the 'Chart' mode ([MUI:BarChartOutlined] icon).
 
 Tabular data can be edited only in the 'Table' mode, as described in
 [this section](#editing-tabular-data).
@@ -123,9 +123,9 @@ From this tab, you can access the attributes of the data node:
   <figcaption>The Properties section</figcaption>
 </figure>
 
-The label of the data node can be changed using the 'Label' field: click in the value area, change
-the content, then press the 'Apply' button (with the ✓ icon.)<br/>
-To cancel the change, press the 'Cancel' button (with the ⨉ icon).
+The label of the data node can be changed using the 'Label' field: the user clicks in the value
+area, change the content, then presses the [MUI:CheckCircle] icon (Apply).<br/>
+The [MUI:Cancel] icon (Cancel) is used to cancel the change.
 
 If the data node has has an owner (a scenario or a cycle) and if the [*show_owner*](#p-show_owner)
 property is set to True (which is its default value), the label of the owning entity appears in the
@@ -135,20 +135,21 @@ property is set to True (which is its default value), the label of the owning en
   <img src="../data_node-properties-owner-l.png" class="visible-light" width="70%"/>
   <figcaption>The data node is owned by a scenario</figcaption>
 </figure>
-When the selected data node is owned by a scenario, a button is visible next to the scenario's
-label. This button can be pressed to display the list of the owning scenarios so the user can
-select one from there. As a result, any variable bound to the [*scenario*](#p-scenario) is set to
-the selected scenario entity: the application can use that to update other parts of the page from
+When the selected data node is owned by a scenario, the [MUI:Launch] icon is visible next to the
+scenario's label. This icon can be clicked to display the list of the owning scenarios so the user
+can select one from there. As a result, any variable bound to the [*scenario*](#p-scenario) is set
+to the selected scenario entity: the application can use that to update other parts of the page from
 an `on_change` callback.
 
 The section at the bottom lists the custom properties for the selected data node. This is visible
 only if the [*show_properties*](#p-show_properties) property is set to True (which is its default
 value).<br/>
 The user can create new properties by clicking the 'New Property Key' line, providing a property
-name and value, and then pressing the 'Apply' button (with the ✓ icon.).<br/>
-The user can cancel the creation of a new property by pressing the 'Cancel' button (with the ⨉
-icon).<br/>
-The user can delete a property by selecting it and pressing the *trash* button.
+name and value, and then pressing the [MUI:CheckCircle] icon.<br/>
+The user can cancel the creation of a new property by pressing the [MUI:Cancel] icon.
+
+The user can delete a property by selecting it and then pressing the [MUI:DeleteOutline] icon
+(Delete).
 
 ## The 'History' tab
 

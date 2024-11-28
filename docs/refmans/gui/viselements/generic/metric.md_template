@@ -113,7 +113,7 @@ This definition produces the following output that anyone can interpret on the s
     <figcaption>Hiding the value</figcaption>
 </figure>
 
-## Formating the values {data-source="gui:doc/examples/controls/metric_formats.py"}
+## Formatting the values {data-source="gui:doc/examples/controls/metric_formats.py"}
 
 The numerical value set to the properties [*value*](#p-value) and [*delta*](#p-delta) can be
 displayed using a formatting string set to the respective properties [*format*](#p-format) and
@@ -137,7 +137,12 @@ Here is the control definition:
     delta_format=%d %%
 
 The syntax for the [*format*](#p-format) and [*delta_format*](#p-delta_format) properties is the one
-used by the native `sprintf()` function. In this case, values are both integers.
+used by the native `sprintf()` function. In this case, values are both integers.<br/>
+Note that in this example, we want the *delta* value to appear with a percent sign suffix. To get
+this result, you'll need to use the double percent symbol (%%) in the value for the
+[*delta_format*](#p-delta_format) property. In `sprintf()`, a single percent symbol is used for
+specifying format specifiers, so to actually print a literal percent sign, you need to escape it
+with another percent symbol.
 
 Here is how the control displays:
 <figure class="tp-center">
@@ -198,7 +203,7 @@ that provide information. The [*color_map*](#p-color_map) property lets you do j
 
 Here is an example where this is relevant: our `metric` control should display a color depending
 on its wavelength.<br/>
-Here is the definition of the colormap assigning color names to wavelength ranges:
+Here is the definition of the color map assigning color names to wavelength ranges:
 ```python
 color_wl = 530
 color_map = {
@@ -216,7 +221,7 @@ color_map = {
 
 *color_wl* represents the wavelength of the color we want to represent.
 
-We can use the colormap stored in *color_map* in the control definition:
+We can use the color map stored in *color_map* in the control definition:
 !!! taipy-element
     default={color_wl}
     color_map={color_map}

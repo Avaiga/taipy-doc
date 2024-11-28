@@ -53,13 +53,15 @@ TOC_ENTRY_PART2 = r"\"\s*class=\"md-nav__link\">([^<]*)</a>\s*</li>\s*"
 XREF_RE = re.compile(
     r"<code>(?:\(([\w*\.]*)\))?([\.\w]*)(\(.*?\))?\^<\/code>(?:\(([^\)]*)\))?"
 )
+# Process MUI icons blocks
+MUI_ICON_RE = re.compile(r"\[MUI\s*:s*(.*?)s*\]")
 
 
 def find_dummy_h3_entries(content: str) -> Dict[str, str]:
     """
     Find 'dummy <h3>' entries.
 
-    These are <h3> tags that are just redirections to another page.
+    These <h3> tags are just redirect to another page.
     These need to be removed, and redirection must be used in TOC.
     """
 
@@ -110,9 +112,9 @@ def remove_dummy_h3(content: str, ids: Dict[str, str]) -> str:
 
 def create_navigation_buttons() -> str:
     def create_button(label: str, path: str, class_name: str, group: str = "") -> str:
-        gclass = " .tp-nav-button-group_element" if group else ""
+        group_class = " .tp-nav-button-group_element" if group else ""
         html = f"""
-                <a class="tp-content-card tp-content-card--extra-small {class_name}{gclass}" href="http://TAIPY_DOCS_URL/{path}">
+                <a class="tp-content-card tp-content-card--extra-small {class_name}{group_class}" href="http://TAIPY_DOCS_URL/{path}">
                 <header class="tp-content-card-header">
                     <h4>{label}</h4>
                 </header>
@@ -156,7 +158,7 @@ def on_post_build(env):
 
     site_dir = env.conf["site_dir"]
     site_dir_unix = site_dir.replace("\\", "/")
-    site_url = env.conf["site_url"]
+    site_url = env.conf["site_url"]  # noqa: F841
     xrefs = {}
     multi_xrefs = {}
     xrefs_path = "xrefs"
@@ -172,10 +174,10 @@ def on_post_build(env):
             if xref_desc[2]:
                 x_packages.update(xref_desc[2])
         else:
-            descs = [xrefs[f"{xref}/{i}"] for i in range(0, xref_desc)]
             # If unspecified, the first xref will be used (the one with the shortest package)
-            multi_xrefs[xref] = sorted(descs, key=lambda p: len(p[0]))
+            multi_xrefs[xref] = sorted([xrefs[f"{xref}/{i}"] for i in range(0, xref_desc)], key=lambda p: len(p[0]))
     ref_files_path = os.path.join(site_dir, "refmans", "reference")
+    mui_icons_path = os.path.join(site_dir, "refmans", "gui", "viselements", "mui-icons.svg")
     fixed_cross_refs = {}
     # Create navigation button once for all pages
     navigation_buttons = create_navigation_buttons()
@@ -184,7 +186,7 @@ def on_post_build(env):
             # Post-process generated '.html' files
             if f.endswith(".html"):
                 filename = os.path.join(root, f)
-                with open(filename) as html_file:
+                with open(filename, encoding="utf-8") as html_file:
                     try:
                         html_content = html_file.read()
                     except Exception as e:
@@ -257,7 +259,19 @@ def on_post_build(env):
                         "<h1 \\2>\\1\\3</h1>", html_content
                     )
 
-                    # """
+                    # Replace MUI icons tags: [MUI:<iconName>] -> <svg...><use ...[iconName]/></svg>
+                    new_content = ""
+                    last_location = 0
+                    rel_mui_icons_path = None
+                    for m in MUI_ICON_RE.finditer(html_content):
+                        if not rel_mui_icons_path:
+                            rel_mui_icons_path = os.path.relpath(mui_icons_path, filename).replace("\\", "/")[3:]
+                        new_content += (html_content[last_location : m.start()] +
+                        f"<svg class=\"mui-icon\" viewBox=\"0 0 24 24\"><use xlink:href=\"{rel_mui_icons_path}#{m[1]}\"/></svg>")
+                        last_location = m.end()
+                    if last_location:
+                        html_content = new_content + html_content[last_location:]
+
                     # Specific processing for Getting Started documentation files
                     if "getting_started" in filename:
                         GS_H1_H2 = re.compile(
@@ -840,7 +854,7 @@ def on_post_build(env):
                                 html_content,
                             )
 
-                with open(filename, "w") as html_file:
+                with open(filename, "w", encoding="utf-8") as html_file:
                     html_file.write(html_content)
             # Replace path to doc in '.ipynb' files
             elif f.endswith(".ipynb"):
