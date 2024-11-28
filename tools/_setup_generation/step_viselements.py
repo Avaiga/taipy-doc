@@ -17,8 +17,6 @@ import re
 from io import StringIO
 from typing import Dict
 
-import requests
-
 from .setup import Setup, SetupStep
 from .viselements import VELoader, VEToc
 
@@ -76,79 +74,23 @@ class VisElementsStep(SetupStep):
         self.elements = loader.elements
         self.mui_icons = None
 
-
     def setup(self, setup: Setup) -> None:
-        self.__generate_mui_icons()
+        self.__read_mui_icons()
         tocs = self.__generate_element_pages()
         self.__build_navigation()
         self.__generate_toc_file(tocs)
         self.__generate_builder_api()
 
-    # Generate all MUI icons that are used in the front-end code.
-    # - Extract all the reference icons
-    # - Extract each SVG definition
-    # 
-    SVG_ICON_RE = re.compile(r"<symbol\s+id=\"(.*?)\"")
-    MUI_ICON_RE = re.compile(r"import.*?from\s+\"@mui/icons-material/(.*)\"")
-    MUI_ICON_SVG_PATH_RE = re.compile(r"\"path\"\s*,\s*{\s*d\s*:\s*\"(.*?)\"\s*}", re.MULTILINE | re.DOTALL)
-    def __generate_mui_icons(self):
+    # Read MUI icons symbol names from mui-icons.svg if it exists, so we can check references
+    # from Markdown body text.
+    def __read_mui_icons(self):
+        SVG_ICON_RE = re.compile(r"<symbol\s+id=\"(.*?)\"")
+        self.mui_icons = None
         mui_icons_path = self.VISELEMENTS_DIR_PATH + "/mui-icons.svg"
-        current_icons = []
         if os.path.isfile(mui_icons_path):
             with open(mui_icons_path, "r") as file:
                 content = file.read()
-                current_icons = [m[1] for m in self.SVG_ICON_RE.finditer(content)]
-        
-        self.mui_icons = set()
-        def search_mui_icons(dir_name: str):
-            for file_name in os.listdir(dir_name):
-                if file_name == "node_modules":
-                    continue
-                file_path = os.path.join(dir_name, file_name)
-                if os.path.isdir(file_path):
-                    search_mui_icons(file_path)
-                elif file_name.endswith(".tsx") and ".spec." not in file_name:
-                    with open(file_path, "r") as file:
-                        content = file.read()
-                        for m in self.MUI_ICON_RE.finditer(content):
-                            icon = m[1]
-                            if icon not in self.mui_icons:
-                                self.mui_icons.add(icon)
-        search_mui_icons(self.FE_DIR_PATH)
-        self.mui_icons = sorted(self.mui_icons)
-        if current_icons != self.mui_icons:
-            print("NOTE - Generating MUI icons")
-            github_token = os.environ.get("GITHUB_TOKEN", "")
-            if github_token:
-                github_token = f"https://{github_token}@"
-            MUI_URL = "raw.githubusercontent.com/mui/material-ui/refs/heads/master/packages/mui-icons-material/lib/{icon}.js"
-
-            def extract_svg_paths(icon: str) -> list[str]:
-                url = MUI_URL.format(icon=icon)
-                print(f"NOTE - Trying to download icon at {url}")
-                response = requests.get(github_token + url)
-                if response.status_code != 200:
-                    print(f"ERROR - Couldn't find source for icon {icon} - Status code={response.status_code} ({response.reason})")
-                    return None
-                return [m[1] for m in self.MUI_ICON_SVG_PATH_RE.finditer(response.text)]
-
-            with open(mui_icons_path, "w") as file:
-                print("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"0\" height=\"0\">", file=file)
-                for icon in self.mui_icons:
-                    paths = extract_svg_paths(icon)
-                    if paths is None:
-                        continue
-                    print(f"  <symbol id=\"{icon}\" viewBox=\"0 0 24 24\">", file=file)
-                    paths = extract_svg_paths(icon)
-                    if len(paths) > 1:
-                        print("    <g>", file=file)
-                        for path in paths:
-                            print(f"      <path d=\"{path}\"/>", file=file)
-                        print("    </g>", file=file)
-                    else:
-                        print(f"    <path d=\"{paths[0]}\"/>", file=file)
-                    print( "  </symbol>", file=file)
-                print("</svg>", file=file)
+                self.mui_icons = [m[1] for m in SVG_ICON_RE.finditer(content)]
 
     def __check_paths(self):
         if not os.access(f"{self.TOC_PATH}_template", os.R_OK):
@@ -319,10 +261,12 @@ class VisElementsStep(SetupStep):
             )
 
         # Check potential MUI icons
-        MUI_ICON_RE = re.compile(r"\[MUI\s*:s*(.*?)s*\]")
-        for m in MUI_ICON_RE.finditer(after_properties):
-            if m[1] not in self.mui_icons:
-                print(f"WARNING: Unknown MUI icon '{m[1]}' used in doc for element '{element_type}'")
+        if self.mui_icons is not None:
+            for m in re.finditer(r"\[MUI\s*:s*(.*?)s*\]", after_properties):
+                if m[1] not in self.mui_icons:
+                    print(
+                        f"WARNING: Unknown MUI icon '{m[1]}' used in doc for element '{element_type}'"
+                    )
 
         # Generate the Markdown output
         with open(f"{element_desc['doc_path']}/{element_type}.md", "w") as md_file:
@@ -530,16 +474,17 @@ class [element_type]({base_class}):
             raise ValueError(
                 "Couldn't locate first header1 in documentation for element 'chart'"
             )
-        styling_match = re.search(
-            r"\n# Styling\n", after, re.MULTILINE | re.DOTALL
-        )
+        styling_match = re.search(r"\n# Styling\n", after, re.MULTILINE | re.DOTALL)
         if not styling_match:
             raise ValueError(
                 "Couldn't locate \"Styling\" header1 in documentation for element 'chart'"
             )
         return (
             match[1] + chart_gallery + before[match.end() :],
-            after[: styling_match.start()] + chart_sections + "\n\n" + after[styling_match.start() :]
+            after[: styling_match.start()]
+            + chart_sections
+            + "\n\n"
+            + after[styling_match.start() :],
         )
 
     def __process_element_md_file(self, type: str, documentation: str) -> str:
