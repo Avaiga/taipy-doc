@@ -48,7 +48,7 @@ class ContributorsStep(SetupStep):
     def get_repo_urls(self):
         response = self.__get(self.REPOS)
         if response.status_code != 200:
-            print(f"WARNING - Couldn't get repositories. response.status_code: {response.status_code}", flush=True)
+            #print(f"WARNING - Couldn't get repositories. response.status_code: {response.status_code}", flush=True)
             return
         repos = response.json()
         self.REPO_URLS = list(map(lambda _: _["url"], repos))
@@ -56,7 +56,7 @@ class ContributorsStep(SetupStep):
     def get_avaiga_members(self):
         response = self.__get(self.MEMBERS_URL)
         if response.status_code != 200:
-            print(f"WARNING - Couldn't get members. response.status_code: {response.status_code}", flush=True)
+            #print(f"WARNING - Couldn't get members. response.status_code: {response.status_code}", flush=True)
             return
         members = response.json()
         for member in members:
@@ -68,7 +68,7 @@ class ContributorsStep(SetupStep):
         for url in self.REPO_URLS:
             response = self.__get(url + "/contributors")
             if response.status_code != 200:
-                print(f"WARNING - Couldn't get contributors. response.status_code: {response.status_code}", flush=True)
+                #print(f"WARNING - Couldn't get contributors. response.status_code: {response.status_code}", flush=True)
                 return
             contributors = response.json()
             for contrib in contributors:
