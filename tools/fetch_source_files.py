@@ -239,21 +239,50 @@ def move_files(repo: str, src_path: str):
     elif repo == "taipy-designer":
         designer_doc_dir = os.path.join(ROOT_DIR, "docs", "userman", "ecosystem", "designer")
         safe_rmtree(designer_doc_dir)
-        src_documentation_dir = os.path.join(src_path, "documentation")
-        saved_dir = os.getcwd()
-        os.chdir(saved_dir)
+        doc_src_dir = os.path.join(src_path, "documentation")
+        taipy_docs_src_dir = os.path.join(doc_src_dir, "taipy_docs")
+        tools_src_dir = os.path.join(doc_src_dir, "tools")
+        shutil.copytree(os.path.join(doc_src_dir, "taipy_docs"), designer_doc_dir)
+        shutil.copy(
+            os.path.join(doc_src_dir, "mkdocs_taipy.yml"),
+            os.path.join(designer_doc_dir, "mkdocs.yml_template"),
+        )
+        dest_dir = os.path.join(designer_doc_dir, "designer-examples")
+        safe_rmtree(dest_dir)
+        os.mkdir(dest_dir)
         subprocess.run(
-            f"python {os.path.join(src_path, 'copy_examples.py')}",
+            f"python \"{os.path.join(tools_src_dir, 'zip_examples.py')}\" "
+            # src_directory
+            f"\"{taipy_docs_src_dir}\" "
+            # intermediate_directory
+            f"\"{dest_dir}\" "
+            # target_directory
+            f"\"{designer_doc_dir}\" "
+            # zip)file
+            "examples.zip",
             shell=True,
             capture_output=True,
             text=True,
         )
-        os.chdir(saved_dir)
-        shutil.copytree(os.path.join(src_documentation_dir, "taipy_docs"), designer_doc_dir)
-        shutil.copy(
-            os.path.join(src_documentation_dir, "mkdocs_taipy.yml"),
-            os.path.join(designer_doc_dir, "mkdocs.yml_template"),
+        safe_rmtree(dest_dir)
+        dest_dir = os.path.join(designer_doc_dir, "designer-training")
+        safe_rmtree(dest_dir)
+        os.mkdir(dest_dir)
+        subprocess.run(
+            f"python \"{os.path.join(tools_src_dir, 'zip_examples.py')}\" "
+            # src_directory
+            f"\"{os.path.join(taipy_docs_src_dir, 'training')}\" "
+            # intermediate_directory
+            f"\"{dest_dir}\" "
+            # target_directory
+            f"\"{os.path.join(designer_doc_dir, 'training')}\" "
+            # zip)file
+            "training.zip",
+            shell=True,
+            capture_output=True,
+            text=True,
         )
+        safe_rmtree(dest_dir)
     else:
         try:
 
@@ -313,9 +342,6 @@ def move_files(repo: str, src_path: str):
 
         finally:
             pass
-            """
-            shutil.rmtree(tmp_dir)
-            """
 
 
 frontend_dir = os.path.join(ROOT_DIR, "taipy-fe")

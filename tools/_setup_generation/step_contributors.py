@@ -13,7 +13,6 @@ from .setup import SetupStep, Setup
 
 
 class ContributorsStep(SetupStep):
-
     def __init__(self):
         self.GH_TOKEN = os.getenv("GITHUB_TOKEN", None)
         self.BASE_URL = "https://api.github.com"
@@ -48,21 +47,21 @@ class ContributorsStep(SetupStep):
     def get_repo_urls(self):
         response = self.__get(self.REPOS)
         if response.status_code != 200:
-            print(f"WARNING - Couldn't get repositories. response.status_code: {response.status_code}", flush=True)
+            #print(f"WARNING - Couldn't get repositories. response.status_code: {response.status_code}", flush=True)
             return
         repos = response.json()
-        self.REPO_URLS = list(map(lambda _: _['url'], repos))
+        self.REPO_URLS = list(map(lambda _: _["url"], repos))
 
     def get_avaiga_members(self):
-        response = self.__get(self.MEMBERS_URL, with_token=False)
+        response = self.__get(self.MEMBERS_URL)
         if response.status_code != 200:
-            print(f"WARNING - Couldn't get members. response.status_code: {response.status_code}", flush=True)
+            #print(f"WARNING - Couldn't get members. response.status_code: {response.status_code}", flush=True)
             return
         members = response.json()
         for member in members:
-            login = member['login']
+            login = member["login"]
             if login not in self.MEMBERS and login not in self.ANONYMOUS:
-                self.MEMBERS[login] = {"avatar_url": member['avatar_url'], "html_url": member['html_url']}
+                self.MEMBERS[login] = {"avatar_url": member["avatar_url"], "html_url": member["html_url"]}
 
     def get_contributors(self):
         for url in self.REPO_URLS:
@@ -86,7 +85,7 @@ class ContributorsStep(SetupStep):
                 continue
             response = self.__get(url+"/contributors")
             if response.status_code != 200:
-                print(f"WARNING - Couldn't get contributors. response.status_code: {response.status_code}", flush=True)
+                #print(f"WARNING - Couldn't get contributors. response.status_code: {response.status_code}", flush=True)
                 continue
             for c in response.json():
                 login = c['login']
@@ -103,9 +102,11 @@ class ContributorsStep(SetupStep):
             random.shuffle(members_list)
             for login, member_info in members_list:
                 if login not in self.ANONYMOUS:
-                    content += f"\n- [<img src='{member_info['avatar_url']}' alt='{login} GitHub avatar' width='20'/>" \
-                                    f"{login}]" \
-                                    f"({member_info['html_url']})"
+                    content += (
+                        f"\n- [<img src='{member_info['avatar_url']}' alt='{login} GitHub avatar' width='20'/>"
+                        f"{login}]"
+                        f"({member_info['html_url']})"
+                    )
             content += "\n"
             pattern_content_tuples.append((pattern, content))
 
@@ -113,7 +114,7 @@ class ContributorsStep(SetupStep):
 
     def _replace(self, path, *pattern_content_tuples):
         # Read in the file
-        with open(path + self.TEMPLATE_SUFFIX, 'r') as file:
+        with open(path + self.TEMPLATE_SUFFIX, "r") as file:
             file_data = file.read()
 
         # Replace the patterns by the contents
@@ -123,17 +124,14 @@ class ContributorsStep(SetupStep):
             file_data = file_data.replace(pattern, content)
 
         # Write the file out without the template suffix
-        with open(path, 'w') as file:
+        with open(path, "w") as file:
             file.write(file_data)
 
     def __get(self, url, with_token=True):
         if with_token and self.GH_TOKEN:
-            headers = {
-                "Accept": "application/vnd.github+json",
-                "Authorization": "Bearer "+self.GH_TOKEN
-            }
-            # {'Authorization': f'token {self.GH_TOKEN}'}
-            return requests.get(url, headers=headers)
+            return requests.get(
+                url, headers={"Accept": "application/vnd.github+json", "Authorization": "Bearer " + self.GH_TOKEN}
+            )
         else:
             return requests.get(url)
 

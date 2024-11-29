@@ -23,15 +23,15 @@ class DesignerStep(SetupStep):
     def get_description(self) -> str:
         return "Retrieve the Designer documentation files."
 
-    def setup(self, setup: Setup): ...
+    def setup(self, _: Setup): ...
 
     def enter(self, setup: Setup):
         if os.path.exists(os.path.join(setup.docs_dir, DesignerStep.PREFIX)):
             self.DESIGNER_PATH = os.path.join(
                 setup.docs_dir, *DesignerStep.PREFIX.split("/")
             )
-            self.MKDOCS_TMPL = os.path.join(self.DESIGNER_PATH, "mkdocs.yml_template")
-            if not os.access(self.MKDOCS_TMPL, os.R_OK):
+            self.MKDOCS_TEMPLATE = os.path.join(self.DESIGNER_PATH, "mkdocs.yml_template")
+            if not os.access(self.MKDOCS_TEMPLATE, os.R_OK):
                 raise FileNotFoundError(
                     f"FATAL - Could not read docs/{DesignerStep.PREFIX}/mkdocs.yml_template"
                 )
@@ -46,7 +46,7 @@ class DesignerStep(SetupStep):
     def _read_mkdocs_template(self) -> str:
         lines = []
         indentation = 0
-        with open(self.MKDOCS_TMPL) as file:
+        with open(self.MKDOCS_TEMPLATE) as file:
             collect = False
             for line in file:
                 if line.startswith("nav:"):  # Start collecting navigation
@@ -54,10 +54,10 @@ class DesignerStep(SetupStep):
                 elif re.match(r"^[\w_]+\s*?:", line):  # Stop collecting navigation
                     if collect:
                         navigation = StringIO()
-                        for navline in lines:
+                        for nav_line in lines:
                             # Add each line with indentation removed
                             navigation.write("  ")
-                            navigation.write(navline[indentation:])
+                            navigation.write(nav_line[indentation:])
                             navigation.write("\n")
                         return navigation.getvalue()
                 elif collect:
