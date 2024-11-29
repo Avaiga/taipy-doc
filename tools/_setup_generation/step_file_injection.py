@@ -33,24 +33,19 @@ class FileInjectionStep(SetupStep):
 
     def setup(self, setup: Setup) -> None:
         try:
-            with open(self.src_path, 'r') as file:
+            with open(self.src_path, "r", encoding="utf-8") as file:
                 content = file.read()
                 self._replace(self.dst_tpl_path, self.pattern, content, self.dst_path)
         except Exception as e:
-            print(f"Error: cannot generate page: {e}")
+            print(f"ERROR - Cannot generate page: {e}")
 
     @staticmethod
     def _replace(in_tpl_file_path, pattern, by, into_file_path):
         # Read template file
-        with open(in_tpl_file_path, 'r') as tpl_file:
-            from_file_content = tpl_file.read()
-
+        with open(in_tpl_file_path, "r", encoding="utf-8") as file:
+            content = file.read()
         # Replace the pattern by the contents
-        content = from_file_content.replace(pattern, by)
-
+        content = content.replace(pattern, by)
         # Write the file to_file
-        with open(into_file_path, 'w') as into_file:
-            into_file.write(content)
-
-    def exit(self, setup: Setup):
-        pass
+        with open(into_file_path, "w", encoding="utf-8") as file:
+            file.write(content)
