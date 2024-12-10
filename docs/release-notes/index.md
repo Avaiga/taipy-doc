@@ -159,7 +159,7 @@ following new functionalities:
 - The impact of the
   [*show_properties*](../refmans/gui/viselements/corelements/data_node.md#p-show_properties)
   property of the [`data_node`](../refmans/gui/viselements/corelements/data_node.md) control was
-  changed. This property now controls whether or not the "Properties" tab is visible.<br/>
+  changed. This property now controls whether the "Properties" tab is visible.<br/>
   To show or hide the list of custom properties in the "Properties" tab, you must now use the
   [*show_custom_properties*](../refmans/gui/viselements/corelements/data_node.md#p-show_custom_properties)
   property.
@@ -272,12 +272,18 @@ following new functionalities:
 
 ## Significant bug fixes
 
+<h4><strong><code>taipy-core</code></strong> 4.0.2</h4>
+- Running a Taipy application on a unix base Docker container with file data nodes (csv, excel,
+  json, etc.) created on a windows host machine will raise an error because the path is not
+  recognized by the python interpreter.
+  See [issue #2267](https://github.com/Avaiga/taipy/issues/2267).
+
 <h4><strong><code>taipy</code></strong> 4.0.1</h4>
 
 - Scenario selection becomes impossible in the `scenario_selector` control after creating a new
   Scenario.<br/>
   See [issue #2169](https://github.com/Avaiga/taipy/issues/2169).
-- The Delete button of the "Edit scenario" dialog of the `scenario_selector` control is disabled 
+- The Delete button of the "Edit scenario" dialog of the `scenario_selector` control is disabled
   when it should not be.<br/>
   See [issue #1995](https://github.com/Avaiga/taipy/issues/1995).
 - A warning is issued when a scenario is created from the `scenario_selector` control.<br/>
