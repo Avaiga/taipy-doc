@@ -18,7 +18,14 @@ collapsed.
 The content of `expandable` can be specified as the block content.
 
 !!! example "Definition"
+    === "Python"
 
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.expandable("Title")
+            tgb.text("{some_content}")
+        ```
     === "Markdown"
 
         ```
@@ -28,7 +35,6 @@ The content of `expandable` can be specified as the block content.
             ...
         |>
         ```
-  
     === "HTML"
 
         ```html
@@ -37,15 +43,6 @@ The content of `expandable` can be specified as the block content.
             <taipy:text>{some_content}</taipy:text>
             ...
         </taipy:expandable>
-        ```
-
-    === "Python"
-
-        ```python
-        import taipy.gui.builder as tgb
-        ...
-        with tgb.expandable("Title")
-            tgb.text("{some_content}")
         ```
 
 ## Expandable with page

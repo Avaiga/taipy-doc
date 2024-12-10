@@ -31,54 +31,68 @@ Check the complete list
 
 Every visual element follows a similar syntax:
 
-=== "Markdown"
-    ```
-    <|{variable}|visual_element_name|param_1=param_1|param_2=param_2| ... |>
-    ```
 === "Python"
     ```python
-    tgb.visual_element_name("{variable}", param_1=param_1, param_2=param_2, ...)
+    tgb.visual_element_name("{variable}", param_1=value_1, param_2=value_2, ...)
     ```
 
-    The inclusion of *variable* within `"{...}"` tells Taipy to show and use the
-    real-time value of *variable*. Rather than re-executing the entire script,
-    Taipy intelligently adjusts only the necessary elements of the GUI to reflect
-    changes, ensuring a responsive and performance-optimized user experience.
+    The inclusion of *variable* within `"{...}"` indicates that Taipy should show and use the
+    real-time value of *variable*. Rather than re-executing the entire script, Taipy intelligently
+    adjusts only the necessary elements of the GUI to reflect changes, ensuring a responsive and
+    performance-optimized user experience.
+=== "Markdown"
+    ```
+    <|{variable}|visual_element_name|param_1=value_1|param_2=value_2| ... |>
+    ```
 
 For example, a [slider](../../../../refmans/gui/viselements/generic/slider.md) is written this way :
 
-
-=== "Markdown"
-    ```
-    <|{variable}|slider|min=min_value|max=max_value|>
-    ```
 === "Python"
     ```python
     tgb.slider("{variable}", min=min_value, max=max_value, ...)
+    ```
+=== "Markdown"
+    ```
+    <|{variable}|slider|min=min_value|max=max_value|>
     ```
 
 For example, at the beginning of the page, if you want to display:
 
 - a Python variable *text*
 
-- an input that "visually" modifies the value of __text__.
+- an input that "visually" modifies the value of *text*.
 
 Here is the overall syntax:
 
-=== "Markdown"
-    ```
-    <|{text}|>
-    <|{text}|input|>
-    ```
 === "Python"
     ```python
     tgb.text("{text}")
     tgb.input("{text}")
     ```
-
+=== "Markdown"
+    ```
+    <|{text}|>
+    <|{text}|input|>
+    ```
 
 Here is the combined code:
 
+=== "Python"
+    ```python
+    from taipy.gui import Gui
+    import taipy.gui.builder as tgb
+
+    if __name__ == "__main__":
+        text = "Original text"
+
+        with tgb.Page() as page:
+            tgb.text("# Getting started with Taipy GUI", mode="md")
+            tgb.text("My text: {text}")
+
+            tgb.input("{text}")
+
+        Gui(page).run(debug=True)
+    ```
 === "Markdown"
     ```python
     from taipy.gui import Gui
@@ -93,22 +107,6 @@ Here is the combined code:
 
         <|{text}|input|>
         """
-
-        Gui(page).run(debug=True)
-    ```
-=== "Python"
-    ```python
-    from taipy.gui import Gui
-    import taipy.gui.builder as tgb
-
-    if __name__ == "__main__":
-        text = "Original text"
-
-        with tgb.Page() as page:
-            tgb.text("# Getting started with Taipy GUI", mode="md")
-            tgb.text("My text: {text}")
-
-            tgb.input("{text}")
 
         Gui(page).run(debug=True)
     ```

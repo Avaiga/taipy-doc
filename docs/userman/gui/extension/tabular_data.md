@@ -151,24 +151,24 @@ export default GameTable;
 
 The detailed explanation of the code is as follows:
 
-- We use the [`useDispatch()`](../../refmans/reference_guiext/functions/useDispatch.md) hook
+- We use the [`useDispatch()`](../../../refmans/reference_guiext/functions/useDispatch.md) hook
   to dispatch actions to the store and initiate backend communications.
-- Additionally, the [`useModule()`](../../refmans/reference_guiext/functions/useModule.md)
+- Additionally, the [`useModule()`](../../../refmans/reference_guiext/functions/useModule.md)
   hook retrieves the page module, enabling correct execution of backend functions.
 - To request an update for every dynamic property of an element on initial render, we use the
-  [`useDispatchRequestUpdateOnFirstRender()`](../../refmans/reference_guiext/functions/useDispatchRequestUpdateOnFirstRender.md)
+  [`useDispatchRequestUpdateOnFirstRender()`](../../../refmans/reference_guiext/functions/useDispatchRequestUpdateOnFirstRender.md)
   hook provided by the Taipy GUI Extension API. This hook takes five parameters:
   - *dispatch*: The React dispatcher associated with the context.
   - *id*: The identifier of the element.
   - *context*: The execution context.
   - *updateVars*: The content of the *updateVars* property.
 - We also dispatch the
-  [`createRequestDataUpdateAction()`](../../refmans/reference_guiext/functions/createRequestDataUpdateAction.md)
+  [`createRequestDataUpdateAction()`](../../../refmans/reference_guiext/functions/createRequestDataUpdateAction.md)
   hook to create a request data update action, which updates the context by invoking the
   `(ElementLibrary.)get_data()^` method of the backend library. This invocation triggers an update
   of front-end elements holding the data.
 
-The [`createRequestDataUpdateAction()`](../../refmans/reference_guiext/functions/createRequestUpdateAction.md)
+The [`createRequestDataUpdateAction()`](../../../refmans/reference_guiext/functions/createRequestUpdateAction.md)
 hook accepts eight parameters:
 
 - *name*: The name of the variable containing the requested data, as received in the property.

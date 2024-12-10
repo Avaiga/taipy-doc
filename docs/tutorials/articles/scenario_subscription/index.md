@@ -103,17 +103,16 @@ def on_submission_status_change(state, submittable, details):
 
 When creating a GUI for your scenarios, you can associate this function with a visual element for real-time updates. For example:
 
-=== "Markdown"
-    ```
-    <|{scenario}|scenario|on_submission_change=on_submission_status_change|>
-    ```
 === "Python"
     ```python
     import taipy.gui.builder as tgb
     ...
     tgb.scenario("{scenario}", on_submission_change=on_submission_status_change)
     ```
-
+=== "Markdown"
+    ```
+    <|{scenario}|scenario|on_submission_change=on_submission_status_change|>
+    ```
 
 This visual element will be updated whenever there is a change in the submission status, providing real-time feedback on the GUI.
 

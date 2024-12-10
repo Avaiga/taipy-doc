@@ -22,17 +22,17 @@ can be changed and accessed by all users ignoring the user's state.
 For example, the following code creates a two-user chat application. You can run
 this code in both a browser tab and an incognito window to simulate two users.
 
-=== "Markdown"
-    ```python
-    {%
-    include-markdown "./src/main.py"
-    comments=false
-    %}
-    ```
 === "Python"
     ```python
     {%
     include-markdown "./src/main_tgb.py"
+    comments=false
+    %}
+    ```
+=== "Markdown"
+    ```python
+    {%
+    include-markdown "./src/main.py"
     comments=false
     %}
     ```

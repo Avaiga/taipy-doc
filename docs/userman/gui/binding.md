@@ -7,18 +7,37 @@ Consider the following application:
 
 <a name="first-example"></a>
 
-```python linenums="1"
-from taipy import Gui
+=== "Python"
+    ```python linenums="1"
+    import taipy.gui.builder as tgb
+    from taipy import Gui
 
-if __name__ == "__main__":
-  x = 1234
+    x = 1234
+    with tgb.Page() as page:
+        tgb.html("h1", "Hello Taipy")
+        tgb.html("", "The variable")
+        tgb.html("tt", "x")
+        tgb.html("", "is set to")
+        tgb.text("{x}", inline=True)
 
-  Gui(page="""
-# Hello Taipy
+    if __name__ == "__main__":
+        Gui(page=page).run()
+    ```
+=== "Markdown"
+    ```python linenums="1"
+    from taipy import Gui
 
-The variable `x` contains the value <|{x}|>.
-  """).run()
-```
+
+    x = 1234
+    page = """
+    # Hello Taipy
+
+    The variable `x` is set to <|{x}|>.
+    """
+
+    if __name__ == "__main__":
+        Gui(page=page).run()
+    ```
 
 When this program runs (and a web browser is directed to the running server), the
 root page displays the value of the variable *x*, as it was defined in your code.
@@ -387,19 +406,6 @@ You can directly use this class as a LoV value in you control.<br/>
 Here is how you can use the *Color* enumeration class in a
 [`toggle`](../../refmans/gui/viselements/generic/toggle.md) control:
 !!! example "Enum as LoV"
-
-    === "Markdown"
-
-        ```
-        <|{color}|toggle|lov={Color}|>
-        ```
-
-    === "HTML"
-
-        ```html
-        <taipy:toggle lov="{Color}">{color}</taipy:toggle>
-        ```
-
     === "Python"
 
         ```python
@@ -414,6 +420,18 @@ Here is how you can use the *Color* enumeration class in a
         ```
         In this case, the *color* variable will hold the enumeration member's value (e.g., 0, 1, 2)
         instead of the enumeration member (e.g., the object `Color.RED`).
+
+    === "Markdown"
+
+        ```
+        <|{color}|toggle|lov={Color}|>
+        ```
+
+    === "HTML"
+
+        ```html
+        <taipy:toggle lov="{Color}">{color}</taipy:toggle>
+        ```
 
 When this control is used on a page, the *color* variable will be updated to reflect the selected
 member from the *Color* enumeration class.<br/>
@@ -442,7 +460,7 @@ used in 'regular' *LoV*s.
 
     The *list of values* is an ordered list of descriptors:
 
-    ```py
+    ```python
     python_versions=[
       { "name": "0.9.0", "date": 1991 },
       { "name": "1.0",   "date": 1994 },

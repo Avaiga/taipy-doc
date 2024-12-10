@@ -51,30 +51,24 @@ the same level, the first node will be automatically collapsed.
 The [*expanded*](#p-expanded) property can also hold a list of node identifiers that are expanded.
 
 !!! example "Definition"
-
-    === "Markdown"
-
-        ```
-        <|{value}|tree|lov=Item 1;Item 2;Item 3|not expanded|>
-
-        <|{value}|tree|lov=Item 1;Item 2;Item 3|expanded=Item 2|>
-        ```
-
-    === "HTML"
-
-        ```html
-        <taipy:tree value="{value}" lov="Item 1;Item 2;Item 3" expanded="False" />
-
-        <taipy:tree value="{value}" lov="Item 1;Item 2;Item 3" expanded="Item 2" />
-        ```
-
     === "Python"
-
         ```python
         import taipy.gui.builder as tgb
         ...
         tgb.tree("value", lov="Item 1;Item 2;Item 3", expanded=False)
         tgb.tree("value", lov="Item 1;Item 2;Item 3", expanded="Item 2")
+        ```
+    === "Markdown"
+        ```
+        <|{value}|tree|lov=Item 1;Item 2;Item 3|not expanded|>
+
+        <|{value}|tree|lov=Item 1;Item 2;Item 3|expanded=Item 2|>
+        ```
+    === "HTML"
+        ```html
+        <taipy:tree value="{value}" lov="Item 1;Item 2;Item 3" expanded="False" />
+
+        <taipy:tree value="{value}" lov="Item 1;Item 2;Item 3" expanded="Item 2" />
         ```
 
 ## Display a tree of dictionary entries

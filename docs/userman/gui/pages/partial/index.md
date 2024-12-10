@@ -5,6 +5,19 @@ search:
 
 Partials can be used within multiple objects in Taipy: [part](../../../../refmans/gui/viselements/generic/part.md), [dialog](../dialog/index.md) and [pane](../pane/index.md). They can be used as a static resusable component like so.
 
+=== "Python"
+    ```python
+    from taipy.gui import Gui
+
+    # Define the main page layout
+    with tgb.Page() as page:
+        tgb.part(partial="{partial}")
+
+    # Create and run the Taipy GUI
+    gui = Gui(page)
+    partial = gui.add_partial("Your first partial")
+    gui.run()
+    ```
 === "Markdown"
     ```python
     from taipy.gui import Gui
@@ -13,19 +26,6 @@ Partials can be used within multiple objects in Taipy: [part](../../../../refman
     page = """
     <|part|partial={partial}|>
     """
-
-    # Create and run the Taipy GUI
-    gui = Gui(page)
-    partial = gui.add_partial("Your first partial")
-    gui.run()
-    ```
-=== "Python"
-    ```python
-    from taipy.gui import Gui
-
-    # Define the main page layout
-    with tgb.Page() as page:
-        tgb.part(partial="{partial}")
 
     # Create and run the Taipy GUI
     gui = Gui(page)
@@ -48,6 +48,24 @@ state.partial.update_content(state, new_content)
 The `(Partial.)update_content()^` method expects two arguments: the state object and the new 
 content of the partial.
 
+=== "Python"
+    ```python
+    from taipy.gui import Gui
+    import taipy.gui.builder as tgb
+
+    def change_partial(state):
+        state.partial.update_content(state, "Partial is changed!")
+
+    # Define the main page layout
+    with tgb.Page() as page:
+        tgb.button('Change partial', on_action=change_partial)
+        tgb.part(partial="{partial}")
+
+    # Create and run the Taipy GUI
+    gui = Gui(page)
+    partial = gui.add_partial("Your first partial")
+    gui.run()
+    ```
 === "Markdown"
     ```python
     from taipy.gui import Gui
@@ -66,23 +84,6 @@ content of the partial.
     partial = gui.add_partial("Your first partial")
     gui.run()
     ```
-=== "Python"
-    ```python
-    from taipy.gui import Gui
-
-    def change_partial(state):
-        state.partial.update_content(state, "Partial is changed!")
-
-    # Define the main page layout
-    with tgb.Page() as page:
-        tgb.button('Change partial', on_action=change_partial)
-        tgb.part(partial="{partial}")
-
-    # Create and run the Taipy GUI
-    gui = Gui(page)
-    partial = gui.add_partial("Your first partial")
-    gui.run()
-    ```
 
 Note that this example could have been done without using partials and just by creating a text visual element.
 
@@ -94,12 +95,6 @@ You might want to create a list of links that can be dynamically updated:
 
 Here is the code for the main script:
 
-=== "Markdown"
-    ```python
-    {%
-    include-markdown "./src/example_md.py"
-    comments=false
-    %}    ``` 
 === "Python"
     ```python
     {%
@@ -107,6 +102,12 @@ Here is the code for the main script:
     comments=false
     %}
     ``` 
+=== "Markdown"
+    ```python
+    {%
+    include-markdown "./src/example_md.py"
+    comments=false
+    %}    ``` 
 
 This script creates a button that, when clicked, updates the list of links displayed on 
 the page. The links component is encapsulated within a partial, making it reusable and 
@@ -135,6 +136,12 @@ updated later.
 The partial needs to be placed within the layout where it will be displayed. You can 
 include it in one or multiple places within your layout.
 
+=== "Python"
+    ```python
+    with tgb.Page() as main_page:
+        tgb.button('Add links', on_action=simulate_adding_more_links)
+        tgb.part(partial="{link_partial}")
+    ``` 
 === "Markdown"
     ```python
     main_page = """
@@ -142,13 +149,6 @@ include it in one or multiple places within your layout.
     <|part|partial={link_partial}|>
     """
     ``` 
-=== "Python"
-    ```python
-    with tgb.Page() as main_page:
-        tgb.button('Add links', on_action=simulate_adding_more_links)
-        tgb.part(partial="{link_partial}")
-    ``` 
-
 
 In this code, `tgb.part(partial="{link_partial}")` is where the partial will be shown. 
 You can place this partial in multiple locations within your layout if needed.
@@ -158,20 +158,6 @@ You can place this partial in multiple locations within your layout if needed.
 To dynamically update the partial, you use the `update_content` method. This can be done 
 using either the Markdown syntax or the Python API by providing a page to this method.
 
-=== "Markdown"
-    ```python
-    def refresh_links(state):
-        partial_md = "<|layout|columns=1 1 1|\n"
-        for link in state.links:
-            link_name, link_url = link
-            partial_md += "<|card|\n"
-            partial_md += f"## {link_name}\n"
-            partial_md += "Quick description here if you like\n\n"
-            partial_md += f"[Click here to go to {link_name}]({link_url})\n"
-            partial_md += "|>\n"
-        partial_md += "|>\n"
-        state.link_partial.update_content(state, partial_md)
-    ``` 
 === "Python"
     ```python
     def refresh_links(state):
@@ -185,6 +171,20 @@ using either the Markdown syntax or the Python API by providing a page to this m
                         tgb.html("a", f"Click here to go to {link_name}", href=link_url)
                         # You could use any visual element you like
         state.link_partial.update_content(state, link_part)
+    ``` 
+=== "Markdown"
+    ```python
+    def refresh_links(state):
+        partial_md = "<|layout|columns=1 1 1|\n"
+        for link in state.links:
+            link_name, link_url = link
+            partial_md += "<|card|\n"
+            partial_md += f"## {link_name}\n"
+            partial_md += "Quick description here if you like\n\n"
+            partial_md += f"[Click here to go to {link_name}]({link_url})\n"
+            partial_md += "|>\n"
+        partial_md += "|>\n"
+        state.link_partial.update_content(state, partial_md)
     ``` 
 
 We create a new `link_part` page using the Taipy builder API in this function. We then 

@@ -8,8 +8,16 @@ Taipy lets you create as many pages as you require with whatever content you nee
 
 !!! tip "Choosing how to create pages"
 
-    Choosing between the Markdown format, HTML content, or Python code depends on several
+    Choosing between Python code, the Markdown format, or HTML content, or  depends on several
     parameters:
+
+    - Use Python with the [Page Builder API](builder.md) when:
+
+        - You are familiar with the Python language and Python libraries that help build web
+          applications (like [gradio](https://www.gradio.app/));
+        - You need to decide at runtime what elements should be created and how. This usually
+          involves control of the code flow (using tests or loops), which is more difficult to
+          achieve using text templates.
 
     - Use [Markdown](markdown.md) when:
 
@@ -26,23 +34,6 @@ Taipy lets you create as many pages as you require with whatever content you nee
           and connect to a Python backend application;
         - You need a precise page structure.
 
-    - Use Python with the [Page Builder API](builder.md) when:
-
-        - You are familiar with the Python language and Python libraries that help build web
-          applications (like [gradio](https://www.gradio.app/));
-        - You need to decide at runtime what elements should be created and how. This usually
-          involves control of the code flow (using tests or loops), which is more difficult to
-          achieve using text templates.
-
-    === "Markdown"
-        ```python
-        from taipy import Gui
-
-        if __name__ == "__main__":
-            page = "# First page"
-
-            Gui(page).run()
-        ```
     === "Python"
         ```python
         from taipy import Gui
@@ -51,6 +42,15 @@ Taipy lets you create as many pages as you require with whatever content you nee
         if __name__ == "__main__":
             with tgb.Page() as page:
                 tgb.text("# First Page", mode="md")
+
+            Gui(page).run()
+        ```
+    === "Markdown"
+        ```python
+        from taipy import Gui
+
+        if __name__ == "__main__":
+            page = "# First page"
 
             Gui(page).run()
         ```
@@ -65,6 +65,32 @@ The definition of a page typically consists of:
 - Setting callbacks to these elements.
 
 !!! example "Getting Started example"
+    === "Python"
+        ```python linenums="1"
+        from taipy.gui import Gui
+        import taipy.gui.builder as tgb
+        from math import cos, exp
+
+        def compute_data(decay:int)->list:
+            return [cos(i/6) * exp(-i*decay/600) for i in range(100)]
+
+        def slider_moved(state):
+            state.data = compute_data(state.value)
+
+        if __name__ == "__main__":
+            value = 10
+
+            with tgb.Page() as page:
+                tgb.text(value="# Taipy Getting Started", mode="md")
+                tgb.text(value="Value: {value}")
+                tgb.slider(value="{value}", on_change=slider_moved)
+                tgb.chart(data="{data}")
+
+            data = compute_data(value)
+
+            Gui(page).run(title="Dynamic chart")
+        ```
+
     === "Markdown"
         ```python linenums="1"
         from taipy.gui import Gui
@@ -94,32 +120,6 @@ The definition of a page typically consists of:
             Gui(page).run(title="Dynamic chart")
         ```
 
-    === "Python"
-        ```python linenums="1"
-        from taipy.gui import Gui
-        import taipy.gui.builder as tgb
-        from math import cos, exp
-
-        def compute_data(decay:int)->list:
-            return [cos(i/6) * exp(-i*decay/600) for i in range(100)]
-
-        def slider_moved(state):
-            state.data = compute_data(state.value)
-
-        if __name__ == "__main__":
-            value = 10
-
-            with tgb.Page() as page:
-                tgb.text(value="# Taipy Getting Started", mode="md")
-                tgb.text(value="Value: {value}")
-                tgb.slider(value="{value}", on_change=slider_moved)
-                tgb.chart(data="{data}")
-
-            data = compute_data(value)
-
-            Gui(page).run(title="Dynamic chart")
-        ```
-
 ## Registering a single page
 
 Once you have created an instance of a page renderer for a specific piece of text or Python code,
@@ -130,15 +130,6 @@ create a new page for you. That would be the easier way to create applications t
 single page. Here is how you can create and register a page in a
 Taipy application:
 
-=== "Markdown"
-    ```python
-    from taipy import Gui
-
-    if __name__ == "__main__":
-        page = "# First page"
-
-        Gui(page).run()
-    ```
 === "Python"
     ```python
     from taipy import Gui
@@ -147,6 +138,15 @@ Taipy application:
     if __name__ == "__main__":
         with tgb.Page() as page:
             tgb.text("# First Page", mode="md")
+
+        Gui(page).run()
+    ```
+=== "Markdown"
+    ```python
+    from taipy import Gui
+
+    if __name__ == "__main__":
+        page = "# First page"
 
         Gui(page).run()
     ```
@@ -162,27 +162,6 @@ use `Gui.add_pages()^` or create the `Gui^` instance using the *pages*
 argument. In those situations, you have to create a Python dictionary that
 associates a page with its name:
 
-=== "Markdown"
-    ```python
-    from taipy import Gui
-
-    if __name__ == "__main__":
-        root_md = "# Multi-page application"
-        home_md = "# Home"
-        about_md = "# About"
-
-        pages = {
-            "/": root_md,
-            "home": home_md,
-            "about": about_md
-        }
-
-        Gui(pages=pages).run()
-        # or
-        # gui = Gui()
-        # gui.add_pages(pages)
-        # gui.run()
-    ```
 === "Python"
     ```python
     from taipy import Gui
@@ -202,6 +181,27 @@ associates a page with its name:
             "/": root_page,
             "home": home_page,
             "about": about_page
+        }
+
+        Gui(pages=pages).run()
+        # or
+        # gui = Gui()
+        # gui.add_pages(pages)
+        # gui.run()
+    ```
+=== "Markdown"
+    ```python
+    from taipy import Gui
+
+    if __name__ == "__main__":
+        root_md = "# Multi-page application"
+        home_md = "# Home"
+        about_md = "# About"
+
+        pages = {
+            "/": root_md,
+            "home": home_md,
+            "about": about_md
         }
 
         Gui(pages=pages).run()
@@ -236,7 +236,6 @@ root page of your application, and is replaced by the target page content when t
 runs.
 
 !!! example
-
     ```python
     from taipy import Gui
 

@@ -33,10 +33,6 @@ interface. You can use various visual elements such as a
 [here](../../../../refmans/gui/viselements/index.md). The syntax for adding a visual element is
 as follows:
 
-=== "Markdown"
-    ```
-    <|{variable}|visual_element_name|param_1=param_1|param_2=param_2| ... |>
-    ```
 === "Python"
     ```python
     tgb.visual_element_name("{variable}", param_1=param_1, param_2=param_2, ...)
@@ -46,46 +42,36 @@ as follows:
     real-time value of *variable*. Rather than re-executing the entire script,
     Taipy intelligently adjusts only the necessary elements of the GUI to reflect
     changes, ensuring a responsive and performance-optimized user experience.
-
+=== "Markdown"
+    ```
+    <|{variable}|visual_element_name|param_1=param_1|param_2=param_2| ... |>
+    ```
 
 For example, to add a [slider](../../../../refmans/gui/viselements/generic/slider.md)
 that modifies the value of the variable *n_week*, use the following syntax:
 
-=== "Markdown"
-    ```markdown
-    <|{n_week}|slider|min=1|max=52|>
-    ```
 === "Python"
     ```python
     tgb.slider("{n_week}", min=1, max=52)
     ```
+=== "Markdown"
+    ```markdown
+    <|{n_week}|slider|min=1|max=52|>
+    ```
 
 To display a chart with the dataset's content, use the following syntax:
 
-=== "Markdown"
-    ```markdown
-    <|{dataset}|chart|type=bar|x=Date|y=Value|>
-    ```
 === "Python"
     ```python
     tgb.chart("{dataset}", type="bar", x="Date", y="Value")
     ```
-
+=== "Markdown"
+    ```markdown
+    <|{dataset}|chart|type=bar|x=Date|y=Value|>
+    ```
 
 You can also use Plotly Python to create a figure object and inject it in the chart:
 
-=== "Markdown"
-    ```python
-    from taipy.gui import Gui
-    import plotly.graph_objects as go
-
-    list_to_display = [100/x for x in range(1, 100)]
-    fig = go.Figure(data=go.Scatter(y=list_to_display))
-
-    page = "<|chart|figure={fig}|>"
-
-    Gui(page).run()
-    ```
 === "Python"
     ```python
     from taipy.gui import Gui
@@ -97,6 +83,18 @@ You can also use Plotly Python to create a figure object and inject it in the ch
 
     with tgb.Page() as page:
         tgb.chart(figure="{fig}")
+
+    Gui(page).run()
+    ```
+=== "Markdown"
+    ```python
+    from taipy.gui import Gui
+    import plotly.graph_objects as go
+
+    list_to_display = [100/x for x in range(1, 100)]
+    fig = go.Figure(data=go.Scatter(y=list_to_display))
+
+    page = "<|chart|figure={fig}|>"
 
     Gui(page).run()
     ```
@@ -133,13 +131,13 @@ def slider_moved(state):
     state.dataset_week = dataset[dataset["Date"].dt.isocalendar().week == state.n_week]
 ```
 
-=== "Markdown"
-    ```markdown
-    <|{n_week}|slider|min=1|max=52|on_change=slider_moved|>
-    ```
 === "Python"
     ```python
     tgb.slider("{n_week}", min=1, max=52, on_change=slider_moved)
+    ```
+=== "Markdown"
+    ```markdown
+    <|{n_week}|slider|min=1|max=52|on_change=slider_moved|>
     ```
 
 # Markdown

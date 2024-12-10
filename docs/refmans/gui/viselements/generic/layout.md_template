@@ -11,9 +11,14 @@ If the _columns_ property contains only digits and spaces, it is considered as f
 The default layout contains 2 columns in desktop mode and 1 column in mobile mode.
 
 !!! example "Definition"
-
+    === "Python"
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.layout()
+            tgb.text("{some_content}")
+        ```
     === "Markdown"
-
         ```
         <|layout|
 
@@ -21,9 +26,7 @@ The default layout contains 2 columns in desktop mode and 1 column in mobile mod
 
         |>
         ```
-
     === "HTML"
-
         ```html
         <taipy:layout>
 
@@ -32,21 +35,20 @@ The default layout contains 2 columns in desktop mode and 1 column in mobile mod
         </taipy:layout>
         ```
 
-    === "Python"
-
-        ```python
-        import taipy.gui.builder as tgb
-        ...
-        with tgb.layout()
-            tgb.text("{some_content}")
-        ```
-
 ## Specifying gap
 
 The *gap* between adjacent cells is set by default to 0.5rem and can be specified using the
 [*gap*](#p-gap) property.
 
 !!! example "Definition"
+    === "Python"
+
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.layout(gap="20px")
+            tgb.text("{some_content}")
+        ```
 
     === "Markdown"
 
@@ -68,23 +70,26 @@ The *gap* between adjacent cells is set by default to 0.5rem and can be specifie
         </taipy:layout>
         ```
 
-    === "Python"
-
-        ```python
-        import taipy.gui.builder as tgb
-        ...
-        with tgb.layout(gap="20px")
-            tgb.text("{some_content}")
-        ```
-
 ## Layout with a central "greedy" column
 
 You can use the `fr` CSS unit so that the middle column use all the available space.
 
 !!! example "Definition"
-
+    === "Python"
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.layout(columns="50px 1fr 50px")
+            with tgb.part()
+                tgb.text("1st column content")
+            with tgb.part()
+                tgb.text("2nd column content")
+            with tgb.part()
+                tgb.text("3rd column content")
+            with tgb.part()
+                tgb.text("1st column and second row content")
+        ```
     === "Markdown"
-
         ```
         <|layout|columns=50px 1fr 50px|
 
@@ -99,9 +104,7 @@ You can use the `fr` CSS unit so that the middle column use all the available sp
         ...
         |>
         ```
-
     === "HTML"
-
         ```html
         <taipy:layout columns="50px 1fr 50px">
             <taipy:part>
@@ -120,31 +123,27 @@ You can use the `fr` CSS unit so that the middle column use all the available sp
         </taipy:layout>
         ```
 
-    === "Python"
-
-        ```python
-        import taipy.gui.builder as tgb
-        ...
-        with tgb.layout(columns="50px 1fr 50px")
-            with tgb.part()
-                tgb.text("1st column content")
-            with tgb.part()
-                tgb.text("2nd column content")
-            with tgb.part()
-                tgb.text("3rd column content")
-            with tgb.part()
-                tgb.text("1st column and second row content")
-        ```
-
 ## Different layout for desktop and mobile devices
 
 The [*columns[mobile]*](#p-columns[mobile]) property allows to specify a different layout when
 running on a mobile device.
 
 !!! example "Definition"
-
+    === "Python"
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.layout(columns="50px 1fr 50px", columns__mobile="1 1")
+            with tgb.part()
+                tgb.text("1st column content")
+            with tgb.part()
+                tgb.text("2nd column content")
+            with tgb.part()
+                tgb.text("3rd column content or 2nd row 1st column on mobile")
+            with tgb.part()
+                tgb.text("1st column and second row content or 2nd row 2nd column on mobile")
+        ```
     === "Markdown"
-
         ```
         <|layout|columns=50px 1fr 50px|columns[mobile]=1 1|
 
@@ -159,9 +158,7 @@ running on a mobile device.
         ...
         |>
         ```
-
     === "HTML"
-
         ```html
         <taipy:layout columns="50px 1fr 50px" columns[mobile]="1 1">
             <taipy:part>
@@ -178,22 +175,6 @@ running on a mobile device.
             </taipy:part>
             ...
         </taipy:layout>
-        ```
-
-    === "Python"
-
-        ```python
-        import taipy.gui.builder as tgb
-        ...
-        with tgb.layout(columns="50px 1fr 50px", columns__mobile="1 1")
-            with tgb.part()
-                tgb.text("1st column content")
-            with tgb.part()
-                tgb.text("2nd column content")
-            with tgb.part()
-                tgb.text("3rd column content or 2nd row 1st column on mobile")
-            with tgb.part()
-                tgb.text("1st column and second row content or 2nd row 2nd column on mobile")
         ```
 
 # Styling

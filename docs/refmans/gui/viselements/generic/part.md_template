@@ -83,6 +83,13 @@ The most straightforward use of the `part` block is to group different visual el
 element to make it easy to manipulate.
 
 !!! example "Definition"
+    === "Python"
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.part()
+            tgb.text("{some_content}")
+        ```
     === "Markdown"
         ```
         <|
@@ -91,7 +98,6 @@ element to make it easy to manipulate.
         ...
         |>
         ```
-
     === "HTML"
         ```html
         <taipy:part>
@@ -101,21 +107,19 @@ element to make it easy to manipulate.
         </taipy:part>
         ```
 
-    === "Python"
-
-        ```python
-        import taipy.gui.builder as tgb
-        ...
-        with tgb.part()
-            tgb.text("{some_content}")
-        ```
-
 ## Showing and hiding controls
 
 If you set the [*render*](#p-render) property to False, the `part` is not rendered
 at all:
 
 !!! example "Page content"
+    === "Python"
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.part(render=False)
+            tgb.text("{some_content}")
+        ```
     === "Markdown"
         ```
         <|part|don't render|
@@ -124,7 +128,6 @@ at all:
         ...
         |>
         ```
-
     === "HTML"
         ```html
         <taipy:part render="false">
@@ -132,15 +135,6 @@ at all:
             <taipy:text>{some_content}</taipy:text>
             ...
         </taipy:part>
-        ```
-
-    === "Python"
-
-        ```python
-        import taipy.gui.builder as tgb
-        ...
-        with tgb.part(render=False)
-            tgb.text("{some_content}")
         ```
 
 If the value of [*render*](#p-render) is bound to a Boolean value, the `part` will show or hide its
@@ -179,25 +173,22 @@ You can also embed an external web page, setting the [*page*](#p-page) property 
 (starting with `http://` or `https://`) you want to render:
 
 !!! example "Definition"
-    === "Markdown"
-        ```
-        Here is the Wikipedia home page:
-        <|part|page=https://www.wikipedia.org/|height=500px|>
-        ```
-
-    === "HTML"
-        ```html
-        <p>Here is the Wikipedia home page:</p>
-        <taipy:part page="https://www.wikipedia.org/" height="500px"/>
-        ```
-
     === "Python"
-
         ```python
         import taipy.gui.builder as tgb
         ...
         tgb.html("p", "Here is the Wikipedia home page:")
         with tgb.part(page="https://www.wikipedia.org/", height="500px")
+        ```
+    === "Markdown"
+        ```
+        Here is the Wikipedia home page:
+        <|part|page=https://www.wikipedia.org/|height=500px|>
+        ```
+    === "HTML"
+        ```html
+        <p>Here is the Wikipedia home page:</p>
+        <taipy:part page="https://www.wikipedia.org/" height="500px"/>
         ```
 
 The resulting page will be displayed as this:
@@ -410,27 +401,20 @@ its value.
 
 In the page, add a [`slider`](slider.md) control bound to this variable:
 !!! example "Definition"
-
-    === "Markdown"
-
-        ```
-        <|{expansion}|slider|min=1|max=1000|>
-        ```
-
-    === "HTML"
-
-        ```html
-        <taipy:slider min="1" max="1000">{expansion}</taipy:slider>
-        ```
-
     === "Python"
-
         ```python
         import taipy.gui.builder as tgb
         ...
         tgb.slider("{expansion}", min=1, max=1000)
         ```
-
+    === "Markdown"
+        ```
+        <|{expansion}|slider|min=1|max=1000|>
+        ```
+    === "HTML"
+        ```html
+        <taipy:slider min="1" max="1000">{expansion}</taipy:slider>
+        ```
 
 Now, we modify the definition of the part content to dynamically create a *Spiral* instance with a
 new expansion value when the slider moves:

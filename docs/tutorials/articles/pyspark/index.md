@@ -408,13 +408,6 @@ If you're unfamiliar with Taipy's GUI capabilities, you can find a quickstart
 the following code for *app/main.py* since it isn't our focus:
 
 
-=== "Markdown"
-    ```python title="app/main.py"
-    {%
-    include-markdown "./src/app_main.py"
-    comments=false
-    %}
-    ```
 === "Python"
     ```python title="app/main.py"
     {%
@@ -422,6 +415,14 @@ the following code for *app/main.py* since it isn't our focus:
     comments=false
     %}
     ```
+=== "Markdown"
+    ```python title="app/main.py"
+    {%
+    include-markdown "./src/app_main.py"
+    comments=false
+    %}
+    ```
+
 Then, from the project folder, you can run the main script like so:
 
 ```

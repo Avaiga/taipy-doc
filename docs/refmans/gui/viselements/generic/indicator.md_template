@@ -42,23 +42,6 @@ The properties [*width*](#p-width) and [*height*](#p-height) can be specified, d
 the value of [*orientation*](#p-orientation).
 
 !!! example "Definition"
-
-    === "Markdown"
-
-        ```
-        <|Value 1|indicator|value={val1}|width=50vw|>
-
-        <|Value 2|indicator|value={val2}|orientation=vertical|height=50vh|>
-        ```
-  
-    === "HTML"
-
-        ```html
-        <taipy:indicator value="{val1}" width="50vw">Value 1</taipy:indicator>
-
-        <taipy:indicator value="{val2}" orientation="vertical" height="50vh">Value 2</taipy:indicator>
-        ```
-
     === "Python"
 
         ```python
@@ -66,6 +49,20 @@ the value of [*orientation*](#p-orientation).
         ...
         tgb.indicator("{Value 1}", value="{val1}", width="50vw")
         tgb.indicator("{Value 2}", value="{val2}", orientation="vertical", width="50vw")
+        ```
+    === "Markdown"
+
+        ```
+        <|Value 1|indicator|value={val1}|width=50vw|>
+
+        <|Value 2|indicator|value={val2}|orientation=vertical|height=50vh|>
+        ```
+    === "HTML"
+
+        ```html
+        <taipy:indicator value="{val1}" width="50vw">Value 1</taipy:indicator>
+
+        <taipy:indicator value="{val2}" orientation="vertical" height="50vh">Value 2</taipy:indicator>
         ```
 
 # Styling

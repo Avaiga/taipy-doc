@@ -106,37 +106,6 @@ Create your own Taipy application to visualize all this information. It can
 include dynamic selectors for projects and metrics, a table to display
 data, and a bar chart for visualizing metric values.
 
-=== "Markdown"
-    ```python
-    from taipy.gui import Gui
-
-    selected_projects = list(metrics_df['Project'].unique())
-    selected_metrics = ["AUC"]  # Initially focusing on AUC metrics.
-
-    def show_projects(metrics_df, selected_projects, selected_metrics):
-        return metrics_df[(metrics_df['Project'].isin(selected_projects)) &
-                        (metrics_df['MetricType'].isin(selected_metrics))]
-
-    md = """
-    # Dataiku **Overview**{: .color-primary}
-
-    **Projects**
-
-    <|{selected_projects}|selector|lov={list(metrics_df['Project'].unique())}|dropdown|multiple|class_name=fullwidth|label=Projects|>
-
-    **Metrics**
-
-    <|{selected_metrics}|selector|lov={list(metrics_df['MetricType'].unique())}|dropdown|multiple|class_name=fullwidth|label=Metrics|>
-
-    <|{show_projects(metrics_df, selected_projects, selected_metrics)}|table|filter|>
-
-    <|{show_projects(metrics_df, selected_projects, selected_metrics)}|chart|x=Name|y=Value|type=bar|>
-    """
-
-    Gui(md).run()
-    ```
-
-    [Download the code](./src/metrics_visualization.py){: .tp-btn target='blank' }
 
 === "Python"
     ```python
@@ -195,7 +164,37 @@ data, and a bar chart for visualizing metric values.
     ```
 
     [Download the code](./src/metrics_visualization_tgb.py){: .tp-btn target='blank' }
+=== "Markdown"
+    ```python
+    from taipy.gui import Gui
 
+    selected_projects = list(metrics_df['Project'].unique())
+    selected_metrics = ["AUC"]  # Initially focusing on AUC metrics.
+
+    def show_projects(metrics_df, selected_projects, selected_metrics):
+        return metrics_df[(metrics_df['Project'].isin(selected_projects)) &
+                        (metrics_df['MetricType'].isin(selected_metrics))]
+
+    md = """
+    # Dataiku **Overview**{: .color-primary}
+
+    **Projects**
+
+    <|{selected_projects}|selector|lov={list(metrics_df['Project'].unique())}|dropdown|multiple|class_name=fullwidth|label=Projects|>
+
+    **Metrics**
+
+    <|{selected_metrics}|selector|lov={list(metrics_df['MetricType'].unique())}|dropdown|multiple|class_name=fullwidth|label=Metrics|>
+
+    <|{show_projects(metrics_df, selected_projects, selected_metrics)}|table|filter|>
+
+    <|{show_projects(metrics_df, selected_projects, selected_metrics)}|chart|x=Name|y=Value|type=bar|>
+    """
+
+    Gui(md).run()
+    ```
+
+    [Download the code](./src/metrics_visualization.py){: .tp-btn target='blank' }
 
 ![Metrics Visualization](images/metrics_visualization.png){width=90% : .tp-image-border}
 
@@ -436,6 +435,38 @@ To execute the scenario, use Taipy's execution model. This initiates the configu
 scenario, including autonomous data exchange with Dataiku and triggering the
 specified scenario:
 
+=== "Python"
+    ```python
+    import taipy as tp
+
+    # Create and execute the scenario
+    if __name__ == "__main__":
+        tp.Orchestrator().run()
+        scenario = tp.create_scenario(dataiku_scenario_scenario_cfg)
+
+        scenario = None
+        with tgb.Page() as scenario_page:
+            with tgb.layout("1 1"):
+                tgb.scenario_selector("{scenario}")
+                tgb.scenario("{scenario}")
+            tgb.job_selector()
+
+            with tgb.layout("1 1"):
+                with tgb.part():
+                    tgb.text("Input Dataset:")
+                    tgb.data_node("{scenario.input_dataiku if scenario else None}")
+                with tgb.part():
+                    tgb.text("Output Dataset:")
+                    tgb.data_node("{scenario.output_dataiku if scenario else None}")
+
+            tgb.scenario_dag("{scenario}")
+
+
+        tp.Gui(scenario_page).run()
+    ```
+
+    [Download the code](./src/scenario_dataiku_tgb.py){: .tp-btn target='blank' }
+
 === "Markdown"
     ```python
     import taipy as tp
@@ -470,41 +501,6 @@ specified scenario:
     ```
 
     [Download the code](./src/scenario_dataiku.py){: .tp-btn target='blank' }
-
-
-=== "Python"
-    ```python
-    import taipy as tp
-
-    # Create and execute the scenario
-    if __name__ == "__main__":
-        tp.Orchestrator().run()
-        scenario = tp.create_scenario(dataiku_scenario_scenario_cfg)
-
-        scenario = None
-        with tgb.Page() as scenario_page:
-            with tgb.layout("1 1"):
-                tgb.scenario_selector("{scenario}")
-                tgb.scenario("{scenario}")
-            tgb.job_selector()
-
-            with tgb.layout("1 1"):
-                with tgb.part():
-                    tgb.text("Input Dataset:")
-                    tgb.data_node("{scenario.input_dataiku if scenario else None}")
-                with tgb.part():
-                    tgb.text("Output Dataset:")
-                    tgb.data_node("{scenario.output_dataiku if scenario else None}")
-
-            tgb.scenario_dag("{scenario}")
-
-
-        tp.Gui(scenario_page).run()
-    ```
-
-    [Download the code](./src/scenario_dataiku_tgb.py){: .tp-btn target='blank' }
-
-
 
 ![Dataiku Scenario](images/scenario_dataiku.png){width=90% : .tp-image-border}
 

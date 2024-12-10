@@ -400,9 +400,12 @@ class [element_type]({base_class}):
                     "corelements" if desc["prefix"] == "core_" else "generic"
                 )
                 if m := (re.search(r"(\[`(\w+)`\]\()\2\.md\)", short_doc)):
+                    # Replacing links from the doc in the Python source to another element
+                    # At this time, this works only if the source and target elements are in the
+                    # same directory (generic, corelements or blocks).
                     short_doc = (
                         short_doc[: m.start()]
-                        + f"{m[1]}../../../../../refmans/gui/viselements/{element_md_location}/{m[2]}.md)"
+                        + f"<a href=\"../{m[2]}/\"><tt>{m[2]}</tt></a>"
                         + short_doc[m.end() :]
                     )
 
@@ -506,65 +509,6 @@ class [element_type]({base_class}):
                     properties.append((p[1], p[3], p[2] if p[2] else "-"))
             new_documentation += '!!! example "Definition"\n'
 
-            # Markdown format
-            def md_property_value(property: str, value: str, type: str) -> str:
-                if type.startswith("b"):
-                    if value.lower() == "true":
-                        return property
-                    if value.lower() != "false":
-                        raise ValueError(
-                            f"Invalid value for Boolean property '{property}' in '{type}.md_template'"
-                        )
-                    if type.endswith("dont"):
-                        return f"don't {property}"
-                    elif type.endswith("no"):
-                        return f"no {property}"
-                    return f"not {property}"
-                if value.startswith("lambda"):
-                    return f"{property}={{{value}}}"
-                return f"{property}={value}"
-
-            new_documentation += '\n    === "Markdown"\n\n'
-            new_documentation += "        ```\n"
-            new_documentation += "        <|"
-            if default_property:
-                new_documentation += f"{default_property}|"
-            new_documentation += f"{type}|"
-            for n, v, t in properties:
-                new_documentation += f"{md_property_value(n, v, t)}|"
-            new_documentation += ">\n"
-            new_documentation += "        ```\n"
-
-            # HTML format
-            def html_value(property: str, value: str, type: str) -> str:
-                if type.startswith("b"):
-                    if value.lower() == "true":
-                        return f"{property}"
-                    else:
-                        value = value.lower()
-                elif value.startswith("lambda"):
-                    value = f"{{{value}}}"
-                value = value.replace('"', "'")
-                return f'{property}="{value}"'
-
-            new_documentation += '\n    === "HTML"\n\n'
-            new_documentation += "        ```html\n"
-            new_documentation += f"        <taipy:{type}"
-            html_1 = ""
-            html_2 = ""
-            if properties:
-                for n, v, t in properties:
-                    html_1 += f" {html_value(n, v, t)}"
-            if default_property:
-                html_1 += ">"
-                html_2 = f"{default_property}</taipy:{type}>"
-            else:
-                html_1 += "/>"
-            new_documentation += f"{html_1}"
-            if len(html_1) > 120 and html_2:
-                new_documentation += "\n        "
-            new_documentation += f"{html_2}\n        ```\n"
-
             # Page Builder syntax
             BP_IDX_PROP_RE = re.compile(r"^(.*?)\[([\w\d]+)\]$", re.M)
             generate_page_builder_api = True
@@ -582,7 +526,7 @@ class [element_type]({base_class}):
                 else:
                     pb_properties.append((n, v, t))
             if generate_page_builder_api:
-                new_documentation += '\n    === "Python"\n\n'
+                new_documentation += '    === "Python"\n'
                 new_documentation += "        ```python\n"
                 new_documentation += (
                     "        import taipy.gui.builder as tgb\n        ...\n"
@@ -607,6 +551,66 @@ class [element_type]({base_class}):
                 new_documentation += ")\n"
                 new_documentation += "        ```\n"
             last_location = definition.end()
+
+            # Markdown format
+            def md_property_value(property: str, value: str, type: str) -> str:
+                if type.startswith("b"):
+                    if value.lower() == "true":
+                        return property
+                    if value.lower() != "false":
+                        raise ValueError(
+                            f"Invalid value for Boolean property '{property}' in '{type}.md_template'"
+                        )
+                    if type.endswith("dont"):
+                        return f"don't {property}"
+                    elif type.endswith("no"):
+                        return f"no {property}"
+                    return f"not {property}"
+                if value.startswith("lambda"):
+                    return f"{property}={{{value}}}"
+                return f"{property}={value}"
+
+            new_documentation += '    === "Markdown"\n'
+            new_documentation += "        ```\n"
+            new_documentation += "        <|"
+            if default_property:
+                new_documentation += f"{default_property}|"
+            new_documentation += f"{type}|"
+            for n, v, t in properties:
+                new_documentation += f"{md_property_value(n, v, t)}|"
+            new_documentation += ">\n"
+            new_documentation += "        ```\n"
+
+            # HTML format
+            def html_value(property: str, value: str, type: str) -> str:
+                if type.startswith("b"):
+                    if value.lower() == "true":
+                        return f"{property}"
+                    else:
+                        value = value.lower()
+                elif value.startswith("lambda"):
+                    value = f"{{{value}}}"
+                value = value.replace('"', "'")
+                return f'{property}="{value}"'
+
+            new_documentation += '    === "HTML"\n'
+            new_documentation += "        ```html\n"
+            new_documentation += f"        <taipy:{type}"
+            html_1 = ""
+            html_2 = ""
+            if properties:
+                for n, v, t in properties:
+                    html_1 += f" {html_value(n, v, t)}"
+            if default_property:
+                html_1 += ">"
+                html_2 = f"{default_property}</taipy:{type}>"
+            else:
+                html_1 += "/>"
+            new_documentation += f"{html_1}"
+            if len(html_1) > 120 and html_2:
+                new_documentation += "\n        "
+            new_documentation += f"{html_2}\n        ```\n"
+
         return (
             new_documentation + documentation[last_location:]
             if documentation

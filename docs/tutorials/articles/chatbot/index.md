@@ -137,13 +137,6 @@ In Taipy, one way to define pages is to use Markdown strings. Here we use a
  the *send_message()* function is triggered.
 
 
-=== "Markdown"
-    ```python
-    page = """
-    <|{conversation}|table|show_all|>
-    <|{current_user_message}|input|label=Write your message here...|on_action=send_message|class_name=fullwidth|>
-    """
-    ```
 === "Python"
     ```python
     import taipy.gui.builder as tgb
@@ -157,6 +150,13 @@ In Taipy, one way to define pages is to use Markdown strings. Here we use a
             label="Write your message here...",
             class_name="fullwidth",
         )
+=== "Markdown"
+    ```python
+    page = """
+    <|{conversation}|table|show_all|>
+    <|{current_user_message}|input|label=Write your message here...|on_action=send_message|class_name=fullwidth|>
+    """
+    ```
 
 # Step 7: Run the application
 

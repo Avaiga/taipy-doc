@@ -224,32 +224,6 @@ Add these few lines to the code of your script. This creates a web application, 
 
 - access their properties.
 
-=== "Markdown"
-    ```python
-    def save(state):
-        # write values of Data Node to submit scenario
-        state.scenario.historical_temperature.write(data)
-        state.scenario.date_to_forecast.write(state.date)
-        state.refresh('scenario')
-        tp.gui.notify(state, "s", "Saved! Ready to submit")
-
-    date = None
-    scenario_md = """
-    <|{scenario}|scenario_selector|>
-
-    Select a Date
-    <|{date}|date|on_change=save|active={scenario}|>
-
-    Run the scenario
-    <|{scenario}|scenario|>
-    <|{scenario}|scenario_dag|>
-
-    View all the information on your prediction here
-    <|{scenario.predictions}|data_node|>
-    """
-
-    tp.Gui(scenario_md).run()
-    ```
 === "Python"
     ```python
     import taipy.gui.builder as tgb
@@ -277,6 +251,32 @@ Add these few lines to the code of your script. This creates a web application, 
 
         tp.Gui(scenario_page).run()
     ```
+=== "Markdown"
+    ```python
+    def save(state):
+        # write values of Data Node to submit scenario
+        state.scenario.historical_temperature.write(data)
+        state.scenario.date_to_forecast.write(state.date)
+        state.refresh('scenario')
+        tp.gui.notify(state, "s", "Saved! Ready to submit")
+
+    date = None
+    scenario_md = """
+    <|{scenario}|scenario_selector|>
+
+    Select a Date
+    <|{date}|date|on_change=save|active={scenario}|>
+
+    Run the scenario
+    <|{scenario}|scenario|>
+    <|{scenario}|scenario_dag|>
+
+    View all the information on your prediction here
+    <|{scenario.predictions}|data_node|>
+    """
+
+    tp.Gui(scenario_md).run()
+    ```
 
 The
 [Scenario management controls](../../../refmans/gui/viselements/index.md#scenario-and-data-management-controls)
@@ -287,17 +287,17 @@ creating a Scenario based application connected to your pipelines has never been
 
 # Entire code
 
-=== "Markdown"
-    ```python
-    {%
-    include-markdown "./src/scenario_management.py"
-    comments=false
-    %}
-    ```
 === "Python"
     ```python
     {%
     include-markdown "./src/scenario_management_tgb.py"
+    comments=false
+    %}
+    ```
+=== "Markdown"
+    ```python
+    {%
+    include-markdown "./src/scenario_management.py"
     comments=false
     %}
     ```

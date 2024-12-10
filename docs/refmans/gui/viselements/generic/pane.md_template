@@ -66,25 +66,7 @@ show_pane = False
 
 Here is the definition of the main page of the application:
 !!! example "Definition"
-
-    === "Markdown"
-
-        ```python
-        page = """
-        # The **pane** block
-
-        <|{show_pane}|pane|
-        Here is the content of the pane.
-        |>
-
-        This is the content of the page.
-
-        <|Show pane|button|>
-        """
-        ```
-
     === "Python"
-
         ```python
         import taipy.gui.builder as tgb
         ...
@@ -98,7 +80,20 @@ Here is the definition of the main page of the application:
 
             tgb.button("Show pane")
         ```
+    === "Markdown"
+        ```python
+        page = """
+        # The **pane** block
 
+        <|{show_pane}|pane|
+        Here is the content of the pane.
+        |>
+
+        This is the content of the page.
+
+        <|Show pane|button|>
+        """
+        ```
 We define the `on_action` callback function so that it sets *show_pane* to True:
 ```python
 def on_action(state):
@@ -129,25 +124,7 @@ a lambda definition as the button's action.
 
 Here is an alternative page definition:
 !!! example "Definition"
-
-    === "Markdown"
-
-        ```python
-        page = """
-        # The **pane** block
-
-        <|{show_pane}|pane|
-        Here is the content of the pane.
-        |>
-
-        This is the content of the page.
-
-        <|Show pane|button|on_action={lambda s: s.assign("show_pane", True)}|>
-        """
-        ```
-
     === "Python"
-
         ```python
         import taipy.gui.builder as tgb
         ...
@@ -161,7 +138,20 @@ Here is an alternative page definition:
 
             tgb.button("Show pane", on_action=lambda s: s.assign("show_pane", True))
         ```
+    === "Markdown"
+        ```python
+        page = """
+        # The **pane** block
 
+        <|{show_pane}|pane|
+        Here is the content of the pane.
+        |>
+
+        This is the content of the page.
+
+        <|Show pane|button|on_action={lambda s: s.assign("show_pane", True)}|>
+        """
+        ```
 We set the *on_action* property of the button control to a lambda function that sets the variable
 *show_pane* to true, so the definition of the callback function is no longer needed.
 
@@ -171,23 +161,7 @@ The [*anchor*](#p-anchor) property defines which side of the page the pane is sh
 
 Here is a simple page definition demonstrating the use of this property:
 !!! example "Definition"
-
-    === "Markdown"
-
-        ```python
-        page = """
-        <|{show_pane}|pane|anchor=top|height=50px|
-        Here is some text that is displayed at the top of the page in a pane.
-        |>
-
-        # Main page content
-
-        This is the content of the page.
-        """
-        ```
-
     === "Python"
-
         ```python
         import taipy.gui.builder as tgb
         ...
@@ -198,6 +172,18 @@ Here is a simple page definition demonstrating the use of this property:
             tgb.text("# Main page content", mode="md")
 
             tgb.text("This is the content of the page.")
+        ```
+    === "Markdown"
+        ```python
+        page = """
+        <|{show_pane}|pane|anchor=top|height=50px|
+        Here is some text that is displayed at the top of the page in a pane.
+        |>
+
+        # Main page content
+
+        This is the content of the page.
+        """
         ```
 
 With the [*anchor*](#p-anchor) property set to "top", here is how the page appears when the pane
@@ -229,9 +215,19 @@ show_pane = False
 The page definition is slightly more complex than in the case where the pane overlaps the main
 page:
 !!! example "Definition"
-
+    === "Python"
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.Page() as page:
+            with tgb.part("d-flex"):
+                with tgb.pane("{show_pane}", persistent=True, show_button=True, width="150px"):
+                    tgb.text("Here is the content of the pane.")
+                with tgb.part():
+                    tgb.text("# Main page", mode="md")
+                    tgb.text("Here is the content of the page.")
+        ```
     === "Markdown"
-
         ```python
         page = """
         <|d-flex|
@@ -243,20 +239,6 @@ page:
         Here is the content of the page.
         |>
         |>
-        ```
-
-    === "Python"
-
-        ```python
-        import taipy.gui.builder as tgb
-        ...
-        with tgb.Page() as page:
-            with tgb.part("d-flex"):
-                with tgb.pane("{show_pane}", persistent=True, show_button=True, width="150px"):
-                    tgb.text("Here is the content of the pane.")
-                with tgb.part():
-                    tgb.text("# Main page", mode="md")
-                    tgb.text("Here is the content of the page.")
         ```
 
 Note that the pane block has its [*show_button*](#p-show_button) property set to True so we don't
@@ -309,29 +291,7 @@ The pane visibility is stored in the variable *show_rate*.
 
 We need to define two pages:
 !!! example "Definition"
-
-    === "Markdown"
-
-        ```
-        rate_page = """
-        Rate (in %):
-        <|{rate}|number|>
-        """
-
-        page = """
-        <|{show_rate}|pane|show_button|page=_rate_pane|>
-
-        # Interest Calculator
-        Initial amount: <|{initial_investment}|number|>
-
-        Periods: <|{periods}|number|min=0|max=50|>
-
-        Final amount: <|{final_amount}|text|format=%.2f|>
-        """
-        ```
-
     === "Python"
-
         ```python
         import taipy.gui.builder as tgb
         ...
@@ -352,6 +312,24 @@ We need to define two pages:
 
             tgb.text("Final amount: ", inline=True)
             tgb.text("{final_amount}", format="%.2f", inline=True)
+        ```
+    === "Markdown"
+        ```
+        rate_page = """
+        Rate (in %):
+        <|{rate}|number|>
+        """
+
+        page = """
+        <|{show_rate}|pane|show_button|page=_rate_pane|>
+
+        # Interest Calculator
+        Initial amount: <|{initial_investment}|number|>
+
+        Periods: <|{periods}|number|min=0|max=50|>
+
+        Final amount: <|{final_amount}|text|format=%.2f|>
+        """
         ```
 
 The `pane` block has its [*show_button*](#p-show_button) property set to True so we don't need to
@@ -393,25 +371,19 @@ The content of the pane can also be specified as a `Partial^` instance using the
 
 The control definition will then look like this:
 !!! example "Definition"
-
-    === "Markdown"
-
-        ```
-        <|{show_pane}|pane|partial={partial}|>
-        ```
-
-    === "HTML"
-
-        ```html
-        <taipy:pane partial="{partial}">{show_pane}</taipy:pane>
-        ```
-
     === "Python"
-
         ```python
         import taipy.gui.builder as tgb
         ...
         tgb.pane("{show_pane}", partial="{partial}")
+        ```
+    === "Markdown"
+        ```
+        <|{show_pane}|pane|partial={partial}|>
+        ```
+    === "HTML"
+        ```html
+        <taipy:pane partial="{partial}">{show_pane}</taipy:pane>
         ```
 
 # Styling

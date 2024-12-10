@@ -70,22 +70,6 @@ We evaluated three different algorithms:
 
 Here is an example of code showing how to use the Min-Max Decimator:
 
-=== "Markdown"
-    ```python
-    import yfinance as yf
-    from taipy.gui import Gui
-    from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
-
-    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period = "max")
-    df_AAPL["DATE"] = df_AAPL.index.astype('int64').astype(float)
-
-    NOP = 500
-    decimator_instance = MinMaxDecimator(n_out=NOP)
-
-    page = "<|{df_AAPL}|chart|x=DATE|y=Open|decimator=decimator_instance|>"
-
-    Gui(page).run(title="Decimator")
-    ```
 === "Python"
     ```python
     import yfinance as yf
@@ -101,6 +85,22 @@ Here is an example of code showing how to use the Min-Max Decimator:
 
     with tgb.Page() as page:
         tgb.chart("{df_AAPL}", x="DATE", y="Open", decimator="decimator_instance")
+
+    Gui(page).run(title="Decimator")
+    ```
+=== "Markdown"
+    ```python
+    import yfinance as yf
+    from taipy.gui import Gui
+    from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
+
+    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period = "max")
+    df_AAPL["DATE"] = df_AAPL.index.astype('int64').astype(float)
+
+    NOP = 500
+    decimator_instance = MinMaxDecimator(n_out=NOP)
+
+    page = "<|{df_AAPL}|chart|x=DATE|y=Open|decimator=decimator_instance|>"
 
     Gui(page).run(title="Decimator")
     ```
@@ -118,22 +118,6 @@ For each segment, only the original dataset's two extreme points (on the second 
 
 Here is an example of code showing how to use the LTTB Decimator:
 
-=== "Markdown"
-    ```python
-    import yfinance as yf
-    from taipy.gui import Gui
-    from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
-
-    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period = "max")
-    df_AAPL["DATE"] = df_AAPL.index.astype('int64').astype(float)
-
-    NOP = 500
-    decimator_instance = LTTB(n_out=NOP)
-
-    page = "<|{df_AAPL}|chart|x=DATE|y=Open|decimator=decimator_instance|>"
-
-    Gui(page).run(title="Decimator")
-    ```
 === "Python"
     ```python
     import yfinance as yf
@@ -149,6 +133,22 @@ Here is an example of code showing how to use the LTTB Decimator:
 
     with tgb.Page() as page:
         tgb.chart("{df_AAPL}", x="DATE", y="Open", decimator="decimator_instance")
+
+    Gui(page).run(title="Decimator")
+    ```
+=== "Markdown"
+    ```python
+    import yfinance as yf
+    from taipy.gui import Gui
+    from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
+
+    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period = "max")
+    df_AAPL["DATE"] = df_AAPL.index.astype('int64').astype(float)
+
+    NOP = 500
+    decimator_instance = LTTB(n_out=NOP)
+
+    page = "<|{df_AAPL}|chart|x=DATE|y=Open|decimator=decimator_instance|>"
 
     Gui(page).run(title="Decimator")
     ```
@@ -165,22 +165,6 @@ LTTB implementations are available in Python.
 
 Here is an example of code showing how to use the Ramer-Douglas-Peucker Decimator:
 
-=== "Markdown"
-    ```python
-    import yfinance as yf
-    from taipy.gui import Gui
-    from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
-
-    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period = "max")
-    df_AAPL["DATE"] = df_AAPL.index.astype('int64').astype(float)
-
-    NOP = 500
-    decimator_instance = RDP(n_out=NOP)
-
-    page = "<|{df_AAPL}|chart|x=DATE|y=Open|decimator=decimator_instance|>"
-
-    Gui(page).run(title="Decimator")
-    ```
 === "Python"
     ```python
     import yfinance as yf
@@ -196,6 +180,22 @@ Here is an example of code showing how to use the Ramer-Douglas-Peucker Decimato
 
     with tgb.Page() as page:
         tgb.chart("{df_AAPL}", x="DATE", y="Open", decimator="decimator_instance")
+
+    Gui(page).run(title="Decimator")
+    ```
+=== "Markdown"
+    ```python
+    import yfinance as yf
+    from taipy.gui import Gui
+    from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
+
+    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period = "max")
+    df_AAPL["DATE"] = df_AAPL.index.astype('int64').astype(float)
+
+    NOP = 500
+    decimator_instance = RDP(n_out=NOP)
+
+    page = "<|{df_AAPL}|chart|x=DATE|y=Open|decimator=decimator_instance|>"
 
     Gui(page).run(title="Decimator")
     ```

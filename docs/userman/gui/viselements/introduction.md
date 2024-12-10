@@ -32,13 +32,70 @@ names defined in the code, and the value of the property is set to the evaluated
     new variable value, which might be slow and hit the user experience.<br/>
     Visual Elements that are costly to render on the browser provide a property called *rebuild*
     that allows one to explicitly request the render of the component. Please check the relevant
-    sections for the [`chart`](../../../refmans/gui/viselements/generic/chart.md#the-rebuild-property) and
-    [`table`](../../../refmans/gui/viselements/generic/table.md#the-rebuild-property) controls for more information.
+    sections for the
+    [`chart`](../../../refmans/gui/viselements/generic/chart.md#the-rebuild-property) and
+    [`table`](../../../refmans/gui/viselements/generic/table.md#the-rebuild-property) controls for
+    more information.
 
 # Syntax
 
 Depending on the technique you have used to create your application pages (see the section on
 [Page](../pages/index.md)), visual elements are created with specific syntaxes:
+
+## Page Builder API
+
+The [Page Builder](../../../refmans/reference/pkg_taipy/pkg_gui/pkg_builder/index.md) package
+provides an API to create and configure visual elements.
+
+To set a property value, use the property name as a named parameter in the element's
+constructor:
+```python
+import taipy.gui.builder as tgb
+
+tgb.<visual_element_type>(<property_name>=property_value, ...)
+```
+
+!!! note "Shortcut for the default property"
+    To specify the value of the default property for this element type, the value can be specified
+    as the first parameter of the constructor.<br/>
+    For instance, since *value* is the default property for the
+    [`text`](../../../refmans/gui/viselements/generic/text.md) control, the following are
+    equivalent:
+    ```python
+    tgb.text(value="Text content")
+    ```
+    ```python
+    tgb.text("Text content")
+    ```
+
+!!! note "Binding variables"
+    When passing  a variable as a parameter value, Python uses the variable *value* at the time of
+    assignment, and not the variable *itself*. This is part of the Python language is specification.
+
+    If you need to bind a variable to an element's property, you therefore cannot use the simple
+    `property_name=variable` syntax, because it would set, once and for all, the element's property
+    to the value of the variable.
+
+    In order to *reference* a variable and have Taipy being able to retrieve the variable's value at
+    run time, and monitor for its changes, you must use a formatted string literal, also known as an
+    *f-string*, that would return an expression where referenced variables are evaluated:<br/>
+    `property_name="expression using {variable}"`.
+
+    To create a bi-directional binding on a variable, which is very common to bind an element's
+    main value (such as the value of a slider), you would need to create the simplest possible
+    expression:<br/>
+    `property_name="{variable}"`.
+
+    For example, to bind the variable *value* to the main value of a
+    [`slider`](../../../refmans/gui/viselements/generic/slider.md) control, you would use the
+    following code:
+    ```python
+    import taipy.gui.builder as tgb
+
+    value = 50  # Initialize a variable
+
+    tgb.slider("{value}")  # Bind the variable to the slider
+    ```
 
 ## Markdown
 
@@ -249,17 +306,6 @@ is equivalent to
       resulting in setting it to 'true', which does respect the HTML specification:
       `<taipy:e bool_attr/>` is equivalent to `<taipy:e bool_attr="true"/>`.
 
-## Page Builder API
-
-If you use Python code to create pages, the
-[Page Builder](../../../refmans/reference/pkg_taipy/pkg_gui/pkg_builder/index.md) package provides the API for all the
-available visual elements.
-
-To set a property to a value, you will use the property name as a named parameter to the element's
-API.<br/>
-Note that to bind variables to an element's property, you must set that property to a string
-defining an expression referencing the variables.
-
 # Generic properties
 
 Every visual element type has the following properties:
@@ -302,8 +348,10 @@ of the variable that holds that dictionary as the value of the *properties* prop
 
 !!! example
 
-    Say your Markdown content needs the following control:
-    `<|dialog|title=Select an item in the list|open={show_dialog}|labels=Cancel;Validate|page_id=page|close_label=Cancel|>`
+    Say your Markdown content needs the following control:<br/>
+    ```
+    <|dialog|title=Select an item in the list|open={show_dialog}|labels=Cancel;Validate|page_id=page|close_label=Cancel|>
+    ```
 
     As this syntax can be cumbersome, you might prefer to define a simple Python dictionary:
 

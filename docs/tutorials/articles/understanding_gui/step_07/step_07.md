@@ -11,26 +11,6 @@ page 1 and page 2.
 Note that you can create pages differently using Markdown, Python or HTML. You
 could have one page created with Markdown and another with the Python API.
 
-=== "Markdown"
-    ```python
-    from taipy import Gui
-
-    if __name__ == "__main__":
-        # Add a navbar to switch from one page to the other
-        root_md = """
-        <|navbar|>
-        # Multi-page application
-        """
-        page1_md = "## This is page 1"
-        page2_md = "## This is page 2"
-
-        pages = {
-            "/": root_md,
-            "page1": page1_md,
-            "page2": page2_md
-        }
-        Gui(pages=pages).run()
-    ```
 === "Python"
     ```python
     from taipy import Gui
@@ -54,45 +34,43 @@ could have one page created with Markdown and another with the Python API.
         }
         Gui(pages=pages).run()
     ```
+=== "Markdown"
+    ```python
+    from taipy import Gui
+
+    if __name__ == "__main__":
+        # Add a navbar to switch from one page to the other
+        root_md = """
+        <|navbar|>
+        # Multi-page application
+        """
+        page1_md = "## This is page 1"
+        page2_md = "## This is page 2"
+
+        pages = {
+            "/": root_md,
+            "page1": page1_md,
+            "page2": page2_md
+        }
+        Gui(pages=pages).run()
+    ```
 
 ## Navigating between pages
 
 - [menu](../../../../refmans/gui/viselements/generic/menu.md): creates a menu on the left to
 navigate through the pages.
 
-=== "Markdown"
-    ```
-    <|menu|label=Menu|lov={lov_pages}|on_action=menu_option_selected|>`
-    ```
 === "Python"
     ```python
     tgb.menu(label="Menu", lov=[...], on_action=menu_option_selected)
     ```
+=== "Markdown"
+    ```
+    <|menu|label=Menu|lov={lov_pages}|on_action=menu_option_selected|>`
+    ```
 
 For example, this code creates a menu with two options:
 
-=== "Markdown"
-    ```python
-    from taipy.gui import Gui, navigate
-
-
-    def menu_option_selected(state, action, info):
-        page = info["args"][0]
-        navigate(state, to=page)
-
-    if __name__ == "__main__":
-        root_md="<|menu|label=Menu|lov={[('Page-1', 'Page 1'), ('Page-2', 'Page 2')]}|on_action=menu_option_selected|>"
-        page1_md="## This is page 1"
-        page2_md="## This is page 2"
-
-        pages = {
-            "/": root_md,
-            "Page-1": page1_md,
-            "Page-2": page2_md
-        }
-
-        Gui(pages=pages).run()
-    ```
 === "Python"
     ```python
     from taipy import Gui
@@ -122,29 +100,34 @@ For example, this code creates a menu with two options:
             }
             Gui(pages=pages).run()
     ```
+=== "Markdown"
+    ```python
+    from taipy.gui import Gui, navigate
+
+
+    def menu_option_selected(state, action, info):
+        page = info["args"][0]
+        navigate(state, to=page)
+
+    if __name__ == "__main__":
+        root_md="<|menu|label=Menu|lov={[('Page-1', 'Page 1'), ('Page-2', 'Page 2')]}|on_action=menu_option_selected|>"
+        page1_md="## This is page 1"
+        page2_md="## This is page 2"
+
+        pages = {
+            "/": root_md,
+            "Page-1": page1_md,
+            "Page-2": page2_md
+        }
+
+        Gui(pages=pages).run()
+    ```
 
 ![Menu](images/menu.png){ width=40% : .tp-image-border }
 
 - [navbar](../../../../refmans/gui/viselements/generic/navbar.md): creates an element to navigate
 through the Taipy pages by default
 
-=== "Markdown"
-    ```python
-    from taipy import Gui
-
-    if __name__ == "__main__":
-        # Add a navbar to switch from one page to the other
-        root_md = "<|navbar|>"
-        page1_md = "## This is page 1"
-        page2_md = "## This is page 2"
-
-        pages = {
-            "/": root_md,
-            "page1": page1_md,
-            "page2": page2_md
-        }
-        Gui(pages=pages).run()
-    ```
 === "Python"
     ```python
     from taipy import Gui
@@ -168,6 +151,23 @@ through the Taipy pages by default
         }
         Gui(pages=pages).run()
     ```
+=== "Markdown"
+    ```python
+    from taipy import Gui
+
+    if __name__ == "__main__":
+        # Add a navbar to switch from one page to the other
+        root_md = "<|navbar|>"
+        page1_md = "## This is page 1"
+        page2_md = "## This is page 2"
+
+        pages = {
+            "/": root_md,
+            "page1": page1_md,
+            "page2": page2_md
+        }
+        Gui(pages=pages).run()
+    ```
 
 ![Navbar](images/navbar.png){ width=40% : .tp-image-border }
 
@@ -180,44 +180,6 @@ The Markdown created in our previous steps will be the first page (named _page_)
 
 Then, let’s create our second page, which contains a page to analyze an entire text.
 
-=== "Markdown"
-    ```python
-    # Second page
-
-    dataframe2 = dataframe.copy()
-    path = ""
-    treatment = 0
-
-    page_file = """
-    <|{path}|file_selector|extensions=.txt|label=Upload .txt file|on_action=analyze_file|> <|Downloading {treatment}%...|>
-
-
-    <|Table|expandable|
-    <|{dataframe2}|table|>
-    |>
-
-    <|{dataframe2}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|height=800px|>
-    """
-
-    def analyze_file(state):
-        state.dataframe2 = dataframe2
-        state.treatment = 0
-        with open(state.path,"r", encoding="utf-8") as f:
-            data = f.read()
-            # split lines and eliminates duplicates
-            file_list = list(dict.fromkeys(data.replace("\n", " ").split(".")[:-1]))
-
-
-        for i in range(len(file_list)):
-            text = file_list[i]
-            state.treatment = int((i+1)*100/len(file_list))
-            temp = state.dataframe2.copy()
-            scores = analyze_text(text)
-            temp.loc[len(temp)] = scores
-            state.dataframe2 = temp
-
-        state.path = None
-    ```
 === "Python"
     ```python
     # Second page
@@ -258,7 +220,44 @@ Then, let’s create our second page, which contains a page to analyze an entire
                 color__1="green", color__2="grey", color__3="red", type__4="line",
                 height="800px")
     ```
+=== "Markdown"
+    ```python
+    # Second page
 
+    dataframe2 = dataframe.copy()
+    path = ""
+    treatment = 0
+
+    page_file = """
+    <|{path}|file_selector|extensions=.txt|label=Upload .txt file|on_action=analyze_file|> <|Downloading {treatment}%...|>
+
+
+    <|Table|expandable|
+    <|{dataframe2}|table|>
+    |>
+
+    <|{dataframe2}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|height=800px|>
+    """
+
+    def analyze_file(state):
+        state.dataframe2 = dataframe2
+        state.treatment = 0
+        with open(state.path,"r", encoding="utf-8") as f:
+            data = f.read()
+            # split lines and eliminates duplicates
+            file_list = list(dict.fromkeys(data.replace("\n", " ").split(".")[:-1]))
+
+
+        for i in range(len(file_list)):
+            text = file_list[i]
+            state.treatment = int((i+1)*100/len(file_list))
+            temp = state.dataframe2.copy()
+            scores = analyze_text(text)
+            temp.loc[len(temp)] = scores
+            state.dataframe2 = temp
+
+        state.path = None
+    ```
 
 This little code below assembles our previous page and this new page. The `navbar` in the root
 page is also visible on both pages allowing for easy switching between pages.
@@ -266,9 +265,9 @@ page is also visible on both pages allowing for easy switching between pages.
 ```python
 # One root page for common content
 # The two pages that were created
-pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
-         "line":page,
-         "text":page_file}
+pages = {"/": "<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
+         "line": page,
+         "text": page_file}
 
 Gui(pages=pages).run()
 ```

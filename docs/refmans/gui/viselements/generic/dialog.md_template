@@ -16,9 +16,17 @@ Buttons can be generated automatically within the dialog, based on the dialog co
 
 To add elements to a dialog, you must use block syntax in your code:
 !!! example "Definition"
-
+    === "Python"
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        with tgb.dialog("{is_opened}")
+            # more visual elements
+            # e.g.
+            tgb.text("Hello")
+            tgb.button("Confirm")
+        ```
     === "Markdown"
-
         ```
         <|{is_opened}|dialog|
         ... more visual elements
@@ -27,7 +35,6 @@ To add elements to a dialog, you must use block syntax in your code:
         <|Confirm|button|>
         |>
         ```
-
     === "HTML"
 
         ```html
@@ -37,18 +44,6 @@ To add elements to a dialog, you must use block syntax in your code:
           <taipy:text>Hello</taipy:text>
           <taipy:button>Confirm</taipy:button>
         </taipy:dialog>
-        ```
-
-    === "Python"
-
-        ```python
-        import taipy.gui.builder as tgb
-        ...
-        with tgb.dialog("{is_opened}")
-            # more visual elements
-            # e.g.
-            tgb.text("Hello")
-            tgb.button("Confirm")
         ```
 
 In this example, the dialog is opened or closed based on the value of the *is_opened* variable. The
@@ -79,23 +74,7 @@ This function closes the dialog by setting its [*open*](#p-open) property to Fal
 Here is the definition of the dialog that references the *show_dialog* variable and the *hide()*
 callback function:
 !!! example "Definition"
-
-    === "Markdown"
-
-        ```
-        <|{show_dialog}|dialog|on_action=hide|>
-        ```
-
-	    Note that 
-
-    === "HTML"
-
-        ```html
-        <taipy:dialog on_action="hide">{show_dialog}</taipy:dialog>
-        ```
-
     === "Python"
-
         ```python
         import taipy.gui.builder as tgb
         ...
@@ -107,6 +86,14 @@ callback function:
         `tgb.dialog("{show_dialog}", on_action=lambda s: s.assign("show_dialog", False))`<br/>
         With this line, the dialog action is defined as a lambda function that sets *show_dialog* to
         False, effectively closing the dialog. The *hide()* is not needed any longer.
+    === "Markdown"
+        ```
+        <|{show_dialog}|dialog|on_action=hide|>
+        ```
+    === "HTML"
+        ```html
+        <taipy:dialog on_action="hide">{show_dialog}</taipy:dialog>
+        ```
 
 To open the dialog, the *show_dialog* variable must be set to True. This can be done using a
 callback function triggered by another control (e.g., a button).<br/>

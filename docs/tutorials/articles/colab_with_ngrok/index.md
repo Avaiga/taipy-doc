@@ -116,13 +116,13 @@ To address this issue, you can modify the *change_delay* parameter in one of the
 - **Locally**: You can make changes to this parameter locally, directly within the Taipy visual
   element.
 
-=== "Markdown" 
-   ```python
-   <|{text}|input|change_delay=800|>
-   ```
 === "Python"
    ```python
    tgb.input("{text}", change_delay=800)
+   ```
+=== "Markdown" 
+   ```python
+   <|{text}|input|change_delay=800|>
    ```
 
 - **Globally**: To adjust the delay for all of Taipy's visual elements.

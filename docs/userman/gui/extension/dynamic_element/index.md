@@ -355,5 +355,5 @@ Here are the sections that address the different use cases that your custom
 element may need:
 
 - [Scalar properties](scalar_props.md)
-- [Tabular data properties](../tabular_data)
+- [Tabular data properties](../tabular_data.md)
 

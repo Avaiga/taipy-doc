@@ -120,7 +120,8 @@ if __name__ == "__main__":
 
 The primary benefit of having a scenario is to access the Data Nodes of the different scenarios
 that are made. Accessing a data node is as as simple as `<scenario>.<Data Node name>.read()`.
-By exploring the data nodes, end users can analyse the results of their data workflow and make decisions upon it.
+By exploring the data nodes, end users can analyze the results of their data workflow and make
+decisions upon it.
 
 ## Scenario management visual elements
 
@@ -137,25 +138,6 @@ that lets you:
 - Submit them.
 - View the configuration used by the scenario.
 
-
-=== "Markdown"
-    ```python
-    from taipy import Gui
-    import taipy as tp
-
-    ...
-
-    if __name__ == "__main__":
-        scenario = None
-
-        scenario_md = """
-    <|{scenario}|scenario_selector|>
-    <|{scenario}|scenario|>
-    <|{scenario}|scenario_dag|>
-        """
-        tp.Orchestrator().run()
-        Gui(scenario_md).run()
-    ```
 === "Python"
     ```python
     from taipy import Gui
@@ -175,7 +157,24 @@ that lets you:
         tp.Orchestrator().run()
         Gui(page).run()
     ```
+=== "Markdown"
+    ```python
+    from taipy import Gui
+    import taipy as tp
 
+    ...
+
+    if __name__ == "__main__":
+        scenario = None
+
+        scenario_md = """
+    <|{scenario}|scenario_selector|>
+    <|{scenario}|scenario|>
+    <|{scenario}|scenario_dag|>
+        """
+        tp.Orchestrator().run()
+        Gui(scenario_md).run()
+    ```
 
 # Conclusion
 

@@ -457,7 +457,13 @@ bar above the chart and force the Box select tool.
 Here is the definition of the chart and text controls:
 
 !!! example "Definition"
+    === "Python"
 
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        tgb.chart("{data}", selected="{selected_indices}", layout="{layout}", plot_config="{config}")
+        ```
     === "Markdown"
 
         ```
@@ -465,7 +471,6 @@ Here is the definition of the chart and text controls:
 
         <|{data}|chart|selected={selected_indices}|layout={layout}|plot_config={config}|>
         ```
-
     === "HTML"
 
         ```html
@@ -477,14 +482,6 @@ Here is the definition of the chart and text controls:
 
         <taipy:chart selected="{selected_indices}" layout="{layout}"
             plot_config="{config}">{data}</taipy:chart>
-        ```
-
-    === "Python"
-
-        ```python
-        import taipy.gui.builder as tgb
-        ...
-        tgb.chart("{data}", selected="{selected_indices}", layout="{layout}", plot_config="{config}")
         ```
 
 And here is what the resulting page looks like:
@@ -585,13 +582,16 @@ def range_changed(state, x1, x2, x3):
 [TODO]
 
 !!! example "Page content"
+    === "Python"
 
+        ```python
+        [TODO]
+        ```
     === "Markdown"
 
         ```
         [TODO]
         ```
-
     === "HTML"
 
         ```html

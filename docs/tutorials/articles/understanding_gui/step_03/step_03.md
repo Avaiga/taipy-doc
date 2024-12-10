@@ -51,10 +51,38 @@ variable is changed in this function, Taipy propagates this change automatically
 associated visual elements.
 
 Other callbacks specific to visual elements exist. They are named `on_change` or `on_action`.
-For example, a button has an _on_action_ property. When the button is pressed, Taipy calls
-the callback function referenced in the `on_action` property.
+For example, a button has an *on_action* property. When the button is pressed, Taipy calls
+the callback function referenced in the *on_action* property.
+
+=== "Python"
+    ```python
+    import taipy.gui.builder as tgb
+    from taipy.gui import Gui, notify
+    import taipy.gui.builder as tgb
 
 
+    def on_button_action(state):
+        notify(state, 'info', f'The text is: {state.text}')
+        state.text = "Button Pressed"
+
+    def on_change(state, var_name, var_value):
+        if var_name == "text" and var_value == "Reset":
+            state.text = ""
+            return
+
+    if __name__ == "__main__":
+        text = "Original text"
+
+        # Definition of the page
+        with tgb.Page() as page:
+            tgb.text("# Getting started with Taipy GUI", mode="md")
+            tgb.text("My text: {text}")
+
+            tgb.input("{text}")
+            tgb.button("Run local", on_action=on_button_action)
+
+        Gui(page).run(debug=True)
+    ```
 === "Markdown"
     ```python
     from taipy.gui import Gui, notify
@@ -85,37 +113,6 @@ the callback function referenced in the `on_action` property.
 
         Gui(page).run(debug=True)
     ```
-=== "Python"
-    ```python
-    import taipy.gui.builder as tgb
-    from taipy.gui import Gui, notify
-    import taipy.gui.builder as tgb
-
-
-    def on_button_action(state):
-        notify(state, 'info', f'The text is: {state.text}')
-        state.text = "Button Pressed"
-
-    def on_change(state, var_name, var_value):
-        if var_name == "text" and var_value == "Reset":
-            state.text = ""
-            return
-
-    if __name__ == "__main__":
-        text = "Original text"
-
-        # Definition of the page
-        with tgb.Page() as page:
-            tgb.text("# Getting started with Taipy GUI", mode="md")
-            tgb.text("My text: {text}")
-
-            tgb.input("{text}")
-            tgb.button("Run local", on_action=on_button_action)
-
-        Gui(page).run(debug=True)
-    ```
-
-
 
 ![Interactive GUI](images/result.png){ width=90% : .tp-image-border }
 
