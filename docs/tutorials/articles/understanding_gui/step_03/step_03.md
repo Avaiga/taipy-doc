@@ -58,8 +58,7 @@ the callback function referenced in the *on_action* property.
     ```python
     import taipy.gui.builder as tgb
     from taipy.gui import Gui, notify
-    import taipy.gui.builder as tgb
-
+    
 
     def on_button_action(state):
         notify(state, 'info', f'The text is: {state.text}')

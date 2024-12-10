@@ -142,8 +142,8 @@ Here is an example of code showing how to use the LTTB Decimator:
     from taipy.gui import Gui
     from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
 
-    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period = "max")
-    df_AAPL["DATE"] = df_AAPL.index.astype('int64').astype(float)
+    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period="max")
+    df_AAPL["DATE"] = df_AAPL.index.astype("int64").astype(float)
 
     NOP = 500
     decimator_instance = LTTB(n_out=NOP)
@@ -189,8 +189,8 @@ Here is an example of code showing how to use the Ramer-Douglas-Peucker Decimato
     from taipy.gui import Gui
     from taipy.gui.data.decimator import MinMaxDecimator, RDP, LTTB
 
-    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period = "max")
-    df_AAPL["DATE"] = df_AAPL.index.astype('int64').astype(float)
+    df_AAPL = yf.Ticker("AAPL").history(interval="1d", period="max")
+    df_AAPL["DATE"] = df_AAPL.index.astype("int64").astype(float)
 
     NOP = 500
     decimator_instance = RDP(n_out=NOP)
