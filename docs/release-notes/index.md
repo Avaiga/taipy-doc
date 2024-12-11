@@ -273,6 +273,8 @@ following new functionalities:
 ## Significant bug fixes
 
 <h4><strong><code>taipy-core</code></strong> 4.0.2</h4>
+- Some data node update events were not correctly published on the notifier.<br/>
+  See [issue #2319]https://github.com/Avaiga/taipy/issues/2319
 - Running a Taipy application on a unix base Docker container with file data nodes (csv, excel,
   json, etc.) created on a windows host machine will raise an error because the path is not
   recognized by the python interpreter.
