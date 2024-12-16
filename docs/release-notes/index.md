@@ -352,7 +352,7 @@ additional features.
   including SSO and GUI integration.<br/>
   For more information, please refer to
   [Microsoft Entra ID protocol](../userman/advanced_features/auth/authentication#microsoft-entra-id-protocol)
-  section of the user manual.
+  section.
 - Support for [Polars DataFrame Library](https://docs.pola.rs/).<br/>
   Tabular data nodes (`CSVDataNode^`, `ParquetDataNode^`, `ExcelDataNode^`, `SQLTableDataNode^`,
   and `SQLDataNode^`) can now expose the data as Polars objects. They all support
