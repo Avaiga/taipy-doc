@@ -240,7 +240,18 @@ following new functionalities:
   removed. Taipy now depends on a new `taipy-common` package that includes the configuration
   features among the common code shared by all `taipy`, `taipy-gui`, and `taipy-core` packages.
 
-<h4><strong><code>taipy-gui</code></strong> 4.0.1</h4>
+<h4><strong><code>taipy-gui</code></strong> 4.0.2</h4>
+
+- The chat control now automatically scrolls down to the last received message unless the user
+  has decided otherwise.<br/>
+  See [issue #2281](https://github.com/Avaiga/taipy/issues/2281).
+- The metric control now supports geometry adjustments.<br/>
+  See issues [#2141](https://github.com/Avaiga/taipy/issues/2141) and
+  [#2142](https://github.com/Avaiga/taipy/issues/2142).
+- The Stylekit consistency across elements has been enforced.<br/>
+  See [issue #2305](https://github.com/Avaiga/taipy/issues/2305).
+
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;4.0.1</h4>
 
 - Setting up styling:<br/>
   If a file named `taipy.css` is located in the same directory as the Python script (`<app>.py`)
