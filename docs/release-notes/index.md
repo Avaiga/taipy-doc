@@ -232,7 +232,7 @@ following new functionalities:
   [*show_custom_properties*](../refmans/gui/viselements/corelements/data_node.md#p-show_custom_properties)
   property.
 
-<h4>4.0.0</h4>
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;4.0.0</h4>
 
 - Taipy and all its dependencies now stop support Python 3.8.<br/>
   The minimum supported Python version is now 3.9.
@@ -250,7 +250,7 @@ following new functionalities:
   See [issue #1597](https://github.com/Avaiga/taipy/issues/1597) for more details and the
   [section on Styling](../userman/gui/styling/index.md#style-sheets).
 
-<h4>4.0.0</h4>
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;4.0.0</h4>
 
 - Setting up styling:<br/>
   If a file named `taipy.css` is located in the same directory as the Python script (`<app>.py`)
@@ -355,7 +355,7 @@ following new functionalities:
 - Completed submissions may be notified twice.<br/>
   See [issue #2152](https://github.com/Avaiga/taipy/issues/2152).
 
-<h4>4.0.1</h4>
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;4.0.1</h4>
 
 - Scenario selection becomes impossible in the `scenario_selector` control after creating a new
   Scenario.<br/>
@@ -379,7 +379,7 @@ following new functionalities:
 - Charts may swap data columns where refreshed with *rebuild* set to True.<br/>
   See [issue #2302](https://github.com/Avaiga/taipy/issues/2302).
   
-  <h4>4.0.1</h4>
+  <h4>&nbsp;&nbsp;&nbsp;&nbsp;4.0.1</h4>
 
 - The `-H` command line option is broken.<br/>
   You must use the long `--host` option instead to specify the server hostname.
@@ -397,7 +397,7 @@ following new functionalities:
   True.<br/>
   See [issue #2005](https://github.com/Avaiga/taipy/issues/2005).
 
-<h4>4.0.0</h4>
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;4.0.0</h4>
 
 - The value of multiline [`input`](../refmans/gui/viselements/generic/input.md) controls is
   cleared when the ENTER key is pressed.<br/>
