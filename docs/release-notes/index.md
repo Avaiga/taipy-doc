@@ -415,9 +415,9 @@ following new functionalities:
 
 - Some data node update events were not correctly published on the notifier.<br/>
   See [issue #2319](https://github.com/Avaiga/taipy/issues/2319).
-- Running a Taipy application on a unix base Docker container with file data nodes (csv, excel,
+- Running a Taipy application on a Unix base Docker container with file data nodes (csv, excel,
   json, etc.) created on a windows host machine will raise an error because the path is not
-  recognized by the python interpreter.
+  recognized by the python interpreter.<br/>
   See [issue #2267](https://github.com/Avaiga/taipy/issues/2267).
 
 <h4>&nbsp;&nbsp;&nbsp;&nbsp;4.0.0</h4>
