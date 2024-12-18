@@ -382,6 +382,9 @@ following new functionalities:
 
 <h4><strong><code>taipy-gui</code></strong> 4.0.2</h4>
 
+- Boolean values are not represented properly in table controls that set the *use_checkbox*
+  property To True.<br/>
+  See [issue #2257](https://github.com/Avaiga/taipy/issues/2257).
 - Lambda functions may fail to locate state variables or local functions.<br/>
   See [issue #2212](https://github.com/Avaiga/taipy/issues/2212) and
   [issue #2242](https://github.com/Avaiga/taipy/issues/2242).
