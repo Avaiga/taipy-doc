@@ -90,12 +90,12 @@ additional features.
 
 Published on 2024-10.
 
-[`taipy` 4.0](https://pypi.org/project/taipy/4.0.1/) depends on the latest
-[`taipy-common` 4.0](https://pypi.org/project/taipy-common/4.0.1/),
-[`taipy-gui` 4.0](https://pypi.org/project/taipy-gui/4.0.1/),
-[`taipy-core` 4.0](https://pypi.org/project/taipy-core/4.0.1/),
-[`taipy-templates` 4.0](https://pypi.org/project/taipy-templates/4.0.1/), and
-[`taipy-rest` 4.0](https://pypi.org/project/taipy-rest/4.0.1/) packages.
+[`taipy` 4.0](https://pypi.org/project/taipy/4.0.2/) depends on the latest
+[`taipy-common` 4.0](https://pypi.org/project/taipy-common/4.0.2/),
+[`taipy-gui` 4.0](https://pypi.org/project/taipy-gui/4.0.2/),
+[`taipy-core` 4.0](https://pypi.org/project/taipy-core/4.0.2/),
+[`taipy-templates` 4.0](https://pypi.org/project/taipy-templates/4.0.2/), and
+[`taipy-rest` 4.0](https://pypi.org/project/taipy-rest/4.0.2/) packages.
 
 !!! warning "Upgrading to Taipy 4.0 from 3.x"
 
@@ -240,7 +240,17 @@ following new functionalities:
   removed. Taipy now depends on a new `taipy-common` package that includes the configuration
   features among the common code shared by all `taipy`, `taipy-gui`, and `taipy-core` packages.
 
-<h4><strong><code>taipy-gui</code></strong> 4.0.0</h4>
+<h4><strong><code>taipy-gui</code></strong> 4.0.1</h4>
+
+- Setting up styling:<br/>
+  If a file named `taipy.css` is located in the same directory as the Python script (`<app>.py`)
+  running a Taipy GUI application, and no `<app>.css` file exists in the same location, this CSS
+  file will be loaded and applied to all pages. This enables sharing styles across different Taipy
+  GUI applications.<br/>
+  See [issue #1597](https://github.com/Avaiga/taipy/issues/1597) for more details and the
+  [section on Styling](../userman/gui/styling/index.md#style-sheets).
+
+<h4>4.0.0</h4>
 
 - Setting up styling:<br/>
   If a file named `taipy.css` is located in the same directory as the Python script (`<app>.py`)
@@ -340,15 +350,12 @@ following new functionalities:
 
 ## Significant bug fixes
 
-<h4><strong><code>taipy-core</code></strong> 4.0.2</h4>
-- Some data node update events were not correctly published on the notifier.<br/>
-  See [issue #2319](https://github.com/Avaiga/taipy/issues/2319).
-- Running a Taipy application on a unix base Docker container with file data nodes (csv, excel,
-  json, etc.) created on a windows host machine will raise an error because the path is not
-  recognized by the python interpreter.
-  See [issue #2267](https://github.com/Avaiga/taipy/issues/2267).
+<h4><strong><code>taipy</code></strong> 4.0.2</h4>
 
-<h4><strong><code>taipy</code></strong> 4.0.1</h4>
+- Completed submissions may be notified twice.<br/>
+  See [issue #2152](https://github.com/Avaiga/taipy/issues/2152).
+
+<h4>4.0.1</h4>
 
 - Scenario selection becomes impossible in the `scenario_selector` control after creating a new
   Scenario.<br/>
@@ -362,7 +369,17 @@ following new functionalities:
   some IDEs.<br/>
   See [issue #1620](https://github.com/Avaiga/taipy/issues/1620).
 
-<h4><strong><code>taipy-gui</code></strong> 4.0.1</h4>
+<h4><strong><code>taipy-gui</code></strong> 4.0.2</h4>
+
+- Lambda functions may fail to locate state variables or local functions.<br/>
+  See [issue #2212](https://github.com/Avaiga/taipy/issues/2212) and
+  [issue #2242](https://github.com/Avaiga/taipy/issues/2242).
+- Table controls may not apply new widths for columns properly.<br/>
+  See [issue #2286](https://github.com/Avaiga/taipy/issues/2286).
+- Charts may swap data columns where refreshed with *rebuild* set to True.<br/>
+  See [issue #2302](https://github.com/Avaiga/taipy/issues/2302).
+  
+  <h4>4.0.1</h4>
 
 - The `-H` command line option is broken.<br/>
   You must use the long `--host` option instead to specify the server hostname.
@@ -394,7 +411,16 @@ following new functionalities:
 - Binding to an element of a collection is now supported.<br/>
   See [issue #1785](https://github.com/Avaiga/taipy/issues/1785).
 
-<h4><strong><code>taipy-core</code></strong> 4.0.0</h4>
+<h4><strong><code>taipy-core</code></strong> 4.0.2</h4>
+
+- Some data node update events were not correctly published on the notifier.<br/>
+  See [issue #2319](https://github.com/Avaiga/taipy/issues/2319).
+- Running a Taipy application on a unix base Docker container with file data nodes (csv, excel,
+  json, etc.) created on a windows host machine will raise an error because the path is not
+  recognized by the python interpreter.
+  See [issue #2267](https://github.com/Avaiga/taipy/issues/2267).
+
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;4.0.0</h4>
 
 - `DataNode.is_up_to_date()^` raises an error when the data node has never been written.<br/>
   See [issue #1198](https://github.com/Avaiga/taipy/issues/1198).
@@ -419,7 +445,7 @@ additional features.
   [Microsoft Entra ID](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id)
   including SSO and GUI integration.<br/>
   For more information, please refer to
-  [Microsoft Entra ID protocol](../userman/advanced_features/auth/authentication#microsoft-entra-id-protocol)
+  [Microsoft Entra ID protocol](../userman/advanced_features/auth/authentication.md#microsoft-entra-id-protocol)
   section of the user manual.
 - Support for [Polars DataFrame Library](https://docs.pola.rs/).<br/>
   Tabular data nodes (`CSVDataNode^`, `ParquetDataNode^`, `ExcelDataNode^`, `SQLTableDataNode^`,
