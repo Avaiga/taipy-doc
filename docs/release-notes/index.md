@@ -382,18 +382,24 @@ following new functionalities:
 
 <h4><strong><code>taipy-gui</code></strong> 4.0.2</h4>
 
-- Boolean values are not represented properly in table controls that set the *use_checkbox*
-  property To True.<br/>
+- Boolean values are not properly represented in
+  [`table`](../refmans/gui/viselements/generic/table.md) controls when the *use_checkbox* property
+  is set to True.<br/>
   See [issue #2257](https://github.com/Avaiga/taipy/issues/2257).
 - Lambda functions may fail to locate state variables or local functions.<br/>
   See [issue #2212](https://github.com/Avaiga/taipy/issues/2212) and
   [issue #2242](https://github.com/Avaiga/taipy/issues/2242).
-- Table controls may not apply new widths for columns properly.<br/>
+- [`table`](../refmans/gui/viselements/generic/table.md) controls do not consistently apply new
+  column widths.<br/>
+  Additionally, a new [*sortable*](../refmans/gui/viselements/generic/table.md#p-sortable) property
+  was introduced, allowing developers to disable the sorting functionality. This change reduces the
+  space required in column headers, enabling narrower column widths.<br/>
   See [issue #2286](https://github.com/Avaiga/taipy/issues/2286).
-- Charts may swap data columns where refreshed with *rebuild* set to True.<br/>
+- Charts may swap data columns where refreshed with
+  [*rebuild*](../refmans/gui/viselements/generic/chart.md#p-rebuild).<br/>
   See [issue #2302](https://github.com/Avaiga/taipy/issues/2302).
-  
-  <h4>&nbsp;&nbsp;&nbsp;&nbsp;4.0.1</h4>
+
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;4.0.1</h4>
 
 - The `-H` command line option is broken.<br/>
   You must use the long `--host` option instead to specify the server hostname.
