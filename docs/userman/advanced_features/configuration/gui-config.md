@@ -205,7 +205,37 @@ Here is the list of the configuration parameters you can use in
      `Gui.run()^` or `Gui.get_flask_app()^` so it is served by the target web server.
    - <a name="p-base_url"></a>*base_url* (str or None, default: "/"): a string used as a prefix to
      the path part of the exposed URL, so one can deploy a Taipy GUI application in a path
-     different from the root of the web site.
+     different from the root of the web site.<br/>
+     If you need to expose the application under the prefix "*my_application*", you can set this
+     path to the *base_url* paramameter of the `Gui.run()^` method:
+     ```python
+     Gui(pages=...).run(base_url="/my_application")
+     ```
+     The application prefix must also be handled at the web server level, to properly proxy the
+     requests.<br/>
+     Here is an example using [**ngnix**](https://nginx.org/): the server is listening to port 8080
+     and redirecting the traffic to the Taipy application, locally on port 5000. Here is what could
+     be indicated in the web server configuration file:
+     ```
+     server {
+         listen 8080;
+
+         location /my_application {
+             rewrite /my_application/(.*) /$1 break;
+             rewrite /my_application / break;
+             proxy_pass http://172.17.0.1:5000;
+         }
+
+         location /my_application/socket.io {
+             proxy_http_version 1.1;
+             proxy_buffering off;
+             proxy_set_header Upgrade $http_upgrade;
+             proxy_set_header Connection "Upgrade";
+             proxy_pass http://172.17.0.1:5000/socket.io;
+         }
+     }
+     ```
+     Note that web socket redirection needs to be setup.
    - <a name="p-allow_unsafe_werkzeug"></a>*allow_unsafe_werkzeug* (bool, default: False): hides
      some [Flask-SocketIO](https://pypi.org/project/Flask-SocketIO/) runtime errors in some
      debugging scenarios. This is set to True when [*debug*](#p-debug) is set to True.

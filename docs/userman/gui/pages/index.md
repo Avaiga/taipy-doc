@@ -211,11 +211,13 @@ associates a page with its name:
         # gui.run()
     ```
 
-You could have also used the `(Gui.)add_page()` function.
+You could have also used the `(Gui.)add_page()^` function for each page.
 
-
-In this situation, to see the pages in your browser, the address you will use
-will be *localhost:5000/home* or *localhost:5000/about*. Learn how to natigate between pages [here](../pages/navigate/index.md).
+In this situation, to see the pages in your browser, the address you will use will be
+*localhost:5000/home* or *localhost:5000/about*. Learn how to navigate between pages
+[here](../pages/navigate/index.md).<br/>
+If you point the browser to the root of the server (*localhost:5000/*) then it will be redirected to
+the first added page. In our situation, the *home* page at *localhost:5000/home*.
 
 Note that if pages are created in different modules, the variables that they can bind
 to visual elements may have a scope limited to their origin module. See
@@ -223,38 +225,57 @@ to visual elements may have a scope limited to their origin module. See
 
 ## Root page
 
-The *Root* page is the page located at `"/"` (or the value of the
-[*base_url*](../../advanced_features/configuration/gui-config.md#p-base_url) configuration setting).
-The content of the page will be shown at the top of every page of your application.
+The *Root* page is the page located at `"/"`.
+
+You may choose to expose you application pages to another top directory. To do this, you must
+prefix each page name with the directory you wish to expose:
+```python
+pages = {
+    "/": root_md,
+    "my_application/home": home_md,
+    "my_application/about": about_md
+}
+```
+
+When opening a browser on the page located at *localhost:5000/*, it will be redirected to the
+first declared page, at *localhost:5000/my_application/home*.
+
+The content of the root page will be displayed at the top of every page of your application.
+
+If you want to expose your application at a given root directory in a production environment, you
+may want to set the value of the
+[*base_url*](../../advanced_features/configuration/gui-config.md#p-base_url) configuration setting.
+Please refer to the documentation for this setting for more information.
 
 ## Application header and footer
 
 Your application may also need to hold a footer on all the pages it uses.<br/>
-You can use the pseudo-control `<|content|>` to achieve the expected result: this
+You can use the pseudo-control `content` to achieve the expected result: this
 visual element is not *really* a control: It is a placeholder for page content, used in the
 root page of your application, and is replaced by the target page content when the application
 runs.
 
-!!! example
+!!! example "Adding a page footer"
     ```python
     from taipy import Gui
 
-    if __name__ == "__main__":
-        root_md="""
+    root_md="""
     # Multi-page application
 
     <|content|>
 
     This application was created with [Taipy](https://www.taipy.io/).
-        """
-        home_md="## Home"
-        about_md="## About"
+    """
+    home_md="## Home"
+    about_md="## About"
 
-        pages = {
-            "/": root_md,
-            "home": home_md,
-            "about": about_md
-        }
+    pages = {
+        "/": root_md,
+        "home": home_md,
+        "about": about_md
+    }
+
+    if __name__ == "__main__":
         Gui(pages=pages).run()
     ```
 
