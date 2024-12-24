@@ -73,7 +73,7 @@ For example, this code creates a menu with two options:
 
 === "Python"
     ```python
-    from taipy import Gui
+    from taipy.gui import Gui, navigate
     import taipy.gui.builder as tgb
 
 
@@ -88,17 +88,17 @@ For example, this code creates a menu with two options:
                     lov=[('Page-1', 'Page 1'), ('Page-2', 'Page 2')],
                     on_action=menu_option_selected)
 
-            with tgb.Page() as page_1:
-                tgb.text("## This is page 1", mode="md")
-            with tgb.Page() as page_2:
-                tgb.text("## This is page 2", mode="md")
+        with tgb.Page() as page_1:
+            tgb.text("## This is page 1", mode="md")
+        with tgb.Page() as page_2:
+            tgb.text("## This is page 2", mode="md")
 
-            pages = {
-                "/": root_page,
-                "page1": page_1,
-                "page2": page_2
-            }
-            Gui(pages=pages).run()
+        pages = {
+            "/": root_page,
+            "Page-1": page_1,
+            "Page-2": page_2
+        }
+        Gui(pages=pages).run()
     ```
 === "Markdown"
     ```python
