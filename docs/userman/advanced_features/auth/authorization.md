@@ -220,7 +220,7 @@ this functionality.
 You can control the access to the functionalities exposed by The Taipy entities
 (Data nodes, Tasks, scenarios, ...).
 
-Taipy Scenario and data management use four predefined user roles names that can be assigned to users.
+Taipy Scenario and data management uses four predefined user role names that can be assigned to users.
 Each of these predefined roles provide a different set of capabilities and are described
 in details below.
 

@@ -81,7 +81,9 @@ additional features.
 ## Improvements and changes
 
 - The `SystemCredentials^` class can now be used to authorized for administrative actions when
-  there is no authenticated user. See the [Authorize with SystemCredentials](../userman/advanced_features/auth/authorization.md#authorize-with-systemcredentials) for more details.
+  there is no authenticated user. See the
+  [Authorize with SystemCredentials](../userman/advanced_features/auth/authorization.md#authorize-with-systemcredentials)
+  for more details.
 
 ## Significant bug fixes
 
