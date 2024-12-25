@@ -266,10 +266,10 @@ require authorization will find the information in the context.
 The general usage of the `Authorize^` context is shown in the following example.
 
 ```python
-from taipy.auth import Authorize
+from taipy.auth import Authorize, login
 
-# Get Credentials from Authentication
-credentials = ...
+# Get a valid Credentials from Authentication
+credentials = login("user1", "pass123")
 
 with Authorize(credentials):
     ...
