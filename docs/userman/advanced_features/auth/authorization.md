@@ -220,7 +220,7 @@ this functionality.
 You can control the access to the functionalities exposed by The Taipy entities
 (Data nodes, Tasks, scenarios, ...).
 
-Taipy Scenario and Da uses four predefined user roles names that can be assigned to users.
+Taipy Scenario and data management uses four predefined user role names that can be assigned to users.
 Each of these predefined roles provide a different set of capabilities and are described
 in details below.
 
@@ -257,3 +257,51 @@ in details below.
 - An *admin* ("TAIPY_ADMIN" role) is not restricted at all.<br/>
   An *admin* is able to perform all actions available to other roles with no
   restrictions.
+
+# Execute code within an Authorized context
+
+An `Authorize^` context lets you create a block of code where function and method calls that
+require authorization will find the information in the context.
+
+The general usage of the `Authorize^` context is shown in the following example.
+
+```python
+from taipy.auth import Authorize, login
+
+# Get a valid Credentials from Authentication
+credentials = login("user1", "pass123")
+
+with Authorize(credentials):
+    ...
+    # The code in this block will check for authorization
+    # directly from the role of the credentials in the context
+    ...
+```
+
+## Authorize with SystemCredentials
+
+`SystemCredentials^` are special `Credentials^` that have the TAIPY_ADMIN role.
+
+The `SystemCredentials^` can be used for administrative actions when there is no
+authenticated user. Typical use cases include:
+
+- Initializing the Taipy application by reading/writing data nodes, running scenarios.
+- Creating a Scheduler that performs authorization-required actions.
+
+!!! warning "Use the `SystemCredentials^` with caution"
+
+    Authorizing with `SystemCredentials^` will allow performing all actions available with no
+    restrictions. Ensure that the `SystemCredentials^` are used only in the appropriate context.
+
+Here is an example of how to use `SystemCredentials^` with the `Authorize^` context.
+
+```python
+from taipy.auth import Authorize
+from taipy.enterprise.auth import SystemCredentials
+
+with Authorize(SystemCredentials()):
+    ...
+    # The code in this block will be authorized by the TAIPY_ADMIN role
+    # from the SystemCredentials
+    ...
+```
