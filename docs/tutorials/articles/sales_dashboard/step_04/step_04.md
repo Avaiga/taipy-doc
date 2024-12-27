@@ -4,7 +4,7 @@ hide:
 ---
 
 The full code for this step is available 
-[here](https://github.com/AlexandreSajus/taipy-course/tree/main/5_multipage){: .tp-btn target='blank' }
+[here](https://github.com/Avaiga/taipy-course-gui/tree/develop/5_multipage){: .tp-btn target='blank' }
 
 In this part we will add a second page to our application and a sidebar menu to navigate between pages.
 
@@ -31,7 +31,7 @@ Here we use the [menu](../../../../refmans/gui/viselements/generic/menu.md) visu
 `menu` take a label which will be displayed at the top of the menu, a list of values (lov) which need the following format:
 `(page_url, Icon(icon_image_path, page_name))`, and a callback function to call when an option is selected.
 
-The images used are available [here](https://github.com/AlexandreSajus/taipy-course/tree/main/5_multipage/images)
+The images used are available [here](https://github.com/Avaiga/taipy-course-gui/tree/develop/5_multipage/images)
 
 Let's add a second page:
 

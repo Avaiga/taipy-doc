@@ -46,7 +46,7 @@ pip install taipy plotly
 
 The dataset used in this tutorial is the 
 [SuperStore Sales dataset](https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting) 
-available [here](https://github.com/AlexandreSajus/taipy-course/blob/main/data.csv).
+available [here](https://github.com/Avaiga/taipy-course-gui/blob/develop/data.csv).
 
 ## Tutorial Steps
 

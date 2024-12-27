@@ -4,7 +4,7 @@ hide:
 ---
 
 The full code for this step is available 
-[here](https://github.com/AlexandreSajus/taipy-course/blob/main/2_visual_elements/main.py){: .tp-btn target='blank' }
+[here](https://github.com/Avaiga/taipy-course-gui/blob/develop/2_visual_elements/main.py){: .tp-btn target='blank' }
 
 Let's start by creating a simple page with 3 components: a selector to select a category of items, 
 a bar chart which displays the sales of the top 10 countries for this category and 

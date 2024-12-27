@@ -4,7 +4,7 @@ hide:
 ---
 
 The full code for this step is available 
-[here](https://github.com/AlexandreSajus/taipy-course/tree/main/3_styling){: .tp-btn target='blank' }
+[here](https://github.com/Avaiga/taipy-course-gui/tree/develop/3_styling){: .tp-btn target='blank' }
 
 This step will be about styling the application. We will add more filters, layout the visual element and 
 regroup them in parts.

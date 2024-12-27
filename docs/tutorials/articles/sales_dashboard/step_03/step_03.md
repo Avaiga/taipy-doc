@@ -4,14 +4,14 @@ hide:
 ---
 
 The full code for this step is available 
-[here](https://github.com/AlexandreSajus/taipy-course/tree/main/4_charts){: .tp-btn target='blank' }
+[here](https://github.com/Avaiga/taipy-course-gui/tree/develop/4_charts){: .tp-btn target='blank' }
 
 In this part we will embed a Plotly map figure in our application.
 
 ![Map embedded in application](images/map.png){ width=90% : .tp-image-border }
 
 For this purpose, we will use the `generate_map` function defined 
-[here](https://github.com/AlexandreSajus/taipy-course/blob/main/4_charts/chart.py)
+[here](https://github.com/Avaiga/taipy-course-gui/blob/develop/4_charts/chart.py)
 to return a Plotly map figure.
 
 ![Plotly Map](images/plotly_map.png){ width=50% : .tp-image-border }
