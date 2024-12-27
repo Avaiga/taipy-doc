@@ -58,7 +58,17 @@ We can now add a chart to display the sales of the top 10 countries for the sele
     )
 ```
 
-Taipy charts have a specific syntax described [here](../../../../refmans/gui/viselements/generic/chart.md). You 
+Taipy charts have many properties. You can create multiple traces, add styling, change the type of chart, etc.
+
+```
+data = {"x_col": [0, 1, 2], "y_col1": [4, 1, 2], "y_col_2": [3, 1, 2]}
+with tgb.Page() as page:
+    tgb.chart("{data}", x="x_col", y__1="y_col1", y__2="y_col_2", type__1="bar", color__2="red")
+```
+    
+You can check the syntax for charts [here](../../../../refmans/gui/viselements/generic/chart.md). 
+
+You 
 can also directly embed Plotly charts using the `figure` property as we will do in [Step 3](../step_03/step_03.md).
 
 Here we need to provide a Pandas Dataframe with the data to display, the x and y columns to use, the type of chart,
