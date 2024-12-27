@@ -15,6 +15,15 @@ interaction, styling, and multi-page applications.
 
 ![Final Application](images/final_app.png){width=90% .tp-image-border}
 
+### Why Taipy?
+
+- **Speed:** Quickly develop robust applications.
+- **Simplicity:** Easy management of variables and events.
+- **Visualization:** Intuitive and clear visual elements.
+
+Each step in this **Tutorial** builds on the previous one. By the end, you'll be ready to
+create your own Taipy applications.
+
 This tutorial is also available in video format:
 
 <p align="center">
