@@ -111,5 +111,12 @@ def change_category(state):
     }
 ```
 
+## State
+
 Taipy uses a `state` object to store the variables per client.
 The syntax to update a variable will always be `state.variable = new_value`.
+
+State holds the value of all the variables used in the user interface for one specific connection.
+
+Modifying `state.data` will update data for one specific user, without modifying `state.data` for other users
+or the global `data` variable. You can test this by opening the application in a separate incognito window.
