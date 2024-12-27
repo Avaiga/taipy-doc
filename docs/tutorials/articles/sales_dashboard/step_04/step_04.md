@@ -4,7 +4,7 @@ hide:
 ---
 
 The full code for this step is available 
-[here](https://github.com/AlexandreSajus/taipy-course/tree/main/5_multipage)
+[here](https://github.com/AlexandreSajus/taipy-course/tree/main/5_multipage){: .tp-btn target='blank' }
 
 In this part we will add a second page to our application and a sidebar menu to navigate between pages.
 
@@ -63,6 +63,8 @@ def menu_option_selected(state, action, info):
 
 The callback signature for `menu` visual element is described [here](../../../../refmans/gui/viselements/generic/menu.md).
 Here we extract the page URL from the `info` dictionary and use the `navigate` function to change the page.
+
+You can learn more about multi-page navigation [here](../../../../userman/gui/pages/navigate/index.md)
 
 Lastly, we can add some CSS to resize the images and make the login button smaller:
 

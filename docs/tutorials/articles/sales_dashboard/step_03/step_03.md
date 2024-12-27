@@ -4,7 +4,7 @@ hide:
 ---
 
 The full code for this step is available 
-[here](https://github.com/AlexandreSajus/taipy-course/tree/main/4_charts)
+[here](https://github.com/AlexandreSajus/taipy-course/tree/main/4_charts){: .tp-btn target='blank' }
 
 In this part we will embed a Plotly map figure in our application.
 
@@ -46,7 +46,7 @@ We should now update the callback function to refresh the map when filters are a
 
 ```python
 def apply_changes(state):
-    state.data = data[
+    new_data = data[
         (
             pd.to_datetime(data["Order Date"], format="%d/%m/%Y")
             >= pd.to_datetime(state.start_date)
@@ -56,8 +56,9 @@ def apply_changes(state):
             <= pd.to_datetime(state.end_date)
         )
     ]
-    state.data = state.data[state.data["Category"] == state.selected_category]
-    state.data = state.data[state.data["Sub-Category"] == state.selected_subcategory]
+    new_data = new_data[new_data["Category"] == state.selected_category]
+    new_data = new_data[new_data["Sub-Category"] == state.selected_subcategory]
+    state.data = new_data
     state.chart_data = (
         state.data.groupby("State")["Sales"]
         .sum()

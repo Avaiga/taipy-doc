@@ -4,7 +4,7 @@ hide:
 ---
 
 The full code for this step is available 
-[here](https://github.com/AlexandreSajus/taipy-course/tree/main/3_styling)
+[here](https://github.com/AlexandreSajus/taipy-course/tree/main/3_styling){: .tp-btn target='blank' }
 
 This step will be about styling the application. We will add more filters, layout the visual element and 
 regroup them in parts.
@@ -172,7 +172,7 @@ def change_category(state):
 
 
 def apply_changes(state):
-    state.data = data[
+    new_data = data[
         (
             pd.to_datetime(data["Order Date"], format="%d/%m/%Y")
             >= pd.to_datetime(state.start_date)
@@ -182,8 +182,9 @@ def apply_changes(state):
             <= pd.to_datetime(state.end_date)
         )
     ]
-    state.data = state.data[state.data["Category"] == state.selected_category]
-    state.data = state.data[state.data["Sub-Category"] == state.selected_subcategory]
+    new_data = new_data[new_data["Category"] == state.selected_category]
+    new_data = new_data[new_data["Sub-Category"] == state.selected_subcategory]
+    state.data = new_data
     state.chart_data = (
         state.data.groupby("State")["Sales"]
         .sum()
