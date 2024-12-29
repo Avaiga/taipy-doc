@@ -308,10 +308,11 @@ with Authorize(SystemCredentials()):
 
 # Run the Orchestrator service with specific Credentials
 
-Running the Orchestrator service requires authorization with the `TAIPY_EXECUTOR` role.
+Running the Orchestrator service requires authorization with the `TAIPY_EDITOR` role.
 
 You can specify which `Credentials^` will be used to authorize the actions performed by
-running the Orchestrator service.
+running the Orchestrator service (editing the tasks, jobs, submissions, data nodes, and
+data node's data).
 
 ```python
 from taipy.auth import Authorize, login
