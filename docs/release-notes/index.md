@@ -85,6 +85,11 @@ additional features.
   [Authorize with SystemCredentials](../userman/advanced_features/auth/authorization.md#authorize-with-systemcredentials)
   for more details.
 
+- The `Orchestrator^` service can now be run with a specific `Credentials^` instead of the
+  default `SystemCredentials^`. See the
+  [Run the Orchestrator service with specific Credentials](../userman/advanced_features/auth/authorization.md#run-the-orchestrator-service-with-specific-credentials)
+  for more details.
+
 ## Significant bug fixes
 
 - No bug fix.

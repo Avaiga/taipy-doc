@@ -280,7 +280,7 @@ with Authorize(credentials):
 
 ## Authorize with SystemCredentials
 
-`SystemCredentials^` are special `Credentials^` that have the TAIPY_ADMIN role.
+`SystemCredentials^` are special `Credentials^` that have the "TAIPY_ADMIN" role.
 
 The `SystemCredentials^` can be used for administrative actions when there is no
 authenticated user. Typical use cases include:
@@ -305,3 +305,27 @@ with Authorize(SystemCredentials()):
     # from the SystemCredentials
     ...
 ```
+
+# Run the Orchestrator service with specific Credentials
+
+Running the Orchestrator service requires authorization with the `TAIPY_EDITOR` role.
+
+You can specify which `Credentials^` will be used to authorize the actions performed by
+running the Orchestrator service (editing the tasks, jobs, submissions, data nodes, and
+data node's data).
+
+```python
+from taipy.auth import Authorize, login
+from taipy import Orchestrator
+
+# Get a valid Credentials from Authentication
+credentials = login("user1", "pass123")
+
+orchestrator = Orchestrator()
+with Authorize(credentials):
+    orchestrator.run()
+    ...
+```
+
+If not specified, running the Orchestrator service will use the `SystemCredentials^` to authorize
+for the actions needed to start the service.
