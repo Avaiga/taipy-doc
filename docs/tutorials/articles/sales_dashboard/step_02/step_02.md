@@ -35,6 +35,13 @@ b {
 }
 ```
 
+You can also connect visual elements to lambda functions.
+For example, the following text visual element updates the displayed total sales when the data changes:
+
+```python
+tgb.text(value=lambda data: f"Total Sales: {data['Sales'].sum():,.2f}")
+```
+
 Let's now add a new container for the filters:
 
 ```python
