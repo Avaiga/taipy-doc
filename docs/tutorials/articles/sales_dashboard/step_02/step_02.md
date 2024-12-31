@@ -204,3 +204,5 @@ def apply_changes(state):
         "title": f"Sales by State for {state.selected_category} - {state.selected_subcategory}",
     }
 ```
+
+You can learn more about styling [here](../../../../userman/gui/styling/index.md).

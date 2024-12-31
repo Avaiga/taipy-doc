@@ -78,3 +78,5 @@ Lastly, we can add some CSS to resize the images and make the login button small
     height: 70%;
 }
 ```
+
+You can learn more about multi-page navigation [here](../../../../userman/gui/pages/navigate/index.md)
