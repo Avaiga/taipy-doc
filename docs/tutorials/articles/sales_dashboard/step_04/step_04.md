@@ -68,7 +68,8 @@ And run the application:
 ```python
 pages = {"/": root_page, "page1": page, "page2": page_2}
 
-Gui(pages=pages).run(title="Sales", dark_mode=False, debug=True)
+if __name__ == "__main__":
+    Gui(pages=pages).run(title="Sales", dark_mode=False, debug=True)
 ```
 
 For multipage applications, we use `pages` instead of `page` as the argument of the `Gui` class.
