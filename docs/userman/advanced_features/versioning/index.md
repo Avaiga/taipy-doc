@@ -39,9 +39,11 @@ a Taipy application.
   environment with existing entities created in previous runs. For more information, please refer to
   [production mode](production_mode.md).
 
-    !!! warning "Available in Taipy Enterprise edition"
+    !!! note "Available in Taipy Enterprise edition"
 
-        The production mode is relevant only to the Enterprise edition of Taipy.
+    This section is relevant only to the [Taipy Enterprise Edition](https://taipy.io/enterprise)
+    
+    [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 ## Versions
 

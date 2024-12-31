@@ -1,8 +1,10 @@
 # Scheduler
 
-!!! warning "Available in Taipy Enterprise edition"
+!!! note "Available in Taipy Enterprise edition"
 
-    This section is relevant only to the Enterprise edition of Taipy.
+    This section is relevant only to the [Taipy Enterprise Edition](https://taipy.io/enterprise)
+    
+    [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 This documentation focuses on providing necessary information to use the
 Taipy `Scheduler^`, and in particular the capabilities related to scenario

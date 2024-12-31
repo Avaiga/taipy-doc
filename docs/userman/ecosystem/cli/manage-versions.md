@@ -24,9 +24,11 @@ Below is the list of all the optional arguments:
 - *--delete-production VERSION* or *-dp VERSION*: Converts the provided production version
   to an experiment version.
 
-!!! warning "Available in Taipy Enterprise edition"
+!!! note "Available in Taipy Enterprise edition"
 
-    The *--delete-production* option is relevant only to the Enterprise edition of Taipy.
+    This section is relevant only to the [Taipy Enterprise Edition](https://taipy.io/enterprise)
+    
+    [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 ## List capabilities with the --help option
 

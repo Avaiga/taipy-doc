@@ -1,6 +1,8 @@
-!!! warning "Available in Taipy Enterprise edition"
+!!! note "Available in Taipy Enterprise edition"
 
-    This section is relevant only to the Enterprise edition of Taipy.
+    This section is relevant only to the [Taipy Enterprise Edition](https://taipy.io/enterprise)
+    
+    [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 When running a Taipy application in *--production* mode, Taipy can access all entities
 attached to the current version or another *production* version. It corresponds to the case where

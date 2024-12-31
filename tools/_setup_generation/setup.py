@@ -10,9 +10,9 @@ from typing import List
 class Setup(ABC):
     ROOT_PACKAGE = "taipy"
 
-    ENTERPRISE_BANNER = """!!! warning "Available in Taipy Enterprise edition"
+    ENTERPRISE_BANNER = """!!! note "Available in Taipy Enterprise edition"
 
-    This section is relevant only to the Enterprise edition of Taipy.
+    This section is relevant only to the [Taipy Enterprise Edition](https://taipy.io/enterprise).
 
 """
 
@@ -145,21 +145,27 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
             GuiExtRefManStep(),
             MuiIconsStep(),
             ContributorsStep(),
-            FileInjectionStep("installation",
-                              "Generating the installation page.",
-                              "[INSTALLATION]",
-                              os.path.join("taipy-doc-files", "INSTALLATION.md"),
-                              os.path.join("tutorials", "getting_started", "installation.md")),
-            FileInjectionStep("code_of_conduct",
-                              "Generating the code of conduct page.",
-                              "[CODE_OF_CONDUCT]",
-                              os.path.join("taipy-doc-files", "CODE_OF_CONDUCT.md"),
-                              os.path.join("contributing", "code_of_conduct.md")),
-            FileInjectionStep("contributing",
-                              "Generating the contributing page.",
-                              "[CONTRIBUTING]",
-                              os.path.join("taipy-doc-files", "CONTRIBUTING.md"),
-                              os.path.join("contributing", "index.md")),
+            FileInjectionStep(
+                "installation",
+                "Generating the installation page.",
+                "[INSTALLATION]",
+                os.path.join("taipy-doc-files", "INSTALLATION.md"),
+                os.path.join("tutorials", "getting_started", "installation.md"),
+            ),
+            FileInjectionStep(
+                "code_of_conduct",
+                "Generating the code of conduct page.",
+                "[CODE_OF_CONDUCT]",
+                os.path.join("taipy-doc-files", "CODE_OF_CONDUCT.md"),
+                os.path.join("contributing", "code_of_conduct.md"),
+            ),
+            FileInjectionStep(
+                "contributing",
+                "Generating the contributing page.",
+                "[CONTRIBUTING]",
+                os.path.join("taipy-doc-files", "CONTRIBUTING.md"),
+                os.path.join("contributing", "index.md"),
+            ),
             DesignerStep(),
         ]
     setup = Setup(root_dir, steps)
