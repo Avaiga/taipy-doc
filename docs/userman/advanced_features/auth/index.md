@@ -3,9 +3,11 @@ hide:
   - toc
 ---
 
-!!! warning "Available in Taipy Enterprise edition"
+!!! note "Available in Taipy Enterprise edition"
 
-    This chapter is relevant only to the Enterprise edition of Taipy.
+    This section is relevant only to the [Taipy Enterprise Edition](https://taipy.io/enterprise)
+    
+    [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 The Enterprise edition of Taipy has additional features that let applications
 authenticate users and behave differently depending on the identity of the

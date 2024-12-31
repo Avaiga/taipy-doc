@@ -1,6 +1,8 @@
-!!! warning "Available in Taipy Enterprise edition"
+!!! note "Available in Taipy Enterprise edition"
 
-    This section is relevant only to the Enterprise edition of Taipy.
+    This section is relevant only to the [Taipy Enterprise Edition](https://taipy.io/enterprise)
+    
+    [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 Authentication is the process to secure user identity in an application.
 
