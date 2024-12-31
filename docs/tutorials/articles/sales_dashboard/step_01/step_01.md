@@ -14,11 +14,17 @@ a table which displays data for the selected category
 
 Let's start by importing the necessary libraries:
 
-```python
-from taipy.gui import Gui
-import taipy.gui.builder as tgb
-import pandas as pd
-```
+=== "Python"
+    ```python
+    from taipy.gui import Gui
+    import taipy.gui.builder as tgb
+    import pandas as pd
+    ```
+=== "Markdown"
+    ```python
+    from taipy.gui import Gui
+    import pandas as pd
+    ```
 
 We can now start creating the page. We will first add a [selector](../../../../refmans/gui/viselements/generic/selector.md).
 
@@ -26,6 +32,18 @@ We can now start creating the page. We will first add a [selector](../../../../r
 with tgb.Page() as page:
     tgb.selector(value="{selected_category}", lov="{categories}", on_change=change_category)
 ```
+
+=== "Python"
+    ```python
+    with tgb.Page() as page:
+        tgb.selector(value="{selected_category}", lov="{categories}", on_change=change_category)
+    ```
+=== "Markdown"
+    ```python
+    page = """
+    <|{selected_category}|selector|lov={categories}|on_change=change_category|>
+    """
+    ```
 
 Taipy [visual elements](../../../../refmans/gui/viselements/index.md) take many properties. 
 Note that dynamic properties use a quote and brackets syntax. We use `value="{selected_category}"` 
@@ -48,15 +66,20 @@ def change_category(state):
 
 We can now add a chart to display the sales of the top 10 countries for the selected category.
 
-```python
-    tgb.chart(
-        data="{chart_data}",
-        x="State",
-        y="Sales",
-        type="bar",
-        layout="{layout}",
-    )
-```
+=== "Python"
+    ```python
+        tgb.chart(
+            data="{chart_data}",
+            x="State",
+            y="Sales",
+            type="bar",
+            layout="{layout}",
+        )
+    ```
+=== "Markdown"
+    ```
+    <|{chart_data}|chart|x=State|y=Sales|type=bar|layout={layout}|>
+    ```
 
 Taipy charts have many properties. You can create multiple traces, add styling, change the type of chart, etc.
 
@@ -65,6 +88,19 @@ data = {"x_col": [0, 1, 2], "y_col1": [4, 1, 2], "y_col_2": [3, 1, 2]}
 with tgb.Page() as page:
     tgb.chart("{data}", x="x_col", y__1="y_col1", y__2="y_col_2", type__1="bar", color__2="red")
 ```
+
+=== "Python"
+    ```python
+    data = {"x_col": [0, 1, 2], "y_col1": [4, 1, 2], "y_col_2": [3, 1, 2]}
+    with tgb.Page() as page:
+        tgb.chart("{data}", x="x_col", y__1="y_col1", y__2="y_col_2", type__1="bar", color__2="red")
+    ```
+=== "Markdown"
+    ```python
+    data = {"x_col": [0, 1, 2], "y_col_1": [4, 2, 1], "y_col_2":[3, 1, 2]}
+    Gui("<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|type[1]=bar|color[2]=red|>").run()
+    ```
+
     
 You can check the syntax for charts [here](../../../../refmans/gui/viselements/generic/chart.md). 
 
@@ -88,9 +124,14 @@ layout = {"yaxis": {"title": "Revenue (USD)"}, "title": "Sales by State"}
 
 Lastly, we can add a table to display the data for the selected category.
 
-```python
-    tgb.table(data="{data}")
-```
+=== "Python"
+    ```python
+        tgb.table(data="{data}")
+    ```
+=== "Markdown"
+    ```
+    <|{data}|table|>
+    ```
 
 We can now run the application using:
   

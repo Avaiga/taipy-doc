@@ -27,20 +27,32 @@ map_fig = generate_map(data)
 
 We can now add the map to the page by replacing our previous chart and table with:
 
-```python
-        tgb.html("br")
-        with tgb.layout(columns="2 3"):
-            tgb.chart(
-                data="{chart_data}",
-                x="State",
-                y="Sales",
-                type="bar",
-                layout="{layout}",
-            )
-            tgb.chart(figure="{map_fig}")
-        tgb.html("br")
-        tgb.table(data="{data}")
-```
+=== "Python"
+    ```python
+            tgb.html("br")
+            with tgb.layout(columns="2 3"):
+                tgb.chart(
+                    data="{chart_data}",
+                    x="State",
+                    y="Sales",
+                    type="bar",
+                    layout="{layout}",
+                )
+                tgb.chart(figure="{map_fig}")
+            tgb.html("br")
+            tgb.table(data="{data}")
+    ```
+=== "Markdown"
+    ```
+    <br />
+    <|layout|columns=2 3|
+    <|{chart_data}|chart|x=State|y=Sales|type=bar|layout={layout}|>
+
+    <|chart|figure={map_fig}|>
+    |>
+    <br />
+    <|{data}|table|>
+    ```
 
 We should now update the callback function to refresh the map when filters are applied:
 

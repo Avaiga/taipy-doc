@@ -13,19 +13,33 @@ In this part we will add a second page to our application and a sidebar menu to 
 Using the same code as the previous steps, let's add a root page which will contain the sidebar menu
 and appear on all pages:
 
-```python
-from taipy.gui import Gui, Icon, navigate
+=== "Python"
+    ```python
+    from taipy.gui import Gui, Icon, navigate
 
-with tgb.Page() as root_page:
-    tgb.menu(
-        label="Menu",
-        lov=[
-            ("page1", Icon("images/map.png", "Sales")),
-            ("page2", Icon("images/person.png", "Account")),
-        ],
-        on_action=menu_option_selected,
-    )
-```
+    with tgb.Page() as root_page:
+        tgb.menu(
+            label="Menu",
+            lov=[
+                ("page1", Icon("images/map.png", "Sales")),
+                ("page2", Icon("images/person.png", "Account")),
+            ],
+            on_action=menu_option_selected,
+        )
+    ```
+=== "Markdown"
+    ```python
+    from taipy.gui import Gui, Icon, navigate
+
+    menu_lov = [
+        ("page1", Icon("images/map.png", "Sales")),
+        ("page2", Icon("images/person.png", "Account")),
+    ]
+
+    root_page = """
+    <|Menu|menu|lov={menu_lov}|on_action=menu_option_selected|>
+    """
+    ```
 
 Here we use the [menu](../../../../refmans/gui/viselements/generic/menu.md) visual element to create a sidebar menu.
 `menu` take a label which will be displayed at the top of the menu, a list of values (lov) which need the following format:
@@ -35,11 +49,19 @@ The images used are available [here](https://github.com/Avaiga/taipy-course-gui/
 
 Let's add a second page:
 
-```python
-with tgb.Page() as page_2:
-    tgb.text("# Account **Management**", mode="md")
-    tgb.button("Logout", class_name="plain")
-```
+=== "Python"
+    ```python
+    with tgb.Page() as page_2:
+        tgb.text("# Account **Management**", mode="md")
+        tgb.button("Logout", class_name="plain")
+    ```
+=== "Markdown"
+    ```python
+    page_2 = """
+    # Account **Management**
+    <|Logout|button|class_name=plain|>
+    """
+    ```
 
 And run the application:
 
