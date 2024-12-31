@@ -28,11 +28,6 @@ Let's start by importing the necessary libraries:
 
 We can now start creating the page. We will first add a [selector](../../../../refmans/gui/viselements/generic/selector.md).
 
-```python
-with tgb.Page() as page:
-    tgb.selector(value="{selected_category}", lov="{categories}", on_change=change_category)
-```
-
 === "Python"
     ```python
     with tgb.Page() as page:
@@ -82,12 +77,6 @@ We can now add a chart to display the sales of the top 10 countries for the sele
     ```
 
 Taipy charts have many properties. You can create multiple traces, add styling, change the type of chart, etc.
-
-```python
-data = {"x_col": [0, 1, 2], "y_col1": [4, 1, 2], "y_col_2": [3, 1, 2]}
-with tgb.Page() as page:
-    tgb.chart("{data}", x="x_col", y__1="y_col1", y__2="y_col_2", type__1="bar", color__2="red")
-```
 
 === "Python"
     ```python
