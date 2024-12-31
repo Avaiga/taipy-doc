@@ -125,7 +125,8 @@ Lastly, we can add a table to display the data for the selected category.
 We can now run the application using:
   
 ```python
-Gui(page=page).run(title="Sales", dark_mode=False, debug=True)
+if __name__ == "__main__":
+    Gui(page=page).run(title="Sales", dark_mode=False, debug=True)
 ```
 
 `debug=True` will display a stack trace of the errors if any occur. 
