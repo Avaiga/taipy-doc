@@ -27,7 +27,7 @@ create your own Taipy applications.
 This tutorial is also available in video format:
 
 <p align="center">
-  <a href="https://youtu.be/4F-266YnTkM" target="_blank">
+  <a href="https://youtu.be/phhnakHSNEE?si=QfcTpfJ0bHEbv8Mp" target="_blank">
     <img src="images/yt-thumbnail.png" alt="Youtube Tutorial" width="50%"/>
   </a>
 </p>
