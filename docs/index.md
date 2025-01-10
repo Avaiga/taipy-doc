@@ -13,7 +13,7 @@ from initial prototypes to production-ready applications.
 
 <div class="tp-row tp-row--gutter-sm">
   <div class="tp-col-12 tp-col-md-6 d-flex">
-    <a class="tp-content-card" href="tutorials/articles/understanding_gui/">
+    <a class="tp-content-card" href="tutorials/articles/sales_dashboard/">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon icon-light" src="images/icons/dashboard-w.svg">
         <img class="tp-content-card-icon icon-dark" src="images/icons/dashboard.svg">
