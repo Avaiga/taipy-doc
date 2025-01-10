@@ -3,10 +3,9 @@ hide:
   - toc
 ---
 
-The full code for this step is available 
-[here](https://github.com/Avaiga/taipy-course-gui/tree/develop/4_charts){: .tp-btn target='blank' }
-
 In this part we will embed a Plotly map figure in our application.
+
+[Download the code](https://github.com/Avaiga/taipy-course-gui/tree/develop/4_charts){: .tp-btn target='blank' }
 
 ![Map embedded in application](images/map.png){ width=90% : .tp-image-border }
 
