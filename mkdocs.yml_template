@@ -21,15 +21,12 @@ nav:
     - "Fundamentals":
       - "Fundamentals": tutorials/fundamentals/index.md
       - "Getting Started": tutorials/getting_started/index.md
-      - "Understanding GUI":
-        - "Understanding GUI": tutorials/articles/understanding_gui/index.md
-        - "1 - First Web page": tutorials/articles/understanding_gui/step_01/step_01.md
-        - "2 - Visual elements": tutorials/articles/understanding_gui/step_02/step_02.md
-        - "3 - Interactions": tutorials/articles/understanding_gui/step_03/step_03.md
-        - "4 - Charts": tutorials/articles/understanding_gui/step_04/step_04.md
-        - "5 - Python expressions in properties": tutorials/articles/understanding_gui/step_05/step_05.md
-        - "6 - Page layouts": tutorials/articles/understanding_gui/step_06/step_06.md
-        - "7 - Multi-pages, navbars, and menus": tutorials/articles/understanding_gui/step_07/step_07.md
+      - "Creating a Sales Dashboard":
+        - "Creating a Sales Dashboard": tutorials/articles/sales_dashboard/index.md
+        - "1 - Visual Elements": tutorials/articles/sales_dashboard/step_01/step_01.md
+        - "2 - Styling": tutorials/articles/sales_dashboard/step_02/step_02.md
+        - "3 - Charts": tutorials/articles/sales_dashboard/step_03/step_03.md
+        - "4 - Multipage": tutorials/articles/sales_dashboard/step_04/step_04.md
       - "Scenario management overview": tutorials/articles/scenario_management_overview/index.md
       - "First Realistic application":
         - "First Realistic application": tutorials/articles/complete_application/index.md
