@@ -98,11 +98,13 @@ We can now add [date selectors](../../../../refmans/gui/viselements/generic/date
     ```python
             with tgb.part(class_name="card"):
                 with tgb.layout(columns="1 2 1"):
+                    # First Column
                     with tgb.part():
                         tgb.text("Filter **From**", mode="md")
                         tgb.date("{start_date}")
                         tgb.text("To")
                         tgb.date("{end_date}")
+                    # Second Column
                     with tgb.part():
                         tgb.text("Filter Product **Category**", mode="md")
                         tgb.selector(
@@ -117,12 +119,12 @@ We can now add [date selectors](../../../../refmans/gui/viselements/generic/date
                             lov="{subcategories}",
                             dropdown=True,
                         )
-                    with tgb.part(class_name="text-center"):
-                        tgb.button(
-                            "Apply",
-                            class_name="plain apply_button",
-                            on_action=apply_changes,
-                        )
+                    # Third Column
+                    tgb.button(
+                        "Apply",
+                        class_name="plain apply_button",
+                        on_action=apply_changes,
+                    )
     ```
 === "Markdown"
     ```
