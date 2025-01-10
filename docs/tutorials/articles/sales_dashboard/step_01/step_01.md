@@ -3,12 +3,12 @@ hide:
   - toc
 ---
 
-The full code for this step is available 
-[here](https://github.com/Avaiga/taipy-course-gui/blob/develop/2_visual_elements/main.py){: .tp-btn target='blank' }
-
 Let's start by creating a simple page with 3 components: a selector to select a category of items, 
 a bar chart which displays the sales of the top 10 countries for this category and 
 a table which displays data for the selected category
+
+[Download the code](https://github.com/Avaiga/taipy-course-gui/blob/develop/2_visual_elements/main.py){: .tp-btn target='blank' }
+
 
 ![Step 1 Application](images/simple_app.png){ width=90% : .tp-image-border }
 

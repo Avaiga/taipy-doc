@@ -3,11 +3,10 @@ hide:
   - toc
 ---
 
-The full code for this step is available 
-[here](https://github.com/Avaiga/taipy-course-gui/tree/develop/3_styling){: .tp-btn target='blank' }
-
 This step will be about styling the application. We will add more filters, layout the visual element and 
 regroup them in parts.
+
+[Download the code](https://github.com/Avaiga/taipy-course-gui/tree/develop/3_styling){: .tp-btn target='blank' }
 
 ![Styling Application](images/styling_app.png){ width=90% : .tp-image-border }
 
@@ -159,7 +158,7 @@ Check out the styling part of [button](../../../../refmans/gui/viselements/gener
 
 This will add a margin to the top of the button to align it with the filters.
 We can also add properties to all Taipy buttons by applying properties to the `taipy-button` class
-(You can find these class names by inspecting the page on a visual element)
+(You can find these class names by inspecting the page on a visual element).
 
 ```css
 .taipy-button {
