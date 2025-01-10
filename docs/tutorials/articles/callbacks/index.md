@@ -49,30 +49,56 @@ Let’s demonstrate local callbacks with a small example.
 This simple app allows a user to select a temperature in degrees Fahrenheit
 and automatically convert it to degrees Celsius:
 
-```python linenums="1"
-from taipy.gui import Gui, Markdown
+=== "Python"
+    ```python linenums="1"
+    from taipy.gui import Gui, Markdown
+    import taipy.gui.builder as tgb
 
-def fahrenheit_to_celsius(fahrenheit):
-    return (fahrenheit - 32) * 5 / 9
+    def fahrenheit_to_celsius(fahrenheit):
+        return (fahrenheit - 32) * 5 / 9
 
-def update_celsius(state):
-    state.celsius = fahrenheit_to_celsius(state.fahrenheit)
+    def update_celsius(state):
+        state.celsius = fahrenheit_to_celsius(state.fahrenheit)
 
-if __name__=="__main__":
-    fahrenheit = 100
-    celsius = fahrenheit_to_celsius(fahrenheit)
+    if __name__=="__main__":
+        fahrenheit = 100
+        celsius = fahrenheit_to_celsius(fahrenheit)
 
-    md = Markdown("""
-# Local Callbacks
-## Fahrenheit:
-<|{fahrenheit}|number|on_change=update_celsius|>
+        with tgb.Page() as page:
+            tgb.text("# Local Callbacks", mode="md")
+            tgb.text("## Fahrenheit:", mode="md")
+            tgb.number("{fahrenheit}", on_change=update_celsius)
 
-## Celsius:
-<|{celsius}|number|active=False|>
-    """)
+            tgb.text("## Celsius:", mode="md")
+            tgb.number("{celsius}", active=False)
+            
+        Gui(page=page).run()
+    ```
+=== "Markdown"
+    ```python linenums="1"
+    from taipy.gui import Gui, Markdown
 
-    Gui(page=md).run()
-```
+    def fahrenheit_to_celsius(fahrenheit):
+        return (fahrenheit - 32) * 5 / 9
+
+    def update_celsius(state):
+        state.celsius = fahrenheit_to_celsius(state.fahrenheit)
+
+    if __name__=="__main__":
+        fahrenheit = 100
+        celsius = fahrenheit_to_celsius(fahrenheit)
+
+        md = Markdown("""
+    # Local Callbacks
+    ## Fahrenheit:
+    <|{fahrenheit}|number|on_change=update_celsius|>
+
+    ## Celsius:
+    <|{celsius}|number|active=False|>
+        """)
+
+        Gui(page=md).run()
+    ```
 
 The relevant line here is line 12, where we defined a number control using the Taipy construct
 syntax. We will use this to select the temperature in degrees Fahrenheit which we wish to be
@@ -104,41 +130,74 @@ the temperature in kelvin.
 
 Take a look at the updated code:
 
-```python linenums="1"
-from taipy.gui import Gui, Markdown
+=== "Python"
+    ```python linenums="1"
+    from taipy.gui import Gui, Markdown
+    import taipy.gui.builder as tgb
 
-def fahrenheit_to_celsius(fahrenheit):
-    return (fahrenheit - 32) * 5 / 9
+    def fahrenheit_to_celsius(fahrenheit):
+        return (fahrenheit - 32) * 5 / 9
 
-def celsius_to_kelvin(celsius):
-    return celsius + 273.15
+    def update_celsius(state):
+        state.celsius = fahrenheit_to_celsius(state.fahrenheit)
 
-def update_celsius(state):
-    state.celsius = fahrenheit_to_celsius(state.fahrenheit)
+    def celsius_to_kelvin(celsius):
+        return celsius + 273.15
 
-def on_change(state, var_name, var_value):
-    if var_name == "celsius":
-        state.kelvin = celsius_to_kelvin(state.celsius)
+    if __name__=="__main__":
+        fahrenheit = 100
+        celsius = fahrenheit_to_celsius(fahrenheit)
+        kelvin = celsius_to_kelvin(celsius)
 
-if __name__=="__main__":
-    fahrenheit = 100
-    celsius = fahrenheit_to_celsius(fahrenheit)
-    kelvin = celsius_to_kelvin(celsius)
+        with tgb.Page() as page:
+            tgb.text("# Local and Global Callbacks", mode="md")
+            tgb.text("## Fahrenheit:", mode="md")
+            tgb.number("{fahrenheit}", on_change=update_celsius)
 
-    md = Markdown("""
-# Local and Global Callbacks
-## Fahrenheit:
-<|{fahrenheit}|number|on_change=update_celsius|>
+            tgb.text("## Celsius:", mode="md")
+            tgb.number("{celsius}", active=False)
 
-## Celsius:
-<|{celsius}|number|active=False|>
+            tgb.text("## Kelvin:", mode="md")
+            tgb.number("{kelvin}", active=False)
+            
+        Gui(page=page).run()
+    ```
+=== "Markdown"
+    ```python linenums="1"
+    from taipy.gui import Gui, Markdown
 
-## Kelvin:
-<|{kelvin}|number|active=False|>
-    """)
+    def fahrenheit_to_celsius(fahrenheit):
+        return (fahrenheit - 32) * 5 / 9
 
-    Gui(page=md).run(dark_mode=False)
-```
+    def celsius_to_kelvin(celsius):
+        return celsius + 273.15
+
+    def update_celsius(state):
+        state.celsius = fahrenheit_to_celsius(state.fahrenheit)
+
+    def on_change(state, var_name, var_value):
+        if var_name == "celsius":
+            state.kelvin = celsius_to_kelvin(state.celsius)
+
+    if __name__=="__main__":
+        fahrenheit = 100
+        celsius = fahrenheit_to_celsius(fahrenheit)
+        kelvin = celsius_to_kelvin(celsius)
+
+        md = Markdown("""
+    # Local and Global Callbacks
+    ## Fahrenheit:
+    <|{fahrenheit}|number|on_change=update_celsius|>
+
+    ## Celsius:
+    <|{celsius}|number|active=False|>
+
+    ## Kelvin:
+    <|{kelvin}|number|active=False|>
+        """)
+
+        Gui(page=md).run(dark_mode=False)
+    ```
 
 On line 22, we added a new number control to our app, which is bound to the kelvin variable. The
 existing code we implemented in the previous section — which updates celsius when fahrenheit is
@@ -188,34 +247,60 @@ global callback may be the right choice.
 Side-tracking a little from the focus of this article, it’s worth noting that this app never
 actually needed callbacks! We can update the code as follows:
 
-```python
-from taipy.gui import Gui, Markdown
+=== "Python"
+    ```python linenums="1"
+    from taipy.gui import Gui, Markdown
+    import taipy.gui.builder as tgb
 
-def fahrenheit_to_celsius(fahrenheit):
-   return (fahrenheit - 32) * 5 / 9
+    def fahrenheit_to_celsius(fahrenheit):
+        return (fahrenheit - 32) * 5 / 9
 
-def celsius_to_kelvin(celsius):
-   return celsius + 273.15
+    def update_celsius(state):
+        state.celsius = fahrenheit_to_celsius(state.fahrenheit)
 
-if __name__=="__main__":
-    fahrenheit = 100
-    celsius = fahrenheit_to_celsius(fahrenheit)
-    kelvin = celsius_to_kelvin(celsius)
+    if __name__=="__main__":
+        fahrenheit = 100
 
-    md = Markdown("""
-# Global Callbacks
-## Fahrenheit:
-<|{fahrenheit}|number|>
+        with tgb.Page() as page:
+            tgb.text("# Global Callbacks", mode="md")
+            tgb.text("## Fahrenheit:", mode="md")
+            tgb.number("{fahrenheit}", on_change=update_celsius)
 
-## Celsius:
-<|{fahrenheit_to_celsius(fahrenheit)}|number|active=False|>
+            tgb.text("## Celsius:", mode="md")
+            tgb.number("{fahrenheit_to_celsius(fahrenheit)}", active=False)
 
-## Kelvin:
-<|{celsius_to_kelvin(fahrenheit_to_celsius(fahrenheit))}|number|active=False|>
-    """)
+            tgb.text("## Kelvin:", mode="md")
+            tgb.number("{celsius_to_kelvin(fahrenheit_to_celsius(fahrenheit))}", active=False)
+            
+        Gui(page=page).run()
+    ```
+=== "Markdown"
+    ```python
+    from taipy.gui import Gui, Markdown
 
-    Gui(page=md).run()
-```
+    def fahrenheit_to_celsius(fahrenheit):
+    return (fahrenheit - 32) * 5 / 9
+
+    def celsius_to_kelvin(celsius):
+    return celsius + 273.15
+
+    if __name__=="__main__":
+        fahrenheit = 100
+
+        md = Markdown("""
+    # Global Callbacks
+    ## Fahrenheit:
+    <|{fahrenheit}|number|>
+
+    ## Celsius:
+    <|{fahrenheit_to_celsius(fahrenheit)}|number|active=False|>
+
+    ## Kelvin:
+    <|{celsius_to_kelvin(fahrenheit_to_celsius(fahrenheit))}|number|active=False|>
+        """)
+
+        Gui(page=md).run()
+    ```
 
 Without using any callbacks, we instead simply interpolate the expression to be evaluated into
 the curly braces for both the celsius and kelvin controls — much like an f-string! Since the

@@ -117,13 +117,16 @@ To address this issue, you can modify the *change_delay* parameter in one of the
   element.
 
 === "Python"
-   ```python
-   tgb.input("{text}", change_delay=800)
-   ```
-=== "Markdown" 
-   ```python
-   <|{text}|input|change_delay=800|>
-   ```
+
+    ```python
+    tgb.input("{text}", change_delay=800)
+    ```
+
+=== "Markdown"
+
+    ```python
+    <|{text}|input|change_delay=800|>
+    ```
 
 - **Globally**: To adjust the delay for all of Taipy's visual elements.
 
@@ -147,43 +150,50 @@ re-executions required. You can learn more about this in the
 Here are the new cells to add:
 
 1. Import Markdown:
-   ```python
-   from taipy.gui import Gui, Markdown
-   ```
+
+```python
+from taipy.gui import Gui, Markdown
+```
 
 2. Create an empty new page:
-   ```python
-   new_page = Markdown("")
-   ```
+
+```python
+new_page = Markdown("")
+```
 
 3. Set the page content:
-   ```python
-   new_page.set_content(page)
-   ```
+
+```python
+new_page.set_content(page)
+```
 
 4. Update the `pages` definition:
-   ```python
-   pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
-            "line":new_page,
-            "text":page_file}
-   ```
+
+```python
+pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
+         "line":new_page,
+         "text":page_file}
+```
 
 ## Variable modification with `gui.reload`
 
 1. Add this step:
-   ```python
-   gui=Gui(pages=pages)
-   ```
+
+```python
+gui = Gui(pages=pages)
+```
 
 2. Update your `tp.run(gui)`:
-   ```python
-   gui.run()
-   ```
+
+```python
+gui.run()
+```
 
 3. Add the `gui.reload` function:
-   ```python
-   gui.reload()
-   ```
+
+```python
+gui.reload()
+```
 
 After you've made your modifications, just rerun the cell where you made the changes and
 activate the reload function. Refresh your application page to view the updates you've made.
