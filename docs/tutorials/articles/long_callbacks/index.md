@@ -27,15 +27,15 @@ Imagine a situation where a callback starts a duty that requires a lot of resour
 finish. To make this work, we can use a straightforward approach:
 
 ```python
-    from taipy.gui import State, invoke_long_callback, notify
+from taipy.gui import State, invoke_long_callback, notify
 
-    def heavy_function(...):
-        # Do something that takes time...
-        ...
+def heavy_function(...):
+    # Do something that takes time...
+    ...
 
-    def on_action(state):
-        notify(state, "info", "Heavy function started")
-        invoke_long_callback(state, heavy_function, [...heavy_function arguments...])
+def on_action(state):
+    notify(state, "info", "Heavy function started")
+    invoke_long_callback(state, heavy_function, [...heavy_function arguments...])
 ```
 
 In the previous example, the Taipy function `invoke_long_callback()^` manages the
@@ -50,15 +50,15 @@ on the status of the ongoing process. Taipy offers a way to receive notification
 function completes, as shown below:
 
 ```python
-    def heavy_function_status(state, status):
-        if status:
-            notify(state, "success", "The heavy function has finished!")
-        else:
-            notify(state, "error", "The heavy function has failed")
+def heavy_function_status(state, status):
+    if status:
+        notify(state, "success", "The heavy function has finished!")
+    else:
+        notify(state, "error", "The heavy function has failed")
 
-    def on_action(state, id, action):
-        invoke_long_callback(state, heavy_function, [...heavy_function arguments...],
-                             heavy_function_status)
+def on_action(state, id, action):
+    invoke_long_callback(state, heavy_function, [...heavy_function arguments...],
+                            heavy_function_status)
 ```
 
 In this example, we introduce the *heavy_function_status()* function, which the
@@ -73,13 +73,13 @@ To update the `State` according to the returned value from *heavy_function()*, y
 `heavy_function_status()` as follows:
 
 ```python linenums="1"
-    def heavy_function_status(state, status, result):
-        if status:
-            notify(state, "success", "The heavy function has finished!")
-            # Actualize the State with the function result
-            state.result = result
-        else:
-            notify(state, "error", "The heavy function has failed")
+def heavy_function_status(state, status, result):
+    if status:
+        notify(state, "success", "The heavy function has finished!")
+        # Actualize the State with the function result
+        state.result = result
+    else:
+        notify(state, "error", "The heavy function has failed")
 ```
 
 We added a parameter called *result*, which represents the return value of *heavy_function()*.
@@ -90,9 +90,9 @@ result in other parts of your application or display it to the user as needed.
 Make sure that the `heavy_function()` returns a value. For example:
 
 ```python
-    def heavy_function(...):
-        ...
-        return result
+def heavy_function(...):
+    ...
+    return result
 ```
 
 When you update the State with the result of *heavy_function()*, you ensure that the user
@@ -120,20 +120,24 @@ In this example, the `heavy_function` uses the `invoke_callback` function to sen
 to the client at different stages of the task. The `user_status` function appends these 
 updates to the `logs` state variable, which is then displayed in the user interface.
 
-1. **heavy_function**:
-   - It calls `invoke_callback` at different stages to send progress updates to the 
-   `user_status` function.
-   - After completing the task, it returns the result.
+**heavy_function**:
 
-2. **user_status**:
-   - It updates the `logs` state variable with the progress information.
+- It calls `invoke_callback` at different stages to send progress updates to the 
+`user_status` function.
+- After completing the task, it returns the result.
 
-3. **status_fct**:
-   - It updates the `result` state variable with the final result of the `heavy_function`.
+**user_status**:
 
-4. **respond**:
-   - It initiates the long-running task by calling `invoke_long_callback` with the 
-   `heavy_function` and associated status function.
+- It updates the `logs` state variable with the progress information.
+
+**status_fct**:
+
+- It updates the `result` state variable with the final result of the `heavy_function`.
+
+**respond**:
+
+- It initiates the long-running task by calling `invoke_long_callback` with the 
+`heavy_function` and associated status function.
 
 By using this approach, you can provide real-time updates to the user interface directly 
 from within the `heavy_function`, enhancing the user experience by keeping them informed 
@@ -146,19 +150,19 @@ Occasionally, it's useful to give regular updates on the progress of a long-runn
 Taipy's `invoke_long_callback()^` provides a convenient method to accomplish this:
 
 ```python linenums="1"
-    def heavy_function_status(state, status):
-        if isinstance(status, bool):
-            if status:
-                notify(state, "success", "The heavy function has finished!")
-            else:
-                notify(state, "error", "The heavy function has failed somehow.")
+def heavy_function_status(state, status):
+    if isinstance(status, bool):
+        if status:
+            notify(state, "success", "The heavy function has finished!")
         else:
-            notify(state, "info", "The heavy function is still running...")
+            notify(state, "error", "The heavy function has failed somehow.")
+    else:
+        notify(state, "info", "The heavy function is still running...")
 
-    def on_action(state):
-        invoke_long_callback(state, heavy_function, [...heavy_function arguments...],
-                             heavy_function_status, [...heavy_function_status arguments...],
-                             5000)
+def on_action(state):
+    invoke_long_callback(state, heavy_function, [...heavy_function arguments...],
+                            heavy_function_status, [...heavy_function_status arguments...],
+                            5000)
 ```
 
 In the code above, in line 13, when you include a *period* parameter, the `heavy_function_status()`
@@ -175,9 +179,17 @@ when dealing with hefty operations.
 
 ![Approximating Pi](images/approx_pi.png){width=90% : .tp-image }
 
-```python
-{%
-include-markdown "./src/long_callbacks.py"
-comments=false
-%}
-```
+=== "Python"
+    ```python
+    {%
+    include-markdown "./src/long_callbacks_tgb.py"
+    comments=false
+    %}
+    ```
+=== "Markdown"
+    ```python
+    {%
+    include-markdown "./src/long_callbacks.py"
+    comments=false
+    %}
+    ```

@@ -33,7 +33,7 @@ Taipy has a set of predefined data nodes ready to be used when configuring your 
 
 Here’s the list of predefined data nodes:
 
-![data nodes](images/data_notes.png){width=90% : .tp-image }
+![data nodes](images/data_notes.png){width=80% : .tp-image }
 
 ## Pickle Data Node
 

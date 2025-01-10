@@ -35,14 +35,20 @@ You can easily add color or center it.
 
 Now, let's use it in our application:
 
-```python
-<|text-center| Taipy **App**{: .color-primary} |>
+=== "Python"
+    ```python
+    with tgb.part("text-center"):
+        tgb.text("Taipy **App**", mode="md") # add a CSS class for the color
+    ```
+=== "Markdown"
+    ```python
+    <|text-center| Taipy **App**{: .color-primary} |>
 
-or
+    or
 
-Taipy **App**{: .color-primary}
-{: .text-center}
-```
+    Taipy **App**{: .color-primary}
+    {: .text-center}
+    ```
 
 Let’s apply it to our application.
 
@@ -53,19 +59,31 @@ These can be used to make certain parts of your pages more noticeable or to cont
 
 For instance, you can use a container to add some space around your Markdown content.
 
-```python
-<|container|
-...
-|>
-```
+=== "Python"
+    ```python
+    with tgb.part("container"):
+        ...
+    ```
+=== "Markdown"
+    ```python
+    <|container|
+    ...
+    |>
+    ```
 
 This will create a card to put your Markdown/Visual elements in.
 
-```python
-<|card|
-...
-|>
-```
+=== "Python"
+    ```python
+    with tgb.part("card"):
+        ...
+    ```
+=== "Markdown"
+    ```python
+    <|card|
+    ...
+    |>
+    ```
 
 In this example, we put a container around the entire application,
 and we've also created a card for the parameters at the top.

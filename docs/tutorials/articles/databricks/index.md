@@ -36,7 +36,7 @@ jobs. Taipy's scenarios serve as a potent tool for orchestrating tasks and
 performing 'what-if' analysis (i.e. examining various versions of a business
 problem).
 
-![Submitting a scenario in Taipy](images/submit_scenario.png){width=80% : .tp-image}
+![Submitting a scenario in Taipy](images/submit_scenario.png){width=80% : .tp-image-border}
 
 # Scenarios and Databricks Integration
 
@@ -199,7 +199,7 @@ retrieve the results from the Databricks job.
 In Databricks, you can monitor the job execution in real-time. Databricks
 provides logs and detailed information about the job's progress.
 
-![Monitoring job execution in Databricks](images/databricks_job.png){width=80% : .tp-image}
+![Monitoring job execution in Databricks](images/databricks_job.png){width=80% : .tp-image-border}
 
 # Databricks + Taipy
 
@@ -212,4 +212,4 @@ within Taipy and benefit from:
 - Taipy's what-if analysis, supported by its scenario management,
 - Support for different end-user profiles, etc.
 
-![Comparing scenario results in Taipy](images/compare_scenarios.png){width=80% : .tp-image}
+![Comparing scenario results in Taipy](images/compare_scenarios.png){width=80% : .tp-image-border}
