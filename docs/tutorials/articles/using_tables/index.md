@@ -367,8 +367,9 @@ used to create the application shown at the beginning of the article:
 
 === "Python"
     ```python
-    from taipy.gui import Gui, Markdown, notify
+    from taipy.gui import Gui, notify
     import pandas as pd
+    import taipy.gui.builder as tgb
 
 
     def food_df_on_edit(state, var_name, payload):
