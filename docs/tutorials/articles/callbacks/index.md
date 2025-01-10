@@ -141,6 +141,9 @@ Take a look at the updated code:
     def update_celsius(state):
         state.celsius = fahrenheit_to_celsius(state.fahrenheit)
 
+    def celsius_to_kelvin(celsius):
+        return celsius + 273.15
+
     if __name__=="__main__":
         fahrenheit = 100
         celsius = fahrenheit_to_celsius(fahrenheit)
@@ -155,7 +158,7 @@ Take a look at the updated code:
             tgb.number("{celsius}", active=False)
 
             tgb.text("## Kelvin:", mode="md")
-            tgb.number("{celsius}", active=False)
+            tgb.number("{kelvin}", active=False)
             
         Gui(page=page).run()
     ```
