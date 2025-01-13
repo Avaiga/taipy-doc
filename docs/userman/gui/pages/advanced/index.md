@@ -65,6 +65,48 @@ You can indicate, using the parameter *path_mapping* of the
 `Gui.__init__^`(`Gui` constructor), where those resources are located on the file
 system.
 
+## JavaScript file path configuration
+
+Sometimes, you might need to include JavaScript files in your application.
+You can do this by specifying the file path in the *script_paths* parameter of the
+`Gui.__init__^`(`Gui` constructor). For instance, if you have a JavaScript file named
+`my_script.js` in the same directory as your Python script, you can include it like this:
+
+!!! example
+
+    Here is an example of how to include a JavaScript file in your application:
+    ```python
+    from taipy import Gui
+
+    Gui(page="Hello, world!", script_paths=["my_script.js"]).run()
+    ```
+
+    When you run this application, your JavaScript file will be included in the application.
+
+If you need to include a JavaScript file on a specific page only, you can do so by using the
+*script_paths* parameter of the `Page^`(`Page` constructor). For example, if you have two pages
+and want to include a JavaScript file only on the second page, here's how you can do it:
+
+!!! example
+
+    Here is an example of how to include a JavaScript file in a specific page:
+    ```python
+    from taipy import Gui, Page
+
+    page1 = Page("Hello, world!")
+    page2 = Page("Hello, world!", script_paths=["my_script.js"])
+
+    Gui(pages={"page1": page1, "page2": page2}).run()
+    ```
+
+    When you run this application, your JavaScript file will be included only in the second page.
+
+!!! note "JavaScript file path configuration"
+
+    The `script_paths` parameter loads specified JavaScript files when rendering the page.
+    This ensures the script is available and ready to use when the page is displayed in the browser.
+    Ensure the file path is accurate and correctly points to the location relative to the Python script.
+
 ## Status page
 
 The *Status* page is a special page that the user can access by requesting the page at
