@@ -81,15 +81,15 @@ Learn how to build Taipy applications through tutorials!
 ## Favorites
 
 <ul class="tp-row tp-row--gutter-sm">
-  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement chart navbar table layout part menu state multi-page callback markdown">
-    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="articles/understanding_gui/">
+  <li class="tp-col-12 tp-col-md-6 d-flex" data-keywords="gui vizelement chart navbar table layout part menu state multi-page callback">
+    <a class="tp-content-card tp-content-card--horizontal tp-content-card--small" href="articles/sales_dashboard/">
       <header class="tp-content-card-header">
-        <img class="tp-content-card-image" src="articles/understanding_gui/step_07/images/result.png">
+        <img class="tp-content-card-image" src="articles/sales_dashboard/images/thumbnail.png">
       </header>
       <div class="tp-content-card-body">
-        <h4>Understanding GUI</h4>
+        <h4>Creating a Sales Dashboard</h4>
         <p>
-          Understand basic knowledge of Taipy GUI creating of a multi-page NLP application.
+          Understand basic knowledge of Taipy by creating of a multi-page sales dashboard.
         </p>
       </div>
     </a>
