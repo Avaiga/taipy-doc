@@ -18,7 +18,7 @@ class Item:
             self.category = self.header.get("category")
             self.data_keywords = self.header.get("data-keywords")
             self.short_description = self.header.get("short-description")
-            self.order = int(self.header.get("order", 0))
+            self.order = float(self.header.get("order", 0))
             self.img = self.header.get("img")
         self._check_header()
 
