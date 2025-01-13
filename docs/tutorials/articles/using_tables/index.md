@@ -22,22 +22,42 @@ You can see all the code with the table features we talked about at the end of t
 
 First, let's see how you make tables in Taipy:
 
-```python title="main.py"
-from taipy.gui import Gui, Markdown
-import pandas as pd
+=== "Python"
+    ```python title="main.py"
+    from taipy.gui import Gui, Markdown
+    import pandas as pd
+    import taipy.gui.builder as tgb
 
-if __name__ == "__main__":
-    food_df = pd.DataFrame({
-        "Meal": ["Lunch", "Dinner", "Lunch", "Lunch", "Breakfast", "Breakfast", "Lunch", "Dinner"],
-        "Category": ["Food", "Food", "Drink", "Food", "Food", "Drink", "Dessert", "Dessert"],
-        "Name": ["Burger", "Pizza", "Soda", "Salad", "Pasta", "Water", "Ice Cream", "Cake"],
-        "Calories": [300, 400, 150, 200, 500, 0, 400, 500],
-    })
+    if __name__ == "__main__":
+        food_df = pd.DataFrame({
+            "Meal": ["Lunch", "Dinner", "Lunch", "Lunch", "Breakfast", "Breakfast", "Lunch", "Dinner"],
+            "Category": ["Food", "Food", "Drink", "Food", "Food", "Drink", "Dessert", "Dessert"],
+            "Name": ["Burger", "Pizza", "Soda", "Salad", "Pasta", "Water", "Ice Cream", "Cake"],
+            "Calories": [300, 400, 150, 200, 500, 0, 400, 500],
+        })
 
-    main_md = Markdown("<|{food_df}|table|>")
+        with tgb.Page() as page:
+            tgb.table("{food_df}")
 
-    Gui(page=main_md).run()
-```
+        Gui(page=page).run()
+    ```
+=== "Markdown"
+    ```python title="main.py"
+    from taipy.gui import Gui, Markdown
+    import pandas as pd
+
+    if __name__ == "__main__":
+        food_df = pd.DataFrame({
+            "Meal": ["Lunch", "Dinner", "Lunch", "Lunch", "Breakfast", "Breakfast", "Lunch", "Dinner"],
+            "Category": ["Food", "Food", "Drink", "Food", "Food", "Drink", "Dessert", "Dessert"],
+            "Name": ["Burger", "Pizza", "Soda", "Salad", "Pasta", "Water", "Ice Cream", "Cake"],
+            "Calories": [300, 400, 150, 200, 500, 0, 400, 500],
+        })
+
+        main_md = Markdown("<|{food_df}|table|>")
+
+        Gui(page=main_md).run()
+    ```
 
 The table definition `<|{food_df}|table|>` (a syntax often used in Taipy) has these parts:
 
@@ -57,9 +77,15 @@ function to be performed. In our food tracker example, an application could be t
 1. Group by *Category*; and
 2. Sum the *Calories*.
 
-```python
-main_md = Markdown("<|{food_df}|table|group_by[Category]=True|apply[Calories]=sum|>")
-```
+=== "Python"
+    ```python
+    tgb.table("{food_df}", group_by__Category=True, apply__Calories="sum")
+    ```
+=== "Markdown"
+    ```python
+    main_md = Markdown("<|{food_df}|table|group_by[Category]=True|apply[Calories]=sum|>")
+    ```
+
 To configure table aggregation, you add two properties to the table:
 
 1. `group_by[Category]=True`: This tells the table to group data by the **Category** column.
@@ -90,12 +116,18 @@ column.
 
 To add filters to our table, it's easy: we set the `filter` property to True, like this:
 
-```python
-main_md = Markdown("<|{food_df}|table|filter=True|>")
-```
 
-As with all control Boolean properties, we can remove the '=True' part, making it:
-`<|{food_df}|table|filter|>`.
+=== "Python"
+    ```python
+    tgb.table("{food_df}", filter=True)
+    ```
+=== "Markdown"
+    ```python
+    main_md = Markdown("<|{food_df}|table|filter=True|>")
+    ```
+
+    As with all control Boolean properties, we can remove the '=True' part, making it:
+    `<|{food_df}|table|filter|>`.
 
 ## Styling (Stylekit)
 
@@ -115,9 +147,14 @@ those who have no knowledge of CSS.
 We achieved this by just putting the **rows-bordered** Stylekit CSS class into the `class_name`
 property of the table control:
 
-```python
-main_md = Markdown("<|{food_df}|table|class_name=rows-bordered|>")
-```
+=== "Python"
+    ```python
+    tgb.table("{food_df}", class_name="rows-bordered")
+    ```
+=== "Markdown"
+    ```python
+    main_md = Markdown("<|{food_df}|table|class_name=rows-bordered|>")
+    ```
 
 To learn more about how Stylekit supports Taipy tables, you can check the documentation
 [here](../../../refmans/gui/viselements/generic/table.md#styling). If you want to explore the
@@ -147,18 +184,33 @@ The *row_class_name* property accepts a function. This function is applied to ea
 and returns a string specifying the CSS class to be used for that particular row. To create the
 table mentioned above, you can use the following code:
 
-```python title="main.py"
-def table_style(state, index, row):
-    return "highlight-row" if row.Category == "Dessert" else ""
+=== "Python"
+    ```python title="main.py"
+    def table_style(state, index, row):
+        return "highlight-row" if row.Category == "Dessert" else ""
 
-table_properties = {
-    "class_name": "rows-bordered rows-similar", # optional
-    "row_class_name": table_style,
-}
+    table_properties = {
+        "class_name": "rows-bordered rows-similar", # optional
+        "row_class_name": table_style,
+    }
 
-main_md = Markdown("<|{food_df}|table|properties=table_properties|>")
-# or Markdown("<|{food_df}|table|class_name=rows-bordered rows-similar|row_class_name=table_style|>")
-```
+    with tgb.Page() as page:
+        tgb.table("{food_df}", properties=table_properties)
+        # or tgb.table("{food_df}", class_name="rows-bordered rows-similar", row_class_name=table_style)
+    ```
+=== "Markdown"
+    ```python title="main.py"
+    def table_style(state, index, row):
+        return "highlight-row" if row.Category == "Dessert" else ""
+
+    table_properties = {
+        "class_name": "rows-bordered rows-similar", # optional
+        "row_class_name": table_style,
+    }
+
+    main_md = Markdown("<|{food_df}|table|properties=table_properties|>")
+    # or Markdown("<|{food_df}|table|class_name=rows-bordered rows-similar|row_class_name=table_style|>")
+    ```
 
 ```css
 /* main.css */
@@ -194,22 +246,41 @@ function, then clicking the tick triggers the callback function:
 
 The following code can be used to implement basic editing functionality:
 
-```python
-def food_df_on_edit(state, var_name, payload):
-    index = payload["index"] # row index
-    col = payload["col"] # column name
-    value = payload["value"] # new value cast to the column type
-    user_value = payload["user_value"] # new value as entered by the user
+=== "Python"
+    ```python title="main.py"
+    def food_df_on_edit(state, var_name, payload):
+        index = payload["index"] # row index
+        col = payload["col"] # column name
+        value = payload["value"] # new value cast to the column type
+        user_value = payload["user_value"] # new value as entered by the user
 
-    # state.food_df.loc[index, col] = value #  Don't do this!
-    old_value = state.food_df.loc[index, col]
-    new_food_df = state.food_df.copy()
-    new_food_df.loc[index, col] = value
-    state.food_df = new_food_df
-    notify(state, "I", f"Edited value from '{old_value}' to '{value}'. (index '{index}', column '{col}')")
+        # state.food_df.loc[index, col] = value #  Don't do this!
+        old_value = state.food_df.loc[index, col]
+        new_food_df = state.food_df.copy()
+        new_food_df.loc[index, col] = value
+        state.food_df = new_food_df
+        notify(state, "I", f"Edited value from '{old_value}' to '{value}'. (index '{index}', column '{col}')")
 
-main_md = Markdown("<|{food_df}|table|editable|on_edit=food_df_on_edit|>")
-```
+    with tgb.Page() as page:
+        tgb.table("{food_df}", editable=True, on_edit=food_df_on_edit)
+    ```
+=== "Markdown"
+    ```python
+    def food_df_on_edit(state, var_name, payload):
+        index = payload["index"] # row index
+        col = payload["col"] # column name
+        value = payload["value"] # new value cast to the column type
+        user_value = payload["user_value"] # new value as entered by the user
+
+        # state.food_df.loc[index, col] = value #  Don't do this!
+        old_value = state.food_df.loc[index, col]
+        new_food_df = state.food_df.copy()
+        new_food_df.loc[index, col] = value
+        state.food_df = new_food_df
+        notify(state, "I", f"Edited value from '{old_value}' to '{value}'. (index '{index}', column '{col}')")
+
+    main_md = Markdown("<|{food_df}|table|editable|on_edit=food_df_on_edit|>")
+    ```
 
 The table documentation provides more information on the function signature which is slightly
 different for each data modification property. The code example above is self-explanatory though.
@@ -229,15 +300,27 @@ speficied in the *on_add* property.
 
 We can implement the functionality above as follows:
 
-```python
-def food_df_on_add(state, var_name, payload):
-    empty_row = pd.DataFrame([[None for _ in state.food_df.columns]], columns=state.food_df.columns)
-    state.food_df = pd.concat([empty_row, state.food_df], axis=0, ignore_index=True)
+=== "Python"
+    ```python
+    def food_df_on_add(state, var_name, payload):
+        empty_row = pd.DataFrame([[None for _ in state.food_df.columns]], columns=state.food_df.columns)
+        state.food_df = pd.concat([empty_row, state.food_df], axis=0, ignore_index=True)
 
-    notify(state, "S", f"Added a new row.")
+        notify(state, "S", f"Added a new row.")
 
-main_md = Markdown("<|{food_df}|table|editable|on_add=food_df_on_add|>")
-```
+    with tgb.Page() as page:
+        tgb.table("{food_df}", editable=True, on_add=food_df_on_add)
+    ```
+=== "Markdown"
+    ```python
+    def food_df_on_add(state, var_name, payload):
+        empty_row = pd.DataFrame([[None for _ in state.food_df.columns]], columns=state.food_df.columns)
+        state.food_df = pd.concat([empty_row, state.food_df], axis=0, ignore_index=True)
+
+        notify(state, "S", f"Added a new row.")
+
+    main_md = Markdown("<|{food_df}|table|editable|on_add=food_df_on_add|>")
+    ```
 
 This code simply adds a new empty row to the top of the table (DataFrame).
 You can customize the callback function accordingly if your use case requires
@@ -251,15 +334,27 @@ Finally, the deletion process works as follows:
 
 We can implement basic functionality with the following code:
 
-```python
-def food_df_on_delete(state, var_name, payload):
-    index = payload["index"] # row index
+=== "Python"
+    ```python
+    def food_df_on_delete(state, var_name, payload):
+        index = payload["index"] # row index
 
-    state.food_df = state.food_df.drop(index=index)
-    notify(state, "E", f"Deleted row at index '{index}'")
+        state.food_df = state.food_df.drop(index=index)
+        notify(state, "E", f"Deleted row at index '{index}'")
 
-main_md = Markdown("<|{food_df}|table|editable|on_delete=food_df_on_delete|>")
-```
+    with tgb.Page() as page:
+        tgb.table("{food_df}", editable=True, on_delete=food_df_on_delete)
+    ```
+=== "Markdown"
+    ```python
+    def food_df_on_delete(state, var_name, payload):
+        index = payload["index"] # row index
+
+        state.food_df = state.food_df.drop(index=index)
+        notify(state, "E", f"Deleted row at index '{index}'")
+
+    main_md = Markdown("<|{food_df}|table|editable|on_delete=food_df_on_delete|>")
+    ```
 
 ## Complete Code
 
@@ -270,61 +365,119 @@ the [documentation](../../../refmans/gui/viselements/generic/table.md) for more 
 Lastly, here's the code that combines all the features we discussed in this article,
 used to create the application shown at the beginning of the article:
 
-```python
-from taipy.gui import Gui, Markdown, notify
-import pandas as pd
+=== "Python"
+    ```python
+    from taipy.gui import Gui, notify
+    import pandas as pd
+    import taipy.gui.builder as tgb
 
 
-def food_df_on_edit(state, var_name, payload):
-    index = payload["index"] # row index
-    col = payload["col"] # column name
-    value = payload["value"] # new value cast to the column type
-    user_value = payload["user_value"] # new value as entered by the user
+    def food_df_on_edit(state, var_name, payload):
+        index = payload["index"] # row index
+        col = payload["col"] # column name
+        value = payload["value"] # new value cast to the column type
+        user_value = payload["user_value"] # new value as entered by the user
 
-    old_value = state.food_df.loc[index, col]
-    new_food_df = state.food_df.copy()
-    new_food_df.loc[index, col] = value
-    state.food_df = new_food_df
-    notify(state, "I", f"Edited value from '{old_value}' to '{value}'. (index '{index}', column '{col}')")
-
-
-def food_df_on_delete(state, var_name, payload):
-    index = payload["index"] # row index
-
-    state.food_df = state.food_df.drop(index=index)
-    notify(state, "E", f"Deleted row at index '{index}'")
+        old_value = state.food_df.loc[index, col]
+        new_food_df = state.food_df.copy()
+        new_food_df.loc[index, col] = value
+        state.food_df = new_food_df
+        notify(state, "I", f"Edited value from '{old_value}' to '{value}'. (index '{index}', column '{col}')")
 
 
-def food_df_on_add(state, var_name, payload):
-    empty_row = pd.DataFrame([[None for _ in state.food_df.columns]], columns=state.food_df.columns)
-    state.food_df = pd.concat([empty_row, state.food_df], axis=0, ignore_index=True)
+    def food_df_on_delete(state, var_name, payload):
+        index = payload["index"] # row index
 
-    notify(state, "S", f"Added a new row.")
+        state.food_df = state.food_df.drop(index=index)
+        notify(state, "E", f"Deleted row at index '{index}'")
 
-if __name__ == "__main__":
-    food_df = pd.DataFrame({
-        "Meal": ["Lunch", "Dinner", "Lunch", "Lunch", "Breakfast", "Breakfast", "Lunch", "Dinner"],
-        "Category": ["Food", "Food", "Drink", "Food", "Food", "Drink", "Dessert", "Dessert"],
-        "Name": ["Burger", "Pizza", "Soda", "Salad", "Pasta", "Water", "Ice Cream", "Cake"],
-        "Calories": [300, 400, 150, 200, 500, 0, 400, 500],
-    })
 
-    table_properties = {
-        "class_name": "rows-bordered",
-        "editable": True,
-        "filter": True,
-        "on_edit": food_df_on_edit,
-        "on_delete": food_df_on_delete,
-        "on_add": food_df_on_add,
-        "group_by[Category]": True,
-        "apply[Calories]": "sum",
-    }
+    def food_df_on_add(state, var_name, payload):
+        empty_row = pd.DataFrame([[None for _ in state.food_df.columns]], columns=state.food_df.columns)
+        state.food_df = pd.concat([empty_row, state.food_df], axis=0, ignore_index=True)
 
-    main_md = Markdown("""
-# Daily Calorie Tracker
+        notify(state, "S", f"Added a new row.")
 
-<|{food_df}|table|properties=table_properties|>
-    """)
+    if __name__ == "__main__":
+        food_df = pd.DataFrame({
+            "Meal": ["Lunch", "Dinner", "Lunch", "Lunch", "Breakfast", "Breakfast", "Lunch", "Dinner"],
+            "Category": ["Food", "Food", "Drink", "Food", "Food", "Drink", "Dessert", "Dessert"],
+            "Name": ["Burger", "Pizza", "Soda", "Salad", "Pasta", "Water", "Ice Cream", "Cake"],
+            "Calories": [300, 400, 150, 200, 500, 0, 400, 500],
+        })
 
-    Gui(page=main_md).run()
-```
+        table_properties = {
+            "class_name": "rows-bordered",
+            "editable": True,
+            "filter": True,
+            "on_edit": food_df_on_edit,
+            "on_delete": food_df_on_delete,
+            "on_add": food_df_on_add,
+            "group_by[Category]": True,
+            "apply[Calories]": "sum",
+        }
+
+        with tgb.Page() as page:
+            tgb.table("{food_df}", properties=table_properties)
+
+        Gui(page=page).run()
+    ```
+=== "Markdown"
+    ```python
+    from taipy.gui import Gui, Markdown, notify
+    import pandas as pd
+
+
+    def food_df_on_edit(state, var_name, payload):
+        index = payload["index"] # row index
+        col = payload["col"] # column name
+        value = payload["value"] # new value cast to the column type
+        user_value = payload["user_value"] # new value as entered by the user
+
+        old_value = state.food_df.loc[index, col]
+        new_food_df = state.food_df.copy()
+        new_food_df.loc[index, col] = value
+        state.food_df = new_food_df
+        notify(state, "I", f"Edited value from '{old_value}' to '{value}'. (index '{index}', column '{col}')")
+
+
+    def food_df_on_delete(state, var_name, payload):
+        index = payload["index"] # row index
+
+        state.food_df = state.food_df.drop(index=index)
+        notify(state, "E", f"Deleted row at index '{index}'")
+
+
+    def food_df_on_add(state, var_name, payload):
+        empty_row = pd.DataFrame([[None for _ in state.food_df.columns]], columns=state.food_df.columns)
+        state.food_df = pd.concat([empty_row, state.food_df], axis=0, ignore_index=True)
+
+        notify(state, "S", f"Added a new row.")
+
+    if __name__ == "__main__":
+        food_df = pd.DataFrame({
+            "Meal": ["Lunch", "Dinner", "Lunch", "Lunch", "Breakfast", "Breakfast", "Lunch", "Dinner"],
+            "Category": ["Food", "Food", "Drink", "Food", "Food", "Drink", "Dessert", "Dessert"],
+            "Name": ["Burger", "Pizza", "Soda", "Salad", "Pasta", "Water", "Ice Cream", "Cake"],
+            "Calories": [300, 400, 150, 200, 500, 0, 400, 500],
+        })
+
+        table_properties = {
+            "class_name": "rows-bordered",
+            "editable": True,
+            "filter": True,
+            "on_edit": food_df_on_edit,
+            "on_delete": food_df_on_delete,
+            "on_add": food_df_on_add,
+            "group_by[Category]": True,
+            "apply[Calories]": "sum",
+        }
+
+        main_md = Markdown("""
+    # Daily Calorie Tracker
+
+    <|{food_df}|table|properties=table_properties|>
+        """)
+
+        Gui(page=main_md).run()
+    ```

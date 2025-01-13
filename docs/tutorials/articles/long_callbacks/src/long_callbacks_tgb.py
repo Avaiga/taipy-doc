@@ -1,4 +1,5 @@
 from taipy.gui import Gui, Markdown, State, invoke_long_callback, notify
+import taipy.gui.builder as tgb
 
 
 def pi_approx(num_iterations: int):
@@ -61,20 +62,19 @@ if __name__ == "__main__":
     pi_list = []
     logs = "Not running"
 
-    page = Markdown(
-        """
-# Approximating **Pi**{: .color-primary} using the Leibniz formula
-<|{num_iterations}|number|label=Number of iterations|>
-<|Approximate Pi|button|on_action=approximate_pi|>
-## Evolution of approximation
-<|{pi_list}|chart|layout={layout}|>
-<br/>
-<|card|
-## Logs
-### <|{logs}|text|raw|>
-|>
-    """
-    )
+    with tgb.Page() as page:
+        tgb.text("# Approximating **Pi** using the Leibniz formula", mode="md")
+        tgb.number("{num_iterations}", label="Number of iterations")
+        tgb.button("Approximate Pi", on_action=approximate_pi)
+
+        tgb.text("## Evolution of approximation", mode="md")
+        tgb.chart("{pi_list}", layout="{layout}")
+
+        tgb.html("br")
+
+        with tgb.part("card"):
+            tgb.text("## Logs", mode="md")
+            tgb.text("### {logs}", mode="md")
 
     layout = {
         "xaxis": {"title": "Iteration (Percentage of Total Iterations)"},
