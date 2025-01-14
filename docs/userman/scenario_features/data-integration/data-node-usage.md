@@ -285,6 +285,7 @@ The following examples represent the results when reading from a CSV data node w
         ```
 
     === "exposed_type = SaleRow"
+
         ```python
         [
             SaleRow("12/24/2018", 1550),
@@ -292,6 +293,27 @@ The following examples represent the results when reading from a CSV data node w
             SaleRow("12/26/2018", 1832),
         ]
         ```
+
+    === "exposed_type = polars"
+
+        ```python
+        shape: (3, 2)
+        ┌────────────┬──────────┐
+        │ date       ┆ nb_sales │
+        │ ---        ┆ ---      │
+        │ str        ┆ i64      │
+        ╞════════════╪══════════╡
+        │ 12/24/2018 ┆ 1550     │
+        │ 12/25/2018 ┆ 2315     │
+        │ 12/26/2018 ┆ 1832     │
+        └────────────┴──────────┘
+        ```
+
+        !!! warning "Available in Taipy Enterprise edition"
+
+            The Polars exposed type is only available in the Enterprise edition of Taipy.
+            [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
+
 
 When writing data to a CSV data node, the `CSVDataNode.write()^` method can take several datatype as the input:
 
@@ -438,6 +460,26 @@ The following examples represent the results when reading from an Excel data nod
             SaleRow("12/26/2018", 1832),
         ]
         ```
+
+    === "exposed_type = polars"
+
+        ```python
+        shape: (3, 2)
+        ┌────────────┬──────────┐
+        │ date       ┆ nb_sales │
+        │ ---        ┆ ---      │
+        │ str        ┆ i64      │
+        ╞════════════╪══════════╡
+        │ 12/24/2018 ┆ 1550     │
+        │ 12/25/2018 ┆ 2315     │
+        │ 12/26/2018 ┆ 1832     │
+        └────────────┴──────────┘
+        ```
+
+        !!! warning "Available in Taipy Enterprise edition"
+
+            The Polars exposed type is only available in the Enterprise edition of Taipy.
+            [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 When writing data to an Excel data node, the `ExcelDataNode.write()^` method can take several datatype as the input:
 
@@ -586,6 +628,26 @@ node with different _exposed_type_:
             SaleRow("12/26/2018", 1832),
         ]
         ```
+
+    === "exposed_type = polars"
+
+        ```python
+        shape: (3, 3)
+        ┌─────┬────────────┬──────────┐
+        │ ID  ┆  date      ┆ nb_sales │
+        │ --- ┆ ---        ┆ ---      │
+        │ i64 ┆ str        ┆ i64      │
+        ╞═════╪════════════╪══════════╡
+        │ 1   ┆ 12/24/2018 ┆ 1550     │
+        │ 2   ┆ 12/25/2018 ┆ 2315     │
+        │ 3   ┆ 12/26/2018 ┆ 1832     │
+        └─────┴────────────┴──────────┘
+        ```
+
+        !!! warning "Available in Taipy Enterprise edition"
+
+            The Polars exposed type is only available in the Enterprise edition of Taipy.
+            [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 When writing data to a SQL Table data node, the `SQLTableDataNode.write()^`
 method can take several datatype as the input:
@@ -957,12 +1019,33 @@ The following examples represent the results when read from Parquet data node wi
         ]
         ```
 
+    === "exposed_type = polars"
+
+        ```python
+        shape: (3, 2)
+        ┌────────────┬──────────┐
+        │ date       ┆ nb_sales │
+        │ ---        ┆ ---      │
+        │ str        ┆ i64      │
+        ╞════════════╪══════════╡
+        │ 12/24/2018 ┆ 1550     │
+        │ 12/25/2018 ┆ 2315     │
+        │ 12/26/2018 ┆ 1832     │
+        └────────────┴──────────┘
+        ```
+
+        !!! warning "Available in Taipy Enterprise edition"
+
+            The Polars exposed type is only available in the Enterprise edition of Taipy.
+            [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
+
 When writing data to a Parquet data node, the `ParquetDataNode.write()^` method can take several
 datatype as the input depending on the _exposed type_:
 
 - pandas dataframes
 - numpy arrays
 - any object, which will be passed to the `pd.DataFrame` constructor (e.g., list of dictionaries)
+- polars dataframes (Available in Taipy Enterprise edition only)
 
 The following examples will write to the path of the Parquet data node:
 
@@ -1576,6 +1659,24 @@ filtered_data = data_node.filter(("nb_sales", 1550, Operator.EQUAL))
         [SaleRow("12/24/2018", 1550)]
         ```
 
+    === "exposed_type = polars"
+
+        ```python
+        shape: (3, 2)
+        ┌────────────┬──────────┐
+        │ date       ┆ nb_sales │
+        │ ---        ┆ ---      │
+        │ str        ┆ i64      │
+        ╞════════════╪══════════╡
+        │ 12/24/2018 ┆ 1550     │
+        └────────────┴──────────┘
+        ```
+
+        !!! warning "Available in Taipy Enterprise edition"
+
+            The Polars exposed type is only available in the Enterprise edition of Taipy.
+            [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
+
 If a list of operators is provided, it is necessary to provide a join operator that will be
 used to combine the filtered results from the operators. The default join operator is `JoinOperator.AND`.
 
@@ -1621,6 +1722,26 @@ filtered_data = data_node.filter(
         ]
         ```
 
+    === "exposed_type = polars"
+
+        ```python
+        shape: (3, 2)
+        ┌────────────┬──────────┐
+        │ date       ┆ nb_sales │
+        │ ---        ┆ ---      │
+        │ str        ┆ i64      │
+        ╞════════════╪══════════╡
+        │ 12/24/2018 ┆ 1550     │
+        │ 12/25/2018 ┆ 2315     │
+        │ 12/26/2018 ┆ 1832     │
+        └────────────┴──────────┘
+        ```
+
+        !!! warning "Available in Taipy Enterprise edition"
+
+            The Polars exposed type is only available in the Enterprise edition of Taipy.
+            [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
+
 In another example, the `DataNode.filter()^` method will return all the records from the data node
 where the value of the "nb_sales" field is equal to 1550 or greater than 2000.
 The following examples represent the results when read from a data node with different _exposed_type_:
@@ -1663,6 +1784,26 @@ filtered_data = data_node.filter(
             SaleRow("12/25/2018", 2315),
         ]
         ```
+
+    === "exposed_type = polars"
+
+        ```python
+        shape: (3, 2)
+        ┌────────────┬──────────┐
+        │ date       ┆ nb_sales │
+        │ ---        ┆ ---      │
+        │ str        ┆ i64      │
+        ╞════════════╪══════════╡
+        │ 12/24/2018 ┆ 1550     │
+        │ 12/25/2018 ┆ 2315     │
+        │ 12/26/2018 ┆ 1832     │
+        └────────────┴──────────┘
+        ```
+
+        !!! warning "Available in Taipy Enterprise edition"
+
+            The Polars exposed type is only available in the Enterprise edition of Taipy.
+            [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 With Pandas data frame as the exposed type, it is also possible to use pandas indexing
 and filtering style:
