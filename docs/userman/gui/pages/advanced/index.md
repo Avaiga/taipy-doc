@@ -65,11 +65,11 @@ You can indicate, using the parameter *path_mapping* of the
 `Gui.__init__^`(`Gui` constructor), where those resources are located on the file
 system.
 
-## JavaScript file path configuration
+## Using JavaScript scripts
 
-Sometimes, you might need to include JavaScript files in your application.
+Sometimes, you might need to include JavaScript files in your application.<br/>
 You can do this by specifying the file path in the *script_paths* parameter of the
-`Gui.__init__^`(`Gui` constructor). For instance, if you have a JavaScript file named
+`Gui.__init__()^`(`Gui` constructor). For instance, if you have a JavaScript file named
 `my_script.js` in the same directory as your Python script, you can include it like this:
 
 !!! example
@@ -81,10 +81,10 @@ You can do this by specifying the file path in the *script_paths* parameter of t
     Gui(page="Hello, world!", script_paths=["my_script.js"]).run()
     ```
 
-    When you run this application, your JavaScript file will be included in the application.
+    When you run this application, your JavaScript file will be included in all the pages of the application.
 
 If you need to include a JavaScript file on a specific page only, you can do so by using the
-*script_paths* parameter of the `Page^`(`Page` constructor). For example, if you have two pages
+*script_paths* parameter of the `Page.__init__()^`(`Page` constructor). For example, if you have two pages
 and want to include a JavaScript file only on the second page, here's how you can do it:
 
 !!! example
@@ -103,9 +103,9 @@ and want to include a JavaScript file only on the second page, here's how you ca
 
 !!! note "JavaScript file path configuration"
 
-    The `script_paths` parameter loads specified JavaScript files when rendering the page.
-    This ensures the script is available and ready to use when the page is displayed in the browser.
-    Ensure the file path is accurate and correctly points to the location relative to the Python script.
+    The *script_paths* parameter loads specified JavaScript files when rendering the page.
+    This ensures the script is available and ready to use when the page is loaded by the browser.
+    You should make the file path is accurate and correctly points to the location of the script file, relative to the Python script.
 
 ## Status page
 
