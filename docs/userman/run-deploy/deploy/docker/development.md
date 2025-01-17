@@ -17,8 +17,10 @@ EXPOSE 5000
 
 # Install your application
 WORKDIR /app
-COPY . /app
+COPY requirements.txt /app/
 RUN pip install -r requirements.txt
+
+COPY . /app
 
 # Start up command
 CMD python main.py -P 5000 -H 0.0.0.0 --debug
