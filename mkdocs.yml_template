@@ -338,6 +338,7 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.details
+  - pymdownx.blocks.caption
   - admonition
   - toc:
       baselevel: 2
