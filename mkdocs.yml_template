@@ -40,6 +40,7 @@ nav:
           - "Creating an LLM ChatBot": tutorials/articles/chatbot/index.md
         - "Creating an RAG ChatBot":
           - "Creating an RAG ChatBot": tutorials/articles/rag_chatbot/index.md
+      - "User Management in Taipy Enterprise": tutorials/articles/user_management/index.md
     - "Visuals":
       - "Visuals": tutorials/visuals/index.md
       - "Callbacks": tutorials/articles/callbacks/index.md
