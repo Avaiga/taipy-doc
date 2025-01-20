@@ -297,16 +297,12 @@ The following examples represent the results when reading from a CSV data node w
     === "exposed_type = polars"
 
         ```python
-        shape: (3, 2)
-        ┌────────────┬──────────┐
-        │ date       ┆ nb_sales │
-        │ ---        ┆ ---      │
-        │ str        ┆ i64      │
-        ╞════════════╪══════════╡
-        │ 12/24/2018 ┆ 1550     │
-        │ 12/25/2018 ┆ 2315     │
-        │ 12/26/2018 ┆ 1832     │
-        └────────────┴──────────┘
+        polars.DataFrame(
+            {
+                "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
+                "nb_sales": [1550, 2315, 1832]
+            }
+        )
         ```
 
         !!! warning "Available in Taipy Enterprise edition"
@@ -464,16 +460,12 @@ The following examples represent the results when reading from an Excel data nod
     === "exposed_type = polars"
 
         ```python
-        shape: (3, 2)
-        ┌────────────┬──────────┐
-        │ date       ┆ nb_sales │
-        │ ---        ┆ ---      │
-        │ str        ┆ i64      │
-        ╞════════════╪══════════╡
-        │ 12/24/2018 ┆ 1550     │
-        │ 12/25/2018 ┆ 2315     │
-        │ 12/26/2018 ┆ 1832     │
-        └────────────┴──────────┘
+        polars.DataFrame(
+            {
+                "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
+                "nb_sales": [1550, 2315, 1832]
+            }
+        )
         ```
 
         !!! warning "Available in Taipy Enterprise edition"
@@ -632,16 +624,12 @@ node with different _exposed_type_:
     === "exposed_type = polars"
 
         ```python
-        shape: (3, 3)
-        ┌─────┬────────────┬──────────┐
-        │ ID  ┆  date      ┆ nb_sales │
-        │ --- ┆ ---        ┆ ---      │
-        │ i64 ┆ str        ┆ i64      │
-        ╞═════╪════════════╪══════════╡
-        │ 1   ┆ 12/24/2018 ┆ 1550     │
-        │ 2   ┆ 12/25/2018 ┆ 2315     │
-        │ 3   ┆ 12/26/2018 ┆ 1832     │
-        └─────┴────────────┴──────────┘
+        polars.DataFrame(
+            {
+                "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
+                "nb_sales": [1550, 2315, 1832]
+            }
+        )
         ```
 
         !!! warning "Available in Taipy Enterprise edition"
@@ -1022,16 +1010,12 @@ The following examples represent the results when read from Parquet data node wi
     === "exposed_type = polars"
 
         ```python
-        shape: (3, 2)
-        ┌────────────┬──────────┐
-        │ date       ┆ nb_sales │
-        │ ---        ┆ ---      │
-        │ str        ┆ i64      │
-        ╞════════════╪══════════╡
-        │ 12/24/2018 ┆ 1550     │
-        │ 12/25/2018 ┆ 2315     │
-        │ 12/26/2018 ┆ 1832     │
-        └────────────┴──────────┘
+        polars.DataFrame(
+            {
+                "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
+                "nb_sales": [1550, 2315, 1832]
+            }
+        )
         ```
 
         !!! warning "Available in Taipy Enterprise edition"
@@ -1662,14 +1646,12 @@ filtered_data = data_node.filter(("nb_sales", 1550, Operator.EQUAL))
     === "exposed_type = polars"
 
         ```python
-        shape: (3, 2)
-        ┌────────────┬──────────┐
-        │ date       ┆ nb_sales │
-        │ ---        ┆ ---      │
-        │ str        ┆ i64      │
-        ╞════════════╪══════════╡
-        │ 12/24/2018 ┆ 1550     │
-        └────────────┴──────────┘
+        polars.DataFrame(
+            {
+                "date": ["12/24/2018"],
+                "nb_sales": [1550]
+            }
+        )
         ```
 
         !!! warning "Available in Taipy Enterprise edition"
@@ -1725,16 +1707,12 @@ filtered_data = data_node.filter(
     === "exposed_type = polars"
 
         ```python
-        shape: (3, 2)
-        ┌────────────┬──────────┐
-        │ date       ┆ nb_sales │
-        │ ---        ┆ ---      │
-        │ str        ┆ i64      │
-        ╞════════════╪══════════╡
-        │ 12/24/2018 ┆ 1550     │
-        │ 12/25/2018 ┆ 2315     │
-        │ 12/26/2018 ┆ 1832     │
-        └────────────┴──────────┘
+        polars.DataFrame(
+            {
+                "date": ["12/24/2018", "12/25/2018"],
+                "nb_sales": [1550, 2315]
+            }
+        )
         ```
 
         !!! warning "Available in Taipy Enterprise edition"
@@ -1788,16 +1766,12 @@ filtered_data = data_node.filter(
     === "exposed_type = polars"
 
         ```python
-        shape: (3, 2)
-        ┌────────────┬──────────┐
-        │ date       ┆ nb_sales │
-        │ ---        ┆ ---      │
-        │ str        ┆ i64      │
-        ╞════════════╪══════════╡
-        │ 12/24/2018 ┆ 1550     │
-        │ 12/25/2018 ┆ 2315     │
-        │ 12/26/2018 ┆ 1832     │
-        └────────────┴──────────┘
+        polars.DataFrame(
+            {
+                "date": ["12/24/2018", "12/25/2018"],
+                "nb_sales": [1550, 2315]
+            }
+        )
         ```
 
         !!! warning "Available in Taipy Enterprise edition"
