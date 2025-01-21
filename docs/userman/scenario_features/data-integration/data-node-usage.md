@@ -263,12 +263,11 @@ The following examples represent the results when reading from a CSV data node w
     === "exposed_type = "pandas""
 
         ```python
-        pandas.DataFrame
-        (
-                     date  nb_sales
-            0  12/24/2018      1550
-            1  12/25/2018      2315
-            2  12/26/2018      1832
+        pandas.DataFrame(
+            {
+                "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
+                "nb_sales": [1550, 2315, 1832]
+            }
         )
         ```
 
@@ -427,12 +426,11 @@ The following examples represent the results when reading from an Excel data nod
     === "exposed_type = "pandas""
 
         ```python
-        pandas.DataFrame
-        (
-                     date  nb_sales
-            0  12/24/2018      1550
-            1  12/25/2018      2315
-            2  12/26/2018      1832
+        pandas.DataFrame(
+            {
+                "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
+                "nb_sales": [1550, 2315, 1832]
+            }
         )
         ```
 
@@ -591,12 +589,12 @@ node with different _exposed_type_:
     === "exposed_type = "pandas""
 
         ```python
-        pandas.DataFrame
-        (
-               ID        date  nb_sales
-            0   1  12/24/2018      1550
-            1   2  12/25/2018      2315
-            2   3  12/26/2018      1832
+        pandas.DataFrame(
+            {
+                "ID": [1, 2, 3],
+                "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
+                "nb_sales": [1550, 2315, 1832]
+            }
         )
         ```
 
@@ -626,6 +624,7 @@ node with different _exposed_type_:
         ```python
         polars.DataFrame(
             {
+                "ID": [1, 2, 3],
                 "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
                 "nb_sales": [1550, 2315, 1832]
             }
@@ -977,12 +976,11 @@ The following examples represent the results when read from Parquet data node wi
     === "exposed_type = "pandas""
 
         ```python
-        pandas.DataFrame
-        (
-                     date  nb_sales
-            0  12/24/2018      1550
-            1  12/25/2018      2315
-            2  12/26/2018      1832
+        pandas.DataFrame(
+            {
+                "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
+                "nb_sales": [1550, 2315, 1832]
+            }
         )
         ```
 
@@ -1623,11 +1621,7 @@ filtered_data = data_node.filter(("nb_sales", 1550, Operator.EQUAL))
     === "exposed_type = "pandas""
 
         ```python
-        pandas.DataFrame
-        (
-                     date  nb_sales
-            0  12/24/2018      1550
-        )
+        pandas.DataFrame({"date": ["12/24/2018"], "nb_sales": [1550]})
         ```
 
     === "exposed_type = "numpy""
@@ -1683,6 +1677,12 @@ filtered_data = data_node.filter(
             0  12/24/2018      1550
             1  12/26/2018      1832
         )
+        pandas.DataFrame(
+            {
+                "date": ["12/24/2018", "12/26/2018"],
+                "nb_sales": [1550, 1832]
+            }
+        )
         ```
 
     === "exposed_type = "numpy""
@@ -1709,8 +1709,8 @@ filtered_data = data_node.filter(
         ```python
         polars.DataFrame(
             {
-                "date": ["12/24/2018", "12/25/2018"],
-                "nb_sales": [1550, 2315]
+                "date": ["12/24/2018", "12/26/2018"],
+                "nb_sales": [1550, 1832]
             }
         )
         ```
@@ -1736,11 +1736,11 @@ filtered_data = data_node.filter(
     === "exposed_type = "pandas""
 
         ```python
-        pandas.DataFrame
-        (
-                     date  nb_sales
-            0  12/24/2018      1550
-            1  12/25/2018      2315
+        pandas.DataFrame(
+            {
+                "date": ["12/24/2018", "12/25/2018"],
+                "nb_sales": [1550, 2315]
+            }
         )
         ```
 
