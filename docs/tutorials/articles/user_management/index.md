@@ -420,7 +420,7 @@ with tgb.Page() as root_page:
             with tgb.part():
                 button_class_name = "plain"
                 # Display login button if user has the "blank" guest credentials
-                with tgb.part(render="{len(credentials.get_roles()) == 0}"):
+                with tgb.part(render=lambda credentials: len(credentials.get_roles()) == 0):
                     tgb.text("Welcome, **guest**.", mode="md")
                     login_icon = Icon(text="Login", path="assets/login.svg")
                     tgb.button(
@@ -429,7 +429,7 @@ with tgb.Page() as root_page:
                         class_name=button_class_name,
                     )
                 # Display logout button if user is logged in
-                with tgb.part(render="{len(credentials.get_roles()) > 0}"):
+                with tgb.part(render=lambda credentials: len(credentials.get_roles()) > 0):
                     tgb.text("Welcome, **{credentials.user_name[:10]}**.", mode="md")
                     logout_icon = Icon(text="Logout", path="assets/logout.svg")
                     tgb.button("{logout_icon}", on_action=handle_logout, class_name=button_class_name)
