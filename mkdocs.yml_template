@@ -227,6 +227,11 @@ nav:
         - "Taipy Designer": userman/ecosystem/designer/index.md
       [DESIGNER_CONTENT]
 
+      - "Taipy Templates":
+        - "Application templates":
+          - "Default application template": userman/ecosystem/templates/applications/default_app.md
+          - "Scenario management template": userman/ecosystem/templates/applications/sdm_app.md
+
   - "Visual Elements":
     - "Visual Elements": refmans/gui/viselements/index.md
     [VISELEMENTS_CONTENT]
