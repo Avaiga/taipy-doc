@@ -1,6 +1,6 @@
 ---
 title: Churn Classification
-category: decision_support
+category: manufacturing_logistics
 data-keywords: ai classification scenario enterprise
 short-description: Leverage Scenario management and comparison to improve decision making on a Churn prediction demo.
 order: 18

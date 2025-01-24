@@ -1,6 +1,6 @@
 ---
 title: Inventory Forecasting
-category: decision_support
+category: manufacturing_logistics
 data-keywords: optimization scenario enterprise
 short-description: Forecast inventory levels and simulate purchasing decisions to optimize supply chain operations.
 order: 11.5

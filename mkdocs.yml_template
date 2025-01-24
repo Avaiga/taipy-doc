@@ -248,20 +248,21 @@ nav:
     - "Finance":
       - "Finance": gallery/finance/index.md
       - "Stock Visualization": gallery/articles/stock_visualization/index.md
-      - "Sales Dashboard": gallery/articles/sales_dashboard/index.md
       - "Commodity Trading": gallery/articles/commodity_trading/index.md
       - "Fraud Detection": gallery/articles/fraud_detection/index.md
-    - "Decision Support":
-      - "Decision Support": gallery/decision_support/index.md
+    - "Manufacturing & Logistics":
+      - "Manufacturing & Logistics": gallery/manufacturing_logistics/index.md
       - "Supply Chain - 2 Echelons": gallery/articles/supply_chain/index.md
       - "Supply Chain - 3 Echelons": gallery/articles/supply_chain_3_echelons/index.md
-      - "QSR Sales Forecasting": gallery/articles/qsr_sales_forecasting/index.md
       - "Supply Chain Monitoring": gallery/articles/supply_chain_monitoring/index.md
       - "Production Planning": gallery/articles/production_planning/index.md
       - "Inventory Forecasting": gallery/articles/inventory_forecasting/index.md
-      - "Drift Detection": gallery/articles/drift_detection/index.md
       - "Optimize Bar Cut Sizes": gallery/articles/bar_cutting/index.md
       - "Churn Classification": gallery/articles/churn_classification/index.md
+    - "Service industry":
+      - "Service industry": gallery/service_industry/index.md
+      - "QSR Sales Forecasting": gallery/articles/qsr_sales_forecasting/index.md
+      - "Sales Dashboard": gallery/articles/sales_dashboard/index.md
     - "LLM":
       - "LLM": gallery/llm/index.md
       - "LLM Chatbot" : gallery/articles/chatbot/index.md
@@ -278,6 +279,7 @@ nav:
       - "Realtime Pollution Dashboard" : gallery/articles/pollution_sensors/index.md
     - "Other":
       - "Other": gallery/other/index.md
+      - "Drift Detection": gallery/articles/drift_detection/index.md
       - "Background Remover": gallery/articles/background_remover/index.md
       - "Real-time Face Recognition": gallery/articles/face_recognition/index.md
       - "Movie Genre Selector": gallery/articles/movie_genre_selector/index.md

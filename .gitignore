@@ -119,7 +119,7 @@ mkdocs.yml
 
 /docs/gallery/index.md
 /docs/gallery/finance/index.md
-/docs/gallery/decision_support/index.md
+/docs/gallery/manufacturing_logistics/index.md
 /docs/gallery/llm/index.md
 /docs/gallery/visualization/index.md
 /docs/gallery/other/index.md
@@ -150,3 +150,4 @@ mkdocs.yml
 !/docs/userman/gui/gui_example.ipynb
 
 /docs/xrefs
+/taipy.clone
