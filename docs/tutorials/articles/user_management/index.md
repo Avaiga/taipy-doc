@@ -1,5 +1,5 @@
 ---
-title: User Management in Taipy Enterprise
+title: User Roles and Permissions
 category: fundamentals
 data-keywords: scenario task
 short-description: An introduction to User Management in Taipy Enterprise.
