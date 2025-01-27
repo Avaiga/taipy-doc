@@ -359,7 +359,7 @@ def submit_scenario(state):
         ...
 ```
 
-Of course, yet another approach when using generic controls like selectors and buttons is to simply set its [active](https://docs.taipy.io/en/develop/refmans/gui/viselements/generic/button/#p-active) property to an expression that checks for the desired credentials, for example:
+Of course, yet another approach when using generic controls like selectors and buttons is to simply set its [active](../../../refmans/gui/viselements/generic/button.md#p-active) property to an expression that checks for the desired credentials, for example:
 
 ```python
 import taipy.gui.builder as tgb
