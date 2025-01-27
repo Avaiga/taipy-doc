@@ -463,7 +463,7 @@ def on_post_build(env):
                         r"(<td>\s*<code>)(.*\^.*)(</code>\s*</td>)"
                     )
                     # This will match a single <typeName>^ fragment.
-                    typing_type = re.compile(r"\w+\^")
+                    typing_type = re.compile(r"(`?)(\w+)\^\1")
                     for xref in typing_code.finditer(html_content):
                         groups = xref.groups()
                         table_line = groups[1]
@@ -472,17 +472,28 @@ def on_post_build(env):
                         typing_xref_found = False
 
                         for type_ in typing_type.finditer(table_line):
-                            class_ = type_[0][:-1]  # Remove ^
+                            class_ = type_[2] # Type name
                             packages = xrefs.get(class_)
+                            paths = None
+                            if isinstance(packages, int):
+                                packages = xrefs.get(f"{class_}/0")
                             if packages:
-                                # TODO - Retrieve the actual XREF
-                                if isinstance(packages, int):
-                                    packages = xrefs.get(f"{class_}/0")  # WRONG
+                                link_path = "/".join([f"pkg_{e}" for e in packages[0].split(".")])
+                            if packages and os.path.exists(f"{ref_files_path}/{link_path}/index.html"):
                                 typing_xref_found = True
-                                new_content = f'<a href="{rel_path}/{packages[0]}.{class_}">{class_}</a>'
-                                new_table_line = new_table_line.replace(
-                                    f"{class_}^", new_content
-                                )
+                                link = f'<a href="{rel_path}/{link_path}">{class_}</a>'
+                                new_table_line = new_table_line.replace(f"{type_[0]}", link)
+                            else:
+                                (dir, file) = os.path.split(filename)
+                                (dir, dir1) = os.path.split(dir)
+                                (dir, dir2) = os.path.split(dir)
+                                bad_xref = xref.group(0)
+                                message = f"Unresolved crossref '{class_}' (in description table) found in "
+                                if file == "index.html":
+                                    (dir, dir3) = os.path.split(dir)
+                                    log.error(f"{message}{dir3}/{dir2}/{dir1}.md")
+                                else:
+                                    log.error(f"{message}{dir2}/{dir1}/{file}")
                         if typing_xref_found:
                             html_content = html_content.replace(
                                 table_line_to_replace, new_table_line
