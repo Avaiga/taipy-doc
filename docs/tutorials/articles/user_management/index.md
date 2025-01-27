@@ -36,7 +36,7 @@ In developing this multi-page application, we will demonstrate these features of
 
 1. **Permissions** for **Scenario and Data Management** using [**predefined roles**](../../../userman/advanced_features/auth/authorization.md#permissions-for-scenario-and-data-management) ("TAIPY_EDITOR", "TAIPY_ADMIN", etc.);
 2. **Authorizing** that a user possesses **specified roles** using a [*RoleTraits*](../../../userman/advanced_features/auth/authorization.md#role-traits-value) filter (*AnyOf*, *AllOf* and *NoneOf*);
-3. Managing **role-based page access** using [*AuthorizedPage*](https://docs.taipy.io/en/latest/refmans/reference/pkg_taipy/pkg_enterprise/pkg_gui/AuthorizedPage/);
+3. Managing **role-based page access** using `AuthorizedPage^`;
 4. **Hiding elements** based on the user's roles;
 5. And more.
 
@@ -183,10 +183,10 @@ We perform the configuration with the `Config.configure_authentication`  method.
 
 We're down to our final 4 files, and we'll start with the login page. This is where things get the most interesting, and it's worth spending some time to understand what's going on.
 
-A user can be identified through a [`taipy.auth.Credentials`](https://docs.taipy.io/en/latest/refmans/reference/pkg_taipy/pkg_auth/Credentials/) object which holds information about its username and roles. We typically obtain an **authenticated Credentials object** using:
+A user can be identified through a `Credentials^` object which holds information about its username and roles. We typically obtain an **authenticated Credentials object** using:
 
-1. [`taipy.auth.login`](https://docs.taipy.io/en/latest/refmans/reference/pkg_taipy/pkg_auth/login/); or
-2. [`taipy.enterprise.gui.login`](https://docs.taipy.io/en/latest/refmans/reference/pkg_taipy/pkg_enterprise/pkg_gui/login/).
+1. `taipy.auth.login()^`; or
+2. `taipy.enterprise.gui.login()^`.
 
 Although they both return valid Credentials objects (or raise errors), the **latter function** differs in that it also **performs some operations behind-the-scenes** to enable **interoperability with Taipy GUI** (e.g. *AuthorizedPage*, described in a later section). Consequently, we'll be using the latter function for our application.
 
@@ -254,7 +254,7 @@ Similarly, we define a "handle_logout" function:
     
     Here, we're assigning a "blank" Credentials object to `state.credentials`, which has no user roles. This is for our convenience so that we can always use this `state.credentials` object to get a user's roles — returning an empty list if the user is not authenticated.
     
-    It is an important distinction that `state.credentials` is a state variable of our own making — **it is not some reserved keyword** internally used by Taipy Enterprise. Notably and contrastingly, at this point, calling [`taipy.enterprise.gui.get_credentials`](https://docs.taipy.io/en/latest/refmans/reference/pkg_taipy/pkg_enterprise/pkg_gui/get_credentials/) would return None, since the previous logout statement has removed session credentials.
+    It is an important distinction that `state.credentials` is a state variable of our own making — **it is not some reserved keyword** internally used by Taipy Enterprise. Notably and contrastingly, at this point, calling `get_credentials()^` would return None, since the previous logout statement has removed session credentials.
     
 3. Notify the user that the logout was successful.
 4. Navigate the user to the root page.
@@ -343,7 +343,7 @@ Rather self-explanatorily, the *AnyOf* role traits filter checks if a user has a
 Company page: Bob is unable to click the button as he has insufficient permissions to submit the scenario.
 ///
 
-Note that using scenario management controls abstracts away some auth functionality for our convenience. For example, the *scenario* control's submit button is **automatically disabled** when the **user does not have permission** to execute a scenario. Often, you may wish to use generic controls like selectors and buttons, which trigger user-defined callbacks that call scenario management functionality. In this case, an added step is to use the [Authorize](https://docs.taipy.io/en/latest/refmans/reference/pkg_taipy/pkg_auth/Authorize/) context manager when performing a protected operation, for example:
+Note that using scenario management controls abstracts away some auth functionality for our convenience. For example, the *scenario* control's submit button is **automatically disabled** when the **user does not have permission** to execute a scenario. Often, you may wish to use generic controls like selectors and buttons, which trigger user-defined callbacks that call scenario management functionality. In this case, an added step is to use the `Authorize^` context manager when performing a protected operation, for example:
 
 ```python
 import taipy as tp
