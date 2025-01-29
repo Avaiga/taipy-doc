@@ -63,7 +63,11 @@ This is the list of changes to Taipy releases as they were published.
   See [issue #2017](https://github.com/Avaiga/taipy/issues/2017).
 - When the DAG of a `Scenario^` or a `Sequence^` is not valid, an error message is now logged
   before raising the `InvalidSequence^` exception.<br/>
-  See [issue #2322](https://github.com/Avaiga/taipy/issues/2322)
+  See [issue #2322](https://github.com/Avaiga/taipy/issues/2322).
+- Taipy now only checks the compatibility of the installed *taipy-core* version with the
+  versions set in the existing entities when the application runs either in experiment or
+  in production mode.<br/>
+  See [issue #2420](https://github.com/Avaiga/taipy/issues/2420).
 
 
 # Enterprise edition: 4.1 ( IN PROGRESS )
