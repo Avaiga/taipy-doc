@@ -21,7 +21,7 @@ hide:
     [Try it live](https://investment-screening.taipy.cloud){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
-Adding User Management to your Taipy application using Taipy Enterprise is a smooth experience — integration is intuitive, and just makes sense. This is because Taipy was from the beginning to be paired with Taipy Enterprise for secure and easy-to-develop User Management.
+Adding User Management to your Taipy application using Taipy Enterprise is a smooth experience — integration is intuitive, and just makes sense. This is because Taipy was designed from the beginning to be paired with Taipy Enterprise for secure and easy-to-develop User Management.
 
 ![Investment Screening application.](images/company_page_alice.png){width=80% : .tp-image-border}
 
@@ -31,6 +31,8 @@ In this tutorial, we will create an application for an investment firm use case.
 2. Allow Alice, the **manager**, to submit companies to the screening model.
 
 This way, Alice is able to vet beforehand if a company added by Bob is worth the cost of running the screening model.
+
+# Learning Outcomes
 
 In developing this multi-page application, we will demonstrate these features of Taipy Enterprise:
 
@@ -164,7 +166,7 @@ Config.configure_authentication(
 
 ```
 
-We perform the configuration with the `Config.configure_authentication`  method. As always, we could have defined this as a TOML file instead. First, we set the authentication protocol as "taipy". Then, we pass 2 additional parameters specific to the "taipy" protocol:
+We perform the configuration with the `Config.configure_authentication`  method. As always, we could have [defined this as a TOML file](../../../userman/advanced_features/auth/authentication.md#__tabbed_2_2) instead. First, we set the authentication protocol as "taipy". Then, we pass 2 additional parameters specific to the "taipy" protocol:
 
 1. *roles* : `dict[str, list[str]]`
     
@@ -366,7 +368,7 @@ import taipy.gui.builder as tgb
 from taipy.gui import notify
 
 tgb.button(
-	  label="Only for admins",
+    label="Only for admins",
     active=lambda credentials: "TAIPY_ADMIN" in credentials.get_roles(),
     on_action=lambda state: notify(state, "info", "You are an admin!")
 )
