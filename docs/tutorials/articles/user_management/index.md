@@ -21,28 +21,40 @@ hide:
     [Try it live](https://investment-screening.taipy.cloud){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
-Adding User Management to your Taipy application using Taipy Enterprise is a smooth experience — integration is intuitive, and just makes sense. This is because Taipy was designed from the beginning to be paired with Taipy Enterprise for secure and easy-to-develop User Management.
+Adding User Management to your Taipy application using Taipy Enterprise is a smooth experience —
+integration is intuitive, and just makes sense. This is because Taipy was designed from the
+beginning to be paired with Taipy Enterprise for secure and easy-to-develop User Management.
 
 ![Investment Screening application.](images/company_page_alice.png){width=80% : .tp-image-border}
 
-In this tutorial, we will create an application for an investment firm use case. This investment firm is testing out a **new screening model to evaluate companies** that they should invest in. This comprehensive screening model is **expensive to run** because it requires access to paid data sources — accordingly, our application's purpose is to:
+In this tutorial, we will create an application for an investment firm use case. This investment
+firm is testing out a **new screening model to evaluate companies** that they should invest in. This
+comprehensive screening model is **expensive to run** because it requires access to paid data
+sources — accordingly, our application's purpose is to:
 
 1. Allow Bob, the **analyst**, to add companies that look promising for investment; and
 2. Allow Alice, the **manager**, to submit companies to the screening model.
 
-This way, Alice is able to vet beforehand if a company added by Bob is worth the cost of running the screening model.
+This way, Alice is able to vet beforehand if a company added by Bob is worth the cost of running the
+screening model.
 
 # Learning Outcomes
 
 In developing this multi-page application, we will demonstrate these features of Taipy Enterprise:
 
-1. **Permissions** for **Scenario and Data Management** using [**predefined roles**](../../../userman/advanced_features/auth/authorization.md#permissions-for-scenario-and-data-management) ("TAIPY_EDITOR", "TAIPY_ADMIN", etc.);
-2. **Authorizing** that a user possesses **specified roles** using a [*RoleTraits*](../../../userman/advanced_features/auth/authorization.md#role-traits-value) filter (*AnyOf*, *AllOf* and *NoneOf*);
+1. **Permissions** for **Scenario and Data Management** using
+    [**predefined roles**](../../../userman/advanced_features/auth/authorization.md#permissions-for-scenario-and-data-management)
+    ("TAIPY_EDITOR", "TAIPY_ADMIN", etc.);
+2. **Authorizing** that a user possesses **specified roles** using a
+    [*RoleTraits*](../../../userman/advanced_features/auth/authorization.md#role-traits-value)
+    filter (*AnyOf*, *AllOf* and *NoneOf*);
 3. Managing **role-based page access** using `AuthorizedPage^`;
 4. **Hiding elements** based on the user's roles;
 5. And more.
 
-This tutorial focuses on Taipy Enterprise features, and assumes some understanding of Taipy GUI and Scenario Management concepts. Please consult the useful User Manual and Tutorials if you have trouble understanding the latter!
+This tutorial focuses on Taipy Enterprise features, and assumes some understanding of Taipy GUI and
+Scenario Management concepts. Please consult the useful User Manual and Tutorials if you have
+trouble understanding the latter!
 
 # 1. Folder structure
 
@@ -91,7 +103,8 @@ def evaluate_company(company_name: str):
 
 ```
 
-This tutorial does not actually describe a cutting-edge screening model — we will have to make do with a dummy function that takes a company name and outputs a random rating between 0 and 100.
+This tutorial does not actually describe a cutting-edge screening model — we will have to make do
+with a dummy function that takes a company name and outputs a random rating between 0 and 100.
 
 Next up, we have the Taipy scenario management configuration to wrap our algorithm:
 
@@ -118,17 +131,27 @@ scenario_cfg = Config.configure_scenario(
 
 ```
 
-Pretty standard configuration here — the **"company_name" data node** is passed to the **"evaluate_company" task**, which outputs our target **"company evaluation" data node**.
+Pretty standard configuration here — the **"company_name" data node** is passed to the
+**"evaluate_company" task**, which outputs our target **"company evaluation" data node**.
 
-We expect Bob to create scenarios and edit "company_name" with companies that he thinks are promising to invest in. Then, Alice should filter through these scenarios, and selectively submit some scenarios to be processed by the screening model.
+We expect Bob to create scenarios and edit "company_name" with companies that he thinks are
+promising to invest in. Then, Alice should filter through these scenarios, and selectively submit
+some scenarios to be processed by the screening model.
 
 # 3. Auth configuration
 
-In our first Taipy Enterprise feature, we will define the Taipy authentication and authorization configuration. 
+In our first Taipy Enterprise feature, we will define the Taipy authentication and authorization
+configuration.
 
-Note that Taipy Enterprise supports several authentication protocols which you can check out [here](../../../userman/advanced_features/auth/authentication.md). To properly secure your application, you **should use an established supported protoco**l like LDAP or Microsoft Entra ID. However, for our purpose, we will use an **internal password-based protocol** simply called "taipy". This lets us get started quickly, before **migrating to one of the aforementioned protocols** at a later time.
+Note that Taipy Enterprise supports several authentication protocols which you can check out
+[here](../../../userman/advanced_features/auth/authentication.md). To properly secure your
+application, you **should use an established supported protocol** like LDAP or Microsoft Entra ID.
+However, for our purpose, we will use an **internal password-based protocol** simply called "taipy".
+This lets us get started quickly, before **migrating to one of the aforementioned protocols** at a
+later time.
 
-First, Taipy's "taipy" protocol expects a "*TAIPY_AUTH_HASH*" environment variable used to [salt the password](https://en.wikipedia.org/wiki/Salt_(cryptography)) before it is hashed.
+First, Taipy's "taipy" protocol expects a "*TAIPY_AUTH_HASH*" environment variable used to
+[salt the password](<https://en.wikipedia.org/wiki/Salt_(cryptography)>) before it is hashed.
 
 We'll do this in an "*.env*" file:
 
@@ -166,31 +189,45 @@ Config.configure_authentication(
 
 ```
 
-We perform the configuration with the `Config.configure_authentication`  method. As always, we could have [defined this as a TOML file](../../../userman/advanced_features/auth/authentication.md#__tabbed_2_2) instead. First, we set the authentication protocol as "taipy". Then, we pass 2 additional parameters specific to the "taipy" protocol:
+We perform the configuration with the `Config.configure_authentication` method. As always, we could
+have
+[defined this as a TOML file](../../../userman/advanced_features/auth/authentication.md#__tabbed_2_2)
+instead. First, we set the authentication protocol as "taipy". Then, we pass 2 additional parameters
+specific to the "taipy" protocol:
 
 1. *roles* : `dict[str, list[str]]`
-    
-    A dictionary mapping usernames to a list of user roles. User roles can be **any string of our choosing**, e.g. "writer" or "publisher". We can then write our application logic to check for these roles.
-    
-    In this application, we opted for some **predefined roles** provided by Taipy which have some unique functionality for scenario management, namely "TAIPY_ADMIN" and "TAIPY_EDITOR".
-    
+
+    A dictionary mapping usernames to a list of user roles. User roles can be **any string of our
+    choosing**, e.g. "writer" or "publisher". We can then write our application logic to check for
+    these roles.
+
+    In this application, we opted for some **predefined roles** provided by Taipy which have some
+    unique functionality for scenario management, namely "TAIPY_ADMIN" and "TAIPY_EDITOR".
+
 2. *passwords* : `dict[str, str]`
-    
-    A dictionary mapping usernames to their hashed password string. Password hashes should be generated using `taipy.auth.hash_taipy_password`.
-    
-    Notice that we did not provide an entry for Alice's password. By default, if omitted, the password hash is automatically generated with the username as the password. In other words, we can sign in as the user "Alice" with the password "Alice".
-    
+
+    A dictionary mapping usernames to their hashed password string. Password hashes should be
+    generated using `taipy.auth.hash_taipy_password`.
+
+    Notice that we did not provide an entry for Alice's password. By default, if omitted, the
+    password hash is automatically generated with the username as the password. In other words, we
+    can sign in as the user "Alice" with the password "Alice".
 
 # 4. Login page
 
-We're down to our final 4 files, and we'll start with the login page. This is where things get the most interesting, and it's worth spending some time to understand what's going on.
+We're down to our final 4 files, and we'll start with the login page. This is where things get the
+most interesting, and it's worth spending some time to understand what's going on.
 
-A user can be identified through a `Credentials^` object which holds information about its username and roles. We typically obtain an **authenticated Credentials object** using:
+A user can be identified through a `Credentials^` object which holds information about its username
+and roles. We typically obtain an **authenticated Credentials object** using:
 
 1. `taipy.auth.login()^`; or
 2. `taipy.enterprise.gui.login()^`.
 
-Although they both return valid Credentials objects (or raise errors), the **latter function** differs in that it also **performs some operations behind-the-scenes** to enable **interoperability with Taipy GUI** (e.g. *AuthorizedPage*, described in a later section). Consequently, we'll be using the latter function for our application.
+Although they both return valid Credentials objects (or raise errors), the **latter function**
+differs in that it also **performs some operations behind-the-scenes** to enable **interoperability
+with Taipy GUI** (e.g. *AuthorizedPage*, described in a later section). Consequently, we'll be using
+the latter function for our application.
 
 Let's look at the code for the login page:
 
@@ -227,17 +264,26 @@ with tgb.Page() as login_page:
 
 ```
 
-We don't need much code for this page. The actual Page object (`login_page`) contains a single element: a [login control](../../../refmans/gui/viselements/generic/login.md). Interacting with the login control implicitly calls the "on_login" callback function (unless a callback function is explicitly assigned via `tgb.login`'s "on_action" parameter).
+We don't need much code for this page. The actual Page object (`login_page`) contains a single
+element: a [login control](../../../refmans/gui/viselements/generic/login.md). Interacting with the
+login control implicitly calls the "on_login" callback function (unless a callback function is
+explicitly assigned via `tgb.login`'s "on_action" parameter).
 
-In turn, our "on_login" callback function calls "handle_login", where we implement the main logic for attempting a login. We choose to do this in 3 steps:
+In turn, our "on_login" callback function calls "handle_login", where we implement the main logic
+for attempting a login. We choose to do this in 3 steps:
 
 1. `state.credentials = tp.enterprise.gui.login(state, username, password)`.
-    
-    Assign the validated Credentials to the `state.credentials` [State variable](../../../userman/gui/binding.md). Remember that this function also does some behind-the-scenes magic to authenticate the user in this session.
-    
-    Note that although this function may raise an *AuthenticationError* exception, we choose not to catch it immediately, but instead let the main "on_exception" callback handle it (more on this later).
-    
+
+    Assign the validated Credentials to the `state.credentials`
+    [State variable](../../../userman/gui/binding.md). Remember that this function also does some
+    behind-the-scenes magic to authenticate the user in this session.
+
+    Note that although this function may raise an *AuthenticationError* exception, we choose not to
+    catch it immediately, but instead let the main "on_exception" callback handle it (more on this
+    later).
+
 2. Notify the user that the login was successful.
+
 3. Navigate the user to the root page.
 
 ![Guests log in by interacting with the login control, which calls the "on_login" callback.](images/login_page_guest.png){width=80% : .tp-image-border}
@@ -249,16 +295,22 @@ Login page: Guests log in by interacting with the login control, which calls the
 Similarly, we define a "handle_logout" function:
 
 1. `tp.enterprise.gui.logout(state)`.
-    
+
     Log the user out. Again, this GUI function removes the credentials from the associated session.
-    
+
 2. `state.credentials = get_guest_credentials()`.
-    
-    Here, we're assigning a "blank" Credentials object to `state.credentials`, which has no user roles. This is for our convenience so that we can always use this `state.credentials` object to get a user's roles — returning an empty list if the user is not authenticated.
-    
-    It is an important distinction that `state.credentials` is a state variable of our own making — **it is not some reserved keyword** internally used by Taipy Enterprise. Notably and contrastingly, at this point, calling `get_credentials()^` would return None, since the previous logout statement has removed session credentials.
-    
+
+    Here, we're assigning a "blank" Credentials object to `state.credentials`, which has no user
+    roles. This is for our convenience so that we can always use this `state.credentials` object to
+    get a user's roles — returning an empty list if the user is not authenticated.
+
+    It is an important distinction that `state.credentials` is a state variable of our own making —
+    **it is not some reserved keyword** internally used by Taipy Enterprise. Notably and
+    contrastingly, at this point, calling `get_credentials()^` would return None, since the
+    previous logout statement has removed session credentials.
+
 3. Notify the user that the logout was successful.
+
 4. Navigate the user to the root page.
 
 # 5. Admin page
@@ -282,7 +334,9 @@ with tgb.Page() as admin_page:
 
 ```
 
-This page simply displays a table with all configured usernames and their respective roles. Later, we will demonstrate how we can **limit access to this page** so that only users with the "TAIPY_ADMIN" role — such as Alice — may access it.
+This page simply displays a table with all configured usernames and their respective roles. Later,
+we will demonstrate how we can **limit access to this page** so that only users with the
+"TAIPY_ADMIN" role — such as Alice — may access it.
 
 The `admin_page`, viewed as Alice:
 
@@ -290,7 +344,8 @@ The `admin_page`, viewed as Alice:
 
 # 6. Company page
 
-The third and last page is the company page. This is the page that Bob and Alice will use to create, edit and submit scenarios.
+The third and last page is the company page. This is the page that Bob and Alice will use to create,
+edit and submit scenarios.
 
 ```python
 import taipy.gui.builder as tgb
@@ -328,24 +383,38 @@ with tgb.Page() as company_page:
 
 ```
 
-If you're already familiar with Taipy GUI and Scenario Management, you will notice that we used some [scenario management controls](../../../refmans/gui/viselements/index.md#scenario-and-data-management-controls), namely: *scenario_selector*, *scenario*, *data_node_selector* and *data_node*. 
+If you're already familiar with Taipy GUI and Scenario Management, you will notice that we used some
+[scenario management controls](../../../refmans/gui/viselements/index.md#scenario-and-data-management-controls),
+namely: *scenario_selector*, *scenario*, *data_node_selector* and *data_node*.
 
-In fact, the only new thing present is the *AnyOf* [role trait](../../../userman/advanced_features/auth/authorization.md#role-traits) filter. A role trait filter takes 3 parameters:
+In fact, the only new thing present is the *AnyOf*
+[role trait](../../../userman/advanced_features/auth/authorization.md#role-traits) filter. A role
+trait filter takes 3 parameters:
 
 1. *filters*: A list of roles to check.
 2. *success*: The returned value if the success condition is met.
 3. *failure*: The returned value if the success condition is not met.
 
-Additionally, *success* and *failure* could also be role trait filters, which would be **recursively evaluated** until some value is returned.
+Additionally, *success* and *failure* could also be role trait filters, which would be **recursively
+evaluated** until some value is returned.
 
-Rather self-explanatorily, the *AnyOf* role traits filter checks if a user has any of the listed roles. In our example, we created one like so: `is_admin = AnyOf([TAIPY_ADMIN_ROLE], True, False)`. Then, in our page code, we used the expression `not is_admin.get_traits(credentials)` for a part's render property. Hence, the full expression (with the negation from `not`) evaluates as `True` if the user does not have the "TAIPY_ADMIN" role.
+Rather self-explanatorily, the *AnyOf* role traits filter checks if a user has any of the listed
+roles. In our example, we created one like so: `is_admin = AnyOf([TAIPY_ADMIN_ROLE], True, False)`.
+Then, in our page code, we used the expression `not is_admin.get_traits(credentials)` for a part's
+render property. Hence, the full expression (with the negation from `not`) evaluates as `True` if
+the user does not have the "TAIPY_ADMIN" role.
 
 ![Bob is unable to click the button as he has insufficient permissions to submit the scenario.](images/company_page_bob.png){width=80% : .tp-image-border}
 /// caption
 Company page: Bob is unable to click the button as he has insufficient permissions to submit the scenario.
 ///
 
-Note that using scenario management controls abstracts away some auth functionality for our convenience. For example, the *scenario* control's submit button is **automatically disabled** when the **user does not have permission** to execute a scenario. Often, you may wish to use generic controls like selectors and buttons, which trigger user-defined callbacks that call scenario management functionality. In this case, an added step is to use the `Authorize^` context manager when performing a protected operation, for example:
+Note that using scenario management controls abstracts away some auth functionality for our
+convenience. For example, the *scenario* control's submit button is **automatically disabled** when
+the **user does not have permission** to execute a scenario. Often, you may wish to use generic
+controls like selectors and buttons, which trigger user-defined callbacks that call scenario
+management functionality. In this case, an added step is to use the `Authorize^` context manager
+when performing a protected operation, for example:
 
 ```python
 import taipy as tp
@@ -361,7 +430,9 @@ def submit_scenario(state):
         ...
 ```
 
-Of course, yet another approach when using generic controls like selectors and buttons is to simply set its [active](../../../refmans/gui/viselements/generic/button.md#p-active) property to an expression that checks for the desired credentials, for example:
+Of course, yet another approach when using generic controls like selectors and buttons is to simply
+set its [active](../../../refmans/gui/viselements/generic/button.md#p-active) property to an
+expression that checks for the desired credentials, for example:
 
 ```python
 import taipy.gui.builder as tgb
@@ -451,21 +522,36 @@ Since this file is a little bit longer than the others, we'll break it down in s
 
 ## 7.1 Initialize credentials
 
-Starting from the top, after the imports, we initialize `credentials = get_guest_credentials()`.  By defining this in our main module, we now have a global `state.credentials` state variable in our application. As mentioned earlier, we're giving non-logged in users this "blank" guest credentials, so that `state.credentials` is always of type *Credentials* — and guest users can be identified by their empty role list.
+Starting from the top, after the imports, we initialize `credentials = get_guest_credentials()`. By
+defining this in our main module, we now have a global `state.credentials` state variable in our
+application. As mentioned earlier, we're giving non-logged in users this "blank" guest credentials,
+so that `state.credentials` is always of type *Credentials* — and guest users can be identified by
+their empty role list.
 
 ## 7.2 "on_exception" global callback
 
-Next, we define "on_exception". This is the global callback function that Taipy implicitly calls when it encounters an unhandled exception. In this case, our function calls "handle_logout" to **reassign guest credentials** if an *AuthenticationError* or *InvalidCredentials* exception is unhandled in the application. 
+Next, we define "on_exception". This is the global callback function that Taipy implicitly calls
+when it encounters an unhandled exception. In this case, our function calls "handle_logout" to
+**reassign guest credentials** if an *AuthenticationError* or *InvalidCredentials* exception is
+unhandled in the application.
 
-Remember how in "login.handle_login" we opted not to handle the exception that `tp.enterprise.gui.login` may raise? Therefore, if an *AuthenticationError* is raised, it would get handled by this function.
+Remember how in "login.handle_login" we opted not to handle the exception that
+`tp.enterprise.gui.login` may raise? Therefore, if an *AuthenticationError* is raised, it would get
+handled by this function.
 
 ## 7.3 Adding pages
 
-We usually create a multi-page application in Taipy by defining a dictionary mapping page names to a Taipy *Page* (like `company_page`). This dictionary is then passed to the `taipy.gui.Gui` "pages" parameter.
+We usually create a multi-page application in Taipy by defining a dictionary mapping page names to a
+Taipy *Page* (like `company_page`). This dictionary is then passed to the `taipy.gui.Gui` "pages"
+parameter.
 
-This time however, we may want to show different pages depending on the user's roles. For example, we only want Alice, the manager (who has the "TAIPY_ADMIN" role), to be able to view `admin_page`. Any user without this role should not be able to view the page.
+This time however, we may want to show different pages depending on the user's roles. For example,
+we only want Alice, the manager (who has the "TAIPY_ADMIN" role), to be able to view `admin_page`.
+Any user without this role should not be able to view the page.
 
-To do this, we started by creating `guest_page`, a short page simply informing the user that they aren't signed in. Now, we want to make it so that navigating to "/admin" may conditionally show `admin_page` or `guest_page`, depending on the user's roles. We can do this with *AuthorizedPage*.
+To do this, we started by creating `guest_page`, a short page simply informing the user that they
+aren't signed in. Now, we want to make it so that navigating to "/admin" may conditionally show
+`admin_page` or `guest_page`, depending on the user's roles. We can do this with *AuthorizedPage*.
 
 See the following snippet:
 
@@ -476,7 +562,10 @@ pages = {
 }
 ```
 
-Where the value would have usually been a *Page*, here, instead we use an *AuthorizedPage*. This class takes a *RoleTraits* filter, and its *success* and *failure* parameters should be *Page* objects (or role traits filters to recurse further). Accordingly, the "/admin" route will now display `admin_page` to users with the "TAIPY_ADMIN" role, and `guest_page` otherwise.
+Where the value would have usually been a *Page*, here, instead we use an *AuthorizedPage*. This
+class takes a *RoleTraits* filter, and its *success* and *failure* parameters should be *Page*
+objects (or role traits filters to recurse further). Accordingly, the "/admin" route will now
+display `admin_page` to users with the "TAIPY_ADMIN" role, and `guest_page` otherwise.
 
 ![Bob does not have the "TAIPY_ADMIN" role, and sees `guest_page` instead.](images/admin_page_bob.png){width=80% : .tp-image-border}
 /// caption
@@ -485,11 +574,15 @@ Admin page: Bob does not have the "TAIPY_ADMIN" role, and sees `guest_page` inst
 
 ## 7.4 Adding the root page
 
-Finally, we can define the [root page](../../../userman/gui/pages/index.md#root-page). As you may already know, the root page will be present on every page of a multi-page application, making it the perfect place to put our header — which should contain elements for navigation, and logging in/out. Completed it will look like this:
+Finally, we can define the [root page](../../../userman/gui/pages/index.md#root-page). As you may
+already know, the root page will be present on every page of a multi-page application, making it the
+perfect place to put our header — which should contain elements for navigation, and logging in/out.
+Completed it will look like this:
 
 ![The application header.](images/header.png){width=80% : .tp-image-border}
 
-Looking at the `root_page` object, we are providing log in/out functionality through buttons, contained in parts which are **rendered based on 2 mutually exclusive expressions**:
+Looking at the `root_page` object, we are providing log in/out functionality through buttons,
+contained in parts which are **rendered based on 2 mutually exclusive expressions**:
 
 1. `len(credentials.get_roles()) == 0`
     1. The user is a guest.
@@ -502,14 +595,18 @@ Accordingly, the relevant button is shown to the user depending on their login s
 
 # 8. Tutorial outcome
 
-Bob, the **analyst**, can now create a scenario, and add a company name that he thinks is a good investment. He **has no permission** to submit the scenario for execution:
+Bob, the **analyst**, can now create a scenario, and add a company name that he thinks is a good
+investment. He **has no permission** to submit the scenario for execution:
 
 ![Bob edits the company name in the scenario.](images/bob_edits_company_name.png){width=80% : .tp-image-border}
 
-Alice, the **manager**, will see the scenario that Bob created, and can decide if it's worth submitting to the screening model. She **has permission** to submit the scenario for execution:
+Alice, the **manager**, will see the scenario that Bob created, and can decide if it's worth
+submitting to the screening model. She **has permission** to submit the scenario for execution:
 
 ![Alice submits the scenario.](images/alice_submits_scenario.png){width=80% : .tp-image-border}
 
 **Invest!**
 
-You should now be familiar with the key concepts powering User Management in Taipy Enterprise! Additionally, you should also know how to add authentication and authorization to your Taipy GUI and Scenario Management applications with straightforward and painless integration.
+You should now be familiar with the key concepts powering User Management in Taipy Enterprise!
+Additionally, you should also know how to add authentication and authorization to your Taipy GUI and
+Scenario Management applications with straightforward and painless integration.
