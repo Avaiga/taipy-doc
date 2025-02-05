@@ -50,8 +50,9 @@ $ pip install statsmodels
     can guide you through the process.
 
 
-Once Taipy is installed, you can use the Taipy CLI to scaffold an application folder. Run the create
-command line with default application template and answer basic questions as follows:
+Once Taipy is installed, you can use the Taipy CLI to scaffold an application folder. Run
+the create command line with default application template and answer basic questions as
+follows:
 
 ``` console
 > taipy create --application default
