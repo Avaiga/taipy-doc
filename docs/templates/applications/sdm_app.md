@@ -34,39 +34,51 @@ You can then run the application as follows:
     In the CLI, the default value for each question is displayed in the square brackets.
     You can provide an answer or press Enter to use the default value.
 
+Each question in the CLI corresponds to a specific aspect of the application. The following
+sections describe each question in detail.
+
 !!! note "Available in Taipy Enterprise edition"
 
     Questions 6 is only relevant to the [Taipy Enterprise Edition](https://taipy.io/enterprise)
 
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
-Each question in the CLI corresponds to a specific aspect of the application:
+## 1. Application root folder
 
-1. "Application root folder":
-    - Specifies the root folder of the application.
-    - The default value is "new_application".
-2. "Application main Python file"
-    - Sets the name of the main Python file (entry point) of the application.
-    - The default value is "main.py".
-3. "Application title":
-    - Specifies the title displayed in the web application.
-    - The default value is "Taipy Application".
-4. "With TOML Config":
-    - Specifies whether the application will use TOML configuration files, otherwise the configuration
-        will be in a Python file.
-    - The default value is "No".
-5. "With a new Git repository":
-    - Specifies whether the application will be initialized as a new Git repository.
-    - The default value is "No".
-6. "With Docker deployment"
-    - Specifies Docker support for the application.
-    - Options:
-        - "No": No Docker support.
-        - "For development": Add a minimal version of `Dockerfile` and `docker-compose.yml` for development.
-        - "For production": Add a production-ready `Dockerfile` and `docker-compose.yml`.
-    - The default value is "No".
+- Specifies the root folder of the application.
+- The default value is "new_application".
 
-## Run the application
+## 2. Application main Python file
+
+- Sets the name of the main Python file (entry point) of the application.
+- The default value is "main.py".
+
+## 3. Application title
+
+- Specifies the title displayed in the web application.
+- The default value is "Taipy Application".
+
+## 4. With TOML Config
+
+- Specifies whether the application will use TOML configuration files, otherwise the configuration
+  will be in a Python file.
+- The default value is "No".
+
+## 5. With a new Git repository
+
+- Specifies whether the application will be initialized as a new Git repository.
+- The default value is "No".
+
+## 6. With Docker deployment
+
+- Specifies Docker support for the application.
+- Options:
+    - "No": No Docker support.
+    - "For development": Add a minimal version of `Dockerfile` and `docker-compose.yml` for development.
+    - "For production": Add a production-ready `Dockerfile` and `docker-compose.yml`.
+- The default value is "No".
+
+# Run the application
 
 To run the application, change to the newly created folder and run the application using `taipy run main.py`.
 

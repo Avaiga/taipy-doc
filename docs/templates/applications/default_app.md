@@ -3,7 +3,7 @@ custom Taipy application with a few questions.
 
 # Create a Taipy application from the default template
 
-As its name suggests, the default template is used if no template name is provided. Run 
+As its name suggests, the default template is used if no template name is provided. Run
 `taipy create` (or `taipy create --application default`) from the CLI to scaffold an
 application from the default template. Then answer a few questions to customize your
 application.
@@ -38,53 +38,87 @@ You can then run the application as follows:
     In the CLI, the default value for each question is displayed in the square brackets.
     You can provide an answer or press Enter to use the default value.
 
+Each question in the CLI corresponds to a specific aspect of the application. The following
+sections describe each question in detail.
+
 !!! note "Available in Taipy Enterprise edition"
 
     Questions 5 and 9 are only relevant to the [Taipy Enterprise Edition](https://taipy.io/enterprise)
 
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
-Each question in the CLI corresponds to a specific aspect of the application:
+## 1. Application root folder
 
-1. "Application root folder":
-    - Specifies the root folder of the application.
-    - The default value is "new_application".
-2. "Application main Python file"
-    - Sets the name of the main Python file (entry point) of the application.
-    - The default value is "main.py".
-3. "Application title":
-    - Specifies the title displayed in the web application.
-    - The default value is "Taipy Application".
-4. "With multi-pages"
-    - Specifies whether the application is a single-page or multi-page.
-    - For a multi-page application, enter the page names separated by spaces. If left blank, the
-    application will default to single page.
-    - The names must be valid Python identifiers.
-5. "With Authentication"
-    - Indicates whether the application includes authentication.
-    - If yes, a login page and a basic setup for for configuring authentication will be included
-    in the application.
-    - The default value is "No".
-6. "With scenario management"
-    - Specifies whether the application uses scenario management.
-    - If yes, the `Orchestrator^` service will be included to handle job orchestration and version management.
-    - The default value is "No".
-7. "With a Rest API":
-    - Specifies whether the application uses Taipy Rest.
-    - If yes, the Taipy Rest API service will be included in the application.
-    - The default value is "No".
-8. "With a new Git repository":
-    - Specifies whether the application will be initialized as a new Git repository.
-    - The default value is "No".
-9. "With Docker deployment"
-    - Specifies Docker support for the application.
-    - Options:
-        - "No": No Docker support.
-        - "For development": Add a minimal version of `Dockerfile` and `docker-compose.yml` for development.
-        - "For production": Add a production-ready `Dockerfile` and `docker-compose.yml`.
-    - The default value is "No".
+- Specifies the root folder of the application.
+- The default value is "new_application".
 
-## Run the application
+## 2. Application main Python file
+
+- Sets the name of the main Python file (entry point) of the application.
+- The default value is "main.py".
+
+## 3. Application title
+
+- Specifies the title displayed in the web application.
+- The default value is "Taipy Application".
+
+## 4. With multi-pages
+
+- Specifies whether the application is a single-page or multi-page.
+- For a multi-page application, enter the page names separated by spaces. If left blank, the
+  application will default to single page.
+    - The page names must be valid Python identifiers.
+    - Once the application is created, all pages will be created in the `pages` folder as empty
+      pages. You can add content to the pages as needed.
+- The default value is an empty string, which creates a single-page application.
+
+## 5. With Authentication
+
+- Indicates whether the application includes authentication.
+- If yes, a login page and a basic setup for for configuring authentication will be included
+  in the application.
+    - A login page will be created at `pages/login.py`, which uses the
+      [Taipy login control](../../refmans/gui/viselements/generic/login.md).
+    - A basic authentication configuration will be added to the `configuration/auth_config.py` file.
+      By default, the authentication will use the
+      [Taipy protocol](../../userman/advanced_features/auth/authentication.md#taipy-protocol).
+      You can customize the authentication method as needed.
+- The default value is "No".
+
+## 6. With scenario management
+
+- Specifies whether the application uses scenario management.
+- If yes:
+    - The Taipy `Orchestrator^` service will be included to handle job orchestration and version
+      management.
+    - A scaffold configuration file will be created at `configuration/config.py`. You can put your
+      application's configuration here and it will be imported to the main application file.
+    - A scaffold `algorithms/algorithms.py` file will be created, which is designed to contain the
+      various Python functions used to configure tasks. You can add your tasks' functions here and
+      they will be imported to the main application file.
+- The default value is "No".
+
+## 7. With a Rest API
+
+- Specifies whether the application uses Taipy Rest.
+- If yes, the Taipy `Rest^` service will be included in the application.
+- The default value is "No".
+
+## 8. With a new Git repository
+
+- Specifies whether the application will be initialized as a new Git repository.
+- The default value is "No".
+
+## 9. With Docker deployment
+
+- Specifies Docker support for the application.
+- Options:
+    - "No": No Docker support.
+    - "For development": Add a minimal version of `Dockerfile` and `docker-compose.yml` for development.
+    - "For production": Add a production-ready `Dockerfile` and `docker-compose.yml`.
+- The default value is "No".
+
+# Run the application
 
 To run the application, change to the newly created folder and run the application using `taipy run main.py`.
 
