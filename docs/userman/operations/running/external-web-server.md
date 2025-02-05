@@ -2,12 +2,12 @@
 hide:
   - toc
 ---
-Taipy user interfaces can be served by external servers. This happens in situations
-where you already have a web application running, and you want to add the GUI capabilities
-of Taipy to it.
+Taipy services can be served by external servers. This happens in situations
+where you already have a web application running, and you want to add the
+Taipy capabilities to it.
 
-What you need to do in this case is use the *flask* parameter of the `Gui^` constructor,
-setting it to the instance of the Flask server you are using.
+What you need to do in this case is use the *flask* parameter of the `Gui^`
+constructor, setting it to the instance of the Flask server you are using.
 
 Here is a short code sample that should make this straightforward:
 

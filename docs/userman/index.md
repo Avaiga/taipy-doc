@@ -40,6 +40,6 @@ Community Edition.
 
 [:material-arrow-right: User Management](advanced_features/auth/index.md)
 
-[:material-arrow-right: Versioning System](advanced_features/versioning/index.md)
+[:material-arrow-right: Versioning System](operations/versioning/index.md)
 
 [:material-arrow-right: Scheduler](advanced_features/scheduling/index.md)

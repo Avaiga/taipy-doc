@@ -20,7 +20,7 @@ You can run all Taipy services together by using `taipy.run()` with the code bel
 
 ```python linenums="1"
 {%
-include-markdown "../code_sample/basic_gui_rest_app.py"
+include-markdown "../code-sample/basic_gui_rest_app.py"
 comments=false
 %}
 ```

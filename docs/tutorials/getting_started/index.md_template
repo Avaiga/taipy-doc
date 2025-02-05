@@ -14,7 +14,7 @@ first application with ease.
 
 2. **Installation Command**: Run the following in your terminal or command prompt:
     ``` console
-    pip install taipy
+    $ pip install taipy
     ```
 
 For alternative installation methods or if you're lacking Python or pip, refer to the
@@ -144,7 +144,7 @@ This code starts the UI server, which makes the interface active and functional.
 To start the Taipy application, create `main.py` with the content provided earlier,
  and run the following command in the terminal:
 ```console
-taipy run main.py
+$ taipy run main.py
 ```
 
 ![Dynamic Chart Application](images/dynamic_chart.gif){width=70% : .tp-image-border }
@@ -152,7 +152,7 @@ taipy run main.py
 # Start with templates
 You can use the Taipy CLI to quickly create a multi-page application with ready-to-use templates. Simply run:
 ```console
-taipy create
+$ taipy create
 ```
 This command generates a new application in the current directory, allowing you to get started immediately.
 ---

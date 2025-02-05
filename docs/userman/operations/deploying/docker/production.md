@@ -1,18 +1,19 @@
 # Prerequisites
 
 - Knowledge of Docker.
-- [Running a Taipy application](../../run/index.md)
+- [Running a Taipy application](../../running/index.md)
 - [Followed steps for development](development.md)
-
 
 # Production ready Dockerfile
 
-The following Dockerfile contains the minimum configuration settings to deploy your application to production.
+The following Dockerfile contains the minimum configuration settings to
+deploy your application to production.
 
-This template assumes that you provide a `requirements.txt` file with all the Python
-dependencies of your application and that your application entry point is the file `main.py.`
+This template assumes that you provide a `requirements.txt` file with all
+the Python dependencies of your application and that your application entry
+point is the file `main.py.`
 
-```
+```dockerfile
 # Your Python version
 FROM python:3.9 as taipy
 
@@ -43,9 +44,9 @@ ENTRYPOINT [ "python", "main.py", "-P", "5000", "-H", "0.0.0.0", "--no-reloader"
 
 !!! note
 
-    If you are using a SQL database based on Microsoft SQL Server, you need to add the following commands
-    before creating the user:
-    ```
+    If you are using a SQL database based on Microsoft SQL Server, you need to add
+    the following commands before creating the user:
+    ```dockerfile
     RUN apt-get update && apt-get install -y lsb-release && apt-get clean all
     RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
     RUN curl https://packages.microsoft.com/config/debian/$(lsb_release -rs)/prod.list > /etc/apt/sources.list.d/mssql-release.list
@@ -72,4 +73,3 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
 ```
-

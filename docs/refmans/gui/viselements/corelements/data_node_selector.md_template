@@ -16,9 +16,9 @@ the selector might appear as follows:
 
 Data nodes are organized in their owning scenario and cycle, when relevant.<br/>
 In this example, *cleaned_dataset* and *initial_dataset* are scoped at the
-[`Scope.GLOBAL`](../../../reference/pkg_taipy/pkg_common/pkg_config/Scope/index.md) level.<br/>
+[`Scope.GLOBAL`](../../../reference/pkg_taipy/pkg_core/Scope/index.md) level.<br/>
 Expanding the 'My scenario' item (by clicking the [MUI:ChevronRight] icon) reveals data nodes scoped
-at [`Scope.SCENARIO`](../../../reference/pkg_taipy/pkg_common/pkg_config/Scope/index.md).
+at [`Scope.SCENARIO`](../../../reference/pkg_taipy/pkg_core/Scope/index.md).
 
 When the user selects a data node, the [*on_change*](#p-on_change) callback is triggered allowing
 the application to respond to the user's selection. The selected node's value is reflected in the

@@ -1,15 +1,17 @@
 # Deploy your application with uWSGI and Nginx on Red Hat Enterprise Linux
 
-[Red Hat](https://www.redhat.com/) is an Open Source leader providing an GNU/Linux operating system
-named [*RHEL*](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) that can run
-the Web Application Server [*uWSGI*](https://uwsgi-docs.readthedocs.io/en/latest/) and the web
-server [*Nginx*](https://nginx.org).
+[Red Hat](https://www.redhat.com/) is an Open Source leader providing an GNU/Linux
+operating system named
+[*RHEL*](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux)
+that can run the Web Application Server
+[*uWSGI*](https://uwsgi-docs.readthedocs.io/en/latest/) and the web server
+[*Nginx*](https://nginx.org).
 
 
 ## Upgrading Python
 
-Most *RHEL* editions are delivered with a Python version older than 3.9 which is the oldest Python
-version supported by Taipy.<br/>
+Most *RHEL* editions are delivered with a Python version older than 3.9 which is
+the oldest Python version supported by Taipy.<br/>
 If you are in that case, please install Python 3.9 (or newer):
 ```shell title="Installing Python 3.9.12"
 $ sudo dnf install -y gcc openssl-devel bzip2-devel libffi-devel make
@@ -171,7 +173,7 @@ To expose your application on the Internet, you should use *Nginx*.
 Replace the content of `/etc/nginx/nginx.conf` by [this file content](./nginx.conf).<br/>
 The configuration file can also be copied from the Taipy documentation:
 ```shell title="Download the Nginx configuration file"
-sudo wget https://docs.taipy.io/en/latest/userman/run-deploy/deploy/linux/nginx.conf -O /etc/nginx/nginx.conf
+sudo wget https://docs.taipy.io/en/latest/userman/operations/deploying/linux/nginx.conf -O /etc/nginx/nginx.conf
 ```
 
 Allow the communication between *Nginx* and *uWSGI*:

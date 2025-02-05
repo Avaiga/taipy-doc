@@ -99,7 +99,8 @@ Here is the list of the configuration parameters you can use in
 - <a name="p-data_url_max_size"></a>*data_url_max_size* (int or None): the size in bytes below
   which the upload of file content is performed as inline data. If a file content exceeds that
   size, it will create a physical file on the server so the application can read it. This upload
-  mechanism is used by the [`file_download`](../../../refmans/gui/viselements/generic/file_download.md)
+  mechanism is used by the
+  [`file_download`](../../../refmans/gui/viselements/generic/file_download.md)
   and the [`image`](../../../refmans/gui/viselements/generic/image.md) controls.<br/>
   The default value is 50 kB.
 - <a name="p-use_reloader"></a>*use_reloader* (bool, default: False): If True, the application
@@ -114,7 +115,7 @@ Here is the list of the configuration parameters you can use in
   This setting is irrelevant in the context of Notebooks.
 - <a name="p-ngrok_token"></a>*ngrok_token* (str, default: ""): an authtoken, if you need to use
   [Ngrok](https://ngrok.com/) to expose your application to the Internet. See the section on
-  [Accessing your app from the Web](#accessing-your-app-from-the-web) for details.
+  [Accessing your app from the Web](../../operations/running/external-web-server.md) for details.
 - <a name="p-change_delay"></a>*change_delay* (int, default: None): the delay, in milliseconds,
   used by some controls (namely [`slider`](../../../refmans/gui/viselements/generic/slider.md),
   [`input`](../../../refmans/gui/viselements/generic/input.md), and
@@ -135,7 +136,8 @@ Here is the list of the configuration parameters you can use in
   - "client" indicates that the time zone to be used is the web client's.
   - "server" indicates that the time zone to be used is the web server's.
 - <a name="p-upload_folder"></a>*upload_folder* (str or None, default: None): the local path
-  where files are uploaded when using the [`file_selector`](../../../refmans/gui/viselements/generic/file_selector.md)
+  where files are uploaded when using the
+  [`file_selector`](../../../refmans/gui/viselements/generic/file_selector.md)
   control.<br/>
   The default value is the temp directory on the system where the application runs.
 - <a name="p-webapp_path"></a>*webapp_path* (str, None): when working with the Taipy GUI
@@ -148,7 +150,8 @@ Here is the list of the configuration parameters you can use in
   can be found in the documentation section for
   [Plotly's layout template](https://plotly.com/javascript/reference/layout/#layout-template).
 - <a name="p-extended_status"></a>*extended_status* (bool, default: False): if set to True, the
-  [status page](../../gui/pages/advanced/index.md#status-page) output is augmented with additional information.
+  [status page](../../gui/pages/advanced/index.md#status-page) output is augmented with
+  additional information.
 - <a name="p-flask_log"></a>*flask_log* (bool, default: False): if set to True, you can get a
   complete, real-time log from the Flask server. This may be useful when trying to find out why
   a request does not behave as expected.
@@ -157,7 +160,7 @@ Here is the list of the configuration parameters you can use in
   default, the exposed port number (the one set in the [*port*](#p-port) parameter) is just a
   proxy port to a dynamically generated port so that the user can stop and restart the server
   without depending on how quickly the kernel can clean up its resources.<br/>
-  See the section on [running Taipy GUI in Notebooks](../../run-deploy/notebooks.md) for more details.
+  See the section on [running Taipy GUI in Notebooks](../../operations/running/notebooks.md) for more details.
 - <a name="p-single_client"></a>*single_client* (bool, default: False): set to True if only a
   single client can connect. False, which is the default value, indicates that multiple clients
   can connect to the server.<br/>
@@ -205,7 +208,7 @@ Here is the list of the configuration parameters you can use in
   `Gui.run()^` or `Gui.get_flask_app()^` so it is served by the target web server.
 - <a name="p-base_url"></a>*base_url* (str or None, default: "/"): a string used as a prefix to
     the path part of the exposed URL, so one can deploy a Taipy GUI application in a path
-    different from the root of the web site.<br/>
+    different from the root of the website.<br/>
     If you need to expose the application under the prefix "*my_application*", you can set this
     path to the *base_url* parameter of the `Gui.run()^` method:
     ```python
@@ -246,112 +249,10 @@ Here is the list of the configuration parameters you can use in
 - <a name="p-allow_unsafe_werkzeug"></a>*allow_unsafe_werkzeug* (bool, default: False): hides
   some [Flask-SocketIO](https://pypi.org/project/Flask-SocketIO/) runtime errors in some
   debugging scenarios. This is set to True when [*debug*](#p-debug) is set to True.
-- <a name="p-use_arrow"></a>*use_arrow* (bool, default: False): indicates whether or not to use
+- <a name="p-use_arrow"></a>*use_arrow* (bool, default: False): indicates whether to use
   the [Apache Arrow](https://arrow.apache.org/) technology to serialize data to Taipy
-  clients. This allows for better performance in some situations.
+  clients or not. This allows for better performance in some situations.
 
 !!! info "Multiple Taipy services"
    To run the Taipy GUI service with some other Taipy services, please refer to the
-   [Running Taipy services](../../run-deploy/run/running_services.md) section.
-
-# Using an external web server
-
-Taipy user interfaces can be served by external servers. This happens when
-you already have a web application running and want to add the GUI capabilities
-of Taipy to it.
-
-What you need to do in this case is use the *flask* parameter of the `Gui^` constructor,
-setting it to the instance of the Flask server you are using.
-
-Here is a short code sample that should make this straightforward:
-
-```python linenums="1"
-from flask import Flask
-from taipy import Gui
-
-flask_app = Flask(__name__)
-
-@flask_app.route("/home")
-def home_page():
-    return "The home page."
-
-gui = Gui(page="# Taipy application", flask=flask_app)
-gui.run()
-```
-
-The Flask server is created in line 4. Routes and such would be declared
-as usual (like in lines 6 to 8).
-
-Note how we use the Flask instance to use it in the `Gui^` constructor in
-line 10.
-
-When *gui* is run (in line 11), Taipy will not create a server of its own.
-Instead, it will serve your GUI pages using the *flask_app* server created
-in line 4.
-
-# Protect your application files
-
-When the `Gui^` instance runs, it creates a web server that serves the
-registered pages, with the root of the site located where the `__main__`
-Python module file is located.<br/>
-This allows malicious users to potentially access the files of your
-application if those users know their path names: the main file of a Python
-application is often called `main.py`, so anyone could request the
-`http://<url:port>/main.py` and see your Python source code.<br/>
-This can be even more dangerous if your application relies on data files
-that are meant to remain private. If a user of your application happens
-to discover the path to this file, the application has a security vulnerability
-because this file can be directly accessed using the underlying
-Web server.
-
-The way to solve that issue is to configure the application server to indicate
-which requests are safe and which should be blocked.
-
-Taipy GUI, however, comes with a simple feature that makes this configuration
-far simpler: Located next to the main module of your application, you can create
-a file called `.taipyignore` that lists files or directories that you want
-to protect against a direct request.<br/>
-The syntax of this text file is identical to the syntax used by Git
-for its [`.gitignore`](https://git-scm.com/docs/gitignore) file.
-
-If a user requests a file whose path matches one that appears in `.taipyignore`
-then the Taipy web server returns an HTTP error 404 (Not Found), protecting
-your file from being downloaded without your consent.
-
-# Accessing your app from the Web
-
-[Ngrok](https://ngrok.com/) provides a way to expose your local application
-to the public Internet. This allows anyone to access your application
-before deploying it in your production environment.
-
-If you want to expose your application using Ngrok, you can follow these
-steps:
-
-- Install the `pyngrok` package in your Python environment:
-  When installing Taipy GUI:
-  ```
-  pip install taipy-gui[pyngrok]
-  ```
-  or independently:
-  ```
-  pip install pyngrok
-  ```
-- Create an account on the [Ngrok web site](https://ngrok.com/).
-   - That will drive you to a page where you can install the *ngrok* executable
-     on your machine. Behind the scene, Ngrok will also send you a confirmation
-     email providing a link that you must click to validate your
-     registration and connect to your new account.<br/>
-     Connecting to your account will provide you the Ngrok *authtoken*.
-
-- Add the NGrok *authtoken* to the call to `(Gui.)run()^`:
-    ```
-    ...
-    gui=Gui(...)
-    ...
-    gui.run(ngrok_token="<ngrok_authtoken>")
-    ...
-    ```
-- When you run your Taipy script, the console will print out the public URL,
-  allowing users to connect to it. This has the form `http://<id>.ngrok.io`.<br/>
-  Your Flask server, running locally, will accept and serve connections from all
-  around the world.
+   [Running Taipy services](../../operations/running/main-script.md) section.

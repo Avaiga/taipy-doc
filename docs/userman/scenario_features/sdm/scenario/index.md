@@ -127,7 +127,7 @@ and other related information.
 
     Running the Orchestrator service is required to execute jobs. To see how you can run
     different Taipy services, please refer to the
-    [running Taipy services](../../../run-deploy/run/running_services.md) page.
+    [running Taipy services](../../../operations/running/main-script.md) page.
 
 !!! example
 
@@ -199,7 +199,7 @@ each accessible as an attribute of the scenario:
 - _**subscribers**_ is the list of Tuple(callbacks, params) representing the subscribers.
 - _**version**_: The string indicates the application version of the scenario to instantiate.
     If not provided, the current version is used. For more details, refer to the
-    [version management](../../../advanced_features/versioning/index.md) page.
+    [version management](../../../operations/versioning/index.md) page.
 - _**properties**_ is the complete dictionary of the scenario properties. It includes a copy
     of the properties of the scenario configuration, in addition to the properties provided
     at the creation and at runtime.
@@ -420,7 +420,7 @@ if you add a tag that is not authorized, an exception will be raised.
 !!! note "Available in Taipy Enterprise edition"
 
     This section is relevant only to the [Taipy Enterprise Edition](https://taipy.io/enterprise)
-    
+
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 ## Export a scenario

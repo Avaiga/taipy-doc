@@ -133,7 +133,7 @@ from initial prototypes to production-ready applications.
     </a>
   </li>
   <li>
-    <a class="tp-pill" href="userman/advanced_features/versioning/">
+    <a class="tp-pill" href="userman/operations/versioning/">
       <span>Version management</span>
     </a>
   </li>
