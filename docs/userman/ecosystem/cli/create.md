@@ -8,7 +8,8 @@ questions to customize your application.
 ```console
 $ taipy create
 ```
-By default, the `taipy create` command helps a new Taipy application using the default Taipy application template.
+By default, the `taipy create` command helps scaffolding a new Taipy application using the
+default Taipy application template.
 
 You can specify creating a new application from another application template using the
 *--application* option.
@@ -23,9 +24,9 @@ Taipy currently supports the following application templates:
 - [Scenario management application template](../templates/applications/sdm_app.md)
 
 
-# List of application templates
+# List the application templates
 
-From the CLI, you can list all supported application templates by running `taipy help create`
+From the CLI, you can list the available application templates by running `taipy help create`
 command. Alternatively, you can use the *--help* or *-h* options by running `taipy create --help`
 or `taipy create -h`.
 

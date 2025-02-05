@@ -1,9 +1,9 @@
-Taipy scenario management application template lets you create a custom Taipy
-application with scenario management capabilities, which utilizes
-[a scenario selector](./../../../refmans/gui/viselements/corelements/scenario_selector.md) to allow
-creating, managing, and running scenarios directly from the GUI page.
+Taipy's scenario management application template lets you scaffold a custom Taipy
+application using scenario management capabilities. It uses
+[a scenario selector](./../../../refmans/gui/viselements/corelements/scenario_selector.md)
+to allow end users to create, manage, and run scenarios directly from the GUI page.
 
-## Create a Taipy application from the scenario management template
+# Create a Taipy application from the scenario management template
 
 To create an application from the Taipy scenario management application template, run
 `taipy create --application sdm` from the CLI, then answer a few questions to customize your application.

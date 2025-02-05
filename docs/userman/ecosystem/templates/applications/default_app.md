@@ -1,11 +1,12 @@
-Taipy default application template is a simple, minimal template that lets you create a custom Taipy
-application with a few questions.
+Taipy's default application template is a simple, minimal template that lets you create a
+custom Taipy application with a few questions.
 
-## Create a Taipy application from the default template
+# Create a Taipy application from the default template
 
-To create an application from the Taipy default application template, run `taipy create` from the
-CLI or specify the application template name by running `taipy create --application default`, then
-answer a few questions to customize your application.
+As its name suggests, the default template is used if no template name is provided. Run 
+`taipy create` (or `taipy create --application default`) from the CLI to scaffold an
+application from the default template. Then answer a few questions to customize your
+application.
 
 ```console
 $ taipy create --application default
