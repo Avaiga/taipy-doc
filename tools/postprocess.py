@@ -131,7 +131,8 @@ def create_navigation_buttons() -> str:
         <div style="margin-bottom: 1rem;">
 """
     for desc in [
-        ("Tutorials", "tutorials/getting_started/", "tp-content-card--primary"),
+        ("Tutorials", "tutorials/getting_started/", "tp-content-card--primary", "start-group"),
+        ("Templates", "templates/", "tp-content-card--gamma", "end-group"),
         ("User Manual", "userman/", "tp-content-card--accent"),
         (
             "Visual Elements",

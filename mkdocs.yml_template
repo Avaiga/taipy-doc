@@ -72,6 +72,12 @@ nav:
       - "Large data models vs. Computer memory": tutorials/articles/large_data_models/index.md
       - "Charts for Large Data": tutorials/articles/decimator/index.md
 
+  - "Taipy Templates":
+    - "Taipy Templates": templates/index.md
+    - "Application templates":
+      - "Default application template": templates/applications/default_app.md
+      - "Scenario management template": templates/applications/sdm_app.md
+
   - "User Manual":
     - "About Taipy's User manual": userman/index.md
 
@@ -226,11 +232,6 @@ nav:
       - "Taipy Designer":
         - "Taipy Designer": userman/ecosystem/designer/index.md
       [DESIGNER_CONTENT]
-
-      - "Taipy Templates":
-        - "Application templates":
-          - "Default application template": userman/ecosystem/templates/applications/default_app.md
-          - "Scenario management template": userman/ecosystem/templates/applications/sdm_app.md
 
   - "Visual Elements":
     - "Visual Elements": refmans/gui/viselements/index.md
