@@ -37,7 +37,7 @@ is part of the October 2022 cycle. I do not need to create a new data node for e
 
 
 
-## Example: Filtering by Month
+## Example: Filtering by month
 
 ```python
 def filter_by_month(df, month):
@@ -193,14 +193,14 @@ all their data nodes.
 
 # Going further into Cycles
 
-## Primary scenarios
+## Primary Scenarios
 
 In each `Cycle`, there is a primary scenario. A primary scenario is interesting because
 it represents the important scenario of the `Cycle`, the reference. By default, the
 first scenario created for a cycle is primary.
 
 
-### Python code associated to primary scenarios
+### Python code associated to primary Scenarios
 
 [`tp.set_primary(<Scenario>)`](../../../userman/scenario_features/sdm/scenario/index.md#promote-a-scenario-as-primary)
 allows changing the primary scenario in a `Cycle`.
@@ -224,7 +224,7 @@ Scenario 1: Primary? True False
 Scenario 2: Primary? False True
 ```
 
-## Useful functions on cycles
+## Useful functions on Cycles
 
 - `tp.get_primary_scenarios()`: returns a list of all primary scenarios.
 
@@ -269,7 +269,7 @@ as primary directly through the `scenario` visual element.
     ```
 
 
-![Visual Elements](images/visual_elements.png){ width=60% : .tp-image-border }
+![Visual elements](images/visual_elements.png){ width=60% : .tp-image-border }
 
 # Conclusion
 

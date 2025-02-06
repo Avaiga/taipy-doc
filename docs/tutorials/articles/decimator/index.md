@@ -42,7 +42,7 @@ This work is wholly disconnected from data transformation, such as compression
 algorithms. It is known that HTTP/1.1 already supports data compression (see the 
 Internet Engineering Task Force).
 
-# First level: dealing with curves (2D)
+# First level: Dealing with curves (2D)
 
 ## The basic "algorithm"
 
@@ -114,7 +114,7 @@ For each segment, only the original dataset's two extreme points (on the second 
 
 **Performance is excellent.**
 
-## LTTB Algorithm
+## LTTB algorithm
 
 Here is an example of code showing how to use the LTTB Decimator:
 
@@ -161,7 +161,7 @@ LTTB implementations are available in Python.
 
 **The performance of this downsampling algorithm is also excellent.**
 
-## The Ramer-Douglas-Peucker Algorithm
+## The Ramer-Douglas-Peucker algorithm
 
 Here is an example of code showing how to use the Ramer-Douglas-Peucker Decimator:
 
@@ -218,7 +218,7 @@ Whyatt, 1993.
 **Performance is not as good as the previous ones, but the quality of the results 
 (as demonstrated below) is much better.**
 
-# Second level: dealing with a cloud of points (3D or more)
+# Second level: Dealing with a cloud of points (3D or more)
 
 The previous algorithms are well suited for 2D curves. Still, they are not satisfactory to 
 higher dimension visuals. If several data points of the original dataset get 
@@ -269,7 +269,7 @@ resolutions.
 the original curve. The degradation is considerable and unacceptable in the context 
 of an application.
 
-## Min-Max Algorithm
+## Min-Max algorithm
 
 Here is the result of executing this algorithm on the initial dataset:
 
@@ -291,7 +291,7 @@ segmentation of the axis causes a kind of waste of output points at the beginnin
 of the curve, where slight variation is visible.
 
 
-## LTTB Algorithm
+## LTTB algorithm
 
 If we execute this algorithm on our dataset, we obtain the following curves:
 
@@ -314,7 +314,7 @@ On the other hand, we can see greater precision in the part where values increas
 rapidly (first peak): both local peaks are well preserved, whereas the Min-Max 
 eliminated one of the two.
 
-## Ramer-Douglas-Peucker Algorithm
+## Ramer-Douglas-Peucker algorithm
 
 The third algorithm gives the following curves:
 

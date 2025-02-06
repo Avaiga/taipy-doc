@@ -1,5 +1,3 @@
-# Static elements
-
 Custom static visual elements only need to define their HTML output.
 These elements are called *static* because changing a `State^` variable, even if
 bound to an element's property, does not impact the rendering.

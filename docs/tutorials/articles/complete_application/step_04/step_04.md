@@ -80,7 +80,7 @@ A chart that displays historical values and the predicted values obtained from m
 This is where the detailed information and history about the selected data node is presented. Depending on the nature of the data node, this could display raw data in a tabular format, visualizations, texts, or dates. If the format allows it, the user can directly write new values in the data node.
 
 
-# Python Code
+# Python code
 
 The following Python code corresponds to the `pages/scenario/scenario.py` file. It initializes and manages the state of the Scenario Page.
 

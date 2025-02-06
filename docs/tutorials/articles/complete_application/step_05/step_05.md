@@ -51,7 +51,7 @@ Two bar charts that compare the selected metric (RMSE or MAE) between baseline a
 
 A button that triggers the "compare" action when clicked. It is used to initiate the comparison process.
 
-# Python Code
+# Python code
 
 The following Python code corresponds to the `pages/performance/performance.py` file.
 

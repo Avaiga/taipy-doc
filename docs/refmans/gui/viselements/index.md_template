@@ -1,9 +1,9 @@
-*Visual Elements* are user interface objects displayed on a given page.
+*Visual elements* are user interface objects displayed on a given page.
 They reflect some application data or give the page some structuring
 or layout information. Most visual elements allow users to interact
 with the page content.
 
-There are two types of *Visual Elements*:
+There are two types of *visual elements*:
 
    - *Controls* typically represent user data that the user can interact with.<br/>
      The generic controls are listed in the [Generic Controls](#generic-controls) section.

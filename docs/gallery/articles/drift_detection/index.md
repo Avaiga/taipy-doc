@@ -36,7 +36,7 @@ categorical).
 
 ![Pipeline](images/drift-detection-pipeline.png){width=90% : .tp-image-border }
 
-# How to use the Application
+# How to Use the Application
 
 1. Select the comparison dataset:
 

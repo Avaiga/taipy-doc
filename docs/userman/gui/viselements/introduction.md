@@ -30,7 +30,7 @@ names defined in the code, and the value of the property is set to the evaluated
     is modified, it can tremendously impact the rendering of the graphical component on the page
     displayed by the user's browser. The component may have to be entirely rebuilt to reflect the
     new variable value, which might be slow and hit the user experience.<br/>
-    Visual Elements that are costly to render on the browser provide a property called *rebuild*
+    Visual elements that are costly to render on the browser provide a property called *rebuild*
     that allows one to explicitly request the render of the component. Please check the relevant
     sections for the
     [`chart`](../../../refmans/gui/viselements/generic/chart.md#the-rebuild-property) and

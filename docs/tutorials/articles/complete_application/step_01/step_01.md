@@ -5,7 +5,7 @@ interactive visual elements for showcasing data from a CSV file.
 
 ![Interactive GUI](images/result.gif){ width=90% : .tp-image-border }
 
-## Importing the Dataset
+## Importing the dataset
 
 To import the dataset, use the following Python code:
 
@@ -21,9 +21,9 @@ path_to_csv = "dataset.csv"
 dataset = get_data(path_to_csv)
 ```
 
-## Visual Elements
+## Visual elements
 
-Taipy introduces the concept of *Visual elements*, which are graphic objects shown on the client
+Taipy introduces the concept of *visual elements*, which are graphic objects shown on the client
 interface. You can use various visual elements such as a
 [slider](../../../../refmans/gui/viselements/generic/slider.md), a
 [chart](../../../../refmans/gui/viselements/generic/chart.md), a
@@ -106,7 +106,7 @@ The Data Visualization page includes the following visual elements:
 - A slider connected to the Python variable *n_week*.
 - A chart representing the DataFrame content.
 
-## Multi-client - state
+## Multi-client - State
 
 Taipy maintains a distinct state for every client connection. This state stores the values of
 all variables used in the user interface. For example, modifying *n_week* through a slider will

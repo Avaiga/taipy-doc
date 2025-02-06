@@ -1,5 +1,5 @@
 ---
-title: LLM ChatBot
+title: LLM Chatbot
 category: llm
 data-keywords: vizelement ai community
 short-description: Leverage this chatbot using OpenAI's API with GPT-4 to use it as a template for an LLM inference application.
@@ -21,7 +21,7 @@ its input to the OpenAI API and returning the conversation in
 a chat window. The user can also return to a previous
 conversation and continue it.
 
-![ChatBot](images/chatbot_meds_conv.png){width=100% : .tp-image-border }
+![Chatbot](images/chatbot_meds_conv.png){width=100% : .tp-image-border }
 
 A tutorial on how to write this application and similar
 LLM inference applications is available [here](../../../tutorials/articles/chatbot/index.md).

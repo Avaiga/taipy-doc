@@ -1,5 +1,5 @@
 ---
-title: Application versions with Git
+title: Application Versions with Git
 category: scenario_management
 data-keywords: scenario configuration versioning
 short-description: Leverage version management and Git branches to deal with multiple application versions.

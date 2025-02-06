@@ -17,7 +17,7 @@ the back end. You don't need any prior knowledge to complete this tutorial.
 
 Each step concentrates on fundamental ideas about *Taipy*.
 
-## Objective of the Application
+## Objective of the application
 
 You are about to create a comprehensive multi-page application designed for data visualization,
 predictive analytics, and comparative assessment. This app processes sales figures for display.

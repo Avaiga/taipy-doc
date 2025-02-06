@@ -1,5 +1,5 @@
 ---
-title: LLM ChatBot
+title: LLM Chatbot
 category: fundamentals
 data-keywords: gui vizelement markdown
 short-description: Create a chatbot interface using Taipy and an LLM API.
@@ -19,7 +19,7 @@ Here we will use OpenAI's API with GPT-4. This tutorial can easily
 be adapted to other LLMs.
 
 
-# Step 1: Install Requirements
+# Step 1: Install requirements
 
 Create a `requirements.txt` file with the following content:
 
@@ -127,7 +127,7 @@ def send_message(state: State) -> None:
     state.current_user_message = ""
 ```
 
-# Step 6: Create the User Interface
+# Step 6: Create the user interface
 
 In Taipy, one way to define pages is to use Markdown strings. Here we use a
 [table](../../../refmans/gui/viselements/generic/table.md) to display the
@@ -150,6 +150,7 @@ In Taipy, one way to define pages is to use Markdown strings. Here we use a
             label="Write your message here...",
             class_name="fullwidth",
         )
+    ```
 === "Markdown"
     ```python
     page = """

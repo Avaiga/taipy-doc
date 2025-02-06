@@ -17,7 +17,7 @@ def clean_data(initial_dataset: pd.DataFrame):
 ```
 
 
-## Predictions:
+## Predictions
 	
 `predict_baseline()` and `predict_ml()` returns prediction values from the cleaned 
 DataFrame (*cleaned_dataset*), the number of predictions to make (*n_predictions*), a 

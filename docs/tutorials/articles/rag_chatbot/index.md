@@ -1,5 +1,5 @@
 ---
-title: RAG ChatBot
+title: RAG Chatbot
 category: fundamentals
 data-keywords: gui vizelement markdown
 short-description: Create an RAG chatbot to ask questions about PDF files.

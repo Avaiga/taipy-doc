@@ -111,4 +111,4 @@ Here is the combined code:
         Gui(page).run(debug=True)
     ```
 
-![Visual Elements](images/result.png){ width=90% : .tp-image-border }
+![Visual elements](images/result.png){ width=90% : .tp-image-border }
