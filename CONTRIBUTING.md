@@ -178,7 +178,7 @@ Markdown file "*index.md*".
 #### 3. Add Metadata to the content
 
 The header contains the following information:
-- title: The title of the item
+- title: The title of the item (should be in title case)
 - category: The category of the item (fundamentals, visuals, scenario_management,
 integration or large data)
 - type: The type of the item (code, video or article)
@@ -225,8 +225,10 @@ You shall then describe your application in more details.
 Add the new Markdown file to the "mkdocs.yml_template" file in the appropriate section.
 
 ```
-"Title of the Application": gallery/articles/your_folder/index.md
+"Title of the application": gallery/articles/your_folder/index.md
 ```
+
+The title here should be in sentence case.
 
 #### Checklist:
 
@@ -270,7 +272,7 @@ Markdown file "*index.md*".
 #### 3. Add Metadata to the content
 
 The header contains the following information:
-- title: The title of the item
+- title: The title of the item (should be in title case)
 - category: The category of the item (fundamentals, visuals, scenario_management,
 integration or large data)
 - data-keywords: A comma separated list of keywords
@@ -300,8 +302,10 @@ And here is the content of my article...
 Add the new Markdown file to the "mkdocs.yml_template" file in the appropriate section.
 
 ```
-"Title of the Article": tutorials/articles/your_folder/index.md
+"Title of the article": tutorials/articles/your_folder/index.md
 ```
+
+The title here should be in sentence case.
 
 #### Checklist:
 
