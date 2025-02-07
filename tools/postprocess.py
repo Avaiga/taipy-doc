@@ -132,7 +132,7 @@ def create_navigation_buttons() -> str:
 """
     for desc in [
         ("Tutorials", "tutorials/getting_started/", "tp-content-card--primary", "start-group"),
-        ("Templates", "templates/", "tp-content-card--gamma", "end-group"),
+        ("Templates", "templates/", "tp-content-card--primary", "end-group"),
         ("User Manual", "userman/", "tp-content-card--accent"),
         (
             "Visual Elements",

@@ -72,8 +72,8 @@ follows:
     Choose from [1/2/3] (1):
 ```
 
-For detail description of the available application templates, please refer to the
-[Templates section](../../../templates/index.md).
+For more details on the available application templates, please refer to the
+[Templates](../../../templates/index.md) documentation.
 
 So, without further delay, let's begin to code!
 

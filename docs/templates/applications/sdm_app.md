@@ -1,12 +1,14 @@
-Taipy's scenario management application template lets you scaffold a custom Taipy
-application using scenario management capabilities. It uses
-[a scenario selector](./../../../refmans/gui/viselements/corelements/scenario_selector.md)
-to allow end users to create, manage, and run scenarios directly from the GUI page.
+Taipy's scenario management application template leverages the scenario and data
+management visual elements to speed up bootstrapping a standard application. The
+resulting application exposes a user interface for scenario creation and management,
+data visualization, data analysis, simulation, what-if analysis, and/or job
+orchestration monitoring.
 
-# Create a Taipy application from the scenario management template
+# How to create the application
 
-To create an application from the Taipy scenario management application template, run
-`taipy create --application sdm` from the CLI, then answer a few questions to customize your application.
+To create the application from the template, change to the folder in which you want to
+create the application and run the command `taipy create --application sdm`. Then answer
+the few questions to customize your application.
 
 ```console
 $ taipy create --application sdm
@@ -29,9 +31,9 @@ You can then run the application as follows:
     taipy run main.py
 ```
 
-!!! info
+??? info "Default answers"
 
-    In the CLI, the default value for each question is displayed in the square brackets.
+    In the CLI, the default answer for each question is displayed in the square brackets.
     You can provide an answer or press Enter to use the default value.
 
 Each question in the CLI corresponds to a specific aspect of the application. The following
@@ -78,9 +80,10 @@ sections describe each question in detail.
     - "For production": Add a production-ready `Dockerfile` and `docker-compose.yml`.
 - The default value is "No".
 
-# Run the application
+# How to run the application
 
-To run the application, change to the newly created folder and run the application using `taipy run main.py`.
+To run the application, change to the newly created folder and run the application using
+`taipy run main.py`.
 
 ```console
 $ cd ./taipy_application

@@ -72,8 +72,8 @@ nav:
       - "Large data models vs. Computer memory": tutorials/articles/large_data_models/index.md
       - "Charts for Large Data": tutorials/articles/decimator/index.md
 
-  - "Taipy Templates":
-    - "Taipy Templates": templates/index.md
+  - "Templates":
+    - "Templates": templates/index.md
     - "Application templates":
       - "Default application template": templates/applications/default_app.md
       - "Scenario management template": templates/applications/sdm_app.md
