@@ -380,6 +380,8 @@ def on_post_build(env):
                             else:
                                 new_content += "<b>NO CONTENT</b>"
                             new_content += "</a>"
+                        else:
+                            new_content += html_content[last_location : xref.end()]
                         last_location = xref.end()
                     if last_location:
                         html_content = new_content + html_content[last_location:]

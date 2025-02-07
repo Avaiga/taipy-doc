@@ -1,5 +1,3 @@
-# Chart
-
 In this section, we’ll dive into creating and integrating charts using [`Plotly`](https://plotly.com/graphing-libraries/) in our extension library.
 Charts are invaluable for visualizing data, offering clear and interactive insights that enhance the user experience.
 We’ll walk through the steps to implement different types of charts, configure their properties,
