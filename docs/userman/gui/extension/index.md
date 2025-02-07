@@ -161,7 +161,7 @@ allowing for the creation of an extension library with dynamic elements.
 Here is what the directory structure of a typical extension library project looks like:
 
 ```
-<project dir>
+<project dir>/
 ├── pyproject.toml
 ├── MANIFEST.in
 └── <package dir>/
@@ -212,6 +212,39 @@ Each of these entries needs some explanation:
 - `<package dir>/front-end/src/<component>.ts`: The implementation file for a React
   component used by a dynamic element. Each component typically has its own
   implementation file.
+
+## Page Builder API
+
+If you want to expose the elements of your extension library so that programmers can use them with
+the [Page Builder API](../pages/builder.md), you need to generate a Python Interface Definition file
+(.pyi) that declares these elements and their properties. This process generates an `__init__.pyi`
+file next to your library module's `__init__.py` file within the `<package_dir>` directory.
+
+To generate this file, navigate to the `<package_dir>` directory and run the following command:
+```sh
+python -m taipy.gui.extension generate_tgb <package dir>
+```
+
+This command generates the declaration of all the elements and their properties.<br/>
+It also extracts the documentation for all elements (retrieved from the *doc_string* argument of
+the `Element` constructor) and their properties (retrieved from the *doc_string* argument of the
+`ElementProperty` constructor).
+
+In a Python script that uses this library, import your module as follows:
+```python
+import <package dir>
+```
+
+Then, register the extension library (assuming the main library class is named *Library*):
+```python
+Gui.add_library(<package dir>.Library())
+```
+
+After registering the library, you can access its elements in a Page Builder context:
+```python
+with tgb.Page() as page:
+    <package dir>.<element name>(<properties...>)
+```
 
 ## Going forward
 
