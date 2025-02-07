@@ -173,7 +173,7 @@ nav:
     - "Operations":
       - "Operations": userman/operations/index.md
 
-      - "Architecture examples": userman/operations/architectures.md
+      - "Architecture examples": userman/operations/architectures/index.md
 
       - "Running":
         - "Running an application": userman/operations/running/index.md
@@ -208,7 +208,6 @@ nav:
         - "Development mode": userman/operations/versioning/development-mode.md
         - "Experiment mode": userman/operations/versioning/experiment-mode.md
         - "Production mode": userman/operations/versioning/production-mode.md
-
 
     - "Ecosystem":
       - "Command-line interface":

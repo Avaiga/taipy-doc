@@ -20,7 +20,7 @@ Taipy functionalities used, on how the application is configured, and on the oth
 functionalities from the user defined code or from third party libraries.
 
 Several examples of standard architectures are available in the
-[Architecture examples](architectures.md) page.
+[Architecture examples](architectures/index.md) page.
 
 # How to run a Taipy application?
 
@@ -45,3 +45,6 @@ entities (scenarios, data nodes, etc. ) when deploying a new version in producti
 Please refer to the [Versioning](versioning/index.md) page for more details.
 
 # How to upgrade Taipy to a new version?
+
+Taipy is a fast-evolving platform, and new versions are released regularly. To
+upgrade to a new version, please refer to the [Upgrading](upgrading/index.md) page.
