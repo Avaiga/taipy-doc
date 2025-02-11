@@ -32,7 +32,7 @@ in a Taipy application.
     %}
     ```
 
-# Start/Stop the scheduler
+# Start and stop the scheduler
 
 To make the scheduler execute the scheduled methods, you must first
 start the scheduler by using the `start()` method.
