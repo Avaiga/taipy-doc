@@ -25,9 +25,9 @@ the developer work and empower its end-users.
 
 [:material-arrow-right: Task orchestration](scenario_features/task-orchestration/index.md),
 
-[:material-arrow-right: What-if-analysis](scenario_features/what-if-analysis/index.md)
+[:material-arrow-right: What-if-analysis](scenario_features/what-if-analysis/index.md),
 
-[:material-arrow-right: Scenario and data management](scenario_features/sdm/index.md)
+[:material-arrow-right: Scenario and data management](scenario_features/sdm/index.md).
 
 The `taipy.rest` package allows you to easily integrate your Taipy applications with other IT
 systems. It provides a REST API to access the Back-End functionalities such as

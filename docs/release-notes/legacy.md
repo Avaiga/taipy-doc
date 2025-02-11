@@ -11,8 +11,9 @@ The Release Notes for the latest major version of Taipy can be found in
 
     Only the current and previous major versions of Taipy are supported.
 
-    Therefore, since Taipy 4.0 was shipped, we no longer provide support for Taipy 1.x and 2.x. We
-    accordingly removed the documentation for the legacy Taipy versions from public access.
+    Therefore, since Taipy 4.0 was shipped, we no longer provide support for Taipy
+    1.x and 2.x. We accordingly removed the documentation for the legacy Taipy
+    versions from public access.
 
 # Community edition: 3.1
 
@@ -602,7 +603,7 @@ Published on 2023-01.
 [`taipy-core` 2.1](https://pypi.org/project/taipy-core/2.1.0/) and
 [`taipy-rest` 2.1](https://pypi.org/project/taipy-rest/2.1.0/) packages.
 
-Please refer to the [Migration page](migration.md#from-20-to-21) for
+Please refer to the [Migration page](../userman/operations/upgrading/from-2.0-to-2.1.md) for
 details on how to migrate from version older than 2.1.
 
 ## New Features

@@ -11,7 +11,7 @@ migration.
 ## Migrate entities
 
 The required argument of the 'migrate' CLI is `--repository-type`, which first accepts one
-of the three following values: "filesystem" and "mongo". Each repository type can be
+of the two following values: "filesystem" and "mongo". Each repository type can be
 followed by additional arguments:
 
 - *filesystem* can be followed by the path to the filesystem folder that holds your Taipy

@@ -10,7 +10,7 @@ nav:
   - "Release Notes":
     - "Release Notes": release-notes/index.md
     - "Legacy": release-notes/legacy.md
-    - "Migration": release-notes/migration.md
+
   - "Contributing":
     - "Contributing": contributing/index.md
     - "Code of Conduct": contributing/code_of_conduct.md
@@ -208,6 +208,12 @@ nav:
         - "Development mode": userman/operations/versioning/development-mode.md
         - "Experiment mode": userman/operations/versioning/experiment-mode.md
         - "Production mode": userman/operations/versioning/production-mode.md
+
+      - "Upgrading Taipy":
+        - "Upgrading Taipy": userman/operations/upgrading/index.md
+        - "Migration from 3 to 4": userman/operations/upgrading/from-3.X-to-4.Y.md
+        - "Migration from 2 to 3": userman/operations/upgrading/from-2.X-to-3.Y.md
+        - "Migration from 2.0 to 2.1": userman/operations/upgrading/from-2.0-to-2.1.md
 
     - "Ecosystem":
       - "Command-line interface":
