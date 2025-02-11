@@ -1,5 +1,5 @@
 ---
-title: Migration from 3.X to 4.Y
+title: Migration from Taipy 3.X to 4.Y
 ---
 
 Taipy’s package structure in version 4 as changed. The `taipy-config` package

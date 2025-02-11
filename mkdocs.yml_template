@@ -211,9 +211,9 @@ nav:
 
       - "Upgrading Taipy":
         - "Upgrading Taipy": userman/operations/upgrading/index.md
-        - "Migration from 3 to 4": userman/operations/upgrading/from-3.X-to-4.Y.md
-        - "Migration from 2 to 3": userman/operations/upgrading/from-2.X-to-3.Y.md
-        - "Migration from 2.0 to 2.1": userman/operations/upgrading/from-2.0-to-2.1.md
+        - "From Taipy 3 to 4": userman/operations/upgrading/from-3.X-to-4.Y.md
+        - "From Taipy 2 to 3": userman/operations/upgrading/from-2.X-to-3.Y.md
+        - "From Taipy 2.0 to 2.1": userman/operations/upgrading/from-2.0-to-2.1.md
 
     - "Ecosystem":
       - "Command-line interface":

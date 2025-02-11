@@ -1,5 +1,5 @@
 ---
-title: Migration from 2.X to 3.Y
+title: Migration from Taipy 2.X to 3.Y
 ---
 
 1. In Taipy GUI 3.0, the `on_action` callback signature was unified across all controls: the third

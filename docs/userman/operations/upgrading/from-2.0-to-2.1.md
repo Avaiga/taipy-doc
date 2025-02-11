@@ -1,5 +1,5 @@
 ---
-title: Migration from 2.0 to 3.1
+title: Migration from Taipy 2.0 to 3.1
 ---
 
 In Taipy version 2.1, the version management system has been introduced. For applications
