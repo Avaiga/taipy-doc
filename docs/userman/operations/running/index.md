@@ -19,13 +19,13 @@ In both cases, the application is executed in the current terminal session.
 
 # Run with options or arguments
 
-For more details on how the run command line, and what are the options available,
+For more details on how to use the command line and the available options,
 please refer to the [taipy run](../../ecosystem/cli/run.md) documentation page.
 
 # Prepare the main script
 
 For more details on how to prepare your main Python module, please refer to
-[The run() function](main-script.md) documentation page.
+the documentation page about [the run() function](main-script.md).
 
 # Protect your application
 When a Taipy `Gui^` service runs, a web server is created, allowing malicious users
@@ -40,7 +40,7 @@ please refer to the [External web server](external-web-server.md) documentation 
 For more details on how to run Taipy GUI in a Notebook, please refer to the
 [Notebooks](notebooks.md) documentation page.
 
-!!!warning "Running in a Jupyter Notebook"
+!!! warning "Running in a Jupyter Notebook"
 
     Only the Taipy GUI service can run in a Notebook. The Orchestrator and REST
     services cannot run in a Notebook.

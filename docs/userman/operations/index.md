@@ -6,7 +6,7 @@ components.
 # What is a Taipy application?
 
 A Taipy application is a user-defined Python module invoking some Taipy services.
-In background, when running, the application starts a Flask web server and a few
+In the background, when executed, the application starts a Flask web server and multiple
 processes.
 
 # What is a standard architecture?
@@ -41,7 +41,7 @@ Please refer to the [Deploying](deploying/index.md) page.
 Taipy provides a comprehensive versioning system that allows users to create and
 manage various versions of their application. This versioning systems tracks the
 Taipy configuration modifications and ensures backward compatibility on Taipy's
-entities (scenarios, data nodes, etc. ) when deploying a new version in production.
+entities (scenarios, data nodes, etc. ) when deploying a new version for production.
 Please refer to the [Versioning](versioning/index.md) page for more details.
 
 # How to upgrade Taipy to a new version?

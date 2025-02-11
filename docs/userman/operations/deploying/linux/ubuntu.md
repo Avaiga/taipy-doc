@@ -2,8 +2,8 @@
 
 [Ubuntu](https://ubuntu.com/) is a GNU/Linux operating system that can
 run the Web Application Server
-[uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) and the Web Server
-[Nginx](https://nginx.org).
+[uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) and the
+[Nginx](https://nginx.org) web server.
 
 
 ## Ubuntu versions below 20.04
@@ -132,7 +132,7 @@ automatically when the machine starts. To order to do that, you should use
 [Systemd](https://systemd.io/) which is installed by default on *Ubuntu*.
 
 From the directory where *app.py* is located, run the following command to generate an
-adapted file for *Systemd*:
+adapted file for `systemd`:
 ```console
 $ echo """
 [Unit]
@@ -192,5 +192,5 @@ Your application is now accessible over the Internet!
 !!! note "HTTPS support"
 
     This configuration is only for HTTP. If you need an HTTPS connection, please
-    read the
+    read the relevant part of the
     [Nginx documentation](https://nginx.org/en/docs/http/configuring_https_servers.html).

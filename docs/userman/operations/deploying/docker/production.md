@@ -10,8 +10,8 @@ The following Dockerfile contains the minimum configuration settings to
 deploy your application for production.
 
 This template assumes that you provide a `requirements.txt` file with all
-the Python dependencies of your application and that your application entry
-point is the file `main.py.`
+the Python dependencies of your application and that your application
+and that your application starts execution from the script `main.py`.
 
 ```dockerfile
 # Your Python version
