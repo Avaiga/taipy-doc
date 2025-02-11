@@ -31,7 +31,7 @@ for more
 details on how to run Taipy in experiment or production mode.
 
 The first time you run the application with Taipy 2.1 or later, if you use the *experiment* or
-_production_ mode, you can simply provide a version name to create a new version. All legacy
+the *production* mode, you can simply provide a version name to create a new version. All legacy
 entities are automatically attached to this version. You can now manage your newly created
 version using the version management system. Please refer to the
 [Version management system](../versioning/index.md) documentation page for
