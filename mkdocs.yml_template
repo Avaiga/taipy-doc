@@ -40,6 +40,7 @@ nav:
           - "Creating an LLM ChatBot": tutorials/articles/chatbot/index.md
         - "Creating an RAG ChatBot":
           - "Creating an RAG ChatBot": tutorials/articles/rag_chatbot/index.md
+      - "User Roles and Permissions": tutorials/articles/user_management/index.md
     - "Visuals":
       - "Visuals": tutorials/visuals/index.md
       - "Callbacks": tutorials/articles/callbacks/index.md
@@ -59,13 +60,13 @@ nav:
       - "Scenario Subscription": tutorials/articles/scenario_subscription/index.md
       - "Manage application versions": tutorials/articles/version_management/index.md
     - "Integration":
-        - "Integration": tutorials/integration/index.md
-        - "Integrating Databricks": tutorials/articles/databricks/index.md
-        - "Integrate Third-Party Components": tutorials/articles/3rd_party_components/index.md
-        - "Taipy Application on Colab with Ngrok": tutorials/articles/colab_with_ngrok/index.md
-        - "Jupyter Notebooks": tutorials/articles/jupyter_notebooks/index.md
-        - "Integration with Dataiku": tutorials/articles/dataiku/index.md
-        - "Integration with IBM Watson Studio": tutorials/articles/ibm_watson_studio/index.md
+      - "Integration": tutorials/integration/index.md
+      - "Integrating Databricks": tutorials/articles/databricks/index.md
+      - "Integrate Third-Party Components": tutorials/articles/3rd_party_components/index.md
+      - "Taipy Application on Colab with Ngrok": tutorials/articles/colab_with_ngrok/index.md
+      - "Jupyter Notebooks": tutorials/articles/jupyter_notebooks/index.md
+      - "Integration with Dataiku": tutorials/articles/dataiku/index.md
+      - "Integration with IBM Watson Studio": tutorials/articles/ibm_watson_studio/index.md
     - "Large Data":
       - "Large Data": tutorials/large_data/index.md
       - "Using PySpark for Large Data": tutorials/articles/pyspark/index.md
@@ -93,14 +94,14 @@ nav:
       - "Notifications": userman/gui/notifications.md
       - "Extension libraries":
         - "Extension libraries": userman/gui/extension/index.md
-        - "Static Elements": userman/gui/extension/static_element.md
+        - "Static elements": userman/gui/extension/static_element.md
         - "Packaging extensions": userman/gui/extension/extension_packaging.md
-        - "Dynamic Elements":
+        - "Dynamic elements":
           - userman/gui/extension/dynamic_element/index.md
           - "Scalar properties": userman/gui/extension/dynamic_element/scalar_props.md
-        - "List of Values Elements": userman/gui/extension/list_of_values.md
-        - "Tabular Elements": userman/gui/extension/tabular_data.md
-        - "Chart Elements": userman/gui/extension/chart.md
+        - "List of values": userman/gui/extension/list_of_values.md
+        - "Tabular data": userman/gui/extension/tabular_data.md
+        - "Chart elements": userman/gui/extension/chart.md
         - "Accessing assets": userman/gui/extension/accessing_assets.md
 
     - "Scenario features":
@@ -338,6 +339,7 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.details
+  - pymdownx.blocks.caption
   - admonition
   - toc:
       baselevel: 2
