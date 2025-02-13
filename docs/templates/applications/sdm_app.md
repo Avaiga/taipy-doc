@@ -5,26 +5,45 @@ time-to-market and increase development costs.
 
 To reduce the development time, Taipy provides a scenario management application template,
 which leverages Taipy visual elements to speed up bootstrapping a standard application.
+
+Out-of-the-box, the scenario management application is a multi-page Taipy application
+that allows the user to visualize and manage scenarios and data nodes. The user can select a
+scenario, view its directed acyclic graph (DAG), manage its data nodes, upload data files,
+and submit the scenario for executio.
+
+<figure>
+  <img src="../img/sdm_app_template_with_scenario_dark.jpeg" class="visible-dark" />
+  <img src="../img/sdm_app_template_with_scenario_light.jpeg" class="visible-light"/>
+  <figcaption>Taipy scenario management application created by the scenario management template out-of-the-box.</figcaption>
+</figure>
+
+The application also includes a job monitoring page to track the status of the submitted jobs.
+
+<figure>
+  <img src="../img/sdm_app_template_with_job_dark.jpeg" class="visible-dark" />
+  <img src="../img/sdm_app_template_with_job_light.jpeg" class="visible-light"/>
+  <figcaption>Manage job with the Taipy scenario management application created by the scenario management template out-of-the-box.</figcaption>
+
 This template offers several key benefits:
 
 - **Accelerated Development**: By leveraging scenario and data management visual elements,
     developers can quickly bootstrap a standard application, saving significant
     development time to focus on delivering business value more efficiently.
-- **Comprehensive Features**: The template supports a wide range of functionalities,
-    including data visualization and analysis, data integration, simulation, what-if
-    analysis, and job orchestration monitoring, providing a comprehensive solution for
-    various use cases.
-- **Customization**: The resulting application is highly customizable with pre-built
+- **Comprehensive Features**: The template provides a best-practice folder scaffolding for a
+    scenario management application, which supports a wide range of functionalities, including
+    data and scenario visualization, job orchestration monitoring, providing a comprehensive
+    solution for various use cases.
+- **Customization**: The generated application is highly customizable with pre-built
     placeholders for various components, allowing developers to tailor the application
     to meet specific requirements and use cases.
-- **Deployment-Ready**: With support for Docker deployment and integration, the template
-    provides deployment helpers on both test and production environments.
+- **Deployment-Ready**: The template provides Docker deployment helpers for both development purpose
+    and production environment.
 
-# How to create the application
+# How to create an application
 
-To create the application from the template, change to the folder in which you want to
-create the application and run the command `taipy create --application sdm`. Then answer
-the few questions to customize your application.
+To create the application from the scenario management template, change to the folder in which
+you want to create the application and run the command `taipy create --application sdm`. Then answer
+a few questions to customize your application.
 
 ```console
 $ taipy create --application sdm
@@ -126,42 +145,38 @@ taipy_application/
 Your application's folder structure may vary depending on the options you selected during the
 creation process. Here is a brief overview of the key components:
 
-- *algos/*: Contains the *algos.py* file, designed to contain various Python functions
-    used to configure tasks. You can add your tasks' functions here, and they will be
-    imported into the main application file.
-- *config/*: Contains the *config.py* file, where you can put your application's
-    configuration. The configuration will be imported into the main application file.
+- *algos/*: Contains the *algos.py* file, designed to contain various Python functions used to
+    configure tasks.
+- *config/*: Contains the *config.py* file, where you can put your application's configuration.
+    The configuration will be imported into the main application file.
 - *pages/*: Contains the application pages.
     - *root.py* is the root page of the application, which layouts the application.
-        It includes a navigation bar, and a sidebar with a
-        [scenario_selector](../../refmans/gui/viselements/corelements/scenario_selector.md)
-        and a 
+        It includes a navigation bar, and a sidebar with the
+        [scenario_selector](../../refmans/gui/viselements/corelements/scenario_selector.md) and
         [data_node_selector](../../refmans/gui/viselements/corelements/data_node_selector.md)
-    - *job_page/* contains the page for job monitoring using a
-        [job_selector](../../refmans/gui/viselements/corelements/job_selector.md).
-    - *scenario_page/* contains the page for scenario analysis and data management. It
-        shows a scenario, its DAG, and its data nodes. It uses a
-        [scenario](../../refmans/gui/viselements/corelements/scenario.md), a
-        [scenario_dag](../../refmans/gui/viselements/corelements/scenario_dag.md)
-        and a [data_node](../../refmans/gui/viselements/corelements/data_node.md)
         visual elements.
-- *.taipyignore*: Specifies files to be protected when running the web server. Please
-    refer to the
-    [Protect private files](../../userman/run-deploy/run/protect_files.md) page for
-    more information.
-- *docker-compose.yml* and *Dockerfile*: The Docker configuration for building and 
-    running the application as a Docker container.
+    - *job_page/* contains the page for job monitoring using the
+        [job_selector](../../refmans/gui/viselements/corelements/job_selector.md) visual element.
+    - *scenario_page/* contains the page for scenario analysis and data management. It
+        shows a scenario, its DAG, and its data nodes. It uses the
+        [scenario](../../refmans/gui/viselements/corelements/scenario.md), the
+        [scenario_dag](../../refmans/gui/viselements/corelements/scenario_dag.md)
+        and the [data_node](../../refmans/gui/viselements/corelements/data_node.md)
+        visual elements.
+- *.taipyignore*: Specifies files to be protected when running the web server. Please refer to the
+    [Protect private files](../../userman/run-deploy/run/protect_files.md) page for more
+    information.
+- *docker-compose.yml* and *Dockerfile*: The Docker configuration for building and running the
+    application as a Docker container.
 - *main.py*: The main Python file of the application.
 - *requirements.txt*: Contains the Python dependencies required by the application.
 
-# Customize the application
+# Customizing the application
 
 Everything in the generated application can be updated to fit your needs. It includes
 the Python code, the configuration files, and any other resources. Specifically, in
 the **algos/** and **config/** folders, there are placeholders that you can customize
 precisely to your use case.
-
-<!-- TODO: Explain that some parts are strongly use case dependent and identified as placeholders and are probably a good piece of code to focus on.   -->
 
 ## Customizing the tasks' functions
 
@@ -232,26 +247,23 @@ file that can be loaded in the `configure()` method.
 
 The *pages/* folder contains the application pages. You can customize the
 content of the pages to fit your specific requirements, as well as customize
-the layout and visual elements.
+the grid layout of the application and the visual elements.
 
 *pages/root.py* defines the layout of the application, including the navigation bar,
-and a sidebar. Here, you can customize the
-[layout](../../refmans//gui/viselements/generic/layout.md),
+and a sidebar. Here, you can customize the [layout](../../refmans//gui/viselements/generic/layout.md),
 the [scenario_selector](../../refmans/gui/viselements/corelements/scenario_selector.md), and
 the [data_node_selector](../../refmans/gui/viselements/corelements/data_node_selector.md).
 
 In *pages/job_page/job_page.py*, you can customize the
-[job_selector](../../refmans/gui/viselements/corelements/job_selector.md) 
-visual element, which lists all jobs of the application and allows users to select
-and manage them.
+[job_selector](../../refmans/gui/viselements/corelements/job_selector.md) visual element, which
+lists all jobs of the application and allows users to select and manage them.
 
 In *pages/scenario_page/scenario_page.py*, you can customize the
 [scenario](../../refmans/gui/viselements/corelements/scenario.md),
-the [scenario_dag](../../refmans/gui/viselements/corelements/scenario_dag.md),
-and the [data_node](../../refmans/gui/viselements/corelements/data_node.md) visual
-elements to display the information of the selected scenario and data node, as well
-as modifying the `notify_on_submission()` method to handle the notification of a
-scenario's submission.
+the [scenario_dag](../../refmans/gui/viselements/corelements/scenario_dag.md), and the
+[data_node](../../refmans/gui/viselements/corelements/data_node.md) visual elements to display
+the information of the selected scenario and data node, as well as modifying the
+`notify_on_submission()` method to handle the notification of a scenario's submission.
 
 # How to run the application
 
