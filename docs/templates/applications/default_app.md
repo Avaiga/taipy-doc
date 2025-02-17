@@ -286,7 +286,7 @@ customize the content of each page:
     be created in the *pages/* folder and are imported automatically in the *pages/\_\_init\_\_.py*
     file. You can customize the content of each page as needed.
 
-# How to the application
+# How to run the application
 
 To run the application, change to the newly created folder and run the application using the
 `taipy run main.py` command.
