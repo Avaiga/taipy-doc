@@ -175,8 +175,8 @@ creation process. Here is a brief overview of the key components:
 
 - *algorithms/*: Contains the *algorithms.py* file, designed to contain various Python functions
     used to configure tasks for the scenario management feature.
-- *configuration/*: Contains the configuration for the application.  The configuration will be imported
-    to the main application file.
+- *configuration/*: Contains the configuration for the application. The configuration will
+    be imported to the main application file.
     - *config.py* contains the configuration for the scenario management feature.
     - *auth_config.py* contains the configuration for the authentication feature.
 - *pages/*: Contains the application pages if the application is multi-page.
