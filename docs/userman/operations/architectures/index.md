@@ -17,9 +17,11 @@ service. It is suitable for many use cases, including dashboards, prototypes, de
 or applications with just a few end-users. In this use case, the application does not
 require data persistence.
 
-![img.png](img/gui-alone.png)
-
-TODO: improve schema, center, use Taipy colors, add a legend, etc.
+<figure class="tp-center">
+  <img src="img/gui-alone-light.png" class="visible-light" width="90%"/>
+  <img src="img/gui-alone-dark.png" class="visible-dark" width="90%"/>
+  <figcaption>A Taipy GUI application with no persistence</figcaption>
+</figure>
 
 In this configuration, the Taipy application consists of a single blocking process
 that starts a web server (by default, a Flask web server). The whole application runs
@@ -78,9 +80,11 @@ runs as a Python script on a single machine. Compared to the previous one, the m
 difference in this case is that Taipy needs to store scenarios, data nodes, and
 related entities using a disk file system.
 
-![img.png](img/gui-core-fs.png)
-
-TODO: improve schema, center, use Taipy colors, add a legend, etc.
+<figure class="tp-center">
+  <img src="img/gui-core-fs-light.png" class="visible-light" width="90%"/>
+  <img src="img/gui-core-fs-dark.png" class="visible-dark" width="90%"/>
+  <figcaption>A Taipy application using an external filesystem</figcaption>
+</figure>
 
 Although a local filesystem running on the main machine can be used, we recommend
 using an external volume mounted as the filesystem. This will facilitate application,
@@ -129,20 +133,22 @@ running as a Python script on a single machine. The main difference is that Taip
 stores scenarios, data nodes, and related entities in a
 [MongoDB](https://www.mongodb.com/docs/manual/installation/) database.
 
+<figure class="tp-center">
+  <img src="img/gui-core-mongo-light.png" class="visible-light" width="90%"/>
+  <img src="img/gui-core-mongo-dark.png" class="visible-dark" width="90%"/>
+  <figcaption>A Taipy application using MongoDB</figcaption>
+</figure>
+
+Although a database running on the main machine can be used, we recommend hosting
+the Mongo database in an external volume. This will facilitate application, system,
+and data maintenance operations (updates, upgrades, patches, backups, etc.)
+
 ??? warning "Database management"
 
     Taipy does not manage the database; the user must set it up, manage it and ensure
     the main application can access it.
     Please refer to the official [MongoDB](https://www.mongodb.com/docs/manual/installation/)
     documentation for more details.
-
-![img.png](img/gui-core-mongo.png)
-
-TODO: improve schema, center, use Taipy colors, add a legend, etc.
-
-Although a database running on the main machine can be used, we recommend hosting
-the Mongo database in an external volume. This will facilitate application, system,
-and data maintenance operations (updates, upgrades, patches, backups, etc.)
 
 The main Python script now needs to configure the repository. It looks like the
 following:
@@ -199,9 +205,17 @@ orchestrate the jobs next to the main process. Please refer to the
 [task orchestration](../../scenario_features/task-orchestration/index.md)
 page for more details.
 
-![img.png](img/gui-orchestrator-fs-mongo.png)
+<figure class="tp-center">
+  <img src="img/gui-orchestrator-fs-light.png" class="visible-light" width="90%"/>
+  <img src="img/gui-orchestrator-fs-dark.png" class="visible-dark" width="90%"/>
+  <figcaption>A Taipy application with orchestration using an external filesystem</figcaption>
+</figure>
 
-TODO: improve schema, center, use Taipy colors, add a legend, etc.
+<figure class="tp-center">
+  <img src="img/gui-orchestrator-mongo-light.png" class="visible-light" width="90%"/>
+  <img src="img/gui-orchestrator-mongo-dark.png" class="visible-dark" width="90%"/>
+  <figcaption>A Taipy application with orchestration using MongoDB</figcaption>
+</figure>
 
 Taipy directly manages and stores some Taipy entities. As explained before,
 two storage systems called repositories are available (a filesystem or a Mongo
@@ -252,9 +266,11 @@ refer to the [REST](../../scenario_features/rest/index.md) page for more details
 
 In this configuration, the `Rest^` and `Gui^` services use the same process.
 
-![img.png](img/gui-rest-fs-mongo.png)
-
-TODO: improve schema, center, use Taipy colors, add a legend, etc.
+<figure class="tp-center">
+  <img src="img/gui-rest-mongo-light.png" class="visible-light"/>
+  <img src="img/gui-rest-mongo-dark.png" class="visible-dark"/>
+  <figcaption>A Taipy application exposing a REST API</figcaption>
+</figure>
 
 Taipy directly manages and stores some Taipy entities. As explained before,
 two storage systems called repositories are available (a filesystem or a Mongo
@@ -312,7 +328,11 @@ corresponds to a run of a Python script named worker in a **dedicated container 
 machine**. When running the worker script, a worker process is spawned. One can run
 as many workers as needed.
 
-![img.png](img/gui-orchestrator-workers.png)
+<figure class="tp-center">
+  <img src="img/gui-orchestrator-worker-light.png" class="visible-light"/>
+  <img src="img/gui-orchestrator-worker-dark.png" class="visible-dark"/>
+  <figcaption>A Taipy application exposing a REST API</figcaption>
+</figure>
 
 A RabbitMq data bus is used as a pub/sub-communication system between the main
 application and the workers. Note that Taipy does not manage RabbitMq itself.
@@ -384,7 +404,11 @@ An application may require users to be authenticated. Taipy provides a way to co
 to an identity providers. An external Identity Provider (such as an LDAP service)
 authenticates users. The identity provider usually runs in an external container.
 
-![img.png](img/gui-authentication.png)
+<figure class="tp-center">
+  <img src="img/gui-authentication-light.png" class="visible-light"/>
+  <img src="img/gui-authentication-dark.png" class="visible-dark"/>
+  <figcaption>A Taipy application exposing a REST API</figcaption>
+</figure>
 
 Taipy does not manage the identity provider itself: The user must set up and manage
 it and ensure it is reachable by the main application.
