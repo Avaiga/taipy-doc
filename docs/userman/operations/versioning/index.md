@@ -25,24 +25,24 @@ a Taipy application.
 - In development mode (default mode), Taipy drops all old entities before running the application.
   It is made to help users during the application development phase to implement their application
   through successive iterations of configuration changes. For more information, please refer to
-  [development mode](development_mode.md).
+  [development mode](development-mode.md).
 
 - In experiment mode, Taipy keeps old entities untouched but filters them out when running the
   application. The application behaves like there are no old entities. Only the entities created
   during the current run are considered by the application. It is designed to help the user improve
   an existing application by experimenting with possible configuration changes, trying new
   algorithms, investigating the impacts of a parameter change, etc. For more information, please refer to
-  [experiment mode](experiment_mode.md).
+  [experiment mode](experiment-mode.md).
 
 - In production mode, Taipy considers all existing entities, whether they have been instantiated in
   the current run or in a previous one. It is designed to run an application in a production
   environment with existing entities created in previous runs. For more information, please refer to
-  [production mode](production_mode.md).
+  [production mode](production-mode.md).
 
     !!! note "Available in Taipy Enterprise edition"
 
     This section is relevant only to the [Taipy Enterprise Edition](https://taipy.io/enterprise)
-    
+
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 ## Versions

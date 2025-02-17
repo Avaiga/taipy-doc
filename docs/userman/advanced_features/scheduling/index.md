@@ -1,9 +1,7 @@
-# Scheduler
-
 !!! note "Available in Taipy Enterprise edition"
 
     This section is relevant only to the [Taipy Enterprise Edition](https://taipy.io/enterprise)
-    
+
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 This documentation focuses on providing necessary information to use the
@@ -34,7 +32,7 @@ in a Taipy application.
     %}
     ```
 
-## Start/Stop the scheduler
+# Start and stop the scheduler
 
 To make the scheduler execute the scheduled methods, you must first
 start the scheduler by using the `start()` method.
@@ -81,7 +79,7 @@ To stop the scheduler from running the scheduled methods, you can use the
     tp.Scheduler.stop()
 ```
 
-## Run a method every specific time period
+# Run a method every specific time period
 
 Taipy `Scheduler^` provides the capability to run a method every specific period.
 The period can be specified in seconds, minutes, hours, days, weeks, days, months or years.
@@ -130,7 +128,7 @@ Once scheduled, the method will run in the background. The first run will be:
 - the number of period from the scheduled time, or
 - at the start of the scheduler if the scheduler is started **after** the time that the method supposed to run.
 
-## Run a method at a specific time and/or date
+# Run a method at a specific time and/or date
 
 To schedule a method to run at a specific time, you can call the `at()` and `on()` methods after providing the time unit.
 
@@ -212,7 +210,7 @@ For example, assume that the current time is 12:00:00:
 - If the `tp.submit(monthly_scenario)` is scheduled to run every day at "10:30", the first run will be at 10:30:00 tomorrow.
 - If the `tp.submit(monthly_scenario)` is scheduled to run every day at "12:42:30", the first run will be at 12:42:30 today, which is in 42 minutes.
 
-## Run a scheduled method until a certain time
+# Run a scheduled method until a certain time
 
 To automatically cancel a scheduled method after a certain time, you can use the `until()` method.
 The `until()` method accepts a time indicator, which can be:
@@ -249,7 +247,7 @@ if __name__ == "__main__":
     tp.Scheduler.every(1).months.until(datetime(2030, 1, 1, 12, 30, 0)).do(tp.submit, monthly_scenario)
 ```
 
-## Get all scheduled methods
+# Get all scheduled methods
 
 To retrieve all scheduled methods from the scheduler, use `tp.Scheduler.get_scheduled_methods()` method.
 
@@ -268,7 +266,7 @@ if __name__ == "__main__":
 The `tp.Scheduler.get_scheduled_methods()` method returns a list of `ScheduledMethod^` objects, which you can use to
 get information or cancel the scheduled method.
 
-## Cancel scheduled methods
+# Cancel scheduled methods
 
 To remove a scheduled method from the scheduler, use the `tp.Scheduler.cancel_scheduled_method(scheduled_method)` method.
 
@@ -298,7 +296,7 @@ if __name__ == "__main__":
     tp.Scheduler.clear()
 ```
 
-## Shortcut for scheduling most used Taipy methods
+# Shortcut for scheduling most used Taipy methods
 
 Taipy `Scheduler^` provides shortcut for scheduling popular Taipy methods, including:
 

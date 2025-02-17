@@ -16,7 +16,7 @@ the jobs, the submission status, and other related information.
 
 In a Taipy application, running the Orchestrator service is required to execute jobs.
 To see how you can run different Taipy services, please refer to the
-[running Taipy services](../../run-deploy/run/running_services.md) page.
+[running Taipy services](../../operations/running/main-script.md) page.
 
 !!! note "Preventing configuration update when the Orchestrator service is running"
 

@@ -20,7 +20,7 @@ You can run all Taipy services together by using `taipy.run()` with the code bel
 
 ```python linenums="1"
 {%
-include-markdown "../code_sample/basic_gui_rest_app.py"
+include-markdown "../code-sample/basic_gui_rest_app.py"
 comments=false
 %}
 ```
@@ -33,14 +33,11 @@ will run with Taipy GUI and Taipy REST in the previous code example.
 
 If you don't want to expose REST APIs to manage the Taipy entities, you can run Taipy
 GUI along with Taipy Orchestrator together with the following code:
-```python
-import taipy as tp
-
-if __name__ == "__main__":
-    orchestrator = tp.Orchestrator()
-    gui = tp.Gui(page="# Getting started with *Taipy*")
-
-    tp.run(gui, orchestrator, title="Taipy application")
+```python linenums="1"
+{%
+include-markdown "../code-sample/basic_gui_core_app.py"
+comments=false
+%}
 ```
 
 # Running `Gui` alone
