@@ -77,6 +77,13 @@ nav:
     - "Application templates":
       - "Default application template": templates/applications/default_app.md
       - "Scenario management template": templates/applications/sdm_app.md
+    - "Page templates":
+      - "Default page template": templates/pages/default_page.md
+      - "Root page template": templates/pages/root_page.md
+      - "Data management page template": templates/pages/data_management_page.md
+      - "Scenario management page template": templates/pages/sdm_page.md
+      - "Job management page template": templates/pages/job_management_page.md
+      - "Login page template": templates/pages/login_page.md
 
   - "User Manual":
     - "About Taipy's User manual": userman/index.md
