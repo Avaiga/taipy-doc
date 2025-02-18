@@ -9,7 +9,7 @@ which leverages Taipy visual elements to speed up bootstrapping a standard appli
 Out-of-the-box, the scenario management application is a multi-page Taipy application
 that allows the user to visualize and manage scenarios and data nodes. The user can select a
 scenario, view its directed acyclic graph (DAG), manage its data nodes, upload data files,
-and submit the scenario for executio.
+and submit the scenario for execution.
 
 <figure>
   <img src="../img/sdm_app_template_with_scenario_dark.jpeg" class="visible-dark" />

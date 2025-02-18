@@ -74,7 +74,7 @@ sections describe each question in detail.
 ## 1. Application root folder
 
 - Specifies the root folder of the application.
-- The default value is "new_application".
+- The default value is "taipy_application".
 
 ## 2. Application main Python file
 
@@ -270,7 +270,7 @@ The role required to access the admin page is defined by the `admin_page_filter`
 ## Customizing the pages
 
 If the application is single-page, the homepage content is in the main Python file. You can edit
-the  the content of the homepage placeholder to fit your specific application requirements.
+the content of the homepage placeholder to fit your specific application requirements.
 
 If the application is multi-page, the *pages/* folder contains the application pages. You can
 customize the content of each page:
