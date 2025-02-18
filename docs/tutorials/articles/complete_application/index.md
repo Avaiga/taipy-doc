@@ -73,7 +73,7 @@ follows:
 ```
 
 For more details on the available application templates, please refer to the
-[Templates](../../../templates/index.md) documentation.
+[Templates](../../../tp_templates/index.md) documentation.
 
 So, without further delay, let's begin to code!
 

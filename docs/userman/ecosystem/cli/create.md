@@ -20,8 +20,8 @@ $ taipy create --application sdm
 
 Taipy currently supports the following application templates:
 
-- [Default application template](../templates/applications/default_app.md)
-- [Scenario management application template](../templates/applications/sdm_app.md)
+- [Default application template](../tp_templates/applications/default_app.md)
+- [Scenario management application template](../tp_templates/applications/sdm_app.md)
 
 
 # List the application templates
