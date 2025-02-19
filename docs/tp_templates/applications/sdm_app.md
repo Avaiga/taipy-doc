@@ -23,7 +23,7 @@ The application also includes a job monitoring page to track the status of the s
   <img src="../img/sdm_app_template_with_job_dark.jpeg" class="visible-dark" />
   <img src="../img/sdm_app_template_with_job_light.jpeg" class="visible-light"/>
   <figcaption>Manage job with the Taipy scenario management application created by the scenario management template out-of-the-box.</figcaption>
-
+</figure>
 This template offers several key benefits:
 
 - **Accelerated Development**: By leveraging scenario and data management visual elements,
