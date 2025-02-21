@@ -52,7 +52,7 @@ selected_data_node ():
 
 New Taipy page has been created at ./pages/data_node_management_page
 
-The "selected_data_node" binding variables have been created for the page
+The *selected_data_node* variable has been created for the page
 You can replace the binding variables with your own variables in the page content.
 Please import the new page in your main application to use it.
 ```
@@ -106,22 +106,22 @@ creation process. Here is a brief overview of the key components:
 
 - *pages/*: The folder that contains the page specified in the second question.
     - *data_node_management_page/data_node_management_page.py* contains the layout and content of
-    the page. It includes a sidebar with the
+    the page. It includes a sidebar holding a
     [data_node_selector](../../refmans/gui/viselements/corelements/data_node_selector.md)
-    visual element, and the main content area with the
+    visual element, and a main content area showing a
     [data_node](../../refmans/gui/viselements/corelements/data_node.md) visual element.
-    - *\_\_init\_\_.py* is the file that imports the newly created page in the `pages` package.
+    - *\_\_init\_\_.py* is the file that exports the page from the `pages` package.
 
 # Customizing the page
 
 Everything in the generated page can be updated to precisely fit your specific requirements.
 
-The grid layout of the page can be customized via the
-[layout](../../refmans/gui/viselements/generic/layout.md) visual element.
+The grid layout of the page can be customized via a
+[layout](../../refmans/gui/viselements/generic/layout.md) block.
 
 You can also customize the
 [data_node_selector](../../refmans/gui/viselements/corelements/data_node_selector.md)
-and [data_node](../../refmans/gui/viselements/corelements/data_node.md) visual elements which
+and [data_node](../../refmans/gui/viselements/corelements/data_node.md) controls which
 allow the user to select and manage the data nodes respectively.
 
 You can also add more content to the page such as descriptions, or other

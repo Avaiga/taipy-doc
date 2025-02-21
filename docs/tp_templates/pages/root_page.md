@@ -100,11 +100,11 @@ creation process. Here is a brief overview of the key components:
 Everything in the generated page can be updated to precisely fit your specific requirements.
 
 The grid layout of the page can be customized via the
-[layout](../../refmans/gui/viselements/generic/layout.md) visual element.
+[layout](../../refmans/gui/viselements/generic/layout.md) block.
 
 You can also customize the you can customize the navigation bar of the application with the
-[navbar](../../refmans//gui/viselements/generic/navbar.md) visual element and the `creates_pages()`
-method which is used to create the items of the navigation bar.
+[navbar](../../refmans//gui/viselements/generic/navbar.md) control and the *creates_pages()*
+function which is invoked to create the items of the navigation bar.
 
 There are also several content placeholders. You can edit the content of these placeholder or add
 more content to the page such as descriptions, or other

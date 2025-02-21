@@ -6,7 +6,7 @@
 
 During the development process of a Taipy application, adding a login page is a common requirement for the user to authenticate and access the application.
 
-To reduce the development time, Taipy provides a login page template, which is designed as a best practice page for authenticating in a Taipy application by leveraging Taipy visual elements.
+To reduce the development time, Taipy provides a login page template, which is designed as a best practice page for authenticating in a Taipy application.
 
 Out-of-the-box, the login page provides a login form that allows the user to enter their credentials and authenticate to access the application.
 
@@ -37,7 +37,7 @@ $ taipy create --page login
   [1/2] Page title (login_page):
   [2/2] The folder that contains the pages (pages):
 
-New Taipy login page has been created at ./pages/login_page
+The new Taipy login page has been created at ./pages/login_page
 Please import the new login page in your main application to use it.
 
 For more information, please refer to the Multi-page application tutorial at https://docs.taipy.io/en/latest/tutorials/visuals/3_multipage_application/
@@ -79,18 +79,18 @@ Your page's folder structure may vary depending on the answers you provided duri
 creation process. Here is a brief overview of the key components:
 
 - *pages/*: The folder that contains the page specified in the second question.
-    - *login_page/login.py* contains the login form. It includes the [login](../../refmans/gui/viselements/generic/login.md) visual element.
+    - *login_page/login.py* contains the login form. It includes a [login](../../refmans/gui/viselements/generic/login.md) control.
     - *\_\_init\_\_.py* is the file that imports the newly created page in the `pages` package.
 
 # Customizing the page
 
 Everything in the generated page can be updated to precisely fit your specific requirements.
 
-The login form can be customized via the [login](../../refmans/gui/viselements/generic/login.md)
+The login form can be customized via the [`login`](../../refmans/gui/viselements/generic/login.md)
 visual element.
 
-Out-of-the-box, pressing the "Login" button will trigger the `on_login()` method. You can modify
-the `on_login()` method to handle the authentication logic, such as checking the user's credentials
+Out-of-the-box, pressing the "Login" button will trigger the *on_login()* function. You can modify
+the definition of this function to handle the authentication logic, such as checking the user's credentials
 and redirecting the user to the appropriate page based on the authentication result.
 
 ```python title="login.py"

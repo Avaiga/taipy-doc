@@ -1,8 +1,7 @@
-Building a Taipy application can require a good amount of time and effort, in particular at the
-beginning of a project. This can delay the time-to-market and increase development costs.
-
-To reduce the development time, Taipy provides a simple and minimal application template which let
-you create a custom application that just works out-of-the-box with a few questions.
+The default template provides a minimalistic starting point for users to build upon,
+offering a basic structure without additional features. It's a perfect template for users
+who prefer to customize their applications from the ground up without predefined pages or
+visual elements.
 
 <figure>
   <img src="../img/default_app_template_with_auth_dark.jpg" class="visible-dark" />
@@ -90,21 +89,21 @@ sections describe each question in detail.
 
 - Specifies whether the application is a single-page or multi-page.
 - For a multi-page application, enter the page names separated by spaces. If left blank, the
-  application will default to single page.
+  application will have a single page.
     - The page names must be valid Python identifiers.
-    - Once the application is created, all pages will be created in the `pages` folder as empty
+    - Once the application is created, all pages are created in the `pages` folder as empty
       pages. You can add content to the pages as needed.
 - The default value is an empty string, which creates a single-page application.
 
 ## 5. With Authentication
 
 - Indicates whether the application includes authentication.
-- If yes, a login page and a basic setup for for configuring authentication will be included
+- If yes, a login page and a basic setup for configuring authentication is included
   in the application.
-    - A login page will be created at `pages/login.py`, which uses the
+    - A login page is created in `pages/login.py`, which uses the
       [Taipy login control](../../refmans/gui/viselements/generic/login.md).
-    - A basic authentication configuration will be added to the `configuration/auth_config.py` file.
-      By default, the authentication will use the
+    - A basic authentication configuration is added to the `configuration/auth_config.py` file.
+      By default, the authentication uses the
       [Taipy protocol](../../userman/advanced_features/auth/authentication.md#taipy-protocol).
       You can customize the authentication method as needed.
 - The default value is "No".
@@ -113,24 +112,24 @@ sections describe each question in detail.
 
 - Specifies whether the application uses scenario management.
 - If yes:
-    - The Taipy `Orchestrator^` service will be included to handle job orchestration and version
+    - The Taipy `Orchestrator^` service is included to handle job orchestration and version
       management.
-    - A scaffold configuration file will be created at `configuration/config.py`. You can put your
-      application's configuration here and it will be imported to the main application file.
-    - A scaffold `algorithms/algorithms.py` file will be created, which is designed to contain the
+    - A configuration file is created at `configuration/config.py`. You can copy your
+      application's configuration here so it is imported by the main application file.
+    - A `algorithms/algorithms.py` file is created, designed to contain the
       various Python functions used to configure tasks. You can add your tasks' functions here and
-      they will be imported to the main application file.
+      they will be imported by the main application file.
 - The default value is "No".
 
 ## 7. With a Rest API
 
 - Specifies whether the application uses Taipy Rest.
-- If yes, the Taipy `Rest^` service will be included in the application.
+- If yes, the Taipy `Rest^` service is included in the application.
 - The default value is "No".
 
 ## 8. With a new Git repository
 
-- Specifies whether the application will be initialized as a new Git repository.
+- Specifies whether the application directory should be initialized as a new Git repository.
 - The default value is "No".
 
 ## 9. With Docker deployment
@@ -176,11 +175,11 @@ creation process. Here is a brief overview of the key components:
 - *algorithms/*: Contains the *algorithms.py* file, designed to contain various Python functions
     used to configure tasks for the scenario management feature.
 - *configuration/*: Contains the configuration for the application. The configuration will
-    be imported to the main application file.
+    be imported by the main application file.
     - *config.py* contains the configuration for the scenario management feature.
     - *auth_config.py* contains the configuration for the authentication feature.
 - *pages/*: Contains the application pages if the application is multi-page.
-    - *root.py* is the root page of the application, which includes the
+    - *root.py* is the root page of the application, which includes a
         [navigation bar](../../refmans/gui/viselements/generic/navbar.md) visual element.
     - *login/* contains the login page for the authentication feature using the
         [login](../../refmans/gui/viselements/generic/login.md) visual element.
@@ -191,12 +190,12 @@ creation process. Here is a brief overview of the key components:
 - *main.py*: The main Python file of the application.
 - *requirements.txt*: Contains the Python dependencies required by the application.
 
-# Customizing the application
+# How to customize the application
 
 Everything in the generated application can be updated to precisely fit your needs. It includes
 the Python code, the configuration files, placeholders, and any other resources.
 
-## Customizing the scenario management feature
+## Scenarios, tasks, and data nodes
 
 For the scenario management feature, the *algorithms/algorithms.py* file is designed to contain the
 various Python functions used to configure tasks. The functions are strongly use-case dependent, for
@@ -254,7 +253,7 @@ the main file to use the configuration for the scenario management feature.
     # #############################################################################
 ```
 
-## Customize the authentication feature
+## Authentication
 
 For the authentication feature, the *configuration/auth_config.py* file is designed to contain the
 configuration of the authentication protocol.
@@ -276,12 +275,12 @@ If the application is multi-page, the *pages/* folder contains the application p
 customize the content of each page:
 
 - *pages/root.py* is the root page of the application. Here, you can customize the navigation bar
-    of the application with the [navbar](../../refmans//gui/viselements/generic/navbar.md) visual
-    element.
+    of the application in the [navbar](../../refmans//gui/viselements/generic/navbar.md) visual
+    element's definition.
 - For the authentication feature, *pages/login/* contains the login page for the authentication
     feature, and *pages/admin/* contains the page that only authenticated users with the
-    "TAIPY_ADMIN" role can access. You can customize the login page with the
-    [login](../../refmans/gui/viselements/generic/login.md) visual element.
+    "TAIPY_ADMIN" role can access. You can customize the login page in the
+    [login](../../refmans/gui/viselements/generic/login.md) visual element's definition.
 - If you provide an answer to the [question 4](#4-with-multi-pages), the pages you specified will
     be created in the *pages/* folder and are imported automatically in the *pages/\_\_init\_\_.py*
     file. You can customize the content of each page as needed.

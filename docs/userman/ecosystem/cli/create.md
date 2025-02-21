@@ -24,7 +24,7 @@ Taipy currently supports the following application templates:
 - [Scenario management application template](../tp_templates/applications/sdm_app.md)
 
 
-# List the application templates
+# Application templates list
 
 From the CLI, you can list the available application templates by running `taipy help create`
 command. Alternatively, you can use the *--help* or *-h* options by running `taipy create --help`

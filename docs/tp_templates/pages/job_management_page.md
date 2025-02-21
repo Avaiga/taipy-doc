@@ -24,7 +24,7 @@ job.
 
 This page template offers several key benefits:
 
-- **Accelerated Development**: By leveraging job selector visual element, developers can quickly
+- **Accelerated Development**: By leveraging the `job_selector` control, developers can quickly
     bootstrap a standard page, saving significant development time to focus on delivering business
     value more efficiently.
 - **Ease of Use**: The page template is designed to be user-friendly, with a simple CLI
@@ -48,11 +48,11 @@ $ taipy create --page job_monitoring
   [2/3] The folder that contains the pages (pages):
   [3/3] There are binding variables in the page.
 If the variables need to be imported from a different page,
-please specify the module and the variable name separated by a space
+please specify the module and the variable names separated by a space
 (e.g. ..main selected_job):
 selected_job ():
 
-New Taipy page has been created at ./pages/job_monitoring_page
+The new Taipy page has been created at ./pages/job_monitoring_page
 
 The "selected_job" binding variables have been created for the page.
 You can replace the binding variables with your own variables in the page content.
@@ -90,7 +90,7 @@ user in the page. For more information, please refer to
     page to share the job selected by the user.
 - If there is already a binding variable with the same purpose from a different page, please
     specify the module and the variable name separated by a space. It will be imported automatically
-    to the job monitoring page.
+    by the job monitoring page.
 
 # Page description
 
@@ -110,15 +110,15 @@ creation process. Here is a brief overview of the key components:
 
 - *pages/*: The folder that contains the page specified in the second question.
     - *job_monitoring_page/job_monitoring_page.py* contains the content of the page.
-    - *\_\_init\_\_.py* is the file that imports the newly created page in the `pages` package.
+    - *\_\_init\_\_.py* is the file that exports the newly created page from the `pages` package.
 
 # Customizing the page
 
 Everything in the generated page can be updated to precisely fit your specific requirements.
 
 For monitoring jobs, you can customize the
-[job_selector](../../refmans/gui/viselements/corelements/job_selector.md) visual element which
-allow the user to monitor, select, and manage Taipy jobs of the application.
+[job_selector](../../refmans/gui/viselements/corelements/job_selector.md) control which
+allows the user to monitor, select, and manage the Taipy jobs of the application.
 
 You can also add more content to the page such as descriptions, or other
 [visual elements](../../refmans/gui/viselements/index.md) provided by Taipy to enrich the

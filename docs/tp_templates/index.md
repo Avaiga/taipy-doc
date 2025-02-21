@@ -1,5 +1,42 @@
-To simplify the process of starting a new Taipy application, Taipy offers a set of templates that
-provides a comfortable developer-friendly environment through the `create` command.
+To avoid spending too much time and effort creating an application, in particular at
+the beginning of a project, Taipy offers a set of templates that provides a
+comfortable developer-friendly environment through the `create` command.
+
+It significantly reduces the time-to-market, increases developer efficiency, and enforces
+Taipy good practices.
+
+<!-- Quick accesses -->
+<div class="tp-row tp-row--gutter-sm">
+  <div class="tp-col-12 tp-col-md-4 d-flex">
+    <a class="tp-content-card tp-content-card--primary" href="#application-templates">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon--small" src="img/visualize.svg">
+        <h3>Application templates</h3>
+      </header>
+      <div class="tp-content-card-body">
+        <p>
+          Initiate a new Taipy application as a starting point for your project.
+        </p>
+      </div>
+    </a>
+  </div>
+
+  <div class="tp-col-12 tp-col-md-4 d-flex">
+    <a class="tp-content-card tp-content-card--alpha" href="#page-templates">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon--small" src="img/visualize.svg">
+        <h3>Page templates</h3>
+      </header>
+      <div class="tp-content-card-body">
+        <p>
+          Creates new pages on top of existing applications.
+        </p>
+      </div>
+    </a>
+  </div>
+</div>
+
+# Application templates
 
 With Taipy application templates, you can easily initiate a new Taipy application as a starting
 point for your project with best practices for code organization. Available application templates:
@@ -7,6 +44,8 @@ point for your project with best practices for code organization. Available appl
 [:material-arrow-right: Default application template](applications/default_app.md),
 
 [:material-arrow-right: Scenario management application template](applications/sdm_app.md),
+
+# Page templates
 
 Taipy also provides page templates, which can be used to create new pages on top of the existing
 application. Once generated, the pages can be easily customized and plugged into the application.

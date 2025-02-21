@@ -1,15 +1,12 @@
-Building a Taipy application with multiple complex scenarios usually requires a
-significant amount of time and effort, in particular at the beginning of a project
-when the user interface requirements are not completely stable. This can delay the
-time-to-market and increase development costs.
+The scenario management template provides a foundational structure for applications
+requiring scenario-based analysis and data management. It's designed to help users create, 
+manage, and compare different scenarios to facilitate decision-making and what-if
+analyses. It is ideal for applications in forecasting, simulation, and optimization, where
+multiple scenarios need to be evaluated and compared.
 
-To reduce the development time, Taipy provides a scenario management application template,
-which leverages Taipy visual elements to speed up bootstrapping a standard application.
-
-Out-of-the-box, the scenario management application is a multi-page Taipy application
-that allows the user to visualize and manage scenarios and data nodes. The user can select a
-scenario, view its directed acyclic graph (DAG), manage its data nodes, upload data files,
-and submit the scenario for execution.
+Out of the box, the template provides a multi-page application structure with two pages predefined:
+- A scenario page to select, visualize, submit, analyze, and manage scenarios and data nodes. 
+- A job page to monitor and manage submissions and jobs.
 
 <figure>
   <img src="../img/sdm_app_template_with_scenario_dark.jpeg" class="visible-dark" />
@@ -98,12 +95,12 @@ sections describe each question in detail.
 ## 4. With TOML Config
 
 - Specifies whether the application will use TOML configuration files, otherwise the configuration
-  will be in a Python file.
+  will be in generated in a Python script file.
 - The default value is "No".
 
 ## 5. With a new Git repository
 
-- Specifies whether the application will be initialized as a new Git repository.
+- Specifies whether the application directory should be initialized as a new Git repository.
 - The default value is "No".
 
 ## 6. With Docker deployment
@@ -148,7 +145,7 @@ creation process. Here is a brief overview of the key components:
 - *algos/*: Contains the *algos.py* file, designed to contain various Python functions used to
     configure tasks.
 - *config/*: Contains the *config.py* file, where you can put your application's configuration.
-    The configuration will be imported into the main application file.
+    The configuration will be imported by the main application file.
 - *pages/*: Contains the application pages.
     - *root.py* is the root page of the application, which layouts the application.
         It includes a navigation bar, and a sidebar with the
@@ -171,7 +168,7 @@ creation process. Here is a brief overview of the key components:
 - *main.py*: The main Python file of the application.
 - *requirements.txt*: Contains the Python dependencies required by the application.
 
-# Customizing the application
+# How to customize the application
 
 Everything in the generated application can be updated to fit your needs. It includes
 the Python code, the configuration files, and any other resources. Specifically, in
@@ -185,8 +182,8 @@ functions used to configure tasks. The functions are strongly use-case dependent
 for example, cleaning data, performing analysis, or running simulations, among other
 tasks.
 
-In the *algos.py* file, the `clean_data()` method is provided as a placeholder. You can
-edit/replace the placeholder method `clean_data()` and add your tasks' functions here.
+In the `algos.py` file, the *clean_data()* function is provided as a placeholder. You can
+edit or replace the function body and add your tasks' functions here.
 
 ```python title="algos/algos.py"
 def clean_data(df, replacement_type):
@@ -216,11 +213,11 @@ import these functions and use them to configure various tasks for your applicat
 
 ## Customizing the configuration
 
-The *config/config.py* file contains the `configure()` method, which will be called in
+The *config/config.py* file contains the `configure()` function, which will be called in
 the main application file to configure the application.
 
 If your answer to the ["With TOML Config"](#4-with-toml-config) question was "No"
-(as default), the placeholder configuration will be stored in the `configure()` method
+(the default), the placeholder configuration will be stored in the `configure()` function
 [as Python code](../../userman/advanced_features/configuration/advanced-config.md#python-code-configuration). 
 Import the added functions from the *algos/algos.py* file and use them to configure the tasks.
 
@@ -236,7 +233,7 @@ If your answer to the ["With TOML Config"](#4-with-toml-config) question was "Ye
 the placeholder configuration will be stored in `config.toml` file. Update the
 `config.toml` file to configure the application to your specific use case, or you can
 use [Taipy Studio](../../userman/ecosystem/studio/index.md) for generating a TOML
-file that can be loaded in the `configure()` method.
+file that can be loaded in the `configure()` function.
 
 !!! note "Loading the TOML configuration"
 
@@ -263,7 +260,7 @@ In *pages/scenario_page/scenario_page.py*, you can customize the
 the [scenario_dag](../../refmans/gui/viselements/corelements/scenario_dag.md), and the
 [data_node](../../refmans/gui/viselements/corelements/data_node.md) visual elements to display
 the information of the selected scenario and data node, as well as modifying the
-`notify_on_submission()` method to handle the notification of a scenario's submission.
+`notify_on_submission()` function to handle the notification of a scenario's submission.
 
 # How to run the application
 

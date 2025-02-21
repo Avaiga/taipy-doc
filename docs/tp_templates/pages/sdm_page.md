@@ -126,20 +126,20 @@ creation process. Here is a brief overview of the key components:
 Everything in the generated page can be updated to precisely fit your specific requirements.
 
 The grid layout of the page can be customized via the
-[layout](../../refmans/gui/viselements/generic/layout.md) visual element.
+[layout](../../refmans/gui/viselements/generic/layout.md) block.
 
 For managing scenarios, you can customize the
 [scenario_selector](../../refmans/gui/viselements/corelements/scenario_selector.md)
-and [scenario](../../refmans/gui/viselements/corelements/scenario.md) visual elements which
+and [scenario](../../refmans/gui/viselements/corelements/scenario.md) controls which
 allow the user to select and manage the scenarios respectively. The DAG of the scenario is shown
-by the [scenario_dag](../../refmans/gui/viselements/corelements/scenario_dag.md) visual element.
+by a [scenario_dag](../../refmans/gui/viselements/corelements/scenario_dag.md) control.
 
-You can also modify the `notify_on_submission()` method to handle the notification of a scenario's
+You can also modify the *notify_on_submission()* function to handle the notification of a scenario's
 submission.
 
 For managing data nodes, you can customize the
 [data_node_selector](../../refmans/gui/viselements/corelements/data_node_selector.md)
-and [data_node](../../refmans/gui/viselements/corelements/data_node.md) visual elements which
+and [data_node](../../refmans/gui/viselements/corelements/data_node.md) controls which
 allow the user to select and manage the data nodes respectively.
 
 You can also add more content to the page such as descriptions, or other
