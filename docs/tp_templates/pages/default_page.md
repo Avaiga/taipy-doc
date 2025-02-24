@@ -11,15 +11,16 @@ page with a best practice for code organization.
 # How to create a page
 
 As its name suggests, the default page template is used if no template name is provided. To create
-the page from the default template, change to the folder of the application in which you want to create the page and
-run `taipy create --page default` from the CLI. Then answer a few questions to customize your page.
+the page from the default template, change to the folder of the application in which you want to
+create the page and run `taipy create --page default` from the CLI. Then answer a few questions to
+customize your page.
 
 ```console
 $ taipy create --page default
-[1/2] Page title (page_example):
-[2/2] The folder that contains the pages (pages):
+[1/2] Page name (page_example):
+[2/2] Page folder (pages):
 
-New Taipy page has been created at ./pages/page_example
+The new Taipy page has been created at pages/page_example
 Please import the new page in your main application to use it.
 ```
 
@@ -31,12 +32,12 @@ Please import the new page in your main application to use it.
 Each question in the CLI corresponds to a specific aspect of the page. The following sections
 describe each question in detail.
 
-## 1. Page title
+1. Page name
 
-- Specifies the title of the page.
+- Specifies the name of the page.
 - The default value is "page_example".
 
-## 2. The folder that contains the pages
+2. Page folder
 
 - Specifies the path of the folder that contains the generated page.
 - The path is relative to the current working directory. The folder will be created if not exist.
@@ -55,12 +56,12 @@ pages/
 └──── __init__.py
 ```
 
-Your page's folder structure may vary depending on the answers you provided during the
-creation process. Here is a brief overview of the key components:
+Your page's folder structure may vary depending on the answers you provided during the creation
+process. Here is a brief overview of the key components:
 
-- *pages/*: The folder that contains the page specified in the second question.
-    - *page_example/page_example.py* contains the content of the page.
-    - *\_\_init\_\_.py* is the file that imports the newly created page in the `pages` package.
+- `pages/`: The folder that contains the page specified in the second question.
+    - `page_example/page_example.py` contains the content of the page.
+    - `\_\_init\_\_.py` is the file that imports the newly created page in the `pages` package.
 
 # Customizing the page
 

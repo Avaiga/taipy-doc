@@ -20,8 +20,34 @@ $ taipy create --application sdm
 
 Taipy currently supports the following application templates:
 
-- [Default application template](../tp_templates/applications/default_app.md)
-- [Scenario management application template](../tp_templates/applications/sdm_app.md)
+- [Default application template](../../../tp_templates/applications/default_app.md)
+- [Scenario management application template](../../../tp_templates/applications/sdm_app.md)
+
+# Create a Taipy page from a template
+
+Taipy also provides page templates, which can be used to create new pages on top of the existing
+application. Once generated, the pages can be easily customized and plugged into the application.
+
+!!! note "Available in Taipy Enterprise edition"
+
+    The page templates are only available in the [Taipy Enterprise Edition](https://taipy.io/enterprise).
+
+    [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
+
+To create a new Taipy page from a page template, you can run `taipy create --page {page-template}`
+from the CLI, then answer a few questions to customize your page.
+```console
+$ taipy create --page default
+```
+
+Taipy currently supports the following page templates:
+
+- [Default page template](../../../tp_templates/pages/default_page.md)
+- [Root page template](pages/root_page.md),
+- [Data management page template](pages/data_management_page.md),
+- [Scenario management page template](pages/sdm_page.md),
+- [Job management page template](pages/job_management_page.md),
+- [Login page template](pages/login_page.md),
 
 
 # Application templates list

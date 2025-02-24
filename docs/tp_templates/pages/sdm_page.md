@@ -12,30 +12,18 @@ To reduce the development time, Taipy provides a scenario management page templa
 designed as a best practice page for managing scenarios and data nodes in a Taipy application by
 leveraging Taipy visual elements.
 
-Out-of-the-box, the scenario management page allows the user to perform various operations on
-scenarios and data nodes, such as select a scenario, view its directed acyclic graph (DAG), manage
-and visualize its data nodes, upload data files, and submit the scenario for execution.
-
 <figure>
   <img src="../img/sdp_template_dark.jpeg" class="visible-dark" />
   <img src="../img/sdp_template_light.jpeg" class="visible-light"/>
-  <figcaption>Taipy scenario management page created by the scenario management page template
-  out-of-the-box.</figcaption>
+  <figcaption>Out-of-the-box Taipy scenario management page</figcaption>
 </figure>
 
-This page template offers several key benefits:
-
-- **Accelerated Development**: By leveraging scenario and data management visual elements,
-    developers can quickly bootstrap a standard page, saving significant development time to focus
-    on delivering business value more efficiently.
-- **Ease of Use**: The page template is designed to be user-friendly, with a simple CLI interface
-    that guides developers through the page creation process on top of existing application. The
-    pages then can be easily customized and plugged into the application.
-- **Comprehensive Features**: The template provides a best-practice page scaffold for a scenario
-    management page, which supports a wide range of functionalities, providing a comprehensive
-    solution for various use cases.
-- **Customization**: The template provides high flexibility and customization options on page
-    creation, allowing developers to tailor the page to meet specific requirements and use cases.
+Out-of-the-box, the scenario management page allows the user to perform various operations on
+scenarios and data nodes, including:
+- select a scenario
+- view the directed acyclic graph (DAG) of the selected scenario
+- manage and visualize selected scenario's data nodes
+- submit the selected scenario for execution
 
 # How to create a page
 
@@ -46,21 +34,17 @@ questions to customize your page.
 ```console
 $ taipy create --page sdm
   [1/4] Page title (scenario_management_page):
-  [2/4] The folder that contains the pages (pages):
-  [3/4] There are binding variables in the page.
-If the variables need to be imported from a different page,
+  [2/4] Page folder (pages):
+  [3/4] If the following variables need to be bound to an existing variables,
 please specify the module and the variable name separated by a space
-(e.g. ..main selected_scenario):
+(e.g. .root selected_scenario):
 selected_scenario ():
   [4/4] selected_data_node ():
 
-New Taipy page has been created at ./pages/scenario_management_page
+The new Taipy page has been created at pages/scenario_management_page
 
-The following binding variables have been created for the page: selected_scenario, selected_data_node.
-You can replace the binding variables with your own variables in the page content.
+The following variables have been created for the page: selected_scenario, selected_data_node.
 Please import the new page in your main application to use it.
-
-For more information, please refer to the Multi-page application tutorial at https://docs.taipy.io/en/latest/tutorials/visuals/3_multipage_application/
 ```
 
 ??? info "Default answers"
@@ -71,34 +55,34 @@ For more information, please refer to the Multi-page application tutorial at htt
 Each question in the CLI corresponds to a specific aspect of the page. The following
 sections describe each question in detail.
 
-## 1. Page title
+1. Page title
 
 - Specifies the title of the page.
 - The default value is "scenario_management_page".
 
-## 2. The folder that contains the pages
+2. Page folder
 
 - Specifies the path of the folder that contains the generated page.
 - The path is relative to the current working directory. The folder will be created if not exist.
 - The default value is "pages".
 
-## 3. Binding variable for "selected_scenario"
+3. Bind the *selected_scenario* variable
 
-- Specifies the binding variable for the "selected_scenario" in the page content.
-- The binding variable for the "selected_scenario" is used to store the scenario selected by the
-user in the page. For more information, please refer to
-[Binding variables](../../userman/gui/binding.md).
-- By default, the binding variable is created in the page. You can import this variable to another
-    page to share the scenario selected by the user.
-- If there is already a binding variable with the same purpose from a different page, please
-    specify the module and the variable name separated by a space. It will be imported automatically
-    to the scenario management page.
-
-## 4. Binding variable for "selected_data_node"
-
-- Specifies the binding variable for the "selected_data_node" in the page content.
-- The binding variable for the "selected_data_node" is used to store the data node selected by the
+- The *selected_scenario* stores the scenario selected by the
 user in the page.
+- By default, the *selected_scenario* variable is defined in the page. You can import this variable to another
+    page to share the scenario selected by the user. For more information, please refer to
+[Binding variables](../../userman/gui/binding.md).
+- If there is already an existing variable with the same purpose from a different page, please
+    specify the module and the variable name separated by a space. It will be imported automatically
+    to the scenario management page. For example, if there is a *selected_sc* variable in the root
+    page and you want to bind that to the data controls, you can specify ".root selected_sc".
+
+4. Bind the *selected_data_node* variable
+
+- The *selected_data_node* variable stores the data node selected by the
+user in the page. You can import this variable to another
+    page to share the data node selected by the user.
 
 # Page description
 
@@ -116,10 +100,10 @@ pages/
 Your page's folder structure may vary depending on the answers you provided during the
 creation process. Here is a brief overview of the key components:
 
-- *pages/*: The folder that contains the page specified in the second question.
-    - *scenario_management_page/scenario_management_page.py* contains the layout and the content
+- `pages/`: The folder that contains the page specified in the second question.
+    - `scenario_management_page/scenario_management_page.py` contains the layout and the content
     of the page.
-    - *\_\_init\_\_.py* is the file that imports the newly created page in the `pages` package.
+    - `\_\_init\_\_.py` is the file that imports the newly created page in the `pages` package.
 
 # Customizing the page
 
@@ -165,6 +149,6 @@ if __name__ == "__main__":
     gui.run()
 ```
 
-You can also explicitly import the `selected_scenario` and `selected_data_node` binding variables
+You can also explicitly import the *selected_scenario* and *selected_data_node* variables
 from the newly created page to a different page to share the scenario and data node selected by
 the user.

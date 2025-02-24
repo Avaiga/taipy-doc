@@ -14,17 +14,7 @@ practice page for a Taipy root page.
 Out-of-the-box, the root page defines the overall layout of the application, including the title,
 navigation bar, and the content area.
 
-This page template offers several key benefits:
-
-- **Ease of Use**: The page template is designed to be user-friendly, with a simple CLI
-    interface that guides developers through the page creation process on top of existing
-    application. The pages then can be easily customized and plugged into the application.
-- **Customization**: The template provides high flexibility and customization options on page
-    creation, allowing developers to tailor the page to meet specific requirements and use cases.
-
 # How to create a page
-
-<!-- TODO: The root page should be the final page of the application. -->
 
 To create the page from the root page template, change to the folder of the application in which
 you want to create the page and run `taipy create --page root` from the CLI. Then answer a few
@@ -33,14 +23,12 @@ questions to customize your page.
 ```console
 $ taipy create --page root
   [1/4] Page title (root):
-  [2/4] The folder that contains the pages (pages):
+  [2/4] Page folder (pages):
   [3/4] Application title (Taipy Application):
-  [4/4] Variable that contains the dictionary of application pages (pages):
+  [4/4] Pages collection variable (pages):
 
-New Taipy root page has been created at ./pages/root.py
+The new Taipy root page has been created at pages/root.py
 To use the root page, please import it in your main application and make sure the main application contains the "pages" dictionary of the pages.
-
-For more information, please refer to the Multi-page application tutorial at https://docs.taipy.io/en/latest/tutorials/visuals/3_multipage_application/
 ```
 
 ??? info "Default answers"
@@ -51,25 +39,25 @@ For more information, please refer to the Multi-page application tutorial at htt
 Each question in the CLI corresponds to a specific aspect of the page. The following
 sections describe each question in detail.
 
-## 1. Page title
+1. Page title
 
 - Specifies the title of the page.
 - The default value is "data_node_management_page".
 
-## 2. The folder that contains the pages
+2. Page folder
 
 - Specifies the path of the folder that contains the generated page.
 - The path is relative to the current working directory. The folder will be created if not exist.
 - The default value is "pages".
 
-## 3. Application title
+3. Application title
 
 - Specifies the title of the application.
 - The default value is "Taipy Application".
 
-## 4. Variable that contains the dictionary of application pages
+4. Pages collection variable
 
-- Specifies the variable that contains the dictionary of application pages in the main application.
+- Specifies the variable that contains the pages collection in the main application.
     - For a multi-page Taipy application, it is recommended to provide a dictionary of pages to the
        `Gui^` service.
     - This is used to build the navigation bar.
@@ -91,9 +79,9 @@ pages/
 Your page's folder structure may vary depending on the answers you provided during the
 creation process. Here is a brief overview of the key components:
 
-- *pages/*: The folder that contains the page specified in the second question.
-    - *root.py* contains the content of the newly created root page.
-    - *\_\_init\_\_.py* is the file that imports the newly created page in the `pages` package.
+- `pages/`: The folder that contains the page specified in the second question.
+    - `root.py` contains the content of the newly created root page.
+    - `\_\_init\_\_.py` is the file that imports the newly created page in the `pages` package.
 
 # Customizing the page
 

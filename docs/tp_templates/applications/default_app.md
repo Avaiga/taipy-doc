@@ -6,25 +6,22 @@ visual elements.
 <figure>
   <img src="../img/default_app_template_with_auth_dark.jpg" class="visible-dark" />
   <img src="../img/default_app_template_with_auth_light.jpg" class="visible-light"/>
-  <figcaption>A multi-page Taipy application with authentication created by the default application template out-of-the-box</figcaption>
+  <figcaption>Out-of-the-box multi-page Taipy application with built-in authentication</figcaption>
 </figure>
 
-This default template offers several key benefits:
+The template provides support for a wide range of functionalities, including:
 
-- **Ease of Use**: The template is designed to be user-friendly, with a simple CLI
-    interface that guides developers through the application creation process.
-- **Comprehensive Features**: The template supports a wide range of functionalities, including
-    multi-page support, authentication, scenario management, Rest API, Git and Docker support.
-- **Accelerated Development**: By leveraging the wide range of features provided by the template,
-    developers can quickly bootstrap a standard application, saving significant development time to
-    focus on delivering business value more efficiently.
-- **Customization**: The template provides high flexibility and customization options on application
-    creation. The resulting application is also highly customizable with placeholders, allowing
-    developers to tailor the application to meet specific requirements and use cases.
-- **Deployment-Ready**: With support for Git and Docker, the template provides helpers for both
-    development and production environments.
+- Multi-page application structure
+- Authentication
+- Scenario management
+- Rest API
+- Git repository setup
+- Docker setup
 
 # How to create an application
+
+The template is designed to be user-friendly, with a simple CLI interface that guides you through
+the application creation process.
 
 As its name suggests, the default template is used if no template name is provided. To create the
 application from the default template, change to the folder in which you want to create the
@@ -47,10 +44,10 @@ $ taipy create --application default
     2 - For development
     3 - For production
     Choose from [1/2/3] (1):
-New Taipy application has been created at ./taipy_application
+The new Taipy application has been created at taipy_application
 
 To start the application, change directory to the newly created folder:
-    cd ./taipy_application
+    cd taipy_application
 
 You can then run the application as follows:
     taipy run main.py
@@ -70,22 +67,22 @@ sections describe each question in detail.
 
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
-## 1. Application root folder
+1. Application root folder
 
 - Specifies the root folder of the application.
 - The default value is "taipy_application".
 
-## 2. Application main Python file
+2. Application main Python file
 
 - Sets the name of the main Python file (entry point) of the application.
 - The default value is "main.py".
 
-## 3. Application title
+3. Application title
 
 - Specifies the title displayed in the web application.
 - The default value is "Taipy Application".
 
-## 4. With multi-pages
+4. With multi-pages
 
 - Specifies whether the application is a single-page or multi-page.
 - For a multi-page application, enter the page names separated by spaces. If left blank, the
@@ -95,7 +92,7 @@ sections describe each question in detail.
       pages. You can add content to the pages as needed.
 - The default value is an empty string, which creates a single-page application.
 
-## 5. With Authentication
+5. With Authentication
 
 - Indicates whether the application includes authentication.
 - If yes, a login page and a basic setup for configuring authentication is included
@@ -108,7 +105,7 @@ sections describe each question in detail.
       You can customize the authentication method as needed.
 - The default value is "No".
 
-## 6. With scenario management
+6. With scenario management
 
 - Specifies whether the application uses scenario management.
 - If yes:
@@ -121,18 +118,18 @@ sections describe each question in detail.
       they will be imported by the main application file.
 - The default value is "No".
 
-## 7. With a Rest API
+7. With a Rest API
 
 - Specifies whether the application uses Taipy Rest.
 - If yes, the Taipy `Rest^` service is included in the application.
 - The default value is "No".
 
-## 8. With a new Git repository
+8. With a new Git repository
 
 - Specifies whether the application directory should be initialized as a new Git repository.
 - The default value is "No".
 
-## 9. With Docker deployment
+9. With Docker deployment
 
 - Specifies Docker support for the application.
 - Options:
@@ -163,6 +160,8 @@ taipy_application/
 │   ├──── page_custom/
 │   └──── root.py
 │
+├──── .taipyignore
+├──── .gitignore
 ├──── docker-compose.yml
 ├──── Dockerfile
 ├──── main.py
@@ -172,23 +171,26 @@ taipy_application/
 Your application's folder structure may vary depending on the options you selected during the
 creation process. Here is a brief overview of the key components:
 
-- *algorithms/*: Contains the *algorithms.py* file, designed to contain various Python functions
+- `algorithms/`: Contains the `algorithms.py` file, designed to contain various Python functions
     used to configure tasks for the scenario management feature.
-- *configuration/*: Contains the configuration for the application. The configuration will
+- `configuration/`: Contains the configuration for the application. The configuration will
     be imported by the main application file.
-    - *config.py* contains the configuration for the scenario management feature.
-    - *auth_config.py* contains the configuration for the authentication feature.
-- *pages/*: Contains the application pages if the application is multi-page.
-    - *root.py* is the root page of the application, which includes a
+    - `config.py` contains the configuration for the scenario management feature.
+    - `auth_config.py` contains the configuration for the authentication feature.
+- `pages/`: Contains the application pages if the application is multi-page.
+    - `root.py` is the root page of the application, which includes a
         [navigation bar](../../refmans/gui/viselements/generic/navbar.md) visual element.
-    - *login/* contains the login page for the authentication feature using the
+    - `login/` contains the login page for the authentication feature using the
         [login](../../refmans/gui/viselements/generic/login.md) visual element.
-    - *admin/* contains an example admin page for the authentication feature that only authenticated
+    - `admin/` contains an example admin page for the authentication feature that only authenticated
         users with the "TAIPY_ADMIN" role can access.
-- *docker-compose.yml* and *Dockerfile*: The Docker configuration for building and running the
+- `.taipyignore`: Specifies files to be protected when running the web server. Please refer to the
+    [Protect private files](../../userman/run-deploy/run/protect_files.md) page for more
+    information.
+- `docker-compose.yml` and `Dockerfile`: The Docker configuration for building and running the
     application as a Docker container.
-- *main.py*: The main Python file of the application.
-- *requirements.txt*: Contains the Python dependencies required by the application.
+- `main.py`: The main Python file of the application.
+- `requirements.txt`: Contains the Python dependencies required by the application.
 
 # How to customize the application
 
@@ -197,12 +199,12 @@ the Python code, the configuration files, placeholders, and any other resources.
 
 ## Scenarios, tasks, and data nodes
 
-For the scenario management feature, the *algorithms/algorithms.py* file is designed to contain the
+For the scenario management feature, the `algorithms/algorithms.py` file is designed to contain the
 various Python functions used to configure tasks. The functions are strongly use-case dependent, for
 example, cleaning data, performing analysis, or running simulations, among other tasks.
 
 Edit the placeholder functions with your specific functions. The functions will be imported by the
-*algorithms/\_\_init\_\_.py* file.
+`algorithms/\_\_init\_\_.py` file.
 
 ```python title="algorithms/algorithms.py"
 def clean_data(df, replacement_type):
@@ -210,8 +212,8 @@ def clean_data(df, replacement_type):
     return df
 ```
 
-The *configuration/config.py* file is designed to contain the configuration of the application.
-Import the functions from the *algorithms* folder and edit the placeholder with your specific
+The `configuration/config.py` file is designed to contain the configuration of the application.
+Import the functions from the `algorithms` folder and edit the placeholder with your specific
 configuration.
 
 ```python title="configuration/config.py"
@@ -255,34 +257,41 @@ the main file to use the configuration for the scenario management feature.
 
 ## Authentication
 
-For the authentication feature, the *configuration/auth_config.py* file is designed to contain the
+For the authentication feature, the `configuration/auth_config.py` file is designed to contain the
 configuration of the authentication protocol.
 
 By default, the authentication will use the
 [Taipy protocol](../../userman/advanced_features/auth/authentication.md#taipy-protocol). You can
-customize the authentication protocol by editing the placholder list of users and roles, or use a
+customize the authentication protocol by editing the placeholder list of users and roles, or use a
 different supported protocols.
 
-The role required to access the admin page is defined by the `admin_page_filter` variable by the
-`AnyOf^` filter.
+The role required to access the admin page is defined by the *admin_page_filter* filter variable
+which is a `AnyOf^` instance. By default, the *filters* only allow "TAIPY_ADMIN" role to access the
+admin page. You can customize the filter to allow other roles to access the admin page.
 
-## Customizing the pages
+```python title="configuration/auth_config.py"
+
+...
+admin_page_filter = AnyOf(filters=["TAIPY_ADMIN"], success="admin", failure="login")
+```
+
+## Pages
 
 If the application is single-page, the homepage content is in the main Python file. You can edit
 the content of the homepage placeholder to fit your specific application requirements.
 
-If the application is multi-page, the *pages/* folder contains the application pages. You can
+If the application is multi-page, the `pages/` folder contains the application pages. You can
 customize the content of each page:
 
-- *pages/root.py* is the root page of the application. Here, you can customize the navigation bar
+- `pages/root.py` is the root page of the application. Here, you can customize the navigation bar
     of the application in the [navbar](../../refmans//gui/viselements/generic/navbar.md) visual
     element's definition.
-- For the authentication feature, *pages/login/* contains the login page for the authentication
-    feature, and *pages/admin/* contains the page that only authenticated users with the
+- For the authentication feature, `pages/login/` contains the login page for the authentication
+    feature, and `pages/admin/` contains the page that only authenticated users with the
     "TAIPY_ADMIN" role can access. You can customize the login page in the
     [login](../../refmans/gui/viselements/generic/login.md) visual element's definition.
 - If you provide an answer to the [question 4](#4-with-multi-pages), the pages you specified will
-    be created in the *pages/* folder and are imported automatically in the *pages/\_\_init\_\_.py*
+    be created in the `pages/` folder and are imported automatically in the `pages/\_\_init\_\_.py`
     file. You can customize the content of each page as needed.
 
 # How to run the application
@@ -291,7 +300,7 @@ To run the application, change to the newly created folder and run the applicati
 `taipy run main.py` command.
 
 ```console
-$ cd ./taipy_application
+$ cd taipy_application
 $ taipy run main.py
 ```
 
@@ -299,8 +308,8 @@ If the newly created application supports Docker, you can also run the applicati
 `docker-compose` command.
 
 ```console
-$ cd ./taipy_application
+$ cd taipy_application
 $ docker-compose up --build -d
 ```
 
-You can now access the application in your browser at `http://localhost:5000`.
+You can now access the application in your browser at http://localhost:5000.

@@ -5,7 +5,6 @@ comfortable developer-friendly environment through the `create` command.
 It significantly reduces the time-to-market, increases developer efficiency, and enforces
 Taipy good practices.
 
-<!-- Quick accesses -->
 <div class="tp-row tp-row--gutter-sm">
   <div class="tp-col-12 tp-col-md-4 d-flex">
     <a class="tp-content-card tp-content-card--primary" href="#application-templates">
