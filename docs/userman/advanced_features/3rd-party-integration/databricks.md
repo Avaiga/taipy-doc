@@ -71,7 +71,7 @@ To configure a Databricks SQL data node, use the `configure_databricks_table_dat
 
     ```python linenums="1"
     {%
-    include-markdown "./code-example/data-node-config/data-node-config-table-databricks.py"
+    include-markdown "./code-example/data-node-config-table-databricks.py"
     comments=false
     %}
     ```
@@ -152,7 +152,7 @@ To configure a Databricks SQL data node, use the `configure_databricks_sql_data_
 
     ```python linenums="1"
     {%
-    include-markdown "./code-example/data-node-config/data-node-config-sql-databricks.py"
+    include-markdown "./code-example/data-node-config-sql-databricks.py"
     comments=false
     %}
     ```
