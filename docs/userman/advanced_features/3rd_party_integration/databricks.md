@@ -40,8 +40,13 @@ section, the following parameters can be provided:
     can be changed at runtime right after its instantiation.<br/>
 - _**profile**_ represents additional options of Databricks credential profile to be used when reading
     and writing to the table.<br/>
+- _**conn_string**_ represents the Databricks connection string starting with
+    "sc://foo-workspace.cloud.databricks.com/;token=dapi1234567890;x-databricks-cluster-id=0301-0300-abcdefab".
+- _**host**_ represents Databricks Workspace URL such as https://foo-workspace.cloud.databricks.com/"
 - _**cluster_id**_ represents additional options of the ID of Databricks cluster to be used when reading
     and writing to the table.<br/>
+- _**token**_ indicates the Databricks personal access token used to authenticate into the cluster and on
+                whose behalf the queries are executed.
 - _**exposed_type**_ indicates the data type returned when reading the data node (more
     examples of reading from a Databricks Table data node with different *exposed_type* are available
     in the [read/write a data node](data-node-usage.md#databricks-table) documentation):
@@ -80,7 +85,14 @@ To configure a Databricks SQL data node, use the `configure_databricks_table_dat
 
     To configure a Databricks Table data node, it is equivalent to using the method
     `Config.configure_databricks_table_data_node()^` or the method `Config.configure_data_node()^`
-    with parameter `storage_type="databricks_table"`.
+    with parameter `storage_type="databricks_table"`. When configuring a Databricks Table Data Node,
+    either the profile parameter, or the conn_string parameter, or a combination of the profile and
+    cluster_id, or a combination of the host, token and cluster_id parameters should be specified,
+    but not all four. If none of these parameters are provided, the default Databricks profile,
+    created with databricks-cli, will be used. The value the host, token and cluster_id parameters
+    can also be provided as environment parameters under the name DatabricksToken, DatabricksHost,
+    DatabricksClusterId. If multiple combinations are provided, the following order will be prioritized:
+    profile with cluster_id, conn_string, host with token and cluster_id.
 
 
 ## Databricks SQL Data Node
@@ -105,8 +117,13 @@ method can be used. In addition to the generic parameters described in the
 - _**append_query_parameter**_ represents parameters to be used when executing the append query. Default is None
 - _**profile**_ represents additional options of Databricks credential profile to be used when reading
     and writing to the table.<br/>
+- _**conn_string**_ represents the Databricks connection string starting with
+    "sc://foo-workspace.cloud.databricks.com/;token=dapi1234567890;x-databricks-cluster-id=0301-0300-abcdefab".
+- _**host**_ represents Databricks Workspace URL such as https://foo-workspace.cloud.databricks.com/"
 - _**cluster_id**_ represents additional options of the ID of Databricks cluster to be used when reading
     and writing to the table.<br/>
+- _**token**_ indicates the Databricks personal access token used to authenticate into the cluster and on
+                whose behalf the queries are executed.
 - _**exposed_type**_ indicates the data type returned when reading the data node (more
     examples of reading from a Databricks Table data node with different *exposed_type* are available
     in the [read/write a data node](data-node-usage.md#databricks-table) documentation):
@@ -148,7 +165,14 @@ To configure a Databricks SQL data node, use the `configure_databricks_sql_data_
 
     To configure a Databricks SQL data node, it is equivalent to using the method
     `Config.configure_databricks_sql_data_node()^` or the method `Config.configure_data_node()^`
-    with parameter `storage_type="databricks_sql"`.
+    with parameter `storage_type="databricks_sql"`. When configuring a Databricks SQL Data Node,
+    either the profile parameter, or the conn_string parameter, or a combination of the profile and
+    cluster_id, or a combination of the host, token and cluster_id parameters should be specified,
+    but not all four. If none of these parameters are provided, the default Databricks profile,
+    created with databricks-cli, will be used. The value the host, token and cluster_id parameters
+    can also be provided as environment parameters under the name DatabricksToken, DatabricksHost,
+    DatabricksClusterId. If multiple combinations are provided, the following order will be prioritized:
+    profile with cluster_id, conn_string, host with token and cluster_id.
 
 ## Tasks
 
