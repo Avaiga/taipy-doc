@@ -53,7 +53,7 @@ for all its pages.
 !!! tip "Running multiple services"
 
     If you need to run the Taipy GUI service with other Taipy services, you may need
-    to refer to the [Running Taipy services](../../../run-deploy/run/running_services.md)
+    to refer to the [Running Taipy services](../../../operations/running/main-script.md)
     section.
 
 ## Local resources

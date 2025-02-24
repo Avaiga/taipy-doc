@@ -27,7 +27,7 @@ Here are the (optional) configurable properties:
 - _**mode**_: A string that indicates the mode of the version management system.
     Possible values are *"development"* or *"experiment"*. On Enterprise edition of Taipy,
     *production* mode is also available. Please refer to the
-    [Versioning management](../versioning/index.md) documentation page for more details.
+    [Versioning management](../../operations/versioning/index.md) documentation page for more details.
 - _**version_number**_: The identifier of the version. In development mode, the version number
     is ignored.
 - _**force**_: Indicates whether Taipy will override a version even if the configuration has
@@ -75,7 +75,7 @@ In this example, we configure:
       Note that most of the time, the default values can be used.
   - The *mode* of the version management system to experiment mode, and the *version_number* is
       set to "1.0.0".</br>
-      Please refer to the [Version management configuration](../versioning/index.md)
+      Please refer to the [Version management configuration](../../operations/versioning/index.md)
       documentation page for more details.
   - In lines 9, a custom *application_name* property are specified.
 
