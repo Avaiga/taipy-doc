@@ -76,16 +76,22 @@ To configure a Databricks SQL data node, use the `configure_databricks_table_dat
     %}
     ```
 
-    In lines 3-9, we configure a basic Databricks Table data node with the id
+    In lines 4-10, we configure a basic Databricks Table data node with the id
     "historical_temperature". The data node will point to the Databricks table
     "hist_temp". Its *scope* is by default `SCENARIO`. The profile to be used is
     "default" profile with the cluster id is "0123-456789-dbscluster2". The exposed
-    type of this data node will be the default value "spark".
+    type of this data node will be "pandas".
 
-    In lines 11-17, we configure another Databricks Table data node with the identifier
-    log_history". It uses the default `SCENARIO` scope again. The Databricks table name is
-    "hist_log". The profile and cluster id are similar to the previous Databricks Table data
-    node config. The *exposed_type* provided is "polars".
+    In lines 12-17, we configure another Databricks Table data node with the identifier "log_history".
+    It uses the `GLOBAL` scope. The Databricks table name is "hist_log". The credential
+    to connect to Databricks database is provided through `conn_string` with the string
+    `"sc://foo-workspace.cloud.databricks.com/;token=dapi1234567890;x-databricks-cluster-id=0301-0300-abcdefab"`.
+    The exposed type of this data node will be the default value "spark".
+
+    In lines 19-21, we create a global data node of from "log_history" data node config.
+    We then read from this data node, as it returns a `pyspark.DataDataFrame`, we then called
+    `pyspark.DataFrame.show(5)` to display the first 5 rows from the DataFrame.
+
 
 !!! note
 
@@ -157,19 +163,24 @@ To configure a Databricks SQL data node, use the `configure_databricks_sql_data_
     %}
     ```
 
-    In lines 33-41, we configure a basic Databricks SQL data node with the id "historical_temperature".
+    In lines 35-44, we configure a basic Databricks SQL data node with the id "historical_temperature".
     The data node will use the query "SELECT * FROM hist_temp" to read data from Databricks database.
     It will use "build_hist_temp_write_query" function and "build_hist_temp_append_query" function
     to build the write and append queries to write and append data to Databricks database.
-    Its *scope* is by default `SCENARIO`. The profile to be used is "default" profile with the cluster id is
+    Its *scope* is `GLOBAL`. The profile to be used is "default" profile with the cluster id is
     "0123-456789-dbscluster2". The exposed type of this data node will be the default value "spark".
 
-    In lines 33-41, we configure a basic Databricks SQL data node with the id "historical_log".
-    The data node will use the query "SELECT * FROM hist_log" to read data from Databricks database.
-    It will use "build_hist_log_write_query" function and "build_hist_log_append_query" function
-    to build the write and append queries to write and append data to Databricks database.
-    Its *scope* is by default `SCENARIO`. The profile to be used is "default" profile with the cluster id is
-    "0123-456789-dbscluster2". The exposed type of this data node will be the default value "polars".
+    In lines 46-53, we configure a basic Databricks SQL data node with the id "historical_log". The data node
+    will use the query "SELECT * FROM hist_log" to read data from Databricks database. It will use
+    "build_hist_log_write_query" function and "build_hist_log_append_query" function to build the write and
+    append queries to write and append data to Databricks database. Its *scope* is by default `SCENARIO`.
+    The credential to connect to Databricks database is provided through `conn_string` with the string
+    `"sc://foo-workspace.cloud.databricks.com/;token=dapi1234567890;x-databricks-cluster-id=0301-0300-abcdefab"`.
+    The exposed type of this data node will be the default value "polars".
+
+    In lines 55-57, we create a global data node of from "historical_temperature" data node config.
+    We then read from this data node, as it returns a `pyspark.DataDataFrame`, we then called
+    `pyspark.DataFrame.show(5)` to display the first 5 rows from the DataFrame.
 
 !!! note
 
