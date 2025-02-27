@@ -90,7 +90,18 @@ To configure a Databricks SQL data node, use the `configure_databricks_table_dat
 
     In lines 19-21, we create a global data node of from "log_history" data node config.
     We then read from this data node, as it returns a `pyspark.DataDataFrame`, we then called
-    `pyspark.DataFrame.show(5)` to display the first 5 rows from the DataFrame.
+    `pyspark.DataFrame.show(5)` to display the first 5 rows from the DataFrame. A possible return value example:
+
+    +---+
+    |  x|
+    +---+
+    |100|
+    |101|
+    |102|
+    |103|
+    |104|
+    +---+
+    only showing top 5 rows
 
 
 !!! note
@@ -180,7 +191,18 @@ To configure a Databricks SQL data node, use the `configure_databricks_sql_data_
 
     In lines 55-57, we create a global data node of from "historical_temperature" data node config.
     We then read from this data node, as it returns a `pyspark.DataDataFrame`, we then called
-    `pyspark.DataFrame.show(5)` to display the first 5 rows from the DataFrame.
+    `pyspark.DataFrame.show(5)` to display the first 5 rows from the DataFrame. A possible return value example:
+
+    +---+
+    |  x|
+    +---+
+    |100|
+    |101|
+    |102|
+    |103|
+    |104|
+    +---+
+    only showing top 5 rows
 
 !!! note
 
