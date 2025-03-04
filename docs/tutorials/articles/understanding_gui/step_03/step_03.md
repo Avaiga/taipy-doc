@@ -115,6 +115,7 @@ the callback function referenced in the *on_action* property.
 
 ![Interactive GUI](images/result.png){ width=90% : .tp-image-border }
 
-[`notify()`](../../../../refmans/reference/pkg_taipy/pkg_gui/notify/index.md) is a Taipy function that creates a
-[notification](../../../../userman/gui/notifications.md) with some information. The user can pass
-multiple parameters, including the *state*, the *notification_type*, and the *message*.
+[`notify()`](../../../../refmans/reference/pkg_taipy/pkg_gui/notify/index.md) is a Taipy function
+that creates a [notification](../../../../userman/gui/utilities.md#notifications) with some
+information. The user can pass multiple parameters, including the *state*, the *notification_type*,
+and the *message*.

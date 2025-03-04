@@ -77,10 +77,10 @@ Here is the list of the configuration parameters you can use in
   notifications will be sent by the system as well as the browser, should the
   *system_notification* parameter in the call to (`notify()^`) be set to None. If False, the
   default behavior is to not use system notifications.<br/>
-  See the section on [Notifications](../../gui/notifications.md) for details.
+  See the section on [Notifications](../../gui/utilities.md#notifications) for details.
 - <a name="p-notification_duration"></a>*notification_duration* (int, default: 3000): the time,
   in milliseconds, that notifications should remain visible.<br/>
-  See the section on [Notifications](../../gui/notifications.md) for details.
+  See the section on [Notifications](../../gui/utilities.md#notifications) for details.
 - <a name="p-watermark"></a>*watermark* (str, default: "Taipy inside"): a faint text appearing
   on top of all application pages.
 - <a name="p-stylekit"></a>*stylekit* (Union[bool, dict[str, int, float], None]): If True or
@@ -160,7 +160,8 @@ Here is the list of the configuration parameters you can use in
   default, the exposed port number (the one set in the [*port*](#p-port) parameter) is just a
   proxy port to a dynamically generated port so that the user can stop and restart the server
   without depending on how quickly the kernel can clean up its resources.<br/>
-  See the section on [running Taipy GUI in Notebooks](../../operations/running/notebooks.md) for more details.
+  See the section on [running Taipy GUI in Notebooks](../../operations/running/notebooks.md) for
+  more details.
 - <a name="p-single_client"></a>*single_client* (bool, default: False): set to True if only a
   single client can connect. False, which is the default value, indicates that multiple clients
   can connect to the server.<br/>
@@ -218,8 +219,8 @@ Here is the list of the configuration parameters you can use in
     requests.
 
     !!! example "Ngnix configuration"
-        Here is an example using [**ngnix**](https://nginx.org/): the server is configured as a proxy
-        server, serving port 8080 and redirecting the traffic to the Taipy application that is
+        Here is an example using [**ngnix**](https://nginx.org/): the server is configured as a
+        proxy server, serving port 8080 and redirecting the traffic to the Taipy application that is
         running locally on port 5000.<br/>
         Here is what could be indicated in the web server configuration file:
         ```
