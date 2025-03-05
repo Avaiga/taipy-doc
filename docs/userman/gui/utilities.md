@@ -1,9 +1,9 @@
-Taipy GUI provides a set of utility features that enhance application development. These
-functionalities, while not core structural elements like pages or visual components, offer
-convenient ways to interact with the application environment. While these features are not core
-structural elements like pages or visual components, they offer valuable functionality such as user
-notifications for alerts and access to the client’s local storage for data persistence.<br/>
-These utilities help developers build more interactive and dynamic applications with minimal effort.
+Taipy GUI provides a set of utility features that enhance application development. While not core
+structural elements like pages or visual components, these utilities offer useful interactions with
+the application environment.<br/>
+They include features like user notifications for alerts and access to local storage for data
+persistence, enabling developers to build more interactive and dynamic applications with minimal
+effort.
 
 # Notifications
 
