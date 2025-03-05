@@ -392,6 +392,13 @@ defined in page modules can reference all global variables.<br/>
 *show_details*, on the other hand, is a local variable for that module. It is handy to be able to
 define it at the module level since no other module in the application has any use of this variable.
 
+The page is imported and registered in the main script with the following lines:
+```python title="grocery_store.py"
+from grocery_store.stock import page as StockPage
+...
+Gui(pages={ "stock": StockPage }).run()
+```
+
 ## Defining a page as a class
 
 If you prefer an object-oriented approach, you can store page-specific variables inside a dedicated
@@ -469,3 +476,10 @@ encapsulated within the class:
 - These variables are not exposed globally, keeping them isolated from the rest of the application.
 - This ensures that changes to one page do not affect other parts of the application, improving
   modularity and maintainability.
+
+The page is imported and registered in the main script with the following lines:
+```python title="grocery_store.py"
+from grocery_store.sales import SalesPage
+...
+Gui(pages={ "sales": SalesPage() }).run()
+```
