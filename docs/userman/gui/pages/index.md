@@ -298,8 +298,8 @@ scale an application.
 
 Page Modules provide benefits in different areas:
 
-- **Code Organization**: Keeping page definitions in separate files avoids clutter in the main
-  script.
+- **Code Organization**: By placing page definitions in separate files, the main script remains more
+  readable and maintainable.
 - **Scalability**: Applications can easily add, remove, and manage multiple pages as they grow.
 - **Reusability**: Page definitions can be reused across different projects or parts of the
   application.
