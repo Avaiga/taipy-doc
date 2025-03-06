@@ -17,7 +17,7 @@ This is the list of changes to Taipy releases as they were published.
     [Legacy Release Notes](legacy.md) page.
 
     Note that we support the latest major version and the one before that. Because
-    we have released Taipy 4.0, support and documentation for Taipy versions older
+    we have released Taipy 4.X, support and documentation for Taipy versions older
     than 3.0 are disrupted.
 
 # Community edition: 4.1 ( IN PROGRESS )
@@ -39,6 +39,8 @@ This is the list of changes to Taipy releases as they were published.
 
 <h4><strong><code>taipy-core</code></strong> 4.1.0</h4>
 
+- A scenario can now be duplicated with the `Scenario.duplicate()^` method.<br/>
+  See [issue #397](https://github.com/Avaiga/taipy/issues/397).
 - The `ScenarioConfig^` class now exposes a new method `ScenarioConfig.draw()^` to
   export the scenario configuration graph as a PNG file.<br/>
   See [issue #1592](https://github.com/Avaiga/taipy/issues/1592).

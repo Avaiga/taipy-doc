@@ -329,6 +329,57 @@ To set a scenario as _primary_, the `taipy.set_primary()^` method must be used. 
 scenario given as a parameter to the _primary_ scenario of its cycle. If the cycle already had
 a _primary_ scenario it will be demoted: It will no longer be _primary_ for the cycle.
 
+# Duplicate a scenario
+
+A scenario can be duplicated using the `Scenario.duplicate()^` method. This method
+duplicates the scenario and its relevant nested entities (tasks, data nodes, sequences).
+The nested entities are duplicated or not depending on the creation date of the new
+scenario, its cycle, and the various data node scopes.
+
+The `Scenario.duplicate()` method accepts optional parameters:
+
+- A _*date*_ parameter to specify the creation date of the new scenario. If
+    not provided, the new scenario will have the current date-time as the creation date.
+- A _*name*_ parameter to specify the name of the new scenario. If not provided, the
+    new scenario will have the same name as the original scenario.
+- A set of data node configurations to duplicate their data. If not provided, Taipy
+    tries to duplicate all data nodes' data.
+
+!!! warning "Data and data nodes duplication"
+
+    Note that Taipy can only duplicate data for file-based data nodes. For other types
+    of data nodes (sql, mongo, etc.), the new data nodes are created referencing the
+    exact same data as the original data nodes. This can lead to conflicts if the data
+    is modified in one of the scenarios.
+
+    The developer must ensure after the duplication that the data node
+    data is correctly set for the new scenario.
+
+    For example, the table name of a SQL table data node must be manually updated to
+    avoid conflicts.
+
+!!! example
+
+    The code below uses the `monthly_scenario_cfg` configuration imported from the
+    <a href="../code-example/index/my_config.py" download>`my_config.py`</a>
+    module to create and duplicate a scenario.
+
+    ```python linenums="1"
+    {% include-markdown "./code-example/index/duplication.py" comments=false %}
+    ```
+
+    In this example, the `Scenario.duplicate()` method is used to trigger the scenario
+    duplication. The new scenario is created and its attributes are populated with the
+    same values as the original scenario.
+
+??? note "Another syntax."
+    To submit a scenario, you can also use the `tp.duplicate_scenario()^` method:
+
+    ```python linenums="1"
+    {% include-markdown "./code-example/index/duplication-from-taipy-api.py" comments=false %}
+    ```
+
+
 # Delete a scenario
 
 A scenario can be deleted by using `taipy.delete()^` which takes the scenario id as a parameter.
