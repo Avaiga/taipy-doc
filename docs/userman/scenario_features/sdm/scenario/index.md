@@ -336,7 +336,7 @@ duplicates the scenario and its relevant nested entities (tasks, data nodes, seq
 The nested entities are duplicated or not depending on the creation date of the new
 scenario, its cycle, and the various data node scopes.
 
-The `Scenario.duplicate()` method accepts optional parameters:
+The `Scenario.duplicate()^` method accepts optional parameters:
 
 - A _*date*_ parameter to specify the creation date of the new scenario. If
     not provided, the new scenario will have the current date-time as the creation date.
