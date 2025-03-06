@@ -153,12 +153,16 @@ def on_post_build(env):
     """
     Post-build actions for Taipy documentation
     """
-
     log = logging.getLogger("mkdocs")
 
     site_dir = env.conf["site_dir"]
     site_dir_unix = site_dir.replace("\\", "/")
-    site_url = env.conf["site_url"]  # noqa: F841
+    # site_url = env.conf["site_url"]  # noqa: F841
+    if dev_mode := env.conf.get("extra", []).get("dev_mode", False):
+        if isinstance(dev_mode, str):
+            dev_mode = dev_mode.lower() == "true"
+        if dev_mode:
+            log.info("---- DEVELOPMENT MODE ----")
     xrefs = {}
     multi_xrefs = {}
     xrefs_path = "xrefs"
@@ -193,35 +197,37 @@ def on_post_build(env):
                         log.error(f"Couldn't read HTML file {filename}")
                         raise e
 
+                    file_changed = False
+
                     # Remove useless spaces for improved processing
                     # This breaks the code blocks - so needs to avoid the <pre> elements before
                     # we bring it back.
                     # html_content = re.sub(r"[ \t]+", " ", re.sub(r"\n\s*\n+", "\n\n", html_content))
                     # html_content = html_content.replace("\n\n", "\n")
-
-                    html_content = html_content.replace(
-                        '<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">',
-                        '<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">'
-                        + navigation_buttons,
-                    )
+                    if not dev_mode:
+                        html_content = html_content.replace(
+                            '<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">',
+                            '<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">'
+                            + navigation_buttons,
+                        )
                     # Replace references to http://TAIPY_DOCS_URL by relative path
                     new_content = ""
                     last_location = 0
-                    for m in re.finditer(
-                        r"(?<=href=\")http://TAIPY_DOCS_URL(.*?)(?=\")", html_content
-                    ):
-                        new_content += html_content[
-                            last_location : m.start()
-                        ] + os.path.relpath(f"{site_dir_unix}{m[1]}", root).replace(
-                            "\\", "/"
-                        )
-                        last_location = m.end()
-                    if last_location:
-                        html_content = new_content + html_content[last_location:]
+                    if not dev_mode:
+                        for m in re.finditer(r"(?<=href=\")http://TAIPY_DOCS_URL(.*?)(?=\")", html_content):
+                            new_content += html_content[
+                                last_location : m.start()
+                            ] + os.path.relpath(f"{site_dir_unix}{m[1]}", root).replace(
+                                "\\", "/"
+                            )
+                            last_location = m.end()
+                        if last_location:
+                            html_content = new_content + html_content[last_location:]
                     # Rebuild coherent links from TOC to sub-pages
                     ids = find_dummy_h3_entries(html_content)
                     if ids:
                         html_content = remove_dummy_h3(html_content, ids)
+                        file_changed = True
                     # Remove <h1>Index</h1> part of relevant pages
                     INDEX_H1_RE = re.compile(
                         r"<h1>Index</h1>\s*<h2(.*?)>(.*?)</h2>", re.M | re.S
@@ -237,9 +243,7 @@ def on_post_build(env):
                             t_match = USELESS_TITLE_RE.search(before)
                             if t_match:
                                 new_title = re.sub(r"<a\s+.*?</a>", "", new_title)
-                                new_title, n = re.subn(
-                                    r"<code>(.*?)</code>", r"\g<1>", new_title
-                                )
+                                new_title, _ = re.subn(r"<code>(.*?)</code>", r"\g<1>", new_title)
                                 new_title = "Taipy p" + new_title[1:]
                         before = (
                             before[: match.start()] + new_title + before[match.end() :]
@@ -249,16 +253,16 @@ def on_post_build(env):
                             + f"<h1{match.group(1)}>{match.group(2)}</h1>"
                             + html_content[match.end() :]
                         )
+                        file_changed = True
+
                     # """
                     # Collapse doubled <h1>/<h2> page titles
                     REPEATED_H1_H2 = re.compile(
                         r"<h1>(.*?)</h1>\s*<h2\s+(id=\".*?\")>\1(<a\s+class=\"headerlink\".*?</a>)?</h2>",
                         re.M | re.S,
                     )
-                    html_content, n_changes = REPEATED_H1_H2.subn(
-                        "<h1 \\2>\\1\\3</h1>", html_content
-                    )
-
+                    if not dev_mode:
+                        html_content, _ = REPEATED_H1_H2.subn("<h1 \\2>\\1\\3</h1>", html_content)
                     # Replace MUI icons tags: [MUI:<iconName>] -> <svg...><use ...[iconName]/></svg>
                     new_content = ""
                     last_location = 0
@@ -271,13 +275,14 @@ def on_post_build(env):
                         last_location = m.end()
                     if last_location:
                         html_content = new_content + html_content[last_location:]
-
+                        file_changed = True
+ 
                     # Specific processing for Getting Started documentation files
-                    if "getting_started" in filename:
+                    if "getting_started" in filename and not dev_mode:
                         GS_H1_H2 = re.compile(
                             r"<h1>(.*?)</h1>(.*?<h2.*?>\1)<", re.M | re.S
                         )
-                        html_content, n_changes = GS_H1_H2.subn("\\2<", html_content)
+                        html_content, _ = GS_H1_H2.subn("\\2<", html_content)
                         gs_rel_path = (
                             os.path.relpath(site_dir, filename)
                             .replace("\\", "/")
@@ -287,24 +292,17 @@ def on_post_build(env):
                             r"(href=\")https://docs\.taipy\.io/en/latest(.*?\")",
                             re.M | re.S,
                         )
-                        html_content, n_changes = GS_DOCLINK.subn(
-                            f"\\1{gs_rel_path}\\2", html_content
-                        )
+                        html_content, _ = GS_DOCLINK.subn(f"\\1{gs_rel_path}\\2", html_content)
                         GS_IPYNB = re.compile(
                             r"(<a\s*href=\"([^\"]*?)\.ipynb\")\s*>", re.M | re.S
                         )
-                        html_content, n_changes = GS_IPYNB.subn(
-                            r"\1 download>", html_content
-                        )
+                        html_content, _ = GS_IPYNB.subn(r"\1 download>", html_content)
 
                     # Add external link icons (and open in new tab)
                     # Note we want this only for the simple [text](http*://ext_url) cases
-                    EXTLINK = re.compile(
-                        r"<a\s+(href=\"http[^\"]+\">.*?<\/a>)", re.M | re.S
-                    )
-                    html_content, n_changes = EXTLINK.subn(
-                        '<a class="ext-link" target="_blank" \\1', html_content
-                    )
+                    if not dev_mode:
+                        EXTLINK = re.compile(r"<a\s+(href=\"http[^\"]+\">.*?<\/a>)", re.M | re.S)
+                        html_content, _ = EXTLINK.subn('<a class="ext-link" target="_blank" \\1', html_content)
 
                     # Find and resolve automatic cross-references to the Reference Manual
                     # The syntax in Markdown is `(class.)method()^` and similar.
@@ -380,9 +378,12 @@ def on_post_build(env):
                             else:
                                 new_content += "<b>NO CONTENT</b>"
                             new_content += "</a>"
+                        else:
+                            new_content += html_content[last_location : xref.end()]
                         last_location = xref.end()
                     if last_location:
                         html_content = new_content + html_content[last_location:]
+                        file_changed = True
 
                     # Find 'free' crossrefs to the Reference Manual
                     # Syntax in Markdown is [free text]((class.)method()^) and similar
@@ -449,6 +450,7 @@ def on_post_build(env):
                         last_location = xref.end()
                     if last_location:
                         html_content = new_content + html_content[last_location:]
+                        file_changed = True
 
                     # Finding xrefs in 'Parameters', 'Returns' and similar constructs.
                     # These would be <typeName>^ fragments located in potentially
@@ -495,19 +497,20 @@ def on_post_build(env):
                                 else:
                                     log.error(f"{message}{dir2}/{dir1}/{file}")
                         if typing_xref_found:
-                            html_content = html_content.replace(
-                                table_line_to_replace, new_table_line
-                            )
+                            html_content = html_content.replace(table_line_to_replace, new_table_line)
+                            file_changed = True
 
                     # Replace data-source attributes in h<N> tags to links to
                     # files in the appropriate repositories.
                     process = process_data_source_attr(html_content, env)
                     if process[0]:
                         html_content = process[1]
+                        file_changed = True
                     # Replace hrefs to GitHub containing [BRANCH] with proper branch name.
                     process = process_links_to_github(html_content, env)
                     if process[0]:
                         html_content = process[1]
+                        file_changed = True
                     # Shorten Table of contents in REST API files
                     if "rest/apis_" in filename or "rest\\apis_" in filename:
                         REST_TOC_ENTRY_RE = re.compile(
@@ -523,6 +526,7 @@ def on_post_build(env):
                             last_location = toc_entry.end()
                         if last_location:
                             html_content = new_content + html_content[last_location:]
+                            file_changed = True
 
                     # Rename the GUI Extension API type aliases
                     elif "reference_guiext" in filename:
@@ -540,16 +544,12 @@ def on_post_build(env):
                                 new_content += f'<a href="{in_out[2]}"><code>{in_out[1]}</code></a>'
                                 last_location = link.end()
                             if last_location:
-                                html_content = (
-                                    new_content + html_content[last_location:]
-                                )
+                                html_content = new_content + html_content[last_location:]
+                                file_changed = True
                     # Change title of Python reference pages
                     # - Taipy.module.class -> taipy.module.class
                     # - Taipy.module.some function -> taipy.module.some_function
-                    elif (
-                        "refmans/reference" in filename
-                        or "refmans\\reference" in filename
-                    ):
+                    elif "refmans/reference" in filename or "refmans\\reference" in filename:
 
                         def rewrite_title(s: str, start: int, end: int) -> str:
                             return (
@@ -561,14 +561,14 @@ def on_post_build(env):
                                 + html_content[end:]
                             )
 
-                        REF_TITLE_RE = re.compile(
-                            r"(?<=<title>)(Taipy\.)(.*)(\s+-\s+Taipy</title>)"
-                        )
+                        REF_TITLE_RE = re.compile(r"(?<=<title>)(Taipy\.)(.*)(\s+-\s+Taipy</title>)")
                         if m := REF_TITLE_RE.search(html_content):
                             html_content = rewrite_title(m[2], m.start(1), m.end(2))
+                            file_changed = True
                         REF_H1_RE = re.compile(r"(?<=<h1>)(Taipy\.)(.*)</h1>")
                         if m := REF_H1_RE.search(html_content):
                             html_content = rewrite_title(m[2], m.start(1), m.end(2))
+                            file_changed = True
                         # Class page?
                         # Replace 'function' to 'method'
                         # Add parenthesis to method names
@@ -586,10 +586,9 @@ def on_post_build(env):
                                 re.X,
                             ):
                                 class_ref = m[2].replace("#", "\\#")
-                                new_content = (
-                                    html_content[0 : m.start()] + m[1] + "Methods"
-                                )
+                                new_content = html_content[0 : m.start()] + m[1] + "Methods"
                                 html_content = html_content[m.end() :]
+                                file_changed = True
                                 last_location = 0
                                 for m in re.finditer(
                                     rf"""(<li\s+class="md-nav__item">\s*
@@ -609,9 +608,7 @@ def on_post_build(env):
                                     new_content += m[1] + "()"
                                     last_location = m.end()
                                 if last_location:
-                                    html_content = (
-                                        new_content + html_content[last_location:]
-                                    )
+                                    html_content = new_content + html_content[last_location:]
                             new_content = ""
                             last_location = 0
                             for m in re.finditer(
@@ -628,11 +625,13 @@ def on_post_build(env):
                                 html_content = (
                                     new_content + html_content[last_location:]
                                 )
-                            html_content = re.sub(
-                                r"(<h2\s+id=\"(?:[\w\.]+)-functions\">)Functions",
-                                "\\1Methods",
-                                html_content,
-                            )
+                                file_changed = True
+                            if not dev_mode:
+                                html_content = re.sub(
+                                    r"(<h2\s+id=\"(?:[\w\.]+)-functions\">)Functions",
+                                    "\\1Methods",
+                                    html_content,
+                                )
 
                             # Page Builder class?
                             m = re.search(r"([/\\])pkg_gui\1pkg_builder\1(\w+)\1index.html$", filename)
@@ -680,9 +679,9 @@ def on_post_build(env):
                                         )
                                     new_content += signature
                                 if last_location:
-                                    html_content = (
-                                        new_content + html_content[last_location:]
-                                    )
+                                    html_content = new_content + html_content[last_location:]
+                                    file_changed = True
+
                                 # Properly style default values, in parameters description
                                 # Fix issue with indexed and dynamic properties
                                 new_content = ""
@@ -727,27 +726,27 @@ def on_post_build(env):
                                     )
                                     last_location = p_m.end(2)
                                 if last_location:
-                                    html_content = (
-                                        new_content + html_content[last_location:]
-                                    )
+                                    html_content = new_content + html_content[last_location:]
+                                    file_changed = True
                                 # Remove "Bases" information
-                                html_content = re.sub(
-                                    r"<p\s+class=\"doc\s+doc-class-bases\">.*?</p>",
-                                    "",
-                                    html_content,
-                                    flags=re.S,
-                                )
-                                # Add link to element documentation page
-                                if m := re.search(
-                                    r"<p>data-viselement:\s+(\w+)\s+<a\s+href=\"(.*)(?:\".*?</p>)",
-                                    html_content,
-                                ):
-                                    html_content = (
-                                        html_content[: m.start()]
-                                        + f"""<div class="tp-ved"><a class="tp-btn tp-btn--alpha" href="{m[2]}">
-                                        See full documentation and examples for this {m[1]}</a></div>"""
-                                        + html_content[m.end() :]
+                                if not dev_mode:
+                                    html_content = re.sub(
+                                        r"<p\s+class=\"doc\s+doc-class-bases\">.*?</p>",
+                                        "",
+                                        html_content,
+                                        flags=re.S,
                                     )
+                                    # Add link to element documentation page
+                                    if m := re.search(
+                                            r"<p>data-viselement:\s+(\w+)\s+<a\s+href=\"(.*)(?:\".*?</p>)",
+                                            html_content,
+                                    ):
+                                        html_content = (
+                                            html_content[: m.start()]
+                                            + f"""<div class="tp-ved"><a class="tp-btn tp-btn--alpha" href="{m[2]}">
+                                            See full documentation and examples for this {m[1]}</a></div>"""
+                                            + html_content[m.end() :]
+                                        )
 
                     # Processing for visual element pages:
                     # - Remove <tt> from title
@@ -768,6 +767,8 @@ def on_post_build(env):
                                 + f"<title>{title_match.group(1)} - Taipy</title>"
                                 + html_content[title_match.end() :]
                             )
+                            file_changed = True
+
 
                     if False:
                         # All this code was meant to inject breadcrumbs in the visual elements pages hierarchy to
@@ -815,6 +816,7 @@ def on_post_build(env):
                                     + article_match.group(2)
                                     + html_content[article_match.end() :]
                                 )
+                                file_changed = True
 
                     # Handle title and header in packages documentation file
                     def code(s: str) -> str:
@@ -824,19 +826,18 @@ def on_post_build(env):
                         r"refmans(/|\\)reference\1pkg_taipy\1index.html",
                         filename,
                     )
-                    if (
-                        fn_match is not None
-                    ):  # The root 'taipy' package# The root 'taipy' package
+                    if fn_match is not None:  # The root 'taipy' package# The root 'taipy' package
                         html_content = re.sub(
                             r"(<h1>)taipy(</h1>)",
                             f"\\1{code('taipy')}\\2",
                             html_content,
                         )
+                        file_changed = True
                     fn_match = re.search(
                         r"refmans(/|\\)reference\1pkg_taipy(\..*)\1index.html",
                         filename,
                     )
-                    if fn_match is not None:
+                    if not dev_mode and fn_match is not None:
                         pkg = fn_match[1]
                         sub_match = re.search(r"(\.\w+)(\..*)", pkg)
                         if sub_match is None:
@@ -865,8 +866,9 @@ def on_post_build(env):
                                 html_content,
                             )
 
-                with open(filename, "w", encoding="utf-8") as html_file:
-                    html_file.write(html_content)
+                if not dev_mode or file_changed:
+                    with open(filename, "w", encoding="utf-8") as html_file:
+                        html_file.write(html_content)
             # Replace path to doc in '.ipynb' files
             elif f.endswith(".ipynb"):
                 filename = os.path.join(root, f)
@@ -876,9 +878,7 @@ def on_post_build(env):
                     except Exception as e:
                         log.error(f"Couldn't read Notebook file {filename}")
                         raise e
-                    (new_content, n) = re.subn(
-                        "(?<=https://docs.taipy.io/en/)latest",
-                        f"{env.conf['branch']}",
+                    new_content, n = re.subn("(?<=https://docs.taipy.io/en/)latest", f"{env.conf['branch']}",
                         content,
                     )
                     if n > 0:
@@ -909,6 +909,8 @@ def process_data_source_attr(html: str, env):
             else:
                 logging.warning("Suspicious data-source attribute: {m.group(0)}")
                 ref = f"https://github.com/Avaiga/taipy-{repo_m.group(0)[:-1]}/blob/{env.conf['branch']}/{target}"
+        else:
+            ref = f"https://github.com/Avaiga/taipy/blob/{env.conf['branch']}/doc/{ref}"
         new_content += (
             html[last_location : m.start()]
             + f"{m.group(1)}{m.group(4)}"
@@ -924,12 +926,11 @@ def process_data_source_attr(html: str, env):
 
 
 def process_links_to_github(html: str, env):
-    _LINK_RE = re.compile(
-        r"(?<=href=\"https://github.com/Avaiga/)(taipy/tree/)\[BRANCH\](.*?\")"
-    )
+    _LINK1_RE = re.compile(r"(?<=href=\"https://github.com/Avaiga/)(taipy/tree/)\[BRANCH\](.*?\")")
+    changed = False
     new_content = ""
     last_location = 0
-    for m in _LINK_RE.finditer(html):
+    for m in _LINK1_RE.finditer(html):
         new_content += (
             html[last_location : m.start()]
             + m.group(1)
@@ -938,6 +939,19 @@ def process_links_to_github(html: str, env):
         )
         last_location = m.end()
     if last_location:
-        return (True, new_content + html[last_location:])
-    else:
-        return (False, None)
+        changed = True
+        html = new_content + html[last_location:]
+    _LINK2_RE = re.compile(r"(?<=href=\"http)(?:s)?://TAIPY_REPO(.*?\")")
+    last_location = 0
+    for m in _LINK2_RE.finditer(html):
+        new_content += (
+            html[last_location : m.start()]
+            + "s://github.com/Avaiga/taipy/tree/"
+            + env.conf["branch"]
+            + m.group(1)
+        )
+        last_location = m.end()
+    if last_location:
+        changed = True
+        html = new_content + html[last_location:]
+    return (True, html) if changed else (False, None)

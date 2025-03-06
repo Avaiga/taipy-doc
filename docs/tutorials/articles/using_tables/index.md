@@ -233,8 +233,8 @@ table is explicitly defined as *editable*.
 
 Although Taipy comes with default callback function implementation for these properties, we will
 define each function ourselves to match our specific needs. We're also including the
-[*notify()*](../../../userman/gui/notifications.md) function within our data modification callback
-functions to send notifications to the user about their changes.
+[*notify()*](../../../userman/gui/utilities.md#notifications) function within our data modification
+callback functions to send notifications to the user about their changes.
 
 ## Editing (*on_edit*)
 

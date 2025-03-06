@@ -56,7 +56,7 @@ To expose the Taipy REST APIs, the Taipy REST server must first be started.
 !!! info "Running the REST service"
 
     To run the Taipy REST service with the other Taipy services, please refer to the
-    [taipy.run() function](../../run-deploy/run/running_services.md) page.
+    [taipy.run() function](../../operations/running/main-script.md) page.
 
 # Using Taipy REST APIs
 
