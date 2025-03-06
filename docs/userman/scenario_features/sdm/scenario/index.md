@@ -368,7 +368,7 @@ The `Scenario.duplicate()^` method accepts optional parameters:
     {% include-markdown "./code-example/index/duplication.py" comments=false %}
     ```
 
-    In this example, the `Scenario.duplicate()` method is used to trigger the scenario
+    In this example, the `Scenario.duplicate()^` method is used to trigger the scenario
     duplication. The new scenario is created and its attributes are populated with the
     same values as the original scenario.
 
