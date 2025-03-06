@@ -373,7 +373,7 @@ The `Scenario.duplicate()^` method accepts optional parameters:
     same values as the original scenario.
 
 ??? note "Another syntax."
-    To submit a scenario, you can also use the `tp.duplicate_scenario()^` method:
+    To duplicate a scenario, you can also use the `tp.duplicate_scenario()^` method:
 
     ```python linenums="1"
     {% include-markdown "./code-example/index/duplication-from-taipy-api.py" comments=false %}
