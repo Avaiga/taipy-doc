@@ -154,7 +154,7 @@ Taipy application:
 If you run this Python script and connect a browser to the web server address
 (usually *localhost:5000*), you can see your title displayed on an empty page.
 
-# Multi-page application
+# Multi-page applications
 
 If your application has several pages, you add your pages one by one
 using `Gui.add_page()^`. To add multiple pages in a single call, you will
@@ -282,3 +282,204 @@ runs.
     This application does the same as in the previous example, except that you now
     have the footer line (*'This application was created...'*) in all the pages of
     your application.
+
+# Page modules {data-source="gui/examples/grocery_store"}
+
+In Taipy, a Page represents a specific part of the whole web interface. While it is possible to
+define a single-page application directly within the main script, real-world applications typically
+require multiple pages to structure different views and functionalities.
+
+To improve maintainability and modularity, it is a good practice to define each page in a specific
+Python module where each individual page is defined. We call such a module a **Page Module**,
+because it is an actual Python module and because it defines... a page.<br/>
+Modules are typically grouped within a dedicated directory (e.g., `pages/`) and imported into the
+main script. This approach enhances code organization, making it easier to manage, update, and
+scale an application.
+
+Page Modules provide benefits in different areas:
+
+- **Code Organization**: By placing page definitions in separate files, the main script remains more
+  readable and maintainable.
+- **Scalability**: Applications can easily add, remove, and manage multiple pages as they grow.
+- **Reusability**: Page definitions can be reused across different projects or parts of the
+  application.
+- **Maintainability**: Changes to a specific page can be made without affecting unrelated parts of
+  the application.
+
+To demonstrate how to structure a Taipy application using Page Modules, here is a simplified version
+of an application showcasing how to define, organize, and import pages efficiently.<br/>
+Our example application provides a user interface for analyzing sales performance and stock status
+in a grocery store. The dataset behind this application contains key business metrics for some
+items.<br/>
+The dataset used in this example is as follows:
+```python
+data = {
+    "Items": ["Apples", "Bananas", "Oranges", "Grapes", "Strawberries"],
+    "Purchase": [1.36, 0.73, 1.09, 2.27, 2.73],
+    "Price $": [1.50, 0.80, 1.20, 2.50, 3.00],
+    "Price €": [1.38, 0.74, 1.10, 2.30, 2.76],
+    "Sales Q1": [120, 200, 90, 50, 75],
+    "Sales Q2": [140, 180, 110, 60, 85],
+    "Sales Q3": [100, 190, 95, 55, 80],
+    "Stock":  [500, 600, 400, 300, 250]
+}
+```
+This dataset contains inventory and sales data for five different fruit items. It includes
+information on:
+
+- Purchase Prices: The cost of acquiring each item.
+- Selling Prices: Prices in both USD ($) and EUR (€).
+- Quarterly Sales Data: Sales volumes for Q1, Q2, and Q3.
+- Stock Levels: The current stock count for each item.
+
+This dataset enables analysis of sales performance across quarters and the valuation of remaining
+stock based on purchase prices.
+
+The application consists of two main pages: "Stock" and "Sales." Each page is independent, making
+them well-suited for implementation as separate Page Modules.<br/>
+For our example, the two pages are defined in two distinct module files, in the same directory
+called "grocery_store".
+
+This example demonstrates how pages can be defined in module, and how variables that are declared
+locally can be bound to those pages' visual element properties, keeping the scope of the variable
+local to their actual usage. The principle is that pages defined in a Page Module can reference
+variables defined within the same module without needing to export them. Pages defined in a page
+module can also reference variables from the main script.
+
+## Defining a page in a module
+
+The 'Stock' page provides an overview of the store's stock, and is implemented in its own
+module (see the [full source code](http://TAIPY_REPO/doc/gui/examples/grocery_store/stock.py)).
+
+The page contains two main elements:
+
+- A [`text`](../../../refmans/gui/viselements/generic/text.md) control displays the total stock
+  value.
+- A table displays the "Items" and "Stock" columns. This table is placed inside an
+  [`expandable`](../../../refmans/gui/viselements/generic/expandable.md) block, allowing it to be
+  shown or hidden.
+
+Here is a slightly simplified code for the Stock page module:
+```python linenums="1" title="stock.py"
+from taipy.gui import Markdown
+
+show_details = False
+
+def compute_stock_value(data: dict[str, list[float]]) -> float:
+    return sum([v * n for v, n in zip(data["Purchase"], data["Stock"])])
+
+page = Markdown("""
+Stock value: $<|{compute_stock_value(data)}|>
+
+<|Stock details|expandable|expanded={show_details}|
+<|{data}|table|columns=Items;Stock|>
+|>""")
+```
+
+Code breakdown:
+
+- On line 3, we define the variable *show_details* that controls the visibility of the expandable's
+  content.<br/>
+  This variable is bound to the *expanded* property of the `expandable` block on line 11
+- On line 5 and 6, we define the function that is referred to as the expression in the `text`
+  control declared in line 9. This function computes the total value of the stock by multiplying
+  each item's stock quantity by its purchase price, then sums the values.
+- On line 8 to 13, we define the page.<br/>
+
+Note that the variable *data*, referenced by the text element on line 9, is defined in the
+[main script](http://TAIPY_REPO/doc/gui/examples/grocery_store.py#L24): as stated above, pages
+defined in page modules can reference all global variables.<br/>
+*show_details*, on the other hand, is a local variable for that module. It is handy to be able to
+define it at the module level since no other module in the application has any use of this variable.
+
+The page is imported and registered in the main script with the following lines:
+```python title="grocery_store.py"
+from grocery_store.stock import page as StockPage
+...
+Gui(pages={ "stock": StockPage }).run()
+```
+
+## Defining a page as a class
+
+If you prefer an object-oriented approach, you can store page-specific variables inside a dedicated
+class. This allows for better encapsulation and organization.<br/>
+The 'Sales' page displays the total sales for a selected quarter. Users can choose a quarter and a
+currency, and the page dynamically computes the total sales and displays a table of sales
+figures.<br/>
+The full source code for this page can be downloaded from
+[this link](http://TAIPY_REPO/doc/gui/examples/grocery_store/sales.py).
+
+The page contains four main elements:
+
+- A [`selector`](../../../refmans/gui/viselements/generic/selector.md) control to choose the quarter
+  for which sales are computed (Q1, Q2, or Q3);
+- A [`text`](../../../refmans/gui/viselements/generic/text.md) element that displays the total sales
+  for the selected quarter;
+- A [`toggle`](../../../refmans/gui/viselements/generic/toggle.md) button that allows users to
+  switch between USD ($) and EUR (€) for currency selection;
+- A [`table`](../../../refmans/gui/viselements/generic/table.md) that displays items and their
+  respective revenue for Q1, Q2, and Q3
+
+Since the selected quarter and currency are not used by other pages in the application, it is best
+to define them within a tight scope.</br>
+Encapsulating these page-specific variables inside a class is a way to ensure they remain
+self-contained and easy to manage.
+
+Here is a slightly simplified version of the 'Sales' page class, defined in its own module:
+```python linenums="1" title="sales.py"
+class SalesPage(Page):
+    def __init__(self) -> None:
+        self.quarter = "Q1"  # Default selected quarter
+        self.currency = "$"  # Default currency
+        super().__init__()
+
+    @staticmethod
+    def compute_total(quarter: str, currency: str, data: dict[str, list[float]]) -> float:
+        sold = data[f"Sales {quarter}"]
+        price = data[f"Price {currency}"]
+        return sum(s * p for s, p in zip(sold, price))
+
+    def create_page(self):
+        return """
+Select quarter: <|{quarter}|selector|lov=Q1;Q2;Q3|>
+
+Total: <|{SalesPage.compute_total(quarter, currency, data)}|format=%.02f|><br/>
+Currency: <|{currency}|toggle|lov=$;€|>
+
+<|{data}|table|columns=Items;Sales Q1;Sales Q2;Sales Q3|>
+"""
+```
+
+Code breakdown:
+
+- Line 1: The class *SalesPage* is a subclass of `taipy.gui.Page^`.
+- Lines 2 to 5: The class constructor initializes two instance variables:
+    - *quarter* (initial value: "Q1") – The selected quarter.
+    - *currency* (initial value: "$") – The selected currency.
+  These instance variables can be bound to visual elements, as shown below.
+- Lines 7–11: The *compute_total()* function calculates the total sales for the given quarter and
+  currency by multiplying the sales volume by the corresponding price.<br/>
+  This function is declared as static because Taipy applications support multiple users
+  simultaneously. If *compute_total(*) were an instance method, all users would share the same class
+  instance, which could cause incorrect values when different users select different quarters or
+  currencies. Instead, variable binding ensures that the function is invoked with the correct
+  state-dependent variables.
+- Lines 13 to 21: The `Page.create_page()^` method is overridden to define the page content.<br/>
+  Since this method returns a string, it is automatically interpreted as a `Markdown^` page.<br/>
+  On line 17, the text element displays the formatted return value of *compute_total()*. This
+  function is invoked with the instance variables *quarter* and *currency*, and also the *data*
+  variable, which is defined in the main module.
+
+A key advantage of this approach is that page-specific variables (*quarter* and *currency*) are
+encapsulated within the class:
+
+- These variables are not exposed globally, keeping them isolated from the rest of the application.
+- This ensures that changes to one page do not affect other parts of the application, improving
+  modularity and maintainability.
+
+The page is imported and registered in the main script with the following lines:
+```python title="grocery_store.py"
+from grocery_store.sales import SalesPage
+...
+Gui(pages={ "sales": SalesPage() }).run()
+```

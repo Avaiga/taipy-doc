@@ -239,6 +239,15 @@ Check out
 [what can be pickled and unpickled?](https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled)
 for more details.
 
+!!! warning
+
+    Unpickling data can execute arbitrary code, which could lead to severe vulnerabilities
+    such as remote code execution. Do not unpickle data received from untrusted or
+    unauthenticated sources. If you must load pickle data from an external source, ensure that
+    you implement strict security measures. Please refer to the official
+    [pickle](https://docs.python.org/3/library/pickle.html) documentation for more details.
+
+
 ## CSV
 
 When reading from a CSV data node, Taipy returns the data of the CSV file based on the _exposed_type_ parameter.

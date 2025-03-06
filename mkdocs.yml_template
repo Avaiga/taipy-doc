@@ -86,12 +86,12 @@ nav:
         - "Panes": userman/gui/pages/pane/index.md
         - "Advanced": userman/gui/pages/advanced/index.md
       - "Visual elements": userman/gui/viselements/introduction.md
-      - "Binding variables": userman/gui/binding.md
+      - "Variables binding": userman/gui/binding.md
       - "Callbacks": userman/gui/callbacks.md
       - "Styling":
         - "Styling": userman/gui/styling/index.md
         - "The Stylekit": userman/gui/styling/stylekit.md
-      - "Notifications": userman/gui/notifications.md
+      - "Utilities": userman/gui/utilities.md
       - "Extension libraries":
         - "Extension libraries": userman/gui/extension/index.md
         - "Static elements": userman/gui/extension/static_element.md
@@ -385,6 +385,7 @@ watch:
   - taipy
   - tools/postprocess.py
 extra:
+  #dev_mode: True
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/avaiga/taipy
