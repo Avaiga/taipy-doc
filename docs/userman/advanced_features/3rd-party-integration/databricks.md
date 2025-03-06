@@ -18,33 +18,33 @@ pip install taipy[databricks]
 
 The Databricks integration provides the following features:
 
-- **Databricks Task**: A Taipy Task that triggers a Databricks Workflow when submitted for
-    execution.
-- **Databricks Table Data Node**: A Taipy Data Node that represents a table in Databricks
-    Delta Live Tables database.
-- **Databricks SQL Data Node**: A Taipy Data Node that represents a SQL query in Databricks
-    Delta Live Tables database.
+- **[Databricks Table Data Node](#databricks-table-data-node)**:
+    A Taipy Data Node that represents a table in Databricks Delta Live Tables database.
+- **[Databricks SQL Data Node](#databricks-sql-data-node)**:
+    A Taipy Data Node that represents a SQL query in Databricks Delta Live Tables database.
+- **[Databricks Task](#databricks-tasks)**:
+    A Taipy Task that triggers a Databricks Workflow when submitted for execution.
 
 ## Databricks Table Data Node
 
-A `DatabricksTableDataNode` is a specific data node used to model Databricks table data. The
-usage of a `DatabricksTableDataNode` is similar to a normal data node, allowing user to read,
-write and append data from or to Databricks tables seamlessly with `read()`, `write()` and
-`append()` functions. To add a new *Databricks Table* data node configuration, the
-`Config.configure_databricks_table_data_node()` method can be used. In addition to the
-generic parameters described in the
-[data node configuration attributes](../../scenario_features/data-integration/data-node-config.md#config-attributes)
-section, the following parameters can be provided:
+A `DatabricksTableDataNode` is a specific data node used to model Databricks table data.
+It is designed to read and write data from and to Databricks Delta Live Tables.
 
-- _**table_name**_ represents the name of the Databricks table used to read and write
-    data pointed by the data nodes instantiated from the *Databricks Table* configuration.
-    <br/>
-    It is used to populate the table name property of the entities (*Databricks Table* data
-    nodes) instantiated from the *Databricks Table* data node configuration. That means by
-    default all the entities (*Databricks Table* data nodes) instantiated from the same
-    *Databricks Table* configuration will inherit/share the same table name provided in
-    the table_name. To avoid this, the table name property of a *Databricks Table* data node
-    entity can be changed at runtime right after its instantiation.<br/>
+The usage is similar to any other data node. Use the standard methods `DataNode.read()`,
+`DataNode.write()`, and `DataNode.append()`, or the specific methods
+`DatabricksTableDataNode.write_or_raise()` or `DatabricksTableDataNode.write_or_ignore()`.
+
+To configure a new *Databricks Table* data node, use the
+`Config.configure_databricks_table_data_node()` method. In addition to the generic
+parameters described in the
+[data node configuration](../../scenario_features/data-integration/data-node-config.md#config-attributes)
+documentation, the following parameters can be provided:
+
+- _**table_name**_: the name of the Databricks table pointed by the data nodes instantiated
+    from the *Databricks Table* configuration.<br/>
+    All data nodes instantiated from the same *Databricks Table* configuration share the
+    same table name unless the data node attribute is changed once instantiated (e.g.,
+    `a_data_node.table_name = "new_table_name"`).
 - _**profile**_ represents additional options of Databricks credential profile to be used when
     reading and writing to the table.<br/>
 - _**conn_string**_ represents the Databricks connection string starting with
@@ -65,8 +65,6 @@ section, the following parameters can be provided:
     - If the *exposed_type* provided is "polars", and the data node reads the Databricks table
         as a Polars DataFrame (`polars.DataFrame`) when executing the read method.
 
-To configure a Databricks SQL data node, use the `configure_databricks_table_data_node` method:
-
 !!! example
 
     ```python linenums="1"
@@ -76,22 +74,21 @@ To configure a Databricks SQL data node, use the `configure_databricks_table_dat
     %}
     ```
 
-    In lines 4-10, we configure a basic Databricks Table data node with the id
-    "historical_temperature". The data node will point to the Databricks table
-    "hist_temp". Its *scope* is by default `SCENARIO`. The profile to be used is
-    "default" profile with the cluster id is "0123-456789-dbscluster2". The exposed
-    type of this data node will be "pandas".
+    In lines 4-10, we configure a Databricks Table data node with the id
+    "historical_temperature" pointing to the Databricks table "hist_temp".
+    The "default" profile is used with the cluster id "0123-456789-dbscluster2".
+    The data exposed type is "pandas".
 
-    In lines 12-17, we configure another Databricks Table data node with the identifier "log_history".
-    It uses the `GLOBAL` scope. The Databricks table name is "hist_log". The credential
-    to connect to Databricks database is provided through `conn_string` with the string
-    `"sc://foo-workspace.cloud.databricks.com/;token=dapi1234567890;x-databricks-cluster-id=0301-0300-abcdefab"`.
-    The exposed type of this data node will be the default value "spark".
+    In lines 12-17, we configure another Databricks Table data node with the id
+    "log_history" pointing to the Databricks table "hist_log". The scope of this
+    data node `GLOBAL`. The credential to connect to Databricks database is
+    provided through the connection string `conn_string`. The data exposed type is
+    the default value "spark".
 
-    In lines 19-21, we create a global data node of from "log_history" data node config.
-    We then read from this data node, as it returns a `pyspark.DataDataFrame`, we then called
-    `pyspark.DataFrame.show(5)` to display the first 5 rows from the DataFrame. A possible return value example:
+    Finally, in lines 19-21, we show how to create a data node and read the data.
+    The following is an example of a possible return value.
 
+    ``` console
     +---+
     |  x|
     +---+
@@ -101,8 +98,7 @@ To configure a Databricks SQL data node, use the `configure_databricks_table_dat
     |103|
     |104|
     +---+
-    only showing top 5 rows
-
+    ```
 
 !!! note
 
@@ -112,7 +108,7 @@ To configure a Databricks SQL data node, use the `configure_databricks_table_dat
     either the profile parameter, or the conn_string parameter, or a combination of the profile and
     cluster_id, or a combination of the host, token and cluster_id parameters should be specified,
     but not all four. If none of these parameters are provided, the default Databricks profile,
-    created with databricks-cli, will be used. The value the host, token and cluster_id parameters
+    created with databricks-cli, will be used. The host, token and cluster_id parameters
     can also be provided as environment parameters under the name DatabricksToken, DatabricksHost,
     DatabricksClusterId. If multiple combinations are provided, the following order will be prioritized:
     profile with cluster_id, conn_string, host with token and cluster_id.
@@ -120,13 +116,18 @@ To configure a Databricks SQL data node, use the `configure_databricks_table_dat
 
 ## Databricks SQL Data Node
 
-A `DatabricksSQLDataNode` data node is a specific data node used to model Databricks SQL data. The usage of  a
-`DatabricksSQLDataNode` is similar to a normal data node, allowing user to read, write and append data from or to
-Databricks tables seamlessly with `read()`, `write()` and `append()` functions by executing SQL queries provided
-by the user. To add a new *Databricks SQL* data node configuration, the `Config.configure_databricks_sql_data_node()`
-method can be used. In addition to the generic parameters described in the
-[data node configuration attributes](../../scenario_features/data-integration/data-node-config.md#config-attributes)
-section, the following parameters can be provided:
+A `DatabricksSQLDataNode` is a specific data node used to model Databricks SQL data. Its
+is designed to execute SQL queries on Databricks Delta Live Tables database to read and
+write data.
+
+The usage is similar to any other data node. Use the standard methods `DataNode.read()^`,
+`DataNode.write()^`, and `DataNode.append()^`.
+
+To configure a new *Databricks SQL* data node, use the
+`Config.configure_databricks_sql_data_node()` method. In addition to the generic
+parameters described in the
+[data node configuration](../../scenario_features/data-integration/data-node-config.md#config-attributes)
+documentation, the following parameters can be provided:
 
 - _**read_query**_ represents the SQL query that will be used by Taipy to read the data
     from the Databricks database.
@@ -154,16 +155,14 @@ section, the following parameters can be provided:
     the cluster and on whose behalf the queries are executed.
 - _**exposed_type**_ indicates the data type returned when reading the data node:
 
-        - By default, *exposed_type* is "spark", and the data node reads the Databricks table
-            as a Spark DataFrame (`pyspark.sql.dataframe.DataFrame`) when executing the read method.
-        - If the *exposed_type* provided is "pandas", and the data node reads the Databricks table
-            as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
-        - If the *exposed_type* provided is "numpy", the data node reads the Databricks table
-            as a NumPy array (`numpy.ndarray`) when executing the read method.
-        - If the *exposed_type* provided is "polars", and the data node reads the Databricks table
-            as a Polars DataFrame (`polars.DataFrame`) when executing the read method.
-
-To configure a Databricks SQL data node, use the `configure_databricks_sql_data_node` method:
+    - By default, *exposed_type* is "spark", and the data node reads the Databricks table
+        as a Spark DataFrame (`pyspark.sql.dataframe.DataFrame`) when executing the read method.
+    - If the *exposed_type* provided is "pandas", and the data node reads the Databricks table
+        as a Pandas DataFrame (`pandas.DataFrame`) when executing the read method.
+    - If the *exposed_type* provided is "numpy", the data node reads the Databricks table
+        as a NumPy array (`numpy.ndarray`) when executing the read method.
+    - If the *exposed_type* provided is "polars", and the data node reads the Databricks table
+        as a Polars DataFrame (`polars.DataFrame`) when executing the read method.
 
 !!! example
 
@@ -193,6 +192,7 @@ To configure a Databricks SQL data node, use the `configure_databricks_sql_data_
     We then read from this data node, as it returns a `pyspark.DataDataFrame`, we then called
     `pyspark.DataFrame.show(5)` to display the first 5 rows from the DataFrame. A possible return value example:
 
+    ``` console
     +---+
     |  x|
     +---+
@@ -202,7 +202,7 @@ To configure a Databricks SQL data node, use the `configure_databricks_sql_data_
     |103|
     |104|
     +---+
-    only showing top 5 rows
+    ```
 
 !!! note
 
@@ -217,7 +217,7 @@ To configure a Databricks SQL data node, use the `configure_databricks_sql_data_
     DatabricksClusterId. If multiple combinations are provided, the following order will be prioritized:
     profile with cluster_id, conn_string, host with token and cluster_id.
 
-## Tasks
+## Databricks Tasks
 
 A task configuration is necessary to instantiate a Databricks `Task^`. To create a
 `TaskConfig^` for Databricks task, you can use the `Config.configure_databricks_task()^` method
