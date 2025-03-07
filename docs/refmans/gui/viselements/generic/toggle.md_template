@@ -1,66 +1,128 @@
-A series of toggle buttons that the user can select.
+A set of toggle buttons that allow the user to select an option.
 
 # Details
 
-You can use a string, an image, or both in each button.
+Each toggle button can display a string, an image, or both.
 
-A typical representation would be like this image:
+A typical representation looks like this:
 <figure class="tp-center">
     <img src="../toggle-lov-d.png" class="visible-dark"  width="80%"/>
     <img src="../toggle-lov-l.png" class="visible-light" width="80%"/>
     <figcaption>Toggle control with three buttons</figcaption>
 </figure>
-In this example, the [*lov*](#p-lov) property of the control is a list of three string elements. If
-the user selects one of the elements, [*value*](#p-value) is updated accordingly to the selected
-string.
+In this example, the [*lov*](#p-lov) property contains a list of three string elements. When the
+user selects one of them, the [*value*](#p-value) property updates to reflect the selected string. 
 
-Note that if the variable bound to [*value*](#p-value) is a Boolean value, then the control displays
-a switch control:
+If the [*value*](#p-value) property is bound to a Boolean variable, the control automatically
+displays as a switch:  
 <figure class="tp-center">
     <img src="../toggle-switch-d.png" class="visible-dark"  width="80%"/>
     <img src="../toggle-switch-l.png" class="visible-light" width="80%"/>
     <figcaption>Toggle control bound to a Boolean variable</figcaption>
 </figure>
-The property [*value*](#p-value) reflects the control's status as a Boolean value.
+In this case, the [*value*](#p-value) property represents the control's state as a Boolean (True or
+False).
 
-You can also use an arbitrary type for all the items (see the [example](#use-arbitrary-objects)).
+Additionally, you can use custom object types for toggle items as explained in this
+[example](#picking-arbitrary-objects).
 
 # Usage
 
-## Display a list of string
+## Picking from a list of string {data-source="gui/examples/controls/toggle_simple.py"}
 
-You can create a list of toggle buttons from a series of strings:
+You can create a set of toggle buttons based on a list of strings:
 
 !!! taipy-element
     default={value}
     lov=Item 1;Item 2;Item 3
 
-## Deselected state
+Users can select one of the available options, and the selected value is stored in the variable
+bound to the [*value*](#p-value) property.  
 
-In a toggle control, all buttons might be unselected when [*allow_unselect*](#p-allow_unselect) is
-set to True.<br/>
-If the user deselects all the toggle items, [*value*](#p-value) is set to None.
+For example, if the following variable is defined:
+```python
+value = "Item 2"
+```
 
+The toggle control will be displayed as:
+<figure class="tp-center">
+    <img src="../toggle-simple-d.png" class="visible-dark"  width="80%"/>
+    <img src="../toggle-simple-l.png" class="visible-light" width="80%"/>
+    <figcaption>Toggle control with a few choices</figcaption>
+</figure>
+
+## Deselected state {data-source="gui/examples/controls/toggle_unselect.py"}
+
+By default, one option is always selected in a toggle control. However, setting
+[*allow_unselect*](#p-allow_unselect) to True allows users to deselect all options.<br/>
+To deselect an item, users can click on the currently selected button. If all items are deselected,
+the [*value*](#p-value) property is set to `None`.
+
+To enable this behavior, include the [*allow_unselect*](#p-allow_unselect) property in the control
+definition and set it to True:
 !!! taipy-element
     default={value}
     lov=Item 1;Item 2;Item 3
     allow_unselect:b=True
 
-## Display a list of tuples
+When no item is selected, the toggle control appears as follows:
+<figure class="tp-center">
+    <img src="../toggle-unselect-d.png" class="visible-dark"  width="80%"/>
+    <img src="../toggle-unselect-l.png" class="visible-light" width="80%"/>
+    <figcaption>Toggle control with no selected value</figcaption>
+</figure>
 
-A toggle control that returns an id while selecting a label or `Icon^`.
+## Displaying images {data-source="gui/examples/controls/toggle_images"}
 
-!!! taipy-element
-    default={sel}
-    lov={[("id1", "Label 1"), ("id2", Icon("/images/icon.png", "Label 2"),("id3", "Label 3")]}
+You can display images in toggle buttons by using a list of values (assigned to the [*lov*](#p-lov)
+property) that includes instances of the `Icon^` class. 
 
-## Use arbitrary objects
 
-Assuming your Python code has created a list of objects:
+The following *lov* list contains a mix of text labels and an image represented by an `Icon^`
+object:
 ```python
+from taipy.gui import Icon
+
+lov = [
+    "Label 1",
+    Icon("https://docs.taipy.io/en/latest/assets/images/favicon.png", "Taipy Logo"),
+    "Label 3",
+]
+```
+
+If the following variable is defined:
+```python
+value = lov[0]
+```
+
+You can bind the list to a toggle control in your page definition:
+!!! taipy-element
+    default={value}
+    lov={lov}
+
+The [*value*](#p-value) property is updated based on the selected item. The variable *value* will
+store either a string or an `Icon^` object, depending on the user's selection.
+
+When rendered, the toggle control appears as follows:
+<figure class="tp-center">
+    <img src="../toggle-images-d.png" class="visible-dark"/>
+    <img src="../toggle-images-l.png" class="visible-light"/>
+    <figcaption>Toggle control with images</figcaption>
+</figure>
+
+## Picking arbitrary objects {data-source="gui/examples/controls/toggle_objects.py"}
+
+The toggle control can be used to select an item from a list of objects of any type.<br/>
+Here is an example that demonstrates how this is done Taipy.
+
+Suppose you have a list of *User* objects and want to allow users to switch between them.<br/>
+Here is the class definition of the *User* class, and a list of users:
+```python
+@dataclass
 class User:
-    def __init__(self, id, name, birth_year):
-        self.id, self.name, self.birth_year = (id, name, birth_year)
+    id: int
+    name: str
+    birth_year: int
 
 users = [
     User(231, "Johanna", 1987),
@@ -71,34 +133,123 @@ users = [
 
 user_sel = users[2]
 ```
+Here, *user_sel* holds the initially selected user and is of type *User*.
 
-If you want to create a toggle control that lets you pick a specific user, you
-can use the following fragment:
+The list of objects to pick from can be set as the
+[list of values](../../../../userman/gui/binding.md#list-of-values) for the toggle control, in the
+[*lov*](#p-lov).
+    
+To enable selection in the toggle control, you must provide an **adapter** function. This function
+converts each object into:
 
+- A unique identifier, used to track the selection.
+- A string representation, used for display in the toggle buttons.
+
+To let the toggle control know about the *User* class, you need to set:
+
+- The [*adapter*](#p-adapter) property to your adapter function;
+- The [*type*](#p-type) property property to the name of the object type.
+
+When this is set, the [*value*](#p-value) property can store instances of your class.
+
+Here is the definition of the toggle control that can represent the list of users, and allow for the
+update of *user_sel* when the user selects it:
 !!! taipy-element
     default={user_sel}
     lov={users}
     type=User
-    adapter=lambda u: (u.id, u.name)
+    adapter:f=lambda u: (u.id, u.name)
 
-In this example, we are using the Python list *users* as the toggle's *list of values*.
-Because the control needs a way to convert the list items (which are instances of the class
-*User*) into a string that can be displayed, we are using an *adapter*: a function that converts
-an object, whose type must be provided to the [*type*](#p-type) property, to a tuple. The first
-element of the tuple is used to reference the selection (therefore those elements should be unique
-among all the items) and the second element is the string that turns out to be displayed.
+In this example:
+
+- The toggle control uses the *users* list as its [*lov*](#p-lov) property value.
+- The adapter function (`lambda u: (u.id, u.name)`) converts each *User* object into a tuple:
+  The first element (`u.id`) uniquely identifies the selection, and the second element (`u.name`) is
+  displayed in the toggle buttons.
+- When a user selects an option, *user_sel* is updated with the corresponding *User* instance.
+
+This is how the control looks like:
+<figure class="tp-center">
+    <img src="../toggle-objects-d.png" class="visible-dark"/>
+    <img src="../toggle-objects-l.png" class="visible-light"/>
+    <figcaption>Interacting with arbitrary objects</figcaption>
+</figure>
+
+## Controlling the application's theme {data-source="gui/examples/controls/toggle_theme.py"}
+
+By setting the [*type*](#p-theme) property to True, the toggle control allows users to switch
+between **dark mode** and **light mode**.<br/>
+You can bind a Boolean variable to the [*value*](#p-value) property, where:  
+- True represents **dark mode**.  
+- False represents **light mode**.  
+
+If you have defined the following variable:
+```python
+dark_theme = True
+```
+
+To let users toggle the theme, use the following control definition:
+!!! taipy-element
+    default={dark_theme}
+    theme:b=True
+
+The `on_change` callback is triggered when the user switches themes.<br/>
+The variable *state.dark_theme* stores the selected mode (True for dark mode, False for light mode).
+
+The theme selector appears as follows:
+<figure class="tp-center">
+    <img src="../toggle-theme-d.png" class="visible-dark"/>
+    <img src="../toggle-theme-l.png" class="visible-light"/>
+    <figcaption>Theme selector</figcaption>
+</figure>
 
 # Styling
 
-All the toggle controls are generated with the "taipy-toggle" CSS class. You can use this class
-name to select the toggle controls on your page and apply style.
+All toggle controls are assigned the "taipy-toggle" CSS class. You can use this class to style
+toggle controls on your page.  
 
-The [Stylekit](../../../../userman/gui/styling/stylekit.md) also provides specific CSS classes that you can use to style
-toggle controls:
+## [Stylekit](../../../../userman/gui/styling/stylekit.md) support
+
+The [Stylekit](../../../../userman/gui/styling/stylekit.md) provides specific CSS classes to
+customize toggle controls:
 
 - *relative*<br/>
-  Resets the theme toggle position in the page flow (especially for the theme mode toggle).
+  Resets the theme toggle position in the page flow (specific to the *theme* mode toggle).
 - *nolabel*<br/>
   Hides the toggle control's label.
 - *taipy-navbar*<br/>
-  Gives the toggle control the look and feel of a [`navbar`](navbar.md).
+  Gives the toggle control a [`navbar`](navbar.md)-style appearance and behavior.
+
+## Styling buttons {data-source="gui/examples/controls/toggle_styling.py"}
+
+The toggle control groups its buttons within an element using the `"MuiToggleButtonGroup-root"` CSS
+class. Each button is assigned the `"MuiToggleButton-root"` class.  
+
+The following CSS rule customizes the button colors in the toggle control:
+```css
+.taipy-toggle {
+    .MuiToggleButtonGroup-root {  /* Select the buttons group */
+        .MuiToggleButton-root:nth-child(even) { /* Style for even buttons */
+            background-color: lightgrey;
+            color: black;
+        },
+        .MuiToggleButton-root:nth-child(odd) {  /* Style for odd buttons */
+            background-color: darkgrey;
+            color: white;
+        }
+    }
+}
+```
+
+This CSS rule changes the color of all buttons:
+
+- Buttons in even positions will have a light grey background and black text.
+- Buttons in odd positions will have a dark grey background and white text.
+
+When this rule is applied, the toggle control appears as follows:
+
+<figure class="tp-center">
+    <img src="../toggle-styling-d.png" class="visible-dark"/>
+    <img src="../toggle-styling-l.png" class="visible-light"/>
+    <figcaption>Styling the toggle control</figcaption>
+</figure>
