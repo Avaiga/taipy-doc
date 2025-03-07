@@ -222,8 +222,8 @@ customize toggle controls:
 
 ## Styling buttons {data-source="gui/examples/controls/toggle_styling.py"}
 
-The toggle control groups its buttons within an element using the `"MuiToggleButtonGroup-root"` CSS
-class. Each button is assigned the `"MuiToggleButton-root"` class.  
+The toggle control groups its buttons within an element using the "MuiToggleButtonGroup-root" CSS
+class. Each button is assigned the "MuiToggleButton-root" class.  
 
 The following CSS rule customizes the button colors in the toggle control:
 ```css
