@@ -293,6 +293,15 @@ nav:
       - "Real-time Face Recognition": gallery/articles/face_recognition/index.md
       - "Movie Genre Selector": gallery/articles/movie_genre_selector/index.md
 
+not_in_nav: |
+  /refmans/reference/pkg_*/**/[a-z][a-zA-Z]*/index.md
+  /refmans/reference_guiext/functions/[a-z][a-zA-Z]*.md
+  /refmans/reference_guiext/*/[A-Z]*.md
+  /refmans/gui/viselements/generic/charts/advanced.md
+  /refmans/gui/viselements/generic/charts/[a-z]*.md
+  /userman/gui/pages/builder.md
+  /userman/gui/pages/html.md
+  /userman/gui/pages/markdown.md
 
 theme:
   name: material
@@ -406,6 +415,7 @@ extra:
   generator: false
 exclude_docs: |
   *.md_template
+  *~
 # uncomment the following and put your google tracking id below to enable GA
 #google_analytics:
   #- UA-xxx
