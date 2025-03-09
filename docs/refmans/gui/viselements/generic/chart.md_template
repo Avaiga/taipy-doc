@@ -114,14 +114,27 @@ Indexed properties can have a default value (using the *property_name* syntax wi
 no index) which is overridden by any specified indexed property:<br/>
 Here is an example where *i_property* is an indexed property:
 
-```
-# This value applies to all the traces of the chart control
-general_value = <some_value>
-# This value applies to only the second trace of the chart control
-specific_value = <some_other_value>
+!!! example "Indexed properties example"
+    === "Python"
+        ```python
+        import taipy.gui.builder as tgb
+        ...
+        # This value applies to all the traces of the chart control
+        general_value = <some_value>
+        # This value applies to only the second trace of the chart control
+        specific_value = <some_other_value>
 
-page = "<|...|chart|...|i_property={general_value}|i_property[2]={specific_value}|...|>"
-```
+        tgb.chart(..., i_property="{general_value}", i_property__2="{specific_value}")
+        ```
+    === "Markdown"
+        ```
+        # This value applies to all the traces of the chart control
+        general_value = <some_value>
+        # This value applies to only the second trace of the chart control
+        specific_value = <some_other_value>
+
+        page = "<|...|chart|...|i_property={general_value}|i_property[2]={specific_value}|...|>"
+        ```
 
 In the definition for *page*, you can see that the value *general_value* is set to the
 property without the index operator ([]) syntax. That means it applies to all the traces
