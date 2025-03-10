@@ -21,7 +21,7 @@ def is_valid_url(url: str, source_path: str) -> None:
         if response.status_code < 400:
             broken_source = ""
     except requests.RequestException:
-            ...
+            pass
     external_links[url] = broken_source
 
 
@@ -68,8 +68,8 @@ def check_links_in_html(file_path, file_dir, base_path, threads, stop_on_error: 
 
         elif (
             href.startswith("javascript:") or href.startswith("mailto:") or href.startswith("#")
-        ):  # Scrip, mail or internal ref link
-            ...
+        ):  # Script, mail or internal ref link
+            pass
 
         else:  # Local link
             rel_path = file_dir
