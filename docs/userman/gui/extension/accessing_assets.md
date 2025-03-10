@@ -14,7 +14,7 @@ allowing the application to validate and filter resource requests based on prede
 It ensures that only authorized and properly configured files are served, protecting your application while maintaining
 functionality.
 
-## Declaring element {data-source="gui:doc/extension/example_library/example_library.py#L62"}
+## Declaring element {data-source="gui/extension/example_library/example_library.py#L62"}
 
 In this section, we will create a new element that displays a logo image alongside a text caption. This visual element
 will utilize the `(ElementLibrary.)get_resource()^` method to securely access the image file on the server. The image file
@@ -54,7 +54,7 @@ The path is relative to the `<project_dir>/<package_dir>` directory of your exte
 - The *logo_path* property has the type `PropertyType.string^` as well.
   The *default_value* parameter is set to the base64-encoded image file, which is used as the initial value for the property.
 
-## Creating the React component {data-source="gui:doc/extension/example_library/front-end/src/LogoWithText.tsx"}
+## Creating the React component {data-source="gui/extension/example_library/front-end/src/LogoWithText.tsx"}
 
 Below is the source code for implementing the component of this element:
 
@@ -98,7 +98,7 @@ const LogoWithText = ({ text, defaultText, logoPath }: CaptionProps) => {
 export default LogoWithText;
 ```
 
-## Exporting the React component {data-source="gui:doc/extension/example_library/front-end/src/index.ts"}
+## Exporting the React component {data-source="gui/extension/example_library/front-end/src/index.ts"}
 
 When the component is entirely defined, it must be exported by the library's JavaScript bundle.
 This is done by adding the `export` directive in the file `<project_dir>/<package_dir>/front-end/src/index.ts`.
@@ -109,7 +109,7 @@ import LogoWithText from "./LogoWithText";
 export { LogoWithText };
 ```
 
-## Using the element {data-source="gui:doc/extension/logo_with_text.py"}
+## Using the element {data-source="gui/extension/logo_with_text.py"}
 
 The custom element *logo_with_text* defined in the code snippet displays a logo image accompanied by a text caption.
 The *name* variable is used to dynamically set the text within the element.
@@ -135,7 +135,7 @@ In certain cases, incorporating additional resources, such as JavaScript files, 
 For instance, you could create animation effects for the logo image discussed in the previous section.
 This can be achieved by developing a custom JavaScript file to handle the animations and integrating it into your extension library.
 
-## Custom JavaScript File {data-source=“gui:doc/extension/example_library/front-end/scripts/logoAnimation.js”}
+## Custom JavaScript File {data-source="gui/extension/example_library/front-end/scripts/logoAnimation.js"}
 
 The following JavaScript file is designed to implement animation effects for the logo image and is intended for inclusion in your extension library.
 To ensure proper integration, place the javascript file in the `<package_dir>` directory of your extension library project.
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 ```
 
-## Including the script in the library {data-source="gui:doc/extension/example_library/example_library.py#L92"}
+## Including the script in the library {data-source="gui/extension/example_library/example_library.py#L92"}
 
 To include the additional script in your extension library, Taipy provides other methods to manage resources securely.
 One of them is the `ElementLibrary.get_scripts()^` method, which allows you to include JavaScript files in your application.
