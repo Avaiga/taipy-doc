@@ -8,7 +8,7 @@ img: complete_application/step_04/images/result.png
 ---
 !!! note "Supported Python versions"
 
-    Taipy is supported on **Python 3.9, 3.10, 3.11, or 3.12**.
+    Taipy is supported on **Python 3.9, 3.10, 3.11, and 3.12**.
 
 This tutorial guide will walk you through creating a complete application from the front end to
 the back end. You don't need any prior knowledge to complete this tutorial.

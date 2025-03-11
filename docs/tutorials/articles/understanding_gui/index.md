@@ -9,7 +9,7 @@ img: understanding_gui/step_07/images/result.png
 
 !!! note "Supported Python versions"
 
-    Taipy is supported on **Python 3.9, 3.10, 3.11, or 3.12**.
+    Taipy is supported on **Python 3.9, 3.10, 3.11, and 3.12**.
 
 Welcome to the **Taipy Tutorial**! Learn to build interactive web applications
 effortlessly.

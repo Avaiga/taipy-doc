@@ -9,7 +9,7 @@ img: sales_dashboard/images/thumbnail.png
 
 !!! note "Supported Python versions"
 
-    Taipy is supported on **Python 3.9, 3.10, 3.11, or 3.12**.
+    Taipy is supported on **Python 3.9, 3.10, 3.11, and 3.12**.
 
 This tutorial focuses on creating a simple sales dashboard application. You'll learn about visual elements,
 interaction, styling, and multi-page applications.
