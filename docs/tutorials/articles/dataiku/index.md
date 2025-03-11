@@ -525,8 +525,10 @@ your Taipy application into your existing ecosystem.
     unexpected failure.
 
 ## Prerequisites:
-- Ensure that [Code Studios](https://knowledge.dataiku.com/latest/code/work-environment/tutorial-first-code-studio.html) is enabled for your instance.
-- You must have a [Code Environment](https://doc.dataiku.com/dss/latest/code-envs/index.html) with Taipy installed and Python version 3.9 or higher.
+- Ensure that [Code Studios](https://knowledge.dataiku.com/latest/code/work-environment/tutorial-first-code-studio.html)
+    is enabled for your instance.
+- You must have a [Code Environment](https://doc.dataiku.com/dss/latest/code-envs/index.html) with Taipy installed and
+    Python **version 3.9, 3.10, 3.11, or 3.12**.
 
 ## Step-by-Step Guide:
 
