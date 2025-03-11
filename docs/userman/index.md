@@ -8,7 +8,7 @@ complete Taipy application.
 
 !!! note "Supported Python versions"
 
-    Taipy requires **Python 3.9** or newer.
+    Taipy is supported on **Python 3.9, 3.10, 3.11, and 3.12**.
 
 # Quick Access
 

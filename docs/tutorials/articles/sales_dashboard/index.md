@@ -8,7 +8,8 @@ img: sales_dashboard/images/thumbnail.png
 ---
 
 !!! note "Supported Python versions"
-    Taipy requires **Python 3.9** or newer.
+
+    Taipy is supported on **Python 3.9, 3.10, 3.11, and 3.12**.
 
 This tutorial focuses on creating a simple sales dashboard application. You'll learn about visual elements,
 interaction, styling, and multi-page applications.
@@ -34,7 +35,7 @@ This tutorial is also available in video format:
 
 ### Installation
 
-Ensure you have Python 3.9 or newer, then install Taipy and Plotly:
+Ensure you have Python 3.9, 3.10, 3.11, or 3.12, then install Taipy and Plotly:
 
 ```bash
 pip install taipy plotly
@@ -44,8 +45,8 @@ pip install taipy plotly
     Use `pip install taipy` for the latest stable version. Need help with pip? Check out
     the [installation guide](http://docs.python-guide.org/en/latest/starting/installation/).
 
-The dataset used in this tutorial is the 
-[SuperStore Sales dataset](https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting) 
+The dataset used in this tutorial is the
+[SuperStore Sales dataset](https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting)
 available [here](https://github.com/Avaiga/taipy-course-gui/blob/develop/data.csv).
 
 ## Tutorial Steps
