@@ -57,7 +57,7 @@ pages/
 ```
 
 Your page's folder structure may vary depending on the answers you provided during the creation
-process. Here is a brief overview of the key components:
+process. Here is a brief overview of the page structure:
 
 - `pages/`: The folder that contains the page specified in the second question.
     - `page_example/page_example.py` contains the content of the page.

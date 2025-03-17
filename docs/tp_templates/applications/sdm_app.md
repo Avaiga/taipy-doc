@@ -90,8 +90,8 @@ sections describe each question in detail.
 
 4. With TOML Config
 
-- Specifies whether the application will use TOML configuration files, otherwise the configuration
-  will be in generated in a Python script file.
+- Specifies whether the application uses TOML configuration files, otherwise the configuration
+  is in generated in a Python script file.
 - The default value is "No".
 
 5. With a new Git repository
@@ -137,12 +137,12 @@ taipy_application/
 ```
 
 Your application's folder structure may vary depending on the options you selected during the
-creation process. Here is a brief overview of the key components:
+creation process. Here is a brief overview of the folder structure:
 
 - `algos/`: Contains the `algos.py` file, designed to contain various Python functions used to
     configure tasks.
 - `config/`: Contains the `config.py` file, where you can put your application's configuration.
-    The configuration will be imported by the main application file.
+    The configuration is imported by the main application file.
 - `pages/`: Contains the application pages.
     - `root.py` is the root page of the application, which layouts the application.
         It includes a navigation bar, and a sidebar with the
@@ -172,7 +172,7 @@ the Python code, the configuration files, and any other resources. Specifically,
 the `algos/` and `config/` folders, there are placeholders that you can customize
 precisely to your use case.
 
-## Customizing the tasks' functions
+## Tasks' functions
 
 The `algos/` folder contains the `algos.py` file, designed to contain various Python
 functions used to configure tasks. The functions are strongly use-case dependent,
@@ -199,7 +199,7 @@ the `algos/\_\_init\_\_.py` file.
 from .algos import clean_data, analyze_data
 ```
 
-Then when [customizing the configuration](#customizing-the-configuration), you can
+Then when [customizing the configuration](#configuration), you can
 import these functions and use them to configure various tasks for your application.
 
 ??? note "Renaming generated folders or files"
@@ -208,13 +208,13 @@ import these functions and use them to configure various tasks for your applicat
     update the import statements in the `algos/\_\_init\_\_.py` file and any other
     import statements.
 
-## Customizing the configuration
+## Configuration
 
-The `config/config.py` file contains the *configure()* function, which will be called in
-the main application file to configure the application.
+The `config/config.py` file contains the *configure()* function, which is called in the main
+application file to configure the application.
 
-If your answer to the ["With TOML Config"](#4-with-toml-config) question was "No"
-(the default), the placeholder configuration will be stored in the *configure()* function
+If your answer to the ["With TOML Config"](#4-with-toml-config) question is "No"
+(the default), the placeholder configuration is stored in the *configure()* function
 [as Python code](../../userman/advanced_features/configuration/advanced-config.md#python-code-configuration).
 Import the added functions from the `algos/algos.py` file and use them to configure the tasks.
 
@@ -226,8 +226,8 @@ def configure():
     ...
 ```
 
-If your answer to the ["With TOML Config"](#4-with-toml-config) question was "Yes",
-the placeholder configuration will be stored in `config.toml` file. Update the
+If your answer to the ["With TOML Config"](#4-with-toml-config) question is "Yes" or "y",
+the placeholder configuration is stored in `config.toml` file. Update the
 `config.toml` file to configure the application to your specific use case, or you can
 use [Taipy Studio](../../userman/ecosystem/studio/index.md) for generating a TOML
 file that can be loaded in the *configure()* function.
@@ -237,7 +237,7 @@ file that can be loaded in the *configure()* function.
     If you have a different name for the TOML file, make sure to update the file name in the
     *configure()* function.
 
- ## Customizing the pages
+ ## Pages
 
 The `pages/` folder contains the application pages. You can customize the
 content of the pages to fit your specific requirements, as well as customize

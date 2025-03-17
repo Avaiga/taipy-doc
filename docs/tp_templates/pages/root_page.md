@@ -61,7 +61,7 @@ sections describe each question in detail.
     - For a multi-page Taipy application, it is recommended to provide a dictionary of pages to the
        `Gui^` service.
     - This is used to build the navigation bar.
-    - If the variable does not exist in the main application, an error will be raised when running
+    - If the variable does not exist in the main application, an error is raised when running
        the application.
 - The default value is "pages".
 
@@ -77,7 +77,7 @@ pages/
 ```
 
 Your page's folder structure may vary depending on the answers you provided during the
-creation process. Here is a brief overview of the key components:
+creation process. Here is a brief overview of the page structure:
 
 - `pages/`: The folder that contains the page specified in the second question.
     - `root.py` contains the content of the newly created root page.

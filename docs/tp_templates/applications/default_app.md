@@ -35,8 +35,8 @@ $ taipy create --application default
 [3/9] Application title [Taipy Application]:
 [4/9] With multi-pages?
         Enter the page names separated by a space ():
-[5/9] With Authentication? (No):
-[6/9] With scenario management? (No):
+[5/9] With scenario management? (No):
+[6/9] With Authentication? (No):
 [7/9] With a Rest API? (No):
 [8/9] With a new Git repository? (No):
 [9/9] Select With Docker deployment
@@ -92,10 +92,23 @@ sections describe each question in detail.
       pages. You can add content to the pages as needed.
 - The default value is an empty string, which creates a single-page application.
 
-5. With Authentication
+5. With scenario management
+
+- Specifies whether the application uses scenario management.
+- If the answer is "yes" or "y":
+    - The Taipy `Orchestrator^` service is included to handle job orchestration and version
+      management.
+    - A configuration file is created at `configuration/config.py`. You can copy your
+      application's configuration here so it is imported by the main application file.
+    - A `algorithms/algorithms.py` file is created, designed to contain the
+      various Python functions used to configure tasks. You can add your tasks' functions here and
+      they are imported by the main application file.
+- The default value is "No".
+
+6. With Authentication
 
 - Indicates whether the application includes authentication.
-- If you indicate it does, a login page and a basic setup for configuring authentication is included
+- If the answer is "yes" or "y", a login page and a basic setup for configuring authentication is included
   in the application.
     - A login page is created in `pages/login.py`, which uses the
       [Taipy login control](../../refmans/gui/viselements/generic/login.md).
@@ -105,23 +118,10 @@ sections describe each question in detail.
       You can customize the authentication method as needed.
 - The default value is "No".
 
-6. With scenario management
-
-- Specifies whether the application uses scenario management.
-- If yes:
-    - The Taipy `Orchestrator^` service is included to handle job orchestration and version
-      management.
-    - A configuration file is created at `configuration/config.py`. You can copy your
-      application's configuration here so it is imported by the main application file.
-    - A `algorithms/algorithms.py` file is created, designed to contain the
-      various Python functions used to configure tasks. You can add your tasks' functions here and
-      they will be imported by the main application file.
-- The default value is "No".
-
 7. With a Rest API
 
 - Specifies whether the application uses Taipy Rest.
-- If yes, the Taipy `Rest^` service is included in the application.
+- If the answer is "yes" or "y", the Taipy `Rest^` service is included in the application.
 - The default value is "No".
 
 8. With a new Git repository
@@ -169,12 +169,12 @@ taipy_application/
 ```
 
 Your application's folder structure may vary depending on the options you selected during the
-creation process. Here is a brief overview of the key components:
+creation process. Here is a brief overview of the folder structure:
 
 - `algorithms/`: Contains the `algorithms.py` file, designed to contain various Python functions
     used to configure tasks for the scenario management feature.
-- `configuration/`: Contains the configuration for the application. The configuration will
-    be imported by the main application file.
+- `configuration/`: Contains the configuration for the application. The configuration is
+    imported by the main application file.
     - `config.py` contains the configuration for the scenario management feature.
     - `auth_config.py` contains the configuration for the authentication feature.
 - `pages/`: Contains the application pages if the application is multi-page.
@@ -290,8 +290,8 @@ customize the content of each page:
     feature, and `pages/admin/` contains the page that only authenticated users with the
     "TAIPY_ADMIN" role can access. You can customize the login page in the
     [login](../../refmans/gui/viselements/generic/login.md) visual element's definition.
-- If you provide an answer to the [question 4](#4-with-multi-pages), the pages you specified will
-    be created in the `pages/` folder and are imported automatically in the `pages/\_\_init\_\_.py`
+- If you provide an answer to the [question 4](#4-with-multi-pages), the pages you specified is
+    created in the `pages/` folder and are imported automatically in the `pages/\_\_init\_\_.py`
     file. You can customize the content of each page as needed.
 
 # How to run the application
