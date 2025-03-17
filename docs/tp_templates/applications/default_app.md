@@ -1,4 +1,4 @@
-The default template provides a minimalistic starting point for users to build upon,
+The default application template provides a minimalistic starting point for users to build upon,
 offering a basic structure without additional features. It's a perfect template for users
 who prefer to customize their applications from the ground up without predefined pages or
 visual elements.
@@ -63,7 +63,7 @@ sections describe each question in detail.
 
 !!! note "Available in Taipy Enterprise edition"
 
-    Questions 5 and 9 are only relevant to the [Taipy Enterprise Edition](https://taipy.io/enterprise)
+    Questions 5 and 9 are only relevant to the [Taipy Enterprise Edition](https://taipy.io/enterprise).
 
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
@@ -95,7 +95,7 @@ sections describe each question in detail.
 5. With Authentication
 
 - Indicates whether the application includes authentication.
-- If yes, a login page and a basic setup for configuring authentication is included
+- If you indicate it does, a login page and a basic setup for configuring authentication is included
   in the application.
     - A login page is created in `pages/login.py`, which uses the
       [Taipy login control](../../refmans/gui/viselements/generic/login.md).
@@ -203,7 +203,7 @@ For the scenario management feature, the `algorithms/algorithms.py` file is desi
 various Python functions used to configure tasks. The functions are strongly use-case dependent, for
 example, cleaning data, performing analysis, or running simulations, among other tasks.
 
-Edit the placeholder functions with your specific functions. The functions will be imported by the
+Edit the placeholder functions with your specific functions. The functions are imported by the
 `algorithms/\_\_init\_\_.py` file.
 
 ```python title="algorithms/algorithms.py"
@@ -260,7 +260,7 @@ the main file to use the configuration for the scenario management feature.
 For the authentication feature, the `configuration/auth_config.py` file is designed to contain the
 configuration of the authentication protocol.
 
-By default, the authentication will use the
+By default, the authentication uses the
 [Taipy protocol](../../userman/advanced_features/auth/authentication.md#taipy-protocol). You can
 customize the authentication protocol by editing the placeholder list of users and roles, or use a
 different supported protocols.
