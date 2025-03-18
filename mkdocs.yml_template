@@ -73,6 +73,19 @@ nav:
       - "Large data models vs. Computer memory": tutorials/articles/large_data_models/index.md
       - "Charts for Large Data": tutorials/articles/decimator/index.md
 
+  - "Templates":
+    - "Templates": tp_templates/index.md
+    - "Application templates":
+      - "Default application": tp_templates/applications/default_app.md
+      - "Scenario management application": tp_templates/applications/sdm_app.md
+    - "Page templates":
+      - "Default page": tp_templates/pages/default_page.md
+      - "Layout page": tp_templates/pages/root_page.md
+      - "Data management": tp_templates/pages/data_management_page.md
+      - "Scenario management": tp_templates/pages/sdm_page.md
+      - "Job management": tp_templates/pages/job_management_page.md
+      - "Login": tp_templates/pages/login_page.md
+
   - "User Manual":
     - "About Taipy's User manual": userman/index.md
 
