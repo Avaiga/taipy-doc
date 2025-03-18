@@ -1,5 +1,3 @@
-# Chart
-
 In this section, we’ll dive into creating and integrating charts using [`Plotly`](https://plotly.com/graphing-libraries/) in our extension library.
 Charts are invaluable for visualizing data, offering clear and interactive insights that enhance the user experience.
 We’ll walk through the steps to implement different types of charts, configure their properties,
@@ -144,7 +142,7 @@ module.exports = {
 
 After configuring the webpack file, you can build the library as mentioned in the [Building the front-end module](dynamic_element/index.md#building-the-front-end-module) section.
 
-## Using the element {data-source="gui/extension/example_library/dashboard.py"}
+## Using the element {data-source="gui/extension/dashboard.py"}
 
 To use the *dashboard* element in a Python script, you can follow the example below:
 
@@ -174,13 +172,10 @@ page = """
 """
 ```
 
-In this example, we define two traces and a layout for a horizontal box plot.
+In this example, we define two traces and a layout for an horizontal box plot.
 When you run the script, the *dashboard* element will display like this:
 
 <figure>
     <img src="../dashboard.png" alt="Horizontal Box Plot">
     <figcaption>Horizontal Box Plot</figcaption>
 </figure>
-
-
-

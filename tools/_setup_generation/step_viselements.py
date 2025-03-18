@@ -15,7 +15,7 @@
 import os
 import re
 from io import StringIO
-from typing import Dict
+import typing  as t
 
 from .setup import Setup, SetupStep
 from .viselements import VELoader, VEToc
@@ -102,7 +102,7 @@ class VisElementsStep(SetupStep):
                 f"FATAL - Could not read {self.CHARTS_HOME_HTML_PATH} html fragment"
             )
 
-    def __generate_element_pages(self) -> Dict[str, str]:
+    def __generate_element_pages(self) -> dict[str, str]:
         tocs = {}
         for category in self.categories:
             for element_type in self.categories[category]:
@@ -125,7 +125,7 @@ class VisElementsStep(SetupStep):
                 self.navigation += self.navigation_by_library[k]
         self.navigation += self.navigation_by_library["Blocks"]
 
-    def __generate_toc_file(self, tocs: Dict[str, VEToc]):
+    def __generate_toc_file(self, tocs: dict[str, VEToc]):
         with open(f"{self.TOC_PATH}_template") as template_file:
             md_template = template_file.read()
             if not md_template:
@@ -264,9 +264,7 @@ class VisElementsStep(SetupStep):
         if self.mui_icons is not None:
             for m in re.finditer(r"\[MUI\s*:s*(.*?)s*\]", after_properties):
                 if m[1] not in self.mui_icons:
-                    print(
-                        f"WARNING: Unknown MUI icon '{m[1]}' used in doc for element '{element_type}'"
-                    )
+                    print(f"WARNING: Unknown MUI icon '{m[1]}' used in doc for element '{element_type}'")
 
         # Generate the Markdown output
         with open(f"{element_desc['doc_path']}/{element_type}.md", "w") as md_file:
@@ -309,7 +307,7 @@ class VisElementsStep(SetupStep):
         def generate(self, category, base_class: str) -> str:
             element_types = self.categories[category]
 
-            def build_doc(property: str, desc, indent: int):
+            def build_doc(element_name: str, property: str, desc: dict[str, t.Any], indent: int):
                 type = desc["type"]
                 dynamic = ""
                 dynamic_re = re.match(r"^dynamic\(\s*(.*)\s*\)$", type)
@@ -325,18 +323,23 @@ class VisElementsStep(SetupStep):
                     INNER_HREF = re.compile(r"(?<=<a\shref=\")(#|\.)")
                     for a in INNER_HREF.finditer(doc):
                         new_doc += doc[last_loc : a.start()]
-                        new_doc += f"../../../refmans/gui/viselements/{element_type}/{a.group(0)}"
+                        new_doc += f"../../../../../gui/viselements/generic/{element_type}/{a[0]}"
                         last_loc = a.end()
                     if last_loc:
                         doc = new_doc + doc[last_loc:]
+                    # Remove the 'see below' mentions that make no sense in this context.
+                    doc, _ = re.subn(r"See\s+below.*?\.", "", doc, flags=re.DOTALL)
+                    doc, _ = re.subn(r"(<a.*?</a>)\s+below", r"\1", doc, flags=re.DOTALL)
+                    doc, _ = re.subn(r"(<a.*?>)below</a>", r"\1this example</a>", doc, flags=re.DOTALL)
+                    # Unfortunate special case...
+                    if element_name == "file_download" and property == "content":
+                        doc = doc.replace("examples below for", "examples in the control documentation for")
                     doc = doc.replace("\n", f'\n{(indent+4)*" "}').replace(
                         "<br/>", f'<br/>\n{(indent+4)*" "}'
                     )
-                default_value = (
-                    f'{desc["default_value"]}' if "default_value" in desc else ""
-                )
-                if m := re.match(r"^(<(\w+)>.*?</\2>)$", default_value):
-                    default_value = f'"{m[1]}"'
+                default_value = desc.get("default_value", "").strip()
+                if m := re.match(r"(<(\w+)>(.*?)</\2>)$", default_value):
+                    default_value = m[3] if  m[2] == "code" else f'"{m[1]}"'
                 if default_value:
                     try:
                         _ = eval(default_value)
@@ -377,35 +380,29 @@ class [element_type]({base_class}):
 
             for element_type in element_types:
                 desc = self.elements[element_type]
-                properties = desc["properties"]
-                default_prop = next(
-                    p for p in properties if p["name"] == desc["default_property"]
-                )
-                doc = build_doc(default_prop["name"], default_prop, doc_indent)
+                default_property_name = desc["default_property"]
+                properties: dict[str, any] = desc["properties"]
+                default_prop = next(p for p in properties if p["name"] == default_property_name)
+                doc = build_doc(element_type, default_prop["name"], default_prop, doc_indent)
                 arguments = doc[0]
                 arguments_doc = doc[1]
                 for property in properties:
                     property_name = property["name"]
-                    if (
-                        property_name != desc["default_property"]
-                        and "[" not in property_name
-                    ):
-                        doc = build_doc(property_name, property, doc_indent)
+                    if (property_name != default_property_name and "[" not in property_name):
+                        doc = build_doc(element_type, property_name, property, doc_indent)
                         arguments += doc[0]
                         arguments_doc += doc[1]
                 # Process short doc
                 short_doc = desc["short_doc"]
                 # Link to element doc page
-                element_md_location = (
-                    "corelements" if desc["prefix"] == "core_" else "generic"
-                )
+                element_md_location = "corelements" if desc["prefix"] == "core_" else "generic"
                 if m := (re.search(r"(\[`(\w+)`\]\()\2\.md\)", short_doc)):
                     # Replacing links from the doc in the Python source to another element
                     # At this time, this works only if the source and target elements are in the
                     # same directory (generic, corelements or blocks).
                     short_doc = (
                         short_doc[: m.start()]
-                        + f"<a href=\"../{m[2]}/\"><tt>{m[2]}</tt></a>"
+                        + f"<a href=\"{m[2]}/\"><tt>{m[2]}</tt></a>"
                         + short_doc[m.end() :]
                     )
 
@@ -516,9 +513,7 @@ class [element_type]({base_class}):
             for n, v, t in properties:
                 if "[" in n:
                     if (idx_prop_match := BP_IDX_PROP_RE.match(n)) is None:
-                        print(
-                            f"WARNING - Property '{n}' in examples for {type} prevents Python code generation"
-                        )
+                        print(f"WARNING - Property '{n}' in examples for {type} prevents Python code generation")
                         generate_page_builder_api = False
                     else:
                         pname = f"{idx_prop_match[1]}__{idx_prop_match[2]}"
