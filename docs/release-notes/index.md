@@ -51,7 +51,7 @@ This is the list of changes to Taipy releases as they were published.
 
 - The *unselected_value* property of the [`toggle`](../refmans/gui/viselements/generic/toggle.md)
   control has been removed.<br/>
-  A toggle control that has no selected item new has its
+  A toggle control that has no selected item now has its
   [*value*](../refmans/gui/viselements/generic/toggle.md#p-value) property set to None.
 
 <h4><strong><code>taipy-core</code></strong> 4.1.0</h4>
@@ -86,11 +86,16 @@ additional features.
 
 ## New Features
 
-- Not yet documented.
+- A new application template named "classification" is available. For more information on creating
+  a new Taipy application with the new "classification" template, refer to
+  [Classification application template](../tp_templates/applications/classification_app.md).
+- New page templates are available for creating new pages on top of existing applications. For more
+  information on creating new pages with the new page templates, refer to
+  [Page templates](../tp_templates/index.md#page-templates).
 
 ## Improvements and changes
 
-- The `SystemCredentials^` class can now be used to authorized for administrative actions when
+- The `SystemCredentials^` class can now be used to authorize for administrative actions when
   there is no authenticated user. See the
   [Authorize with SystemCredentials](../userman/advanced_features/auth/authorization.md#authorize-with-systemcredentials)
   for more details.
