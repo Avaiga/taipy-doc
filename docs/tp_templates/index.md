@@ -44,6 +44,8 @@ point for your project with best practices for code organization. Available appl
 
 [:material-arrow-right: Scenario management application template](applications/sdm_app.md),
 
+[:material-arrow-right: Classification application template](applications/classification_app.md),
+
 # Page templates
 
 Taipy also provides page templates, which can be used to create new pages on top of the existing

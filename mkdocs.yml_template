@@ -78,6 +78,7 @@ nav:
     - "Application templates":
       - "Default application": tp_templates/applications/default_app.md
       - "Scenario management application": tp_templates/applications/sdm_app.md
+      - "Classification application": tp_templates/applications/classification_app.md
     - "Page templates":
       - "Default page": tp_templates/pages/default_page.md
       - "Layout page": tp_templates/pages/root_page.md

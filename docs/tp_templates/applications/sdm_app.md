@@ -40,12 +40,13 @@ a few questions to customize your application.
 
 ```console
 $ taipy create --application sdm
-[1/6] Application root folder [taipy_application]:
-[2/6] Application main Python file [main.py]:
-[3/6] Application title [Taipy Application]:
-[4/6] With TOML Config? (No):
-[5/6] With a new Git repository? (No):
-[6/6] Select With Docker deployment
+[1/7] Application root folder [taipy_application]:
+[2/7] Application main Python file [main.py]:
+[3/7] Application title [Taipy Application]:
+[4/7] With TOML Config? (No):
+[5/7] With Authentication? (No):
+[6/7] With a new Git repository? (No):
+[7/7] Select With Docker deployment
     1 - No
     2 - For development
     3 - For production
@@ -94,12 +95,25 @@ sections describe each question in detail.
   is in generated in a Python script file.
 - The default value is "No".
 
-5. With a new Git repository
+5. With Authentication
+
+- Indicates whether the application includes authentication.
+- If the answer is "yes" or "y", a login page and a basic setup for configuring authentication is included
+  in the application.
+    - A login page is created in `pages/login.py`, which uses the
+      [Taipy login control](../../refmans/gui/viselements/generic/login.md).
+    - A basic authentication configuration is added to the `configuration/auth_config.py` file.
+      By default, the authentication uses the
+      [Taipy protocol](../../userman/advanced_features/auth/authentication.md#taipy-protocol).
+      You can customize the authentication method as needed.
+- The default value is "No".
+
+6. With a new Git repository
 
 - Specifies whether the application directory should be initialized as a new Git repository.
 - The default value is "No".
 
-6. With Docker deployment
+7. With Docker deployment
 
 - Specifies Docker support for the application.
 - Options:
@@ -120,6 +134,7 @@ taipy_application/
 │
 ├──── config/
 │   ├──── __init__.py
+│   ├──── auth_config.py
 │   └──── config.py
 │
 ├──── pages/
@@ -141,8 +156,9 @@ creation process. Here is a brief overview of the folder structure:
 
 - `algos/`: Contains the `algos.py` file, designed to contain various Python functions used to
     configure tasks.
-- `config/`: Contains the `config.py` file, where you can put your application's configuration.
-    The configuration is imported by the main application file.
+- `config/`:
+    - `config.py` contains the configuration for the application.
+    - `auth_config.py` contains the configuration for the authentication feature.
 - `pages/`: Contains the application pages.
     - `root.py` is the root page of the application, which layouts the application.
         It includes a navigation bar, and a sidebar with the
@@ -237,7 +253,27 @@ file that can be loaded in the *configure()* function.
     If you have a different name for the TOML file, make sure to update the file name in the
     *configure()* function.
 
- ## Pages
+## Authentication
+
+For the authentication feature, the `config/auth_config.py` file is designed to contain the
+configuration of the authentication protocol.
+
+By default, the authentication uses the
+[Taipy protocol](../../userman/advanced_features/auth/authentication.md#taipy-protocol). You can
+customize the authentication protocol by editing the placeholder list of users and roles, or use a
+different supported protocols.
+
+The role required to access the admin page is defined by the *admin_page_filter* filter variable
+which is a `AnyOf^` instance. By default, the *filters* only allow "TAIPY_ADMIN" role to access the
+admin page. You can customize the filter to allow other roles to access the admin page.
+
+```python title="config/auth_config.py"
+
+...
+admin_page_filter = AnyOf(filters=["TAIPY_ADMIN"], success="admin", failure="login")
+```
+
+## Pages
 
 The `pages/` folder contains the application pages. You can customize the
 content of the pages to fit your specific requirements, as well as customize
