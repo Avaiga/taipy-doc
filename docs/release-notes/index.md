@@ -22,12 +22,12 @@ This is the list of changes to Taipy releases as they were published.
 
 Published on 2024-10.
 
-[`taipy` 4.0](https://pypi.org/project/taipy/4.0.2/) depends on the latest
-[`taipy-common` 4.0](https://pypi.org/project/taipy-common/4.0.2/),
-[`taipy-gui` 4.0](https://pypi.org/project/taipy-gui/4.0.2/),
-[`taipy-core` 4.0](https://pypi.org/project/taipy-core/4.0.2/),
-[`taipy-templates` 4.0](https://pypi.org/project/taipy-templates/4.0.2/), and
-[`taipy-rest` 4.0](https://pypi.org/project/taipy-rest/4.0.2/) packages.
+[`taipy` 4.0](https://pypi.org/project/taipy/4.0.3/) depends on the latest
+[`taipy-common` 4.0](https://pypi.org/project/taipy-common/4.0.3/),
+[`taipy-gui` 4.0](https://pypi.org/project/taipy-gui/4.0.3/),
+[`taipy-core` 4.0](https://pypi.org/project/taipy-core/4.0.3/),
+[`taipy-templates` 4.0](https://pypi.org/project/taipy-templates/4.0.3/), and
+[`taipy-rest` 4.0](https://pypi.org/project/taipy-rest/4.0.3/) packages.
 
 !!! warning "Upgrading to Taipy 4.0 from 3.x"
 
@@ -293,26 +293,45 @@ following new functionalities:
 
 ## Significant bug fixes
 
-<h4><strong><code>taipy</code></strong> 4.0.2</h4>
+<h4><strong><code>taipy</code></strong> 4.0.3</h4>
+
+- Cycle-scoped data nodes don't appear in the
+  [`Data Node Selector`](../refmans/gui/viselements/corelements/data_node_selector.md).<br/>
+  See [issue #2470](https://github.com/Avaiga/taipy/issues/2470).
+
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;4.0.2</h4>
 
 - Completed submissions may be notified twice.<br/>
   See [issue #2152](https://github.com/Avaiga/taipy/issues/2152).
 
 <h4>&nbsp;&nbsp;&nbsp;&nbsp;4.0.1</h4>
 
-- Scenario selection becomes impossible in the `scenario_selector` control after creating a new
-  Scenario.<br/>
+- Scenario selection becomes impossible in the
+  [`scenario_selector`](../refmans/gui/viselements/corelements/scenario_selector.md) control after
+  creating a new Scenario.<br/>
   See [issue #2169](https://github.com/Avaiga/taipy/issues/2169).
-- The Delete button of the "Edit scenario" dialog of the `scenario_selector` control is disabled
-  when it should not be.<br/>
+- The Delete button of the "Edit scenario" dialog of the
+  [`scenario_selector`](../refmans/gui/viselements/corelements/scenario_selector.md) control is
+  disabled when it should not be.<br/>
   See [issue #1995](https://github.com/Avaiga/taipy/issues/1995).
-- A warning is issued when a scenario is created from the `scenario_selector` control.<br/>
+- A warning is issued when a scenario is created from the
+  [`scenario_selector`](../refmans/gui/viselements/corelements/scenario_selector.md) control.<br/>
   See [issue #2009](https://github.com/Avaiga/taipy/issues/2009).
 - Scenario management controls may not be fully recognized by linters or auto-completion features in
   some IDEs.<br/>
   See [issue #1620](https://github.com/Avaiga/taipy/issues/1620).
 
-<h4><strong><code>taipy-gui</code></strong> 4.0.2</h4>
+<h4><strong><code>taipy-gui</code></strong> 4.0.3</h4>
+
+- The callback function set to the
+  [*on_action*](../refmans/gui/viselements/generic/file_download.md#p-on_action) property of
+  the [`file_download`](../refmans/gui/viselements/generic/file_download.md) control gets lost in
+  a multi-page context.<br/>
+  See [issue #2450](https://github.com/Avaiga/taipy/issues/2450).
+- Expressions isolated in partials may raise an exception when evaluated.<br/>
+  See [issue #2463](https://github.com/Avaiga/taipy/issues/2463).
+
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;4.0.2</h4>
 
 - Boolean values are not properly represented in
   [`table`](../refmans/gui/viselements/generic/table.md) controls when the *use_checkbox* property
