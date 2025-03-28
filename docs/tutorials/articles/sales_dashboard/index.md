@@ -8,7 +8,7 @@ img: sales_dashboard/images/thumbnail.png
 ---
 
 !!! note "Supported Python versions"
-    Taipy requires **Python 3.9** or newer.
+    Taipy requires **Python 3.9** through **3.12**.
 
 This tutorial focuses on creating a simple sales dashboard application. You'll learn about visual elements,
 interaction, styling, and multi-page applications.
@@ -34,7 +34,7 @@ This tutorial is also available in video format:
 
 ### Installation
 
-Ensure you have Python 3.9 or newer, then install Taipy and Plotly:
+Ensure you have Python 3.9 through 3.12, then install Taipy and Plotly:
 
 ```bash
 pip install taipy plotly
