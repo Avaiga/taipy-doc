@@ -10,7 +10,7 @@ run the Web Application Server
 
 In versions before *Ubuntu 20.04*, the pre-installed Python versions are older
 than 3.9, the oldest version supported by Taipy. If you are in that case, please
-install Python 3.9 or above.
+install Python 3.9 through 3.12.
 
 ## Prepare your machine
 
