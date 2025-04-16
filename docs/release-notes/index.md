@@ -415,7 +415,7 @@ following new functionalities:
 
 Published on 2024-10.
 
-This release contains all of [`taipy` 4.0](https://pypi.org/project/taipy/4.0.1) as well as
+This release contains all of [`taipy` 4.0](https://pypi.org/project/taipy/4.0.3) as well as
 additional features.
 
 ## New Features
