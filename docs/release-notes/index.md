@@ -458,7 +458,7 @@ additional features.
 
 ## Significant bug fixes
 
-<h4><strong><code>taipy</code></strong> 4.0.4</h4>
+<h4><strong><code>taipy-enterprise</code></strong> 4.0.4</h4>
 - Integration with
   [Microsoft Entra ID](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id)
   SSO is no longer limited to 100 groups per user.
