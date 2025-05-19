@@ -415,10 +415,12 @@ following new functionalities:
 
 Published on 2024-10.
 
-This release contains all of [`taipy` 4.0](https://pypi.org/project/taipy/4.0.3) as well as
+This release contains all of [`taipy` 4.0](https://pypi.org/project/taipy/4.0.4) as well as
 additional features.
 
 ## New Features
+
+<h4><strong><code>taipy-enterprise</code></strong> 4.0.3</h4>
 
 - Authentication now supports
   [Microsoft Entra ID](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id)
@@ -443,6 +445,8 @@ additional features.
 
 ## Improvements and changes
 
+<h4><strong><code>taipy-enterprise</code></strong> 4.0.3</h4>
+
 - The `taipy.export_scenario()^` function now:
     - exports a zip archive instead of a folder.
     - supports exporting file-based data nodes' data to the exported archive if the path exists.
@@ -451,3 +455,10 @@ additional features.
         True to overwrite the existing export path.
     For more information, please refer to
     [Export a scenario](../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
+
+## Significant bug fixes
+
+<h4><strong><code>taipy</code></strong> 4.0.4</h4>
+- Integration with
+  [Microsoft Entra ID](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id)
+  SSO is no longer limited to 100 groups per user.
