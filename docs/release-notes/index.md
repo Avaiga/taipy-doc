@@ -420,7 +420,7 @@ additional features.
 
 ## New Features
 
-<h4><strong><code>taipy-enterprise</code></strong> 4.0.3</h4>
+<h4><strong><code>taipy-enterprise</code></strong> 4.0.0</h4>
 
 - Authentication now supports
   [Microsoft Entra ID](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id)
@@ -445,7 +445,7 @@ additional features.
 
 ## Improvements and changes
 
-<h4><strong><code>taipy-enterprise</code></strong> 4.0.3</h4>
+<h4><strong><code>taipy-enterprise</code></strong> 4.0.0</h4>
 
 - The `taipy.export_scenario()^` function now:
     - exports a zip archive instead of a folder.
