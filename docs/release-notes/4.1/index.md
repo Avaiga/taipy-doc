@@ -39,7 +39,7 @@ Published on 2025-05.
 
 <h4>Deprecations</h4>
 
-- :octicons-alert-16:{ .alert-icon } TODO: This is a deprecation.
+- :octicons-alert-fill-24:{ .alert-icon } TODO: This is a deprecation.
 
 # <strong><code>taipy-gui</code></strong>
 
