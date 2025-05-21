@@ -28,6 +28,7 @@ nav:
       - "Release Notes for version 1.1": release-notes/1.1/index.md
     - "Unsupported Version 1.0":
       - "Release Notes for version 1.0": release-notes/1.0/index.md
+    - "Migration": release-notes/migration.md
   - "Contributing":
     - "Contributing": contributing/index.md
     - "Code of Conduct": contributing/code_of_conduct.md
