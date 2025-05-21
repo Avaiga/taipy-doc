@@ -1,6 +1,6 @@
 ---
 title: Sales Dashboard
-category: finance
+category: service_industry
 data-keywords: dashboard vizelement layout chart community
 short-description: Check out our Sales Dashboard demo that shows valuable insights by exposing Excel files as a web application.
 order: 6

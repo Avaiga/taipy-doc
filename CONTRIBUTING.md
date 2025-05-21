@@ -167,7 +167,7 @@ for the folder that represents the content. For example:
 docs/gallery/articles/your_folder/
 ```
 
-Category is the category of the article (finance, decision_support, llm,
+Category is the category of the article (finance, manufacturing_logistics, llm,
 visualization or other).
 
 #### 2. Add Content
