@@ -21,6 +21,8 @@ Published on 2022-06.
 
 ## 1.1.3
 
+<h4>Improvements and changes</h4>
+
 - :octicons-feed-rocket-16:{ .rocket-icon } The client-server communication settings are extended
   to accommodate various Flask deployment scenarios.<br/>
   See the documentation for the *async_mode* parameter to `Gui.run()^` for more information.
@@ -32,6 +34,9 @@ Published on 2022-06.
   See [issue #323](https://github.com/Avaiga/taipy-gui/issues/323).
 - :octicons-feed-rocket-16:{ .rocket-icon } Allow the edition of specific table columns.<br/>
   See [issue #366](https://github.com/Avaiga/taipy-gui/issues/366).
+
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } Error fixed when modifying a State dictionary entry
   in a callback.<br/>
   See [issue #356](https://github.com/Avaiga/taipy-gui/issues/356).
@@ -42,6 +47,8 @@ Published on 2022-06.
   See [issue #379](https://github.com/Avaiga/taipy-gui/issues/379).
 
 ## 1.1.0
+
+<h4>Improvements and changes</h4>
 
 - :octicons-feed-rocket-16:{ .rocket-icon } The `State^` instance can be initialized in a
   user-defined function. See the _on_init_ attribute of the `Gui^` class for more details.
@@ -65,6 +72,9 @@ Published on 2022-06.
 - :octicons-feed-rocket-16:{ .rocket-icon } The <a href="javascript:void(0)">layout</a> block has new
   syntax that makes it easier to define a repetition of a column definition.
 - :octicons-feed-rocket-16:{ .rocket-icon } Support for multiple assignments to variables in *on_change()*.
+
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } Concurrency issues were fixed.
 - :octicons-bug-24:{ .bug-icon } The [_attr_list_](https://python-markdown.github.io/extensions/attr_list)
   extension can be used to style individual Markdown elements without the need
@@ -77,6 +87,8 @@ Published on 2022-06.
 
 ## 1.1.0
 
+<h4>Improvements and changes</h4>
+
 - :octicons-feed-rocket-16:{ .rocket-icon } Execution modes: "_development_" mode (default) runs tasks
   in a synchronous way one task at
   a time, while "_standalone_" mode runs tasks in an asynchronous and parallel way using
@@ -84,6 +96,9 @@ Published on 2022-06.
 - :octicons-feed-rocket-16:{ .rocket-icon } _Retry policy_ to read entities: the global configuration
   attribute _retry_read_entity_ indicates the number of times Taipy will retry in case of error.
 - :octicons-feed-rocket-16:{ .rocket-icon } Performance improvements when reading and writing entities.
+
+<h4>Deprecations</h4>
+
 - :octicons-alert-fill-24:{ .alert-icon } The _path_ attribute of `DataNodeConfig`,
   for CSV, Excel and Pickle types is now deprecated.<br/>
   _default_path_ must be used instead: it is the default path to use when
@@ -99,6 +114,8 @@ Published on 2022-06.
 # <strong><code>taipy-enterprise</code></strong>
 
 ## 1.1.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } User authentication.
 - :octicons-feed-plus-16:{ .plus-icon } Authorization checks for all entities.

@@ -17,6 +17,9 @@ Published on 2024-03.
 # <strong><code>taipy</code></strong>
 
 ## 3.1.1
+
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } Data is not shown or not automatically refreshed in
   [Data Node viewer](../../refmans/gui/viselements/corelements/data_node.md).<br/>
   See [issue #908](https://github.com/Avaiga/taipy/issues/908) and
@@ -27,23 +30,30 @@ Published on 2024-03.
 
 ## 3.1.0
 
+<h4>New features</h4>
+
 - :octicons-feed-plus-16:{ .plus-icon } Taipy and all its dependencies
   now support Python 3.12.<br/>
   See [Python documentation](https://docs.python.org/3/whatsnew/3.12.html) for details.
-- :octicons-rocket-16:{ .rocket-icon } Task nodes in the
+
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon } Task nodes in the
   [`scenario_dag`](../../refmans/gui/viselements/corelements/scenario_dag.md)
   control dynamically reflect the status of related jobs for the user that submitted the
   scenario or sequences.
-- :octicons-rocket-16:{ .rocket-icon } The
+- :octicons-feed-rocket-16:{ .rocket-icon } The
   [`scenario`](../../refmans/gui/viselements/corelements/scenario.md) control lets you add,
   modify, and edit sequences.
-- :octicons-rocket-16:{ .rocket-icon } The
+- :octicons-feed-rocket-16:{ .rocket-icon } The
   [`data_node`](../../refmans/gui/viselements/corelements/data_node.md) control can now
   represent collections.
 
 # <strong><code>taipy-gui</code></strong>
 
 ## 3.1.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } The
   [`chart`](../../refmans/gui/viselements/generic/chart.md) control has a new property called
@@ -65,15 +75,21 @@ Published on 2024-03.
 - :octicons-feed-plus-16:{ .plus-icon } A new control called
   [`login`](../../refmans/gui/viselements/generic/login.md) is available if you need users
   to authenticate in your application.
-- :octicons-rocket-16:{ .rocket-icon } The
+
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon } The
   [`table`](../../refmans/gui/viselements/generic/table.md) control supports enumerated
   values. That allows for a better user experience when users edit cell values.<br/>
   See the section on
   [enumerated values in tables](../../refmans/gui/viselements/generic/table.md#enumerated-values)
   for the details.
-- :octicons-rocket-16:{ .rocket-icon } The [`toggle`](../../refmans/gui/viselements/generic/toggle.md)
+- :octicons-feed-rocket-16:{ .rocket-icon } The [`toggle`](../../refmans/gui/viselements/generic/toggle.md)
   control appears as a switch button if its
   [*value*](../../refmans/gui/viselements/generic/toggle.md#p-value) property holds a Boolean value.
+
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } Selectors with dropdown menus cannot be deactivated.<br/>
   See [issue #894](https://github.com/Avaiga/taipy/issues/894).
 - :octicons-bug-24:{ .bug-icon } Problems scoping non-global variables used in Partials.<br/>
@@ -85,11 +101,16 @@ Published on 2024-03.
 
 ## 3.1.1
 
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } The signatures for `Config.configure_sql_data_node()`,
   `Config.configure_s3_object_data_node()`, and `configure_core()` methods are out-of-date.<br/>
   See [issue #1014](https://github.com/Avaiga/taipy/issues/1014).
 
 ## 3.1.0
+
+<h4>New features</h4>
+
 - :octicons-feed-plus-16:{ .plus-icon } The `DataNode.filter()^` method and the
   indexing/filtering style now also support filtering a Numpy array, a list of objects, and a
   list of dictionaries.<br/>
@@ -113,18 +134,26 @@ Published on 2024-03.
   has been implemented.<br/>
   For more information, please refer to
   [S3ObjectDataNode](../../userman/scenario_features/data-integration/data-node-config.md#amazon-web-service-s3-object).
+
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon } Running twice the Orchestrator service raises an exception
+  to prevent running multiple instances at the same time.
+- :octicons-feed-rocket-16:{ .rocket-icon } Running the Orchestrator service or creating an entity by
+  `taipy.create_scenario()` or `taipy.create_global_data_node()` blocks the configuration from
+  being modified.
+
+<h4>Deprecations</h4>
+
 - :octicons-alert-fill-24:{ .alert-icon } The `modin` exposed type as been deprecated. When used,
   a fallback on Pandas is applied.<br/>
   See [issue #631](https://github.com/Avaiga/taipy/issues/631) for details.
-- :octicons-rocket-16:{ .rocket-icon } Running twice the Orchestrator service raises an exception
-  to prevent running multiple instances at the same time.
-- :octicons-rocket-16:{ .rocket-icon } Running the Orchestrator service or creating an entity by
-  `taipy.create_scenario()` or `taipy.create_global_data_node()` blocks the configuration from
-  being modified.
 
 # <strong><code>taipy-enterprise</code></strong>
 
 ## 3.1.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } A new job execution mode named *cluster mode*
   is available. It enables to run the jobs on a cluster of dedicated machines in a remote,

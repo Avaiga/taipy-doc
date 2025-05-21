@@ -21,6 +21,8 @@ Published on 2023-06.
 
 ## 2.3.1
 
+<h4>Improvements and changes</h4>
+
 - :octicons-feed-rocket-16:{ .rocket-icon } The
   [expanded](../../refmans/gui/viselements/corelements/scenario.md#p-expanded) and
   [show_tags](../../refmans/gui/viselements/corelements/scenario.md#p-show_tags) properties
@@ -28,6 +30,8 @@ Published on 2023-06.
   have a default value of False.
 
 ## 2.3.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } Scenario and Data Management Controls<br/>
   Taipy comes, in the [`taipy`](https://pypi.org/project/taipy/) package, with a set of
@@ -47,6 +51,8 @@ Published on 2023-06.
 
 ## 2.3.1
 
+<h4>Improvements and changes</h4>
+
 - :octicons-feed-rocket-16:{ .rocket-icon } Multi-line
   [input](../../refmans/gui/viselements/generic/input.md) controls accept the Shift+Enter
   combination to create a new line.<br/>
@@ -58,6 +64,8 @@ Published on 2023-06.
 
 
 ## 2.3.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } The [`table`](../../refmans/gui/viselements/generic/table.md) and
 - :octicons-feed-plus-16:{ .plus-icon } [`chart`](../../refmans/gui/viselements/generic/chart.md)
@@ -77,6 +85,9 @@ Published on 2023-06.
 - :octicons-feed-plus-16:{ .plus-icon } The `navigate()^` function has an additional parameter called
   *force* that, when set to True, re-renders the page (set to the *to* parameter). This allows to
   force the evaluation of bound variables in complex dependencies situations.
+
+<h4>Improvements and changes</h4>
+
 - :octicons-feed-rocket-16:{ .rocket-icon } Page scopes (how Taipy GUI finds bound variables in
   different modules) have been improved so any given page can locate a variable in any module that
   defines a local page.<br/>
@@ -87,6 +98,9 @@ Published on 2023-06.
   potential bottlenecks when allocating a port number. This behavior is controlled by the
   [*notebook_proxy*](../../userman/advanced_features/configuration/gui-config.md#p-notebook_proxy)
   configuration parameter.
+
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } The removal of all the
   [`table`](../../refmans/gui/viselements/generic/table.md) filters has no immediate effect. <br/>
   See [issue #667](https://github.com/Avaiga/taipy-gui/issues/667).
@@ -101,6 +115,18 @@ Published on 2023-06.
 
 ## 2.3.1
 
+<h4>New features</h4>
+
+- :octicons-feed-plus-16:{ .plus-icon } New exposed functions:
+
+       * `is_submittable()^` checks if a scenario or a pipeline can be submitted;
+
+       * `is_promotable()^` checks if a scenario can be promoted to primary;
+
+       * `is_deletable()^` checks if an entity can be deleted.
+
+<h4>Deprecations</h4>
+
 - :octicons-alert-fill-24:{ .alert-icon } The `Config.configure_default_data_node()`
   method has been deprecated. The `Config.set_default_data_node_configuration()^` method
   should be used instead.
@@ -110,15 +136,10 @@ Published on 2023-06.
   deprecated. The `Config.set_pipeline_node_configuration()^` method should be used instead.
 - :octicons-alert-fill-24:{ .alert-icon } The `Config.configure_scenario_node()` method has
   been deprecated. The `Config.set_scenario_node_configuration()^` method should be used instead.
-- :octicons-feed-plus-16:{ .plus-icon } New exposed functions:
-
-       * `is_submittable()^` checks if a scenario or a pipeline can be submitted;
-
-       * `is_promotable()^` checks if a scenario can be promoted to primary;
-
-       * `is_deletable()^` checks if an entity can be deleted.
 
 ## 2.3.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } All scenarios grouped by their cycle can now be retrieved
   by calling `taipy.get_cycles_scenarios()^`.
@@ -135,6 +156,9 @@ Published on 2023-06.
 - :octicons-feed-plus-16:{ .plus-icon } The configuration of a version can now be compared with
   another one by running
   `$ taipy manage-versions --compare-config <version_1> <version_2>` from the CLI.
+
+<h4>Improvements and changes</h4>
+
 - :octicons-feed-rocket-16:{ .rocket-icon } A generic data node can now be created defining only
   the *read_fct* parameter for a read-only data node, or only the *write_fct* parameter for a
   write-only data node.
@@ -144,6 +168,9 @@ Published on 2023-06.
 - :octicons-feed-rocket-16:{ .rocket-icon } The *validity_period* attribute of a data node is now
   exposed at the configuration level to set the up-to-date duration of a data node.
 - :octicons-feed-rocket-16:{ .rocket-icon } Add support for SQLAlchemy 2.0
+
+<h4>Deprecations</h4>
+
 - :octicons-alert-fill-24:{ .alert-icon } `PipelineConfig` has been deprecated and will be combined
   with `ScenarioConfig^` in future updates.
 - :octicons-alert-fill-24:{ .alert-icon } `taipy.create_pipeline()` has been deprecated.

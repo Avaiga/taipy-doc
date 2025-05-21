@@ -20,6 +20,8 @@ Published on 2022-04.
 
 ## 1.0.0
 
+<h4>New features</h4>
+
 - :octicons-feed-plus-16:{ .plus-icon } Multiple pages support
 - :octicons-feed-plus-16:{ .plus-icon } Binding to global variables
 - :octicons-feed-plus-16:{ .plus-icon } Python expression support in visual element properties
@@ -31,6 +33,8 @@ Published on 2022-04.
 
 ## 1.0.0
 
+<h4>New features</h4>
+
 - :octicons-feed-plus-16:{ .plus-icon } Full configuration system
 - :octicons-feed-plus-16:{ .plus-icon } Data node management (read/write/filter/cache)
 - :octicons-feed-plus-16:{ .plus-icon } Predefined data nodes (CSV, SQL, EXCEL, PICKLE)
@@ -40,5 +44,7 @@ Published on 2022-04.
 # <strong><code>taipy-rest</code></strong>
 
 ## 1.0.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } REST APIs on top of `taipy-core`

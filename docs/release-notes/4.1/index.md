@@ -22,14 +22,23 @@ Published on 2025-05.
 
 ## 4.1.0
 
-- :octicons-feed-plus-16:{ .plus-icon } TODO: This is a new feature.
+<h4>New features</h4>
+
+- :octicons-feed-plus-16:{ .plus-icon } TODO: Event Consumer API
 - :octicons-feed-plus-16:{ .plus-icon } TODO: This is another new feature.
-- :octicons-rocket-16:{ .rocket-icon } TODO: This is an improvement, or a change.
-- :octicons-rocket-16:{ .rocket-icon } TODO: This is another improvement, or a change.
+
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon } TODO: This is another improvement, or a change.
+
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } TODO: This is a bug fix.
 - :octicons-bug-24:{ .bug-icon } TODO: This is another bug fix.
 - :octicons-bug-24:{ .bug-icon } TODO: This is a third bug fix.
-- :octicons-alert-16:{ .alert-icon } TODO: This is a breaking change.
+
+<h4>Deprecations</h4>
+
 - :octicons-alert-16:{ .alert-icon } TODO: This is a deprecation.
 
 # <strong><code>taipy-gui</code></strong>
@@ -38,10 +47,17 @@ Published on 2025-05.
 
 # <strong><code>taipy-core</code></strong>
 
+<h4>Deprecations</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon } TODO: CoreEventConsumerBase
+
 ## 4.1.0
 
 # <strong><code>taipy-enterprise</code></strong>
 
 ## 4.1.0
 
+<h4>New features</h4>
+
+- :octicons-feed-plus-16:{ .plus-icon } TODO: Automatic graph Migration
 

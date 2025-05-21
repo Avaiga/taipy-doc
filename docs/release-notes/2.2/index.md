@@ -21,6 +21,8 @@ Published on 2023-04.
 
 ## 2.2.0
 
+<h4>New features</h4>
+
 - :octicons-feed-plus-16:{ .plus-icon } A default set of stylesheets are installed with Taipy GUI
   so that, by default, applications benefit from a homogeneous and good-looking
   style. This is called the [Stylekit](../../userman/gui/styling/stylekit.md).<br/>
@@ -30,6 +32,9 @@ Published on 2023-04.
   and [`chart`](../../refmans/gui/viselements/generic/chart.md) controls have a new property called
   *rebuild* that can be used if you need to entirely change the
   data they rely on, including their structure.
+
+<h4>Improvements and changes</h4>
+
 - :octicons-feed-rocket-16:{ .rocket-icon } The default property name for the
   [`part` block](../../refmans/gui/viselements/generic/part.md)
   was changed from *render* to *class_name* to allow for directly using the
@@ -50,6 +55,9 @@ Published on 2023-04.
   of the [`part` block](../../refmans/gui/viselements/generic/part.md) can now use, as their
   target, any URL. In the context of a `part` block, the page will be rendered in an *iframe*.<br/>
   See [issue #621](https://github.com/Avaiga/taipy-gui/issues/621).
+
+<h4>Deprecations</h4>
+
 - :octicons-alert-fill-24:{ .alert-icon } Bound variable scope issues fixed when used by
   elements defined at the root page level.<br/>
   See [issue #583](https://github.com/Avaiga/taipy-gui/issues/583).
@@ -63,11 +71,15 @@ Published on 2023-04.
 
 ## 2.2.3
 
+<h4>Deprecations</h4>
+
 - :octicons-alert-fill-24:{ .alert-icon } Error raised when running Orchestrator service in
   development mode after a function rename in the Config.<br/>
   See [issue #560](https://github.com/Avaiga/taipy-core/issues/560).
 
 ## 2.2.2
+
+<h4>Deprecations</h4>
 
 - :octicons-alert-fill-24:{ .alert-icon } PostgreSQL and MySQL engines do not support
   "driver" argument.<br/>
