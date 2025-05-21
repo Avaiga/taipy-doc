@@ -6,7 +6,7 @@ This is the list of changes of taipy version 4.0.
 
 !!! note "Migration"
 
-    Please refer to the [Migration page](./migration.md) for potential migration
+    Please refer to the [Migration page](../migration.md) for potential migration
     paths for your applications implemented on legacy Taipy versions.
 
 Published on 2024-10.
@@ -73,51 +73,51 @@ Published on 2024-10.
   package that includes the configuration features among the common code shared by all `taipy`,
   `taipy-gui`, and `taipy-core` packages.
 - :octicons-rocket-16:{ .rocket-icon } The User Experience of the Scenario and Data management
-  controls have been greatly improved by the following new functionalities:
+    controls have been greatly improved by the following new functionalities:
 
-  - [*Scenario Selector*](../../refmans/gui/viselements/corelements/scenario_selector.md):
-    * Multiple selection is now available.<br/>
-      See the [*multiple*](../../refmans/gui/viselements/corelements/scenario_selector.md#p-multiple)
-      property for more details.
-    * Users can now filter scenarios in the list.<br/>
-      See the
-      [section on Filtering](../../refmans/gui/viselements/corelements/scenario_selector.md#filtering)
-      for more details.
-    * Users can now sort scenarios in the list.<br/>
-      See the
-      [section on Sorting](../../refmans/gui/viselements/corelements/scenario_selector.md#sorting) for
-      more details.
-    * Users can now search scenarios in the list<br/>
-      See the
-      [section on Searching](../../refmans/gui/viselements/corelements/scenario_selector.md#searching)
-      for more details.
-  - [*Data Node Selector*](../../refmans/gui/viselements/corelements/data_node_selector.md):
-      - Multiple selection is now available.<br/>
-        See the [*multiple*](../../refmans/gui/viselements/corelements/data_node_selector.md#p-multiple)
-        property for more details.
-      - Users can now filter data nodes in the list.<br/>
-        See the
-        [section on Filtering](../../refmans/gui/viselements/corelements/data_node_selector.md#filtering)
-        for more details.
-      - Users can now sort data nodes in the list.<br/>
-        See the
-        [section on Sorting](../../refmans/gui/viselements/corelements/data_node_selector.md#sorting) for
-        more details.
-      - Users can now search data nodes in the list<br/>
-        See the
-        [section on Searching](../../refmans/gui/viselements/corelements/data_node_selector.md#searching)
-        for more details.
-  - [*Data Node Viewer*](../../refmans/gui/viselements/corelements/data_node.md):
-      - Users can now upload and download data of file-based data nodes.
-  - [*Job Selector*](../../refmans/gui/viselements/corelements/job_selector.md):
-      - A new detail panel has been added to the job selector.
+    - [*Scenario Selector*](../../refmans/gui/viselements/corelements/scenario_selector.md):
+        * Multiple selection is now available.<br/>
+          See the [*multiple*](../../refmans/gui/viselements/corelements/scenario_selector.md#p-multiple)
+          property for more details.
+        * Users can now filter scenarios in the list.<br/>
+          See the
+          [section on Filtering](../../refmans/gui/viselements/corelements/scenario_selector.md#filtering)
+          for more details.
+        * Users can now sort scenarios in the list.<br/>
+          See the
+          [section on Sorting](../../refmans/gui/viselements/corelements/scenario_selector.md#sorting) for
+          more details.
+        * Users can now search scenarios in the list<br/>
+          See the
+          [section on Searching](../../refmans/gui/viselements/corelements/scenario_selector.md#searching)
+          for more details.
+    - [*Data Node Selector*](../../refmans/gui/viselements/corelements/data_node_selector.md):
+        * Multiple selection is now available.<br/>
+          See the [*multiple*](../../refmans/gui/viselements/corelements/data_node_selector.md#p-multiple)
+          property for more details.
+        * Users can now filter data nodes in the list.<br/>
+          See the
+          [section on Filtering](../../refmans/gui/viselements/corelements/data_node_selector.md#filtering)
+          for more details.
+        * Users can now sort data nodes in the list.<br/>
+          See the
+          [section on Sorting](../../refmans/gui/viselements/corelements/data_node_selector.md#sorting) for
+          more details.
+        * Users can now search data nodes in the list<br/>
+          See the
+          [section on Searching](../../refmans/gui/viselements/corelements/data_node_selector.md#searching)
+          for more details.
+    - [*Data Node Viewer*](../../refmans/gui/viselements/corelements/data_node.md):
+        * Users can now upload and download data of file-based data nodes.
+    - [*Job Selector*](../../refmans/gui/viselements/corelements/job_selector.md):
+        * A new detail panel has been added to the job selector.
 
 # <strong><code>taipy-gui</code></strong>
 
 ## 4.0.3
 
 - :octicons-rocket-16:{ .rocket-icon } If a cell value contains line feeds (\n), the
- [`table`](../../refmans/gui/viselements/generic/table.md) control displays the cell as multi-line
+  [`table`](../../refmans/gui/viselements/generic/table.md) control displays the cell as multi-line
   text.<br/>
   See [issue #2524](https://github.com/Avaiga/taipy/issues/2524).
 - :octicons-bug-24:{ .bug-icon } The callback function set to the
@@ -202,7 +202,7 @@ Published on 2024-10.
   simplify the development of chat-based applications.
 - :octicons-feed-plus-16:{ .plus-icon } The
   [`table`](../../refmans/gui/viselements/generic/table.md) control has new features:
-  * Built-in edit functionality are now available for all supported data types. You no longer need
+    * Built-in edit functionality are now available for all supported data types. You no longer need
       to define functions for the
       [*on_edit*](../../refmans/gui/viselements/generic/table.md#p-on_edit),
       [*on_add*](../../refmans/gui/viselements/generic/table.md#p-on_add), and
@@ -211,12 +211,12 @@ Published on 2024-10.
       Please read
       [this section](../../refmans/gui/viselements/generic/table.md#editing-the-table-content) for more
       details.
-  * A new indexed property,
+    * A new indexed property,
       [*format_fn[column_name]*](../../refmans/gui/viselements/generic/table.md#p-format_fn[column_name])
       allows you to define a custom Python function to format cell values.<br/>
       Please look at the
       [example code](../../refmans/gui/viselements/generic/table.md#custom-formatting) for details.
-  * A new property, [*use_checkbox*](../../refmans/gui/viselements/generic/table.md#p-use_checkbox),
+    * A new property, [*use_checkbox*](../../refmans/gui/viselements/generic/table.md#p-use_checkbox),
       can be set to True to display checkboxes in cells containing Boolean values.<br/>
       This significantly reduces the rendering time for large tables with Boolean columns.
 - :octicons-feed-plus-16:{ .plus-icon } You can define CSS rules for individual pages using the new
@@ -264,21 +264,21 @@ Published on 2024-10.
   [`login`](../../refmans/gui/viselements/generic/login.md)
   control, enabling users to show or hide the entered password.
 - :octicons-rocket-16:{ .rocket-icon } Page Builder API:
-  * Properties that expect a function can now be set to a lambda function in the Page Builder
-    API to simplify dynamic generation.<br/>
-    See [issue #1379](https://github.com/Avaiga/taipy/issues/1379).
-  * Controls defined with the Page Builder API have an additional property called *inline* which,
-    when set to True, will not generate a line skip, to facilitate layout.<br/>
-    See [issue #1725](https://github.com/Avaiga/taipy/issues/1725).
+    * Properties that expect a function can now be set to a lambda function in the Page Builder
+      API to simplify dynamic generation.<br/>
+      See [issue #1379](https://github.com/Avaiga/taipy/issues/1379).
+    * Controls defined with the Page Builder API have an additional property called *inline* which,
+      when set to True, will not generate a line skip, to facilitate layout.<br/>
+      See [issue #1725](https://github.com/Avaiga/taipy/issues/1725).
 - :octicons-rocket-16:{ .rocket-icon } The configuration of the `Gui^` object was improved for
   easier deployment:
-  * The [*port*](../../userman/advanced_features/configuration/gui-config.md#p-port) configuration
-    parameter can now be set to "auto". When `Gui.run()^` is executed with this setting, it will
+    * The [*port*](../../userman/advanced_features/configuration/gui-config.md#p-port) configuration
+      parameter can now be set to "auto". When `Gui.run()^` is executed with this setting, it will
       attempt to find an available port by automatically trying different port numbers.
-  * A new configuration parameter,
-    [*port_auto_ranges*](../../userman/advanced_features/configuration/gui-config.md#p-port_auto_ranges),
-    allows specifying the range of port numbers that Taipy GUI will search when
-    [*port*](../../userman/advanced_features/configuration/gui-config.md#p-port) is set to "auto".
+    * A new configuration parameter,
+      [*port_auto_ranges*](../../userman/advanced_features/configuration/gui-config.md#p-port_auto_ranges),
+      allows specifying the range of port numbers that Taipy GUI will search when
+      [*port*](../../userman/advanced_features/configuration/gui-config.md#p-port) is set to "auto".
 - :octicons-bug-24:{ .bug-icon } The value of multiline
   [`input`](../../refmans/gui/viselements/generic/input.md) controls is cleared when the
   ENTER key is pressed.<br/>
@@ -309,8 +309,8 @@ Published on 2024-10.
 
 - :octicons-feed-plus-16:{ .plus-icon } The `taipy.get_scenarios()` and
   `taipy.get_primary_scenarios()^` methods now accept optional parameters to:
-      * sort the output list of scenarios by name, id, creation date, or tag
-      * filter the output list of scenarios that are created in a specific time range.<br/>
+    * sort the output list of scenarios by name, id, creation date, or tag
+    * filter the output list of scenarios that are created in a specific time range.<br/>
   See [issue #393](https://github.com/Avaiga/taipy/issues/393).<br/>
   For more information, please refer to
   [Get all scenarios](../../userman/scenario_features/sdm/scenario/index.md#get-all-scenarios) and
@@ -325,9 +325,10 @@ Published on 2024-10.
     * The `Job^` entity exposes the following duration attributes: *execution_duration*,
       *pending_duration*, and *blocked_duration*.
     * The `Submission^` entity exposes the following timestamp attributes: *submitted_at*,
-    *run_at*, *finished_at*.
+      *run_at*, *finished_at*.
     * The `Submission^` entity exposes the *execution_duration* attribute.
-- :octicons-feed-plus-16:{ .plus-icon } Expose an Abstract class `CoreEventConsumerBase^`
+
+- :octicons-feed-plus-16:{ .plus-icon } Expose an Abstract class `CoreEventConsumerBase`
   to implement a custom event consumer.<br/>
   See [issue #405](https://github.com/Avaiga/taipy/issues/405).<br/>
   A consumer can be used to listen to Taipy events (mainly CRUD operations on Taipy
@@ -435,11 +436,11 @@ Published on 2024-10.
   authentication and authorization features.
 
 - :octicons-rocket-16:{ .rocket-icon } The `taipy.export_scenario()^` function now:
-  * exports a zip archive instead of a folder.
-  * supports exporting file-based data nodes' data to the exported archive if the path exists.
-  * raises the `ExportPathAlreadyExists^`
-    exception if the export path already exists. You can explicitly set the *overwrite* parameter
-    to True to overwrite the existing export path.
+    * exports a zip archive instead of a folder.
+    * supports exporting file-based data nodes' data to the exported archive if the path exists.
+    * raises the `ExportPathAlreadyExists^`
+      exception if the export path already exists. You can explicitly set the *overwrite* parameter
+      to True to overwrite the existing export path.
   For more information, please refer to
   [Export a scenario](../../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
 

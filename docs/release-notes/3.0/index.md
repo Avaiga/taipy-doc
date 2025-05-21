@@ -9,12 +9,13 @@ This is the list of changes of taipy version 3.0.
     Version 3.0 of Taipy is no longer supported. We strongly recommend
     that you upgrade to the latest version of Taipy.
 
-
-!!! warning Error([#1180](https://github.com/Avaiga/taipy/issues/1180)) when downgrading from Taipy 3.1 to Taipy 3.0
+!!! warning "Error when downgrading from Taipy 3.1 to Taipy 3.0"
 
     If you are experiencing an error downgrading to Taipy 3.0, please
     reinstall Taipy with options `--no-cache-dir -I` like so:
     `pip install --no-cache-dir -I taipy==3.0.0`
+
+    See [#1180](https://github.com/Avaiga/taipy/issues/1180) for more details.
 
 Published on 2023-10.
 

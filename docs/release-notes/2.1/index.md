@@ -17,7 +17,7 @@ Published on 2023-01.
 [`taipy-core` 2.1](https://pypi.org/project/taipy-core/2.1.0/) and
 [`taipy-rest` 2.1](https://pypi.org/project/taipy-rest/2.1.0/) packages.
 
-Please refer to the [Migration page](migration.md#from-20-to-21) for
+Please refer to the [Migration page](../migration.md#from-20-to-21) for
 details on how to migrate from version older than 2.1.
 
 ## New Features

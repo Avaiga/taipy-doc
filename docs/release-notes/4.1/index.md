@@ -6,7 +6,7 @@ This is the list of changes to Taipy version 4.1.
 
 !!! note "Migration"
 
-    Please refer to the [Migration page](./migration.md) for potential migration paths for your
+    Please refer to the [Migration page](../migration.md) for potential migration paths for your
     applications implemented on legacy Taipy versions.
 
 Published on 2025-05.
