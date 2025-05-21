@@ -8,7 +8,6 @@ repo_name: taipy
 copyright: © 2021-[YEAR] Avaiga
 nav:
   - "Release Notes":
-    - "Release Notes for version 4.1": release-notes/index.md
     - "Version 4.1 - latest":
       - "Release Notes for version 4.1": release-notes/4.1/index.md
     - "Version 4.0":
