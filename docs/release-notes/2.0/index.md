@@ -21,6 +21,8 @@ Published on 2022-10.
 
 ## 2.0.2
 
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } `image` control may not render properly.<br/>
   See [issue #436](https://github.com/Avaiga/taipy-gui/issues/436).
 - :octicons-bug-24:{ .bug-icon } Clarify and improve the `editable` (and `editable[]`) property
@@ -31,10 +33,14 @@ Published on 2022-10.
 
 ## 2.0.1
 
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } Bar charts' "barmode" set to "stack" is broken.<br/>
   See [issue #445](https://github.com/Avaiga/taipy-gui/issues/445).
 
 ## 2.0.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } Extension API: custom visual elements can be integrated
   into Taipy GUI applications.<br/>
@@ -56,6 +62,9 @@ Published on 2022-10.
 - :octicons-feed-plus-16:{ .plus-icon } The new 'base' property of the chart control makes it
   possible to create Gantt chart-like displays.<br/>
   See [Gantt Charts](../../refmans/gui/viselements/generic/charts/gantt.md) for details.
+
+<h4>Improvements and changes</h4>
+
 - :octicons-feed-rocket-16:{ .rocket-icon } Stopping then re-running the `Gui^` instance is no
   longer required in Notebook contexts.
 - :octicons-feed-rocket-16:{ .rocket-icon } A discrete graphical indicator is displayed at the
@@ -65,10 +74,14 @@ Published on 2022-10.
 
 ## 2.0.4
 
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } Do not update `last_edit_date` when a job fails or is abandoned.
   See [issue #366](https://github.com/Avaiga/taipy-core/issues/366).
 
 ## 2.0.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } New data node named SQLTableDataNode. It represents a
   table in a SQL database.
@@ -86,6 +99,9 @@ Published on 2022-10.
   `Orchestrator().run()` or `tp.run(Orchestrator())`. By running Orchestrator as a service, Taipy
   initializes the scheduler and the job dispatcher based on the provided configuration. The
   Taipy Orchestrator service can be run along with Taipy GUI or Taipy Rest services.
+
+<h4>Improvements and changes</h4>
+
 - :octicons-feed-rocket-16:{ .rocket-icon } The data node of a scenario or a pipeline can now be
   accessed directly at the scenario or pipeline
   levels.
@@ -102,12 +118,17 @@ Published on 2022-10.
   if it is the only scenario in the cycle.
 - :octicons-feed-rocket-16:{ .rocket-icon } The messages of the various Exceptions that can be
   raised have been improved to help the users debug their applications.
+
+<h4>Deprecations</h4>
+
 - :octicons-alert-fill-24:{ .alert-icon } The field *nb_of_workers* within the Config has been
   deprecated in favor of *max_nb_of_workers*.
 
 # <strong><code>taipy-config</code></strong>
 
 ## 2.0.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } The new `taipy-config` package was exposed to be used by any
   other Taipy package for configuration and logging.

@@ -20,11 +20,11 @@ Published on 2023-01.
 Please refer to the [Migration page](../migration.md#from-20-to-21) for
 details on how to migrate from version older than 2.1.
 
-## New Features
-
 # <strong><code>taipy</code></strong>
 
 ## 2.1.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } Taipy and all its dependencies
   now support Python 3.11.<br/>
@@ -33,6 +33,8 @@ details on how to migrate from version older than 2.1.
 # <strong><code>taipy-gui</code></strong>
 
 ## 2.1.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } A security feature has been added: the file
   `.taipyignore`, located next to the Python main file, can list the paths that you want
@@ -60,6 +62,9 @@ details on how to migrate from version older than 2.1.
   webapp, for debugging purposes.<br/>
   The `--webapp-path` command line option allows to specify that location.<br/>
   See [issue #564](https://github.com/Avaiga/taipy-gui/issues/564).
+
+<h4>Improvements and changes</h4>
+
 - :octicons-feed-rocket-16:{ .rocket-icon } The Pie charts now use the *values* property
   to set values instead of *x*.<br/>
   See [Pie charts](../../refmans/gui/viselements/generic/charts/pie.md) for details.
@@ -78,6 +83,8 @@ details on how to migrate from version older than 2.1.
 
 ## 2.1.2
 
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } The version required for
   [openpyxl](https://openpyxl.readthedocs.io/en/stable/) has been downgraded from
   "openpyxl>=3.0.7,<4.0" to "openpyxl>=3.0.7,<3.1" to match the version used by
@@ -85,10 +92,14 @@ details on how to migrate from version older than 2.1.
 
 ## 2.1.1
 
+<h4>Improvements and changes</h4>
+
 - :octicons-feed-rocket-16:{ .rocket-icon } Add overload type descriptions for the
   `taipy.get()` method that supports multiple different combinations of argument types.
 
 ## 2.1.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } New version management system for Taipy
   applications. Users can now run an application in development mode, save a version of
@@ -117,10 +128,16 @@ details on how to migrate from version older than 2.1.
 - :octicons-feed-plus-16:{ .plus-icon } The **sql** *repository_type* is now available on community
   edition to store Taipy entities in an
   SQL database.
+
+<h4>Improvements and changes</h4>
+
 - :octicons-feed-rocket-16:{ .rocket-icon } The *last_edit_date* attribute of a data node is now
   updated when the corresponding data is modified by either a Taipy task execution or an external
   factor. This behavior is limited to file-based data nodes: CSV, Excel, JSON, and pickle data
   nodes only.
+
+<h4>Deprecations</h4>
+
 - :octicons-alert-fill-24:{ .alert-icon } Deprecation of the data node *cacheable* property. It is
   replaced by *skippable* property on tasks.
   The mechanism remains unchanged but instead of setting *cacheable* property to `True` for all the

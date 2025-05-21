@@ -31,16 +31,32 @@ Published on 2024-10.
 
 ## 4.0.3
 
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } Cycle-scoped data nodes don't appear in the
   [`Data Node Selector`](../../refmans/gui/viselements/corelements/data_node_selector.md).<br/>
   See [issue #2470](https://github.com/Avaiga/taipy/issues/2470).
 
 ## 4.0.2
 
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } Completed submissions may be notified twice.<br/>
   See [issue #2152](https://github.com/Avaiga/taipy/issues/2152).
 
 ## 4.0.1
+
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon } The impact of the
+  [*show_properties*](../../refmans/gui/viselements/corelements/data_node.md#p-show_properties)
+  property of the [`data_node`](../../refmans/gui/viselements/corelements/data_node.md) control
+  was changed. This property now controls whether the "Properties" tab is visible.<br/>
+  To show or hide the list of custom properties in the "Properties" tab, you must now use the
+  [*show_custom_properties*](../../refmans/gui/viselements/corelements/data_node.md#p-show_custom_properties)
+  property.
+
+<h4>Significant bug fixes</h4>
 
 - :octicons-bug-24:{ .bug-icon } Scenario selection becomes impossible in the
   [`scenario_selector`](../../refmans/gui/viselements/corelements/scenario_selector.md) control
@@ -56,23 +72,18 @@ Published on 2024-10.
 - :octicons-bug-24:{ .bug-icon } Scenario management controls may not be fully recognized by
   linters or auto-completion features in some IDEs.<br/>
   See [issue #1620](https://github.com/Avaiga/taipy/issues/1620).
-- :octicons-rocket-16:{ .rocket-icon } The impact of the
-  [*show_properties*](../../refmans/gui/viselements/corelements/data_node.md#p-show_properties)
-  property of the [`data_node`](../../refmans/gui/viselements/corelements/data_node.md) control
-  was changed. This property now controls whether the "Properties" tab is visible.<br/>
-  To show or hide the list of custom properties in the "Properties" tab, you must now use the
-  [*show_custom_properties*](../../refmans/gui/viselements/corelements/data_node.md#p-show_custom_properties)
-  property.
 
 ## 4.0.0
 
-- :octicons-rocket-16:{ .rocket-icon } Taipy and all its dependencies now stop support Python 3.8.<br/>
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon } Taipy and all its dependencies now stop support Python 3.8.<br/>
   The minimum supported Python version is now 3.9.
-- :octicons-rocket-16:{ .rocket-icon } Taipy package structure has been reorganized. The
+- :octicons-feed-rocket-16:{ .rocket-icon } Taipy package structure has been reorganized. The
   dependency on `taipy-config` has been removed. Taipy now depends on a new `taipy-common`
   package that includes the configuration features among the common code shared by all `taipy`,
   `taipy-gui`, and `taipy-core` packages.
-- :octicons-rocket-16:{ .rocket-icon } The User Experience of the Scenario and Data management
+- :octicons-feed-rocket-16:{ .rocket-icon } The User Experience of the Scenario and Data management
     controls have been greatly improved by the following new functionalities:
 
     - [*Scenario Selector*](../../refmans/gui/viselements/corelements/scenario_selector.md):
@@ -116,10 +127,15 @@ Published on 2024-10.
 
 ## 4.0.3
 
-- :octicons-rocket-16:{ .rocket-icon } If a cell value contains line feeds (\n), the
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon } If a cell value contains line feeds (\n), the
   [`table`](../../refmans/gui/viselements/generic/table.md) control displays the cell as multi-line
   text.<br/>
   See [issue #2524](https://github.com/Avaiga/taipy/issues/2524).
+
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } The callback function set to the
   [*on_action*](../../refmans/gui/viselements/generic/file_download.md#p-on_action) property of
   the [`file_download`](../../refmans/gui/viselements/generic/file_download.md) control gets
@@ -131,17 +147,21 @@ Published on 2024-10.
 
 ## 4.0.2
 
-- :octicons-rocket-16:{ .rocket-icon } The [`chat`](../../refmans/gui/viselements/generic/chat.md)
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon } The [`chat`](../../refmans/gui/viselements/generic/chat.md)
   control now automatically scrolls down to the last received message unless the user has decided
   otherwise.<br/>
   See [issue #2281](https://github.com/Avaiga/taipy/issues/2281).
-- octicons-rocket-16:{ .rocket-icon } The [`metric`](../../refmans/gui/viselements/generic/metric.md)
+- :octicons-feed-rocket-16:{ .rocket-icon } The [`metric`](../../refmans/gui/viselements/generic/metric.md)
   control now supports geometry adjustments.<br/>
   See issues [#2141](https://github.com/Avaiga/taipy/issues/2141) and
   [#2142](https://github.com/Avaiga/taipy/issues/2142).
-- :octicons-rocket-16:{ .rocket-icon } The Stylekit consistency across elements has been
+- :octicons-feed-rocket-16:{ .rocket-icon } The Stylekit consistency across elements has been
   enforced.<br/>
   See [issue #2305](https://github.com/Avaiga/taipy/issues/2305).
+
+<h4>Significant bug fixes</h4>
 - :octicons-bug-24:{ .bug-icon } Boolean values are not properly represented in
   [`table`](../../refmans/gui/viselements/generic/table.md) controls when the *use_checkbox*
   property is set to True.<br/>
@@ -162,13 +182,18 @@ Published on 2024-10.
 
 ## 4.0.1
 
-- :octicons-rocket-16:{ .rocket-icon } Setting up styling:<br/>
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon } Setting up styling:<br/>
   If a file named `taipy.css` is located in the same directory as the Python script (`<app>.py`)
   running a Taipy GUI application, and no `<app>.css` file exists in the same location, this CSS
   file will be loaded and applied to all pages. This enables sharing styles across different Taipy
   GUI applications.<br/>
   See [issue #1597](https://github.com/Avaiga/taipy/issues/1597) for more details and the
   [section on Styling](../../userman/gui/styling/index.md#style-sheets).
+
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } The `-H` command line option is broken.<br/>
   You must use the long `--host` option instead to specify the server hostname.
 - :octicons-bug-24:{ .bug-icon } The *id* and *payload* parameters of the
@@ -190,6 +215,8 @@ Published on 2024-10.
   See [issue #2005](https://github.com/Avaiga/taipy/issues/2005).
 
 ## 4.0.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } A new control,
   [`metric`](../../refmans/gui/viselements/generic/metric.md), has been added to
@@ -227,50 +254,53 @@ Published on 2024-10.
   enumeration classes.<br/>
   See [the section on enumerated LoVs](../../userman/gui/binding.md#lovs-as-enumeration) for more
   information.
-- :octicons-rocket-16:{ .rocket-icon } Setting up styling:<br/>
+
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon } Setting up styling:<br/>
   If a file named `taipy.css` is located in the same directory as the Python script (`<app>.py`)
   running a Taipy GUI application, and no `<app>.css` file exists in the same location, this CSS
   file will be loaded and applied to all pages. This enables sharing styles across different Taipy
   GUI applications.<br/>
   See [issue #1597](https://github.com/Avaiga/taipy/issues/1597) for more details and the
   [section on Styling](../../userman/gui/styling/index.md#style-sheets).
-- :octicons-rocket-16:{ .rocket-icon } The *style* and *style[column_name]* properties of the
+- :octicons-feed-rocket-16:{ .rocket-icon } The *style* and *style[column_name]* properties of the
   [`table`](../../refmans/gui/viselements/generic/table.md) control have been
   renamed to [*row_class_name*](../../refmans/gui/viselements/generic/table.md#p-row_class_name) and
   [*cell_class_name[column_name]*](../../refmans/gui/viselements/generic/table.md#p-cell_class_name[column_name]),
   respectively. A warning message is issued if you use these properties.
-- :octicons-rocket-16:{ .rocket-icon } Most visual elements now implement the *width* property,
+- :octicons-feed-rocket-16:{ .rocket-icon } Most visual elements now implement the *width* property,
   simplifying page layout.<br/>
   See [issue #1720](https://github.com/Avaiga/taipy/issues/1720).
-- :octicons-rocket-16:{ .rocket-icon } The [`input`](../../refmans/gui/viselements/generic/input.md)
+- :octicons-feed-rocket-16:{ .rocket-icon } The [`input`](../../refmans/gui/viselements/generic/input.md)
   control has a new
   [*type*](../../refmans/gui/viselements/generic/input.md#p-type) property, allowing you to specify the
   expected input type (e.g., email address, URL).
-- :octicons-rocket-16:{ .rocket-icon } The [`pane`](../../refmans/gui/viselements/generic/pane.md)
+- :octicons-feed-rocket-16:{ .rocket-icon } The [`pane`](../../refmans/gui/viselements/generic/pane.md)
   block now includes a new property,
   [*show_button*](../../refmans/gui/viselements/generic/pane.md#p-show_button). When set to True, a
   persistent *open* button appears on the page when the pane is closed, eliminating the need for an
   external control to open the pane.
-- :octicons-rocket-16:{ .rocket-icon } The Modebar in the
+- :octicons-feed-rocket-16:{ .rocket-icon } The Modebar in the
   [`chart`](../../refmans/gui/viselements/generic/chart.md) control (visible when
   the chart is hovered over) no longer includes the Plotly logo button by default. To restore it,
   set the [*plot_config*](../../refmans/gui/viselements/generic/chart.md#p-plot_config) property to a
   dictionary with `"displaylogo": True`.<br/>
   See [issue #1600](https://github.com/Avaiga/taipy/issues/1600).
-- :octicons-rocket-16:{ .rocket-icon } The *decimator* property of the
+- :octicons-feed-rocket-16:{ .rocket-icon } The *decimator* property of the
   [`chart`](../../refmans/gui/viselements/generic/chart.md) control
   now applies to traces that are only "lines" or "markers".
-- :octicons-rocket-16:{ .rocket-icon } A new toggle button has been added to the
+- :octicons-feed-rocket-16:{ .rocket-icon } A new toggle button has been added to the
   [`login`](../../refmans/gui/viselements/generic/login.md)
   control, enabling users to show or hide the entered password.
-- :octicons-rocket-16:{ .rocket-icon } Page Builder API:
+- :octicons-feed-rocket-16:{ .rocket-icon } Page Builder API:
     * Properties that expect a function can now be set to a lambda function in the Page Builder
       API to simplify dynamic generation.<br/>
       See [issue #1379](https://github.com/Avaiga/taipy/issues/1379).
     * Controls defined with the Page Builder API have an additional property called *inline* which,
       when set to True, will not generate a line skip, to facilitate layout.<br/>
       See [issue #1725](https://github.com/Avaiga/taipy/issues/1725).
-- :octicons-rocket-16:{ .rocket-icon } The configuration of the `Gui^` object was improved for
+- :octicons-feed-rocket-16:{ .rocket-icon } The configuration of the `Gui^` object was improved for
   easier deployment:
     * The [*port*](../../userman/advanced_features/configuration/gui-config.md#p-port) configuration
       parameter can now be set to "auto". When `Gui.run()^` is executed with this setting, it will
@@ -279,6 +309,9 @@ Published on 2024-10.
       [*port_auto_ranges*](../../userman/advanced_features/configuration/gui-config.md#p-port_auto_ranges),
       allows specifying the range of port numbers that Taipy GUI will search when
       [*port*](../../userman/advanced_features/configuration/gui-config.md#p-port) is set to "auto".
+
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } The value of multiline
   [`input`](../../refmans/gui/viselements/generic/input.md) controls is cleared when the
   ENTER key is pressed.<br/>
@@ -297,6 +330,8 @@ Published on 2024-10.
 
 ## 4.0.2
 
+<h4>Significant bug fixes</h4>
+
 - :octicons-bug-24:{ .bug-icon } Some data node update events were not correctly published
   on the notifier.<br/>
   See [issue #2319](https://github.com/Avaiga/taipy/issues/2319).
@@ -306,6 +341,8 @@ Published on 2024-10.
   See [issue #2267](https://github.com/Avaiga/taipy/issues/2267).
 
 ## 4.0.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } The `taipy.get_scenarios()` and
   `taipy.get_primary_scenarios()^` methods now accept optional parameters to:
@@ -335,52 +372,36 @@ Published on 2024-10.
   entities) and react to them. For more information, please refer to the
   [Track activities and Trigger actions](../../userman/scenario_features/events/index.md)
   documentation page.
-- :octicons-bug-24:{ .bug-icon } `DataNode.is_up_to_date()^` raises an error when the data node
-  has never been written.<br/>
-  See [issue #1198](https://github.com/Avaiga/taipy/issues/1198).
-- :octicons-bug-24:{ .bug-icon } Reload the cache on all *build_manager()* methods when the
-  *repository_type* is changed.<br/>
-  See [issue #1692](https://github.com/Avaiga/taipy/pull/1692)
-- :octicons-rocket-16:{ .rocket-icon } In standalone job execution mode, the default value of
+
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon } In standalone job execution mode, the default value of
   *max_nb_of_workers* is now 2 instead of 1. For more information, please refer to
   [Job execution configuration](../../userman/advanced_features/configuration/job-config.md).
-- :octicons-rocket-16:{ .rocket-icon } In standalone job execution mode, the workers are started
+- :octicons-feed-rocket-16:{ .rocket-icon } In standalone job execution mode, the workers are started
   in a separate process are now started in "spawn" *mp_context* instead of the default from
   the system.
-- :octicons-alert-fill-24:{ .alert-icon } The `Core` service has been deprecated and renamed
-  `Orchestrator`. The `Core` service is still available for backward compatibility but will be
-  removed in a future release.<br/>
-  See [issue #1567](https://github.com/Avaiga/taipy/issues/1567).
-- :octicons-rocket-16:{ .rocket-icon } When using the Taipy command-line interface, if an
+- :octicons-feed-rocket-16:{ .rocket-icon } When using the Taipy command-line interface, if an
   unsupported argument is provided, the CLI will display a message indicating the invalid argument.
   If the invalid argument is possibly a typo, the CLI will suggest the closest valid argument.
-- :octicons-alert-fill-24:{ .alert-icon } The `Scenario.export()` and `taipy.export_scenario()`
-  functions have been transferred from the Community edition to the Enterprise edition as it is
-  more suitable for enterprise applications.
-- :octicons-alert-fill-24:{ .alert-icon } The production mode and the migration configuration of the
-  version management system has been transferred from the Community edition to the Enterprise
-  Edition as it is more suitable for enterprise applications.
-- :octicons-alert-fill-24:{ .alert-icon } Support for the SQL repository was removed. Taipy
-  Community edition now only supports the `filesystem` repository type.<br/>
-  See [issue #1513](https://github.com/Avaiga/taipy/issues/1513).
-- :octicons-rocket-16:{ .rocket-icon } Support for different encodings in `S3ObjectDataNode^`.<br/>
+- :octicons-feed-rocket-16:{ .rocket-icon } Support for different encodings in `S3ObjectDataNode^`.<br/>
   See [issue #680](https://github.com/Avaiga/taipy/issues/680).
-- :octicons-rocket-16:{ .rocket-icon } Reading an `ExcelDataNode^` is more consistent across the
+- :octicons-feed-rocket-16:{ .rocket-icon } Reading an `ExcelDataNode^` is more consistent across the
   various expose types.<br/>
   See [issue #796](https://github.com/Avaiga/taipy/issues/796).
-- :octicons-rocket-16:{ .rocket-icon } Two scenarios belonging to the same cycle can now have the
+- :octicons-feed-rocket-16:{ .rocket-icon } Two scenarios belonging to the same cycle can now have the
   same tag.<br/>
   See [issue #1292](https://github.com/Avaiga/taipy/issues/1292).<br/>
-- :octicons-rocket-16:{ .rocket-icon } The custom properties of a `Scenario` are not exposed as
+- :octicons-feed-rocket-16:{ .rocket-icon } The custom properties of a `Scenario` are not exposed as
   attribute anymore.<br/>
   See [issue #1572](https://github.com/Avaiga/taipy/issues/1572).
-- :octicons-rocket-16:{ .rocket-icon } Methods and functions returning a Boolean value and related
+- :octicons-feed-rocket-16:{ .rocket-icon } Methods and functions returning a Boolean value and related
   to entities now return a `ReasonCollection^` object, which is a set of `Reason^` instances. Each
   reason contains a message explaining why the returned value is `False`. The collection is empty
   if the value is `True`.<br/>
   Examples: `is_deletable()^`, `exists()^`, `is_readable()^` etc.
   See [issue #1568](https://github.com/Avaiga/taipy/issues/1568).
-- :octicons-rocket-16:{ .rocket-icon } The `Config.check()^` method now raises `ERROR` issues if
+- :octicons-feed-rocket-16:{ .rocket-icon } The `Config.check()^` method now raises `ERROR` issues if
   any data node, task, or sequence of a `ScenarioConfig^` has the same configuration id as another
   one in the same `ScenarioConfig^`, or any additional property of any configuration has the same
   name as one of the attributes of the configuration class.<br/>
@@ -389,29 +410,65 @@ Published on 2024-10.
   For more information on checkers, please refer to
   [Configuration checker](../../userman/advanced_features/configuration/config-checker.md).
 
+<h4>Significant bug fixes</h4>
+
+- :octicons-bug-24:{ .bug-icon } `DataNode.is_up_to_date()^` raises an error when the data node
+  has never been written.<br/>
+  See [issue #1198](https://github.com/Avaiga/taipy/issues/1198).
+- :octicons-bug-24:{ .bug-icon } Reload the cache on all *build_manager()* methods when the
+  *repository_type* is changed.<br/>
+  See [issue #1692](https://github.com/Avaiga/taipy/pull/1692).
+
+<h4>Deprecations</h4>
+
+- :octicons-alert-fill-24:{ .alert-icon } The `Core` service has been deprecated and renamed
+  `Orchestrator`. The `Core` service is still available for backward compatibility but will be
+  removed in a future release.<br/>
+  See [issue #1567](https://github.com/Avaiga/taipy/issues/1567).
+- :octicons-alert-fill-24:{ .alert-icon } The production mode and the migration configuration of the
+  version management system has been transferred from the Community edition to the Enterprise
+  Edition as it is more suitable for enterprise applications.
+- :octicons-alert-fill-24:{ .alert-icon } Support for the SQL repository was removed. Taipy
+  Community edition now only supports the `filesystem` repository type.<br/>
+  See [issue #1513](https://github.com/Avaiga/taipy/issues/1513).
+- :octicons-alert-fill-24:{ .alert-icon } The `Scenario.export()` and `taipy.export_scenario()`
+  functions have been transferred from the Community edition to the Enterprise edition as it is
+  more suitable for enterprise applications.
+
 # <strong><code>taipy-templates</code></strong>
 
 ## 4.0.0
 
+<h4>New features</h4>
+
 - :octicons-feed-plus-16:{ .plus-icon } Creating a new application using any template now
   also supports initializing the application as a Git repository.
+
+<h4>Significant bug fixes</h4>
+
+- :octicons-bug-24:{ .bug-icon } The first cli option of the `taipy create` command is skipped
+  if it's before the positional argument. <br/>
+  See [issue #1687](https://github.com/Avaiga/taipy/issues/1687).
+
+<h4>Deprecations</h4>
+
 - :octicons-alert-fill-24:{ .alert-icon } The *--template* option of the `taipy create` command
   is now renamed to *--application* option to correctly reflect the application template to
   use when creating a new Taipy application.<br/>
   See [issue #1472](https://github.com/Avaiga/taipy/issues/1472).
-- :octicons-bug-24:{ .bug-icon } The first cli option of the `taipy create` command is skipped
-  if it's before the positional argument. <br/>
-  See [issue #1687](https://github.com/Avaiga/taipy/issues/1687).
 
 # <strong><code>taipy-enterprise</code></strong>
 
 ## 4.0.4
 
+<h4>Significant bug fixes</h4>
 - :octicons-bug-24:{ .bug-icon } Integration with
   [Microsoft Entra ID](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id)
   SSO is no longer limited to 100 groups per user.
 
 ## 4.0.0
+
+<h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon } Authentication now supports
   [Microsoft Entra ID](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id)
@@ -435,7 +492,9 @@ Published on 2024-10.
 - :octicons-feed-plus-16:{ .plus-icon } The default application template now supports
   authentication and authorization features.
 
-- :octicons-rocket-16:{ .rocket-icon } The `taipy.export_scenario()^` function now:
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon } The `taipy.export_scenario()^` function now:
     * exports a zip archive instead of a folder.
     * supports exporting file-based data nodes' data to the exported archive if the path exists.
     * raises the `ExportPathAlreadyExists^`
