@@ -24,22 +24,22 @@ Published on 2025-05.
 
 <h4>New features</h4>
 
-- :octicons-feed-plus-16:{ .plus-icon } TODO: Event Consumer API
-- :octicons-feed-plus-16:{ .plus-icon } TODO: This is another new feature.
+- :octicons-feed-plus-16:{ .plus-icon title="New feature" } TODO: Event Consumer API
+- :octicons-feed-plus-16:{ .plus-icon title="New feature" } TODO: This is another new feature.
 
 <h4>Improvements and changes</h4>
 
-- :octicons-feed-rocket-16:{ .rocket-icon } TODO: This is another improvement, or a change.
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} TODO: This is another improvement, or a change.
 
 <h4>Significant bug fixes</h4>
 
-- :octicons-bug-24:{ .bug-icon } TODO: This is a bug fix.
-- :octicons-bug-24:{ .bug-icon } TODO: This is another bug fix.
-- :octicons-bug-24:{ .bug-icon } TODO: This is a third bug fix.
+- :octicons-bug-24:{ .bug-icon title="Bug fix" } TODO: This is a bug fix.
+- :octicons-bug-24:{ .bug-icon title="Bug fix" } TODO: This is another bug fix.
+- :octicons-bug-24:{ .bug-icon title="Bug fix" } TODO: This is a third bug fix.
 
 <h4>Deprecations</h4>
 
-- :octicons-alert-fill-24:{ .alert-icon } TODO: This is a deprecation.
+- :octicons-alert-fill-24:{ .alert-icon title="Deprecation" } TODO: This is a deprecation.
 
 # <strong><code>taipy-gui</code></strong>
 
@@ -49,7 +49,7 @@ Published on 2025-05.
 
 <h4>Deprecations</h4>
 
-- :octicons-feed-rocket-16:{ .rocket-icon } TODO: CoreEventConsumerBase
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} TODO: CoreEventConsumerBase
 
 ## 4.1.0
 
@@ -59,5 +59,5 @@ Published on 2025-05.
 
 <h4>New features</h4>
 
-- :octicons-feed-plus-16:{ .plus-icon } TODO: Automatic graph Migration
+- :octicons-feed-plus-16:{ .plus-icon title="New feature" } TODO: Automatic graph Migration
 
