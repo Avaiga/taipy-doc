@@ -305,7 +305,7 @@ def move_files(repo: str, src_path: str):
                             with open(full_dst, "r") as f:
                                 dst = f.read()
                             if src != dst:
-                                if not item.endswith(".pyi"):
+                                if not item.endswith("config.pyi"): # TODO: Should be improved
                                     raise FileExistsError(
                                         f"File {rel_path}/{item} "
                                         f"already exists and is different (copying repository {repo})"
