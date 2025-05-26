@@ -305,10 +305,11 @@ def move_files(repo: str, src_path: str):
                             with open(full_dst, "r") as f:
                                 dst = f.read()
                             if src != dst:
-                                raise FileExistsError(
-                                    f"File {rel_path}/{item} "
-                                    f"already exists and is different (copying repository {repo})"
-                                )
+                                if not item.endswith(".pyi"):
+                                    raise FileExistsError(
+                                        f"File {rel_path}/{item} "
+                                        f"already exists and is different (copying repository {repo})"
+                                    )
                         else:
                             shutil.copy(full_src, full_dst)
 
