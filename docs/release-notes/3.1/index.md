@@ -2,7 +2,7 @@
 title: Release Notes for version 3.1
 ---
 
-This is the list of changes of taipy version 3.1.
+These are the updates and changes introduced in Taipy version 3.1.
 
 
 Published on 2024-03.

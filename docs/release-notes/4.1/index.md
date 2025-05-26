@@ -2,7 +2,7 @@
 title : Release Notes for version 4.1
 ---
 
-This is the list of changes to Taipy version 4.1.
+These are the updates and changes introduced in Taipy version 4.1.
 
 !!! note "Migration"
 

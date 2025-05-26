@@ -2,7 +2,7 @@
 title: Release Notes for version 1.1
 ---
 
-This is the list of changes of taipy version 1.1.
+These are the updates and changes introduced in Taipy version 1.1.
 
 !!! note "Unsupported version"
 

@@ -2,7 +2,7 @@
 title: Release Notes for version 2.2
 ---
 
-This is the list of changes of taipy version 2.2.
+These are the updates and changes introduced in Taipy version 2.2.
 
 !!! note "Unsupported version"
 
