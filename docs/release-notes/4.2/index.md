@@ -76,7 +76,7 @@ This version is in progress and has not been released yet.
 
 # <strong><code>taipy-enterprise</code></strong>
 
-## 4.1.0
+## 4.2.0
 
 <h4>New features</h4>
 
