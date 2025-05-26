@@ -8,9 +8,29 @@ repo_name: taipy
 copyright: © 2021-[YEAR] Avaiga
 nav:
   - "Release Notes":
-    - "Release Notes": release-notes/index.md
-    - "Legacy": release-notes/legacy.md
-
+    - "Version 4.2 - latest":
+      - "Release Notes for version 4.2": release-notes/4.2/index.md
+    - "Version 4.1":
+      - "Release Notes for version 4.1": release-notes/4.1/index.md
+    - "Version 4.0":
+      - "Release Notes for version 4.0": release-notes/4.0/index.md
+    - "Version 3.1":
+      - "Release Notes for version 3.1": release-notes/3.1/index.md
+    - "Unsupported Version 3.0":
+      - "Release Notes for version 3.0": release-notes/3.0/index.md
+    - "Unsupported Version 2.3":
+      - "Release Notes for version 2.3": release-notes/2.3/index.md
+    - "Unsupported Version 2.2":
+      - "Release Notes for version 2.2": release-notes/2.2/index.md
+    - "Unsupported Version 2.1":
+      - "Release Notes for version 2.1": release-notes/2.1/index.md
+    - "Unsupported Version 2.0":
+      - "Release Notes for version 2.0": release-notes/2.0/index.md
+    - "Unsupported Version 1.1":
+      - "Release Notes for version 1.1": release-notes/1.1/index.md
+    - "Unsupported Version 1.0":
+      - "Release Notes for version 1.0": release-notes/1.0/index.md
+    - "Migration": release-notes/migration.md
   - "Contributing":
     - "Contributing": contributing/index.md
     - "Code of Conduct": contributing/code_of_conduct.md
