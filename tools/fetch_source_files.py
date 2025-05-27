@@ -23,7 +23,7 @@ PRIVATE_REPOS = ["enterprise", "designer"]
 OPTIONAL_PACKAGES = {"gui": ["pyarrow", "pyngrok", "python-magic", "python-magic-bin"]}
 
 # Ecosystem offering may have a different version than the main Taipy version
-VERSION_MAP = {"designer": {"4.0": "1.2"}}
+VERSION_MAP = {"designer": {"4.1": "1.2", "4.0": "1.2"}}
 
 args = CLI(os.path.basename(__file__), REPOS).get_args()
 

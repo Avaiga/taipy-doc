@@ -40,7 +40,7 @@ For more details, see the [registration](understanding-notifier-register.md) pag
 
 To process events, follow these steps:
 
-1. Create a new consumer class and extend it from `CoreEventConsumerBase^`.
+1. Create a new consumer class and extend it from `CoreEventConsumerBase`.
 2. Implement the `process_event` method to define your specific event-handling behavior.
 3. Register the consumer using the `Notifier.register()^` method to obtain
 a `registration_id` and a `registered_queue`. These values are used to instantiate a consumer
