@@ -31,6 +31,7 @@ This version is in progress and has not been released yet.
 ## 4.2.0
 
 <h4>New features</h4>
+
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } A scenario can now be
   duplicated with the `Scenario.duplicate()^` method.<br/>
   See [issue #397](https://github.com/Avaiga/taipy/issues/397).
@@ -38,12 +39,20 @@ This version is in progress and has not been released yet.
   class now exposes a new method `ScenarioConfig.draw()^` to export the scenario
   configuration graph as a PNG file.<br/>
   See [issue #1592](https://github.com/Avaiga/taipy/issues/1592).
+- :octicons-feed-plus-16:{ .plus-icon title="New feature" } The `CSVDataNode^`
+  now supports the *separator* parameter to specify the separator used in the CSV file.<br/>
+  See [issue #2603](https://github.com/Avaiga/taipy/issues/2603).
 
 <h4>Improvements and changes</h4>
 
 - :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} `S3ObjectDataNode^`
   now supports all the parameters of the AWS APIs.<br/>
   See [issue #1858](https://github.com/Avaiga/taipy/issues/1858).
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} `SQLDataNode^` now
+  supports creating read-only or write-only data nodes by providing only the relevant
+  parameter: either *read_query* for read-only or *write_query_builder* for write-only.
+  At least one of the two parameters must be provided.<br/>
+  See [issue #2616](https://github.com/Avaiga/taipy/issues/2616).
 
 <h4>Significant bug fixes</h4>
 
