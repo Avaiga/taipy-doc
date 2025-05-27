@@ -69,14 +69,15 @@ Published on 2025-05.
 
 <h4>New features</h4>
 
-- :octicons-feed-plus-16:{ .plus-icon title="New feature" } A predefined migration function
+- :octicons-feed-plus-16:{ .plus-icon title="New feature" } A new migration function
   has been added to help upgrading to a new production version. This function is designed
   to automatically migrate entities based on changes in the scenario configuration graph
   topology. This includes adding, moving or removing task configurations and/or data node
   configurations from a scenario configuration graph. <br/>
+  See `Config.auto_migrate_scenario_graph()^` for more details.<br/>
   Note that renaming task or data node configurations is considered as a deletion and an addition.
   Resulting entities won't keep their IDs or previous attributes. <br/>
-  Note that changes in configuration attributes are not automatically migrated. Please refer to
-  the
-  [Migration](../../userman/advanced_features/versioning/production_mode.md#production-version-with-migration-functions)
-  functions for more details. <br/>
+  Note that changes in the various configurations' attributes are not automatically migrated. Please refer to
+  the `Config.add_migration_function()^` method and the
+  [migration](../../userman/advanced_features/versioning/production_mode.md#production-version-with-migration-functions)
+  page for more details. <br/>
