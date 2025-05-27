@@ -26,7 +26,7 @@ Published on 2025-05.
 <h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } Event management simplification:
-  A new `GuiEventConsumer` class has been introduced to simplify the management of events
+  A new `GuiEventConsumer^` class has been introduced to simplify the management of events
   in Taipy. <br/>
   See [issue #2306](https://github.com/Avaiga/taipy/issues/2306)
 
@@ -61,7 +61,7 @@ Published on 2025-05.
 
 - :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} Class
   `CoreEventConsumerBase` has been deprecated in favor of the new API
-  `GuiEventConsumer`.
+  `GuiEventConsumer^`.
 
 # <strong><code>taipy-enterprise</code></strong>
 

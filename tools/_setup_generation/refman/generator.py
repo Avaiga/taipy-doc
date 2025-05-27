@@ -16,6 +16,7 @@ class Generator:
         self.PACKAGE_GROUPS = [
             "taipy.common",
             "taipy.core",
+            "taipy.event",
             "taipy.gui",
             "taipy.gui_core",
             "taipy.rest",
