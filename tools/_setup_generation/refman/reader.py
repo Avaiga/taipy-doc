@@ -1,3 +1,4 @@
+import importlib
 import re
 from inspect import isclass, isfunction, ismodule
 
@@ -24,7 +25,8 @@ class Reader:
         self.loaded_modules = set()  # All the modules already processed and loaded
 
     def read_module(self):
-        self._read_module(__import__(self.setup.ROOT_PACKAGE))
+        self._read_module(importlib.import_module(self.setup.ROOT_PACKAGE))
+        self._read_module(importlib.import_module("taipy.event"))
 
     def _read_module(self, module):
         if module in self.loaded_modules:
