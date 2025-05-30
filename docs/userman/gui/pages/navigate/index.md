@@ -231,7 +231,7 @@ See more information for [`on_navigate`](../../callbacks.md#navigation-callback)
 
 === "Markdown"
     ```python
-    from taipy import Gui, State
+    from taipy.gui import Gui, State
 
     results_ready = False
 
@@ -254,7 +254,7 @@ See more information for [`on_navigate`](../../callbacks.md#navigation-callback)
     ```
 === "Python"
     ```python
-    from taipy import Gui, State
+    from taipy.gui import Gui, State
     import taipy.gui.builder as tgb
 
     results_ready = False
