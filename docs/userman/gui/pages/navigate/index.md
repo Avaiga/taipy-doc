@@ -112,7 +112,7 @@ For example, this code creates a menu with two options:
 
 === "Markdown"
     ```python
-    from taipy import Gui, navigate
+    from taipy.gui import Gui, navigate
 
     root_md = """
     <|menu|label=Menu|lov={[('home', 'Home'), ('about', 'About')]}|on_action=menu_option_selected|>
@@ -136,7 +136,7 @@ For example, this code creates a menu with two options:
     ```
 === "Python"
     ```python
-    from taipy import Gui, navigate
+    from taipy.gui import Gui, navigate
     import taipy.gui.builder as tgb
 
     def menu_option_selected(state, action, info):
@@ -172,7 +172,7 @@ an external page.
 
 === "Markdown"
     ```python
-    from taipy import Gui, navigate
+    from taipy.gui import Gui, navigate
 
     root_md = """
     <|Click to go to Page 1|button|on_action=go_home|>
@@ -195,7 +195,7 @@ an external page.
     ```
 === "Python"
     ```python
-    from taipy import Gui, navigate
+    from taipy.gui import Gui, navigate
     import taipy.gui.builder as tgb
 
     def go_home(state):
@@ -231,7 +231,7 @@ See more information for [`on_navigate`](../../callbacks.md#navigation-callback)
 
 === "Markdown"
     ```python
-    from taipy import Gui, State
+    from taipy.gui import Gui, State
 
     results_ready = False
 
@@ -254,7 +254,7 @@ See more information for [`on_navigate`](../../callbacks.md#navigation-callback)
     ```
 === "Python"
     ```python
-    from taipy import Gui, State
+    from taipy.gui import Gui, State
     import taipy.gui.builder as tgb
 
     results_ready = False
