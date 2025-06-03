@@ -22,14 +22,28 @@ Let's explore applications made with Taipy.
   </div>
 
   <div class="tp-col-12 tp-col-md-4 d-flex">
-    <a class="tp-content-card tp-content-card--accent" href="decision_support">
+    <a class="tp-content-card tp-content-card--accent" href="manufacturing_logistics">
       <header class="tp-content-card-header">
         <img class="tp-content-card-icon--small" src="images/rocket_launch.svg">
-        <h3>Decision Support</h3>
+        <h3>Manufacturing & Logistics</h3>
       </header>
       <div class="tp-content-card-body">
         <p>
-          Discover decision support applications for what-if analysis.
+          Discover manufacturing and logistics applications.
+        </p>
+      </div>
+    </a>
+  </div>
+
+  <div class="tp-col-12 tp-col-md-4 d-flex">
+    <a class="tp-content-card tp-content-card--gamma" href="service_industry">
+      <header class="tp-content-card-header">
+        <img class="tp-content-card-icon--small" src="images/package.svg">
+        <h3>Service industry</h3>
+      </header>
+      <div class="tp-content-card-body">
+        <p>
+          See service industry applications using Taipy.
         </p>
       </div>
     </a>
@@ -62,6 +76,8 @@ Let's explore applications made with Taipy.
       </div>
     </a>
   </div>
+
+
 
   <div class="tp-col-12 tp-col-md-4 d-flex">
     <a class="tp-content-card tp-content-card--primary" href="other">

@@ -10,7 +10,7 @@ example of a complete Taipy application.
 
 !!! note "Supported Python versions"
 
-    Taipy requires **Python 3.9** or newer.
+    Taipy requires **Python 3.9** through **3.12**.
 
 As part of Taipy, the `taipy.gui` package allows you to design an effective Graphical User
 Interface (GUI). It provides many interactive widgets, controls, and visual elements to enhance

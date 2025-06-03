@@ -8,7 +8,7 @@ img: complete_application/step_04/images/result.png
 ---
 !!! note "Supported Python versions"
 
-    Taipy requires **Python 3.9** or newer.
+    Taipy requires **Python 3.9** through **3.12**.
 
 This tutorial guide will walk you through creating a complete application from the front end to
 the back end. You don't need any prior knowledge to complete this tutorial.
@@ -29,7 +29,7 @@ comparison of various predictive outcomes.
 
 Three packages have to be installed:
 
- 1. **Taipy** package, it requires Python 3.9 or newer;
+ 1. **Taipy** package, it requires Python 3.9 through 3.12;
 
  2. **scikit-learn**: A Machine-Learning package that will be used in the Tutorial user code;
 
@@ -50,18 +50,30 @@ $ pip install statsmodels
     can guide you through the process.
 
 
-Once Taipy is installed, you can use the CLI to scaffold an application folder. Run the create
-command line with default application template and answer basic questions as follows:
+Once Taipy is installed, you can use the Taipy CLI to scaffold an application folder. Run
+the create command line with default application template and answer basic questions as
+follows:
 
 ``` console
 > taipy create --application default
-Application root folder name [taipy_application]:
-Application main Python file [main.py]:
-Application title [Taipy Application]:
-Page names in multi-page application? []: data_viz scenario performance
-Does the application use scenario management or version management? [No]: yes
-Does the application use Rest API? [No]: no
+[1/9] Application root folder [taipy_application]:
+[2/9] Application main Python file [main.py]:
+[3/9] Application title [Taipy Application]:
+[4/9] With multi-pages?
+        Enter the page names separated by a space ():
+[5/9] With Authentication? (No):
+[6/9] With scenario management? (No):
+[7/9] With a Rest API? (No):
+[8/9] With a new Git repository? (No):
+[9/9] Select With Docker deployment
+    1 - No
+    2 - For development
+    3 - For production
+    Choose from [1/2/3] (1):
 ```
+
+For more details on the available application templates, please refer to the
+[Templates](../../../tp_templates/index.md) documentation.
 
 So, without further delay, let's begin to code!
 

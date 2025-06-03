@@ -10,7 +10,7 @@
 # The header contains the following information:
 # - title: The title of the item
 # - category: The category of the item (fundamentals, visuals, scenario_management,
-# integration, large_data, finance, decision_support, llm, visualization or other)
+# integration, large_data, finance, manufacturing_logistics, llm, visualization or other)
 # - data-keywords: A comma separated list of keywords
 # - short-description: A short description of the item
 # - img: The path to the image associated with the item
@@ -53,13 +53,22 @@ class TutorialsStep(SetupStep):
         return items
 
     def enter(self, setup: Setup):
-        self.TUTORIALS_BASE_PATH = os.path.join(setup.docs_dir, self.TUTORIALS_FOLDER_NAME)
-        self.APPLICATIONS_BASE_PATH = os.path.join(self.TUTORIALS_BASE_PATH, self.APPLICATIONS_FOLDER_NAME)
+        self.TUTORIALS_BASE_PATH = os.path.join(
+            setup.docs_dir, self.TUTORIALS_FOLDER_NAME
+        )
+        self.APPLICATIONS_BASE_PATH = os.path.join(
+            self.TUTORIALS_BASE_PATH, self.APPLICATIONS_FOLDER_NAME
+        )
 
         items = os.listdir(self.TUTORIALS_BASE_PATH)
 
         # Filter out only the directories
-        self.content_types = {item: [] for item in items if os.path.isdir(os.path.join(self.TUTORIALS_BASE_PATH, item)) and item not in self.NO_CONTENT_TYPE_FOLDERS}
+        self.content_types = {
+            item: []
+            for item in items
+            if os.path.isdir(os.path.join(self.TUTORIALS_BASE_PATH, item))
+            and item not in self.NO_CONTENT_TYPE_FOLDERS
+        }
 
         for content_type in self.content_types.keys():
             folder_path = os.path.join(self.TUTORIALS_BASE_PATH, content_type)
@@ -78,7 +87,9 @@ class TutorialsStep(SetupStep):
         items_info = {}
         items = self._get_list_of_items(self.APPLICATIONS_BASE_PATH)
         for content_type, paths in self.content_types.items():
-            sublist_of_items = [items for items in items if items.category == content_type]
+            sublist_of_items = [
+                items for items in items if items.category == content_type
+            ]
             content, items_info_category = self._build_content(sublist_of_items)
             self._update_index_file(paths["index_path"], content)
             print(f"{len(sublist_of_items)} {content_type} items processed.")
@@ -104,7 +115,9 @@ class TutorialsStep(SetupStep):
         lines.append('<ul class="tp-row tp-row--gutter-sm tp-filtered">')
         items = sorted(items, key=lambda item: item.order)
         for item in items:
-            items_info[(item.category, item.order)] = item.generate_content_for_article(main_index=True)
+            items_info[(item.category, item.order)] = item.generate_content_for_article(
+                main_index=True
+            )
             content = item.generate_content_for_article()
             lines.append(content)
         lines.append("</ul>")
@@ -120,7 +133,7 @@ class TutorialsStep(SetupStep):
         return "\n".join(lines)
 
     def _update_index_file(self, index_path: str, content: str):
-        with open(index_path+"_template") as file:
+        with open(index_path + "_template") as file:
             tpl_content = file.read()
         updated_content = re.sub(r"\[LIST_OF_ITEMS\]", content, tpl_content)
         with open(index_path, "w") as file:

@@ -241,6 +241,9 @@ section, the following parameters can be provided:
   By default, *has_header* is True and Taipy will use the 1st row in the CSV file as
   the header.
 
+- _**separator**_ represents the character used to separate the values in the CSV file.<br/>
+  The default value of *separator* is "," (comma).
+
 - _**exposed_type**_ indicates the data type returned when reading the data node (more
   examples of reading from a CSV data node with different *exposed_type* are available
   in the [read/write a data node](data-node-usage.md#csv) documentation):
@@ -501,9 +504,17 @@ the following parameters can be provided:
       creates a list of custom objects with the given custom class. Each object represents
       a record in the table returned by the *read_query*.
 
+!!! info
+
+    A `SQLDataNode^` can be configured to be read-only or write-only by providing either
+    *read_query* for read-only or *write_query_builder* for write-only.
+
+    Both *read_query* and *write_query_builder* are optional parameters, but at least one
+    of the two parameters must be provided.
+
 ### Example with a Microsoft SQL database table
 
-First, let's take a look at an example on how to configure a *SQL table* data node with the
+First, let's take a look at an example on how to configure a *SQL* data node with the
 database engine is `mssql` (short for Microsoft SQL).
 
 ``` python linenums="1"
@@ -530,7 +541,6 @@ The very first parameter of *write_query_builder* (i.e. data) is expected to hav
 type as the return type of the task function whose output is the data node. In this example,
 the task function must return a `pandas.DataFrame`, since the data parameter of the
 *write_query_builder* is a `pandas.DataFrame`.
-
 
 ### Example with a SQLite database table
 

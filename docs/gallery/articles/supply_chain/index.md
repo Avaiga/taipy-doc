@@ -1,6 +1,6 @@
 ---
 title: Supply Chain - 2 Echelons
-category: decision_support
+category: manufacturing_logistics
 data-keywords: optimization scenario cycle comparison enterprise
 short-description: An application that optimizes warehouse selection and routes in a supply chain.
 order: 1

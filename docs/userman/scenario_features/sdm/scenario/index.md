@@ -368,12 +368,12 @@ The `Scenario.duplicate()^` method accepts optional parameters:
     {% include-markdown "./code-example/index/duplication.py" comments=false %}
     ```
 
-    In this example, the `Scenario.duplicate()` method is used to trigger the scenario
+    In this example, the `Scenario.duplicate()^` method is used to trigger the scenario
     duplication. The new scenario is created and its attributes are populated with the
     same values as the original scenario.
 
 ??? note "Another syntax."
-    To submit a scenario, you can also use the `tp.duplicate_scenario()^` method:
+    To duplicate a scenario, you can also use the `tp.duplicate_scenario()^` method:
 
     ```python linenums="1"
     {% include-markdown "./code-example/index/duplication-from-taipy-api.py" comments=false %}

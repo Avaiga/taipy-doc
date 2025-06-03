@@ -1067,3 +1067,16 @@ div.tp-nav-button-single {
 	margin-top: 0 !important;
     }
 }
+
+.rocket-icon {
+  color: var(--md-accessory-color-alpha);
+}
+.bug-icon {
+  color: var(--md-accessory-color-beta);
+}
+.plus-icon {
+  color: var(--md-accessory-color-gamma);
+}
+.alert-icon {
+  color: var(--md-accessory-color-delta);
+}

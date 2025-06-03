@@ -3,7 +3,7 @@
   set class = class ~ " md-header--shadow md-header--lifted" %} {% elif
   "navigation.tabs" not in features %} {% set class = class ~ " md-header--shadow"
   %} {% endif %}
-  
+
   <!-- Header -->
   <header class="{{ class }}" data-md-component="header">
     <nav class="md-header__main" aria-label="{{ lang.t('header') }}">
@@ -12,7 +12,7 @@
         <label class="md-header__button md-icon" for="__drawer">
           {% include ".icons/material/menu" ~ ".svg" %}
         </label>
-  
+
         <!-- Link to home -->
         <div class="md-header__title-wrapper">
           <a
@@ -24,7 +24,7 @@
           >
             {% include "partials/logo.html" %}
           </a>
-  
+
           <!-- Header title -->
           <div class="md-header__title" data-md-component="header-title">
             <div class="md-header__ellipsis">
@@ -50,7 +50,7 @@
             </div>
           </div>
         </div>
-  
+
         <!-- Site language selector -->
         {% if config.extra.alternate %}
         <div class="md-header__option">
@@ -80,18 +80,18 @@
           </div>
         </div>
         {% endif %}
-  
+
         {% if "material/search" in config.plugins %}
         <label class="md-header__button md-icon" for="__search">
           {% include ".icons/material/magnify.svg" %}
         </label>
-  
+
         <!-- Manually added as we dropped the tabs for everything else -->
         <nav class="md-tabs" aria-label="{{ lang.t('tabs') }}" data-md-component="tabs">
           <div class="md-grid">
             <ul class="md-tabs__list">
               <li class="md-tabs__item">
-                <a href="http://TAIPY_DOCS_URL/release-notes/" class="md-tabs__link">
+                <a href="http://TAIPY_DOCS_URL/release-notes/4.1" class="md-tabs__link">
                   Release Notes
                 </a>
               </li>
@@ -107,12 +107,12 @@
 
         <!-- Search interface -->
         {% include "partials/search.html" %} {% endif %}
-  
+
         <!-- Repository information -->
         {% if config.repo_url %}
         <div class="md-header__source">{% include "partials/source.html" %}</div>
         {% endif %}
-  
+
         <!-- Color palette -->
         {% if config.theme.palette %} {% if not config.theme.palette is mapping %}
         <div class="md-header__color-mode">
@@ -151,4 +151,3 @@
       </div>
     </nav>
   </header>
-  

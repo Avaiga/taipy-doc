@@ -8,6 +8,7 @@ Partials can be used within multiple objects in Taipy: [part](../../../../refman
 === "Python"
     ```python
     from taipy.gui import Gui
+    import taipy.gui.builder as tgb
 
     # Define the main page layout
     with tgb.Page() as page:

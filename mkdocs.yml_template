@@ -8,9 +8,29 @@ repo_name: taipy
 copyright: © 2021-[YEAR] Avaiga
 nav:
   - "Release Notes":
-    - "Release Notes": release-notes/index.md
-    - "Legacy": release-notes/legacy.md
-
+    - "Version 4.2 - latest":
+      - "Release Notes for version 4.2": release-notes/4.2/index.md
+    - "Version 4.1":
+      - "Release Notes for version 4.1": release-notes/4.1/index.md
+    - "Version 4.0":
+      - "Release Notes for version 4.0": release-notes/4.0/index.md
+    - "Version 3.1":
+      - "Release Notes for version 3.1": release-notes/3.1/index.md
+    - "Unsupported Version 3.0":
+      - "Release Notes for version 3.0": release-notes/3.0/index.md
+    - "Unsupported Version 2.3":
+      - "Release Notes for version 2.3": release-notes/2.3/index.md
+    - "Unsupported Version 2.2":
+      - "Release Notes for version 2.2": release-notes/2.2/index.md
+    - "Unsupported Version 2.1":
+      - "Release Notes for version 2.1": release-notes/2.1/index.md
+    - "Unsupported Version 2.0":
+      - "Release Notes for version 2.0": release-notes/2.0/index.md
+    - "Unsupported Version 1.1":
+      - "Release Notes for version 1.1": release-notes/1.1/index.md
+    - "Unsupported Version 1.0":
+      - "Release Notes for version 1.0": release-notes/1.0/index.md
+    - "Migration": release-notes/migration.md
   - "Contributing":
     - "Contributing": contributing/index.md
     - "Code of Conduct": contributing/code_of_conduct.md
@@ -72,6 +92,20 @@ nav:
       - "Using PySpark for Large Data": tutorials/articles/pyspark/index.md
       - "Large data models vs. Computer memory": tutorials/articles/large_data_models/index.md
       - "Charts for Large Data": tutorials/articles/decimator/index.md
+
+  - "Templates":
+    - "Templates": tp_templates/index.md
+    - "Application templates":
+      - "Default application": tp_templates/applications/default_app.md
+      - "Scenario management application": tp_templates/applications/sdm_app.md
+      - "Classification application": tp_templates/applications/classification_app.md
+    - "Page templates":
+      - "Default page": tp_templates/pages/default_page.md
+      - "Layout page": tp_templates/pages/root_page.md
+      - "Data management": tp_templates/pages/data_management_page.md
+      - "Scenario management": tp_templates/pages/sdm_page.md
+      - "Job management": tp_templates/pages/job_management_page.md
+      - "Login": tp_templates/pages/login_page.md
 
   - "User Manual":
     - "About Taipy's User manual": userman/index.md
@@ -262,20 +296,21 @@ nav:
     - "Finance":
       - "Finance": gallery/finance/index.md
       - "Stock Visualization": gallery/articles/stock_visualization/index.md
-      - "Sales Dashboard": gallery/articles/sales_dashboard/index.md
       - "Commodity Trading": gallery/articles/commodity_trading/index.md
       - "Fraud Detection": gallery/articles/fraud_detection/index.md
-    - "Decision Support":
-      - "Decision Support": gallery/decision_support/index.md
+    - "Manufacturing & Logistics":
+      - "Manufacturing & Logistics": gallery/manufacturing_logistics/index.md
       - "Supply Chain - 2 Echelons": gallery/articles/supply_chain/index.md
       - "Supply Chain - 3 Echelons": gallery/articles/supply_chain_3_echelons/index.md
-      - "QSR Sales Forecasting": gallery/articles/qsr_sales_forecasting/index.md
       - "Supply Chain Monitoring": gallery/articles/supply_chain_monitoring/index.md
       - "Production Planning": gallery/articles/production_planning/index.md
       - "Inventory Forecasting": gallery/articles/inventory_forecasting/index.md
-      - "Drift Detection": gallery/articles/drift_detection/index.md
       - "Optimize Bar Cut Sizes": gallery/articles/bar_cutting/index.md
       - "Churn Classification": gallery/articles/churn_classification/index.md
+    - "Service industry":
+      - "Service industry": gallery/service_industry/index.md
+      - "QSR Sales Forecasting": gallery/articles/qsr_sales_forecasting/index.md
+      - "Sales Dashboard": gallery/articles/sales_dashboard/index.md
     - "LLM":
       - "LLM": gallery/llm/index.md
       - "LLM Chatbot" : gallery/articles/chatbot/index.md
@@ -292,10 +327,20 @@ nav:
       - "Realtime Pollution Dashboard" : gallery/articles/pollution_sensors/index.md
     - "Other":
       - "Other": gallery/other/index.md
+      - "Drift Detection": gallery/articles/drift_detection/index.md
       - "Background Remover": gallery/articles/background_remover/index.md
       - "Real-time Face Recognition": gallery/articles/face_recognition/index.md
       - "Movie Genre Selector": gallery/articles/movie_genre_selector/index.md
 
+not_in_nav: |
+  /refmans/reference/pkg_*/**/[a-z][a-zA-Z]*/index.md
+  /refmans/reference_guiext/functions/[a-z][a-zA-Z]*.md
+  /refmans/reference_guiext/*/[A-Z]*.md
+  /refmans/gui/viselements/generic/charts/advanced.md
+  /refmans/gui/viselements/generic/charts/[a-z]*.md
+  /userman/gui/pages/builder.md
+  /userman/gui/pages/html.md
+  /userman/gui/pages/markdown.md
 
 theme:
   name: material
@@ -409,6 +454,7 @@ extra:
   generator: false
 exclude_docs: |
   *.md_template
+  *~
 # uncomment the following and put your google tracking id below to enable GA
 #google_analytics:
   #- UA-xxx
