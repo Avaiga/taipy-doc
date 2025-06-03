@@ -41,7 +41,7 @@ part of a scenario.
 
 !!! example
 
-    ```python linenums="1"
+    ``` python linenums="1"
     import taipy as tp
     from my_config import sales_history_cfg
 
@@ -70,7 +70,7 @@ passing the data node id as a parameter:
 
 !!! example
 
-    ```python linenums="1"
+    ``` python linenums="1"
     import taipy as tp
     import my_config
 
@@ -90,7 +90,7 @@ can be directly accessed as attributes by using their config_id:
 
 !!! example
 
-    ```python linenums="1"
+    ``` python linenums="1"
     import taipy as tp
     import my_config
 
@@ -118,7 +118,7 @@ nodes instantiated from the config_id provided as a parameter.
 
 !!! example
 
-    ```python linenums="1"
+    ``` python linenums="1"
     import taipy as tp
     import my_config
 
@@ -139,7 +139,7 @@ directly accessed as attributes:
 
 !!! example
 
-    ```python linenums="1"
+    ``` python linenums="1"
     import taipy as tp
     import my_config
 
@@ -161,7 +161,7 @@ which returns a list of all existing data nodes.
 
 !!! example
 
-    ```python linenums="1"
+    ``` python linenums="1"
     import taipy as tp
 
     # Retrieve all data nodes
@@ -178,7 +178,7 @@ the type of data node:
 
 !!! example
 
-    ```python linenums="1"
+    ``` python linenums="1"
     import taipy as tp
     import my_config
 
@@ -201,7 +201,7 @@ type) as a parameter and writes it on the data node:
 
 !!! example
 
-    ```python linenums="1"
+    ``` python linenums="1"
     import taipy as tp
     import my_config
 
@@ -270,7 +270,7 @@ The following examples represent the results when reading from a CSV data node w
 
     === "exposed_type = "pandas""
 
-        ```python
+        ``` python
         pandas.DataFrame(
             {
                 "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
@@ -281,7 +281,7 @@ The following examples represent the results when reading from a CSV data node w
 
     === "exposed_type = "numpy""
 
-        ```python
+        ``` python
         numpy.array(
             [
                 ["12/24/2018", "1550"],
@@ -293,7 +293,7 @@ The following examples represent the results when reading from a CSV data node w
 
     === "exposed_type = SaleRow"
 
-        ```python
+        ``` python
         [
             SaleRow("12/24/2018", 1550),
             SaleRow("12/25/2018", 2315),
@@ -303,7 +303,7 @@ The following examples represent the results when reading from a CSV data node w
 
     === "exposed_type = polars"
 
-        ```python
+        ``` python
         polars.DataFrame(
             {
                 "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
@@ -331,7 +331,7 @@ The following examples will write to the path of the CSV data node:
     === "list"
         When write a list to CSV data node, each element of a list contains 1 row of data.
 
-        ```python
+        ``` python
         # write a list
         data_node.write(
             ["12/24/2018", "12/25/2018", "12/26/2018"]
@@ -348,7 +348,7 @@ The following examples will write to the path of the CSV data node:
 
     === "numpy array"
 
-        ```python
+        ``` python
         data_node.write(
             np.array([
                 ["12/24/2018", 1550],
@@ -360,7 +360,7 @@ The following examples will write to the path of the CSV data node:
 
     === "dictionary"
 
-        ```python
+        ``` python
         # "list" form
         data_node.write(
             {
@@ -380,7 +380,7 @@ The following examples will write to the path of the CSV data node:
 
     === "pandas dataframes"
 
-        ```python
+        ``` python
         data = pandas.DataFrame(
             [
                 {"date": "12/24/2018", "nb_sales": 1550},
@@ -397,7 +397,7 @@ To write with custom column names, use the `CSVDataNode.write_with_column_names(
 
 !!! example "`CSVDataNode.write_with_column_names()^` examples"
 
-    ```python
+    ``` python
     data_node.write(
         [
             ["12/24/2018", 1550],
@@ -407,7 +407,6 @@ To write with custom column names, use the `CSVDataNode.write_with_column_names(
         columns=["date", "nb_sales"]
     )
     ```
-
 
 ## Excel
 
@@ -433,7 +432,7 @@ The following examples represent the results when reading from an Excel data nod
 
     === "exposed_type = "pandas""
 
-        ```python
+        ``` python
         pandas.DataFrame(
             {
                 "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
@@ -444,7 +443,7 @@ The following examples represent the results when reading from an Excel data nod
 
     === "exposed_type = "numpy""
 
-        ```python
+        ``` python
         numpy.array(
             [
                 ["12/24/2018", "1550"],
@@ -455,7 +454,7 @@ The following examples represent the results when reading from an Excel data nod
         ```
 
     === "exposed_type = SaleRow"
-        ```python
+        ``` python
         [
             SaleRow("12/24/2018", 1550),
             SaleRow("12/25/2018", 2315),
@@ -465,7 +464,7 @@ The following examples represent the results when reading from an Excel data nod
 
     === "exposed_type = polars"
 
-        ```python
+        ``` python
         polars.DataFrame(
             {
                 "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
@@ -492,7 +491,7 @@ The following examples will write to the path of the Excel data node:
     === "list"
         When write a list to Excel data node, each element of a list contains 1 row of data.
 
-        ```python
+        ``` python
         # write a list
         data_node.write(
             ["12/24/2018", "12/25/2018", "12/26/2018"]
@@ -509,7 +508,7 @@ The following examples will write to the path of the Excel data node:
 
     === "numpy array"
 
-        ```python
+        ``` python
         data_node.write(
             np.array([
                 ["12/24/2018", 1550],
@@ -521,7 +520,7 @@ The following examples will write to the path of the Excel data node:
 
     === "dictionary"
 
-        ```python
+        ``` python
         # "list" form
         data_node.write(
             {
@@ -541,7 +540,7 @@ The following examples will write to the path of the Excel data node:
 
     === "pandas dataframes"
 
-        ```python
+        ``` python
         data = pandas.DataFrame(
             [
                 {"date": "12/24/2018", "nb_sales": 1550},
@@ -558,7 +557,7 @@ To write with custom column names, use the `ExcelDataNode.write_with_column_name
 
 !!! example "`ExcelDataNode.write_with_column_names()^` examples"
 
-    ```python
+    ``` python
     data_node.write(
         [
             ["12/24/2018", 1550],
@@ -596,7 +595,7 @@ node with different _exposed_type_:
 
     === "exposed_type = "pandas""
 
-        ```python
+        ``` python
         pandas.DataFrame(
             {
                 "ID": [1, 2, 3],
@@ -608,7 +607,7 @@ node with different _exposed_type_:
 
     === "exposed_type = "numpy""
 
-        ```python
+        ``` python
         numpy.array(
             [
                 ["1", "12/24/2018", "1550"],
@@ -619,7 +618,7 @@ node with different _exposed_type_:
         ```
 
     === "exposed_type = SaleRow"
-        ```python
+        ``` python
         [
             SaleRow("12/24/2018", 1550),
             SaleRow("12/25/2018", 2315),
@@ -629,7 +628,7 @@ node with different _exposed_type_:
 
     === "exposed_type = polars"
 
-        ```python
+        ``` python
         polars.DataFrame(
             {
                 "ID": [1, 2, 3],
@@ -659,7 +658,7 @@ examples will write to the SQL Table data node:
 
     === "list"
 
-        ```python
+        ``` python
         # write a list of lists
         data_node.write(
             [
@@ -681,7 +680,7 @@ examples will write to the SQL Table data node:
 
     === "numpy array"
 
-        ```python
+        ``` python
         data = np.array(
             [
                 ["12/24/2018", 1550],
@@ -695,7 +694,7 @@ examples will write to the SQL Table data node:
 
     === "dictionary"
 
-        ```python
+        ``` python
         # write 1 record to the SQL table
         data_node.write(
             {"date": "12/24/2018", "nb_sales": 1550}
@@ -713,7 +712,7 @@ examples will write to the SQL Table data node:
 
     === "pandas dataframes"
 
-        ```python
+        ``` python
         data = pandas.DataFrame(
             [
                 {"date": "12/24/2018", "nb_sales": 1550},
@@ -741,7 +740,7 @@ file based on the _exposed_type_ parameter:
   Check out [SQL data node configuration](data-node-config.md#sql) for more details on
   _exposed_type_.
 - The _read_query_ of `orders_cfg` is
-    ```sql
+    ``` sql
     SELECT orders.ID, orders.date, products.price, orders.number_of_products
     FROM orders INNER JOIN products
     ON orders.product_id=products.ID
@@ -774,7 +773,7 @@ file based on the _exposed_type_ parameter:
 
 !!! example "`data_node.read()` returns"
 
-    ```python
+    ``` python
     pandas.DataFrame
     (
             ID         date   price   number_of_products
@@ -801,7 +800,7 @@ execute a list of queries returned by the query builder:
 
 !!! example "`data_node.write()`"
 
-    ```python
+    ``` python
     data = pandas.DataFrame(
         [
             {"date": "01/08/2019", "product_id": 1, "number_of_products": 450},
@@ -852,7 +851,7 @@ with `default_path="path/sales.json"`.
 
     === "Write dictionaries"
 
-        ```python
+        ``` python
         data = [
             {"date": "12/24/2018", "nb_sales": 1550},
             {"date": "12/25/2018", "nb_sales": 2315},
@@ -873,7 +872,7 @@ with `default_path="path/sales.json"`.
 
     === "Write datetime.datetime"
 
-        ```python
+        ``` python
         from datetime import datetime
 
         data = [
@@ -898,7 +897,7 @@ with `default_path="path/sales.json"`.
 
     === "Write enum.Enum"
 
-        ```python
+        ``` python
         from enum import Enum
 
         class SaleRank(Enum):
@@ -930,7 +929,7 @@ with `default_path="path/sales.json"`.
 
     === "Write dataclass object"
 
-        ```python
+        ``` python
         from dataclasses import dataclass
 
         @dataclass
@@ -983,7 +982,7 @@ The following examples represent the results when read from Parquet data node wi
 
     === "exposed_type = "pandas""
 
-        ```python
+        ``` python
         pandas.DataFrame(
             {
                 "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
@@ -994,7 +993,7 @@ The following examples represent the results when read from Parquet data node wi
 
     === "exposed_type = "numpy""
 
-        ```python
+        ``` python
         numpy.array(
             [
                 ["12/24/2018", "1550"],
@@ -1005,7 +1004,7 @@ The following examples represent the results when read from Parquet data node wi
         ```
 
     === "exposed_type = SaleRow"
-        ```python
+        ``` python
         [
             SaleRow("12/24/2018", 1550),
             SaleRow("12/25/2018", 2315),
@@ -1015,7 +1014,7 @@ The following examples represent the results when read from Parquet data node wi
 
     === "exposed_type = polars"
 
-        ```python
+        ``` python
         polars.DataFrame(
             {
                 "date": ["12/24/2018", "12/25/2018", "12/26/2018"],
@@ -1043,7 +1042,7 @@ The following examples will write to the path of the Parquet data node:
 
     === "pandas dataframes"
 
-        ```python
+        ``` python
         data = pandas.DataFrame(
             [
                 {"date": "12/24/2018", "nb_sales": 1550},
@@ -1057,7 +1056,7 @@ The following examples will write to the path of the Parquet data node:
 
     === "dictionary"
 
-        ```python
+        ``` python
         # "list" form
         data_node.write(
             {
@@ -1088,7 +1087,7 @@ The following examples demonstrate reading and writing to a Parquet data node wi
 
 !!! example "Reading data with `ParquetDataNode.read_with_kwargs^`"
 
-    ```python
+    ``` python
     columns = ["nb_sales"]
     data_node.read_with_kwargs(columns=columns)
     ```
@@ -1099,7 +1098,7 @@ column will be read.
 
 !!! example "Writing data with `ParquetDataNode.write_with_kwargs^`"
 
-    ```python
+    ``` python
     data_node.write_with_kwargs(index=False)
     ```
 
@@ -1132,7 +1131,7 @@ Check out [MongoDB supported data types](https://www.mongodb.com/docs/manual/ref
 
 !!! example "Read and write from a Mongo collection data node using default document class"
 
-    ```python
+    ``` python
     from taipy.core import MongoDefaultDocument
 
     data = [
@@ -1186,6 +1185,11 @@ Correspondingly, In memory data node can write any data object that is valid dat
     Since the data is stored in memory, it cannot be used in a multiprocess environment.
     (See [Job configuration](../../advanced_features/configuration/job-config.md#standalone-mode) for more details).
 
+## Third party data nodes
+
+Taipy also supports data nodes that natively integrate with third-party services:
+
+- [Databricks](../../advanced_features/3rd-party-integration/databricks.md)
 
 # Append
 
@@ -1196,7 +1200,7 @@ existing data.
 
 !!! example
 
-    ```python linenums="1"
+    ``` python linenums="1"
     import taipy as tp
     import my_config
 
@@ -1246,7 +1250,7 @@ The following examples will append new data to the path of the CSV data node:
     === "list"
         When appending a list to CSV data node, each element of a list contains 1 row of data.
 
-        ```python
+        ``` python
         # append a list
         data_node.append(
             ["12/24/2018", "12/25/2018", "12/26/2018"]
@@ -1263,7 +1267,7 @@ The following examples will append new data to the path of the CSV data node:
 
     === "numpy array"
 
-        ```python
+        ``` python
         data_node.append(
             np.array([
                 ["12/24/2018", 1550],
@@ -1275,7 +1279,7 @@ The following examples will append new data to the path of the CSV data node:
 
     === "dictionary"
 
-        ```python
+        ``` python
         # "list" form
         data_node.append(
             {
@@ -1295,7 +1299,7 @@ The following examples will append new data to the path of the CSV data node:
 
     === "pandas dataframes"
 
-        ```python
+        ``` python
         data = pandas.DataFrame(
             [
                 {"date": "12/24/2018", "nb_sales": 1550},
@@ -1323,7 +1327,7 @@ Without specified sheet names, the new data will be appended to the first sheet 
     === "list"
         When appending a list to Excel data node, each element of a list contains 1 row of data.
 
-        ```python
+        ``` python
         # append a list
         data_node.append(
             ["12/24/2018", "12/25/2018", "12/26/2018"]
@@ -1340,7 +1344,7 @@ Without specified sheet names, the new data will be appended to the first sheet 
 
     === "numpy array"
 
-        ```python
+        ``` python
         data_node.append(
             np.array([
                 ["12/24/2018", 1550],
@@ -1352,7 +1356,7 @@ Without specified sheet names, the new data will be appended to the first sheet 
 
     === "dictionary"
 
-        ```python
+        ``` python
         # "list" form
         data_node.append(
             {
@@ -1372,7 +1376,7 @@ Without specified sheet names, the new data will be appended to the first sheet 
 
     === "pandas dataframes"
 
-        ```python
+        ``` python
         data = pandas.DataFrame(
             [
                 {"date": "12/24/2018", "nb_sales": 1550},
@@ -1389,7 +1393,7 @@ dictionary as follows.
 
 !!! example "`data_node.append()` example with specified sheet names"
 
-    ```python
+    ``` python
     data = {
         "Sheet1": pandas.DataFrame(
             [
@@ -1410,7 +1414,6 @@ dictionary as follows.
     data_node.append(data)
     ```
 
-
 ## SQL Table
 
 Similar to writing, when appending data to a SQL Table data node, the `SQLTableDataNode.append()^`
@@ -1427,7 +1430,7 @@ The following examples will append new data to the SQL Table data node:
 
     === "list"
 
-        ```python
+        ``` python
         # append a list of lists
         data_node.append(
             [
@@ -1449,7 +1452,7 @@ The following examples will append new data to the SQL Table data node:
 
     === "numpy array"
 
-        ```python
+        ``` python
         data = np.array(
             [
                 ["12/24/2018", 1550],
@@ -1463,7 +1466,7 @@ The following examples will append new data to the SQL Table data node:
 
     === "dictionary"
 
-        ```python
+        ``` python
         # append 1 record to the SQL table
         data_node.append(
             {"date": "12/24/2018", "nb_sales": 1550}
@@ -1481,7 +1484,7 @@ The following examples will append new data to the SQL Table data node:
 
     === "pandas dataframes"
 
-        ```python
+        ``` python
         data = pandas.DataFrame(
             [
                 {"date": "12/24/2018", "nb_sales": 1550},
@@ -1510,7 +1513,7 @@ method can take a list, a dictionary, or a list of dictionaries as the input.
 
     === "Append dictionaries"
 
-        ```python
+        ``` python
         data = [
             {"date": "12/24/2018", "nb_sales": 1550},
             {"date": "12/25/2018", "nb_sales": 2315},
@@ -1541,7 +1544,7 @@ The following examples will append to the path of the Parquet data node:
 
     === "pandas dataframes"
 
-        ```python
+        ``` python
         data = pandas.DataFrame(
             [
                 {"date": "12/24/2018", "nb_sales": 1550},
@@ -1555,7 +1558,7 @@ The following examples will append to the path of the Parquet data node:
 
     === "dictionary"
 
-        ```python
+        ``` python
         # "list" form
         data_node.append(
             {
@@ -1579,7 +1582,6 @@ The following examples will append to the path of the Parquet data node:
     Appending numpy arrays to a Parquet data node will result in an error since there is no column
     name in numpy arrays. You should convert it to a dataframe with proper columns before appending.
 
-
 ## Mongo collection
 
 Similar to writing, when appending data to a Mongo collection data node, the
@@ -1588,7 +1590,7 @@ defined by _**custom_document**_ as the input.
 
 !!! example "Append new data to a Mongo collection data node using default document class"
 
-    ```python
+    ``` python
     from taipy.core import MongoDefaultDocument
 
     data = [
@@ -1620,7 +1622,7 @@ In the following example, the `DataNode.filter()^` method will return all the re
 where the value of the "nb_sales" field is equal to 1550.
 The following examples represent the results when read from a data node with different _exposed_type_:
 
-```python
+``` python
 filtered_data = data_node.filter(("nb_sales", 1550, Operator.EQUAL))
 ```
 
@@ -1628,26 +1630,26 @@ filtered_data = data_node.filter(("nb_sales", 1550, Operator.EQUAL))
 
     === "exposed_type = "pandas""
 
-        ```python
+        ``` python
         pandas.DataFrame({"date": ["12/24/2018"], "nb_sales": [1550]})
         ```
 
     === "exposed_type = "numpy""
 
-        ```python
+        ``` python
         numpy.array([
             ["12/24/2018", "1550"]
         ])
         ```
 
     === "exposed_type = SaleRow"
-        ```python
+        ``` python
         [SaleRow("12/24/2018", 1550)]
         ```
 
     === "exposed_type = polars"
 
-        ```python
+        ``` python
         polars.DataFrame(
             {
                 "date": ["12/24/2018"],
@@ -1668,7 +1670,7 @@ In the following example, the `DataNode.filter()^` method will return all the re
 where the value of the "nb_sales" field is greater or equal to 1000 and less than 2000.
 The following examples represent the results when read from a data node with different _exposed_type_:
 
-```python
+``` python
 filtered_data = data_node.filter(
     [("nb_sales", 1000, Operator.GREATER_OR_EQUAL), ("nb_sales", 2000, Operator.LESS_THAN)]
 )
@@ -1678,7 +1680,7 @@ filtered_data = data_node.filter(
 
     === "exposed_type = "pandas""
 
-        ```python
+        ``` python
         pandas.DataFrame
         (
                      date  nb_sales
@@ -1695,7 +1697,7 @@ filtered_data = data_node.filter(
 
     === "exposed_type = "numpy""
 
-        ```python
+        ``` python
         numpy.array(
             [
                 ["12/24/2018", "1550"],
@@ -1705,7 +1707,7 @@ filtered_data = data_node.filter(
         ```
 
     === "exposed_type = SaleRow"
-        ```python
+        ``` python
         [
             SaleRow("12/24/2018", 1550),
             SaleRow("12/26/2018", 1832),
@@ -1714,7 +1716,7 @@ filtered_data = data_node.filter(
 
     === "exposed_type = polars"
 
-        ```python
+        ``` python
         polars.DataFrame(
             {
                 "date": ["12/24/2018", "12/26/2018"],
@@ -1732,7 +1734,7 @@ In another example, the `DataNode.filter()^` method will return all the records 
 where the value of the "nb_sales" field is equal to 1550 or greater than 2000.
 The following examples represent the results when read from a data node with different _exposed_type_:
 
-```python
+``` python
 filtered_data = data_node.filter(
     [("nb_sales", 1550, Operator.EQUAL), ("nb_sales", 2000, Operator.GREATER_THAN)],
     JoinOperator.OR,
@@ -1743,7 +1745,7 @@ filtered_data = data_node.filter(
 
     === "exposed_type = "pandas""
 
-        ```python
+        ``` python
         pandas.DataFrame(
             {
                 "date": ["12/24/2018", "12/25/2018"],
@@ -1754,7 +1756,7 @@ filtered_data = data_node.filter(
 
     === "exposed_type = "numpy""
 
-        ```python
+        ``` python
         numpy.array(
             [
                 ["12/24/2018", "1550"],
@@ -1764,7 +1766,7 @@ filtered_data = data_node.filter(
         ```
 
     === "exposed_type = SaleRow"
-        ```python
+        ``` python
         [
             SaleRow("12/24/2018", 1550),
             SaleRow("12/25/2018", 2315),
@@ -1773,7 +1775,7 @@ filtered_data = data_node.filter(
 
     === "exposed_type = polars"
 
-        ```python
+        ``` python
         polars.DataFrame(
             {
                 "date": ["12/24/2018", "12/25/2018"],
@@ -1790,7 +1792,7 @@ filtered_data = data_node.filter(
 With Pandas data frame as the exposed type, it is also possible to use pandas indexing
 and filtering style:
 
-```python
+``` python
 sale_data = data_node["nb_sales"]
 
 filtered_data = data_node[(data_node["nb_sales"] == 1550) | (data_node["nb_sales"] > 2000)]
@@ -1799,7 +1801,7 @@ filtered_data = data_node[(data_node["nb_sales"] == 1550) | (data_node["nb_sales
 Similarly, with numpy array exposed type, it is possible to use numpy style indexing and filtering
 style:
 
-```python
+``` python
 sale_data = data_node[:, 1]
 
 filtered_data = data_node[(data_node[:, 1] == 1550) | (data_node[:, 1] > 2000)]
@@ -1825,7 +1827,7 @@ To get the parent entities of a data node (scenarios, sequences, or tasks) you c
 
 !!! example
 
-    ```python linenums="1"
+    ``` python linenums="1"
     import taipy as tp
     import my_config
 

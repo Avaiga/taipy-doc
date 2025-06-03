@@ -8,7 +8,7 @@ reading and writing related data.
 
 To create a `DataNodeConfig^` use the function `Config.configure_data_node()^`:
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_simple.py"
 comments=false
@@ -56,7 +56,7 @@ The attributes available on data node configuration are:
 ## Examples
 
 **Simple data node configuration:**
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_example_1.py"
 comments=false
@@ -67,7 +67,7 @@ and the *storage_type* is set to the default value "pickle". An optional custom 
 *description*, is added.
 
 **Advanced data Node configuration:**
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_example_2.py"
 comments=false
@@ -123,7 +123,7 @@ section, two optional parameters can be provided.
   *pickle* upon creation.<br/>
   Any serializable Python object can be used. The default value is None.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_pickle.py"
 comments=false
@@ -170,7 +170,7 @@ the following parameters can be provided:
 
     At least one of the *read_fct* or *write_fct* is required to configure a generic data node.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_generic-text.py"
 comments=false
@@ -194,7 +194,7 @@ The generic data node can also be used in situations requiring a specific busine
 reading or writing data, and the user can easily provide that. Follows an example using a
 custom delimiter when writing and reading a CSV file.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_generic-csv.py"
 comments=false
@@ -204,7 +204,7 @@ comments=false
 It is also possible to use a generic data node custom functions to perform some data
 preparation:
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_generic-data-prep.py"
 comments=false
@@ -255,7 +255,7 @@ section, the following parameters can be provided:
       a list of custom objects with the given custom class. Each object represents
       a row in the CSV file.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_csv.py"
 comments=false
@@ -323,7 +323,7 @@ section, a mandatory and three optional parameters are provided.
       creates a list of custom objects with the given custom class. Each object
       represents a row in the Excel file.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_excel.py"
 comments=false
@@ -409,7 +409,7 @@ section, the following parameters can be provided:
 First, let's take a look at an example on how to configure a *SQL table* data node with the
 database engine is `mssql` (short for Microsoft SQL).
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_sql-table_with_mssql_engine.py"
 comments=false
@@ -427,7 +427,7 @@ in the *db_extra_args*.
 
 In the next example, we configure a *SQL table* data node with the database engine is `sqlite`.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_sql-table_with_sqlite_engine.py"
 comments=false
@@ -517,7 +517,7 @@ the following parameters can be provided:
 First, let's take a look at an example on how to configure a *SQL* data node with the
 database engine is `mssql` (short for Microsoft SQL).
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_sql_with_mssql_engine.py"
 comments=false
@@ -546,7 +546,7 @@ the task function must return a `pandas.DataFrame`, since the data parameter of 
 
 In the next example, we configure a *SQL table* data node with the database engine is `sqlite`.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_sql_with_sqlite_engine.py"
 comments=false
@@ -589,7 +589,7 @@ section, the following parameters can be provided:
   Check out [JSON encoders and decoders](https://docs.python.org/3/library/json.html#encoders-and-decoders)
   documentation for more details.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_json.py"
 comments=false
@@ -607,7 +607,7 @@ decode Python [`enum.Enum`](https://docs.python.org/3/library/enum.html),
 [`datetime.timedelta`](https://docs.python.org/3/library/datetime.html#timedelta-objects),
 and [dataclass](https://docs.python.org/3/library/dataclasses.html) object.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_json-with-encoder.py"
 comments=false
@@ -623,7 +623,7 @@ and *decoder*:
     - When [writing a JSONDataNode](data-node-usage.md#json),
     the `SaleRowEncoder` encodes a `SaleRow` object in JSON format. For example,
     after the creation of the scenario `scenario`,
-        ```python
+        ``` python
         scenario.sales_history.write(SaleRow("12/24/2018", 1550))
         ```
     the previous code writes the following object
@@ -709,7 +709,7 @@ section, the following parameters can be provided:
       is passed to the Callable as keyword arguments where the key is the column name, and
       the value is the corresponding value for that row.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_parquet-simple.py"
 comments=false
@@ -719,7 +719,7 @@ comments=false
 In lines 3-5, we configure a basic Parquet data node. The only two required parameters are
 *id* and *default_path*.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_parquet-complete.py"
 comments=false
@@ -784,7 +784,7 @@ section, multiple parameters can be provided.
 - _**db_host**_ represents the database host to be used to access MongoDB.<br/>
     The default value of *db_host* is "localhost".
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_mongo-collection.py"
 comments=false
@@ -800,7 +800,7 @@ In this example, we configure a *mongo_collection* data node with the id "histor
 - Without being specified, the custom document class is defined as
   `taipy.core.MongoDefaultDocument`.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_mongo-complete.py"
 comments=false
@@ -863,7 +863,7 @@ In this example, we configure an *s3_object* data node with the id "my_s3_object
 - An additional argument is passed for configuring the AWS S3 client and setting cache control
     during object operations.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config-aws-s3.py"
 comments=false
@@ -882,7 +882,7 @@ section, an optional parameter can be provided:
   the data node entity is automatically written with the corresponding value (note
   that any serializable Python object can be used) upon its instantiation.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_memory.py"
 comments=false
@@ -903,6 +903,13 @@ The scope is `SCENARIO` (default value), and default data is provided.
     `Config.configure_in_memory_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="in_memory"`.
 
+## Third party data nodes
+
+Taipy also supports data nodes that natively integrate with third-party services:
+
+- [Databricks](../../advanced_features/3rd-party-integration/databricks.md)
+
+
 # Default data node configuration
 
 By default, if there is no information provided when configuring a datanode
@@ -918,7 +925,7 @@ configuration will:
 - ignore the default data node configuration if the _**storage_type**_
   is different from the default one.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config_default.py"
 comments=false
@@ -966,7 +973,7 @@ method. This method accepts the following parameters:
   This *properties* dictionary will override any attribute of the source data
   node configuration if provided.
 
-```python linenums="1"
+``` python linenums="1"
 {%
 include-markdown "./code-example/data-node-config/data-node-config-from-another-configuration.py"
 comments=false
