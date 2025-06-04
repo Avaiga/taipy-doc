@@ -204,7 +204,7 @@ nav:
       - "Scheduler":
         - "Scheduler": userman/advanced_features/scheduling/index.md
 
-      - "Third party integration":
+      - "Third-party integration":
         - "Azure Blob Storage": userman/advanced_features/3rd-party-integration/azure.md
 
     - "Operations":

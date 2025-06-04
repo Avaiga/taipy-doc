@@ -950,7 +950,7 @@ The scope is `SCENARIO` (default value), and default data is provided.
     `Config.configure_in_memory_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="in_memory"`.
 
-## Third party data nodes
+## Third-party data nodes
 
 Taipy also supports data nodes that natively integrate with third-party services:
 
