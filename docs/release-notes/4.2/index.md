@@ -89,7 +89,6 @@ This version is in progress and has not been released yet.
 
 <h4>New features</h4>
 
-- :octicons-feed-plus-16:{ .plus-icon title="New feature" } TODO: Automatic graph Migration
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } New data node named
   [AzureBlobDataNode](../../userman/advanced_features/3rd-party-integration/azure.md#azure-blob-data-node).
   It represents data from a blob in Azure Blob Storage.
