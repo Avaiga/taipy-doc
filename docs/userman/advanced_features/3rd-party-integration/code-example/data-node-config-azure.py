@@ -14,10 +14,10 @@ historical_data_cfg = Config.configure_azure_blob_data_node(
     },
 )
 
-log_cfg = Config.configure_csv_data_node(
+log_cfg = Config.configure_azure_blob_data_node(
     id="log_history",
     azure_container_name="data_container",
-    azure_blob_name="log_data.zip",
+    azure_blob_name="log_data.txt",
     azure_account_name="mystorageaccount",
     entra_id_client_id="00000000-0000-0000-0000-000000000000",
     entra_id_tenant_id="11111111-1111-1111-1111-111111111111",
@@ -31,7 +31,7 @@ log_cfg = Config.configure_csv_data_node(
     },
 )
 
-sales_history_cfg = Config.configure_csv_data_node(
+sales_history_cfg = Config.configure_azure_blob_data_node(
     id="sales_history",
     azure_container_name="data_container",
     azure_blob_name="sales_data.zip",

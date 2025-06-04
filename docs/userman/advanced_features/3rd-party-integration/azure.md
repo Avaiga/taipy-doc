@@ -21,7 +21,8 @@ The Azure Blob Storage integration provides the following features:
 - **[Azure Blob Data Node](#azure-blob-data-node)**:
     A Taipy Data Node that represents a blob in Azure Blob Storage.
 - **[Azure File-based Data Node](#azure-file-based-data-node)**:
-    Azure Blob as a file-based data node.
+    File-based data nodes (such as CSV, JSON, Pickle, etc.) can accept an Azure Blob URL
+    as the path.
 
 ## Azure Blob Data Node
 
@@ -68,7 +69,7 @@ must be provided:
     Azure Blob Storage is provided through the connection string.
 
     In lines 17-32, we configure another Azure Blob data node with the id "log_history" pointing to
-    the Azure Blob "log_data.zip" in the same "data_container" container. The credential to connect
+    the Azure Blob "log_data.txt" in the same "data_container" container. The credential to connect
     to Azure Blob Storage is provided through the Entra ID authentication with the client ID,
     tenant ID, and client secret.
 
@@ -78,7 +79,7 @@ must be provided:
 
 !!! note
 
-    To configure a Databricks Table data node, it is equivalent to using the method
+    To configure an Azure Blob data node, it is equivalent to using the method
     `Config.configure_azure_blob_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="azure_blob"`.
 
