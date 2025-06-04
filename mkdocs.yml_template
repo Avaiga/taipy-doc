@@ -187,7 +187,7 @@ nav:
       - "Exposing REST APIs":
         - "Exposing REST APIs": userman/scenario_features/rest/index.md
 
-    - "Advanced features":
+    - "Other features":
       - "Configuration":
         - "Configuration": userman/advanced_features/configuration/index.md
         - "Configuring the GUI application": userman/advanced_features/configuration/gui-config.md
@@ -203,6 +203,9 @@ nav:
 
       - "Scheduler":
         - "Scheduler": userman/advanced_features/scheduling/index.md
+
+      - "Third party integration":
+        - "Azure Blob Storage": userman/advanced_features/3rd-party-integration/azure.md
 
     - "Operations":
       - "Operations": userman/operations/index.md

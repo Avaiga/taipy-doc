@@ -115,6 +115,13 @@ section, two optional parameters can be provided.
   configuration will inherit/share the same *pickle* file provided in the
   default_path. To avoid this, the path property of a *pickle* data node entity
   can be changed at runtime right after its instantiation.<br/>
+  The path can be:
+    - A pickle file path in the local file system.
+    - A URL that points to a pickle file in Azure Blob Storage (e.g.
+      `https://storage_account.blob.core.windows.net/container/blob.pkl`).
+      To configure a `PickleDataNode^` with Azure Blob Storage, see
+      [Azure Integration](../../advanced_features/3rd-party-integration/azure.md#azure-file-based-data-node)
+      for more details.
   If no value is provided, Taipy will use an internal path in the Taipy storage folder
   (more details on the Taipy storage folder configuration are available in the
   [core configuration](../../advanced_features/configuration/core-config.md) documentation).
@@ -233,11 +240,21 @@ section, the following parameters can be provided:
   configuration will inherit/share the same *csv* file provided in the
   default_path. To avoid this, the path property of a *csv* data node entity
   can be changed at runtime right after its instantiation.<br/>
+  The path can be:
+    - A CSV file path in the local file system.
+    - A URL that points to a CSV file in Azure Blob Storage (e.g.
+      `https://storage_account.blob.core.windows.net/container/blob.csv`).
+      To configure a `CSVDataNode^` with Azure Blob Storage, see
+      [Azure Integration](../../advanced_features/3rd-party-integration/azure.md#azure-file-based-data-node)
+      for more details.
+  If no value is provided, Taipy will use an internal path in the Taipy storage folder
+  (more details on the Taipy storage folder configuration are available in the
+  [core configuration](../../advanced_features/configuration/core-config.md) documentation).
 
 - _**encoding**_ represents the encoding of the CSV file.<br/>
   The default value of *encoding* is "utf-8".
 
-- _**has_header**_ indicates if the file has a header of not.<br/>
+- _**has_header**_ indicates if the file has a header or not.<br/>
   By default, *has_header* is True and Taipy will use the 1st row in the CSV file as
   the header.
 
@@ -298,8 +315,18 @@ section, a mandatory and three optional parameters are provided.
   configuration will inherit/share the same *Excel* file provided in the
   default_path. To avoid this, the path property of a *Excel* data node entity
   can be changed at runtime right after its instantiation.<br/>
+  The path can be:
+    - An Excel file path in the local file system.
+    - A URL that points to an Excel file in Azure Blob Storage (e.g.
+      `https://storage_account.blob.core.windows.net/container/blob.xlsx`).
+      To configure a `ExcelDataNode^` with Azure Blob Storage, see
+      [Azure Integration](../../advanced_features/3rd-party-integration/azure.md#azure-file-based-data-node)
+      for more details.
+  If no value is provided, Taipy will use an internal path in the Taipy storage folder
+  (more details on the Taipy storage folder configuration are available in the
+  [core configuration](../../advanced_features/configuration/core-config.md) documentation).
 
-- _**has_header**_ indicates if the file has a header of not.<br/>
+- _**has_header**_ indicates if the file has a header or not.<br/>
   By default, *has_header* is True and Taipy will use the 1st row in the Excel file
   as the header.
 
@@ -579,6 +606,16 @@ section, the following parameters can be provided:
   configuration will inherit/share the same *json* file provided in the
   default_path. To avoid this, the path property of a *json* data node entity
   can be changed at runtime right after its instantiation.<br/>
+  The path can be:
+    - A JSON file path in the local file system.
+    - A URL that points to a JSON file in Azure Blob Storage (e.g.
+      `https://storage_account.blob.core.windows.net/container/blob.json`).
+      To configure a `JSONDataNode^` with Azure Blob Storage, see
+      [Azure Integration](../../advanced_features/3rd-party-integration/azure.md#azure-file-based-data-node)
+      for more details.
+  If no value is provided, Taipy will use an internal path in the Taipy storage folder
+  (more details on the Taipy storage folder configuration are available in the
+  [core configuration](../../advanced_features/configuration/core-config.md) documentation).
 
 - _**encoding**_ represents the encoding of the JSON file.<br/>
   The default value of *encoding* is "utf-8".
@@ -670,6 +707,16 @@ section, the following parameters can be provided:
   configuration will inherit/share the same *Parquet* file provided in the
   default_path. To avoid this, the path property of a *Parquet* data node entity
   can be changed at runtime right after its instantiation.<br/>
+  The path can be:
+    - A Parquet file or folder path in the local file system.
+    - A URL that points to a Parquet file in Azure Blob Storage (e.g.
+      `https://storage_account.blob.core.windows.net/container/blob.parquet`).
+      To configure a `ParquetDataNode^` with Azure Blob Storage, see
+      [Azure Integration](../../advanced_features/3rd-party-integration/azure.md#azure-file-based-data-node)
+      for more details.
+  If no value is provided, Taipy will use an internal path in the Taipy storage folder
+  (more details on the Taipy storage folder configuration are available in the
+  [core configuration](../../advanced_features/configuration/core-config.md) documentation).
 
 - _**engine**_ represents the Parquet library to use.<br/>
   Possible values are *"fastparquet"* or *"pyarrow"*. The default value is *"pyarrow"*.
@@ -902,6 +949,12 @@ The scope is `SCENARIO` (default value), and default data is provided.
     To configure an in_memory data node, it is equivalent to using the method
     `Config.configure_in_memory_data_node()^` or the method `Config.configure_data_node()^`
     with parameter `storage_type="in_memory"`.
+
+## Third party data nodes
+
+Taipy also supports data nodes that natively integrate with third-party services:
+
+- [Azure Blob Storage](../../advanced_features/3rd-party-integration/azure.md)
 
 # Default data node configuration
 
