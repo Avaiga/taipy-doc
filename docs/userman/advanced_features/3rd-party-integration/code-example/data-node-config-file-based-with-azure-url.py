@@ -20,8 +20,6 @@ log_cfg = Config.configure_excel_data_node(
 sales_history_cfg = Config.configure_json_data_node(
     id="sales_history",
     default_path="https://mystorageaccount.blob.core.windows.net/data_container/sales.json",
-    has_header=True,
-    exposed_type="pandas",
     azure_account_name="mystorageaccount",
     azure_account_key="Eby8vdM02xNOcqFlqUwJPLlmEtI6tq/K1SZFPTOtr/KBHBeksoGMGw==",
 )
