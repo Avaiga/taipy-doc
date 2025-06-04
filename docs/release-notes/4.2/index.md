@@ -89,7 +89,14 @@ This version is in progress and has not been released yet.
 
 <h4>New features</h4>
 
-- :octicons-feed-plus-16:{ .plus-icon title="New feature" } TODO: Automatic graph Migration
+- :octicons-feed-plus-16:{ .plus-icon title="New feature" } New data node named
+  [AzureBlobDataNode](../../userman/advanced_features/3rd-party-integration/azure.md#azure-blob-data-node).
+  It represents data from a blob in Azure Blob Storage.
+- :octicons-feed-plus-16:{ .plus-icon title="New feature" } File-based DataNode (including
+  `CSVDataNode^`, `ExcelDataNode^`, `JSONDataNode^`, `PickleDataNode^`, and `ParquetDataNode^`)
+  now support URL that points to a file in Azure Blob Storage as the path. See
+  [Azure File-based Data Node](../../userman/advanced_features/3rd-party-integration/azure.md#azure-file-based-data-node)
+  for more details.
 
 <h4>Improvements and changes</h4>
 
