@@ -17,7 +17,6 @@ from .setup import Setup, SetupStep
 
 
 class RefManStep(SetupStep):
-
     # Where the Reference Manual files are generated (MUST BE relative to docs_dir)
     REFERENCE_REL_PATH = "refmans/reference"
 
@@ -53,7 +52,7 @@ class RefManStep(SetupStep):
 
             # Read documentation from the taipy module
             self.reader = Reader(setup)
-            self.reader.read_module()
+            self.reader.read_symbols()
 
             # Generate the Ref manual and Cross-references
             self.doc_generator = Generator(setup, self.REFERENCE_REL_PATH, self.reader.entries, self.reader.package_doc)
@@ -70,8 +69,8 @@ class RefManStep(SetupStep):
 
     def exit(self, setup: Setup):
         setup.update_mkdocs_yaml_template(
-            r"^\s*\[REFERENCE_CONTENT\]\s*\n",
-            self.doc_generator.navigation if self.doc_generator.navigation else "")
+            r"^\s*\[REFERENCE_CONTENT\]\s*\n", self.doc_generator.navigation if self.doc_generator.navigation else ""
+        )
 
         if "GENERATING_TAIPY_DOC" in os.environ:
             del os.environ["GENERATING_TAIPY_DOC"]

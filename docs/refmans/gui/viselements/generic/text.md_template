@@ -10,7 +10,6 @@ is equivalent to
 <|Some content|>
 ```
 
-
 # Details
 
 The [*format*](#p-format) property uses a format string like the ones used by the string *format()*
@@ -132,6 +131,37 @@ This is how the control is displayed:
     <img src="../text-pre-d.png" class="visible-dark"  width="400px"/>
     <img src="../text-pre-l.png" class="visible-light" width="400px"/>
     <figcaption>Preformatted content</figcaption>
+</figure>
+
+## Displaying LaTe&chi; {data-source="gui:doc/examples/controls/text_latex.py"}
+
+LaTe&chi; is markup language that is great at typesetting documents and excels at rendering complex
+math expressions. You can render LaTe&chi; in a `text` control by setting the [*mode*](#p-mode)
+property to "latex".<br/>
+Taipy uses the `MathJax` component from the
+[`better-react-mathjax`](https://www.npmjs.com/package/better-react-mathjax) package for the
+final rendering.
+
+You can set a variable to some LaTe&chi; content:
+```python
+latex = """
+$$f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}$$
+"""
+```
+
+Note that the double dollar sign ($) indicates that the control creates its own block, breaking
+the current text line.
+
+Then use that in your control definition:
+!!! taipy-element
+    default={latex}
+    mode=latex
+
+The controls appears like this:
+<figure>
+    <img src="../text-latex-d.png" class="visible-dark"  width="500px"/>
+    <img src="../text-latex-l.png"  class="visible-light" width="500px"/>
+    <figcaption>Rendering LaTe&chi; markup</figcaption>
 </figure>
 
 # Styling
