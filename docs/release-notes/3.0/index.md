@@ -15,10 +15,9 @@ This is the list of changes of taipy version 3.0.
     reinstall Taipy with options `--no-cache-dir -I` like so:
     `pip install --no-cache-dir -I taipy==3.0.0`
 
-    See [#1180](https://github.com/Avaiga/taipy/issues/1180) for more details.
+    See [issue #1180](https://github.com/Avaiga/taipy/issues/1180) for more details.
 
 Published on 2023-10.
-
 
 [`taipy` 3.0](https://pypi.org/project/taipy/3.0.0/) contains the latest
 [`taipy-config` 3.0](https://pypi.org/project/taipy-config/3.0.1/),
@@ -129,12 +128,14 @@ Published on 2023-10.
     - *id* (str): the identifier of the visual element that triggers that callback;
     - *payload* (dict): a dictionary that provides additional information to the callback.<br/>
       This dictionary now has the additional *action* key that is set to the action name.
-      This change not only impact the *on_action* callback of all controls that support it,
-      but in an exactly similar manner the following callback signatures:
-        - *on_range_change* in the [`chart`](../../refmans/gui/viselements/generic/chart.md) control;
-        - *on_edit*, *on_add*, and *on_delete* in the [`table`](../../refmans/gui/viselements/generic/table.md)
-          control;
-        - *on_close* in the [`pane`](../../refmans/gui/viselements/generic/pane.md) block.
+
+    This change not only impact the *on_action* callback of all controls that support it,
+    but in an exactly similar manner the following callback signatures:
+
+    - *on_range_change* in the [`chart`](../../refmans/gui/viselements/generic/chart.md) control;
+    - *on_edit*, *on_add*, and *on_delete* in the [`table`](../../refmans/gui/viselements/generic/table.md)
+      control;
+    - *on_close* in the [`pane`](../../refmans/gui/viselements/generic/pane.md) block.
 
 # <strong><code>taipy-core</code></strong>
 
@@ -157,16 +158,16 @@ Published on 2023-10.
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } A new class `Submittable^` models entities that
   can be submitted for execution. It is an Abstract class instantiated by `Scenario^` and
   `Sequence^`. It can be handy to use the new following `Submittable^` methods:
-    * `Submittable.get_inputs()^` retrieves input data nodes of a `Submittable` entity;
-    * `Submittable.get_outputs()^` retrieves output data nodes of a `Submittable` entity;
-    * `Submittable.get_intermediate()^` retrieves intermediate data nodes of a `Submittable`
-        entity;
-    * `Submittable.is_ready_to_run()^` checks if an entity is ready to be run;
-    * `Submittable.data_nodes_being_edited()^` retrieves data nodes that are being edited
-        of a `Submittable^` entity.
+   - `Submittable.get_inputs()^` retrieves input data nodes of a `Submittable` entity;
+   - `Submittable.get_outputs()^` retrieves output data nodes of a `Submittable` entity;
+   - `Submittable.get_intermediate()^` retrieves intermediate data nodes of a `Submittable`
+     entity;
+   - `Submittable.is_ready_to_run()^` checks if an entity is ready to be run;
+   - `Submittable.data_nodes_being_edited()^` retrieves data nodes that are being edited
+     of a `Submittable^` entity.
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } New functions exposed by the `taipy` module:
-    * `taipy.is_deletable()^` checks if an entity can be deleted;
-    * `taipy.exists()^` checks if an entity exists.
+   - `taipy.is_deletable()^` checks if an entity can be deleted;
+   - `taipy.exists()^` checks if an entity exists.
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } The encoding type of CSVDataNode and JSONDataNode
   can now be configured using the *encoding* parameter. For more information, please refer to
   [Configure a CSVDataNode](../../userman/scenario_features/data-integration/data-node-config.md#csv)
@@ -196,24 +197,24 @@ Published on 2023-10.
   refer to `Scenario.add_sequence()^` and `Scenario.remove_sequence()^`.
 - :octicons-alert-fill-24:{ .alert-icon title="Deprecation" } `Scope.PIPELINE` has been removed from possible `Scope^`
   values.
-- :octicons-alert-fill-24:{ .alert-icon title="Deprecation" } The `root_folder`, `storage_folder`, `read_entity_retry`,
-  `repository_type`, and `repository_properties` attributes of the `GlobalAppConfig^` have been
+- :octicons-alert-fill-24:{ .alert-icon title="Deprecation" } The *root_folder*, *storage_folder*, *read_entity_retry*,
+  *repository_type*, and *repository_properties* attributes of the `GlobalAppConfig^` have been
   moved to the `CoreSection^`.<br/>
   Please refer to the
   [Core configuration page](../../userman/advanced_features/configuration/core-config.md) for
   details.
-- :octicons-alert-fill-24:{ .alert-icon title="Deprecation" } The `clean_entities` attribute has been removed from
+- :octicons-alert-fill-24:{ .alert-icon title="Deprecation" } The *clean_entities* attribute has been removed from
   the `CoreSection^`. Correspondingly, the `--clean-entities` option has been removed from the
   version management CLI.<br/>
   To clean entities of a version, please run your application in development mode, or delete your
   version with the `--delete` CLI option. For more information, refer to
   [Taipy command-line interface](../../userman/ecosystem/cli/index.md)
-- :octicons-alert-fill-24:{ .alert-icon title="Deprecation" } The deprecated `nb_of_workers` attribute of the
-  JobConfig has been removed.
-- :octicons-alert-fill-24:{ .alert-icon title="Deprecation" } The deprecated `parent_id` attribute of a DataNode,
+- :octicons-alert-fill-24:{ .alert-icon title="Deprecation" } The deprecated *nb_of_workers* attribute of the
+  `JobConfig` has been removed.
+- :octicons-alert-fill-24:{ .alert-icon title="Deprecation" } The deprecated *parent_id* attribute of a DataNode,
   Task, Pipeline, or Scenario entity, has been removed.
-- :octicons-alert-fill-24:{ .alert-icon title="Deprecation" } The deprecated `last_edition_date` and
-  `edition_in_progress` attributes of a DataNode entity have been removed.
+- :octicons-alert-fill-24:{ .alert-icon title="Deprecation" } The deprecated *last_edition_date* and
+  *edition_in_progress* attributes of a DataNode entity have been removed.
 - :octicons-alert-fill-24:{ .alert-icon title="Deprecation" } The deprecated `DataNode.lock_edition()` and
   `DataNode.unlock_edition()` methods have been removed.
 - :octicons-alert-fill-24:{ .alert-icon title="Deprecation" } The deprecated `taipy.create_pipeline()` method

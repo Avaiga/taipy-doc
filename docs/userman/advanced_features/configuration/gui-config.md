@@ -77,10 +77,10 @@ Here is the list of the configuration parameters you can use in
      notifications will be sent by the system as well as the browser, should the
      *system_notification* parameter in the call to (`notify()^`) be set to None. If False, the
      default behavior is to not use system notifications.<br/>
-     See the section on [Notifications](../../gui/notifications.md) for details.
+     See the section on [Notifications](../../gui/utilities.md#notifications) for details.
    - <a name="p-notification_duration"></a>*notification_duration* (int, default: 3000): the time,
      in milliseconds, that notifications should remain visible.<br/>
-     See the section on [Notifications](../../gui/notifications.md) for details.
+     See the section on [Notifications](../../gui/utilities.md#notifications) for details.
    - <a name="p-watermark"></a>*watermark* (str, default: "Taipy inside"): a faint text appearing
      on top of all application pages.
    - <a name="p-stylekit"></a>*stylekit* (Union[bool, dict[str, int, float], None]): If True or

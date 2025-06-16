@@ -1,15 +1,15 @@
 ---
-title : Release Notes for version 4.1
+title: Release Notes for version 4.1
 ---
 
 This is the list of changes to Taipy version 4.1.
 
-!!! note "Migration"
+!!! note "Upgrading to Taipy 4.1"
 
-    Please refer to the [Migration page](../migration.md) for potential migration paths for your
-    applications implemented on legacy Taipy versions.
+    Please refer to the [Migration page](../migration.md) for potential
+    migration paths for your applications implemented on legacy Taipy versions.
 
-Published on 2025-05.
+Published on 2025-06.
 
 `taipy-enterprise` 4.1 depends on the latest
 [`taipy` 4.1](https://pypi.org/project/taipy/4.1.0/) package which depends on the latest
@@ -27,8 +27,8 @@ Published on 2025-05.
 
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } Event management simplification:
   A new `EventProcessor^` class has been introduced to simplify the management of events
-  in Taipy. <br/>
-  See [issue #2306](https://github.com/Avaiga/taipy/issues/2306)
+  in Taipy.<br/>
+  See [issue #2306](https://github.com/Avaiga/taipy/issues/2306).
 
 # <strong><code>taipy-gui</code></strong>
 
@@ -36,7 +36,11 @@ Published on 2025-05.
 
 <h4>New features</h4>
 
-- :octicons-feed-plus-16:{ .plus-icon title="New feature" } TODO: https://github.com/Avaiga/taipy/issues/2098
+- :octicons-feed-plus-16:{ .plus-icon title="New feature" } A mock implementation of `State^`,
+  called `MockState^`, is available for testing purposes. You can learn about how tu use this
+  class on the
+  [_Mocking State in unit tests_ page](../../userman/gui/utilities.md#mocking-state-in-unit-tests).<br/>
+  See [issue #2098](https://github.com/Avaiga/taipy/issues/2098).
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } TODO: https://github.com/Avaiga/taipy/issues/1401
 
 <h4>Improvements and changes</h4>
