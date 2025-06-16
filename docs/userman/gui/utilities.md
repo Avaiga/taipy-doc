@@ -40,11 +40,10 @@ the screen for 3 seconds before disappearing. This default duration can be modif
 [*notification_duration*](../advanced_features/configuration/gui-config.md#p-notification_duration)
 configuration setting.
 
-To make a notification permanent, set the _duration_ parameter of the `notify()^` function to 0:
+To make a notification permanent, set the *duration* parameter of the `notify()^` function to 0:
 ```python
 notify(state, "info", "This is a permanent notification!", duration=0)
 ```
-
 A permanent notification remains visible until the user clicks the close button.
 
 Alternatively, your application can explicitly close the notification using
