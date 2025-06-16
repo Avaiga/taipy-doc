@@ -135,9 +135,9 @@ This is how the control is displayed:
 
 ## Displaying LaTe&chi; {data-source="gui:doc/examples/controls/text_latex.py"}
 
-LaTe&chi; is markup language that is great at typesetting documents and excels at rendering complex
-math expressions. You can render LaTe&chi; in a `text` control by setting the [*mode*](#p-mode)
-property to "latex".<br/>
+LaTe&chi; is a markup language that is great at typesetting documents and excels at rendering
+complex math expressions. You can render LaTe&chi; in a `text` control by setting the
+[*mode*](#p-mode) property to "latex".<br/>
 Taipy uses the `MathJax` component from the
 [`better-react-mathjax`](https://www.npmjs.com/package/better-react-mathjax) package for the
 final rendering.
