@@ -107,3 +107,41 @@ from taipy.gui import query_local_storage
 
 my_value = query_local_storage(state, "myKey")
 ```
+
+# Mocking `State` in unit tests
+
+Taipy includes the `MockState^` class to facilitate unit testing of stateful logic typically
+executed in response to user interactions or programmatic events in a GUI application (*actions* and
+*callbacks*). This can be used in frameworks like _unittest_ or *pytest*.
+
+`MockState^` simulates a GUI state object, allowing you to test how your logic updates the
+application state without needing to launch an actual UI. This is especially useful for testing
+action callbacks, value assignments, and conditional logic in isolation.
+
+You can create a `MockState^` instance by calling it constructor:
+
+```python
+MockState(gui: Gui, **initial_state_variables)
+```
+
+Where:
+
+- _gui_ is an instance of `Gui^`, typically created with an empty or dummy page.
+- _\*\*initial_state_variables_: Keyword arguments representing the initial values of state
+  variables.<br/>
+  Each key indicates the name of a variable that is managed in the state, and values define the
+  initial values of these variables.
+
+Here is an example of how this can be used:
+```python
+from taipy.gui import Gui
+from taipy.gui.mock import MockState
+
+def test_callback():
+    def on_action(state: State):
+        state.assign("my_var", "my_new_value")
+
+    mock_state = MockState(Gui(""), my_var="my_value")
+    on_action(mock_state)
+    assert mock_state.my_var == "my_new_value"
+```

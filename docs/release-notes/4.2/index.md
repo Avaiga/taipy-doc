@@ -1,18 +1,17 @@
 ---
-title : Release Notes for version 4.2
+title: Release Notes for version 4.2
 ---
 
 These are the updates and changes introduced in Taipy version 4.2.
 
 !!! note "Migration"
 
-    Please refer to the [Migration page](../migration.md) for potential migration paths for your
-    applications implemented on legacy Taipy versions.
+    Please refer to the [Upgrading page](../../userman/operations/upgrading/) for potential
+    migration paths for your applications implemented on legacy Taipy versions.
 
 This version is in progress and has not been released yet.
 
 # <strong><code>taipy</code></strong>
-
 
 # <strong><code>taipy-gui</code></strong>
 
@@ -64,7 +63,7 @@ This version is in progress and has not been released yet.
   `InvalidSequence^` exception.<br/>
   See [issue #2322](https://github.com/Avaiga/taipy/issues/2322).
 - :octicons-bug-24:{ .bug-icon title="Bug fix" } Taipy now only checks the compatibility
-  of the installed *taipy-core* version with the versions set in the existing entities
+  of the installed `taipy-core` version with the versions set in the existing entities
   when the application runs either in experiment or in production mode.<br/>
   See [issue #2420](https://github.com/Avaiga/taipy/issues/2420).
 
