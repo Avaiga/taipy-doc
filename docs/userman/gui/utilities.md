@@ -15,13 +15,11 @@ users to dismiss it manually.
 
 Notifications can be triggered at any time using the `notify()^` function to send temporary messages
 to users:
-
 ```python
 notify(state, "success", "Taipy up and running!")
 ```
 
 This results in a notification appearing on the current page:
-
 <figure>
     <img src="../notifications-d.png" class="visible-dark" />
     <img src="../notifications-l.png" class="visible-light"/>
@@ -32,18 +30,17 @@ in `notify()^` or until the user closes it manually.
 
 If browser permissions allow, notifications can also appear directly on the user’s desktop. This
 behavior is controlled by the
-[_system_notification_](../advanced_features/configuration/gui-config.md#p-system_notification)
+[*system_notification*](../advanced_features/configuration/gui-config.md#p-system_notification)
 configuration setting.
 
 ## Permanent notifications
 
 The duration of a notification’s visibility can be customized. By default, notifications remain on
 the screen for 3 seconds before disappearing. This default duration can be modified using the
-[_notification_duration_](../advanced_features/configuration/gui-config.md#p-notification_duration)
+[*notification_duration*](../advanced_features/configuration/gui-config.md#p-notification_duration)
 configuration setting.
 
 To make a notification permanent, set the _duration_ parameter of the `notify()^` function to 0:
-
 ```python
 notify(state, "info", "This is a permanent notification!", duration=0)
 ```
@@ -51,17 +48,15 @@ notify(state, "info", "This is a permanent notification!", duration=0)
 A permanent notification remains visible until the user clicks the close button.
 
 Alternatively, your application can explicitly close the notification using
-`close_notification()^`. To do this, the notification must be created with the _id_ parameter set to
+`close_notification()^`. To do this, the notification must be created with the *id* parameter set to
 a non-empty string. This identifier is then required when calling `close_notification()^`.
 
 This line creates a permanent notification with an identifier:
-
 ```python
 notify(state, "error", "Important!", duration=0, id="my_notification")
 ```
 
 To remove this notification programmatically, you can call:
-
 ```python
 close_notification(state, id="my_notification")
 ```
@@ -78,7 +73,6 @@ identifier. Then, a single call to `close_notification()^` with that identifier 
 associated notifications at the same time.
 
 For example:
-
 ```python
 notify(state, "info", "Step 1 completed", id="full_process")
 notify(state, "info", "Step 2 completed", id="full_process")
@@ -101,14 +95,12 @@ You can access the client's local storage using the `query_local_storage()^` fun
 the user agent and returns them to the application.
 
 The following JavaScript snippet stores a data item in the application's local storage:
-
 ```javascript
 localStorage.setItem("myKey", "My value");
 ```
 
 If this code runs (from a script indicated in the `Gui.__init__()^`(`Gui` constructor) or an
 [Extension Library](extension/index.md)), the application can retrieve the stored value using:
-
 ```python
 from taipy.gui import query_local_storage
 
@@ -120,8 +112,8 @@ my_value = query_local_storage(state, "myKey")
 # Mocking `State` in unit tests
 
 Taipy includes the `MockState^` class to facilitate unit testing of stateful logic typically
-executed in response to user interactions or programmatic events in a GUI application (_actions_ and
-_callbacks_). This can be used in frameworks like _unittest_ or _pytest_.
+executed in response to user interactions or programmatic events in a GUI application (*actions* and
+*callbacks*). This can be used in frameworks like _unittest_ or *pytest*.
 
 `MockState^` simulates a GUI state object, allowing you to test how your logic updates the
 application state without needing to launch an actual UI. This is especially useful for testing
@@ -135,14 +127,13 @@ MockState(gui: Gui, **initial_state_variables)
 
 Where:
 
--   _gui_ is an instance of `Gui^`, typically created with an empty or dummy page.
--   _\*\*initial_state_variables_: Keyword arguments representing the initial values of state
-    variables.<br/>
-    Each key indicates the name of a variable that is managed in the state, and values define the
-    initial values of these variables.
+- _gui_ is an instance of `Gui^`, typically created with an empty or dummy page.
+- _\*\*initial_state_variables_: Keyword arguments representing the initial values of state
+  variables.<br/>
+  Each key indicates the name of a variable that is managed in the state, and values define the
+  initial values of these variables.
 
 Here is an example of how this can be used:
-
 ```python
 from taipy.gui import Gui
 from taipy.gui.mock import MockState
