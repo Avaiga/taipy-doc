@@ -129,7 +129,7 @@ Published on 2023-10.
     - *payload* (dict): a dictionary that provides additional information to the callback.<br/>
       This dictionary now has the additional *action* key that is set to the action name.
 
-    This change not only impact the *on_action* callback of all controls that support it,
+    This change not only impacts the *on_action* callback of all controls that support it,
     but in an exactly similar manner the following callback signatures:
 
     - *on_range_change* in the [`chart`](../../refmans/gui/viselements/generic/chart.md) control;
@@ -158,16 +158,19 @@ Published on 2023-10.
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } A new class `Submittable^` models entities that
   can be submitted for execution. It is an Abstract class instantiated by `Scenario^` and
   `Sequence^`. It can be handy to use the new following `Submittable^` methods:
-   - `Submittable.get_inputs()^` retrieves input data nodes of a `Submittable` entity;
-   - `Submittable.get_outputs()^` retrieves output data nodes of a `Submittable` entity;
-   - `Submittable.get_intermediate()^` retrieves intermediate data nodes of a `Submittable`
-     entity;
-   - `Submittable.is_ready_to_run()^` checks if an entity is ready to be run;
-   - `Submittable.data_nodes_being_edited()^` retrieves data nodes that are being edited
-     of a `Submittable^` entity.
+
+    - `Submittable.get_inputs()^` retrieves input data nodes of a `Submittable` entity;
+    - `Submittable.get_outputs()^` retrieves output data nodes of a `Submittable` entity;
+    - `Submittable.get_intermediate()^` retrieves intermediate data nodes of a `Submittable` entity;
+    - `Submittable.is_ready_to_run()^` checks if an entity is ready to be run;
+    - `Submittable.data_nodes_being_edited()^` retrieves data nodes that are being edited of a
+      `Submittable^` entity.
+
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } New functions exposed by the `taipy` module:
-   - `taipy.is_deletable()^` checks if an entity can be deleted;
-   - `taipy.exists()^` checks if an entity exists.
+
+    - `taipy.is_deletable()^` checks if an entity can be deleted;
+    - `taipy.exists()^` checks if an entity exists.
+
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } The encoding type of CSVDataNode and JSONDataNode
   can now be configured using the *encoding* parameter. For more information, please refer to
   [Configure a CSVDataNode](../../userman/scenario_features/data-integration/data-node-config.md#csv)

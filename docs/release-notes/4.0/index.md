@@ -236,23 +236,23 @@ Published on 2024-10.
   simplify the development of chat-based applications.
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } The
   [`table`](../../refmans/gui/viselements/generic/table.md) control has new features:
-   - Built-in edit functionality are now available for all supported data types. You no longer need
-     to define functions for the
-     [*on_edit*](../../refmans/gui/viselements/generic/table.md#p-on_edit),
-     [*on_add*](../../refmans/gui/viselements/generic/table.md#p-on_add), and
-     [*on_delete*](../../refmans/gui/viselements/generic/table.md#p-on_delete) properties. However,
-     you can still customize these actions by providing your own functions.<br/>
-     Please read
-     [this section](../../refmans/gui/viselements/generic/table.md#editing-the-table-content) for more
-     details.
-   - A new indexed property,
-     [*format_fn[column_name]*](../../refmans/gui/viselements/generic/table.md#p-format_fn[column_name])
-     allows you to define a custom Python function to format cell values.<br/>
-     Please look at the
-     [example code](../../refmans/gui/viselements/generic/table.md#custom-formatting) for details.
-   - A new property, [*use_checkbox*](../../refmans/gui/viselements/generic/table.md#p-use_checkbox),
-     can be set to True to display checkboxes in cells containing Boolean values.<br/>
-     This significantly reduces the rendering time for large tables with Boolean columns.
+    - Built-in edit functionality are now available for all supported data types. You no longer need
+      to define functions for the
+      [*on_edit*](../../refmans/gui/viselements/generic/table.md#p-on_edit),
+      [*on_add*](../../refmans/gui/viselements/generic/table.md#p-on_add), and
+      [*on_delete*](../../refmans/gui/viselements/generic/table.md#p-on_delete) properties. However,
+      you can still customize these actions by providing your own functions.<br/>
+      Please read
+      [this section](../../refmans/gui/viselements/generic/table.md#editing-the-table-content) for more
+      details.
+    - A new indexed property,
+      [*format_fn[column_name]*](../../refmans/gui/viselements/generic/table.md#p-format_fn[column_name])
+      allows you to define a custom Python function to format cell values.<br/>
+      Please look at the
+      [example code](../../refmans/gui/viselements/generic/table.md#custom-formatting) for details.
+    - A new property, [*use_checkbox*](../../refmans/gui/viselements/generic/table.md#p-use_checkbox),
+      can be set to True to display checkboxes in cells containing Boolean values.<br/>
+      This significantly reduces the rendering time for large tables with Boolean columns.
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } You can define CSS rules for individual pages using the new
   *style* parameter of the `Page^` class or via the `Page.set_style()^` method.<br/>
   See the [section on Styling](../../userman/gui/styling/index.md#style-sheets) for more
@@ -291,31 +291,34 @@ Published on 2024-10.
 - :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} The Modebar in the
   [`chart`](../../refmans/gui/viselements/generic/chart.md) control (visible when
   the chart is hovered over) no longer includes the Plotly logo button by default. To restore it,
-  set the [*plot_config*](../../refmans/gui/viselements/generic/chart.md#p-plot_config) property to a
-  dictionary with `"displaylogo": True`.<br/>
+  set the [*plot_config*](../../refmans/gui/viselements/generic/chart.md#p-plot_config) property to
+  a dictionary with `"displaylogo": True`.<br/>
   See [issue #1600](https://github.com/Avaiga/taipy/issues/1600).
 - :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} The *decimator* property of the
   [`chart`](../../refmans/gui/viselements/generic/chart.md) control
   now applies to traces that are only "lines" or "markers".
-- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} A new toggle button has been added to the
-  [`login`](../../refmans/gui/viselements/generic/login.md)
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} A new toggle button has been added to
+  the [`login`](../../refmans/gui/viselements/generic/login.md)
   control, enabling users to show or hide the entered password.
 - :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} Page Builder API:
-   - Properties that expect a function can now be set to a lambda function in the Page Builder
-     API to simplify dynamic generation.<br/>
-     See [issue #1379](https://github.com/Avaiga/taipy/issues/1379).
-   - Controls defined with the Page Builder API have an additional property called *inline* which,
-      when set to True, will not generate a line skip, to facilitate layout.<br/>
-      See [issue #1725](https://github.com/Avaiga/taipy/issues/1725).
-- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} The configuration of the `Gui^` object was improved for
-  easier deployment:
-   - The [*port*](../../userman/advanced_features/configuration/gui-config.md#p-port) configuration
-     parameter can now be set to "auto". When `Gui.run()^` is executed with this setting, it will
-     attempt to find an available port by automatically trying different port numbers.
-   - A new configuration parameter,
-     [*port_auto_ranges*](../../userman/advanced_features/configuration/gui-config.md#p-port_auto_ranges),
-     allows specifying the range of port numbers that Taipy GUI will search when
-     [*port*](../../userman/advanced_features/configuration/gui-config.md#p-port) is set to "auto".
+
+    - Properties that expect a function can now be set to a lambda function in the Page Builder
+      API to simplify dynamic generation.<br/>
+      See [issue #1379](https://github.com/Avaiga/taipy/issues/1379).
+    - Controls defined with the Page Builder API have an additional property called *inline* which,
+       when set to True, will not generate a line skip, to facilitate layout.<br/>
+       See [issue #1725](https://github.com/Avaiga/taipy/issues/1725).
+
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} The configuration of the `Gui^`
+  object was improved for easier deployment:
+
+    - The [*port*](../../userman/advanced_features/configuration/gui-config.md#p-port) configuration
+      parameter can now be set to "auto". When `Gui.run()^` is executed with this setting, it will
+      attempt to find an available port by automatically trying different port numbers.
+    - A new configuration parameter,
+      [*port_auto_ranges*](../../userman/advanced_features/configuration/gui-config.md#p-port_auto_ranges),
+      allows specifying the range of port numbers that Taipy GUI will search when
+      [*port*](../../userman/advanced_features/configuration/gui-config.md#p-port) is set to "auto".
 
 <h4>Significant bug fixes</h4>
 
@@ -352,34 +355,39 @@ Published on 2024-10.
 <h4>New features</h4>
 
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } The `taipy.get_scenarios()` and
-  `taipy.get_primary_scenarios()^` methods now accept optional parameters to:
-   - sort the output list of scenarios by name, id, creation date, or tag
-   - filter the output list of scenarios that are created in a specific time range.<br/>
-     See [issue #393](https://github.com/Avaiga/taipy/issues/393).<br/>
-     For more information, please refer to
-     [Get all scenarios](../../userman/scenario_features/sdm/scenario/index.md#get-all-scenarios) and
-     [Get primary scenarios](../../userman/scenario_features/sdm/scenario/index.md#get-primary-scenarios).
+  `taipy.get_primary_scenarios()^` functions now accept optional parameters to:
+
+    - sort the output list of scenarios by name, id, creation date, or tag
+    - filter the output list of scenarios that are created in a specific time range.
+
+    For more information, please refer to
+    [Get all scenarios](../../userman/scenario_features/sdm/scenario/index.md#get-all-scenarios)
+    and
+    [Get primary scenarios](../../userman/scenario_features/sdm/scenario/index.md#get-primary-scenarios).<br/>
+    See [issue #393](https://github.com/Avaiga/taipy/issues/393).
+
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } The `Job^` and `Submission^` entities have new attributes
   based on the record of job status changes. For more information on job statuses, please refer to
-  [Job Status](../../userman/scenario_features/sdm/job/index.md#job-status). </br>
-  See [issue #1704](https://github.com/Avaiga/taipy/issues/1704) and
-  [issue #1544](https://github.com/Avaiga/taipy/issues/1544).
+  [Job Status](../../userman/scenario_features/sdm/job/index.md#job-status). 
 
-   - The `Job^` entity exposes the following timestamp attributes: *submitted_at*, *run_at*,
-     *finished_at*.
-   - The `Job^` entity exposes the following duration attributes: *execution_duration*,
-     *pending_duration*, and *blocked_duration*.
-   - The `Submission^` entity exposes the following timestamp attributes: *submitted_at*,
-     *run_at*, *finished_at*.
-   - The `Submission^` entity exposes the *execution_duration* attribute.
+    - The `Job^` entity exposes the following timestamp attributes: *submitted_at*, *run_at*,
+      *finished_at*.
+    - The `Job^` entity exposes the following duration attributes: *execution_duration*,
+      *pending_duration*, and *blocked_duration*.
+    - The `Submission^` entity exposes the following timestamp attributes: *submitted_at*,
+      *run_at*, *finished_at*.
+    - The `Submission^` entity exposes the *execution_duration* attribute.
+
+    See [issue #1704](https://github.com/Avaiga/taipy/issues/1704) and
+    [issue #1544](https://github.com/Avaiga/taipy/issues/1544).
 
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } Expose an Abstract class `CoreEventConsumerBase`
   to implement a custom event consumer.<br/>
-  See [issue #405](https://github.com/Avaiga/taipy/issues/405).<br/>
   A consumer can be used to listen to Taipy events (mainly CRUD operations on Taipy
   entities) and react to them. For more information, please refer to the
   [Track activities and Trigger actions](../../userman/scenario_features/events/index.md)
-  documentation page.
+  documentation page.<br/>
+  See [issue #405](https://github.com/Avaiga/taipy/issues/405).
 
 <h4>Improvements and changes</h4>
 
@@ -492,7 +500,7 @@ Published on 2024-10.
   [`polars.Series`](https://docs.pola.rs/api/python/stable/reference/series/index.html) as exposed
   type through the *exposed_type* configuration attribute.<br/>
   The [`table`](../../refmans/gui/viselements/generic/table.md) and
-  [`chart`](../../refmans/gui/viselements/generic/chart.md)` controls both have native support for
+  [`chart`](../../refmans/gui/viselements/generic/chart.md) controls both have native support for
   these tabular data types as well.
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } The new `taipy.import_scenario()^` function can be used
   to import a scenario from an exported archive. For more information, please refer to
@@ -503,10 +511,12 @@ Published on 2024-10.
 <h4>Improvements and changes</h4>
 
 - :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} The `taipy.export_scenario()^` function now:
-   - exports a zip archive instead of a folder.
-   - supports exporting file-based data nodes' data to the exported archive if the path exists.
-   - raises the `ExportPathAlreadyExists^`
-     exception if the export path already exists. You can explicitly set the *overwrite_ parameter
-     to True to overwrite the existing export path.
-     For more information, please refer to
+
+    - exports a zip archive instead of a folder.
+    - supports exporting file-based data nodes' data to the exported archive if the path exists.
+    - raises the `ExportPathAlreadyExists^`
+      exception if the export path already exists. You can explicitly set the *overwrite_ parameter
+      to True to overwrite the existing export path.
+
+    For more information, please refer to
      [Export a scenario](../../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
