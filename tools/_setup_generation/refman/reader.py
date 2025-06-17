@@ -1,9 +1,9 @@
 import importlib
 import re
 from inspect import isclass, isfunction, ismodule
-
 from .entry import Entry, EntryBuilder
 from ..setup import Setup
+from importlib import import_module
 
 
 class Reader:
@@ -24,9 +24,11 @@ class Reader:
 
         self.loaded_modules = set()  # All the modules already processed and loaded
 
-    def read_module(self):
-        self._read_module(importlib.import_module(self.setup.ROOT_PACKAGE))
-        self._read_module(importlib.import_module("taipy.event"))
+    def read_symbols(self):
+        self._read_module(import_module(self.setup.ROOT_PACKAGE))
+        # Additional yet inaccessible modules
+        self._read_module(import_module("taipy.event"))
+        self._read_module(import_module("taipy.gui.test"))
 
     def _read_module(self, module):
         if module in self.loaded_modules:
@@ -86,28 +88,21 @@ class Reader:
                 else:
                     print(f"WARNING - Couldn't extract doc summary for {e.__name__} in {e.__module__}", flush=True)
             full_name = f"{e.__module__}.{simple_name}"
+
             # Entry module: e.__module__
             # Current module: module.__name__
             if entry := self.entries.get(full_name):
                 packages = entry.packages
                 if module.__name__ != self.setup.ROOT_PACKAGE:
                     # Is current module a parent of known packages? Use that instead if yes
-                    child_idxs = [
-                        i
-                        for i, p in enumerate(packages)
-                        if p.startswith(module.__name__)
-                    ]
+                    child_idxs = [i for i, p in enumerate(packages) if p.startswith(module.__name__)]
                     if child_idxs:
                         for index in reversed(child_idxs):
                             del packages[index]
                         packages.append(module.__name__)
                     else:
                         # Is any known package a parent of the current module? If yes ignore it
-                        parent_idxs = [
-                            i
-                            for i, p in enumerate(packages)
-                            if module.__name__.startswith(p)
-                        ]
+                        parent_idxs = [i for i, p in enumerate(packages) if module.__name__.startswith(p)]
                         if not parent_idxs:
                             packages.append(module.__name__)
             else:
@@ -120,9 +115,9 @@ class Reader:
                     entry_type=entry_type,
                     doc=e.__doc__,
                     first_line_doc=first_line_doc,
-                    packages=[module.__name__])
+                    packages=[module.__name__],
+                )
             if module.__name__ == self.setup.ROOT_PACKAGE:
                 entry = self.entries[full_name]
                 entry.set_at_root()
                 entry.remove_package(self.setup.ROOT_PACKAGE)
-
