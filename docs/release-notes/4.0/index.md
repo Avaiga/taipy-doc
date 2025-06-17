@@ -122,11 +122,11 @@ Published on 2024-10.
           [section on Searching](../../refmans/gui/viselements/corelements/data_node_selector.md#searching)
           for more details.
 
-     - [*Data Node Viewer*](../../refmans/gui/viselements/corelements/data_node.md):
+    - [*Data Node Viewer*](../../refmans/gui/viselements/corelements/data_node.md):
 
         - Users can now upload and download data of file-based data nodes.
 
-     - [*Job Selector*](../../refmans/gui/viselements/corelements/job_selector.md):
+    - [*Job Selector*](../../refmans/gui/viselements/corelements/job_selector.md):
 
         - A new detail panel has been added to the job selector.
 
@@ -492,7 +492,8 @@ Published on 2024-10.
   For more information, please refer to
   [Microsoft Entra ID protocol](../../userman/advanced_features/auth/authentication.md#microsoft-entra-id-authenticator)
   section of the user manual.
-- :octicons-feed-plus-16:{ .plus-icon title="New feature" } Support for [Polars DataFrame Library](https://docs.pola.rs/).<br/>
+- :octicons-feed-plus-16:{ .plus-icon title="New feature" } Support for
+  [Polars DataFrame Library](https://docs.pola.rs/).<br/>
   Tabular data nodes (`CSVDataNode^`, `ParquetDataNode^`, `ExcelDataNode^`, `SQLTableDataNode^`,
   and `SQLDataNode^`) can now expose the data as Polars objects. They all support
   [`polars.LazyFrame`](https://docs.pola.rs/api/python/stable/reference/lazyframe/index.html),
@@ -502,11 +503,12 @@ Published on 2024-10.
   The [`table`](../../refmans/gui/viselements/generic/table.md) and
   [`chart`](../../refmans/gui/viselements/generic/chart.md) controls both have native support for
   these tabular data types as well.
-- :octicons-feed-plus-16:{ .plus-icon title="New feature" } The new `taipy.import_scenario()^` function can be used
-  to import a scenario from an exported archive. For more information, please refer to
+- :octicons-feed-plus-16:{ .plus-icon title="New feature" } The new `taipy.import_scenario()^`
+  function can be used to import a scenario from an exported archive. For more information, please
+  refer to
   [Import a scenario](../../userman/scenario_features/sdm/scenario/index.md#import-a-scenario).
--  :octicons-feed-plus-16:{ .plus-icon title="New feature" } The default application template now supports
-  authentication and authorization features.
+- :octicons-feed-plus-16:{ .plus-icon title="New feature" } The default application template now
+  supports authentication and authorization features.
 
 <h4>Improvements and changes</h4>
 
@@ -519,4 +521,4 @@ Published on 2024-10.
       to True to overwrite the existing export path.
 
     For more information, please refer to
-     [Export a scenario](../../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
+    [Export a scenario](../../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
