@@ -122,11 +122,19 @@ Published on 2024-10.
           [section on Searching](../../refmans/gui/viselements/corelements/data_node_selector.md#searching)
           for more details.
 
+<<<<<<< doc/#1313-gui-relnotes
     - [*Data Node Viewer*](../../refmans/gui/viselements/corelements/data_node.md):
 
         - Users can now upload and download data of file-based data nodes.
 
     - [*Job Selector*](../../refmans/gui/viselements/corelements/job_selector.md):
+=======
+     - [*Data Node Viewer*](../../refmans/gui/viselements/corelements/data_node.md):
+
+        - Users can now upload and download data of file-based data nodes.
+
+     - [*Job Selector*](../../refmans/gui/viselements/corelements/job_selector.md):
+>>>>>>> release/4.1
 
         - A new detail panel has been added to the job selector.
 
@@ -507,8 +515,13 @@ Published on 2024-10.
   function can be used to import a scenario from an exported archive. For more information, please
   refer to
   [Import a scenario](../../userman/scenario_features/sdm/scenario/index.md#import-a-scenario).
+<<<<<<< doc/#1313-gui-relnotes
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } The default application template now
   supports authentication and authorization features.
+=======
+-  :octicons-feed-plus-16:{ .plus-icon title="New feature" } The default application template now supports
+  authentication and authorization features.
+>>>>>>> release/4.1
 
 <h4>Improvements and changes</h4>
 
@@ -521,4 +534,8 @@ Published on 2024-10.
       to True to overwrite the existing export path.
 
     For more information, please refer to
+<<<<<<< doc/#1313-gui-relnotes
     [Export a scenario](../../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
+=======
+     [Export a scenario](../../userman/scenario_features/sdm/scenario/index.md#export-a-scenario).
+>>>>>>> release/4.1
