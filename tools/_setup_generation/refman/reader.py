@@ -26,6 +26,7 @@ class Reader:
     def read_symbols(self):
         self._read_module(import_module(self.setup.ROOT_PACKAGE))
         # Additional yet inaccessible modules
+        self._read_module(import_module("taipy.event"))
         self._read_module(import_module("taipy.gui.test"))
 
     def _read_module(self, module):

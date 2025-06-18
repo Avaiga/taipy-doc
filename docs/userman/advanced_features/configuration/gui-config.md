@@ -208,44 +208,44 @@ Here is the list of the configuration parameters you can use in
   or run the server, and it is up to the programmer to use the Flask instance returned by
   `Gui.run()^` or `Gui.get_flask_app()^` so it is served by the target web server.
 - <a name="p-base_url"></a>*base_url* (str or None, default: "/"): a string used as a prefix to
-    the path part of the exposed URL, so one can deploy a Taipy GUI application in a path
-    different from the root of the website.<br/>
-    If you need to expose the application under the prefix "*my_application*", you can set this
-    path to the *base_url* parameter of the `Gui.run()^` method:
-    ```python
-    Gui(pages=...).run(base_url="/my_application")
-    ```
-    The application prefix must also be handled at the web server level, to properly proxy the
-    requests.
+  the path part of the exposed URL, so one can deploy a Taipy GUI application in a path
+  different from the root of the website.<br/>
+  If you need to expose the application under the prefix "*my_application*", you can set this
+  path to the *base_url* parameter of the `Gui.run()^` method:
+  ```python
+  Gui(pages=...).run(base_url="/my_application")
+  ```
+  The application prefix must also be handled at the web server level, to properly proxy the
+  requests.
 
-    !!! example "Ngnix configuration"
-        Here is an example using [**ngnix**](https://nginx.org/): the server is configured as a
-        proxy server, serving port 8080 and redirecting the traffic to the Taipy application that is
-        running locally on port 5000.<br/>
-        Here is what could be indicated in the web server configuration file:
-        ```
-        server {
-          listen 8080;
+  !!! example "Ngnix configuration"
+      Here is an example using [**ngnix**](https://nginx.org/): the server is configured as a
+      proxy server, serving port 8080 and redirecting the traffic to the Taipy application that is
+      running locally on port 5000.<br/>
+      Here is what could be indicated in the web server configuration file:
+      ```
+      server {
+        listen 8080;
 
-          location /my_application {
-            rewrite /my_application/(.*) /$1 break;
-            rewrite /my_application / break;
-            proxy_pass http://127.0.0.1:5000;
-          }
-
-          location /my_application/socket.io {
-            proxy_http_version 1.1;
-            proxy_buffering off;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "Upgrade";
-            proxy_pass http://127.0.0.1:5000/socket.io;
-          }
+        location /my_application {
+          rewrite /my_application/(.*) /$1 break;
+          rewrite /my_application / break;
+          proxy_pass http://127.0.0.1:5000;
         }
-        ```
-        Note that web socket redirection needs to be setup also.
 
-        With this configuration, a user can connect to and use the Taipy application from the URL:
-        `http://<server-url>/my_application`.
+        location /my_application/socket.io {
+          proxy_http_version 1.1;
+          proxy_buffering off;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection "Upgrade";
+          proxy_pass http://127.0.0.1:5000/socket.io;
+        }
+      }
+      ```
+      Note that web socket redirection needs to be setup also.
+
+      With this configuration, a user can connect to and use the Taipy application from the URL:
+      `http://<server-url>/my_application`.
 
 - <a name="p-allow_unsafe_werkzeug"></a>*allow_unsafe_werkzeug* (bool, default: False): hides
   some [Flask-SocketIO](https://pypi.org/project/Flask-SocketIO/) runtime errors in some

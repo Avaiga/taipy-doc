@@ -112,7 +112,7 @@ my_value = query_local_storage(state, "myKey")
 
 Taipy includes the `MockState^` class to facilitate unit testing of stateful logic typically
 executed in response to user interactions or programmatic events in a GUI application (*actions* and
-*callbacks*). This can be used in frameworks like _unittest_ or *pytest*.
+*callbacks*). This can be used in frameworks like *unittest* or *pytest*.
 
 `MockState^` simulates a GUI state object, allowing you to test how your logic updates the
 application state without needing to launch an actual UI. This is especially useful for testing
@@ -126,7 +126,7 @@ MockState(gui: Gui, **initial_state_variables)
 
 Where:
 
-- _gui_ is an instance of `Gui^`, typically created with an empty or dummy page.
+- *gui* is an instance of `Gui^`, typically created with an empty or dummy page.
 - _\*\*initial_state_variables_: Keyword arguments representing the initial values of state
   variables.<br/>
   Each key indicates the name of a variable that is managed in the state, and values define the
