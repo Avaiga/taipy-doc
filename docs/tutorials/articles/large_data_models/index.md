@@ -1,5 +1,5 @@
 ---
-title: Large data models vs. Computer memory — Taipy and Dask
+title: Large Data Models vs. Computer Memory — Taipy and Dask
 category: large_data
 data-keywords: scenario task datanode job configuration
 short-description: A guide to building models that are bigger than your computer memory.
@@ -391,7 +391,7 @@ if __name__ == "__main__":
 ```
 
 
-## Skip unnecessary task executions
+## Skip Unnecessary Task Executions
 
 One of Taipy's most practical features is its ability to skip a task execution if its output is
 already computed. Let's explore this with some scenarios:

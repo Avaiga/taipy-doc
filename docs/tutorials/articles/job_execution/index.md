@@ -1,5 +1,5 @@
 ---
-title: Job Execution modes
+title: Job Execution Modes
 category: scenario_management
 data-keywords: scenario task job submission configuration standalone cluster
 short-description: Increase efficiency running your scenarios making your Job Execution asynchronous.

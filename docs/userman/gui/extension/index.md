@@ -1,5 +1,3 @@
-# Extension Libraries
-
 Although Taipy GUI comes with a set of visual elements that lets users create comprehensive
 user interfaces, there are situations where applications may need to provide a particular
 kind of element with capabilities that one cannot find in Taipy GUI out-of-the-box.

@@ -1,5 +1,3 @@
-# Introduction to dynamic elements
-
 The [previous section on static elements](../static_element.md) exposes
 how element libraries and elements are defined. A major limitation with
 static elements is that you cannot change their property values at runtime.

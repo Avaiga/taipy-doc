@@ -21,7 +21,7 @@ its input to the OpenAI API and returning the conversation in
 a chat window. GPT-4o can not only respond to text prompts,
 but it can also analyse images that the user sends.
 
-![ChatBot](images/gpt4o_screen.png){width=100% : .tp-image-border }
+![Chatbot](images/gpt4o_screen.png){width=100% : .tp-image-border }
 
 A tutorial on how to write similar
 LLM inference applications is available

@@ -50,7 +50,7 @@ available [here](https://github.com/Avaiga/taipy-course-gui/blob/develop/data.cs
 
 ## Tutorial Steps
 
-1. [Visual Elements](step_01/step_01.md)
+1. [Visual elements](step_01/step_01.md)
 2. [Styling](step_02/step_02.md)
 3. [Charts](step_03/step_03.md)
 4. [Multipage](step_04/step_04.md)

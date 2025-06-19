@@ -26,7 +26,7 @@ To apprehend what is a **Scenario**, you need to understand the **Data node** an
   data/parameters values set by end-users).
 
 
-# Configuration Basics
+# Configuration basics
 
 Before creating and runnning our scenarios, we need to configure them properly.
 
@@ -63,7 +63,7 @@ The graph below represents the scenario to configure, where tasks are in orange 
 ![Configuration](images/config_toml.png){ width=90% : .tp-image }
 
 
-### Input Data Nodes Configuration
+### Input Data Nodes configuration
 
 These are the input Data Nodes. They stand for the variables/data sources in Taipy when a
 scenario is run. However, initially, we need to set them up to build the DAG.
@@ -167,7 +167,7 @@ The other tasks (`predict_ml`, `metrics_baseline`, `metrics_ml`, and `full_predi
 being configured the same way to get the metrics from the two models and a dataset
 with all the predictions and historical data.
 
-## Scenario Configuration
+## Scenario configuration
 
 All the task and Data Node configurations can create a scenario. These tasks
 that form an execution graph will be executed when a scenario is submitted.

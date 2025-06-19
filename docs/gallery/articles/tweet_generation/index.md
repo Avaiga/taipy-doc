@@ -35,7 +35,7 @@ This application highlights several key features:
 
 ![Tweet Generation](images/tweet-generation.png){width=90% : .tp-image-border }
 
-# How to generate Tweets
+# How to Generate Tweets
 
 To create captivating Tweets, follow these steps:
 1. Fill out the text prompt creation form, including the topic,

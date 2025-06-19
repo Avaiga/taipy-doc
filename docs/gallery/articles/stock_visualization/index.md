@@ -32,7 +32,7 @@ Meta's Prophet library offers stock predictions for 1 to 5 years.
 This predictive feature empowers users to make informed choices with the assistance of Taipy.
 
 
-## How to use the Application
+## How to Use the Application
 
 1. Select the ticker you wish to predict
 2. Open the Historical Data Panel

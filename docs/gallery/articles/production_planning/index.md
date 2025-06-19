@@ -62,7 +62,7 @@ Initially, no scenario is available, and the Year/Month corresponds to the curre
 
 ![No scenario](images/production-planning-Scenario-Manager-no-scenario.png){width=90% : .tp-image-border }
 
-### Creating scenarios
+### Creating Scenarios
 
 The purpose of the model is to generate a production plan (level of production
 for both products) for the next 11 months in order to:
@@ -87,7 +87,7 @@ Results can be displayed as time series or pie charts, and different
 graphs can be selected by choosing the data to display (costs, productions, etc.).
 
 
-### Editing parameters
+### Editing Parameters
 
 On the right-hand side of this panel, you can modify various parameters categorized into
 three sections:

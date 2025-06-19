@@ -110,7 +110,7 @@ stored in the *value* variable.
 slider's value. It is represented in the application as a chart.
 
 
-# Interactivity Through Actions
+# Interactivity through actions
 
 Actions, like `on_change=slider_moved`, allow visual elements like slider or input
 to trigger specific functions.
@@ -158,7 +158,7 @@ This command generates a new application in the current directory, allowing you 
 ---
 
 For more realistic and advanced use cases, check out our
-[Gallery](../../gallery/index.md), or [User Man](../../userman/index.md) pages.
+[Gallery](../../gallery/index.md), or [User Manual](../../userman/index.md) pages.
 
 <div class="tp-row tp-row--gutter-sm">
   <div class="tp-col-12 tp-col-md-6 d-flex">

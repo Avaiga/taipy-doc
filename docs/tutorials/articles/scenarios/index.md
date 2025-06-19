@@ -123,7 +123,7 @@ that are made. Accessing a data node is as as simple as `<scenario>.<Data Node n
 By exploring the data nodes, end users can analyze the results of their data workflow and make
 decisions upon it.
 
-## Scenario management visual elements
+## Scenario Management Visual Elements
 
 The
 [Scenario management visual elements](../../../refmans/gui/viselements/index.md#scenario-and-data-management-controls)

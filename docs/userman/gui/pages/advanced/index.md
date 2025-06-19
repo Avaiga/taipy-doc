@@ -121,10 +121,10 @@ When the rendering of a page occurs, the following steps take place:
 
 - If the page is text-based (Markdown or HTML), the text is parsed to locate the Taipy-specific
   constructs. These constructs designate [*visual elements*](../../../../refmans/gui/viselements/index.md) that can
-  represent data and be interacted with by the user. Visual Elements result in the creation of
+  represent data and be interacted with by the user. Visual elements result in the creation of
   potentially complex HTML code;
 
-- The properties of the Visual element are read, and Taipy binds the application variables that are
+- The properties of the visual element are read, and Taipy binds the application variables that are
   used, if any. See the [section about Binding](../../binding.md) for details;
 
 - Potentially, *callbacks* are searched in the visual element properties and connected from the

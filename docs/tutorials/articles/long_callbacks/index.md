@@ -101,7 +101,7 @@ user experience.
 
 # Tracking Function Progress
 
-## Trigger update from *heavy_function*
+## Trigger Update from *heavy_function*
 
 In some cases, it is beneficial to trigger updates from within the `heavy_function` 
 itself. This can be done using the `invoke_callback` function to send updates to the 
@@ -169,7 +169,7 @@ In the code above, in line 13, when you include a *period* parameter, the `heavy
 function will be regularly activated at the set interval, such as every 5 seconds. This allows
 your user interface to show live updates, informing the end user about ongoing work.
 
-# Conclusion and code
+# Conclusion and Code
 
 Taipy's long-running callbacks make handling time-consuming tasks in web applications much
 easier. By running demanding functions in the background, Taipy ensures that the user interface

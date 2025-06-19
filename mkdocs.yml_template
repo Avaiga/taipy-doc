@@ -40,58 +40,58 @@ nav:
     - "Tutorials": tutorials/index.md
     - "Fundamentals":
       - "Fundamentals": tutorials/fundamentals/index.md
-      - "Getting Started": tutorials/getting_started/index.md
-      - "Creating a Sales Dashboard":
-        - "Creating a Sales Dashboard": tutorials/articles/sales_dashboard/index.md
-        - "1 - Visual Elements": tutorials/articles/sales_dashboard/step_01/step_01.md
+      - "Getting started": tutorials/getting_started/index.md
+      - "Creating a sales dashboard":
+        - "Creating a sales dashboard": tutorials/articles/sales_dashboard/index.md
+        - "1 - Visual elements": tutorials/articles/sales_dashboard/step_01/step_01.md
         - "2 - Styling": tutorials/articles/sales_dashboard/step_02/step_02.md
         - "3 - Charts": tutorials/articles/sales_dashboard/step_03/step_03.md
         - "4 - Multipage": tutorials/articles/sales_dashboard/step_04/step_04.md
       - "Scenario management overview": tutorials/articles/scenario_management_overview/index.md
-      - "First Realistic application":
-        - "First Realistic application": tutorials/articles/complete_application/index.md
+      - "First realistic application":
+        - "First realistic application": tutorials/articles/complete_application/index.md
         - "1 - Data visualization page": tutorials/articles/complete_application/step_01/step_01.md
         - "2 - Algorithms used": tutorials/articles/complete_application/step_02/step_02.md
         - "3 - Scenario configuration": tutorials/articles/complete_application/step_03/step_03.md
         - "4 - Scenario page": tutorials/articles/complete_application/step_04/step_04.md
         - "5 - Performance page": tutorials/articles/complete_application/step_05/step_05.md
       - "Creating applications" :
-        - "Creating an LLM ChatBot":
-          - "Creating an LLM ChatBot": tutorials/articles/chatbot/index.md
-        - "Creating an RAG ChatBot":
-          - "Creating an RAG ChatBot": tutorials/articles/rag_chatbot/index.md
-      - "User Roles and Permissions": tutorials/articles/user_management/index.md
+        - "Creating an LLM chatbot":
+          - "Creating an LLM chatbot": tutorials/articles/chatbot/index.md
+        - "Creating an RAG chatbot":
+          - "Creating an RAG chatbot": tutorials/articles/rag_chatbot/index.md
+      - "User roles and permissions": tutorials/articles/user_management/index.md
     - "Visuals":
       - "Visuals": tutorials/visuals/index.md
       - "Callbacks": tutorials/articles/callbacks/index.md
-      - "Using Tables": tutorials/articles/using_tables/index.md
-      - "Long Running Callbacks": tutorials/articles/long_callbacks/index.md
+      - "Using tables": tutorials/articles/using_tables/index.md
+      - "Long running callbacks": tutorials/articles/long_callbacks/index.md
       - "Real-time data visualization": tutorials/articles/multithreading/index.md
       - "Stylekit": tutorials/articles/css_style_kit/index.md
       - "Multi-user": tutorials/articles/multi_user/index.md
-    - "Scenario Management":
-      - "Scenario Management": tutorials/scenario_management/index.md
+    - "Scenario management":
+      - "Scenario management": tutorials/scenario_management/index.md
       - "Scenarios": tutorials/articles/scenarios/index.md
-      - "Data Nodes": tutorials/articles/the_data_nodes/index.md
+      - "Data nodes": tutorials/articles/the_data_nodes/index.md
       - "Skippable Tasks": tutorials/articles/skippable_tasks/index.md
       - "Cycles and Scopes": tutorials/articles/cycles_scopes/index.md
-      - "Job Execution mode": tutorials/articles/job_execution/index.md
-      - "Scenario Comparison": tutorials/articles/scenario_comparison/index.md
-      - "Scenario Subscription": tutorials/articles/scenario_subscription/index.md
+      - "Job execution mode": tutorials/articles/job_execution/index.md
+      - "Scenario comparison": tutorials/articles/scenario_comparison/index.md
+      - "Scenario subscription": tutorials/articles/scenario_subscription/index.md
       - "Manage application versions": tutorials/articles/version_management/index.md
     - "Integration":
       - "Integration": tutorials/integration/index.md
       - "Integrating Databricks": tutorials/articles/databricks/index.md
-      - "Integrate Third-Party Components": tutorials/articles/3rd_party_components/index.md
-      - "Taipy Application on Colab with Ngrok": tutorials/articles/colab_with_ngrok/index.md
+      - "Integrate third-party components": tutorials/articles/3rd_party_components/index.md
+      - "Taipy application on Colab with Ngrok": tutorials/articles/colab_with_ngrok/index.md
       - "Jupyter Notebooks": tutorials/articles/jupyter_notebooks/index.md
       - "Integration with Dataiku": tutorials/articles/dataiku/index.md
       - "Integration with IBM Watson Studio": tutorials/articles/ibm_watson_studio/index.md
-    - "Large Data":
-      - "Large Data": tutorials/large_data/index.md
-      - "Using PySpark for Large Data": tutorials/articles/pyspark/index.md
-      - "Large data models vs. Computer memory": tutorials/articles/large_data_models/index.md
-      - "Charts for Large Data": tutorials/articles/decimator/index.md
+    - "Large data":
+      - "Large data": tutorials/large_data/index.md
+      - "Using PySpark for large data": tutorials/articles/pyspark/index.md
+      - "Large data models vs. computer memory": tutorials/articles/large_data_models/index.md
+      - "Charts for large data": tutorials/articles/decimator/index.md
 
   - "Templates":
     - "Templates": tp_templates/index.md
@@ -108,7 +108,7 @@ nav:
       - "Login": tp_templates/pages/login_page.md
 
   - "User Manual":
-    - "About Taipy's User manual": userman/index.md
+    - "About Taipy's User Manual": userman/index.md
 
     - "User interface":
       - "User interface": userman/gui/index.md
@@ -131,7 +131,7 @@ nav:
         - "Static elements": userman/gui/extension/static_element.md
         - "Packaging extensions": userman/gui/extension/extension_packaging.md
         - "Dynamic elements":
-          - userman/gui/extension/dynamic_element/index.md
+          - "Dynamic elements": userman/gui/extension/dynamic_element/index.md
           - "Scalar properties": userman/gui/extension/dynamic_element/scalar_props.md
         - "List of values": userman/gui/extension/list_of_values.md
         - "Tabular data": userman/gui/extension/tabular_data.md
@@ -178,8 +178,8 @@ nav:
         - "Cycle":
           - "Cycle": userman/scenario_features/sdm/cycle/index.md
 
-      - "Track activities and Trigger actions":
-        - "Track activities and Trigger actions": userman/scenario_features/events/index.md
+      - "Track activities and trigger actions":
+        - "Track activities and trigger actions": userman/scenario_features/events/index.md
         - "Event description": userman/scenario_features/events/events-description.md
         - "Registration": userman/scenario_features/events/understanding-notifier-register.md
         - "Examples": userman/scenario_features/events/examples.md
@@ -280,14 +280,14 @@ nav:
     [VISELEMENTS_CONTENT]
 
   - "Reference":
-    - "About Taipy's Reference manual": refmans/index.md
+    - "About Taipy's Reference Manual": refmans/index.md
     - "Python API":
       - "Python APIs": refmans/reference/index.md
       [REFERENCE_CONTENT]
     - "REST API":
       - "REST APIs": refmans/reference_rest/index.md
       [REST_REFERENCE_CONTENT]
-    - "GUI Extension API":
+    - "GUI extension API":
       - refmans/reference_guiext/index.md
       - "taipy-gui module": refmans/reference_guiext/globals.md
 
@@ -314,8 +314,8 @@ nav:
     - "LLM":
       - "LLM": gallery/llm/index.md
       - "LLM Chatbot" : gallery/articles/chatbot/index.md
-      - "Vision ChatBot": gallery/articles/vision_chatbot/index.md
-      - "RAG ChatBot": gallery/articles/rag_chatbot/index.md
+      - "Vision Chatbot": gallery/articles/vision_chatbot/index.md
+      - "RAG Chatbot": gallery/articles/rag_chatbot/index.md
       - "Talk To Taipy": gallery/articles/talk_to_taipy/index.md
       - "Sentiment Analysis": gallery/articles/sentiment_analysis/index.md
       - "Tweet Generation": gallery/articles/tweet_generation/index.md
