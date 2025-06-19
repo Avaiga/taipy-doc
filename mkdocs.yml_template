@@ -181,7 +181,7 @@ nav:
       - "Track activities and Trigger actions":
         - "Track activities and Trigger actions": userman/scenario_features/events/index.md
         - "Event description": userman/scenario_features/events/events-description.md
-        - "Registration": userman/scenario_features/events/understanding-notifier-register.md
+        - "Topic description": userman/scenario_features/events/topics.md
         - "Examples": userman/scenario_features/events/examples.md
 
       - "Exposing REST APIs":

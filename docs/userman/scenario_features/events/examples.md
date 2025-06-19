@@ -1,17 +1,19 @@
-Examples of using Taipy event notifications to capture and consume *events*.
+---
+title: Examples of Taipy Event usage
+---
 
-# Real-Time GUI Updates with Taipy Event Consumers
+These examples demonstrate the power of event-driven programming in real-world applications.
 
-This example demonstrates the power of event-driven programming in real-world applications. By
-capturing and processing events, developers can build responsive, dynamic systems that notify
-users of important changes (such as new scenario creations or data node updates) as they happen.
-This approach significantly enhances the user experience by providing real-time updates and
-ensuring users are always informed through an interactive and engaging interface.
+# Real-Time GUI Updates
 
-This script defines a custom event consumer class `SpecificCoreConsumer`, which listens
-for all events published by Taipy and triggers GUI notification based on those events.
-It includes determining if the event is published from a `Scenario^` entity or `DataNode^` entity
-and if the action is `CREATION` or `UPDATE`.
+By consuming and processing events, developers can build reactive and dynamic systems that
+notify end-users of important changes (such as new scenario creations or data node updates)
+as they happen. This approach significantly enhances the user experience by providing
+real-time updates and ensuring users are always informed through an interactive and
+engaging interface.
+
+This example registers callbacks to trigger GUI notifications depending on the event
+parameters.
 
 !!! example
     ```python linenums="1"
@@ -21,17 +23,15 @@ and if the action is `CREATION` or `UPDATE`.
      %}
     ```
 
-    This snippet shows how you can capture and process events to notify users whenever
-    a new scenario is created, or a data node's value is updated.
-    For more details, see the [registration](understanding-notifier-register.md) page.
+    This snippet shows how you can process events to notify users whenever
+    a scenario is created, submitted or completed.
 
-# External API triggered with Taipy Event Consumers
+# External API calls
 
-This example illustrates leveraging event-driven programming to monitor and respond to
-specific event types. By implementing a custom event consumer, `JobFailureCoreConsumer`,
-developers can easily trigger external API calls based on specific job status updates. This
-approach ensures that critical job status changes are promptly communicated to external systems,
-enhancing the application's monitoring and integration with third-party systems.
+The following example illustrates how to integrate external systems with a Taipy
+application by consuming events. It demonstrates how to trigger external API calls
+when specific job status updates occur, such as when a job fails. This integration
+allows for seamless communication between a Taipy application and an external service.
 
 This script defines a custom event consumer class `JobFailureCoreConsumer`, which listens
 for all events published by Taipy, when a `JOB` entity's `status` attribute is `UPDATE`,
@@ -45,7 +45,6 @@ and triggers an external API call based on the `JOB`'s `id`.
      %}
     ```
 
-    This snippet shows how you can capture and process `JOB` events when an `UPDATE` is made to the `status`
-    of the `JOB` and request an external API.
-    For more details, see the [registration](understanding-notifier-register.md) page.
+    This snippet shows how you can process Taipy events to trigger calls to an external
+    API whenever a job fails.
 
