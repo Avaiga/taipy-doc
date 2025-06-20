@@ -168,7 +168,7 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
                 os.path.join("contributing", "index.md"),
             ),
             DesignerStep(),
-            ReleaseNotesIndexPageStep()
+            ReleaseNotesIndexPageStep(),
         ]
     setup = Setup(root_dir, steps)
     setup.setup()
