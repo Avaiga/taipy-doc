@@ -6,7 +6,7 @@ These are the updates and changes introduced in Taipy version 4.1.
 
 !!! note "Upgrading to Taipy 4.1"
 
-    Please refer to the [Upgrading page](../../userman/operations/upgrading/) for potential
+    Please refer to the [Upgrading page](../../userman/operations/upgrading/index.md) for potential
     migration paths for your applications implemented on legacy Taipy versions.
 
 Published on 2025-06.
@@ -83,5 +83,5 @@ Published on 2025-06.
   Resulting entities won't keep their IDs or previous attributes. <br/>
   Note that changes in the various configurations' attributes are not automatically migrated. Please refer to
   the `Config.add_migration_function()^` method and the
-  [migration](../../userman/advanced_features/versioning/production_mode.md#production-version-with-migration-functions)
+  [migration](../../userman/operations/versioning/production-mode.md#production-version-with-migration-functions)
   page for more details.

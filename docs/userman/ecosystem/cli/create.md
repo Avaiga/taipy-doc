@@ -43,11 +43,11 @@ $ taipy create --page default
 Taipy currently supports the following page templates:
 
 - [Default page template](../../../tp_templates/pages/default_page.md)
-- [Root page template](pages/root_page.md),
-- [Data management page template](pages/data_management_page.md),
-- [Scenario management page template](pages/sdm_page.md),
-- [Job management page template](pages/job_management_page.md),
-- [Login page template](pages/login_page.md),
+- [Root page template](../../../tp_templates/pages/root_page.md),
+- [Data management page template](../../../tp_templates/pages/data_management_page.md),
+- [Scenario management page template](../../../tp_templates/pages/sdm_page.md),
+- [Job management page template](../../../tp_templates/pages/job_management_page.md),
+- [Login page template](../../../tp_templates/pages/login_page.md),
 
 
 # Application templates list

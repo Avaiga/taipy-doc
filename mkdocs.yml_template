@@ -8,6 +8,7 @@ repo_name: taipy
 copyright: © 2021-[YEAR] Avaiga
 nav:
   - "Release Notes":
+    - "Release Notes": release-notes/index.md
     - "Version 4.2 - latest":
       - "Release Notes for version 4.2": release-notes/4.2/index.md
     - "Version 4.1":
@@ -30,7 +31,6 @@ nav:
       - "Release Notes for version 1.1": release-notes/1.1/index.md
     - "Unsupported Version 1.0":
       - "Release Notes for version 1.0": release-notes/1.0/index.md
-    - "Migration": release-notes/migration.md
   - "Contributing":
     - "Contributing": contributing/index.md
     - "Code of Conduct": contributing/code_of_conduct.md
@@ -178,12 +178,6 @@ nav:
         - "Cycle":
           - "Cycle": userman/scenario_features/sdm/cycle/index.md
 
-      - "Track activities and Trigger actions":
-        - "Track activities and Trigger actions": userman/scenario_features/events/index.md
-        - "Event description": userman/scenario_features/events/events-description.md
-        - "Topic description": userman/scenario_features/events/topics.md
-        - "Examples": userman/scenario_features/events/examples.md
-
       - "Exposing REST APIs":
         - "Exposing REST APIs": userman/scenario_features/rest/index.md
 
@@ -200,6 +194,12 @@ nav:
         - "Authentication and authorization": userman/advanced_features/auth/index.md
         - "Authentication": userman/advanced_features/auth/authentication.md
         - "Authorization and roles": userman/advanced_features/auth/authorization.md
+
+      - "Track activities and Trigger actions":
+        - "Track activities and Trigger actions": userman/advanced_features/events/index.md
+        - "Event description": userman/advanced_features/events/events-description.md
+        - "Topic description": userman/advanced_features/events/topics.md
+        - "Examples": userman/advanced_features/events/examples.md
 
       - "Scheduler":
         - "Scheduler": userman/advanced_features/scheduling/index.md

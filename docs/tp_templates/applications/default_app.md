@@ -185,7 +185,7 @@ creation process. Here is a brief overview of the folder structure:
     - `admin/` contains an example admin page for the authentication feature that only authenticated
         users with the "TAIPY_ADMIN" role can access.
 - `.taipyignore`: Specifies files to be protected when running the web server. Please refer to the
-    [Protect private files](../../userman/run-deploy/run/protect_files.md) page for more
+  [Protect private files](../../userman/operations/running/protect-files.md) page for more
     information.
 - `docker-compose.yml` and `Dockerfile`: The Docker configuration for building and running the
     application as a Docker container.
@@ -290,7 +290,7 @@ customize the content of each page:
     feature, and `pages/admin/` contains the page that only authenticated users with the
     "TAIPY_ADMIN" role can access. You can customize the login page in the
     [login](../../refmans/gui/viselements/generic/login.md) visual element's definition.
-- If you provide an answer to the [question 4](#4-with-multi-pages), the pages you specified is
+- If you provide an answer to the question 4, the pages you specified is
     created in the `pages/` folder and are imported automatically in the `pages/\_\_init\_\_.py`
     file. You can customize the content of each page as needed.
 

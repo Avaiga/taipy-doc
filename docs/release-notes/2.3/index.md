@@ -94,7 +94,7 @@ Published on 2023-06.
   See the [section on page scopes](../../userman/gui/binding.md#scope-for-variable-binding) for
   more information and examples.
 - :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} A new mechanism to start the web server when
-  [using Notebooks](../../userman/run-deploy/notebooks.md) was put in place to prevent
+  [using Notebooks](../../userman/operations/running/notebooks.md) was put in place to prevent
   potential bottlenecks when allocating a port number. This behavior is controlled by the
   [*notebook_proxy*](../../userman/advanced_features/configuration/gui-config.md#p-notebook_proxy)
   configuration parameter.

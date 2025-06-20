@@ -17,7 +17,7 @@ Published on 2023-01.
 [`taipy-core` 2.1](https://pypi.org/project/taipy-core/2.1.0/) and
 [`taipy-rest` 2.1](https://pypi.org/project/taipy-rest/2.1.0/) packages.
 
-Please refer to the [Migration page](../migration.md#from-20-to-21) for
+Please refer to the [Migration page](../../userman/operations/upgrading/from-2.0-to-2.1.md) for
 details on how to migrate from version older than 2.1.
 
 # <strong><code>taipy</code></strong>
@@ -40,7 +40,7 @@ details on how to migrate from version older than 2.1.
   `.taipyignore`, located next to the Python main file, can list the paths that you want
   to prevent access to.<br/>
   See [issue #501](https://github.com/Avaiga/taipy-gui/issues/501) or
-  [this section](../../userman/advanced_features/configuration/gui-config.md#protect-your-application-files)
+  [this section](../../userman/operations/running/protect-files.md)
   for details.
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } Charts can use the new `Decimator^` class to
   cleverly filter data points out to significantly improve performance.<br/>
@@ -105,7 +105,7 @@ details on how to migrate from version older than 2.1.
   applications. Users can now run an application in development mode, save a version of
   the application as an experiment version, re-run older experiment versions, and push a
   version to production.<br/>
-  See the [Version management system](../../userman/advanced_features/versioning/index.md)
+  See the [Version management system](../../userman/operations/versioning/index.md)
   documentation page for more details.
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } New data node named
   [MongoCollectionDataNode](../../userman/scenario_features/data-integration/data-node-config.md#mongo-collection).

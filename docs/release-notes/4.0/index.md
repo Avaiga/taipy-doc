@@ -6,7 +6,7 @@ These are the updates and changes introduced in Taipy version 4.0.
 
 !!! note "Migration"
 
-    Please refer to the [Upgrading page](../../userman/operations/upgrading/) for potential
+    Please refer to the [Upgrading page](../../userman/operations/upgrading/index.md) for potential
     migration paths for your applications implemented on legacy Taipy versions.
 
 Published on 2024-10.
@@ -385,7 +385,7 @@ Published on 2024-10.
   to implement a custom event consumer.<br/>
   A consumer can be used to listen to Taipy events (mainly CRUD operations on Taipy
   entities) and react to them. For more information, please refer to the
-  [Track activities and Trigger actions](../../userman/scenario_features/events/index.md)
+  [Track activities and Trigger actions](../../userman/advanced_features/events/index.md)
   documentation page.<br/>
   See [issue #405](https://github.com/Avaiga/taipy/issues/405).
 
@@ -490,7 +490,7 @@ Published on 2024-10.
   [Microsoft Entra ID](https://www.microsoft.com/en-us/security/business/identity-access/microsoft-entra-id)
   including SSO and GUI integration.<br/>
   For more information, please refer to
-  [Microsoft Entra ID protocol](../../userman/advanced_features/auth/authentication.md#microsoft-entra-id-authenticator)
+  [Microsoft Entra ID protocol](../../userman/advanced_features/auth/authentication.md#microsoft-entra-id-protocol)
   section of the user manual.
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } Support for
   [Polars DataFrame Library](https://docs.pola.rs/).<br/>
