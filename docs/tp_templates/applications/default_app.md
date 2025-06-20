@@ -290,7 +290,7 @@ customize the content of each page:
     feature, and `pages/admin/` contains the page that only authenticated users with the
     "TAIPY_ADMIN" role can access. You can customize the login page in the
     [login](../../refmans/gui/viselements/generic/login.md) visual element's definition.
-- If you provide an answer to the question 4, the pages you specified is
+- If you provide an answer to question 4, the pages you specified is
     created in the `pages/` folder and are imported automatically in the `pages/\_\_init\_\_.py`
     file. You can customize the content of each page as needed.
 
