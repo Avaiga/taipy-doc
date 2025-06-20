@@ -22,7 +22,7 @@ class ReleaseNotesIndexPageStep(FileInjectionStep):
     def enter(self, setup: Setup):
         self.src_path = os.path.join(setup.docs_dir, "release-notes")
         self.dst_path = os.path.join(self.src_path, "index.md")
-        self.dst_tpl_path = os.path.join(self.dst_path + "_template")
+        self.dst_tpl_path = self.dst_path + "_template"
 
     def setup(self, setup: Setup) -> None:
         try:
