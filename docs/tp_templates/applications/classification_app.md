@@ -5,7 +5,7 @@ services has become an essential process.
 Out of the box, the template provides a multi-page application structure:
 
 - A visualization page to visualize different fields of the dataset for exploratory data analysis.
-- A model manager page to review the performance of different models, including different metrics
+- A Model Manager page to review the performance of different models, including different metrics
   of each classification model, the ROC curve, and feature importance.
 - A model comparison page to compare the performance of different models side by side.
 - A databases page to view and manage the training and testing datasets for the models.
