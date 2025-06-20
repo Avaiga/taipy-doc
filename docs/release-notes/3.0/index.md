@@ -147,7 +147,7 @@ Published on 2023-10.
   be provided with **migration functions** to automatically migrate entities and keep them
   compatible with previous versions.<br/>
   For more information, refer to
-  [Production mode](../../userman/advanced_features/versioning/production_mode.md).
+  [Production mode](../../userman/operations/versioning/production-mode.md).
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } A `GLOBAL` scope data node can be created from a
   data node configuration calling the new `taipy.create_global_data_node()^` method.<br/>
   For more information, refer to
@@ -232,7 +232,7 @@ Published on 2023-10.
 - :octicons-feed-plus-16:{ .plus-icon title="New feature" } A new template named "scenario-management" is available.
   For more information on creating a new Taipy application with the new "scenario-management"
   template, refer to the documentation page on
-  [templates](../../userman/ecosystem/cli/create.md#from-a-specific-application-template).
+  [templates](../../userman/ecosystem/cli/create.md#create-a-taipy-application-from-a-template).
 
 <h4>Improvements and changes</h4>
 

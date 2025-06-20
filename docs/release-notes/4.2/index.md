@@ -6,7 +6,7 @@ These are the updates and changes introduced in Taipy version 4.2.
 
 !!! note "Migration"
 
-    Please refer to the [Upgrading page](../../userman/operations/upgrading/) for potential
+    Please refer to the [Upgrading page](../../userman/operations/upgrading/index.md) for potential
     migration paths for your applications implemented on legacy Taipy versions.
 
 This version is in progress and has not been released yet.

@@ -174,7 +174,7 @@ creation process. Here is a brief overview of the folder structure:
         and the [data_node](../../refmans/gui/viselements/corelements/data_node.md)
         visual elements.
 - `.taipyignore`: Specifies files to be protected when running the web server. Please refer to the
-    [Protect private files](../../userman/run-deploy/run/protect_files.md) page for more
+  [Protect private files](../../userman/operations/running/protect-files.md) page for more
     information.
 - `docker-compose.yml` and `Dockerfile`: The Docker configuration for building and running the
     application as a Docker container.
@@ -229,7 +229,7 @@ import these functions and use them to configure various tasks for your applicat
 The `config/config.py` file contains the *configure()* function, which is called in the main
 application file to configure the application.
 
-If your answer to the ["With TOML Config"](#4-with-toml-config) question is "No"
+If your answer to the "With TOML Config" question is "No"
 (the default), the placeholder configuration is stored in the *configure()* function
 [as Python code](../../userman/advanced_features/configuration/advanced-config.md#python-code-configuration).
 Import the added functions from the `algos/algos.py` file and use them to configure the tasks.
@@ -242,7 +242,7 @@ def configure():
     ...
 ```
 
-If your answer to the ["With TOML Config"](#4-with-toml-config) question is "Yes" or "y",
+If your answer to the "With TOML Config" question is "Yes" or "y",
 the placeholder configuration is stored in `config.toml` file. Update the
 `config.toml` file to configure the application to your specific use case, or you can
 use [Taipy Studio](../../userman/ecosystem/studio/index.md) for generating a TOML

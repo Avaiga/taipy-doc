@@ -33,10 +33,6 @@ application by consuming events. It demonstrates how to trigger external API cal
 when specific job status updates occur, such as when a job fails. This integration
 allows for seamless communication between a Taipy application and an external service.
 
-This script defines a custom event consumer class `JobFailureCoreConsumer`, which listens
-for all events published by Taipy, when a `JOB` entity's `status` attribute is `UPDATE`,
-and triggers an external API call based on the `JOB`'s `id`.
-
 !!! example
     ```python linenums="1"
     {%

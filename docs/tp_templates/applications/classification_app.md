@@ -5,7 +5,8 @@ services has become an essential process.
 Out of the box, the template provides a multi-page application structure:
 
 - A visualization page to visualize different fields of the dataset for exploratory data analysis.
-- A model manager page to review the performance of different models, including different metrics of each classification model, the ROC curve, and feature importance.
+- A Model Manager page to review the performance of different models, including different metrics
+  of each classification model, the ROC curve, and feature importance.
 - A model comparison page to compare the performance of different models side by side.
 - A databases page to view and manage the training and testing datasets for the models.
 
@@ -176,7 +177,7 @@ creation process. Here is a brief overview of the folder structure:
 - `images/`: Contains the images used by the application.
 - `.gitignore`: Specifies files to be ignored by Git.
 - `.taipyignore`: Specifies files to be protected when running the web server. Please refer to the
-    [Protect private files](../../userman/run-deploy/run/protect_files.md) page for more
+  [Protect private files](../../userman/operations/running/protect-files.md) page for more
     information.
 - `docker-compose.yml` and `Dockerfile`: The Docker configuration for building and running the
     application as a Docker container.

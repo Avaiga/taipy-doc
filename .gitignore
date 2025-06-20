@@ -151,3 +151,6 @@ mkdocs.yml
 
 /docs/xrefs
 /taipy.clone
+/docs/release-notes/index.md
+/Pipfile.bak
+/docs/gallery/service_industry/index.md

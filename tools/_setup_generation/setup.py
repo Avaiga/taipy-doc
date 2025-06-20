@@ -1,9 +1,9 @@
 import os
-from abc import ABC, abstractmethod
-from datetime import datetime
 import re
 import shutil
 import sys
+from abc import ABC, abstractmethod
+from datetime import datetime
 from typing import List
 
 
@@ -135,6 +135,7 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
         from .step_contributors import ContributorsStep
         from .step_file_injection import FileInjectionStep
         from .step_designer import DesignerStep
+        from .step_release_notes_index import ReleaseNotesIndexPageStep
 
         steps = [
             GalleryStep(),
@@ -167,6 +168,7 @@ def run_setup(root_dir: str, steps: List[SetupStep] = None):
                 os.path.join("contributing", "index.md"),
             ),
             DesignerStep(),
+            ReleaseNotesIndexPageStep(),
         ]
     setup = Setup(root_dir, steps)
     setup.setup()
