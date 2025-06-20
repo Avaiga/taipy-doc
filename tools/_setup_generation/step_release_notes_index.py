@@ -1,5 +1,5 @@
 # ################################################################################
-# Taipy installation page generation setup step.
+# Release notes index page generation step.
 #
 # ################################################################################
 import os
