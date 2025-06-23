@@ -6,13 +6,12 @@ from taipy import Config, Gui, Orchestrator
 from taipy.core import SubmissionStatus
 from taipy.core.job.status import Status
 from taipy.core.notification import CoreEventConsumerBase, EventEntityType, EventOperation, Notifier
+from taipy.event import EventProcessor
 from taipy.gui import notify
 
 ##### Configuration and Functions #####
-
-
 def fail_task(name: str):
-    raise Exception(f"This function is trigger by {name} and is supposed to fail, and it did!")
+    raise Exception(f"This function is trigger by {name} and is designed to fail!")
 
 
 name_data_node_cfg = Config.configure_data_node(id="input_name", default_data="Florian")
@@ -23,35 +22,20 @@ scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_tas
 value = "Default text"
 
 
-#### Notification function to be called ####
-
-
-def trigger_api_of_job_failure(job_id):
-    requests.get("http://127.0.0.1:5000/replace-this-with-your-api", params={"message": f"Job {job_id} failed."})
-
-
-class JobFailureCoreConsumer(CoreEventConsumerBase):
-    def __init__(self):
-        reg_id, queue = Notifier.register(
-            entity_type=EventEntityType.JOB, operation=EventOperation.UPDATE, attribute_name="status"
-        )  # Adapt the registration to the events you want to listen to
-        super().__init__(reg_id, queue)
-
-    def process_event(self, event):
-        if event.attribute_value == Status.FAILED:
-            trigger_api_of_job_failure(event.entity_id)
+#### Event callbacks ####
+def trigger_external_api(event, gui):
+    if event.attribute_value == Status.FAILED:
+        job_id = event.entity_id
+        requests.get("http://127.0.0.1:5000/replace-this-with-your-api", params={"message": f"Job {job_id} failed."})
 
 
 #### Normal callbacks ####
-
-
 def create_and_submit_scenario(state):
     scenario = tp.create_scenario(config=scenario_cfg)
     tp.submit(scenario)
 
 
 #### Page ####
-
 with tgb.Page() as page:
     tgb.text("{value}")
     tgb.button("Create and submit a scenario!", on_action=create_and_submit_scenario)
@@ -60,6 +44,11 @@ with tgb.Page() as page:
 if __name__ == "__main__":
     orchestrator = Orchestrator()
     gui = Gui(page)
+    event_processor = EventProcessor(gui)
+    event_processor.on_event(callback=trigger_external_api,
+                             entity_type=EventEntityType.JOB,
+                             operation=EventOperation.UPDATE,
+                             attribute_name="status")
+    event_processor.start()
     orchestrator.run()
-    JobFailureCoreConsumer().start()
     gui.run()
