@@ -18,7 +18,6 @@ hide:
     you to try them out and contact us for more detailed information.
 
 
-    [Try it live](https://investment-screening.taipy.cloud){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 Adding User Management to your Taipy application using Taipy Enterprise is a smooth experience —

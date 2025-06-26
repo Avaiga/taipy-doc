@@ -13,7 +13,7 @@ Explore where industries are concentrated and how they are distributed across
 the United States on this interactive map with a chart that also shows the evolution
 of these concentrations over time.
 
-[Try it live](https://industry-agglom.taipy.cloud/){: .tp-btn target='blank' }
+[Request a demo](https://taipy.io/book-a-call){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-industry-agglom){: .tp-btn .tp-btn--accent target='blank' }
 
 ![Map](images/map_image.png){width=90% : .tp-image-border }

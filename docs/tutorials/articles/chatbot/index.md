@@ -8,7 +8,7 @@ img: chatbot/images/chatbot_roundconv.png
 ---
 In this tutorial we will create a simple chatbot website using Taipy.
 
-[Try it live](https://demo-llm-chat.taipy.cloud/){: .tp-btn target='blank' }
+[Request a demo](https://taipy.io/book-a-call){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-llm-chat){: .tp-btn .tp-btn--accent target='blank' }
 
 
