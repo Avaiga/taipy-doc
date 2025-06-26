@@ -10,7 +10,7 @@ offering a user-friendly real-time face detection experience using
 your webcam.Just as a reminder, face recognition technology enables
 computers to identify human faces in images and videos.
 
-[Try it live](https://face-recognition.taipy.cloud/){: .tp-btn target='blank' }
+[Request a demo](https://taipy.io/book-a-call){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-face-recognition){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application

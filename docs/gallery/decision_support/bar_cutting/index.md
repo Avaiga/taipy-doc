@@ -6,20 +6,19 @@ short-description: Use two scenarios with distinct algorithms to reduces raw mat
 img: bar_cutting/images/bar-cutting-bar-Visualization.png
 ---
 
-This demo showcases how to optimize the bar-cutting process to minimize waste. 
-Bar-cutting optimization minimizes waste by choosing optimal cutting patterns. This is 
-crucial in industries with significant material costs, such as Steel and timber. This 
-demo embeds a powerful optimization engine that has demonstrated huge savings for several 
+This demo showcases how to optimize the bar-cutting process to minimize waste.
+Bar-cutting optimization minimizes waste by choosing optimal cutting patterns. This is
+crucial in industries with significant material costs, such as Steel and timber. This
+demo embeds a powerful optimization engine that has demonstrated huge savings for several
 large companies. It can easily be extended to cater for specific requirements.
 
 !!! note "Taipy Enterprise edition"
 
-    Taipy provides robust, business-focused applications tailored for enterprise environments. To 
-    maintain standards of security and customization, these applications are proprietary like this 
-    application. If you’re looking for solutions that are immediately deployable and customizable to 
+    Taipy provides robust, business-focused applications tailored for enterprise environments. To
+    maintain standards of security and customization, these applications are proprietary like this
+    application. If you’re looking for solutions that are immediately deployable and customizable to
     your business needs, we invite you to try them out and contact us for more detailed information.
 
-    [Try it live](https://bar-cutting.taipy.cloud/Databases){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understand the Application

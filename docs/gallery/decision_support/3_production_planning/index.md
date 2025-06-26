@@ -6,23 +6,22 @@ short-description: Simulate manufacturing scenarios and optimize production quan
 img: 3_production_planning/images/production-planning-data-visualization.png
 ---
 
-All manufacturers must generate a production plan over a given horizon (here, several 
-months). The objectives are to produce an optimized plan that respects the plant's 
-capacity constraints. The Optimization step ensures that the plan meets as much of the 
-demand as possible while minimizing production costs. 
+All manufacturers must generate a production plan over a given horizon (here, several
+months). The objectives are to produce an optimized plan that respects the plant's
+capacity constraints. The Optimization step ensures that the plan meets as much of the
+demand as possible while minimizing production costs.
 
-Although small, this example perfectly illustrates the basic requirements. The 
+Although small, this example perfectly illustrates the basic requirements. The
 application presented here can easily be extended to cater to more complex real use cases.
 
 
 !!! note "Taipy Enterprise edition"
 
-    Taipy provides robust, business-focused applications tailored for enterprise environments. To 
-    maintain standards of security and customization, these applications are proprietary like this 
-    application. If you’re looking for solutions that are immediately deployable and customizable to 
+    Taipy provides robust, business-focused applications tailored for enterprise environments. To
+    maintain standards of security and customization, these applications are proprietary like this
+    application. If you’re looking for solutions that are immediately deployable and customizable to
     your business needs, we invite you to try them out and contact us for more detailed information.
 
-    [Try it live](https://production-planning.taipy.cloud/Data-Visualization){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 ![New scenario](images/production-planning-Scenario-Manager-new-scenario.png){width=90% : .tp-image-border }
@@ -44,9 +43,9 @@ and B (FPB) over the next 11 months, with the current month marked as month 0.
 
 ![Data Visualization](images/production-planning-data-visualization.png){width=90% : .tp-image-border }
 
-Just above the chart, by clicking "Expand here," you can access an you can 
-access an expandable block containing the initial production data at time 
-0 (current month): stock & production levels, incoming raw material orders, 
+Just above the chart, by clicking "Expand here," you can access an you can
+access an expandable block containing the initial production data at time
+0 (current month): stock & production levels, incoming raw material orders,
 and demand, all presented in a table.
 
 ## Page 2: Scenario Manager

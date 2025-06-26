@@ -9,8 +9,7 @@ This demo visualizes a Covid dataset for the year 2020.
 Pages show different graphs and information on Covid.
 A Prediction page is also present to predict the number of casualties.
 
-
-[Try it live](https://covid-dashboard.taipy.cloud/Country){: .tp-btn target='blank' }
+[Request a demo](https://taipy.io/book-a-call){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-covid-dashboard){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application

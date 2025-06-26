@@ -140,41 +140,41 @@ minimum.
 
 ## Contributing to taipy-doc Gallery
 
-Here is a small section if you specifically want to contribute to the 
-[Gallery](docs/gallery/index.md) section. Follow these steps to add your 
+Here is a small section if you specifically want to contribute to the
+[Gallery](docs/gallery/index.md) section. Follow these steps to add your
 demo to the documentation.
 
 ### Steps:
 
 #### 1. Create a Folder
 
-Create a folder to organize your application description. Use a clear and concise name 
+Create a folder to organize your application description. Use a clear and concise name
 for the folder that represents the content. For example:
 
 ```
 docs/gallery/{category}/your_folder/
 ```
 
-Category is the category of the article (finance, decision_support, llm, 
+Category is the category of the article (finance, decision_support, llm,
 visualization or other).
 
 #### 2. Add Content
 
-Place your images and Markdown files in the created folder. Name the 
+Place your images and Markdown files in the created folder. Name the
 Markdown file "*index.md*".
 
 #### 3. Add Metadata to the content
 
 The header contains the following information:
 - title: The title of the item
-- category: The category of the item (fundamentals, visuals, scenario_management, 
+- category: The category of the item (fundamentals, visuals, scenario_management,
 integration or large data)
 - type: The type of the item (code, video or article)
 - data-keywords: A comma separated list of keywords
 - short-description: A short description of the item
 - img: The path to the image associated with the item
 
-This header will be used to display the article in the correct pages. 
+This header will be used to display the article in the correct pages.
 
 **Example:**
 
@@ -190,7 +190,7 @@ img: pollution_sensors/images/pollution_dashboard.png
 A use-case of measuring air quality with sensors around a factory to showcase the ability of Taipy
 to dashboard streaming data.
 
-[Try it live](https://realtime-pollution.taipy.cloud/){: .tp-btn target='blank' }
+[Request a demo](https://taipy.io/book-a-call){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-realtime-pollution){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
@@ -198,10 +198,10 @@ to dashboard streaming data.
 Rest of the description of your application
 ```
 
-Note that every application have a short description at the beginning and 
+Note that every application have a short description at the beginning and
 two buttons:
 
-- one to see the deployed application and test it, 
+- one to see the deployed application and test it,
 - one to the GitHub repository.
 
 You shall then describe your application in more details.
@@ -217,11 +217,11 @@ Add the new Markdown file to the "mkdocs.yml_template" file in the appropriate s
 #### Checklist:
 
 - Ensure no spaces in filenames.
-- Check for unrecognized characters. Building the documentation will help you know 
+- Check for unrecognized characters. Building the documentation will help you know
 if any are present.
 - Break lines in the Markdown file before 100 characters.
-- Use relative links to taipy doc (.md). To express 
-`https://docs.taipy.io/en/latest/manuals/studio/config/` in a tip article, write 
+- Use relative links to taipy doc (.md). To express
+  `https://docs.taipy.io/en/latest/manuals/studio/config/` in a tip article, write
 `../../../manuals/studio/config/index.md`.
 - Follow conventions for styling code, variables, etc.
 - Check the level of titles in the Markdown file.
@@ -230,7 +230,7 @@ if any are present.
 
 ## Contributing to taipy-doc Tutorials
 
-Here is a small section if you specifically want to contribute to the 
+Here is a small section if you specifically want to contribute to the
 [Tutorials](docs/tutorials/index.md) section. Follow these steps to add your
 article to the documentation.
 
@@ -245,25 +245,25 @@ folder that represents the content. For example:
 docs/tutorials/{category}/your_folder/
 ```
 
-Category is the category of the article (fundamentals, visuals, scenario 
+Category is the category of the article (fundamentals, visuals, scenario
 management, integration or large data).
 
 #### 2. Add Content
 
-Place your images and Markdown files in the created folder. Name the 
+Place your images and Markdown files in the created folder. Name the
 Markdown file "*index.md*".
 
 #### 3. Add Metadata to the content
 
 The header contains the following information:
 - title: The title of the item
-- category: The category of the item (fundamentals, visuals, scenario_management, 
+- category: The category of the item (fundamentals, visuals, scenario_management,
 integration or large data)
 - data-keywords: A comma separated list of keywords
 - short-description: A short description of the item
 - img: The path to the image associated with the item
 
-This header will be used to display the article in the correct pages. 
+This header will be used to display the article in the correct pages.
 
 **Example:**
 
@@ -290,11 +290,11 @@ Add the new Markdown file to the "mkdocs.yml_template" file in the appropriate s
 #### Checklist:
 
 - Ensure no spaces in filenames.
-- Check for unrecognized characters. Building the documentation will help you know 
+- Check for unrecognized characters. Building the documentation will help you know
 if any are present.
 - Break lines in the Markdown file before 100 characters.
-- Use relative links to taipy doc (.md). To express 
-`https://docs.taipy.io/en/latest/manuals/studio/config/` in a tip article, write 
+- Use relative links to taipy doc (.md). To express
+  `https://docs.taipy.io/en/latest/manuals/studio/config/` in a tip article, write
 `../../../manuals/studio/config/index.md`.
 - Follow conventions for styling code, variables, etc.
 - Check the level of titles in the Markdown file.
