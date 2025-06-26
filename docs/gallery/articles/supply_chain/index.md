@@ -23,7 +23,7 @@ This application can be easily tailored to suit various supply chain configurati
     that are immediately deployable and customizable to your business needs, we invite
     you to try them out and contact us for more detailed information.
 
-
+    [Try it live](https://supply-chain.taipy.cloud){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 ![Supply Chain](images/comparison_page.png){width=90% : .tp-image-border }
