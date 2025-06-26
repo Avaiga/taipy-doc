@@ -12,7 +12,7 @@ Background Remover is an image processing application built using Taipy. The obj
 to simplify the process of removing backgrounds from images. This demo showcases how you
 can achieve this effortlessly using Taipy and offers a peek into the code.
 
-[Try it live](https://background-remover.taipy.cloud/){: .tp-btn target='blank' }
+[Request a demo](https://taipy.io/book-a-call){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-remove-background){: .tp-btn .tp-btn--accent target='blank' }
 
 ![Background Remover](images/background-remover.png){width=90% : .tp-image-border }

@@ -11,7 +11,7 @@ hide:
 This demo aims to showcase the ability to select inputs and execute and visualize outputs of data
 pipelines in a Taipy application. Here, we use the example of detecting drift on a dataset.
 
-[Try it live](https://drift-detection.taipy.cloud/){: .tp-btn target='blank' }
+[Request a demo](https://taipy.io/book-a-call){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-drift-detection){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
