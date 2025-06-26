@@ -23,7 +23,6 @@ demand.
     you to try them out and contact us for more detailed information.
 
 
-    [Try it live](https://sap.taipy.cloud/){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 

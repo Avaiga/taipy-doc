@@ -17,7 +17,7 @@ contains more information, like the gender or type of customer.
 Different visualizations are shown, from maps to sales bar charts including a page to
 filter and analyze the sales data.
 
-[Try it live](https://sales-insights.taipy.cloud/){: .tp-btn target='blank' }
+[Request a demo](https://taipy.io/book-a-call){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-sales-insights){: .tp-btn .tp-btn--accent target='blank' }
 
 
