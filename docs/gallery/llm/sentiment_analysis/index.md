@@ -11,7 +11,7 @@ It helps businesses and individuals better grasp the feelings,
 and tones expressed in written content. Taipy's sentiment analysis
 application excels in making this process highly efficient and accurate.
 
-[Try it live](https://sentiment-analysis.taipy.cloud/line){: .tp-btn target='blank' }
+[Request a demo](https://taipy.io/book-a-call){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-sentiment-analysis){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application

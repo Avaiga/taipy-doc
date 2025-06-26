@@ -7,9 +7,9 @@ img: 3_supply_chain/images/scenario_results.png
 ---
 
 
-This application demonstrates a typical use case for optimizing supply chains. This is 
-particularly suited for manufacturers or distribution companies interested in minimizing 
-their transportation costs from their warehouses to their customers. It uses a 
+This application demonstrates a typical use case for optimizing supply chains. This is
+particularly suited for manufacturers or distribution companies interested in minimizing
+their transportation costs from their warehouses to their customers. It uses a
 mathematical model to find the optimal selection of warehouses to cover customer demand.
 
 This application can be easily tailored to suit various supply chain configurations and constraints.
@@ -47,23 +47,23 @@ This page allows you to create and modify scenarios. You can adjust parameters s
 
 - The number of warehouses to be used.
 - Select specific warehouses to be used in the
-solution. 
-- After setting the parameters, you can submit the scenario to launch the 
+  solution.
+- After setting the parameters, you can submit the scenario to launch the
 optimization engine and then get the 'optimal' solution.
 
 ![Scenario Creation](images/scenario_creation.png){width=90% : .tp-image-border }
 
 The results include a solution map showing the selected warehouses, customer locations,
-and routes used to service each customer. Additionally, you can view metrics such as 
-total carbon footprint, total transportation cost, and average transportation cost per 
-unit shipped. Charts displaying the volume of demand handled by each warehouse and the 
+and routes used to service each customer. Additionally, you can view metrics such as
+total carbon footprint, total transportation cost, and average transportation cost per
+unit shipped. Charts displaying the volume of demand handled by each warehouse and the
 number of clients assigned to them are also available.
 
 ![Scenario Results](images/scenario_results.png){width=90% : .tp-image-border }
 
 ## Comparison
 
-This page enables you to compare two different scenarios by displaying their solution maps and 
+This page enables you to compare two different scenarios by displaying their solution maps and
 metrics side by side.
 
 ![Comparison](images/comparison_page.png){width=90% : .tp-image-border }

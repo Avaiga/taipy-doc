@@ -8,7 +8,7 @@ img: pollution_sensors/images/pollution_dashboard.png
 A use-case of measuring air quality with sensors around a factory to showcase the ability of Taipy
 to dashboard streaming data.
 
-[Try it live](https://realtime-pollution.taipy.cloud/){: .tp-btn target='blank' }
+[Request a demo](https://taipy.io/book-a-call){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-realtime-pollution){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application

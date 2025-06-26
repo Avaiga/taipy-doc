@@ -12,7 +12,7 @@ for image generation.
 This application should be useful for individuals and businesses
 seeking to improve their social media presence.
 
-[Try it live](https://tweet-generation.taipy.cloud/){: .tp-btn target='blank' }
+[Request a demo](https://taipy.io/book-a-call){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-tweet-generation){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application
