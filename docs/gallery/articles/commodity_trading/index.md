@@ -21,6 +21,7 @@ This application can be customized for different sets of commodities.
     application. If you’re looking for solutions that are immediately deployable and customizable to
     your business needs, we invite you to try them out and contact us for more detailed information.
 
+    [Try it live](https://commodity-trading.taipy.cloud){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 
