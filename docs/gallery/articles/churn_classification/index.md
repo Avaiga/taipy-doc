@@ -20,7 +20,6 @@ businesses can lower churn rates and boost customer loyalty.
     to your business needs, we invite you to try them out and contact us for more detailed
     information.
 
-    [Try it live](https://churn-classification.taipy.cloud/Data-Visualization){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application

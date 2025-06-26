@@ -21,7 +21,6 @@ large companies. It can easily be extended to cater for specific requirements.
     to your business needs, we invite you to try them out and contact us for more detailed
     information.
 
-    [Try it live](https://bar-cutting.taipy.cloud/Databases){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understand the Application
