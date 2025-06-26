@@ -8,7 +8,8 @@ img: movie_genre_selector/images/movie-genre-selector.png
 hide:
     - toc
 ---
-[Try it live](https://demo-movie-genre.taipy.cloud/){: .tp-btn target='blank' }
+
+[Request a demo](https://taipy.io/book-a-call){: .tp-btn target='blank' }
 [Get it on GitHub](https://github.com/Avaiga/demo-movie-genre){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application

@@ -17,7 +17,6 @@ Use natural language to ask questions about a car sales dataset. PandasAI will a
     that are immediately deployable and customizable to your business needs, we invite
     you to try them out and contact us for more detailed information.
 
-    [Try it live](https://talk-to-taipy.taipy.cloud/){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 
@@ -26,7 +25,7 @@ Use natural language to ask questions about a car sales dataset. PandasAI will a
 
 # Understanding the Application
 
-In this application, the user can ask a chatbot about a pre-defined car sales dataset. 
-The chatbot uses PandasAI and OpenAI to interpret the query, run pandas and matplotlib 
+In this application, the user can ask a chatbot about a pre-defined car sales dataset.
+The chatbot uses PandasAI and OpenAI to interpret the query, run pandas and matplotlib
 code, and return text, tables, and visualizations as responses.
 

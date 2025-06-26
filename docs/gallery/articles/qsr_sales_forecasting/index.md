@@ -23,7 +23,6 @@ requirements.
     to your business needs, we invite you to try them out and contact us for more detailed
     information.
 
-    [Try it live](https://qsr-fcst.taipy.cloud/data){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 # Understanding the Application

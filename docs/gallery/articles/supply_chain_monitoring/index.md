@@ -21,7 +21,6 @@ the user to identify bottlenecks.
     you to try them out and contact us for more detailed information.
 
 
-    [Try it live](https://supply-chain-monitoring.taipy.cloud){: .tp-btn target='blank' }
     [Contact us](https://taipy.io/book-a-call){: .tp-btn .tp-btn--accent target='blank' }
 
 ![Supply Chain Monitoring](images/home_page.png){width=90% : .tp-image-border }
