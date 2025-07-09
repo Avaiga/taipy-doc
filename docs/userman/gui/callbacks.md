@@ -5,7 +5,7 @@ web browser requires that the application handles.
 Every callback function receives a `State^` object as its first parameter.<br/>
 This object reflects the state of the application variables, for a given end-user:
 your application may be used simultaneously by different users connected to the
-same web server (note that setting the _single_client_ configuration parameter to
+same web server (note that setting the *single_client* configuration parameter to
 True - as explained in the
 [Configuration](../advanced_features/configuration/gui-config.md#configuring-the-gui-instance) section - prevents
 multiple users from connecting to your application simultaneously, but you still rely
@@ -20,7 +20,7 @@ for reading and writing.
 Some controls (such as [`input`](../../refmans/gui/viselements/generic/input.md) or
 [`slider`](../../refmans/gui/viselements/generic/slider.md))
 let the user modify the value they hold.
-In order to control what that _new value_ is and decide whether to use
+In order to control what that *new value* is and decide whether to use
 it as such, a callback function is called in the application when the user
 activates the control in order to change its value.
 
@@ -29,9 +29,9 @@ activates the control in order to change its value.
     ```py
     from taipy.gui import Gui
 
-    def on_change(state, var, val):
-        if var == "x":
-            print(f"'x' was changed to: {val}")
+    def on_change(state, var_name, var_value):
+        if var_name == "x":
+            print(f"'x' was changed to: {var_value}")
 
     if __name__ == "__main__":
         md = """
@@ -56,14 +56,14 @@ In our example, that would be `state.x`.
 
 !!! note "Control-specific on_change callback"
     All the controls that allow users to impact the variables they rely on let
-    you specify a specific _on_change_ callback. This is done using the
-    _on_change_ property of each control.<br/>
+    you specify a specific `on_change` callback. This is done using the
+    *on_change* property of each control.<br/>
     That makes it easier to organize your application code in situations where
-    there are many controls to handle, where a single _on_change_ function would
+    there are many controls to handle, where a single *on_change()* function would
     become very large.
 
-    In the code above, you could isolate the _on_change_ function for the slider
-    control using its _on_change_ property:
+    In the code above, you could isolate the *on_change()* function for the slider
+    control using its *on_change* property:
     ```py
     ...
     md = """
@@ -80,8 +80,8 @@ In our example, that would be `state.x`.
     ...
     ```
     You would not have to check the variable name anymore (although the callback function
-    still receives it) since you know that _on_slider_change_, in this case, will be
-    invoked _only_ when the user interacts with the slider.
+    still receives it) since you know that *on_slider_change()*, in this case, will be
+    invoked *only* when the user interacts with the slider.
 
 # Actions
 
@@ -222,7 +222,7 @@ parameter to `invoke_long_callback()^`) have passed since *heavy_function()* was
 
 # Long-running callbacks in a Thread
 
-The execution of long-running callback using `invoke_long_callback()` may however not apply to
+The execution of long-running callback using `invoke_long_callback()^` may however not apply to
 a specific situation. This API hides many technical details that some application may want to
 be more in control of.
 

@@ -286,15 +286,15 @@ the background color of the elements it is applied to.
 Here is the implementation of the `on_change` callback function that computes the visual feedback
 to the user:
 ```py linenums="1"
-def on_change(state, var_name, value):
+def on_change(state, var_name, var_value):
     if var_name == "word":
-        if value and len(value) != 5:
+        if var_value and len(var_value) != 5:
             state.error_text = " Five characters are required"
             state.valid = False
             state.error_cls = "invalid-value"
         else:
             state.error_text = ""
-            state.valid = bool(value)
+            state.valid = bool(var_value)
             state.error_cls = None
 ```
 
