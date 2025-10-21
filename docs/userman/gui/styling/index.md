@@ -45,7 +45,7 @@ There are two ways you can apply a stylesheet to your application:
                           ".taipy-button": {
                             "background-color": "red"
                           }
-                        )
+                        })
         ```
     === "HTML"
         ```python
@@ -54,7 +54,7 @@ There are two ways you can apply a stylesheet to your application:
                       ".taipy-button": {
                         "background-color": "red"
                       }
-                    )
+                    })
         ```
     === "Python"
         ```python
@@ -80,7 +80,7 @@ There are two ways you can apply a stylesheet to your application:
                               "background-color": "yellow"
                             }
                           }
-                        )
+                        })
         ```
     === "HTML"
         ```python
@@ -91,7 +91,7 @@ There are two ways you can apply a stylesheet to your application:
                           "background-color": "yellow"
                         }
                       }
-                    )
+                    })
         ```
     === "Python"
         ```python
@@ -101,7 +101,7 @@ There are two ways you can apply a stylesheet to your application:
                             "background-color": "yellow"
                           }
                         }
-                      ) as page:
+                      }) as page:
             # page content
         ```
     This style definition will apply the yellow color to the rail of a `slider` control. It does
