@@ -412,7 +412,7 @@ plugins:
         python:
           options:
             show_source: false
-            parameter_headings: true
+            parameter_headings: false
             merge_init_into_class: false
             show_root_toc_entry: false
             show_root_full_path: false

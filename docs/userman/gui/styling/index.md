@@ -37,7 +37,7 @@ There are two ways you can apply a stylesheet to your application:
     The parameter to the *style* parameter is a dictionary where keys describe the CSS selector to
     apply, and the value is the rule declaration, expressed as a dictionary (each key being the
     CSS property name and each value being the property value).<br/>
-    Here is an example of defining CSS styling on a page:
+    Consider the following page definition:
     === "Python"
         ```python
         with tgb.Page(style = {
@@ -54,7 +54,16 @@ There are two ways you can apply a stylesheet to your application:
                           ".taipy-button": {
                             "background-color": "red"
                           }
-                        }
+                        )
+        ```
+    === "HTML"
+        ```python
+        page = Html("... page content",
+                    style = {
+                      ".taipy-button": {
+                        "background-color": "red"
+                      }
+                    )
         ```
     This style creates a single CSS rule that will apply to all `button` controls of this page,
     giving them a red background color.
@@ -67,9 +76,10 @@ There are two ways you can apply a stylesheet to your application:
         with tgb.Page(style = {
                         ".taipy-slider": {
                           ".MuiSlider-rail": {
-                          "background-color": "yellow"
+                            "background-color": "yellow"
+                          }
                         }
-                      }) as page:
+                      ) as page:
             # page content
         ```
     === "Markdown"
@@ -79,8 +89,20 @@ There are two ways you can apply a stylesheet to your application:
                           ".taipy-slider": {
                             ".MuiSlider-rail": {
                               "background-color": "yellow"
+                            }
                           }
+                        )
+        ```
+    === "HTML"
+        ```python
+        page = Html("... page content",
+                    style = {
+                      ".taipy-slider": {
+                        ".MuiSlider-rail": {
+                          "background-color": "yellow"
                         }
+                      }
+                    )
         ```
     This style definition will apply the yellow color to the rail of a `slider` control. It does
     this by selecting all the elements with the ".MuiSlider-rail" class that are a descendants

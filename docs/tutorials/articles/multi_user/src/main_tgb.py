@@ -19,7 +19,7 @@ def send_message(state):
     state.current_message = ""
 
 
-def on_change(state, var_name, value):
+def on_change(state, var_name, var_value):
     if var_name == "new_message":
         # Check if the last row is not already the user's message
         if (
@@ -29,9 +29,7 @@ def on_change(state, var_name, value):
             state.conversation = pd.concat(
                 [
                     state.conversation,
-                    pd.DataFrame(
-                        {"User": [state.user_name], "Message": [state.new_message]}
-                    ),
+                    pd.DataFrame({"User": [state.user_name], "Message": [state.new_message]}),
                 ],
                 ignore_index=True,
             )
@@ -43,9 +41,7 @@ if __name__ == "__main__":
 
     client_index = 1
     user_name = ""
-    conversation = pd.DataFrame(
-        {"User": ["Alex", "Doppler"], "Message": ["Hey!", "Whats'up?"]}
-    )
+    conversation = pd.DataFrame({"User": ["Alex", "Doppler"], "Message": ["Hey!", "Whats'up?"]})
     current_message = ""
     new_message = ""
     new_sender = ""
