@@ -85,7 +85,7 @@ def send_message(state):
     state.current_message = ""
 
 
-def on_change(state, var_name, value):
+def on_change(state, var_name, var_value):
     if var_name == "new_message":
         # Check if the last row is not already the user's message
         if (

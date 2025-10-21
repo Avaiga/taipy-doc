@@ -52,8 +52,8 @@ The date range selector looks like this:
 
 An `on_change` callback can be set to retrieve the user's selection:
 ```python
-def on_change(s: State, name: str, value: any):
-    if name == "dates":
+def on_change(state: State, var_name: str, var_value: any):
+    if var_name == "dates":
         # value[0] is set to the first selected date
         # value[1] is set to the second selected date
 ```

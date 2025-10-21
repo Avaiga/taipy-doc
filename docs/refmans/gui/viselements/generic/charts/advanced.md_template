@@ -442,9 +442,9 @@ selected_indices = []
 
 mean_value = 0.
 
-def on_change(state, var, val):
-    if var == "selected_indices":
-        state.mean_value = numpy.mean([data["y"][idx] for idx in val]) if len(val) else 0
+def on_change(state, var_name, var_value):
+    if var_name == "selected_indices":
+        state.mean_value = numpy.mean([data["y"][idx] for idx in var_value]) if len(var_value) else 0
 ```
 
 The part you should be looking at is the use of the default callback property
