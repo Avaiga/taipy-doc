@@ -37,32 +37,73 @@ There are two ways you can apply a stylesheet to your application:
     The parameter to the *style* parameter is a dictionary where keys describe the CSS selector to
     apply, and the value is the rule declaration, expressed as a dictionary (each key being the
     CSS property name and each value being the property value).<br/>
-    Here is an example of defining CSS styling on a page. We will address the `Markdown^` use case,
-    but the situation is identical in the Page Builder and HTML cases.<br/>
-    Consider the following definition:
-    ```python
-    page = Markdown("... markdown content",
+    Consider the following page definition:
+    === "Markdown"
+        ```python
+        page = Markdown("... page content",
+                        style = {
+                          ".taipy-button": {
+                            "background-color": "red"
+                          }
+                        })
+        ```
+    === "HTML"
+        ```python
+        page = Html("... page content",
                     style = {
                       ".taipy-button": {
                         "background-color": "red"
                       }
-                    }
-    ```
+                    })
+        ```
+    === "Python"
+        ```python
+        with tgb.Page(style = {
+                        ".taipy-button": {
+                          "background-color": "red"
+                        }
+                      }) as page:
+            # page content
+        ```
     This style creates a single CSS rule that will apply to all `button` controls of this page,
     giving them a red background color.
 
     Note that
     [nested CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Using_CSS_nesting)
     is supported: the CSS declaration can be a CSS rule itself. Here is an example:
-    ```python
-    page = Markdown("... markdown content",
+    === "Markdown"
+        ```python
+        page = Markdown("... page content",
+                        style = {
+                          ".taipy-slider": {
+                            ".MuiSlider-rail": {
+                              "background-color": "yellow"
+                            }
+                          }
+                        })
+        ```
+    === "HTML"
+        ```python
+        page = Html("... page content",
                     style = {
                       ".taipy-slider": {
                         ".MuiSlider-rail": {
                           "background-color": "yellow"
+                        }
                       }
-                    }
-    ```
+                    })
+        ```
+    === "Python"
+        ```python
+        with tgb.Page(style = {
+                        ".taipy-slider": {
+                          ".MuiSlider-rail": {
+                            "background-color": "yellow"
+                          }
+                        }
+                      }) as page:
+            # page content
+        ```
     This style definition will apply the yellow color to the rail of a `slider` control. It does
     this by selecting all the elements with the ".MuiSlider-rail" class that are a descendants
     of elements with the ".taipy-slider" class (`slider` controls).
@@ -266,35 +307,45 @@ error_cls = None
 - *error_cls*: is the name of a CSS class that we apply to the input control and the error message.
   We don't want to apply the class if the input control is empty, so we set this value to empty.
 
-Here is the Markdown definition of the page:
-```py
-page = Markdown(
-    """
-Enter a five-letter word:
-<|{word}|input|class_name={error_cls}|><|{error_text}|text|class_name={error_cls}|>
+Here is the definition of the page:
+=== "Markdown"
+    ```python
+    page = Markdown(
+        """
+    Enter a five-letter word:
+    <|{word}|input|class_name={error_cls}|><|{error_text}|text|class_name={error_cls}|>
 
-<|Validate|button|active={valid}|>
-""",
-    style={".invalid-value": {"background-color": "red"}},
-)
-```
+    <|Validate|button|active={valid}|>
+    """,
+        style={".invalid-value": {"background-color": "red"}},
+    )
+    ```
+=== "Python"
+    ```python
+    with tgb.Page(style={".invalid-value": {"background-color": "red"}}) as page:
+        tgb.html("", "Enter a five-letter word:")
+        tgb.input("{word}", class_name="{error_cls}")
+        tgb.text("{error_text}", class_name="{error_cls}")
+
+        tgb.button("Validate", active="{valid}")
+    ```
 You can spot the `input`, `text`, and `button` controls and how we have bound variables to them.
 
-The *style* parameter of the `Markdown^` constructor defines the "invalid-value" class that changes
-the background color of the elements it is applied to.
+The *style* parameter of the `(taipy.gui.)Page^` constructor defines the "invalid-value" class that
+changes the background color of the elements it is applied to.
 
 Here is the implementation of the `on_change` callback function that computes the visual feedback
 to the user:
 ```py linenums="1"
-def on_change(state, var_name, value):
+def on_change(state, var_name, var_value):
     if var_name == "word":
-        if value and len(value) != 5:
+        if var_value and len(var_value) != 5:
             state.error_text = " Five characters are required"
             state.valid = False
             state.error_cls = "invalid-value"
         else:
             state.error_text = ""
-            state.valid = bool(value)
+            state.valid = bool(var_value)
             state.error_cls = None
 ```
 
@@ -347,11 +398,15 @@ The button is also disabled to prevent the user from submitting this invalid val
 You can use the *id* property of all visual elements to generate an
 HTML id that can be used by CSS styling.
 
-For example, if your Markdown page contains the following control:
-
-```
-<|Click me|button|id=my_button|>
-```
+For example, if your page contains the following control:
+=== "Markdown"
+    ```
+    <|Click me|button|id=my_button|>
+    ```
+=== "Python"
+    ```python
+    tgb.button("Click me", id="my_button")
+    ```
 
 You can change the style of that button using a CSS selector that
 relies on the id of the button:
