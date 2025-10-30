@@ -1,5 +1,14 @@
 A kind of [`input`](input.md) that handles numbers.
 
+The [*integer*](#p-integer) property can be set to True to enforce that the control's value is an
+integer.
+
+Note that the [*min*](#p-min) and [*max*](#p-max) properties do not constrain the returned value
+directly. Instead, they define the limits used by the increment and decrement buttons, and they
+enforce the value only when the blur behavior is enabled (i.e., when the
+[*action_on_blur*](#p-action_on_blur) property is set to True). In this case, the value is adjusted
+to remain within the specified boundaries when the control loses focus.
+
 # Usage
 
 ## Simple {data-source="gui:doc/examples/controls/number_simple.py"}
