@@ -19,11 +19,16 @@ This version is in progress and has not been released yet.
 
 <h4>Improvements and changes</h4>
 
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} The
+  [`number`](../../refmans/gui/viselements/generic/number.md) control
+  has a new property called *integer* that, if set to True, enforces numerical
+  values to be integers.<br/>
+  See [issue #2698](https://github.com/Avaiga/taipy/issues/2698).
 - :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} The *unselected_value*
   property of the [`toggle`](../../refmans/gui/viselements/generic/toggle.md)
   control has been removed.<br/>
-  A toggle control that has no selected item now has its
-  [*value*](../../refmans/gui/viselements/generic/toggle.md#p-value) property set to None.
+  When no item is selected, the 
+  [*value*](../../refmans/gui/viselements/generic/toggle.md#p-value) property is now set to None.
 
 # <strong><code>taipy-core</code></strong>
 
