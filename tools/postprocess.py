@@ -249,7 +249,7 @@ def on_post_build(env):
                             + f"<h1{match.group(1)}>{match.group(2)}</h1>"
                             + html_content[match.end() :]
                         )
-                    # """
+
                     # Collapse doubled <h1>/<h2> page titles
                     REPEATED_H1_H2 = re.compile(
                         r"<h1>(.*?)</h1>\s*<h2\s+(id=\".*?\")>\1(<a\s+class=\"headerlink\".*?</a>)?</h2>",
@@ -380,6 +380,8 @@ def on_post_build(env):
                             else:
                                 new_content += "<b>NO CONTENT</b>"
                             new_content += "</a>"
+                        else:
+                            new_content += html_content[last_location : xref.end()]
                         last_location = xref.end()
                     if last_location:
                         html_content = new_content + html_content[last_location:]
