@@ -1337,28 +1337,29 @@ The [example](#styling-rows) below shows how this works.
 
 !!! note "Editable tables and CSS class suffixes"
 
-    When the `editable` option is enabled on a table, Taipy automatically
-    appends a suffix to the CSS class returned by
-    `cell_class_name[column_name]`:
+    When the [*editable*](#p-editable) property is set to True, Taipy
+    automatically appends a suffix to the CSS class returned by
+    [*cell_class_name[column_name]*](#p-cell_class_name[column_name]):
 
     - `-editable` when the cell is editable
     - `-editing` when the cell is actively being edited
 
-    For example, if `cell_class_name[column_name]` returns `pink-cell`,
-    the applied class may be `pink-cell-editable` or
-    `pink-cell-editing`.
+    For example, if
+    [*cell_class_name[column_name]*](#p-cell_class_name[column_name])
+    returns "pink-cell", the applied class will be
+    "pink-cell-editable" or "pink-cell-editing", when the table content
+    can be edited.
 
-    To ensure consistent styling, define CSS rules for all variants.
+    To maintain consistent styling, ensure that CSS rules are defined
+    for all variants.
 
-```html
-<style>
-.pink-cell,
-.pink-cell-editable,
-.pink-cell-editing {
-  background-color: #ffd6e5;
-}
-</style>
-```
+    ```css
+    .pink-cell,
+    .pink-cell-editable,
+    .pink-cell-editing {
+      background-color: #ffd6e5;
+    }
+    ```
 
 ### Styling rows {data-source="gui:doc/examples/controls/table_styling_rows/"}
 
