@@ -27,7 +27,7 @@ This version is in progress and has not been released yet.
 - :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} The *unselected_value*
   property of the [`toggle`](../../refmans/gui/viselements/generic/toggle.md)
   control has been removed.<br/>
-  When no item is selected, the 
+  When no item is selected, the
   [*value*](../../refmans/gui/viselements/generic/toggle.md#p-value) property is now set to None.
 
 # <strong><code>taipy-core</code></strong>
@@ -57,6 +57,12 @@ This version is in progress and has not been released yet.
   parameter: either *read_query* for read-only or *write_query_builder* for write-only.
   At least one of the two parameters must be provided.<br/>
   See [issue #2616](https://github.com/Avaiga/taipy/issues/2616).
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement" } The *root_folder* has been
+  removed from the `CoreSection^` class.
+  Please refer to the
+  [Core configuration page](../../userman/advanced_features/configuration/core-config.md) for
+  details.<br/>
+  See [issue #2801](https://github.com/Avaiga/taipy/issues/2801).
 
 <h4>Significant bug fixes</h4>
 
