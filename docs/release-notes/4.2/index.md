@@ -30,6 +30,12 @@ This version is in progress and has not been released yet.
   When no item is selected, the
   [*value*](../../refmans/gui/viselements/generic/toggle.md#p-value) property is now set to None.
 
+<h4>Significant bug fixes</h4>
+
+- :octicons-bug-24:{ .bug-icon title="Bug fix" } A custom favicon file can now be named
+  'favicon.png'.<br/>
+  See [issue #1767](https://github.com/Avaiga/taipy/issues/1767)
+
 # <strong><code>taipy-core</code></strong>
 
 ## 4.2.0
