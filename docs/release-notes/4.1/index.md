@@ -9,17 +9,29 @@ This is the list of changes to Taipy version 4.1.
     Please refer to the [Migration page](../migration.md) for potential
     migration paths for your applications implemented on legacy Taipy versions.
 
-Published on 2025-06.
+Published on 2026-02.
 
 `taipy-enterprise` 4.1 depends on the latest
-[`taipy` 4.1](https://pypi.org/project/taipy/4.1.0/) package which depends on the latest
-[`taipy-common` 4.1](https://pypi.org/project/taipy-common/4.1.0/),
-[`taipy-gui` 4.1](https://pypi.org/project/taipy-gui/4.1.0/),
-[`taipy-core` 4.1](https://pypi.org/project/taipy-core/4.1.0/),
-[`taipy-templates` 4.1](https://pypi.org/project/taipy-templates/4.1.0/), and
-[`taipy-rest` 4.1](https://pypi.org/project/taipy-rest/4.1.0/) packages.
+[`taipy` 4.1](https://pypi.org/project/taipy/4.1.1/) package which depends on the latest
+[`taipy-common` 4.1](https://pypi.org/project/taipy-common/4.1.1/),
+[`taipy-gui` 4.1](https://pypi.org/project/taipy-gui/4.1.1/),
+[`taipy-core` 4.1](https://pypi.org/project/taipy-core/4.1.1/),
+[`taipy-templates` 4.1](https://pypi.org/project/taipy-templates/4.1.1/), and
+[`taipy-rest` 4.1](https://pypi.org/project/taipy-rest/4.1.1/) packages.
 
 # <strong><code>taipy</code></strong>
+
+## 4.1.1
+
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} Pandas version
+  dependency has been updated for the latest Python versions. The supported versions
+  are:
+
+    - for Python 3.9: From 1.3.5 to 2.2.3 included.
+    - for Python versions greater or equal to 3.10: From 2.2.0 to 3.0 excluded
+
 
 ## 4.1.0
 
@@ -31,6 +43,20 @@ Published on 2025-06.
   See [issue #2306](https://github.com/Avaiga/taipy/issues/2306).
 
 # <strong><code>taipy-gui</code></strong>
+
+## 4.1.1
+
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} The
+  [`chart`](../../refmans/gui/viselements/generic/chart.md) control performance
+  was improved when used with Plotly and the
+  [*figure*](../../refmans/gui/viselements/generic/chart.md#the-figure-property) property.<br/>
+  See [issue #2716](https://github.com/Avaiga/taipy/issues/2716).
+
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} TODO: https://github.com/Avaiga/taipy/issues/2791
 
 ## 4.1.0
 
