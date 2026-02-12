@@ -30,7 +30,7 @@ Published on 2026-02.
   are:
 
     - for Python 3.9: From 1.3.5 to 2.2.3 included.
-    - for Python versions greater or equal to 3.10: From 2.2.0 to 3.0 excluded
+    - for Python versions >= 3.10: Pandas versions >= 2.2.0 and < 3.0.0.
 
 
 ## 4.1.0
