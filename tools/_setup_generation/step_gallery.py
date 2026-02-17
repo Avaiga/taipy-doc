@@ -54,9 +54,7 @@ class GalleryStep(SetupStep):
 
     def enter(self, setup: Setup):
         self.GALLERY_BASE_PATH = os.path.join(setup.docs_dir, self.GALLERY_FOLDER_NAME)
-        self.APPLICATIONS_BASE_PATH = os.path.join(
-            self.GALLERY_BASE_PATH, self.APPLICATIONS_FOLDER_NAME
-        )
+        self.APPLICATIONS_BASE_PATH = os.path.join(self.GALLERY_BASE_PATH, self.APPLICATIONS_FOLDER_NAME)
 
         items = os.listdir(self.GALLERY_BASE_PATH)
 
@@ -67,7 +65,6 @@ class GalleryStep(SetupStep):
             if os.path.isdir(os.path.join(self.GALLERY_BASE_PATH, item))
             and item not in self.NO_CONTENT_TYPE_FOLDERS
         }
-
         for content_type in self.content_types.keys():
             folder_path = os.path.join(self.GALLERY_BASE_PATH, content_type)
             self.content_types[content_type] = {
@@ -85,9 +82,11 @@ class GalleryStep(SetupStep):
         items_info = {}
         items = self._get_list_of_items(self.APPLICATIONS_BASE_PATH)
         for content_type, paths in self.content_types.items():
-            sublist_of_items = [
-                items for items in items if items.category == content_type
-            ]
+            if not os.path.exists(os.path.join(paths["folder_path"], "index.md_template")):
+                print(f"WARNING - Skipping {content_type}: Template file " +
+                            f"'{os.path.join(paths["folder_path"], 'index.md_template')}' does not exist.")
+                continue
+            sublist_of_items = [items for items in items if items.category == content_type]
             content, items_info_category = self._build_content(sublist_of_items)
             self._update_index_file(paths["index_path"], content)
             print(f"{len(sublist_of_items)} {content_type} items processed.")
@@ -113,9 +112,7 @@ class GalleryStep(SetupStep):
         lines.append('<ul class="tp-row tp-row--gutter-sm tp-filtered">')
         items = sorted(items, key=lambda item: item.order)
         for item in items:
-            items_info[(item.order, item.title)] = item.generate_content_for_article(
-                main_index=True
-            )
+            items_info[(item.order, item.title)] = item.generate_content_for_article(main_index=True)
             content = item.generate_content_for_article()
             lines.append(content)
         lines.append("</ul>")
