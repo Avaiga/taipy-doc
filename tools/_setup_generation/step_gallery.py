@@ -80,7 +80,7 @@ class GalleryStep(SetupStep):
         for content_type, paths in self.content_types.items():
             if not os.path.exists(os.path.join(paths["folder_path"], "index.md_template")):
                 print(f"WARNING - Skipping {content_type}: Template file " +
-                            f"'{os.path.join(paths["folder_path"], 'index.md_template')}' does not exist.")
+                            f"'{os.path.join(paths['folder_path'], 'index.md_template')}' does not exist.")
                 continue
             sublist_of_items = [items for items in items if items.category == content_type]
             content, items_info_category = self._build_content(sublist_of_items)
