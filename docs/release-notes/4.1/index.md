@@ -9,17 +9,29 @@ This is the list of changes to Taipy version 4.1.
     Please refer to the [Migration page](../migration.md) for potential
     migration paths for your applications implemented on legacy Taipy versions.
 
-Published on 2025-06.
+Published on 2026-02.
 
 `taipy-enterprise` 4.1 depends on the latest
-[`taipy` 4.1](https://pypi.org/project/taipy/4.1.0/) package which depends on the latest
-[`taipy-common` 4.1](https://pypi.org/project/taipy-common/4.1.0/),
-[`taipy-gui` 4.1](https://pypi.org/project/taipy-gui/4.1.0/),
-[`taipy-core` 4.1](https://pypi.org/project/taipy-core/4.1.0/),
-[`taipy-templates` 4.1](https://pypi.org/project/taipy-templates/4.1.0/), and
-[`taipy-rest` 4.1](https://pypi.org/project/taipy-rest/4.1.0/) packages.
+[`taipy` 4.1](https://pypi.org/project/taipy/4.1.1/) package which depends on the latest
+[`taipy-common` 4.1](https://pypi.org/project/taipy-common/4.1.1/),
+[`taipy-gui` 4.1](https://pypi.org/project/taipy-gui/4.1.1/),
+[`taipy-core` 4.1](https://pypi.org/project/taipy-core/4.1.1/),
+[`taipy-templates` 4.1](https://pypi.org/project/taipy-templates/4.1.1/), and
+[`taipy-rest` 4.1](https://pypi.org/project/taipy-rest/4.1.1/) packages.
 
 # <strong><code>taipy</code></strong>
+
+## 4.1.1
+
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} Pandas version
+  dependency has been updated for the latest Python versions. The supported versions
+  are:
+
+    - for Python 3.9: From 1.3.5 to 2.2.3 included.
+    - for Python versions >= 3.10: Pandas versions >= 2.2.0 and < 3.0.0.
+
 
 ## 4.1.0
 
@@ -32,6 +44,22 @@ Published on 2025-06.
 
 # <strong><code>taipy-gui</code></strong>
 
+## 4.1.1
+
+<h4>Significant bug fixes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} Fix for hover text not working
+  with the [`number`](../../refmans/gui/viselements/generic/number.md) element.<br/>
+  See [issue #2791](https://github.com/Avaiga/taipy/issues/2791).
+
+<h4>Improvements and changes</h4>
+
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} The
+  [`chart`](../../refmans/gui/viselements/generic/chart.md) element performance
+  was improved when using the
+  [*figure*](../../refmans/gui/viselements/generic/chart.md#the-figure-property) property.<br/>
+  See [issue #2716](https://github.com/Avaiga/taipy/issues/2716).
+
 ## 4.1.0
 
 <h4>New features</h4>
@@ -41,14 +69,32 @@ Published on 2025-06.
   class on the
   [_Mocking State in unit tests_ page](../../userman/gui/utilities.md#mocking-state-in-unit-tests).<br/>
   See [issue #2098](https://github.com/Avaiga/taipy/issues/2098).
-- :octicons-feed-plus-16:{ .plus-icon title="New feature" } TODO: https://github.com/Avaiga/taipy/issues/1401
+- :octicons-feed-plus-16:{ .plus-icon title="New feature" } The
+  [`text`](../../refmans/gui/viselements/generic/text.md) element supports LaTeχ rendering, setting
+  the [*mode*](../../refmans/gui/viselements/generic/text.md#p-mode) property to "latex".<br/>
+  See [issue #1401](https://github.com/Avaiga/taipy/issues/1401).
 
 <h4>Improvements and changes</h4>
 
-- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} TODO: https://github.com/Avaiga/taipy/issues/2288
-- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} TODO: https://github.com/Avaiga/taipy/issues/2023
-- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} TODO: https://github.com/Avaiga/taipy/issues/1834
-- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} TODO: https://github.com/Avaiga/taipy/issues/1314
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} The syntax for creating
+  [long running callbacks](../../userman/gui/callbacks.md#long-running-callbacks) can be simplified
+  by using the `async ` keyword of Python 3.<br/>
+  TODO: Point to the code sample that demonstrates the usage of that feature.<br/>
+  See [issue #2288](https://github.com/Avaiga/taipy/issues/2288).
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} The
+  [`input`](../../refmans/gui/viselements/generic/input.md) and
+  [`number`](../../refmans/gui/viselements/generic/number.md) elements now trigger the `on_change`
+  callback if the new
+  [*action_on_blur*](../../refmans/gui/viselements/generic/input.md#p-action_on_blur) property is
+  set to True.<br/>
+  See [issue #2023](https://github.com/Avaiga/taipy/issues/2023).
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} The
+  [`selector`](../../refmans/gui/viselements/generic/selector.md) element supports multiple
+  selection when configured as a dropdown selector.<br/>
+  See [issue #1834](https://github.com/Avaiga/taipy/issues/1834).
+- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} The
+  [`chat`](../../refmans/gui/viselements/generic/chat.md) element supports images in text areas.<br/>
+  See [issue #1314](https://github.com/Avaiga/taipy/issues/1314).
 
 # <strong><code>taipy-core</code></strong>
 
