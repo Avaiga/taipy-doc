@@ -33,11 +33,14 @@ mkdocs_yml_version = read_doc_version_from_mkdocs_yml_template_file(ROOT_DIR)
 
 
 # Gather version information for each repository
-class RepoDefinition(t.TypedDict):
+class _RepoDefinition(t.TypedDict, total=False):
+    path: t.Optional[str]
+    skip: t.Optional[bool]
+
+
+class RepoDefinition(_RepoDefinition):
     version: str
     tag: t.Optional[str]
-    path: t.NotRequired[t.Optional[str]]
-    skip: t.NotRequired[t.Optional[bool]]
 
 
 repo_defs: dict[str, RepoDefinition] = {
@@ -94,7 +97,7 @@ if args.no_pull and all(v["version"] == "local" for v in repo_defs.values()):
     git_command = None
 else:
     git_path = shutil.which(git_command)
-    if git_path is None or subprocess.run(f'"{git_path}" --version', shell=True, capture_output=True) is None:
+    if git_path is None or not subprocess.run(f'"{git_path}" --version', shell=True, capture_output=True):
         raise IOError(f'Couldn\'t find command "{git_command}"')
     git_command = git_path
 
@@ -103,7 +106,7 @@ github_token = os.environ.get("GITHUB_TOKEN", "")
 if github_token:
     github_token += "@"
 github_root = f"https://{github_token}github.com/Avaiga/"
-loggable_github_root = f"https://***@github.com/Avaiga/"
+loggable_github_root = "https://***@github.com/Avaiga/"
 for repo in repo_defs.keys():
     version = repo_defs[repo]["version"]
     if version == "local":
@@ -433,7 +436,7 @@ for repo in repo_defs.keys():
                 raise
 
         # This was replaced in Python 3.12, but we want to keep compatibility with Python 3.9+
-        shutil.rmtree(clone_dir, onerror=handleRemoveReadonly)
+        shutil.rmtree(clone_dir, onerror=handleRemoveReadonly)  # pyright: ignore[reportDeprecated]
 
 if os.path.isdir(os.path.join(ROOT_DIR, "fe_node_modules")) and os.path.isdir(os.path.join(frontend_dir)):
     shutil.move(
