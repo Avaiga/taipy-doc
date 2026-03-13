@@ -2,6 +2,7 @@ import os
 import re
 import shutil
 import subprocess
+import typing as t
 
 from _fetch_source_file import (
     CLI,
@@ -30,8 +31,16 @@ args = CLI(os.path.basename(__file__), REPOS).get_args()
 # Read version from mkdocs.yml template
 mkdocs_yml_version = read_doc_version_from_mkdocs_yml_template_file(ROOT_DIR)
 
+
 # Gather version information for each repository
-repo_defs = {
+class RepoDefinition(t.TypedDict):
+    version: str
+    tag: t.Optional[str]
+    path: t.NotRequired[t.Optional[str]]
+    skip: t.NotRequired[t.Optional[bool]]
+
+
+repo_defs: dict[str, RepoDefinition] = {
     repo if repo == "taipy" else f"taipy-{repo}": {"version": "local", "tag": None} for repo in REPOS + PRIVATE_REPOS
 }
 CATCH_VERSION_RE = re.compile(r"(^\d+\.\d+?)(?:(\.\d+)(\..*)?)?|develop|local$")
@@ -80,6 +89,7 @@ for repo, version_remap_desc in VERSION_MAP.items():
 
 # Test git, if needed
 git_command = "git"
+git_path = "<undetermined path to git executable>"
 if args.no_pull and all(v["version"] == "local" for v in repo_defs.values()):
     git_command = None
 else:
@@ -175,7 +185,7 @@ os.makedirs(DEST_DIR)
 # If a leftover of a previous failed run
 safe_rmtree(os.path.join(TOOLS_PATH, DEST_DIR_NAME))
 
-pipfile_packages = {}
+pipfile_packages: dict[str, dict[str, list[str]]] = {}
 PIPFILE_PACKAGE_RE = re.compile(r"(..*?)\s?=\s?(.*)")
 
 
@@ -251,13 +261,13 @@ def move_files(repo: str, src_path: str):
         safe_rmtree(dest_dir)
         os.mkdir(dest_dir)
         subprocess.run(
-            f"python \"{os.path.join(tools_src_dir, 'zip_examples.py')}\" "
+            f'python "{os.path.join(tools_src_dir, "zip_examples.py")}" '
             # src_directory
-            f"\"{taipy_docs_src_dir}\" "
+            f'"{taipy_docs_src_dir}" '
             # intermediate_directory
-            f"\"{dest_dir}\" "
+            f'"{dest_dir}" '
             # target_directory
-            f"\"{designer_doc_dir}\" "
+            f'"{designer_doc_dir}" '
             # zip)file
             "examples.zip",
             shell=True,
@@ -269,13 +279,13 @@ def move_files(repo: str, src_path: str):
         safe_rmtree(dest_dir)
         os.mkdir(dest_dir)
         subprocess.run(
-            f"python \"{os.path.join(tools_src_dir, 'zip_examples.py')}\" "
+            f'python "{os.path.join(tools_src_dir, "zip_examples.py")}" '
             # src_directory
-            f"\"{os.path.join(taipy_docs_src_dir, 'training')}\" "
+            f'"{os.path.join(taipy_docs_src_dir, "training")}" '
             # intermediate_directory
-            f"\"{dest_dir}\" "
+            f'"{dest_dir}" '
             # target_directory
-            f"\"{os.path.join(designer_doc_dir, 'training')}\" "
+            f'"{os.path.join(designer_doc_dir, "training")}" '
             # zip)file
             "training.zip",
             shell=True,
@@ -305,7 +315,7 @@ def move_files(repo: str, src_path: str):
                             with open(full_dst, "r") as f:
                                 dst = f.read()
                             if src != dst:
-                                if not item.endswith("config.pyi"): # TODO: Should be improved
+                                if not item.endswith("config.pyi"):  # TODO: Should be improved
                                     raise FileExistsError(
                                         f"File {rel_path}/{item} "
                                         f"already exists and is different (copying repository {repo})"
@@ -375,8 +385,10 @@ for repo in repo_defs.keys():
     version = repo_defs[repo]["version"]
     print(f"Fetching file for repository {repo} ({version})", flush=True)
     if version == "local":
-        src_path = repo_defs[repo]["path"]
-        if not args.no_pull:
+        src_path = repo_defs[repo].get("path", None)
+        if src_path is None:
+            raise ValueError(f"Path for local repository '{repo}' is not defined.")
+        elif not args.no_pull:
             cwd = os.getcwd()
             os.chdir(src_path)
             subprocess.run(f'"{git_path}" pull', shell=True, capture_output=True, text=True)
@@ -410,7 +422,7 @@ for repo in repo_defs.keys():
 
         # For some reason, we need to protect the removal of the clone dirs...
         # See https://stackoverflow.com/questions/1213706/what-user-do-python-scripts-run-as-in-windows
-        def handleRemoveReadonly(func, path, exc):
+        def handleRemoveReadonly(func: t.Any, path: str, exc: t.Any):
             import errno
             import stat
 
@@ -420,6 +432,7 @@ for repo in repo_defs.keys():
             else:
                 raise
 
+        # This was replaced in Python 3.12, but we want to keep compatibility with Python 3.9+
         shutil.rmtree(clone_dir, onerror=handleRemoveReadonly)
 
 if os.path.isdir(os.path.join(ROOT_DIR, "fe_node_modules")) and os.path.isdir(os.path.join(frontend_dir)):
@@ -429,11 +442,22 @@ if os.path.isdir(os.path.join(ROOT_DIR, "fe_node_modules")) and os.path.isdir(os
     )
 
 # Manually add the taipy.run() function.
+# Remove the import from _run to avoid the confusion from griffe
 # TODO: Automate this, grabbing the function from the 'taipy' repository,
 # so we benefit from potential updates.
 init_path = os.path.join(ROOT_DIR, "taipy", "__init__.py")
-with open(init_path, "a") as init:
-    run_method = """
+init_content = ""
+with open(init_path, "r") as init_file:
+    init_content = init_file.read()
+match = re.search(r"\n\s*if find_spec\(\"taipy._run\"\).*?import _run as run\s*?", init_content, re.DOTALL)
+
+with open(init_path, "w") as init:
+    if match:
+        init.write(init_content[: match.start()])
+        init.write(init_content[match.end() :])
+    else:
+        init.write(init_content)
+    run_method_doc = """
 import typing as t
 
 def run(*services: t.Union[Gui, Rest, Orchestrator], **kwargs) -> t.Optional[t.Union[Gui, Rest, Orchestrator]]:
@@ -448,7 +472,7 @@ def run(*services: t.Union[Gui, Rest, Orchestrator], **kwargs) -> t.Optional[t.U
         **kwargs (dict[str, any]): Other parameters to provide to the services.
     \"\"\"
     pass\n"""
-    init.write(run_method)
+    init.write(run_method_doc)
 
 # Generate Pipfile from package dependencies from all repositories
 pipfile_path = os.path.join(ROOT_DIR, "Pipfile")
@@ -469,8 +493,8 @@ if pipfile_path:
         pipfile_lines = pipfile.readlines()
     new_pipfile_path = os.path.join(ROOT_DIR, "Pipfile.new")
     in_packages_section = False
-    legacy_pipfile_packages = {}
-    pipfile_changes = []
+    legacy_pipfile_packages: dict[str, str] = {}
+    pipfile_changes: list[str] = []
     with open(new_pipfile_path, "w") as new_pipfile:
         for line in pipfile_lines:
             if in_packages_section:
