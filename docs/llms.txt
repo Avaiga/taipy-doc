@@ -1,0 +1,47 @@
+# Taipy Documentation
+
+> Taipy documentation for the open-source Python library used to build data-driven web applications. Prefer the `/en/latest/` docs for most questions, and consult release notes or migration guides when behavior may depend on version.
+
+Taipy covers both front-end and back-end concerns: GUI creation, scenario and data management, task orchestration, deployment, CLI usage, and Python API reference.
+
+This site is versioned. Unless a user explicitly asks about an older release, start with the latest documentation. If a question is version-sensitive, compare the latest docs with release notes and migration pages before answering.
+
+For task-oriented help, prioritize Tutorials and the User Manual. For exact classes, functions, widgets, or signatures, prioritize the Reference manual and Visual Elements documentation.
+
+## Start Here
+
+- [Documentation home](https://docs.taipy.io/en/latest/): Main entry point and overview of Taipy.
+- [Getting Started](https://docs.taipy.io/en/latest/tutorials/getting_started/): Installation and first interactive Taipy application.
+- [First Realistic application](https://docs.taipy.io/en/latest/tutorials/articles/complete_application/): End-to-end tutorial covering a multi-page data application.
+
+## Core Guides
+
+- [User Manual](https://docs.taipy.io/en/latest/userman/): Conceptual documentation for GUI pages, bindings, callbacks, scenario features, configuration, authentication, versioning, running, and deployment.
+- [Scenario management overview](https://docs.taipy.io/en/latest/tutorials/articles/scenario_management_overview/): Quick introduction to scenarios, data nodes, submission flows, and scenario-oriented UI.
+- [The run() function](https://docs.taipy.io/en/latest/userman/run-deploy/run/running_services/): How Taipy applications and services are started.
+- [Exposing REST APIs](https://docs.taipy.io/en/latest/userman/scenario_features/rest/): How to expose Taipy functionality through REST endpoints.
+- [Command-line interface (CLI)](https://docs.taipy.io/en/latest/userman/ecosystem/cli/): CLI usage for scaffolding, running, and managing applications.
+
+## API and UI Reference
+
+- [Reference manual](https://docs.taipy.io/en/latest/refmans/): Python API reference across Taipy packages.
+- [Visual Elements](https://docs.taipy.io/en/latest/refmans/gui/viselements/): Built-in GUI controls, blocks, and scenario/data management widgets.
+- [TaskConfig class](https://docs.taipy.io/en/latest/refmans/reference/pkg_taipy/pkg_core/pkg_config/TaskConfig/): Example deep API reference page for task configuration.
+
+## AI and Example Applications
+
+- [LLM ChatBot tutorial](https://docs.taipy.io/en/latest/tutorials/articles/chatbot/): Build an LLM-based chatbot with Taipy.
+- [RAG ChatBot tutorial](https://docs.taipy.io/en/latest/tutorials/articles/rag_chatbot/): Build a retrieval-augmented chatbot with Taipy.
+- [Gallery](https://docs.taipy.io/en/latest/gallery/): Example Taipy applications across finance, decision support, LLM, visualization, and other domains.
+
+## Versions and Changes
+
+- [Release Notes](https://docs.taipy.io/en/latest/release-notes/): Version-by-version changes and current latest release branch.
+- [Migration](https://docs.taipy.io/en/latest/release-notes/migration/): Upgrade guidance between Taipy versions.
+
+## Guidance for LLMs
+
+- Prefer tutorial and user-manual pages for workflow explanations and runnable examples.
+- Prefer reference pages for exact API names, signatures, parameters, widget properties, and package layout.
+- If a question mentions deprecations, changed behavior, or an older code sample, check versioned docs plus release notes and migration pages.
+- When answering "how do I build X?", look first for a tutorial or gallery example before falling back to low-level API reference pages.
