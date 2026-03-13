@@ -30,7 +30,7 @@ class GuiExtRefManStep(SetupStep):
             try:
                 subprocess.run(f"{npm_path} --version", shell=True, capture_output=True)
             except OSError:
-                print(f"WARNING: Couldn't run npm, ignoring this step.", flush=True)
+                print("WARNING: Couldn't run npm, ignoring this step.", flush=True)
                 npm_path = None
         self.npm_path = npm_path
 
@@ -39,9 +39,9 @@ class GuiExtRefManStep(SetupStep):
             saved_cwd = os.getcwd()
             gui_path = os.path.join(setup.root_dir, "taipy-fe")
             os.chdir(gui_path)
-            print(f"... Installing node modules...", flush=True)
+            print("... Installing node modules...", flush=True)
             subprocess.run(f"{self.npm_path} i --omit=optional", shell=True)
-            print(f"... Generating documentation...", flush=True)
+            print("... Generating documentation...", flush=True)
             subprocess.run(f"{self.npm_path} run mkdocs", shell=True)
             # Process and copy files to docs/userman
             os.mkdir(self.GUI_EXT_REF_DIR_PATH)
@@ -56,11 +56,7 @@ class GuiExtRefManStep(SetupStep):
                         file_content = input.read()
                     match = JS_EXT_RE.search(file_content)
                     if match:
-                        file_content = (
-                            match.group(2)
-                            + match.group(1)
-                            + file_content[match.end() :]
-                        )
+                        file_content = match.group(2) + match.group(1) + file_content[match.end() :]
                     path_name = path_name.replace(src_dir, dst_dir)
                     with open(path_name, "w") as output:
                         output.write(file_content)

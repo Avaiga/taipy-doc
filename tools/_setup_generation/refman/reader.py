@@ -1,8 +1,10 @@
 import re
 from inspect import isclass, isfunction, ismodule
+from types import ModuleType
 from .entry import Entry, EntryBuilder
 from ..setup import Setup
 from importlib import import_module
+import typing as t
 
 
 class Reader:
@@ -13,15 +15,15 @@ class Reader:
     FIRST_DOC_LINE_RE = re.compile(r"^(.*?)(:?\n\s*\n|$)", re.DOTALL)
     REMOVE_LINE_SKIPS_RE = re.compile(r"\s*\n\s*", re.MULTILINE)
 
-    HIDDEN_ENTRIES = []
-    HIDDEN_ENTRIES_FULL = []
+    HIDDEN_ENTRIES: t.List[str] = []
+    HIDDEN_ENTRIES_FULL: t.List[str] = []
 
     def __init__(self, setup: Setup):
         self.setup = setup
         self.entries: dict[str, Entry] = {}  # All entries from taipy that are not private or hidden
-        self.package_doc = {}  # Documentation for each package
+        self.package_doc: dict[str, t.Optional[str]] = {}  # Documentation for each package
 
-        self.loaded_modules = set()  # All the modules already processed and loaded
+        self.loaded_modules: set[ModuleType] = set()
 
     def read_symbols(self):
         self._read_module(import_module(self.setup.ROOT_PACKAGE))
@@ -29,7 +31,7 @@ class Reader:
         self._read_module(import_module("taipy.event"))
         self._read_module(import_module("taipy.gui.test"))
 
-    def _read_module(self, module):
+    def _read_module(self, module: ModuleType):
         if module in self.loaded_modules:
             return
         self.loaded_modules.add(module)
@@ -45,7 +47,7 @@ class Reader:
                 continue
 
             # Type ?
-            entry_type: str = None
+            entry_type: t.Optional[str] = None
             if hasattr(e, "__module__") and e.__module__:
                 # Handling alias Types
                 if e.__module__.startswith(self.setup.ROOT_PACKAGE):  # For local build
