@@ -14,7 +14,7 @@ Published on 2026-02.
 `taipy-enterprise` 4.1 depends on the latest
 [`taipy` 4.1](https://pypi.org/project/taipy/4.1.1/) package which depends on the latest
 [`taipy-common` 4.1](https://pypi.org/project/taipy-common/4.1.1/),
-[`taipy-gui` 4.1](https://pypi.org/project/taipy-gui/4.1.1/),
+[`taipy-gui` 4.1](https://pypi.org/project/taipy-gui/4.1.2/),
 [`taipy-core` 4.1](https://pypi.org/project/taipy-core/4.1.1/),
 [`taipy-templates` 4.1](https://pypi.org/project/taipy-templates/4.1.1/), and
 [`taipy-rest` 4.1](https://pypi.org/project/taipy-rest/4.1.1/) packages.
@@ -44,11 +44,21 @@ Published on 2026-02.
 
 # <strong><code>taipy-gui</code></strong>
 
+## 4.1.2
+
+<h4>Significant bug fixes</h4>
+
+- :octicons-bug-24:{ .bug-icon title="Bug fix" } Fix for two decimator classes:
+    - [`MinMaxDecimator`](../../refmans/reference/pkg_taipy/pkg_gui/pkg_data/MinMaxDecimator/index.md)
+      may lose some trailing data points
+    - [`ScatterDecimator`](../../refmans/reference/pkg_taipy/pkg_gui/pkg_data/ScatterDecimator/index.md)
+      does not always properly handle missing input data points.
+
 ## 4.1.1
 
 <h4>Significant bug fixes</h4>
 
-- :octicons-feed-rocket-16:{ .rocket-icon title="Improvement"} Fix for hover text not working
+- :octicons-bug-24:{ .bug-icon title="Bug fix" } Fix for hover text not working
   with the [`number`](../../refmans/gui/viselements/generic/number.md) element.<br/>
   See [issue #2791](https://github.com/Avaiga/taipy/issues/2791).
 

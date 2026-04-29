@@ -219,9 +219,9 @@ classes that inherit from the `Decimator^` class.
 
 To leverage these algorithms and handle large datasets efficiently:
 
-- Instantiate the decimator class that best suits your dataset.
-- Assign the instance to the [`decimator`](#p-decimator) property of the chart control representing
-  the data.
+- Set a variable to an instance if the decimator class that best suits your dataset.
+- Assign the name of this variable to the [`decimator`](#p-decimator) property of the chart control
+  representing the data.
 
 An [advanced example](charts/advanced.md#large-datasets) demonstrates when and how decimation can
 be used.<br/>
