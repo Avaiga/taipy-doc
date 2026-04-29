@@ -205,9 +205,9 @@ information and trends. By selectively removing data points based on specific cr
 frequency content or statistical significance, decimation balances performance with data integrity.
 
 
-The `chart` control has a [*decimator*](../chart.md#p-decimator) property that accepts an instance
-of a subclass of `Decimator^`. This class transforms the dataset declared in the
-[*data*](../chart.md#p-data) property, reducing the number of points to be displayed
+The `chart` control has a [*decimator*](../chart.md#p-decimator) property that accepts the name of
+a variable holding an instance of a subclass of `Decimator^`. This class transforms the dataset
+bound to the [*data*](../chart.md#p-data) property, reducing the number of points to be displayed
 while ensuring that key data features are retained.
 
 
@@ -232,7 +232,7 @@ To apply the decimator to the chart, set the *decimator* variable to the
     type=markers
     x=X
     y=Y
-    decimator={decimator}
+    decimator=decimator
 
 Here is the resulting chart after applying decimation:
 <figure>
