@@ -268,3 +268,4 @@ make your way from one example to the next.
 - [Using charts](chart.md)
 - [Accessing assets](accessing_assets.md)
 - [Packaging an element library](extension_packaging.md)
+- [Building the library](building_library.md)
